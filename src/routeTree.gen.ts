@@ -10,11 +10,120 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as AdmissionsRouteImport } from './routes/admissions'
+import { Route as AlumniRouteImport } from './routes/alumni'
+import { Route as CommunityRouteImport } from './routes/community'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as EnginesRouteImport } from './routes/engines'
+import { Route as EventsRouteImport } from './routes/events'
+import { Route as MarketplaceRouteImport } from './routes/marketplace'
+import { Route as PartnersRouteImport } from './routes/partners'
+import { Route as PricingRouteImport } from './routes/pricing'
+import { Route as ServicesRouteImport } from './routes/services'
+import { Route as WorkRouteImport } from './routes/work'
+import { Route as AppIndexRouteImport } from './routes/app.index'
+import { Route as AuthForgotPasswordRouteImport } from './routes/auth.forgot-password'
+import { Route as AuthSignInRouteImport } from './routes/auth.sign-in'
+import { Route as AuthSignUpRouteImport } from './routes/auth.sign-up'
+import { Route as BlogIndexRouteImport } from './routes/blog.index'
+import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 import { Route as ProgramsIndexRouteImport } from './routes/programs.index'
+import { Route as ProgramsSlugRouteImport } from './routes/programs.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdmissionsRoute = AdmissionsRouteImport.update({
+  id: '/admissions',
+  path: '/admissions',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AlumniRoute = AlumniRouteImport.update({
+  id: '/alumni',
+  path: '/alumni',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CommunityRoute = CommunityRouteImport.update({
+  id: '/community',
+  path: '/community',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EnginesRoute = EnginesRouteImport.update({
+  id: '/engines',
+  path: '/engines',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EventsRoute = EventsRouteImport.update({
+  id: '/events',
+  path: '/events',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MarketplaceRoute = MarketplaceRouteImport.update({
+  id: '/marketplace',
+  path: '/marketplace',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PartnersRoute = PartnersRouteImport.update({
+  id: '/partners',
+  path: '/partners',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PricingRoute = PricingRouteImport.update({
+  id: '/pricing',
+  path: '/pricing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesRoute = ServicesRouteImport.update({
+  id: '/services',
+  path: '/services',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WorkRoute = WorkRouteImport.update({
+  id: '/work',
+  path: '/work',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppIndexRoute = AppIndexRouteImport.update({
+  id: '/app/',
+  path: '/app/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthForgotPasswordRoute = AuthForgotPasswordRouteImport.update({
+  id: '/auth/forgot-password',
+  path: '/auth/forgot-password',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthSignInRoute = AuthSignInRouteImport.update({
+  id: '/auth/sign-in',
+  path: '/auth/sign-in',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthSignUpRoute = AuthSignUpRouteImport.update({
+  id: '/auth/sign-up',
+  path: '/auth/sign-up',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogIndexRoute = BlogIndexRouteImport.update({
+  id: '/blog/',
+  path: '/blog/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogSlugRoute = BlogSlugRouteImport.update({
+  id: '/blog/$slug',
+  path: '/blog/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProgramsIndexRoute = ProgramsIndexRouteImport.update({
@@ -22,30 +131,175 @@ const ProgramsIndexRoute = ProgramsIndexRouteImport.update({
   path: '/programs/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProgramsSlugRoute = ProgramsSlugRouteImport.update({
+  id: '/programs/$slug',
+  path: '/programs/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/admissions': typeof AdmissionsRoute
+  '/alumni': typeof AlumniRoute
+  '/community': typeof CommunityRoute
+  '/contact': typeof ContactRoute
+  '/engines': typeof EnginesRoute
+  '/events': typeof EventsRoute
+  '/marketplace': typeof MarketplaceRoute
+  '/partners': typeof PartnersRoute
+  '/pricing': typeof PricingRoute
+  '/services': typeof ServicesRoute
+  '/work': typeof WorkRoute
+  '/auth/forgot-password': typeof AuthForgotPasswordRoute
+  '/auth/sign-in': typeof AuthSignInRoute
+  '/auth/sign-up': typeof AuthSignUpRoute
+  '/blog/$slug': typeof BlogSlugRoute
+  '/programs/$slug': typeof ProgramsSlugRoute
+  '/app/': typeof AppIndexRoute
+  '/blog/': typeof BlogIndexRoute
   '/programs/': typeof ProgramsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/admissions': typeof AdmissionsRoute
+  '/alumni': typeof AlumniRoute
+  '/community': typeof CommunityRoute
+  '/contact': typeof ContactRoute
+  '/engines': typeof EnginesRoute
+  '/events': typeof EventsRoute
+  '/marketplace': typeof MarketplaceRoute
+  '/partners': typeof PartnersRoute
+  '/pricing': typeof PricingRoute
+  '/services': typeof ServicesRoute
+  '/work': typeof WorkRoute
+  '/auth/forgot-password': typeof AuthForgotPasswordRoute
+  '/auth/sign-in': typeof AuthSignInRoute
+  '/auth/sign-up': typeof AuthSignUpRoute
+  '/blog/$slug': typeof BlogSlugRoute
+  '/programs/$slug': typeof ProgramsSlugRoute
+  '/app': typeof AppIndexRoute
+  '/blog': typeof BlogIndexRoute
   '/programs': typeof ProgramsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/admissions': typeof AdmissionsRoute
+  '/alumni': typeof AlumniRoute
+  '/community': typeof CommunityRoute
+  '/contact': typeof ContactRoute
+  '/engines': typeof EnginesRoute
+  '/events': typeof EventsRoute
+  '/marketplace': typeof MarketplaceRoute
+  '/partners': typeof PartnersRoute
+  '/pricing': typeof PricingRoute
+  '/services': typeof ServicesRoute
+  '/work': typeof WorkRoute
+  '/auth/forgot-password': typeof AuthForgotPasswordRoute
+  '/auth/sign-in': typeof AuthSignInRoute
+  '/auth/sign-up': typeof AuthSignUpRoute
+  '/blog/$slug': typeof BlogSlugRoute
+  '/programs/$slug': typeof ProgramsSlugRoute
+  '/app/': typeof AppIndexRoute
+  '/blog/': typeof BlogIndexRoute
   '/programs/': typeof ProgramsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/programs/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/admissions'
+    | '/alumni'
+    | '/community'
+    | '/contact'
+    | '/engines'
+    | '/events'
+    | '/marketplace'
+    | '/partners'
+    | '/pricing'
+    | '/services'
+    | '/work'
+    | '/auth/forgot-password'
+    | '/auth/sign-in'
+    | '/auth/sign-up'
+    | '/blog/$slug'
+    | '/programs/$slug'
+    | '/app/'
+    | '/blog/'
+    | '/programs/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/programs'
-  id: '__root__' | '/' | '/programs/'
+  to:
+    | '/'
+    | '/about'
+    | '/admissions'
+    | '/alumni'
+    | '/community'
+    | '/contact'
+    | '/engines'
+    | '/events'
+    | '/marketplace'
+    | '/partners'
+    | '/pricing'
+    | '/services'
+    | '/work'
+    | '/auth/forgot-password'
+    | '/auth/sign-in'
+    | '/auth/sign-up'
+    | '/blog/$slug'
+    | '/programs/$slug'
+    | '/app'
+    | '/blog'
+    | '/programs'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/admissions'
+    | '/alumni'
+    | '/community'
+    | '/contact'
+    | '/engines'
+    | '/events'
+    | '/marketplace'
+    | '/partners'
+    | '/pricing'
+    | '/services'
+    | '/work'
+    | '/auth/forgot-password'
+    | '/auth/sign-in'
+    | '/auth/sign-up'
+    | '/blog/$slug'
+    | '/programs/$slug'
+    | '/app/'
+    | '/blog/'
+    | '/programs/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  AdmissionsRoute: typeof AdmissionsRoute
+  AlumniRoute: typeof AlumniRoute
+  CommunityRoute: typeof CommunityRoute
+  ContactRoute: typeof ContactRoute
+  EnginesRoute: typeof EnginesRoute
+  EventsRoute: typeof EventsRoute
+  MarketplaceRoute: typeof MarketplaceRoute
+  PartnersRoute: typeof PartnersRoute
+  PricingRoute: typeof PricingRoute
+  ServicesRoute: typeof ServicesRoute
+  WorkRoute: typeof WorkRoute
+  AuthForgotPasswordRoute: typeof AuthForgotPasswordRoute
+  AuthSignInRoute: typeof AuthSignInRoute
+  AuthSignUpRoute: typeof AuthSignUpRoute
+  BlogSlugRoute: typeof BlogSlugRoute
+  ProgramsSlugRoute: typeof ProgramsSlugRoute
+  AppIndexRoute: typeof AppIndexRoute
+  BlogIndexRoute: typeof BlogIndexRoute
   ProgramsIndexRoute: typeof ProgramsIndexRoute
 }
 
@@ -58,6 +312,132 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admissions': {
+      id: '/admissions'
+      path: '/admissions'
+      fullPath: '/admissions'
+      preLoaderRoute: typeof AdmissionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/alumni': {
+      id: '/alumni'
+      path: '/alumni'
+      fullPath: '/alumni'
+      preLoaderRoute: typeof AlumniRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/community': {
+      id: '/community'
+      path: '/community'
+      fullPath: '/community'
+      preLoaderRoute: typeof CommunityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/engines': {
+      id: '/engines'
+      path: '/engines'
+      fullPath: '/engines'
+      preLoaderRoute: typeof EnginesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/events': {
+      id: '/events'
+      path: '/events'
+      fullPath: '/events'
+      preLoaderRoute: typeof EventsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/marketplace': {
+      id: '/marketplace'
+      path: '/marketplace'
+      fullPath: '/marketplace'
+      preLoaderRoute: typeof MarketplaceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/partners': {
+      id: '/partners'
+      path: '/partners'
+      fullPath: '/partners'
+      preLoaderRoute: typeof PartnersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pricing': {
+      id: '/pricing'
+      path: '/pricing'
+      fullPath: '/pricing'
+      preLoaderRoute: typeof PricingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services': {
+      id: '/services'
+      path: '/services'
+      fullPath: '/services'
+      preLoaderRoute: typeof ServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/work': {
+      id: '/work'
+      path: '/work'
+      fullPath: '/work'
+      preLoaderRoute: typeof WorkRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/': {
+      id: '/app/'
+      path: '/app'
+      fullPath: '/app/'
+      preLoaderRoute: typeof AppIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth/forgot-password': {
+      id: '/auth/forgot-password'
+      path: '/auth/forgot-password'
+      fullPath: '/auth/forgot-password'
+      preLoaderRoute: typeof AuthForgotPasswordRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth/sign-in': {
+      id: '/auth/sign-in'
+      path: '/auth/sign-in'
+      fullPath: '/auth/sign-in'
+      preLoaderRoute: typeof AuthSignInRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth/sign-up': {
+      id: '/auth/sign-up'
+      path: '/auth/sign-up'
+      fullPath: '/auth/sign-up'
+      preLoaderRoute: typeof AuthSignUpRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog/': {
+      id: '/blog/'
+      path: '/blog'
+      fullPath: '/blog/'
+      preLoaderRoute: typeof BlogIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog/$slug': {
+      id: '/blog/$slug'
+      path: '/blog/$slug'
+      fullPath: '/blog/$slug'
+      preLoaderRoute: typeof BlogSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/programs/': {
       id: '/programs/'
       path: '/programs'
@@ -65,13 +445,49 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProgramsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/programs/$slug': {
+      id: '/programs/$slug'
+      path: '/programs/$slug'
+      fullPath: '/programs/$slug'
+      preLoaderRoute: typeof ProgramsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  AdmissionsRoute: AdmissionsRoute,
+  AlumniRoute: AlumniRoute,
+  CommunityRoute: CommunityRoute,
+  ContactRoute: ContactRoute,
+  EnginesRoute: EnginesRoute,
+  EventsRoute: EventsRoute,
+  MarketplaceRoute: MarketplaceRoute,
+  PartnersRoute: PartnersRoute,
+  PricingRoute: PricingRoute,
+  ServicesRoute: ServicesRoute,
+  WorkRoute: WorkRoute,
+  AuthForgotPasswordRoute: AuthForgotPasswordRoute,
+  AuthSignInRoute: AuthSignInRoute,
+  AuthSignUpRoute: AuthSignUpRoute,
+  BlogSlugRoute: BlogSlugRoute,
+  ProgramsSlugRoute: ProgramsSlugRoute,
+  AppIndexRoute: AppIndexRoute,
+  BlogIndexRoute: BlogIndexRoute,
   ProgramsIndexRoute: ProgramsIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
