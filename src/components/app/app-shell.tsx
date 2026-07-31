@@ -1,24 +1,50 @@
-import { useState, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
 import {
   Bell,
   BookOpen,
+  Brain,
   BriefcaseBusiness,
   Building2,
   CalendarDays,
   ChevronDown,
+  Component,
+  Database,
+  Eye,
+  FileDown,
   FileText,
+  FlaskConical,
+  Gift,
+  Globe,
   GraduationCap,
   HeartHandshake,
+  History,
+  Languages,
+  Layers,
   LayoutDashboard,
+  LineChart,
   LogOut,
   Menu,
   MessageSquare,
+  MessagesSquare,
+  MousePointerClick,
+  Palette,
+  PenTool,
+  Pipette,
+  Rocket,
   Search,
   Settings,
+  Share2,
   ShieldCheck,
+  SlidersHorizontal,
+  Sword,
+  Target,
+  Timer,
+  TrendingUp,
   Users,
+  Workflow,
   X,
+  Zap,
 } from "lucide-react";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
@@ -26,6 +52,10 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { cn } from "@/lib/utils";
+import { CommandPalette } from "@/components/app/command-palette";
+import { useCommandPalette } from "@/components/app/use-command-palette";
+import { ThemeToggle } from "@/components/app/theme-toggle";
+import { track } from "@/lib/analytics";
 
 export type AppRole = {
   key: string;
@@ -105,6 +135,89 @@ export const appRoles: AppRole[] = [
       { label: "Logs", icon: <MessageSquare className="size-4" /> },
     ],
   },
+  {
+    key: "product-marketing",
+    label: "Product Marketing",
+    emoji: "📣",
+    gradient: "bg-gradient-erp",
+    nav: [
+      { label: "PM Hub", icon: <LayoutDashboard className="size-4" /> },
+      { label: "GTM Planner", icon: <Rocket className="size-4" /> },
+      { label: "Positioning", icon: <Target className="size-4" /> },
+      { label: "Competitive Intel", icon: <Sword className="size-4" /> },
+      { label: "Launch Calendar", icon: <CalendarDays className="size-4" /> },
+      { label: "Market Research", icon: <BookOpen className="size-4" /> },
+      { label: "Messaging Matrix", icon: <MessageSquare className="size-4" /> },
+      { label: "Campaign Briefs", icon: <FileText className="size-4" /> },
+      { label: "Analytics", icon: <LineChart className="size-4" /> },
+    ],
+  },
+  {
+    key: "behavioral-design",
+    label: "Behavioral Design",
+    emoji: "🧠",
+    gradient: "bg-gradient-learning",
+    nav: [
+      { label: "Behavioral Hub", icon: <LayoutDashboard className="size-4" /> },
+      { label: "Interventions", icon: <Brain className="size-4" /> },
+      { label: "Flow Designer", icon: <Workflow className="size-4" /> },
+      { label: "Nudge Campaigns", icon: <Zap className="size-4" /> },
+      { label: "A/B Tests", icon: <FlaskConical className="size-4" /> },
+      { label: "Funnels", icon: <Layers className="size-4" /> },
+      { label: "Habits", icon: <Timer className="size-4" /> },
+      { label: "Segments", icon: <Users className="size-4" /> },
+      { label: "Analytics", icon: <LineChart className="size-4" /> },
+    ],
+  },
+  {
+    key: "growth",
+    label: "Growth",
+    emoji: "📈",
+    gradient: "bg-gradient-career",
+    nav: [
+      { label: "Growth Hub", icon: <LayoutDashboard className="size-4" /> },
+      { label: "Experiments", icon: <FlaskConical className="size-4" /> },
+      { label: "Funnel Analyzer", icon: <TrendingUp className="size-4" /> },
+      { label: "Cohorts", icon: <Layers className="size-4" /> },
+      { label: "Referrals", icon: <Gift className="size-4" /> },
+      { label: "Attribution", icon: <Share2 className="size-4" /> },
+      { label: "Simulator", icon: <SlidersHorizontal className="size-4" /> },
+      { label: "SEO Planner", icon: <Search className="size-4" /> },
+    ],
+  },
+  {
+    key: "localization",
+    label: "Localization",
+    emoji: "🌍",
+    gradient: "bg-gradient-services",
+    nav: [
+      { label: "Localization Hub", icon: <LayoutDashboard className="size-4" /> },
+      { label: "Copy Variants", icon: <Languages className="size-4" /> },
+      { label: "Translation Memory", icon: <Database className="size-4" /> },
+      { label: "Glossary", icon: <BookOpen className="size-4" /> },
+      { label: "Style Guides", icon: <PenTool className="size-4" /> },
+      { label: "Page Preview", icon: <Eye className="size-4" /> },
+      { label: "Dialects", icon: <Globe className="size-4" /> },
+      { label: "Analytics", icon: <LineChart className="size-4" /> },
+    ],
+  },
+  {
+    key: "design",
+    label: "Design",
+    emoji: "🎨",
+    gradient: "bg-gradient-community",
+    nav: [
+      { label: "Design Hub", icon: <LayoutDashboard className="size-4" /> },
+      { label: "Design System", icon: <Palette className="size-4" /> },
+      { label: "Components", icon: <Component className="size-4" /> },
+      { label: "Prototypes", icon: <MousePointerClick className="size-4" /> },
+      { label: "User Flows", icon: <Workflow className="size-4" /> },
+      { label: "Tokens", icon: <Pipette className="size-4" /> },
+      { label: "Exports", icon: <FileDown className="size-4" /> },
+      { label: "Collaboration", icon: <MessagesSquare className="size-4" /> },
+      { label: "Versions", icon: <History className="size-4" /> },
+    ],
+  },
 ];
 
 export function AppShell({
@@ -124,6 +237,11 @@ export function AppShell({
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const activeRoleKey = roleKeyState || roleKey;
   const role = appRoles.find((r) => r.key === activeRoleKey) ?? appRoles[0];
+  const { open: paletteOpen, setOpen: setPaletteOpen } = useCommandPalette();
+
+  useEffect(() => {
+    track("app.page_view", { role: activeRoleKey, title });
+  }, [activeRoleKey, title]);
 
   const sidebar = (
     <div className="flex h-full flex-col">
@@ -255,9 +373,11 @@ export function AppShell({
                 <Search className="text-muted-foreground absolute top-1/2 left-3 size-4 -translate-y-1/2" />
                 <Input
                   placeholder="Search… (⌘K)"
+                  onFocus={() => setPaletteOpen(true)}
                   className="h-9 w-56 border pl-9 text-sm shadow-none"
                 />
               </div>
+              <ThemeToggle />
               <Button variant="ghost" size="icon" className="relative">
                 <Bell className="size-5" />
                 <span className="bg-gradient-brand absolute top-1.5 right-1.5 size-2 rounded-full ring-2 ring-background" />
@@ -270,6 +390,7 @@ export function AppShell({
               </Avatar>
             </div>
           </div>
+          <CommandPalette open={paletteOpen} onOpenChange={setPaletteOpen} />
           {actions && (
             <div className="flex flex-wrap items-center gap-2 border-t px-4 py-2.5 sm:px-6">
               {actions}

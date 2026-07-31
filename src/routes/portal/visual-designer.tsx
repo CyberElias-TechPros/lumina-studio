@@ -1,12 +1,15 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import {
-  Accessibility,
-  Eye,
-  LayoutGrid,
+  ArrowRight,
+  Component,
+  Download,
+  History,
+  LayoutDashboard,
+  MessagesSquare,
   MousePointerClick,
   Palette,
-  PenTool,
-  Ruler,
+  Pipette,
+  Workflow,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -24,31 +27,69 @@ export const Route = createFileRoute("/portal/visual-designer")({
   component: VisualDesignerPortal,
 });
 
-const projects = [
+const screens = [
   {
-    t: "Learning hub refresh",
-    stage: "Prototyping",
-    status: "In progress",
+    icon: Palette,
+    label: "Design system",
+    desc: "Token groups, component status",
+    path: "/app/design/system",
     tone: "bg-primary/10 text-primary",
   },
   {
-    t: "Parent app UI kit",
-    stage: "Handoff",
-    status: "In dev",
+    icon: Component,
+    label: "Components",
+    desc: "Variants, states, usage",
+    path: "/app/design/components",
     tone: "bg-learning/10 text-learning",
   },
   {
-    t: "Alumni portal theme",
-    stage: "Ideation",
-    status: "Queued",
+    icon: MousePointerClick,
+    label: "Prototypes",
+    desc: "Versions, feedback count",
+    path: "/app/design/prototypes",
+    tone: "bg-success/10 text-success",
+  },
+  {
+    icon: Workflow,
+    label: "User flows",
+    desc: "Steps, decision points",
+    path: "/app/design/flows",
     tone: "bg-warning/10 text-warning",
+  },
+  {
+    icon: Pipette,
+    label: "Token editor",
+    desc: "Color, spacing, type",
+    path: "/app/design/tokens",
+    tone: "bg-career/10 text-career",
+  },
+  {
+    icon: Download,
+    label: "Exports",
+    desc: "Asset export center",
+    path: "/app/design/exports",
+    tone: "bg-community/10 text-community",
+  },
+  {
+    icon: MessagesSquare,
+    label: "Collaboration",
+    desc: "Threads, annotations",
+    path: "/app/design/collaboration",
+    tone: "bg-erp/10 text-erp",
+  },
+  {
+    icon: History,
+    label: "Versions",
+    desc: "Timeline, changelogs",
+    path: "/app/design/versions",
+    tone: "bg-services/10 text-services",
   },
 ];
 
 function VisualDesignerPortal() {
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="design"
       title="Visual & UX design"
       subtitle="Design system · 3 products · WCAG AA"
       actions={
@@ -75,7 +116,7 @@ function VisualDesignerPortal() {
             label: "Components",
             value: "84",
             delta: "6 in review",
-            icon: LayoutGrid,
+            icon: Component,
             tone: "bg-learning/10 text-learning",
           },
           {
@@ -89,7 +130,7 @@ function VisualDesignerPortal() {
             label: "a11y issues",
             value: "3",
             delta: "2 fixed this wk",
-            icon: Accessibility,
+            icon: LayoutDashboard,
             tone: "bg-warning/10 text-warning",
           },
         ].map((k) => (
@@ -110,70 +151,39 @@ function VisualDesignerPortal() {
         ))}
       </div>
 
-      <div className="mt-5 grid gap-5 xl:grid-cols-[1.5fr_1fr]">
-        <Card className="bg-card shadow-soft border">
-          <CardHeader>
-            <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
-              <PenTool className="text-primary size-4" /> Active projects
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="divide-y">
-            {projects.map((p) => (
-              <div
-                key={p.t}
-                className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
-              >
-                <span className="bg-muted text-muted-foreground grid size-9 shrink-0 place-items-center rounded-lg">
-                  <Eye className="size-4" />
+      <Card className="bg-card mt-5 shadow-soft border">
+        <CardHeader className="flex-row items-center justify-between">
+          <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
+            <LayoutDashboard className="text-primary size-4" /> Workspace
+          </CardTitle>
+          <Badge variant="secondary" className="font-semibold">
+            {screens.length} modules
+          </Badge>
+        </CardHeader>
+        <CardContent className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+          {screens.map((s) => (
+            <Link
+              key={s.path}
+              to={s.path}
+              className="group bg-card shadow-soft hover:shadow-elevated flex flex-col rounded-xl border p-4 transition-all hover:-translate-y-0.5"
+            >
+              <div className="flex items-start justify-between">
+                <span className={cn("grid size-9 place-items-center rounded-lg", s.tone)}>
+                  <s.icon className="size-4" />
                 </span>
-                <div className="min-w-0 flex-1">
-                  <p className="text-sm font-bold">{p.t}</p>
-                  <p className="text-muted-foreground text-xs">{p.stage}</p>
-                </div>
-                <Badge className={cn("border-0 font-semibold", p.tone)}>{p.status}</Badge>
-                <Button variant="outline" size="sm" className="shrink-0">
-                  Figma
-                </Button>
+                <ArrowRight className="text-muted-foreground group-hover:text-primary size-4 transition-colors" />
               </div>
-            ))}
-          </CardContent>
-        </Card>
+              <p className="font-display mt-3 text-sm font-extrabold">{s.label}</p>
+              <p className="text-muted-foreground mt-1 text-xs">{s.desc}</p>
+            </Link>
+          ))}
+        </CardContent>
+      </Card>
 
-        <div className="space-y-5">
-          <Card className="bg-card shadow-soft border">
-            <CardHeader>
-              <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
-                <Ruler className="text-primary size-4" /> Design system health
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-3">
-              {[
-                {
-                  t: "Contrast AA verified",
-                  v: "All surfaces",
-                  tone: "bg-success/10 text-success",
-                },
-                { t: "Spacing scale", v: "4px base", tone: "bg-primary/10 text-primary" },
-                { t: "Icon set", v: "Lucide · 40px", tone: "bg-learning/10 text-learning" },
-              ].map((x) => (
-                <div key={x.t} className="flex items-center justify-between rounded-xl border p-3">
-                  <span className="text-sm font-semibold">{x.t}</span>
-                  <Badge className={cn("border-0 font-semibold", x.tone)}>{x.v}</Badge>
-                </div>
-              ))}
-            </CardContent>
-          </Card>
-
-          <Card className="bg-gradient-ink text-ink-foreground shadow-elevated border-0">
-            <CardContent className="p-6">
-              <Accessibility className="text-success size-5" />
-              <p className="font-display mt-3 text-base font-extrabold">Accessibility promise</p>
-              <p className="text-ink-foreground/70 mt-1 text-sm">
-                Every screen ships WCAG AA — keyboards, screen readers and 200% zoom included.
-              </p>
-            </CardContent>
-          </Card>
-        </div>
+      <div className="mt-5">
+        <Button asChild variant="outline" size="sm" className="font-semibold">
+          <Link to="/app/design">Open design hub</Link>
+        </Button>
       </div>
     </AppShell>
   );

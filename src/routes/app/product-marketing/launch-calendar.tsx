@@ -1,0 +1,197 @@
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { ArrowLeft, CalendarDays, Clock, Flag, Rocket, UserRound } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Progress } from "@/components/ui/progress";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+import { AppShell } from "@/components/app/app-shell";
+import { cn } from "@/lib/utils";
+
+export const Route = createFileRoute("/app/product-marketing/launch-calendar")({
+  head: () => ({
+    meta: [
+      { title: "Launch Calendar — CEA-OS" },
+      { name: "description", content: "Upcoming launches with dates, phases, owners and status." },
+    ],
+  }),
+  component: LaunchCalendar,
+});
+
+const launches = [
+  {
+    name: "Parent app beta",
+    date: "Aug 14, 2026",
+    phase: "Phase 2 · Build",
+    owner: "Ada Obi",
+    status: "On track",
+    tone: "bg-primary/10 text-primary",
+  },
+  {
+    name: "Employer talent pass 2.0",
+    date: "Sep 04, 2026",
+    phase: "Phase 1 · Discovery",
+    owner: "Tunde Bakare",
+    status: "Discovery",
+    tone: "bg-warning/10 text-warning",
+  },
+  {
+    name: "Data & AI track",
+    date: "Oct 09, 2026",
+    phase: "Phase 1 · Discovery",
+    owner: "Chiamaka Eze",
+    status: "Planned",
+    tone: "bg-muted-foreground/10 text-muted-foreground",
+  },
+  {
+    name: "Alumni marketplace",
+    date: "Nov 20, 2026",
+    phase: "Ideation",
+    owner: "Ngozi Adeyemi",
+    status: "Draft",
+    tone: "bg-muted-foreground/10 text-muted-foreground",
+  },
+];
+
+function LaunchCalendar() {
+  return (
+    <AppShell
+      roleKey="product-marketing"
+      title="Launch calendar"
+      subtitle="Q3-Q4 2026 · 4 launches · next: parent app Aug 14"
+      actions={
+        <>
+          <Badge className="bg-success/10 text-success border-0 font-semibold">2 on track</Badge>
+          <Button asChild variant="outline" size="sm" className="font-semibold">
+            <Link to="/app/product-marketing">
+              <ArrowLeft className="size-4" /> PM hub
+            </Link>
+          </Button>
+        </>
+      }
+    >
+      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+        {[
+          {
+            label: "Upcoming launches",
+            value: "4",
+            delta: "this half",
+            icon: Rocket,
+            tone: "bg-primary/10 text-primary",
+          },
+          {
+            label: "In build",
+            value: "2",
+            delta: "beta + talent pass",
+            icon: Flag,
+            tone: "bg-learning/10 text-learning",
+          },
+          {
+            label: "Owners",
+            value: "4",
+            delta: "1 owner per launch",
+            icon: UserRound,
+            tone: "bg-success/10 text-success",
+          },
+          {
+            label: "Days to next",
+            value: "14",
+            delta: "parent app beta",
+            icon: Clock,
+            tone: "bg-warning/10 text-warning",
+          },
+        ].map((k) => (
+          <Card key={k.label} className="bg-card shadow-soft border">
+            <CardContent className="p-5">
+              <div className="flex items-center justify-between">
+                <p className="text-muted-foreground text-xs font-bold tracking-wide uppercase">
+                  {k.label}
+                </p>
+                <span className={cn("grid size-8 place-items-center rounded-lg", k.tone)}>
+                  <k.icon className="size-4" />
+                </span>
+              </div>
+              <p className="font-display mt-3 text-2xl font-extrabold">{k.value}</p>
+              <p className="text-muted-foreground mt-0.5 text-xs font-semibold">{k.delta}</p>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+
+      <Card className="bg-card mt-5 shadow-soft border">
+        <CardHeader>
+          <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
+            <CalendarDays className="text-primary size-4" /> Upcoming launches
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>Launch</TableHead>
+                <TableHead>Date</TableHead>
+                <TableHead>Phase</TableHead>
+                <TableHead>Owner</TableHead>
+                <TableHead>Status</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {launches.map((l) => (
+                <TableRow key={l.name}>
+                  <TableCell className="font-semibold">{l.name}</TableCell>
+                  <TableCell>{l.date}</TableCell>
+                  <TableCell className="text-muted-foreground">{l.phase}</TableCell>
+                  <TableCell className="text-muted-foreground">{l.owner}</TableCell>
+                  <TableCell>
+                    <Badge className={cn("border-0 font-semibold", l.tone)}>{l.status}</Badge>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </CardContent>
+      </Card>
+
+      <Card className="bg-card mt-5 shadow-soft border">
+        <CardHeader>
+          <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
+            <Flag className="text-primary size-4" /> Launch readiness · parent app
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-5">
+          {[
+            {
+              label: "Messaging & positioning",
+              v: 100,
+              tone: "bg-success/10 text-success",
+              s: "Done",
+            },
+            {
+              label: "Beta onboarding flow",
+              v: 78,
+              tone: "bg-primary/10 text-primary",
+              s: "Building",
+            },
+            { label: "Support & FAQ", v: 42, tone: "bg-warning/10 text-warning", s: "In review" },
+            { label: "Store listing assets", v: 15, tone: "bg-error/10 text-error", s: "Queued" },
+          ].map((r) => (
+            <div key={r.label}>
+              <div className="flex items-center justify-between text-xs font-semibold">
+                <span className="text-sm font-bold">{r.label}</span>
+                <Badge className={cn("border-0 font-semibold", r.tone)}>{r.s}</Badge>
+              </div>
+              <Progress value={r.v} className="mt-1.5 h-2" />
+            </div>
+          ))}
+        </CardContent>
+      </Card>
+    </AppShell>
+  );
+}

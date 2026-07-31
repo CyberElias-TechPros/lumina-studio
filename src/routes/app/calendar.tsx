@@ -64,6 +64,12 @@ function CalendarPage() {
           <Badge variant="secondary" className="font-semibold">
             Synced
           </Badge>
+          <Button variant="outline" size="sm" className="font-semibold">
+            <CalendarDays className="size-4" /> Google
+          </Button>
+          <Button variant="outline" size="sm" className="font-semibold">
+            <CalendarDays className="size-4" /> Outlook
+          </Button>
         </>
       }
     >

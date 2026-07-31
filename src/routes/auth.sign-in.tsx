@@ -1,6 +1,16 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
-import { ArrowRight, Eye, EyeOff, KeyRound, LockKeyhole, Mail, ShieldCheck } from "lucide-react";
+import {
+  ArrowRight,
+  Eye,
+  EyeOff,
+  KeyRound,
+  Link2,
+  LockKeyhole,
+  Mail,
+  MailCheck,
+  ShieldCheck,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -27,11 +37,18 @@ export const Route = createFileRoute("/auth/sign-in")({
 function SignInPage() {
   const [show, setShow] = useState(false);
   const [error, setError] = useState("");
+  const [magic, setMagic] = useState(false);
+  const [sent, setSent] = useState(false);
+  const [remember, setRemember] = useState(true);
   const navigate = useNavigate();
 
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
+    if (magic) {
+      setSent(true);
+      return;
+    }
     navigate({ to: "/app" });
   };
 
@@ -60,90 +77,127 @@ function SignInPage() {
           <Card className="bg-card shadow-elevated border">
             <CardHeader className="p-0" />
             <CardContent className="p-6 sm:p-8">
-              <form onSubmit={submit} className="space-y-4">
-                <div className="space-y-1.5">
-                  <Label htmlFor="email">Email address</Label>
-                  <div className="relative">
-                    <Mail className="text-muted-foreground absolute top-1/2 left-3 size-4 -translate-y-1/2" />
-                    <Input
-                      id="email"
-                      type="email"
-                      placeholder="you@example.com"
-                      className="pl-9"
-                      required
-                    />
-                  </div>
-                </div>
-
-                <div className="space-y-1.5">
-                  <div className="flex items-center justify-between">
-                    <Label htmlFor="password">Password</Label>
-                    <Link
-                      to="/auth/forgot-password"
-                      className="text-primary hover:text-primary/80 text-xs font-bold"
-                    >
-                      Forgot password?
-                    </Link>
-                  </div>
-                  <div className="relative">
-                    <LockKeyhole className="text-muted-foreground absolute top-1/2 left-3 size-4 -translate-y-1/2" />
-                    <Input
-                      id="password"
-                      type={show ? "text" : "password"}
-                      placeholder="••••••••"
-                      className="pl-9 pr-10"
-                      required
-                    />
-                    <button
-                      type="button"
-                      onClick={() => setShow((s) => !s)}
-                      className="text-muted-foreground hover:text-foreground absolute top-1/2 right-3 -translate-y-1/2"
-                    >
-                      {show ? <EyeOff className="size-4" /> : <Eye className="size-4" />}
-                    </button>
-                  </div>
-                </div>
-
-                <div className="flex items-center justify-between">
-                  <label className="flex items-center gap-2 text-sm font-medium">
-                    <Checkbox defaultChecked /> Remember me
-                  </label>
-                  <Link
-                    to="/auth/mfa"
-                    className="text-muted-foreground hover:text-foreground flex items-center gap-1 text-xs font-semibold"
-                  >
-                    <ShieldCheck className="size-3.5" /> Use 2FA
-                  </Link>
-                </div>
-
-                {error && (
-                  <p className="bg-error/10 text-error rounded-lg px-3 py-2 text-xs font-semibold">
-                    {error}
+              {sent ? (
+                <div className="text-center">
+                  <span className="bg-success/10 text-success mx-auto grid size-14 place-items-center rounded-full">
+                    <MailCheck className="size-7" />
+                  </span>
+                  <h2 className="font-display mt-4 text-lg font-extrabold">Check your inbox</h2>
+                  <p className="text-muted-foreground mt-2 text-sm">
+                    We sent a one-time sign-in link to your email. It expires in 15 minutes.
                   </p>
-                )}
-
-                <Button type="submit" className="bg-gradient-brand shadow-glow w-full border-0">
-                  Sign in <ArrowRight className="ml-1.5 size-4" />
-                </Button>
-              </form>
-
-              <div className="relative my-6">
-                <div className="absolute inset-0 flex items-center">
-                  <span className="w-full border-t" />
+                  <Button asChild className="bg-gradient-brand shadow-glow mt-6 border-0">
+                    <Link to="/app">I've opened the link</Link>
+                  </Button>
+                  <button
+                    type="button"
+                    onClick={() => setSent(false)}
+                    className="text-muted-foreground hover:text-foreground mt-3 block w-full text-center text-xs font-bold"
+                  >
+                    Resend link
+                  </button>
                 </div>
-                <span className="text-muted-foreground bg-card relative px-3 text-xs font-semibold">
-                  or continue with
-                </span>
-              </div>
+              ) : (
+                <>
+                  <form onSubmit={submit} className="space-y-4">
+                    <div className="space-y-1.5">
+                      <Label htmlFor="email">Email address</Label>
+                      <div className="relative">
+                        <Mail className="text-muted-foreground absolute top-1/2 left-3 size-4 -translate-y-1/2" />
+                        <Input
+                          id="email"
+                          type="email"
+                          placeholder="you@example.com"
+                          className="pl-9"
+                          required
+                        />
+                      </div>
+                    </div>
 
-              <div className="grid grid-cols-2 gap-3">
-                <Button variant="outline" className="font-semibold">
-                  Google
-                </Button>
-                <Button variant="outline" className="font-semibold">
-                  Microsoft
-                </Button>
-              </div>
+                    {!magic && (
+                      <div className="space-y-1.5">
+                        <div className="flex items-center justify-between">
+                          <Label htmlFor="password">Password</Label>
+                          <Link
+                            to="/auth/forgot-password"
+                            className="text-primary hover:text-primary/80 text-xs font-bold"
+                          >
+                            Forgot password?
+                          </Link>
+                        </div>
+                        <div className="relative">
+                          <LockKeyhole className="text-muted-foreground absolute top-1/2 left-3 size-4 -translate-y-1/2" />
+                          <Input
+                            id="password"
+                            type={show ? "text" : "password"}
+                            placeholder="••••••••"
+                            className="pl-9 pr-10"
+                            required={!magic}
+                          />
+                          <button
+                            type="button"
+                            onClick={() => setShow((s) => !s)}
+                            className="text-muted-foreground hover:text-foreground absolute top-1/2 right-3 -translate-y-1/2"
+                          >
+                            {show ? <EyeOff className="size-4" /> : <Eye className="size-4" />}
+                          </button>
+                        </div>
+                      </div>
+                    )}
+
+                    <div className="flex items-center justify-between">
+                      <label className="flex items-center gap-2 text-sm font-medium">
+                        <Checkbox checked={remember} onCheckedChange={(c) => setRemember(!!c)} />{" "}
+                        Remember me
+                      </label>
+                      <Link
+                        to="/auth/mfa"
+                        className="text-muted-foreground hover:text-foreground flex items-center gap-1 text-xs font-semibold"
+                      >
+                        <ShieldCheck className="size-3.5" /> Use 2FA
+                      </Link>
+                    </div>
+
+                    {error && (
+                      <p className="bg-error/10 text-error rounded-lg px-3 py-2 text-xs font-semibold">
+                        {error}
+                      </p>
+                    )}
+
+                    <Button type="submit" className="bg-gradient-brand shadow-glow w-full border-0">
+                      {magic ? "Send magic link" : "Sign in"}{" "}
+                      <ArrowRight className="ml-1.5 size-4" />
+                    </Button>
+                  </form>
+
+                  <button
+                    type="button"
+                    onClick={() => setMagic((m) => !m)}
+                    className="text-primary hover:text-primary/80 mt-3 flex w-full items-center justify-center gap-1.5 text-xs font-bold"
+                  >
+                    <Link2 className="size-3.5" />
+                    {magic ? "Use password instead" : "Sign in with a magic link"}
+                  </button>
+
+                  <div className="relative my-6">
+                    <div className="absolute inset-0 flex items-center">
+                      <span className="w-full border-t" />
+                    </div>
+                    <span className="text-muted-foreground bg-card relative px-3 text-xs font-semibold">
+                      or continue with
+                    </span>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-3">
+                    <Button variant="outline" className="font-semibold">
+                      Google
+                    </Button>
+                    <Button variant="outline" className="font-semibold">
+                      Microsoft
+                    </Button>
+                  </div>
+                </>
+              )}
             </CardContent>
           </Card>
         </Reveal>

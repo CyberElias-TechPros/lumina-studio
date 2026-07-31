@@ -1,5 +1,15 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { Globe2, Languages, MapPin, MessageSquareText, Sparkles, Users, Zap } from "lucide-react";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import {
+  ArrowRight,
+  BookOpen,
+  Database,
+  Eye,
+  Globe,
+  Languages,
+  LineChart,
+  MessageSquareText,
+  PenTool,
+} from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -19,26 +29,62 @@ export const Route = createFileRoute("/portal/global-copywriter")({
   component: GlobalCopywriterPortal,
 });
 
-const markets = [
-  { t: "Lagos campus pages", lang: "EN · NG", status: "Live", tone: "bg-success/10 text-success" },
+const screens = [
   {
-    t: "UK diaspora campaign",
-    lang: "EN · UK",
-    status: "In review",
+    icon: Languages,
+    label: "Copy variants",
+    desc: "9 locale cards, tone notes",
+    path: "/app/localization/variants",
     tone: "bg-primary/10 text-primary",
   },
   {
-    t: "Yoruba social posts",
-    lang: "YO · NG",
-    status: "Draft",
+    icon: Database,
+    label: "Translation memory",
+    desc: "Source-target pairs, match %",
+    path: "/app/localization/translation-memory",
+    tone: "bg-learning/10 text-learning",
+  },
+  {
+    icon: BookOpen,
+    label: "Glossary",
+    desc: "Terms, usage, cultural notes",
+    path: "/app/localization/glossary",
+    tone: "bg-success/10 text-success",
+  },
+  {
+    icon: PenTool,
+    label: "Style guides",
+    desc: "Do/don't per market",
+    path: "/app/localization/style-guides",
     tone: "bg-warning/10 text-warning",
+  },
+  {
+    icon: Eye,
+    label: "Page preview",
+    desc: "Side-by-side locales",
+    path: "/app/localization/preview",
+    tone: "bg-career/10 text-career",
+  },
+  {
+    icon: MessageSquareText,
+    label: "Dialects",
+    desc: "Variant groups, coverage",
+    path: "/app/localization/dialects",
+    tone: "bg-community/10 text-community",
+  },
+  {
+    icon: LineChart,
+    label: "Analytics",
+    desc: "Per-locale conversion",
+    path: "/app/localization/analytics",
+    tone: "bg-erp/10 text-erp",
   },
 ];
 
 function GlobalCopywriterPortal() {
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="localization"
       title="Global copy"
       subtitle="Nigerian-market tone · 3 languages · 4 markets"
       actions={
@@ -58,7 +104,7 @@ function GlobalCopywriterPortal() {
             label: "Markets",
             value: "4",
             delta: "NG, UK, GH, US",
-            icon: Globe2,
+            icon: Globe,
             tone: "bg-primary/10 text-primary",
           },
           {
@@ -72,14 +118,14 @@ function GlobalCopywriterPortal() {
             label: "Localized pages",
             value: "38",
             delta: "12 pending",
-            icon: MapPin,
+            icon: BookOpen,
             tone: "bg-warning/10 text-warning",
           },
           {
             label: "Cultural flags",
             value: "3",
             delta: "resolved this wk",
-            icon: Sparkles,
+            icon: LineChart,
             tone: "bg-success/10 text-success",
           },
         ].map((k) => (
@@ -100,66 +146,39 @@ function GlobalCopywriterPortal() {
         ))}
       </div>
 
-      <div className="mt-5 grid gap-5 xl:grid-cols-[1.5fr_1fr]">
-        <Card className="bg-card shadow-soft border">
-          <CardHeader>
-            <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
-              <MessageSquareText className="text-primary size-4" /> Market copy board
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="divide-y">
-            {markets.map((m) => (
-              <div
-                key={m.t}
-                className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
-              >
-                <span className="bg-muted text-muted-foreground grid size-9 shrink-0 place-items-center rounded-lg">
-                  <Globe2 className="size-4" />
+      <Card className="bg-card mt-5 shadow-soft border">
+        <CardHeader className="flex-row items-center justify-between">
+          <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
+            <Globe className="text-primary size-4" /> Workspace
+          </CardTitle>
+          <Badge variant="secondary" className="font-semibold">
+            {screens.length} modules
+          </Badge>
+        </CardHeader>
+        <CardContent className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+          {screens.map((s) => (
+            <Link
+              key={s.path}
+              to={s.path}
+              className="group bg-card shadow-soft hover:shadow-elevated flex flex-col rounded-xl border p-4 transition-all hover:-translate-y-0.5"
+            >
+              <div className="flex items-start justify-between">
+                <span className={cn("grid size-9 place-items-center rounded-lg", s.tone)}>
+                  <s.icon className="size-4" />
                 </span>
-                <div className="min-w-0 flex-1">
-                  <p className="text-sm font-bold">{m.t}</p>
-                  <p className="text-muted-foreground text-xs">{m.lang}</p>
-                </div>
-                <Badge className={cn("border-0 font-semibold", m.tone)}>{m.status}</Badge>
-                <Button variant="outline" size="sm" className="shrink-0">
-                  Open
-                </Button>
+                <ArrowRight className="text-muted-foreground group-hover:text-primary size-4 transition-colors" />
               </div>
-            ))}
-          </CardContent>
-        </Card>
+              <p className="font-display mt-3 text-sm font-extrabold">{s.label}</p>
+              <p className="text-muted-foreground mt-1 text-xs">{s.desc}</p>
+            </Link>
+          ))}
+        </CardContent>
+      </Card>
 
-        <div className="space-y-5">
-          <Card className="bg-card shadow-soft border">
-            <CardHeader>
-              <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
-                <Users className="text-primary size-4" /> Localization stack
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-3">
-              {[
-                { t: "Strings translated", v: "1,240 / 1,900", tone: "bg-primary/10 text-primary" },
-                { t: "Glossary entries", v: "96 terms", tone: "bg-learning/10 text-learning" },
-                { t: "Slang check (naija)", v: "Passed", tone: "bg-success/10 text-success" },
-              ].map((x) => (
-                <div key={x.t} className="flex items-center justify-between rounded-xl border p-3">
-                  <span className="text-sm font-semibold">{x.t}</span>
-                  <Badge className={cn("border-0 font-semibold", x.tone)}>{x.v}</Badge>
-                </div>
-              ))}
-            </CardContent>
-          </Card>
-
-          <Card className="bg-gradient-ink text-ink-foreground shadow-elevated border-0">
-            <CardContent className="p-6">
-              <Zap className="text-warning size-5" />
-              <p className="font-display mt-3 text-base font-extrabold">Voice rule #1</p>
-              <p className="text-ink-foreground/70 mt-1 text-sm">
-                Write like a brilliant Lagos mentor: ambitious, concrete, and proud of the craft.
-              </p>
-            </CardContent>
-          </Card>
-        </div>
+      <div className="mt-5">
+        <Button asChild variant="outline" size="sm" className="font-semibold">
+          <Link to="/app/localization">Open localization hub</Link>
+        </Button>
       </div>
     </AppShell>
   );

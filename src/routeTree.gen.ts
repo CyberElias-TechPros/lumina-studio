@@ -25,7 +25,7 @@ import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as ScholarshipsRouteImport } from './routes/scholarships'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as StoriesRouteImport } from './routes/stories'
-import { Route as VisitRouteImport } from './routes/visit'
+import { Route as VirtualTourRouteImport } from './routes/virtual-tour'
 import { Route as WorkRouteImport } from './routes/work'
 import { Route as AppIndexRouteImport } from './routes/app.index'
 import { Route as AppAttendanceRouteImport } from './routes/app/attendance'
@@ -41,6 +41,7 @@ import { Route as ApplyIndexRouteImport } from './routes/apply/index'
 import { Route as ApplyStatusRouteImport } from './routes/apply/status'
 import { Route as AuthForgotPasswordRouteImport } from './routes/auth.forgot-password'
 import { Route as AuthMfaRouteImport } from './routes/auth.mfa'
+import { Route as AuthNewDeviceRouteImport } from './routes/auth.new-device'
 import { Route as AuthResetPasswordRouteImport } from './routes/auth.reset-password'
 import { Route as AuthSignInRouteImport } from './routes/auth.sign-in'
 import { Route as AuthSignUpRouteImport } from './routes/auth.sign-up'
@@ -91,6 +92,10 @@ import { Route as PortalVolunteerRouteImport } from './routes/portal/volunteer'
 import { Route as ProgramsIndexRouteImport } from './routes/programs.index'
 import { Route as ProgramsSlugRouteImport } from './routes/programs.$slug'
 import { Route as ProgramsCompareRouteImport } from './routes/programs/compare'
+import { Route as VisitIndexRouteImport } from './routes/visit/index'
+import { Route as VisitBrochureRouteImport } from './routes/visit/brochure'
+import { Route as VisitFeedbackRouteImport } from './routes/visit/feedback'
+import { Route as VisitInfoRouteImport } from './routes/visit/info'
 import { Route as AppAccountantIndexRouteImport } from './routes/app/accountant/index'
 import { Route as AppAccountantAuditRouteImport } from './routes/app/accountant/audit'
 import { Route as AppAccountantBankingRouteImport } from './routes/app/accountant/banking'
@@ -125,10 +130,22 @@ import { Route as AppAlumniEventsRouteImport } from './routes/app/alumni/events'
 import { Route as AppAlumniGiveBackRouteImport } from './routes/app/alumni/give-back'
 import { Route as AppAlumniHubRouteImport } from './routes/app/alumni/hub'
 import { Route as AppAlumniJobsRouteImport } from './routes/app/alumni/jobs'
+import { Route as AppAlumniMentorshipRouteImport } from './routes/app/alumni/mentorship'
 import { Route as AppAlumniNetworkRouteImport } from './routes/app/alumni/network'
+import { Route as AppAlumniProfileRouteImport } from './routes/app/alumni/profile'
+import { Route as AppAlumniStoriesRouteImport } from './routes/app/alumni/stories'
 import { Route as AppAssessmentsIndexRouteImport } from './routes/app/assessments/index'
 import { Route as AppAssignmentsIndexRouteImport } from './routes/app/assignments/index'
 import { Route as AppAssignmentsAssignmentIdRouteImport } from './routes/app/assignments/$assignmentId'
+import { Route as AppBehavioralDesignIndexRouteImport } from './routes/app/behavioral-design/index'
+import { Route as AppBehavioralDesignAbTestsRouteImport } from './routes/app/behavioral-design/ab-tests'
+import { Route as AppBehavioralDesignAnalyticsRouteImport } from './routes/app/behavioral-design/analytics'
+import { Route as AppBehavioralDesignFlowDesignerRouteImport } from './routes/app/behavioral-design/flow-designer'
+import { Route as AppBehavioralDesignFunnelsRouteImport } from './routes/app/behavioral-design/funnels'
+import { Route as AppBehavioralDesignHabitsRouteImport } from './routes/app/behavioral-design/habits'
+import { Route as AppBehavioralDesignInterventionsRouteImport } from './routes/app/behavioral-design/interventions'
+import { Route as AppBehavioralDesignNudgeCampaignsRouteImport } from './routes/app/behavioral-design/nudge-campaigns'
+import { Route as AppBehavioralDesignSegmentsRouteImport } from './routes/app/behavioral-design/segments'
 import { Route as AppClientContractsRouteImport } from './routes/app/client/contracts'
 import { Route as AppClientDocumentsRouteImport } from './routes/app/client/documents'
 import { Route as AppClientInvoicesRouteImport } from './routes/app/client/invoices'
@@ -149,6 +166,15 @@ import { Route as AppDepartmentEnrollmentRouteImport } from './routes/app/depart
 import { Route as AppDepartmentInstructorsRouteImport } from './routes/app/department/instructors'
 import { Route as AppDepartmentQualityRouteImport } from './routes/app/department/quality'
 import { Route as AppDepartmentReportsRouteImport } from './routes/app/department/reports'
+import { Route as AppDesignIndexRouteImport } from './routes/app/design/index'
+import { Route as AppDesignCollaborationRouteImport } from './routes/app/design/collaboration'
+import { Route as AppDesignComponentsRouteImport } from './routes/app/design/components'
+import { Route as AppDesignExportsRouteImport } from './routes/app/design/exports'
+import { Route as AppDesignFlowsRouteImport } from './routes/app/design/flows'
+import { Route as AppDesignPrototypesRouteImport } from './routes/app/design/prototypes'
+import { Route as AppDesignSystemRouteImport } from './routes/app/design/system'
+import { Route as AppDesignTokensRouteImport } from './routes/app/design/tokens'
+import { Route as AppDesignVersionsRouteImport } from './routes/app/design/versions'
 import { Route as AppDevIndexRouteImport } from './routes/app/dev/index'
 import { Route as AppDevApiPlaygroundRouteImport } from './routes/app/dev/api-playground'
 import { Route as AppDevDependenciesRouteImport } from './routes/app/dev/dependencies'
@@ -188,6 +214,14 @@ import { Route as AppGovernmentIntegrityRouteImport } from './routes/app/governm
 import { Route as AppGovernmentMessagingRouteImport } from './routes/app/government/messaging'
 import { Route as AppGovernmentReportsRouteImport } from './routes/app/government/reports'
 import { Route as AppGovernmentTrainingRouteImport } from './routes/app/government/training'
+import { Route as AppGrowthIndexRouteImport } from './routes/app/growth/index'
+import { Route as AppGrowthAttributionRouteImport } from './routes/app/growth/attribution'
+import { Route as AppGrowthCohortsRouteImport } from './routes/app/growth/cohorts'
+import { Route as AppGrowthExperimentsRouteImport } from './routes/app/growth/experiments'
+import { Route as AppGrowthFunnelRouteImport } from './routes/app/growth/funnel'
+import { Route as AppGrowthReferralsRouteImport } from './routes/app/growth/referrals'
+import { Route as AppGrowthSeoRouteImport } from './routes/app/growth/seo'
+import { Route as AppGrowthSimulatorRouteImport } from './routes/app/growth/simulator'
 import { Route as AppHrIndexRouteImport } from './routes/app/hr/index'
 import { Route as AppHrAttendanceRouteImport } from './routes/app/hr/attendance'
 import { Route as AppHrEmployeesRouteImport } from './routes/app/hr/employees'
@@ -198,8 +232,12 @@ import { Route as AppHrPerformanceRouteImport } from './routes/app/hr/performanc
 import { Route as AppHrRecruitmentRouteImport } from './routes/app/hr/recruitment'
 import { Route as AppHrReportsRouteImport } from './routes/app/hr/reports'
 import { Route as AppHrTrainingRouteImport } from './routes/app/hr/training'
+import { Route as AppInstructorIndexRouteImport } from './routes/app/instructor/index'
 import { Route as AppInstructorAnalyticsRouteImport } from './routes/app/instructor/analytics'
+import { Route as AppInstructorAnnouncementsRouteImport } from './routes/app/instructor/announcements'
+import { Route as AppInstructorAssessmentsRouteImport } from './routes/app/instructor/assessments'
 import { Route as AppInstructorAttendanceRouteImport } from './routes/app/instructor/attendance'
+import { Route as AppInstructorCalendarRouteImport } from './routes/app/instructor/calendar'
 import { Route as AppInstructorGradebookRouteImport } from './routes/app/instructor/gradebook'
 import { Route as AppInternIndexRouteImport } from './routes/app/intern/index'
 import { Route as AppInternEvaluationRouteImport } from './routes/app/intern/evaluation'
@@ -222,6 +260,14 @@ import { Route as AppItUsersRouteImport } from './routes/app/it/users'
 import { Route as AppLearnIndexRouteImport } from './routes/app/learn/index'
 import { Route as AppLearnCourseIdRouteImport } from './routes/app/learn/$courseId'
 import { Route as AppLiveClassIdRouteImport } from './routes/app/live/$classId'
+import { Route as AppLocalizationIndexRouteImport } from './routes/app/localization/index'
+import { Route as AppLocalizationAnalyticsRouteImport } from './routes/app/localization/analytics'
+import { Route as AppLocalizationDialectsRouteImport } from './routes/app/localization/dialects'
+import { Route as AppLocalizationGlossaryRouteImport } from './routes/app/localization/glossary'
+import { Route as AppLocalizationPreviewRouteImport } from './routes/app/localization/preview'
+import { Route as AppLocalizationStyleGuidesRouteImport } from './routes/app/localization/style-guides'
+import { Route as AppLocalizationTranslationMemoryRouteImport } from './routes/app/localization/translation-memory'
+import { Route as AppLocalizationVariantsRouteImport } from './routes/app/localization/variants'
 import { Route as AppMarketingIndexRouteImport } from './routes/app/marketing/index'
 import { Route as AppMarketingAnalyticsRouteImport } from './routes/app/marketing/analytics'
 import { Route as AppMarketingCampaignsRouteImport } from './routes/app/marketing/campaigns'
@@ -235,6 +281,7 @@ import { Route as AppMarketingSocialRouteImport } from './routes/app/marketing/s
 import { Route as AppMentorIndexRouteImport } from './routes/app/mentor/index'
 import { Route as AppMentorAnalyticsRouteImport } from './routes/app/mentor/analytics'
 import { Route as AppMentorGoalsRouteImport } from './routes/app/mentor/goals'
+import { Route as AppMentorMessagesRouteImport } from './routes/app/mentor/messages'
 import { Route as AppMentorRequestsRouteImport } from './routes/app/mentor/requests'
 import { Route as AppMentorResourcesRouteImport } from './routes/app/mentor/resources'
 import { Route as AppMentorSessionsRouteImport } from './routes/app/mentor/sessions'
@@ -262,6 +309,15 @@ import { Route as AppPartnerMessagesRouteImport } from './routes/app/partner/mes
 import { Route as AppPartnerReferralsRouteImport } from './routes/app/partner/referrals'
 import { Route as AppPartnerReportsRouteImport } from './routes/app/partner/reports'
 import { Route as AppPartnerResourcesRouteImport } from './routes/app/partner/resources'
+import { Route as AppProductMarketingIndexRouteImport } from './routes/app/product-marketing/index'
+import { Route as AppProductMarketingAnalyticsRouteImport } from './routes/app/product-marketing/analytics'
+import { Route as AppProductMarketingBriefsRouteImport } from './routes/app/product-marketing/briefs'
+import { Route as AppProductMarketingCompetitiveRouteImport } from './routes/app/product-marketing/competitive'
+import { Route as AppProductMarketingGtmRouteImport } from './routes/app/product-marketing/gtm'
+import { Route as AppProductMarketingLaunchCalendarRouteImport } from './routes/app/product-marketing/launch-calendar'
+import { Route as AppProductMarketingMessagingRouteImport } from './routes/app/product-marketing/messaging'
+import { Route as AppProductMarketingPositioningRouteImport } from './routes/app/product-marketing/positioning'
+import { Route as AppProductMarketingResearchRouteImport } from './routes/app/product-marketing/research'
 import { Route as AppReceptionistAppointmentsRouteImport } from './routes/app/receptionist/appointments'
 import { Route as AppReceptionistCheckInRouteImport } from './routes/app/receptionist/check-in'
 import { Route as AppReceptionistCheckOutRouteImport } from './routes/app/receptionist/check-out'
@@ -283,13 +339,16 @@ import { Route as AppVolunteerHoursRouteImport } from './routes/app/volunteer/ho
 import { Route as AppVolunteerImpactRouteImport } from './routes/app/volunteer/impact'
 import { Route as AppVolunteerMyVolunteeringRouteImport } from './routes/app/volunteer/my-volunteering'
 import { Route as AppVolunteerOpportunitiesRouteImport } from './routes/app/volunteer/opportunities'
+import { Route as ApplyStatusIdRouteImport } from './routes/apply/status/$id'
 import { Route as AppAdmissionsApplicationsIdRouteImport } from './routes/app/admissions/applications/$id'
 import { Route as AppAssessmentsAssessmentIdTakeRouteImport } from './routes/app/assessments/$assessmentId/take'
 import { Route as AppClientProjectsProjectIdRouteImport } from './routes/app/client/projects/$projectId'
 import { Route as AppConversionCopyLandingPagesIdRouteImport } from './routes/app/conversion-copy/landing-pages/$id'
 import { Route as AppEmployerPipelineJobIdRouteImport } from './routes/app/employer/pipeline/$jobId'
 import { Route as AppInstructorAssignmentsIndexRouteImport } from './routes/app/instructor/assignments/index'
+import { Route as AppInstructorCoursesIndexRouteImport } from './routes/app/instructor/courses/index'
 import { Route as AppInstructorCoursesCourseIdRouteImport } from './routes/app/instructor/courses/$courseId'
+import { Route as AppInstructorLessonsCreateRouteImport } from './routes/app/instructor/lessons/create'
 import { Route as AppItTicketsIdRouteImport } from './routes/app/it/tickets/$id'
 import { Route as AppMentorMenteesMenteeIdRouteImport } from './routes/app/mentor/mentees/$menteeId'
 import { Route as AppMentorSessionsSessionIdRouteImport } from './routes/app/mentor/sessions/$sessionId'
@@ -297,6 +356,7 @@ import { Route as AppParentInvitationAcceptRouteImport } from './routes/app/pare
 import { Route as AppParentStudentsStudentIdRouteImport } from './routes/app/parent/students/$studentId'
 import { Route as AppClientProjectsProjectIdTasksRouteImport } from './routes/app/client/projects/$projectId/tasks'
 import { Route as AppInstructorAssignmentsSubmissionIdGradeRouteImport } from './routes/app/instructor/assignments/$submissionId.grade'
+import { Route as AppInstructorLessonsEditIdRouteImport } from './routes/app/instructor/lessons/edit/$id'
 import { Route as AppLearnCourseIdLessonsLessonIdRouteImport } from './routes/app/learn/$courseId.lessons.$lessonId'
 import { Route as AppMentorMenteesMenteeIdCareerRouteImport } from './routes/app/mentor/mentees/$menteeId.career'
 import { Route as AppMentorMenteesMenteeIdPortfolioRouteImport } from './routes/app/mentor/mentees/$menteeId.portfolio'
@@ -387,9 +447,9 @@ const StoriesRoute = StoriesRouteImport.update({
   path: '/stories',
   getParentRoute: () => rootRouteImport,
 } as any)
-const VisitRoute = VisitRouteImport.update({
-  id: '/visit',
-  path: '/visit',
+const VirtualTourRoute = VirtualTourRouteImport.update({
+  id: '/virtual-tour',
+  path: '/virtual-tour',
   getParentRoute: () => rootRouteImport,
 } as any)
 const WorkRoute = WorkRouteImport.update({
@@ -465,6 +525,11 @@ const AuthForgotPasswordRoute = AuthForgotPasswordRouteImport.update({
 const AuthMfaRoute = AuthMfaRouteImport.update({
   id: '/auth/mfa',
   path: '/auth/mfa',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthNewDeviceRoute = AuthNewDeviceRouteImport.update({
+  id: '/auth/new-device',
+  path: '/auth/new-device',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AuthResetPasswordRoute = AuthResetPasswordRouteImport.update({
@@ -718,6 +783,26 @@ const ProgramsCompareRoute = ProgramsCompareRouteImport.update({
   path: '/programs/compare',
   getParentRoute: () => rootRouteImport,
 } as any)
+const VisitIndexRoute = VisitIndexRouteImport.update({
+  id: '/visit/',
+  path: '/visit/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VisitBrochureRoute = VisitBrochureRouteImport.update({
+  id: '/visit/brochure',
+  path: '/visit/brochure',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VisitFeedbackRoute = VisitFeedbackRouteImport.update({
+  id: '/visit/feedback',
+  path: '/visit/feedback',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VisitInfoRoute = VisitInfoRouteImport.update({
+  id: '/visit/info',
+  path: '/visit/info',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AppAccountantIndexRoute = AppAccountantIndexRouteImport.update({
   id: '/app/accountant/',
   path: '/app/accountant/',
@@ -890,9 +975,24 @@ const AppAlumniJobsRoute = AppAlumniJobsRouteImport.update({
   path: '/app/alumni/jobs',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AppAlumniMentorshipRoute = AppAlumniMentorshipRouteImport.update({
+  id: '/app/alumni/mentorship',
+  path: '/app/alumni/mentorship',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AppAlumniNetworkRoute = AppAlumniNetworkRouteImport.update({
   id: '/app/alumni/network',
   path: '/app/alumni/network',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppAlumniProfileRoute = AppAlumniProfileRouteImport.update({
+  id: '/app/alumni/profile',
+  path: '/app/alumni/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppAlumniStoriesRoute = AppAlumniStoriesRouteImport.update({
+  id: '/app/alumni/stories',
+  path: '/app/alumni/stories',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AppAssessmentsIndexRoute = AppAssessmentsIndexRouteImport.update({
@@ -909,6 +1009,60 @@ const AppAssignmentsAssignmentIdRoute =
   AppAssignmentsAssignmentIdRouteImport.update({
     id: '/app/assignments/$assignmentId',
     path: '/app/assignments/$assignmentId',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AppBehavioralDesignIndexRoute =
+  AppBehavioralDesignIndexRouteImport.update({
+    id: '/app/behavioral-design/',
+    path: '/app/behavioral-design/',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AppBehavioralDesignAbTestsRoute =
+  AppBehavioralDesignAbTestsRouteImport.update({
+    id: '/app/behavioral-design/ab-tests',
+    path: '/app/behavioral-design/ab-tests',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AppBehavioralDesignAnalyticsRoute =
+  AppBehavioralDesignAnalyticsRouteImport.update({
+    id: '/app/behavioral-design/analytics',
+    path: '/app/behavioral-design/analytics',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AppBehavioralDesignFlowDesignerRoute =
+  AppBehavioralDesignFlowDesignerRouteImport.update({
+    id: '/app/behavioral-design/flow-designer',
+    path: '/app/behavioral-design/flow-designer',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AppBehavioralDesignFunnelsRoute =
+  AppBehavioralDesignFunnelsRouteImport.update({
+    id: '/app/behavioral-design/funnels',
+    path: '/app/behavioral-design/funnels',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AppBehavioralDesignHabitsRoute =
+  AppBehavioralDesignHabitsRouteImport.update({
+    id: '/app/behavioral-design/habits',
+    path: '/app/behavioral-design/habits',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AppBehavioralDesignInterventionsRoute =
+  AppBehavioralDesignInterventionsRouteImport.update({
+    id: '/app/behavioral-design/interventions',
+    path: '/app/behavioral-design/interventions',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AppBehavioralDesignNudgeCampaignsRoute =
+  AppBehavioralDesignNudgeCampaignsRouteImport.update({
+    id: '/app/behavioral-design/nudge-campaigns',
+    path: '/app/behavioral-design/nudge-campaigns',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AppBehavioralDesignSegmentsRoute =
+  AppBehavioralDesignSegmentsRouteImport.update({
+    id: '/app/behavioral-design/segments',
+    path: '/app/behavioral-design/segments',
     getParentRoute: () => rootRouteImport,
   } as any)
 const AppClientContractsRoute = AppClientContractsRouteImport.update({
@@ -1015,6 +1169,51 @@ const AppDepartmentQualityRoute = AppDepartmentQualityRouteImport.update({
 const AppDepartmentReportsRoute = AppDepartmentReportsRouteImport.update({
   id: '/app/department/reports',
   path: '/app/department/reports',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppDesignIndexRoute = AppDesignIndexRouteImport.update({
+  id: '/app/design/',
+  path: '/app/design/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppDesignCollaborationRoute = AppDesignCollaborationRouteImport.update({
+  id: '/app/design/collaboration',
+  path: '/app/design/collaboration',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppDesignComponentsRoute = AppDesignComponentsRouteImport.update({
+  id: '/app/design/components',
+  path: '/app/design/components',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppDesignExportsRoute = AppDesignExportsRouteImport.update({
+  id: '/app/design/exports',
+  path: '/app/design/exports',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppDesignFlowsRoute = AppDesignFlowsRouteImport.update({
+  id: '/app/design/flows',
+  path: '/app/design/flows',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppDesignPrototypesRoute = AppDesignPrototypesRouteImport.update({
+  id: '/app/design/prototypes',
+  path: '/app/design/prototypes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppDesignSystemRoute = AppDesignSystemRouteImport.update({
+  id: '/app/design/system',
+  path: '/app/design/system',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppDesignTokensRoute = AppDesignTokensRouteImport.update({
+  id: '/app/design/tokens',
+  path: '/app/design/tokens',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppDesignVersionsRoute = AppDesignVersionsRouteImport.update({
+  id: '/app/design/versions',
+  path: '/app/design/versions',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AppDevIndexRoute = AppDevIndexRouteImport.update({
@@ -1214,6 +1413,46 @@ const AppGovernmentTrainingRoute = AppGovernmentTrainingRouteImport.update({
   path: '/app/government/training',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AppGrowthIndexRoute = AppGrowthIndexRouteImport.update({
+  id: '/app/growth/',
+  path: '/app/growth/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppGrowthAttributionRoute = AppGrowthAttributionRouteImport.update({
+  id: '/app/growth/attribution',
+  path: '/app/growth/attribution',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppGrowthCohortsRoute = AppGrowthCohortsRouteImport.update({
+  id: '/app/growth/cohorts',
+  path: '/app/growth/cohorts',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppGrowthExperimentsRoute = AppGrowthExperimentsRouteImport.update({
+  id: '/app/growth/experiments',
+  path: '/app/growth/experiments',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppGrowthFunnelRoute = AppGrowthFunnelRouteImport.update({
+  id: '/app/growth/funnel',
+  path: '/app/growth/funnel',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppGrowthReferralsRoute = AppGrowthReferralsRouteImport.update({
+  id: '/app/growth/referrals',
+  path: '/app/growth/referrals',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppGrowthSeoRoute = AppGrowthSeoRouteImport.update({
+  id: '/app/growth/seo',
+  path: '/app/growth/seo',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppGrowthSimulatorRoute = AppGrowthSimulatorRouteImport.update({
+  id: '/app/growth/simulator',
+  path: '/app/growth/simulator',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AppHrIndexRoute = AppHrIndexRouteImport.update({
   id: '/app/hr/',
   path: '/app/hr/',
@@ -1264,14 +1503,36 @@ const AppHrTrainingRoute = AppHrTrainingRouteImport.update({
   path: '/app/hr/training',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AppInstructorIndexRoute = AppInstructorIndexRouteImport.update({
+  id: '/app/instructor/',
+  path: '/app/instructor/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AppInstructorAnalyticsRoute = AppInstructorAnalyticsRouteImport.update({
   id: '/app/instructor/analytics',
   path: '/app/instructor/analytics',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AppInstructorAnnouncementsRoute =
+  AppInstructorAnnouncementsRouteImport.update({
+    id: '/app/instructor/announcements',
+    path: '/app/instructor/announcements',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AppInstructorAssessmentsRoute =
+  AppInstructorAssessmentsRouteImport.update({
+    id: '/app/instructor/assessments',
+    path: '/app/instructor/assessments',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const AppInstructorAttendanceRoute = AppInstructorAttendanceRouteImport.update({
   id: '/app/instructor/attendance',
   path: '/app/instructor/attendance',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppInstructorCalendarRoute = AppInstructorCalendarRouteImport.update({
+  id: '/app/instructor/calendar',
+  path: '/app/instructor/calendar',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AppInstructorGradebookRoute = AppInstructorGradebookRouteImport.update({
@@ -1384,6 +1645,49 @@ const AppLiveClassIdRoute = AppLiveClassIdRouteImport.update({
   path: '/app/live/$classId',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AppLocalizationIndexRoute = AppLocalizationIndexRouteImport.update({
+  id: '/app/localization/',
+  path: '/app/localization/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppLocalizationAnalyticsRoute =
+  AppLocalizationAnalyticsRouteImport.update({
+    id: '/app/localization/analytics',
+    path: '/app/localization/analytics',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AppLocalizationDialectsRoute = AppLocalizationDialectsRouteImport.update({
+  id: '/app/localization/dialects',
+  path: '/app/localization/dialects',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppLocalizationGlossaryRoute = AppLocalizationGlossaryRouteImport.update({
+  id: '/app/localization/glossary',
+  path: '/app/localization/glossary',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppLocalizationPreviewRoute = AppLocalizationPreviewRouteImport.update({
+  id: '/app/localization/preview',
+  path: '/app/localization/preview',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppLocalizationStyleGuidesRoute =
+  AppLocalizationStyleGuidesRouteImport.update({
+    id: '/app/localization/style-guides',
+    path: '/app/localization/style-guides',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AppLocalizationTranslationMemoryRoute =
+  AppLocalizationTranslationMemoryRouteImport.update({
+    id: '/app/localization/translation-memory',
+    path: '/app/localization/translation-memory',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AppLocalizationVariantsRoute = AppLocalizationVariantsRouteImport.update({
+  id: '/app/localization/variants',
+  path: '/app/localization/variants',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AppMarketingIndexRoute = AppMarketingIndexRouteImport.update({
   id: '/app/marketing/',
   path: '/app/marketing/',
@@ -1449,6 +1753,11 @@ const AppMentorAnalyticsRoute = AppMentorAnalyticsRouteImport.update({
 const AppMentorGoalsRoute = AppMentorGoalsRouteImport.update({
   id: '/app/mentor/goals',
   path: '/app/mentor/goals',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppMentorMessagesRoute = AppMentorMessagesRouteImport.update({
+  id: '/app/mentor/messages',
+  path: '/app/mentor/messages',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AppMentorRequestsRoute = AppMentorRequestsRouteImport.update({
@@ -1587,6 +1896,59 @@ const AppPartnerResourcesRoute = AppPartnerResourcesRouteImport.update({
   path: '/app/partner/resources',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AppProductMarketingIndexRoute =
+  AppProductMarketingIndexRouteImport.update({
+    id: '/app/product-marketing/',
+    path: '/app/product-marketing/',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AppProductMarketingAnalyticsRoute =
+  AppProductMarketingAnalyticsRouteImport.update({
+    id: '/app/product-marketing/analytics',
+    path: '/app/product-marketing/analytics',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AppProductMarketingBriefsRoute =
+  AppProductMarketingBriefsRouteImport.update({
+    id: '/app/product-marketing/briefs',
+    path: '/app/product-marketing/briefs',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AppProductMarketingCompetitiveRoute =
+  AppProductMarketingCompetitiveRouteImport.update({
+    id: '/app/product-marketing/competitive',
+    path: '/app/product-marketing/competitive',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AppProductMarketingGtmRoute = AppProductMarketingGtmRouteImport.update({
+  id: '/app/product-marketing/gtm',
+  path: '/app/product-marketing/gtm',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppProductMarketingLaunchCalendarRoute =
+  AppProductMarketingLaunchCalendarRouteImport.update({
+    id: '/app/product-marketing/launch-calendar',
+    path: '/app/product-marketing/launch-calendar',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AppProductMarketingMessagingRoute =
+  AppProductMarketingMessagingRouteImport.update({
+    id: '/app/product-marketing/messaging',
+    path: '/app/product-marketing/messaging',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AppProductMarketingPositioningRoute =
+  AppProductMarketingPositioningRouteImport.update({
+    id: '/app/product-marketing/positioning',
+    path: '/app/product-marketing/positioning',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AppProductMarketingResearchRoute =
+  AppProductMarketingResearchRouteImport.update({
+    id: '/app/product-marketing/research',
+    path: '/app/product-marketing/research',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const AppReceptionistAppointmentsRoute =
   AppReceptionistAppointmentsRouteImport.update({
     id: '/app/receptionist/appointments',
@@ -1699,6 +2061,11 @@ const AppVolunteerOpportunitiesRoute =
     path: '/app/volunteer/opportunities',
     getParentRoute: () => rootRouteImport,
   } as any)
+const ApplyStatusIdRoute = ApplyStatusIdRouteImport.update({
+  id: '/$id',
+  path: '/$id',
+  getParentRoute: () => ApplyStatusRoute,
+} as any)
 const AppAdmissionsApplicationsIdRoute =
   AppAdmissionsApplicationsIdRouteImport.update({
     id: '/$id',
@@ -1735,10 +2102,22 @@ const AppInstructorAssignmentsIndexRoute =
     path: '/app/instructor/assignments/',
     getParentRoute: () => rootRouteImport,
   } as any)
+const AppInstructorCoursesIndexRoute =
+  AppInstructorCoursesIndexRouteImport.update({
+    id: '/app/instructor/courses/',
+    path: '/app/instructor/courses/',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const AppInstructorCoursesCourseIdRoute =
   AppInstructorCoursesCourseIdRouteImport.update({
     id: '/app/instructor/courses/$courseId',
     path: '/app/instructor/courses/$courseId',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AppInstructorLessonsCreateRoute =
+  AppInstructorLessonsCreateRouteImport.update({
+    id: '/app/instructor/lessons/create',
+    path: '/app/instructor/lessons/create',
     getParentRoute: () => rootRouteImport,
   } as any)
 const AppItTicketsIdRoute = AppItTicketsIdRouteImport.update({
@@ -1780,6 +2159,12 @@ const AppInstructorAssignmentsSubmissionIdGradeRoute =
   AppInstructorAssignmentsSubmissionIdGradeRouteImport.update({
     id: '/app/instructor/assignments/$submissionId/grade',
     path: '/app/instructor/assignments/$submissionId/grade',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AppInstructorLessonsEditIdRoute =
+  AppInstructorLessonsEditIdRouteImport.update({
+    id: '/app/instructor/lessons/edit/$id',
+    path: '/app/instructor/lessons/edit/$id',
     getParentRoute: () => rootRouteImport,
   } as any)
 const AppLearnCourseIdLessonsLessonIdRoute =
@@ -1854,7 +2239,7 @@ export interface FileRoutesByFullPath {
   '/scholarships': typeof ScholarshipsRoute
   '/services': typeof ServicesRoute
   '/stories': typeof StoriesRoute
-  '/visit': typeof VisitRoute
+  '/virtual-tour': typeof VirtualTourRoute
   '/work': typeof WorkRoute
   '/app/attendance': typeof AppAttendanceRoute
   '/app/calendar': typeof AppCalendarRoute
@@ -1865,9 +2250,10 @@ export interface FileRoutesByFullPath {
   '/app/notifications': typeof AppNotificationsRoute
   '/app/portfolio': typeof AppPortfolioRoute
   '/app/reports': typeof AppReportsRoute
-  '/apply/status': typeof ApplyStatusRoute
+  '/apply/status': typeof ApplyStatusRouteWithChildren
   '/auth/forgot-password': typeof AuthForgotPasswordRoute
   '/auth/mfa': typeof AuthMfaRoute
+  '/auth/new-device': typeof AuthNewDeviceRoute
   '/auth/reset-password': typeof AuthResetPasswordRoute
   '/auth/sign-in': typeof AuthSignInRoute
   '/auth/sign-up': typeof AuthSignUpRoute
@@ -1915,11 +2301,15 @@ export interface FileRoutesByFullPath {
   '/portal/volunteer': typeof PortalVolunteerRoute
   '/programs/$slug': typeof ProgramsSlugRoute
   '/programs/compare': typeof ProgramsCompareRoute
+  '/visit/brochure': typeof VisitBrochureRoute
+  '/visit/feedback': typeof VisitFeedbackRoute
+  '/visit/info': typeof VisitInfoRoute
   '/app/': typeof AppIndexRoute
   '/apply/': typeof ApplyIndexRoute
   '/blog/': typeof BlogIndexRoute
   '/portal/': typeof PortalIndexRoute
   '/programs/': typeof ProgramsIndexRoute
+  '/visit/': typeof VisitIndexRoute
   '/app/accountant/audit': typeof AppAccountantAuditRoute
   '/app/accountant/banking': typeof AppAccountantBankingRoute
   '/app/accountant/billing': typeof AppAccountantBillingRoute
@@ -1951,8 +2341,19 @@ export interface FileRoutesByFullPath {
   '/app/alumni/give-back': typeof AppAlumniGiveBackRoute
   '/app/alumni/hub': typeof AppAlumniHubRoute
   '/app/alumni/jobs': typeof AppAlumniJobsRoute
+  '/app/alumni/mentorship': typeof AppAlumniMentorshipRoute
   '/app/alumni/network': typeof AppAlumniNetworkRoute
+  '/app/alumni/profile': typeof AppAlumniProfileRoute
+  '/app/alumni/stories': typeof AppAlumniStoriesRoute
   '/app/assignments/$assignmentId': typeof AppAssignmentsAssignmentIdRoute
+  '/app/behavioral-design/ab-tests': typeof AppBehavioralDesignAbTestsRoute
+  '/app/behavioral-design/analytics': typeof AppBehavioralDesignAnalyticsRoute
+  '/app/behavioral-design/flow-designer': typeof AppBehavioralDesignFlowDesignerRoute
+  '/app/behavioral-design/funnels': typeof AppBehavioralDesignFunnelsRoute
+  '/app/behavioral-design/habits': typeof AppBehavioralDesignHabitsRoute
+  '/app/behavioral-design/interventions': typeof AppBehavioralDesignInterventionsRoute
+  '/app/behavioral-design/nudge-campaigns': typeof AppBehavioralDesignNudgeCampaignsRoute
+  '/app/behavioral-design/segments': typeof AppBehavioralDesignSegmentsRoute
   '/app/client/contracts': typeof AppClientContractsRoute
   '/app/client/documents': typeof AppClientDocumentsRoute
   '/app/client/invoices': typeof AppClientInvoicesRoute
@@ -1973,6 +2374,14 @@ export interface FileRoutesByFullPath {
   '/app/department/instructors': typeof AppDepartmentInstructorsRoute
   '/app/department/quality': typeof AppDepartmentQualityRoute
   '/app/department/reports': typeof AppDepartmentReportsRoute
+  '/app/design/collaboration': typeof AppDesignCollaborationRoute
+  '/app/design/components': typeof AppDesignComponentsRoute
+  '/app/design/exports': typeof AppDesignExportsRoute
+  '/app/design/flows': typeof AppDesignFlowsRoute
+  '/app/design/prototypes': typeof AppDesignPrototypesRoute
+  '/app/design/system': typeof AppDesignSystemRoute
+  '/app/design/tokens': typeof AppDesignTokensRoute
+  '/app/design/versions': typeof AppDesignVersionsRoute
   '/app/dev/api-playground': typeof AppDevApiPlaygroundRoute
   '/app/dev/dependencies': typeof AppDevDependenciesRoute
   '/app/dev/deployments': typeof AppDevDeploymentsRoute
@@ -2010,6 +2419,13 @@ export interface FileRoutesByFullPath {
   '/app/government/messaging': typeof AppGovernmentMessagingRoute
   '/app/government/reports': typeof AppGovernmentReportsRoute
   '/app/government/training': typeof AppGovernmentTrainingRoute
+  '/app/growth/attribution': typeof AppGrowthAttributionRoute
+  '/app/growth/cohorts': typeof AppGrowthCohortsRoute
+  '/app/growth/experiments': typeof AppGrowthExperimentsRoute
+  '/app/growth/funnel': typeof AppGrowthFunnelRoute
+  '/app/growth/referrals': typeof AppGrowthReferralsRoute
+  '/app/growth/seo': typeof AppGrowthSeoRoute
+  '/app/growth/simulator': typeof AppGrowthSimulatorRoute
   '/app/hr/attendance': typeof AppHrAttendanceRoute
   '/app/hr/employees': typeof AppHrEmployeesRoute
   '/app/hr/leave': typeof AppHrLeaveRoute
@@ -2020,7 +2436,10 @@ export interface FileRoutesByFullPath {
   '/app/hr/reports': typeof AppHrReportsRoute
   '/app/hr/training': typeof AppHrTrainingRoute
   '/app/instructor/analytics': typeof AppInstructorAnalyticsRoute
+  '/app/instructor/announcements': typeof AppInstructorAnnouncementsRoute
+  '/app/instructor/assessments': typeof AppInstructorAssessmentsRoute
   '/app/instructor/attendance': typeof AppInstructorAttendanceRoute
+  '/app/instructor/calendar': typeof AppInstructorCalendarRoute
   '/app/instructor/gradebook': typeof AppInstructorGradebookRoute
   '/app/intern/evaluation': typeof AppInternEvaluationRoute
   '/app/intern/learning-plan': typeof AppInternLearningPlanRoute
@@ -2041,6 +2460,13 @@ export interface FileRoutesByFullPath {
   '/app/it/users': typeof AppItUsersRoute
   '/app/learn/$courseId': typeof AppLearnCourseIdRouteWithChildren
   '/app/live/$classId': typeof AppLiveClassIdRoute
+  '/app/localization/analytics': typeof AppLocalizationAnalyticsRoute
+  '/app/localization/dialects': typeof AppLocalizationDialectsRoute
+  '/app/localization/glossary': typeof AppLocalizationGlossaryRoute
+  '/app/localization/preview': typeof AppLocalizationPreviewRoute
+  '/app/localization/style-guides': typeof AppLocalizationStyleGuidesRoute
+  '/app/localization/translation-memory': typeof AppLocalizationTranslationMemoryRoute
+  '/app/localization/variants': typeof AppLocalizationVariantsRoute
   '/app/marketing/analytics': typeof AppMarketingAnalyticsRoute
   '/app/marketing/campaigns': typeof AppMarketingCampaignsRoute
   '/app/marketing/content-calendar': typeof AppMarketingContentCalendarRoute
@@ -2052,6 +2478,7 @@ export interface FileRoutesByFullPath {
   '/app/marketing/social': typeof AppMarketingSocialRoute
   '/app/mentor/analytics': typeof AppMentorAnalyticsRoute
   '/app/mentor/goals': typeof AppMentorGoalsRoute
+  '/app/mentor/messages': typeof AppMentorMessagesRoute
   '/app/mentor/requests': typeof AppMentorRequestsRoute
   '/app/mentor/resources': typeof AppMentorResourcesRoute
   '/app/mentor/sessions': typeof AppMentorSessionsRouteWithChildren
@@ -2077,6 +2504,14 @@ export interface FileRoutesByFullPath {
   '/app/partner/referrals': typeof AppPartnerReferralsRoute
   '/app/partner/reports': typeof AppPartnerReportsRoute
   '/app/partner/resources': typeof AppPartnerResourcesRoute
+  '/app/product-marketing/analytics': typeof AppProductMarketingAnalyticsRoute
+  '/app/product-marketing/briefs': typeof AppProductMarketingBriefsRoute
+  '/app/product-marketing/competitive': typeof AppProductMarketingCompetitiveRoute
+  '/app/product-marketing/gtm': typeof AppProductMarketingGtmRoute
+  '/app/product-marketing/launch-calendar': typeof AppProductMarketingLaunchCalendarRoute
+  '/app/product-marketing/messaging': typeof AppProductMarketingMessagingRoute
+  '/app/product-marketing/positioning': typeof AppProductMarketingPositioningRoute
+  '/app/product-marketing/research': typeof AppProductMarketingResearchRoute
   '/app/receptionist/appointments': typeof AppReceptionistAppointmentsRoute
   '/app/receptionist/check-in': typeof AppReceptionistCheckInRoute
   '/app/receptionist/check-out': typeof AppReceptionistCheckOutRoute
@@ -2097,20 +2532,27 @@ export interface FileRoutesByFullPath {
   '/app/volunteer/impact': typeof AppVolunteerImpactRoute
   '/app/volunteer/my-volunteering': typeof AppVolunteerMyVolunteeringRoute
   '/app/volunteer/opportunities': typeof AppVolunteerOpportunitiesRoute
+  '/apply/status/$id': typeof ApplyStatusIdRoute
   '/app/accountant/': typeof AppAccountantIndexRoute
   '/app/admin/': typeof AppAdminIndexRoute
   '/app/admissions/': typeof AppAdmissionsIndexRoute
   '/app/assessments/': typeof AppAssessmentsIndexRoute
   '/app/assignments/': typeof AppAssignmentsIndexRoute
+  '/app/behavioral-design/': typeof AppBehavioralDesignIndexRoute
+  '/app/design/': typeof AppDesignIndexRoute
   '/app/dev/': typeof AppDevIndexRoute
   '/app/government/': typeof AppGovernmentIndexRoute
+  '/app/growth/': typeof AppGrowthIndexRoute
   '/app/hr/': typeof AppHrIndexRoute
+  '/app/instructor/': typeof AppInstructorIndexRoute
   '/app/intern/': typeof AppInternIndexRoute
   '/app/learn/': typeof AppLearnIndexRoute
+  '/app/localization/': typeof AppLocalizationIndexRoute
   '/app/marketing/': typeof AppMarketingIndexRoute
   '/app/mentor/': typeof AppMentorIndexRoute
   '/app/ngo/': typeof AppNgoIndexRoute
   '/app/parent/': typeof AppParentIndexRoute
+  '/app/product-marketing/': typeof AppProductMarketingIndexRoute
   '/app/supplier/': typeof AppSupplierIndexRoute
   '/app/admissions/applications/$id': typeof AppAdmissionsApplicationsIdRoute
   '/app/assessments/$assessmentId/take': typeof AppAssessmentsAssessmentIdTakeRoute
@@ -2118,14 +2560,17 @@ export interface FileRoutesByFullPath {
   '/app/conversion-copy/landing-pages/$id': typeof AppConversionCopyLandingPagesIdRoute
   '/app/employer/pipeline/$jobId': typeof AppEmployerPipelineJobIdRoute
   '/app/instructor/courses/$courseId': typeof AppInstructorCoursesCourseIdRoute
+  '/app/instructor/lessons/create': typeof AppInstructorLessonsCreateRoute
   '/app/it/tickets/$id': typeof AppItTicketsIdRoute
   '/app/mentor/mentees/$menteeId': typeof AppMentorMenteesMenteeIdRouteWithChildren
   '/app/mentor/sessions/$sessionId': typeof AppMentorSessionsSessionIdRoute
   '/app/parent/invitation/accept': typeof AppParentInvitationAcceptRoute
   '/app/parent/students/$studentId': typeof AppParentStudentsStudentIdRouteWithChildren
   '/app/instructor/assignments/': typeof AppInstructorAssignmentsIndexRoute
+  '/app/instructor/courses/': typeof AppInstructorCoursesIndexRoute
   '/app/client/projects/$projectId/tasks': typeof AppClientProjectsProjectIdTasksRoute
   '/app/instructor/assignments/$submissionId/grade': typeof AppInstructorAssignmentsSubmissionIdGradeRoute
+  '/app/instructor/lessons/edit/$id': typeof AppInstructorLessonsEditIdRoute
   '/app/learn/$courseId/lessons/$lessonId': typeof AppLearnCourseIdLessonsLessonIdRoute
   '/app/mentor/mentees/$menteeId/career': typeof AppMentorMenteesMenteeIdCareerRoute
   '/app/mentor/mentees/$menteeId/portfolio': typeof AppMentorMenteesMenteeIdPortfolioRoute
@@ -2153,7 +2598,7 @@ export interface FileRoutesByTo {
   '/scholarships': typeof ScholarshipsRoute
   '/services': typeof ServicesRoute
   '/stories': typeof StoriesRoute
-  '/visit': typeof VisitRoute
+  '/virtual-tour': typeof VirtualTourRoute
   '/work': typeof WorkRoute
   '/app/attendance': typeof AppAttendanceRoute
   '/app/calendar': typeof AppCalendarRoute
@@ -2164,9 +2609,10 @@ export interface FileRoutesByTo {
   '/app/notifications': typeof AppNotificationsRoute
   '/app/portfolio': typeof AppPortfolioRoute
   '/app/reports': typeof AppReportsRoute
-  '/apply/status': typeof ApplyStatusRoute
+  '/apply/status': typeof ApplyStatusRouteWithChildren
   '/auth/forgot-password': typeof AuthForgotPasswordRoute
   '/auth/mfa': typeof AuthMfaRoute
+  '/auth/new-device': typeof AuthNewDeviceRoute
   '/auth/reset-password': typeof AuthResetPasswordRoute
   '/auth/sign-in': typeof AuthSignInRoute
   '/auth/sign-up': typeof AuthSignUpRoute
@@ -2214,11 +2660,15 @@ export interface FileRoutesByTo {
   '/portal/volunteer': typeof PortalVolunteerRoute
   '/programs/$slug': typeof ProgramsSlugRoute
   '/programs/compare': typeof ProgramsCompareRoute
+  '/visit/brochure': typeof VisitBrochureRoute
+  '/visit/feedback': typeof VisitFeedbackRoute
+  '/visit/info': typeof VisitInfoRoute
   '/app': typeof AppIndexRoute
   '/apply': typeof ApplyIndexRoute
   '/blog': typeof BlogIndexRoute
   '/portal': typeof PortalIndexRoute
   '/programs': typeof ProgramsIndexRoute
+  '/visit': typeof VisitIndexRoute
   '/app/accountant/audit': typeof AppAccountantAuditRoute
   '/app/accountant/banking': typeof AppAccountantBankingRoute
   '/app/accountant/billing': typeof AppAccountantBillingRoute
@@ -2250,8 +2700,19 @@ export interface FileRoutesByTo {
   '/app/alumni/give-back': typeof AppAlumniGiveBackRoute
   '/app/alumni/hub': typeof AppAlumniHubRoute
   '/app/alumni/jobs': typeof AppAlumniJobsRoute
+  '/app/alumni/mentorship': typeof AppAlumniMentorshipRoute
   '/app/alumni/network': typeof AppAlumniNetworkRoute
+  '/app/alumni/profile': typeof AppAlumniProfileRoute
+  '/app/alumni/stories': typeof AppAlumniStoriesRoute
   '/app/assignments/$assignmentId': typeof AppAssignmentsAssignmentIdRoute
+  '/app/behavioral-design/ab-tests': typeof AppBehavioralDesignAbTestsRoute
+  '/app/behavioral-design/analytics': typeof AppBehavioralDesignAnalyticsRoute
+  '/app/behavioral-design/flow-designer': typeof AppBehavioralDesignFlowDesignerRoute
+  '/app/behavioral-design/funnels': typeof AppBehavioralDesignFunnelsRoute
+  '/app/behavioral-design/habits': typeof AppBehavioralDesignHabitsRoute
+  '/app/behavioral-design/interventions': typeof AppBehavioralDesignInterventionsRoute
+  '/app/behavioral-design/nudge-campaigns': typeof AppBehavioralDesignNudgeCampaignsRoute
+  '/app/behavioral-design/segments': typeof AppBehavioralDesignSegmentsRoute
   '/app/client/contracts': typeof AppClientContractsRoute
   '/app/client/documents': typeof AppClientDocumentsRoute
   '/app/client/invoices': typeof AppClientInvoicesRoute
@@ -2272,6 +2733,14 @@ export interface FileRoutesByTo {
   '/app/department/instructors': typeof AppDepartmentInstructorsRoute
   '/app/department/quality': typeof AppDepartmentQualityRoute
   '/app/department/reports': typeof AppDepartmentReportsRoute
+  '/app/design/collaboration': typeof AppDesignCollaborationRoute
+  '/app/design/components': typeof AppDesignComponentsRoute
+  '/app/design/exports': typeof AppDesignExportsRoute
+  '/app/design/flows': typeof AppDesignFlowsRoute
+  '/app/design/prototypes': typeof AppDesignPrototypesRoute
+  '/app/design/system': typeof AppDesignSystemRoute
+  '/app/design/tokens': typeof AppDesignTokensRoute
+  '/app/design/versions': typeof AppDesignVersionsRoute
   '/app/dev/api-playground': typeof AppDevApiPlaygroundRoute
   '/app/dev/dependencies': typeof AppDevDependenciesRoute
   '/app/dev/deployments': typeof AppDevDeploymentsRoute
@@ -2309,6 +2778,13 @@ export interface FileRoutesByTo {
   '/app/government/messaging': typeof AppGovernmentMessagingRoute
   '/app/government/reports': typeof AppGovernmentReportsRoute
   '/app/government/training': typeof AppGovernmentTrainingRoute
+  '/app/growth/attribution': typeof AppGrowthAttributionRoute
+  '/app/growth/cohorts': typeof AppGrowthCohortsRoute
+  '/app/growth/experiments': typeof AppGrowthExperimentsRoute
+  '/app/growth/funnel': typeof AppGrowthFunnelRoute
+  '/app/growth/referrals': typeof AppGrowthReferralsRoute
+  '/app/growth/seo': typeof AppGrowthSeoRoute
+  '/app/growth/simulator': typeof AppGrowthSimulatorRoute
   '/app/hr/attendance': typeof AppHrAttendanceRoute
   '/app/hr/employees': typeof AppHrEmployeesRoute
   '/app/hr/leave': typeof AppHrLeaveRoute
@@ -2319,7 +2795,10 @@ export interface FileRoutesByTo {
   '/app/hr/reports': typeof AppHrReportsRoute
   '/app/hr/training': typeof AppHrTrainingRoute
   '/app/instructor/analytics': typeof AppInstructorAnalyticsRoute
+  '/app/instructor/announcements': typeof AppInstructorAnnouncementsRoute
+  '/app/instructor/assessments': typeof AppInstructorAssessmentsRoute
   '/app/instructor/attendance': typeof AppInstructorAttendanceRoute
+  '/app/instructor/calendar': typeof AppInstructorCalendarRoute
   '/app/instructor/gradebook': typeof AppInstructorGradebookRoute
   '/app/intern/evaluation': typeof AppInternEvaluationRoute
   '/app/intern/learning-plan': typeof AppInternLearningPlanRoute
@@ -2340,6 +2819,13 @@ export interface FileRoutesByTo {
   '/app/it/users': typeof AppItUsersRoute
   '/app/learn/$courseId': typeof AppLearnCourseIdRouteWithChildren
   '/app/live/$classId': typeof AppLiveClassIdRoute
+  '/app/localization/analytics': typeof AppLocalizationAnalyticsRoute
+  '/app/localization/dialects': typeof AppLocalizationDialectsRoute
+  '/app/localization/glossary': typeof AppLocalizationGlossaryRoute
+  '/app/localization/preview': typeof AppLocalizationPreviewRoute
+  '/app/localization/style-guides': typeof AppLocalizationStyleGuidesRoute
+  '/app/localization/translation-memory': typeof AppLocalizationTranslationMemoryRoute
+  '/app/localization/variants': typeof AppLocalizationVariantsRoute
   '/app/marketing/analytics': typeof AppMarketingAnalyticsRoute
   '/app/marketing/campaigns': typeof AppMarketingCampaignsRoute
   '/app/marketing/content-calendar': typeof AppMarketingContentCalendarRoute
@@ -2351,6 +2837,7 @@ export interface FileRoutesByTo {
   '/app/marketing/social': typeof AppMarketingSocialRoute
   '/app/mentor/analytics': typeof AppMentorAnalyticsRoute
   '/app/mentor/goals': typeof AppMentorGoalsRoute
+  '/app/mentor/messages': typeof AppMentorMessagesRoute
   '/app/mentor/requests': typeof AppMentorRequestsRoute
   '/app/mentor/resources': typeof AppMentorResourcesRoute
   '/app/mentor/sessions': typeof AppMentorSessionsRouteWithChildren
@@ -2376,6 +2863,14 @@ export interface FileRoutesByTo {
   '/app/partner/referrals': typeof AppPartnerReferralsRoute
   '/app/partner/reports': typeof AppPartnerReportsRoute
   '/app/partner/resources': typeof AppPartnerResourcesRoute
+  '/app/product-marketing/analytics': typeof AppProductMarketingAnalyticsRoute
+  '/app/product-marketing/briefs': typeof AppProductMarketingBriefsRoute
+  '/app/product-marketing/competitive': typeof AppProductMarketingCompetitiveRoute
+  '/app/product-marketing/gtm': typeof AppProductMarketingGtmRoute
+  '/app/product-marketing/launch-calendar': typeof AppProductMarketingLaunchCalendarRoute
+  '/app/product-marketing/messaging': typeof AppProductMarketingMessagingRoute
+  '/app/product-marketing/positioning': typeof AppProductMarketingPositioningRoute
+  '/app/product-marketing/research': typeof AppProductMarketingResearchRoute
   '/app/receptionist/appointments': typeof AppReceptionistAppointmentsRoute
   '/app/receptionist/check-in': typeof AppReceptionistCheckInRoute
   '/app/receptionist/check-out': typeof AppReceptionistCheckOutRoute
@@ -2396,20 +2891,27 @@ export interface FileRoutesByTo {
   '/app/volunteer/impact': typeof AppVolunteerImpactRoute
   '/app/volunteer/my-volunteering': typeof AppVolunteerMyVolunteeringRoute
   '/app/volunteer/opportunities': typeof AppVolunteerOpportunitiesRoute
+  '/apply/status/$id': typeof ApplyStatusIdRoute
   '/app/accountant': typeof AppAccountantIndexRoute
   '/app/admin': typeof AppAdminIndexRoute
   '/app/admissions': typeof AppAdmissionsIndexRoute
   '/app/assessments': typeof AppAssessmentsIndexRoute
   '/app/assignments': typeof AppAssignmentsIndexRoute
+  '/app/behavioral-design': typeof AppBehavioralDesignIndexRoute
+  '/app/design': typeof AppDesignIndexRoute
   '/app/dev': typeof AppDevIndexRoute
   '/app/government': typeof AppGovernmentIndexRoute
+  '/app/growth': typeof AppGrowthIndexRoute
   '/app/hr': typeof AppHrIndexRoute
+  '/app/instructor': typeof AppInstructorIndexRoute
   '/app/intern': typeof AppInternIndexRoute
   '/app/learn': typeof AppLearnIndexRoute
+  '/app/localization': typeof AppLocalizationIndexRoute
   '/app/marketing': typeof AppMarketingIndexRoute
   '/app/mentor': typeof AppMentorIndexRoute
   '/app/ngo': typeof AppNgoIndexRoute
   '/app/parent': typeof AppParentIndexRoute
+  '/app/product-marketing': typeof AppProductMarketingIndexRoute
   '/app/supplier': typeof AppSupplierIndexRoute
   '/app/admissions/applications/$id': typeof AppAdmissionsApplicationsIdRoute
   '/app/assessments/$assessmentId/take': typeof AppAssessmentsAssessmentIdTakeRoute
@@ -2417,14 +2919,17 @@ export interface FileRoutesByTo {
   '/app/conversion-copy/landing-pages/$id': typeof AppConversionCopyLandingPagesIdRoute
   '/app/employer/pipeline/$jobId': typeof AppEmployerPipelineJobIdRoute
   '/app/instructor/courses/$courseId': typeof AppInstructorCoursesCourseIdRoute
+  '/app/instructor/lessons/create': typeof AppInstructorLessonsCreateRoute
   '/app/it/tickets/$id': typeof AppItTicketsIdRoute
   '/app/mentor/mentees/$menteeId': typeof AppMentorMenteesMenteeIdRouteWithChildren
   '/app/mentor/sessions/$sessionId': typeof AppMentorSessionsSessionIdRoute
   '/app/parent/invitation/accept': typeof AppParentInvitationAcceptRoute
   '/app/parent/students/$studentId': typeof AppParentStudentsStudentIdRouteWithChildren
   '/app/instructor/assignments': typeof AppInstructorAssignmentsIndexRoute
+  '/app/instructor/courses': typeof AppInstructorCoursesIndexRoute
   '/app/client/projects/$projectId/tasks': typeof AppClientProjectsProjectIdTasksRoute
   '/app/instructor/assignments/$submissionId/grade': typeof AppInstructorAssignmentsSubmissionIdGradeRoute
+  '/app/instructor/lessons/edit/$id': typeof AppInstructorLessonsEditIdRoute
   '/app/learn/$courseId/lessons/$lessonId': typeof AppLearnCourseIdLessonsLessonIdRoute
   '/app/mentor/mentees/$menteeId/career': typeof AppMentorMenteesMenteeIdCareerRoute
   '/app/mentor/mentees/$menteeId/portfolio': typeof AppMentorMenteesMenteeIdPortfolioRoute
@@ -2453,7 +2958,7 @@ export interface FileRoutesById {
   '/scholarships': typeof ScholarshipsRoute
   '/services': typeof ServicesRoute
   '/stories': typeof StoriesRoute
-  '/visit': typeof VisitRoute
+  '/virtual-tour': typeof VirtualTourRoute
   '/work': typeof WorkRoute
   '/app/attendance': typeof AppAttendanceRoute
   '/app/calendar': typeof AppCalendarRoute
@@ -2464,9 +2969,10 @@ export interface FileRoutesById {
   '/app/notifications': typeof AppNotificationsRoute
   '/app/portfolio': typeof AppPortfolioRoute
   '/app/reports': typeof AppReportsRoute
-  '/apply/status': typeof ApplyStatusRoute
+  '/apply/status': typeof ApplyStatusRouteWithChildren
   '/auth/forgot-password': typeof AuthForgotPasswordRoute
   '/auth/mfa': typeof AuthMfaRoute
+  '/auth/new-device': typeof AuthNewDeviceRoute
   '/auth/reset-password': typeof AuthResetPasswordRoute
   '/auth/sign-in': typeof AuthSignInRoute
   '/auth/sign-up': typeof AuthSignUpRoute
@@ -2514,11 +3020,15 @@ export interface FileRoutesById {
   '/portal/volunteer': typeof PortalVolunteerRoute
   '/programs/$slug': typeof ProgramsSlugRoute
   '/programs/compare': typeof ProgramsCompareRoute
+  '/visit/brochure': typeof VisitBrochureRoute
+  '/visit/feedback': typeof VisitFeedbackRoute
+  '/visit/info': typeof VisitInfoRoute
   '/app/': typeof AppIndexRoute
   '/apply/': typeof ApplyIndexRoute
   '/blog/': typeof BlogIndexRoute
   '/portal/': typeof PortalIndexRoute
   '/programs/': typeof ProgramsIndexRoute
+  '/visit/': typeof VisitIndexRoute
   '/app/accountant/audit': typeof AppAccountantAuditRoute
   '/app/accountant/banking': typeof AppAccountantBankingRoute
   '/app/accountant/billing': typeof AppAccountantBillingRoute
@@ -2550,8 +3060,19 @@ export interface FileRoutesById {
   '/app/alumni/give-back': typeof AppAlumniGiveBackRoute
   '/app/alumni/hub': typeof AppAlumniHubRoute
   '/app/alumni/jobs': typeof AppAlumniJobsRoute
+  '/app/alumni/mentorship': typeof AppAlumniMentorshipRoute
   '/app/alumni/network': typeof AppAlumniNetworkRoute
+  '/app/alumni/profile': typeof AppAlumniProfileRoute
+  '/app/alumni/stories': typeof AppAlumniStoriesRoute
   '/app/assignments/$assignmentId': typeof AppAssignmentsAssignmentIdRoute
+  '/app/behavioral-design/ab-tests': typeof AppBehavioralDesignAbTestsRoute
+  '/app/behavioral-design/analytics': typeof AppBehavioralDesignAnalyticsRoute
+  '/app/behavioral-design/flow-designer': typeof AppBehavioralDesignFlowDesignerRoute
+  '/app/behavioral-design/funnels': typeof AppBehavioralDesignFunnelsRoute
+  '/app/behavioral-design/habits': typeof AppBehavioralDesignHabitsRoute
+  '/app/behavioral-design/interventions': typeof AppBehavioralDesignInterventionsRoute
+  '/app/behavioral-design/nudge-campaigns': typeof AppBehavioralDesignNudgeCampaignsRoute
+  '/app/behavioral-design/segments': typeof AppBehavioralDesignSegmentsRoute
   '/app/client/contracts': typeof AppClientContractsRoute
   '/app/client/documents': typeof AppClientDocumentsRoute
   '/app/client/invoices': typeof AppClientInvoicesRoute
@@ -2572,6 +3093,14 @@ export interface FileRoutesById {
   '/app/department/instructors': typeof AppDepartmentInstructorsRoute
   '/app/department/quality': typeof AppDepartmentQualityRoute
   '/app/department/reports': typeof AppDepartmentReportsRoute
+  '/app/design/collaboration': typeof AppDesignCollaborationRoute
+  '/app/design/components': typeof AppDesignComponentsRoute
+  '/app/design/exports': typeof AppDesignExportsRoute
+  '/app/design/flows': typeof AppDesignFlowsRoute
+  '/app/design/prototypes': typeof AppDesignPrototypesRoute
+  '/app/design/system': typeof AppDesignSystemRoute
+  '/app/design/tokens': typeof AppDesignTokensRoute
+  '/app/design/versions': typeof AppDesignVersionsRoute
   '/app/dev/api-playground': typeof AppDevApiPlaygroundRoute
   '/app/dev/dependencies': typeof AppDevDependenciesRoute
   '/app/dev/deployments': typeof AppDevDeploymentsRoute
@@ -2609,6 +3138,13 @@ export interface FileRoutesById {
   '/app/government/messaging': typeof AppGovernmentMessagingRoute
   '/app/government/reports': typeof AppGovernmentReportsRoute
   '/app/government/training': typeof AppGovernmentTrainingRoute
+  '/app/growth/attribution': typeof AppGrowthAttributionRoute
+  '/app/growth/cohorts': typeof AppGrowthCohortsRoute
+  '/app/growth/experiments': typeof AppGrowthExperimentsRoute
+  '/app/growth/funnel': typeof AppGrowthFunnelRoute
+  '/app/growth/referrals': typeof AppGrowthReferralsRoute
+  '/app/growth/seo': typeof AppGrowthSeoRoute
+  '/app/growth/simulator': typeof AppGrowthSimulatorRoute
   '/app/hr/attendance': typeof AppHrAttendanceRoute
   '/app/hr/employees': typeof AppHrEmployeesRoute
   '/app/hr/leave': typeof AppHrLeaveRoute
@@ -2619,7 +3155,10 @@ export interface FileRoutesById {
   '/app/hr/reports': typeof AppHrReportsRoute
   '/app/hr/training': typeof AppHrTrainingRoute
   '/app/instructor/analytics': typeof AppInstructorAnalyticsRoute
+  '/app/instructor/announcements': typeof AppInstructorAnnouncementsRoute
+  '/app/instructor/assessments': typeof AppInstructorAssessmentsRoute
   '/app/instructor/attendance': typeof AppInstructorAttendanceRoute
+  '/app/instructor/calendar': typeof AppInstructorCalendarRoute
   '/app/instructor/gradebook': typeof AppInstructorGradebookRoute
   '/app/intern/evaluation': typeof AppInternEvaluationRoute
   '/app/intern/learning-plan': typeof AppInternLearningPlanRoute
@@ -2640,6 +3179,13 @@ export interface FileRoutesById {
   '/app/it/users': typeof AppItUsersRoute
   '/app/learn/$courseId': typeof AppLearnCourseIdRouteWithChildren
   '/app/live/$classId': typeof AppLiveClassIdRoute
+  '/app/localization/analytics': typeof AppLocalizationAnalyticsRoute
+  '/app/localization/dialects': typeof AppLocalizationDialectsRoute
+  '/app/localization/glossary': typeof AppLocalizationGlossaryRoute
+  '/app/localization/preview': typeof AppLocalizationPreviewRoute
+  '/app/localization/style-guides': typeof AppLocalizationStyleGuidesRoute
+  '/app/localization/translation-memory': typeof AppLocalizationTranslationMemoryRoute
+  '/app/localization/variants': typeof AppLocalizationVariantsRoute
   '/app/marketing/analytics': typeof AppMarketingAnalyticsRoute
   '/app/marketing/campaigns': typeof AppMarketingCampaignsRoute
   '/app/marketing/content-calendar': typeof AppMarketingContentCalendarRoute
@@ -2651,6 +3197,7 @@ export interface FileRoutesById {
   '/app/marketing/social': typeof AppMarketingSocialRoute
   '/app/mentor/analytics': typeof AppMentorAnalyticsRoute
   '/app/mentor/goals': typeof AppMentorGoalsRoute
+  '/app/mentor/messages': typeof AppMentorMessagesRoute
   '/app/mentor/requests': typeof AppMentorRequestsRoute
   '/app/mentor/resources': typeof AppMentorResourcesRoute
   '/app/mentor/sessions': typeof AppMentorSessionsRouteWithChildren
@@ -2676,6 +3223,14 @@ export interface FileRoutesById {
   '/app/partner/referrals': typeof AppPartnerReferralsRoute
   '/app/partner/reports': typeof AppPartnerReportsRoute
   '/app/partner/resources': typeof AppPartnerResourcesRoute
+  '/app/product-marketing/analytics': typeof AppProductMarketingAnalyticsRoute
+  '/app/product-marketing/briefs': typeof AppProductMarketingBriefsRoute
+  '/app/product-marketing/competitive': typeof AppProductMarketingCompetitiveRoute
+  '/app/product-marketing/gtm': typeof AppProductMarketingGtmRoute
+  '/app/product-marketing/launch-calendar': typeof AppProductMarketingLaunchCalendarRoute
+  '/app/product-marketing/messaging': typeof AppProductMarketingMessagingRoute
+  '/app/product-marketing/positioning': typeof AppProductMarketingPositioningRoute
+  '/app/product-marketing/research': typeof AppProductMarketingResearchRoute
   '/app/receptionist/appointments': typeof AppReceptionistAppointmentsRoute
   '/app/receptionist/check-in': typeof AppReceptionistCheckInRoute
   '/app/receptionist/check-out': typeof AppReceptionistCheckOutRoute
@@ -2696,20 +3251,27 @@ export interface FileRoutesById {
   '/app/volunteer/impact': typeof AppVolunteerImpactRoute
   '/app/volunteer/my-volunteering': typeof AppVolunteerMyVolunteeringRoute
   '/app/volunteer/opportunities': typeof AppVolunteerOpportunitiesRoute
+  '/apply/status/$id': typeof ApplyStatusIdRoute
   '/app/accountant/': typeof AppAccountantIndexRoute
   '/app/admin/': typeof AppAdminIndexRoute
   '/app/admissions/': typeof AppAdmissionsIndexRoute
   '/app/assessments/': typeof AppAssessmentsIndexRoute
   '/app/assignments/': typeof AppAssignmentsIndexRoute
+  '/app/behavioral-design/': typeof AppBehavioralDesignIndexRoute
+  '/app/design/': typeof AppDesignIndexRoute
   '/app/dev/': typeof AppDevIndexRoute
   '/app/government/': typeof AppGovernmentIndexRoute
+  '/app/growth/': typeof AppGrowthIndexRoute
   '/app/hr/': typeof AppHrIndexRoute
+  '/app/instructor/': typeof AppInstructorIndexRoute
   '/app/intern/': typeof AppInternIndexRoute
   '/app/learn/': typeof AppLearnIndexRoute
+  '/app/localization/': typeof AppLocalizationIndexRoute
   '/app/marketing/': typeof AppMarketingIndexRoute
   '/app/mentor/': typeof AppMentorIndexRoute
   '/app/ngo/': typeof AppNgoIndexRoute
   '/app/parent/': typeof AppParentIndexRoute
+  '/app/product-marketing/': typeof AppProductMarketingIndexRoute
   '/app/supplier/': typeof AppSupplierIndexRoute
   '/app/admissions/applications/$id': typeof AppAdmissionsApplicationsIdRoute
   '/app/assessments/$assessmentId/take': typeof AppAssessmentsAssessmentIdTakeRoute
@@ -2717,14 +3279,17 @@ export interface FileRoutesById {
   '/app/conversion-copy/landing-pages/$id': typeof AppConversionCopyLandingPagesIdRoute
   '/app/employer/pipeline/$jobId': typeof AppEmployerPipelineJobIdRoute
   '/app/instructor/courses/$courseId': typeof AppInstructorCoursesCourseIdRoute
+  '/app/instructor/lessons/create': typeof AppInstructorLessonsCreateRoute
   '/app/it/tickets/$id': typeof AppItTicketsIdRoute
   '/app/mentor/mentees/$menteeId': typeof AppMentorMenteesMenteeIdRouteWithChildren
   '/app/mentor/sessions/$sessionId': typeof AppMentorSessionsSessionIdRoute
   '/app/parent/invitation/accept': typeof AppParentInvitationAcceptRoute
   '/app/parent/students/$studentId': typeof AppParentStudentsStudentIdRouteWithChildren
   '/app/instructor/assignments/': typeof AppInstructorAssignmentsIndexRoute
+  '/app/instructor/courses/': typeof AppInstructorCoursesIndexRoute
   '/app/client/projects/$projectId/tasks': typeof AppClientProjectsProjectIdTasksRoute
   '/app/instructor/assignments/$submissionId/grade': typeof AppInstructorAssignmentsSubmissionIdGradeRoute
+  '/app/instructor/lessons/edit/$id': typeof AppInstructorLessonsEditIdRoute
   '/app/learn/$courseId/lessons/$lessonId': typeof AppLearnCourseIdLessonsLessonIdRoute
   '/app/mentor/mentees/$menteeId/career': typeof AppMentorMenteesMenteeIdCareerRoute
   '/app/mentor/mentees/$menteeId/portfolio': typeof AppMentorMenteesMenteeIdPortfolioRoute
@@ -2754,7 +3319,7 @@ export interface FileRouteTypes {
     | '/scholarships'
     | '/services'
     | '/stories'
-    | '/visit'
+    | '/virtual-tour'
     | '/work'
     | '/app/attendance'
     | '/app/calendar'
@@ -2768,6 +3333,7 @@ export interface FileRouteTypes {
     | '/apply/status'
     | '/auth/forgot-password'
     | '/auth/mfa'
+    | '/auth/new-device'
     | '/auth/reset-password'
     | '/auth/sign-in'
     | '/auth/sign-up'
@@ -2815,11 +3381,15 @@ export interface FileRouteTypes {
     | '/portal/volunteer'
     | '/programs/$slug'
     | '/programs/compare'
+    | '/visit/brochure'
+    | '/visit/feedback'
+    | '/visit/info'
     | '/app/'
     | '/apply/'
     | '/blog/'
     | '/portal/'
     | '/programs/'
+    | '/visit/'
     | '/app/accountant/audit'
     | '/app/accountant/banking'
     | '/app/accountant/billing'
@@ -2851,8 +3421,19 @@ export interface FileRouteTypes {
     | '/app/alumni/give-back'
     | '/app/alumni/hub'
     | '/app/alumni/jobs'
+    | '/app/alumni/mentorship'
     | '/app/alumni/network'
+    | '/app/alumni/profile'
+    | '/app/alumni/stories'
     | '/app/assignments/$assignmentId'
+    | '/app/behavioral-design/ab-tests'
+    | '/app/behavioral-design/analytics'
+    | '/app/behavioral-design/flow-designer'
+    | '/app/behavioral-design/funnels'
+    | '/app/behavioral-design/habits'
+    | '/app/behavioral-design/interventions'
+    | '/app/behavioral-design/nudge-campaigns'
+    | '/app/behavioral-design/segments'
     | '/app/client/contracts'
     | '/app/client/documents'
     | '/app/client/invoices'
@@ -2873,6 +3454,14 @@ export interface FileRouteTypes {
     | '/app/department/instructors'
     | '/app/department/quality'
     | '/app/department/reports'
+    | '/app/design/collaboration'
+    | '/app/design/components'
+    | '/app/design/exports'
+    | '/app/design/flows'
+    | '/app/design/prototypes'
+    | '/app/design/system'
+    | '/app/design/tokens'
+    | '/app/design/versions'
     | '/app/dev/api-playground'
     | '/app/dev/dependencies'
     | '/app/dev/deployments'
@@ -2910,6 +3499,13 @@ export interface FileRouteTypes {
     | '/app/government/messaging'
     | '/app/government/reports'
     | '/app/government/training'
+    | '/app/growth/attribution'
+    | '/app/growth/cohorts'
+    | '/app/growth/experiments'
+    | '/app/growth/funnel'
+    | '/app/growth/referrals'
+    | '/app/growth/seo'
+    | '/app/growth/simulator'
     | '/app/hr/attendance'
     | '/app/hr/employees'
     | '/app/hr/leave'
@@ -2920,7 +3516,10 @@ export interface FileRouteTypes {
     | '/app/hr/reports'
     | '/app/hr/training'
     | '/app/instructor/analytics'
+    | '/app/instructor/announcements'
+    | '/app/instructor/assessments'
     | '/app/instructor/attendance'
+    | '/app/instructor/calendar'
     | '/app/instructor/gradebook'
     | '/app/intern/evaluation'
     | '/app/intern/learning-plan'
@@ -2941,6 +3540,13 @@ export interface FileRouteTypes {
     | '/app/it/users'
     | '/app/learn/$courseId'
     | '/app/live/$classId'
+    | '/app/localization/analytics'
+    | '/app/localization/dialects'
+    | '/app/localization/glossary'
+    | '/app/localization/preview'
+    | '/app/localization/style-guides'
+    | '/app/localization/translation-memory'
+    | '/app/localization/variants'
     | '/app/marketing/analytics'
     | '/app/marketing/campaigns'
     | '/app/marketing/content-calendar'
@@ -2952,6 +3558,7 @@ export interface FileRouteTypes {
     | '/app/marketing/social'
     | '/app/mentor/analytics'
     | '/app/mentor/goals'
+    | '/app/mentor/messages'
     | '/app/mentor/requests'
     | '/app/mentor/resources'
     | '/app/mentor/sessions'
@@ -2977,6 +3584,14 @@ export interface FileRouteTypes {
     | '/app/partner/referrals'
     | '/app/partner/reports'
     | '/app/partner/resources'
+    | '/app/product-marketing/analytics'
+    | '/app/product-marketing/briefs'
+    | '/app/product-marketing/competitive'
+    | '/app/product-marketing/gtm'
+    | '/app/product-marketing/launch-calendar'
+    | '/app/product-marketing/messaging'
+    | '/app/product-marketing/positioning'
+    | '/app/product-marketing/research'
     | '/app/receptionist/appointments'
     | '/app/receptionist/check-in'
     | '/app/receptionist/check-out'
@@ -2997,20 +3612,27 @@ export interface FileRouteTypes {
     | '/app/volunteer/impact'
     | '/app/volunteer/my-volunteering'
     | '/app/volunteer/opportunities'
+    | '/apply/status/$id'
     | '/app/accountant/'
     | '/app/admin/'
     | '/app/admissions/'
     | '/app/assessments/'
     | '/app/assignments/'
+    | '/app/behavioral-design/'
+    | '/app/design/'
     | '/app/dev/'
     | '/app/government/'
+    | '/app/growth/'
     | '/app/hr/'
+    | '/app/instructor/'
     | '/app/intern/'
     | '/app/learn/'
+    | '/app/localization/'
     | '/app/marketing/'
     | '/app/mentor/'
     | '/app/ngo/'
     | '/app/parent/'
+    | '/app/product-marketing/'
     | '/app/supplier/'
     | '/app/admissions/applications/$id'
     | '/app/assessments/$assessmentId/take'
@@ -3018,14 +3640,17 @@ export interface FileRouteTypes {
     | '/app/conversion-copy/landing-pages/$id'
     | '/app/employer/pipeline/$jobId'
     | '/app/instructor/courses/$courseId'
+    | '/app/instructor/lessons/create'
     | '/app/it/tickets/$id'
     | '/app/mentor/mentees/$menteeId'
     | '/app/mentor/sessions/$sessionId'
     | '/app/parent/invitation/accept'
     | '/app/parent/students/$studentId'
     | '/app/instructor/assignments/'
+    | '/app/instructor/courses/'
     | '/app/client/projects/$projectId/tasks'
     | '/app/instructor/assignments/$submissionId/grade'
+    | '/app/instructor/lessons/edit/$id'
     | '/app/learn/$courseId/lessons/$lessonId'
     | '/app/mentor/mentees/$menteeId/career'
     | '/app/mentor/mentees/$menteeId/portfolio'
@@ -3053,7 +3678,7 @@ export interface FileRouteTypes {
     | '/scholarships'
     | '/services'
     | '/stories'
-    | '/visit'
+    | '/virtual-tour'
     | '/work'
     | '/app/attendance'
     | '/app/calendar'
@@ -3067,6 +3692,7 @@ export interface FileRouteTypes {
     | '/apply/status'
     | '/auth/forgot-password'
     | '/auth/mfa'
+    | '/auth/new-device'
     | '/auth/reset-password'
     | '/auth/sign-in'
     | '/auth/sign-up'
@@ -3114,11 +3740,15 @@ export interface FileRouteTypes {
     | '/portal/volunteer'
     | '/programs/$slug'
     | '/programs/compare'
+    | '/visit/brochure'
+    | '/visit/feedback'
+    | '/visit/info'
     | '/app'
     | '/apply'
     | '/blog'
     | '/portal'
     | '/programs'
+    | '/visit'
     | '/app/accountant/audit'
     | '/app/accountant/banking'
     | '/app/accountant/billing'
@@ -3150,8 +3780,19 @@ export interface FileRouteTypes {
     | '/app/alumni/give-back'
     | '/app/alumni/hub'
     | '/app/alumni/jobs'
+    | '/app/alumni/mentorship'
     | '/app/alumni/network'
+    | '/app/alumni/profile'
+    | '/app/alumni/stories'
     | '/app/assignments/$assignmentId'
+    | '/app/behavioral-design/ab-tests'
+    | '/app/behavioral-design/analytics'
+    | '/app/behavioral-design/flow-designer'
+    | '/app/behavioral-design/funnels'
+    | '/app/behavioral-design/habits'
+    | '/app/behavioral-design/interventions'
+    | '/app/behavioral-design/nudge-campaigns'
+    | '/app/behavioral-design/segments'
     | '/app/client/contracts'
     | '/app/client/documents'
     | '/app/client/invoices'
@@ -3172,6 +3813,14 @@ export interface FileRouteTypes {
     | '/app/department/instructors'
     | '/app/department/quality'
     | '/app/department/reports'
+    | '/app/design/collaboration'
+    | '/app/design/components'
+    | '/app/design/exports'
+    | '/app/design/flows'
+    | '/app/design/prototypes'
+    | '/app/design/system'
+    | '/app/design/tokens'
+    | '/app/design/versions'
     | '/app/dev/api-playground'
     | '/app/dev/dependencies'
     | '/app/dev/deployments'
@@ -3209,6 +3858,13 @@ export interface FileRouteTypes {
     | '/app/government/messaging'
     | '/app/government/reports'
     | '/app/government/training'
+    | '/app/growth/attribution'
+    | '/app/growth/cohorts'
+    | '/app/growth/experiments'
+    | '/app/growth/funnel'
+    | '/app/growth/referrals'
+    | '/app/growth/seo'
+    | '/app/growth/simulator'
     | '/app/hr/attendance'
     | '/app/hr/employees'
     | '/app/hr/leave'
@@ -3219,7 +3875,10 @@ export interface FileRouteTypes {
     | '/app/hr/reports'
     | '/app/hr/training'
     | '/app/instructor/analytics'
+    | '/app/instructor/announcements'
+    | '/app/instructor/assessments'
     | '/app/instructor/attendance'
+    | '/app/instructor/calendar'
     | '/app/instructor/gradebook'
     | '/app/intern/evaluation'
     | '/app/intern/learning-plan'
@@ -3240,6 +3899,13 @@ export interface FileRouteTypes {
     | '/app/it/users'
     | '/app/learn/$courseId'
     | '/app/live/$classId'
+    | '/app/localization/analytics'
+    | '/app/localization/dialects'
+    | '/app/localization/glossary'
+    | '/app/localization/preview'
+    | '/app/localization/style-guides'
+    | '/app/localization/translation-memory'
+    | '/app/localization/variants'
     | '/app/marketing/analytics'
     | '/app/marketing/campaigns'
     | '/app/marketing/content-calendar'
@@ -3251,6 +3917,7 @@ export interface FileRouteTypes {
     | '/app/marketing/social'
     | '/app/mentor/analytics'
     | '/app/mentor/goals'
+    | '/app/mentor/messages'
     | '/app/mentor/requests'
     | '/app/mentor/resources'
     | '/app/mentor/sessions'
@@ -3276,6 +3943,14 @@ export interface FileRouteTypes {
     | '/app/partner/referrals'
     | '/app/partner/reports'
     | '/app/partner/resources'
+    | '/app/product-marketing/analytics'
+    | '/app/product-marketing/briefs'
+    | '/app/product-marketing/competitive'
+    | '/app/product-marketing/gtm'
+    | '/app/product-marketing/launch-calendar'
+    | '/app/product-marketing/messaging'
+    | '/app/product-marketing/positioning'
+    | '/app/product-marketing/research'
     | '/app/receptionist/appointments'
     | '/app/receptionist/check-in'
     | '/app/receptionist/check-out'
@@ -3296,20 +3971,27 @@ export interface FileRouteTypes {
     | '/app/volunteer/impact'
     | '/app/volunteer/my-volunteering'
     | '/app/volunteer/opportunities'
+    | '/apply/status/$id'
     | '/app/accountant'
     | '/app/admin'
     | '/app/admissions'
     | '/app/assessments'
     | '/app/assignments'
+    | '/app/behavioral-design'
+    | '/app/design'
     | '/app/dev'
     | '/app/government'
+    | '/app/growth'
     | '/app/hr'
+    | '/app/instructor'
     | '/app/intern'
     | '/app/learn'
+    | '/app/localization'
     | '/app/marketing'
     | '/app/mentor'
     | '/app/ngo'
     | '/app/parent'
+    | '/app/product-marketing'
     | '/app/supplier'
     | '/app/admissions/applications/$id'
     | '/app/assessments/$assessmentId/take'
@@ -3317,14 +3999,17 @@ export interface FileRouteTypes {
     | '/app/conversion-copy/landing-pages/$id'
     | '/app/employer/pipeline/$jobId'
     | '/app/instructor/courses/$courseId'
+    | '/app/instructor/lessons/create'
     | '/app/it/tickets/$id'
     | '/app/mentor/mentees/$menteeId'
     | '/app/mentor/sessions/$sessionId'
     | '/app/parent/invitation/accept'
     | '/app/parent/students/$studentId'
     | '/app/instructor/assignments'
+    | '/app/instructor/courses'
     | '/app/client/projects/$projectId/tasks'
     | '/app/instructor/assignments/$submissionId/grade'
+    | '/app/instructor/lessons/edit/$id'
     | '/app/learn/$courseId/lessons/$lessonId'
     | '/app/mentor/mentees/$menteeId/career'
     | '/app/mentor/mentees/$menteeId/portfolio'
@@ -3352,7 +4037,7 @@ export interface FileRouteTypes {
     | '/scholarships'
     | '/services'
     | '/stories'
-    | '/visit'
+    | '/virtual-tour'
     | '/work'
     | '/app/attendance'
     | '/app/calendar'
@@ -3366,6 +4051,7 @@ export interface FileRouteTypes {
     | '/apply/status'
     | '/auth/forgot-password'
     | '/auth/mfa'
+    | '/auth/new-device'
     | '/auth/reset-password'
     | '/auth/sign-in'
     | '/auth/sign-up'
@@ -3413,11 +4099,15 @@ export interface FileRouteTypes {
     | '/portal/volunteer'
     | '/programs/$slug'
     | '/programs/compare'
+    | '/visit/brochure'
+    | '/visit/feedback'
+    | '/visit/info'
     | '/app/'
     | '/apply/'
     | '/blog/'
     | '/portal/'
     | '/programs/'
+    | '/visit/'
     | '/app/accountant/audit'
     | '/app/accountant/banking'
     | '/app/accountant/billing'
@@ -3449,8 +4139,19 @@ export interface FileRouteTypes {
     | '/app/alumni/give-back'
     | '/app/alumni/hub'
     | '/app/alumni/jobs'
+    | '/app/alumni/mentorship'
     | '/app/alumni/network'
+    | '/app/alumni/profile'
+    | '/app/alumni/stories'
     | '/app/assignments/$assignmentId'
+    | '/app/behavioral-design/ab-tests'
+    | '/app/behavioral-design/analytics'
+    | '/app/behavioral-design/flow-designer'
+    | '/app/behavioral-design/funnels'
+    | '/app/behavioral-design/habits'
+    | '/app/behavioral-design/interventions'
+    | '/app/behavioral-design/nudge-campaigns'
+    | '/app/behavioral-design/segments'
     | '/app/client/contracts'
     | '/app/client/documents'
     | '/app/client/invoices'
@@ -3471,6 +4172,14 @@ export interface FileRouteTypes {
     | '/app/department/instructors'
     | '/app/department/quality'
     | '/app/department/reports'
+    | '/app/design/collaboration'
+    | '/app/design/components'
+    | '/app/design/exports'
+    | '/app/design/flows'
+    | '/app/design/prototypes'
+    | '/app/design/system'
+    | '/app/design/tokens'
+    | '/app/design/versions'
     | '/app/dev/api-playground'
     | '/app/dev/dependencies'
     | '/app/dev/deployments'
@@ -3508,6 +4217,13 @@ export interface FileRouteTypes {
     | '/app/government/messaging'
     | '/app/government/reports'
     | '/app/government/training'
+    | '/app/growth/attribution'
+    | '/app/growth/cohorts'
+    | '/app/growth/experiments'
+    | '/app/growth/funnel'
+    | '/app/growth/referrals'
+    | '/app/growth/seo'
+    | '/app/growth/simulator'
     | '/app/hr/attendance'
     | '/app/hr/employees'
     | '/app/hr/leave'
@@ -3518,7 +4234,10 @@ export interface FileRouteTypes {
     | '/app/hr/reports'
     | '/app/hr/training'
     | '/app/instructor/analytics'
+    | '/app/instructor/announcements'
+    | '/app/instructor/assessments'
     | '/app/instructor/attendance'
+    | '/app/instructor/calendar'
     | '/app/instructor/gradebook'
     | '/app/intern/evaluation'
     | '/app/intern/learning-plan'
@@ -3539,6 +4258,13 @@ export interface FileRouteTypes {
     | '/app/it/users'
     | '/app/learn/$courseId'
     | '/app/live/$classId'
+    | '/app/localization/analytics'
+    | '/app/localization/dialects'
+    | '/app/localization/glossary'
+    | '/app/localization/preview'
+    | '/app/localization/style-guides'
+    | '/app/localization/translation-memory'
+    | '/app/localization/variants'
     | '/app/marketing/analytics'
     | '/app/marketing/campaigns'
     | '/app/marketing/content-calendar'
@@ -3550,6 +4276,7 @@ export interface FileRouteTypes {
     | '/app/marketing/social'
     | '/app/mentor/analytics'
     | '/app/mentor/goals'
+    | '/app/mentor/messages'
     | '/app/mentor/requests'
     | '/app/mentor/resources'
     | '/app/mentor/sessions'
@@ -3575,6 +4302,14 @@ export interface FileRouteTypes {
     | '/app/partner/referrals'
     | '/app/partner/reports'
     | '/app/partner/resources'
+    | '/app/product-marketing/analytics'
+    | '/app/product-marketing/briefs'
+    | '/app/product-marketing/competitive'
+    | '/app/product-marketing/gtm'
+    | '/app/product-marketing/launch-calendar'
+    | '/app/product-marketing/messaging'
+    | '/app/product-marketing/positioning'
+    | '/app/product-marketing/research'
     | '/app/receptionist/appointments'
     | '/app/receptionist/check-in'
     | '/app/receptionist/check-out'
@@ -3595,20 +4330,27 @@ export interface FileRouteTypes {
     | '/app/volunteer/impact'
     | '/app/volunteer/my-volunteering'
     | '/app/volunteer/opportunities'
+    | '/apply/status/$id'
     | '/app/accountant/'
     | '/app/admin/'
     | '/app/admissions/'
     | '/app/assessments/'
     | '/app/assignments/'
+    | '/app/behavioral-design/'
+    | '/app/design/'
     | '/app/dev/'
     | '/app/government/'
+    | '/app/growth/'
     | '/app/hr/'
+    | '/app/instructor/'
     | '/app/intern/'
     | '/app/learn/'
+    | '/app/localization/'
     | '/app/marketing/'
     | '/app/mentor/'
     | '/app/ngo/'
     | '/app/parent/'
+    | '/app/product-marketing/'
     | '/app/supplier/'
     | '/app/admissions/applications/$id'
     | '/app/assessments/$assessmentId/take'
@@ -3616,14 +4358,17 @@ export interface FileRouteTypes {
     | '/app/conversion-copy/landing-pages/$id'
     | '/app/employer/pipeline/$jobId'
     | '/app/instructor/courses/$courseId'
+    | '/app/instructor/lessons/create'
     | '/app/it/tickets/$id'
     | '/app/mentor/mentees/$menteeId'
     | '/app/mentor/sessions/$sessionId'
     | '/app/parent/invitation/accept'
     | '/app/parent/students/$studentId'
     | '/app/instructor/assignments/'
+    | '/app/instructor/courses/'
     | '/app/client/projects/$projectId/tasks'
     | '/app/instructor/assignments/$submissionId/grade'
+    | '/app/instructor/lessons/edit/$id'
     | '/app/learn/$courseId/lessons/$lessonId'
     | '/app/mentor/mentees/$menteeId/career'
     | '/app/mentor/mentees/$menteeId/portfolio'
@@ -3652,7 +4397,7 @@ export interface RootRouteChildren {
   ScholarshipsRoute: typeof ScholarshipsRoute
   ServicesRoute: typeof ServicesRoute
   StoriesRoute: typeof StoriesRoute
-  VisitRoute: typeof VisitRoute
+  VirtualTourRoute: typeof VirtualTourRoute
   WorkRoute: typeof WorkRoute
   AppAttendanceRoute: typeof AppAttendanceRoute
   AppCalendarRoute: typeof AppCalendarRoute
@@ -3663,9 +4408,10 @@ export interface RootRouteChildren {
   AppNotificationsRoute: typeof AppNotificationsRoute
   AppPortfolioRoute: typeof AppPortfolioRoute
   AppReportsRoute: typeof AppReportsRoute
-  ApplyStatusRoute: typeof ApplyStatusRoute
+  ApplyStatusRoute: typeof ApplyStatusRouteWithChildren
   AuthForgotPasswordRoute: typeof AuthForgotPasswordRoute
   AuthMfaRoute: typeof AuthMfaRoute
+  AuthNewDeviceRoute: typeof AuthNewDeviceRoute
   AuthResetPasswordRoute: typeof AuthResetPasswordRoute
   AuthSignInRoute: typeof AuthSignInRoute
   AuthSignUpRoute: typeof AuthSignUpRoute
@@ -3713,11 +4459,15 @@ export interface RootRouteChildren {
   PortalVolunteerRoute: typeof PortalVolunteerRoute
   ProgramsSlugRoute: typeof ProgramsSlugRoute
   ProgramsCompareRoute: typeof ProgramsCompareRoute
+  VisitBrochureRoute: typeof VisitBrochureRoute
+  VisitFeedbackRoute: typeof VisitFeedbackRoute
+  VisitInfoRoute: typeof VisitInfoRoute
   AppIndexRoute: typeof AppIndexRoute
   ApplyIndexRoute: typeof ApplyIndexRoute
   BlogIndexRoute: typeof BlogIndexRoute
   PortalIndexRoute: typeof PortalIndexRoute
   ProgramsIndexRoute: typeof ProgramsIndexRoute
+  VisitIndexRoute: typeof VisitIndexRoute
   AppAccountantAuditRoute: typeof AppAccountantAuditRoute
   AppAccountantBankingRoute: typeof AppAccountantBankingRoute
   AppAccountantBillingRoute: typeof AppAccountantBillingRoute
@@ -3749,8 +4499,19 @@ export interface RootRouteChildren {
   AppAlumniGiveBackRoute: typeof AppAlumniGiveBackRoute
   AppAlumniHubRoute: typeof AppAlumniHubRoute
   AppAlumniJobsRoute: typeof AppAlumniJobsRoute
+  AppAlumniMentorshipRoute: typeof AppAlumniMentorshipRoute
   AppAlumniNetworkRoute: typeof AppAlumniNetworkRoute
+  AppAlumniProfileRoute: typeof AppAlumniProfileRoute
+  AppAlumniStoriesRoute: typeof AppAlumniStoriesRoute
   AppAssignmentsAssignmentIdRoute: typeof AppAssignmentsAssignmentIdRoute
+  AppBehavioralDesignAbTestsRoute: typeof AppBehavioralDesignAbTestsRoute
+  AppBehavioralDesignAnalyticsRoute: typeof AppBehavioralDesignAnalyticsRoute
+  AppBehavioralDesignFlowDesignerRoute: typeof AppBehavioralDesignFlowDesignerRoute
+  AppBehavioralDesignFunnelsRoute: typeof AppBehavioralDesignFunnelsRoute
+  AppBehavioralDesignHabitsRoute: typeof AppBehavioralDesignHabitsRoute
+  AppBehavioralDesignInterventionsRoute: typeof AppBehavioralDesignInterventionsRoute
+  AppBehavioralDesignNudgeCampaignsRoute: typeof AppBehavioralDesignNudgeCampaignsRoute
+  AppBehavioralDesignSegmentsRoute: typeof AppBehavioralDesignSegmentsRoute
   AppClientContractsRoute: typeof AppClientContractsRoute
   AppClientDocumentsRoute: typeof AppClientDocumentsRoute
   AppClientInvoicesRoute: typeof AppClientInvoicesRoute
@@ -3771,6 +4532,14 @@ export interface RootRouteChildren {
   AppDepartmentInstructorsRoute: typeof AppDepartmentInstructorsRoute
   AppDepartmentQualityRoute: typeof AppDepartmentQualityRoute
   AppDepartmentReportsRoute: typeof AppDepartmentReportsRoute
+  AppDesignCollaborationRoute: typeof AppDesignCollaborationRoute
+  AppDesignComponentsRoute: typeof AppDesignComponentsRoute
+  AppDesignExportsRoute: typeof AppDesignExportsRoute
+  AppDesignFlowsRoute: typeof AppDesignFlowsRoute
+  AppDesignPrototypesRoute: typeof AppDesignPrototypesRoute
+  AppDesignSystemRoute: typeof AppDesignSystemRoute
+  AppDesignTokensRoute: typeof AppDesignTokensRoute
+  AppDesignVersionsRoute: typeof AppDesignVersionsRoute
   AppDevApiPlaygroundRoute: typeof AppDevApiPlaygroundRoute
   AppDevDependenciesRoute: typeof AppDevDependenciesRoute
   AppDevDeploymentsRoute: typeof AppDevDeploymentsRoute
@@ -3808,6 +4577,13 @@ export interface RootRouteChildren {
   AppGovernmentMessagingRoute: typeof AppGovernmentMessagingRoute
   AppGovernmentReportsRoute: typeof AppGovernmentReportsRoute
   AppGovernmentTrainingRoute: typeof AppGovernmentTrainingRoute
+  AppGrowthAttributionRoute: typeof AppGrowthAttributionRoute
+  AppGrowthCohortsRoute: typeof AppGrowthCohortsRoute
+  AppGrowthExperimentsRoute: typeof AppGrowthExperimentsRoute
+  AppGrowthFunnelRoute: typeof AppGrowthFunnelRoute
+  AppGrowthReferralsRoute: typeof AppGrowthReferralsRoute
+  AppGrowthSeoRoute: typeof AppGrowthSeoRoute
+  AppGrowthSimulatorRoute: typeof AppGrowthSimulatorRoute
   AppHrAttendanceRoute: typeof AppHrAttendanceRoute
   AppHrEmployeesRoute: typeof AppHrEmployeesRoute
   AppHrLeaveRoute: typeof AppHrLeaveRoute
@@ -3818,7 +4594,10 @@ export interface RootRouteChildren {
   AppHrReportsRoute: typeof AppHrReportsRoute
   AppHrTrainingRoute: typeof AppHrTrainingRoute
   AppInstructorAnalyticsRoute: typeof AppInstructorAnalyticsRoute
+  AppInstructorAnnouncementsRoute: typeof AppInstructorAnnouncementsRoute
+  AppInstructorAssessmentsRoute: typeof AppInstructorAssessmentsRoute
   AppInstructorAttendanceRoute: typeof AppInstructorAttendanceRoute
+  AppInstructorCalendarRoute: typeof AppInstructorCalendarRoute
   AppInstructorGradebookRoute: typeof AppInstructorGradebookRoute
   AppInternEvaluationRoute: typeof AppInternEvaluationRoute
   AppInternLearningPlanRoute: typeof AppInternLearningPlanRoute
@@ -3839,6 +4618,13 @@ export interface RootRouteChildren {
   AppItUsersRoute: typeof AppItUsersRoute
   AppLearnCourseIdRoute: typeof AppLearnCourseIdRouteWithChildren
   AppLiveClassIdRoute: typeof AppLiveClassIdRoute
+  AppLocalizationAnalyticsRoute: typeof AppLocalizationAnalyticsRoute
+  AppLocalizationDialectsRoute: typeof AppLocalizationDialectsRoute
+  AppLocalizationGlossaryRoute: typeof AppLocalizationGlossaryRoute
+  AppLocalizationPreviewRoute: typeof AppLocalizationPreviewRoute
+  AppLocalizationStyleGuidesRoute: typeof AppLocalizationStyleGuidesRoute
+  AppLocalizationTranslationMemoryRoute: typeof AppLocalizationTranslationMemoryRoute
+  AppLocalizationVariantsRoute: typeof AppLocalizationVariantsRoute
   AppMarketingAnalyticsRoute: typeof AppMarketingAnalyticsRoute
   AppMarketingCampaignsRoute: typeof AppMarketingCampaignsRoute
   AppMarketingContentCalendarRoute: typeof AppMarketingContentCalendarRoute
@@ -3850,6 +4636,7 @@ export interface RootRouteChildren {
   AppMarketingSocialRoute: typeof AppMarketingSocialRoute
   AppMentorAnalyticsRoute: typeof AppMentorAnalyticsRoute
   AppMentorGoalsRoute: typeof AppMentorGoalsRoute
+  AppMentorMessagesRoute: typeof AppMentorMessagesRoute
   AppMentorRequestsRoute: typeof AppMentorRequestsRoute
   AppMentorResourcesRoute: typeof AppMentorResourcesRoute
   AppMentorSessionsRoute: typeof AppMentorSessionsRouteWithChildren
@@ -3875,6 +4662,14 @@ export interface RootRouteChildren {
   AppPartnerReferralsRoute: typeof AppPartnerReferralsRoute
   AppPartnerReportsRoute: typeof AppPartnerReportsRoute
   AppPartnerResourcesRoute: typeof AppPartnerResourcesRoute
+  AppProductMarketingAnalyticsRoute: typeof AppProductMarketingAnalyticsRoute
+  AppProductMarketingBriefsRoute: typeof AppProductMarketingBriefsRoute
+  AppProductMarketingCompetitiveRoute: typeof AppProductMarketingCompetitiveRoute
+  AppProductMarketingGtmRoute: typeof AppProductMarketingGtmRoute
+  AppProductMarketingLaunchCalendarRoute: typeof AppProductMarketingLaunchCalendarRoute
+  AppProductMarketingMessagingRoute: typeof AppProductMarketingMessagingRoute
+  AppProductMarketingPositioningRoute: typeof AppProductMarketingPositioningRoute
+  AppProductMarketingResearchRoute: typeof AppProductMarketingResearchRoute
   AppReceptionistAppointmentsRoute: typeof AppReceptionistAppointmentsRoute
   AppReceptionistCheckInRoute: typeof AppReceptionistCheckInRoute
   AppReceptionistCheckOutRoute: typeof AppReceptionistCheckOutRoute
@@ -3900,26 +4695,35 @@ export interface RootRouteChildren {
   AppAdmissionsIndexRoute: typeof AppAdmissionsIndexRoute
   AppAssessmentsIndexRoute: typeof AppAssessmentsIndexRoute
   AppAssignmentsIndexRoute: typeof AppAssignmentsIndexRoute
+  AppBehavioralDesignIndexRoute: typeof AppBehavioralDesignIndexRoute
+  AppDesignIndexRoute: typeof AppDesignIndexRoute
   AppDevIndexRoute: typeof AppDevIndexRoute
   AppGovernmentIndexRoute: typeof AppGovernmentIndexRoute
+  AppGrowthIndexRoute: typeof AppGrowthIndexRoute
   AppHrIndexRoute: typeof AppHrIndexRoute
+  AppInstructorIndexRoute: typeof AppInstructorIndexRoute
   AppInternIndexRoute: typeof AppInternIndexRoute
   AppLearnIndexRoute: typeof AppLearnIndexRoute
+  AppLocalizationIndexRoute: typeof AppLocalizationIndexRoute
   AppMarketingIndexRoute: typeof AppMarketingIndexRoute
   AppMentorIndexRoute: typeof AppMentorIndexRoute
   AppNgoIndexRoute: typeof AppNgoIndexRoute
   AppParentIndexRoute: typeof AppParentIndexRoute
+  AppProductMarketingIndexRoute: typeof AppProductMarketingIndexRoute
   AppSupplierIndexRoute: typeof AppSupplierIndexRoute
   AppAssessmentsAssessmentIdTakeRoute: typeof AppAssessmentsAssessmentIdTakeRoute
   AppClientProjectsProjectIdRoute: typeof AppClientProjectsProjectIdRouteWithChildren
   AppConversionCopyLandingPagesIdRoute: typeof AppConversionCopyLandingPagesIdRoute
   AppEmployerPipelineJobIdRoute: typeof AppEmployerPipelineJobIdRoute
   AppInstructorCoursesCourseIdRoute: typeof AppInstructorCoursesCourseIdRoute
+  AppInstructorLessonsCreateRoute: typeof AppInstructorLessonsCreateRoute
   AppMentorMenteesMenteeIdRoute: typeof AppMentorMenteesMenteeIdRouteWithChildren
   AppParentInvitationAcceptRoute: typeof AppParentInvitationAcceptRoute
   AppParentStudentsStudentIdRoute: typeof AppParentStudentsStudentIdRouteWithChildren
   AppInstructorAssignmentsIndexRoute: typeof AppInstructorAssignmentsIndexRoute
+  AppInstructorCoursesIndexRoute: typeof AppInstructorCoursesIndexRoute
   AppInstructorAssignmentsSubmissionIdGradeRoute: typeof AppInstructorAssignmentsSubmissionIdGradeRoute
+  AppInstructorLessonsEditIdRoute: typeof AppInstructorLessonsEditIdRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -4036,11 +4840,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof StoriesRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/visit': {
-      id: '/visit'
-      path: '/visit'
-      fullPath: '/visit'
-      preLoaderRoute: typeof VisitRouteImport
+    '/virtual-tour': {
+      id: '/virtual-tour'
+      path: '/virtual-tour'
+      fullPath: '/virtual-tour'
+      preLoaderRoute: typeof VirtualTourRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/work': {
@@ -4146,6 +4950,13 @@ declare module '@tanstack/react-router' {
       path: '/auth/mfa'
       fullPath: '/auth/mfa'
       preLoaderRoute: typeof AuthMfaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth/new-device': {
+      id: '/auth/new-device'
+      path: '/auth/new-device'
+      fullPath: '/auth/new-device'
+      preLoaderRoute: typeof AuthNewDeviceRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/auth/reset-password': {
@@ -4498,6 +5309,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProgramsCompareRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/visit/': {
+      id: '/visit/'
+      path: '/visit'
+      fullPath: '/visit/'
+      preLoaderRoute: typeof VisitIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/visit/brochure': {
+      id: '/visit/brochure'
+      path: '/visit/brochure'
+      fullPath: '/visit/brochure'
+      preLoaderRoute: typeof VisitBrochureRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/visit/feedback': {
+      id: '/visit/feedback'
+      path: '/visit/feedback'
+      fullPath: '/visit/feedback'
+      preLoaderRoute: typeof VisitFeedbackRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/visit/info': {
+      id: '/visit/info'
+      path: '/visit/info'
+      fullPath: '/visit/info'
+      preLoaderRoute: typeof VisitInfoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/app/accountant/': {
       id: '/app/accountant/'
       path: '/app/accountant'
@@ -4736,11 +5575,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppAlumniJobsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/app/alumni/mentorship': {
+      id: '/app/alumni/mentorship'
+      path: '/app/alumni/mentorship'
+      fullPath: '/app/alumni/mentorship'
+      preLoaderRoute: typeof AppAlumniMentorshipRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/app/alumni/network': {
       id: '/app/alumni/network'
       path: '/app/alumni/network'
       fullPath: '/app/alumni/network'
       preLoaderRoute: typeof AppAlumniNetworkRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/alumni/profile': {
+      id: '/app/alumni/profile'
+      path: '/app/alumni/profile'
+      fullPath: '/app/alumni/profile'
+      preLoaderRoute: typeof AppAlumniProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/alumni/stories': {
+      id: '/app/alumni/stories'
+      path: '/app/alumni/stories'
+      fullPath: '/app/alumni/stories'
+      preLoaderRoute: typeof AppAlumniStoriesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/app/assessments/': {
@@ -4762,6 +5622,69 @@ declare module '@tanstack/react-router' {
       path: '/app/assignments/$assignmentId'
       fullPath: '/app/assignments/$assignmentId'
       preLoaderRoute: typeof AppAssignmentsAssignmentIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/behavioral-design/': {
+      id: '/app/behavioral-design/'
+      path: '/app/behavioral-design'
+      fullPath: '/app/behavioral-design/'
+      preLoaderRoute: typeof AppBehavioralDesignIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/behavioral-design/ab-tests': {
+      id: '/app/behavioral-design/ab-tests'
+      path: '/app/behavioral-design/ab-tests'
+      fullPath: '/app/behavioral-design/ab-tests'
+      preLoaderRoute: typeof AppBehavioralDesignAbTestsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/behavioral-design/analytics': {
+      id: '/app/behavioral-design/analytics'
+      path: '/app/behavioral-design/analytics'
+      fullPath: '/app/behavioral-design/analytics'
+      preLoaderRoute: typeof AppBehavioralDesignAnalyticsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/behavioral-design/flow-designer': {
+      id: '/app/behavioral-design/flow-designer'
+      path: '/app/behavioral-design/flow-designer'
+      fullPath: '/app/behavioral-design/flow-designer'
+      preLoaderRoute: typeof AppBehavioralDesignFlowDesignerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/behavioral-design/funnels': {
+      id: '/app/behavioral-design/funnels'
+      path: '/app/behavioral-design/funnels'
+      fullPath: '/app/behavioral-design/funnels'
+      preLoaderRoute: typeof AppBehavioralDesignFunnelsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/behavioral-design/habits': {
+      id: '/app/behavioral-design/habits'
+      path: '/app/behavioral-design/habits'
+      fullPath: '/app/behavioral-design/habits'
+      preLoaderRoute: typeof AppBehavioralDesignHabitsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/behavioral-design/interventions': {
+      id: '/app/behavioral-design/interventions'
+      path: '/app/behavioral-design/interventions'
+      fullPath: '/app/behavioral-design/interventions'
+      preLoaderRoute: typeof AppBehavioralDesignInterventionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/behavioral-design/nudge-campaigns': {
+      id: '/app/behavioral-design/nudge-campaigns'
+      path: '/app/behavioral-design/nudge-campaigns'
+      fullPath: '/app/behavioral-design/nudge-campaigns'
+      preLoaderRoute: typeof AppBehavioralDesignNudgeCampaignsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/behavioral-design/segments': {
+      id: '/app/behavioral-design/segments'
+      path: '/app/behavioral-design/segments'
+      fullPath: '/app/behavioral-design/segments'
+      preLoaderRoute: typeof AppBehavioralDesignSegmentsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/app/client/contracts': {
@@ -4902,6 +5825,69 @@ declare module '@tanstack/react-router' {
       path: '/app/department/reports'
       fullPath: '/app/department/reports'
       preLoaderRoute: typeof AppDepartmentReportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/design/': {
+      id: '/app/design/'
+      path: '/app/design'
+      fullPath: '/app/design/'
+      preLoaderRoute: typeof AppDesignIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/design/collaboration': {
+      id: '/app/design/collaboration'
+      path: '/app/design/collaboration'
+      fullPath: '/app/design/collaboration'
+      preLoaderRoute: typeof AppDesignCollaborationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/design/components': {
+      id: '/app/design/components'
+      path: '/app/design/components'
+      fullPath: '/app/design/components'
+      preLoaderRoute: typeof AppDesignComponentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/design/exports': {
+      id: '/app/design/exports'
+      path: '/app/design/exports'
+      fullPath: '/app/design/exports'
+      preLoaderRoute: typeof AppDesignExportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/design/flows': {
+      id: '/app/design/flows'
+      path: '/app/design/flows'
+      fullPath: '/app/design/flows'
+      preLoaderRoute: typeof AppDesignFlowsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/design/prototypes': {
+      id: '/app/design/prototypes'
+      path: '/app/design/prototypes'
+      fullPath: '/app/design/prototypes'
+      preLoaderRoute: typeof AppDesignPrototypesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/design/system': {
+      id: '/app/design/system'
+      path: '/app/design/system'
+      fullPath: '/app/design/system'
+      preLoaderRoute: typeof AppDesignSystemRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/design/tokens': {
+      id: '/app/design/tokens'
+      path: '/app/design/tokens'
+      fullPath: '/app/design/tokens'
+      preLoaderRoute: typeof AppDesignTokensRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/design/versions': {
+      id: '/app/design/versions'
+      path: '/app/design/versions'
+      fullPath: '/app/design/versions'
+      preLoaderRoute: typeof AppDesignVersionsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/app/dev/': {
@@ -5177,6 +6163,62 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppGovernmentTrainingRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/app/growth/': {
+      id: '/app/growth/'
+      path: '/app/growth'
+      fullPath: '/app/growth/'
+      preLoaderRoute: typeof AppGrowthIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/growth/attribution': {
+      id: '/app/growth/attribution'
+      path: '/app/growth/attribution'
+      fullPath: '/app/growth/attribution'
+      preLoaderRoute: typeof AppGrowthAttributionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/growth/cohorts': {
+      id: '/app/growth/cohorts'
+      path: '/app/growth/cohorts'
+      fullPath: '/app/growth/cohorts'
+      preLoaderRoute: typeof AppGrowthCohortsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/growth/experiments': {
+      id: '/app/growth/experiments'
+      path: '/app/growth/experiments'
+      fullPath: '/app/growth/experiments'
+      preLoaderRoute: typeof AppGrowthExperimentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/growth/funnel': {
+      id: '/app/growth/funnel'
+      path: '/app/growth/funnel'
+      fullPath: '/app/growth/funnel'
+      preLoaderRoute: typeof AppGrowthFunnelRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/growth/referrals': {
+      id: '/app/growth/referrals'
+      path: '/app/growth/referrals'
+      fullPath: '/app/growth/referrals'
+      preLoaderRoute: typeof AppGrowthReferralsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/growth/seo': {
+      id: '/app/growth/seo'
+      path: '/app/growth/seo'
+      fullPath: '/app/growth/seo'
+      preLoaderRoute: typeof AppGrowthSeoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/growth/simulator': {
+      id: '/app/growth/simulator'
+      path: '/app/growth/simulator'
+      fullPath: '/app/growth/simulator'
+      preLoaderRoute: typeof AppGrowthSimulatorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/app/hr/': {
       id: '/app/hr/'
       path: '/app/hr'
@@ -5247,6 +6289,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppHrTrainingRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/app/instructor/': {
+      id: '/app/instructor/'
+      path: '/app/instructor'
+      fullPath: '/app/instructor/'
+      preLoaderRoute: typeof AppInstructorIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/app/instructor/analytics': {
       id: '/app/instructor/analytics'
       path: '/app/instructor/analytics'
@@ -5254,11 +6303,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppInstructorAnalyticsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/app/instructor/announcements': {
+      id: '/app/instructor/announcements'
+      path: '/app/instructor/announcements'
+      fullPath: '/app/instructor/announcements'
+      preLoaderRoute: typeof AppInstructorAnnouncementsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/instructor/assessments': {
+      id: '/app/instructor/assessments'
+      path: '/app/instructor/assessments'
+      fullPath: '/app/instructor/assessments'
+      preLoaderRoute: typeof AppInstructorAssessmentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/app/instructor/attendance': {
       id: '/app/instructor/attendance'
       path: '/app/instructor/attendance'
       fullPath: '/app/instructor/attendance'
       preLoaderRoute: typeof AppInstructorAttendanceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/instructor/calendar': {
+      id: '/app/instructor/calendar'
+      path: '/app/instructor/calendar'
+      fullPath: '/app/instructor/calendar'
+      preLoaderRoute: typeof AppInstructorCalendarRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/app/instructor/gradebook': {
@@ -5415,6 +6485,62 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppLiveClassIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/app/localization/': {
+      id: '/app/localization/'
+      path: '/app/localization'
+      fullPath: '/app/localization/'
+      preLoaderRoute: typeof AppLocalizationIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/localization/analytics': {
+      id: '/app/localization/analytics'
+      path: '/app/localization/analytics'
+      fullPath: '/app/localization/analytics'
+      preLoaderRoute: typeof AppLocalizationAnalyticsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/localization/dialects': {
+      id: '/app/localization/dialects'
+      path: '/app/localization/dialects'
+      fullPath: '/app/localization/dialects'
+      preLoaderRoute: typeof AppLocalizationDialectsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/localization/glossary': {
+      id: '/app/localization/glossary'
+      path: '/app/localization/glossary'
+      fullPath: '/app/localization/glossary'
+      preLoaderRoute: typeof AppLocalizationGlossaryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/localization/preview': {
+      id: '/app/localization/preview'
+      path: '/app/localization/preview'
+      fullPath: '/app/localization/preview'
+      preLoaderRoute: typeof AppLocalizationPreviewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/localization/style-guides': {
+      id: '/app/localization/style-guides'
+      path: '/app/localization/style-guides'
+      fullPath: '/app/localization/style-guides'
+      preLoaderRoute: typeof AppLocalizationStyleGuidesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/localization/translation-memory': {
+      id: '/app/localization/translation-memory'
+      path: '/app/localization/translation-memory'
+      fullPath: '/app/localization/translation-memory'
+      preLoaderRoute: typeof AppLocalizationTranslationMemoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/localization/variants': {
+      id: '/app/localization/variants'
+      path: '/app/localization/variants'
+      fullPath: '/app/localization/variants'
+      preLoaderRoute: typeof AppLocalizationVariantsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/app/marketing/': {
       id: '/app/marketing/'
       path: '/app/marketing'
@@ -5504,6 +6630,13 @@ declare module '@tanstack/react-router' {
       path: '/app/mentor/goals'
       fullPath: '/app/mentor/goals'
       preLoaderRoute: typeof AppMentorGoalsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/mentor/messages': {
+      id: '/app/mentor/messages'
+      path: '/app/mentor/messages'
+      fullPath: '/app/mentor/messages'
+      preLoaderRoute: typeof AppMentorMessagesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/app/mentor/requests': {
@@ -5695,6 +6828,69 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppPartnerResourcesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/app/product-marketing/': {
+      id: '/app/product-marketing/'
+      path: '/app/product-marketing'
+      fullPath: '/app/product-marketing/'
+      preLoaderRoute: typeof AppProductMarketingIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/product-marketing/analytics': {
+      id: '/app/product-marketing/analytics'
+      path: '/app/product-marketing/analytics'
+      fullPath: '/app/product-marketing/analytics'
+      preLoaderRoute: typeof AppProductMarketingAnalyticsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/product-marketing/briefs': {
+      id: '/app/product-marketing/briefs'
+      path: '/app/product-marketing/briefs'
+      fullPath: '/app/product-marketing/briefs'
+      preLoaderRoute: typeof AppProductMarketingBriefsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/product-marketing/competitive': {
+      id: '/app/product-marketing/competitive'
+      path: '/app/product-marketing/competitive'
+      fullPath: '/app/product-marketing/competitive'
+      preLoaderRoute: typeof AppProductMarketingCompetitiveRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/product-marketing/gtm': {
+      id: '/app/product-marketing/gtm'
+      path: '/app/product-marketing/gtm'
+      fullPath: '/app/product-marketing/gtm'
+      preLoaderRoute: typeof AppProductMarketingGtmRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/product-marketing/launch-calendar': {
+      id: '/app/product-marketing/launch-calendar'
+      path: '/app/product-marketing/launch-calendar'
+      fullPath: '/app/product-marketing/launch-calendar'
+      preLoaderRoute: typeof AppProductMarketingLaunchCalendarRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/product-marketing/messaging': {
+      id: '/app/product-marketing/messaging'
+      path: '/app/product-marketing/messaging'
+      fullPath: '/app/product-marketing/messaging'
+      preLoaderRoute: typeof AppProductMarketingMessagingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/product-marketing/positioning': {
+      id: '/app/product-marketing/positioning'
+      path: '/app/product-marketing/positioning'
+      fullPath: '/app/product-marketing/positioning'
+      preLoaderRoute: typeof AppProductMarketingPositioningRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/product-marketing/research': {
+      id: '/app/product-marketing/research'
+      path: '/app/product-marketing/research'
+      fullPath: '/app/product-marketing/research'
+      preLoaderRoute: typeof AppProductMarketingResearchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/app/receptionist/appointments': {
       id: '/app/receptionist/appointments'
       path: '/app/receptionist/appointments'
@@ -5842,6 +7038,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppVolunteerOpportunitiesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/apply/status/$id': {
+      id: '/apply/status/$id'
+      path: '/$id'
+      fullPath: '/apply/status/$id'
+      preLoaderRoute: typeof ApplyStatusIdRouteImport
+      parentRoute: typeof ApplyStatusRoute
+    }
     '/app/admissions/applications/$id': {
       id: '/app/admissions/applications/$id'
       path: '/$id'
@@ -5884,11 +7087,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppInstructorAssignmentsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/app/instructor/courses/': {
+      id: '/app/instructor/courses/'
+      path: '/app/instructor/courses'
+      fullPath: '/app/instructor/courses/'
+      preLoaderRoute: typeof AppInstructorCoursesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/app/instructor/courses/$courseId': {
       id: '/app/instructor/courses/$courseId'
       path: '/app/instructor/courses/$courseId'
       fullPath: '/app/instructor/courses/$courseId'
       preLoaderRoute: typeof AppInstructorCoursesCourseIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/instructor/lessons/create': {
+      id: '/app/instructor/lessons/create'
+      path: '/app/instructor/lessons/create'
+      fullPath: '/app/instructor/lessons/create'
+      preLoaderRoute: typeof AppInstructorLessonsCreateRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/app/it/tickets/$id': {
@@ -5938,6 +7155,13 @@ declare module '@tanstack/react-router' {
       path: '/app/instructor/assignments/$submissionId/grade'
       fullPath: '/app/instructor/assignments/$submissionId/grade'
       preLoaderRoute: typeof AppInstructorAssignmentsSubmissionIdGradeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/instructor/lessons/edit/$id': {
+      id: '/app/instructor/lessons/edit/$id'
+      path: '/app/instructor/lessons/edit/$id'
+      fullPath: '/app/instructor/lessons/edit/$id'
+      preLoaderRoute: typeof AppInstructorLessonsEditIdRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/app/learn/$courseId/lessons/$lessonId': {
@@ -6005,6 +7229,18 @@ declare module '@tanstack/react-router' {
     }
   }
 }
+
+interface ApplyStatusRouteChildren {
+  ApplyStatusIdRoute: typeof ApplyStatusIdRoute
+}
+
+const ApplyStatusRouteChildren: ApplyStatusRouteChildren = {
+  ApplyStatusIdRoute: ApplyStatusIdRoute,
+}
+
+const ApplyStatusRouteWithChildren = ApplyStatusRoute._addFileChildren(
+  ApplyStatusRouteChildren,
+)
 
 interface AppAdmissionsApplicationsRouteChildren {
   AppAdmissionsApplicationsIdRoute: typeof AppAdmissionsApplicationsIdRoute
@@ -6141,7 +7377,7 @@ const rootRouteChildren: RootRouteChildren = {
   ScholarshipsRoute: ScholarshipsRoute,
   ServicesRoute: ServicesRoute,
   StoriesRoute: StoriesRoute,
-  VisitRoute: VisitRoute,
+  VirtualTourRoute: VirtualTourRoute,
   WorkRoute: WorkRoute,
   AppAttendanceRoute: AppAttendanceRoute,
   AppCalendarRoute: AppCalendarRoute,
@@ -6152,9 +7388,10 @@ const rootRouteChildren: RootRouteChildren = {
   AppNotificationsRoute: AppNotificationsRoute,
   AppPortfolioRoute: AppPortfolioRoute,
   AppReportsRoute: AppReportsRoute,
-  ApplyStatusRoute: ApplyStatusRoute,
+  ApplyStatusRoute: ApplyStatusRouteWithChildren,
   AuthForgotPasswordRoute: AuthForgotPasswordRoute,
   AuthMfaRoute: AuthMfaRoute,
+  AuthNewDeviceRoute: AuthNewDeviceRoute,
   AuthResetPasswordRoute: AuthResetPasswordRoute,
   AuthSignInRoute: AuthSignInRoute,
   AuthSignUpRoute: AuthSignUpRoute,
@@ -6202,11 +7439,15 @@ const rootRouteChildren: RootRouteChildren = {
   PortalVolunteerRoute: PortalVolunteerRoute,
   ProgramsSlugRoute: ProgramsSlugRoute,
   ProgramsCompareRoute: ProgramsCompareRoute,
+  VisitBrochureRoute: VisitBrochureRoute,
+  VisitFeedbackRoute: VisitFeedbackRoute,
+  VisitInfoRoute: VisitInfoRoute,
   AppIndexRoute: AppIndexRoute,
   ApplyIndexRoute: ApplyIndexRoute,
   BlogIndexRoute: BlogIndexRoute,
   PortalIndexRoute: PortalIndexRoute,
   ProgramsIndexRoute: ProgramsIndexRoute,
+  VisitIndexRoute: VisitIndexRoute,
   AppAccountantAuditRoute: AppAccountantAuditRoute,
   AppAccountantBankingRoute: AppAccountantBankingRoute,
   AppAccountantBillingRoute: AppAccountantBillingRoute,
@@ -6238,8 +7479,20 @@ const rootRouteChildren: RootRouteChildren = {
   AppAlumniGiveBackRoute: AppAlumniGiveBackRoute,
   AppAlumniHubRoute: AppAlumniHubRoute,
   AppAlumniJobsRoute: AppAlumniJobsRoute,
+  AppAlumniMentorshipRoute: AppAlumniMentorshipRoute,
   AppAlumniNetworkRoute: AppAlumniNetworkRoute,
+  AppAlumniProfileRoute: AppAlumniProfileRoute,
+  AppAlumniStoriesRoute: AppAlumniStoriesRoute,
   AppAssignmentsAssignmentIdRoute: AppAssignmentsAssignmentIdRoute,
+  AppBehavioralDesignAbTestsRoute: AppBehavioralDesignAbTestsRoute,
+  AppBehavioralDesignAnalyticsRoute: AppBehavioralDesignAnalyticsRoute,
+  AppBehavioralDesignFlowDesignerRoute: AppBehavioralDesignFlowDesignerRoute,
+  AppBehavioralDesignFunnelsRoute: AppBehavioralDesignFunnelsRoute,
+  AppBehavioralDesignHabitsRoute: AppBehavioralDesignHabitsRoute,
+  AppBehavioralDesignInterventionsRoute: AppBehavioralDesignInterventionsRoute,
+  AppBehavioralDesignNudgeCampaignsRoute:
+    AppBehavioralDesignNudgeCampaignsRoute,
+  AppBehavioralDesignSegmentsRoute: AppBehavioralDesignSegmentsRoute,
   AppClientContractsRoute: AppClientContractsRoute,
   AppClientDocumentsRoute: AppClientDocumentsRoute,
   AppClientInvoicesRoute: AppClientInvoicesRoute,
@@ -6260,6 +7513,14 @@ const rootRouteChildren: RootRouteChildren = {
   AppDepartmentInstructorsRoute: AppDepartmentInstructorsRoute,
   AppDepartmentQualityRoute: AppDepartmentQualityRoute,
   AppDepartmentReportsRoute: AppDepartmentReportsRoute,
+  AppDesignCollaborationRoute: AppDesignCollaborationRoute,
+  AppDesignComponentsRoute: AppDesignComponentsRoute,
+  AppDesignExportsRoute: AppDesignExportsRoute,
+  AppDesignFlowsRoute: AppDesignFlowsRoute,
+  AppDesignPrototypesRoute: AppDesignPrototypesRoute,
+  AppDesignSystemRoute: AppDesignSystemRoute,
+  AppDesignTokensRoute: AppDesignTokensRoute,
+  AppDesignVersionsRoute: AppDesignVersionsRoute,
   AppDevApiPlaygroundRoute: AppDevApiPlaygroundRoute,
   AppDevDependenciesRoute: AppDevDependenciesRoute,
   AppDevDeploymentsRoute: AppDevDeploymentsRoute,
@@ -6297,6 +7558,13 @@ const rootRouteChildren: RootRouteChildren = {
   AppGovernmentMessagingRoute: AppGovernmentMessagingRoute,
   AppGovernmentReportsRoute: AppGovernmentReportsRoute,
   AppGovernmentTrainingRoute: AppGovernmentTrainingRoute,
+  AppGrowthAttributionRoute: AppGrowthAttributionRoute,
+  AppGrowthCohortsRoute: AppGrowthCohortsRoute,
+  AppGrowthExperimentsRoute: AppGrowthExperimentsRoute,
+  AppGrowthFunnelRoute: AppGrowthFunnelRoute,
+  AppGrowthReferralsRoute: AppGrowthReferralsRoute,
+  AppGrowthSeoRoute: AppGrowthSeoRoute,
+  AppGrowthSimulatorRoute: AppGrowthSimulatorRoute,
   AppHrAttendanceRoute: AppHrAttendanceRoute,
   AppHrEmployeesRoute: AppHrEmployeesRoute,
   AppHrLeaveRoute: AppHrLeaveRoute,
@@ -6307,7 +7575,10 @@ const rootRouteChildren: RootRouteChildren = {
   AppHrReportsRoute: AppHrReportsRoute,
   AppHrTrainingRoute: AppHrTrainingRoute,
   AppInstructorAnalyticsRoute: AppInstructorAnalyticsRoute,
+  AppInstructorAnnouncementsRoute: AppInstructorAnnouncementsRoute,
+  AppInstructorAssessmentsRoute: AppInstructorAssessmentsRoute,
   AppInstructorAttendanceRoute: AppInstructorAttendanceRoute,
+  AppInstructorCalendarRoute: AppInstructorCalendarRoute,
   AppInstructorGradebookRoute: AppInstructorGradebookRoute,
   AppInternEvaluationRoute: AppInternEvaluationRoute,
   AppInternLearningPlanRoute: AppInternLearningPlanRoute,
@@ -6328,6 +7599,13 @@ const rootRouteChildren: RootRouteChildren = {
   AppItUsersRoute: AppItUsersRoute,
   AppLearnCourseIdRoute: AppLearnCourseIdRouteWithChildren,
   AppLiveClassIdRoute: AppLiveClassIdRoute,
+  AppLocalizationAnalyticsRoute: AppLocalizationAnalyticsRoute,
+  AppLocalizationDialectsRoute: AppLocalizationDialectsRoute,
+  AppLocalizationGlossaryRoute: AppLocalizationGlossaryRoute,
+  AppLocalizationPreviewRoute: AppLocalizationPreviewRoute,
+  AppLocalizationStyleGuidesRoute: AppLocalizationStyleGuidesRoute,
+  AppLocalizationTranslationMemoryRoute: AppLocalizationTranslationMemoryRoute,
+  AppLocalizationVariantsRoute: AppLocalizationVariantsRoute,
   AppMarketingAnalyticsRoute: AppMarketingAnalyticsRoute,
   AppMarketingCampaignsRoute: AppMarketingCampaignsRoute,
   AppMarketingContentCalendarRoute: AppMarketingContentCalendarRoute,
@@ -6339,6 +7617,7 @@ const rootRouteChildren: RootRouteChildren = {
   AppMarketingSocialRoute: AppMarketingSocialRoute,
   AppMentorAnalyticsRoute: AppMentorAnalyticsRoute,
   AppMentorGoalsRoute: AppMentorGoalsRoute,
+  AppMentorMessagesRoute: AppMentorMessagesRoute,
   AppMentorRequestsRoute: AppMentorRequestsRoute,
   AppMentorResourcesRoute: AppMentorResourcesRoute,
   AppMentorSessionsRoute: AppMentorSessionsRouteWithChildren,
@@ -6364,6 +7643,15 @@ const rootRouteChildren: RootRouteChildren = {
   AppPartnerReferralsRoute: AppPartnerReferralsRoute,
   AppPartnerReportsRoute: AppPartnerReportsRoute,
   AppPartnerResourcesRoute: AppPartnerResourcesRoute,
+  AppProductMarketingAnalyticsRoute: AppProductMarketingAnalyticsRoute,
+  AppProductMarketingBriefsRoute: AppProductMarketingBriefsRoute,
+  AppProductMarketingCompetitiveRoute: AppProductMarketingCompetitiveRoute,
+  AppProductMarketingGtmRoute: AppProductMarketingGtmRoute,
+  AppProductMarketingLaunchCalendarRoute:
+    AppProductMarketingLaunchCalendarRoute,
+  AppProductMarketingMessagingRoute: AppProductMarketingMessagingRoute,
+  AppProductMarketingPositioningRoute: AppProductMarketingPositioningRoute,
+  AppProductMarketingResearchRoute: AppProductMarketingResearchRoute,
   AppReceptionistAppointmentsRoute: AppReceptionistAppointmentsRoute,
   AppReceptionistCheckInRoute: AppReceptionistCheckInRoute,
   AppReceptionistCheckOutRoute: AppReceptionistCheckOutRoute,
@@ -6389,27 +7677,36 @@ const rootRouteChildren: RootRouteChildren = {
   AppAdmissionsIndexRoute: AppAdmissionsIndexRoute,
   AppAssessmentsIndexRoute: AppAssessmentsIndexRoute,
   AppAssignmentsIndexRoute: AppAssignmentsIndexRoute,
+  AppBehavioralDesignIndexRoute: AppBehavioralDesignIndexRoute,
+  AppDesignIndexRoute: AppDesignIndexRoute,
   AppDevIndexRoute: AppDevIndexRoute,
   AppGovernmentIndexRoute: AppGovernmentIndexRoute,
+  AppGrowthIndexRoute: AppGrowthIndexRoute,
   AppHrIndexRoute: AppHrIndexRoute,
+  AppInstructorIndexRoute: AppInstructorIndexRoute,
   AppInternIndexRoute: AppInternIndexRoute,
   AppLearnIndexRoute: AppLearnIndexRoute,
+  AppLocalizationIndexRoute: AppLocalizationIndexRoute,
   AppMarketingIndexRoute: AppMarketingIndexRoute,
   AppMentorIndexRoute: AppMentorIndexRoute,
   AppNgoIndexRoute: AppNgoIndexRoute,
   AppParentIndexRoute: AppParentIndexRoute,
+  AppProductMarketingIndexRoute: AppProductMarketingIndexRoute,
   AppSupplierIndexRoute: AppSupplierIndexRoute,
   AppAssessmentsAssessmentIdTakeRoute: AppAssessmentsAssessmentIdTakeRoute,
   AppClientProjectsProjectIdRoute: AppClientProjectsProjectIdRouteWithChildren,
   AppConversionCopyLandingPagesIdRoute: AppConversionCopyLandingPagesIdRoute,
   AppEmployerPipelineJobIdRoute: AppEmployerPipelineJobIdRoute,
   AppInstructorCoursesCourseIdRoute: AppInstructorCoursesCourseIdRoute,
+  AppInstructorLessonsCreateRoute: AppInstructorLessonsCreateRoute,
   AppMentorMenteesMenteeIdRoute: AppMentorMenteesMenteeIdRouteWithChildren,
   AppParentInvitationAcceptRoute: AppParentInvitationAcceptRoute,
   AppParentStudentsStudentIdRoute: AppParentStudentsStudentIdRouteWithChildren,
   AppInstructorAssignmentsIndexRoute: AppInstructorAssignmentsIndexRoute,
+  AppInstructorCoursesIndexRoute: AppInstructorCoursesIndexRoute,
   AppInstructorAssignmentsSubmissionIdGradeRoute:
     AppInstructorAssignmentsSubmissionIdGradeRoute,
+  AppInstructorLessonsEditIdRoute: AppInstructorLessonsEditIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

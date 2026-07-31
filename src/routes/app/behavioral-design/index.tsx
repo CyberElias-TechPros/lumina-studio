@@ -1,14 +1,16 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
+  ArrowLeft,
   ArrowRight,
-  CalendarDays,
-  FileText,
-  Megaphone,
-  MessageSquareText,
-  Rocket,
-  Search,
-  Sword,
+  Brain,
+  FlaskConical,
+  Layers,
+  MousePointerClick,
   Target,
+  TrendingUp,
+  UsersRound,
+  Workflow,
+  Zap,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -16,118 +18,125 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
 import { cn } from "@/lib/utils";
 
-export const Route = createFileRoute("/portal/product-marketing")({
+export const Route = createFileRoute("/app/behavioral-design/")({
   head: () => ({
     meta: [
-      { title: "Product Marketing — CEA-OS" },
-      { name: "description", content: "Launches, positioning, pricing and go-to-market plans." },
+      { title: "Behavioral Design Hub — CEA-OS" },
+      {
+        name: "description",
+        content: "Interventions, flows, nudges and experiments that shape learner behaviour.",
+      },
     ],
   }),
-  component: ProductMarketingPortal,
+  component: BehavioralDesignHub,
 });
 
 const screens = [
   {
-    icon: Rocket,
-    label: "GTM planner",
-    desc: "Phases, checklists, owners",
-    path: "/app/product-marketing/gtm",
+    icon: Brain,
+    label: "Interventions",
+    desc: "Evidence-based library",
+    path: "/app/behavioral-design/interventions",
     tone: "bg-primary/10 text-primary",
   },
   {
-    icon: Target,
-    label: "Positioning",
-    desc: "Statements, message house",
-    path: "/app/product-marketing/positioning",
+    icon: Workflow,
+    label: "Flow designer",
+    desc: "Step-based engagement flows",
+    path: "/app/behavioral-design/flow-designer",
     tone: "bg-learning/10 text-learning",
   },
   {
-    icon: Sword,
-    label: "Competitive intel",
-    desc: "Feature gaps, win/loss",
-    path: "/app/product-marketing/competitive",
+    icon: Zap,
+    label: "Nudge campaigns",
+    desc: "Triggers, message preview",
+    path: "/app/behavioral-design/nudge-campaigns",
     tone: "bg-success/10 text-success",
   },
   {
-    icon: CalendarDays,
-    label: "Launch calendar",
-    desc: "Dates, phases, owners",
-    path: "/app/product-marketing/launch-calendar",
+    icon: FlaskConical,
+    label: "A/B test designer",
+    desc: "Variants, sample, lift",
+    path: "/app/behavioral-design/ab-tests",
     tone: "bg-warning/10 text-warning",
   },
   {
-    icon: Search,
-    label: "Market research",
-    desc: "Studies, key findings",
-    path: "/app/product-marketing/research",
+    icon: Layers,
+    label: "Funnel analysis",
+    desc: "Conversion, drop-off",
+    path: "/app/behavioral-design/funnels",
     tone: "bg-career/10 text-career",
   },
   {
-    icon: MessageSquareText,
-    label: "Messaging matrix",
-    desc: "Product x audience grid",
-    path: "/app/product-marketing/messaging",
+    icon: Target,
+    label: "Habit tracker",
+    desc: "Streaks, check-ins",
+    path: "/app/behavioral-design/habits",
     tone: "bg-community/10 text-community",
   },
   {
-    icon: FileText,
-    label: "Campaign briefs",
-    desc: "Templates, draft statuses",
-    path: "/app/product-marketing/briefs",
+    icon: TrendingUp,
+    label: "Analytics",
+    desc: "Engagement lift, retention",
+    path: "/app/behavioral-design/analytics",
     tone: "bg-erp/10 text-erp",
   },
   {
-    icon: Megaphone,
-    label: "Analytics",
-    desc: "ROI, win rate, pipeline",
-    path: "/app/product-marketing/analytics",
+    icon: UsersRound,
+    label: "Segments",
+    desc: "Learner segment explorer",
+    path: "/app/behavioral-design/segments",
     tone: "bg-services/10 text-services",
   },
 ];
 
-function ProductMarketingPortal() {
+function BehavioralDesignHub() {
   return (
     <AppShell
-      roleKey="product-marketing"
-      title="Product marketing"
-      subtitle="Positioning, launches and GTM · Q3 2026"
+      roleKey="behavioral-design"
+      title="Behavioral design hub"
+      subtitle="7 live experiments · avg lift +7.4% · ethics review passed"
       actions={
         <>
-          <Badge className="bg-success/10 text-success border-0 font-semibold">GTM on track</Badge>
-          <Badge variant="secondary" className="font-semibold">
-            3 launches in flight
+          <Badge className="bg-success/10 text-success border-0 font-semibold">
+            3 wins this quarter
           </Badge>
+          <Button asChild variant="outline" size="sm" className="font-semibold">
+            <Link to="/portal/behavioral-designer">
+              <ArrowLeft className="size-4" /> Behavior portal
+            </Link>
+          </Button>
         </>
       }
     >
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         {[
           {
-            label: "Launches",
-            value: "3",
-            delta: "1 live now",
-            icon: Rocket,
+            label: "Live experiments",
+            value: "7",
+            delta: "2 winning",
+            icon: FlaskConical,
             tone: "bg-primary/10 text-primary",
           },
           {
-            label: "Positioning docs",
-            value: "7",
-            delta: "2 in review",
-            icon: Target,
-            tone: "bg-learning/10 text-learning",
-          },
-          {
-            label: "Competitors tracked",
-            value: "9",
-            delta: "2 new this qtr",
-            icon: Sword,
+            label: "Avg. lift",
+            value: "+7.4%",
+            delta: "across wins",
+            icon: TrendingUp,
             tone: "bg-success/10 text-success",
           },
           {
-            label: "Win rate",
-            value: "68%",
-            delta: "+5 pts QoQ",
-            icon: CalendarDays,
+            label: "Funnels mapped",
+            value: "11",
+            delta: "2 to redesign",
+            icon: Layers,
+            tone: "bg-learning/10 text-learning",
+          },
+          {
+            label: "Segments explored",
+            value: "9",
+            delta: "2 new this qtr",
+            icon: UsersRound,
             tone: "bg-warning/10 text-warning",
           },
         ].map((k) => (
@@ -149,13 +158,10 @@ function ProductMarketingPortal() {
       </div>
 
       <Card className="bg-card mt-5 shadow-soft border">
-        <CardHeader className="flex-row items-center justify-between">
+        <CardHeader>
           <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
-            <Megaphone className="text-primary size-4" /> Workspace
+            <MousePointerClick className="text-primary size-4" /> Workspace
           </CardTitle>
-          <Badge variant="secondary" className="font-semibold">
-            {screens.length} modules
-          </Badge>
         </CardHeader>
         <CardContent className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
           {screens.map((s) => (
@@ -176,12 +182,6 @@ function ProductMarketingPortal() {
           ))}
         </CardContent>
       </Card>
-
-      <div className="mt-5">
-        <Button asChild variant="outline" size="sm" className="font-semibold">
-          <Link to="/app/product-marketing">Open PM hub</Link>
-        </Button>
-      </div>
     </AppShell>
   );
 }

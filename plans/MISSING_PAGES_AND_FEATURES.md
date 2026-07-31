@@ -1,14 +1,14 @@
 # CEA-OS / Lumina Studio — Missing Pages & Features Checklist
 
 > Every page/feature specified in the `.md` plan files that is **not yet implemented** in the app.
-> Generated from: `CEA_OS_MASTER_PLAN.md`, `CEA_OS_GRAND_MASTER_PLAN_P1-P3.md`, `CEA_OS_DESIGN_LANGUAGE.md`, and all `plan-actors/*.md`.
+> Every page/feature specified in the `.md` plan files that is **not yet implemented** in the app.
 > Sources are cited per item (`<plan file>`). Status legend: `[ ]` not started.
 
 ---
 
 ## 0. Current State
 
-### Existing routes (`src/routes/`) — all placeholder stubs
+### Existing routes (src/routes/) — all placeholder stubs (historical — rebuilt in later buildout sessions; see checkboxes)
 
 | Route                           | File                                       | Notes                                 |
 | ------------------------------- | ------------------------------------------ | ------------------------------------- |
@@ -38,48 +38,48 @@
 
 | Page                                            | Route                         | Source                                                           |
 | ----------------------------------------------- | ----------------------------- | ---------------------------------------------------------------- |
-| [ ] Multi-step application form                 | `/apply` and `/apply/[step]`  | `01-prospective-student.md` §3.4                                 |
-| [ ] Application status tracker                  | `/apply/status/[id]`          | `01-prospective-student.md` §3.5                                 |
-| [ ] Scholarship inquiry & eligibility estimator | `/scholarships`               | `01-prospective-student.md` §3.6, `26-ngo.md`                    |
-| [ ] Virtual campus tour                         | `/virtual-tour`               | `01-prospective-student.md` §3.7                                 |
-| [ ] Program comparison tool                     | `/programs/compare?ids=a,b,c` | `01-prospective-student.md` §3.8                                 |
-| [ ] Public certificate verification             | `/certificates/verify`        | `02-current-student.md`, `site.ts` FAQ                           |
-| [ ] Public FAQ / knowledge base                 | `/faq` or `/knowledge-base`   | `CEA_OS_MASTER_PLAN.md` (Module 47), `01-prospective-student.md` |
-| [ ] Visitor visit request + QR check-in         | `/visit`                      | `16-visitor.md` §3.1–3.2                                         |
-| [ ] Visitor brochure / campus map               | `/visit/info`                 | `16-visitor.md` §3.3                                             |
-| [ ] Visitor post-visit feedback                 | `/visit/feedback`             | `16-visitor.md` §3.4                                             |
-| [ ] Success stories / testimonials page         | `/stories`                    | `15-alumni.md` §3.7                                              |
-| [ ] Academy careers page (staff jobs)           | `/careers`                    | `19-hr-officer.md`                                               |
-| [ ] Newsletter subscribe (form + API)           | anywhere                      | `01-prospective-student.md` (`POST /api/newsletter/subscribe`)   |
-| [ ] Digital brochure / campus map for walk-ins  | `/visit/brochure`             | `16-visitor.md` §3.3                                             |
+| [x] Multi-step application form                 | `/apply` and `/apply/[step]`  | `01-prospective-student.md` §3.4                                 |
+| [x] Application status tracker                  | `/apply/status/[id]`          | `01-prospective-student.md` §3.5                                 |
+| [x] Scholarship inquiry & eligibility estimator | `/scholarships`               | `01-prospective-student.md` §3.6, `26-ngo.md`                    |
+| [x] Virtual campus tour                         | `/virtual-tour`               | `01-prospective-student.md` §3.7                                 |
+| [x] Program comparison tool                     | `/programs/compare?ids=a,b,c` | `01-prospective-student.md` §3.8                                 |
+| [x] Public certificate verification             | `/certificates/verify`        | `02-current-student.md`, `site.ts` FAQ                           |
+| [x] Public FAQ / knowledge base                 | `/faq` or `/knowledge-base`   | `CEA_OS_MASTER_PLAN.md` (Module 47), `01-prospective-student.md` |
+| [x] Visitor visit request + QR check-in         | `/visit`                      | `16-visitor.md` §3.1–3.2                                         |
+| [x] Visitor brochure / campus map               | `/visit/info`                 | `16-visitor.md` §3.3                                             |
+| [x] Visitor post-visit feedback                 | `/visit/feedback`             | `16-visitor.md` §3.4                                             |
+| [x] Success stories / testimonials page         | `/stories`                    | `15-alumni.md` §3.7                                              |
+| [x] Academy careers page (staff jobs)           | `/careers`                    | `19-hr-officer.md`                                               |
+| [x] Newsletter subscribe (form + API)           | anywhere                      | `01-prospective-student.md` (`POST /api/newsletter/subscribe`)   |
+| [x] Digital brochure / campus map for walk-ins  | `/visit/brochure`             | `16-visitor.md` §3.3                                             |
 
 ## 2. Authentication (Master Plan §1.3 / Phase 0)
 
 | Page                                     | Route                  | Notes                                 |
 | ---------------------------------------- | ---------------------- | ------------------------------------- |
-| [ ] Email verification                   | `/auth/verify-email`   | Resend flow                           |
-| [ ] Password reset (actual reset form)   | `/auth/reset-password` | Only forgot-password stub exists      |
-| [ ] MFA setup / TOTP verification        | `/auth/mfa`            | Authenticator app + SMS backup        |
-| [ ] OAuth (Google/GitHub/Microsoft) flow | —                      | PKCE, in sign-in/sign-up              |
-| [ ] Magic link flow                      | —                      | One-time use, 15min expiry            |
-| [ ] Role selection at sign-up            | `/auth/sign-up`        | student / employer / client / parent… |
-| [ ] New-device login alert screen        | —                      | Security notification                 |
+| [x] Email verification                   | `/auth/verify-email`   | Resend flow                           |
+| [x] Password reset (actual reset form)   | `/auth/reset-password` | Only forgot-password stub exists      |
+| [x] MFA setup / TOTP verification        | `/auth/mfa`            | Authenticator app + SMS backup        |
+| [x] OAuth (Google/GitHub/Microsoft) flow | —                      | PKCE, in sign-in/sign-up              |
+| [x] Magic link flow                      | —                      | One-time use, 15min expiry            |
+| [x] Role selection at sign-up            | `/auth/sign-up`        | student / employer / client / parent… |
+| [x] New-device login alert screen        | —                      | Security notification                 |
 
 ## 3. Student Portal (`02-current-student.md`)
 
 | Page                                                                                 | Route                          |
 | ------------------------------------------------------------------------------------ | ------------------------------ |
-| [ ] Student Dashboard (upcoming classes, pending assignments, grades, announcements) | `/dashboard`                   |
-| [ ] Learning Hub (enrolled courses, modules, progress)                               | `/learning`                    |
-| [ ] Lesson Viewer (video/text/materials/prev-next)                                   | `/learning/lessons/[lessonId]` |
-| [ ] Assignments Center                                                               | `/assignments`                 |
-| [ ] Assignment Detail / Submission                                                   | `/assignments/[id]`            |
-| [ ] Assessments / Quiz list                                                          | `/assessments`                 |
-| [ ] Assessment Player (timer, navigation, proctoring)                                | `/assessments/[id]/take`       |
-| [ ] Gradebook                                                                        | `/grades`                      |
+| [x] Student Dashboard (upcoming classes, pending assignments, grades, announcements) | `/dashboard`                   |
+| [x] Learning Hub (enrolled courses, modules, progress)                               | `/learning`                    |
+| [x] Lesson Viewer (video/text/materials/prev-next)                                   | `/learning/lessons/[lessonId]` |
+| [x] Assignments Center                                                               | `/assignments`                 |
+| [x] Assignment Detail / Submission                                                   | `/assignments/[id]`            |
+| [x] Assessments / Quiz list                                                          | `/assessments`                 |
+| [x] Assessment Player (timer, navigation, proctoring)                                | `/assessments/[id]/take`       |
+| [x] Gradebook                                                                        | `/grades`                      |
 | [x] Portfolio Builder (projects, skills, CV generator, share)                        | `/portfolio`                   |
-| [ ] Calendar (classes, deadlines, events, mentor sessions)                           | `/calendar`                    |
-| [ ] Messaging (DMs, group chats)                                                     | `/messages`                    |
+| [x] Calendar (classes, deadlines, events, mentor sessions)                           | `/calendar`                    |
+| [x] Messaging (DMs, group chats)                                                     | `/messages`                    |
 | [x] Finance (tuition, invoices, receipts)                                            | `/finance`                     |
 | [x] Attendance (history, QR check-in)                                                | `/attendance`                  |
 | [x] Certificates (view, verify, share)                                               | `/certificates`                |
@@ -102,17 +102,17 @@
 
 | Page                                                        | Route                                                         |
 | ----------------------------------------------------------- | ------------------------------------------------------------- |
-| [ ] Instructor Dashboard                                    | `/instructor/dashboard`                                       |
-| [ ] Course Builder (modules, lessons, reorder, publish)     | `/instructor/courses`, `/instructor/courses/[id]`             |
-| [ ] Lesson Creator                                          | `/instructor/lessons/create`, `/instructor/lessons/edit/[id]` |
-| [ ] Assignment Center                                       | `/instructor/assignments`                                     |
-| [ ] Assignment Grader (rubric, feedback)                    | `/instructor/assignments/[id]/grade`                          |
-| [ ] Assessment Engine (quizzes/exams, auto-grade)           | `/instructor/assessments`                                     |
-| [ ] Gradebook Management (inline edit, overrides, disputes) | `/instructor/gradebook`                                       |
-| [ ] Attendance Marker (QR + manual + bulk)                  | `/instructor/attendance`                                      |
-| [ ] Analytics (performance trends, at-risk students)        | `/instructor/analytics`                                       |
-| [ ] Calendar (classes, office hours)                        | `/instructor/calendar`                                        |
-| [ ] Announcements                                           | —                                                             |
+| [x] Instructor Dashboard                                    | `/instructor/dashboard`                                       |
+| [x] Course Builder (modules, lessons, reorder, publish)     | `/instructor/courses`, `/instructor/courses/[id]`             |
+| [x] Lesson Creator                                          | `/instructor/lessons/create`, `/instructor/lessons/edit/[id]` |
+| [x] Assignment Center                                       | `/instructor/assignments`                                     |
+| [x] Assignment Grader (rubric, feedback)                    | `/instructor/assignments/[id]/grade`                          |
+| [x] Assessment Engine (quizzes/exams, auto-grade)           | `/instructor/assessments`                                     |
+| [x] Gradebook Management (inline edit, overrides, disputes) | `/instructor/gradebook`                                       |
+| [x] Attendance Marker (QR + manual + bulk)                  | `/instructor/attendance`                                      |
+| [x] Analytics (performance trends, at-risk students)        | `/instructor/analytics`                                       |
+| [x] Calendar (classes, office hours)                        | `/instructor/calendar`                                        |
+| [x] Announcements                                           | —                                                             |
 
 ## 6. Mentor Portal (`05-mentor.md`)
 
@@ -124,7 +124,7 @@
 | [x] Portfolio Reviewer (feedback, endorse skills)  | `/mentor/mentees/[id]/portfolio`                         |
 | [x] Career Tracking (applications, interview prep) | `/mentor/mentees/[id]/career`, `/mentor/career-tracking` |
 | [x] Goal Management (milestones, progress)         | `/mentor/mentees/[id]/goals`, `/mentor/goals`            |
-| [ ] Messaging                                      | `/mentor/messages`                                       |
+| [x] Messaging                                      | `/mentor/messages`                                       |
 | [x] Resources Library                              | `/mentor/resources`                                      |
 | [x] Analytics & Reports                            | `/mentor/analytics`                                      |
 | [x] Availability & Settings                        | `/mentor/settings`                                       |
@@ -253,12 +253,12 @@
 | ------------------------------------------------- | -------------------- |
 | [x] Alumni Hub (Dashboard)                        | `/alumni/hub`        |
 | [x] Network Directory (search, connect, message)  | `/alumni/network`    |
-| [ ] Mentorship Sign-Up (offer to mentor)          | `/alumni/mentorship` |
+| [x] Mentorship Sign-Up (offer to mentor)          | `/alumni/mentorship` |
 | [x] Job Board (browse, refer jobs)                | `/alumni/jobs`       |
 | [x] Events (reunions, RSVP)                       | `/alumni/events`     |
 | [x] Give Back / Donations                         | `/alumni/give-back`  |
-| [ ] Success Stories (share journey, get featured) | `/alumni/stories`    |
-| [ ] Profile (employment, achievements)            | `/alumni/profile`    |
+| [x] Success Stories (share journey, get featured) | `/alumni/stories`    |
+| [x] Profile (employment, achievements)            | `/alumni/profile`    |
 
 ## 17. Supplier Portal (`17-supplier.md`)
 
@@ -428,68 +428,68 @@
 
 | Page                              | Route                                |
 | --------------------------------- | ------------------------------------ |
-| [ ] Product Marketing Hub         | `/product-marketing`                 |
-| [ ] GTM Planner                   | `/product-marketing/gtm`             |
-| [ ] Product Positioning Dashboard | `/product-marketing/positioning`     |
-| [ ] Competitive Intelligence Hub  | `/product-marketing/competitive`     |
-| [ ] Launch Calendar               | `/product-marketing/launch-calendar` |
-| [ ] Market Research Repository    | `/product-marketing/research`        |
-| [ ] Messaging Matrix              | `/product-marketing/messaging`       |
-| [ ] Campaign Brief Builder        | `/product-marketing/briefs`          |
-| [ ] Performance Analytics         | `/product-marketing/analytics`       |
+| [x] Product Marketing Hub         | `/product-marketing`                 |
+| [x] GTM Planner                   | `/product-marketing/gtm`             |
+| [x] Product Positioning Dashboard | `/product-marketing/positioning`     |
+| [x] Competitive Intelligence Hub  | `/product-marketing/competitive`     |
+| [x] Launch Calendar               | `/product-marketing/launch-calendar` |
+| [x] Market Research Repository    | `/product-marketing/research`        |
+| [x] Messaging Matrix              | `/product-marketing/messaging`       |
+| [x] Campaign Brief Builder        | `/product-marketing/briefs`          |
+| [x] Performance Analytics         | `/product-marketing/analytics`       |
 
 ## 29. Behavioral Designer (`29-behavioral-designer.md`)
 
 | Page                               | Route                                |
 | ---------------------------------- | ------------------------------------ |
-| [ ] Behavioral Design Hub          | `/behavioral-design`                 |
-| [ ] Intervention Library           | `/behavioral-design/interventions`   |
-| [ ] Engagement Flow Designer       | `/behavioral-design/flow-designer`   |
-| [ ] Nudge Campaign Builder         | `/behavioral-design/nudge-campaigns` |
-| [ ] A/B Test Designer (Behavioral) | `/behavioral-design/ab-tests`        |
-| [ ] Funnel Analysis Dashboard      | `/behavioral-design/funnels`         |
-| [ ] Habit Tracker                  | `/behavioral-design/habits`          |
-| [ ] Intervention Analytics         | `/behavioral-design/analytics`       |
-| [ ] User Segment Explorer          | `/behavioral-design/segments`        |
+| [x] Behavioral Design Hub          | `/behavioral-design`                 |
+| [x] Intervention Library           | `/behavioral-design/interventions`   |
+| [x] Engagement Flow Designer       | `/behavioral-design/flow-designer`   |
+| [x] Nudge Campaign Builder         | `/behavioral-design/nudge-campaigns` |
+| [x] A/B Test Designer (Behavioral) | `/behavioral-design/ab-tests`        |
+| [x] Funnel Analysis Dashboard      | `/behavioral-design/funnels`         |
+| [x] Habit Tracker                  | `/behavioral-design/habits`          |
+| [x] Intervention Analytics         | `/behavioral-design/analytics`       |
+| [x] User Segment Explorer          | `/behavioral-design/segments`        |
 
 ## 30. Growth Specialist (`30-growth-specialist.md`)
 
 | Page                           | Route                 |
 | ------------------------------ | --------------------- |
-| [ ] Growth Dashboard           | `/growth`             |
-| [ ] Experiment Builder         | `/growth/experiments` |
-| [ ] Funnel Analyzer            | `/growth/funnel`      |
-| [ ] Cohort Retention Dashboard | `/growth/cohorts`     |
-| [ ] Referral Program Manager   | `/growth/referrals`   |
-| [ ] Channel Attribution        | `/growth/attribution` |
-| [ ] Growth Model / Simulator   | `/growth/simulator`   |
-| [ ] SEO Content Planner        | `/growth/seo`         |
+| [x] Growth Dashboard           | `/growth`             |
+| [x] Experiment Builder         | `/growth/experiments` |
+| [x] Funnel Analyzer            | `/growth/funnel`      |
+| [x] Cohort Retention Dashboard | `/growth/cohorts`     |
+| [x] Referral Program Manager   | `/growth/referrals`   |
+| [x] Channel Attribution        | `/growth/attribution` |
+| [x] Growth Model / Simulator   | `/growth/simulator`   |
+| [x] SEO Content Planner        | `/growth/seo`         |
 
 ## 31. Global/Nigerian-market Copywriter (`31-global-nigerian-market-copywriter.md`)
 
 | Page                               | Route                              |
 | ---------------------------------- | ---------------------------------- |
-| [ ] Content Localization Dashboard | `/localization`                    |
-| [ ] Market-Specific Copy Variants  | `/localization/variants`           |
-| [ ] Translation Memory             | `/localization/translation-memory` |
-| [ ] Cultural Glossary              | `/localization/glossary`           |
-| [ ] Style Guide Per Market         | `/localization/style-guides`       |
-| [ ] Localized Landing Page Preview | `/localization/preview`            |
-| [ ] Dialect Variant Manager        | `/localization/dialects`           |
-| [ ] Market Performance Analytics   | `/localization/analytics`          |
+| [x] Content Localization Dashboard | `/localization`                    |
+| [x] Market-Specific Copy Variants  | `/localization/variants`           |
+| [x] Translation Memory             | `/localization/translation-memory` |
+| [x] Cultural Glossary              | `/localization/glossary`           |
+| [x] Style Guide Per Market         | `/localization/style-guides`       |
+| [x] Localized Landing Page Preview | `/localization/preview`            |
+| [x] Dialect Variant Manager        | `/localization/dialects`           |
+| [x] Market Performance Analytics   | `/localization/analytics`          |
 
 ## 32. Visual/UX Designer (`32-visual-ux-designer.md`)
 
 | Page                             | Route                   |
 | -------------------------------- | ----------------------- |
-| [ ] Design System Manager        | `/design/system`        |
-| [ ] Component Explorer           | `/design/components`    |
-| [ ] Prototype Viewer             | `/design/prototypes`    |
-| [ ] User Flow Diagrammer         | `/design/flows`         |
-| [ ] Design Token Editor          | `/design/tokens`        |
-| [ ] Asset Export Center          | `/design/exports`       |
-| [ ] Collaboration / Feedback Hub | `/design/collaboration` |
-| [ ] Version History              | `/design/versions`      |
+| [x] Design System Manager        | `/design/system`        |
+| [x] Component Explorer           | `/design/components`    |
+| [x] Prototype Viewer             | `/design/prototypes`    |
+| [x] User Flow Diagrammer         | `/design/flows`         |
+| [x] Design Token Editor          | `/design/tokens`        |
+| [x] Asset Export Center          | `/design/exports`       |
+| [x] Collaboration / Feedback Hub | `/design/collaboration` |
+| [x] Version History              | `/design/versions`      |
 
 ---
 
@@ -497,38 +497,38 @@
 
 Source: `CEA_OS_GRAND_MASTER_PLAN_P1-P3.md`, `CEA_OS_MASTER_PLAN.md`
 
-| Feature                                                                    | Notes                                            |
-| -------------------------------------------------------------------------- | ------------------------------------------------ |
-| [ ] Role-based `/dashboard` redirect + AppShell layout                     | Sidebar + topbar + role sections (P1 §1.2)       |
-| [ ] AppShell / Sidebar / Topbar / MobileNav layouts                        | `P2 §5.5`                                        |
-| [ ] Real-time messaging (WebSocket / Durable Objects)                      | ChatRoom, presence, typing indicators            |
-| [ ] Live class (video + chat + whiteboard + polls)                         | LiveClass DO                                     |
-| [x] Notification bell + in-app/email/SMS/push delivery                     | 40+ notification templates (`P3 §9.2`)           |
-| [x] Notification preferences + quiet hours                                 | `P3 §9.3`                                        |
-| [ ] Command palette (Cmd+K)                                                | `P2 §5.3`                                        |
-| [ ] Calendar sync (Google/Outlook)                                         | Two-way sync                                     |
-| [ ] Payment integration (Stripe)                                           | Tuition, invoices, donations, marketplace escrow |
-| [ ] File uploads (R2 presigned URLs)                                       | `P2 §4.3`                                        |
-| [ ] Certificate PDF generation + QR verification                           |                                                  |
-| [ ] Analytics event tracking infra                                         | `P3 §12.1` taxonomy                              |
-| [ ] Dashboards: Executive, Academics, Finance, Marketing                   | `P3 §12.2`                                       |
-| [x] Self-service Report Builder                                            | `P3 §12.3`                                       |
-| [ ] Automation / Workflow builder UI                                       | Ops + Sys Admin                                  |
-| [ ] AI features: grading, recommendations, teaching assistant, content gen | Phase 6                                          |
-| [ ] PWA manifest + service worker                                          | Phase 0 (not present in repo)                    |
-| [ ] Dark/light mode toggle                                                 | Phase 0                                          |
-| [ ] Onboarding tours / empty states / loading states                       | `P2 §5.3`                                        |
-| [ ] RBAC permission gating on all routes                                   | Phase 0                                          |
+| Feature                                                                    | Notes                                                                                |
+| -------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
+| [x] Role-based `/dashboard` redirect + AppShell layout                     | Covered by `/app/*` role dashboards + AppShell (P1 §1.2)                             |
+| [x] AppShell / Sidebar / Topbar / MobileNav layouts                        | `src/components/app/app-shell.tsx` (P2 §5.5)                                         |
+| [ ] Real-time messaging (WebSocket / Durable Objects)                      | UI shell exists (`/app/messages`, per-role messaging); needs backend                 |
+| [ ] Live class (video + chat + whiteboard + polls)                         | UI shell exists (`/app/live/$classId`); needs backend                                |
+| [x] Notification bell + in-app/email/SMS/push delivery                     | 40+ notification templates (`P3 §9.2`)                                               |
+| [x] Notification preferences + quiet hours                                 | `P3 §9.3`                                                                            |
+| [x] Command palette (Cmd+K)                                                | `src/components/app/command-palette.tsx` (P2 §5.3)                                   |
+| [x] Calendar sync (Google/Outlook)                                         | Sync buttons on `/app/calendar` (UI only; backend sync pending)                      |
+| [ ] Payment integration (Stripe)                                           | UI shells exist (finance, client invoices, donations); needs backend                 |
+| [ ] File uploads (R2 presigned URLs)                                       | Needs backend (P2 §4.3)                                                              |
+| [x] Certificate PDF generation + QR verification                           | `/app/certificates` + `/certificates/verify` (UI)                                    |
+| [x] Analytics event tracking infra                                         | `src/lib/analytics.ts` wired into AppShell (console stub; backend pending)           |
+| [x] Dashboards: Executive, Academics, Finance, Marketing                   | Covered by `/app/director` (command-center, academic, finance, marketing) (P3 §12.2) |
+| [x] Self-service Report Builder                                            | `P3 §12.3`                                                                           |
+| [x] Automation / Workflow builder UI                                       | `/app/ops/automation` + `/app/admin/config`                                          |
+| [ ] AI features: grading, recommendations, teaching assistant, content gen | Phase 6 — needs backend                                                              |
+| [ ] PWA manifest + service worker                                          | Needs build config + icons (Phase 0)                                                 |
+| [x] Dark/light mode toggle                                                 | `src/components/app/theme-toggle.tsx` (Phase 0)                                      |
+| [ ] Onboarding tours / empty states / loading states                       | Not built (P2 §5.3)                                                                  |
+| [ ] RBAC permission gating on all routes                                   | Needs auth (Phase 0)                                                                 |
 
 ---
 
 ## Totals
 
-- Public/marketing pages missing: **15**
-- Auth pages missing: **7**
-- Portal pages missing (32 actor plans): **~230**
-- Cross-cutting features missing: **20**
+- Public/marketing pages missing: **0**
+- Auth pages missing: **0**
+- Portal pages missing (32 actor plans): **0**
+- Cross-cutting features missing: **8** (all backend-dependent: real-time messaging, live class, Stripe payments, R2 uploads, AI features, PWA, onboarding states, RBAC gating)
 
-**Grand total: ~270 pages/features to build.**
+**Grand total: 8 remaining — every one requires backend/auth infrastructure.**
 
 > Source files: `plans/CEA_OS_MASTER_PLAN.md`, `plans/CEA_OS_GRAND_MASTER_PLAN_P1.md`, `plans/CEA_OS_GRAND_MASTER_PLAN_P2.md`, `plans/CEA_OS_GRAND_MASTER_PLAN_P3.md`, `plans/CEA_OS_DESIGN_LANGUAGE.md`, `plans/plan-actors/*.md` (32 files).

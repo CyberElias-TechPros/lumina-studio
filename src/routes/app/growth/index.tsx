@@ -1,14 +1,15 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
+  ArrowLeft,
   ArrowRight,
-  CalendarDays,
-  FileText,
-  Megaphone,
-  MessageSquareText,
+  FlaskConical,
+  Gift,
   Rocket,
-  Search,
-  Sword,
-  Target,
+  Share2,
+  SlidersHorizontal,
+  TrendingUp,
+  Users,
+  Wallet,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -16,118 +17,116 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
 import { cn } from "@/lib/utils";
 
-export const Route = createFileRoute("/portal/product-marketing")({
+export const Route = createFileRoute("/app/growth/")({
   head: () => ({
     meta: [
-      { title: "Product Marketing — CEA-OS" },
-      { name: "description", content: "Launches, positioning, pricing and go-to-market plans." },
+      { title: "Growth Hub — CEA-OS" },
+      {
+        name: "description",
+        content: "Experiments, funnels, cohorts, referrals and growth modelling.",
+      },
     ],
   }),
-  component: ProductMarketingPortal,
+  component: GrowthHub,
 });
 
 const screens = [
   {
-    icon: Rocket,
-    label: "GTM planner",
-    desc: "Phases, checklists, owners",
-    path: "/app/product-marketing/gtm",
+    icon: FlaskConical,
+    label: "Experiment builder",
+    desc: "Hypotheses, variants, results",
+    path: "/app/growth/experiments",
     tone: "bg-primary/10 text-primary",
   },
   {
-    icon: Target,
-    label: "Positioning",
-    desc: "Statements, message house",
-    path: "/app/product-marketing/positioning",
+    icon: TrendingUp,
+    label: "Funnel analyzer",
+    desc: "Acquisition to revenue",
+    path: "/app/growth/funnel",
     tone: "bg-learning/10 text-learning",
   },
   {
-    icon: Sword,
-    label: "Competitive intel",
-    desc: "Feature gaps, win/loss",
-    path: "/app/product-marketing/competitive",
+    icon: Share2,
+    label: "Cohort retention",
+    desc: "Weekly cohort grid",
+    path: "/app/growth/cohorts",
     tone: "bg-success/10 text-success",
   },
   {
-    icon: CalendarDays,
-    label: "Launch calendar",
-    desc: "Dates, phases, owners",
-    path: "/app/product-marketing/launch-calendar",
+    icon: Gift,
+    label: "Referral program",
+    desc: "Invites, payouts",
+    path: "/app/growth/referrals",
     tone: "bg-warning/10 text-warning",
   },
   {
-    icon: Search,
-    label: "Market research",
-    desc: "Studies, key findings",
-    path: "/app/product-marketing/research",
+    icon: Wallet,
+    label: "Channel attribution",
+    desc: "CAC, LTV, ROAS",
+    path: "/app/growth/attribution",
     tone: "bg-career/10 text-career",
   },
   {
-    icon: MessageSquareText,
-    label: "Messaging matrix",
-    desc: "Product x audience grid",
-    path: "/app/product-marketing/messaging",
+    icon: SlidersHorizontal,
+    label: "Growth simulator",
+    desc: "Spend and conversion model",
+    path: "/app/growth/simulator",
     tone: "bg-community/10 text-community",
   },
   {
-    icon: FileText,
-    label: "Campaign briefs",
-    desc: "Templates, draft statuses",
-    path: "/app/product-marketing/briefs",
+    icon: Users,
+    label: "SEO content planner",
+    desc: "Keywords, rank, volume",
+    path: "/app/growth/seo",
     tone: "bg-erp/10 text-erp",
-  },
-  {
-    icon: Megaphone,
-    label: "Analytics",
-    desc: "ROI, win rate, pipeline",
-    path: "/app/product-marketing/analytics",
-    tone: "bg-services/10 text-services",
   },
 ];
 
-function ProductMarketingPortal() {
+function GrowthHub() {
   return (
     <AppShell
-      roleKey="product-marketing"
-      title="Product marketing"
-      subtitle="Positioning, launches and GTM · Q3 2026"
+      roleKey="growth"
+      title="Growth hub"
+      subtitle="Q3 2026 · CAC ₦64k · activation 64% · referral 18% of signups"
       actions={
         <>
-          <Badge className="bg-success/10 text-success border-0 font-semibold">GTM on track</Badge>
-          <Badge variant="secondary" className="font-semibold">
-            3 launches in flight
-          </Badge>
+          <Badge className="bg-success/10 text-success border-0 font-semibold">CAC −12% QoQ</Badge>
+          <Button asChild variant="outline" size="sm" className="font-semibold">
+            <Link to="/portal/growth">
+              <ArrowLeft className="size-4" /> Growth portal
+            </Link>
+          </Button>
         </>
       }
     >
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         {[
           {
-            label: "Launches",
-            value: "3",
-            delta: "1 live now",
-            icon: Rocket,
+            label: "New learners",
+            value: "148",
+            delta: "+22% MoM",
+            icon: Users,
             tone: "bg-primary/10 text-primary",
           },
           {
-            label: "Positioning docs",
-            value: "7",
-            delta: "2 in review",
-            icon: Target,
+            label: "Activation",
+            value: "64%",
+            delta: "first lesson in 3d",
+            icon: Rocket,
             tone: "bg-learning/10 text-learning",
           },
           {
-            label: "Competitors tracked",
-            value: "9",
-            delta: "2 new this qtr",
-            icon: Sword,
+            label: "Referral signups",
+            value: "27",
+            delta: "18% of total",
+            icon: Gift,
             tone: "bg-success/10 text-success",
           },
           {
-            label: "Win rate",
-            value: "68%",
-            delta: "+5 pts QoQ",
-            icon: CalendarDays,
+            label: "CAC",
+            value: "₦64k",
+            delta: "target ₦70k",
+            icon: Wallet,
             tone: "bg-warning/10 text-warning",
           },
         ].map((k) => (
@@ -149,13 +148,10 @@ function ProductMarketingPortal() {
       </div>
 
       <Card className="bg-card mt-5 shadow-soft border">
-        <CardHeader className="flex-row items-center justify-between">
+        <CardHeader>
           <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
-            <Megaphone className="text-primary size-4" /> Workspace
+            <Rocket className="text-primary size-4" /> Workspace
           </CardTitle>
-          <Badge variant="secondary" className="font-semibold">
-            {screens.length} modules
-          </Badge>
         </CardHeader>
         <CardContent className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
           {screens.map((s) => (
@@ -176,12 +172,6 @@ function ProductMarketingPortal() {
           ))}
         </CardContent>
       </Card>
-
-      <div className="mt-5">
-        <Button asChild variant="outline" size="sm" className="font-semibold">
-          <Link to="/app/product-marketing">Open PM hub</Link>
-        </Button>
-      </div>
     </AppShell>
   );
 }

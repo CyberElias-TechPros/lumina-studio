@@ -27,7 +27,7 @@ import { PageShell, PageHero, CTASection, SectionHeading } from "@/components/ma
 import { Reveal, StaggerGroup, StaggerItem } from "@/components/motion";
 import { cn } from "@/lib/utils";
 
-export const Route = createFileRoute("/visit")({
+export const Route = createFileRoute("/visit/")({
   head: () => ({
     meta: [
       { title: "Visit Us — Cyber Elias Academy" },

@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
+  ArrowLeft,
   ArrowRight,
   CalendarDays,
   FileText,
@@ -8,6 +9,7 @@ import {
   Rocket,
   Search,
   Sword,
+  Tags,
   Target,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
@@ -16,14 +18,17 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
 import { cn } from "@/lib/utils";
 
-export const Route = createFileRoute("/portal/product-marketing")({
+export const Route = createFileRoute("/app/product-marketing/")({
   head: () => ({
     meta: [
-      { title: "Product Marketing — CEA-OS" },
-      { name: "description", content: "Launches, positioning, pricing and go-to-market plans." },
+      { title: "Product Marketing Hub — CEA-OS" },
+      {
+        name: "description",
+        content: "GTM planning, positioning, competitive intel and launch analytics.",
+      },
     ],
   }),
-  component: ProductMarketingPortal,
+  component: ProductMarketingHub,
 });
 
 const screens = [
@@ -85,25 +90,27 @@ const screens = [
   },
 ];
 
-function ProductMarketingPortal() {
+function ProductMarketingHub() {
   return (
     <AppShell
       roleKey="product-marketing"
-      title="Product marketing"
-      subtitle="Positioning, launches and GTM · Q3 2026"
+      title="Product marketing hub"
+      subtitle="Q3 2026 · 3 launches in flight · GTM on track"
       actions={
         <>
           <Badge className="bg-success/10 text-success border-0 font-semibold">GTM on track</Badge>
-          <Badge variant="secondary" className="font-semibold">
-            3 launches in flight
-          </Badge>
+          <Button asChild variant="outline" size="sm" className="font-semibold">
+            <Link to="/portal/product-marketing">
+              <ArrowLeft className="size-4" /> PM portal
+            </Link>
+          </Button>
         </>
       }
     >
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         {[
           {
-            label: "Launches",
+            label: "Launches in flight",
             value: "3",
             delta: "1 live now",
             icon: Rocket,
@@ -127,7 +134,7 @@ function ProductMarketingPortal() {
             label: "Win rate",
             value: "68%",
             delta: "+5 pts QoQ",
-            icon: CalendarDays,
+            icon: Tags,
             tone: "bg-warning/10 text-warning",
           },
         ].map((k) => (
@@ -149,13 +156,10 @@ function ProductMarketingPortal() {
       </div>
 
       <Card className="bg-card mt-5 shadow-soft border">
-        <CardHeader className="flex-row items-center justify-between">
+        <CardHeader>
           <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
             <Megaphone className="text-primary size-4" /> Workspace
           </CardTitle>
-          <Badge variant="secondary" className="font-semibold">
-            {screens.length} modules
-          </Badge>
         </CardHeader>
         <CardContent className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
           {screens.map((s) => (
@@ -176,12 +180,6 @@ function ProductMarketingPortal() {
           ))}
         </CardContent>
       </Card>
-
-      <div className="mt-5">
-        <Button asChild variant="outline" size="sm" className="font-semibold">
-          <Link to="/app/product-marketing">Open PM hub</Link>
-        </Button>
-      </div>
     </AppShell>
   );
 }
