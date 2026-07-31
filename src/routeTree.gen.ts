@@ -28,6 +28,7 @@ import { Route as StoriesRouteImport } from './routes/stories'
 import { Route as VisitRouteImport } from './routes/visit'
 import { Route as WorkRouteImport } from './routes/work'
 import { Route as AppIndexRouteImport } from './routes/app.index'
+import { Route as AppGradesRouteImport } from './routes/app/grades'
 import { Route as ApplyIndexRouteImport } from './routes/apply/index'
 import { Route as ApplyStatusRouteImport } from './routes/apply/status'
 import { Route as AuthForgotPasswordRouteImport } from './routes/auth.forgot-password'
@@ -41,6 +42,7 @@ import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 import { Route as CertificatesVerifyRouteImport } from './routes/certificates.verify'
 import { Route as PortalIndexRouteImport } from './routes/portal/index'
 import { Route as PortalAcademicBoardRouteImport } from './routes/portal/academic-board'
+import { Route as PortalAccountantRouteImport } from './routes/portal/accountant'
 import { Route as PortalAdminRouteImport } from './routes/portal/admin'
 import { Route as PortalAdmissionsRouteImport } from './routes/portal/admissions'
 import { Route as PortalAlumniRouteImport } from './routes/portal/alumni'
@@ -52,17 +54,31 @@ import { Route as PortalDevopsRouteImport } from './routes/portal/devops'
 import { Route as PortalEmployerRouteImport } from './routes/portal/employer'
 import { Route as PortalExecutiveRouteImport } from './routes/portal/executive'
 import { Route as PortalFinanceRouteImport } from './routes/portal/finance'
+import { Route as PortalGovernmentRouteImport } from './routes/portal/government'
+import { Route as PortalHrRouteImport } from './routes/portal/hr'
 import { Route as PortalInstructorRouteImport } from './routes/portal/instructor'
+import { Route as PortalInternRouteImport } from './routes/portal/intern'
+import { Route as PortalItSupportRouteImport } from './routes/portal/it-support'
+import { Route as PortalMarketingRouteImport } from './routes/portal/marketing'
 import { Route as PortalMentorRouteImport } from './routes/portal/mentor'
+import { Route as PortalNgoRouteImport } from './routes/portal/ngo'
+import { Route as PortalOperationsRouteImport } from './routes/portal/operations'
 import { Route as PortalParentRouteImport } from './routes/portal/parent'
 import { Route as PortalPartnerRouteImport } from './routes/portal/partner'
 import { Route as PortalQualityRouteImport } from './routes/portal/quality'
+import { Route as PortalReceptionistRouteImport } from './routes/portal/receptionist'
 import { Route as PortalRegistrarRouteImport } from './routes/portal/registrar'
 import { Route as PortalSecurityRouteImport } from './routes/portal/security'
 import { Route as PortalStudentRouteImport } from './routes/portal/student'
+import { Route as PortalSupplierRouteImport } from './routes/portal/supplier'
+import { Route as PortalVolunteerRouteImport } from './routes/portal/volunteer'
 import { Route as ProgramsIndexRouteImport } from './routes/programs.index'
 import { Route as ProgramsSlugRouteImport } from './routes/programs.$slug'
 import { Route as ProgramsCompareRouteImport } from './routes/programs/compare'
+import { Route as AppLearnIndexRouteImport } from './routes/app/learn/index'
+import { Route as AppLearnCourseIdRouteImport } from './routes/app/learn/$courseId'
+import { Route as AppInstructorCoursesCourseIdRouteImport } from './routes/app/instructor/courses/$courseId'
+import { Route as AppLearnCourseIdLessonsLessonIdRouteImport } from './routes/app/learn/$courseId.lessons.$lessonId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -159,6 +175,11 @@ const AppIndexRoute = AppIndexRouteImport.update({
   path: '/app/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AppGradesRoute = AppGradesRouteImport.update({
+  id: '/app/grades',
+  path: '/app/grades',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApplyIndexRoute = ApplyIndexRouteImport.update({
   id: '/apply/',
   path: '/apply/',
@@ -224,6 +245,11 @@ const PortalAcademicBoardRoute = PortalAcademicBoardRouteImport.update({
   path: '/portal/academic-board',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PortalAccountantRoute = PortalAccountantRouteImport.update({
+  id: '/portal/accountant',
+  path: '/portal/accountant',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PortalAdminRoute = PortalAdminRouteImport.update({
   id: '/portal/admin',
   path: '/portal/admin',
@@ -279,14 +305,49 @@ const PortalFinanceRoute = PortalFinanceRouteImport.update({
   path: '/portal/finance',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PortalGovernmentRoute = PortalGovernmentRouteImport.update({
+  id: '/portal/government',
+  path: '/portal/government',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PortalHrRoute = PortalHrRouteImport.update({
+  id: '/portal/hr',
+  path: '/portal/hr',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PortalInstructorRoute = PortalInstructorRouteImport.update({
   id: '/portal/instructor',
   path: '/portal/instructor',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PortalInternRoute = PortalInternRouteImport.update({
+  id: '/portal/intern',
+  path: '/portal/intern',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PortalItSupportRoute = PortalItSupportRouteImport.update({
+  id: '/portal/it-support',
+  path: '/portal/it-support',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PortalMarketingRoute = PortalMarketingRouteImport.update({
+  id: '/portal/marketing',
+  path: '/portal/marketing',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PortalMentorRoute = PortalMentorRouteImport.update({
   id: '/portal/mentor',
   path: '/portal/mentor',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PortalNgoRoute = PortalNgoRouteImport.update({
+  id: '/portal/ngo',
+  path: '/portal/ngo',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PortalOperationsRoute = PortalOperationsRouteImport.update({
+  id: '/portal/operations',
+  path: '/portal/operations',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PortalParentRoute = PortalParentRouteImport.update({
@@ -304,6 +365,11 @@ const PortalQualityRoute = PortalQualityRouteImport.update({
   path: '/portal/quality',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PortalReceptionistRoute = PortalReceptionistRouteImport.update({
+  id: '/portal/receptionist',
+  path: '/portal/receptionist',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PortalRegistrarRoute = PortalRegistrarRouteImport.update({
   id: '/portal/registrar',
   path: '/portal/registrar',
@@ -317,6 +383,16 @@ const PortalSecurityRoute = PortalSecurityRouteImport.update({
 const PortalStudentRoute = PortalStudentRouteImport.update({
   id: '/portal/student',
   path: '/portal/student',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PortalSupplierRoute = PortalSupplierRouteImport.update({
+  id: '/portal/supplier',
+  path: '/portal/supplier',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PortalVolunteerRoute = PortalVolunteerRouteImport.update({
+  id: '/portal/volunteer',
+  path: '/portal/volunteer',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProgramsIndexRoute = ProgramsIndexRouteImport.update({
@@ -334,6 +410,28 @@ const ProgramsCompareRoute = ProgramsCompareRouteImport.update({
   path: '/programs/compare',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AppLearnIndexRoute = AppLearnIndexRouteImport.update({
+  id: '/app/learn/',
+  path: '/app/learn/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppLearnCourseIdRoute = AppLearnCourseIdRouteImport.update({
+  id: '/app/learn/$courseId',
+  path: '/app/learn/$courseId',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppInstructorCoursesCourseIdRoute =
+  AppInstructorCoursesCourseIdRouteImport.update({
+    id: '/app/instructor/courses/$courseId',
+    path: '/app/instructor/courses/$courseId',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AppLearnCourseIdLessonsLessonIdRoute =
+  AppLearnCourseIdLessonsLessonIdRouteImport.update({
+    id: '/lessons/$lessonId',
+    path: '/lessons/$lessonId',
+    getParentRoute: () => AppLearnCourseIdRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -354,6 +452,7 @@ export interface FileRoutesByFullPath {
   '/stories': typeof StoriesRoute
   '/visit': typeof VisitRoute
   '/work': typeof WorkRoute
+  '/app/grades': typeof AppGradesRoute
   '/apply/status': typeof ApplyStatusRoute
   '/auth/forgot-password': typeof AuthForgotPasswordRoute
   '/auth/mfa': typeof AuthMfaRoute
@@ -364,6 +463,7 @@ export interface FileRoutesByFullPath {
   '/blog/$slug': typeof BlogSlugRoute
   '/certificates/verify': typeof CertificatesVerifyRoute
   '/portal/academic-board': typeof PortalAcademicBoardRoute
+  '/portal/accountant': typeof PortalAccountantRoute
   '/portal/admin': typeof PortalAdminRoute
   '/portal/admissions': typeof PortalAdmissionsRoute
   '/portal/alumni': typeof PortalAlumniRoute
@@ -375,14 +475,24 @@ export interface FileRoutesByFullPath {
   '/portal/employer': typeof PortalEmployerRoute
   '/portal/executive': typeof PortalExecutiveRoute
   '/portal/finance': typeof PortalFinanceRoute
+  '/portal/government': typeof PortalGovernmentRoute
+  '/portal/hr': typeof PortalHrRoute
   '/portal/instructor': typeof PortalInstructorRoute
+  '/portal/intern': typeof PortalInternRoute
+  '/portal/it-support': typeof PortalItSupportRoute
+  '/portal/marketing': typeof PortalMarketingRoute
   '/portal/mentor': typeof PortalMentorRoute
+  '/portal/ngo': typeof PortalNgoRoute
+  '/portal/operations': typeof PortalOperationsRoute
   '/portal/parent': typeof PortalParentRoute
   '/portal/partner': typeof PortalPartnerRoute
   '/portal/quality': typeof PortalQualityRoute
+  '/portal/receptionist': typeof PortalReceptionistRoute
   '/portal/registrar': typeof PortalRegistrarRoute
   '/portal/security': typeof PortalSecurityRoute
   '/portal/student': typeof PortalStudentRoute
+  '/portal/supplier': typeof PortalSupplierRoute
+  '/portal/volunteer': typeof PortalVolunteerRoute
   '/programs/$slug': typeof ProgramsSlugRoute
   '/programs/compare': typeof ProgramsCompareRoute
   '/app/': typeof AppIndexRoute
@@ -390,6 +500,10 @@ export interface FileRoutesByFullPath {
   '/blog/': typeof BlogIndexRoute
   '/portal/': typeof PortalIndexRoute
   '/programs/': typeof ProgramsIndexRoute
+  '/app/learn/$courseId': typeof AppLearnCourseIdRouteWithChildren
+  '/app/learn/': typeof AppLearnIndexRoute
+  '/app/instructor/courses/$courseId': typeof AppInstructorCoursesCourseIdRoute
+  '/app/learn/$courseId/lessons/$lessonId': typeof AppLearnCourseIdLessonsLessonIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -410,6 +524,7 @@ export interface FileRoutesByTo {
   '/stories': typeof StoriesRoute
   '/visit': typeof VisitRoute
   '/work': typeof WorkRoute
+  '/app/grades': typeof AppGradesRoute
   '/apply/status': typeof ApplyStatusRoute
   '/auth/forgot-password': typeof AuthForgotPasswordRoute
   '/auth/mfa': typeof AuthMfaRoute
@@ -420,6 +535,7 @@ export interface FileRoutesByTo {
   '/blog/$slug': typeof BlogSlugRoute
   '/certificates/verify': typeof CertificatesVerifyRoute
   '/portal/academic-board': typeof PortalAcademicBoardRoute
+  '/portal/accountant': typeof PortalAccountantRoute
   '/portal/admin': typeof PortalAdminRoute
   '/portal/admissions': typeof PortalAdmissionsRoute
   '/portal/alumni': typeof PortalAlumniRoute
@@ -431,14 +547,24 @@ export interface FileRoutesByTo {
   '/portal/employer': typeof PortalEmployerRoute
   '/portal/executive': typeof PortalExecutiveRoute
   '/portal/finance': typeof PortalFinanceRoute
+  '/portal/government': typeof PortalGovernmentRoute
+  '/portal/hr': typeof PortalHrRoute
   '/portal/instructor': typeof PortalInstructorRoute
+  '/portal/intern': typeof PortalInternRoute
+  '/portal/it-support': typeof PortalItSupportRoute
+  '/portal/marketing': typeof PortalMarketingRoute
   '/portal/mentor': typeof PortalMentorRoute
+  '/portal/ngo': typeof PortalNgoRoute
+  '/portal/operations': typeof PortalOperationsRoute
   '/portal/parent': typeof PortalParentRoute
   '/portal/partner': typeof PortalPartnerRoute
   '/portal/quality': typeof PortalQualityRoute
+  '/portal/receptionist': typeof PortalReceptionistRoute
   '/portal/registrar': typeof PortalRegistrarRoute
   '/portal/security': typeof PortalSecurityRoute
   '/portal/student': typeof PortalStudentRoute
+  '/portal/supplier': typeof PortalSupplierRoute
+  '/portal/volunteer': typeof PortalVolunteerRoute
   '/programs/$slug': typeof ProgramsSlugRoute
   '/programs/compare': typeof ProgramsCompareRoute
   '/app': typeof AppIndexRoute
@@ -446,6 +572,10 @@ export interface FileRoutesByTo {
   '/blog': typeof BlogIndexRoute
   '/portal': typeof PortalIndexRoute
   '/programs': typeof ProgramsIndexRoute
+  '/app/learn/$courseId': typeof AppLearnCourseIdRouteWithChildren
+  '/app/learn': typeof AppLearnIndexRoute
+  '/app/instructor/courses/$courseId': typeof AppInstructorCoursesCourseIdRoute
+  '/app/learn/$courseId/lessons/$lessonId': typeof AppLearnCourseIdLessonsLessonIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -467,6 +597,7 @@ export interface FileRoutesById {
   '/stories': typeof StoriesRoute
   '/visit': typeof VisitRoute
   '/work': typeof WorkRoute
+  '/app/grades': typeof AppGradesRoute
   '/apply/status': typeof ApplyStatusRoute
   '/auth/forgot-password': typeof AuthForgotPasswordRoute
   '/auth/mfa': typeof AuthMfaRoute
@@ -477,6 +608,7 @@ export interface FileRoutesById {
   '/blog/$slug': typeof BlogSlugRoute
   '/certificates/verify': typeof CertificatesVerifyRoute
   '/portal/academic-board': typeof PortalAcademicBoardRoute
+  '/portal/accountant': typeof PortalAccountantRoute
   '/portal/admin': typeof PortalAdminRoute
   '/portal/admissions': typeof PortalAdmissionsRoute
   '/portal/alumni': typeof PortalAlumniRoute
@@ -488,14 +620,24 @@ export interface FileRoutesById {
   '/portal/employer': typeof PortalEmployerRoute
   '/portal/executive': typeof PortalExecutiveRoute
   '/portal/finance': typeof PortalFinanceRoute
+  '/portal/government': typeof PortalGovernmentRoute
+  '/portal/hr': typeof PortalHrRoute
   '/portal/instructor': typeof PortalInstructorRoute
+  '/portal/intern': typeof PortalInternRoute
+  '/portal/it-support': typeof PortalItSupportRoute
+  '/portal/marketing': typeof PortalMarketingRoute
   '/portal/mentor': typeof PortalMentorRoute
+  '/portal/ngo': typeof PortalNgoRoute
+  '/portal/operations': typeof PortalOperationsRoute
   '/portal/parent': typeof PortalParentRoute
   '/portal/partner': typeof PortalPartnerRoute
   '/portal/quality': typeof PortalQualityRoute
+  '/portal/receptionist': typeof PortalReceptionistRoute
   '/portal/registrar': typeof PortalRegistrarRoute
   '/portal/security': typeof PortalSecurityRoute
   '/portal/student': typeof PortalStudentRoute
+  '/portal/supplier': typeof PortalSupplierRoute
+  '/portal/volunteer': typeof PortalVolunteerRoute
   '/programs/$slug': typeof ProgramsSlugRoute
   '/programs/compare': typeof ProgramsCompareRoute
   '/app/': typeof AppIndexRoute
@@ -503,6 +645,10 @@ export interface FileRoutesById {
   '/blog/': typeof BlogIndexRoute
   '/portal/': typeof PortalIndexRoute
   '/programs/': typeof ProgramsIndexRoute
+  '/app/learn/$courseId': typeof AppLearnCourseIdRouteWithChildren
+  '/app/learn/': typeof AppLearnIndexRoute
+  '/app/instructor/courses/$courseId': typeof AppInstructorCoursesCourseIdRoute
+  '/app/learn/$courseId/lessons/$lessonId': typeof AppLearnCourseIdLessonsLessonIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -525,6 +671,7 @@ export interface FileRouteTypes {
     | '/stories'
     | '/visit'
     | '/work'
+    | '/app/grades'
     | '/apply/status'
     | '/auth/forgot-password'
     | '/auth/mfa'
@@ -535,6 +682,7 @@ export interface FileRouteTypes {
     | '/blog/$slug'
     | '/certificates/verify'
     | '/portal/academic-board'
+    | '/portal/accountant'
     | '/portal/admin'
     | '/portal/admissions'
     | '/portal/alumni'
@@ -546,14 +694,24 @@ export interface FileRouteTypes {
     | '/portal/employer'
     | '/portal/executive'
     | '/portal/finance'
+    | '/portal/government'
+    | '/portal/hr'
     | '/portal/instructor'
+    | '/portal/intern'
+    | '/portal/it-support'
+    | '/portal/marketing'
     | '/portal/mentor'
+    | '/portal/ngo'
+    | '/portal/operations'
     | '/portal/parent'
     | '/portal/partner'
     | '/portal/quality'
+    | '/portal/receptionist'
     | '/portal/registrar'
     | '/portal/security'
     | '/portal/student'
+    | '/portal/supplier'
+    | '/portal/volunteer'
     | '/programs/$slug'
     | '/programs/compare'
     | '/app/'
@@ -561,6 +719,10 @@ export interface FileRouteTypes {
     | '/blog/'
     | '/portal/'
     | '/programs/'
+    | '/app/learn/$courseId'
+    | '/app/learn/'
+    | '/app/instructor/courses/$courseId'
+    | '/app/learn/$courseId/lessons/$lessonId'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -581,6 +743,7 @@ export interface FileRouteTypes {
     | '/stories'
     | '/visit'
     | '/work'
+    | '/app/grades'
     | '/apply/status'
     | '/auth/forgot-password'
     | '/auth/mfa'
@@ -591,6 +754,7 @@ export interface FileRouteTypes {
     | '/blog/$slug'
     | '/certificates/verify'
     | '/portal/academic-board'
+    | '/portal/accountant'
     | '/portal/admin'
     | '/portal/admissions'
     | '/portal/alumni'
@@ -602,14 +766,24 @@ export interface FileRouteTypes {
     | '/portal/employer'
     | '/portal/executive'
     | '/portal/finance'
+    | '/portal/government'
+    | '/portal/hr'
     | '/portal/instructor'
+    | '/portal/intern'
+    | '/portal/it-support'
+    | '/portal/marketing'
     | '/portal/mentor'
+    | '/portal/ngo'
+    | '/portal/operations'
     | '/portal/parent'
     | '/portal/partner'
     | '/portal/quality'
+    | '/portal/receptionist'
     | '/portal/registrar'
     | '/portal/security'
     | '/portal/student'
+    | '/portal/supplier'
+    | '/portal/volunteer'
     | '/programs/$slug'
     | '/programs/compare'
     | '/app'
@@ -617,6 +791,10 @@ export interface FileRouteTypes {
     | '/blog'
     | '/portal'
     | '/programs'
+    | '/app/learn/$courseId'
+    | '/app/learn'
+    | '/app/instructor/courses/$courseId'
+    | '/app/learn/$courseId/lessons/$lessonId'
   id:
     | '__root__'
     | '/'
@@ -637,6 +815,7 @@ export interface FileRouteTypes {
     | '/stories'
     | '/visit'
     | '/work'
+    | '/app/grades'
     | '/apply/status'
     | '/auth/forgot-password'
     | '/auth/mfa'
@@ -647,6 +826,7 @@ export interface FileRouteTypes {
     | '/blog/$slug'
     | '/certificates/verify'
     | '/portal/academic-board'
+    | '/portal/accountant'
     | '/portal/admin'
     | '/portal/admissions'
     | '/portal/alumni'
@@ -658,14 +838,24 @@ export interface FileRouteTypes {
     | '/portal/employer'
     | '/portal/executive'
     | '/portal/finance'
+    | '/portal/government'
+    | '/portal/hr'
     | '/portal/instructor'
+    | '/portal/intern'
+    | '/portal/it-support'
+    | '/portal/marketing'
     | '/portal/mentor'
+    | '/portal/ngo'
+    | '/portal/operations'
     | '/portal/parent'
     | '/portal/partner'
     | '/portal/quality'
+    | '/portal/receptionist'
     | '/portal/registrar'
     | '/portal/security'
     | '/portal/student'
+    | '/portal/supplier'
+    | '/portal/volunteer'
     | '/programs/$slug'
     | '/programs/compare'
     | '/app/'
@@ -673,6 +863,10 @@ export interface FileRouteTypes {
     | '/blog/'
     | '/portal/'
     | '/programs/'
+    | '/app/learn/$courseId'
+    | '/app/learn/'
+    | '/app/instructor/courses/$courseId'
+    | '/app/learn/$courseId/lessons/$lessonId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -694,6 +888,7 @@ export interface RootRouteChildren {
   StoriesRoute: typeof StoriesRoute
   VisitRoute: typeof VisitRoute
   WorkRoute: typeof WorkRoute
+  AppGradesRoute: typeof AppGradesRoute
   ApplyStatusRoute: typeof ApplyStatusRoute
   AuthForgotPasswordRoute: typeof AuthForgotPasswordRoute
   AuthMfaRoute: typeof AuthMfaRoute
@@ -704,6 +899,7 @@ export interface RootRouteChildren {
   BlogSlugRoute: typeof BlogSlugRoute
   CertificatesVerifyRoute: typeof CertificatesVerifyRoute
   PortalAcademicBoardRoute: typeof PortalAcademicBoardRoute
+  PortalAccountantRoute: typeof PortalAccountantRoute
   PortalAdminRoute: typeof PortalAdminRoute
   PortalAdmissionsRoute: typeof PortalAdmissionsRoute
   PortalAlumniRoute: typeof PortalAlumniRoute
@@ -715,14 +911,24 @@ export interface RootRouteChildren {
   PortalEmployerRoute: typeof PortalEmployerRoute
   PortalExecutiveRoute: typeof PortalExecutiveRoute
   PortalFinanceRoute: typeof PortalFinanceRoute
+  PortalGovernmentRoute: typeof PortalGovernmentRoute
+  PortalHrRoute: typeof PortalHrRoute
   PortalInstructorRoute: typeof PortalInstructorRoute
+  PortalInternRoute: typeof PortalInternRoute
+  PortalItSupportRoute: typeof PortalItSupportRoute
+  PortalMarketingRoute: typeof PortalMarketingRoute
   PortalMentorRoute: typeof PortalMentorRoute
+  PortalNgoRoute: typeof PortalNgoRoute
+  PortalOperationsRoute: typeof PortalOperationsRoute
   PortalParentRoute: typeof PortalParentRoute
   PortalPartnerRoute: typeof PortalPartnerRoute
   PortalQualityRoute: typeof PortalQualityRoute
+  PortalReceptionistRoute: typeof PortalReceptionistRoute
   PortalRegistrarRoute: typeof PortalRegistrarRoute
   PortalSecurityRoute: typeof PortalSecurityRoute
   PortalStudentRoute: typeof PortalStudentRoute
+  PortalSupplierRoute: typeof PortalSupplierRoute
+  PortalVolunteerRoute: typeof PortalVolunteerRoute
   ProgramsSlugRoute: typeof ProgramsSlugRoute
   ProgramsCompareRoute: typeof ProgramsCompareRoute
   AppIndexRoute: typeof AppIndexRoute
@@ -730,6 +936,9 @@ export interface RootRouteChildren {
   BlogIndexRoute: typeof BlogIndexRoute
   PortalIndexRoute: typeof PortalIndexRoute
   ProgramsIndexRoute: typeof ProgramsIndexRoute
+  AppLearnCourseIdRoute: typeof AppLearnCourseIdRouteWithChildren
+  AppLearnIndexRoute: typeof AppLearnIndexRoute
+  AppInstructorCoursesCourseIdRoute: typeof AppInstructorCoursesCourseIdRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -867,6 +1076,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/app/grades': {
+      id: '/app/grades'
+      path: '/app/grades'
+      fullPath: '/app/grades'
+      preLoaderRoute: typeof AppGradesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/apply/': {
       id: '/apply/'
       path: '/apply'
@@ -958,6 +1174,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PortalAcademicBoardRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/portal/accountant': {
+      id: '/portal/accountant'
+      path: '/portal/accountant'
+      fullPath: '/portal/accountant'
+      preLoaderRoute: typeof PortalAccountantRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/portal/admin': {
       id: '/portal/admin'
       path: '/portal/admin'
@@ -1035,6 +1258,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PortalFinanceRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/portal/government': {
+      id: '/portal/government'
+      path: '/portal/government'
+      fullPath: '/portal/government'
+      preLoaderRoute: typeof PortalGovernmentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/portal/hr': {
+      id: '/portal/hr'
+      path: '/portal/hr'
+      fullPath: '/portal/hr'
+      preLoaderRoute: typeof PortalHrRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/portal/instructor': {
       id: '/portal/instructor'
       path: '/portal/instructor'
@@ -1042,11 +1279,46 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PortalInstructorRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/portal/intern': {
+      id: '/portal/intern'
+      path: '/portal/intern'
+      fullPath: '/portal/intern'
+      preLoaderRoute: typeof PortalInternRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/portal/it-support': {
+      id: '/portal/it-support'
+      path: '/portal/it-support'
+      fullPath: '/portal/it-support'
+      preLoaderRoute: typeof PortalItSupportRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/portal/marketing': {
+      id: '/portal/marketing'
+      path: '/portal/marketing'
+      fullPath: '/portal/marketing'
+      preLoaderRoute: typeof PortalMarketingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/portal/mentor': {
       id: '/portal/mentor'
       path: '/portal/mentor'
       fullPath: '/portal/mentor'
       preLoaderRoute: typeof PortalMentorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/portal/ngo': {
+      id: '/portal/ngo'
+      path: '/portal/ngo'
+      fullPath: '/portal/ngo'
+      preLoaderRoute: typeof PortalNgoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/portal/operations': {
+      id: '/portal/operations'
+      path: '/portal/operations'
+      fullPath: '/portal/operations'
+      preLoaderRoute: typeof PortalOperationsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/portal/parent': {
@@ -1070,6 +1342,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PortalQualityRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/portal/receptionist': {
+      id: '/portal/receptionist'
+      path: '/portal/receptionist'
+      fullPath: '/portal/receptionist'
+      preLoaderRoute: typeof PortalReceptionistRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/portal/registrar': {
       id: '/portal/registrar'
       path: '/portal/registrar'
@@ -1089,6 +1368,20 @@ declare module '@tanstack/react-router' {
       path: '/portal/student'
       fullPath: '/portal/student'
       preLoaderRoute: typeof PortalStudentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/portal/supplier': {
+      id: '/portal/supplier'
+      path: '/portal/supplier'
+      fullPath: '/portal/supplier'
+      preLoaderRoute: typeof PortalSupplierRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/portal/volunteer': {
+      id: '/portal/volunteer'
+      path: '/portal/volunteer'
+      fullPath: '/portal/volunteer'
+      preLoaderRoute: typeof PortalVolunteerRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/programs/': {
@@ -1112,8 +1405,47 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProgramsCompareRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/app/learn/': {
+      id: '/app/learn/'
+      path: '/app/learn'
+      fullPath: '/app/learn/'
+      preLoaderRoute: typeof AppLearnIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/learn/$courseId': {
+      id: '/app/learn/$courseId'
+      path: '/app/learn/$courseId'
+      fullPath: '/app/learn/$courseId'
+      preLoaderRoute: typeof AppLearnCourseIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/instructor/courses/$courseId': {
+      id: '/app/instructor/courses/$courseId'
+      path: '/app/instructor/courses/$courseId'
+      fullPath: '/app/instructor/courses/$courseId'
+      preLoaderRoute: typeof AppInstructorCoursesCourseIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/learn/$courseId/lessons/$lessonId': {
+      id: '/app/learn/$courseId/lessons/$lessonId'
+      path: '/lessons/$lessonId'
+      fullPath: '/app/learn/$courseId/lessons/$lessonId'
+      preLoaderRoute: typeof AppLearnCourseIdLessonsLessonIdRouteImport
+      parentRoute: typeof AppLearnCourseIdRoute
+    }
   }
 }
+
+interface AppLearnCourseIdRouteChildren {
+  AppLearnCourseIdLessonsLessonIdRoute: typeof AppLearnCourseIdLessonsLessonIdRoute
+}
+
+const AppLearnCourseIdRouteChildren: AppLearnCourseIdRouteChildren = {
+  AppLearnCourseIdLessonsLessonIdRoute: AppLearnCourseIdLessonsLessonIdRoute,
+}
+
+const AppLearnCourseIdRouteWithChildren =
+  AppLearnCourseIdRoute._addFileChildren(AppLearnCourseIdRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
@@ -1134,6 +1466,7 @@ const rootRouteChildren: RootRouteChildren = {
   StoriesRoute: StoriesRoute,
   VisitRoute: VisitRoute,
   WorkRoute: WorkRoute,
+  AppGradesRoute: AppGradesRoute,
   ApplyStatusRoute: ApplyStatusRoute,
   AuthForgotPasswordRoute: AuthForgotPasswordRoute,
   AuthMfaRoute: AuthMfaRoute,
@@ -1144,6 +1477,7 @@ const rootRouteChildren: RootRouteChildren = {
   BlogSlugRoute: BlogSlugRoute,
   CertificatesVerifyRoute: CertificatesVerifyRoute,
   PortalAcademicBoardRoute: PortalAcademicBoardRoute,
+  PortalAccountantRoute: PortalAccountantRoute,
   PortalAdminRoute: PortalAdminRoute,
   PortalAdmissionsRoute: PortalAdmissionsRoute,
   PortalAlumniRoute: PortalAlumniRoute,
@@ -1155,14 +1489,24 @@ const rootRouteChildren: RootRouteChildren = {
   PortalEmployerRoute: PortalEmployerRoute,
   PortalExecutiveRoute: PortalExecutiveRoute,
   PortalFinanceRoute: PortalFinanceRoute,
+  PortalGovernmentRoute: PortalGovernmentRoute,
+  PortalHrRoute: PortalHrRoute,
   PortalInstructorRoute: PortalInstructorRoute,
+  PortalInternRoute: PortalInternRoute,
+  PortalItSupportRoute: PortalItSupportRoute,
+  PortalMarketingRoute: PortalMarketingRoute,
   PortalMentorRoute: PortalMentorRoute,
+  PortalNgoRoute: PortalNgoRoute,
+  PortalOperationsRoute: PortalOperationsRoute,
   PortalParentRoute: PortalParentRoute,
   PortalPartnerRoute: PortalPartnerRoute,
   PortalQualityRoute: PortalQualityRoute,
+  PortalReceptionistRoute: PortalReceptionistRoute,
   PortalRegistrarRoute: PortalRegistrarRoute,
   PortalSecurityRoute: PortalSecurityRoute,
   PortalStudentRoute: PortalStudentRoute,
+  PortalSupplierRoute: PortalSupplierRoute,
+  PortalVolunteerRoute: PortalVolunteerRoute,
   ProgramsSlugRoute: ProgramsSlugRoute,
   ProgramsCompareRoute: ProgramsCompareRoute,
   AppIndexRoute: AppIndexRoute,
@@ -1170,6 +1514,9 @@ const rootRouteChildren: RootRouteChildren = {
   BlogIndexRoute: BlogIndexRoute,
   PortalIndexRoute: PortalIndexRoute,
   ProgramsIndexRoute: ProgramsIndexRoute,
+  AppLearnCourseIdRoute: AppLearnCourseIdRouteWithChildren,
+  AppLearnIndexRoute: AppLearnIndexRoute,
+  AppInstructorCoursesCourseIdRoute: AppInstructorCoursesCourseIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

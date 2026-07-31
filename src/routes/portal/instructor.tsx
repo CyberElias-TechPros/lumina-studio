@@ -149,7 +149,7 @@ function InstructorPortal() {
                 <BookOpen className="text-primary size-4" /> My courses
               </CardTitle>
               <Button asChild variant="ghost" size="sm" className="text-primary font-semibold">
-                <Link to="/app">
+                <Link to="/app/instructor/courses/$courseId" params={{ courseId: "backend-apis" }}>
                   Course builder <ArrowRight className="ml-1 size-3.5" />
                 </Link>
               </Button>

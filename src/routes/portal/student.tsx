@@ -179,7 +179,7 @@ function StudentPortal() {
                 <BookOpen className="text-primary size-4" /> Learning hub
               </CardTitle>
               <Button asChild variant="ghost" size="sm" className="text-primary font-semibold">
-                <Link to="/app">
+                <Link to="/app/learn">
                   Open hub <ArrowRight className="ml-1 size-3.5" />
                 </Link>
               </Button>
@@ -208,6 +208,11 @@ function StudentPortal() {
               <Badge variant="secondary" className="font-semibold">
                 Term 2 · Mid-term
               </Badge>
+              <Button asChild variant="ghost" size="sm" className="text-primary font-semibold">
+                <Link to="/app/grades">
+                  Full gradebook <ArrowRight className="ml-1 size-3.5" />
+                </Link>
+              </Button>
             </CardHeader>
             <CardContent>
               <div className="divide-y">
