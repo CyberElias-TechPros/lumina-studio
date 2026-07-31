@@ -93,7 +93,27 @@ function InstructorPortal() {
         </>
       }
     >
-      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+      <div className="flex flex-wrap gap-2">
+        {[
+          {
+            to: "/app/instructor/courses/$courseId",
+            label: "Course builder",
+            params: { courseId: "backend-apis" },
+          },
+          { to: "/app/instructor/assignments", label: "Assignments" },
+          { to: "/app/instructor/gradebook", label: "Gradebook" },
+          { to: "/app/instructor/attendance", label: "Attendance" },
+          { to: "/app/instructor/analytics", label: "Analytics" },
+        ].map((m) => (
+          <Button asChild key={m.label} variant="outline" size="sm" className="font-semibold">
+            <Link to={m.to} params={m.params}>
+              {m.label}
+            </Link>
+          </Button>
+        ))}
+      </div>
+
+      <div className="mt-5 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         {[
           {
             label: "Active learners",

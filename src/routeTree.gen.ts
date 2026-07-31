@@ -28,7 +28,9 @@ import { Route as StoriesRouteImport } from './routes/stories'
 import { Route as VisitRouteImport } from './routes/visit'
 import { Route as WorkRouteImport } from './routes/work'
 import { Route as AppIndexRouteImport } from './routes/app.index'
+import { Route as AppCalendarRouteImport } from './routes/app/calendar'
 import { Route as AppGradesRouteImport } from './routes/app/grades'
+import { Route as AppMessagesRouteImport } from './routes/app/messages'
 import { Route as ApplyIndexRouteImport } from './routes/apply/index'
 import { Route as ApplyStatusRouteImport } from './routes/apply/status'
 import { Route as AuthForgotPasswordRouteImport } from './routes/auth.forgot-password'
@@ -75,9 +77,18 @@ import { Route as PortalVolunteerRouteImport } from './routes/portal/volunteer'
 import { Route as ProgramsIndexRouteImport } from './routes/programs.index'
 import { Route as ProgramsSlugRouteImport } from './routes/programs.$slug'
 import { Route as ProgramsCompareRouteImport } from './routes/programs/compare'
+import { Route as AppAssessmentsIndexRouteImport } from './routes/app/assessments/index'
+import { Route as AppAssignmentsIndexRouteImport } from './routes/app/assignments/index'
+import { Route as AppAssignmentsAssignmentIdRouteImport } from './routes/app/assignments/$assignmentId'
+import { Route as AppInstructorAnalyticsRouteImport } from './routes/app/instructor/analytics'
+import { Route as AppInstructorAttendanceRouteImport } from './routes/app/instructor/attendance'
+import { Route as AppInstructorGradebookRouteImport } from './routes/app/instructor/gradebook'
 import { Route as AppLearnIndexRouteImport } from './routes/app/learn/index'
 import { Route as AppLearnCourseIdRouteImport } from './routes/app/learn/$courseId'
+import { Route as AppAssessmentsAssessmentIdTakeRouteImport } from './routes/app/assessments/$assessmentId/take'
+import { Route as AppInstructorAssignmentsIndexRouteImport } from './routes/app/instructor/assignments/index'
 import { Route as AppInstructorCoursesCourseIdRouteImport } from './routes/app/instructor/courses/$courseId'
+import { Route as AppInstructorAssignmentsSubmissionIdGradeRouteImport } from './routes/app/instructor/assignments/$submissionId.grade'
 import { Route as AppLearnCourseIdLessonsLessonIdRouteImport } from './routes/app/learn/$courseId.lessons.$lessonId'
 
 const IndexRoute = IndexRouteImport.update({
@@ -175,9 +186,19 @@ const AppIndexRoute = AppIndexRouteImport.update({
   path: '/app/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AppCalendarRoute = AppCalendarRouteImport.update({
+  id: '/app/calendar',
+  path: '/app/calendar',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AppGradesRoute = AppGradesRouteImport.update({
   id: '/app/grades',
   path: '/app/grades',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppMessagesRoute = AppMessagesRouteImport.update({
+  id: '/app/messages',
+  path: '/app/messages',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApplyIndexRoute = ApplyIndexRouteImport.update({
@@ -410,6 +431,37 @@ const ProgramsCompareRoute = ProgramsCompareRouteImport.update({
   path: '/programs/compare',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AppAssessmentsIndexRoute = AppAssessmentsIndexRouteImport.update({
+  id: '/app/assessments/',
+  path: '/app/assessments/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppAssignmentsIndexRoute = AppAssignmentsIndexRouteImport.update({
+  id: '/app/assignments/',
+  path: '/app/assignments/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppAssignmentsAssignmentIdRoute =
+  AppAssignmentsAssignmentIdRouteImport.update({
+    id: '/app/assignments/$assignmentId',
+    path: '/app/assignments/$assignmentId',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AppInstructorAnalyticsRoute = AppInstructorAnalyticsRouteImport.update({
+  id: '/app/instructor/analytics',
+  path: '/app/instructor/analytics',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppInstructorAttendanceRoute = AppInstructorAttendanceRouteImport.update({
+  id: '/app/instructor/attendance',
+  path: '/app/instructor/attendance',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppInstructorGradebookRoute = AppInstructorGradebookRouteImport.update({
+  id: '/app/instructor/gradebook',
+  path: '/app/instructor/gradebook',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AppLearnIndexRoute = AppLearnIndexRouteImport.update({
   id: '/app/learn/',
   path: '/app/learn/',
@@ -420,10 +472,28 @@ const AppLearnCourseIdRoute = AppLearnCourseIdRouteImport.update({
   path: '/app/learn/$courseId',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AppAssessmentsAssessmentIdTakeRoute =
+  AppAssessmentsAssessmentIdTakeRouteImport.update({
+    id: '/app/assessments/$assessmentId/take',
+    path: '/app/assessments/$assessmentId/take',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AppInstructorAssignmentsIndexRoute =
+  AppInstructorAssignmentsIndexRouteImport.update({
+    id: '/app/instructor/assignments/',
+    path: '/app/instructor/assignments/',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const AppInstructorCoursesCourseIdRoute =
   AppInstructorCoursesCourseIdRouteImport.update({
     id: '/app/instructor/courses/$courseId',
     path: '/app/instructor/courses/$courseId',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AppInstructorAssignmentsSubmissionIdGradeRoute =
+  AppInstructorAssignmentsSubmissionIdGradeRouteImport.update({
+    id: '/app/instructor/assignments/$submissionId/grade',
+    path: '/app/instructor/assignments/$submissionId/grade',
     getParentRoute: () => rootRouteImport,
   } as any)
 const AppLearnCourseIdLessonsLessonIdRoute =
@@ -452,7 +522,9 @@ export interface FileRoutesByFullPath {
   '/stories': typeof StoriesRoute
   '/visit': typeof VisitRoute
   '/work': typeof WorkRoute
+  '/app/calendar': typeof AppCalendarRoute
   '/app/grades': typeof AppGradesRoute
+  '/app/messages': typeof AppMessagesRoute
   '/apply/status': typeof ApplyStatusRoute
   '/auth/forgot-password': typeof AuthForgotPasswordRoute
   '/auth/mfa': typeof AuthMfaRoute
@@ -500,9 +572,18 @@ export interface FileRoutesByFullPath {
   '/blog/': typeof BlogIndexRoute
   '/portal/': typeof PortalIndexRoute
   '/programs/': typeof ProgramsIndexRoute
+  '/app/assignments/$assignmentId': typeof AppAssignmentsAssignmentIdRoute
+  '/app/instructor/analytics': typeof AppInstructorAnalyticsRoute
+  '/app/instructor/attendance': typeof AppInstructorAttendanceRoute
+  '/app/instructor/gradebook': typeof AppInstructorGradebookRoute
   '/app/learn/$courseId': typeof AppLearnCourseIdRouteWithChildren
+  '/app/assessments/': typeof AppAssessmentsIndexRoute
+  '/app/assignments/': typeof AppAssignmentsIndexRoute
   '/app/learn/': typeof AppLearnIndexRoute
+  '/app/assessments/$assessmentId/take': typeof AppAssessmentsAssessmentIdTakeRoute
   '/app/instructor/courses/$courseId': typeof AppInstructorCoursesCourseIdRoute
+  '/app/instructor/assignments/': typeof AppInstructorAssignmentsIndexRoute
+  '/app/instructor/assignments/$submissionId/grade': typeof AppInstructorAssignmentsSubmissionIdGradeRoute
   '/app/learn/$courseId/lessons/$lessonId': typeof AppLearnCourseIdLessonsLessonIdRoute
 }
 export interface FileRoutesByTo {
@@ -524,7 +605,9 @@ export interface FileRoutesByTo {
   '/stories': typeof StoriesRoute
   '/visit': typeof VisitRoute
   '/work': typeof WorkRoute
+  '/app/calendar': typeof AppCalendarRoute
   '/app/grades': typeof AppGradesRoute
+  '/app/messages': typeof AppMessagesRoute
   '/apply/status': typeof ApplyStatusRoute
   '/auth/forgot-password': typeof AuthForgotPasswordRoute
   '/auth/mfa': typeof AuthMfaRoute
@@ -572,9 +655,18 @@ export interface FileRoutesByTo {
   '/blog': typeof BlogIndexRoute
   '/portal': typeof PortalIndexRoute
   '/programs': typeof ProgramsIndexRoute
+  '/app/assignments/$assignmentId': typeof AppAssignmentsAssignmentIdRoute
+  '/app/instructor/analytics': typeof AppInstructorAnalyticsRoute
+  '/app/instructor/attendance': typeof AppInstructorAttendanceRoute
+  '/app/instructor/gradebook': typeof AppInstructorGradebookRoute
   '/app/learn/$courseId': typeof AppLearnCourseIdRouteWithChildren
+  '/app/assessments': typeof AppAssessmentsIndexRoute
+  '/app/assignments': typeof AppAssignmentsIndexRoute
   '/app/learn': typeof AppLearnIndexRoute
+  '/app/assessments/$assessmentId/take': typeof AppAssessmentsAssessmentIdTakeRoute
   '/app/instructor/courses/$courseId': typeof AppInstructorCoursesCourseIdRoute
+  '/app/instructor/assignments': typeof AppInstructorAssignmentsIndexRoute
+  '/app/instructor/assignments/$submissionId/grade': typeof AppInstructorAssignmentsSubmissionIdGradeRoute
   '/app/learn/$courseId/lessons/$lessonId': typeof AppLearnCourseIdLessonsLessonIdRoute
 }
 export interface FileRoutesById {
@@ -597,7 +689,9 @@ export interface FileRoutesById {
   '/stories': typeof StoriesRoute
   '/visit': typeof VisitRoute
   '/work': typeof WorkRoute
+  '/app/calendar': typeof AppCalendarRoute
   '/app/grades': typeof AppGradesRoute
+  '/app/messages': typeof AppMessagesRoute
   '/apply/status': typeof ApplyStatusRoute
   '/auth/forgot-password': typeof AuthForgotPasswordRoute
   '/auth/mfa': typeof AuthMfaRoute
@@ -645,9 +739,18 @@ export interface FileRoutesById {
   '/blog/': typeof BlogIndexRoute
   '/portal/': typeof PortalIndexRoute
   '/programs/': typeof ProgramsIndexRoute
+  '/app/assignments/$assignmentId': typeof AppAssignmentsAssignmentIdRoute
+  '/app/instructor/analytics': typeof AppInstructorAnalyticsRoute
+  '/app/instructor/attendance': typeof AppInstructorAttendanceRoute
+  '/app/instructor/gradebook': typeof AppInstructorGradebookRoute
   '/app/learn/$courseId': typeof AppLearnCourseIdRouteWithChildren
+  '/app/assessments/': typeof AppAssessmentsIndexRoute
+  '/app/assignments/': typeof AppAssignmentsIndexRoute
   '/app/learn/': typeof AppLearnIndexRoute
+  '/app/assessments/$assessmentId/take': typeof AppAssessmentsAssessmentIdTakeRoute
   '/app/instructor/courses/$courseId': typeof AppInstructorCoursesCourseIdRoute
+  '/app/instructor/assignments/': typeof AppInstructorAssignmentsIndexRoute
+  '/app/instructor/assignments/$submissionId/grade': typeof AppInstructorAssignmentsSubmissionIdGradeRoute
   '/app/learn/$courseId/lessons/$lessonId': typeof AppLearnCourseIdLessonsLessonIdRoute
 }
 export interface FileRouteTypes {
@@ -671,7 +774,9 @@ export interface FileRouteTypes {
     | '/stories'
     | '/visit'
     | '/work'
+    | '/app/calendar'
     | '/app/grades'
+    | '/app/messages'
     | '/apply/status'
     | '/auth/forgot-password'
     | '/auth/mfa'
@@ -719,9 +824,18 @@ export interface FileRouteTypes {
     | '/blog/'
     | '/portal/'
     | '/programs/'
+    | '/app/assignments/$assignmentId'
+    | '/app/instructor/analytics'
+    | '/app/instructor/attendance'
+    | '/app/instructor/gradebook'
     | '/app/learn/$courseId'
+    | '/app/assessments/'
+    | '/app/assignments/'
     | '/app/learn/'
+    | '/app/assessments/$assessmentId/take'
     | '/app/instructor/courses/$courseId'
+    | '/app/instructor/assignments/'
+    | '/app/instructor/assignments/$submissionId/grade'
     | '/app/learn/$courseId/lessons/$lessonId'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -743,7 +857,9 @@ export interface FileRouteTypes {
     | '/stories'
     | '/visit'
     | '/work'
+    | '/app/calendar'
     | '/app/grades'
+    | '/app/messages'
     | '/apply/status'
     | '/auth/forgot-password'
     | '/auth/mfa'
@@ -791,9 +907,18 @@ export interface FileRouteTypes {
     | '/blog'
     | '/portal'
     | '/programs'
+    | '/app/assignments/$assignmentId'
+    | '/app/instructor/analytics'
+    | '/app/instructor/attendance'
+    | '/app/instructor/gradebook'
     | '/app/learn/$courseId'
+    | '/app/assessments'
+    | '/app/assignments'
     | '/app/learn'
+    | '/app/assessments/$assessmentId/take'
     | '/app/instructor/courses/$courseId'
+    | '/app/instructor/assignments'
+    | '/app/instructor/assignments/$submissionId/grade'
     | '/app/learn/$courseId/lessons/$lessonId'
   id:
     | '__root__'
@@ -815,7 +940,9 @@ export interface FileRouteTypes {
     | '/stories'
     | '/visit'
     | '/work'
+    | '/app/calendar'
     | '/app/grades'
+    | '/app/messages'
     | '/apply/status'
     | '/auth/forgot-password'
     | '/auth/mfa'
@@ -863,9 +990,18 @@ export interface FileRouteTypes {
     | '/blog/'
     | '/portal/'
     | '/programs/'
+    | '/app/assignments/$assignmentId'
+    | '/app/instructor/analytics'
+    | '/app/instructor/attendance'
+    | '/app/instructor/gradebook'
     | '/app/learn/$courseId'
+    | '/app/assessments/'
+    | '/app/assignments/'
     | '/app/learn/'
+    | '/app/assessments/$assessmentId/take'
     | '/app/instructor/courses/$courseId'
+    | '/app/instructor/assignments/'
+    | '/app/instructor/assignments/$submissionId/grade'
     | '/app/learn/$courseId/lessons/$lessonId'
   fileRoutesById: FileRoutesById
 }
@@ -888,7 +1024,9 @@ export interface RootRouteChildren {
   StoriesRoute: typeof StoriesRoute
   VisitRoute: typeof VisitRoute
   WorkRoute: typeof WorkRoute
+  AppCalendarRoute: typeof AppCalendarRoute
   AppGradesRoute: typeof AppGradesRoute
+  AppMessagesRoute: typeof AppMessagesRoute
   ApplyStatusRoute: typeof ApplyStatusRoute
   AuthForgotPasswordRoute: typeof AuthForgotPasswordRoute
   AuthMfaRoute: typeof AuthMfaRoute
@@ -936,9 +1074,18 @@ export interface RootRouteChildren {
   BlogIndexRoute: typeof BlogIndexRoute
   PortalIndexRoute: typeof PortalIndexRoute
   ProgramsIndexRoute: typeof ProgramsIndexRoute
+  AppAssignmentsAssignmentIdRoute: typeof AppAssignmentsAssignmentIdRoute
+  AppInstructorAnalyticsRoute: typeof AppInstructorAnalyticsRoute
+  AppInstructorAttendanceRoute: typeof AppInstructorAttendanceRoute
+  AppInstructorGradebookRoute: typeof AppInstructorGradebookRoute
   AppLearnCourseIdRoute: typeof AppLearnCourseIdRouteWithChildren
+  AppAssessmentsIndexRoute: typeof AppAssessmentsIndexRoute
+  AppAssignmentsIndexRoute: typeof AppAssignmentsIndexRoute
   AppLearnIndexRoute: typeof AppLearnIndexRoute
+  AppAssessmentsAssessmentIdTakeRoute: typeof AppAssessmentsAssessmentIdTakeRoute
   AppInstructorCoursesCourseIdRoute: typeof AppInstructorCoursesCourseIdRoute
+  AppInstructorAssignmentsIndexRoute: typeof AppInstructorAssignmentsIndexRoute
+  AppInstructorAssignmentsSubmissionIdGradeRoute: typeof AppInstructorAssignmentsSubmissionIdGradeRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -1076,11 +1223,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/app/calendar': {
+      id: '/app/calendar'
+      path: '/app/calendar'
+      fullPath: '/app/calendar'
+      preLoaderRoute: typeof AppCalendarRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/app/grades': {
       id: '/app/grades'
       path: '/app/grades'
       fullPath: '/app/grades'
       preLoaderRoute: typeof AppGradesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/messages': {
+      id: '/app/messages'
+      path: '/app/messages'
+      fullPath: '/app/messages'
+      preLoaderRoute: typeof AppMessagesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/apply/': {
@@ -1405,6 +1566,48 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProgramsCompareRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/app/assessments/': {
+      id: '/app/assessments/'
+      path: '/app/assessments'
+      fullPath: '/app/assessments/'
+      preLoaderRoute: typeof AppAssessmentsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/assignments/': {
+      id: '/app/assignments/'
+      path: '/app/assignments'
+      fullPath: '/app/assignments/'
+      preLoaderRoute: typeof AppAssignmentsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/assignments/$assignmentId': {
+      id: '/app/assignments/$assignmentId'
+      path: '/app/assignments/$assignmentId'
+      fullPath: '/app/assignments/$assignmentId'
+      preLoaderRoute: typeof AppAssignmentsAssignmentIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/instructor/analytics': {
+      id: '/app/instructor/analytics'
+      path: '/app/instructor/analytics'
+      fullPath: '/app/instructor/analytics'
+      preLoaderRoute: typeof AppInstructorAnalyticsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/instructor/attendance': {
+      id: '/app/instructor/attendance'
+      path: '/app/instructor/attendance'
+      fullPath: '/app/instructor/attendance'
+      preLoaderRoute: typeof AppInstructorAttendanceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/instructor/gradebook': {
+      id: '/app/instructor/gradebook'
+      path: '/app/instructor/gradebook'
+      fullPath: '/app/instructor/gradebook'
+      preLoaderRoute: typeof AppInstructorGradebookRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/app/learn/': {
       id: '/app/learn/'
       path: '/app/learn'
@@ -1419,11 +1622,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppLearnCourseIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/app/assessments/$assessmentId/take': {
+      id: '/app/assessments/$assessmentId/take'
+      path: '/app/assessments/$assessmentId/take'
+      fullPath: '/app/assessments/$assessmentId/take'
+      preLoaderRoute: typeof AppAssessmentsAssessmentIdTakeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/instructor/assignments/': {
+      id: '/app/instructor/assignments/'
+      path: '/app/instructor/assignments'
+      fullPath: '/app/instructor/assignments/'
+      preLoaderRoute: typeof AppInstructorAssignmentsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/app/instructor/courses/$courseId': {
       id: '/app/instructor/courses/$courseId'
       path: '/app/instructor/courses/$courseId'
       fullPath: '/app/instructor/courses/$courseId'
       preLoaderRoute: typeof AppInstructorCoursesCourseIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/instructor/assignments/$submissionId/grade': {
+      id: '/app/instructor/assignments/$submissionId/grade'
+      path: '/app/instructor/assignments/$submissionId/grade'
+      fullPath: '/app/instructor/assignments/$submissionId/grade'
+      preLoaderRoute: typeof AppInstructorAssignmentsSubmissionIdGradeRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/app/learn/$courseId/lessons/$lessonId': {
@@ -1466,7 +1690,9 @@ const rootRouteChildren: RootRouteChildren = {
   StoriesRoute: StoriesRoute,
   VisitRoute: VisitRoute,
   WorkRoute: WorkRoute,
+  AppCalendarRoute: AppCalendarRoute,
   AppGradesRoute: AppGradesRoute,
+  AppMessagesRoute: AppMessagesRoute,
   ApplyStatusRoute: ApplyStatusRoute,
   AuthForgotPasswordRoute: AuthForgotPasswordRoute,
   AuthMfaRoute: AuthMfaRoute,
@@ -1514,9 +1740,19 @@ const rootRouteChildren: RootRouteChildren = {
   BlogIndexRoute: BlogIndexRoute,
   PortalIndexRoute: PortalIndexRoute,
   ProgramsIndexRoute: ProgramsIndexRoute,
+  AppAssignmentsAssignmentIdRoute: AppAssignmentsAssignmentIdRoute,
+  AppInstructorAnalyticsRoute: AppInstructorAnalyticsRoute,
+  AppInstructorAttendanceRoute: AppInstructorAttendanceRoute,
+  AppInstructorGradebookRoute: AppInstructorGradebookRoute,
   AppLearnCourseIdRoute: AppLearnCourseIdRouteWithChildren,
+  AppAssessmentsIndexRoute: AppAssessmentsIndexRoute,
+  AppAssignmentsIndexRoute: AppAssignmentsIndexRoute,
   AppLearnIndexRoute: AppLearnIndexRoute,
+  AppAssessmentsAssessmentIdTakeRoute: AppAssessmentsAssessmentIdTakeRoute,
   AppInstructorCoursesCourseIdRoute: AppInstructorCoursesCourseIdRoute,
+  AppInstructorAssignmentsIndexRoute: AppInstructorAssignmentsIndexRoute,
+  AppInstructorAssignmentsSubmissionIdGradeRoute:
+    AppInstructorAssignmentsSubmissionIdGradeRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

@@ -411,3 +411,513 @@ export const courseBuilder = {
     },
   ],
 };
+
+export interface StudentAssignment {
+  id: string;
+  title: string;
+  course: string;
+  description: string;
+  due: string;
+  status: "submitted" | "pending" | "draft" | "graded";
+  score?: number;
+  max: number;
+  weight: number;
+  submissions?: { file: string; size: string; uploaded: string }[];
+  rubric: { criterion: string; detail: string; weight: number }[];
+}
+
+export const assignments: StudentAssignment[] = [
+  {
+    id: "a1",
+    title: "Build: REST API assignment",
+    course: "Backend & APIs",
+    description:
+      "Ship a production-ready REST API in Express with PostgreSQL, auth (JWT + refresh rotation), validation, and a test suite. Follow the starter repo and the acceptance criteria below.",
+    due: "Today 23:59",
+    status: "submitted",
+    weight: 25,
+    max: 100,
+    submissions: [{ file: "api-submission.zip", size: "4.2 MB", uploaded: "Today 18:31" }],
+    rubric: [
+      {
+        criterion: "API design & routes",
+        detail: "REST conventions, status codes, error shapes",
+        weight: 20,
+      },
+      { criterion: "Auth & security", detail: "JWT rotation, bcrypt, rate limiting", weight: 25 },
+      { criterion: "Data layer", detail: "Postgres schema, migrations, indexes", weight: 25 },
+      { criterion: "Tests & docs", detail: "Coverage > 70%, README with runbook", weight: 15 },
+      { criterion: "Code quality", detail: "Linting, typing, no secrets in repo", weight: 15 },
+    ],
+  },
+  {
+    id: "a2",
+    title: "Containerisation assignment",
+    course: "DevOps Fundamentals",
+    description:
+      "Dockerise the REST API from the backend course: multi-stage build, health checks, docker-compose for the stack, and a CI workflow that builds and pushes images.",
+    due: "Sun · 23:59",
+    status: "draft",
+    max: 100,
+    weight: 30,
+    submissions: [
+      { file: "dockerfile-draft.Dockerfile", size: "8 KB", uploaded: "Yesterday 21:04" },
+    ],
+    rubric: [
+      { criterion: "Dockerfile", detail: "Multi-stage, non-root user, pinned base", weight: 30 },
+      { criterion: "Compose stack", detail: "App + db + reverse proxy with volumes", weight: 30 },
+      { criterion: "CI pipeline", detail: "Build, scan, publish images", weight: 25 },
+      { criterion: "Docs", detail: "Local run instructions", weight: 15 },
+    ],
+  },
+  {
+    id: "a3",
+    title: "Capstone artifact #3 — portfolio piece",
+    course: "Product & UI/UX Design",
+    description:
+      "Third capstone artifact: a polished case study of one project — problem, process, prototypes and outcome. Must be published to your portfolio page.",
+    due: "Aug 9 · 23:59",
+    status: "pending",
+    max: 100,
+    weight: 30,
+    rubric: [
+      { criterion: "Storytelling", detail: "Clear problem → process → outcome", weight: 30 },
+      { criterion: "Craft", detail: "Visual polish, consistency", weight: 30 },
+      { criterion: "Depth", detail: "Research and iteration shown", weight: 25 },
+      { criterion: "Publishing", detail: "Live URL in portfolio", weight: 15 },
+    ],
+  },
+  {
+    id: "a4",
+    title: "Pattern library assignment",
+    course: "Design Systems",
+    description:
+      "Extend the cohort design system: document 5 new components with usage, anatomy and accessibility notes in Storybook.",
+    due: "Graded",
+    status: "graded",
+    score: 87,
+    max: 100,
+    weight: 35,
+    rubric: [
+      { criterion: "Documentation", detail: "Usage, anatomy, do/don't", weight: 40 },
+      { criterion: "Accessibility", detail: "Keyboard, contrast, ARIA", weight: 30 },
+      { criterion: "Consistency", detail: "Tokens, naming, variants", weight: 30 },
+    ],
+  },
+];
+
+export const assignmentById = (id: string) => assignments.find((a) => a.id === id);
+
+export interface Assessment {
+  id: string;
+  title: string;
+  course: string;
+  kind: "quiz" | "exam" | "test";
+  questions: number;
+  duration: string;
+  due: string;
+  status: "done" | "available" | "scheduled" | "overdue";
+  score?: number;
+  max?: number;
+  attempts: number;
+  attemptsLeft: number;
+  window: string;
+}
+
+export const assessments: Assessment[] = [
+  {
+    id: "q1",
+    title: "Auth & security knowledge check",
+    course: "Backend & APIs",
+    kind: "quiz",
+    questions: 5,
+    duration: "20 min",
+    due: "Due Fri",
+    status: "available",
+    attempts: 1,
+    attemptsLeft: 2,
+    window: "Opens Thu 00:00 · closes Sun 23:59",
+  },
+  {
+    id: "q2",
+    title: "HTTP & REST fundamentals",
+    course: "Backend & APIs",
+    kind: "quiz",
+    questions: 10,
+    duration: "25 min",
+    due: "Done · 46/50",
+    status: "done",
+    score: 46,
+    max: 50,
+    attempts: 1,
+    attemptsLeft: 1,
+    window: "Closed",
+  },
+  {
+    id: "t1",
+    title: "Mid-term test — Backend",
+    course: "Backend & APIs",
+    kind: "test",
+    questions: 30,
+    duration: "90 min",
+    due: "Graded · 91%",
+    status: "done",
+    score: 91,
+    max: 100,
+    attempts: 1,
+    attemptsLeft: 0,
+    window: "Closed",
+  },
+  {
+    id: "e1",
+    title: "Term exam — Full-Stack capstone",
+    course: "Full-Stack Software Development",
+    kind: "exam",
+    questions: 45,
+    duration: "3 h",
+    due: "Aug 20 · 09:00",
+    status: "scheduled",
+    attempts: 1,
+    attemptsLeft: 0,
+    window: "Opens Aug 20 09:00 · closes 12:00",
+  },
+];
+
+export interface CalendarEvent {
+  id: string;
+  date: string;
+  day: string;
+  title: string;
+  kind: "class" | "deadline" | "mentor" | "event" | "exam";
+  time: string;
+  location: string;
+}
+
+export const calendarEvents: CalendarEvent[] = [
+  {
+    id: "c1",
+    date: "31",
+    day: "Fri",
+    title: "Backend live class — auth patterns",
+    kind: "class",
+    time: "10:00–12:00",
+    location: "Hall A · hybrid",
+  },
+  {
+    id: "c2",
+    date: "31",
+    day: "Fri",
+    title: "REST API assignment due",
+    kind: "deadline",
+    time: "23:59",
+    location: "Submit on portal",
+  },
+  {
+    id: "c3",
+    date: "1",
+    day: "Sat",
+    title: "Mentor circle — Adaeze",
+    kind: "mentor",
+    time: "14:00–15:00",
+    location: "Room 2",
+  },
+  {
+    id: "c4",
+    date: "3",
+    day: "Mon",
+    title: "DevOps live class — Docker",
+    kind: "class",
+    time: "09:00–11:00",
+    location: "Hall B",
+  },
+  {
+    id: "c5",
+    date: "4",
+    day: "Tue",
+    title: "Open day — volunteer shift",
+    kind: "event",
+    time: "09:00–13:00",
+    location: "Lobby",
+  },
+  {
+    id: "c6",
+    date: "5",
+    day: "Wed",
+    title: "Design studio crit",
+    kind: "class",
+    time: "15:00–17:00",
+    location: "Design lab",
+  },
+  {
+    id: "c7",
+    date: "6",
+    day: "Thu",
+    title: "Auth quiz window opens",
+    kind: "deadline",
+    time: "00:00",
+    location: "Online",
+  },
+  {
+    id: "c8",
+    date: "8",
+    day: "Sat",
+    title: "Employer spotlight — Paystack",
+    kind: "event",
+    time: "11:00–13:00",
+    location: "Hall A",
+  },
+  {
+    id: "c9",
+    date: "9",
+    day: "Sun",
+    title: "Capstone artifact #3 due",
+    kind: "deadline",
+    time: "23:59",
+    location: "Portfolio",
+  },
+  {
+    id: "c10",
+    date: "20",
+    day: "Thu",
+    title: "Term exam — capstone",
+    kind: "exam",
+    time: "09:00–12:00",
+    location: "Exam hall",
+  },
+];
+
+export interface MessageThread {
+  id: string;
+  name: string;
+  role: string;
+  unread: number;
+  last: { text: string; time: string; mine: boolean };
+  messages: { text: string; time: string; mine: boolean }[];
+}
+
+export const threads: MessageThread[] = [
+  {
+    id: "t1",
+    name: "Emeka Nwosu",
+    role: "Instructor · Backend",
+    unread: 2,
+    last: { text: "Your API submission was the strongest in the cohort.", time: "2h", mine: false },
+    messages: [
+      { text: "Your API submission was the strongest in the cohort.", time: "2h", mine: false },
+      { text: "Thank you! The refresh-token rotation part was tricky.", time: "1h", mine: true },
+      {
+        text: "That's what separates A work. Push the same standard into Docker.",
+        time: "1h",
+        mine: false,
+      },
+    ],
+  },
+  {
+    id: "t2",
+    name: "Career Services",
+    role: "Adaeze · Placement lead",
+    unread: 0,
+    last: {
+      text: "Employer spotlight: Paystack frontend role closes Friday.",
+      time: "1d",
+      mine: false,
+    },
+    messages: [
+      {
+        text: "Employer spotlight: Paystack frontend role closes Friday.",
+        time: "1d",
+        mine: false,
+      },
+    ],
+  },
+  {
+    id: "t3",
+    name: "Zainab K.",
+    role: "Classmate · Cohort 15",
+    unread: 1,
+    last: { text: "Do you have the Docker starter repo handy?", time: "3h", mine: false },
+    messages: [{ text: "Do you have the Docker starter repo handy?", time: "3h", mine: false }],
+  },
+  {
+    id: "t4",
+    name: "Mentor Circle — Adaeze",
+    role: "Group · 6 members",
+    unread: 0,
+    last: { text: "Reminder: Saturday session moved to 14:00.", time: "1d", mine: false },
+    messages: [{ text: "Reminder: Saturday session moved to 14:00.", time: "1d", mine: false }],
+  },
+];
+
+export interface InstructorSubmission {
+  id: string;
+  student: string;
+  title: string;
+  submitted: string;
+  status: "graded" | "pending";
+  score?: number;
+  late: boolean;
+  file: string;
+  size: string;
+}
+
+export const submissions: InstructorSubmission[] = [
+  {
+    id: "s1",
+    student: "Amara Nwosu",
+    title: "REST API assignment",
+    submitted: "Today 18:31",
+    status: "pending",
+    late: false,
+    file: "api-submission.zip",
+    size: "4.2 MB",
+  },
+  {
+    id: "s2",
+    student: "Dapo Olu",
+    title: "REST API assignment",
+    submitted: "Today 17:02",
+    status: "pending",
+    late: false,
+    file: "dapo-rest-api.zip",
+    size: "3.8 MB",
+  },
+  {
+    id: "s3",
+    student: "Zainab K.",
+    title: "REST API assignment",
+    submitted: "Yesterday 23:41",
+    status: "pending",
+    late: true,
+    file: "zainab-submission.zip",
+    size: "5.1 MB",
+  },
+  {
+    id: "s4",
+    student: "Chidi Eze",
+    title: "REST API assignment",
+    submitted: "Yesterday 15:20",
+    status: "graded",
+    score: 88,
+    late: false,
+    file: "chidi-api.zip",
+    size: "4.0 MB",
+  },
+  {
+    id: "s5",
+    student: "Halima Sani",
+    title: "REST API assignment",
+    submitted: "Mon 22:10",
+    status: "graded",
+    score: 94,
+    late: false,
+    file: "halima-api.zip",
+    size: "3.6 MB",
+  },
+  {
+    id: "s6",
+    student: "Tunde Bakare",
+    title: "REST API assignment",
+    submitted: "Mon 09:05",
+    status: "graded",
+    score: 91,
+    late: false,
+    file: "tunde-api.zip",
+    size: "4.7 MB",
+  },
+];
+
+export const submissionById = (id: string) => submissions.find((s) => s.id === id);
+
+export interface InstructorGradebookRow {
+  student: string;
+  quiz: number;
+  lab: number;
+  assignment: number;
+  midterm: number;
+  total: number;
+  letter: string;
+  atRisk: boolean;
+}
+
+export const instructorGradebook: InstructorGradebookRow[] = [
+  {
+    student: "Halima Sani",
+    quiz: 94,
+    lab: 96,
+    assignment: 94,
+    midterm: 91,
+    total: 93.4,
+    letter: "A",
+    atRisk: false,
+  },
+  {
+    student: "Amara Nwosu",
+    quiz: 92,
+    lab: 88,
+    assignment: 94,
+    midterm: 91,
+    total: 91.9,
+    letter: "A",
+    atRisk: false,
+  },
+  {
+    student: "Tunde Bakare",
+    quiz: 88,
+    lab: 90,
+    assignment: 91,
+    midterm: 86,
+    total: 88.9,
+    letter: "A-",
+    atRisk: false,
+  },
+  {
+    student: "Chidi Eze",
+    quiz: 84,
+    lab: 82,
+    assignment: 88,
+    midterm: 85,
+    total: 85.2,
+    letter: "B+",
+    atRisk: false,
+  },
+  {
+    student: "Zainab K.",
+    quiz: 90,
+    lab: 78,
+    assignment: 76,
+    midterm: 81,
+    total: 80.8,
+    letter: "B+",
+    atRisk: true,
+  },
+  {
+    student: "Dapo Olu",
+    quiz: 72,
+    lab: 70,
+    assignment: 68,
+    midterm: 74,
+    total: 71.2,
+    letter: "B-",
+    atRisk: true,
+  },
+  {
+    student: "Ngozi Umeh",
+    quiz: 66,
+    lab: 62,
+    assignment: 58,
+    midterm: 61,
+    total: 61.4,
+    letter: "C",
+    atRisk: true,
+  },
+  {
+    student: "Samuel Adebayo",
+    quiz: 58,
+    lab: 52,
+    assignment: 47,
+    midterm: 55,
+    total: 53.1,
+    letter: "C-",
+    atRisk: true,
+  },
+];

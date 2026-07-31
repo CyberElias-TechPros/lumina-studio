@@ -152,7 +152,22 @@ function StudentPortal() {
         </>
       }
     >
-      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+      <div className="flex flex-wrap gap-2">
+        {[
+          { to: "/app/learn", label: "Learning hub" },
+          { to: "/app/assignments", label: "Assignments" },
+          { to: "/app/assessments", label: "Assessments" },
+          { to: "/app/grades", label: "Gradebook" },
+          { to: "/app/calendar", label: "Calendar" },
+          { to: "/app/messages", label: "Messages" },
+        ].map((m) => (
+          <Button asChild key={m.to} variant="outline" size="sm" className="font-semibold">
+            <Link to={m.to}>{m.label}</Link>
+          </Button>
+        ))}
+      </div>
+
+      <div className="mt-5 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         {kpis.map((k) => (
           <Card key={k.label} className="bg-card shadow-soft border">
             <CardContent className="p-5">
