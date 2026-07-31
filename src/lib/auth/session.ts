@@ -1,6 +1,12 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { fetchSession, signIn as apiSignIn, signOut as apiSignOut } from "@/lib/api/auth";
-import type { Session, SignInInput } from "@/lib/schema";
+import {
+  fetchSession,
+  signIn as apiSignIn,
+  signUp as apiSignUp,
+  signOut as apiSignOut,
+  verifyMagicLink as apiVerifyMagicLink,
+} from "@/lib/api/auth";
+import type { Session, SignInInput, SignUpInput } from "@/lib/schema";
 import { DEFAULT_PERMISSIONS, resolveRoleKey, type CanonicalRoleKey } from "@/data/rbac";
 
 export const sessionKeys = {
@@ -39,6 +45,27 @@ export function useSignIn() {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: (input: SignInInput) => apiSignIn(input),
+    onSuccess: (session) => {
+      queryClient.setQueryData(sessionKeys.all, session);
+    },
+  });
+}
+
+export function useSignUp() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (input: SignUpInput) => apiSignUp(input),
+    onSuccess: (session) => {
+      queryClient.setQueryData(sessionKeys.all, session);
+    },
+  });
+}
+
+/** Verifies a one-time magic link token; the server sets the session cookie. */
+export function useMagicLinkVerify() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (token: string) => apiVerifyMagicLink({ token }),
     onSuccess: (session) => {
       queryClient.setQueryData(sessionKeys.all, session);
     },

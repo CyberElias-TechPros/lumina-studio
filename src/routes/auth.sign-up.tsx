@@ -1,21 +1,21 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState } from "react";
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
+import { useRef, useState } from "react";
 import {
   ArrowRight,
   BriefcaseBusiness,
   Building2,
-  CheckCircle2,
   GraduationCap,
   HeartHandshake,
+  Loader2,
   UserRound,
 } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Reveal } from "@/components/motion";
 import { cn } from "@/lib/utils";
+import { useSignUp } from "@/lib/auth/session";
 
 export const Route = createFileRoute("/auth/sign-up")({
   head: () => ({
@@ -56,7 +56,32 @@ const roles = [
 
 function SignUpPage() {
   const [role, setRole] = useState("student");
-  const [done, setDone] = useState(false);
+  const [error, setError] = useState("");
+  const firstNameRef = useRef<HTMLInputElement>(null);
+  const lastNameRef = useRef<HTMLInputElement>(null);
+  const emailRef = useRef<HTMLInputElement>(null);
+  const passwordRef = useRef<HTMLInputElement>(null);
+  const navigate = useNavigate();
+
+  const signUp = useSignUp();
+
+  const submit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setError("");
+    const name =
+      `${firstNameRef.current?.value.trim() ?? ""} ${lastNameRef.current?.value.trim() ?? ""}`.trim();
+    const email = emailRef.current?.value.trim() ?? "";
+    const password = passwordRef.current?.value ?? "";
+    signUp.mutate(
+      { name, email, password, roleKey: role },
+      {
+        onSuccess: () => navigate({ to: "/app" }),
+        onError: (err) => {
+          setError(err instanceof Error ? err.message : "Could not create your account.");
+        },
+      },
+    );
+  };
 
   return (
     <div className="bg-muted/40 relative grid min-h-screen place-items-center overflow-hidden px-4 py-16">
@@ -82,105 +107,97 @@ function SignUpPage() {
         <Reveal delay={0.05}>
           <Card className="bg-card shadow-elevated border">
             <CardContent className="p-6 sm:p-8">
-              {done ? (
-                <div className="text-center">
-                  <span className="bg-success/10 text-success mx-auto grid size-14 place-items-center rounded-full">
-                    <CheckCircle2 className="size-7" />
-                  </span>
-                  <h2 className="font-display mt-4 text-xl font-extrabold">Check your inbox</h2>
-                  <p className="text-muted-foreground mt-2 text-sm">
-                    We sent a verification link to your email. Confirm it to activate your{" "}
-                    <strong className="text-foreground">
-                      {roles.find((r) => r.id === role)?.label}
-                    </strong>{" "}
-                    account.
-                  </p>
-                  <div className="mt-6 flex flex-wrap justify-center gap-3">
-                    <Button asChild className="bg-gradient-brand shadow-glow border-0">
-                      <Link to="/auth/verify-email">
-                        I have a code <ArrowRight className="ml-1.5 size-4" />
-                      </Link>
-                    </Button>
-                    <Button asChild variant="outline">
-                      <Link to="/auth/sign-in">Back to sign in</Link>
-                    </Button>
-                  </div>
-                </div>
-              ) : (
-                <>
-                  <Label>I want to join as</Label>
-                  <div className="mt-2 grid gap-2 sm:grid-cols-2">
-                    {roles.map((r) => (
-                      <button
-                        key={r.id}
-                        onClick={() => setRole(r.id)}
+              <>
+                <Label>I want to join as</Label>
+                <div className="mt-2 grid gap-2 sm:grid-cols-2">
+                  {roles.map((r) => (
+                    <button
+                      key={r.id}
+                      onClick={() => setRole(r.id)}
+                      className={cn(
+                        "flex items-start gap-3 rounded-xl border p-3.5 text-left transition-all",
+                        role === r.id
+                          ? "border-primary bg-primary/5 ring-2 ring-primary/30"
+                          : "bg-background hover:border-primary/40",
+                      )}
+                    >
+                      <span
                         className={cn(
-                          "flex items-start gap-3 rounded-xl border p-3.5 text-left transition-all",
+                          "grid size-9 shrink-0 place-items-center rounded-lg",
                           role === r.id
-                            ? "border-primary bg-primary/5 ring-2 ring-primary/30"
-                            : "bg-background hover:border-primary/40",
+                            ? "bg-primary/10 text-primary"
+                            : "bg-muted text-muted-foreground",
                         )}
                       >
-                        <span
-                          className={cn(
-                            "grid size-9 shrink-0 place-items-center rounded-lg",
-                            role === r.id
-                              ? "bg-primary/10 text-primary"
-                              : "bg-muted text-muted-foreground",
-                          )}
-                        >
-                          <r.icon className="size-4" />
-                        </span>
-                        <span>
-                          <span className="block text-sm font-bold">{r.label}</span>
-                          <span className="text-muted-foreground block text-xs">{r.desc}</span>
-                        </span>
-                      </button>
-                    ))}
+                        <r.icon className="size-4" />
+                      </span>
+                      <span>
+                        <span className="block text-sm font-bold">{r.label}</span>
+                        <span className="text-muted-foreground block text-xs">{r.desc}</span>
+                      </span>
+                    </button>
+                  ))}
+                </div>
+
+                <form className="mt-6 space-y-4" onSubmit={submit}>
+                  <div className="grid gap-4 sm:grid-cols-2">
+                    <div className="space-y-1.5">
+                      <Label htmlFor="first">First name</Label>
+                      <Input id="first" ref={firstNameRef} placeholder="First name" required />
+                    </div>
+                    <div className="space-y-1.5">
+                      <Label htmlFor="last">Last name</Label>
+                      <Input id="last" ref={lastNameRef} placeholder="Last name" required />
+                    </div>
+                  </div>
+                  <div className="space-y-1.5">
+                    <Label htmlFor="email">Email address</Label>
+                    <Input
+                      id="email"
+                      ref={emailRef}
+                      type="email"
+                      placeholder="you@example.com"
+                      required
+                    />
+                  </div>
+                  <div className="space-y-1.5">
+                    <Label htmlFor="password">Password</Label>
+                    <Input
+                      id="password"
+                      ref={passwordRef}
+                      type="password"
+                      placeholder="8+ characters"
+                      required
+                    />
                   </div>
 
-                  <form
-                    className="mt-6 space-y-4"
-                    onSubmit={(e) => {
-                      e.preventDefault();
-                      setDone(true);
-                    }}
-                  >
-                    <div className="grid gap-4 sm:grid-cols-2">
-                      <div className="space-y-1.5">
-                        <Label htmlFor="first">First name</Label>
-                        <Input id="first" placeholder="First name" required />
-                      </div>
-                      <div className="space-y-1.5">
-                        <Label htmlFor="last">Last name</Label>
-                        <Input id="last" placeholder="Last name" required />
-                      </div>
-                    </div>
-                    <div className="space-y-1.5">
-                      <Label htmlFor="email">Email address</Label>
-                      <Input id="email" type="email" placeholder="you@example.com" required />
-                    </div>
-                    <div className="space-y-1.5">
-                      <Label htmlFor="password">Password</Label>
-                      <Input id="password" type="password" placeholder="8+ characters" required />
-                    </div>
-                    <Button type="submit" className="bg-gradient-brand shadow-glow w-full border-0">
-                      Create account <ArrowRight className="ml-1.5 size-4" />
-                    </Button>
-                  </form>
+                  {error && (
+                    <p className="bg-error/10 text-error rounded-lg px-3 py-2 text-xs font-semibold">
+                      {error}
+                    </p>
+                  )}
 
-                  <p className="text-muted-foreground mt-4 text-center text-xs">
-                    By creating an account you agree to our{" "}
-                    <Link
-                      to="/faq"
-                      className="text-primary font-semibold underline-offset-2 hover:underline"
-                    >
-                      terms
-                    </Link>
-                    .
-                  </p>
-                </>
-              )}
+                  <Button
+                    type="submit"
+                    disabled={signUp.isPending}
+                    className="bg-gradient-brand shadow-glow w-full border-0"
+                  >
+                    {signUp.isPending && <Loader2 className="mr-1.5 size-4 animate-spin" />}
+                    Create account <ArrowRight className="ml-1.5 size-4" />
+                  </Button>
+                </form>
+
+                <p className="text-muted-foreground mt-4 text-center text-xs">
+                  By creating an account you agree to our{" "}
+                  <Link
+                    to="/faq"
+                    className="text-primary font-semibold underline-offset-2 hover:underline"
+                  >
+                    terms
+                  </Link>
+                  .
+                </p>
+              </>
             </CardContent>
           </Card>
         </Reveal>

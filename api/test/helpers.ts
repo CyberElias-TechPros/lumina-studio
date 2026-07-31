@@ -3,6 +3,8 @@ import initSql from "../migrations/0000_init.sql?raw";
 import { seedContentSql } from "../seeds/content";
 import type { Session } from "../src/schema/api";
 
+export const SESSION_COOKIE = "cea_session";
+
 export async function setupDb(): Promise<void> {
   const statements = initSql
     .split("\n")
@@ -25,9 +27,20 @@ export function api(path: string, init?: RequestInit): Promise<Response> {
   return exports.default.fetch(`https://api.cea.test${path}`, init);
 }
 
+/** Reads the session cookie value from a Set-Cookie header. */
+export function sessionCookieFrom(response: Response): string | null {
+  const setCookies = response.headers.getSetCookie();
+  for (const header of setCookies) {
+    const [pair = "", ...rest] = header.split(";");
+    const [name = "", ...value] = pair.split("=");
+    if (name.trim() === SESSION_COOKIE) return value.join("=").trim();
+  }
+  return null;
+}
+
 export async function createTestSession(
   email: string,
-): Promise<{ token: string; session: Session }> {
+): Promise<{ session: Session; cookie: string }> {
   const magic = await api("/v1/auth/magic-link", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -39,10 +52,16 @@ export async function createTestSession(
 
   const verify = await api(`/v1/auth/magic-link/verify?token=${encodeURIComponent(devToken)}`);
   if (verify.status !== 200) throw new Error(`verify failed: ${verify.status}`);
-  const body = (await verify.json()) as Session & { token: string };
-  return { token: body.token, session: body };
+  const session = (await verify.json()) as Session;
+  const cookie = sessionCookieFrom(verify);
+  if (!cookie) throw new Error("verify did not set the session cookie");
+  return { session, cookie };
 }
 
 export function authHeaders(token: string): HeadersInit {
   return { Authorization: `Bearer ${token}` };
+}
+
+export function cookieHeaders(cookie: string): HeadersInit {
+  return { Cookie: `${SESSION_COOKIE}=${cookie}` };
 }

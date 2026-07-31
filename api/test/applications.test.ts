@@ -1,6 +1,6 @@
 import { beforeAll, describe, expect, it } from "vitest";
 import { env } from "cloudflare:workers";
-import { api, authHeaders, createTestSession, setupDb } from "./helpers";
+import { api, cookieHeaders, createTestSession, setupDb } from "./helpers";
 
 beforeAll(async () => {
   await setupDb();
@@ -141,9 +141,9 @@ describe("GET /v1/applications (own list)", () => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ ...VALID, email }),
     });
-    const { token } = await createTestSession(email);
+    const { cookie } = await createTestSession(email);
 
-    const res = await api("/v1/applications", { headers: authHeaders(token) });
+    const res = await api("/v1/applications", { headers: cookieHeaders(cookie) });
     expect(res.status).toBe(200);
     const body = (await res.json()) as {
       items: Array<{ id: string; ref: string; status: string }>;
@@ -154,8 +154,8 @@ describe("GET /v1/applications (own list)", () => {
   });
 
   it("does not leak other users' applications", async () => {
-    const { token } = await createTestSession("someone.else@example.com");
-    const res = await api("/v1/applications", { headers: authHeaders(token) });
+    const { cookie } = await createTestSession("someone.else@example.com");
+    const res = await api("/v1/applications", { headers: cookieHeaders(cookie) });
     const body = (await res.json()) as { items: unknown[]; total: number };
     expect(body.total).toBe(0);
     expect(body.items).toEqual([]);

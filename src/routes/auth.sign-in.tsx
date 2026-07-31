@@ -1,22 +1,26 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import {
   ArrowRight,
   Eye,
   EyeOff,
   KeyRound,
   Link2,
+  Loader2,
   LockKeyhole,
   Mail,
   MailCheck,
   ShieldCheck,
 } from "lucide-react";
+import { useMutation } from "@tanstack/react-query";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Reveal } from "@/components/motion";
+import { useSignIn } from "@/lib/auth/session";
+import { requestMagicLink } from "@/lib/api/auth";
 
 export const Route = createFileRoute("/auth/sign-in")({
   head: () => ({
@@ -39,18 +43,50 @@ function SignInPage() {
   const [error, setError] = useState("");
   const [magic, setMagic] = useState(false);
   const [sent, setSent] = useState(false);
+  const [devToken, setDevToken] = useState<string | undefined>(undefined);
   const [remember, setRemember] = useState(true);
+  const emailRef = useRef<HTMLInputElement>(null);
+  const passwordRef = useRef<HTMLInputElement>(null);
   const navigate = useNavigate();
+
+  const passwordSignIn = useSignIn();
+  const magicLink = useMutation({
+    mutationFn: requestMagicLink,
+    onSuccess: (result) => {
+      const dev = (result as { devToken?: string }).devToken;
+      setDevToken(dev);
+      setSent(true);
+    },
+    onError: (err) => {
+      setError(err instanceof Error ? err.message : "Could not send the sign-in link.");
+    },
+  });
 
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
+
     if (magic) {
-      setSent(true);
+      const email = emailRef.current?.value.trim() ?? "";
+      if (!email) return;
+      magicLink.mutate({ email });
       return;
     }
-    navigate({ to: "/app" });
+
+    const email = emailRef.current?.value.trim() ?? "";
+    const password = passwordRef.current?.value ?? "";
+    passwordSignIn.mutate(
+      { email, password, remember },
+      {
+        onSuccess: () => navigate({ to: "/app" }),
+        onError: (err) => {
+          setError(err instanceof Error ? err.message : "Sign in failed.");
+        },
+      },
+    );
   };
+
+  const busy = passwordSignIn.isPending || magicLink.isPending;
 
   return (
     <div className="bg-muted/40 relative grid min-h-screen place-items-center overflow-hidden px-4 py-16">
@@ -86,12 +122,20 @@ function SignInPage() {
                   <p className="text-muted-foreground mt-2 text-sm">
                     We sent a one-time sign-in link to your email. It expires in 15 minutes.
                   </p>
-                  <Button asChild className="bg-gradient-brand shadow-glow mt-6 border-0">
-                    <Link to="/app">I've opened the link</Link>
-                  </Button>
+                  {devToken && (
+                    <Button asChild className="bg-gradient-brand shadow-glow mt-6 border-0">
+                      <Link to="/auth/magic-link" search={{ token: devToken }}>
+                        Open sign-in link (dev) <ArrowRight className="ml-1.5 size-4" />
+                      </Link>
+                    </Button>
+                  )}
                   <button
                     type="button"
-                    onClick={() => setSent(false)}
+                    onClick={() => {
+                      const email = emailRef.current?.value.trim() ?? "";
+                      if (email) magicLink.mutate({ email });
+                    }}
+                    disabled={magicLink.isPending}
                     className="text-muted-foreground hover:text-foreground mt-3 block w-full text-center text-xs font-bold"
                   >
                     Resend link
@@ -106,6 +150,7 @@ function SignInPage() {
                         <Mail className="text-muted-foreground absolute top-1/2 left-3 size-4 -translate-y-1/2" />
                         <Input
                           id="email"
+                          ref={emailRef}
                           type="email"
                           placeholder="you@example.com"
                           className="pl-9"
@@ -129,6 +174,7 @@ function SignInPage() {
                           <LockKeyhole className="text-muted-foreground absolute top-1/2 left-3 size-4 -translate-y-1/2" />
                           <Input
                             id="password"
+                            ref={passwordRef}
                             type={show ? "text" : "password"}
                             placeholder="••••••••"
                             className="pl-9 pr-10"
@@ -164,9 +210,14 @@ function SignInPage() {
                       </p>
                     )}
 
-                    <Button type="submit" className="bg-gradient-brand shadow-glow w-full border-0">
+                    <Button
+                      type="submit"
+                      disabled={busy}
+                      className="bg-gradient-brand shadow-glow w-full border-0"
+                    >
+                      {busy && <Loader2 className="mr-1.5 size-4 animate-spin" />}
                       {magic ? "Send magic link" : "Sign in"}{" "}
-                      <ArrowRight className="ml-1.5 size-4" />
+                      {!busy && <ArrowRight className="ml-1.5 size-4" />}
                     </Button>
                   </form>
 

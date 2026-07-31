@@ -49,6 +49,10 @@ export function registerAllMocks(): void {
     await delay();
     return { ok: true };
   });
+  registerMock("GET", "/v1/auth/magic-link/verify", async () => {
+    await delay();
+    return MOCK_SESSION;
+  });
 
   /* LMS */
   registerMock("GET", "/v1/courses", async () => {

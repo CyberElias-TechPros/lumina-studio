@@ -3,7 +3,7 @@ import type { AppEnv } from "../types";
 import { z } from "zod";
 import { ApiError } from "../lib/errors";
 import { parseBody } from "../lib/validate";
-import { requireAuth, sessionResponse } from "../lib/auth";
+import { requireAuth, sessionResponse, setSessionCookie, clearSessionCookie } from "../lib/auth";
 import { permissionsForRole } from "../lib/permissions";
 import { isoInDays, isoInMinutes, isoNow, randomToken, sha256Hex } from "../lib/crypto";
 import { normalizeEmail } from "../db/client";
@@ -101,8 +101,9 @@ auth.get("/magic-link/verify", async (c) => {
     .bind(sessionId, userId, tokenHash, now, expiresAt)
     .run();
 
-  return c.json({
-    ...sessionResponse(
+  setSessionCookie(c, token, expiresAt);
+  return c.json(
+    sessionResponse(
       {
         id: userId,
         name: existing?.name ?? nameFromEmail(email),
@@ -113,8 +114,7 @@ auth.get("/magic-link/verify", async (c) => {
       },
       expiresAt,
     ),
-    token,
-  });
+  );
 });
 
 auth.get("/session", requireAuth, (c) => {
@@ -126,9 +126,14 @@ auth.post("/refresh", requireAuth, async (c) => {
   const user = c.get("authUser");
   const session = c.get("authSession");
   const expiresAt = isoInDays(SESSION_TTL_DAYS);
-  await c.env.DB.prepare(`UPDATE sessions SET expires_at = ? WHERE id = ? AND revoked_at IS NULL`)
-    .bind(expiresAt, session.id)
+  const nextToken = randomToken(32);
+  const nextTokenHash = await sha256Hex(nextToken);
+  await c.env.DB.prepare(
+    `UPDATE sessions SET token_hash = ?, expires_at = ? WHERE id = ? AND revoked_at IS NULL`,
+  )
+    .bind(nextTokenHash, expiresAt, session.id)
     .run();
+  setSessionCookie(c, nextToken, expiresAt);
   return c.json(sessionResponse(user, expiresAt));
 });
 
@@ -136,6 +141,7 @@ auth.post("/sign-out", requireAuth, async (c) => {
   await c.env.DB.prepare(`UPDATE sessions SET revoked_at = ? WHERE id = ?`)
     .bind(isoNow(), c.get("authSession").id)
     .run();
+  clearSessionCookie(c);
   return c.json({ ok: true });
 });
 

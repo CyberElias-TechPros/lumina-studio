@@ -40,6 +40,7 @@ import { Route as AppReportsRouteImport } from './routes/app/reports'
 import { Route as ApplyIndexRouteImport } from './routes/apply/index'
 import { Route as ApplyStatusRouteImport } from './routes/apply/status'
 import { Route as AuthForgotPasswordRouteImport } from './routes/auth.forgot-password'
+import { Route as AuthMagicLinkRouteImport } from './routes/auth.magic-link'
 import { Route as AuthMfaRouteImport } from './routes/auth.mfa'
 import { Route as AuthNewDeviceRouteImport } from './routes/auth.new-device'
 import { Route as AuthResetPasswordRouteImport } from './routes/auth.reset-password'
@@ -520,6 +521,11 @@ const ApplyStatusRoute = ApplyStatusRouteImport.update({
 const AuthForgotPasswordRoute = AuthForgotPasswordRouteImport.update({
   id: '/auth/forgot-password',
   path: '/auth/forgot-password',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthMagicLinkRoute = AuthMagicLinkRouteImport.update({
+  id: '/auth/magic-link',
+  path: '/auth/magic-link',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AuthMfaRoute = AuthMfaRouteImport.update({
@@ -2252,6 +2258,7 @@ export interface FileRoutesByFullPath {
   '/app/reports': typeof AppReportsRoute
   '/apply/status': typeof ApplyStatusRouteWithChildren
   '/auth/forgot-password': typeof AuthForgotPasswordRoute
+  '/auth/magic-link': typeof AuthMagicLinkRoute
   '/auth/mfa': typeof AuthMfaRoute
   '/auth/new-device': typeof AuthNewDeviceRoute
   '/auth/reset-password': typeof AuthResetPasswordRoute
@@ -2611,6 +2618,7 @@ export interface FileRoutesByTo {
   '/app/reports': typeof AppReportsRoute
   '/apply/status': typeof ApplyStatusRouteWithChildren
   '/auth/forgot-password': typeof AuthForgotPasswordRoute
+  '/auth/magic-link': typeof AuthMagicLinkRoute
   '/auth/mfa': typeof AuthMfaRoute
   '/auth/new-device': typeof AuthNewDeviceRoute
   '/auth/reset-password': typeof AuthResetPasswordRoute
@@ -2971,6 +2979,7 @@ export interface FileRoutesById {
   '/app/reports': typeof AppReportsRoute
   '/apply/status': typeof ApplyStatusRouteWithChildren
   '/auth/forgot-password': typeof AuthForgotPasswordRoute
+  '/auth/magic-link': typeof AuthMagicLinkRoute
   '/auth/mfa': typeof AuthMfaRoute
   '/auth/new-device': typeof AuthNewDeviceRoute
   '/auth/reset-password': typeof AuthResetPasswordRoute
@@ -3332,6 +3341,7 @@ export interface FileRouteTypes {
     | '/app/reports'
     | '/apply/status'
     | '/auth/forgot-password'
+    | '/auth/magic-link'
     | '/auth/mfa'
     | '/auth/new-device'
     | '/auth/reset-password'
@@ -3691,6 +3701,7 @@ export interface FileRouteTypes {
     | '/app/reports'
     | '/apply/status'
     | '/auth/forgot-password'
+    | '/auth/magic-link'
     | '/auth/mfa'
     | '/auth/new-device'
     | '/auth/reset-password'
@@ -4050,6 +4061,7 @@ export interface FileRouteTypes {
     | '/app/reports'
     | '/apply/status'
     | '/auth/forgot-password'
+    | '/auth/magic-link'
     | '/auth/mfa'
     | '/auth/new-device'
     | '/auth/reset-password'
@@ -4410,6 +4422,7 @@ export interface RootRouteChildren {
   AppReportsRoute: typeof AppReportsRoute
   ApplyStatusRoute: typeof ApplyStatusRouteWithChildren
   AuthForgotPasswordRoute: typeof AuthForgotPasswordRoute
+  AuthMagicLinkRoute: typeof AuthMagicLinkRoute
   AuthMfaRoute: typeof AuthMfaRoute
   AuthNewDeviceRoute: typeof AuthNewDeviceRoute
   AuthResetPasswordRoute: typeof AuthResetPasswordRoute
@@ -4943,6 +4956,13 @@ declare module '@tanstack/react-router' {
       path: '/auth/forgot-password'
       fullPath: '/auth/forgot-password'
       preLoaderRoute: typeof AuthForgotPasswordRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth/magic-link': {
+      id: '/auth/magic-link'
+      path: '/auth/magic-link'
+      fullPath: '/auth/magic-link'
+      preLoaderRoute: typeof AuthMagicLinkRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/auth/mfa': {
@@ -7390,6 +7410,7 @@ const rootRouteChildren: RootRouteChildren = {
   AppReportsRoute: AppReportsRoute,
   ApplyStatusRoute: ApplyStatusRouteWithChildren,
   AuthForgotPasswordRoute: AuthForgotPasswordRoute,
+  AuthMagicLinkRoute: AuthMagicLinkRoute,
   AuthMfaRoute: AuthMfaRoute,
   AuthNewDeviceRoute: AuthNewDeviceRoute,
   AuthResetPasswordRoute: AuthResetPasswordRoute,

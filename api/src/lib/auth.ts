@@ -35,10 +35,44 @@ export function getBearerToken(c: Context): string | null {
   return token.length > 0 ? token : null;
 }
 
+/** Session cookie name — the browser client relies on cookies (credentials: "include"). */
+export const SESSION_COOKIE = "cea_session";
+
+function getSessionToken(c: Context): string | null {
+  const cookie = c.req.header("cookie");
+  if (cookie) {
+    for (const part of cookie.split(";")) {
+      const [name, ...rest] = part.trim().split("=");
+      if (name === SESSION_COOKIE) return rest.join("=");
+    }
+  }
+  return getBearerToken(c);
+}
+
+export function setSessionCookie(c: Context, token: string, expiresAt: string): void {
+  const secure = c.env.APP_ENV === "production";
+  const maxAge = Math.max(1, Math.round((new Date(expiresAt).getTime() - Date.now()) / 1000));
+  c.header(
+    "Set-Cookie",
+    `${SESSION_COOKIE}=${token}; HttpOnly; Path=/; Max-Age=${maxAge}; SameSite=${secure ? "None" : "Lax"}${
+      secure ? "; Secure" : ""
+    }`,
+  );
+}
+
+export function clearSessionCookie(c: Context): void {
+  c.header(
+    "Set-Cookie",
+    `${SESSION_COOKIE}=; HttpOnly; Path=/; Max-Age=0; SameSite=${c.env.APP_ENV === "production" ? "None" : "Lax"}${
+      c.env.APP_ENV === "production" ? "; Secure" : ""
+    }`,
+  );
+}
+
 export async function loadSession(
   c: Context<{ Bindings: AppEnv }>,
 ): Promise<{ user: AuthUser; session: AuthSession } | null> {
-  const token = getBearerToken(c);
+  const token = getSessionToken(c);
   if (!token) return null;
   const tokenHash = await sha256Hex(token);
   const now = new Date().toISOString();
