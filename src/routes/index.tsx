@@ -37,14 +37,7 @@ import {
   StaggerItem,
   TiltCard,
 } from "@/components/motion";
-import {
-  engines,
-  faqs,
-  formatNaira,
-  partnersList,
-  programs,
-  testimonials,
-} from "@/data/site";
+import { engines, faqs, formatNaira, partnersList, programs, testimonials } from "@/data/site";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -104,7 +97,11 @@ function Hero() {
 
           <Reveal delay={0.18}>
             <div className="mt-9 flex flex-wrap items-center gap-3">
-              <Button asChild size="lg" className="bg-gradient-brand shadow-glow h-12 border-0 px-7">
+              <Button
+                asChild
+                size="lg"
+                className="bg-gradient-brand shadow-glow h-12 border-0 px-7"
+              >
                 <Link to="/admissions">
                   Start your application <ArrowRight className="ml-1.5 size-4" />
                 </Link>

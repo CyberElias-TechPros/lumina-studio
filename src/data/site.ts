@@ -396,8 +396,7 @@ export const caseStudies = [
     sector: "Education",
     engine: "erp" as Engine,
     result: "9 campuses unified",
-    summary:
-      "Admissions, finance, HR and academics unified into a single multi-tenant platform.",
+    summary: "Admissions, finance, HR and academics unified into a single multi-tenant platform.",
     metrics: [
       { label: "Manual hours saved", value: "1,400/mo" },
       { label: "Fee collection", value: "+27%" },
@@ -466,8 +465,7 @@ export const testimonials = [
   {
     name: "Emeka Nwosu",
     role: "Cloud Engineer, Andela",
-    quote:
-      "Mentors who actually work in the field. That feedback loop is the whole product.",
+    quote: "Mentors who actually work in the field. That feedback loop is the whole product.",
     program: "Cloud Engineering & DevOps",
   },
 ];
@@ -623,7 +621,8 @@ export const blogPosts = [
   {
     slug: "hiring-junior-engineers",
     title: "How to interview a junior engineer properly",
-    excerpt: "Whiteboard puzzles select for practice, not potential. Try these three tasks instead.",
+    excerpt:
+      "Whiteboard puzzles select for practice, not potential. Try these three tasks instead.",
     category: "Employers",
     author: "Emeka Nwosu",
     role: "Employer Partnerships",
@@ -824,11 +823,31 @@ export const team = [
 ];
 
 export const timeline = [
-  { year: "2018", title: "A single classroom in Ikeja", body: "Twelve students, one instructor, one whiteboard." },
-  { year: "2020", title: "Online delivery at scale", body: "Remote cohorts opened the academy to all 36 states." },
-  { year: "2022", title: "The Services Engine", body: "Graduates began delivering real client work under supervision." },
-  { year: "2024", title: "Employer network crosses 200", body: "Placement became a measured, managed pipeline." },
-  { year: "2026", title: "CEA-OS goes live", body: "One operating system for every actor in the academy." },
+  {
+    year: "2018",
+    title: "A single classroom in Ikeja",
+    body: "Twelve students, one instructor, one whiteboard.",
+  },
+  {
+    year: "2020",
+    title: "Online delivery at scale",
+    body: "Remote cohorts opened the academy to all 36 states.",
+  },
+  {
+    year: "2022",
+    title: "The Services Engine",
+    body: "Graduates began delivering real client work under supervision.",
+  },
+  {
+    year: "2024",
+    title: "Employer network crosses 200",
+    body: "Placement became a measured, managed pipeline.",
+  },
+  {
+    year: "2026",
+    title: "CEA-OS goes live",
+    body: "One operating system for every actor in the academy.",
+  },
 ];
 
 export function formatNaira(value: number) {

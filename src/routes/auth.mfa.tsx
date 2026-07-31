@@ -1,0 +1,131 @@
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { useState } from "react";
+import { ArrowRight, CheckCircle2, KeyRound, ShieldCheck, Smartphone } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Reveal } from "@/components/motion";
+
+export const Route = createFileRoute("/auth/mfa")({
+  head: () => ({
+    meta: [
+      { title: "Two-factor authentication — CEA-OS" },
+      {
+        name: "description",
+        content: "Confirm it's you with a second factor — app code or recovery key.",
+      },
+    ],
+  }),
+  component: MfaPage,
+});
+
+function MfaPage() {
+  const [method, setMethod] = useState<"app" | "recovery">("app");
+  const [done, setDone] = useState(false);
+
+  return (
+    <div className="bg-muted/40 relative grid min-h-screen place-items-center overflow-hidden px-4 py-16">
+      <div className="bg-gradient-community absolute -top-32 -right-32 size-96 rounded-full opacity-10 blur-3xl" />
+      <div className="relative w-full max-w-md">
+        <Reveal>
+          <Card className="bg-card shadow-elevated border">
+            <CardContent className="p-6 sm:p-8">
+              {done ? (
+                <div className="text-center">
+                  <span className="bg-success/10 text-success mx-auto grid size-14 place-items-center rounded-full">
+                    <CheckCircle2 className="size-7" />
+                  </span>
+                  <h1 className="font-display mt-4 text-xl font-extrabold">Identity confirmed</h1>
+                  <p className="text-muted-foreground mt-2 text-sm">
+                    Second factor verified. Taking you to your dashboard…
+                  </p>
+                  <Button asChild className="bg-gradient-brand shadow-glow mt-6 border-0">
+                    <Link to="/app">
+                      Continue <ArrowRight className="ml-1.5 size-4" />
+                    </Link>
+                  </Button>
+                </div>
+              ) : (
+                <>
+                  <span className="bg-primary/10 text-primary mx-auto grid size-14 place-items-center rounded-full">
+                    <ShieldCheck className="size-7" />
+                  </span>
+                  <h1 className="font-display mt-4 text-center text-xl font-extrabold">
+                    Two-factor authentication
+                  </h1>
+                  <p className="text-muted-foreground mt-2 text-center text-sm">
+                    One more step to confirm it's you.
+                  </p>
+
+                  <div className="mt-6 grid grid-cols-2 gap-2">
+                    <button
+                      onClick={() => setMethod("app")}
+                      className={`flex items-center justify-center gap-2 rounded-xl border px-3 py-2.5 text-sm font-bold transition-colors ${
+                        method === "app"
+                          ? "border-primary bg-primary/5 text-primary"
+                          : "bg-background text-muted-foreground"
+                      }`}
+                    >
+                      <Smartphone className="size-4" /> App code
+                    </button>
+                    <button
+                      onClick={() => setMethod("recovery")}
+                      className={`flex items-center justify-center gap-2 rounded-xl border px-3 py-2.5 text-sm font-bold transition-colors ${
+                        method === "recovery"
+                          ? "border-primary bg-primary/5 text-primary"
+                          : "bg-background text-muted-foreground"
+                      }`}
+                    >
+                      <KeyRound className="size-4" /> Recovery key
+                    </button>
+                  </div>
+
+                  <form
+                    className="mt-5 space-y-4"
+                    onSubmit={(e) => {
+                      e.preventDefault();
+                      setDone(true);
+                    }}
+                  >
+                    <div className="space-y-1.5">
+                      <Label htmlFor="mfa-code">
+                        {method === "app"
+                          ? "6-digit code from your authenticator app"
+                          : "Recovery key (24 characters)"}
+                      </Label>
+                      <Input
+                        id="mfa-code"
+                        placeholder={method === "app" ? "••••••" : "abcd-efgh-ijkl-mnop"}
+                        className={
+                          method === "app"
+                            ? "text-center font-mono text-lg tracking-[0.5em]"
+                            : "font-mono"
+                        }
+                        required
+                      />
+                    </div>
+                    <Button type="submit" className="bg-gradient-brand shadow-glow w-full border-0">
+                      Confirm <ArrowRight className="ml-1.5 size-4" />
+                    </Button>
+                  </form>
+
+                  <p className="text-muted-foreground mt-4 text-center text-xs">
+                    Lost your device?{" "}
+                    <Link
+                      to="/contact"
+                      className="text-primary font-semibold underline-offset-2 hover:underline"
+                    >
+                      Contact support
+                    </Link>{" "}
+                    with your ID document.
+                  </p>
+                </>
+              )}
+            </CardContent>
+          </Card>
+        </Reveal>
+      </div>
+    </div>
+  );
+}

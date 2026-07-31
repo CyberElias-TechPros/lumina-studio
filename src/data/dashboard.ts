@@ -20,18 +20,102 @@ export const roles: {
   title: string;
   home: string;
 }[] = [
-  { key: "student", label: "Student", engine: "learning", person: "Chiamaka Obi", title: "Cohort 12 · Full-Stack", home: "/app/student" },
-  { key: "instructor", label: "Instructor", engine: "learning", person: "Ifeanyi Duru", title: "Lead Instructor", home: "/app/instructor" },
-  { key: "department-head", label: "Department Head", engine: "learning", person: "Ngozi Bello", title: "Head of Cybersecurity", home: "/app/department" },
-  { key: "admin", label: "Admin / Ops", engine: "erp", person: "Aisha Bakare", title: "Head of Operations", home: "/app/admin" },
-  { key: "admissions", label: "Admissions", engine: "erp", person: "Tolu Ajayi", title: "Admissions Officer", home: "/app/admissions" },
-  { key: "finance", label: "Finance", engine: "erp", person: "Musa Ibrahim", title: "Accountant", home: "/app/finance" },
-  { key: "hr", label: "HR", engine: "erp", person: "Grace Eze", title: "HR Officer", home: "/app/hr" },
-  { key: "client", label: "Client", engine: "services", person: "Sabi Logistics", title: "Client Portal", home: "/app/client" },
-  { key: "employer", label: "Employer", engine: "career", person: "Paystack", title: "Talent Partner", home: "/app/employer" },
-  { key: "mentor", label: "Mentor & Alumni", engine: "community", person: "Emeka Nwosu", title: "Cloud Mentor", home: "/app/mentor" },
-  { key: "marketing", label: "Marketing", engine: "career", person: "Zainab Lawal", title: "Marketing Officer", home: "/app/marketing" },
-  { key: "director", label: "Director", engine: "erp", person: "Elias Okonkwo", title: "Founder & Director", home: "/app/director" },
+  {
+    key: "student",
+    label: "Student",
+    engine: "learning",
+    person: "Chiamaka Obi",
+    title: "Cohort 12 · Full-Stack",
+    home: "/app/student",
+  },
+  {
+    key: "instructor",
+    label: "Instructor",
+    engine: "learning",
+    person: "Ifeanyi Duru",
+    title: "Lead Instructor",
+    home: "/app/instructor",
+  },
+  {
+    key: "department-head",
+    label: "Department Head",
+    engine: "learning",
+    person: "Ngozi Bello",
+    title: "Head of Cybersecurity",
+    home: "/app/department",
+  },
+  {
+    key: "admin",
+    label: "Admin / Ops",
+    engine: "erp",
+    person: "Aisha Bakare",
+    title: "Head of Operations",
+    home: "/app/admin",
+  },
+  {
+    key: "admissions",
+    label: "Admissions",
+    engine: "erp",
+    person: "Tolu Ajayi",
+    title: "Admissions Officer",
+    home: "/app/admissions",
+  },
+  {
+    key: "finance",
+    label: "Finance",
+    engine: "erp",
+    person: "Musa Ibrahim",
+    title: "Accountant",
+    home: "/app/finance",
+  },
+  {
+    key: "hr",
+    label: "HR",
+    engine: "erp",
+    person: "Grace Eze",
+    title: "HR Officer",
+    home: "/app/hr",
+  },
+  {
+    key: "client",
+    label: "Client",
+    engine: "services",
+    person: "Sabi Logistics",
+    title: "Client Portal",
+    home: "/app/client",
+  },
+  {
+    key: "employer",
+    label: "Employer",
+    engine: "career",
+    person: "Paystack",
+    title: "Talent Partner",
+    home: "/app/employer",
+  },
+  {
+    key: "mentor",
+    label: "Mentor & Alumni",
+    engine: "community",
+    person: "Emeka Nwosu",
+    title: "Cloud Mentor",
+    home: "/app/mentor",
+  },
+  {
+    key: "marketing",
+    label: "Marketing",
+    engine: "career",
+    person: "Zainab Lawal",
+    title: "Marketing Officer",
+    home: "/app/marketing",
+  },
+  {
+    key: "director",
+    label: "Director",
+    engine: "erp",
+    person: "Elias Okonkwo",
+    title: "Founder & Director",
+    home: "/app/director",
+  },
 ];
 
 export const roleMap = Object.fromEntries(roles.map((r) => [r.key, r])) as Record<
@@ -42,19 +126,93 @@ export const roleMap = Object.fromEntries(roles.map((r) => [r.key, r])) as Recor
 /* ---------------- Student ---------------- */
 
 export const studentCourses = [
-  { id: "c1", title: "Frontend with React & TypeScript", instructor: "Ifeanyi Duru", progress: 78, nextLesson: "Server state with TanStack Query", due: "Today", engine: "learning" },
-  { id: "c2", title: "Backend, APIs & Databases", instructor: "Samuel Ade", progress: 54, nextLesson: "Indexing strategies", due: "Thu", engine: "learning" },
-  { id: "c3", title: "Cloud, CI/CD & DevOps Basics", instructor: "Emeka Nwosu", progress: 31, nextLesson: "Containerising a Node app", due: "Next week", engine: "learning" },
-  { id: "c4", title: "Professional Practice", instructor: "Aisha Bakare", progress: 92, nextLesson: "Client communication clinic", due: "Fri", engine: "career" },
+  {
+    id: "c1",
+    title: "Frontend with React & TypeScript",
+    instructor: "Ifeanyi Duru",
+    progress: 78,
+    nextLesson: "Server state with TanStack Query",
+    due: "Today",
+    engine: "learning",
+  },
+  {
+    id: "c2",
+    title: "Backend, APIs & Databases",
+    instructor: "Samuel Ade",
+    progress: 54,
+    nextLesson: "Indexing strategies",
+    due: "Thu",
+    engine: "learning",
+  },
+  {
+    id: "c3",
+    title: "Cloud, CI/CD & DevOps Basics",
+    instructor: "Emeka Nwosu",
+    progress: 31,
+    nextLesson: "Containerising a Node app",
+    due: "Next week",
+    engine: "learning",
+  },
+  {
+    id: "c4",
+    title: "Professional Practice",
+    instructor: "Aisha Bakare",
+    progress: 92,
+    nextLesson: "Client communication clinic",
+    due: "Fri",
+    engine: "career",
+  },
 ];
 
 export const studentAssignments = [
-  { id: "a1", title: "Build a typed data table", course: "Frontend with React", due: "2026-08-02", status: "In progress", score: null },
-  { id: "a2", title: "Design a normalised schema", course: "Backend & Databases", due: "2026-08-05", status: "Not started", score: null },
-  { id: "a3", title: "CI pipeline for the team repo", course: "Cloud & DevOps", due: "2026-08-09", status: "Not started", score: null },
-  { id: "a4", title: "Accessibility audit", course: "Frontend with React", due: "2026-07-24", status: "Graded", score: 92 },
-  { id: "a5", title: "REST API v1", course: "Backend & Databases", due: "2026-07-18", status: "Graded", score: 86 },
-  { id: "a6", title: "Team retrospective write-up", course: "Professional Practice", due: "2026-07-12", status: "Graded", score: 95 },
+  {
+    id: "a1",
+    title: "Build a typed data table",
+    course: "Frontend with React",
+    due: "2026-08-02",
+    status: "In progress",
+    score: null,
+  },
+  {
+    id: "a2",
+    title: "Design a normalised schema",
+    course: "Backend & Databases",
+    due: "2026-08-05",
+    status: "Not started",
+    score: null,
+  },
+  {
+    id: "a3",
+    title: "CI pipeline for the team repo",
+    course: "Cloud & DevOps",
+    due: "2026-08-09",
+    status: "Not started",
+    score: null,
+  },
+  {
+    id: "a4",
+    title: "Accessibility audit",
+    course: "Frontend with React",
+    due: "2026-07-24",
+    status: "Graded",
+    score: 92,
+  },
+  {
+    id: "a5",
+    title: "REST API v1",
+    course: "Backend & Databases",
+    due: "2026-07-18",
+    status: "Graded",
+    score: 86,
+  },
+  {
+    id: "a6",
+    title: "Team retrospective write-up",
+    course: "Professional Practice",
+    due: "2026-07-12",
+    status: "Graded",
+    score: 95,
+  },
 ];
 
 export const studentGrades = [
@@ -86,29 +244,92 @@ export const attendanceRecords = [
 ];
 
 export const certificates = [
-  { id: "CEA-2026-0421", title: "Frontend Development Foundations", issued: "2026-04-12", status: "Issued" },
-  { id: "CEA-2026-0733", title: "Version Control with Git", issued: "2026-02-28", status: "Issued" },
-  { id: "CEA-2026-1180", title: "Full-Stack Software Development", issued: null, status: "In progress" },
+  {
+    id: "CEA-2026-0421",
+    title: "Frontend Development Foundations",
+    issued: "2026-04-12",
+    status: "Issued",
+  },
+  {
+    id: "CEA-2026-0733",
+    title: "Version Control with Git",
+    issued: "2026-02-28",
+    status: "Issued",
+  },
+  {
+    id: "CEA-2026-1180",
+    title: "Full-Stack Software Development",
+    issued: null,
+    status: "In progress",
+  },
 ];
 
 export const paymentsHistory = [
-  { id: "INV-2041", description: "Tuition instalment 3 of 4", amount: 212500, date: "2026-07-01", status: "Paid" },
-  { id: "INV-1902", description: "Tuition instalment 2 of 4", amount: 212500, date: "2026-04-01", status: "Paid" },
-  { id: "INV-1744", description: "Tuition instalment 1 of 4", amount: 212500, date: "2026-01-08", status: "Paid" },
-  { id: "INV-2210", description: "Tuition instalment 4 of 4", amount: 212500, date: "2026-10-01", status: "Due" },
+  {
+    id: "INV-2041",
+    description: "Tuition instalment 3 of 4",
+    amount: 212500,
+    date: "2026-07-01",
+    status: "Paid",
+  },
+  {
+    id: "INV-1902",
+    description: "Tuition instalment 2 of 4",
+    amount: 212500,
+    date: "2026-04-01",
+    status: "Paid",
+  },
+  {
+    id: "INV-1744",
+    description: "Tuition instalment 1 of 4",
+    amount: 212500,
+    date: "2026-01-08",
+    status: "Paid",
+  },
+  {
+    id: "INV-2210",
+    description: "Tuition instalment 4 of 4",
+    amount: 212500,
+    date: "2026-10-01",
+    status: "Due",
+  },
 ];
 
 export const portfolioProjects = [
-  { title: "Dispatch dashboard", stack: ["React", "TypeScript", "Recharts"], status: "Published", views: 412 },
-  { title: "Inventory API", stack: ["Node", "PostgreSQL", "Docker"], status: "Published", views: 268 },
+  {
+    title: "Dispatch dashboard",
+    stack: ["React", "TypeScript", "Recharts"],
+    status: "Published",
+    views: 412,
+  },
+  {
+    title: "Inventory API",
+    stack: ["Node", "PostgreSQL", "Docker"],
+    status: "Published",
+    views: 268,
+  },
   { title: "Design system starter", stack: ["Figma", "Tailwind"], status: "Draft", views: 0 },
 ];
 
 /* ---------------- Instructor ---------------- */
 
 export const cohorts = [
-  { id: "co-12", name: "Cohort 12 · Full-Stack", students: 42, progress: 68, attendance: 91, atRisk: 4 },
-  { id: "co-09", name: "Cohort 9 · Cybersecurity", students: 31, progress: 74, attendance: 88, atRisk: 2 },
+  {
+    id: "co-12",
+    name: "Cohort 12 · Full-Stack",
+    students: 42,
+    progress: 68,
+    attendance: 91,
+    atRisk: 4,
+  },
+  {
+    id: "co-09",
+    name: "Cohort 9 · Cybersecurity",
+    students: 31,
+    progress: 74,
+    attendance: 88,
+    atRisk: 2,
+  },
   { id: "co-14", name: "Cohort 14 · Cloud", students: 28, progress: 41, attendance: 84, atRisk: 6 },
 ];
 
@@ -122,10 +343,30 @@ export const gradebook = [
 ];
 
 export const submissions = [
-  { student: "Chidi Uche", assignment: "Typed data table", submitted: "2026-07-30", status: "Pending" },
-  { student: "Fatima Sani", assignment: "Typed data table", submitted: "2026-07-30", status: "Pending" },
-  { student: "Segun Ola", assignment: "Normalised schema", submitted: "2026-07-29", status: "Pending" },
-  { student: "Tunde Adeyemi", assignment: "CI pipeline", submitted: "2026-07-28", status: "Graded" },
+  {
+    student: "Chidi Uche",
+    assignment: "Typed data table",
+    submitted: "2026-07-30",
+    status: "Pending",
+  },
+  {
+    student: "Fatima Sani",
+    assignment: "Typed data table",
+    submitted: "2026-07-30",
+    status: "Pending",
+  },
+  {
+    student: "Segun Ola",
+    assignment: "Normalised schema",
+    submitted: "2026-07-29",
+    status: "Pending",
+  },
+  {
+    student: "Tunde Adeyemi",
+    assignment: "CI pipeline",
+    submitted: "2026-07-28",
+    status: "Graded",
+  },
 ];
 
 /* ---------------- Admissions ---------------- */
@@ -192,8 +433,20 @@ export const revenueSeries = [
 
 export const invoices = [
   { id: "INV-3301", party: "Sabi Logistics", amount: 4200000, due: "2026-08-10", status: "Sent" },
-  { id: "INV-3298", party: "Arewa Microfinance", amount: 1850000, due: "2026-08-02", status: "Overdue" },
-  { id: "INV-3290", party: "Greenfield Schools", amount: 6400000, due: "2026-07-20", status: "Paid" },
+  {
+    id: "INV-3298",
+    party: "Arewa Microfinance",
+    amount: 1850000,
+    due: "2026-08-02",
+    status: "Overdue",
+  },
+  {
+    id: "INV-3290",
+    party: "Greenfield Schools",
+    amount: 6400000,
+    due: "2026-07-20",
+    status: "Paid",
+  },
   { id: "INV-3288", party: "Kaduna State ICT", amount: 9100000, due: "2026-07-15", status: "Paid" },
   { id: "INV-3275", party: "Kuda", amount: 980000, due: "2026-08-22", status: "Draft" },
 ];
@@ -209,16 +462,58 @@ export const expenses = [
 /* ---------------- HR ---------------- */
 
 export const employees = [
-  { name: "Ifeanyi Duru", role: "Lead Instructor", dept: "Learning", status: "Active", joined: "2021-03-01" },
-  { name: "Ngozi Bello", role: "Head of Cybersecurity", dept: "Learning", status: "Active", joined: "2020-08-15" },
-  { name: "Aisha Bakare", role: "Head of Operations", dept: "Operations", status: "Active", joined: "2019-11-04" },
-  { name: "Musa Ibrahim", role: "Accountant", dept: "Finance", status: "Active", joined: "2022-01-10" },
-  { name: "Zainab Lawal", role: "Marketing Officer", dept: "Growth", status: "On leave", joined: "2023-06-19" },
-  { name: "Tolu Ajayi", role: "Admissions Officer", dept: "Admissions", status: "Active", joined: "2023-02-27" },
+  {
+    name: "Ifeanyi Duru",
+    role: "Lead Instructor",
+    dept: "Learning",
+    status: "Active",
+    joined: "2021-03-01",
+  },
+  {
+    name: "Ngozi Bello",
+    role: "Head of Cybersecurity",
+    dept: "Learning",
+    status: "Active",
+    joined: "2020-08-15",
+  },
+  {
+    name: "Aisha Bakare",
+    role: "Head of Operations",
+    dept: "Operations",
+    status: "Active",
+    joined: "2019-11-04",
+  },
+  {
+    name: "Musa Ibrahim",
+    role: "Accountant",
+    dept: "Finance",
+    status: "Active",
+    joined: "2022-01-10",
+  },
+  {
+    name: "Zainab Lawal",
+    role: "Marketing Officer",
+    dept: "Growth",
+    status: "On leave",
+    joined: "2023-06-19",
+  },
+  {
+    name: "Tolu Ajayi",
+    role: "Admissions Officer",
+    dept: "Admissions",
+    status: "Active",
+    joined: "2023-02-27",
+  },
 ];
 
 export const leaveRequests = [
-  { name: "Zainab Lawal", type: "Annual", from: "2026-07-28", to: "2026-08-08", status: "Approved" },
+  {
+    name: "Zainab Lawal",
+    type: "Annual",
+    from: "2026-07-28",
+    to: "2026-08-08",
+    status: "Approved",
+  },
   { name: "Samuel Ade", type: "Sick", from: "2026-08-03", to: "2026-08-05", status: "Pending" },
   { name: "Grace Eze", type: "Study", from: "2026-09-01", to: "2026-09-12", status: "Pending" },
 ];
@@ -235,9 +530,27 @@ export const headcountSeries = [
 /* ---------------- Client / Projects ---------------- */
 
 export const clientProjects = [
-  { name: "Dispatch platform v2", progress: 72, phase: "Build", lead: "Squad Alpha", due: "2026-09-14" },
-  { name: "Driver mobile app", progress: 45, phase: "Design", lead: "Squad Beta", due: "2026-10-02" },
-  { name: "Analytics warehouse", progress: 18, phase: "Discovery", lead: "Squad Delta", due: "2026-11-20" },
+  {
+    name: "Dispatch platform v2",
+    progress: 72,
+    phase: "Build",
+    lead: "Squad Alpha",
+    due: "2026-09-14",
+  },
+  {
+    name: "Driver mobile app",
+    progress: 45,
+    phase: "Design",
+    lead: "Squad Beta",
+    due: "2026-10-02",
+  },
+  {
+    name: "Analytics warehouse",
+    progress: 18,
+    phase: "Discovery",
+    lead: "Squad Delta",
+    due: "2026-11-20",
+  },
 ];
 
 export const deliverables = [
@@ -248,17 +561,53 @@ export const deliverables = [
 ];
 
 export const tickets = [
-  { id: "TK-882", subject: "Driver app crashes on cold start", priority: "High", status: "Open", updated: "2h ago" },
-  { id: "TK-879", subject: "Export CSV missing columns", priority: "Medium", status: "In progress", updated: "6h ago" },
-  { id: "TK-871", subject: "Add Yoruba language option", priority: "Low", status: "Backlog", updated: "2d ago" },
-  { id: "TK-864", subject: "SSO login loop", priority: "High", status: "Resolved", updated: "4d ago" },
+  {
+    id: "TK-882",
+    subject: "Driver app crashes on cold start",
+    priority: "High",
+    status: "Open",
+    updated: "2h ago",
+  },
+  {
+    id: "TK-879",
+    subject: "Export CSV missing columns",
+    priority: "Medium",
+    status: "In progress",
+    updated: "6h ago",
+  },
+  {
+    id: "TK-871",
+    subject: "Add Yoruba language option",
+    priority: "Low",
+    status: "Backlog",
+    updated: "2d ago",
+  },
+  {
+    id: "TK-864",
+    subject: "SSO login loop",
+    priority: "High",
+    status: "Resolved",
+    updated: "4d ago",
+  },
 ];
 
 /* ---------------- Employer ---------------- */
 
 export const jobPosts = [
-  { title: "Frontend Engineer", applicants: 48, shortlisted: 9, stage: "Interviewing", posted: "2026-07-18" },
-  { title: "Data Analyst", applicants: 31, shortlisted: 6, stage: "Screening", posted: "2026-07-24" },
+  {
+    title: "Frontend Engineer",
+    applicants: 48,
+    shortlisted: 9,
+    stage: "Interviewing",
+    posted: "2026-07-18",
+  },
+  {
+    title: "Data Analyst",
+    applicants: 31,
+    shortlisted: 6,
+    stage: "Screening",
+    posted: "2026-07-24",
+  },
   { title: "QA Engineer", applicants: 12, shortlisted: 2, stage: "Open", posted: "2026-07-29" },
 ];
 
@@ -272,9 +621,27 @@ export const candidates = [
 /* ---------------- Mentor / Alumni ---------------- */
 
 export const mentees = [
-  { name: "Chidi Uche", program: "Cloud & DevOps", nextSession: "2026-08-02 17:00", progress: 42, flag: "At risk" },
-  { name: "Joy Bassey", program: "Marketing", nextSession: "2026-08-04 18:30", progress: 71, flag: "On track" },
-  { name: "Sadiq Umar", program: "Networking", nextSession: "2026-08-06 16:00", progress: 88, flag: "Ahead" },
+  {
+    name: "Chidi Uche",
+    program: "Cloud & DevOps",
+    nextSession: "2026-08-02 17:00",
+    progress: 42,
+    flag: "At risk",
+  },
+  {
+    name: "Joy Bassey",
+    program: "Marketing",
+    nextSession: "2026-08-04 18:30",
+    progress: 71,
+    flag: "On track",
+  },
+  {
+    name: "Sadiq Umar",
+    program: "Networking",
+    nextSession: "2026-08-06 16:00",
+    progress: 88,
+    flag: "Ahead",
+  },
 ];
 
 export const alumniHighlights = [
@@ -287,10 +654,38 @@ export const alumniHighlights = [
 /* ---------------- Marketing ---------------- */
 
 export const campaigns = [
-  { name: "Q3 Cohort Intake", channel: "Meta Ads", spend: 3200000, leads: 1840, cpl: 1739, status: "Live" },
-  { name: "Cybersecurity Webinar", channel: "LinkedIn", spend: 980000, leads: 412, cpl: 2379, status: "Live" },
-  { name: "Alumni Referral", channel: "Email", spend: 210000, leads: 306, cpl: 686, status: "Live" },
-  { name: "Campus Open Day", channel: "Radio", spend: 640000, leads: 188, cpl: 3404, status: "Ended" },
+  {
+    name: "Q3 Cohort Intake",
+    channel: "Meta Ads",
+    spend: 3200000,
+    leads: 1840,
+    cpl: 1739,
+    status: "Live",
+  },
+  {
+    name: "Cybersecurity Webinar",
+    channel: "LinkedIn",
+    spend: 980000,
+    leads: 412,
+    cpl: 2379,
+    status: "Live",
+  },
+  {
+    name: "Alumni Referral",
+    channel: "Email",
+    spend: 210000,
+    leads: 306,
+    cpl: 686,
+    status: "Live",
+  },
+  {
+    name: "Campus Open Day",
+    channel: "Radio",
+    spend: 640000,
+    leads: 188,
+    cpl: 3404,
+    status: "Ended",
+  },
 ];
 
 export const leadSources = [
@@ -320,18 +715,63 @@ export const enrollmentSeries = [
 ];
 
 export const systemUsers = [
-  { name: "Chiamaka Obi", email: "chiamaka@cea.academy", role: "Student", status: "Active", lastSeen: "2m ago" },
-  { name: "Ifeanyi Duru", email: "ifeanyi@cea.academy", role: "Instructor", status: "Active", lastSeen: "18m ago" },
-  { name: "Musa Ibrahim", email: "musa@cea.academy", role: "Accountant", status: "Active", lastSeen: "1h ago" },
-  { name: "Tolu Ajayi", email: "tolu@cea.academy", role: "Admissions", status: "Active", lastSeen: "3h ago" },
-  { name: "Zainab Lawal", email: "zainab@cea.academy", role: "Marketing", status: "Suspended", lastSeen: "6d ago" },
+  {
+    name: "Chiamaka Obi",
+    email: "chiamaka@cea.academy",
+    role: "Student",
+    status: "Active",
+    lastSeen: "2m ago",
+  },
+  {
+    name: "Ifeanyi Duru",
+    email: "ifeanyi@cea.academy",
+    role: "Instructor",
+    status: "Active",
+    lastSeen: "18m ago",
+  },
+  {
+    name: "Musa Ibrahim",
+    email: "musa@cea.academy",
+    role: "Accountant",
+    status: "Active",
+    lastSeen: "1h ago",
+  },
+  {
+    name: "Tolu Ajayi",
+    email: "tolu@cea.academy",
+    role: "Admissions",
+    status: "Active",
+    lastSeen: "3h ago",
+  },
+  {
+    name: "Zainab Lawal",
+    email: "zainab@cea.academy",
+    role: "Marketing",
+    status: "Suspended",
+    lastSeen: "6d ago",
+  },
 ];
 
 export const auditLog = [
-  { actor: "Aisha Bakare", action: "Updated role permissions for Instructor", time: "12 min ago", severity: "info" },
+  {
+    actor: "Aisha Bakare",
+    action: "Updated role permissions for Instructor",
+    time: "12 min ago",
+    severity: "info",
+  },
   { actor: "System", action: "Nightly backup completed", time: "5 h ago", severity: "info" },
-  { actor: "Musa Ibrahim", action: "Voided invoice INV-3282", time: "9 h ago", severity: "warning" },
-  { actor: "Unknown", action: "5 failed sign-in attempts", time: "yesterday", severity: "critical" },
+  {
+    actor: "Musa Ibrahim",
+    action: "Voided invoice INV-3282",
+    time: "9 h ago",
+    severity: "warning",
+  },
+  {
+    actor: "Unknown",
+    action: "5 failed sign-in attempts",
+    time: "yesterday",
+    severity: "critical",
+  },
 ];
 
 export const departmentHealth = [
@@ -343,14 +783,39 @@ export const departmentHealth = [
 ];
 
 export const approvals = [
-  { item: "Cohort 15 curriculum update", requester: "Ifeanyi Duru", type: "Curriculum", age: "2 days" },
-  { item: "Certificate issue — 34 graduates", requester: "Tolu Ajayi", type: "Certificates", age: "1 day" },
+  {
+    item: "Cohort 15 curriculum update",
+    requester: "Ifeanyi Duru",
+    type: "Curriculum",
+    age: "2 days",
+  },
+  {
+    item: "Certificate issue — 34 graduates",
+    requester: "Tolu Ajayi",
+    type: "Certificates",
+    age: "1 day",
+  },
   { item: "Instructor contract renewal", requester: "Grace Eze", type: "HR", age: "4 days" },
 ];
 
 export const notifications = [
-  { title: "Assignment graded", body: "Accessibility audit scored 92%.", time: "10m", engine: "learning" },
-  { title: "New mentor message", body: "Emeka sent feedback on your capstone.", time: "1h", engine: "community" },
+  {
+    title: "Assignment graded",
+    body: "Accessibility audit scored 92%.",
+    time: "10m",
+    engine: "learning",
+  },
+  {
+    title: "New mentor message",
+    body: "Emeka sent feedback on your capstone.",
+    time: "1h",
+    engine: "community",
+  },
   { title: "Invoice due soon", body: "Instalment 4 is due 1 October.", time: "3h", engine: "erp" },
-  { title: "Job match", body: "Paystack Frontend Engineer — 96% match.", time: "1d", engine: "career" },
+  {
+    title: "Job match",
+    body: "Paystack Frontend Engineer — 96% match.",
+    time: "1d",
+    engine: "career",
+  },
 ];

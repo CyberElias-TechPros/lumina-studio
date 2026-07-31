@@ -49,13 +49,7 @@ export function Reveal({
   );
 }
 
-export function StaggerGroup({
-  children,
-  className,
-}: {
-  children: ReactNode;
-  className?: string;
-}) {
+export function StaggerGroup({ children, className }: { children: ReactNode; className?: string }) {
   return (
     <motion.div
       className={className}
@@ -69,13 +63,7 @@ export function StaggerGroup({
   );
 }
 
-export function StaggerItem({
-  children,
-  className,
-}: {
-  children: ReactNode;
-  className?: string;
-}) {
+export function StaggerItem({ children, className }: { children: ReactNode; className?: string }) {
   return (
     <motion.div variants={fadeUp} className={className}>
       {children}
@@ -241,13 +229,7 @@ export function Spotlight({ className }: { className?: string }) {
   );
 }
 
-export function Marquee({
-  items,
-  className,
-}: {
-  items: string[];
-  className?: string;
-}) {
+export function Marquee({ items, className }: { items: string[]; className?: string }) {
   return (
     <div className={cn("relative flex overflow-hidden", className)}>
       <div className="animate-marquee flex min-w-full shrink-0 items-center gap-14">
