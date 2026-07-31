@@ -3,11 +3,20 @@ import {
   ArrowRight,
   BarChart3,
   Building2,
+  CalendarDays,
+  ClipboardList,
+  Database,
   FileCheck2,
+  FileText,
+  FolderOpen,
   GraduationCap,
+  History,
   Landmark,
+  LayoutTemplate,
   Megaphone,
+  MessageSquare,
   Scale,
+  Send,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -39,6 +48,86 @@ const reports = [
   { t: "Q2 impact report", s: "Shared with ministry", tone: "bg-success/10 text-success" },
   { t: "Graduate placement data", s: "Draft · due Aug 10", tone: "bg-warning/10 text-warning" },
   { t: "Scholarship beneficiary list", s: "Submitted Jul", tone: "bg-primary/10 text-primary" },
+];
+
+const screens = [
+  {
+    icon: LayoutTemplate,
+    label: "Compliance hub",
+    desc: "Compliance overview",
+    path: "/app/government",
+    tone: "bg-primary/10 text-primary",
+  },
+  {
+    icon: Building2,
+    label: "Institution",
+    desc: "Institution records",
+    path: "/app/government/institution",
+    tone: "bg-success/10 text-success",
+  },
+  {
+    icon: FileText,
+    label: "Reports",
+    desc: "Impact and filings",
+    path: "/app/government/reports",
+    tone: "bg-learning/10 text-learning",
+  },
+  {
+    icon: FolderOpen,
+    label: "Documents",
+    desc: "Shared evidence files",
+    path: "/app/government/documents",
+    tone: "bg-warning/10 text-warning",
+  },
+  {
+    icon: ClipboardList,
+    label: "Audit",
+    desc: "Audit readiness",
+    path: "/app/government/audit",
+    tone: "bg-career/10 text-career",
+  },
+  {
+    icon: Send,
+    label: "Filings",
+    desc: "Submit filings online",
+    path: "/app/government/filings",
+    tone: "bg-community/10 text-community",
+  },
+  {
+    icon: MessageSquare,
+    label: "Messaging",
+    desc: "Chat with your liaison",
+    path: "/app/government/messaging",
+    tone: "bg-erp/10 text-erp",
+  },
+  {
+    icon: CalendarDays,
+    label: "Calendar",
+    desc: "Deadlines and reviews",
+    path: "/app/government/calendar",
+    tone: "bg-services/10 text-services",
+  },
+  {
+    icon: Database,
+    label: "Integrity",
+    desc: "Data integrity vault",
+    path: "/app/government/integrity",
+    tone: "bg-ink/10 text-ink",
+  },
+  {
+    icon: GraduationCap,
+    label: "Training",
+    desc: "Mandatory training",
+    path: "/app/government/training",
+    tone: "bg-error/10 text-error",
+  },
+  {
+    icon: History,
+    label: "Changelog",
+    desc: "Policy and system changes",
+    path: "/app/government/changelog",
+    tone: "bg-primary/10 text-primary",
+  },
 ];
 
 function GovernmentPortal() {
@@ -170,6 +259,34 @@ function GovernmentPortal() {
           </Card>
         </div>
       </div>
+      <Card className="bg-card mt-5 shadow-soft border">
+        <CardHeader className="flex-row items-center justify-between">
+          <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
+            <LayoutTemplate className="text-primary size-4" /> Workspace
+          </CardTitle>
+          <Badge variant="secondary" className="font-semibold">
+            {screens.length} modules
+          </Badge>
+        </CardHeader>
+        <CardContent className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+          {screens.map((s) => (
+            <Link
+              key={s.path}
+              to={s.path}
+              className="group bg-card shadow-soft hover:shadow-elevated flex flex-col rounded-xl border p-4 transition-all hover:-translate-y-0.5"
+            >
+              <div className="flex items-start justify-between">
+                <span className={cn("grid size-9 place-items-center rounded-lg", s.tone)}>
+                  <s.icon className="size-4" />
+                </span>
+                <ArrowRight className="text-muted-foreground group-hover:text-primary size-4 transition-colors" />
+              </div>
+              <p className="font-display mt-3 text-sm font-extrabold">{s.label}</p>
+              <p className="text-muted-foreground mt-1 text-xs">{s.desc}</p>
+            </Link>
+          ))}
+        </CardContent>
+      </Card>
     </AppShell>
   );
 }

@@ -1,7 +1,13 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import {
+  ArrowRight,
+  BookMarked,
+  ChartNoAxesColumn,
+  ClipboardList,
   FileText,
   FlaskConical,
+  Mail,
+  Megaphone,
   PenLine,
   Sparkles,
   SplitSquareHorizontal,
@@ -45,6 +51,58 @@ const briefs = [
     status: "Live · winner B",
     win: "+22% ctr",
     tone: "bg-success/10 text-success",
+  },
+];
+
+const screens = [
+  {
+    icon: FileText,
+    label: "Copy library",
+    desc: "Searchable copy library",
+    path: "/app/conversion-copy/library",
+    tone: "bg-primary/10 text-primary",
+  },
+  {
+    icon: Mail,
+    label: "Email sequences",
+    desc: "Sequence drafts",
+    path: "/app/conversion-copy/email-sequences",
+    tone: "bg-success/10 text-success",
+  },
+  {
+    icon: Megaphone,
+    label: "Ad copy",
+    desc: "Ad variants and hooks",
+    path: "/app/conversion-copy/ads",
+    tone: "bg-learning/10 text-learning",
+  },
+  {
+    icon: FlaskConical,
+    label: "A/B tests",
+    desc: "Experiments and results",
+    path: "/app/conversion-copy/ab-tests",
+    tone: "bg-warning/10 text-warning",
+  },
+  {
+    icon: ChartNoAxesColumn,
+    label: "Analytics",
+    desc: "Lift and conversion",
+    path: "/app/conversion-copy/analytics",
+    tone: "bg-career/10 text-career",
+  },
+  {
+    icon: BookMarked,
+    label: "Style guide",
+    desc: "Voice and tone rules",
+    path: "/app/conversion-copy/style-guide",
+    tone: "bg-community/10 text-community",
+  },
+  {
+    icon: ClipboardList,
+    label: "Briefs",
+    desc: "Request and briefs",
+    path: "/app/conversion-copy/briefs",
+    tone: "bg-erp/10 text-erp",
   },
 ];
 
@@ -187,6 +245,34 @@ function CopywriterPortal() {
           </Card>
         </div>
       </div>
+      <Card className="bg-card mt-5 shadow-soft border">
+        <CardHeader className="flex-row items-center justify-between">
+          <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
+            <FileText className="text-primary size-4" /> Workspace
+          </CardTitle>
+          <Badge variant="secondary" className="font-semibold">
+            {screens.length} modules
+          </Badge>
+        </CardHeader>
+        <CardContent className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+          {screens.map((s) => (
+            <Link
+              key={s.path}
+              to={s.path}
+              className="group bg-card shadow-soft hover:shadow-elevated flex flex-col rounded-xl border p-4 transition-all hover:-translate-y-0.5"
+            >
+              <div className="flex items-start justify-between">
+                <span className={cn("grid size-9 place-items-center rounded-lg", s.tone)}>
+                  <s.icon className="size-4" />
+                </span>
+                <ArrowRight className="text-muted-foreground group-hover:text-primary size-4 transition-colors" />
+              </div>
+              <p className="font-display mt-3 text-sm font-extrabold">{s.label}</p>
+              <p className="text-muted-foreground mt-1 text-xs">{s.desc}</p>
+            </Link>
+          ))}
+        </CardContent>
+      </Card>
     </AppShell>
   );
 }

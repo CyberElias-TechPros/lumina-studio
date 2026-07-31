@@ -3,8 +3,13 @@ import {
   ArrowRight,
   BadgePercent,
   Building2,
+  FileSignature,
+  FileText,
+  FolderOpen,
   Handshake,
+  LayoutTemplate,
   Megaphone,
+  MessageSquare,
   TrendingUp,
   Users,
 } from "lucide-react";
@@ -49,6 +54,58 @@ const referrals = [
     stage: "Proposal",
     value: "₦6.8m",
     tone: "bg-primary/10 text-primary",
+  },
+];
+
+const screens = [
+  {
+    icon: LayoutTemplate,
+    label: "Hub",
+    desc: "Partner overview and tools",
+    path: "/app/partner/hub",
+    tone: "bg-primary/10 text-primary",
+  },
+  {
+    icon: FileSignature,
+    label: "Agreements",
+    desc: "Contracts and MOUs",
+    path: "/app/partner/agreements",
+    tone: "bg-success/10 text-success",
+  },
+  {
+    icon: Handshake,
+    label: "Collaborations",
+    desc: "Co-branded programmes",
+    path: "/app/partner/collaborations",
+    tone: "bg-learning/10 text-learning",
+  },
+  {
+    icon: Megaphone,
+    label: "Referrals",
+    desc: "Send and track referrals",
+    path: "/app/partner/referrals",
+    tone: "bg-warning/10 text-warning",
+  },
+  {
+    icon: FolderOpen,
+    label: "Resources",
+    desc: "Brand kits and collateral",
+    path: "/app/partner/resources",
+    tone: "bg-career/10 text-career",
+  },
+  {
+    icon: FileText,
+    label: "Reports",
+    desc: "Partner performance reports",
+    path: "/app/partner/reports",
+    tone: "bg-community/10 text-community",
+  },
+  {
+    icon: MessageSquare,
+    label: "Messaging",
+    desc: "Chat with your CEA liaison",
+    path: "/app/partner/messages",
+    tone: "bg-erp/10 text-erp",
   },
 ];
 
@@ -218,6 +275,34 @@ function PartnerPortal() {
           </Card>
         </div>
       </div>
+      <Card className="bg-card mt-5 shadow-soft border">
+        <CardHeader className="flex-row items-center justify-between">
+          <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
+            <LayoutTemplate className="text-primary size-4" /> Workspace
+          </CardTitle>
+          <Badge variant="secondary" className="font-semibold">
+            {screens.length} modules
+          </Badge>
+        </CardHeader>
+        <CardContent className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+          {screens.map((s) => (
+            <Link
+              key={s.path}
+              to={s.path}
+              className="group bg-card shadow-soft hover:shadow-elevated flex flex-col rounded-xl border p-4 transition-all hover:-translate-y-0.5"
+            >
+              <div className="flex items-start justify-between">
+                <span className={cn("grid size-9 place-items-center rounded-lg", s.tone)}>
+                  <s.icon className="size-4" />
+                </span>
+                <ArrowRight className="text-muted-foreground group-hover:text-primary size-4 transition-colors" />
+              </div>
+              <p className="font-display mt-3 text-sm font-extrabold">{s.label}</p>
+              <p className="text-muted-foreground mt-1 text-xs">{s.desc}</p>
+            </Link>
+          ))}
+        </CardContent>
+      </Card>
     </AppShell>
   );
 }

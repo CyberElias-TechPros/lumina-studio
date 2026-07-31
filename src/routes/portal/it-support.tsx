@@ -1,13 +1,22 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
+  Activity,
   ArrowRight,
+  BookOpen,
+  Boxes,
+  ClipboardList,
   Cpu,
+  FileCheck,
+  FileText,
   HardDrive,
+  Headset,
   HelpCircle,
+  Inbox,
   Laptop,
   MonitorCheck,
   Network,
   ShieldAlert,
+  Users,
   Wrench,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
@@ -57,6 +66,79 @@ const tickets = [
     p: "Low",
     status: "Resolved",
     tone: "bg-success/10 text-success",
+  },
+];
+
+const screens = [
+  {
+    icon: Inbox,
+    label: "Tickets",
+    desc: "Incidents and requests",
+    path: "/app/it/tickets",
+    tone: "bg-primary/10 text-primary",
+  },
+  {
+    icon: Boxes,
+    label: "Assets",
+    desc: "Hardware inventory",
+    path: "/app/it/assets",
+    tone: "bg-success/10 text-success",
+  },
+  {
+    icon: Activity,
+    label: "Monitoring",
+    desc: "Network and uptime",
+    path: "/app/it/monitoring",
+    tone: "bg-learning/10 text-learning",
+  },
+  {
+    icon: BookOpen,
+    label: "Knowledge base",
+    desc: "Guides and runbooks",
+    path: "/app/it/knowledge-base",
+    tone: "bg-warning/10 text-warning",
+  },
+  {
+    icon: Users,
+    label: "Users",
+    desc: "Accounts and access",
+    path: "/app/it/users",
+    tone: "bg-career/10 text-career",
+  },
+  {
+    icon: Headset,
+    label: "Remote support",
+    desc: "Remote sessions",
+    path: "/app/it/remote-support",
+    tone: "bg-community/10 text-community",
+  },
+  {
+    icon: FileText,
+    label: "Reports",
+    desc: "SLA and trends",
+    path: "/app/it/reports",
+    tone: "bg-erp/10 text-erp",
+  },
+  {
+    icon: ClipboardList,
+    label: "Templates",
+    desc: "Reusable ticket templates",
+    path: "/app/it/templates",
+    tone: "bg-services/10 text-services",
+  },
+  {
+    icon: Wrench,
+    label: "Maintenance",
+    desc: "Scheduled upkeep",
+    path: "/app/it/maintenance",
+    tone: "bg-ink/10 text-ink",
+  },
+  {
+    icon: FileCheck,
+    label: "Licenses",
+    desc: "Software entitlements",
+    path: "/app/it/licenses",
+    tone: "bg-error/10 text-error",
   },
 ];
 
@@ -219,6 +301,34 @@ function ItSupportPortal() {
           </Card>
         </div>
       </div>
+      <Card className="bg-card mt-5 shadow-soft border">
+        <CardHeader className="flex-row items-center justify-between">
+          <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
+            <Wrench className="text-primary size-4" /> Workspace
+          </CardTitle>
+          <Badge variant="secondary" className="font-semibold">
+            {screens.length} modules
+          </Badge>
+        </CardHeader>
+        <CardContent className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+          {screens.map((s) => (
+            <Link
+              key={s.path}
+              to={s.path}
+              className="group bg-card shadow-soft hover:shadow-elevated flex flex-col rounded-xl border p-4 transition-all hover:-translate-y-0.5"
+            >
+              <div className="flex items-start justify-between">
+                <span className={cn("grid size-9 place-items-center rounded-lg", s.tone)}>
+                  <s.icon className="size-4" />
+                </span>
+                <ArrowRight className="text-muted-foreground group-hover:text-primary size-4 transition-colors" />
+              </div>
+              <p className="font-display mt-3 text-sm font-extrabold">{s.label}</p>
+              <p className="text-muted-foreground mt-1 text-xs">{s.desc}</p>
+            </Link>
+          ))}
+        </CardContent>
+      </Card>
     </AppShell>
   );
 }

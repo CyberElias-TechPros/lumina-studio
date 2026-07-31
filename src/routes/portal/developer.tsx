@@ -1,5 +1,23 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Bug, CheckCircle2, Code2, GitPullRequest, Rocket, Server } from "lucide-react";
+import {
+  Activity,
+  ArrowRight,
+  BookOpen,
+  Boxes,
+  Braces,
+  Bug,
+  CheckCircle2,
+  Code2,
+  Eye,
+  GitPullRequest,
+  Inbox,
+  KeyRound,
+  LayoutTemplate,
+  ListTodo,
+  Rocket,
+  Server,
+  ToggleRight,
+} from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -38,6 +56,93 @@ const releases = [
     status: "In dev",
     pct: 34,
     tone: "bg-warning/10 text-warning",
+  },
+];
+
+const screens = [
+  {
+    icon: LayoutTemplate,
+    label: "Hub",
+    desc: "Dev hub and pipeline",
+    path: "/app/dev",
+    tone: "bg-primary/10 text-primary",
+  },
+  {
+    icon: Braces,
+    label: "API playground",
+    desc: "Test endpoints live",
+    path: "/app/dev/api-playground",
+    tone: "bg-success/10 text-success",
+  },
+  {
+    icon: Rocket,
+    label: "Deployments",
+    desc: "Releases and rollbacks",
+    path: "/app/dev/deployments",
+    tone: "bg-learning/10 text-learning",
+  },
+  {
+    icon: Activity,
+    label: "Monitoring",
+    desc: "Metrics and alerts",
+    path: "/app/dev/monitoring",
+    tone: "bg-warning/10 text-warning",
+  },
+  {
+    icon: ListTodo,
+    label: "Tasks",
+    desc: "Engineering backlog",
+    path: "/app/dev/tasks",
+    tone: "bg-career/10 text-career",
+  },
+  {
+    icon: GitPullRequest,
+    label: "Git & PRs",
+    desc: "Pull requests and merges",
+    path: "/app/dev/git",
+    tone: "bg-community/10 text-community",
+  },
+  {
+    icon: BookOpen,
+    label: "Docs",
+    desc: "API and dev docs",
+    path: "/app/dev/docs",
+    tone: "bg-erp/10 text-erp",
+  },
+  {
+    icon: Eye,
+    label: "Reviews",
+    desc: "Code review queue",
+    path: "/app/dev/reviews",
+    tone: "bg-services/10 text-services",
+  },
+  {
+    icon: KeyRound,
+    label: "Env vars",
+    desc: "Environment secrets",
+    path: "/app/dev/env",
+    tone: "bg-ink/10 text-ink",
+  },
+  {
+    icon: Inbox,
+    label: "Queues",
+    desc: "Jobs and workers",
+    path: "/app/dev/queues",
+    tone: "bg-error/10 text-error",
+  },
+  {
+    icon: Boxes,
+    label: "Dependencies",
+    desc: "Package updates and CVEs",
+    path: "/app/dev/dependencies",
+    tone: "bg-primary/10 text-primary",
+  },
+  {
+    icon: ToggleRight,
+    label: "Feature flags",
+    desc: "Toggle releases safely",
+    path: "/app/dev/feature-flags",
+    tone: "bg-success/10 text-success",
   },
 ];
 
@@ -178,6 +283,34 @@ function DeveloperPortal() {
           </Card>
         </div>
       </div>
+      <Card className="bg-card mt-5 shadow-soft border">
+        <CardHeader className="flex-row items-center justify-between">
+          <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
+            <LayoutTemplate className="text-primary size-4" /> Workspace
+          </CardTitle>
+          <Badge variant="secondary" className="font-semibold">
+            {screens.length} modules
+          </Badge>
+        </CardHeader>
+        <CardContent className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+          {screens.map((s) => (
+            <Link
+              key={s.path}
+              to={s.path}
+              className="group bg-card shadow-soft hover:shadow-elevated flex flex-col rounded-xl border p-4 transition-all hover:-translate-y-0.5"
+            >
+              <div className="flex items-start justify-between">
+                <span className={cn("grid size-9 place-items-center rounded-lg", s.tone)}>
+                  <s.icon className="size-4" />
+                </span>
+                <ArrowRight className="text-muted-foreground group-hover:text-primary size-4 transition-colors" />
+              </div>
+              <p className="font-display mt-3 text-sm font-extrabold">{s.label}</p>
+              <p className="text-muted-foreground mt-1 text-xs">{s.desc}</p>
+            </Link>
+          ))}
+        </CardContent>
+      </Card>
     </AppShell>
   );
 }

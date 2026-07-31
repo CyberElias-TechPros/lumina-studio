@@ -1,0 +1,118 @@
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { ArrowLeft, CheckCircle2, Link2, Webhook, Workflow, Zap } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { AppShell } from "@/components/app/app-shell";
+import { cn } from "@/lib/utils";
+
+export const Route = createFileRoute("/app/admin/integrations")({
+  head: () => ({
+    meta: [
+      { title: "Integrations & Webhooks — CEA-OS" },
+      { name: "description", content: "Connected services and webhook endpoints." },
+    ],
+  }),
+  component: AdminIntegrations,
+});
+
+const integrations = [
+  { i: "Paystack", v: "Payments · live", s: "Connected", tone: "bg-success/10 text-success" },
+  {
+    i: "Gmail Workspace",
+    v: "Mail · 214 seats",
+    s: "Connected",
+    tone: "bg-success/10 text-success",
+  },
+  { i: "Slack (ops)", v: "Alerts · 4 channels", s: "Degraded", tone: "bg-warning/10 text-warning" },
+];
+
+function AdminIntegrations() {
+  return (
+    <AppShell
+      roleKey="admin"
+      title="Integrations & webhooks"
+      subtitle="14 apps · 22 webhooks · 99.9% delivery"
+      actions={
+        <>
+          <Badge className="bg-success/10 text-success border-0 font-semibold">All connected</Badge>
+          <Button asChild variant="outline" size="sm" className="font-semibold">
+            <Link to="/app/admin">
+              <ArrowLeft className="size-4" /> Admin hub
+            </Link>
+          </Button>
+        </>
+      }
+    >
+      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+        {[
+          {
+            label: "Apps",
+            value: "14",
+            delta: "12 live",
+            icon: Link2,
+            tone: "bg-primary/10 text-primary",
+          },
+          {
+            label: "Webhooks",
+            value: "22",
+            delta: "3 testing",
+            icon: Webhook,
+            tone: "bg-learning/10 text-learning",
+          },
+          {
+            label: "Delivery",
+            value: "99.9%",
+            delta: "30-day",
+            icon: Zap,
+            tone: "bg-success/10 text-success",
+          },
+          {
+            label: "Failures (24h)",
+            value: "1",
+            delta: "retried OK",
+            icon: Workflow,
+            tone: "bg-warning/10 text-warning",
+          },
+        ].map((k) => (
+          <Card key={k.label} className="bg-card shadow-soft border">
+            <CardContent className="p-5">
+              <div className="flex items-center justify-between">
+                <p className="text-muted-foreground text-xs font-bold tracking-wide uppercase">
+                  {k.label}
+                </p>
+                <span className={cn("grid size-8 place-items-center rounded-lg", k.tone)}>
+                  <k.icon className="size-4" />
+                </span>
+              </div>
+              <p className="font-display mt-3 text-2xl font-extrabold">{k.value}</p>
+              <p className="text-muted-foreground mt-0.5 text-xs font-semibold">{k.delta}</p>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+
+      <Card className="bg-card mt-5 shadow-soft border">
+        <CardHeader>
+          <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
+            <CheckCircle2 className="text-primary size-4" /> Connected apps
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="divide-y">
+          {integrations.map((i) => (
+            <div key={i.i} className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0">
+              <div className="min-w-0 flex-1">
+                <p className="text-sm font-bold">{i.i}</p>
+                <p className="text-muted-foreground text-xs">{i.v}</p>
+              </div>
+              <Badge className={cn("border-0 font-semibold", i.tone)}>{i.s}</Badge>
+              <Button variant="outline" size="sm" className="shrink-0 font-semibold">
+                Configure
+              </Button>
+            </div>
+          ))}
+        </CardContent>
+      </Card>
+    </AppShell>
+  );
+}

@@ -2,12 +2,19 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   ArrowRight,
   Briefcase,
+  ChartNoAxesColumn,
   FileCheck2,
+  HandCoins,
   HandHeart,
+  Heart,
   HeartHandshake,
+  LayoutTemplate,
+  Megaphone,
+  MessageSquare,
   School,
   Target,
   Users,
+  Wallet,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -60,6 +67,65 @@ const reports = [
     tone: "bg-primary/10 text-primary",
   },
   { t: "Q3 disbursement request", s: "In review", tone: "bg-warning/10 text-warning" },
+];
+
+const screens = [
+  {
+    icon: LayoutTemplate,
+    label: "Partnership hub",
+    desc: "Programme overview",
+    path: "/app/ngo",
+    tone: "bg-primary/10 text-primary",
+  },
+  {
+    icon: HandCoins,
+    label: "Scholarships",
+    desc: "Scholarship funds",
+    path: "/app/ngo/scholarships",
+    tone: "bg-success/10 text-success",
+  },
+  {
+    icon: Megaphone,
+    label: "Programs",
+    desc: "Joint programmes",
+    path: "/app/ngo/programs",
+    tone: "bg-learning/10 text-learning",
+  },
+  {
+    icon: Users,
+    label: "Volunteers",
+    desc: "Partner volunteers",
+    path: "/app/ngo/volunteers",
+    tone: "bg-warning/10 text-warning",
+  },
+  {
+    icon: Heart,
+    label: "Impact reports",
+    desc: "Impact narratives",
+    path: "/app/ngo/reports",
+    tone: "bg-career/10 text-career",
+  },
+  {
+    icon: Wallet,
+    label: "Donations",
+    desc: "Donations and disbursements",
+    path: "/app/ngo/donations",
+    tone: "bg-community/10 text-community",
+  },
+  {
+    icon: MessageSquare,
+    label: "Messaging",
+    desc: "Chat with your contact",
+    path: "/app/ngo/messaging",
+    tone: "bg-erp/10 text-erp",
+  },
+  {
+    icon: ChartNoAxesColumn,
+    label: "Analytics",
+    desc: "Outcomes dashboard",
+    path: "/app/ngo/analytics",
+    tone: "bg-services/10 text-services",
+  },
 ];
 
 function NgoPortal() {
@@ -196,6 +262,34 @@ function NgoPortal() {
           </Card>
         </div>
       </div>
+      <Card className="bg-card mt-5 shadow-soft border">
+        <CardHeader className="flex-row items-center justify-between">
+          <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
+            <LayoutTemplate className="text-primary size-4" /> Workspace
+          </CardTitle>
+          <Badge variant="secondary" className="font-semibold">
+            {screens.length} modules
+          </Badge>
+        </CardHeader>
+        <CardContent className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+          {screens.map((s) => (
+            <Link
+              key={s.path}
+              to={s.path}
+              className="group bg-card shadow-soft hover:shadow-elevated flex flex-col rounded-xl border p-4 transition-all hover:-translate-y-0.5"
+            >
+              <div className="flex items-start justify-between">
+                <span className={cn("grid size-9 place-items-center rounded-lg", s.tone)}>
+                  <s.icon className="size-4" />
+                </span>
+                <ArrowRight className="text-muted-foreground group-hover:text-primary size-4 transition-colors" />
+              </div>
+              <p className="font-display mt-3 text-sm font-extrabold">{s.label}</p>
+              <p className="text-muted-foreground mt-1 text-xs">{s.desc}</p>
+            </Link>
+          ))}
+        </CardContent>
+      </Card>
     </AppShell>
   );
 }

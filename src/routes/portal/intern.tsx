@@ -4,10 +4,17 @@ import {
   Award,
   BookOpen,
   CalendarDays,
+  ClipboardCheck,
+  Clock3,
+  FolderOpen,
   GraduationCap,
+  LayoutTemplate,
   LineChart,
+  ListTodo,
+  MessageSquare,
   Target,
   UserCheck,
+  Users,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -66,6 +73,65 @@ const milestones = [
     tone: "bg-warning/10 text-warning",
   },
   { t: "Final presentation", d: "Aug 28", status: "Locked", tone: "bg-learning/10 text-learning" },
+];
+
+const screens = [
+  {
+    icon: LayoutTemplate,
+    label: "Hub",
+    desc: "Intern overview and goals",
+    path: "/app/intern",
+    tone: "bg-primary/10 text-primary",
+  },
+  {
+    icon: ListTodo,
+    label: "Tasks",
+    desc: "Sprint tasks and assignments",
+    path: "/app/intern/tasks",
+    tone: "bg-success/10 text-success",
+  },
+  {
+    icon: Clock3,
+    label: "Timesheet",
+    desc: "Log hours and timesheets",
+    path: "/app/intern/timesheet",
+    tone: "bg-learning/10 text-learning",
+  },
+  {
+    icon: Users,
+    label: "Mentorship",
+    desc: "Mentor sessions and check-ins",
+    path: "/app/intern/mentorship",
+    tone: "bg-warning/10 text-warning",
+  },
+  {
+    icon: BookOpen,
+    label: "Learning plan",
+    desc: "Track your learning track",
+    path: "/app/intern/learning-plan",
+    tone: "bg-career/10 text-career",
+  },
+  {
+    icon: ClipboardCheck,
+    label: "Evaluation",
+    desc: "Mid-point and final reviews",
+    path: "/app/intern/evaluation",
+    tone: "bg-community/10 text-community",
+  },
+  {
+    icon: FolderOpen,
+    label: "Portfolio",
+    desc: "Projects and case studies",
+    path: "/app/intern/portfolio",
+    tone: "bg-erp/10 text-erp",
+  },
+  {
+    icon: MessageSquare,
+    label: "Messaging",
+    desc: "Chat with your team",
+    path: "/app/intern/messages",
+    tone: "bg-services/10 text-services",
+  },
 ];
 
 function InternPortal() {
@@ -235,6 +301,34 @@ function InternPortal() {
           </Card>
         </div>
       </div>
+      <Card className="bg-card mt-5 shadow-soft border">
+        <CardHeader className="flex-row items-center justify-between">
+          <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
+            <LayoutTemplate className="text-primary size-4" /> Workspace
+          </CardTitle>
+          <Badge variant="secondary" className="font-semibold">
+            {screens.length} modules
+          </Badge>
+        </CardHeader>
+        <CardContent className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+          {screens.map((s) => (
+            <Link
+              key={s.path}
+              to={s.path}
+              className="group bg-card shadow-soft hover:shadow-elevated flex flex-col rounded-xl border p-4 transition-all hover:-translate-y-0.5"
+            >
+              <div className="flex items-start justify-between">
+                <span className={cn("grid size-9 place-items-center rounded-lg", s.tone)}>
+                  <s.icon className="size-4" />
+                </span>
+                <ArrowRight className="text-muted-foreground group-hover:text-primary size-4 transition-colors" />
+              </div>
+              <p className="font-display mt-3 text-sm font-extrabold">{s.label}</p>
+              <p className="text-muted-foreground mt-1 text-xs">{s.desc}</p>
+            </Link>
+          ))}
+        </CardContent>
+      </Card>
     </AppShell>
   );
 }

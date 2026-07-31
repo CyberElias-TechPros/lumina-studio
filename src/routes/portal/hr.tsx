@@ -2,12 +2,20 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   ArrowRight,
   Award,
+  BookOpen,
   Briefcase,
   CalendarDays,
+  ClipboardCheck,
+  Clock3,
+  DollarSign,
+  FileText,
   Heart,
+  LayoutTemplate,
   Mail,
   ScanFace,
+  TrendingUp,
   UserCheck,
+  UserPlus,
   Users,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
@@ -56,6 +64,79 @@ const leaves = [
     when: "Aug 17–19",
     status: "Pending",
     tone: "bg-warning/10 text-warning",
+  },
+];
+
+const screens = [
+  {
+    icon: LayoutTemplate,
+    label: "Hub",
+    desc: "People overview",
+    path: "/app/hr",
+    tone: "bg-primary/10 text-primary",
+  },
+  {
+    icon: UserPlus,
+    label: "Recruitment",
+    desc: "Roles and candidates",
+    path: "/app/hr/recruitment",
+    tone: "bg-success/10 text-success",
+  },
+  {
+    icon: Users,
+    label: "Employees",
+    desc: "Directory and records",
+    path: "/app/hr/employees",
+    tone: "bg-learning/10 text-learning",
+  },
+  {
+    icon: CalendarDays,
+    label: "Leave",
+    desc: "Requests and calendar",
+    path: "/app/hr/leave",
+    tone: "bg-warning/10 text-warning",
+  },
+  {
+    icon: Clock3,
+    label: "Attendance",
+    desc: "Daily attendance and sync",
+    path: "/app/hr/attendance",
+    tone: "bg-career/10 text-career",
+  },
+  {
+    icon: TrendingUp,
+    label: "Performance",
+    desc: "Reviews and growth",
+    path: "/app/hr/performance",
+    tone: "bg-community/10 text-community",
+  },
+  {
+    icon: DollarSign,
+    label: "Payroll input",
+    desc: "Payroll data entry",
+    path: "/app/hr/payroll-input",
+    tone: "bg-erp/10 text-erp",
+  },
+  {
+    icon: ClipboardCheck,
+    label: "Onboarding",
+    desc: "New hire onboarding",
+    path: "/app/hr/onboarding",
+    tone: "bg-services/10 text-services",
+  },
+  {
+    icon: BookOpen,
+    label: "Training",
+    desc: "L&D catalogue",
+    path: "/app/hr/training",
+    tone: "bg-ink/10 text-ink",
+  },
+  {
+    icon: FileText,
+    label: "Reports",
+    desc: "People analytics",
+    path: "/app/hr/reports",
+    tone: "bg-error/10 text-error",
   },
 ];
 
@@ -223,6 +304,34 @@ function HrPortal() {
           </Card>
         </div>
       </div>
+      <Card className="bg-card mt-5 shadow-soft border">
+        <CardHeader className="flex-row items-center justify-between">
+          <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
+            <LayoutTemplate className="text-primary size-4" /> Workspace
+          </CardTitle>
+          <Badge variant="secondary" className="font-semibold">
+            {screens.length} modules
+          </Badge>
+        </CardHeader>
+        <CardContent className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+          {screens.map((s) => (
+            <Link
+              key={s.path}
+              to={s.path}
+              className="group bg-card shadow-soft hover:shadow-elevated flex flex-col rounded-xl border p-4 transition-all hover:-translate-y-0.5"
+            >
+              <div className="flex items-start justify-between">
+                <span className={cn("grid size-9 place-items-center rounded-lg", s.tone)}>
+                  <s.icon className="size-4" />
+                </span>
+                <ArrowRight className="text-muted-foreground group-hover:text-primary size-4 transition-colors" />
+              </div>
+              <p className="font-display mt-3 text-sm font-extrabold">{s.label}</p>
+              <p className="text-muted-foreground mt-1 text-xs">{s.desc}</p>
+            </Link>
+          ))}
+        </CardContent>
+      </Card>
     </AppShell>
   );
 }

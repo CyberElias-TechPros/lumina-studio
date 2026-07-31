@@ -2,8 +2,12 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   ArrowRight,
   CheckCircle2,
+  FileSignature,
   FileText,
   FolderKanban,
+  FolderOpen,
+  Headset,
+  LayoutTemplate,
   MessageSquare,
   Receipt,
   Rocket,
@@ -64,6 +68,59 @@ const invoices = [
     amount: 420000,
     status: "Due Aug 20",
     tone: "bg-warning/10 text-warning",
+  },
+];
+
+const screens = [
+  {
+    icon: FileSignature,
+    label: "Proposals",
+    desc: "Proposals and scopes",
+    path: "/app/client/proposals",
+    tone: "bg-primary/10 text-primary",
+  },
+  {
+    icon: LayoutTemplate,
+    label: "Projects",
+    desc: "Project workspace",
+    path: "/app/client/projects/$projectId",
+    params: { projectId: "platform-rebuild" },
+    tone: "bg-success/10 text-success",
+  },
+  {
+    icon: FileText,
+    label: "Invoices",
+    desc: "Invoices and payments",
+    path: "/app/client/invoices",
+    tone: "bg-learning/10 text-learning",
+  },
+  {
+    icon: Headset,
+    label: "Support",
+    desc: "Tickets and SLAs",
+    path: "/app/client/support",
+    tone: "bg-warning/10 text-warning",
+  },
+  {
+    icon: FileSignature,
+    label: "Contracts",
+    desc: "Agreements and addenda",
+    path: "/app/client/contracts",
+    tone: "bg-career/10 text-career",
+  },
+  {
+    icon: FolderOpen,
+    label: "Documents",
+    desc: "Shared deliverables",
+    path: "/app/client/documents",
+    tone: "bg-community/10 text-community",
+  },
+  {
+    icon: MessageSquare,
+    label: "Messaging",
+    desc: "Chat with your team",
+    path: "/app/client/messages",
+    tone: "bg-erp/10 text-erp",
   },
 ];
 
@@ -279,6 +336,35 @@ function ClientPortal() {
           </Card>
         </div>
       </div>
+      <Card className="bg-card mt-5 shadow-soft border">
+        <CardHeader className="flex-row items-center justify-between">
+          <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
+            <LayoutTemplate className="text-primary size-4" /> Workspace
+          </CardTitle>
+          <Badge variant="secondary" className="font-semibold">
+            {screens.length} modules
+          </Badge>
+        </CardHeader>
+        <CardContent className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+          {screens.map((s) => (
+            <Link
+              key={s.path}
+              to={s.path}
+              params={"params" in s ? s.params : undefined}
+              className="group bg-card shadow-soft hover:shadow-elevated flex flex-col rounded-xl border p-4 transition-all hover:-translate-y-0.5"
+            >
+              <div className="flex items-start justify-between">
+                <span className={cn("grid size-9 place-items-center rounded-lg", s.tone)}>
+                  <s.icon className="size-4" />
+                </span>
+                <ArrowRight className="text-muted-foreground group-hover:text-primary size-4 transition-colors" />
+              </div>
+              <p className="font-display mt-3 text-sm font-extrabold">{s.label}</p>
+              <p className="text-muted-foreground mt-1 text-xs">{s.desc}</p>
+            </Link>
+          ))}
+        </CardContent>
+      </Card>
     </AppShell>
   );
 }

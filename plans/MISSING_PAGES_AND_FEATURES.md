@@ -138,65 +138,65 @@
 | [x] Curriculum Manager (program versions, approvals) | `/dept/curriculum`  |
 | [x] Instructor Management (workload, performance)    | `/dept/instructors` |
 | [x] Quality Assurance (observations, evaluations)    | `/dept/quality`     |
-| [ ] Reports & Analytics                              | `/dept/reports`     |
-| [ ] Approvals (curriculum, courses, leave)           | `/dept/approvals`   |
-| [ ] Calendar (department events, academic calendar)  | `/dept/calendar`    |
+| [x] Reports & Analytics                              | `/dept/reports`     |
+| [x] Approvals (curriculum, courses, leave)           | `/dept/approvals`   |
+| [x] Calendar (department events, academic calendar)  | `/dept/calendar`    |
 | [x] Program Enrollment overview                      | `/dept/enrollment`  |
 
 ## 8. Receptionist Portal (`07-receptionist.md`)
 
 | Page                                                  | Route                        |
 | ----------------------------------------------------- | ---------------------------- |
-| [ ] Front Desk Hub                                    | `/receptionist/dashboard`    |
-| [ ] Visitor Check-In (ID capture, badge, notify host) | `/receptionist/check-in`     |
-| [ ] Visitor Check-Out                                 | `/receptionist/check-out`    |
-| [ ] Appointment Scheduler                             | `/receptionist/appointments` |
-| [ ] Inquiry Log (walk-ins → CRM leads)                | `/receptionist/inquiries`    |
-| [ ] Phone Log                                         | `/receptionist/phone-log`    |
-| [ ] Delivery Log                                      | `/receptionist/deliveries`   |
-| [ ] Staff Directory                                   | `/receptionist/directory`    |
-| [ ] Shift & Task Management                           | `/receptionist/tasks`        |
+| [x] Front Desk Hub                                    | `/receptionist/dashboard`    |
+| [x] Visitor Check-In (ID capture, badge, notify host) | `/receptionist/check-in`     |
+| [x] Visitor Check-Out                                 | `/receptionist/check-out`    |
+| [x] Appointment Scheduler                             | `/receptionist/appointments` |
+| [x] Inquiry Log (walk-ins → CRM leads)                | `/receptionist/inquiries`    |
+| [x] Phone Log                                         | `/receptionist/phone-log`    |
+| [x] Delivery Log                                      | `/receptionist/deliveries`   |
+| [x] Staff Directory                                   | `/receptionist/directory`    |
+| [x] Shift & Task Management                           | `/receptionist/tasks`        |
 
 ## 9. Operations Manager Portal (`08-operations-manager.md`)
 
 | Page                                                       | Route             |
 | ---------------------------------------------------------- | ----------------- |
-| [ ] Operations Hub                                         | `/ops/dashboard`  |
-| [ ] Branch Management (multi-branch, resource utilization) | `/ops/branches`   |
-| [ ] Inventory Management (stock, reorder alerts, POs)      | `/ops/inventory`  |
-| [ ] Facilities Management (room booking, maintenance)      | `/ops/facilities` |
-| [ ] Task Management (assign, track, workflows)             | `/ops/tasks`      |
-| [ ] Process Automation (workflow builder)                  | `/ops/automation` |
-| [ ] Vendor Management (contracts, performance)             | `/ops/vendors`    |
-| [ ] Reports & Analytics (efficiency, cost per branch)      | `/ops/reports`    |
+| [x] Operations Hub                                         | `/ops/dashboard`  |
+| [x] Branch Management (multi-branch, resource utilization) | `/ops/branches`   |
+| [x] Inventory Management (stock, reorder alerts, POs)      | `/ops/inventory`  |
+| [x] Facilities Management (room booking, maintenance)      | `/ops/facilities` |
+| [x] Task Management (assign, track, workflows)             | `/ops/tasks`      |
+| [x] Process Automation (workflow builder)                  | `/ops/automation` |
+| [x] Vendor Management (contracts, performance)             | `/ops/vendors`    |
+| [x] Reports & Analytics (efficiency, cost per branch)      | `/ops/reports`    |
 
 ## 10. Director Portal (`09-director.md`)
 
 | Page                                                      | Route                      |
 | --------------------------------------------------------- | -------------------------- |
-| [ ] Executive Command Center (real-time KPIs, NPS)        | `/director/command-center` |
-| [ ] Financial Overview (revenue, expenses, forecasts)     | `/director/finance`        |
-| [ ] Academic Overview (enrollment, completion, placement) | `/director/academic`       |
-| [ ] Operations Overview (branch performance)              | `/director/operations`     |
-| [ ] HR Overview (headcount, turnover, satisfaction)       | `/director/hr`             |
-| [ ] Marketing Overview (CAC, funnel, campaign ROI)        | `/director/marketing`      |
-| [ ] Approvals (budgets, hires, partnerships, POs)         | `/director/approvals`      |
-| [ ] Strategic Planning / OKRs                             | `/director/okrs`           |
-| [ ] Reports Drill-Down (any module, any department)       | `/director/reports`        |
+| [x] Executive Command Center (real-time KPIs, NPS)        | `/director/command-center` |
+| [x] Financial Overview (revenue, expenses, forecasts)     | `/director/finance`        |
+| [x] Academic Overview (enrollment, completion, placement) | `/director/academic`       |
+| [x] Operations Overview (branch performance)              | `/director/operations`     |
+| [x] HR Overview (headcount, turnover, satisfaction)       | `/director/hr`             |
+| [x] Marketing Overview (CAC, funnel, campaign ROI)        | `/director/marketing`      |
+| [x] Approvals (budgets, hires, partnerships, POs)         | `/director/approvals`      |
+| [x] Strategic Planning / OKRs                             | `/director/okrs`           |
+| [x] Reports Drill-Down (any module, any department)       | `/director/reports`        |
 
 ## 11. Client Portal (`10-client.md`)
 
 | Page                                                       | Route                         |
 | ---------------------------------------------------------- | ----------------------------- |
 | [x] Client Portal Home                                     | `/client/portal`              |
-| [ ] Proposals (view, accept/reject, negotiate)             | `/client/proposals`           |
+| [x] Proposals (view, accept/reject, negotiate)             | `/client/proposals`           |
 | [x] Project Dashboard (timeline, milestones, deliverables) | `/client/projects/[id]`       |
-| [ ] Task Board (comment, approve deliverables)             | `/client/projects/[id]/tasks` |
+| [x] Task Board (comment, approve deliverables)             | `/client/projects/[id]/tasks` |
 | [x] Invoices & Payments (pay online, receipts)             | `/client/invoices`            |
 | [x] Support Tickets (create, track, SLA)                   | `/client/support`             |
-| [ ] Contracts (view, terms, renewals)                      | `/client/contracts`           |
-| [ ] Documents (shared files, SOW, reports)                 | `/client/documents`           |
-| [ ] Messaging (with project team)                          | `/client/messages`            |
+| [x] Contracts (view, terms, renewals)                      | `/client/contracts`           |
+| [x] Documents (shared files, SOW, reports)                 | `/client/documents`           |
+| [x] Messaging (with project team)                          | `/client/messages`            |
 
 ## 12. Employer Portal (`11-employer.md`)
 
@@ -207,7 +207,7 @@
 | [x] Talent Search (browse portfolios by skill/cert)  | `/employer/talent`           |
 | [x] Candidate Pipeline (shortlist, reject)           | `/employer/pipeline/[jobId]` |
 | [x] Interview Scheduler                              | `/employer/interviews`       |
-| [ ] Feedback & Reviews (post-interview, post-hire)   | `/employer/feedback`         |
+| [x] Feedback & Reviews (post-interview, post-hire)   | `/employer/feedback`         |
 | [x] Analytics (time-to-hire, retention)              | `/employer/analytics`        |
 | [x] Brand Page (company profile)                     | `/employer/brand`            |
 
@@ -215,37 +215,37 @@
 
 | Page                                             | Route                     |
 | ------------------------------------------------ | ------------------------- |
-| [ ] Partnership Hub                              | `/partner/hub`            |
-| [ ] Agreements (MOUs, contracts, terms)          | `/partner/agreements`     |
-| [ ] Collaborations (co-branded events, programs) | `/partner/collaborations` |
-| [ ] Referral Portal (track referrals, payouts)   | `/partner/referrals`      |
-| [ ] Resources (co-branded materials, logos)      | `/partner/resources`      |
-| [ ] Reports (impact, revenue share)              | `/partner/reports`        |
-| [ ] Messaging                                    | `/partner/messages`       |
+| [x] Partnership Hub                              | `/partner/hub`            |
+| [x] Agreements (MOUs, contracts, terms)          | `/partner/agreements`     |
+| [x] Collaborations (co-branded events, programs) | `/partner/collaborations` |
+| [x] Referral Portal (track referrals, payouts)   | `/partner/referrals`      |
+| [x] Resources (co-branded materials, logos)      | `/partner/resources`      |
+| [x] Reports (impact, revenue share)              | `/partner/reports`        |
+| [x] Messaging                                    | `/partner/messages`       |
 
 ## 14. Volunteer Portal (`13-volunteer.md`)
 
 | Page                                       | Route                        |
 | ------------------------------------------ | ---------------------------- |
-| [ ] Opportunities                          | `/volunteer/opportunities`   |
-| [ ] My Volunteering (sign-ups, history)    | `/volunteer/my-volunteering` |
-| [ ] Hours Tracker (clock in/out, approval) | `/volunteer/hours`           |
-| [ ] Community (group chat, forums)         | `/volunteer/community`       |
-| [ ] Certificates (appreciation)            | `/volunteer/certificates`    |
-| [ ] Impact Dashboard                       | `/volunteer/impact`          |
+| [x] Opportunities                          | `/volunteer/opportunities`   |
+| [x] My Volunteering (sign-ups, history)    | `/volunteer/my-volunteering` |
+| [x] Hours Tracker (clock in/out, approval) | `/volunteer/hours`           |
+| [x] Community (group chat, forums)         | `/volunteer/community`       |
+| [x] Certificates (appreciation)            | `/volunteer/certificates`    |
+| [x] Impact Dashboard                       | `/volunteer/impact`          |
 
 ## 15. Intern Portal (`14-intern.md`)
 
 | Page                                            | Route                   |
 | ----------------------------------------------- | ----------------------- |
-| [ ] Intern Hub (Dashboard)                      | `/intern`               |
-| [ ] Tasks (assigned, submit deliverables)       | `/intern/tasks`         |
-| [ ] Timesheet (log hours, approval)             | `/intern/timesheet`     |
-| [ ] Mentorship (sessions, notes)                | `/intern/mentorship`    |
-| [ ] Learning Plan                               | `/intern/learning-plan` |
-| [ ] Evaluation (self, supervisor, final review) | `/intern/evaluation`    |
-| [ ] Portfolio                                   | `/intern/portfolio`     |
-| [ ] Messaging                                   | `/intern/messages`      |
+| [x] Intern Hub (Dashboard)                      | `/intern`               |
+| [x] Tasks (assigned, submit deliverables)       | `/intern/tasks`         |
+| [x] Timesheet (log hours, approval)             | `/intern/timesheet`     |
+| [x] Mentorship (sessions, notes)                | `/intern/mentorship`    |
+| [x] Learning Plan                               | `/intern/learning-plan` |
+| [x] Evaluation (self, supervisor, final review) | `/intern/evaluation`    |
+| [x] Portfolio                                   | `/intern/portfolio`     |
+| [x] Messaging                                   | `/intern/messages`      |
 
 ## 16. Alumni Portal (`15-alumni.md`)
 
@@ -264,165 +264,165 @@
 
 | Page                                           | Route                   |
 | ---------------------------------------------- | ----------------------- |
-| [ ] Supplier Hub (Dashboard)                   | `/supplier`             |
-| [ ] Orders / Purchase Orders (confirm, status) | `/supplier/orders`      |
-| [ ] Deliveries (schedule, mark delivered)      | `/supplier/deliveries`  |
-| [ ] Invoices (submit, track payment)           | `/supplier/invoices`    |
-| [ ] Company Profile (catalog, certifications)  | `/supplier/profile`     |
-| [ ] Messaging (procurement)                    | `/supplier/messages`    |
-| [ ] Performance Ratings                        | `/supplier/performance` |
+| [x] Supplier Hub (Dashboard)                   | `/supplier`             |
+| [x] Orders / Purchase Orders (confirm, status) | `/supplier/orders`      |
+| [x] Deliveries (schedule, mark delivered)      | `/supplier/deliveries`  |
+| [x] Invoices (submit, track payment)           | `/supplier/invoices`    |
+| [x] Company Profile (catalog, certifications)  | `/supplier/profile`     |
+| [x] Messaging (procurement)                    | `/supplier/messages`    |
+| [x] Performance Ratings                        | `/supplier/performance` |
 
 ## 18. Accountant Portal (`18-accountant.md`)
 
 | Page                                              | Route                |
 | ------------------------------------------------- | -------------------- |
-| [ ] Finance Hub (AR, AP, cash flow, bank balance) | `/finance/hub`       |
-| [ ] Invoicing (create, send, track)               | `/finance/invoicing` |
-| [ ] Billing / Accounts Payable                    | `/finance/billing`   |
-| [ ] Payments (manual/batch, reconcile)            | `/finance/payments`  |
-| [ ] Expenses (claims, approve, reimburse)         | `/finance/expenses`  |
-| [ ] Payroll (salaries, deductions, payslips)      | `/finance/payroll`   |
-| [ ] Budgets (dept budgets vs actual)              | `/finance/budgets`   |
-| [ ] Reports (P&L, balance sheet, cash flow, tax)  | `/finance/reports`   |
-| [ ] Banking Reconciliation                        | `/finance/banking`   |
-| [ ] Audit Log                                     | `/finance/audit`     |
+| [x] Finance Hub (AR, AP, cash flow, bank balance) | `/finance/hub`       |
+| [x] Invoicing (create, send, track)               | `/finance/invoicing` |
+| [x] Billing / Accounts Payable                    | `/finance/billing`   |
+| [x] Payments (manual/batch, reconcile)            | `/finance/payments`  |
+| [x] Expenses (claims, approve, reimburse)         | `/finance/expenses`  |
+| [x] Payroll (salaries, deductions, payslips)      | `/finance/payroll`   |
+| [x] Budgets (dept budgets vs actual)              | `/finance/budgets`   |
+| [x] Reports (P&L, balance sheet, cash flow, tax)  | `/finance/reports`   |
+| [x] Banking Reconciliation                        | `/finance/banking`   |
+| [x] Audit Log                                     | `/finance/audit`     |
 
 ## 19. HR Officer Portal (`19-hr-officer.md`)
 
 | Page                                                         | Route               |
 | ------------------------------------------------------------ | ------------------- |
-| [ ] HR Hub (headcount, open positions, leave, reviews)       | `/hr`               |
-| [ ] Recruitment (postings, applications, interviews, offers) | `/hr/recruitment`   |
-| [ ] Employee Database (contracts, documents, history)        | `/hr/employees`     |
-| [ ] Leave Management (requests, balances, calendar)          | `/hr/leave`         |
-| [ ] Attendance (staff, lateness, absenteeism)                | `/hr/attendance`    |
-| [ ] Performance Reviews (cycles, goals, appraisals)          | `/hr/performance`   |
-| [ ] Payroll Input (changes → finance)                        | `/hr/payroll-input` |
-| [ ] Onboarding/Offboarding Checklists                        | `/hr/onboarding`    |
-| [ ] Training Records                                         | `/hr/training`      |
-| [ ] HR Reports (turnover, satisfaction, compliance)          | `/hr/reports`       |
+| [x] HR Hub (headcount, open positions, leave, reviews)       | `/hr`               |
+| [x] Recruitment (postings, applications, interviews, offers) | `/hr/recruitment`   |
+| [x] Employee Database (contracts, documents, history)        | `/hr/employees`     |
+| [x] Leave Management (requests, balances, calendar)          | `/hr/leave`         |
+| [x] Attendance (staff, lateness, absenteeism)                | `/hr/attendance`    |
+| [x] Performance Reviews (cycles, goals, appraisals)          | `/hr/performance`   |
+| [x] Payroll Input (changes → finance)                        | `/hr/payroll-input` |
+| [x] Onboarding/Offboarding Checklists                        | `/hr/onboarding`    |
+| [x] Training Records                                         | `/hr/training`      |
+| [x] HR Reports (turnover, satisfaction, compliance)          | `/hr/reports`       |
 
 ## 20. Admissions Officer Portal (`20-admissions-officer.md`)
 
 | Page                                                       | Route                           |
 | ---------------------------------------------------------- | ------------------------------- |
-| [ ] Admissions Hub (volume, funnel, targets)               | `/admissions/hub`               |
-| [ ] Applications Pipeline (filter by status/stage/program) | `/admissions/applications`      |
-| [ ] Application Detail View                                | `/admissions/applications/[id]` |
-| [ ] Review Pipeline (shortlist/reject, notes)              | `/admissions/review`            |
+| [x] Admissions Hub (volume, funnel, targets)               | `/admissions/hub`               |
+| [x] Applications Pipeline (filter by status/stage/program) | `/admissions/applications`      |
+| [x] Application Detail View                                | `/admissions/applications/[id]` |
+| [x] Review Pipeline (shortlist/reject, notes)              | `/admissions/review`            |
 | [x] Interview Scheduler                                    | `/admissions/interviews`        |
-| [ ] Document Verification (checklists)                     | `/admissions/documents`         |
-| [ ] Communication Center (offer letters, templates)        | `/admissions/communication`     |
-| [ ] Enrollment Tracker (paid vs pending, orientation)      | `/admissions/enrollment`        |
-| [ ] Reports (conversion, sources, demographics)            | `/admissions/reports`           |
+| [x] Document Verification (checklists)                     | `/admissions/documents`         |
+| [x] Communication Center (offer letters, templates)        | `/admissions/communication`     |
+| [x] Enrollment Tracker (paid vs pending, orientation)      | `/admissions/enrollment`        |
+| [x] Reports (conversion, sources, demographics)            | `/admissions/reports`           |
 
 ## 21. Marketing Officer Portal (`21-marketing-officer.md`)
 
 | Page                                                 | Route                         |
 | ---------------------------------------------------- | ----------------------------- |
-| [ ] Marketing Hub                                    | `/marketing`                  |
-| [ ] Campaigns (multi-channel, budget, ROI)           | `/marketing/campaigns`        |
-| [ ] Content Calendar                                 | `/marketing/content-calendar` |
-| [ ] Email Marketing (campaigns, lists, opens/clicks) | `/marketing/email`            |
-| [ ] Landing Page Builder (+A/B testing)              | `/marketing/landing-pages`    |
-| [ ] Lead Management (score, route)                   | `/marketing/leads`            |
-| [ ] SEO Dashboard (keywords, rank tracking)          | `/marketing/seo`              |
-| [ ] Social Media Scheduler                           | `/marketing/social`           |
-| [ ] Analytics (CAC, ROAS, attribution)               | `/marketing/analytics`        |
-| [ ] Reports                                          | `/marketing/reports`          |
+| [x] Marketing Hub                                    | `/marketing`                  |
+| [x] Campaigns (multi-channel, budget, ROI)           | `/marketing/campaigns`        |
+| [x] Content Calendar                                 | `/marketing/content-calendar` |
+| [x] Email Marketing (campaigns, lists, opens/clicks) | `/marketing/email`            |
+| [x] Landing Page Builder (+A/B testing)              | `/marketing/landing-pages`    |
+| [x] Lead Management (score, route)                   | `/marketing/leads`            |
+| [x] SEO Dashboard (keywords, rank tracking)          | `/marketing/seo`              |
+| [x] Social Media Scheduler                           | `/marketing/social`           |
+| [x] Analytics (CAC, ROAS, attribution)               | `/marketing/analytics`        |
+| [x] Reports                                          | `/marketing/reports`          |
 
 ## 22. IT Support Portal (`22-it-support.md`)
 
 | Page                                      | Route                |
 | ----------------------------------------- | -------------------- |
-| [ ] Ticket Hub (queue, SLA timers)        | `/it/tickets`        |
-| [ ] Ticket Management                     | `/it/tickets/[id]`   |
-| [ ] Asset Management (hardware lifecycle) | `/it/assets`         |
-| [ ] System Monitoring                     | `/it/monitoring`     |
-| [ ] Knowledge Base (internal IT docs)     | `/it/knowledge-base` |
-| [ ] User Management (accounts, resets)    | `/it/users`          |
-| [ ] Remote Support                        | `/it/remote-support` |
-| [ ] Reports                               | `/it/reports`        |
-| [ ] Ticket Templates                      | `/it/templates`      |
-| [ ] Scheduled Maintenance                 | `/it/maintenance`    |
-| [ ] Software License Management           | `/it/licenses`       |
+| [x] Ticket Hub (queue, SLA timers)        | `/it/tickets`        |
+| [x] Ticket Management                     | `/it/tickets/[id]`   |
+| [x] Asset Management (hardware lifecycle) | `/it/assets`         |
+| [x] System Monitoring                     | `/it/monitoring`     |
+| [x] Knowledge Base (internal IT docs)     | `/it/knowledge-base` |
+| [x] User Management (accounts, resets)    | `/it/users`          |
+| [x] Remote Support                        | `/it/remote-support` |
+| [x] Reports                               | `/it/reports`        |
+| [x] Ticket Templates                      | `/it/templates`      |
+| [x] Scheduled Maintenance                 | `/it/maintenance`    |
+| [x] Software License Management           | `/it/licenses`       |
 
 ## 23. Developer Portal (`23-developer.md`)
 
 | Page                                                 | Route                 |
 | ---------------------------------------------------- | --------------------- |
-| [ ] Dev Hub                                          | `/dev`                |
-| [ ] API Playground (Swagger/OpenAPI, test endpoints) | `/dev/api-playground` |
-| [ ] Deployments (history, rollback)                  | `/dev/deployments`    |
-| [ ] Monitoring & Errors                              | `/dev/monitoring`     |
-| [ ] Tasks                                            | `/dev/tasks`          |
-| [ ] Git/PR Status                                    | `/dev/git`            |
-| [ ] Documentation (internal dev docs)                | `/dev/docs`           |
-| [ ] Team / Code Review Queue                         | `/dev/reviews`        |
-| [ ] Environment Variables                            | `/dev/env`            |
-| [ ] Background Jobs / Queues                         | `/dev/queues`         |
-| [ ] Service Dependencies                             | `/dev/dependencies`   |
-| [ ] Feature Flags                                    | `/dev/feature-flags`  |
+| [x] Dev Hub                                          | `/dev`                |
+| [x] API Playground (Swagger/OpenAPI, test endpoints) | `/dev/api-playground` |
+| [x] Deployments (history, rollback)                  | `/dev/deployments`    |
+| [x] Monitoring & Errors                              | `/dev/monitoring`     |
+| [x] Tasks                                            | `/dev/tasks`          |
+| [x] Git/PR Status                                    | `/dev/git`            |
+| [x] Documentation (internal dev docs)                | `/dev/docs`           |
+| [x] Team / Code Review Queue                         | `/dev/reviews`        |
+| [x] Environment Variables                            | `/dev/env`            |
+| [x] Background Jobs / Queues                         | `/dev/queues`         |
+| [x] Service Dependencies                             | `/dev/dependencies`   |
+| [x] Feature Flags                                    | `/dev/feature-flags`  |
 
 ## 24. System Administrator Portal (`24-system-administrator.md`)
 
 | Page                                                            | Route                 |
 | --------------------------------------------------------------- | --------------------- |
-| [ ] Admin Hub (system health, security alerts)                  | `/admin`              |
-| [ ] User Management                                             | `/admin/users`        |
-| [ ] Roles & Permissions (RBAC config, audit)                    | `/admin/roles`        |
-| [ ] Security Dashboard (logins, 2FA, API keys, IP whitelist)    | `/admin/security`     |
-| [ ] Audit Log (search, export)                                  | `/admin/audit`        |
-| [ ] System Configuration (settings, feature flags, maintenance) | `/admin/config`       |
-| [ ] Monitoring (CPU, memory, error rate)                        | `/admin/monitoring`   |
-| [ ] Backups (schedule, restore, retention)                      | `/admin/backups`      |
-| [ ] Integrations & Webhooks                                     | `/admin/integrations` |
-| [ ] Logs (app, error, access)                                   | `/admin/logs`         |
-| [ ] API Keys & Service Tokens                                   | `/admin/api-keys`     |
-| [ ] Rate Limiting & Throttling                                  | `/admin/rate-limits`  |
+| [x] Admin Hub (system health, security alerts)                  | `/admin`              |
+| [x] User Management                                             | `/admin/users`        |
+| [x] Roles & Permissions (RBAC config, audit)                    | `/admin/roles`        |
+| [x] Security Dashboard (logins, 2FA, API keys, IP whitelist)    | `/admin/security`     |
+| [x] Audit Log (search, export)                                  | `/admin/audit`        |
+| [x] System Configuration (settings, feature flags, maintenance) | `/admin/config`       |
+| [x] Monitoring (CPU, memory, error rate)                        | `/admin/monitoring`   |
+| [x] Backups (schedule, restore, retention)                      | `/admin/backups`      |
+| [x] Integrations & Webhooks                                     | `/admin/integrations` |
+| [x] Logs (app, error, access)                                   | `/admin/logs`         |
+| [x] API Keys & Service Tokens                                   | `/admin/api-keys`     |
+| [x] Rate Limiting & Throttling                                  | `/admin/rate-limits`  |
 
 ## 25. Government Representative Portal (`25-government-representative.md`)
 
 | Page                                                | Route                     |
 | --------------------------------------------------- | ------------------------- |
-| [ ] Compliance Portal (accreditation status, score) | `/compliance`             |
-| [ ] Institutional Data                              | `/compliance/institution` |
-| [ ] Regulatory Reports                              | `/compliance/reports`     |
-| [ ] Documentation Library (policies, certificates)  | `/compliance/documents`   |
-| [ ] Audit Module (schedule, findings, remediation)  | `/compliance/audit`       |
-| [ ] Filings & Timeline                              | `/compliance/filings`     |
-| [ ] Messaging                                       | `/compliance/messaging`   |
-| [ ] Compliance Calendar                             | `/compliance/calendar`    |
-| [ ] Data Integrity Verification                     | `/compliance/integrity`   |
-| [ ] Compliance Training & Certifications            | `/compliance/training`    |
-| [ ] Regulatory Change Log                           | `/compliance/changelog`   |
+| [x] Compliance Portal (accreditation status, score) | `/compliance`             |
+| [x] Institutional Data                              | `/compliance/institution` |
+| [x] Regulatory Reports                              | `/compliance/reports`     |
+| [x] Documentation Library (policies, certificates)  | `/compliance/documents`   |
+| [x] Audit Module (schedule, findings, remediation)  | `/compliance/audit`       |
+| [x] Filings & Timeline                              | `/compliance/filings`     |
+| [x] Messaging                                       | `/compliance/messaging`   |
+| [x] Compliance Calendar                             | `/compliance/calendar`    |
+| [x] Data Integrity Verification                     | `/compliance/integrity`   |
+| [x] Compliance Training & Certifications            | `/compliance/training`    |
+| [x] Regulatory Change Log                           | `/compliance/changelog`   |
 
 ## 26. NGO Portal (`26-ngo.md`)
 
 | Page                                                        | Route                       |
 | ----------------------------------------------------------- | --------------------------- |
-| [ ] Partnership Hub                                         | `/ngo`                      |
-| [ ] Scholarship Management (funds, selection, disbursement) | `/ngo/scholarships`         |
-| [ ] Community Programs (outreach, beneficiaries)            | `/ngo/programs`             |
-| [ ] Volunteer Coordination                                  | `/ngo/volunteers`           |
-| [ ] Impact Reports                                          | `/ngo/reports`              |
-| [ ] Donations Tracking                                      | `/ngo/donations`            |
-| [ ] Messaging                                               | `/ngo/messaging`            |
-| [ ] Program Budget & Expenses                               | `/ngo/programs/[id]/budget` |
-| [ ] Partner Reports & Analytics                             | `/ngo/analytics`            |
+| [x] Partnership Hub                                         | `/ngo`                      |
+| [x] Scholarship Management (funds, selection, disbursement) | `/ngo/scholarships`         |
+| [x] Community Programs (outreach, beneficiaries)            | `/ngo/programs`             |
+| [x] Volunteer Coordination                                  | `/ngo/volunteers`           |
+| [x] Impact Reports                                          | `/ngo/reports`              |
+| [x] Donations Tracking                                      | `/ngo/donations`            |
+| [x] Messaging                                               | `/ngo/messaging`            |
+| [x] Program Budget & Expenses                               | `/ngo/programs/[id]/budget` |
+| [x] Partner Reports & Analytics                             | `/ngo/analytics`            |
 
 ## 27. Conversion Copywriter (`27-conversion-copywriter.md`)
 
 | Page                         | Route                                 |
 | ---------------------------- | ------------------------------------- |
-| [ ] Copy Asset Library       | `/conversion-copy/library`            |
-| [ ] Landing Page Copy Editor | `/conversion-copy/landing-pages/[id]` |
-| [ ] Email Sequence Builder   | `/conversion-copy/email-sequences`    |
-| [ ] Ad Copy Manager          | `/conversion-copy/ads`                |
-| [ ] A/B Test Copy Dashboard  | `/conversion-copy/ab-tests`           |
-| [ ] Conversion Analytics     | `/conversion-copy/analytics`          |
-| [ ] Style Guide              | `/conversion-copy/style-guide`        |
-| [ ] Brief Intake             | `/conversion-copy/briefs`             |
+| [x] Copy Asset Library       | `/conversion-copy/library`            |
+| [x] Landing Page Copy Editor | `/conversion-copy/landing-pages/[id]` |
+| [x] Email Sequence Builder   | `/conversion-copy/email-sequences`    |
+| [x] Ad Copy Manager          | `/conversion-copy/ads`                |
+| [x] A/B Test Copy Dashboard  | `/conversion-copy/ab-tests`           |
+| [x] Conversion Analytics     | `/conversion-copy/analytics`          |
+| [x] Style Guide              | `/conversion-copy/style-guide`        |
+| [x] Brief Intake             | `/conversion-copy/briefs`             |
 
 ## 28. Product Marketing Manager (`28-product-marketing-manager.md`)
 

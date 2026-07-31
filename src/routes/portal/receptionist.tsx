@@ -3,8 +3,11 @@ import {
   ArrowRight,
   Bell,
   CalendarDays,
+  ClipboardList,
   DoorOpen,
   FileText,
+  LogOut,
+  Package,
   PhoneCall,
   ShieldCheck,
   Users,
@@ -60,6 +63,65 @@ const deskQueue = [
   },
   { t: "Laptop loan — learner (refundable)", s: "Signed out", tone: "bg-success/10 text-success" },
   { t: "Lost ID card — collected", s: "Awaiting owner", tone: "bg-warning/10 text-warning" },
+];
+
+const screens = [
+  {
+    icon: DoorOpen,
+    label: "Check-in",
+    desc: "Visitor check-in and badges",
+    path: "/app/receptionist/check-in",
+    tone: "bg-primary/10 text-primary",
+  },
+  {
+    icon: LogOut,
+    label: "Check-out",
+    desc: "Visitor check-out and handover",
+    path: "/app/receptionist/check-out",
+    tone: "bg-success/10 text-success",
+  },
+  {
+    icon: CalendarDays,
+    label: "Appointments",
+    desc: "Book and manage visits",
+    path: "/app/receptionist/appointments",
+    tone: "bg-learning/10 text-learning",
+  },
+  {
+    icon: FileText,
+    label: "Inquiry log",
+    desc: "Walk-in enquiries and follow-ups",
+    path: "/app/receptionist/inquiries",
+    tone: "bg-warning/10 text-warning",
+  },
+  {
+    icon: PhoneCall,
+    label: "Phone log",
+    desc: "Calls received and forwarded",
+    path: "/app/receptionist/phone-log",
+    tone: "bg-career/10 text-career",
+  },
+  {
+    icon: Package,
+    label: "Deliveries",
+    desc: "Incoming and outgoing packages",
+    path: "/app/receptionist/deliveries",
+    tone: "bg-community/10 text-community",
+  },
+  {
+    icon: Users,
+    label: "Staff directory",
+    desc: "Find staff and departments",
+    path: "/app/receptionist/directory",
+    tone: "bg-erp/10 text-erp",
+  },
+  {
+    icon: ClipboardList,
+    label: "Tasks",
+    desc: "Desk tasks and reminders",
+    path: "/app/receptionist/tasks",
+    tone: "bg-services/10 text-services",
+  },
 ];
 
 function ReceptionistPortal() {
@@ -210,6 +272,34 @@ function ReceptionistPortal() {
           </Card>
         </div>
       </div>
+      <Card className="bg-card mt-5 shadow-soft border">
+        <CardHeader className="flex-row items-center justify-between">
+          <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
+            <DoorOpen className="text-primary size-4" /> Workspace
+          </CardTitle>
+          <Badge variant="secondary" className="font-semibold">
+            {screens.length} modules
+          </Badge>
+        </CardHeader>
+        <CardContent className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+          {screens.map((s) => (
+            <Link
+              key={s.path}
+              to={s.path}
+              className="group bg-card shadow-soft hover:shadow-elevated flex flex-col rounded-xl border p-4 transition-all hover:-translate-y-0.5"
+            >
+              <div className="flex items-start justify-between">
+                <span className={cn("grid size-9 place-items-center rounded-lg", s.tone)}>
+                  <s.icon className="size-4" />
+                </span>
+                <ArrowRight className="text-muted-foreground group-hover:text-primary size-4 transition-colors" />
+              </div>
+              <p className="font-display mt-3 text-sm font-extrabold">{s.label}</p>
+              <p className="text-muted-foreground mt-1 text-xs">{s.desc}</p>
+            </Link>
+          ))}
+        </CardContent>
+      </Card>
     </AppShell>
   );
 }

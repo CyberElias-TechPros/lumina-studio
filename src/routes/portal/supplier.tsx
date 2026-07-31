@@ -2,10 +2,15 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   ArrowRight,
   Boxes,
+  Building2,
   CalendarDays,
   CheckCircle2,
   ClipboardList,
+  FileText,
+  LayoutTemplate,
+  MessageSquare,
   Package,
+  Star,
   Truck,
   Warehouse,
 } from "lucide-react";
@@ -52,6 +57,58 @@ const orders = [
     eta: "ETA Aug 6",
     status: "In transit",
     tone: "bg-warning/10 text-warning",
+  },
+];
+
+const screens = [
+  {
+    icon: LayoutTemplate,
+    label: "Hub",
+    desc: "Supplier overview",
+    path: "/app/supplier",
+    tone: "bg-primary/10 text-primary",
+  },
+  {
+    icon: Package,
+    label: "Orders",
+    desc: "Purchase orders and POs",
+    path: "/app/supplier/orders",
+    tone: "bg-success/10 text-success",
+  },
+  {
+    icon: Truck,
+    label: "Deliveries",
+    desc: "Delivery schedule and notes",
+    path: "/app/supplier/deliveries",
+    tone: "bg-learning/10 text-learning",
+  },
+  {
+    icon: FileText,
+    label: "Invoices",
+    desc: "Raise and track invoices",
+    path: "/app/supplier/invoices",
+    tone: "bg-warning/10 text-warning",
+  },
+  {
+    icon: Building2,
+    label: "Company profile",
+    desc: "Your business details",
+    path: "/app/supplier/profile",
+    tone: "bg-career/10 text-career",
+  },
+  {
+    icon: MessageSquare,
+    label: "Messaging",
+    desc: "Chat with procurement",
+    path: "/app/supplier/messages",
+    tone: "bg-community/10 text-community",
+  },
+  {
+    icon: Star,
+    label: "Performance",
+    desc: "Ratings and track record",
+    path: "/app/supplier/performance",
+    tone: "bg-erp/10 text-erp",
   },
 ];
 
@@ -218,6 +275,34 @@ function SupplierPortal() {
           </Card>
         </div>
       </div>
+      <Card className="bg-card mt-5 shadow-soft border">
+        <CardHeader className="flex-row items-center justify-between">
+          <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
+            <LayoutTemplate className="text-primary size-4" /> Workspace
+          </CardTitle>
+          <Badge variant="secondary" className="font-semibold">
+            {screens.length} modules
+          </Badge>
+        </CardHeader>
+        <CardContent className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+          {screens.map((s) => (
+            <Link
+              key={s.path}
+              to={s.path}
+              className="group bg-card shadow-soft hover:shadow-elevated flex flex-col rounded-xl border p-4 transition-all hover:-translate-y-0.5"
+            >
+              <div className="flex items-start justify-between">
+                <span className={cn("grid size-9 place-items-center rounded-lg", s.tone)}>
+                  <s.icon className="size-4" />
+                </span>
+                <ArrowRight className="text-muted-foreground group-hover:text-primary size-4 transition-colors" />
+              </div>
+              <p className="font-display mt-3 text-sm font-extrabold">{s.label}</p>
+              <p className="text-muted-foreground mt-1 text-xs">{s.desc}</p>
+            </Link>
+          ))}
+        </CardContent>
+      </Card>
     </AppShell>
   );
 }

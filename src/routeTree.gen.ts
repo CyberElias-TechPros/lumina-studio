@@ -62,6 +62,7 @@ import { Route as PortalDataRouteImport } from './routes/portal/data'
 import { Route as PortalDepartmentHeadRouteImport } from './routes/portal/department-head'
 import { Route as PortalDeveloperRouteImport } from './routes/portal/developer'
 import { Route as PortalDevopsRouteImport } from './routes/portal/devops'
+import { Route as PortalDirectorRouteImport } from './routes/portal/director'
 import { Route as PortalEmployerRouteImport } from './routes/portal/employer'
 import { Route as PortalExecutiveRouteImport } from './routes/portal/executive'
 import { Route as PortalFinanceRouteImport } from './routes/portal/finance'
@@ -90,6 +91,36 @@ import { Route as PortalVolunteerRouteImport } from './routes/portal/volunteer'
 import { Route as ProgramsIndexRouteImport } from './routes/programs.index'
 import { Route as ProgramsSlugRouteImport } from './routes/programs.$slug'
 import { Route as ProgramsCompareRouteImport } from './routes/programs/compare'
+import { Route as AppAccountantIndexRouteImport } from './routes/app/accountant/index'
+import { Route as AppAccountantAuditRouteImport } from './routes/app/accountant/audit'
+import { Route as AppAccountantBankingRouteImport } from './routes/app/accountant/banking'
+import { Route as AppAccountantBillingRouteImport } from './routes/app/accountant/billing'
+import { Route as AppAccountantBudgetsRouteImport } from './routes/app/accountant/budgets'
+import { Route as AppAccountantExpensesRouteImport } from './routes/app/accountant/expenses'
+import { Route as AppAccountantInvoicingRouteImport } from './routes/app/accountant/invoicing'
+import { Route as AppAccountantPaymentsRouteImport } from './routes/app/accountant/payments'
+import { Route as AppAccountantPayrollRouteImport } from './routes/app/accountant/payroll'
+import { Route as AppAccountantReportsRouteImport } from './routes/app/accountant/reports'
+import { Route as AppAdminIndexRouteImport } from './routes/app/admin/index'
+import { Route as AppAdminApiKeysRouteImport } from './routes/app/admin/api-keys'
+import { Route as AppAdminAuditRouteImport } from './routes/app/admin/audit'
+import { Route as AppAdminBackupsRouteImport } from './routes/app/admin/backups'
+import { Route as AppAdminConfigRouteImport } from './routes/app/admin/config'
+import { Route as AppAdminIntegrationsRouteImport } from './routes/app/admin/integrations'
+import { Route as AppAdminLogsRouteImport } from './routes/app/admin/logs'
+import { Route as AppAdminMonitoringRouteImport } from './routes/app/admin/monitoring'
+import { Route as AppAdminRateLimitsRouteImport } from './routes/app/admin/rate-limits'
+import { Route as AppAdminRolesRouteImport } from './routes/app/admin/roles'
+import { Route as AppAdminSecurityRouteImport } from './routes/app/admin/security'
+import { Route as AppAdminUsersRouteImport } from './routes/app/admin/users'
+import { Route as AppAdmissionsIndexRouteImport } from './routes/app/admissions/index'
+import { Route as AppAdmissionsApplicationsRouteImport } from './routes/app/admissions/applications'
+import { Route as AppAdmissionsCommunicationRouteImport } from './routes/app/admissions/communication'
+import { Route as AppAdmissionsDocumentsRouteImport } from './routes/app/admissions/documents'
+import { Route as AppAdmissionsEnrollmentRouteImport } from './routes/app/admissions/enrollment'
+import { Route as AppAdmissionsInterviewsRouteImport } from './routes/app/admissions/interviews'
+import { Route as AppAdmissionsReportsRouteImport } from './routes/app/admissions/reports'
+import { Route as AppAdmissionsReviewRouteImport } from './routes/app/admissions/review'
 import { Route as AppAlumniEventsRouteImport } from './routes/app/alumni/events'
 import { Route as AppAlumniGiveBackRouteImport } from './routes/app/alumni/give-back'
 import { Route as AppAlumniHubRouteImport } from './routes/app/alumni/hub'
@@ -98,24 +129,109 @@ import { Route as AppAlumniNetworkRouteImport } from './routes/app/alumni/networ
 import { Route as AppAssessmentsIndexRouteImport } from './routes/app/assessments/index'
 import { Route as AppAssignmentsIndexRouteImport } from './routes/app/assignments/index'
 import { Route as AppAssignmentsAssignmentIdRouteImport } from './routes/app/assignments/$assignmentId'
+import { Route as AppClientContractsRouteImport } from './routes/app/client/contracts'
+import { Route as AppClientDocumentsRouteImport } from './routes/app/client/documents'
 import { Route as AppClientInvoicesRouteImport } from './routes/app/client/invoices'
+import { Route as AppClientMessagesRouteImport } from './routes/app/client/messages'
+import { Route as AppClientProposalsRouteImport } from './routes/app/client/proposals'
 import { Route as AppClientSupportRouteImport } from './routes/app/client/support'
+import { Route as AppConversionCopyAbTestsRouteImport } from './routes/app/conversion-copy/ab-tests'
+import { Route as AppConversionCopyAdsRouteImport } from './routes/app/conversion-copy/ads'
+import { Route as AppConversionCopyAnalyticsRouteImport } from './routes/app/conversion-copy/analytics'
+import { Route as AppConversionCopyBriefsRouteImport } from './routes/app/conversion-copy/briefs'
+import { Route as AppConversionCopyEmailSequencesRouteImport } from './routes/app/conversion-copy/email-sequences'
+import { Route as AppConversionCopyLibraryRouteImport } from './routes/app/conversion-copy/library'
+import { Route as AppConversionCopyStyleGuideRouteImport } from './routes/app/conversion-copy/style-guide'
+import { Route as AppDepartmentApprovalsRouteImport } from './routes/app/department/approvals'
+import { Route as AppDepartmentCalendarRouteImport } from './routes/app/department/calendar'
 import { Route as AppDepartmentCurriculumRouteImport } from './routes/app/department/curriculum'
 import { Route as AppDepartmentEnrollmentRouteImport } from './routes/app/department/enrollment'
 import { Route as AppDepartmentInstructorsRouteImport } from './routes/app/department/instructors'
 import { Route as AppDepartmentQualityRouteImport } from './routes/app/department/quality'
+import { Route as AppDepartmentReportsRouteImport } from './routes/app/department/reports'
+import { Route as AppDevIndexRouteImport } from './routes/app/dev/index'
+import { Route as AppDevApiPlaygroundRouteImport } from './routes/app/dev/api-playground'
+import { Route as AppDevDependenciesRouteImport } from './routes/app/dev/dependencies'
+import { Route as AppDevDeploymentsRouteImport } from './routes/app/dev/deployments'
+import { Route as AppDevDocsRouteImport } from './routes/app/dev/docs'
+import { Route as AppDevEnvRouteImport } from './routes/app/dev/env'
+import { Route as AppDevFeatureFlagsRouteImport } from './routes/app/dev/feature-flags'
+import { Route as AppDevGitRouteImport } from './routes/app/dev/git'
+import { Route as AppDevMonitoringRouteImport } from './routes/app/dev/monitoring'
+import { Route as AppDevQueuesRouteImport } from './routes/app/dev/queues'
+import { Route as AppDevReviewsRouteImport } from './routes/app/dev/reviews'
+import { Route as AppDevTasksRouteImport } from './routes/app/dev/tasks'
+import { Route as AppDirectorAcademicRouteImport } from './routes/app/director/academic'
+import { Route as AppDirectorApprovalsRouteImport } from './routes/app/director/approvals'
+import { Route as AppDirectorCommandCenterRouteImport } from './routes/app/director/command-center'
+import { Route as AppDirectorFinanceRouteImport } from './routes/app/director/finance'
+import { Route as AppDirectorHrRouteImport } from './routes/app/director/hr'
+import { Route as AppDirectorMarketingRouteImport } from './routes/app/director/marketing'
+import { Route as AppDirectorOkrsRouteImport } from './routes/app/director/okrs'
+import { Route as AppDirectorOperationsRouteImport } from './routes/app/director/operations'
+import { Route as AppDirectorReportsRouteImport } from './routes/app/director/reports'
 import { Route as AppEmployerAnalyticsRouteImport } from './routes/app/employer/analytics'
 import { Route as AppEmployerBrandRouteImport } from './routes/app/employer/brand'
+import { Route as AppEmployerFeedbackRouteImport } from './routes/app/employer/feedback'
 import { Route as AppEmployerHubRouteImport } from './routes/app/employer/hub'
 import { Route as AppEmployerInterviewsRouteImport } from './routes/app/employer/interviews'
 import { Route as AppEmployerJobsRouteImport } from './routes/app/employer/jobs'
 import { Route as AppEmployerTalentRouteImport } from './routes/app/employer/talent'
+import { Route as AppGovernmentIndexRouteImport } from './routes/app/government/index'
+import { Route as AppGovernmentAuditRouteImport } from './routes/app/government/audit'
+import { Route as AppGovernmentCalendarRouteImport } from './routes/app/government/calendar'
+import { Route as AppGovernmentChangelogRouteImport } from './routes/app/government/changelog'
+import { Route as AppGovernmentDocumentsRouteImport } from './routes/app/government/documents'
+import { Route as AppGovernmentFilingsRouteImport } from './routes/app/government/filings'
+import { Route as AppGovernmentInstitutionRouteImport } from './routes/app/government/institution'
+import { Route as AppGovernmentIntegrityRouteImport } from './routes/app/government/integrity'
+import { Route as AppGovernmentMessagingRouteImport } from './routes/app/government/messaging'
+import { Route as AppGovernmentReportsRouteImport } from './routes/app/government/reports'
+import { Route as AppGovernmentTrainingRouteImport } from './routes/app/government/training'
+import { Route as AppHrIndexRouteImport } from './routes/app/hr/index'
+import { Route as AppHrAttendanceRouteImport } from './routes/app/hr/attendance'
+import { Route as AppHrEmployeesRouteImport } from './routes/app/hr/employees'
+import { Route as AppHrLeaveRouteImport } from './routes/app/hr/leave'
+import { Route as AppHrOnboardingRouteImport } from './routes/app/hr/onboarding'
+import { Route as AppHrPayrollInputRouteImport } from './routes/app/hr/payroll-input'
+import { Route as AppHrPerformanceRouteImport } from './routes/app/hr/performance'
+import { Route as AppHrRecruitmentRouteImport } from './routes/app/hr/recruitment'
+import { Route as AppHrReportsRouteImport } from './routes/app/hr/reports'
+import { Route as AppHrTrainingRouteImport } from './routes/app/hr/training'
 import { Route as AppInstructorAnalyticsRouteImport } from './routes/app/instructor/analytics'
 import { Route as AppInstructorAttendanceRouteImport } from './routes/app/instructor/attendance'
 import { Route as AppInstructorGradebookRouteImport } from './routes/app/instructor/gradebook'
+import { Route as AppInternIndexRouteImport } from './routes/app/intern/index'
+import { Route as AppInternEvaluationRouteImport } from './routes/app/intern/evaluation'
+import { Route as AppInternLearningPlanRouteImport } from './routes/app/intern/learning-plan'
+import { Route as AppInternMentorshipRouteImport } from './routes/app/intern/mentorship'
+import { Route as AppInternMessagesRouteImport } from './routes/app/intern/messages'
+import { Route as AppInternPortfolioRouteImport } from './routes/app/intern/portfolio'
+import { Route as AppInternTasksRouteImport } from './routes/app/intern/tasks'
+import { Route as AppInternTimesheetRouteImport } from './routes/app/intern/timesheet'
+import { Route as AppItAssetsRouteImport } from './routes/app/it/assets'
+import { Route as AppItKnowledgeBaseRouteImport } from './routes/app/it/knowledge-base'
+import { Route as AppItLicensesRouteImport } from './routes/app/it/licenses'
+import { Route as AppItMaintenanceRouteImport } from './routes/app/it/maintenance'
+import { Route as AppItMonitoringRouteImport } from './routes/app/it/monitoring'
+import { Route as AppItRemoteSupportRouteImport } from './routes/app/it/remote-support'
+import { Route as AppItReportsRouteImport } from './routes/app/it/reports'
+import { Route as AppItTemplatesRouteImport } from './routes/app/it/templates'
+import { Route as AppItTicketsRouteImport } from './routes/app/it/tickets'
+import { Route as AppItUsersRouteImport } from './routes/app/it/users'
 import { Route as AppLearnIndexRouteImport } from './routes/app/learn/index'
 import { Route as AppLearnCourseIdRouteImport } from './routes/app/learn/$courseId'
 import { Route as AppLiveClassIdRouteImport } from './routes/app/live/$classId'
+import { Route as AppMarketingIndexRouteImport } from './routes/app/marketing/index'
+import { Route as AppMarketingAnalyticsRouteImport } from './routes/app/marketing/analytics'
+import { Route as AppMarketingCampaignsRouteImport } from './routes/app/marketing/campaigns'
+import { Route as AppMarketingContentCalendarRouteImport } from './routes/app/marketing/content-calendar'
+import { Route as AppMarketingEmailRouteImport } from './routes/app/marketing/email'
+import { Route as AppMarketingLandingPagesRouteImport } from './routes/app/marketing/landing-pages'
+import { Route as AppMarketingLeadsRouteImport } from './routes/app/marketing/leads'
+import { Route as AppMarketingReportsRouteImport } from './routes/app/marketing/reports'
+import { Route as AppMarketingSeoRouteImport } from './routes/app/marketing/seo'
+import { Route as AppMarketingSocialRouteImport } from './routes/app/marketing/social'
 import { Route as AppMentorIndexRouteImport } from './routes/app/mentor/index'
 import { Route as AppMentorAnalyticsRouteImport } from './routes/app/mentor/analytics'
 import { Route as AppMentorGoalsRouteImport } from './routes/app/mentor/goals'
@@ -123,20 +239,68 @@ import { Route as AppMentorRequestsRouteImport } from './routes/app/mentor/reque
 import { Route as AppMentorResourcesRouteImport } from './routes/app/mentor/resources'
 import { Route as AppMentorSessionsRouteImport } from './routes/app/mentor/sessions'
 import { Route as AppMentorSettingsRouteImport } from './routes/app/mentor/settings'
+import { Route as AppNgoIndexRouteImport } from './routes/app/ngo/index'
+import { Route as AppNgoAnalyticsRouteImport } from './routes/app/ngo/analytics'
+import { Route as AppNgoDonationsRouteImport } from './routes/app/ngo/donations'
+import { Route as AppNgoMessagingRouteImport } from './routes/app/ngo/messaging'
+import { Route as AppNgoProgramsRouteImport } from './routes/app/ngo/programs'
+import { Route as AppNgoReportsRouteImport } from './routes/app/ngo/reports'
+import { Route as AppNgoScholarshipsRouteImport } from './routes/app/ngo/scholarships'
+import { Route as AppNgoVolunteersRouteImport } from './routes/app/ngo/volunteers'
+import { Route as AppOpsAutomationRouteImport } from './routes/app/ops/automation'
+import { Route as AppOpsBranchesRouteImport } from './routes/app/ops/branches'
+import { Route as AppOpsFacilitiesRouteImport } from './routes/app/ops/facilities'
+import { Route as AppOpsInventoryRouteImport } from './routes/app/ops/inventory'
+import { Route as AppOpsReportsRouteImport } from './routes/app/ops/reports'
+import { Route as AppOpsTasksRouteImport } from './routes/app/ops/tasks'
+import { Route as AppOpsVendorsRouteImport } from './routes/app/ops/vendors'
 import { Route as AppParentIndexRouteImport } from './routes/app/parent/index'
+import { Route as AppPartnerAgreementsRouteImport } from './routes/app/partner/agreements'
+import { Route as AppPartnerCollaborationsRouteImport } from './routes/app/partner/collaborations'
+import { Route as AppPartnerHubRouteImport } from './routes/app/partner/hub'
+import { Route as AppPartnerMessagesRouteImport } from './routes/app/partner/messages'
+import { Route as AppPartnerReferralsRouteImport } from './routes/app/partner/referrals'
+import { Route as AppPartnerReportsRouteImport } from './routes/app/partner/reports'
+import { Route as AppPartnerResourcesRouteImport } from './routes/app/partner/resources'
+import { Route as AppReceptionistAppointmentsRouteImport } from './routes/app/receptionist/appointments'
+import { Route as AppReceptionistCheckInRouteImport } from './routes/app/receptionist/check-in'
+import { Route as AppReceptionistCheckOutRouteImport } from './routes/app/receptionist/check-out'
+import { Route as AppReceptionistDeliveriesRouteImport } from './routes/app/receptionist/deliveries'
+import { Route as AppReceptionistDirectoryRouteImport } from './routes/app/receptionist/directory'
+import { Route as AppReceptionistInquiriesRouteImport } from './routes/app/receptionist/inquiries'
+import { Route as AppReceptionistPhoneLogRouteImport } from './routes/app/receptionist/phone-log'
+import { Route as AppReceptionistTasksRouteImport } from './routes/app/receptionist/tasks'
+import { Route as AppSupplierIndexRouteImport } from './routes/app/supplier/index'
+import { Route as AppSupplierDeliveriesRouteImport } from './routes/app/supplier/deliveries'
+import { Route as AppSupplierInvoicesRouteImport } from './routes/app/supplier/invoices'
+import { Route as AppSupplierMessagesRouteImport } from './routes/app/supplier/messages'
+import { Route as AppSupplierOrdersRouteImport } from './routes/app/supplier/orders'
+import { Route as AppSupplierPerformanceRouteImport } from './routes/app/supplier/performance'
+import { Route as AppSupplierProfileRouteImport } from './routes/app/supplier/profile'
+import { Route as AppVolunteerCertificatesRouteImport } from './routes/app/volunteer/certificates'
+import { Route as AppVolunteerCommunityRouteImport } from './routes/app/volunteer/community'
+import { Route as AppVolunteerHoursRouteImport } from './routes/app/volunteer/hours'
+import { Route as AppVolunteerImpactRouteImport } from './routes/app/volunteer/impact'
+import { Route as AppVolunteerMyVolunteeringRouteImport } from './routes/app/volunteer/my-volunteering'
+import { Route as AppVolunteerOpportunitiesRouteImport } from './routes/app/volunteer/opportunities'
+import { Route as AppAdmissionsApplicationsIdRouteImport } from './routes/app/admissions/applications/$id'
 import { Route as AppAssessmentsAssessmentIdTakeRouteImport } from './routes/app/assessments/$assessmentId/take'
 import { Route as AppClientProjectsProjectIdRouteImport } from './routes/app/client/projects/$projectId'
+import { Route as AppConversionCopyLandingPagesIdRouteImport } from './routes/app/conversion-copy/landing-pages/$id'
 import { Route as AppEmployerPipelineJobIdRouteImport } from './routes/app/employer/pipeline/$jobId'
 import { Route as AppInstructorAssignmentsIndexRouteImport } from './routes/app/instructor/assignments/index'
 import { Route as AppInstructorCoursesCourseIdRouteImport } from './routes/app/instructor/courses/$courseId'
+import { Route as AppItTicketsIdRouteImport } from './routes/app/it/tickets/$id'
 import { Route as AppMentorMenteesMenteeIdRouteImport } from './routes/app/mentor/mentees/$menteeId'
 import { Route as AppMentorSessionsSessionIdRouteImport } from './routes/app/mentor/sessions/$sessionId'
 import { Route as AppParentInvitationAcceptRouteImport } from './routes/app/parent/invitation/accept'
 import { Route as AppParentStudentsStudentIdRouteImport } from './routes/app/parent/students/$studentId'
+import { Route as AppClientProjectsProjectIdTasksRouteImport } from './routes/app/client/projects/$projectId/tasks'
 import { Route as AppInstructorAssignmentsSubmissionIdGradeRouteImport } from './routes/app/instructor/assignments/$submissionId.grade'
 import { Route as AppLearnCourseIdLessonsLessonIdRouteImport } from './routes/app/learn/$courseId.lessons.$lessonId'
 import { Route as AppMentorMenteesMenteeIdCareerRouteImport } from './routes/app/mentor/mentees/$menteeId.career'
 import { Route as AppMentorMenteesMenteeIdPortfolioRouteImport } from './routes/app/mentor/mentees/$menteeId.portfolio'
+import { Route as AppNgoProgramsProgramIdBudgetRouteImport } from './routes/app/ngo/programs/$programId/budget'
 import { Route as AppParentStudentsStudentIdAttendanceRouteImport } from './routes/app/parent/students/$studentId.attendance'
 import { Route as AppParentStudentsStudentIdCommunicationRouteImport } from './routes/app/parent/students/$studentId.communication'
 import { Route as AppParentStudentsStudentIdFinanceRouteImport } from './routes/app/parent/students/$studentId.finance'
@@ -409,6 +573,11 @@ const PortalDevopsRoute = PortalDevopsRouteImport.update({
   path: '/portal/devops',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PortalDirectorRoute = PortalDirectorRouteImport.update({
+  id: '/portal/director',
+  path: '/portal/director',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PortalEmployerRoute = PortalEmployerRouteImport.update({
   id: '/portal/employer',
   path: '/portal/employer',
@@ -549,6 +718,158 @@ const ProgramsCompareRoute = ProgramsCompareRouteImport.update({
   path: '/programs/compare',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AppAccountantIndexRoute = AppAccountantIndexRouteImport.update({
+  id: '/app/accountant/',
+  path: '/app/accountant/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppAccountantAuditRoute = AppAccountantAuditRouteImport.update({
+  id: '/app/accountant/audit',
+  path: '/app/accountant/audit',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppAccountantBankingRoute = AppAccountantBankingRouteImport.update({
+  id: '/app/accountant/banking',
+  path: '/app/accountant/banking',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppAccountantBillingRoute = AppAccountantBillingRouteImport.update({
+  id: '/app/accountant/billing',
+  path: '/app/accountant/billing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppAccountantBudgetsRoute = AppAccountantBudgetsRouteImport.update({
+  id: '/app/accountant/budgets',
+  path: '/app/accountant/budgets',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppAccountantExpensesRoute = AppAccountantExpensesRouteImport.update({
+  id: '/app/accountant/expenses',
+  path: '/app/accountant/expenses',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppAccountantInvoicingRoute = AppAccountantInvoicingRouteImport.update({
+  id: '/app/accountant/invoicing',
+  path: '/app/accountant/invoicing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppAccountantPaymentsRoute = AppAccountantPaymentsRouteImport.update({
+  id: '/app/accountant/payments',
+  path: '/app/accountant/payments',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppAccountantPayrollRoute = AppAccountantPayrollRouteImport.update({
+  id: '/app/accountant/payroll',
+  path: '/app/accountant/payroll',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppAccountantReportsRoute = AppAccountantReportsRouteImport.update({
+  id: '/app/accountant/reports',
+  path: '/app/accountant/reports',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppAdminIndexRoute = AppAdminIndexRouteImport.update({
+  id: '/app/admin/',
+  path: '/app/admin/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppAdminApiKeysRoute = AppAdminApiKeysRouteImport.update({
+  id: '/app/admin/api-keys',
+  path: '/app/admin/api-keys',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppAdminAuditRoute = AppAdminAuditRouteImport.update({
+  id: '/app/admin/audit',
+  path: '/app/admin/audit',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppAdminBackupsRoute = AppAdminBackupsRouteImport.update({
+  id: '/app/admin/backups',
+  path: '/app/admin/backups',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppAdminConfigRoute = AppAdminConfigRouteImport.update({
+  id: '/app/admin/config',
+  path: '/app/admin/config',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppAdminIntegrationsRoute = AppAdminIntegrationsRouteImport.update({
+  id: '/app/admin/integrations',
+  path: '/app/admin/integrations',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppAdminLogsRoute = AppAdminLogsRouteImport.update({
+  id: '/app/admin/logs',
+  path: '/app/admin/logs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppAdminMonitoringRoute = AppAdminMonitoringRouteImport.update({
+  id: '/app/admin/monitoring',
+  path: '/app/admin/monitoring',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppAdminRateLimitsRoute = AppAdminRateLimitsRouteImport.update({
+  id: '/app/admin/rate-limits',
+  path: '/app/admin/rate-limits',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppAdminRolesRoute = AppAdminRolesRouteImport.update({
+  id: '/app/admin/roles',
+  path: '/app/admin/roles',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppAdminSecurityRoute = AppAdminSecurityRouteImport.update({
+  id: '/app/admin/security',
+  path: '/app/admin/security',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppAdminUsersRoute = AppAdminUsersRouteImport.update({
+  id: '/app/admin/users',
+  path: '/app/admin/users',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppAdmissionsIndexRoute = AppAdmissionsIndexRouteImport.update({
+  id: '/app/admissions/',
+  path: '/app/admissions/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppAdmissionsApplicationsRoute =
+  AppAdmissionsApplicationsRouteImport.update({
+    id: '/app/admissions/applications',
+    path: '/app/admissions/applications',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AppAdmissionsCommunicationRoute =
+  AppAdmissionsCommunicationRouteImport.update({
+    id: '/app/admissions/communication',
+    path: '/app/admissions/communication',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AppAdmissionsDocumentsRoute = AppAdmissionsDocumentsRouteImport.update({
+  id: '/app/admissions/documents',
+  path: '/app/admissions/documents',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppAdmissionsEnrollmentRoute = AppAdmissionsEnrollmentRouteImport.update({
+  id: '/app/admissions/enrollment',
+  path: '/app/admissions/enrollment',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppAdmissionsInterviewsRoute = AppAdmissionsInterviewsRouteImport.update({
+  id: '/app/admissions/interviews',
+  path: '/app/admissions/interviews',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppAdmissionsReportsRoute = AppAdmissionsReportsRouteImport.update({
+  id: '/app/admissions/reports',
+  path: '/app/admissions/reports',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppAdmissionsReviewRoute = AppAdmissionsReviewRouteImport.update({
+  id: '/app/admissions/review',
+  path: '/app/admissions/review',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AppAlumniEventsRoute = AppAlumniEventsRouteImport.update({
   id: '/app/alumni/events',
   path: '/app/alumni/events',
@@ -590,14 +911,84 @@ const AppAssignmentsAssignmentIdRoute =
     path: '/app/assignments/$assignmentId',
     getParentRoute: () => rootRouteImport,
   } as any)
+const AppClientContractsRoute = AppClientContractsRouteImport.update({
+  id: '/app/client/contracts',
+  path: '/app/client/contracts',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppClientDocumentsRoute = AppClientDocumentsRouteImport.update({
+  id: '/app/client/documents',
+  path: '/app/client/documents',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AppClientInvoicesRoute = AppClientInvoicesRouteImport.update({
   id: '/app/client/invoices',
   path: '/app/client/invoices',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AppClientMessagesRoute = AppClientMessagesRouteImport.update({
+  id: '/app/client/messages',
+  path: '/app/client/messages',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppClientProposalsRoute = AppClientProposalsRouteImport.update({
+  id: '/app/client/proposals',
+  path: '/app/client/proposals',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AppClientSupportRoute = AppClientSupportRouteImport.update({
   id: '/app/client/support',
   path: '/app/client/support',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppConversionCopyAbTestsRoute =
+  AppConversionCopyAbTestsRouteImport.update({
+    id: '/app/conversion-copy/ab-tests',
+    path: '/app/conversion-copy/ab-tests',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AppConversionCopyAdsRoute = AppConversionCopyAdsRouteImport.update({
+  id: '/app/conversion-copy/ads',
+  path: '/app/conversion-copy/ads',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppConversionCopyAnalyticsRoute =
+  AppConversionCopyAnalyticsRouteImport.update({
+    id: '/app/conversion-copy/analytics',
+    path: '/app/conversion-copy/analytics',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AppConversionCopyBriefsRoute = AppConversionCopyBriefsRouteImport.update({
+  id: '/app/conversion-copy/briefs',
+  path: '/app/conversion-copy/briefs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppConversionCopyEmailSequencesRoute =
+  AppConversionCopyEmailSequencesRouteImport.update({
+    id: '/app/conversion-copy/email-sequences',
+    path: '/app/conversion-copy/email-sequences',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AppConversionCopyLibraryRoute =
+  AppConversionCopyLibraryRouteImport.update({
+    id: '/app/conversion-copy/library',
+    path: '/app/conversion-copy/library',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AppConversionCopyStyleGuideRoute =
+  AppConversionCopyStyleGuideRouteImport.update({
+    id: '/app/conversion-copy/style-guide',
+    path: '/app/conversion-copy/style-guide',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AppDepartmentApprovalsRoute = AppDepartmentApprovalsRouteImport.update({
+  id: '/app/department/approvals',
+  path: '/app/department/approvals',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppDepartmentCalendarRoute = AppDepartmentCalendarRouteImport.update({
+  id: '/app/department/calendar',
+  path: '/app/department/calendar',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AppDepartmentCurriculumRoute = AppDepartmentCurriculumRouteImport.update({
@@ -621,6 +1012,117 @@ const AppDepartmentQualityRoute = AppDepartmentQualityRouteImport.update({
   path: '/app/department/quality',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AppDepartmentReportsRoute = AppDepartmentReportsRouteImport.update({
+  id: '/app/department/reports',
+  path: '/app/department/reports',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppDevIndexRoute = AppDevIndexRouteImport.update({
+  id: '/app/dev/',
+  path: '/app/dev/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppDevApiPlaygroundRoute = AppDevApiPlaygroundRouteImport.update({
+  id: '/app/dev/api-playground',
+  path: '/app/dev/api-playground',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppDevDependenciesRoute = AppDevDependenciesRouteImport.update({
+  id: '/app/dev/dependencies',
+  path: '/app/dev/dependencies',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppDevDeploymentsRoute = AppDevDeploymentsRouteImport.update({
+  id: '/app/dev/deployments',
+  path: '/app/dev/deployments',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppDevDocsRoute = AppDevDocsRouteImport.update({
+  id: '/app/dev/docs',
+  path: '/app/dev/docs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppDevEnvRoute = AppDevEnvRouteImport.update({
+  id: '/app/dev/env',
+  path: '/app/dev/env',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppDevFeatureFlagsRoute = AppDevFeatureFlagsRouteImport.update({
+  id: '/app/dev/feature-flags',
+  path: '/app/dev/feature-flags',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppDevGitRoute = AppDevGitRouteImport.update({
+  id: '/app/dev/git',
+  path: '/app/dev/git',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppDevMonitoringRoute = AppDevMonitoringRouteImport.update({
+  id: '/app/dev/monitoring',
+  path: '/app/dev/monitoring',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppDevQueuesRoute = AppDevQueuesRouteImport.update({
+  id: '/app/dev/queues',
+  path: '/app/dev/queues',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppDevReviewsRoute = AppDevReviewsRouteImport.update({
+  id: '/app/dev/reviews',
+  path: '/app/dev/reviews',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppDevTasksRoute = AppDevTasksRouteImport.update({
+  id: '/app/dev/tasks',
+  path: '/app/dev/tasks',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppDirectorAcademicRoute = AppDirectorAcademicRouteImport.update({
+  id: '/app/director/academic',
+  path: '/app/director/academic',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppDirectorApprovalsRoute = AppDirectorApprovalsRouteImport.update({
+  id: '/app/director/approvals',
+  path: '/app/director/approvals',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppDirectorCommandCenterRoute =
+  AppDirectorCommandCenterRouteImport.update({
+    id: '/app/director/command-center',
+    path: '/app/director/command-center',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AppDirectorFinanceRoute = AppDirectorFinanceRouteImport.update({
+  id: '/app/director/finance',
+  path: '/app/director/finance',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppDirectorHrRoute = AppDirectorHrRouteImport.update({
+  id: '/app/director/hr',
+  path: '/app/director/hr',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppDirectorMarketingRoute = AppDirectorMarketingRouteImport.update({
+  id: '/app/director/marketing',
+  path: '/app/director/marketing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppDirectorOkrsRoute = AppDirectorOkrsRouteImport.update({
+  id: '/app/director/okrs',
+  path: '/app/director/okrs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppDirectorOperationsRoute = AppDirectorOperationsRouteImport.update({
+  id: '/app/director/operations',
+  path: '/app/director/operations',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppDirectorReportsRoute = AppDirectorReportsRouteImport.update({
+  id: '/app/director/reports',
+  path: '/app/director/reports',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AppEmployerAnalyticsRoute = AppEmployerAnalyticsRouteImport.update({
   id: '/app/employer/analytics',
   path: '/app/employer/analytics',
@@ -629,6 +1131,11 @@ const AppEmployerAnalyticsRoute = AppEmployerAnalyticsRouteImport.update({
 const AppEmployerBrandRoute = AppEmployerBrandRouteImport.update({
   id: '/app/employer/brand',
   path: '/app/employer/brand',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppEmployerFeedbackRoute = AppEmployerFeedbackRouteImport.update({
+  id: '/app/employer/feedback',
+  path: '/app/employer/feedback',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AppEmployerHubRoute = AppEmployerHubRouteImport.update({
@@ -651,6 +1158,112 @@ const AppEmployerTalentRoute = AppEmployerTalentRouteImport.update({
   path: '/app/employer/talent',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AppGovernmentIndexRoute = AppGovernmentIndexRouteImport.update({
+  id: '/app/government/',
+  path: '/app/government/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppGovernmentAuditRoute = AppGovernmentAuditRouteImport.update({
+  id: '/app/government/audit',
+  path: '/app/government/audit',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppGovernmentCalendarRoute = AppGovernmentCalendarRouteImport.update({
+  id: '/app/government/calendar',
+  path: '/app/government/calendar',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppGovernmentChangelogRoute = AppGovernmentChangelogRouteImport.update({
+  id: '/app/government/changelog',
+  path: '/app/government/changelog',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppGovernmentDocumentsRoute = AppGovernmentDocumentsRouteImport.update({
+  id: '/app/government/documents',
+  path: '/app/government/documents',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppGovernmentFilingsRoute = AppGovernmentFilingsRouteImport.update({
+  id: '/app/government/filings',
+  path: '/app/government/filings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppGovernmentInstitutionRoute =
+  AppGovernmentInstitutionRouteImport.update({
+    id: '/app/government/institution',
+    path: '/app/government/institution',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AppGovernmentIntegrityRoute = AppGovernmentIntegrityRouteImport.update({
+  id: '/app/government/integrity',
+  path: '/app/government/integrity',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppGovernmentMessagingRoute = AppGovernmentMessagingRouteImport.update({
+  id: '/app/government/messaging',
+  path: '/app/government/messaging',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppGovernmentReportsRoute = AppGovernmentReportsRouteImport.update({
+  id: '/app/government/reports',
+  path: '/app/government/reports',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppGovernmentTrainingRoute = AppGovernmentTrainingRouteImport.update({
+  id: '/app/government/training',
+  path: '/app/government/training',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppHrIndexRoute = AppHrIndexRouteImport.update({
+  id: '/app/hr/',
+  path: '/app/hr/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppHrAttendanceRoute = AppHrAttendanceRouteImport.update({
+  id: '/app/hr/attendance',
+  path: '/app/hr/attendance',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppHrEmployeesRoute = AppHrEmployeesRouteImport.update({
+  id: '/app/hr/employees',
+  path: '/app/hr/employees',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppHrLeaveRoute = AppHrLeaveRouteImport.update({
+  id: '/app/hr/leave',
+  path: '/app/hr/leave',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppHrOnboardingRoute = AppHrOnboardingRouteImport.update({
+  id: '/app/hr/onboarding',
+  path: '/app/hr/onboarding',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppHrPayrollInputRoute = AppHrPayrollInputRouteImport.update({
+  id: '/app/hr/payroll-input',
+  path: '/app/hr/payroll-input',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppHrPerformanceRoute = AppHrPerformanceRouteImport.update({
+  id: '/app/hr/performance',
+  path: '/app/hr/performance',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppHrRecruitmentRoute = AppHrRecruitmentRouteImport.update({
+  id: '/app/hr/recruitment',
+  path: '/app/hr/recruitment',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppHrReportsRoute = AppHrReportsRouteImport.update({
+  id: '/app/hr/reports',
+  path: '/app/hr/reports',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppHrTrainingRoute = AppHrTrainingRouteImport.update({
+  id: '/app/hr/training',
+  path: '/app/hr/training',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AppInstructorAnalyticsRoute = AppInstructorAnalyticsRouteImport.update({
   id: '/app/instructor/analytics',
   path: '/app/instructor/analytics',
@@ -666,6 +1279,96 @@ const AppInstructorGradebookRoute = AppInstructorGradebookRouteImport.update({
   path: '/app/instructor/gradebook',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AppInternIndexRoute = AppInternIndexRouteImport.update({
+  id: '/app/intern/',
+  path: '/app/intern/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppInternEvaluationRoute = AppInternEvaluationRouteImport.update({
+  id: '/app/intern/evaluation',
+  path: '/app/intern/evaluation',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppInternLearningPlanRoute = AppInternLearningPlanRouteImport.update({
+  id: '/app/intern/learning-plan',
+  path: '/app/intern/learning-plan',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppInternMentorshipRoute = AppInternMentorshipRouteImport.update({
+  id: '/app/intern/mentorship',
+  path: '/app/intern/mentorship',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppInternMessagesRoute = AppInternMessagesRouteImport.update({
+  id: '/app/intern/messages',
+  path: '/app/intern/messages',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppInternPortfolioRoute = AppInternPortfolioRouteImport.update({
+  id: '/app/intern/portfolio',
+  path: '/app/intern/portfolio',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppInternTasksRoute = AppInternTasksRouteImport.update({
+  id: '/app/intern/tasks',
+  path: '/app/intern/tasks',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppInternTimesheetRoute = AppInternTimesheetRouteImport.update({
+  id: '/app/intern/timesheet',
+  path: '/app/intern/timesheet',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppItAssetsRoute = AppItAssetsRouteImport.update({
+  id: '/app/it/assets',
+  path: '/app/it/assets',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppItKnowledgeBaseRoute = AppItKnowledgeBaseRouteImport.update({
+  id: '/app/it/knowledge-base',
+  path: '/app/it/knowledge-base',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppItLicensesRoute = AppItLicensesRouteImport.update({
+  id: '/app/it/licenses',
+  path: '/app/it/licenses',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppItMaintenanceRoute = AppItMaintenanceRouteImport.update({
+  id: '/app/it/maintenance',
+  path: '/app/it/maintenance',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppItMonitoringRoute = AppItMonitoringRouteImport.update({
+  id: '/app/it/monitoring',
+  path: '/app/it/monitoring',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppItRemoteSupportRoute = AppItRemoteSupportRouteImport.update({
+  id: '/app/it/remote-support',
+  path: '/app/it/remote-support',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppItReportsRoute = AppItReportsRouteImport.update({
+  id: '/app/it/reports',
+  path: '/app/it/reports',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppItTemplatesRoute = AppItTemplatesRouteImport.update({
+  id: '/app/it/templates',
+  path: '/app/it/templates',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppItTicketsRoute = AppItTicketsRouteImport.update({
+  id: '/app/it/tickets',
+  path: '/app/it/tickets',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppItUsersRoute = AppItUsersRouteImport.update({
+  id: '/app/it/users',
+  path: '/app/it/users',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AppLearnIndexRoute = AppLearnIndexRouteImport.update({
   id: '/app/learn/',
   path: '/app/learn/',
@@ -679,6 +1382,58 @@ const AppLearnCourseIdRoute = AppLearnCourseIdRouteImport.update({
 const AppLiveClassIdRoute = AppLiveClassIdRouteImport.update({
   id: '/app/live/$classId',
   path: '/app/live/$classId',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppMarketingIndexRoute = AppMarketingIndexRouteImport.update({
+  id: '/app/marketing/',
+  path: '/app/marketing/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppMarketingAnalyticsRoute = AppMarketingAnalyticsRouteImport.update({
+  id: '/app/marketing/analytics',
+  path: '/app/marketing/analytics',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppMarketingCampaignsRoute = AppMarketingCampaignsRouteImport.update({
+  id: '/app/marketing/campaigns',
+  path: '/app/marketing/campaigns',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppMarketingContentCalendarRoute =
+  AppMarketingContentCalendarRouteImport.update({
+    id: '/app/marketing/content-calendar',
+    path: '/app/marketing/content-calendar',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AppMarketingEmailRoute = AppMarketingEmailRouteImport.update({
+  id: '/app/marketing/email',
+  path: '/app/marketing/email',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppMarketingLandingPagesRoute =
+  AppMarketingLandingPagesRouteImport.update({
+    id: '/app/marketing/landing-pages',
+    path: '/app/marketing/landing-pages',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AppMarketingLeadsRoute = AppMarketingLeadsRouteImport.update({
+  id: '/app/marketing/leads',
+  path: '/app/marketing/leads',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppMarketingReportsRoute = AppMarketingReportsRouteImport.update({
+  id: '/app/marketing/reports',
+  path: '/app/marketing/reports',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppMarketingSeoRoute = AppMarketingSeoRouteImport.update({
+  id: '/app/marketing/seo',
+  path: '/app/marketing/seo',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppMarketingSocialRoute = AppMarketingSocialRouteImport.update({
+  id: '/app/marketing/social',
+  path: '/app/marketing/social',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AppMentorIndexRoute = AppMentorIndexRouteImport.update({
@@ -716,11 +1471,240 @@ const AppMentorSettingsRoute = AppMentorSettingsRouteImport.update({
   path: '/app/mentor/settings',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AppNgoIndexRoute = AppNgoIndexRouteImport.update({
+  id: '/app/ngo/',
+  path: '/app/ngo/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppNgoAnalyticsRoute = AppNgoAnalyticsRouteImport.update({
+  id: '/app/ngo/analytics',
+  path: '/app/ngo/analytics',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppNgoDonationsRoute = AppNgoDonationsRouteImport.update({
+  id: '/app/ngo/donations',
+  path: '/app/ngo/donations',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppNgoMessagingRoute = AppNgoMessagingRouteImport.update({
+  id: '/app/ngo/messaging',
+  path: '/app/ngo/messaging',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppNgoProgramsRoute = AppNgoProgramsRouteImport.update({
+  id: '/app/ngo/programs',
+  path: '/app/ngo/programs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppNgoReportsRoute = AppNgoReportsRouteImport.update({
+  id: '/app/ngo/reports',
+  path: '/app/ngo/reports',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppNgoScholarshipsRoute = AppNgoScholarshipsRouteImport.update({
+  id: '/app/ngo/scholarships',
+  path: '/app/ngo/scholarships',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppNgoVolunteersRoute = AppNgoVolunteersRouteImport.update({
+  id: '/app/ngo/volunteers',
+  path: '/app/ngo/volunteers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppOpsAutomationRoute = AppOpsAutomationRouteImport.update({
+  id: '/app/ops/automation',
+  path: '/app/ops/automation',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppOpsBranchesRoute = AppOpsBranchesRouteImport.update({
+  id: '/app/ops/branches',
+  path: '/app/ops/branches',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppOpsFacilitiesRoute = AppOpsFacilitiesRouteImport.update({
+  id: '/app/ops/facilities',
+  path: '/app/ops/facilities',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppOpsInventoryRoute = AppOpsInventoryRouteImport.update({
+  id: '/app/ops/inventory',
+  path: '/app/ops/inventory',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppOpsReportsRoute = AppOpsReportsRouteImport.update({
+  id: '/app/ops/reports',
+  path: '/app/ops/reports',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppOpsTasksRoute = AppOpsTasksRouteImport.update({
+  id: '/app/ops/tasks',
+  path: '/app/ops/tasks',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppOpsVendorsRoute = AppOpsVendorsRouteImport.update({
+  id: '/app/ops/vendors',
+  path: '/app/ops/vendors',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AppParentIndexRoute = AppParentIndexRouteImport.update({
   id: '/app/parent/',
   path: '/app/parent/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AppPartnerAgreementsRoute = AppPartnerAgreementsRouteImport.update({
+  id: '/app/partner/agreements',
+  path: '/app/partner/agreements',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppPartnerCollaborationsRoute =
+  AppPartnerCollaborationsRouteImport.update({
+    id: '/app/partner/collaborations',
+    path: '/app/partner/collaborations',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AppPartnerHubRoute = AppPartnerHubRouteImport.update({
+  id: '/app/partner/hub',
+  path: '/app/partner/hub',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppPartnerMessagesRoute = AppPartnerMessagesRouteImport.update({
+  id: '/app/partner/messages',
+  path: '/app/partner/messages',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppPartnerReferralsRoute = AppPartnerReferralsRouteImport.update({
+  id: '/app/partner/referrals',
+  path: '/app/partner/referrals',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppPartnerReportsRoute = AppPartnerReportsRouteImport.update({
+  id: '/app/partner/reports',
+  path: '/app/partner/reports',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppPartnerResourcesRoute = AppPartnerResourcesRouteImport.update({
+  id: '/app/partner/resources',
+  path: '/app/partner/resources',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppReceptionistAppointmentsRoute =
+  AppReceptionistAppointmentsRouteImport.update({
+    id: '/app/receptionist/appointments',
+    path: '/app/receptionist/appointments',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AppReceptionistCheckInRoute = AppReceptionistCheckInRouteImport.update({
+  id: '/app/receptionist/check-in',
+  path: '/app/receptionist/check-in',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppReceptionistCheckOutRoute = AppReceptionistCheckOutRouteImport.update({
+  id: '/app/receptionist/check-out',
+  path: '/app/receptionist/check-out',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppReceptionistDeliveriesRoute =
+  AppReceptionistDeliveriesRouteImport.update({
+    id: '/app/receptionist/deliveries',
+    path: '/app/receptionist/deliveries',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AppReceptionistDirectoryRoute =
+  AppReceptionistDirectoryRouteImport.update({
+    id: '/app/receptionist/directory',
+    path: '/app/receptionist/directory',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AppReceptionistInquiriesRoute =
+  AppReceptionistInquiriesRouteImport.update({
+    id: '/app/receptionist/inquiries',
+    path: '/app/receptionist/inquiries',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AppReceptionistPhoneLogRoute = AppReceptionistPhoneLogRouteImport.update({
+  id: '/app/receptionist/phone-log',
+  path: '/app/receptionist/phone-log',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppReceptionistTasksRoute = AppReceptionistTasksRouteImport.update({
+  id: '/app/receptionist/tasks',
+  path: '/app/receptionist/tasks',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppSupplierIndexRoute = AppSupplierIndexRouteImport.update({
+  id: '/app/supplier/',
+  path: '/app/supplier/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppSupplierDeliveriesRoute = AppSupplierDeliveriesRouteImport.update({
+  id: '/app/supplier/deliveries',
+  path: '/app/supplier/deliveries',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppSupplierInvoicesRoute = AppSupplierInvoicesRouteImport.update({
+  id: '/app/supplier/invoices',
+  path: '/app/supplier/invoices',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppSupplierMessagesRoute = AppSupplierMessagesRouteImport.update({
+  id: '/app/supplier/messages',
+  path: '/app/supplier/messages',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppSupplierOrdersRoute = AppSupplierOrdersRouteImport.update({
+  id: '/app/supplier/orders',
+  path: '/app/supplier/orders',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppSupplierPerformanceRoute = AppSupplierPerformanceRouteImport.update({
+  id: '/app/supplier/performance',
+  path: '/app/supplier/performance',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppSupplierProfileRoute = AppSupplierProfileRouteImport.update({
+  id: '/app/supplier/profile',
+  path: '/app/supplier/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppVolunteerCertificatesRoute =
+  AppVolunteerCertificatesRouteImport.update({
+    id: '/app/volunteer/certificates',
+    path: '/app/volunteer/certificates',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AppVolunteerCommunityRoute = AppVolunteerCommunityRouteImport.update({
+  id: '/app/volunteer/community',
+  path: '/app/volunteer/community',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppVolunteerHoursRoute = AppVolunteerHoursRouteImport.update({
+  id: '/app/volunteer/hours',
+  path: '/app/volunteer/hours',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppVolunteerImpactRoute = AppVolunteerImpactRouteImport.update({
+  id: '/app/volunteer/impact',
+  path: '/app/volunteer/impact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppVolunteerMyVolunteeringRoute =
+  AppVolunteerMyVolunteeringRouteImport.update({
+    id: '/app/volunteer/my-volunteering',
+    path: '/app/volunteer/my-volunteering',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AppVolunteerOpportunitiesRoute =
+  AppVolunteerOpportunitiesRouteImport.update({
+    id: '/app/volunteer/opportunities',
+    path: '/app/volunteer/opportunities',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AppAdmissionsApplicationsIdRoute =
+  AppAdmissionsApplicationsIdRouteImport.update({
+    id: '/$id',
+    path: '/$id',
+    getParentRoute: () => AppAdmissionsApplicationsRoute,
+  } as any)
 const AppAssessmentsAssessmentIdTakeRoute =
   AppAssessmentsAssessmentIdTakeRouteImport.update({
     id: '/app/assessments/$assessmentId/take',
@@ -731,6 +1715,12 @@ const AppClientProjectsProjectIdRoute =
   AppClientProjectsProjectIdRouteImport.update({
     id: '/app/client/projects/$projectId',
     path: '/app/client/projects/$projectId',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AppConversionCopyLandingPagesIdRoute =
+  AppConversionCopyLandingPagesIdRouteImport.update({
+    id: '/app/conversion-copy/landing-pages/$id',
+    path: '/app/conversion-copy/landing-pages/$id',
     getParentRoute: () => rootRouteImport,
   } as any)
 const AppEmployerPipelineJobIdRoute =
@@ -751,6 +1741,11 @@ const AppInstructorCoursesCourseIdRoute =
     path: '/app/instructor/courses/$courseId',
     getParentRoute: () => rootRouteImport,
   } as any)
+const AppItTicketsIdRoute = AppItTicketsIdRouteImport.update({
+  id: '/$id',
+  path: '/$id',
+  getParentRoute: () => AppItTicketsRoute,
+} as any)
 const AppMentorMenteesMenteeIdRoute =
   AppMentorMenteesMenteeIdRouteImport.update({
     id: '/app/mentor/mentees/$menteeId',
@@ -775,6 +1770,12 @@ const AppParentStudentsStudentIdRoute =
     path: '/app/parent/students/$studentId',
     getParentRoute: () => rootRouteImport,
   } as any)
+const AppClientProjectsProjectIdTasksRoute =
+  AppClientProjectsProjectIdTasksRouteImport.update({
+    id: '/tasks',
+    path: '/tasks',
+    getParentRoute: () => AppClientProjectsProjectIdRoute,
+  } as any)
 const AppInstructorAssignmentsSubmissionIdGradeRoute =
   AppInstructorAssignmentsSubmissionIdGradeRouteImport.update({
     id: '/app/instructor/assignments/$submissionId/grade',
@@ -798,6 +1799,12 @@ const AppMentorMenteesMenteeIdPortfolioRoute =
     id: '/portfolio',
     path: '/portfolio',
     getParentRoute: () => AppMentorMenteesMenteeIdRoute,
+  } as any)
+const AppNgoProgramsProgramIdBudgetRoute =
+  AppNgoProgramsProgramIdBudgetRouteImport.update({
+    id: '/$programId/budget',
+    path: '/$programId/budget',
+    getParentRoute: () => AppNgoProgramsRoute,
   } as any)
 const AppParentStudentsStudentIdAttendanceRoute =
   AppParentStudentsStudentIdAttendanceRouteImport.update({
@@ -880,6 +1887,7 @@ export interface FileRoutesByFullPath {
   '/portal/department-head': typeof PortalDepartmentHeadRoute
   '/portal/developer': typeof PortalDeveloperRoute
   '/portal/devops': typeof PortalDevopsRoute
+  '/portal/director': typeof PortalDirectorRoute
   '/portal/employer': typeof PortalEmployerRoute
   '/portal/executive': typeof PortalExecutiveRoute
   '/portal/finance': typeof PortalFinanceRoute
@@ -912,53 +1920,216 @@ export interface FileRoutesByFullPath {
   '/blog/': typeof BlogIndexRoute
   '/portal/': typeof PortalIndexRoute
   '/programs/': typeof ProgramsIndexRoute
+  '/app/accountant/audit': typeof AppAccountantAuditRoute
+  '/app/accountant/banking': typeof AppAccountantBankingRoute
+  '/app/accountant/billing': typeof AppAccountantBillingRoute
+  '/app/accountant/budgets': typeof AppAccountantBudgetsRoute
+  '/app/accountant/expenses': typeof AppAccountantExpensesRoute
+  '/app/accountant/invoicing': typeof AppAccountantInvoicingRoute
+  '/app/accountant/payments': typeof AppAccountantPaymentsRoute
+  '/app/accountant/payroll': typeof AppAccountantPayrollRoute
+  '/app/accountant/reports': typeof AppAccountantReportsRoute
+  '/app/admin/api-keys': typeof AppAdminApiKeysRoute
+  '/app/admin/audit': typeof AppAdminAuditRoute
+  '/app/admin/backups': typeof AppAdminBackupsRoute
+  '/app/admin/config': typeof AppAdminConfigRoute
+  '/app/admin/integrations': typeof AppAdminIntegrationsRoute
+  '/app/admin/logs': typeof AppAdminLogsRoute
+  '/app/admin/monitoring': typeof AppAdminMonitoringRoute
+  '/app/admin/rate-limits': typeof AppAdminRateLimitsRoute
+  '/app/admin/roles': typeof AppAdminRolesRoute
+  '/app/admin/security': typeof AppAdminSecurityRoute
+  '/app/admin/users': typeof AppAdminUsersRoute
+  '/app/admissions/applications': typeof AppAdmissionsApplicationsRouteWithChildren
+  '/app/admissions/communication': typeof AppAdmissionsCommunicationRoute
+  '/app/admissions/documents': typeof AppAdmissionsDocumentsRoute
+  '/app/admissions/enrollment': typeof AppAdmissionsEnrollmentRoute
+  '/app/admissions/interviews': typeof AppAdmissionsInterviewsRoute
+  '/app/admissions/reports': typeof AppAdmissionsReportsRoute
+  '/app/admissions/review': typeof AppAdmissionsReviewRoute
   '/app/alumni/events': typeof AppAlumniEventsRoute
   '/app/alumni/give-back': typeof AppAlumniGiveBackRoute
   '/app/alumni/hub': typeof AppAlumniHubRoute
   '/app/alumni/jobs': typeof AppAlumniJobsRoute
   '/app/alumni/network': typeof AppAlumniNetworkRoute
   '/app/assignments/$assignmentId': typeof AppAssignmentsAssignmentIdRoute
+  '/app/client/contracts': typeof AppClientContractsRoute
+  '/app/client/documents': typeof AppClientDocumentsRoute
   '/app/client/invoices': typeof AppClientInvoicesRoute
+  '/app/client/messages': typeof AppClientMessagesRoute
+  '/app/client/proposals': typeof AppClientProposalsRoute
   '/app/client/support': typeof AppClientSupportRoute
+  '/app/conversion-copy/ab-tests': typeof AppConversionCopyAbTestsRoute
+  '/app/conversion-copy/ads': typeof AppConversionCopyAdsRoute
+  '/app/conversion-copy/analytics': typeof AppConversionCopyAnalyticsRoute
+  '/app/conversion-copy/briefs': typeof AppConversionCopyBriefsRoute
+  '/app/conversion-copy/email-sequences': typeof AppConversionCopyEmailSequencesRoute
+  '/app/conversion-copy/library': typeof AppConversionCopyLibraryRoute
+  '/app/conversion-copy/style-guide': typeof AppConversionCopyStyleGuideRoute
+  '/app/department/approvals': typeof AppDepartmentApprovalsRoute
+  '/app/department/calendar': typeof AppDepartmentCalendarRoute
   '/app/department/curriculum': typeof AppDepartmentCurriculumRoute
   '/app/department/enrollment': typeof AppDepartmentEnrollmentRoute
   '/app/department/instructors': typeof AppDepartmentInstructorsRoute
   '/app/department/quality': typeof AppDepartmentQualityRoute
+  '/app/department/reports': typeof AppDepartmentReportsRoute
+  '/app/dev/api-playground': typeof AppDevApiPlaygroundRoute
+  '/app/dev/dependencies': typeof AppDevDependenciesRoute
+  '/app/dev/deployments': typeof AppDevDeploymentsRoute
+  '/app/dev/docs': typeof AppDevDocsRoute
+  '/app/dev/env': typeof AppDevEnvRoute
+  '/app/dev/feature-flags': typeof AppDevFeatureFlagsRoute
+  '/app/dev/git': typeof AppDevGitRoute
+  '/app/dev/monitoring': typeof AppDevMonitoringRoute
+  '/app/dev/queues': typeof AppDevQueuesRoute
+  '/app/dev/reviews': typeof AppDevReviewsRoute
+  '/app/dev/tasks': typeof AppDevTasksRoute
+  '/app/director/academic': typeof AppDirectorAcademicRoute
+  '/app/director/approvals': typeof AppDirectorApprovalsRoute
+  '/app/director/command-center': typeof AppDirectorCommandCenterRoute
+  '/app/director/finance': typeof AppDirectorFinanceRoute
+  '/app/director/hr': typeof AppDirectorHrRoute
+  '/app/director/marketing': typeof AppDirectorMarketingRoute
+  '/app/director/okrs': typeof AppDirectorOkrsRoute
+  '/app/director/operations': typeof AppDirectorOperationsRoute
+  '/app/director/reports': typeof AppDirectorReportsRoute
   '/app/employer/analytics': typeof AppEmployerAnalyticsRoute
   '/app/employer/brand': typeof AppEmployerBrandRoute
+  '/app/employer/feedback': typeof AppEmployerFeedbackRoute
   '/app/employer/hub': typeof AppEmployerHubRoute
   '/app/employer/interviews': typeof AppEmployerInterviewsRoute
   '/app/employer/jobs': typeof AppEmployerJobsRoute
   '/app/employer/talent': typeof AppEmployerTalentRoute
+  '/app/government/audit': typeof AppGovernmentAuditRoute
+  '/app/government/calendar': typeof AppGovernmentCalendarRoute
+  '/app/government/changelog': typeof AppGovernmentChangelogRoute
+  '/app/government/documents': typeof AppGovernmentDocumentsRoute
+  '/app/government/filings': typeof AppGovernmentFilingsRoute
+  '/app/government/institution': typeof AppGovernmentInstitutionRoute
+  '/app/government/integrity': typeof AppGovernmentIntegrityRoute
+  '/app/government/messaging': typeof AppGovernmentMessagingRoute
+  '/app/government/reports': typeof AppGovernmentReportsRoute
+  '/app/government/training': typeof AppGovernmentTrainingRoute
+  '/app/hr/attendance': typeof AppHrAttendanceRoute
+  '/app/hr/employees': typeof AppHrEmployeesRoute
+  '/app/hr/leave': typeof AppHrLeaveRoute
+  '/app/hr/onboarding': typeof AppHrOnboardingRoute
+  '/app/hr/payroll-input': typeof AppHrPayrollInputRoute
+  '/app/hr/performance': typeof AppHrPerformanceRoute
+  '/app/hr/recruitment': typeof AppHrRecruitmentRoute
+  '/app/hr/reports': typeof AppHrReportsRoute
+  '/app/hr/training': typeof AppHrTrainingRoute
   '/app/instructor/analytics': typeof AppInstructorAnalyticsRoute
   '/app/instructor/attendance': typeof AppInstructorAttendanceRoute
   '/app/instructor/gradebook': typeof AppInstructorGradebookRoute
+  '/app/intern/evaluation': typeof AppInternEvaluationRoute
+  '/app/intern/learning-plan': typeof AppInternLearningPlanRoute
+  '/app/intern/mentorship': typeof AppInternMentorshipRoute
+  '/app/intern/messages': typeof AppInternMessagesRoute
+  '/app/intern/portfolio': typeof AppInternPortfolioRoute
+  '/app/intern/tasks': typeof AppInternTasksRoute
+  '/app/intern/timesheet': typeof AppInternTimesheetRoute
+  '/app/it/assets': typeof AppItAssetsRoute
+  '/app/it/knowledge-base': typeof AppItKnowledgeBaseRoute
+  '/app/it/licenses': typeof AppItLicensesRoute
+  '/app/it/maintenance': typeof AppItMaintenanceRoute
+  '/app/it/monitoring': typeof AppItMonitoringRoute
+  '/app/it/remote-support': typeof AppItRemoteSupportRoute
+  '/app/it/reports': typeof AppItReportsRoute
+  '/app/it/templates': typeof AppItTemplatesRoute
+  '/app/it/tickets': typeof AppItTicketsRouteWithChildren
+  '/app/it/users': typeof AppItUsersRoute
   '/app/learn/$courseId': typeof AppLearnCourseIdRouteWithChildren
   '/app/live/$classId': typeof AppLiveClassIdRoute
+  '/app/marketing/analytics': typeof AppMarketingAnalyticsRoute
+  '/app/marketing/campaigns': typeof AppMarketingCampaignsRoute
+  '/app/marketing/content-calendar': typeof AppMarketingContentCalendarRoute
+  '/app/marketing/email': typeof AppMarketingEmailRoute
+  '/app/marketing/landing-pages': typeof AppMarketingLandingPagesRoute
+  '/app/marketing/leads': typeof AppMarketingLeadsRoute
+  '/app/marketing/reports': typeof AppMarketingReportsRoute
+  '/app/marketing/seo': typeof AppMarketingSeoRoute
+  '/app/marketing/social': typeof AppMarketingSocialRoute
   '/app/mentor/analytics': typeof AppMentorAnalyticsRoute
   '/app/mentor/goals': typeof AppMentorGoalsRoute
   '/app/mentor/requests': typeof AppMentorRequestsRoute
   '/app/mentor/resources': typeof AppMentorResourcesRoute
   '/app/mentor/sessions': typeof AppMentorSessionsRouteWithChildren
   '/app/mentor/settings': typeof AppMentorSettingsRoute
+  '/app/ngo/analytics': typeof AppNgoAnalyticsRoute
+  '/app/ngo/donations': typeof AppNgoDonationsRoute
+  '/app/ngo/messaging': typeof AppNgoMessagingRoute
+  '/app/ngo/programs': typeof AppNgoProgramsRouteWithChildren
+  '/app/ngo/reports': typeof AppNgoReportsRoute
+  '/app/ngo/scholarships': typeof AppNgoScholarshipsRoute
+  '/app/ngo/volunteers': typeof AppNgoVolunteersRoute
+  '/app/ops/automation': typeof AppOpsAutomationRoute
+  '/app/ops/branches': typeof AppOpsBranchesRoute
+  '/app/ops/facilities': typeof AppOpsFacilitiesRoute
+  '/app/ops/inventory': typeof AppOpsInventoryRoute
+  '/app/ops/reports': typeof AppOpsReportsRoute
+  '/app/ops/tasks': typeof AppOpsTasksRoute
+  '/app/ops/vendors': typeof AppOpsVendorsRoute
+  '/app/partner/agreements': typeof AppPartnerAgreementsRoute
+  '/app/partner/collaborations': typeof AppPartnerCollaborationsRoute
+  '/app/partner/hub': typeof AppPartnerHubRoute
+  '/app/partner/messages': typeof AppPartnerMessagesRoute
+  '/app/partner/referrals': typeof AppPartnerReferralsRoute
+  '/app/partner/reports': typeof AppPartnerReportsRoute
+  '/app/partner/resources': typeof AppPartnerResourcesRoute
+  '/app/receptionist/appointments': typeof AppReceptionistAppointmentsRoute
+  '/app/receptionist/check-in': typeof AppReceptionistCheckInRoute
+  '/app/receptionist/check-out': typeof AppReceptionistCheckOutRoute
+  '/app/receptionist/deliveries': typeof AppReceptionistDeliveriesRoute
+  '/app/receptionist/directory': typeof AppReceptionistDirectoryRoute
+  '/app/receptionist/inquiries': typeof AppReceptionistInquiriesRoute
+  '/app/receptionist/phone-log': typeof AppReceptionistPhoneLogRoute
+  '/app/receptionist/tasks': typeof AppReceptionistTasksRoute
+  '/app/supplier/deliveries': typeof AppSupplierDeliveriesRoute
+  '/app/supplier/invoices': typeof AppSupplierInvoicesRoute
+  '/app/supplier/messages': typeof AppSupplierMessagesRoute
+  '/app/supplier/orders': typeof AppSupplierOrdersRoute
+  '/app/supplier/performance': typeof AppSupplierPerformanceRoute
+  '/app/supplier/profile': typeof AppSupplierProfileRoute
+  '/app/volunteer/certificates': typeof AppVolunteerCertificatesRoute
+  '/app/volunteer/community': typeof AppVolunteerCommunityRoute
+  '/app/volunteer/hours': typeof AppVolunteerHoursRoute
+  '/app/volunteer/impact': typeof AppVolunteerImpactRoute
+  '/app/volunteer/my-volunteering': typeof AppVolunteerMyVolunteeringRoute
+  '/app/volunteer/opportunities': typeof AppVolunteerOpportunitiesRoute
+  '/app/accountant/': typeof AppAccountantIndexRoute
+  '/app/admin/': typeof AppAdminIndexRoute
+  '/app/admissions/': typeof AppAdmissionsIndexRoute
   '/app/assessments/': typeof AppAssessmentsIndexRoute
   '/app/assignments/': typeof AppAssignmentsIndexRoute
+  '/app/dev/': typeof AppDevIndexRoute
+  '/app/government/': typeof AppGovernmentIndexRoute
+  '/app/hr/': typeof AppHrIndexRoute
+  '/app/intern/': typeof AppInternIndexRoute
   '/app/learn/': typeof AppLearnIndexRoute
+  '/app/marketing/': typeof AppMarketingIndexRoute
   '/app/mentor/': typeof AppMentorIndexRoute
+  '/app/ngo/': typeof AppNgoIndexRoute
   '/app/parent/': typeof AppParentIndexRoute
+  '/app/supplier/': typeof AppSupplierIndexRoute
+  '/app/admissions/applications/$id': typeof AppAdmissionsApplicationsIdRoute
   '/app/assessments/$assessmentId/take': typeof AppAssessmentsAssessmentIdTakeRoute
-  '/app/client/projects/$projectId': typeof AppClientProjectsProjectIdRoute
+  '/app/client/projects/$projectId': typeof AppClientProjectsProjectIdRouteWithChildren
+  '/app/conversion-copy/landing-pages/$id': typeof AppConversionCopyLandingPagesIdRoute
   '/app/employer/pipeline/$jobId': typeof AppEmployerPipelineJobIdRoute
   '/app/instructor/courses/$courseId': typeof AppInstructorCoursesCourseIdRoute
+  '/app/it/tickets/$id': typeof AppItTicketsIdRoute
   '/app/mentor/mentees/$menteeId': typeof AppMentorMenteesMenteeIdRouteWithChildren
   '/app/mentor/sessions/$sessionId': typeof AppMentorSessionsSessionIdRoute
   '/app/parent/invitation/accept': typeof AppParentInvitationAcceptRoute
   '/app/parent/students/$studentId': typeof AppParentStudentsStudentIdRouteWithChildren
   '/app/instructor/assignments/': typeof AppInstructorAssignmentsIndexRoute
+  '/app/client/projects/$projectId/tasks': typeof AppClientProjectsProjectIdTasksRoute
   '/app/instructor/assignments/$submissionId/grade': typeof AppInstructorAssignmentsSubmissionIdGradeRoute
   '/app/learn/$courseId/lessons/$lessonId': typeof AppLearnCourseIdLessonsLessonIdRoute
   '/app/mentor/mentees/$menteeId/career': typeof AppMentorMenteesMenteeIdCareerRoute
   '/app/mentor/mentees/$menteeId/portfolio': typeof AppMentorMenteesMenteeIdPortfolioRoute
+  '/app/ngo/programs/$programId/budget': typeof AppNgoProgramsProgramIdBudgetRoute
   '/app/parent/students/$studentId/attendance': typeof AppParentStudentsStudentIdAttendanceRoute
   '/app/parent/students/$studentId/communication': typeof AppParentStudentsStudentIdCommunicationRoute
   '/app/parent/students/$studentId/finance': typeof AppParentStudentsStudentIdFinanceRoute
@@ -1015,6 +2186,7 @@ export interface FileRoutesByTo {
   '/portal/department-head': typeof PortalDepartmentHeadRoute
   '/portal/developer': typeof PortalDeveloperRoute
   '/portal/devops': typeof PortalDevopsRoute
+  '/portal/director': typeof PortalDirectorRoute
   '/portal/employer': typeof PortalEmployerRoute
   '/portal/executive': typeof PortalExecutiveRoute
   '/portal/finance': typeof PortalFinanceRoute
@@ -1047,53 +2219,216 @@ export interface FileRoutesByTo {
   '/blog': typeof BlogIndexRoute
   '/portal': typeof PortalIndexRoute
   '/programs': typeof ProgramsIndexRoute
+  '/app/accountant/audit': typeof AppAccountantAuditRoute
+  '/app/accountant/banking': typeof AppAccountantBankingRoute
+  '/app/accountant/billing': typeof AppAccountantBillingRoute
+  '/app/accountant/budgets': typeof AppAccountantBudgetsRoute
+  '/app/accountant/expenses': typeof AppAccountantExpensesRoute
+  '/app/accountant/invoicing': typeof AppAccountantInvoicingRoute
+  '/app/accountant/payments': typeof AppAccountantPaymentsRoute
+  '/app/accountant/payroll': typeof AppAccountantPayrollRoute
+  '/app/accountant/reports': typeof AppAccountantReportsRoute
+  '/app/admin/api-keys': typeof AppAdminApiKeysRoute
+  '/app/admin/audit': typeof AppAdminAuditRoute
+  '/app/admin/backups': typeof AppAdminBackupsRoute
+  '/app/admin/config': typeof AppAdminConfigRoute
+  '/app/admin/integrations': typeof AppAdminIntegrationsRoute
+  '/app/admin/logs': typeof AppAdminLogsRoute
+  '/app/admin/monitoring': typeof AppAdminMonitoringRoute
+  '/app/admin/rate-limits': typeof AppAdminRateLimitsRoute
+  '/app/admin/roles': typeof AppAdminRolesRoute
+  '/app/admin/security': typeof AppAdminSecurityRoute
+  '/app/admin/users': typeof AppAdminUsersRoute
+  '/app/admissions/applications': typeof AppAdmissionsApplicationsRouteWithChildren
+  '/app/admissions/communication': typeof AppAdmissionsCommunicationRoute
+  '/app/admissions/documents': typeof AppAdmissionsDocumentsRoute
+  '/app/admissions/enrollment': typeof AppAdmissionsEnrollmentRoute
+  '/app/admissions/interviews': typeof AppAdmissionsInterviewsRoute
+  '/app/admissions/reports': typeof AppAdmissionsReportsRoute
+  '/app/admissions/review': typeof AppAdmissionsReviewRoute
   '/app/alumni/events': typeof AppAlumniEventsRoute
   '/app/alumni/give-back': typeof AppAlumniGiveBackRoute
   '/app/alumni/hub': typeof AppAlumniHubRoute
   '/app/alumni/jobs': typeof AppAlumniJobsRoute
   '/app/alumni/network': typeof AppAlumniNetworkRoute
   '/app/assignments/$assignmentId': typeof AppAssignmentsAssignmentIdRoute
+  '/app/client/contracts': typeof AppClientContractsRoute
+  '/app/client/documents': typeof AppClientDocumentsRoute
   '/app/client/invoices': typeof AppClientInvoicesRoute
+  '/app/client/messages': typeof AppClientMessagesRoute
+  '/app/client/proposals': typeof AppClientProposalsRoute
   '/app/client/support': typeof AppClientSupportRoute
+  '/app/conversion-copy/ab-tests': typeof AppConversionCopyAbTestsRoute
+  '/app/conversion-copy/ads': typeof AppConversionCopyAdsRoute
+  '/app/conversion-copy/analytics': typeof AppConversionCopyAnalyticsRoute
+  '/app/conversion-copy/briefs': typeof AppConversionCopyBriefsRoute
+  '/app/conversion-copy/email-sequences': typeof AppConversionCopyEmailSequencesRoute
+  '/app/conversion-copy/library': typeof AppConversionCopyLibraryRoute
+  '/app/conversion-copy/style-guide': typeof AppConversionCopyStyleGuideRoute
+  '/app/department/approvals': typeof AppDepartmentApprovalsRoute
+  '/app/department/calendar': typeof AppDepartmentCalendarRoute
   '/app/department/curriculum': typeof AppDepartmentCurriculumRoute
   '/app/department/enrollment': typeof AppDepartmentEnrollmentRoute
   '/app/department/instructors': typeof AppDepartmentInstructorsRoute
   '/app/department/quality': typeof AppDepartmentQualityRoute
+  '/app/department/reports': typeof AppDepartmentReportsRoute
+  '/app/dev/api-playground': typeof AppDevApiPlaygroundRoute
+  '/app/dev/dependencies': typeof AppDevDependenciesRoute
+  '/app/dev/deployments': typeof AppDevDeploymentsRoute
+  '/app/dev/docs': typeof AppDevDocsRoute
+  '/app/dev/env': typeof AppDevEnvRoute
+  '/app/dev/feature-flags': typeof AppDevFeatureFlagsRoute
+  '/app/dev/git': typeof AppDevGitRoute
+  '/app/dev/monitoring': typeof AppDevMonitoringRoute
+  '/app/dev/queues': typeof AppDevQueuesRoute
+  '/app/dev/reviews': typeof AppDevReviewsRoute
+  '/app/dev/tasks': typeof AppDevTasksRoute
+  '/app/director/academic': typeof AppDirectorAcademicRoute
+  '/app/director/approvals': typeof AppDirectorApprovalsRoute
+  '/app/director/command-center': typeof AppDirectorCommandCenterRoute
+  '/app/director/finance': typeof AppDirectorFinanceRoute
+  '/app/director/hr': typeof AppDirectorHrRoute
+  '/app/director/marketing': typeof AppDirectorMarketingRoute
+  '/app/director/okrs': typeof AppDirectorOkrsRoute
+  '/app/director/operations': typeof AppDirectorOperationsRoute
+  '/app/director/reports': typeof AppDirectorReportsRoute
   '/app/employer/analytics': typeof AppEmployerAnalyticsRoute
   '/app/employer/brand': typeof AppEmployerBrandRoute
+  '/app/employer/feedback': typeof AppEmployerFeedbackRoute
   '/app/employer/hub': typeof AppEmployerHubRoute
   '/app/employer/interviews': typeof AppEmployerInterviewsRoute
   '/app/employer/jobs': typeof AppEmployerJobsRoute
   '/app/employer/talent': typeof AppEmployerTalentRoute
+  '/app/government/audit': typeof AppGovernmentAuditRoute
+  '/app/government/calendar': typeof AppGovernmentCalendarRoute
+  '/app/government/changelog': typeof AppGovernmentChangelogRoute
+  '/app/government/documents': typeof AppGovernmentDocumentsRoute
+  '/app/government/filings': typeof AppGovernmentFilingsRoute
+  '/app/government/institution': typeof AppGovernmentInstitutionRoute
+  '/app/government/integrity': typeof AppGovernmentIntegrityRoute
+  '/app/government/messaging': typeof AppGovernmentMessagingRoute
+  '/app/government/reports': typeof AppGovernmentReportsRoute
+  '/app/government/training': typeof AppGovernmentTrainingRoute
+  '/app/hr/attendance': typeof AppHrAttendanceRoute
+  '/app/hr/employees': typeof AppHrEmployeesRoute
+  '/app/hr/leave': typeof AppHrLeaveRoute
+  '/app/hr/onboarding': typeof AppHrOnboardingRoute
+  '/app/hr/payroll-input': typeof AppHrPayrollInputRoute
+  '/app/hr/performance': typeof AppHrPerformanceRoute
+  '/app/hr/recruitment': typeof AppHrRecruitmentRoute
+  '/app/hr/reports': typeof AppHrReportsRoute
+  '/app/hr/training': typeof AppHrTrainingRoute
   '/app/instructor/analytics': typeof AppInstructorAnalyticsRoute
   '/app/instructor/attendance': typeof AppInstructorAttendanceRoute
   '/app/instructor/gradebook': typeof AppInstructorGradebookRoute
+  '/app/intern/evaluation': typeof AppInternEvaluationRoute
+  '/app/intern/learning-plan': typeof AppInternLearningPlanRoute
+  '/app/intern/mentorship': typeof AppInternMentorshipRoute
+  '/app/intern/messages': typeof AppInternMessagesRoute
+  '/app/intern/portfolio': typeof AppInternPortfolioRoute
+  '/app/intern/tasks': typeof AppInternTasksRoute
+  '/app/intern/timesheet': typeof AppInternTimesheetRoute
+  '/app/it/assets': typeof AppItAssetsRoute
+  '/app/it/knowledge-base': typeof AppItKnowledgeBaseRoute
+  '/app/it/licenses': typeof AppItLicensesRoute
+  '/app/it/maintenance': typeof AppItMaintenanceRoute
+  '/app/it/monitoring': typeof AppItMonitoringRoute
+  '/app/it/remote-support': typeof AppItRemoteSupportRoute
+  '/app/it/reports': typeof AppItReportsRoute
+  '/app/it/templates': typeof AppItTemplatesRoute
+  '/app/it/tickets': typeof AppItTicketsRouteWithChildren
+  '/app/it/users': typeof AppItUsersRoute
   '/app/learn/$courseId': typeof AppLearnCourseIdRouteWithChildren
   '/app/live/$classId': typeof AppLiveClassIdRoute
+  '/app/marketing/analytics': typeof AppMarketingAnalyticsRoute
+  '/app/marketing/campaigns': typeof AppMarketingCampaignsRoute
+  '/app/marketing/content-calendar': typeof AppMarketingContentCalendarRoute
+  '/app/marketing/email': typeof AppMarketingEmailRoute
+  '/app/marketing/landing-pages': typeof AppMarketingLandingPagesRoute
+  '/app/marketing/leads': typeof AppMarketingLeadsRoute
+  '/app/marketing/reports': typeof AppMarketingReportsRoute
+  '/app/marketing/seo': typeof AppMarketingSeoRoute
+  '/app/marketing/social': typeof AppMarketingSocialRoute
   '/app/mentor/analytics': typeof AppMentorAnalyticsRoute
   '/app/mentor/goals': typeof AppMentorGoalsRoute
   '/app/mentor/requests': typeof AppMentorRequestsRoute
   '/app/mentor/resources': typeof AppMentorResourcesRoute
   '/app/mentor/sessions': typeof AppMentorSessionsRouteWithChildren
   '/app/mentor/settings': typeof AppMentorSettingsRoute
+  '/app/ngo/analytics': typeof AppNgoAnalyticsRoute
+  '/app/ngo/donations': typeof AppNgoDonationsRoute
+  '/app/ngo/messaging': typeof AppNgoMessagingRoute
+  '/app/ngo/programs': typeof AppNgoProgramsRouteWithChildren
+  '/app/ngo/reports': typeof AppNgoReportsRoute
+  '/app/ngo/scholarships': typeof AppNgoScholarshipsRoute
+  '/app/ngo/volunteers': typeof AppNgoVolunteersRoute
+  '/app/ops/automation': typeof AppOpsAutomationRoute
+  '/app/ops/branches': typeof AppOpsBranchesRoute
+  '/app/ops/facilities': typeof AppOpsFacilitiesRoute
+  '/app/ops/inventory': typeof AppOpsInventoryRoute
+  '/app/ops/reports': typeof AppOpsReportsRoute
+  '/app/ops/tasks': typeof AppOpsTasksRoute
+  '/app/ops/vendors': typeof AppOpsVendorsRoute
+  '/app/partner/agreements': typeof AppPartnerAgreementsRoute
+  '/app/partner/collaborations': typeof AppPartnerCollaborationsRoute
+  '/app/partner/hub': typeof AppPartnerHubRoute
+  '/app/partner/messages': typeof AppPartnerMessagesRoute
+  '/app/partner/referrals': typeof AppPartnerReferralsRoute
+  '/app/partner/reports': typeof AppPartnerReportsRoute
+  '/app/partner/resources': typeof AppPartnerResourcesRoute
+  '/app/receptionist/appointments': typeof AppReceptionistAppointmentsRoute
+  '/app/receptionist/check-in': typeof AppReceptionistCheckInRoute
+  '/app/receptionist/check-out': typeof AppReceptionistCheckOutRoute
+  '/app/receptionist/deliveries': typeof AppReceptionistDeliveriesRoute
+  '/app/receptionist/directory': typeof AppReceptionistDirectoryRoute
+  '/app/receptionist/inquiries': typeof AppReceptionistInquiriesRoute
+  '/app/receptionist/phone-log': typeof AppReceptionistPhoneLogRoute
+  '/app/receptionist/tasks': typeof AppReceptionistTasksRoute
+  '/app/supplier/deliveries': typeof AppSupplierDeliveriesRoute
+  '/app/supplier/invoices': typeof AppSupplierInvoicesRoute
+  '/app/supplier/messages': typeof AppSupplierMessagesRoute
+  '/app/supplier/orders': typeof AppSupplierOrdersRoute
+  '/app/supplier/performance': typeof AppSupplierPerformanceRoute
+  '/app/supplier/profile': typeof AppSupplierProfileRoute
+  '/app/volunteer/certificates': typeof AppVolunteerCertificatesRoute
+  '/app/volunteer/community': typeof AppVolunteerCommunityRoute
+  '/app/volunteer/hours': typeof AppVolunteerHoursRoute
+  '/app/volunteer/impact': typeof AppVolunteerImpactRoute
+  '/app/volunteer/my-volunteering': typeof AppVolunteerMyVolunteeringRoute
+  '/app/volunteer/opportunities': typeof AppVolunteerOpportunitiesRoute
+  '/app/accountant': typeof AppAccountantIndexRoute
+  '/app/admin': typeof AppAdminIndexRoute
+  '/app/admissions': typeof AppAdmissionsIndexRoute
   '/app/assessments': typeof AppAssessmentsIndexRoute
   '/app/assignments': typeof AppAssignmentsIndexRoute
+  '/app/dev': typeof AppDevIndexRoute
+  '/app/government': typeof AppGovernmentIndexRoute
+  '/app/hr': typeof AppHrIndexRoute
+  '/app/intern': typeof AppInternIndexRoute
   '/app/learn': typeof AppLearnIndexRoute
+  '/app/marketing': typeof AppMarketingIndexRoute
   '/app/mentor': typeof AppMentorIndexRoute
+  '/app/ngo': typeof AppNgoIndexRoute
   '/app/parent': typeof AppParentIndexRoute
+  '/app/supplier': typeof AppSupplierIndexRoute
+  '/app/admissions/applications/$id': typeof AppAdmissionsApplicationsIdRoute
   '/app/assessments/$assessmentId/take': typeof AppAssessmentsAssessmentIdTakeRoute
-  '/app/client/projects/$projectId': typeof AppClientProjectsProjectIdRoute
+  '/app/client/projects/$projectId': typeof AppClientProjectsProjectIdRouteWithChildren
+  '/app/conversion-copy/landing-pages/$id': typeof AppConversionCopyLandingPagesIdRoute
   '/app/employer/pipeline/$jobId': typeof AppEmployerPipelineJobIdRoute
   '/app/instructor/courses/$courseId': typeof AppInstructorCoursesCourseIdRoute
+  '/app/it/tickets/$id': typeof AppItTicketsIdRoute
   '/app/mentor/mentees/$menteeId': typeof AppMentorMenteesMenteeIdRouteWithChildren
   '/app/mentor/sessions/$sessionId': typeof AppMentorSessionsSessionIdRoute
   '/app/parent/invitation/accept': typeof AppParentInvitationAcceptRoute
   '/app/parent/students/$studentId': typeof AppParentStudentsStudentIdRouteWithChildren
   '/app/instructor/assignments': typeof AppInstructorAssignmentsIndexRoute
+  '/app/client/projects/$projectId/tasks': typeof AppClientProjectsProjectIdTasksRoute
   '/app/instructor/assignments/$submissionId/grade': typeof AppInstructorAssignmentsSubmissionIdGradeRoute
   '/app/learn/$courseId/lessons/$lessonId': typeof AppLearnCourseIdLessonsLessonIdRoute
   '/app/mentor/mentees/$menteeId/career': typeof AppMentorMenteesMenteeIdCareerRoute
   '/app/mentor/mentees/$menteeId/portfolio': typeof AppMentorMenteesMenteeIdPortfolioRoute
+  '/app/ngo/programs/$programId/budget': typeof AppNgoProgramsProgramIdBudgetRoute
   '/app/parent/students/$studentId/attendance': typeof AppParentStudentsStudentIdAttendanceRoute
   '/app/parent/students/$studentId/communication': typeof AppParentStudentsStudentIdCommunicationRoute
   '/app/parent/students/$studentId/finance': typeof AppParentStudentsStudentIdFinanceRoute
@@ -1151,6 +2486,7 @@ export interface FileRoutesById {
   '/portal/department-head': typeof PortalDepartmentHeadRoute
   '/portal/developer': typeof PortalDeveloperRoute
   '/portal/devops': typeof PortalDevopsRoute
+  '/portal/director': typeof PortalDirectorRoute
   '/portal/employer': typeof PortalEmployerRoute
   '/portal/executive': typeof PortalExecutiveRoute
   '/portal/finance': typeof PortalFinanceRoute
@@ -1183,53 +2519,216 @@ export interface FileRoutesById {
   '/blog/': typeof BlogIndexRoute
   '/portal/': typeof PortalIndexRoute
   '/programs/': typeof ProgramsIndexRoute
+  '/app/accountant/audit': typeof AppAccountantAuditRoute
+  '/app/accountant/banking': typeof AppAccountantBankingRoute
+  '/app/accountant/billing': typeof AppAccountantBillingRoute
+  '/app/accountant/budgets': typeof AppAccountantBudgetsRoute
+  '/app/accountant/expenses': typeof AppAccountantExpensesRoute
+  '/app/accountant/invoicing': typeof AppAccountantInvoicingRoute
+  '/app/accountant/payments': typeof AppAccountantPaymentsRoute
+  '/app/accountant/payroll': typeof AppAccountantPayrollRoute
+  '/app/accountant/reports': typeof AppAccountantReportsRoute
+  '/app/admin/api-keys': typeof AppAdminApiKeysRoute
+  '/app/admin/audit': typeof AppAdminAuditRoute
+  '/app/admin/backups': typeof AppAdminBackupsRoute
+  '/app/admin/config': typeof AppAdminConfigRoute
+  '/app/admin/integrations': typeof AppAdminIntegrationsRoute
+  '/app/admin/logs': typeof AppAdminLogsRoute
+  '/app/admin/monitoring': typeof AppAdminMonitoringRoute
+  '/app/admin/rate-limits': typeof AppAdminRateLimitsRoute
+  '/app/admin/roles': typeof AppAdminRolesRoute
+  '/app/admin/security': typeof AppAdminSecurityRoute
+  '/app/admin/users': typeof AppAdminUsersRoute
+  '/app/admissions/applications': typeof AppAdmissionsApplicationsRouteWithChildren
+  '/app/admissions/communication': typeof AppAdmissionsCommunicationRoute
+  '/app/admissions/documents': typeof AppAdmissionsDocumentsRoute
+  '/app/admissions/enrollment': typeof AppAdmissionsEnrollmentRoute
+  '/app/admissions/interviews': typeof AppAdmissionsInterviewsRoute
+  '/app/admissions/reports': typeof AppAdmissionsReportsRoute
+  '/app/admissions/review': typeof AppAdmissionsReviewRoute
   '/app/alumni/events': typeof AppAlumniEventsRoute
   '/app/alumni/give-back': typeof AppAlumniGiveBackRoute
   '/app/alumni/hub': typeof AppAlumniHubRoute
   '/app/alumni/jobs': typeof AppAlumniJobsRoute
   '/app/alumni/network': typeof AppAlumniNetworkRoute
   '/app/assignments/$assignmentId': typeof AppAssignmentsAssignmentIdRoute
+  '/app/client/contracts': typeof AppClientContractsRoute
+  '/app/client/documents': typeof AppClientDocumentsRoute
   '/app/client/invoices': typeof AppClientInvoicesRoute
+  '/app/client/messages': typeof AppClientMessagesRoute
+  '/app/client/proposals': typeof AppClientProposalsRoute
   '/app/client/support': typeof AppClientSupportRoute
+  '/app/conversion-copy/ab-tests': typeof AppConversionCopyAbTestsRoute
+  '/app/conversion-copy/ads': typeof AppConversionCopyAdsRoute
+  '/app/conversion-copy/analytics': typeof AppConversionCopyAnalyticsRoute
+  '/app/conversion-copy/briefs': typeof AppConversionCopyBriefsRoute
+  '/app/conversion-copy/email-sequences': typeof AppConversionCopyEmailSequencesRoute
+  '/app/conversion-copy/library': typeof AppConversionCopyLibraryRoute
+  '/app/conversion-copy/style-guide': typeof AppConversionCopyStyleGuideRoute
+  '/app/department/approvals': typeof AppDepartmentApprovalsRoute
+  '/app/department/calendar': typeof AppDepartmentCalendarRoute
   '/app/department/curriculum': typeof AppDepartmentCurriculumRoute
   '/app/department/enrollment': typeof AppDepartmentEnrollmentRoute
   '/app/department/instructors': typeof AppDepartmentInstructorsRoute
   '/app/department/quality': typeof AppDepartmentQualityRoute
+  '/app/department/reports': typeof AppDepartmentReportsRoute
+  '/app/dev/api-playground': typeof AppDevApiPlaygroundRoute
+  '/app/dev/dependencies': typeof AppDevDependenciesRoute
+  '/app/dev/deployments': typeof AppDevDeploymentsRoute
+  '/app/dev/docs': typeof AppDevDocsRoute
+  '/app/dev/env': typeof AppDevEnvRoute
+  '/app/dev/feature-flags': typeof AppDevFeatureFlagsRoute
+  '/app/dev/git': typeof AppDevGitRoute
+  '/app/dev/monitoring': typeof AppDevMonitoringRoute
+  '/app/dev/queues': typeof AppDevQueuesRoute
+  '/app/dev/reviews': typeof AppDevReviewsRoute
+  '/app/dev/tasks': typeof AppDevTasksRoute
+  '/app/director/academic': typeof AppDirectorAcademicRoute
+  '/app/director/approvals': typeof AppDirectorApprovalsRoute
+  '/app/director/command-center': typeof AppDirectorCommandCenterRoute
+  '/app/director/finance': typeof AppDirectorFinanceRoute
+  '/app/director/hr': typeof AppDirectorHrRoute
+  '/app/director/marketing': typeof AppDirectorMarketingRoute
+  '/app/director/okrs': typeof AppDirectorOkrsRoute
+  '/app/director/operations': typeof AppDirectorOperationsRoute
+  '/app/director/reports': typeof AppDirectorReportsRoute
   '/app/employer/analytics': typeof AppEmployerAnalyticsRoute
   '/app/employer/brand': typeof AppEmployerBrandRoute
+  '/app/employer/feedback': typeof AppEmployerFeedbackRoute
   '/app/employer/hub': typeof AppEmployerHubRoute
   '/app/employer/interviews': typeof AppEmployerInterviewsRoute
   '/app/employer/jobs': typeof AppEmployerJobsRoute
   '/app/employer/talent': typeof AppEmployerTalentRoute
+  '/app/government/audit': typeof AppGovernmentAuditRoute
+  '/app/government/calendar': typeof AppGovernmentCalendarRoute
+  '/app/government/changelog': typeof AppGovernmentChangelogRoute
+  '/app/government/documents': typeof AppGovernmentDocumentsRoute
+  '/app/government/filings': typeof AppGovernmentFilingsRoute
+  '/app/government/institution': typeof AppGovernmentInstitutionRoute
+  '/app/government/integrity': typeof AppGovernmentIntegrityRoute
+  '/app/government/messaging': typeof AppGovernmentMessagingRoute
+  '/app/government/reports': typeof AppGovernmentReportsRoute
+  '/app/government/training': typeof AppGovernmentTrainingRoute
+  '/app/hr/attendance': typeof AppHrAttendanceRoute
+  '/app/hr/employees': typeof AppHrEmployeesRoute
+  '/app/hr/leave': typeof AppHrLeaveRoute
+  '/app/hr/onboarding': typeof AppHrOnboardingRoute
+  '/app/hr/payroll-input': typeof AppHrPayrollInputRoute
+  '/app/hr/performance': typeof AppHrPerformanceRoute
+  '/app/hr/recruitment': typeof AppHrRecruitmentRoute
+  '/app/hr/reports': typeof AppHrReportsRoute
+  '/app/hr/training': typeof AppHrTrainingRoute
   '/app/instructor/analytics': typeof AppInstructorAnalyticsRoute
   '/app/instructor/attendance': typeof AppInstructorAttendanceRoute
   '/app/instructor/gradebook': typeof AppInstructorGradebookRoute
+  '/app/intern/evaluation': typeof AppInternEvaluationRoute
+  '/app/intern/learning-plan': typeof AppInternLearningPlanRoute
+  '/app/intern/mentorship': typeof AppInternMentorshipRoute
+  '/app/intern/messages': typeof AppInternMessagesRoute
+  '/app/intern/portfolio': typeof AppInternPortfolioRoute
+  '/app/intern/tasks': typeof AppInternTasksRoute
+  '/app/intern/timesheet': typeof AppInternTimesheetRoute
+  '/app/it/assets': typeof AppItAssetsRoute
+  '/app/it/knowledge-base': typeof AppItKnowledgeBaseRoute
+  '/app/it/licenses': typeof AppItLicensesRoute
+  '/app/it/maintenance': typeof AppItMaintenanceRoute
+  '/app/it/monitoring': typeof AppItMonitoringRoute
+  '/app/it/remote-support': typeof AppItRemoteSupportRoute
+  '/app/it/reports': typeof AppItReportsRoute
+  '/app/it/templates': typeof AppItTemplatesRoute
+  '/app/it/tickets': typeof AppItTicketsRouteWithChildren
+  '/app/it/users': typeof AppItUsersRoute
   '/app/learn/$courseId': typeof AppLearnCourseIdRouteWithChildren
   '/app/live/$classId': typeof AppLiveClassIdRoute
+  '/app/marketing/analytics': typeof AppMarketingAnalyticsRoute
+  '/app/marketing/campaigns': typeof AppMarketingCampaignsRoute
+  '/app/marketing/content-calendar': typeof AppMarketingContentCalendarRoute
+  '/app/marketing/email': typeof AppMarketingEmailRoute
+  '/app/marketing/landing-pages': typeof AppMarketingLandingPagesRoute
+  '/app/marketing/leads': typeof AppMarketingLeadsRoute
+  '/app/marketing/reports': typeof AppMarketingReportsRoute
+  '/app/marketing/seo': typeof AppMarketingSeoRoute
+  '/app/marketing/social': typeof AppMarketingSocialRoute
   '/app/mentor/analytics': typeof AppMentorAnalyticsRoute
   '/app/mentor/goals': typeof AppMentorGoalsRoute
   '/app/mentor/requests': typeof AppMentorRequestsRoute
   '/app/mentor/resources': typeof AppMentorResourcesRoute
   '/app/mentor/sessions': typeof AppMentorSessionsRouteWithChildren
   '/app/mentor/settings': typeof AppMentorSettingsRoute
+  '/app/ngo/analytics': typeof AppNgoAnalyticsRoute
+  '/app/ngo/donations': typeof AppNgoDonationsRoute
+  '/app/ngo/messaging': typeof AppNgoMessagingRoute
+  '/app/ngo/programs': typeof AppNgoProgramsRouteWithChildren
+  '/app/ngo/reports': typeof AppNgoReportsRoute
+  '/app/ngo/scholarships': typeof AppNgoScholarshipsRoute
+  '/app/ngo/volunteers': typeof AppNgoVolunteersRoute
+  '/app/ops/automation': typeof AppOpsAutomationRoute
+  '/app/ops/branches': typeof AppOpsBranchesRoute
+  '/app/ops/facilities': typeof AppOpsFacilitiesRoute
+  '/app/ops/inventory': typeof AppOpsInventoryRoute
+  '/app/ops/reports': typeof AppOpsReportsRoute
+  '/app/ops/tasks': typeof AppOpsTasksRoute
+  '/app/ops/vendors': typeof AppOpsVendorsRoute
+  '/app/partner/agreements': typeof AppPartnerAgreementsRoute
+  '/app/partner/collaborations': typeof AppPartnerCollaborationsRoute
+  '/app/partner/hub': typeof AppPartnerHubRoute
+  '/app/partner/messages': typeof AppPartnerMessagesRoute
+  '/app/partner/referrals': typeof AppPartnerReferralsRoute
+  '/app/partner/reports': typeof AppPartnerReportsRoute
+  '/app/partner/resources': typeof AppPartnerResourcesRoute
+  '/app/receptionist/appointments': typeof AppReceptionistAppointmentsRoute
+  '/app/receptionist/check-in': typeof AppReceptionistCheckInRoute
+  '/app/receptionist/check-out': typeof AppReceptionistCheckOutRoute
+  '/app/receptionist/deliveries': typeof AppReceptionistDeliveriesRoute
+  '/app/receptionist/directory': typeof AppReceptionistDirectoryRoute
+  '/app/receptionist/inquiries': typeof AppReceptionistInquiriesRoute
+  '/app/receptionist/phone-log': typeof AppReceptionistPhoneLogRoute
+  '/app/receptionist/tasks': typeof AppReceptionistTasksRoute
+  '/app/supplier/deliveries': typeof AppSupplierDeliveriesRoute
+  '/app/supplier/invoices': typeof AppSupplierInvoicesRoute
+  '/app/supplier/messages': typeof AppSupplierMessagesRoute
+  '/app/supplier/orders': typeof AppSupplierOrdersRoute
+  '/app/supplier/performance': typeof AppSupplierPerformanceRoute
+  '/app/supplier/profile': typeof AppSupplierProfileRoute
+  '/app/volunteer/certificates': typeof AppVolunteerCertificatesRoute
+  '/app/volunteer/community': typeof AppVolunteerCommunityRoute
+  '/app/volunteer/hours': typeof AppVolunteerHoursRoute
+  '/app/volunteer/impact': typeof AppVolunteerImpactRoute
+  '/app/volunteer/my-volunteering': typeof AppVolunteerMyVolunteeringRoute
+  '/app/volunteer/opportunities': typeof AppVolunteerOpportunitiesRoute
+  '/app/accountant/': typeof AppAccountantIndexRoute
+  '/app/admin/': typeof AppAdminIndexRoute
+  '/app/admissions/': typeof AppAdmissionsIndexRoute
   '/app/assessments/': typeof AppAssessmentsIndexRoute
   '/app/assignments/': typeof AppAssignmentsIndexRoute
+  '/app/dev/': typeof AppDevIndexRoute
+  '/app/government/': typeof AppGovernmentIndexRoute
+  '/app/hr/': typeof AppHrIndexRoute
+  '/app/intern/': typeof AppInternIndexRoute
   '/app/learn/': typeof AppLearnIndexRoute
+  '/app/marketing/': typeof AppMarketingIndexRoute
   '/app/mentor/': typeof AppMentorIndexRoute
+  '/app/ngo/': typeof AppNgoIndexRoute
   '/app/parent/': typeof AppParentIndexRoute
+  '/app/supplier/': typeof AppSupplierIndexRoute
+  '/app/admissions/applications/$id': typeof AppAdmissionsApplicationsIdRoute
   '/app/assessments/$assessmentId/take': typeof AppAssessmentsAssessmentIdTakeRoute
-  '/app/client/projects/$projectId': typeof AppClientProjectsProjectIdRoute
+  '/app/client/projects/$projectId': typeof AppClientProjectsProjectIdRouteWithChildren
+  '/app/conversion-copy/landing-pages/$id': typeof AppConversionCopyLandingPagesIdRoute
   '/app/employer/pipeline/$jobId': typeof AppEmployerPipelineJobIdRoute
   '/app/instructor/courses/$courseId': typeof AppInstructorCoursesCourseIdRoute
+  '/app/it/tickets/$id': typeof AppItTicketsIdRoute
   '/app/mentor/mentees/$menteeId': typeof AppMentorMenteesMenteeIdRouteWithChildren
   '/app/mentor/sessions/$sessionId': typeof AppMentorSessionsSessionIdRoute
   '/app/parent/invitation/accept': typeof AppParentInvitationAcceptRoute
   '/app/parent/students/$studentId': typeof AppParentStudentsStudentIdRouteWithChildren
   '/app/instructor/assignments/': typeof AppInstructorAssignmentsIndexRoute
+  '/app/client/projects/$projectId/tasks': typeof AppClientProjectsProjectIdTasksRoute
   '/app/instructor/assignments/$submissionId/grade': typeof AppInstructorAssignmentsSubmissionIdGradeRoute
   '/app/learn/$courseId/lessons/$lessonId': typeof AppLearnCourseIdLessonsLessonIdRoute
   '/app/mentor/mentees/$menteeId/career': typeof AppMentorMenteesMenteeIdCareerRoute
   '/app/mentor/mentees/$menteeId/portfolio': typeof AppMentorMenteesMenteeIdPortfolioRoute
+  '/app/ngo/programs/$programId/budget': typeof AppNgoProgramsProgramIdBudgetRoute
   '/app/parent/students/$studentId/attendance': typeof AppParentStudentsStudentIdAttendanceRoute
   '/app/parent/students/$studentId/communication': typeof AppParentStudentsStudentIdCommunicationRoute
   '/app/parent/students/$studentId/finance': typeof AppParentStudentsStudentIdFinanceRoute
@@ -1288,6 +2787,7 @@ export interface FileRouteTypes {
     | '/portal/department-head'
     | '/portal/developer'
     | '/portal/devops'
+    | '/portal/director'
     | '/portal/employer'
     | '/portal/executive'
     | '/portal/finance'
@@ -1320,53 +2820,216 @@ export interface FileRouteTypes {
     | '/blog/'
     | '/portal/'
     | '/programs/'
+    | '/app/accountant/audit'
+    | '/app/accountant/banking'
+    | '/app/accountant/billing'
+    | '/app/accountant/budgets'
+    | '/app/accountant/expenses'
+    | '/app/accountant/invoicing'
+    | '/app/accountant/payments'
+    | '/app/accountant/payroll'
+    | '/app/accountant/reports'
+    | '/app/admin/api-keys'
+    | '/app/admin/audit'
+    | '/app/admin/backups'
+    | '/app/admin/config'
+    | '/app/admin/integrations'
+    | '/app/admin/logs'
+    | '/app/admin/monitoring'
+    | '/app/admin/rate-limits'
+    | '/app/admin/roles'
+    | '/app/admin/security'
+    | '/app/admin/users'
+    | '/app/admissions/applications'
+    | '/app/admissions/communication'
+    | '/app/admissions/documents'
+    | '/app/admissions/enrollment'
+    | '/app/admissions/interviews'
+    | '/app/admissions/reports'
+    | '/app/admissions/review'
     | '/app/alumni/events'
     | '/app/alumni/give-back'
     | '/app/alumni/hub'
     | '/app/alumni/jobs'
     | '/app/alumni/network'
     | '/app/assignments/$assignmentId'
+    | '/app/client/contracts'
+    | '/app/client/documents'
     | '/app/client/invoices'
+    | '/app/client/messages'
+    | '/app/client/proposals'
     | '/app/client/support'
+    | '/app/conversion-copy/ab-tests'
+    | '/app/conversion-copy/ads'
+    | '/app/conversion-copy/analytics'
+    | '/app/conversion-copy/briefs'
+    | '/app/conversion-copy/email-sequences'
+    | '/app/conversion-copy/library'
+    | '/app/conversion-copy/style-guide'
+    | '/app/department/approvals'
+    | '/app/department/calendar'
     | '/app/department/curriculum'
     | '/app/department/enrollment'
     | '/app/department/instructors'
     | '/app/department/quality'
+    | '/app/department/reports'
+    | '/app/dev/api-playground'
+    | '/app/dev/dependencies'
+    | '/app/dev/deployments'
+    | '/app/dev/docs'
+    | '/app/dev/env'
+    | '/app/dev/feature-flags'
+    | '/app/dev/git'
+    | '/app/dev/monitoring'
+    | '/app/dev/queues'
+    | '/app/dev/reviews'
+    | '/app/dev/tasks'
+    | '/app/director/academic'
+    | '/app/director/approvals'
+    | '/app/director/command-center'
+    | '/app/director/finance'
+    | '/app/director/hr'
+    | '/app/director/marketing'
+    | '/app/director/okrs'
+    | '/app/director/operations'
+    | '/app/director/reports'
     | '/app/employer/analytics'
     | '/app/employer/brand'
+    | '/app/employer/feedback'
     | '/app/employer/hub'
     | '/app/employer/interviews'
     | '/app/employer/jobs'
     | '/app/employer/talent'
+    | '/app/government/audit'
+    | '/app/government/calendar'
+    | '/app/government/changelog'
+    | '/app/government/documents'
+    | '/app/government/filings'
+    | '/app/government/institution'
+    | '/app/government/integrity'
+    | '/app/government/messaging'
+    | '/app/government/reports'
+    | '/app/government/training'
+    | '/app/hr/attendance'
+    | '/app/hr/employees'
+    | '/app/hr/leave'
+    | '/app/hr/onboarding'
+    | '/app/hr/payroll-input'
+    | '/app/hr/performance'
+    | '/app/hr/recruitment'
+    | '/app/hr/reports'
+    | '/app/hr/training'
     | '/app/instructor/analytics'
     | '/app/instructor/attendance'
     | '/app/instructor/gradebook'
+    | '/app/intern/evaluation'
+    | '/app/intern/learning-plan'
+    | '/app/intern/mentorship'
+    | '/app/intern/messages'
+    | '/app/intern/portfolio'
+    | '/app/intern/tasks'
+    | '/app/intern/timesheet'
+    | '/app/it/assets'
+    | '/app/it/knowledge-base'
+    | '/app/it/licenses'
+    | '/app/it/maintenance'
+    | '/app/it/monitoring'
+    | '/app/it/remote-support'
+    | '/app/it/reports'
+    | '/app/it/templates'
+    | '/app/it/tickets'
+    | '/app/it/users'
     | '/app/learn/$courseId'
     | '/app/live/$classId'
+    | '/app/marketing/analytics'
+    | '/app/marketing/campaigns'
+    | '/app/marketing/content-calendar'
+    | '/app/marketing/email'
+    | '/app/marketing/landing-pages'
+    | '/app/marketing/leads'
+    | '/app/marketing/reports'
+    | '/app/marketing/seo'
+    | '/app/marketing/social'
     | '/app/mentor/analytics'
     | '/app/mentor/goals'
     | '/app/mentor/requests'
     | '/app/mentor/resources'
     | '/app/mentor/sessions'
     | '/app/mentor/settings'
+    | '/app/ngo/analytics'
+    | '/app/ngo/donations'
+    | '/app/ngo/messaging'
+    | '/app/ngo/programs'
+    | '/app/ngo/reports'
+    | '/app/ngo/scholarships'
+    | '/app/ngo/volunteers'
+    | '/app/ops/automation'
+    | '/app/ops/branches'
+    | '/app/ops/facilities'
+    | '/app/ops/inventory'
+    | '/app/ops/reports'
+    | '/app/ops/tasks'
+    | '/app/ops/vendors'
+    | '/app/partner/agreements'
+    | '/app/partner/collaborations'
+    | '/app/partner/hub'
+    | '/app/partner/messages'
+    | '/app/partner/referrals'
+    | '/app/partner/reports'
+    | '/app/partner/resources'
+    | '/app/receptionist/appointments'
+    | '/app/receptionist/check-in'
+    | '/app/receptionist/check-out'
+    | '/app/receptionist/deliveries'
+    | '/app/receptionist/directory'
+    | '/app/receptionist/inquiries'
+    | '/app/receptionist/phone-log'
+    | '/app/receptionist/tasks'
+    | '/app/supplier/deliveries'
+    | '/app/supplier/invoices'
+    | '/app/supplier/messages'
+    | '/app/supplier/orders'
+    | '/app/supplier/performance'
+    | '/app/supplier/profile'
+    | '/app/volunteer/certificates'
+    | '/app/volunteer/community'
+    | '/app/volunteer/hours'
+    | '/app/volunteer/impact'
+    | '/app/volunteer/my-volunteering'
+    | '/app/volunteer/opportunities'
+    | '/app/accountant/'
+    | '/app/admin/'
+    | '/app/admissions/'
     | '/app/assessments/'
     | '/app/assignments/'
+    | '/app/dev/'
+    | '/app/government/'
+    | '/app/hr/'
+    | '/app/intern/'
     | '/app/learn/'
+    | '/app/marketing/'
     | '/app/mentor/'
+    | '/app/ngo/'
     | '/app/parent/'
+    | '/app/supplier/'
+    | '/app/admissions/applications/$id'
     | '/app/assessments/$assessmentId/take'
     | '/app/client/projects/$projectId'
+    | '/app/conversion-copy/landing-pages/$id'
     | '/app/employer/pipeline/$jobId'
     | '/app/instructor/courses/$courseId'
+    | '/app/it/tickets/$id'
     | '/app/mentor/mentees/$menteeId'
     | '/app/mentor/sessions/$sessionId'
     | '/app/parent/invitation/accept'
     | '/app/parent/students/$studentId'
     | '/app/instructor/assignments/'
+    | '/app/client/projects/$projectId/tasks'
     | '/app/instructor/assignments/$submissionId/grade'
     | '/app/learn/$courseId/lessons/$lessonId'
     | '/app/mentor/mentees/$menteeId/career'
     | '/app/mentor/mentees/$menteeId/portfolio'
+    | '/app/ngo/programs/$programId/budget'
     | '/app/parent/students/$studentId/attendance'
     | '/app/parent/students/$studentId/communication'
     | '/app/parent/students/$studentId/finance'
@@ -1423,6 +3086,7 @@ export interface FileRouteTypes {
     | '/portal/department-head'
     | '/portal/developer'
     | '/portal/devops'
+    | '/portal/director'
     | '/portal/employer'
     | '/portal/executive'
     | '/portal/finance'
@@ -1455,53 +3119,216 @@ export interface FileRouteTypes {
     | '/blog'
     | '/portal'
     | '/programs'
+    | '/app/accountant/audit'
+    | '/app/accountant/banking'
+    | '/app/accountant/billing'
+    | '/app/accountant/budgets'
+    | '/app/accountant/expenses'
+    | '/app/accountant/invoicing'
+    | '/app/accountant/payments'
+    | '/app/accountant/payroll'
+    | '/app/accountant/reports'
+    | '/app/admin/api-keys'
+    | '/app/admin/audit'
+    | '/app/admin/backups'
+    | '/app/admin/config'
+    | '/app/admin/integrations'
+    | '/app/admin/logs'
+    | '/app/admin/monitoring'
+    | '/app/admin/rate-limits'
+    | '/app/admin/roles'
+    | '/app/admin/security'
+    | '/app/admin/users'
+    | '/app/admissions/applications'
+    | '/app/admissions/communication'
+    | '/app/admissions/documents'
+    | '/app/admissions/enrollment'
+    | '/app/admissions/interviews'
+    | '/app/admissions/reports'
+    | '/app/admissions/review'
     | '/app/alumni/events'
     | '/app/alumni/give-back'
     | '/app/alumni/hub'
     | '/app/alumni/jobs'
     | '/app/alumni/network'
     | '/app/assignments/$assignmentId'
+    | '/app/client/contracts'
+    | '/app/client/documents'
     | '/app/client/invoices'
+    | '/app/client/messages'
+    | '/app/client/proposals'
     | '/app/client/support'
+    | '/app/conversion-copy/ab-tests'
+    | '/app/conversion-copy/ads'
+    | '/app/conversion-copy/analytics'
+    | '/app/conversion-copy/briefs'
+    | '/app/conversion-copy/email-sequences'
+    | '/app/conversion-copy/library'
+    | '/app/conversion-copy/style-guide'
+    | '/app/department/approvals'
+    | '/app/department/calendar'
     | '/app/department/curriculum'
     | '/app/department/enrollment'
     | '/app/department/instructors'
     | '/app/department/quality'
+    | '/app/department/reports'
+    | '/app/dev/api-playground'
+    | '/app/dev/dependencies'
+    | '/app/dev/deployments'
+    | '/app/dev/docs'
+    | '/app/dev/env'
+    | '/app/dev/feature-flags'
+    | '/app/dev/git'
+    | '/app/dev/monitoring'
+    | '/app/dev/queues'
+    | '/app/dev/reviews'
+    | '/app/dev/tasks'
+    | '/app/director/academic'
+    | '/app/director/approvals'
+    | '/app/director/command-center'
+    | '/app/director/finance'
+    | '/app/director/hr'
+    | '/app/director/marketing'
+    | '/app/director/okrs'
+    | '/app/director/operations'
+    | '/app/director/reports'
     | '/app/employer/analytics'
     | '/app/employer/brand'
+    | '/app/employer/feedback'
     | '/app/employer/hub'
     | '/app/employer/interviews'
     | '/app/employer/jobs'
     | '/app/employer/talent'
+    | '/app/government/audit'
+    | '/app/government/calendar'
+    | '/app/government/changelog'
+    | '/app/government/documents'
+    | '/app/government/filings'
+    | '/app/government/institution'
+    | '/app/government/integrity'
+    | '/app/government/messaging'
+    | '/app/government/reports'
+    | '/app/government/training'
+    | '/app/hr/attendance'
+    | '/app/hr/employees'
+    | '/app/hr/leave'
+    | '/app/hr/onboarding'
+    | '/app/hr/payroll-input'
+    | '/app/hr/performance'
+    | '/app/hr/recruitment'
+    | '/app/hr/reports'
+    | '/app/hr/training'
     | '/app/instructor/analytics'
     | '/app/instructor/attendance'
     | '/app/instructor/gradebook'
+    | '/app/intern/evaluation'
+    | '/app/intern/learning-plan'
+    | '/app/intern/mentorship'
+    | '/app/intern/messages'
+    | '/app/intern/portfolio'
+    | '/app/intern/tasks'
+    | '/app/intern/timesheet'
+    | '/app/it/assets'
+    | '/app/it/knowledge-base'
+    | '/app/it/licenses'
+    | '/app/it/maintenance'
+    | '/app/it/monitoring'
+    | '/app/it/remote-support'
+    | '/app/it/reports'
+    | '/app/it/templates'
+    | '/app/it/tickets'
+    | '/app/it/users'
     | '/app/learn/$courseId'
     | '/app/live/$classId'
+    | '/app/marketing/analytics'
+    | '/app/marketing/campaigns'
+    | '/app/marketing/content-calendar'
+    | '/app/marketing/email'
+    | '/app/marketing/landing-pages'
+    | '/app/marketing/leads'
+    | '/app/marketing/reports'
+    | '/app/marketing/seo'
+    | '/app/marketing/social'
     | '/app/mentor/analytics'
     | '/app/mentor/goals'
     | '/app/mentor/requests'
     | '/app/mentor/resources'
     | '/app/mentor/sessions'
     | '/app/mentor/settings'
+    | '/app/ngo/analytics'
+    | '/app/ngo/donations'
+    | '/app/ngo/messaging'
+    | '/app/ngo/programs'
+    | '/app/ngo/reports'
+    | '/app/ngo/scholarships'
+    | '/app/ngo/volunteers'
+    | '/app/ops/automation'
+    | '/app/ops/branches'
+    | '/app/ops/facilities'
+    | '/app/ops/inventory'
+    | '/app/ops/reports'
+    | '/app/ops/tasks'
+    | '/app/ops/vendors'
+    | '/app/partner/agreements'
+    | '/app/partner/collaborations'
+    | '/app/partner/hub'
+    | '/app/partner/messages'
+    | '/app/partner/referrals'
+    | '/app/partner/reports'
+    | '/app/partner/resources'
+    | '/app/receptionist/appointments'
+    | '/app/receptionist/check-in'
+    | '/app/receptionist/check-out'
+    | '/app/receptionist/deliveries'
+    | '/app/receptionist/directory'
+    | '/app/receptionist/inquiries'
+    | '/app/receptionist/phone-log'
+    | '/app/receptionist/tasks'
+    | '/app/supplier/deliveries'
+    | '/app/supplier/invoices'
+    | '/app/supplier/messages'
+    | '/app/supplier/orders'
+    | '/app/supplier/performance'
+    | '/app/supplier/profile'
+    | '/app/volunteer/certificates'
+    | '/app/volunteer/community'
+    | '/app/volunteer/hours'
+    | '/app/volunteer/impact'
+    | '/app/volunteer/my-volunteering'
+    | '/app/volunteer/opportunities'
+    | '/app/accountant'
+    | '/app/admin'
+    | '/app/admissions'
     | '/app/assessments'
     | '/app/assignments'
+    | '/app/dev'
+    | '/app/government'
+    | '/app/hr'
+    | '/app/intern'
     | '/app/learn'
+    | '/app/marketing'
     | '/app/mentor'
+    | '/app/ngo'
     | '/app/parent'
+    | '/app/supplier'
+    | '/app/admissions/applications/$id'
     | '/app/assessments/$assessmentId/take'
     | '/app/client/projects/$projectId'
+    | '/app/conversion-copy/landing-pages/$id'
     | '/app/employer/pipeline/$jobId'
     | '/app/instructor/courses/$courseId'
+    | '/app/it/tickets/$id'
     | '/app/mentor/mentees/$menteeId'
     | '/app/mentor/sessions/$sessionId'
     | '/app/parent/invitation/accept'
     | '/app/parent/students/$studentId'
     | '/app/instructor/assignments'
+    | '/app/client/projects/$projectId/tasks'
     | '/app/instructor/assignments/$submissionId/grade'
     | '/app/learn/$courseId/lessons/$lessonId'
     | '/app/mentor/mentees/$menteeId/career'
     | '/app/mentor/mentees/$menteeId/portfolio'
+    | '/app/ngo/programs/$programId/budget'
     | '/app/parent/students/$studentId/attendance'
     | '/app/parent/students/$studentId/communication'
     | '/app/parent/students/$studentId/finance'
@@ -1558,6 +3385,7 @@ export interface FileRouteTypes {
     | '/portal/department-head'
     | '/portal/developer'
     | '/portal/devops'
+    | '/portal/director'
     | '/portal/employer'
     | '/portal/executive'
     | '/portal/finance'
@@ -1590,53 +3418,216 @@ export interface FileRouteTypes {
     | '/blog/'
     | '/portal/'
     | '/programs/'
+    | '/app/accountant/audit'
+    | '/app/accountant/banking'
+    | '/app/accountant/billing'
+    | '/app/accountant/budgets'
+    | '/app/accountant/expenses'
+    | '/app/accountant/invoicing'
+    | '/app/accountant/payments'
+    | '/app/accountant/payroll'
+    | '/app/accountant/reports'
+    | '/app/admin/api-keys'
+    | '/app/admin/audit'
+    | '/app/admin/backups'
+    | '/app/admin/config'
+    | '/app/admin/integrations'
+    | '/app/admin/logs'
+    | '/app/admin/monitoring'
+    | '/app/admin/rate-limits'
+    | '/app/admin/roles'
+    | '/app/admin/security'
+    | '/app/admin/users'
+    | '/app/admissions/applications'
+    | '/app/admissions/communication'
+    | '/app/admissions/documents'
+    | '/app/admissions/enrollment'
+    | '/app/admissions/interviews'
+    | '/app/admissions/reports'
+    | '/app/admissions/review'
     | '/app/alumni/events'
     | '/app/alumni/give-back'
     | '/app/alumni/hub'
     | '/app/alumni/jobs'
     | '/app/alumni/network'
     | '/app/assignments/$assignmentId'
+    | '/app/client/contracts'
+    | '/app/client/documents'
     | '/app/client/invoices'
+    | '/app/client/messages'
+    | '/app/client/proposals'
     | '/app/client/support'
+    | '/app/conversion-copy/ab-tests'
+    | '/app/conversion-copy/ads'
+    | '/app/conversion-copy/analytics'
+    | '/app/conversion-copy/briefs'
+    | '/app/conversion-copy/email-sequences'
+    | '/app/conversion-copy/library'
+    | '/app/conversion-copy/style-guide'
+    | '/app/department/approvals'
+    | '/app/department/calendar'
     | '/app/department/curriculum'
     | '/app/department/enrollment'
     | '/app/department/instructors'
     | '/app/department/quality'
+    | '/app/department/reports'
+    | '/app/dev/api-playground'
+    | '/app/dev/dependencies'
+    | '/app/dev/deployments'
+    | '/app/dev/docs'
+    | '/app/dev/env'
+    | '/app/dev/feature-flags'
+    | '/app/dev/git'
+    | '/app/dev/monitoring'
+    | '/app/dev/queues'
+    | '/app/dev/reviews'
+    | '/app/dev/tasks'
+    | '/app/director/academic'
+    | '/app/director/approvals'
+    | '/app/director/command-center'
+    | '/app/director/finance'
+    | '/app/director/hr'
+    | '/app/director/marketing'
+    | '/app/director/okrs'
+    | '/app/director/operations'
+    | '/app/director/reports'
     | '/app/employer/analytics'
     | '/app/employer/brand'
+    | '/app/employer/feedback'
     | '/app/employer/hub'
     | '/app/employer/interviews'
     | '/app/employer/jobs'
     | '/app/employer/talent'
+    | '/app/government/audit'
+    | '/app/government/calendar'
+    | '/app/government/changelog'
+    | '/app/government/documents'
+    | '/app/government/filings'
+    | '/app/government/institution'
+    | '/app/government/integrity'
+    | '/app/government/messaging'
+    | '/app/government/reports'
+    | '/app/government/training'
+    | '/app/hr/attendance'
+    | '/app/hr/employees'
+    | '/app/hr/leave'
+    | '/app/hr/onboarding'
+    | '/app/hr/payroll-input'
+    | '/app/hr/performance'
+    | '/app/hr/recruitment'
+    | '/app/hr/reports'
+    | '/app/hr/training'
     | '/app/instructor/analytics'
     | '/app/instructor/attendance'
     | '/app/instructor/gradebook'
+    | '/app/intern/evaluation'
+    | '/app/intern/learning-plan'
+    | '/app/intern/mentorship'
+    | '/app/intern/messages'
+    | '/app/intern/portfolio'
+    | '/app/intern/tasks'
+    | '/app/intern/timesheet'
+    | '/app/it/assets'
+    | '/app/it/knowledge-base'
+    | '/app/it/licenses'
+    | '/app/it/maintenance'
+    | '/app/it/monitoring'
+    | '/app/it/remote-support'
+    | '/app/it/reports'
+    | '/app/it/templates'
+    | '/app/it/tickets'
+    | '/app/it/users'
     | '/app/learn/$courseId'
     | '/app/live/$classId'
+    | '/app/marketing/analytics'
+    | '/app/marketing/campaigns'
+    | '/app/marketing/content-calendar'
+    | '/app/marketing/email'
+    | '/app/marketing/landing-pages'
+    | '/app/marketing/leads'
+    | '/app/marketing/reports'
+    | '/app/marketing/seo'
+    | '/app/marketing/social'
     | '/app/mentor/analytics'
     | '/app/mentor/goals'
     | '/app/mentor/requests'
     | '/app/mentor/resources'
     | '/app/mentor/sessions'
     | '/app/mentor/settings'
+    | '/app/ngo/analytics'
+    | '/app/ngo/donations'
+    | '/app/ngo/messaging'
+    | '/app/ngo/programs'
+    | '/app/ngo/reports'
+    | '/app/ngo/scholarships'
+    | '/app/ngo/volunteers'
+    | '/app/ops/automation'
+    | '/app/ops/branches'
+    | '/app/ops/facilities'
+    | '/app/ops/inventory'
+    | '/app/ops/reports'
+    | '/app/ops/tasks'
+    | '/app/ops/vendors'
+    | '/app/partner/agreements'
+    | '/app/partner/collaborations'
+    | '/app/partner/hub'
+    | '/app/partner/messages'
+    | '/app/partner/referrals'
+    | '/app/partner/reports'
+    | '/app/partner/resources'
+    | '/app/receptionist/appointments'
+    | '/app/receptionist/check-in'
+    | '/app/receptionist/check-out'
+    | '/app/receptionist/deliveries'
+    | '/app/receptionist/directory'
+    | '/app/receptionist/inquiries'
+    | '/app/receptionist/phone-log'
+    | '/app/receptionist/tasks'
+    | '/app/supplier/deliveries'
+    | '/app/supplier/invoices'
+    | '/app/supplier/messages'
+    | '/app/supplier/orders'
+    | '/app/supplier/performance'
+    | '/app/supplier/profile'
+    | '/app/volunteer/certificates'
+    | '/app/volunteer/community'
+    | '/app/volunteer/hours'
+    | '/app/volunteer/impact'
+    | '/app/volunteer/my-volunteering'
+    | '/app/volunteer/opportunities'
+    | '/app/accountant/'
+    | '/app/admin/'
+    | '/app/admissions/'
     | '/app/assessments/'
     | '/app/assignments/'
+    | '/app/dev/'
+    | '/app/government/'
+    | '/app/hr/'
+    | '/app/intern/'
     | '/app/learn/'
+    | '/app/marketing/'
     | '/app/mentor/'
+    | '/app/ngo/'
     | '/app/parent/'
+    | '/app/supplier/'
+    | '/app/admissions/applications/$id'
     | '/app/assessments/$assessmentId/take'
     | '/app/client/projects/$projectId'
+    | '/app/conversion-copy/landing-pages/$id'
     | '/app/employer/pipeline/$jobId'
     | '/app/instructor/courses/$courseId'
+    | '/app/it/tickets/$id'
     | '/app/mentor/mentees/$menteeId'
     | '/app/mentor/sessions/$sessionId'
     | '/app/parent/invitation/accept'
     | '/app/parent/students/$studentId'
     | '/app/instructor/assignments/'
+    | '/app/client/projects/$projectId/tasks'
     | '/app/instructor/assignments/$submissionId/grade'
     | '/app/learn/$courseId/lessons/$lessonId'
     | '/app/mentor/mentees/$menteeId/career'
     | '/app/mentor/mentees/$menteeId/portfolio'
+    | '/app/ngo/programs/$programId/budget'
     | '/app/parent/students/$studentId/attendance'
     | '/app/parent/students/$studentId/communication'
     | '/app/parent/students/$studentId/finance'
@@ -1694,6 +3685,7 @@ export interface RootRouteChildren {
   PortalDepartmentHeadRoute: typeof PortalDepartmentHeadRoute
   PortalDeveloperRoute: typeof PortalDeveloperRoute
   PortalDevopsRoute: typeof PortalDevopsRoute
+  PortalDirectorRoute: typeof PortalDirectorRoute
   PortalEmployerRoute: typeof PortalEmployerRoute
   PortalExecutiveRoute: typeof PortalExecutiveRoute
   PortalFinanceRoute: typeof PortalFinanceRoute
@@ -1726,42 +3718,201 @@ export interface RootRouteChildren {
   BlogIndexRoute: typeof BlogIndexRoute
   PortalIndexRoute: typeof PortalIndexRoute
   ProgramsIndexRoute: typeof ProgramsIndexRoute
+  AppAccountantAuditRoute: typeof AppAccountantAuditRoute
+  AppAccountantBankingRoute: typeof AppAccountantBankingRoute
+  AppAccountantBillingRoute: typeof AppAccountantBillingRoute
+  AppAccountantBudgetsRoute: typeof AppAccountantBudgetsRoute
+  AppAccountantExpensesRoute: typeof AppAccountantExpensesRoute
+  AppAccountantInvoicingRoute: typeof AppAccountantInvoicingRoute
+  AppAccountantPaymentsRoute: typeof AppAccountantPaymentsRoute
+  AppAccountantPayrollRoute: typeof AppAccountantPayrollRoute
+  AppAccountantReportsRoute: typeof AppAccountantReportsRoute
+  AppAdminApiKeysRoute: typeof AppAdminApiKeysRoute
+  AppAdminAuditRoute: typeof AppAdminAuditRoute
+  AppAdminBackupsRoute: typeof AppAdminBackupsRoute
+  AppAdminConfigRoute: typeof AppAdminConfigRoute
+  AppAdminIntegrationsRoute: typeof AppAdminIntegrationsRoute
+  AppAdminLogsRoute: typeof AppAdminLogsRoute
+  AppAdminMonitoringRoute: typeof AppAdminMonitoringRoute
+  AppAdminRateLimitsRoute: typeof AppAdminRateLimitsRoute
+  AppAdminRolesRoute: typeof AppAdminRolesRoute
+  AppAdminSecurityRoute: typeof AppAdminSecurityRoute
+  AppAdminUsersRoute: typeof AppAdminUsersRoute
+  AppAdmissionsApplicationsRoute: typeof AppAdmissionsApplicationsRouteWithChildren
+  AppAdmissionsCommunicationRoute: typeof AppAdmissionsCommunicationRoute
+  AppAdmissionsDocumentsRoute: typeof AppAdmissionsDocumentsRoute
+  AppAdmissionsEnrollmentRoute: typeof AppAdmissionsEnrollmentRoute
+  AppAdmissionsInterviewsRoute: typeof AppAdmissionsInterviewsRoute
+  AppAdmissionsReportsRoute: typeof AppAdmissionsReportsRoute
+  AppAdmissionsReviewRoute: typeof AppAdmissionsReviewRoute
   AppAlumniEventsRoute: typeof AppAlumniEventsRoute
   AppAlumniGiveBackRoute: typeof AppAlumniGiveBackRoute
   AppAlumniHubRoute: typeof AppAlumniHubRoute
   AppAlumniJobsRoute: typeof AppAlumniJobsRoute
   AppAlumniNetworkRoute: typeof AppAlumniNetworkRoute
   AppAssignmentsAssignmentIdRoute: typeof AppAssignmentsAssignmentIdRoute
+  AppClientContractsRoute: typeof AppClientContractsRoute
+  AppClientDocumentsRoute: typeof AppClientDocumentsRoute
   AppClientInvoicesRoute: typeof AppClientInvoicesRoute
+  AppClientMessagesRoute: typeof AppClientMessagesRoute
+  AppClientProposalsRoute: typeof AppClientProposalsRoute
   AppClientSupportRoute: typeof AppClientSupportRoute
+  AppConversionCopyAbTestsRoute: typeof AppConversionCopyAbTestsRoute
+  AppConversionCopyAdsRoute: typeof AppConversionCopyAdsRoute
+  AppConversionCopyAnalyticsRoute: typeof AppConversionCopyAnalyticsRoute
+  AppConversionCopyBriefsRoute: typeof AppConversionCopyBriefsRoute
+  AppConversionCopyEmailSequencesRoute: typeof AppConversionCopyEmailSequencesRoute
+  AppConversionCopyLibraryRoute: typeof AppConversionCopyLibraryRoute
+  AppConversionCopyStyleGuideRoute: typeof AppConversionCopyStyleGuideRoute
+  AppDepartmentApprovalsRoute: typeof AppDepartmentApprovalsRoute
+  AppDepartmentCalendarRoute: typeof AppDepartmentCalendarRoute
   AppDepartmentCurriculumRoute: typeof AppDepartmentCurriculumRoute
   AppDepartmentEnrollmentRoute: typeof AppDepartmentEnrollmentRoute
   AppDepartmentInstructorsRoute: typeof AppDepartmentInstructorsRoute
   AppDepartmentQualityRoute: typeof AppDepartmentQualityRoute
+  AppDepartmentReportsRoute: typeof AppDepartmentReportsRoute
+  AppDevApiPlaygroundRoute: typeof AppDevApiPlaygroundRoute
+  AppDevDependenciesRoute: typeof AppDevDependenciesRoute
+  AppDevDeploymentsRoute: typeof AppDevDeploymentsRoute
+  AppDevDocsRoute: typeof AppDevDocsRoute
+  AppDevEnvRoute: typeof AppDevEnvRoute
+  AppDevFeatureFlagsRoute: typeof AppDevFeatureFlagsRoute
+  AppDevGitRoute: typeof AppDevGitRoute
+  AppDevMonitoringRoute: typeof AppDevMonitoringRoute
+  AppDevQueuesRoute: typeof AppDevQueuesRoute
+  AppDevReviewsRoute: typeof AppDevReviewsRoute
+  AppDevTasksRoute: typeof AppDevTasksRoute
+  AppDirectorAcademicRoute: typeof AppDirectorAcademicRoute
+  AppDirectorApprovalsRoute: typeof AppDirectorApprovalsRoute
+  AppDirectorCommandCenterRoute: typeof AppDirectorCommandCenterRoute
+  AppDirectorFinanceRoute: typeof AppDirectorFinanceRoute
+  AppDirectorHrRoute: typeof AppDirectorHrRoute
+  AppDirectorMarketingRoute: typeof AppDirectorMarketingRoute
+  AppDirectorOkrsRoute: typeof AppDirectorOkrsRoute
+  AppDirectorOperationsRoute: typeof AppDirectorOperationsRoute
+  AppDirectorReportsRoute: typeof AppDirectorReportsRoute
   AppEmployerAnalyticsRoute: typeof AppEmployerAnalyticsRoute
   AppEmployerBrandRoute: typeof AppEmployerBrandRoute
+  AppEmployerFeedbackRoute: typeof AppEmployerFeedbackRoute
   AppEmployerHubRoute: typeof AppEmployerHubRoute
   AppEmployerInterviewsRoute: typeof AppEmployerInterviewsRoute
   AppEmployerJobsRoute: typeof AppEmployerJobsRoute
   AppEmployerTalentRoute: typeof AppEmployerTalentRoute
+  AppGovernmentAuditRoute: typeof AppGovernmentAuditRoute
+  AppGovernmentCalendarRoute: typeof AppGovernmentCalendarRoute
+  AppGovernmentChangelogRoute: typeof AppGovernmentChangelogRoute
+  AppGovernmentDocumentsRoute: typeof AppGovernmentDocumentsRoute
+  AppGovernmentFilingsRoute: typeof AppGovernmentFilingsRoute
+  AppGovernmentInstitutionRoute: typeof AppGovernmentInstitutionRoute
+  AppGovernmentIntegrityRoute: typeof AppGovernmentIntegrityRoute
+  AppGovernmentMessagingRoute: typeof AppGovernmentMessagingRoute
+  AppGovernmentReportsRoute: typeof AppGovernmentReportsRoute
+  AppGovernmentTrainingRoute: typeof AppGovernmentTrainingRoute
+  AppHrAttendanceRoute: typeof AppHrAttendanceRoute
+  AppHrEmployeesRoute: typeof AppHrEmployeesRoute
+  AppHrLeaveRoute: typeof AppHrLeaveRoute
+  AppHrOnboardingRoute: typeof AppHrOnboardingRoute
+  AppHrPayrollInputRoute: typeof AppHrPayrollInputRoute
+  AppHrPerformanceRoute: typeof AppHrPerformanceRoute
+  AppHrRecruitmentRoute: typeof AppHrRecruitmentRoute
+  AppHrReportsRoute: typeof AppHrReportsRoute
+  AppHrTrainingRoute: typeof AppHrTrainingRoute
   AppInstructorAnalyticsRoute: typeof AppInstructorAnalyticsRoute
   AppInstructorAttendanceRoute: typeof AppInstructorAttendanceRoute
   AppInstructorGradebookRoute: typeof AppInstructorGradebookRoute
+  AppInternEvaluationRoute: typeof AppInternEvaluationRoute
+  AppInternLearningPlanRoute: typeof AppInternLearningPlanRoute
+  AppInternMentorshipRoute: typeof AppInternMentorshipRoute
+  AppInternMessagesRoute: typeof AppInternMessagesRoute
+  AppInternPortfolioRoute: typeof AppInternPortfolioRoute
+  AppInternTasksRoute: typeof AppInternTasksRoute
+  AppInternTimesheetRoute: typeof AppInternTimesheetRoute
+  AppItAssetsRoute: typeof AppItAssetsRoute
+  AppItKnowledgeBaseRoute: typeof AppItKnowledgeBaseRoute
+  AppItLicensesRoute: typeof AppItLicensesRoute
+  AppItMaintenanceRoute: typeof AppItMaintenanceRoute
+  AppItMonitoringRoute: typeof AppItMonitoringRoute
+  AppItRemoteSupportRoute: typeof AppItRemoteSupportRoute
+  AppItReportsRoute: typeof AppItReportsRoute
+  AppItTemplatesRoute: typeof AppItTemplatesRoute
+  AppItTicketsRoute: typeof AppItTicketsRouteWithChildren
+  AppItUsersRoute: typeof AppItUsersRoute
   AppLearnCourseIdRoute: typeof AppLearnCourseIdRouteWithChildren
   AppLiveClassIdRoute: typeof AppLiveClassIdRoute
+  AppMarketingAnalyticsRoute: typeof AppMarketingAnalyticsRoute
+  AppMarketingCampaignsRoute: typeof AppMarketingCampaignsRoute
+  AppMarketingContentCalendarRoute: typeof AppMarketingContentCalendarRoute
+  AppMarketingEmailRoute: typeof AppMarketingEmailRoute
+  AppMarketingLandingPagesRoute: typeof AppMarketingLandingPagesRoute
+  AppMarketingLeadsRoute: typeof AppMarketingLeadsRoute
+  AppMarketingReportsRoute: typeof AppMarketingReportsRoute
+  AppMarketingSeoRoute: typeof AppMarketingSeoRoute
+  AppMarketingSocialRoute: typeof AppMarketingSocialRoute
   AppMentorAnalyticsRoute: typeof AppMentorAnalyticsRoute
   AppMentorGoalsRoute: typeof AppMentorGoalsRoute
   AppMentorRequestsRoute: typeof AppMentorRequestsRoute
   AppMentorResourcesRoute: typeof AppMentorResourcesRoute
   AppMentorSessionsRoute: typeof AppMentorSessionsRouteWithChildren
   AppMentorSettingsRoute: typeof AppMentorSettingsRoute
+  AppNgoAnalyticsRoute: typeof AppNgoAnalyticsRoute
+  AppNgoDonationsRoute: typeof AppNgoDonationsRoute
+  AppNgoMessagingRoute: typeof AppNgoMessagingRoute
+  AppNgoProgramsRoute: typeof AppNgoProgramsRouteWithChildren
+  AppNgoReportsRoute: typeof AppNgoReportsRoute
+  AppNgoScholarshipsRoute: typeof AppNgoScholarshipsRoute
+  AppNgoVolunteersRoute: typeof AppNgoVolunteersRoute
+  AppOpsAutomationRoute: typeof AppOpsAutomationRoute
+  AppOpsBranchesRoute: typeof AppOpsBranchesRoute
+  AppOpsFacilitiesRoute: typeof AppOpsFacilitiesRoute
+  AppOpsInventoryRoute: typeof AppOpsInventoryRoute
+  AppOpsReportsRoute: typeof AppOpsReportsRoute
+  AppOpsTasksRoute: typeof AppOpsTasksRoute
+  AppOpsVendorsRoute: typeof AppOpsVendorsRoute
+  AppPartnerAgreementsRoute: typeof AppPartnerAgreementsRoute
+  AppPartnerCollaborationsRoute: typeof AppPartnerCollaborationsRoute
+  AppPartnerHubRoute: typeof AppPartnerHubRoute
+  AppPartnerMessagesRoute: typeof AppPartnerMessagesRoute
+  AppPartnerReferralsRoute: typeof AppPartnerReferralsRoute
+  AppPartnerReportsRoute: typeof AppPartnerReportsRoute
+  AppPartnerResourcesRoute: typeof AppPartnerResourcesRoute
+  AppReceptionistAppointmentsRoute: typeof AppReceptionistAppointmentsRoute
+  AppReceptionistCheckInRoute: typeof AppReceptionistCheckInRoute
+  AppReceptionistCheckOutRoute: typeof AppReceptionistCheckOutRoute
+  AppReceptionistDeliveriesRoute: typeof AppReceptionistDeliveriesRoute
+  AppReceptionistDirectoryRoute: typeof AppReceptionistDirectoryRoute
+  AppReceptionistInquiriesRoute: typeof AppReceptionistInquiriesRoute
+  AppReceptionistPhoneLogRoute: typeof AppReceptionistPhoneLogRoute
+  AppReceptionistTasksRoute: typeof AppReceptionistTasksRoute
+  AppSupplierDeliveriesRoute: typeof AppSupplierDeliveriesRoute
+  AppSupplierInvoicesRoute: typeof AppSupplierInvoicesRoute
+  AppSupplierMessagesRoute: typeof AppSupplierMessagesRoute
+  AppSupplierOrdersRoute: typeof AppSupplierOrdersRoute
+  AppSupplierPerformanceRoute: typeof AppSupplierPerformanceRoute
+  AppSupplierProfileRoute: typeof AppSupplierProfileRoute
+  AppVolunteerCertificatesRoute: typeof AppVolunteerCertificatesRoute
+  AppVolunteerCommunityRoute: typeof AppVolunteerCommunityRoute
+  AppVolunteerHoursRoute: typeof AppVolunteerHoursRoute
+  AppVolunteerImpactRoute: typeof AppVolunteerImpactRoute
+  AppVolunteerMyVolunteeringRoute: typeof AppVolunteerMyVolunteeringRoute
+  AppVolunteerOpportunitiesRoute: typeof AppVolunteerOpportunitiesRoute
+  AppAccountantIndexRoute: typeof AppAccountantIndexRoute
+  AppAdminIndexRoute: typeof AppAdminIndexRoute
+  AppAdmissionsIndexRoute: typeof AppAdmissionsIndexRoute
   AppAssessmentsIndexRoute: typeof AppAssessmentsIndexRoute
   AppAssignmentsIndexRoute: typeof AppAssignmentsIndexRoute
+  AppDevIndexRoute: typeof AppDevIndexRoute
+  AppGovernmentIndexRoute: typeof AppGovernmentIndexRoute
+  AppHrIndexRoute: typeof AppHrIndexRoute
+  AppInternIndexRoute: typeof AppInternIndexRoute
   AppLearnIndexRoute: typeof AppLearnIndexRoute
+  AppMarketingIndexRoute: typeof AppMarketingIndexRoute
   AppMentorIndexRoute: typeof AppMentorIndexRoute
+  AppNgoIndexRoute: typeof AppNgoIndexRoute
   AppParentIndexRoute: typeof AppParentIndexRoute
+  AppSupplierIndexRoute: typeof AppSupplierIndexRoute
   AppAssessmentsAssessmentIdTakeRoute: typeof AppAssessmentsAssessmentIdTakeRoute
-  AppClientProjectsProjectIdRoute: typeof AppClientProjectsProjectIdRoute
+  AppClientProjectsProjectIdRoute: typeof AppClientProjectsProjectIdRouteWithChildren
+  AppConversionCopyLandingPagesIdRoute: typeof AppConversionCopyLandingPagesIdRoute
   AppEmployerPipelineJobIdRoute: typeof AppEmployerPipelineJobIdRoute
   AppInstructorCoursesCourseIdRoute: typeof AppInstructorCoursesCourseIdRoute
   AppMentorMenteesMenteeIdRoute: typeof AppMentorMenteesMenteeIdRouteWithChildren
@@ -2144,6 +4295,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PortalDevopsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/portal/director': {
+      id: '/portal/director'
+      path: '/portal/director'
+      fullPath: '/portal/director'
+      preLoaderRoute: typeof PortalDirectorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/portal/employer': {
       id: '/portal/employer'
       path: '/portal/employer'
@@ -2340,6 +4498,216 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProgramsCompareRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/app/accountant/': {
+      id: '/app/accountant/'
+      path: '/app/accountant'
+      fullPath: '/app/accountant/'
+      preLoaderRoute: typeof AppAccountantIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/accountant/audit': {
+      id: '/app/accountant/audit'
+      path: '/app/accountant/audit'
+      fullPath: '/app/accountant/audit'
+      preLoaderRoute: typeof AppAccountantAuditRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/accountant/banking': {
+      id: '/app/accountant/banking'
+      path: '/app/accountant/banking'
+      fullPath: '/app/accountant/banking'
+      preLoaderRoute: typeof AppAccountantBankingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/accountant/billing': {
+      id: '/app/accountant/billing'
+      path: '/app/accountant/billing'
+      fullPath: '/app/accountant/billing'
+      preLoaderRoute: typeof AppAccountantBillingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/accountant/budgets': {
+      id: '/app/accountant/budgets'
+      path: '/app/accountant/budgets'
+      fullPath: '/app/accountant/budgets'
+      preLoaderRoute: typeof AppAccountantBudgetsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/accountant/expenses': {
+      id: '/app/accountant/expenses'
+      path: '/app/accountant/expenses'
+      fullPath: '/app/accountant/expenses'
+      preLoaderRoute: typeof AppAccountantExpensesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/accountant/invoicing': {
+      id: '/app/accountant/invoicing'
+      path: '/app/accountant/invoicing'
+      fullPath: '/app/accountant/invoicing'
+      preLoaderRoute: typeof AppAccountantInvoicingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/accountant/payments': {
+      id: '/app/accountant/payments'
+      path: '/app/accountant/payments'
+      fullPath: '/app/accountant/payments'
+      preLoaderRoute: typeof AppAccountantPaymentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/accountant/payroll': {
+      id: '/app/accountant/payroll'
+      path: '/app/accountant/payroll'
+      fullPath: '/app/accountant/payroll'
+      preLoaderRoute: typeof AppAccountantPayrollRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/accountant/reports': {
+      id: '/app/accountant/reports'
+      path: '/app/accountant/reports'
+      fullPath: '/app/accountant/reports'
+      preLoaderRoute: typeof AppAccountantReportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/admin/': {
+      id: '/app/admin/'
+      path: '/app/admin'
+      fullPath: '/app/admin/'
+      preLoaderRoute: typeof AppAdminIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/admin/api-keys': {
+      id: '/app/admin/api-keys'
+      path: '/app/admin/api-keys'
+      fullPath: '/app/admin/api-keys'
+      preLoaderRoute: typeof AppAdminApiKeysRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/admin/audit': {
+      id: '/app/admin/audit'
+      path: '/app/admin/audit'
+      fullPath: '/app/admin/audit'
+      preLoaderRoute: typeof AppAdminAuditRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/admin/backups': {
+      id: '/app/admin/backups'
+      path: '/app/admin/backups'
+      fullPath: '/app/admin/backups'
+      preLoaderRoute: typeof AppAdminBackupsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/admin/config': {
+      id: '/app/admin/config'
+      path: '/app/admin/config'
+      fullPath: '/app/admin/config'
+      preLoaderRoute: typeof AppAdminConfigRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/admin/integrations': {
+      id: '/app/admin/integrations'
+      path: '/app/admin/integrations'
+      fullPath: '/app/admin/integrations'
+      preLoaderRoute: typeof AppAdminIntegrationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/admin/logs': {
+      id: '/app/admin/logs'
+      path: '/app/admin/logs'
+      fullPath: '/app/admin/logs'
+      preLoaderRoute: typeof AppAdminLogsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/admin/monitoring': {
+      id: '/app/admin/monitoring'
+      path: '/app/admin/monitoring'
+      fullPath: '/app/admin/monitoring'
+      preLoaderRoute: typeof AppAdminMonitoringRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/admin/rate-limits': {
+      id: '/app/admin/rate-limits'
+      path: '/app/admin/rate-limits'
+      fullPath: '/app/admin/rate-limits'
+      preLoaderRoute: typeof AppAdminRateLimitsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/admin/roles': {
+      id: '/app/admin/roles'
+      path: '/app/admin/roles'
+      fullPath: '/app/admin/roles'
+      preLoaderRoute: typeof AppAdminRolesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/admin/security': {
+      id: '/app/admin/security'
+      path: '/app/admin/security'
+      fullPath: '/app/admin/security'
+      preLoaderRoute: typeof AppAdminSecurityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/admin/users': {
+      id: '/app/admin/users'
+      path: '/app/admin/users'
+      fullPath: '/app/admin/users'
+      preLoaderRoute: typeof AppAdminUsersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/admissions/': {
+      id: '/app/admissions/'
+      path: '/app/admissions'
+      fullPath: '/app/admissions/'
+      preLoaderRoute: typeof AppAdmissionsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/admissions/applications': {
+      id: '/app/admissions/applications'
+      path: '/app/admissions/applications'
+      fullPath: '/app/admissions/applications'
+      preLoaderRoute: typeof AppAdmissionsApplicationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/admissions/communication': {
+      id: '/app/admissions/communication'
+      path: '/app/admissions/communication'
+      fullPath: '/app/admissions/communication'
+      preLoaderRoute: typeof AppAdmissionsCommunicationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/admissions/documents': {
+      id: '/app/admissions/documents'
+      path: '/app/admissions/documents'
+      fullPath: '/app/admissions/documents'
+      preLoaderRoute: typeof AppAdmissionsDocumentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/admissions/enrollment': {
+      id: '/app/admissions/enrollment'
+      path: '/app/admissions/enrollment'
+      fullPath: '/app/admissions/enrollment'
+      preLoaderRoute: typeof AppAdmissionsEnrollmentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/admissions/interviews': {
+      id: '/app/admissions/interviews'
+      path: '/app/admissions/interviews'
+      fullPath: '/app/admissions/interviews'
+      preLoaderRoute: typeof AppAdmissionsInterviewsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/admissions/reports': {
+      id: '/app/admissions/reports'
+      path: '/app/admissions/reports'
+      fullPath: '/app/admissions/reports'
+      preLoaderRoute: typeof AppAdmissionsReportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/admissions/review': {
+      id: '/app/admissions/review'
+      path: '/app/admissions/review'
+      fullPath: '/app/admissions/review'
+      preLoaderRoute: typeof AppAdmissionsReviewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/app/alumni/events': {
       id: '/app/alumni/events'
       path: '/app/alumni/events'
@@ -2396,6 +4764,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppAssignmentsAssignmentIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/app/client/contracts': {
+      id: '/app/client/contracts'
+      path: '/app/client/contracts'
+      fullPath: '/app/client/contracts'
+      preLoaderRoute: typeof AppClientContractsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/client/documents': {
+      id: '/app/client/documents'
+      path: '/app/client/documents'
+      fullPath: '/app/client/documents'
+      preLoaderRoute: typeof AppClientDocumentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/app/client/invoices': {
       id: '/app/client/invoices'
       path: '/app/client/invoices'
@@ -2403,11 +4785,88 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppClientInvoicesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/app/client/messages': {
+      id: '/app/client/messages'
+      path: '/app/client/messages'
+      fullPath: '/app/client/messages'
+      preLoaderRoute: typeof AppClientMessagesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/client/proposals': {
+      id: '/app/client/proposals'
+      path: '/app/client/proposals'
+      fullPath: '/app/client/proposals'
+      preLoaderRoute: typeof AppClientProposalsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/app/client/support': {
       id: '/app/client/support'
       path: '/app/client/support'
       fullPath: '/app/client/support'
       preLoaderRoute: typeof AppClientSupportRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/conversion-copy/ab-tests': {
+      id: '/app/conversion-copy/ab-tests'
+      path: '/app/conversion-copy/ab-tests'
+      fullPath: '/app/conversion-copy/ab-tests'
+      preLoaderRoute: typeof AppConversionCopyAbTestsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/conversion-copy/ads': {
+      id: '/app/conversion-copy/ads'
+      path: '/app/conversion-copy/ads'
+      fullPath: '/app/conversion-copy/ads'
+      preLoaderRoute: typeof AppConversionCopyAdsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/conversion-copy/analytics': {
+      id: '/app/conversion-copy/analytics'
+      path: '/app/conversion-copy/analytics'
+      fullPath: '/app/conversion-copy/analytics'
+      preLoaderRoute: typeof AppConversionCopyAnalyticsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/conversion-copy/briefs': {
+      id: '/app/conversion-copy/briefs'
+      path: '/app/conversion-copy/briefs'
+      fullPath: '/app/conversion-copy/briefs'
+      preLoaderRoute: typeof AppConversionCopyBriefsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/conversion-copy/email-sequences': {
+      id: '/app/conversion-copy/email-sequences'
+      path: '/app/conversion-copy/email-sequences'
+      fullPath: '/app/conversion-copy/email-sequences'
+      preLoaderRoute: typeof AppConversionCopyEmailSequencesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/conversion-copy/library': {
+      id: '/app/conversion-copy/library'
+      path: '/app/conversion-copy/library'
+      fullPath: '/app/conversion-copy/library'
+      preLoaderRoute: typeof AppConversionCopyLibraryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/conversion-copy/style-guide': {
+      id: '/app/conversion-copy/style-guide'
+      path: '/app/conversion-copy/style-guide'
+      fullPath: '/app/conversion-copy/style-guide'
+      preLoaderRoute: typeof AppConversionCopyStyleGuideRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/department/approvals': {
+      id: '/app/department/approvals'
+      path: '/app/department/approvals'
+      fullPath: '/app/department/approvals'
+      preLoaderRoute: typeof AppDepartmentApprovalsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/department/calendar': {
+      id: '/app/department/calendar'
+      path: '/app/department/calendar'
+      fullPath: '/app/department/calendar'
+      preLoaderRoute: typeof AppDepartmentCalendarRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/app/department/curriculum': {
@@ -2438,6 +4897,160 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppDepartmentQualityRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/app/department/reports': {
+      id: '/app/department/reports'
+      path: '/app/department/reports'
+      fullPath: '/app/department/reports'
+      preLoaderRoute: typeof AppDepartmentReportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/dev/': {
+      id: '/app/dev/'
+      path: '/app/dev'
+      fullPath: '/app/dev/'
+      preLoaderRoute: typeof AppDevIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/dev/api-playground': {
+      id: '/app/dev/api-playground'
+      path: '/app/dev/api-playground'
+      fullPath: '/app/dev/api-playground'
+      preLoaderRoute: typeof AppDevApiPlaygroundRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/dev/dependencies': {
+      id: '/app/dev/dependencies'
+      path: '/app/dev/dependencies'
+      fullPath: '/app/dev/dependencies'
+      preLoaderRoute: typeof AppDevDependenciesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/dev/deployments': {
+      id: '/app/dev/deployments'
+      path: '/app/dev/deployments'
+      fullPath: '/app/dev/deployments'
+      preLoaderRoute: typeof AppDevDeploymentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/dev/docs': {
+      id: '/app/dev/docs'
+      path: '/app/dev/docs'
+      fullPath: '/app/dev/docs'
+      preLoaderRoute: typeof AppDevDocsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/dev/env': {
+      id: '/app/dev/env'
+      path: '/app/dev/env'
+      fullPath: '/app/dev/env'
+      preLoaderRoute: typeof AppDevEnvRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/dev/feature-flags': {
+      id: '/app/dev/feature-flags'
+      path: '/app/dev/feature-flags'
+      fullPath: '/app/dev/feature-flags'
+      preLoaderRoute: typeof AppDevFeatureFlagsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/dev/git': {
+      id: '/app/dev/git'
+      path: '/app/dev/git'
+      fullPath: '/app/dev/git'
+      preLoaderRoute: typeof AppDevGitRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/dev/monitoring': {
+      id: '/app/dev/monitoring'
+      path: '/app/dev/monitoring'
+      fullPath: '/app/dev/monitoring'
+      preLoaderRoute: typeof AppDevMonitoringRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/dev/queues': {
+      id: '/app/dev/queues'
+      path: '/app/dev/queues'
+      fullPath: '/app/dev/queues'
+      preLoaderRoute: typeof AppDevQueuesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/dev/reviews': {
+      id: '/app/dev/reviews'
+      path: '/app/dev/reviews'
+      fullPath: '/app/dev/reviews'
+      preLoaderRoute: typeof AppDevReviewsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/dev/tasks': {
+      id: '/app/dev/tasks'
+      path: '/app/dev/tasks'
+      fullPath: '/app/dev/tasks'
+      preLoaderRoute: typeof AppDevTasksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/director/academic': {
+      id: '/app/director/academic'
+      path: '/app/director/academic'
+      fullPath: '/app/director/academic'
+      preLoaderRoute: typeof AppDirectorAcademicRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/director/approvals': {
+      id: '/app/director/approvals'
+      path: '/app/director/approvals'
+      fullPath: '/app/director/approvals'
+      preLoaderRoute: typeof AppDirectorApprovalsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/director/command-center': {
+      id: '/app/director/command-center'
+      path: '/app/director/command-center'
+      fullPath: '/app/director/command-center'
+      preLoaderRoute: typeof AppDirectorCommandCenterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/director/finance': {
+      id: '/app/director/finance'
+      path: '/app/director/finance'
+      fullPath: '/app/director/finance'
+      preLoaderRoute: typeof AppDirectorFinanceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/director/hr': {
+      id: '/app/director/hr'
+      path: '/app/director/hr'
+      fullPath: '/app/director/hr'
+      preLoaderRoute: typeof AppDirectorHrRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/director/marketing': {
+      id: '/app/director/marketing'
+      path: '/app/director/marketing'
+      fullPath: '/app/director/marketing'
+      preLoaderRoute: typeof AppDirectorMarketingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/director/okrs': {
+      id: '/app/director/okrs'
+      path: '/app/director/okrs'
+      fullPath: '/app/director/okrs'
+      preLoaderRoute: typeof AppDirectorOkrsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/director/operations': {
+      id: '/app/director/operations'
+      path: '/app/director/operations'
+      fullPath: '/app/director/operations'
+      preLoaderRoute: typeof AppDirectorOperationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/director/reports': {
+      id: '/app/director/reports'
+      path: '/app/director/reports'
+      fullPath: '/app/director/reports'
+      preLoaderRoute: typeof AppDirectorReportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/app/employer/analytics': {
       id: '/app/employer/analytics'
       path: '/app/employer/analytics'
@@ -2450,6 +5063,13 @@ declare module '@tanstack/react-router' {
       path: '/app/employer/brand'
       fullPath: '/app/employer/brand'
       preLoaderRoute: typeof AppEmployerBrandRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/employer/feedback': {
+      id: '/app/employer/feedback'
+      path: '/app/employer/feedback'
+      fullPath: '/app/employer/feedback'
+      preLoaderRoute: typeof AppEmployerFeedbackRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/app/employer/hub': {
@@ -2480,6 +5100,153 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppEmployerTalentRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/app/government/': {
+      id: '/app/government/'
+      path: '/app/government'
+      fullPath: '/app/government/'
+      preLoaderRoute: typeof AppGovernmentIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/government/audit': {
+      id: '/app/government/audit'
+      path: '/app/government/audit'
+      fullPath: '/app/government/audit'
+      preLoaderRoute: typeof AppGovernmentAuditRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/government/calendar': {
+      id: '/app/government/calendar'
+      path: '/app/government/calendar'
+      fullPath: '/app/government/calendar'
+      preLoaderRoute: typeof AppGovernmentCalendarRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/government/changelog': {
+      id: '/app/government/changelog'
+      path: '/app/government/changelog'
+      fullPath: '/app/government/changelog'
+      preLoaderRoute: typeof AppGovernmentChangelogRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/government/documents': {
+      id: '/app/government/documents'
+      path: '/app/government/documents'
+      fullPath: '/app/government/documents'
+      preLoaderRoute: typeof AppGovernmentDocumentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/government/filings': {
+      id: '/app/government/filings'
+      path: '/app/government/filings'
+      fullPath: '/app/government/filings'
+      preLoaderRoute: typeof AppGovernmentFilingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/government/institution': {
+      id: '/app/government/institution'
+      path: '/app/government/institution'
+      fullPath: '/app/government/institution'
+      preLoaderRoute: typeof AppGovernmentInstitutionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/government/integrity': {
+      id: '/app/government/integrity'
+      path: '/app/government/integrity'
+      fullPath: '/app/government/integrity'
+      preLoaderRoute: typeof AppGovernmentIntegrityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/government/messaging': {
+      id: '/app/government/messaging'
+      path: '/app/government/messaging'
+      fullPath: '/app/government/messaging'
+      preLoaderRoute: typeof AppGovernmentMessagingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/government/reports': {
+      id: '/app/government/reports'
+      path: '/app/government/reports'
+      fullPath: '/app/government/reports'
+      preLoaderRoute: typeof AppGovernmentReportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/government/training': {
+      id: '/app/government/training'
+      path: '/app/government/training'
+      fullPath: '/app/government/training'
+      preLoaderRoute: typeof AppGovernmentTrainingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/hr/': {
+      id: '/app/hr/'
+      path: '/app/hr'
+      fullPath: '/app/hr/'
+      preLoaderRoute: typeof AppHrIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/hr/attendance': {
+      id: '/app/hr/attendance'
+      path: '/app/hr/attendance'
+      fullPath: '/app/hr/attendance'
+      preLoaderRoute: typeof AppHrAttendanceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/hr/employees': {
+      id: '/app/hr/employees'
+      path: '/app/hr/employees'
+      fullPath: '/app/hr/employees'
+      preLoaderRoute: typeof AppHrEmployeesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/hr/leave': {
+      id: '/app/hr/leave'
+      path: '/app/hr/leave'
+      fullPath: '/app/hr/leave'
+      preLoaderRoute: typeof AppHrLeaveRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/hr/onboarding': {
+      id: '/app/hr/onboarding'
+      path: '/app/hr/onboarding'
+      fullPath: '/app/hr/onboarding'
+      preLoaderRoute: typeof AppHrOnboardingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/hr/payroll-input': {
+      id: '/app/hr/payroll-input'
+      path: '/app/hr/payroll-input'
+      fullPath: '/app/hr/payroll-input'
+      preLoaderRoute: typeof AppHrPayrollInputRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/hr/performance': {
+      id: '/app/hr/performance'
+      path: '/app/hr/performance'
+      fullPath: '/app/hr/performance'
+      preLoaderRoute: typeof AppHrPerformanceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/hr/recruitment': {
+      id: '/app/hr/recruitment'
+      path: '/app/hr/recruitment'
+      fullPath: '/app/hr/recruitment'
+      preLoaderRoute: typeof AppHrRecruitmentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/hr/reports': {
+      id: '/app/hr/reports'
+      path: '/app/hr/reports'
+      fullPath: '/app/hr/reports'
+      preLoaderRoute: typeof AppHrReportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/hr/training': {
+      id: '/app/hr/training'
+      path: '/app/hr/training'
+      fullPath: '/app/hr/training'
+      preLoaderRoute: typeof AppHrTrainingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/app/instructor/analytics': {
       id: '/app/instructor/analytics'
       path: '/app/instructor/analytics'
@@ -2501,6 +5268,132 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppInstructorGradebookRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/app/intern/': {
+      id: '/app/intern/'
+      path: '/app/intern'
+      fullPath: '/app/intern/'
+      preLoaderRoute: typeof AppInternIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/intern/evaluation': {
+      id: '/app/intern/evaluation'
+      path: '/app/intern/evaluation'
+      fullPath: '/app/intern/evaluation'
+      preLoaderRoute: typeof AppInternEvaluationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/intern/learning-plan': {
+      id: '/app/intern/learning-plan'
+      path: '/app/intern/learning-plan'
+      fullPath: '/app/intern/learning-plan'
+      preLoaderRoute: typeof AppInternLearningPlanRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/intern/mentorship': {
+      id: '/app/intern/mentorship'
+      path: '/app/intern/mentorship'
+      fullPath: '/app/intern/mentorship'
+      preLoaderRoute: typeof AppInternMentorshipRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/intern/messages': {
+      id: '/app/intern/messages'
+      path: '/app/intern/messages'
+      fullPath: '/app/intern/messages'
+      preLoaderRoute: typeof AppInternMessagesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/intern/portfolio': {
+      id: '/app/intern/portfolio'
+      path: '/app/intern/portfolio'
+      fullPath: '/app/intern/portfolio'
+      preLoaderRoute: typeof AppInternPortfolioRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/intern/tasks': {
+      id: '/app/intern/tasks'
+      path: '/app/intern/tasks'
+      fullPath: '/app/intern/tasks'
+      preLoaderRoute: typeof AppInternTasksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/intern/timesheet': {
+      id: '/app/intern/timesheet'
+      path: '/app/intern/timesheet'
+      fullPath: '/app/intern/timesheet'
+      preLoaderRoute: typeof AppInternTimesheetRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/it/assets': {
+      id: '/app/it/assets'
+      path: '/app/it/assets'
+      fullPath: '/app/it/assets'
+      preLoaderRoute: typeof AppItAssetsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/it/knowledge-base': {
+      id: '/app/it/knowledge-base'
+      path: '/app/it/knowledge-base'
+      fullPath: '/app/it/knowledge-base'
+      preLoaderRoute: typeof AppItKnowledgeBaseRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/it/licenses': {
+      id: '/app/it/licenses'
+      path: '/app/it/licenses'
+      fullPath: '/app/it/licenses'
+      preLoaderRoute: typeof AppItLicensesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/it/maintenance': {
+      id: '/app/it/maintenance'
+      path: '/app/it/maintenance'
+      fullPath: '/app/it/maintenance'
+      preLoaderRoute: typeof AppItMaintenanceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/it/monitoring': {
+      id: '/app/it/monitoring'
+      path: '/app/it/monitoring'
+      fullPath: '/app/it/monitoring'
+      preLoaderRoute: typeof AppItMonitoringRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/it/remote-support': {
+      id: '/app/it/remote-support'
+      path: '/app/it/remote-support'
+      fullPath: '/app/it/remote-support'
+      preLoaderRoute: typeof AppItRemoteSupportRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/it/reports': {
+      id: '/app/it/reports'
+      path: '/app/it/reports'
+      fullPath: '/app/it/reports'
+      preLoaderRoute: typeof AppItReportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/it/templates': {
+      id: '/app/it/templates'
+      path: '/app/it/templates'
+      fullPath: '/app/it/templates'
+      preLoaderRoute: typeof AppItTemplatesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/it/tickets': {
+      id: '/app/it/tickets'
+      path: '/app/it/tickets'
+      fullPath: '/app/it/tickets'
+      preLoaderRoute: typeof AppItTicketsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/it/users': {
+      id: '/app/it/users'
+      path: '/app/it/users'
+      fullPath: '/app/it/users'
+      preLoaderRoute: typeof AppItUsersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/app/learn/': {
       id: '/app/learn/'
       path: '/app/learn'
@@ -2520,6 +5413,76 @@ declare module '@tanstack/react-router' {
       path: '/app/live/$classId'
       fullPath: '/app/live/$classId'
       preLoaderRoute: typeof AppLiveClassIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/marketing/': {
+      id: '/app/marketing/'
+      path: '/app/marketing'
+      fullPath: '/app/marketing/'
+      preLoaderRoute: typeof AppMarketingIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/marketing/analytics': {
+      id: '/app/marketing/analytics'
+      path: '/app/marketing/analytics'
+      fullPath: '/app/marketing/analytics'
+      preLoaderRoute: typeof AppMarketingAnalyticsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/marketing/campaigns': {
+      id: '/app/marketing/campaigns'
+      path: '/app/marketing/campaigns'
+      fullPath: '/app/marketing/campaigns'
+      preLoaderRoute: typeof AppMarketingCampaignsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/marketing/content-calendar': {
+      id: '/app/marketing/content-calendar'
+      path: '/app/marketing/content-calendar'
+      fullPath: '/app/marketing/content-calendar'
+      preLoaderRoute: typeof AppMarketingContentCalendarRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/marketing/email': {
+      id: '/app/marketing/email'
+      path: '/app/marketing/email'
+      fullPath: '/app/marketing/email'
+      preLoaderRoute: typeof AppMarketingEmailRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/marketing/landing-pages': {
+      id: '/app/marketing/landing-pages'
+      path: '/app/marketing/landing-pages'
+      fullPath: '/app/marketing/landing-pages'
+      preLoaderRoute: typeof AppMarketingLandingPagesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/marketing/leads': {
+      id: '/app/marketing/leads'
+      path: '/app/marketing/leads'
+      fullPath: '/app/marketing/leads'
+      preLoaderRoute: typeof AppMarketingLeadsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/marketing/reports': {
+      id: '/app/marketing/reports'
+      path: '/app/marketing/reports'
+      fullPath: '/app/marketing/reports'
+      preLoaderRoute: typeof AppMarketingReportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/marketing/seo': {
+      id: '/app/marketing/seo'
+      path: '/app/marketing/seo'
+      fullPath: '/app/marketing/seo'
+      preLoaderRoute: typeof AppMarketingSeoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/marketing/social': {
+      id: '/app/marketing/social'
+      path: '/app/marketing/social'
+      fullPath: '/app/marketing/social'
+      preLoaderRoute: typeof AppMarketingSocialRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/app/mentor/': {
@@ -2571,12 +5534,320 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppMentorSettingsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/app/ngo/': {
+      id: '/app/ngo/'
+      path: '/app/ngo'
+      fullPath: '/app/ngo/'
+      preLoaderRoute: typeof AppNgoIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/ngo/analytics': {
+      id: '/app/ngo/analytics'
+      path: '/app/ngo/analytics'
+      fullPath: '/app/ngo/analytics'
+      preLoaderRoute: typeof AppNgoAnalyticsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/ngo/donations': {
+      id: '/app/ngo/donations'
+      path: '/app/ngo/donations'
+      fullPath: '/app/ngo/donations'
+      preLoaderRoute: typeof AppNgoDonationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/ngo/messaging': {
+      id: '/app/ngo/messaging'
+      path: '/app/ngo/messaging'
+      fullPath: '/app/ngo/messaging'
+      preLoaderRoute: typeof AppNgoMessagingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/ngo/programs': {
+      id: '/app/ngo/programs'
+      path: '/app/ngo/programs'
+      fullPath: '/app/ngo/programs'
+      preLoaderRoute: typeof AppNgoProgramsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/ngo/reports': {
+      id: '/app/ngo/reports'
+      path: '/app/ngo/reports'
+      fullPath: '/app/ngo/reports'
+      preLoaderRoute: typeof AppNgoReportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/ngo/scholarships': {
+      id: '/app/ngo/scholarships'
+      path: '/app/ngo/scholarships'
+      fullPath: '/app/ngo/scholarships'
+      preLoaderRoute: typeof AppNgoScholarshipsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/ngo/volunteers': {
+      id: '/app/ngo/volunteers'
+      path: '/app/ngo/volunteers'
+      fullPath: '/app/ngo/volunteers'
+      preLoaderRoute: typeof AppNgoVolunteersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/ops/automation': {
+      id: '/app/ops/automation'
+      path: '/app/ops/automation'
+      fullPath: '/app/ops/automation'
+      preLoaderRoute: typeof AppOpsAutomationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/ops/branches': {
+      id: '/app/ops/branches'
+      path: '/app/ops/branches'
+      fullPath: '/app/ops/branches'
+      preLoaderRoute: typeof AppOpsBranchesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/ops/facilities': {
+      id: '/app/ops/facilities'
+      path: '/app/ops/facilities'
+      fullPath: '/app/ops/facilities'
+      preLoaderRoute: typeof AppOpsFacilitiesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/ops/inventory': {
+      id: '/app/ops/inventory'
+      path: '/app/ops/inventory'
+      fullPath: '/app/ops/inventory'
+      preLoaderRoute: typeof AppOpsInventoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/ops/reports': {
+      id: '/app/ops/reports'
+      path: '/app/ops/reports'
+      fullPath: '/app/ops/reports'
+      preLoaderRoute: typeof AppOpsReportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/ops/tasks': {
+      id: '/app/ops/tasks'
+      path: '/app/ops/tasks'
+      fullPath: '/app/ops/tasks'
+      preLoaderRoute: typeof AppOpsTasksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/ops/vendors': {
+      id: '/app/ops/vendors'
+      path: '/app/ops/vendors'
+      fullPath: '/app/ops/vendors'
+      preLoaderRoute: typeof AppOpsVendorsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/app/parent/': {
       id: '/app/parent/'
       path: '/app/parent'
       fullPath: '/app/parent/'
       preLoaderRoute: typeof AppParentIndexRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/app/partner/agreements': {
+      id: '/app/partner/agreements'
+      path: '/app/partner/agreements'
+      fullPath: '/app/partner/agreements'
+      preLoaderRoute: typeof AppPartnerAgreementsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/partner/collaborations': {
+      id: '/app/partner/collaborations'
+      path: '/app/partner/collaborations'
+      fullPath: '/app/partner/collaborations'
+      preLoaderRoute: typeof AppPartnerCollaborationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/partner/hub': {
+      id: '/app/partner/hub'
+      path: '/app/partner/hub'
+      fullPath: '/app/partner/hub'
+      preLoaderRoute: typeof AppPartnerHubRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/partner/messages': {
+      id: '/app/partner/messages'
+      path: '/app/partner/messages'
+      fullPath: '/app/partner/messages'
+      preLoaderRoute: typeof AppPartnerMessagesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/partner/referrals': {
+      id: '/app/partner/referrals'
+      path: '/app/partner/referrals'
+      fullPath: '/app/partner/referrals'
+      preLoaderRoute: typeof AppPartnerReferralsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/partner/reports': {
+      id: '/app/partner/reports'
+      path: '/app/partner/reports'
+      fullPath: '/app/partner/reports'
+      preLoaderRoute: typeof AppPartnerReportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/partner/resources': {
+      id: '/app/partner/resources'
+      path: '/app/partner/resources'
+      fullPath: '/app/partner/resources'
+      preLoaderRoute: typeof AppPartnerResourcesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/receptionist/appointments': {
+      id: '/app/receptionist/appointments'
+      path: '/app/receptionist/appointments'
+      fullPath: '/app/receptionist/appointments'
+      preLoaderRoute: typeof AppReceptionistAppointmentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/receptionist/check-in': {
+      id: '/app/receptionist/check-in'
+      path: '/app/receptionist/check-in'
+      fullPath: '/app/receptionist/check-in'
+      preLoaderRoute: typeof AppReceptionistCheckInRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/receptionist/check-out': {
+      id: '/app/receptionist/check-out'
+      path: '/app/receptionist/check-out'
+      fullPath: '/app/receptionist/check-out'
+      preLoaderRoute: typeof AppReceptionistCheckOutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/receptionist/deliveries': {
+      id: '/app/receptionist/deliveries'
+      path: '/app/receptionist/deliveries'
+      fullPath: '/app/receptionist/deliveries'
+      preLoaderRoute: typeof AppReceptionistDeliveriesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/receptionist/directory': {
+      id: '/app/receptionist/directory'
+      path: '/app/receptionist/directory'
+      fullPath: '/app/receptionist/directory'
+      preLoaderRoute: typeof AppReceptionistDirectoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/receptionist/inquiries': {
+      id: '/app/receptionist/inquiries'
+      path: '/app/receptionist/inquiries'
+      fullPath: '/app/receptionist/inquiries'
+      preLoaderRoute: typeof AppReceptionistInquiriesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/receptionist/phone-log': {
+      id: '/app/receptionist/phone-log'
+      path: '/app/receptionist/phone-log'
+      fullPath: '/app/receptionist/phone-log'
+      preLoaderRoute: typeof AppReceptionistPhoneLogRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/receptionist/tasks': {
+      id: '/app/receptionist/tasks'
+      path: '/app/receptionist/tasks'
+      fullPath: '/app/receptionist/tasks'
+      preLoaderRoute: typeof AppReceptionistTasksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/supplier/': {
+      id: '/app/supplier/'
+      path: '/app/supplier'
+      fullPath: '/app/supplier/'
+      preLoaderRoute: typeof AppSupplierIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/supplier/deliveries': {
+      id: '/app/supplier/deliveries'
+      path: '/app/supplier/deliveries'
+      fullPath: '/app/supplier/deliveries'
+      preLoaderRoute: typeof AppSupplierDeliveriesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/supplier/invoices': {
+      id: '/app/supplier/invoices'
+      path: '/app/supplier/invoices'
+      fullPath: '/app/supplier/invoices'
+      preLoaderRoute: typeof AppSupplierInvoicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/supplier/messages': {
+      id: '/app/supplier/messages'
+      path: '/app/supplier/messages'
+      fullPath: '/app/supplier/messages'
+      preLoaderRoute: typeof AppSupplierMessagesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/supplier/orders': {
+      id: '/app/supplier/orders'
+      path: '/app/supplier/orders'
+      fullPath: '/app/supplier/orders'
+      preLoaderRoute: typeof AppSupplierOrdersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/supplier/performance': {
+      id: '/app/supplier/performance'
+      path: '/app/supplier/performance'
+      fullPath: '/app/supplier/performance'
+      preLoaderRoute: typeof AppSupplierPerformanceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/supplier/profile': {
+      id: '/app/supplier/profile'
+      path: '/app/supplier/profile'
+      fullPath: '/app/supplier/profile'
+      preLoaderRoute: typeof AppSupplierProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/volunteer/certificates': {
+      id: '/app/volunteer/certificates'
+      path: '/app/volunteer/certificates'
+      fullPath: '/app/volunteer/certificates'
+      preLoaderRoute: typeof AppVolunteerCertificatesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/volunteer/community': {
+      id: '/app/volunteer/community'
+      path: '/app/volunteer/community'
+      fullPath: '/app/volunteer/community'
+      preLoaderRoute: typeof AppVolunteerCommunityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/volunteer/hours': {
+      id: '/app/volunteer/hours'
+      path: '/app/volunteer/hours'
+      fullPath: '/app/volunteer/hours'
+      preLoaderRoute: typeof AppVolunteerHoursRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/volunteer/impact': {
+      id: '/app/volunteer/impact'
+      path: '/app/volunteer/impact'
+      fullPath: '/app/volunteer/impact'
+      preLoaderRoute: typeof AppVolunteerImpactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/volunteer/my-volunteering': {
+      id: '/app/volunteer/my-volunteering'
+      path: '/app/volunteer/my-volunteering'
+      fullPath: '/app/volunteer/my-volunteering'
+      preLoaderRoute: typeof AppVolunteerMyVolunteeringRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/volunteer/opportunities': {
+      id: '/app/volunteer/opportunities'
+      path: '/app/volunteer/opportunities'
+      fullPath: '/app/volunteer/opportunities'
+      preLoaderRoute: typeof AppVolunteerOpportunitiesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/admissions/applications/$id': {
+      id: '/app/admissions/applications/$id'
+      path: '/$id'
+      fullPath: '/app/admissions/applications/$id'
+      preLoaderRoute: typeof AppAdmissionsApplicationsIdRouteImport
+      parentRoute: typeof AppAdmissionsApplicationsRoute
     }
     '/app/assessments/$assessmentId/take': {
       id: '/app/assessments/$assessmentId/take'
@@ -2590,6 +5861,13 @@ declare module '@tanstack/react-router' {
       path: '/app/client/projects/$projectId'
       fullPath: '/app/client/projects/$projectId'
       preLoaderRoute: typeof AppClientProjectsProjectIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/conversion-copy/landing-pages/$id': {
+      id: '/app/conversion-copy/landing-pages/$id'
+      path: '/app/conversion-copy/landing-pages/$id'
+      fullPath: '/app/conversion-copy/landing-pages/$id'
+      preLoaderRoute: typeof AppConversionCopyLandingPagesIdRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/app/employer/pipeline/$jobId': {
@@ -2612,6 +5890,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/app/instructor/courses/$courseId'
       preLoaderRoute: typeof AppInstructorCoursesCourseIdRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/app/it/tickets/$id': {
+      id: '/app/it/tickets/$id'
+      path: '/$id'
+      fullPath: '/app/it/tickets/$id'
+      preLoaderRoute: typeof AppItTicketsIdRouteImport
+      parentRoute: typeof AppItTicketsRoute
     }
     '/app/mentor/mentees/$menteeId': {
       id: '/app/mentor/mentees/$menteeId'
@@ -2641,6 +5926,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppParentStudentsStudentIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/app/client/projects/$projectId/tasks': {
+      id: '/app/client/projects/$projectId/tasks'
+      path: '/tasks'
+      fullPath: '/app/client/projects/$projectId/tasks'
+      preLoaderRoute: typeof AppClientProjectsProjectIdTasksRouteImport
+      parentRoute: typeof AppClientProjectsProjectIdRoute
+    }
     '/app/instructor/assignments/$submissionId/grade': {
       id: '/app/instructor/assignments/$submissionId/grade'
       path: '/app/instructor/assignments/$submissionId/grade'
@@ -2668,6 +5960,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/app/mentor/mentees/$menteeId/portfolio'
       preLoaderRoute: typeof AppMentorMenteesMenteeIdPortfolioRouteImport
       parentRoute: typeof AppMentorMenteesMenteeIdRoute
+    }
+    '/app/ngo/programs/$programId/budget': {
+      id: '/app/ngo/programs/$programId/budget'
+      path: '/$programId/budget'
+      fullPath: '/app/ngo/programs/$programId/budget'
+      preLoaderRoute: typeof AppNgoProgramsProgramIdBudgetRouteImport
+      parentRoute: typeof AppNgoProgramsRoute
     }
     '/app/parent/students/$studentId/attendance': {
       id: '/app/parent/students/$studentId/attendance'
@@ -2707,6 +6006,32 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface AppAdmissionsApplicationsRouteChildren {
+  AppAdmissionsApplicationsIdRoute: typeof AppAdmissionsApplicationsIdRoute
+}
+
+const AppAdmissionsApplicationsRouteChildren: AppAdmissionsApplicationsRouteChildren =
+  {
+    AppAdmissionsApplicationsIdRoute: AppAdmissionsApplicationsIdRoute,
+  }
+
+const AppAdmissionsApplicationsRouteWithChildren =
+  AppAdmissionsApplicationsRoute._addFileChildren(
+    AppAdmissionsApplicationsRouteChildren,
+  )
+
+interface AppItTicketsRouteChildren {
+  AppItTicketsIdRoute: typeof AppItTicketsIdRoute
+}
+
+const AppItTicketsRouteChildren: AppItTicketsRouteChildren = {
+  AppItTicketsIdRoute: AppItTicketsIdRoute,
+}
+
+const AppItTicketsRouteWithChildren = AppItTicketsRoute._addFileChildren(
+  AppItTicketsRouteChildren,
+)
+
 interface AppLearnCourseIdRouteChildren {
   AppLearnCourseIdLessonsLessonIdRoute: typeof AppLearnCourseIdLessonsLessonIdRoute
 }
@@ -2728,6 +6053,32 @@ const AppMentorSessionsRouteChildren: AppMentorSessionsRouteChildren = {
 
 const AppMentorSessionsRouteWithChildren =
   AppMentorSessionsRoute._addFileChildren(AppMentorSessionsRouteChildren)
+
+interface AppNgoProgramsRouteChildren {
+  AppNgoProgramsProgramIdBudgetRoute: typeof AppNgoProgramsProgramIdBudgetRoute
+}
+
+const AppNgoProgramsRouteChildren: AppNgoProgramsRouteChildren = {
+  AppNgoProgramsProgramIdBudgetRoute: AppNgoProgramsProgramIdBudgetRoute,
+}
+
+const AppNgoProgramsRouteWithChildren = AppNgoProgramsRoute._addFileChildren(
+  AppNgoProgramsRouteChildren,
+)
+
+interface AppClientProjectsProjectIdRouteChildren {
+  AppClientProjectsProjectIdTasksRoute: typeof AppClientProjectsProjectIdTasksRoute
+}
+
+const AppClientProjectsProjectIdRouteChildren: AppClientProjectsProjectIdRouteChildren =
+  {
+    AppClientProjectsProjectIdTasksRoute: AppClientProjectsProjectIdTasksRoute,
+  }
+
+const AppClientProjectsProjectIdRouteWithChildren =
+  AppClientProjectsProjectIdRoute._addFileChildren(
+    AppClientProjectsProjectIdRouteChildren,
+  )
 
 interface AppMentorMenteesMenteeIdRouteChildren {
   AppMentorMenteesMenteeIdCareerRoute: typeof AppMentorMenteesMenteeIdCareerRoute
@@ -2823,6 +6174,7 @@ const rootRouteChildren: RootRouteChildren = {
   PortalDepartmentHeadRoute: PortalDepartmentHeadRoute,
   PortalDeveloperRoute: PortalDeveloperRoute,
   PortalDevopsRoute: PortalDevopsRoute,
+  PortalDirectorRoute: PortalDirectorRoute,
   PortalEmployerRoute: PortalEmployerRoute,
   PortalExecutiveRoute: PortalExecutiveRoute,
   PortalFinanceRoute: PortalFinanceRoute,
@@ -2855,42 +6207,201 @@ const rootRouteChildren: RootRouteChildren = {
   BlogIndexRoute: BlogIndexRoute,
   PortalIndexRoute: PortalIndexRoute,
   ProgramsIndexRoute: ProgramsIndexRoute,
+  AppAccountantAuditRoute: AppAccountantAuditRoute,
+  AppAccountantBankingRoute: AppAccountantBankingRoute,
+  AppAccountantBillingRoute: AppAccountantBillingRoute,
+  AppAccountantBudgetsRoute: AppAccountantBudgetsRoute,
+  AppAccountantExpensesRoute: AppAccountantExpensesRoute,
+  AppAccountantInvoicingRoute: AppAccountantInvoicingRoute,
+  AppAccountantPaymentsRoute: AppAccountantPaymentsRoute,
+  AppAccountantPayrollRoute: AppAccountantPayrollRoute,
+  AppAccountantReportsRoute: AppAccountantReportsRoute,
+  AppAdminApiKeysRoute: AppAdminApiKeysRoute,
+  AppAdminAuditRoute: AppAdminAuditRoute,
+  AppAdminBackupsRoute: AppAdminBackupsRoute,
+  AppAdminConfigRoute: AppAdminConfigRoute,
+  AppAdminIntegrationsRoute: AppAdminIntegrationsRoute,
+  AppAdminLogsRoute: AppAdminLogsRoute,
+  AppAdminMonitoringRoute: AppAdminMonitoringRoute,
+  AppAdminRateLimitsRoute: AppAdminRateLimitsRoute,
+  AppAdminRolesRoute: AppAdminRolesRoute,
+  AppAdminSecurityRoute: AppAdminSecurityRoute,
+  AppAdminUsersRoute: AppAdminUsersRoute,
+  AppAdmissionsApplicationsRoute: AppAdmissionsApplicationsRouteWithChildren,
+  AppAdmissionsCommunicationRoute: AppAdmissionsCommunicationRoute,
+  AppAdmissionsDocumentsRoute: AppAdmissionsDocumentsRoute,
+  AppAdmissionsEnrollmentRoute: AppAdmissionsEnrollmentRoute,
+  AppAdmissionsInterviewsRoute: AppAdmissionsInterviewsRoute,
+  AppAdmissionsReportsRoute: AppAdmissionsReportsRoute,
+  AppAdmissionsReviewRoute: AppAdmissionsReviewRoute,
   AppAlumniEventsRoute: AppAlumniEventsRoute,
   AppAlumniGiveBackRoute: AppAlumniGiveBackRoute,
   AppAlumniHubRoute: AppAlumniHubRoute,
   AppAlumniJobsRoute: AppAlumniJobsRoute,
   AppAlumniNetworkRoute: AppAlumniNetworkRoute,
   AppAssignmentsAssignmentIdRoute: AppAssignmentsAssignmentIdRoute,
+  AppClientContractsRoute: AppClientContractsRoute,
+  AppClientDocumentsRoute: AppClientDocumentsRoute,
   AppClientInvoicesRoute: AppClientInvoicesRoute,
+  AppClientMessagesRoute: AppClientMessagesRoute,
+  AppClientProposalsRoute: AppClientProposalsRoute,
   AppClientSupportRoute: AppClientSupportRoute,
+  AppConversionCopyAbTestsRoute: AppConversionCopyAbTestsRoute,
+  AppConversionCopyAdsRoute: AppConversionCopyAdsRoute,
+  AppConversionCopyAnalyticsRoute: AppConversionCopyAnalyticsRoute,
+  AppConversionCopyBriefsRoute: AppConversionCopyBriefsRoute,
+  AppConversionCopyEmailSequencesRoute: AppConversionCopyEmailSequencesRoute,
+  AppConversionCopyLibraryRoute: AppConversionCopyLibraryRoute,
+  AppConversionCopyStyleGuideRoute: AppConversionCopyStyleGuideRoute,
+  AppDepartmentApprovalsRoute: AppDepartmentApprovalsRoute,
+  AppDepartmentCalendarRoute: AppDepartmentCalendarRoute,
   AppDepartmentCurriculumRoute: AppDepartmentCurriculumRoute,
   AppDepartmentEnrollmentRoute: AppDepartmentEnrollmentRoute,
   AppDepartmentInstructorsRoute: AppDepartmentInstructorsRoute,
   AppDepartmentQualityRoute: AppDepartmentQualityRoute,
+  AppDepartmentReportsRoute: AppDepartmentReportsRoute,
+  AppDevApiPlaygroundRoute: AppDevApiPlaygroundRoute,
+  AppDevDependenciesRoute: AppDevDependenciesRoute,
+  AppDevDeploymentsRoute: AppDevDeploymentsRoute,
+  AppDevDocsRoute: AppDevDocsRoute,
+  AppDevEnvRoute: AppDevEnvRoute,
+  AppDevFeatureFlagsRoute: AppDevFeatureFlagsRoute,
+  AppDevGitRoute: AppDevGitRoute,
+  AppDevMonitoringRoute: AppDevMonitoringRoute,
+  AppDevQueuesRoute: AppDevQueuesRoute,
+  AppDevReviewsRoute: AppDevReviewsRoute,
+  AppDevTasksRoute: AppDevTasksRoute,
+  AppDirectorAcademicRoute: AppDirectorAcademicRoute,
+  AppDirectorApprovalsRoute: AppDirectorApprovalsRoute,
+  AppDirectorCommandCenterRoute: AppDirectorCommandCenterRoute,
+  AppDirectorFinanceRoute: AppDirectorFinanceRoute,
+  AppDirectorHrRoute: AppDirectorHrRoute,
+  AppDirectorMarketingRoute: AppDirectorMarketingRoute,
+  AppDirectorOkrsRoute: AppDirectorOkrsRoute,
+  AppDirectorOperationsRoute: AppDirectorOperationsRoute,
+  AppDirectorReportsRoute: AppDirectorReportsRoute,
   AppEmployerAnalyticsRoute: AppEmployerAnalyticsRoute,
   AppEmployerBrandRoute: AppEmployerBrandRoute,
+  AppEmployerFeedbackRoute: AppEmployerFeedbackRoute,
   AppEmployerHubRoute: AppEmployerHubRoute,
   AppEmployerInterviewsRoute: AppEmployerInterviewsRoute,
   AppEmployerJobsRoute: AppEmployerJobsRoute,
   AppEmployerTalentRoute: AppEmployerTalentRoute,
+  AppGovernmentAuditRoute: AppGovernmentAuditRoute,
+  AppGovernmentCalendarRoute: AppGovernmentCalendarRoute,
+  AppGovernmentChangelogRoute: AppGovernmentChangelogRoute,
+  AppGovernmentDocumentsRoute: AppGovernmentDocumentsRoute,
+  AppGovernmentFilingsRoute: AppGovernmentFilingsRoute,
+  AppGovernmentInstitutionRoute: AppGovernmentInstitutionRoute,
+  AppGovernmentIntegrityRoute: AppGovernmentIntegrityRoute,
+  AppGovernmentMessagingRoute: AppGovernmentMessagingRoute,
+  AppGovernmentReportsRoute: AppGovernmentReportsRoute,
+  AppGovernmentTrainingRoute: AppGovernmentTrainingRoute,
+  AppHrAttendanceRoute: AppHrAttendanceRoute,
+  AppHrEmployeesRoute: AppHrEmployeesRoute,
+  AppHrLeaveRoute: AppHrLeaveRoute,
+  AppHrOnboardingRoute: AppHrOnboardingRoute,
+  AppHrPayrollInputRoute: AppHrPayrollInputRoute,
+  AppHrPerformanceRoute: AppHrPerformanceRoute,
+  AppHrRecruitmentRoute: AppHrRecruitmentRoute,
+  AppHrReportsRoute: AppHrReportsRoute,
+  AppHrTrainingRoute: AppHrTrainingRoute,
   AppInstructorAnalyticsRoute: AppInstructorAnalyticsRoute,
   AppInstructorAttendanceRoute: AppInstructorAttendanceRoute,
   AppInstructorGradebookRoute: AppInstructorGradebookRoute,
+  AppInternEvaluationRoute: AppInternEvaluationRoute,
+  AppInternLearningPlanRoute: AppInternLearningPlanRoute,
+  AppInternMentorshipRoute: AppInternMentorshipRoute,
+  AppInternMessagesRoute: AppInternMessagesRoute,
+  AppInternPortfolioRoute: AppInternPortfolioRoute,
+  AppInternTasksRoute: AppInternTasksRoute,
+  AppInternTimesheetRoute: AppInternTimesheetRoute,
+  AppItAssetsRoute: AppItAssetsRoute,
+  AppItKnowledgeBaseRoute: AppItKnowledgeBaseRoute,
+  AppItLicensesRoute: AppItLicensesRoute,
+  AppItMaintenanceRoute: AppItMaintenanceRoute,
+  AppItMonitoringRoute: AppItMonitoringRoute,
+  AppItRemoteSupportRoute: AppItRemoteSupportRoute,
+  AppItReportsRoute: AppItReportsRoute,
+  AppItTemplatesRoute: AppItTemplatesRoute,
+  AppItTicketsRoute: AppItTicketsRouteWithChildren,
+  AppItUsersRoute: AppItUsersRoute,
   AppLearnCourseIdRoute: AppLearnCourseIdRouteWithChildren,
   AppLiveClassIdRoute: AppLiveClassIdRoute,
+  AppMarketingAnalyticsRoute: AppMarketingAnalyticsRoute,
+  AppMarketingCampaignsRoute: AppMarketingCampaignsRoute,
+  AppMarketingContentCalendarRoute: AppMarketingContentCalendarRoute,
+  AppMarketingEmailRoute: AppMarketingEmailRoute,
+  AppMarketingLandingPagesRoute: AppMarketingLandingPagesRoute,
+  AppMarketingLeadsRoute: AppMarketingLeadsRoute,
+  AppMarketingReportsRoute: AppMarketingReportsRoute,
+  AppMarketingSeoRoute: AppMarketingSeoRoute,
+  AppMarketingSocialRoute: AppMarketingSocialRoute,
   AppMentorAnalyticsRoute: AppMentorAnalyticsRoute,
   AppMentorGoalsRoute: AppMentorGoalsRoute,
   AppMentorRequestsRoute: AppMentorRequestsRoute,
   AppMentorResourcesRoute: AppMentorResourcesRoute,
   AppMentorSessionsRoute: AppMentorSessionsRouteWithChildren,
   AppMentorSettingsRoute: AppMentorSettingsRoute,
+  AppNgoAnalyticsRoute: AppNgoAnalyticsRoute,
+  AppNgoDonationsRoute: AppNgoDonationsRoute,
+  AppNgoMessagingRoute: AppNgoMessagingRoute,
+  AppNgoProgramsRoute: AppNgoProgramsRouteWithChildren,
+  AppNgoReportsRoute: AppNgoReportsRoute,
+  AppNgoScholarshipsRoute: AppNgoScholarshipsRoute,
+  AppNgoVolunteersRoute: AppNgoVolunteersRoute,
+  AppOpsAutomationRoute: AppOpsAutomationRoute,
+  AppOpsBranchesRoute: AppOpsBranchesRoute,
+  AppOpsFacilitiesRoute: AppOpsFacilitiesRoute,
+  AppOpsInventoryRoute: AppOpsInventoryRoute,
+  AppOpsReportsRoute: AppOpsReportsRoute,
+  AppOpsTasksRoute: AppOpsTasksRoute,
+  AppOpsVendorsRoute: AppOpsVendorsRoute,
+  AppPartnerAgreementsRoute: AppPartnerAgreementsRoute,
+  AppPartnerCollaborationsRoute: AppPartnerCollaborationsRoute,
+  AppPartnerHubRoute: AppPartnerHubRoute,
+  AppPartnerMessagesRoute: AppPartnerMessagesRoute,
+  AppPartnerReferralsRoute: AppPartnerReferralsRoute,
+  AppPartnerReportsRoute: AppPartnerReportsRoute,
+  AppPartnerResourcesRoute: AppPartnerResourcesRoute,
+  AppReceptionistAppointmentsRoute: AppReceptionistAppointmentsRoute,
+  AppReceptionistCheckInRoute: AppReceptionistCheckInRoute,
+  AppReceptionistCheckOutRoute: AppReceptionistCheckOutRoute,
+  AppReceptionistDeliveriesRoute: AppReceptionistDeliveriesRoute,
+  AppReceptionistDirectoryRoute: AppReceptionistDirectoryRoute,
+  AppReceptionistInquiriesRoute: AppReceptionistInquiriesRoute,
+  AppReceptionistPhoneLogRoute: AppReceptionistPhoneLogRoute,
+  AppReceptionistTasksRoute: AppReceptionistTasksRoute,
+  AppSupplierDeliveriesRoute: AppSupplierDeliveriesRoute,
+  AppSupplierInvoicesRoute: AppSupplierInvoicesRoute,
+  AppSupplierMessagesRoute: AppSupplierMessagesRoute,
+  AppSupplierOrdersRoute: AppSupplierOrdersRoute,
+  AppSupplierPerformanceRoute: AppSupplierPerformanceRoute,
+  AppSupplierProfileRoute: AppSupplierProfileRoute,
+  AppVolunteerCertificatesRoute: AppVolunteerCertificatesRoute,
+  AppVolunteerCommunityRoute: AppVolunteerCommunityRoute,
+  AppVolunteerHoursRoute: AppVolunteerHoursRoute,
+  AppVolunteerImpactRoute: AppVolunteerImpactRoute,
+  AppVolunteerMyVolunteeringRoute: AppVolunteerMyVolunteeringRoute,
+  AppVolunteerOpportunitiesRoute: AppVolunteerOpportunitiesRoute,
+  AppAccountantIndexRoute: AppAccountantIndexRoute,
+  AppAdminIndexRoute: AppAdminIndexRoute,
+  AppAdmissionsIndexRoute: AppAdmissionsIndexRoute,
   AppAssessmentsIndexRoute: AppAssessmentsIndexRoute,
   AppAssignmentsIndexRoute: AppAssignmentsIndexRoute,
+  AppDevIndexRoute: AppDevIndexRoute,
+  AppGovernmentIndexRoute: AppGovernmentIndexRoute,
+  AppHrIndexRoute: AppHrIndexRoute,
+  AppInternIndexRoute: AppInternIndexRoute,
   AppLearnIndexRoute: AppLearnIndexRoute,
+  AppMarketingIndexRoute: AppMarketingIndexRoute,
   AppMentorIndexRoute: AppMentorIndexRoute,
+  AppNgoIndexRoute: AppNgoIndexRoute,
   AppParentIndexRoute: AppParentIndexRoute,
+  AppSupplierIndexRoute: AppSupplierIndexRoute,
   AppAssessmentsAssessmentIdTakeRoute: AppAssessmentsAssessmentIdTakeRoute,
-  AppClientProjectsProjectIdRoute: AppClientProjectsProjectIdRoute,
+  AppClientProjectsProjectIdRoute: AppClientProjectsProjectIdRouteWithChildren,
+  AppConversionCopyLandingPagesIdRoute: AppConversionCopyLandingPagesIdRoute,
   AppEmployerPipelineJobIdRoute: AppEmployerPipelineJobIdRoute,
   AppInstructorCoursesCourseIdRoute: AppInstructorCoursesCourseIdRoute,
   AppMentorMenteesMenteeIdRoute: AppMentorMenteesMenteeIdRouteWithChildren,

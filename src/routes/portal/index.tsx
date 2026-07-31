@@ -145,6 +145,13 @@ const portals = [
     tone: "text-ink bg-ink/10",
   },
   {
+    icon: LayoutDashboard,
+    label: "Director",
+    path: "/portal/director",
+    desc: "Command center, approvals, OKRs",
+    tone: "text-services bg-services/10",
+  },
+  {
     icon: ShieldCheck,
     label: "System Admin",
     path: "/portal/admin",

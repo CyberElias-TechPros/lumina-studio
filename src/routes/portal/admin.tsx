@@ -1,5 +1,21 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Activity, ArrowRight, Database, KeyRound, Server, ShieldCheck, Users } from "lucide-react";
+import {
+  Activity,
+  ArrowRight,
+  Database,
+  DatabaseBackup,
+  Fingerprint,
+  Gauge,
+  KeyRound,
+  LayoutTemplate,
+  ScrollText,
+  Server,
+  Settings2,
+  ShieldCheck,
+  Terminal,
+  Users,
+  Webhook,
+} from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -44,6 +60,93 @@ const recentActions = [
     action: "Blocked login attempt — brute force pattern",
     time: "07:55",
     tone: "bg-error/10 text-error",
+  },
+];
+
+const screens = [
+  {
+    icon: LayoutTemplate,
+    label: "Hub",
+    desc: "Admin overview",
+    path: "/app/admin",
+    tone: "bg-primary/10 text-primary",
+  },
+  {
+    icon: Users,
+    label: "Users",
+    desc: "Accounts and profiles",
+    path: "/app/admin/users",
+    tone: "bg-success/10 text-success",
+  },
+  {
+    icon: ShieldCheck,
+    label: "Roles",
+    desc: "Permissions and roles",
+    path: "/app/admin/roles",
+    tone: "bg-learning/10 text-learning",
+  },
+  {
+    icon: Fingerprint,
+    label: "Security",
+    desc: "MFA and policies",
+    path: "/app/admin/security",
+    tone: "bg-warning/10 text-warning",
+  },
+  {
+    icon: ScrollText,
+    label: "Audit log",
+    desc: "Full audit trail",
+    path: "/app/admin/audit",
+    tone: "bg-career/10 text-career",
+  },
+  {
+    icon: Settings2,
+    label: "Config",
+    desc: "Platform settings",
+    path: "/app/admin/config",
+    tone: "bg-community/10 text-community",
+  },
+  {
+    icon: Activity,
+    label: "Monitoring",
+    desc: "System health",
+    path: "/app/admin/monitoring",
+    tone: "bg-erp/10 text-erp",
+  },
+  {
+    icon: DatabaseBackup,
+    label: "Backups",
+    desc: "Snapshots and restores",
+    path: "/app/admin/backups",
+    tone: "bg-services/10 text-services",
+  },
+  {
+    icon: Webhook,
+    label: "Integrations",
+    desc: "Connected services",
+    path: "/app/admin/integrations",
+    tone: "bg-ink/10 text-ink",
+  },
+  {
+    icon: Terminal,
+    label: "Logs",
+    desc: "Server and app logs",
+    path: "/app/admin/logs",
+    tone: "bg-error/10 text-error",
+  },
+  {
+    icon: KeyRound,
+    label: "API keys",
+    desc: "Issue and rotate keys",
+    path: "/app/admin/api-keys",
+    tone: "bg-primary/10 text-primary",
+  },
+  {
+    icon: Gauge,
+    label: "Rate limits",
+    desc: "Limits and usage",
+    path: "/app/admin/rate-limits",
+    tone: "bg-success/10 text-success",
   },
 ];
 
@@ -217,6 +320,34 @@ function AdminPortal() {
           </Card>
         </div>
       </div>
+      <Card className="bg-card mt-5 shadow-soft border">
+        <CardHeader className="flex-row items-center justify-between">
+          <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
+            <LayoutTemplate className="text-primary size-4" /> Workspace
+          </CardTitle>
+          <Badge variant="secondary" className="font-semibold">
+            {screens.length} modules
+          </Badge>
+        </CardHeader>
+        <CardContent className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+          {screens.map((s) => (
+            <Link
+              key={s.path}
+              to={s.path}
+              className="group bg-card shadow-soft hover:shadow-elevated flex flex-col rounded-xl border p-4 transition-all hover:-translate-y-0.5"
+            >
+              <div className="flex items-start justify-between">
+                <span className={cn("grid size-9 place-items-center rounded-lg", s.tone)}>
+                  <s.icon className="size-4" />
+                </span>
+                <ArrowRight className="text-muted-foreground group-hover:text-primary size-4 transition-colors" />
+              </div>
+              <p className="font-display mt-3 text-sm font-extrabold">{s.label}</p>
+              <p className="text-muted-foreground mt-1 text-xs">{s.desc}</p>
+            </Link>
+          ))}
+        </CardContent>
+      </Card>
     </AppShell>
   );
 }

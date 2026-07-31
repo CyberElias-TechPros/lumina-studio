@@ -1,0 +1,131 @@
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { ArrowLeft, CalendarClock, FileSignature, Handshake, ScrollText } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { AppShell } from "@/components/app/app-shell";
+import { cn } from "@/lib/utils";
+
+export const Route = createFileRoute("/app/partner/agreements")({
+  head: () => ({
+    meta: [
+      { title: "Agreements — CEA-OS" },
+      { name: "description", content: "MOUs, contracts and partnership terms." },
+    ],
+  }),
+  component: PartnerAgreements,
+});
+
+const agreements = [
+  {
+    a: "Master partnership agreement",
+    d: "Signed Feb 2025",
+    s: "Active",
+    tone: "bg-success/10 text-success",
+  },
+  {
+    a: "Revenue share addendum",
+    d: "Signed Jan 2026",
+    s: "Active",
+    tone: "bg-success/10 text-success",
+  },
+  {
+    a: "Event co-branding MOU",
+    d: "Draft · review by Aug 10",
+    s: "Draft",
+    tone: "bg-warning/10 text-warning",
+  },
+];
+
+function PartnerAgreements() {
+  return (
+    <AppShell
+      roleKey="student"
+      title="Agreements"
+      subtitle="2 active · 1 draft · 1 renewal due Feb 2027"
+      actions={
+        <>
+          <Badge className="bg-success/10 text-success border-0 font-semibold">All signed</Badge>
+          <Button asChild variant="outline" size="sm" className="font-semibold">
+            <Link to="/app/partner/hub">
+              <ArrowLeft className="size-4" /> Partner hub
+            </Link>
+          </Button>
+        </>
+      }
+    >
+      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+        {[
+          {
+            label: "Active",
+            value: "2",
+            delta: "in force",
+            icon: FileSignature,
+            tone: "bg-success/10 text-success",
+          },
+          {
+            label: "Drafts",
+            value: "1",
+            delta: "MOU in review",
+            icon: ScrollText,
+            tone: "bg-warning/10 text-warning",
+          },
+          {
+            label: "Renewals (12m)",
+            value: "1",
+            delta: "Feb 2027",
+            icon: CalendarClock,
+            tone: "bg-primary/10 text-primary",
+          },
+          {
+            label: "Revenue share",
+            value: "12%",
+            delta: "per signed terms",
+            icon: Handshake,
+            tone: "bg-learning/10 text-learning",
+          },
+        ].map((k) => (
+          <Card key={k.label} className="bg-card shadow-soft border">
+            <CardContent className="p-5">
+              <div className="flex items-center justify-between">
+                <p className="text-muted-foreground text-xs font-bold tracking-wide uppercase">
+                  {k.label}
+                </p>
+                <span className={cn("grid size-8 place-items-center rounded-lg", k.tone)}>
+                  <k.icon className="size-4" />
+                </span>
+              </div>
+              <p className="font-display mt-3 text-2xl font-extrabold">{k.value}</p>
+              <p className="text-muted-foreground mt-0.5 text-xs font-semibold">{k.delta}</p>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+
+      <Card className="bg-card mt-5 shadow-soft border">
+        <CardHeader className="flex-row items-center justify-between">
+          <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
+            <FileSignature className="text-primary size-4" /> Your agreements
+          </CardTitle>
+          <Button variant="outline" size="sm" className="font-semibold">
+            Request MOU
+          </Button>
+        </CardHeader>
+        <CardContent className="divide-y">
+          {agreements.map((a) => (
+            <div key={a.a} className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0">
+              <div className="min-w-0 flex-1">
+                <p className="text-sm font-bold">{a.a}</p>
+                <p className="text-muted-foreground text-xs">{a.d}</p>
+              </div>
+              <Badge className={cn("border-0 font-semibold", a.tone)}>{a.s}</Badge>
+              <Button variant="outline" size="sm" className="shrink-0 font-semibold">
+                View
+              </Button>
+            </div>
+          ))}
+        </CardContent>
+      </Card>
+    </AppShell>
+  );
+}
