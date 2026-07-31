@@ -2,20 +2,17 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   ArrowRight,
   ArrowUpRight,
-  Award,
   BookOpen,
   BriefcaseBusiness,
   HandHeart,
   Network,
   Quote,
-  Search,
-  Star,
+  Sparkles,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { CTASection, PageHero, PageShell, SectionHeading } from "@/components/marketing/shell";
 import { Reveal, StaggerGroup, StaggerItem, TiltCard } from "@/components/motion";
-import { testimonials } from "@/data/site";
 
 export const Route = createFileRoute("/alumni")({
   head: () => ({
@@ -24,7 +21,7 @@ export const Route = createFileRoute("/alumni")({
       {
         name: "description",
         content:
-          "Once an Elias, always an Elias. Join 12,000+ alumni across 36 states and 14 countries — network, mentor, hire and give back.",
+          "Once an Elias, always an Elias. The network is built by every graduating cohort — mentor, hire and give back from day one.",
       },
     ],
   }),
@@ -32,17 +29,17 @@ export const Route = createFileRoute("/alumni")({
 });
 
 const stats = [
-  { value: "12,480+", label: "Alumni worldwide" },
-  { value: "36", label: "Nigerian states" },
-  { value: "14", label: "Countries" },
-  { value: "78%", label: "Placement rate" },
+  { value: "9", label: "Training domains" },
+  { value: "5", label: "Ecosystem pillars" },
+  { value: "30+", label: "CEA-OS workspaces" },
+  { value: "10", label: "Journey stages" },
 ];
 
 const features = [
   {
     icon: Network,
     title: "Directory & networking",
-    body: "Search by industry, company, skills or cohort. Connect, message and collaborate — the directory never expires.",
+    body: "Search by industry, company, skills or cohort. Connect, message and collaborate — the directory is being built to never expire.",
   },
   {
     icon: BookOpen,
@@ -52,42 +49,13 @@ const features = [
   {
     icon: BriefcaseBusiness,
     title: "Jobs & referrals",
-    body: "Browse the private job board, refer roles and get paid referral credits when hires stick.",
+    body: "The private job board, referral credits and hiring pipelines open with the first graduating cohorts.",
   },
   {
     icon: HandHeart,
     title: "Give back",
-    body: "Fund scholarships, sponsor bootcamps, speak at open days or volunteer — every contribution is tracked to impact.",
+    body: "Fund scholarships, sponsor bootcamps, speak at open days or volunteer — every contribution tracked to impact.",
   },
-];
-
-const alumni = [
-  {
-    name: "Chiamaka Obi",
-    role: "Frontend Engineer, Paystack",
-    program: "Full-Stack · 2024",
-    emoji: "⚡",
-  },
-  {
-    name: "Tunde Adeyemi",
-    role: "SOC Analyst, Interswitch",
-    program: "Cybersecurity · 2024",
-    emoji: "🛡️",
-  },
-  {
-    name: "Halima Yusuf",
-    role: "Product Designer, Freelance",
-    program: "UI/UX · 2023",
-    emoji: "🎨",
-  },
-  {
-    name: "Emeka Nwosu",
-    role: "Cloud Engineer, Andela",
-    program: "Cloud & DevOps · 2023",
-    emoji: "☁️",
-  },
-  { name: "Fatima Sani", role: "Data Analyst, MTN", program: "Data Science · 2024", emoji: "📊" },
-  { name: "David Okafor", role: "Founder, SwiftHire", program: "Full-Stack · 2022", emoji: "🚀" },
 ];
 
 function Alumni() {
@@ -100,7 +68,7 @@ function Alumni() {
             Once an Elias, <span className="text-gradient">always an Elias</span>
           </>
         }
-        description="The alumni network is the academy's longest-running program. 12,000+ graduates across 36 states and 14 countries — connected, mentoring and hiring each other."
+        description="The alumni network is the academy's longest-running program — it grows with every cohort, from the very first one."
       >
         <StaggerGroup className="mt-10 grid max-w-2xl grid-cols-2 gap-4 sm:grid-cols-4">
           {stats.map((s) => (
@@ -138,67 +106,42 @@ function Alumni() {
           <SectionHeading
             eyebrow="Success stories"
             title="The alumni spotlight"
-            description="Promotions, launches and breakthroughs — shared by the people who lived them."
+            description="Promotions, launches and breakthroughs — shared by the people who live them, once they've lived them."
           />
-          <StaggerGroup className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-            {alumni.map((a) => (
-              <StaggerItem key={a.name}>
-                <div className="bg-card shadow-soft hover:shadow-elevated h-full rounded-2xl border p-7 transition-shadow">
-                  <div className="flex items-center justify-between">
-                    <span className="bg-gradient-brand grid size-12 place-items-center rounded-2xl text-2xl">
-                      {a.emoji}
-                    </span>
-                    <Badge variant="secondary" className="font-semibold">
-                      {a.program}
-                    </Badge>
-                  </div>
-                  <p className="font-display mt-5 text-base font-bold">{a.name}</p>
-                  <p className="text-muted-foreground text-sm">{a.role}</p>
-                  <div className="mt-4 flex items-center gap-1">
-                    {Array.from({ length: 5 }).map((_, i) => (
-                      <Star key={i} className="fill-career text-career size-3.5" />
-                    ))}
-                  </div>
-                </div>
-              </StaggerItem>
-            ))}
-          </StaggerGroup>
-          <Reveal delay={0.1} className="mt-10 text-center">
-            <Button asChild variant="outline">
+          <div className="border-dashed bg-card/50 mt-12 flex flex-col items-center rounded-3xl border p-12 text-center">
+            <Sparkles className="text-muted-foreground size-9" />
+            <h3 className="font-display mt-5 text-xl font-extrabold">
+              The first spotlights are being earned
+            </h3>
+            <p className="text-muted-foreground mt-3 max-w-md text-sm leading-relaxed">
+              We'd rather show you a real first cohort than a fictional highlight reel. When our
+              graduates land their first roles, their stories appear here — with their permission.
+            </p>
+            <Button asChild variant="outline" className="mt-7">
               <Link to="/stories">
-                All success stories <ArrowRight className="ml-1.5 size-4" />
+                How we'll tell those stories <ArrowUpRight className="ml-1.5 size-4" />
               </Link>
             </Button>
-          </Reveal>
+          </div>
         </div>
       </section>
 
       <section className="container-page py-20 md:py-24">
         <SectionHeading align="center" eyebrow="In their words" title="What alumni say" />
-        <StaggerGroup className="mx-auto mt-12 grid max-w-4xl gap-5 md:grid-cols-2">
-          {testimonials.map((t) => (
-            <StaggerItem key={t.name}>
-              <div className="bg-card shadow-soft relative h-full rounded-2xl border p-7">
-                <Quote className="text-primary/15 absolute -top-2 right-4 size-16" />
-                <p className="relative text-base leading-relaxed font-medium text-pretty">
-                  “{t.quote}”
-                </p>
-                <div className="relative mt-6 flex items-center gap-3">
-                  <span className="bg-gradient-brand text-primary-foreground font-display grid size-10 place-items-center rounded-full text-xs font-bold">
-                    {t.name
-                      .split(" ")
-                      .map((n) => n[0])
-                      .join("")}
-                  </span>
-                  <div>
-                    <p className="text-sm font-bold">{t.name}</p>
-                    <p className="text-muted-foreground text-xs">{t.role}</p>
-                  </div>
-                </div>
-              </div>
-            </StaggerItem>
-          ))}
-        </StaggerGroup>
+        <div className="mx-auto mt-12 max-w-3xl">
+          <Reveal>
+            <div className="bg-card shadow-soft relative rounded-3xl border p-8 text-center md:p-10">
+              <Quote className="text-primary/15 absolute -top-2 right-6 size-16" />
+              <p className="relative text-lg leading-relaxed font-medium text-pretty sm:text-xl">
+                “The academy is a network, not a transaction. Alumni mentor students, students
+                become alumni, and every cohort extends the ladder for the next one.”
+              </p>
+              <p className="text-muted-foreground relative mt-6 text-sm font-semibold">
+                The alumni charter · written for cohort one
+              </p>
+            </div>
+          </Reveal>
+        </div>
       </section>
 
       <section className="container-page pb-20">
@@ -230,7 +173,7 @@ function Alumni() {
 
       <CTASection
         title="Your network starts on day one"
-        description="Join the academy and you join the network for life — mentor circles, hiring pipelines and 12,000+ people who've walked your path."
+        description="Join the academy and you join the network for life — mentor circles, hiring pipelines and a community of people who've walked your path."
         primary={{ label: "Start your application", to: "/admissions" }}
         secondary={{ label: "Browse programs", to: "/programs" }}
       />

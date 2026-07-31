@@ -53,24 +53,24 @@ const highlights = [
   {
     icon: HandCoins,
     tone: "bg-warning/10 text-warning",
-    title: "₦120m in scholarships",
-    desc: "Merit, need-based, women-in-tech and community funds every year.",
+    title: "Scholarships, every cohort",
+    desc: "Merit, need-based, women-in-tech and community funds as the academy grows.",
   },
   {
     icon: Users,
     tone: "bg-career/10 text-career",
-    title: "700+ employers",
-    desc: "Hiring partners who review portfolios and attend demo days.",
+    title: "Employer network",
+    desc: "Hiring partners who review portfolios and attend demo days — built cohort by cohort.",
   },
 ];
 
 const tracks = [
-  { name: "Frontend Development", length: "6 months", cohort: "Starts September" },
-  { name: "Backend Engineering", length: "6 months", cohort: "Starts September" },
-  { name: "UI/UX Design", length: "5 months", cohort: "Starts October" },
-  { name: "Data & AI", length: "7 months", cohort: "Starts November" },
-  { name: "Growth Marketing", length: "4 months", cohort: "Starts October" },
-  { name: "Product Management", length: "4 months", cohort: "Starts November" },
+  { name: "Frontend Development", length: "6 months", cohort: "Opens with cohort one" },
+  { name: "Backend Engineering", length: "6 months", cohort: "Opens with cohort one" },
+  { name: "UI/UX Design", length: "5 months", cohort: "Dates announced at admissions" },
+  { name: "Data & AI", length: "7 months", cohort: "Dates announced at admissions" },
+  { name: "Growth Marketing", length: "4 months", cohort: "Dates announced at admissions" },
+  { name: "Product Management", length: "4 months", cohort: "Dates announced at admissions" },
 ];
 
 function BrochurePage() {
@@ -124,11 +124,11 @@ function BrochurePage() {
                 <GraduationCap className="text-primary size-5" /> Programs at a glance
               </h2>
               <p className="text-muted-foreground mt-1 text-sm">
-                Six tracks, four intakes a year, all delivered live in Ikeja and remotely.
+                Six tracks, all delivered live in Port Harcourt and remotely.
               </p>
             </div>
             <Badge variant="secondary" className="font-semibold">
-              Cohort 16 · September 2026
+              Cohort 01 · Opening soon
             </Badge>
           </div>
           <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
@@ -152,10 +152,10 @@ function BrochurePage() {
                 <h3 className="font-display mt-3 text-base font-extrabold">Outcomes that talk</h3>
                 <ul className="text-ink-foreground/75 mt-4 space-y-3 text-sm">
                   {[
-                    "91% placement within 6 months of graduation",
-                    "₦280k median starting salary for 2025 grads",
-                    "1,400+ learners placed since 2019",
                     "Portfolio-first: every learner ships real products",
+                    "Capstones graded by working practitioners",
+                    "Placement support until you're placed",
+                    "Outcomes published here as cohorts graduate",
                   ].map((o) => (
                     <li key={o} className="flex items-start gap-2.5">
                       <Star className="text-warning mt-0.5 size-4 shrink-0" />

@@ -35,7 +35,7 @@ const extraFaqs = [
   },
   {
     q: "Can I study while working?",
-    a: "Yes. Live classes run in the evenings (18:00–21:00 WAT) and Saturdays, and every session is recorded. Most cohorts have working professionals; the average learner commits 12–15 hours a week.",
+    a: "Yes. Live classes run in the evenings (18:00–21:00 WAT) and Saturdays, and every session is recorded. Most learners commit 12–15 hours a week.",
   },
   {
     q: "What happens if I miss the placement deadline?",
@@ -43,7 +43,7 @@ const extraFaqs = [
   },
   {
     q: "Do you accept international students?",
-    a: "Yes — 12% of our learners are remote from 9 countries. Tuition is paid in naira equivalent, and assessments, mentorship and placement support all work fully remote.",
+    a: "Yes. Tuition is paid in naira equivalent, and assessments, mentorship and placement support are designed to work fully remotely.",
   },
 ];
 
@@ -119,7 +119,7 @@ function FaqPage() {
                   </span>
                   <h3 className="font-display mt-4 text-base font-extrabold">WhatsApp community</h3>
                   <p className="text-ink-foreground/70 mt-1 text-sm">
-                    Join 4,000+ people asking questions daily.
+                    A growing group of applicants, learners and alumni — questions welcome.
                   </p>
                   <Button asChild size="sm" className="bg-gradient-brand shadow-glow mt-4 border-0">
                     <Link to="/community">

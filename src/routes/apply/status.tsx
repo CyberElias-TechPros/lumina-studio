@@ -103,7 +103,7 @@ function ApplyStatusPage() {
               <div>
                 <p className="font-display text-lg font-extrabold">CEA-2026-0142</p>
                 <p className="text-muted-foreground text-sm">
-                  Full-Stack Software Development · Cohort 16
+                  Full-Stack Software Development · Cohort 01
                 </p>
               </div>
               <Badge className="bg-warning/10 text-warning border-0 font-bold">

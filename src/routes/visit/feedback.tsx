@@ -149,14 +149,9 @@ function VisitFeedbackPage() {
                   <div className="mt-4 space-y-4">
                     {[
                       {
-                        name: "Ngozi A.",
-                        visit: "Open day · July",
-                        text: "The learners showing off their projects were the highlight. You can feel the energy.",
-                      },
-                      {
-                        name: "Samuel O.",
-                        visit: "Campus tour · June",
-                        text: "Booked for my daughter after sitting in one class. The instructor made it so real.",
+                        name: "First visitor",
+                        visit: "Open day · Cohort 01",
+                        text: "Your quote could live here after the first open day — with your name, if you like.",
                       },
                     ].map((t) => (
                       <div key={t.name} className="rounded-xl border p-4">
@@ -172,6 +167,9 @@ function VisitFeedbackPage() {
                       </div>
                     ))}
                   </div>
+                  <p className="text-muted-foreground mt-4 text-xs">
+                    We publish real feedback from real visitors — starting with our first open day.
+                  </p>
                 </CardContent>
               </Card>
             </Reveal>

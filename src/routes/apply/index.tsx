@@ -111,7 +111,7 @@ function ApplyPage() {
   return (
     <PageShell>
       <PageHero
-        eyebrow="Admissions open · Cohort 16 starts September"
+        eyebrow="Admissions opening · Cohort 01"
         title={
           <>
             Apply in <span className="text-gradient">four steps</span>

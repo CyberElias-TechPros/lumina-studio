@@ -7,7 +7,6 @@ import {
   Compass,
   LayoutGrid,
   Library,
-  Map,
   MapPin,
   Monitor,
   Ticket,
@@ -28,7 +27,7 @@ export const Route = createFileRoute("/visit/info")({
       {
         name: "description",
         content:
-          "Campus map, facilities and directions for Cyber Elias Academy, Ikeja GRA, Lagos. Everything you need to find your way around.",
+          "Campus plan, facilities and directions for Cyber Elias Academy, Port Harcourt, Rivers State. Everything you need to plan your visit.",
       },
     ],
   }),
@@ -39,12 +38,7 @@ const floors = [
   {
     name: "Ground floor",
     tone: "bg-primary/10 text-primary",
-    rooms: [
-      "Reception & visitor lounge",
-      "Café and lounge",
-      "Event hall (120 seats)",
-      "Security desk",
-    ],
+    rooms: ["Reception & visitor lounge", "Café and lounge", "Event hall", "Security desk"],
   },
   {
     name: "First floor",
@@ -64,7 +58,11 @@ const floors = [
 ];
 
 const facilities = [
-  { icon: Wifi, title: "Fibre internet", desc: "1Gbps symmetrical, plus hotspots in every room." },
+  {
+    icon: Wifi,
+    title: "Fibre internet",
+    desc: "Fast symmetrical connection, plus hotspots in every room.",
+  },
   { icon: Monitor, title: "Workstations", desc: "Every learner has a seat with dual screens." },
   { icon: Coffee, title: "Café", desc: "Coffee, pastries and power outlets, open all day." },
   {
@@ -87,20 +85,20 @@ function VisitInfoPage() {
         eyebrow="Campus map & info"
         title={
           <>
-            Find your way around <span className="text-gradient">Ikeja GRA</span>
+            Finding its place in <span className="text-gradient">Port Harcourt</span>
           </>
         }
-        description="Four floors, two studios, one café. Here's the lay of the land before you arrive — or while you're in the building."
+        description="Four floors, two studios, one café. This is the blueprint the Port Harcourt campus is being built to — the moment we can show you real walls, we will."
       />
 
       <section className="container-page pb-20">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <Badge variant="secondary" className="font-semibold">
-            <MapPin className="mr-1.5 size-3.5" /> 12 Adebayo Street, Ikeja GRA, Lagos
+            <MapPin className="mr-1.5 size-3.5" /> Port Harcourt, Rivers State
           </Badge>
           <div className="flex flex-wrap gap-2">
             <Button asChild variant="outline" size="sm">
-              <Link to="/visit">Book a visit</Link>
+              <Link to="/visit">Register for a visit</Link>
             </Button>
             <Button asChild variant="outline" size="sm">
               <Link to="/visit/brochure">Digital brochure</Link>
@@ -114,8 +112,8 @@ function VisitInfoPage() {
         <div className="bg-card shadow-soft mt-6 grid gap-6 rounded-2xl border p-6 md:grid-cols-[1.2fr_1fr]">
           <div>
             <div className="flex items-center gap-2">
-              <Map className="text-primary size-5" />
-              <h2 className="font-display text-lg font-extrabold">Site map</h2>
+              <Building2 className="text-primary size-5" />
+              <h2 className="font-display text-lg font-extrabold">The campus plan</h2>
             </div>
             <div className="bg-muted/50 relative mt-4 grid aspect-[4/3] place-items-center overflow-hidden rounded-xl border">
               <div className="absolute inset-0 opacity-20 [background-image:linear-gradient(to_right,var(--border)_1px,transparent_1px),linear-gradient(to_bottom,var(--border)_1px,transparent_1px)] [background-size:28px_28px]" />
@@ -123,13 +121,13 @@ function VisitInfoPage() {
                 <span className="bg-gradient-brand shadow-glow mx-auto grid size-12 place-items-center rounded-xl text-white">
                   <Building2 className="size-6" />
                 </span>
-                <p className="font-display text-sm font-extrabold">CEA Ikeja Campus</p>
+                <p className="font-display text-sm font-extrabold">CEA Port Harcourt Campus</p>
                 <p className="text-muted-foreground text-xs">
-                  Mobile Banjo bus stop · 5-min walk · Look for the orange sign
+                  Address and floor plan published when construction is done
                 </p>
               </div>
               <span className="bg-primary/10 text-primary absolute bottom-3 left-3 rounded-full px-2.5 py-1 text-[10px] font-bold">
-                BRT & danfo stop → 180m
+                Blueprint · finalising
               </span>
             </div>
           </div>
@@ -158,7 +156,7 @@ function VisitInfoPage() {
         <div className="mt-10">
           <div className="flex items-center gap-2">
             <Compass className="text-primary size-5" />
-            <h2 className="font-display text-lg font-extrabold">Facilities & amenities</h2>
+            <h2 className="font-display text-lg font-extrabold">Planned facilities & amenities</h2>
           </div>
           <StaggerGroup className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {facilities.map((f) => (
@@ -184,15 +182,15 @@ function VisitInfoPage() {
                 <Ticket className="size-5" />
               </span>
               <div>
-                <p className="font-display text-sm font-extrabold">Walk-ins welcome</p>
+                <p className="font-display text-sm font-extrabold">Walk-ins, when we open</p>
                 <p className="text-ink-foreground/70 text-xs">
-                  No appointment needed for the café and ground floor, Mon–Sat, 9am–6pm.
+                  No appointment needed for the café and ground floor once the campus is live.
                 </p>
               </div>
             </div>
             <Button asChild className="bg-gradient-brand shadow-glow border-0">
               <Link to="/visit">
-                Book a guided tour <ArrowRight className="ml-1.5 size-4" />
+                Register for a guided tour <ArrowRight className="ml-1.5 size-4" />
               </Link>
             </Button>
           </div>

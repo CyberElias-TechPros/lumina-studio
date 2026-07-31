@@ -103,16 +103,16 @@ function ScholarshipsPage() {
             Money should never be the <span className="text-gradient">reason you don't start</span>
           </>
         }
-        description="CEA commits at least ₦120 million to scholarships every year. Between grants, instalments and deferred payment, almost every applicant funds a place."
+        description="Scholarships, instalments and deferred payment — money should never be the reason you don't start. Fund sizes are published as the first cohort commits."
       />
 
       <section className="container-page py-16 md:py-20">
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {[
-            { value: "₦120m", label: "Committed annually", icon: HandCoins },
-            { value: "38%", label: "Of the last cohort received aid", icon: Award },
-            { value: "27", label: "Full scholarships awarded", icon: BadgeCheck },
-            { value: "0%", label: "Interest on instalments", icon: ShieldCheck },
+            { value: "₦0", label: "Upfront for eligible scholars", icon: HandCoins },
+            { value: "3", label: "Payment plans per term", icon: Award },
+            { value: "0%", label: "Interest on instalments", icon: BadgeCheck },
+            { value: "100%", label: "Of aid criteria published", icon: ShieldCheck },
           ].map((s) => (
             <Card key={s.label} className="bg-card shadow-soft border">
               <CardContent className="p-5">

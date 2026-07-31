@@ -112,7 +112,7 @@ function VerifyPage() {
                       <p className="text-muted-foreground text-[10px] font-bold tracking-wide uppercase">
                         Engine
                       </p>
-                      <p className="mt-0.5 text-sm font-bold">Learning Engine · Cohort 15</p>
+                      <p className="mt-0.5 text-sm font-bold">Learning Engine · Cohort 01</p>
                     </div>
                     <div>
                       <p className="text-muted-foreground text-[10px] font-bold tracking-wide uppercase">

@@ -37,13 +37,13 @@ const roles = [
   {
     dept: "Academy",
     title: "Instructor — Full-Stack Development",
-    type: "Full-time · Lagos or Remote",
+    type: "Full-time · Port Harcourt or Remote",
     tags: ["React", "Node.js", "Teaching"],
   },
   {
     dept: "Academy",
     title: "Cybersecurity Mentor",
-    type: "Part-time · Lagos",
+    type: "Part-time · Port Harcourt",
     tags: ["SIEM", "Incident Response", "Mentoring"],
   },
   {
@@ -67,13 +67,13 @@ const roles = [
   {
     dept: "Career Services",
     title: "Employer Partnerships Lead",
-    type: "Full-time · Lagos",
+    type: "Full-time · Port Harcourt or Remote",
     tags: ["BD", "HR Tech", "Networking"],
   },
   {
     dept: "Operations",
     title: "Student Success Officer",
-    type: "Full-time · Lagos",
+    type: "Full-time · Port Harcourt",
     tags: ["Support", "Empathy", "Organised"],
   },
   {
@@ -98,7 +98,7 @@ const culture = [
   {
     icon: Laptop,
     title: "Remote-friendly",
-    desc: "Work from Lagos, Abuja or anywhere with good internet. We optimise for output, not seat-time.",
+    desc: "Work from Port Harcourt, Abuja or anywhere with good internet. We optimise for output, not seat-time.",
   },
   {
     icon: Handshake,

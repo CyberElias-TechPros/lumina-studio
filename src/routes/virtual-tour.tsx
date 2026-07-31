@@ -96,7 +96,7 @@ function VirtualTourPage() {
             Walk the campus, <span className="text-gradient">anywhere</span>
           </>
         }
-        description="Six 360° stops, recorded live during an evening session. See the labs, the learners and the energy before you book the real thing."
+        description="When the Port Harcourt campus opens, this page becomes a six-stop 360° walkthrough — the labs, the learners and the energy. Until then, here's what the tour will cover."
       />
 
       <section className="container-page pb-20">
@@ -110,26 +110,28 @@ function VirtualTourPage() {
                   </span>
                   <p className="font-display mt-4 text-sm font-extrabold">{stop.title}</p>
                   <p className="text-ink-foreground/60 mt-1 text-xs">
-                    360° walkthrough · {stop.duration} · recorded 18:40 WAT
+                    Recording coming with the campus · {stop.duration} planned
                   </p>
                 </div>
-                <span className="bg-error/90 text-error-foreground absolute top-4 left-4 flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[10px] font-bold">
-                  <span className="size-1.5 animate-pulse rounded-full bg-current" /> LIVE
-                </span>
                 <Badge className="bg-ink-foreground/15 text-ink-foreground absolute right-4 bottom-4 border-0 font-semibold">
-                  360°
+                  Coming soon
                 </Badge>
               </div>
               <div className="bg-black/60 absolute inset-x-0 bottom-0 flex justify-center gap-3 p-4">
-                <Button className="bg-gradient-brand shadow-glow h-9 border-0">
-                  <PlayCircle className="mr-1.5 size-4" /> Play {stop.title}
+                <Button asChild className="bg-gradient-brand shadow-glow h-9 border-0">
+                  <Link to="/visit">
+                    <PlayCircle className="mr-1.5 size-4" /> Register for the tour
+                  </Link>
                 </Button>
                 <Button
+                  asChild
                   variant="outline"
                   size="sm"
                   className="h-9 bg-white/10 text-white border-white/30"
                 >
-                  <Camera className="mr-1.5 size-4" /> Switch view
+                  <Link to="/visit/info">
+                    <Camera className="mr-1.5 size-4" /> Campus plan
+                  </Link>
                 </Button>
               </div>
             </div>
@@ -176,8 +178,8 @@ function VirtualTourPage() {
             <div>
               <p className="font-display text-sm font-extrabold">Prefer a live walkthrough?</p>
               <p className="text-ink-foreground/70 mt-1 text-xs">
-                Book a 30-minute guided video tour with a current learner — Wednesdays and
-                Saturdays.
+                Book a guided video tour with a mentor once visits go live — or take the in-person
+                campus tour in Port Harcourt.
               </p>
             </div>
             <Button asChild className="bg-gradient-brand shadow-glow border-0">

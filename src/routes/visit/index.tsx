@@ -34,7 +34,7 @@ export const Route = createFileRoute("/visit/")({
       {
         name: "description",
         content:
-          "Book a campus tour, sit in a live class or attend an open day at Cyber Elias Academy, Ikeja. See the learning environment before you commit.",
+          "Register for campus tours and open days at Cyber Elias Academy, Port Harcourt — or take a virtual tour from anywhere. See the academy before you commit.",
       },
     ],
   }),
@@ -42,7 +42,11 @@ export const Route = createFileRoute("/visit/")({
 });
 
 const visitTypes = [
-  { id: "tour", label: "Campus tour", desc: "45 minutes across labs, studios and common areas" },
+  {
+    id: "tour",
+    label: "Campus tour",
+    desc: "First through the doors when the Port Harcourt campus opens",
+  },
   {
     id: "class",
     label: "Sit in a live class",
@@ -51,26 +55,26 @@ const visitTypes = [
   {
     id: "open",
     label: "Open day",
-    desc: "The full Saturday experience — demos, alumni, scholarships",
+    desc: "The full Saturday experience — demos, mentors, scholarships",
   },
   { id: "virtual", label: "Virtual tour", desc: "A 30-minute guided walkthrough over video call" },
 ];
 
 const gettingHere = [
   {
-    icon: TrainFront,
-    title: "By rail",
-    desc: "Ikeja bus/train station is 10 minutes away. We'll send a pickup to the stop.",
+    icon: Plane,
+    title: "From the airport",
+    desc: "Port Harcourt International Airport is about 40 minutes from the city. Pickup arranged when visits go live.",
   },
   {
     icon: Bus,
-    title: "By bus",
-    desc: "Danfo and BRT stops on Mobolaji Bank-Anthony Way, 5-minute walk.",
+    title: "By road",
+    desc: "Well connected via the East–West Road and PH–Aba Expressway. Pickup on request.",
   },
   {
-    icon: Plane,
-    title: "From the airport",
-    desc: "MMIA is 25 minutes. Arrange a pickup when you book your visit.",
+    icon: TrainFront,
+    title: "Local transit",
+    desc: "Keke, taxis and City Buses serve every neighbourhood. We'll send precise directions.",
   },
   {
     icon: Coffee,
@@ -89,10 +93,10 @@ function VisitPage() {
         eyebrow="Visit Cyber Elias Academy"
         title={
           <>
-            See the campus before you <span className="text-gradient">commit</span>
+            Be there when the <span className="text-gradient">doors open</span>
           </>
         }
-        description="Tour the labs, sit in a live class, meet learners and mentors. Most visitors tell us it's the visit, not the brochure, that decides them."
+        description="The academy is taking shape in Port Harcourt. Register today and you'll be first in line for campus tours, open days and virtual walkthroughs."
       />
 
       {booked ? (
@@ -101,10 +105,10 @@ function VisitPage() {
             <span className="bg-success/10 text-success mx-auto grid size-16 place-items-center rounded-full">
               <CheckCircle2 className="size-8" />
             </span>
-            <h2 className="font-display mt-6 text-2xl font-extrabold">Visit confirmed</h2>
+            <h2 className="font-display mt-6 text-2xl font-extrabold">Interest registered</h2>
             <p className="text-muted-foreground mt-3">
-              Our front desk team will email you directions and a contact number for the day. We're
-              looking forward to seeing you.
+              We'll email you the moment visit dates and directions are confirmed — no obligation,
+              no spam.
             </p>
             <Button asChild variant="outline" className="mt-6">
               <Link to="/programs">
@@ -120,16 +124,16 @@ function VisitPage() {
               <div className="bg-card shadow-soft overflow-hidden rounded-2xl border">
                 <div className="bg-gradient-ink text-ink-foreground p-6">
                   <Badge className="bg-ink-foreground/15 text-ink-foreground border-0">
-                    Ikeja Campus
+                    Port Harcourt Campus
                   </Badge>
                   <h3 className="font-display mt-3 text-xl font-extrabold">Cyber Elias Academy</h3>
                   <p className="text-ink-foreground/70 mt-1 text-sm">
-                    12 Adebayo Street, Ikeja GRA, Lagos
+                    Rivers State, Nigeria — address confirmed at opening
                   </p>
                   <div className="mt-5 grid grid-cols-3 gap-3">
                     {[
-                      { label: "Classes daily", value: "18:00–21:00" },
-                      { label: "Open days", value: "Sat 10:00" },
+                      { label: "Opening", value: "With cohort one" },
+                      { label: "Open days", value: "Announced soon" },
                       { label: "Visits", value: "Mon–Sat" },
                     ].map((s) => (
                       <div key={s.label} className="rounded-xl bg-ink-foreground/10 p-3">
@@ -170,10 +174,10 @@ function VisitPage() {
             <Card className="bg-card shadow-soft h-fit border">
               <CardHeader>
                 <CardTitle className="font-display text-lg font-extrabold">
-                  Book your visit
+                  Register your interest
                 </CardTitle>
                 <p className="text-muted-foreground text-sm font-normal">
-                  Free · No obligation · 15 minutes for questions
+                  Free · No obligation · You'll be first to know
                 </p>
               </CardHeader>
               <CardContent className="space-y-5">
@@ -210,8 +214,8 @@ function VisitPage() {
                     <Input id="v-phone" type="tel" placeholder="+234 800 000 0000" />
                   </div>
                   <div className="space-y-1.5">
-                    <Label htmlFor="v-date">Preferred date</Label>
-                    <Input id="v-date" type="date" />
+                    <Label htmlFor="v-city">Your city</Label>
+                    <Input id="v-city" placeholder="e.g. Port Harcourt, Aba, Lagos" />
                   </div>
                   <div className="space-y-1.5">
                     <Label htmlFor="v-time">Preferred time</Label>
@@ -235,8 +239,8 @@ function VisitPage() {
                     <CalendarDays className="text-primary size-4" /> Coming from far?
                   </p>
                   <p className="text-muted-foreground mt-1 text-xs">
-                    Add your city in the notes and we'll arrange pickup and a hostel recommendation
-                    for the night.
+                    Add your city in the form and we'll include pickup and accommodation tips in the
+                    opening announcements.
                   </p>
                 </div>
 
@@ -244,7 +248,7 @@ function VisitPage() {
                   onClick={() => setBooked(true)}
                   className="bg-gradient-brand shadow-glow w-full border-0"
                 >
-                  Confirm my visit <ArrowRight className="ml-1.5 size-4" />
+                  Register interest <ArrowRight className="ml-1.5 size-4" />
                 </Button>
                 <p className="text-muted-foreground text-center text-xs">
                   Prefer virtual? Book a{" "}
@@ -263,8 +267,8 @@ function VisitPage() {
         <div className="container-page py-16">
           <SectionHeading
             eyebrow="Open day"
-            title="Next open day: Saturday, August 22"
-            description="Workshop demos, alumni panels, scholarship desk and a full campus walkthrough. Free and open to everyone."
+            title="Open days are being planned"
+            description="Workshop demos, mentor panels, a scholarship desk and a full campus walkthrough — announced here and by email the moment dates are set."
           />
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             <Button asChild className="bg-gradient-brand shadow-glow border-0">

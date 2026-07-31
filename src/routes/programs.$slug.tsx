@@ -94,13 +94,17 @@ function ProgramDetail() {
                   <span className="flex items-center gap-2">
                     <MapPin className="text-primary size-4" /> {program.mode}
                   </span>
-                  <span className="flex items-center gap-2">
-                    <Users className="text-primary size-4" /> {program.learners.toLocaleString()}{" "}
-                    learners
-                  </span>
-                  <span className="flex items-center gap-2">
-                    <Star className="fill-career text-career size-4" /> {program.rating} rating
-                  </span>
+                  {program.learners > 0 && (
+                    <span className="flex items-center gap-2">
+                      <Users className="text-primary size-4" /> {program.learners.toLocaleString()}{" "}
+                      learners
+                    </span>
+                  )}
+                  {program.rating > 0 && (
+                    <span className="flex items-center gap-2">
+                      <Star className="fill-career text-career size-4" /> {program.rating} rating
+                    </span>
+                  )}
                 </div>
               </Reveal>
             </div>

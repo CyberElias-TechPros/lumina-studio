@@ -148,29 +148,18 @@ function Partners() {
         <SectionHeading
           align="center"
           eyebrow="Case study"
-          title="Kaduna State: 2,000 learners into tech roles"
-          description="A state-wide digital skills programme delivered through the platform — with 71% placement and 86 employers on the other side."
+          title="Our first case studies are being earned"
+          description="When the first state-wide program, institutional bootcamp or employer placement ships, the numbers get published here — verified, not imagined."
         />
-        <StaggerGroup className="mx-auto mt-12 grid max-w-3xl gap-4 sm:grid-cols-3">
-          {[
-            { value: "2,043", label: "Graduates trained" },
-            { value: "71%", label: "Placement rate" },
-            { value: "86", label: "Employers engaged" },
-          ].map((s, i) => (
-            <StaggerItem key={s.label}>
-              <div className="bg-card shadow-soft rounded-2xl border p-7 text-center">
-                <p className="font-display text-gradient text-4xl font-extrabold">{s.value}</p>
-                <p className="text-muted-foreground mt-2 text-sm font-medium">{s.label}</p>
-              </div>
-            </StaggerItem>
-          ))}
-        </StaggerGroup>
-        <Reveal delay={0.15} className="mt-10 text-center">
-          <Button asChild variant="outline">
-            <Link to="/work">
-              Read the full case study <ArrowRight className="ml-1.5 size-4" />
-            </Link>
-          </Button>
+        <Reveal delay={0.1} className="mx-auto mt-10 max-w-xl text-center">
+          <div className="border-dashed bg-card/50 flex flex-col items-center rounded-3xl border p-10">
+            <Award className="text-muted-foreground size-8" />
+            <p className="font-display mt-4 text-lg font-extrabold">No invented outcomes</p>
+            <p className="text-muted-foreground mt-2 text-sm leading-relaxed">
+              We build the platform first, then report what it actually produced. Want to be the
+              first case study? Start a partnership.
+            </p>
+          </div>
         </Reveal>
       </section>
 

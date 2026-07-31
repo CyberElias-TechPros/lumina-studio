@@ -88,10 +88,10 @@ export const programs: Program[] = [
     engine: "learning",
     level: "Beginner",
     duration: "9 months",
-    mode: "Hybrid · Lagos + Online",
+    mode: "Hybrid · Port Harcourt + Online",
     price: 850000,
-    rating: 4.9,
-    learners: 1842,
+    rating: 0,
+    learners: 0,
     blurb:
       "Go from first line of code to shipping production apps with React, TypeScript, Node and cloud deployment.",
     outcomes: [
@@ -116,10 +116,10 @@ export const programs: Program[] = [
     engine: "learning",
     level: "Intermediate",
     duration: "7 months",
-    mode: "Hybrid · Lagos + Online",
+    mode: "Hybrid · Port Harcourt + Online",
     price: 920000,
-    rating: 4.8,
-    learners: 1120,
+    rating: 0,
+    learners: 0,
     blurb:
       "Defend real infrastructure. Blue-team operations, threat hunting, incident response and compliance.",
     outcomes: [
@@ -146,8 +146,8 @@ export const programs: Program[] = [
     duration: "8 months",
     mode: "Online",
     price: 890000,
-    rating: 4.8,
-    learners: 964,
+    rating: 0,
+    learners: 0,
     blurb:
       "Design, automate and operate resilient cloud platforms with infrastructure as code and observability.",
     outcomes: [
@@ -172,10 +172,10 @@ export const programs: Program[] = [
     engine: "learning",
     level: "Intermediate",
     duration: "9 months",
-    mode: "Hybrid · Lagos + Online",
+    mode: "Hybrid · Port Harcourt + Online",
     price: 980000,
-    rating: 4.9,
-    learners: 1388,
+    rating: 0,
+    learners: 0,
     blurb:
       "Turn raw data into decisions. Analytics, machine learning, LLM applications and MLOps in production.",
     outcomes: [
@@ -200,10 +200,10 @@ export const programs: Program[] = [
     engine: "learning",
     level: "Beginner",
     duration: "6 months",
-    mode: "Hybrid · Lagos + Online",
+    mode: "Hybrid · Port Harcourt + Online",
     price: 640000,
-    rating: 4.7,
-    learners: 1526,
+    rating: 0,
+    learners: 0,
     blurb:
       "Research, systems thinking and interface craft — design products people actually finish using.",
     outcomes: [
@@ -230,8 +230,8 @@ export const programs: Program[] = [
     duration: "5 months",
     mode: "Online",
     price: 480000,
-    rating: 4.7,
-    learners: 2104,
+    rating: 0,
+    learners: 0,
     blurb:
       "Performance marketing, content engines, funnels and analytics for Nigerian and global markets.",
     outcomes: [
@@ -256,10 +256,10 @@ export const programs: Program[] = [
     engine: "learning",
     level: "Beginner",
     duration: "6 months",
-    mode: "On-campus · Lagos",
+    mode: "On-campus · Port Harcourt",
     price: 520000,
-    rating: 4.6,
-    learners: 878,
+    rating: 0,
+    learners: 0,
     blurb:
       "Hands-on hardware, routing, switching and enterprise support — the fastest route into tech employment.",
     outcomes: [
@@ -286,8 +286,8 @@ export const programs: Program[] = [
     duration: "6 months",
     mode: "Online",
     price: 700000,
-    rating: 4.7,
-    learners: 742,
+    rating: 0,
+    learners: 0,
     blurb:
       "Ship cross-platform apps to the store with React Native, offline-first data and native integrations.",
     outcomes: [
@@ -358,180 +358,52 @@ export const services = [
   },
 ];
 
-export const caseStudies = [
-  {
-    slug: "sabi-logistics-platform",
-    client: "Sabi Logistics",
-    title: "A dispatch platform that cut delivery time by 38%",
-    sector: "Logistics",
-    engine: "services" as Engine,
-    result: "38% faster deliveries",
-    summary:
-      "We rebuilt Sabi's dispatch operations around a realtime routing engine and a driver mobile app.",
-    metrics: [
-      { label: "Delivery time", value: "-38%" },
-      { label: "Driver adoption", value: "94%" },
-      { label: "Build time", value: "14 weeks" },
-    ],
-  },
-  {
-    slug: "arewa-microfinance-security",
-    client: "Arewa Microfinance",
-    title: "Zero-incident year after a full security overhaul",
-    sector: "Financial Services",
-    engine: "erp" as Engine,
-    result: "0 breaches in 12 months",
-    summary:
-      "A red-team engagement, network segmentation programme and a trained internal SOC team.",
-    metrics: [
-      { label: "Critical findings closed", value: "41" },
-      { label: "MTTR", value: "-62%" },
-      { label: "Staff trained", value: "180" },
-    ],
-  },
-  {
-    slug: "greenfield-schools-erp",
-    client: "Greenfield Schools",
-    title: "One operating system for 9 campuses",
-    sector: "Education",
-    engine: "erp" as Engine,
-    result: "9 campuses unified",
-    summary: "Admissions, finance, HR and academics unified into a single multi-tenant platform.",
-    metrics: [
-      { label: "Manual hours saved", value: "1,400/mo" },
-      { label: "Fee collection", value: "+27%" },
-      { label: "Rollout", value: "5 months" },
-    ],
-  },
-  {
-    slug: "kaduna-talent-pipeline",
-    client: "Kaduna State ICT",
-    title: "Training 2,000 young Nigerians into tech roles",
-    sector: "Public Sector",
-    engine: "career" as Engine,
-    result: "71% placement rate",
-    summary:
-      "A state-wide digital skills programme with employer partnerships and job placement tracking.",
-    metrics: [
-      { label: "Graduates", value: "2,043" },
-      { label: "Placed", value: "71%" },
-      { label: "Employers", value: "86" },
-    ],
-  },
-];
+export const caseStudies: {
+  slug: string;
+  client: string;
+  title: string;
+  sector: string;
+  engine: Engine;
+  result: string;
+  summary: string;
+  metrics: { label: string; value: string }[];
+}[] = [];
 
 export const stats = [
-  { label: "Graduates trained", value: 12480, suffix: "+" },
-  { label: "Job placement rate", value: 78, suffix: "%" },
-  { label: "Hiring partners", value: 240, suffix: "+" },
-  { label: "Learner satisfaction", value: 4.9, suffix: "/5", decimals: 1 },
+  { label: "Training domains", value: 9, suffix: "" },
+  { label: "Ecosystem pillars", value: 5, suffix: "" },
+  { label: "CEA-OS workspaces", value: 30, suffix: "+" },
+  { label: "Journey stages", value: 10, suffix: "" },
 ];
 
 export const partnersList = [
-  "Andela",
-  "Flutterwave",
-  "Paystack",
-  "MTN Nigeria",
-  "Interswitch",
-  "Microsoft ADC",
-  "Cisco Networking Academy",
-  "AWS Academy",
-  "Google Africa",
-  "Kuda",
+  "Employers",
+  "Schools & Colleges",
+  "NGOs",
+  "Government",
+  "Churches",
+  "Institutions",
+  "Sponsors & Scholars",
+  "Community groups",
 ];
 
-export const testimonials = [
-  {
-    name: "Chiamaka Obi",
-    role: "Frontend Engineer, Paystack",
-    quote:
-      "I came in with zero code. Fourteen months later I was shipping to production at one of Africa's best engineering teams.",
-    program: "Full-Stack Software Development",
-  },
-  {
-    name: "Tunde Adeyemi",
-    role: "SOC Analyst, Interswitch",
-    quote:
-      "The SOC simulation was harder than my actual interview. That's exactly why I passed it.",
-    program: "Cybersecurity Analyst",
-  },
-  {
-    name: "Halima Yusuf",
-    role: "Product Designer, Freelance",
-    quote:
-      "The portfolio studio changed everything — I left with four case studies and three client offers.",
-    program: "Product & UI/UX Design",
-  },
-  {
-    name: "Emeka Nwosu",
-    role: "Cloud Engineer, Andela",
-    quote: "Mentors who actually work in the field. That feedback loop is the whole product.",
-    program: "Cloud Engineering & DevOps",
-  },
-];
+export const testimonials: {
+  name: string;
+  role: string;
+  quote: string;
+  program: string;
+}[] = [];
 
-export const events = [
-  {
-    slug: "lagos-tech-open-day",
-    title: "Lagos Campus Open Day",
-    date: "2026-08-15",
-    time: "10:00 – 15:00 WAT",
-    type: "On-campus",
-    location: "Cyber Elias Academy, Ikeja, Lagos",
-    engine: "community" as Engine,
-    blurb: "Tour the labs, meet instructors and sit in on a live cohort session.",
-  },
-  {
-    slug: "ai-builders-night",
-    title: "AI Builders Night",
-    date: "2026-08-27",
-    time: "18:00 – 21:00 WAT",
-    type: "Hybrid",
-    location: "Lagos + Livestream",
-    engine: "learning" as Engine,
-    blurb: "Five teams demo agentic AI products built in eight weeks.",
-  },
-  {
-    slug: "career-fair-q3",
-    title: "Q3 Employer Career Fair",
-    date: "2026-09-12",
-    time: "09:00 – 17:00 WAT",
-    type: "On-campus",
-    location: "Landmark Centre, Lagos",
-    engine: "career" as Engine,
-    blurb: "60+ hiring partners interviewing graduating cohorts on the day.",
-  },
-  {
-    slug: "alumni-summit",
-    title: "Alumni Summit 2026",
-    date: "2026-10-04",
-    time: "11:00 – 20:00 WAT",
-    type: "On-campus",
-    location: "Eko Hotel, Lagos",
-    engine: "community" as Engine,
-    blurb: "The whole network in one room — talks, awards and the alumni fund announcement.",
-  },
-  {
-    slug: "cloud-cost-clinic",
-    title: "Cloud Cost Clinic for CTOs",
-    date: "2026-10-22",
-    time: "16:00 – 18:00 WAT",
-    type: "Online",
-    location: "Zoom",
-    engine: "erp" as Engine,
-    blurb: "Bring your bill. Leave with a plan to cut it.",
-  },
-  {
-    slug: "design-systems-workshop",
-    title: "Design Systems Workshop",
-    date: "2026-11-08",
-    time: "10:00 – 16:00 WAT",
-    type: "Hybrid",
-    location: "Lagos + Livestream",
-    engine: "services" as Engine,
-    blurb: "Build a production design system from tokens to documentation in one day.",
-  },
-];
+export const events: {
+  slug: string;
+  title: string;
+  date: string;
+  time: string;
+  type: string;
+  location: string;
+  engine: Engine;
+  blurb: string;
+}[] = [];
 
 export const blogPosts = [
   {
@@ -540,15 +412,15 @@ export const blogPosts = [
     excerpt:
       "Hiring has shifted from raw headcount to verified capability. Here's what employers now screen for.",
     category: "Industry",
-    author: "Elias Okonkwo",
-    role: "Founder & Director",
+    author: "Cyber Elias Academy",
+    role: "Team CEA",
     date: "2026-07-18",
     readingTime: "8 min",
     engine: "career" as Engine,
     body: [
       "Two years ago, the fastest route into a Nigerian engineering team was a bootcamp certificate and enthusiasm. That door has narrowed. Employers now open with a portfolio review and a paid trial task.",
       "What changed is not the supply of talent — it is the cost of verifying it. AI-assisted applications made resumes cheap to produce and expensive to trust. The signal moved to artifacts: shipped products, code you can read, incident write-ups, design case studies with measured outcomes.",
-      "This is why every CEA program ends in a capstone that is graded by a working practitioner rather than an internal rubric. The output is not a grade. It is evidence.",
+      "This is why every CEA program is designed to end in a capstone graded by a working practitioner rather than an internal rubric. The output is not a grade. It is evidence.",
       "For learners the implication is simple: optimise for the artifact, not the certificate. For employers: your interview loop should start where the artifact ends.",
     ],
   },
@@ -558,8 +430,8 @@ export const blogPosts = [
     excerpt:
       "You do not need a seven-figure SIEM licence to get real detection coverage. Start here.",
     category: "Cybersecurity",
-    author: "Ngozi Bello",
-    role: "Head of Cybersecurity",
+    author: "Cyber Elias Academy",
+    role: "Team CEA",
     date: "2026-06-30",
     readingTime: "11 min",
     engine: "learning" as Engine,
@@ -567,7 +439,7 @@ export const blogPosts = [
       "Most security programmes in mid-sized Nigerian firms fail for the same reason: they buy tooling before they define detections.",
       "Start with an asset inventory and the ten attack techniques most likely to touch your environment. Map each to a log source you already have. In practice this is Windows event logs, firewall logs, and your identity provider.",
       "Only then choose a platform. Open-source Elastic will carry you a long way at this stage, and the discipline of writing your own detection rules is the training your team actually needs.",
-      "The best SOC we ever helped stand up ran for its first nine months on three analysts, a rules repository in Git, and a weekly purple-team hour.",
+      "The best SOCs we've studied ran for their first months on a small analyst team, a rules repository in Git, and a weekly purple-team hour.",
     ],
   },
   {
@@ -575,8 +447,8 @@ export const blogPosts = [
     title: "The portfolio that gets you hired",
     excerpt: "Four case studies beat forty screenshots. A structure you can copy this week.",
     category: "Career",
-    author: "Halima Yusuf",
-    role: "Design Mentor",
+    author: "Cyber Elias Academy",
+    role: "Team CEA",
     date: "2026-06-11",
     readingTime: "6 min",
     engine: "career" as Engine,
@@ -587,20 +459,20 @@ export const blogPosts = [
     ],
   },
   {
-    slug: "why-we-built-cea-os",
-    title: "Why we built CEA-OS instead of buying an LMS",
+    slug: "why-we-are-building-cea-os",
+    title: "Why we're building CEA-OS instead of buying an LMS",
     excerpt:
-      "Admissions, learning, finance and careers were four disconnected systems. Now they are one.",
+      "Admissions, learning, finance and careers are four disconnected systems in the typical institution. CEA-OS is being built to make them one.",
     category: "Product",
-    author: "Elias Okonkwo",
-    role: "Founder & Director",
+    author: "Cyber Elias Academy",
+    role: "Team CEA",
     date: "2026-05-24",
     readingTime: "9 min",
     engine: "erp" as Engine,
     body: [
-      "Every off-the-shelf LMS we evaluated treated a learner as a row in a course table. Our learners are applicants, then students, then alumni, then mentors, then sometimes clients.",
+      "Every off-the-shelf LMS we evaluated treats a learner as a row in a course table. Our learners are applicants, then students, then alumni, then mentors, then sometimes clients.",
       "Modelling that lifecycle in one system means a mentor can see a mentee's actual attendance, and an admissions officer can see which channel produced graduates rather than just applications.",
-      "CEA-OS is the result: five engines, one identity, one permission model.",
+      "That's the design brief CEA-OS is being built against: five engines, one identity, one permission model.",
     ],
   },
   {
@@ -608,14 +480,14 @@ export const blogPosts = [
     title: "Cohort or self-paced: an honest comparison",
     excerpt: "Completion rates tell one story. Career outcomes tell a more complicated one.",
     category: "Learning",
-    author: "Ifeanyi Duru",
-    role: "Head of Learning",
+    author: "Cyber Elias Academy",
+    role: "Team CEA",
     date: "2026-05-02",
     readingTime: "7 min",
     engine: "learning" as Engine,
     body: [
-      "Our cohort completion rate is 81%. Our self-paced completion rate is 34%. That gap is real and it is mostly about accountability.",
-      "But self-paced learners who do finish place at a similar rate, and they cost a third as much to serve. The answer is not one format — it is a placement engine that both formats feed into.",
+      "Cohort programmes typically see far higher completion rates than self-paced ones — the gap is real and it is mostly about accountability.",
+      "But learners who do finish self-paced tracks often land similar outcomes. The answer is not one format — it is a placement engine that both formats feed into. That is the design we're building.",
     ],
   },
   {
@@ -624,8 +496,8 @@ export const blogPosts = [
     excerpt:
       "Whiteboard puzzles select for practice, not potential. Try these three tasks instead.",
     category: "Employers",
-    author: "Emeka Nwosu",
-    role: "Employer Partnerships",
+    author: "Cyber Elias Academy",
+    role: "Team CEA",
     date: "2026-04-19",
     readingTime: "5 min",
     engine: "career" as Engine,
@@ -636,109 +508,26 @@ export const blogPosts = [
   },
 ];
 
-export const jobs = [
-  {
-    id: "job-1",
-    title: "Frontend Engineer",
-    company: "Paystack",
-    location: "Lagos · Hybrid",
-    type: "Full-time",
-    salary: "₦9m – ₦14m",
-    level: "Mid",
-    posted: "2 days ago",
-    skills: ["React", "TypeScript", "CSS"],
-  },
-  {
-    id: "job-2",
-    title: "SOC Analyst (Tier 1)",
-    company: "Interswitch",
-    location: "Lagos · On-site",
-    type: "Full-time",
-    salary: "₦6m – ₦9m",
-    level: "Junior",
-    posted: "4 days ago",
-    skills: ["SIEM", "Incident Response", "Linux"],
-  },
-  {
-    id: "job-3",
-    title: "Cloud Engineer",
-    company: "Kuda",
-    location: "Remote (Nigeria)",
-    type: "Full-time",
-    salary: "₦12m – ₦18m",
-    level: "Senior",
-    posted: "1 week ago",
-    skills: ["AWS", "Terraform", "Kubernetes"],
-  },
-  {
-    id: "job-4",
-    title: "Product Designer",
-    company: "Moniepoint",
-    location: "Lagos · Hybrid",
-    type: "Full-time",
-    salary: "₦8m – ₦12m",
-    level: "Mid",
-    posted: "1 week ago",
-    skills: ["Figma", "Design Systems", "Research"],
-  },
-  {
-    id: "job-5",
-    title: "Data Analyst",
-    company: "MTN Nigeria",
-    location: "Lagos · On-site",
-    type: "Full-time",
-    salary: "₦7m – ₦10m",
-    level: "Junior",
-    posted: "3 days ago",
-    skills: ["SQL", "Python", "Power BI"],
-  },
-  {
-    id: "job-6",
-    title: "IT Support Specialist",
-    company: "Greenfield Schools",
-    location: "Abuja · On-site",
-    type: "Full-time",
-    salary: "₦4m – ₦6m",
-    level: "Junior",
-    posted: "5 days ago",
-    skills: ["Windows", "Networking", "Helpdesk"],
-  },
-];
+export const jobs: {
+  id: string;
+  title: string;
+  company: string;
+  location: string;
+  type: string;
+  salary: string;
+  level: string;
+  posted: string;
+  skills: string[];
+}[] = [];
 
-export const gigs = [
-  {
-    id: "gig-1",
-    title: "Landing page for a fintech launch",
-    budget: "₦450,000",
-    duration: "2 weeks",
-    skills: ["React", "Tailwind", "Framer Motion"],
-    proposals: 12,
-  },
-  {
-    id: "gig-2",
-    title: "Security review of a Node API",
-    budget: "₦680,000",
-    duration: "10 days",
-    skills: ["AppSec", "Node.js", "OWASP"],
-    proposals: 7,
-  },
-  {
-    id: "gig-3",
-    title: "Brand identity for an agritech startup",
-    budget: "₦520,000",
-    duration: "3 weeks",
-    skills: ["Branding", "Illustration", "Figma"],
-    proposals: 19,
-  },
-  {
-    id: "gig-4",
-    title: "Power BI dashboard for retail chain",
-    budget: "₦380,000",
-    duration: "12 days",
-    skills: ["Power BI", "SQL", "DAX"],
-    proposals: 9,
-  },
-];
+export const gigs: {
+  id: string;
+  title: string;
+  budget: string;
+  duration: string;
+  skills: string[];
+  proposals: number;
+}[] = [];
 
 export const faqs = [
   {
@@ -810,43 +599,6 @@ export const pricingTiers = [
       "Quarterly impact reporting",
     ],
     highlighted: false,
-  },
-];
-
-export const team = [
-  { name: "Elias Okonkwo", role: "Founder & Director", focus: "Strategy" },
-  { name: "Ifeanyi Duru", role: "Head of Learning", focus: "Curriculum" },
-  { name: "Ngozi Bello", role: "Head of Cybersecurity", focus: "Security" },
-  { name: "Halima Yusuf", role: "Design Lead", focus: "Design" },
-  { name: "Emeka Nwosu", role: "Employer Partnerships", focus: "Careers" },
-  { name: "Aisha Bakare", role: "Head of Operations", focus: "Operations" },
-];
-
-export const timeline = [
-  {
-    year: "2018",
-    title: "A single classroom in Ikeja",
-    body: "Twelve students, one instructor, one whiteboard.",
-  },
-  {
-    year: "2020",
-    title: "Online delivery at scale",
-    body: "Remote cohorts opened the academy to all 36 states.",
-  },
-  {
-    year: "2022",
-    title: "The Services Engine",
-    body: "Graduates began delivering real client work under supervision.",
-  },
-  {
-    year: "2024",
-    title: "Employer network crosses 200",
-    body: "Placement became a measured, managed pipeline.",
-  },
-  {
-    year: "2026",
-    title: "CEA-OS goes live",
-    body: "One operating system for every actor in the academy.",
   },
 ];
 

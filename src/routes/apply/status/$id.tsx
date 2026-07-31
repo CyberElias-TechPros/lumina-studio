@@ -36,21 +36,21 @@ const profiles: Record<
 > = {
   "CEA-2026-0142": {
     program: "Full-Stack Software Development",
-    cohort: "Cohort 16",
+    cohort: "Cohort 01",
     stage: "Assessment pending",
     badge: "bg-warning/10 text-warning",
     tone: "warning",
   },
   "CEA-2026-0387": {
     program: "UI/UX Design",
-    cohort: "Cohort 17",
+    cohort: "Cohort 01",
     stage: "Interview scheduled",
     badge: "bg-primary/10 text-primary",
     tone: "primary",
   },
   "CEA-2026-0091": {
     program: "Backend Engineering",
-    cohort: "Cohort 15",
+    cohort: "Cohort 01",
     stage: "Offer sent",
     badge: "bg-success/10 text-success",
     tone: "success",
@@ -99,7 +99,7 @@ function ApplyStatusDetailPage() {
   const { id } = Route.useParams();
   const profile = profiles[id] ?? {
     program: "Full-Stack Software Development",
-    cohort: "Cohort 16",
+    cohort: "Cohort 01",
     stage: "Assessment pending",
     badge: "bg-warning/10 text-warning",
     tone: "warning",

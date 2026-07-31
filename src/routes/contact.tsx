@@ -43,7 +43,7 @@ const channels = [
   {
     icon: MapPin,
     title: "Campus",
-    lines: ["21 Awolowo Road, Ikeja", "Lagos, Nigeria"],
+    lines: ["Port Harcourt, Rivers State", "Nigeria"],
   },
   {
     icon: Phone,

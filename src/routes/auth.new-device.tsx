@@ -21,7 +21,7 @@ const devices = [
   {
     icon: Smartphone,
     name: "iPhone 15 · Safari",
-    where: "Ikeja, Lagos · +234 801 **** 3456",
+    where: "Port Harcourt, Rivers · +234 801 **** 3456",
     when: "Just now",
     status: "This device",
     tone: "bg-success/10 text-success",
@@ -29,7 +29,7 @@ const devices = [
   {
     icon: Laptop,
     name: "Windows 11 · Chrome",
-    where: "Surulere, Lagos · 197.210.x.x",
+    where: "Port Harcourt, Rivers · 197.210.x.x",
     when: "Yesterday, 21:14",
     status: "Trusted",
     tone: "bg-muted-foreground/10 text-muted-foreground",
@@ -73,7 +73,7 @@ function NewDevicePage() {
                   <div className="min-w-0 flex-1">
                     <p className="text-sm font-bold">iPhone 15 · Safari</p>
                     <p className="text-muted-foreground flex items-center gap-1 text-xs">
-                      <MapPin className="size-3" /> Ikeja, Lagos · just now
+                      <MapPin className="size-3" /> Port Harcourt, Rivers · just now
                     </p>
                   </div>
                   <span className="bg-warning/10 text-warning shrink-0 rounded-full px-2.5 py-1 text-[10px] font-bold">

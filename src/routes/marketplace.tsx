@@ -15,6 +15,34 @@ import { CTASection, PageHero, PageShell, SectionHeading } from "@/components/ma
 import { Reveal, StaggerGroup, StaggerItem, TiltCard } from "@/components/motion";
 import { gigs, jobs } from "@/data/site";
 import { cn } from "@/lib/utils";
+import type { LucideIcon } from "lucide-react";
+
+function MarketplaceEmpty({
+  icon: Icon,
+  title,
+  body,
+}: {
+  icon: LucideIcon;
+  title: string;
+  body: string;
+}) {
+  return (
+    <div className="border-dashed bg-card/50 flex flex-col items-center rounded-3xl border p-12 text-center md:p-16">
+      <div className="bg-muted/70 text-muted-foreground grid size-14 place-items-center rounded-2xl">
+        <Icon className="size-6" />
+      </div>
+      <h3 className="font-display mt-5 text-xl font-bold">{title}</h3>
+      <p className="text-muted-foreground mt-2 max-w-md text-sm leading-relaxed">{body}</p>
+      <div className="mt-7">
+        <Button asChild variant="outline">
+          <Link to="/contact">
+            Register interest <ArrowRight className="ml-1.5 size-4" />
+          </Link>
+        </Button>
+      </div>
+    </div>
+  );
+}
 
 export const Route = createFileRoute("/marketplace")({
   head: () => ({
@@ -69,60 +97,68 @@ function Marketplace() {
 
       <section className="container-page py-16 md:py-20">
         {tab === "jobs" ? (
-          <StaggerGroup className="grid gap-5 md:grid-cols-2">
-            {jobs.map((j) => (
-              <StaggerItem key={j.id}>
-                <TiltCard intensity={4} className="h-full">
-                  <div className="group bg-card shadow-soft hover:shadow-elevated flex h-full flex-col rounded-2xl border p-7 transition-shadow">
-                    <div className="flex items-start justify-between gap-4">
-                      <div>
-                        <p className="font-display text-muted-foreground text-xs font-bold tracking-[0.14em] uppercase">
-                          {j.company}
-                        </p>
-                        <h3 className="font-display mt-1 text-xl leading-snug font-bold">
-                          {j.title}
-                        </h3>
+          jobs.length > 0 ? (
+            <StaggerGroup className="grid gap-5 md:grid-cols-2">
+              {jobs.map((j) => (
+                <StaggerItem key={j.id}>
+                  <TiltCard intensity={4} className="h-full">
+                    <div className="group bg-card shadow-soft hover:shadow-elevated flex h-full flex-col rounded-2xl border p-7 transition-shadow">
+                      <div className="flex items-start justify-between gap-4">
+                        <div>
+                          <p className="font-display text-muted-foreground text-xs font-bold tracking-[0.14em] uppercase">
+                            {j.company}
+                          </p>
+                          <h3 className="font-display mt-1 text-xl leading-snug font-bold">
+                            {j.title}
+                          </h3>
+                        </div>
+                        <Badge variant="secondary" className="shrink-0">
+                          {j.level}
+                        </Badge>
                       </div>
-                      <Badge variant="secondary" className="shrink-0">
-                        {j.level}
-                      </Badge>
-                    </div>
-                    <div className="text-muted-foreground mt-4 flex flex-wrap gap-x-4 gap-y-1.5 text-sm font-medium">
-                      <span className="flex items-center gap-1.5">
-                        <MapPin className="size-3.5" /> {j.location}
-                      </span>
-                      <span className="flex items-center gap-1.5">
-                        <BriefcaseBusiness className="size-3.5" /> {j.type}
-                      </span>
-                      <span className="flex items-center gap-1.5">
-                        <CalendarClock className="size-3.5" /> {j.posted}
-                      </span>
-                    </div>
-                    <div className="mt-4 flex flex-wrap gap-1.5">
-                      {j.skills.map((s) => (
-                        <span
-                          key={s}
-                          className="bg-muted/70 text-muted-foreground rounded-md px-2 py-1 text-[11px] font-medium"
-                        >
-                          {s}
+                      <div className="text-muted-foreground mt-4 flex flex-wrap gap-x-4 gap-y-1.5 text-sm font-medium">
+                        <span className="flex items-center gap-1.5">
+                          <MapPin className="size-3.5" /> {j.location}
                         </span>
-                      ))}
+                        <span className="flex items-center gap-1.5">
+                          <BriefcaseBusiness className="size-3.5" /> {j.type}
+                        </span>
+                        <span className="flex items-center gap-1.5">
+                          <CalendarClock className="size-3.5" /> {j.posted}
+                        </span>
+                      </div>
+                      <div className="mt-4 flex flex-wrap gap-1.5">
+                        {j.skills.map((s) => (
+                          <span
+                            key={s}
+                            className="bg-muted/70 text-muted-foreground rounded-md px-2 py-1 text-[11px] font-medium"
+                          >
+                            {s}
+                          </span>
+                        ))}
+                      </div>
+                      <div className="mt-5 flex items-center justify-between border-t pt-4">
+                        <span className="font-display text-gradient text-lg font-extrabold">
+                          {j.salary}
+                        </span>
+                        <span className="text-primary inline-flex items-center gap-1 text-sm font-bold">
+                          Apply{" "}
+                          <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                        </span>
+                      </div>
                     </div>
-                    <div className="mt-5 flex items-center justify-between border-t pt-4">
-                      <span className="font-display text-gradient text-lg font-extrabold">
-                        {j.salary}
-                      </span>
-                      <span className="text-primary inline-flex items-center gap-1 text-sm font-bold">
-                        Apply{" "}
-                        <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                      </span>
-                    </div>
-                  </div>
-                </TiltCard>
-              </StaggerItem>
-            ))}
-          </StaggerGroup>
-        ) : (
+                  </TiltCard>
+                </StaggerItem>
+              ))}
+            </StaggerGroup>
+          ) : (
+            <MarketplaceEmpty
+              icon={BriefcaseBusiness}
+              title="Full-time roles are on the way"
+              body="The job board opens as employer partnerships go live — every role here will be vetted and only visible to verified graduates. Want to be first in line?"
+            />
+          )
+        ) : gigs.length > 0 ? (
           <StaggerGroup className="grid gap-5 md:grid-cols-2">
             {gigs.map((g) => (
               <StaggerItem key={g.id}>
@@ -161,6 +197,12 @@ function Marketplace() {
               </StaggerItem>
             ))}
           </StaggerGroup>
+        ) : (
+          <MarketplaceEmpty
+            icon={Wrench}
+            title="Freelance gigs are on the way"
+            body="The Services Engine will route real client work to learners under practitioner supervision. Gigs appear here as the first client engagements go live."
+          />
         )}
       </section>
 
@@ -173,7 +215,7 @@ function Marketplace() {
           />
           <div className="space-y-4">
             {[
-              "Post roles or gigs — reach 12,000+ verified alumni and current students",
+              "Post roles or gigs — reach verified graduates and current students",
               "Search portfolios by skill, certification and project outcomes",
               "Run the whole pipeline: shortlist, interview, hire, feedback",
               "Track time-to-hire and retention of every placement",

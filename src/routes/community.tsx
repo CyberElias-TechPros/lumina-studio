@@ -45,7 +45,7 @@ const spaces = [
     icon: CalendarHeart,
     title: "Events & meetups",
     body: "Open days, build nights, career fairs and alumni summits — on campus, hybrid or fully online.",
-    tags: ["Lagos", "Remote", "Hybrid"],
+    tags: ["Port Harcourt", "Remote", "Hybrid"],
   },
   {
     icon: HandHeart,
@@ -62,8 +62,8 @@ const spaces = [
   {
     icon: Globe2,
     title: "Global network",
-    body: "12,000+ alumni across 36 states and 14 countries. One directory, always searchable, always connected.",
-    tags: ["14 countries", "36 states", "12,480 alumni"],
+    body: "Alumni stay connected after graduation — a directory, a mentorship pool and a giving engine that grows with every cohort.",
+    tags: ["Every cohort", "Every state", "Every year"],
   },
 ];
 
@@ -113,32 +113,54 @@ function Community() {
 
       <section className="bg-muted/40 border-y py-20 md:py-24">
         <div className="container-page">
-          <SectionHeading eyebrow="Upcoming" title="Gatherings worth showing up for" />
-          <StaggerGroup className="mt-12 grid gap-5 md:grid-cols-3">
-            {events.slice(0, 3).map((e) => (
-              <StaggerItem key={e.slug}>
-                <Link
-                  to="/events"
-                  className="group bg-card shadow-soft hover:shadow-elevated flex h-full flex-col rounded-2xl border p-6 transition-all hover:-translate-y-1"
-                >
-                  <div className="flex items-center justify-between">
-                    <Badge variant="secondary" className="font-semibold">
-                      {e.type}
-                    </Badge>
-                    <span className="text-muted-foreground text-xs font-semibold">{e.date}</span>
-                  </div>
-                  <h3 className="font-display group-hover:text-primary mt-4 flex-1 text-lg leading-snug font-bold">
-                    {e.title}
-                  </h3>
-                  <p className="text-muted-foreground mt-2 text-sm">{e.location}</p>
-                  <span className="text-primary mt-4 inline-flex items-center gap-1 border-t pt-4 text-sm font-bold">
-                    View event{" "}
-                    <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
-                  </span>
+          <SectionHeading
+            eyebrow="Upcoming"
+            title="Gatherings worth showing up for"
+            description="Events are published here as they are confirmed — starting with our open days in Port Harcourt. Want to host or speak at one? Get in touch."
+          />
+          {events.length > 0 ? (
+            <StaggerGroup className="mt-12 grid gap-5 md:grid-cols-3">
+              {events.slice(0, 3).map((e) => (
+                <StaggerItem key={e.slug}>
+                  <Link
+                    to="/events"
+                    className="group bg-card shadow-soft hover:shadow-elevated flex h-full flex-col rounded-2xl border p-6 transition-all hover:-translate-y-1"
+                  >
+                    <div className="flex items-center justify-between">
+                      <Badge variant="secondary" className="font-semibold">
+                        {e.type}
+                      </Badge>
+                      <span className="text-muted-foreground text-xs font-semibold">{e.date}</span>
+                    </div>
+                    <h3 className="font-display group-hover:text-primary mt-4 flex-1 text-lg leading-snug font-bold">
+                      {e.title}
+                    </h3>
+                    <p className="text-muted-foreground mt-2 text-sm">{e.location}</p>
+                    <span className="text-primary mt-4 inline-flex items-center gap-1 border-t pt-4 text-sm font-bold">
+                      View event{" "}
+                      <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
+                    </span>
+                  </Link>
+                </StaggerItem>
+              ))}
+            </StaggerGroup>
+          ) : (
+            <div className="border-dashed bg-card/50 mt-12 flex flex-col items-center rounded-3xl border p-12 text-center">
+              <CalendarHeart className="text-muted-foreground size-8" />
+              <h3 className="font-display mt-4 text-lg font-bold">
+                First events are being planned
+              </h3>
+              <p className="text-muted-foreground mt-2 max-w-md text-sm">
+                Open days and build nights will land here as we stand up the academy in Port
+                Harcourt. Join the community and be first to know.
+              </p>
+              <Button asChild variant="outline" className="mt-6">
+                <Link to="/contact">
+                  Join the waitlist <ArrowRight className="ml-1.5 size-4" />
                 </Link>
-              </StaggerItem>
-            ))}
-          </StaggerGroup>
+              </Button>
+            </div>
+          )}
         </div>
       </section>
 

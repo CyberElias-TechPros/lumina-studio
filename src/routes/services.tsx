@@ -190,30 +190,45 @@ function Services() {
             </Button>
           </Reveal>
         </div>
-        <StaggerGroup className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-          {caseStudies.map((c) => (
-            <StaggerItem key={c.slug}>
-              <Link
-                to="/work"
-                className="group bg-card shadow-soft hover:shadow-elevated flex h-full flex-col rounded-2xl border p-6 transition-all hover:-translate-y-1"
-              >
-                <Badge variant="secondary" className="w-fit font-semibold">
-                  {c.sector}
-                </Badge>
-                <p className="font-display text-muted-foreground mt-4 text-xs font-bold tracking-[0.14em] uppercase">
-                  {c.client}
-                </p>
-                <h3 className="font-display group-hover:text-primary mt-1.5 flex-1 text-base leading-snug font-bold">
-                  {c.title}
-                </h3>
-                <span className="text-services mt-4 inline-flex items-center gap-1 text-sm font-bold">
-                  {c.result}{" "}
-                  <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                </span>
+        {caseStudies.length > 0 ? (
+          <StaggerGroup className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+            {caseStudies.map((c) => (
+              <StaggerItem key={c.slug}>
+                <Link
+                  to="/work"
+                  className="group bg-card shadow-soft hover:shadow-elevated flex h-full flex-col rounded-2xl border p-6 transition-all hover:-translate-y-1"
+                >
+                  <Badge variant="secondary" className="w-fit font-semibold">
+                    {c.sector}
+                  </Badge>
+                  <p className="font-display text-muted-foreground mt-4 text-xs font-bold tracking-[0.14em] uppercase">
+                    {c.client}
+                  </p>
+                  <h3 className="font-display group-hover:text-primary mt-1.5 flex-1 text-base leading-snug font-bold">
+                    {c.title}
+                  </h3>
+                  <span className="text-services mt-4 inline-flex items-center gap-1 text-sm font-bold">
+                    {c.result}{" "}
+                    <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  </span>
+                </Link>
+              </StaggerItem>
+            ))}
+          </StaggerGroup>
+        ) : (
+          <div className="border-dashed bg-card/50 mt-12 flex flex-col items-center rounded-3xl border p-12 text-center">
+            <p className="font-display text-xl font-extrabold">Case studies are on the way</p>
+            <p className="text-muted-foreground mt-2 max-w-md text-sm">
+              We publish engagements only after clients sign off on the numbers. The first ones land
+              as the Services Engine goes live.
+            </p>
+            <Button asChild variant="outline" className="mt-6">
+              <Link to="/work">
+                See the portfolio <ArrowRight className="ml-1.5 size-4" />
               </Link>
-            </StaggerItem>
-          ))}
-        </StaggerGroup>
+            </Button>
+          </div>
+        )}
       </section>
 
       <CTASection

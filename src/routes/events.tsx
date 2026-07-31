@@ -24,7 +24,7 @@ export const Route = createFileRoute("/events")({
       {
         name: "description",
         content:
-          "Open days, AI builder nights, career fairs, alumni summits, cloud clinics and design workshops — join the academy live in Lagos or online.",
+          "Open days, AI builder nights, career fairs, alumni summits, cloud clinics and design workshops — join the academy live in Port Harcourt or online.",
       },
     ],
   }),
@@ -59,7 +59,7 @@ function Events() {
             Come see it <span className="text-gradient">live</span>
           </>
         }
-        description="Open days, build nights, career fairs and workshops — on campus in Lagos or online from anywhere. Most events are free and open to everyone."
+        description="Open days, build nights, career fairs and workshops — on campus in Port Harcourt or online from anywhere. Most events are free and open to everyone."
       >
         <div className="mt-8 flex flex-wrap gap-2">
           {formats.map((f) => (
@@ -80,63 +80,83 @@ function Events() {
       </PageHero>
 
       <section className="container-page py-16 md:py-20">
-        <StaggerGroup className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-          {upcoming.map((e) => {
-            const engine = engineMap[e.engine];
-            return (
-              <StaggerItem key={e.slug}>
-                <TiltCard intensity={5} className="h-full">
-                  <div className="group bg-card shadow-soft hover:shadow-elevated relative flex h-full flex-col overflow-hidden rounded-2xl border transition-shadow">
-                    <div
-                      className={`${engine?.gradient ?? "bg-gradient-brand"} absolute inset-x-0 top-0 h-1`}
-                    />
-                    <div className="flex flex-1 flex-col p-7">
-                      <div className="flex items-center justify-between">
-                        <Badge variant="secondary" className="font-semibold">
-                          {e.type}
-                        </Badge>
-                        {engine && (
-                          <span
-                            className={`${engine.text} text-xs font-bold tracking-wide uppercase`}
-                          >
-                            {engine.name.split(" ")[0]} Engine
-                          </span>
-                        )}
-                      </div>
-                      <div className="mt-5 flex items-center gap-4">
-                        <div className="bg-primary/10 text-primary font-display grid size-14 shrink-0 place-items-center rounded-2xl text-center leading-tight">
-                          <span className="text-lg font-extrabold">
-                            {formatDate(e.date).split(",")[1]?.trim()}
-                          </span>
-                          <span className="text-[10px] font-bold tracking-wide uppercase">
-                            {formatDate(e.date).split(",")[0]}
-                          </span>
+        {upcoming.length > 0 ? (
+          <StaggerGroup className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+            {upcoming.map((e) => {
+              const engine = engineMap[e.engine];
+              return (
+                <StaggerItem key={e.slug}>
+                  <TiltCard intensity={5} className="h-full">
+                    <div className="group bg-card shadow-soft hover:shadow-elevated relative flex h-full flex-col overflow-hidden rounded-2xl border transition-shadow">
+                      <div
+                        className={`${engine?.gradient ?? "bg-gradient-brand"} absolute inset-x-0 top-0 h-1`}
+                      />
+                      <div className="flex flex-1 flex-col p-7">
+                        <div className="flex items-center justify-between">
+                          <Badge variant="secondary" className="font-semibold">
+                            {e.type}
+                          </Badge>
+                          {engine && (
+                            <span
+                              className={`${engine.text} text-xs font-bold tracking-wide uppercase`}
+                            >
+                              {engine.name.split(" ")[0]} Engine
+                            </span>
+                          )}
                         </div>
-                        <div>
-                          <h3 className="font-display text-lg leading-snug font-bold">{e.title}</h3>
-                          <p className="text-muted-foreground mt-1 flex items-center gap-1.5 text-xs font-medium">
-                            <Clock className="size-3.5" /> {e.time}
-                          </p>
+                        <div className="mt-5 flex items-center gap-4">
+                          <div className="bg-primary/10 text-primary font-display grid size-14 shrink-0 place-items-center rounded-2xl text-center leading-tight">
+                            <span className="text-lg font-extrabold">
+                              {formatDate(e.date).split(",")[1]?.trim()}
+                            </span>
+                            <span className="text-[10px] font-bold tracking-wide uppercase">
+                              {formatDate(e.date).split(",")[0]}
+                            </span>
+                          </div>
+                          <div>
+                            <h3 className="font-display text-lg leading-snug font-bold">
+                              {e.title}
+                            </h3>
+                            <p className="text-muted-foreground mt-1 flex items-center gap-1.5 text-xs font-medium">
+                              <Clock className="size-3.5" /> {e.time}
+                            </p>
+                          </div>
                         </div>
+                        <p className="text-muted-foreground mt-4 flex-1 text-sm leading-relaxed">
+                          {e.blurb}
+                        </p>
+                        <div className="text-muted-foreground mt-5 flex items-center gap-2 border-t pt-4 text-sm font-medium">
+                          <MapPin className="text-primary size-4 shrink-0" /> {e.location}
+                        </div>
+                        <Button asChild className="bg-gradient-brand shadow-glow mt-5 border-0">
+                          <Link to="/contact">
+                            Register interest <ArrowRight className="ml-1.5 size-4" />
+                          </Link>
+                        </Button>
                       </div>
-                      <p className="text-muted-foreground mt-4 flex-1 text-sm leading-relaxed">
-                        {e.blurb}
-                      </p>
-                      <div className="text-muted-foreground mt-5 flex items-center gap-2 border-t pt-4 text-sm font-medium">
-                        <MapPin className="text-primary size-4 shrink-0" /> {e.location}
-                      </div>
-                      <Button asChild className="bg-gradient-brand shadow-glow mt-5 border-0">
-                        <Link to="/contact">
-                          Register interest <ArrowRight className="ml-1.5 size-4" />
-                        </Link>
-                      </Button>
                     </div>
-                  </div>
-                </TiltCard>
-              </StaggerItem>
-            );
-          })}
-        </StaggerGroup>
+                  </TiltCard>
+                </StaggerItem>
+              );
+            })}
+          </StaggerGroup>
+        ) : (
+          <div className="border-dashed bg-card/50 flex flex-col items-center rounded-3xl border p-12 text-center md:p-16">
+            <CalendarDays className="text-muted-foreground size-9" />
+            <h3 className="font-display mt-5 text-2xl font-extrabold">
+              The calendar is being planned
+            </h3>
+            <p className="text-muted-foreground mt-3 max-w-lg leading-relaxed">
+              Our first open days and build nights will be announced here as the Port Harcourt
+              campus takes shape. Be the first to know when dates are confirmed.
+            </p>
+            <Button asChild variant="outline" className="mt-7">
+              <Link to="/contact">
+                Get notified <ArrowRight className="ml-1.5 size-4" />
+              </Link>
+            </Button>
+          </div>
+        )}
       </section>
 
       <section className="bg-muted/40 border-y py-20 md:py-24">
@@ -162,7 +182,7 @@ function Events() {
               {
                 icon: Sparkles,
                 title: "Career fair",
-                body: "Quarterly. 60+ employers interviewing graduating cohorts.",
+                body: "Quarterly. Employers interviewing graduating cohorts.",
               },
               {
                 icon: CalendarDays,
@@ -196,8 +216,8 @@ function Events() {
                   Host an event with us
                 </h2>
                 <p className="text-ink-foreground/75 mt-3 max-w-xl leading-relaxed">
-                  Employers, partners and NGOs regularly co-host hiring days, workshops and
-                  community programs at the academy. Let's plan yours.
+                  Employers, partners and NGOs will co-host hiring days, workshops and community
+                  programs at the academy. Let's plan yours.
                 </p>
               </div>
               <Button

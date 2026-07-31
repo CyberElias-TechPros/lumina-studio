@@ -191,7 +191,7 @@ function Admissions() {
       </section>
 
       <CTASection
-        title="Cohort 15 applications are open"
+        title="Cohort 01 applications are opening"
         description="Start your application now — it takes 10 minutes and costs nothing. Seats are allocated on a rolling basis."
         primary={{ label: "Start your application", to: "/apply" }}
         secondary={{ label: "Check tuition", to: "/pricing" }}

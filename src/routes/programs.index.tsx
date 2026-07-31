@@ -156,10 +156,12 @@ function Programs() {
                               {engine.name.split(" ")[0]}
                             </span>
                           )}
+                          {p.rating > 0 && (
+                            <span className="text-muted-foreground flex items-center gap-1 text-xs font-semibold">
+                              <Star className="fill-career text-career size-3.5" /> {p.rating}
+                            </span>
+                          )}
                         </div>
-                        <span className="text-muted-foreground flex items-center gap-1 text-xs font-semibold">
-                          <Star className="fill-career text-career size-3.5" /> {p.rating}
-                        </span>
                       </div>
                       <h3 className="font-display group-hover:text-primary mt-4 text-lg leading-snug font-bold transition-colors">
                         {p.title}
@@ -186,9 +188,11 @@ function Programs() {
                       </div>
                       <div className="mt-5 flex items-center justify-between border-t pt-4">
                         <span className="font-display font-bold">{formatNaira(p.price)}</span>
-                        <span className="text-muted-foreground text-xs font-medium">
-                          {p.learners.toLocaleString()} learners
-                        </span>
+                        {p.learners > 0 && (
+                          <span className="text-muted-foreground text-xs font-medium">
+                            {p.learners.toLocaleString()} learners
+                          </span>
+                        )}
                       </div>
                     </div>
                   </Link>

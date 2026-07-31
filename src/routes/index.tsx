@@ -37,7 +37,7 @@ import {
   StaggerItem,
   TiltCard,
 } from "@/components/motion";
-import { engines, faqs, formatNaira, partnersList, programs, testimonials } from "@/data/site";
+import { engines, faqs, formatNaira, partnersList, programs } from "@/data/site";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -68,7 +68,7 @@ function Hero() {
       <div className="container-page relative grid items-center gap-16 py-20 lg:grid-cols-[1.1fr_0.9fr] lg:py-28">
         <div>
           <Reveal>
-            <Eyebrow>Applications open · Cohort 15</Eyebrow>
+            <Eyebrow>Applications opening · Cohort 01</Eyebrow>
           </Reveal>
 
           <Reveal delay={0.05}>
@@ -91,7 +91,7 @@ function Hero() {
             <p className="text-muted-foreground mt-7 max-w-xl text-lg leading-relaxed text-pretty">
               From absolute scratch to advanced practitioner — software development, cloud,
               cybersecurity, data and AI, design and digital marketing. Taught by people who ship,
-              backed by an employer network of 240+.
+              backed by an employer network we're building from day one.
             </p>
           </Reveal>
 
@@ -117,9 +117,9 @@ function Hero() {
           <Reveal delay={0.24}>
             <div className="mt-10 flex flex-wrap items-center gap-x-7 gap-y-3">
               {[
-                { icon: GraduationCap, label: "12,480+ graduates" },
-                { icon: BriefcaseBusiness, label: "78% placement rate" },
-                { icon: Star, label: "4.9 average rating" },
+                { icon: GraduationCap, label: "Cohort 01 · Port Harcourt" },
+                { icon: BriefcaseBusiness, label: "Placement promise included" },
+                { icon: Star, label: "Portfolio-first learning" },
               ].map((item) => (
                 <span
                   key={item.label}
@@ -146,11 +146,11 @@ function Hero() {
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-muted-foreground text-xs font-semibold tracking-[0.16em] uppercase">
-                      Live cohort
+                      Student dashboard · preview
                     </p>
-                    <p className="font-display mt-1 text-lg font-bold">Full-Stack · Cohort 15</p>
+                    <p className="font-display mt-1 text-lg font-bold">Full-Stack · Cohort 01</p>
                   </div>
-                  <Badge className="bg-success/15 text-success border-0">Enrolling</Badge>
+                  <Badge className="bg-success/15 text-success border-0">Product preview</Badge>
                 </div>
 
                 <div className="mt-6 space-y-3">
@@ -199,10 +199,10 @@ function Hero() {
             className="animate-float glass shadow-elevated absolute -right-2 -bottom-8 hidden w-56 rounded-2xl p-4 sm:block"
           >
             <p className="text-muted-foreground text-[11px] font-bold tracking-[0.16em] uppercase">
-              Job match
+              Job match · preview
             </p>
             <p className="font-display mt-1.5 text-sm font-bold">Frontend Engineer</p>
-            <p className="text-muted-foreground text-xs">Paystack · Lagos</p>
+            <p className="text-muted-foreground text-xs">Employer partner · Lagos</p>
             <div className="mt-3 flex items-center gap-2">
               <div className="bg-muted h-1.5 flex-1 overflow-hidden rounded-full">
                 <div className="bg-gradient-career h-full w-[96%] rounded-full" />
@@ -215,7 +215,7 @@ function Hero() {
 
       <div className="border-y py-7">
         <p className="text-muted-foreground container-page mb-5 text-center text-[11px] font-bold tracking-[0.2em] uppercase">
-          Our graduates work at
+          We're building relationships with
         </p>
         <Marquee items={partnersList} />
       </div>
@@ -333,9 +333,11 @@ function ProgramsSection() {
                   <Badge variant="secondary" className="font-semibold">
                     {p.category}
                   </Badge>
-                  <span className="text-muted-foreground flex items-center gap-1 text-xs font-semibold">
-                    <Star className="fill-career text-career size-3.5" /> {p.rating}
-                  </span>
+                  {p.rating > 0 && (
+                    <span className="text-muted-foreground flex items-center gap-1 text-xs font-semibold">
+                      <Star className="fill-career text-career size-3.5" /> {p.rating}
+                    </span>
+                  )}
                 </div>
                 <h3 className="font-display group-hover:text-primary mt-4 text-lg font-bold transition-colors">
                   {p.title}
@@ -347,8 +349,12 @@ function ProgramsSection() {
                   <span>{p.duration}</span>
                   <span>·</span>
                   <span>{p.level}</span>
-                  <span>·</span>
-                  <span>{p.learners.toLocaleString()} learners</span>
+                  {p.learners > 0 && (
+                    <>
+                      <span>·</span>
+                      <span>{p.learners.toLocaleString()} learners</span>
+                    </>
+                  )}
                 </div>
                 <div className="mt-5 flex items-center justify-between border-t pt-4">
                   <span className="font-display font-bold">{formatNaira(p.price)}</span>
@@ -369,35 +375,33 @@ function TestimonialSection() {
       <SectionHeading
         align="center"
         eyebrow="Outcomes"
-        title="Careers that started in a classroom in Ikeja"
+        title="Stories we're yet to earn"
+        description="The first testimonials will be written by the first cohort — and we'll publish them exactly as they happened."
       />
-      <StaggerGroup className="mt-14 grid gap-5 md:grid-cols-2">
-        {testimonials.map((t) => (
-          <StaggerItem key={t.name}>
-            <div className="bg-card shadow-soft relative h-full overflow-hidden rounded-2xl border p-7">
-              <Quote className="text-primary/15 absolute -top-2 right-4 size-20" />
-              <p className="relative text-lg leading-relaxed font-medium text-pretty">
-                “{t.quote}”
-              </p>
-              <div className="relative mt-7 flex items-center gap-3">
-                <span className="bg-gradient-brand text-primary-foreground font-display grid size-11 place-items-center rounded-full text-sm font-bold">
-                  {t.name
-                    .split(" ")
-                    .map((n) => n[0])
-                    .join("")}
-                </span>
-                <div>
-                  <p className="text-sm font-bold">{t.name}</p>
-                  <p className="text-muted-foreground text-xs">{t.role}</p>
-                </div>
-              </div>
-              <Badge variant="secondary" className="relative mt-5">
-                {t.program}
-              </Badge>
-            </div>
-          </StaggerItem>
-        ))}
-      </StaggerGroup>
+      <Reveal delay={0.1} className="mx-auto mt-12 max-w-3xl">
+        <div className="bg-card shadow-soft relative rounded-3xl border p-8 text-center md:p-10">
+          <Quote className="text-primary/15 absolute -top-2 right-6 size-16" />
+          <p className="relative text-lg leading-relaxed font-medium text-pretty sm:text-xl">
+            “We don't fake outcomes. We build the machine that produces them — then we show the
+            receipts.”
+          </p>
+          <p className="text-muted-foreground relative mt-6 text-sm font-semibold">
+            A founding principle, from day one
+          </p>
+          <div className="mt-7 flex flex-wrap justify-center gap-3">
+            <Button asChild className="bg-gradient-brand shadow-glow border-0">
+              <Link to="/about">
+                Read our story <ArrowRight className="ml-1.5 size-4" />
+              </Link>
+            </Button>
+            <Button asChild variant="outline">
+              <Link to="/stories">
+                See the stories page <ArrowUpRight className="ml-1.5 size-4" />
+              </Link>
+            </Button>
+          </div>
+        </div>
+      </Reveal>
     </section>
   );
 }
