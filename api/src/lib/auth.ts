@@ -1,0 +1,104 @@
+import type { Context, MiddlewareHandler } from "hono";
+import { createMiddleware } from "hono/factory";
+import type { AppEnv } from "../types";
+import type { Session } from "../schema/api";
+import { ApiError } from "./errors";
+import { sha256Hex } from "./crypto";
+import { permissionsForRole } from "./permissions";
+
+export interface AuthUser {
+  id: string;
+  name: string;
+  email: string;
+  avatarUrl?: string;
+  roleKey: string;
+  permissions: string[];
+}
+
+export interface AuthSession {
+  id: string;
+  userId: string;
+  expiresAt: string;
+}
+
+declare module "hono" {
+  interface ContextVariableMap {
+    authUser: AuthUser;
+    authSession: AuthSession;
+  }
+}
+
+export function getBearerToken(c: Context): string | null {
+  const header = c.req.header("authorization");
+  if (!header?.startsWith("Bearer ")) return null;
+  const token = header.slice(7).trim();
+  return token.length > 0 ? token : null;
+}
+
+export async function loadSession(
+  c: Context<{ Bindings: AppEnv }>,
+): Promise<{ user: AuthUser; session: AuthSession } | null> {
+  const token = getBearerToken(c);
+  if (!token) return null;
+  const tokenHash = await sha256Hex(token);
+  const now = new Date().toISOString();
+
+  const row = await c.env.DB.prepare(
+    `SELECT s.id AS session_id, s.expires_at, s.revoked_at,
+            u.id AS user_id, u.name, u.email, u.avatar_url, u.role_key, u.status
+       FROM sessions s
+       JOIN users u ON u.id = s.user_id
+      WHERE s.token_hash = ?`,
+  )
+    .bind(tokenHash)
+    .first<{
+      session_id: string;
+      expires_at: string;
+      revoked_at: string | null;
+      user_id: string;
+      name: string;
+      email: string;
+      avatar_url: string | null;
+      role_key: string;
+      status: string;
+    }>();
+
+  if (!row || row.revoked_at || row.status !== "active") return null;
+  if (row.expires_at <= now) return null;
+
+  return {
+    user: {
+      id: row.user_id,
+      name: row.name,
+      email: row.email,
+      avatarUrl: row.avatar_url ?? undefined,
+      roleKey: row.role_key,
+      permissions: permissionsForRole(row.role_key),
+    },
+    session: { id: row.session_id, userId: row.user_id, expiresAt: row.expires_at },
+  };
+}
+
+export function sessionResponse(user: AuthUser, expiresAt: string): Session {
+  return {
+    user: {
+      id: user.id,
+      name: user.name,
+      email: user.email,
+      ...(user.avatarUrl ? { avatarUrl: user.avatarUrl } : {}),
+      roleKey: user.roleKey,
+      permissions: user.permissions,
+    },
+    expiresAt,
+  };
+}
+
+export const requireAuth: MiddlewareHandler<{ Bindings: AppEnv }> = createMiddleware(
+  async (c, next) => {
+    const loaded = await loadSession(c);
+    if (!loaded) throw ApiError.unauthorized();
+    c.set("authUser", loaded.user);
+    c.set("authSession", loaded.session);
+    await next();
+  },
+);

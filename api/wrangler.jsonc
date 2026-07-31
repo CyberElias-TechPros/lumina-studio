@@ -1,0 +1,20 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "cea-api",
+  "main": "src/index.ts",
+  "compatibility_date": "2025-11-01",
+  "observability": {
+    "enabled": true
+  },
+  "vars": {
+    "APP_ENV": "development",
+    "FRONTEND_ORIGINS": "http://localhost:5173,http://127.0.0.1:5173"
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "cea-db",
+      "database_id": "00000000-0000-0000-0000-000000000000"
+    }
+  ]
+}

@@ -378,6 +378,19 @@ Auth (3): sign-in, register, magic-link. Apply (3): personal, documents, fee. LM
 - **Phase 5 — Realtime + Premium (weeks 19–24)**: chat, live class (WebRTC + DOs), presence, notification hub. *Completes checklist items 1, 2.*
 - **Phase 6 — AI + PWA + Scale (months 7–20)**: AI grading/recommendations/TA/content gen (Workers AI); PWA/push (§4-K/§15); analytics dashboards (§11); rate limits/observability harden. *Completes checklist items 4, 5 (AI), 6, 9.*
 
+### Phase 1 build log (status)
+
+**Done (Jul 2026, `api/` subfolder, scope: auth + core):**
+- Scaffolded `api/` package: Hono v4 worker, D1 binding (`cea-db`), Drizzle schema, hand-written wrangler-format migration `migrations/0000_init.sql` (engines, programs, users, sessions, magic_links, applications), CORS for the SPA with credentials.
+- Error envelope `{ error: { code, message, fieldErrors? } }` matches `src/lib/errors.ts` exactly (UNAUTHORIZED / FIELD_VALIDATION / NOT_FOUND / INVALID_MAGIC_TOKEN / PASSWORD_NOT_ENABLED).
+- Auth: `POST /v1/auth/magic-link` (15-min single-use tokens, `devToken` returned when `APP_ENV != production` for local/dev flows), `GET /v1/auth/magic-link/verify` (upserts user, issues 7-day bearer session, returns Session + token), `GET /v1/auth/session`, `POST /v1/auth/refresh`, `POST /v1/auth/sign-out` (revokes), `sign-in`/`sign-up` → 501 until password phase. Permissions served from `src/lib/permissions.ts` (mirror of `src/data/rbac.ts`; DB-backed roles deferred to Phase 2).
+- Programs: `GET /v1/programs` (cursor pagination, `Paginated<T>` shape), `GET /v1/programs/:slug`. Applications: public `POST /v1/applications` (CEA refs, validated programSlug), public status lookup `GET /v1/applications/:ref` (stage timeline), auth-only `GET /v1/applications`. Flags: `GET /v1/flags` (mirrors `src/lib/flags.ts`; KV-backed in Phase 5).
+- Seeds: `npm run gen:seed` generates `seeds/content.{sql,ts}` from `src/data/site.ts` (engines + programs) — D-7 pattern; `db:migrate:local` + `db:seed:local` scripts; applied + smoke-verified against local D1.
+- Tests: 29 vitest integration tests (workers pool, per-file D1 isolation) — auth flow, programs pagination, applications, flags. `npm test`, `npm run typecheck`, `wrangler deploy --dry-run` all green.
+- Known deltas vs §5 catalog: no rate limiting, no email transport (magic link is dev-token only), password auth stubbed, `/v1/courses*` + `/v1/dashboard/student` still mock-backed (Phase 2).
+
+**Next (Phase 1 remainder):** frontend wiring — `src/routes/auth.sign-in.tsx` (currently a mock) to use `signIn`/`requestMagicLink`/verify; `/auth/magic-link` verify screen; store token in `src/lib/api/client.ts` storage; then Phase 2 LMS core.
+
 ---
 
 ## 19. Decisions required (owner: user)
