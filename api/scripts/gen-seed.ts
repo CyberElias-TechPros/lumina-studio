@@ -22,7 +22,7 @@ const statements: string[] = [];
 
 for (const engine of engines) {
   statements.push(
-    `INSERT INTO engines (key, name, tagline, description, gradient, text, bullets, sort_order) ` +
+    `INSERT OR IGNORE INTO engines (key, name, tagline, description, gradient, text, bullets, sort_order) ` +
       `VALUES (${sqlString(engine.key)}, ${sqlString(engine.name)}, ${sqlString(engine.tagline)}, ` +
       `${sqlString(engine.description)}, ${sqlString(engine.gradient)}, ${sqlString(engine.text)}, ` +
       `${jsonString(engine.bullets)}, ${engines.indexOf(engine)});`,
@@ -31,7 +31,7 @@ for (const engine of engines) {
 
 for (const program of programs) {
   statements.push(
-    `INSERT INTO programs (slug, title, category, engine_key, level, duration, mode, price, rating, ` +
+    `INSERT OR IGNORE INTO programs (slug, title, category, engine_key, level, duration, mode, price, rating, ` +
       `learners, blurb, outcomes, modules, tools) ` +
       `VALUES (${sqlString(program.slug)}, ${sqlString(program.title)}, ${sqlString(program.category)}, ` +
       `${sqlString(program.engine)}, ${sqlString(program.level)}, ${sqlString(program.duration)}, ` +

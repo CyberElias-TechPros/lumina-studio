@@ -387,9 +387,16 @@ Auth (3): sign-in, register, magic-link. Apply (3): personal, documents, fee. LM
 - Programs: `GET /v1/programs` (cursor pagination, `Paginated<T>` shape), `GET /v1/programs/:slug`. Applications: public `POST /v1/applications` (CEA refs, validated programSlug), public status lookup `GET /v1/applications/:ref` (stage timeline), auth-only `GET /v1/applications`. Flags: `GET /v1/flags` (mirrors `src/lib/flags.ts`; KV-backed in Phase 5).
 - Seeds: `npm run gen:seed` generates `seeds/content.{sql,ts}` from `src/data/site.ts` (engines + programs) — D-7 pattern; `db:migrate:local` + `db:seed:local` scripts; applied + smoke-verified against local D1.
 - Tests: 31 vitest integration tests (workers pool, per-file D1 isolation) — auth flow (cookie-based, incl. rotation + sign-out clearing), programs pagination, applications, flags. `npm test`, `npm run typecheck`, `wrangler deploy --dry-run` all green.
-- Known deltas vs §5 catalog: no rate limiting, no email transport (magic link is dev-token only), password auth stubbed, `/v1/courses*` + `/v1/dashboard/student` still mock-backed (Phase 2).
+- Known deltas vs §5 catalog: no rate limiting, no email transport (magic link is dev-token only), password auth stubbed; `/v1/courses*` + `/v1/dashboard/student` now real, remaining app-panel screens still mock-backed.
 
-**Next (Phase 2):** LMS core — `GET /v1/courses`, `GET /v1/courses/:slug`, `GET /v1/courses/gradebook`, `GET /v1/dashboard/student` per `src/lib/api/{courses,dashboard}.ts` contracts (note `kpis.studyHours` is a string); tables + seeds from `src/data/learning.ts` / `src/data/dashboard.ts`; then app-panel wiring for `/app` screens still on mocks.
+**Phase 2 done (Jul 2026):** LMS core shipped.
+- Migration `0001_lms.sql`: `courses` (modules/lessons as JSON, template statuses `preview`/`locked`), `enrollments`, `lesson_progress`, `gradebook`, `student_stats` — per-user state separated from course content.
+- `GET /v1/courses` + `GET /v1/courses/:slug` (requireAuth): lessons status computed per user — `lesson_progress` overrides, else `preview` passthrough, else `locked`; `pct` from enrollment. `/gradebook` registered before `/:slug` (Hono order).
+- `GET /v1/courses/gradebook` + `GET /v1/dashboard/student` (requireAuth + student-only → 403): gradebook paginated by course name; dashboard assembles kpis (enrolled/avg pct/student_stats), summary (progress counts), weeklyGoal note (generated), nextDeadline (student_stats), courses with `nextUp` = first in-progress lesson.
+- Seeds: `scripts/gen-lms-seed.ts` → `seeds/lms.{sql,ts}` from `src/data/learning.ts` — demo users `student@cea.ng` / `instructor@cea.ng`, 3 courses, enrollments + 15 progress rows, 4 gradebook entries, stats. All seeds idempotent (`INSERT OR IGNORE`); `db:seed:local` runs content + lms.
+- Tests: 44 total (courses 9: auth, merged statuses, fresh-user locking, cursor walk, detail, 404, gradebook 401/200/403; dashboard 4). Also raised vitest `testTimeout` to 15s (parallel worker boot contention).
+
+**Next (Phase 2 remainder):** app-panel wiring — switch `/app/learn`, `/app/grades`, `/app/assignments`, `/app/assessments`, `/app/instructor/*` pages from `src/data/*` imports to `src/lib/api/*` + query hooks; then Phase 3 (assignments/assessments/submissions endpoints per `src/data/learning.ts` remaining collections).
 
 ---
 

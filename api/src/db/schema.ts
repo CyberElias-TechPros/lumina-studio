@@ -97,3 +97,82 @@ export const applications = sqliteTable(
   },
   (t) => [index("idx_applications_email").on(t.email), index("idx_applications_ref").on(t.ref)],
 );
+
+export const courses = sqliteTable(
+  "courses",
+  {
+    slug: text("slug").primaryKey(),
+    title: text("title").notNull(),
+    subtitle: text("subtitle").notNull().default(""),
+    cohort: text("cohort").notNull().default(""),
+    instructor: text("instructor").notNull().default(""),
+    tone: text("tone").notNull().default(""),
+    modules: text("modules").notNull().default("[]"),
+    sortOrder: integer("sort_order").notNull().default(0),
+    createdAt: text("created_at").notNull(),
+    updatedAt: text("updated_at").notNull(),
+  },
+);
+
+export const enrollments = sqliteTable(
+  "enrollments",
+  {
+    id: text("id").primaryKey(),
+    userId: text("user_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    courseSlug: text("course_slug")
+      .notNull()
+      .references(() => courses.slug, { onDelete: "cascade" }),
+    pct: integer("pct").notNull().default(0),
+    enrolledAt: text("enrolled_at").notNull(),
+  },
+  (t) => [index("idx_enrollments_user").on(t.userId)],
+);
+
+export const lessonProgress = sqliteTable(
+  "lesson_progress",
+  {
+    id: text("id").primaryKey(),
+    userId: text("user_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    courseSlug: text("course_slug")
+      .notNull()
+      .references(() => courses.slug, { onDelete: "cascade" }),
+    lessonId: text("lesson_id").notNull(),
+    status: text("status").notNull(),
+    completedAt: text("completed_at"),
+  },
+  (t) => [index("idx_lesson_progress_user").on(t.userId, t.courseSlug)],
+);
+
+export const gradebook = sqliteTable(
+  "gradebook",
+  {
+    id: text("id").primaryKey(),
+    userId: text("user_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    courseName: text("course_name").notNull(),
+    units: integer("units").notNull().default(0),
+    letter: text("letter").notNull().default(""),
+    pct: real("pct").notNull().default(0),
+    trend: text("trend").notNull().default("="),
+    items: text("items").notNull().default("[]"),
+    sortOrder: integer("sort_order").notNull().default(0),
+  },
+  (t) => [index("idx_gradebook_user").on(t.userId)],
+);
+
+export const studentStats = sqliteTable("student_stats", {
+  userId: text("user_id")
+    .primaryKey()
+    .references(() => users.id, { onDelete: "cascade" }),
+  lessonsThisWeek: integer("lessons_this_week").notNull().default(0),
+  lessonsGoal: integer("lessons_goal").notNull().default(8),
+  studyHours: text("study_hours").notNull().default("0h"),
+  streakDays: integer("streak_days").notNull().default(0),
+  nextDeadlineDue: text("next_deadline_due"),
+  nextDeadlineTitle: text("next_deadline_title"),
+});

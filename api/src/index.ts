@@ -6,6 +6,8 @@ import { flags } from "./routes/flags";
 import { auth } from "./routes/auth";
 import { programs } from "./routes/programs";
 import { applications } from "./routes/applications";
+import { courses } from "./routes/courses";
+import { dashboard } from "./routes/dashboard";
 
 const app = new Hono<{ Bindings: AppEnv }>();
 
@@ -31,6 +33,8 @@ const v1 = new Hono<{ Bindings: AppEnv }>();
 v1.route("/auth", auth);
 v1.route("/programs", programs);
 v1.route("/applications", applications);
+v1.route("/courses", courses);
+v1.route("/dashboard", dashboard);
 v1.route("/flags", flags);
 
 app.route("/v1", v1);

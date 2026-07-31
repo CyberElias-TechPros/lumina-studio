@@ -1,22 +1,31 @@
 import { env, exports } from "cloudflare:workers";
 import initSql from "../migrations/0000_init.sql?raw";
+import lmsSql from "../migrations/0001_lms.sql?raw";
 import { seedContentSql } from "../seeds/content";
+import { seedLmsSql } from "../seeds/lms";
 import type { Session } from "../src/schema/api";
 
 export const SESSION_COOKIE = "cea_session";
 
 export async function setupDb(): Promise<void> {
-  const statements = initSql
-    .split("\n")
-    .filter((line) => !line.trim().startsWith("--"))
-    .join(" ")
-    .split(";")
-    .map((s) => s.trim())
-    .filter((s) => s.length > 0);
-  for (const statement of statements) {
-    await env.DB.exec(statement);
+  for (const sql of [initSql, lmsSql]) {
+    const statements = sql
+      .split("\n")
+      .filter((line) => !line.trim().startsWith("--"))
+      .join(" ")
+      .split(";")
+      .map((s) => s.trim())
+      .filter((s) => s.length > 0);
+    for (const statement of statements) {
+      await env.DB.exec(statement);
+    }
   }
   for (const line of seedContentSql.split("\n")) {
+    const statement = line.trim();
+    if (statement.length === 0) continue;
+    await env.DB.exec(statement);
+  }
+  for (const line of seedLmsSql.split("\n")) {
     const statement = line.trim();
     if (statement.length === 0) continue;
     await env.DB.exec(statement);
