@@ -1,0 +1,155 @@
+import { createFileRoute, Link } from "@tanstack/react-router";
+import {
+  ArrowLeft,
+  BriefcaseBusiness,
+  CheckCircle2,
+  FileText,
+  Search,
+  TrendingUp,
+} from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { AppShell } from "@/components/app/app-shell";
+import { cn } from "@/lib/utils";
+
+export const Route = createFileRoute("/app/mentor/mentees/$menteeId/career")({
+  head: () => ({
+    meta: [
+      { title: "Career Tracking — CEA-OS" },
+      { name: "description", content: "Applications, interviews and job search progress." },
+    ],
+  }),
+  component: MentorCareerTracking,
+});
+
+const applications = [
+  {
+    role: "Junior Backend Engineer",
+    company: "Paystack",
+    stage: "Interview",
+    d: "Aug 5",
+    tone: "bg-primary/10 text-primary",
+  },
+  {
+    role: "Backend Intern",
+    company: "Kuda",
+    stage: "Take-home",
+    d: "Jul 28",
+    tone: "bg-warning/10 text-warning",
+  },
+  {
+    role: "Software Eng. Trainee",
+    company: "Andela",
+    stage: "Applied",
+    d: "Jul 20",
+    tone: "bg-learning/10 text-learning",
+  },
+  {
+    role: "Junior Developer",
+    company: "Flutterwave",
+    stage: "Rejected",
+    d: "Jul 12",
+    tone: "bg-destructive/10 text-destructive",
+  },
+];
+
+function MentorCareerTracking() {
+  return (
+    <AppShell
+      roleKey="instructor"
+      title="Career tracking"
+      subtitle="Ada Okafor · job search · 4 applications"
+      actions={
+        <>
+          <Badge className="bg-success/10 text-success border-0 font-semibold">
+            Interview stage reached
+          </Badge>
+          <Button asChild variant="outline" size="sm" className="font-semibold">
+            <Link to="/app/mentor/mentees/$menteeId" params={{ menteeId: "ada-okafor" }}>
+              <ArrowLeft className="size-4" /> Mentee overview
+            </Link>
+          </Button>
+        </>
+      }
+    >
+      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+        {[
+          {
+            label: "Applications",
+            value: "4",
+            delta: "2 this month",
+            icon: BriefcaseBusiness,
+            tone: "bg-primary/10 text-primary",
+          },
+          {
+            label: "Interviews",
+            value: "1",
+            delta: "Paystack · Aug 12",
+            icon: Search,
+            tone: "bg-learning/10 text-learning",
+          },
+          {
+            label: "Prep sessions",
+            value: "3",
+            delta: "mock interviews",
+            icon: CheckCircle2,
+            tone: "bg-success/10 text-success",
+          },
+          {
+            label: "CV strength",
+            value: "Strong",
+            delta: "per rubric v3",
+            icon: TrendingUp,
+            tone: "bg-warning/10 text-warning",
+          },
+        ].map((k) => (
+          <Card key={k.label} className="bg-card shadow-soft border">
+            <CardContent className="p-5">
+              <div className="flex items-center justify-between">
+                <p className="text-muted-foreground text-xs font-bold tracking-wide uppercase">
+                  {k.label}
+                </p>
+                <span className={cn("grid size-8 place-items-center rounded-lg", k.tone)}>
+                  <k.icon className="size-4" />
+                </span>
+              </div>
+              <p className="font-display mt-3 text-2xl font-extrabold">{k.value}</p>
+              <p className="text-muted-foreground mt-0.5 text-xs font-semibold">{k.delta}</p>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+
+      <Card className="bg-card mt-5 shadow-soft border">
+        <CardHeader>
+          <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
+            <FileText className="text-primary size-4" /> Application pipeline
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="divide-y">
+          {applications.map((a) => (
+            <div
+              key={a.role}
+              className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
+            >
+              <div className="min-w-0 flex-1">
+                <p className="text-sm font-bold">{a.role}</p>
+                <p className="text-muted-foreground text-xs">
+                  {a.company} · applied {a.d}
+                </p>
+              </div>
+              <Badge className={cn("border-0 font-semibold", a.tone)}>{a.stage}</Badge>
+              <Button variant="outline" size="sm" className="shrink-0 font-semibold">
+                Prep notes
+              </Button>
+            </div>
+          ))}
+          <p className="text-muted-foreground pt-3 text-xs">
+            Next: interview prep for Paystack — STAR drills on backend projects scheduled Aug 10.
+          </p>
+        </CardContent>
+      </Card>
+    </AppShell>
+  );
+}

@@ -1,0 +1,139 @@
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { ArrowLeft, CreditCard, Download, FileText, Receipt, Wallet } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { AppShell } from "@/components/app/app-shell";
+import { formatNaira } from "@/data/site";
+import { cn } from "@/lib/utils";
+
+export const Route = createFileRoute("/app/client/invoices")({
+  head: () => ({
+    meta: [
+      { title: "Invoices & Payments — CEA-OS" },
+      { name: "description", content: "Project invoices, payments and receipts." },
+    ],
+  }),
+  component: ClientInvoices,
+});
+
+const invoices = [
+  {
+    ref: "INV-ST-0142-1",
+    item: "Deposit — OrderPadi build",
+    amount: 350000,
+    status: "Paid",
+    tone: "bg-success/10 text-success",
+  },
+  {
+    ref: "INV-ST-0142-2",
+    item: "Milestone 2 — mockups approved",
+    amount: 175000,
+    status: "Paid",
+    tone: "bg-success/10 text-success",
+  },
+  {
+    ref: "INV-ST-0142-3",
+    item: "Milestone 3 — core build",
+    amount: 175000,
+    status: "Due Aug 25",
+    tone: "bg-warning/10 text-warning",
+  },
+];
+
+function ClientInvoices() {
+  return (
+    <AppShell
+      roleKey="instructor"
+      title="Invoices & payments"
+      subtitle="CEA Studio · OrderPadi project"
+      actions={
+        <>
+          <Badge className="bg-warning/10 text-warning border-0 font-semibold">
+            {formatNaira(175000)} due Aug 25
+          </Badge>
+          <Button size="sm">
+            <CreditCard className="size-4" /> Pay online
+          </Button>
+        </>
+      }
+    >
+      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+        {[
+          {
+            label: "Total project",
+            value: formatNaira(700000),
+            delta: "fixed scope",
+            icon: FileText,
+            tone: "bg-primary/10 text-primary",
+          },
+          {
+            label: "Paid",
+            value: formatNaira(525000),
+            delta: "75% complete",
+            icon: Receipt,
+            tone: "bg-success/10 text-success",
+          },
+          {
+            label: "Outstanding",
+            value: formatNaira(175000),
+            delta: "due Aug 25",
+            icon: Wallet,
+            tone: "bg-warning/10 text-warning",
+          },
+          {
+            label: "Payment terms",
+            value: "25 / 25 / 25 / 25",
+            delta: "4 milestones",
+            icon: CreditCard,
+            tone: "bg-learning/10 text-learning",
+          },
+        ].map((k) => (
+          <Card key={k.label} className="bg-card shadow-soft border">
+            <CardContent className="p-5">
+              <div className="flex items-center justify-between">
+                <p className="text-muted-foreground text-xs font-bold tracking-wide uppercase">
+                  {k.label}
+                </p>
+                <span className={cn("grid size-8 place-items-center rounded-lg", k.tone)}>
+                  <k.icon className="size-4" />
+                </span>
+              </div>
+              <p className="font-display mt-3 text-2xl font-extrabold">{k.value}</p>
+              <p className="text-muted-foreground mt-0.5 text-xs font-semibold">{k.delta}</p>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+
+      <Card className="bg-card mt-5 shadow-soft border">
+        <CardHeader>
+          <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
+            <Receipt className="text-primary size-4" /> Invoices
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="divide-y">
+          {invoices.map((i) => (
+            <div
+              key={i.ref}
+              className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
+            >
+              <span className="bg-muted text-muted-foreground grid size-9 shrink-0 place-items-center rounded-lg">
+                <Receipt className="size-4" />
+              </span>
+              <div className="min-w-0 flex-1">
+                <p className="text-sm font-bold">{i.item}</p>
+                <p className="text-muted-foreground text-xs">{i.ref}</p>
+              </div>
+              <span className="text-sm font-extrabold">{formatNaira(i.amount)}</span>
+              <Badge className={cn("border-0 font-semibold", i.tone)}>{i.status}</Badge>
+              <Button variant="ghost" size="sm" className="text-primary shrink-0 font-semibold">
+                <Download className="size-3.5" /> PDF
+              </Button>
+            </div>
+          ))}
+        </CardContent>
+      </Card>
+    </AppShell>
+  );
+}

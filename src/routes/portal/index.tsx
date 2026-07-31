@@ -228,6 +228,55 @@ const portals = [
     desc: "Programs, beneficiaries, funding",
     tone: "text-success bg-success/10",
   },
+  {
+    icon: ShieldCheck,
+    label: "Department Head",
+    path: "/portal/department-head",
+    desc: "Department KPIs, faculty, budgets",
+    tone: "text-services bg-services/10",
+  },
+  {
+    icon: Megaphone,
+    label: "Copywriter",
+    path: "/portal/copywriter",
+    desc: "Content calendar, briefs, approval",
+    tone: "text-learning bg-learning/10",
+  },
+  {
+    icon: Megaphone,
+    label: "Product Marketing",
+    path: "/portal/product-marketing",
+    desc: "Launches, positioning, pricing",
+    tone: "text-primary bg-primary/10",
+  },
+  {
+    icon: Users,
+    label: "Behavioral Designer",
+    path: "/portal/behavioral-designer",
+    desc: "Nudges, funnels, experiments",
+    tone: "text-community bg-community/10",
+  },
+  {
+    icon: Megaphone,
+    label: "Growth",
+    path: "/portal/growth",
+    desc: "Loops, referral program, CAC",
+    tone: "text-success bg-success/10",
+  },
+  {
+    icon: Megaphone,
+    label: "Global Copywriter",
+    path: "/portal/global-copywriter",
+    desc: "Localized, market-fit copy",
+    tone: "text-erp bg-erp/10",
+  },
+  {
+    icon: MonitorCheck,
+    label: "Visual & UX Design",
+    path: "/portal/visual-designer",
+    desc: "Design system, a11y, usability",
+    tone: "text-warning bg-warning/10",
+  },
 ] as const;
 
 function PortalHub() {

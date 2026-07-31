@@ -69,6 +69,9 @@ function MentorPortal() {
             Mentor of the month · July
           </Badge>
           <Button asChild variant="outline" size="sm" className="ml-auto">
+            <Link to="/app/mentor">Mentor workspace</Link>
+          </Button>
+          <Button asChild variant="ghost" size="sm" className="font-semibold">
             <Link to="/portal/student">Mentee view</Link>
           </Button>
         </>

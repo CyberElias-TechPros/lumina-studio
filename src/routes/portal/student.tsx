@@ -158,8 +158,13 @@ function StudentPortal() {
           { to: "/app/assignments", label: "Assignments" },
           { to: "/app/assessments", label: "Assessments" },
           { to: "/app/grades", label: "Gradebook" },
+          { to: "/app/portfolio", label: "Portfolio" },
+          { to: "/app/finance", label: "Finance" },
+          { to: "/app/attendance", label: "Attendance" },
+          { to: "/app/certificates", label: "Certificates" },
           { to: "/app/calendar", label: "Calendar" },
           { to: "/app/messages", label: "Messages" },
+          { to: "/app/notifications", label: "Notifications" },
         ].map((m) => (
           <Button asChild key={m.to} variant="outline" size="sm" className="font-semibold">
             <Link to={m.to}>{m.label}</Link>

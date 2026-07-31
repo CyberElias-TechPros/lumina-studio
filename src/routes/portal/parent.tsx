@@ -269,6 +269,11 @@ function ParentPortal() {
               Talk to Student Success <ArrowRight className="ml-1.5 size-4" />
             </Link>
           </Button>
+          <Button asChild className="w-full">
+            <Link to="/app/parent">
+              Full parent dashboard <ArrowRight className="ml-1.5 size-4" />
+            </Link>
+          </Button>
         </div>
       </div>
     </AppShell>

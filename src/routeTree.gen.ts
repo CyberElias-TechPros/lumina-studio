@@ -28,9 +28,15 @@ import { Route as StoriesRouteImport } from './routes/stories'
 import { Route as VisitRouteImport } from './routes/visit'
 import { Route as WorkRouteImport } from './routes/work'
 import { Route as AppIndexRouteImport } from './routes/app.index'
+import { Route as AppAttendanceRouteImport } from './routes/app/attendance'
 import { Route as AppCalendarRouteImport } from './routes/app/calendar'
+import { Route as AppCertificatesRouteImport } from './routes/app/certificates'
+import { Route as AppFinanceRouteImport } from './routes/app/finance'
 import { Route as AppGradesRouteImport } from './routes/app/grades'
 import { Route as AppMessagesRouteImport } from './routes/app/messages'
+import { Route as AppNotificationsRouteImport } from './routes/app/notifications'
+import { Route as AppPortfolioRouteImport } from './routes/app/portfolio'
+import { Route as AppReportsRouteImport } from './routes/app/reports'
 import { Route as ApplyIndexRouteImport } from './routes/apply/index'
 import { Route as ApplyStatusRouteImport } from './routes/apply/status'
 import { Route as AuthForgotPasswordRouteImport } from './routes/auth.forgot-password'
@@ -48,15 +54,20 @@ import { Route as PortalAccountantRouteImport } from './routes/portal/accountant
 import { Route as PortalAdminRouteImport } from './routes/portal/admin'
 import { Route as PortalAdmissionsRouteImport } from './routes/portal/admissions'
 import { Route as PortalAlumniRouteImport } from './routes/portal/alumni'
+import { Route as PortalBehavioralDesignerRouteImport } from './routes/portal/behavioral-designer'
 import { Route as PortalCareerServicesRouteImport } from './routes/portal/career-services'
 import { Route as PortalClientRouteImport } from './routes/portal/client'
+import { Route as PortalCopywriterRouteImport } from './routes/portal/copywriter'
 import { Route as PortalDataRouteImport } from './routes/portal/data'
+import { Route as PortalDepartmentHeadRouteImport } from './routes/portal/department-head'
 import { Route as PortalDeveloperRouteImport } from './routes/portal/developer'
 import { Route as PortalDevopsRouteImport } from './routes/portal/devops'
 import { Route as PortalEmployerRouteImport } from './routes/portal/employer'
 import { Route as PortalExecutiveRouteImport } from './routes/portal/executive'
 import { Route as PortalFinanceRouteImport } from './routes/portal/finance'
+import { Route as PortalGlobalCopywriterRouteImport } from './routes/portal/global-copywriter'
 import { Route as PortalGovernmentRouteImport } from './routes/portal/government'
+import { Route as PortalGrowthRouteImport } from './routes/portal/growth'
 import { Route as PortalHrRouteImport } from './routes/portal/hr'
 import { Route as PortalInstructorRouteImport } from './routes/portal/instructor'
 import { Route as PortalInternRouteImport } from './routes/portal/intern'
@@ -67,29 +78,70 @@ import { Route as PortalNgoRouteImport } from './routes/portal/ngo'
 import { Route as PortalOperationsRouteImport } from './routes/portal/operations'
 import { Route as PortalParentRouteImport } from './routes/portal/parent'
 import { Route as PortalPartnerRouteImport } from './routes/portal/partner'
+import { Route as PortalProductMarketingRouteImport } from './routes/portal/product-marketing'
 import { Route as PortalQualityRouteImport } from './routes/portal/quality'
 import { Route as PortalReceptionistRouteImport } from './routes/portal/receptionist'
 import { Route as PortalRegistrarRouteImport } from './routes/portal/registrar'
 import { Route as PortalSecurityRouteImport } from './routes/portal/security'
 import { Route as PortalStudentRouteImport } from './routes/portal/student'
 import { Route as PortalSupplierRouteImport } from './routes/portal/supplier'
+import { Route as PortalVisualDesignerRouteImport } from './routes/portal/visual-designer'
 import { Route as PortalVolunteerRouteImport } from './routes/portal/volunteer'
 import { Route as ProgramsIndexRouteImport } from './routes/programs.index'
 import { Route as ProgramsSlugRouteImport } from './routes/programs.$slug'
 import { Route as ProgramsCompareRouteImport } from './routes/programs/compare'
+import { Route as AppAlumniEventsRouteImport } from './routes/app/alumni/events'
+import { Route as AppAlumniGiveBackRouteImport } from './routes/app/alumni/give-back'
+import { Route as AppAlumniHubRouteImport } from './routes/app/alumni/hub'
+import { Route as AppAlumniJobsRouteImport } from './routes/app/alumni/jobs'
+import { Route as AppAlumniNetworkRouteImport } from './routes/app/alumni/network'
 import { Route as AppAssessmentsIndexRouteImport } from './routes/app/assessments/index'
 import { Route as AppAssignmentsIndexRouteImport } from './routes/app/assignments/index'
 import { Route as AppAssignmentsAssignmentIdRouteImport } from './routes/app/assignments/$assignmentId'
+import { Route as AppClientInvoicesRouteImport } from './routes/app/client/invoices'
+import { Route as AppClientSupportRouteImport } from './routes/app/client/support'
+import { Route as AppDepartmentCurriculumRouteImport } from './routes/app/department/curriculum'
+import { Route as AppDepartmentEnrollmentRouteImport } from './routes/app/department/enrollment'
+import { Route as AppDepartmentInstructorsRouteImport } from './routes/app/department/instructors'
+import { Route as AppDepartmentQualityRouteImport } from './routes/app/department/quality'
+import { Route as AppEmployerAnalyticsRouteImport } from './routes/app/employer/analytics'
+import { Route as AppEmployerBrandRouteImport } from './routes/app/employer/brand'
+import { Route as AppEmployerHubRouteImport } from './routes/app/employer/hub'
+import { Route as AppEmployerInterviewsRouteImport } from './routes/app/employer/interviews'
+import { Route as AppEmployerJobsRouteImport } from './routes/app/employer/jobs'
+import { Route as AppEmployerTalentRouteImport } from './routes/app/employer/talent'
 import { Route as AppInstructorAnalyticsRouteImport } from './routes/app/instructor/analytics'
 import { Route as AppInstructorAttendanceRouteImport } from './routes/app/instructor/attendance'
 import { Route as AppInstructorGradebookRouteImport } from './routes/app/instructor/gradebook'
 import { Route as AppLearnIndexRouteImport } from './routes/app/learn/index'
 import { Route as AppLearnCourseIdRouteImport } from './routes/app/learn/$courseId'
+import { Route as AppLiveClassIdRouteImport } from './routes/app/live/$classId'
+import { Route as AppMentorIndexRouteImport } from './routes/app/mentor/index'
+import { Route as AppMentorAnalyticsRouteImport } from './routes/app/mentor/analytics'
+import { Route as AppMentorGoalsRouteImport } from './routes/app/mentor/goals'
+import { Route as AppMentorRequestsRouteImport } from './routes/app/mentor/requests'
+import { Route as AppMentorResourcesRouteImport } from './routes/app/mentor/resources'
+import { Route as AppMentorSessionsRouteImport } from './routes/app/mentor/sessions'
+import { Route as AppMentorSettingsRouteImport } from './routes/app/mentor/settings'
+import { Route as AppParentIndexRouteImport } from './routes/app/parent/index'
 import { Route as AppAssessmentsAssessmentIdTakeRouteImport } from './routes/app/assessments/$assessmentId/take'
+import { Route as AppClientProjectsProjectIdRouteImport } from './routes/app/client/projects/$projectId'
+import { Route as AppEmployerPipelineJobIdRouteImport } from './routes/app/employer/pipeline/$jobId'
 import { Route as AppInstructorAssignmentsIndexRouteImport } from './routes/app/instructor/assignments/index'
 import { Route as AppInstructorCoursesCourseIdRouteImport } from './routes/app/instructor/courses/$courseId'
+import { Route as AppMentorMenteesMenteeIdRouteImport } from './routes/app/mentor/mentees/$menteeId'
+import { Route as AppMentorSessionsSessionIdRouteImport } from './routes/app/mentor/sessions/$sessionId'
+import { Route as AppParentInvitationAcceptRouteImport } from './routes/app/parent/invitation/accept'
+import { Route as AppParentStudentsStudentIdRouteImport } from './routes/app/parent/students/$studentId'
 import { Route as AppInstructorAssignmentsSubmissionIdGradeRouteImport } from './routes/app/instructor/assignments/$submissionId.grade'
 import { Route as AppLearnCourseIdLessonsLessonIdRouteImport } from './routes/app/learn/$courseId.lessons.$lessonId'
+import { Route as AppMentorMenteesMenteeIdCareerRouteImport } from './routes/app/mentor/mentees/$menteeId.career'
+import { Route as AppMentorMenteesMenteeIdPortfolioRouteImport } from './routes/app/mentor/mentees/$menteeId.portfolio'
+import { Route as AppParentStudentsStudentIdAttendanceRouteImport } from './routes/app/parent/students/$studentId.attendance'
+import { Route as AppParentStudentsStudentIdCommunicationRouteImport } from './routes/app/parent/students/$studentId.communication'
+import { Route as AppParentStudentsStudentIdFinanceRouteImport } from './routes/app/parent/students/$studentId.finance'
+import { Route as AppParentStudentsStudentIdGradesRouteImport } from './routes/app/parent/students/$studentId.grades'
+import { Route as AppParentStudentsStudentIdReportsRouteImport } from './routes/app/parent/students/$studentId.reports'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -186,9 +238,24 @@ const AppIndexRoute = AppIndexRouteImport.update({
   path: '/app/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AppAttendanceRoute = AppAttendanceRouteImport.update({
+  id: '/app/attendance',
+  path: '/app/attendance',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AppCalendarRoute = AppCalendarRouteImport.update({
   id: '/app/calendar',
   path: '/app/calendar',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppCertificatesRoute = AppCertificatesRouteImport.update({
+  id: '/app/certificates',
+  path: '/app/certificates',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppFinanceRoute = AppFinanceRouteImport.update({
+  id: '/app/finance',
+  path: '/app/finance',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AppGradesRoute = AppGradesRouteImport.update({
@@ -199,6 +266,21 @@ const AppGradesRoute = AppGradesRouteImport.update({
 const AppMessagesRoute = AppMessagesRouteImport.update({
   id: '/app/messages',
   path: '/app/messages',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppNotificationsRoute = AppNotificationsRouteImport.update({
+  id: '/app/notifications',
+  path: '/app/notifications',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppPortfolioRoute = AppPortfolioRouteImport.update({
+  id: '/app/portfolio',
+  path: '/app/portfolio',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppReportsRoute = AppReportsRouteImport.update({
+  id: '/app/reports',
+  path: '/app/reports',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApplyIndexRoute = ApplyIndexRouteImport.update({
@@ -286,6 +368,12 @@ const PortalAlumniRoute = PortalAlumniRouteImport.update({
   path: '/portal/alumni',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PortalBehavioralDesignerRoute =
+  PortalBehavioralDesignerRouteImport.update({
+    id: '/portal/behavioral-designer',
+    path: '/portal/behavioral-designer',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const PortalCareerServicesRoute = PortalCareerServicesRouteImport.update({
   id: '/portal/career-services',
   path: '/portal/career-services',
@@ -296,9 +384,19 @@ const PortalClientRoute = PortalClientRouteImport.update({
   path: '/portal/client',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PortalCopywriterRoute = PortalCopywriterRouteImport.update({
+  id: '/portal/copywriter',
+  path: '/portal/copywriter',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PortalDataRoute = PortalDataRouteImport.update({
   id: '/portal/data',
   path: '/portal/data',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PortalDepartmentHeadRoute = PortalDepartmentHeadRouteImport.update({
+  id: '/portal/department-head',
+  path: '/portal/department-head',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PortalDeveloperRoute = PortalDeveloperRouteImport.update({
@@ -326,9 +424,19 @@ const PortalFinanceRoute = PortalFinanceRouteImport.update({
   path: '/portal/finance',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PortalGlobalCopywriterRoute = PortalGlobalCopywriterRouteImport.update({
+  id: '/portal/global-copywriter',
+  path: '/portal/global-copywriter',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PortalGovernmentRoute = PortalGovernmentRouteImport.update({
   id: '/portal/government',
   path: '/portal/government',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PortalGrowthRoute = PortalGrowthRouteImport.update({
+  id: '/portal/growth',
+  path: '/portal/growth',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PortalHrRoute = PortalHrRouteImport.update({
@@ -381,6 +489,11 @@ const PortalPartnerRoute = PortalPartnerRouteImport.update({
   path: '/portal/partner',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PortalProductMarketingRoute = PortalProductMarketingRouteImport.update({
+  id: '/portal/product-marketing',
+  path: '/portal/product-marketing',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PortalQualityRoute = PortalQualityRouteImport.update({
   id: '/portal/quality',
   path: '/portal/quality',
@@ -411,6 +524,11 @@ const PortalSupplierRoute = PortalSupplierRouteImport.update({
   path: '/portal/supplier',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PortalVisualDesignerRoute = PortalVisualDesignerRouteImport.update({
+  id: '/portal/visual-designer',
+  path: '/portal/visual-designer',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PortalVolunteerRoute = PortalVolunteerRouteImport.update({
   id: '/portal/volunteer',
   path: '/portal/volunteer',
@@ -431,6 +549,31 @@ const ProgramsCompareRoute = ProgramsCompareRouteImport.update({
   path: '/programs/compare',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AppAlumniEventsRoute = AppAlumniEventsRouteImport.update({
+  id: '/app/alumni/events',
+  path: '/app/alumni/events',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppAlumniGiveBackRoute = AppAlumniGiveBackRouteImport.update({
+  id: '/app/alumni/give-back',
+  path: '/app/alumni/give-back',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppAlumniHubRoute = AppAlumniHubRouteImport.update({
+  id: '/app/alumni/hub',
+  path: '/app/alumni/hub',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppAlumniJobsRoute = AppAlumniJobsRouteImport.update({
+  id: '/app/alumni/jobs',
+  path: '/app/alumni/jobs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppAlumniNetworkRoute = AppAlumniNetworkRouteImport.update({
+  id: '/app/alumni/network',
+  path: '/app/alumni/network',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AppAssessmentsIndexRoute = AppAssessmentsIndexRouteImport.update({
   id: '/app/assessments/',
   path: '/app/assessments/',
@@ -447,6 +590,67 @@ const AppAssignmentsAssignmentIdRoute =
     path: '/app/assignments/$assignmentId',
     getParentRoute: () => rootRouteImport,
   } as any)
+const AppClientInvoicesRoute = AppClientInvoicesRouteImport.update({
+  id: '/app/client/invoices',
+  path: '/app/client/invoices',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppClientSupportRoute = AppClientSupportRouteImport.update({
+  id: '/app/client/support',
+  path: '/app/client/support',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppDepartmentCurriculumRoute = AppDepartmentCurriculumRouteImport.update({
+  id: '/app/department/curriculum',
+  path: '/app/department/curriculum',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppDepartmentEnrollmentRoute = AppDepartmentEnrollmentRouteImport.update({
+  id: '/app/department/enrollment',
+  path: '/app/department/enrollment',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppDepartmentInstructorsRoute =
+  AppDepartmentInstructorsRouteImport.update({
+    id: '/app/department/instructors',
+    path: '/app/department/instructors',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AppDepartmentQualityRoute = AppDepartmentQualityRouteImport.update({
+  id: '/app/department/quality',
+  path: '/app/department/quality',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppEmployerAnalyticsRoute = AppEmployerAnalyticsRouteImport.update({
+  id: '/app/employer/analytics',
+  path: '/app/employer/analytics',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppEmployerBrandRoute = AppEmployerBrandRouteImport.update({
+  id: '/app/employer/brand',
+  path: '/app/employer/brand',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppEmployerHubRoute = AppEmployerHubRouteImport.update({
+  id: '/app/employer/hub',
+  path: '/app/employer/hub',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppEmployerInterviewsRoute = AppEmployerInterviewsRouteImport.update({
+  id: '/app/employer/interviews',
+  path: '/app/employer/interviews',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppEmployerJobsRoute = AppEmployerJobsRouteImport.update({
+  id: '/app/employer/jobs',
+  path: '/app/employer/jobs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppEmployerTalentRoute = AppEmployerTalentRouteImport.update({
+  id: '/app/employer/talent',
+  path: '/app/employer/talent',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AppInstructorAnalyticsRoute = AppInstructorAnalyticsRouteImport.update({
   id: '/app/instructor/analytics',
   path: '/app/instructor/analytics',
@@ -472,10 +676,67 @@ const AppLearnCourseIdRoute = AppLearnCourseIdRouteImport.update({
   path: '/app/learn/$courseId',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AppLiveClassIdRoute = AppLiveClassIdRouteImport.update({
+  id: '/app/live/$classId',
+  path: '/app/live/$classId',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppMentorIndexRoute = AppMentorIndexRouteImport.update({
+  id: '/app/mentor/',
+  path: '/app/mentor/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppMentorAnalyticsRoute = AppMentorAnalyticsRouteImport.update({
+  id: '/app/mentor/analytics',
+  path: '/app/mentor/analytics',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppMentorGoalsRoute = AppMentorGoalsRouteImport.update({
+  id: '/app/mentor/goals',
+  path: '/app/mentor/goals',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppMentorRequestsRoute = AppMentorRequestsRouteImport.update({
+  id: '/app/mentor/requests',
+  path: '/app/mentor/requests',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppMentorResourcesRoute = AppMentorResourcesRouteImport.update({
+  id: '/app/mentor/resources',
+  path: '/app/mentor/resources',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppMentorSessionsRoute = AppMentorSessionsRouteImport.update({
+  id: '/app/mentor/sessions',
+  path: '/app/mentor/sessions',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppMentorSettingsRoute = AppMentorSettingsRouteImport.update({
+  id: '/app/mentor/settings',
+  path: '/app/mentor/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppParentIndexRoute = AppParentIndexRouteImport.update({
+  id: '/app/parent/',
+  path: '/app/parent/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AppAssessmentsAssessmentIdTakeRoute =
   AppAssessmentsAssessmentIdTakeRouteImport.update({
     id: '/app/assessments/$assessmentId/take',
     path: '/app/assessments/$assessmentId/take',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AppClientProjectsProjectIdRoute =
+  AppClientProjectsProjectIdRouteImport.update({
+    id: '/app/client/projects/$projectId',
+    path: '/app/client/projects/$projectId',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AppEmployerPipelineJobIdRoute =
+  AppEmployerPipelineJobIdRouteImport.update({
+    id: '/app/employer/pipeline/$jobId',
+    path: '/app/employer/pipeline/$jobId',
     getParentRoute: () => rootRouteImport,
   } as any)
 const AppInstructorAssignmentsIndexRoute =
@@ -490,6 +751,30 @@ const AppInstructorCoursesCourseIdRoute =
     path: '/app/instructor/courses/$courseId',
     getParentRoute: () => rootRouteImport,
   } as any)
+const AppMentorMenteesMenteeIdRoute =
+  AppMentorMenteesMenteeIdRouteImport.update({
+    id: '/app/mentor/mentees/$menteeId',
+    path: '/app/mentor/mentees/$menteeId',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AppMentorSessionsSessionIdRoute =
+  AppMentorSessionsSessionIdRouteImport.update({
+    id: '/$sessionId',
+    path: '/$sessionId',
+    getParentRoute: () => AppMentorSessionsRoute,
+  } as any)
+const AppParentInvitationAcceptRoute =
+  AppParentInvitationAcceptRouteImport.update({
+    id: '/app/parent/invitation/accept',
+    path: '/app/parent/invitation/accept',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AppParentStudentsStudentIdRoute =
+  AppParentStudentsStudentIdRouteImport.update({
+    id: '/app/parent/students/$studentId',
+    path: '/app/parent/students/$studentId',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const AppInstructorAssignmentsSubmissionIdGradeRoute =
   AppInstructorAssignmentsSubmissionIdGradeRouteImport.update({
     id: '/app/instructor/assignments/$submissionId/grade',
@@ -501,6 +786,48 @@ const AppLearnCourseIdLessonsLessonIdRoute =
     id: '/lessons/$lessonId',
     path: '/lessons/$lessonId',
     getParentRoute: () => AppLearnCourseIdRoute,
+  } as any)
+const AppMentorMenteesMenteeIdCareerRoute =
+  AppMentorMenteesMenteeIdCareerRouteImport.update({
+    id: '/career',
+    path: '/career',
+    getParentRoute: () => AppMentorMenteesMenteeIdRoute,
+  } as any)
+const AppMentorMenteesMenteeIdPortfolioRoute =
+  AppMentorMenteesMenteeIdPortfolioRouteImport.update({
+    id: '/portfolio',
+    path: '/portfolio',
+    getParentRoute: () => AppMentorMenteesMenteeIdRoute,
+  } as any)
+const AppParentStudentsStudentIdAttendanceRoute =
+  AppParentStudentsStudentIdAttendanceRouteImport.update({
+    id: '/attendance',
+    path: '/attendance',
+    getParentRoute: () => AppParentStudentsStudentIdRoute,
+  } as any)
+const AppParentStudentsStudentIdCommunicationRoute =
+  AppParentStudentsStudentIdCommunicationRouteImport.update({
+    id: '/communication',
+    path: '/communication',
+    getParentRoute: () => AppParentStudentsStudentIdRoute,
+  } as any)
+const AppParentStudentsStudentIdFinanceRoute =
+  AppParentStudentsStudentIdFinanceRouteImport.update({
+    id: '/finance',
+    path: '/finance',
+    getParentRoute: () => AppParentStudentsStudentIdRoute,
+  } as any)
+const AppParentStudentsStudentIdGradesRoute =
+  AppParentStudentsStudentIdGradesRouteImport.update({
+    id: '/grades',
+    path: '/grades',
+    getParentRoute: () => AppParentStudentsStudentIdRoute,
+  } as any)
+const AppParentStudentsStudentIdReportsRoute =
+  AppParentStudentsStudentIdReportsRouteImport.update({
+    id: '/reports',
+    path: '/reports',
+    getParentRoute: () => AppParentStudentsStudentIdRoute,
   } as any)
 
 export interface FileRoutesByFullPath {
@@ -522,9 +849,15 @@ export interface FileRoutesByFullPath {
   '/stories': typeof StoriesRoute
   '/visit': typeof VisitRoute
   '/work': typeof WorkRoute
+  '/app/attendance': typeof AppAttendanceRoute
   '/app/calendar': typeof AppCalendarRoute
+  '/app/certificates': typeof AppCertificatesRoute
+  '/app/finance': typeof AppFinanceRoute
   '/app/grades': typeof AppGradesRoute
   '/app/messages': typeof AppMessagesRoute
+  '/app/notifications': typeof AppNotificationsRoute
+  '/app/portfolio': typeof AppPortfolioRoute
+  '/app/reports': typeof AppReportsRoute
   '/apply/status': typeof ApplyStatusRoute
   '/auth/forgot-password': typeof AuthForgotPasswordRoute
   '/auth/mfa': typeof AuthMfaRoute
@@ -539,15 +872,20 @@ export interface FileRoutesByFullPath {
   '/portal/admin': typeof PortalAdminRoute
   '/portal/admissions': typeof PortalAdmissionsRoute
   '/portal/alumni': typeof PortalAlumniRoute
+  '/portal/behavioral-designer': typeof PortalBehavioralDesignerRoute
   '/portal/career-services': typeof PortalCareerServicesRoute
   '/portal/client': typeof PortalClientRoute
+  '/portal/copywriter': typeof PortalCopywriterRoute
   '/portal/data': typeof PortalDataRoute
+  '/portal/department-head': typeof PortalDepartmentHeadRoute
   '/portal/developer': typeof PortalDeveloperRoute
   '/portal/devops': typeof PortalDevopsRoute
   '/portal/employer': typeof PortalEmployerRoute
   '/portal/executive': typeof PortalExecutiveRoute
   '/portal/finance': typeof PortalFinanceRoute
+  '/portal/global-copywriter': typeof PortalGlobalCopywriterRoute
   '/portal/government': typeof PortalGovernmentRoute
+  '/portal/growth': typeof PortalGrowthRoute
   '/portal/hr': typeof PortalHrRoute
   '/portal/instructor': typeof PortalInstructorRoute
   '/portal/intern': typeof PortalInternRoute
@@ -558,12 +896,14 @@ export interface FileRoutesByFullPath {
   '/portal/operations': typeof PortalOperationsRoute
   '/portal/parent': typeof PortalParentRoute
   '/portal/partner': typeof PortalPartnerRoute
+  '/portal/product-marketing': typeof PortalProductMarketingRoute
   '/portal/quality': typeof PortalQualityRoute
   '/portal/receptionist': typeof PortalReceptionistRoute
   '/portal/registrar': typeof PortalRegistrarRoute
   '/portal/security': typeof PortalSecurityRoute
   '/portal/student': typeof PortalStudentRoute
   '/portal/supplier': typeof PortalSupplierRoute
+  '/portal/visual-designer': typeof PortalVisualDesignerRoute
   '/portal/volunteer': typeof PortalVolunteerRoute
   '/programs/$slug': typeof ProgramsSlugRoute
   '/programs/compare': typeof ProgramsCompareRoute
@@ -572,19 +912,58 @@ export interface FileRoutesByFullPath {
   '/blog/': typeof BlogIndexRoute
   '/portal/': typeof PortalIndexRoute
   '/programs/': typeof ProgramsIndexRoute
+  '/app/alumni/events': typeof AppAlumniEventsRoute
+  '/app/alumni/give-back': typeof AppAlumniGiveBackRoute
+  '/app/alumni/hub': typeof AppAlumniHubRoute
+  '/app/alumni/jobs': typeof AppAlumniJobsRoute
+  '/app/alumni/network': typeof AppAlumniNetworkRoute
   '/app/assignments/$assignmentId': typeof AppAssignmentsAssignmentIdRoute
+  '/app/client/invoices': typeof AppClientInvoicesRoute
+  '/app/client/support': typeof AppClientSupportRoute
+  '/app/department/curriculum': typeof AppDepartmentCurriculumRoute
+  '/app/department/enrollment': typeof AppDepartmentEnrollmentRoute
+  '/app/department/instructors': typeof AppDepartmentInstructorsRoute
+  '/app/department/quality': typeof AppDepartmentQualityRoute
+  '/app/employer/analytics': typeof AppEmployerAnalyticsRoute
+  '/app/employer/brand': typeof AppEmployerBrandRoute
+  '/app/employer/hub': typeof AppEmployerHubRoute
+  '/app/employer/interviews': typeof AppEmployerInterviewsRoute
+  '/app/employer/jobs': typeof AppEmployerJobsRoute
+  '/app/employer/talent': typeof AppEmployerTalentRoute
   '/app/instructor/analytics': typeof AppInstructorAnalyticsRoute
   '/app/instructor/attendance': typeof AppInstructorAttendanceRoute
   '/app/instructor/gradebook': typeof AppInstructorGradebookRoute
   '/app/learn/$courseId': typeof AppLearnCourseIdRouteWithChildren
+  '/app/live/$classId': typeof AppLiveClassIdRoute
+  '/app/mentor/analytics': typeof AppMentorAnalyticsRoute
+  '/app/mentor/goals': typeof AppMentorGoalsRoute
+  '/app/mentor/requests': typeof AppMentorRequestsRoute
+  '/app/mentor/resources': typeof AppMentorResourcesRoute
+  '/app/mentor/sessions': typeof AppMentorSessionsRouteWithChildren
+  '/app/mentor/settings': typeof AppMentorSettingsRoute
   '/app/assessments/': typeof AppAssessmentsIndexRoute
   '/app/assignments/': typeof AppAssignmentsIndexRoute
   '/app/learn/': typeof AppLearnIndexRoute
+  '/app/mentor/': typeof AppMentorIndexRoute
+  '/app/parent/': typeof AppParentIndexRoute
   '/app/assessments/$assessmentId/take': typeof AppAssessmentsAssessmentIdTakeRoute
+  '/app/client/projects/$projectId': typeof AppClientProjectsProjectIdRoute
+  '/app/employer/pipeline/$jobId': typeof AppEmployerPipelineJobIdRoute
   '/app/instructor/courses/$courseId': typeof AppInstructorCoursesCourseIdRoute
+  '/app/mentor/mentees/$menteeId': typeof AppMentorMenteesMenteeIdRouteWithChildren
+  '/app/mentor/sessions/$sessionId': typeof AppMentorSessionsSessionIdRoute
+  '/app/parent/invitation/accept': typeof AppParentInvitationAcceptRoute
+  '/app/parent/students/$studentId': typeof AppParentStudentsStudentIdRouteWithChildren
   '/app/instructor/assignments/': typeof AppInstructorAssignmentsIndexRoute
   '/app/instructor/assignments/$submissionId/grade': typeof AppInstructorAssignmentsSubmissionIdGradeRoute
   '/app/learn/$courseId/lessons/$lessonId': typeof AppLearnCourseIdLessonsLessonIdRoute
+  '/app/mentor/mentees/$menteeId/career': typeof AppMentorMenteesMenteeIdCareerRoute
+  '/app/mentor/mentees/$menteeId/portfolio': typeof AppMentorMenteesMenteeIdPortfolioRoute
+  '/app/parent/students/$studentId/attendance': typeof AppParentStudentsStudentIdAttendanceRoute
+  '/app/parent/students/$studentId/communication': typeof AppParentStudentsStudentIdCommunicationRoute
+  '/app/parent/students/$studentId/finance': typeof AppParentStudentsStudentIdFinanceRoute
+  '/app/parent/students/$studentId/grades': typeof AppParentStudentsStudentIdGradesRoute
+  '/app/parent/students/$studentId/reports': typeof AppParentStudentsStudentIdReportsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -605,9 +984,15 @@ export interface FileRoutesByTo {
   '/stories': typeof StoriesRoute
   '/visit': typeof VisitRoute
   '/work': typeof WorkRoute
+  '/app/attendance': typeof AppAttendanceRoute
   '/app/calendar': typeof AppCalendarRoute
+  '/app/certificates': typeof AppCertificatesRoute
+  '/app/finance': typeof AppFinanceRoute
   '/app/grades': typeof AppGradesRoute
   '/app/messages': typeof AppMessagesRoute
+  '/app/notifications': typeof AppNotificationsRoute
+  '/app/portfolio': typeof AppPortfolioRoute
+  '/app/reports': typeof AppReportsRoute
   '/apply/status': typeof ApplyStatusRoute
   '/auth/forgot-password': typeof AuthForgotPasswordRoute
   '/auth/mfa': typeof AuthMfaRoute
@@ -622,15 +1007,20 @@ export interface FileRoutesByTo {
   '/portal/admin': typeof PortalAdminRoute
   '/portal/admissions': typeof PortalAdmissionsRoute
   '/portal/alumni': typeof PortalAlumniRoute
+  '/portal/behavioral-designer': typeof PortalBehavioralDesignerRoute
   '/portal/career-services': typeof PortalCareerServicesRoute
   '/portal/client': typeof PortalClientRoute
+  '/portal/copywriter': typeof PortalCopywriterRoute
   '/portal/data': typeof PortalDataRoute
+  '/portal/department-head': typeof PortalDepartmentHeadRoute
   '/portal/developer': typeof PortalDeveloperRoute
   '/portal/devops': typeof PortalDevopsRoute
   '/portal/employer': typeof PortalEmployerRoute
   '/portal/executive': typeof PortalExecutiveRoute
   '/portal/finance': typeof PortalFinanceRoute
+  '/portal/global-copywriter': typeof PortalGlobalCopywriterRoute
   '/portal/government': typeof PortalGovernmentRoute
+  '/portal/growth': typeof PortalGrowthRoute
   '/portal/hr': typeof PortalHrRoute
   '/portal/instructor': typeof PortalInstructorRoute
   '/portal/intern': typeof PortalInternRoute
@@ -641,12 +1031,14 @@ export interface FileRoutesByTo {
   '/portal/operations': typeof PortalOperationsRoute
   '/portal/parent': typeof PortalParentRoute
   '/portal/partner': typeof PortalPartnerRoute
+  '/portal/product-marketing': typeof PortalProductMarketingRoute
   '/portal/quality': typeof PortalQualityRoute
   '/portal/receptionist': typeof PortalReceptionistRoute
   '/portal/registrar': typeof PortalRegistrarRoute
   '/portal/security': typeof PortalSecurityRoute
   '/portal/student': typeof PortalStudentRoute
   '/portal/supplier': typeof PortalSupplierRoute
+  '/portal/visual-designer': typeof PortalVisualDesignerRoute
   '/portal/volunteer': typeof PortalVolunteerRoute
   '/programs/$slug': typeof ProgramsSlugRoute
   '/programs/compare': typeof ProgramsCompareRoute
@@ -655,19 +1047,58 @@ export interface FileRoutesByTo {
   '/blog': typeof BlogIndexRoute
   '/portal': typeof PortalIndexRoute
   '/programs': typeof ProgramsIndexRoute
+  '/app/alumni/events': typeof AppAlumniEventsRoute
+  '/app/alumni/give-back': typeof AppAlumniGiveBackRoute
+  '/app/alumni/hub': typeof AppAlumniHubRoute
+  '/app/alumni/jobs': typeof AppAlumniJobsRoute
+  '/app/alumni/network': typeof AppAlumniNetworkRoute
   '/app/assignments/$assignmentId': typeof AppAssignmentsAssignmentIdRoute
+  '/app/client/invoices': typeof AppClientInvoicesRoute
+  '/app/client/support': typeof AppClientSupportRoute
+  '/app/department/curriculum': typeof AppDepartmentCurriculumRoute
+  '/app/department/enrollment': typeof AppDepartmentEnrollmentRoute
+  '/app/department/instructors': typeof AppDepartmentInstructorsRoute
+  '/app/department/quality': typeof AppDepartmentQualityRoute
+  '/app/employer/analytics': typeof AppEmployerAnalyticsRoute
+  '/app/employer/brand': typeof AppEmployerBrandRoute
+  '/app/employer/hub': typeof AppEmployerHubRoute
+  '/app/employer/interviews': typeof AppEmployerInterviewsRoute
+  '/app/employer/jobs': typeof AppEmployerJobsRoute
+  '/app/employer/talent': typeof AppEmployerTalentRoute
   '/app/instructor/analytics': typeof AppInstructorAnalyticsRoute
   '/app/instructor/attendance': typeof AppInstructorAttendanceRoute
   '/app/instructor/gradebook': typeof AppInstructorGradebookRoute
   '/app/learn/$courseId': typeof AppLearnCourseIdRouteWithChildren
+  '/app/live/$classId': typeof AppLiveClassIdRoute
+  '/app/mentor/analytics': typeof AppMentorAnalyticsRoute
+  '/app/mentor/goals': typeof AppMentorGoalsRoute
+  '/app/mentor/requests': typeof AppMentorRequestsRoute
+  '/app/mentor/resources': typeof AppMentorResourcesRoute
+  '/app/mentor/sessions': typeof AppMentorSessionsRouteWithChildren
+  '/app/mentor/settings': typeof AppMentorSettingsRoute
   '/app/assessments': typeof AppAssessmentsIndexRoute
   '/app/assignments': typeof AppAssignmentsIndexRoute
   '/app/learn': typeof AppLearnIndexRoute
+  '/app/mentor': typeof AppMentorIndexRoute
+  '/app/parent': typeof AppParentIndexRoute
   '/app/assessments/$assessmentId/take': typeof AppAssessmentsAssessmentIdTakeRoute
+  '/app/client/projects/$projectId': typeof AppClientProjectsProjectIdRoute
+  '/app/employer/pipeline/$jobId': typeof AppEmployerPipelineJobIdRoute
   '/app/instructor/courses/$courseId': typeof AppInstructorCoursesCourseIdRoute
+  '/app/mentor/mentees/$menteeId': typeof AppMentorMenteesMenteeIdRouteWithChildren
+  '/app/mentor/sessions/$sessionId': typeof AppMentorSessionsSessionIdRoute
+  '/app/parent/invitation/accept': typeof AppParentInvitationAcceptRoute
+  '/app/parent/students/$studentId': typeof AppParentStudentsStudentIdRouteWithChildren
   '/app/instructor/assignments': typeof AppInstructorAssignmentsIndexRoute
   '/app/instructor/assignments/$submissionId/grade': typeof AppInstructorAssignmentsSubmissionIdGradeRoute
   '/app/learn/$courseId/lessons/$lessonId': typeof AppLearnCourseIdLessonsLessonIdRoute
+  '/app/mentor/mentees/$menteeId/career': typeof AppMentorMenteesMenteeIdCareerRoute
+  '/app/mentor/mentees/$menteeId/portfolio': typeof AppMentorMenteesMenteeIdPortfolioRoute
+  '/app/parent/students/$studentId/attendance': typeof AppParentStudentsStudentIdAttendanceRoute
+  '/app/parent/students/$studentId/communication': typeof AppParentStudentsStudentIdCommunicationRoute
+  '/app/parent/students/$studentId/finance': typeof AppParentStudentsStudentIdFinanceRoute
+  '/app/parent/students/$studentId/grades': typeof AppParentStudentsStudentIdGradesRoute
+  '/app/parent/students/$studentId/reports': typeof AppParentStudentsStudentIdReportsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -689,9 +1120,15 @@ export interface FileRoutesById {
   '/stories': typeof StoriesRoute
   '/visit': typeof VisitRoute
   '/work': typeof WorkRoute
+  '/app/attendance': typeof AppAttendanceRoute
   '/app/calendar': typeof AppCalendarRoute
+  '/app/certificates': typeof AppCertificatesRoute
+  '/app/finance': typeof AppFinanceRoute
   '/app/grades': typeof AppGradesRoute
   '/app/messages': typeof AppMessagesRoute
+  '/app/notifications': typeof AppNotificationsRoute
+  '/app/portfolio': typeof AppPortfolioRoute
+  '/app/reports': typeof AppReportsRoute
   '/apply/status': typeof ApplyStatusRoute
   '/auth/forgot-password': typeof AuthForgotPasswordRoute
   '/auth/mfa': typeof AuthMfaRoute
@@ -706,15 +1143,20 @@ export interface FileRoutesById {
   '/portal/admin': typeof PortalAdminRoute
   '/portal/admissions': typeof PortalAdmissionsRoute
   '/portal/alumni': typeof PortalAlumniRoute
+  '/portal/behavioral-designer': typeof PortalBehavioralDesignerRoute
   '/portal/career-services': typeof PortalCareerServicesRoute
   '/portal/client': typeof PortalClientRoute
+  '/portal/copywriter': typeof PortalCopywriterRoute
   '/portal/data': typeof PortalDataRoute
+  '/portal/department-head': typeof PortalDepartmentHeadRoute
   '/portal/developer': typeof PortalDeveloperRoute
   '/portal/devops': typeof PortalDevopsRoute
   '/portal/employer': typeof PortalEmployerRoute
   '/portal/executive': typeof PortalExecutiveRoute
   '/portal/finance': typeof PortalFinanceRoute
+  '/portal/global-copywriter': typeof PortalGlobalCopywriterRoute
   '/portal/government': typeof PortalGovernmentRoute
+  '/portal/growth': typeof PortalGrowthRoute
   '/portal/hr': typeof PortalHrRoute
   '/portal/instructor': typeof PortalInstructorRoute
   '/portal/intern': typeof PortalInternRoute
@@ -725,12 +1167,14 @@ export interface FileRoutesById {
   '/portal/operations': typeof PortalOperationsRoute
   '/portal/parent': typeof PortalParentRoute
   '/portal/partner': typeof PortalPartnerRoute
+  '/portal/product-marketing': typeof PortalProductMarketingRoute
   '/portal/quality': typeof PortalQualityRoute
   '/portal/receptionist': typeof PortalReceptionistRoute
   '/portal/registrar': typeof PortalRegistrarRoute
   '/portal/security': typeof PortalSecurityRoute
   '/portal/student': typeof PortalStudentRoute
   '/portal/supplier': typeof PortalSupplierRoute
+  '/portal/visual-designer': typeof PortalVisualDesignerRoute
   '/portal/volunteer': typeof PortalVolunteerRoute
   '/programs/$slug': typeof ProgramsSlugRoute
   '/programs/compare': typeof ProgramsCompareRoute
@@ -739,19 +1183,58 @@ export interface FileRoutesById {
   '/blog/': typeof BlogIndexRoute
   '/portal/': typeof PortalIndexRoute
   '/programs/': typeof ProgramsIndexRoute
+  '/app/alumni/events': typeof AppAlumniEventsRoute
+  '/app/alumni/give-back': typeof AppAlumniGiveBackRoute
+  '/app/alumni/hub': typeof AppAlumniHubRoute
+  '/app/alumni/jobs': typeof AppAlumniJobsRoute
+  '/app/alumni/network': typeof AppAlumniNetworkRoute
   '/app/assignments/$assignmentId': typeof AppAssignmentsAssignmentIdRoute
+  '/app/client/invoices': typeof AppClientInvoicesRoute
+  '/app/client/support': typeof AppClientSupportRoute
+  '/app/department/curriculum': typeof AppDepartmentCurriculumRoute
+  '/app/department/enrollment': typeof AppDepartmentEnrollmentRoute
+  '/app/department/instructors': typeof AppDepartmentInstructorsRoute
+  '/app/department/quality': typeof AppDepartmentQualityRoute
+  '/app/employer/analytics': typeof AppEmployerAnalyticsRoute
+  '/app/employer/brand': typeof AppEmployerBrandRoute
+  '/app/employer/hub': typeof AppEmployerHubRoute
+  '/app/employer/interviews': typeof AppEmployerInterviewsRoute
+  '/app/employer/jobs': typeof AppEmployerJobsRoute
+  '/app/employer/talent': typeof AppEmployerTalentRoute
   '/app/instructor/analytics': typeof AppInstructorAnalyticsRoute
   '/app/instructor/attendance': typeof AppInstructorAttendanceRoute
   '/app/instructor/gradebook': typeof AppInstructorGradebookRoute
   '/app/learn/$courseId': typeof AppLearnCourseIdRouteWithChildren
+  '/app/live/$classId': typeof AppLiveClassIdRoute
+  '/app/mentor/analytics': typeof AppMentorAnalyticsRoute
+  '/app/mentor/goals': typeof AppMentorGoalsRoute
+  '/app/mentor/requests': typeof AppMentorRequestsRoute
+  '/app/mentor/resources': typeof AppMentorResourcesRoute
+  '/app/mentor/sessions': typeof AppMentorSessionsRouteWithChildren
+  '/app/mentor/settings': typeof AppMentorSettingsRoute
   '/app/assessments/': typeof AppAssessmentsIndexRoute
   '/app/assignments/': typeof AppAssignmentsIndexRoute
   '/app/learn/': typeof AppLearnIndexRoute
+  '/app/mentor/': typeof AppMentorIndexRoute
+  '/app/parent/': typeof AppParentIndexRoute
   '/app/assessments/$assessmentId/take': typeof AppAssessmentsAssessmentIdTakeRoute
+  '/app/client/projects/$projectId': typeof AppClientProjectsProjectIdRoute
+  '/app/employer/pipeline/$jobId': typeof AppEmployerPipelineJobIdRoute
   '/app/instructor/courses/$courseId': typeof AppInstructorCoursesCourseIdRoute
+  '/app/mentor/mentees/$menteeId': typeof AppMentorMenteesMenteeIdRouteWithChildren
+  '/app/mentor/sessions/$sessionId': typeof AppMentorSessionsSessionIdRoute
+  '/app/parent/invitation/accept': typeof AppParentInvitationAcceptRoute
+  '/app/parent/students/$studentId': typeof AppParentStudentsStudentIdRouteWithChildren
   '/app/instructor/assignments/': typeof AppInstructorAssignmentsIndexRoute
   '/app/instructor/assignments/$submissionId/grade': typeof AppInstructorAssignmentsSubmissionIdGradeRoute
   '/app/learn/$courseId/lessons/$lessonId': typeof AppLearnCourseIdLessonsLessonIdRoute
+  '/app/mentor/mentees/$menteeId/career': typeof AppMentorMenteesMenteeIdCareerRoute
+  '/app/mentor/mentees/$menteeId/portfolio': typeof AppMentorMenteesMenteeIdPortfolioRoute
+  '/app/parent/students/$studentId/attendance': typeof AppParentStudentsStudentIdAttendanceRoute
+  '/app/parent/students/$studentId/communication': typeof AppParentStudentsStudentIdCommunicationRoute
+  '/app/parent/students/$studentId/finance': typeof AppParentStudentsStudentIdFinanceRoute
+  '/app/parent/students/$studentId/grades': typeof AppParentStudentsStudentIdGradesRoute
+  '/app/parent/students/$studentId/reports': typeof AppParentStudentsStudentIdReportsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -774,9 +1257,15 @@ export interface FileRouteTypes {
     | '/stories'
     | '/visit'
     | '/work'
+    | '/app/attendance'
     | '/app/calendar'
+    | '/app/certificates'
+    | '/app/finance'
     | '/app/grades'
     | '/app/messages'
+    | '/app/notifications'
+    | '/app/portfolio'
+    | '/app/reports'
     | '/apply/status'
     | '/auth/forgot-password'
     | '/auth/mfa'
@@ -791,15 +1280,20 @@ export interface FileRouteTypes {
     | '/portal/admin'
     | '/portal/admissions'
     | '/portal/alumni'
+    | '/portal/behavioral-designer'
     | '/portal/career-services'
     | '/portal/client'
+    | '/portal/copywriter'
     | '/portal/data'
+    | '/portal/department-head'
     | '/portal/developer'
     | '/portal/devops'
     | '/portal/employer'
     | '/portal/executive'
     | '/portal/finance'
+    | '/portal/global-copywriter'
     | '/portal/government'
+    | '/portal/growth'
     | '/portal/hr'
     | '/portal/instructor'
     | '/portal/intern'
@@ -810,12 +1304,14 @@ export interface FileRouteTypes {
     | '/portal/operations'
     | '/portal/parent'
     | '/portal/partner'
+    | '/portal/product-marketing'
     | '/portal/quality'
     | '/portal/receptionist'
     | '/portal/registrar'
     | '/portal/security'
     | '/portal/student'
     | '/portal/supplier'
+    | '/portal/visual-designer'
     | '/portal/volunteer'
     | '/programs/$slug'
     | '/programs/compare'
@@ -824,19 +1320,58 @@ export interface FileRouteTypes {
     | '/blog/'
     | '/portal/'
     | '/programs/'
+    | '/app/alumni/events'
+    | '/app/alumni/give-back'
+    | '/app/alumni/hub'
+    | '/app/alumni/jobs'
+    | '/app/alumni/network'
     | '/app/assignments/$assignmentId'
+    | '/app/client/invoices'
+    | '/app/client/support'
+    | '/app/department/curriculum'
+    | '/app/department/enrollment'
+    | '/app/department/instructors'
+    | '/app/department/quality'
+    | '/app/employer/analytics'
+    | '/app/employer/brand'
+    | '/app/employer/hub'
+    | '/app/employer/interviews'
+    | '/app/employer/jobs'
+    | '/app/employer/talent'
     | '/app/instructor/analytics'
     | '/app/instructor/attendance'
     | '/app/instructor/gradebook'
     | '/app/learn/$courseId'
+    | '/app/live/$classId'
+    | '/app/mentor/analytics'
+    | '/app/mentor/goals'
+    | '/app/mentor/requests'
+    | '/app/mentor/resources'
+    | '/app/mentor/sessions'
+    | '/app/mentor/settings'
     | '/app/assessments/'
     | '/app/assignments/'
     | '/app/learn/'
+    | '/app/mentor/'
+    | '/app/parent/'
     | '/app/assessments/$assessmentId/take'
+    | '/app/client/projects/$projectId'
+    | '/app/employer/pipeline/$jobId'
     | '/app/instructor/courses/$courseId'
+    | '/app/mentor/mentees/$menteeId'
+    | '/app/mentor/sessions/$sessionId'
+    | '/app/parent/invitation/accept'
+    | '/app/parent/students/$studentId'
     | '/app/instructor/assignments/'
     | '/app/instructor/assignments/$submissionId/grade'
     | '/app/learn/$courseId/lessons/$lessonId'
+    | '/app/mentor/mentees/$menteeId/career'
+    | '/app/mentor/mentees/$menteeId/portfolio'
+    | '/app/parent/students/$studentId/attendance'
+    | '/app/parent/students/$studentId/communication'
+    | '/app/parent/students/$studentId/finance'
+    | '/app/parent/students/$studentId/grades'
+    | '/app/parent/students/$studentId/reports'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -857,9 +1392,15 @@ export interface FileRouteTypes {
     | '/stories'
     | '/visit'
     | '/work'
+    | '/app/attendance'
     | '/app/calendar'
+    | '/app/certificates'
+    | '/app/finance'
     | '/app/grades'
     | '/app/messages'
+    | '/app/notifications'
+    | '/app/portfolio'
+    | '/app/reports'
     | '/apply/status'
     | '/auth/forgot-password'
     | '/auth/mfa'
@@ -874,15 +1415,20 @@ export interface FileRouteTypes {
     | '/portal/admin'
     | '/portal/admissions'
     | '/portal/alumni'
+    | '/portal/behavioral-designer'
     | '/portal/career-services'
     | '/portal/client'
+    | '/portal/copywriter'
     | '/portal/data'
+    | '/portal/department-head'
     | '/portal/developer'
     | '/portal/devops'
     | '/portal/employer'
     | '/portal/executive'
     | '/portal/finance'
+    | '/portal/global-copywriter'
     | '/portal/government'
+    | '/portal/growth'
     | '/portal/hr'
     | '/portal/instructor'
     | '/portal/intern'
@@ -893,12 +1439,14 @@ export interface FileRouteTypes {
     | '/portal/operations'
     | '/portal/parent'
     | '/portal/partner'
+    | '/portal/product-marketing'
     | '/portal/quality'
     | '/portal/receptionist'
     | '/portal/registrar'
     | '/portal/security'
     | '/portal/student'
     | '/portal/supplier'
+    | '/portal/visual-designer'
     | '/portal/volunteer'
     | '/programs/$slug'
     | '/programs/compare'
@@ -907,19 +1455,58 @@ export interface FileRouteTypes {
     | '/blog'
     | '/portal'
     | '/programs'
+    | '/app/alumni/events'
+    | '/app/alumni/give-back'
+    | '/app/alumni/hub'
+    | '/app/alumni/jobs'
+    | '/app/alumni/network'
     | '/app/assignments/$assignmentId'
+    | '/app/client/invoices'
+    | '/app/client/support'
+    | '/app/department/curriculum'
+    | '/app/department/enrollment'
+    | '/app/department/instructors'
+    | '/app/department/quality'
+    | '/app/employer/analytics'
+    | '/app/employer/brand'
+    | '/app/employer/hub'
+    | '/app/employer/interviews'
+    | '/app/employer/jobs'
+    | '/app/employer/talent'
     | '/app/instructor/analytics'
     | '/app/instructor/attendance'
     | '/app/instructor/gradebook'
     | '/app/learn/$courseId'
+    | '/app/live/$classId'
+    | '/app/mentor/analytics'
+    | '/app/mentor/goals'
+    | '/app/mentor/requests'
+    | '/app/mentor/resources'
+    | '/app/mentor/sessions'
+    | '/app/mentor/settings'
     | '/app/assessments'
     | '/app/assignments'
     | '/app/learn'
+    | '/app/mentor'
+    | '/app/parent'
     | '/app/assessments/$assessmentId/take'
+    | '/app/client/projects/$projectId'
+    | '/app/employer/pipeline/$jobId'
     | '/app/instructor/courses/$courseId'
+    | '/app/mentor/mentees/$menteeId'
+    | '/app/mentor/sessions/$sessionId'
+    | '/app/parent/invitation/accept'
+    | '/app/parent/students/$studentId'
     | '/app/instructor/assignments'
     | '/app/instructor/assignments/$submissionId/grade'
     | '/app/learn/$courseId/lessons/$lessonId'
+    | '/app/mentor/mentees/$menteeId/career'
+    | '/app/mentor/mentees/$menteeId/portfolio'
+    | '/app/parent/students/$studentId/attendance'
+    | '/app/parent/students/$studentId/communication'
+    | '/app/parent/students/$studentId/finance'
+    | '/app/parent/students/$studentId/grades'
+    | '/app/parent/students/$studentId/reports'
   id:
     | '__root__'
     | '/'
@@ -940,9 +1527,15 @@ export interface FileRouteTypes {
     | '/stories'
     | '/visit'
     | '/work'
+    | '/app/attendance'
     | '/app/calendar'
+    | '/app/certificates'
+    | '/app/finance'
     | '/app/grades'
     | '/app/messages'
+    | '/app/notifications'
+    | '/app/portfolio'
+    | '/app/reports'
     | '/apply/status'
     | '/auth/forgot-password'
     | '/auth/mfa'
@@ -957,15 +1550,20 @@ export interface FileRouteTypes {
     | '/portal/admin'
     | '/portal/admissions'
     | '/portal/alumni'
+    | '/portal/behavioral-designer'
     | '/portal/career-services'
     | '/portal/client'
+    | '/portal/copywriter'
     | '/portal/data'
+    | '/portal/department-head'
     | '/portal/developer'
     | '/portal/devops'
     | '/portal/employer'
     | '/portal/executive'
     | '/portal/finance'
+    | '/portal/global-copywriter'
     | '/portal/government'
+    | '/portal/growth'
     | '/portal/hr'
     | '/portal/instructor'
     | '/portal/intern'
@@ -976,12 +1574,14 @@ export interface FileRouteTypes {
     | '/portal/operations'
     | '/portal/parent'
     | '/portal/partner'
+    | '/portal/product-marketing'
     | '/portal/quality'
     | '/portal/receptionist'
     | '/portal/registrar'
     | '/portal/security'
     | '/portal/student'
     | '/portal/supplier'
+    | '/portal/visual-designer'
     | '/portal/volunteer'
     | '/programs/$slug'
     | '/programs/compare'
@@ -990,19 +1590,58 @@ export interface FileRouteTypes {
     | '/blog/'
     | '/portal/'
     | '/programs/'
+    | '/app/alumni/events'
+    | '/app/alumni/give-back'
+    | '/app/alumni/hub'
+    | '/app/alumni/jobs'
+    | '/app/alumni/network'
     | '/app/assignments/$assignmentId'
+    | '/app/client/invoices'
+    | '/app/client/support'
+    | '/app/department/curriculum'
+    | '/app/department/enrollment'
+    | '/app/department/instructors'
+    | '/app/department/quality'
+    | '/app/employer/analytics'
+    | '/app/employer/brand'
+    | '/app/employer/hub'
+    | '/app/employer/interviews'
+    | '/app/employer/jobs'
+    | '/app/employer/talent'
     | '/app/instructor/analytics'
     | '/app/instructor/attendance'
     | '/app/instructor/gradebook'
     | '/app/learn/$courseId'
+    | '/app/live/$classId'
+    | '/app/mentor/analytics'
+    | '/app/mentor/goals'
+    | '/app/mentor/requests'
+    | '/app/mentor/resources'
+    | '/app/mentor/sessions'
+    | '/app/mentor/settings'
     | '/app/assessments/'
     | '/app/assignments/'
     | '/app/learn/'
+    | '/app/mentor/'
+    | '/app/parent/'
     | '/app/assessments/$assessmentId/take'
+    | '/app/client/projects/$projectId'
+    | '/app/employer/pipeline/$jobId'
     | '/app/instructor/courses/$courseId'
+    | '/app/mentor/mentees/$menteeId'
+    | '/app/mentor/sessions/$sessionId'
+    | '/app/parent/invitation/accept'
+    | '/app/parent/students/$studentId'
     | '/app/instructor/assignments/'
     | '/app/instructor/assignments/$submissionId/grade'
     | '/app/learn/$courseId/lessons/$lessonId'
+    | '/app/mentor/mentees/$menteeId/career'
+    | '/app/mentor/mentees/$menteeId/portfolio'
+    | '/app/parent/students/$studentId/attendance'
+    | '/app/parent/students/$studentId/communication'
+    | '/app/parent/students/$studentId/finance'
+    | '/app/parent/students/$studentId/grades'
+    | '/app/parent/students/$studentId/reports'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -1024,9 +1663,15 @@ export interface RootRouteChildren {
   StoriesRoute: typeof StoriesRoute
   VisitRoute: typeof VisitRoute
   WorkRoute: typeof WorkRoute
+  AppAttendanceRoute: typeof AppAttendanceRoute
   AppCalendarRoute: typeof AppCalendarRoute
+  AppCertificatesRoute: typeof AppCertificatesRoute
+  AppFinanceRoute: typeof AppFinanceRoute
   AppGradesRoute: typeof AppGradesRoute
   AppMessagesRoute: typeof AppMessagesRoute
+  AppNotificationsRoute: typeof AppNotificationsRoute
+  AppPortfolioRoute: typeof AppPortfolioRoute
+  AppReportsRoute: typeof AppReportsRoute
   ApplyStatusRoute: typeof ApplyStatusRoute
   AuthForgotPasswordRoute: typeof AuthForgotPasswordRoute
   AuthMfaRoute: typeof AuthMfaRoute
@@ -1041,15 +1686,20 @@ export interface RootRouteChildren {
   PortalAdminRoute: typeof PortalAdminRoute
   PortalAdmissionsRoute: typeof PortalAdmissionsRoute
   PortalAlumniRoute: typeof PortalAlumniRoute
+  PortalBehavioralDesignerRoute: typeof PortalBehavioralDesignerRoute
   PortalCareerServicesRoute: typeof PortalCareerServicesRoute
   PortalClientRoute: typeof PortalClientRoute
+  PortalCopywriterRoute: typeof PortalCopywriterRoute
   PortalDataRoute: typeof PortalDataRoute
+  PortalDepartmentHeadRoute: typeof PortalDepartmentHeadRoute
   PortalDeveloperRoute: typeof PortalDeveloperRoute
   PortalDevopsRoute: typeof PortalDevopsRoute
   PortalEmployerRoute: typeof PortalEmployerRoute
   PortalExecutiveRoute: typeof PortalExecutiveRoute
   PortalFinanceRoute: typeof PortalFinanceRoute
+  PortalGlobalCopywriterRoute: typeof PortalGlobalCopywriterRoute
   PortalGovernmentRoute: typeof PortalGovernmentRoute
+  PortalGrowthRoute: typeof PortalGrowthRoute
   PortalHrRoute: typeof PortalHrRoute
   PortalInstructorRoute: typeof PortalInstructorRoute
   PortalInternRoute: typeof PortalInternRoute
@@ -1060,12 +1710,14 @@ export interface RootRouteChildren {
   PortalOperationsRoute: typeof PortalOperationsRoute
   PortalParentRoute: typeof PortalParentRoute
   PortalPartnerRoute: typeof PortalPartnerRoute
+  PortalProductMarketingRoute: typeof PortalProductMarketingRoute
   PortalQualityRoute: typeof PortalQualityRoute
   PortalReceptionistRoute: typeof PortalReceptionistRoute
   PortalRegistrarRoute: typeof PortalRegistrarRoute
   PortalSecurityRoute: typeof PortalSecurityRoute
   PortalStudentRoute: typeof PortalStudentRoute
   PortalSupplierRoute: typeof PortalSupplierRoute
+  PortalVisualDesignerRoute: typeof PortalVisualDesignerRoute
   PortalVolunteerRoute: typeof PortalVolunteerRoute
   ProgramsSlugRoute: typeof ProgramsSlugRoute
   ProgramsCompareRoute: typeof ProgramsCompareRoute
@@ -1074,16 +1726,47 @@ export interface RootRouteChildren {
   BlogIndexRoute: typeof BlogIndexRoute
   PortalIndexRoute: typeof PortalIndexRoute
   ProgramsIndexRoute: typeof ProgramsIndexRoute
+  AppAlumniEventsRoute: typeof AppAlumniEventsRoute
+  AppAlumniGiveBackRoute: typeof AppAlumniGiveBackRoute
+  AppAlumniHubRoute: typeof AppAlumniHubRoute
+  AppAlumniJobsRoute: typeof AppAlumniJobsRoute
+  AppAlumniNetworkRoute: typeof AppAlumniNetworkRoute
   AppAssignmentsAssignmentIdRoute: typeof AppAssignmentsAssignmentIdRoute
+  AppClientInvoicesRoute: typeof AppClientInvoicesRoute
+  AppClientSupportRoute: typeof AppClientSupportRoute
+  AppDepartmentCurriculumRoute: typeof AppDepartmentCurriculumRoute
+  AppDepartmentEnrollmentRoute: typeof AppDepartmentEnrollmentRoute
+  AppDepartmentInstructorsRoute: typeof AppDepartmentInstructorsRoute
+  AppDepartmentQualityRoute: typeof AppDepartmentQualityRoute
+  AppEmployerAnalyticsRoute: typeof AppEmployerAnalyticsRoute
+  AppEmployerBrandRoute: typeof AppEmployerBrandRoute
+  AppEmployerHubRoute: typeof AppEmployerHubRoute
+  AppEmployerInterviewsRoute: typeof AppEmployerInterviewsRoute
+  AppEmployerJobsRoute: typeof AppEmployerJobsRoute
+  AppEmployerTalentRoute: typeof AppEmployerTalentRoute
   AppInstructorAnalyticsRoute: typeof AppInstructorAnalyticsRoute
   AppInstructorAttendanceRoute: typeof AppInstructorAttendanceRoute
   AppInstructorGradebookRoute: typeof AppInstructorGradebookRoute
   AppLearnCourseIdRoute: typeof AppLearnCourseIdRouteWithChildren
+  AppLiveClassIdRoute: typeof AppLiveClassIdRoute
+  AppMentorAnalyticsRoute: typeof AppMentorAnalyticsRoute
+  AppMentorGoalsRoute: typeof AppMentorGoalsRoute
+  AppMentorRequestsRoute: typeof AppMentorRequestsRoute
+  AppMentorResourcesRoute: typeof AppMentorResourcesRoute
+  AppMentorSessionsRoute: typeof AppMentorSessionsRouteWithChildren
+  AppMentorSettingsRoute: typeof AppMentorSettingsRoute
   AppAssessmentsIndexRoute: typeof AppAssessmentsIndexRoute
   AppAssignmentsIndexRoute: typeof AppAssignmentsIndexRoute
   AppLearnIndexRoute: typeof AppLearnIndexRoute
+  AppMentorIndexRoute: typeof AppMentorIndexRoute
+  AppParentIndexRoute: typeof AppParentIndexRoute
   AppAssessmentsAssessmentIdTakeRoute: typeof AppAssessmentsAssessmentIdTakeRoute
+  AppClientProjectsProjectIdRoute: typeof AppClientProjectsProjectIdRoute
+  AppEmployerPipelineJobIdRoute: typeof AppEmployerPipelineJobIdRoute
   AppInstructorCoursesCourseIdRoute: typeof AppInstructorCoursesCourseIdRoute
+  AppMentorMenteesMenteeIdRoute: typeof AppMentorMenteesMenteeIdRouteWithChildren
+  AppParentInvitationAcceptRoute: typeof AppParentInvitationAcceptRoute
+  AppParentStudentsStudentIdRoute: typeof AppParentStudentsStudentIdRouteWithChildren
   AppInstructorAssignmentsIndexRoute: typeof AppInstructorAssignmentsIndexRoute
   AppInstructorAssignmentsSubmissionIdGradeRoute: typeof AppInstructorAssignmentsSubmissionIdGradeRoute
 }
@@ -1223,11 +1906,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/app/attendance': {
+      id: '/app/attendance'
+      path: '/app/attendance'
+      fullPath: '/app/attendance'
+      preLoaderRoute: typeof AppAttendanceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/app/calendar': {
       id: '/app/calendar'
       path: '/app/calendar'
       fullPath: '/app/calendar'
       preLoaderRoute: typeof AppCalendarRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/certificates': {
+      id: '/app/certificates'
+      path: '/app/certificates'
+      fullPath: '/app/certificates'
+      preLoaderRoute: typeof AppCertificatesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/finance': {
+      id: '/app/finance'
+      path: '/app/finance'
+      fullPath: '/app/finance'
+      preLoaderRoute: typeof AppFinanceRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/app/grades': {
@@ -1242,6 +1946,27 @@ declare module '@tanstack/react-router' {
       path: '/app/messages'
       fullPath: '/app/messages'
       preLoaderRoute: typeof AppMessagesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/notifications': {
+      id: '/app/notifications'
+      path: '/app/notifications'
+      fullPath: '/app/notifications'
+      preLoaderRoute: typeof AppNotificationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/portfolio': {
+      id: '/app/portfolio'
+      path: '/app/portfolio'
+      fullPath: '/app/portfolio'
+      preLoaderRoute: typeof AppPortfolioRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/reports': {
+      id: '/app/reports'
+      path: '/app/reports'
+      fullPath: '/app/reports'
+      preLoaderRoute: typeof AppReportsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/apply/': {
@@ -1363,6 +2088,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PortalAlumniRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/portal/behavioral-designer': {
+      id: '/portal/behavioral-designer'
+      path: '/portal/behavioral-designer'
+      fullPath: '/portal/behavioral-designer'
+      preLoaderRoute: typeof PortalBehavioralDesignerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/portal/career-services': {
       id: '/portal/career-services'
       path: '/portal/career-services'
@@ -1377,11 +2109,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PortalClientRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/portal/copywriter': {
+      id: '/portal/copywriter'
+      path: '/portal/copywriter'
+      fullPath: '/portal/copywriter'
+      preLoaderRoute: typeof PortalCopywriterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/portal/data': {
       id: '/portal/data'
       path: '/portal/data'
       fullPath: '/portal/data'
       preLoaderRoute: typeof PortalDataRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/portal/department-head': {
+      id: '/portal/department-head'
+      path: '/portal/department-head'
+      fullPath: '/portal/department-head'
+      preLoaderRoute: typeof PortalDepartmentHeadRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/portal/developer': {
@@ -1419,11 +2165,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PortalFinanceRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/portal/global-copywriter': {
+      id: '/portal/global-copywriter'
+      path: '/portal/global-copywriter'
+      fullPath: '/portal/global-copywriter'
+      preLoaderRoute: typeof PortalGlobalCopywriterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/portal/government': {
       id: '/portal/government'
       path: '/portal/government'
       fullPath: '/portal/government'
       preLoaderRoute: typeof PortalGovernmentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/portal/growth': {
+      id: '/portal/growth'
+      path: '/portal/growth'
+      fullPath: '/portal/growth'
+      preLoaderRoute: typeof PortalGrowthRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/portal/hr': {
@@ -1496,6 +2256,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PortalPartnerRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/portal/product-marketing': {
+      id: '/portal/product-marketing'
+      path: '/portal/product-marketing'
+      fullPath: '/portal/product-marketing'
+      preLoaderRoute: typeof PortalProductMarketingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/portal/quality': {
       id: '/portal/quality'
       path: '/portal/quality'
@@ -1538,6 +2305,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PortalSupplierRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/portal/visual-designer': {
+      id: '/portal/visual-designer'
+      path: '/portal/visual-designer'
+      fullPath: '/portal/visual-designer'
+      preLoaderRoute: typeof PortalVisualDesignerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/portal/volunteer': {
       id: '/portal/volunteer'
       path: '/portal/volunteer'
@@ -1566,6 +2340,41 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProgramsCompareRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/app/alumni/events': {
+      id: '/app/alumni/events'
+      path: '/app/alumni/events'
+      fullPath: '/app/alumni/events'
+      preLoaderRoute: typeof AppAlumniEventsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/alumni/give-back': {
+      id: '/app/alumni/give-back'
+      path: '/app/alumni/give-back'
+      fullPath: '/app/alumni/give-back'
+      preLoaderRoute: typeof AppAlumniGiveBackRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/alumni/hub': {
+      id: '/app/alumni/hub'
+      path: '/app/alumni/hub'
+      fullPath: '/app/alumni/hub'
+      preLoaderRoute: typeof AppAlumniHubRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/alumni/jobs': {
+      id: '/app/alumni/jobs'
+      path: '/app/alumni/jobs'
+      fullPath: '/app/alumni/jobs'
+      preLoaderRoute: typeof AppAlumniJobsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/alumni/network': {
+      id: '/app/alumni/network'
+      path: '/app/alumni/network'
+      fullPath: '/app/alumni/network'
+      preLoaderRoute: typeof AppAlumniNetworkRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/app/assessments/': {
       id: '/app/assessments/'
       path: '/app/assessments'
@@ -1585,6 +2394,90 @@ declare module '@tanstack/react-router' {
       path: '/app/assignments/$assignmentId'
       fullPath: '/app/assignments/$assignmentId'
       preLoaderRoute: typeof AppAssignmentsAssignmentIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/client/invoices': {
+      id: '/app/client/invoices'
+      path: '/app/client/invoices'
+      fullPath: '/app/client/invoices'
+      preLoaderRoute: typeof AppClientInvoicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/client/support': {
+      id: '/app/client/support'
+      path: '/app/client/support'
+      fullPath: '/app/client/support'
+      preLoaderRoute: typeof AppClientSupportRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/department/curriculum': {
+      id: '/app/department/curriculum'
+      path: '/app/department/curriculum'
+      fullPath: '/app/department/curriculum'
+      preLoaderRoute: typeof AppDepartmentCurriculumRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/department/enrollment': {
+      id: '/app/department/enrollment'
+      path: '/app/department/enrollment'
+      fullPath: '/app/department/enrollment'
+      preLoaderRoute: typeof AppDepartmentEnrollmentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/department/instructors': {
+      id: '/app/department/instructors'
+      path: '/app/department/instructors'
+      fullPath: '/app/department/instructors'
+      preLoaderRoute: typeof AppDepartmentInstructorsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/department/quality': {
+      id: '/app/department/quality'
+      path: '/app/department/quality'
+      fullPath: '/app/department/quality'
+      preLoaderRoute: typeof AppDepartmentQualityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/employer/analytics': {
+      id: '/app/employer/analytics'
+      path: '/app/employer/analytics'
+      fullPath: '/app/employer/analytics'
+      preLoaderRoute: typeof AppEmployerAnalyticsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/employer/brand': {
+      id: '/app/employer/brand'
+      path: '/app/employer/brand'
+      fullPath: '/app/employer/brand'
+      preLoaderRoute: typeof AppEmployerBrandRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/employer/hub': {
+      id: '/app/employer/hub'
+      path: '/app/employer/hub'
+      fullPath: '/app/employer/hub'
+      preLoaderRoute: typeof AppEmployerHubRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/employer/interviews': {
+      id: '/app/employer/interviews'
+      path: '/app/employer/interviews'
+      fullPath: '/app/employer/interviews'
+      preLoaderRoute: typeof AppEmployerInterviewsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/employer/jobs': {
+      id: '/app/employer/jobs'
+      path: '/app/employer/jobs'
+      fullPath: '/app/employer/jobs'
+      preLoaderRoute: typeof AppEmployerJobsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/employer/talent': {
+      id: '/app/employer/talent'
+      path: '/app/employer/talent'
+      fullPath: '/app/employer/talent'
+      preLoaderRoute: typeof AppEmployerTalentRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/app/instructor/analytics': {
@@ -1622,11 +2515,88 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppLearnCourseIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/app/live/$classId': {
+      id: '/app/live/$classId'
+      path: '/app/live/$classId'
+      fullPath: '/app/live/$classId'
+      preLoaderRoute: typeof AppLiveClassIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/mentor/': {
+      id: '/app/mentor/'
+      path: '/app/mentor'
+      fullPath: '/app/mentor/'
+      preLoaderRoute: typeof AppMentorIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/mentor/analytics': {
+      id: '/app/mentor/analytics'
+      path: '/app/mentor/analytics'
+      fullPath: '/app/mentor/analytics'
+      preLoaderRoute: typeof AppMentorAnalyticsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/mentor/goals': {
+      id: '/app/mentor/goals'
+      path: '/app/mentor/goals'
+      fullPath: '/app/mentor/goals'
+      preLoaderRoute: typeof AppMentorGoalsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/mentor/requests': {
+      id: '/app/mentor/requests'
+      path: '/app/mentor/requests'
+      fullPath: '/app/mentor/requests'
+      preLoaderRoute: typeof AppMentorRequestsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/mentor/resources': {
+      id: '/app/mentor/resources'
+      path: '/app/mentor/resources'
+      fullPath: '/app/mentor/resources'
+      preLoaderRoute: typeof AppMentorResourcesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/mentor/sessions': {
+      id: '/app/mentor/sessions'
+      path: '/app/mentor/sessions'
+      fullPath: '/app/mentor/sessions'
+      preLoaderRoute: typeof AppMentorSessionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/mentor/settings': {
+      id: '/app/mentor/settings'
+      path: '/app/mentor/settings'
+      fullPath: '/app/mentor/settings'
+      preLoaderRoute: typeof AppMentorSettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/parent/': {
+      id: '/app/parent/'
+      path: '/app/parent'
+      fullPath: '/app/parent/'
+      preLoaderRoute: typeof AppParentIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/app/assessments/$assessmentId/take': {
       id: '/app/assessments/$assessmentId/take'
       path: '/app/assessments/$assessmentId/take'
       fullPath: '/app/assessments/$assessmentId/take'
       preLoaderRoute: typeof AppAssessmentsAssessmentIdTakeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/client/projects/$projectId': {
+      id: '/app/client/projects/$projectId'
+      path: '/app/client/projects/$projectId'
+      fullPath: '/app/client/projects/$projectId'
+      preLoaderRoute: typeof AppClientProjectsProjectIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/employer/pipeline/$jobId': {
+      id: '/app/employer/pipeline/$jobId'
+      path: '/app/employer/pipeline/$jobId'
+      fullPath: '/app/employer/pipeline/$jobId'
+      preLoaderRoute: typeof AppEmployerPipelineJobIdRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/app/instructor/assignments/': {
@@ -1643,6 +2613,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppInstructorCoursesCourseIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/app/mentor/mentees/$menteeId': {
+      id: '/app/mentor/mentees/$menteeId'
+      path: '/app/mentor/mentees/$menteeId'
+      fullPath: '/app/mentor/mentees/$menteeId'
+      preLoaderRoute: typeof AppMentorMenteesMenteeIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/mentor/sessions/$sessionId': {
+      id: '/app/mentor/sessions/$sessionId'
+      path: '/$sessionId'
+      fullPath: '/app/mentor/sessions/$sessionId'
+      preLoaderRoute: typeof AppMentorSessionsSessionIdRouteImport
+      parentRoute: typeof AppMentorSessionsRoute
+    }
+    '/app/parent/invitation/accept': {
+      id: '/app/parent/invitation/accept'
+      path: '/app/parent/invitation/accept'
+      fullPath: '/app/parent/invitation/accept'
+      preLoaderRoute: typeof AppParentInvitationAcceptRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/parent/students/$studentId': {
+      id: '/app/parent/students/$studentId'
+      path: '/app/parent/students/$studentId'
+      fullPath: '/app/parent/students/$studentId'
+      preLoaderRoute: typeof AppParentStudentsStudentIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/app/instructor/assignments/$submissionId/grade': {
       id: '/app/instructor/assignments/$submissionId/grade'
       path: '/app/instructor/assignments/$submissionId/grade'
@@ -1657,6 +2655,55 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppLearnCourseIdLessonsLessonIdRouteImport
       parentRoute: typeof AppLearnCourseIdRoute
     }
+    '/app/mentor/mentees/$menteeId/career': {
+      id: '/app/mentor/mentees/$menteeId/career'
+      path: '/career'
+      fullPath: '/app/mentor/mentees/$menteeId/career'
+      preLoaderRoute: typeof AppMentorMenteesMenteeIdCareerRouteImport
+      parentRoute: typeof AppMentorMenteesMenteeIdRoute
+    }
+    '/app/mentor/mentees/$menteeId/portfolio': {
+      id: '/app/mentor/mentees/$menteeId/portfolio'
+      path: '/portfolio'
+      fullPath: '/app/mentor/mentees/$menteeId/portfolio'
+      preLoaderRoute: typeof AppMentorMenteesMenteeIdPortfolioRouteImport
+      parentRoute: typeof AppMentorMenteesMenteeIdRoute
+    }
+    '/app/parent/students/$studentId/attendance': {
+      id: '/app/parent/students/$studentId/attendance'
+      path: '/attendance'
+      fullPath: '/app/parent/students/$studentId/attendance'
+      preLoaderRoute: typeof AppParentStudentsStudentIdAttendanceRouteImport
+      parentRoute: typeof AppParentStudentsStudentIdRoute
+    }
+    '/app/parent/students/$studentId/communication': {
+      id: '/app/parent/students/$studentId/communication'
+      path: '/communication'
+      fullPath: '/app/parent/students/$studentId/communication'
+      preLoaderRoute: typeof AppParentStudentsStudentIdCommunicationRouteImport
+      parentRoute: typeof AppParentStudentsStudentIdRoute
+    }
+    '/app/parent/students/$studentId/finance': {
+      id: '/app/parent/students/$studentId/finance'
+      path: '/finance'
+      fullPath: '/app/parent/students/$studentId/finance'
+      preLoaderRoute: typeof AppParentStudentsStudentIdFinanceRouteImport
+      parentRoute: typeof AppParentStudentsStudentIdRoute
+    }
+    '/app/parent/students/$studentId/grades': {
+      id: '/app/parent/students/$studentId/grades'
+      path: '/grades'
+      fullPath: '/app/parent/students/$studentId/grades'
+      preLoaderRoute: typeof AppParentStudentsStudentIdGradesRouteImport
+      parentRoute: typeof AppParentStudentsStudentIdRoute
+    }
+    '/app/parent/students/$studentId/reports': {
+      id: '/app/parent/students/$studentId/reports'
+      path: '/reports'
+      fullPath: '/app/parent/students/$studentId/reports'
+      preLoaderRoute: typeof AppParentStudentsStudentIdReportsRouteImport
+      parentRoute: typeof AppParentStudentsStudentIdRoute
+    }
   }
 }
 
@@ -1670,6 +2717,61 @@ const AppLearnCourseIdRouteChildren: AppLearnCourseIdRouteChildren = {
 
 const AppLearnCourseIdRouteWithChildren =
   AppLearnCourseIdRoute._addFileChildren(AppLearnCourseIdRouteChildren)
+
+interface AppMentorSessionsRouteChildren {
+  AppMentorSessionsSessionIdRoute: typeof AppMentorSessionsSessionIdRoute
+}
+
+const AppMentorSessionsRouteChildren: AppMentorSessionsRouteChildren = {
+  AppMentorSessionsSessionIdRoute: AppMentorSessionsSessionIdRoute,
+}
+
+const AppMentorSessionsRouteWithChildren =
+  AppMentorSessionsRoute._addFileChildren(AppMentorSessionsRouteChildren)
+
+interface AppMentorMenteesMenteeIdRouteChildren {
+  AppMentorMenteesMenteeIdCareerRoute: typeof AppMentorMenteesMenteeIdCareerRoute
+  AppMentorMenteesMenteeIdPortfolioRoute: typeof AppMentorMenteesMenteeIdPortfolioRoute
+}
+
+const AppMentorMenteesMenteeIdRouteChildren: AppMentorMenteesMenteeIdRouteChildren =
+  {
+    AppMentorMenteesMenteeIdCareerRoute: AppMentorMenteesMenteeIdCareerRoute,
+    AppMentorMenteesMenteeIdPortfolioRoute:
+      AppMentorMenteesMenteeIdPortfolioRoute,
+  }
+
+const AppMentorMenteesMenteeIdRouteWithChildren =
+  AppMentorMenteesMenteeIdRoute._addFileChildren(
+    AppMentorMenteesMenteeIdRouteChildren,
+  )
+
+interface AppParentStudentsStudentIdRouteChildren {
+  AppParentStudentsStudentIdAttendanceRoute: typeof AppParentStudentsStudentIdAttendanceRoute
+  AppParentStudentsStudentIdCommunicationRoute: typeof AppParentStudentsStudentIdCommunicationRoute
+  AppParentStudentsStudentIdFinanceRoute: typeof AppParentStudentsStudentIdFinanceRoute
+  AppParentStudentsStudentIdGradesRoute: typeof AppParentStudentsStudentIdGradesRoute
+  AppParentStudentsStudentIdReportsRoute: typeof AppParentStudentsStudentIdReportsRoute
+}
+
+const AppParentStudentsStudentIdRouteChildren: AppParentStudentsStudentIdRouteChildren =
+  {
+    AppParentStudentsStudentIdAttendanceRoute:
+      AppParentStudentsStudentIdAttendanceRoute,
+    AppParentStudentsStudentIdCommunicationRoute:
+      AppParentStudentsStudentIdCommunicationRoute,
+    AppParentStudentsStudentIdFinanceRoute:
+      AppParentStudentsStudentIdFinanceRoute,
+    AppParentStudentsStudentIdGradesRoute:
+      AppParentStudentsStudentIdGradesRoute,
+    AppParentStudentsStudentIdReportsRoute:
+      AppParentStudentsStudentIdReportsRoute,
+  }
+
+const AppParentStudentsStudentIdRouteWithChildren =
+  AppParentStudentsStudentIdRoute._addFileChildren(
+    AppParentStudentsStudentIdRouteChildren,
+  )
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
@@ -1690,9 +2792,15 @@ const rootRouteChildren: RootRouteChildren = {
   StoriesRoute: StoriesRoute,
   VisitRoute: VisitRoute,
   WorkRoute: WorkRoute,
+  AppAttendanceRoute: AppAttendanceRoute,
   AppCalendarRoute: AppCalendarRoute,
+  AppCertificatesRoute: AppCertificatesRoute,
+  AppFinanceRoute: AppFinanceRoute,
   AppGradesRoute: AppGradesRoute,
   AppMessagesRoute: AppMessagesRoute,
+  AppNotificationsRoute: AppNotificationsRoute,
+  AppPortfolioRoute: AppPortfolioRoute,
+  AppReportsRoute: AppReportsRoute,
   ApplyStatusRoute: ApplyStatusRoute,
   AuthForgotPasswordRoute: AuthForgotPasswordRoute,
   AuthMfaRoute: AuthMfaRoute,
@@ -1707,15 +2815,20 @@ const rootRouteChildren: RootRouteChildren = {
   PortalAdminRoute: PortalAdminRoute,
   PortalAdmissionsRoute: PortalAdmissionsRoute,
   PortalAlumniRoute: PortalAlumniRoute,
+  PortalBehavioralDesignerRoute: PortalBehavioralDesignerRoute,
   PortalCareerServicesRoute: PortalCareerServicesRoute,
   PortalClientRoute: PortalClientRoute,
+  PortalCopywriterRoute: PortalCopywriterRoute,
   PortalDataRoute: PortalDataRoute,
+  PortalDepartmentHeadRoute: PortalDepartmentHeadRoute,
   PortalDeveloperRoute: PortalDeveloperRoute,
   PortalDevopsRoute: PortalDevopsRoute,
   PortalEmployerRoute: PortalEmployerRoute,
   PortalExecutiveRoute: PortalExecutiveRoute,
   PortalFinanceRoute: PortalFinanceRoute,
+  PortalGlobalCopywriterRoute: PortalGlobalCopywriterRoute,
   PortalGovernmentRoute: PortalGovernmentRoute,
+  PortalGrowthRoute: PortalGrowthRoute,
   PortalHrRoute: PortalHrRoute,
   PortalInstructorRoute: PortalInstructorRoute,
   PortalInternRoute: PortalInternRoute,
@@ -1726,12 +2839,14 @@ const rootRouteChildren: RootRouteChildren = {
   PortalOperationsRoute: PortalOperationsRoute,
   PortalParentRoute: PortalParentRoute,
   PortalPartnerRoute: PortalPartnerRoute,
+  PortalProductMarketingRoute: PortalProductMarketingRoute,
   PortalQualityRoute: PortalQualityRoute,
   PortalReceptionistRoute: PortalReceptionistRoute,
   PortalRegistrarRoute: PortalRegistrarRoute,
   PortalSecurityRoute: PortalSecurityRoute,
   PortalStudentRoute: PortalStudentRoute,
   PortalSupplierRoute: PortalSupplierRoute,
+  PortalVisualDesignerRoute: PortalVisualDesignerRoute,
   PortalVolunteerRoute: PortalVolunteerRoute,
   ProgramsSlugRoute: ProgramsSlugRoute,
   ProgramsCompareRoute: ProgramsCompareRoute,
@@ -1740,16 +2855,47 @@ const rootRouteChildren: RootRouteChildren = {
   BlogIndexRoute: BlogIndexRoute,
   PortalIndexRoute: PortalIndexRoute,
   ProgramsIndexRoute: ProgramsIndexRoute,
+  AppAlumniEventsRoute: AppAlumniEventsRoute,
+  AppAlumniGiveBackRoute: AppAlumniGiveBackRoute,
+  AppAlumniHubRoute: AppAlumniHubRoute,
+  AppAlumniJobsRoute: AppAlumniJobsRoute,
+  AppAlumniNetworkRoute: AppAlumniNetworkRoute,
   AppAssignmentsAssignmentIdRoute: AppAssignmentsAssignmentIdRoute,
+  AppClientInvoicesRoute: AppClientInvoicesRoute,
+  AppClientSupportRoute: AppClientSupportRoute,
+  AppDepartmentCurriculumRoute: AppDepartmentCurriculumRoute,
+  AppDepartmentEnrollmentRoute: AppDepartmentEnrollmentRoute,
+  AppDepartmentInstructorsRoute: AppDepartmentInstructorsRoute,
+  AppDepartmentQualityRoute: AppDepartmentQualityRoute,
+  AppEmployerAnalyticsRoute: AppEmployerAnalyticsRoute,
+  AppEmployerBrandRoute: AppEmployerBrandRoute,
+  AppEmployerHubRoute: AppEmployerHubRoute,
+  AppEmployerInterviewsRoute: AppEmployerInterviewsRoute,
+  AppEmployerJobsRoute: AppEmployerJobsRoute,
+  AppEmployerTalentRoute: AppEmployerTalentRoute,
   AppInstructorAnalyticsRoute: AppInstructorAnalyticsRoute,
   AppInstructorAttendanceRoute: AppInstructorAttendanceRoute,
   AppInstructorGradebookRoute: AppInstructorGradebookRoute,
   AppLearnCourseIdRoute: AppLearnCourseIdRouteWithChildren,
+  AppLiveClassIdRoute: AppLiveClassIdRoute,
+  AppMentorAnalyticsRoute: AppMentorAnalyticsRoute,
+  AppMentorGoalsRoute: AppMentorGoalsRoute,
+  AppMentorRequestsRoute: AppMentorRequestsRoute,
+  AppMentorResourcesRoute: AppMentorResourcesRoute,
+  AppMentorSessionsRoute: AppMentorSessionsRouteWithChildren,
+  AppMentorSettingsRoute: AppMentorSettingsRoute,
   AppAssessmentsIndexRoute: AppAssessmentsIndexRoute,
   AppAssignmentsIndexRoute: AppAssignmentsIndexRoute,
   AppLearnIndexRoute: AppLearnIndexRoute,
+  AppMentorIndexRoute: AppMentorIndexRoute,
+  AppParentIndexRoute: AppParentIndexRoute,
   AppAssessmentsAssessmentIdTakeRoute: AppAssessmentsAssessmentIdTakeRoute,
+  AppClientProjectsProjectIdRoute: AppClientProjectsProjectIdRoute,
+  AppEmployerPipelineJobIdRoute: AppEmployerPipelineJobIdRoute,
   AppInstructorCoursesCourseIdRoute: AppInstructorCoursesCourseIdRoute,
+  AppMentorMenteesMenteeIdRoute: AppMentorMenteesMenteeIdRouteWithChildren,
+  AppParentInvitationAcceptRoute: AppParentInvitationAcceptRoute,
+  AppParentStudentsStudentIdRoute: AppParentStudentsStudentIdRouteWithChildren,
   AppInstructorAssignmentsIndexRoute: AppInstructorAssignmentsIndexRoute,
   AppInstructorAssignmentsSubmissionIdGradeRoute:
     AppInstructorAssignmentsSubmissionIdGradeRoute,

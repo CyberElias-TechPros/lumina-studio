@@ -77,26 +77,26 @@
 | [ ] Assessments / Quiz list                                                          | `/assessments`                 |
 | [ ] Assessment Player (timer, navigation, proctoring)                                | `/assessments/[id]/take`       |
 | [ ] Gradebook                                                                        | `/grades`                      |
-| [ ] Portfolio Builder (projects, skills, CV generator, share)                        | `/portfolio`                   |
+| [x] Portfolio Builder (projects, skills, CV generator, share)                        | `/portfolio`                   |
 | [ ] Calendar (classes, deadlines, events, mentor sessions)                           | `/calendar`                    |
 | [ ] Messaging (DMs, group chats)                                                     | `/messages`                    |
-| [ ] Finance (tuition, invoices, receipts)                                            | `/finance`                     |
-| [ ] Attendance (history, QR check-in)                                                | `/attendance`                  |
-| [ ] Certificates (view, verify, share)                                               | `/certificates`                |
-| [ ] Live class (video + chat + whiteboard + polls + hand-raise)                      | `/live/[classId]`              |
+| [x] Finance (tuition, invoices, receipts)                                            | `/finance`                     |
+| [x] Attendance (history, QR check-in)                                                | `/attendance`                  |
+| [x] Certificates (view, verify, share)                                               | `/certificates`                |
+| [x] Live class (video + chat + whiteboard + polls + hand-raise)                      | `/live/[classId]`              |
 
 ## 4. Parent Portal (`03-parent.md`)
 
 | Page                                                                   | Route                                 |
 | ---------------------------------------------------------------------- | ------------------------------------- |
-| [ ] Parent Dashboard                                                   | `/parent/dashboard`                   |
-| [ ] Student Overview                                                   | `/parent/students/[id]/overview`      |
-| [ ] Academic Progress / Gradebook                                      | `/parent/students/[id]/grades`        |
-| [ ] Attendance Report                                                  | `/parent/students/[id]/attendance`    |
-| [ ] Finance / Billing (pay online)                                     | `/parent/students/[id]/finance`       |
-| [ ] Communication (message instructors/staff, parent-teacher meetings) | `/parent/students/[id]/communication` |
-| [ ] Reports (term reports, progress summaries)                         | `/parent/students/[id]/reports`       |
-| [ ] Parent invitation accept                                           | `/parent/invitation/accept`           |
+| [x] Parent Dashboard                                                   | `/parent/dashboard`                   |
+| [x] Student Overview                                                   | `/parent/students/[id]/overview`      |
+| [x] Academic Progress / Gradebook                                      | `/parent/students/[id]/grades`        |
+| [x] Attendance Report                                                  | `/parent/students/[id]/attendance`    |
+| [x] Finance / Billing (pay online)                                     | `/parent/students/[id]/finance`       |
+| [x] Communication (message instructors/staff, parent-teacher meetings) | `/parent/students/[id]/communication` |
+| [x] Reports (term reports, progress summaries)                         | `/parent/students/[id]/reports`       |
+| [x] Parent invitation accept                                           | `/parent/invitation/accept`           |
 
 ## 5. Instructor Portal (`04-instructor.md`)
 
@@ -118,30 +118,30 @@
 
 | Page                                               | Route                                                    |
 | -------------------------------------------------- | -------------------------------------------------------- |
-| [ ] Mentor Dashboard                               | `/mentor/dashboard`                                      |
-| [ ] Mentee Overview                                | `/mentor/mentees/[id]`                                   |
-| [ ] Session Hub (schedule, notes, action items)    | `/mentor/sessions`, `/mentor/sessions/[id]`              |
-| [ ] Portfolio Reviewer (feedback, endorse skills)  | `/mentor/mentees/[id]/portfolio`                         |
-| [ ] Career Tracking (applications, interview prep) | `/mentor/mentees/[id]/career`, `/mentor/career-tracking` |
-| [ ] Goal Management (milestones, progress)         | `/mentor/mentees/[id]/goals`, `/mentor/goals`            |
+| [x] Mentor Dashboard                               | `/mentor/dashboard`                                      |
+| [x] Mentee Overview                                | `/mentor/mentees/[id]`                                   |
+| [x] Session Hub (schedule, notes, action items)    | `/mentor/sessions`, `/mentor/sessions/[id]`              |
+| [x] Portfolio Reviewer (feedback, endorse skills)  | `/mentor/mentees/[id]/portfolio`                         |
+| [x] Career Tracking (applications, interview prep) | `/mentor/mentees/[id]/career`, `/mentor/career-tracking` |
+| [x] Goal Management (milestones, progress)         | `/mentor/mentees/[id]/goals`, `/mentor/goals`            |
 | [ ] Messaging                                      | `/mentor/messages`                                       |
-| [ ] Resources Library                              | `/mentor/resources`                                      |
-| [ ] Analytics & Reports                            | `/mentor/analytics`                                      |
-| [ ] Availability & Settings                        | `/mentor/settings`                                       |
-| [ ] Mentorship request inbox (accept/decline)      | `/mentor/requests`                                       |
+| [x] Resources Library                              | `/mentor/resources`                                      |
+| [x] Analytics & Reports                            | `/mentor/analytics`                                      |
+| [x] Availability & Settings                        | `/mentor/settings`                                       |
+| [x] Mentorship request inbox (accept/decline)      | `/mentor/requests`                                       |
 
 ## 7. Department Head Portal (`06-department-head.md`)
 
 | Page                                                 | Route               |
 | ---------------------------------------------------- | ------------------- |
-| [ ] Department Overview Dashboard                    | `/dept/dashboard`   |
-| [ ] Curriculum Manager (program versions, approvals) | `/dept/curriculum`  |
-| [ ] Instructor Management (workload, performance)    | `/dept/instructors` |
-| [ ] Quality Assurance (observations, evaluations)    | `/dept/quality`     |
+| [x] Department Overview Dashboard                    | `/dept/dashboard`   |
+| [x] Curriculum Manager (program versions, approvals) | `/dept/curriculum`  |
+| [x] Instructor Management (workload, performance)    | `/dept/instructors` |
+| [x] Quality Assurance (observations, evaluations)    | `/dept/quality`     |
 | [ ] Reports & Analytics                              | `/dept/reports`     |
 | [ ] Approvals (curriculum, courses, leave)           | `/dept/approvals`   |
 | [ ] Calendar (department events, academic calendar)  | `/dept/calendar`    |
-| [ ] Program Enrollment overview                      | `/dept/enrollment`  |
+| [x] Program Enrollment overview                      | `/dept/enrollment`  |
 
 ## 8. Receptionist Portal (`07-receptionist.md`)
 
@@ -188,12 +188,12 @@
 
 | Page                                                       | Route                         |
 | ---------------------------------------------------------- | ----------------------------- |
-| [ ] Client Portal Home                                     | `/client/portal`              |
+| [x] Client Portal Home                                     | `/client/portal`              |
 | [ ] Proposals (view, accept/reject, negotiate)             | `/client/proposals`           |
-| [ ] Project Dashboard (timeline, milestones, deliverables) | `/client/projects/[id]`       |
+| [x] Project Dashboard (timeline, milestones, deliverables) | `/client/projects/[id]`       |
 | [ ] Task Board (comment, approve deliverables)             | `/client/projects/[id]/tasks` |
-| [ ] Invoices & Payments (pay online, receipts)             | `/client/invoices`            |
-| [ ] Support Tickets (create, track, SLA)                   | `/client/support`             |
+| [x] Invoices & Payments (pay online, receipts)             | `/client/invoices`            |
+| [x] Support Tickets (create, track, SLA)                   | `/client/support`             |
 | [ ] Contracts (view, terms, renewals)                      | `/client/contracts`           |
 | [ ] Documents (shared files, SOW, reports)                 | `/client/documents`           |
 | [ ] Messaging (with project team)                          | `/client/messages`            |
@@ -202,14 +202,14 @@
 
 | Page                                                 | Route                        |
 | ---------------------------------------------------- | ---------------------------- |
-| [ ] Employer Hub                                     | `/employer/hub`              |
-| [ ] Job Management (post, edit, close, applications) | `/employer/jobs`             |
-| [ ] Talent Search (browse portfolios by skill/cert)  | `/employer/talent`           |
-| [ ] Candidate Pipeline (shortlist, reject)           | `/employer/pipeline/[jobId]` |
-| [ ] Interview Scheduler                              | `/employer/interviews`       |
+| [x] Employer Hub                                     | `/employer/hub`              |
+| [x] Job Management (post, edit, close, applications) | `/employer/jobs`             |
+| [x] Talent Search (browse portfolios by skill/cert)  | `/employer/talent`           |
+| [x] Candidate Pipeline (shortlist, reject)           | `/employer/pipeline/[jobId]` |
+| [x] Interview Scheduler                              | `/employer/interviews`       |
 | [ ] Feedback & Reviews (post-interview, post-hire)   | `/employer/feedback`         |
-| [ ] Analytics (time-to-hire, retention)              | `/employer/analytics`        |
-| [ ] Brand Page (company profile)                     | `/employer/brand`            |
+| [x] Analytics (time-to-hire, retention)              | `/employer/analytics`        |
+| [x] Brand Page (company profile)                     | `/employer/brand`            |
 
 ## 13. Partner Portal (`12-partner.md`)
 
@@ -251,12 +251,12 @@
 
 | Page                                              | Route                |
 | ------------------------------------------------- | -------------------- |
-| [ ] Alumni Hub (Dashboard)                        | `/alumni/hub`        |
-| [ ] Network Directory (search, connect, message)  | `/alumni/network`    |
+| [x] Alumni Hub (Dashboard)                        | `/alumni/hub`        |
+| [x] Network Directory (search, connect, message)  | `/alumni/network`    |
 | [ ] Mentorship Sign-Up (offer to mentor)          | `/alumni/mentorship` |
-| [ ] Job Board (browse, refer jobs)                | `/alumni/jobs`       |
-| [ ] Events (reunions, RSVP)                       | `/alumni/events`     |
-| [ ] Give Back / Donations                         | `/alumni/give-back`  |
+| [x] Job Board (browse, refer jobs)                | `/alumni/jobs`       |
+| [x] Events (reunions, RSVP)                       | `/alumni/events`     |
+| [x] Give Back / Donations                         | `/alumni/give-back`  |
 | [ ] Success Stories (share journey, get featured) | `/alumni/stories`    |
 | [ ] Profile (employment, achievements)            | `/alumni/profile`    |
 
@@ -310,7 +310,7 @@
 | [ ] Applications Pipeline (filter by status/stage/program) | `/admissions/applications`      |
 | [ ] Application Detail View                                | `/admissions/applications/[id]` |
 | [ ] Review Pipeline (shortlist/reject, notes)              | `/admissions/review`            |
-| [ ] Interview Scheduler                                    | `/admissions/interviews`        |
+| [x] Interview Scheduler                                    | `/admissions/interviews`        |
 | [ ] Document Verification (checklists)                     | `/admissions/documents`         |
 | [ ] Communication Center (offer letters, templates)        | `/admissions/communication`     |
 | [ ] Enrollment Tracker (paid vs pending, orientation)      | `/admissions/enrollment`        |
@@ -503,8 +503,8 @@ Source: `CEA_OS_GRAND_MASTER_PLAN_P1-P3.md`, `CEA_OS_MASTER_PLAN.md`
 | [ ] AppShell / Sidebar / Topbar / MobileNav layouts                        | `P2 §5.5`                                        |
 | [ ] Real-time messaging (WebSocket / Durable Objects)                      | ChatRoom, presence, typing indicators            |
 | [ ] Live class (video + chat + whiteboard + polls)                         | LiveClass DO                                     |
-| [ ] Notification bell + in-app/email/SMS/push delivery                     | 40+ notification templates (`P3 §9.2`)           |
-| [ ] Notification preferences + quiet hours                                 | `P3 §9.3`                                        |
+| [x] Notification bell + in-app/email/SMS/push delivery                     | 40+ notification templates (`P3 §9.2`)           |
+| [x] Notification preferences + quiet hours                                 | `P3 §9.3`                                        |
 | [ ] Command palette (Cmd+K)                                                | `P2 §5.3`                                        |
 | [ ] Calendar sync (Google/Outlook)                                         | Two-way sync                                     |
 | [ ] Payment integration (Stripe)                                           | Tuition, invoices, donations, marketplace escrow |
@@ -512,7 +512,7 @@ Source: `CEA_OS_GRAND_MASTER_PLAN_P1-P3.md`, `CEA_OS_MASTER_PLAN.md`
 | [ ] Certificate PDF generation + QR verification                           |                                                  |
 | [ ] Analytics event tracking infra                                         | `P3 §12.1` taxonomy                              |
 | [ ] Dashboards: Executive, Academics, Finance, Marketing                   | `P3 §12.2`                                       |
-| [ ] Self-service Report Builder                                            | `P3 §12.3`                                       |
+| [x] Self-service Report Builder                                            | `P3 §12.3`                                       |
 | [ ] Automation / Workflow builder UI                                       | Ops + Sys Admin                                  |
 | [ ] AI features: grading, recommendations, teaching assistant, content gen | Phase 6                                          |
 | [ ] PWA manifest + service worker                                          | Phase 0 (not present in repo)                    |

@@ -77,6 +77,11 @@ function ClientPortal() {
         <>
           <Badge className="bg-success/10 text-success border-0 font-semibold">On schedule</Badge>
           <Button asChild variant="outline" size="sm" className="ml-auto">
+            <Link to="/app/client/projects/$projectId" params={{ projectId: "orderpadi" }}>
+              Project workspace
+            </Link>
+          </Button>
+          <Button asChild variant="ghost" size="sm" className="font-semibold">
             <Link to="/services">Services overview</Link>
           </Button>
         </>

@@ -60,6 +60,9 @@ function AlumniPortal() {
         <>
           <Badge className="bg-success/10 text-success border-0 font-semibold">Mentor alumni</Badge>
           <Button asChild variant="outline" size="sm" className="ml-auto">
+            <Link to="/app/alumni/hub">Alumni workspace</Link>
+          </Button>
+          <Button asChild variant="ghost" size="sm" className="font-semibold">
             <Link to="/alumni">Public alumni page</Link>
           </Button>
         </>

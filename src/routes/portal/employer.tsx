@@ -75,6 +75,9 @@ function EmployerPortal() {
             Silver partner
           </Badge>
           <Button asChild variant="outline" size="sm" className="ml-auto">
+            <Link to="/app/employer/hub">Employer workspace</Link>
+          </Button>
+          <Button asChild variant="ghost" size="sm" className="font-semibold">
             <Link to="/marketplace">Job marketplace</Link>
           </Button>
         </>
