@@ -309,78 +309,60 @@ export const instructorGradebook = sqliteTable(
   (t) => [index("idx_instructor_gradebook_user").on(t.userId)],
 );
 
-export const employees = sqliteTable(
-  "employees",
-  {
-    id: text("id").primaryKey(),
-    name: text("name").notNull(),
-    role: text("role").notNull().default(""),
-    dept: text("dept").notNull().default(""),
-    status: text("status").notNull().default("active"),
-    joined: text("joined").notNull().default(""),
-    sortOrder: integer("sort_order").notNull().default(0),
-  },
-);
+export const employees = sqliteTable("employees", {
+  id: text("id").primaryKey(),
+  name: text("name").notNull(),
+  role: text("role").notNull().default(""),
+  dept: text("dept").notNull().default(""),
+  status: text("status").notNull().default("active"),
+  joined: text("joined").notNull().default(""),
+  sortOrder: integer("sort_order").notNull().default(0),
+});
 
-export const leaveRequests = sqliteTable(
-  "leave_requests",
-  {
-    id: text("id").primaryKey(),
-    employee: text("employee").notNull(),
-    type: text("type").notNull().default(""),
-    fromDate: text("from_date").notNull().default(""),
-    toDate: text("to_date").notNull().default(""),
-    status: text("status").notNull().default("pending"),
-    sortOrder: integer("sort_order").notNull().default(0),
-  },
-);
+export const leaveRequests = sqliteTable("leave_requests", {
+  id: text("id").primaryKey(),
+  employee: text("employee").notNull(),
+  type: text("type").notNull().default(""),
+  fromDate: text("from_date").notNull().default(""),
+  toDate: text("to_date").notNull().default(""),
+  status: text("status").notNull().default("pending"),
+  sortOrder: integer("sort_order").notNull().default(0),
+});
 
-export const invoices = sqliteTable(
-  "invoices",
-  {
-    id: text("id").primaryKey(),
-    party: text("party").notNull(),
-    amount: integer("amount").notNull().default(0),
-    due: text("due").notNull().default(""),
-    status: text("status").notNull().default("pending"),
-    sortOrder: integer("sort_order").notNull().default(0),
-  },
-);
+export const invoices = sqliteTable("invoices", {
+  id: text("id").primaryKey(),
+  party: text("party").notNull(),
+  amount: integer("amount").notNull().default(0),
+  due: text("due").notNull().default(""),
+  status: text("status").notNull().default("pending"),
+  sortOrder: integer("sort_order").notNull().default(0),
+});
 
-export const expenses = sqliteTable(
-  "expenses",
-  {
-    id: text("id").primaryKey(),
-    category: text("category").notNull(),
-    amount: integer("amount").notNull().default(0),
-    sortOrder: integer("sort_order").notNull().default(0),
-  },
-);
+export const expenses = sqliteTable("expenses", {
+  id: text("id").primaryKey(),
+  category: text("category").notNull(),
+  amount: integer("amount").notNull().default(0),
+  sortOrder: integer("sort_order").notNull().default(0),
+});
 
-export const adminUsers = sqliteTable(
-  "admin_users",
-  {
-    id: text("id").primaryKey(),
-    name: text("name").notNull(),
-    email: text("email").notNull().default(""),
-    role: text("role").notNull().default(""),
-    status: text("status").notNull().default("active"),
-    lastSeen: text("last_seen").notNull().default(""),
-    sortOrder: integer("sort_order").notNull().default(0),
-  },
-);
+export const adminUsers = sqliteTable("admin_users", {
+  id: text("id").primaryKey(),
+  name: text("name").notNull(),
+  email: text("email").notNull().default(""),
+  role: text("role").notNull().default(""),
+  status: text("status").notNull().default("active"),
+  lastSeen: text("last_seen").notNull().default(""),
+  sortOrder: integer("sort_order").notNull().default(0),
+});
 
-export const auditLog = sqliteTable(
-  "audit_log",
-  {
-    id: text("id").primaryKey(),
-    actor: text("actor").notNull().default(""),
-    action: text("action").notNull().default(""),
-    time: text("time").notNull().default(""),
-    severity: text("severity").notNull().default("info"),
-    sortOrder: integer("sort_order").notNull().default(0),
-  },
-);
+export const auditLog = sqliteTable("audit_log", {
+  id: text("id").primaryKey(),
+  actor: text("actor").notNull().default(""),
+  action: text("action").notNull().default(""),
+  time: text("time").notNull().default(""),
+  severity: text("severity").notNull().default("info"),
+  sortOrder: integer("sort_order").notNull().default(0),
+});
 
 export const notifications = sqliteTable(
   "notifications",

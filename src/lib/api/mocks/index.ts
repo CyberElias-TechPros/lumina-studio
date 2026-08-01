@@ -13,8 +13,19 @@ import {
   assessments,
   calendarEvents,
   threads,
+  courseBuilder,
+  submissions,
+  instructorGradebook,
 } from "@/data/learning";
-import { invoices, notifications, systemUsers } from "@/data/dashboard";
+import {
+  invoices,
+  notifications,
+  systemUsers,
+  employees,
+  leaveRequests,
+  expenses,
+  auditLog,
+} from "@/data/dashboard";
 import type { StudentDashboard } from "@/lib/api/dashboard";
 
 const MOCK_USER = {
@@ -170,6 +181,78 @@ export function registerAllMocks(): void {
   registerMock("GET", "/v1/admin/users", async () => {
     await delay();
     return { items: systemUsers, total: systemUsers.length };
+  });
+  registerMock("GET", "/v1/admin/audit-log", async () => {
+    await delay();
+    return { items: auditLog, total: auditLog.length };
+  });
+
+  /* Instructor */
+  const instructorCourses = [
+    ...learningCourses.map((c) => ({
+      id: c.slug,
+      title: c.title,
+      cohort: c.cohort,
+      status: "published",
+      modules: c.modules,
+    })),
+    {
+      id: courseBuilder.slug,
+      title: courseBuilder.title,
+      cohort: courseBuilder.cohort,
+      status: courseBuilder.status,
+      modules: courseBuilder.modules,
+    },
+  ];
+  registerMock("GET", "/v1/instructor/gradebook", async () => {
+    await delay();
+    return { items: instructorGradebook, total: instructorGradebook.length };
+  });
+  registerMock("GET", "/v1/instructor/courses", async () => {
+    await delay();
+    return { items: instructorCourses, total: instructorCourses.length };
+  });
+  for (const course of instructorCourses) {
+    registerMock("GET", `/v1/instructor/courses/${course.id}`, async () => {
+      await delay();
+      return course;
+    });
+  }
+  registerMock("GET", "/v1/instructor/assignments", async () => {
+    await delay();
+    return { items: submissions, total: submissions.length };
+  });
+  for (const submission of submissions) {
+    registerMock("GET", `/v1/instructor/assignments/${submission.id}`, async () => {
+      await delay();
+      return submission;
+    });
+  }
+
+  /* HR */
+  registerMock("GET", "/v1/hr/employees", async () => {
+    await delay();
+    return { items: employees, total: employees.length };
+  });
+  registerMock("GET", "/v1/hr/leave-requests", async () => {
+    await delay();
+    return {
+      items: leaveRequests.map((r, i) => ({
+        id: `lv-${i + 1}`,
+        employee: r.name,
+        type: r.type,
+        from: r.from,
+        to: r.to,
+        status: r.status,
+      })),
+      total: leaveRequests.length,
+    };
+  });
+
+  /* Finance */
+  registerMock("GET", "/v1/expenses", async () => {
+    await delay();
+    return { items: expenses, total: expenses.length };
   });
 
   /* Flags */

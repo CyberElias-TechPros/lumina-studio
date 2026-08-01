@@ -46,8 +46,9 @@ hr.use("*", requireAuth, requireHr);
 
 hr.get("/employees", async (c) => {
   const { cursor, limit } = parsePagination(c);
-  const total = await c.env.DB.prepare(`SELECT COUNT(*) AS n FROM employees`)
-    .first<{ n: number }>();
+  const total = await c.env.DB.prepare(`SELECT COUNT(*) AS n FROM employees`).first<{
+    n: number;
+  }>();
   const rows = await c.env.DB.prepare(
     `SELECT id, name, role, dept, status, joined FROM employees
       ${cursor ? "WHERE id > ?" : ""} ORDER BY id ASC LIMIT ?`,
@@ -63,8 +64,9 @@ hr.get("/employees", async (c) => {
 
 hr.get("/leave-requests", async (c) => {
   const { cursor, limit } = parsePagination(c);
-  const total = await c.env.DB.prepare(`SELECT COUNT(*) AS n FROM leave_requests`)
-    .first<{ n: number }>();
+  const total = await c.env.DB.prepare(`SELECT COUNT(*) AS n FROM leave_requests`).first<{
+    n: number;
+  }>();
   const rows = await c.env.DB.prepare(
     `SELECT id, employee, type, from_date, to_date, status FROM leave_requests
       ${cursor ? "WHERE id > ?" : ""} ORDER BY id ASC LIMIT ?`,

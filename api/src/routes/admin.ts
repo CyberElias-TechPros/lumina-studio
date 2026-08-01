@@ -44,8 +44,9 @@ admin.use("*", requireAuth, requireAdmin);
 
 admin.get("/users", async (c) => {
   const { cursor, limit } = parsePagination(c);
-  const total = await c.env.DB.prepare(`SELECT COUNT(*) AS n FROM admin_users`)
-    .first<{ n: number }>();
+  const total = await c.env.DB.prepare(`SELECT COUNT(*) AS n FROM admin_users`).first<{
+    n: number;
+  }>();
   const rows = await c.env.DB.prepare(
     `SELECT id, name, email, role, status, last_seen FROM admin_users
       ${cursor ? "WHERE id > ?" : ""} ORDER BY id ASC LIMIT ?`,
@@ -68,8 +69,9 @@ admin.get("/users", async (c) => {
 
 admin.get("/audit-log", async (c) => {
   const { cursor, limit } = parsePagination(c);
-  const total = await c.env.DB.prepare(`SELECT COUNT(*) AS n FROM audit_log`)
-    .first<{ n: number }>();
+  const total = await c.env.DB.prepare(`SELECT COUNT(*) AS n FROM audit_log`).first<{
+    n: number;
+  }>();
   const rows = await c.env.DB.prepare(
     `SELECT id, actor, action, time, severity FROM audit_log
       ${cursor ? "WHERE id > ?" : ""} ORDER BY id ASC LIMIT ?`,

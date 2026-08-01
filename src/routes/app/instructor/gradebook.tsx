@@ -12,8 +12,10 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { QueryState } from "@/components/ui/query-state";
 import { AppShell } from "@/components/app/app-shell";
-import { instructorGradebook } from "@/data/learning";
+import { useInstructorGradebook } from "@/lib/query/instructor";
+import type { InstructorGradebookRow } from "@/data/learning";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/instructor/gradebook")({
@@ -27,10 +29,13 @@ export const Route = createFileRoute("/app/instructor/gradebook")({
 });
 
 function GradebookManagement() {
-  const avg = (
-    instructorGradebook.reduce((s, r) => s + r.total, 0) / instructorGradebook.length
-  ).toFixed(1);
-  const atRisk = instructorGradebook.filter((r) => r.atRisk).length;
+  const rowsQuery = useInstructorGradebook();
+  const rows = rowsQuery.data?.pages.flatMap((p) => p.items) ?? [];
+
+  const avg = rows.length
+    ? (rows.reduce((s, r) => s + r.total, 0) / rows.length).toFixed(1)
+    : "0.0";
+  const atRisk = rows.filter((r) => r.atRisk).length;
 
   return (
     <AppShell
@@ -109,88 +114,98 @@ function GradebookManagement() {
               </Button>
             </div>
           </div>
-          <div className="overflow-x-auto">
-            <table className="w-full min-w-[720px] text-sm">
-              <thead>
-                <tr className="text-muted-foreground border-b text-left text-[11px] font-bold tracking-wide uppercase">
-                  <th className="px-4 py-3">Student</th>
-                  <th className="py-3 pr-4">Quiz 10%</th>
-                  <th className="py-3 pr-4">Lab 15%</th>
-                  <th className="py-3 pr-4">Assignment 25%</th>
-                  <th className="py-3 pr-4">Mid-term 20%</th>
-                  <th className="py-3 pr-4">Final 30%</th>
-                  <th className="py-3 pr-4">Total</th>
-                  <th className="py-3 pr-4">Grade</th>
-                  <th className="py-3 pr-4 text-right">Flag</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y">
-                {instructorGradebook.map((r) => (
-                  <tr
-                    key={r.student}
-                    className={cn("transition-colors hover:bg-muted/40", r.atRisk && "bg-error/5")}
-                  >
-                    <td className="px-4 py-3">
-                      <p className="text-xs font-bold">{r.student}</p>
-                    </td>
-                    <td className="py-3 pr-4">
-                      <input
-                        defaultValue={r.quiz}
-                        aria-label={`${r.student} quiz score`}
-                        className="bg-muted w-14 rounded-lg border-0 px-2 py-1.5 text-xs font-bold text-center outline-none"
-                      />
-                    </td>
-                    <td className="py-3 pr-4">
-                      <input
-                        defaultValue={r.lab}
-                        aria-label={`${r.student} lab score`}
-                        className="bg-muted w-14 rounded-lg border-0 px-2 py-1.5 text-xs font-bold text-center outline-none"
-                      />
-                    </td>
-                    <td className="py-3 pr-4">
-                      <input
-                        defaultValue={r.assignment}
-                        aria-label={`${r.student} assignment score`}
-                        className="bg-muted w-14 rounded-lg border-0 px-2 py-1.5 text-xs font-bold text-center outline-none"
-                      />
-                    </td>
-                    <td className="py-3 pr-4">
-                      <input
-                        defaultValue={r.midterm}
-                        aria-label={`${r.student} midterm score`}
-                        className="bg-muted w-14 rounded-lg border-0 px-2 py-1.5 text-xs font-bold text-center outline-none"
-                      />
-                    </td>
-                    <td className="text-muted-foreground py-3 pr-4 text-xs font-semibold">—</td>
-                    <td className="py-3 pr-4">
-                      <span className="font-display font-extrabold">{r.total}%</span>
-                    </td>
-                    <td className="py-3 pr-4">
-                      <Badge
+          <QueryState<InstructorGradebookRow[]>
+            query={rowsQuery}
+            error={{ title: "Gradebook unavailable" }}
+          >
+            {(rows) => (
+              <div className="overflow-x-auto">
+                <table className="w-full min-w-[720px] text-sm">
+                  <thead>
+                    <tr className="text-muted-foreground border-b text-left text-[11px] font-bold tracking-wide uppercase">
+                      <th className="px-4 py-3">Student</th>
+                      <th className="py-3 pr-4">Quiz 10%</th>
+                      <th className="py-3 pr-4">Lab 15%</th>
+                      <th className="py-3 pr-4">Assignment 25%</th>
+                      <th className="py-3 pr-4">Mid-term 20%</th>
+                      <th className="py-3 pr-4">Final 30%</th>
+                      <th className="py-3 pr-4">Total</th>
+                      <th className="py-3 pr-4">Grade</th>
+                      <th className="py-3 pr-4 text-right">Flag</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y">
+                    {rows.map((r) => (
+                      <tr
+                        key={r.student}
                         className={cn(
-                          "w-10 justify-center border-0 font-bold",
-                          r.letter.startsWith("A")
-                            ? "bg-success/10 text-success"
-                            : r.letter.startsWith("B")
-                              ? "bg-primary/10 text-primary"
-                              : "bg-warning/10 text-warning",
+                          "transition-colors hover:bg-muted/40",
+                          r.atRisk && "bg-error/5",
                         )}
                       >
-                        {r.letter}
-                      </Badge>
-                    </td>
-                    <td className="py-3 pr-4 text-right">
-                      {r.atRisk && (
-                        <Badge className="bg-error/10 text-error border-0 font-semibold">
-                          <AlertTriangle className="mr-1 size-3" /> Risk
-                        </Badge>
-                      )}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+                        <td className="px-4 py-3">
+                          <p className="text-xs font-bold">{r.student}</p>
+                        </td>
+                        <td className="py-3 pr-4">
+                          <input
+                            defaultValue={r.quiz}
+                            aria-label={`${r.student} quiz score`}
+                            className="bg-muted w-14 rounded-lg border-0 px-2 py-1.5 text-xs font-bold text-center outline-none"
+                          />
+                        </td>
+                        <td className="py-3 pr-4">
+                          <input
+                            defaultValue={r.lab}
+                            aria-label={`${r.student} lab score`}
+                            className="bg-muted w-14 rounded-lg border-0 px-2 py-1.5 text-xs font-bold text-center outline-none"
+                          />
+                        </td>
+                        <td className="py-3 pr-4">
+                          <input
+                            defaultValue={r.assignment}
+                            aria-label={`${r.student} assignment score`}
+                            className="bg-muted w-14 rounded-lg border-0 px-2 py-1.5 text-xs font-bold text-center outline-none"
+                          />
+                        </td>
+                        <td className="py-3 pr-4">
+                          <input
+                            defaultValue={r.midterm}
+                            aria-label={`${r.student} midterm score`}
+                            className="bg-muted w-14 rounded-lg border-0 px-2 py-1.5 text-xs font-bold text-center outline-none"
+                          />
+                        </td>
+                        <td className="text-muted-foreground py-3 pr-4 text-xs font-semibold">—</td>
+                        <td className="py-3 pr-4">
+                          <span className="font-display font-extrabold">{r.total}%</span>
+                        </td>
+                        <td className="py-3 pr-4">
+                          <Badge
+                            className={cn(
+                              "w-10 justify-center border-0 font-bold",
+                              r.letter.startsWith("A")
+                                ? "bg-success/10 text-success"
+                                : r.letter.startsWith("B")
+                                  ? "bg-primary/10 text-primary"
+                                  : "bg-warning/10 text-warning",
+                            )}
+                          >
+                            {r.letter}
+                          </Badge>
+                        </td>
+                        <td className="py-3 pr-4 text-right">
+                          {r.atRisk && (
+                            <Badge className="bg-error/10 text-error border-0 font-semibold">
+                              <AlertTriangle className="mr-1 size-3" /> Risk
+                            </Badge>
+                          )}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            )}
+          </QueryState>
           <div className="flex flex-wrap items-center gap-3 border-t p-4 text-xs">
             <MessageSquareWarning className="text-warning size-4 shrink-0" />
             <p className="text-muted-foreground flex-1 font-semibold">

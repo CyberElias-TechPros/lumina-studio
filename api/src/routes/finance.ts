@@ -36,8 +36,7 @@ export const finance = new Hono<{ Bindings: AppEnv }>();
 
 finance.get("/invoices", requireAuth, requireFinance, async (c) => {
   const { cursor, limit } = parsePagination(c);
-  const total = await c.env.DB.prepare(`SELECT COUNT(*) AS n FROM invoices`)
-    .first<{ n: number }>();
+  const total = await c.env.DB.prepare(`SELECT COUNT(*) AS n FROM invoices`).first<{ n: number }>();
   const rows = await c.env.DB.prepare(
     `SELECT id, party, amount, due, status FROM invoices
       ${cursor ? "WHERE id > ?" : ""} ORDER BY id ASC LIMIT ?`,
@@ -53,8 +52,7 @@ finance.get("/invoices", requireAuth, requireFinance, async (c) => {
 
 finance.get("/expenses", requireAuth, requireFinance, async (c) => {
   const { cursor, limit } = parsePagination(c);
-  const total = await c.env.DB.prepare(`SELECT COUNT(*) AS n FROM expenses`)
-    .first<{ n: number }>();
+  const total = await c.env.DB.prepare(`SELECT COUNT(*) AS n FROM expenses`).first<{ n: number }>();
   const rows = await c.env.DB.prepare(
     `SELECT id, category, amount FROM expenses
       ${cursor ? "WHERE id > ?" : ""} ORDER BY id ASC LIMIT ?`,

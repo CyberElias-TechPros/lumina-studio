@@ -7,7 +7,12 @@
 import { mkdirSync, writeFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
-import { learningCourses, courseBuilder, submissions, instructorGradebook } from "../../src/data/learning";
+import {
+  learningCourses,
+  courseBuilder,
+  submissions,
+  instructorGradebook,
+} from "../../src/data/learning";
 import {
   employees,
   leaveRequests,
