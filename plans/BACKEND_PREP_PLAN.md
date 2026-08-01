@@ -398,6 +398,15 @@ Auth (3): sign-in, register, magic-link. Apply (3): personal, documents, fee. LM
 
 **Next (Phase 2 remainder):** app-panel wiring — switch `/app/learn`, `/app/grades`, `/app/assignments`, `/app/assessments`, `/app/instructor/*` pages from `src/data/*` imports to `src/lib/api/*` + query hooks; then Phase 3 (assignments/assessments/submissions endpoints per `src/data/learning.ts` remaining collections).
 
+**Phase 3 done (Aug 2026):** student assignment/assessment/calendar/message endpoints + full app-panel wiring.
+- Migration `0002_student_lms.sql`: `assignments` (per-user; `score` NULL until graded, rubric/submissions JSON), `assessments` (per-user; `score`/`max` NULLable, `attempts`/`attempts_left`/`window`), `calendar_events` (shared, `sort_order`), `message_threads` (per-user, `messages` JSON, denormalized `last_text`/`last_time`/`last_mine`).
+- New routes (all `Paginated<T>`): `GET /v1/assignments` + `/:id`, `GET /v1/assessments` + `/:id` (requireAuth + `requireStudent`), `GET /v1/calendar/events` (any authenticated user), `GET /v1/messages/threads` + `/threads/:id`. `requireStudent` middleware added (403 `FORBIDDEN` for non-students).
+- Seed generator extended to 50 statements covering all remaining `src/data/learning.ts` collections (assignments, assessments, calendar, threads).
+- Frontend: new clients `src/lib/api/{assignments,assessments,calendar,messages}.ts`, query hooks under `src/lib/query/`, mock registrations for every new endpoint (per-id detail mocks since matching is exact), and all 9 remaining `src/data/learning`-importing pages wired to live data (`/app/learn/$courseId`, lesson viewer, grades, assignments x2, assessments x2, calendar, messages) via `QueryState`.
+- Verified: 63/63 api tests green, `tsc --noEmit` clean, lint clean (added `api/.wrangler` to eslint ignores — wrangler dev build artifact), frontend build green. Commits `63993f9` (backend) + `6e2c06c` (wiring), pushed.
+
+**Next (Phase 3 remainder):** instructor suite (`/app/instructor/*`) + admin/hr/finance suites wiring; then Phase 3.5 HR + Finance backend (employees/leave/payroll, invoices/Stripe per roadmap Phase 3).
+
 ---
 
 ## 19. Decisions required (owner: user)
