@@ -22,6 +22,13 @@ export interface ApiLeaveRequest {
   status: string;
 }
 
+export interface ApiPayrollChange {
+  id: string;
+  title: string;
+  detail: string;
+  status: string;
+}
+
 interface EmployeeRow {
   id: string;
   name: string;
@@ -37,6 +44,13 @@ interface LeaveRow {
   type: string;
   from_date: string;
   to_date: string;
+  status: string;
+}
+
+interface PayrollRow {
+  id: string;
+  title: string;
+  detail: string;
   status: string;
 }
 
@@ -82,6 +96,24 @@ hr.get("/leave-requests", async (c) => {
     status: r.status,
   }));
   const result: Paginated<ApiLeaveRequest> = paginate(items, total?.n ?? 0, (last) =>
+    base64UrlEncode(last.id),
+  );
+  return c.json(result);
+});
+
+hr.get("/payroll-changes", async (c) => {
+  const { cursor, limit } = parsePagination(c);
+  const total = await c.env.DB.prepare(`SELECT COUNT(*) AS n FROM payroll_changes`).first<{
+    n: number;
+  }>();
+  const rows = await c.env.DB.prepare(
+    `SELECT id, title, detail, status FROM payroll_changes
+      ${cursor ? "WHERE id > ?" : ""} ORDER BY id ASC LIMIT ?`,
+  )
+    .bind(...(cursor ? [base64UrlDecode(cursor) ?? ""] : []), limit)
+    .all<PayrollRow>();
+  const items: ApiPayrollChange[] = rows.results.map((r) => ({ ...r }));
+  const result: Paginated<ApiPayrollChange> = paginate(items, total?.n ?? 0, (last) =>
     base64UrlEncode(last.id),
   );
   return c.json(result);

@@ -19,7 +19,7 @@ between the current frontend and the future Cloudflare backend, organized as:
 - §6 D1 data model mapping (mock data → tables/seeds)
 - §7 Realtime protocol (chat / live / presence / notifications)
 - §8 Uploads (presigned R2 flow + file-input catalog)
-- §9 Payments (Stripe integration + pay-button catalog)
+- §9 Payments (Paystack integration + pay-button catalog)
 - §10 Notifications (template matrix + UI wiring)
 - §11 Analytics (taxonomy + `track()` wiring)
 - §12 Auth / RBAC (roleKey → permission matrix + guards)
@@ -42,7 +42,7 @@ between the current frontend and the future Cloudflare backend, organized as:
 - **Forms**: react-hook-form 7 + zod 3 + `@hookform/resolvers` 5.
 - **Data**: `@tanstack/react-query` 5.101 installed but **not yet used anywhere**.
 - **Feedback/UX**: sonner (toasts), motion 12, date-fns 4.
-- **Networking**: no axios, no socket client, no stripe — plain `fetch` expected.
+- **Networking**: no axios, no socket client, no paystack SDK in UI — plain `fetch` expected (Paystack Inline loads from its own CDN).
 - **No** `.env*` files, no `wrangler.*`, no `vercel.json` exist yet.
 
 ### 2.2 Route surface (358 files, all read)
@@ -66,7 +66,7 @@ buttons/inputs are `useState` simulations. Only shared import in wide use:
 `plans/MISSING_PAGES_AND_FEATURES.md`: 309 `[x]`, 9 `[ ]` — all 9 backend-dependent:
 1. Real-time messaging (chat sockets)
 2. Live class (video + chat + whiteboard + polls)
-3. Stripe payments
+3. Paystack payments
 4. R2 file uploads
 5. AI features (grading, recommendations, TA, content gen)
 6. PWA (manifest + service worker + push)
@@ -125,7 +125,7 @@ Auth: JWT-free session design per master plan — opaque session cookie + `refre
 Ordered by dependency. Each item names the concrete file(s) to create/edit.
 
 ### A. Environment & config layer
-- `src/lib/env.ts` — typed accessor for `import.meta.env`: `VITE_API_URL`, `VITE_WS_URL`, `VITE_TURNSTILE_SITE_KEY`, `VITE_STRIPE_PUBLISHABLE_KEY`, `VITE_APP_ENV`.
+- `src/lib/env.ts` — typed accessor for `import.meta.env`: `VITE_API_URL`, `VITE_WS_URL`, `VITE_TURNSTILE_SITE_KEY`, `VITE_PAYSTACK_PUBLIC_KEY`, `VITE_APP_ENV`.
 - `.env.example` — documented with all keys + comments (see §16).
 - `.env` local: `VITE_API_URL=http://localhost:8787`.
 - CORS registry on backend: `https://<project>.vercel.app`, `http://localhost:5173`.
@@ -167,8 +167,8 @@ Ordered by dependency. Each item names the concrete file(s) to create/edit.
 - Catalog of screens with file inputs (from route inventory): application documents, HR onboarding docs, LMS lesson resources/assignments, certificate/logo images, avatar on profile, recruitment CVs, marketing creatives, legal documents. Each needs: `kind` mapping (§8.3) + `uploadFile` call.
 
 ### G. Payments (`src/lib/payments.ts`)
-- `createCheckout(items)` → `POST /v1/payments/checkout` → redirect to Stripe Checkout (hosted) or open PaymentElement modal.
-- `handlePaymentStatus(sessionId)` — poll `/v1/payments/session/:id` after redirect; success/processing/failed UI states (sonner + inline).
+- `createCheckout(items)` → `POST /v1/payments/checkout` → Paystack Checkout (hosted standard checkout) or open Paystack Inline JS modal; NGN primary currency.
+- `handlePaymentStatus(reference)` — poll `/v1/payments/session/:reference` after redirect; success/processing/failed UI states (sonner + inline).
 - Payment touchpoints from inventory: tuition/fees (student), invoice pay (finance), employer plans, event tickets, program installments, grants disbursement (read-only). Each pay button → `createCheckout`.
 
 ### H. Forms → RHF+zod contracts
@@ -280,11 +280,13 @@ Domain schemas per master plan (10+): `identity, lms, assessment, hr, finance, r
 
 ---
 
-## 9. Payments (Stripe)
+## 9. Payments (Paystack)
 
-- `POST /v1/payments/checkout` → `{ url }` (hosted Checkout; EUR/NGN handled by Stripe) → return redirect; or `POST /v1/payments/intent` for PaymentElement on-brand modal.
-- Webhooks (backend): `checkout.session.completed`, `invoice.paid`, `invoice.payment_failed` → notifications + ledger.
-- Client: `handlePaymentStatus` polling `GET /v1/payments/session/:id`; failed → sonner error + retry button; success → invalidate invoices/wallet queries.
+> Provider decision (user, Aug 2026): **Paystack**, not Stripe — NGN-first, standard Checkout + Inline JS, webhooks `charge.success` / `invoice.paid` / `charge.failed`.
+
+- `POST /v1/payments/checkout` → `{ authorization_url }` (hosted Paystack Checkout; NGN); or `POST /v1/payments/intent` for Paystack Inline modal (`VITE_PAYSTACK_PUBLIC_KEY`).
+- Webhooks (backend): `charge.success`, `invoice.paid`, `charge.failed` → notifications + ledger.
+- Client: `handlePaymentStatus` polling `GET /v1/payments/session/:reference`; failed → sonner error + retry button; success → invalidate invoices/wallet queries.
 - Pay-button touchpoints (from inventory): student tuition/installments, finance invoice pay, employer plan upgrade, event tickets, program compare → enroll checkout.
 
 ---
@@ -352,9 +354,9 @@ Auth (3): sign-in, register, magic-link. Apply (3): personal, documents, fee. LM
 | `VITE_API_URL` | Vercel/CF + local | Hono API base (`https://api.cea.academy` / `localhost:8787`) |
 | `VITE_WS_URL` | same | WebSocket base (`wss://api.cea.academy`) |
 | `VITE_TURNSTILE_SITE_KEY` | Vercel | public widget key |
-| `VITE_STRIPE_PUBLISHABLE_KEY` | Vercel | Checkout/PaymentElement |
+| `VITE_PAYSTACK_PUBLIC_KEY` | Vercel | Paystack Checkout / Inline JS |
 | `VITE_APP_ENV` | dev/prod | analytics, SW registration, logging |
-| Secrets (never client): | Worker secrets | `D1`, `R2` bindings; `STRIPE_SECRET`, `RESEND_API_KEY`, `TURNSTILE_SECRET`, `JWT/COOKIE_SECRET`, `VAPID_*`, `CF_ACCOUNT_*` |
+| Secrets (never client): | Worker secrets | `D1`, `R2` bindings; `PAYSTACK_SECRET_KEY`, `RESEND_API_KEY`, `TURNSTILE_SECRET`, `JWT/COOKIE_SECRET`, `VAPID_*`, `CF_ACCOUNT_*` |
 
 ---
 
@@ -373,7 +375,7 @@ Auth (3): sign-in, register, magic-link. Apply (3): personal, documents, fee. LM
 - **Phase 0 — Frontend prep (now, ~1–2 weeks)**: §4 A, B (client+env), C (session/guards), D (query setup), I (QueryState), N (schema contracts for auth+first domain), P (flags), Q (errors). No backend needed — mock mode keeps app green. *Completes checklist items 7, 8 partially.*
 - **Phase 1 — Identity + Auth (week 3–5)**: D1 identity schema, sessions/RBAC, magic link, MFA, devices. Frontend: auth pages live, guards live, AppShell session.
 - **Phase 2 — LMS core (weeks 6–10)**: courses/enrollments/progress/assessments/certificates. Frontend: student + instructor suites go live (biggest surface).
-- **Phase 3 — HR + Finance (weeks 11–14)**: employees/leave/payroll; invoices/Stripe (§9). Frontend: admin/hr, finance suites live; Stripe pay buttons live. *Completes checklist items 3, 5 (payments/upload basics).*
+- **Phase 3 — HR + Finance (weeks 11–14)**: employees/leave/payroll; invoices/Paystack (§9). Frontend: admin/hr, finance suites live; Paystack pay buttons live. *Completes checklist items 3, 5 (payments/upload basics).*
 - **Phase 4 — Recruitment + Marketing + Design + Localization suites (weeks 15–18)**: portal + app suites go live; Turnstile (§4-L); Resend emails.
 - **Phase 5 — Realtime + Premium (weeks 19–24)**: chat, live class (WebRTC + DOs), presence, notification hub. *Completes checklist items 1, 2.*
 - **Phase 6 — AI + PWA + Scale (months 7–20)**: AI grading/recommendations/TA/content gen (Workers AI); PWA/push (§4-K/§15); analytics dashboards (§11); rate limits/observability harden. *Completes checklist items 4, 5 (AI), 6, 9.*

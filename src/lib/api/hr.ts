@@ -19,10 +19,21 @@ export interface LeaveRequest {
   status: string;
 }
 
+export interface PayrollChange {
+  id: string;
+  title: string;
+  detail: string;
+  status: string;
+}
+
 export function fetchEmployees(): Promise<Paginated<Employee>> {
   return apiFetch<Paginated<Employee>>("/v1/hr/employees");
 }
 
 export function fetchLeaveRequests(): Promise<Paginated<LeaveRequest>> {
   return apiFetch<Paginated<LeaveRequest>>("/v1/hr/leave-requests");
+}
+
+export function fetchPayrollChanges(): Promise<Paginated<PayrollChange>> {
+  return apiFetch<Paginated<PayrollChange>>("/v1/hr/payroll-changes");
 }

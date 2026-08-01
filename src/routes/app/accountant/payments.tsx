@@ -3,8 +3,11 @@ import { ArrowLeft, ArrowDownUp, CheckCircle2, ReceiptText, Wallet } from "lucid
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { QueryState } from "@/components/ui/query-state";
 import { AppShell } from "@/components/app/app-shell";
-import { cn } from "@/lib/utils";
+import { usePaymentBatches } from "@/lib/query/finance";
+import type { PaymentBatch } from "@/lib/api/finance";
+import { cn, formatNaira, formatNairaCompact } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/accountant/payments")({
   head: () => ({
@@ -16,40 +19,26 @@ export const Route = createFileRoute("/app/accountant/payments")({
   component: AccountantPayments,
 });
 
-const batches = [
-  {
-    b: "Batch #204 — tuition instalments",
-    v: "₦4.8m · 22 payments",
-    d: "Jul 30",
-    s: "Reconciled",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    b: "Batch #203 — supplier bills",
-    v: "₦1.9m · 6 payments",
-    d: "Jul 26",
-    s: "Reconciled",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    b: "Batch #205 — stipends",
-    v: "₦620k · 8 payments",
-    d: "Aug 1",
-    s: "Pending approval",
-    tone: "bg-warning/10 text-warning",
-  },
-];
+function batchTone(status: string): string {
+  if (status === "Reconciled") return "bg-success/10 text-success";
+  return "bg-warning/10 text-warning";
+}
 
 function AccountantPayments() {
+  const query = usePaymentBatches();
+  const batches = query.data?.pages.flatMap((p) => p.items) ?? [];
+  const processed = batches.reduce((s, b) => s + b.amount, 0);
+  const pending = batches.filter((b) => b.status !== "Reconciled");
+
   return (
     <AppShell
       roleKey="instructor"
       title="Payments"
-      subtitle="24 transactions today · ₦7.4m processed"
+      subtitle={`${batches.reduce((s, b) => s + b.count, 0)} transactions · ${formatNairaCompact(processed)} processed`}
       actions={
         <>
           <Badge className="bg-success/10 text-success border-0 font-semibold">
-            98% reconciled
+            {pending.length} batch pending
           </Badge>
           <Button asChild variant="outline" size="sm" className="font-semibold">
             <Link to="/app/accountant">
@@ -62,30 +51,32 @@ function AccountantPayments() {
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         {[
           {
-            label: "In today",
-            value: "₦2.1m",
-            delta: "6 transactions",
+            label: "Processed",
+            value: formatNairaCompact(processed),
+            delta: `${batches.length} batches`,
             icon: Wallet,
             tone: "bg-primary/10 text-primary",
           },
           {
-            label: "Out today",
-            value: "₦5.3m",
-            delta: "18 transactions",
+            label: "Payments",
+            value: String(batches.reduce((s, b) => s + b.count, 0)),
+            delta: "across batches",
             icon: ArrowDownUp,
             tone: "bg-learning/10 text-learning",
           },
           {
             label: "Batch pending",
-            value: "1",
-            delta: "₦620k stipends",
+            value: String(pending.length),
+            delta: formatNairaCompact(pending.reduce((s, b) => s + b.amount, 0)),
             icon: ReceiptText,
             tone: "bg-warning/10 text-warning",
           },
           {
             label: "Reconciled",
-            value: "98%",
-            delta: "30-day rolling",
+            value: batches.length
+              ? `${Math.round((batches.filter((b) => b.status === "Reconciled").length / batches.length) * 100)}%`
+              : "—",
+            delta: "of batches",
             icon: CheckCircle2,
             tone: "bg-success/10 text-success",
           },
@@ -117,20 +108,31 @@ function AccountantPayments() {
           </Button>
         </CardHeader>
         <CardContent className="divide-y">
-          {batches.map((b) => (
-            <div key={b.b} className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0">
-              <div className="min-w-0 flex-1">
-                <p className="text-sm font-bold">{b.b}</p>
-                <p className="text-muted-foreground text-xs">
-                  {b.v} · {b.d}
-                </p>
-              </div>
-              <Badge className={cn("border-0 font-semibold", b.tone)}>{b.s}</Badge>
-              <Button variant="outline" size="sm" className="shrink-0 font-semibold">
-                View
-              </Button>
-            </div>
-          ))}
+          <QueryState<PaymentBatch[]> query={query} error={{ title: "Batches unavailable" }}>
+            {(rows) => (
+              <>
+                {rows.map((b) => (
+                  <div
+                    key={b.id}
+                    className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
+                  >
+                    <div className="min-w-0 flex-1">
+                      <p className="text-sm font-bold">{b.batch}</p>
+                      <p className="text-muted-foreground text-xs">
+                        {formatNaira(b.amount)} · {b.count} payments · {b.date}
+                      </p>
+                    </div>
+                    <Badge className={cn("border-0 font-semibold", batchTone(b.status))}>
+                      {b.status}
+                    </Badge>
+                    <Button variant="outline" size="sm" className="shrink-0 font-semibold">
+                      View
+                    </Button>
+                  </div>
+                ))}
+              </>
+            )}
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>

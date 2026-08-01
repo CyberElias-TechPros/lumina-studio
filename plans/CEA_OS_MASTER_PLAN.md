@@ -1693,7 +1693,7 @@ AuditLog
 | Email (SendGrid / Resend) | CEA → External       | Cloudflare Queues   | Notifications, marketing     |
 | SMS (Twilio)              | CEA → External       | Cloudflare Queues   | Alerts, OTP                  |
 | Cloudflare Images         | CEA ↔ R2             | R2 + Presigned URLs | User uploads, course media   |
-| Payment (Stripe)          | CEA ↔ Stripe         | Stripe API          | Tuition, client invoices     |
+| Payment (Paystack)         | CEA ↔ Paystack        | Paystack API         | Tuition, client invoices     |
 | Calendar Sync             | CEA ↔ Google/Outlook | OAuth + API         | Two-way calendar sync        |
 | Video (Zoom/Meet)         | CEA ↔ External       | OAuth + API         | Class, meeting, interview    |
 | Social Media              | CEA ↔ Social APIs    | Queue + API         | Scheduled posting, analytics |

@@ -12,7 +12,7 @@ const FLAG_DEFAULTS: Record<string, boolean> = {
   "ai.content-gen": false,
   "realtime.chat": false,
   "realtime.live-class": false,
-  "payments.stripe": false,
+  "payments.paystack": false,
   "uploads.r2": false,
   "pwa.push": false,
   "onboarding.tours": true,

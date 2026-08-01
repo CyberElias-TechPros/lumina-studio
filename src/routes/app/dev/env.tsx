@@ -19,7 +19,7 @@ export const Route = createFileRoute("/app/dev/env")({
 const vars = [
   { k: "VITE_API_URL", v: "https://api.cea.edu.ng", s: "Prod", tone: "bg-success/10 text-success" },
   {
-    k: "VITE_STRIPE_PUBLIC_KEY",
+    k: "VITE_PAYSTACK_PUBLIC_KEY",
     v: "pk_live_••••••••",
     s: "Prod",
     tone: "bg-success/10 text-success",

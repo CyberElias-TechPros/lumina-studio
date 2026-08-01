@@ -3,7 +3,10 @@ import { ArrowLeft, Banknote, CheckCircle2, Clock3, UserRoundCheck } from "lucid
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { QueryState } from "@/components/ui/query-state";
 import { AppShell } from "@/components/app/app-shell";
+import { usePayrollChanges } from "@/lib/query/hr";
+import type { PayrollChange } from "@/lib/api/hr";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/hr/payroll-input")({
@@ -16,33 +19,22 @@ export const Route = createFileRoute("/app/hr/payroll-input")({
   component: HrPayrollInput,
 });
 
-const changes = [
-  {
-    c: "New starter — K. Okafor",
-    d: "Effective Aug 1",
-    s: "Sent to finance",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    c: "Salary revision — 3 staff",
-    d: "Approved by director",
-    s: "Sent to finance",
-    tone: "bg-primary/10 text-primary",
-  },
-  {
-    c: "Leaver — J. Okonkwo",
-    d: "Effective Aug 15",
-    s: "Draft",
-    tone: "bg-warning/10 text-warning",
-  },
-];
+function changeTone(status: string): string {
+  if (status === "sent") return "bg-success/10 text-success";
+  return "bg-warning/10 text-warning";
+}
 
 function HrPayrollInput() {
+  const query = usePayrollChanges();
+  const changes = query.data?.pages.flatMap((p) => p.items) ?? [];
+  const sent = changes.filter((c) => c.status === "sent").length;
+  const drafts = changes.filter((c) => c.status !== "sent").length;
+
   return (
     <AppShell
       roleKey="instructor"
       title="Payroll input"
-      subtitle="3 changes for August · cut-off Aug 5"
+      subtitle={`${changes.length} changes for August · cut-off Aug 5`}
       actions={
         <>
           <Badge className="bg-success/10 text-success border-0 font-semibold">On schedule</Badge>
@@ -58,21 +50,21 @@ function HrPayrollInput() {
         {[
           {
             label: "Changes (Aug)",
-            value: "5",
-            delta: "3 sent",
+            value: String(changes.length),
+            delta: `${sent} sent`,
             icon: UserRoundCheck,
             tone: "bg-primary/10 text-primary",
           },
           {
             label: "Sent to finance",
-            value: "3",
-            delta: "2 this week",
+            value: String(sent),
+            delta: "awaiting payroll run",
             icon: Banknote,
             tone: "bg-success/10 text-success",
           },
           {
             label: "Drafts",
-            value: "2",
+            value: String(drafts),
             delta: "need review",
             icon: Clock3,
             tone: "bg-warning/10 text-warning",
@@ -109,18 +101,32 @@ function HrPayrollInput() {
           </CardTitle>
         </CardHeader>
         <CardContent className="divide-y">
-          {changes.map((c) => (
-            <div key={c.c} className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0">
-              <div className="min-w-0 flex-1">
-                <p className="text-sm font-bold">{c.c}</p>
-                <p className="text-muted-foreground text-xs">{c.d}</p>
-              </div>
-              <Badge className={cn("border-0 font-semibold", c.tone)}>{c.s}</Badge>
-              <Button variant="outline" size="sm" className="shrink-0 font-semibold">
-                View
-              </Button>
-            </div>
-          ))}
+          <QueryState<PayrollChange[]>
+            query={query}
+            error={{ title: "Payroll changes unavailable" }}
+          >
+            {(rows) => (
+              <>
+                {rows.map((c) => (
+                  <div
+                    key={c.id}
+                    className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
+                  >
+                    <div className="min-w-0 flex-1">
+                      <p className="text-sm font-bold">{c.title}</p>
+                      <p className="text-muted-foreground text-xs">{c.detail}</p>
+                    </div>
+                    <Badge className={cn("border-0 font-semibold", changeTone(c.status))}>
+                      {c.status === "sent" ? "Sent to finance" : "Draft"}
+                    </Badge>
+                    <Button variant="outline" size="sm" className="shrink-0 font-semibold">
+                      View
+                    </Button>
+                  </div>
+                ))}
+              </>
+            )}
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>

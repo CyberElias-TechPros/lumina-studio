@@ -7,8 +7,8 @@ interface ImportMetaEnv {
   readonly VITE_WS_URL?: string;
   /** Cloudflare Turnstile site key (public). */
   readonly VITE_TURNSTILE_SITE_KEY?: string;
-  /** Stripe publishable key (public). */
-  readonly VITE_STRIPE_PUBLISHABLE_KEY?: string;
+  /** Paystack public key (PK key). */
+  readonly VITE_PAYSTACK_PUBLIC_KEY?: string;
   /** "dev" | "staging" | "prod". */
   readonly VITE_APP_ENV?: string;
 }

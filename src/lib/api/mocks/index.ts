@@ -25,6 +25,8 @@ import {
   leaveRequests,
   expenses,
   auditLog,
+  payrollChanges,
+  paymentBatches,
 } from "@/data/dashboard";
 import type { StudentDashboard } from "@/lib/api/dashboard";
 
@@ -260,6 +262,13 @@ export function registerAllMocks(): void {
       total: leaveRequests.length,
     };
   });
+  registerMock("GET", "/v1/hr/payroll-changes", async () => {
+    await delay();
+    return {
+      items: payrollChanges.map((p, i) => ({ id: `pc-${i + 1}`, ...p })),
+      total: payrollChanges.length,
+    };
+  });
 
   /* Finance */
   registerMock("GET", "/v1/expenses", async () => {
@@ -267,6 +276,13 @@ export function registerAllMocks(): void {
     return {
       items: expenses.map((e, i) => ({ id: `exp-${i + 1}`, ...e })),
       total: expenses.length,
+    };
+  });
+  registerMock("GET", "/v1/payments", async () => {
+    await delay();
+    return {
+      items: paymentBatches.map((b, i) => ({ id: `pb-${i + 1}`, ...b })),
+      total: paymentBatches.length,
     };
   });
 
@@ -280,7 +296,7 @@ export function registerAllMocks(): void {
       "ai.content-gen": false,
       "realtime.chat": false,
       "realtime.live-class": false,
-      "payments.stripe": false,
+      "payments.paystack": false,
       "uploads.r2": false,
       "pwa.push": false,
       "onboarding.tours": true,

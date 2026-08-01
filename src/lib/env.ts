@@ -8,8 +8,8 @@ export const env = {
   get turnstileSiteKey() {
     return import.meta.env.VITE_TURNSTILE_SITE_KEY ?? "";
   },
-  get stripePublishableKey() {
-    return import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY ?? "";
+  get paystackPublicKey() {
+    return import.meta.env.VITE_PAYSTACK_PUBLIC_KEY ?? "";
   },
   get appEnv() {
     return import.meta.env.VITE_APP_ENV ?? "dev";

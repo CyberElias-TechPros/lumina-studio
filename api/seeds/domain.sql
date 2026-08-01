@@ -51,3 +51,11 @@ INSERT OR IGNORE INTO notifications (id, user_id, title, body, time, engine, sor
 INSERT OR IGNORE INTO notifications (id, user_id, title, body, time, engine, sort_order) VALUES ('ntf-2', NULL, 'New mentor message', 'Emeka sent feedback on your capstone.', '1h', 'community', 1);
 INSERT OR IGNORE INTO notifications (id, user_id, title, body, time, engine, sort_order) VALUES ('ntf-3', NULL, 'Invoice due soon', 'Instalment 4 is due 1 October.', '3h', 'erp', 2);
 INSERT OR IGNORE INTO notifications (id, user_id, title, body, time, engine, sort_order) VALUES ('ntf-4', NULL, 'Job match', 'Paystack Frontend Engineer — 96% match.', '1d', 'career', 3);
+INSERT OR IGNORE INTO payroll_changes (id, title, detail, status, sort_order) VALUES ('pc-1', 'New starter — K. Okafor', 'Effective Aug 1', 'sent', 0);
+INSERT OR IGNORE INTO payroll_changes (id, title, detail, status, sort_order) VALUES ('pc-2', 'Salary revision — 3 staff', 'Approved by director', 'sent', 1);
+INSERT OR IGNORE INTO payroll_changes (id, title, detail, status, sort_order) VALUES ('pc-3', 'Leaver — J. Okonkwo', 'Effective Aug 15', 'draft', 2);
+INSERT OR IGNORE INTO payroll_changes (id, title, detail, status, sort_order) VALUES ('pc-4', 'Stipend adjustment — interns', 'Pending director sign-off', 'draft', 3);
+INSERT OR IGNORE INTO payroll_changes (id, title, detail, status, sort_order) VALUES ('pc-5', 'Payroll run #128 — July', 'Processed Jul 31', 'sent', 4);
+INSERT OR IGNORE INTO payment_batches (id, batch, amount, count, date, status, sort_order) VALUES ('pb-1', 'Batch #204 — tuition instalments', 4800000, 22, 'Jul 30', 'Reconciled', 0);
+INSERT OR IGNORE INTO payment_batches (id, batch, amount, count, date, status, sort_order) VALUES ('pb-2', 'Batch #203 — supplier bills', 1900000, 6, 'Jul 26', 'Reconciled', 1);
+INSERT OR IGNORE INTO payment_batches (id, batch, amount, count, date, status, sort_order) VALUES ('pb-3', 'Batch #205 — stipends', 620000, 8, 'Aug 1', 'Pending approval', 2);

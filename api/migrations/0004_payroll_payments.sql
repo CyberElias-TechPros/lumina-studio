@@ -1,0 +1,17 @@
+CREATE TABLE payroll_changes (
+  id TEXT PRIMARY KEY,
+  title TEXT NOT NULL DEFAULT '',
+  detail TEXT NOT NULL DEFAULT '',
+  status TEXT NOT NULL DEFAULT 'draft',
+  sort_order INTEGER NOT NULL DEFAULT 0
+);
+
+CREATE TABLE payment_batches (
+  id TEXT PRIMARY KEY,
+  batch TEXT NOT NULL DEFAULT '',
+  amount INTEGER NOT NULL DEFAULT 0,
+  count INTEGER NOT NULL DEFAULT 0,
+  date TEXT NOT NULL DEFAULT '',
+  status TEXT NOT NULL DEFAULT 'pending',
+  sort_order INTEGER NOT NULL DEFAULT 0
+);

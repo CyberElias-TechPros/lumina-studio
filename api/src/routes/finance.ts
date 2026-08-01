@@ -18,6 +18,15 @@ export interface ApiExpense {
   amount: number;
 }
 
+export interface ApiPaymentBatch {
+  id: string;
+  batch: string;
+  amount: number;
+  count: number;
+  date: string;
+  status: string;
+}
+
 interface InvoiceRow {
   id: string;
   party: string;
@@ -30,6 +39,15 @@ interface ExpenseRow {
   id: string;
   category: string;
   amount: number;
+}
+
+interface PaymentBatchRow {
+  id: string;
+  batch: string;
+  amount: number;
+  count: number;
+  date: string;
+  status: string;
 }
 
 export const finance = new Hono<{ Bindings: AppEnv }>();
@@ -61,6 +79,24 @@ finance.get("/expenses", requireAuth, requireFinance, async (c) => {
     .all<ExpenseRow>();
   const items: ApiExpense[] = rows.results.map((r) => ({ ...r }));
   const result: Paginated<ApiExpense> = paginate(items, total?.n ?? 0, (last) =>
+    base64UrlEncode(last.id),
+  );
+  return c.json(result);
+});
+
+finance.get("/payments", requireAuth, requireFinance, async (c) => {
+  const { cursor, limit } = parsePagination(c);
+  const total = await c.env.DB.prepare(`SELECT COUNT(*) AS n FROM payment_batches`).first<{
+    n: number;
+  }>();
+  const rows = await c.env.DB.prepare(
+    `SELECT id, batch, amount, count, date, status FROM payment_batches
+      ${cursor ? "WHERE id > ?" : ""} ORDER BY id ASC LIMIT ?`,
+  )
+    .bind(...(cursor ? [base64UrlDecode(cursor) ?? ""] : []), limit)
+    .all<PaymentBatchRow>();
+  const items: ApiPaymentBatch[] = rows.results.map((r) => ({ ...r }));
+  const result: Paginated<ApiPaymentBatch> = paginate(items, total?.n ?? 0, (last) =>
     base64UrlEncode(last.id),
   );
   return c.json(result);

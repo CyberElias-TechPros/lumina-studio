@@ -21,6 +21,8 @@ import {
   systemUsers,
   auditLog,
   notifications,
+  payrollChanges,
+  paymentBatches,
 } from "../../src/data/dashboard";
 
 const OUT_DIR = resolve(dirname(fileURLToPath(import.meta.url)), "..", "seeds");
@@ -158,6 +160,23 @@ for (const n of notifications) {
       `VALUES (${sqlString(`ntf-${notifications.indexOf(n) + 1}`)}, NULL, ` +
       `${sqlString(n.title)}, ${sqlString(n.body)}, ${sqlString(n.time)}, ` +
       `${sqlString(n.engine)}, ${notifications.indexOf(n)});`,
+  );
+}
+
+for (const p of payrollChanges) {
+  statements.push(
+    `INSERT OR IGNORE INTO payroll_changes (id, title, detail, status, sort_order) ` +
+      `VALUES (${sqlString(`pc-${payrollChanges.indexOf(p) + 1}`)}, ${sqlString(p.title)}, ` +
+      `${sqlString(p.detail)}, ${sqlString(p.status)}, ${payrollChanges.indexOf(p)});`,
+  );
+}
+
+for (const b of paymentBatches) {
+  statements.push(
+    `INSERT OR IGNORE INTO payment_batches (id, batch, amount, count, date, status, sort_order) ` +
+      `VALUES (${sqlString(`pb-${paymentBatches.indexOf(b) + 1}`)}, ${sqlString(b.batch)}, ` +
+      `${b.amount}, ${b.count}, ${sqlString(b.date)}, ${sqlString(b.status)}, ` +
+      `${paymentBatches.indexOf(b)});`,
   );
 }
 

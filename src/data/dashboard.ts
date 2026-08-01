@@ -527,6 +527,58 @@ export const headcountSeries = [
   { month: "Jul", staff: 52 },
 ];
 
+export const payrollChanges = [
+  {
+    title: "New starter — K. Okafor",
+    detail: "Effective Aug 1",
+    status: "sent",
+  },
+  {
+    title: "Salary revision — 3 staff",
+    detail: "Approved by director",
+    status: "sent",
+  },
+  {
+    title: "Leaver — J. Okonkwo",
+    detail: "Effective Aug 15",
+    status: "draft",
+  },
+  {
+    title: "Stipend adjustment — interns",
+    detail: "Pending director sign-off",
+    status: "draft",
+  },
+  {
+    title: "Payroll run #128 — July",
+    detail: "Processed Jul 31",
+    status: "sent",
+  },
+];
+
+export const paymentBatches = [
+  {
+    batch: "Batch #204 — tuition instalments",
+    amount: 4800000,
+    count: 22,
+    date: "Jul 30",
+    status: "Reconciled",
+  },
+  {
+    batch: "Batch #203 — supplier bills",
+    amount: 1900000,
+    count: 6,
+    date: "Jul 26",
+    status: "Reconciled",
+  },
+  {
+    batch: "Batch #205 — stipends",
+    amount: 620000,
+    count: 8,
+    date: "Aug 1",
+    status: "Pending approval",
+  },
+];
+
 /* ---------------- Client / Projects ---------------- */
 
 export const clientProjects = [

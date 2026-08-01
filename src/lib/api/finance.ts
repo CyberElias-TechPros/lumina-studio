@@ -15,10 +15,23 @@ export interface Expense {
   amount: number;
 }
 
+export interface PaymentBatch {
+  id: string;
+  batch: string;
+  amount: number;
+  count: number;
+  date: string;
+  status: string;
+}
+
 export function fetchInvoices(): Promise<Paginated<Invoice>> {
   return apiFetch<Paginated<Invoice>>("/v1/invoices");
 }
 
 export function fetchExpenses(): Promise<Paginated<Expense>> {
   return apiFetch<Paginated<Expense>>("/v1/expenses");
+}
+
+export function fetchPaymentBatches(): Promise<Paginated<PaymentBatch>> {
+  return apiFetch<Paginated<PaymentBatch>>("/v1/payments");
 }

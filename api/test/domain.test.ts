@@ -107,6 +107,22 @@ interface NotificationShape {
   engine: string;
 }
 
+interface PayrollShape {
+  id: string;
+  title: string;
+  detail: string;
+  status: string;
+}
+
+interface PaymentBatchShape {
+  id: string;
+  batch: string;
+  amount: number;
+  count: number;
+  date: string;
+  status: string;
+}
+
 interface Page<T> {
   items: T[];
   nextCursor?: string;
@@ -243,6 +259,27 @@ describe("hr suite", () => {
     });
   });
 
+  it("returns payroll changes for an hr officer", async () => {
+    const res = await api("/v1/hr/payroll-changes", {
+      headers: cookieHeaders(hr.cookie),
+    });
+    expect(res.status).toBe(200);
+    const body = (await res.json()) as Page<PayrollShape>;
+    expect(body.items.length).toBeGreaterThan(0);
+    expect(body.items[0]).toMatchObject({
+      title: expect.any(String),
+      detail: expect.any(String),
+      status: expect.any(String),
+    });
+  });
+
+  it("rejects students from payroll changes", async () => {
+    const res = await api("/v1/hr/payroll-changes", {
+      headers: cookieHeaders(student.cookie),
+    });
+    expect(res.status).toBe(403);
+  });
+
   it("allows admins to read hr data", async () => {
     const res = await api("/v1/hr/employees", {
       headers: cookieHeaders(admin.cookie),
@@ -286,6 +323,29 @@ describe("finance suite", () => {
       category: expect.any(String),
       amount: expect.any(Number),
     });
+  });
+
+  it("returns payment batches", async () => {
+    const res = await api("/v1/payments", {
+      headers: cookieHeaders(finance.cookie),
+    });
+    expect(res.status).toBe(200);
+    const body = (await res.json()) as Page<PaymentBatchShape>;
+    expect(body.items.length).toBeGreaterThan(0);
+    expect(body.items[0]).toMatchObject({
+      batch: expect.any(String),
+      amount: expect.any(Number),
+      count: expect.any(Number),
+      date: expect.any(String),
+      status: expect.any(String),
+    });
+  });
+
+  it("rejects students from payments", async () => {
+    const res = await api("/v1/payments", {
+      headers: cookieHeaders(student.cookie),
+    });
+    expect(res.status).toBe(403);
   });
 });
 

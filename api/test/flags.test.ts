@@ -12,6 +12,6 @@ describe("GET /v1/flags", () => {
     const body = (await res.json()) as Record<string, boolean>;
     expect(body["onboarding.tours"]).toBe(true);
     expect(body["ai.grading"]).toBe(false);
-    expect(body["payments.stripe"]).toBe(false);
+    expect(body["payments.paystack"]).toBe(false);
   });
 });

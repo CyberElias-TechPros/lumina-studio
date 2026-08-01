@@ -507,7 +507,7 @@ Source: `CEA_OS_GRAND_MASTER_PLAN_P1-P3.md`, `CEA_OS_MASTER_PLAN.md`
 | [x] Notification preferences + quiet hours                                 | `P3 §9.3`                                                                            |
 | [x] Command palette (Cmd+K)                                                | `src/components/app/command-palette.tsx` (P2 §5.3)                                   |
 | [x] Calendar sync (Google/Outlook)                                         | Sync buttons on `/app/calendar` (UI only; backend sync pending)                      |
-| [ ] Payment integration (Stripe)                                           | UI shells exist (finance, client invoices, donations); needs backend                 |
+| [ ] Payment integration (Paystack)                                          | UI shells exist (finance, client invoices, donations); needs backend                 |
 | [ ] File uploads (R2 presigned URLs)                                       | Needs backend (P2 §4.3)                                                              |
 | [x] Certificate PDF generation + QR verification                           | `/app/certificates` + `/certificates/verify` (UI)                                    |
 | [x] Analytics event tracking infra                                         | `src/lib/analytics.ts` wired into AppShell (console stub; backend pending)           |
@@ -527,7 +527,7 @@ Source: `CEA_OS_GRAND_MASTER_PLAN_P1-P3.md`, `CEA_OS_MASTER_PLAN.md`
 - Public/marketing pages missing: **0**
 - Auth pages missing: **0**
 - Portal pages missing (32 actor plans): **0**
-- Cross-cutting features missing: **8** (all backend-dependent: real-time messaging, live class, Stripe payments, R2 uploads, AI features, PWA, onboarding states, RBAC gating)
+- Cross-cutting features missing: **8** (all backend-dependent: real-time messaging, live class, Paystack payments, R2 uploads, AI features, PWA, onboarding states, RBAC gating)
 
 **Grand total: 8 remaining — every one requires backend/auth infrastructure.**
 

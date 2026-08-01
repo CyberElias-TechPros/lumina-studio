@@ -364,6 +364,24 @@ export const auditLog = sqliteTable("audit_log", {
   sortOrder: integer("sort_order").notNull().default(0),
 });
 
+export const payrollChanges = sqliteTable("payroll_changes", {
+  id: text("id").primaryKey(),
+  title: text("title").notNull().default(""),
+  detail: text("detail").notNull().default(""),
+  status: text("status").notNull().default("draft"),
+  sortOrder: integer("sort_order").notNull().default(0),
+});
+
+export const paymentBatches = sqliteTable("payment_batches", {
+  id: text("id").primaryKey(),
+  batch: text("batch").notNull().default(""),
+  amount: integer("amount").notNull().default(0),
+  count: integer("count").notNull().default(0),
+  date: text("date").notNull().default(""),
+  status: text("status").notNull().default("pending"),
+  sortOrder: integer("sort_order").notNull().default(0),
+});
+
 export const notifications = sqliteTable(
   "notifications",
   {
