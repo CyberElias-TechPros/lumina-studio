@@ -415,6 +415,14 @@ Auth (3): sign-in, register, magic-link. Apply (3): personal, documents, fee. LM
 
 **Next (Phase 3 remainder):** HR + finance suite wiring — `/app/hr/*`, `/app/accountant/*`, `/app/admin/*` pages currently render inline mock arrays; refactor those into `src/data/*` collections (or wire hooks directly), then mount them on the live endpoints. Payroll/Stripe endpoints remain future work (roadmap Phase 3).
 
+**Phase 3.6 done (Aug 2026):** HR + finance + admin + notifications pages wired to live endpoints.
+- Wired `src/routes/app/hr/{employees,leave}.tsx` (useEmployees / useLeaveRequests — KPIs derived: open/pending/approved counts, days requested computed from `from`–`to`), `accountant/{invoicing,expenses}.tsx` (useInvoices / useExpenses — billed/collected/outstanding derived from invoice amounts), `admin/{users,audit}.tsx` (useAdminUsers / useAuditLog — active/pending/roles derived; severity badge tones), and `app/notifications.tsx` (useNotifications — engine-based tone badges).
+- Added `formatNaira` + `formatNairaCompact` helpers in `src/lib/utils.ts`; mock handlers now emit stable `id`s for employees/expenses/systemUsers/auditLog/notifications (matching live `Paginated` shape).
+- Note: expenses backend table has only `category, amount` — page shows spending-by-category (no claim statuses); accountant/audit page left inline (finance role can't read admin-only `/v1/admin/audit-log`; 403 live).
+- Verified: `tsc --noEmit` clean, lint clean, frontend build green. Commit `f01dd90`, pushed.
+
+**Next (Phase 3 remainder):** remaining app suites are off-plan (recruitment, marketing, design, localization, mentor, client/employer, director, dev) — Phase 4 in the roadmap; payroll/Stripe endpoints deferred to roadmap Phase 3 completion. Optional polish: search/filter actions on wired pages, expense status columns (backend + seed change).
+
 ---
 
 ## 19. Decisions required (owner: user)
