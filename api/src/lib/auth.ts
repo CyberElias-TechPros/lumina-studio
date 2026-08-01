@@ -146,3 +146,19 @@ export const requireStudent: MiddlewareHandler<{ Bindings: AppEnv }> = createMid
     await next();
   },
 );
+
+/** Role guard factory — run after requireAuth. Allows any of the listed roleKeys. */
+export function requireAnyRole(roles: string[]): MiddlewareHandler<{ Bindings: AppEnv }> {
+  return createMiddleware<{ Bindings: AppEnv }>(async (c, next) => {
+    const roleKey = c.get("authUser").roleKey;
+    if (!roles.includes(roleKey)) {
+      throw ApiError.forbidden("You don't have permission to access this resource.");
+    }
+    await next();
+  });
+}
+
+export const requireInstructor = requireAnyRole(["instructor"]);
+export const requireHr = requireAnyRole(["hr", "admin"]);
+export const requireFinance = requireAnyRole(["finance", "admin"]);
+export const requireAdmin = requireAnyRole(["admin"]);

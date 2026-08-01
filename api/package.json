@@ -9,9 +9,9 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
-    "gen:seed": "tsx scripts/gen-seed.ts && tsx scripts/gen-lms-seed.ts",
+    "gen:seed": "tsx scripts/gen-seed.ts && tsx scripts/gen-lms-seed.ts && tsx scripts/gen-domain-seed.ts",
     "db:migrate:local": "wrangler d1 migrations apply DB --local",
-    "db:seed:local": "wrangler d1 execute DB --local --file seeds/content.sql && wrangler d1 execute DB --local --file seeds/lms.sql"
+    "db:seed:local": "wrangler d1 execute DB --local --file seeds/content.sql && wrangler d1 execute DB --local --file seeds/lms.sql && wrangler d1 execute DB --local --file seeds/domain.sql"
   },
   "dependencies": {
     "drizzle-orm": "^0.45.2",

@@ -254,3 +254,144 @@ export const messageThreads = sqliteTable(
   },
   (t) => [index("idx_message_threads_user").on(t.userId)],
 );
+
+export const instructorCourses = sqliteTable(
+  "instructor_courses",
+  {
+    id: text("id").primaryKey(),
+    userId: text("user_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    title: text("title").notNull(),
+    cohort: text("cohort").notNull().default(""),
+    status: text("status").notNull().default("draft"),
+    modules: text("modules").notNull().default("[]"),
+    sortOrder: integer("sort_order").notNull().default(0),
+  },
+  (t) => [index("idx_instructor_courses_user").on(t.userId)],
+);
+
+export const submissions = sqliteTable(
+  "submissions",
+  {
+    id: text("id").primaryKey(),
+    userId: text("user_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    student: text("student").notNull(),
+    title: text("title").notNull().default(""),
+    submitted: text("submitted").notNull().default(""),
+    status: text("status").notNull().default("pending"),
+    score: integer("score"),
+    late: integer("late").notNull().default(0),
+    file: text("file").notNull().default(""),
+    size: text("size").notNull().default(""),
+  },
+  (t) => [index("idx_submissions_user").on(t.userId)],
+);
+
+export const instructorGradebook = sqliteTable(
+  "instructor_gradebook",
+  {
+    id: text("id").primaryKey(),
+    userId: text("user_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    student: text("student").notNull(),
+    quiz: integer("quiz").notNull().default(0),
+    lab: integer("lab").notNull().default(0),
+    assignment: integer("assignment").notNull().default(0),
+    midterm: integer("midterm").notNull().default(0),
+    total: integer("total").notNull().default(0),
+    letter: text("letter").notNull().default(""),
+    atRisk: integer("at_risk").notNull().default(0),
+  },
+  (t) => [index("idx_instructor_gradebook_user").on(t.userId)],
+);
+
+export const employees = sqliteTable(
+  "employees",
+  {
+    id: text("id").primaryKey(),
+    name: text("name").notNull(),
+    role: text("role").notNull().default(""),
+    dept: text("dept").notNull().default(""),
+    status: text("status").notNull().default("active"),
+    joined: text("joined").notNull().default(""),
+    sortOrder: integer("sort_order").notNull().default(0),
+  },
+);
+
+export const leaveRequests = sqliteTable(
+  "leave_requests",
+  {
+    id: text("id").primaryKey(),
+    employee: text("employee").notNull(),
+    type: text("type").notNull().default(""),
+    fromDate: text("from_date").notNull().default(""),
+    toDate: text("to_date").notNull().default(""),
+    status: text("status").notNull().default("pending"),
+    sortOrder: integer("sort_order").notNull().default(0),
+  },
+);
+
+export const invoices = sqliteTable(
+  "invoices",
+  {
+    id: text("id").primaryKey(),
+    party: text("party").notNull(),
+    amount: integer("amount").notNull().default(0),
+    due: text("due").notNull().default(""),
+    status: text("status").notNull().default("pending"),
+    sortOrder: integer("sort_order").notNull().default(0),
+  },
+);
+
+export const expenses = sqliteTable(
+  "expenses",
+  {
+    id: text("id").primaryKey(),
+    category: text("category").notNull(),
+    amount: integer("amount").notNull().default(0),
+    sortOrder: integer("sort_order").notNull().default(0),
+  },
+);
+
+export const adminUsers = sqliteTable(
+  "admin_users",
+  {
+    id: text("id").primaryKey(),
+    name: text("name").notNull(),
+    email: text("email").notNull().default(""),
+    role: text("role").notNull().default(""),
+    status: text("status").notNull().default("active"),
+    lastSeen: text("last_seen").notNull().default(""),
+    sortOrder: integer("sort_order").notNull().default(0),
+  },
+);
+
+export const auditLog = sqliteTable(
+  "audit_log",
+  {
+    id: text("id").primaryKey(),
+    actor: text("actor").notNull().default(""),
+    action: text("action").notNull().default(""),
+    time: text("time").notNull().default(""),
+    severity: text("severity").notNull().default("info"),
+    sortOrder: integer("sort_order").notNull().default(0),
+  },
+);
+
+export const notifications = sqliteTable(
+  "notifications",
+  {
+    id: text("id").primaryKey(),
+    userId: text("user_id").references(() => users.id, { onDelete: "cascade" }),
+    title: text("title").notNull().default(""),
+    body: text("body").notNull().default(""),
+    time: text("time").notNull().default(""),
+    engine: text("engine").notNull().default(""),
+    sortOrder: integer("sort_order").notNull().default(0),
+  },
+  (t) => [index("idx_notifications_user").on(t.userId)],
+);
