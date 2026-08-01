@@ -16,6 +16,8 @@ export interface ApiRequestInit extends Omit<RequestInit, "body" | "signal"> {
   query?: QueryParams;
   /** Skip the automatic 401-refresh-and-retry cycle (refresh endpoint only). */
   noRefresh?: boolean;
+  /** Path of the request — set by the client for mock handlers (internal). */
+  path?: string;
 }
 
 const MAX_RETRIES = 2;
@@ -70,7 +72,7 @@ export async function apiFetch<T>(path: string, init: ApiRequestInit = {}): Prom
         `Mock handler not registered for ${init.method ?? "GET"} ${path}`,
       );
     }
-    return (await handler(init)) as T;
+    return (await handler({ ...init, path })) as T;
   }
 
   const url = new URL(`${env.apiUrl}${path.startsWith("/") ? path : `/${path}`}`);
@@ -134,6 +136,9 @@ export async function apiFetch<T>(path: string, init: ApiRequestInit = {}): Prom
 type MockHandler = (init: ApiRequestInit) => Promise<unknown>;
 
 const mockRegistry = new Map<string, MockHandler>();
+/** Pattern handlers, e.g. "PUT /v1/uploads/*" — a `*` segment matches any single
+ * segment; a trailing `*` also matches any deeper suffix. */
+const mockPatterns: { method: string; segments: string[]; handler: MockHandler }[] = [];
 let mocksLoaded = false;
 
 const mockKey = (method: string, path: string) => `${method.toUpperCase()} ${path.split("?")[0]}`;
@@ -142,11 +147,36 @@ export function registerMock(method: string, path: string, handler: MockHandler)
   mockRegistry.set(mockKey(method, path), handler);
 }
 
+/** Register a handler for dynamic paths, e.g. "GET /v1/live/classes/{id}/chat" —
+ * `*` segments match any value. Exact registrations win first. */
+export function registerMockPattern(method: string, pattern: string, handler: MockHandler): void {
+  const path = pattern.split("?")[0] ?? pattern;
+  mockPatterns.push({
+    method: method.toUpperCase(),
+    segments: path.split("/").filter(Boolean),
+    handler,
+  });
+}
+
+function matchesPattern(segments: string[], pathname: string): boolean {
+  const pathSegments = pathname.split("/").filter(Boolean);
+  if (pathSegments.length < segments.length) return false;
+  return segments.every((segment, i) => segment === "*" || segment === pathSegments[i]);
+}
+
 function getMock(method: string, path: string): MockHandler | undefined {
   if (!mocksLoaded) {
     mocksLoaded = true;
     // Lazy import keeps the mock registry out of the production bundle.
     void import("@/lib/api/mocks").then((module) => module.registerAllMocks());
   }
-  return mockRegistry.get(mockKey(method, path));
+  const pathname = path.split("?")[0] ?? path;
+  const exact = mockRegistry.get(mockKey(method, pathname));
+  if (exact) return exact;
+  for (const pattern of mockPatterns) {
+    if (pattern.method === method.toUpperCase() && matchesPattern(pattern.segments, pathname)) {
+      return pattern.handler;
+    }
+  }
+  return undefined;
 }

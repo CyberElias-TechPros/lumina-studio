@@ -291,6 +291,7 @@ export function AppShell({
             <Link
               key={item.label}
               to="/app"
+              data-tour={i === 0 ? "nav-home" : i === 1 ? "nav-learn" : undefined}
               className={cn(
                 "flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-semibold transition-colors",
                 i === 0

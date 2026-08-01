@@ -11,6 +11,10 @@ import { registerRecruitmentMocks } from "@/lib/api/mocks/recruitment";
 import { registerMarketingMocks } from "@/lib/api/mocks/marketing";
 import { registerDesignMocks } from "@/lib/api/mocks/design";
 import { registerLocalizationMocks } from "@/lib/api/mocks/localization";
+import { registerRealtimeMocks } from "@/lib/api/mocks/realtime";
+import { registerLiveMocks } from "@/lib/api/mocks/live";
+import { registerUploadsMocks } from "@/lib/api/mocks/uploads";
+import { registerAiMocks } from "@/lib/api/mocks/ai";
 import {
   learningCourses,
   gradebook,
@@ -58,6 +62,10 @@ export function registerAllMocks(): void {
   registerMarketingMocks();
   registerDesignMocks();
   registerLocalizationMocks();
+  registerRealtimeMocks();
+  registerLiveMocks();
+  registerUploadsMocks();
+  registerAiMocks();
 
   /* Auth */
   registerMock("GET", "/v1/auth/session", async () => {

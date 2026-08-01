@@ -1,0 +1,38 @@
+{
+  "name": "Lumina Studio — Cyber Elias Academy",
+  "short_name": "Lumina",
+  "description": "Cyber Elias Academy's all-in-one platform: learn, build, and get hired.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#ffffff",
+  "theme_color": "#7a2434",
+  "categories": ["education", "productivity"],
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-maskable.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Learning Hub",
+      "url": "/app/learn",
+      "description": "Jump back into your courses"
+    },
+    {
+      "name": "Messages",
+      "url": "/app/messages",
+      "description": "Open your inbox"
+    }
+  ]
+}

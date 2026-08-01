@@ -12,6 +12,7 @@ import {
   courseBuilder,
   submissions,
   instructorGradebook,
+  liveSessions,
 } from "../../src/data/learning";
 import {
   employees,
@@ -523,6 +524,16 @@ for (const s of localizationStats) {
     `INSERT OR IGNORE INTO localization_stats (id, page, label, value, delta, sort_order) ` +
       `VALUES (${sqlString(s.id)}, ${sqlString(s.page)}, ${sqlString(s.label)}, ` +
       `${sqlString(s.value)}, ${sqlString(s.delta)}, ${localizationStats.indexOf(s)});`,
+  );
+}
+
+for (const s of liveSessions) {
+  statements.push(
+    `INSERT OR IGNORE INTO live_sessions (id, title, instructor, cohort, status, starts_at, ` +
+      `sort_order) ` +
+      `VALUES (${sqlString(s.id)}, ${sqlString(s.title)}, ${sqlString(s.instructor)}, ` +
+      `${sqlString(s.cohort)}, ${sqlString(s.status)}, ${sqlString(s.startsAt)}, ` +
+      `${liveSessions.indexOf(s)});`,
   );
 }
 

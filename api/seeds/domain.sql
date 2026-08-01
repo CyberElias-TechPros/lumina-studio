@@ -314,3 +314,6 @@ INSERT OR IGNORE INTO localization_stats (id, page, label, value, delta, sort_or
 INSERT OR IGNORE INTO localization_stats (id, page, label, value, delta, sort_order) VALUES ('st-23', 'preview', 'Locale pairs', '12', 'active comparisons', 22);
 INSERT OR IGNORE INTO localization_stats (id, page, label, value, delta, sort_order) VALUES ('st-24', 'preview', 'Checks passed', '97%', 'tone + length + terms', 23);
 INSERT OR IGNORE INTO localization_stats (id, page, label, value, delta, sort_order) VALUES ('st-25', 'preview', 'Issues open', '2', '1 flagged term', 24);
+INSERT OR IGNORE INTO live_sessions (id, title, instructor, cohort, status, starts_at, sort_order) VALUES ('live-1', 'Web Fundamentals — weekly live class', 'Chioma Eze', 'Cohort 15', 'live', 'Fri — 4:00 PM', 0);
+INSERT OR IGNORE INTO live_sessions (id, title, instructor, cohort, status, starts_at, sort_order) VALUES ('live-2', 'JavaScript: arrays & objects deep dive', 'Yusuf Bello', 'Cohort 15', 'scheduled', 'Mon — 10:00 AM', 1);
+INSERT OR IGNORE INTO live_sessions (id, title, instructor, cohort, status, starts_at, sort_order) VALUES ('live-3', 'Portfolio review clinic', 'Ada Obi', 'Cohort 15', 'ended', 'Jul 29 — 3:00 PM', 2);

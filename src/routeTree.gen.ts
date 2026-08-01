@@ -260,6 +260,7 @@ import { Route as AppItTicketsRouteImport } from './routes/app/it/tickets'
 import { Route as AppItUsersRouteImport } from './routes/app/it/users'
 import { Route as AppLearnIndexRouteImport } from './routes/app/learn/index'
 import { Route as AppLearnCourseIdRouteImport } from './routes/app/learn/$courseId'
+import { Route as AppLiveIndexRouteImport } from './routes/app/live/index'
 import { Route as AppLiveClassIdRouteImport } from './routes/app/live/$classId'
 import { Route as AppLocalizationIndexRouteImport } from './routes/app/localization/index'
 import { Route as AppLocalizationAnalyticsRouteImport } from './routes/app/localization/analytics'
@@ -1646,6 +1647,11 @@ const AppLearnCourseIdRoute = AppLearnCourseIdRouteImport.update({
   path: '/app/learn/$courseId',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AppLiveIndexRoute = AppLiveIndexRouteImport.update({
+  id: '/app/live/',
+  path: '/app/live/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AppLiveClassIdRoute = AppLiveClassIdRouteImport.update({
   id: '/app/live/$classId',
   path: '/app/live/$classId',
@@ -2554,6 +2560,7 @@ export interface FileRoutesByFullPath {
   '/app/instructor/': typeof AppInstructorIndexRoute
   '/app/intern/': typeof AppInternIndexRoute
   '/app/learn/': typeof AppLearnIndexRoute
+  '/app/live/': typeof AppLiveIndexRoute
   '/app/localization/': typeof AppLocalizationIndexRoute
   '/app/marketing/': typeof AppMarketingIndexRoute
   '/app/mentor/': typeof AppMentorIndexRoute
@@ -2914,6 +2921,7 @@ export interface FileRoutesByTo {
   '/app/instructor': typeof AppInstructorIndexRoute
   '/app/intern': typeof AppInternIndexRoute
   '/app/learn': typeof AppLearnIndexRoute
+  '/app/live': typeof AppLiveIndexRoute
   '/app/localization': typeof AppLocalizationIndexRoute
   '/app/marketing': typeof AppMarketingIndexRoute
   '/app/mentor': typeof AppMentorIndexRoute
@@ -3275,6 +3283,7 @@ export interface FileRoutesById {
   '/app/instructor/': typeof AppInstructorIndexRoute
   '/app/intern/': typeof AppInternIndexRoute
   '/app/learn/': typeof AppLearnIndexRoute
+  '/app/live/': typeof AppLiveIndexRoute
   '/app/localization/': typeof AppLocalizationIndexRoute
   '/app/marketing/': typeof AppMarketingIndexRoute
   '/app/mentor/': typeof AppMentorIndexRoute
@@ -3637,6 +3646,7 @@ export interface FileRouteTypes {
     | '/app/instructor/'
     | '/app/intern/'
     | '/app/learn/'
+    | '/app/live/'
     | '/app/localization/'
     | '/app/marketing/'
     | '/app/mentor/'
@@ -3997,6 +4007,7 @@ export interface FileRouteTypes {
     | '/app/instructor'
     | '/app/intern'
     | '/app/learn'
+    | '/app/live'
     | '/app/localization'
     | '/app/marketing'
     | '/app/mentor'
@@ -4357,6 +4368,7 @@ export interface FileRouteTypes {
     | '/app/instructor/'
     | '/app/intern/'
     | '/app/learn/'
+    | '/app/live/'
     | '/app/localization/'
     | '/app/marketing/'
     | '/app/mentor/'
@@ -4717,6 +4729,7 @@ export interface RootRouteChildren {
   AppInstructorIndexRoute: typeof AppInstructorIndexRoute
   AppInternIndexRoute: typeof AppInternIndexRoute
   AppLearnIndexRoute: typeof AppLearnIndexRoute
+  AppLiveIndexRoute: typeof AppLiveIndexRoute
   AppLocalizationIndexRoute: typeof AppLocalizationIndexRoute
   AppMarketingIndexRoute: typeof AppMarketingIndexRoute
   AppMentorIndexRoute: typeof AppMentorIndexRoute
@@ -6498,6 +6511,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppLearnCourseIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/app/live/': {
+      id: '/app/live/'
+      path: '/app/live'
+      fullPath: '/app/live/'
+      preLoaderRoute: typeof AppLiveIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/app/live/$classId': {
       id: '/app/live/$classId'
       path: '/app/live/$classId'
@@ -7707,6 +7727,7 @@ const rootRouteChildren: RootRouteChildren = {
   AppInstructorIndexRoute: AppInstructorIndexRoute,
   AppInternIndexRoute: AppInternIndexRoute,
   AppLearnIndexRoute: AppLearnIndexRoute,
+  AppLiveIndexRoute: AppLiveIndexRoute,
   AppLocalizationIndexRoute: AppLocalizationIndexRoute,
   AppMarketingIndexRoute: AppMarketingIndexRoute,
   AppMentorIndexRoute: AppMentorIndexRoute,

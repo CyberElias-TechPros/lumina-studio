@@ -682,6 +682,91 @@ export const designKpis = sqliteTable(
   (t) => [index("idx_design_kpis_sort").on(t.sortOrder)],
 );
 
+/* ---------------- Phase 4.5: realtime + live ---------------- */
+
+export const realtimeRooms = sqliteTable(
+  "realtime_rooms",
+  {
+    id: text("id").primaryKey(),
+    name: text("name").notNull().default(""),
+    kind: text("kind").notNull().default("chat"),
+    createdAt: text("created_at").notNull().default(""),
+    createdBy: text("created_by").references(() => users.id, { onDelete: "set null" }),
+    sortOrder: integer("sort_order").notNull().default(0),
+  },
+  (t) => [index("idx_realtime_rooms_kind").on(t.kind)],
+);
+
+export const realtimeMessages = sqliteTable(
+  "realtime_messages",
+  {
+    id: text("id").primaryKey(),
+    roomId: text("room_id").notNull().default(""),
+    channel: text("channel").notNull().default("chat"),
+    userId: text("user_id").references(() => users.id, { onDelete: "set null" }),
+    userName: text("user_name").notNull().default(""),
+    body: text("body").notNull().default(""),
+    createdAt: text("created_at").notNull().default(""),
+    sortOrder: integer("sort_order").notNull().default(0),
+  },
+  (t) => [index("idx_realtime_messages_room").on(t.roomId, t.sortOrder)],
+);
+
+export const liveSessions = sqliteTable("live_sessions", {
+  id: text("id").primaryKey(),
+  title: text("title").notNull().default(""),
+  instructor: text("instructor").notNull().default(""),
+  cohort: text("cohort").notNull().default(""),
+  status: text("status").notNull().default("scheduled"),
+  startsAt: text("starts_at").notNull().default(""),
+  sortOrder: integer("sort_order").notNull().default(0),
+});
+
+export const livePolls = sqliteTable(
+  "live_polls",
+  {
+    id: text("id").primaryKey(),
+    classId: text("class_id").notNull().default(""),
+    question: text("question").notNull().default(""),
+    options: text("options").notNull().default("[]"),
+    status: text("status").notNull().default("open"),
+    createdBy: text("created_by").notNull().default(""),
+    sortOrder: integer("sort_order").notNull().default(0),
+  },
+  (t) => [index("idx_live_polls_class").on(t.classId)],
+);
+
+export const livePollVotes = sqliteTable(
+  "live_poll_votes",
+  {
+    id: text("id").primaryKey(),
+    pollId: text("poll_id").notNull().default(""),
+    userId: text("user_id").notNull().default(""),
+    option: text("option").notNull().default(""),
+    createdAt: text("created_at").notNull().default(""),
+    sortOrder: integer("sort_order").notNull().default(0),
+  },
+  (t) => [
+    uniqueIndex("idx_live_poll_votes_unique").on(t.pollId, t.userId),
+    index("idx_live_poll_votes_poll").on(t.pollId),
+  ],
+);
+
+export const liveWhiteboardOps = sqliteTable(
+  "live_whiteboard_ops",
+  {
+    id: text("id").primaryKey(),
+    classId: text("class_id").notNull().default(""),
+    userId: text("user_id").notNull().default(""),
+    userName: text("user_name").notNull().default(""),
+    op: text("op").notNull().default("{}"),
+    opOrder: integer("op_order").notNull().default(0),
+    createdAt: text("created_at").notNull().default(""),
+    sortOrder: integer("sort_order").notNull().default(0),
+  },
+  (t) => [index("idx_live_whiteboard_class").on(t.classId, t.sortOrder)],
+);
+
 /* ---------------- Phase 4: localization ---------------- */
 
 export const localizationProjects = sqliteTable("localization_projects", {

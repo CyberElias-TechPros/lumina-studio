@@ -921,3 +921,39 @@ export const instructorGradebook: InstructorGradebookRow[] = [
     atRisk: true,
   },
 ];
+
+export interface LiveSession {
+  id: string;
+  title: string;
+  instructor: string;
+  cohort: string;
+  status: string;
+  startsAt: string;
+}
+
+export const liveSessions: LiveSession[] = [
+  {
+    id: "live-1",
+    title: "Web Fundamentals — weekly live class",
+    instructor: "Chioma Eze",
+    cohort: "Cohort 15",
+    status: "live",
+    startsAt: "Fri — 4:00 PM",
+  },
+  {
+    id: "live-2",
+    title: "JavaScript: arrays & objects deep dive",
+    instructor: "Yusuf Bello",
+    cohort: "Cohort 15",
+    status: "scheduled",
+    startsAt: "Mon — 10:00 AM",
+  },
+  {
+    id: "live-3",
+    title: "Portfolio review clinic",
+    instructor: "Ada Obi",
+    cohort: "Cohort 15",
+    status: "ended",
+    startsAt: "Jul 29 — 3:00 PM",
+  },
+];

@@ -2,6 +2,7 @@ import { Hono } from "hono";
 import { cors } from "hono/cors";
 import { sendError } from "./lib/errors";
 import type { AppEnv } from "./types";
+import { rbacGuard } from "./lib/rbac";
 import { flags } from "./routes/flags";
 import { auth } from "./routes/auth";
 import { programs } from "./routes/programs";
@@ -22,6 +23,13 @@ import { recruitment } from "./routes/recruitment";
 import { marketing } from "./routes/marketing";
 import { design } from "./routes/design";
 import { localization } from "./routes/localization";
+import { realtime } from "./routes/realtime";
+import { live } from "./routes/live";
+import { uploads } from "./routes/uploads";
+import { ai } from "./routes/ai";
+import { RealtimeRoom } from "./durable/realtime-room";
+
+export { RealtimeRoom };
 
 const app = new Hono<{ Bindings: AppEnv }>();
 
@@ -44,6 +52,7 @@ app.use(
 );
 
 const v1 = new Hono<{ Bindings: AppEnv }>();
+v1.use("*", rbacGuard);
 v1.route("/auth", auth);
 v1.route("/programs", programs);
 v1.route("/applications", applications);
@@ -63,6 +72,10 @@ v1.route("/recruitment", recruitment);
 v1.route("/marketing", marketing);
 v1.route("/design", design);
 v1.route("/localization", localization);
+v1.route("/realtime", realtime);
+v1.route("/live", live);
+v1.route("/uploads", uploads);
+v1.route("/ai", ai);
 v1.route("/flags", flags);
 
 app.route("/v1", v1);

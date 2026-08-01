@@ -8,13 +8,34 @@
   },
   "vars": {
     "APP_ENV": "development",
-    "FRONTEND_ORIGINS": "http://localhost:5173,http://127.0.0.1:5173"
+    "FRONTEND_ORIGINS": "http://localhost:5173,http://127.0.0.1:5173",
+    "UPLOADS_PRESIGN_URL": ""
   },
   "d1_databases": [
     {
       "binding": "DB",
       "database_name": "cea-db",
       "database_id": "00000000-0000-0000-0000-000000000000"
+    }
+  ],
+  "r2_buckets": [
+    {
+      "binding": "UPLOADS",
+      "bucket_name": "cea-uploads"
+    }
+  ],
+  "durable_objects": {
+    "bindings": [
+      {
+        "name": "REALTIME_ROOMS",
+        "class_name": "RealtimeRoom"
+      }
+    ]
+  },
+  "migrations": [
+    {
+      "tag": "v1",
+      "new_classes": ["RealtimeRoom"]
     }
   ]
 }
