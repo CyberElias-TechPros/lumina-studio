@@ -8,6 +8,10 @@ import { programs } from "./routes/programs";
 import { applications } from "./routes/applications";
 import { courses } from "./routes/courses";
 import { dashboard } from "./routes/dashboard";
+import { assignments } from "./routes/assignments";
+import { assessments } from "./routes/assessments";
+import { calendar } from "./routes/calendar";
+import { messages } from "./routes/messages";
 
 const app = new Hono<{ Bindings: AppEnv }>();
 
@@ -35,6 +39,10 @@ v1.route("/programs", programs);
 v1.route("/applications", applications);
 v1.route("/courses", courses);
 v1.route("/dashboard", dashboard);
+v1.route("/assignments", assignments);
+v1.route("/assessments", assessments);
+v1.route("/calendar", calendar);
+v1.route("/messages", messages);
 v1.route("/flags", flags);
 
 app.route("/v1", v1);

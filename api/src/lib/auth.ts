@@ -136,3 +136,13 @@ export const requireAuth: MiddlewareHandler<{ Bindings: AppEnv }> = createMiddle
     await next();
   },
 );
+
+/** Student-only guard — run after requireAuth (reads c.get("authUser")). */
+export const requireStudent: MiddlewareHandler<{ Bindings: AppEnv }> = createMiddleware(
+  async (c, next) => {
+    if (c.get("authUser").roleKey !== "student") {
+      throw ApiError.forbidden("Only students can access this resource.");
+    }
+    await next();
+  },
+);

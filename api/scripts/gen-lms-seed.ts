@@ -11,7 +11,14 @@
 import { mkdirSync, writeFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
-import { learningCourses, gradebook } from "../../src/data/learning";
+import {
+  learningCourses,
+  gradebook,
+  assignments,
+  assessments,
+  calendarEvents,
+  threads,
+} from "../../src/data/learning";
 
 const OUT_DIR = resolve(dirname(fileURLToPath(import.meta.url)), "..", "seeds");
 
@@ -83,6 +90,52 @@ statements.push(
     `next_deadline_due, next_deadline_title) ` +
     `VALUES (${sqlString(DEMO_STUDENT_ID)}, 5, 8, '18.5h', 9, 'Today 23:59', 'Build: REST API assignment');`,
 );
+
+for (const assignment of assignments) {
+  statements.push(
+    `INSERT OR IGNORE INTO assignments (id, user_id, title, course, description, due, status, ` +
+      `score, max, weight, submissions, rubric) ` +
+      `VALUES (${sqlString(assignment.id)}, ${sqlString(DEMO_STUDENT_ID)}, ` +
+      `${sqlString(assignment.title)}, ${sqlString(assignment.course)}, ` +
+      `${sqlString(assignment.description)}, ${sqlString(assignment.due)}, ` +
+      `${sqlString(assignment.status)}, ${assignment.score ?? "NULL"}, ${assignment.max}, ` +
+      `${assignment.weight}, ${jsonString(assignment.submissions ?? [])}, ` +
+      `${jsonString(assignment.rubric)});`,
+  );
+}
+
+for (const assessment of assessments) {
+  statements.push(
+    `INSERT OR IGNORE INTO assessments (id, user_id, title, course, kind, questions, duration, ` +
+      `due, status, score, max, attempts, attempts_left, window) ` +
+      `VALUES (${sqlString(assessment.id)}, ${sqlString(DEMO_STUDENT_ID)}, ` +
+      `${sqlString(assessment.title)}, ${sqlString(assessment.course)}, ` +
+      `${sqlString(assessment.kind)}, ${assessment.questions}, ${sqlString(assessment.duration)}, ` +
+      `${sqlString(assessment.due)}, ${sqlString(assessment.status)}, ` +
+      `${assessment.score ?? "NULL"}, ${assessment.max ?? "NULL"}, ${assessment.attempts}, ` +
+      `${assessment.attemptsLeft}, ${sqlString(assessment.window)});`,
+  );
+}
+
+for (const event of calendarEvents) {
+  statements.push(
+    `INSERT OR IGNORE INTO calendar_events (id, date, day, title, kind, time, location, sort_order) ` +
+      `VALUES (${sqlString(event.id)}, ${sqlString(event.date)}, ${sqlString(event.day)}, ` +
+      `${sqlString(event.title)}, ${sqlString(event.kind)}, ${sqlString(event.time)}, ` +
+      `${sqlString(event.location)}, ${calendarEvents.indexOf(event)});`,
+  );
+}
+
+for (const thread of threads) {
+  statements.push(
+    `INSERT OR IGNORE INTO message_threads (id, user_id, name, role, unread, last_text, ` +
+      `last_time, last_mine, messages) ` +
+      `VALUES (${sqlString(thread.id)}, ${sqlString(DEMO_STUDENT_ID)}, ${sqlString(thread.name)}, ` +
+      `${sqlString(thread.role)}, ${thread.unread}, ${sqlString(thread.last.text)}, ` +
+      `${sqlString(thread.last.time)}, ${thread.last.mine ? 1 : 0}, ` +
+      `${jsonString(thread.messages)});`,
+  );
+}
 
 const sql = statements.join("\n") + "\n";
 

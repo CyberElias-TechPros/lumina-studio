@@ -176,3 +176,76 @@ export const studentStats = sqliteTable("student_stats", {
   nextDeadlineDue: text("next_deadline_due"),
   nextDeadlineTitle: text("next_deadline_title"),
 });
+
+export const assignments = sqliteTable(
+  "assignments",
+  {
+    id: text("id").primaryKey(),
+    userId: text("user_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    title: text("title").notNull(),
+    course: text("course").notNull().default(""),
+    description: text("description").notNull().default(""),
+    due: text("due").notNull().default(""),
+    status: text("status").notNull().default("pending"),
+    score: integer("score"),
+    max: integer("max").notNull().default(100),
+    weight: integer("weight").notNull().default(0),
+    submissions: text("submissions").notNull().default("[]"),
+    rubric: text("rubric").notNull().default("[]"),
+  },
+  (t) => [index("idx_assignments_user").on(t.userId)],
+);
+
+export const assessments = sqliteTable(
+  "assessments",
+  {
+    id: text("id").primaryKey(),
+    userId: text("user_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    title: text("title").notNull(),
+    course: text("course").notNull().default(""),
+    kind: text("kind").notNull().default("quiz"),
+    questions: integer("questions").notNull().default(0),
+    duration: text("duration").notNull().default(""),
+    due: text("due").notNull().default(""),
+    status: text("status").notNull().default("scheduled"),
+    score: integer("score"),
+    max: integer("max"),
+    attempts: integer("attempts").notNull().default(1),
+    attemptsLeft: integer("attempts_left").notNull().default(0),
+    window: text("window").notNull().default(""),
+  },
+  (t) => [index("idx_assessments_user").on(t.userId)],
+);
+
+export const calendarEvents = sqliteTable("calendar_events", {
+  id: text("id").primaryKey(),
+  date: text("date").notNull(),
+  day: text("day").notNull(),
+  title: text("title").notNull(),
+  kind: text("kind").notNull().default("event"),
+  time: text("time").notNull().default(""),
+  location: text("location").notNull().default(""),
+  sortOrder: integer("sort_order").notNull().default(0),
+});
+
+export const messageThreads = sqliteTable(
+  "message_threads",
+  {
+    id: text("id").primaryKey(),
+    userId: text("user_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    name: text("name").notNull(),
+    role: text("role").notNull().default(""),
+    unread: integer("unread").notNull().default(0),
+    lastText: text("last_text").notNull().default(""),
+    lastTime: text("last_time").notNull().default(""),
+    lastMine: integer("last_mine").notNull().default(0),
+    messages: text("messages").notNull().default("[]"),
+  },
+  (t) => [index("idx_message_threads_user").on(t.userId)],
+);
