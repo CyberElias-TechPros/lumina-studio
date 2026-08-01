@@ -104,6 +104,71 @@ export function registerAllMocks(): void {
     return { valid: false, message: "No certificate matches this code." };
   });
 
+  /* Certificates (mine + issuance) */
+  registerMock("GET", "/v1/certificates/mine", async () => {
+    await delay();
+    return {
+      items: [
+        {
+          id: "cert-1",
+          courseSlug: "full-stack-software-development",
+          title: "Full-Stack Software Development",
+          code: "CEA-CERT-2026-8F3K2Q",
+          issuedAt: "2026-07-14T10:00:00.000Z",
+        },
+        {
+          id: "cert-2",
+          courseSlug: "career-readiness",
+          title: "Career Readiness Passport",
+          code: "CEA-CERT-2026-2T9Q0X",
+          issuedAt: "2026-03-02T09:00:00.000Z",
+        },
+      ],
+      total: 2,
+    };
+  });
+  registerMock("GET", "/v1/certificates/candidates", async () => {
+    await delay();
+    return {
+      items: [
+        {
+          id: "00000000-0000-4000-8000-000000000001",
+          name: "Chiamaka Obi",
+          email: "student@cea.ng",
+          roleKey: "student",
+        },
+        {
+          id: "usr-2",
+          name: "Ifeanyi Duru",
+          email: "instructor@cea.ng",
+          roleKey: "instructor",
+        },
+      ],
+      total: 2,
+    };
+  });
+  registerMock("POST", "/v1/certificates", async (init: ApiRequestInit) => {
+    await delay();
+    const input = (init.body ?? {}) as {
+      userId?: string;
+      courseSlug?: string;
+      title?: string;
+    };
+    if (!input.userId || !input.courseSlug || !input.title) {
+      throw new ApiError(400, "VALIDATION_ERROR", "userId, courseSlug and title are required.");
+    }
+    return {
+      id: crypto.randomUUID(),
+      courseSlug: input.courseSlug,
+      title: input.title,
+      code: `CEA-${Math.random().toString(16).slice(2, 10).toUpperCase()}-${Math.random()
+        .toString(16)
+        .slice(2, 10)
+        .toUpperCase()}`,
+      issuedAt: new Date().toISOString(),
+    };
+  });
+
   /* Contact (public lead capture) */
   registerMock("POST", "/v1/contact", async (init: ApiRequestInit) => {
     await delay();
@@ -248,11 +313,35 @@ export function registerAllMocks(): void {
     };
   });
 
+  /* Push send */
+  registerMock("POST", "/v1/push/send", async (init: ApiRequestInit) => {
+    await delay();
+    const input = (init.body ?? {}) as { title?: string; body?: string };
+    if (!input.title || !input.body) {
+      throw new ApiError(400, "VALIDATION_ERROR", "title and body are required.");
+    }
+    return { sent: 1, removed: 0 };
+  });
+
   /* Admin */
   registerMock("GET", "/v1/admin/users", async () => {
     await delay();
     return {
       items: systemUsers.map((u, i) => ({ id: `usr-${i + 1}`, ...u })),
+      total: systemUsers.length,
+    };
+  });
+  registerMock("GET", "/v1/admin/accounts", async () => {
+    await delay();
+    return {
+      items: systemUsers.map((u, i) => ({
+        id: `acc-${i + 1}`,
+        name: u.name,
+        email: u.email,
+        roleKey: u.role.toLowerCase(),
+        status: u.status.toLowerCase(),
+        createdAt: "2026-01-15T09:00:00.000Z",
+      })),
       total: systemUsers.length,
     };
   });

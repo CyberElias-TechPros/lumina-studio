@@ -98,6 +98,15 @@ statements.push(
     `VALUES (${sqlString(DEMO_FINANCE_ID)}, 'Musa Ibrahim', 'finance@cea.ng', 'finance', 'active');`,
 );
 
+const DEMO_PASSWORD_HASH =
+  "pbkdf2$100000$Ji2F9wTwR5Xqenb7vFV/AQ==$9BO5Y8tQuzR2g447yIJWQ7AtcmF38eaCRuxQturwFoU=";
+for (const email of ["admin@cea.ng", "hr@cea.ng", "finance@cea.ng"]) {
+  statements.push(
+    `UPDATE users SET password_hash = ${sqlString(DEMO_PASSWORD_HASH)} ` +
+      `WHERE email = '${email}' AND password_hash IS NULL;`,
+  );
+}
+
 const seededCourses = [
   ...learningCourses.map((c) => ({
     slug: c.slug,

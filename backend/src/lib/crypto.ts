@@ -60,7 +60,11 @@ export function timingSafeEqualHex(a: string, b: string): boolean {
 
 /* ---------------- Passwords (PBKDF2-SHA256) ---------------- */
 
-const PBKDF2_ITERATIONS = 120_000;
+/**
+ * Workers WebCrypto caps PBKDF2 iterations at 100 000 — higher values throw
+ * NotSupportedError on the real runtime (Miniflare tests allow more).
+ */
+const PBKDF2_ITERATIONS = 100_000;
 const PBKDF2_SALT_BYTES = 16;
 
 function toB64(bytes: Uint8Array): string {

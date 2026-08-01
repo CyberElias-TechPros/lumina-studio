@@ -127,10 +127,10 @@ Two tabs on the page:
 - **Magic link tab:** enter email →
   1. `POST /v1/auth/magic-link` (public, rate-limited 3/15min). Stores a
      hashed token in D1 `magic_links`, **expires 15 minutes, single-use**.
-     Returns `201 { ok: true }`; in non-production also `devToken` shown as
-     an "Open sign-in link (dev)" button. **Production sends no email** —
-     external email delivery (Mailgun) is configured in vars but
-     `EMAIL_API_KEY` is not set yet.
+      Returns `201 { ok: true }`; in non-production also `devToken` shown as
+      an "Open sign-in link (dev)" button. **Production sends no email** —
+      external email delivery (Resend) is configured in vars but
+      `EMAIL_API_KEY` is not set yet (set it as a Worker secret to enable).
   2. `GET /v1/auth/magic-link/verify?token=` (public) — marks consumed,
      finds-or-creates the user (new users become `student`), creates the
      session, sets the cookie, returns the session payload.
@@ -302,15 +302,24 @@ now set per-checkout via `redirect_url` (see step 1).
 - Send: `POST /v1/push/send` `{ title, body, url?, userId? }` — anyone to
   self; **admin/instructor** to any user (403 otherwise). No VAPID → 503.
   Dead endpoints auto-removed; response `{ sent, removed }`.
-- **UI gap:** no push-send UI exists in the frontend.
+- **UI (live):** "Send a push" card on `/app/notifications` — title, message,
+  optional open-link URL; admin/instructor pick the recipient (candidates
+  list), everyone else sends to their own devices. Sends via
+  `POST /v1/push/send`; result shows devices reached + stale subscriptions
+  pruned. (Push *receiving* still needs a subscribed browser: the
+  auto-subscribe hook fires only when the `pwa.push` flag is on and the
+  browser grants permission.)
 
 ### 3.12 Certificates — `/app/certificates` (LIVE)
 - `GET /v1/certificates/mine` (any authenticated) — own certificates with
-  their verification codes.
-- Issue (frontend gap — use API/seed): `POST /v1/certificates`
-  `{ userId, courseSlug, title }` (**instructor/admin only**); one per
-  user+course (duplicate → 409); generates the code
-  `CEA-<4>-<4>`. Issued codes can then be verified publicly (§1.3).
+  their verification codes, listed on the page with a verify link that
+  pre-fills the public checker (`/certificates/verify?code=`).
+- Issue: **"Issue a certificate" card** shown to `instructor`/`admin`
+  roles. Picks the recipient from `GET /v1/certificates/candidates` (active
+  users, instructor/admin only) and the course from the catalog, auto-fills
+  the title (editable), then `POST /v1/certificates`
+  `{ userId, courseSlug, title }` (duplicate → 409). The returned code is
+  shown inline and can be verified publicly immediately.
 
 ---
 
@@ -423,18 +432,19 @@ Pages under `/app/admin/*`:
 
 ## 10. Flows that don't exist yet (honest list)
 
-1. **Email delivery of magic links / reset tokens** — Mailgun vars are set
+1. **Email delivery of magic links / reset tokens** — Resend vars are set
    but `EMAIL_API_KEY` is not; in production the token is only in D1 (dev
-   shows it in the UI).
+   shows it in the UI). Add the Resend key as a Worker secret to enable.
 2. **AI in production** — `AI_API_KEY` not set → deterministic answers.
 3. **Assessment answer-save, attendance mark, portfolio, employer
    applications** — read-only/static screens.
 4. **WebSocket UI** — chat/live pages poll REST; fan-out exists but nothing
    opens a socket.
-5. **Push-send UI** — API exists, no page.
+5. **Push receiving in a real browser** — the send UI exists, but push
+   subscription/auto-subscribe only activates in browsers that grant
+   permission while the `pwa.push` flag is on.
 6. **OAuth (Google/Microsoft) sign-in** — dead buttons.
 7. **Notification preferences, quiet hours** — static badges.
-8. **Certificate issuance UI** — backend exists; no admin screen posts it.
 
 ---
 
@@ -452,7 +462,8 @@ Pages under `/app/admin/*`:
 
 Seeded accounts (password `cea-demo-pass-2026`, MFA off):
 `student@cea.ng`, `instructor@cea.ng`, `admin@cea.ng`, `hr@cea.ng`,
-`finance@cea.ng`.
+`finance@cea.ng`. The password is hashed (PBKDF2-SHA256, 100k iterations)
+into the seeds and applied to production D1.
 
 ---
 
@@ -474,6 +485,10 @@ Seeded accounts (password `cea-demo-pass-2026`, MFA off):
    advance applications/candidates, schedule classes, issue certificates,
    grade submissions) — all audited.
 7. Account security page: list/revoke devices, enable/disable MFA.
+8. Notifications centre: mark read / mark all read; admin/instructor send
+   browser pushes from the same page.
+9. Certificates page: live list of issued credentials; instructor/admin
+   issue new ones (recipient + course) that verify instantly.
 8. Browser auto-subscribes to push (flag on); staff can send via API.
 9. Every other portal page renders static mockups; role-gated API calls
    outside your role 403 cleanly.

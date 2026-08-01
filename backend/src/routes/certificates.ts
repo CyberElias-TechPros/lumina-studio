@@ -58,6 +58,23 @@ certificates.get("/mine", requireAuth, async (c) => {
 
 const requireIssuer = requireAnyRole(["instructor", "admin"]);
 
+/** Instructor/admin: active users a certificate can be issued to. */
+certificates.get("/candidates", requireAuth, requireIssuer, async (c) => {
+  const rows = await c.env.DB.prepare(
+    `SELECT id, name, email, role_key FROM users WHERE status = 'active'
+       ORDER BY name ASC LIMIT 200`,
+  ).all<{ id: string; name: string; email: string; role_key: string }>();
+  return c.json({
+    items: rows.results.map((r) => ({
+      id: r.id,
+      name: r.name,
+      email: r.email,
+      roleKey: r.role_key,
+    })),
+    total: rows.results.length,
+  });
+});
+
 certificates.post("/", requireAuth, requireIssuer, async (c) => {
   const body = await parseBody(c, issueSchema);
   const user = await c.env.DB.prepare(`SELECT id, name FROM users WHERE id = ? AND status = 'active'`)
