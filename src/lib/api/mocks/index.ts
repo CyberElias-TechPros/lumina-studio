@@ -6,7 +6,14 @@
 import { registerMock } from "@/lib/api/client";
 import type { ApiRequestInit } from "@/lib/api/client";
 import type { Session } from "@/lib/schema";
-import { learningCourses, gradebook, assignments } from "@/data/learning";
+import {
+  learningCourses,
+  gradebook,
+  assignments,
+  assessments,
+  calendarEvents,
+  threads,
+} from "@/data/learning";
 import { invoices, notifications, systemUsers } from "@/data/dashboard";
 import type { StudentDashboard } from "@/lib/api/dashboard";
 
@@ -59,10 +66,58 @@ export function registerAllMocks(): void {
     await delay();
     return { items: learningCourses, total: learningCourses.length };
   });
+  for (const course of learningCourses) {
+    registerMock("GET", `/v1/courses/${course.slug}`, async () => {
+      await delay();
+      return course;
+    });
+  }
   registerMock("GET", "/v1/courses/gradebook", async () => {
     await delay();
     return { items: gradebook, total: gradebook.length };
   });
+
+  /* Assignments */
+  registerMock("GET", "/v1/assignments", async () => {
+    await delay();
+    return { items: assignments, total: assignments.length };
+  });
+  for (const assignment of assignments) {
+    registerMock("GET", `/v1/assignments/${assignment.id}`, async () => {
+      await delay();
+      return assignment;
+    });
+  }
+
+  /* Assessments */
+  registerMock("GET", "/v1/assessments", async () => {
+    await delay();
+    return { items: assessments, total: assessments.length };
+  });
+  for (const assessment of assessments) {
+    registerMock("GET", `/v1/assessments/${assessment.id}`, async () => {
+      await delay();
+      return assessment;
+    });
+  }
+
+  /* Calendar */
+  registerMock("GET", "/v1/calendar/events", async () => {
+    await delay();
+    return { items: calendarEvents, total: calendarEvents.length };
+  });
+
+  /* Messages */
+  registerMock("GET", "/v1/messages/threads", async () => {
+    await delay();
+    return { items: threads, total: threads.length };
+  });
+  for (const thread of threads) {
+    registerMock("GET", `/v1/messages/threads/${thread.id}`, async () => {
+      await delay();
+      return thread;
+    });
+  }
 
   /* Student dashboard — derived live from src/data so it stays honest */
   registerMock("GET", "/v1/dashboard/student", async (): Promise<StudentDashboard> => {

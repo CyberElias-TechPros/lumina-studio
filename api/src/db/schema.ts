@@ -17,7 +17,9 @@ export const programs = sqliteTable(
     slug: text("slug").primaryKey(),
     title: text("title").notNull(),
     category: text("category").notNull(),
-    engineKey: text("engine_key").notNull().references(() => engines.key),
+    engineKey: text("engine_key")
+      .notNull()
+      .references(() => engines.key),
     level: text("level").notNull(),
     duration: text("duration").notNull(),
     mode: text("mode").notNull(),
@@ -63,7 +65,10 @@ export const sessions = sqliteTable(
     expiresAt: text("expires_at").notNull(),
     revokedAt: text("revoked_at"),
   },
-  (t) => [index("idx_sessions_user").on(t.userId), index("idx_sessions_token_hash").on(t.tokenHash)],
+  (t) => [
+    index("idx_sessions_user").on(t.userId),
+    index("idx_sessions_token_hash").on(t.tokenHash),
+  ],
 );
 
 export const magicLinks = sqliteTable(
@@ -76,7 +81,10 @@ export const magicLinks = sqliteTable(
     expiresAt: text("expires_at").notNull(),
     consumedAt: text("consumed_at"),
   },
-  (t) => [index("idx_magic_links_email").on(t.email), index("idx_magic_links_token_hash").on(t.tokenHash)],
+  (t) => [
+    index("idx_magic_links_email").on(t.email),
+    index("idx_magic_links_token_hash").on(t.tokenHash),
+  ],
 );
 
 export const applications = sqliteTable(
@@ -98,21 +106,18 @@ export const applications = sqliteTable(
   (t) => [index("idx_applications_email").on(t.email), index("idx_applications_ref").on(t.ref)],
 );
 
-export const courses = sqliteTable(
-  "courses",
-  {
-    slug: text("slug").primaryKey(),
-    title: text("title").notNull(),
-    subtitle: text("subtitle").notNull().default(""),
-    cohort: text("cohort").notNull().default(""),
-    instructor: text("instructor").notNull().default(""),
-    tone: text("tone").notNull().default(""),
-    modules: text("modules").notNull().default("[]"),
-    sortOrder: integer("sort_order").notNull().default(0),
-    createdAt: text("created_at").notNull(),
-    updatedAt: text("updated_at").notNull(),
-  },
-);
+export const courses = sqliteTable("courses", {
+  slug: text("slug").primaryKey(),
+  title: text("title").notNull(),
+  subtitle: text("subtitle").notNull().default(""),
+  cohort: text("cohort").notNull().default(""),
+  instructor: text("instructor").notNull().default(""),
+  tone: text("tone").notNull().default(""),
+  modules: text("modules").notNull().default("[]"),
+  sortOrder: integer("sort_order").notNull().default(0),
+  createdAt: text("created_at").notNull(),
+  updatedAt: text("updated_at").notNull(),
+});
 
 export const enrollments = sqliteTable(
   "enrollments",

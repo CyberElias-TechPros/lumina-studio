@@ -142,9 +142,7 @@ courses.get("/gradebook", async (c) => {
     throw ApiError.forbidden("Only students can access the gradebook.");
   }
   const { cursor, limit } = parsePagination(c);
-  const total = await c.env.DB.prepare(
-    `SELECT COUNT(*) AS n FROM gradebook WHERE user_id = ?`,
-  )
+  const total = await c.env.DB.prepare(`SELECT COUNT(*) AS n FROM gradebook WHERE user_id = ?`)
     .bind(user.id)
     .first<{ n: number }>();
   const rows = await c.env.DB.prepare(

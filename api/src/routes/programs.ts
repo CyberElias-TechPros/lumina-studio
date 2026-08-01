@@ -89,7 +89,9 @@ programs.get("/", async (c) => {
     }>();
 
   const items = rows.results.map(mapRow);
-  const result: Paginated<ApiProgram> = paginate(items, total?.n ?? 0, (last) => base64UrlEncode(last.slug));
+  const result: Paginated<ApiProgram> = paginate(items, total?.n ?? 0, (last) =>
+    base64UrlEncode(last.slug),
+  );
   return c.json(result);
 });
 

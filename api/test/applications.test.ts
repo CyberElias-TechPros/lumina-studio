@@ -105,12 +105,17 @@ describe("GET /v1/applications/:ref (public status lookup)", () => {
     });
     const { application } = (await created.json()) as { application: { ref: string } };
 
-    await env.DB.prepare(`UPDATE applications SET status = 'interview', updated_at = ? WHERE ref = ?`)
+    await env.DB.prepare(
+      `UPDATE applications SET status = 'interview', updated_at = ? WHERE ref = ?`,
+    )
       .bind(new Date().toISOString(), application.ref)
       .run();
 
     const res = await api(`/v1/applications/${application.ref}`);
-    const body = (await res.json()) as { status: string; stages: Array<{ key: string; done: boolean; active: boolean }> };
+    const body = (await res.json()) as {
+      status: string;
+      stages: Array<{ key: string; done: boolean; active: boolean }>;
+    };
     expect(body.status).toBe("interview");
     const byKey = Object.fromEntries(body.stages.map((s) => [s.key, s]));
     expect(byKey["submitted"]!.done).toBe(true);

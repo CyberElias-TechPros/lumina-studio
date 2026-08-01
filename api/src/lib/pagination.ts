@@ -17,6 +17,14 @@ export function parsePagination(c: Context): PaginationInput {
   return { cursor: c.req.query("cursor"), limit };
 }
 
-export function paginate<T>(items: T[], total: number, cursorFor: (last: T) => string): Paginated<T> {
-  return { items, total, ...(items.length > 0 ? { nextCursor: cursorFor(items[items.length - 1]!) } : {}) };
+export function paginate<T>(
+  items: T[],
+  total: number,
+  cursorFor: (last: T) => string,
+): Paginated<T> {
+  return {
+    items,
+    total,
+    ...(items.length > 0 ? { nextCursor: cursorFor(items[items.length - 1]!) } : {}),
+  };
 }

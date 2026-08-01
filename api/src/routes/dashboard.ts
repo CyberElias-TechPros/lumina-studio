@@ -58,15 +58,17 @@ dashboard.get("/student", requireAuth, async (c) => {
             tone: string;
             modules: string;
           }>()
-      : { results: [] as Array<{
-          slug: string;
-          title: string;
-          subtitle: string;
-          cohort: string;
-          instructor: string;
-          tone: string;
-          modules: string;
-        }> };
+      : {
+          results: [] as Array<{
+            slug: string;
+            title: string;
+            subtitle: string;
+            cohort: string;
+            instructor: string;
+            tone: string;
+            modules: string;
+          }>,
+        };
 
   let totalLessons = 0;
   let doneLessons = 0;

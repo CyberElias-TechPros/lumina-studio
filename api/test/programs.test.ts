@@ -10,7 +10,13 @@ describe("GET /v1/programs", () => {
     const res = await api("/v1/programs");
     expect(res.status).toBe(200);
     const body = (await res.json()) as {
-      items: Array<{ slug: string; mode: string; rating: number; learners: number; tools: string[] }>;
+      items: Array<{
+        slug: string;
+        mode: string;
+        rating: number;
+        learners: number;
+        tools: string[];
+      }>;
       total: number;
       nextCursor?: string;
     };
@@ -28,7 +34,9 @@ describe("GET /v1/programs", () => {
     let cursor: string | undefined;
     let pages = 0;
     do {
-      const url = cursor ? `/v1/programs?limit=2&cursor=${encodeURIComponent(cursor)}` : "/v1/programs?limit=2";
+      const url = cursor
+        ? `/v1/programs?limit=2&cursor=${encodeURIComponent(cursor)}`
+        : "/v1/programs?limit=2";
       const res = await api(url);
       expect(res.status).toBe(200);
       const body = (await res.json()) as { items: Array<{ slug: string }>; nextCursor?: string };

@@ -89,7 +89,9 @@ describe("GET /v1/courses", () => {
     let cursor: string | undefined;
     let pages = 0;
     do {
-      const url = cursor ? `/v1/courses?limit=1&cursor=${encodeURIComponent(cursor)}` : "/v1/courses?limit=1";
+      const url = cursor
+        ? `/v1/courses?limit=1&cursor=${encodeURIComponent(cursor)}`
+        : "/v1/courses?limit=1";
       const res = await api(url, { headers: cookieHeaders(cookie) });
       expect(res.status).toBe(200);
       const body = (await res.json()) as { items: Array<{ slug: string }>; nextCursor?: string };

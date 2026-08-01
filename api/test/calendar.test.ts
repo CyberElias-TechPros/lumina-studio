@@ -16,7 +16,15 @@ describe("GET /v1/calendar/events", () => {
     const res = await api("/v1/calendar/events", { headers: cookieHeaders(cookie) });
     expect(res.status).toBe(200);
     const body = (await res.json()) as {
-      items: Array<{ id: string; date: string; day: string; title: string; kind: string; time: string; location: string }>;
+      items: Array<{
+        id: string;
+        date: string;
+        day: string;
+        title: string;
+        kind: string;
+        time: string;
+        location: string;
+      }>;
       total: number;
     };
     expect(body.total).toBe(10);

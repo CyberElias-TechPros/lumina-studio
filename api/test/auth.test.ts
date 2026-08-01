@@ -1,5 +1,12 @@
 import { beforeAll, describe, expect, it } from "vitest";
-import { api, authHeaders, cookieHeaders, createTestSession, sessionCookieFrom, setupDb } from "./helpers";
+import {
+  api,
+  authHeaders,
+  cookieHeaders,
+  createTestSession,
+  sessionCookieFrom,
+  setupDb,
+} from "./helpers";
 
 beforeAll(async () => {
   await setupDb();
@@ -13,7 +20,9 @@ describe("GET /v1/auth/magic-link", () => {
       body: JSON.stringify({ email: "not-an-email" }),
     });
     expect(res.status).toBe(400);
-    const body = (await res.json()) as { error: { code: string; fieldErrors: Record<string, string[]> } };
+    const body = (await res.json()) as {
+      error: { code: string; fieldErrors: Record<string, string[]> };
+    };
     expect(body.error.code).toBe("FIELD_VALIDATION");
     expect(body.error.fieldErrors.email).toBeDefined();
   });
@@ -125,7 +134,9 @@ describe("POST /v1/auth/refresh", () => {
     });
     expect(res.status).toBe(200);
     const body = (await res.json()) as { expiresAt: string };
-    expect(new Date(body.expiresAt).getTime()).toBeGreaterThan(new Date(session.expiresAt).getTime());
+    expect(new Date(body.expiresAt).getTime()).toBeGreaterThan(
+      new Date(session.expiresAt).getTime(),
+    );
 
     const rotated = sessionCookieFrom(res);
     expect(rotated).toBeTruthy();

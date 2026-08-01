@@ -48,7 +48,13 @@ auth.post("/magic-link", async (c) => {
     `INSERT INTO magic_links (id, email, token_hash, created_at, expires_at)
      VALUES (?, ?, ?, ?, ?)`,
   )
-    .bind(crypto.randomUUID(), normalized, tokenHash, isoNow(), isoInMinutes(MAGIC_LINK_TTL_MINUTES))
+    .bind(
+      crypto.randomUUID(),
+      normalized,
+      tokenHash,
+      isoNow(),
+      isoInMinutes(MAGIC_LINK_TTL_MINUTES),
+    )
     .run();
 
   const body: Record<string, unknown> = { ok: true };
@@ -79,9 +85,17 @@ auth.get("/magic-link/verify", async (c) => {
     .run();
 
   const email = normalizeEmail(link.email);
-  const existing = await c.env.DB.prepare(`SELECT id, name, email, avatar_url, role_key FROM users WHERE email = ?`)
+  const existing = await c.env.DB.prepare(
+    `SELECT id, name, email, avatar_url, role_key FROM users WHERE email = ?`,
+  )
     .bind(email)
-    .first<{ id: string; name: string; email: string; avatar_url: string | null; role_key: string }>();
+    .first<{
+      id: string;
+      name: string;
+      email: string;
+      avatar_url: string | null;
+      role_key: string;
+    }>();
 
   const userId = existing?.id ?? crypto.randomUUID();
   if (!existing) {

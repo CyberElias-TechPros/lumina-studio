@@ -68,9 +68,7 @@ assessments.use("*", requireAuth, requireStudent);
 assessments.get("/", async (c) => {
   const { cursor, limit } = parsePagination(c);
   const userId = c.get("authUser").id;
-  const total = await c.env.DB.prepare(
-    `SELECT COUNT(*) AS n FROM assessments WHERE user_id = ?`,
-  )
+  const total = await c.env.DB.prepare(`SELECT COUNT(*) AS n FROM assessments WHERE user_id = ?`)
     .bind(userId)
     .first<{ n: number }>();
   const rows = await c.env.DB.prepare(
