@@ -4,6 +4,7 @@ import {
   CreditCard,
   Download,
   Landmark,
+  Loader2,
   Receipt,
   ShieldCheck,
   Wallet,
@@ -11,9 +12,11 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { QueryState } from "@/components/ui/query-state";
 import { AppShell } from "@/components/app/app-shell";
-import { formatNaira } from "@/data/site";
-import { cn } from "@/lib/utils";
+import { useCreateCheckout, usePaymentHistory } from "@/lib/query/payments";
+import type { Payment } from "@/lib/api/payments";
+import { cn, formatNaira } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/finance")({
   head: () => ({
@@ -56,13 +59,30 @@ const invoices = [
   },
 ];
 
-const payments = [
-  { method: "Card (GTB)", last4: "4412", date: "May 4, 2026", amount: 140000 },
-  { method: "Bank transfer (GTBank)", last4: "0342", date: "Feb 10, 2026", amount: 140000 },
-  { method: "Merit scholarship credit", last4: "50%", date: "Jan 15, 2026", amount: 140000 },
-];
+function paymentTone(status: Payment["status"]): string {
+  if (status === "success") return "bg-success/10 text-success";
+  if (status === "failed") return "bg-destructive/10 text-destructive";
+  return "bg-warning/10 text-warning";
+}
 
 function StudentFinance() {
+  const query = usePaymentHistory();
+  const rows = query.data?.pages.flatMap((p) => p.items) ?? [];
+  const paid = rows.filter((p) => p.status === "success");
+  const paidTotal = paid.reduce((s, p) => s + p.amount, 0);
+  const checkout = useCreateCheckout();
+
+  const handlePayNow = () => {
+    checkout.mutate(
+      { amount: 140000, description: "Term 3 instalment — INV-2026-0911" },
+      {
+        onSuccess: (res) => {
+          window.open(res.authorizationUrl, "_blank", "noopener,noreferrer");
+        },
+      },
+    );
+  };
+
   return (
     <AppShell
       roleKey="student"
@@ -71,8 +91,13 @@ function StudentFinance() {
       actions={
         <>
           <Badge className="bg-success/10 text-success border-0 font-semibold">Balance: ₦0</Badge>
-          <Button size="sm">
-            <CreditCard className="size-4" /> Pay now
+          <Button size="sm" onClick={handlePayNow} disabled={checkout.isPending}>
+            {checkout.isPending ? (
+              <Loader2 className="size-4 animate-spin" />
+            ) : (
+              <CreditCard className="size-4" />
+            )}
+            {checkout.isPending ? "Opening Paystack…" : "Pay now"}
           </Button>
         </>
       }
@@ -95,8 +120,8 @@ function StudentFinance() {
           },
           {
             label: "Paid this year",
-            value: formatNaira(420000),
-            delta: "3 payments",
+            value: formatNaira(paidTotal),
+            delta: `${paid.length} payments`,
             icon: Banknote,
             tone: "bg-primary/10 text-primary",
           },
@@ -163,20 +188,40 @@ function StudentFinance() {
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-3">
-              {payments.map((p) => (
-                <div
-                  key={p.date}
-                  className="flex items-center justify-between rounded-xl border p-3"
-                >
-                  <div>
-                    <p className="text-sm font-semibold">{p.method}</p>
-                    <p className="text-muted-foreground text-xs">
-                      …{p.last4} · {p.date}
-                    </p>
-                  </div>
-                  <span className="text-sm font-extrabold">{formatNaira(p.amount)}</span>
-                </div>
-              ))}
+              <QueryState<Payment[]>
+                query={query}
+                error={{ title: "Payments unavailable" }}
+                empty={{
+                  title: "No payments yet",
+                  description: "Your Paystack transactions will appear here.",
+                }}
+              >
+                {(payments) => (
+                  <>
+                    {payments.map((p) => (
+                      <div
+                        key={p.id}
+                        className="flex items-center justify-between gap-2 rounded-xl border p-3"
+                      >
+                        <div className="min-w-0">
+                          <p className="truncate text-sm font-semibold">
+                            {p.description || p.reference}
+                          </p>
+                          <p className="text-muted-foreground text-xs">
+                            {p.reference} · {p.paidAt ?? "Pending confirmation"}
+                          </p>
+                        </div>
+                        <div className="flex shrink-0 items-center gap-2">
+                          <span className="text-sm font-extrabold">{formatNaira(p.amount)}</span>
+                          <Badge className={cn("border-0 font-semibold", paymentTone(p.status))}>
+                            {p.status}
+                          </Badge>
+                        </div>
+                      </div>
+                    ))}
+                  </>
+                )}
+              </QueryState>
             </CardContent>
           </Card>
 
