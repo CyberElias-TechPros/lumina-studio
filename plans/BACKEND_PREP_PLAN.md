@@ -423,7 +423,15 @@ Auth (3): sign-in, register, magic-link. Apply (3): personal, documents, fee. LM
 - Note: expenses backend table has only `category, amount` — page shows spending-by-category (no claim statuses); accountant/audit page left inline (finance role can't read admin-only `/v1/admin/audit-log`; 403 live).
 - Verified: `tsc --noEmit` clean, lint clean, frontend build green. Commit `f01dd90`, pushed.
 
-**Next (Phase 3 remainder):** remaining app suites are off-plan (recruitment, marketing, design, localization, mentor, client/employer, director, dev) — Phase 4 in the roadmap; payroll/Stripe endpoints deferred to roadmap Phase 3 completion. Optional polish: search/filter actions on wired pages, expense status columns (backend + seed change).
+**Phase 3.7 done (Aug 2026):** payroll + payments endpoints shipped; provider switched to Paystack (not Stripe).
+- Sweep: `VITE_STRIPE_PUBLISHABLE_KEY` → `VITE_PAYSTACK_PUBLIC_KEY` (`src/vite-env.d.ts`, `src/lib/env.ts`, `.env.example`, dev/env page); flag key `payments.stripe` → `payments.paystack` (`src/lib/flags.ts`, mock flags, `api/src/routes/flags.ts` + test); §9/§4-A/§16/§3/§18 docs rewritten for Paystack (`charge.success`/`charge.failed` webhooks, `{ authorization_url }` checkout, `PAYSTACK_SECRET_KEY`); UI has no Paystack SDK — plain fetch.
+- New data collections in `src/data/dashboard.ts`: `payrollChanges` (`{title, detail, status}` sent|draft) + `paymentBatches` (`{batch, amount, count, date, status}` Reconciled|Pending approval, naira int amounts).
+- Migration `0004_payroll_payments.sql` + Drizzle mirrors (`payroll_changes`, `payment_batches`); routes `GET /v1/hr/payroll-changes` (requireHr) + `GET /v1/payments` (requireFinance), both `Paginated<T>` keyset.
+- Seed generator extended → `seeds/domain.{sql,ts}` now 61 stmts (pc-/pb- ids); migration 0004 applied + seeds re-run locally; `api/test/helpers.ts` loads 0004; `domain.test.ts` +4 tests (200 shapes + student 403 each) → **87/87 green**.
+- Frontend: clients `src/lib/api/hr.ts` (fetchPayrollChanges) + `finance.ts` (fetchPaymentBatches), hooks `usePayrollChanges`/`usePaymentBatches` + item hooks, mock handlers with stable ids, and both pages wired via `QueryState`: `hr/payroll-input.tsx` (sent/draft counts from status, "Sent to finance"/"Draft" badges) + `accountant/payments.tsx` (processed total + tx count derived, `formatNaira`/`formatNairaCompact`, reconciled % badge).
+- Verified: 87/87 api tests, `tsc --noEmit` clean (api + frontend), lint clean, frontend build green. Commit `0777e43`, pushed.
+
+**Next (Phase 3 remainder):** remaining app suites are off-plan (recruitment, marketing, design, localization, mentor, client/employer, director, dev) — Phase 4 in the roadmap. Paystack checkout + webhooks per §9 remain future work (roadmap Phase 3 completion): `POST /v1/payments/checkout` (charge.success verification via `PAYSTACK_SECRET_KEY` webhook), payment history for student. Optional polish: search/filter actions on wired pages, expense status columns (backend + seed change).
 
 ---
 
