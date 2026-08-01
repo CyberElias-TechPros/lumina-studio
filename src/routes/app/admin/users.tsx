@@ -3,7 +3,10 @@ import { ArrowLeft, ShieldCheck, UserCheck, UserPlus, Users } from "lucide-react
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { QueryState } from "@/components/ui/query-state";
 import { AppShell } from "@/components/app/app-shell";
+import { useAdminUsers } from "@/lib/query/admin";
+import type { AdminUser } from "@/lib/api/admin";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/admin/users")({
@@ -16,22 +19,28 @@ export const Route = createFileRoute("/app/admin/users")({
   component: AdminUsers,
 });
 
-const users = [
-  { u: "Adaeze Okafor", r: "Director", s: "Active", tone: "bg-success/10 text-success" },
-  { u: "Tunde Balogun", r: "Accountant", s: "Active", tone: "bg-success/10 text-success" },
-  { u: "Grace Oyelaran", r: "Receptionist", s: "Invited", tone: "bg-warning/10 text-warning" },
-  { u: "Ibrahim Musa", r: "Mentor", s: "Suspended", tone: "bg-destructive/10 text-destructive" },
-];
+function statusTone(status: string): string {
+  if (status === "Active") return "bg-success/10 text-success";
+  if (status === "Suspended") return "bg-destructive/10 text-destructive";
+  return "bg-warning/10 text-warning";
+}
 
 function AdminUsers() {
+  const query = useAdminUsers();
+  const rows = query.data?.pages.flatMap((p) => p.items) ?? [];
+  const active = rows.filter((u) => u.status === "Active").length;
+  const pending = rows.filter((u) => u.status === "Invited").length;
+
   return (
     <AppShell
       roleKey="admin"
       title="User management"
-      subtitle="8,412 accounts · 64 staff · 19 roles"
+      subtitle={`${rows.length} accounts · ${active} active`}
       actions={
         <>
-          <Badge className="bg-success/10 text-success border-0 font-semibold">2 pending</Badge>
+          <Badge className="bg-success/10 text-success border-0 font-semibold">
+            {pending} pending
+          </Badge>
           <Button asChild variant="outline" size="sm" className="font-semibold">
             <Link to="/app/admin">
               <ArrowLeft className="size-4" /> Admin hub
@@ -44,29 +53,29 @@ function AdminUsers() {
         {[
           {
             label: "Total users",
-            value: "8,412",
-            delta: "+214 this month",
+            value: String(rows.length),
+            delta: "across system",
             icon: Users,
             tone: "bg-primary/10 text-primary",
           },
           {
-            label: "Staff",
-            value: "64",
-            delta: "across 19 roles",
+            label: "Active",
+            value: String(active),
+            delta: "seeded accounts",
             icon: UserCheck,
             tone: "bg-learning/10 text-learning",
           },
           {
-            label: "Active today",
-            value: "1,208",
-            delta: "14.4% of users",
+            label: "Roles",
+            value: String(new Set(rows.map((u) => u.role)).size),
+            delta: "distinct roles",
             icon: ShieldCheck,
             tone: "bg-success/10 text-success",
           },
           {
             label: "Pending invites",
-            value: "2",
-            delta: "sent 3+ days ago",
+            value: String(pending),
+            delta: "awaiting sign-in",
             icon: UserPlus,
             tone: "bg-warning/10 text-warning",
           },
@@ -95,24 +104,37 @@ function AdminUsers() {
           </CardTitle>
         </CardHeader>
         <CardContent className="divide-y">
-          {users.map((u) => (
-            <div key={u.u} className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0">
-              <div className="grid size-9 shrink-0 place-items-center rounded-full bg-gradient-brand font-display text-xs font-extrabold text-white">
-                {u.u
-                  .split(" ")
-                  .map((w) => w[0])
-                  .join("")}
-              </div>
-              <div className="min-w-0 flex-1">
-                <p className="text-sm font-bold">{u.u}</p>
-                <p className="text-muted-foreground text-xs">{u.r}</p>
-              </div>
-              <Badge className={cn("border-0 font-semibold", u.tone)}>{u.s}</Badge>
-              <Button variant="outline" size="sm" className="shrink-0 font-semibold">
-                Manage
-              </Button>
-            </div>
-          ))}
+          <QueryState<AdminUser[]> query={query} error={{ title: "Users unavailable" }}>
+            {(users) => (
+              <>
+                {users.map((u) => (
+                  <div
+                    key={u.id}
+                    className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
+                  >
+                    <div className="grid size-9 shrink-0 place-items-center rounded-full bg-gradient-brand font-display text-xs font-extrabold text-white">
+                      {u.name
+                        .split(" ")
+                        .map((w) => w[0])
+                        .join("")}
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <p className="text-sm font-bold">{u.name}</p>
+                      <p className="text-muted-foreground text-xs">
+                        {u.email} · {u.role} · seen {u.lastSeen}
+                      </p>
+                    </div>
+                    <Badge className={cn("border-0 font-semibold", statusTone(u.status))}>
+                      {u.status}
+                    </Badge>
+                    <Button variant="outline" size="sm" className="shrink-0 font-semibold">
+                      Manage
+                    </Button>
+                  </div>
+                ))}
+              </>
+            )}
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>

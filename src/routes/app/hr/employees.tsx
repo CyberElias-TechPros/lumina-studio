@@ -3,7 +3,10 @@ import { ArrowLeft, FileText, Search, UserRound, Users } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { QueryState } from "@/components/ui/query-state";
 import { AppShell } from "@/components/app/app-shell";
+import { useEmployees } from "@/lib/query/hr";
+import type { Employee } from "@/lib/api/hr";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/hr/employees")({
@@ -16,33 +19,15 @@ export const Route = createFileRoute("/app/hr/employees")({
   component: HrEmployees,
 });
 
-const staff = [
-  {
-    n: "Mr. Adeyemi",
-    r: "Instructor · Backend",
-    d: "Contracts current",
-    tone: "bg-primary/10 text-primary",
-  },
-  {
-    n: "Ms. Chidera",
-    r: "Instructor · DevOps",
-    d: "Renewal due Dec",
-    tone: "bg-warning/10 text-warning",
-  },
-  {
-    n: "Mrs. Obi",
-    r: "Mentor coordinator",
-    d: "Contracts current",
-    tone: "bg-success/10 text-success",
-  },
-];
-
 function HrEmployees() {
+  const query = useEmployees();
+  const rows = query.data?.pages.flatMap((p) => p.items) ?? [];
+
   return (
     <AppShell
       roleKey="instructor"
       title="Employee database"
-      subtitle="94 records · 96% docs complete"
+      subtitle={`${rows.length} records · 96% docs complete`}
       actions={
         <>
           <Badge className="bg-success/10 text-success border-0 font-semibold">Compliance OK</Badge>
@@ -73,25 +58,45 @@ function HrEmployees() {
             <Users className="text-primary size-4" /> Staff directory
           </CardTitle>
           <Badge variant="secondary" className="font-semibold">
-            94 total
+            {rows.length} total
           </Badge>
         </CardHeader>
         <CardContent className="divide-y">
-          {staff.map((s) => (
-            <div key={s.n} className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0">
-              <span className="bg-muted text-muted-foreground grid size-9 shrink-0 place-items-center rounded-lg">
-                <UserRound className="size-4" />
-              </span>
-              <div className="min-w-0 flex-1">
-                <p className="text-sm font-bold">{s.n}</p>
-                <p className="text-muted-foreground text-xs">{s.r}</p>
-              </div>
-              <Badge className={cn("border-0 font-semibold", s.tone)}>{s.d}</Badge>
-              <Button variant="outline" size="sm" className="shrink-0 font-semibold">
-                <FileText className="size-3.5" /> File
-              </Button>
-            </div>
-          ))}
+          <QueryState<Employee[]> query={query} error={{ title: "Directory unavailable" }}>
+            {(staff) => (
+              <>
+                {staff.map((s) => (
+                  <div
+                    key={s.id}
+                    className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
+                  >
+                    <span className="bg-muted text-muted-foreground grid size-9 shrink-0 place-items-center rounded-lg">
+                      <UserRound className="size-4" />
+                    </span>
+                    <div className="min-w-0 flex-1">
+                      <p className="text-sm font-bold">{s.name}</p>
+                      <p className="text-muted-foreground text-xs">
+                        {s.role} · {s.dept} · joined {s.joined}
+                      </p>
+                    </div>
+                    <Badge
+                      className={cn(
+                        "border-0 font-semibold",
+                        s.status === "Active"
+                          ? "bg-success/10 text-success"
+                          : "bg-warning/10 text-warning",
+                      )}
+                    >
+                      {s.status}
+                    </Badge>
+                    <Button variant="outline" size="sm" className="shrink-0 font-semibold">
+                      <FileText className="size-3.5" /> File
+                    </Button>
+                  </div>
+                ))}
+              </>
+            )}
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>

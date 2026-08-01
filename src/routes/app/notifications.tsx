@@ -3,7 +3,10 @@ import { ArrowLeft, Bell, CheckCheck, Inbox, Settings2, Sparkles } from "lucide-
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { QueryState } from "@/components/ui/query-state";
 import { AppShell } from "@/components/app/app-shell";
+import { useNotifications } from "@/lib/query/notifications";
+import type { AppNotification } from "@/lib/api/notifications";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/notifications")({
@@ -16,48 +19,27 @@ export const Route = createFileRoute("/app/notifications")({
   component: Notifications,
 });
 
-const notifications = [
-  {
-    t: "New grade: Backend & APIs — A",
-    d: "10 min ago",
-    tone: "bg-success/10 text-success",
-    unread: true,
-  },
-  {
-    t: "Term 3 instalment due Sep 1",
-    d: "2 hours ago",
-    tone: "bg-warning/10 text-warning",
-    unread: true,
-  },
-  {
-    t: "Mr. Adeyemi replied to your question",
-    d: "Yesterday",
-    tone: "bg-primary/10 text-primary",
-    unread: true,
-  },
-  {
-    t: "Live class starts in 15 min — Cloud & DevOps",
-    d: "Today, 09:45",
-    tone: "bg-learning/10 text-learning",
-    unread: false,
-  },
-  {
-    t: "Attendance record updated (QR check-in)",
-    d: "Jul 28",
-    tone: "bg-muted-foreground/10 text-muted-foreground",
-    unread: false,
-  },
-];
+function engineTone(engine: string): string {
+  if (engine === "community") return "bg-success/10 text-success";
+  if (engine === "career") return "bg-learning/10 text-learning";
+  if (engine === "erp") return "bg-warning/10 text-warning";
+  return "bg-primary/10 text-primary";
+}
 
 function Notifications() {
+  const query = useNotifications();
+  const rows = query.data?.pages.flatMap((p) => p.items) ?? [];
+
   return (
     <AppShell
       roleKey="student"
       title="Notifications"
-      subtitle="3 unread · delivered on app, email and SMS"
+      subtitle="Delivered on app, email and SMS"
       actions={
         <>
-          <Badge className="bg-primary/10 text-primary border-0 font-semibold">3 unread</Badge>
+          <Badge className="bg-primary/10 text-primary border-0 font-semibold">
+            {rows.length} recent
+          </Badge>
           <Button variant="outline" size="sm" className="font-semibold">
             <CheckCheck className="size-4" /> Mark all read
           </Button>
@@ -70,9 +52,9 @@ function Notifications() {
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         {[
           {
-            label: "Unread",
-            value: "3",
-            delta: "1 urgent",
+            label: "Recent",
+            value: String(rows.length),
+            delta: "this session",
             icon: Inbox,
             tone: "bg-warning/10 text-warning",
           },
@@ -122,24 +104,36 @@ function Notifications() {
           </CardTitle>
         </CardHeader>
         <CardContent className="divide-y">
-          {notifications.map((n) => (
-            <div
-              key={n.t + n.d}
-              className={cn(
-                "flex items-center gap-3 py-4 first:pt-0 last:pb-0",
-                !n.unread && "opacity-60",
-              )}
-            >
-              <span className={cn("grid size-9 shrink-0 place-items-center rounded-lg", n.tone)}>
-                <Bell className="size-4" />
-              </span>
-              <div className="min-w-0 flex-1">
-                <p className="text-sm font-bold">{n.t}</p>
-                <p className="text-muted-foreground text-xs">{n.d}</p>
-              </div>
-              {n.unread && <span className="bg-primary size-2 shrink-0 rounded-full" />}
-            </div>
-          ))}
+          <QueryState<AppNotification[]>
+            query={query}
+            error={{ title: "Notifications unavailable" }}
+          >
+            {(notifications) => (
+              <>
+                {notifications.map((n) => (
+                  <div key={n.id} className="flex items-center gap-3 py-4 first:pt-0 last:pb-0">
+                    <span
+                      className={cn(
+                        "grid size-9 shrink-0 place-items-center rounded-lg",
+                        engineTone(n.engine),
+                      )}
+                    >
+                      <Bell className="size-4" />
+                    </span>
+                    <div className="min-w-0 flex-1">
+                      <p className="text-sm font-bold">{n.title}</p>
+                      <p className="text-muted-foreground text-xs">
+                        {n.body} · {n.time}
+                      </p>
+                    </div>
+                    <Badge variant="secondary" className="font-semibold">
+                      {n.engine}
+                    </Badge>
+                  </div>
+                ))}
+              </>
+            )}
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>

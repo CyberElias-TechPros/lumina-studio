@@ -3,7 +3,10 @@ import { ArrowLeft, Download, FileCheck, ScrollText, Search } from "lucide-react
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { QueryState } from "@/components/ui/query-state";
 import { AppShell } from "@/components/app/app-shell";
+import { useAuditLog } from "@/lib/query/admin";
+import type { AuditEntry } from "@/lib/api/admin";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/admin/audit")({
@@ -16,36 +19,22 @@ export const Route = createFileRoute("/app/admin/audit")({
   component: AdminAudit,
 });
 
-const events = [
-  {
-    e: "settings.update · system.maintenance",
-    a: "Adaeze Okafor",
-    t: "Jul 31 · 08:22",
-    s: "Success",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    e: "rbac.override · permission grant",
-    a: "System",
-    t: "Jul 30 · 16:41",
-    s: "Success",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    e: "auth.login_denied · bad IP",
-    a: "—",
-    t: "Jul 30 · 03:47",
-    s: "Denied",
-    tone: "bg-warning/10 text-warning",
-  },
-];
+function severityTone(severity: string): string {
+  if (severity === "critical") return "bg-destructive/10 text-destructive";
+  if (severity === "warning") return "bg-warning/10 text-warning";
+  return "bg-success/10 text-success";
+}
 
 function AdminAudit() {
+  const query = useAuditLog();
+  const rows = query.data?.pages.flatMap((p) => p.items) ?? [];
+  const critical = rows.filter((e) => e.severity === "critical").length;
+
   return (
     <AppShell
       roleKey="admin"
       title="Audit log"
-      subtitle="Immutable · 7-year retention · 2.1m events"
+      subtitle={`Immutable · ${rows.length} recent events`}
       actions={
         <>
           <Badge className="bg-success/10 text-success border-0 font-semibold">Verified</Badge>
@@ -61,8 +50,8 @@ function AdminAudit() {
         {[
           {
             label: "Events (30d)",
-            value: "48k",
-            delta: "0.8% denied",
+            value: String(rows.length),
+            delta: `${critical} critical`,
             icon: ScrollText,
             tone: "bg-primary/10 text-primary",
           },
@@ -112,23 +101,31 @@ function AdminAudit() {
           </CardTitle>
         </CardHeader>
         <CardContent className="divide-y">
-          {events.map((ev) => (
-            <div
-              key={ev.e + ev.t}
-              className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
-            >
-              <div className="min-w-0 flex-1">
-                <p className="font-mono text-xs font-bold">{ev.e}</p>
-                <p className="text-muted-foreground text-xs">
-                  {ev.a} · {ev.t}
-                </p>
-              </div>
-              <Badge className={cn("border-0 font-semibold", ev.tone)}>{ev.s}</Badge>
-              <Button variant="outline" size="sm" className="shrink-0 font-semibold">
-                Details
-              </Button>
-            </div>
-          ))}
+          <QueryState<AuditEntry[]> query={query} error={{ title: "Audit trail unavailable" }}>
+            {(events) => (
+              <>
+                {events.map((ev) => (
+                  <div
+                    key={ev.id}
+                    className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
+                  >
+                    <div className="min-w-0 flex-1">
+                      <p className="text-sm font-bold">{ev.action}</p>
+                      <p className="text-muted-foreground text-xs">
+                        {ev.actor} · {ev.time}
+                      </p>
+                    </div>
+                    <Badge className={cn("border-0 font-semibold", severityTone(ev.severity))}>
+                      {ev.severity}
+                    </Badge>
+                    <Button variant="outline" size="sm" className="shrink-0 font-semibold">
+                      Details
+                    </Button>
+                  </div>
+                ))}
+              </>
+            )}
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>

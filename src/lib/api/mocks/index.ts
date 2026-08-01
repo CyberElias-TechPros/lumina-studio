@@ -174,17 +174,26 @@ export function registerAllMocks(): void {
   /* Notifications */
   registerMock("GET", "/v1/notifications", async () => {
     await delay();
-    return { items: notifications, total: notifications.length };
+    return {
+      items: notifications.map((n, i) => ({ id: `nt-${i + 1}`, ...n })),
+      total: notifications.length,
+    };
   });
 
   /* Admin */
   registerMock("GET", "/v1/admin/users", async () => {
     await delay();
-    return { items: systemUsers, total: systemUsers.length };
+    return {
+      items: systemUsers.map((u, i) => ({ id: `usr-${i + 1}`, ...u })),
+      total: systemUsers.length,
+    };
   });
   registerMock("GET", "/v1/admin/audit-log", async () => {
     await delay();
-    return { items: auditLog, total: auditLog.length };
+    return {
+      items: auditLog.map((e, i) => ({ id: `al-${i + 1}`, ...e })),
+      total: auditLog.length,
+    };
   });
 
   /* Instructor */
@@ -232,7 +241,10 @@ export function registerAllMocks(): void {
   /* HR */
   registerMock("GET", "/v1/hr/employees", async () => {
     await delay();
-    return { items: employees, total: employees.length };
+    return {
+      items: employees.map((e, i) => ({ id: `emp-${i + 1}`, ...e })),
+      total: employees.length,
+    };
   });
   registerMock("GET", "/v1/hr/leave-requests", async () => {
     await delay();
@@ -252,7 +264,10 @@ export function registerAllMocks(): void {
   /* Finance */
   registerMock("GET", "/v1/expenses", async () => {
     await delay();
-    return { items: expenses, total: expenses.length };
+    return {
+      items: expenses.map((e, i) => ({ id: `exp-${i + 1}`, ...e })),
+      total: expenses.length,
+    };
   });
 
   /* Flags */

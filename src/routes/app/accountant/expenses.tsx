@@ -3,8 +3,11 @@ import { ArrowLeft, BadgeCheck, CheckCircle2, Clock3, ReceiptText } from "lucide
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { QueryState } from "@/components/ui/query-state";
 import { AppShell } from "@/components/app/app-shell";
-import { cn } from "@/lib/utils";
+import { useExpenses } from "@/lib/query/finance";
+import type { Expense } from "@/lib/api/finance";
+import { cn, formatNaira, formatNairaCompact } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/accountant/expenses")({
   head: () => ({
@@ -16,36 +19,16 @@ export const Route = createFileRoute("/app/accountant/expenses")({
   component: AccountantExpenses,
 });
 
-const claims = [
-  {
-    c: "Fuel — generator week 3",
-    by: "Ops manager",
-    v: "₦180,000",
-    s: "Approved",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    c: "Client lunch — TechHub",
-    by: "Marketing lead",
-    v: "₦64,000",
-    s: "In review",
-    tone: "bg-warning/10 text-warning",
-  },
-  {
-    c: "Internet top-up — VI campus",
-    by: "IT support",
-    v: "₦92,000",
-    s: "Pending receipt",
-    tone: "bg-primary/10 text-primary",
-  },
-];
-
 function AccountantExpenses() {
+  const query = useExpenses();
+  const rows = query.data?.pages.flatMap((p) => p.items) ?? [];
+  const claimed = rows.reduce((s, e) => s + e.amount, 0);
+
   return (
     <AppShell
       roleKey="instructor"
       title="Expenses"
-      subtitle="₦1.4m this month · 0 over policy limit"
+      subtitle={`${formatNairaCompact(claimed)} this month · ${rows.length} categories`}
       actions={
         <>
           <Badge className="bg-success/10 text-success border-0 font-semibold">
@@ -63,8 +46,8 @@ function AccountantExpenses() {
         {[
           {
             label: "Claimed (MTD)",
-            value: "₦1.4m",
-            delta: "23 claims",
+            value: formatNairaCompact(claimed),
+            delta: `${rows.length} categories`,
             icon: ReceiptText,
             tone: "bg-primary/10 text-primary",
           },
@@ -110,24 +93,33 @@ function AccountantExpenses() {
       <Card className="bg-card mt-5 shadow-soft border">
         <CardHeader>
           <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
-            <ReceiptText className="text-primary size-4" /> Open claims
+            <ReceiptText className="text-primary size-4" /> Spending by category
           </CardTitle>
         </CardHeader>
         <CardContent className="divide-y">
-          {claims.map((c) => (
-            <div key={c.c} className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0">
-              <div className="min-w-0 flex-1">
-                <p className="text-sm font-bold">{c.c}</p>
-                <p className="text-muted-foreground text-xs">
-                  {c.by} · {c.v}
-                </p>
-              </div>
-              <Badge className={cn("border-0 font-semibold", c.tone)}>{c.s}</Badge>
-              <Button variant="outline" size="sm" className="shrink-0 font-semibold">
-                Review
-              </Button>
-            </div>
-          ))}
+          <QueryState<Expense[]> query={query} error={{ title: "Expenses unavailable" }}>
+            {(claims) => (
+              <>
+                {claims.map((c) => (
+                  <div
+                    key={c.id}
+                    className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
+                  >
+                    <div className="min-w-0 flex-1">
+                      <p className="text-sm font-bold">{c.category}</p>
+                      <p className="text-muted-foreground text-xs">{formatNaira(c.amount)}</p>
+                    </div>
+                    <Badge variant="secondary" className="font-semibold">
+                      Logged
+                    </Badge>
+                    <Button variant="outline" size="sm" className="shrink-0 font-semibold">
+                      Review
+                    </Button>
+                  </div>
+                ))}
+              </>
+            )}
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>

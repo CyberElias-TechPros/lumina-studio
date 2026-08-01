@@ -3,7 +3,10 @@ import { ArrowLeft, CalendarDays, CheckCircle2, Clock3, Plane } from "lucide-rea
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { QueryState } from "@/components/ui/query-state";
 import { AppShell } from "@/components/app/app-shell";
+import { useLeaveRequests } from "@/lib/query/hr";
+import type { LeaveRequest } from "@/lib/api/hr";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/hr/leave")({
@@ -16,33 +19,24 @@ export const Route = createFileRoute("/app/hr/leave")({
   component: HrLeave,
 });
 
-const requests = [
-  {
-    r: "T. Bello · annual leave",
-    d: "Aug 10–21 · 10 days",
-    s: "Approved",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    r: "F. Ade · sick leave",
-    d: "Aug 3–4 · 2 days",
-    s: "Approved",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    r: "K. Okafor · study leave",
-    d: "Aug 17–28 · 10 days",
-    s: "Pending",
-    tone: "bg-warning/10 text-warning",
-  },
-];
+function daysBetween(from: string, to: string): number {
+  const ms = Date.parse(to) - Date.parse(from);
+  return Number.isFinite(ms) && ms >= 0 ? Math.round(ms / 86_400_000) + 1 : 0;
+}
 
 function HrLeave() {
+  const query = useLeaveRequests();
+  const requests = query.data?.pages.flatMap((p) => p.items) ?? [];
+
+  const approved = requests.filter((r) => r.status === "Approved").length;
+  const pending = requests.filter((r) => r.status === "Pending").length;
+  const days = requests.reduce((s, r) => s + daysBetween(r.from, r.to), 0);
+
   return (
     <AppShell
       roleKey="instructor"
       title="Leave management"
-      subtitle="11 open · 7 approved · 4 pending"
+      subtitle={`${requests.length} open · ${approved} approved · ${pending} pending`}
       actions={
         <>
           <Badge className="bg-success/10 text-success border-0 font-semibold">
@@ -60,29 +54,29 @@ function HrLeave() {
         {[
           {
             label: "Open requests",
-            value: "11",
-            delta: "4 pending",
+            value: String(requests.length),
+            delta: `${pending} pending`,
             icon: CalendarDays,
             tone: "bg-primary/10 text-primary",
           },
           {
             label: "Days requested",
-            value: "63",
-            delta: "this month",
+            value: String(days),
+            delta: "across open requests",
             icon: Plane,
             tone: "bg-learning/10 text-learning",
           },
           {
             label: "Approved",
-            value: "7",
+            value: String(approved),
             delta: "avg 2.4 days",
             icon: CheckCircle2,
             tone: "bg-success/10 text-success",
           },
           {
-            label: "Avg approval",
-            value: "1.1 days",
-            delta: "target < 2",
+            label: "Pending",
+            value: String(pending),
+            delta: "awaiting review",
             icon: Clock3,
             tone: "bg-warning/10 text-warning",
           },
@@ -111,18 +105,40 @@ function HrLeave() {
           </CardTitle>
         </CardHeader>
         <CardContent className="divide-y">
-          {requests.map((r) => (
-            <div key={r.r} className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0">
-              <div className="min-w-0 flex-1">
-                <p className="text-sm font-bold">{r.r}</p>
-                <p className="text-muted-foreground text-xs">{r.d}</p>
-              </div>
-              <Badge className={cn("border-0 font-semibold", r.tone)}>{r.s}</Badge>
-              <Button variant="outline" size="sm" className="shrink-0 font-semibold">
-                {r.s === "Pending" ? "Review" : "View"}
-              </Button>
-            </div>
-          ))}
+          <QueryState<LeaveRequest[]> query={query} error={{ title: "Leave requests unavailable" }}>
+            {(rows) => (
+              <>
+                {rows.map((r) => (
+                  <div
+                    key={r.id}
+                    className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
+                  >
+                    <div className="min-w-0 flex-1">
+                      <p className="text-sm font-bold">
+                        {r.employee} · {r.type.toLowerCase()} leave
+                      </p>
+                      <p className="text-muted-foreground text-xs">
+                        {r.from}–{r.to} · {daysBetween(r.from, r.to)} days
+                      </p>
+                    </div>
+                    <Badge
+                      className={cn(
+                        "border-0 font-semibold",
+                        r.status === "Approved"
+                          ? "bg-success/10 text-success"
+                          : "bg-warning/10 text-warning",
+                      )}
+                    >
+                      {r.status}
+                    </Badge>
+                    <Button variant="outline" size="sm" className="shrink-0 font-semibold">
+                      {r.status === "Pending" ? "Review" : "View"}
+                    </Button>
+                  </div>
+                ))}
+              </>
+            )}
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>
