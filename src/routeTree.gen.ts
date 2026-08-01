@@ -206,6 +206,7 @@ import { Route as AppEmployerHubRouteImport } from './routes/app/employer/hub'
 import { Route as AppEmployerInterviewsRouteImport } from './routes/app/employer/interviews'
 import { Route as AppEmployerJobsRouteImport } from './routes/app/employer/jobs'
 import { Route as AppEmployerTalentRouteImport } from './routes/app/employer/talent'
+import { Route as AppFinancePayVerifyRouteImport } from './routes/app/finance/pay-verify'
 import { Route as AppGovernmentIndexRouteImport } from './routes/app/government/index'
 import { Route as AppGovernmentAuditRouteImport } from './routes/app/government/audit'
 import { Route as AppGovernmentCalendarRouteImport } from './routes/app/government/calendar'
@@ -1376,6 +1377,11 @@ const AppEmployerTalentRoute = AppEmployerTalentRouteImport.update({
   path: '/app/employer/talent',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AppFinancePayVerifyRoute = AppFinancePayVerifyRouteImport.update({
+  id: '/pay-verify',
+  path: '/pay-verify',
+  getParentRoute: () => AppFinanceRoute,
+} as any)
 const AppGovernmentIndexRoute = AppGovernmentIndexRouteImport.update({
   id: '/app/government/',
   path: '/app/government/',
@@ -2270,7 +2276,7 @@ export interface FileRoutesByFullPath {
   '/app/calendar': typeof AppCalendarRoute
   '/app/certificates': typeof AppCertificatesRoute
   '/app/chat': typeof AppChatRoute
-  '/app/finance': typeof AppFinanceRoute
+  '/app/finance': typeof AppFinanceRouteWithChildren
   '/app/grades': typeof AppGradesRoute
   '/app/messages': typeof AppMessagesRoute
   '/app/notifications': typeof AppNotificationsRoute
@@ -2436,6 +2442,7 @@ export interface FileRoutesByFullPath {
   '/app/employer/interviews': typeof AppEmployerInterviewsRoute
   '/app/employer/jobs': typeof AppEmployerJobsRoute
   '/app/employer/talent': typeof AppEmployerTalentRoute
+  '/app/finance/pay-verify': typeof AppFinancePayVerifyRoute
   '/app/government/audit': typeof AppGovernmentAuditRoute
   '/app/government/calendar': typeof AppGovernmentCalendarRoute
   '/app/government/changelog': typeof AppGovernmentChangelogRoute
@@ -2633,7 +2640,7 @@ export interface FileRoutesByTo {
   '/app/calendar': typeof AppCalendarRoute
   '/app/certificates': typeof AppCertificatesRoute
   '/app/chat': typeof AppChatRoute
-  '/app/finance': typeof AppFinanceRoute
+  '/app/finance': typeof AppFinanceRouteWithChildren
   '/app/grades': typeof AppGradesRoute
   '/app/messages': typeof AppMessagesRoute
   '/app/notifications': typeof AppNotificationsRoute
@@ -2799,6 +2806,7 @@ export interface FileRoutesByTo {
   '/app/employer/interviews': typeof AppEmployerInterviewsRoute
   '/app/employer/jobs': typeof AppEmployerJobsRoute
   '/app/employer/talent': typeof AppEmployerTalentRoute
+  '/app/finance/pay-verify': typeof AppFinancePayVerifyRoute
   '/app/government/audit': typeof AppGovernmentAuditRoute
   '/app/government/calendar': typeof AppGovernmentCalendarRoute
   '/app/government/changelog': typeof AppGovernmentChangelogRoute
@@ -2997,7 +3005,7 @@ export interface FileRoutesById {
   '/app/calendar': typeof AppCalendarRoute
   '/app/certificates': typeof AppCertificatesRoute
   '/app/chat': typeof AppChatRoute
-  '/app/finance': typeof AppFinanceRoute
+  '/app/finance': typeof AppFinanceRouteWithChildren
   '/app/grades': typeof AppGradesRoute
   '/app/messages': typeof AppMessagesRoute
   '/app/notifications': typeof AppNotificationsRoute
@@ -3163,6 +3171,7 @@ export interface FileRoutesById {
   '/app/employer/interviews': typeof AppEmployerInterviewsRoute
   '/app/employer/jobs': typeof AppEmployerJobsRoute
   '/app/employer/talent': typeof AppEmployerTalentRoute
+  '/app/finance/pay-verify': typeof AppFinancePayVerifyRoute
   '/app/government/audit': typeof AppGovernmentAuditRoute
   '/app/government/calendar': typeof AppGovernmentCalendarRoute
   '/app/government/changelog': typeof AppGovernmentChangelogRoute
@@ -3528,6 +3537,7 @@ export interface FileRouteTypes {
     | '/app/employer/interviews'
     | '/app/employer/jobs'
     | '/app/employer/talent'
+    | '/app/finance/pay-verify'
     | '/app/government/audit'
     | '/app/government/calendar'
     | '/app/government/changelog'
@@ -3891,6 +3901,7 @@ export interface FileRouteTypes {
     | '/app/employer/interviews'
     | '/app/employer/jobs'
     | '/app/employer/talent'
+    | '/app/finance/pay-verify'
     | '/app/government/audit'
     | '/app/government/calendar'
     | '/app/government/changelog'
@@ -4254,6 +4265,7 @@ export interface FileRouteTypes {
     | '/app/employer/interviews'
     | '/app/employer/jobs'
     | '/app/employer/talent'
+    | '/app/finance/pay-verify'
     | '/app/government/audit'
     | '/app/government/calendar'
     | '/app/government/changelog'
@@ -4452,7 +4464,7 @@ export interface RootRouteChildren {
   AppCalendarRoute: typeof AppCalendarRoute
   AppCertificatesRoute: typeof AppCertificatesRoute
   AppChatRoute: typeof AppChatRoute
-  AppFinanceRoute: typeof AppFinanceRoute
+  AppFinanceRoute: typeof AppFinanceRouteWithChildren
   AppGradesRoute: typeof AppGradesRoute
   AppMessagesRoute: typeof AppMessagesRoute
   AppNotificationsRoute: typeof AppNotificationsRoute
@@ -6159,6 +6171,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppEmployerTalentRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/app/finance/pay-verify': {
+      id: '/app/finance/pay-verify'
+      path: '/pay-verify'
+      fullPath: '/app/finance/pay-verify'
+      preLoaderRoute: typeof AppFinancePayVerifyRouteImport
+      parentRoute: typeof AppFinanceRoute
+    }
     '/app/government/': {
       id: '/app/government/'
       path: '/app/government'
@@ -7310,6 +7329,18 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface AppFinanceRouteChildren {
+  AppFinancePayVerifyRoute: typeof AppFinancePayVerifyRoute
+}
+
+const AppFinanceRouteChildren: AppFinanceRouteChildren = {
+  AppFinancePayVerifyRoute: AppFinancePayVerifyRoute,
+}
+
+const AppFinanceRouteWithChildren = AppFinanceRoute._addFileChildren(
+  AppFinanceRouteChildren,
+)
+
 interface ApplyStatusRouteChildren {
   ApplyStatusIdRoute: typeof ApplyStatusIdRoute
 }
@@ -7464,7 +7495,7 @@ const rootRouteChildren: RootRouteChildren = {
   AppCalendarRoute: AppCalendarRoute,
   AppCertificatesRoute: AppCertificatesRoute,
   AppChatRoute: AppChatRoute,
-  AppFinanceRoute: AppFinanceRoute,
+  AppFinanceRoute: AppFinanceRouteWithChildren,
   AppGradesRoute: AppGradesRoute,
   AppMessagesRoute: AppMessagesRoute,
   AppNotificationsRoute: AppNotificationsRoute,

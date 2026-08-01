@@ -8,6 +8,14 @@ export interface AppEnv {
   UPLOADS: R2Bucket;
   REALTIME_ROOMS: DurableObjectNamespace;
   FLAGS: KVNamespace;
+  RATE_LIMIT: KVNamespace;
   VAPID_PUBLIC_KEY: string;
   VAPID_PRIVATE_KEY: string;
+  EMAIL_PROVIDER: string;
+  EMAIL_API_KEY: string;
+  EMAIL_FROM: string;
+  EMAIL_DOMAIN: string;
+  APP_URL: string;
+  AI_BASE_URL: string;
+  AI_MODEL: string;
 }

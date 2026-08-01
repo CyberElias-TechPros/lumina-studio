@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
 import { ArrowRight, CheckCircle2, KeyRound, ShieldCheck, Smartphone } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -6,8 +6,13 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Reveal } from "@/components/motion";
+import { useMfaVerify } from "@/lib/auth/session";
+import { ApiError } from "@/lib/errors";
 
 export const Route = createFileRoute("/auth/mfa")({
+  validateSearch: (search: Record<string, unknown>) => ({
+    email: typeof search.email === "string" ? search.email : "",
+  }),
   head: () => ({
     meta: [
       { title: "Two-factor authentication — CEA-OS" },
@@ -21,8 +26,30 @@ export const Route = createFileRoute("/auth/mfa")({
 });
 
 function MfaPage() {
+  const navigate = useNavigate();
+  const { email } = Route.useSearch();
   const [method, setMethod] = useState<"app" | "recovery">("app");
-  const [done, setDone] = useState(false);
+  const [code, setCode] = useState("");
+  const [error, setError] = useState<string | null>(null);
+  const verify = useMfaVerify();
+
+  const submit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError(null);
+    const trimmed = code.trim();
+    if (trimmed.length === 0) {
+      setError("Enter your code or recovery key.");
+      return;
+    }
+    verify.mutate(trimmed, {
+      onSuccess: () => navigate({ to: "/app" }),
+      onError: (err) => {
+        setError(
+          err instanceof ApiError ? err.message : "We couldn't verify that code. Try again.",
+        );
+      },
+    });
+  };
 
   return (
     <div className="bg-muted/40 relative grid min-h-screen place-items-center overflow-hidden px-4 py-16">
@@ -31,7 +58,7 @@ function MfaPage() {
         <Reveal>
           <Card className="bg-card shadow-elevated border">
             <CardContent className="p-6 sm:p-8">
-              {done ? (
+              {verify.isSuccess ? (
                 <div className="text-center">
                   <span className="bg-success/10 text-success mx-auto grid size-14 place-items-center rounded-full">
                     <CheckCircle2 className="size-7" />
@@ -56,6 +83,7 @@ function MfaPage() {
                   </h1>
                   <p className="text-muted-foreground mt-2 text-center text-sm">
                     One more step to confirm it's you.
+                    {email && <span className="font-semibold text-foreground"> ({email})</span>}
                   </p>
 
                   <div className="mt-6 grid grid-cols-2 gap-2">
@@ -81,13 +109,7 @@ function MfaPage() {
                     </button>
                   </div>
 
-                  <form
-                    className="mt-5 space-y-4"
-                    onSubmit={(e) => {
-                      e.preventDefault();
-                      setDone(true);
-                    }}
-                  >
+                  <form className="mt-5 space-y-4" onSubmit={submit}>
                     <div className="space-y-1.5">
                       <Label htmlFor="mfa-code">
                         {method === "app"
@@ -96,17 +118,28 @@ function MfaPage() {
                       </Label>
                       <Input
                         id="mfa-code"
-                        placeholder={method === "app" ? "••••••" : "abcd-efgh-ijkl-mnop"}
+                        value={code}
+                        onChange={(e) => setCode(e.target.value)}
+                        placeholder={method === "app" ? "••••••" : "cea-XXXX-XXXX"}
                         className={
                           method === "app"
                             ? "text-center font-mono text-lg tracking-[0.5em]"
                             : "font-mono"
                         }
-                        required
+                        autoFocus
+                        disabled={verify.isPending}
                       />
                     </div>
-                    <Button type="submit" className="bg-gradient-brand shadow-glow w-full border-0">
-                      Confirm <ArrowRight className="ml-1.5 size-4" />
+                    {error && (
+                      <p className="text-error bg-error/10 rounded-lg px-3 py-2 text-sm">{error}</p>
+                    )}
+                    <Button
+                      type="submit"
+                      className="bg-gradient-brand shadow-glow w-full border-0"
+                      disabled={verify.isPending}
+                    >
+                      {verify.isPending ? "Verifying…" : "Confirm"}{" "}
+                      <ArrowRight className="ml-1.5 size-4" />
                     </Button>
                   </form>
 

@@ -47,6 +47,10 @@ export const users = sqliteTable(
     roleKey: text("role_key").notNull().default("student"),
     status: text("status").notNull().default("active"),
     avatarUrl: text("avatar_url"),
+    emailVerifiedAt: text("email_verified_at"),
+    mfaSecret: text("mfa_secret"),
+    mfaEnabled: integer("mfa_enabled").notNull().default(0),
+    recoveryCodes: text("recovery_codes").notNull().default("[]"),
     createdAt: text("created_at").notNull(),
     updatedAt: text("updated_at").notNull(),
   },
@@ -64,6 +68,9 @@ export const sessions = sqliteTable(
     createdAt: text("created_at").notNull(),
     expiresAt: text("expires_at").notNull(),
     revokedAt: text("revoked_at"),
+    deviceLabel: text("device_label").notNull().default(""),
+    createdIp: text("created_ip").notNull().default(""),
+    mfaPending: integer("mfa_pending").notNull().default(0),
   },
   (t) => [
     index("idx_sessions_user").on(t.userId),
@@ -77,6 +84,7 @@ export const magicLinks = sqliteTable(
     id: text("id").primaryKey(),
     email: text("email").notNull(),
     tokenHash: text("token_hash").notNull().unique(),
+    kind: text("kind").notNull().default("magic-link"),
     createdAt: text("created_at").notNull(),
     expiresAt: text("expires_at").notNull(),
     consumedAt: text("consumed_at"),
@@ -100,6 +108,7 @@ export const applications = sqliteTable(
     programSlug: text("program_slug").references(() => programs.slug),
     experience: text("experience"),
     status: text("status").notNull().default("submitted"),
+    note: text("note").notNull().default(""),
     createdAt: text("created_at").notNull(),
     updatedAt: text("updated_at").notNull(),
   },
@@ -199,6 +208,7 @@ export const assignments = sqliteTable(
     weight: integer("weight").notNull().default(0),
     submissions: text("submissions").notNull().default("[]"),
     rubric: text("rubric").notNull().default("[]"),
+    submittedAt: text("submitted_at"),
   },
   (t) => [index("idx_assignments_user").on(t.userId)],
 );
@@ -286,8 +296,16 @@ export const submissions = sqliteTable(
     late: integer("late").notNull().default(0),
     file: text("file").notNull().default(""),
     size: text("size").notNull().default(""),
+    assignmentId: text("assignment_id"),
+    studentUserId: text("student_user_id"),
+    feedback: text("feedback").notNull().default(""),
+    gradedBy: text("graded_by"),
+    gradedAt: text("graded_at"),
   },
-  (t) => [index("idx_submissions_user").on(t.userId)],
+  (t) => [
+    index("idx_submissions_user").on(t.userId),
+    index("idx_submissions_assignment").on(t.assignmentId),
+  ],
 );
 
 export const instructorGradebook = sqliteTable(
@@ -329,19 +347,25 @@ export const leaveRequests = sqliteTable("leave_requests", {
   sortOrder: integer("sort_order").notNull().default(0),
 });
 
-export const invoices = sqliteTable("invoices", {
-  id: text("id").primaryKey(),
-  party: text("party").notNull(),
-  amount: integer("amount").notNull().default(0),
-  due: text("due").notNull().default(""),
-  status: text("status").notNull().default("pending"),
-  sortOrder: integer("sort_order").notNull().default(0),
-});
+export const invoices = sqliteTable(
+  "invoices",
+  {
+    id: text("id").primaryKey(),
+    party: text("party").notNull(),
+    amount: integer("amount").notNull().default(0),
+    due: text("due").notNull().default(""),
+    status: text("status").notNull().default("pending"),
+    userId: text("user_id").references(() => users.id, { onDelete: "cascade" }),
+    sortOrder: integer("sort_order").notNull().default(0),
+  },
+  (t) => [index("idx_invoices_user").on(t.userId)],
+);
 
 export const expenses = sqliteTable("expenses", {
   id: text("id").primaryKey(),
   category: text("category").notNull(),
   amount: integer("amount").notNull().default(0),
+  status: text("status").notNull().default("pending"),
   sortOrder: integer("sort_order").notNull().default(0),
 });
 
@@ -383,8 +407,7 @@ export const paymentBatches = sqliteTable("payment_batches", {
 });
 
 export const payments = sqliteTable(
-  "payments",
-  {
+  "payments",  {
     id: text("id").primaryKey(),
     userId: text("user_id")
       .notNull()
@@ -414,6 +437,7 @@ export const notifications = sqliteTable(
     body: text("body").notNull().default(""),
     time: text("time").notNull().default(""),
     engine: text("engine").notNull().default(""),
+    readAt: text("read_at"),
     sortOrder: integer("sort_order").notNull().default(0),
   },
   (t) => [index("idx_notifications_user").on(t.userId)],
@@ -868,4 +892,20 @@ export const localizationStats = sqliteTable(
     sortOrder: integer("sort_order").notNull().default(0),
   },
   (t) => [index("idx_localization_stats_page").on(t.page)],
+);
+
+export const certificates = sqliteTable(
+  "certificates",
+  {
+    id: text("id").primaryKey(),
+    userId: text("user_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    courseSlug: text("course_slug").notNull().default(""),
+    title: text("title").notNull().default(""),
+    code: text("code").notNull().unique(),
+    issuedAt: text("issued_at").notNull(),
+    sortOrder: integer("sort_order").notNull().default(0),
+  },
+  (t) => [index("idx_certificates_user").on(t.userId)],
 );

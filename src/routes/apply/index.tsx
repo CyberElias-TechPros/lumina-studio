@@ -28,6 +28,8 @@ import {
 import { PageShell, PageHero, CTASection, SectionHeading } from "@/components/marketing/shell";
 import { Reveal, StaggerGroup, StaggerItem } from "@/components/motion";
 import { programs, formatNaira, engineMap } from "@/data/site";
+import { submitApplication } from "@/lib/api/applications";
+import { ApiError } from "@/lib/errors";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/apply/")({
@@ -68,13 +70,37 @@ function ApplyPage() {
   const { program: initialProgram } = Route.useSearch();
   const [step, setStep] = useState(0);
   const [done, setDone] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+  const [ref, setRef] = useState<string | null>(null);
   const [programSlug, setProgramSlug] = useState(initialProgram ?? "");
   const [funding, setFunding] = useState("installments");
+  const [profile, setProfile] = useState({ firstName: "", lastName: "", email: "", phone: "" });
   const selected = programs.find((p) => p.slug === programSlug);
 
   const next = () => setStep((s) => Math.min(s + 1, steps.length - 1));
   const back = () => setStep((s) => Math.max(s - 1, 0));
-  const submit = () => setDone(true);
+
+  const submit = async () => {
+    if (!selected || !profile.firstName || !profile.lastName || !profile.email) return;
+    setSubmitting(true);
+    setSubmitError(null);
+    try {
+      const result = await submitApplication({
+        fullName: `${profile.firstName.trim()} ${profile.lastName.trim()}`,
+        email: profile.email.trim(),
+        programSlug: selected.slug,
+      });
+      setRef(result.application.ref);
+      setDone(true);
+    } catch (err) {
+      setSubmitError(
+        err instanceof ApiError ? err.message : "Something went wrong submitting your application.",
+      );
+    } finally {
+      setSubmitting(false);
+    }
+  };
 
   if (done) {
     return (
@@ -90,8 +116,14 @@ function ApplyPage() {
             <p className="text-muted-foreground mx-auto mt-3 max-w-md">
               Your application for <strong className="text-foreground">{selected?.title}</strong> is
               in review. We'll email your assessment link within 24 hours and you can track every
-              stage below.
+              stage with your reference below.
             </p>
+            {ref && (
+              <div className="bg-muted mx-auto mt-6 inline-flex items-center gap-3 rounded-2xl border px-6 py-3">
+                <p className="text-muted-foreground text-sm">Your application reference</p>
+                <p className="font-mono text-lg font-extrabold tracking-widest">{ref}</p>
+              </div>
+            )}
             <div className="mt-8 flex flex-wrap justify-center gap-3">
               <Button asChild className="bg-gradient-brand shadow-glow border-0">
                 <Link to="/apply/status">
@@ -212,16 +244,35 @@ function ApplyPage() {
                     ].map((f) => (
                       <div key={f.id} className="space-y-1.5">
                         <Label htmlFor={f.id}>{f.label}</Label>
-                        <Input id={f.id} placeholder={f.ph} />
+                        <Input
+                          id={f.id}
+                          placeholder={f.ph}
+                          value={profile[f.id as "firstName" | "lastName"]}
+                          onChange={(e) => setProfile((p) => ({ ...p, [f.id]: e.target.value }))}
+                          required
+                        />
                       </div>
                     ))}
                     <div className="space-y-1.5">
                       <Label htmlFor="email">Email address</Label>
-                      <Input id="email" type="email" placeholder="adaeze@example.com" />
+                      <Input
+                        id="email"
+                        type="email"
+                        placeholder="adaeze@example.com"
+                        value={profile.email}
+                        onChange={(e) => setProfile((p) => ({ ...p, email: e.target.value }))}
+                        required
+                      />
                     </div>
                     <div className="space-y-1.5">
                       <Label htmlFor="phone">Phone (WhatsApp)</Label>
-                      <Input id="phone" type="tel" placeholder="+234 801 234 5678" />
+                      <Input
+                        id="phone"
+                        type="tel"
+                        placeholder="+234 801 234 5678"
+                        value={profile.phone}
+                        onChange={(e) => setProfile((p) => ({ ...p, phone: e.target.value }))}
+                      />
                     </div>
                     <div className="space-y-1.5">
                       <Label htmlFor="city">City / State</Label>
@@ -368,15 +419,30 @@ function ApplyPage() {
               <ArrowLeft className="mr-1.5 size-4" /> Back
             </Button>
             {step < steps.length - 1 ? (
-              <Button onClick={next} className="bg-gradient-brand shadow-glow border-0">
+              <Button
+                onClick={next}
+                className="bg-gradient-brand shadow-glow border-0"
+                disabled={step === 0 && !programSlug}
+              >
                 Continue <ArrowRight className="ml-1.5 size-4" />
               </Button>
             ) : (
-              <Button onClick={submit} className="bg-gradient-brand shadow-glow border-0">
-                Submit application <ArrowRight className="ml-1.5 size-4" />
+              <Button
+                onClick={submit}
+                className="bg-gradient-brand shadow-glow border-0"
+                disabled={submitting || !profile.firstName || !profile.lastName || !profile.email}
+              >
+                {submitting ? "Submitting…" : "Submit application"}{" "}
+                <ArrowRight className="ml-1.5 size-4" />
               </Button>
             )}
           </div>
+
+          {submitError && (
+            <p className="text-error bg-error/10 mt-4 rounded-lg px-3 py-2 text-sm">
+              {submitError}
+            </p>
+          )}
 
           <div className="mt-10 grid gap-3 sm:grid-cols-3">
             {[

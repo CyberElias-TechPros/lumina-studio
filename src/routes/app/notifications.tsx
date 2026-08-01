@@ -5,7 +5,11 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { QueryState } from "@/components/ui/query-state";
 import { AppShell } from "@/components/app/app-shell";
-import { useNotifications } from "@/lib/query/notifications";
+import {
+  useNotifications,
+  useMarkAllNotificationsRead,
+  useMarkNotificationRead,
+} from "@/lib/query/notifications";
 import type { AppNotification } from "@/lib/api/notifications";
 import { cn } from "@/lib/utils";
 
@@ -29,6 +33,9 @@ function engineTone(engine: string): string {
 function Notifications() {
   const query = useNotifications();
   const rows = query.data?.pages.flatMap((p) => p.items) ?? [];
+  const markAll = useMarkAllNotificationsRead();
+  const markRead = useMarkNotificationRead();
+  const unread = rows.filter((n) => !n.read).length;
 
   return (
     <AppShell
@@ -38,10 +45,16 @@ function Notifications() {
       actions={
         <>
           <Badge className="bg-primary/10 text-primary border-0 font-semibold">
-            {rows.length} recent
+            {unread} unread · {rows.length} recent
           </Badge>
-          <Button variant="outline" size="sm" className="font-semibold">
-            <CheckCheck className="size-4" /> Mark all read
+          <Button
+            variant="outline"
+            size="sm"
+            className="font-semibold"
+            onClick={() => markAll.mutate()}
+            disabled={markAll.isPending || unread === 0}
+          >
+            <CheckCheck className="size-4" /> {markAll.isPending ? "Marking…" : "Mark all read"}
           </Button>
           <Button variant="ghost" size="sm" className="font-semibold">
             <Settings2 className="size-4" /> Preferences
@@ -111,7 +124,17 @@ function Notifications() {
             {(notifications) => (
               <>
                 {notifications.map((n) => (
-                  <div key={n.id} className="flex items-center gap-3 py-4 first:pt-0 last:pb-0">
+                  <button
+                    key={n.id}
+                    type="button"
+                    onClick={() => {
+                      if (!n.read) markRead.mutate(n.id);
+                    }}
+                    className={cn(
+                      "flex w-full items-center gap-3 py-4 text-left first:pt-0 last:pb-0",
+                      !n.read && "cursor-pointer",
+                    )}
+                  >
                     <span
                       className={cn(
                         "grid size-9 shrink-0 place-items-center rounded-lg",
@@ -121,15 +144,22 @@ function Notifications() {
                       <Bell className="size-4" />
                     </span>
                     <div className="min-w-0 flex-1">
-                      <p className="text-sm font-bold">{n.title}</p>
+                      <p className={cn("text-sm", n.read ? "text-muted-foreground" : "font-bold")}>
+                        {n.title}
+                      </p>
                       <p className="text-muted-foreground text-xs">
                         {n.body} · {n.time}
                       </p>
                     </div>
-                    <Badge variant="secondary" className="font-semibold">
-                      {n.engine}
-                    </Badge>
-                  </div>
+                    <span className="flex shrink-0 items-center gap-2">
+                      <Badge variant="secondary" className="font-semibold">
+                        {n.engine}
+                      </Badge>
+                      {!n.read && (
+                        <span className="bg-gradient-brand size-2 rounded-full" title="Unread" />
+                      )}
+                    </span>
+                  </button>
                 ))}
               </>
             )}

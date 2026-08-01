@@ -4,6 +4,7 @@ import { sendError } from "./lib/errors";
 import type { AppEnv } from "./types";
 import { rbacGuard } from "./lib/rbac";
 import { flags } from "./routes/flags";
+import { contact } from "./routes/contact";
 import { auth } from "./routes/auth";
 import { programs } from "./routes/programs";
 import { applications } from "./routes/applications";
@@ -18,6 +19,7 @@ import { hr } from "./routes/hr";
 import { finance } from "./routes/finance";
 import { admin } from "./routes/admin";
 import { notifications } from "./routes/notifications";
+import { certificates } from "./routes/certificates";
 import { payments } from "./routes/payments";
 import { recruitment } from "./routes/recruitment";
 import { marketing } from "./routes/marketing";
@@ -67,7 +69,8 @@ v1.route("/instructor", instructor);
 v1.route("/hr", hr);
 v1.route("/", finance);
 v1.route("/admin", admin);
-v1.route("/notifications", notifications);
+  v1.route("/notifications", notifications);
+  v1.route("/certificates", certificates);
 v1.route("/payments", payments);
 v1.route("/recruitment", recruitment);
 v1.route("/marketing", marketing);
@@ -79,6 +82,7 @@ v1.route("/uploads", uploads);
 v1.route("/ai", ai);
 v1.route("/push", push);
 v1.route("/flags", flags);
+v1.route("/contact", contact);
 
 /** Uptime + DB reachability check for deployment probes. */
 v1.get("/health", async (c) => {

@@ -163,15 +163,30 @@ describe("POST /v1/auth/sign-out", () => {
 });
 
 describe("password endpoints", () => {
-  it("sign-in returns 501 PASSWORD_NOT_ENABLED", async () => {
-    const res = await api("/v1/auth/sign-in", {
+  it("sign-up, then sign-in with the password, and rejects wrong passwords", async () => {
+    const signUp = await api("/v1/auth/sign-up", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email: "a@b.ng", password: "password123" }),
+      body: JSON.stringify({ name: "Pw User", email: "pw.user@cea.ng", password: "password123" }),
     });
-    expect(res.status).toBe(501);
-    const body = (await res.json()) as { error: { code: string } };
-    expect(body.error.code).toBe("PASSWORD_NOT_ENABLED");
+    expect(signUp.status).toBe(201);
+    expect(sessionCookieFrom(signUp)).toBeTruthy();
+
+    const wrong = await api("/v1/auth/sign-in", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email: "pw.user@cea.ng", password: "nope-nope-nope" }),
+    });
+    expect(wrong.status).toBe(401);
+    expect(((await wrong.json()) as { error: { code: string } }).error.code).toBe("UNAUTHORIZED");
+
+    const right = await api("/v1/auth/sign-in", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email: "pw.user@cea.ng", password: "password123" }),
+    });
+    expect(right.status).toBe(200);
+    expect(sessionCookieFrom(right)).toBeTruthy();
   });
 
   it("sign-up validates input before declining", async () => {

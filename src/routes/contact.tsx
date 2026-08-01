@@ -24,6 +24,8 @@ import {
 } from "@/components/ui/select";
 import { CTASection, PageHero, PageShell, SectionHeading } from "@/components/marketing/shell";
 import { Reveal } from "@/components/motion";
+import { submitContact } from "@/lib/api/marketing";
+import { ApiError } from "@/lib/errors";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -64,6 +66,32 @@ const channels = [
 
 function Contact() {
   const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    topic: "",
+    message: "",
+  });
+
+  const submit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setSending(true);
+    setError(null);
+    try {
+      await submitContact({
+        name: form.name,
+        email: form.email,
+        message: `${form.topic ? `[${form.topic}] ` : ""}${form.message}`,
+      });
+      setSent(true);
+    } catch (err) {
+      setError(err instanceof ApiError ? err.message : "We couldn't send your message. Try again.");
+    } finally {
+      setSending(false);
+    }
+  };
 
   return (
     <PageShell>
@@ -119,13 +147,7 @@ function Contact() {
                   </Button>
                 </div>
               ) : (
-                <form
-                  className="space-y-5"
-                  onSubmit={(e) => {
-                    e.preventDefault();
-                    setSent(true);
-                  }}
-                >
+                <form className="space-y-5" onSubmit={submit}>
                   <div className="flex items-center gap-2">
                     <MessageSquare className="text-primary size-5" />
                     <h3 className="font-display text-xl font-bold">Send us a message</h3>
@@ -133,7 +155,15 @@ function Contact() {
                   <div className="grid gap-5 sm:grid-cols-2">
                     <div className="space-y-2">
                       <Label htmlFor="name">Full name</Label>
-                      <Input id="name" required placeholder="Ada Obi" className="h-11" />
+                      <Input
+                        id="name"
+                        required
+                        placeholder="Ada Obi"
+                        className="h-11"
+                        value={form.name}
+                        onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
+                        disabled={sending}
+                      />
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="email">Email</Label>
@@ -143,12 +173,18 @@ function Contact() {
                         required
                         placeholder="ada@email.com"
                         className="h-11"
+                        value={form.email}
+                        onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))}
+                        disabled={sending}
                       />
                     </div>
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="topic">What's this about?</Label>
-                    <Select>
+                    <Select
+                      value={form.topic || undefined}
+                      onValueChange={(t) => setForm((f) => ({ ...f, topic: t }))}
+                    >
                       <SelectTrigger id="topic" className="h-11">
                         <SelectValue placeholder="Choose a topic" />
                       </SelectTrigger>
@@ -177,14 +213,21 @@ function Contact() {
                       rows={6}
                       placeholder="Tell us what you need…"
                       className="resize-none"
+                      value={form.message}
+                      onChange={(e) => setForm((f) => ({ ...f, message: e.target.value }))}
+                      disabled={sending}
                     />
                   </div>
+                  {error && (
+                    <p className="text-error bg-error/10 rounded-lg px-3 py-2 text-sm">{error}</p>
+                  )}
                   <Button
                     type="submit"
                     size="lg"
                     className="bg-gradient-brand shadow-glow w-full border-0"
+                    disabled={sending}
                   >
-                    <Send className="mr-2 size-4" /> Send message
+                    <Send className="mr-2 size-4" /> {sending ? "Sending…" : "Send message"}
                   </Button>
                   <p className="text-muted-foreground text-center text-xs">
                     We'll only use your details to reply. No spam, ever.

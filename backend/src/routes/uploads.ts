@@ -1,7 +1,9 @@
 import { Hono } from "hono";
 import type { AppEnv } from "../types";
+import { z } from "zod";
 import { requireAuth } from "../lib/auth";
 import { ApiError } from "../lib/errors";
+import { parseBody } from "../lib/validate";
 
 /**
  * R2-backed uploads.
@@ -29,24 +31,48 @@ export const uploads = new Hono<{ Bindings: AppEnv }>();
 
 uploads.use("*", requireAuth);
 
+/** Uploads are scoped to /:userId/... so a session can only touch its own objects. */
+function ownsKey(key: string, user: { id: string }): boolean {
+  return key.startsWith(`${user.id}/`);
+}
+
+const MAX_UPLOAD_BYTES = 10 * 1024 * 1024;
+
+const ALLOWED_TYPES: Record<string, string> = {
+  "image/png": ".png",
+  "image/jpeg": ".jpg",
+  "image/webp": ".webp",
+  "image/svg+xml": ".svg",
+  "application/pdf": ".pdf",
+  "text/plain": ".txt",
+  "application/zip": ".zip",
+  "application/msword": ".doc",
+  "application/vnd.openxmlformats-officedocument.wordprocessingml.document": ".docx",
+};
+
 function safeExt(filename: string): string {
   const match = /\.([a-zA-Z0-9]{1,12})$/.exec(filename.trim());
   const ext = match?.[1];
   return ext ? `.${ext.toLowerCase()}` : "";
 }
 
+const presignSchema = z.object({
+  filename: z.string().trim().min(1, "Filename is required.").max(200),
+  contentType: z.string().trim().max(100).optional(),
+});
+
 uploads.post("/presign", async (c) => {
-  const input = (await c.req.json().catch(() => ({}))) as {
-    filename?: string;
-    contentType?: string;
-  };
-  const filename = (input.filename ?? "").trim();
-  if (filename.length === 0) {
-    throw ApiError.validation({ filename: ["Filename is required."] });
-  }
-  const contentType = (input.contentType ?? "application/octet-stream").trim();
+  const input = await parseBody(c, presignSchema);
+  const filename = input.filename;
   const user = c.get("authUser");
-  const key = `${user.id}/${crypto.randomUUID()}${safeExt(filename)}`;
+  const requestedType = (input.contentType ?? "application/octet-stream").trim();
+  const expectedExt = ALLOWED_TYPES[requestedType];
+  if (!expectedExt) {
+    throw ApiError.validation({
+      contentType: ["This file type is not allowed. Use PNG, JPG, WebP, SVG, PDF, TXT, ZIP, DOC or DOCX."],
+    });
+  }
+  const key = `${user.id}/${crypto.randomUUID()}${safeExt(filename) || expectedExt}`;
 
   const bucket = c.env.UPLOADS as R2WithPresign;
   let uploadUrl = `/v1/uploads/${key}`;
@@ -69,14 +95,22 @@ uploads.post("/presign", async (c) => {
     method: "PUT",
     expiresIn: 3600,
     mock,
-    contentType,
+    contentType: requestedType,
   };
   return c.json(result, 201);
 });
 
 uploads.put("/:key{.*}", async (c) => {
   const key = c.req.param("key");
+  if (!ownsKey(key, c.get("authUser"))) throw ApiError.forbidden();
   const contentType = c.req.header("content-type") ?? "application/octet-stream";
+  if (!ALLOWED_TYPES[contentType]) {
+    throw ApiError.validation({ contentType: ["This file type is not allowed."] });
+  }
+  const contentLength = Number(c.req.header("content-length") ?? 0);
+  if (contentLength > MAX_UPLOAD_BYTES) {
+    throw new ApiError(413, "PAYLOAD_TOO_LARGE", "Upload exceeds the 10 MB limit.");
+  }
   const object = await c.env.UPLOADS.put(key, c.req.raw.body ?? "", {
     httpMetadata: { contentType },
   });
@@ -85,6 +119,7 @@ uploads.put("/:key{.*}", async (c) => {
 
 uploads.get("/:key{.*}", async (c) => {
   const key = c.req.param("key");
+  if (!ownsKey(key, c.get("authUser"))) throw ApiError.forbidden();
   const object = await c.env.UPLOADS.get(key);
   if (!object) throw ApiError.notFound("Object not found.");
   return new Response(object.body, {
@@ -92,12 +127,14 @@ uploads.get("/:key{.*}", async (c) => {
       "content-type": object.httpMetadata?.contentType ?? "application/octet-stream",
       "content-length": String(object.size),
       "cache-control": "private, max-age=3600",
+      "content-disposition": `inline; filename="${encodeURIComponent(key.split("/").pop() ?? "file")}"`,
     },
   });
 });
 
 uploads.delete("/:key{.*}", async (c) => {
   const key = c.req.param("key");
+  if (!ownsKey(key, c.get("authUser"))) throw ApiError.forbidden();
   await c.env.UPLOADS.delete(key);
   return c.json({ ok: true, key });
 });

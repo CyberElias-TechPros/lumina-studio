@@ -6,6 +6,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Reveal } from "@/components/motion";
+import { useForgotPassword } from "@/lib/auth/session";
+import { ApiError } from "@/lib/errors";
 
 export const Route = createFileRoute("/auth/forgot-password")({
   head: () => ({
@@ -21,7 +23,24 @@ export const Route = createFileRoute("/auth/forgot-password")({
 });
 
 function ForgotPasswordPage() {
-  const [sent, setSent] = useState(false);
+  const [email, setEmail] = useState("");
+  const [error, setError] = useState<string | null>(null);
+  const forgot = useForgotPassword();
+  const sent = forgot.isSuccess;
+
+  const submit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError(null);
+    forgot.mutate(email.trim(), {
+      onError: (err) => {
+        setError(
+          err instanceof ApiError
+            ? err.message
+            : "We couldn't send a reset link. Please try again.",
+        );
+      },
+    });
+  };
 
   return (
     <div className="bg-muted/40 relative grid min-h-screen place-items-center overflow-hidden px-4 py-16">
@@ -41,11 +60,6 @@ function ForgotPasswordPage() {
                     The link expires in 30 minutes.
                   </p>
                   <div className="mt-6 flex flex-wrap justify-center gap-3">
-                    <Button asChild className="bg-gradient-brand shadow-glow border-0">
-                      <Link to="/auth/reset-password">
-                        Enter the code <ArrowRight className="ml-1.5 size-4" />
-                      </Link>
-                    </Button>
                     <Button asChild variant="outline">
                       <Link to="/auth/sign-in">
                         <ArrowLeft className="mr-1.5 size-4" /> Sign in
@@ -67,13 +81,7 @@ function ForgotPasswordPage() {
                   <p className="text-muted-foreground mt-1 text-sm">
                     Enter your email and we'll send you a reset link.
                   </p>
-                  <form
-                    className="mt-6 space-y-4"
-                    onSubmit={(e) => {
-                      e.preventDefault();
-                      setSent(true);
-                    }}
-                  >
+                  <form className="mt-6 space-y-4" onSubmit={submit}>
                     <div className="space-y-1.5">
                       <Label htmlFor="email">Email address</Label>
                       <div className="relative">
@@ -81,14 +89,27 @@ function ForgotPasswordPage() {
                         <Input
                           id="email"
                           type="email"
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
                           placeholder="you@example.com"
                           className="pl-9"
                           required
+                          disabled={forgot.isPending}
                         />
                       </div>
                     </div>
-                    <Button type="submit" className="bg-gradient-brand shadow-glow w-full border-0">
-                      Send reset link <ArrowRight className="ml-1.5 size-4" />
+                    {error && (
+                      <p className="text-error bg-error/10 rounded-lg px-3 py-2 text-sm">
+                        {error}
+                      </p>
+                    )}
+                    <Button
+                      type="submit"
+                      className="bg-gradient-brand shadow-glow w-full border-0"
+                      disabled={forgot.isPending}
+                    >
+                      {forgot.isPending ? "Sending…" : "Send reset link"}{" "}
+                      <ArrowRight className="ml-1.5 size-4" />
                     </Button>
                   </form>
                 </>

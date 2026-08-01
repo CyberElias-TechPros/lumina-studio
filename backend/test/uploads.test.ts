@@ -45,13 +45,14 @@ describe("R2 uploads", () => {
     const presign = await api("/v1/uploads/presign", {
       method: "POST",
       headers: { "Content-Type": "application/json", ...cookieHeaders(student.cookie) },
-      body: JSON.stringify({ filename: "notes.md" }),
+      body: JSON.stringify({ filename: "notes.txt", contentType: "text/plain" }),
     });
+    expect(presign.status).toBe(201);
     const { key } = (await presign.json()) as { key: string };
 
     const upload = await api(`/v1/uploads/${key}`, {
       method: "PUT",
-      headers: { "Content-Type": "text/markdown", ...cookieHeaders(student.cookie) },
+      headers: { "Content-Type": "text/plain", ...cookieHeaders(student.cookie) },
       body: "hello from r2",
     });
     expect(upload.status).toBe(201);
@@ -62,7 +63,7 @@ describe("R2 uploads", () => {
       headers: cookieHeaders(student.cookie),
     });
     expect(download.status).toBe(200);
-    expect(download.headers.get("content-type")).toBe("text/markdown");
+    expect(download.headers.get("content-type")).toBe("text/plain");
     expect(await download.text()).toBe("hello from r2");
 
     const deleted = await api(`/v1/uploads/${key}`, {
@@ -75,6 +76,16 @@ describe("R2 uploads", () => {
       headers: cookieHeaders(student.cookie),
     });
     expect(gone.status).toBe(404);
+  });
+
+  it("rejects uploading to another user's key", async () => {
+    const other = await createTestSession("other.student@cea.ng");
+    const foreign = await api("/v1/uploads/not-mine/x.txt", {
+      method: "PUT",
+      headers: { "Content-Type": "text/plain", ...cookieHeaders(other.cookie) },
+      body: "nope",
+    });
+    expect(foreign.status).toBe(403);
   });
 
   it("requires auth everywhere", async () => {

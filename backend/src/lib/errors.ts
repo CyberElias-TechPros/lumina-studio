@@ -1,5 +1,6 @@
 import type { Context } from "hono";
 import type { ContentfulStatusCode } from "hono/utils/http-status";
+import { RateLimitExceeded } from "./rate-limit";
 
 /**
  * Error envelope — matches src/lib/errors.ts on the frontend:
@@ -52,6 +53,19 @@ export function sendError(c: Context, err: unknown): Response {
         },
       },
       err.status,
+    );
+  }
+  if (err instanceof RateLimitExceeded) {
+    return c.json(
+      {
+        error: {
+          code: "RATE_LIMITED",
+          message: "Too many requests. Please wait and try again.",
+          retryAfter: err.retryAfterSeconds,
+        },
+      },
+      429,
+      { "Retry-After": String(err.retryAfterSeconds) },
     );
   }
   console.error("Unhandled error", err);

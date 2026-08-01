@@ -3,7 +3,7 @@
  * data the real Worker endpoint will eventually return. Data comes from the
  * canonical mock collections in src/data/* — the future D1 seed source.
  */
-import { registerMock } from "@/lib/api/client";
+import { registerMock, registerMockPattern } from "@/lib/api/client";
 import type { ApiRequestInit } from "@/lib/api/client";
 import type { Session } from "@/lib/schema";
 import { ApiError } from "@/lib/errors";
@@ -66,6 +66,53 @@ export function registerAllMocks(): void {
   registerLiveMocks();
   registerUploadsMocks();
   registerAiMocks();
+
+  /* Applications (public apply flow) */
+  registerMock("POST", "/v1/applications", async (init: ApiRequestInit) => {
+    await delay();
+    const input = (init.body ?? {}) as { fullName?: string; email?: string; programSlug?: string };
+    if (!input.fullName || !input.email || !input.programSlug) {
+      throw new ApiError(400, "VALIDATION_ERROR", "fullName, email and programSlug are required.");
+    }
+    return {
+      application: {
+        id: crypto.randomUUID(),
+        ref: `CEA-${String(Math.floor(1000 + Math.random() * 9000))}`,
+        status: "submitted",
+      },
+    };
+  });
+
+  /* Certificates (public verify) */
+  registerMock("GET", "/v1/certificates/verify", async (init: ApiRequestInit) => {
+    await delay();
+    const path = new URL(`https://mock.local${init.path ?? "/"}`);
+    const code = (path.searchParams.get("code") ?? "").trim().toUpperCase();
+    if (code.length < 8) {
+      throw new ApiError(400, "VALIDATION_ERROR", "Enter a valid certificate code.");
+    }
+    if (code === "CEA-CERT-2026-8F3K2Q") {
+      return {
+        valid: true,
+        certificate: {
+          code,
+          title: "Full-Stack Software Development",
+          issuedAt: "2026-07-14T10:00:00.000Z",
+        },
+      };
+    }
+    return { valid: false, message: "No certificate matches this code." };
+  });
+
+  /* Contact (public lead capture) */
+  registerMock("POST", "/v1/contact", async (init: ApiRequestInit) => {
+    await delay();
+    const input = (init.body ?? {}) as { name?: string; email?: string; message?: string };
+    if (!input.name || !input.email || !input.message) {
+      throw new ApiError(400, "VALIDATION_ERROR", "name, email and message are required.");
+    }
+    return { ok: true };
+  });
 
   /* Auth */
   registerMock("GET", "/v1/auth/session", async () => {
@@ -338,6 +385,25 @@ export function registerAllMocks(): void {
       reference,
       authorizationUrl: `https://checkout.paystack.com/${reference}`,
       mock: true,
+    };
+  });
+  registerMockPattern("GET", "/v1/payments/verify/*", async (init: ApiRequestInit) => {
+    await delay();
+    const segments = (init.path ?? "").split("/").filter(Boolean);
+    const reference = segments[segments.length - 1] ?? "";
+    const c = createdCheckouts.get(reference);
+    if (!c) throw new ApiError(404, "NOT_FOUND", "Payment not found.");
+    return {
+      id: `pay-${c.reference}`,
+      reference: c.reference,
+      email: "student@cea.ng",
+      amount: c.amount,
+      currency: "NGN",
+      status: "success",
+      provider: "paystack",
+      description: c.description,
+      paidAt: new Date().toISOString(),
+      verified: true,
     };
   });
   registerMock("GET", "/v1/payments/history", async () => {

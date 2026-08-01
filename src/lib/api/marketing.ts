@@ -116,3 +116,15 @@ export function fetchMarketingReports(): Promise<Paginated<Report>> {
 export function fetchFunnelStages(): Promise<Paginated<FunnelStage>> {
   return apiFetch<Paginated<FunnelStage>>("/v1/marketing/funnel");
 }
+
+export interface SubmitContactInput {
+  name: string;
+  email: string;
+  message: string;
+  kind?: "contact" | "newsletter";
+}
+
+/** Public endpoint — writes a lead for the marketing suite. */
+export function submitContact(input: SubmitContactInput): Promise<{ ok: true }> {
+  return apiFetch("/v1/contact", { method: "POST", body: input });
+}

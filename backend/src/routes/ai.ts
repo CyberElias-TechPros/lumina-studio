@@ -2,11 +2,12 @@ import { Hono } from "hono";
 import type { AppEnv } from "../types";
 import { requireAuth, requireAnyRole } from "../lib/auth";
 import { ApiError } from "../lib/errors";
+import { chatCompletion } from "../lib/ai";
 
 /**
- * AI helpers. Deterministic mock mode when AI_API_KEY is unset (development),
- * mirroring the payments mock-mode philosophy; every response carries a
- * `mock` flag so clients can show a "preview" badge.
+ * AI helpers. Uses a real OpenAI-compatible provider when AI_API_KEY is set;
+ * falls back to deterministic mock output otherwise (development). Every
+ * response carries a `mock` flag so clients can show a "preview" badge.
  */
 
 export interface ApiGrade {
@@ -42,62 +43,47 @@ export const ai = new Hono<{ Bindings: AppEnv }>();
 ai.use("*", requireAuth);
 const requireInstructorOrAdmin = requireAnyRole(["instructor", "admin"]);
 
-function isMock(c: { env: AppEnv }): boolean {
-  return !c.env.AI_API_KEY;
-}
-
 function clamp(value: number, min: number, max: number): number {
   return Math.max(min, Math.min(max, value));
 }
 
-ai.post("/grade", requireInstructorOrAdmin, async (c) => {
-  const input = (await c.req.json().catch(() => ({}))) as {
-    rubric?: { criterion?: string; max?: number }[];
-  };
-  const rubric =
-    Array.isArray(input.rubric) && input.rubric.length > 0
-      ? input.rubric
-      : [
-          { criterion: "Understanding", max: 10 },
-          { criterion: "Completeness", max: 10 },
-          { criterion: "Clarity", max: 5 },
-        ];
-  const max = rubric.reduce((sum, r) => sum + (r.max ?? 0), 0) || 25;
+function fallbackRubric(): { criterion: string; max: number }[] {
+  return [
+    { criterion: "Understanding", max: 10 },
+    { criterion: "Completeness", max: 10 },
+    { criterion: "Clarity", max: 5 },
+  ];
+}
+
+function mockGrade(rubric: { criterion: string; max: number }[]): Omit<ApiGrade, "mock"> {
+  const max = rubric.reduce((sum, r) => sum + r.max, 0) || 25;
   const overall = clamp(Math.round(max * (0.72 + Math.random() * 0.2)), 1, max);
   const breakdown = rubric.map((r, i) => {
-    const criterionMax = r.max ?? 5;
-    const score = clamp(
-      Math.round(
-        (i === 0 ? overall : criterionMax * (0.65 + Math.random() * 0.3)) / (criterionMax / 10),
-      ) *
-        (criterionMax / 10),
-      0,
-      criterionMax,
-    );
+    const score =
+      i === 0
+        ? Math.round((overall / max) * r.max)
+        : clamp(Math.round(r.max * (0.65 + Math.random() * 0.3)), 0, r.max);
     return {
-      criterion: r.criterion ?? `Criterion ${i + 1}`,
+      criterion: r.criterion,
       score,
-      max: criterionMax,
+      max: r.max,
       comment:
-        score / criterionMax >= 0.7
+        score / r.max >= 0.7
           ? "Meets expectations — keep the structure and evidence."
           : "Partially meets expectations — expand and cite examples.",
     };
   });
-  const grade: ApiGrade = {
+  return {
     overall,
     max,
     breakdown,
     summary:
       "Automated draft — review before publishing. Assigns partial credit consistently and flags unsupported claims.",
-    mock: isMock(c),
   };
-  return c.json(grade);
-});
+}
 
-ai.get("/recommendations", async (c) => {
-  const user = c.get("authUser");
-  const items: ApiRecommendation[] = [
+function mockRecommendations(): ApiRecommendation[] {
+  return [
     {
       id: "rec-1",
       kind: "course",
@@ -120,25 +106,129 @@ ai.get("/recommendations", async (c) => {
       cta: "Book a slot",
     },
   ];
-  return c.json({
-    items,
-    total: items.length,
-    basedOn: { streakDays: 9, topSkill: "frontend" },
-    mock: isMock(c),
-    userId: user.id,
-  });
+}
+
+ai.post("/grade", requireInstructorOrAdmin, async (c) => {
+  const input = (await c.req.json().catch(() => ({}))) as {
+    rubric?: { criterion?: string; max?: number }[];
+  };
+  const rubric =
+    Array.isArray(input.rubric) && input.rubric.length > 0
+      ? input.rubric.map((r) => ({ criterion: r.criterion ?? "Criterion", max: r.max ?? 5 }))
+      : fallbackRubric();
+
+  let mock = true;
+  let body: Omit<ApiGrade, "mock"> = mockGrade(rubric);
+  const res = await chatCompletion(c, [
+    {
+      role: "system",
+      content:
+        "You are a strict but fair instructor. Grade the work against the rubric. Reply with ONLY valid JSON matching {\"overall\":number,\"max\":number,\"breakdown\":[{\"criterion\":string,\"score\":number,\"max\":number,\"comment\":string}],\"summary\":string}. Scores must not exceed each criterion's max.",
+    },
+    {
+      role: "user",
+      content: `Rubric: ${JSON.stringify(rubric)}. Grade the submitted work accordingly.`,
+    },
+  ], { json: true });
+  if (res.ok) {
+    try {
+      const parsed = JSON.parse(res.text) as Omit<ApiGrade, "mock">;
+      if (typeof parsed.overall === "number" && Array.isArray(parsed.breakdown)) {
+        body = parsed;
+        mock = false;
+      }
+    } catch {
+      // fall through to mock
+    }
+  }
+  return c.json({ ...body, mock } satisfies ApiGrade);
+});
+
+ai.get("/recommendations", async (c) => {
+  const user = c.get("authUser");
+  let items: ApiRecommendation[] = mockRecommendations();
+  let mock = true;
+  const res = await chatCompletion(c, [
+    {
+      role: "system",
+      content:
+        "You recommend courses, assignments and career actions for a student. Reply with ONLY valid JSON: an array of [{\"id\":string,\"kind\":\"course\"|\"assignment\"|\"career\",\"title\":string,\"reason\":string,\"cta\":string}]. Max 4 items.",
+    },
+    { role: "user", content: `Student interests: frontend web development.` },
+  ], { json: true });
+  if (res.ok) {
+    try {
+      const parsed = JSON.parse(res.text) as ApiRecommendation[];
+      if (Array.isArray(parsed) && parsed.length > 0) {
+        items = parsed.slice(0, 4).map((r) => ({
+          id: r.id ?? `rec-${Math.random().toString(36).slice(2, 6)}`,
+          kind: r.kind ?? "course",
+          title: r.title ?? "Suggested item",
+          reason: r.reason ?? "",
+          cta: r.cta ?? "View",
+        }));
+        mock = false;
+      }
+    } catch {
+      // fall through to mock
+    }
+  }
+  return c.json({ items, total: items.length, mock, userId: user.id });
 });
 
 ai.post("/ask", async (c) => {
   const input = (await c.req.json().catch(() => ({}))) as { question?: string };
   const question = (input.question ?? "").trim();
   if (question.length === 0) throw ApiError.validation({ question: ["Question is required."] });
-  const reply: ApiAssistantReply = {
-    answer: `Good question about "${question.slice(0, 80)}". In mock mode I can't research live content, but here's the pattern: start from the lesson notes in your current module, then check the forum thread for this week's topic.`,
-    mock: isMock(c),
-  };
-  return c.json(reply);
+
+  let answer = `Good question about "${question.slice(0, 80)}". In mock mode I can't research live content, but here's the pattern: start from the lesson notes in your current module, then check the forum thread for this week's topic.`;
+  let mock = true;
+  const res = await chatCompletion(c, [
+    {
+      role: "system",
+      content:
+        "You are a knowledgeable tutor assistant for a digital skills academy. Answer concisely (under 250 words) and practically, referencing lessons and careers where relevant.",
+    },
+    { role: "user", content: question },
+  ]);
+  if (res.ok) {
+    answer = res.text;
+    mock = false;
+  }
+  return c.json({ answer, mock } satisfies ApiAssistantReply);
 });
+
+function mockGenerated(kind: string, topic: string): Record<string, unknown> {
+  if (kind === "quiz") {
+    return {
+      questions: [
+        { prompt: `What is the first step in ${topic}?`, options: ["A", "B", "C", "D"], answer: 0 },
+        {
+          prompt: `Which tool is most associated with ${topic}?`,
+          options: ["X", "Y", "Z"],
+          answer: 1,
+        },
+      ],
+    };
+  }
+  if (kind === "outline") {
+    return {
+      modules: [
+        { title: `Foundations of ${topic}`, lessons: 4 },
+        { title: `${topic} in practice`, lessons: 5 },
+        { title: `Capstone: ${topic} project`, lessons: 3 },
+      ],
+    };
+  }
+  return {
+    title: `Introduction to ${topic}`,
+    objectives: [
+      `Explain the core ideas behind ${topic}`,
+      "Apply the key techniques in a guided exercise",
+    ],
+    durationMinutes: 45,
+  };
+}
 
 ai.post("/generate", async (c) => {
   const input = (await c.req.json().catch(() => ({}))) as {
@@ -149,42 +239,26 @@ ai.post("/generate", async (c) => {
   const topic = (input.topic ?? "Digital skills").trim();
   if (topic.length === 0) throw ApiError.validation({ topic: ["Topic is required."] });
 
-  let content: Record<string, unknown>;
-  if (kind === "quiz") {
-    content = {
-      questions: [
-        { prompt: `What is the first step in ${topic}?`, options: ["A", "B", "C", "D"], answer: 0 },
-        {
-          prompt: `Which tool is most associated with ${topic}?`,
-          options: ["X", "Y", "Z"],
-          answer: 1,
-        },
-      ],
-    };
-  } else if (kind === "outline") {
-    content = {
-      modules: [
-        { title: `Foundations of ${topic}`, lessons: 4 },
-        { title: `${topic} in practice`, lessons: 5 },
-        { title: `Capstone: ${topic} project`, lessons: 3 },
-      ],
-    };
-  } else {
-    content = {
-      title: `Introduction to ${topic}`,
-      objectives: [
-        `Explain the core ideas behind ${topic}`,
-        "Apply the key techniques in a guided exercise",
-      ],
-      durationMinutes: 45,
-    };
+  let content: Record<string, unknown> = mockGenerated(kind, topic);
+  let mock = true;
+  const res = await chatCompletion(c, [
+    {
+      role: "system",
+      content:
+        "You are a curriculum designer. Generate course content. Reply with ONLY valid JSON. For kind=quiz: {\"questions\":[{\"prompt\":string,\"options\":string[],\"answer\":number}]}. For kind=outline: {\"modules\":[{\"title\":string,\"lessons\":number}]}. Otherwise: {\"title\":string,\"objectives\":string[],\"durationMinutes\":number}.",
+    },
+    { role: "user", content: `Generate ${kind} content about: ${topic}` },
+  ], { json: true });
+  if (res.ok) {
+    try {
+      const parsed = JSON.parse(res.text) as Record<string, unknown>;
+      if (parsed && typeof parsed === "object") {
+        content = parsed;
+        mock = false;
+      }
+    } catch {
+      // fall through to mock
+    }
   }
-
-  const generated: ApiGeneratedContent = {
-    kind,
-    topic,
-    content,
-    mock: isMock(c),
-  };
-  return c.json(generated, 201);
+  return c.json({ kind, topic, content, mock } satisfies ApiGeneratedContent, 201);
 });

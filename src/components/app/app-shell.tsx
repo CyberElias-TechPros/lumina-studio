@@ -1,5 +1,5 @@
 import { useEffect, useState, type ReactNode } from "react";
-import { Link } from "@tanstack/react-router";
+import { Link, useNavigate } from "@tanstack/react-router";
 import {
   Bell,
   BookOpen,
@@ -56,6 +56,9 @@ import { cn } from "@/lib/utils";
 import { CommandPalette } from "@/components/app/command-palette";
 import { useCommandPalette } from "@/components/app/use-command-palette";
 import { ThemeToggle } from "@/components/app/theme-toggle";
+import { useSignOut, useSession } from "@/lib/auth/session";
+import { useSessionUser } from "@/components/app/session-provider";
+import { isMockMode } from "@/lib/env";
 import { track } from "@/lib/analytics";
 
 export type AppRole = {
@@ -257,6 +260,31 @@ export function AppShell({
   const activeRoleKey = roleKeyState || roleKey;
   const role = appRoles.find((r) => r.key === activeRoleKey) ?? appRoles[0];
   const { open: paletteOpen, setOpen: setPaletteOpen } = useCommandPalette();
+  const navigate = useNavigate();
+  const signOut = useSignOut();
+  const user = useSessionUser();
+  const { data: sessionData, isPending: sessionLoading } = useSession();
+
+  const signedOutInLiveMode = !sessionLoading && !sessionData?.user && !isMockMode;
+  useEffect(() => {
+    if (signedOutInLiveMode) {
+      void navigate({ to: "/auth/sign-in" });
+    }
+  }, [signedOutInLiveMode, navigate]);
+
+  const handleSignOut = () => {
+    signOut.mutate(undefined, {
+      onSettled: () => navigate({ to: "/" }),
+    });
+  };
+
+  const initials = (user?.name ?? "CE")
+    .split(" ")
+    .map((w) => w[0])
+    .filter(Boolean)
+    .slice(0, 2)
+    .join("")
+    .toUpperCase();
 
   useEffect(() => {
     track("app.page_view", { role: activeRoleKey, title });
@@ -331,21 +359,26 @@ export function AppShell({
       </ScrollArea>
 
       <div className="border-t p-3">
-        <Link
-          to="/app"
-          className="flex items-center gap-2.5 rounded-lg px-3 py-2.5 transition-colors hover:bg-muted/70"
+        <button
+          type="button"
+          onClick={handleSignOut}
+          disabled={signOut.isPending}
+          className="flex w-full items-center gap-2.5 rounded-lg px-3 py-2.5 text-left transition-colors hover:bg-muted/70"
+          title="Sign out"
         >
           <Avatar className="size-8">
-            <AvatarFallback className={cn("text-xs text-white", role.gradient)}>AO</AvatarFallback>
+            <AvatarFallback className={cn("text-xs text-white", role.gradient)}>
+              {initials}
+            </AvatarFallback>
           </Avatar>
           <span className="flex-1">
-            <span className="block text-sm font-bold">Ada Obi</span>
+            <span className="block truncate text-sm font-bold">{user?.name ?? "Signed in"}</span>
             <span className="text-muted-foreground block text-[11px]">
-              {role.label} · Cohort 15
+              {user?.email ?? `${role.label} · Cohort 15`}
             </span>
           </span>
           <LogOut className="text-muted-foreground size-4" />
-        </Link>
+        </button>
       </div>
     </div>
   );
@@ -398,14 +431,16 @@ export function AppShell({
                 />
               </div>
               <ThemeToggle />
-              <Button variant="ghost" size="icon" className="relative">
-                <Bell className="size-5" />
-                <span className="bg-gradient-brand absolute top-1.5 right-1.5 size-2 rounded-full ring-2 ring-background" />
+              <Button variant="ghost" size="icon" className="relative" asChild>
+                <Link to="/app/notifications" title="Notifications">
+                  <Bell className="size-5" />
+                  <span className="bg-gradient-brand absolute top-1.5 right-1.5 size-2 rounded-full ring-2 ring-background" />
+                </Link>
               </Button>
               <div className="h-6 w-px bg-border" />
               <Avatar className="size-9">
                 <AvatarFallback className={cn("text-xs text-white", role.gradient)}>
-                  AO
+                  {initials}
                 </AvatarFallback>
               </Avatar>
             </div>

@@ -5,6 +5,14 @@ import {
   signUp as apiSignUp,
   signOut as apiSignOut,
   verifyMagicLink as apiVerifyMagicLink,
+  forgotPassword as apiForgotPassword,
+  resetPassword as apiResetPassword,
+  mfaSetup as apiMfaSetup,
+  mfaEnable as apiMfaEnable,
+  mfaDisable as apiMfaDisable,
+  mfaVerify as apiMfaVerify,
+  fetchDevices as apiFetchDevices,
+  revokeDevice as apiRevokeDevice,
 } from "@/lib/api/auth";
 import type { Session, SignInInput, SignUpInput } from "@/lib/schema";
 import { DEFAULT_PERMISSIONS, resolveRoleKey, type CanonicalRoleKey } from "@/data/rbac";
@@ -45,8 +53,10 @@ export function useSignIn() {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: (input: SignInInput) => apiSignIn(input),
-    onSuccess: (session) => {
-      queryClient.setQueryData(sessionKeys.all, session);
+    onSuccess: (result) => {
+      if ("user" in result) {
+        queryClient.setQueryData(sessionKeys.all, result);
+      }
     },
   });
 }
@@ -78,6 +88,58 @@ export function useSignOut() {
     mutationFn: () => apiSignOut(),
     onSuccess: () => {
       queryClient.removeQueries({ queryKey: sessionKeys.all });
+    },
+  });
+}
+
+export function useForgotPassword() {
+  return useMutation({
+    mutationFn: (email: string) => apiForgotPassword({ email }),
+  });
+}
+
+export function useResetPassword() {
+  return useMutation({
+    mutationFn: (input: { token: string; password: string }) => apiResetPassword(input),
+  });
+}
+
+export function useMfaSetup() {
+  return useMutation({ mutationFn: () => apiMfaSetup() });
+}
+
+export function useMfaEnable() {
+  return useMutation({ mutationFn: (code: string) => apiMfaEnable({ code }) });
+}
+
+export function useMfaDisable() {
+  return useMutation({ mutationFn: (code: string) => apiMfaDisable({ code }) });
+}
+
+export function useMfaVerify() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (code: string) => apiMfaVerify({ code }),
+    onSuccess: (session) => {
+      queryClient.setQueryData(sessionKeys.all, session);
+    },
+  });
+}
+
+export function useDevices() {
+  return useQuery({
+    queryKey: ["devices"],
+    queryFn: apiFetchDevices,
+    staleTime: 30_000,
+  });
+}
+
+export function useRevokeDevice() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (id: string) => apiRevokeDevice(id),
+    onSuccess: () => {
+      void queryClient.invalidateQueries({ queryKey: ["devices"] });
     },
   });
 }

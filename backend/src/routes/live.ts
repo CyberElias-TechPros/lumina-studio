@@ -1,9 +1,11 @@
 import { Hono } from "hono";
 import type { AppEnv } from "../types";
+import { z } from "zod";
 import { base64UrlDecode, base64UrlEncode } from "../lib/crypto";
 import { paginate, parsePagination, type Paginated } from "../lib/pagination";
 import { requireAuth, requireAnyRole } from "../lib/auth";
 import { ApiError } from "../lib/errors";
+import { parseBody } from "../lib/validate";
 
 export interface ApiLiveSession {
   id: string;
@@ -409,4 +411,53 @@ live.get("/classes/:id/ws", async (c) => {
     },
   });
   return stub.fetch(upgrade);
+});
+
+const createClassSchema = z.object({
+  title: z.string().trim().min(1, "Title is required.").max(200),
+  cohort: z.string().trim().max(120).optional(),
+  startsAt: z.string().trim().min(1, "Start time is required."),
+  status: z.enum(["scheduled", "live", "ended"]).optional().default("scheduled"),
+});
+
+const patchClassSchema = z.object({
+  status: z.enum(["scheduled", "live", "ended"], { message: "Invalid class status." }),
+});
+
+/** Instructor/admin: schedule a live class. */
+live.post("/classes", requireInstructorOrAdmin, async (c) => {
+  const user = c.get("authUser");
+  const body = await parseBody(c, createClassSchema);
+  const id = crypto.randomUUID();
+  await c.env.DB.prepare(
+    `INSERT INTO live_sessions (id, title, instructor, cohort, status, starts_at, sort_order)
+     VALUES (?, ?, ?, ?, ?, ?, 0)`,
+  )
+    .bind(id, body.title, user.name, body.cohort ?? "", body.status, body.startsAt)
+    .run();
+  return c.json(
+    {
+      id,
+      title: body.title,
+      instructor: user.name,
+      cohort: body.cohort ?? "",
+      status: body.status,
+      startsAt: body.startsAt,
+    } satisfies ApiLiveSession,
+    201,
+  );
+});
+
+/** Instructor/admin: move a class through scheduled → live → ended. */
+live.patch("/classes/:id", requireInstructorOrAdmin, async (c) => {
+  const { status } = await parseBody(c, patchClassSchema);
+  const id = c.req.param("id");
+  const row = await c.env.DB.prepare(`SELECT id FROM live_sessions WHERE id = ?`)
+    .bind(id)
+    .first<{ id: string }>();
+  if (!row) throw ApiError.notFound("Live class not found.");
+  await c.env.DB.prepare(`UPDATE live_sessions SET status = ? WHERE id = ?`)
+    .bind(status, id)
+    .run();
+  return c.json({ ok: true, id, status });
 });

@@ -1,9 +1,13 @@
 import { Hono } from "hono";
 import type { AppEnv } from "../types";
+import { z } from "zod";
 import { ApiError } from "../lib/errors";
-import { base64UrlDecode, base64UrlEncode } from "../lib/crypto";
+import { base64UrlDecode, base64UrlEncode, isoNow } from "../lib/crypto";
 import { paginate, parsePagination, type Paginated } from "../lib/pagination";
-import { requireAuth, requireInstructor } from "../lib/auth";
+import { requireAuth, requireInstructor, requireAnyRole } from "../lib/auth";
+import { parseBody } from "../lib/validate";
+
+const requireInstructorOrAdmin = requireAnyRole(["instructor", "admin"]);
 
 export interface ApiInstructorGradebookRow {
   id: string;
@@ -199,5 +203,73 @@ instructor.get("/assignments/:id", async (c) => {
     late: row.late === 1,
     file: row.file,
     size: row.size,
+  });
+});
+
+const gradeSchema = z.object({
+  score: z.number().int().min(0, "Score must be 0 or more.").max(10_000, "Score is too large."),
+  feedback: z.string().trim().max(5_000, "Feedback is too long.").optional(),
+});
+
+/**
+ * Grade a submission (instructor/admin). The grader must own the submission
+ * or teach a course the submitting student is enrolled in.
+ */
+instructor.patch("/submissions/:id", requireAuth, requireInstructorOrAdmin, async (c) => {
+  const grader = c.get("authUser");
+  const { score, feedback } = await parseBody(c, gradeSchema);
+  const id = c.req.param("id");
+
+  const sub = await c.env.DB.prepare(
+    `SELECT s.id, s.user_id, s.student_user_id, s.assignment_id, s.status,
+            a.id AS linked_assignment
+       FROM submissions s
+       LEFT JOIN assignments a ON a.id = s.assignment_id
+      WHERE s.id = ?`,
+  )
+    .bind(id)
+    .first<{
+      id: string;
+      user_id: string;
+      student_user_id: string | null;
+      assignment_id: string | null;
+      status: string;
+      linked_assignment: string | null;
+    }>();
+  if (!sub) throw ApiError.notFound("Submission not found.");
+
+  const teaches = sub.student_user_id
+    ? await c.env.DB.prepare(
+        `SELECT 1 FROM enrollments e
+           JOIN courses c ON c.slug = e.course_slug
+           JOIN instructor_courses ic ON ic.user_id = ? AND ic.title = c.title
+          WHERE e.user_id = ? LIMIT 1`,
+      )
+        .bind(grader.id, sub.student_user_id)
+        .first<{ "1": number }>()
+    : null;
+  if (sub.user_id !== grader.id && !teaches) {
+    throw ApiError.forbidden("You don't teach this student's course.");
+  }
+
+  const now = isoNow();
+  await c.env.DB.prepare(
+    `UPDATE submissions SET score = ?, feedback = ?, status = 'graded', graded_by = ?, graded_at = ?
+      WHERE id = ?`,
+  )
+    .bind(score, feedback ?? "", grader.id, now, id)
+    .run();
+  if (sub.linked_assignment) {
+    await c.env.DB.prepare(`UPDATE assignments SET score = ?, status = 'graded' WHERE id = ?`)
+      .bind(score, sub.linked_assignment)
+      .run();
+  }
+  return c.json({
+    id,
+    score,
+    status: "graded",
+    ...(feedback ? { feedback } : {}),
+    gradedBy: grader.id,
+    gradedAt: now,
   });
 });

@@ -3,7 +3,7 @@ import type { AppEnv } from "../types";
 import { z } from "zod";
 import { ApiError } from "../lib/errors";
 import { parseBody } from "../lib/validate";
-import { requireAuth } from "../lib/auth";
+import { requireAuth, requireAdmin } from "../lib/auth";
 import { isoNow, randomToken } from "../lib/crypto";
 import { normalizeEmail } from "../db/client";
 import { paginate, parsePagination } from "../lib/pagination";
@@ -152,4 +152,39 @@ applications.get("/", requireAuth, async (c) => {
       (last) => last.id,
     ),
   );
+});
+
+const advanceSchema = z.object({
+  status: z.enum(STATUS_ORDER, { message: "Invalid pipeline stage." }),
+  note: z.string().trim().max(500).optional(),
+});
+
+/** Admin: advance an application along the pipeline and log it. */
+applications.patch("/:ref", requireAuth, requireAdmin, async (c) => {
+  const admin = c.get("authUser");
+  const ref = c.req.param("ref").toUpperCase();
+  const { status, note } = await parseBody(c, advanceSchema);
+  const now = isoNow();
+
+  const row = await c.env.DB.prepare(`SELECT id, status FROM applications WHERE ref = ?`)
+    .bind(ref)
+    .first<{ id: string; status: string }>();
+  if (!row) throw ApiError.notFound("Application not found.");
+  const currentIdx = STATUS_ORDER.indexOf(row.status as (typeof STATUS_ORDER)[number]);
+  const nextIdx = STATUS_ORDER.indexOf(status);
+  if (nextIdx < currentIdx) {
+    throw ApiError.validation({ status: ["Cannot move an application backwards."] });
+  }
+
+  await c.env.DB.prepare(
+    `UPDATE applications SET status = ?, note = ?, updated_at = ? WHERE id = ?`,
+  )
+    .bind(status, note ?? "", now, row.id)
+    .run();
+  await c.env.DB.prepare(
+    `INSERT INTO audit_log (id, actor, action, time, severity, sort_order) VALUES (?, ?, ?, ?, 'info', 0)`,
+  )
+    .bind(crypto.randomUUID(), admin.email, `Application ${ref} advanced to ${status}`, now)
+    .run();
+  return c.json({ ok: true, ref, status, note: note ?? "", updatedAt: now });
 });

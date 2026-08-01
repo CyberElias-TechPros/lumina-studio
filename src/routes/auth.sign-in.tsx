@@ -78,7 +78,13 @@ function SignInPage() {
     passwordSignIn.mutate(
       { email, password, remember },
       {
-        onSuccess: () => navigate({ to: "/app" }),
+        onSuccess: (result) => {
+          if ("user" in result) {
+            navigate({ to: "/app" });
+          } else {
+            navigate({ to: "/auth/mfa", search: { email } });
+          }
+        },
         onError: (err) => {
           setError(err instanceof Error ? err.message : "Sign in failed.");
         },
@@ -197,10 +203,10 @@ function SignInPage() {
                         Remember me
                       </label>
                       <Link
-                        to="/auth/mfa"
+                        to="/contact"
                         className="text-muted-foreground hover:text-foreground flex items-center gap-1 text-xs font-semibold"
                       >
-                        <ShieldCheck className="size-3.5" /> Use 2FA
+                        <ShieldCheck className="size-3.5" /> Trouble signing in?
                       </Link>
                     </div>
 

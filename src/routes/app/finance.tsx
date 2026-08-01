@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import {
   Banknote,
   CreditCard,
@@ -71,12 +71,21 @@ function StudentFinance() {
   const paid = rows.filter((p) => p.status === "success");
   const paidTotal = paid.reduce((s, p) => s + p.amount, 0);
   const checkout = useCreateCheckout();
+  const navigate = useNavigate();
 
   const handlePayNow = () => {
     checkout.mutate(
-      { amount: 140000, description: "Term 3 instalment — INV-2026-0911" },
+      {
+        amount: 140000,
+        description: "Term 3 instalment — INV-2026-0911",
+        redirectUrl: `${window.location.origin}/app/finance/pay-verify`,
+      },
       {
         onSuccess: (res) => {
+          if (res.mock) {
+            navigate({ to: "/app/finance/pay-verify", search: { reference: res.reference } });
+            return;
+          }
           window.open(res.authorizationUrl, "_blank", "noopener,noreferrer");
         },
       },

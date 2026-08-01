@@ -9,12 +9,22 @@
   },
   "vars": {
     "FRONTEND_ORIGINS": "http://localhost:5173,http://127.0.0.1:5173,https://cea-os.vercel.app",
-    "UPLOADS_PRESIGN_URL": ""
+    "UPLOADS_PRESIGN_URL": "",
+    "APP_URL": "https://cea-os.vercel.app",
+    "EMAIL_PROVIDER": "mailgun",
+    "EMAIL_DOMAIN": "mg.cyberelias.com",
+    "EMAIL_FROM": "Cyber Elias Academy <no-reply@mg.cyberelias.com>",
+    "AI_BASE_URL": "https://api.openai.com/v1",
+    "AI_MODEL": "gpt-4o-mini"
   },
   "kv_namespaces": [
     {
       "binding": "FLAGS",
       "id": "8077455f347342c293f4df75faa65723"
+    },
+    {
+      "binding": "RATE_LIMIT",
+      "id": "cecad90caa824e689d7d7dfb334fed0d"
     }
   ],
   "d1_databases": [

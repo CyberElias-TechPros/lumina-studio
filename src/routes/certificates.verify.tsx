@@ -8,16 +8,19 @@ import {
   ScanSearch,
   ShieldCheck,
 } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { PageShell, PageHero, CTASection, SectionHeading } from "@/components/marketing/shell";
 import { Reveal } from "@/components/motion";
-import { cn } from "@/lib/utils";
+import { verifyCertificate, type CertificateVerifyResult } from "@/lib/api/certificates";
+import { ApiError } from "@/lib/errors";
 
 export const Route = createFileRoute("/certificates/verify")({
+  validateSearch: (search: Record<string, unknown>): { code?: string } => ({
+    code: typeof search.code === "string" ? search.code : undefined,
+  }),
   head: () => ({
     meta: [
       { title: "Verify a Certificate — Cyber Elias Academy" },
@@ -32,11 +35,28 @@ export const Route = createFileRoute("/certificates/verify")({
 });
 
 function VerifyPage() {
-  const [code, setCode] = useState("");
-  const [result, setResult] = useState<null | "found" | "invalid">(null);
+  const { code: initialCode } = Route.useSearch();
+  const [code, setCode] = useState(initialCode ?? "");
+  const [result, setResult] = useState<CertificateVerifyResult | null>(null);
+  const [checking, setChecking] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const verify = () => {
-    setResult(code.trim().length >= 8 ? "found" : "invalid");
+  const verify = async () => {
+    const trimmed = code.trim();
+    if (trimmed.length < 8) {
+      setError("Enter a valid certificate code.");
+      return;
+    }
+    setError(null);
+    setChecking(true);
+    try {
+      setResult(await verifyCertificate(trimmed));
+    } catch (err) {
+      setResult(null);
+      setError(err instanceof ApiError ? err.message : "We couldn't check that code. Try again.");
+    } finally {
+      setChecking(false);
+    }
   };
 
   return (
@@ -67,10 +87,19 @@ function VerifyPage() {
                     onChange={(e) => setCode(e.target.value)}
                     className="flex-1 font-mono"
                   />
-                  <Button onClick={verify} className="bg-gradient-brand shadow-glow border-0">
-                    Verify <BadgeCheck className="ml-1.5 size-4" />
+                  <Button
+                    onClick={verify}
+                    className="bg-gradient-brand shadow-glow border-0"
+                    disabled={checking}
+                  >
+                    {checking ? "Checking…" : "Verify"} <BadgeCheck className="ml-1.5 size-4" />
                   </Button>
                 </div>
+                {error && (
+                  <p className="text-error bg-error/10 mt-3 rounded-lg px-3 py-2 text-xs">
+                    {error}
+                  </p>
+                )}
                 <p className="text-muted-foreground mt-2 text-xs">
                   The code is printed on every certificate and appears on the OSKM record.
                 </p>
@@ -78,7 +107,7 @@ function VerifyPage() {
             </Card>
           </Reveal>
 
-          {result === "found" && (
+          {result?.valid && result.certificate && (
             <Reveal delay={0.1}>
               <Card className="border-success/40 shadow-soft mt-6 border-2">
                 <CardContent className="p-6 sm:p-8">
@@ -91,28 +120,35 @@ function VerifyPage() {
                         Valid credential
                       </p>
                       <p className="text-muted-foreground text-xs">
-                        Verified against the CEA-OS registry · July 31, 2026
+                        Verified against the CEA-OS registry · {new Date().toLocaleDateString()}
                       </p>
                     </div>
                   </div>
                   <div className="mt-6 grid gap-4 rounded-xl border p-5 sm:grid-cols-2">
                     <div>
                       <p className="text-muted-foreground text-[10px] font-bold tracking-wide uppercase">
-                        Holder
+                        Certificate
                       </p>
-                      <p className="mt-0.5 text-sm font-bold">Adaeze Okafor</p>
+                      <p className="mt-0.5 text-sm font-bold">{result.certificate.title}</p>
                     </div>
                     <div>
                       <p className="text-muted-foreground text-[10px] font-bold tracking-wide uppercase">
-                        Program
+                        Code
                       </p>
-                      <p className="mt-0.5 text-sm font-bold">Full-Stack Software Development</p>
+                      <p className="mt-0.5 font-mono text-sm font-bold">
+                        {result.certificate.code}
+                      </p>
                     </div>
                     <div>
                       <p className="text-muted-foreground text-[10px] font-bold tracking-wide uppercase">
-                        Engine
+                        Issued
                       </p>
-                      <p className="mt-0.5 text-sm font-bold">Learning Engine · Cohort 01</p>
+                      <p className="mt-0.5 text-sm font-bold">
+                        {new Date(result.certificate.issuedAt).toLocaleDateString(undefined, {
+                          year: "numeric",
+                          month: "long",
+                        })}
+                      </p>
                     </div>
                     <div>
                       <p className="text-muted-foreground text-[10px] font-bold tracking-wide uppercase">
@@ -121,30 +157,16 @@ function VerifyPage() {
                       <p className="mt-0.5 text-sm font-bold">Level 3 — Working professional</p>
                     </div>
                   </div>
-                  <div className="mt-5 flex flex-wrap gap-2">
-                    {[
-                      "JavaScript & TypeScript",
-                      "React",
-                      "Node.js",
-                      "REST & GraphQL",
-                      "Testing",
-                      "Deployment",
-                    ].map((s) => (
-                      <Badge key={s} variant="secondary" className="font-semibold">
-                        {s}
-                      </Badge>
-                    ))}
-                  </div>
                   <p className="text-muted-foreground mt-5 border-t pt-4 text-xs">
-                    Issued July 2026 · Validity: continuous — skills are re-verified through the
-                    CEA-OS skills ledger every two years.
+                    Validity: continuous — skills are re-verified through the CEA-OS skills ledger
+                    every two years.
                   </p>
                 </CardContent>
               </Card>
             </Reveal>
           )}
 
-          {result === "invalid" && (
+          {result && !result.valid && (
             <Reveal delay={0.1}>
               <Card className="border-error/40 shadow-soft mt-6 border-2">
                 <CardContent className="p-6 sm:p-8">
@@ -157,8 +179,8 @@ function VerifyPage() {
                         No match found
                       </p>
                       <p className="text-muted-foreground text-xs">
-                        Double-check the code — it's case-sensitive. If the problem persists, ask
-                        the holder to contact alumni support.
+                        {result.message ??
+                          "Double-check the code — it's case-sensitive. If the problem persists, ask the holder to contact alumni support."}
                       </p>
                     </div>
                   </div>

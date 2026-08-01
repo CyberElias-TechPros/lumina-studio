@@ -1,8 +1,11 @@
 import { Hono } from "hono";
 import type { AppEnv } from "../types";
+import { z } from "zod";
 import { base64UrlDecode, base64UrlEncode } from "../lib/crypto";
 import { paginate, parsePagination, type Paginated } from "../lib/pagination";
 import { requireAuth, requireFinance } from "../lib/auth";
+import { ApiError } from "../lib/errors";
+import { parseBody } from "../lib/validate";
 
 export interface ApiInvoice {
   id: string;
@@ -100,4 +103,36 @@ finance.get("/payments", requireAuth, requireFinance, async (c) => {
     base64UrlEncode(last.id),
   );
   return c.json(result);
+});
+
+const invoiceActionSchema = z.object({
+  status: z.enum(["paid", "refunded", "void"], { message: "Invalid invoice status." }),
+});
+
+/** Finance: mark an invoice paid, refunded, or void. */
+finance.patch("/invoices/:id", requireAuth, requireFinance, async (c) => {
+  const { status } = await parseBody(c, invoiceActionSchema);
+  const id = c.req.param("id");
+  const row = await c.env.DB.prepare(`SELECT id FROM invoices WHERE id = ?`)
+    .bind(id)
+    .first<{ id: string }>();
+  if (!row) throw ApiError.notFound("Invoice not found.");
+  await c.env.DB.prepare(`UPDATE invoices SET status = ? WHERE id = ?`).bind(status, id).run();
+  return c.json({ ok: true, id, status });
+});
+
+const expenseActionSchema = z.object({
+  status: z.enum(["approved", "rejected"], { message: "Invalid expense status." }),
+});
+
+/** Finance: approve or reject an expense claim. */
+finance.patch("/expenses/:id", requireAuth, requireFinance, async (c) => {
+  const { status } = await parseBody(c, expenseActionSchema);
+  const id = c.req.param("id");
+  const row = await c.env.DB.prepare(`SELECT id FROM expenses WHERE id = ?`)
+    .bind(id)
+    .first<{ id: string }>();
+  if (!row) throw ApiError.notFound("Expense not found.");
+  await c.env.DB.prepare(`UPDATE expenses SET status = ? WHERE id = ?`).bind(status, id).run();
+  return c.json({ ok: true, id, status });
 });

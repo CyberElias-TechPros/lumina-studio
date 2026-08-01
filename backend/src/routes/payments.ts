@@ -75,6 +75,7 @@ payments.post("/checkout", requireAuth, async (c) => {
   const body = (await c.req.json().catch(() => null)) as {
     amount?: unknown;
     description?: unknown;
+    redirectUrl?: unknown;
   } | null;
   const fieldErrors: Record<string, string[]> = {};
   const amount = body?.amount;
@@ -92,6 +93,18 @@ payments.post("/checkout", requireAuth, async (c) => {
       fieldErrors.description = ["Description must be a string of at most 120 characters."];
     } else {
       description = body.description;
+    }
+  }
+  let redirectUrl = "";
+  if (body?.redirectUrl !== undefined && body?.redirectUrl !== null) {
+    if (
+      typeof body.redirectUrl !== "string" ||
+      body.redirectUrl.length > 500 ||
+      !/^https:\/\/[^/]/.test(body.redirectUrl)
+    ) {
+      fieldErrors.redirectUrl = ["redirectUrl must be an https URL."];
+    } else {
+      redirectUrl = body.redirectUrl;
     }
   }
   if (Object.keys(fieldErrors).length > 0) throw ApiError.validation(fieldErrors);
@@ -129,6 +142,11 @@ payments.post("/checkout", requireAuth, async (c) => {
       amount: (amount as number) * 100,
       currency: "NGN",
       reference,
+      ...(redirectUrl
+        ? {
+            callback_url: `${redirectUrl}${redirectUrl.includes("?") ? "&" : "?"}reference=${reference}`,
+          }
+        : {}),
       ...(description
         ? { metadata: { custom_fields: [{ display_name: "Item", value: description }] } }
         : {}),
@@ -234,6 +252,48 @@ payments.get("/session/:reference", requireAuth, async (c) => {
   if (!row) throw ApiError.notFound("Payment not found.");
   if (row.email !== c.get("authUser").email) throw ApiError.forbidden();
   return c.json(toApiPayment(row));
+});
+
+/** Verify a payment after the Paystack redirect lands; queries Paystack when possible. */
+payments.get("/verify/:reference", requireAuth, async (c) => {
+  const reference = c.req.param("reference");
+  const user = c.get("authUser");
+  const row = await c.env.DB.prepare(
+    `SELECT id, reference, email, amount, currency, status, provider, description, paid_at
+       FROM payments WHERE reference = ?`,
+  )
+    .bind(reference)
+    .first<PaymentRow>();
+  if (!row) throw ApiError.notFound("Payment not found.");
+  if (row.email !== user.email) throw ApiError.forbidden();
+
+  let status = row.status;
+  if (status === "pending" && row.provider === "paystack" && c.env.PAYSTACK_SECRET_KEY) {
+    const res = await fetch(`https://api.paystack.co/transaction/verify/${reference}`, {
+      headers: { Authorization: `Bearer ${c.env.PAYSTACK_SECRET_KEY}` },
+    }).catch(() => null);
+    if (res?.ok) {
+      const payload = (await res.json().catch(() => null)) as {
+        status?: boolean;
+        data?: { status?: string };
+      } | null;
+      const remote = payload?.data?.status;
+      if (remote === "success") {
+        status = "success";
+        await c.env.DB.prepare(
+          `UPDATE payments SET status = 'success', paid_at = ? WHERE reference = ?`,
+        )
+          .bind(row.paid_at ?? isoNow(), reference)
+          .run();
+      } else if (remote === "failed" || remote === "abandoned") {
+        status = "failed";
+        await c.env.DB.prepare(`UPDATE payments SET status = 'failed' WHERE reference = ?`)
+          .bind(reference)
+          .run();
+      }
+    }
+  }
+  return c.json({ ...toApiPayment({ ...row, status }), verified: true });
 });
 
 payments.get("/history", requireAuth, async (c) => {

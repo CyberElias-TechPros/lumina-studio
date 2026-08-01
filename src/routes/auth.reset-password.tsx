@@ -6,8 +6,13 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Reveal } from "@/components/motion";
+import { useResetPassword } from "@/lib/auth/session";
+import { ApiError } from "@/lib/errors";
 
 export const Route = createFileRoute("/auth/reset-password")({
+  validateSearch: (search: Record<string, unknown>) => ({
+    token: typeof search.token === "string" ? search.token : "",
+  }),
   head: () => ({
     meta: [
       { title: "Reset password — CEA-OS | Cyber Elias Academy" },
@@ -21,15 +26,37 @@ export const Route = createFileRoute("/auth/reset-password")({
 });
 
 function ResetPasswordPage() {
+  const { token } = Route.useSearch();
   const [show, setShow] = useState(false);
-  const [done, setDone] = useState(false);
+  const [pw, setPw] = useState("");
+  const [error, setError] = useState<string | null>(null);
+  const reset = useResetPassword();
+  const done = reset.isSuccess;
 
   const checks = [
     { rule: "8+ characters", test: (p: string) => p.length >= 8 },
     { rule: "One uppercase letter", test: (p: string) => /[A-Z]/.test(p) },
     { rule: "One number or symbol", test: (p: string) => /[0-9!@#$%^&*]/.test(p) },
   ];
-  const [pw, setPw] = useState("");
+
+  const submit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setError(null);
+    if (token.length < 16) {
+      setError("This reset link is incomplete. Use the link from your email.");
+      return;
+    }
+    reset.mutate(
+      { token, password: pw },
+      {
+        onError: (err) => {
+          setError(
+            err instanceof ApiError ? err.message : "We couldn't reset your password. Try again.",
+          );
+        },
+      },
+    );
+  };
 
   return (
     <div className="bg-muted/40 relative grid min-h-screen place-items-center overflow-hidden px-4 py-16">
@@ -61,24 +88,9 @@ function ResetPasswordPage() {
                   </Link>
                   <h1 className="font-display mt-4 text-2xl font-extrabold">Set a new password</h1>
                   <p className="text-muted-foreground mt-1 text-sm">
-                    For account <strong className="text-foreground">ada@example.com</strong>
+                    Choose a strong password — you'll use it to sign in from now on.
                   </p>
-                  <form
-                    className="mt-6 space-y-4"
-                    onSubmit={(e) => {
-                      e.preventDefault();
-                      setDone(true);
-                    }}
-                  >
-                    <div className="space-y-1.5">
-                      <Label htmlFor="code">Reset code</Label>
-                      <Input
-                        id="code"
-                        placeholder="6-digit code from your email"
-                        className="font-mono"
-                        required
-                      />
-                    </div>
+                  <form className="mt-6 space-y-4" onSubmit={submit}>
                     <div className="space-y-1.5">
                       <Label htmlFor="pw">New password</Label>
                       <div className="relative">
@@ -91,6 +103,7 @@ function ResetPasswordPage() {
                           value={pw}
                           onChange={(e) => setPw(e.target.value)}
                           required
+                          disabled={reset.isPending}
                         />
                         <button
                           type="button"
@@ -119,8 +132,16 @@ function ResetPasswordPage() {
                         </li>
                       ))}
                     </ul>
-                    <Button type="submit" className="bg-gradient-brand shadow-glow w-full border-0">
-                      Reset password <ShieldCheck className="ml-1.5 size-4" />
+                    {error && (
+                      <p className="text-error bg-error/10 rounded-lg px-3 py-2 text-sm">{error}</p>
+                    )}
+                    <Button
+                      type="submit"
+                      className="bg-gradient-brand shadow-glow w-full border-0"
+                      disabled={reset.isPending}
+                    >
+                      {reset.isPending ? "Resetting…" : "Reset password"}{" "}
+                      <ShieldCheck className="ml-1.5 size-4" />
                     </Button>
                   </form>
                 </>
