@@ -138,6 +138,21 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+
+  return (
+    <QueryClientProvider client={queryClient}>
+      <SessionProvider>
+        {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
+        <Outlet />
+        <OnboardingTour />
+      </SessionProvider>
+      <Toaster position="top-right" richColors />
+      <RootEffects />
+    </QueryClientProvider>
+  );
+}
+
+function RootEffects() {
   const pushEnabled = useFlag("pwa.push");
 
   useEffect(() => {
@@ -148,14 +163,5 @@ function RootComponent() {
     void subscribeToPush(pushEnabled);
   }, [pushEnabled]);
 
-  return (
-    <QueryClientProvider client={queryClient}>
-      <SessionProvider>
-        {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-        <Outlet />
-        <OnboardingTour />
-      </SessionProvider>
-      <Toaster position="top-right" richColors />
-    </QueryClientProvider>
-  );
+  return null;
 }

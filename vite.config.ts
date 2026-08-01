@@ -12,4 +12,9 @@ export default defineConfig({
     // nitro/vite builds from this
     server: { entry: "server" },
   },
+  nitro: {
+    // Vercel uses the Build Output API: emit .vercel/output instead of the
+    // default Cloudflare target. PWA header rules live in nitro.config.ts.
+    preset: "vercel",
+  },
 });

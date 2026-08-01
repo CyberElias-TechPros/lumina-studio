@@ -2,28 +2,26 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "cea-api",
   "main": "src/index.ts",
+  "account_id": "e543b6a0521fc8fd76447ceba097b665",
   "compatibility_date": "2025-11-01",
   "observability": {
     "enabled": true
   },
   "vars": {
-    "APP_ENV": "development",
-    "FRONTEND_ORIGINS": "http://localhost:5173,http://127.0.0.1:5173",
-    "UPLOADS_PRESIGN_URL": "",
-    "VAPID_PUBLIC_KEY": "",
-    "VAPID_PRIVATE_KEY": ""
+    "FRONTEND_ORIGINS": "http://localhost:5173,http://127.0.0.1:5173,https://cea-os.vercel.app",
+    "UPLOADS_PRESIGN_URL": ""
   },
   "kv_namespaces": [
     {
       "binding": "FLAGS",
-      "id": "00000000-0000-0000-0000-000000000000"
+      "id": "8077455f347342c293f4df75faa65723"
     }
   ],
   "d1_databases": [
     {
       "binding": "DB",
       "database_name": "cea-db",
-      "database_id": "00000000-0000-0000-0000-000000000000"
+      "database_id": "f673c459-0dfb-4e77-be5c-38ccbdc58838"
     }
   ],
   "r2_buckets": [
@@ -43,7 +41,7 @@
   "migrations": [
     {
       "tag": "v1",
-      "new_classes": ["RealtimeRoom"]
+      "new_sqlite_classes": ["RealtimeRoom"]
     }
   ]
 }
