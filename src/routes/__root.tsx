@@ -14,7 +14,8 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Toaster } from "@/components/ui/sonner";
 import { SessionProvider } from "@/components/app/session-provider";
 import { OnboardingTour } from "@/components/app/onboarding-tour";
-import { registerServiceWorker } from "@/lib/pwa";
+import { registerServiceWorker, subscribeToPush } from "@/lib/pwa";
+import { useFlag } from "@/lib/flags";
 
 function NotFoundComponent() {
   return (
@@ -137,10 +138,15 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const pushEnabled = useFlag("pwa.push");
 
   useEffect(() => {
     registerServiceWorker();
   }, []);
+
+  useEffect(() => {
+    void subscribeToPush(pushEnabled);
+  }, [pushEnabled]);
 
   return (
     <QueryClientProvider client={queryClient}>

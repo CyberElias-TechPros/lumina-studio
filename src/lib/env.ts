@@ -8,6 +8,9 @@ export const env = {
   get turnstileSiteKey() {
     return import.meta.env.VITE_TURNSTILE_SITE_KEY ?? "";
   },
+  get vapidPublicKey() {
+    return import.meta.env.VITE_VAPID_PUBLIC_KEY ?? "";
+  },
   get paystackPublicKey() {
     return import.meta.env.VITE_PAYSTACK_PUBLIC_KEY ?? "";
   },

@@ -7,4 +7,7 @@ export interface AppEnv {
   UPLOADS_PRESIGN_URL: string;
   UPLOADS: R2Bucket;
   REALTIME_ROOMS: DurableObjectNamespace;
+  FLAGS: KVNamespace;
+  VAPID_PUBLIC_KEY: string;
+  VAPID_PRIVATE_KEY: string;
 }

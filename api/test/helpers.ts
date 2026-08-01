@@ -7,6 +7,7 @@ import payrollSql from "../migrations/0004_payroll_payments.sql?raw";
 import paymentsSql from "../migrations/0005_payments.sql?raw";
 import phase4Sql from "../migrations/0006_phase4.sql?raw";
 import realtimeLiveSql from "../migrations/0007_realtime_live.sql?raw";
+import pushSql from "../migrations/0008_push.sql?raw";
 import { seedContentSql } from "../seeds/content";
 import { seedLmsSql } from "../seeds/lms";
 import { seedDomainSql } from "../seeds/domain";
@@ -24,6 +25,7 @@ export async function setupDb(): Promise<void> {
     paymentsSql,
     phase4Sql,
     realtimeLiveSql,
+    pushSql,
   ]) {
     const statements = sql
       .split("\n")

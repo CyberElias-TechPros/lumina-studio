@@ -49,6 +49,8 @@ describe("RBAC registry integrity", () => {
       "/v1/design/",
       "/v1/localization/",
       "/v1/flags",
+      "/v1/health",
+      "/v1/push/",
     ]) {
       expect(
         paths.some((p) => p.startsWith(prefix)),

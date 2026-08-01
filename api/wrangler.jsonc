@@ -9,8 +9,16 @@
   "vars": {
     "APP_ENV": "development",
     "FRONTEND_ORIGINS": "http://localhost:5173,http://127.0.0.1:5173",
-    "UPLOADS_PRESIGN_URL": ""
+    "UPLOADS_PRESIGN_URL": "",
+    "VAPID_PUBLIC_KEY": "",
+    "VAPID_PRIVATE_KEY": ""
   },
+  "kv_namespaces": [
+    {
+      "binding": "FLAGS",
+      "id": "00000000-0000-0000-0000-000000000000"
+    }
+  ],
   "d1_databases": [
     {
       "binding": "DB",

@@ -27,6 +27,7 @@ import { realtime } from "./routes/realtime";
 import { live } from "./routes/live";
 import { uploads } from "./routes/uploads";
 import { ai } from "./routes/ai";
+import { push } from "./routes/push";
 import { RealtimeRoom } from "./durable/realtime-room";
 
 export { RealtimeRoom };
@@ -76,7 +77,14 @@ v1.route("/realtime", realtime);
 v1.route("/live", live);
 v1.route("/uploads", uploads);
 v1.route("/ai", ai);
+v1.route("/push", push);
 v1.route("/flags", flags);
+
+/** Uptime + DB reachability check for deployment probes. */
+v1.get("/health", async (c) => {
+  await c.env.DB.prepare("SELECT 1").first();
+  return c.json({ ok: true, time: new Date().toISOString(), db: "ok" });
+});
 
 app.route("/v1", v1);
 

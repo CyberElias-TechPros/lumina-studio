@@ -7,7 +7,7 @@ import { ApiError } from "../lib/errors";
  * R2-backed uploads.
  * - POST /presign hands out an object key plus an upload URL: a native R2
  *   presigned URL when UPLOADS_PRESIGN_URL + runtime support exist, otherwise
- *   the authenticated worker proxy (PUT /v1/uploads/:key) — mock mode, same
+ *   the authenticated worker proxy (PUT /v1/uploads/:key) - mock mode, same
  *   philosophy as payments.
  * - PUT/GET/DELETE /:key stream through the worker with a valid session.
  */

@@ -21,6 +21,7 @@ export interface RbacRule {
 export const RBAC_RULES: RbacRule[] = [
   /* Public */
   { methods: ["GET"], path: "/v1/flags", public: true },
+  { methods: ["GET"], path: "/v1/health", public: true },
   { methods: ["GET"], path: "/v1/programs", public: true },
   { methods: ["GET"], path: "/v1/programs/:slug", public: true },
   { methods: ["POST"], path: "/v1/applications", public: true },
@@ -96,6 +97,14 @@ export const RBAC_RULES: RbacRule[] = [
 
   /* AI helpers — writes are role-gated inside the route */
   { methods: ["*"], path: "/v1/ai/*" },
+
+  /* Flags — read is public; overrides are admin-only */
+  { methods: ["PUT", "DELETE"], path: "/v1/flags/:key", roles: ["admin"] },
+
+  /* Push notifications — own subscriptions; sends role-gated inside the route */
+  { methods: ["GET", "POST"], path: "/v1/push/subscriptions" },
+  { methods: ["DELETE"], path: "/v1/push/subscriptions/:id" },
+  { methods: ["POST"], path: "/v1/push/send" },
 ];
 
 function pathMatches(pattern: string, path: string): boolean {
