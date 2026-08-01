@@ -3,7 +3,10 @@ import { ArrowLeft, CheckCircle2, Clock, GitBranch, History, Undo2 } from "lucid
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { QueryState } from "@/components/ui/query-state";
 import { AppShell } from "@/components/app/app-shell";
+import { useDesignKpis, useDesignVersions } from "@/lib/query/design";
+import type { DesignVersion } from "@/lib/api/design";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/design/versions")({
@@ -16,42 +19,17 @@ export const Route = createFileRoute("/app/design/versions")({
   component: VersionHistory,
 });
 
-const versions = [
-  {
-    t: "v3.2 · Learning hub refresh",
-    change: "Rebalanced card grid, added streak widget",
-    editor: "Ada Obi",
-    when: "2h ago",
-    status: "Current",
-    tone: "bg-primary/10 text-primary",
-  },
-  {
-    t: "v3.1 · Learning hub refresh",
-    change: "Fixed nav overflow on 1280px",
-    editor: "Tunde Bakare",
-    when: "Yesterday",
-    status: "Stable",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    t: "v3.0 · Learning hub refresh",
-    change: "Token migration to CEA-UI v2.4",
-    editor: "Chiamaka Eze",
-    when: "Jul 24",
-    status: "Stable",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    t: "v2.9 · Learning hub refresh",
-    change: "Rolled back accent color change",
-    editor: "Ngozi Adeyemi",
-    when: "Jul 18",
-    status: "Archived",
-    tone: "bg-muted-foreground/10 text-muted-foreground",
-  },
-];
+function versionTone(status: string): string {
+  if (status === "Current") return "bg-primary/10 text-primary";
+  if (status === "Stable") return "bg-success/10 text-success";
+  return "bg-muted-foreground/10 text-muted-foreground";
+}
 
 function VersionHistory() {
+  const query = useDesignVersions();
+  const versions = query.data?.pages.flatMap((p) => p.items) ?? [];
+  const kpis = useDesignKpis();
+  const kpi = (id: string) => kpis.data?.find((k) => k.id === id)?.value ?? 0;
   return (
     <AppShell
       roleKey="design"
@@ -72,28 +50,28 @@ function VersionHistory() {
         {[
           {
             label: "Versions",
-            value: "23",
+            value: String(versions.length),
             delta: "this quarter",
             icon: History,
             tone: "bg-primary/10 text-primary",
           },
           {
             label: "Rollbacks",
-            value: "3",
+            value: String(kpi("versions-rollbacks")),
             delta: "2 in July",
             icon: Undo2,
             tone: "bg-warning/10 text-warning",
           },
           {
             label: "Editors",
-            value: "5",
+            value: String(kpi("versions-editors")),
             delta: "design team",
             icon: GitBranch,
             tone: "bg-learning/10 text-learning",
           },
           {
             label: "Pending review",
-            value: "2",
+            value: String(kpi("versions-pending")),
             delta: "versions staged",
             icon: CheckCircle2,
             tone: "bg-success/10 text-success",
@@ -123,23 +101,34 @@ function VersionHistory() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-3">
-          {versions.map((v) => (
-            <div key={v.t} className="flex flex-wrap items-center gap-3 rounded-xl border p-4">
-              <span className="bg-muted text-muted-foreground grid size-9 shrink-0 place-items-center rounded-lg">
-                <History className="size-4" />
-              </span>
-              <div className="min-w-0 flex-1">
-                <p className="text-sm font-bold">{v.t}</p>
-                <p className="text-muted-foreground text-xs">
-                  {v.change} · {v.editor} · {v.when}
-                </p>
-              </div>
-              <Badge className={cn("border-0 font-semibold", v.tone)}>{v.status}</Badge>
-              <Button variant="outline" size="sm" className="shrink-0">
-                <Undo2 className="mr-1.5 size-3.5" /> Rollback
-              </Button>
-            </div>
-          ))}
+          <QueryState<DesignVersion[]> query={query} error={{ title: "Versions unavailable" }}>
+            {(rows) => (
+              <>
+                {rows.map((v) => (
+                  <div
+                    key={v.t}
+                    className="flex flex-wrap items-center gap-3 rounded-xl border p-4"
+                  >
+                    <span className="bg-muted text-muted-foreground grid size-9 shrink-0 place-items-center rounded-lg">
+                      <History className="size-4" />
+                    </span>
+                    <div className="min-w-0 flex-1">
+                      <p className="text-sm font-bold">{v.t}</p>
+                      <p className="text-muted-foreground text-xs">
+                        {v.change} · {v.editor} · {v.when}
+                      </p>
+                    </div>
+                    <Badge className={cn("border-0 font-semibold", versionTone(v.status))}>
+                      {v.status}
+                    </Badge>
+                    <Button variant="outline" size="sm" className="shrink-0">
+                      <Undo2 className="mr-1.5 size-3.5" /> Rollback
+                    </Button>
+                  </div>
+                ))}
+              </>
+            )}
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>

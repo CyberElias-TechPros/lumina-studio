@@ -3,7 +3,10 @@ import { ArrowLeft, BriefcaseBusiness, Eye, FileText, Pencil, Plus, Users, X } f
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { QueryState } from "@/components/ui/query-state";
 import { AppShell } from "@/components/app/app-shell";
+import { usePostings, useInterviews } from "@/lib/query/recruitment";
+import type { JobPosting } from "@/lib/api/recruitment";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/employer/jobs")({
@@ -16,50 +19,24 @@ export const Route = createFileRoute("/app/employer/jobs")({
   component: EmployerJobs,
 });
 
-const jobs = [
-  {
-    t: "Junior Backend Engineer",
-    apps: 14,
-    views: 320,
-    d: "Posted Jul 28",
-    status: "Open",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    t: "Frontend Developer (React)",
-    apps: 9,
-    views: 210,
-    d: "Posted Jul 20",
-    status: "Open",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    t: "DevOps Intern",
-    apps: 22,
-    views: 410,
-    d: "Posted Jul 12",
-    status: "Interviewing",
-    tone: "bg-primary/10 text-primary",
-  },
-  {
-    t: "Product Designer",
-    apps: 6,
-    views: 180,
-    d: "Posted Jun 30",
-    status: "Closed",
-    tone: "bg-muted-foreground/10 text-muted-foreground",
-  },
-];
-
 function EmployerJobs() {
+  const postingsQuery = usePostings();
+  const interviewsQuery = useInterviews();
+  const postings = postingsQuery.data?.pages.flatMap((p) => p.items) ?? [];
+  const interviews = interviewsQuery.data?.pages.flatMap((p) => p.items) ?? [];
+  const activeRoles = postings.filter((p) => p.status !== "Closed").length;
+  const applications = postings.reduce((s, p) => s + p.applicants, 0);
+
   return (
     <AppShell
       roleKey="instructor"
       title="Job management"
-      subtitle="4 roles · 51 total applications"
+      subtitle={`${postings.length} roles · ${applications} total applications`}
       actions={
         <>
-          <Badge className="bg-success/10 text-success border-0 font-semibold">2 open roles</Badge>
+          <Badge className="bg-success/10 text-success border-0 font-semibold">
+            {activeRoles} open roles
+          </Badge>
           <Button asChild variant="outline" size="sm" className="font-semibold">
             <Link to="/app/employer/hub">
               <ArrowLeft className="size-4" /> Employer hub
@@ -75,21 +52,21 @@ function EmployerJobs() {
         {[
           {
             label: "Active roles",
-            value: "3",
+            value: String(activeRoles),
             delta: "1 closing soon",
             icon: BriefcaseBusiness,
             tone: "bg-primary/10 text-primary",
           },
           {
             label: "Applications",
-            value: "51",
+            value: String(applications),
             delta: "+18 this week",
             icon: Users,
             tone: "bg-learning/10 text-learning",
           },
           {
             label: "Interviews",
-            value: "6",
+            value: String(interviews.length),
             delta: "4 scheduled",
             icon: Eye,
             tone: "bg-success/10 text-success",
@@ -126,36 +103,42 @@ function EmployerJobs() {
           </CardTitle>
         </CardHeader>
         <CardContent className="divide-y">
-          {jobs.map((j) => (
-            <div key={j.t} className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0">
-              <span className="bg-muted text-muted-foreground grid size-9 shrink-0 place-items-center rounded-lg">
-                <BriefcaseBusiness className="size-4" />
-              </span>
-              <div className="min-w-0 flex-1">
-                <p className="text-sm font-bold">{j.t}</p>
-                <p className="text-muted-foreground text-xs">
-                  {j.apps} applications · {j.views} views · {j.d}
-                </p>
-              </div>
-              <Badge className={cn("border-0 font-semibold", j.tone)}>{j.status}</Badge>
-              <div className="flex shrink-0 gap-1">
-                <Button asChild variant="outline" size="sm" className="font-semibold">
-                  <Link
-                    to="/app/employer/pipeline/$jobId"
-                    params={{ jobId: "junior-backend-engineer" }}
+          <QueryState<JobPosting[]> query={postingsQuery} error={{ title: "Jobs unavailable" }}>
+            {(rows) => (
+              <>
+                {rows.map((j) => (
+                  <div
+                    key={j.id}
+                    className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
                   >
-                    Pipeline
-                  </Link>
-                </Button>
-                <Button variant="ghost" size="sm" className="text-muted-foreground">
-                  <Pencil className="size-3.5" />
-                </Button>
-                <Button variant="ghost" size="sm" className="text-muted-foreground">
-                  <X className="size-3.5" />
-                </Button>
-              </div>
-            </div>
-          ))}
+                    <span className="bg-muted text-muted-foreground grid size-9 shrink-0 place-items-center rounded-lg">
+                      <BriefcaseBusiness className="size-4" />
+                    </span>
+                    <div className="min-w-0 flex-1">
+                      <p className="text-sm font-bold">{j.title}</p>
+                      <p className="text-muted-foreground text-xs">
+                        {j.applicants} applications · {j.views} views · {j.posted}
+                      </p>
+                    </div>
+                    <Badge className={cn("border-0 font-semibold", j.tone)}>{j.status}</Badge>
+                    <div className="flex shrink-0 gap-1">
+                      <Button asChild variant="outline" size="sm" className="font-semibold">
+                        <Link to="/app/employer/pipeline/$jobId" params={{ jobId: j.id }}>
+                          Pipeline
+                        </Link>
+                      </Button>
+                      <Button variant="ghost" size="sm" className="text-muted-foreground">
+                        <Pencil className="size-3.5" />
+                      </Button>
+                      <Button variant="ghost" size="sm" className="text-muted-foreground">
+                        <X className="size-3.5" />
+                      </Button>
+                    </div>
+                  </div>
+                ))}
+              </>
+            )}
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>

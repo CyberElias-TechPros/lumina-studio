@@ -11,7 +11,10 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { QueryState } from "@/components/ui/query-state";
 import { AppShell } from "@/components/app/app-shell";
+import { useTranslationMemory, useLocalizationStats } from "@/lib/query/localization";
+import type { TranslationMemoryPair } from "@/lib/api/localization";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/localization/translation-memory")({
@@ -24,42 +27,17 @@ export const Route = createFileRoute("/app/localization/translation-memory")({
   component: TranslationMemory,
 });
 
-const pairs = [
-  {
-    src: "Build skills Lagos employers pay for",
-    target: "Kọ́ àwọn kọ́ǹkà tí àwọn agbanisiṣẹ́ Lagos sanwó fún",
-    locale: "yo-NG",
-    match: "98%",
-    status: "Approved",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    src: "From Lagos classroom to global job",
-    target: "Daga ajin Lagos zuwa aikin duniya",
-    locale: "ha-NG",
-    match: "96%",
-    status: "Approved",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    src: "Your streak is on the line, Ada",
-    target: "Ada, nudge dey hold your streak",
-    locale: "pcm-NG",
-    match: "89%",
-    status: "In review",
-    tone: "bg-warning/10 text-warning",
-  },
-  {
-    src: "Pay in instalments from ₦120k",
-    target: "Futa kwa awufu kuanzia ₦120k",
-    locale: "sw-KE",
-    match: "72%",
-    status: "Draft",
-    tone: "bg-primary/10 text-primary",
-  },
-];
+function pairTone(status: string): string {
+  if (status === "Approved") return "bg-success/10 text-success";
+  if (status === "In review") return "bg-warning/10 text-warning";
+  return "bg-primary/10 text-primary";
+}
 
 function TranslationMemory() {
+  const query = useTranslationMemory();
+  const stats = useLocalizationStats();
+  const pageStats = (stats.data?.items ?? []).filter((s) => s.page === "translation-memory");
+
   return (
     <AppShell
       roleKey="localization"
@@ -80,48 +58,45 @@ function TranslationMemory() {
         {[
           {
             label: "Segments",
-            value: "1,900",
-            delta: "across 4 markets",
             icon: Database,
             tone: "bg-primary/10 text-primary",
           },
           {
             label: "Translated",
-            value: "1,240",
-            delta: "65% complete",
             icon: Files,
             tone: "bg-learning/10 text-learning",
           },
           {
             label: "Avg. match",
-            value: "96%",
-            delta: "fuzzy ≥ 85%",
             icon: Percent,
             tone: "bg-success/10 text-success",
           },
           {
             label: "Approved",
-            value: "1,180",
-            delta: "60 pending",
             icon: CheckCircle2,
             tone: "bg-warning/10 text-warning",
           },
-        ].map((k) => (
-          <Card key={k.label} className="bg-card shadow-soft border">
-            <CardContent className="p-5">
-              <div className="flex items-center justify-between">
-                <p className="text-muted-foreground text-xs font-bold tracking-wide uppercase">
-                  {k.label}
+        ].map((k) => {
+          const stat = pageStats.find((s) => s.label === k.label);
+          return (
+            <Card key={k.label} className="bg-card shadow-soft border">
+              <CardContent className="p-5">
+                <div className="flex items-center justify-between">
+                  <p className="text-muted-foreground text-xs font-bold tracking-wide uppercase">
+                    {k.label}
+                  </p>
+                  <span className={cn("grid size-8 place-items-center rounded-lg", k.tone)}>
+                    <k.icon className="size-4" />
+                  </span>
+                </div>
+                <p className="font-display mt-3 text-2xl font-extrabold">{stat?.value ?? "—"}</p>
+                <p className="text-muted-foreground mt-0.5 text-xs font-semibold">
+                  {stat?.delta ?? "—"}
                 </p>
-                <span className={cn("grid size-8 place-items-center rounded-lg", k.tone)}>
-                  <k.icon className="size-4" />
-                </span>
-              </div>
-              <p className="font-display mt-3 text-2xl font-extrabold">{k.value}</p>
-              <p className="text-muted-foreground mt-0.5 text-xs font-semibold">{k.delta}</p>
-            </CardContent>
-          </Card>
-        ))}
+              </CardContent>
+            </Card>
+          );
+        })}
       </div>
 
       <Card className="bg-card mt-5 shadow-soft border">
@@ -142,17 +117,30 @@ function TranslationMemory() {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {pairs.map((p) => (
-                <TableRow key={p.src}>
-                  <TableCell className="max-w-[240px] font-semibold">{p.src}</TableCell>
-                  <TableCell className="max-w-[260px] text-muted-foreground">{p.target}</TableCell>
-                  <TableCell className="font-mono text-xs font-bold">{p.locale}</TableCell>
-                  <TableCell className="font-bold">{p.match}</TableCell>
-                  <TableCell>
-                    <Badge className={cn("border-0 font-semibold", p.tone)}>{p.status}</Badge>
-                  </TableCell>
-                </TableRow>
-              ))}
+              <QueryState<TranslationMemoryPair[]>
+                query={query}
+                error={{ title: "Translation memory unavailable" }}
+              >
+                {(rows) => (
+                  <>
+                    {rows.map((p) => (
+                      <TableRow key={p.id}>
+                        <TableCell className="max-w-[240px] font-semibold">{p.source}</TableCell>
+                        <TableCell className="max-w-[260px] text-muted-foreground">
+                          {p.target}
+                        </TableCell>
+                        <TableCell className="font-mono text-xs font-bold">{p.locale}</TableCell>
+                        <TableCell className="font-bold">{p.match}%</TableCell>
+                        <TableCell>
+                          <Badge className={cn("border-0 font-semibold", pairTone(p.status))}>
+                            {p.status}
+                          </Badge>
+                        </TableCell>
+                      </TableRow>
+                    ))}
+                  </>
+                )}
+              </QueryState>
             </TableBody>
           </Table>
         </CardContent>

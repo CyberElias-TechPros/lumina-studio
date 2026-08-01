@@ -12,7 +12,10 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { QueryState } from "@/components/ui/query-state";
 import { AppShell } from "@/components/app/app-shell";
+import { useLocalizationMarkets, useLocalizationStats } from "@/lib/query/localization";
+import type { MarketAnalyticsRow } from "@/lib/api/localization";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/localization/analytics")({
@@ -25,43 +28,23 @@ export const Route = createFileRoute("/app/localization/analytics")({
   component: MarketAnalytics,
 });
 
-const markets = [
-  {
-    t: "NG · English",
-    conv: "9.2%",
-    eng: "4.8min",
-    pct: 92,
-    trend: "+1.1",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    t: "Yoruba",
-    conv: "7.4%",
-    eng: "3.9min",
-    pct: 74,
-    trend: "+0.6",
-    tone: "bg-primary/10 text-primary",
-  },
-  {
-    t: "Hausa",
-    conv: "6.1%",
-    eng: "3.2min",
-    pct: 61,
-    trend: "+0.4",
-    tone: "bg-learning/10 text-learning",
-  },
-  {
-    t: "Nigerian Pidgin",
-    conv: "8.8%",
-    eng: "4.2min",
-    pct: 88,
-    trend: "+1.8",
-    tone: "bg-warning/10 text-warning",
-  },
-  { t: "UK", conv: "5.2%", eng: "2.8min", pct: 52, trend: "−0.3", tone: "bg-error/10 text-error" },
-];
-
 function MarketAnalytics() {
+  const query = useLocalizationMarkets();
+  const markets = query.data?.pages.flatMap((p) => p.items) ?? [];
+  const stats = useLocalizationStats();
+  const pageStats = (stats.data?.items ?? []).filter((s) => s.page === "analytics");
+  const visitors = pageStats.find((s) => s.label === "Localized visitors");
+  const avgConversion = markets.length
+    ? `${(
+        markets.reduce((s, m) => s + Number.parseFloat(m.conversion), 0) / markets.length
+      ).toFixed(1)}%`
+    : "—";
+  const avgEngagement = markets.length
+    ? `${(
+        markets.reduce((s, m) => s + Number.parseFloat(m.engagement), 0) / markets.length
+      ).toFixed(1)}min`
+    : "—";
+
   return (
     <AppShell
       roleKey="localization"
@@ -84,29 +67,29 @@ function MarketAnalytics() {
         {[
           {
             label: "Markets measured",
-            value: "5",
+            value: String(markets.length),
             delta: "localized pages",
             icon: Globe,
             tone: "bg-primary/10 text-primary",
           },
           {
             label: "Avg. conversion",
-            value: "7.3%",
+            value: avgConversion,
             delta: "+0.9 pts MoM",
             icon: Percent,
             tone: "bg-success/10 text-success",
           },
           {
             label: "Avg. engagement",
-            value: "3.8min",
+            value: avgEngagement,
             delta: "+0.4 min MoM",
             icon: LineChart,
             tone: "bg-learning/10 text-learning",
           },
           {
             label: "Localized visitors",
-            value: "11.2k",
-            delta: "+14% MoM",
+            value: visitors?.value ?? "—",
+            delta: visitors?.delta ?? "—",
             icon: Users,
             tone: "bg-warning/10 text-warning",
           },
@@ -146,24 +129,33 @@ function MarketAnalytics() {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {markets.map((m) => (
-                <TableRow key={m.t}>
-                  <TableCell className="font-semibold">{m.t}</TableCell>
-                  <TableCell className="font-bold">{m.conv}</TableCell>
-                  <TableCell className="text-muted-foreground">{m.eng}</TableCell>
-                  <TableCell className="w-40">
-                    <Progress value={m.pct} className="h-1.5" />
-                  </TableCell>
-                  <TableCell
-                    className={cn(
-                      "font-bold",
-                      m.trend.startsWith("+") ? "text-success" : "text-error",
-                    )}
-                  >
-                    {m.trend}
-                  </TableCell>
-                </TableRow>
-              ))}
+              <QueryState<MarketAnalyticsRow[]>
+                query={query}
+                error={{ title: "Analytics unavailable" }}
+              >
+                {(rows) => (
+                  <>
+                    {rows.map((m) => (
+                      <TableRow key={m.id}>
+                        <TableCell className="font-semibold">{m.name}</TableCell>
+                        <TableCell className="font-bold">{m.conversion}</TableCell>
+                        <TableCell className="text-muted-foreground">{m.engagement}</TableCell>
+                        <TableCell className="w-40">
+                          <Progress value={m.pct} className="h-1.5" />
+                        </TableCell>
+                        <TableCell
+                          className={cn(
+                            "font-bold",
+                            m.trend.startsWith("+") ? "text-success" : "text-error",
+                          )}
+                        >
+                          {m.trend}
+                        </TableCell>
+                      </TableRow>
+                    ))}
+                  </>
+                )}
+              </QueryState>
             </TableBody>
           </Table>
         </CardContent>

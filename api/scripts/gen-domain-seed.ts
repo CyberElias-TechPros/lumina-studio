@@ -1,7 +1,7 @@
 /**
  * Generates api/seeds/domain.sql + api/seeds/domain.ts from the canonical
- * collections in ../../src/data/learning.ts (instructor data) and
- * ../../src/data/dashboard.ts (HR, finance, admin, notifications).
+ * collections in ../../src/data/{learning,dashboard,recruitment,marketing,
+ * design,localization}.ts.
  * Run: npm run gen:seed (from api/).
  */
 import { mkdirSync, writeFileSync } from "node:fs";
@@ -25,6 +25,46 @@ import {
   paymentBatches,
   payments,
 } from "../../src/data/dashboard";
+import {
+  postings,
+  pipelineCandidates,
+  interviews,
+  talentCandidates,
+} from "../../src/data/recruitment";
+import {
+  marketingKpis,
+  campaigns,
+  emailCampaigns,
+  socialPosts,
+  landingPages,
+  seoKeywords,
+  contentCalendar,
+  leads,
+  marketingReports,
+  funnelStages,
+} from "../../src/data/marketing";
+import {
+  designComponents,
+  designFlows,
+  designPrototypes,
+  designTokens,
+  designVersions,
+  collaborationThreads,
+  designExports,
+  systemComponents,
+  designKpis,
+} from "../../src/data/design";
+import {
+  localizationProjects,
+  glossaryTerms,
+  styleGuides,
+  translationMemory,
+  dialects,
+  variants,
+  localizationMarkets,
+  previewBlocks,
+  localizationStats,
+} from "../../src/data/localization";
 
 const OUT_DIR = resolve(dirname(fileURLToPath(import.meta.url)), "..", "seeds");
 
@@ -190,6 +230,299 @@ for (const p of payments) {
       `${sqlString(p.email)}, ${p.amount}, ${sqlString(p.currency)}, ${sqlString(p.status)}, ` +
       `${sqlString(p.provider)}, ${sqlString(p.description)}, ` +
       `${p.paidAt ? sqlString(p.paidAt) : "NULL"}, ${payments.indexOf(p)});`,
+  );
+}
+
+/* ---------------- Phase 4: recruitment ---------------- */
+
+for (const r of postings) {
+  statements.push(
+    `INSERT OR IGNORE INTO job_postings (id, title, applicants, views, posted, status, detail, ` +
+      `tone, sort_order) ` +
+      `VALUES (${sqlString(`post-${postings.indexOf(r) + 1}`)}, ${sqlString(r.title)}, ` +
+      `${r.applicants}, ${r.views}, ${sqlString(r.posted)}, ${sqlString(r.status)}, ` +
+      `${sqlString(r.detail)}, ${sqlString(r.tone)}, ${postings.indexOf(r)});`,
+  );
+}
+
+for (const c of pipelineCandidates) {
+  statements.push(
+    `INSERT OR IGNORE INTO pipeline_candidates (id, job_id, name, stage, detail, score, ` +
+      `sort_order) ` +
+      `VALUES (${sqlString(`cand-${pipelineCandidates.indexOf(c) + 1}`)}, ` +
+      `${sqlString("post-4")}, ${sqlString(c.name)}, ${sqlString(c.stage)}, ` +
+      `${sqlString(c.detail)}, ${c.score}, ${pipelineCandidates.indexOf(c)});`,
+  );
+}
+
+for (const i of interviews) {
+  statements.push(
+    `INSERT OR IGNORE INTO interviews (id, candidate, role, date, mode, status, sort_order) ` +
+      `VALUES (${sqlString(`ivw-${interviews.indexOf(i) + 1}`)}, ${sqlString(i.candidate)}, ` +
+      `${sqlString(i.role)}, ${sqlString(i.date)}, ${sqlString(i.mode)}, ` +
+      `${sqlString(i.status)}, ${interviews.indexOf(i)});`,
+  );
+}
+
+for (const t of talentCandidates) {
+  statements.push(
+    `INSERT OR IGNORE INTO talent_candidates (id, name, program, score, stage, match, skills, ` +
+      `available, sort_order) ` +
+      `VALUES (${sqlString(`talent-${talentCandidates.indexOf(t) + 1}`)}, ${sqlString(t.name)}, ` +
+      `${sqlString(t.program)}, ${t.score}, ${sqlString(t.stage)}, ${t.match}, ` +
+      `${jsonString(t.skills)}, ${sqlString(t.available)}, ${talentCandidates.indexOf(t)});`,
+  );
+}
+
+/* ---------------- Phase 4: marketing ---------------- */
+
+for (const k of marketingKpis) {
+  statements.push(
+    `INSERT OR IGNORE INTO marketing_kpis (id, page, label, value, delta, sort_order) ` +
+      `VALUES (${sqlString(`kpi-${marketingKpis.indexOf(k) + 1}`)}, ${sqlString(k.page)}, ` +
+      `${sqlString(k.label)}, ${sqlString(k.value)}, ${sqlString(k.delta)}, ` +
+      `${marketingKpis.indexOf(k)});`,
+  );
+}
+
+for (const c of campaigns) {
+  statements.push(
+    `INSERT OR IGNORE INTO campaigns (id, name, channel, spend, leads, roas, status, sort_order) ` +
+      `VALUES (${sqlString(`camp-${campaigns.indexOf(c) + 1}`)}, ${sqlString(c.name)}, ` +
+      `${sqlString(c.channel)}, ${c.spend}, ${c.leads}, ${c.roas}, ${sqlString(c.status)}, ` +
+      `${campaigns.indexOf(c)});`,
+  );
+}
+
+for (const e of emailCampaigns) {
+  statements.push(
+    `INSERT OR IGNORE INTO email_campaigns (id, title, recipients, open_rate, status, sort_order) ` +
+      `VALUES (${sqlString(`emc-${emailCampaigns.indexOf(e) + 1}`)}, ${sqlString(e.title)}, ` +
+      `${e.recipients}, ${e.openRate}, ${sqlString(e.status)}, ${emailCampaigns.indexOf(e)});`,
+  );
+}
+
+for (const s of socialPosts) {
+  statements.push(
+    `INSERT OR IGNORE INTO social_posts (id, title, channel, date, status, sort_order) ` +
+      `VALUES (${sqlString(`soc-${socialPosts.indexOf(s) + 1}`)}, ${sqlString(s.title)}, ` +
+      `${sqlString(s.channel)}, ${sqlString(s.date)}, ${sqlString(s.status)}, ` +
+      `${socialPosts.indexOf(s)});`,
+  );
+}
+
+for (const l of landingPages) {
+  statements.push(
+    `INSERT OR IGNORE INTO landing_pages (id, title, conversion, status, sort_order) ` +
+      `VALUES (${sqlString(`lp-${landingPages.indexOf(l) + 1}`)}, ${sqlString(l.title)}, ` +
+      `${l.conversion}, ${sqlString(l.status)}, ${landingPages.indexOf(l)});`,
+  );
+}
+
+for (const s of seoKeywords) {
+  statements.push(
+    `INSERT OR IGNORE INTO seo_keywords (id, keyword, position, delta, sort_order) ` +
+      `VALUES (${sqlString(`seo-${seoKeywords.indexOf(s) + 1}`)}, ${sqlString(s.keyword)}, ` +
+      `${s.position}, ${sqlString(s.delta)}, ${seoKeywords.indexOf(s)});`,
+  );
+}
+
+for (const c of contentCalendar) {
+  statements.push(
+    `INSERT OR IGNORE INTO content_calendar (id, title, channel, date, status, sort_order) ` +
+      `VALUES (${sqlString(`cc-${contentCalendar.indexOf(c) + 1}`)}, ${sqlString(c.title)}, ` +
+      `${sqlString(c.channel)}, ${sqlString(c.date)}, ${sqlString(c.status)}, ` +
+      `${contentCalendar.indexOf(c)});`,
+  );
+}
+
+for (const l of leads) {
+  statements.push(
+    `INSERT OR IGNORE INTO leads (id, name, score, detail, sort_order) ` +
+      `VALUES (${sqlString(`lead-${leads.indexOf(l) + 1}`)}, ${sqlString(l.name)}, ` +
+      `${l.score}, ${sqlString(l.detail)}, ${leads.indexOf(l)});`,
+  );
+}
+
+for (const r of marketingReports) {
+  statements.push(
+    `INSERT OR IGNORE INTO marketing_reports (id, title, published, sort_order) ` +
+      `VALUES (${sqlString(`rpt-${marketingReports.indexOf(r) + 1}`)}, ${sqlString(r.title)}, ` +
+      `${sqlString(r.published)}, ${marketingReports.indexOf(r)});`,
+  );
+}
+
+for (const f of funnelStages) {
+  statements.push(
+    `INSERT OR IGNORE INTO funnel_stages (id, stage, value, pct, sort_order) ` +
+      `VALUES (${sqlString(`fun-${funnelStages.indexOf(f) + 1}`)}, ${sqlString(f.stage)}, ` +
+      `${f.value}, ${f.pct}, ${funnelStages.indexOf(f)});`,
+  );
+}
+
+/* ---------------- Phase 4: design ---------------- */
+
+for (const c of designComponents) {
+  statements.push(
+    `INSERT OR IGNORE INTO design_components (id, name, detail, states, usage, status, sort_order) ` +
+      `VALUES (${sqlString(`cmp-${designComponents.indexOf(c) + 1}`)}, ${sqlString(c.t)}, ` +
+      `${sqlString(c.d)}, ${c.states}, ${c.usage}, ${sqlString(c.status)}, ` +
+      `${designComponents.indexOf(c)});`,
+  );
+}
+
+for (const f of designFlows) {
+  statements.push(
+    `INSERT OR IGNORE INTO design_flows (id, name, steps_count, decisions_count, status, ` +
+      `flow_steps, sort_order) ` +
+      `VALUES (${sqlString(`flw-${designFlows.indexOf(f) + 1}`)}, ${sqlString(f.t)}, ` +
+      `${f.steps}, ${f.decisions}, ${sqlString(f.status)}, ${jsonString(f.list)}, ` +
+      `${designFlows.indexOf(f)});`,
+  );
+}
+
+for (const p of designPrototypes) {
+  statements.push(
+    `INSERT OR IGNORE INTO design_prototypes (id, name, version, status, feedback_count, owner, ` +
+      `sort_order) ` +
+      `VALUES (${sqlString(`prt-${designPrototypes.indexOf(p) + 1}`)}, ${sqlString(p.t)}, ` +
+      `${sqlString(p.version)}, ${sqlString(p.status)}, ${p.feedback}, ${sqlString(p.owner)}, ` +
+      `${designPrototypes.indexOf(p)});`,
+  );
+}
+
+for (const t of designTokens) {
+  statements.push(
+    `INSERT OR IGNORE INTO design_tokens (id, kind, name, value, hex, family, deprecated, status, ` +
+      `sort_order) ` +
+      `VALUES (${sqlString(`tkn-${designTokens.indexOf(t) + 1}`)}, ${sqlString(t.kind)}, ` +
+      `${sqlString(t.t)}, ${sqlString(t.v)}, ${t.hex ? sqlString(t.hex) : "''"}, ` +
+      `${t.family ? sqlString(t.family) : "''"}, ${t.deprecated ? 1 : 0}, ` +
+      `${t.status ? sqlString(t.status) : "''"}, ${designTokens.indexOf(t)});`,
+  );
+}
+
+for (const v of designVersions) {
+  statements.push(
+    `INSERT OR IGNORE INTO design_versions (id, title, change, editor, "when", status, sort_order) ` +
+      `VALUES (${sqlString(`ver-${designVersions.indexOf(v) + 1}`)}, ${sqlString(v.t)}, ` +
+      `${sqlString(v.change)}, ${sqlString(v.editor)}, ${sqlString(v.when)}, ` +
+      `${sqlString(v.status)}, ${designVersions.indexOf(v)});`,
+  );
+}
+
+for (const t of collaborationThreads) {
+  statements.push(
+    `INSERT OR IGNORE INTO collaboration_threads (id, title, detail, author, status, sort_order) ` +
+      `VALUES (${sqlString(`thr-${collaborationThreads.indexOf(t) + 1}`)}, ${sqlString(t.t)}, ` +
+      `${sqlString(t.d)}, ${sqlString(t.author)}, ${sqlString(t.status)}, ` +
+      `${collaborationThreads.indexOf(t)});`,
+  );
+}
+
+for (const x of designExports) {
+  statements.push(
+    `INSERT OR IGNORE INTO design_exports (id, title, format, size, owner, status, sort_order) ` +
+      `VALUES (${sqlString(`exp-${designExports.indexOf(x) + 1}`)}, ${sqlString(x.t)}, ` +
+      `${sqlString(x.format)}, ${sqlString(x.size)}, ${sqlString(x.owner)}, ` +
+      `${sqlString(x.status)}, ${designExports.indexOf(x)});`,
+  );
+}
+
+for (const s of systemComponents) {
+  statements.push(
+    `INSERT OR IGNORE INTO system_components (id, name, variants, states, usage, status, ` +
+      `sort_order) ` +
+      `VALUES (${sqlString(`sys-${systemComponents.indexOf(s) + 1}`)}, ${sqlString(s.t)}, ` +
+      `${s.variants}, ${s.states}, ${s.usage}, ${sqlString(s.status)}, ` +
+      `${systemComponents.indexOf(s)});`,
+  );
+}
+
+for (const k of designKpis) {
+  statements.push(
+    `INSERT OR IGNORE INTO design_kpis (id, value, sort_order) ` +
+      `VALUES (${sqlString(k.id)}, ${k.value}, ${designKpis.indexOf(k)});`,
+  );
+}
+
+/* ---------------- Phase 4: localization ---------------- */
+
+for (const p of localizationProjects) {
+  statements.push(
+    `INSERT OR IGNORE INTO localization_projects (id, name, description, path, tone, sort_order) ` +
+      `VALUES (${sqlString(p.id)}, ${sqlString(p.name)}, ${sqlString(p.desc)}, ` +
+      `${sqlString(p.path)}, ${sqlString(p.tone)}, ${localizationProjects.indexOf(p)});`,
+  );
+}
+
+for (const t of glossaryTerms) {
+  statements.push(
+    `INSERT OR IGNORE INTO glossary_terms (id, term, definition, usage, cultural_notes, status, ` +
+      `sort_order) ` +
+      `VALUES (${sqlString(t.id)}, ${sqlString(t.term)}, ${sqlString(t.definition)}, ` +
+      `${sqlString(t.usage)}, ${sqlString(t.culturalNotes)}, ${sqlString(t.status)}, ` +
+      `${glossaryTerms.indexOf(t)});`,
+  );
+}
+
+for (const g of styleGuides) {
+  statements.push(
+    `INSERT OR IGNORE INTO style_guides (id, market, dos, donts, status, sort_order) ` +
+      `VALUES (${sqlString(g.id)}, ${sqlString(g.market)}, ${jsonString(g.dos)}, ` +
+      `${jsonString(g.donts)}, ${sqlString(g.status)}, ${styleGuides.indexOf(g)});`,
+  );
+}
+
+for (const t of translationMemory) {
+  statements.push(
+    `INSERT OR IGNORE INTO translation_memory (id, source, target, locale, match_pct, status, ` +
+      `sort_order) ` +
+      `VALUES (${sqlString(t.id)}, ${sqlString(t.source)}, ${sqlString(t.target)}, ` +
+      `${sqlString(t.locale)}, ${t.match}, ${sqlString(t.status)}, ` +
+      `${translationMemory.indexOf(t)});`,
+  );
+}
+
+for (const d of dialects) {
+  statements.push(
+    `INSERT OR IGNORE INTO dialect_groups (id, group_name, variants, coverage, status, sort_order) ` +
+      `VALUES (${sqlString(d.id)}, ${sqlString(d.group)}, ${jsonString(d.variants)}, ` +
+      `${d.coverage}, ${sqlString(d.status)}, ${dialects.indexOf(d)});`,
+  );
+}
+
+for (const v of variants) {
+  statements.push(
+    `INSERT OR IGNORE INTO copy_variants (id, name, code, tone_notes, status, sort_order) ` +
+      `VALUES (${sqlString(v.id)}, ${sqlString(v.name)}, ${sqlString(v.code)}, ` +
+      `${sqlString(v.toneNotes)}, ${sqlString(v.status)}, ${variants.indexOf(v)});`,
+  );
+}
+
+for (const m of localizationMarkets) {
+  statements.push(
+    `INSERT OR IGNORE INTO localization_markets (id, name, conversion, engagement, pct, trend, ` +
+      `tone, sort_order) ` +
+      `VALUES (${sqlString(m.id)}, ${sqlString(m.name)}, ${sqlString(m.conversion)}, ` +
+      `${sqlString(m.engagement)}, ${m.pct}, ${sqlString(m.trend)}, ${sqlString(m.tone)}, ` +
+      `${localizationMarkets.indexOf(m)});`,
+  );
+}
+
+for (const b of previewBlocks) {
+  statements.push(
+    `INSERT OR IGNORE INTO preview_blocks (id, en, yo, en_sub, yo_sub, sort_order) ` +
+      `VALUES (${sqlString(b.id)}, ${sqlString(b.en)}, ${sqlString(b.yo)}, ${sqlString(b.enSub)}, ` +
+      `${sqlString(b.yoSub)}, ${previewBlocks.indexOf(b)});`,
+  );
+}
+
+for (const s of localizationStats) {
+  statements.push(
+    `INSERT OR IGNORE INTO localization_stats (id, page, label, value, delta, sort_order) ` +
+      `VALUES (${sqlString(s.id)}, ${sqlString(s.page)}, ${sqlString(s.label)}, ` +
+      `${sqlString(s.value)}, ${sqlString(s.delta)}, ${localizationStats.indexOf(s)});`,
   );
 }
 

@@ -3,7 +3,10 @@ import { ArrowLeft, Briefcase, CalendarCheck2, CheckCircle2, FileText, Users } f
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { QueryState } from "@/components/ui/query-state";
 import { AppShell } from "@/components/app/app-shell";
+import { usePostings, useInterviews } from "@/lib/query/recruitment";
+import type { JobPosting } from "@/lib/api/recruitment";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/hr/recruitment")({
@@ -16,36 +19,20 @@ export const Route = createFileRoute("/app/hr/recruitment")({
   component: HrRecruitment,
 });
 
-const roles = [
-  {
-    r: "DevOps instructor",
-    a: "38 applicants",
-    d: "3 interviews booked",
-    s: "Active",
-    tone: "bg-primary/10 text-primary",
-  },
-  {
-    r: "Frontend instructor",
-    a: "24 applicants",
-    d: "Offer stage",
-    s: "Offer out",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    r: "Admissions officer",
-    a: "19 applicants",
-    d: "Screening",
-    s: "Active",
-    tone: "bg-learning/10 text-learning",
-  },
-];
-
 function HrRecruitment() {
+  const postingsQuery = usePostings();
+  const interviewsQuery = useInterviews();
+  const postings = postingsQuery.data?.pages.flatMap((p) => p.items) ?? [];
+  const interviews = interviewsQuery.data?.pages.flatMap((p) => p.items) ?? [];
+  const openRoles = postings.filter((p) => p.status !== "Closed").length;
+  const applications = postings.reduce((s, p) => s + p.applicants, 0);
+  const offersOut = postings.filter((p) => p.status === "Offer out").length;
+
   return (
     <AppShell
       roleKey="instructor"
       title="Recruitment"
-      subtitle="6 open roles · 121 applications · 2 offers out"
+      subtitle={`${openRoles} open roles · ${applications} applications · ${offersOut} offers out`}
       actions={
         <>
           <Badge className="bg-success/10 text-success border-0 font-semibold">SLA met</Badge>
@@ -61,28 +48,28 @@ function HrRecruitment() {
         {[
           {
             label: "Open roles",
-            value: "6",
+            value: String(openRoles),
             delta: "3 critical",
             icon: Briefcase,
             tone: "bg-primary/10 text-primary",
           },
           {
             label: "Applications",
-            value: "121",
+            value: String(applications),
             delta: "20/role avg",
             icon: FileText,
             tone: "bg-learning/10 text-learning",
           },
           {
             label: "Interviews",
-            value: "9",
+            value: String(interviews.length),
             delta: "this week",
             icon: CalendarCheck2,
             tone: "bg-warning/10 text-warning",
           },
           {
             label: "Offers out",
-            value: "2",
+            value: String(offersOut),
             delta: "1 accepted",
             icon: CheckCircle2,
             tone: "bg-success/10 text-success",
@@ -115,20 +102,29 @@ function HrRecruitment() {
           </Button>
         </CardHeader>
         <CardContent className="divide-y">
-          {roles.map((r) => (
-            <div key={r.r} className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0">
-              <div className="min-w-0 flex-1">
-                <p className="text-sm font-bold">{r.r}</p>
-                <p className="text-muted-foreground text-xs">
-                  {r.a} · {r.d}
-                </p>
-              </div>
-              <Badge className={cn("border-0 font-semibold", r.tone)}>{r.s}</Badge>
-              <Button variant="outline" size="sm" className="shrink-0 font-semibold">
-                Manage
-              </Button>
-            </div>
-          ))}
+          <QueryState<JobPosting[]> query={postingsQuery} error={{ title: "Postings unavailable" }}>
+            {(rows) => (
+              <>
+                {rows.map((r) => (
+                  <div
+                    key={r.id}
+                    className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
+                  >
+                    <div className="min-w-0 flex-1">
+                      <p className="text-sm font-bold">{r.title}</p>
+                      <p className="text-muted-foreground text-xs">
+                        {r.applicants} applicants · {r.detail}
+                      </p>
+                    </div>
+                    <Badge className={cn("border-0 font-semibold", r.tone)}>{r.status}</Badge>
+                    <Button variant="outline" size="sm" className="shrink-0 font-semibold">
+                      Manage
+                    </Button>
+                  </div>
+                ))}
+              </>
+            )}
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>

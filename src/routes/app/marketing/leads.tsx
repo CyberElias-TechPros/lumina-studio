@@ -3,7 +3,10 @@ import { ArrowLeft, Filter, Flame, PhoneCall, UserRound } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { QueryState } from "@/components/ui/query-state";
 import { AppShell } from "@/components/app/app-shell";
+import { useLeads, useMarketingKpis } from "@/lib/query/marketing";
+import type { Lead, MarketingKpi } from "@/lib/api/marketing";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/marketing/leads")({
@@ -16,23 +19,29 @@ export const Route = createFileRoute("/app/marketing/leads")({
   component: MarketingLeads,
 });
 
-const leads = [
-  {
-    n: "Tola Bakare",
-    s: "92 — hot",
-    d: "Referred · contacted",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    n: "Musa Danjuma",
-    s: "78 — warm",
-    d: "Web form · follow up",
-    tone: "bg-primary/10 text-primary",
-  },
-  { n: "Ngozi Eze", s: "55 — cool", d: "Event lead", tone: "bg-warning/10 text-warning" },
+function scoreBucket(score: number): string {
+  if (score >= 90) return "hot";
+  if (score >= 70) return "warm";
+  return "cool";
+}
+
+function leadTone(score: number): string {
+  if (score >= 90) return "bg-success/10 text-success";
+  if (score >= 70) return "bg-primary/10 text-primary";
+  return "bg-warning/10 text-warning";
+}
+
+const kpiMeta: { label: string; icon: typeof Flame; tone: string }[] = [
+  { label: "Total", icon: UserRound, tone: "bg-primary/10 text-primary" },
+  { label: "Hot (90+)", icon: Flame, tone: "bg-success/10 text-success" },
+  { label: "Warm (70–89)", icon: PhoneCall, tone: "bg-learning/10 text-learning" },
+  { label: "Cool (<70)", icon: Filter, tone: "bg-warning/10 text-warning" },
 ];
 
 function MarketingLeads() {
+  const query = useLeads();
+  const kpis = useMarketingKpis();
+
   return (
     <AppShell
       roleKey="instructor"
@@ -51,53 +60,36 @@ function MarketingLeads() {
         </>
       }
     >
-      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-        {[
-          {
-            label: "Total",
-            value: "412",
-            delta: "+11% MoM",
-            icon: UserRound,
-            tone: "bg-primary/10 text-primary",
-          },
-          {
-            label: "Hot (90+)",
-            value: "96",
-            delta: "routed to admissions",
-            icon: Flame,
-            tone: "bg-success/10 text-success",
-          },
-          {
-            label: "Warm (70–89)",
-            value: "148",
-            delta: "nurture sequence",
-            icon: PhoneCall,
-            tone: "bg-learning/10 text-learning",
-          },
-          {
-            label: "Cool (<70)",
-            value: "168",
-            delta: "newsletter only",
-            icon: Filter,
-            tone: "bg-warning/10 text-warning",
-          },
-        ].map((k) => (
-          <Card key={k.label} className="bg-card shadow-soft border">
-            <CardContent className="p-5">
-              <div className="flex items-center justify-between">
-                <p className="text-muted-foreground text-xs font-bold tracking-wide uppercase">
-                  {k.label}
-                </p>
-                <span className={cn("grid size-8 place-items-center rounded-lg", k.tone)}>
-                  <k.icon className="size-4" />
-                </span>
-              </div>
-              <p className="font-display mt-3 text-2xl font-extrabold">{k.value}</p>
-              <p className="text-muted-foreground mt-0.5 text-xs font-semibold">{k.delta}</p>
-            </CardContent>
-          </Card>
-        ))}
-      </div>
+      <QueryState<MarketingKpi[]>
+        query={kpis}
+        error={{ title: "Lead stats unavailable" }}
+        empty={{ title: "No lead stats" }}
+      >
+        {(rows) => (
+          <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+            {kpiMeta.map((m, i) => (
+              <Card key={m.label} className="bg-card shadow-soft border">
+                <CardContent className="p-5">
+                  <div className="flex items-center justify-between">
+                    <p className="text-muted-foreground text-xs font-bold tracking-wide uppercase">
+                      {m.label}
+                    </p>
+                    <span className={cn("grid size-8 place-items-center rounded-lg", m.tone)}>
+                      <m.icon className="size-4" />
+                    </span>
+                  </div>
+                  <p className="font-display mt-3 text-2xl font-extrabold">
+                    {rows[i]?.value ?? "—"}
+                  </p>
+                  <p className="text-muted-foreground mt-0.5 text-xs font-semibold">
+                    {rows[i]?.delta ?? ""}
+                  </p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        )}
+      </QueryState>
 
       <Card className="bg-card mt-5 shadow-soft border">
         <CardHeader>
@@ -106,18 +98,33 @@ function MarketingLeads() {
           </CardTitle>
         </CardHeader>
         <CardContent className="divide-y">
-          {leads.map((l) => (
-            <div key={l.n} className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0">
-              <div className="min-w-0 flex-1">
-                <p className="text-sm font-bold">{l.n}</p>
-                <p className="text-muted-foreground text-xs">{l.d}</p>
-              </div>
-              <Badge className={cn("border-0 font-semibold", l.tone)}>{l.s}</Badge>
-              <Button variant="outline" size="sm" className="shrink-0 font-semibold">
-                Open
-              </Button>
-            </div>
-          ))}
+          <QueryState<Lead[]>
+            query={query}
+            error={{ title: "Leads unavailable" }}
+            empty={{ title: "No leads yet" }}
+          >
+            {(rows) => (
+              <>
+                {rows.map((l) => (
+                  <div
+                    key={l.id}
+                    className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
+                  >
+                    <div className="min-w-0 flex-1">
+                      <p className="text-sm font-bold">{l.name}</p>
+                      <p className="text-muted-foreground text-xs">{l.detail}</p>
+                    </div>
+                    <Badge className={cn("border-0 font-semibold", leadTone(l.score))}>
+                      {l.score} — {scoreBucket(l.score)}
+                    </Badge>
+                    <Button variant="outline" size="sm" className="shrink-0 font-semibold">
+                      Open
+                    </Button>
+                  </div>
+                ))}
+              </>
+            )}
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>

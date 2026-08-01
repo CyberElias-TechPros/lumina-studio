@@ -7,6 +7,10 @@ import { registerMock } from "@/lib/api/client";
 import type { ApiRequestInit } from "@/lib/api/client";
 import type { Session } from "@/lib/schema";
 import { ApiError } from "@/lib/errors";
+import { registerRecruitmentMocks } from "@/lib/api/mocks/recruitment";
+import { registerMarketingMocks } from "@/lib/api/mocks/marketing";
+import { registerDesignMocks } from "@/lib/api/mocks/design";
+import { registerLocalizationMocks } from "@/lib/api/mocks/localization";
 import {
   learningCourses,
   gradebook,
@@ -50,6 +54,11 @@ function delay(milliseconds = 120): Promise<void> {
 }
 
 export function registerAllMocks(): void {
+  registerRecruitmentMocks();
+  registerMarketingMocks();
+  registerDesignMocks();
+  registerLocalizationMocks();
+
   /* Auth */
   registerMock("GET", "/v1/auth/session", async () => {
     await delay();

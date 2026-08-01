@@ -418,3 +418,369 @@ export const notifications = sqliteTable(
   },
   (t) => [index("idx_notifications_user").on(t.userId)],
 );
+
+/* ---------------- Phase 4: recruitment ---------------- */
+
+export const jobPostings = sqliteTable("job_postings", {
+  id: text("id").primaryKey(),
+  title: text("title").notNull().default(""),
+  applicants: integer("applicants").notNull().default(0),
+  views: integer("views").notNull().default(0),
+  posted: text("posted").notNull().default(""),
+  status: text("status").notNull().default("active"),
+  detail: text("detail").notNull().default(""),
+  tone: text("tone").notNull().default(""),
+  sortOrder: integer("sort_order").notNull().default(0),
+});
+
+export const pipelineCandidates = sqliteTable(
+  "pipeline_candidates",
+  {
+    id: text("id").primaryKey(),
+    jobId: text("job_id").notNull().default(""),
+    name: text("name").notNull().default(""),
+    stage: text("stage").notNull().default(""),
+    detail: text("detail").notNull().default(""),
+    score: integer("score").notNull().default(0),
+    sortOrder: integer("sort_order").notNull().default(0),
+  },
+  (t) => [index("idx_pipeline_candidates_job").on(t.jobId)],
+);
+
+export const interviews = sqliteTable("interviews", {
+  id: text("id").primaryKey(),
+  candidate: text("candidate").notNull().default(""),
+  role: text("role").notNull().default(""),
+  date: text("date").notNull().default(""),
+  mode: text("mode").notNull().default(""),
+  status: text("status").notNull().default("pending"),
+  sortOrder: integer("sort_order").notNull().default(0),
+});
+
+export const talentCandidates = sqliteTable("talent_candidates", {
+  id: text("id").primaryKey(),
+  name: text("name").notNull().default(""),
+  program: text("program").notNull().default(""),
+  score: integer("score").notNull().default(0),
+  stage: text("stage").notNull().default(""),
+  match: integer("match").notNull().default(0),
+  skills: text("skills").notNull().default("[]"),
+  available: text("available").notNull().default(""),
+  sortOrder: integer("sort_order").notNull().default(0),
+});
+
+/* ---------------- Phase 4: marketing ---------------- */
+
+export const marketingKpis = sqliteTable("marketing_kpis", {
+  id: text("id").primaryKey(),
+  page: text("page").notNull().default(""),
+  label: text("label").notNull().default(""),
+  value: text("value").notNull().default(""),
+  delta: text("delta").notNull().default(""),
+  sortOrder: integer("sort_order").notNull().default(0),
+});
+
+export const campaigns = sqliteTable("campaigns", {
+  id: text("id").primaryKey(),
+  name: text("name").notNull().default(""),
+  channel: text("channel").notNull().default(""),
+  spend: integer("spend").notNull().default(0),
+  leads: integer("leads").notNull().default(0),
+  roas: real("roas").notNull().default(0),
+  status: text("status").notNull().default("draft"),
+  sortOrder: integer("sort_order").notNull().default(0),
+});
+
+export const emailCampaigns = sqliteTable("email_campaigns", {
+  id: text("id").primaryKey(),
+  title: text("title").notNull().default(""),
+  recipients: integer("recipients").notNull().default(0),
+  openRate: integer("open_rate").notNull().default(0),
+  status: text("status").notNull().default("draft"),
+  sortOrder: integer("sort_order").notNull().default(0),
+});
+
+export const socialPosts = sqliteTable("social_posts", {
+  id: text("id").primaryKey(),
+  title: text("title").notNull().default(""),
+  channel: text("channel").notNull().default(""),
+  date: text("date").notNull().default(""),
+  status: text("status").notNull().default("draft"),
+  sortOrder: integer("sort_order").notNull().default(0),
+});
+
+export const landingPages = sqliteTable("landing_pages", {
+  id: text("id").primaryKey(),
+  title: text("title").notNull().default(""),
+  conversion: real("conversion").notNull().default(0),
+  status: text("status").notNull().default("draft"),
+  sortOrder: integer("sort_order").notNull().default(0),
+});
+
+export const seoKeywords = sqliteTable("seo_keywords", {
+  id: text("id").primaryKey(),
+  keyword: text("keyword").notNull().default(""),
+  position: integer("position").notNull().default(0),
+  delta: text("delta").notNull().default(""),
+  sortOrder: integer("sort_order").notNull().default(0),
+});
+
+export const contentCalendar = sqliteTable("content_calendar", {
+  id: text("id").primaryKey(),
+  title: text("title").notNull().default(""),
+  channel: text("channel").notNull().default(""),
+  date: text("date").notNull().default(""),
+  status: text("status").notNull().default("draft"),
+  sortOrder: integer("sort_order").notNull().default(0),
+});
+
+export const leads = sqliteTable("leads", {
+  id: text("id").primaryKey(),
+  name: text("name").notNull().default(""),
+  score: integer("score").notNull().default(0),
+  detail: text("detail").notNull().default(""),
+  sortOrder: integer("sort_order").notNull().default(0),
+});
+
+export const marketingReports = sqliteTable("marketing_reports", {
+  id: text("id").primaryKey(),
+  title: text("title").notNull().default(""),
+  published: text("published").notNull().default(""),
+  sortOrder: integer("sort_order").notNull().default(0),
+});
+
+export const funnelStages = sqliteTable("funnel_stages", {
+  id: text("id").primaryKey(),
+  stage: text("stage").notNull().default(""),
+  value: integer("value").notNull().default(0),
+  pct: real("pct").notNull().default(0),
+  sortOrder: integer("sort_order").notNull().default(0),
+});
+
+/* ---------------- Phase 4: design ---------------- */
+
+export const designComponents = sqliteTable(
+  "design_components",
+  {
+    id: text("id").primaryKey(),
+    name: text("name").notNull(),
+    detail: text("detail").notNull().default(""),
+    states: integer("states").notNull().default(0),
+    usage: integer("usage").notNull().default(0),
+    status: text("status").notNull().default("draft"),
+    sortOrder: integer("sort_order").notNull().default(0),
+  },
+  (t) => [index("idx_design_components_status").on(t.status)],
+);
+
+export const designFlows = sqliteTable(
+  "design_flows",
+  {
+    id: text("id").primaryKey(),
+    name: text("name").notNull(),
+    stepsCount: integer("steps_count").notNull().default(0),
+    decisionsCount: integer("decisions_count").notNull().default(0),
+    status: text("status").notNull().default("draft"),
+    flowSteps: text("flow_steps").notNull().default("[]"),
+    sortOrder: integer("sort_order").notNull().default(0),
+  },
+  (t) => [index("idx_design_flows_status").on(t.status)],
+);
+
+export const designPrototypes = sqliteTable(
+  "design_prototypes",
+  {
+    id: text("id").primaryKey(),
+    name: text("name").notNull(),
+    version: text("version").notNull().default(""),
+    status: text("status").notNull().default("draft"),
+    feedbackCount: integer("feedback_count").notNull().default(0),
+    owner: text("owner").notNull().default(""),
+    sortOrder: integer("sort_order").notNull().default(0),
+  },
+  (t) => [index("idx_design_prototypes_status").on(t.status)],
+);
+
+export const designTokens = sqliteTable(
+  "design_tokens",
+  {
+    id: text("id").primaryKey(),
+    kind: text("kind").notNull().default("color"),
+    name: text("name").notNull(),
+    value: text("value").notNull().default(""),
+    hex: text("hex").notNull().default(""),
+    family: text("family").notNull().default(""),
+    deprecated: integer("deprecated").notNull().default(0),
+    status: text("status").notNull().default("Active"),
+    sortOrder: integer("sort_order").notNull().default(0),
+  },
+  (t) => [index("idx_design_tokens_kind").on(t.kind)],
+);
+
+export const designVersions = sqliteTable(
+  "design_versions",
+  {
+    id: text("id").primaryKey(),
+    title: text("title").notNull(),
+    change: text("change").notNull().default(""),
+    editor: text("editor").notNull().default(""),
+    when: text("when").notNull().default(""),
+    status: text("status").notNull().default("Stable"),
+    sortOrder: integer("sort_order").notNull().default(0),
+  },
+  (t) => [index("idx_design_versions_status").on(t.status)],
+);
+
+export const collaborationThreads = sqliteTable(
+  "collaboration_threads",
+  {
+    id: text("id").primaryKey(),
+    title: text("title").notNull(),
+    detail: text("detail").notNull().default(""),
+    author: text("author").notNull().default(""),
+    status: text("status").notNull().default("Open"),
+    sortOrder: integer("sort_order").notNull().default(0),
+  },
+  (t) => [index("idx_collaboration_threads_status").on(t.status)],
+);
+
+export const designExports = sqliteTable(
+  "design_exports",
+  {
+    id: text("id").primaryKey(),
+    title: text("title").notNull(),
+    format: text("format").notNull().default(""),
+    size: text("size").notNull().default(""),
+    owner: text("owner").notNull().default(""),
+    status: text("status").notNull().default("Queued"),
+    sortOrder: integer("sort_order").notNull().default(0),
+  },
+  (t) => [index("idx_design_exports_status").on(t.status)],
+);
+
+export const systemComponents = sqliteTable(
+  "system_components",
+  {
+    id: text("id").primaryKey(),
+    name: text("name").notNull(),
+    variants: integer("variants").notNull().default(0),
+    states: integer("states").notNull().default(0),
+    usage: integer("usage").notNull().default(0),
+    status: text("status").notNull().default("draft"),
+    sortOrder: integer("sort_order").notNull().default(0),
+  },
+  (t) => [index("idx_system_components_status").on(t.status)],
+);
+
+export const designKpis = sqliteTable(
+  "design_kpis",
+  {
+    id: text("id").primaryKey(),
+    value: integer("value").notNull().default(0),
+    sortOrder: integer("sort_order").notNull().default(0),
+  },
+  (t) => [index("idx_design_kpis_sort").on(t.sortOrder)],
+);
+
+/* ---------------- Phase 4: localization ---------------- */
+
+export const localizationProjects = sqliteTable("localization_projects", {
+  id: text("id").primaryKey(),
+  name: text("name").notNull().default(""),
+  description: text("description").notNull().default(""),
+  path: text("path").notNull().default(""),
+  tone: text("tone").notNull().default(""),
+  sortOrder: integer("sort_order").notNull().default(0),
+});
+
+export const glossaryTerms = sqliteTable("glossary_terms", {
+  id: text("id").primaryKey(),
+  term: text("term").notNull().default(""),
+  definition: text("definition").notNull().default(""),
+  usage: text("usage").notNull().default(""),
+  culturalNotes: text("cultural_notes").notNull().default(""),
+  status: text("status").notNull().default("In review"),
+  sortOrder: integer("sort_order").notNull().default(0),
+});
+
+export const styleGuides = sqliteTable("style_guides", {
+  id: text("id").primaryKey(),
+  market: text("market").notNull().default(""),
+  dos: text("dos").notNull().default("[]"),
+  donts: text("donts").notNull().default("[]"),
+  status: text("status").notNull().default("In review"),
+  sortOrder: integer("sort_order").notNull().default(0),
+});
+
+export const translationMemory = sqliteTable(
+  "translation_memory",
+  {
+    id: text("id").primaryKey(),
+    source: text("source").notNull().default(""),
+    target: text("target").notNull().default(""),
+    locale: text("locale").notNull().default(""),
+    matchPct: integer("match_pct").notNull().default(0),
+    status: text("status").notNull().default("Draft"),
+    sortOrder: integer("sort_order").notNull().default(0),
+  },
+  (t) => [index("idx_translation_memory_locale").on(t.locale)],
+);
+
+export const dialectGroups = sqliteTable(
+  "dialect_groups",
+  {
+    id: text("id").primaryKey(),
+    groupName: text("group_name").notNull().default(""),
+    variants: text("variants").notNull().default("[]"),
+    coverage: integer("coverage").notNull().default(0),
+    status: text("status").notNull().default("Draft"),
+    sortOrder: integer("sort_order").notNull().default(0),
+  },
+  (t) => [index("idx_dialect_groups_status").on(t.status)],
+);
+
+export const copyVariants = sqliteTable(
+  "copy_variants",
+  {
+    id: text("id").primaryKey(),
+    name: text("name").notNull().default(""),
+    code: text("code").notNull().default(""),
+    toneNotes: text("tone_notes").notNull().default(""),
+    status: text("status").notNull().default("Draft"),
+    sortOrder: integer("sort_order").notNull().default(0),
+  },
+  (t) => [index("idx_copy_variants_code").on(t.code)],
+);
+
+export const localizationMarkets = sqliteTable("localization_markets", {
+  id: text("id").primaryKey(),
+  name: text("name").notNull().default(""),
+  conversion: text("conversion").notNull().default(""),
+  engagement: text("engagement").notNull().default(""),
+  pct: integer("pct").notNull().default(0),
+  trend: text("trend").notNull().default(""),
+  tone: text("tone").notNull().default(""),
+  sortOrder: integer("sort_order").notNull().default(0),
+});
+
+export const previewBlocks = sqliteTable("preview_blocks", {
+  id: text("id").primaryKey(),
+  en: text("en").notNull().default(""),
+  yo: text("yo").notNull().default(""),
+  enSub: text("en_sub").notNull().default(""),
+  yoSub: text("yo_sub").notNull().default(""),
+  sortOrder: integer("sort_order").notNull().default(0),
+});
+
+export const localizationStats = sqliteTable(
+  "localization_stats",
+  {
+    id: text("id").primaryKey(),
+    page: text("page").notNull().default(""),
+    label: text("label").notNull().default(""),
+    value: text("value").notNull().default(""),
+    delta: text("delta").notNull().default(""),
+    sortOrder: integer("sort_order").notNull().default(0),
+  },
+  (t) => [index("idx_localization_stats_page").on(t.page)],
+);

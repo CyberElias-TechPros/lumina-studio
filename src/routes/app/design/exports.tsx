@@ -3,7 +3,10 @@ import { ArrowLeft, Download, FileDown, Layers, Package, QrCode } from "lucide-r
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { QueryState } from "@/components/ui/query-state";
 import { AppShell } from "@/components/app/app-shell";
+import { useDesignExports, useDesignKpis } from "@/lib/query/design";
+import type { DesignExport } from "@/lib/api/design";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/design/exports")({
@@ -16,42 +19,17 @@ export const Route = createFileRoute("/app/design/exports")({
   component: ExportCenter,
 });
 
-const exportsList = [
-  {
-    t: "Learning hub icons",
-    format: "SVG + PNG @2x",
-    size: "24 files · 4.2MB",
-    owner: "Ada Obi",
-    status: "Ready",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    t: "Parent app marketing kit",
-    format: "PNG + WebP",
-    size: "18 files · 31MB",
-    owner: "Tunde Bakare",
-    status: "Processing",
-    tone: "bg-primary/10 text-primary",
-  },
-  {
-    t: "Brand gradient pack",
-    format: "Figma + CSS",
-    size: "12 tokens",
-    owner: "Chiamaka Eze",
-    status: "Queued",
-    tone: "bg-warning/10 text-warning",
-  },
-  {
-    t: "Certificates template",
-    format: "PDF + SVG",
-    size: "6 files · 9.8MB",
-    owner: "Ngozi Adeyemi",
-    status: "Failed",
-    tone: "bg-error/10 text-error",
-  },
-];
+function exportTone(status: string): string {
+  if (status === "Ready") return "bg-success/10 text-success";
+  if (status === "Processing") return "bg-primary/10 text-primary";
+  if (status === "Queued") return "bg-warning/10 text-warning";
+  return "bg-error/10 text-error";
+}
 
 function ExportCenter() {
+  const query = useDesignExports();
+  const kpis = useDesignKpis();
+  const kpi = (id: string) => kpis.data?.find((k) => k.id === id)?.value ?? 0;
   return (
     <AppShell
       roleKey="design"
@@ -72,28 +50,28 @@ function ExportCenter() {
         {[
           {
             label: "Requests (wk)",
-            value: "28",
+            value: String(kpi("exports-requests")),
             delta: "+6 vs last wk",
             icon: Download,
             tone: "bg-primary/10 text-primary",
           },
           {
             label: "Formats",
-            value: "6",
+            value: String(kpi("exports-formats")),
             delta: "SVG, PNG, WebP, CSS",
             icon: FileDown,
             tone: "bg-learning/10 text-learning",
           },
           {
             label: "Delivered",
-            value: "22",
+            value: String(kpi("exports-delivered")),
             delta: "79% same-day",
             icon: Package,
             tone: "bg-success/10 text-success",
           },
           {
             label: "Pending",
-            value: "6",
+            value: String(kpi("exports-pending")),
             delta: "1 failed retry",
             icon: QrCode,
             tone: "bg-warning/10 text-warning",
@@ -123,23 +101,34 @@ function ExportCenter() {
           </CardTitle>
         </CardHeader>
         <CardContent className="divide-y">
-          {exportsList.map((e) => (
-            <div key={e.t} className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0">
-              <span className="bg-muted text-muted-foreground grid size-9 shrink-0 place-items-center rounded-lg">
-                <FileDown className="size-4" />
-              </span>
-              <div className="min-w-0 flex-1">
-                <p className="text-sm font-bold">{e.t}</p>
-                <p className="text-muted-foreground text-xs">
-                  {e.format} · {e.size} · {e.owner}
-                </p>
-              </div>
-              <Badge className={cn("border-0 font-semibold", e.tone)}>{e.status}</Badge>
-              <Button variant="outline" size="sm" className="shrink-0">
-                Download
-              </Button>
-            </div>
-          ))}
+          <QueryState<DesignExport[]> query={query} error={{ title: "Exports unavailable" }}>
+            {(rows) => (
+              <>
+                {rows.map((e) => (
+                  <div
+                    key={e.t}
+                    className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
+                  >
+                    <span className="bg-muted text-muted-foreground grid size-9 shrink-0 place-items-center rounded-lg">
+                      <FileDown className="size-4" />
+                    </span>
+                    <div className="min-w-0 flex-1">
+                      <p className="text-sm font-bold">{e.t}</p>
+                      <p className="text-muted-foreground text-xs">
+                        {e.format} · {e.size} · {e.owner}
+                      </p>
+                    </div>
+                    <Badge className={cn("border-0 font-semibold", exportTone(e.status))}>
+                      {e.status}
+                    </Badge>
+                    <Button variant="outline" size="sm" className="shrink-0">
+                      Download
+                    </Button>
+                  </div>
+                ))}
+              </>
+            )}
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>

@@ -10,7 +10,10 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { QueryState } from "@/components/ui/query-state";
 import { AppShell } from "@/components/app/app-shell";
+import { useDesignKpis, useDesignPrototypes } from "@/lib/query/design";
+import type { DesignPrototype } from "@/lib/api/design";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/design/prototypes")({
@@ -23,42 +26,19 @@ export const Route = createFileRoute("/app/design/prototypes")({
   component: PrototypeViewer,
 });
 
-const prototypes = [
-  {
-    t: "Learning hub refresh",
-    version: "v3.2",
-    status: "Testing",
-    feedback: "18",
-    owner: "Ada Obi",
-    tone: "bg-primary/10 text-primary",
-  },
-  {
-    t: "Parent app onboarding",
-    version: "v2.1",
-    status: "In review",
-    feedback: "11",
-    owner: "Tunde Bakare",
-    tone: "bg-warning/10 text-warning",
-  },
-  {
-    t: "Alumni portal theme",
-    version: "v1.0",
-    status: "Draft",
-    feedback: "0",
-    owner: "Chiamaka Eze",
-    tone: "bg-muted-foreground/10 text-muted-foreground",
-  },
-  {
-    t: "Employer dashboard",
-    version: "v4.0",
-    status: "Shipped",
-    feedback: "42",
-    owner: "Ngozi Adeyemi",
-    tone: "bg-success/10 text-success",
-  },
-];
+function prototypeTone(status: string): string {
+  if (status === "Testing") return "bg-primary/10 text-primary";
+  if (status === "In review") return "bg-warning/10 text-warning";
+  if (status === "Shipped") return "bg-success/10 text-success";
+  return "bg-muted-foreground/10 text-muted-foreground";
+}
 
 function PrototypeViewer() {
+  const query = useDesignPrototypes();
+  const prototypes = query.data?.pages.flatMap((p) => p.items) ?? [];
+  const kpis = useDesignKpis();
+  const kpi = (id: string) => kpis.data?.find((k) => k.id === id)?.value ?? 0;
+  const feedback = prototypes.reduce((s, p) => s + p.feedback, 0);
   return (
     <AppShell
       roleKey="design"
@@ -79,28 +59,28 @@ function PrototypeViewer() {
         {[
           {
             label: "Prototypes",
-            value: "5",
+            value: String(prototypes.length),
             delta: "2 in testing",
             icon: MousePointerClick,
             tone: "bg-primary/10 text-primary",
           },
           {
             label: "Versions",
-            value: "23",
+            value: String(kpi("prototypes-versions")),
             delta: "this quarter",
             icon: History,
             tone: "bg-learning/10 text-learning",
           },
           {
             label: "Feedback items",
-            value: "71",
+            value: String(feedback),
             delta: "38 resolved",
             icon: MessageCircle,
             tone: "bg-success/10 text-success",
           },
           {
             label: "Usability tests",
-            value: "5",
+            value: String(kpi("prototypes-usability")),
             delta: "32 participants",
             icon: PlayCircle,
             tone: "bg-warning/10 text-warning",
@@ -130,23 +110,34 @@ function PrototypeViewer() {
           </CardTitle>
         </CardHeader>
         <CardContent className="divide-y">
-          {prototypes.map((p) => (
-            <div key={p.t} className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0">
-              <span className="bg-muted text-muted-foreground grid size-9 shrink-0 place-items-center rounded-lg">
-                <PlayCircle className="size-4" />
-              </span>
-              <div className="min-w-0 flex-1">
-                <p className="text-sm font-bold">{p.t}</p>
-                <p className="text-muted-foreground text-xs">
-                  {p.version} · {p.owner} · {p.feedback} feedback
-                </p>
-              </div>
-              <Badge className={cn("border-0 font-semibold", p.tone)}>{p.status}</Badge>
-              <Button variant="outline" size="sm" className="shrink-0">
-                Open
-              </Button>
-            </div>
-          ))}
+          <QueryState<DesignPrototype[]> query={query} error={{ title: "Prototypes unavailable" }}>
+            {(rows) => (
+              <>
+                {rows.map((p) => (
+                  <div
+                    key={p.t}
+                    className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
+                  >
+                    <span className="bg-muted text-muted-foreground grid size-9 shrink-0 place-items-center rounded-lg">
+                      <PlayCircle className="size-4" />
+                    </span>
+                    <div className="min-w-0 flex-1">
+                      <p className="text-sm font-bold">{p.t}</p>
+                      <p className="text-muted-foreground text-xs">
+                        {p.version} · {p.owner} · {p.feedback} feedback
+                      </p>
+                    </div>
+                    <Badge className={cn("border-0 font-semibold", prototypeTone(p.status))}>
+                      {p.status}
+                    </Badge>
+                    <Button variant="outline" size="sm" className="shrink-0">
+                      Open
+                    </Button>
+                  </div>
+                ))}
+              </>
+            )}
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>

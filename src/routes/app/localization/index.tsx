@@ -12,11 +12,15 @@ import {
   MessageSquareText,
   PenTool,
   Sparkles,
+  type LucideIcon,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { QueryState } from "@/components/ui/query-state";
 import { AppShell } from "@/components/app/app-shell";
+import { useLocalizationProjects, useLocalizationStats } from "@/lib/query/localization";
+import type { LocalizationProject } from "@/lib/api/localization";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/localization/")({
@@ -32,59 +36,21 @@ export const Route = createFileRoute("/app/localization/")({
   component: LocalizationHub,
 });
 
-const screens = [
-  {
-    icon: Languages,
-    label: "Copy variants",
-    desc: "9 locale cards, tone notes",
-    path: "/app/localization/variants",
-    tone: "bg-primary/10 text-primary",
-  },
-  {
-    icon: Database,
-    label: "Translation memory",
-    desc: "Source-target pairs, match %",
-    path: "/app/localization/translation-memory",
-    tone: "bg-learning/10 text-learning",
-  },
-  {
-    icon: BookOpen,
-    label: "Glossary",
-    desc: "Terms, usage, cultural notes",
-    path: "/app/localization/glossary",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    icon: PenTool,
-    label: "Style guides",
-    desc: "Do/don't per market",
-    path: "/app/localization/style-guides",
-    tone: "bg-warning/10 text-warning",
-  },
-  {
-    icon: Eye,
-    label: "Page preview",
-    desc: "Side-by-side locales",
-    path: "/app/localization/preview",
-    tone: "bg-career/10 text-career",
-  },
-  {
-    icon: MessageSquareText,
-    label: "Dialects",
-    desc: "Variant groups, coverage",
-    path: "/app/localization/dialects",
-    tone: "bg-community/10 text-community",
-  },
-  {
-    icon: LineChart,
-    label: "Analytics",
-    desc: "Per-locale conversion",
-    path: "/app/localization/analytics",
-    tone: "bg-erp/10 text-erp",
-  },
-];
+const PROJECT_ICONS: Record<string, LucideIcon> = {
+  "project-1": Languages,
+  "project-2": Database,
+  "project-3": BookOpen,
+  "project-4": PenTool,
+  "project-5": Eye,
+  "project-6": MessageSquareText,
+  "project-7": LineChart,
+};
 
 function LocalizationHub() {
+  const projects = useLocalizationProjects();
+  const stats = useLocalizationStats();
+  const hubStats = (stats.data?.items ?? []).filter((s) => s.page === "hub");
+
   return (
     <AppShell
       roleKey="localization"
@@ -105,48 +71,45 @@ function LocalizationHub() {
         {[
           {
             label: "Markets",
-            value: "4",
-            delta: "NG, UK, GH, US",
             icon: Globe,
             tone: "bg-primary/10 text-primary",
           },
           {
             label: "Languages",
-            value: "3",
-            delta: "EN, YO, HA",
             icon: Languages,
             tone: "bg-learning/10 text-learning",
           },
           {
             label: "Localized pages",
-            value: "38",
-            delta: "12 pending",
             icon: MapPin,
             tone: "bg-warning/10 text-warning",
           },
           {
             label: "Cultural flags",
-            value: "3",
-            delta: "resolved this wk",
             icon: Sparkles,
             tone: "bg-success/10 text-success",
           },
-        ].map((k) => (
-          <Card key={k.label} className="bg-card shadow-soft border">
-            <CardContent className="p-5">
-              <div className="flex items-center justify-between">
-                <p className="text-muted-foreground text-xs font-bold tracking-wide uppercase">
-                  {k.label}
+        ].map((k) => {
+          const stat = hubStats.find((s) => s.label === k.label);
+          return (
+            <Card key={k.label} className="bg-card shadow-soft border">
+              <CardContent className="p-5">
+                <div className="flex items-center justify-between">
+                  <p className="text-muted-foreground text-xs font-bold tracking-wide uppercase">
+                    {k.label}
+                  </p>
+                  <span className={cn("grid size-8 place-items-center rounded-lg", k.tone)}>
+                    <k.icon className="size-4" />
+                  </span>
+                </div>
+                <p className="font-display mt-3 text-2xl font-extrabold">{stat?.value ?? "—"}</p>
+                <p className="text-muted-foreground mt-0.5 text-xs font-semibold">
+                  {stat?.delta ?? "—"}
                 </p>
-                <span className={cn("grid size-8 place-items-center rounded-lg", k.tone)}>
-                  <k.icon className="size-4" />
-                </span>
-              </div>
-              <p className="font-display mt-3 text-2xl font-extrabold">{k.value}</p>
-              <p className="text-muted-foreground mt-0.5 text-xs font-semibold">{k.delta}</p>
-            </CardContent>
-          </Card>
-        ))}
+              </CardContent>
+            </Card>
+          );
+        })}
       </div>
 
       <Card className="bg-card mt-5 shadow-soft border">
@@ -156,22 +119,34 @@ function LocalizationHub() {
           </CardTitle>
         </CardHeader>
         <CardContent className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
-          {screens.map((s) => (
-            <Link
-              key={s.path}
-              to={s.path}
-              className="group bg-card shadow-soft hover:shadow-elevated flex flex-col rounded-xl border p-4 transition-all hover:-translate-y-0.5"
-            >
-              <div className="flex items-start justify-between">
-                <span className={cn("grid size-9 place-items-center rounded-lg", s.tone)}>
-                  <s.icon className="size-4" />
-                </span>
-                <ArrowRight className="text-muted-foreground group-hover:text-primary size-4 transition-colors" />
-              </div>
-              <p className="font-display mt-3 text-sm font-extrabold">{s.label}</p>
-              <p className="text-muted-foreground mt-1 text-xs">{s.desc}</p>
-            </Link>
-          ))}
+          <QueryState<LocalizationProject[]>
+            query={projects}
+            error={{ title: "Workspace unavailable" }}
+          >
+            {(rows) => (
+              <>
+                {rows.map((p) => {
+                  const Icon = PROJECT_ICONS[p.id] ?? Languages;
+                  return (
+                    <Link
+                      key={p.id}
+                      to={p.path}
+                      className="group bg-card shadow-soft hover:shadow-elevated flex flex-col rounded-xl border p-4 transition-all hover:-translate-y-0.5"
+                    >
+                      <div className="flex items-start justify-between">
+                        <span className={cn("grid size-9 place-items-center rounded-lg", p.tone)}>
+                          <Icon className="size-4" />
+                        </span>
+                        <ArrowRight className="text-muted-foreground group-hover:text-primary size-4 transition-colors" />
+                      </div>
+                      <p className="font-display mt-3 text-sm font-extrabold">{p.name}</p>
+                      <p className="text-muted-foreground mt-1 text-xs">{p.desc}</p>
+                    </Link>
+                  );
+                })}
+              </>
+            )}
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>

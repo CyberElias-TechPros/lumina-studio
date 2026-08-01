@@ -12,7 +12,10 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { QueryState } from "@/components/ui/query-state";
 import { AppShell } from "@/components/app/app-shell";
+import { useDialects, useLocalizationStats } from "@/lib/query/localization";
+import type { DialectGroup } from "@/lib/api/localization";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/localization/dialects")({
@@ -25,38 +28,23 @@ export const Route = createFileRoute("/app/localization/dialects")({
   component: DialectManager,
 });
 
-const groups = [
-  {
-    t: "Nigerian English",
-    variants: ["Standard en-NG", "Lagos urban", "Academic"],
-    coverage: "92%",
-    status: "Complete",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    t: "Yoruba",
-    variants: ["Èkó", "Ọ̀yọ́", "Èkìtì"],
-    coverage: "78%",
-    status: "In progress",
-    tone: "bg-primary/10 text-primary",
-  },
-  {
-    t: "Hausa",
-    variants: ["Kano", "Sokoto", "Kaduna"],
-    coverage: "64%",
-    status: "In progress",
-    tone: "bg-warning/10 text-warning",
-  },
-  {
-    t: "Nigerian Pidgin",
-    variants: ["Lagos", "Port Harcourt", "Warri"],
-    coverage: "41%",
-    status: "Draft",
-    tone: "bg-muted-foreground/10 text-muted-foreground",
-  },
-];
+function groupTone(status: string): string {
+  if (status === "Complete") return "bg-success/10 text-success";
+  if (status === "In progress") return "bg-primary/10 text-primary";
+  return "bg-muted-foreground/10 text-muted-foreground";
+}
 
 function DialectManager() {
+  const query = useDialects();
+  const groups = query.data?.pages.flatMap((p) => p.items) ?? [];
+  const stats = useLocalizationStats();
+  const pageStats = (stats.data?.items ?? []).filter((s) => s.page === "dialects");
+  const speakers = pageStats.find((s) => s.label === "Speakers reached");
+  const variantCount = groups.reduce((s, g) => s + g.variants.length, 0);
+  const avgCoverage = groups.length
+    ? Math.floor(groups.reduce((s, g) => s + g.coverage, 0) / groups.length)
+    : 0;
+
   return (
     <AppShell
       roleKey="localization"
@@ -77,29 +65,29 @@ function DialectManager() {
         {[
           {
             label: "Dialect groups",
-            value: "4",
+            value: String(groups.length),
             delta: "NG core + Pidgin",
             icon: MessageSquareText,
             tone: "bg-primary/10 text-primary",
           },
           {
             label: "Variants",
-            value: "12",
+            value: String(variantCount),
             delta: "3 new this qtr",
             icon: Globe,
             tone: "bg-learning/10 text-learning",
           },
           {
             label: "Avg. coverage",
-            value: "68%",
+            value: `${avgCoverage}%`,
             delta: "target 85%",
             icon: Percent,
             tone: "bg-warning/10 text-warning",
           },
           {
             label: "Speakers reached",
-            value: "18.4k",
-            delta: "est. monthly",
+            value: speakers?.value ?? "—",
+            delta: speakers?.delta ?? "—",
             icon: Users,
             tone: "bg-success/10 text-success",
           },
@@ -138,21 +126,31 @@ function DialectManager() {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {groups.map((g) => (
-                <TableRow key={g.t}>
-                  <TableCell className="font-semibold">{g.t}</TableCell>
-                  <TableCell className="text-muted-foreground">{g.variants.join(" · ")}</TableCell>
-                  <TableCell className="w-40">
-                    <div className="flex items-center gap-2">
-                      <Progress value={parseInt(g.coverage)} className="h-1.5 flex-1" />
-                      <span className="text-xs font-bold">{g.coverage}</span>
-                    </div>
-                  </TableCell>
-                  <TableCell>
-                    <Badge className={cn("border-0 font-semibold", g.tone)}>{g.status}</Badge>
-                  </TableCell>
-                </TableRow>
-              ))}
+              <QueryState<DialectGroup[]> query={query} error={{ title: "Dialects unavailable" }}>
+                {(rows) => (
+                  <>
+                    {rows.map((g) => (
+                      <TableRow key={g.id}>
+                        <TableCell className="font-semibold">{g.group}</TableCell>
+                        <TableCell className="text-muted-foreground">
+                          {g.variants.join(" · ")}
+                        </TableCell>
+                        <TableCell className="w-40">
+                          <div className="flex items-center gap-2">
+                            <Progress value={g.coverage} className="h-1.5 flex-1" />
+                            <span className="text-xs font-bold">{g.coverage}%</span>
+                          </div>
+                        </TableCell>
+                        <TableCell>
+                          <Badge className={cn("border-0 font-semibold", groupTone(g.status))}>
+                            {g.status}
+                          </Badge>
+                        </TableCell>
+                      </TableRow>
+                    ))}
+                  </>
+                )}
+              </QueryState>
             </TableBody>
           </Table>
         </CardContent>

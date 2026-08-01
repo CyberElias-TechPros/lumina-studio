@@ -3,7 +3,10 @@ import { ArrowLeft, ArrowRight, Funnel, Mail, Megaphone, Search, Users } from "l
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { QueryState } from "@/components/ui/query-state";
 import { AppShell } from "@/components/app/app-shell";
+import { useMarketingKpis } from "@/lib/query/marketing";
+import type { MarketingKpi } from "@/lib/api/marketing";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/marketing/")({
@@ -54,7 +57,16 @@ const screens = [
   },
 ];
 
+const kpiMeta: { label: string; icon: typeof Funnel; tone: string }[] = [
+  { label: "Leads (MTD)", icon: Funnel, tone: "bg-primary/10 text-primary" },
+  { label: "CAC", icon: Users, tone: "bg-warning/10 text-warning" },
+  { label: "ROAS", icon: Megaphone, tone: "bg-learning/10 text-learning" },
+  { label: "Spend (MTD)", icon: Mail, tone: "bg-success/10 text-success" },
+];
+
 function MarketingHub() {
+  const kpis = useMarketingKpis();
+
   return (
     <AppShell
       roleKey="instructor"
@@ -73,53 +85,36 @@ function MarketingHub() {
         </>
       }
     >
-      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-        {[
-          {
-            label: "Leads (MTD)",
-            value: "412",
-            delta: "+11% MoM",
-            icon: Funnel,
-            tone: "bg-primary/10 text-primary",
-          },
-          {
-            label: "CAC",
-            value: "₦96k",
-            delta: "target ₦90k",
-            icon: Users,
-            tone: "bg-warning/10 text-warning",
-          },
-          {
-            label: "ROAS",
-            value: "4.2x",
-            delta: "target 5x",
-            icon: Megaphone,
-            tone: "bg-learning/10 text-learning",
-          },
-          {
-            label: "Spend (MTD)",
-            value: "₦1.4m",
-            delta: "on budget",
-            icon: Mail,
-            tone: "bg-success/10 text-success",
-          },
-        ].map((k) => (
-          <Card key={k.label} className="bg-card shadow-soft border">
-            <CardContent className="p-5">
-              <div className="flex items-center justify-between">
-                <p className="text-muted-foreground text-xs font-bold tracking-wide uppercase">
-                  {k.label}
-                </p>
-                <span className={cn("grid size-8 place-items-center rounded-lg", k.tone)}>
-                  <k.icon className="size-4" />
-                </span>
-              </div>
-              <p className="font-display mt-3 text-2xl font-extrabold">{k.value}</p>
-              <p className="text-muted-foreground mt-0.5 text-xs font-semibold">{k.delta}</p>
-            </CardContent>
-          </Card>
-        ))}
-      </div>
+      <QueryState<MarketingKpi[]>
+        query={kpis}
+        error={{ title: "Marketing stats unavailable" }}
+        empty={{ title: "No marketing stats" }}
+      >
+        {(rows) => (
+          <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+            {kpiMeta.map((m, i) => (
+              <Card key={m.label} className="bg-card shadow-soft border">
+                <CardContent className="p-5">
+                  <div className="flex items-center justify-between">
+                    <p className="text-muted-foreground text-xs font-bold tracking-wide uppercase">
+                      {m.label}
+                    </p>
+                    <span className={cn("grid size-8 place-items-center rounded-lg", m.tone)}>
+                      <m.icon className="size-4" />
+                    </span>
+                  </div>
+                  <p className="font-display mt-3 text-2xl font-extrabold">
+                    {rows[i]?.value ?? "—"}
+                  </p>
+                  <p className="text-muted-foreground mt-0.5 text-xs font-semibold">
+                    {rows[i]?.delta ?? ""}
+                  </p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        )}
+      </QueryState>
 
       <Card className="bg-card mt-5 shadow-soft border">
         <CardHeader>

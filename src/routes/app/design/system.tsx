@@ -13,6 +13,9 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import { useDesignKpis, useSystemComponents } from "@/lib/query/design";
+import type { SystemComponent } from "@/lib/api/design";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/design/system")({
@@ -28,58 +31,18 @@ export const Route = createFileRoute("/app/design/system")({
   component: DesignSystem,
 });
 
-const components = [
-  {
-    t: "Button",
-    variants: "12",
-    states: "8",
-    usage: "312",
-    status: "Stable",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    t: "Card",
-    variants: "9",
-    states: "6",
-    usage: "204",
-    status: "Stable",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    t: "Badge",
-    variants: "7",
-    states: "4",
-    usage: "188",
-    status: "Stable",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    t: "Table",
-    variants: "5",
-    states: "4",
-    usage: "96",
-    status: "Beta",
-    tone: "bg-warning/10 text-warning",
-  },
-  {
-    t: "Command palette",
-    variants: "3",
-    states: "5",
-    usage: "42",
-    status: "In review",
-    tone: "bg-primary/10 text-primary",
-  },
-  {
-    t: "Chart",
-    variants: "6",
-    states: "3",
-    usage: "18",
-    status: "Draft",
-    tone: "bg-muted-foreground/10 text-muted-foreground",
-  },
-];
+function systemTone(status: string): string {
+  if (status === "Stable") return "bg-success/10 text-success";
+  if (status === "Beta") return "bg-warning/10 text-warning";
+  if (status === "In review") return "bg-primary/10 text-primary";
+  return "bg-muted-foreground/10 text-muted-foreground";
+}
 
 function DesignSystem() {
+  const query = useSystemComponents();
+  const kpis = useDesignKpis();
+  const kpi = (id: string) => kpis.data?.find((k) => k.id === id)?.value ?? 0;
+  const components = query.data?.pages.flatMap((p) => p.items) ?? [];
   return (
     <AppShell
       roleKey="design"
@@ -100,28 +63,28 @@ function DesignSystem() {
         {[
           {
             label: "Token groups",
-            value: "9",
+            value: String(kpi("system-groups")),
             delta: "color, type, spacing...",
             icon: Palette,
             tone: "bg-primary/10 text-primary",
           },
           {
             label: "Components",
-            value: "84",
+            value: String(components.length),
             delta: "78 stable",
             icon: Component,
             tone: "bg-learning/10 text-learning",
           },
           {
             label: "Adoption",
-            value: "98%",
+            value: `${String(kpi("system-adoption"))}%`,
             delta: "across 3 products",
             icon: LayoutGrid,
             tone: "bg-success/10 text-success",
           },
           {
             label: "In review",
-            value: "6",
+            value: String(components.filter((c) => c.status === "In review").length),
             delta: "2 blockers",
             icon: CheckCircle2,
             tone: "bg-warning/10 text-warning",
@@ -163,17 +126,28 @@ function DesignSystem() {
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {components.map((c) => (
-                  <TableRow key={c.t}>
-                    <TableCell className="font-semibold">{c.t}</TableCell>
-                    <TableCell>{c.variants}</TableCell>
-                    <TableCell>{c.states}</TableCell>
-                    <TableCell className="text-muted-foreground">{c.usage} screens</TableCell>
-                    <TableCell>
-                      <Badge className={cn("border-0 font-semibold", c.tone)}>{c.status}</Badge>
-                    </TableCell>
-                  </TableRow>
-                ))}
+                <QueryState<SystemComponent[]>
+                  query={query}
+                  error={{ title: "Components unavailable" }}
+                >
+                  {(rows) => (
+                    <>
+                      {rows.map((c) => (
+                        <TableRow key={c.t}>
+                          <TableCell className="font-semibold">{c.t}</TableCell>
+                          <TableCell>{c.variants}</TableCell>
+                          <TableCell>{c.states}</TableCell>
+                          <TableCell className="text-muted-foreground">{c.usage} screens</TableCell>
+                          <TableCell>
+                            <Badge className={cn("border-0 font-semibold", systemTone(c.status))}>
+                              {c.status}
+                            </Badge>
+                          </TableCell>
+                        </TableRow>
+                      ))}
+                    </>
+                  )}
+                </QueryState>
               </TableBody>
             </Table>
           </CardContent>

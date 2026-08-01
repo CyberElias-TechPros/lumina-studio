@@ -3,7 +3,10 @@ import { ArrowLeft, Award, BriefcaseBusiness, Search, Star, Users } from "lucide
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { QueryState } from "@/components/ui/query-state";
 import { AppShell } from "@/components/app/app-shell";
+import { useTalentCandidates } from "@/lib/query/recruitment";
+import type { TalentCandidate } from "@/lib/api/recruitment";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/employer/talent")({
@@ -16,34 +19,15 @@ export const Route = createFileRoute("/app/employer/talent")({
   component: EmployerTalentSearch,
 });
 
-const candidates = [
-  {
-    name: "Ada Okafor",
-    track: "Backend · Graduating Nov 2026",
-    skills: ["Node.js", "PostgreSQL", "Docker"],
-    match: 92,
-    available: "Internship",
-    tone: "bg-primary/10 text-primary",
-  },
-  {
-    name: "Tobi Adeyemi",
-    track: "DevOps · Graduating Sep 2026",
-    skills: ["AWS", "Terraform", "CI/CD"],
-    match: 87,
-    available: "Full-time",
-    tone: "bg-learning/10 text-learning",
-  },
-  {
-    name: "Zainab Yusuf",
-    track: "Product Design · Graduating Nov 2026",
-    skills: ["Figma", "Design systems", "a11y"],
-    match: 81,
-    available: "Internship",
-    tone: "bg-success/10 text-success",
-  },
-];
+function matchTone(match: number): string {
+  if (match >= 90) return "bg-primary/10 text-primary";
+  if (match >= 85) return "bg-learning/10 text-learning";
+  return "bg-success/10 text-success";
+}
 
 function EmployerTalentSearch() {
+  const query = useTalentCandidates();
+
   return (
     <AppShell
       roleKey="instructor"
@@ -76,42 +60,50 @@ function EmployerTalentSearch() {
       </div>
 
       <div className="mt-5 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
-        {candidates.map((c) => (
-          <Card key={c.name} className="bg-card shadow-soft border">
-            <CardContent className="p-5">
-              <div className="flex items-start justify-between gap-3">
-                <div>
-                  <p className="font-display text-sm font-extrabold">{c.name}</p>
-                  <p className="text-muted-foreground text-xs">{c.track}</p>
-                </div>
-                <Badge className={cn("border-0 font-bold", c.tone)}>{c.match}% match</Badge>
-              </div>
-              <div className="mt-3 flex flex-wrap gap-1.5">
-                {c.skills.map((s) => (
-                  <Badge key={s} variant="secondary" className="font-semibold">
-                    {s}
-                  </Badge>
-                ))}
-              </div>
-              <div className="mt-4 flex items-center justify-between">
-                <Badge variant="outline" className="font-semibold">
-                  <Star className="text-warning size-3" /> OSKM: 11/16
-                </Badge>
-                <Badge className="bg-muted text-muted-foreground border-0 font-semibold">
-                  {c.available}
-                </Badge>
-              </div>
-              <div className="mt-4 flex gap-2">
-                <Button size="sm" variant="outline" className="flex-1 font-semibold">
-                  Portfolio
-                </Button>
-                <Button size="sm" className="flex-1 font-semibold">
-                  Shortlist
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
-        ))}
+        <QueryState<TalentCandidate[]> query={query} error={{ title: "Candidates unavailable" }}>
+          {(rows) => (
+            <>
+              {rows.map((c) => (
+                <Card key={c.id} className="bg-card shadow-soft border">
+                  <CardContent className="p-5">
+                    <div className="flex items-start justify-between gap-3">
+                      <div>
+                        <p className="font-display text-sm font-extrabold">{c.name}</p>
+                        <p className="text-muted-foreground text-xs">{c.program}</p>
+                      </div>
+                      <Badge className={cn("border-0 font-bold", matchTone(c.match))}>
+                        {c.match}% match
+                      </Badge>
+                    </div>
+                    <div className="mt-3 flex flex-wrap gap-1.5">
+                      {c.skills.map((s) => (
+                        <Badge key={s} variant="secondary" className="font-semibold">
+                          {s}
+                        </Badge>
+                      ))}
+                    </div>
+                    <div className="mt-4 flex items-center justify-between">
+                      <Badge variant="outline" className="font-semibold">
+                        <Star className="text-warning size-3" /> OSKM: {c.score}/16
+                      </Badge>
+                      <Badge className="bg-muted text-muted-foreground border-0 font-semibold">
+                        {c.available}
+                      </Badge>
+                    </div>
+                    <div className="mt-4 flex gap-2">
+                      <Button size="sm" variant="outline" className="flex-1 font-semibold">
+                        Portfolio
+                      </Button>
+                      <Button size="sm" className="flex-1 font-semibold">
+                        Shortlist
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </>
+          )}
+        </QueryState>
       </div>
 
       <Card className="bg-card mt-5 shadow-soft border">

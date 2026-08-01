@@ -3,7 +3,10 @@ import { ArrowLeft, Eye, MessageCircle, MessagesSquare, Pin, ThumbsUp } from "lu
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { QueryState } from "@/components/ui/query-state";
 import { AppShell } from "@/components/app/app-shell";
+import { useCollaborationThreads, useDesignKpis } from "@/lib/query/design";
+import type { CollaborationThread } from "@/lib/api/design";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/design/collaboration")({
@@ -16,38 +19,18 @@ export const Route = createFileRoute("/app/design/collaboration")({
   component: CollaborationHub,
 });
 
-const threads = [
-  {
-    t: "Mobile nav density",
-    d: "3 replies · badge on prototype v3.2",
-    author: "Ada Obi",
-    status: "Open",
-    tone: "bg-primary/10 text-primary",
-  },
-  {
-    t: "Empty states for learner dashboards",
-    d: "2 replies · annotation on screen 4",
-    author: "Tunde Bakare",
-    status: "In progress",
-    tone: "bg-warning/10 text-warning",
-  },
-  {
-    t: "Contrast on success badges",
-    d: "5 replies · resolved in token editor",
-    author: "Chiamaka Eze",
-    status: "Resolved",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    t: "Cert template footer spacing",
-    d: "1 reply · pinned by Ngozi",
-    author: "Ngozi Adeyemi",
-    status: "Resolved",
-    tone: "bg-success/10 text-success",
-  },
-];
+function threadTone(status: string): string {
+  if (status === "Open") return "bg-primary/10 text-primary";
+  if (status === "In progress") return "bg-warning/10 text-warning";
+  return "bg-success/10 text-success";
+}
 
 function CollaborationHub() {
+  const query = useCollaborationThreads();
+  const threads = query.data?.pages.flatMap((p) => p.items) ?? [];
+  const kpis = useDesignKpis();
+  const kpi = (id: string) => kpis.data?.find((k) => k.id === id)?.value ?? 0;
+  const resolved = threads.filter((t) => t.status === "Resolved").length;
   return (
     <AppShell
       roleKey="design"
@@ -68,28 +51,28 @@ function CollaborationHub() {
         {[
           {
             label: "Threads",
-            value: "9",
+            value: String(threads.length),
             delta: "5 open",
             icon: MessagesSquare,
             tone: "bg-primary/10 text-primary",
           },
           {
             label: "Annotations",
-            value: "23",
+            value: String(kpi("collab-annotations")),
             delta: "9 on prototypes",
             icon: Pin,
             tone: "bg-learning/10 text-learning",
           },
           {
             label: "Resolved",
-            value: "4",
+            value: String(resolved),
             delta: "this week",
             icon: ThumbsUp,
             tone: "bg-success/10 text-success",
           },
           {
             label: "Participants",
-            value: "6",
+            value: String(kpi("collab-participants")),
             delta: "design + product",
             icon: Eye,
             tone: "bg-warning/10 text-warning",
@@ -119,23 +102,34 @@ function CollaborationHub() {
           </CardTitle>
         </CardHeader>
         <CardContent className="divide-y">
-          {threads.map((t) => (
-            <div key={t.t} className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0">
-              <span className="bg-muted text-muted-foreground grid size-9 shrink-0 place-items-center rounded-lg">
-                <MessagesSquare className="size-4" />
-              </span>
-              <div className="min-w-0 flex-1">
-                <p className="text-sm font-bold">{t.t}</p>
-                <p className="text-muted-foreground text-xs">
-                  {t.d} · by {t.author}
-                </p>
-              </div>
-              <Badge className={cn("border-0 font-semibold", t.tone)}>{t.status}</Badge>
-              <Button variant="outline" size="sm" className="shrink-0">
-                Open
-              </Button>
-            </div>
-          ))}
+          <QueryState<CollaborationThread[]> query={query} error={{ title: "Threads unavailable" }}>
+            {(rows) => (
+              <>
+                {rows.map((t) => (
+                  <div
+                    key={t.t}
+                    className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
+                  >
+                    <span className="bg-muted text-muted-foreground grid size-9 shrink-0 place-items-center rounded-lg">
+                      <MessagesSquare className="size-4" />
+                    </span>
+                    <div className="min-w-0 flex-1">
+                      <p className="text-sm font-bold">{t.t}</p>
+                      <p className="text-muted-foreground text-xs">
+                        {t.d} · by {t.author}
+                      </p>
+                    </div>
+                    <Badge className={cn("border-0 font-semibold", threadTone(t.status))}>
+                      {t.status}
+                    </Badge>
+                    <Button variant="outline" size="sm" className="shrink-0">
+                      Open
+                    </Button>
+                  </div>
+                ))}
+              </>
+            )}
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>

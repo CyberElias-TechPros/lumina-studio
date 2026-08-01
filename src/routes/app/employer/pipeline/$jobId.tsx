@@ -11,7 +11,10 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { QueryState } from "@/components/ui/query-state";
 import { AppShell } from "@/components/app/app-shell";
+import { usePipelineCandidates } from "@/lib/query/recruitment";
+import type { PipelineCandidate } from "@/lib/api/recruitment";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/employer/pipeline/$jobId")({
@@ -31,38 +34,16 @@ const stages = [
   { label: "Offer", count: 1 },
 ];
 
-const candidates = [
-  {
-    name: "Ada Okafor",
-    stage: "Interview",
-    d: "Interview Aug 12",
-    score: 92,
-    tone: "bg-primary/10 text-primary",
-  },
-  {
-    name: "Tobi Adeyemi",
-    stage: "Interview",
-    d: "Interview Aug 14",
-    score: 87,
-    tone: "bg-primary/10 text-primary",
-  },
-  {
-    name: "Zainab Yusuf",
-    stage: "Shortlist",
-    d: "CV review",
-    score: 81,
-    tone: "bg-learning/10 text-learning",
-  },
-  {
-    name: "Hauwa Bello",
-    stage: "Applied",
-    d: "Aug 1",
-    score: 74,
-    tone: "bg-muted-foreground/10 text-muted-foreground",
-  },
-];
+function candidateTone(stage: string): string {
+  if (stage === "Interview") return "bg-primary/10 text-primary";
+  if (stage === "Shortlist") return "bg-learning/10 text-learning";
+  return "bg-muted-foreground/10 text-muted-foreground";
+}
 
 function EmployerPipeline() {
+  const { jobId } = Route.useParams();
+  const query = usePipelineCandidates(jobId);
+
   return (
     <AppShell
       roleKey="instructor"
@@ -103,37 +84,48 @@ function EmployerPipeline() {
           </CardTitle>
         </CardHeader>
         <CardContent className="divide-y">
-          {candidates.map((c) => (
-            <div
-              key={c.name}
-              className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
-            >
-              <span
-                className={cn(
-                  "grid size-9 shrink-0 place-items-center rounded-lg text-xs font-extrabold",
-                  c.tone,
-                )}
-              >
-                {c.score}
-              </span>
-              <div className="min-w-0 flex-1">
-                <p className="text-sm font-bold">{c.name}</p>
-                <p className="text-muted-foreground text-xs">{c.d}</p>
-              </div>
-              <Badge className={cn("border-0 font-semibold", c.tone)}>{c.stage}</Badge>
-              <div className="flex shrink-0 gap-1">
-                <Button variant="outline" size="sm" className="font-semibold">
-                  <FileText className="size-3.5" /> CV
-                </Button>
-                <Button variant="outline" size="sm" className="font-semibold">
-                  <MessageSquare className="size-3.5" />
-                </Button>
-                <Button size="sm" className="font-semibold">
-                  <CalendarDays className="size-3.5" /> Schedule
-                </Button>
-              </div>
-            </div>
-          ))}
+          <QueryState<PipelineCandidate[]>
+            query={query}
+            error={{ title: "Candidates unavailable" }}
+          >
+            {(rows) => (
+              <>
+                {rows.map((c) => (
+                  <div
+                    key={c.id}
+                    className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
+                  >
+                    <span
+                      className={cn(
+                        "grid size-9 shrink-0 place-items-center rounded-lg text-xs font-extrabold",
+                        candidateTone(c.stage),
+                      )}
+                    >
+                      {c.score}
+                    </span>
+                    <div className="min-w-0 flex-1">
+                      <p className="text-sm font-bold">{c.name}</p>
+                      <p className="text-muted-foreground text-xs">{c.detail}</p>
+                    </div>
+                    <Badge className={cn("border-0 font-semibold", candidateTone(c.stage))}>
+                      {c.stage}
+                    </Badge>
+                    <div className="flex shrink-0 gap-1">
+                      <Button variant="outline" size="sm" className="font-semibold">
+                        <FileText className="size-3.5" /> CV
+                      </Button>
+                      <Button variant="outline" size="sm" className="font-semibold">
+                        <MessageSquare className="size-3.5" />
+                      </Button>
+                      <Button size="sm" className="font-semibold">
+                        <CalendarDays className="size-3.5" /> Schedule
+                      </Button>
+                    </div>
+                  </div>
+                ))}
+              </>
+            )}
+          </QueryState>
         </CardContent>
       </Card>
 

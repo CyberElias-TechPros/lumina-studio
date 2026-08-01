@@ -12,6 +12,9 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import { useDesignKpis, useDesignTokens } from "@/lib/query/design";
+import type { DesignColorToken, DesignToken, DesignTypeToken } from "@/lib/api/design";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/design/tokens")({
@@ -24,66 +27,27 @@ export const Route = createFileRoute("/app/design/tokens")({
   component: TokenEditor,
 });
 
-const colorTokens = [
-  { t: "primary", v: "hsl(24 94% 53%)", hex: "#F97316", deprecated: false, tone: "bg-primary" },
-  {
-    t: "brand",
-    v: "hsl(24 94% 53%)",
-    hex: "#F97316",
-    deprecated: false,
-    tone: "bg-gradient-brand",
-  },
-  { t: "success", v: "hsl(142 71% 45%)", hex: "#22C55E", deprecated: false, tone: "bg-success" },
-  { t: "warning", v: "hsl(48 96% 53%)", hex: "#EAB308", deprecated: false, tone: "bg-warning" },
-  { t: "ink", v: "hsl(222 47% 11%)", hex: "#0F172A", deprecated: false, tone: "bg-ink" },
-  {
-    t: "royal-blue",
-    v: "hsl(221 83% 53%)",
-    hex: "#2563EB",
-    deprecated: true,
-    tone: "bg-primary/40",
-  },
-];
+function swatchTone(token: DesignColorToken): string {
+  if (token.t === "brand") return "bg-gradient-brand";
+  if (token.deprecated) return "bg-primary/40";
+  return `bg-${token.t}`;
+}
 
-const typeTokens = [
-  {
-    t: "display-2xl",
-    v: "48px / 52px · extrabold",
-    family: "Fraunces",
-    status: "Active",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    t: "heading-xl",
-    v: "30px / 36px · bold",
-    family: "Inter",
-    status: "Active",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    t: "body-base",
-    v: "16px / 24px · regular",
-    family: "Inter",
-    status: "Active",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    t: "caption-sm",
-    v: "12px / 16px · semibold",
-    family: "Inter",
-    status: "Active",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    t: "label-xs",
-    v: "10px / 14px · bold",
-    family: "Inter",
-    status: "Deprecated",
-    tone: "bg-error/10 text-error",
-  },
-];
+function typeTone(status: string): string {
+  if (status === "Deprecated") return "bg-error/10 text-error";
+  return "bg-success/10 text-success";
+}
 
 function TokenEditor() {
+  const query = useDesignTokens();
+  const tokens = query.data?.pages.flatMap((p) => p.items) ?? [];
+  const colorTokens = tokens.filter((t): t is DesignColorToken => t.kind === "color");
+  const typeTokens = tokens.filter((t): t is DesignTypeToken => t.kind === "type");
+  const kpis = useDesignKpis();
+  const kpi = (id: string) => kpis.data?.find((k) => k.id === id)?.value ?? 0;
+  const deprecatedCount =
+    colorTokens.filter((c) => c.deprecated).length +
+    typeTokens.filter((t) => t.status === "Deprecated").length;
   return (
     <AppShell
       roleKey="design"
@@ -104,28 +68,28 @@ function TokenEditor() {
         {[
           {
             label: "Color tokens",
-            value: "142",
+            value: String(colorTokens.length),
             delta: "9 groups",
             icon: Pipette,
             tone: "bg-primary/10 text-primary",
           },
           {
             label: "Spacing steps",
-            value: "12",
+            value: String(kpi("tokens-spacing")),
             delta: "4px base scale",
             icon: Ruler,
             tone: "bg-learning/10 text-learning",
           },
           {
             label: "Type styles",
-            value: "24",
+            value: String(typeTokens.length),
             delta: "3 families",
             icon: Type,
             tone: "bg-success/10 text-success",
           },
           {
             label: "Deprecated",
-            value: "6",
+            value: String(deprecatedCount),
             delta: "2 removed this wk",
             icon: SlidersHorizontal,
             tone: "bg-warning/10 text-warning",
@@ -148,88 +112,102 @@ function TokenEditor() {
         ))}
       </div>
 
-      <div className="mt-5 grid gap-5 xl:grid-cols-[1.5fr_1fr]">
-        <Card className="bg-card shadow-soft border">
-          <CardHeader>
-            <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
-              <Palette className="text-primary size-4" /> Color tokens
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead>Token</TableHead>
-                  <TableHead>Swatch</TableHead>
-                  <TableHead>Value</TableHead>
-                  <TableHead>Hex</TableHead>
-                  <TableHead>Status</TableHead>
-                  <TableHead />
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {colorTokens.map((c) => (
-                  <TableRow key={c.t}>
-                    <TableCell className="font-mono text-xs font-bold">{c.t}</TableCell>
-                    <TableCell>
-                      <span className={cn("inline-block size-6 rounded-md border", c.tone)} />
-                    </TableCell>
-                    <TableCell className="font-mono text-xs">{c.v}</TableCell>
-                    <TableCell className="font-mono text-xs text-muted-foreground">
-                      {c.hex}
-                    </TableCell>
-                    <TableCell>
-                      <Badge
-                        className={cn(
-                          "border-0 font-semibold",
-                          c.deprecated ? "bg-error/10 text-error" : "bg-success/10 text-success",
-                        )}
-                      >
-                        {c.deprecated ? "Deprecated" : "Active"}
-                      </Badge>
-                    </TableCell>
-                    <TableCell>
-                      <Button variant="outline" size="sm">
-                        Edit
-                      </Button>
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </CardContent>
-        </Card>
+      <QueryState<DesignToken[]> query={query} error={{ title: "Tokens unavailable" }}>
+        {(rows) => {
+          const colors = rows.filter((t): t is DesignColorToken => t.kind === "color");
+          const types = rows.filter((t): t is DesignTypeToken => t.kind === "type");
+          return (
+            <div className="mt-5 grid gap-5 xl:grid-cols-[1.5fr_1fr]">
+              <Card className="bg-card shadow-soft border">
+                <CardHeader>
+                  <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
+                    <Palette className="text-primary size-4" /> Color tokens
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <Table>
+                    <TableHeader>
+                      <TableRow>
+                        <TableHead>Token</TableHead>
+                        <TableHead>Swatch</TableHead>
+                        <TableHead>Value</TableHead>
+                        <TableHead>Hex</TableHead>
+                        <TableHead>Status</TableHead>
+                        <TableHead />
+                      </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                      {colors.map((c) => (
+                        <TableRow key={c.t}>
+                          <TableCell className="font-mono text-xs font-bold">{c.t}</TableCell>
+                          <TableCell>
+                            <span
+                              className={cn("inline-block size-6 rounded-md border", swatchTone(c))}
+                            />
+                          </TableCell>
+                          <TableCell className="font-mono text-xs">{c.v}</TableCell>
+                          <TableCell className="font-mono text-xs text-muted-foreground">
+                            {c.hex}
+                          </TableCell>
+                          <TableCell>
+                            <Badge
+                              className={cn(
+                                "border-0 font-semibold",
+                                c.deprecated
+                                  ? "bg-error/10 text-error"
+                                  : "bg-success/10 text-success",
+                              )}
+                            >
+                              {c.deprecated ? "Deprecated" : "Active"}
+                            </Badge>
+                          </TableCell>
+                          <TableCell>
+                            <Button variant="outline" size="sm">
+                              Edit
+                            </Button>
+                          </TableCell>
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                  </Table>
+                </CardContent>
+              </Card>
 
-        <Card className="bg-card shadow-soft border">
-          <CardHeader>
-            <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
-              <Type className="text-primary size-4" /> Type scale
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead>Token</TableHead>
-                  <TableHead>Value</TableHead>
-                  <TableHead>Status</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {typeTokens.map((t) => (
-                  <TableRow key={t.t}>
-                    <TableCell className="font-mono text-xs font-bold">{t.t}</TableCell>
-                    <TableCell className="text-muted-foreground">{t.v}</TableCell>
-                    <TableCell>
-                      <Badge className={cn("border-0 font-semibold", t.tone)}>{t.status}</Badge>
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </CardContent>
-        </Card>
-      </div>
+              <Card className="bg-card shadow-soft border">
+                <CardHeader>
+                  <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
+                    <Type className="text-primary size-4" /> Type scale
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <Table>
+                    <TableHeader>
+                      <TableRow>
+                        <TableHead>Token</TableHead>
+                        <TableHead>Value</TableHead>
+                        <TableHead>Status</TableHead>
+                      </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                      {types.map((t) => (
+                        <TableRow key={t.t}>
+                          <TableCell className="font-mono text-xs font-bold">{t.t}</TableCell>
+                          <TableCell className="text-muted-foreground">{t.v}</TableCell>
+                          <TableCell>
+                            <Badge className={cn("border-0 font-semibold", typeTone(t.status))}>
+                              {t.status}
+                            </Badge>
+                          </TableCell>
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                  </Table>
+                </CardContent>
+              </Card>
+            </div>
+          );
+        }}
+      </QueryState>
     </AppShell>
   );
 }

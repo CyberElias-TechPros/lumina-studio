@@ -3,7 +3,10 @@ import { ArrowLeft, CalendarDays, CheckCircle2, Video, XCircle } from "lucide-re
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { QueryState } from "@/components/ui/query-state";
 import { AppShell } from "@/components/app/app-shell";
+import { useInterviews } from "@/lib/query/recruitment";
+import type { Interview } from "@/lib/api/recruitment";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/employer/interviews")({
@@ -16,47 +19,25 @@ export const Route = createFileRoute("/app/employer/interviews")({
   component: EmployerInterviews,
 });
 
-const interviews = [
-  {
-    c: "Ada Okafor",
-    role: "Junior Backend Engineer",
-    d: "Aug 12 · 10:00",
-    mode: "Video",
-    status: "Confirmed",
-    tone: "bg-primary/10 text-primary",
-  },
-  {
-    c: "Tobi Adeyemi",
-    role: "Junior Backend Engineer",
-    d: "Aug 14 · 11:30",
-    mode: "On campus",
-    status: "Confirmed",
-    tone: "bg-primary/10 text-primary",
-  },
-  {
-    c: "Zainab Yusuf",
-    role: "Junior Backend Engineer",
-    d: "Aug 18 · 14:00",
-    mode: "Video",
-    status: "Pending",
-    tone: "bg-warning/10 text-warning",
-  },
-  {
-    c: "Chinedu A.",
-    role: "DevOps Intern",
-    d: "Jul 22 · 09:00",
-    mode: "Video",
-    status: "Completed",
-    tone: "bg-success/10 text-success",
-  },
-];
+function interviewTone(status: string): string {
+  if (status === "Confirmed") return "bg-primary/10 text-primary";
+  if (status === "Completed") return "bg-success/10 text-success";
+  return "bg-warning/10 text-warning";
+}
 
 function EmployerInterviews() {
+  const query = useInterviews();
+  const interviews = query.data?.pages.flatMap((p) => p.items) ?? [];
+  const upcoming = interviews.filter((i) => i.status !== "Completed").length;
+  const confirmed = interviews.filter((i) => i.status === "Confirmed").length;
+  const completed = interviews.filter((i) => i.status === "Completed").length;
+  const noShows = interviews.filter((i) => i.status === "No-show").length;
+
   return (
     <AppShell
       roleKey="instructor"
       title="Interviews"
-      subtitle="4 upcoming · feedback within 48h"
+      subtitle={`${upcoming} upcoming · feedback within 48h`}
       actions={
         <>
           <Badge className="bg-success/10 text-success border-0 font-semibold">
@@ -74,28 +55,28 @@ function EmployerInterviews() {
         {[
           {
             label: "Upcoming",
-            value: "4",
+            value: String(upcoming),
             delta: "this week",
             icon: CalendarDays,
             tone: "bg-primary/10 text-primary",
           },
           {
             label: "Confirmed",
-            value: "3",
+            value: String(confirmed),
             delta: "1 awaiting reply",
             icon: CheckCircle2,
             tone: "bg-learning/10 text-learning",
           },
           {
             label: "Completed",
-            value: "6",
+            value: String(completed),
             delta: "this month",
             icon: Video,
             tone: "bg-success/10 text-success",
           },
           {
             label: "No-shows",
-            value: "0",
+            value: String(noShows),
             delta: "great cohort",
             icon: XCircle,
             tone: "bg-warning/10 text-warning",
@@ -125,27 +106,38 @@ function EmployerInterviews() {
           </CardTitle>
         </CardHeader>
         <CardContent className="divide-y">
-          {interviews.map((i) => (
-            <div key={i.c} className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0">
-              <span className="bg-muted text-muted-foreground grid size-9 shrink-0 place-items-center rounded-lg">
-                {i.mode === "Video" ? (
-                  <Video className="size-4" />
-                ) : (
-                  <CalendarDays className="size-4" />
-                )}
-              </span>
-              <div className="min-w-0 flex-1">
-                <p className="text-sm font-bold">{i.c}</p>
-                <p className="text-muted-foreground text-xs">
-                  {i.role} · {i.d} · {i.mode}
-                </p>
-              </div>
-              <Badge className={cn("border-0 font-semibold", i.tone)}>{i.status}</Badge>
-              <Button variant="outline" size="sm" className="shrink-0 font-semibold">
-                {i.status === "Completed" ? "Add feedback" : "Reschedule"}
-              </Button>
-            </div>
-          ))}
+          <QueryState<Interview[]> query={query} error={{ title: "Interviews unavailable" }}>
+            {(rows) => (
+              <>
+                {rows.map((i) => (
+                  <div
+                    key={i.id}
+                    className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
+                  >
+                    <span className="bg-muted text-muted-foreground grid size-9 shrink-0 place-items-center rounded-lg">
+                      {i.mode === "Video" ? (
+                        <Video className="size-4" />
+                      ) : (
+                        <CalendarDays className="size-4" />
+                      )}
+                    </span>
+                    <div className="min-w-0 flex-1">
+                      <p className="text-sm font-bold">{i.candidate}</p>
+                      <p className="text-muted-foreground text-xs">
+                        {i.role} · {i.date} · {i.mode}
+                      </p>
+                    </div>
+                    <Badge className={cn("border-0 font-semibold", interviewTone(i.status))}>
+                      {i.status}
+                    </Badge>
+                    <Button variant="outline" size="sm" className="shrink-0 font-semibold">
+                      {i.status === "Completed" ? "Add feedback" : "Reschedule"}
+                    </Button>
+                  </div>
+                ))}
+              </>
+            )}
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>
