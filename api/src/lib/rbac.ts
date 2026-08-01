@@ -45,8 +45,8 @@ export const RBAC_RULES: RbacRule[] = [
 
   /* LMS */
   { methods: ["GET"], path: "/v1/courses" },
-  { methods: ["GET"], path: "/v1/courses/:slug" },
   { methods: ["GET"], path: "/v1/courses/gradebook", roles: ["student"] },
+  { methods: ["GET"], path: "/v1/courses/:slug" },
   { methods: ["GET"], path: "/v1/dashboard/student", roles: ["student"] },
   { methods: ["GET"], path: "/v1/assignments", roles: ["student"] },
   { methods: ["GET"], path: "/v1/assignments/:id", roles: ["student"] },

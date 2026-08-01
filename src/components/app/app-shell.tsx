@@ -37,6 +37,7 @@ import {
   Share2,
   ShieldCheck,
   SlidersHorizontal,
+  Sparkles,
   Sword,
   Target,
   Timer,
@@ -62,7 +63,7 @@ export type AppRole = {
   label: string;
   emoji: string;
   gradient: string;
-  nav: { label: string; icon: ReactNode }[];
+  nav: { label: string; icon: ReactNode; to?: string }[];
 };
 
 export const appRoles: AppRole[] = [
@@ -72,18 +73,23 @@ export const appRoles: AppRole[] = [
     emoji: "🎓",
     gradient: "bg-gradient-learning",
     nav: [
-      { label: "Dashboard", icon: <LayoutDashboard className="size-4" /> },
-      { label: "Learning Hub", icon: <BookOpen className="size-4" /> },
-      { label: "Assignments", icon: <FileText className="size-4" /> },
-      { label: "Assessments", icon: <ShieldCheck className="size-4" /> },
-      { label: "Grades", icon: <GraduationCap className="size-4" /> },
-      { label: "Portfolio", icon: <BriefcaseBusiness className="size-4" /> },
-      { label: "Marketplace", icon: <BriefcaseBusiness className="size-4" /> },
-      { label: "Calendar", icon: <CalendarDays className="size-4" /> },
-      { label: "Messages", icon: <MessageSquare className="size-4" /> },
-      { label: "Finance", icon: <Building2 className="size-4" /> },
-      { label: "Attendance", icon: <Users className="size-4" /> },
-      { label: "Certificates", icon: <HeartHandshake className="size-4" /> },
+      { label: "Dashboard", icon: <LayoutDashboard className="size-4" />, to: "/app" },
+      { label: "Learning Hub", icon: <BookOpen className="size-4" />, to: "/app/learn" },
+      { label: "Assignments", icon: <FileText className="size-4" />, to: "/app/assignments" },
+      { label: "Assessments", icon: <ShieldCheck className="size-4" />, to: "/app/assessments" },
+      { label: "Grades", icon: <GraduationCap className="size-4" />, to: "/app/grades" },
+      { label: "Portfolio", icon: <BriefcaseBusiness className="size-4" />, to: "/app/portfolio" },
+      { label: "Calendar", icon: <CalendarDays className="size-4" />, to: "/app/calendar" },
+      { label: "Messages", icon: <MessageSquare className="size-4" />, to: "/app/messages" },
+      { label: "Chat", icon: <MessagesSquare className="size-4" />, to: "/app/chat" },
+      { label: "AI Assistant", icon: <Sparkles className="size-4" />, to: "/app/ai" },
+      { label: "Finance", icon: <Building2 className="size-4" />, to: "/app/finance" },
+      { label: "Attendance", icon: <Users className="size-4" />, to: "/app/attendance" },
+      {
+        label: "Certificates",
+        icon: <HeartHandshake className="size-4" />,
+        to: "/app/certificates",
+      },
     ],
   },
   {
@@ -92,15 +98,28 @@ export const appRoles: AppRole[] = [
     emoji: "🧑‍🏫",
     gradient: "bg-gradient-erp",
     nav: [
-      { label: "Dashboard", icon: <LayoutDashboard className="size-4" /> },
-      { label: "Course Builder", icon: <BookOpen className="size-4" /> },
-      { label: "Assignments", icon: <FileText className="size-4" /> },
-      { label: "Assessment Engine", icon: <ShieldCheck className="size-4" /> },
-      { label: "Gradebook", icon: <GraduationCap className="size-4" /> },
-      { label: "Attendance", icon: <Users className="size-4" /> },
-      { label: "Analytics", icon: <Building2 className="size-4" /> },
-      { label: "Calendar", icon: <CalendarDays className="size-4" /> },
-      { label: "Messages", icon: <MessageSquare className="size-4" /> },
+      { label: "Dashboard", icon: <LayoutDashboard className="size-4" />, to: "/app/instructor" },
+      {
+        label: "Course Builder",
+        icon: <BookOpen className="size-4" />,
+        to: "/app/instructor/courses",
+      },
+      {
+        label: "Assignments",
+        icon: <FileText className="size-4" />,
+        to: "/app/instructor/assignments",
+      },
+      {
+        label: "Assessment Engine",
+        icon: <ShieldCheck className="size-4" />,
+        to: "/app/assessments",
+      },
+      { label: "Gradebook", icon: <GraduationCap className="size-4" />, to: "/app/grades" },
+      { label: "Attendance", icon: <Users className="size-4" />, to: "/app/attendance" },
+      { label: "Analytics", icon: <Building2 className="size-4" />, to: "/app/reports" },
+      { label: "Calendar", icon: <CalendarDays className="size-4" />, to: "/app/calendar" },
+      { label: "Messages", icon: <MessageSquare className="size-4" />, to: "/app/messages" },
+      { label: "Chat", icon: <MessagesSquare className="size-4" />, to: "/app/chat" },
     ],
   },
   {
@@ -124,7 +143,7 @@ export const appRoles: AppRole[] = [
     emoji: "🛡️",
     gradient: "bg-gradient-services",
     nav: [
-      { label: "Admin Hub", icon: <LayoutDashboard className="size-4" /> },
+      { label: "Admin Hub", icon: <LayoutDashboard className="size-4" />, to: "/app/admin" },
       { label: "User Management", icon: <Users className="size-4" /> },
       { label: "Roles & Permissions", icon: <ShieldCheck className="size-4" /> },
       { label: "Security", icon: <ShieldCheck className="size-4" /> },
@@ -290,13 +309,13 @@ export function AppShell({
           {role.nav.map((item, i) => (
             <Link
               key={item.label}
-              to="/app"
+              to={item.to ?? "/app"}
               data-tour={i === 0 ? "nav-home" : i === 1 ? "nav-learn" : undefined}
+              activeProps={{ className: "bg-primary/10 text-primary" }}
+              activeOptions={{ exact: item.to === "/app" }}
               className={cn(
                 "flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-semibold transition-colors",
-                i === 0
-                  ? "bg-primary/10 text-primary"
-                  : "text-muted-foreground hover:bg-muted/70 hover:text-foreground",
+                "text-muted-foreground hover:bg-muted/70 hover:text-foreground",
               )}
             >
               {item.icon}

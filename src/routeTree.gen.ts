@@ -28,9 +28,11 @@ import { Route as StoriesRouteImport } from './routes/stories'
 import { Route as VirtualTourRouteImport } from './routes/virtual-tour'
 import { Route as WorkRouteImport } from './routes/work'
 import { Route as AppIndexRouteImport } from './routes/app.index'
+import { Route as AppAiRouteImport } from './routes/app/ai'
 import { Route as AppAttendanceRouteImport } from './routes/app/attendance'
 import { Route as AppCalendarRouteImport } from './routes/app/calendar'
 import { Route as AppCertificatesRouteImport } from './routes/app/certificates'
+import { Route as AppChatRouteImport } from './routes/app/chat'
 import { Route as AppFinanceRouteImport } from './routes/app/finance'
 import { Route as AppGradesRouteImport } from './routes/app/grades'
 import { Route as AppMessagesRouteImport } from './routes/app/messages'
@@ -464,6 +466,11 @@ const AppIndexRoute = AppIndexRouteImport.update({
   path: '/app/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AppAiRoute = AppAiRouteImport.update({
+  id: '/app/ai',
+  path: '/app/ai',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AppAttendanceRoute = AppAttendanceRouteImport.update({
   id: '/app/attendance',
   path: '/app/attendance',
@@ -477,6 +484,11 @@ const AppCalendarRoute = AppCalendarRouteImport.update({
 const AppCertificatesRoute = AppCertificatesRouteImport.update({
   id: '/app/certificates',
   path: '/app/certificates',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppChatRoute = AppChatRouteImport.update({
+  id: '/app/chat',
+  path: '/app/chat',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AppFinanceRoute = AppFinanceRouteImport.update({
@@ -2253,9 +2265,11 @@ export interface FileRoutesByFullPath {
   '/stories': typeof StoriesRoute
   '/virtual-tour': typeof VirtualTourRoute
   '/work': typeof WorkRoute
+  '/app/ai': typeof AppAiRoute
   '/app/attendance': typeof AppAttendanceRoute
   '/app/calendar': typeof AppCalendarRoute
   '/app/certificates': typeof AppCertificatesRoute
+  '/app/chat': typeof AppChatRoute
   '/app/finance': typeof AppFinanceRoute
   '/app/grades': typeof AppGradesRoute
   '/app/messages': typeof AppMessagesRoute
@@ -2614,9 +2628,11 @@ export interface FileRoutesByTo {
   '/stories': typeof StoriesRoute
   '/virtual-tour': typeof VirtualTourRoute
   '/work': typeof WorkRoute
+  '/app/ai': typeof AppAiRoute
   '/app/attendance': typeof AppAttendanceRoute
   '/app/calendar': typeof AppCalendarRoute
   '/app/certificates': typeof AppCertificatesRoute
+  '/app/chat': typeof AppChatRoute
   '/app/finance': typeof AppFinanceRoute
   '/app/grades': typeof AppGradesRoute
   '/app/messages': typeof AppMessagesRoute
@@ -2976,9 +2992,11 @@ export interface FileRoutesById {
   '/stories': typeof StoriesRoute
   '/virtual-tour': typeof VirtualTourRoute
   '/work': typeof WorkRoute
+  '/app/ai': typeof AppAiRoute
   '/app/attendance': typeof AppAttendanceRoute
   '/app/calendar': typeof AppCalendarRoute
   '/app/certificates': typeof AppCertificatesRoute
+  '/app/chat': typeof AppChatRoute
   '/app/finance': typeof AppFinanceRoute
   '/app/grades': typeof AppGradesRoute
   '/app/messages': typeof AppMessagesRoute
@@ -3339,9 +3357,11 @@ export interface FileRouteTypes {
     | '/stories'
     | '/virtual-tour'
     | '/work'
+    | '/app/ai'
     | '/app/attendance'
     | '/app/calendar'
     | '/app/certificates'
+    | '/app/chat'
     | '/app/finance'
     | '/app/grades'
     | '/app/messages'
@@ -3700,9 +3720,11 @@ export interface FileRouteTypes {
     | '/stories'
     | '/virtual-tour'
     | '/work'
+    | '/app/ai'
     | '/app/attendance'
     | '/app/calendar'
     | '/app/certificates'
+    | '/app/chat'
     | '/app/finance'
     | '/app/grades'
     | '/app/messages'
@@ -4061,9 +4083,11 @@ export interface FileRouteTypes {
     | '/stories'
     | '/virtual-tour'
     | '/work'
+    | '/app/ai'
     | '/app/attendance'
     | '/app/calendar'
     | '/app/certificates'
+    | '/app/chat'
     | '/app/finance'
     | '/app/grades'
     | '/app/messages'
@@ -4423,9 +4447,11 @@ export interface RootRouteChildren {
   StoriesRoute: typeof StoriesRoute
   VirtualTourRoute: typeof VirtualTourRoute
   WorkRoute: typeof WorkRoute
+  AppAiRoute: typeof AppAiRoute
   AppAttendanceRoute: typeof AppAttendanceRoute
   AppCalendarRoute: typeof AppCalendarRoute
   AppCertificatesRoute: typeof AppCertificatesRoute
+  AppChatRoute: typeof AppChatRoute
   AppFinanceRoute: typeof AppFinanceRoute
   AppGradesRoute: typeof AppGradesRoute
   AppMessagesRoute: typeof AppMessagesRoute
@@ -4887,6 +4913,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/app/ai': {
+      id: '/app/ai'
+      path: '/app/ai'
+      fullPath: '/app/ai'
+      preLoaderRoute: typeof AppAiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/app/attendance': {
       id: '/app/attendance'
       path: '/app/attendance'
@@ -4906,6 +4939,13 @@ declare module '@tanstack/react-router' {
       path: '/app/certificates'
       fullPath: '/app/certificates'
       preLoaderRoute: typeof AppCertificatesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/chat': {
+      id: '/app/chat'
+      path: '/app/chat'
+      fullPath: '/app/chat'
+      preLoaderRoute: typeof AppChatRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/app/finance': {
@@ -7419,9 +7459,11 @@ const rootRouteChildren: RootRouteChildren = {
   StoriesRoute: StoriesRoute,
   VirtualTourRoute: VirtualTourRoute,
   WorkRoute: WorkRoute,
+  AppAiRoute: AppAiRoute,
   AppAttendanceRoute: AppAttendanceRoute,
   AppCalendarRoute: AppCalendarRoute,
   AppCertificatesRoute: AppCertificatesRoute,
+  AppChatRoute: AppChatRoute,
   AppFinanceRoute: AppFinanceRoute,
   AppGradesRoute: AppGradesRoute,
   AppMessagesRoute: AppMessagesRoute,
