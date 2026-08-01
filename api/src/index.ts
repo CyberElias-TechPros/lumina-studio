@@ -17,6 +17,7 @@ import { hr } from "./routes/hr";
 import { finance } from "./routes/finance";
 import { admin } from "./routes/admin";
 import { notifications } from "./routes/notifications";
+import { payments } from "./routes/payments";
 
 const app = new Hono<{ Bindings: AppEnv }>();
 
@@ -53,6 +54,7 @@ v1.route("/hr", hr);
 v1.route("/", finance);
 v1.route("/admin", admin);
 v1.route("/notifications", notifications);
+v1.route("/payments", payments);
 v1.route("/flags", flags);
 
 app.route("/v1", v1);

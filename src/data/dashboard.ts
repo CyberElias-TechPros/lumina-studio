@@ -579,6 +579,52 @@ export const paymentBatches = [
   },
 ];
 
+export const payments = [
+  {
+    id: "pay-1",
+    reference: "cea_demo_a1b2c3d4",
+    email: "student@cea.ng",
+    amount: 480000,
+    currency: "NGN",
+    status: "success",
+    provider: "paystack",
+    description: "Tuition — instalment 1 of 2",
+    paidAt: "Jul 30, 2026",
+  },
+  {
+    id: "pay-2",
+    reference: "cea_demo_e5f6a7b8",
+    email: "student@cea.ng",
+    amount: 25000,
+    currency: "NGN",
+    status: "success",
+    provider: "paystack",
+    description: "Design tools add-on",
+    paidAt: "Jul 22, 2026",
+  },
+  {
+    id: "pay-3",
+    reference: "cea_demo_c9d0e1f2",
+    email: "student@cea.ng",
+    amount: 120000,
+    currency: "NGN",
+    status: "success",
+    provider: "paystack",
+    description: "Bootcamp sprint 2 fee",
+    paidAt: "Jul 14, 2026",
+  },
+  {
+    id: "pay-4",
+    reference: "cea_demo_3a4b5c6d",
+    email: "student@cea.ng",
+    amount: 320000,
+    currency: "NGN",
+    status: "pending",
+    provider: "paystack",
+    description: "Tuition — instalment 2 of 2",
+  },
+];
+
 /* ---------------- Client / Projects ---------------- */
 
 export const clientProjects = [

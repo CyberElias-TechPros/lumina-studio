@@ -1,4 +1,4 @@
-import { sqliteTable, text, integer, real, index } from "drizzle-orm/sqlite-core";
+import { sqliteTable, text, integer, real, index, uniqueIndex } from "drizzle-orm/sqlite-core";
 
 export const engines = sqliteTable("engines", {
   key: text("key").primaryKey(),
@@ -381,6 +381,29 @@ export const paymentBatches = sqliteTable("payment_batches", {
   status: text("status").notNull().default("pending"),
   sortOrder: integer("sort_order").notNull().default(0),
 });
+
+export const payments = sqliteTable(
+  "payments",
+  {
+    id: text("id").primaryKey(),
+    userId: text("user_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    reference: text("reference").notNull(),
+    email: text("email").notNull().default(""),
+    amount: integer("amount").notNull().default(0),
+    currency: text("currency").notNull().default("NGN"),
+    status: text("status").notNull().default("pending"),
+    provider: text("provider").notNull().default("paystack"),
+    description: text("description").notNull().default(""),
+    paidAt: text("paid_at"),
+    sortOrder: integer("sort_order").notNull().default(0),
+  },
+  (t) => [
+    uniqueIndex("idx_payments_reference").on(t.reference),
+    index("idx_payments_user").on(t.userId),
+  ],
+);
 
 export const notifications = sqliteTable(
   "notifications",

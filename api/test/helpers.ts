@@ -4,6 +4,7 @@ import lmsSql from "../migrations/0001_lms.sql?raw";
 import studentLmsSql from "../migrations/0002_student_lms.sql?raw";
 import domainSql from "../migrations/0003_domain.sql?raw";
 import payrollSql from "../migrations/0004_payroll_payments.sql?raw";
+import paymentsSql from "../migrations/0005_payments.sql?raw";
 import { seedContentSql } from "../seeds/content";
 import { seedLmsSql } from "../seeds/lms";
 import { seedDomainSql } from "../seeds/domain";
@@ -12,7 +13,7 @@ import type { Session } from "../src/schema/api";
 export const SESSION_COOKIE = "cea_session";
 
 export async function setupDb(): Promise<void> {
-  for (const sql of [initSql, lmsSql, studentLmsSql, domainSql, payrollSql]) {
+  for (const sql of [initSql, lmsSql, studentLmsSql, domainSql, payrollSql, paymentsSql]) {
     const statements = sql
       .split("\n")
       .filter((line) => !line.trim().startsWith("--"))

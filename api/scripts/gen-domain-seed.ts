@@ -23,11 +23,13 @@ import {
   notifications,
   payrollChanges,
   paymentBatches,
+  payments,
 } from "../../src/data/dashboard";
 
 const OUT_DIR = resolve(dirname(fileURLToPath(import.meta.url)), "..", "seeds");
 
 const DEMO_INSTRUCTOR_ID = "00000000-0000-4000-8000-000000000002";
+const DEMO_STUDENT_ID = "00000000-0000-4000-8000-000000000001";
 const DEMO_ADMIN_ID = "00000000-0000-4000-8000-000000000003";
 const DEMO_HR_ID = "00000000-0000-4000-8000-000000000004";
 const DEMO_FINANCE_ID = "00000000-0000-4000-8000-000000000005";
@@ -177,6 +179,17 @@ for (const b of paymentBatches) {
       `VALUES (${sqlString(`pb-${paymentBatches.indexOf(b) + 1}`)}, ${sqlString(b.batch)}, ` +
       `${b.amount}, ${b.count}, ${sqlString(b.date)}, ${sqlString(b.status)}, ` +
       `${paymentBatches.indexOf(b)});`,
+  );
+}
+
+for (const p of payments) {
+  statements.push(
+    `INSERT OR IGNORE INTO payments (id, user_id, reference, email, amount, currency, status, ` +
+      `provider, description, paid_at, sort_order) ` +
+      `VALUES (${sqlString(p.id)}, ${sqlString(DEMO_STUDENT_ID)}, ${sqlString(p.reference)}, ` +
+      `${sqlString(p.email)}, ${p.amount}, ${sqlString(p.currency)}, ${sqlString(p.status)}, ` +
+      `${sqlString(p.provider)}, ${sqlString(p.description)}, ` +
+      `${p.paidAt ? sqlString(p.paidAt) : "NULL"}, ${payments.indexOf(p)});`,
   );
 }
 

@@ -6,6 +6,7 @@
 import { registerMock } from "@/lib/api/client";
 import type { ApiRequestInit } from "@/lib/api/client";
 import type { Session } from "@/lib/schema";
+import { ApiError } from "@/lib/errors";
 import {
   learningCourses,
   gradebook,
@@ -27,6 +28,7 @@ import {
   auditLog,
   payrollChanges,
   paymentBatches,
+  payments,
 } from "@/data/dashboard";
 import type { StudentDashboard } from "@/lib/api/dashboard";
 
@@ -285,6 +287,62 @@ export function registerAllMocks(): void {
       total: paymentBatches.length,
     };
   });
+
+  /* Payments (checkout + history) */
+  const createdCheckouts = new Map<
+    string,
+    { reference: string; amount: number; description: string }
+  >();
+  registerMock("POST", "/v1/payments/checkout", async (init: ApiRequestInit) => {
+    await delay();
+    const input = (init.body ?? {}) as { amount?: number; description?: string };
+    const reference = `cea_mock_${Math.random().toString(16).slice(2, 10)}`;
+    createdCheckouts.set(reference, {
+      reference,
+      amount: input.amount ?? 0,
+      description: input.description ?? "",
+    });
+    registerMock("GET", `/v1/payments/session/${reference}`, async () => {
+      await delay();
+      const c = createdCheckouts.get(reference);
+      if (!c) throw new ApiError(404, "NOT_FOUND", "Payment not found.");
+      return {
+        id: `pay-${c.reference}`,
+        reference: c.reference,
+        email: "student@cea.ng",
+        amount: c.amount,
+        currency: "NGN",
+        status: "pending",
+        provider: "paystack",
+        description: c.description,
+      };
+    });
+    return {
+      reference,
+      authorizationUrl: `https://checkout.paystack.com/${reference}`,
+      mock: true,
+    };
+  });
+  registerMock("GET", "/v1/payments/history", async () => {
+    await delay();
+    const created = [...createdCheckouts.values()].map((c) => ({
+      id: `pay-${c.reference}`,
+      reference: c.reference,
+      email: "student@cea.ng",
+      amount: c.amount,
+      currency: "NGN",
+      status: "pending",
+      provider: "paystack",
+      description: c.description,
+    }));
+    return { items: [...payments, ...created], total: payments.length + created.length };
+  });
+  for (const seeded of payments) {
+    registerMock("GET", `/v1/payments/session/${seeded.reference}`, async () => {
+      await delay();
+      return seeded;
+    });
+  }
 
   /* Flags */
   registerMock("GET", "/v1/flags", async () => {
