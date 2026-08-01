@@ -284,9 +284,9 @@ Domain schemas per master plan (10+): `identity, lms, assessment, hr, finance, r
 
 > Provider decision (user, Aug 2026): **Paystack**, not Stripe — NGN-first, standard Checkout + Inline JS, webhooks `charge.success` / `invoice.paid` / `charge.failed`.
 
-- `POST /v1/payments/checkout` → `{ authorization_url }` (hosted Paystack Checkout; NGN); or `POST /v1/payments/intent` for Paystack Inline modal (`VITE_PAYSTACK_PUBLIC_KEY`).
-- Webhooks (backend): `charge.success`, `invoice.paid`, `charge.failed` → notifications + ledger.
-- Client: `handlePaymentStatus` polling `GET /v1/payments/session/:reference`; failed → sonner error + retry button; success → invalidate invoices/wallet queries.
+- `POST /v1/payments/checkout` → `{ authorizationUrl, accessCode?, mock }` — hosted Paystack Checkout (NGN); server-side `transaction/initialize` call with `PAYSTACK_SECRET_KEY`; no secret (dev) → `mock: true` + `checkout.paystack.com/<ref>` URL. Body `{ amount (naira, int 1..10M), description? }`, creates a `pending` row in `payments` (unique `reference` = `cea_<hex>`, kobo conversion happens at the Paystack boundary).
+- Webhooks (backend): `POST /v1/payments/webhook` (public) — `charge.success` / `charge.failed` / other events; HMAC-SHA512 signature verified via `x-paystack-signature` when a secret is configured (constant-time compare; prod without secret → 503); success → ledger row `success` + `paid_at` + "Payment received" notification; failed → `failed` + notification; unknown events → `200 { ok: true }`, idempotent (no duplicate notifications on redelivery).
+- Client: `GET /v1/payments/session/:reference` (owner-only, 403 otherwise) for `handlePaymentStatus` polling; `GET /v1/payments/history` (own payments, keyset paginated). Frontend: `src/lib/api/payments.ts` + `src/lib/query/payments.ts` (`usePaymentHistory`, `useCreateCheckout`) + mock handlers; pay-button pages (student billing, finance invoice pay, employer plan upgrade) wire these when their pages land.
 - Pay-button touchpoints (from inventory): student tuition/installments, finance invoice pay, employer plan upgrade, event tickets, program compare → enroll checkout.
 
 ---
@@ -431,7 +431,16 @@ Auth (3): sign-in, register, magic-link. Apply (3): personal, documents, fee. LM
 - Frontend: clients `src/lib/api/hr.ts` (fetchPayrollChanges) + `finance.ts` (fetchPaymentBatches), hooks `usePayrollChanges`/`usePaymentBatches` + item hooks, mock handlers with stable ids, and both pages wired via `QueryState`: `hr/payroll-input.tsx` (sent/draft counts from status, "Sent to finance"/"Draft" badges) + `accountant/payments.tsx` (processed total + tx count derived, `formatNaira`/`formatNairaCompact`, reconciled % badge).
 - Verified: 87/87 api tests, `tsc --noEmit` clean (api + frontend), lint clean, frontend build green. Commit `0777e43`, pushed.
 
-**Next (Phase 3 remainder):** remaining app suites are off-plan (recruitment, marketing, design, localization, mentor, client/employer, director, dev) — Phase 4 in the roadmap. Paystack checkout + webhooks per §9 remain future work (roadmap Phase 3 completion): `POST /v1/payments/checkout` (charge.success verification via `PAYSTACK_SECRET_KEY` webhook), payment history for student. Optional polish: search/filter actions on wired pages, expense status columns (backend + seed change).
+**Phase 3.8 done (Aug 2026):** Paystack checkout + webhook endpoints live.
+- Migration `0005_payments.sql`: `payments` (user_id FK, unique `reference`, `amount` naira, `currency`, `status` pending|success|failed, `provider`, `description`, `paid_at`) + Drizzle mirror; `PAYSTACK_SECRET_KEY` added to `AppEnv`.
+- Routes (`api/src/routes/payments.ts`, mounted `v1.route("/payments", …)` alongside finance's `/payments` batches): `POST /v1/payments/checkout` (requireAuth; validates amount int 1..10M; inserts pending row; real `transaction/initialize` call when secret set, else `mock: true` URL — deterministic in tests); `POST /v1/payments/webhook` (public; HMAC-SHA512 via `x-paystack-signature` + constant-time compare when secret configured, prod-without-secret → 503; `charge.success`/`charge.failed` → status + `paid_at` + notification, idempotent, unknown events → ok); `GET /v1/payments/session/:reference` (owner-only, 404/403); `GET /v1/payments/history` (own payments, keyset paginated).
+- `api/src/lib/crypto.ts`: `hmacSha512Hex` + `timingSafeEqualHex` (unit-tested against the RFC-style SHA-512 HMAC vector `b42af090…`).
+- Seeds: `payments` collection in `src/data/dashboard.ts` (4 rows for `student@cea.ng`, 3 success + 1 pending) → gen-domain-seed (DEMO_STUDENT_ID) → `seeds/domain.{sql,ts}` now 65 stmts; migration 0005 applied + reseeded locally.
+- Tests: `api/test/payments.test.ts` 15 tests (checkout 401/validation/shape, webhook success/failed/unknown/no-ref, session 404/403/owner, history auth/shape/cursor) → **102/102 green across 12 files**.
+- Frontend: `src/lib/api/payments.ts` (`Payment`, `CheckoutResponse`, fetch history/session, `createCheckout`), `src/lib/query/payments.ts` (`usePaymentHistory` + `useCreateCheckout` mutation invalidating history), mock handlers (checkout registers a per-reference session mock; seeded sessions pre-registered). No billing page exists yet — pay buttons wire in when their pages land.
+- Verified: 102/102 api tests, `tsc --noEmit` clean (api + frontend), lint clean, frontend build green. Commit `4918325`, pushed.
+
+**Next (Phase 3 remainder):** remaining app suites are off-plan (recruitment, marketing, design, localization, mentor, client/employer, director, dev) — Phase 4 in the roadmap. Paystack Inline modal (`POST /v1/payments/intent`, `VITE_PAYSTACK_PUBLIC_KEY` client key) + billing/pay-button pages can follow; optional polish: search/filter actions on wired pages, expense status columns (backend + seed change).
 
 ---
 
