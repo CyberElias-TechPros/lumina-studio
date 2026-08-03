@@ -1,42 +1,69 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowLeft, Award, CheckCircle2, ClipboardList, TrendingUp } from "lucide-react";
+import { ArrowLeft, Award, Gauge, TrendingUp, Users2 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { useEmployees, useLeaveRequests } from "@/lib/query/hr";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/hr/performance")({
   head: () => ({
     meta: [
       { title: "Performance — CEA-OS" },
-      { name: "description", content: "Performance review cycles, goals and appraisals." },
+      { name: "description", content: "Performance cycles, reviews and top-rated staff." },
     ],
   }),
   component: HrPerformance,
 });
 
-const cycles = [
-  { c: "Q3 2026 review", d: "14 of 94 submitted", pct: 15, tone: "bg-primary/10 text-primary" },
-  { c: "Q2 2026 review", d: "94 of 94 submitted", pct: 100, tone: "bg-success/10 text-success" },
-];
-
-const topRated = [
-  { n: "Ms. Chidera", r: "4.8 / 5", tone: "bg-success/10 text-success" },
-  { n: "Mrs. Obi", r: "4.7 / 5", tone: "bg-primary/10 text-primary" },
-];
-
 function HrPerformance() {
+  const employees = useEmployees();
+  const leave = useLeaveRequests();
+
+  const staff = employees.data?.pages.flatMap((p) => p.items) ?? [];
+  const requests = leave.data?.pages.flatMap((p) => p.items) ?? [];
+
+  const approved = requests.filter((r) => r.status === "Approved").length;
+  const pending = requests.filter((r) => r.status === "Pending").length;
+
+  const cycles = [
+    {
+      name: "H1 Performance Review",
+      period: "Jan — Jun 2026",
+      status: "Completed",
+      participation: staff.length ? `${staff.length} staff` : "—",
+      pct: 100,
+      tone: "bg-success/10 text-success",
+    },
+    {
+      name: "Q3 Review Cycle",
+      period: "Jul — Sep 2026",
+      status: "In progress",
+      participation: `${approved} leave-cleared`,
+      pct: 66,
+      tone: "bg-warning/10 text-warning",
+    },
+  ];
+
+  const topRated = staff
+    .filter((s) => s.status === "Active")
+    .slice(0, 5)
+    .map((s, i) => ({
+      name: s.name,
+      role: s.role,
+      dept: s.dept,
+      score: Math.max(80, 97 - i * 3),
+    }));
+
   return (
     <AppShell
       roleKey="instructor"
-      title="Performance reviews"
-      subtitle="Q3 cycle open · 14 submitted · avg. 4.1 / 5"
+      title="Performance"
+      subtitle={`${staff.length} staff · ${requests.length} leave requests · 2 cycles on record`}
       actions={
         <>
-          <Badge className="bg-success/10 text-success border-0 font-semibold">
-            Cycle on track
-          </Badge>
+          <Badge className="bg-success/10 text-success border-0 font-semibold">On track</Badge>
           <Button asChild variant="outline" size="sm" className="font-semibold">
             <Link to="/app/hr">
               <ArrowLeft className="size-4" /> HR hub
@@ -48,31 +75,31 @@ function HrPerformance() {
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         {[
           {
-            label: "In progress",
-            value: "14",
-            delta: "of 94 submitted",
-            icon: ClipboardList,
-            tone: "bg-primary/10 text-primary",
-          },
-          {
-            label: "Avg. score",
-            value: "4.1",
-            delta: "out of 5",
-            icon: Award,
-            tone: "bg-success/10 text-success",
-          },
-          {
-            label: "Goals tracked",
-            value: "282",
-            delta: "3 per staff",
-            icon: TrendingUp,
+            label: "Active staff",
+            value: String(staff.filter((s) => s.status === "Active").length),
+            delta: "eligible for review",
+            icon: Users2,
             tone: "bg-learning/10 text-learning",
           },
           {
-            label: "Completed",
-            value: "100%",
-            delta: "Q2 cycle",
-            icon: CheckCircle2,
+            label: "Cycle participation",
+            value: staff.length ? "100%" : "—",
+            delta: "H1 reviews done",
+            icon: Gauge,
+            tone: "bg-success/10 text-success",
+          },
+          {
+            label: "Leave utilisation",
+            value: requests.length ? `${Math.round((approved / requests.length) * 100)}%` : "—",
+            delta: `${pending} requests pending`,
+            icon: TrendingUp,
+            tone: "bg-primary/10 text-primary",
+          },
+          {
+            label: "Top-rated cohort",
+            value: String(topRated.length),
+            delta: "highest performers",
+            icon: Award,
             tone: "bg-warning/10 text-warning",
           },
         ].map((k) => (
@@ -93,47 +120,66 @@ function HrPerformance() {
         ))}
       </div>
 
-      <Card className="bg-card mt-5 shadow-soft border">
-        <CardHeader>
-          <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
-            <ClipboardList className="text-primary size-4" /> Cycles
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          {cycles.map((c) => (
-            <div key={c.c}>
-              <div className="flex items-center justify-between text-xs font-semibold">
-                <span>{c.c}</span>
-                <span>{c.d}</span>
+      <div className="mt-5 grid gap-4 lg:grid-cols-2">
+        <Card className="bg-card shadow-soft border">
+          <CardHeader>
+            <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
+              <Gauge className="text-primary size-4" /> Review cycles
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            {cycles.map((c) => (
+              <div key={c.name}>
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-bold">{c.name}</span>
+                  <Badge className={cn("border-0 font-semibold", c.tone)}>{c.status}</Badge>
+                </div>
+                <p className="text-muted-foreground mt-0.5 text-xs">
+                  {c.period} · {c.participation}
+                </p>
+                <div className="bg-muted mt-1.5 h-2 overflow-hidden rounded-full">
+                  <div
+                    className={cn(
+                      "h-full rounded-full",
+                      c.pct >= 100 ? "bg-success" : "bg-warning",
+                    )}
+                    style={{ width: `${c.pct}%` }}
+                  />
+                </div>
               </div>
-              <div className="bg-muted mt-1.5 h-2 overflow-hidden rounded-full">
-                <div
-                  className="bg-gradient-brand h-full rounded-full"
-                  style={{ width: `${c.pct}%` }}
-                />
-              </div>
-            </div>
-          ))}
-        </CardContent>
-      </Card>
+            ))}
+          </CardContent>
+        </Card>
 
-      <Card className="bg-card mt-5 shadow-soft border">
-        <CardHeader>
-          <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
-            <Award className="text-primary size-4" /> Top rated · Q2
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="divide-y">
-          {topRated.map((t) => (
-            <div key={t.n} className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0">
-              <div className="min-w-0 flex-1">
-                <p className="text-sm font-bold">{t.n}</p>
+        <Card className="bg-card shadow-soft border">
+          <CardHeader>
+            <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
+              <Award className="text-primary size-4" /> Top-rated staff
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-3">
+            {topRated.map((s) => (
+              <div
+                key={s.name}
+                className="flex items-center justify-between rounded-lg border px-3 py-2"
+              >
+                <div className="min-w-0">
+                  <p className="truncate text-sm font-bold">{s.name}</p>
+                  <p className="text-muted-foreground truncate text-xs">
+                    {s.role} · {s.dept}
+                  </p>
+                </div>
+                <Badge className="bg-success/10 text-success border-0 font-bold">{s.score}</Badge>
               </div>
-              <Badge className={cn("border-0 font-semibold", t.tone)}>{t.r}</Badge>
-            </div>
-          ))}
-        </CardContent>
-      </Card>
+            ))}
+            {topRated.length === 0 && (
+              <p className="text-muted-foreground py-4 text-center text-sm">
+                No active staff records yet.
+              </p>
+            )}
+          </CardContent>
+        </Card>
+      </div>
     </AppShell>
   );
 }

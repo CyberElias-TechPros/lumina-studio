@@ -30,6 +30,7 @@ import { live } from "./routes/live";
 import { uploads } from "./routes/uploads";
 import { ai } from "./routes/ai";
 import { push } from "./routes/push";
+import { library } from "./routes/library";
 import { RealtimeRoom } from "./durable/realtime-room";
 
 export { RealtimeRoom };
@@ -83,6 +84,7 @@ v1.route("/ai", ai);
 v1.route("/push", push);
 v1.route("/flags", flags);
 v1.route("/contact", contact);
+v1.route("/library", library);
 
 /** Uptime + DB reachability check for deployment probes. */
 v1.get("/health", async (c) => {

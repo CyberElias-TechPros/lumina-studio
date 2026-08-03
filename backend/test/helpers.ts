@@ -9,12 +9,27 @@ import phase4Sql from "../migrations/0006_phase4.sql?raw";
 import realtimeLiveSql from "../migrations/0007_realtime_live.sql?raw";
 import pushSql from "../migrations/0008_push.sql?raw";
 import accountSql from "../migrations/0009_account_security_and_actions.sql?raw";
+import librarySql from "../migrations/0010_library.sql?raw";
 import { seedContentSql } from "../seeds/content";
 import { seedLmsSql } from "../seeds/lms";
 import { seedDomainSql } from "../seeds/domain";
+import { seedLibrarySql } from "../seeds/library";
+import { seedExternalLinksSql } from "../seeds/external-links";
 import type { Session } from "../src/schema/api";
 
 export const SESSION_COOKIE = "cea_session";
+
+const BATCH_SIZE = 100;
+
+async function execStatements(sql: string): Promise<void> {
+  const statements = sql
+    .split("\n")
+    .map((line) => line.trim())
+    .filter((line) => line.length > 0 && !line.startsWith("--"));
+  for (let i = 0; i < statements.length; i += BATCH_SIZE) {
+    await env.DB.exec(statements.slice(i, i + BATCH_SIZE).join("\n"));
+  }
+}
 
 export async function setupDb(): Promise<void> {
   for (const sql of [
@@ -28,6 +43,7 @@ export async function setupDb(): Promise<void> {
     realtimeLiveSql,
     pushSql,
     accountSql,
+    librarySql,
   ]) {
     const statements = sql
       .split("\n")
@@ -40,21 +56,11 @@ export async function setupDb(): Promise<void> {
       await env.DB.exec(statement);
     }
   }
-  for (const line of seedContentSql.split("\n")) {
-    const statement = line.trim();
-    if (statement.length === 0) continue;
-    await env.DB.exec(statement);
-  }
-  for (const line of seedLmsSql.split("\n")) {
-    const statement = line.trim();
-    if (statement.length === 0) continue;
-    await env.DB.exec(statement);
-  }
-  for (const line of seedDomainSql.split("\n")) {
-    const statement = line.trim();
-    if (statement.length === 0) continue;
-    await env.DB.exec(statement);
-  }
+  await execStatements(seedContentSql);
+  await execStatements(seedLmsSql);
+  await execStatements(seedDomainSql);
+  await execStatements(seedLibrarySql);
+  await execStatements(seedExternalLinksSql);
 }
 
 export function api(path: string, init?: RequestInit): Promise<Response> {

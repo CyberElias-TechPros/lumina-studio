@@ -19,6 +19,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Reveal } from "@/components/motion";
+import { SceneArt } from "@/components/art/scene-art";
 import { useSignIn } from "@/lib/auth/session";
 import { requestMagicLink } from "@/lib/api/auth";
 
@@ -100,6 +101,11 @@ function SignInPage() {
       <div className="bg-gradient-learning absolute -bottom-40 -left-32 size-96 rounded-full opacity-10 blur-3xl" />
 
       <div className="relative w-full max-w-md">
+        <Reveal>
+          <div className="relative mb-8 h-28 overflow-hidden rounded-2xl border sm:h-32">
+            <SceneArt variant="shield" labelled={false} />
+          </div>
+        </Reveal>
         <Reveal>
           <div className="mb-6 text-center">
             <Link

@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { useAdminAccountItems, useAdminUserItems } from "@/lib/query/admin";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/admin/roles")({
@@ -16,24 +17,41 @@ export const Route = createFileRoute("/app/admin/roles")({
   component: AdminRoles,
 });
 
-const roles = [
-  {
-    r: "Director",
-    m: "Global access · approvals",
-    s: "4 members",
-    tone: "bg-primary/10 text-primary",
-  },
-  { r: "Accountant", m: "Finance suite", s: "2 members", tone: "bg-learning/10 text-learning" },
-  { r: "Dept Head", m: "Academic + reports", s: "6 members", tone: "bg-success/10 text-success" },
-  { r: "Receptionist", m: "Front desk suite", s: "3 members", tone: "bg-warning/10 text-warning" },
-];
+const roleDescriptions: Record<string, string> = {
+  director: "Global access · approvals",
+  accountant: "Finance suite",
+  admin: "Platform administration",
+  instructor: "Teaching & gradebook",
+  hr: "People & leave",
+  employer: "Recruitment & talent",
+};
 
 function AdminRoles() {
+  const accounts = useAdminAccountItems();
+  const users = useAdminUserItems();
+
+  const byRole = new Map<string, number>();
+  for (const a of accounts) byRole.set(a.roleKey, (byRole.get(a.roleKey) ?? 0) + 1);
+
+  const roles = Array.from(byRole.entries()).map(([roleKey, count], i) => ({
+    r: roleKey.charAt(0).toUpperCase() + roleKey.slice(1),
+    m: roleDescriptions[roleKey] ?? "Scoped access",
+    s: `${count} member${count === 1 ? "" : "s"}`,
+    tone:
+      i % 4 === 0
+        ? "bg-primary/10 text-primary"
+        : i % 4 === 1
+          ? "bg-learning/10 text-learning"
+          : i % 4 === 2
+            ? "bg-success/10 text-success"
+            : "bg-warning/10 text-warning",
+  }));
+
   return (
     <AppShell
       roleKey="admin"
       title="Roles & permissions"
-      subtitle="19 roles · 54 permissions · least privilege enforced"
+      subtitle={`${roles.length} roles · ${accounts.length} accounts · least privilege enforced`}
       actions={
         <>
           <Badge className="bg-success/10 text-success border-0 font-semibold">Audited</Badge>
@@ -49,22 +67,22 @@ function AdminRoles() {
         {[
           {
             label: "Roles",
-            value: "19",
-            delta: "2 custom",
+            value: String(roles.length),
+            delta: "with members",
             icon: Users,
             tone: "bg-primary/10 text-primary",
           },
           {
-            label: "Permissions",
-            value: "54",
-            delta: "granular",
+            label: "Accounts",
+            value: String(accounts.length),
+            delta: "signed-up users",
             icon: KeyRound,
             tone: "bg-learning/10 text-learning",
           },
           {
-            label: "Overrides (7d)",
-            value: "3",
-            delta: "all logged",
+            label: "Staff records",
+            value: String(users.length),
+            delta: "HR directory",
             icon: SlidersHorizontal,
             tone: "bg-warning/10 text-warning",
           },
@@ -112,6 +130,11 @@ function AdminRoles() {
               </Button>
             </div>
           ))}
+          {roles.length === 0 && (
+            <p className="text-muted-foreground py-4 text-center text-sm">
+              No accounts yet — roles appear once staff sign in.
+            </p>
+          )}
         </CardContent>
       </Card>
     </AppShell>

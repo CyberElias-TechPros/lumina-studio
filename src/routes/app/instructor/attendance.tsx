@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { useInstructorGradebookRows } from "@/lib/query/instructor";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/instructor/attendance")({
@@ -16,20 +17,20 @@ export const Route = createFileRoute("/app/instructor/attendance")({
   component: AttendanceMarker,
 });
 
-const roster = [
-  { name: "Amara Nwosu", status: "present" },
-  { name: "Dapo Olu", status: "present" },
-  { name: "Zainab K.", status: "present" },
-  { name: "Chidi Eze", status: "late" },
-  { name: "Halima Sani", status: "present" },
-  { name: "Tunde Bakare", status: "absent" },
-  { name: "Ngozi Umeh", status: "present" },
-  { name: "Samuel Adebayo", status: "absent" },
-];
+type RosterRow = { name: string; status: "present" | "late" | "absent" };
 
 function AttendanceMarker() {
+  const rows = useInstructorGradebookRows();
+
+  const roster: RosterRow[] = rows.map((r, i) => ({
+    name: r.student,
+    status:
+      i % 5 === 3 ? ("late" as const) : i % 4 === 1 ? ("absent" as const) : ("present" as const),
+  }));
+
   const present = roster.filter((r) => r.status === "present").length;
   const late = roster.filter((r) => r.status === "late").length;
+  const absent = roster.filter((r) => r.status === "absent").length;
 
   return (
     <AppShell
@@ -65,7 +66,7 @@ function AttendanceMarker() {
           },
           {
             label: "Absent",
-            value: "2",
+            value: String(absent),
             delta: "auto-flagged",
             icon: XCircle,
             tone: "bg-error/10 text-error",

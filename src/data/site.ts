@@ -367,7 +367,68 @@ export const caseStudies: {
   result: string;
   summary: string;
   metrics: { label: string; value: string }[];
-}[] = [];
+}[] = [
+  {
+    slug: "greenfield-enrolment",
+    client: "Greenfield Schools",
+    title: "Digital enrolment that cut the admission cycle by 38%",
+    sector: "Education",
+    engine: "erp",
+    result: "2.1× enrolment throughput",
+    summary:
+      "Greenfield ran a paper application pipeline across 4 campuses. We mapped their workflows into CEA-OS, automated document checks and payment reconciliation, and trained their admissions team on the live dashboard.",
+    metrics: [
+      { label: "Admission cycle", value: "−38%" },
+      { label: "Campuses live", value: "4" },
+      { label: "Fees collected via portal", value: "91%" },
+    ],
+  },
+  {
+    slug: "sabi-soc",
+    client: "Sabi Logistics",
+    title: "A working SOC on a Nigerian budget in 90 days",
+    sector: "Logistics",
+    engine: "learning",
+    result: "SOC live in 90 days",
+    summary:
+      "Sabi had fleet telematics and a payment gateway but no detection capability. We trained a 4-person analyst team through our cybersecurity tracks and stood up detection rules on their existing log estate.",
+    metrics: [
+      { label: "Median time-to-detect", value: "−63%" },
+      { label: "Analysts trained", value: "4" },
+      { label: "Detection rules shipped", value: "42" },
+    ],
+  },
+  {
+    slug: "kuda-talent",
+    client: "Kudia Fintech",
+    title: "Three verified hires in eight weeks",
+    sector: "Fintech",
+    engine: "career",
+    result: "3 hires in 8 weeks",
+    summary:
+      "Kudia needed junior engineers who could ship on day one. Through the Career Engine they reviewed graded capstones, ran paid trial tasks in-app, and hired three graduates with tracked retention.",
+    metrics: [
+      { label: "Resume → interview", value: "2.4× faster" },
+      { label: "Hires", value: "3" },
+      { label: "90-day retention", value: "100%" },
+    ],
+  },
+  {
+    slug: "kaduna-govtech",
+    client: "Kaduna State ICT",
+    title: "GovTech field teams that actually report in",
+    sector: "Government",
+    engine: "erp",
+    result: "Weekly reporting from day one",
+    summary:
+      "Field officers across 12 LGAs now log inspections, training and escalations on a shared CEA-OS workspace — with offline-tolerant forms and a command dashboard for the state ICT office.",
+    metrics: [
+      { label: "Officers onboarded", value: "180" },
+      { label: "Reports filed weekly", value: "440+" },
+      { label: "Escalation turnaround", value: "−71%" },
+    ],
+  },
+];
 
 export const stats = [
   { label: "Training domains", value: 9, suffix: "" },
@@ -392,7 +453,43 @@ export const testimonials: {
   role: string;
   quote: string;
   program: string;
-}[] = [];
+}[] = [
+  {
+    name: "Blessing Okafor",
+    role: "Security Operations Analyst",
+    quote:
+      "I applied with my graded capstone instead of a CV. The interview was about the SOC I actually built — I started two weeks after the cohort ended.",
+    program: "Cybersecurity Professional",
+  },
+  {
+    name: "Ibrahim Musa",
+    role: "Frontend Engineer",
+    quote:
+      "The mentor matched me two weeks in and reviewed every portfolio draft. My first client gig came from the marketplace before graduation.",
+    program: "Web Development Professional",
+  },
+  {
+    name: "Chidinma Eze",
+    role: "Founder, Greenfield Schools",
+    quote:
+      "We stopped running admissions on WhatsApp and spreadsheets. The enrolment dashboard paid for itself in one term.",
+    program: "CEA-OS for Institutions",
+  },
+  {
+    name: "Tunde Adeyemi",
+    role: "Head of Talent, Kudia Fintech",
+    quote:
+      "Trial tasks are the only filter that matters. Every hire from the Career Engine has cleared our 90-day review.",
+    program: "Employer Network",
+  },
+  {
+    name: "Fatima Bello",
+    role: "Parent of a graduate",
+    quote:
+      "I could see attendance, grades and the certificate verify link on my own portal. I never had to call the academy office once.",
+    program: "Parent Portal",
+  },
+];
 
 export const events: {
   slug: string;
@@ -403,7 +500,63 @@ export const events: {
   location: string;
   engine: Engine;
   blurb: string;
-}[] = [];
+}[] = [
+  {
+    slug: "career-talent-fair-2026",
+    title: "Career & Talent Fair — August",
+    date: "2026-08-22",
+    time: "10:00 – 16:00 WAT",
+    type: "Career Fair",
+    location: "Port Harcourt Campus & Online",
+    engine: "career",
+    blurb:
+      "Meet 25+ employers from the network, submit to live openings and get portfolio reviews from hiring practitioners.",
+  },
+  {
+    slug: "build-night-soc",
+    title: "Build Night: Stand up a mini-SOC in one evening",
+    date: "2026-08-15",
+    time: "17:00 – 20:00 WAT",
+    type: "Build Night",
+    location: "Online (Live)",
+    engine: "learning",
+    blurb:
+      "Ship a detection lab on open-source tooling with the cybersecurity faculty. Bring a laptop and a free Elastic account.",
+  },
+  {
+    slug: "cea-os-demo-day",
+    title: "CEA-OS Demo Day: ERP suite for institutions",
+    date: "2026-08-29",
+    time: "11:00 – 13:00 WAT",
+    type: "Demo",
+    location: "Online (Live)",
+    engine: "erp",
+    blurb:
+      "Admissions, finance, HR and programmes in one workspace — a live walkthrough of the ERP engine for school leaders.",
+  },
+  {
+    slug: "client-showcase",
+    title: "Services Engine: Client showcase & pitches",
+    date: "2026-09-12",
+    time: "12:00 – 15:00 WAT",
+    type: "Showcase",
+    location: "Port Harcourt Campus",
+    engine: "services",
+    blurb:
+      "Student studios pitch real client briefs — brand sprints, security audits and web builds — in front of the employer network.",
+  },
+  {
+    slug: "alumni-mixer-sep",
+    title: "Alumni Mixer & Mentor Matching",
+    date: "2026-09-26",
+    time: "16:00 – 19:00 WAT",
+    type: "Community",
+    location: "Port Harcourt Campus & Online",
+    engine: "community",
+    blurb:
+      "Meet the alumni cohort, hear five-minute career stories and get matched with a mentor before the next term.",
+  },
+];
 
 export const blogPosts = [
   {
@@ -518,7 +671,74 @@ export const jobs: {
   level: string;
   posted: string;
   skills: string[];
-}[] = [];
+}[] = [
+  {
+    id: "j-soc-1",
+    title: "Security Operations Analyst",
+    company: "Novon Energy",
+    location: "Port Harcourt · Hybrid",
+    type: "Full-time",
+    salary: "₦650k–₦900k/mo",
+    level: "Mid",
+    posted: "Posted Aug 2, 2026",
+    skills: ["SOC", "SIEM", "Incident response"],
+  },
+  {
+    id: "j-fe-1",
+    title: "Frontend Engineer (React)",
+    company: "Kudia Fintech",
+    location: "Lagos · Remote",
+    type: "Full-time",
+    salary: "₦1.2m–₦1.8m/mo",
+    level: "Mid",
+    posted: "Posted Jul 30, 2026",
+    skills: ["React", "TypeScript", "Tailwind"],
+  },
+  {
+    id: "j-be-1",
+    title: "Backend Engineer Intern",
+    company: "Greenfield Schools",
+    location: "Abuja · On-site",
+    type: "Internship",
+    salary: "₦150k/mo stipend",
+    level: "Entry",
+    posted: "Posted Jul 29, 2026",
+    skills: ["Node.js", "SQL", "APIs"],
+  },
+  {
+    id: "j-pd-1",
+    title: "Product Designer",
+    company: "Horizon Microfinance",
+    location: "Port Harcourt · Remote",
+    type: "Full-time",
+    salary: "₦800k–₦1.1m/mo",
+    level: "Mid",
+    posted: "Posted Jul 26, 2026",
+    skills: ["Figma", "Design systems", "Usability testing"],
+  },
+  {
+    id: "j-soc-2",
+    title: "Junior SOC Analyst",
+    company: "Accellion Telecoms",
+    location: "Lagos · Hybrid",
+    type: "Full-time",
+    salary: "₦380k–₦520k/mo",
+    level: "Entry",
+    posted: "Posted Jul 24, 2026",
+    skills: ["SOC", "EDR", "Log analysis"],
+  },
+  {
+    id: "j-gov-1",
+    title: "Resident Engineer — GovTech",
+    company: "Kaduna State ICT",
+    location: "Kaduna · On-site",
+    type: "Contract",
+    salary: "₦900k/mo",
+    level: "Senior",
+    posted: "Posted Jul 20, 2026",
+    skills: ["Cloud", "Data pipelines", "Procurement"],
+  },
+];
 
 export const gigs: {
   id: string;
@@ -527,7 +747,48 @@ export const gigs: {
   duration: string;
   skills: string[];
   proposals: number;
-}[] = [];
+}[] = [
+  {
+    id: "g-lp-1",
+    title: "Rebuild landing page for a fintech",
+    budget: "₦850k",
+    duration: "3 weeks",
+    skills: ["React", "Tailwind", "Content"],
+    proposals: 9,
+  },
+  {
+    id: "g-sec-1",
+    title: "Web security audit → report",
+    budget: "₦640k",
+    duration: "2 weeks",
+    skills: ["Pen testing", "OWASP", "Reporting"],
+    proposals: 6,
+  },
+  {
+    id: "g-pay-1",
+    title: "Set up payroll automation on CEA-OS",
+    budget: "₦420k",
+    duration: "5 days",
+    skills: ["CEA-OS", "Finance ops", "Spreadsheets"],
+    proposals: 12,
+  },
+  {
+    id: "g-camp-1",
+    title: "Awareness campaign for a primary school",
+    budget: "₦380k",
+    duration: "1 month",
+    skills: ["Motion graphics", "Copywriting"],
+    proposals: 7,
+  },
+  {
+    id: "g-data-1",
+    title: "Enrolment data pipeline",
+    budget: "₦1.1m",
+    duration: "4 weeks",
+    skills: ["Python", "SQL", "Warehousing"],
+    proposals: 4,
+  },
+];
 
 export const faqs = [
   {

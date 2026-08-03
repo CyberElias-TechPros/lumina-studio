@@ -8,13 +8,13 @@
     "enabled": true
   },
   "vars": {
-    "FRONTEND_ORIGINS": "http://localhost:5173,http://127.0.0.1:5173,https://cea-os.vercel.app",
+    "FRONTEND_ORIGINS": "http://localhost:5173,http://127.0.0.1:5173,http://localhost:8081,http://127.0.0.1:8081,https://cea-os.vercel.app",
     "UPLOADS_PRESIGN_URL": "",
     "APP_URL": "https://cea-os.vercel.app",
     "EMAIL_PROVIDER": "resend",
     "EMAIL_FROM": "Cyber Elias Academy <no-reply@cea.academy>",
-    "AI_BASE_URL": "https://api.openai.com/v1",
-    "AI_MODEL": "gpt-4o-mini"
+    "AI_BASE_URL": "https://integrate.api.nvidia.com/v1",
+    "AI_MODEL": "nvidia/llama-3.3-nemotron-super-49b-v1"
   },
   "kv_namespaces": [
     {

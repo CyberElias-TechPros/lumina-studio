@@ -44,6 +44,7 @@ function Blog() {
     <PageShell>
       <PageHero
         eyebrow="Insights"
+        art="data"
         title={
           <>
             Ideas from the <span className="text-gradient">engine room</span>

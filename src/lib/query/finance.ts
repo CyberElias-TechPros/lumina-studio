@@ -1,11 +1,16 @@
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { usePaginatedQuery, flattenPages } from "@/lib/query/hooks";
 import {
   fetchInvoices,
   fetchExpenses,
   fetchPaymentBatches,
+  updateInvoiceStatus,
+  updateExpenseStatus,
   type Invoice,
   type Expense,
   type PaymentBatch,
+  type InvoiceStatus,
+  type ExpenseStatus,
 } from "@/lib/api/finance";
 
 export const financeKeys = {
@@ -36,4 +41,26 @@ export function usePaymentBatches() {
 
 export function usePaymentBatchItems(): PaymentBatch[] {
   return flattenPages(usePaymentBatches().data?.pages);
+}
+
+export function useUpdateInvoiceStatus() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (input: { id: string; status: InvoiceStatus }) =>
+      updateInvoiceStatus(input.id, input.status),
+    onSuccess: () => {
+      void queryClient.invalidateQueries({ queryKey: financeKeys.invoices });
+    },
+  });
+}
+
+export function useUpdateExpenseStatus() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (input: { id: string; status: ExpenseStatus }) =>
+      updateExpenseStatus(input.id, input.status),
+    onSuccess: () => {
+      void queryClient.invalidateQueries({ queryKey: financeKeys.expenses });
+    },
+  });
 }

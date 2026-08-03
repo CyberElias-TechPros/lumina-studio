@@ -393,6 +393,7 @@ function About() {
     <PageShell>
       <PageHero
         eyebrow="About Cyber Elias Academy"
+        art="community"
         title={
           <>
             From learning skills to <span className="text-gradient">building futures</span>
@@ -524,7 +525,7 @@ function About() {
               "Mentor · Instructor · Freelancer · Employee · Partner · Entrepreneur",
             ].map((step, i) => (
               <span key={step} className="flex items-center gap-2">
-                <Badge className="bg-card shadow-soft rounded-full border px-4 py-2 text-sm font-semibold">
+                <Badge className="bg-card shadow-soft text-foreground rounded-full border px-4 py-2 text-sm font-semibold">
                   {step}
                 </Badge>
                 {i < 8 && <ArrowRight className="text-muted-foreground size-4 shrink-0" />}

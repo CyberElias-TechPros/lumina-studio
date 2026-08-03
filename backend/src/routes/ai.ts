@@ -2,12 +2,17 @@ import { Hono } from "hono";
 import type { AppEnv } from "../types";
 import { requireAuth, requireAnyRole } from "../lib/auth";
 import { ApiError } from "../lib/errors";
-import { chatCompletion } from "../lib/ai";
+import {
+  chatCompletion,
+  resolveAiModel,
+  NVIDIA_FREE_MODELS,
+  DEFAULT_NVIDIA_MODEL,
+} from "../lib/ai";
 
 /**
- * AI helpers. Uses a real OpenAI-compatible provider when AI_API_KEY is set;
- * falls back to deterministic mock output otherwise (development). Every
- * response carries a `mock` flag so clients can show a "preview" badge.
+ * AI helpers. Uses NVIDIA NIM's free tier (OpenAI-compatible) when AI_API_KEY
+ * is set; falls back to deterministic mock output otherwise (development).
+ * Every response carries a `mock` flag so clients can show a "preview" badge.
  */
 
 export interface ApiGrade {
@@ -111,11 +116,13 @@ function mockRecommendations(): ApiRecommendation[] {
 ai.post("/grade", requireInstructorOrAdmin, async (c) => {
   const input = (await c.req.json().catch(() => ({}))) as {
     rubric?: { criterion?: string; max?: number }[];
+    model?: string;
   };
   const rubric =
     Array.isArray(input.rubric) && input.rubric.length > 0
       ? input.rubric.map((r) => ({ criterion: r.criterion ?? "Criterion", max: r.max ?? 5 }))
       : fallbackRubric();
+  const model = resolveAiModel(c, input.model);
 
   let mock = true;
   let body: Omit<ApiGrade, "mock"> = mockGrade(rubric);
@@ -129,7 +136,7 @@ ai.post("/grade", requireInstructorOrAdmin, async (c) => {
       role: "user",
       content: `Rubric: ${JSON.stringify(rubric)}. Grade the submitted work accordingly.`,
     },
-  ], { json: true });
+  ], { json: true, model });
   if (res.ok) {
     try {
       const parsed = JSON.parse(res.text) as Omit<ApiGrade, "mock">;
@@ -141,11 +148,13 @@ ai.post("/grade", requireInstructorOrAdmin, async (c) => {
       // fall through to mock
     }
   }
-  return c.json({ ...body, mock } satisfies ApiGrade);
+  return c.json({ ...body, mock, model } satisfies ApiGrade & { model: string });
 });
 
 ai.get("/recommendations", async (c) => {
   const user = c.get("authUser");
+  const url = new URL(c.req.url);
+  const model = resolveAiModel(c, url.searchParams.get("model") ?? undefined);
   let items: ApiRecommendation[] = mockRecommendations();
   let mock = true;
   const res = await chatCompletion(c, [
@@ -155,7 +164,7 @@ ai.get("/recommendations", async (c) => {
         "You recommend courses, assignments and career actions for a student. Reply with ONLY valid JSON: an array of [{\"id\":string,\"kind\":\"course\"|\"assignment\"|\"career\",\"title\":string,\"reason\":string,\"cta\":string}]. Max 4 items.",
     },
     { role: "user", content: `Student interests: frontend web development.` },
-  ], { json: true });
+  ], { json: true, model });
   if (res.ok) {
     try {
       const parsed = JSON.parse(res.text) as ApiRecommendation[];
@@ -173,13 +182,17 @@ ai.get("/recommendations", async (c) => {
       // fall through to mock
     }
   }
-  return c.json({ items, total: items.length, mock, userId: user.id });
+  return c.json({ items, total: items.length, mock, model, userId: user.id });
 });
 
 ai.post("/ask", async (c) => {
-  const input = (await c.req.json().catch(() => ({}))) as { question?: string };
+  const input = (await c.req.json().catch(() => ({}))) as {
+    question?: string;
+    model?: string;
+  };
   const question = (input.question ?? "").trim();
   if (question.length === 0) throw ApiError.validation({ question: ["Question is required."] });
+  const model = resolveAiModel(c, input.model);
 
   let answer = `Good question about "${question.slice(0, 80)}". In mock mode I can't research live content, but here's the pattern: start from the lesson notes in your current module, then check the forum thread for this week's topic.`;
   let mock = true;
@@ -190,12 +203,12 @@ ai.post("/ask", async (c) => {
         "You are a knowledgeable tutor assistant for a digital skills academy. Answer concisely (under 250 words) and practically, referencing lessons and careers where relevant.",
     },
     { role: "user", content: question },
-  ]);
+  ], { model });
   if (res.ok) {
     answer = res.text;
     mock = false;
   }
-  return c.json({ answer, mock } satisfies ApiAssistantReply);
+  return c.json({ answer, model, mock } satisfies ApiAssistantReply & { model: string });
 });
 
 function mockGenerated(kind: string, topic: string): Record<string, unknown> {
@@ -234,10 +247,12 @@ ai.post("/generate", async (c) => {
   const input = (await c.req.json().catch(() => ({}))) as {
     kind?: string;
     topic?: string;
+    model?: string;
   };
   const kind = input.kind === "quiz" || input.kind === "outline" ? input.kind : "lesson";
   const topic = (input.topic ?? "Digital skills").trim();
   if (topic.length === 0) throw ApiError.validation({ topic: ["Topic is required."] });
+  const model = resolveAiModel(c, input.model);
 
   let content: Record<string, unknown> = mockGenerated(kind, topic);
   let mock = true;
@@ -248,7 +263,7 @@ ai.post("/generate", async (c) => {
         "You are a curriculum designer. Generate course content. Reply with ONLY valid JSON. For kind=quiz: {\"questions\":[{\"prompt\":string,\"options\":string[],\"answer\":number}]}. For kind=outline: {\"modules\":[{\"title\":string,\"lessons\":number}]}. Otherwise: {\"title\":string,\"objectives\":string[],\"durationMinutes\":number}.",
     },
     { role: "user", content: `Generate ${kind} content about: ${topic}` },
-  ], { json: true });
+  ], { json: true, model });
   if (res.ok) {
     try {
       const parsed = JSON.parse(res.text) as Record<string, unknown>;
@@ -260,5 +275,18 @@ ai.post("/generate", async (c) => {
       // fall through to mock
     }
   }
-  return c.json({ kind, topic, content, mock } satisfies ApiGeneratedContent, 201);
+  return c.json({ kind, topic, content, model, mock } satisfies ApiGeneratedContent & { model: string }, 201);
+});
+
+/** Free model choices, served to the app so students can pick a completely
+ * free NVIDIA NIM model themselves. Never exposes the API key. */
+ai.get("/models", async (c) => {
+  const defaultModel = resolveAiModel(c);
+  return c.json({
+    provider: "NVIDIA NIM",
+    tier: "free",
+    models: NVIDIA_FREE_MODELS,
+    default: DEFAULT_NVIDIA_MODEL,
+    configured: defaultModel,
+  });
 });

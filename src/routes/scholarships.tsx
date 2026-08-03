@@ -98,6 +98,7 @@ function ScholarshipsPage() {
     <PageShell>
       <PageHero
         eyebrow="Scholarships & funding"
+        art="graduate"
         title={
           <>
             Money should never be the <span className="text-gradient">reason you don't start</span>

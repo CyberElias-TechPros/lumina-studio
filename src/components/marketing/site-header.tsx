@@ -10,10 +10,10 @@ const nav = [
   { label: "Programs", to: "/programs" },
   { label: "Engines", to: "/engines" },
   { label: "Services", to: "/services" },
+  { label: "Library", to: "/library" },
   { label: "Work", to: "/work" },
   { label: "Marketplace", to: "/marketplace" },
   { label: "Community", to: "/community" },
-  { label: "Insights", to: "/blog" },
   { label: "About", to: "/about" },
 ];
 

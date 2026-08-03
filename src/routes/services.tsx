@@ -62,6 +62,7 @@ function Services() {
     <PageShell>
       <PageHero
         eyebrow="Services Engine"
+        art="design"
         title={
           <>
             The academy as <span className="text-gradient">your agency</span>

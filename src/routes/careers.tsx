@@ -122,6 +122,7 @@ function CareersPage() {
     <PageShell>
       <PageHero
         eyebrow="Careers at CEA"
+        art="community"
         title={
           <>
             Help us build the platform that <span className="text-gradient">builds careers</span>

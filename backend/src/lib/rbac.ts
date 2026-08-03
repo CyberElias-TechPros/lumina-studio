@@ -37,6 +37,7 @@ export const RBAC_RULES: RbacRule[] = [
   { methods: ["POST"], path: "/v1/auth/reset-password", public: true },
   { methods: ["POST"], path: "/v1/payments/webhook", public: true },
   { methods: ["POST"], path: "/v1/contact", public: true },
+  { methods: ["GET"], path: "/v1/library/catalog", public: true },
 
   /* Auth */
   { methods: ["GET"], path: "/v1/auth/session" },
@@ -74,6 +75,10 @@ export const RBAC_RULES: RbacRule[] = [
   { methods: ["GET"], path: "/v1/notifications" },
   { methods: ["POST"], path: "/v1/notifications/:id/read" },
   { methods: ["POST"], path: "/v1/notifications/read-all" },
+
+  /* Library — catalog is public; full library requires any authenticated user */
+  { methods: ["GET"], path: "/v1/library" },
+  { methods: ["GET"], path: "/v1/library/:id" },
 
   /* Instructor portal */
   { methods: ["GET"], path: "/v1/instructor/gradebook", roles: ["instructor"] },

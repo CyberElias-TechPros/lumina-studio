@@ -84,6 +84,7 @@ function Admissions() {
     <PageShell>
       <PageHero
         eyebrow="Admissions"
+        art="community"
         title={
           <>
             Six steps from <span className="text-gradient">curious to enrolled</span>

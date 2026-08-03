@@ -23,6 +23,7 @@ function StoriesPage() {
     <PageShell>
       <PageHero
         eyebrow="Alumni stories"
+        art="community"
         title={
           <>
             They started where you <span className="text-gradient">are now</span>

@@ -17,8 +17,13 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { QueryState } from "@/components/ui/query-state";
 import { AppShell } from "@/components/app/app-shell";
-import { useAiRecommendations, useAskAssistant, useGenerateContent } from "@/lib/query/ai";
-import type { AiRecommendation, GenerateInput } from "@/lib/api/ai";
+import {
+  useAiModels,
+  useAiRecommendations,
+  useAskAssistant,
+  useGenerateContent,
+} from "@/lib/query/ai";
+import type { AiModelOption, AiRecommendation, GenerateInput } from "@/lib/api/ai";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/ai")({
@@ -112,13 +117,14 @@ function AiPage() {
 
 function AskPanel() {
   const [question, setQuestion] = useState("");
+  const [model, setModel] = useState<string | undefined>(undefined);
   const ask = useAskAssistant();
 
   const submit = (event: React.FormEvent) => {
     event.preventDefault();
     const trimmed = question.trim();
     if (trimmed.length === 0 || ask.isPending) return;
-    ask.mutate({ question: trimmed });
+    ask.mutate({ question: trimmed, model });
   };
 
   return (
@@ -129,13 +135,14 @@ function AskPanel() {
         </CardTitle>
       </CardHeader>
       <CardContent>
-        <form className="flex gap-2" onSubmit={submit}>
+        <form className="flex flex-wrap gap-2" onSubmit={submit}>
           <Input
             value={question}
             onChange={(event) => setQuestion(event.target.value)}
             placeholder="e.g. How does a B-tree index speed up my queries?"
-            className="text-xs"
+            className="min-w-56 flex-1 text-xs"
           />
+          <ModelPicker value={model} onChange={setModel} />
           <Button className="shrink-0" disabled={ask.isPending}>
             {ask.isPending ? (
               <Loader2 className="size-4 animate-spin" />
@@ -169,7 +176,14 @@ function AskPanel() {
                 ))}
               </div>
             )}
-            <p className="text-muted-foreground mt-3 text-[10px] font-semibold">{ask.data.model}</p>
+            <div className="mt-3 flex flex-wrap items-center gap-2">
+              <Badge variant="secondary" className="text-[10px] font-semibold">
+                {ask.data.model}
+              </Badge>
+              {!ask.data.mock && (
+                <span className="text-success text-[10px] font-bold">Live · free tier</span>
+              )}
+            </div>
           </div>
         )}
 
@@ -181,7 +195,7 @@ function AskPanel() {
                   key={suggestion}
                   onClick={() => {
                     setQuestion(suggestion);
-                    ask.mutate({ question: suggestion });
+                    ask.mutate({ question: suggestion, model });
                   }}
                   className="bg-muted/40 hover:border-primary/40 rounded-lg border p-2.5 text-left text-[11px] font-semibold transition-colors hover:bg-muted/60"
                 >
@@ -199,13 +213,14 @@ function AskPanel() {
 function GeneratePanel() {
   const [kind, setKind] = useState<GenerateInput["kind"]>("lesson");
   const [topic, setTopic] = useState("");
+  const [model, setModel] = useState<string | undefined>(undefined);
   const generate = useGenerateContent();
 
   const submit = (event: React.FormEvent) => {
     event.preventDefault();
     const trimmed = topic.trim();
     if (trimmed.length === 0 || generate.isPending) return;
-    generate.mutate({ kind, topic: trimmed, audience: "Cohort 15" });
+    generate.mutate({ kind, topic: trimmed, audience: "Cohort 15", model });
   };
 
   return (
@@ -240,6 +255,7 @@ function GeneratePanel() {
             placeholder="Topic, e.g. SQL window functions"
             className="min-w-56 flex-1 text-xs"
           />
+          <ModelPicker value={model} onChange={setModel} />
           <Button className="shrink-0" disabled={generate.isPending}>
             {generate.isPending ? (
               <Loader2 className="size-4 animate-spin" />
@@ -251,13 +267,18 @@ function GeneratePanel() {
 
         {generate.data && (
           <div className="bg-muted/40 mt-4 space-y-4 rounded-xl border p-4">
-            <div className="flex items-center justify-between">
+            <div className="flex flex-wrap items-center justify-between gap-2">
               <p className="font-display text-sm font-bold capitalize">
                 {generate.data.kind} · {generate.data.topic}
               </p>
-              <Badge variant="secondary" className="text-[10px] font-semibold">
-                {generate.data.model}
-              </Badge>
+              <div className="flex items-center gap-1.5">
+                <Badge variant="secondary" className="text-[10px] font-semibold">
+                  {generate.data.model}
+                </Badge>
+                {!generate.data.mock && (
+                  <span className="text-success text-[10px] font-bold">Free tier</span>
+                )}
+              </div>
             </div>
 
             {generate.data.kind === "quiz" ? (
@@ -305,6 +326,44 @@ function QuizContent({ content }: { content: unknown }) {
           </p>
         </div>
       ))}
+    </div>
+  );
+}
+
+function ModelPicker({
+  value,
+  onChange,
+}: {
+  value: string | undefined;
+  onChange: (id: string | undefined) => void;
+}) {
+  const modelsQuery = useAiModels();
+  const models: AiModelOption[] = modelsQuery.data?.models ?? [];
+  const selected =
+    value ?? models.find((m) => m.id === modelsQuery.data?.configured)?.id ?? models[0]?.id;
+
+  return (
+    <div className="flex min-w-56 items-center gap-2 rounded-lg border bg-muted/40 px-2.5 py-1.5">
+      <Sparkles className="text-warning size-3.5 shrink-0" aria-hidden />
+      <select
+        aria-label="AI model (free tier)"
+        value={selected ?? ""}
+        onChange={(event) => onChange(event.target.value || undefined)}
+        disabled={models.length === 0}
+        className="text-foreground bg-transparent flex-1 text-[11px] font-bold outline-none"
+      >
+        {modelsQuery.isPending && <option value="">Loading models…</option>}
+        {models.map((model) => (
+          <option key={model.id} value={model.id}>
+            {model.label} · {model.vendor}
+          </option>
+        ))}
+      </select>
+      {selected && (
+        <span className="text-success bg-success/10 rounded px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wide">
+          Free
+        </span>
+      )}
     </div>
   );
 }

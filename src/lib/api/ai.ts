@@ -3,6 +3,7 @@ import { apiFetch } from "@/lib/api/client";
 export interface GradeInput {
   submissionId: string;
   rubric?: { criteria: string; maxScore: number }[];
+  model?: string;
 }
 
 export interface GradeResult {
@@ -23,9 +24,25 @@ export interface AiRecommendation {
   href?: string;
 }
 
+export interface AiModelOption {
+  id: string;
+  label: string;
+  vendor: string;
+  cost: "free";
+}
+
+export interface AiModelsResponse {
+  provider: string;
+  tier: "free";
+  models: AiModelOption[];
+  default: string;
+  configured: string;
+}
+
 export interface AiAskInput {
   question: string;
   context?: { courseSlug?: string; lessonId?: string };
+  model?: string;
 }
 
 export interface AiAskResponse {
@@ -39,6 +56,7 @@ export interface GenerateInput {
   kind: "lesson" | "outline" | "quiz";
   topic: string;
   audience?: string;
+  model?: string;
 }
 
 export interface GenerateResponse {
@@ -47,6 +65,10 @@ export interface GenerateResponse {
   content: unknown;
   model: string;
   mock: boolean;
+}
+
+export function fetchAiModels(): Promise<AiModelsResponse> {
+  return apiFetch<AiModelsResponse>("/v1/ai/models");
 }
 
 export function gradeSubmission(input: GradeInput): Promise<GradeResult> {

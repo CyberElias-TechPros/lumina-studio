@@ -4,7 +4,8 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
-import { cn } from "@/lib/utils";
+import { useInvoices, useExpenses, usePaymentBatches } from "@/lib/query/finance";
+import { cn, formatNairaCompact } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/accountant/")({
   head: () => ({
@@ -62,14 +63,36 @@ const screens = [
 ];
 
 function AccountantHub() {
+  const invoices = useInvoices();
+  const expenses = useExpenses();
+  const batches = usePaymentBatches();
+
+  const invRows = invoices.data?.pages.flatMap((p) => p.items) ?? [];
+  const expRows = expenses.data?.pages.flatMap((p) => p.items) ?? [];
+  const batchRows = batches.data?.pages.flatMap((p) => p.items) ?? [];
+
+  const billed = invRows.reduce((s, i) => s + i.amount, 0);
+  const collected = invRows.filter((i) => i.status === "Paid").reduce((s, i) => s + i.amount, 0);
+  const outstanding = billed - collected;
+  const overdue = invRows.filter((i) => i.status === "Overdue");
+  const spent = expRows.reduce((s, e) => s + e.amount, 0);
+  const batchTotal = batchRows.reduce((s, b) => s + b.amount, 0);
+
   return (
     <AppShell
       roleKey="instructor"
       title="Finance hub"
-      subtitle="Cash ₦24.8m · AR ₦9.4m · AP ₦4.2m · reconciled Aug 1"
+      subtitle={`AR ${formatNairaCompact(outstanding)} · AP ${formatNairaCompact(spent)} · ${batchRows.length} batches`}
       actions={
         <>
-          <Badge className="bg-success/10 text-success border-0 font-semibold">Balanced</Badge>
+          <Badge
+            className={cn(
+              "border-0 font-semibold",
+              overdue.length > 0 ? "bg-warning/10 text-warning" : "bg-success/10 text-success",
+            )}
+          >
+            {overdue.length > 0 ? `${overdue.length} overdue` : "Balanced"}
+          </Badge>
           <Button asChild variant="outline" size="sm" className="font-semibold">
             <Link to="/portal/accountant">
               <ArrowLeft className="size-4" /> Accounting portal
@@ -81,30 +104,30 @@ function AccountantHub() {
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         {[
           {
-            label: "Cash position",
-            value: "₦24.8m",
-            delta: "across 3 accounts",
-            icon: Wallet,
-            tone: "bg-success/10 text-success",
-          },
-          {
-            label: "Receivables",
-            value: "₦9.4m",
-            delta: "₦2.1m overdue",
+            label: "Receivables (AR)",
+            value: formatNairaCompact(outstanding),
+            delta: `${overdue.length} overdue`,
             icon: ReceiptText,
             tone: "bg-warning/10 text-warning",
           },
           {
-            label: "Payables",
-            value: "₦4.2m",
-            delta: "0 overdue",
+            label: "Collected",
+            value: formatNairaCompact(collected),
+            delta: `${invRows.length} invoices`,
+            icon: Wallet,
+            tone: "bg-success/10 text-success",
+          },
+          {
+            label: "Spend (AP)",
+            value: formatNairaCompact(spent),
+            delta: `${expRows.length} expense claims`,
             icon: Banknote,
             tone: "bg-primary/10 text-primary",
           },
           {
-            label: "Budget used",
-            value: "64%",
-            delta: "month 5 of 8",
+            label: "Batches processed",
+            value: formatNairaCompact(batchTotal),
+            delta: `${batchRows.length} payment batches`,
             icon: Landmark,
             tone: "bg-learning/10 text-learning",
           },

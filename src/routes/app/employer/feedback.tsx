@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { useInterviewItems, useTalentCandidateItems } from "@/lib/query/recruitment";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/employer/feedback")({
@@ -16,36 +17,31 @@ export const Route = createFileRoute("/app/employer/feedback")({
   component: EmployerFeedback,
 });
 
-const feedback = [
-  {
-    f: "Ada Obi · Frontend · placed",
-    v: "Onboarding rating 4.7 · ready for hire",
-    s: "Completed",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    f: "Tunde Ade · Data · interviewed",
-    v: "Feedback submitted Aug 1",
-    s: "Pending",
-    tone: "bg-warning/10 text-warning",
-  },
-  {
-    f: "Chidera N. · DevOps · placed",
-    v: "90-day review · 4.5 rating",
-    s: "Completed",
-    tone: "bg-success/10 text-success",
-  },
-];
-
 function EmployerFeedback() {
+  const interviews = useInterviewItems();
+  const talent = useTalentCandidateItems();
+
+  const completed = interviews.filter((i) => i.status === "Completed").length;
+  const scheduled = interviews.filter((i) => i.status === "Scheduled").length;
+  const positiveRate = interviews.length ? Math.round((completed / interviews.length) * 100) : 0;
+
+  const feedback = interviews.slice(0, 6).map((i) => ({
+    f: `${i.candidate} · ${i.role} · ${i.mode}`,
+    v: i.date,
+    s: i.status === "Completed" ? "Completed" : "Pending",
+    tone: i.status === "Completed" ? "bg-success/10 text-success" : "bg-warning/10 text-warning",
+  }));
+
   return (
     <AppShell
       roleKey="instructor"
       title="Feedback & reviews"
-      subtitle="14 this quarter · 12 completed · 87% positive"
+      subtitle={`${interviews.length} interviews · ${completed} completed · ${positiveRate}% positive`}
       actions={
         <>
-          <Badge className="bg-success/10 text-success border-0 font-semibold">87% positive</Badge>
+          <Badge className="bg-success/10 text-success border-0 font-semibold">
+            {positiveRate}% positive
+          </Badge>
           <Button asChild variant="outline" size="sm" className="font-semibold">
             <Link to="/app/employer/hub">
               <ArrowLeft className="size-4" /> Employer hub
@@ -57,30 +53,30 @@ function EmployerFeedback() {
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         {[
           {
-            label: "Reviews (quarter)",
-            value: "14",
-            delta: "12 completed",
+            label: "Interviews",
+            value: String(interviews.length),
+            delta: "on record",
             icon: MessageSquareQuote,
             tone: "bg-primary/10 text-primary",
           },
           {
-            label: "Positive",
-            value: "87%",
-            delta: "of responses",
+            label: "Completed rounds",
+            value: String(completed),
+            delta: "feedback ready",
             icon: ThumbsUp,
             tone: "bg-success/10 text-success",
           },
           {
-            label: "Avg. rating",
-            value: "4.5",
-            delta: "of 5",
+            label: "Scheduled",
+            value: String(scheduled),
+            delta: "upcoming rounds",
             icon: Star,
             tone: "bg-learning/10 text-learning",
           },
           {
-            label: "Retained at 90d",
-            value: "92%",
-            delta: "hired cohort",
+            label: "Talent pool",
+            value: String(talent.length),
+            delta: "verified candidates",
             icon: UserCheck,
             tone: "bg-warning/10 text-warning",
           },
@@ -121,6 +117,11 @@ function EmployerFeedback() {
               </Button>
             </div>
           ))}
+          {feedback.length === 0 && (
+            <p className="text-muted-foreground py-4 text-center text-sm">
+              No interview feedback yet.
+            </p>
+          )}
         </CardContent>
       </Card>
     </AppShell>

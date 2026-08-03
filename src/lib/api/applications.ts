@@ -3,7 +3,10 @@ import { apiFetch } from "@/lib/api/client";
 export interface SubmitApplicationInput {
   fullName: string;
   email: string;
+  phone?: string;
+  city?: string;
   programSlug: string;
+  experience?: string;
 }
 
 export interface ApplicationResult {

@@ -909,3 +909,24 @@ export const certificates = sqliteTable(
   },
   (t) => [index("idx_certificates_user").on(t.userId)],
 );
+
+export const libraryItems = sqliteTable(
+  "library_items",
+  {
+    id: text("id").primaryKey(),
+    sourceKey: text("source_key").notNull().default("library"),
+    folderPath: text("folder_path").notNull().default(""),
+    name: text("name").notNull(),
+    kind: text("kind").notNull().default("file"),
+    mimeType: text("mime_type").notNull().default(""),
+    driveFileId: text("drive_file_id").notNull().default(""),
+    url: text("url").notNull().default(""),
+    sizeBytes: integer("size_bytes").notNull().default(0),
+    isProtected: integer("is_protected").notNull().default(0),
+    sortOrder: integer("sort_order").notNull().default(0),
+  },
+  (t) => [
+    index("idx_library_items_source_path").on(t.sourceKey, t.folderPath),
+    index("idx_library_items_protected").on(t.isProtected),
+  ],
+);

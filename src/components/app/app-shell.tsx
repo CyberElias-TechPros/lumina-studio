@@ -22,6 +22,7 @@ import {
   Languages,
   Layers,
   LayoutDashboard,
+  Library,
   LineChart,
   LogOut,
   Menu,
@@ -78,6 +79,7 @@ export const appRoles: AppRole[] = [
     nav: [
       { label: "Dashboard", icon: <LayoutDashboard className="size-4" />, to: "/app" },
       { label: "Learning Hub", icon: <BookOpen className="size-4" />, to: "/app/learn" },
+      { label: "Library", icon: <Library className="size-4" />, to: "/app/library" },
       { label: "Assignments", icon: <FileText className="size-4" />, to: "/app/assignments" },
       { label: "Assessments", icon: <ShieldCheck className="size-4" />, to: "/app/assessments" },
       { label: "Grades", icon: <GraduationCap className="size-4" />, to: "/app/grades" },

@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { Inbox } from "lucide-react";
+import { SceneArt, type ArtVariant } from "@/components/art/scene-art";
 import { cn } from "@/lib/utils";
 
 export interface EmptyStateProps {
@@ -7,11 +8,13 @@ export interface EmptyStateProps {
   description?: string;
   icon?: ReactNode;
   action?: ReactNode;
+  /** When set, renders a decorative scene above the message. */
+  art?: ArtVariant;
   className?: string;
 }
 
 /** Standard empty state for query-driven screens (replaces hardcoded gaps). */
-export function EmptyState({ title, description, icon, action, className }: EmptyStateProps) {
+export function EmptyState({ title, description, icon, action, art, className }: EmptyStateProps) {
   return (
     <div
       className={cn(
@@ -19,6 +22,11 @@ export function EmptyState({ title, description, icon, action, className }: Empt
         className,
       )}
     >
+      {art && (
+        <div className="mb-3 h-28 w-full max-w-xs overflow-hidden rounded-xl border">
+          <SceneArt variant={art} labelled={false} />
+        </div>
+      )}
       <div className="flex size-10 items-center justify-center rounded-full bg-muted text-muted-foreground">
         {icon ?? <Inbox className="size-5" />}
       </div>

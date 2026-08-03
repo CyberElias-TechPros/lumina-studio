@@ -97,6 +97,7 @@ function Contact() {
     <PageShell>
       <PageHero
         eyebrow="Contact"
+        art="network"
         title={
           <>
             Talk to a <span className="text-gradient">human</span>

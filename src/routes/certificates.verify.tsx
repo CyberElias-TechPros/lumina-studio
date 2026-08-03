@@ -63,6 +63,7 @@ function VerifyPage() {
     <PageShell>
       <PageHero
         eyebrow="Certificate verification"
+        art="shield"
         title={
           <>
             Verify any credential in <span className="text-gradient">seconds</span>

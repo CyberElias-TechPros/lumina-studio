@@ -3,7 +3,10 @@ import { ArrowLeft, CheckCircle2, ClipboardCheck, Laptop, UserRoundPlus } from "
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { QueryState } from "@/components/ui/query-state";
 import { AppShell } from "@/components/app/app-shell";
+import { usePayrollChanges } from "@/lib/query/hr";
+import type { PayrollChange } from "@/lib/api/hr";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/hr/onboarding")({
@@ -16,37 +19,38 @@ export const Route = createFileRoute("/app/hr/onboarding")({
   component: HrOnboarding,
 });
 
-const checklists = [
-  {
-    c: "K. Okafor · Admissions officer",
-    d: "Start Aug 4 · 8/12 steps",
-    pct: 67,
-    tone: "bg-primary/10 text-primary",
-  },
-  {
-    c: "T. Bello · Data analyst",
-    d: "Started Jul 1 · 12/12 steps",
-    pct: 100,
-    tone: "bg-success/10 text-success",
-  },
-  {
-    c: "Offboard — J. Okonkwo",
-    d: "Exit Aug 15 · 3/8 steps",
-    pct: 38,
-    tone: "bg-warning/10 text-warning",
-  },
-];
+function stepPct(status: string): number {
+  return status === "sent" || status === "approved" ? 100 : 40;
+}
+
+function changeStatus(status: string): string {
+  return status === "sent" || status === "approved" ? "Complete" : "In progress";
+}
 
 function HrOnboarding() {
+  const changes = usePayrollChanges();
+  const rows = changes.data?.pages.flatMap((p) => p.items) ?? [];
+
+  const starters = rows.filter(
+    (c) => /starter|new hire|hire/i.test(c.title) || /leaver|exit|offboard/i.test(c.title),
+  );
+  const completed = starters.filter((c) => c.status === "sent" || c.status === "approved").length;
+  const inProgress = starters.length - completed;
+
   return (
     <AppShell
       roleKey="instructor"
       title="Onboarding / offboarding"
-      subtitle="1 in progress · 1 complete · 1 exit"
+      subtitle={`${starters.length} staffing changes · ${completed} complete · ${inProgress} in progress`}
       actions={
         <>
-          <Badge className="bg-success/10 text-success border-0 font-semibold">
-            94% completion
+          <Badge
+            className={cn(
+              "border-0 font-semibold",
+              inProgress > 0 ? "bg-warning/10 text-warning" : "bg-success/10 text-success",
+            )}
+          >
+            {inProgress > 0 ? `${inProgress} pending` : "All current"}
           </Badge>
           <Button asChild variant="outline" size="sm" className="font-semibold">
             <Link to="/app/hr">
@@ -59,30 +63,30 @@ function HrOnboarding() {
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         {[
           {
-            label: "Active",
-            value: "2",
-            delta: "1 hire · 1 exit",
+            label: "In progress",
+            value: String(inProgress),
+            delta: "key in / out",
             icon: UserRoundPlus,
             tone: "bg-primary/10 text-primary",
           },
           {
-            label: "Completed (30d)",
-            value: "3",
-            delta: "all 100%",
+            label: "Complete",
+            value: String(completed),
+            delta: "100% steps",
             icon: CheckCircle2,
             tone: "bg-success/10 text-success",
           },
           {
-            label: "IT tasks done",
-            value: "11",
-            delta: "devices ready",
+            label: "Payroll changes",
+            value: String(rows.length),
+            delta: "on record",
             icon: Laptop,
             tone: "bg-learning/10 text-learning",
           },
           {
-            label: "Avg. time",
-            value: "4.2 days",
-            delta: "target < 5",
+            label: "Pipeline signal",
+            value: starters.length ? "Live" : "—",
+            delta: "from payroll changes",
             icon: ClipboardCheck,
             tone: "bg-warning/10 text-warning",
           },
@@ -107,30 +111,56 @@ function HrOnboarding() {
       <Card className="bg-card mt-5 shadow-soft border">
         <CardHeader>
           <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
-            <ClipboardCheck className="text-primary size-4" /> Checklists
+            <ClipboardCheck className="text-primary size-4" /> Change log
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
-          {checklists.map((c) => (
-            <div key={c.c}>
-              <div className="flex items-center justify-between text-xs font-semibold">
-                <span>{c.c}</span>
-                <Badge className={cn("border-0 font-semibold", c.tone)}>{c.pct}%</Badge>
-              </div>
-              <div className="bg-muted mt-1.5 h-2 overflow-hidden rounded-full">
-                <div
-                  className={cn(
-                    "h-full rounded-full",
-                    c.pct >= 70 ? "bg-gradient-brand" : "bg-warning",
-                  )}
-                  style={{ width: `${c.pct}%` }}
-                />
-              </div>
-              <p className="text-muted-foreground mt-1 text-xs">{c.d}</p>
-            </div>
-          ))}
+          <QueryState<PayrollChange[]>
+            query={changes}
+            error={{ title: "Changes unavailable" }}
+            empty={{ title: "No changes yet", description: "Hires and exits appear here." }}
+          >
+            {(rows) => (
+              <>
+                {rows.map((c) => {
+                  const pct = stepPct(c.status);
+                  return (
+                    <div key={c.id}>
+                      <div className="flex items-center justify-between">
+                        <span className="text-xs font-bold">{c.title}</span>
+                        <Badge
+                          className={cn(
+                            "border-0 font-semibold",
+                            pct >= 100
+                              ? "bg-success/10 text-success"
+                              : "bg-warning/10 text-warning",
+                          )}
+                        >
+                          {isStatus(c.status)} · {pct}%
+                        </Badge>
+                      </div>
+                      <div className="bg-muted mt-1.5 h-2 overflow-hidden rounded-full">
+                        <div
+                          className={cn(
+                            "h-full rounded-full",
+                            pct >= 100 ? "bg-success" : "bg-warning",
+                          )}
+                          style={{ width: `${pct}%` }}
+                        />
+                      </div>
+                      <p className="text-muted-foreground mt-1 text-xs">{c.detail}</p>
+                    </div>
+                  );
+                })}
+              </>
+            )}
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>
   );
+}
+
+function isStatus(status: string): string {
+  return status === "sent" || status === "approved" ? "Complete" : "In progress";
 }

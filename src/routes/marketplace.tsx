@@ -65,6 +65,7 @@ function Marketplace() {
     <PageShell>
       <PageHero
         eyebrow="Career Engine"
+        art="market"
         title={
           <>
             Skills to <span className="text-gradient">income</span>

@@ -18,6 +18,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { AppShell } from "@/components/app/app-shell";
+import { SceneArt } from "@/components/art/scene-art";
 
 export const Route = createFileRoute("/app/")({
   head: () => ({
@@ -76,6 +77,20 @@ function Dashboard() {
       title="Good morning, Ada"
       subtitle="Cohort 15 · Full-Stack Software Development · Week 12 of 38"
     >
+      <div className="relative mb-6 h-44 overflow-hidden rounded-2xl border sm:h-52">
+        <SceneArt variant="code">
+          <div className="flex h-full items-end p-5 sm:p-6">
+            <div className="max-w-lg">
+              <p className="text-white/70 text-xs font-bold tracking-[0.18em] uppercase">
+                Cohort 15 · Week 12 of 38
+              </p>
+              <h2 className="font-display mt-1 text-lg font-extrabold text-white sm:text-xl">
+                You're ahead of 68% of your cohort — keep shipping.
+              </h2>
+            </div>
+          </div>
+        </SceneArt>
+      </div>
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         {stats.map((s) => (
           <Card key={s.label} className="bg-card shadow-soft border">

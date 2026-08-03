@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { useFlags } from "@/lib/flags";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/admin/config")({
@@ -16,33 +17,45 @@ export const Route = createFileRoute("/app/admin/config")({
   component: AdminConfig,
 });
 
-const settings = [
-  {
-    s: "Maintenance window",
-    v: "Next: Sat 02:00–03:00 WAT",
-    s2: "Scheduled",
-    tone: "bg-warning/10 text-warning",
-  },
-  {
-    s: "Enrollment open",
-    v: "Cohort 17 applications",
-    s2: "Enabled",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    s: "Fee payment window",
-    v: "Term 2 · closes Aug 30",
-    s2: "Enabled",
-    tone: "bg-success/10 text-success",
-  },
-];
-
 function AdminConfig() {
+  const { data } = useFlags();
+
+  const flags = data ?? {};
+  const flagCount = Object.keys(flags).length;
+  const enabled = Object.values(flags).filter(Boolean).length;
+
+  const settings = [
+    {
+      s: "Maintenance window",
+      v: "Next: Sat 02:00–03:00 WAT",
+      s2: "Scheduled",
+      tone: "bg-warning/10 text-warning",
+    },
+    {
+      s: "Enrollment open",
+      v: "Cohort 17 applications",
+      s2: "Enabled",
+      tone: "bg-success/10 text-success",
+    },
+    {
+      s: "Fee payment window",
+      v: "Term 2 · closes Aug 30",
+      s2: "Enabled",
+      tone: "bg-success/10 text-success",
+    },
+    ...Object.entries(flags).map(([name, on]) => ({
+      s: `Flag: ${name}`,
+      v: on ? "rolled out to all roles" : "off — mock fallback",
+      s2: on ? "Enabled" : "Disabled",
+      tone: on ? "bg-success/10 text-success" : "bg-muted-foreground/10 text-muted-foreground",
+    })),
+  ];
+
   return (
     <AppShell
       roleKey="admin"
       title="System configuration"
-      subtitle="Last changed by Adaeze Okafor · 08:22"
+      subtitle={`${flagCount} feature flags · ${enabled} live`}
       actions={
         <>
           <Badge className="bg-success/10 text-success border-0 font-semibold">Synced</Badge>
@@ -58,14 +71,14 @@ function AdminConfig() {
         {[
           {
             label: "Feature flags",
-            value: "18",
-            delta: "11 live",
+            value: String(flagCount),
+            delta: `${enabled} live`,
             icon: ToggleRight,
             tone: "bg-primary/10 text-primary",
           },
           {
             label: "Settings",
-            value: "96",
+            value: String(settings.length),
             delta: "key-value",
             icon: Settings2,
             tone: "bg-learning/10 text-learning",
@@ -121,6 +134,11 @@ function AdminConfig() {
               </Button>
             </div>
           ))}
+          {settings.length === 0 && (
+            <p className="text-muted-foreground py-4 text-center text-sm">
+              No flags or settings loaded yet.
+            </p>
+          )}
         </CardContent>
       </Card>
     </AppShell>

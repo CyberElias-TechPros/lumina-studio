@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { usePostingItems } from "@/lib/query/recruitment";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/alumni/jobs")({
@@ -16,35 +17,31 @@ export const Route = createFileRoute("/app/alumni/jobs")({
   component: AlumniJobs,
 });
 
-const jobs = [
-  {
-    t: "Senior Backend Engineer",
-    c: "Paystack",
-    s: "Lagos · Hybrid",
-    y: "2–5 yrs exp",
-    via: "Employer post",
-  },
-  {
-    t: "Product Designer",
-    c: "Flutterwave",
-    s: "Lagos · Remote",
-    y: "Mid-level",
-    via: "Alumni referral",
-  },
-  { t: "DevOps Engineer", c: "Andela", s: "Remote", y: "3+ yrs exp", via: "Alumni referral" },
-  { t: "Data Analyst", c: "Kuda", s: "Lagos · Hybrid", y: "Entry-friendly", via: "Employer post" },
-];
-
 function AlumniJobs() {
+  const postings = usePostingItems();
+
+  const open = postings.filter((p) => p.status === "Open");
+  const applications = postings.reduce((s, p) => s + p.applicants, 0);
+  const referrals = postings.reduce((s, p) => s + p.views, 0);
+
+  const jobs = postings.slice(0, 8).map((p) => ({
+    t: p.title,
+    c: "via CEA-OS",
+    s: p.detail,
+    y: `${p.applicants} applicants`,
+    via: p.status === "Open" ? "Alumni referral" : "Employer post",
+    tone: p.status === "Open" ? "bg-warning/10 text-warning" : "bg-primary/10 text-primary",
+  }));
+
   return (
     <AppShell
       roleKey="instructor"
       title="Alumni job board"
-      subtitle="64 roles · 18 posted this week"
+      subtitle={`${postings.length} roles · ${open.length} open · ${applications} applications`}
       actions={
         <>
           <Badge className="bg-success/10 text-success border-0 font-semibold">
-            4 referrals made
+            {open.length} open
           </Badge>
           <Button asChild variant="outline" size="sm" className="font-semibold">
             <Link to="/app/alumni/hub">
@@ -58,8 +55,8 @@ function AlumniJobs() {
         {[
           {
             label: "Open roles",
-            value: "64",
-            delta: "+18 this week",
+            value: String(open.length),
+            delta: `of ${postings.length} total`,
             icon: BriefcaseBusiness,
             tone: "bg-primary/10 text-primary",
           },
@@ -71,16 +68,16 @@ function AlumniJobs() {
             tone: "bg-learning/10 text-learning",
           },
           {
-            label: "My referrals",
-            value: "4",
-            delta: "2 hired",
+            label: "Applications",
+            value: String(applications),
+            delta: "across all roles",
             icon: Users,
             tone: "bg-success/10 text-success",
           },
           {
-            label: "Alumni-only roles",
-            value: "12",
-            delta: "exclusive access",
+            label: "Listing views",
+            value: String(referrals),
+            delta: "referral exposure",
             icon: ExternalLink,
             tone: "bg-warning/10 text-warning",
           },
@@ -120,21 +117,17 @@ function AlumniJobs() {
                   {j.c} · {j.s} · {j.y}
                 </p>
               </div>
-              <Badge
-                className={cn(
-                  "border-0 font-semibold",
-                  j.via === "Alumni referral"
-                    ? "bg-warning/10 text-warning"
-                    : "bg-primary/10 text-primary",
-                )}
-              >
-                {j.via}
-              </Badge>
+              <Badge className={cn("border-0 font-semibold", j.tone)}>{j.via}</Badge>
               <Button variant="outline" size="sm" className="shrink-0 font-semibold">
                 Refer
               </Button>
             </div>
           ))}
+          {jobs.length === 0 && (
+            <p className="text-muted-foreground py-4 text-center text-sm">
+              No postings yet — check back soon.
+            </p>
+          )}
         </CardContent>
       </Card>
     </AppShell>

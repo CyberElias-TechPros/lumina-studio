@@ -72,6 +72,7 @@ function Community() {
     <PageShell>
       <PageHero
         eyebrow="Community Engine"
+        art="community"
         title={
           <>
             Belonging that <span className="text-gradient">compounds</span>

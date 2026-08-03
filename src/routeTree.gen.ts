@@ -19,6 +19,7 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as EnginesRouteImport } from './routes/engines'
 import { Route as EventsRouteImport } from './routes/events'
 import { Route as FaqRouteImport } from './routes/faq'
+import { Route as LibraryRouteImport } from './routes/library'
 import { Route as MarketplaceRouteImport } from './routes/marketplace'
 import { Route as PartnersRouteImport } from './routes/partners'
 import { Route as PricingRouteImport } from './routes/pricing'
@@ -35,6 +36,7 @@ import { Route as AppCertificatesRouteImport } from './routes/app/certificates'
 import { Route as AppChatRouteImport } from './routes/app/chat'
 import { Route as AppFinanceRouteImport } from './routes/app/finance'
 import { Route as AppGradesRouteImport } from './routes/app/grades'
+import { Route as AppLibraryRouteImport } from './routes/app/library'
 import { Route as AppMessagesRouteImport } from './routes/app/messages'
 import { Route as AppNotificationsRouteImport } from './routes/app/notifications'
 import { Route as AppPortfolioRouteImport } from './routes/app/portfolio'
@@ -422,6 +424,11 @@ const FaqRoute = FaqRouteImport.update({
   path: '/faq',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LibraryRoute = LibraryRouteImport.update({
+  id: '/library',
+  path: '/library',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const MarketplaceRoute = MarketplaceRouteImport.update({
   id: '/marketplace',
   path: '/marketplace',
@@ -500,6 +507,11 @@ const AppFinanceRoute = AppFinanceRouteImport.update({
 const AppGradesRoute = AppGradesRouteImport.update({
   id: '/app/grades',
   path: '/app/grades',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppLibraryRoute = AppLibraryRouteImport.update({
+  id: '/app/library',
+  path: '/app/library',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AppMessagesRoute = AppMessagesRouteImport.update({
@@ -2263,6 +2275,7 @@ export interface FileRoutesByFullPath {
   '/engines': typeof EnginesRoute
   '/events': typeof EventsRoute
   '/faq': typeof FaqRoute
+  '/library': typeof LibraryRoute
   '/marketplace': typeof MarketplaceRoute
   '/partners': typeof PartnersRoute
   '/pricing': typeof PricingRoute
@@ -2278,6 +2291,7 @@ export interface FileRoutesByFullPath {
   '/app/chat': typeof AppChatRoute
   '/app/finance': typeof AppFinanceRouteWithChildren
   '/app/grades': typeof AppGradesRoute
+  '/app/library': typeof AppLibraryRoute
   '/app/messages': typeof AppMessagesRoute
   '/app/notifications': typeof AppNotificationsRoute
   '/app/portfolio': typeof AppPortfolioRoute
@@ -2627,6 +2641,7 @@ export interface FileRoutesByTo {
   '/engines': typeof EnginesRoute
   '/events': typeof EventsRoute
   '/faq': typeof FaqRoute
+  '/library': typeof LibraryRoute
   '/marketplace': typeof MarketplaceRoute
   '/partners': typeof PartnersRoute
   '/pricing': typeof PricingRoute
@@ -2642,6 +2657,7 @@ export interface FileRoutesByTo {
   '/app/chat': typeof AppChatRoute
   '/app/finance': typeof AppFinanceRouteWithChildren
   '/app/grades': typeof AppGradesRoute
+  '/app/library': typeof AppLibraryRoute
   '/app/messages': typeof AppMessagesRoute
   '/app/notifications': typeof AppNotificationsRoute
   '/app/portfolio': typeof AppPortfolioRoute
@@ -2992,6 +3008,7 @@ export interface FileRoutesById {
   '/engines': typeof EnginesRoute
   '/events': typeof EventsRoute
   '/faq': typeof FaqRoute
+  '/library': typeof LibraryRoute
   '/marketplace': typeof MarketplaceRoute
   '/partners': typeof PartnersRoute
   '/pricing': typeof PricingRoute
@@ -3007,6 +3024,7 @@ export interface FileRoutesById {
   '/app/chat': typeof AppChatRoute
   '/app/finance': typeof AppFinanceRouteWithChildren
   '/app/grades': typeof AppGradesRoute
+  '/app/library': typeof AppLibraryRoute
   '/app/messages': typeof AppMessagesRoute
   '/app/notifications': typeof AppNotificationsRoute
   '/app/portfolio': typeof AppPortfolioRoute
@@ -3358,6 +3376,7 @@ export interface FileRouteTypes {
     | '/engines'
     | '/events'
     | '/faq'
+    | '/library'
     | '/marketplace'
     | '/partners'
     | '/pricing'
@@ -3373,6 +3392,7 @@ export interface FileRouteTypes {
     | '/app/chat'
     | '/app/finance'
     | '/app/grades'
+    | '/app/library'
     | '/app/messages'
     | '/app/notifications'
     | '/app/portfolio'
@@ -3722,6 +3742,7 @@ export interface FileRouteTypes {
     | '/engines'
     | '/events'
     | '/faq'
+    | '/library'
     | '/marketplace'
     | '/partners'
     | '/pricing'
@@ -3737,6 +3758,7 @@ export interface FileRouteTypes {
     | '/app/chat'
     | '/app/finance'
     | '/app/grades'
+    | '/app/library'
     | '/app/messages'
     | '/app/notifications'
     | '/app/portfolio'
@@ -4086,6 +4108,7 @@ export interface FileRouteTypes {
     | '/engines'
     | '/events'
     | '/faq'
+    | '/library'
     | '/marketplace'
     | '/partners'
     | '/pricing'
@@ -4101,6 +4124,7 @@ export interface FileRouteTypes {
     | '/app/chat'
     | '/app/finance'
     | '/app/grades'
+    | '/app/library'
     | '/app/messages'
     | '/app/notifications'
     | '/app/portfolio'
@@ -4451,6 +4475,7 @@ export interface RootRouteChildren {
   EnginesRoute: typeof EnginesRoute
   EventsRoute: typeof EventsRoute
   FaqRoute: typeof FaqRoute
+  LibraryRoute: typeof LibraryRoute
   MarketplaceRoute: typeof MarketplaceRoute
   PartnersRoute: typeof PartnersRoute
   PricingRoute: typeof PricingRoute
@@ -4466,6 +4491,7 @@ export interface RootRouteChildren {
   AppChatRoute: typeof AppChatRoute
   AppFinanceRoute: typeof AppFinanceRouteWithChildren
   AppGradesRoute: typeof AppGradesRoute
+  AppLibraryRoute: typeof AppLibraryRoute
   AppMessagesRoute: typeof AppMessagesRoute
   AppNotificationsRoute: typeof AppNotificationsRoute
   AppPortfolioRoute: typeof AppPortfolioRoute
@@ -4862,6 +4888,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FaqRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/library': {
+      id: '/library'
+      path: '/library'
+      fullPath: '/library'
+      preLoaderRoute: typeof LibraryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/marketplace': {
       id: '/marketplace'
       path: '/marketplace'
@@ -4972,6 +5005,13 @@ declare module '@tanstack/react-router' {
       path: '/app/grades'
       fullPath: '/app/grades'
       preLoaderRoute: typeof AppGradesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/library': {
+      id: '/app/library'
+      path: '/app/library'
+      fullPath: '/app/library'
+      preLoaderRoute: typeof AppLibraryRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/app/messages': {
@@ -7482,6 +7522,7 @@ const rootRouteChildren: RootRouteChildren = {
   EnginesRoute: EnginesRoute,
   EventsRoute: EventsRoute,
   FaqRoute: FaqRoute,
+  LibraryRoute: LibraryRoute,
   MarketplaceRoute: MarketplaceRoute,
   PartnersRoute: PartnersRoute,
   PricingRoute: PricingRoute,
@@ -7497,6 +7538,7 @@ const rootRouteChildren: RootRouteChildren = {
   AppChatRoute: AppChatRoute,
   AppFinanceRoute: AppFinanceRouteWithChildren,
   AppGradesRoute: AppGradesRoute,
+  AppLibraryRoute: AppLibraryRoute,
   AppMessagesRoute: AppMessagesRoute,
   AppNotificationsRoute: AppNotificationsRoute,
   AppPortfolioRoute: AppPortfolioRoute,

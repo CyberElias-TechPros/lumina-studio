@@ -10,8 +10,12 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "gen:seed": "tsx scripts/gen-seed.ts && tsx scripts/gen-lms-seed.ts && tsx scripts/gen-domain-seed.ts",
+    "gen:library": "tsx scripts/gen-library-seed.ts",
+    "gen:links": "tsx scripts/gen-external-links.ts",
+    "download:library": "tsx scripts/download-library.ts",
+    "upload:library": "tsx scripts/upload-library.ts",
     "db:migrate:local": "wrangler d1 migrations apply DB --local",
-    "db:seed:local": "wrangler d1 execute DB --local --file seeds/content-data.sql && wrangler d1 execute DB --local --file seeds/lms-data.sql && wrangler d1 execute DB --local --file seeds/domain-data.sql"
+    "db:seed:local": "wrangler d1 execute DB --local --file seeds/content-data.sql && wrangler d1 execute DB --local --file seeds/lms-data.sql && wrangler d1 execute DB --local --file seeds/domain-data.sql && wrangler d1 execute DB --local --file seeds/library-data.sql && wrangler d1 execute DB --local --file seeds/external-links-data.sql"
   },
   "dependencies": {
     "drizzle-orm": "^0.45.2",
@@ -22,7 +26,10 @@
     "@cloudflare/vitest-pool-workers": "^0.20.1",
     "@cloudflare/workers-types": "^5.20260731.1",
     "@types/node": "^26.1.2",
+    "@types/ssh2-sftp-client": "^9.0.6",
+    "basic-ftp": "^6.1.0",
     "drizzle-kit": "^0.31.10",
+    "ssh2-sftp-client": "^12.1.1",
     "tsx": "^4.23.1",
     "typescript": "^7.0.2",
     "vitest": "^4.1.10",

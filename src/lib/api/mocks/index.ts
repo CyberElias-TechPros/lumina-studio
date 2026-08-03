@@ -39,6 +39,8 @@ import {
   payments,
 } from "@/data/dashboard";
 import type { StudentDashboard } from "@/lib/api/dashboard";
+import { libraryItems } from "@/data/library";
+import { externalLinkItems } from "@/data/external-links";
 
 const MOCK_USER = {
   id: "00000000-0000-4000-8000-000000000001",
@@ -440,6 +442,18 @@ export function registerAllMocks(): void {
       total: paymentBatches.length,
     };
   });
+  registerMockPattern("PATCH", "/v1/invoices/*", async (init) => {
+    await delay();
+    const id = (init.path ?? "").split("/").pop() ?? "";
+    const { status } = (init.body ?? {}) as { status?: string };
+    return { ok: true, id, status: status ?? "paid" };
+  });
+  registerMockPattern("PATCH", "/v1/expenses/*", async (init) => {
+    await delay();
+    const id = (init.path ?? "").split("/").pop() ?? "";
+    const { status } = (init.body ?? {}) as { status?: string };
+    return { ok: true, id, status: status ?? "approved" };
+  });
 
   /* Payments (checkout + history) */
   const createdCheckouts = new Map<
@@ -515,6 +529,41 @@ export function registerAllMocks(): void {
       return seeded;
     });
   }
+
+  /* Library — catalog is public; full library returns everything */
+  const allLibraryItems = [...libraryItems, ...externalLinkItems];
+  registerMock("GET", "/v1/library/catalog", async () => {
+    await delay();
+    const publicItems = allLibraryItems.filter((i) => !i.isProtected);
+    return {
+      sources: [
+        {
+          key: "ba-library",
+          name: "Business Analysis Library",
+          itemCount: libraryItems.filter((i) => !i.isProtected).length,
+        },
+        {
+          key: "external",
+          name: "External Resources",
+          itemCount: externalLinkItems.length,
+        },
+      ],
+      items: publicItems,
+      total: publicItems.length,
+    };
+  });
+  registerMock("GET", "/v1/library", async () => {
+    await delay();
+    return { items: allLibraryItems, total: allLibraryItems.length };
+  });
+  registerMockPattern("GET", "/v1/library/*", async (init: ApiRequestInit) => {
+    await delay();
+    const segments = (init.path ?? "").split("/").filter(Boolean);
+    const id = segments[segments.length - 1] ?? "";
+    const item = allLibraryItems.find((i) => i.id === id);
+    if (!item) throw new ApiError(404, "NOT_FOUND", "Library item not found.");
+    return item;
+  });
 
   /* Flags */
   registerMock("GET", "/v1/flags", async () => {

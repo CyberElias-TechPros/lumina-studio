@@ -16,6 +16,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { PageShell, PageHero, CTASection } from "@/components/marketing/shell";
 import { Reveal, StaggerGroup, StaggerItem } from "@/components/motion";
+import { SceneArt } from "@/components/art/scene-art";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/virtual-tour")({
@@ -103,17 +104,22 @@ function VirtualTourPage() {
         <Reveal>
           <Card className="bg-card shadow-soft overflow-hidden border">
             <div className="relative">
-              <div className="bg-gradient-ink text-ink-foreground grid aspect-video place-items-center">
-                <div className="text-center">
-                  <span className="bg-ink-foreground/10 text-ink-foreground mx-auto grid size-16 place-items-center rounded-full">
+              <div className="relative grid aspect-video place-items-center overflow-hidden">
+                <div className="absolute inset-0">
+                  <SceneArt variant="tour" labelled={false} />
+                </div>
+                <div className="relative text-center">
+                  <span className="bg-white/10 text-white mx-auto grid size-16 place-items-center rounded-full">
                     <PlayCircle className="size-8" />
                   </span>
-                  <p className="font-display mt-4 text-sm font-extrabold">{stop.title}</p>
-                  <p className="text-ink-foreground/60 mt-1 text-xs">
+                  <p className="font-display mt-4 text-sm font-extrabold text-white">
+                    {stop.title}
+                  </p>
+                  <p className="text-white/60 mt-1 text-xs">
                     Recording coming with the campus · {stop.duration} planned
                   </p>
                 </div>
-                <Badge className="bg-ink-foreground/15 text-ink-foreground absolute right-4 bottom-4 border-0 font-semibold">
+                <Badge className="bg-white/15 text-white absolute right-4 bottom-4 border-0 font-semibold">
                   Coming soon
                 </Badge>
               </div>

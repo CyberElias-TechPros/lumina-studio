@@ -15,6 +15,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { CTASection, PageHero, PageShell, SectionHeading } from "@/components/marketing/shell";
+import { ProgramArt } from "@/components/art/program-art";
 import { Reveal, StaggerGroup, StaggerItem, TiltCard } from "@/components/motion";
 import { engineMap, formatNaira, programs } from "@/data/site";
 
@@ -109,8 +110,14 @@ function ProgramDetail() {
               </Reveal>
             </div>
 
-            <Reveal delay={0.15}>
-              <TiltCard intensity={5} className="h-full">
+            <Reveal delay={0.15} className="relative">
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute -inset-6 sm:-inset-10"
+              >
+                <ProgramArt slug={program.slug} className="rounded-3xl" />
+              </div>
+              <TiltCard intensity={5} className="relative h-full">
                 <div className="glass shadow-elevated h-full rounded-3xl border p-7">
                   <p className="text-muted-foreground text-xs font-bold tracking-[0.16em] uppercase">
                     Tuition

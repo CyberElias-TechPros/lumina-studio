@@ -75,21 +75,64 @@ function ApplyPage() {
   const [ref, setRef] = useState<string | null>(null);
   const [programSlug, setProgramSlug] = useState(initialProgram ?? "");
   const [funding, setFunding] = useState("installments");
-  const [profile, setProfile] = useState({ firstName: "", lastName: "", email: "", phone: "" });
+  const [profile, setProfile] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    city: "",
+    experience: "",
+  });
+  const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
   const selected = programs.find((p) => p.slug === programSlug);
 
-  const next = () => setStep((s) => Math.min(s + 1, steps.length - 1));
-  const back = () => setStep((s) => Math.max(s - 1, 0));
+  const setField = (key: keyof typeof profile) => (value: string) => {
+    setProfile((p) => ({ ...p, [key]: value }));
+    setFieldErrors((e) => (e[key] ? { ...e, [key]: "" } : e));
+  };
+
+  /** Validate the current step; returns true when it may advance. */
+  const validateStep = (s: number): boolean => {
+    const errors: Record<string, string> = {};
+    if (s === 0 && !programSlug) errors.program = "Choose a program to continue.";
+    if (s === 1) {
+      if (profile.firstName.trim().length < 2) errors.firstName = "Enter your first name.";
+      if (profile.lastName.trim().length < 2) errors.lastName = "Enter your last name.";
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(profile.email.trim()))
+        errors.email = "Enter a valid email address.";
+      if (profile.phone.trim() && !/^\+?[0-9\s\-()]{6,20}$/.test(profile.phone.trim()))
+        errors.phone = "Enter a valid phone number.";
+      if (!profile.city) errors.city = "Select your location.";
+      if (!profile.experience) errors.experience = "Select your experience level.";
+    }
+    setFieldErrors(errors);
+    return Object.keys(errors).length === 0;
+  };
+
+  const next = () => {
+    if (validateStep(step)) setStep((s) => Math.min(s + 1, steps.length - 1));
+  };
+  const back = () => {
+    setFieldErrors({});
+    setStep((s) => Math.max(s - 1, 0));
+  };
 
   const submit = async () => {
-    if (!selected || !profile.firstName || !profile.lastName || !profile.email) return;
+    if (!selected) return;
+    if (!validateStep(1)) {
+      setStep(1);
+      return;
+    }
     setSubmitting(true);
     setSubmitError(null);
     try {
       const result = await submitApplication({
         fullName: `${profile.firstName.trim()} ${profile.lastName.trim()}`,
         email: profile.email.trim(),
+        phone: profile.phone.trim(),
+        city: profile.city,
         programSlug: selected.slug,
+        experience: profile.experience,
       });
       setRef(result.application.ref);
       setDone(true);
@@ -144,6 +187,7 @@ function ApplyPage() {
     <PageShell>
       <PageHero
         eyebrow="Admissions opening · Cohort 01"
+        art="tour"
         title={
           <>
             Apply in <span className="text-gradient">four steps</span>
@@ -226,6 +270,9 @@ function ApplyPage() {
                       );
                     })}
                   </div>
+                  {fieldErrors.program && (
+                    <p className="text-error mt-3 text-sm font-semibold">{fieldErrors.program}</p>
+                  )}
                 </CardContent>
               </Card>
             )}
@@ -248,9 +295,15 @@ function ApplyPage() {
                           id={f.id}
                           placeholder={f.ph}
                           value={profile[f.id as "firstName" | "lastName"]}
-                          onChange={(e) => setProfile((p) => ({ ...p, [f.id]: e.target.value }))}
+                          onChange={(e) =>
+                            setField(f.id as "firstName" | "lastName")(e.target.value)
+                          }
                           required
+                          aria-invalid={Boolean(fieldErrors[f.id])}
                         />
+                        {fieldErrors[f.id] && (
+                          <p className="text-error text-xs font-semibold">{fieldErrors[f.id]}</p>
+                        )}
                       </div>
                     ))}
                     <div className="space-y-1.5">
@@ -260,9 +313,13 @@ function ApplyPage() {
                         type="email"
                         placeholder="adaeze@example.com"
                         value={profile.email}
-                        onChange={(e) => setProfile((p) => ({ ...p, email: e.target.value }))}
+                        onChange={(e) => setField("email")(e.target.value)}
                         required
+                        aria-invalid={Boolean(fieldErrors.email)}
                       />
+                      {fieldErrors.email && (
+                        <p className="text-error text-xs font-semibold">{fieldErrors.email}</p>
+                      )}
                     </div>
                     <div className="space-y-1.5">
                       <Label htmlFor="phone">Phone (WhatsApp)</Label>
@@ -271,13 +328,17 @@ function ApplyPage() {
                         type="tel"
                         placeholder="+234 801 234 5678"
                         value={profile.phone}
-                        onChange={(e) => setProfile((p) => ({ ...p, phone: e.target.value }))}
+                        onChange={(e) => setField("phone")(e.target.value)}
+                        aria-invalid={Boolean(fieldErrors.phone)}
                       />
+                      {fieldErrors.phone && (
+                        <p className="text-error text-xs font-semibold">{fieldErrors.phone}</p>
+                      )}
                     </div>
                     <div className="space-y-1.5">
                       <Label htmlFor="city">City / State</Label>
-                      <Select>
-                        <SelectTrigger id="city">
+                      <Select value={profile.city} onValueChange={setField("city")}>
+                        <SelectTrigger id="city" aria-invalid={Boolean(fieldErrors.city)}>
                           <SelectValue placeholder="Select location" />
                         </SelectTrigger>
                         <SelectContent>
@@ -295,11 +356,17 @@ function ApplyPage() {
                           ))}
                         </SelectContent>
                       </Select>
+                      {fieldErrors.city && (
+                        <p className="text-error text-xs font-semibold">{fieldErrors.city}</p>
+                      )}
                     </div>
                     <div className="space-y-1.5">
                       <Label htmlFor="experience">Prior experience</Label>
-                      <Select>
-                        <SelectTrigger id="experience">
+                      <Select value={profile.experience} onValueChange={setField("experience")}>
+                        <SelectTrigger
+                          id="experience"
+                          aria-invalid={Boolean(fieldErrors.experience)}
+                        >
                           <SelectValue placeholder="Select level" />
                         </SelectTrigger>
                         <SelectContent>
@@ -312,6 +379,9 @@ function ApplyPage() {
                           )}
                         </SelectContent>
                       </Select>
+                      {fieldErrors.experience && (
+                        <p className="text-error text-xs font-semibold">{fieldErrors.experience}</p>
+                      )}
                     </div>
                   </div>
                 </CardContent>
@@ -430,7 +500,7 @@ function ApplyPage() {
               <Button
                 onClick={submit}
                 className="bg-gradient-brand shadow-glow border-0"
-                disabled={submitting || !profile.firstName || !profile.lastName || !profile.email}
+                disabled={submitting}
               >
                 {submitting ? "Submitting…" : "Submit application"}{" "}
                 <ArrowRight className="ml-1.5 size-4" />

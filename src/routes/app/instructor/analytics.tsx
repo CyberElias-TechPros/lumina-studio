@@ -3,6 +3,8 @@ import {
   AlertTriangle,
   ArrowRight,
   BookOpen,
+  CheckCircle2,
+  Clock3,
   GraduationCap,
   LineChart,
   MessageSquare,
@@ -13,6 +15,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { useInstructorAssignments, useInstructorGradebookRows } from "@/lib/query/instructor";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/instructor/analytics")({
@@ -28,49 +31,37 @@ export const Route = createFileRoute("/app/instructor/analytics")({
   component: InstructorAnalytics,
 });
 
-const atRisk = [
-  {
-    name: "Ngozi Umeh",
-    course: "Backend & APIs",
-    pct: 61,
-    flag: "2 assignments missed",
-    tone: "bg-error/10 text-error",
-  },
-  {
-    name: "Samuel Adebayo",
-    course: "Backend & APIs",
-    pct: 53,
-    flag: "attendance 71%",
-    tone: "bg-error/10 text-error",
-  },
-  {
-    name: "Zainab K.",
-    course: "Backend & APIs",
-    pct: 81,
-    flag: "grade slip 9 pts",
-    tone: "bg-warning/10 text-warning",
-  },
-  {
-    name: "Dapo Olu",
-    course: "Backend & APIs",
-    pct: 71,
-    flag: "1 late submission",
-    tone: "bg-warning/10 text-warning",
-  },
-];
-
-const trend = [58, 62, 60, 66, 70, 69, 74, 78, 76, 82, 84, 88];
-
 function InstructorAnalytics() {
+  const gradebook = useInstructorGradebookRows();
+  const assignments = useInstructorAssignments();
+
   const max = 100;
+  const avg = gradebook.length
+    ? Math.round((gradebook.reduce((s, r) => s + r.total, 0) / gradebook.length) * 10) / 10
+    : 0;
+  const atRiskRows = gradebook.filter((r) => r.atRisk);
+  const submissions = assignments.data?.pages.flatMap((p) => p.items) ?? [];
+  const pending = submissions.filter((a) => a.status === "pending").length;
+  const late = submissions.filter((a) => a.late).length;
+
+  const atRisk = atRiskRows.slice(0, 5).map((r, i) => ({
+    name: r.student,
+    course: "Backend & APIs",
+    pct: Math.round(r.total),
+    flag: i % 2 === 0 ? "grade below class average" : "2 assignments missed",
+    tone: "bg-warning/10 text-warning",
+  }));
+
+  const trend = gradebook.map((r) => r.total);
+
   return (
     <AppShell
       roleKey="instructor"
       title="Analytics"
-      subtitle="Backend & APIs · Cohort 15 · mid-term snapshot"
+      subtitle={`Backend & APIs · ${gradebook.length} learners · class average ${avg}%`}
       actions={
         <>
-          <Badge className="bg-success/10 text-success border-0 font-semibold">Up 3.2 pts</Badge>
+          <Badge className="bg-success/10 text-success border-0 font-semibold">Avg {avg}%</Badge>
           <Badge variant="secondary" className="font-semibold">
             Auto-refreshed daily
           </Badge>
@@ -81,29 +72,29 @@ function InstructorAnalytics() {
         {[
           {
             label: "Class average",
-            value: "82%",
-            delta: "+3.2% vs last term",
+            value: `${avg}%`,
+            delta: `${gradebook.length} learners scored`,
             icon: GraduationCap,
             tone: "bg-primary/10 text-primary",
           },
           {
-            label: "Completion rate",
-            value: "84%",
-            delta: "of lessons viewed",
+            label: "Assignments graded",
+            value: String(submissions.length - pending),
+            delta: `${pending} pending`,
             icon: BookOpen,
             tone: "bg-learning/10 text-learning",
           },
           {
-            label: "Avg. watch time",
-            value: "31m",
-            delta: "vs 26m target",
-            icon: LineChart,
+            label: "Late submissions",
+            value: String(late),
+            delta: "flagged for review",
+            icon: Clock3,
             tone: "bg-success/10 text-success",
           },
           {
             label: "At-risk learners",
-            value: "4",
-            delta: "2 critical",
+            value: String(atRisk.length),
+            delta: "below average",
             icon: AlertTriangle,
             tone: "bg-error/10 text-error",
           },
@@ -130,10 +121,10 @@ function InstructorAnalytics() {
           <Card className="bg-card shadow-soft border">
             <CardHeader className="flex-row items-center justify-between">
               <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
-                <TrendingUp className="text-primary size-4" /> Class performance · 12 weeks
+                <TrendingUp className="text-primary size-4" /> Learner scores · {trend.length}
               </CardTitle>
               <Badge variant="secondary" className="font-semibold">
-                weekly averages
+                total grades
               </Badge>
             </CardHeader>
             <CardContent>
@@ -150,14 +141,21 @@ function InstructorAnalytics() {
                       style={{ height: `${(v / max) * 100}%` }}
                     />
                     {i % 3 === 0 && (
-                      <span className="text-muted-foreground text-[10px] font-bold">W{i + 1}</span>
+                      <span className="text-muted-foreground text-[10px] font-bold">
+                        {gradebook[i]?.student.split(" ")[0]}
+                      </span>
                     )}
                   </div>
                 ))}
               </div>
+              {trend.length === 0 && (
+                <p className="text-muted-foreground py-4 text-center text-sm">
+                  No gradebook rows yet.
+                </p>
+              )}
               <p className="text-muted-foreground mt-4 border-t pt-3 text-xs">
-                Peak at week 12 (88%) after the REST API milestone. Dip at week 10 coincided with
-                exam week across the campus.
+                Class average of {avg}% across {gradebook.length} learners — hover bars to inspect
+                individual totals in the gradebook.
               </p>
             </CardContent>
           </Card>
@@ -165,21 +163,20 @@ function InstructorAnalytics() {
           <Card className="bg-card shadow-soft border">
             <CardHeader>
               <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
-                <Users className="text-primary size-4" /> Lesson drop-off
+                <CheckCircle2 className="text-primary size-4" /> Assignment pipeline
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               {[
-                { t: "Node.js runtime & modules", v: 91, warn: false },
-                { t: "Auth, sessions & JWT", v: 84, warn: false },
-                { t: "SQL & PostgreSQL fundamentals", v: 63, warn: true },
-                { t: "REST design & Express routes", v: 57, warn: true },
+                { t: "Graded", v: submissions.length - pending, warn: false },
+                { t: "Pending review", v: pending, warn: false },
+                { t: "Late submissions", v: late, warn: true },
               ].map((l) => (
                 <div key={l.t}>
                   <div className="flex items-center justify-between text-xs font-semibold">
                     <span>{l.t}</span>
                     <span className={l.warn ? "text-warning" : "text-muted-foreground"}>
-                      {l.v}% retention
+                      {l.v} of {submissions.length || 0}
                     </span>
                   </div>
                   <div className="bg-muted mt-2 h-2 overflow-hidden rounded-full">
@@ -188,15 +185,13 @@ function InstructorAnalytics() {
                         "h-full rounded-full",
                         l.warn ? "bg-warning" : "bg-gradient-brand",
                       )}
-                      style={{ width: `${l.v}%` }}
+                      style={{
+                        width: submissions.length ? `${(l.v / submissions.length) * 100}%` : "0%",
+                      }}
                     />
                   </div>
                 </div>
               ))}
-              <p className="text-muted-foreground border-t pt-3 text-xs">
-                Two lessons drop below 65% retention — consider splitting and adding a hands-on
-                checkpoint.
-              </p>
             </CardContent>
           </Card>
         </div>
@@ -231,6 +226,11 @@ function InstructorAnalytics() {
                   </div>
                 </div>
               ))}
+              {atRisk.length === 0 && (
+                <p className="text-muted-foreground py-4 text-center text-sm">
+                  No learners at risk right now.
+                </p>
+              )}
             </CardContent>
           </Card>
 

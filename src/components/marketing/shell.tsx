@@ -5,6 +5,7 @@ import { ArrowRight, Sparkles } from "lucide-react";
 import { SiteHeader } from "./site-header";
 import { SiteFooter } from "./site-footer";
 import { Button } from "@/components/ui/button";
+import { SceneArt, type ArtVariant } from "@/components/art/scene-art";
 import { cn } from "@/lib/utils";
 import { Aurora, Counter, Reveal, ScrollProgressBar, Spotlight } from "@/components/motion";
 import { stats } from "@/data/site";
@@ -74,11 +75,15 @@ export function PageHero({
   title,
   description,
   children,
+  art,
+  artWidth,
 }: {
   eyebrow: string;
   title: ReactNode;
   description: ReactNode;
   children?: ReactNode;
+  art?: ArtVariant;
+  artWidth?: string;
 }) {
   return (
     <section className="relative overflow-hidden border-b">
@@ -86,20 +91,36 @@ export function PageHero({
       <Spotlight />
       <div className="grid-lines pointer-events-none absolute inset-0 opacity-40 [mask-image:radial-gradient(70%_60%_at_50%_0%,black,transparent)]" />
       <div className="container-page relative py-20 md:py-28">
-        <Reveal>
-          <Eyebrow>{eyebrow}</Eyebrow>
-        </Reveal>
-        <Reveal delay={0.06}>
-          <h1 className="mt-6 max-w-4xl text-4xl font-extrabold tracking-tight text-balance sm:text-5xl md:text-6xl md:leading-[1.05]">
-            {title}
-          </h1>
-        </Reveal>
-        <Reveal delay={0.12}>
-          <p className="text-muted-foreground mt-6 max-w-2xl text-lg leading-relaxed text-pretty">
-            {description}
-          </p>
-        </Reveal>
-        {children && <Reveal delay={0.18}>{children}</Reveal>}
+        <div className={cn("grid items-center gap-12", art && "lg:grid-cols-[1fr_auto]")}>
+          <div>
+            <Reveal>
+              <Eyebrow>{eyebrow}</Eyebrow>
+            </Reveal>
+            <Reveal delay={0.06}>
+              <h1 className="mt-6 max-w-4xl text-4xl font-extrabold tracking-tight text-balance sm:text-5xl md:text-6xl md:leading-[1.05]">
+                {title}
+              </h1>
+            </Reveal>
+            <Reveal delay={0.12}>
+              <p className="text-muted-foreground mt-6 max-w-2xl text-lg leading-relaxed text-pretty">
+                {description}
+              </p>
+            </Reveal>
+            {children && <Reveal delay={0.18}>{children}</Reveal>}
+          </div>
+          {art && (
+            <Reveal delay={0.16} className="hidden lg:block">
+              <div
+                className={cn(
+                  "relative h-72 w-80 overflow-hidden rounded-[2rem] border md:h-80 md:w-96 xl:h-96 xl:w-[24rem]",
+                  artWidth,
+                )}
+              >
+                <SceneArt variant={art} />
+              </div>
+            </Reveal>
+          )}
+        </div>
       </div>
     </section>
   );

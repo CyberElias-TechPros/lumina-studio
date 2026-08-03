@@ -54,6 +54,7 @@ function Events() {
     <PageShell>
       <PageHero
         eyebrow="Events"
+        art="community"
         title={
           <>
             Come see it <span className="text-gradient">live</span>

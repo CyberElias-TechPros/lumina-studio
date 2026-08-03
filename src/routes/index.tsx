@@ -38,6 +38,8 @@ import {
   TiltCard,
 } from "@/components/motion";
 import { engines, faqs, formatNaira, partnersList, programs } from "@/data/site";
+import { ProgramArt } from "@/components/art/program-art";
+import { SceneArt } from "@/components/art/scene-art";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -53,6 +55,8 @@ export const Route = createFileRoute("/")({
         property: "og:description",
         content: "One platform. Multiple engines. Every actor connected.",
       },
+      { property: "og:image", content: "https://cea-os.vercel.app/og-card.svg" },
+      { property: "og:type", content: "website" },
     ],
   }),
   component: Home,
@@ -134,11 +138,15 @@ function Hero() {
         </div>
 
         <div className="relative">
+          <div aria-hidden="true" className="pointer-events-none absolute -inset-8 sm:-inset-16">
+            <SceneArt variant="code" className="rounded-[2.5rem]" />
+          </div>
           <motion.div
             initial={{ opacity: 0, y: 40, rotateX: 12 }}
             animate={{ opacity: 1, y: 0, rotateX: 0 }}
             transition={{ duration: 0.9, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
             style={{ transformPerspective: 1200 }}
+            className="relative z-10"
           >
             <TiltCard intensity={6}>
               <div className="glass shadow-elevated relative rounded-3xl p-6">
@@ -196,7 +204,7 @@ function Hero() {
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.7, duration: 0.7 }}
-            className="animate-float glass shadow-elevated absolute -right-2 -bottom-8 hidden w-56 rounded-2xl p-4 sm:block"
+            className="animate-float glass shadow-elevated absolute -right-2 -bottom-8 hidden w-56 rounded-2xl p-4 z-20 sm:block"
           >
             <p className="text-muted-foreground text-[11px] font-bold tracking-[0.16em] uppercase">
               Job match · preview
@@ -329,6 +337,9 @@ function ProgramsSection() {
                 params={{ slug: p.slug }}
                 className="group bg-card shadow-soft hover:shadow-elevated flex h-full flex-col rounded-2xl border p-6 transition-all hover:-translate-y-1"
               >
+                <div className="relative mb-5 h-36 overflow-hidden rounded-2xl border sm:h-40">
+                  <ProgramArt slug={p.slug} interactive />
+                </div>
                 <div className="flex items-center justify-between">
                   <Badge variant="secondary" className="font-semibold">
                     {p.category}

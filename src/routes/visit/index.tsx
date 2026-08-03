@@ -91,6 +91,7 @@ function VisitPage() {
     <PageShell>
       <PageHero
         eyebrow="Visit Cyber Elias Academy"
+        art="tour"
         title={
           <>
             Be there when the <span className="text-gradient">doors open</span>

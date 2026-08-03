@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { useAdminUserItems, useAuditItems } from "@/lib/query/admin";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/admin/security")({
@@ -16,36 +17,35 @@ export const Route = createFileRoute("/app/admin/security")({
   component: AdminSecurity,
 });
 
-const events = [
-  {
-    e: "2FA enabled · Adaeze Okafor",
-    t: "Jul 31 · 09:14",
-    s: "Normal",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    e: "API key rotated · ci-deploy",
-    t: "Jul 30 · 18:02",
-    s: "Normal",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    e: "Blocked login · 197.210.x.x",
-    t: "Jul 30 · 03:47",
-    s: "Blocked",
-    tone: "bg-warning/10 text-warning",
-  },
-];
-
 function AdminSecurity() {
+  const audit = useAuditItems();
+  const users = useAdminUserItems();
+
+  const blocked = audit.filter((e) => e.severity === "high");
+  const staff = users.filter((u) => u.status === "Active").length;
+
+  const events = audit.slice(0, 6).map((e) => ({
+    e: `${e.action} · ${e.actor}`,
+    t: e.time,
+    s: e.severity === "high" ? "Blocked" : "Normal",
+    tone: e.severity === "high" ? "bg-warning/10 text-warning" : "bg-success/10 text-success",
+  }));
+
   return (
     <AppShell
       roleKey="admin"
       title="Security dashboard"
-      subtitle="All clear · 2,4 14 logins / hr · zero breaches"
+      subtitle={`${audit.length} audit events · ${blocked.length} flagged · zero breaches`}
       actions={
         <>
-          <Badge className="bg-success/10 text-success border-0 font-semibold">0 alerts</Badge>
+          <Badge
+            className={cn(
+              "border-0 font-semibold",
+              blocked.length > 0 ? "bg-warning/10 text-warning" : "bg-success/10 text-success",
+            )}
+          >
+            {blocked.length} alerts
+          </Badge>
           <Button asChild variant="outline" size="sm" className="font-semibold">
             <Link to="/app/admin">
               <ArrowLeft className="size-4" /> Admin hub
@@ -57,23 +57,23 @@ function AdminSecurity() {
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         {[
           {
-            label: "2FA coverage",
-            value: "96%",
-            delta: "of staff",
+            label: "Active staff",
+            value: String(staff),
+            delta: "of total accounts",
             icon: Fingerprint,
             tone: "bg-primary/10 text-primary",
           },
           {
-            label: "Blocked attempts",
-            value: "34",
-            delta: "last 24h",
+            label: "Flagged events",
+            value: String(blocked.length),
+            delta: "high severity",
             icon: ShieldAlert,
             tone: "bg-warning/10 text-warning",
           },
           {
-            label: "IP whitelist",
-            value: "6",
-            delta: "ranges",
+            label: "Audit trail",
+            value: String(audit.length),
+            delta: "events logged",
             icon: Globe,
             tone: "bg-learning/10 text-learning",
           },
@@ -121,6 +121,9 @@ function AdminSecurity() {
               </Button>
             </div>
           ))}
+          {events.length === 0 && (
+            <p className="text-muted-foreground py-4 text-center text-sm">No audit events yet.</p>
+          )}
         </CardContent>
       </Card>
     </AppShell>

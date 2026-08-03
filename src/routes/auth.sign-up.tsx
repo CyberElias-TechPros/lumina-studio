@@ -14,6 +14,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Reveal } from "@/components/motion";
+import { SceneArt } from "@/components/art/scene-art";
 import { cn } from "@/lib/utils";
 import { useSignUp } from "@/lib/auth/session";
 
@@ -89,6 +90,11 @@ function SignUpPage() {
       <div className="bg-gradient-community absolute -right-32 -bottom-32 size-96 rounded-full opacity-10 blur-3xl" />
 
       <div className="relative w-full max-w-lg">
+        <Reveal>
+          <div className="relative mb-8 h-28 overflow-hidden rounded-2xl border sm:h-32">
+            <SceneArt variant="graduate" labelled={false} />
+          </div>
+        </Reveal>
         <Reveal>
           <div className="mb-6 text-center">
             <Link

@@ -63,6 +63,7 @@ function Alumni() {
     <PageShell>
       <PageHero
         eyebrow="Alumni"
+        art="community"
         title={
           <>
             Once an Elias, <span className="text-gradient">always an Elias</span>

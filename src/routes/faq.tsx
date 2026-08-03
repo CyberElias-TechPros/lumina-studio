@@ -54,6 +54,7 @@ function FaqPage() {
     <PageShell>
       <PageHero
         eyebrow="Frequently asked questions"
+        art="data"
         title={
           <>
             Everything you're <span className="text-gradient">wondering</span>

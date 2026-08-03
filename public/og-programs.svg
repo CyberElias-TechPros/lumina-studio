@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="Cyber Elias Academy Programs">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0d1120"/>
+      <stop offset="0.55" stop-color="#181233"/>
+      <stop offset="1" stop-color="#2b1038"/>
+    </linearGradient>
+    <linearGradient id="brand" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#8c1b3e"/>
+      <stop offset="0.55" stop-color="#c23a5c"/>
+      <stop offset="1" stop-color="#e16070"/>
+    </linearGradient>
+    <radialGradient id="core" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.12"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="halo" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#7fb2ff" stop-opacity="0.4"/>
+      <stop offset="1" stop-color="#7fb2ff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="960" cy="40" r="420" fill="url(#core)"/>
+  <circle cx="180" cy="620" r="380" fill="url(#core)"/>
+  <circle cx="600" cy="315" r="360" fill="url(#halo)"/>
+  <g fill="none" stroke="#ffffff" stroke-opacity="0.1">
+    <ellipse cx="600" cy="330" rx="500" ry="170"/>
+    <ellipse cx="600" cy="330" rx="360" ry="120"/>
+    <ellipse cx="600" cy="330" rx="220" ry="70"/>
+  </g>
+  <g fill="none" stroke="#7fb2ff" stroke-width="8" stroke-linecap="round">
+    <rect x="500" y="118" width="200" height="148" rx="20"/>
+    <path d="M 530 190 H 670 M 530 214 H 630 M 530 238 H 660"/>
+  </g>
+  <g fill="#e16070">
+    <rect x="716" y="196" width="54" height="54" rx="12" opacity="0.9"/>
+    <rect x="780" y="196" width="54" height="54" rx="12" opacity="0.6"/>
+  </g>
+  <path d="M 655 96 l 0 70 m 0 0 l -26 32 m 26 -32 l 26 32" fill="none" stroke="#7fb2ff" stroke-width="5" stroke-linecap="round"/>
+  <text x="600" y="380" font-family="Montserrat, Arial, sans-serif" font-size="64" font-weight="800" fill="#ffffff" text-anchor="middle" letter-spacing="1">Our Programs</text>
+  <text x="600" y="432" font-family="Montserrat, Arial, sans-serif" font-size="26" font-weight="600" fill="#c9c3e6" text-anchor="middle" letter-spacing="2">COHORT TRACKS · SOFTWARE · CLOUD · SECURITY · DATA · DESIGN · MARTECH</text>
+  <g transform="translate(555 470)">
+    <rect width="90" height="6" rx="3" fill="url(#brand)"/>
+  </g>
+</svg>

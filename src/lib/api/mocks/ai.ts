@@ -1,15 +1,52 @@
 import { registerMock } from "@/lib/api/client";
 import type { ApiRequestInit } from "@/lib/api/client";
 import { ApiError } from "@/lib/errors";
-import type { AiAskResponse, AiRecommendation, GenerateResponse, GradeResult } from "@/lib/api/ai";
+import type {
+  AiAskResponse,
+  AiModelsResponse,
+  AiRecommendation,
+  GenerateResponse,
+  GradeResult,
+} from "@/lib/api/ai";
 
 function delay(milliseconds = 180): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, milliseconds));
 }
 
-const MOCK_MODEL = "cea-tutor (mock)";
+const MOCK_MODEL = "NVIDIA NIM (mock)";
+
+const MOCK_FREE_MODELS: AiModelsResponse["models"] = [
+  {
+    id: "nvidia/llama-3.3-nemotron-super-49b-v1",
+    label: "Llama 3.3 Nemotron Super",
+    vendor: "NVIDIA",
+    cost: "free",
+  },
+  { id: "meta/llama-3.3-70b-instruct", label: "Llama 3.3 70B", vendor: "Meta", cost: "free" },
+  { id: "meta/llama-3.1-8b-instruct", label: "Llama 3.1 8B", vendor: "Meta", cost: "free" },
+  { id: "qwen/qwen2.5-72b-instruct", label: "Qwen 2.5 72B", vendor: "Alibaba", cost: "free" },
+  { id: "deepseek-ai/deepseek-r1", label: "DeepSeek R1", vendor: "DeepSeek", cost: "free" },
+  { id: "microsoft/phi-4", label: "Phi-4 14B", vendor: "Microsoft", cost: "free" },
+  {
+    id: "mistralai/mistral-7b-instruct-v0.3",
+    label: "Mistral 7B",
+    vendor: "Mistral",
+    cost: "free",
+  },
+];
 
 export function registerAiMocks(): void {
+  registerMock("GET", "/v1/ai/models", async () => {
+    await delay(60);
+    return {
+      provider: "NVIDIA NIM",
+      tier: "free",
+      models: MOCK_FREE_MODELS,
+      default: MOCK_FREE_MODELS[0].id,
+      configured: MOCK_FREE_MODELS[0].id,
+    } satisfies AiModelsResponse;
+  });
+
   registerMock("POST", "/v1/ai/grade", async (init: ApiRequestInit) => {
     await delay(350);
     const input = (init.body ?? {}) as { submissionId?: string; rubric?: unknown };

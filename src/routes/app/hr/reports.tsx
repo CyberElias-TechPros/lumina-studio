@@ -4,6 +4,8 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { useEmployees, useLeaveRequests, usePayrollChanges } from "@/lib/query/hr";
+import { usePostings } from "@/lib/query/recruitment";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/hr/reports")({
@@ -16,18 +18,52 @@ export const Route = createFileRoute("/app/hr/reports")({
   component: HrReports,
 });
 
-const reports = [
-  { r: "Monthly HR report — July", d: "Published Aug 1", tone: "bg-success/10 text-success" },
-  { r: "Turnover analysis — Q2", d: "Published Jul 15", tone: "bg-primary/10 text-primary" },
-  { r: "eNPS pulse — July", d: "Published Jul 30", tone: "bg-learning/10 text-learning" },
-];
-
 function HrReports() {
+  const employees = useEmployees();
+  const leave = useLeaveRequests();
+  const payroll = usePayrollChanges();
+  const postings = usePostings();
+
+  const staff = employees.data?.pages.flatMap((p) => p.items) ?? [];
+  const requests = leave.data?.pages.flatMap((p) => p.items) ?? [];
+  const changes = payroll.data?.pages.flatMap((p) => p.items) ?? [];
+  const roles = postings.data?.pages.flatMap((p) => p.items) ?? [];
+
+  const active = staff.filter((s) => s.status === "Active").length;
+  const onLeave = staff.filter((s) => s.status === "On leave").length;
+  const approved = requests.filter((r) => r.status === "Approved").length;
+  const pending = requests.filter((r) => r.status === "Pending").length;
+  const pendingChanges = changes.filter((c) => c.status !== "sent" && c.status !== "approved");
+  const applicants = roles.reduce((s, r) => s + r.applicants, 0);
+
+  const reports = [
+    {
+      r: "Headcount snapshot",
+      d: `${staff.length} staff · ${active} active · ${onLeave} on leave`,
+      tone: "bg-primary/10 text-primary",
+    },
+    {
+      r: "Leave status",
+      d: `${approved} approved · ${pending} pending requests`,
+      tone: "bg-success/10 text-success",
+    },
+    {
+      r: "Payroll changes",
+      d: `${pendingChanges.length} pending of ${changes.length} total`,
+      tone: "bg-warning/10 text-warning",
+    },
+    {
+      r: "Open roles & applications",
+      d: `${roles.length} roles · ${applicants} applications`,
+      tone: "bg-learning/10 text-learning",
+    },
+  ];
+
   return (
     <AppShell
       roleKey="instructor"
       title="HR reports"
-      subtitle="Turnover 8% · eNPS 61 · compliance 100%"
+      subtitle={`${staff.length} headcount · ${requests.length} leave requests · ${changes.length} payroll changes`}
       actions={
         <>
           <Badge className="bg-success/10 text-success border-0 font-semibold">All current</Badge>
@@ -42,32 +78,32 @@ function HrReports() {
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         {[
           {
-            label: "Turnover",
-            value: "8%",
-            delta: "benchmark 12%",
+            label: "Headcount",
+            value: String(staff.length),
+            delta: `${active} active`,
+            icon: Users,
+            tone: "bg-learning/10 text-learning",
+          },
+          {
+            label: "Active rate",
+            value: staff.length ? `${Math.round((active / staff.length) * 100)}%` : "—",
+            delta: "of headcount",
             icon: TrendingDown,
             tone: "bg-success/10 text-success",
           },
           {
-            label: "eNPS",
-            value: "61",
-            delta: "+4 vs Q2",
+            label: "Leave requests",
+            value: String(requests.length),
+            delta: `${pending} pending`,
             icon: HeartPulse,
             tone: "bg-community/10 text-community",
           },
           {
-            label: "Compliance",
-            value: "100%",
-            delta: "documents",
+            label: "Payroll pending",
+            value: String(pendingChanges.length),
+            delta: "awaiting sign-off",
             icon: BarChart3,
             tone: "bg-primary/10 text-primary",
-          },
-          {
-            label: "Headcount",
-            value: "94",
-            delta: "+3 net hires",
-            icon: Users,
-            tone: "bg-learning/10 text-learning",
           },
         ].map((k) => (
           <Card key={k.label} className="bg-card shadow-soft border">
@@ -90,7 +126,7 @@ function HrReports() {
       <Card className="bg-card mt-5 shadow-soft border">
         <CardHeader>
           <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
-            <FileBarChart2 className="text-primary size-4" /> Published reports
+            <FileBarChart2 className="text-primary size-4" /> Current reports
           </CardTitle>
         </CardHeader>
         <CardContent className="divide-y">
@@ -100,6 +136,7 @@ function HrReports() {
                 <p className="text-sm font-bold">{r.r}</p>
                 <p className="text-muted-foreground text-xs">{r.d}</p>
               </div>
+              <Badge className={cn("border-0 font-semibold", r.tone)}>Live</Badge>
               <Button variant="outline" size="sm" className="shrink-0 font-semibold">
                 Open
               </Button>

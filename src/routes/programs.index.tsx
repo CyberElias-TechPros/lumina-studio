@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { CTASection, PageHero, PageShell, SectionHeading } from "@/components/marketing/shell";
+import { ProgramArt } from "@/components/art/program-art";
 import { Reveal, StaggerGroup, StaggerItem } from "@/components/motion";
 import { engines, formatNaira, programs } from "@/data/site";
 import { cn } from "@/lib/utils";
@@ -18,6 +19,8 @@ export const Route = createFileRoute("/programs/")({
         content:
           "Browse cohort programs in software development, cybersecurity, cloud, data & AI, design, marketing, networking and mobile — from scratch to advanced.",
       },
+      { property: "og:image", content: "https://cea-os.vercel.app/og-programs.svg" },
+      { property: "og:type", content: "website" },
     ],
   }),
   component: Programs,
@@ -144,6 +147,9 @@ function Programs() {
                       className={`${engine?.gradient ?? "bg-gradient-brand"} absolute inset-x-0 top-0 h-1 origin-left scale-x-0 transition-transform duration-500 group-hover:scale-x-100`}
                     />
                     <div className="flex flex-1 flex-col p-6">
+                      <div className="relative mb-5 h-36 overflow-hidden rounded-2xl">
+                        <ProgramArt slug={p.slug} interactive />
+                      </div>
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-2">
                           <Badge variant="secondary" className="font-semibold">

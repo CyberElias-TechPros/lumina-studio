@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { useFlags } from "@/lib/flags";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/dev/feature-flags")({
@@ -16,32 +17,30 @@ export const Route = createFileRoute("/app/dev/feature-flags")({
   component: DevFeatureFlags,
 });
 
-const flags = [
-  {
-    f: "new-payment-flow",
-    e: "production · 100%",
-    s: "Enabled",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    f: "ai-admissions-coach",
-    e: "staging · 25%",
-    s: "Rollout",
-    tone: "bg-warning/10 text-warning",
-  },
-  { f: "dark-mode", e: "production · 0%", s: "Off", tone: "bg-muted text-muted-foreground" },
-];
-
 function DevFeatureFlags() {
+  const { data } = useFlags();
+
+  const flags = data ?? {};
+  const entries = Object.entries(flags);
+  const enabled = entries.filter(([, on]) => on);
+  const disabled = entries.filter(([, on]) => !on);
+
+  const flagRows = entries.map(([f, on]) => ({
+    f,
+    e: on ? "production · 100%" : "off · mock fallback",
+    s: on ? "Enabled" : "Off",
+    tone: on ? "bg-success/10 text-success" : "bg-muted text-muted-foreground",
+  }));
+
   return (
     <AppShell
       roleKey="instructor"
       title="Feature flags"
-      subtitle="18 flags · 3 environments · kill switch armed"
+      subtitle={`${entries.length} flags · ${enabled.length} live · kill switch armed`}
       actions={
         <>
           <Badge className="bg-success/10 text-success border-0 font-semibold">
-            No stale flags
+            {disabled.length} dormant
           </Badge>
           <Button asChild variant="outline" size="sm" className="font-semibold">
             <Link to="/app/dev">
@@ -55,15 +54,15 @@ function DevFeatureFlags() {
         {[
           {
             label: "Active flags",
-            value: "11",
+            value: String(enabled.length),
             delta: "in production",
             icon: ToggleRight,
             tone: "bg-primary/10 text-primary",
           },
           {
-            label: "Rolling out",
-            value: "3",
-            delta: "1 near 100%",
+            label: "Disabled",
+            value: String(disabled.length),
+            delta: "mock fallback",
             icon: GitBranch,
             tone: "bg-warning/10 text-warning",
           },
@@ -106,7 +105,7 @@ function DevFeatureFlags() {
           </CardTitle>
         </CardHeader>
         <CardContent className="divide-y">
-          {flags.map((f) => (
+          {flagRows.map((f) => (
             <div key={f.f} className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0">
               <div className="min-w-0 flex-1">
                 <p className="font-mono text-sm font-bold">{f.f}</p>
@@ -118,6 +117,9 @@ function DevFeatureFlags() {
               </Button>
             </div>
           ))}
+          {flagRows.length === 0 && (
+            <p className="text-muted-foreground py-4 text-center text-sm">No flags loaded yet.</p>
+          )}
         </CardContent>
       </Card>
     </AppShell>

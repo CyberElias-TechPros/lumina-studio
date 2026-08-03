@@ -35,3 +35,21 @@ export function fetchExpenses(): Promise<Paginated<Expense>> {
 export function fetchPaymentBatches(): Promise<Paginated<PaymentBatch>> {
   return apiFetch<Paginated<PaymentBatch>>("/v1/payments");
 }
+
+export type InvoiceStatus = "paid" | "refunded" | "void";
+
+export function updateInvoiceStatus(
+  id: string,
+  status: InvoiceStatus,
+): Promise<{ ok: true; id: string; status: string }> {
+  return apiFetch(`/v1/invoices/${id}`, { method: "PATCH", body: { status } });
+}
+
+export type ExpenseStatus = "approved" | "rejected";
+
+export function updateExpenseStatus(
+  id: string,
+  status: ExpenseStatus,
+): Promise<{ ok: true; id: string; status: string }> {
+  return apiFetch(`/v1/expenses/${id}`, { method: "PATCH", body: { status } });
+}

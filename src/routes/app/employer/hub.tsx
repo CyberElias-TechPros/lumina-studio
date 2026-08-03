@@ -14,6 +14,12 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import {
+  useInterviewItems,
+  usePipelineCandidateItems,
+  usePostingItems,
+  useTalentCandidateItems,
+} from "@/lib/query/recruitment";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/employer/hub")({
@@ -72,11 +78,21 @@ const tiles = [
 ];
 
 function EmployerHub() {
+  const postings = usePostingItems();
+  const interviews = useInterviewItems();
+  const talent = useTalentCandidateItems();
+  const pipeline = usePipelineCandidateItems(postings[0]?.id ?? "");
+
+  const openRoles = postings.length;
+  const applications = postings.reduce((s, p) => s + p.applicants, 0);
+  const scheduled = interviews.filter((i) => i.status === "Scheduled").length;
+  const talentPool = talent.length;
+
   return (
     <AppShell
       roleKey="instructor"
       title="Employer hub"
-      subtitle="Paystack Technologies · 3 open roles"
+      subtitle={`${openRoles} open roles · ${applications} applications · ${talentPool} verified candidates`}
       actions={
         <>
           <Badge className="bg-success/10 text-success border-0 font-semibold">
@@ -92,29 +108,29 @@ function EmployerHub() {
         {[
           {
             label: "Open roles",
-            value: "3",
-            delta: "51 applications",
+            value: String(openRoles),
+            delta: `${applications} applications`,
             icon: BriefcaseBusiness,
             tone: "bg-primary/10 text-primary",
           },
           {
-            label: "Hires this year",
-            value: "12",
-            delta: "from CEA-OS",
-            icon: Users,
+            label: "Talent pool",
+            value: String(talentPool),
+            delta: "verified candidates",
+            icon: Search,
             tone: "bg-learning/10 text-learning",
           },
           {
             label: "Interviews",
-            value: "6",
-            delta: "4 scheduled",
+            value: String(interviews.length),
+            delta: `${scheduled} scheduled`,
             icon: CalendarDays,
             tone: "bg-success/10 text-success",
           },
           {
-            label: "Time to hire",
-            value: "34d",
-            delta: "−6d vs last yr",
+            label: "Pipeline focus",
+            value: pipeline.length ? String(pipeline.length) : "—",
+            delta: postings[0] ? `for ${postings[0].title}` : "first role",
             icon: BarChart3,
             tone: "bg-warning/10 text-warning",
           },
@@ -141,7 +157,7 @@ function EmployerHub() {
           <Link
             key={t.to}
             to={t.to}
-            params={t.to.includes("$jobId") ? { jobId: "junior-backend-engineer" } : undefined}
+            params={t.to.includes("$jobId") ? { jobId: postings[0]?.id ?? "" } : undefined}
             className="group bg-card shadow-soft hover:shadow-elevated flex h-full flex-col rounded-2xl border p-5 transition-all hover:-translate-y-0.5"
           >
             <div className="flex items-start justify-between">

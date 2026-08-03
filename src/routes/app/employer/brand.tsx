@@ -4,6 +4,11 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import {
+  useInterviewItems,
+  usePostingItems,
+  useTalentCandidateItems,
+} from "@/lib/query/recruitment";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/employer/brand")({
@@ -16,14 +21,22 @@ export const Route = createFileRoute("/app/employer/brand")({
   component: EmployerBrand,
 });
 
-const facts = [
-  { t: "Team size", v: "320", tone: "bg-primary/10 text-primary" },
-  { t: "Hires from CEA", v: "12 this year", tone: "bg-learning/10 text-learning" },
-  { t: "Candidate rating", v: "4.8 / 5", tone: "bg-success/10 text-success" },
-  { t: "Avg. time to hire", v: "34 days", tone: "bg-warning/10 text-warning" },
-];
-
 function EmployerBrand() {
+  const postings = usePostingItems();
+  const talent = useTalentCandidateItems();
+  const interviews = useInterviewItems();
+
+  const facts = [
+    { t: "Open roles", v: String(postings.length), tone: "bg-primary/10 text-primary" },
+    { t: "Verified candidates", v: String(talent.length), tone: "bg-learning/10 text-learning" },
+    {
+      t: "Interviews completed",
+      v: String(interviews.filter((i) => i.status === "Completed").length),
+      tone: "bg-success/10 text-success",
+    },
+    { t: "Avg. time to hire", v: "34 days", tone: "bg-warning/10 text-warning" },
+  ];
+
   return (
     <AppShell
       roleKey="instructor"

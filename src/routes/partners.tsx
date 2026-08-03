@@ -62,6 +62,7 @@ function Partners() {
     <PageShell>
       <PageHero
         eyebrow="Partners"
+        art="network"
         title={
           <>
             Together we <span className="text-gradient">achieve more</span>

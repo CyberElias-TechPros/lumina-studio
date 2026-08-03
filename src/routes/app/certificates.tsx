@@ -141,7 +141,7 @@ function StudentCertificates() {
           </CardHeader>
           <CardContent className="divide-y">
             <QueryState<CertificateItem[]>
-              query={mine}
+              query={{ ...mine, data: items }}
               error={{ title: "Certificates unavailable" }}
             >
               {(certs) =>

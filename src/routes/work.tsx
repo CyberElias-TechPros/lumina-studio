@@ -29,6 +29,7 @@ function Work() {
     <PageShell>
       <PageHero
         eyebrow="Selected work"
+        art="market"
         title={
           <>
             Proof, not <span className="text-gradient">promises</span>

@@ -49,6 +49,22 @@ const defaultLoading = (
   </div>
 );
 
+/** Infinite (paginated) queries expose `{ pages: [{ items[] }] }`; flatten to a
+ *  single item array so `children` always receives the actual data list. */
+function queryData<TData>(query: AnyQuery): TData | null | undefined {
+  const data = query.data as unknown;
+  if (
+    data &&
+    typeof data === "object" &&
+    "pages" in data &&
+    Array.isArray((data as { pages: unknown[] }).pages)
+  ) {
+    const pages = (data as { pages: Array<{ items?: TData[] }> }).pages;
+    return pages.flatMap((page) => page.items ?? []) as TData;
+  }
+  return data as TData | null | undefined;
+}
+
 /**
  * Switches a react-query result between loading / empty / error / content.
  * The building block for replacing hardcoded mock arrays screen by screen.
@@ -67,10 +83,10 @@ export function QueryState<TData>({
       <ErrorState error={query.error} onRetry={() => void query.refetch()} title={error?.title} />
     );
   }
-  const data = query.data as TData | null | undefined;
+  const data = queryData<TData>(query);
   const isEmptyData = Array.isArray(data) && data.length === 0;
   if (data === null || data === undefined || isEmptyData || (isEmpty ? isEmpty(data) : false)) {
-    return <EmptyState {...(empty ?? { title: "Nothing here yet" })} />;
+    return <EmptyState {...(empty ?? { title: "Nothing here yet", art: "data" })} />;
   }
   return <>{children(data)}</>;
 }

@@ -12,6 +12,33 @@ beforeAll(async () => {
   instructor = await createTestSession("instructor@cea.ng");
 });
 
+describe("AI models catalog (free tier)", () => {
+  it("returns only completely-free NVIDIA NIM models", async () => {
+    const res = await api("/v1/ai/models", {
+      headers: cookieHeaders(student.cookie),
+    });
+    expect(res.status).toBe(200);
+    const body = (await res.json()) as {
+      provider: string;
+      tier: string;
+      models: { id: string; label: string; cost: string }[];
+      default: string;
+      configured: string;
+    };
+    expect(body.provider).toBe("NVIDIA NIM");
+    expect(body.tier).toBe("free");
+    expect(body.models.length).toBeGreaterThan(0);
+    expect(body.models.every((m) => m.cost === "free")).toBe(true);
+    expect(body.default).toMatch(/^[a-z0-9-]+\/[a-z0-9.-]+$/i);
+    expect(body.default).toBe(body.models[0]!.id);
+  });
+
+  it("requires a session", async () => {
+    const res = await api("/v1/ai/models");
+    expect(res.status).toBe(401);
+  });
+});
+
 describe("AI grading", () => {
   it("grades a submission with a rubric breakdown (mock mode)", async () => {
     const res = await api("/v1/ai/grade", {

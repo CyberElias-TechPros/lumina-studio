@@ -4,6 +4,8 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { useEmployees, useLeaveRequests, usePayrollChanges } from "@/lib/query/hr";
+import { usePostings } from "@/lib/query/recruitment";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/hr/")({
@@ -48,14 +50,38 @@ const screens = [
 ];
 
 function HrHub() {
+  const employees = useEmployees();
+  const leave = useLeaveRequests();
+  const payroll = usePayrollChanges();
+  const postings = usePostings();
+
+  const staff = employees.data?.pages.flatMap((p) => p.items) ?? [];
+  const requests = leave.data?.pages.flatMap((p) => p.items) ?? [];
+  const changes = payroll.data?.pages.flatMap((p) => p.items) ?? [];
+  const roles = postings.data?.pages.flatMap((p) => p.items) ?? [];
+
+  const active = staff.filter((s) => s.status === "Active");
+  const pendingLeave = requests.filter((r) => r.status === "Pending");
+  const approvedLeave = requests.filter((r) => r.status === "Approved");
+  const pendingPayroll = changes.filter((c) => c.status !== "sent" && c.status !== "approved");
+  const applicants = roles.reduce((s, r) => s + r.applicants, 0);
+  const openLeave = pendingLeave.length;
+
   return (
     <AppShell
       roleKey="instructor"
       title="HR hub"
-      subtitle="94 staff · 6 open roles · eNPS 61"
+      subtitle={`${staff.length} staff · ${roles.length} open roles · ${pendingPayroll.length} payroll changes pending`}
       actions={
         <>
-          <Badge className="bg-success/10 text-success border-0 font-semibold">eNPS rising</Badge>
+          <Badge
+            className={cn(
+              "border-0 font-semibold",
+              openLeave > 0 ? "bg-warning/10 text-warning" : "bg-success/10 text-success",
+            )}
+          >
+            {openLeave > 0 ? `${openLeave} leave open` : "All clear"}
+          </Badge>
           <Button asChild variant="outline" size="sm" className="font-semibold">
             <Link to="/portal/hr">
               <ArrowLeft className="size-4" /> HR portal
@@ -68,31 +94,31 @@ function HrHub() {
         {[
           {
             label: "Headcount",
-            value: "94",
-            delta: "6 open roles",
+            value: String(staff.length),
+            delta: `${active.length} active`,
             icon: Users,
             tone: "bg-primary/10 text-primary",
           },
           {
             label: "Leave open",
-            value: "11",
-            delta: "7 approved",
+            value: String(openLeave),
+            delta: `${approvedLeave.length} approved`,
             icon: CalendarDays,
             tone: "bg-learning/10 text-learning",
           },
           {
-            label: "eNPS",
-            value: "61",
-            delta: "+4 vs Q2",
+            label: "Payroll pending",
+            value: String(pendingPayroll.length),
+            delta: `${changes.length} changes total`,
             icon: HeartPulse,
-            tone: "bg-community/10 text-community",
+            tone: "bg-warning/10 text-warning",
           },
           {
-            label: "Reviews due",
-            value: "14",
-            delta: "Q3 cycle",
+            label: "Open roles",
+            value: String(roles.length),
+            delta: `${applicants} applications`,
             icon: UserRound,
-            tone: "bg-warning/10 text-warning",
+            tone: "bg-community/10 text-community",
           },
         ].map((k) => (
           <Card key={k.label} className="bg-card shadow-soft border">

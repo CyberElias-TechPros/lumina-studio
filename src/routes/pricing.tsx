@@ -64,6 +64,7 @@ function Pricing() {
     <PageShell>
       <PageHero
         eyebrow="Pricing"
+        art="market"
         title={
           <>
             Tuition that <span className="text-gradient">works with your budget</span>

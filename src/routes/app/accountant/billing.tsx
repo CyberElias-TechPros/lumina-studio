@@ -1,10 +1,13 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowLeft, Banknote, CalendarClock, CheckCircle2, Hourglass } from "lucide-react";
+import { ArrowLeft, Banknote, CalendarClock, CheckCircle2, Hourglass, Loader2 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { QueryState } from "@/components/ui/query-state";
 import { AppShell } from "@/components/app/app-shell";
-import { cn } from "@/lib/utils";
+import { useInvoices, useUpdateInvoiceStatus } from "@/lib/query/finance";
+import type { Invoice } from "@/lib/api/finance";
+import { cn, formatNaira, formatNairaCompact } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/accountant/billing")({
   head: () => ({
@@ -16,39 +19,39 @@ export const Route = createFileRoute("/app/accountant/billing")({
   component: AccountantBilling,
 });
 
-const bills = [
-  {
-    b: "OfficeMate · INV-8821",
-    v: "₦385,000",
-    d: "Due Aug 10",
-    s: "Scheduled",
-    tone: "bg-primary/10 text-primary",
-  },
-  {
-    b: "GasMaster · INV-8795",
-    v: "₦96,000",
-    d: "Due Aug 7",
-    s: "Scheduled",
-    tone: "bg-learning/10 text-learning",
-  },
-  {
-    b: "Compton Power · INV-8770",
-    v: "₦210,000",
-    d: "Paid Jul 30",
-    s: "Paid",
-    tone: "bg-success/10 text-success",
-  },
-];
+function invoiceTone(status: string): string {
+  if (status === "Paid") return "bg-success/10 text-success";
+  if (status === "Overdue") return "bg-destructive/10 text-destructive";
+  return "bg-primary/10 text-primary";
+}
 
 function AccountantBilling() {
+  const query = useInvoices();
+  const rows = query.data?.pages.flatMap((p) => p.items) ?? [];
+  const settle = useUpdateInvoiceStatus();
+
+  const open = rows.filter((i) => i.status !== "Paid");
+  const openTotal = open.reduce((s, i) => s + i.amount, 0);
+  const paid = rows.filter((i) => i.status === "Paid");
+  const paidTotal = paid.reduce((s, i) => s + i.amount, 0);
+  const overdue = rows.filter((i) => i.status === "Overdue");
+  const overdueTotal = overdue.reduce((s, i) => s + i.amount, 0);
+
   return (
     <AppShell
       roleKey="instructor"
       title="Billing · AP"
-      subtitle="₦4.2m payable · 0 overdue · avg. payment 11 days"
+      subtitle={`${formatNairaCompact(openTotal)} payable · ${overdue.length} overdue · ${paid.length} paid`}
       actions={
         <>
-          <Badge className="bg-success/10 text-success border-0 font-semibold">Healthy AP</Badge>
+          <Badge
+            className={cn(
+              "border-0 font-semibold",
+              overdue.length > 0 ? "bg-warning/10 text-warning" : "bg-success/10 text-success",
+            )}
+          >
+            {overdue.length > 0 ? `${overdue.length} overdue` : "Healthy AP"}
+          </Badge>
           <Button asChild variant="outline" size="sm" className="font-semibold">
             <Link to="/app/accountant">
               <ArrowLeft className="size-4" /> Finance hub
@@ -61,29 +64,29 @@ function AccountantBilling() {
         {[
           {
             label: "Payable",
-            value: "₦4.2m",
-            delta: "8 open bills",
+            value: formatNairaCompact(openTotal),
+            delta: `${open.length} open bills`,
             icon: Banknote,
             tone: "bg-primary/10 text-primary",
           },
           {
-            label: "Due this week",
-            value: "₦1.1m",
-            delta: "3 bills",
-            icon: CalendarClock,
-            tone: "bg-warning/10 text-warning",
-          },
-          {
             label: "Paid (30d)",
-            value: "₦3.8m",
-            delta: "11 bills",
+            value: formatNairaCompact(paidTotal),
+            delta: `${paid.length} bills`,
             icon: CheckCircle2,
             tone: "bg-success/10 text-success",
           },
           {
-            label: "On-time rate",
-            value: "96%",
-            delta: "last quarter",
+            label: "Overdue",
+            value: String(overdue.length),
+            delta: formatNairaCompact(overdueTotal),
+            icon: CalendarClock,
+            tone: "bg-warning/10 text-warning",
+          },
+          {
+            label: "Collection rate",
+            value: collectionRate(rows),
+            delta: "of billed",
             icon: Hourglass,
             tone: "bg-learning/10 text-learning",
           },
@@ -106,31 +109,61 @@ function AccountantBilling() {
       </div>
 
       <Card className="bg-card mt-5 shadow-soft border">
-        <CardHeader className="flex-row items-center justify-between">
+        <CardHeader>
           <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
-            <Banknote className="text-primary size-4" /> Upcoming bills
+            <Banknote className="text-primary size-4" /> Bills & statements
           </CardTitle>
-          <Button size="sm" className="bg-gradient-brand shadow-glow border-0 font-semibold">
-            Schedule payment
-          </Button>
         </CardHeader>
         <CardContent className="divide-y">
-          {bills.map((b) => (
-            <div key={b.b} className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0">
-              <div className="min-w-0 flex-1">
-                <p className="text-sm font-bold">{b.b}</p>
-                <p className="text-muted-foreground text-xs">
-                  {b.v} · {b.d}
-                </p>
-              </div>
-              <Badge className={cn("border-0 font-semibold", b.tone)}>{b.s}</Badge>
-              <Button variant="outline" size="sm" className="shrink-0 font-semibold">
-                Pay
-              </Button>
-            </div>
-          ))}
+          <QueryState<Invoice[]> query={query} error={{ title: "Invoices unavailable" }}>
+            {(bills) => (
+              <>
+                {bills.map((b) => (
+                  <div
+                    key={b.id}
+                    className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
+                  >
+                    <div className="min-w-0 flex-1">
+                      <p className="text-sm font-bold">
+                        {b.party} · {b.id}
+                      </p>
+                      <p className="text-muted-foreground text-xs">
+                        {formatNaira(b.amount)} · Due {b.due}
+                      </p>
+                    </div>
+                    <Badge className={cn("border-0 font-semibold", invoiceTone(b.status))}>
+                      {b.status}
+                    </Badge>
+                    {b.status !== "Paid" ? (
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="shrink-0 font-semibold"
+                        disabled={settle.isPending}
+                        onClick={() => settle.mutate({ id: b.id, status: "paid" })}
+                      >
+                        {settle.isPending ? <Loader2 className="size-3.5 animate-spin" /> : null}
+                        Pay
+                      </Button>
+                    ) : (
+                      <Button variant="ghost" size="sm" className="text-muted-foreground shrink-0">
+                        View
+                      </Button>
+                    )}
+                  </div>
+                ))}
+              </>
+            )}
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>
   );
+}
+
+function collectionRate(rows: Invoice[]): string {
+  const billed = rows.reduce((s, i) => s + i.amount, 0);
+  if (billed === 0) return "—";
+  const paid = rows.filter((i) => i.status === "Paid").reduce((s, i) => s + i.amount, 0);
+  return `${Math.round((paid / billed) * 100)}%`;
 }

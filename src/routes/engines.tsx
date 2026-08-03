@@ -180,6 +180,7 @@ function Engines() {
     <PageShell>
       <PageHero
         eyebrow="CEA-OS"
+        art="network"
         title={
           <>
             Five engines. <span className="text-gradient">One academy.</span>
