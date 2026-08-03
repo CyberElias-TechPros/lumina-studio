@@ -12,6 +12,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { useCourses } from "@/lib/query/courses";
+import { useInstructorGradebookRows } from "@/lib/query/instructor";
+import { useInterviewItems } from "@/lib/query/recruitment";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/director/academic")({
@@ -24,47 +27,49 @@ export const Route = createFileRoute("/app/director/academic")({
   component: DirectorAcademic,
 });
 
-const programs = [
-  {
-    p: "Full-Stack Software Development",
-    e: "68 / 90",
-    c: "86%",
-    t: "88%",
-    tone: "bg-primary/10 text-primary",
-  },
-  {
-    p: "Cybersecurity Analyst",
-    e: "54 / 60",
-    c: "91%",
-    t: "88%",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    p: "Cloud Engineering & DevOps",
-    e: "42 / 50",
-    c: "79%",
-    t: "88%",
-    tone: "bg-warning/10 text-warning",
-  },
-  {
-    p: "Data Science & Applied AI",
-    e: "31 / 40",
-    c: "84%",
-    t: "88%",
-    tone: "bg-learning/10 text-learning",
-  },
-];
-
 function DirectorAcademic() {
+  const courses = useCourses();
+  const interviews = useInterviewItems();
+  const gradebook = useInstructorGradebookRows();
+
+  const courseRows = courses.data?.pages.flatMap((p) => p.items) ?? [];
+  const avgCompletion = courseRows.length
+    ? Math.round(courseRows.reduce((s, c) => s + c.pct, 0) / courseRows.length)
+    : 0;
+  const completed = interviews.filter((i) => i.status === "Completed").length;
+  const placement = interviews.length ? Math.round((completed / interviews.length) * 100) : 0;
+  const atRisk = gradebook.filter((r) => r.atRisk).length;
+  const amber = courseRows.filter((c) => c.pct < 88).length;
+
+  const programs = courseRows.slice(0, 6).map((p, i) => ({
+    p: p.title,
+    e: `cohort ${p.cohort}`,
+    c: `${p.pct}%`,
+    t: "88%",
+    tone:
+      p.pct >= 88
+        ? "bg-success/10 text-success"
+        : i % 2 === 0
+          ? "bg-warning/10 text-warning"
+          : "bg-primary/10 text-primary",
+  }));
+
   return (
     <AppShell
       roleKey="admin"
       title="Academic overview"
-      subtitle="Q3 · 214 enrolled · 84% completion · 71% placement"
+      subtitle={`${courseRows.length} programs · ${avgCompletion}% completion · ${placement}% interview→completed`}
       actions={
         <>
-          <Badge className="bg-warning/10 text-warning border-0 font-semibold">
-            1 program amber
+          <Badge
+            className={cn(
+              "border-0 font-semibold",
+              amber > 0 ? "bg-warning/10 text-warning" : "bg-success/10 text-success",
+            )}
+          >
+            {amber > 0
+              ? `${amber} program${amber === 1 ? "" : "s"} amber`
+              : "all programs on target"}
           </Badge>
           <Button asChild variant="outline" size="sm" className="font-semibold">
             <Link to="/portal/director">
@@ -77,30 +82,30 @@ function DirectorAcademic() {
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         {[
           {
-            label: "Enrolled",
-            value: "214",
-            delta: "target 240",
+            label: "Programs",
+            value: String(courseRows.length),
+            delta: "tracked in catalog",
             icon: GraduationCap,
             tone: "bg-primary/10 text-primary",
           },
           {
-            label: "Completion",
-            value: "84%",
+            label: "Avg completion",
+            value: `${avgCompletion}%`,
             delta: "target 88%",
             icon: BookOpenCheck,
-            tone: "bg-warning/10 text-warning",
+            tone: avgCompletion >= 88 ? "bg-success/10 text-success" : "bg-warning/10 text-warning",
           },
           {
-            label: "Placement (14)",
-            value: "71%",
-            delta: "target 75%",
+            label: "Interview completion",
+            value: `${placement}%`,
+            delta: "of interview rounds",
             icon: TrendingUp,
             tone: "bg-career/10 text-career",
           },
           {
-            label: "Dropouts (30d)",
-            value: "6",
-            delta: "1.8% of cohort",
+            label: "At-risk learners",
+            value: String(atRisk),
+            delta: "flagged in gradebook",
             icon: Users,
             tone: "bg-learning/10 text-learning",
           },
@@ -139,7 +144,7 @@ function DirectorAcademic() {
               <div className="min-w-0 flex-1">
                 <p className="text-sm font-bold">{p.p}</p>
                 <p className="text-muted-foreground text-xs">
-                  Enrolled {p.e} · completion {p.c}
+                  {p.e} · completion {p.c}
                 </p>
               </div>
               <Badge className={cn("border-0 font-semibold", p.tone)}>target {p.t}</Badge>
@@ -148,6 +153,11 @@ function DirectorAcademic() {
               </Button>
             </div>
           ))}
+          {programs.length === 0 && (
+            <p className="text-muted-foreground py-4 text-center text-sm">
+              No programs in the catalog yet.
+            </p>
+          )}
         </CardContent>
       </Card>
     </AppShell>

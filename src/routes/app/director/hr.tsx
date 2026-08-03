@@ -1,9 +1,19 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowLeft, ArrowRight, HeartPulse, Users, UserRoundCheck, UserRoundX } from "lucide-react";
+import {
+  ArrowLeft,
+  ArrowRight,
+  CalendarClock,
+  HeartPulse,
+  Users,
+  UserRoundCheck,
+  UserRoundX,
+} from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { useEmployeeItems, useLeaveRequestItems, usePayrollChangeItems } from "@/lib/query/hr";
+import { usePostingItems } from "@/lib/query/recruitment";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/director/hr")({
@@ -16,23 +26,54 @@ export const Route = createFileRoute("/app/director/hr")({
   component: DirectorHr,
 });
 
-const depts = [
-  { d: "Academic", h: "34", t: "6%", tone: "bg-primary/10 text-primary" },
-  { d: "Operations", h: "18", t: "9%", tone: "bg-learning/10 text-learning" },
-  { d: "Marketing & Growth", h: "12", t: "5%", tone: "bg-success/10 text-success" },
-  { d: "Finance & Admin", h: "9", t: "3%", tone: "bg-warning/10 text-warning" },
-];
-
 function DirectorHr() {
+  const employees = useEmployeeItems();
+  const leave = useLeaveRequestItems();
+  const changes = usePayrollChangeItems();
+  const postings = usePostingItems();
+
+  const active = employees.filter((s) => s.status === "Active").length;
+  const onLeave = employees.filter((s) => s.status === "On leave").length;
+  const openRoles = postings.filter((p) => p.status === "Open").length;
+  const leavers = changes.filter((c) => /leaver|exit|offboard/i.test(c.title)).length;
+  const turnover = employees.length ? Math.round((leavers / employees.length) * 100) : 0;
+  const completed = changes.filter((c) => c.status === "sent" || c.status === "approved").length;
+  const onboarding = changes.length ? Math.round((completed / changes.length) * 100) : 0;
+  const pendingLeave = leave.filter((l) => l.status === "Pending").length;
+
+  const byDept = new Map<string, number>();
+  for (const e of employees) byDept.set(e.dept, (byDept.get(e.dept) ?? 0) + 1);
+  const totalStaff = employees.length || 1;
+  const depts = Array.from(byDept.entries())
+    .map(([d, h], i) => ({
+      d,
+      h: String(h),
+      t: `${Math.round((h / totalStaff) * 100)}% of staff`,
+      tone:
+        i % 4 === 0
+          ? "bg-primary/10 text-primary"
+          : i % 4 === 1
+            ? "bg-learning/10 text-learning"
+            : i % 4 === 2
+              ? "bg-success/10 text-success"
+              : "bg-warning/10 text-warning",
+    }))
+    .sort((a, b) => Number(b.h) - Number(a.h));
+
   return (
     <AppShell
       roleKey="admin"
       title="HR overview"
-      subtitle="94 staff · 8% turnover · eNPS 61"
+      subtitle={`${employees.length} staff · ${active} active · ${onLeave} on leave · ${openRoles} open roles`}
       actions={
         <>
-          <Badge className="bg-success/10 text-success border-0 font-semibold">
-            People healthy
+          <Badge
+            className={cn(
+              "border-0 font-semibold",
+              turnover <= 12 ? "bg-success/10 text-success" : "bg-warning/10 text-warning",
+            )}
+          >
+            {turnover}% turnover
           </Badge>
           <Button asChild variant="outline" size="sm" className="font-semibold">
             <Link to="/portal/director">
@@ -46,29 +87,29 @@ function DirectorHr() {
         {[
           {
             label: "Headcount",
-            value: "94",
-            delta: "6 open roles",
+            value: String(employees.length),
+            delta: `${openRoles} open roles`,
             icon: Users,
             tone: "bg-primary/10 text-primary",
           },
           {
-            label: "Turnover (12m)",
-            value: "8%",
+            label: "Turnover proxy",
+            value: `${turnover}%`,
             delta: "benchmark 12%",
             icon: UserRoundX,
-            tone: "bg-success/10 text-success",
+            tone: turnover <= 12 ? "bg-success/10 text-success" : "bg-warning/10 text-warning",
           },
           {
-            label: "eNPS",
-            value: "61",
-            delta: "+4 vs Q2",
+            label: "Leave pending",
+            value: String(pendingLeave),
+            delta: `${onLeave} on leave now`,
             icon: HeartPulse,
             tone: "bg-community/10 text-community",
           },
           {
-            label: "Onboarding",
-            value: "94%",
-            delta: "30-day completion",
+            label: "Payroll changes done",
+            value: `${onboarding}%`,
+            delta: `${changes.length} on record`,
             icon: UserRoundCheck,
             tone: "bg-learning/10 text-learning",
           },
@@ -93,7 +134,7 @@ function DirectorHr() {
       <Card className="bg-card mt-5 shadow-soft border">
         <CardHeader className="flex-row items-center justify-between">
           <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
-            <Users className="text-primary size-4" /> Headcount by department
+            <CalendarClock className="text-primary size-4" /> Headcount by department
           </CardTitle>
           <Button asChild variant="outline" size="sm" className="font-semibold">
             <Link to="/portal/hr">
@@ -106,7 +147,7 @@ function DirectorHr() {
             <div key={d.d} className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0">
               <div className="min-w-0 flex-1">
                 <p className="text-sm font-bold">{d.d}</p>
-                <p className="text-muted-foreground text-xs">Turnover {d.t} (12m)</p>
+                <p className="text-muted-foreground text-xs">{d.t}</p>
               </div>
               <Badge variant="secondary" className="font-semibold">
                 {d.h} staff
@@ -114,6 +155,11 @@ function DirectorHr() {
               <Badge className={cn("border-0 font-semibold", d.tone)}>Stable</Badge>
             </div>
           ))}
+          {depts.length === 0 && (
+            <p className="text-muted-foreground py-4 text-center text-sm">
+              No employee records yet.
+            </p>
+          )}
         </CardContent>
       </Card>
     </AppShell>

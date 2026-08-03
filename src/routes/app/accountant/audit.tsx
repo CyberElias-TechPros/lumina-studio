@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { useAuditItems } from "@/lib/query/admin";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/accountant/audit")({
@@ -16,42 +17,33 @@ export const Route = createFileRoute("/app/accountant/audit")({
   component: AccountantAudit,
 });
 
-const events = [
-  {
-    e: "INV-9021 issued",
-    by: "A. Bankole",
-    d: "Aug 1 · 09:12",
-    tone: "bg-primary/10 text-primary",
-  },
-  {
-    e: "Payroll run #128 processed",
-    by: "System",
-    d: "Aug 1 · 08:00",
-    tone: "bg-learning/10 text-learning",
-  },
-  {
-    e: "Bank statement import — GTB",
-    by: "A. Bankole",
-    d: "Jul 31 · 16:44",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    e: "INV-9012 payment reversed",
-    by: "A. Bankole",
-    d: "Jul 30 · 11:20",
-    tone: "bg-warning/10 text-warning",
-  },
-];
-
 function AccountantAudit() {
+  const audit = useAuditItems();
+
+  const flagged = audit.filter((e) => e.severity === "high").length;
+
+  const events = audit.slice(0, 8).map((e) => ({
+    e: e.action,
+    by: e.actor,
+    d: e.time,
+    tone: e.severity === "high" ? "bg-warning/10 text-warning" : "bg-primary/10 text-primary",
+  }));
+
   return (
     <AppShell
       roleKey="instructor"
       title="Audit log"
-      subtitle="1,204 events this month · immutable · exportable"
+      subtitle={`${audit.length} events on record · immutable · exportable`}
       actions={
         <>
-          <Badge className="bg-success/10 text-success border-0 font-semibold">Integrity OK</Badge>
+          <Badge
+            className={cn(
+              "border-0 font-semibold",
+              flagged > 0 ? "bg-warning/10 text-warning" : "bg-success/10 text-success",
+            )}
+          >
+            {flagged > 0 ? `${flagged} flagged` : "Integrity OK"}
+          </Badge>
           <Button asChild variant="outline" size="sm" className="font-semibold">
             <Link to="/app/accountant">
               <ArrowLeft className="size-4" /> Finance hub
@@ -63,25 +55,25 @@ function AccountantAudit() {
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         {[
           {
-            label: "Events (30d)",
-            value: "1,204",
-            delta: "94% system",
+            label: "Events",
+            value: String(audit.length),
+            delta: "system + manual",
             icon: History,
             tone: "bg-primary/10 text-primary",
           },
           {
-            label: "Manual actions",
-            value: "72",
-            delta: "all attributed",
+            label: "Actors",
+            value: String(new Set(audit.map((a) => a.actor)).size),
+            delta: "distinct users",
             icon: UserRound,
             tone: "bg-learning/10 text-learning",
           },
           {
-            label: "Alerts",
-            value: "0",
-            delta: "no anomalies",
+            label: "Flagged",
+            value: String(flagged),
+            delta: flagged > 0 ? "needs review" : "no anomalies",
             icon: ShieldCheck,
-            tone: "bg-success/10 text-success",
+            tone: flagged > 0 ? "bg-warning/10 text-warning" : "bg-success/10 text-success",
           },
           {
             label: "Retention",
@@ -132,6 +124,9 @@ function AccountantAudit() {
               <Badge className={cn("border-0 font-semibold", ev.tone)}>Logged</Badge>
             </div>
           ))}
+          {events.length === 0 && (
+            <p className="text-muted-foreground py-4 text-center text-sm">No audit events yet.</p>
+          )}
         </CardContent>
       </Card>
     </AppShell>

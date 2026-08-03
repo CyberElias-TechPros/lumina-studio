@@ -13,6 +13,7 @@ Backend coverage = routes registered in `backend/src/lib/rbac.ts` (the full `/v1
 
 | Date | Change |
 | --- | --- |
+| 2026-08-03 | **Director suite 6/9 wired (composed reads)** — command-center (org health + alerts from finance/hr/marketing/recruitment/academic aggregates), finance (invoice/expense/payment pivots, live margin + receivables), hr (employees/leave/payroll/postings), marketing (campaign ROAS + funnel stages + leads → CAC), academic (course catalog completion + interview placement + at-risk gradebook), approvals (leave + payroll + overdue-invoice queue). `operations`/`okrs`/`reports` still static (no backend source). Also wired `accountant/audit` → `admin/audit-log` reuse (accountant now 9/10, banking only static). Typecheck + eslint green. |
 | 2026-08-03 | **Tier 1 remaining clusters wired** — `hr` (attendance/onboarding/performance/reports + hub live via `hr/*` + `recruitment/postings`), `employer` hub/analytics/brand/feedback (recruitment counts/pipeline/interviews/talent), `alumni/jobs` (postings), `instructor` analytics + attendance (gradebook/submissions aggregates), `admin` config (flags), security (audit-log), roles (accounts) — monitoring + api-keys left static (no infra/key endpoints), `dev` feature-flags (`/v1/flags`). Typecheck + eslint green. |
 | 2026-08-03 | **Accountant suite 8/10 wired** — index KPIs, billing (live invoice PATCH "Pay"), budgets (expense pivots), payroll (payroll-changes + employees), reports (aggregates); added `PATCH /v1/invoices/:id` + `/v1/expenses/:id` client mutations + mock handlers. Remaining static: `banking` (no reconciliation endpoint) and `audit` (could reuse `admin/audit-log` with role extension). |
 | 2026-08-03 | **QueryState fix** (`src/components/ui/query-state.tsx`): infinite queries now flatten `pages[].items` before calling `children` — previously every paginated list page (hr/*, admin/*, accountant/*, design/*, employer/*, notifications, finance, …) passed the `{pages}` object to children and crashed on `.map` once data arrived. Also fixed `certificates.tsx` to pass `data: items`. |
@@ -25,8 +26,8 @@ Backend coverage = routes registered in `backend/src/lib/rbac.ts` (the full `/v1
 | Metric | Value |
 | --- | --- |
 | App pages under `src/routes/app/` | **283** |
-| Wired to live backend | **~92** |
-| Static dashboards (placeholder) | **~191** |
+| Wired to live backend | **~98** |
+| Static dashboards (placeholder) | **~185** |
 | Backend route suites live | **~20 domains** (rbac.ts) |
 | Backend suites NOT built yet | **~12 domains** (mentorship, ops/inventory, IT/helpdesk, receptionist, government, behavioral, product-marketing, dev/CI, supplier, volunteer, partner, alumni-net) |
 | Public/locale data | `jobs/gigs/events/caseStudies/testimonials` seeded in `src/data/site.ts` ✅ |
@@ -38,7 +39,7 @@ Backend coverage = routes registered in `backend/src/lib/rbac.ts` (the full `/v1
 | Role dir | Pages | Wired | Static | Backend coverage today |
 | --- | ---: | ---: | ---: | --- |
 | admin | 12 | 5 | 7 | `admin/*` (users, accounts, audit-log, flags) — config/security/roles live, monitoring/api-keys static (no infra endpoints) |
-| accountant | 10 | 8 | 2 | `finance/*` + `hr/payroll-changes` ✅; `banking`/`audit` static (no endpoint) |
+| accountant | 10 | 9 | 1 | `finance/*` + `hr/payroll-changes` + `admin/audit-log` (audit wired) ✅; `banking` static (no reconciliation endpoint) |
 | admissions | 9 | 0 | 9 | `applications` (public submit, admin PATCH) — needs review/decision API |
 | alumni | 8 | 1 | 7 | `recruitment/*` for jobs ✅; network/events/stories none |
 | assessments | 2 | 2 | 0 | `/v1/assessments/*` ✅ |
@@ -49,7 +50,7 @@ Backend coverage = routes registered in `backend/src/lib/rbac.ts` (the full `/v1
 | department | 7 | 0 | 7 | none |
 | design | 10 | 10 | 0 | `/v1/design/*` ✅ |
 | dev | 12 | 1 | 11 | `flags` ✅; CI/CD/dev tooling none |
-| director | 9 | 0 | 9 | should aggregate finance/hr/marketing, not de-novo |
+| director | 9 | 6 | 3 | composed reads: finance/invoice + hr/employee + recruitment + marketing + courses (command-center, finance, hr, marketing, academic, approvals); operations/okrs/reports static (no backend source) |
 | employer | 8 | 8 | 0 | `recruitment/*` ✅ (hub, jobs, talent, pipeline, interviews, analytics, brand, feedback) |
 | finance | 1 | 1 | 0 | `/v1/finance` ✅ |
 | government | 11 | 0 | 11 | none |
@@ -86,7 +87,7 @@ Backend user-facing surface is done; these folders are blobs of hardcoded number
 | budgeting/cashflow | `finance/invoices + expenses` pivot | ✅ done (accountant budgets) |
 | alumni jobs | `recruitment/*` (jobs, applications) | ✅ done |
 | employer analytics/feedback | `recruitment/*` aggregate counts | ✅ done |
-| director suite | compose existing reads: `finance/* + hr/* + marketing/*`+ hand-derived KPI card set | ⏳ next |
+| director suite | compose existing reads: `finance/* + hr/* + marketing/*`+ hand-derived KPI card set | ✅ done (6/9; operations/okrs/reports no source) |
 | instructor analytics/attendance | `instructor/*` (gradebook, submissions) aggregate | ✅ done |
 | admin config/security/monitoring | `/v1/admin/*` + `flags` + `payments/history` | ✅ config/security/roles; monitoring left static |
 | parent (grades/calendar part) | `courses/gradebook` (needs parent ACL), `calendar/events` | ⏳ needs parent ACL (Tier 2) |

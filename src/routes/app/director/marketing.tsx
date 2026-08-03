@@ -4,7 +4,8 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
-import { cn } from "@/lib/utils";
+import { useCampaignItems, useFunnelStageItems, useLeadItems } from "@/lib/query/marketing";
+import { cn, formatNairaCompact } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/director/marketing")({
   head: () => ({
@@ -16,29 +17,40 @@ export const Route = createFileRoute("/app/director/marketing")({
   component: DirectorMarketing,
 });
 
-const campaigns = [
-  { c: "Q3 digital ads", r: "4.2x", t: "target 5x", tone: "bg-warning/10 text-warning" },
-  { c: "Referral program", r: "6.8x", t: "target 5x", tone: "bg-success/10 text-success" },
-  { c: "Open-house events", r: "5.4x", t: "target 5x", tone: "bg-primary/10 text-primary" },
-];
-
-const funnel = [
-  { f: "Leads", v: "412", pct: 100 },
-  { f: "Applications", v: "118", pct: 29 },
-  { f: "Interviews", v: "89", pct: 22 },
-  { f: "Enrolled", v: "64", pct: 16 },
-];
-
 function DirectorMarketing() {
+  const campaigns = useCampaignItems();
+  const funnel = useFunnelStageItems();
+  const leads = useLeadItems();
+
+  const spend = campaigns.reduce((s, c) => s + c.spend, 0);
+  const cac = leads.length && spend ? Math.round(spend / leads.length) : 0;
+  const belowTarget = campaigns.filter((c) => c.roas < 5).length;
+  const enrolledStage = funnel.find((f) => /enrol/i.test(f.stage));
+  const topStage = funnel[0]?.value ?? 1;
+  const conversion =
+    enrolledStage && topStage ? Math.round((enrolledStage.value / topStage) * 1000) / 10 : 0;
+
+  const campaignRows = campaigns.slice(0, 6).map((c) => ({
+    c: c.name,
+    r: `${c.roas}x`,
+    t: `target 5x · ${c.leads} leads`,
+    tone: c.roas >= 5 ? "bg-success/10 text-success" : "bg-warning/10 text-warning",
+  }));
+
   return (
     <AppShell
       roleKey="admin"
       title="Marketing overview"
-      subtitle="Q3 · CAC ₦96k · funnel 15.5% lead→enrol"
+      subtitle={`${leads.length} leads · ${formatNairaCompact(spend)} spend · funnel ${conversion}% lead→enrol`}
       actions={
         <>
-          <Badge className="bg-warning/10 text-warning border-0 font-semibold">
-            ROAS below target
+          <Badge
+            className={cn(
+              "border-0 font-semibold",
+              belowTarget > 0 ? "bg-warning/10 text-warning" : "bg-success/10 text-success",
+            )}
+          >
+            {belowTarget > 0 ? `${belowTarget} below 5x ROAS` : "ROAS on target"}
           </Badge>
           <Button asChild variant="outline" size="sm" className="font-semibold">
             <Link to="/portal/director">
@@ -52,29 +64,29 @@ function DirectorMarketing() {
         {[
           {
             label: "CAC",
-            value: "₦96k",
-            delta: "target ₦90k",
+            value: cac ? formatNairaCompact(cac) : "—",
+            delta: `${spend ? formatNairaCompact(spend) : "0"} total spend`,
             icon: Wallet,
             tone: "bg-warning/10 text-warning",
           },
           {
-            label: "Leads (MTD)",
-            value: "412",
-            delta: "+11% MoM",
+            label: "Leads",
+            value: String(leads.length),
+            delta: "in pipeline",
             icon: Funnel,
             tone: "bg-primary/10 text-primary",
           },
           {
             label: "Lead→enrol",
-            value: "15.5%",
-            delta: "target 18%",
+            value: `${conversion}%`,
+            delta: `${funnel.length} funnel stages`,
             icon: Target,
             tone: "bg-learning/10 text-learning",
           },
           {
-            label: "Spend (MTD)",
-            value: "₦1.4m",
-            delta: "on budget",
+            label: "Campaigns",
+            value: String(campaigns.length),
+            delta: `${belowTarget} below 5x ROAS`,
             icon: Megaphone,
             tone: "bg-success/10 text-success",
           },
@@ -104,7 +116,7 @@ function DirectorMarketing() {
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-3">
-            {campaigns.map((c) => (
+            {campaignRows.map((c) => (
               <div key={c.c} className="flex items-center justify-between rounded-xl border p-3">
                 <div>
                   <p className="text-sm font-bold">{c.c}</p>
@@ -113,6 +125,9 @@ function DirectorMarketing() {
                 <Badge className={cn("border-0 font-semibold", c.tone)}>ROAS {c.r}</Badge>
               </div>
             ))}
+            {campaignRows.length === 0 && (
+              <p className="text-muted-foreground py-4 text-center text-sm">No campaigns yet.</p>
+            )}
           </CardContent>
         </Card>
 
@@ -129,19 +144,26 @@ function DirectorMarketing() {
           </CardHeader>
           <CardContent className="space-y-4">
             {funnel.map((f) => (
-              <div key={f.f}>
+              <div key={f.id}>
                 <div className="flex items-center justify-between text-xs font-semibold">
-                  <span>{f.f}</span>
-                  <span>{f.v}</span>
+                  <span>{f.stage}</span>
+                  <span>
+                    {f.value} · {f.pct}%
+                  </span>
                 </div>
                 <div className="bg-muted mt-1.5 h-2 overflow-hidden rounded-full">
                   <div
                     className="bg-gradient-brand h-full rounded-full"
-                    style={{ width: `${f.pct}%` }}
+                    style={{ width: `${Math.max(2, f.pct)}%` }}
                   />
                 </div>
               </div>
             ))}
+            {funnel.length === 0 && (
+              <p className="text-muted-foreground py-4 text-center text-sm">
+                No funnel stages yet.
+              </p>
+            )}
           </CardContent>
         </Card>
       </div>

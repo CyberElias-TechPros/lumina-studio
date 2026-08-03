@@ -12,7 +12,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
-import { cn } from "@/lib/utils";
+import { useExpenseItems, useInvoiceItems } from "@/lib/query/finance";
+import { useLeaveRequestItems, usePayrollChangeItems } from "@/lib/query/hr";
+import { cn, formatNairaCompact } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/director/approvals")({
   head: () => ({
@@ -27,42 +29,57 @@ export const Route = createFileRoute("/app/director/approvals")({
   component: DirectorApprovals,
 });
 
-const items = [
-  {
-    t: "Marketing budget + ₦1.4m",
-    by: "Marketing lead · 2d ago",
-    kind: "Budget",
-    tone: "bg-primary/10 text-primary",
-  },
-  {
-    t: "Hire — DevOps instructor (Lagos)",
-    by: "Dept head · 3d ago",
-    kind: "Hire",
-    tone: "bg-learning/10 text-learning",
-  },
-  {
-    t: "Partnership — TechHub skills",
-    by: "Ops manager · 1d ago",
-    kind: "Partnership",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    t: "PO-2413 toner + paper",
-    by: "Store · today",
-    kind: "Purchase order",
-    tone: "bg-warning/10 text-warning",
-  },
-];
-
 function DirectorApprovals() {
+  const leave = useLeaveRequestItems();
+  const changes = usePayrollChangeItems();
+  const invoices = useInvoiceItems();
+  const expenses = useExpenseItems();
+
+  const pendingLeave = leave.filter((l) => l.status === "Pending");
+  const pendingPayroll = changes.filter((c) => c.status !== "sent" && c.status !== "approved");
+  const overdue = invoices.filter((i) => i.status === "Overdue");
+  const pendingExpenses = expenses.slice(0, 4);
+
+  const pending = pendingLeave.length + pendingPayroll.length + overdue.length;
+  const queueValue = overdue.reduce((s, i) => s + i.amount, 0);
+  const approved = changes.filter((c) => c.status === "approved" || c.status === "sent").length;
+
+  const items = [
+    ...pendingPayroll.slice(0, 3).map((c) => ({
+      t: c.title,
+      by: c.detail,
+      kind: "Payroll change",
+      tone: "bg-primary/10 text-primary",
+    })),
+    ...pendingLeave.slice(0, 3).map((l) => ({
+      t: `Leave — ${l.employee} (${l.type})`,
+      by: `${l.from} → ${l.to}`,
+      kind: "Leave",
+      tone: "bg-learning/10 text-learning",
+    })),
+    ...overdue.slice(0, 3).map((i) => ({
+      t: `Invoice ${i.id} — ${i.party}`,
+      by: `${formatNairaCompact(i.amount)} · due ${i.due}`,
+      kind: "Overdue invoice",
+      tone: "bg-warning/10 text-warning",
+    })),
+  ].slice(0, 6);
+
   return (
     <AppShell
       roleKey="admin"
       title="Approvals"
-      subtitle="6 pending · 3 waiting > 48h · SLA 24h"
+      subtitle={`${pending} pending · leave + payroll + overdue invoices · SLA 24h`}
       actions={
         <>
-          <Badge className="bg-warning/10 text-warning border-0 font-semibold">3 overdue</Badge>
+          <Badge
+            className={cn(
+              "border-0 font-semibold",
+              pending > 0 ? "bg-warning/10 text-warning" : "bg-success/10 text-success",
+            )}
+          >
+            {pending > 0 ? `${pending} awaiting sign-off` : "queue clear"}
+          </Badge>
           <Button asChild variant="outline" size="sm" className="font-semibold">
             <Link to="/portal/director">
               <ArrowLeft className="size-4" /> Director portal
@@ -75,29 +92,29 @@ function DirectorApprovals() {
         {[
           {
             label: "Pending",
-            value: "6",
-            delta: "1 critical",
+            value: String(pending),
+            delta: `${overdue.length} overdue invoices`,
             icon: Clock4,
             tone: "bg-primary/10 text-primary",
           },
           {
-            label: "Approved (30d)",
-            value: "23",
-            delta: "avg 1.2 days",
+            label: "Processed (30d)",
+            value: String(approved),
+            delta: "payroll changes signed",
             icon: CheckCircle2,
             tone: "bg-success/10 text-success",
           },
           {
             label: "Value in queue",
-            value: "₦2.8m",
-            delta: "3 requests",
+            value: formatNairaCompact(queueValue),
+            delta: "overdue receivables",
             icon: Banknote,
             tone: "bg-learning/10 text-learning",
           },
           {
-            label: "Delegated",
-            value: "2",
-            delta: "to deputy",
+            label: "Open expense lines",
+            value: String(expenses.length),
+            delta: "on record",
             icon: UserRoundPlus,
             tone: "bg-warning/10 text-warning",
           },
@@ -136,19 +153,16 @@ function DirectorApprovals() {
                 <p className="text-muted-foreground text-xs">{i.by}</p>
               </div>
               <Badge className={cn("border-0 font-semibold", i.tone)}>{i.kind}</Badge>
-              <Button
-                size="sm"
-                className="bg-gradient-brand shadow-glow shrink-0 border-0 font-semibold"
-              >
-                Approve
-              </Button>
-              <Button asChild variant="outline" size="sm" className="shrink-0 font-semibold">
-                <Link to="/app/director/command-center">
-                  Review <ArrowRight className="ml-1 size-3.5" />
-                </Link>
+              <Button size="sm" className="bg-gradient-brand shrink-0 border-0 font-semibold">
+                <CheckCircle2 className="mr-1 size-3.5" /> Approve
               </Button>
             </div>
           ))}
+          {items.length === 0 && (
+            <p className="text-muted-foreground py-4 text-center text-sm">
+              Nothing waiting on you — queue clear.
+            </p>
+          )}
         </CardContent>
       </Card>
     </AppShell>
