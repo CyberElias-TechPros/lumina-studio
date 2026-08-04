@@ -52,6 +52,8 @@ export const RBAC_RULES: RbacRule[] = [
 
   /* Applications — public status lookup by ref; own records only for the list */
   { methods: ["GET"], path: "/v1/applications" },
+  { methods: ["GET"], path: "/v1/applications/admin", roles: ["admin"] },
+  { methods: ["GET"], path: "/v1/applications/admin/stats", roles: ["admin"] },
   { methods: ["GET"], path: "/v1/applications/:ref", public: true },
   { methods: ["PATCH"], path: "/v1/applications/:ref", roles: ["admin"] },
 
@@ -103,6 +105,15 @@ export const RBAC_RULES: RbacRule[] = [
   { methods: ["GET"], path: "/v1/expenses", roles: ["finance", "admin"] },
   { methods: ["PATCH"], path: "/v1/expenses/:id", roles: ["finance", "admin"] },
   { methods: ["GET"], path: "/v1/payments", roles: ["finance", "admin"] },
+  { methods: ["POST"], path: "/v1/payroll/run", roles: ["finance", "admin"] },
+
+  /* Parent portal — parents only; admins may introspect */
+  { methods: ["GET"], path: "/v1/parent/students", roles: ["parent", "admin"] },
+  { methods: ["GET"], path: "/v1/parent/students/:id", roles: ["parent", "admin"] },
+
+  /* Mentor matchmaking — learners + mentors */
+  { methods: ["GET"], path: "/v1/mentor/profiles", roles: ["student", "alumni", "mentor"] },
+  { methods: ["POST"], path: "/v1/mentor/match", roles: ["student", "alumni", "mentor"] },
 
   /* Admin portal */
   { methods: ["GET"], path: "/v1/admin/users", roles: ["admin"] },

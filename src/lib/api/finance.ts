@@ -36,6 +36,18 @@ export function fetchPaymentBatches(): Promise<Paginated<PaymentBatch>> {
   return apiFetch<Paginated<PaymentBatch>>("/v1/payments");
 }
 
+export interface PayrollRunResult {
+  ok: boolean;
+  processed: number;
+  batch: PaymentBatch | null;
+  ranAt: string;
+}
+
+/** Finance endpoint — apply approved payroll changes and record a batch. */
+export function runPayroll(): Promise<PayrollRunResult> {
+  return apiFetch<PayrollRunResult>("/v1/payroll/run", { method: "POST" });
+}
+
 export type InvoiceStatus = "paid" | "refunded" | "void";
 
 export function updateInvoiceStatus(

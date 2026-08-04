@@ -1,12 +1,15 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowLeft, Banknote, CheckCircle2, Clock3, UserRound } from "lucide-react";
+import { ArrowLeft, Banknote, CheckCircle2, Clock3, Play, UserRound } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { QueryState } from "@/components/ui/query-state";
 import { AppShell } from "@/components/app/app-shell";
 import { usePayrollChanges, useEmployees } from "@/lib/query/hr";
+import { usePaymentBatches, useRunPayroll } from "@/lib/query/finance";
+import { formatNaira } from "@/data/site";
 import type { PayrollChange } from "@/lib/api/hr";
+import type { PaymentBatch } from "@/lib/api/finance";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/accountant/payroll")({
@@ -27,6 +30,8 @@ function changeTone(status: string): string {
 function AccountantPayroll() {
   const changes = usePayrollChanges();
   const employees = useEmployees();
+  const batches = usePaymentBatches();
+  const run = useRunPayroll();
 
   const changeRows = changes.data?.pages.flatMap((p) => p.items) ?? [];
   const staff = employees.data?.pages.flatMap((p) => p.items) ?? [];
@@ -49,6 +54,14 @@ function AccountantPayroll() {
           >
             {pending.length > 0 ? `${pending.length} pending` : "On schedule"}
           </Badge>
+          <Button
+            size="sm"
+            className="bg-gradient-brand shadow-glow border-0 font-semibold"
+            onClick={() => run.mutate()}
+            disabled={run.isPending}
+          >
+            <Play className="size-3.5" /> {run.isPending ? "Running…" : "Run payroll"}
+          </Button>
           <Button asChild variant="outline" size="sm" className="font-semibold">
             <Link to="/app/accountant">
               <ArrowLeft className="size-4" /> Finance hub
@@ -137,6 +150,48 @@ function AccountantPayroll() {
                     <Button variant="outline" size="sm" className="shrink-0 font-semibold">
                       Details
                     </Button>
+                  </div>
+                ))}
+              </>
+            )}
+          </QueryState>
+        </CardContent>
+      </Card>
+
+      <Card className="bg-card mt-5 shadow-soft border">
+        <CardHeader>
+          <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
+            <CheckCircle2 className="text-primary size-4" /> Payroll runs
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="divide-y">
+          <QueryState<PaymentBatch[]>
+            query={batches}
+            error={{ title: "Payroll runs unavailable" }}
+            empty={{
+              title: "No runs yet",
+              description: "Approved changes appear here after you run payroll.",
+            }}
+          >
+            {(rows) => (
+              <>
+                {rows.map((b) => (
+                  <div
+                    key={b.id}
+                    className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
+                  >
+                    <div className="min-w-0 flex-1">
+                      <p className="text-sm font-bold">{b.batch}</p>
+                      <p className="text-muted-foreground text-xs">
+                        {b.count} payments · {b.date}
+                      </p>
+                    </div>
+                    <Badge className="bg-success/10 text-success border-0 font-semibold">
+                      {b.status}
+                    </Badge>
+                    <span className="font-display text-sm font-extrabold">
+                      {formatNaira(b.amount)}
+                    </span>
                   </div>
                 ))}
               </>

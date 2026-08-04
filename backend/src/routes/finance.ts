@@ -1,7 +1,7 @@
 import { Hono } from "hono";
 import type { AppEnv } from "../types";
 import { z } from "zod";
-import { base64UrlDecode, base64UrlEncode } from "../lib/crypto";
+import { base64UrlDecode, base64UrlEncode, isoNow } from "../lib/crypto";
 import { paginate, parsePagination, type Paginated } from "../lib/pagination";
 import { requireAuth, requireFinance } from "../lib/auth";
 import { ApiError } from "../lib/errors";
@@ -135,4 +135,39 @@ finance.patch("/expenses/:id", requireAuth, requireFinance, async (c) => {
   if (!row) throw ApiError.notFound("Expense not found.");
   await c.env.DB.prepare(`UPDATE expenses SET status = ? WHERE id = ?`).bind(status, id).run();
   return c.json({ ok: true, id, status });
+});
+
+/**
+ * Finance/admin: run payroll — applies pending payroll changes (draft →
+ * approved → done) and records a payment batch on the run ledger.
+ */
+finance.post("/payroll/run", requireAuth, requireFinance, async (c) => {
+  const pending = await c.env.DB.prepare(
+    `SELECT id FROM payroll_changes WHERE status IN ('draft', 'approved') ORDER BY id ASC`,
+  ).all<{ id: string }>();
+  const processed = pending.results.length;
+
+  let batch: { id: string; batch: string; count: number; date: string; status: string } | null =
+    null;
+  if (processed > 0) {
+    for (const row of pending.results) {
+      await c.env.DB.prepare(`UPDATE payroll_changes SET status = 'applied' WHERE id = ?`)
+        .bind(row.id)
+        .run();
+    }
+    const now = isoNow();
+    batch = {
+      id: crypto.randomUUID(),
+      batch: `Payroll · ${new Date().toLocaleString("en-GB", { month: "short", year: "numeric" })}`,
+      count: processed,
+      date: now,
+      status: "paid",
+    };
+    await c.env.DB.prepare(
+      `INSERT INTO payment_batches (id, batch, amount, count, date, status, sort_order) VALUES (?, ?, 0, ?, ?, ?, 0)`,
+    )
+      .bind(batch.id, batch.batch, batch.count, batch.date, batch.status)
+      .run();
+  }
+  return c.json({ ok: true, processed, batch, ranAt: isoNow() });
 });

@@ -78,6 +78,79 @@ applications.post("/", async (c) => {
   return c.json({ application: { id, ref, status: "submitted" } }, 201);
 });
 
+/** Admin: all applications in the full pipeline — optional `?stage=` filter. */
+applications.get("/admin", requireAuth, requireAdmin, async (c) => {
+  const { cursor, limit } = parsePagination(c);
+  const stage = c.req.query("stage");
+  const stageValid = stage && STATUS_ORDER.includes(stage as (typeof STATUS_ORDER)[number]);
+  const where = stageValid ? "WHERE a.status = ?" : "";
+  const base = `FROM applications a LEFT JOIN programs p ON p.slug = a.program_slug ${where}`;
+  const args = stageValid ? [stage] : [];
+
+  const total = await c.env.DB.prepare(`SELECT COUNT(*) AS n ${base}`)
+    .bind(...args)
+    .first<{ n: number }>();
+  const rows = await c.env.DB.prepare(
+    `SELECT a.id, a.ref, a.full_name, a.email, a.phone, a.city, a.program_slug, a.experience,
+            a.status, a.note, a.created_at, a.updated_at, p.title AS program_title
+       ${base}
+      ORDER BY a.created_at DESC, a.id DESC LIMIT ?`,
+  )
+    .bind(...args, limit)
+    .all<{
+      id: string;
+      ref: string;
+      full_name: string;
+      email: string;
+      phone: string | null;
+      city: string | null;
+      program_slug: string | null;
+      experience: string | null;
+      status: string;
+      note: string;
+      created_at: string;
+      updated_at: string;
+      program_title: string | null;
+    }>();
+  const items = rows.results.map((r) => ({
+    id: r.id,
+    ref: r.ref,
+    fullName: r.full_name,
+    email: r.email,
+    programSlug: r.program_slug,
+    programTitle: r.program_title,
+    phone: r.phone,
+    city: r.city,
+    experience: r.experience,
+    status: r.status,
+    note: r.note,
+    createdAt: r.created_at,
+    updatedAt: r.updated_at,
+  }));
+  return c.json(
+    paginate(items, total?.n ?? 0, (last) => last.id),
+  );
+});
+
+/** Admin: pipeline funnel counts by stage for the admissions hub. */
+applications.get("/admin/stats", requireAuth, requireAdmin, async (c) => {
+  const rowsSequence = await c.env.DB.prepare(
+    `SELECT status, COUNT(*) AS n FROM applications GROUP BY status`,
+  ).all<{ status: string; n: number }>();
+  const counts = new Map(rowsSequence.results.map((r) => [r.status, r.n]));
+  const stages = PIPELINE_STAGES.map((s, i) => ({
+    key: s.key,
+    label: s.label,
+    value: counts.get(s.key) ?? 0,
+  }));
+  const total = stages.reduce((sum, s) => sum + s.value, 0);
+  const activeStages = ["screening", "assessment", "interview"].reduce(
+    (sum, s) => sum + (counts.get(s) ?? 0),
+    0,
+  );
+  return c.json({ total, activeStages, stages });
+});
+
 applications.get("/:ref", async (c) => {
   const ref = c.req.param("ref").toUpperCase();
   const row = await c.env.DB.prepare(

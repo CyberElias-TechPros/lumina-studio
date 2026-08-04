@@ -1,11 +1,13 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { usePaginatedQuery, flattenPages } from "@/lib/query/hooks";
+import { hrKeys } from "@/lib/query/hr";
 import {
   fetchInvoices,
   fetchExpenses,
   fetchPaymentBatches,
   updateInvoiceStatus,
   updateExpenseStatus,
+  runPayroll,
   type Invoice,
   type Expense,
   type PaymentBatch,
@@ -61,6 +63,17 @@ export function useUpdateExpenseStatus() {
       updateExpenseStatus(input.id, input.status),
     onSuccess: () => {
       void queryClient.invalidateQueries({ queryKey: financeKeys.expenses });
+    },
+  });
+}
+
+export function useRunPayroll() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: runPayroll,
+    onSuccess: () => {
+      void queryClient.invalidateQueries({ queryKey: financeKeys.payments });
+      void queryClient.invalidateQueries({ queryKey: hrKeys.payroll });
     },
   });
 }

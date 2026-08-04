@@ -16,6 +16,7 @@ export const ROLE_PERMISSIONS: Record<string, string[]> = {
   growth: ["growth:read", "growth:manage", "analytics:read"],
   localization: ["localization:read", "localization:manage"],
   design: ["design:read", "design:manage", "assets:manage"],
+  parent: ["lms:read", "finance:read", "notifications:read", "parent:read"],
 };
 
 export function permissionsForRole(roleKey: string): string[] {

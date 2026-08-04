@@ -1,4 +1,4 @@
-import { sqliteTable, text, integer, real, index, uniqueIndex } from "drizzle-orm/sqlite-core";
+import { sqliteTable, text, integer, real, index, uniqueIndex, primaryKey } from "drizzle-orm/sqlite-core";
 
 export const engines = sqliteTable("engines", {
   key: text("key").primaryKey(),
@@ -928,5 +928,58 @@ export const libraryItems = sqliteTable(
   (t) => [
     index("idx_library_items_source_path").on(t.sourceKey, t.folderPath),
     index("idx_library_items_protected").on(t.isProtected),
+  ],
+);
+
+export const parentStudents = sqliteTable(
+  "parent_students",
+  {
+    parentId: text("parent_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    studentId: text("student_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+  },
+  (t) => [
+    primaryKey({ columns: [t.parentId, t.studentId] }),
+    index("idx_parent_students_parent").on(t.parentId),
+    index("idx_parent_students_student").on(t.studentId),
+  ],
+);
+
+export const mentorProfiles = sqliteTable(
+  "mentor_profiles",
+  {
+    id: text("id").primaryKey(),
+    userId: text("user_id").references(() => users.id, { onDelete: "set null" }),
+    name: text("name").notNull().default(""),
+    focus: text("focus").notNull().default(""),
+    bio: text("bio").notNull().default(""),
+    skills: text("skills").notNull().default("[]"),
+    areas: text("areas").notNull().default("[]"),
+    availability: text("availability").notNull().default("open"),
+    rating: real("rating").notNull().default(0),
+    sessionsCount: integer("sessions_count").notNull().default(0),
+    sortOrder: integer("sort_order").notNull().default(0),
+  },
+  (t) => [index("idx_mentor_profiles_user").on(t.userId)],
+);
+
+export const mentorRequests = sqliteTable(
+  "mentor_requests",
+  {
+    id: text("id").primaryKey(),
+    userId: text("user_id").notNull().default(""),
+    studentName: text("student_name").notNull().default(""),
+    goal: text("goal").notNull().default(""),
+    program: text("program").notNull().default(""),
+    status: text("status").notNull().default("pending"),
+    createdAt: text("created_at").notNull().default(""),
+    sortOrder: integer("sort_order").notNull().default(0),
+  },
+  (t) => [
+    index("idx_mentor_requests_user").on(t.userId),
+    index("idx_mentor_requests_status").on(t.status),
   ],
 );

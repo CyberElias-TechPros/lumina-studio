@@ -10,11 +10,15 @@ import realtimeLiveSql from "../migrations/0007_realtime_live.sql?raw";
 import pushSql from "../migrations/0008_push.sql?raw";
 import accountSql from "../migrations/0009_account_security_and_actions.sql?raw";
 import librarySql from "../migrations/0010_library.sql?raw";
+import parentSql from "../migrations/0011_parent.sql?raw";
+import mentorshipSql from "../migrations/0012_mentorship.sql?raw";
 import { seedContentSql } from "../seeds/content";
 import { seedLmsSql } from "../seeds/lms";
 import { seedDomainSql } from "../seeds/domain";
 import { seedLibrarySql } from "../seeds/library";
 import { seedExternalLinksSql } from "../seeds/external-links";
+import { seedParentSql } from "../seeds/parent";
+import { seedMentorSql } from "../seeds/mentor";
 import type { Session } from "../src/schema/api";
 
 export const SESSION_COOKIE = "cea_session";
@@ -44,6 +48,8 @@ export async function setupDb(): Promise<void> {
     pushSql,
     accountSql,
     librarySql,
+    parentSql,
+    mentorshipSql,
   ]) {
     const statements = sql
       .split("\n")
@@ -61,6 +67,8 @@ export async function setupDb(): Promise<void> {
   await execStatements(seedDomainSql);
   await execStatements(seedLibrarySql);
   await execStatements(seedExternalLinksSql);
+  await execStatements(seedParentSql);
+  await execStatements(seedMentorSql);
 }
 
 export function api(path: string, init?: RequestInit): Promise<Response> {

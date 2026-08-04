@@ -13,8 +13,12 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
+import { QueryState } from "@/components/ui/query-state";
 import { AppShell } from "@/components/app/app-shell";
+import { useParentStudents } from "@/lib/query/parent";
 import { formatNaira } from "@/data/site";
+import type { Paginated } from "@/lib/api/types";
+import type { ParentStudent } from "@/lib/api/parent";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/parent/")({
@@ -26,31 +30,6 @@ export const Route = createFileRoute("/app/parent/")({
   }),
   component: ParentDashboard,
 });
-
-const children = [
-  {
-    id: "ada-okafor",
-    name: "Ada Okafor",
-    course: "Full-Stack Software Development · Cohort 15",
-    pct: 78,
-    gpa: "4.2",
-    attendance: 94,
-    due: formatNaira(140000),
-    dueDate: "Sep 1, 2026",
-    tone: "bg-gradient-learning",
-  },
-  {
-    id: "emeka-okafor",
-    name: "Emeka Okafor",
-    course: "Product & UI/UX Design · Cohort 16",
-    pct: 42,
-    gpa: "3.8",
-    attendance: 97,
-    due: formatNaira(160000),
-    dueDate: "Sep 15, 2026",
-    tone: "bg-gradient-services",
-  },
-];
 
 const notices = [
   {
@@ -74,15 +53,34 @@ const notices = [
 ];
 
 function ParentDashboard() {
+  const students = useParentStudents();
+  const kids = students.data?.items ?? [];
+  const loaded = students.data !== undefined;
+  const avgGpa = kids.length
+    ? (kids.reduce((s, c) => s + Number(c.gpa), 0) / kids.length).toFixed(1)
+    : "0.0";
+  const totalDue = kids.reduce((s, c) => s + c.due, 0);
+  const dueCount = kids.reduce((s, c) => s + c.dueCount, 0);
+  const avgPct = kids.length ? Math.round(kids.reduce((s, c) => s + c.pct, 0) / kids.length) : 0;
+  const goodStanding = kids.every((c) => c.dueCount === 0);
+
   return (
     <AppShell
-      roleKey="student"
+      roleKey="parent"
       title="Parent dashboard"
-      subtitle="Okafor family · 2 learners enrolled"
+      subtitle={
+        loaded
+          ? `${kids.length} linked learner${kids.length === 1 ? "" : "s"}`
+          : "Loading learners…"
+      }
       actions={
         <>
           <Badge className="bg-success/10 text-success border-0 font-semibold">
-            Accounts in good standing
+            {loaded
+              ? goodStanding
+                ? "Accounts in good standing"
+                : "Payments pending"
+              : "Checking…"}
           </Badge>
           <Button size="sm">
             <MessageSquare className="size-4" /> Contact school
@@ -94,29 +92,29 @@ function ParentDashboard() {
         {[
           {
             label: "Children",
-            value: "2",
-            delta: "both active",
+            value: loaded ? String(kids.length) : "…",
+            delta: kids.length === 1 ? "linked learner" : "linked learners",
             icon: Users,
             tone: "bg-primary/10 text-primary",
           },
           {
             label: "Avg. GPA",
-            value: "4.0",
-            delta: "+0.1 this term",
+            value: loaded ? avgGpa : "…",
+            delta: "across children",
             icon: BookOpen,
             tone: "bg-learning/10 text-learning",
           },
           {
             label: "Outstanding bills",
-            value: formatNaira(300000),
-            delta: "2 instalments due",
+            value: loaded ? formatNaira(totalDue) : "…",
+            delta: dueCount === 1 ? "1 instalment due" : `${dueCount} instalments due`,
             icon: Wallet,
             tone: "bg-warning/10 text-warning",
           },
           {
-            label: "Messages unread",
-            value: "3",
-            delta: "incl. 1 urgent",
+            label: "Avg. progress",
+            value: loaded ? `${avgPct}%` : "…",
+            delta: "across courses",
             icon: MessageSquare,
             tone: "bg-success/10 text-success",
           },
@@ -147,42 +145,69 @@ function ParentDashboard() {
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
-              {children.map((c) => (
-                <div key={c.id} className={cn("rounded-2xl p-5 text-white", c.tone)}>
-                  <div className="flex flex-wrap items-center justify-between gap-3">
-                    <div>
-                      <p className="font-display text-base font-extrabold">{c.name}</p>
-                      <p className="text-white/70 text-xs">{c.course}</p>
-                    </div>
-                    <div className="flex gap-2">
-                      <Badge className="bg-white/15 text-white border-0 font-semibold">
-                        GPA {c.gpa}
-                      </Badge>
-                      <Badge className="bg-white/15 text-white border-0 font-semibold">
-                        {c.attendance}%
-                      </Badge>
-                    </div>
-                  </div>
-                  <div className="mt-4 flex items-center gap-3">
-                    <Progress value={c.pct} className="bg-white/20 h-1.5 flex-1 [&>div]:bg-white" />
-                    <span className="text-xs font-bold">{c.pct}%</span>
-                  </div>
-                  <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
-                    <p className="text-white/80 text-xs font-semibold">
-                      Next: {c.due} · {c.dueDate}
-                    </p>
-                    <Button
-                      asChild
-                      size="sm"
-                      className="bg-white/15 text-white font-semibold hover:bg-white/25"
-                    >
-                      <Link to="/app/parent/students/$studentId" params={{ studentId: c.id }}>
-                        Full view <ArrowRight className="ml-1 size-3.5" />
-                      </Link>
-                    </Button>
-                  </div>
-                </div>
-              ))}
+              <QueryState<Paginated<ParentStudent>>
+                query={students}
+                error={{ title: "Children unavailable" }}
+                empty={{
+                  title: "No linked learners",
+                  description: "Contact the school to link a learner to your account.",
+                }}
+                isEmpty={(d) => d.items.length === 0}
+              >
+                {(d) => (
+                  <>
+                    {d.items.map((c, i) => (
+                      <div
+                        key={c.studentId}
+                        className={cn(
+                          "rounded-2xl p-5 text-white",
+                          i % 2 ? "bg-gradient-services" : "bg-gradient-learning",
+                        )}
+                      >
+                        <div className="flex flex-wrap items-center justify-between gap-3">
+                          <div>
+                            <p className="font-display text-base font-extrabold">{c.name}</p>
+                            <p className="text-white/70 text-xs">{c.courseDetail || c.course}</p>
+                          </div>
+                          <div className="flex gap-2">
+                            <Badge className="bg-white/15 text-white border-0 font-semibold">
+                              GPA {c.gpa}
+                            </Badge>
+                          </div>
+                        </div>
+                        <div className="mt-4 flex items-center gap-3">
+                          <Progress
+                            value={c.pct}
+                            className="bg-white/20 h-1.5 flex-1 [&>div]:bg-white"
+                          />
+                          <span className="text-xs font-bold">{c.pct}%</span>
+                        </div>
+                        <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
+                          <p className="text-white/80 text-xs font-semibold">
+                            {c.dueCount > 0
+                              ? `${formatNaira(c.due)} outstanding · ${c.dueCount} ${
+                                  c.dueCount === 1 ? "instalment" : "instalments"
+                                }`
+                              : "No outstanding balance"}
+                          </p>
+                          <Button
+                            asChild
+                            size="sm"
+                            className="bg-white/15 text-white font-semibold hover:bg-white/25"
+                          >
+                            <Link
+                              to="/app/parent/students/$studentId"
+                              params={{ studentId: c.studentId }}
+                            >
+                              Full view <ArrowRight className="ml-1 size-3.5" />
+                            </Link>
+                          </Button>
+                        </div>
+                      </div>
+                    ))}
+                  </>
+                )}
+              </QueryState>
             </CardContent>
           </Card>
 
@@ -193,39 +218,50 @@ function ParentDashboard() {
               </CardTitle>
             </CardHeader>
             <CardContent className="divide-y">
-              {[
-                {
-                  t: "Ada — Term 3 instalment",
-                  v: formatNaira(140000),
-                  d: "Due Sep 1",
-                  tone: "bg-warning/10 text-warning",
-                },
-                {
-                  t: "Emeka — Term 2 instalment",
-                  v: formatNaira(160000),
-                  d: "Due Sep 15",
-                  tone: "bg-warning/10 text-warning",
-                },
-                {
-                  t: "Ada — laptop deposit refund",
-                  v: formatNaira(50000),
-                  d: "Credited Aug 30",
-                  tone: "bg-success/10 text-success",
-                },
-              ].map((b) => (
-                <div key={b.t} className="flex items-center gap-3 py-3 first:pt-0 last:pb-0">
-                  <span className="text-sm flex-1 font-semibold">{b.t}</span>
-                  <span className="text-xs font-semibold">{b.d}</span>
-                  <Badge className={cn("border-0 font-semibold", b.tone)}>{b.v}</Badge>
+              {kids.length === 0 && !loaded ? (
+                <p className="text-muted-foreground py-3 text-xs">Loading bills…</p>
+              ) : kids.length === 0 ? (
+                <p className="text-muted-foreground py-3 text-xs">No outstanding bills.</p>
+              ) : (
+                kids.map((c) => (
+                  <div
+                    key={c.studentId}
+                    className="flex items-center gap-3 py-3 first:pt-0 last:pb-0"
+                  >
+                    <span className="text-sm flex-1 font-semibold">{c.name}</span>
+                    <span className="text-xs font-semibold">
+                      {c.dueCount > 0
+                        ? `${c.dueCount} ${c.dueCount === 1 ? "instalment" : "instalments"} due`
+                        : "All settled"}
+                    </span>
+                    <Badge
+                      className={cn(
+                        "border-0 font-semibold",
+                        c.due > 0 ? "bg-warning/10 text-warning" : "bg-success/10 text-success",
+                      )}
+                    >
+                      {formatNaira(c.due)}
+                    </Badge>
+                  </div>
+                ))
+              )}
+              {kids.length > 0 && (
+                <div className="flex justify-end pt-3">
+                  <Button
+                    asChild
+                    variant="outline"
+                    size="sm"
+                    className="text-primary font-semibold"
+                  >
+                    <Link
+                      to="/app/parent/students/$studentId"
+                      params={{ studentId: kids[0]?.studentId ?? "" }}
+                    >
+                      Pay online
+                    </Link>
+                  </Button>
                 </div>
-              ))}
-              <div className="flex justify-end pt-3">
-                <Button asChild variant="outline" size="sm" className="text-primary font-semibold">
-                  <Link to="/app/parent/students/$studentId" params={{ studentId: "ada-okafor" }}>
-                    Pay online
-                  </Link>
-                </Button>
-              </div>
+              )}
             </CardContent>
           </Card>
         </div>

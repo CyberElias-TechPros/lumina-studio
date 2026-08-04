@@ -12,6 +12,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { useAdmissionsStats } from "@/lib/query/admissions";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/admissions/")({
@@ -70,11 +71,24 @@ const screens = [
 ];
 
 function AdmissionsHub() {
+  const stats = useAdmissionsStats();
+  const stages = stats.data?.stages ?? [];
+  const stageValue = (key: string) => stages.find((s) => s.key === key)?.value ?? 0;
+  const total = stats.data?.total;
+  const review = stageValue("screening") + stageValue("assessment");
+  const interviews = stageValue("interview");
+  const offers = stageValue("offer") + stageValue("enrolled");
+  const conversion = total ? Math.round((offers / total) * 100) : 0;
+
   return (
     <AppShell
       roleKey="instructor"
       title="Admissions hub"
-      subtitle="Fall intake · 118 applications · 15.5% conversion"
+      subtitle={
+        total !== undefined
+          ? `Fall intake · ${total} applications · ${stats.data?.activeStages ?? 0} in active stages`
+          : "Fall intake · loading pipeline…"
+      }
       actions={
         <>
           <Badge className="bg-success/10 text-success border-0 font-semibold">On target</Badge>
@@ -90,29 +104,30 @@ function AdmissionsHub() {
         {[
           {
             label: "Applications",
-            value: "118",
-            delta: "+21% vs last",
+            value: total !== undefined ? String(total) : "…",
+            delta:
+              total !== undefined ? `${stats.data?.activeStages ?? 0} in active stages` : "loading",
             icon: Filter,
             tone: "bg-primary/10 text-primary",
           },
           {
-            label: "Assessment sent",
-            value: "89",
-            delta: "75% of apps",
+            label: "In review",
+            value: total !== undefined ? String(review) : "…",
+            delta: total ? `${Math.round((review / total) * 100)}% of apps` : "of apps",
             icon: ClipboardCheck,
             tone: "bg-learning/10 text-learning",
           },
           {
             label: "Interviews booked",
-            value: "31",
-            delta: "this week",
+            value: total !== undefined ? String(interviews) : "…",
+            delta: "in pipeline",
             icon: UserRoundCheck,
             tone: "bg-warning/10 text-warning",
           },
           {
             label: "Conversion",
-            value: "15.5%",
-            delta: "target 18%",
+            value: total !== undefined ? `${conversion}%` : "…",
+            delta: "of all applications",
             icon: ArrowRight,
             tone: "bg-success/10 text-success",
           },

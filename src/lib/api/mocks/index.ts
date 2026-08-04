@@ -39,6 +39,8 @@ import {
   payments,
 } from "@/data/dashboard";
 import type { StudentDashboard } from "@/lib/api/dashboard";
+import type { AdminApplication } from "@/lib/api/applications";
+import type { MentorProfile } from "@/lib/api/mentor";
 import { libraryItems } from "@/data/library";
 import { externalLinkItems } from "@/data/external-links";
 
@@ -57,6 +59,185 @@ const MOCK_SESSION: Session = {
 
 function delay(milliseconds = 120): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, milliseconds));
+}
+
+const mockAdmissions: AdminApplication[] = [
+  {
+    id: "app-1",
+    ref: "CEA-2026-TB7K2M",
+    fullName: "Tola Bakare",
+    email: "tola.bakare@mail.com",
+    programSlug: "full-stack-software-development",
+    programTitle: "Full-Stack Software Development",
+    phone: null,
+    city: "Lagos",
+    experience: "2 years as a support engineer",
+    status: "assessment",
+    note: "",
+    createdAt: "2026-08-01T09:30:00.000Z",
+    updatedAt: "2026-08-02T10:00:00.000Z",
+  },
+  {
+    id: "app-2",
+    ref: "CEA-2026-MD9X4Q",
+    fullName: "Musa Danjuma",
+    email: "musa.danjuma@mail.com",
+    programSlug: "cybersecurity",
+    programTitle: "Cybersecurity",
+    phone: null,
+    city: "Kano",
+    experience: null,
+    status: "interview",
+    note: "",
+    createdAt: "2026-07-30T14:20:00.000Z",
+    updatedAt: "2026-08-01T11:00:00.000Z",
+  },
+  {
+    id: "app-3",
+    ref: "CEA-2026-NE5P1W",
+    fullName: "Ngozi Eze",
+    email: "ngozi.eze@mail.com",
+    programSlug: "data-science",
+    programTitle: "Data Science",
+    phone: null,
+    city: "Enugu",
+    experience: "Data analyst",
+    status: "offer",
+    note: "",
+    createdAt: "2026-07-29T08:45:00.000Z",
+    updatedAt: "2026-07-31T16:00:00.000Z",
+  },
+  {
+    id: "app-4",
+    ref: "CEA-2026-KN8R3T",
+    fullName: "Kelechi Nwosu",
+    email: "kelechi.nwosu@mail.com",
+    programSlug: "devops",
+    programTitle: "DevOps & Cloud",
+    phone: null,
+    city: "Port Harcourt",
+    experience: null,
+    status: "submitted",
+    note: "",
+    createdAt: "2026-07-28T12:10:00.000Z",
+    updatedAt: "2026-07-28T12:10:00.000Z",
+  },
+];
+
+const mockMentors: MentorProfile[] = [
+  {
+    id: "m-1",
+    name: "Kemi Adeyemi",
+    focus: "Backend & APIs",
+    bio: "Backend engineer at Flutterwave. Helps learners reason about APIs, auth and production readiness.",
+    skills: ["TypeScript", "Node.js", "PostgreSQL", "REST APIs"],
+    areas: ["Backend", "System design", "Interview prep"],
+    availability: "Wednesdays · 2 slots",
+    rating: 4.9,
+    sessionsCount: 24,
+  },
+  {
+    id: "m-2",
+    name: "Tunde Balogun",
+    focus: "DevOps",
+    bio: "Platform lead at Paystack. CI/CD, containers and cloud architecture for stressed demo-day teams.",
+    skills: ["Kubernetes", "Terraform", "CI/CD", "AWS"],
+    areas: ["DevOps", "Cloud", "Career switching"],
+    availability: "Fridays · 1 slot",
+    rating: 4.8,
+    sessionsCount: 18,
+  },
+  {
+    id: "m-3",
+    name: "Zainab Yusuf",
+    focus: "Product & UI/UX",
+    bio: "Product designer at Andela. Accessibility and design systems are her strengths.",
+    skills: ["Figma", "Design systems", "Accessibility", "UX research"],
+    areas: ["Product design", "Portfolio review"],
+    availability: "Weekends",
+    rating: 4.7,
+    sessionsCount: 15,
+  },
+  {
+    id: "m-4",
+    name: "Emeka Osei",
+    focus: "Interview prep",
+    bio: "Ex-Google engineer running a structured mock-interview track for final cohorts.",
+    skills: ["DS&A", "System design", "Behavioural"],
+    areas: ["Interview prep", "Career switching"],
+    availability: "Tue & Thu",
+    rating: 4.9,
+    sessionsCount: 31,
+  },
+];
+
+const mockParentStudents = [
+  {
+    studentId: "ada-okafor",
+    name: "Ada Okafor",
+    email: "ada.okafor@cea.ng",
+    course: "Full-Stack Software Development",
+    courseDetail: "Full-Stack Software Development · Cohort 15",
+    pct: 78,
+    gpa: "4.2",
+    due: 140000,
+    dueCount: 1,
+  },
+  {
+    studentId: "emeka-okafor",
+    name: "Emeka Okafor",
+    email: "emeka.okafor@cea.ng",
+    course: "Product & UI/UX Design",
+    courseDetail: "Product & UI/UX Design · Cohort 16",
+    pct: 42,
+    gpa: "3.8",
+    due: 160000,
+    dueCount: 1,
+  },
+];
+
+function parentChildDetail(id: string) {
+  const summary = mockParentStudents.find((s) => s.studentId === id);
+  if (!summary) throw new ApiError(404, "NOT_FOUND", "Student not found.");
+  if (id === "emeka-okafor") {
+    return {
+      ...summary,
+      courses: [
+        { slug: "ui-ux-design", title: "Product & UI/UX Design", cohort: "16", pct: 42 },
+        { slug: "career-readiness", title: "Career Readiness", cohort: "16", pct: 38 },
+      ],
+      gradebook: [
+        {
+          courseName: "Design Foundations",
+          units: 3,
+          letter: "B+",
+          pct: 84,
+          trend: "+",
+          items: [],
+        },
+        { courseName: "Career Readiness", units: 1, letter: "B", pct: 78, trend: "+", items: [] },
+      ],
+    };
+  }
+  return {
+    ...summary,
+    courses: [
+      {
+        slug: "full-stack-software-development",
+        title: "Full-Stack Software Development",
+        cohort: "15",
+        pct: 78,
+      },
+      { slug: "cloud-devops", title: "Cloud Engineering & DevOps", cohort: "15", pct: 54 },
+      { slug: "ui-ux-design", title: "Product & UI/UX Design", cohort: "15", pct: 31 },
+    ],
+    gradebook: [
+      { courseName: "Backend & APIs", units: 3, letter: "A", pct: 92, trend: "+", items: [] },
+      { courseName: "DevOps Fundamentals", units: 2, letter: "B+", pct: 86, trend: "+", items: [] },
+      { courseName: "Design Systems", units: 2, letter: "A-", pct: 89, trend: "-", items: [] },
+      { courseName: "Career Readiness", units: 1, letter: "A", pct: 94, trend: "=", items: [] },
+    ],
+  };
 }
 
 export function registerAllMocks(): void {
@@ -83,6 +264,90 @@ export function registerAllMocks(): void {
         status: "submitted",
       },
     };
+  });
+
+  /* Admissions admin (pipeline + hub stats) */
+  registerMock("GET", "/v1/applications/admin", async (init: ApiRequestInit) => {
+    await delay();
+    const path = new URL(`https://mock.local${init.path ?? "/"}`);
+    const stage = path.searchParams.get("stage");
+    const items = stage ? mockAdmissions.filter((a) => a.status === stage) : mockAdmissions;
+    return { items, total: items.length };
+  });
+  registerMock("GET", "/v1/applications/admin/stats", async () => {
+    await delay();
+    const counts = {
+      submitted: 1,
+      screening: 0,
+      assessment: 1,
+      interview: 1,
+      offer: 1,
+      enrolled: 0,
+    };
+    return {
+      total: mockAdmissions.length,
+      activeStages: counts.screening + counts.assessment + counts.interview,
+      stages: [
+        { key: "submitted", label: "Application received", value: counts.submitted },
+        { key: "screening", label: "Screening", value: counts.screening },
+        { key: "assessment", label: "Assessment", value: counts.assessment },
+        { key: "interview", label: "Interview", value: counts.interview },
+        { key: "offer", label: "Offer", value: counts.offer },
+        { key: "enrolled", label: "Enrolled", value: counts.enrolled },
+      ],
+    };
+  });
+  registerMockPattern("PATCH", "/v1/applications/*", async (init: ApiRequestInit) => {
+    await delay();
+    const segments = (init.path ?? "").split("/").filter(Boolean);
+    const ref = segments[segments.length - 1] ?? "";
+    const { status } = (init.body ?? {}) as { status?: string };
+    return {
+      ok: true,
+      ref,
+      status: status ?? "screening",
+      note: "",
+      updatedAt: new Date().toISOString(),
+    };
+  });
+
+  /* Parent portal (linked learners + gradebook) */
+  registerMock("GET", "/v1/parent/students", async () => {
+    await delay();
+    return { items: mockParentStudents, total: mockParentStudents.length };
+  });
+  registerMockPattern("GET", "/v1/parent/students/*", async (init: ApiRequestInit) => {
+    await delay();
+    const segments = (init.path ?? "").split("/").filter(Boolean);
+    const id = segments[segments.length - 1] ?? "";
+    return parentChildDetail(id);
+  });
+
+  /* Mentor matching (profiles + keyword match) */
+  registerMock("GET", "/v1/mentor/profiles", async () => {
+    await delay();
+    return { items: mockMentors, total: mockMentors.length };
+  });
+  registerMock("POST", "/v1/mentor/match", async (init: ApiRequestInit) => {
+    await delay();
+    const { program = "", goal = "" } = (init.body ?? {}) as {
+      program?: string;
+      goal?: string;
+    };
+    const keywords = `${program} ${goal}`
+      .toLowerCase()
+      .split(/\s+/)
+      .filter((w) => w.length > 2);
+    const scored = mockMentors
+      .map((m) => {
+        const haystack = [m.focus, ...m.areas, ...m.skills].join(" ").toLowerCase();
+        const hits = keywords.length > 0 ? keywords.filter((w) => haystack.includes(w)).length : 1;
+        const raw = keywords.length > 0 ? Math.round((hits / keywords.length) * 100) : 100;
+        const match = Math.min(99, Math.max(40, Math.round(raw * 0.8 + m.rating * 10)));
+        return { ...m, match };
+      })
+      .sort((a, b) => b.match - a.match);
+    return { program, goal, matches: scored.slice(0, 3) };
   });
 
   /* Certificates (public verify) */
@@ -453,6 +718,27 @@ export function registerAllMocks(): void {
     const id = (init.path ?? "").split("/").pop() ?? "";
     const { status } = (init.body ?? {}) as { status?: string };
     return { ok: true, id, status: status ?? "approved" };
+  });
+  registerMock("POST", "/v1/payroll/run", async () => {
+    await delay();
+    const now = new Date();
+    return {
+      ok: true,
+      processed: 4,
+      batch: {
+        id: `pb-${Date.now()}`,
+        batch: `Payroll · ${now.toLocaleDateString("en-GB", {
+          weekday: "short",
+          day: "numeric",
+          month: "short",
+        })}`,
+        count: 4,
+        date: now.toISOString().slice(0, 10),
+        status: "paid",
+        amount: 0,
+      },
+      ranAt: now.toISOString(),
+    };
   });
 
   /* Payments (checkout + history) */

@@ -18,6 +18,8 @@ Backend coverage = routes registered in `backend/src/lib/rbac.ts` (the full `/v1
 | 2026-08-03 | **Accountant suite 8/10 wired** — index KPIs, billing (live invoice PATCH "Pay"), budgets (expense pivots), payroll (payroll-changes + employees), reports (aggregates); added `PATCH /v1/invoices/:id` + `/v1/expenses/:id` client mutations + mock handlers. Remaining static: `banking` (no reconciliation endpoint) and `audit` (could reuse `admin/audit-log` with role extension). |
 | 2026-08-03 | **QueryState fix** (`src/components/ui/query-state.tsx`): infinite queries now flatten `pages[].items` before calling `children` — previously every paginated list page (hr/*, admin/*, accountant/*, design/*, employer/*, notifications, finance, …) passed the `{pages}` object to children and crashed on `.map` once data arrived. Also fixed `certificates.tsx` to pass `data: items`. |
 | 2026-08-03 | **Public landing data seeded** — `jobs`, `gigs`, `events`, `caseStudies`, `testimonials` in `src/data/site.ts` now have real content; marketplace/events/community/work/services no longer render empty states. |
+| 2026-08-04 | **Tier 2 backend shipped + deployed** — parent-scoped reads `GET /v1/parent/students(:id)` (`parent`/`admin` only, link via `parent_students`, derived GPA/outstanding), admissions admin `GET /v1/applications/admin(/?stage=)` + `/admin/stats` + pipeline `PATCH /:ref` (audit-logged), finance `POST /v1/payroll/run` (approves draft/sent changes → `payment_batches` row), mentor `GET /v1/mentor/profiles` + `POST /v1/mentor/match` (keyword-overlap scoring). DDL moved out of migrations into seed files (`0011_parent.sql`, `0012_mentorship.sql` + `parent-data.sql`/`mentor-data.sql`); applied to prod D1 + worker deployed (version `536a4715`). `backend/test/tier2.test.ts` 13/13 green; full suite 267 passed (3 pre-existing ai.test network timeouts). |
+| 2026-08-04 | **Tier 2 frontend wired** — `parent` index/overview/grades now live (`/v1/parent/students*`), `admissions` hub + applications list + detail live (`/v1/applications/admin*` + PATCH advance), `accountant/payroll` gained "Run payroll" action + payroll-runs list (payroll run + payments batches). New clients `api/parent`, `api/mentor`, `query/admissions|parent|mentor`, finance `useRunPayroll`, matching mock handlers. Typecheck + eslint + build + prod deploy ✅. Mentor profiles/match clients exist but no learner-facing page consumes them yet (alumni/mentorship is a mentor sign-up form, not a match UI). |
 
 ---
 
@@ -26,10 +28,10 @@ Backend coverage = routes registered in `backend/src/lib/rbac.ts` (the full `/v1
 | Metric | Value |
 | --- | --- |
 | App pages under `src/routes/app/` | **283** |
-| Wired to live backend | **~98** |
-| Static dashboards (placeholder) | **~185** |
-| Backend route suites live | **~20 domains** (rbac.ts) |
-| Backend suites NOT built yet | **~12 domains** (mentorship, ops/inventory, IT/helpdesk, receptionist, government, behavioral, product-marketing, dev/CI, supplier, volunteer, partner, alumni-net) |
+| Wired to live backend | **~104** |
+| Static dashboards (placeholder) | **~179** |
+| Backend route suites live | **~20 domains + Tier 2: parent, mentor, applications admin, payroll run** (rbac.ts) |
+| Backend suites NOT built yet | **~12 domains** (mentorship sessions/goals/requests, ops/inventory, IT/helpdesk, receptionist, government, behavioral, product-marketing, dev/CI, supplier, volunteer, partner, alumni-net) |
 | Public/locale data | `jobs/gigs/events/caseStudies/testimonials` seeded in `src/data/site.ts` ✅ |
 
 ---
@@ -40,7 +42,7 @@ Backend coverage = routes registered in `backend/src/lib/rbac.ts` (the full `/v1
 | --- | ---: | ---: | ---: | --- |
 | admin | 12 | 5 | 7 | `admin/*` (users, accounts, audit-log, flags) — config/security/roles live, monitoring/api-keys static (no infra endpoints) |
 | accountant | 10 | 9 | 1 | `finance/*` + `hr/payroll-changes` + `admin/audit-log` (audit wired) ✅; `banking` static (no reconciliation endpoint) |
-| admissions | 9 | 0 | 9 | `applications` (public submit, admin PATCH) — needs review/decision API |
+| admissions | 9 | 3 | 6 | `applications` admin list + stats + pipeline PATCH ✅ (hub, applications, detail wired); review/interviews/documents/enrollment/communication static |
 | alumni | 8 | 1 | 7 | `recruitment/*` for jobs ✅; network/events/stories none |
 | assessments | 2 | 2 | 0 | `/v1/assessments/*` ✅ |
 | assignments | 2 | 2 | 0 | `/v1/assignments/*` ✅ |
@@ -63,10 +65,10 @@ Backend coverage = routes registered in `backend/src/lib/rbac.ts` (the full `/v1
 | live | 2 | 2 | 0 | ✅ |
 | localization | 8 | 8 | 0 | ✅ |
 | marketing | 10 | 10 | 0 | ✅ |
-| mentor | 12 | 0 | 12 | none (mentorship, goals, requests) |
+| mentor | 12 | 0 | 12 | profiles + match API live (`/v1/mentor/*`); no learner-facing UI yet — alumni/mentorship is a mentor sign-up form |
 | ngo | 9 | 0 | 9 | none |
 | ops | 7 | 0 | 7 | none (inventory, branches, facilities) |
-| parent | 8 | 3 | 5 | gradebook/course reads exist (student access only) — needs parent-scoped reads |
+| parent | 8 | 6 | 2 | parent-scoped reads `GET /v1/parent/students(:id)` ✅ (index, student overview, grades wired); attendance/communication/reports static |
 | partner | 7 | 0 | 7 | none |
 | product-marketing | 9 | 0 | 9 | none |
 | receptionist | 8 | 0 | 8 | none |
@@ -90,7 +92,7 @@ Backend user-facing surface is done; these folders are blobs of hardcoded number
 | director suite | compose existing reads: `finance/* + hr/* + marketing/*`+ hand-derived KPI card set | ✅ done (6/9; operations/okrs/reports no source) |
 | instructor analytics/attendance | `instructor/*` (gradebook, submissions) aggregate | ✅ done |
 | admin config/security/monitoring | `/v1/admin/*` + `flags` + `payments/history` | ✅ config/security/roles; monitoring left static |
-| parent (grades/calendar part) | `courses/gradebook` (needs parent ACL), `calendar/events` | ⏳ needs parent ACL (Tier 2) |
+| parent (grades/calendar part) | `GET /v1/parent/students(:id)` (parent ACL via `parent_students`, derived GPA/outstanding) | ✅ done (Tier 2) |
 | developer feature-flags | `/v1/flags` public GET + `PUT/DELETE :key` (admin) | ✅ done (read-only) |
 | public landing | seed `jobs`, `gigs`, `events`, `caseStudies`, `testimonials` with real content (no backend change) | ✅ done |
 
@@ -98,12 +100,12 @@ Backend user-facing surface is done; these folders are blobs of hardcoded number
 
 ## Tier 2 — SMALL BACKEND ADDITIONS
 
-| Target | New API | Notes |
+| Target | New API | Status |
 | --- | --- | --- |
-| Parent grades/attendance | `GET /v1/parent/students/:id` (+ grade/attendance query) | use enrollments link; role-claim parent |
-| Admissions review & rules | `GET /v1/applications?stage=`, `PATCH :id` w/ admissions role, `GET /v1/admissions/stats` | extend `applications` rbac + route |
-| Finance payroll run | `POST /v1/finance/payroll/run` → rows + draft approve + batch | automates Tier-1 accountant write path |
-| Mentor matchmaking | `POST /v1/mentor/match` (rule/AI) | Tier 3 mentor needs at least this |
+| Parent grades/attendance | `GET /v1/parent/students` + `GET /v1/parent/students/:id` (parent ACL via `parent_students`, derived GPA + outstanding invoices) | ✅ done — prod D1: `0011_parent.sql` + `parent-data.sql`; parent `...020` linked to Chiamaka Obi |
+| Admissions review & rules | `GET /v1/applications/admin` (+`?stage=`), `GET /v1/applications/admin/stats`, `PATCH /v1/applications/:ref` (pipeline, audit-logged) | ✅ done — `admin` role |
+| Finance payroll run | `POST /v1/payroll/run` → apply draft/sent changes → `payment_batches` row | ✅ done — `finance`+`admin` roles |
+| Mentor matchmaking | `GET /v1/mentor/profiles` + `POST /v1/mentor/match` (keyword-overlap scoring, top 3) | ✅ backend + client + mocks; no learner-facing UI yet |
 
 ---
 

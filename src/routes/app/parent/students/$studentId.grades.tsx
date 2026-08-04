@@ -1,10 +1,13 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowLeft, BookOpen, FileText, TrendingUp } from "lucide-react";
+import { ArrowLeft, BookOpen, TrendingUp } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
+import { QueryState } from "@/components/ui/query-state";
 import { AppShell } from "@/components/app/app-shell";
+import { useParentStudent } from "@/lib/query/parent";
+import type { ParentStudentDetail } from "@/lib/api/parent";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/parent/students/$studentId/grades")({
@@ -17,117 +20,139 @@ export const Route = createFileRoute("/app/parent/students/$studentId/grades")({
   component: ParentStudentGrades,
 });
 
-const courses = [
-  { t: "Backend & APIs", score: "A", pct: 92, trend: "+3", comment: "Excellent API design work" },
-  { t: "DevOps Fundamentals", score: "B+", pct: 86, trend: "+1", comment: "Great first pipeline" },
-  {
-    t: "Design Systems",
-    score: "A-",
-    pct: 89,
-    trend: "+2",
-    comment: "Accessibility is a strength",
-  },
-  {
-    t: "Career Readiness",
-    score: "A",
-    pct: 94,
-    trend: "+4",
-    comment: "Portfolio presentation top 5%",
-  },
-];
+function trendLabel(trend: string): string {
+  if (trend === "+") return "Improving";
+  if (trend === "-") return "Slipping";
+  return "Steady";
+}
 
 function ParentStudentGrades() {
+  const { studentId } = Route.useParams();
+  const student = useParentStudent(studentId);
+  const data = student.data;
+
   return (
     <AppShell
-      roleKey="student"
+      roleKey="parent"
       title="Academic progress"
-      subtitle="Ada Okafor · Term 2 · mid-term"
+      subtitle={data ? `${data.name} · mid-term` : "Loading…"}
       actions={
         <>
-          <Badge className="bg-success/10 text-success border-0 font-semibold">GPA 4.2 / 5.0</Badge>
+          <Badge className="bg-success/10 text-success border-0 font-semibold">
+            {data ? `GPA ${data.gpa} / 4.0` : "GPA …"}
+          </Badge>
           <Button asChild variant="outline" size="sm" className="font-semibold">
-            <Link to="/app/parent/students/$studentId" params={{ studentId: "ada-okafor" }}>
+            <Link to="/app/parent/students/$studentId" params={{ studentId }}>
               <ArrowLeft className="size-4" /> Overview
             </Link>
           </Button>
         </>
       }
     >
-      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-        {[
-          {
-            label: "Cumulative GPA",
-            value: "4.2",
-            delta: "top 5% of cohort",
-            icon: TrendingUp,
-            tone: "bg-primary/10 text-primary",
-          },
-          {
-            label: "Course average",
-            value: "90%",
-            delta: "+2.5 pts vs term 1",
-            icon: BookOpen,
-            tone: "bg-learning/10 text-learning",
-          },
-          {
-            label: "A grades",
-            value: "2 of 4",
-            delta: "this term",
-            icon: FileText,
-            tone: "bg-success/10 text-success",
-          },
-          {
-            label: "Assignments",
-            value: "18/22",
-            delta: "4 due",
-            icon: FileText,
-            tone: "bg-warning/10 text-warning",
-          },
-        ].map((k) => (
-          <Card key={k.label} className="bg-card shadow-soft border">
-            <CardContent className="p-5">
-              <div className="flex items-center justify-between">
-                <p className="text-muted-foreground text-xs font-bold tracking-wide uppercase">
-                  {k.label}
-                </p>
-                <span className={cn("grid size-8 place-items-center rounded-lg", k.tone)}>
-                  <k.icon className="size-4" />
-                </span>
+      <QueryState<ParentStudentDetail>
+        query={student}
+        error={{ title: "Gradebook unavailable" }}
+        empty={{
+          title: "No grades yet",
+          description: "Gradebook entries appear here once assessed.",
+        }}
+      >
+        {(current) => {
+          const rows = current.gradebook ?? [];
+          const avg = rows.length
+            ? Math.round(rows.reduce((s, g) => s + g.pct, 0) / rows.length)
+            : 0;
+          const aGrades = rows.filter((g) => g.letter?.startsWith("A")).length;
+          const units = rows.reduce((s, g) => s + (g.units ?? 0), 0);
+          const kpis = [
+            {
+              label: "Cumulative GPA",
+              value: current.gpa,
+              delta: "4.0 scale",
+              icon: TrendingUp,
+              tone: "bg-primary/10 text-primary",
+            },
+            {
+              label: "Course average",
+              value: rows.length ? `${avg}%` : "—",
+              delta: rows.length ? "across gradebook" : "no grades",
+              icon: BookOpen,
+              tone: "bg-learning/10 text-learning",
+            },
+            {
+              label: "A grades",
+              value: rows.length ? `${aGrades} of ${rows.length}` : "—",
+              delta: "this term",
+              icon: BookOpen,
+              tone: "bg-success/10 text-success",
+            },
+            {
+              label: "Credit units",
+              value: String(units),
+              delta: "earned so far",
+              icon: BookOpen,
+              tone: "bg-warning/10 text-warning",
+            },
+          ];
+          return (
+            <>
+              <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+                {kpis.map((k) => (
+                  <Card key={k.label} className="bg-card shadow-soft border">
+                    <CardContent className="p-5">
+                      <div className="flex items-center justify-between">
+                        <p className="text-muted-foreground text-xs font-bold tracking-wide uppercase">
+                          {k.label}
+                        </p>
+                        <span className={cn("grid size-8 place-items-center rounded-lg", k.tone)}>
+                          <k.icon className="size-4" />
+                        </span>
+                      </div>
+                      <p className="font-display mt-3 text-2xl font-extrabold">{k.value}</p>
+                      <p className="text-muted-foreground mt-0.5 text-xs font-semibold">
+                        {k.delta}
+                      </p>
+                    </CardContent>
+                  </Card>
+                ))}
               </div>
-              <p className="font-display mt-3 text-2xl font-extrabold">{k.value}</p>
-              <p className="text-muted-foreground mt-0.5 text-xs font-semibold">{k.delta}</p>
-            </CardContent>
-          </Card>
-        ))}
-      </div>
 
-      <Card className="bg-card mt-5 shadow-soft border">
-        <CardHeader>
-          <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
-            <BookOpen className="text-primary size-4" /> Gradebook
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="divide-y">
-          {courses.map((c) => (
-            <div key={c.t} className="flex flex-wrap items-center gap-4 py-4 first:pt-0 last:pb-0">
-              <div className="min-w-0 flex-1">
-                <p className="text-sm font-bold">{c.t}</p>
-                <p className="text-muted-foreground text-xs">{c.comment}</p>
-              </div>
-              <span className="bg-success/10 text-success rounded-md px-2 py-0.5 text-xs font-bold">
-                +{c.trend} pts
-              </span>
-              <Progress value={c.pct} className="h-1.5 w-24" />
-              <Badge className="bg-primary/10 text-primary w-10 justify-center border-0 font-bold">
-                {c.score}
-              </Badge>
-            </div>
-          ))}
-          <p className="text-muted-foreground pt-3 text-xs">
-            Grade disputes can be raised with the academic board within 7 days of release.
-          </p>
-        </CardContent>
-      </Card>
+              <Card className="bg-card mt-5 shadow-soft border">
+                <CardHeader>
+                  <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
+                    <BookOpen className="text-primary size-4" /> Gradebook
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="divide-y">
+                  {rows.map((c) => (
+                    <div
+                      key={c.courseName}
+                      className="flex flex-wrap items-center gap-4 py-4 first:pt-0 last:pb-0"
+                    >
+                      <div className="min-w-0 flex-1">
+                        <p className="text-sm font-bold">{c.courseName}</p>
+                        <p className="text-muted-foreground text-xs">
+                          {c.units} {c.units === 1 ? "unit" : "units"} · {trendLabel(c.trend)}
+                        </p>
+                      </div>
+                      <span className="bg-success/10 text-success rounded-md px-2 py-0.5 text-xs font-bold">
+                        {c.pct}%
+                      </span>
+                      <Progress value={c.pct} className="h-1.5 w-24" />
+                      <Badge className="bg-primary/10 text-primary w-10 justify-center border-0 font-bold">
+                        {c.letter}
+                      </Badge>
+                    </div>
+                  ))}
+                  <p className="text-muted-foreground pt-3 text-xs">
+                    Grade disputes can be raised with the academic board within 7 days of release.
+                  </p>
+                </CardContent>
+              </Card>
+            </>
+          );
+        }}
+      </QueryState>
     </AppShell>
   );
 }

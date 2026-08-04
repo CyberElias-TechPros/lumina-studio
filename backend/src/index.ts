@@ -31,6 +31,8 @@ import { uploads } from "./routes/uploads";
 import { ai } from "./routes/ai";
 import { push } from "./routes/push";
 import { library } from "./routes/library";
+import { parent } from "./routes/parent";
+import { mentor } from "./routes/mentor";
 import { RealtimeRoom } from "./durable/realtime-room";
 
 export { RealtimeRoom };
@@ -85,6 +87,8 @@ v1.route("/push", push);
 v1.route("/flags", flags);
 v1.route("/contact", contact);
 v1.route("/library", library);
+v1.route("/parent", parent);
+v1.route("/mentor", mentor);
 
 /** Uptime + DB reachability check for deployment probes. */
 v1.get("/health", async (c) => {

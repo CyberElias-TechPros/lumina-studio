@@ -162,3 +162,4 @@ export const requireInstructor = requireAnyRole(["instructor"]);
 export const requireHr = requireAnyRole(["hr", "admin"]);
 export const requireFinance = requireAnyRole(["finance", "admin"]);
 export const requireAdmin = requireAnyRole(["admin"]);
+export const requireParent = requireAnyRole(["parent", "admin"]);
