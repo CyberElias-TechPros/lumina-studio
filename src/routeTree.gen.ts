@@ -132,6 +132,7 @@ import { Route as AppAdmissionsInterviewsRouteImport } from './routes/app/admiss
 import { Route as AppAdmissionsReportsRouteImport } from './routes/app/admissions/reports'
 import { Route as AppAdmissionsReviewRouteImport } from './routes/app/admissions/review'
 import { Route as AppAlumniEventsRouteImport } from './routes/app/alumni/events'
+import { Route as AppAlumniFindRouteImport } from './routes/app/alumni/find'
 import { Route as AppAlumniGiveBackRouteImport } from './routes/app/alumni/give-back'
 import { Route as AppAlumniHubRouteImport } from './routes/app/alumni/hub'
 import { Route as AppAlumniJobsRouteImport } from './routes/app/alumni/jobs'
@@ -990,6 +991,11 @@ const AppAdmissionsReviewRoute = AppAdmissionsReviewRouteImport.update({
 const AppAlumniEventsRoute = AppAlumniEventsRouteImport.update({
   id: '/app/alumni/events',
   path: '/app/alumni/events',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppAlumniFindRoute = AppAlumniFindRouteImport.update({
+  id: '/app/alumni/find',
+  path: '/app/alumni/find',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AppAlumniGiveBackRoute = AppAlumniGiveBackRouteImport.update({
@@ -2385,6 +2391,7 @@ export interface FileRoutesByFullPath {
   '/app/admissions/reports': typeof AppAdmissionsReportsRoute
   '/app/admissions/review': typeof AppAdmissionsReviewRoute
   '/app/alumni/events': typeof AppAlumniEventsRoute
+  '/app/alumni/find': typeof AppAlumniFindRoute
   '/app/alumni/give-back': typeof AppAlumniGiveBackRoute
   '/app/alumni/hub': typeof AppAlumniHubRoute
   '/app/alumni/jobs': typeof AppAlumniJobsRoute
@@ -2751,6 +2758,7 @@ export interface FileRoutesByTo {
   '/app/admissions/reports': typeof AppAdmissionsReportsRoute
   '/app/admissions/review': typeof AppAdmissionsReviewRoute
   '/app/alumni/events': typeof AppAlumniEventsRoute
+  '/app/alumni/find': typeof AppAlumniFindRoute
   '/app/alumni/give-back': typeof AppAlumniGiveBackRoute
   '/app/alumni/hub': typeof AppAlumniHubRoute
   '/app/alumni/jobs': typeof AppAlumniJobsRoute
@@ -3118,6 +3126,7 @@ export interface FileRoutesById {
   '/app/admissions/reports': typeof AppAdmissionsReportsRoute
   '/app/admissions/review': typeof AppAdmissionsReviewRoute
   '/app/alumni/events': typeof AppAlumniEventsRoute
+  '/app/alumni/find': typeof AppAlumniFindRoute
   '/app/alumni/give-back': typeof AppAlumniGiveBackRoute
   '/app/alumni/hub': typeof AppAlumniHubRoute
   '/app/alumni/jobs': typeof AppAlumniJobsRoute
@@ -3486,6 +3495,7 @@ export interface FileRouteTypes {
     | '/app/admissions/reports'
     | '/app/admissions/review'
     | '/app/alumni/events'
+    | '/app/alumni/find'
     | '/app/alumni/give-back'
     | '/app/alumni/hub'
     | '/app/alumni/jobs'
@@ -3852,6 +3862,7 @@ export interface FileRouteTypes {
     | '/app/admissions/reports'
     | '/app/admissions/review'
     | '/app/alumni/events'
+    | '/app/alumni/find'
     | '/app/alumni/give-back'
     | '/app/alumni/hub'
     | '/app/alumni/jobs'
@@ -4218,6 +4229,7 @@ export interface FileRouteTypes {
     | '/app/admissions/reports'
     | '/app/admissions/review'
     | '/app/alumni/events'
+    | '/app/alumni/find'
     | '/app/alumni/give-back'
     | '/app/alumni/hub'
     | '/app/alumni/jobs'
@@ -4585,6 +4597,7 @@ export interface RootRouteChildren {
   AppAdmissionsReportsRoute: typeof AppAdmissionsReportsRoute
   AppAdmissionsReviewRoute: typeof AppAdmissionsReviewRoute
   AppAlumniEventsRoute: typeof AppAlumniEventsRoute
+  AppAlumniFindRoute: typeof AppAlumniFindRoute
   AppAlumniGiveBackRoute: typeof AppAlumniGiveBackRoute
   AppAlumniHubRoute: typeof AppAlumniHubRoute
   AppAlumniJobsRoute: typeof AppAlumniJobsRoute
@@ -5677,6 +5690,13 @@ declare module '@tanstack/react-router' {
       path: '/app/alumni/events'
       fullPath: '/app/alumni/events'
       preLoaderRoute: typeof AppAlumniEventsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/alumni/find': {
+      id: '/app/alumni/find'
+      path: '/app/alumni/find'
+      fullPath: '/app/alumni/find'
+      preLoaderRoute: typeof AppAlumniFindRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/app/alumni/give-back': {
@@ -7632,6 +7652,7 @@ const rootRouteChildren: RootRouteChildren = {
   AppAdmissionsReportsRoute: AppAdmissionsReportsRoute,
   AppAdmissionsReviewRoute: AppAdmissionsReviewRoute,
   AppAlumniEventsRoute: AppAlumniEventsRoute,
+  AppAlumniFindRoute: AppAlumniFindRoute,
   AppAlumniGiveBackRoute: AppAlumniGiveBackRoute,
   AppAlumniHubRoute: AppAlumniHubRoute,
   AppAlumniJobsRoute: AppAlumniJobsRoute,

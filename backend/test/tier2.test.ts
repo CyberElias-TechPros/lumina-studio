@@ -164,6 +164,66 @@ describe("GET /v1/parent/students (parent-scoped grade reads)", () => {
   });
 });
 
+describe("GET /v1/parent/students/:id/finance (billing ledger)", () => {
+  it("blocks reading a student that is not linked", async () => {
+    const other = await env.DB.prepare(
+      `SELECT id FROM users WHERE email = 'instructor@cea.ng'`,
+    ).first<{ id: string }>();
+    const res = await api(`/v1/parent/students/${other!.id}/finance`, {
+      headers: cookieHeaders(parent.cookie),
+    });
+    expect(res.status).toBe(403);
+  });
+
+  it("returns the linked student's invoices with totals", async () => {
+    const res = await api(`/v1/parent/students/${SEEDED_STUDENT_ID}/finance`, {
+      headers: cookieHeaders(parent.cookie),
+    });
+    expect(res.status).toBe(200);
+    const body = (await res.json()) as {
+      studentId: string;
+      items: Array<{ id: string; party: string; amount: number; status: string }>;
+      totals: { paid: number; outstanding: number; count: number };
+    };
+    expect(body.studentId).toBe(SEEDED_STUDENT_ID);
+    expect(body.items.length).toBeGreaterThanOrEqual(1);
+    expect(body.items[0]!.party).toBeTruthy();
+    expect(body.totals.paid).toBeGreaterThan(0);
+    expect(body.totals.outstanding).toBeGreaterThan(0);
+    expect(body.totals.count).toBeGreaterThan(0);
+  });
+});
+
+describe("GET /v1/parent/students/:id/attendance (records)", () => {
+  it("blocks reading a student that is not linked", async () => {
+    const other = await env.DB.prepare(
+      `SELECT id FROM users WHERE email = 'instructor@cea.ng'`,
+    ).first<{ id: string }>();
+    const res = await api(`/v1/parent/students/${other!.id}/attendance`, {
+      headers: cookieHeaders(parent.cookie),
+    });
+    expect(res.status).toBe(403);
+  });
+
+  it("returns attendance summary and records for a linked student", async () => {
+    const res = await api(`/v1/parent/students/${SEEDED_STUDENT_ID}/attendance`, {
+      headers: cookieHeaders(parent.cookie),
+    });
+    expect(res.status).toBe(200);
+    const body = (await res.json()) as {
+      pct: number;
+      counts: { present: number; late: number; excused: number; absent: number };
+      total: number;
+      items: Array<{ date: string; status: string }>;
+    };
+    expect(body.pct).toBeGreaterThanOrEqual(0);
+    expect(body.pct).toBeLessThanOrEqual(100);
+    expect(body.total).toBeGreaterThanOrEqual(10);
+    expect(body.counts.present).toBeGreaterThan(0);
+    expect(body.items[0]!.date).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+  });
+});
+
 describe("POST /v1/mentor/match (rule-based matchmaking)", () => {
   it("403s roles outside the learner set", async () => {
     const res = await api("/v1/mentor/match", { method: "POST", headers: cookieHeaders(parent.cookie) });

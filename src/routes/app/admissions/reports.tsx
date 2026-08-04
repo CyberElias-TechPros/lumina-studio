@@ -1,45 +1,60 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowLeft, BarChart3, FileBarChart2, Funnel, TrendingUp, Users } from "lucide-react";
+import {
+  ArrowLeft,
+  ArrowRight,
+  BarChart3,
+  ClipboardCheck,
+  Funnel,
+  GraduationCap,
+  Users,
+} from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { QueryState } from "@/components/ui/query-state";
 import { AppShell } from "@/components/app/app-shell";
+import { useAdminApplications, useAdmissionsStats } from "@/lib/query/admissions";
+import { PIPELINE_STAGE_LABELS, type PipelineStage } from "@/lib/api/applications";
+import type { AdminApplication, AdmissionsStats } from "@/lib/api/applications";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/admissions/reports")({
   head: () => ({
     meta: [
       { title: "Reports — CEA-OS" },
-      { name: "description", content: "Conversion, sources and demographics." },
+      { name: "description", content: "Pipeline funnel and stage breakdown." },
     ],
   }),
   component: AdmissionsReports,
 });
 
-const sources = [
-  { s: "Digital ads", pct: 38 },
-  { s: "Referrals", pct: 24 },
-  { s: "Events", pct: 18 },
-  { s: "Partners", pct: 12 },
-  { s: "Organic", pct: 8 },
-];
-
-const reports = [
-  { r: "Fall intake funnel report", d: "Aug 1 · PDF", tone: "bg-success/10 text-success" },
-  { r: "Source & demographics", d: "Jul 31 · PDF", tone: "bg-primary/10 text-primary" },
-];
+const colorFor = (key: string) =>
+  key === "enrolled"
+    ? "bg-success"
+    : key === "offer"
+      ? "bg-warning"
+      : key === "interview"
+        ? "bg-learning"
+        : "bg-gradient-brand";
 
 function AdmissionsReports() {
+  const stats = useAdmissionsStats();
+  const s = stats.data;
+  const submitted = useAdminApplications("submitted");
+  const items = submitted.data?.pages.flatMap((p) => p.items) ?? [];
+
+  const value = (key: string) => s?.stages.find((x) => x.key === key)?.value ?? 0;
+
   return (
     <AppShell
       roleKey="instructor"
       title="Reports"
-      subtitle="Conversion 15.5% · top source: digital ads"
+      subtitle={
+        s ? `${value("offer")} offers · ${value("enrolled")} enrolled of ${s?.total}` : "Loading…"
+      }
       actions={
         <>
-          <Badge className="bg-success/10 text-success border-0 font-semibold">
-            Weekly cadence
-          </Badge>
+          <Badge className="bg-success/10 text-success border-0 font-semibold">Live funnel</Badge>
           <Button asChild variant="outline" size="sm" className="font-semibold">
             <Link to="/app/admissions">
               <ArrowLeft className="size-4" /> Admissions hub
@@ -51,32 +66,32 @@ function AdmissionsReports() {
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         {[
           {
-            label: "Lead→app",
-            value: "28.6%",
-            delta: "412 leads",
-            icon: Funnel,
+            label: "Total apps",
+            value: s ? String(s.total) : "—",
+            delta: `${s?.activeStages ?? "—"} active stages`,
+            icon: Users,
             tone: "bg-primary/10 text-primary",
           },
           {
-            label: "App→enrol",
-            value: "54.2%",
-            delta: "118 apps",
-            icon: TrendingUp,
-            tone: "bg-success/10 text-success",
-          },
-          {
-            label: "Avg. age",
-            value: "22.4",
-            delta: "19–35 range",
-            icon: Users,
+            label: "In queue",
+            value: s ? String(value("submitted") + value("screening")) : "—",
+            delta: "awaiting a decision",
+            icon: ClipboardCheck,
             tone: "bg-learning/10 text-learning",
           },
           {
-            label: "Top source",
-            value: "Ads",
-            delta: "38% of apps",
+            label: "Offers",
+            value: s ? String(value("offer")) : "—",
+            delta: "sent this cycle",
             icon: BarChart3,
             tone: "bg-warning/10 text-warning",
+          },
+          {
+            label: "Enrolled",
+            value: s ? String(value("enrolled")) : "—",
+            delta: "converted to enrollment",
+            icon: GraduationCap,
+            tone: "bg-success/10 text-success",
           },
         ].map((k) => (
           <Card key={k.label} className="bg-card shadow-soft border">
@@ -100,48 +115,90 @@ function AdmissionsReports() {
         <Card className="bg-card shadow-soft border">
           <CardHeader>
             <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
-              <Users className="text-primary size-4" /> Application sources
+              <Funnel className="text-primary size-4" /> Pipeline funnel
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
-            {sources.map((s) => (
-              <div key={s.s}>
-                <div className="flex items-center justify-between text-xs font-semibold">
-                  <span>{s.s}</span>
-                  <span>{s.pct}%</span>
-                </div>
-                <div className="bg-muted mt-1.5 h-2 overflow-hidden rounded-full">
-                  <div
-                    className="bg-gradient-brand h-full rounded-full"
-                    style={{ width: `${s.pct}%` }}
-                  />
-                </div>
-              </div>
-            ))}
+            <QueryState<AdmissionsStats>
+              query={stats}
+              error={{ title: "Funnel unavailable" }}
+              empty={{ title: "No pipeline data" }}
+              isEmpty={(d) => d.stages.length === 0}
+            >
+              {(d) =>
+                d.stages.map((st) => {
+                  const pct = d.total > 0 ? Math.round((st.value / d.total) * 100) : 0;
+                  return (
+                    <div key={st.key}>
+                      <div className="flex items-center justify-between text-xs font-semibold">
+                        <span>{PIPELINE_STAGE_LABELS[st.key as PipelineStage] ?? st.label}</span>
+                        <span>
+                          {st.value} · {pct}%
+                        </span>
+                      </div>
+                      <div className="bg-muted mt-1.5 h-2 overflow-hidden rounded-full">
+                        <div
+                          className={cn("h-full rounded-full", colorFor(st.key))}
+                          style={{ width: `${Math.max(pct, 4)}%` }}
+                        />
+                      </div>
+                    </div>
+                  );
+                })
+              }
+            </QueryState>
           </CardContent>
         </Card>
 
         <Card className="bg-card shadow-soft border">
           <CardHeader>
             <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
-              <FileBarChart2 className="text-primary size-4" /> Published reports
+              <ClipboardCheck className="text-primary size-4" /> Latest submissions
             </CardTitle>
           </CardHeader>
           <CardContent className="divide-y">
-            {reports.map((r) => (
-              <div
-                key={r.r}
-                className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
-              >
-                <div className="min-w-0 flex-1">
-                  <p className="text-sm font-bold">{r.r}</p>
-                  <p className="text-muted-foreground text-xs">{r.d}</p>
-                </div>
-                <Button variant="outline" size="sm" className="shrink-0 font-semibold">
-                  Open
-                </Button>
-              </div>
-            ))}
+            <QueryState<AdminApplication[]>
+              query={submitted}
+              error={{ title: "Submissions unavailable" }}
+              empty={{
+                title: "No new submissions",
+                description: "Newly received applications will appear here.",
+              }}
+              isEmpty={(rows) => rows.length === 0}
+            >
+              {(rows) => (
+                <>
+                  {rows.map((q) => (
+                    <div
+                      key={q.id}
+                      className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
+                    >
+                      <div className="min-w-0 flex-1">
+                        <p className="text-sm font-bold">
+                          {q.fullName}
+                          {q.programTitle ? ` · ${q.programTitle}` : ""}
+                        </p>
+                        <p className="text-muted-foreground text-xs">
+                          {q.ref}
+                          {q.city ? ` · ${q.city}` : ""}
+                          {q.experience ? ` · ${q.experience}` : ""}
+                        </p>
+                      </div>
+                      <Button
+                        asChild
+                        variant="outline"
+                        size="sm"
+                        className="shrink-0 font-semibold"
+                      >
+                        <Link to="/app/admissions/applications/$id" params={{ id: q.ref }}>
+                          Open <ArrowRight className="ml-1 size-3.5" />
+                        </Link>
+                      </Button>
+                    </div>
+                  ))}
+                </>
+              )}
+            </QueryState>
           </CardContent>
         </Card>
       </div>

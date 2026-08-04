@@ -1,40 +1,52 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowLeft, CalendarCheck2, GraduationCap, Wallet } from "lucide-react";
+import { ArrowLeft, ArrowRight, ClipboardCheck, GraduationCap, Users } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { QueryState } from "@/components/ui/query-state";
 import { AppShell } from "@/components/app/app-shell";
+import { useAdminApplications, useAdmissionsStats } from "@/lib/query/admissions";
+import { PIPELINE_STAGE_LABELS, type PipelineStage } from "@/lib/api/applications";
+import type { AdminApplication } from "@/lib/api/applications";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/admissions/enrollment")({
   head: () => ({
     meta: [
       { title: "Enrollment — CEA-OS" },
-      { name: "description", content: "Paid versus pending enrollment and orientation." },
+      { name: "description", content: "Enrolled, offered and pending applicants." },
     ],
   }),
   component: AdmissionsEnrollment,
 });
 
-const cohorts = [
-  {
-    c: "Cohort 16 · Fall",
-    e: "64 enrolled",
-    p: "52 paid · 12 pending",
-    tone: "bg-success/10 text-success",
-  },
-  { c: "Cohort 15 · Spring", e: "78 enrolled", p: "78 paid", tone: "bg-primary/10 text-primary" },
-];
+const stageTone: Record<string, string> = {
+  submitted: "bg-learning/10 text-learning",
+  screening: "bg-primary/10 text-primary",
+  assessment: "bg-primary/10 text-primary",
+  interview: "bg-warning/10 text-warning",
+  offer: "bg-warning/10 text-warning",
+  enrolled: "bg-success/10 text-success",
+};
 
 function AdmissionsEnrollment() {
+  const enrolled = useAdminApplications("enrolled");
+  const items = enrolled.data?.pages.flatMap((p) => p.items) ?? [];
+  const stats = useAdmissionsStats();
+  const s = stats.data;
+
+  const value = (key: string) => s?.stages.find((x) => x.key === key)?.value ?? 0;
+  const total = s?.total ?? 0;
+  const pending = value("offer") + value("interview");
+
   return (
     <AppShell
       roleKey="instructor"
       title="Enrollment tracker"
-      subtitle="64 enrolled · 52 paid (81%) · orientation Aug 24"
+      subtitle={s ? `${value("enrolled")} enrolled · ${value("offer")} offers sent` : "Loading…"}
       actions={
         <>
-          <Badge className="bg-success/10 text-success border-0 font-semibold">81% paid</Badge>
+          <Badge className="bg-success/10 text-success border-0 font-semibold">Live pipeline</Badge>
           <Button asChild variant="outline" size="sm" className="font-semibold">
             <Link to="/app/admissions">
               <ArrowLeft className="size-4" /> Admissions hub
@@ -47,30 +59,30 @@ function AdmissionsEnrollment() {
         {[
           {
             label: "Enrolled",
-            value: "64",
-            delta: "Cohort 16",
+            value: s ? String(value("enrolled")) : "—",
+            delta: "of this cycle",
             icon: GraduationCap,
-            tone: "bg-primary/10 text-primary",
-          },
-          {
-            label: "Paid",
-            value: "52",
-            delta: "81% of cohort",
-            icon: Wallet,
             tone: "bg-success/10 text-success",
           },
           {
-            label: "Pending payment",
-            value: "12",
-            delta: "due Aug 15",
-            icon: Wallet,
+            label: "Offers",
+            value: s ? String(value("offer")) : "—",
+            delta: "sent to applicants",
+            icon: ClipboardCheck,
             tone: "bg-warning/10 text-warning",
           },
           {
-            label: "Orientation",
-            value: "Aug 24",
-            delta: "on campus",
-            icon: CalendarCheck2,
+            label: "Awaiting",
+            value: s ? String(pending) : "—",
+            delta: "offers + interviews",
+            icon: Users,
+            tone: "bg-primary/10 text-primary",
+          },
+          {
+            label: "Total pipeline",
+            value: s ? String(total) : "—",
+            delta: "applications received",
+            icon: ClipboardCheck,
             tone: "bg-learning/10 text-learning",
           },
         ].map((k) => (
@@ -94,22 +106,49 @@ function AdmissionsEnrollment() {
       <Card className="bg-card mt-5 shadow-soft border">
         <CardHeader>
           <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
-            <GraduationCap className="text-primary size-4" /> Cohorts
+            <GraduationCap className="text-primary size-4" /> Enrolled applicants
           </CardTitle>
         </CardHeader>
         <CardContent className="divide-y">
-          {cohorts.map((c) => (
-            <div key={c.c} className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0">
-              <div className="min-w-0 flex-1">
-                <p className="text-sm font-bold">{c.c}</p>
-                <p className="text-muted-foreground text-xs">{c.p}</p>
-              </div>
-              <Badge className={cn("border-0 font-semibold", c.tone)}>{c.e}</Badge>
-              <Button variant="outline" size="sm" className="shrink-0 font-semibold">
-                View
-              </Button>
-            </div>
-          ))}
+          <QueryState<AdminApplication[]>
+            query={enrolled}
+            error={{ title: "Enrollment unavailable" }}
+            empty={{
+              title: "No enrollments yet",
+              description: "Applicants will appear here once they reach the enrolled stage.",
+            }}
+            isEmpty={(rows) => rows.length === 0}
+          >
+            {(rows) => (
+              <>
+                {rows.map((q) => (
+                  <div
+                    key={q.id}
+                    className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
+                  >
+                    <div className="min-w-0 flex-1">
+                      <p className="text-sm font-bold">
+                        {q.fullName}
+                        {q.programTitle ? ` · ${q.programTitle}` : ""}
+                      </p>
+                      <p className="text-muted-foreground text-xs">
+                        {q.ref}
+                        {q.email ? ` · ${q.email}` : ""}
+                      </p>
+                    </div>
+                    <Badge className={cn("border-0 font-semibold", stageTone[q.status])}>
+                      {PIPELINE_STAGE_LABELS[q.status as PipelineStage] ?? q.status}
+                    </Badge>
+                    <Button asChild variant="outline" size="sm" className="shrink-0 font-semibold">
+                      <Link to="/app/admissions/applications/$id" params={{ id: q.ref }}>
+                        Open <ArrowRight className="ml-1 size-3.5" />
+                      </Link>
+                    </Button>
+                  </div>
+                ))}
+              </>
+            )}
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>

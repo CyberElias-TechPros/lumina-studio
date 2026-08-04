@@ -110,6 +110,8 @@ export const RBAC_RULES: RbacRule[] = [
   /* Parent portal — parents only; admins may introspect */
   { methods: ["GET"], path: "/v1/parent/students", roles: ["parent", "admin"] },
   { methods: ["GET"], path: "/v1/parent/students/:id", roles: ["parent", "admin"] },
+  { methods: ["GET"], path: "/v1/parent/students/:id/finance", roles: ["parent", "admin"] },
+  { methods: ["GET"], path: "/v1/parent/students/:id/attendance", roles: ["parent", "admin"] },
 
   /* Mentor matchmaking — learners + mentors */
   { methods: ["GET"], path: "/v1/mentor/profiles", roles: ["student", "alumni", "mentor"] },

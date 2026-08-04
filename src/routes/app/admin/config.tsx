@@ -1,10 +1,18 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowLeft, Flag, Settings2, SlidersHorizontal, ToggleRight, Wrench } from "lucide-react";
+import {
+  ArrowLeft,
+  Flag,
+  RotateCcw,
+  Settings2,
+  SlidersHorizontal,
+  ToggleRight,
+  Wrench,
+} from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
-import { useFlags } from "@/lib/flags";
+import { flagLabels, useFlags, useResetFlag, useSetFlag } from "@/lib/flags";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/admin/config")({
@@ -19,6 +27,8 @@ export const Route = createFileRoute("/app/admin/config")({
 
 function AdminConfig() {
   const { data } = useFlags();
+  const setFlag = useSetFlag();
+  const resetFlag = useResetFlag();
 
   const flags = data ?? {};
   const flagCount = Object.keys(flags).length;
@@ -43,13 +53,9 @@ function AdminConfig() {
       s2: "Enabled",
       tone: "bg-success/10 text-success",
     },
-    ...Object.entries(flags).map(([name, on]) => ({
-      s: `Flag: ${name}`,
-      v: on ? "rolled out to all roles" : "off — mock fallback",
-      s2: on ? "Enabled" : "Disabled",
-      tone: on ? "bg-success/10 text-success" : "bg-muted-foreground/10 text-muted-foreground",
-    })),
   ];
+
+  const busy = setFlag.isPending || resetFlag.isPending;
 
   return (
     <AppShell
@@ -118,7 +124,7 @@ function AdminConfig() {
       <Card className="bg-card mt-5 shadow-soft border">
         <CardHeader>
           <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
-            <Flag className="text-primary size-4" /> Key settings
+            <Settings2 className="text-primary size-4" /> Key settings
           </CardTitle>
         </CardHeader>
         <CardContent className="divide-y">
@@ -134,10 +140,65 @@ function AdminConfig() {
               </Button>
             </div>
           ))}
-          {settings.length === 0 && (
-            <p className="text-muted-foreground py-4 text-center text-sm">
-              No flags or settings loaded yet.
-            </p>
+        </CardContent>
+      </Card>
+
+      <Card className="bg-card mt-5 shadow-soft border">
+        <CardHeader>
+          <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
+            <Flag className="text-primary size-4" /> Feature flags
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="divide-y">
+          {Object.entries(flags).map(([key, on]) => (
+            <div key={key} className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0">
+              <div className="min-w-0 flex-1">
+                <p className="text-sm font-bold">{flagLabels[key] ?? key}</p>
+                <p className="text-muted-foreground font-mono text-xs">{key}</p>
+              </div>
+              <Badge
+                className={cn(
+                  "border-0 font-semibold",
+                  on
+                    ? "bg-success/10 text-success"
+                    : "bg-muted-foreground/10 text-muted-foreground",
+                )}
+              >
+                {on ? "Enabled" : "Disabled"}
+              </Badge>
+              {on ? (
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="shrink-0 font-semibold"
+                  disabled={busy}
+                  onClick={() => setFlag.mutate({ key, enabled: false })}
+                >
+                  Disable
+                </Button>
+              ) : (
+                <Button
+                  size="sm"
+                  className="bg-gradient-brand shadow-glow shrink-0 border-0 font-semibold"
+                  disabled={busy}
+                  onClick={() => setFlag.mutate({ key, enabled: true })}
+                >
+                  Enable
+                </Button>
+              )}
+              <Button
+                variant="ghost"
+                size="sm"
+                className="shrink-0 font-semibold"
+                disabled={busy}
+                onClick={() => resetFlag.mutate(key)}
+              >
+                <RotateCcw className="size-3.5" /> Reset
+              </Button>
+            </div>
+          ))}
+          {flagCount === 0 && (
+            <p className="text-muted-foreground py-4 text-center text-sm">No flags loaded yet.</p>
           )}
         </CardContent>
       </Card>

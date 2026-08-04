@@ -49,3 +49,42 @@ export function fetchParentStudents(): Promise<Paginated<ParentStudent>> {
 export function fetchParentStudent(studentId: string): Promise<ParentStudentDetail> {
   return apiFetch<ParentStudentDetail>(`/v1/parent/students/${studentId}`);
 }
+
+export interface ParentInvoice {
+  id: string;
+  party: string;
+  amount: number;
+  due: string;
+  status: string;
+}
+
+export interface ParentFinance {
+  studentId: string;
+  items: ParentInvoice[];
+  totals: { paid: number; outstanding: number; count: number };
+}
+
+export interface ParentAttendanceRecord {
+  id: string;
+  date: string;
+  status: string;
+  note: string;
+}
+
+export interface ParentAttendance {
+  studentId: string;
+  pct: number;
+  counts: { present: number; late: number; excused: number; absent: number };
+  total: number;
+  items: ParentAttendanceRecord[];
+}
+
+/** Parent endpoint — billing ledger + totals for one linked learner. */
+export function fetchParentFinance(studentId: string): Promise<ParentFinance> {
+  return apiFetch<ParentFinance>(`/v1/parent/students/${studentId}/finance`);
+}
+
+/** Parent endpoint — attendance summary + records for one linked learner. */
+export function fetchParentAttendance(studentId: string): Promise<ParentAttendance> {
+  return apiFetch<ParentAttendance>(`/v1/parent/students/${studentId}/attendance`);
+}

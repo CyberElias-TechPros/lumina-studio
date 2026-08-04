@@ -57,6 +57,13 @@ const tiles = [
     icon: HandHeart,
     tone: "text-warning bg-warning/10",
   },
+  {
+    to: "/app/alumni/find",
+    label: "Find a mentor",
+    desc: "Browse mentors and request mentorship",
+    icon: HeartHandshake,
+    tone: "text-career bg-career/10",
+  },
 ];
 
 function AlumniHub() {

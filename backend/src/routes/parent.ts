@@ -177,3 +177,95 @@ parent.get("/students/:id", async (c) => {
     })),
   });
 });
+
+interface BillingRow {
+  id: string;
+  party: string;
+  amount: number;
+  due: string;
+  status: string;
+}
+
+/** Parent: billing ledger + totals for one linked learner. */
+parent.get("/students/:id/finance", async (c) => {
+  const authUser = c.get("authUser");
+  const studentId = c.req.param("id");
+  const owned = await c.env.DB.prepare(
+    `SELECT 1 FROM parent_students WHERE parent_id = ? AND student_id = ?`,
+  )
+    .bind(authUser.id, studentId)
+    .first<{ 1: number }>();
+  if (!owned) {
+    throw ApiError.forbidden("You can only view your own children's records.");
+  }
+
+  const rows = await c.env.DB.prepare(
+    `SELECT id, party, amount, due, status FROM invoices
+      WHERE user_id = ? ORDER BY sort_order ASC, id ASC`,
+  )
+    .bind(studentId)
+    .all<BillingRow>();
+
+  let paidTotal = 0;
+  let outstandingTotal = 0;
+  let outstandingCount = 0;
+  const items = rows.results.map((r) => {
+    if (r.status.toLowerCase() === "paid") {
+      paidTotal += r.amount;
+    } else {
+      outstandingTotal += r.amount;
+      outstandingCount += 1;
+    }
+    return { id: r.id, party: r.party, amount: r.amount, due: r.due, status: r.status };
+  });
+
+  return c.json({
+    studentId,
+    items,
+    totals: { paid: paidTotal, outstanding: outstandingTotal, count: outstandingCount },
+  });
+});
+
+interface AttendanceRow {
+  id: string;
+  date: string;
+  status: string;
+  note: string;
+}
+
+/** Parent: attendance summary + recent records for one linked learner. */
+parent.get("/students/:id/attendance", async (c) => {
+  const authUser = c.get("authUser");
+  const studentId = c.req.param("id");
+  const owned = await c.env.DB.prepare(
+    `SELECT 1 FROM parent_students WHERE parent_id = ? AND student_id = ?`,
+  )
+    .bind(authUser.id, studentId)
+    .first<{ 1: number }>();
+  if (!owned) {
+    throw ApiError.forbidden("You can only view your own children's records.");
+  }
+
+  const rows = await c.env.DB.prepare(
+    `SELECT id, date, status, note FROM attendance
+      WHERE user_id = ? ORDER BY date ASC`,
+  )
+    .bind(studentId)
+    .all<AttendanceRow>();
+
+  const counts = { present: 0, late: 0, excused: 0, absent: 0 };
+  for (const row of rows.results) {
+    const key = row.status.toLowerCase() as keyof typeof counts;
+    if (key in counts) counts[key] += 1;
+  }
+  const total = rows.results.length;
+  const pct = total === 0 ? 100 : Math.round(((counts.present + counts.late) / total) * 100);
+
+  return c.json({
+    studentId,
+    pct,
+    counts,
+    total,
+    items: rows.results.map((r) => ({ id: r.id, date: r.date, status: r.status, note: r.note })),
+  });
+});

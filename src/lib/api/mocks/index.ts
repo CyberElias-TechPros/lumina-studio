@@ -316,6 +316,54 @@ export function registerAllMocks(): void {
     await delay();
     return { items: mockParentStudents, total: mockParentStudents.length };
   });
+  registerMockPattern("GET", "/v1/parent/students/*/finance", async (init: ApiRequestInit) => {
+    await delay();
+    const segments = (init.path ?? "").split("/").filter(Boolean);
+    const id = segments[segments.length - 2] ?? "";
+    const summary = mockParentStudents.find((s) => s.studentId === id);
+    if (!summary) throw new ApiError(404, "NOT_FOUND", "Student not found.");
+    return {
+      studentId: id,
+      items: [
+        {
+          id: "INV-P01",
+          party: "Tuition — Term 2 2025/26",
+          amount: 1650000,
+          due: "2026-05-15",
+          status: "paid",
+        },
+        {
+          id: "INV-P02",
+          party: "Tuition — Term 3 2025/26 instalment",
+          amount: 820000,
+          due: "2026-08-10",
+          status: "sent",
+        },
+      ],
+      totals: { paid: 1650000, outstanding: 820000, count: 1 },
+    };
+  });
+  registerMockPattern("GET", "/v1/parent/students/*/attendance", async (init: ApiRequestInit) => {
+    await delay();
+    const segments = (init.path ?? "").split("/").filter(Boolean);
+    const id = segments[segments.length - 2] ?? "";
+    const summary = mockParentStudents.find((s) => s.studentId === id);
+    if (!summary) throw new ApiError(404, "NOT_FOUND", "Student not found.");
+    const items = [
+      { id: "att-1", date: "2026-07-30", status: "present", note: "Morning standup + cohort work" },
+      { id: "att-2", date: "2026-07-31", status: "present", note: "Backend practicum" },
+      { id: "att-3", date: "2026-08-01", status: "late", note: "Arrived 05:45 for review session" },
+      { id: "att-4", date: "2026-08-02", status: "excused", note: "Exam absence, pre-approved" },
+      { id: "att-5", date: "2026-08-03", status: "present", note: "Deployment workshop" },
+    ];
+    return {
+      studentId: id,
+      pct: 80,
+      counts: { present: 3, late: 1, excused: 1, absent: 0 },
+      total: items.length,
+      items,
+    };
+  });
   registerMockPattern("GET", "/v1/parent/students/*", async (init: ApiRequestInit) => {
     await delay();
     const segments = (init.path ?? "").split("/").filter(Boolean);
@@ -852,19 +900,37 @@ export function registerAllMocks(): void {
   });
 
   /* Flags */
+  const flagDefaults: Record<string, boolean> = {
+    "ai.grading": false,
+    "ai.recommendations": false,
+    "ai.assistant": false,
+    "ai.content-gen": false,
+    "realtime.chat": false,
+    "realtime.live-class": false,
+    "payments.paystack": false,
+    "uploads.r2": false,
+    "pwa.push": false,
+    "onboarding.tours": true,
+  };
+  const flagOverrides: Record<string, boolean> = {};
   registerMock("GET", "/v1/flags", async () => {
     await delay();
-    return {
-      "ai.grading": false,
-      "ai.recommendations": false,
-      "ai.assistant": false,
-      "ai.content-gen": false,
-      "realtime.chat": false,
-      "realtime.live-class": false,
-      "payments.paystack": false,
-      "uploads.r2": false,
-      "pwa.push": false,
-      "onboarding.tours": true,
-    };
+    return { ...flagDefaults, ...flagOverrides };
+  });
+  registerMockPattern("PUT", "/v1/flags/*", async (init: ApiRequestInit) => {
+    await delay();
+    const key = (init.path ?? "").split("/").pop() ?? "";
+    const { enabled } = (init.body ?? {}) as { enabled?: boolean };
+    if (typeof enabled !== "boolean") {
+      throw new ApiError(400, "VALIDATION_ERROR", "enabled must be a boolean.");
+    }
+    flagOverrides[key] = enabled;
+    return { key, enabled, mock: true };
+  });
+  registerMockPattern("DELETE", "/v1/flags/*", async (init: ApiRequestInit) => {
+    await delay();
+    const key = (init.path ?? "").split("/").pop() ?? "";
+    delete flagOverrides[key];
+    return { key, enabled: false };
   });
 }

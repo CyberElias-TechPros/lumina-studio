@@ -1,41 +1,65 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowLeft, Banknote, Building2, CheckCircle2, Landmark, Wallet } from "lucide-react";
+import { ArrowLeft, Banknote, CheckCircle2, Landmark, ReceiptText, Wallet } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { QueryState } from "@/components/ui/query-state";
 import { AppShell } from "@/components/app/app-shell";
-import { cn } from "@/lib/utils";
+import { usePaymentHistory, usePaymentHistoryItems } from "@/lib/query/payments";
+import { usePaymentBatches, usePaymentBatchItems } from "@/lib/query/finance";
+import type { Payment } from "@/lib/api/payments";
+import type { PaymentBatch } from "@/lib/api/finance";
+import { cn, formatNaira } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/accountant/banking")({
   head: () => ({
     meta: [
       { title: "Banking — CEA-OS" },
-      { name: "description", content: "Bank reconciliation across accounts." },
+      { name: "description", content: "Payment reconciliation ledger and batches." },
     ],
   }),
   component: AccountantBanking,
 });
 
-const accounts = [
-  { a: "Main — GTB 0123…", b: "₦18.2m", s: "Reconciled", tone: "bg-success/10 text-success" },
-  { a: "Payroll — Access 4567…", b: "₦4.9m", s: "Reconciled", tone: "bg-success/10 text-success" },
-  {
-    a: "Scholarship — UBA 7890…",
-    b: "₦1.7m",
-    s: "1 item pending",
-    tone: "bg-warning/10 text-warning",
-  },
-];
+const paymentTone: Record<string, string> = {
+  success: "bg-success/10 text-success",
+  pending: "bg-warning/10 text-warning",
+  failed: "bg-primary/10 text-primary",
+};
+
+const batchTone: Record<string, string> = {
+  paid: "bg-success/10 text-success",
+  pending: "bg-warning/10 text-warning",
+  failed: "bg-primary/10 text-primary",
+};
 
 function AccountantBanking() {
+  const history = usePaymentHistory();
+  const payments = usePaymentHistoryItems();
+  const batches = usePaymentBatches();
+  const batchItems = usePaymentBatchItems();
+
+  const collected = payments.reduce((sum, p) => (p.status === "success" ? sum + p.amount : sum), 0);
+  const pending = payments.reduce((sum, p) => (p.status === "pending" ? sum + p.amount : sum), 0);
+  const matched =
+    payments.length > 0
+      ? Math.round((payments.filter((p) => p.status === "success").length / payments.length) * 100)
+      : 0;
+
   return (
     <AppShell
       roleKey="instructor"
       title="Banking reconciliation"
-      subtitle="3 accounts · ₦24.8m total · last sync 07:00 today"
+      subtitle={
+        payments.length > 0
+          ? `${payments.length} payments · ${formatNaira(collected)} collected`
+          : "Loading ledger…"
+      }
       actions={
         <>
-          <Badge className="bg-success/10 text-success border-0 font-semibold">98% matched</Badge>
+          <Badge className="bg-success/10 text-success border-0 font-semibold">
+            {matched}% matched
+          </Badge>
           <Button asChild variant="outline" size="sm" className="font-semibold">
             <Link to="/app/accountant">
               <ArrowLeft className="size-4" /> Finance hub
@@ -47,30 +71,30 @@ function AccountantBanking() {
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         {[
           {
-            label: "Accounts",
-            value: "3",
-            delta: "all linked",
-            icon: Building2,
+            label: "Transactions",
+            value: payments.length > 0 ? String(payments.length) : "—",
+            delta: "in payment ledger",
+            icon: Wallet,
             tone: "bg-primary/10 text-primary",
           },
           {
-            label: "Total balance",
-            value: "₦24.8m",
-            delta: "as of today",
-            icon: Wallet,
+            label: "Collected",
+            value: collected > 0 ? formatNaira(collected) : "—",
+            delta: "successful payments",
+            icon: Banknote,
             tone: "bg-success/10 text-success",
           },
           {
-            label: "Pending items",
-            value: "1",
-            delta: "₦240k transfer",
+            label: "Pending",
+            value: pending > 0 ? formatNaira(pending) : "—",
+            delta: "awaiting confirmation",
             icon: Landmark,
             tone: "bg-warning/10 text-warning",
           },
           {
             label: "Match rate",
-            value: "98%",
-            delta: "30-day rolling",
+            value: payments.length > 0 ? `${matched}%` : "—",
+            delta: "success ratio",
             icon: CheckCircle2,
             tone: "bg-learning/10 text-learning",
           },
@@ -92,27 +116,94 @@ function AccountantBanking() {
         ))}
       </div>
 
-      <Card className="bg-card mt-5 shadow-soft border">
-        <CardHeader>
-          <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
-            <Banknote className="text-primary size-4" /> Accounts
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="divide-y">
-          {accounts.map((a) => (
-            <div key={a.a} className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0">
-              <div className="min-w-0 flex-1">
-                <p className="text-sm font-bold">{a.a}</p>
-                <p className="text-muted-foreground text-xs">Balance {a.b}</p>
-              </div>
-              <Badge className={cn("border-0 font-semibold", a.tone)}>{a.s}</Badge>
-              <Button variant="outline" size="sm" className="shrink-0 font-semibold">
-                Reconcile
-              </Button>
-            </div>
-          ))}
-        </CardContent>
-      </Card>
+      <div className="mt-5 grid gap-5 xl:grid-cols-2">
+        <Card className="bg-card shadow-soft border">
+          <CardHeader>
+            <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
+              <ReceiptText className="text-primary size-4" /> Payment ledger
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="divide-y">
+            <QueryState<Payment[]>
+              query={history}
+              error={{ title: "Ledger unavailable" }}
+              empty={{
+                title: "No payments yet",
+                description: "Confirmed payment transactions will show here.",
+              }}
+              isEmpty={(rows) => rows.length === 0}
+            >
+              {(rows) => (
+                <>
+                  {rows.map((p) => (
+                    <div
+                      key={p.id}
+                      className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
+                    >
+                      <div className="min-w-0 flex-1">
+                        <p className="text-sm font-bold">{p.reference}</p>
+                        <p className="text-muted-foreground text-xs">
+                          {p.description || p.email}
+                          {p.provider ? ` · ${p.provider}` : ""}
+                        </p>
+                      </div>
+                      <p className="text-sm font-bold">{formatNaira(p.amount)}</p>
+                      <Badge
+                        className={cn("border-0 font-semibold capitalize", paymentTone[p.status])}
+                      >
+                        {p.status}
+                      </Badge>
+                    </div>
+                  ))}
+                </>
+              )}
+            </QueryState>
+          </CardContent>
+        </Card>
+
+        <Card className="bg-card shadow-soft border">
+          <CardHeader>
+            <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
+              <Banknote className="text-primary size-4" /> Settlement batches
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="divide-y">
+            <QueryState<PaymentBatch[]>
+              query={batches}
+              error={{ title: "Batches unavailable" }}
+              empty={{
+                title: "No batches yet",
+                description: "Payroll and invoice settlement batches will appear here.",
+              }}
+              isEmpty={(rows) => rows.length === 0}
+            >
+              {(rows) => (
+                <>
+                  {rows.map((b) => (
+                    <div
+                      key={b.id}
+                      className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
+                    >
+                      <div className="min-w-0 flex-1">
+                        <p className="text-sm font-bold">{b.batch}</p>
+                        <p className="text-muted-foreground text-xs">
+                          {b.count} recipients · {new Date(b.date).toLocaleDateString()}
+                        </p>
+                      </div>
+                      <p className="text-sm font-bold">{formatNaira(b.amount)}</p>
+                      <Badge
+                        className={cn("border-0 font-semibold capitalize", batchTone[b.status])}
+                      >
+                        {b.status}
+                      </Badge>
+                    </div>
+                  ))}
+                </>
+              )}
+            </QueryState>
+          </CardContent>
+        </Card>
+      </div>
     </AppShell>
   );
 }
