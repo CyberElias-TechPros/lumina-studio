@@ -1,9 +1,12 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowLeft, Activity, Cpu, Globe, MemoryStick, Server } from "lucide-react";
+import { ArrowLeft, Activity, Globe, Server } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { QueryState } from "@/components/ui/query-state";
 import { AppShell } from "@/components/app/app-shell";
+import { useItServices, useItServiceItems } from "@/lib/query/it";
+import type { ItService } from "@/lib/api/it";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/it/monitoring")({
@@ -16,22 +19,41 @@ export const Route = createFileRoute("/app/it/monitoring")({
   component: ItMonitoring,
 });
 
-const services = [
-  { s: "Learning platform", u: "99.98%", t: "23 ms", tone: "bg-success/10 text-success" },
-  { s: "Portal + API", u: "99.95%", t: "41 ms", tone: "bg-success/10 text-success" },
-  { s: "Campus WiFi", u: "98.2%", t: "—", tone: "bg-primary/10 text-primary" },
-  { s: "Video conferencing", u: "99.1%", t: "—", tone: "bg-warning/10 text-warning" },
-];
+const statusTone: Record<string, string> = {
+  healthy: "bg-success/10 text-success",
+  degraded: "bg-warning/10 text-warning",
+  down: "bg-destructive/10 text-destructive",
+};
 
 function ItMonitoring() {
+  const query = useItServices();
+  const services = useItServiceItems();
+
+  const healthy = services.filter((s) => s.status === "healthy").length;
+  const degraded = services.filter((s) => s.status !== "healthy").length;
+  const uptimes = services.map((s) => Number.parseFloat(s.uptime)).filter((n) => !Number.isNaN(n));
+  const avgUptime =
+    uptimes.length > 0 ? (uptimes.reduce((sum, n) => sum + n, 0) / uptimes.length).toFixed(2) : "—";
+
   return (
     <AppShell
       roleKey="instructor"
       title="System monitoring"
-      subtitle="6 services · 99.7% avg uptime · 2 alerts today"
+      subtitle={
+        services.length > 0
+          ? `${services.length} services · ${avgUptime}% avg uptime · ${degraded} alert${degraded === 1 ? "" : "s"} today`
+          : "Loading services…"
+      }
       actions={
         <>
-          <Badge className="bg-success/10 text-success border-0 font-semibold">Stable</Badge>
+          <Badge
+            className={cn(
+              "border-0 font-semibold",
+              degraded > 0 ? "bg-warning/10 text-warning" : "bg-success/10 text-success",
+            )}
+          >
+            {degraded > 0 ? `${degraded} degraded` : "Stable"}
+          </Badge>
           <Button asChild variant="outline" size="sm" className="font-semibold">
             <Link to="/portal/it-support">
               <ArrowLeft className="size-4" /> IT Support portal
@@ -44,31 +66,31 @@ function ItMonitoring() {
         {[
           {
             label: "Services",
-            value: "6",
-            delta: "5 healthy",
+            value: services.length > 0 ? String(services.length) : "—",
+            delta: `${healthy} healthy`,
             icon: Server,
             tone: "bg-primary/10 text-primary",
           },
           {
-            label: "CPU (avg)",
-            value: "38%",
-            delta: "peak 72%",
-            icon: Cpu,
+            label: "Healthy",
+            value: healthy > 0 ? String(healthy) : "—",
+            delta: "operational",
+            icon: Globe,
             tone: "bg-success/10 text-success",
           },
           {
-            label: "Memory",
-            value: "64%",
-            delta: "used",
-            icon: MemoryStick,
-            tone: "bg-learning/10 text-learning",
-          },
-          {
-            label: "Alerts (24h)",
-            value: "2",
-            delta: "auto-resolved",
+            label: "Degraded",
+            value: degraded > 0 ? String(degraded) : "0",
+            delta: "needs attention",
             icon: Activity,
             tone: "bg-warning/10 text-warning",
+          },
+          {
+            label: "Avg uptime",
+            value: avgUptime !== "—" ? `${avgUptime}%` : "—",
+            delta: "tracked services",
+            icon: Activity,
+            tone: "bg-learning/10 text-learning",
           },
         ].map((k) => (
           <Card key={k.label} className="bg-card shadow-soft border">
@@ -95,15 +117,37 @@ function ItMonitoring() {
           </CardTitle>
         </CardHeader>
         <CardContent className="divide-y">
-          {services.map((s) => (
-            <div key={s.s} className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0">
-              <div className="min-w-0 flex-1">
-                <p className="text-sm font-bold">{s.s}</p>
-                <p className="text-muted-foreground text-xs">Latency {s.t}</p>
-              </div>
-              <Badge className={cn("border-0 font-semibold", s.tone)}>Uptime {s.u}</Badge>
-            </div>
-          ))}
+          <QueryState<ItService[]>
+            query={query}
+            error={{ title: "Services unavailable" }}
+            empty={{
+              title: "No services yet",
+              description: "Monitored services will show here.",
+            }}
+            isEmpty={(rows) => rows.length === 0}
+          >
+            {(rows) =>
+              rows.map((s) => (
+                <div
+                  key={s.id}
+                  className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
+                >
+                  <div className="min-w-0 flex-1">
+                    <p className="text-sm font-bold">{s.name}</p>
+                    <p className="text-muted-foreground text-xs">Latency {s.latency}</p>
+                  </div>
+                  <Badge
+                    className={cn(
+                      "border-0 font-semibold",
+                      statusTone[s.status] ?? "bg-muted/20 text-muted-foreground",
+                    )}
+                  >
+                    Uptime {s.uptime}
+                  </Badge>
+                </div>
+              ))
+            }
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>

@@ -15,7 +15,7 @@
     "download:library": "tsx scripts/download-library.ts",
     "upload:library": "tsx scripts/upload-library.ts",
     "db:migrate:local": "wrangler d1 migrations apply DB --local",
-    "db:seed:local": "wrangler d1 execute DB --local --file seeds/content-data.sql && wrangler d1 execute DB --local --file seeds/lms-data.sql && wrangler d1 execute DB --local --file seeds/domain-data.sql && wrangler d1 execute DB --local --file seeds/library-data.sql && wrangler d1 execute DB --local --file seeds/external-links-data.sql && wrangler d1 execute DB --local --file seeds/parent-data.sql && wrangler d1 execute DB --local --file seeds/mentor-data.sql && wrangler d1 execute DB --local --file seeds/attendance-data.sql && wrangler d1 execute DB --local --file seeds/ops-data.sql"
+    "db:seed:local": "wrangler d1 execute DB --local --file seeds/content-data.sql && wrangler d1 execute DB --local --file seeds/lms-data.sql && wrangler d1 execute DB --local --file seeds/domain-data.sql && wrangler d1 execute DB --local --file seeds/library-data.sql && wrangler d1 execute DB --local --file seeds/external-links-data.sql && wrangler d1 execute DB --local --file seeds/parent-data.sql && wrangler d1 execute DB --local --file seeds/mentor-data.sql && wrangler d1 execute DB --local --file seeds/attendance-data.sql && wrangler d1 execute DB --local --file seeds/ops-data.sql && wrangler d1 execute DB --local --file seeds/it-data.sql"
   },
   "dependencies": {
     "drizzle-orm": "^0.45.2",

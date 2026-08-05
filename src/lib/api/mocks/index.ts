@@ -1215,4 +1215,238 @@ export function registerAllMocks(): void {
     const items = opsCollections[key] ?? [];
     return { items, total: items.length };
   });
+
+  /* IT suite — mirrors backend seeds (migrations/0015_it.sql) */
+  const itTickets = [
+    {
+      id: "TKT-1042",
+      subject: "Projector fails in Lab 2",
+      reporter: "Ms. Chidera",
+      priority: "P1",
+      sla: "SLA 2h",
+      elapsed: "1h elapsed",
+      status: "assigned",
+    },
+    {
+      id: "TKT-1041",
+      subject: "New starter laptop setup",
+      reporter: "Admissions officer",
+      priority: "P2",
+      sla: "SLA 24h",
+      elapsed: "3h elapsed",
+      status: "in progress",
+    },
+    {
+      id: "TKT-1040",
+      subject: "WiFi dropouts — Block C",
+      reporter: "Facilities",
+      priority: "P1",
+      sla: "SLA 2h",
+      elapsed: "30m elapsed",
+      status: "investigating",
+    },
+    {
+      id: "TKT-1039",
+      subject: "Printer toner request",
+      reporter: "Store keeper",
+      priority: "P3",
+      sla: "SLA 72h",
+      elapsed: "10h elapsed",
+      status: "queued",
+    },
+    {
+      id: "TKT-1038",
+      subject: "Whiteboard camera pairing",
+      reporter: "Mrs. Obi",
+      priority: "P2",
+      sla: "SLA 24h",
+      elapsed: "5h elapsed",
+      status: "solved",
+    },
+  ];
+  const itCollections: Record<string, Record<string, unknown>[]> = {
+    tickets: itTickets,
+    articles: [
+      {
+        id: "art-01",
+        title: "WiFi onboarding — staff",
+        views: 412,
+        helpfulPct: 96,
+        category: "network",
+      },
+      {
+        id: "art-02",
+        title: "Printer setup guide",
+        views: 318,
+        helpfulPct: 91,
+        category: "printers",
+      },
+      {
+        id: "art-03",
+        title: "Laptop provisioning checklist",
+        views: 204,
+        helpfulPct: 88,
+        category: "hardware",
+      },
+    ],
+    assets: [
+      {
+        id: "ast-01",
+        name: "Laptop · HP EliteBook · #L-0142",
+        assignedTo: "Ms. Chidera",
+        category: "laptop",
+        status: "in use",
+      },
+      {
+        id: "ast-02",
+        name: "Laptop · Dell Latitude · #L-0143",
+        assignedTo: "New starter",
+        category: "laptop",
+        status: "provisioning",
+      },
+      {
+        id: "ast-03",
+        name: "Server · App node 2",
+        assignedTo: "Infra",
+        category: "server",
+        status: "healthy",
+      },
+      {
+        id: "ast-04",
+        name: 'Monitor · Dell 24" · #M-0211',
+        assignedTo: "Accounts",
+        category: "peripheral",
+        status: "in use",
+      },
+      {
+        id: "ast-05",
+        name: "Laptop · Lenovo ThinkPad · #L-0144",
+        assignedTo: "J. Okonkwo",
+        category: "laptop",
+        status: "repair",
+      },
+    ],
+    licenses: [
+      {
+        id: "lic-01",
+        product: "Adobe Creative Cloud",
+        seats: 24,
+        inUse: 20,
+        renews: "Renews Oct 2026",
+        status: "active",
+      },
+      {
+        id: "lic-02",
+        product: "Microsoft 365",
+        seats: 120,
+        inUse: 96,
+        renews: "Renews Jan 2027",
+        status: "active",
+      },
+      {
+        id: "lic-03",
+        product: "Figma Pro",
+        seats: 30,
+        inUse: 18,
+        renews: "Renews Sep 2026",
+        status: "active",
+      },
+      {
+        id: "lic-04",
+        product: "Notion Team",
+        seats: 40,
+        inUse: 26,
+        renews: "Renews Dec 2026",
+        status: "active",
+      },
+    ],
+    services: [
+      {
+        id: "svc-01",
+        name: "Learning platform",
+        uptime: "99.98%",
+        latency: "23 ms",
+        status: "healthy",
+      },
+      { id: "svc-02", name: "Portal + API", uptime: "99.95%", latency: "41 ms", status: "healthy" },
+      { id: "svc-03", name: "Campus WiFi", uptime: "98.2%", latency: "—", status: "healthy" },
+      {
+        id: "svc-04",
+        name: "Video conferencing",
+        uptime: "99.1%",
+        latency: "—",
+        status: "degraded",
+      },
+    ],
+    windows: [
+      {
+        id: "win-01",
+        title: "Platform maintenance",
+        windowText: "Aug 8 · 02:00–04:00",
+        status: "scheduled",
+      },
+      {
+        id: "win-02",
+        title: "Backup infrastructure upgrade",
+        windowText: "Aug 15 · 01:00–03:00",
+        status: "scheduled",
+      },
+      {
+        id: "win-03",
+        title: "WiFi controller firmware",
+        windowText: "Jul 26 · completed",
+        status: "done",
+      },
+    ],
+    sessions: [
+      {
+        id: "rs-01",
+        name: "Ms. Chidera — Lab 2 projector",
+        detail: "Active · 12 min",
+        status: "live",
+      },
+      {
+        id: "rs-02",
+        name: "Mrs. Obi — Wi-Fi dropouts",
+        detail: "Scheduled 14:30",
+        status: "upcoming",
+      },
+      {
+        id: "rs-03",
+        name: "Registrar — printer queue",
+        detail: "Completed · 8 min",
+        status: "done",
+      },
+    ],
+    templates: [
+      { id: "tpl-01", title: "New starter — full setup", uses: 12, status: "active" },
+      { id: "tpl-02", title: "WiFi troubleshooting", uses: 24, status: "active" },
+      { id: "tpl-03", title: "Printer / peripheral fault", uses: 9, status: "active" },
+      { id: "tpl-04", title: "Account access reset", uses: 5, status: "draft" },
+    ],
+    accounts: [
+      { id: "usr-01", name: "Ms. Chidera", role: "Instructor · DevOps", status: "active" },
+      { id: "usr-02", name: "New starter", role: "Admissions officer", status: "awaiting invite" },
+      { id: "usr-03", name: "J. Okonkwo", role: "Data analyst", status: "offboarded" },
+      { id: "usr-04", name: "Mrs. Obi", role: "Learning design", status: "active" },
+    ],
+  };
+  registerMockPattern("GET", "/v1/it/*", async (init: ApiRequestInit) => {
+    await delay();
+    const segments = (init.path ?? "").split("/").filter(Boolean);
+    const key = segments[segments.length - 1] ?? "";
+    const ticket = itTickets.find((t) => t.id === key);
+    if (ticket) {
+      return {
+        ...ticket,
+        events: [
+          { event: "Ticket created", whenText: "Today 08:30" },
+          { event: "Assigned to you", whenText: "Today 08:45" },
+          { event: "Remote check — confirmed with reporter", whenText: "Today 09:10" },
+        ],
+      };
+    }
+    const items = itCollections[key] ?? [];
+    return { items, total: items.length };
+  });
 }

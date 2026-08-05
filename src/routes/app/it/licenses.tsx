@@ -1,9 +1,12 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowLeft, AlertTriangle, CalendarClock, KeyRound, ShieldCheck } from "lucide-react";
+import { ArrowLeft, CalendarClock, KeyRound, ShieldCheck } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { QueryState } from "@/components/ui/query-state";
 import { AppShell } from "@/components/app/app-shell";
+import { useItLicenses, useItLicenseItems } from "@/lib/query/it";
+import type { ItLicense } from "@/lib/api/it";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/it/licenses")({
@@ -16,36 +19,29 @@ export const Route = createFileRoute("/app/it/licenses")({
   component: ItLicenses,
 });
 
-const licenses = [
-  {
-    l: "Adobe Creative Cloud",
-    s: "24 seats · 20 used",
-    e: "Renews Oct 2026",
-    tone: "bg-primary/10 text-primary",
-  },
-  {
-    l: "Microsoft 365",
-    s: "120 seats · 96 used",
-    e: "Renews Jan 2027",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    l: "Figma Pro",
-    s: "30 seats · 18 used",
-    e: "Renews Sep 2026",
-    tone: "bg-warning/10 text-warning",
-  },
-];
-
 function ItLicenses() {
+  const query = useItLicenses();
+  const licenses = useItLicenseItems();
+
+  const seats = licenses.reduce((sum, l) => sum + l.seats, 0);
+  const used = licenses.reduce((sum, l) => sum + l.inUse, 0);
+  const utilization = seats > 0 ? Math.round((used / seats) * 100) : 0;
+  const renewing = licenses.filter((l) => l.status === "active").length;
+
   return (
     <AppShell
       roleKey="instructor"
       title="Software licenses"
-      subtitle="14 products · ₦4.2m/yr · 82% utilization"
+      subtitle={
+        licenses.length > 0
+          ? `${licenses.length} products · ${utilization}% utilization`
+          : "Loading licenses…"
+      }
       actions={
         <>
-          <Badge className="bg-success/10 text-success border-0 font-semibold">On budget</Badge>
+          <Badge className="bg-success/10 text-success border-0 font-semibold">
+            {used}/{seats} seats used
+          </Badge>
           <Button asChild variant="outline" size="sm" className="font-semibold">
             <Link to="/portal/it-support">
               <ArrowLeft className="size-4" /> IT Support portal
@@ -58,30 +54,30 @@ function ItLicenses() {
         {[
           {
             label: "Products",
-            value: "14",
-            delta: "2 free tier",
+            value: licenses.length > 0 ? String(licenses.length) : "—",
+            delta: "under management",
             icon: ShieldCheck,
             tone: "bg-primary/10 text-primary",
           },
           {
             label: "Seats used",
-            value: "82%",
-            delta: "of 412",
+            value: utilization > 0 ? `${utilization}%` : "—",
+            delta: `of ${seats}`,
             icon: KeyRound,
             tone: "bg-learning/10 text-learning",
           },
           {
-            label: "Renewals (90d)",
-            value: "3",
-            delta: "next Sep 2026",
+            label: "Seats total",
+            value: seats > 0 ? String(seats) : "—",
+            delta: "across products",
             icon: CalendarClock,
             tone: "bg-warning/10 text-warning",
           },
           {
-            label: "Compliance",
-            value: "100%",
-            delta: "no pirated use",
-            icon: AlertTriangle,
+            label: "Active",
+            value: renewing > 0 ? String(renewing) : "—",
+            delta: "licenses in use",
+            icon: CalendarClock,
             tone: "bg-success/10 text-success",
           },
         ].map((k) => (
@@ -109,20 +105,37 @@ function ItLicenses() {
           </CardTitle>
         </CardHeader>
         <CardContent className="divide-y">
-          {licenses.map((l) => (
-            <div key={l.l} className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0">
-              <div className="min-w-0 flex-1">
-                <p className="text-sm font-bold">{l.l}</p>
-                <p className="text-muted-foreground text-xs">{l.s}</p>
-              </div>
-              <Badge variant="secondary" className="font-semibold">
-                {l.e}
-              </Badge>
-              <Button variant="outline" size="sm" className="shrink-0 font-semibold">
-                Manage
-              </Button>
-            </div>
-          ))}
+          <QueryState<ItLicense[]>
+            query={query}
+            error={{ title: "Licenses unavailable" }}
+            empty={{
+              title: "No licenses yet",
+              description: "Managed products will show here.",
+            }}
+            isEmpty={(rows) => rows.length === 0}
+          >
+            {(rows) =>
+              rows.map((l) => (
+                <div
+                  key={l.id}
+                  className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
+                >
+                  <div className="min-w-0 flex-1">
+                    <p className="text-sm font-bold">{l.product}</p>
+                    <p className="text-muted-foreground text-xs">
+                      {l.seats} seats · {l.inUse} used
+                    </p>
+                  </div>
+                  <Badge variant="secondary" className="font-semibold">
+                    {l.renews}
+                  </Badge>
+                  <Button variant="outline" size="sm" className="shrink-0 font-semibold">
+                    Manage
+                  </Button>
+                </div>
+              ))
+            }
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>

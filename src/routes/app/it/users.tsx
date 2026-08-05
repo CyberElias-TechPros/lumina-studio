@@ -3,7 +3,10 @@ import { ArrowLeft, KeyRound, Search, UserRound, UserRoundCheck, Users } from "l
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { QueryState } from "@/components/ui/query-state";
 import { AppShell } from "@/components/app/app-shell";
+import { useItAccounts, useItAccountItems } from "@/lib/query/it";
+import type { ItAccount } from "@/lib/api/it";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/it/users")({
@@ -16,36 +19,34 @@ export const Route = createFileRoute("/app/it/users")({
   component: ItUsers,
 });
 
-const users = [
-  {
-    n: "Ms. Chidera",
-    r: "Instructor · DevOps",
-    s: "Active · SSO",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    n: "New starter",
-    r: "Admissions officer",
-    s: "Awaiting invite",
-    tone: "bg-warning/10 text-warning",
-  },
-  {
-    n: "J. Okonkwo",
-    r: "Data analyst",
-    s: "Scheduled offboard",
-    tone: "bg-primary/10 text-primary",
-  },
-];
+const statusTone: Record<string, string> = {
+  active: "bg-success/10 text-success",
+  "awaiting invite": "bg-warning/10 text-warning",
+  offboarded: "bg-primary/10 text-primary",
+};
 
 function ItUsers() {
+  const query = useItAccounts();
+  const accounts = useItAccountItems();
+
+  const active = accounts.filter((a) => a.status === "active").length;
+  const pending = accounts.filter((a) => a.status === "awaiting invite").length;
+  const offboarded = accounts.filter((a) => a.status === "offboarded").length;
+
   return (
     <AppShell
       roleKey="instructor"
       title="User management"
-      subtitle="214 accounts · 12 pending · 3 resets today"
+      subtitle={
+        accounts.length > 0
+          ? `${accounts.length} accounts · ${pending} pending`
+          : "Loading accounts…"
+      }
       actions={
         <>
-          <Badge className="bg-success/10 text-success border-0 font-semibold">Sync healthy</Badge>
+          <Badge className="bg-success/10 text-success border-0 font-semibold">
+            {active} active
+          </Badge>
           <Button asChild variant="outline" size="sm" className="font-semibold">
             <Link to="/portal/it-support">
               <ArrowLeft className="size-4" /> IT Support portal
@@ -58,28 +59,28 @@ function ItUsers() {
         {[
           {
             label: "Accounts",
-            value: "214",
-            delta: "all synced",
+            value: accounts.length > 0 ? String(accounts.length) : "—",
+            delta: "managed",
             icon: Users,
             tone: "bg-primary/10 text-primary",
           },
           {
             label: "Pending invites",
-            value: "12",
+            value: pending > 0 ? String(pending) : "0",
             delta: "new staff",
             icon: UserRound,
             tone: "bg-warning/10 text-warning",
           },
           {
-            label: "Resets (24h)",
-            value: "3",
-            delta: "self-service 2",
+            label: "Active",
+            value: active > 0 ? String(active) : "—",
+            delta: "in good standing",
             icon: KeyRound,
             tone: "bg-learning/10 text-learning",
           },
           {
             label: "Offboarded (30d)",
-            value: "2",
+            value: offboarded > 0 ? String(offboarded) : "—",
             delta: "access revoked",
             icon: UserRoundCheck,
             tone: "bg-success/10 text-success",
@@ -112,18 +113,40 @@ function ItUsers() {
           </Button>
         </CardHeader>
         <CardContent className="divide-y">
-          {users.map((u) => (
-            <div key={u.n} className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0">
-              <div className="min-w-0 flex-1">
-                <p className="text-sm font-bold">{u.n}</p>
-                <p className="text-muted-foreground text-xs">{u.r}</p>
-              </div>
-              <Badge className={cn("border-0 font-semibold", u.tone)}>{u.s}</Badge>
-              <Button variant="outline" size="sm" className="shrink-0 font-semibold">
-                Manage
-              </Button>
-            </div>
-          ))}
+          <QueryState<ItAccount[]>
+            query={query}
+            error={{ title: "Accounts unavailable" }}
+            empty={{
+              title: "No accounts yet",
+              description: "Managed accounts will show here.",
+            }}
+            isEmpty={(rows) => rows.length === 0}
+          >
+            {(rows) =>
+              rows.map((u) => (
+                <div
+                  key={u.id}
+                  className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
+                >
+                  <div className="min-w-0 flex-1">
+                    <p className="text-sm font-bold">{u.name}</p>
+                    <p className="text-muted-foreground text-xs">{u.role}</p>
+                  </div>
+                  <Badge
+                    className={cn(
+                      "border-0 font-semibold capitalize",
+                      statusTone[u.status] ?? "bg-muted/20 text-muted-foreground",
+                    )}
+                  >
+                    {u.status}
+                  </Badge>
+                  <Button variant="outline" size="sm" className="shrink-0 font-semibold">
+                    Manage
+                  </Button>
+                </div>
+              ))
+            }
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>

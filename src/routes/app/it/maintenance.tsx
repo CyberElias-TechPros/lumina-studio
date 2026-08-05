@@ -3,7 +3,10 @@ import { ArrowLeft, CalendarClock, Clock3, Hammer, MonitorCheck } from "lucide-r
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { QueryState } from "@/components/ui/query-state";
 import { AppShell } from "@/components/app/app-shell";
+import { useItWindows, useItWindowItems } from "@/lib/query/it";
+import type { ItWindow } from "@/lib/api/it";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/it/maintenance")({
@@ -16,37 +19,41 @@ export const Route = createFileRoute("/app/it/maintenance")({
   component: ItMaintenance,
 });
 
-const windows = [
-  {
-    m: "Platform maintenance",
-    d: "Aug 8 · 02:00–04:00",
-    s: "Scheduled",
-    tone: "bg-warning/10 text-warning",
-  },
-  {
-    m: "Backup infrastructure upgrade",
-    d: "Aug 15 · 01:00–03:00",
-    s: "Scheduled",
-    tone: "bg-primary/10 text-primary",
-  },
-  {
-    m: "WiFi controller firmware",
-    d: "Jul 26 · completed",
-    s: "Done",
-    tone: "bg-success/10 text-success",
-  },
-];
+const statusTone: Record<string, string> = {
+  scheduled: "bg-warning/10 text-warning",
+  done: "bg-success/10 text-success",
+  running: "bg-primary/10 text-primary",
+};
 
 function ItMaintenance() {
+  const query = useItWindows();
+  const windows = useItWindowItems();
+
+  const upcoming = windows.filter((w) => w.status === "scheduled").length;
+  const done = windows.filter((w) => w.status === "done").length;
+  const next = windows
+    .find((w) => w.status === "scheduled")
+    ?.windowText.split("·")[0]
+    .trim();
+
   return (
     <AppShell
       roleKey="instructor"
       title="Scheduled maintenance"
-      subtitle="2 upcoming windows · no impact in 60d"
+      subtitle={
+        windows.length > 0
+          ? `${upcoming} upcoming window${upcoming === 1 ? "" : "s"}${next ? ` · next ${next}` : ""}`
+          : "Loading windows…"
+      }
       actions={
         <>
-          <Badge className="bg-success/10 text-success border-0 font-semibold">
-            Zero incidents
+          <Badge
+            className={cn(
+              "border-0 font-semibold",
+              upcoming > 0 ? "bg-warning/10 text-warning" : "bg-success/10 text-success",
+            )}
+          >
+            {upcoming > 0 ? `${upcoming} upcoming` : "Zero incidents"}
           </Badge>
           <Button asChild variant="outline" size="sm" className="font-semibold">
             <Link to="/portal/it-support">
@@ -60,29 +67,29 @@ function ItMaintenance() {
         {[
           {
             label: "Upcoming",
-            value: "2",
-            delta: "next Aug 8",
+            value: upcoming > 0 ? String(upcoming) : "0",
+            delta: next ? `next ${next}` : "none planned",
             icon: CalendarClock,
             tone: "bg-primary/10 text-primary",
           },
           {
             label: "Completed (30d)",
-            value: "3",
-            delta: "all on time",
+            value: done > 0 ? String(done) : "—",
+            delta: "within plan",
             icon: Hammer,
             tone: "bg-success/10 text-success",
           },
           {
-            label: "Avg. window",
-            value: "2.1h",
-            delta: "overnight",
+            label: "Scheduled",
+            value: windows.length > 0 ? String(windows.length) : "—",
+            delta: "total windows",
             icon: Clock3,
             tone: "bg-learning/10 text-learning",
           },
           {
-            label: "User impact",
-            value: "0",
-            delta: "last 60 days",
+            label: "Running",
+            value: windows.some((w) => w.status === "running") ? "1" : "0",
+            delta: "right now",
             icon: MonitorCheck,
             tone: "bg-warning/10 text-warning",
           },
@@ -114,18 +121,40 @@ function ItMaintenance() {
           </Button>
         </CardHeader>
         <CardContent className="divide-y">
-          {windows.map((w) => (
-            <div key={w.m} className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0">
-              <div className="min-w-0 flex-1">
-                <p className="text-sm font-bold">{w.m}</p>
-                <p className="text-muted-foreground text-xs">{w.d}</p>
-              </div>
-              <Badge className={cn("border-0 font-semibold", w.tone)}>{w.s}</Badge>
-              <Button variant="outline" size="sm" className="shrink-0 font-semibold">
-                Details
-              </Button>
-            </div>
-          ))}
+          <QueryState<ItWindow[]>
+            query={query}
+            error={{ title: "Windows unavailable" }}
+            empty={{
+              title: "No windows yet",
+              description: "Scheduled maintenance will show here.",
+            }}
+            isEmpty={(rows) => rows.length === 0}
+          >
+            {(rows) =>
+              rows.map((w) => (
+                <div
+                  key={w.id}
+                  className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
+                >
+                  <div className="min-w-0 flex-1">
+                    <p className="text-sm font-bold">{w.title}</p>
+                    <p className="text-muted-foreground text-xs">{w.windowText}</p>
+                  </div>
+                  <Badge
+                    className={cn(
+                      "border-0 font-semibold capitalize",
+                      statusTone[w.status] ?? "bg-muted/20 text-muted-foreground",
+                    )}
+                  >
+                    {w.status}
+                  </Badge>
+                  <Button variant="outline" size="sm" className="shrink-0 font-semibold">
+                    Details
+                  </Button>
+                </div>
+              ))
+            }
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>

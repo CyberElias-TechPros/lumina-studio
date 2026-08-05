@@ -3,7 +3,10 @@ import { ArrowLeft, Cpu, HardDrive, Laptop, MonitorCheck, Server } from "lucide-
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { QueryState } from "@/components/ui/query-state";
 import { AppShell } from "@/components/app/app-shell";
+import { useItAssets, useItAssetItems } from "@/lib/query/it";
+import type { ItAsset } from "@/lib/api/it";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/it/assets")({
@@ -16,31 +19,39 @@ export const Route = createFileRoute("/app/it/assets")({
   component: ItAssets,
 });
 
-const assets = [
-  {
-    a: "Laptop · HP EliteBook · #L-0142",
-    u: "Ms. Chidera",
-    s: "In use",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    a: "Laptop · Dell Latitude · #L-0143",
-    u: "New starter",
-    s: "Provisioning",
-    tone: "bg-warning/10 text-warning",
-  },
-  { a: "Server · App node 2", u: "Infra", s: "Healthy", tone: "bg-primary/10 text-primary" },
-];
+const statusTone: Record<string, string> = {
+  "in use": "bg-success/10 text-success",
+  provisioning: "bg-warning/10 text-warning",
+  healthy: "bg-primary/10 text-primary",
+  repair: "bg-destructive/10 text-destructive",
+};
 
 function ItAssets() {
+  const query = useItAssets();
+  const assets = useItAssetItems();
+
+  const laptops = assets.filter((a) => a.category === "laptop").length;
+  const servers = assets.filter((a) => a.category === "server").length;
+  const peripherals = assets.filter((a) => a.category === "peripheral").length;
+  const repair = assets.filter((a) => a.status === "repair").length;
+  const provisioning = assets.filter((a) => a.status === "provisioning").length;
+  const tracked =
+    assets.length > 0 ? Math.round(((assets.length - provisioning) / assets.length) * 100) : 0;
+
   return (
     <AppShell
       roleKey="instructor"
       title="Asset management"
-      subtitle="214 assets · 12 awaiting provisioning"
+      subtitle={
+        assets.length > 0
+          ? `${assets.length} assets · ${provisioning} awaiting provisioning`
+          : "Loading assets…"
+      }
       actions={
         <>
-          <Badge className="bg-success/10 text-success border-0 font-semibold">96% tracked</Badge>
+          <Badge className="bg-success/10 text-success border-0 font-semibold">
+            {tracked}% tracked
+          </Badge>
           <Button asChild variant="outline" size="sm" className="font-semibold">
             <Link to="/portal/it-support">
               <ArrowLeft className="size-4" /> IT Support portal
@@ -53,29 +64,29 @@ function ItAssets() {
         {[
           {
             label: "Laptops",
-            value: "128",
-            delta: "94 in use",
+            value: laptops > 0 ? String(laptops) : "—",
+            delta: "primary fleet",
             icon: Laptop,
             tone: "bg-primary/10 text-primary",
           },
           {
             label: "Servers",
-            value: "6",
-            delta: "all healthy",
+            value: servers > 0 ? String(servers) : "—",
+            delta: "infrastructure",
             icon: Server,
             tone: "bg-success/10 text-success",
           },
           {
             label: "Peripherals",
-            value: "80",
+            value: peripherals > 0 ? String(peripherals) : "—",
             delta: "monitors + printers",
             icon: MonitorCheck,
             tone: "bg-learning/10 text-learning",
           },
           {
             label: "In repair",
-            value: "4",
-            delta: "2 this week",
+            value: repair > 0 ? String(repair) : "0",
+            delta: "attention needed",
             icon: Cpu,
             tone: "bg-warning/10 text-warning",
           },
@@ -107,18 +118,40 @@ function ItAssets() {
           </Button>
         </CardHeader>
         <CardContent className="divide-y">
-          {assets.map((a) => (
-            <div key={a.a} className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0">
-              <div className="min-w-0 flex-1">
-                <p className="text-sm font-bold">{a.a}</p>
-                <p className="text-muted-foreground text-xs">{a.u}</p>
-              </div>
-              <Badge className={cn("border-0 font-semibold", a.tone)}>{a.s}</Badge>
-              <Button variant="outline" size="sm" className="shrink-0 font-semibold">
-                View
-              </Button>
-            </div>
-          ))}
+          <QueryState<ItAsset[]>
+            query={query}
+            error={{ title: "Assets unavailable" }}
+            empty={{
+              title: "No devices yet",
+              description: "Registered hardware will show here.",
+            }}
+            isEmpty={(rows) => rows.length === 0}
+          >
+            {(rows) =>
+              rows.map((a) => (
+                <div
+                  key={a.id}
+                  className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
+                >
+                  <div className="min-w-0 flex-1">
+                    <p className="text-sm font-bold">{a.name}</p>
+                    <p className="text-muted-foreground text-xs">{a.assignedTo}</p>
+                  </div>
+                  <Badge
+                    className={cn(
+                      "border-0 font-semibold capitalize",
+                      statusTone[a.status] ?? "bg-muted/20 text-muted-foreground",
+                    )}
+                  >
+                    {a.status}
+                  </Badge>
+                  <Button variant="outline" size="sm" className="shrink-0 font-semibold">
+                    View
+                  </Button>
+                </div>
+              ))
+            }
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>

@@ -3,7 +3,10 @@ import { ArrowLeft, Headphones, MonitorCheck, Video, Wifi } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { QueryState } from "@/components/ui/query-state";
 import { AppShell } from "@/components/app/app-shell";
+import { useItSessions, useItSessionItems } from "@/lib/query/it";
+import type { ItSession } from "@/lib/api/it";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/it/remote-support")({
@@ -16,37 +19,33 @@ export const Route = createFileRoute("/app/it/remote-support")({
   component: ItRemoteSupport,
 });
 
-const sessions = [
-  {
-    s: "Ms. Chidera — Lab 2 projector",
-    d: "Active · 12 min",
-    s2: "Live",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    s: "Mrs. Obi — Wi-Fi dropouts",
-    d: "Scheduled 14:30",
-    s2: "Upcoming",
-    tone: "bg-primary/10 text-primary",
-  },
-  {
-    s: "Registrar — printer queue",
-    d: "Completed · 8 min",
-    s2: "Done",
-    tone: "bg-learning/10 text-learning",
-  },
-];
+const statusTone: Record<string, string> = {
+  live: "bg-success/10 text-success",
+  upcoming: "bg-primary/10 text-primary",
+  done: "bg-learning/10 text-learning",
+};
 
 function ItRemoteSupport() {
+  const query = useItSessions();
+  const sessions = useItSessionItems();
+
+  const live = sessions.filter((s) => s.status === "live").length;
+  const upcoming = sessions.filter((s) => s.status === "upcoming").length;
+  const done = sessions.filter((s) => s.status === "done").length;
+
   return (
     <AppShell
       roleKey="instructor"
       title="Remote support"
-      subtitle="4 sessions today · avg. 11 min to resolve"
+      subtitle={
+        sessions.length > 0
+          ? `${sessions.length} sessions today · ${live} live`
+          : "Loading sessions…"
+      }
       actions={
         <>
           <Badge className="bg-success/10 text-success border-0 font-semibold">
-            1 live session
+            {live} live session{live === 1 ? "" : "s"}
           </Badge>
           <Button asChild variant="outline" size="sm" className="font-semibold">
             <Link to="/portal/it-support">
@@ -60,29 +59,29 @@ function ItRemoteSupport() {
         {[
           {
             label: "Today",
-            value: "4",
-            delta: "1 live",
+            value: sessions.length > 0 ? String(sessions.length) : "—",
+            delta: `${live} live`,
             icon: Headphones,
             tone: "bg-primary/10 text-primary",
           },
           {
-            label: "Avg. duration",
-            value: "11 min",
-            delta: "target < 15",
+            label: "Live now",
+            value: live > 0 ? String(live) : "0",
+            delta: "in progress",
             icon: MonitorCheck,
             tone: "bg-success/10 text-success",
           },
           {
-            label: "First-touch fix",
-            value: "78%",
-            delta: "of sessions",
+            label: "Upcoming",
+            value: upcoming > 0 ? String(upcoming) : "—",
+            delta: "scheduled",
             icon: Video,
             tone: "bg-learning/10 text-learning",
           },
           {
-            label: "Video sessions",
-            value: "3",
-            delta: "of 4 today",
+            label: "Completed",
+            value: done > 0 ? String(done) : "—",
+            delta: "resolved",
             icon: Wifi,
             tone: "bg-warning/10 text-warning",
           },
@@ -114,18 +113,40 @@ function ItRemoteSupport() {
           </Button>
         </CardHeader>
         <CardContent className="divide-y">
-          {sessions.map((s) => (
-            <div key={s.s} className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0">
-              <div className="min-w-0 flex-1">
-                <p className="text-sm font-bold">{s.s}</p>
-                <p className="text-muted-foreground text-xs">{s.d}</p>
-              </div>
-              <Badge className={cn("border-0 font-semibold", s.tone)}>{s.s2}</Badge>
-              <Button variant="outline" size="sm" className="shrink-0 font-semibold">
-                Join
-              </Button>
-            </div>
-          ))}
+          <QueryState<ItSession[]>
+            query={query}
+            error={{ title: "Sessions unavailable" }}
+            empty={{
+              title: "No sessions yet",
+              description: "Remote support sessions will show here.",
+            }}
+            isEmpty={(rows) => rows.length === 0}
+          >
+            {(rows) =>
+              rows.map((s) => (
+                <div
+                  key={s.id}
+                  className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
+                >
+                  <div className="min-w-0 flex-1">
+                    <p className="text-sm font-bold">{s.name}</p>
+                    <p className="text-muted-foreground text-xs">{s.detail}</p>
+                  </div>
+                  <Badge
+                    className={cn(
+                      "border-0 font-semibold capitalize",
+                      statusTone[s.status] ?? "bg-muted/20 text-muted-foreground",
+                    )}
+                  >
+                    {s.status}
+                  </Badge>
+                  <Button variant="outline" size="sm" className="shrink-0 font-semibold">
+                    Join
+                  </Button>
+                </div>
+              ))
+            }
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>

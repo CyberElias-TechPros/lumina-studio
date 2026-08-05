@@ -3,7 +3,10 @@ import { ArrowLeft, BarChart3, FileBarChart2, MonitorCheck, Ticket, Users } from
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { QueryState } from "@/components/ui/query-state";
 import { AppShell } from "@/components/app/app-shell";
+import { useItTickets, useItTicketItems } from "@/lib/query/it";
+import type { ItTicket } from "@/lib/api/it";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/it/reports")({
@@ -23,14 +26,23 @@ const reports = [
 ];
 
 function ItReports() {
+  const query = useItTickets();
+  const tickets = useItTicketItems();
+
+  const solved = tickets.filter((t) => t.status === "solved").length;
+  const open = tickets.filter((t) => t.status !== "solved").length;
+  const high = tickets.filter((t) => t.priority === "P1" && t.status !== "solved").length;
+
   return (
     <AppShell
       roleKey="instructor"
       title="Reports"
-      subtitle="164 tickets solved · SLA 96% · CSAT 4.6"
+      subtitle={tickets.length > 0 ? `${solved} tickets solved · ${open} open` : "Loading reports…"}
       actions={
         <>
-          <Badge className="bg-success/10 text-success border-0 font-semibold">All current</Badge>
+          <Badge className="bg-success/10 text-success border-0 font-semibold">
+            {solved}/{tickets.length} solved
+          </Badge>
           <Button asChild variant="outline" size="sm" className="font-semibold">
             <Link to="/portal/it-support">
               <ArrowLeft className="size-4" /> IT Support portal
@@ -42,30 +54,30 @@ function ItReports() {
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         {[
           {
-            label: "Solved (30d)",
-            value: "164",
-            delta: "96% within SLA",
+            label: "Solved",
+            value: solved > 0 ? String(solved) : "—",
+            delta: "tracked tickets",
             icon: Ticket,
             tone: "bg-primary/10 text-primary",
           },
           {
-            label: "CSAT",
-            value: "4.6",
-            delta: "of 5",
+            label: "Open",
+            value: open > 0 ? String(open) : "0",
+            delta: "in queue",
             icon: MonitorCheck,
             tone: "bg-success/10 text-success",
           },
           {
-            label: "SLA compliance",
-            value: "96%",
-            delta: "target 95%",
+            label: "High priority",
+            value: high > 0 ? String(high) : "0",
+            delta: "still open",
             icon: BarChart3,
             tone: "bg-learning/10 text-learning",
           },
           {
-            label: "Users served",
-            value: "142",
-            delta: "unique",
+            label: "Total",
+            value: tickets.length > 0 ? String(tickets.length) : "—",
+            delta: "tickets tracked",
             icon: Users,
             tone: "bg-warning/10 text-warning",
           },
@@ -100,6 +112,7 @@ function ItReports() {
                 <p className="text-sm font-bold">{r.r}</p>
                 <p className="text-muted-foreground text-xs">{r.d}</p>
               </div>
+              <Badge className={cn("border-0 font-semibold", r.tone)}>Current</Badge>
               <Button variant="outline" size="sm" className="shrink-0 font-semibold">
                 Open
               </Button>

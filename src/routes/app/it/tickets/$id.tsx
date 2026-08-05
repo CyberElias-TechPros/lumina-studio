@@ -3,7 +3,10 @@ import { ArrowLeft, CheckCircle2, Clock3, MessageSquare, MonitorCheck, Send } fr
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { QueryState } from "@/components/ui/query-state";
 import { AppShell } from "@/components/app/app-shell";
+import { useTicketDetail } from "@/lib/query/it";
+import type { TicketDetail } from "@/lib/api/it";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/it/tickets/$id")({
@@ -16,26 +19,30 @@ export const Route = createFileRoute("/app/it/tickets/$id")({
   component: ItTicketDetail,
 });
 
-const activity = [
-  { a: "Ticket created", d: "Today 08:30", tone: "bg-primary/10 text-primary" },
-  { a: "Assigned to you", d: "Today 08:45", tone: "bg-learning/10 text-learning" },
-  {
-    a: "Remote check — projector confirmed faulty",
-    d: "Today 09:10",
-    tone: "bg-warning/10 text-warning",
-  },
-];
+const priorityLabel: Record<string, string> = {
+  P1: "P1 · High",
+  P2: "P2 · Normal",
+  P3: "P3 · Low",
+};
 
 function ItTicketDetail() {
+  const { id } = Route.useParams();
+  const detail = useTicketDetail(id);
+  const ticket = detail.data;
+
   return (
     <AppShell
       roleKey="instructor"
-      title="TKT-1042 · Projector fails in Lab 2"
-      subtitle="P1 · High · reported by Ms. Chidera · SLA 2h"
+      title={ticket ? `${ticket.id} · ${ticket.subject}` : "Ticket"}
+      subtitle={
+        ticket
+          ? `${priorityLabel[ticket.priority] ?? ticket.priority} · ${ticket.sla} · reported by ${ticket.reporter}`
+          : "Loading ticket…"
+      }
       actions={
         <>
-          <Badge className="bg-destructive/10 text-destructive border-0 font-semibold">
-            SLA: 50m left
+          <Badge className="bg-warning/10 text-warning border-0 font-semibold">
+            {ticket ? `${ticket.sla} · ${ticket.elapsed}` : "—"}
           </Badge>
           <Button asChild variant="outline" size="sm" className="font-semibold">
             <Link to="/app/it/tickets">
@@ -53,12 +60,31 @@ function ItTicketDetail() {
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-3">
-            {activity.map((a) => (
-              <div key={a.a} className="flex items-center gap-3 rounded-xl border p-3">
-                <Badge className={cn("shrink-0 border-0 font-semibold", a.tone)}>{a.d}</Badge>
-                <p className="text-sm font-semibold">{a.a}</p>
-              </div>
-            ))}
+            <QueryState<TicketDetail>
+              query={detail}
+              error={{ title: "Ticket unavailable" }}
+              empty={{
+                title: "Ticket not found",
+                description: "This ticket may have been removed.",
+              }}
+              isEmpty={(row) => row.events.length === 0}
+            >
+              {(row) => (
+                <>
+                  {row.events.map((a) => (
+                    <div
+                      key={`${a.whenText}-${a.event}`}
+                      className="flex items-center gap-3 rounded-xl border p-3"
+                    >
+                      <Badge className="border-0 bg-primary/10 shrink-0 font-semibold text-primary">
+                        {a.whenText}
+                      </Badge>
+                      <p className="text-sm font-semibold">{a.event}</p>
+                    </div>
+                  ))}
+                </>
+              )}
+            </QueryState>
           </CardContent>
         </Card>
 
@@ -71,7 +97,8 @@ function ItTicketDetail() {
             </CardHeader>
             <CardContent className="space-y-3">
               <p className="text-muted-foreground text-xs font-semibold">
-                Replace projector lamp (P/N PJ-L204). Spare in store. ETA 40 min.
+                Diagnose and replace the faulty part. Log the replacement in the asset record, then
+                confirm with the reporter. Spare parts available in store.
               </p>
               <Button
                 size="sm"

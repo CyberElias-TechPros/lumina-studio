@@ -3,7 +3,10 @@ import { ArrowLeft, FileText, LayoutTemplate, Plus, Sparkles } from "lucide-reac
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { QueryState } from "@/components/ui/query-state";
 import { AppShell } from "@/components/app/app-shell";
+import { useItTemplates, useItTemplateItems } from "@/lib/query/it";
+import type { ItTemplate } from "@/lib/api/it";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/it/templates")({
@@ -16,22 +19,27 @@ export const Route = createFileRoute("/app/it/templates")({
   component: ItTemplates,
 });
 
-const templates = [
-  { t: "New starter — full setup", u: "12 uses this month", tone: "bg-primary/10 text-primary" },
-  { t: "WiFi troubleshooting", u: "24 uses this month", tone: "bg-learning/10 text-learning" },
-  { t: "Printer / peripheral fault", u: "9 uses this month", tone: "bg-success/10 text-success" },
-];
-
 function ItTemplates() {
+  const query = useItTemplates();
+  const templates = useItTemplateItems();
+
+  const uses = templates.reduce((sum, t) => sum + t.uses, 0);
+  const active = templates.filter((t) => t.status === "active").length;
+  const drafts = templates.filter((t) => t.status === "draft").length;
+
   return (
     <AppShell
       roleKey="instructor"
       title="Ticket templates"
-      subtitle="8 templates · 61 uses this month"
+      subtitle={
+        templates.length > 0
+          ? `${templates.length} templates · ${uses} uses this month`
+          : "Loading templates…"
+      }
       actions={
         <>
-          <Badge className="bg-success/10 text-success border-0 font-semibold">
-            Saves 3 min/ticket
+          <Badge className="bg-learning/10 text-learning border-0 font-semibold">
+            {uses} total uses
           </Badge>
           <Button asChild variant="outline" size="sm" className="font-semibold">
             <Link to="/portal/it-support">
@@ -45,28 +53,28 @@ function ItTemplates() {
         {[
           {
             label: "Templates",
-            value: "8",
-            delta: "4 shared",
+            value: templates.length > 0 ? String(templates.length) : "—",
+            delta: `${active} active`,
             icon: LayoutTemplate,
             tone: "bg-primary/10 text-primary",
           },
           {
             label: "Uses (30d)",
-            value: "61",
-            delta: "44% of tickets",
+            value: uses > 0 ? String(uses) : "—",
+            delta: "across templates",
             icon: Sparkles,
             tone: "bg-learning/10 text-learning",
           },
           {
-            label: "Time saved",
-            value: "3h",
-            delta: "estimated",
+            label: "Active",
+            value: active > 0 ? String(active) : "—",
+            delta: "in circulation",
             icon: FileText,
             tone: "bg-success/10 text-success",
           },
           {
             label: "Drafts",
-            value: "2",
+            value: drafts > 0 ? String(drafts) : "0",
             delta: "in review",
             icon: Plus,
             tone: "bg-warning/10 text-warning",
@@ -99,17 +107,37 @@ function ItTemplates() {
           </Button>
         </CardHeader>
         <CardContent className="divide-y">
-          {templates.map((t) => (
-            <div key={t.t} className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0">
-              <div className="min-w-0 flex-1">
-                <p className="text-sm font-bold">{t.t}</p>
-                <p className="text-muted-foreground text-xs">{t.u}</p>
-              </div>
-              <Button variant="outline" size="sm" className="shrink-0 font-semibold">
-                Edit
-              </Button>
-            </div>
-          ))}
+          <QueryState<ItTemplate[]>
+            query={query}
+            error={{ title: "Templates unavailable" }}
+            empty={{
+              title: "No templates yet",
+              description: "Reusable templates will show here.",
+            }}
+            isEmpty={(rows) => rows.length === 0}
+          >
+            {(rows) =>
+              rows.map((t) => (
+                <div
+                  key={t.id}
+                  className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
+                >
+                  <div className="min-w-0 flex-1">
+                    <p className="text-sm font-bold">{t.title}</p>
+                    <p className="text-muted-foreground text-xs">{t.uses} uses this month</p>
+                  </div>
+                  {t.status === "draft" && (
+                    <Badge className="bg-warning/10 text-warning border-0 font-semibold">
+                      Draft
+                    </Badge>
+                  )}
+                  <Button variant="outline" size="sm" className="shrink-0 font-semibold">
+                    Edit
+                  </Button>
+                </div>
+              ))
+            }
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>

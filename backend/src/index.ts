@@ -34,6 +34,7 @@ import { library } from "./routes/library";
 import { parent } from "./routes/parent";
 import { mentor } from "./routes/mentor";
 import { ops } from "./routes/ops";
+import { it } from "./routes/it";
 import { RealtimeRoom } from "./durable/realtime-room";
 
 export { RealtimeRoom };
@@ -91,6 +92,7 @@ v1.route("/library", library);
   v1.route("/parent", parent);
   v1.route("/mentor", mentor);
   v1.route("/ops", ops);
+  v1.route("/it", it);
 
 /** Uptime + DB reachability check for deployment probes. */
 v1.get("/health", async (c) => {

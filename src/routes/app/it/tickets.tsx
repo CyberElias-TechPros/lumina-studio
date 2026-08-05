@@ -3,7 +3,10 @@ import { ArrowLeft, ArrowRight, Clock3, LifeBuoy, MonitorCheck, Ticket } from "l
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { QueryState } from "@/components/ui/query-state";
 import { AppShell } from "@/components/app/app-shell";
+import { useItTickets, useItTicketItems } from "@/lib/query/it";
+import type { ItTicket } from "@/lib/api/it";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/it/tickets")({
@@ -16,46 +19,44 @@ export const Route = createFileRoute("/app/it/tickets")({
   component: ItTickets,
 });
 
-const tickets = [
-  {
-    t: "Projector fails in Lab 2",
-    p: "P1 · High",
-    d: "SLA 2h · 1h elapsed",
-    s: "Assigned",
-    tone: "bg-destructive/10 text-destructive",
-  },
-  {
-    t: "New starter laptop setup",
-    p: "P2 · Normal",
-    d: "SLA 24h · 3h elapsed",
-    s: "In progress",
-    tone: "bg-warning/10 text-warning",
-  },
-  {
-    t: "WiFi dropouts — Block C",
-    p: "P1 · High",
-    d: "SLA 2h · 30m elapsed",
-    s: "Investigating",
-    tone: "bg-primary/10 text-primary",
-  },
-  {
-    t: "Printer toner request",
-    p: "P3 · Low",
-    d: "SLA 72h · 10h elapsed",
-    s: "Queued",
-    tone: "bg-learning/10 text-learning",
-  },
-];
+const priorityLabel: Record<string, string> = {
+  P1: "P1 · High",
+  P2: "P2 · Normal",
+  P3: "P3 · Low",
+};
+
+const statusTone: Record<string, string> = {
+  assigned: "bg-destructive/10 text-destructive",
+  "in progress": "bg-warning/10 text-warning",
+  investigating: "bg-primary/10 text-primary",
+  queued: "bg-learning/10 text-learning",
+  solved: "bg-success/10 text-success",
+};
 
 function ItTickets() {
+  const query = useItTickets();
+  const tickets = useItTicketItems();
+
+  const open = tickets.filter((t) => t.status !== "solved").length;
+  const inProgress = tickets.filter((t) => t.status === "in progress").length;
+  const high = tickets.filter((t) => t.priority === "P1" && t.status !== "solved").length;
+  const solved = tickets.filter((t) => t.status === "solved").length;
+
   return (
     <AppShell
       roleKey="instructor"
       title="Ticket hub"
-      subtitle="18 open · 3 high priority · SLA 91%"
+      subtitle={tickets.length > 0 ? `${open} open · ${high} high priority` : "Loading tickets…"}
       actions={
         <>
-          <Badge className="bg-success/10 text-success border-0 font-semibold">SLA 91%</Badge>
+          <Badge
+            className={cn(
+              "border-0 font-semibold",
+              high > 0 ? "bg-destructive/10 text-destructive" : "bg-success/10 text-success",
+            )}
+          >
+            {high > 0 ? `${high} high priority` : "No high priority"}
+          </Badge>
           <Button asChild variant="outline" size="sm" className="font-semibold">
             <Link to="/portal/it-support">
               <ArrowLeft className="size-4" /> IT Support portal
@@ -68,29 +69,29 @@ function ItTickets() {
         {[
           {
             label: "Open",
-            value: "18",
-            delta: "3 high priority",
+            value: tickets.length > 0 ? String(open) : "—",
+            delta: `${tickets.length} total`,
             icon: Ticket,
             tone: "bg-primary/10 text-primary",
           },
           {
             label: "In progress",
-            value: "7",
-            delta: "2 assigned to you",
+            value: inProgress > 0 ? String(inProgress) : "—",
+            delta: "actively worked",
             icon: Clock3,
             tone: "bg-learning/10 text-learning",
           },
           {
-            label: "SLA at risk",
-            value: "2",
+            label: "High priority",
+            value: high > 0 ? String(high) : "0",
             delta: "resolve today",
             icon: LifeBuoy,
             tone: "bg-destructive/10 text-destructive",
           },
           {
-            label: "Solved (30d)",
-            value: "164",
-            delta: "96% within SLA",
+            label: "Solved",
+            value: solved > 0 ? String(solved) : "—",
+            delta: "of tracked tickets",
             icon: MonitorCheck,
             tone: "bg-success/10 text-success",
           },
@@ -122,22 +123,49 @@ function ItTickets() {
           </Button>
         </CardHeader>
         <CardContent className="divide-y">
-          {tickets.map((t) => (
-            <div key={t.t} className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0">
-              <div className="min-w-0 flex-1">
-                <p className="text-sm font-bold">{t.t}</p>
-                <p className="text-muted-foreground text-xs">
-                  {t.p} · {t.d}
-                </p>
-              </div>
-              <Badge className={cn("border-0 font-semibold", t.tone)}>{t.s}</Badge>
-              <Button asChild variant="outline" size="sm" className="shrink-0 font-semibold">
-                <Link to="/app/it/tickets/$id" params={{ id: "TKT-1042" }}>
-                  Open <ArrowRight className="ml-1 size-3.5" />
-                </Link>
-              </Button>
-            </div>
-          ))}
+          <QueryState<ItTicket[]>
+            query={query}
+            error={{ title: "Tickets unavailable" }}
+            empty={{
+              title: "No tickets yet",
+              description: "Support tickets will show here.",
+            }}
+            isEmpty={(rows) => rows.length === 0}
+          >
+            {(rows) => (
+              <>
+                {rows.map((t) => (
+                  <div
+                    key={t.id}
+                    className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
+                  >
+                    <div className="min-w-0 flex-1">
+                      <p className="text-sm font-bold">
+                        {t.id} · {t.subject}
+                      </p>
+                      <p className="text-muted-foreground text-xs">
+                        {priorityLabel[t.priority] ?? t.priority} · {t.sla} · {t.elapsed} ·{" "}
+                        {t.reporter}
+                      </p>
+                    </div>
+                    <Badge
+                      className={cn(
+                        "border-0 font-semibold capitalize",
+                        statusTone[t.status] ?? "bg-muted/20 text-muted-foreground",
+                      )}
+                    >
+                      {t.status}
+                    </Badge>
+                    <Button asChild variant="outline" size="sm" className="shrink-0 font-semibold">
+                      <Link to="/app/it/tickets/$id" params={{ id: t.id }}>
+                        Open <ArrowRight className="ml-1 size-3.5" />
+                      </Link>
+                    </Button>
+                  </div>
+                ))}
+              </>
+            )}
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>
