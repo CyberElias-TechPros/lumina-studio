@@ -117,6 +117,9 @@ export const RBAC_RULES: RbacRule[] = [
   { methods: ["GET"], path: "/v1/mentor/profiles", roles: ["student", "alumni", "mentor"] },
   { methods: ["POST"], path: "/v1/mentor/match", roles: ["student", "alumni", "mentor"] },
 
+  /* Operations suite — admin + instructor only */
+  { methods: ["*"], path: "/v1/ops/*", roles: ["admin", "instructor"] },
+
   /* Admin portal */
   { methods: ["GET"], path: "/v1/admin/users", roles: ["admin"] },
   { methods: ["POST"], path: "/v1/admin/users", roles: ["admin"] },

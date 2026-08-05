@@ -3,8 +3,16 @@ import { AlertTriangle, ArrowLeft, Boxes, PackageCheck, ShoppingCart } from "luc
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { QueryState } from "@/components/ui/query-state";
 import { AppShell } from "@/components/app/app-shell";
-import { cn } from "@/lib/utils";
+import {
+  useInventory,
+  useInventoryItems,
+  usePurchaseOrders,
+  usePurchaseOrderItems,
+} from "@/lib/query/ops";
+import type { InventoryItem, PurchaseOrder } from "@/lib/api/ops";
+import { cn, formatNaira, formatNairaCompact } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/ops/inventory")({
   head: () => ({
@@ -16,66 +24,45 @@ export const Route = createFileRoute("/app/ops/inventory")({
   component: OperationsInventory,
 });
 
-const stock = [
-  {
-    i: "Printer toner · HP 62",
-    qty: "3 left",
-    level: "Low",
-    tone: "bg-destructive/10 text-destructive",
-    auto: true,
-  },
-  {
-    i: "A4 paper (reams)",
-    qty: "48",
-    level: "Healthy",
-    tone: "bg-success/10 text-success",
-    auto: false,
-  },
-  {
-    i: "Laptop charger 65W",
-    qty: "12",
-    level: "Good",
-    tone: "bg-primary/10 text-primary",
-    auto: false,
-  },
-  {
-    i: "Cafeteria gas (cylinder)",
-    qty: "2",
-    level: "Reorder soon",
-    tone: "bg-warning/10 text-warning",
-    auto: true,
-  },
-];
+function stockLevel(item: InventoryItem): { label: string; tone: string } {
+  if (item.qty <= item.reorderPoint)
+    return { label: "Low", tone: "bg-destructive/10 text-destructive" };
+  if (item.qty <= Math.ceil(item.reorderPoint * 1.5)) {
+    return { label: "Reorder soon", tone: "bg-warning/10 text-warning" };
+  }
+  return { label: "Healthy", tone: "bg-success/10 text-success" };
+}
 
-const pos = [
-  {
-    po: "PO-2413",
-    v: "OfficeMate",
-    i: "Toner + paper",
-    v2: "₦185,000",
-    d: "ETA Aug 5",
-    tone: "bg-primary/10 text-primary",
-  },
-  {
-    po: "PO-2412",
-    v: "GasMaster",
-    i: "Cafeteria gas",
-    v2: "₦96,000",
-    d: "ETA Aug 7",
-    tone: "bg-learning/10 text-learning",
-  },
-];
+function formatEta(eta: string): string {
+  const date = new Date(`${eta}T00:00:00`);
+  return `ETA ${date.toLocaleDateString("en-US", { month: "short", day: "numeric" })}`;
+}
 
 function OperationsInventory() {
+  const inv = useInventory();
+  const items = useInventoryItems();
+  const pos = usePurchaseOrders();
+  const posItems = usePurchaseOrderItems();
+
+  const alerts = items.filter((i) => i.qty <= i.reorderPoint);
+  const autoPois = alerts.filter((i) => i.autoReorder === 1).length;
+  const openPos = posItems.filter((p) => p.status === "open");
+  const inTransit = openPos.reduce((s, p) => s + p.amount, 0);
+  const stockValue = items.reduce((s, i) => s + i.qty * i.unitPrice, 0);
+
   return (
     <AppShell
       roleKey="instructor"
       title="Inventory"
-      subtitle="Ikeja store · 214 SKUs tracked · synced with supplier portal"
+      subtitle={
+        items.length > 0
+          ? `${items.length} SKUs tracked · synced with supplier portal`
+          : "Loading inventory…"
+      }
       actions={
         <>
           <Badge className="bg-warning/10 text-warning border-0 font-semibold">
-            2 reorder alerts
+            {alerts.length} reorder alerts
           </Badge>
           <Button asChild variant="outline" size="sm" className="font-semibold">
             <Link to="/portal/operations">
@@ -89,29 +76,30 @@ function OperationsInventory() {
         {[
           {
             label: "SKUs tracked",
-            value: "214",
+            value: items.length > 0 ? String(items.length) : "—",
             delta: "across 3 stores",
             icon: Boxes,
             tone: "bg-primary/10 text-primary",
           },
           {
             label: "Reorder alerts",
-            value: "2",
-            delta: "auto-PO ready",
+            value: alerts.length > 0 ? String(alerts.length) : "—",
+            delta: `${autoPois} auto-PO ready`,
             icon: AlertTriangle,
             tone: "bg-destructive/10 text-destructive",
           },
           {
             label: "Open POs",
-            value: "2",
-            delta: "₦281,000 in transit",
+            value: openPos.length > 0 ? String(openPos.length) : "—",
+            delta:
+              inTransit > 0 ? `${formatNairaCompact(inTransit)} in transit` : "nothing in transit",
             icon: ShoppingCart,
             tone: "bg-learning/10 text-learning",
           },
           {
             label: "Stock value",
-            value: "₦4.8m",
-            delta: "0.6% shrink MTD",
+            value: stockValue > 0 ? formatNairaCompact(stockValue) : "—",
+            delta: "on hand",
             icon: PackageCheck,
             tone: "bg-success/10 text-success",
           },
@@ -144,23 +132,44 @@ function OperationsInventory() {
             </Badge>
           </CardHeader>
           <CardContent className="divide-y">
-            {stock.map((s) => (
-              <div
-                key={s.i}
-                className="flex flex-wrap items-center gap-3 py-3.5 first:pt-0 last:pb-0"
-              >
-                <div className="min-w-0 flex-1">
-                  <p className="text-sm font-bold">{s.i}</p>
-                  <p className="text-muted-foreground text-xs">{s.qty} in store</p>
-                </div>
-                {s.auto && (
-                  <Badge variant="secondary" className="font-semibold">
-                    Auto-PO
-                  </Badge>
-                )}
-                <Badge className={cn("border-0 font-semibold", s.tone)}>{s.level}</Badge>
-              </div>
-            ))}
+            <QueryState<InventoryItem[]>
+              query={inv}
+              error={{ title: "Inventory unavailable" }}
+              empty={{
+                title: "No stock tracked",
+                description: "Inventory items will show here.",
+              }}
+              isEmpty={(rows) => rows.length === 0}
+            >
+              {(rows) => (
+                <>
+                  {rows.map((s) => {
+                    const level = stockLevel(s);
+                    return (
+                      <div
+                        key={s.id}
+                        className="flex flex-wrap items-center gap-3 py-3.5 first:pt-0 last:pb-0"
+                      >
+                        <div className="min-w-0 flex-1">
+                          <p className="text-sm font-bold">{s.name}</p>
+                          <p className="text-muted-foreground text-xs">
+                            {s.qty} {s.unit} in store · {s.category}
+                          </p>
+                        </div>
+                        {s.autoReorder === 1 && (
+                          <Badge variant="secondary" className="font-semibold">
+                            Auto-PO
+                          </Badge>
+                        )}
+                        <Badge className={cn("border-0 font-semibold", level.tone)}>
+                          {level.label}
+                        </Badge>
+                      </div>
+                    );
+                  })}
+                </>
+              )}
+            </QueryState>
           </CardContent>
         </Card>
 
@@ -174,22 +183,45 @@ function OperationsInventory() {
             </Button>
           </CardHeader>
           <CardContent className="divide-y">
-            {pos.map((p) => (
-              <div
-                key={p.po}
-                className="flex flex-wrap items-center gap-3 py-3.5 first:pt-0 last:pb-0"
-              >
-                <div className="min-w-0 flex-1">
-                  <p className="text-sm font-bold">
-                    {p.po} · {p.v}
-                  </p>
-                  <p className="text-muted-foreground text-xs">
-                    {p.i} · {p.v2}
-                  </p>
-                </div>
-                <Badge className={cn("border-0 font-semibold", p.tone)}>{p.d}</Badge>
-              </div>
-            ))}
+            <QueryState<PurchaseOrder[]>
+              query={pos}
+              error={{ title: "Purchase orders unavailable" }}
+              empty={{
+                title: "No purchase orders",
+                description: "Open and delivered orders will show here.",
+              }}
+              isEmpty={(rows) => rows.length === 0}
+            >
+              {(rows) => (
+                <>
+                  {rows.map((p) => (
+                    <div
+                      key={p.id}
+                      className="flex flex-wrap items-center gap-3 py-3.5 first:pt-0 last:pb-0"
+                    >
+                      <div className="min-w-0 flex-1">
+                        <p className="text-sm font-bold">
+                          {p.id} · {p.vendor}
+                        </p>
+                        <p className="text-muted-foreground text-xs">
+                          {p.items} · {formatNaira(p.amount)}
+                        </p>
+                      </div>
+                      <Badge
+                        className={cn(
+                          "border-0 font-semibold",
+                          p.status === "delivered"
+                            ? "bg-success/10 text-success"
+                            : "bg-primary/10 text-primary",
+                        )}
+                      >
+                        {p.status === "delivered" ? "Delivered" : formatEta(p.eta)}
+                      </Badge>
+                    </div>
+                  ))}
+                </>
+              )}
+            </QueryState>
           </CardContent>
         </Card>
       </div>

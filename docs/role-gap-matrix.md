@@ -21,6 +21,8 @@ Backend coverage = routes registered in `backend/src/lib/rbac.ts` (the full `/v1
 | 2026-08-04 | **Tier 2 backend shipped + deployed** — parent-scoped reads `GET /v1/parent/students(:id)` (`parent`/`admin` only, link via `parent_students`, derived GPA/outstanding), admissions admin `GET /v1/applications/admin(/?stage=)` + `/admin/stats` + pipeline `PATCH /:ref` (audit-logged), finance `POST /v1/payroll/run` (approves draft/sent changes → `payment_batches` row), mentor `GET /v1/mentor/profiles` + `POST /v1/mentor/match` (keyword-overlap scoring). DDL moved out of migrations into seed files (`0011_parent.sql`, `0012_mentorship.sql` + `parent-data.sql`/`mentor-data.sql`); applied to prod D1 + worker deployed (version `536a4715`). `backend/test/tier2.test.ts` 13/13 green; full suite 267 passed (3 pre-existing ai.test network timeouts). |
 | 2026-08-04 | **Tier 2 frontend wired** — `parent` index/overview/grades now live (`/v1/parent/students*`), `admissions` hub + applications list + detail live (`/v1/applications/admin*` + PATCH advance), `accountant/payroll` gained "Run payroll" action + payroll-runs list (payroll run + payments batches). New clients `api/parent`, `api/mentor`, `query/admissions|parent|mentor`, finance `useRunPayroll`, matching mock handlers. Typecheck + eslint + build + prod deploy ✅. Mentor profiles/match clients exist but no learner-facing page consumes them yet (alumni/mentorship is a mentor sign-up form, not a match UI). |
 | 2026-08-04 | **Tier 2 remainder wired (this phase, NOT yet committed/deployed)** — backend: `GET /v1/parent/students/:id/finance|attendance` (parent RBAC), migration `0013_attendance.sql` + `attendance-data.sql`/`attendance.ts`, parent seeds extended with student-bound invoices `INV-P01`/`INV-P02`, tier2 tests 13/13. Frontend: parent `$studentId.{finance,attendance,reports}` live, admissions `review/interviews/enrollment/reports` live (`?stage=` + stats), `accountant/banking` = payment ledger + settlement batches (`payments/history` + `finance/payments`), `admin/config` gained interactive feature-flag toggles (`useSetFlag`/`useResetFlag`; mock now merges overrides into `GET /v1/flags`), new `alumni/find` "Find a mentor" consuming `/v1/mentor/profiles` + `/v1/mentor/match` (hub tile added). Typecheck + eslint + build green. Kept static (no backend source): admissions `documents`/`communication`, parent `communication`/`invitation`, director `operations`/`okrs`/`reports` (drill-down surfaces; command-center carries the composed reads), admin `index`/`logs`. **Deployed** — prod D1 migration `0013` + attendance (25 rows) + invoice seeds (`INV-P01/P02`) applied via wrangler OAuth; worker redeployed (version `86ec1a74-4bdb-4060-b547-8351333ee318`); frontend prod build deployed to `cea-os.vercel.app` (deployment `dpl_6TGm9ExwCdJFJkABn6qDMaz3r7zU`). Commit `1a8cdac` pushed to main. |
+| 2026-08-05 | **Tier 3 starts: ops suite shipped** — backend: migration `0014_ops.sql` (inventory_items, purchase_orders, branches, facility_rooms, maintenance_jobs, vendors, vendor_contracts, ops_tasks, workflows), seeds `ops-data.sql`/`ops.ts`, `backend/src/routes/ops.ts` (9 paginated GET lists: inventory, purchase-orders, branches, rooms, maintenance, vendors, contracts, tasks, workflows), RBAC `roles: ["admin","instructor"]`, registered in index.ts; `backend/test/tier3-ops.test.ts` 12/12 (403 for non-staff + lists + camelCase mapping + cursor pagination); full suite 283 passed (3 pre-existing ai.test network timeouts). Frontend: `api/ops` + `query/ops` (9 collections) + mock handlers (mirrors seeds); all 7 `app/ops/*` pages wired — inventory (stock levels + reorder badges + open POs), branches (utilization + capacity KPIs), facilities (rooms + maintenance queue), vendors (ratings + contracts), tasks (ops board + workflows), reports (per-branch seat-day cost from branches), automation (workflow builder). Typecheck + eslint + build green. |
+| 2026-08-05 | **Tier 3 ops deployed** — prod D1 migration `0014` + `ops-data.sql` seeds applied via wrangler OAuth; worker redeployed (version TBD); frontend prod build deployed to `cea-os.vercel.app` (deployment TBD). Commit `TBD` pushed to main. |
 
 ---
 
@@ -29,10 +31,10 @@ Backend coverage = routes registered in `backend/src/lib/rbac.ts` (the full `/v1
 | Metric | Value |
 | --- | --- |
 | App pages under `src/routes/app/` | **283** |
-| Wired to live backend | **~111** |
-| Static dashboards (placeholder) | **~172** |
-| Backend route suites live | **~20 domains + Tier 2: parent, mentor, applications admin, payroll run** (rbac.ts) |
-| Backend suites NOT built yet | **~12 domains** (mentorship sessions/goals/requests, ops/inventory, IT/helpdesk, receptionist, government, behavioral, product-marketing, dev/CI, supplier, volunteer, partner, alumni-net) |
+| Wired to live backend | **~118** |
+| Static dashboards (placeholder) | **~165** |
+| Backend route suites live | **~21 domains + Tier 2/3: parent, mentor, applications admin, payroll run, ops** (rbac.ts) |
+| Backend suites NOT built yet | **~11 domains** (mentorship sessions/goals/requests, IT/helpdesk, receptionist, government, behavioral, product-marketing, dev/CI, supplier, volunteer, partner, alumni-net) |
 | Public/locale data | `jobs/gigs/events/caseStudies/testimonials` seeded in `src/data/site.ts` ✅ |
 
 ---
@@ -68,7 +70,7 @@ Backend coverage = routes registered in `backend/src/lib/rbac.ts` (the full `/v1
 | marketing | 10 | 10 | 0 | ✅ |
 | mentor | 12 | 0 | 12 | profiles + match API live (`/v1/mentor/*`); match UI lives at `alumni/find` (browse + match); mentor-dashboard pages (sessions/goals/requests/resources) still static |
 | ngo | 9 | 0 | 9 | none |
-| ops | 7 | 0 | 7 | none (inventory, branches, facilities) |
+| ops | 7 | 7 | 0 | `/v1/ops/*` (inventory, purchase-orders, branches, rooms, maintenance, vendors, contracts, tasks, workflows) ✅ |
 | parent | 8 | 6 | 2 | parent-scoped reads `GET /v1/parent/students(:id)` + `:id/finance` + `:id/attendance` ✅ (index, overview, grades, finance, attendance, reports wired); communication/invitation static |
 | partner | 7 | 0 | 7 | none |
 | product-marketing | 9 | 0 | 9 | none |
@@ -113,7 +115,7 @@ Backend user-facing surface is done; these folders are blobs of hardcoded number
 ## Tier 3 — NEW SUITES (backend route + rbac + schema + seed + hooks + UI)
 
 Recommended order (existing `/v1` naming style):
-1. `ops` (inventory, branches, facilities, vendors, tasks) — also feeds supplier + receptionist
+1. `ops` (inventory, branches, facilities, vendors, tasks) — also feeds supplier + receptionist — **✅ done 2026-08-05 (`/v1/ops/*`, migration 0014, seeds, 7/7 pages wired)**
 2. `it` (tickets/helpdesk, assets, knowledge-base, remote-support)
 3. `mentor` (sessions, goals, requests, resources)
 4. `intern` (tasks, timesheet→payroll hookup, evaluation)

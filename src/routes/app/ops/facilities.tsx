@@ -3,7 +3,10 @@ import { ArrowLeft, DoorOpen, Hammer, KeyRound, MapPinned } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { QueryState } from "@/components/ui/query-state";
 import { AppShell } from "@/components/app/app-shell";
+import { useRooms, useRoomItems, useMaintenance, useMaintenanceItems } from "@/lib/query/ops";
+import type { FacilityRoom, MaintenanceJob } from "@/lib/api/ops";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/ops/facilities")({
@@ -16,43 +19,33 @@ export const Route = createFileRoute("/app/ops/facilities")({
   component: OperationsFacilities,
 });
 
-const rooms = [
-  {
-    r: "Lab 3 · 40 seats",
-    b: "Block B",
-    next: "DevOps class · 10:00",
-    tone: "bg-primary/10 text-primary",
-  },
-  {
-    r: "Seminar room · 60 seats",
-    b: "Block A",
-    next: "Workshop · 13:00",
-    tone: "bg-learning/10 text-learning",
-  },
-  {
-    r: "Studio · 24 seats",
-    b: "Block C",
-    next: "Design sprint · 09:30",
-    tone: "bg-success/10 text-success",
-  },
-];
-
-const maint = [
-  { j: "AC repair — Lab 2", d: "Assigned · today", tone: "bg-warning/10 text-warning" },
-  {
-    j: "Generator servicing — Block B",
-    d: "Scheduled · today 15:00",
-    tone: "bg-primary/10 text-primary",
-  },
-  { j: "Fire extinguisher inspection", d: "Due Aug 12", tone: "bg-error/10 text-error" },
+const maintTones = [
+  "bg-warning/10 text-warning",
+  "bg-primary/10 text-primary",
+  "bg-error/10 text-error",
 ];
 
 function OperationsFacilities() {
+  const roomsQuery = useRooms();
+  const rooms = useRoomItems();
+  const maintQuery = useMaintenance();
+  const maint = useMaintenanceItems();
+
+  const labs = rooms.filter((r) => r.name.includes("Lab")).length;
+  const studios = rooms.filter((r) => r.name.includes("Studio")).length;
+  const seats = rooms.reduce((s, r) => s + r.seats, 0);
+  const free = rooms.filter((r) => r.status === "available").length;
+  const open = maint.filter((m) => m.status === "open").length;
+
   return (
     <AppShell
       roleKey="instructor"
       title="Facilities"
-      subtitle="12 bookable rooms · 96% uptime · 4 maintenance jobs"
+      subtitle={
+        rooms.length > 0
+          ? `${rooms.length} bookable rooms · ${maint.length} maintenance jobs`
+          : "Loading facilities…"
+      }
       actions={
         <>
           <Badge className="bg-success/10 text-success border-0 font-semibold">Campus clean</Badge>
@@ -68,29 +61,29 @@ function OperationsFacilities() {
         {[
           {
             label: "Bookable rooms",
-            value: "12",
-            delta: "5 labs · 3 studios",
+            value: rooms.length > 0 ? String(rooms.length) : "—",
+            delta: `${labs} labs · ${studios} studios`,
             icon: DoorOpen,
             tone: "bg-primary/10 text-primary",
           },
           {
-            label: "Occupancy today",
-            value: "78%",
-            delta: "peak 13:00–16:00",
+            label: "Seats available",
+            value: seats > 0 ? String(seats) : "—",
+            delta: "across bookable rooms",
             icon: MapPinned,
             tone: "bg-learning/10 text-learning",
           },
           {
             label: "Maintenance",
-            value: "4",
-            delta: "2 open · 2 due",
+            value: maint.length > 0 ? String(maint.length) : "—",
+            delta: `${open} open`,
             icon: Hammer,
             tone: "bg-warning/10 text-warning",
           },
           {
-            label: "Uptime (30d)",
-            value: "96%",
-            delta: "power · AC · internet",
+            label: "Rooms free",
+            value: free > 0 ? String(free) : "—",
+            delta: "next slots available",
             icon: KeyRound,
             tone: "bg-success/10 text-success",
           },
@@ -123,17 +116,33 @@ function OperationsFacilities() {
             </Button>
           </CardHeader>
           <CardContent className="space-y-3">
-            {rooms.map((r) => (
-              <div key={r.r} className="rounded-xl border p-3.5">
-                <div className="flex items-center justify-between gap-2">
-                  <p className="text-sm font-bold">{r.r}</p>
-                  <Badge variant="secondary" className="font-semibold">
-                    {r.b}
-                  </Badge>
-                </div>
-                <p className="text-muted-foreground mt-1 text-xs">Next: {r.next}</p>
-              </div>
-            ))}
+            <QueryState<FacilityRoom[]>
+              query={roomsQuery}
+              error={{ title: "Rooms unavailable" }}
+              empty={{
+                title: "No rooms yet",
+                description: "Bookable rooms will show here.",
+              }}
+              isEmpty={(rows) => rows.length === 0}
+            >
+              {(rows) => (
+                <>
+                  {rows.map((r) => (
+                    <div key={r.id} className="rounded-xl border p-3.5">
+                      <div className="flex items-center justify-between gap-2">
+                        <p className="text-sm font-bold">{r.name}</p>
+                        <Badge variant="secondary" className="font-semibold">
+                          {r.block}
+                        </Badge>
+                      </div>
+                      <p className="text-muted-foreground mt-1 text-xs">
+                        Next: {r.nextEvent} · {r.seats} seats
+                      </p>
+                    </div>
+                  ))}
+                </>
+              )}
+            </QueryState>
           </CardContent>
         </Card>
 
@@ -144,17 +153,39 @@ function OperationsFacilities() {
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-3">
-            {maint.map((m) => (
-              <div key={m.j} className="flex items-center justify-between rounded-xl border p-3">
-                <div>
-                  <p className="text-sm font-bold">{m.j}</p>
-                  <p className="text-muted-foreground mt-0.5 text-xs">{m.d}</p>
-                </div>
-                <Button variant="outline" size="sm" className="shrink-0 font-semibold">
-                  Track
-                </Button>
-              </div>
-            ))}
+            <QueryState<MaintenanceJob[]>
+              query={maintQuery}
+              error={{ title: "Maintenance queue unavailable" }}
+              empty={{
+                title: "No maintenance jobs",
+                description: "Open jobs will show here.",
+              }}
+              isEmpty={(rows) => rows.length === 0}
+            >
+              {(rows) => (
+                <>
+                  {rows.map((m, index) => (
+                    <div
+                      key={m.id}
+                      className="flex items-center justify-between rounded-xl border p-3"
+                    >
+                      <div>
+                        <p className="text-sm font-bold">{m.title}</p>
+                        <p className="text-muted-foreground mt-0.5 text-xs">{m.detail}</p>
+                      </div>
+                      <Badge
+                        className={cn(
+                          "border-0 font-semibold",
+                          maintTones[index % maintTones.length],
+                        )}
+                      >
+                        Open
+                      </Badge>
+                    </div>
+                  ))}
+                </>
+              )}
+            </QueryState>
           </CardContent>
         </Card>
       </div>

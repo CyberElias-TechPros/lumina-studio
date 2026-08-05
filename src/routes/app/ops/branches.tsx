@@ -3,7 +3,10 @@ import { ArrowLeft, Building2, GraduationCap, MapPin, Users } from "lucide-react
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { QueryState } from "@/components/ui/query-state";
 import { AppShell } from "@/components/app/app-shell";
+import { useBranches, useBranchItems } from "@/lib/query/ops";
+import type { Branch } from "@/lib/api/ops";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/ops/branches")({
@@ -19,43 +22,44 @@ export const Route = createFileRoute("/app/ops/branches")({
   component: OperationsBranches,
 });
 
-const branches = [
-  {
-    b: "Ikeja HQ",
-    loc: "Lagos · Main campus",
-    cap: "342 / 400 seats",
-    util: 86,
-    status: "Healthy",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    b: "Victoria Island",
-    loc: "Lagos · Executive center",
-    cap: "118 / 150 seats",
-    util: 79,
-    status: "Steady",
-    tone: "bg-primary/10 text-primary",
-  },
-  {
-    b: "Abeokuta",
-    loc: "Ogun · Satellite",
-    cap: "64 / 120 seats",
-    util: 53,
-    status: "Underused",
-    tone: "bg-warning/10 text-warning",
-  },
-];
+const statusBadge: Record<string, { label: string; tone: string }> = {
+  healthy: { label: "Healthy", tone: "bg-success/10 text-success" },
+  steady: { label: "Steady", tone: "bg-primary/10 text-primary" },
+  underused: { label: "Underused", tone: "bg-warning/10 text-warning" },
+};
+
+function utilization(b: Branch): number {
+  return b.capacity > 0 ? Math.round((b.occupied / b.capacity) * 100) : 0;
+}
 
 function OperationsBranches() {
+  const query = useBranches();
+  const branches = useBranchItems();
+
+  const totalCapacity = branches.reduce((s, b) => s + b.capacity, 0);
+  const totalOccupied = branches.reduce((s, b) => s + b.occupied, 0);
+  const staff = branches.reduce((s, b) => s + b.staffOnsite, 0);
+  const avgUtil = totalCapacity > 0 ? Math.round((totalOccupied / totalCapacity) * 100) : 0;
+  const underused = branches.filter((b) => b.status === "underused").length;
+
   return (
     <AppShell
       roleKey="instructor"
       title="Branch management"
-      subtitle="3 campuses · 670 seats · 82% avg utilization"
+      subtitle={
+        branches.length > 0
+          ? `${branches.length} campuses · ${totalCapacity} seats · ${avgUtil}% avg utilization`
+          : "Loading branches…"
+      }
       actions={
         <>
-          <Badge className="bg-success/10 text-success border-0 font-semibold">
-            All campuses live
+          <Badge
+            className={cn(
+              "border-0 font-semibold",
+              underused > 0 ? "bg-warning/10 text-warning" : "bg-success/10 text-success",
+            )}
+          >
+            {underused > 0 ? `${underused} campus underused` : "All campuses live"}
           </Badge>
           <Button asChild variant="outline" size="sm" className="font-semibold">
             <Link to="/portal/operations">
@@ -69,29 +73,29 @@ function OperationsBranches() {
         {[
           {
             label: "Branches",
-            value: "3",
-            delta: "1 satellite",
+            value: branches.length > 0 ? String(branches.length) : "—",
+            delta: branches.length > 1 ? "multi-campus" : "single campus",
             icon: Building2,
             tone: "bg-primary/10 text-primary",
           },
           {
             label: "Total capacity",
-            value: "670",
+            value: totalCapacity > 0 ? String(totalCapacity) : "—",
             delta: "seats across campuses",
             icon: Users,
             tone: "bg-learning/10 text-learning",
           },
           {
             label: "Avg utilization",
-            value: "82%",
+            value: avgUtil > 0 ? `${avgUtil}%` : "—",
             delta: "target 75–90%",
             icon: GraduationCap,
             tone: "bg-success/10 text-success",
           },
           {
             label: "Staff on site",
-            value: "94",
-            delta: "5 sites incl. labs",
+            value: staff > 0 ? String(staff) : "—",
+            delta: "across campuses",
             icon: MapPin,
             tone: "bg-warning/10 text-warning",
           },
@@ -123,35 +127,60 @@ function OperationsBranches() {
           </Button>
         </CardHeader>
         <CardContent className="space-y-4">
-          {branches.map((b) => (
-            <div key={b.b} className="rounded-xl border p-4">
-              <div className="flex flex-wrap items-center gap-3">
-                <div className="min-w-0 flex-1">
-                  <p className="text-sm font-bold">{b.b}</p>
-                  <p className="text-muted-foreground text-xs">{b.loc}</p>
-                </div>
-                <Badge className={cn("border-0 font-semibold", b.tone)}>{b.status}</Badge>
-                <Button variant="outline" size="sm" className="shrink-0 font-semibold">
-                  Manage
-                </Button>
-              </div>
-              <div className="mt-3">
-                <div className="text-muted-foreground flex justify-between text-xs font-semibold">
-                  <span>{b.cap}</span>
-                  <span>{b.util}%</span>
-                </div>
-                <div className="bg-muted mt-1.5 h-2 overflow-hidden rounded-full">
-                  <div
-                    className={cn(
-                      "h-full rounded-full",
-                      b.util >= 70 ? "bg-success" : "bg-warning",
-                    )}
-                    style={{ width: `${b.util}%` }}
-                  />
-                </div>
-              </div>
-            </div>
-          ))}
+          <QueryState<Branch[]>
+            query={query}
+            error={{ title: "Branches unavailable" }}
+            empty={{
+              title: "No branches yet",
+              description: "Campus records will show here.",
+            }}
+            isEmpty={(rows) => rows.length === 0}
+          >
+            {(rows) => (
+              <>
+                {rows.map((b) => {
+                  const util = utilization(b);
+                  const badge = statusBadge[b.status] ?? {
+                    label: b.status,
+                    tone: "bg-muted/20 text-muted-foreground",
+                  };
+                  return (
+                    <div key={b.id} className="rounded-xl border p-4">
+                      <div className="flex flex-wrap items-center gap-3">
+                        <div className="min-w-0 flex-1">
+                          <p className="text-sm font-bold">{b.name}</p>
+                          <p className="text-muted-foreground text-xs">{b.location}</p>
+                        </div>
+                        <Badge className={cn("border-0 font-semibold", badge.tone)}>
+                          {badge.label}
+                        </Badge>
+                        <Button variant="outline" size="sm" className="shrink-0 font-semibold">
+                          Manage
+                        </Button>
+                      </div>
+                      <div className="mt-3">
+                        <div className="text-muted-foreground flex justify-between text-xs font-semibold">
+                          <span>
+                            {b.occupied} / {b.capacity} seats
+                          </span>
+                          <span>{util}%</span>
+                        </div>
+                        <div className="bg-muted mt-1.5 h-2 overflow-hidden rounded-full">
+                          <div
+                            className={cn(
+                              "h-full rounded-full",
+                              util >= 70 ? "bg-success" : "bg-warning",
+                            )}
+                            style={{ width: `${util}%` }}
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </>
+            )}
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>

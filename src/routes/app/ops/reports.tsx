@@ -1,17 +1,13 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import {
-  ArrowLeft,
-  BarChart3,
-  FileBarChart2,
-  Landmark,
-  TrendingDown,
-  TrendingUp,
-} from "lucide-react";
+import { ArrowLeft, BarChart3, Building2, FileBarChart2, Landmark, TrendingUp } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { QueryState } from "@/components/ui/query-state";
 import { AppShell } from "@/components/app/app-shell";
-import { cn } from "@/lib/utils";
+import { useBranches, useBranchItems } from "@/lib/query/ops";
+import type { Branch } from "@/lib/api/ops";
+import { cn, formatNairaCompact } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/ops/reports")({
   head: () => ({
@@ -22,12 +18,6 @@ export const Route = createFileRoute("/app/ops/reports")({
   }),
   component: OperationsReports,
 });
-
-const rows = [
-  { m: "Ikeja HQ", c: "₦8.2 / seat-day", u: "86%", t: "+4%", up: true },
-  { m: "Victoria Island", c: "₦9.6 / seat-day", u: "79%", t: "+1%", up: true },
-  { m: "Abeokuta", c: "₦11.4 / seat-day", u: "53%", t: "-3%", up: false },
-];
 
 const reports = [
   {
@@ -47,16 +37,39 @@ const reports = [
   },
 ];
 
+const statusBadge: Record<string, { label: string; tone: string }> = {
+  healthy: { label: "Healthy", tone: "bg-success/10 text-success" },
+  steady: { label: "Steady", tone: "bg-primary/10 text-primary" },
+  underused: { label: "Underused", tone: "bg-warning/10 text-warning" },
+};
+
+function utilization(b: Branch): number {
+  return b.capacity > 0 ? Math.round((b.occupied / b.capacity) * 100) : 0;
+}
+
 function OperationsReports() {
+  const query = useBranches();
+  const branches = useBranchItems();
+
+  const totalCapacity = branches.reduce((s, b) => s + b.capacity, 0);
+  const totalOccupied = branches.reduce((s, b) => s + b.occupied, 0);
+  const avgUtil = totalCapacity > 0 ? Math.round((totalOccupied / totalCapacity) * 100) : 0;
+  const avgCost =
+    branches.length > 0
+      ? Math.round(branches.reduce((s, b) => s + b.costSeatDay, 0) / branches.length)
+      : 0;
+
   return (
     <AppShell
       roleKey="instructor"
       title="Reports & analytics"
-      subtitle="Efficiency, cost per branch · updated daily 07:00"
+      subtitle={
+        branches.length > 0 ? `Efficiency by campus · updated daily 07:00` : "Loading reports…"
+      }
       actions={
         <>
           <Badge className="bg-success/10 text-success border-0 font-semibold">
-            Efficiency 91%
+            {branches.length > 0 ? `${avgUtil}% utilization` : "—"}
           </Badge>
           <Button asChild variant="outline" size="sm" className="font-semibold">
             <Link to="/portal/operations">
@@ -69,31 +82,31 @@ function OperationsReports() {
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         {[
           {
-            label: "Efficiency score",
-            value: "91%",
-            delta: "target 85%+",
-            icon: BarChart3,
-            tone: "bg-success/10 text-success",
-          },
-          {
             label: "Cost per seat-day",
-            value: "₦9.2",
-            delta: "across campuses",
+            value: avgCost > 0 ? formatNairaCompact(avgCost) : "—",
+            delta: "average across campuses",
             icon: Landmark,
             tone: "bg-primary/10 text-primary",
           },
           {
             label: "Utilization",
-            value: "82%",
-            delta: "peak 94%",
+            value: avgUtil > 0 ? `${avgUtil}%` : "—",
+            delta: "target 75–90%",
             icon: TrendingUp,
             tone: "bg-learning/10 text-learning",
           },
           {
-            label: "Incidents (30d)",
-            value: "0",
-            delta: "down from 3",
-            icon: TrendingDown,
+            label: "Seats tracked",
+            value: totalCapacity > 0 ? String(totalCapacity) : "—",
+            delta: "across campuses",
+            icon: BarChart3,
+            tone: "bg-success/10 text-success",
+          },
+          {
+            label: "Branches",
+            value: branches.length > 0 ? String(branches.length) : "—",
+            delta: "campuses reporting",
+            icon: Building2,
             tone: "bg-warning/10 text-warning",
           },
         ].map((k) => (
@@ -121,26 +134,44 @@ function OperationsReports() {
           </CardTitle>
         </CardHeader>
         <CardContent className="divide-y">
-          {rows.map((r) => (
-            <div
-              key={r.m}
-              className="flex flex-wrap items-center gap-3 py-3.5 first:pt-0 last:pb-0"
-            >
-              <div className="min-w-0 flex-1">
-                <p className="text-sm font-bold">{r.m}</p>
-                <p className="text-muted-foreground text-xs">Utilization {r.u}</p>
-              </div>
-              <p className="text-sm font-semibold">{r.c}</p>
-              <Badge
-                className={cn(
-                  "border-0 font-semibold",
-                  r.up ? "bg-success/10 text-success" : "bg-error/10 text-error",
-                )}
-              >
-                {r.t}
-              </Badge>
-            </div>
-          ))}
+          <QueryState<Branch[]>
+            query={query}
+            error={{ title: "Branch data unavailable" }}
+            empty={{
+              title: "No branches yet",
+              description: "Per-branch cost data will show here.",
+            }}
+            isEmpty={(rows) => rows.length === 0}
+          >
+            {(rows) => (
+              <>
+                {rows.map((b) => {
+                  const util = utilization(b);
+                  const badge = statusBadge[b.status] ?? {
+                    label: b.status,
+                    tone: "bg-muted/20 text-muted-foreground",
+                  };
+                  return (
+                    <div
+                      key={b.id}
+                      className="flex flex-wrap items-center gap-3 py-3.5 first:pt-0 last:pb-0"
+                    >
+                      <div className="min-w-0 flex-1">
+                        <p className="text-sm font-bold">{b.name}</p>
+                        <p className="text-muted-foreground text-xs">Utilization {util}%</p>
+                      </div>
+                      <p className="text-sm font-semibold">
+                        {formatNairaCompact(b.costSeatDay)} / seat-day
+                      </p>
+                      <Badge className={cn("border-0 font-semibold", badge.tone)}>
+                        {badge.label}
+                      </Badge>
+                    </div>
+                  );
+                })}
+              </>
+            )}
+          </QueryState>
         </CardContent>
       </Card>
 
@@ -153,6 +184,9 @@ function OperationsReports() {
         <CardContent className="space-y-3">
           {reports.map((r) => (
             <div key={r.r} className="flex flex-wrap items-center gap-3 rounded-xl border p-3">
+              <span className={cn("grid size-9 shrink-0 place-items-center rounded-lg", r.tone)}>
+                <FileBarChart2 className="size-4" />
+              </span>
               <div className="min-w-0 flex-1">
                 <p className="text-sm font-bold">{r.r}</p>
                 <p className="text-muted-foreground text-xs">{r.d}</p>

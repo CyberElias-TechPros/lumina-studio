@@ -10,7 +10,10 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { QueryState } from "@/components/ui/query-state";
 import { AppShell } from "@/components/app/app-shell";
+import { useOpsTasks, useOpsTaskItems, useWorkflows, useWorkflowItems } from "@/lib/query/ops";
+import type { OpsTask, Workflow } from "@/lib/api/ops";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/ops/tasks")({
@@ -23,32 +26,27 @@ export const Route = createFileRoute("/app/ops/tasks")({
   component: OperationsTasks,
 });
 
-const tasks = [
-  { t: "Weekend cleaning rota", a: "Facilities team", d: "Today · 5/5 done", done: true },
-  { t: "ISP failover test", a: "IT support", d: "Today · 17:00", done: false },
-  { t: "Store stock count — Block A", a: "Store keeper", d: "Thu · 08:00", done: false },
-  { t: "Security patrol log review", a: "Security lead", d: "Fri · 16:00", done: false },
-];
-
-const workflows = [
-  { w: "Visitor pass workflow", r: "18 runs this week", tone: "bg-success/10 text-success" },
-  { w: "Supplier delivery intake", r: "11 runs this week", tone: "bg-primary/10 text-primary" },
-  {
-    w: "Classroom readiness checklist",
-    r: "9 runs this week",
-    tone: "bg-learning/10 text-learning",
-  },
-];
-
 function OperationsTasks() {
+  const tasksQuery = useOpsTasks();
+  const tasks = useOpsTaskItems();
+  const workflowsQuery = useWorkflows();
+  const workflows = useWorkflowItems();
+
+  const open = tasks.filter((t) => t.done === 0).length;
+  const done = tasks.filter((t) => t.done === 1).length;
+  const completion = tasks.length > 0 ? Math.round((done / tasks.length) * 100) : 0;
+  const live = workflows.filter((w) => w.status === "active").length;
+
   return (
     <AppShell
       roleKey="instructor"
       title="Task management"
-      subtitle="Ops board · 12 open · 4 due today"
+      subtitle={tasks.length > 0 ? `Ops board · ${open} open · ${done} done` : "Loading tasks…"}
       actions={
         <>
-          <Badge className="bg-success/10 text-success border-0 font-semibold">On-time 91%</Badge>
+          <Badge className="bg-success/10 text-success border-0 font-semibold">
+            {completion}% complete
+          </Badge>
           <Button asChild variant="outline" size="sm" className="font-semibold">
             <Link to="/portal/operations">
               <ArrowLeft className="size-4" /> Operations
@@ -61,29 +59,29 @@ function OperationsTasks() {
         {[
           {
             label: "Open tasks",
-            value: "12",
-            delta: "4 due today",
+            value: tasks.length > 0 ? String(open) : "—",
+            delta: `${tasks.length} total`,
             icon: ClipboardList,
             tone: "bg-primary/10 text-primary",
           },
           {
-            label: "Done this week",
-            value: "38",
-            delta: "across 6 teams",
+            label: "Done",
+            value: done > 0 ? String(done) : "—",
+            delta: "completed tasks",
             icon: CheckCircle2,
             tone: "bg-success/10 text-success",
           },
           {
-            label: "On-time rate",
-            value: "91%",
-            delta: "last 30 days",
+            label: "Completion rate",
+            value: tasks.length > 0 ? `${completion}%` : "—",
+            delta: "of tracked tasks",
             icon: Gauge,
             tone: "bg-learning/10 text-learning",
           },
           {
             label: "Workflows live",
-            value: "6",
-            delta: "38 runs/week",
+            value: workflows.length > 0 ? String(live) : "—",
+            delta: `${workflows.length} total`,
             icon: CalendarCheck2,
             tone: "bg-warning/10 text-warning",
           },
@@ -116,31 +114,45 @@ function OperationsTasks() {
             </Button>
           </CardHeader>
           <CardContent className="space-y-3">
-            {tasks.map((t) => (
-              <div
-                key={t.t}
-                className={cn(
-                  "flex items-center gap-3 rounded-xl border p-3",
-                  t.done && "opacity-60",
-                )}
-              >
-                <CheckCircle2
-                  className={cn(
-                    "size-4 shrink-0",
-                    t.done ? "text-success" : "text-muted-foreground",
-                  )}
-                />
-                <div className="min-w-0 flex-1">
-                  <p className="text-sm font-bold">{t.t}</p>
-                  <p className="text-muted-foreground text-xs">
-                    {t.a} · {t.d}
-                  </p>
-                </div>
-                <Button variant="outline" size="sm" className="shrink-0 font-semibold">
-                  {t.done ? "View" : "Assign"}
-                </Button>
-              </div>
-            ))}
+            <QueryState<OpsTask[]>
+              query={tasksQuery}
+              error={{ title: "Tasks unavailable" }}
+              empty={{
+                title: "No tasks yet",
+                description: "Assigned operational tasks will show here.",
+              }}
+              isEmpty={(rows) => rows.length === 0}
+            >
+              {(rows) => (
+                <>
+                  {rows.map((t) => (
+                    <div
+                      key={t.id}
+                      className={cn(
+                        "flex items-center gap-3 rounded-xl border p-3",
+                        t.done === 1 && "opacity-60",
+                      )}
+                    >
+                      <CheckCircle2
+                        className={cn(
+                          "size-4 shrink-0",
+                          t.done === 1 ? "text-success" : "text-muted-foreground",
+                        )}
+                      />
+                      <div className="min-w-0 flex-1">
+                        <p className="text-sm font-bold">{t.title}</p>
+                        <p className="text-muted-foreground text-xs">
+                          {t.assignee} · {t.detail}
+                        </p>
+                      </div>
+                      <Button variant="outline" size="sm" className="shrink-0 font-semibold">
+                        {t.done === 1 ? "View" : "Assign"}
+                      </Button>
+                    </div>
+                  ))}
+                </>
+              )}
+            </QueryState>
           </CardContent>
         </Card>
 
@@ -151,17 +163,38 @@ function OperationsTasks() {
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-3">
-            {workflows.map((w) => (
-              <div key={w.w} className="flex items-center justify-between rounded-xl border p-3">
-                <div>
-                  <p className="text-sm font-bold">{w.w}</p>
-                  <p className="text-muted-foreground mt-0.5 text-xs">{w.r}</p>
-                </div>
-                <Badge className={cn("border-0 font-semibold", w.tone)}>Active</Badge>
-              </div>
-            ))}
-            <Button variant="outline" size="sm" className="w-full font-semibold">
-              Open automation builder
+            <QueryState<Workflow[]>
+              query={workflowsQuery}
+              error={{ title: "Workflows unavailable" }}
+              empty={{
+                title: "No workflows yet",
+                description: "Automated operations workflows will show here.",
+              }}
+              isEmpty={(rows) => rows.length === 0}
+            >
+              {(rows) => (
+                <>
+                  {rows.map((w) => (
+                    <div
+                      key={w.id}
+                      className="flex items-center justify-between rounded-xl border p-3"
+                    >
+                      <div>
+                        <p className="text-sm font-bold">{w.name}</p>
+                        <p className="text-muted-foreground mt-0.5 text-xs">{w.stats}</p>
+                      </div>
+                      <Badge className="border-0 bg-success/10 font-semibold text-success">
+                        Active
+                      </Badge>
+                    </div>
+                  ))}
+                </>
+              )}
+            </QueryState>
+            <Button asChild variant="outline" size="sm" className="w-full font-semibold">
+              <Link to="/app/ops/automation">
+                <UserRound className="size-4" /> Open automation builder
+              </Link>
             </Button>
           </CardContent>
         </Card>

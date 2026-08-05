@@ -1,9 +1,12 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowLeft, Boxes, Plus, Split, Workflow, Zap } from "lucide-react";
+import { ArrowLeft, Boxes, CheckSquare, Plus, Split, Workflow, Zap } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { QueryState } from "@/components/ui/query-state";
 import { AppShell } from "@/components/app/app-shell";
+import { useWorkflows, useWorkflowItems } from "@/lib/query/ops";
+import type { Workflow as WorkflowItem } from "@/lib/api/ops";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/ops/automation")({
@@ -16,37 +19,27 @@ export const Route = createFileRoute("/app/ops/automation")({
   component: OperationsAutomation,
 });
 
-const builders = [
-  {
-    w: "Visitor badge → notify host",
-    d: "Trigger: visitor checks in",
-    s: "38 runs · 0 errors",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    w: "Low stock → supplier PO",
-    d: "Trigger: SKU below reorder point",
-    s: "11 runs · 2 approvals",
-    tone: "bg-primary/10 text-primary",
-  },
-  {
-    w: "Room book → AC + lights",
-    d: "Trigger: booking confirmed",
-    s: "9 runs · sync OK",
-    tone: "bg-learning/10 text-learning",
-  },
-];
-
 function OperationsAutomation() {
+  const query = useWorkflows();
+  const workflows = useWorkflowItems();
+
+  const live = workflows.filter((w) => w.status === "active").length;
+  const drafts = workflows.filter((w) => w.status === "draft").length;
+  const approvals = workflows.filter((w) => w.stats.includes("approvals")).length;
+
   return (
     <AppShell
       roleKey="instructor"
       title="Process automation"
-      subtitle="Visual builder · 6 live workflows · 2 drafts"
+      subtitle={
+        workflows.length > 0
+          ? `Visual builder · ${live} live workflows · ${drafts} drafts`
+          : "Loading workflows…"
+      }
       actions={
         <>
           <Badge className="bg-success/10 text-success border-0 font-semibold">
-            38 runs this week
+            {live > 0 ? `${live} live` : "—"}
           </Badge>
           <Button asChild variant="outline" size="sm" className="font-semibold">
             <Link to="/portal/operations">
@@ -60,30 +53,30 @@ function OperationsAutomation() {
         {[
           {
             label: "Live workflows",
-            value: "6",
+            value: workflows.length > 0 ? String(live) : "—",
             delta: "all healthy",
             icon: Workflow,
             tone: "bg-primary/10 text-primary",
           },
           {
-            label: "Runs this week",
-            value: "38",
-            delta: "+12% vs last",
+            label: "Total workflows",
+            value: workflows.length > 0 ? String(workflows.length) : "—",
+            delta: "in the builder",
             icon: Zap,
             tone: "bg-success/10 text-success",
           },
           {
-            label: "Error rate",
-            value: "0.3%",
-            delta: "2 retries auto",
+            label: "Drafts",
+            value: drafts > 0 ? String(drafts) : "0",
+            delta: "awaiting activation",
             icon: Split,
             tone: "bg-learning/10 text-learning",
           },
           {
-            label: "Hours saved",
-            value: "14h",
-            delta: "per week est.",
-            icon: Boxes,
+            label: "Approvals",
+            value: approvals > 0 ? String(approvals) : "0",
+            delta: "need review",
+            icon: CheckSquare,
             tone: "bg-warning/10 text-warning",
           },
         ].map((k) => (
@@ -114,21 +107,43 @@ function OperationsAutomation() {
           </Button>
         </CardHeader>
         <CardContent className="space-y-3">
-          {builders.map((b) => (
-            <div key={b.w} className="flex flex-wrap items-center gap-3 rounded-xl border p-3.5">
-              <span className={cn("grid size-9 shrink-0 place-items-center rounded-lg", b.tone)}>
-                <Zap className="size-4" />
-              </span>
-              <div className="min-w-0 flex-1">
-                <p className="text-sm font-bold">{b.w}</p>
-                <p className="text-muted-foreground text-xs">{b.d}</p>
-              </div>
-              <Badge className={cn("border-0 font-semibold", b.tone)}>{b.s}</Badge>
-              <Button variant="outline" size="sm" className="shrink-0 font-semibold">
-                Edit
-              </Button>
-            </div>
-          ))}
+          <QueryState<WorkflowItem[]>
+            query={query}
+            error={{ title: "Workflows unavailable" }}
+            empty={{
+              title: "No workflows yet",
+              description: "Built workflows will appear in the builder.",
+            }}
+            isEmpty={(rows) => rows.length === 0}
+          >
+            {(rows) => (
+              <>
+                {rows.map((b) => (
+                  <div
+                    key={b.id}
+                    className="flex flex-wrap items-center gap-3 rounded-xl border p-3.5"
+                  >
+                    <span className="grid size-9 shrink-0 place-items-center rounded-lg bg-success/10 text-success">
+                      <Zap className="size-4" />
+                    </span>
+                    <div className="min-w-0 flex-1">
+                      <p className="text-sm font-bold">{b.name}</p>
+                      <p className="text-muted-foreground text-xs">{b.triggerDetail}</p>
+                    </div>
+                    <Badge className="border-0 bg-primary/10 font-semibold text-primary">
+                      {b.stats}
+                    </Badge>
+                    <Button variant="outline" size="sm" className="shrink-0 font-semibold">
+                      Edit
+                    </Button>
+                  </div>
+                ))}
+              </>
+            )}
+          </QueryState>
+          <p className="text-muted-foreground flex items-center gap-1.5 text-xs font-semibold">
+            <Boxes className="size-3.5" /> Triggers, actions and approvals are configured here.
+          </p>
         </CardContent>
       </Card>
     </AppShell>

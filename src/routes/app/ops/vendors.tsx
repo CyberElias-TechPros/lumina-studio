@@ -3,8 +3,11 @@ import { ArrowLeft, BadgeCheck, FileSignature, Handshake, Star, Truck } from "lu
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { QueryState } from "@/components/ui/query-state";
 import { AppShell } from "@/components/app/app-shell";
-import { cn } from "@/lib/utils";
+import { useVendors, useVendorItems, useContracts, useContractItems } from "@/lib/query/ops";
+import type { Vendor, VendorContract } from "@/lib/api/ops";
+import { cn, formatNairaCompact } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/ops/vendors")({
   head: () => ({
@@ -16,51 +19,35 @@ export const Route = createFileRoute("/app/ops/vendors")({
   component: OperationsVendors,
 });
 
-const vendors = [
-  {
-    v: "OfficeMate",
-    s: "Stationery",
-    r: "4.8 / 5",
-    status: "Active",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    v: "GasMaster",
-    s: "Cafeteria gas",
-    r: "4.6 / 5",
-    status: "Active",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    v: "Compton Power",
-    s: "Generator servicing",
-    r: "3.9 / 5",
-    status: "Watch",
-    tone: "bg-warning/10 text-warning",
-  },
-];
-
-const contracts = [
-  {
-    c: "OfficeMate annual supply",
-    d: "Renews Nov 2026",
-    v2: "₦2.4m/yr",
-    tone: "bg-primary/10 text-primary",
-  },
-  {
-    c: "GasMaster delivery SLA",
-    d: "Renews Sep 2026",
-    v2: "₦1.1m/yr",
-    tone: "bg-learning/10 text-learning",
-  },
-];
+const vendorTone: Record<string, string> = {
+  active: "bg-success/10 text-success",
+  watch: "bg-warning/10 text-warning",
+};
 
 function OperationsVendors() {
+  const vendorsQuery = useVendors();
+  const vendors = useVendorItems();
+  const contractsQuery = useContracts();
+  const contracts = useContractItems();
+
+  const active = vendors.filter((v) => v.status === "active").length;
+  const watch = vendors.filter((v) => v.status === "watch").length;
+  const avgRating =
+    vendors.length > 0
+      ? (vendors.reduce((s, v) => s + v.rating, 0) / vendors.length).toFixed(1)
+      : "—";
+  const liveContracts = contracts.filter((c) => c.status === "active").length;
+  const contractValue = contracts.reduce((s, c) => s + c.valueYr, 0);
+
   return (
     <AppShell
       roleKey="instructor"
       title="Vendor management"
-      subtitle="11 active vendors · 2 contracts renewing this quarter"
+      subtitle={
+        vendors.length > 0
+          ? `${vendors.length} vendors · ${contracts.length} contracts on file`
+          : "Loading vendors…"
+      }
       actions={
         <>
           <Badge className="bg-success/10 text-success border-0 font-semibold">
@@ -78,29 +65,29 @@ function OperationsVendors() {
         {[
           {
             label: "Active vendors",
-            value: "11",
-            delta: "2 onboarding",
+            value: active > 0 ? String(active) : "—",
+            delta: `${vendors.length} total`,
             icon: Handshake,
             tone: "bg-primary/10 text-primary",
           },
           {
             label: "Avg rating",
-            value: "4.5",
-            delta: "of 5 · 24 reviews",
+            value: avgRating,
+            delta: "of 5",
             icon: Star,
             tone: "bg-success/10 text-success",
           },
           {
             label: "Contracts live",
-            value: "8",
-            delta: "2 renewing soon",
+            value: liveContracts > 0 ? String(liveContracts) : "—",
+            delta: `${contractValue > 0 ? formatNairaCompact(contractValue) : "—"}/yr`,
             icon: FileSignature,
             tone: "bg-learning/10 text-learning",
           },
           {
-            label: "Spend MTD",
-            value: "₦3.1m",
-            delta: "92% on budget",
+            label: "Watchlist",
+            value: watch > 0 ? String(watch) : "0",
+            delta: "need attention",
             icon: Truck,
             tone: "bg-warning/10 text-warning",
           },
@@ -133,20 +120,41 @@ function OperationsVendors() {
             </Button>
           </CardHeader>
           <CardContent className="divide-y">
-            {vendors.map((v) => (
-              <div
-                key={v.v}
-                className="flex flex-wrap items-center gap-3 py-3.5 first:pt-0 last:pb-0"
-              >
-                <div className="min-w-0 flex-1">
-                  <p className="text-sm font-bold">{v.v}</p>
-                  <p className="text-muted-foreground text-xs">
-                    {v.s} · rated {v.r}
-                  </p>
-                </div>
-                <Badge className={cn("border-0 font-semibold", v.tone)}>{v.status}</Badge>
-              </div>
-            ))}
+            <QueryState<Vendor[]>
+              query={vendorsQuery}
+              error={{ title: "Vendors unavailable" }}
+              empty={{
+                title: "No vendors yet",
+                description: "Vendor records will show here.",
+              }}
+              isEmpty={(rows) => rows.length === 0}
+            >
+              {(rows) => (
+                <>
+                  {rows.map((v) => (
+                    <div
+                      key={v.id}
+                      className="flex flex-wrap items-center gap-3 py-3.5 first:pt-0 last:pb-0"
+                    >
+                      <div className="min-w-0 flex-1">
+                        <p className="text-sm font-bold">{v.name}</p>
+                        <p className="text-muted-foreground text-xs">
+                          {v.category} · rated {v.rating.toFixed(1)} / 5
+                        </p>
+                      </div>
+                      <Badge
+                        className={cn(
+                          "border-0 font-semibold capitalize",
+                          vendorTone[v.status] ?? "bg-muted/20 text-muted-foreground",
+                        )}
+                      >
+                        {v.status}
+                      </Badge>
+                    </div>
+                  ))}
+                </>
+              )}
+            </QueryState>
           </CardContent>
         </Card>
 
@@ -157,17 +165,36 @@ function OperationsVendors() {
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-3">
-            {contracts.map((c) => (
-              <div key={c.c} className="flex items-center justify-between rounded-xl border p-3">
-                <div>
-                  <p className="text-sm font-bold">{c.c}</p>
-                  <p className="text-muted-foreground mt-0.5 text-xs">
-                    {c.d} · {c.v2}
-                  </p>
-                </div>
-                <Badge className={cn("border-0 font-semibold", c.tone)}>Active</Badge>
-              </div>
-            ))}
+            <QueryState<VendorContract[]>
+              query={contractsQuery}
+              error={{ title: "Contracts unavailable" }}
+              empty={{
+                title: "No contracts yet",
+                description: "Vendor contracts will show here.",
+              }}
+              isEmpty={(rows) => rows.length === 0}
+            >
+              {(rows) => (
+                <>
+                  {rows.map((c) => (
+                    <div
+                      key={c.id}
+                      className="flex items-center justify-between rounded-xl border p-3"
+                    >
+                      <div>
+                        <p className="text-sm font-bold">{c.title}</p>
+                        <p className="text-muted-foreground mt-0.5 text-xs">
+                          {c.renews} · {formatNairaCompact(c.valueYr)}/yr
+                        </p>
+                      </div>
+                      <Badge className="border-0 bg-success/10 font-semibold text-success">
+                        Active
+                      </Badge>
+                    </div>
+                  ))}
+                </>
+              )}
+            </QueryState>
           </CardContent>
         </Card>
       </div>
