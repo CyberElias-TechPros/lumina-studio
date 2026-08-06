@@ -4,6 +4,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import { useVolCerts, useVolCertItems } from "@/lib/query/volunteerReceptionist";
+import type { VolCert } from "@/lib/api/volunteerReceptionist";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/volunteer/certificates")({
@@ -16,21 +19,21 @@ export const Route = createFileRoute("/app/volunteer/certificates")({
   component: VolunteerCertificates,
 });
 
-const certs = [
-  {
-    c: "Volunteer appreciation — 40h",
-    d: "Issued Jul 31 · #CEA-VOL-042",
-    tone: "bg-success/10 text-success",
-  },
-  { c: "Outreach champion", d: "Issued Jun 30 · #CEA-VOL-031", tone: "bg-primary/10 text-primary" },
-];
+const tones = ["bg-success/10 text-success", "bg-primary/10 text-primary"];
 
 function VolunteerCertificates() {
+  const certsQuery = useVolCerts();
+  const certs = useVolCertItems();
+
   return (
     <AppShell
       roleKey="student"
       title="Certificates"
-      subtitle="2 earned · 1 pending at 60h"
+      subtitle={
+        certs.length > 0
+          ? `${certs.length} earned · 1 pending at 60h`
+          : "2 earned · 1 pending at 60h"
+      }
       actions={
         <>
           <Badge className="bg-success/10 text-success border-0 font-semibold">Verified</Badge>
@@ -46,7 +49,7 @@ function VolunteerCertificates() {
         {[
           {
             label: "Earned",
-            value: "2",
+            value: certs.length > 0 ? String(certs.length) : "—",
             delta: "this year",
             icon: Award,
             tone: "bg-success/10 text-success",
@@ -97,17 +100,35 @@ function VolunteerCertificates() {
           </CardTitle>
         </CardHeader>
         <CardContent className="divide-y">
-          {certs.map((c) => (
-            <div key={c.c} className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0">
-              <div className="min-w-0 flex-1">
-                <p className="text-sm font-bold">{c.c}</p>
-                <p className="text-muted-foreground text-xs">{c.d}</p>
-              </div>
-              <Button variant="outline" size="sm" className="shrink-0 font-semibold">
-                <Download className="size-3.5" /> Download
-              </Button>
-            </div>
-          ))}
+          <QueryState<VolCert[]>
+            query={certsQuery}
+            error={{ title: "Certificates unavailable" }}
+            empty={{
+              title: "No certificates yet",
+              description: "Earned certificates will show here.",
+            }}
+            isEmpty={(rows) => rows.length === 0}
+          >
+            {(rows) => (
+              <>
+                {rows.map((c, i) => (
+                  <div
+                    key={c.id}
+                    className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
+                  >
+                    <div className="min-w-0 flex-1">
+                      <p className="text-sm font-bold">{c.title}</p>
+                      <p className="text-muted-foreground text-xs">{c.detail}</p>
+                    </div>
+                    <span className={cn("size-2.5 rounded-full", tones[i % tones.length])} />
+                    <Button variant="outline" size="sm" className="shrink-0 font-semibold">
+                      <Download className="size-3.5" /> Download
+                    </Button>
+                  </div>
+                ))}
+              </>
+            )}
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>

@@ -2394,4 +2394,346 @@ export function registerAllMocks(): void {
     const items = collections[collection] ?? [];
     return { items, total: items.length };
   });
+
+  const volOpportunities = [
+    {
+      id: "vol-opp-01",
+      title: "Career fair booth support",
+      dateLabel: "Aug 20",
+      locationLabel: "Ikeja HQ",
+      slotsFilled: 4,
+      slotsTotal: 6,
+      priority: 0,
+    },
+    {
+      id: "vol-opp-02",
+      title: "Mentor hour for Cohort 15",
+      dateLabel: "Weekly · online",
+      locationLabel: "Online",
+      slotsFilled: 2,
+      slotsTotal: 5,
+      priority: 1,
+    },
+    {
+      id: "vol-opp-03",
+      title: "Community outreach — Abeokuta",
+      dateLabel: "Sep 5 · with NGO partner",
+      locationLabel: "Abeokuta",
+      slotsFilled: 10,
+      slotsTotal: 15,
+      priority: 0,
+    },
+  ];
+  const volSignups = [
+    {
+      id: "vol-sg-01",
+      title: "Career fair booth support",
+      detail: "Jul 18 · 6h · attended",
+      hours: 6,
+      attended: 1,
+      upcoming: 0,
+    },
+    {
+      id: "vol-sg-02",
+      title: "Community outreach — Ikeja",
+      detail: "Jun 28 · 5h · attended",
+      hours: 5,
+      attended: 1,
+      upcoming: 0,
+    },
+    {
+      id: "vol-sg-03",
+      title: "Mentor hour Cohort 15",
+      detail: "Next · Aug 14",
+      hours: null,
+      attended: 0,
+      upcoming: 1,
+    },
+  ];
+  const volMetrics = [
+    { id: "vol-mt-01", metric: "Learners mentored", valueLabel: "14", detail: "across 3 cohorts" },
+    { id: "vol-mt-02", metric: "Outreach events", valueLabel: "6", detail: "640 people reached" },
+    { id: "vol-mt-03", metric: "Hours served", valueLabel: "47", detail: "estimated ₦2.3m value" },
+    { id: "vol-mt-04", metric: "Communities", valueLabel: "2", detail: "Ikeja + Abeokuta" },
+  ];
+  const volHours = [
+    {
+      id: "vol-hr-01",
+      title: "Career fair booth",
+      dateLabel: "Jul 18 · 10:00–16:00",
+      hours: 6,
+      status: "approved",
+    },
+    {
+      id: "vol-hr-02",
+      title: "Community outreach",
+      dateLabel: "Jun 28 · 09:00–14:00",
+      hours: 5,
+      status: "approved",
+    },
+    {
+      id: "vol-hr-03",
+      title: "Alumni event support",
+      dateLabel: "Jun 10 · 12:00–16:00",
+      hours: 4,
+      status: "pending",
+    },
+  ];
+  const volGroups = [
+    { id: "vol-gr-01", name: "Ikeja volunteers", members: 34, online: 3 },
+    { id: "vol-gr-02", name: "Outreach squad", members: 18, online: 5 },
+    { id: "vol-gr-03", name: "Mentor hours", members: 22, online: 2 },
+  ];
+  const volCerts = [
+    {
+      id: "vol-ct-01",
+      title: "Volunteer appreciation — 40h",
+      detail: "Issued Jul 31 · #CEA-VOL-042",
+    },
+    { id: "vol-ct-02", title: "Outreach champion", detail: "Issued Jun 30 · #CEA-VOL-031" },
+  ];
+  const volMonths = [
+    { id: "vol-mo-01", month: "July", pct: 34 },
+    { id: "vol-mo-02", month: "June", pct: 42 },
+    { id: "vol-mo-03", month: "May", pct: 12 },
+    { id: "vol-mo-04", month: "April", pct: 8 },
+  ];
+  registerMockPattern("GET", "/v1/volunteer-dashboard/*", async (init: ApiRequestInit) => {
+    await delay();
+    const segments = (init.path ?? "").split("/").filter(Boolean);
+    const collection = segments[2] ?? "";
+    const collections: Record<string, Record<string, unknown>[]> = {
+      opportunities: volOpportunities,
+      signups: volSignups,
+      impact: volMetrics,
+      hours: volHours,
+      groups: volGroups,
+      certs: volCerts,
+      months: volMonths,
+    };
+    const items = collections[collection] ?? [];
+    return { items, total: items.length };
+  });
+
+  const recAppointments = [
+    {
+      id: "rec-ap-01",
+      title: "Mr. Adeyemi — meeting room 2",
+      detail: "10:00 · 45 min",
+      who: "Oluwaseun Adebayo",
+      status: "arrived",
+    },
+    {
+      id: "rec-ap-02",
+      title: "Registrar — records room",
+      detail: "10:30 · 30 min",
+      who: "Mrs. Ngozi Eze",
+      status: "confirmed",
+    },
+    {
+      id: "rec-ap-03",
+      title: "HR — interview room A",
+      detail: "11:15 · 60 min",
+      who: "Tobi Adeyemi",
+      status: "confirmed",
+    },
+    {
+      id: "rec-ap-04",
+      title: "Career office — counselling",
+      detail: "13:00 · 30 min",
+      who: "Zainab Yusuf",
+      status: "available",
+    },
+  ];
+  const recQueue = [
+    {
+      id: "rec-qq-01",
+      name: "Oluwaseun Adebayo",
+      hostLabel: "Mr. Adeyemi",
+      purpose: "Meeting 10:00",
+      timeLabel: "Waiting",
+    },
+    {
+      id: "rec-qq-02",
+      name: "Mrs. Ngozi Eze",
+      hostLabel: "Registrar",
+      purpose: "Records 10:30",
+      timeLabel: "Waiting",
+    },
+  ];
+  const recInside = [
+    {
+      id: "rec-qn-01",
+      name: "Oluwaseun Adebayo",
+      sinceLabel: "In since 10:02 · 1h 12m",
+      badgeLabel: "Green · visitor",
+    },
+    {
+      id: "rec-qn-02",
+      name: "Mrs. Ngozi Eze",
+      sinceLabel: "In since 10:31 · 43m",
+      badgeLabel: "Green · visitor",
+    },
+    {
+      id: "rec-qn-03",
+      name: "Ada Okafor",
+      sinceLabel: "In since 09:00 · resident",
+      badgeLabel: "Blue · student",
+    },
+  ];
+  const recDeliveries = [
+    {
+      id: "rec-dl-01",
+      carrier: "OfficeMate Ltd",
+      item: "Printer toner ×6",
+      timeLabel: "Aug 3 · 10:20",
+      status: "awaiting pickup",
+    },
+    {
+      id: "rec-dl-02",
+      carrier: "Books2Africa",
+      item: "Textbooks (42 cartons)",
+      timeLabel: "Aug 3 · 09:10",
+      status: "with library",
+    },
+    {
+      id: "rec-dl-03",
+      carrier: "DHL",
+      item: "Server part",
+      timeLabel: "Aug 2 · 16:30",
+      status: "with IT",
+    },
+  ];
+  const recInquiries = [
+    {
+      id: "rec-inq-01",
+      name: "Bola Johnson",
+      topic: "Full-Stack programme",
+      timeLabel: "Aug 3 · 09:15",
+      stage: "Follow-up booked",
+    },
+    {
+      id: "rec-inq-02",
+      name: "Femi Alabi",
+      topic: "Scholarship eligibility",
+      timeLabel: "Aug 2 · 14:40",
+      stage: "Sent to admissions",
+    },
+    {
+      id: "rec-inq-03",
+      name: "Chiamaka Obi",
+      topic: "Campus tour + brochure",
+      timeLabel: "Aug 1 · 11:05",
+      stage: "Tour booked",
+    },
+  ];
+  const recCalls = [
+    {
+      id: "rec-cl-01",
+      name: "Mrs. Okafor (parent)",
+      topic: "Billing question",
+      timeLabel: "10:12 · 6 min",
+      kind: "answered",
+    },
+    {
+      id: "rec-cl-02",
+      name: "TechHub Ltd",
+      topic: "Partnership inquiry",
+      timeLabel: "09:40 · 4 min",
+      kind: "answered",
+    },
+    {
+      id: "rec-cl-03",
+      name: "Unknown",
+      topic: "Missed — voicemail",
+      timeLabel: "09:05",
+      kind: "missed",
+    },
+    {
+      id: "rec-cl-04",
+      name: "NGO partner",
+      topic: "Program update",
+      timeLabel: "08:30 · 8 min",
+      kind: "answered",
+    },
+  ];
+  const recStaff = [
+    {
+      id: "rec-st-01",
+      name: "Mr. Adeyemi",
+      role: "Instructor · Backend",
+      extension: "Ext 210",
+      office: "Block B, R12",
+    },
+    {
+      id: "rec-st-02",
+      name: "Ms. Chidera",
+      role: "Instructor · DevOps",
+      extension: "Ext 211",
+      office: "Block B, R13",
+    },
+    {
+      id: "rec-st-03",
+      name: "Mrs. Obi",
+      role: "Mentor coordinator",
+      extension: "Ext 134",
+      office: "Block A, R04",
+    },
+    {
+      id: "rec-st-04",
+      name: "Registrar's office",
+      role: "Records & billing",
+      extension: "Ext 100",
+      office: "Block A, R01",
+    },
+  ];
+  const recTasks = [
+    {
+      id: "rec-ts-01",
+      title: "Morning mail to registrar",
+      timeLabel: "08:30 · done",
+      done: 1,
+    },
+    {
+      id: "rec-ts-02",
+      title: "Verify visitor badges after lunch",
+      timeLabel: "13:00",
+      done: 0,
+    },
+    {
+      id: "rec-ts-03",
+      title: "Update phone log follow-ups",
+      timeLabel: "15:00",
+      done: 0,
+    },
+    {
+      id: "rec-ts-04",
+      title: "Handover notes + desk report",
+      timeLabel: "17:00",
+      done: 0,
+    },
+  ];
+  const recHandover = [
+    { id: "rec-hv-01", note: "Oluwaseun waiting — remind Mr. Adeyemi" },
+    { id: "rec-hv-02", note: "Printer toner at desk for IT pickup" },
+    { id: "rec-hv-03", note: "Tour group booked 14:30 (12 people)" },
+  ];
+  registerMockPattern("GET", "/v1/receptionist-dashboard/*", async (init: ApiRequestInit) => {
+    await delay();
+    const segments = (init.path ?? "").split("/").filter(Boolean);
+    const collection = segments[2] ?? "";
+    const collections: Record<string, Record<string, unknown>[]> = {
+      appointments: recAppointments,
+      queue: recQueue,
+      inside: recInside,
+      deliveries: recDeliveries,
+      inquiries: recInquiries,
+      calls: recCalls,
+      staff: recStaff,
+      tasks: recTasks,
+      handover: recHandover,
+    };
+    const items = collections[collection] ?? [];
+    return { items, total: items.length };
+  });
 }

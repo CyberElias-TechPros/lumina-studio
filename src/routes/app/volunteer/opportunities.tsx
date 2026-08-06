@@ -4,6 +4,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import { useVolOpportunities, useVolOpportunityItems } from "@/lib/query/volunteerReceptionist";
+import type { VolOpportunity } from "@/lib/api/volunteerReceptionist";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/volunteer/opportunities")({
@@ -16,28 +19,16 @@ export const Route = createFileRoute("/app/volunteer/opportunities")({
   component: VolunteerOpportunities,
 });
 
-const ops = [
-  {
-    o: "Career fair booth support",
-    d: "Aug 20 · Ikeja HQ",
-    slots: "4 of 6 filled",
-    tone: "bg-primary/10 text-primary",
-  },
-  {
-    o: "Mentor hour for Cohort 15",
-    d: "Weekly · online",
-    slots: "2 of 5 filled",
-    tone: "bg-learning/10 text-learning",
-  },
-  {
-    o: "Community outreach — Abeokuta",
-    d: "Sep 5 · with NGO partner",
-    slots: "10 of 15 filled",
-    tone: "bg-success/10 text-success",
-  },
+const tones = [
+  "bg-primary/10 text-primary",
+  "bg-learning/10 text-learning",
+  "bg-success/10 text-success",
 ];
 
 function VolunteerOpportunities() {
+  const opsQuery = useVolOpportunities();
+  const ops = useVolOpportunityItems();
+
   return (
     <AppShell
       roleKey="student"
@@ -45,7 +36,11 @@ function VolunteerOpportunities() {
       subtitle="9 open · matches your interests"
       actions={
         <>
-          <Badge className="bg-success/10 text-success border-0 font-semibold">3 upcoming</Badge>
+          <Badge className="bg-success/10 text-success border-0 font-semibold">
+            {ops.length > 0
+              ? `${ops.filter((o) => o.priority === 1).length} high priority`
+              : "3 upcoming"}
+          </Badge>
           <Button asChild variant="outline" size="sm" className="font-semibold">
             <Link to="/portal/volunteer">
               <ArrowLeft className="size-4" /> Volunteer portal
@@ -109,21 +104,47 @@ function VolunteerOpportunities() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-3">
-          {ops.map((o) => (
-            <div key={o.o} className="flex flex-wrap items-center gap-3 rounded-xl border p-3.5">
-              <div className="min-w-0 flex-1">
-                <p className="text-sm font-bold">{o.o}</p>
-                <p className="text-muted-foreground text-xs">{o.d}</p>
-              </div>
-              <Badge className={cn("border-0 font-semibold", o.tone)}>{o.slots}</Badge>
-              <Button
-                size="sm"
-                className="bg-gradient-brand shadow-glow shrink-0 border-0 font-semibold"
-              >
-                Sign up
-              </Button>
-            </div>
-          ))}
+          <QueryState<VolOpportunity[]>
+            query={opsQuery}
+            error={{ title: "Opportunities unavailable" }}
+            empty={{
+              title: "No opportunities",
+              description: "New volunteer roles will show here.",
+            }}
+            isEmpty={(rows) => rows.length === 0}
+          >
+            {(rows) => (
+              <>
+                {rows.map((o, i) => (
+                  <div
+                    key={o.id}
+                    className="flex flex-wrap items-center gap-3 rounded-xl border p-3.5"
+                  >
+                    <div className="min-w-0 flex-1">
+                      <p className="text-sm font-bold">{o.title}</p>
+                      <p className="text-muted-foreground text-xs">
+                        {o.dateLabel} · {o.locationLabel}
+                      </p>
+                    </div>
+                    {o.priority === 1 && (
+                      <Badge className="border-0 font-semibold bg-warning/10 text-warning">
+                        High priority
+                      </Badge>
+                    )}
+                    <Badge className={cn("border-0 font-semibold", tones[i % tones.length])}>
+                      {o.slotsFilled} of {o.slotsTotal} filled
+                    </Badge>
+                    <Button
+                      size="sm"
+                      className="bg-gradient-brand shadow-glow shrink-0 border-0 font-semibold"
+                    >
+                      Sign up
+                    </Button>
+                  </div>
+                ))}
+              </>
+            )}
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>

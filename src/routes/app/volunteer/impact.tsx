@@ -4,6 +4,14 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import {
+  useVolMetrics,
+  useVolMetricItems,
+  useVolMonths,
+  useVolMonthItems,
+} from "@/lib/query/volunteerReceptionist";
+import type { VolMetric, VolMonth } from "@/lib/api/volunteerReceptionist";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/volunteer/impact")({
@@ -16,14 +24,19 @@ export const Route = createFileRoute("/app/volunteer/impact")({
   component: VolunteerImpact,
 });
 
-const impacts = [
-  { i: "Learners mentored", v: "14", d: "across 3 cohorts", tone: "bg-primary/10 text-primary" },
-  { i: "Outreach events", v: "6", d: "640 people reached", tone: "bg-learning/10 text-learning" },
-  { i: "Hours served", v: "47", d: "estimated ₦2.3m value", tone: "bg-success/10 text-success" },
-  { i: "Communities", v: "2", d: "Ikeja + Abeokuta", tone: "bg-warning/10 text-warning" },
+const tones = [
+  "bg-primary/10 text-primary",
+  "bg-learning/10 text-learning",
+  "bg-success/10 text-success",
+  "bg-warning/10 text-warning",
 ];
 
 function VolunteerImpact() {
+  const metricsQuery = useVolMetrics();
+  const metrics = useVolMetricItems();
+  const monthsQuery = useVolMonths();
+  const months = useVolMonthItems();
+
   return (
     <AppShell
       roleKey="student"
@@ -43,22 +56,38 @@ function VolunteerImpact() {
       }
     >
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-        {impacts.map((k) => (
-          <Card key={k.i} className="bg-card shadow-soft border">
-            <CardContent className="p-5">
-              <div className="flex items-center justify-between">
-                <p className="text-muted-foreground text-xs font-bold tracking-wide uppercase">
-                  {k.i}
-                </p>
-                <span className={cn("grid size-8 place-items-center rounded-lg", k.tone)}>
-                  <HeartHandshake className="size-4" />
-                </span>
-              </div>
-              <p className="font-display mt-3 text-2xl font-extrabold">{k.v}</p>
-              <p className="text-muted-foreground mt-0.5 text-xs font-semibold">{k.d}</p>
-            </CardContent>
-          </Card>
-        ))}
+        <QueryState<VolMetric[]>
+          query={metricsQuery}
+          error={{ title: "Impact unavailable" }}
+          empty={{ title: "No metrics yet", description: "Your impact numbers will show here." }}
+          isEmpty={(rows) => rows.length === 0}
+        >
+          {(rows) => (
+            <>
+              {rows.map((k, i) => (
+                <Card key={k.id} className="bg-card shadow-soft border">
+                  <CardContent className="p-5">
+                    <div className="flex items-center justify-between">
+                      <p className="text-muted-foreground text-xs font-bold tracking-wide uppercase">
+                        {k.metric}
+                      </p>
+                      <span
+                        className={cn(
+                          "grid size-8 place-items-center rounded-lg",
+                          tones[i % tones.length],
+                        )}
+                      >
+                        <HeartHandshake className="size-4" />
+                      </span>
+                    </div>
+                    <p className="font-display mt-3 text-2xl font-extrabold">{k.valueLabel}</p>
+                    <p className="text-muted-foreground mt-0.5 text-xs font-semibold">{k.detail}</p>
+                  </CardContent>
+                </Card>
+              ))}
+            </>
+          )}
+        </QueryState>
       </div>
 
       <div className="mt-5 grid gap-5 xl:grid-cols-2">
@@ -69,25 +98,31 @@ function VolunteerImpact() {
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
-            {[
-              { m: "July", pct: 34 },
-              { m: "June", pct: 42 },
-              { m: "May", pct: 12 },
-              { m: "April", pct: 8 },
-            ].map((x) => (
-              <div key={x.m}>
-                <div className="flex items-center justify-between text-xs font-semibold">
-                  <span>{x.m}</span>
-                  <span>{x.pct}% of year</span>
-                </div>
-                <div className="bg-muted mt-1.5 h-2 overflow-hidden rounded-full">
-                  <div
-                    className="bg-gradient-brand h-full rounded-full"
-                    style={{ width: `${x.pct}%` }}
-                  />
-                </div>
-              </div>
-            ))}
+            <QueryState<VolMonth[]>
+              query={monthsQuery}
+              error={{ title: "Trends unavailable" }}
+              empty={{ title: "No trends yet", description: "Monthly hours will show here." }}
+              isEmpty={(rows) => rows.length === 0}
+            >
+              {(rows) => (
+                <>
+                  {rows.map((x) => (
+                    <div key={x.id}>
+                      <div className="flex items-center justify-between text-xs font-semibold">
+                        <span>{x.month}</span>
+                        <span>{x.pct}% of year</span>
+                      </div>
+                      <div className="bg-muted mt-1.5 h-2 overflow-hidden rounded-full">
+                        <div
+                          className="bg-gradient-brand h-full rounded-full"
+                          style={{ width: `${x.pct}%` }}
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </>
+              )}
+            </QueryState>
           </CardContent>
         </Card>
 

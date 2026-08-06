@@ -4,6 +4,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import { useRecInquiries, useRecInquiryItems } from "@/lib/query/volunteerReceptionist";
+import type { RecInquiry } from "@/lib/api/volunteerReceptionist";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/receptionist/inquiries")({
@@ -16,40 +19,25 @@ export const Route = createFileRoute("/app/receptionist/inquiries")({
   component: ReceptionistInquiries,
 });
 
-const inquiries = [
-  {
-    n: "Bola Johnson",
-    t: "Full-Stack programme",
-    d: "Aug 3 · 09:15",
-    stage: "Follow-up booked",
-    tone: "bg-primary/10 text-primary",
-  },
-  {
-    n: "Femi Alabi",
-    t: "Scholarship eligibility",
-    d: "Aug 2 · 14:40",
-    stage: "Sent to admissions",
-    tone: "bg-learning/10 text-learning",
-  },
-  {
-    n: "Chiamaka Obi",
-    t: "Campus tour + brochure",
-    d: "Aug 1 · 11:05",
-    stage: "Tour booked",
-    tone: "bg-success/10 text-success",
-  },
+const tones = [
+  "bg-primary/10 text-primary",
+  "bg-learning/10 text-learning",
+  "bg-success/10 text-success",
 ];
 
 function ReceptionistInquiries() {
+  const inquiriesQuery = useRecInquiries();
+  const inquiries = useRecInquiryItems();
+
   return (
     <AppShell
       roleKey="student"
       title="Inquiry log"
-      subtitle="Walk-ins → CRM leads · 4 this week"
+      subtitle={`Walk-ins → CRM leads · ${inquiries.length > 0 ? `${inquiries.length} this week` : "4 this week"}`}
       actions={
         <>
           <Badge className="bg-success/10 text-success border-0 font-semibold">
-            4 leads to CRM
+            {inquiries.length > 0 ? `${inquiries.length} leads to CRM` : "4 leads to CRM"}
           </Badge>
           <Button asChild variant="outline" size="sm" className="font-semibold">
             <Link to="/portal/receptionist">
@@ -114,23 +102,39 @@ function ReceptionistInquiries() {
           </CardTitle>
         </CardHeader>
         <CardContent className="divide-y">
-          {inquiries.map((i) => (
-            <div key={i.n} className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0">
-              <span className="bg-muted text-muted-foreground grid size-9 shrink-0 place-items-center rounded-lg">
-                <UserRound className="size-4" />
-              </span>
-              <div className="min-w-0 flex-1">
-                <p className="text-sm font-bold">{i.n}</p>
-                <p className="text-muted-foreground text-xs">
-                  {i.t} · {i.d}
-                </p>
-              </div>
-              <Badge className={cn("border-0 font-semibold", i.tone)}>{i.stage}</Badge>
-              <Button variant="outline" size="sm" className="shrink-0 font-semibold">
-                Open
-              </Button>
-            </div>
-          ))}
+          <QueryState<RecInquiry[]>
+            query={inquiriesQuery}
+            error={{ title: "Inquiries unavailable" }}
+            empty={{ title: "No inquiries", description: "Walk-in leads will show here." }}
+            isEmpty={(rows) => rows.length === 0}
+          >
+            {(rows) => (
+              <>
+                {rows.map((i, idx) => (
+                  <div
+                    key={i.id}
+                    className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
+                  >
+                    <span className="bg-muted text-muted-foreground grid size-9 shrink-0 place-items-center rounded-lg">
+                      <UserRound className="size-4" />
+                    </span>
+                    <div className="min-w-0 flex-1">
+                      <p className="text-sm font-bold">{i.name}</p>
+                      <p className="text-muted-foreground text-xs">
+                        {i.topic} · {i.timeLabel}
+                      </p>
+                    </div>
+                    <Badge className={cn("border-0 font-semibold", tones[idx % tones.length])}>
+                      {i.stage}
+                    </Badge>
+                    <Button variant="outline" size="sm" className="shrink-0 font-semibold">
+                      Open
+                    </Button>
+                  </div>
+                ))}
+              </>
+            )}
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>

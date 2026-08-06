@@ -4,6 +4,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import { useRecStaff, useRecStaffItems } from "@/lib/query/volunteerReceptionist";
+import type { RecStaffMember } from "@/lib/api/volunteerReceptionist";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/receptionist/directory")({
@@ -16,38 +19,17 @@ export const Route = createFileRoute("/app/receptionist/directory")({
   component: ReceptionistDirectory,
 });
 
-const staff = [
-  {
-    n: "Mr. Adeyemi",
-    r: "Instructor · Backend",
-    x: "Ext 210",
-    o: "Block B, R12",
-    tone: "bg-primary/10 text-primary",
-  },
-  {
-    n: "Ms. Chidera",
-    r: "Instructor · DevOps",
-    x: "Ext 211",
-    o: "Block B, R13",
-    tone: "bg-learning/10 text-learning",
-  },
-  {
-    n: "Mrs. Obi",
-    r: "Mentor coordinator",
-    x: "Ext 134",
-    o: "Block A, R04",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    n: "Registrar's office",
-    r: "Records & billing",
-    x: "Ext 100",
-    o: "Block A, R01",
-    tone: "bg-warning/10 text-warning",
-  },
+const tones = [
+  "bg-primary/10 text-primary",
+  "bg-learning/10 text-learning",
+  "bg-success/10 text-success",
+  "bg-warning/10 text-warning",
 ];
 
 function ReceptionistDirectory() {
+  const staffQuery = useRecStaff();
+  const staff = useRecStaffItems();
+
   return (
     <AppShell
       roleKey="student"
@@ -84,25 +66,44 @@ function ReceptionistDirectory() {
           </CardTitle>
         </CardHeader>
         <CardContent className="divide-y">
-          {staff.map((s) => (
-            <div key={s.n} className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0">
-              <span className={cn("grid size-9 shrink-0 place-items-center rounded-lg", s.tone)}>
-                <UserRound className="size-4" />
-              </span>
-              <div className="min-w-0 flex-1">
-                <p className="text-sm font-bold">{s.n}</p>
-                <p className="text-muted-foreground text-xs">
-                  {s.r} · {s.o}
-                </p>
-              </div>
-              <Badge variant="secondary" className="font-semibold">
-                {s.x}
-              </Badge>
-              <Button variant="outline" size="sm" className="shrink-0 font-semibold">
-                <Phone className="size-3.5" /> Call
-              </Button>
-            </div>
-          ))}
+          <QueryState<RecStaffMember[]>
+            query={staffQuery}
+            error={{ title: "Directory unavailable" }}
+            empty={{ title: "No staff found", description: "Directory entries will show here." }}
+            isEmpty={(rows) => rows.length === 0}
+          >
+            {(rows) => (
+              <>
+                {rows.map((s, i) => (
+                  <div
+                    key={s.id}
+                    className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
+                  >
+                    <span
+                      className={cn(
+                        "grid size-9 shrink-0 place-items-center rounded-lg",
+                        tones[i % tones.length],
+                      )}
+                    >
+                      <UserRound className="size-4" />
+                    </span>
+                    <div className="min-w-0 flex-1">
+                      <p className="text-sm font-bold">{s.name}</p>
+                      <p className="text-muted-foreground text-xs">
+                        {s.role} · {s.office}
+                      </p>
+                    </div>
+                    <Badge variant="secondary" className="font-semibold">
+                      {s.extension}
+                    </Badge>
+                    <Button variant="outline" size="sm" className="shrink-0 font-semibold">
+                      <Phone className="size-3.5" /> Call
+                    </Button>
+                  </div>
+                ))}
+              </>
+            )}
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>

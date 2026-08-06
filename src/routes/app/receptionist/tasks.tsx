@@ -13,6 +13,14 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import {
+  useRecTasks,
+  useRecTaskItems,
+  useRecHandover,
+  useRecHandoverItems,
+} from "@/lib/query/volunteerReceptionist";
+import type { RecTask, RecHandoverNote } from "@/lib/api/volunteerReceptionist";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/receptionist/tasks")({
@@ -25,20 +33,21 @@ export const Route = createFileRoute("/app/receptionist/tasks")({
   component: ReceptionistTasks,
 });
 
-const tasks = [
-  { t: "Morning mail to registrar", d: "08:30 · done", done: true },
-  { t: "Verify visitor badges after lunch", d: "13:00", done: false },
-  { t: "Update phone log follow-ups", d: "15:00", done: false },
-  { t: "Handover notes + desk report", d: "17:00", done: false },
-];
-
-const handover = [
-  { t: "Oluwaseun waiting — remind Mr. Adeyemi", tone: "bg-warning/10 text-warning" },
-  { t: "Printer toner at desk for IT pickup", tone: "bg-primary/10 text-primary" },
-  { t: "Tour group booked 14:30 (12 people)", tone: "bg-learning/10 text-learning" },
+const handoverTones = [
+  "bg-warning/10 text-warning",
+  "bg-primary/10 text-primary",
+  "bg-learning/10 text-learning",
 ];
 
 function ReceptionistTasks() {
+  const tasksQuery = useRecTasks();
+  const tasks = useRecTaskItems();
+  const handoverQuery = useRecHandover();
+  const handover = useRecHandoverItems();
+
+  const done = tasks.filter((t) => t.done === 1).length;
+  const left = tasks.length > 0 ? tasks.length - done : 0;
+
   return (
     <AppShell
       roleKey="student"
@@ -46,7 +55,9 @@ function ReceptionistTasks() {
       subtitle="Morning shift · 08:00–17:00 · desk 1"
       actions={
         <>
-          <Badge className="bg-success/10 text-success border-0 font-semibold">3 tasks left</Badge>
+          <Badge className="bg-success/10 text-success border-0 font-semibold">
+            {tasks.length > 0 ? `${left} tasks left` : "3 tasks left"}
+          </Badge>
           <Button asChild variant="outline" size="sm" className="font-semibold">
             <Link to="/portal/receptionist">
               <ArrowLeft className="size-4" /> Front desk
@@ -59,7 +70,7 @@ function ReceptionistTasks() {
         {[
           {
             label: "Tasks today",
-            value: "7",
+            value: tasks.length > 0 ? String(tasks.length) : "—",
             delta: "4 done · 3 left",
             icon: ListTodo,
             tone: "bg-primary/10 text-primary",
@@ -80,7 +91,7 @@ function ReceptionistTasks() {
           },
           {
             label: "Handover items",
-            value: "3",
+            value: handover.length > 0 ? String(handover.length) : "—",
             delta: "for evening desk",
             icon: Moon,
             tone: "bg-warning/10 text-warning",
@@ -111,26 +122,40 @@ function ReceptionistTasks() {
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-2">
-            {tasks.map((t) => (
-              <div
-                key={t.t}
-                className={cn(
-                  "flex items-center gap-3 rounded-xl border p-3",
-                  t.done && "opacity-60",
-                )}
-              >
-                <CheckCircle2
-                  className={cn(
-                    "size-4 shrink-0",
-                    t.done ? "text-success" : "text-muted-foreground",
-                  )}
-                />
-                <div className="min-w-0 flex-1">
-                  <p className="text-sm font-medium">{t.t}</p>
-                  <p className="text-muted-foreground text-xs">{t.d}</p>
-                </div>
-              </div>
-            ))}
+            <QueryState<RecTask[]>
+              query={tasksQuery}
+              error={{ title: "Tasks unavailable" }}
+              empty={{ title: "No tasks", description: "Your shift tasks will show here." }}
+              isEmpty={(rows) => rows.length === 0}
+            >
+              {(rows) => (
+                <>
+                  {rows.map((t) => {
+                    const isDone = t.done === 1;
+                    return (
+                      <div
+                        key={t.id}
+                        className={cn(
+                          "flex items-center gap-3 rounded-xl border p-3",
+                          isDone && "opacity-60",
+                        )}
+                      >
+                        <CheckCircle2
+                          className={cn(
+                            "size-4 shrink-0",
+                            isDone ? "text-success" : "text-muted-foreground",
+                          )}
+                        />
+                        <div className="min-w-0 flex-1">
+                          <p className="text-sm font-medium">{t.title}</p>
+                          <p className="text-muted-foreground text-xs">{t.timeLabel}</p>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </>
+              )}
+            </QueryState>
           </CardContent>
         </Card>
 
@@ -141,12 +166,30 @@ function ReceptionistTasks() {
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-3">
-            {handover.map((h) => (
-              <div key={h.t} className="rounded-xl border p-3">
-                <Badge className={cn("border-0 font-semibold", h.tone)}>Pass on</Badge>
-                <p className="mt-2 text-sm font-medium">{h.t}</p>
-              </div>
-            ))}
+            <QueryState<RecHandoverNote[]>
+              query={handoverQuery}
+              error={{ title: "Handover unavailable" }}
+              empty={{ title: "Nothing to pass on", description: "Handover notes will show here." }}
+              isEmpty={(rows) => rows.length === 0}
+            >
+              {(rows) => (
+                <>
+                  {rows.map((h, i) => (
+                    <div key={h.id} className="rounded-xl border p-3">
+                      <Badge
+                        className={cn(
+                          "border-0 font-semibold",
+                          handoverTones[i % handoverTones.length],
+                        )}
+                      >
+                        Pass on
+                      </Badge>
+                      <p className="mt-2 text-sm font-medium">{h.note}</p>
+                    </div>
+                  ))}
+                </>
+              )}
+            </QueryState>
             <Button variant="outline" size="sm" className="w-full font-semibold">
               <CalendarDays className="size-3.5" /> Submit shift report
             </Button>

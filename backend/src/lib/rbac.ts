@@ -135,6 +135,12 @@ export const RBAC_RULES: RbacRule[] = [
   /* Partner dashboard — admin + instructor only */
   { methods: ["*"], path: "/v1/partner-dashboard/*", roles: ["admin", "instructor"] },
 
+  /* Volunteer dashboard — admin + instructor + student (volunteers are learners/alumni) */
+  { methods: ["*"], path: "/v1/volunteer-dashboard/*", roles: ["admin", "instructor", "student"] },
+
+  /* Receptionist dashboard — admin + instructor only */
+  { methods: ["*"], path: "/v1/receptionist-dashboard/*", roles: ["admin", "instructor"] },
+
   /* Admin portal */
   { methods: ["GET"], path: "/v1/admin/users", roles: ["admin"] },
   { methods: ["POST"], path: "/v1/admin/users", roles: ["admin"] },

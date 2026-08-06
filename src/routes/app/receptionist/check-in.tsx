@@ -4,6 +4,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import { useRecQueue, useRecQueueItems } from "@/lib/query/volunteerReceptionist";
+import type { RecQueueEntry } from "@/lib/api/volunteerReceptionist";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/receptionist/check-in")({
@@ -16,29 +19,15 @@ export const Route = createFileRoute("/app/receptionist/check-in")({
   component: ReceptionistCheckIn,
 });
 
-const queue = [
-  {
-    n: "Oluwaseun Adebayo",
-    h: "Mr. Adeyemi",
-    t: "Meeting · 10:00",
-    status: "Waiting",
-    tone: "bg-warning/10 text-warning",
-  },
-  {
-    n: "Mrs. Ngozi Eze",
-    h: "Registrar",
-    t: "Records · 10:30",
-    status: "Waiting",
-    tone: "bg-warning/10 text-warning",
-  },
-];
-
 function ReceptionistCheckIn() {
+  const queueQuery = useRecQueue();
+  const queue = useRecQueueItems();
+
   return (
     <AppShell
       roleKey="student"
       title="Visitor check-in"
-      subtitle="Front desk · Ikeja campus · 3 visitors today"
+      subtitle={`Front desk · Ikeja campus · ${queue.length > 0 ? `${queue.length} visitors waiting` : "3 visitors today"}`}
       actions={
         <>
           <Badge className="bg-success/10 text-success border-0 font-semibold">Desk open</Badge>
@@ -103,20 +92,33 @@ function ReceptionistCheckIn() {
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-3">
-              {queue.map((v) => (
-                <div key={v.n} className="rounded-xl border p-3">
-                  <div className="flex items-center justify-between gap-2">
-                    <p className="text-sm font-bold">{v.n}</p>
-                    <Badge className={cn("border-0 font-semibold", v.tone)}>{v.status}</Badge>
-                  </div>
-                  <p className="text-muted-foreground mt-1 text-xs">
-                    Visiting {v.h} · {v.t}
-                  </p>
-                  <Button size="sm" variant="outline" className="mt-2 font-semibold">
-                    <Bell className="size-3.5" /> Notify host
-                  </Button>
-                </div>
-              ))}
+              <QueryState<RecQueueEntry[]>
+                query={queueQuery}
+                error={{ title: "Queue unavailable" }}
+                empty={{ title: "Queue empty", description: "Waiting visitors will show here." }}
+                isEmpty={(rows) => rows.length === 0}
+              >
+                {(rows) => (
+                  <>
+                    {rows.map((v) => (
+                      <div key={v.id} className="rounded-xl border p-3">
+                        <div className="flex items-center justify-between gap-2">
+                          <p className="text-sm font-bold">{v.name}</p>
+                          <Badge className="border-0 font-semibold bg-warning/10 text-warning">
+                            {v.timeLabel}
+                          </Badge>
+                        </div>
+                        <p className="text-muted-foreground mt-1 text-xs">
+                          Visiting {v.hostLabel} · {v.purpose}
+                        </p>
+                        <Button size="sm" variant="outline" className="mt-2 font-semibold">
+                          <Bell className="size-3.5" /> Notify host
+                        </Button>
+                      </div>
+                    ))}
+                  </>
+                )}
+              </QueryState>
             </CardContent>
           </Card>
 

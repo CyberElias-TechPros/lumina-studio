@@ -36,6 +36,7 @@ import { mentor } from "./routes/mentor";
 import { mentorDashboard } from "./routes/mentorDashboard";
 import { internDashboard } from "./routes/internDashboard";
 import { supplierDashboard, partnerDashboard } from "./routes/supplierPartner";
+import { volunteerDashboard, receptionistDashboard } from "./routes/volunteerReceptionist";
 import { ops } from "./routes/ops";
 import { it } from "./routes/it";
 import { RealtimeRoom } from "./durable/realtime-room";
@@ -77,8 +78,8 @@ v1.route("/instructor", instructor);
 v1.route("/hr", hr);
 v1.route("/", finance);
 v1.route("/admin", admin);
-  v1.route("/notifications", notifications);
-  v1.route("/certificates", certificates);
+v1.route("/notifications", notifications);
+v1.route("/certificates", certificates);
 v1.route("/payments", payments);
 v1.route("/recruitment", recruitment);
 v1.route("/marketing", marketing);
@@ -92,14 +93,16 @@ v1.route("/push", push);
 v1.route("/flags", flags);
 v1.route("/contact", contact);
 v1.route("/library", library);
-  v1.route("/parent", parent);
+v1.route("/parent", parent);
 v1.route("/mentor", mentor);
 v1.route("/mentor-dashboard", mentorDashboard);
 v1.route("/intern-dashboard", internDashboard);
 v1.route("/supplier-dashboard", supplierDashboard);
 v1.route("/partner-dashboard", partnerDashboard);
+v1.route("/volunteer-dashboard", volunteerDashboard);
+v1.route("/receptionist-dashboard", receptionistDashboard);
 v1.route("/ops", ops);
-  v1.route("/it", it);
+v1.route("/it", it);
 
 /** Uptime + DB reachability check for deployment probes. */
 v1.get("/health", async (c) => {

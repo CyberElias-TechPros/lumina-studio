@@ -4,6 +4,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import { useRecAppointments, useRecAppointmentItems } from "@/lib/query/volunteerReceptionist";
+import type { RecAppointment } from "@/lib/api/volunteerReceptionist";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/receptionist/appointments")({
@@ -16,43 +19,21 @@ export const Route = createFileRoute("/app/receptionist/appointments")({
   component: ReceptionistAppointments,
 });
 
-const slots = [
-  {
-    t: "Mr. Adeyemi — meeting room 2",
-    d: "10:00 · 45 min",
-    who: "Oluwaseun Adebayo",
-    status: "Arrived",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    t: "Registrar — records room",
-    d: "10:30 · 30 min",
-    who: "Mrs. Ngozi Eze",
-    status: "Confirmed",
-    tone: "bg-primary/10 text-primary",
-  },
-  {
-    t: "HR — interview room A",
-    d: "11:15 · 60 min",
-    who: "Tobi Adeyemi",
-    status: "Confirmed",
-    tone: "bg-primary/10 text-primary",
-  },
-  {
-    t: "Career office — counselling",
-    d: "13:00 · 30 min",
-    who: "Zainab Yusuf",
-    status: "Available",
-    tone: "bg-muted-foreground/10 text-muted-foreground",
-  },
-];
+const statusMeta: Record<string, { label: string; tone: string }> = {
+  arrived: { label: "Arrived", tone: "bg-success/10 text-success" },
+  confirmed: { label: "Confirmed", tone: "bg-primary/10 text-primary" },
+  available: { label: "Available", tone: "bg-muted-foreground/10 text-muted-foreground" },
+};
 
 function ReceptionistAppointments() {
+  const slotsQuery = useRecAppointments();
+  const slots = useRecAppointmentItems();
+
   return (
     <AppShell
       roleKey="student"
       title="Appointments"
-      subtitle="Front desk · today · 9 appointments"
+      subtitle={`Front desk · today · ${slots.length > 0 ? `${slots.length} appointments` : "9 appointments"}`}
       actions={
         <>
           <Badge className="bg-success/10 text-success border-0 font-semibold">3 in next 2h</Badge>
@@ -69,13 +50,14 @@ function ReceptionistAppointments() {
           {
             label: "Today",
             value: "9",
-            delta: "6 confirmed",
+            delta: `${slots.filter((s) => s.status === "confirmed").length} confirmed`,
             icon: CalendarDays,
             tone: "bg-primary/10 text-primary",
           },
           {
             label: "Arrived",
-            value: "3",
+            value:
+              slots.length > 0 ? String(slots.filter((s) => s.status === "arrived").length) : "—",
             delta: "hosts notified",
             icon: Users,
             tone: "bg-success/10 text-success",
@@ -89,7 +71,8 @@ function ReceptionistAppointments() {
           },
           {
             label: "Open slots",
-            value: "3",
+            value:
+              slots.length > 0 ? String(slots.filter((s) => s.status === "available").length) : "—",
             delta: "bookable today",
             icon: Clock,
             tone: "bg-warning/10 text-warning",
@@ -119,23 +102,45 @@ function ReceptionistAppointments() {
           </CardTitle>
         </CardHeader>
         <CardContent className="divide-y">
-          {slots.map((s) => (
-            <div key={s.t} className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0">
-              <span className="bg-muted text-muted-foreground grid size-9 shrink-0 place-items-center rounded-lg">
-                <Clock className="size-4" />
-              </span>
-              <div className="min-w-0 flex-1">
-                <p className="text-sm font-bold">{s.t}</p>
-                <p className="text-muted-foreground text-xs">
-                  {s.who} · {s.d}
-                </p>
-              </div>
-              <Badge className={cn("border-0 font-semibold", s.tone)}>{s.status}</Badge>
-              <Button variant="outline" size="sm" className="shrink-0 font-semibold">
-                Manage
-              </Button>
-            </div>
-          ))}
+          <QueryState<RecAppointment[]>
+            query={slotsQuery}
+            error={{ title: "Schedule unavailable" }}
+            empty={{ title: "No appointments", description: "Today's slots will show here." }}
+            isEmpty={(rows) => rows.length === 0}
+          >
+            {(rows) => (
+              <>
+                {rows.map((s) => {
+                  const meta = statusMeta[s.status] ?? {
+                    label: s.status,
+                    tone: "bg-muted text-muted-foreground",
+                  };
+                  return (
+                    <div
+                      key={s.id}
+                      className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
+                    >
+                      <span className="bg-muted text-muted-foreground grid size-9 shrink-0 place-items-center rounded-lg">
+                        <Clock className="size-4" />
+                      </span>
+                      <div className="min-w-0 flex-1">
+                        <p className="text-sm font-bold">{s.title}</p>
+                        <p className="text-muted-foreground text-xs">
+                          {s.who} · {s.detail}
+                        </p>
+                      </div>
+                      <Badge className={cn("border-0 font-semibold", meta.tone)}>
+                        {meta.label}
+                      </Badge>
+                      <Button variant="outline" size="sm" className="shrink-0 font-semibold">
+                        Manage
+                      </Button>
+                    </div>
+                  );
+                })}
+              </>
+            )}
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>

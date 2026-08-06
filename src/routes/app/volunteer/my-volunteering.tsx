@@ -4,6 +4,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import { useVolSignups, useVolSignupItems } from "@/lib/query/volunteerReceptionist";
+import type { VolSignup } from "@/lib/api/volunteerReceptionist";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/volunteer/my-volunteering")({
@@ -16,18 +19,23 @@ export const Route = createFileRoute("/app/volunteer/my-volunteering")({
   component: VolunteerMyVolunteering,
 });
 
-const history = [
-  { h: "Career fair booth support", d: "Jul 18 · 6h · attended", done: true },
-  { h: "Community outreach — Ikeja", d: "Jun 28 · 5h · attended", done: true },
-  { h: "Mentor hour Cohort 15", d: "Next · Aug 14", done: false },
-];
-
 function VolunteerMyVolunteering() {
+  const historyQuery = useVolSignups();
+  const history = useVolSignupItems();
+
+  const completed = history.filter((h) => h.attended === 1).length;
+  const upcoming = history.filter((h) => h.upcoming === 1).length;
+  const hours = history.reduce((n, h) => n + (h.hours ?? 0), 0);
+
   return (
     <AppShell
       roleKey="student"
       title="My volunteering"
-      subtitle="8 sign-ups · 47 hours logged · 3 upcoming"
+      subtitle={
+        history.length > 0
+          ? `${history.length} sign-ups · ${hours} hours logged · ${upcoming} upcoming`
+          : "8 sign-ups · 47 hours logged · 3 upcoming"
+      }
       actions={
         <>
           <Badge className="bg-success/10 text-success border-0 font-semibold">On track</Badge>
@@ -43,28 +51,28 @@ function VolunteerMyVolunteering() {
         {[
           {
             label: "Sign-ups",
-            value: "8",
+            value: history.length > 0 ? String(history.length) : "—",
             delta: "this year",
             icon: CalendarCheck2,
             tone: "bg-primary/10 text-primary",
           },
           {
             label: "Hours logged",
-            value: "47",
+            value: history.length > 0 ? String(hours) : "—",
             delta: "of 60 target",
             icon: Clock3,
             tone: "bg-learning/10 text-learning",
           },
           {
             label: "Completed",
-            value: "5",
+            value: history.length > 0 ? String(completed) : "—",
             delta: "100% attended",
             icon: CheckCircle2,
             tone: "bg-success/10 text-success",
           },
           {
             label: "Next up",
-            value: "3",
+            value: history.length > 0 ? String(upcoming) : "—",
             delta: "soonest Aug 14",
             icon: HandHeart,
             tone: "bg-warning/10 text-warning",
@@ -94,22 +102,42 @@ function VolunteerMyVolunteering() {
           </CardTitle>
         </CardHeader>
         <CardContent className="divide-y">
-          {history.map((h) => (
-            <div key={h.h} className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0">
-              <div className="min-w-0 flex-1">
-                <p className="text-sm font-bold">{h.h}</p>
-                <p className="text-muted-foreground text-xs">{h.d}</p>
-              </div>
-              <Badge
-                className={cn(
-                  "border-0 font-semibold",
-                  h.done ? "bg-success/10 text-success" : "bg-primary/10 text-primary",
-                )}
-              >
-                {h.done ? "Completed" : "Upcoming"}
-              </Badge>
-            </div>
-          ))}
+          <QueryState<VolSignup[]>
+            query={historyQuery}
+            error={{ title: "History unavailable" }}
+            empty={{
+              title: "No sign-ups yet",
+              description: "Your volunteer history will show here.",
+            }}
+            isEmpty={(rows) => rows.length === 0}
+          >
+            {(rows) => (
+              <>
+                {rows.map((h) => {
+                  const done = h.upcoming !== 1;
+                  return (
+                    <div
+                      key={h.id}
+                      className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
+                    >
+                      <div className="min-w-0 flex-1">
+                        <p className="text-sm font-bold">{h.title}</p>
+                        <p className="text-muted-foreground text-xs">{h.detail}</p>
+                      </div>
+                      <Badge
+                        className={cn(
+                          "border-0 font-semibold",
+                          done ? "bg-success/10 text-success" : "bg-primary/10 text-primary",
+                        )}
+                      >
+                        {done ? "Completed" : "Upcoming"}
+                      </Badge>
+                    </div>
+                  );
+                })}
+              </>
+            )}
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>

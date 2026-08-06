@@ -4,6 +4,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import { useRecInside, useRecInsideItems } from "@/lib/query/volunteerReceptionist";
+import type { RecInsideEntry } from "@/lib/api/volunteerReceptionist";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/receptionist/check-out")({
@@ -16,36 +19,26 @@ export const Route = createFileRoute("/app/receptionist/check-out")({
   component: ReceptionistCheckOut,
 });
 
-const inside = [
-  {
-    n: "Oluwaseun Adebayo",
-    t: "In since 10:02 · 1h 12m",
-    badge: "Green · visitor",
-    tone: "bg-primary/10 text-primary",
-  },
-  {
-    n: "Mrs. Ngozi Eze",
-    t: "In since 10:31 · 43m",
-    badge: "Green · visitor",
-    tone: "bg-primary/10 text-primary",
-  },
-  {
-    n: "Ada Okafor",
-    t: "In since 09:00 · resident",
-    badge: "Blue · student",
-    tone: "bg-learning/10 text-learning",
-  },
+const tones = [
+  "bg-primary/10 text-primary",
+  "bg-primary/10 text-primary",
+  "bg-learning/10 text-learning",
 ];
 
 function ReceptionistCheckOut() {
+  const insideQuery = useRecInside();
+  const inside = useRecInsideItems();
+
   return (
     <AppShell
       roleKey="student"
       title="Visitor check-out"
-      subtitle="Front desk · Ikeja campus · 5 visitors inside"
+      subtitle={`Front desk · Ikeja campus · ${inside.length > 0 ? `${inside.length} visitors inside` : "5 visitors inside"}`}
       actions={
         <>
-          <Badge className="bg-warning/10 text-warning border-0 font-semibold">5 inside</Badge>
+          <Badge className="bg-warning/10 text-warning border-0 font-semibold">
+            {inside.length > 0 ? `${inside.length} inside` : "5 inside"}
+          </Badge>
           <Button asChild variant="outline" size="sm" className="font-semibold">
             <Link to="/portal/receptionist">
               <ArrowLeft className="size-4" /> Front desk
@@ -58,7 +51,7 @@ function ReceptionistCheckOut() {
         {[
           {
             label: "Visitors inside",
-            value: "5",
+            value: inside.length > 0 ? String(inside.length) : "—",
             delta: "2 visitors · 3 residents",
             icon: DoorOpen,
             tone: "bg-primary/10 text-primary",
@@ -109,21 +102,37 @@ function ReceptionistCheckOut() {
           </CardTitle>
         </CardHeader>
         <CardContent className="divide-y">
-          {inside.map((v) => (
-            <div key={v.n} className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0">
-              <span className="bg-muted text-muted-foreground grid size-9 shrink-0 place-items-center rounded-lg">
-                <UserRound className="size-4" />
-              </span>
-              <div className="min-w-0 flex-1">
-                <p className="text-sm font-bold">{v.n}</p>
-                <p className="text-muted-foreground text-xs">{v.t}</p>
-              </div>
-              <Badge className={cn("border-0 font-semibold", v.tone)}>{v.badge}</Badge>
-              <Button size="sm" variant="outline" className="shrink-0 font-semibold">
-                <LogOut className="size-3.5" /> Check out
-              </Button>
-            </div>
-          ))}
+          <QueryState<RecInsideEntry[]>
+            query={insideQuery}
+            error={{ title: "Occupancy unavailable" }}
+            empty={{ title: "No one on site", description: "Checked-in visitors will show here." }}
+            isEmpty={(rows) => rows.length === 0}
+          >
+            {(rows) => (
+              <>
+                {rows.map((v, i) => (
+                  <div
+                    key={v.id}
+                    className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
+                  >
+                    <span className="bg-muted text-muted-foreground grid size-9 shrink-0 place-items-center rounded-lg">
+                      <UserRound className="size-4" />
+                    </span>
+                    <div className="min-w-0 flex-1">
+                      <p className="text-sm font-bold">{v.name}</p>
+                      <p className="text-muted-foreground text-xs">{v.sinceLabel}</p>
+                    </div>
+                    <Badge className={cn("border-0 font-semibold", tones[i % tones.length])}>
+                      {v.badgeLabel}
+                    </Badge>
+                    <Button size="sm" variant="outline" className="shrink-0 font-semibold">
+                      <LogOut className="size-3.5" /> Check out
+                    </Button>
+                  </div>
+                ))}
+              </>
+            )}
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>

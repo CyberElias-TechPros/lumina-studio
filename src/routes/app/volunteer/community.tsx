@@ -4,6 +4,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import { useVolGroups, useVolGroupItems } from "@/lib/query/volunteerReceptionist";
+import type { VolGroup } from "@/lib/api/volunteerReceptionist";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/volunteer/community")({
@@ -16,13 +19,18 @@ export const Route = createFileRoute("/app/volunteer/community")({
   component: VolunteerCommunity,
 });
 
-const groups = [
-  { g: "Ikeja volunteers", m: "34 members · 3 online", tone: "bg-primary/10 text-primary" },
-  { g: "Outreach squad", m: "18 members · 5 online", tone: "bg-learning/10 text-learning" },
-  { g: "Mentor hours", m: "22 members · 2 online", tone: "bg-success/10 text-success" },
+const tones = [
+  "bg-primary/10 text-primary",
+  "bg-learning/10 text-learning",
+  "bg-success/10 text-success",
 ];
 
 function VolunteerCommunity() {
+  const groupsQuery = useVolGroups();
+  const groups = useVolGroupItems();
+
+  const online = groups.reduce((n, g) => n + g.online, 0);
+
   return (
     <AppShell
       roleKey="student"
@@ -30,7 +38,9 @@ function VolunteerCommunity() {
       subtitle="Chat, forums and announcements"
       actions={
         <>
-          <Badge className="bg-success/10 text-success border-0 font-semibold">12 online</Badge>
+          <Badge className="bg-success/10 text-success border-0 font-semibold">
+            {groups.length > 0 ? `${online} online` : "12 online"}
+          </Badge>
           <Button asChild variant="outline" size="sm" className="font-semibold">
             <Link to="/portal/volunteer">
               <ArrowLeft className="size-4" /> Volunteer portal
@@ -43,14 +53,14 @@ function VolunteerCommunity() {
         {[
           {
             label: "Groups",
-            value: "5",
+            value: groups.length > 0 ? String(groups.length) : "—",
             delta: "3 active today",
             icon: Users,
             tone: "bg-primary/10 text-primary",
           },
           {
             label: "Members",
-            value: "128",
+            value: groups.length > 0 ? String(groups.reduce((n, g) => n + g.members, 0)) : "—",
             delta: "+12 this month",
             icon: MessageCircle,
             tone: "bg-learning/10 text-learning",
@@ -94,17 +104,36 @@ function VolunteerCommunity() {
           </CardTitle>
         </CardHeader>
         <CardContent className="divide-y">
-          {groups.map((g) => (
-            <div key={g.g} className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0">
-              <div className="min-w-0 flex-1">
-                <p className="text-sm font-bold">{g.g}</p>
-                <p className="text-muted-foreground text-xs">{g.m}</p>
-              </div>
-              <Button variant="outline" size="sm" className="shrink-0 font-semibold">
-                Open chat
-              </Button>
-            </div>
-          ))}
+          <QueryState<VolGroup[]>
+            query={groupsQuery}
+            error={{ title: "Groups unavailable" }}
+            empty={{ title: "No groups yet", description: "Your volunteer groups will show here." }}
+            isEmpty={(rows) => rows.length === 0}
+          >
+            {(rows) => (
+              <>
+                {rows.map((g, i) => (
+                  <div
+                    key={g.id}
+                    className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
+                  >
+                    <div className="min-w-0 flex-1">
+                      <p className="text-sm font-bold">{g.name}</p>
+                      <p className="text-muted-foreground text-xs">
+                        {g.members} members · {g.online} online
+                      </p>
+                    </div>
+                    <span
+                      className={cn("size-2.5 rounded-full", i === 1 ? "bg-success" : "bg-primary")}
+                    />
+                    <Button variant="outline" size="sm" className="shrink-0 font-semibold">
+                      Open chat
+                    </Button>
+                  </div>
+                ))}
+              </>
+            )}
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>
