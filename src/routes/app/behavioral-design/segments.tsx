@@ -3,8 +3,10 @@ import { ArrowLeft, Brain, Compass, Target, UserRound, UsersRound } from "lucide
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Progress } from "@/components/ui/progress";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import { useBdSegments } from "@/lib/query/behavioral";
+import type { BdSegment } from "@/lib/api/behavioral";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/behavioral-design/segments")({
@@ -20,46 +22,16 @@ export const Route = createFileRoute("/app/behavioral-design/segments")({
   component: SegmentExplorer,
 });
 
-const segments = [
-  {
-    t: "Weekend warriors",
-    size: "1,120",
-    share: "29%",
-    traits: "Evening study · mobile-first · deadline-driven",
-    rec: "Streak-saver · deadline anchoring",
-    tone: "bg-primary/10 text-primary",
-    pct: 72,
-  },
-  {
-    t: "Career switchers",
-    size: "980",
-    share: "25%",
-    traits: "28-40 · low time budget · job-focused",
-    rec: "Commitment emails · milestone proof",
-    tone: "bg-learning/10 text-learning",
-    pct: 64,
-  },
-  {
-    t: "Early adopters",
-    size: "640",
-    share: "17%",
-    traits: "High streak · referral active · forum posters",
-    rec: "Social proof · referral asks",
-    tone: "bg-success/10 text-success",
-    pct: 88,
-  },
-  {
-    t: "At-risk lurkers",
-    size: "520",
-    share: "13%",
-    traits: "Enrolled 30d+ · no lesson in 7d",
-    rec: "Streak rescue · peer pair",
-    tone: "bg-warning/10 text-warning",
-    pct: 41,
-  },
+const tones = [
+  "bg-primary/10 text-primary",
+  "bg-learning/10 text-learning",
+  "bg-success/10 text-success",
+  "bg-warning/10 text-warning",
 ];
 
 function SegmentExplorer() {
+  const segmentsQuery = useBdSegments();
+
   return (
     <AppShell
       roleKey="behavioral-design"
@@ -126,43 +98,45 @@ function SegmentExplorer() {
         ))}
       </div>
 
-      <div className="mt-5 grid gap-5 sm:grid-cols-2">
-        {segments.map((s) => (
-          <Card key={s.t} className="bg-card shadow-soft border">
-            <CardHeader className="flex-row items-center justify-between">
-              <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
-                <Compass className={cn("size-4", s.tone)} /> {s.t}
-              </CardTitle>
-              <Badge className={cn("border-0 font-semibold", s.tone)}>{s.share} of learners</Badge>
-            </CardHeader>
-            <CardContent className="space-y-3">
-              <div className="rounded-xl border p-3">
-                <p className="text-muted-foreground text-[10px] font-bold tracking-wide uppercase">
-                  Size
-                </p>
-                <p className="mt-0.5 text-xs font-semibold">{s.size} learners</p>
-              </div>
-              <div className="rounded-xl border p-3">
-                <p className="text-muted-foreground text-[10px] font-bold tracking-wide uppercase">
-                  Behaviour traits
-                </p>
-                <p className="mt-0.5 text-xs font-semibold">{s.traits}</p>
-              </div>
-              <div className="rounded-xl border p-3">
-                <p className="text-muted-foreground text-[10px] font-bold tracking-wide uppercase">
-                  Recommended interventions
-                </p>
-                <p className="text-success mt-0.5 text-xs font-bold">{s.rec}</p>
-              </div>
-              <div className="flex items-center justify-between text-xs font-semibold">
-                <span className="text-muted-foreground">Nudge coverage</span>
-                <span>{s.pct}%</span>
-              </div>
-              <Progress value={s.pct} className="h-2" />
-            </CardContent>
-          </Card>
-        ))}
-      </div>
+      <QueryState<BdSegment[]>
+        query={segmentsQuery}
+        error={{ title: "Segments unavailable" }}
+        empty={{ title: "No segments", description: "Learner segments will show here." }}
+        isEmpty={(rows) => rows.length === 0}
+      >
+        {(rows) => (
+          <div className="mt-5 grid gap-5 sm:grid-cols-2">
+            {rows.map((s, i) => (
+              <Card key={s.id} className="bg-card shadow-soft border">
+                <CardHeader className="flex-row items-center justify-between">
+                  <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
+                    <Compass className={cn("size-4", tones[i % tones.length])} /> {s.name}
+                  </CardTitle>
+                  <Badge className={cn("border-0 font-semibold", tones[i % tones.length])}>
+                    {s.status}
+                  </Badge>
+                </CardHeader>
+                <CardContent className="space-y-3">
+                  <div className="rounded-xl border p-3">
+                    <p className="text-muted-foreground text-[10px] font-bold tracking-wide uppercase">
+                      Size
+                    </p>
+                    <p className="mt-0.5 text-xs font-semibold">
+                      {s.size.toLocaleString()} learners
+                    </p>
+                  </div>
+                  <div className="rounded-xl border p-3">
+                    <p className="text-muted-foreground text-[10px] font-bold tracking-wide uppercase">
+                      Behaviour traits
+                    </p>
+                    <p className="mt-0.5 text-xs font-semibold">{s.traits}</p>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        )}
+      </QueryState>
     </AppShell>
   );
 }

@@ -4,6 +4,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import type { AluImpactRow, AluWay } from "@/lib/api/alumni";
+import { useAluImpact, useAluWays } from "@/lib/query/alumni";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/alumni/give-back")({
@@ -16,30 +19,10 @@ export const Route = createFileRoute("/app/alumni/give-back")({
   component: AlumniGiveBack,
 });
 
-const ways = [
-  {
-    t: "Scholarship fund",
-    d: "Fund a student's term — ₦700k covers a full scholarship",
-    tone: "bg-primary/10 text-primary",
-  },
-  {
-    t: "Mentor a learner",
-    d: "2 hours a month, online or on campus",
-    tone: "bg-learning/10 text-learning",
-  },
-  {
-    t: "Host an internship",
-    d: "Open a seat in your team for a final-year learner",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    t: "Speaker at career day",
-    d: "Share your journey at the Sep 14 event",
-    tone: "bg-warning/10 text-warning",
-  },
-];
-
 function AlumniGiveBack() {
+  const waysQuery = useAluWays();
+  const impactQuery = useAluImpact();
+
   return (
     <AppShell
       roleKey="instructor"
@@ -107,17 +90,31 @@ function AlumniGiveBack() {
       </div>
 
       <div className="mt-5 grid gap-4 sm:grid-cols-2">
-        {ways.map((w) => (
-          <Card key={w.t} className="bg-card shadow-soft border">
-            <CardContent className="p-5">
-              <p className="font-display text-sm font-extrabold">{w.t}</p>
-              <p className="text-muted-foreground mt-1 text-xs leading-relaxed">{w.d}</p>
-              <Button size="sm" variant="outline" className="mt-4 font-semibold">
-                <HandHeart className="size-3.5" /> Get started
-              </Button>
-            </CardContent>
-          </Card>
-        ))}
+        <QueryState<AluWay[]>
+          query={waysQuery}
+          error={{ title: "Ways to give back unavailable" }}
+          empty={{
+            title: "No ways to give back",
+            description: "New giving options will show here.",
+          }}
+          isEmpty={(rows) => rows.length === 0}
+        >
+          {(rows) => (
+            <>
+              {rows.map((w) => (
+                <Card key={w.id} className="bg-card shadow-soft border">
+                  <CardContent className="p-5">
+                    <p className="font-display text-sm font-extrabold">{w.title}</p>
+                    <p className="text-muted-foreground mt-1 text-xs leading-relaxed">{w.detail}</p>
+                    <Button size="sm" variant="outline" className="mt-4 font-semibold">
+                      <HandHeart className="size-3.5" /> Get started
+                    </Button>
+                  </CardContent>
+                </Card>
+              ))}
+            </>
+          )}
+        </QueryState>
       </div>
 
       <Card className="bg-card mt-5 shadow-soft border">
@@ -127,16 +124,26 @@ function AlumniGiveBack() {
           </CardTitle>
         </CardHeader>
         <CardContent className="grid gap-3 sm:grid-cols-3">
-          {[
-            { v: "2", t: "scholarships funded" },
-            { v: "3", t: "mentees guided to jobs" },
-            { v: "1", t: "internship hosted" },
-          ].map((i) => (
-            <div key={i.t} className="rounded-xl border p-4 text-center">
-              <p className="font-display text-2xl font-extrabold">{i.v}</p>
-              <p className="text-muted-foreground text-xs font-semibold">{i.t}</p>
-            </div>
-          ))}
+          <QueryState<AluImpactRow[]>
+            query={impactQuery}
+            error={{ title: "Impact unavailable" }}
+            empty={{
+              title: "No impact yet",
+              description: "Your giving impact will show here.",
+            }}
+            isEmpty={(rows) => rows.length === 0}
+          >
+            {(rows) => (
+              <>
+                {rows.map((i) => (
+                  <div key={i.id} className="rounded-xl border p-4 text-center">
+                    <p className="font-display text-2xl font-extrabold">{i.value}</p>
+                    <p className="text-muted-foreground text-xs font-semibold">{i.label}</p>
+                  </div>
+                ))}
+              </>
+            )}
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>

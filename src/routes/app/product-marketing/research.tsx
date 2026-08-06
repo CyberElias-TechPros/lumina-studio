@@ -4,6 +4,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import { usePmStudies, usePmFindings } from "@/lib/query/productMarketing";
+import type { PmStudy, PmFinding } from "@/lib/api/productMarketing";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/product-marketing/research")({
@@ -16,42 +19,27 @@ export const Route = createFileRoute("/app/product-marketing/research")({
   component: ResearchRepository,
 });
 
-const studies = [
-  {
-    t: "Employer hiring signals · Lagos",
-    focus: "What 40 HR leaders screen for",
-    sample: "n=40 interviews",
-    method: "Interviews",
-    status: "Published",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    t: "Parent willingness to pay",
-    focus: "Fee elasticity for parent app",
-    sample: "n=320 survey",
-    method: "Survey",
-    status: "In field",
-    tone: "bg-primary/10 text-primary",
-  },
-  {
-    t: "Diaspora funding behaviour",
-    focus: "UK diaspora monthly education spend",
-    sample: "n=180 survey",
-    method: "Survey + diary",
-    status: "In review",
-    tone: "bg-warning/10 text-warning",
-  },
-  {
-    t: "Bootcamp comparison 2026",
-    focus: "Pricing & promise across 9 players",
-    sample: "desk research",
-    method: "Secondary",
-    status: "Draft",
-    tone: "bg-muted-foreground/10 text-muted-foreground",
-  },
+const statusTones: Record<string, string> = {
+  published: "bg-success/10 text-success",
+  "in field": "bg-primary/10 text-primary",
+  "in review": "bg-warning/10 text-warning",
+};
+
+function toneFor(status: string): string {
+  return statusTones[status.toLowerCase()] ?? "bg-muted-foreground/10 text-muted-foreground";
+}
+
+const findingTones = [
+  "bg-error/10 text-error",
+  "bg-primary/10 text-primary",
+  "bg-warning/10 text-warning",
+  "bg-success/10 text-success",
 ];
 
 function ResearchRepository() {
+  const studiesQuery = usePmStudies();
+  const findingsQuery = usePmFindings();
+
   return (
     <AppShell
       roleKey="product-marketing"
@@ -124,26 +112,42 @@ function ResearchRepository() {
             </CardTitle>
           </CardHeader>
           <CardContent className="divide-y">
-            {studies.map((s) => (
-              <div
-                key={s.t}
-                className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
-              >
-                <span className="bg-muted text-muted-foreground grid size-9 shrink-0 place-items-center rounded-lg">
-                  <BookOpen className="size-4" />
-                </span>
-                <div className="min-w-0 flex-1">
-                  <p className="text-sm font-bold">{s.t}</p>
-                  <p className="text-muted-foreground text-xs">
-                    {s.focus} · {s.sample} · {s.method}
-                  </p>
-                </div>
-                <Badge className={cn("border-0 font-semibold", s.tone)}>{s.status}</Badge>
-                <Button variant="outline" size="sm" className="shrink-0">
-                  Report
-                </Button>
-              </div>
-            ))}
+            <QueryState<PmStudy[]>
+              query={studiesQuery}
+              error={{ title: "Studies unavailable" }}
+              empty={{
+                title: "No studies",
+                description: "Research studies will appear here.",
+              }}
+              isEmpty={(rows) => rows.length === 0}
+            >
+              {(rows) => (
+                <>
+                  {rows.map((s) => (
+                    <div
+                      key={s.id}
+                      className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
+                    >
+                      <span className="bg-muted text-muted-foreground grid size-9 shrink-0 place-items-center rounded-lg">
+                        <BookOpen className="size-4" />
+                      </span>
+                      <div className="min-w-0 flex-1">
+                        <p className="text-sm font-bold">{s.title}</p>
+                        <p className="text-muted-foreground text-xs">
+                          {s.detail} · {s.sample} · {s.method}
+                        </p>
+                      </div>
+                      <Badge className={cn("border-0 font-semibold", toneFor(s.status))}>
+                        {s.status}
+                      </Badge>
+                      <Button variant="outline" size="sm" className="shrink-0">
+                        Report
+                      </Button>
+                    </div>
+                  ))}
+                </>
+              )}
+            </QueryState>
           </CardContent>
         </Card>
 
@@ -154,33 +158,36 @@ function ResearchRepository() {
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-3">
-            {[
-              {
-                t: "88% of parents want weekly progress proof",
-                s: "Critical · parent app",
-                tone: "bg-error/10 text-error",
-              },
-              {
-                t: "HR screens for portfolio, not certificates",
-                s: "Critical · positioning",
-                tone: "bg-primary/10 text-primary",
-              },
-              {
-                t: "Diaspora parents pay ₦180k-₦250k per term",
-                s: "Pricing input",
-                tone: "bg-warning/10 text-warning",
-              },
-              {
-                t: "Referrals drive 18% of signups",
-                s: "Growth input",
-                tone: "bg-success/10 text-success",
-              },
-            ].map((x) => (
-              <div key={x.t} className="flex items-center justify-between rounded-xl border p-3">
-                <span className="text-sm font-semibold">{x.t}</span>
-                <Badge className={cn("border-0 font-semibold", x.tone)}>{x.s}</Badge>
-              </div>
-            ))}
+            <QueryState<PmFinding[]>
+              query={findingsQuery}
+              error={{ title: "Findings unavailable" }}
+              empty={{
+                title: "No findings",
+                description: "Key findings will appear here.",
+              }}
+              isEmpty={(rows) => rows.length === 0}
+            >
+              {(rows) => (
+                <>
+                  {rows.map((x, i) => (
+                    <div
+                      key={x.id}
+                      className="flex items-center justify-between rounded-xl border p-3"
+                    >
+                      <span className="text-sm font-semibold">{x.title}</span>
+                      <Badge
+                        className={cn(
+                          "border-0 font-semibold",
+                          findingTones[i % findingTones.length],
+                        )}
+                      >
+                        {x.tag}
+                      </Badge>
+                    </div>
+                  ))}
+                </>
+              )}
+            </QueryState>
           </CardContent>
         </Card>
       </div>

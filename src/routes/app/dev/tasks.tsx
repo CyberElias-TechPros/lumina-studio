@@ -11,6 +11,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import { useDevTasks } from "@/lib/query/dev";
+import type { DevTask } from "@/lib/api/dev";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/dev/tasks")({
@@ -23,28 +26,15 @@ export const Route = createFileRoute("/app/dev/tasks")({
   component: DevTasks,
 });
 
-const tasks = [
-  {
-    t: "CEA-214 · Invoice PDF regression",
-    d: "Sprint 14 · in progress",
-    s: "Doing",
-    tone: "bg-primary/10 text-primary",
-  },
-  {
-    t: "CEA-218 · Webhook retry logic",
-    d: "Sprint 14 · ready",
-    s: "Todo",
-    tone: "bg-warning/10 text-warning",
-  },
-  {
-    t: "CEA-205 · Portals nav caching",
-    d: "Sprint 13 · done",
-    s: "Done",
-    tone: "bg-success/10 text-success",
-  },
-];
+function taskTone(status: string) {
+  if (/done|complete|success/i.test(status)) return "bg-success/10 text-success";
+  if (/block|pending|todo|queued/i.test(status)) return "bg-warning/10 text-warning";
+  return "bg-primary/10 text-primary";
+}
 
 function DevTasks() {
+  const tasksQuery = useDevTasks();
+
   return (
     <AppShell
       roleKey="instructor"
@@ -116,18 +106,34 @@ function DevTasks() {
           </CardTitle>
         </CardHeader>
         <CardContent className="divide-y">
-          {tasks.map((t) => (
-            <div key={t.t} className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0">
-              <div className="min-w-0 flex-1">
-                <p className="font-mono text-sm font-bold">{t.t}</p>
-                <p className="text-muted-foreground text-xs">{t.d}</p>
-              </div>
-              <Badge className={cn("border-0 font-semibold", t.tone)}>{t.s}</Badge>
-              <Button variant="outline" size="sm" className="shrink-0 font-semibold">
-                Open
-              </Button>
-            </div>
-          ))}
+          <QueryState<DevTask[]>
+            query={tasksQuery}
+            error={{ title: "Tasks unavailable" }}
+            empty={{ title: "No tasks", description: "Sprint tasks will show here." }}
+            isEmpty={(rows) => rows.length === 0}
+          >
+            {(rows) => (
+              <>
+                {rows.map((t) => (
+                  <div
+                    key={t.id}
+                    className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
+                  >
+                    <div className="min-w-0 flex-1">
+                      <p className="font-mono text-sm font-bold">{t.title}</p>
+                      <p className="text-muted-foreground text-xs">{t.detail}</p>
+                    </div>
+                    <Badge className={cn("border-0 font-semibold", taskTone(t.status))}>
+                      {t.status}
+                    </Badge>
+                    <Button variant="outline" size="sm" className="shrink-0 font-semibold">
+                      Open
+                    </Button>
+                  </div>
+                ))}
+              </>
+            )}
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>

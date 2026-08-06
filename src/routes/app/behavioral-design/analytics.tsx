@@ -3,7 +3,6 @@ import { ArrowLeft, Award, LineChart, Percent, TrendingUp, Zap } from "lucide-re
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Progress } from "@/components/ui/progress";
 import {
   Table,
   TableBody,
@@ -13,6 +12,9 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import { useBdResults } from "@/lib/query/behavioral";
+import type { BdResult } from "@/lib/api/behavioral";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/behavioral-design/analytics")({
@@ -25,46 +27,16 @@ export const Route = createFileRoute("/app/behavioral-design/analytics")({
   component: InterventionAnalytics,
 });
 
-const results = [
-  {
-    t: "Streak nudges",
-    metric: "Weekly lessons",
-    base: "+4.2%",
-    win: "+9.1%",
-    pct: 78,
-    status: "Winning",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    t: "Deadline anchoring",
-    metric: "Submissions",
-    base: "+3.1%",
-    win: "+6.4%",
-    pct: 64,
-    status: "Live",
-    tone: "bg-primary/10 text-primary",
-  },
-  {
-    t: "Commitment emails",
-    metric: "Course churn",
-    base: "−1.8%",
-    win: "−4.0%",
-    pct: 51,
-    status: "Running",
-    tone: "bg-warning/10 text-warning",
-  },
-  {
-    t: "Social proof bubbles",
-    metric: "Referral starts",
-    base: "+1.2%",
-    win: "+2.8%",
-    pct: 38,
-    status: "Pilot",
-    tone: "bg-muted-foreground/10 text-muted-foreground",
-  },
+const tones = [
+  "bg-success/10 text-success",
+  "bg-primary/10 text-primary",
+  "bg-warning/10 text-warning",
+  "bg-muted-foreground/10 text-muted-foreground",
 ];
 
 function InterventionAnalytics() {
+  const resultsQuery = useBdResults();
+
   return (
     <AppShell
       roleKey="behavioral-design"
@@ -136,34 +108,47 @@ function InterventionAnalytics() {
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead>Intervention</TableHead>
-                <TableHead>Metric</TableHead>
-                <TableHead>Baseline</TableHead>
-                <TableHead>With nudge</TableHead>
-                <TableHead>Maturity</TableHead>
-                <TableHead>Status</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {results.map((r) => (
-                <TableRow key={r.t}>
-                  <TableCell className="font-semibold">{r.t}</TableCell>
-                  <TableCell className="text-muted-foreground">{r.metric}</TableCell>
-                  <TableCell>{r.base}</TableCell>
-                  <TableCell className="font-bold text-success">{r.win}</TableCell>
-                  <TableCell className="w-32">
-                    <Progress value={r.pct} className="h-1.5" />
-                  </TableCell>
-                  <TableCell>
-                    <Badge className={cn("border-0 font-semibold", r.tone)}>{r.status}</Badge>
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
+          <QueryState<BdResult[]>
+            query={resultsQuery}
+            error={{ title: "Results unavailable" }}
+            empty={{
+              title: "No results yet",
+              description: "Attributed lifts will show here.",
+            }}
+            isEmpty={(rows) => rows.length === 0}
+          >
+            {(rows) => (
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead>Intervention</TableHead>
+                    <TableHead>Metric</TableHead>
+                    <TableHead>Baseline</TableHead>
+                    <TableHead>With nudge</TableHead>
+                    <TableHead>Status</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {rows.map((r, i) => {
+                    const [name, metric] = r.metric.split(" — ");
+                    return (
+                      <TableRow key={r.id}>
+                        <TableCell className="font-semibold">{name}</TableCell>
+                        <TableCell className="text-muted-foreground">{metric || "—"}</TableCell>
+                        <TableCell>{r.baseline}</TableCell>
+                        <TableCell className="font-bold text-success">{r.changeLabel}</TableCell>
+                        <TableCell>
+                          <Badge className={cn("border-0 font-semibold", tones[i % tones.length])}>
+                            {r.status}
+                          </Badge>
+                        </TableCell>
+                      </TableRow>
+                    );
+                  })}
+                </TableBody>
+              </Table>
+            )}
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>

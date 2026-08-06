@@ -12,6 +12,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import { usePmStatements, usePmMessagehouse } from "@/lib/query/productMarketing";
+import type { PmStatement, PmMessagehouseItem } from "@/lib/api/productMarketing";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/product-marketing/positioning")({
@@ -24,37 +27,23 @@ export const Route = createFileRoute("/app/product-marketing/positioning")({
   component: PositioningDashboard,
 });
 
-const statements = [
-  {
-    product: "CEA-OS core LMS",
-    statement:
-      "For ambitious Nigerians who want global careers, CEA-OS is the academy that pairs live Lagos classes with a portfolio employers trust.",
-    audience: "Working adults 18-35 · Lagos, Abuja",
-    pain: "Degrees don't convert to jobs",
-    benefit: "Hire-ready in 9 months",
-    tone: "bg-primary/10 text-primary",
-  },
-  {
-    product: "Employer talent pass",
-    statement:
-      "For HR teams hiring in Nigeria, the talent pass is a verified pipeline of job-ready graduates with recorded skills evidence.",
-    audience: "HR leaders · 50+ employers",
-    pain: "Entry-level hires are risky",
-    benefit: "88% of pass hires stay 6mo",
-    tone: "bg-learning/10 text-learning",
-  },
-  {
-    product: "Parent app",
-    statement:
-      "For parents funding education, the parent app turns fees into progress reports with weekly learner insights.",
-    audience: "Parents · 35-55 · diaspora",
-    pain: "Fees paid, outcomes unclear",
-    benefit: "Weekly skill milestones",
-    tone: "bg-success/10 text-success",
-  },
+const statementTones = [
+  "bg-primary/10 text-primary",
+  "bg-learning/10 text-learning",
+  "bg-success/10 text-success",
+];
+
+const messagehouseTones = [
+  "bg-primary/10 text-primary",
+  "bg-success/10 text-success",
+  "bg-learning/10 text-learning",
+  "bg-error/10 text-error",
 ];
 
 function PositioningDashboard() {
+  const statementsQuery = usePmStatements();
+  const messagehouseQuery = usePmMessagehouse();
+
   return (
     <AppShell
       roleKey="product-marketing"
@@ -121,39 +110,56 @@ function PositioningDashboard() {
 
       <div className="mt-5 grid gap-5 xl:grid-cols-2">
         <div className="space-y-5">
-          {statements.map((s) => (
-            <Card key={s.product} className="bg-card shadow-soft border">
-              <CardHeader className="flex-row items-center justify-between">
-                <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
-                  <Target className={cn("size-4", s.tone)} /> {s.product}
-                </CardTitle>
-                <Badge className={cn("border-0 font-semibold", s.tone)}>Approved</Badge>
-              </CardHeader>
-              <CardContent className="space-y-3">
-                <p className="text-sm italic">{s.statement}</p>
-                <div className="grid gap-3 sm:grid-cols-3">
-                  <div className="rounded-xl border p-3">
-                    <p className="text-muted-foreground text-[10px] font-bold tracking-wide uppercase">
-                      Audience
-                    </p>
-                    <p className="mt-1 text-xs font-semibold">{s.audience}</p>
-                  </div>
-                  <div className="rounded-xl border p-3">
-                    <p className="text-muted-foreground text-[10px] font-bold tracking-wide uppercase">
-                      Pain point
-                    </p>
-                    <p className="mt-1 text-xs font-semibold">{s.pain}</p>
-                  </div>
-                  <div className="rounded-xl border p-3">
-                    <p className="text-muted-foreground text-[10px] font-bold tracking-wide uppercase">
-                      Benefit
-                    </p>
-                    <p className="mt-1 text-xs font-semibold">{s.benefit}</p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
+          <QueryState<PmStatement[]>
+            query={statementsQuery}
+            error={{ title: "Statements unavailable" }}
+            empty={{
+              title: "No positioning statements",
+              description: "Product positioning statements will appear here.",
+            }}
+            isEmpty={(rows) => rows.length === 0}
+          >
+            {(rows) => (
+              <>
+                {rows.map((s, i) => {
+                  const tone = statementTones[i % statementTones.length];
+                  return (
+                    <Card key={s.id} className="bg-card shadow-soft border">
+                      <CardHeader className="flex-row items-center justify-between">
+                        <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
+                          <Target className={cn("size-4", tone)} /> {s.product}
+                        </CardTitle>
+                        <Badge className={cn("border-0 font-semibold", tone)}>Approved</Badge>
+                      </CardHeader>
+                      <CardContent className="space-y-3">
+                        <p className="text-sm italic">{s.statement}</p>
+                        <div className="grid gap-3 sm:grid-cols-3">
+                          <div className="rounded-xl border p-3">
+                            <p className="text-muted-foreground text-[10px] font-bold tracking-wide uppercase">
+                              Audience
+                            </p>
+                            <p className="mt-1 text-xs font-semibold">{s.audience}</p>
+                          </div>
+                          <div className="rounded-xl border p-3">
+                            <p className="text-muted-foreground text-[10px] font-bold tracking-wide uppercase">
+                              Pain point
+                            </p>
+                            <p className="mt-1 text-xs font-semibold">{s.pain}</p>
+                          </div>
+                          <div className="rounded-xl border p-3">
+                            <p className="text-muted-foreground text-[10px] font-bold tracking-wide uppercase">
+                              Benefit
+                            </p>
+                            <p className="mt-1 text-xs font-semibold">{s.benefit}</p>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  );
+                })}
+              </>
+            )}
+          </QueryState>
         </div>
 
         <div className="space-y-5">
@@ -164,29 +170,36 @@ function PositioningDashboard() {
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-3">
-              {[
-                {
-                  l: "Primary message",
-                  v: "From Lagos classroom to global job",
-                  tone: "bg-primary/10 text-primary",
-                },
-                {
-                  l: "Proof point",
-                  v: "92% placement within 6 months",
-                  tone: "bg-success/10 text-success",
-                },
-                {
-                  l: "Tone of voice",
-                  v: "Ambitious, concrete, proud",
-                  tone: "bg-learning/10 text-learning",
-                },
-                { l: "Avoid", v: "Get-rich-quick framing", tone: "bg-error/10 text-error" },
-              ].map((x) => (
-                <div key={x.l} className="flex items-center justify-between rounded-xl border p-3">
-                  <span className="text-xs font-bold tracking-wide uppercase">{x.l}</span>
-                  <Badge className={cn("border-0 font-semibold", x.tone)}>{x.v}</Badge>
-                </div>
-              ))}
+              <QueryState<PmMessagehouseItem[]>
+                query={messagehouseQuery}
+                error={{ title: "Message house unavailable" }}
+                empty={{
+                  title: "No message house entries",
+                  description: "Message house entries will appear here.",
+                }}
+                isEmpty={(rows) => rows.length === 0}
+              >
+                {(rows) => (
+                  <>
+                    {rows.map((x, i) => (
+                      <div
+                        key={x.id}
+                        className="flex items-center justify-between rounded-xl border p-3"
+                      >
+                        <span className="text-xs font-bold tracking-wide uppercase">{x.label}</span>
+                        <Badge
+                          className={cn(
+                            "border-0 font-semibold",
+                            messagehouseTones[i % messagehouseTones.length],
+                          )}
+                        >
+                          {x.value}
+                        </Badge>
+                      </div>
+                    ))}
+                  </>
+                )}
+              </QueryState>
             </CardContent>
           </Card>
 

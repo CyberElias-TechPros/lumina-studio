@@ -12,6 +12,9 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import { useBdTests } from "@/lib/query/behavioral";
+import type { BdTest } from "@/lib/api/behavioral";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/behavioral-design/ab-tests")({
@@ -27,46 +30,16 @@ export const Route = createFileRoute("/app/behavioral-design/ab-tests")({
   component: AbTestDesigner,
 });
 
-const tests = [
-  {
-    t: "Streak nudge wording",
-    variants: "2",
-    sample: "2,400",
-    lift: "+9%",
-    sig: "95.2%",
-    status: "Winning",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    t: "Deadline anchor position",
-    variants: "3",
-    sample: "3,100",
-    lift: "+6%",
-    sig: "91.4%",
-    status: "Live",
-    tone: "bg-primary/10 text-primary",
-  },
-  {
-    t: "Goal-setting prompt",
-    variants: "2",
-    sample: "1,800",
-    lift: "+3%",
-    sig: "68.0%",
-    status: "Running",
-    tone: "bg-warning/10 text-warning",
-  },
-  {
-    t: "Social proof placement",
-    variants: "2",
-    sample: "—",
-    lift: "—",
-    sig: "—",
-    status: "Draft",
-    tone: "bg-muted-foreground/10 text-muted-foreground",
-  },
+const tones = [
+  "bg-success/10 text-success",
+  "bg-primary/10 text-primary",
+  "bg-warning/10 text-warning",
+  "bg-muted-foreground/10 text-muted-foreground",
 ];
 
 function AbTestDesigner() {
+  const testsQuery = useBdTests();
+
   return (
     <AppShell
       roleKey="behavioral-design"
@@ -138,34 +111,50 @@ function AbTestDesigner() {
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead>Experiment</TableHead>
-                <TableHead>Variants</TableHead>
-                <TableHead>Sample</TableHead>
-                <TableHead>Lift</TableHead>
-                <TableHead>Significance</TableHead>
-                <TableHead>Status</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {tests.map((t) => (
-                <TableRow key={t.t}>
-                  <TableCell className="font-semibold">{t.t}</TableCell>
-                  <TableCell>{t.variants}</TableCell>
-                  <TableCell className="text-muted-foreground">{t.sample}</TableCell>
-                  <TableCell className={cn("font-bold", t.lift.startsWith("+") && "text-success")}>
-                    {t.lift}
-                  </TableCell>
-                  <TableCell className="text-muted-foreground">{t.sig}</TableCell>
-                  <TableCell>
-                    <Badge className={cn("border-0 font-semibold", t.tone)}>{t.status}</Badge>
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
+          <QueryState<BdTest[]>
+            query={testsQuery}
+            error={{ title: "Experiments unavailable" }}
+            empty={{
+              title: "No experiments",
+              description: "Tests you run will show here.",
+            }}
+            isEmpty={(rows) => rows.length === 0}
+          >
+            {(rows) => (
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead>Experiment</TableHead>
+                    <TableHead>Variants</TableHead>
+                    <TableHead>Sample</TableHead>
+                    <TableHead>Lift</TableHead>
+                    <TableHead>Significance</TableHead>
+                    <TableHead>Status</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {rows.map((t, i) => (
+                    <TableRow key={t.id}>
+                      <TableCell className="font-semibold">{t.name}</TableCell>
+                      <TableCell>{t.variants}</TableCell>
+                      <TableCell className="text-muted-foreground">{t.sampleLabel}</TableCell>
+                      <TableCell
+                        className={cn("font-bold", t.liftLabel.startsWith("+") && "text-success")}
+                      >
+                        {t.liftLabel}
+                      </TableCell>
+                      <TableCell className="text-muted-foreground">{t.sigLabel}</TableCell>
+                      <TableCell>
+                        <Badge className={cn("border-0 font-semibold", tones[i % tones.length])}>
+                          {t.status}
+                        </Badge>
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            )}
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>

@@ -4,6 +4,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import type { AluMember } from "@/lib/api/alumni";
+import { useAluMembers } from "@/lib/query/alumni";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/alumni/network")({
@@ -16,14 +19,9 @@ export const Route = createFileRoute("/app/alumni/network")({
   component: AlumniNetwork,
 });
 
-const members = [
-  { n: "Amina Suleiman", c: "Cloud Eng. · 2023", r: "SRE @ Paystack", l: "Lagos", conn: 1 },
-  { n: "David Osei", c: "Full-Stack · 2024", r: "Frontend @ Andela", l: "Accra", conn: 0 },
-  { n: "Blessing Ade", c: "Data Science · 2022", r: "ML Eng @ Kuda", l: "Lagos", conn: 2 },
-  { n: "Ibrahim Musa", c: "DevOps · 2024", r: "Platform @ Flutterwave", l: "Abuja", conn: 0 },
-];
-
 function AlumniNetwork() {
+  const membersQuery = useAluMembers();
+
   return (
     <AppShell
       roleKey="instructor"
@@ -56,41 +54,55 @@ function AlumniNetwork() {
       </div>
 
       <div className="mt-5 grid gap-4 sm:grid-cols-2">
-        {members.map((m) => (
-          <Card key={m.n} className="bg-card shadow-soft border">
-            <CardContent className="flex flex-wrap items-center gap-4 p-5">
-              <span className="bg-primary/10 text-primary font-display grid size-11 shrink-0 place-items-center rounded-full text-sm font-extrabold">
-                {m.n
-                  .split(" ")
-                  .map((x) => x[0])
-                  .join("")}
-              </span>
-              <div className="min-w-0 flex-1">
-                <p className="font-display text-sm font-extrabold">{m.n}</p>
-                <p className="text-muted-foreground text-xs">
-                  {m.c} · {m.r}
-                </p>
-                <p className="text-muted-foreground mt-0.5 flex items-center gap-1 text-[11px]">
-                  <MapPin className="size-3" /> {m.l}
-                </p>
-              </div>
-              <div className="flex items-center gap-2">
-                {m.conn > 0 && (
-                  <Badge className="bg-success/10 text-success border-0 font-semibold">
-                    <Users className="size-3" /> {m.conn}
-                  </Badge>
-                )}
-                <Button
-                  size="sm"
-                  variant={m.conn ? "outline" : "default"}
-                  className="font-semibold"
-                >
-                  {m.conn ? "Message" : "Connect"}
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
-        ))}
+        <QueryState<AluMember[]>
+          query={membersQuery}
+          error={{ title: "Directory unavailable" }}
+          empty={{
+            title: "No members yet",
+            description: "Alumni profiles will appear here.",
+          }}
+          isEmpty={(rows) => rows.length === 0}
+        >
+          {(rows) => (
+            <>
+              {rows.map((m) => (
+                <Card key={m.id} className="bg-card shadow-soft border">
+                  <CardContent className="flex flex-wrap items-center gap-4 p-5">
+                    <span className="bg-primary/10 text-primary font-display grid size-11 shrink-0 place-items-center rounded-full text-sm font-extrabold">
+                      {m.name
+                        .split(" ")
+                        .map((x) => x[0])
+                        .join("")}
+                    </span>
+                    <div className="min-w-0 flex-1">
+                      <p className="font-display text-sm font-extrabold">{m.name}</p>
+                      <p className="text-muted-foreground text-xs">
+                        {m.cohort} · {m.roleLabel}
+                      </p>
+                      <p className="text-muted-foreground mt-0.5 flex items-center gap-1 text-[11px]">
+                        <MapPin className="size-3" /> {m.city}
+                      </p>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      {m.conn > 0 && (
+                        <Badge className="bg-success/10 text-success border-0 font-semibold">
+                          <Users className="size-3" /> {m.conn}
+                        </Badge>
+                      )}
+                      <Button
+                        size="sm"
+                        variant={m.conn ? "outline" : "default"}
+                        className="font-semibold"
+                      >
+                        {m.conn ? "Message" : "Connect"}
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </>
+          )}
+        </QueryState>
       </div>
 
       <Card className="bg-card mt-5 shadow-soft border">

@@ -12,6 +12,9 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import { usePmCompetitors, usePmFeatures } from "@/lib/query/productMarketing";
+import type { PmCompetitor, PmFeatureFlag } from "@/lib/api/productMarketing";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/product-marketing/competitive")({
@@ -27,34 +30,16 @@ export const Route = createFileRoute("/app/product-marketing/competitive")({
   component: CompetitiveIntel,
 });
 
-const competitors = [
-  {
-    name: "Skilledge NG",
-    focus: "Coding bootcamps",
-    strength: "Strong Lagos brand",
-    weakness: "No employer pass",
-    notes: "Won 2 of 3 deals Q3",
-    tone: "bg-primary/10 text-primary",
-  },
-  {
-    name: "Aptbridge",
-    focus: "Corporate training",
-    strength: "Enterprise sales team",
-    weakness: "Dated LMS UX",
-    notes: "Won 1 of 2 this month",
-    tone: "bg-learning/10 text-learning",
-  },
-  {
-    name: "GlobalPath",
-    focus: "UK placement focus",
-    strength: "Strong diaspora links",
-    weakness: "Weak portfolio tooling",
-    notes: "Active on parent app deal",
-    tone: "bg-warning/10 text-warning",
-  },
+const competitorTones = [
+  "bg-primary/10 text-primary",
+  "bg-learning/10 text-learning",
+  "bg-warning/10 text-warning",
 ];
 
 function CompetitiveIntel() {
+  const competitorsQuery = usePmCompetitors();
+  const featuresQuery = usePmFeatures();
+
   return (
     <AppShell
       roleKey="product-marketing"
@@ -121,36 +106,53 @@ function CompetitiveIntel() {
 
       <div className="mt-5 grid gap-5 xl:grid-cols-2">
         <div className="space-y-5">
-          {competitors.map((c) => (
-            <Card key={c.name} className="bg-card shadow-soft border">
-              <CardHeader className="flex-row items-center justify-between">
-                <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
-                  <Sword className={cn("size-4", c.tone)} /> {c.name}
-                </CardTitle>
-                <Badge className={cn("border-0 font-semibold", c.tone)}>{c.focus}</Badge>
-              </CardHeader>
-              <CardContent className="grid gap-3 sm:grid-cols-3">
-                <div className="rounded-xl border p-3">
-                  <p className="text-success text-[10px] font-bold tracking-wide uppercase">
-                    Strength
-                  </p>
-                  <p className="mt-1 text-xs font-semibold">{c.strength}</p>
-                </div>
-                <div className="rounded-xl border p-3">
-                  <p className="text-error text-[10px] font-bold tracking-wide uppercase">
-                    Weakness
-                  </p>
-                  <p className="mt-1 text-xs font-semibold">{c.weakness}</p>
-                </div>
-                <div className="rounded-xl border p-3">
-                  <p className="text-muted-foreground text-[10px] font-bold tracking-wide uppercase">
-                    Win/loss
-                  </p>
-                  <p className="mt-1 text-xs font-semibold">{c.notes}</p>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
+          <QueryState<PmCompetitor[]>
+            query={competitorsQuery}
+            error={{ title: "Competitors unavailable" }}
+            empty={{
+              title: "No competitors tracked",
+              description: "Competitor cards will appear here.",
+            }}
+            isEmpty={(rows) => rows.length === 0}
+          >
+            {(rows) => (
+              <>
+                {rows.map((c, i) => {
+                  const tone = competitorTones[i % competitorTones.length];
+                  return (
+                    <Card key={c.id} className="bg-card shadow-soft border">
+                      <CardHeader className="flex-row items-center justify-between">
+                        <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
+                          <Sword className={cn("size-4", tone)} /> {c.name}
+                        </CardTitle>
+                        <Badge className={cn("border-0 font-semibold", tone)}>{c.focus}</Badge>
+                      </CardHeader>
+                      <CardContent className="grid gap-3 sm:grid-cols-3">
+                        <div className="rounded-xl border p-3">
+                          <p className="text-success text-[10px] font-bold tracking-wide uppercase">
+                            Strength
+                          </p>
+                          <p className="mt-1 text-xs font-semibold">{c.strength}</p>
+                        </div>
+                        <div className="rounded-xl border p-3">
+                          <p className="text-error text-[10px] font-bold tracking-wide uppercase">
+                            Weakness
+                          </p>
+                          <p className="mt-1 text-xs font-semibold">{c.weakness}</p>
+                        </div>
+                        <div className="rounded-xl border p-3">
+                          <p className="text-muted-foreground text-[10px] font-bold tracking-wide uppercase">
+                            Win/loss
+                          </p>
+                          <p className="mt-1 text-xs font-semibold">{c.notes}</p>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  );
+                })}
+              </>
+            )}
+          </QueryState>
         </div>
 
         <Card className="bg-card shadow-soft border">
@@ -160,46 +162,54 @@ function CompetitiveIntel() {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead>Capability</TableHead>
-                  <TableHead>CEA-OS</TableHead>
-                  <TableHead>Skilledge</TableHead>
-                  <TableHead>Aptbridge</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {[
-                  { f: "Live Lagos classes", a: true, b: true, c: false },
-                  { f: "Employer talent pass", a: true, b: false, c: true },
-                  { f: "Portfolio builder", a: true, b: true, c: false },
-                  { f: "Diaspora financing", a: true, b: false, c: false },
-                  { f: "Data & AI track", a: true, b: true, c: false },
-                ].map((r) => (
-                  <TableRow key={r.f}>
-                    <TableCell className="font-semibold">{r.f}</TableCell>
-                    <TableCell>
-                      <Check className="text-success size-4" />
-                    </TableCell>
-                    <TableCell>
-                      {r.b ? (
-                        <Check className="text-success size-4" />
-                      ) : (
-                        <X className="text-error size-4" />
-                      )}
-                    </TableCell>
-                    <TableCell>
-                      {r.c ? (
-                        <Check className="text-success size-4" />
-                      ) : (
-                        <X className="text-error size-4" />
-                      )}
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
+            <QueryState<PmFeatureFlag[]>
+              query={featuresQuery}
+              error={{ title: "Feature comparison unavailable" }}
+              empty={{
+                title: "No feature flags",
+                description: "Feature comparisons will appear here.",
+              }}
+              isEmpty={(rows) => rows.length === 0}
+            >
+              {(rows) => (
+                <>
+                  <Table>
+                    <TableHeader>
+                      <TableRow>
+                        <TableHead>Capability</TableHead>
+                        <TableHead>CEA-OS</TableHead>
+                        <TableHead>Skilledge</TableHead>
+                        <TableHead>Aptbridge</TableHead>
+                      </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                      {rows.map((r) => (
+                        <TableRow key={r.id}>
+                          <TableCell className="font-semibold">{r.capability}</TableCell>
+                          <TableCell>
+                            <Check className="text-success size-4" />
+                          </TableCell>
+                          <TableCell>
+                            {r.skilledge ? (
+                              <Check className="text-success size-4" />
+                            ) : (
+                              <X className="text-error size-4" />
+                            )}
+                          </TableCell>
+                          <TableCell>
+                            {r.aptbridge ? (
+                              <Check className="text-success size-4" />
+                            ) : (
+                              <X className="text-error size-4" />
+                            )}
+                          </TableCell>
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                  </Table>
+                </>
+              )}
+            </QueryState>
           </CardContent>
         </Card>
       </div>

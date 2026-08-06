@@ -4,6 +4,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import { useDevDocs } from "@/lib/query/dev";
+import type { DevDoc } from "@/lib/api/dev";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/dev/docs")({
@@ -16,13 +19,9 @@ export const Route = createFileRoute("/app/dev/docs")({
   component: DevDocs,
 });
 
-const docs = [
-  { d: "API reference v3", u: "Updated Jul 30 · 84 endpoints", tone: "bg-primary/10 text-primary" },
-  { d: "Onboarding runbook", u: "Updated Jul 12 · 14 steps", tone: "bg-learning/10 text-learning" },
-  { d: "Deploy playbook", u: "Updated Jun 28 · 6 sections", tone: "bg-success/10 text-success" },
-];
-
 function DevDocs() {
+  const docsQuery = useDevDocs();
+
   return (
     <AppShell
       roleKey="instructor"
@@ -94,17 +93,31 @@ function DevDocs() {
           </CardTitle>
         </CardHeader>
         <CardContent className="divide-y">
-          {docs.map((d) => (
-            <div key={d.d} className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0">
-              <div className="min-w-0 flex-1">
-                <p className="font-mono text-sm font-bold">{d.d}</p>
-                <p className="text-muted-foreground text-xs">{d.u}</p>
-              </div>
-              <Button variant="outline" size="sm" className="shrink-0 font-semibold">
-                Read
-              </Button>
-            </div>
-          ))}
+          <QueryState<DevDoc[]>
+            query={docsQuery}
+            error={{ title: "Docs unavailable" }}
+            empty={{ title: "No documents", description: "Docs and runbooks will show here." }}
+            isEmpty={(rows) => rows.length === 0}
+          >
+            {(rows) => (
+              <>
+                {rows.map((d) => (
+                  <div
+                    key={d.id}
+                    className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
+                  >
+                    <div className="min-w-0 flex-1">
+                      <p className="font-mono text-sm font-bold">{d.title}</p>
+                      <p className="text-muted-foreground text-xs">{d.updatedLabel}</p>
+                    </div>
+                    <Button variant="outline" size="sm" className="shrink-0 font-semibold">
+                      Read
+                    </Button>
+                  </div>
+                ))}
+              </>
+            )}
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>

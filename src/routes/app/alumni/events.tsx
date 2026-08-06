@@ -4,6 +4,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import type { AluEvent } from "@/lib/api/alumni";
+import { useAluEvents } from "@/lib/query/alumni";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/alumni/events")({
@@ -16,42 +19,16 @@ export const Route = createFileRoute("/app/alumni/events")({
   component: AlumniEvents,
 });
 
-const events = [
-  {
-    t: "Cohort 12 reunion",
-    d: "Sep 6 · 15:00",
-    l: "Lagos campus courtyard",
-    going: 74,
-    status: "Going",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    t: "Career day + hiring fair",
-    d: "Sep 14 · 10:00",
-    l: "Main hall + online",
-    going: 210,
-    status: "Interested",
-    tone: "bg-primary/10 text-primary",
-  },
-  {
-    t: "Alumni × students: speed mentoring",
-    d: "Sep 28 · 14:00",
-    l: "Online",
-    going: 56,
-    status: "RSVP",
-    tone: "bg-warning/10 text-warning",
-  },
-  {
-    t: "Founder stories: fintech edition",
-    d: "Oct 12 · 18:00",
-    l: "Online",
-    going: 88,
-    status: "Save",
-    tone: "bg-muted-foreground/10 text-muted-foreground",
-  },
+const eventTones = [
+  "bg-success/10 text-success",
+  "bg-primary/10 text-primary",
+  "bg-warning/10 text-warning",
+  "bg-muted-foreground/10 text-muted-foreground",
 ];
 
 function AlumniEvents() {
+  const eventsQuery = useAluEvents();
+
   return (
     <AppShell
       roleKey="instructor"
@@ -123,23 +100,44 @@ function AlumniEvents() {
           </CardTitle>
         </CardHeader>
         <CardContent className="divide-y">
-          {events.map((e) => (
-            <div key={e.t} className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0">
-              <span className="bg-muted text-muted-foreground grid size-9 shrink-0 place-items-center rounded-lg">
-                <MapPin className="size-4" />
-              </span>
-              <div className="min-w-0 flex-1">
-                <p className="text-sm font-bold">{e.t}</p>
-                <p className="text-muted-foreground text-xs">
-                  {e.d} · {e.l} · {e.going} going
-                </p>
-              </div>
-              <Badge className={cn("border-0 font-semibold", e.tone)}>{e.status}</Badge>
-              <Button variant="outline" size="sm" className="shrink-0 font-semibold">
-                Details
-              </Button>
-            </div>
-          ))}
+          <QueryState<AluEvent[]>
+            query={eventsQuery}
+            error={{ title: "Events unavailable" }}
+            empty={{
+              title: "No upcoming events",
+              description: "Reunions, career days and workshops will show here.",
+            }}
+            isEmpty={(rows) => rows.length === 0}
+          >
+            {(rows) => (
+              <>
+                {rows.map((e, i) => (
+                  <div
+                    key={e.id}
+                    className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
+                  >
+                    <span className="bg-muted text-muted-foreground grid size-9 shrink-0 place-items-center rounded-lg">
+                      <MapPin className="size-4" />
+                    </span>
+                    <div className="min-w-0 flex-1">
+                      <p className="text-sm font-bold">{e.title}</p>
+                      <p className="text-muted-foreground text-xs">
+                        {e.dateLabel} · {e.location} · {e.going} going
+                      </p>
+                    </div>
+                    <Badge
+                      className={cn("border-0 font-semibold", eventTones[i % eventTones.length])}
+                    >
+                      {e.status}
+                    </Badge>
+                    <Button variant="outline" size="sm" className="shrink-0 font-semibold">
+                      Details
+                    </Button>
+                  </div>
+                ))}
+              </>
+            )}
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>

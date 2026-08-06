@@ -25,6 +25,9 @@ import {
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import type { AluCommitment } from "@/lib/api/alumni";
+import { useAluCommitments } from "@/lib/query/alumni";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/alumni/mentorship")({
@@ -40,34 +43,15 @@ export const Route = createFileRoute("/app/alumni/mentorship")({
   component: AlumniMentorship,
 });
 
-const commitments = [
-  {
-    mentee: "Ada Okafor",
-    track: "Backend specialisation",
-    cadence: "Fortnightly 1:1",
-    next: "Aug 21 · 16:00",
-    status: "Active",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    mentee: "Tobi Adeyemi",
-    track: "DevOps",
-    cadence: "Weekly group session",
-    next: "Aug 22 · 11:00",
-    status: "Active",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    mentee: "Zainab Yusuf",
-    track: "Product design",
-    cadence: "Async messaging",
-    next: "Ongoing",
-    status: "Active",
-    tone: "bg-primary/10 text-primary",
-  },
+const commitmentTones = [
+  "bg-success/10 text-success",
+  "bg-success/10 text-success",
+  "bg-primary/10 text-primary",
 ];
 
 function AlumniMentorship() {
+  const commitmentsQuery = useAluCommitments();
+
   return (
     <AppShell
       roleKey="alumni"
@@ -216,23 +200,44 @@ function AlumniMentorship() {
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-3">
-              {commitments.map((c) => (
-                <div key={c.mentee} className="rounded-xl border p-3.5">
-                  <div className="flex items-center justify-between gap-2">
-                    <p className="text-sm font-bold">{c.mentee}</p>
-                    <Badge className={cn("border-0 font-semibold", c.tone)}>{c.status}</Badge>
-                  </div>
-                  <p className="text-muted-foreground mt-0.5 text-xs">{c.track}</p>
-                  <div className="text-muted-foreground mt-2 flex flex-wrap gap-x-4 gap-y-1 text-[11px] font-semibold">
-                    <span className="flex items-center gap-1">
-                      <Clock3 className="size-3" /> {c.cadence}
-                    </span>
-                    <span className="flex items-center gap-1">
-                      <CalendarCheck className="size-3" /> Next: {c.next}
-                    </span>
-                  </div>
-                </div>
-              ))}
+              <QueryState<AluCommitment[]>
+                query={commitmentsQuery}
+                error={{ title: "Commitments unavailable" }}
+                empty={{
+                  title: "No commitments yet",
+                  description: "Matched mentees will appear here.",
+                }}
+                isEmpty={(rows) => rows.length === 0}
+              >
+                {(rows) => (
+                  <>
+                    {rows.map((c, i) => (
+                      <div key={c.id} className="rounded-xl border p-3.5">
+                        <div className="flex items-center justify-between gap-2">
+                          <p className="text-sm font-bold">{c.mentee}</p>
+                          <Badge
+                            className={cn(
+                              "border-0 font-semibold",
+                              commitmentTones[i % commitmentTones.length],
+                            )}
+                          >
+                            {c.status}
+                          </Badge>
+                        </div>
+                        <p className="text-muted-foreground mt-0.5 text-xs">{c.track}</p>
+                        <div className="text-muted-foreground mt-2 flex flex-wrap gap-x-4 gap-y-1 text-[11px] font-semibold">
+                          <span className="flex items-center gap-1">
+                            <Clock3 className="size-3" /> {c.cadence}
+                          </span>
+                          <span className="flex items-center gap-1">
+                            <CalendarCheck className="size-3" /> Next: {c.nextLabel}
+                          </span>
+                        </div>
+                      </div>
+                    ))}
+                  </>
+                )}
+              </QueryState>
             </CardContent>
           </Card>
 

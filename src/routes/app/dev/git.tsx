@@ -11,6 +11,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import { useDevPrs } from "@/lib/query/dev";
+import type { DevPr } from "@/lib/api/dev";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/dev/git")({
@@ -23,28 +26,16 @@ export const Route = createFileRoute("/app/dev/git")({
   component: DevGit,
 });
 
-const prs = [
-  {
-    p: "#142 · feat: invoice webhooks",
-    b: "main ← feat/invoice-webhooks",
-    s: "Checks passed",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    p: "#141 · fix: portal nav caching",
-    b: "main ← fix/nav-cache",
-    s: "Review requested",
-    tone: "bg-warning/10 text-warning",
-  },
-  {
-    p: "#140 · chore: deps upgrade",
-    b: "main ← chore/deps",
-    s: "CI running",
-    tone: "bg-primary/10 text-primary",
-  },
-];
+function prTone(status: string) {
+  if (/pass|check|ready|approved|success/i.test(status)) return "bg-success/10 text-success";
+  if (/reject|conflict|blocked|fail/i.test(status)) return "bg-destructive/10 text-destructive";
+  if (/review|request/i.test(status)) return "bg-warning/10 text-warning";
+  return "bg-primary/10 text-primary";
+}
 
 function DevGit() {
+  const prsQuery = useDevPrs();
+
   return (
     <AppShell
       roleKey="instructor"
@@ -116,18 +107,34 @@ function DevGit() {
           </CardTitle>
         </CardHeader>
         <CardContent className="divide-y">
-          {prs.map((p) => (
-            <div key={p.p} className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0">
-              <div className="min-w-0 flex-1">
-                <p className="font-mono text-sm font-bold">{p.p}</p>
-                <p className="text-muted-foreground text-xs">{p.b}</p>
-              </div>
-              <Badge className={cn("border-0 font-semibold", p.tone)}>{p.s}</Badge>
-              <Button variant="outline" size="sm" className="shrink-0 font-semibold">
-                View
-              </Button>
-            </div>
-          ))}
+          <QueryState<DevPr[]>
+            query={prsQuery}
+            error={{ title: "PRs unavailable" }}
+            empty={{ title: "No pull requests", description: "Open pull requests will show here." }}
+            isEmpty={(rows) => rows.length === 0}
+          >
+            {(rows) => (
+              <>
+                {rows.map((p) => (
+                  <div
+                    key={p.id}
+                    className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
+                  >
+                    <div className="min-w-0 flex-1">
+                      <p className="font-mono text-sm font-bold">{p.title}</p>
+                      <p className="text-muted-foreground text-xs">{p.branch}</p>
+                    </div>
+                    <Badge className={cn("border-0 font-semibold", prTone(p.status))}>
+                      {p.status}
+                    </Badge>
+                    <Button variant="outline" size="sm" className="shrink-0 font-semibold">
+                      View
+                    </Button>
+                  </div>
+                ))}
+              </>
+            )}
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>

@@ -1,9 +1,20 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowLeft, Inbox, Lock, MessageSquare, Send, ShieldCheck } from "lucide-react";
+import {
+  ArrowLeft,
+  Inbox,
+  Lock,
+  MessageSquare,
+  Send,
+  ShieldCheck,
+  type LucideIcon,
+} from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import { useGovOverview, useGovThreads } from "@/lib/query/government";
+import type { GovKpi, GovThread } from "@/lib/api/government";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/government/messaging")({
@@ -16,31 +27,27 @@ export const Route = createFileRoute("/app/government/messaging")({
   component: GovernmentMessaging,
 });
 
-const messages = [
-  {
-    m: "Re: accreditation evidence — awaiting 2 documents",
-    f: "CEA compliance office",
-    t: "Jul 30 · 14:02",
-    s: "Open",
-    tone: "bg-primary/10 text-primary",
-  },
-  {
-    m: "Q2 census filing confirmation",
-    f: "Federal Ministry of Education",
-    t: "Jul 14 · 09:30",
-    s: "Closed",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    m: "Facilities audit scheduling",
-    f: "CEA compliance office",
-    t: "Jul 08 · 11:12",
-    s: "Closed",
-    tone: "bg-success/10 text-success",
-  },
-];
+const kpiMeta: Record<string, { icon: LucideIcon; tone: string }> = {
+  Threads: { icon: MessageSquare, tone: "bg-primary/10 text-primary" },
+  Unread: { icon: Inbox, tone: "bg-warning/10 text-warning" },
+  Encrypted: { icon: Lock, tone: "bg-success/10 text-success" },
+  "Avg. response": { icon: Send, tone: "bg-learning/10 text-learning" },
+};
+
+const defaultKpiMeta: { icon: LucideIcon; tone: string } = {
+  icon: MessageSquare,
+  tone: "bg-primary/10 text-primary",
+};
+
+const threadTones: Record<string, string> = {
+  Open: "bg-primary/10 text-primary",
+  Closed: "bg-success/10 text-success",
+};
 
 function GovernmentMessaging() {
+  const overviewQuery = useGovOverview();
+  const threadsQuery = useGovThreads();
+
   return (
     <AppShell
       roleKey="admin"
@@ -57,53 +64,36 @@ function GovernmentMessaging() {
         </>
       }
     >
-      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-        {[
-          {
-            label: "Threads",
-            value: "18",
-            delta: "with CEA",
-            icon: MessageSquare,
-            tone: "bg-primary/10 text-primary",
-          },
-          {
-            label: "Unread",
-            value: "2",
-            delta: "1 urgent",
-            icon: Inbox,
-            tone: "bg-warning/10 text-warning",
-          },
-          {
-            label: "Encrypted",
-            value: "100%",
-            delta: "E2EE",
-            icon: Lock,
-            tone: "bg-success/10 text-success",
-          },
-          {
-            label: "Avg. response",
-            value: "4h",
-            delta: "by CEA",
-            icon: Send,
-            tone: "bg-learning/10 text-learning",
-          },
-        ].map((k) => (
-          <Card key={k.label} className="bg-card shadow-soft border">
-            <CardContent className="p-5">
-              <div className="flex items-center justify-between">
-                <p className="text-muted-foreground text-xs font-bold tracking-wide uppercase">
-                  {k.label}
-                </p>
-                <span className={cn("grid size-8 place-items-center rounded-lg", k.tone)}>
-                  <k.icon className="size-4" />
-                </span>
-              </div>
-              <p className="font-display mt-3 text-2xl font-extrabold">{k.value}</p>
-              <p className="text-muted-foreground mt-0.5 text-xs font-semibold">{k.delta}</p>
-            </CardContent>
-          </Card>
-        ))}
-      </div>
+      <QueryState<GovKpi[]>
+        query={overviewQuery}
+        error={{ title: "Metrics unavailable" }}
+        empty={{ title: "No metrics", description: "Compliance metrics will appear here." }}
+        isEmpty={(rows) => rows.length === 0}
+      >
+        {(rows) => (
+          <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+            {rows.map((k) => {
+              const meta = kpiMeta[k.metric] ?? defaultKpiMeta;
+              return (
+                <Card key={k.id} className="bg-card shadow-soft border">
+                  <CardContent className="p-5">
+                    <div className="flex items-center justify-between">
+                      <p className="text-muted-foreground text-xs font-bold tracking-wide uppercase">
+                        {k.metric}
+                      </p>
+                      <span className={cn("grid size-8 place-items-center rounded-lg", meta.tone)}>
+                        <meta.icon className="size-4" />
+                      </span>
+                    </div>
+                    <p className="font-display mt-3 text-2xl font-extrabold">{k.valueLabel}</p>
+                    <p className="text-muted-foreground mt-0.5 text-xs font-semibold">{k.delta}</p>
+                  </CardContent>
+                </Card>
+              );
+            })}
+          </div>
+        )}
+      </QueryState>
 
       <Card className="bg-card mt-5 shadow-soft border">
         <CardHeader>
@@ -112,23 +102,41 @@ function GovernmentMessaging() {
           </CardTitle>
         </CardHeader>
         <CardContent className="divide-y">
-          {messages.map((m) => (
-            <div
-              key={m.m + m.t}
-              className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
-            >
-              <div className="min-w-0 flex-1">
-                <p className="text-sm font-bold">{m.m}</p>
-                <p className="text-muted-foreground text-xs">
-                  {m.f} · {m.t}
-                </p>
-              </div>
-              <Badge className={cn("border-0 font-semibold", m.tone)}>{m.s}</Badge>
-              <Button variant="outline" size="sm" className="shrink-0 font-semibold">
-                Open
-              </Button>
-            </div>
-          ))}
+          <QueryState<GovThread[]>
+            query={threadsQuery}
+            error={{ title: "Threads unavailable" }}
+            empty={{ title: "No threads", description: "Secure conversations will show here." }}
+            isEmpty={(rows) => rows.length === 0}
+          >
+            {(rows) => (
+              <>
+                {rows.map((m) => (
+                  <div
+                    key={m.id}
+                    className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
+                  >
+                    <div className="min-w-0 flex-1">
+                      <p className="text-sm font-bold">{m.title}</p>
+                      <p className="text-muted-foreground text-xs">
+                        {m.fromLabel} · {m.timeLabel}
+                      </p>
+                    </div>
+                    <Badge
+                      className={cn(
+                        "border-0 font-semibold",
+                        threadTones[m.status] ?? "bg-primary/10 text-primary",
+                      )}
+                    >
+                      {m.status}
+                    </Badge>
+                    <Button variant="outline" size="sm" className="shrink-0 font-semibold">
+                      Open
+                    </Button>
+                  </div>
+                ))}
+              </>
+            )}
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>

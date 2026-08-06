@@ -11,6 +11,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import { useDevDeps } from "@/lib/query/dev";
+import type { DevDep } from "@/lib/api/dev";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/dev/dependencies")({
@@ -23,18 +26,15 @@ export const Route = createFileRoute("/app/dev/dependencies")({
   component: DevDependencies,
 });
 
-const deps = [
-  { d: "lucide-react", v: "0.4xx", s: "Current", tone: "bg-success/10 text-success" },
-  { d: "tanstack-router", v: "1.9x", s: "Update avail.", tone: "bg-warning/10 text-warning" },
-  {
-    d: "axios (legacy)",
-    v: "1.7",
-    s: "1 vuln · patch",
-    tone: "bg-destructive/10 text-destructive",
-  },
-];
+function depTone(status: string) {
+  if (/vuln|critical|secur|patch/i.test(status)) return "bg-destructive/10 text-destructive";
+  if (/current|up to date|healthy|latest/i.test(status)) return "bg-success/10 text-success";
+  return "bg-warning/10 text-warning";
+}
 
 function DevDependencies() {
+  const depsQuery = useDevDeps();
+
   return (
     <AppShell
       roleKey="instructor"
@@ -106,18 +106,34 @@ function DevDependencies() {
           </CardTitle>
         </CardHeader>
         <CardContent className="divide-y">
-          {deps.map((d) => (
-            <div key={d.d} className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0">
-              <div className="min-w-0 flex-1">
-                <p className="font-mono text-sm font-bold">{d.d}</p>
-                <p className="text-muted-foreground text-xs">v{d.v}</p>
-              </div>
-              <Badge className={cn("border-0 font-semibold", d.tone)}>{d.s}</Badge>
-              <Button variant="outline" size="sm" className="shrink-0 font-semibold">
-                Update
-              </Button>
-            </div>
-          ))}
+          <QueryState<DevDep[]>
+            query={depsQuery}
+            error={{ title: "Dependencies unavailable" }}
+            empty={{ title: "No dependencies", description: "Package health will show here." }}
+            isEmpty={(rows) => rows.length === 0}
+          >
+            {(rows) => (
+              <>
+                {rows.map((d) => (
+                  <div
+                    key={d.id}
+                    className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
+                  >
+                    <div className="min-w-0 flex-1">
+                      <p className="font-mono text-sm font-bold">{d.name}</p>
+                      <p className="text-muted-foreground text-xs">v{d.version}</p>
+                    </div>
+                    <Badge className={cn("border-0 font-semibold", depTone(d.status))}>
+                      {d.status}
+                    </Badge>
+                    <Button variant="outline" size="sm" className="shrink-0 font-semibold">
+                      Update
+                    </Button>
+                  </div>
+                ))}
+              </>
+            )}
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>

@@ -9,11 +9,15 @@ import {
   MessageSquare,
   ScrollText,
   ShieldCheck,
+  type LucideIcon,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import { useGovOverview } from "@/lib/query/government";
+import type { GovKpi } from "@/lib/api/government";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/government/")({
@@ -25,6 +29,18 @@ export const Route = createFileRoute("/app/government/")({
   }),
   component: GovernmentHub,
 });
+
+const kpiMeta: Record<string, { icon: LucideIcon; tone: string }> = {
+  "Compliance score": { icon: ShieldCheck, tone: "bg-success/10 text-success" },
+  "Open findings": { icon: CalendarClock, tone: "bg-warning/10 text-warning" },
+  "Filings (year)": { icon: History, tone: "bg-primary/10 text-primary" },
+  "Next review": { icon: Landmark, tone: "bg-learning/10 text-learning" },
+};
+
+const defaultKpiMeta: { icon: LucideIcon; tone: string } = {
+  icon: ShieldCheck,
+  tone: "bg-primary/10 text-primary",
+};
 
 const screens = [
   {
@@ -72,6 +88,8 @@ const screens = [
 ];
 
 function GovernmentHub() {
+  const overviewQuery = useGovOverview();
+
   return (
     <AppShell
       roleKey="admin"
@@ -106,53 +124,36 @@ function GovernmentHub() {
         </CardContent>
       </Card>
 
-      <div className="mt-5 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-        {[
-          {
-            label: "Compliance score",
-            value: "92",
-            delta: "of 100",
-            icon: ShieldCheck,
-            tone: "bg-success/10 text-success",
-          },
-          {
-            label: "Open findings",
-            value: "1",
-            delta: "low priority",
-            icon: CalendarClock,
-            tone: "bg-warning/10 text-warning",
-          },
-          {
-            label: "Filings (year)",
-            value: "14",
-            delta: "0 overdue",
-            icon: History,
-            tone: "bg-primary/10 text-primary",
-          },
-          {
-            label: "Next review",
-            value: "2027",
-            delta: "Feb · on track",
-            icon: Landmark,
-            tone: "bg-learning/10 text-learning",
-          },
-        ].map((k) => (
-          <Card key={k.label} className="bg-card shadow-soft border">
-            <CardContent className="p-5">
-              <div className="flex items-center justify-between">
-                <p className="text-muted-foreground text-xs font-bold tracking-wide uppercase">
-                  {k.label}
-                </p>
-                <span className={cn("grid size-8 place-items-center rounded-lg", k.tone)}>
-                  <k.icon className="size-4" />
-                </span>
-              </div>
-              <p className="font-display mt-3 text-2xl font-extrabold">{k.value}</p>
-              <p className="text-muted-foreground mt-0.5 text-xs font-semibold">{k.delta}</p>
-            </CardContent>
-          </Card>
-        ))}
-      </div>
+      <QueryState<GovKpi[]>
+        query={overviewQuery}
+        error={{ title: "Metrics unavailable" }}
+        empty={{ title: "No metrics", description: "Compliance metrics will appear here." }}
+        isEmpty={(rows) => rows.length === 0}
+      >
+        {(rows) => (
+          <div className="mt-5 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+            {rows.map((k) => {
+              const meta = kpiMeta[k.metric] ?? defaultKpiMeta;
+              return (
+                <Card key={k.id} className="bg-card shadow-soft border">
+                  <CardContent className="p-5">
+                    <div className="flex items-center justify-between">
+                      <p className="text-muted-foreground text-xs font-bold tracking-wide uppercase">
+                        {k.metric}
+                      </p>
+                      <span className={cn("grid size-8 place-items-center rounded-lg", meta.tone)}>
+                        <meta.icon className="size-4" />
+                      </span>
+                    </div>
+                    <p className="font-display mt-3 text-2xl font-extrabold">{k.valueLabel}</p>
+                    <p className="text-muted-foreground mt-0.5 text-xs font-semibold">{k.delta}</p>
+                  </CardContent>
+                </Card>
+              );
+            })}
+          </div>
+        )}
+      </QueryState>
 
       <Card className="bg-card mt-5 shadow-soft border">
         <CardHeader>

@@ -5,6 +5,9 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import { useBdCampaigns } from "@/lib/query/behavioral";
+import type { BdCampaign } from "@/lib/api/behavioral";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/behavioral-design/nudge-campaigns")({
@@ -20,46 +23,16 @@ export const Route = createFileRoute("/app/behavioral-design/nudge-campaigns")({
   component: NudgeCampaigns,
 });
 
-const campaigns = [
-  {
-    t: "Streak saver · evening",
-    trigger: "Missed 2 lessons before 6pm",
-    channel: "WhatsApp",
-    sends: "1,240",
-    optOut: "0.8%",
-    status: "Live",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    t: "Deadline anchor · cohort 17",
-    trigger: "Viewed apply page twice",
-    channel: "Email",
-    sends: "860",
-    optOut: "1.1%",
-    status: "Live",
-    tone: "bg-primary/10 text-primary",
-  },
-  {
-    t: "Referral thank-you",
-    trigger: "Successful referral paid",
-    channel: "In-app",
-    sends: "312",
-    optOut: "0.4%",
-    status: "Scheduled",
-    tone: "bg-warning/10 text-warning",
-  },
-  {
-    t: "Portfolio milestone",
-    trigger: "Project 3 submitted",
-    channel: "Email",
-    sends: "0",
-    optOut: "—",
-    status: "Draft",
-    tone: "bg-muted-foreground/10 text-muted-foreground",
-  },
+const tones = [
+  "bg-success/10 text-success",
+  "bg-primary/10 text-primary",
+  "bg-warning/10 text-warning",
+  "bg-muted-foreground/10 text-muted-foreground",
 ];
 
 function NudgeCampaigns() {
+  const campaignsQuery = useBdCampaigns();
+
   return (
     <AppShell
       roleKey="behavioral-design"
@@ -132,26 +105,39 @@ function NudgeCampaigns() {
             </CardTitle>
           </CardHeader>
           <CardContent className="divide-y">
-            {campaigns.map((c) => (
-              <div
-                key={c.t}
-                className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
-              >
-                <span className="bg-muted text-muted-foreground grid size-9 shrink-0 place-items-center rounded-lg">
-                  <MessagesSquare className="size-4" />
-                </span>
-                <div className="min-w-0 flex-1">
-                  <p className="text-sm font-bold">{c.t}</p>
-                  <p className="text-muted-foreground text-xs">
-                    {c.trigger} · {c.channel} · {c.sends} sends
-                  </p>
-                </div>
-                <Badge className={cn("border-0 font-semibold", c.tone)}>{c.status}</Badge>
-                <Button variant="outline" size="sm" className="shrink-0">
-                  Configure
-                </Button>
-              </div>
-            ))}
+            <QueryState<BdCampaign[]>
+              query={campaignsQuery}
+              error={{ title: "Campaigns unavailable" }}
+              empty={{ title: "No campaigns", description: "Campaigns you create will show here." }}
+              isEmpty={(rows) => rows.length === 0}
+            >
+              {(rows) => (
+                <>
+                  {rows.map((c, i) => (
+                    <div
+                      key={c.id}
+                      className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
+                    >
+                      <span className="bg-muted text-muted-foreground grid size-9 shrink-0 place-items-center rounded-lg">
+                        <MessagesSquare className="size-4" />
+                      </span>
+                      <div className="min-w-0 flex-1">
+                        <p className="text-sm font-bold">{c.title}</p>
+                        <p className="text-muted-foreground text-xs">
+                          {c.trigger} · {c.channel} · {c.sends} sends
+                        </p>
+                      </div>
+                      <Badge className={cn("border-0 font-semibold", tones[i % tones.length])}>
+                        {c.status}
+                      </Badge>
+                      <Button variant="outline" size="sm" className="shrink-0">
+                        Configure
+                      </Button>
+                    </div>
+                  ))}
+                </>
+              )}
+            </QueryState>
           </CardContent>
         </Card>
 

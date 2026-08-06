@@ -18,6 +18,9 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import type { AluMilestone, AluStory } from "@/lib/api/alumni";
+import { useAluMilestones, useAluStories } from "@/lib/query/alumni";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/alumni/stories")({
@@ -33,70 +36,17 @@ export const Route = createFileRoute("/app/alumni/stories")({
   component: AlumniStories,
 });
 
-const stories = [
-  {
-    name: "Tunde Bakare",
-    cohort: "Cohort 12",
-    company: "Paystack",
-    role: "Platform Engineer",
-    excerpt:
-      "Three months after demo day I had a Paystack offer. The mock interviews my mentor ran were harder than the real thing.",
-    initials: "TB",
-    tone: "bg-gradient-learning",
-  },
-  {
-    name: "Chiamaka Eze",
-    cohort: "Cohort 10",
-    company: "Flutterwave",
-    role: "Product Designer",
-    excerpt:
-      "The portfolio sprint review caught everything I'd have missed. My design case study still opens doors two years later.",
-    initials: "CE",
-    tone: "bg-gradient-erp",
-  },
-  {
-    name: "Ibrahim Sule",
-    cohort: "Cohort 11",
-    company: "Andela",
-    role: "DevOps Engineer",
-    excerpt:
-      "Cohort 11's CI/CD module was brutal — and it's exactly why I aced Andela's take-home in one weekend.",
-    initials: "IS",
-    tone: "bg-gradient-services",
-  },
-  {
-    name: "Funke Adeyemi",
-    cohort: "Cohort 9",
-    company: "Interswitch",
-    role: "Backend Engineer",
-    excerpt:
-      "I went from working at a cyber café in Surulere to shipping payment rails. CEA's lab nights were everything.",
-    initials: "FA",
-    tone: "bg-gradient-career",
-  },
-  {
-    name: "Ngozi Umeh",
-    cohort: "Cohort 12",
-    company: "Kuda",
-    role: "Data Analyst",
-    excerpt:
-      "The SQL mid-term humbled me. I retook it, passed, and now I query Kuda's core ledger every single day.",
-    initials: "NU",
-    tone: "bg-gradient-learning",
-  },
-  {
-    name: "Samuel Adebayo",
-    cohort: "Cohort 8",
-    company: "Terragon",
-    role: "Data Engineer",
-    excerpt:
-      "My capstone on streaming ingestion is still in production at Terragon. Yes, the exact one from class.",
-    initials: "SA",
-    tone: "bg-gradient-erp",
-  },
+const milestoneMeta = [
+  { icon: Rss },
+  { icon: BriefcaseBusiness },
+  { icon: Users },
+  { icon: GraduationCap },
 ];
 
 function AlumniStories() {
+  const storiesQuery = useAluStories();
+  const milestonesQuery = useAluMilestones();
+
   return (
     <AppShell
       roleKey="alumni"
@@ -146,40 +96,58 @@ function AlumniStories() {
       </Card>
 
       <div className="mt-5 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
-        {stories.map((s) => (
-          <Card key={s.name} className="bg-card shadow-soft border">
-            <CardContent className="p-5">
-              <div className="flex items-center gap-3">
-                <span
-                  className={cn(
-                    "grid size-10 shrink-0 place-items-center rounded-xl text-xs font-extrabold text-white",
-                    s.tone,
-                  )}
-                >
-                  {s.initials}
-                </span>
-                <div className="min-w-0">
-                  <p className="text-sm font-bold">{s.name}</p>
-                  <p className="text-muted-foreground text-xs">
-                    {s.cohort} · {s.role}
-                  </p>
-                </div>
-              </div>
-              <p className="text-muted-foreground mt-3 flex items-center gap-1.5 text-xs font-semibold">
-                <BriefcaseBusiness className="size-3.5" /> {s.company}
-              </p>
-              <p className="mt-2 text-sm leading-relaxed">{s.excerpt}</p>
-              <div className="mt-4 flex items-center gap-3 border-t pt-3">
-                <Badge className="bg-success/10 text-success border-0 font-semibold">
-                  <BadgeCheck className="mr-1 size-3" /> Verified
-                </Badge>
-                <Button variant="ghost" size="sm" className="text-primary ml-auto font-semibold">
-                  <Heart className="size-3.5" /> Thank
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
-        ))}
+        <QueryState<AluStory[]>
+          query={storiesQuery}
+          error={{ title: "Stories unavailable" }}
+          empty={{
+            title: "No stories yet",
+            description: "Alumni success stories will appear here.",
+          }}
+          isEmpty={(rows) => rows.length === 0}
+        >
+          {(rows) => (
+            <>
+              {rows.map((s) => (
+                <Card key={s.id} className="bg-card shadow-soft border">
+                  <CardContent className="p-5">
+                    <div className="flex items-center gap-3">
+                      <span
+                        className={cn(
+                          "grid size-10 shrink-0 place-items-center rounded-xl text-xs font-extrabold text-white",
+                          s.tone,
+                        )}
+                      >
+                        {s.initials}
+                      </span>
+                      <div className="min-w-0">
+                        <p className="text-sm font-bold">{s.name}</p>
+                        <p className="text-muted-foreground text-xs">
+                          {s.cohort} · {s.role}
+                        </p>
+                      </div>
+                    </div>
+                    <p className="text-muted-foreground mt-3 flex items-center gap-1.5 text-xs font-semibold">
+                      <BriefcaseBusiness className="size-3.5" /> {s.company}
+                    </p>
+                    <p className="mt-2 text-sm leading-relaxed">{s.excerpt}</p>
+                    <div className="mt-4 flex items-center gap-3 border-t pt-3">
+                      <Badge className="bg-success/10 text-success border-0 font-semibold">
+                        <BadgeCheck className="mr-1 size-3" /> Verified
+                      </Badge>
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        className="text-primary ml-auto font-semibold"
+                      >
+                        <Heart className="size-3.5" /> Thank
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </>
+          )}
+        </QueryState>
       </div>
 
       <div className="mt-5 grid gap-5 xl:grid-cols-[1.6fr_1fr]">
@@ -212,19 +180,34 @@ function AlumniStories() {
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-3">
-            {[
-              { t: "Stories published", v: "214", icon: Rss },
-              { t: "Companies represented", v: "86", icon: BriefcaseBusiness },
-              { t: "Readers this quarter", v: "38k", icon: Users },
-              { t: "Graduates hired via stories", v: "47", icon: GraduationCap },
-            ].map((m) => (
-              <div key={m.t} className="flex items-center justify-between rounded-xl border p-3">
-                <span className="flex items-center gap-2 text-sm font-semibold">
-                  <m.icon className="text-muted-foreground size-4" /> {m.t}
-                </span>
-                <span className="font-display text-lg font-extrabold">{m.v}</span>
-              </div>
-            ))}
+            <QueryState<AluMilestone[]>
+              query={milestonesQuery}
+              error={{ title: "Milestones unavailable" }}
+              empty={{
+                title: "No milestones yet",
+                description: "Story milestones will appear here.",
+              }}
+              isEmpty={(rows) => rows.length === 0}
+            >
+              {(rows) => (
+                <>
+                  {rows.map((m, i) => {
+                    const meta = milestoneMeta[i % milestoneMeta.length];
+                    return (
+                      <div
+                        key={m.id}
+                        className="flex items-center justify-between rounded-xl border p-3"
+                      >
+                        <span className="flex items-center gap-2 text-sm font-semibold">
+                          <meta.icon className="text-muted-foreground size-4" /> {m.label}
+                        </span>
+                        <span className="font-display text-lg font-extrabold">{m.value}</span>
+                      </div>
+                    );
+                  })}
+                </>
+              )}
+            </QueryState>
           </CardContent>
         </Card>
       </div>

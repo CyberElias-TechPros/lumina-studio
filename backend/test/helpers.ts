@@ -19,6 +19,11 @@ import mentorDashboardSql from "../migrations/0016_mentor_dashboard.sql?raw";
 import internSql from "../migrations/0017_intern.sql?raw";
 import supplierPartnerSql from "../migrations/0018_supplier_partner.sql?raw";
 import volunteerReceptionistSql from "../migrations/0019_volunteer_receptionist.sql?raw";
+import governmentSql from "../migrations/0020_government.sql?raw";
+import behavioralSql from "../migrations/0021_behavioral.sql?raw";
+import productMarketingSql from "../migrations/0022_product_marketing.sql?raw";
+import alumniSql from "../migrations/0023_alumni.sql?raw";
+import devSql from "../migrations/0024_dev.sql?raw";
 import { seedContentSql } from "../seeds/content";
 import { seedLmsSql } from "../seeds/lms";
 import { seedDomainSql } from "../seeds/domain";
@@ -33,6 +38,11 @@ import { seedMentorDashboardSql } from "../seeds/mentor-dashboard";
 import { seedInternSql } from "../seeds/intern";
 import { seedSupplierPartnerSql } from "../seeds/supplier-partner";
 import { seedVolunteerReceptionistSql } from "../seeds/volunteer-receptionist";
+import { seedGovernmentSql } from "../seeds/government";
+import { seedBehavioralSql } from "../seeds/behavioral";
+import { seedProductMarketingSql } from "../seeds/product-marketing";
+import { seedAlumniSql } from "../seeds/alumni";
+import { seedDevSql } from "../seeds/dev";
 import type { Session } from "../src/schema/api";
 
 export const SESSION_COOKIE = "cea_session";
@@ -71,6 +81,11 @@ export async function setupDb(): Promise<void> {
     internSql,
     supplierPartnerSql,
     volunteerReceptionistSql,
+    governmentSql,
+    behavioralSql,
+    productMarketingSql,
+    alumniSql,
+    devSql,
   ]) {
     const statements = sql
       .split("\n")
@@ -97,6 +112,11 @@ export async function setupDb(): Promise<void> {
   await execStatements(seedInternSql);
   await execStatements(seedSupplierPartnerSql);
   await execStatements(seedVolunteerReceptionistSql);
+  await execStatements(seedGovernmentSql);
+  await execStatements(seedBehavioralSql);
+  await execStatements(seedProductMarketingSql);
+  await execStatements(seedAlumniSql);
+  await execStatements(seedDevSql);
 }
 
 export function api(path: string, init?: RequestInit): Promise<Response> {

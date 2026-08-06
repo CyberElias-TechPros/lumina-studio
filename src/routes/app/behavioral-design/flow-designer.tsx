@@ -13,6 +13,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import { useBdFlows, useBdFlowSteps } from "@/lib/query/behavioral";
+import type { BdFlow, BdFlowStep } from "@/lib/api/behavioral";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/behavioral-design/flow-designer")({
@@ -25,72 +28,25 @@ export const Route = createFileRoute("/app/behavioral-design/flow-designer")({
   component: FlowDesigner,
 });
 
-const flows = [
-  {
-    name: "New learner activation",
-    steps: 6,
-    live: true,
-    conv: "64%",
-    owner: "Ada Obi",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    name: "Week-3 retention rescue",
-    steps: 5,
-    live: false,
-    conv: "41%",
-    owner: "Tunde Bakare",
-    tone: "bg-primary/10 text-primary",
-  },
-  {
-    name: "Referral ask after cert",
-    steps: 4,
-    live: false,
-    conv: "22%",
-    owner: "Chiamaka Eze",
-    tone: "bg-warning/10 text-warning",
-  },
+const flowTones = [
+  "bg-success/10 text-success",
+  "bg-primary/10 text-primary",
+  "bg-warning/10 text-warning",
 ];
 
-const steps = [
-  {
-    s: "1",
-    t: "Enrolment confirmed",
-    d: "Trigger · 5 min delay",
-    type: "Trigger",
-    tone: "bg-primary/10 text-primary",
-  },
-  {
-    s: "2",
-    t: "Welcome message",
-    d: "WhatsApp + email",
-    type: "Send",
-    tone: "bg-learning/10 text-learning",
-  },
-  {
-    s: "3",
-    t: "Set weekly goal",
-    d: "In-app prompt · 3 options",
-    type: "Choice",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    s: "4",
-    t: "First lesson complete?",
-    d: "Branch on completion",
-    type: "Branch",
-    tone: "bg-warning/10 text-warning",
-  },
-  {
-    s: "5",
-    t: "Streak nudge",
-    d: "If not started · 6pm",
-    type: "Nudge",
-    tone: "bg-error/10 text-error",
-  },
+const stepTypes = ["Trigger", "Send", "Choice", "Branch", "Nudge"];
+const stepTones = [
+  "bg-primary/10 text-primary",
+  "bg-learning/10 text-learning",
+  "bg-success/10 text-success",
+  "bg-warning/10 text-warning",
+  "bg-error/10 text-error",
 ];
 
 function FlowDesigner() {
+  const flowsQuery = useBdFlows();
+  const stepsQuery = useBdFlowSteps();
+
   return (
     <AppShell
       roleKey="behavioral-design"
@@ -163,22 +119,35 @@ function FlowDesigner() {
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-3">
-            {flows.map((f) => (
-              <div key={f.name} className="flex items-center justify-between rounded-xl border p-3">
-                <div className="min-w-0">
-                  <p className="text-sm font-semibold">{f.name}</p>
-                  <p className="text-muted-foreground text-xs">
-                    {f.steps} steps · {f.owner}
-                  </p>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="text-success text-xs font-bold">{f.conv}</span>
-                  <Badge className={cn("border-0 font-semibold", f.tone)}>
-                    {f.live ? "Live" : "Draft"}
-                  </Badge>
-                </div>
-              </div>
-            ))}
+            <QueryState<BdFlow[]>
+              query={flowsQuery}
+              error={{ title: "Flows unavailable" }}
+              empty={{ title: "No flows", description: "Flows you build will show here." }}
+              isEmpty={(rows) => rows.length === 0}
+            >
+              {(rows) => (
+                <>
+                  {rows.map((f, i) => (
+                    <div
+                      key={f.id}
+                      className="flex items-center justify-between rounded-xl border p-3"
+                    >
+                      <div className="min-w-0">
+                        <p className="text-sm font-semibold">{f.name}</p>
+                        <p className="text-muted-foreground text-xs">{f.stage} steps</p>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <Badge
+                          className={cn("border-0 font-semibold", flowTones[i % flowTones.length])}
+                        >
+                          {f.status}
+                        </Badge>
+                      </div>
+                    </div>
+                  ))}
+                </>
+              )}
+            </QueryState>
             <Button
               size="sm"
               className="bg-gradient-brand shadow-glow w-full border-0 font-semibold"
@@ -195,39 +164,51 @@ function FlowDesigner() {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="space-y-2">
-              {steps.map((st, i) => (
-                <div key={st.s}>
-                  <div
-                    className={cn(
-                      "flex items-center gap-3 rounded-xl border p-3",
-                      i === 3 && "border-dashed",
-                    )}
-                  >
-                    <span
-                      className={cn(
-                        "grid size-8 place-items-center rounded-lg text-xs font-extrabold",
-                        st.tone,
-                      )}
-                    >
-                      {st.s}
-                    </span>
-                    <div className="min-w-0 flex-1">
-                      <p className="text-sm font-semibold">{st.t}</p>
-                      <p className="text-muted-foreground text-xs">{st.d}</p>
-                    </div>
-                    <Badge variant="secondary" className="font-semibold">
-                      {st.type}
-                    </Badge>
+            <QueryState<BdFlowStep[]>
+              query={stepsQuery}
+              error={{ title: "Steps unavailable" }}
+              empty={{ title: "No steps", description: "Add steps to this flow to build it out." }}
+              isEmpty={(rows) => rows.length === 0}
+            >
+              {(rows) => {
+                const ordered = [...rows].sort((a, b) => a.stepNo - b.stepNo);
+                return (
+                  <div className="space-y-2">
+                    {ordered.map((st, i) => (
+                      <div key={st.id}>
+                        <div
+                          className={cn(
+                            "flex items-center gap-3 rounded-xl border p-3",
+                            i === 3 && "border-dashed",
+                          )}
+                        >
+                          <span
+                            className={cn(
+                              "grid size-8 place-items-center rounded-lg text-xs font-extrabold",
+                              stepTones[i % stepTones.length],
+                            )}
+                          >
+                            {st.stepNo}
+                          </span>
+                          <div className="min-w-0 flex-1">
+                            <p className="text-sm font-semibold">{st.title}</p>
+                            <p className="text-muted-foreground text-xs">{st.subtitle}</p>
+                          </div>
+                          <Badge variant="secondary" className="font-semibold">
+                            {stepTypes[(st.stepNo - 1) % stepTypes.length]}
+                          </Badge>
+                        </div>
+                        {i < ordered.length - 1 && (
+                          <div className="flex justify-center py-1">
+                            <ArrowDown className="text-muted-foreground/60 size-4" />
+                          </div>
+                        )}
+                      </div>
+                    ))}
                   </div>
-                  {i < steps.length - 1 && (
-                    <div className="flex justify-center py-1">
-                      <ArrowDown className="text-muted-foreground/60 size-4" />
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
+                );
+              }}
+            </QueryState>
           </CardContent>
         </Card>
       </div>

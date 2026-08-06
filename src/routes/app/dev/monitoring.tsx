@@ -4,6 +4,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import { useDevErrors } from "@/lib/query/dev";
+import type { DevError } from "@/lib/api/dev";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/dev/monitoring")({
@@ -16,28 +19,15 @@ export const Route = createFileRoute("/app/dev/monitoring")({
   component: DevMonitoring,
 });
 
-const errors = [
-  {
-    e: "API · 500 on /invoices",
-    c: "2 in 24h",
-    s: "New",
-    tone: "bg-destructive/10 text-destructive",
-  },
-  {
-    e: "Web · JS error on dashboard",
-    c: "1.2% sessions",
-    s: "Investigating",
-    tone: "bg-warning/10 text-warning",
-  },
-  {
-    e: "Worker · timeout in email queue",
-    c: "3 in 24h",
-    s: "Fixed",
-    tone: "bg-success/10 text-success",
-  },
-];
+function errorTone(status: string) {
+  if (/fixed|resolved|success/i.test(status)) return "bg-success/10 text-success";
+  if (/new|critical|urgent/i.test(status)) return "bg-destructive/10 text-destructive";
+  return "bg-warning/10 text-warning";
+}
 
 function DevMonitoring() {
+  const errorsQuery = useDevErrors();
+
   return (
     <AppShell
       roleKey="instructor"
@@ -109,18 +99,34 @@ function DevMonitoring() {
           </CardTitle>
         </CardHeader>
         <CardContent className="divide-y">
-          {errors.map((e) => (
-            <div key={e.e} className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0">
-              <div className="min-w-0 flex-1">
-                <p className="font-mono text-xs font-bold">{e.e}</p>
-                <p className="text-muted-foreground text-xs">{e.c}</p>
-              </div>
-              <Badge className={cn("border-0 font-semibold", e.tone)}>{e.s}</Badge>
-              <Button variant="outline" size="sm" className="shrink-0 font-semibold">
-                Trace
-              </Button>
-            </div>
-          ))}
+          <QueryState<DevError[]>
+            query={errorsQuery}
+            error={{ title: "Errors unavailable" }}
+            empty={{ title: "No errors", description: "Recent errors will show here." }}
+            isEmpty={(rows) => rows.length === 0}
+          >
+            {(rows) => (
+              <>
+                {rows.map((e) => (
+                  <div
+                    key={e.id}
+                    className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
+                  >
+                    <div className="min-w-0 flex-1">
+                      <p className="font-mono text-xs font-bold">{e.title}</p>
+                      <p className="text-muted-foreground text-xs">{e.countLabel}</p>
+                    </div>
+                    <Badge className={cn("border-0 font-semibold", errorTone(e.status))}>
+                      {e.status}
+                    </Badge>
+                    <Button variant="outline" size="sm" className="shrink-0 font-semibold">
+                      Trace
+                    </Button>
+                  </div>
+                ))}
+              </>
+            )}
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>

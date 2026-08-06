@@ -5,6 +5,9 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import { useBdStages } from "@/lib/query/behavioral";
+import type { BdStage } from "@/lib/api/behavioral";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/behavioral-design/funnels")({
@@ -17,50 +20,17 @@ export const Route = createFileRoute("/app/behavioral-design/funnels")({
   component: FunnelAnalysis,
 });
 
-const stages = [
-  {
-    t: "Signup",
-    users: "8,400",
-    conv: "100%",
-    drop: "—",
-    pct: 100,
-    tone: "bg-primary/10 text-primary",
-  },
-  {
-    t: "First lesson started",
-    users: "5,376",
-    conv: "64%",
-    drop: "−36%",
-    pct: 64,
-    tone: "bg-learning/10 text-learning",
-  },
-  {
-    t: "Week-2 active",
-    users: "3,864",
-    conv: "46%",
-    drop: "−18%",
-    pct: 46,
-    tone: "bg-success/10 text-success",
-  },
-  {
-    t: "Week-4 still enrolled",
-    users: "3,024",
-    conv: "36%",
-    drop: "−10%",
-    pct: 36,
-    tone: "bg-warning/10 text-warning",
-  },
-  {
-    t: "First assessment passed",
-    users: "2,352",
-    conv: "28%",
-    drop: "−8%",
-    pct: 28,
-    tone: "bg-error/10 text-error",
-  },
+const tones = [
+  "bg-primary/10 text-primary",
+  "bg-learning/10 text-learning",
+  "bg-success/10 text-success",
+  "bg-warning/10 text-warning",
+  "bg-error/10 text-error",
 ];
 
 function FunnelAnalysis() {
+  const stagesQuery = useBdStages();
+
   return (
     <AppShell
       roleKey="behavioral-design"
@@ -134,17 +104,36 @@ function FunnelAnalysis() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-5">
-          {stages.map((s) => (
-            <div key={s.t}>
-              <div className="flex flex-wrap items-center gap-2 text-xs font-semibold">
-                <span className="text-sm font-bold">{s.t}</span>
-                <span className="text-muted-foreground">{s.users} learners</span>
-                <span className="text-muted-foreground ml-auto">{s.drop}</span>
-                <Badge className={cn("border-0 font-semibold", s.tone)}>{s.conv}</Badge>
-              </div>
-              <Progress value={s.pct} className="mt-1.5 h-2.5" />
-            </div>
-          ))}
+          <QueryState<BdStage[]>
+            query={stagesQuery}
+            error={{ title: "Funnel unavailable" }}
+            empty={{ title: "No stages", description: "Funnel stages will show here." }}
+            isEmpty={(rows) => rows.length === 0}
+          >
+            {(rows) => (
+              <>
+                {rows.map((s, i) => {
+                  const prev = i > 0 ? rows[i - 1].percent : 100;
+                  const drop = i === 0 ? "—" : `−${prev - s.percent}%`;
+                  return (
+                    <div key={s.id}>
+                      <div className="flex flex-wrap items-center gap-2 text-xs font-semibold">
+                        <span className="text-sm font-bold">{s.name}</span>
+                        <span className="text-muted-foreground">
+                          {s.users.toLocaleString()} learners
+                        </span>
+                        <span className="text-muted-foreground ml-auto">{drop}</span>
+                        <Badge className={cn("border-0 font-semibold", tones[i % tones.length])}>
+                          {s.percent}%
+                        </Badge>
+                      </div>
+                      <Progress value={s.percent} className="mt-1.5 h-2.5" />
+                    </div>
+                  );
+                })}
+              </>
+            )}
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>

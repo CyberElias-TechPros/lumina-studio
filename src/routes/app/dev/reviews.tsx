@@ -4,6 +4,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import { useDevReviews } from "@/lib/query/dev";
+import type { DevReview } from "@/lib/api/dev";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/dev/reviews")({
@@ -16,28 +19,15 @@ export const Route = createFileRoute("/app/dev/reviews")({
   component: DevReviews,
 });
 
-const reviews = [
-  {
-    r: "PR #142 · invoice webhooks",
-    b: "2 comments · waiting on author",
-    s: "Changes",
-    tone: "bg-warning/10 text-warning",
-  },
-  {
-    r: "PR #141 · portal nav caching",
-    b: "Approved by Segun A.",
-    s: "Approved",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    r: "PR #139 · auth refresh tokens",
-    b: "No comments yet",
-    s: "Reviewing",
-    tone: "bg-primary/10 text-primary",
-  },
-];
+function reviewTone(status: string) {
+  if (/approv|success/i.test(status)) return "bg-success/10 text-success";
+  if (/change|reject|issue/i.test(status)) return "bg-warning/10 text-warning";
+  return "bg-primary/10 text-primary";
+}
 
 function DevReviews() {
+  const reviewsQuery = useDevReviews();
+
   return (
     <AppShell
       roleKey="instructor"
@@ -109,18 +99,34 @@ function DevReviews() {
           </CardTitle>
         </CardHeader>
         <CardContent className="divide-y">
-          {reviews.map((r) => (
-            <div key={r.r} className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0">
-              <div className="min-w-0 flex-1">
-                <p className="font-mono text-sm font-bold">{r.r}</p>
-                <p className="text-muted-foreground text-xs">{r.b}</p>
-              </div>
-              <Badge className={cn("border-0 font-semibold", r.tone)}>{r.s}</Badge>
-              <Button variant="outline" size="sm" className="shrink-0 font-semibold">
-                Review
-              </Button>
-            </div>
-          ))}
+          <QueryState<DevReview[]>
+            query={reviewsQuery}
+            error={{ title: "Reviews unavailable" }}
+            empty={{ title: "No reviews", description: "Review requests will show here." }}
+            isEmpty={(rows) => rows.length === 0}
+          >
+            {(rows) => (
+              <>
+                {rows.map((r) => (
+                  <div
+                    key={r.id}
+                    className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
+                  >
+                    <div className="min-w-0 flex-1">
+                      <p className="font-mono text-sm font-bold">{r.title}</p>
+                      <p className="text-muted-foreground text-xs">{r.detail}</p>
+                    </div>
+                    <Badge className={cn("border-0 font-semibold", reviewTone(r.status))}>
+                      {r.status}
+                    </Badge>
+                    <Button variant="outline" size="sm" className="shrink-0 font-semibold">
+                      Review
+                    </Button>
+                  </div>
+                ))}
+              </>
+            )}
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>

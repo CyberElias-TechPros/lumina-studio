@@ -32,6 +32,9 @@ Backend coverage = routes registered in `backend/src/lib/rbac.ts` (the full `/v1
 | 2026-08-06 | **Tier 3 volunteer + receptionist suites shipped** — backend: migration `0019_volunteer_receptionist.sql` (vol_opportunities, vol_signups, vol_metrics, vol_hours, vol_groups, vol_certs, vol_months + rec_appointments, rec_queue, rec_inside, rec_deliveries, rec_inquiries, rec_calls, rec_staff, rec_tasks, rec_handover + indexes), seeds `volunteer-receptionist-data.sql`/`volunteer-receptionist.ts`, `backend/src/routes/volunteerReceptionist.ts` (exported `volunteerDashboard` + `receptionistDashboard`: 16 paginated lists), RBAC `roles: ["admin","instructor"]` (receptionist) + `["admin","instructor","student"]` (volunteer, mirrors intern), registered in index.ts at `/v1/volunteer-dashboard` + `/v1/receptionist-dashboard`; `backend/test/tier3-volunteer-receptionist.test.ts` 26/26 (403 for mentor on volunteer lists + student on receptionist lists, all 16 lists, camelCase + numeric assertions, 404 unknown); full suite 364 passed (14 miniflare-pool timeouts under parallel load — each file green in isolation; 4 pre-existing ai.test network timeouts). Frontend: `api/volunteerReceptionist` + `query/volunteerReceptionist` (16 collections) + mock handlers (mirrors seeds, ids `vol-*`/`rec-*`); all 6 `app/volunteer/*` + 8 `app/receptionist/*` pages wired — volunteer: opportunities (slots filled + high-priority badges), my-volunteering (sign-up history + completed/upcoming), impact (metric cards + monthly hours bars), hours (clock-in card + entries with approved/pending), community (groups + members/online), certificates (earned list); receptionist: appointments (schedule + arrived/confirmed/available statuses), check-in (waiting queue), check-out (occupancy list), deliveries (carrier/item/status), directory (staff + extensions), inquiries (stages), phone-log (answered/missed), tasks (checklist + handover notes). Typecheck + eslint + build green. |
 
 | 2026-08-06 | **Tier 3 volunteer + receptionist deployed** — prod D1 migration `0019` + `volunteer-receptionist-data.sql` seeds applied (16 tables, 135 rows written); worker redeployed (version `1d83bee9-bbb1-4d19-8f8d-eb7bf325e187`); frontend prod build deployed to `cea-os.vercel.app` (deployment `48f3TnzQA7Vigi4RK6AZ3BjhpDML`). Smoke: both dashboards 401 unauthenticated; admin sign-in 200; all 16 lists 200 with camelCase + numeric fields (`slotsFilled`, `pct`, `done`) + `nextCursor`; unknown id 404; student 403 on receptionist + 200 on volunteer (RBAC split verified); all 14 pages 200 on prod. Commits `09aa9ee` pushed to main. |
+| 2026-08-06 | **Tier 3 government suite shipped** — backend: migration `0020_government.sql` (govt_overview incl. KPI metric/value_label/delta, govt_calendar, govt_changes, govt_docs, govt_facts, govt_reports, govt_threads, govt_checks, govt_audits, govt_filings, govt_courses + indexes), seeds `government-data.sql`/`government.ts`, `backend/src/routes/governmentDashboard.ts` (11 paginated lists), RBAC `roles: ["admin","instructor"]`, registered in index.ts at `/v1/government-dashboard`; `backend/test/tier3-government.test.ts` 17/17 (403 for student, all 11 lists, KPI shape metric/valueLabel/delta, calendar statuses, filings Filed/Draft, threads fromLabel/timeLabel); full suite 473 passed (3 pre-existing ai.test network timeouts). Frontend: `api/government` + `query/government` (11 collections) + mock handlers (mirrors seeds, ids `govt-*`); all 11 `app/government/*` pages wired — index (live KPI grid + static module cards), calendar (deadlines), changelog (regulatory changes), documents (policy library), institution (facts), reports (filings-ready exports), filings (Filed/Draft statuses), audit (audits + findings), messaging (threads), integrity (checks), training (courses). Typecheck + eslint + build green. |
+| 2026-08-06 | **Tier 3 behavioral-design + product-marketing suites shipped** — backend: migration `0021_behavioral.sql` (bd_hub KPI, bd_interventions, bd_flows, bd_flow_steps, bd_campaigns, bd_tests, bd_results, bd_funnel_stages users+percent, bd_segments, bd_programs, bd_checkins) + `0022_product_marketing.sql` (pm_hub KPI, pm_phases, pm_tasks, pm_gates, pm_statements, pm_messagehouse, pm_competitors, pm_features, pm_launches, pm_readiness, pm_studies, pm_findings, pm_matrix, pm_briefs, pm_months — 16 tables), seeds `behavioral-data.sql`/`behavioral.ts` + `product-marketing-data.sql`/`product-marketing.ts`, `backend/src/routes/behavioralDashboard.ts` (11 lists) + `productMarketingDashboard.ts` (15 lists), RBAC `roles: ["admin","instructor","student"]` both, registered at `/v1/behavioral-dashboard` + `/v1/product-marketing-dashboard`; `backend/test/tier3-behavioral.test.ts` 17/17 + `tier3-product-marketing.test.ts` 22/22 (mentor 403, student allowed, all lists, funnel users/percent numeric, campaign channel/sends/optOut, feature flags 0/1, months roi/winRate/pct). Frontend: `api/behavioral` + `query/behavioral` + `api/productMarketing` + `query/productMarketing` + mock handlers (mirrors seeds, ids `bd-*`/`pm-*`); all 9 `app/behavioral-design/*` pages wired (index KPIs, interventions with testsRun, flow-designer flows+steps canvas, nudge-campaigns, ab-tests, analytics results, funnels, segments, habits programs+checkins) + all 9 `app/product-marketing/*` pages wired (index KPIs, launch-calendar, gtm phases/tasks/gates, positioning statements+messagehouse, messaging matrix, competitive competitors+features, research studies+findings, analytics months, briefs). Typecheck + eslint + build green. |
+| 2026-08-06 | **Tier 3 alumni + dev suites shipped** — backend: migration `0023_alumni.sql` (alu_hub KPI, alu_events, alu_members, alu_stories, alu_milestones, alu_jobs, alu_achievements, alu_skills, alu_commitments, alu_ways, alu_impact) + `0024_dev.sql` (dev_hub KPI, dev_endpoints, dev_deploys, dev_prs, dev_errors, dev_tasks, dev_deps, dev_reviews, dev_vars, dev_queues, dev_docs), seeds `alumni-data.sql`/`alumni.ts` + `dev-data.sql`/`dev.ts`, `backend/src/routes/alumniDashboard.ts` (11 lists, RBAC `["admin","instructor","student","alumni"]`) + `devDashboard.ts` (11 lists, RBAC `["admin","instructor","student"]`), registered at `/v1/alumni-dashboard` + `/v1/dev-dashboard`; `backend/test/tier3-alumni.test.ts` 19/19 + `tier3-dev.test.ts` 19/19 (mentor 403, student allowed, all lists, camelCase + numeric fields, stories tone/initials, jobs current flag). Frontend: `api/alumni` + `query/alumni` + `api/dev` + `query/dev` + mock handlers (mirrors seeds, ids `alu-*`/`dev-*`); all 9 `app/alumni/*` pages wired (hub KPIs, events, network directory, stories + milestones, give-back ways+impact, mentorship commitments, profile jobs/achievements/skills — jobs/find already live) + all 12 `app/dev/*` pages wired (index KPIs, api-playground endpoints, deployments, git PRs, monitoring errors, tasks, dependencies, reviews, env vars, queues, docs — feature-flags already live). Typecheck + eslint + build green. |
 
 ---
 
@@ -40,10 +43,10 @@ Backend coverage = routes registered in `backend/src/lib/rbac.ts` (the full `/v1
 | Metric | Value |
 | --- | --- |
 | App pages under `src/routes/app/` | **283** |
-| Wired to live backend | **~143** |
-| Static dashboards (placeholder) | **~140** |
-| Backend route suites live | **~25 domains + Tier 2/3: parent, mentor, applications admin, payroll run, ops, it, mentor-dashboard, intern-dashboard, supplier-dashboard, partner-dashboard, volunteer-dashboard, receptionist-dashboard** (rbac.ts) |
-| Backend suites NOT built yet | **~6 domains** (government, behavioral, product-marketing, dev/CI, alumni-net) |
+| Wired to live backend | **~190** |
+| Static dashboards (placeholder) | **~93** |
+| Backend route suites live | **~30 domains + Tier 2/3: parent, mentor, applications admin, payroll run, ops, it, mentor-dashboard, intern-dashboard, supplier-dashboard, partner-dashboard, volunteer-dashboard, receptionist-dashboard, government-dashboard, behavioral-dashboard, product-marketing-dashboard, alumni-dashboard, dev-dashboard** (rbac.ts) |
+| Backend suites NOT built yet | **none** (growth/ngo/conversion-copy/department pages remain static — no dedicated suite) |
 | Public/locale data | `jobs/gigs/events/caseStudies/testimonials` seeded in `src/data/site.ts` ✅ |
 
 ---
@@ -55,19 +58,19 @@ Backend coverage = routes registered in `backend/src/lib/rbac.ts` (the full `/v1
 | admin | 12 | 5 | 7 | `admin/*` (users, accounts, audit-log, flags) — config/security/roles live, monitoring/api-keys static (no infra endpoints) |
 | accountant | 10 | 10 | 0 | `finance/*` + `hr/payroll-changes` + `admin/audit-log` + `payments/history` (banking = payment ledger + batches) ✅ |
 | admissions | 9 | 7 | 2 | `applications` admin list + stats + pipeline PATCH ✅ (hub, applications, detail, review, interviews, enrollment, reports); documents/communication static (no source) |
-| alumni | 8 | 2 | 6 | `recruitment/*` for jobs ✅; `mentor/profiles`+`match` via `find` (Find a mentor) ✅; network/events/stories none |
+| alumni | 9 | 9 | 0 | `/v1/alumni-dashboard/*` (hub, events, members, stories, milestones, jobs, achievements, skills, commitments, ways, impact) ✅ + `recruitment/*` jobs + `mentor/profiles`+`match` via `find` |
 | assessments | 2 | 2 | 0 | `/v1/assessments/*` ✅ |
 | assignments | 2 | 2 | 0 | `/v1/assignments/*` ✅ |
-| behavioral-design | 9 | 0 | 9 | none |
+| behavioral-design | 9 | 9 | 0 | `/v1/behavioral-dashboard/*` (overview, interventions, flows, flow-steps, campaigns, tests, results, stages, segments, programs, checkins) ✅ |
 | client | 8 | 2 | 6 | messages + shared client lib; contracts/documents/support missing |
 | conversion-copy | 8 | 0 | 8 | none |
 | department | 7 | 0 | 7 | none |
 | design | 10 | 10 | 0 | `/v1/design/*` ✅ |
-| dev | 12 | 1 | 11 | `flags` ✅; CI/CD/dev tooling none |
+| dev | 12 | 12 | 0 | `/v1/dev-dashboard/*` (overview, endpoints, deploys, prs, errors, tasks, deps, reviews, vars, queues, docs) ✅ + `flags` ✅ |
 | director | 9 | 6 | 3 | composed reads: finance/invoice + hr/employee + recruitment + marketing + courses (command-center, finance, hr, marketing, academic, approvals); operations/okrs/reports static (no backend source) |
 | employer | 8 | 8 | 0 | `recruitment/*` ✅ (hub, jobs, talent, pipeline, interviews, analytics, brand, feedback) |
 | finance | 1 | 1 | 0 | `/v1/finance` ✅ |
-| government | 11 | 0 | 11 | none |
+| government | 11 | 11 | 0 | `/v1/government-dashboard/*` (overview, calendar, changes, documents, facts, reports, threads, checks, audits, filings, courses) ✅ |
 | growth | 8 | 0 | 8 | none |
 | hr | 10 | 8 | 2 | `/v1/hr/*` + `recruitment/postings` ✅ (hub, employees, leave, payroll + attendance/onboarding/performance/reports) |
 | instructor | 13 | 6 | 7 | `/v1/instructor/*` (gradebook, courses, assignments, analytics, attendance); calendar/rest static |
@@ -82,7 +85,7 @@ Backend coverage = routes registered in `backend/src/lib/rbac.ts` (the full `/v1
 | ops | 7 | 7 | 0 | `/v1/ops/*` (inventory, purchase-orders, branches, rooms, maintenance, vendors, contracts, tasks, workflows) ✅ |
 | parent | 8 | 6 | 2 | parent-scoped reads `GET /v1/parent/students(:id)` + `:id/finance` + `:id/attendance` ✅ (index, overview, grades, finance, attendance, reports wired); communication/invitation static |
 | partner | 7 | 7 | 0 | `/v1/partner-dashboard/*` (agreements, collaborations, referrals, resources, reports, conversations + threads) ✅ |
-| product-marketing | 9 | 0 | 9 | none |
+| product-marketing | 9 | 9 | 0 | `/v1/product-marketing-dashboard/*` (overview, phases, tasks, gates, statements, messagehouse, competitors, features, launches, readiness, studies, findings, matrix, briefs, months) ✅ |
 | receptionist | 8 | 8 | 0 | `/v1/receptionist-dashboard/*` (appointments, queue, inside, deliveries, inquiries, calls, staff, tasks, handover) ✅ |
 | supplier | 7 | 7 | 0 | `/v1/supplier-dashboard/*` (orders, deliveries, invoices, performance, certs, conversations + threads) ✅ |
 | volunteer | 6 | 6 | 0 | `/v1/volunteer-dashboard/*` (opportunities, signups, impact, hours, groups, certs, months) ✅ |
@@ -130,10 +133,10 @@ Recommended order (existing `/v1` naming style):
 4. `intern` (tasks, timesheet→payroll hookup, evaluation) — **✅ done 2026-08-06 (`/v1/intern-dashboard/*`, migration 0017, seeds, 8/8 pages wired)**
 5. `supplier` + `partner` (POs, agreements, referrals) — **✅ done 2026-08-06 (`/v1/supplier-dashboard/*` + `/v1/partner-dashboard/*`, migration 0018, seeds, 14/14 pages wired)**
 6. `volunteer` (opportunities, hours, impact) — **✔ done 2026-08-06 (`/v1/volunteer-dashboard/*` + `/v1/receptionist-dashboard/*`, migration 0019, seeds, 14/14 pages wired)**
-7. `government` (filings, training, integrity) — legal-compliance
-8. `behavioral-design` + `growth` + `product-marketing` (experiments/AB) — candidate builds against `marketing` when landing
-9. `alumni` (network, stories, give‑back) — community-flavored
-10. `dev` (deployments/CI hooks, api‑playground) — tools, low ROi
+7. `government` (filings, training, integrity) — legal-compliance — **✅ done 2026-08-06 (`/v1/government-dashboard/*`, migrations 0020–0024, seeds, 47/47 pages wired across items 7–10)**
+8. `behavioral-design` + `growth` + `product-marketing` (experiments/AB) — **✅ done 2026-08-06 for behavioral-design + product-marketing (`/v1/behavioral-dashboard/*` + `/v1/product-marketing-dashboard/*`); `growth` pages remain static (no dedicated suite)**
+9. `alumni` (network, stories, give‑back) — community-flavored — **✅ done 2026-08-06 (`/v1/alumni-dashboard/*`, 9/9 pages wired)**
+10. `dev` (deployments/CI hooks, api‑playground) — tools, low ROi — **✅ done 2026-08-06 (`/v1/dev-dashboard/*`, 12/12 pages wired)**
 
 ### Existing live domains that should stay (do NOT rebuild):
 auth, courses/learn, assignments, assessments, students gradebook, messages/threads, notifications/push, calendar, library/catalog, certificates, payments/checkout, finance, hr employees/leave/payroll, instructor portal, admin/users, recruitment, marketing, design, localization, realtime chat, live classes, uploads, ai.

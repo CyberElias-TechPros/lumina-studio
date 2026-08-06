@@ -16,6 +16,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import { usePmOverview } from "@/lib/query/productMarketing";
+import type { PmKpi } from "@/lib/api/productMarketing";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/product-marketing/")({
@@ -90,7 +93,16 @@ const screens = [
   },
 ];
 
+const kpiMeta = [
+  { icon: Rocket, tone: "bg-primary/10 text-primary" },
+  { icon: Target, tone: "bg-learning/10 text-learning" },
+  { icon: Sword, tone: "bg-success/10 text-success" },
+  { icon: Tags, tone: "bg-warning/10 text-warning" },
+];
+
 function ProductMarketingHub() {
+  const overviewQuery = usePmOverview();
+
   return (
     <AppShell
       roleKey="product-marketing"
@@ -108,51 +120,43 @@ function ProductMarketingHub() {
       }
     >
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-        {[
-          {
-            label: "Launches in flight",
-            value: "3",
-            delta: "1 live now",
-            icon: Rocket,
-            tone: "bg-primary/10 text-primary",
-          },
-          {
-            label: "Positioning docs",
-            value: "7",
-            delta: "2 in review",
-            icon: Target,
-            tone: "bg-learning/10 text-learning",
-          },
-          {
-            label: "Competitors tracked",
-            value: "9",
-            delta: "2 new this qtr",
-            icon: Sword,
-            tone: "bg-success/10 text-success",
-          },
-          {
-            label: "Win rate",
-            value: "68%",
-            delta: "+5 pts QoQ",
-            icon: Tags,
-            tone: "bg-warning/10 text-warning",
-          },
-        ].map((k) => (
-          <Card key={k.label} className="bg-card shadow-soft border">
-            <CardContent className="p-5">
-              <div className="flex items-center justify-between">
-                <p className="text-muted-foreground text-xs font-bold tracking-wide uppercase">
-                  {k.label}
-                </p>
-                <span className={cn("grid size-8 place-items-center rounded-lg", k.tone)}>
-                  <k.icon className="size-4" />
-                </span>
-              </div>
-              <p className="font-display mt-3 text-2xl font-extrabold">{k.value}</p>
-              <p className="text-muted-foreground mt-0.5 text-xs font-semibold">{k.delta}</p>
-            </CardContent>
-          </Card>
-        ))}
+        <QueryState<PmKpi[]>
+          query={overviewQuery}
+          error={{ title: "Metrics unavailable" }}
+          empty={{
+            title: "No metrics yet",
+            description: "Overview KPIs will appear here.",
+          }}
+          isEmpty={(rows) => rows.length === 0}
+        >
+          {(rows) => (
+            <>
+              {rows.map((k, i) => {
+                const meta = kpiMeta[i % kpiMeta.length];
+                return (
+                  <Card key={k.id} className="bg-card shadow-soft border">
+                    <CardContent className="p-5">
+                      <div className="flex items-center justify-between">
+                        <p className="text-muted-foreground text-xs font-bold tracking-wide uppercase">
+                          {k.metric}
+                        </p>
+                        <span
+                          className={cn("grid size-8 place-items-center rounded-lg", meta.tone)}
+                        >
+                          <meta.icon className="size-4" />
+                        </span>
+                      </div>
+                      <p className="font-display mt-3 text-2xl font-extrabold">{k.valueLabel}</p>
+                      <p className="text-muted-foreground mt-0.5 text-xs font-semibold">
+                        {k.delta}
+                      </p>
+                    </CardContent>
+                  </Card>
+                );
+              })}
+            </>
+          )}
+        </QueryState>
       </div>
 
       <Card className="bg-card mt-5 shadow-soft border">

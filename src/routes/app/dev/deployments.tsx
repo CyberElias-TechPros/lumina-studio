@@ -4,6 +4,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import { useDevDeploys } from "@/lib/query/dev";
+import type { DevDeploy } from "@/lib/api/dev";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/dev/deployments")({
@@ -16,28 +19,17 @@ export const Route = createFileRoute("/app/dev/deployments")({
   component: DevDeployments,
 });
 
-const deploys = [
-  {
-    d: "v1.42.0 · prod",
-    s: "Live",
-    t: "Aug 1 · 06:12 · 4m 12s",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    d: "v1.41.2 · prod",
-    s: "Live",
-    t: "Jul 28 · 05:58 · 3m 48s",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    d: "v1.41.1 · staging",
-    s: "Rolled back",
-    t: "Jul 27 · 14:20",
-    tone: "bg-warning/10 text-warning",
-  },
-];
+function deployTone(status: string) {
+  if (/rollback|failed|fail|error/i.test(status)) return "bg-warning/10 text-warning";
+  if (/live|success|healthy|deployed|passed/i.test(status)) return "bg-success/10 text-success";
+  if (/progress|running|pending|deploying|building/i.test(status))
+    return "bg-primary/10 text-primary";
+  return "bg-muted text-muted-foreground";
+}
 
 function DevDeployments() {
+  const deploysQuery = useDevDeploys();
+
   return (
     <AppShell
       roleKey="instructor"
@@ -109,18 +101,34 @@ function DevDeployments() {
           </CardTitle>
         </CardHeader>
         <CardContent className="divide-y">
-          {deploys.map((d) => (
-            <div key={d.d} className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0">
-              <div className="min-w-0 flex-1">
-                <p className="font-mono text-sm font-bold">{d.d}</p>
-                <p className="text-muted-foreground text-xs">{d.t}</p>
-              </div>
-              <Badge className={cn("border-0 font-semibold", d.tone)}>{d.s}</Badge>
-              <Button variant="outline" size="sm" className="shrink-0 font-semibold">
-                Details
-              </Button>
-            </div>
-          ))}
+          <QueryState<DevDeploy[]>
+            query={deploysQuery}
+            error={{ title: "Deployments unavailable" }}
+            empty={{ title: "No deployments", description: "Deployed releases will show here." }}
+            isEmpty={(rows) => rows.length === 0}
+          >
+            {(rows) => (
+              <>
+                {rows.map((d) => (
+                  <div
+                    key={d.id}
+                    className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
+                  >
+                    <div className="min-w-0 flex-1">
+                      <p className="font-mono text-sm font-bold">{d.versionLabel}</p>
+                      <p className="text-muted-foreground text-xs">{d.timeLabel}</p>
+                    </div>
+                    <Badge className={cn("border-0 font-semibold", deployTone(d.status))}>
+                      {d.status}
+                    </Badge>
+                    <Button variant="outline" size="sm" className="shrink-0 font-semibold">
+                      Details
+                    </Button>
+                  </div>
+                ))}
+              </>
+            )}
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>

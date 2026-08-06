@@ -4,6 +4,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import { useDevEndpoints } from "@/lib/query/dev";
+import type { DevEndpoint } from "@/lib/api/dev";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/dev/api-playground")({
@@ -16,13 +19,15 @@ export const Route = createFileRoute("/app/dev/api-playground")({
   component: DevApiPlayground,
 });
 
-const endpoints = [
-  { e: "GET /api/v1/students", d: "List students", tone: "bg-primary/10 text-primary" },
-  { e: "POST /api/v1/applications", d: "Create application", tone: "bg-learning/10 text-learning" },
-  { e: "GET /api/v1/finance/invoices", d: "List invoices", tone: "bg-success/10 text-success" },
+const tones = [
+  "bg-primary/10 text-primary",
+  "bg-learning/10 text-learning",
+  "bg-success/10 text-success",
 ];
 
 function DevApiPlayground() {
+  const endpointsQuery = useDevEndpoints();
+
   return (
     <AppShell
       roleKey="instructor"
@@ -47,15 +52,31 @@ function DevApiPlayground() {
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-3">
-            {endpoints.map((e) => (
-              <div key={e.e} className="flex items-center justify-between rounded-xl border p-3">
-                <div>
-                  <p className="font-mono text-xs font-bold">{e.e}</p>
-                  <p className="text-muted-foreground mt-0.5 text-xs">{e.d}</p>
-                </div>
-                <Badge className={cn("border-0 font-semibold", e.tone)}>Try it</Badge>
-              </div>
-            ))}
+            <QueryState<DevEndpoint[]>
+              query={endpointsQuery}
+              error={{ title: "Endpoints unavailable" }}
+              empty={{ title: "No endpoints", description: "API endpoints will show here." }}
+              isEmpty={(rows) => rows.length === 0}
+            >
+              {(rows) => (
+                <>
+                  {rows.map((e, i) => (
+                    <div
+                      key={e.id}
+                      className="flex items-center justify-between rounded-xl border p-3"
+                    >
+                      <div>
+                        <p className="font-mono text-xs font-bold">{e.endpoint}</p>
+                        <p className="text-muted-foreground mt-0.5 text-xs">{e.description}</p>
+                      </div>
+                      <Badge className={cn("border-0 font-semibold", tones[i % tones.length])}>
+                        Try it
+                      </Badge>
+                    </div>
+                  ))}
+                </>
+              )}
+            </QueryState>
           </CardContent>
         </Card>
 

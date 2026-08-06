@@ -2736,4 +2736,1192 @@ export function registerAllMocks(): void {
     const items = collections[collection] ?? [];
     return { items, total: items.length };
   });
+
+  /* Government suite — mirrors backend seeds (migrations/0020_government.sql) */
+  const govtCollections: Record<string, Record<string, unknown>[]> = {
+    overview: [
+      { id: "govt-ov-01", metric: "Compliance score", valueLabel: "92", delta: "of 100" },
+      { id: "govt-ov-02", metric: "Open findings", valueLabel: "1", delta: "low priority" },
+      { id: "govt-ov-03", metric: "Filings (year)", valueLabel: "14", delta: "0 overdue" },
+      { id: "govt-ov-04", metric: "Next review", valueLabel: "2027", delta: "Feb · on track" },
+    ],
+    calendar: [
+      {
+        id: "govt-cl-01",
+        title: "Audit inspection",
+        dateLabel: "Sep 18 · on-site",
+        status: "Scheduled",
+      },
+      {
+        id: "govt-cl-02",
+        title: "Tuition fee schedule filing",
+        dateLabel: "Aug 30 · online",
+        status: "Upcoming",
+      },
+      {
+        id: "govt-cl-03",
+        title: "Q3 enrolment census",
+        dateLabel: "Oct 15 · online",
+        status: "Upcoming",
+      },
+    ],
+    changes: [
+      {
+        id: "govt-ch-01",
+        title: "NDPR enforcement guidelines v2",
+        detail: "Effective Aug 01 · CEA compliant",
+        status: "Compliant",
+      },
+      {
+        id: "govt-ch-02",
+        title: "Tuition fee disclosure rules",
+        detail: "Effective Jul 01 · CEA compliant",
+        status: "Compliant",
+      },
+      {
+        id: "govt-ch-03",
+        title: "Student data retention policy",
+        detail: "Effective Oct 01 · CEA reviewing",
+        status: "In review",
+      },
+    ],
+    documents: [
+      {
+        id: "govt-dc-01",
+        title: "Academic policy handbook",
+        versionLabel: "v4.2 · Jul 2026",
+        status: "Current",
+      },
+      {
+        id: "govt-dc-02",
+        title: "Tuition & fees policy",
+        versionLabel: "v2.1 · Jan 2026",
+        status: "Current",
+      },
+      {
+        id: "govt-dc-03",
+        title: "Student conduct code",
+        versionLabel: "v3.0 · Sep 2025",
+        status: "Reviewing",
+      },
+    ],
+    facts: [
+      { id: "govt-ft-01", label: "Registration", value: "RC 1423784 · CAC" },
+      { id: "govt-ft-02", label: "Licence", value: "MBBS/PC/2024/0142 · NUC" },
+      { id: "govt-ft-03", label: "Branches", value: "3 · Lagos, Abuja, Port Harcourt" },
+      { id: "govt-ft-04", label: "Academic board", value: "Constituted · 11 members" },
+    ],
+    reports: [
+      {
+        id: "govt-rp-01",
+        title: "Annual compliance report — 2025/26",
+        detail: "Fiscal year close · filed",
+        status: "Filed",
+      },
+      {
+        id: "govt-rp-02",
+        title: "Student enrolment census — Q2",
+        detail: "Due Aug 15 · ready",
+        status: "Ready",
+      },
+      {
+        id: "govt-rp-03",
+        title: "Financial statement — audited",
+        detail: "FY 2025 · approved",
+        status: "Filed",
+      },
+    ],
+    threads: [
+      {
+        id: "govt-th-01",
+        title: "Re: accreditation evidence — awaiting 2 documents",
+        fromLabel: "CEA compliance office",
+        timeLabel: "Jul 30 · 14:02",
+        status: "Open",
+      },
+      {
+        id: "govt-th-02",
+        title: "Q2 census filing confirmation",
+        fromLabel: "Federal Ministry of Education",
+        timeLabel: "Jul 14 · 09:30",
+        status: "Closed",
+      },
+      {
+        id: "govt-th-03",
+        title: "Facilities audit scheduling",
+        fromLabel: "CEA compliance office",
+        timeLabel: "Jul 08 · 11:12",
+        status: "Closed",
+      },
+    ],
+    checks: [
+      {
+        id: "govt-ck-01",
+        title: "Enrolment vs census",
+        detail: "Matches filed Q2 census",
+        status: "Pass",
+      },
+      {
+        id: "govt-ck-02",
+        title: "Financials vs audited",
+        detail: "Matches audited FY25 statement",
+        status: "Pass",
+      },
+      {
+        id: "govt-ck-03",
+        title: "Facilities register",
+        detail: "1 of 18 pending re-certification",
+        status: "Flagged",
+      },
+    ],
+    audits: [
+      {
+        id: "govt-ad-01",
+        title: "Institutional audit — FY 2025",
+        detail: "Completed Mar 12 · 92/100",
+        status: "Closed",
+      },
+      {
+        id: "govt-ad-02",
+        title: "Facilities compliance check",
+        detail: "Scheduled Sep 18",
+        status: "Planned",
+      },
+      {
+        id: "govt-ad-03",
+        title: "Financial record inspection",
+        detail: "Finding #2 · remediation due Aug 30",
+        status: "Open",
+      },
+    ],
+    filings: [
+      {
+        id: "govt-fl-01",
+        title: "Q2 enrolment census",
+        detail: "Filed Jul 14 · ref FED-2026-0142",
+        status: "Filed",
+      },
+      {
+        id: "govt-fl-02",
+        title: "Tuition fee schedule",
+        detail: "Due Aug 30 · drafted",
+        status: "Draft",
+      },
+      {
+        id: "govt-fl-03",
+        title: "Annual returns 2025",
+        detail: "Filed Apr 02 · ref FED-2026-0089",
+        status: "Filed",
+      },
+    ],
+    courses: [
+      {
+        id: "govt-cr-01",
+        title: "Data protection (NDPR)",
+        detail: "88 staff certified",
+        status: "Current",
+      },
+      {
+        id: "govt-cr-02",
+        title: "Child safeguarding",
+        detail: "214 staff certified",
+        status: "Current",
+      },
+      {
+        id: "govt-cr-03",
+        title: "Academic integrity",
+        detail: "46 certified · 12 pending",
+        status: "Renewing",
+      },
+    ],
+  };
+  registerMockPattern("GET", "/v1/government-dashboard/*", async (init: ApiRequestInit) => {
+    await delay();
+    const segments = (init.path ?? "").split("/").filter(Boolean);
+    const collection = segments[2] ?? "";
+    const items = govtCollections[collection] ?? [];
+    return { items, total: items.length };
+  });
+
+  /* Behavioral design suite — mirrors backend seeds (migrations/0021_behavioral.sql) */
+  const bdCollections: Record<string, Record<string, unknown>[]> = {
+    overview: [
+      { id: "bd-hb-01", metric: "Live experiments", valueLabel: "7", delta: "2 winning" },
+      { id: "bd-hb-02", metric: "Avg. lift", valueLabel: "+7.4%", delta: "across wins" },
+      { id: "bd-hb-03", metric: "Funnels mapped", valueLabel: "11", delta: "2 to redesign" },
+      { id: "bd-hb-04", metric: "Segments explored", valueLabel: "9", delta: "2 new this qtr" },
+    ],
+    interventions: [
+      {
+        id: "bd-in-01",
+        title: "Streak & streak-saver",
+        goal: "Daily lesson consistency",
+        mechanism: "Loss-framed reminder after 6pm",
+        effort: "Low",
+        evidence: "RCT · 2025",
+        testsRun: 100,
+        status: "Live",
+      },
+      {
+        id: "bd-in-02",
+        title: "Commitment email before drop-off",
+        goal: "Cut mid-course churn",
+        mechanism: "Self-pledge + peer account",
+        effort: "Low",
+        evidence: "Quasi-exp · 2025",
+        testsRun: 62,
+        status: "In test",
+      },
+      {
+        id: "bd-in-03",
+        title: "Deadline anchoring in apply flow",
+        goal: "Faster enrolment decisions",
+        mechanism: "Cohort start-date anchor",
+        effort: "Medium",
+        evidence: "A/B · live",
+        testsRun: 41,
+        status: "Testing",
+      },
+    ],
+    flows: [
+      { id: "bd-fl-01", name: "New learner activation", stage: 6, status: "Live" },
+      { id: "bd-fl-02", name: "Week-3 retention rescue", stage: 5, status: "Draft" },
+      { id: "bd-fl-03", name: "Referral ask after cert", stage: 4, status: "Draft" },
+    ],
+    "flow-steps": [
+      {
+        id: "bd-fs-01",
+        flowId: "activation",
+        stepNo: 1,
+        title: "Enrolment confirmed",
+        subtitle: "Trigger · 5 min delay",
+      },
+      {
+        id: "bd-fs-02",
+        flowId: "activation",
+        stepNo: 2,
+        title: "Welcome message",
+        subtitle: "WhatsApp + email",
+      },
+      {
+        id: "bd-fs-03",
+        flowId: "activation",
+        stepNo: 3,
+        title: "Set weekly goal",
+        subtitle: "In-app prompt · 3 options",
+      },
+      {
+        id: "bd-fs-04",
+        flowId: "activation",
+        stepNo: 4,
+        title: "First lesson complete?",
+        subtitle: "Branch on completion",
+      },
+    ],
+    campaigns: [
+      {
+        id: "bd-cg-01",
+        title: "Streak saver — evening",
+        trigger: "Missed 2 lessons before 6pm",
+        channel: "WhatsApp",
+        sends: "1,240",
+        optOut: "0.8%",
+        status: "Live",
+      },
+      {
+        id: "bd-cg-02",
+        title: "Deadline anchor — cohort 17",
+        trigger: "Viewed apply page twice",
+        channel: "Email",
+        sends: "860",
+        optOut: "1.1%",
+        status: "Live",
+      },
+      {
+        id: "bd-cg-03",
+        title: "Referral thank-you",
+        trigger: "Successful referral paid",
+        channel: "In-app",
+        sends: "312",
+        optOut: "0.4%",
+        status: "Scheduled",
+      },
+    ],
+    tests: [
+      {
+        id: "bd-ab-01",
+        name: "Streak nudge wording",
+        variants: 2,
+        sampleLabel: "2,400",
+        liftLabel: "+9%",
+        sigLabel: "95.2%",
+        status: "Winning",
+      },
+      {
+        id: "bd-ab-02",
+        name: "Deadline anchor position",
+        variants: 3,
+        sampleLabel: "3,100",
+        liftLabel: "+6%",
+        sigLabel: "91.4%",
+        status: "Live",
+      },
+      {
+        id: "bd-ab-03",
+        name: "Goal-setting prompt",
+        variants: 2,
+        sampleLabel: "1,800",
+        liftLabel: "+3%",
+        sigLabel: "68.0%",
+        status: "Running",
+      },
+    ],
+    results: [
+      {
+        id: "bd-rl-01",
+        metric: "Streak nudges — Weekly lessons",
+        baseline: "+4.2%",
+        changeLabel: "+9.1%",
+        status: "Winning",
+      },
+      {
+        id: "bd-rl-02",
+        metric: "Deadline anchoring — Submissions",
+        baseline: "+3.1%",
+        changeLabel: "+6.4%",
+        status: "Live",
+      },
+      {
+        id: "bd-rl-03",
+        metric: "Commitment emails — Churn",
+        baseline: "−1.8%",
+        changeLabel: "−4.0%",
+        status: "Running",
+      },
+    ],
+    stages: [
+      { id: "bd-fu-01", name: "Signup", users: 8400, percent: 100, status: "Complete" },
+      { id: "bd-fu-02", name: "First lesson started", users: 5376, percent: 64, status: "Opening" },
+      { id: "bd-fu-03", name: "Week-2 active", users: 3864, percent: 46, status: "Losing" },
+      { id: "bd-fu-04", name: "Week-4 still enrolled", users: 3024, percent: 36, status: "Open" },
+      {
+        id: "bd-fu-05",
+        name: "First assessment passed",
+        users: 2352,
+        percent: 28,
+        status: "Closed",
+      },
+    ],
+    segments: [
+      {
+        id: "bd-sg-01",
+        name: "Weekend warriors",
+        size: 1120,
+        traits: "Evening study · mobile-first · deadline-driven",
+        status: "Mapped",
+      },
+      {
+        id: "bd-sg-02",
+        name: "Career switchers",
+        size: 980,
+        traits: "28-40 · low time budget · job-focused",
+        status: "Mapped",
+      },
+      {
+        id: "bd-sg-03",
+        name: "Early adopters",
+        size: 640,
+        traits: "High streak · referral active · forum posters",
+        status: "Mapped",
+      },
+      {
+        id: "bd-sg-04",
+        name: "At-risk lurkers",
+        size: 520,
+        traits: "Enrolled 30d+ · no lesson in 7d",
+        status: "Flagged",
+      },
+    ],
+    programs: [
+      {
+        id: "bd-pr-01",
+        name: "Daily 15-minute lesson",
+        goal: "30-day streak",
+        streak: "12d avg",
+        status: "Live",
+      },
+      {
+        id: "bd-pr-02",
+        name: "Weekly portfolio commit",
+        goal: "8-week project cadence",
+        streak: "5w avg",
+        status: "Live",
+      },
+      {
+        id: "bd-pr-03",
+        name: "Peer accountability pair",
+        goal: "Bi-weekly check-ins",
+        streak: "3w avg",
+        status: "Pilot",
+      },
+    ],
+    checkins: [
+      {
+        id: "bd-ck-01",
+        learner: "Ada Obi",
+        cycle: "Daily lesson",
+        streak: "21d",
+        status: "Checked in",
+      },
+      {
+        id: "bd-ck-02",
+        learner: "Tunde Bakare",
+        cycle: "Portfolio commit",
+        streak: "6w",
+        status: "Checked in",
+      },
+      {
+        id: "bd-ck-03",
+        learner: "Chiamaka Eze",
+        cycle: "Daily lesson",
+        streak: "9d",
+        status: "Due soon",
+      },
+      {
+        id: "bd-ck-04",
+        learner: "Ngozi Adeyemi",
+        cycle: "Peer pair",
+        streak: "1w",
+        status: "Due today",
+      },
+    ],
+  };
+  registerMockPattern("GET", "/v1/behavioral-dashboard/*", async (init: ApiRequestInit) => {
+    await delay();
+    const segments = (init.path ?? "").split("/").filter(Boolean);
+    const collection = segments[2] ?? "";
+    const items = bdCollections[collection] ?? [];
+    return { items, total: items.length };
+  });
+
+  /* Product marketing suite — mirrors backend seeds (migrations/0022_product_marketing.sql) */
+  const pmCollections: Record<string, Record<string, unknown>[]> = {
+    overview: [
+      { id: "pm-hb-01", metric: "Launches in flight", valueLabel: "3", delta: "1 live now" },
+      { id: "pm-hb-02", metric: "Positioning docs", valueLabel: "7", delta: "2 in review" },
+      { id: "pm-hb-03", metric: "Competitors tracked", valueLabel: "9", delta: "2 new this qtr" },
+      { id: "pm-hb-04", metric: "Win rate", valueLabel: "68%", delta: "+5 pts QoQ" },
+    ],
+    phases: [
+      {
+        id: "pm-ph-01",
+        launch: "Parent app — Beta",
+        phase: "Phase 1 — Discovery",
+        pct: 100,
+        status: "Complete",
+      },
+      {
+        id: "pm-ph-02",
+        launch: "Parent app — Beta",
+        phase: "Phase 2 — Build & validate",
+        pct: 64,
+        status: "In progress",
+      },
+      {
+        id: "pm-ph-03",
+        launch: "Employer talent pass",
+        phase: "Phase 3 — Launch",
+        pct: 12,
+        status: "Upcoming",
+      },
+    ],
+    tasks: [
+      { id: "pm-ts-01", title: "Beta waitlist page live", owner: "Chiamaka Eze", status: "Done" },
+      {
+        id: "pm-ts-02",
+        title: "Pricing FAQ for beta cohort",
+        owner: "Tunde Bakare",
+        status: "In review",
+      },
+      { id: "pm-ts-03", title: "Store listing screenshots", owner: "Ada Obi", status: "Doing" },
+      { id: "pm-ts-04", title: "Launch blog + social kit", owner: "Ngozi Adeyemi", status: "Todo" },
+    ],
+    gates: [
+      {
+        id: "pm-gt-01",
+        phase: "Discovery",
+        gate: "Market sizing sign-off",
+        owner: "Emeka Okafor",
+        dueLabel: "Jun 12",
+        status: "Done",
+      },
+      {
+        id: "pm-gt-02",
+        phase: "Build",
+        gate: "Beta waitlist ≥ 500",
+        owner: "Ada Obi",
+        dueLabel: "Jul 25",
+        status: "On track",
+      },
+      {
+        id: "pm-gt-03",
+        phase: "Build",
+        gate: "Onboarding walkthrough QA",
+        owner: "Tunde Bakare",
+        dueLabel: "Aug 02",
+        status: "At risk",
+      },
+      {
+        id: "pm-gt-04",
+        phase: "Launch",
+        gate: "Release approval",
+        owner: "Chiamaka Eze",
+        dueLabel: "Aug 14",
+        status: "Planned",
+      },
+    ],
+    statements: [
+      {
+        id: "pm-st-01",
+        product: "CEA-OS core LMS",
+        statement:
+          "For ambitious Nigerians who want global careers, CEA-OS is the academy that pairs live Lagos classes with a portfolio employers trust.",
+        audience: "Working adults 18-35 · Lagos, Abuja",
+        pain: "Degrees don't convert to jobs",
+        benefit: "Hire-ready in 9 months",
+      },
+      {
+        id: "pm-st-02",
+        product: "Employer talent pass",
+        statement:
+          "For HR teams hiring in Nigeria, the talent pass is a verified pipeline of job-ready graduates with recorded skills evidence.",
+        audience: "HR leaders · 50+ employers",
+        pain: "Entry-level hires are risky",
+        benefit: "88% of pass hires stay 6mo",
+      },
+      {
+        id: "pm-st-03",
+        product: "Parent app",
+        statement:
+          "For parents funding education, the parent app turns fees into progress reports with weekly learner insights.",
+        audience: "Parents · 35-55 · diaspora",
+        pain: "Fees paid, outcomes unclear",
+        benefit: "Weekly skill milestones",
+      },
+    ],
+    messagehouse: [
+      { id: "pm-mh-01", label: "Primary message", value: "From Lagos classroom to global job" },
+      { id: "pm-mh-02", label: "Proof point", value: "92% placement within 6 months" },
+      { id: "pm-mh-03", label: "Tone of voice", value: "Ambitious, concrete, proud" },
+      { id: "pm-mh-04", label: "Avoid", value: "Get-rich-quick framing" },
+    ],
+    competitors: [
+      {
+        id: "pm-cp-01",
+        name: "Skilledge NG",
+        focus: "Coding bootcamps",
+        strength: "Strong Lagos brand",
+        weakness: "No employer pass",
+        notes: "Won 2 of 3 deals Q3",
+      },
+      {
+        id: "pm-cp-02",
+        name: "Aptbridge",
+        focus: "Corporate training",
+        strength: "Enterprise sales team",
+        weakness: "Dated LMS UX",
+        notes: "Won 1 of 2 this month",
+      },
+      {
+        id: "pm-cp-03",
+        name: "GlobalPath",
+        focus: "UK placement focus",
+        strength: "Strong diaspora links",
+        weakness: "Weak portfolio tooling",
+        notes: "Active on parent app deal",
+      },
+    ],
+    features: [
+      { id: "pm-fv-01", capability: "Live Lagos classes", cea: 1, skilledge: 1, aptbridge: 0 },
+      { id: "pm-fv-02", capability: "Employer talent pass", cea: 1, skilledge: 0, aptbridge: 1 },
+      { id: "pm-fv-03", capability: "Portfolio builder", cea: 1, skilledge: 1, aptbridge: 0 },
+      { id: "pm-fv-04", capability: "Diaspora financing", cea: 1, skilledge: 0, aptbridge: 0 },
+      { id: "pm-fv-05", capability: "Data & AI track", cea: 1, skilledge: 1, aptbridge: 0 },
+    ],
+    launches: [
+      {
+        id: "pm-ln-01",
+        name: "Parent app beta",
+        dateLabel: "Aug 14, 2026",
+        phase: "Phase 2 — Build",
+        owner: "Ada Obi",
+        status: "On track",
+      },
+      {
+        id: "pm-ln-02",
+        name: "Employer talent pass 2.0",
+        dateLabel: "Sep 04, 2026",
+        phase: "Phase 1 — Discovery",
+        owner: "Tunde Bakare",
+        status: "Discovery",
+      },
+      {
+        id: "pm-ln-03",
+        name: "Data & AI track",
+        dateLabel: "Oct 09, 2026",
+        phase: "Phase 1 — Discovery",
+        owner: "Chiamaka Eze",
+        status: "Planned",
+      },
+    ],
+    readiness: [
+      { id: "pm-rd-01", label: "Messaging & positioning", pct: 100, status: "Done" },
+      { id: "pm-rd-02", label: "Beta onboarding flow", pct: 78, status: "Building" },
+      { id: "pm-rd-03", label: "Support & FAQ", pct: 42, status: "In review" },
+      { id: "pm-rd-04", label: "Store listing assets", pct: 15, status: "Queued" },
+    ],
+    studies: [
+      {
+        id: "pm-sd-01",
+        title: "Employer hiring signals — Lagos",
+        detail: "What 40 HR leaders screen for",
+        sample: "n=40 interviews",
+        method: "Interviews",
+        status: "Published",
+      },
+      {
+        id: "pm-sd-02",
+        title: "Parent willingness to pay",
+        detail: "Fee elasticity for parent app",
+        sample: "n=320 survey",
+        method: "Survey",
+        status: "In field",
+      },
+      {
+        id: "pm-sd-03",
+        title: "Diaspora funding behaviour",
+        detail: "UK diaspora monthly education spend",
+        sample: "n=180 survey",
+        method: "Survey + diary",
+        status: "In review",
+      },
+    ],
+    findings: [
+      {
+        id: "pm-fn-01",
+        title: "88% of parents want weekly progress proof",
+        tag: "Critical — parent app",
+      },
+      {
+        id: "pm-fn-02",
+        title: "HR screens for portfolio, not certificates",
+        tag: "Critical — positioning",
+      },
+      { id: "pm-fn-03", title: "Diaspora parents pay ₦180k-₦250k per term", tag: "Pricing input" },
+      { id: "pm-fn-04", title: "Referrals drive 18% of signups", tag: "Growth input" },
+    ],
+    matrix: [
+      {
+        id: "pm-mx-01",
+        product: "Core LMS",
+        audience: "Working adults",
+        message: "Build skills that Lagos employers actually pay for.",
+        proof: "92% placement in 6 months",
+        status: "Approved",
+      },
+      {
+        id: "pm-mx-02",
+        product: "Core LMS",
+        audience: "Parents",
+        message: "Every naira of fees becomes a visible skill milestone.",
+        proof: "4.8 rating from 2,100 parents",
+        status: "In review",
+      },
+      {
+        id: "pm-mx-03",
+        product: "Talent pass",
+        audience: "HR leaders",
+        message: "Hire graduates whose skills were verified on the job.",
+        proof: "88% stay past 6 months",
+        status: "Approved",
+      },
+      {
+        id: "pm-mx-04",
+        product: "Talent pass",
+        audience: "Students",
+        message: "A job pass that comes with the portfolio to back it.",
+        proof: "34 hires via pass in 2026",
+        status: "Draft",
+      },
+    ],
+    briefs: [
+      {
+        id: "pm-br-01",
+        title: "Parent app beta launch",
+        objective: "1,000 waitlist signups in 3 weeks",
+        audience: "Diaspora parents 35-55",
+        channels: "Meta + LinkedIn + Email",
+        metric: "Waitlist CVR ≥ 12%",
+        status: "Approved",
+      },
+      {
+        id: "pm-br-02",
+        title: "Talent pass employer outreach",
+        objective: "20 new employer signups this quarter",
+        audience: "HR leaders · Lagos tech",
+        channels: "LinkedIn + Events",
+        metric: "Demo requests ≥ 40",
+        status: "In review",
+      },
+      {
+        id: "pm-br-03",
+        title: "Data & AI track teaser",
+        objective: "Pre-launch awareness for Oct track",
+        audience: "Working adults 22-35",
+        channels: "TikTok + YouTube + SMS",
+        metric: "CTR ≥ 3.5%",
+        status: "Draft",
+      },
+    ],
+    months: [
+      { id: "pm-mo-01", month: "Feb", roi: "3.8x", winRate: "61%", pipeline: "₦48m", pct: 62 },
+      { id: "pm-mo-02", month: "Mar", roi: "4.1x", winRate: "63%", pipeline: "₦52m", pct: 68 },
+      { id: "pm-mo-03", month: "Apr", roi: "3.9x", winRate: "66%", pipeline: "₦57m", pct: 71 },
+      { id: "pm-mo-04", month: "May", roi: "4.4x", winRate: "65%", pipeline: "₦61m", pct: 76 },
+      { id: "pm-mo-05", month: "Jun", roi: "4.7x", winRate: "68%", pipeline: "₦66m", pct: 82 },
+      { id: "pm-mo-06", month: "Jul", roi: "4.2x", winRate: "68%", pipeline: "₦71m", pct: 86 },
+    ],
+  };
+  registerMockPattern("GET", "/v1/product-marketing-dashboard/*", async (init: ApiRequestInit) => {
+    await delay();
+    const segments = (init.path ?? "").split("/").filter(Boolean);
+    const collection = segments[2] ?? "";
+    const items = pmCollections[collection] ?? [];
+    return { items, total: items.length };
+  });
+
+  /* Alumni suite — mirrors backend seeds (migrations/0023_alumni.sql) */
+  const aluCollections: Record<string, Record<string, unknown>[]> = {
+    overview: [
+      { id: "alu-hb-01", metric: "Connections", valueLabel: "86", delta: "+12 this month" },
+      { id: "alu-hb-02", metric: "Events RSVP'd", valueLabel: "3", delta: "reunion Sep 6" },
+      { id: "alu-hb-03", metric: "Jobs referred", valueLabel: "4", delta: "2 hired" },
+      { id: "alu-hb-04", metric: "Lifetime giving", valueLabel: "₦480k", delta: "2 scholarships" },
+    ],
+    events: [
+      {
+        id: "alu-ev-01",
+        title: "Cohort 12 reunion",
+        dateLabel: "Sep 6 · 15:00",
+        location: "Lagos campus courtyard",
+        going: 74,
+        status: "Going",
+      },
+      {
+        id: "alu-ev-02",
+        title: "Career day + hiring fair",
+        dateLabel: "Sep 14 · 10:00",
+        location: "Main hall + online",
+        going: 210,
+        status: "Interested",
+      },
+      {
+        id: "alu-ev-03",
+        title: "Alumni ↔ students: speed mentoring",
+        dateLabel: "Sep 28 · 14:00",
+        location: "Online",
+        going: 56,
+        status: "RSVP",
+      },
+      {
+        id: "alu-ev-04",
+        title: "Founder stories: fintech edition",
+        dateLabel: "Oct 12 · 18:00",
+        location: "Online",
+        going: 88,
+        status: "Save",
+      },
+    ],
+    members: [
+      {
+        id: "alu-mb-01",
+        name: "Amina Suleiman",
+        cohort: "Cloud Eng. · 2023",
+        roleLabel: "SRE @ Paystack",
+        city: "Lagos",
+        conn: 1,
+      },
+      {
+        id: "alu-mb-02",
+        name: "David Osei",
+        cohort: "Full-Stack · 2024",
+        roleLabel: "Frontend @ Andela",
+        city: "Accra",
+        conn: 0,
+      },
+      {
+        id: "alu-mb-03",
+        name: "Blessing Ade",
+        cohort: "Data Science · 2022",
+        roleLabel: "ML Eng @ Kuda",
+        city: "Lagos",
+        conn: 2,
+      },
+      {
+        id: "alu-mb-04",
+        name: "Ibrahim Musa",
+        cohort: "DevOps · 2024",
+        roleLabel: "Platform @ Flutterwave",
+        city: "Abuja",
+        conn: 0,
+      },
+    ],
+    stories: [
+      {
+        id: "alu-sr-01",
+        name: "Tunde Bakare",
+        cohort: "Cohort 12",
+        company: "Paystack",
+        role: "Platform Engineer",
+        excerpt:
+          "Three months after demo day I had a Paystack offer. The mock interviews my mentor ran were harder than the real thing.",
+        initials: "TB",
+        tone: "bg-gradient-learning",
+      },
+      {
+        id: "alu-sr-02",
+        name: "Chiamaka Eze",
+        cohort: "Cohort 10",
+        company: "Flutterwave",
+        role: "Product Designer",
+        excerpt:
+          "The portfolio sprint review caught everything I'd have missed. My design case study still opens doors two years later.",
+        initials: "CE",
+        tone: "bg-gradient-erp",
+      },
+      {
+        id: "alu-sr-03",
+        name: "Ibrahim Sule",
+        cohort: "Cohort 11",
+        company: "Andela",
+        role: "DevOps Engineer",
+        excerpt:
+          "Cohort 11's CI/CD module was brutal — and it's exactly why I aced Andela's take-home in one weekend.",
+        initials: "IS",
+        tone: "bg-gradient-services",
+      },
+      {
+        id: "alu-sr-04",
+        name: "Funke Adeyemi",
+        cohort: "Cohort 9",
+        company: "Interswitch",
+        role: "Backend Engineer",
+        excerpt:
+          "I went from working at a cyber café in Surulere to shipping payment rails. CEA's lab nights were everything.",
+        initials: "FA",
+        tone: "bg-gradient-career",
+      },
+      {
+        id: "alu-sr-05",
+        name: "Ngozi Umeh",
+        cohort: "Cohort 12",
+        company: "Kuda",
+        role: "Data Analyst",
+        excerpt:
+          "The SQL mid-term humbled me. I retook it, passed, and now I query Kuda's core ledger every single day.",
+        initials: "NU",
+        tone: "bg-gradient-learning",
+      },
+      {
+        id: "alu-sr-06",
+        name: "Samuel Adebayo",
+        cohort: "Cohort 8",
+        company: "Terragon",
+        role: "Data Engineer",
+        excerpt:
+          "My capstone on streaming ingestion is still in production at Terragon. Yes, the exact one from class.",
+        initials: "SA",
+        tone: "bg-gradient-erp",
+      },
+    ],
+    milestones: [
+      { id: "alu-ml-01", label: "Stories published", value: "214" },
+      { id: "alu-ml-02", label: "Companies represented", value: "86" },
+      { id: "alu-ml-03", label: "Readers this quarter", value: "38k" },
+      { id: "alu-ml-04", label: "Graduates hired via stories", value: "47" },
+    ],
+    jobs: [
+      {
+        id: "alu-jb-01",
+        role: "Frontend Engineer",
+        company: "Kuda",
+        period: "2025 – present",
+        place: "Lekki, Lagos",
+        current: 1,
+        description: "Building onboarding flows and the design system used by 3.4m customers.",
+      },
+      {
+        id: "alu-jb-02",
+        role: "Junior Software Developer",
+        company: "Interswitch",
+        period: "2024 – 2025",
+        place: "Victoria Island, Lagos",
+        current: 0,
+        description: "Shipped payment integrations for 14 partners in my first year.",
+      },
+      {
+        id: "alu-jb-03",
+        role: "Software Engineering Intern",
+        company: "Zuri",
+        period: "2024",
+        place: "Remote",
+        current: 0,
+        description:
+          "Full-stack internship; ended with a production dashboard for a Lagos logistics startup.",
+      },
+    ],
+    achievements: [
+      {
+        id: "alu-ac-01",
+        title: "Full-Stack Diploma — Distinction",
+        org: "CEA · Cohort 12",
+        year: "2024",
+      },
+      {
+        id: "alu-ac-02",
+        title: "AWS Cloud Practitioner",
+        org: "Amazon Web Services",
+        year: "2025",
+      },
+      {
+        id: "alu-ac-03",
+        title: "Cohort 12 Class Representative",
+        org: "CEA Student Life",
+        year: "2024",
+      },
+    ],
+    skills: [
+      { id: "alu-sk-01", name: "TypeScript" },
+      { id: "alu-sk-02", name: "React" },
+      { id: "alu-sk-03", name: "Node.js" },
+      { id: "alu-sk-04", name: "Tailwind CSS" },
+      { id: "alu-sk-05", name: "PostgreSQL" },
+      { id: "alu-sk-06", name: "Docker" },
+      { id: "alu-sk-07", name: "CI/CD" },
+      { id: "alu-sk-08", name: "Design systems" },
+      { id: "alu-sk-09", name: "REST APIs" },
+    ],
+    commitments: [
+      {
+        id: "alu-cm-01",
+        mentee: "Ada Okafor",
+        track: "Backend specialisation",
+        cadence: "Fortnightly 1:1",
+        nextLabel: "Aug 21 · 16:00",
+        status: "Active",
+      },
+      {
+        id: "alu-cm-02",
+        mentee: "Tobi Adeyemi",
+        track: "DevOps",
+        cadence: "Weekly group session",
+        nextLabel: "Aug 22 · 11:00",
+        status: "Active",
+      },
+      {
+        id: "alu-cm-03",
+        mentee: "Zainab Yusuf",
+        track: "Product design",
+        cadence: "Async messaging",
+        nextLabel: "Ongoing",
+        status: "Active",
+      },
+    ],
+    ways: [
+      {
+        id: "alu-wy-01",
+        title: "Scholarship fund",
+        detail: "Fund a student's term — ₦700k covers a full scholarship",
+      },
+      {
+        id: "alu-wy-02",
+        title: "Mentor a learner",
+        detail: "2 hours a month, online or on campus",
+      },
+      {
+        id: "alu-wy-03",
+        title: "Host an internship",
+        detail: "Open a seat in your team for a final-year learner",
+      },
+      {
+        id: "alu-wy-04",
+        title: "Speaker at career day",
+        detail: "Share your journey at the Sep 14 event",
+      },
+    ],
+    impact: [
+      { id: "alu-im-01", value: "2", label: "scholarships funded" },
+      { id: "alu-im-02", value: "3", label: "mentees guided to jobs" },
+      { id: "alu-im-03", value: "1", label: "internship hosted" },
+    ],
+  };
+  registerMockPattern("GET", "/v1/alumni-dashboard/*", async (init: ApiRequestInit) => {
+    await delay();
+    const segments = (init.path ?? "").split("/").filter(Boolean);
+    const collection = segments[2] ?? "";
+    const items = aluCollections[collection] ?? [];
+    return { items, total: items.length };
+  });
+
+  /* Dev suite — mirrors backend seeds (migrations/0024_dev.sql) */
+  const devCollections: Record<string, Record<string, unknown>[]> = {
+    overview: [
+      { id: "dev-hb-01", metric: "Open PRs", valueLabel: "9", delta: "3 ready to merge" },
+      { id: "dev-hb-02", metric: "Deploys (30d)", valueLabel: "18", delta: "100% success" },
+      { id: "dev-hb-03", metric: "API uptime", valueLabel: "99.98%", delta: "30-day" },
+      { id: "dev-hb-04", metric: "Open issues", valueLabel: "14", delta: "5 bugs" },
+    ],
+    endpoints: [
+      { id: "dev-ep-01", endpoint: "GET /api/v1/students", description: "List students" },
+      { id: "dev-ep-02", endpoint: "POST /api/v1/applications", description: "Create application" },
+      { id: "dev-ep-03", endpoint: "GET /api/v1/finance/invoices", description: "List invoices" },
+    ],
+    deploys: [
+      {
+        id: "dev-dp-01",
+        versionLabel: "v1.42.0 · prod",
+        status: "Live",
+        timeLabel: "Aug 1 · 06:12 · 4m 12s",
+      },
+      {
+        id: "dev-dp-02",
+        versionLabel: "v1.41.2 · prod",
+        status: "Live",
+        timeLabel: "Jul 28 · 05:58 · 3m 48s",
+      },
+      {
+        id: "dev-dp-03",
+        versionLabel: "v1.41.1 · staging",
+        status: "Rolled back",
+        timeLabel: "Jul 27 · 14:20",
+      },
+    ],
+    prs: [
+      {
+        id: "dev-pr-01",
+        title: "#142 · feat: invoice webhooks",
+        branch: "main ← feat/invoice-webhooks",
+        status: "Checks passed",
+      },
+      {
+        id: "dev-pr-02",
+        title: "#141 · fix: portal nav caching",
+        branch: "main ← fix/nav-cache",
+        status: "Review requested",
+      },
+      {
+        id: "dev-pr-03",
+        title: "#140 · chore: deps upgrade",
+        branch: "main ← chore/deps",
+        status: "CI running",
+      },
+    ],
+    errors: [
+      { id: "dev-er-01", title: "API · 500 on /invoices", countLabel: "2 in 24h", status: "New" },
+      {
+        id: "dev-er-02",
+        title: "Web · JS error on dashboard",
+        countLabel: "1.2% sessions",
+        status: "Investigating",
+      },
+      {
+        id: "dev-er-03",
+        title: "Worker · timeout in email queue",
+        countLabel: "3 in 24h",
+        status: "Fixed",
+      },
+    ],
+    tasks: [
+      {
+        id: "dev-ts-01",
+        title: "CEA-214 · Invoice PDF regression",
+        detail: "Sprint 14 · in progress",
+        status: "Doing",
+      },
+      {
+        id: "dev-ts-02",
+        title: "CEA-218 · Webhook retry logic",
+        detail: "Sprint 14 · ready",
+        status: "Todo",
+      },
+      {
+        id: "dev-ts-03",
+        title: "CEA-205 · Portals nav caching",
+        detail: "Sprint 13 · done",
+        status: "Done",
+      },
+    ],
+    deps: [
+      { id: "dev-de-01", name: "lucide-react", version: "0.4xx", status: "Current" },
+      { id: "dev-de-02", name: "tanstack-router", version: "1.9x", status: "Update avail." },
+      { id: "dev-de-03", name: "axios (legacy)", version: "1.7", status: "1 vuln · patch" },
+    ],
+    reviews: [
+      {
+        id: "dev-rv-01",
+        title: "PR #142 · invoice webhooks",
+        detail: "2 comments · waiting on author",
+        status: "Changes",
+      },
+      {
+        id: "dev-rv-02",
+        title: "PR #141 · portal nav caching",
+        detail: "Approved by Segun A.",
+        status: "Approved",
+      },
+      {
+        id: "dev-rv-03",
+        title: "PR #139 · auth refresh tokens",
+        detail: "No comments yet",
+        status: "Reviewing",
+      },
+    ],
+    vars: [
+      { id: "dev-vr-01", key: "VITE_API_URL", value: "https://api.cea.edu.ng", env: "Prod" },
+      { id: "dev-vr-02", key: "VITE_PAYSTACK_PUBLIC_KEY", value: "pk_live_••••••••", env: "Prod" },
+      { id: "dev-vr-03", key: "VITE_ANALYTICS_ID", value: "G-8QP2X4M9", env: "Staging" },
+    ],
+    queues: [
+      {
+        id: "dev-qq-01",
+        name: "email",
+        detail: "7 pending · 1.2k processed today",
+        status: "Healthy",
+      },
+      {
+        id: "dev-qq-02",
+        name: "notifications",
+        detail: "0 pending · backlog clear",
+        status: "Healthy",
+      },
+      {
+        id: "dev-qq-03",
+        name: "exports",
+        detail: "1 pending · running 2m 14s",
+        status: "Processing",
+      },
+    ],
+    docs: [
+      { id: "dev-dc-01", title: "API reference v3", updatedLabel: "Updated Jul 30 · 84 endpoints" },
+      { id: "dev-dc-02", title: "Onboarding runbook", updatedLabel: "Updated Jul 12 · 14 steps" },
+      { id: "dev-dc-03", title: "Deploy playbook", updatedLabel: "Updated Jun 28 · 6 sections" },
+    ],
+  };
+  registerMockPattern("GET", "/v1/dev-dashboard/*", async (init: ApiRequestInit) => {
+    await delay();
+    const segments = (init.path ?? "").split("/").filter(Boolean);
+    const collection = segments[2] ?? "";
+    const items = devCollections[collection] ?? [];
+    return { items, total: items.length };
+  });
 }

@@ -12,6 +12,9 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import { usePmMatrix } from "@/lib/query/productMarketing";
+import type { PmMatrixRow } from "@/lib/api/productMarketing";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/product-marketing/messaging")({
@@ -27,42 +30,18 @@ export const Route = createFileRoute("/app/product-marketing/messaging")({
   component: MessagingMatrix,
 });
 
-const matrix = [
-  {
-    product: "Core LMS",
-    audience: "Working adults",
-    message: "Build skills that Lagos employers actually pay for.",
-    proof: "92% placement in 6 months",
-    status: "Approved",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    product: "Core LMS",
-    audience: "Parents",
-    message: "Every naira of fees becomes a visible skill milestone.",
-    proof: "4.8 rating from 2,100 parents",
-    status: "In review",
-    tone: "bg-warning/10 text-warning",
-  },
-  {
-    product: "Talent pass",
-    audience: "HR leaders",
-    message: "Hire graduates whose skills were verified on the job.",
-    proof: "88% stay past 6 months",
-    status: "Approved",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    product: "Talent pass",
-    audience: "Students",
-    message: "A job pass that comes with the portfolio to back it.",
-    proof: "34 hires via pass in 2026",
-    status: "Draft",
-    tone: "bg-muted-foreground/10 text-muted-foreground",
-  },
-];
+const statusTones: Record<string, string> = {
+  approved: "bg-success/10 text-success",
+  "in review": "bg-warning/10 text-warning",
+};
+
+function toneFor(status: string): string {
+  return statusTones[status.toLowerCase()] ?? "bg-muted-foreground/10 text-muted-foreground";
+}
 
 function MessagingMatrix() {
+  const matrixQuery = usePmMatrix();
+
   return (
     <AppShell
       roleKey="product-marketing"
@@ -134,30 +113,46 @@ function MessagingMatrix() {
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead>Product</TableHead>
-                <TableHead>Audience</TableHead>
-                <TableHead>Core message</TableHead>
-                <TableHead>Proof point</TableHead>
-                <TableHead>Status</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {matrix.map((m) => (
-                <TableRow key={m.product + m.audience}>
-                  <TableCell className="font-semibold">{m.product}</TableCell>
-                  <TableCell>{m.audience}</TableCell>
-                  <TableCell className="max-w-[260px]">{m.message}</TableCell>
-                  <TableCell className="text-muted-foreground">{m.proof}</TableCell>
-                  <TableCell>
-                    <Badge className={cn("border-0 font-semibold", m.tone)}>{m.status}</Badge>
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
+          <QueryState<PmMatrixRow[]>
+            query={matrixQuery}
+            error={{ title: "Matrix unavailable" }}
+            empty={{
+              title: "No matrix cells",
+              description: "Product x audience cells will appear here.",
+            }}
+            isEmpty={(rows) => rows.length === 0}
+          >
+            {(rows) => (
+              <>
+                <Table>
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead>Product</TableHead>
+                      <TableHead>Audience</TableHead>
+                      <TableHead>Core message</TableHead>
+                      <TableHead>Proof point</TableHead>
+                      <TableHead>Status</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {rows.map((m) => (
+                      <TableRow key={m.id}>
+                        <TableCell className="font-semibold">{m.product}</TableCell>
+                        <TableCell>{m.audience}</TableCell>
+                        <TableCell className="max-w-[260px]">{m.message}</TableCell>
+                        <TableCell className="text-muted-foreground">{m.proof}</TableCell>
+                        <TableCell>
+                          <Badge className={cn("border-0 font-semibold", toneFor(m.status))}>
+                            {m.status}
+                          </Badge>
+                        </TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </>
+            )}
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>

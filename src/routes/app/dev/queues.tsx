@@ -4,6 +4,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import { useDevQueues } from "@/lib/query/dev";
+import type { DevQueue } from "@/lib/api/dev";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/dev/queues")({
@@ -16,28 +19,15 @@ export const Route = createFileRoute("/app/dev/queues")({
   component: DevQueues,
 });
 
-const queues = [
-  {
-    q: "email",
-    d: "7 pending · 1.2k processed today",
-    s: "Healthy",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    q: "notifications",
-    d: "0 pending · backlog clear",
-    s: "Healthy",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    q: "exports",
-    d: "1 pending · running 2m 14s",
-    s: "Processing",
-    tone: "bg-warning/10 text-warning",
-  },
-];
+function queueTone(status: string) {
+  if (/health|success|ok$/i.test(status)) return "bg-success/10 text-success";
+  if (/process|running|progress/i.test(status)) return "bg-warning/10 text-warning";
+  return "bg-primary/10 text-primary";
+}
 
 function DevQueues() {
+  const queuesQuery = useDevQueues();
+
   return (
     <AppShell
       roleKey="instructor"
@@ -109,18 +99,34 @@ function DevQueues() {
           </CardTitle>
         </CardHeader>
         <CardContent className="divide-y">
-          {queues.map((q) => (
-            <div key={q.q} className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0">
-              <div className="min-w-0 flex-1">
-                <p className="font-mono text-sm font-bold">{q.q}</p>
-                <p className="text-muted-foreground text-xs">{q.d}</p>
-              </div>
-              <Badge className={cn("border-0 font-semibold", q.tone)}>{q.s}</Badge>
-              <Button variant="outline" size="sm" className="shrink-0 font-semibold">
-                Inspect
-              </Button>
-            </div>
-          ))}
+          <QueryState<DevQueue[]>
+            query={queuesQuery}
+            error={{ title: "Queues unavailable" }}
+            empty={{ title: "No queues", description: "Job queues will show here." }}
+            isEmpty={(rows) => rows.length === 0}
+          >
+            {(rows) => (
+              <>
+                {rows.map((q) => (
+                  <div
+                    key={q.id}
+                    className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
+                  >
+                    <div className="min-w-0 flex-1">
+                      <p className="font-mono text-sm font-bold">{q.name}</p>
+                      <p className="text-muted-foreground text-xs">{q.detail}</p>
+                    </div>
+                    <Badge className={cn("border-0 font-semibold", queueTone(q.status))}>
+                      {q.status}
+                    </Badge>
+                    <Button variant="outline" size="sm" className="shrink-0 font-semibold">
+                      Inspect
+                    </Button>
+                  </div>
+                ))}
+              </>
+            )}
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>

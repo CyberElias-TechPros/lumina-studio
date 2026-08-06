@@ -12,6 +12,9 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import { useBdCheckins, useBdPrograms } from "@/lib/query/behavioral";
+import type { BdCheckin, BdProgram } from "@/lib/api/behavioral";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/behavioral-design/habits")({
@@ -24,65 +27,23 @@ export const Route = createFileRoute("/app/behavioral-design/habits")({
   component: HabitTracker,
 });
 
-const programs = [
-  {
-    t: "Daily 15-minute lesson",
-    goal: "30-day streak",
-    active: "2,180",
-    streak: "12d avg",
-    status: "Live",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    t: "Weekly portfolio commit",
-    goal: "8-week project cadence",
-    active: "1,040",
-    streak: "5w avg",
-    status: "Live",
-    tone: "bg-primary/10 text-primary",
-  },
-  {
-    t: "Peer accountability pair",
-    goal: "Bi-weekly check-ins",
-    active: "640",
-    streak: "3w avg",
-    status: "Pilot",
-    tone: "bg-warning/10 text-warning",
-  },
+const programTones = [
+  "bg-success/10 text-success",
+  "bg-primary/10 text-primary",
+  "bg-warning/10 text-warning",
 ];
 
-const checkins = [
-  {
-    l: "Ada Obi",
-    program: "Daily lesson",
-    streak: "21d",
-    status: "Checked in",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    l: "Tunde Bakare",
-    program: "Portfolio commit",
-    streak: "6w",
-    status: "Checked in",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    l: "Chiamaka Eze",
-    program: "Daily lesson",
-    streak: "9d",
-    status: "2 days left",
-    tone: "bg-warning/10 text-warning",
-  },
-  {
-    l: "Ngozi Adeyemi",
-    program: "Peer pair",
-    streak: "1w",
-    status: "Due today",
-    tone: "bg-primary/10 text-primary",
-  },
+const checkinTones = [
+  "bg-success/10 text-success",
+  "bg-success/10 text-success",
+  "bg-warning/10 text-warning",
+  "bg-primary/10 text-primary",
 ];
 
 function HabitTracker() {
+  const programsQuery = useBdPrograms();
+  const checkinsQuery = useBdCheckins();
+
   return (
     <AppShell
       roleKey="behavioral-design"
@@ -155,17 +116,35 @@ function HabitTracker() {
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-3">
-            {programs.map((p) => (
-              <div key={p.t} className="rounded-xl border p-4">
-                <div className="flex items-center justify-between">
-                  <p className="text-sm font-bold">{p.t}</p>
-                  <Badge className={cn("border-0 font-semibold", p.tone)}>{p.status}</Badge>
-                </div>
-                <p className="text-muted-foreground mt-1 text-xs">
-                  {p.goal} · {p.active} active · streak {p.streak}
-                </p>
-              </div>
-            ))}
+            <QueryState<BdProgram[]>
+              query={programsQuery}
+              error={{ title: "Programs unavailable" }}
+              empty={{ title: "No programs", description: "Habit programs will show here." }}
+              isEmpty={(rows) => rows.length === 0}
+            >
+              {(rows) => (
+                <>
+                  {rows.map((p, i) => (
+                    <div key={p.id} className="rounded-xl border p-4">
+                      <div className="flex items-center justify-between">
+                        <p className="text-sm font-bold">{p.name}</p>
+                        <Badge
+                          className={cn(
+                            "border-0 font-semibold",
+                            programTones[i % programTones.length],
+                          )}
+                        >
+                          {p.status}
+                        </Badge>
+                      </div>
+                      <p className="text-muted-foreground mt-1 text-xs">
+                        {p.goal} · streak {p.streak}
+                      </p>
+                    </div>
+                  ))}
+                </>
+              )}
+            </QueryState>
           </CardContent>
         </Card>
 
@@ -176,28 +155,44 @@ function HabitTracker() {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead>Learner</TableHead>
-                  <TableHead>Program</TableHead>
-                  <TableHead>Streak</TableHead>
-                  <TableHead>Status</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {checkins.map((c) => (
-                  <TableRow key={c.l}>
-                    <TableCell className="font-semibold">{c.l}</TableCell>
-                    <TableCell>{c.program}</TableCell>
-                    <TableCell className="text-muted-foreground">{c.streak}</TableCell>
-                    <TableCell>
-                      <Badge className={cn("border-0 font-semibold", c.tone)}>{c.status}</Badge>
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
+            <QueryState<BdCheckin[]>
+              query={checkinsQuery}
+              error={{ title: "Check-ins unavailable" }}
+              empty={{ title: "No check-ins", description: "Daily check-ins will show here." }}
+              isEmpty={(rows) => rows.length === 0}
+            >
+              {(rows) => (
+                <Table>
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead>Learner</TableHead>
+                      <TableHead>Program</TableHead>
+                      <TableHead>Streak</TableHead>
+                      <TableHead>Status</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {rows.map((c, i) => (
+                      <TableRow key={c.id}>
+                        <TableCell className="font-semibold">{c.learner}</TableCell>
+                        <TableCell>{c.cycle}</TableCell>
+                        <TableCell className="text-muted-foreground">{c.streak}</TableCell>
+                        <TableCell>
+                          <Badge
+                            className={cn(
+                              "border-0 font-semibold",
+                              checkinTones[i % checkinTones.length],
+                            )}
+                          >
+                            {c.status}
+                          </Badge>
+                        </TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              )}
+            </QueryState>
           </CardContent>
         </Card>
       </div>

@@ -5,6 +5,9 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import { usePmBriefs } from "@/lib/query/productMarketing";
+import type { PmBrief } from "@/lib/api/productMarketing";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/product-marketing/briefs")({
@@ -20,46 +23,18 @@ export const Route = createFileRoute("/app/product-marketing/briefs")({
   component: CampaignBriefs,
 });
 
-const briefs = [
-  {
-    t: "Parent app beta launch",
-    objective: "1,000 waitlist signups in 3 weeks",
-    audience: "Diaspora parents 35-55",
-    channels: "Meta + LinkedIn + Email",
-    metric: "Waitlist CVR ≥ 12%",
-    status: "Approved",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    t: "Talent pass employer outreach",
-    objective: "20 new employer signups this quarter",
-    audience: "HR leaders · Lagos tech",
-    channels: "LinkedIn + Events",
-    metric: "Demo requests ≥ 40",
-    status: "In review",
-    tone: "bg-warning/10 text-warning",
-  },
-  {
-    t: "Data & AI track teaser",
-    objective: "Pre-launch awareness for Oct track",
-    audience: "Working adults 22-35",
-    channels: "TikTok + YouTube + SMS",
-    metric: "CTR ≥ 3.5%",
-    status: "Draft",
-    tone: "bg-muted-foreground/10 text-muted-foreground",
-  },
-  {
-    t: "Open day · Lekki campus",
-    objective: "350 attendees, 120 applications",
-    audience: "Prospects · Lagos",
-    channels: "Instagram + Radio",
-    metric: "Apply rate ≥ 30%",
-    status: "Approved",
-    tone: "bg-success/10 text-success",
-  },
-];
+const statusTones: Record<string, string> = {
+  approved: "bg-success/10 text-success",
+  "in review": "bg-warning/10 text-warning",
+};
+
+function toneFor(status: string): string {
+  return statusTones[status.toLowerCase()] ?? "bg-muted-foreground/10 text-muted-foreground";
+}
 
 function CampaignBriefs() {
+  const briefsQuery = usePmBriefs();
+
   return (
     <AppShell
       roleKey="product-marketing"
@@ -125,36 +100,52 @@ function CampaignBriefs() {
       </div>
 
       <div className="mt-5 grid gap-5 sm:grid-cols-2">
-        {briefs.map((b) => (
-          <Card key={b.t} className="bg-card shadow-soft border">
-            <CardHeader className="flex-row items-center justify-between">
-              <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
-                <PenTool className="text-primary size-4" /> {b.t}
-              </CardTitle>
-              <Badge className={cn("border-0 font-semibold", b.tone)}>{b.status}</Badge>
-            </CardHeader>
-            <CardContent className="space-y-3">
-              {[
-                { l: "Objective", v: b.objective },
-                { l: "Audience", v: b.audience },
-                { l: "Channels", v: b.channels },
-                { l: "Success metric", v: b.metric },
-              ].map((f) => (
-                <div key={f.l} className="rounded-xl border p-3">
-                  <p className="text-muted-foreground text-[10px] font-bold tracking-wide uppercase">
-                    {f.l}
-                  </p>
-                  <p className="mt-0.5 text-xs font-semibold">{f.v}</p>
-                </div>
+        <QueryState<PmBrief[]>
+          query={briefsQuery}
+          error={{ title: "Briefs unavailable" }}
+          empty={{
+            title: "No briefs",
+            description: "Campaign briefs will appear here.",
+          }}
+          isEmpty={(rows) => rows.length === 0}
+        >
+          {(rows) => (
+            <>
+              {rows.map((b) => (
+                <Card key={b.id} className="bg-card shadow-soft border">
+                  <CardHeader className="flex-row items-center justify-between">
+                    <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
+                      <PenTool className="text-primary size-4" /> {b.title}
+                    </CardTitle>
+                    <Badge className={cn("border-0 font-semibold", toneFor(b.status))}>
+                      {b.status}
+                    </Badge>
+                  </CardHeader>
+                  <CardContent className="space-y-3">
+                    {[
+                      { l: "Objective", v: b.objective },
+                      { l: "Audience", v: b.audience },
+                      { l: "Channels", v: b.channels },
+                      { l: "Success metric", v: b.metric },
+                    ].map((f) => (
+                      <div key={f.l} className="rounded-xl border p-3">
+                        <p className="text-muted-foreground text-[10px] font-bold tracking-wide uppercase">
+                          {f.l}
+                        </p>
+                        <p className="mt-0.5 text-xs font-semibold">{f.v}</p>
+                      </div>
+                    ))}
+                    <div className="flex items-center justify-between pt-1 text-xs font-semibold">
+                      <span className="text-muted-foreground">Budget burn</span>
+                      <span>74%</span>
+                    </div>
+                    <Progress value={74} className="h-2" />
+                  </CardContent>
+                </Card>
               ))}
-              <div className="flex items-center justify-between pt-1 text-xs font-semibold">
-                <span className="text-muted-foreground">Budget burn</span>
-                <span>74%</span>
-              </div>
-              <Progress value={74} className="h-2" />
-            </CardContent>
-          </Card>
-        ))}
+            </>
+          )}
+        </QueryState>
       </div>
     </AppShell>
   );

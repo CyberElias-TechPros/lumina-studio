@@ -4,6 +4,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import { useDevVars } from "@/lib/query/dev";
+import type { DevVar } from "@/lib/api/dev";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/dev/env")({
@@ -16,18 +19,14 @@ export const Route = createFileRoute("/app/dev/env")({
   component: DevEnv,
 });
 
-const vars = [
-  { k: "VITE_API_URL", v: "https://api.cea.edu.ng", s: "Prod", tone: "bg-success/10 text-success" },
-  {
-    k: "VITE_PAYSTACK_PUBLIC_KEY",
-    v: "pk_live_••••••••",
-    s: "Prod",
-    tone: "bg-success/10 text-success",
-  },
-  { k: "VITE_ANALYTICS_ID", v: "G-8QP2X4M9", s: "Staging", tone: "bg-warning/10 text-warning" },
-];
+function envTone(env: string) {
+  if (/prod|live/i.test(env)) return "bg-success/10 text-success";
+  return "bg-warning/10 text-warning";
+}
 
 function DevEnv() {
+  const varsQuery = useDevVars();
+
   return (
     <AppShell
       roleKey="instructor"
@@ -99,18 +98,32 @@ function DevEnv() {
           </CardTitle>
         </CardHeader>
         <CardContent className="divide-y">
-          {vars.map((v) => (
-            <div key={v.k} className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0">
-              <div className="min-w-0 flex-1">
-                <p className="font-mono text-sm font-bold">{v.k}</p>
-                <p className="font-mono text-muted-foreground text-xs">{v.v}</p>
-              </div>
-              <Badge className={cn("border-0 font-semibold", v.tone)}>{v.s}</Badge>
-              <Button variant="outline" size="sm" className="shrink-0 font-semibold">
-                Edit
-              </Button>
-            </div>
-          ))}
+          <QueryState<DevVar[]>
+            query={varsQuery}
+            error={{ title: "Variables unavailable" }}
+            empty={{ title: "No variables", description: "Environment variables will show here." }}
+            isEmpty={(rows) => rows.length === 0}
+          >
+            {(rows) => (
+              <>
+                {rows.map((v) => (
+                  <div
+                    key={v.id}
+                    className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
+                  >
+                    <div className="min-w-0 flex-1">
+                      <p className="font-mono text-sm font-bold">{v.key}</p>
+                      <p className="font-mono text-muted-foreground text-xs">{v.value}</p>
+                    </div>
+                    <Badge className={cn("border-0 font-semibold", envTone(v.env))}>{v.env}</Badge>
+                    <Button variant="outline" size="sm" className="shrink-0 font-semibold">
+                      Edit
+                    </Button>
+                  </div>
+                ))}
+              </>
+            )}
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>

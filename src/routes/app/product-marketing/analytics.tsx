@@ -13,6 +13,9 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import { usePmMonths } from "@/lib/query/productMarketing";
+import type { PmMonth } from "@/lib/api/productMarketing";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/product-marketing/analytics")({
@@ -25,16 +28,9 @@ export const Route = createFileRoute("/app/product-marketing/analytics")({
   component: PerformanceAnalytics,
 });
 
-const months = [
-  { m: "Feb", roi: "3.8x", win: "61%", pipe: "₦48m", pct: 62 },
-  { m: "Mar", roi: "4.1x", win: "63%", pipe: "₦52m", pct: 68 },
-  { m: "Apr", roi: "3.9x", win: "66%", pipe: "₦57m", pct: 71 },
-  { m: "May", roi: "4.4x", win: "65%", pipe: "₦61m", pct: 76 },
-  { m: "Jun", roi: "4.7x", win: "68%", pipe: "₦66m", pct: 82 },
-  { m: "Jul", roi: "4.2x", win: "68%", pipe: "₦71m", pct: 86 },
-];
-
 function PerformanceAnalytics() {
+  const monthsQuery = usePmMonths();
+
   return (
     <AppShell
       roleKey="product-marketing"
@@ -107,30 +103,44 @@ function PerformanceAnalytics() {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead>Month</TableHead>
-                  <TableHead>Launch ROI</TableHead>
-                  <TableHead>Win rate</TableHead>
-                  <TableHead>Pipeline</TableHead>
-                  <TableHead>Momentum</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {months.map((m) => (
-                  <TableRow key={m.m}>
-                    <TableCell className="font-semibold">{m.m}</TableCell>
-                    <TableCell>{m.roi}</TableCell>
-                    <TableCell>{m.win}</TableCell>
-                    <TableCell className="text-muted-foreground">{m.pipe}</TableCell>
-                    <TableCell className="w-32">
-                      <Progress value={m.pct} className="h-1.5" />
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
+            <QueryState<PmMonth[]>
+              query={monthsQuery}
+              error={{ title: "Trends unavailable" }}
+              empty={{
+                title: "No monthly data",
+                description: "Monthly performance trends will appear here.",
+              }}
+              isEmpty={(rows) => rows.length === 0}
+            >
+              {(rows) => (
+                <>
+                  <Table>
+                    <TableHeader>
+                      <TableRow>
+                        <TableHead>Month</TableHead>
+                        <TableHead>Launch ROI</TableHead>
+                        <TableHead>Win rate</TableHead>
+                        <TableHead>Pipeline</TableHead>
+                        <TableHead>Momentum</TableHead>
+                      </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                      {rows.map((m) => (
+                        <TableRow key={m.id}>
+                          <TableCell className="font-semibold">{m.month}</TableCell>
+                          <TableCell>{m.roi}</TableCell>
+                          <TableCell>{m.winRate}</TableCell>
+                          <TableCell className="text-muted-foreground">{m.pipeline}</TableCell>
+                          <TableCell className="w-32">
+                            <Progress value={m.pct} className="h-1.5" />
+                          </TableCell>
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                  </Table>
+                </>
+              )}
+            </QueryState>
           </CardContent>
         </Card>
 

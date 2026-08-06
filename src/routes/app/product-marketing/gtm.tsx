@@ -22,6 +22,9 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import { usePmPhases, usePmTasks, usePmGates } from "@/lib/query/productMarketing";
+import type { PmPhase, PmTask, PmGate } from "@/lib/api/productMarketing";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/product-marketing/gtm")({
@@ -34,58 +37,28 @@ export const Route = createFileRoute("/app/product-marketing/gtm")({
   component: GtmPlanner,
 });
 
-const phases = [
-  {
-    name: "Parent app · Beta",
-    phase: "Phase 1 · Discovery",
-    pct: 100,
-    tone: "bg-success/10 text-success",
-    status: "Complete",
-  },
-  {
-    name: "Parent app · Beta",
-    phase: "Phase 2 · Build & validate",
-    pct: 64,
-    tone: "bg-primary/10 text-primary",
-    status: "In progress",
-  },
-  {
-    name: "Employer talent pass",
-    phase: "Phase 3 · Launch",
-    pct: 12,
-    tone: "bg-warning/10 text-warning",
-    status: "Upcoming",
-  },
-];
+const statusTones: Record<string, string> = {
+  done: "bg-success/10 text-success",
+  complete: "bg-success/10 text-success",
+  approved: "bg-success/10 text-success",
+  "on track": "bg-primary/10 text-primary",
+  "in progress": "bg-primary/10 text-primary",
+  doing: "bg-primary/10 text-primary",
+  building: "bg-primary/10 text-primary",
+  "in review": "bg-warning/10 text-warning",
+  "at risk": "bg-warning/10 text-warning",
+  upcoming: "bg-warning/10 text-warning",
+};
 
-const tasks = [
-  {
-    t: "Beta waitlist page live",
-    o: "Chiamaka Eze",
-    s: "Done",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    t: "Pricing FAQ for beta cohort",
-    o: "Tunde Bakare",
-    s: "In review",
-    tone: "bg-warning/10 text-warning",
-  },
-  {
-    t: "Store listing screenshots",
-    o: "Ada Obi",
-    s: "Doing",
-    tone: "bg-primary/10 text-primary",
-  },
-  {
-    t: "Launch blog + social kit",
-    o: "Ngozi Adeyemi",
-    s: "Todo",
-    tone: "bg-muted-foreground/10 text-muted-foreground",
-  },
-];
+function toneFor(status: string): string {
+  return statusTones[status.toLowerCase()] ?? "bg-muted-foreground/10 text-muted-foreground";
+}
 
 function GtmPlanner() {
+  const phasesQuery = usePmPhases();
+  const tasksQuery = usePmTasks();
+  const gatesQuery = usePmGates();
+
   return (
     <AppShell
       roleKey="product-marketing"
@@ -158,16 +131,32 @@ function GtmPlanner() {
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-5">
-            {phases.map((p) => (
-              <div key={p.name + p.phase}>
-                <div className="flex items-center justify-between text-xs font-semibold">
-                  <span className="text-sm font-bold">{p.phase}</span>
-                  <Badge className={cn("border-0 font-semibold", p.tone)}>{p.status}</Badge>
-                </div>
-                <div className="text-muted-foreground mt-0.5 text-xs">{p.name}</div>
-                <Progress value={p.pct} className="mt-1.5 h-2" />
-              </div>
-            ))}
+            <QueryState<PmPhase[]>
+              query={phasesQuery}
+              error={{ title: "Phases unavailable" }}
+              empty={{
+                title: "No phases",
+                description: "Launch phase progress will show here.",
+              }}
+              isEmpty={(rows) => rows.length === 0}
+            >
+              {(rows) => (
+                <>
+                  {rows.map((p) => (
+                    <div key={p.id}>
+                      <div className="flex items-center justify-between text-xs font-semibold">
+                        <span className="text-sm font-bold">{p.phase}</span>
+                        <Badge className={cn("border-0 font-semibold", toneFor(p.status))}>
+                          {p.status}
+                        </Badge>
+                      </div>
+                      <div className="text-muted-foreground mt-0.5 text-xs">{p.launch}</div>
+                      <Progress value={p.pct} className="mt-1.5 h-2" />
+                    </div>
+                  ))}
+                </>
+              )}
+            </QueryState>
           </CardContent>
         </Card>
 
@@ -178,15 +167,34 @@ function GtmPlanner() {
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-3">
-            {tasks.map((t) => (
-              <div key={t.t} className="flex items-center justify-between rounded-xl border p-3">
-                <div className="min-w-0">
-                  <p className="truncate text-sm font-semibold">{t.t}</p>
-                  <p className="text-muted-foreground text-xs">{t.o}</p>
-                </div>
-                <Badge className={cn("border-0 font-semibold", t.tone)}>{t.s}</Badge>
-              </div>
-            ))}
+            <QueryState<PmTask[]>
+              query={tasksQuery}
+              error={{ title: "Tasks unavailable" }}
+              empty={{
+                title: "No tasks",
+                description: "Task checklist items will show here.",
+              }}
+              isEmpty={(rows) => rows.length === 0}
+            >
+              {(rows) => (
+                <>
+                  {rows.map((t) => (
+                    <div
+                      key={t.id}
+                      className="flex items-center justify-between rounded-xl border p-3"
+                    >
+                      <div className="min-w-0">
+                        <p className="truncate text-sm font-semibold">{t.title}</p>
+                        <p className="text-muted-foreground text-xs">{t.owner}</p>
+                      </div>
+                      <Badge className={cn("border-0 font-semibold", toneFor(t.status))}>
+                        {t.status}
+                      </Badge>
+                    </div>
+                  ))}
+                </>
+              )}
+            </QueryState>
           </CardContent>
         </Card>
       </div>
@@ -198,63 +206,46 @@ function GtmPlanner() {
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead>Phase</TableHead>
-                <TableHead>Gate</TableHead>
-                <TableHead>Owner</TableHead>
-                <TableHead>Due</TableHead>
-                <TableHead>Status</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {[
-                {
-                  p: "Discovery",
-                  g: "Market sizing sign-off",
-                  o: "Emeka Okafor",
-                  d: "Jun 12",
-                  s: "Done",
-                  tone: "bg-success/10 text-success",
-                },
-                {
-                  p: "Build",
-                  g: "Beta waitlist ≥ 500",
-                  o: "Ada Obi",
-                  d: "Jul 25",
-                  s: "On track",
-                  tone: "bg-primary/10 text-primary",
-                },
-                {
-                  p: "Build",
-                  g: "Onboarding walkthrough QA",
-                  o: "Tunde Bakare",
-                  d: "Aug 02",
-                  s: "At risk",
-                  tone: "bg-warning/10 text-warning",
-                },
-                {
-                  p: "Launch",
-                  g: "Release approval",
-                  o: "Chiamaka Eze",
-                  d: "Aug 14",
-                  s: "Planned",
-                  tone: "bg-muted-foreground/10 text-muted-foreground",
-                },
-              ].map((r) => (
-                <TableRow key={r.g}>
-                  <TableCell className="font-semibold">{r.p}</TableCell>
-                  <TableCell>{r.g}</TableCell>
-                  <TableCell className="text-muted-foreground">{r.o}</TableCell>
-                  <TableCell className="text-muted-foreground">{r.d}</TableCell>
-                  <TableCell>
-                    <Badge className={cn("border-0 font-semibold", r.tone)}>{r.s}</Badge>
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
+          <QueryState<PmGate[]>
+            query={gatesQuery}
+            error={{ title: "Gates unavailable" }}
+            empty={{
+              title: "No gates",
+              description: "Gate checklists will show here.",
+            }}
+            isEmpty={(rows) => rows.length === 0}
+          >
+            {(rows) => (
+              <>
+                <Table>
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead>Phase</TableHead>
+                      <TableHead>Gate</TableHead>
+                      <TableHead>Owner</TableHead>
+                      <TableHead>Due</TableHead>
+                      <TableHead>Status</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {rows.map((g) => (
+                      <TableRow key={g.id}>
+                        <TableCell className="font-semibold">{g.phase}</TableCell>
+                        <TableCell>{g.gate}</TableCell>
+                        <TableCell className="text-muted-foreground">{g.owner}</TableCell>
+                        <TableCell className="text-muted-foreground">{g.dueLabel}</TableCell>
+                        <TableCell>
+                          <Badge className={cn("border-0 font-semibold", toneFor(g.status))}>
+                            {g.status}
+                          </Badge>
+                        </TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </>
+            )}
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>

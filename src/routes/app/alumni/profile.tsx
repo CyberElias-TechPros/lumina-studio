@@ -20,6 +20,9 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Switch } from "@/components/ui/switch";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import type { AluAchievement, AluJob, AluSkill } from "@/lib/api/alumni";
+import { useAluAchievements, useAluJobs, useAluSkills } from "@/lib/query/alumni";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/alumni/profile")({
@@ -35,70 +38,17 @@ export const Route = createFileRoute("/app/alumni/profile")({
   component: AlumniProfile,
 });
 
-const jobs = [
-  {
-    role: "Frontend Engineer",
-    company: "Kuda",
-    period: "2025 – present",
-    place: "Lekki, Lagos",
-    current: true,
-    desc: "Building onboarding flows and the design system used by 3.4m customers.",
-  },
-  {
-    role: "Junior Software Developer",
-    company: "Interswitch",
-    period: "2024 – 2025",
-    place: "Victoria Island, Lagos",
-    current: false,
-    desc: "Shipped payment integrations for 14 partners in my first year.",
-  },
-  {
-    role: "Software Engineering Intern",
-    company: "Zuri",
-    period: "2024",
-    place: "Remote",
-    current: false,
-    desc: "Full-stack internship; ended with a production dashboard for a Lagos logistics startup.",
-  },
-];
-
-const achievements = [
-  {
-    title: "Full-Stack Diploma — Distinction",
-    org: "CEA · Cohort 12",
-    year: "2024",
-    icon: GraduationCap,
-    tone: "bg-primary/10 text-primary",
-  },
-  {
-    title: "AWS Cloud Practitioner",
-    org: "Amazon Web Services",
-    year: "2025",
-    icon: Award,
-    tone: "bg-warning/10 text-warning",
-  },
-  {
-    title: "Cohort 12 Class Representative",
-    org: "CEA Student Life",
-    year: "2024",
-    icon: Star,
-    tone: "bg-learning/10 text-learning",
-  },
-];
-
-const skills = [
-  "TypeScript",
-  "React",
-  "Node.js",
-  "Tailwind CSS",
-  "PostgreSQL",
-  "Docker",
-  "CI/CD",
-  "Design systems",
-  "REST APIs",
+const achievementMeta = [
+  { icon: GraduationCap, tone: "bg-primary/10 text-primary" },
+  { icon: Award, tone: "bg-warning/10 text-warning" },
+  { icon: Star, tone: "bg-learning/10 text-learning" },
 ];
 
 function AlumniProfile() {
+  const jobsQuery = useAluJobs();
+  const achievementsQuery = useAluAchievements();
+  const skillsQuery = useAluSkills();
+
   return (
     <AppShell
       roleKey="alumni"
@@ -169,27 +119,43 @@ function AlumniProfile() {
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
-            {jobs.map((j) => (
-              <div key={j.role + j.company} className="rounded-xl border p-4">
-                <div className="flex flex-wrap items-center justify-between gap-2">
-                  <div>
-                    <p className="text-sm font-bold">
-                      {j.role}
-                      <span className="text-muted-foreground"> · {j.company}</span>
-                    </p>
-                    <p className="text-muted-foreground mt-0.5 text-xs">
-                      {j.period} · {j.place}
-                    </p>
-                  </div>
-                  {j.current && (
-                    <Badge className="bg-success/10 text-success border-0 font-semibold">
-                      Current
-                    </Badge>
-                  )}
-                </div>
-                <p className="text-muted-foreground mt-2 text-xs leading-relaxed">{j.desc}</p>
-              </div>
-            ))}
+            <QueryState<AluJob[]>
+              query={jobsQuery}
+              error={{ title: "Employment history unavailable" }}
+              empty={{
+                title: "No employment history",
+                description: "Your roles will appear here.",
+              }}
+              isEmpty={(rows) => rows.length === 0}
+            >
+              {(rows) => (
+                <>
+                  {rows.map((j) => (
+                    <div key={j.id} className="rounded-xl border p-4">
+                      <div className="flex flex-wrap items-center justify-between gap-2">
+                        <div>
+                          <p className="text-sm font-bold">
+                            {j.role}
+                            <span className="text-muted-foreground"> · {j.company}</span>
+                          </p>
+                          <p className="text-muted-foreground mt-0.5 text-xs">
+                            {j.period} · {j.place}
+                          </p>
+                        </div>
+                        {j.current === 1 && (
+                          <Badge className="bg-success/10 text-success border-0 font-semibold">
+                            Current
+                          </Badge>
+                        )}
+                      </div>
+                      <p className="text-muted-foreground mt-2 text-xs leading-relaxed">
+                        {j.description}
+                      </p>
+                    </div>
+                  ))}
+                </>
+              )}
+            </QueryState>
           </CardContent>
         </Card>
 
@@ -201,24 +167,44 @@ function AlumniProfile() {
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-3">
-              {achievements.map((a) => (
-                <div key={a.title} className="flex items-center gap-3 rounded-xl border p-3">
-                  <span
-                    className={cn("grid size-9 shrink-0 place-items-center rounded-lg", a.tone)}
-                  >
-                    <a.icon className="size-4" />
-                  </span>
-                  <div className="min-w-0 flex-1">
-                    <p className="text-xs font-bold">{a.title}</p>
-                    <p className="text-muted-foreground text-[11px]">
-                      {a.org} · {a.year}
-                    </p>
-                  </div>
-                  <Badge className="bg-success/10 text-success border-0 font-semibold">
-                    <ShieldCheck className="mr-1 size-3" /> Verified
-                  </Badge>
-                </div>
-              ))}
+              <QueryState<AluAchievement[]>
+                query={achievementsQuery}
+                error={{ title: "Achievements unavailable" }}
+                empty={{
+                  title: "No achievements yet",
+                  description: "Your certifications will appear here.",
+                }}
+                isEmpty={(rows) => rows.length === 0}
+              >
+                {(rows) => (
+                  <>
+                    {rows.map((a, i) => {
+                      const meta = achievementMeta[i % achievementMeta.length];
+                      return (
+                        <div key={a.id} className="flex items-center gap-3 rounded-xl border p-3">
+                          <span
+                            className={cn(
+                              "grid size-9 shrink-0 place-items-center rounded-lg",
+                              meta.tone,
+                            )}
+                          >
+                            <meta.icon className="size-4" />
+                          </span>
+                          <div className="min-w-0 flex-1">
+                            <p className="text-xs font-bold">{a.title}</p>
+                            <p className="text-muted-foreground text-[11px]">
+                              {a.org} · {a.year}
+                            </p>
+                          </div>
+                          <Badge className="bg-success/10 text-success border-0 font-semibold">
+                            <ShieldCheck className="mr-1 size-3" /> Verified
+                          </Badge>
+                        </div>
+                      );
+                    })}
+                  </>
+                )}
+              </QueryState>
             </CardContent>
           </Card>
 
@@ -229,11 +215,25 @@ function AlumniProfile() {
               </CardTitle>
             </CardHeader>
             <CardContent className="flex flex-wrap gap-2">
-              {skills.map((s) => (
-                <Badge key={s} variant="secondary" className="font-semibold">
-                  {s}
-                </Badge>
-              ))}
+              <QueryState<AluSkill[]>
+                query={skillsQuery}
+                error={{ title: "Skills unavailable" }}
+                empty={{
+                  title: "No skills added",
+                  description: "Add skills to boost your profile visibility.",
+                }}
+                isEmpty={(rows) => rows.length === 0}
+              >
+                {(rows) => (
+                  <>
+                    {rows.map((s) => (
+                      <Badge key={s.id} variant="secondary" className="font-semibold">
+                        {s.name}
+                      </Badge>
+                    ))}
+                  </>
+                )}
+              </QueryState>
             </CardContent>
           </Card>
         </div>

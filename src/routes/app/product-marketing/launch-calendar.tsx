@@ -13,6 +13,9 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import { usePmLaunches, usePmReadiness } from "@/lib/query/productMarketing";
+import type { PmLaunch, PmReadinessItem } from "@/lib/api/productMarketing";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/product-marketing/launch-calendar")({
@@ -25,42 +28,28 @@ export const Route = createFileRoute("/app/product-marketing/launch-calendar")({
   component: LaunchCalendar,
 });
 
-const launches = [
-  {
-    name: "Parent app beta",
-    date: "Aug 14, 2026",
-    phase: "Phase 2 · Build",
-    owner: "Ada Obi",
-    status: "On track",
-    tone: "bg-primary/10 text-primary",
-  },
-  {
-    name: "Employer talent pass 2.0",
-    date: "Sep 04, 2026",
-    phase: "Phase 1 · Discovery",
-    owner: "Tunde Bakare",
-    status: "Discovery",
-    tone: "bg-warning/10 text-warning",
-  },
-  {
-    name: "Data & AI track",
-    date: "Oct 09, 2026",
-    phase: "Phase 1 · Discovery",
-    owner: "Chiamaka Eze",
-    status: "Planned",
-    tone: "bg-muted-foreground/10 text-muted-foreground",
-  },
-  {
-    name: "Alumni marketplace",
-    date: "Nov 20, 2026",
-    phase: "Ideation",
-    owner: "Ngozi Adeyemi",
-    status: "Draft",
-    tone: "bg-muted-foreground/10 text-muted-foreground",
-  },
-];
+const statusTones: Record<string, string> = {
+  done: "bg-success/10 text-success",
+  complete: "bg-success/10 text-success",
+  approved: "bg-success/10 text-success",
+  "on track": "bg-primary/10 text-primary",
+  "in progress": "bg-primary/10 text-primary",
+  building: "bg-primary/10 text-primary",
+  "in review": "bg-warning/10 text-warning",
+  "at risk": "bg-warning/10 text-warning",
+  discovery: "bg-warning/10 text-warning",
+  upcoming: "bg-warning/10 text-warning",
+  queued: "bg-error/10 text-error",
+};
+
+function toneFor(status: string): string {
+  return statusTones[status.toLowerCase()] ?? "bg-muted-foreground/10 text-muted-foreground";
+}
 
 function LaunchCalendar() {
+  const launchesQuery = usePmLaunches();
+  const readinessQuery = usePmReadiness();
+
   return (
     <AppShell
       roleKey="product-marketing"
@@ -132,30 +121,46 @@ function LaunchCalendar() {
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead>Launch</TableHead>
-                <TableHead>Date</TableHead>
-                <TableHead>Phase</TableHead>
-                <TableHead>Owner</TableHead>
-                <TableHead>Status</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {launches.map((l) => (
-                <TableRow key={l.name}>
-                  <TableCell className="font-semibold">{l.name}</TableCell>
-                  <TableCell>{l.date}</TableCell>
-                  <TableCell className="text-muted-foreground">{l.phase}</TableCell>
-                  <TableCell className="text-muted-foreground">{l.owner}</TableCell>
-                  <TableCell>
-                    <Badge className={cn("border-0 font-semibold", l.tone)}>{l.status}</Badge>
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
+          <QueryState<PmLaunch[]>
+            query={launchesQuery}
+            error={{ title: "Launches unavailable" }}
+            empty={{
+              title: "No launches",
+              description: "Upcoming launches will show here.",
+            }}
+            isEmpty={(rows) => rows.length === 0}
+          >
+            {(rows) => (
+              <>
+                <Table>
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead>Launch</TableHead>
+                      <TableHead>Date</TableHead>
+                      <TableHead>Phase</TableHead>
+                      <TableHead>Owner</TableHead>
+                      <TableHead>Status</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {rows.map((l) => (
+                      <TableRow key={l.id}>
+                        <TableCell className="font-semibold">{l.name}</TableCell>
+                        <TableCell>{l.dateLabel}</TableCell>
+                        <TableCell className="text-muted-foreground">{l.phase}</TableCell>
+                        <TableCell className="text-muted-foreground">{l.owner}</TableCell>
+                        <TableCell>
+                          <Badge className={cn("border-0 font-semibold", toneFor(l.status))}>
+                            {l.status}
+                          </Badge>
+                        </TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </>
+            )}
+          </QueryState>
         </CardContent>
       </Card>
 
@@ -166,30 +171,31 @@ function LaunchCalendar() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-5">
-          {[
-            {
-              label: "Messaging & positioning",
-              v: 100,
-              tone: "bg-success/10 text-success",
-              s: "Done",
-            },
-            {
-              label: "Beta onboarding flow",
-              v: 78,
-              tone: "bg-primary/10 text-primary",
-              s: "Building",
-            },
-            { label: "Support & FAQ", v: 42, tone: "bg-warning/10 text-warning", s: "In review" },
-            { label: "Store listing assets", v: 15, tone: "bg-error/10 text-error", s: "Queued" },
-          ].map((r) => (
-            <div key={r.label}>
-              <div className="flex items-center justify-between text-xs font-semibold">
-                <span className="text-sm font-bold">{r.label}</span>
-                <Badge className={cn("border-0 font-semibold", r.tone)}>{r.s}</Badge>
-              </div>
-              <Progress value={r.v} className="mt-1.5 h-2" />
-            </div>
-          ))}
+          <QueryState<PmReadinessItem[]>
+            query={readinessQuery}
+            error={{ title: "Readiness unavailable" }}
+            empty={{
+              title: "No readiness items",
+              description: "Launch readiness scores will show here.",
+            }}
+            isEmpty={(rows) => rows.length === 0}
+          >
+            {(rows) => (
+              <>
+                {rows.map((r) => (
+                  <div key={r.id}>
+                    <div className="flex items-center justify-between text-xs font-semibold">
+                      <span className="text-sm font-bold">{r.label}</span>
+                      <Badge className={cn("border-0 font-semibold", toneFor(r.status))}>
+                        {r.status}
+                      </Badge>
+                    </div>
+                    <Progress value={r.pct} className="mt-1.5 h-2" />
+                  </div>
+                ))}
+              </>
+            )}
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>
