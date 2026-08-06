@@ -4,6 +4,13 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import {
+  useIntEvaluationItems,
+  useIntEvaluations,
+  useIntSkillItems,
+} from "@/lib/query/internDashboard";
+import type { IntEvaluation } from "@/lib/api/internDashboard";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/intern/evaluation")({
@@ -16,23 +23,40 @@ export const Route = createFileRoute("/app/intern/evaluation")({
   component: InternEvaluation,
 });
 
-const evals = [
-  { e: "Self-evaluation (mid)", v: "4.2 / 5", s: "Submitted", tone: "bg-success/10 text-success" },
-  {
-    e: "Supervisor review (mid)",
-    v: "4.0 / 5",
-    s: "Completed",
-    tone: "bg-primary/10 text-primary",
-  },
-  { e: "Final evaluation", v: "—", s: "Due week 12", tone: "bg-warning/10 text-warning" },
-];
+const evalLabel: Record<string, string> = {
+  self: "Self-evaluation (mid)",
+  supervisor: "Supervisor review (mid)",
+  final: "Final evaluation",
+};
+
+const evalMeta: Record<string, { label: string; tone: string }> = {
+  self: { label: "Submitted", tone: "bg-success/10 text-success" },
+  supervisor: { label: "Completed", tone: "bg-primary/10 text-primary" },
+  final: { label: "Due week 12", tone: "bg-warning/10 text-warning" },
+};
 
 function InternEvaluation() {
+  const evaluationsQuery = useIntEvaluations();
+  const evaluations = useIntEvaluationItems();
+  const skills = useIntSkillItems();
+
+  const self = evaluations.find((e) => e.kind === "self");
+  const supervisor = evaluations.find((e) => e.kind === "supervisor");
+  const scored = [self, supervisor].filter((e): e is IntEvaluation => Boolean(e && e.score > 0));
+  const combined =
+    scored.length > 0
+      ? (scored.reduce((n, e) => n + e.score, 0) / scored.length).toFixed(1)
+      : "0.0";
+
   return (
     <AppShell
       roleKey="student"
       title="Evaluation"
-      subtitle="Midpoint: 4.1 / 5 combined · strong trajectory"
+      subtitle={
+        scored.length > 0
+          ? `Midpoint: ${combined} / 5 combined · strong trajectory`
+          : "Midpoint review"
+      }
       actions={
         <>
           <Badge className="bg-success/10 text-success border-0 font-semibold">Above target</Badge>
@@ -48,28 +72,28 @@ function InternEvaluation() {
         {[
           {
             label: "Self",
-            value: "4.2",
+            value: evaluations.length > 0 ? (self?.score.toFixed(1) ?? "—") : "—",
             delta: "out of 5",
             icon: ClipboardCheck,
             tone: "bg-primary/10 text-primary",
           },
           {
             label: "Supervisor",
-            value: "4.0",
+            value: evaluations.length > 0 ? (supervisor?.score.toFixed(1) ?? "—") : "—",
             delta: "out of 5",
             icon: FileText,
             tone: "bg-learning/10 text-learning",
           },
           {
             label: "Combined",
-            value: "4.1",
+            value: evaluations.length > 0 ? combined : "—",
             delta: "target 3.5",
             icon: Star,
             tone: "bg-success/10 text-success",
           },
           {
             label: "Skills rated",
-            value: "12",
+            value: skills.length > 0 ? String(skills.length) : "—",
             delta: "all criteria met",
             icon: Award,
             tone: "bg-warning/10 text-warning",
@@ -99,18 +123,41 @@ function InternEvaluation() {
           </CardTitle>
         </CardHeader>
         <CardContent className="divide-y">
-          {evals.map((e) => (
-            <div key={e.e} className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0">
-              <div className="min-w-0 flex-1">
-                <p className="text-sm font-bold">{e.e}</p>
-                <p className="text-muted-foreground text-xs">{e.v}</p>
-              </div>
-              <Badge className={cn("border-0 font-semibold", e.tone)}>{e.s}</Badge>
-              <Button variant="outline" size="sm" className="shrink-0 font-semibold">
-                View
-              </Button>
-            </div>
-          ))}
+          <QueryState<IntEvaluation[]>
+            query={evaluationsQuery}
+            error={{ title: "Evaluations unavailable" }}
+            empty={{ title: "No reviews yet", description: "Reviews will appear here." }}
+            isEmpty={(rows) => rows.length === 0}
+          >
+            {(rows) => (
+              <>
+                {rows.map((e) => {
+                  const meta = evalMeta[e.kind] ?? {
+                    label: e.status,
+                    tone: "bg-muted text-muted-foreground",
+                  };
+                  const value = e.score > 0 ? `${e.score.toFixed(1)} / 5` : e.status;
+                  return (
+                    <div
+                      key={e.id}
+                      className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
+                    >
+                      <div className="min-w-0 flex-1">
+                        <p className="text-sm font-bold">{evalLabel[e.kind]}</p>
+                        <p className="text-muted-foreground text-xs">{value}</p>
+                      </div>
+                      <Badge className={cn("border-0 font-semibold", meta.tone)}>
+                        {meta.label}
+                      </Badge>
+                      <Button variant="outline" size="sm" className="shrink-0 font-semibold">
+                        View
+                      </Button>
+                    </div>
+                  );
+                })}
+              </>
+            )}
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>

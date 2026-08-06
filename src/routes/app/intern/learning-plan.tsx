@@ -4,6 +4,14 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import {
+  useIntMilestoneItems,
+  useIntMilestones,
+  useIntResourceItems,
+  useIntSkillItems,
+} from "@/lib/query/internDashboard";
+import type { IntMilestone } from "@/lib/api/internDashboard";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/intern/learning-plan")({
@@ -16,29 +24,31 @@ export const Route = createFileRoute("/app/intern/learning-plan")({
   component: InternLearningPlan,
 });
 
-const milestones = [
-  { m: "Onboarding & environment setup", s: "Done", pct: 100, tone: "bg-success/10 text-success" },
-  {
-    m: "CI/CD pipeline fundamentals",
-    s: "In progress",
-    pct: 65,
-    tone: "bg-primary/10 text-primary",
-  },
-  { m: "Monitoring & alerting", s: "In progress", pct: 40, tone: "bg-learning/10 text-learning" },
-  {
-    m: "Cloud provisioning basics",
-    s: "Not started",
-    pct: 0,
-    tone: "bg-muted text-muted-foreground",
-  },
-];
+const milestoneBadge: Record<string, { label: string; tone: string }> = {
+  done: { label: "Done", tone: "bg-success/10 text-success" },
+  "in progress": { label: "In progress", tone: "bg-primary/10 text-primary" },
+  "not started": { label: "Not started", tone: "bg-muted text-muted-foreground" },
+};
 
 function InternLearningPlan() {
+  const milestonesQuery = useIntMilestones();
+  const milestones = useIntMilestoneItems();
+  const skills = useIntSkillItems();
+  const resources = useIntResourceItems();
+
+  const completed = milestones.filter((m) => m.status === "done").length;
+  const mastered = skills.filter((s) => s.mastery === "mastered").length;
+  const planPct = milestones.length > 0 ? Math.round((completed / milestones.length) * 100) : 0;
+
   return (
     <AppShell
       roleKey="student"
       title="Learning plan"
-      subtitle="DevOps track · 6 milestones · week 6 of 12"
+      subtitle={
+        milestones.length > 0
+          ? `DevOps track · ${milestones.length} milestones · week 6 of 12`
+          : "DevOps track · 6 milestones · week 6 of 12"
+      }
       actions={
         <>
           <Badge className="bg-primary/10 text-primary border-0 font-semibold">Week 6 of 12</Badge>
@@ -54,28 +64,28 @@ function InternLearningPlan() {
         {[
           {
             label: "Milestones",
-            value: "6",
-            delta: "for 12 weeks",
+            value: milestones.length > 0 ? String(milestones.length) : "—",
+            delta: "in your plan",
             icon: CircleDot,
             tone: "bg-primary/10 text-primary",
           },
           {
             label: "Completed",
-            value: "2",
-            delta: "33% of plan",
+            value: milestones.length > 0 ? String(completed) : "—",
+            delta: `${planPct}% of plan`,
             icon: CheckCircle2,
             tone: "bg-success/10 text-success",
           },
           {
             label: "Skills tracked",
-            value: "18",
-            delta: "6 mastered",
+            value: skills.length > 0 ? String(skills.length) : "—",
+            delta: `${mastered} mastered`,
             icon: Target,
             tone: "bg-learning/10 text-learning",
           },
           {
             label: "Resources",
-            value: "24",
+            value: resources.length > 0 ? String(resources.length) : "—",
             delta: "curated links",
             icon: BookOpen,
             tone: "bg-warning/10 text-warning",
@@ -105,23 +115,42 @@ function InternLearningPlan() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
-          {milestones.map((m) => (
-            <div key={m.m}>
-              <div className="flex items-center justify-between text-xs font-semibold">
-                <span>{m.m}</span>
-                <Badge className={cn("border-0 font-semibold", m.tone)}>{m.s}</Badge>
-              </div>
-              <div className="bg-muted mt-1.5 h-2 overflow-hidden rounded-full">
-                <div
-                  className={cn(
-                    "h-full rounded-full",
-                    m.pct > 0 ? "bg-gradient-brand" : "bg-muted",
-                  )}
-                  style={{ width: `${m.pct}%` }}
-                />
-              </div>
-            </div>
-          ))}
+          <QueryState<IntMilestone[]>
+            query={milestonesQuery}
+            error={{ title: "Plan unavailable" }}
+            empty={{ title: "No milestones yet", description: "Your plan will show here." }}
+            isEmpty={(rows) => rows.length === 0}
+          >
+            {(rows) => (
+              <>
+                {rows.map((m) => {
+                  const meta = milestoneBadge[m.status] ?? {
+                    label: m.status,
+                    tone: "bg-muted text-muted-foreground",
+                  };
+                  return (
+                    <div key={m.id}>
+                      <div className="flex items-center justify-between text-xs font-semibold">
+                        <span>{m.title}</span>
+                        <Badge className={cn("border-0 font-semibold", meta.tone)}>
+                          {meta.label}
+                        </Badge>
+                      </div>
+                      <div className="bg-muted mt-1.5 h-2 overflow-hidden rounded-full">
+                        <div
+                          className={cn(
+                            "h-full rounded-full",
+                            m.progressPct > 0 ? "bg-gradient-brand" : "bg-muted",
+                          )}
+                          style={{ width: `${m.progressPct}%` }}
+                        />
+                      </div>
+                    </div>
+                  );
+                })}
+              </>
+            )}
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>

@@ -120,6 +120,9 @@ export const RBAC_RULES: RbacRule[] = [
   /* Mentor dashboard — admin + instructor + mentor only */
   { methods: ["*"], path: "/v1/mentor-dashboard/*", roles: ["admin", "instructor", "mentor"] },
 
+  /* Intern dashboard — admin + instructor + student only */
+  { methods: ["*"], path: "/v1/intern-dashboard/*", roles: ["admin", "instructor", "student"] },
+
   /* Operations suite — admin + instructor only */
   { methods: ["*"], path: "/v1/ops/*", roles: ["admin", "instructor"] },
 

@@ -12,6 +12,11 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import {
+  useIntMentorSessionItems,
+  useIntTaskItems,
+  useIntTimesheetItems,
+} from "@/lib/query/internDashboard";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/intern/")({
@@ -66,11 +71,30 @@ const screens = [
 ];
 
 function InternHub() {
+  const tasks = useIntTaskItems();
+  const timesheets = useIntTimesheetItems();
+  const sessions = useIntMentorSessionItems();
+
+  const openTasks = tasks.filter(
+    (t) => t.status === "assigned" || t.status === "in-progress",
+  ).length;
+  const hoursLogged = timesheets.reduce((n, w) => n + w.hours, 0);
+  const upcoming = sessions.find((s) => s.status === "upcoming");
+  const decided = tasks.filter((t) => t.status === "approved" || t.status === "in-review");
+  const onTime =
+    decided.length > 0
+      ? Math.round((tasks.filter((t) => t.status === "approved").length / decided.length) * 100)
+      : 0;
+
   return (
     <AppShell
       roleKey="student"
       title="Intern hub"
-      subtitle="DevOps track · week 6 of 12 · supervisor: Ms. Chidera"
+      subtitle={
+        tasks.length > 0
+          ? `DevOps track · week 6 of 12 · ${openTasks} open tasks, ${hoursLogged}h logged`
+          : "DevOps track · week 6 of 12 · supervisor: Ms. Chidera"
+      }
       actions={
         <>
           <Badge className="bg-success/10 text-success border-0 font-semibold">On track</Badge>
@@ -86,28 +110,28 @@ function InternHub() {
         {[
           {
             label: "Tasks",
-            value: "12",
-            delta: "2 due this week",
+            value: tasks.length > 0 ? String(tasks.length) : "—",
+            delta: `${openTasks} due this week`,
             icon: ListTodo,
             tone: "bg-primary/10 text-primary",
           },
           {
             label: "Hours logged",
-            value: "182h",
+            value: timesheets.length > 0 ? `${hoursLogged}h` : "—",
             delta: "of 480 target",
             icon: Clock3,
             tone: "bg-learning/10 text-learning",
           },
           {
             label: "Mentor sessions",
-            value: "4",
-            delta: "next Wed 10:00",
+            value: sessions.length > 0 ? String(sessions.length) : "—",
+            delta: upcoming ? `next ${upcoming.dateText}` : "no upcoming",
             icon: Target,
             tone: "bg-success/10 text-success",
           },
           {
-            label: "Evaluation",
-            value: "62%",
+            label: "On-time rate",
+            value: tasks.length > 0 ? `${onTime}%` : "—",
             delta: "midpoint review",
             icon: CalendarCheck2,
             tone: "bg-warning/10 text-warning",

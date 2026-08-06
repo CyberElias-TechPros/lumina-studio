@@ -4,6 +4,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import { useIntTaskItems, useIntTasks } from "@/lib/query/internDashboard";
+import type { IntTask } from "@/lib/api/internDashboard";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/intern/tasks")({
@@ -16,37 +19,40 @@ export const Route = createFileRoute("/app/intern/tasks")({
   component: InternTasks,
 });
 
-const tasks = [
-  {
-    t: "CI pipeline fix — Jenkins job",
-    d: "Due Fri · DevOps",
-    s: "In progress",
-    tone: "bg-warning/10 text-warning",
-  },
-  {
-    t: "Monitoring dashboard widgets",
-    d: "Due Aug 12 · Data",
-    s: "Assigned",
-    tone: "bg-primary/10 text-primary",
-  },
-  {
-    t: "Infra docs update",
-    d: "Due Aug 15 · Docs",
-    s: "Assigned",
-    tone: "bg-learning/10 text-learning",
-  },
-  { t: "Load test report", d: "Done Jul 29", s: "Approved", tone: "bg-success/10 text-success" },
-];
+const statusBadge: Record<string, { label: string; tone: string }> = {
+  assigned: { label: "Assigned", tone: "bg-primary/10 text-primary" },
+  "in-progress": { label: "In progress", tone: "bg-warning/10 text-warning" },
+  "in-review": { label: "In review", tone: "bg-learning/10 text-learning" },
+  approved: { label: "Approved", tone: "bg-success/10 text-success" },
+};
 
 function InternTasks() {
+  const tasksQuery = useIntTasks();
+  const tasks = useIntTaskItems();
+
+  const open = tasks.filter((t) => t.status === "assigned" || t.status === "in-progress").length;
+  const inReview = tasks.filter((t) => t.status === "in-review").length;
+  const approved = tasks.filter((t) => t.status === "approved").length;
+  const dueThisWeek = tasks.filter((t) => t.dueLabel.toLowerCase().startsWith("due")).length;
+  const onTime =
+    open + inReview + approved > 0
+      ? Math.round((approved / (open + inReview + approved)) * 100)
+      : 0;
+
   return (
     <AppShell
       roleKey="student"
       title="Tasks"
-      subtitle="12 total · 2 due this week · 1 in review"
+      subtitle={
+        tasks.length > 0
+          ? `${tasks.length} total · ${dueThisWeek} due this week · ${inReview} in review`
+          : "Loading your tasks…"
+      }
       actions={
         <>
-          <Badge className="bg-success/10 text-success border-0 font-semibold">On-time 90%</Badge>
+          <Badge className="bg-success/10 text-success border-0 font-semibold">
+            On-time {onTime}%
+          </Badge>
           <Button asChild variant="outline" size="sm" className="font-semibold">
             <Link to="/app/intern">
               <ArrowLeft className="size-4" /> Intern hub
@@ -59,28 +65,28 @@ function InternTasks() {
         {[
           {
             label: "Open",
-            value: "7",
-            delta: "2 due this week",
+            value: tasks.length > 0 ? String(open) : "—",
+            delta: `${dueThisWeek} due this week`,
             icon: ListTodo,
             tone: "bg-primary/10 text-primary",
           },
           {
             label: "In review",
-            value: "1",
+            value: tasks.length > 0 ? String(inReview) : "—",
             delta: "with supervisor",
             icon: Clock3,
             tone: "bg-warning/10 text-warning",
           },
           {
             label: "Approved",
-            value: "4",
+            value: tasks.length > 0 ? String(approved) : "—",
             delta: "this month",
             icon: CheckCircle2,
             tone: "bg-success/10 text-success",
           },
           {
             label: "On-time rate",
-            value: "90%",
+            value: tasks.length > 0 ? `${onTime}%` : "—",
             delta: "last 30 days",
             icon: ListTodo,
             tone: "bg-learning/10 text-learning",
@@ -110,20 +116,49 @@ function InternTasks() {
           </CardTitle>
         </CardHeader>
         <CardContent className="divide-y">
-          {tasks.map((t) => (
-            <div key={t.t} className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0">
-              <div className="min-w-0 flex-1">
-                <p className="text-sm font-bold">{t.t}</p>
-                <p className="text-muted-foreground text-xs">{t.d}</p>
-              </div>
-              <Badge className={cn("border-0 font-semibold", t.tone)}>{t.s}</Badge>
-              <Button asChild variant="outline" size="sm" className="shrink-0 font-semibold">
-                <Link to="/app/intern/portfolio">
-                  Submit <ArrowRight className="ml-1 size-3.5" />
-                </Link>
-              </Button>
-            </div>
-          ))}
+          <QueryState<IntTask[]>
+            query={tasksQuery}
+            error={{ title: "Tasks unavailable" }}
+            empty={{ title: "No tasks yet", description: "Assigned tasks will show here." }}
+            isEmpty={(rows) => rows.length === 0}
+          >
+            {(rows) => (
+              <>
+                {rows.map((t) => {
+                  const meta = statusBadge[t.status] ?? {
+                    label: t.status,
+                    tone: "bg-muted text-muted-foreground",
+                  };
+                  return (
+                    <div
+                      key={t.id}
+                      className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
+                    >
+                      <div className="min-w-0 flex-1">
+                        <p className="text-sm font-bold">{t.title}</p>
+                        <p className="text-muted-foreground text-xs">
+                          {t.dueLabel} · {t.category}
+                        </p>
+                      </div>
+                      <Badge className={cn("border-0 font-semibold", meta.tone)}>
+                        {meta.label}
+                      </Badge>
+                      <Button
+                        asChild
+                        variant="outline"
+                        size="sm"
+                        className="shrink-0 font-semibold"
+                      >
+                        <Link to="/app/intern/portfolio">
+                          Submit <ArrowRight className="ml-1 size-3.5" />
+                        </Link>
+                      </Button>
+                    </div>
+                  );
+                })}
+              </>
+            )}
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>

@@ -34,6 +34,7 @@ import { library } from "./routes/library";
 import { parent } from "./routes/parent";
 import { mentor } from "./routes/mentor";
 import { mentorDashboard } from "./routes/mentorDashboard";
+import { internDashboard } from "./routes/internDashboard";
 import { ops } from "./routes/ops";
 import { it } from "./routes/it";
 import { RealtimeRoom } from "./durable/realtime-room";
@@ -93,6 +94,7 @@ v1.route("/library", library);
   v1.route("/parent", parent);
 v1.route("/mentor", mentor);
 v1.route("/mentor-dashboard", mentorDashboard);
+v1.route("/intern-dashboard", internDashboard);
 v1.route("/ops", ops);
   v1.route("/it", it);
 

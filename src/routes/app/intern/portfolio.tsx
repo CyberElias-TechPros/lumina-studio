@@ -1,9 +1,12 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowLeft, ArrowUpRight, Briefcase, Code2, FolderGit2, Plus } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, Briefcase, Code2, Eye, FolderGit2, Plus } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import { useIntProjectItems, useIntProjects, useIntSkillItems } from "@/lib/query/internDashboard";
+import type { IntProject } from "@/lib/api/internDashboard";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/intern/portfolio")({
@@ -16,13 +19,15 @@ export const Route = createFileRoute("/app/intern/portfolio")({
   component: InternPortfolio,
 });
 
-const projects = [
-  { p: "CI pipeline modernization", d: "DevOps · 3 artifacts", tone: "bg-primary/10 text-primary" },
-  { p: "Monitoring dashboard", d: "Data · 2 artifacts", tone: "bg-learning/10 text-learning" },
-  { p: "Infra runbooks", d: "Docs · 5 artifacts", tone: "bg-success/10 text-success" },
-];
-
 function InternPortfolio() {
+  const projectsQuery = useIntProjects();
+  const projects = useIntProjectItems();
+  const skills = useIntSkillItems();
+
+  const approved = projects.filter((p) => p.status === "approved");
+  const artifacts = projects.reduce((n, p) => n + p.artifacts, 0);
+  const views = projects.reduce((n, p) => n + p.views, 0);
+
   return (
     <AppShell
       roleKey="student"
@@ -45,28 +50,28 @@ function InternPortfolio() {
         {[
           {
             label: "Projects",
-            value: "3",
-            delta: "2 approved",
+            value: projects.length > 0 ? String(projects.length) : "—",
+            delta: `${approved.length} approved`,
             icon: FolderGit2,
             tone: "bg-primary/10 text-primary",
           },
           {
             label: "Artifacts",
-            value: "10",
+            value: projects.length > 0 ? String(artifacts) : "—",
             delta: "docs + code",
             icon: Code2,
             tone: "bg-learning/10 text-learning",
           },
           {
             label: "Views (30d)",
-            value: "86",
+            value: projects.length > 0 ? String(views) : "—",
             delta: "by employers",
             icon: Briefcase,
             tone: "bg-success/10 text-success",
           },
           {
             label: "Skills shown",
-            value: "8",
+            value: skills.length > 0 ? String(skills.length) : "—",
             delta: "tagged",
             icon: Plus,
             tone: "bg-warning/10 text-warning",
@@ -99,19 +104,51 @@ function InternPortfolio() {
           </Button>
         </CardHeader>
         <CardContent className="divide-y">
-          {projects.map((p) => (
-            <div key={p.p} className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0">
-              <div className="min-w-0 flex-1">
-                <p className="text-sm font-bold">{p.p}</p>
-                <p className="text-muted-foreground text-xs">{p.d}</p>
-              </div>
-              <Button asChild variant="outline" size="sm" className="shrink-0 font-semibold">
-                <Link to="/app/portfolio">
-                  View <ArrowUpRight className="ml-1 size-3.5" />
-                </Link>
-              </Button>
-            </div>
-          ))}
+          <QueryState<IntProject[]>
+            query={projectsQuery}
+            error={{ title: "Projects unavailable" }}
+            empty={{ title: "No projects yet", description: "Submitted work will show here." }}
+            isEmpty={(rows) => rows.length === 0}
+          >
+            {(rows) => (
+              <>
+                {rows.map((p) => (
+                  <div
+                    key={p.id}
+                    className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
+                  >
+                    <div className="min-w-0 flex-1">
+                      <p className="text-sm font-bold">{p.title}</p>
+                      <p className="text-muted-foreground flex flex-wrap items-center gap-x-3 text-xs">
+                        <span>{p.category}</span>
+                        <span className="inline-flex items-center gap-1">
+                          <Code2 className="size-3" /> {p.artifacts} artifacts
+                        </span>
+                        <span className="inline-flex items-center gap-1">
+                          <Eye className="size-3" /> {p.views} views
+                        </span>
+                      </p>
+                    </div>
+                    <Badge
+                      className={cn(
+                        "border-0 font-semibold",
+                        p.status === "approved"
+                          ? "bg-success/10 text-success"
+                          : "bg-warning/10 text-warning",
+                      )}
+                    >
+                      {p.status === "approved" ? "Approved" : "In review"}
+                    </Badge>
+                    <Button asChild variant="outline" size="sm" className="shrink-0 font-semibold">
+                      <Link to="/app/portfolio">
+                        View <ArrowUpRight className="ml-1 size-3.5" />
+                      </Link>
+                    </Button>
+                  </div>
+                ))}
+              </>
+            )}
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>

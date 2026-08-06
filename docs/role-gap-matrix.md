@@ -27,6 +27,7 @@ Backend coverage = routes registered in `backend/src/lib/rbac.ts` (the full `/v1
 | 2026-08-05 | **Tier 3 IT deployed** — prod D1 migration `0015` + `it-data.sql` seeds applied via wrangler OAuth; worker redeployed (version `adc69460-cd18-4557-8e75-ad2b4ec79c82`); frontend prod build deployed to `cea-os.vercel.app` (deployment `dpl_5ab8UV8qzfApAZnpk18o2ggNkmP1`). Smoke: `/v1/flags` 200, `/v1/it/tickets` 401 unauthenticated (RBAC gate live). Commits `42404a8` + `fad318f` pushed to main. |
 | 2026-08-06 | **Tier 3 mentor dashboard suite shipped** — backend: migration `0016_mentor_dashboard.sql` (mnt_mentees, mnt_sessions, mnt_session_actions, mnt_goals, mnt_requests, mnt_availability, mnt_resources, mnt_portfolio, mnt_skills, mnt_applications, mnt_conversations, mnt_threads + indexes), seeds `mentor-dashboard-data.sql`/`mentor-dashboard.ts`, `backend/src/routes/mentorDashboard.ts` (7 paginated lists + resources + session/mentee/conversation details incl. `:id/portfolio|skills|career`), RBAC `roles: ["admin","instructor","mentor"]`, registered in index.ts at `/v1/mentor-dashboard` (distinct from legacy `/v1/mentor/*`); test user `mentor@cea.ng` added to domain seeds; `backend/test/tier3-mentor-dashboard.test.ts` 15/15 (403 non-staff, lists, details, 404 unknown); full suite 309 passed (4 pre-existing ai.test network timeouts). Frontend: `api/mentorDashboard` + `query/mentorDashboard` (7 collections + 6 detail fetchers) + mock handlers (mirrors seeds, ids `mn-*`/`ms-*`/`mg-*`…); all 12 `app/mentor/*` pages wired — index (mentees + goals in flight + unread), sessions (queue + real-id links to detail), goals (KPIs + all goals), analytics (per-mentee avg goal progress), requests, messages (conversations + thread), resources, settings (weekly availability), mentees/$menteeId (goals + portfolio), portfolio (projects + skill endorsements), career (application pipeline), sessions/$sessionId (notes + action items). Typecheck + eslint + build green. |
 | 2026-08-06 | **Tier 3 mentor dashboard deployed** — prod D1 migration `0016` + `mentor-dashboard-data.sql` seeds applied (50 changes); `domain-data.sql` applied (324 queries, mentor@cea.ng user + demo password hash `cea-demo-pass-2026` live, `has_pw=1`); worker redeployed (version `3300e15f-7821-418a-87e6-dde061a9dd90`); frontend prod build deployed to `cea-os.vercel.app` (deployment `dpl_DVGo8zr86Xfsu49xdNYGs3RRXKHq`). Smoke: `/v1/mentor-dashboard/mentees` 401 unauthenticated (RBAC gate live), sign-in as `mentor@cea.ng` → 200 `roleKey: mentor` + `mentorship:manage`; mentees/sessions/goals/requests/conversations/portfolio all 200 with seed data; all 12 mentor pages + 3 detail routes (`mentees/:id`, `:id/portfolio`, `:id/career`, `sessions/:id`) 200 on prod. |
+| 2026-08-06 | **Tier 3 intern suite shipped** — backend: migration `0017_intern.sql` (int_tasks, int_timesheets, int_mentor_sessions, int_milestones, int_skills, int_resources, int_evaluations, int_projects incl. `views`, int_conversations, int_threads + indexes), seeds `intern-data.sql`/`intern.ts`, `backend/src/routes/internDashboard.ts` (9 paginated lists: tasks, timesheets, mentor-sessions, milestones, skills, resources, evaluations, projects, conversations + `GET /conversations/:id` with `thread[]`), RBAC `roles: ["admin","instructor","student"]`, registered in index.ts at `/v1/intern-dashboard`; `backend/test/tier3-intern.test.ts` 16/16 (403 for mentor, lists, camelCase, timesheet hours numeric, evaluations scores, projects artifacts/views, conversation detail, 404 unknown); full suite 325 passed (4 pre-existing ai.test network timeouts). Frontend: `api/internDashboard` + `query/internDashboard` (9 collections + `useConversationDetail`) + mock handlers (mirrors seeds, ids `it-*`); all 8 `app/intern/*` pages wired — index (derived KPIs: open tasks, hours logged, on-time rate, next session), tasks (status badges + KPIs), timesheet (weekly log + approval rate vs 40h target), mentorship (sessions + hours mentored + goals), learning-plan (milestone progress bars + skills/resources), evaluation (self/supervisor/combined scores), portfolio (projects with artifacts/views), messages (conversation list + thread). Typecheck + eslint + build green. |
 
 ---
 
@@ -37,7 +38,7 @@ Backend coverage = routes registered in `backend/src/lib/rbac.ts` (the full `/v1
 | App pages under `src/routes/app/` | **283** |
 | Wired to live backend | **~129** |
 | Static dashboards (placeholder) | **~154** |
-| Backend route suites live | **~23 domains + Tier 2/3: parent, mentor, applications admin, payroll run, ops, it, mentor-dashboard** (rbac.ts) |
+| Backend route suites live | **~23 domains + Tier 2/3: parent, mentor, applications admin, payroll run, ops, it, mentor-dashboard, intern-dashboard** (rbac.ts) |
 | Backend suites NOT built yet | **~9 domains** (receptionist, government, behavioral, product-marketing, dev/CI, supplier, volunteer, partner, alumni-net) |
 | Public/locale data | `jobs/gigs/events/caseStudies/testimonials` seeded in `src/data/site.ts` ✅ |
 
@@ -66,7 +67,7 @@ Backend coverage = routes registered in `backend/src/lib/rbac.ts` (the full `/v1
 | growth | 8 | 0 | 8 | none |
 | hr | 10 | 8 | 2 | `/v1/hr/*` + `recruitment/postings` ✅ (hub, employees, leave, payroll + attendance/onboarding/performance/reports) |
 | instructor | 13 | 6 | 7 | `/v1/instructor/*` (gradebook, courses, assignments, analytics, attendance); calendar/rest static |
-| intern | 8 | 0 | 8 | none |
+| intern | 8 | 8 | 0 | `/v1/intern-dashboard/*` (tasks, timesheets, mentor-sessions, milestones, skills, resources, evaluations, projects, conversations + threads) ✅ |
 | it | 11 | 11 | 0 | `/v1/it/*` (tickets + events, articles, assets, licenses, services, windows, sessions, templates, accounts) ✅ |
 | lean | 3 | 3 | 0 | ✅ |
 | live | 2 | 2 | 0 | ✅ |
@@ -122,7 +123,7 @@ Recommended order (existing `/v1` naming style):
 1. `ops` (inventory, branches, facilities, vendors, tasks) — also feeds supplier + receptionist — **✅ done 2026-08-05 (`/v1/ops/*`, migration 0014, seeds, 7/7 pages wired)**
 2. `it` (tickets/helpdesk, assets, knowledge-base, remote-support) — **✅ done 2026-08-05 (`/v1/it/*`, migration 0015, seeds, 11/11 pages wired)**
 3. `mentor` (sessions, goals, requests, resources) — **✅ done 2026-08-06 (`/v1/mentor-dashboard/*`, migration 0016, seeds, 12/12 pages wired)**
-4. `intern` (tasks, timesheet→payroll hookup, evaluation)
+4. `intern` (tasks, timesheet→payroll hookup, evaluation) — **✅ done 2026-08-06 (`/v1/intern-dashboard/*`, migration 0017, seeds, 8/8 pages wired)**
 5. `supplier` + `partner` (POs, agreements, referrals) — on ops
 6. `volunteer` (opportunities, hours, impact)
 7. `government` (filings, training, integrity) — legal-compliance

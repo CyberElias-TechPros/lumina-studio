@@ -1781,4 +1781,120 @@ export function registerAllMocks(): void {
     const items = mntCollections[collection] ?? [];
     return { items, total: items.length };
   });
+
+  /* Intern dashboard — mirrors backend seeds (migrations/0017_intern.sql) */
+  const intTasks = [
+    { id: "it-task-01", title: "CI pipeline fix — Jenkins job", status: "in-progress", dueLabel: "Due Fri", category: "DevOps" },
+    { id: "it-task-02", title: "Monitoring dashboard widgets", status: "assigned", dueLabel: "Due Aug 12", category: "Data" },
+    { id: "it-task-03", title: "Infra docs update", status: "assigned", dueLabel: "Due Aug 15", category: "Docs" },
+    { id: "it-task-04", title: "Load test report", status: "approved", dueLabel: "Done Jul 29", category: "QA" },
+    { id: "it-task-05", title: "API rate-limit test results", status: "in-review", dueLabel: "Due today", category: "QA" },
+    { id: "it-task-06", title: "Docker image audit", status: "assigned", dueLabel: "Due Aug 18", category: "DevOps" },
+    { id: "it-task-07", title: "Staging env provisioning", status: "in-progress", dueLabel: "Due Aug 20", category: "Cloud" },
+    { id: "it-task-08", title: "Alert threshold tuning", status: "assigned", dueLabel: "Due Aug 24", category: "Monitoring" },
+    { id: "it-task-09", title: "Release notes for v2.4", status: "approved", dueLabel: "Done Jul 25", category: "Docs" },
+    { id: "it-task-10", title: "Postgres backup verification", status: "approved", dueLabel: "Done Jul 22", category: "Data" },
+    { id: "it-task-11", title: "New relic dashboard sync", status: "assigned", dueLabel: "Due Aug 28", category: "Monitoring" },
+    { id: "it-task-12", title: "Incident post-mortem summary", status: "approved", dueLabel: "Done Jul 18", category: "Docs" },
+  ];
+  const intTimesheets = [
+    { id: "its-01", weekLabel: "Jul 27 – Jul 31", hours: 38, status: "approved" },
+    { id: "its-02", weekLabel: "Jul 20 – Jul 24", hours: 40, status: "approved" },
+    { id: "its-03", weekLabel: "Jul 13 – Jul 17", hours: 36, status: "pending" },
+    { id: "its-04", weekLabel: "Jul 6 – Jul 10", hours: 40, status: "approved" },
+    { id: "its-05", weekLabel: "Jun 29 – Jul 3", hours: 28, status: "approved" },
+  ];
+  const intMentorSessions = [
+    { id: "itm-01", title: "Sprint planning & career roadmap", dateText: "Wed 10:00", durationText: "60 min", status: "upcoming" },
+    { id: "itm-02", title: "Career direction & growth plan", dateText: "Jul 24", durationText: "45 min", status: "completed" },
+    { id: "itm-03", title: "CI/CD deep dive", dateText: "Jul 10", durationText: "60 min", status: "completed" },
+    { id: "itm-04", title: "Onboarding & expectations", dateText: "Jun 26", durationText: "40 min", status: "completed" },
+  ];
+  const intMilestones = [
+    { id: "itmst-01", title: "Onboarding & environment setup", progressPct: 100, status: "done" },
+    { id: "itmst-02", title: "Linux & scripting fundamentals", progressPct: 100, status: "done" },
+    { id: "itmst-03", title: "CI/CD pipeline fundamentals", progressPct: 65, status: "in progress" },
+    { id: "itmst-04", title: "Monitoring & alerting", progressPct: 40, status: "in progress" },
+    { id: "itmst-05", title: "Containerization basics", progressPct: 30, status: "in progress" },
+    { id: "itmst-06", title: "Cloud provisioning basics", progressPct: 0, status: "not started" },
+  ];
+  const intSkills = [
+    { id: "itsk-01", name: "Linux", mastery: "mastered" },
+    { id: "itsk-02", name: "Git & branching", mastery: "mastered" },
+    { id: "itsk-03", name: "Bash scripting", mastery: "mastered" },
+    { id: "itsk-04", name: "Docker basics", mastery: "mastered" },
+    { id: "itsk-05", name: "CI/CD fundamentals", mastery: "mastered" },
+    { id: "itsk-06", name: "Incident response", mastery: "mastered" },
+    { id: "itsk-07", name: "Jenkins", mastery: "learning" },
+    { id: "itsk-08", name: "Terraform", mastery: "learning" },
+    { id: "itsk-09", name: "Kubernetes", mastery: "learning" },
+    { id: "itsk-10", name: "Prometheus", mastery: "learning" },
+    { id: "itsk-11", name: "Grafana", mastery: "learning" },
+    { id: "itsk-12", name: "PostgreSQL", mastery: "learning" },
+    { id: "itsk-13", name: "AWS CLI", mastery: "learning" },
+    { id: "itsk-14", name: "Python", mastery: "learning" },
+    { id: "itsk-15", name: "CloudWatch", mastery: "learning" },
+    { id: "itsk-16", name: "Helm", mastery: "learning" },
+    { id: "itsk-17", name: "GitHub Actions", mastery: "learning" },
+    { id: "itsk-18", name: "Nginx", mastery: "learning" },
+  ];
+  const intResources = [
+    { id: "itr-01", title: "DevOps roadmap v2026", kind: "link" },
+    { id: "itr-02", title: "Jenkins pipeline examples", kind: "link" },
+    { id: "itr-03", title: "Terraform getting-started", kind: "guide" },
+    { id: "itr-04", title: "Kubernetes in 3 hours", kind: "course" },
+    { id: "itr-05", title: "Monitoring cheatsheet", kind: "guide" },
+    { id: "itr-06", title: "Incident runbook template", kind: "template" },
+    { id: "itr-07", title: "Bash scripting practice", kind: "exercises" },
+    { id: "itr-08", title: "CI/CD anti-patterns", kind: "article" },
+    { id: "itr-09", title: "Database backup playbook", kind: "guide" },
+    { id: "itr-10", title: "Interview prep for SRE", kind: "guide" },
+    { id: "itr-11", title: "AWS Cloud Practitioner notes", kind: "course" },
+    { id: "itr-12", title: "Nginx base configs", kind: "reference" },
+  ];
+  const intEvaluations = [
+    { id: "ite-01", kind: "self", score: 4.2, status: "submitted" },
+    { id: "ite-02", kind: "supervisor", score: 4.0, status: "completed" },
+    { id: "ite-03", kind: "final", score: 0, status: "due week 12" },
+  ];
+  const intProjects = [
+    { id: "itp-01", title: "CI pipeline modernization", category: "DevOps", artifacts: 3, views: 36, status: "featured" },
+    { id: "itp-02", title: "Monitoring dashboard", category: "Data", artifacts: 2, views: 28, status: "active" },
+    { id: "itp-03", title: "Infra runbooks", category: "Docs", artifacts: 5, views: 22, status: "active" },
+  ];
+  const intConversations = [
+    { id: "itc-01", name: "Ms. Chidera · Supervisor", preview: "Re: pipeline fix — looks good", timeLabel: "09:12", unread: 1 },
+    { id: "itc-02", name: "DevOps team", preview: "Standup notes · 09:12", timeLabel: "09:14", unread: 0 },
+    { id: "itc-03", name: "HR · Onboarding", preview: "Evaluation reminder · Jul 30", timeLabel: "Jul 30", unread: 2 },
+  ];
+  const intThread = [
+    { id: "ith-01", fromLabel: "You", body: "CI pipeline fix is deployed to staging, tests green.", timeLabel: "Yesterday 17:20" },
+    { id: "ith-02", fromLabel: "Ms. Chidera", body: "Nice work — I gave it a quick review, looks good.", timeLabel: "Yesterday 18:05" },
+    { id: "ith-03", fromLabel: "Ms. Chidera", body: "Let us walk through the release checklist on Monday.", timeLabel: "Today 09:12" },
+  ];
+  registerMockPattern("GET", "/v1/intern-dashboard/*", async (init: ApiRequestInit) => {
+    await delay();
+    const segments = (init.path ?? "").split("/").filter(Boolean);
+    const collection = segments[2] ?? "";
+    const id = segments[3] ?? "";
+    if (id) {
+      if (collection === "conversations") {
+        const convo = intConversations.find((c) => c.id === id);
+        if (convo) return { ...convo, thread: intThread };
+      }
+    }
+    const collections: Record<string, Record<string, unknown>[]> = {
+      tasks: intTasks,
+      timesheets: intTimesheets,
+      "mentor-sessions": intMentorSessions,
+      milestones: intMilestones,
+      skills: intSkills,
+      resources: intResources,
+      evaluations: intEvaluations,
+      projects: intProjects,
+      conversations: intConversations,
+    };
+    const items = collections[collection] ?? [];
+    return { items, total: items.length };
+  });
 }
