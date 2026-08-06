@@ -12,7 +12,19 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { QueryState } from "@/components/ui/query-state";
 import { AppShell } from "@/components/app/app-shell";
+import {
+  useMntConversationItems,
+  useMntGoalItems,
+  useMntGoals,
+  useMntMenteeItems,
+  useMntMentees,
+  useMntResourceItems,
+  useMntSessions,
+  useMntSessionItems,
+} from "@/lib/query/mentorDashboard";
+import type { MntGoal, MntMentee } from "@/lib/api/mentorDashboard";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/mentor/")({
@@ -25,42 +37,62 @@ export const Route = createFileRoute("/app/mentor/")({
   component: MentorDashboard,
 });
 
-const mentees = [
-  {
-    id: "ada-okafor",
-    name: "Ada Okafor",
-    track: "Backend specialisation",
-    next: "Aug 21 · 16:00",
-    tone: "bg-gradient-learning",
-  },
-  {
-    id: "tobi-adeyemi",
-    name: "Tobi Adeyemi",
-    track: "DevOps",
-    next: "Aug 22 · 11:00",
-    tone: "bg-gradient-erp",
-  },
-  {
-    id: "zainab-yusuf",
-    name: "Zainab Yusuf",
-    track: "Product design",
-    next: "Aug 25 · 14:30",
-    tone: "bg-gradient-services",
-  },
-];
+const menteeTone = ["bg-gradient-learning", "bg-gradient-erp", "bg-gradient-services"];
 
-const goals = [
-  { t: "NaijaEats demo day", pct: 90, d: "Ada · Aug 30" },
-  { t: "CI/CD certification", pct: 55, d: "Tobi · Sep 20" },
-  { t: "Portfolio launch", pct: 40, d: "Zainab · Sep 5" },
-];
+function MenteeRow({ m, tone }: { m: MntMentee; tone: string }) {
+  return (
+    <div className={cn("rounded-2xl p-4 text-white", tone)}>
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <div>
+          <p className="font-display text-sm font-extrabold">{m.name}</p>
+          <p className="text-white/70 text-xs">{m.track}</p>
+        </div>
+        <div className="flex gap-2">
+          <Badge className="bg-white/15 text-white border-0 font-semibold">
+            {m.cohort} · since {m.sinceDate}
+          </Badge>
+          <Button
+            asChild
+            size="sm"
+            className="bg-white/15 text-white font-semibold hover:bg-white/25"
+          >
+            <Link to="/app/mentor/mentees/$menteeId" params={{ menteeId: m.id }}>
+              View <ArrowRight className="ml-1 size-3.5" />
+            </Link>
+          </Button>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 function MentorDashboard() {
+  const menteesQuery = useMntMentees();
+  const mentees = useMntMenteeItems();
+  const sessions = useMntSessionItems();
+  const goalsQuery = useMntGoals();
+  const goals = useMntGoalItems();
+  const resources = useMntResourceItems();
+  const conversations = useMntConversationItems();
+
+  const upcoming = sessions.filter((s) => s.status === "upcoming").length;
+  const onTrack = goals.filter((g) => g.status === "on track").length;
+  const atRisk = goals.filter((g) => g.status === "needs focus").length;
+  const unread = conversations.reduce((n, c) => n + c.unread, 0);
+  const unreadRow = conversations.find((c) => c.unread > 0);
+
+  const menteeName = (id: string) => mentees.find((m) => m.id === id)?.name ?? id;
+  const quickLinks = resources.flatMap((r) => r.items).slice(0, 3);
+
   return (
     <AppShell
       roleKey="instructor"
       title="Mentor dashboard"
-      subtitle="3 mentees · 2 sessions this week"
+      subtitle={
+        mentees.length > 0
+          ? `${mentees.length} mentees · ${upcoming} sessions this week`
+          : "Loading your caseload…"
+      }
       actions={
         <>
           <Badge className="bg-success/10 text-success border-0 font-semibold">
@@ -76,29 +108,29 @@ function MentorDashboard() {
         {[
           {
             label: "Mentees",
-            value: "3",
-            delta: "1 new this term",
+            value: mentees.length > 0 ? String(mentees.length) : "—",
+            delta: "on your caseload",
             icon: Users,
             tone: "bg-primary/10 text-primary",
           },
           {
             label: "Sessions this week",
-            value: "4",
-            delta: "2 upcoming",
+            value: sessions.length > 0 ? String(upcoming) : "—",
+            delta: "upcoming",
             icon: CalendarDays,
             tone: "bg-learning/10 text-learning",
           },
           {
             label: "Goals on track",
-            value: "7/9",
-            delta: "2 at risk",
+            value: goals.length > 0 ? `${onTrack}/${goals.length}` : "—",
+            delta: atRisk > 0 ? `${atRisk} at risk` : "none at risk",
             icon: Target,
             tone: "bg-success/10 text-success",
           },
           {
-            label: "Endorsements",
-            value: "14",
-            delta: "this term",
+            label: "Unread messages",
+            value: conversations.length > 0 ? String(unread) : "—",
+            delta: unread > 0 ? "across mentees" : "all caught up",
             icon: CheckCircle2,
             tone: "bg-warning/10 text-warning",
           },
@@ -134,30 +166,23 @@ function MentorDashboard() {
               </Button>
             </CardHeader>
             <CardContent className="space-y-4">
-              {mentees.map((m) => (
-                <div key={m.id} className={cn("rounded-2xl p-4 text-white", m.tone)}>
-                  <div className="flex flex-wrap items-center justify-between gap-3">
-                    <div>
-                      <p className="font-display text-sm font-extrabold">{m.name}</p>
-                      <p className="text-white/70 text-xs">{m.track}</p>
-                    </div>
-                    <div className="flex gap-2">
-                      <Badge className="bg-white/15 text-white border-0 font-semibold">
-                        {m.next}
-                      </Badge>
-                      <Button
-                        asChild
-                        size="sm"
-                        className="bg-white/15 text-white font-semibold hover:bg-white/25"
-                      >
-                        <Link to="/app/mentor/mentees/$menteeId" params={{ menteeId: m.id }}>
-                          View <ArrowRight className="ml-1 size-3.5" />
-                        </Link>
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-              ))}
+              <QueryState<MntMentee[]>
+                query={menteesQuery}
+                error={{ title: "Mentees unavailable" }}
+                empty={{
+                  title: "No mentees yet",
+                  description: "Mentees assigned to you will show here.",
+                }}
+                isEmpty={(rows) => rows.length === 0}
+              >
+                {(rows) => (
+                  <>
+                    {rows.map((m, i) => (
+                      <MenteeRow key={m.id} m={m} tone={menteeTone[i % menteeTone.length]} />
+                    ))}
+                  </>
+                )}
+              </QueryState>
             </CardContent>
           </Card>
 
@@ -168,23 +193,43 @@ function MentorDashboard() {
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
-              {goals.map((g) => (
-                <div key={g.t}>
-                  <div className="flex items-center justify-between text-xs font-semibold">
-                    <span>{g.t}</span>
-                    <span className="text-muted-foreground">{g.d}</span>
-                  </div>
-                  <div className="bg-muted mt-1.5 h-1.5 overflow-hidden rounded-full">
-                    <div
-                      className={cn(
-                        "h-full rounded-full",
-                        g.pct >= 60 ? "bg-success" : g.pct >= 40 ? "bg-warning" : "bg-destructive",
-                      )}
-                      style={{ width: `${g.pct}%` }}
-                    />
-                  </div>
-                </div>
-              ))}
+              <QueryState<MntGoal[]>
+                query={goalsQuery}
+                error={{ title: "Goals unavailable" }}
+                empty={{
+                  title: "No goals yet",
+                  description: "Goals from your mentees will show here.",
+                }}
+                isEmpty={(rows) => rows.length === 0}
+              >
+                {(rows) => (
+                  <>
+                    {rows.map((g) => (
+                      <div key={g.id}>
+                        <div className="flex items-center justify-between text-xs font-semibold">
+                          <span>{g.title}</span>
+                          <span className="text-muted-foreground">
+                            {menteeName(g.menteeId)} · {g.dueDate}
+                          </span>
+                        </div>
+                        <div className="bg-muted mt-1.5 h-1.5 overflow-hidden rounded-full">
+                          <div
+                            className={cn(
+                              "h-full rounded-full",
+                              g.progressPct >= 60
+                                ? "bg-success"
+                                : g.progressPct >= 40
+                                  ? "bg-warning"
+                                  : "bg-destructive",
+                            )}
+                            style={{ width: `${g.progressPct}%` }}
+                          />
+                        </div>
+                      </div>
+                    ))}
+                  </>
+                )}
+              </QueryState>
             </CardContent>
           </Card>
         </div>
@@ -207,11 +252,16 @@ function MentorDashboard() {
                   <Badge className={cn("border-0 font-semibold", x.tone)}>{x.v}</Badge>
                 </div>
               ))}
-              <Button asChild variant="outline" size="sm" className="w-full font-semibold">
-                <Link to="/app/mentor/mentees/$menteeId/career" params={{ menteeId: "ada-okafor" }}>
-                  Career tracker
-                </Link>
-              </Button>
+              {mentees[0] && (
+                <Button asChild variant="outline" size="sm" className="w-full font-semibold">
+                  <Link
+                    to="/app/mentor/mentees/$menteeId/career"
+                    params={{ menteeId: mentees[0].id }}
+                  >
+                    Career tracker
+                  </Link>
+                </Button>
+              )}
             </CardContent>
           </Card>
 
@@ -222,7 +272,7 @@ function MentorDashboard() {
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-2">
-              {["Interview question bank", "CV rubric v3", "Session templates"].map((r) => (
+              {quickLinks.map((r) => (
                 <Button
                   asChild
                   key={r}
@@ -241,7 +291,9 @@ function MentorDashboard() {
               <MessageSquare className="text-warning size-5" />
               <p className="font-display mt-3 text-base font-extrabold">Unread</p>
               <p className="text-ink-foreground/70 mt-1 text-sm">
-                Tobi asked about the DevOps exam pattern — 2 messages waiting.
+                {unreadRow
+                  ? `${unreadRow.name} — ${unreadRow.preview} · ${unread} messages waiting.`
+                  : "No unread messages — you're all caught up."}
               </p>
             </CardContent>
           </Card>

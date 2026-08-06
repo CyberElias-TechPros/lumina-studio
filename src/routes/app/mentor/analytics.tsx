@@ -3,7 +3,15 @@ import { ArrowLeft, BarChart3, CalendarDays, CheckCircle2, TrendingUp, Users } f
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { QueryState } from "@/components/ui/query-state";
 import { AppShell } from "@/components/app/app-shell";
+import {
+  useMntGoalItems,
+  useMntGoals,
+  useMntMenteeItems,
+  useMntMentees,
+} from "@/lib/query/mentorDashboard";
+import type { MntGoal, MntMentee } from "@/lib/api/mentorDashboard";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/mentor/analytics")({
@@ -23,12 +31,37 @@ const metrics = [
   { t: "Sessions delivered", v: "12 · 9h 40m", tone: "bg-warning/10 text-warning" },
 ];
 
+function averageProgress(goals: MntGoal[], menteeId: string) {
+  const own = goals.filter((g) => g.menteeId === menteeId);
+  if (own.length === 0) return 0;
+  return Math.round(own.reduce((n, g) => n + g.progressPct, 0) / own.length);
+}
+
+function ProgressRow({ m, pct }: { m: MntMentee; pct: number }) {
+  return (
+    <div>
+      <div className="flex items-center justify-between text-xs font-semibold">
+        <span>{m.name}</span>
+        <span className="text-muted-foreground">{pct}% goal progress</span>
+      </div>
+      <div className="bg-muted mt-1.5 h-2 overflow-hidden rounded-full">
+        <div className="bg-primary h-full rounded-full" style={{ width: `${pct}%` }} />
+      </div>
+    </div>
+  );
+}
+
 function MentorAnalytics() {
+  const menteesQuery = useMntMentees();
+  const mentees = useMntMenteeItems();
+  const goalsQuery = useMntGoals();
+  const goals = useMntGoalItems();
+
   return (
     <AppShell
       roleKey="instructor"
       title="Analytics & impact"
-      subtitle="Term 2 · across your 3 mentees"
+      subtitle={mentees.length > 0 ? `Term 2 · across your ${mentees.length} mentees` : "Loading…"}
       actions={
         <>
           <Badge className="bg-success/10 text-success border-0 font-semibold">Impact: high</Badge>
@@ -96,21 +129,28 @@ function MentorAnalytics() {
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
-            {[
-              { t: "Ada Okafor", pct: 92 },
-              { t: "Tobi Adeyemi", pct: 74 },
-              { t: "Zainab Yusuf", pct: 61 },
-            ].map((m) => (
-              <div key={m.t}>
-                <div className="flex items-center justify-between text-xs font-semibold">
-                  <span>{m.t}</span>
-                  <span className="text-muted-foreground">{m.pct}% goal progress</span>
-                </div>
-                <div className="bg-muted mt-1.5 h-2 overflow-hidden rounded-full">
-                  <div className="bg-primary h-full rounded-full" style={{ width: `${m.pct}%` }} />
-                </div>
-              </div>
-            ))}
+            <QueryState<MntMentee[]>
+              query={menteesQuery}
+              error={{ title: "Impact unavailable" }}
+              empty={{
+                title: "No mentees yet",
+                description: "Progress will appear once mentees are assigned.",
+              }}
+              isEmpty={(rows) => rows.length === 0}
+            >
+              {(rows) => (
+                <>
+                  {rows.map((m) => (
+                    <ProgressRow key={m.id} m={m} pct={averageProgress(goals, m.id)} />
+                  ))}
+                </>
+              )}
+            </QueryState>
+            {goalsQuery.data && goals.length === 0 && (
+              <p className="text-muted-foreground text-xs">
+                Goal progress will appear once mentee goals are set.
+              </p>
+            )}
           </CardContent>
         </Card>
 

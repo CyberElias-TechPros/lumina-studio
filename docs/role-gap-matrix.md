@@ -25,6 +25,7 @@ Backend coverage = routes registered in `backend/src/lib/rbac.ts` (the full `/v1
 | 2026-08-05 | **Tier 3 ops deployed** — prod D1 migration `0014` + `ops-data.sql` seeds applied via wrangler OAuth (81 rows); worker redeployed (version `ccdd3719-cb30-4969-8056-93a305b9bcf7`); frontend prod build deployed to `cea-os.vercel.app` (deployment `dpl_H2QGALryAyEgffYpWb5GJrGvPVmv`). Smoke: `/v1/flags` 200, `/v1/ops/inventory` 401 unauthenticated (RBAC gate live). Commit `4db8042` pushed to main. |
 | 2026-08-05 | **Tier 3 IT suite shipped** — backend: migration `0015_it.sql` (it_tickets, it_ticket_events, it_articles, it_assets, it_licenses, it_services, it_windows, it_sessions, it_templates, it_accounts + indexes), seeds `it-data.sql`/`it.ts`, `backend/src/routes/it.ts` (9 paginated GET lists + `GET /tickets/:id` with camelCase `events[]`), RBAC `roles: ["admin","instructor"]`, registered in index.ts; `backend/test/tier3-it.test.ts` 12/12 (403 non-staff, lists, detail + events, 404 unknown); full suite 294 passed (4 pre-existing ai.test network timeouts). Frontend: `api/it` + `query/it` (9 collections + `useTicketDetail`) + mock handlers; all 11 `app/it/*` pages wired — tickets (queue + SLA + open→detail link), tickets/$id (activity timeline + resolution), knowledge-base, assets, licenses (seat utilization), monitoring (degraded badges), maintenance, remote-support, templates, users, reports (derived ticket KPIs). Typecheck + eslint + build green. |
 | 2026-08-05 | **Tier 3 IT deployed** — prod D1 migration `0015` + `it-data.sql` seeds applied via wrangler OAuth; worker redeployed (version `adc69460-cd18-4557-8e75-ad2b4ec79c82`); frontend prod build deployed to `cea-os.vercel.app` (deployment `dpl_5ab8UV8qzfApAZnpk18o2ggNkmP1`). Smoke: `/v1/flags` 200, `/v1/it/tickets` 401 unauthenticated (RBAC gate live). Commits `42404a8` + `fad318f` pushed to main. |
+| 2026-08-06 | **Tier 3 mentor dashboard suite shipped** — backend: migration `0016_mentor_dashboard.sql` (mnt_mentees, mnt_sessions, mnt_session_actions, mnt_goals, mnt_requests, mnt_availability, mnt_resources, mnt_portfolio, mnt_skills, mnt_applications, mnt_conversations, mnt_threads + indexes), seeds `mentor-dashboard-data.sql`/`mentor-dashboard.ts`, `backend/src/routes/mentorDashboard.ts` (7 paginated lists + resources + session/mentee/conversation details incl. `:id/portfolio|skills|career`), RBAC `roles: ["admin","instructor","mentor"]`, registered in index.ts at `/v1/mentor-dashboard` (distinct from legacy `/v1/mentor/*`); test user `mentor@cea.ng` added to domain seeds; `backend/test/tier3-mentor-dashboard.test.ts` 15/15 (403 non-staff, lists, details, 404 unknown); full suite 309 passed (4 pre-existing ai.test network timeouts). Frontend: `api/mentorDashboard` + `query/mentorDashboard` (7 collections + 6 detail fetchers) + mock handlers (mirrors seeds, ids `mn-*`/`ms-*`/`mg-*`…); all 12 `app/mentor/*` pages wired — index (mentees + goals in flight + unread), sessions (queue + real-id links to detail), goals (KPIs + all goals), analytics (per-mentee avg goal progress), requests, messages (conversations + thread), resources, settings (weekly availability), mentees/$menteeId (goals + portfolio), portfolio (projects + skill endorsements), career (application pipeline), sessions/$sessionId (notes + action items). Typecheck + eslint + build green. |
 
 ---
 
@@ -35,8 +36,8 @@ Backend coverage = routes registered in `backend/src/lib/rbac.ts` (the full `/v1
 | App pages under `src/routes/app/` | **283** |
 | Wired to live backend | **~129** |
 | Static dashboards (placeholder) | **~154** |
-| Backend route suites live | **~22 domains + Tier 2/3: parent, mentor, applications admin, payroll run, ops, it** (rbac.ts) |
-| Backend suites NOT built yet | **~10 domains** (mentorship sessions/goals/requests, receptionist, government, behavioral, product-marketing, dev/CI, supplier, volunteer, partner, alumni-net) |
+| Backend route suites live | **~23 domains + Tier 2/3: parent, mentor, applications admin, payroll run, ops, it, mentor-dashboard** (rbac.ts) |
+| Backend suites NOT built yet | **~9 domains** (receptionist, government, behavioral, product-marketing, dev/CI, supplier, volunteer, partner, alumni-net) |
 | Public/locale data | `jobs/gigs/events/caseStudies/testimonials` seeded in `src/data/site.ts` ✅ |
 
 ---
@@ -70,7 +71,7 @@ Backend coverage = routes registered in `backend/src/lib/rbac.ts` (the full `/v1
 | live | 2 | 2 | 0 | ✅ |
 | localization | 8 | 8 | 0 | ✅ |
 | marketing | 10 | 10 | 0 | ✅ |
-| mentor | 12 | 0 | 12 | profiles + match API live (`/v1/mentor/*`); match UI lives at `alumni/find` (browse + match); mentor-dashboard pages (sessions/goals/requests/resources) still static |
+| mentor | 12 | 12 | 0 | `/v1/mentor-dashboard/*` (mentees, sessions + actions, goals, requests, availability, resources, portfolio, skills, career, conversations + threads) ✅ + `/v1/mentor/*` profiles/match at `alumni/find` |
 | ngo | 9 | 0 | 9 | none |
 | ops | 7 | 7 | 0 | `/v1/ops/*` (inventory, purchase-orders, branches, rooms, maintenance, vendors, contracts, tasks, workflows) ✅ |
 | parent | 8 | 6 | 2 | parent-scoped reads `GET /v1/parent/students(:id)` + `:id/finance` + `:id/attendance` ✅ (index, overview, grades, finance, attendance, reports wired); communication/invitation static |
@@ -119,7 +120,7 @@ Backend user-facing surface is done; these folders are blobs of hardcoded number
 Recommended order (existing `/v1` naming style):
 1. `ops` (inventory, branches, facilities, vendors, tasks) — also feeds supplier + receptionist — **✅ done 2026-08-05 (`/v1/ops/*`, migration 0014, seeds, 7/7 pages wired)**
 2. `it` (tickets/helpdesk, assets, knowledge-base, remote-support) — **✅ done 2026-08-05 (`/v1/it/*`, migration 0015, seeds, 11/11 pages wired)**
-3. `mentor` (sessions, goals, requests, resources)
+3. `mentor` (sessions, goals, requests, resources) — **✅ done 2026-08-06 (`/v1/mentor-dashboard/*`, migration 0016, seeds, 12/12 pages wired)**
 4. `intern` (tasks, timesheet→payroll hookup, evaluation)
 5. `supplier` + `partner` (POs, agreements, referrals) — on ops
 6. `volunteer` (opportunities, hours, impact)

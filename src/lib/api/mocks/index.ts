@@ -1449,4 +1449,336 @@ export function registerAllMocks(): void {
     const items = itCollections[key] ?? [];
     return { items, total: items.length };
   });
+
+  /* Mentor dashboard — mirrors backend seeds (migrations/0016_mentor_dashboard.sql) */
+  const mntMentees = [
+    {
+      id: "mn-ada",
+      name: "Ada Okafor",
+      track: "Backend specialisation",
+      cohort: "Cohort 15",
+      sinceDate: "Feb 2026",
+      status: "active",
+    },
+    {
+      id: "mn-tobi",
+      name: "Tobi Adeyemi",
+      track: "DevOps",
+      cohort: "Cohort 15",
+      sinceDate: "Feb 2026",
+      status: "active",
+    },
+    {
+      id: "mn-zainab",
+      name: "Zainab Yusuf",
+      track: "Product design",
+      cohort: "Cohort 16",
+      sinceDate: "Jun 2026",
+      status: "active",
+    },
+  ];
+  const mntSessions = [
+    {
+      id: "ms-01",
+      title: "Ada Okafor — goal review",
+      datetimeText: "Fri, Aug 21 · 16:00",
+      mode: "Video",
+      status: "upcoming",
+      notes: "Focus: NaijaEats demo-day checklist, EXPLAIN practice, follow-up booking.",
+    },
+    {
+      id: "ms-02",
+      title: "Tobi Adeyemi — exam prep",
+      datetimeText: "Sat, Aug 22 · 11:00",
+      mode: "On campus",
+      status: "upcoming",
+      notes: "Review CI/CD exam pattern and practice exercises.",
+    },
+    {
+      id: "ms-03",
+      title: "Zainab Yusuf — portfolio feedback",
+      datetimeText: "Tue, Aug 25 · 14:30",
+      mode: "Video",
+      status: "upcoming",
+      notes: "Portfolio v2 review — case study depth and copy.",
+    },
+    {
+      id: "ms-04",
+      title: "Ada Okafor — mock interview",
+      datetimeText: "Thu, Jul 28 · 15:00",
+      mode: "Video",
+      status: "completed",
+      notes: "Strong system design answers. Book follow-up on behavioural questions.",
+    },
+    {
+      id: "ms-05",
+      title: "Tobi Adeyemi — career check-in",
+      datetimeText: "Mon, Jul 14 · 12:00",
+      mode: "On campus",
+      status: "completed",
+      notes: "Confirmed path to DevOps cert. Shared study roadmap.",
+    },
+  ];
+  const mntCollections: Record<string, Record<string, unknown>[]> = {
+    mentees: mntMentees,
+    sessions: mntSessions,
+    goals: [
+      {
+        id: "mg-01",
+        menteeId: "mn-ada",
+        title: "NaijaEats demo day",
+        progressPct: 90,
+        dueDate: "Aug 30",
+        status: "on track",
+      },
+      {
+        id: "mg-02",
+        menteeId: "mn-ada",
+        title: "Backend certification",
+        progressPct: 60,
+        dueDate: "Oct 15",
+        status: "on track",
+      },
+      {
+        id: "mg-03",
+        menteeId: "mn-ada",
+        title: "Interview readiness",
+        progressPct: 35,
+        dueDate: "Nov 1",
+        status: "needs focus",
+      },
+      {
+        id: "mg-04",
+        menteeId: "mn-tobi",
+        title: "CI/CD certification",
+        progressPct: 55,
+        dueDate: "Sep 20",
+        status: "on track",
+      },
+      {
+        id: "mg-05",
+        menteeId: "mn-zainab",
+        title: "Portfolio launch",
+        progressPct: 40,
+        dueDate: "Sep 5",
+        status: "needs focus",
+      },
+      {
+        id: "mg-06",
+        menteeId: "mn-ada",
+        title: "First internship application",
+        progressPct: 25,
+        dueDate: "Oct 1",
+        status: "new",
+      },
+    ],
+    requests: [
+      {
+        id: "mr-01",
+        requesterName: "Hauwa Bello",
+        track: "Cloud & DevOps · Cohort 16",
+        why: "Wants help planning her AWS certification path.",
+        status: "pending",
+      },
+      {
+        id: "mr-02",
+        requesterName: "Seun Adeleke",
+        track: "Full-Stack · Cohort 16",
+        why: "Career switcher from civil engineering — needs a roadmap.",
+        status: "pending",
+      },
+    ],
+    availability: [
+      { id: "av-01", day: "Mon", hours: "15:00 – 18:00", isOpen: 1 },
+      { id: "av-02", day: "Tue", hours: "15:00 – 18:00", isOpen: 0 },
+      { id: "av-03", day: "Wed", hours: "15:00 – 18:00", isOpen: 1 },
+      { id: "av-04", day: "Thu", hours: "15:00 – 18:00", isOpen: 0 },
+      { id: "av-05", day: "Fri", hours: "15:00 – 18:00", isOpen: 1 },
+      { id: "av-06", day: "Sat", hours: "10:00 – 13:00", isOpen: 1 },
+    ],
+    resources: [
+      {
+        id: "res-01",
+        groupTitle: "Session templates",
+        items: ["Goal review · 45 min", "Mock interview · 60 min", "Portfolio critique · 30 min"],
+      },
+      {
+        id: "res-02",
+        groupTitle: "Career toolkit",
+        items: ["CV rubric v3", "Interview question bank (120+)", "Salary guide 2026"],
+      },
+      {
+        id: "res-03",
+        groupTitle: "Learning support",
+        items: ["SQL exercise pack", "Systems design scenarios", "Debugging drills"],
+      },
+      {
+        id: "res-04",
+        groupTitle: "Reports & feedback",
+        items: ["Progress report template", "Endorsement guide", "Goal-setting worksheet"],
+      },
+    ],
+    conversations: [
+      {
+        id: "mc-01",
+        name: "Ada Okafor",
+        track: "Backend specialisation",
+        preview: "Thursday 18:00 works. I'll send the link.",
+        timeLabel: "14:11",
+        unread: 1,
+      },
+      {
+        id: "mc-02",
+        name: "Tobi Adeyemi",
+        track: "DevOps",
+        preview: "CI/CD cert material is ready for review",
+        timeLabel: "09:45",
+        unread: 0,
+      },
+      {
+        id: "mc-03",
+        name: "Zainab Yusuf",
+        track: "Product design",
+        preview: "Portfolio v2 — can we review on Friday?",
+        timeLabel: "Yesterday",
+        unread: 1,
+      },
+      {
+        id: "mc-04",
+        name: "Halima Bello",
+        track: "Career switch",
+        preview: "Welcome to the mentorship program!",
+        timeLabel: "Jul 28",
+        unread: 0,
+      },
+    ],
+  };
+  const mntPortfolio = [
+    {
+      id: "mp-01",
+      projectName: "NaijaEats — food delivery API",
+      status: "Featured",
+      stars: 5,
+      feedback: "REST API, 40+ endpoints, strong docs",
+    },
+    {
+      id: "mp-02",
+      projectName: "BudgetPadi — expense tracker",
+      status: "Live",
+      stars: 4,
+      feedback: "Clean PWA, good offline UX",
+    },
+    {
+      id: "mp-03",
+      projectName: "ClassBoard — LMS UI",
+      status: "In review",
+      stars: 4,
+      feedback: "Design system depth impressive",
+    },
+  ];
+  const mntSkills = [
+    { id: "msk-01", skillName: "Database design", endorsed: 1 },
+    { id: "msk-02", skillName: "REST API development", endorsed: 1 },
+    { id: "msk-03", skillName: "System design basics", endorsed: 0 },
+    { id: "msk-04", skillName: "Technical writing", endorsed: 0 },
+  ];
+  const mntCareer = [
+    {
+      id: "map-01",
+      role: "Junior Backend Engineer",
+      company: "Paystack",
+      stage: "Interview",
+      appliedDate: "Aug 5",
+    },
+    {
+      id: "map-02",
+      role: "Backend Intern",
+      company: "Kuda",
+      stage: "Take-home",
+      appliedDate: "Jul 28",
+    },
+    {
+      id: "map-03",
+      role: "Software Eng. Trainee",
+      company: "Andela",
+      stage: "Applied",
+      appliedDate: "Jul 20",
+    },
+    {
+      id: "map-04",
+      role: "Junior Developer",
+      company: "Flutterwave",
+      stage: "Rejected",
+      appliedDate: "Jul 12",
+    },
+  ];
+  const mntThread = [
+    {
+      id: "mt-01",
+      fromLabel: "You",
+      body: "Great mock interview today. Let's book a goal review for next week.",
+      timeLabel: "10:00",
+    },
+    {
+      id: "mt-02",
+      fromLabel: "Ada",
+      body: "Thanks! Thursday 18:00 works for me.",
+      timeLabel: "13:30",
+    },
+    {
+      id: "mt-03",
+      fromLabel: "You",
+      body: "Let's do a goal review + demo-day checklist then.",
+      timeLabel: "13:45",
+    },
+    {
+      id: "mt-04",
+      fromLabel: "Ada",
+      body: "Perfect — I'll send the link before the session.",
+      timeLabel: "14:11",
+    },
+  ];
+  registerMockPattern("GET", "/v1/mentor-dashboard/*", async (init: ApiRequestInit) => {
+    await delay();
+    const segments = (init.path ?? "").split("/").filter(Boolean);
+    const collection = segments[2] ?? "";
+    const id = segments[3] ?? "";
+    if (segments.length >= 5 && collection === "mentees") {
+      const sub = segments[4] ?? "";
+      if (sub === "portfolio") return { items: mntPortfolio, total: mntPortfolio.length };
+      if (sub === "skills") return { items: mntSkills, total: mntSkills.length };
+      if (sub === "career") return { items: mntCareer, total: mntCareer.length };
+    }
+    if (id) {
+      if (collection === "sessions") {
+        const session = mntSessions.find((s) => s.id === id);
+        if (session) {
+          return {
+            ...session,
+            actions: [
+              { id: "ma-01", title: "Share demo-day checklist with Ada", done: 1 },
+              { id: "ma-02", title: "Send EXPLAIN practice exercise", done: 1 },
+              { id: "ma-03", title: "Book follow-up interview prep", done: 0 },
+              { id: "ma-04", title: "Endorse Database Design skill", done: 0 },
+            ],
+          };
+        }
+      }
+      if (collection === "mentees") {
+        const mentee = mntMentees.find((m) => m.id === id);
+        if (mentee) {
+          return {
+            ...mentee,
+            goals: (mntCollections.goals ?? []).filter((g) => g.menteeId === id),
+          };
+        }
+      }
+      if (collection === "conversations") {
+        const convo = mntCollections.conversations?.find((c) => c.id === id);
+        if (convo) return { ...convo, thread: mntThread };
+      }
+    }
+    const items = mntCollections[collection] ?? [];
+    return { items, total: items.length };
+  });
 }

@@ -3,7 +3,10 @@ import { ArrowLeft, CheckCircle2, FileText, Send, Target, Timer, Video } from "l
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { QueryState } from "@/components/ui/query-state";
 import { AppShell } from "@/components/app/app-shell";
+import { useSessionDetail } from "@/lib/query/mentorDashboard";
+import type { SessionDetail } from "@/lib/api/mentorDashboard";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/mentor/sessions/$sessionId")({
@@ -16,22 +19,23 @@ export const Route = createFileRoute("/app/mentor/sessions/$sessionId")({
   component: MentorSessionDetail,
 });
 
-const actions = [
-  { t: "Share demo-day checklist with Ada", done: true },
-  { t: "Send EXPLAIN practice exercise", done: true },
-  { t: "Book follow-up interview prep", done: false },
-  { t: "Endorse 'Database Design' skill", done: false },
-];
-
 function MentorSessionDetail() {
+  const { sessionId } = Route.useParams();
+  const detailQuery = useSessionDetail(sessionId);
+  const detail = detailQuery.data;
+
+  const done = detail ? detail.actions.filter((a) => a.done === 1).length : 0;
+
   return (
     <AppShell
       roleKey="instructor"
-      title="Goal review — Ada Okafor"
-      subtitle="Fri, Aug 21 · 16:00–16:45 · Video"
+      title={detail ? detail.title : "Session"}
+      subtitle={detail ? `${detail.datetimeText} · ${detail.mode}` : "Loading session…"}
       actions={
         <>
-          <Badge className="bg-primary/10 text-primary border-0 font-semibold">45 minutes</Badge>
+          <Badge className="bg-primary/10 text-primary border-0 font-semibold">
+            {detail ? detail.status : "—"}
+          </Badge>
           <Button asChild variant="outline" size="sm" className="font-semibold">
             <Link to="/app/mentor/sessions">
               <ArrowLeft className="size-4" /> All sessions
@@ -75,14 +79,19 @@ function MentorSessionDetail() {
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-3">
-              <p className="rounded-xl border p-3 text-xs leading-relaxed">
-                Ada's API schema is well-normalised. Reviewed EXPLAIN output on the orders table —
-                the index on (customer_id, created_at) cut the query from 180ms to 22ms.
-              </p>
-              <p className="rounded-xl border p-3 text-xs leading-relaxed">
-                STAR format still needs practice — she describes outcomes well but skips the
-                "Action" step. Drilled one answer together.
-              </p>
+              <QueryState<SessionDetail>
+                query={detailQuery}
+                error={{ title: "Session unavailable" }}
+                empty={{
+                  title: "Session not found",
+                  description: "This session may have been removed.",
+                }}
+                isEmpty={(row) => row.notes.length === 0}
+              >
+                {(row) => (
+                  <p className="rounded-xl border p-3 text-xs leading-relaxed">{row.notes}</p>
+                )}
+              </QueryState>
               <div className="flex gap-2">
                 <Button size="sm" className="font-semibold">
                   <Send className="size-4" /> Save notes
@@ -103,26 +112,43 @@ function MentorSessionDetail() {
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-2">
-              {actions.map((a) => (
-                <div
-                  key={a.t}
-                  className={cn(
-                    "flex items-center gap-3 rounded-xl border p-3",
-                    a.done && "opacity-60",
-                  )}
-                >
-                  <CheckCircle2
-                    className={cn(
-                      "size-4 shrink-0",
-                      a.done ? "text-success" : "text-muted-foreground",
-                    )}
-                  />
-                  <p className="text-sm font-medium">{a.t}</p>
-                </div>
-              ))}
-              <p className="text-muted-foreground pt-1 text-xs">
-                2 of 4 complete — overdue items roll into next week's review.
-              </p>
+              <QueryState<SessionDetail>
+                query={detailQuery}
+                error={{ title: "Actions unavailable" }}
+                empty={{
+                  title: "No action items",
+                  description: "Follow-ups for this session will show here.",
+                }}
+                isEmpty={(row) => row.actions.length === 0}
+              >
+                {(row) => (
+                  <>
+                    {row.actions.map((a) => (
+                      <div
+                        key={a.id}
+                        className={cn(
+                          "flex items-center gap-3 rounded-xl border p-3",
+                          a.done === 1 && "opacity-60",
+                        )}
+                      >
+                        <CheckCircle2
+                          className={cn(
+                            "size-4 shrink-0",
+                            a.done === 1 ? "text-success" : "text-muted-foreground",
+                          )}
+                        />
+                        <p className="text-sm font-medium">{a.title}</p>
+                      </div>
+                    ))}
+                  </>
+                )}
+              </QueryState>
+              {detail && (
+                <p className="text-muted-foreground pt-1 text-xs">
+                  {done} of {detail.actions.length} complete — overdue items roll into next week's
+                  review.
+                </p>
+              )}
             </CardContent>
           </Card>
 
@@ -131,8 +157,8 @@ function MentorSessionDetail() {
               <CheckCircle2 className="text-success size-5" />
               <p className="font-display mt-3 text-base font-extrabold">Endorse a skill</p>
               <p className="text-ink-foreground/70 mt-1 text-sm">
-                Endorsements from mentors weigh into the OSKM skill scores employers see on Ada's
-                certificate.
+                Endorsements from mentors weigh into the OSKM skill scores employers see on the
+                mentee's certificate.
               </p>
               <Button className="bg-ink-foreground text-ink mt-4 w-full font-semibold hover:bg-ink-foreground/90">
                 Endorse Database Design

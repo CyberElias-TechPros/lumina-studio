@@ -3,7 +3,10 @@ import { ArrowLeft, CalendarDays, Clock, Globe2, UserRound } from "lucide-react"
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { QueryState } from "@/components/ui/query-state";
 import { AppShell } from "@/components/app/app-shell";
+import { useMntAvailability, useMntAvailabilityItems } from "@/lib/query/mentorDashboard";
+import type { MntAvailability } from "@/lib/api/mentorDashboard";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/mentor/settings")({
@@ -16,16 +19,37 @@ export const Route = createFileRoute("/app/mentor/settings")({
   component: MentorSettings,
 });
 
-const week = [
-  { d: "Mon", h: "15:00 – 18:00", on: true },
-  { d: "Tue", h: "15:00 – 18:00", on: false },
-  { d: "Wed", h: "15:00 – 18:00", on: true },
-  { d: "Thu", h: "15:00 – 18:00", on: false },
-  { d: "Fri", h: "15:00 – 18:00", on: true },
-  { d: "Sat", h: "10:00 – 13:00", on: true },
-];
+function AvailabilityRow({ w }: { w: MntAvailability }) {
+  const open = w.isOpen === 1;
+  return (
+    <div
+      className={cn(
+        "flex items-center justify-between rounded-xl border p-3",
+        !open && "opacity-50",
+      )}
+    >
+      <div>
+        <p className="text-sm font-bold">{w.day}</p>
+        <p className="text-muted-foreground text-xs">{w.hours}</p>
+      </div>
+      <Badge
+        className={cn(
+          "border-0 font-semibold",
+          open ? "bg-success/10 text-success" : "bg-muted text-muted-foreground",
+        )}
+      >
+        {open ? "Open" : "Closed"}
+      </Badge>
+    </div>
+  );
+}
 
 function MentorSettings() {
+  const availabilityQuery = useMntAvailability();
+  const availability = useMntAvailabilityItems();
+
+  const openSlots = availability.filter((w) => w.isOpen === 1).length;
+
   return (
     <AppShell
       roleKey="instructor"
@@ -34,7 +58,7 @@ function MentorSettings() {
       actions={
         <>
           <Badge className="bg-success/10 text-success border-0 font-semibold">
-            4 slots / week
+            {availability.length > 0 ? `${openSlots} slots / week` : "—"}
           </Badge>
           <Button asChild variant="outline" size="sm" className="font-semibold">
             <Link to="/app/mentor">
@@ -55,28 +79,23 @@ function MentorSettings() {
             </Button>
           </CardHeader>
           <CardContent className="grid gap-3 sm:grid-cols-2">
-            {week.map((w) => (
-              <div
-                key={w.d}
-                className={cn(
-                  "flex items-center justify-between rounded-xl border p-3",
-                  !w.on && "opacity-50",
-                )}
-              >
-                <div>
-                  <p className="text-sm font-bold">{w.d}</p>
-                  <p className="text-muted-foreground text-xs">{w.h}</p>
-                </div>
-                <Badge
-                  className={cn(
-                    "border-0 font-semibold",
-                    w.on ? "bg-success/10 text-success" : "bg-muted text-muted-foreground",
-                  )}
-                >
-                  {w.on ? "Open" : "Closed"}
-                </Badge>
-              </div>
-            ))}
+            <QueryState<MntAvailability[]>
+              query={availabilityQuery}
+              error={{ title: "Availability unavailable" }}
+              empty={{
+                title: "No availability set",
+                description: "Add slots so mentees can book you.",
+              }}
+              isEmpty={(rows) => rows.length === 0}
+            >
+              {(rows) => (
+                <>
+                  {rows.map((w) => (
+                    <AvailabilityRow key={w.id} w={w} />
+                  ))}
+                </>
+              )}
+            </QueryState>
           </CardContent>
         </Card>
 

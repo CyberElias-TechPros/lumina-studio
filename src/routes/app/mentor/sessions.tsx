@@ -11,7 +11,10 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { QueryState } from "@/components/ui/query-state";
 import { AppShell } from "@/components/app/app-shell";
+import { useMntSessionItems, useMntSessions } from "@/lib/query/mentorDashboard";
+import type { MntSession } from "@/lib/api/mentorDashboard";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/mentor/sessions")({
@@ -24,45 +27,16 @@ export const Route = createFileRoute("/app/mentor/sessions")({
   component: MentorSessions,
 });
 
-const sessions = [
-  {
-    t: "Ada Okafor — goal review",
-    d: "Fri, Aug 21 · 16:00",
-    mode: "Video",
-    status: "Upcoming",
-    tone: "bg-primary/10 text-primary",
-  },
-  {
-    t: "Tobi Adeyemi — exam prep",
-    d: "Sat, Aug 22 · 11:00",
-    mode: "On campus",
-    status: "Upcoming",
-    tone: "bg-primary/10 text-primary",
-  },
-  {
-    t: "Zainab Yusuf — portfolio feedback",
-    d: "Tue, Aug 25 · 14:30",
-    mode: "Video",
-    status: "Upcoming",
-    tone: "bg-primary/10 text-primary",
-  },
-  {
-    t: "Ada Okafor — mock interview",
-    d: "Thu, Jul 28 · 15:00",
-    mode: "Video",
-    status: "Completed",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    t: "Tobi Adeyemi — career check-in",
-    d: "Mon, Jul 14 · 12:00",
-    mode: "On campus",
-    status: "Completed",
-    tone: "bg-success/10 text-success",
-  },
-];
+const statusTone: Record<string, string> = {
+  upcoming: "bg-primary/10 text-primary",
+  completed: "bg-success/10 text-success",
+  cancelled: "bg-destructive/10 text-destructive",
+};
 
 function MentorSessions() {
+  const sessionsQuery = useMntSessions();
+  const sessions = useMntSessionItems();
+
   return (
     <AppShell
       roleKey="instructor"
@@ -71,7 +45,7 @@ function MentorSessions() {
       actions={
         <>
           <Badge className="bg-success/10 text-success border-0 font-semibold">
-            12 sessions this term
+            {sessions.length > 0 ? `${sessions.length} sessions tracked` : "Loading sessions…"}
           </Badge>
           <Button asChild variant="outline" size="sm" className="font-semibold">
             <Link to="/app/mentor">
@@ -89,31 +63,58 @@ function MentorSessions() {
             </CardTitle>
           </CardHeader>
           <CardContent className="divide-y">
-            {sessions.map((s) => (
-              <div
-                key={s.t}
-                className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
-              >
-                <span className="bg-muted text-muted-foreground grid size-9 shrink-0 place-items-center rounded-lg">
-                  {s.mode === "Video" ? <Video className="size-4" /> : <Clock className="size-4" />}
-                </span>
-                <div className="min-w-0 flex-1">
-                  <p className="text-sm font-bold">{s.t}</p>
-                  <p className="text-muted-foreground text-xs">
-                    {s.d} · {s.mode}
-                  </p>
-                </div>
-                <Badge className={cn("border-0 font-semibold", s.tone)}>{s.status}</Badge>
-                <Button asChild variant="outline" size="sm" className="shrink-0 font-semibold">
-                  <Link
-                    to="/app/mentor/sessions/$sessionId"
-                    params={{ sessionId: s.t.toLowerCase().replace(/[^a-z]+/g, "-") }}
-                  >
-                    {s.status === "Upcoming" ? "Open" : "Notes"}
-                  </Link>
-                </Button>
-              </div>
-            ))}
+            <QueryState<MntSession[]>
+              query={sessionsQuery}
+              error={{ title: "Sessions unavailable" }}
+              empty={{
+                title: "No sessions yet",
+                description: "Sessions you schedule will show here.",
+              }}
+              isEmpty={(rows) => rows.length === 0}
+            >
+              {(rows) => (
+                <>
+                  {rows.map((s) => (
+                    <div
+                      key={s.id}
+                      className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
+                    >
+                      <span className="bg-muted text-muted-foreground grid size-9 shrink-0 place-items-center rounded-lg">
+                        {s.mode === "Video" ? (
+                          <Video className="size-4" />
+                        ) : (
+                          <Clock className="size-4" />
+                        )}
+                      </span>
+                      <div className="min-w-0 flex-1">
+                        <p className="text-sm font-bold">{s.title}</p>
+                        <p className="text-muted-foreground text-xs">
+                          {s.datetimeText} · {s.mode}
+                        </p>
+                      </div>
+                      <Badge
+                        className={cn(
+                          "border-0 font-semibold capitalize",
+                          statusTone[s.status] ?? "bg-muted/20 text-muted-foreground",
+                        )}
+                      >
+                        {s.status}
+                      </Badge>
+                      <Button
+                        asChild
+                        variant="outline"
+                        size="sm"
+                        className="shrink-0 font-semibold"
+                      >
+                        <Link to="/app/mentor/sessions/$sessionId" params={{ sessionId: s.id }}>
+                          {s.status === "upcoming" ? "Open" : "Notes"}
+                        </Link>
+                      </Button>
+                    </div>
+                  ))}
+                </>
+              )}
+            </QueryState>
           </CardContent>
         </Card>
 

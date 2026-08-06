@@ -3,7 +3,15 @@ import { ArrowLeft, Award, FolderGit2, Sparkles, ThumbsUp } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { QueryState } from "@/components/ui/query-state";
 import { AppShell } from "@/components/app/app-shell";
+import {
+  useMenteePortfolio,
+  useMenteePortfolioItems,
+  useMenteeSkillItems,
+  useMenteeSkills,
+} from "@/lib/query/mentorDashboard";
+import type { MntSkill, PortfolioItem } from "@/lib/api/mentorDashboard";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/mentor/mentees/$menteeId/portfolio")({
@@ -16,50 +24,37 @@ export const Route = createFileRoute("/app/mentor/mentees/$menteeId/portfolio")(
   component: MentorPortfolioReview,
 });
 
-const projects = [
-  {
-    t: "NaijaEats — food delivery API",
-    v: "Featured",
-    stars: 5,
-    feedback: "REST API, 40+ endpoints, strong docs",
-    tone: "bg-warning/10 text-warning",
-  },
-  {
-    t: "BudgetPadi — expense tracker",
-    v: "Live",
-    stars: 4,
-    feedback: "Clean PWA, good offline UX",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    t: "ClassBoard — LMS UI",
-    v: "In review",
-    stars: 4,
-    feedback: "Design system depth impressive",
-    tone: "bg-primary/10 text-primary",
-  },
-];
-
-const skills = [
-  { s: "Database design", endorsed: true },
-  { s: "REST API development", endorsed: true },
-  { s: "System design basics", endorsed: false },
-  { s: "Technical writing", endorsed: false },
-];
+const statusTone: Record<string, string> = {
+  Featured: "bg-warning/10 text-warning",
+  Live: "bg-success/10 text-success",
+  "In review": "bg-primary/10 text-primary",
+};
 
 function MentorPortfolioReview() {
+  const { menteeId } = Route.useParams();
+  const projectsQuery = useMenteePortfolio(menteeId);
+  const projects = useMenteePortfolioItems(menteeId);
+  const skillsQuery = useMenteeSkills(menteeId);
+  const skills = useMenteeSkillItems(menteeId);
+
+  const endorsed = skills.filter((s) => s.endorsed === 1).length;
+
   return (
     <AppShell
       roleKey="instructor"
       title="Portfolio review"
-      subtitle="Ada Okafor · 3 projects · 2 skills endorsed"
+      subtitle={
+        projects.length > 0
+          ? `${projects.length} projects · ${endorsed} skills endorsed`
+          : "Loading portfolio…"
+      }
       actions={
         <>
           <Badge className="bg-success/10 text-success border-0 font-semibold">
             Review in progress
           </Badge>
           <Button asChild variant="outline" size="sm" className="font-semibold">
-            <Link to="/app/mentor/mentees/$menteeId" params={{ menteeId: "ada-okafor" }}>
+            <Link to="/app/mentor/mentees/$menteeId" params={{ menteeId }}>
               <ArrowLeft className="size-4" /> Mentee overview
             </Link>
           </Button>
@@ -74,30 +69,51 @@ function MentorPortfolioReview() {
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
-            {projects.map((p) => (
-              <div key={p.t} className="rounded-xl border p-4">
-                <div className="flex flex-wrap items-center justify-between gap-2">
-                  <p className="font-display text-sm font-bold">{p.t}</p>
-                  <div className="flex items-center gap-2">
-                    <span className="flex">
-                      {Array.from({ length: p.stars }).map((_, i) => (
-                        <Sparkles key={i} className="text-warning size-3.5" />
-                      ))}
-                    </span>
-                    <Badge className={cn("border-0 font-semibold", p.tone)}>{p.v}</Badge>
-                  </div>
-                </div>
-                <p className="text-muted-foreground mt-1.5 text-xs">{p.feedback}</p>
-                <div className="mt-3 flex gap-2">
-                  <Button size="sm" variant="outline" className="font-semibold">
-                    Add comment
-                  </Button>
-                  <Button size="sm" className="font-semibold">
-                    <ThumbsUp className="size-3.5" /> Approve
-                  </Button>
-                </div>
-              </div>
-            ))}
+            <QueryState<PortfolioItem[]>
+              query={projectsQuery}
+              error={{ title: "Portfolio unavailable" }}
+              empty={{
+                title: "No projects yet",
+                description: "Projects will show once the mentee shares their portfolio.",
+              }}
+              isEmpty={(rows) => rows.length === 0}
+            >
+              {(rows) => (
+                <>
+                  {rows.map((p) => (
+                    <div key={p.id} className="rounded-xl border p-4">
+                      <div className="flex flex-wrap items-center justify-between gap-2">
+                        <p className="font-display text-sm font-bold">{p.projectName}</p>
+                        <div className="flex items-center gap-2">
+                          <span className="flex">
+                            {Array.from({ length: p.stars }).map((_, i) => (
+                              <Sparkles key={i} className="text-warning size-3.5" />
+                            ))}
+                          </span>
+                          <Badge
+                            className={cn(
+                              "border-0 font-semibold",
+                              statusTone[p.status] ?? "bg-primary/10 text-primary",
+                            )}
+                          >
+                            {p.status}
+                          </Badge>
+                        </div>
+                      </div>
+                      <p className="text-muted-foreground mt-1.5 text-xs">{p.feedback}</p>
+                      <div className="mt-3 flex gap-2">
+                        <Button size="sm" variant="outline" className="font-semibold">
+                          Add comment
+                        </Button>
+                        <Button size="sm" className="font-semibold">
+                          <ThumbsUp className="size-3.5" /> Approve
+                        </Button>
+                      </div>
+                    </div>
+                  ))}
+                </>
+              )}
+            </QueryState>
           </CardContent>
         </Card>
 
@@ -109,20 +125,37 @@ function MentorPortfolioReview() {
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-2">
-              {skills.map((s) => (
-                <div key={s.s} className="flex items-center justify-between rounded-xl border p-3">
-                  <span className="text-sm font-semibold">{s.s}</span>
-                  <Button
-                    size="sm"
-                    variant={s.endorsed ? "default" : "outline"}
-                    className={cn("font-semibold", !s.endorsed && "text-primary")}
-                  >
-                    {s.endorsed ? "Endorsed" : "Endorse"}
-                  </Button>
-                </div>
-              ))}
+              <QueryState<MntSkill[]>
+                query={skillsQuery}
+                error={{ title: "Skills unavailable" }}
+                empty={{
+                  title: "No skills yet",
+                  description: "Skills will show once endorsed.",
+                }}
+                isEmpty={(rows) => rows.length === 0}
+              >
+                {(rows) => (
+                  <>
+                    {rows.map((s) => (
+                      <div
+                        key={s.id}
+                        className="flex items-center justify-between rounded-xl border p-3"
+                      >
+                        <span className="text-sm font-semibold">{s.skillName}</span>
+                        <Button
+                          size="sm"
+                          variant={s.endorsed === 1 ? "default" : "outline"}
+                          className={cn("font-semibold", s.endorsed === 0 && "text-primary")}
+                        >
+                          {s.endorsed === 1 ? "Endorsed" : "Endorse"}
+                        </Button>
+                      </div>
+                    ))}
+                  </>
+                )}
+              </QueryState>
               <p className="text-muted-foreground pt-1 text-xs">
-                Endorsements update Ada's OSKM skill score and employer-facing certificate.
+                Endorsements update the mentee's OSKM skill score and employer-facing certificate.
               </p>
             </CardContent>
           </Card>

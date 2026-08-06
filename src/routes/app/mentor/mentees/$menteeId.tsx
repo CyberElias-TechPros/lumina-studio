@@ -12,7 +12,14 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
+import { QueryState } from "@/components/ui/query-state";
 import { AppShell } from "@/components/app/app-shell";
+import {
+  useMenteeDetail,
+  useMenteePortfolioItems,
+  useMenteePortfolio,
+} from "@/lib/query/mentorDashboard";
+import type { MntGoal, MntMenteeDetail, PortfolioItem } from "@/lib/api/mentorDashboard";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/mentor/mentees/$menteeId")({
@@ -25,40 +32,41 @@ export const Route = createFileRoute("/app/mentor/mentees/$menteeId")({
   component: MenteeOverview,
 });
 
-const goals = [
-  {
-    t: "NaijaEats demo day",
-    pct: 90,
-    d: "Aug 30",
-    status: "On track",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    t: "Backend certification",
-    pct: 60,
-    d: "Oct 15",
-    status: "On track",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    t: "Interview readiness",
-    pct: 35,
-    d: "Nov 1",
-    status: "Needs focus",
-    tone: "bg-warning/10 text-warning",
-  },
-];
+const statusTone: Record<string, string> = {
+  "on track": "bg-success/10 text-success",
+  "needs focus": "bg-warning/10 text-warning",
+  new: "bg-primary/10 text-primary",
+  completed: "bg-learning/10 text-learning",
+};
+
+const portfolioTone: Record<string, string> = {
+  Featured: "bg-warning/10 text-warning",
+  Live: "bg-success/10 text-success",
+  "In review": "bg-primary/10 text-primary",
+};
 
 function MenteeOverview() {
+  const { menteeId } = Route.useParams();
+  const detailQuery = useMenteeDetail(menteeId);
+  const detail = detailQuery.data;
+  const portfolioQuery = useMenteePortfolio(menteeId);
+  const portfolio = useMenteePortfolioItems(menteeId);
+
+  const onTrack = detail ? detail.goals.filter((g) => g.status === "on track").length : 0;
+
   return (
     <AppShell
       roleKey="instructor"
-      title="Ada Okafor"
-      subtitle="Backend specialisation · Cohort 15 · mentee since Feb 2026"
+      title={detail ? detail.name : "Mentee overview"}
+      subtitle={
+        detail
+          ? `${detail.track} · ${detail.cohort} · mentee since ${detail.sinceDate}`
+          : "Loading mentee…"
+      }
       actions={
         <>
           <Badge className="bg-success/10 text-success border-0 font-semibold">
-            On track · 2 goals
+            {detail ? `${onTrack} of ${detail.goals.length} goals on track` : "—"}
           </Badge>
           <Button asChild variant="outline" size="sm" className="font-semibold">
             <Link to="/app/mentor">
@@ -86,8 +94,8 @@ function MenteeOverview() {
           },
           {
             label: "Goals",
-            value: "3",
-            delta: "2 on track",
+            value: detail ? String(detail.goals.length) : "—",
+            delta: detail ? `${onTrack} on track` : "loading…",
             icon: Goal,
             tone: "bg-success/10 text-success",
           },
@@ -124,19 +132,23 @@ function MenteeOverview() {
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
-            {goals.map((g) => (
-              <div key={g.t} className="rounded-xl border p-4">
-                <div className="flex flex-wrap items-center justify-between gap-2">
-                  <p className="text-sm font-bold">{g.t}</p>
-                  <div className="flex items-center gap-2">
-                    <span className="text-muted-foreground text-xs font-semibold">{g.d}</span>
-                    <Badge className={cn("border-0 font-semibold", g.tone)}>{g.status}</Badge>
-                  </div>
-                </div>
-                <Progress value={g.pct} className="mt-2.5 h-1.5" />
-                <p className="text-muted-foreground mt-2 text-xs">{g.pct}% complete</p>
-              </div>
-            ))}
+            <QueryState<MntMenteeDetail>
+              query={detailQuery}
+              error={{ title: "Mentee unavailable" }}
+              empty={{
+                title: "Mentee not found",
+                description: "This mentee may have been removed.",
+              }}
+              isEmpty={(row) => row.goals.length === 0}
+            >
+              {(row) => (
+                <>
+                  {row.goals.map((g) => (
+                    <GoalRow key={g.id} g={g} />
+                  ))}
+                </>
+              )}
+            </QueryState>
           </CardContent>
         </Card>
 
@@ -148,29 +160,38 @@ function MenteeOverview() {
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-3">
-              {[
-                {
-                  t: "NaijaEats — food delivery API",
-                  v: "Featured",
-                  tone: "bg-warning/10 text-warning",
-                },
-                {
-                  t: "BudgetPadi — expense tracker",
-                  v: "Live",
-                  tone: "bg-success/10 text-success",
-                },
-                { t: "ClassBoard — LMS UI", v: "In review", tone: "bg-primary/10 text-primary" },
-              ].map((x) => (
-                <div key={x.t} className="flex items-center justify-between rounded-xl border p-3">
-                  <span className="text-sm font-semibold">{x.t}</span>
-                  <Badge className={cn("border-0 font-semibold", x.tone)}>{x.v}</Badge>
-                </div>
-              ))}
+              <QueryState<PortfolioItem[]>
+                query={portfolioQuery}
+                error={{ title: "Portfolio unavailable" }}
+                empty={{
+                  title: "No projects yet",
+                  description: "Projects will show once the mentee shares their portfolio.",
+                }}
+                isEmpty={(rows) => rows.length === 0}
+              >
+                {(rows) => (
+                  <>
+                    {rows.map((x) => (
+                      <div
+                        key={x.id}
+                        className="flex items-center justify-between rounded-xl border p-3"
+                      >
+                        <span className="text-sm font-semibold">{x.projectName}</span>
+                        <Badge
+                          className={cn(
+                            "border-0 font-semibold",
+                            portfolioTone[x.status] ?? "bg-primary/10 text-primary",
+                          )}
+                        >
+                          {x.status}
+                        </Badge>
+                      </div>
+                    ))}
+                  </>
+                )}
+              </QueryState>
               <Button asChild variant="outline" size="sm" className="w-full font-semibold">
-                <Link
-                  to="/app/mentor/mentees/$menteeId/portfolio"
-                  params={{ menteeId: "ada-okafor" }}
-                >
+                <Link to="/app/mentor/mentees/$menteeId/portfolio" params={{ menteeId }}>
                   Review portfolio
                 </Link>
               </Button>
@@ -197,5 +218,28 @@ function MenteeOverview() {
         </div>
       </div>
     </AppShell>
+  );
+}
+
+function GoalRow({ g }: { g: MntGoal }) {
+  return (
+    <div className="rounded-xl border p-4">
+      <div className="flex flex-wrap items-center justify-between gap-2">
+        <p className="text-sm font-bold">{g.title}</p>
+        <div className="flex items-center gap-2">
+          <span className="text-muted-foreground text-xs font-semibold">{g.dueDate}</span>
+          <Badge
+            className={cn(
+              "border-0 font-semibold capitalize",
+              statusTone[g.status] ?? "bg-muted/20 text-muted-foreground",
+            )}
+          >
+            {g.status}
+          </Badge>
+        </div>
+      </div>
+      <Progress value={g.progressPct} className="mt-2.5 h-1.5" />
+      <p className="text-muted-foreground mt-2 text-xs">{g.progressPct}% complete</p>
+    </div>
   );
 }

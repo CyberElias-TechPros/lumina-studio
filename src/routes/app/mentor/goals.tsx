@@ -4,7 +4,10 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
+import { QueryState } from "@/components/ui/query-state";
 import { AppShell } from "@/components/app/app-shell";
+import { useMntGoalItems, useMntGoals, useMntMenteeItems } from "@/lib/query/mentorDashboard";
+import type { MntGoal } from "@/lib/api/mentorDashboard";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/mentor/goals")({
@@ -17,50 +20,38 @@ export const Route = createFileRoute("/app/mentor/goals")({
   component: MentorGoals,
 });
 
-const goals = [
-  {
-    t: "NaijaEats demo day",
-    m: "Ada Okafor",
-    pct: 90,
-    d: "Aug 30",
-    status: "On track",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    t: "CI/CD certification",
-    m: "Tobi Adeyemi",
-    pct: 55,
-    d: "Sep 20",
-    status: "On track",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    t: "Portfolio launch",
-    m: "Zainab Yusuf",
-    pct: 40,
-    d: "Sep 5",
-    status: "Needs focus",
-    tone: "bg-warning/10 text-warning",
-  },
-  {
-    t: "First internship application",
-    m: "Ada Okafor",
-    pct: 25,
-    d: "Oct 1",
-    status: "New",
-    tone: "bg-primary/10 text-primary",
-  },
-];
+const statusTone: Record<string, string> = {
+  "on track": "bg-success/10 text-success",
+  "needs focus": "bg-warning/10 text-warning",
+  new: "bg-primary/10 text-primary",
+  completed: "bg-learning/10 text-learning",
+};
 
 function MentorGoals() {
+  const goalsQuery = useMntGoals();
+  const goals = useMntGoalItems();
+  const mentees = useMntMenteeItems();
+
+  const menteeName = (id: string) => mentees.find((m) => m.id === id)?.name ?? id;
+  const onTrack = goals.filter((g) => g.status === "on track").length;
+  const atRisk = goals.filter((g) => g.status === "needs focus").length;
+  const completed = goals.filter((g) => g.status === "completed").length;
+  const pct = goals.length > 0 ? Math.round((onTrack / goals.length) * 100) : 0;
+
   return (
     <AppShell
       roleKey="instructor"
       title="Goal management"
-      subtitle="9 goals across 3 mentees · 7 on track"
+      subtitle={
+        goals.length > 0
+          ? `${goals.length} goals across ${mentees.length} mentees · ${onTrack} on track`
+          : "Loading goals…"
+      }
       actions={
         <>
-          <Badge className="bg-success/10 text-success border-0 font-semibold">78% on track</Badge>
+          <Badge className="bg-success/10 text-success border-0 font-semibold">
+            {goals.length > 0 ? `${pct}% on track` : "—"}
+          </Badge>
           <Button asChild variant="outline" size="sm" className="font-semibold">
             <Link to="/app/mentor">
               <ArrowLeft className="size-4" /> Dashboard
@@ -73,29 +64,29 @@ function MentorGoals() {
         {[
           {
             label: "Active goals",
-            value: "9",
-            delta: "3 added this term",
+            value: goals.length > 0 ? String(goals.length) : "—",
+            delta: "on your caseload",
             icon: Goal,
             tone: "bg-primary/10 text-primary",
           },
           {
             label: "On track",
-            value: "7",
-            delta: "78%",
+            value: goals.length > 0 ? String(onTrack) : "—",
+            delta: `${pct}%`,
             icon: TrendingUp,
             tone: "bg-success/10 text-success",
           },
           {
             label: "At risk",
-            value: "2",
-            delta: "review this week",
+            value: goals.length > 0 ? String(atRisk) : "—",
+            delta: atRisk > 0 ? "review this week" : "nothing flagged",
             icon: Target,
             tone: "bg-warning/10 text-warning",
           },
           {
             label: "Completed",
-            value: "6",
-            delta: "since Feb",
+            value: goals.length > 0 ? String(completed) : "—",
+            delta: "this term",
             icon: Goal,
             tone: "bg-learning/10 text-learning",
           },
@@ -124,24 +115,47 @@ function MentorGoals() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
-          {goals.map((g) => (
-            <div key={g.t} className="rounded-xl border p-4">
-              <div className="flex flex-wrap items-center justify-between gap-2">
-                <div>
-                  <p className="text-sm font-bold">{g.t}</p>
-                  <p className="text-muted-foreground text-xs">{g.m}</p>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="text-muted-foreground text-xs font-semibold">due {g.d}</span>
-                  <Badge className={cn("border-0 font-semibold", g.tone)}>{g.status}</Badge>
-                </div>
-              </div>
-              <div className="mt-3 flex items-center gap-3">
-                <Progress value={g.pct} className="h-1.5 flex-1" />
-                <span className="text-xs font-bold">{g.pct}%</span>
-              </div>
-            </div>
-          ))}
+          <QueryState<MntGoal[]>
+            query={goalsQuery}
+            error={{ title: "Goals unavailable" }}
+            empty={{
+              title: "No goals yet",
+              description: "Goals from your mentees will show here.",
+            }}
+            isEmpty={(rows) => rows.length === 0}
+          >
+            {(rows) => (
+              <>
+                {rows.map((g) => (
+                  <div key={g.id} className="rounded-xl border p-4">
+                    <div className="flex flex-wrap items-center justify-between gap-2">
+                      <div>
+                        <p className="text-sm font-bold">{g.title}</p>
+                        <p className="text-muted-foreground text-xs">{menteeName(g.menteeId)}</p>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <span className="text-muted-foreground text-xs font-semibold">
+                          due {g.dueDate}
+                        </span>
+                        <Badge
+                          className={cn(
+                            "border-0 font-semibold capitalize",
+                            statusTone[g.status] ?? "bg-muted/20 text-muted-foreground",
+                          )}
+                        >
+                          {g.status}
+                        </Badge>
+                      </div>
+                    </div>
+                    <div className="mt-3 flex items-center gap-3">
+                      <Progress value={g.progressPct} className="h-1.5 flex-1" />
+                      <span className="text-xs font-bold">{g.progressPct}%</span>
+                    </div>
+                  </div>
+                ))}
+              </>
+            )}
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>

@@ -33,6 +33,7 @@ import { push } from "./routes/push";
 import { library } from "./routes/library";
 import { parent } from "./routes/parent";
 import { mentor } from "./routes/mentor";
+import { mentorDashboard } from "./routes/mentorDashboard";
 import { ops } from "./routes/ops";
 import { it } from "./routes/it";
 import { RealtimeRoom } from "./durable/realtime-room";
@@ -90,8 +91,9 @@ v1.route("/flags", flags);
 v1.route("/contact", contact);
 v1.route("/library", library);
   v1.route("/parent", parent);
-  v1.route("/mentor", mentor);
-  v1.route("/ops", ops);
+v1.route("/mentor", mentor);
+v1.route("/mentor-dashboard", mentorDashboard);
+v1.route("/ops", ops);
   v1.route("/it", it);
 
 /** Uptime + DB reachability check for deployment probes. */

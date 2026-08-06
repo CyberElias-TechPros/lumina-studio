@@ -10,7 +10,10 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { QueryState } from "@/components/ui/query-state";
 import { AppShell } from "@/components/app/app-shell";
+import { useMenteeCareer, useMenteeCareerItems } from "@/lib/query/mentorDashboard";
+import type { CareerApplication } from "@/lib/api/mentorDashboard";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/mentor/mentees/$menteeId/career")({
@@ -23,50 +26,37 @@ export const Route = createFileRoute("/app/mentor/mentees/$menteeId/career")({
   component: MentorCareerTracking,
 });
 
-const applications = [
-  {
-    role: "Junior Backend Engineer",
-    company: "Paystack",
-    stage: "Interview",
-    d: "Aug 5",
-    tone: "bg-primary/10 text-primary",
-  },
-  {
-    role: "Backend Intern",
-    company: "Kuda",
-    stage: "Take-home",
-    d: "Jul 28",
-    tone: "bg-warning/10 text-warning",
-  },
-  {
-    role: "Software Eng. Trainee",
-    company: "Andela",
-    stage: "Applied",
-    d: "Jul 20",
-    tone: "bg-learning/10 text-learning",
-  },
-  {
-    role: "Junior Developer",
-    company: "Flutterwave",
-    stage: "Rejected",
-    d: "Jul 12",
-    tone: "bg-destructive/10 text-destructive",
-  },
-];
+const stageTone: Record<string, string> = {
+  Interview: "bg-primary/10 text-primary",
+  "Take-home": "bg-warning/10 text-warning",
+  Applied: "bg-learning/10 text-learning",
+  Rejected: "bg-destructive/10 text-destructive",
+  Offer: "bg-success/10 text-success",
+};
 
 function MentorCareerTracking() {
+  const { menteeId } = Route.useParams();
+  const applicationsQuery = useMenteeCareer(menteeId);
+  const applications = useMenteeCareerItems(menteeId);
+
+  const interviews = applications.filter((a) => a.stage === "Interview").length;
+
   return (
     <AppShell
       roleKey="instructor"
       title="Career tracking"
-      subtitle="Ada Okafor · job search · 4 applications"
+      subtitle={
+        applications.length > 0
+          ? `job search · ${applications.length} applications`
+          : "Loading applications…"
+      }
       actions={
         <>
           <Badge className="bg-success/10 text-success border-0 font-semibold">
-            Interview stage reached
+            {interviews > 0 ? "Interview stage reached" : "—"}
           </Badge>
           <Button asChild variant="outline" size="sm" className="font-semibold">
-            <Link to="/app/mentor/mentees/$menteeId" params={{ menteeId: "ada-okafor" }}>
+            <Link to="/app/mentor/mentees/$menteeId" params={{ menteeId }}>
               <ArrowLeft className="size-4" /> Mentee overview
             </Link>
           </Button>
@@ -77,15 +67,15 @@ function MentorCareerTracking() {
         {[
           {
             label: "Applications",
-            value: "4",
+            value: applications.length > 0 ? String(applications.length) : "—",
             delta: "2 this month",
             icon: BriefcaseBusiness,
             tone: "bg-primary/10 text-primary",
           },
           {
             label: "Interviews",
-            value: "1",
-            delta: "Paystack · Aug 12",
+            value: applications.length > 0 ? String(interviews) : "—",
+            delta: "reached so far",
             icon: Search,
             tone: "bg-learning/10 text-learning",
           },
@@ -128,25 +118,46 @@ function MentorCareerTracking() {
           </CardTitle>
         </CardHeader>
         <CardContent className="divide-y">
-          {applications.map((a) => (
-            <div
-              key={a.role}
-              className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
-            >
-              <div className="min-w-0 flex-1">
-                <p className="text-sm font-bold">{a.role}</p>
-                <p className="text-muted-foreground text-xs">
-                  {a.company} · applied {a.d}
-                </p>
-              </div>
-              <Badge className={cn("border-0 font-semibold", a.tone)}>{a.stage}</Badge>
-              <Button variant="outline" size="sm" className="shrink-0 font-semibold">
-                Prep notes
-              </Button>
-            </div>
-          ))}
+          <QueryState<CareerApplication[]>
+            query={applicationsQuery}
+            error={{ title: "Applications unavailable" }}
+            empty={{
+              title: "No applications yet",
+              description: "Applications from the mentee's job search will show here.",
+            }}
+            isEmpty={(rows) => rows.length === 0}
+          >
+            {(rows) => (
+              <>
+                {rows.map((a) => (
+                  <div
+                    key={a.id}
+                    className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
+                  >
+                    <div className="min-w-0 flex-1">
+                      <p className="text-sm font-bold">{a.role}</p>
+                      <p className="text-muted-foreground text-xs">
+                        {a.company} · applied {a.appliedDate}
+                      </p>
+                    </div>
+                    <Badge
+                      className={cn(
+                        "border-0 font-semibold",
+                        stageTone[a.stage] ?? "bg-muted/20 text-muted-foreground",
+                      )}
+                    >
+                      {a.stage}
+                    </Badge>
+                    <Button variant="outline" size="sm" className="shrink-0 font-semibold">
+                      Prep notes
+                    </Button>
+                  </div>
+                ))}
+              </>
+            )}
+          </QueryState>
           <p className="text-muted-foreground pt-3 text-xs">
-            Next: interview prep for Paystack — STAR drills on backend projects scheduled Aug 10.
+            Next: interview prep — STAR drills on backend projects scheduled this week.
           </p>
         </CardContent>
       </Card>

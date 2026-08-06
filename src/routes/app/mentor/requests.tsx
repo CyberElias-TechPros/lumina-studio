@@ -3,7 +3,10 @@ import { ArrowLeft, Inbox, TrendingUp, UserPlus, Users } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { QueryState } from "@/components/ui/query-state";
 import { AppShell } from "@/components/app/app-shell";
+import { useMntRequestItems, useMntRequests } from "@/lib/query/mentorDashboard";
+import type { MntRequest } from "@/lib/api/mentorDashboard";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/mentor/requests")({
@@ -16,30 +19,28 @@ export const Route = createFileRoute("/app/mentor/requests")({
   component: MentorRequests,
 });
 
-const requests = [
-  {
-    name: "Hauwa Bello",
-    track: "Cloud & DevOps · Cohort 16",
-    why: "Wants help planning her AWS certification path.",
-    tone: "bg-learning/10 text-learning",
-  },
-  {
-    name: "Seun Adeleke",
-    track: "Full-Stack · Cohort 16",
-    why: "Career switcher from civil engineering — needs a roadmap.",
-    tone: "bg-primary/10 text-primary",
-  },
-];
+const requestTone = ["bg-learning/10 text-learning", "bg-primary/10 text-primary"];
 
 function MentorRequests() {
+  const requestsQuery = useMntRequests();
+  const requests = useMntRequestItems();
+
+  const pending = requests.filter((r) => r.status === "pending").length;
+  const accepted = requests.filter((r) => r.status === "accepted").length;
+  const declined = requests.filter((r) => r.status === "declined").length;
+
   return (
     <AppShell
       roleKey="instructor"
       title="Mentorship requests"
-      subtitle="2 pending · respond within 7 days"
+      subtitle={
+        requests.length > 0 ? `${pending} pending · respond within 7 days` : "Loading requests…"
+      }
       actions={
         <>
-          <Badge className="bg-warning/10 text-warning border-0 font-semibold">2 pending</Badge>
+          <Badge className="bg-warning/10 text-warning border-0 font-semibold">
+            {requests.length > 0 ? `${pending} pending` : "—"}
+          </Badge>
           <Button asChild variant="outline" size="sm" className="font-semibold">
             <Link to="/app/mentor">
               <ArrowLeft className="size-4" /> Dashboard
@@ -52,21 +53,21 @@ function MentorRequests() {
         {[
           {
             label: "Pending",
-            value: "2",
+            value: requests.length > 0 ? String(pending) : "—",
             delta: "respond by Aug 25",
             icon: Inbox,
             tone: "bg-warning/10 text-warning",
           },
           {
             label: "Accepted this term",
-            value: "1",
-            delta: "Zainab Yusuf",
+            value: requests.length > 0 ? String(accepted) : "—",
+            delta: "matches confirmed",
             icon: UserPlus,
             tone: "bg-success/10 text-success",
           },
           {
             label: "Declined",
-            value: "0",
+            value: requests.length > 0 ? String(declined) : "—",
             delta: "this term",
             icon: Users,
             tone: "bg-primary/10 text-primary",
@@ -97,30 +98,49 @@ function MentorRequests() {
       </div>
 
       <div className="mt-5 grid gap-4 sm:grid-cols-2">
-        {requests.map((r) => (
-          <Card key={r.name} className="bg-card shadow-soft border">
-            <CardContent className="p-5">
-              <div className="flex items-start justify-between gap-3">
-                <div>
-                  <p className="font-display text-sm font-extrabold">{r.name}</p>
-                  <p className="text-muted-foreground text-xs">{r.track}</p>
-                </div>
-                <span className={cn("grid size-10 shrink-0 place-items-center rounded-xl", r.tone)}>
-                  <UserPlus className="size-5" />
-                </span>
-              </div>
-              <p className="text-muted-foreground mt-3 text-xs leading-relaxed">{r.why}</p>
-              <div className="mt-4 flex gap-2">
-                <Button size="sm" className="flex-1 font-semibold">
-                  Accept
-                </Button>
-                <Button variant="outline" size="sm" className="flex-1 font-semibold">
-                  Decline
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
-        ))}
+        <QueryState<MntRequest[]>
+          query={requestsQuery}
+          error={{ title: "Requests unavailable" }}
+          empty={{
+            title: "No requests",
+            description: "New mentorship requests will show here.",
+          }}
+          isEmpty={(rows) => rows.length === 0}
+        >
+          {(rows) => (
+            <>
+              {rows.map((r, i) => (
+                <Card key={r.id} className="bg-card shadow-soft border">
+                  <CardContent className="p-5">
+                    <div className="flex items-start justify-between gap-3">
+                      <div>
+                        <p className="font-display text-sm font-extrabold">{r.requesterName}</p>
+                        <p className="text-muted-foreground text-xs">{r.track}</p>
+                      </div>
+                      <span
+                        className={cn(
+                          "grid size-10 shrink-0 place-items-center rounded-xl",
+                          requestTone[i % requestTone.length],
+                        )}
+                      >
+                        <UserPlus className="size-5" />
+                      </span>
+                    </div>
+                    <p className="text-muted-foreground mt-3 text-xs leading-relaxed">{r.why}</p>
+                    <div className="mt-4 flex gap-2">
+                      <Button size="sm" className="flex-1 font-semibold">
+                        Accept
+                      </Button>
+                      <Button variant="outline" size="sm" className="flex-1 font-semibold">
+                        Decline
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </>
+          )}
+        </QueryState>
       </div>
     </AppShell>
   );
