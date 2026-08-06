@@ -28,7 +28,7 @@ function InternMessages() {
   const conversationsQuery = useIntConversations();
   const conversations = useIntConversationItems();
   const [selectedId, setSelectedId] = useState<string | null>(null);
-  const activeId = selectedId ?? conversations[0]?.id ?? "itc-1";
+  const activeId = selectedId ?? conversations[0]?.id ?? "itc-01";
   const detailQuery = useConversationDetail(activeId);
 
   const unread = conversations.reduce((n, c) => n + c.unread, 0);
