@@ -4,6 +4,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import { useSupOrderItems, useSupOrders } from "@/lib/query/supplierPartner";
+import type { SupOrder } from "@/lib/api/supplierPartner";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/supplier/orders")({
@@ -16,39 +19,28 @@ export const Route = createFileRoute("/app/supplier/orders")({
   component: SupplierOrders,
 });
 
-const orders = [
-  {
-    o: "PO-2413",
-    i: "Toner HP 62 ×6, A4 paper ×20",
-    v: "₦185,000",
-    d: "Due Aug 5",
-    s: "Confirmed",
-    tone: "bg-primary/10 text-primary",
-  },
-  {
-    o: "PO-2412",
-    i: "Cafeteria gas cylinders ×4",
-    v: "₦96,000",
-    d: "Due Aug 7",
-    s: "Pending confirm",
-    tone: "bg-warning/10 text-warning",
-  },
-  {
-    o: "PO-2408",
-    i: "Desk chairs ×10",
-    v: "₦310,000",
-    d: "Delivered Jul 24",
-    s: "Completed",
-    tone: "bg-success/10 text-success",
-  },
-];
+const formatNaira = (n: number) => (n >= 1000 ? `₦${(n / 1000).toFixed(0)}k` : `₦${n}`);
+
+const statusMeta: Record<string, { label: string; tone: string }> = {
+  confirmed: { label: "Confirmed", tone: "bg-primary/10 text-primary" },
+  "pending confirm": { label: "Pending confirm", tone: "bg-warning/10 text-warning" },
+  completed: { label: "Completed", tone: "bg-success/10 text-success" },
+};
 
 function SupplierOrders() {
+  const ordersQuery = useSupOrders();
+  const orders = useSupOrderItems();
+
+  const active = orders.filter((o) => o.status !== "completed");
+  const activeValue = active.reduce((n, o) => n + o.amount, 0);
+  const pending = orders.filter((o) => o.status === "pending confirm");
+  const completed = orders.filter((o) => o.status === "completed");
+
   return (
     <AppShell
-      roleKey="student"
+      roleKey="instructor"
       title="Orders"
-      subtitle="2 active · auto-synced with CEA procurement"
+      subtitle={`${active.length} active · auto-synced with CEA procurement`}
       actions={
         <>
           <Badge className="bg-success/10 text-success border-0 font-semibold">SLA met 100%</Badge>
@@ -64,29 +56,29 @@ function SupplierOrders() {
         {[
           {
             label: "Active orders",
-            value: "2",
-            delta: "₦281k value",
+            value: orders.length > 0 ? String(active.length) : "—",
+            delta: `${formatNaira(activeValue)} value`,
             icon: ShoppingCart,
             tone: "bg-primary/10 text-primary",
           },
           {
             label: "Pending confirm",
-            value: "1",
-            delta: "PO-2412",
+            value: orders.length > 0 ? String(pending.length) : "—",
+            delta: pending[0]?.ref ?? "none",
             icon: Clock3,
             tone: "bg-warning/10 text-warning",
           },
           {
             label: "Completed (30d)",
-            value: "7",
+            value: orders.length > 0 ? String(completed.length) : "—",
             delta: "all on time",
             icon: CheckCircle2,
             tone: "bg-success/10 text-success",
           },
           {
-            label: "SKUs supplied",
-            value: "34",
-            delta: "catalog",
+            label: "Orders",
+            value: orders.length > 0 ? String(orders.length) : "—",
+            delta: "total in FY 2026",
             icon: Boxes,
             tone: "bg-learning/10 text-learning",
           },
@@ -115,22 +107,44 @@ function SupplierOrders() {
           </CardTitle>
         </CardHeader>
         <CardContent className="divide-y">
-          {orders.map((o) => (
-            <div key={o.o} className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0">
-              <div className="min-w-0 flex-1">
-                <p className="text-sm font-bold">
-                  {o.o} · {o.v}
-                </p>
-                <p className="text-muted-foreground text-xs">
-                  {o.i} · {o.d}
-                </p>
-              </div>
-              <Badge className={cn("border-0 font-semibold", o.tone)}>{o.s}</Badge>
-              <Button variant="outline" size="sm" className="shrink-0 font-semibold">
-                {o.s === "Pending confirm" ? "Confirm" : "View"}
-              </Button>
-            </div>
-          ))}
+          <QueryState<SupOrder[]>
+            query={ordersQuery}
+            error={{ title: "Orders unavailable" }}
+            empty={{ title: "No orders", description: "Purchase orders will show here." }}
+            isEmpty={(rows) => rows.length === 0}
+          >
+            {(rows) => (
+              <>
+                {rows.map((o) => {
+                  const meta = statusMeta[o.status] ?? {
+                    label: o.status,
+                    tone: "bg-muted text-muted-foreground",
+                  };
+                  return (
+                    <div
+                      key={o.id}
+                      className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
+                    >
+                      <div className="min-w-0 flex-1">
+                        <p className="text-sm font-bold">
+                          {o.ref} · {formatNaira(o.amount)}
+                        </p>
+                        <p className="text-muted-foreground text-xs">
+                          {o.items} · {o.dueLabel}
+                        </p>
+                      </div>
+                      <Badge className={cn("border-0 font-semibold", meta.tone)}>
+                        {meta.label}
+                      </Badge>
+                      <Button variant="outline" size="sm" className="shrink-0 font-semibold">
+                        {o.status === "pending confirm" ? "Confirm" : "View"}
+                      </Button>
+                    </div>
+                  );
+                })}
+              </>
+            )}
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>

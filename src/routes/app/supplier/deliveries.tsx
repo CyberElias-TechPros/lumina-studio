@@ -1,54 +1,48 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowLeft, CalendarClock, MapPin, PackageCheck, Truck } from "lucide-react";
+import { ArrowLeft, CheckCircle2, Clock3, MapPin, Truck } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import { useSupDeliveries, useSupDeliveryItems } from "@/lib/query/supplierPartner";
+import type { SupDelivery } from "@/lib/api/supplierPartner";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/supplier/deliveries")({
   head: () => ({
     meta: [
       { title: "Deliveries — CEA-OS" },
-      { name: "description", content: "Schedule and mark deliveries." },
+      { name: "description", content: "Schedule and track deliveries." },
     ],
   }),
   component: SupplierDeliveries,
 });
 
-const deliveries = [
-  {
-    d: "PO-2413 · Toner + paper",
-    t: "Aug 5 · 10:00",
-    to: "Ikeja HQ · store",
-    s: "Scheduled",
-    tone: "bg-primary/10 text-primary",
-  },
-  {
-    d: "PO-2412 · Gas cylinders",
-    t: "Aug 7 · 09:00",
-    to: "Ikeja HQ · cafeteria",
-    s: "Scheduled",
-    tone: "bg-learning/10 text-learning",
-  },
-  {
-    d: "PO-2408 · Chairs",
-    t: "Jul 24 · 11:30",
-    to: "VI campus",
-    s: "Delivered",
-    tone: "bg-success/10 text-success",
-  },
-];
+const statusMeta: Record<string, { label: string; tone: string }> = {
+  scheduled: { label: "Scheduled", tone: "bg-learning/10 text-learning" },
+  delivered: { label: "Delivered", tone: "bg-success/10 text-success" },
+};
 
 function SupplierDeliveries() {
+  const deliveriesQuery = useSupDeliveries();
+  const deliveries = useSupDeliveryItems();
+
+  const scheduled = deliveries.filter((d) => d.status === "scheduled");
+  const delivered = deliveries.filter((d) => d.status === "delivered");
+  const onTimePct =
+    deliveries.length > 0 ? Math.round((delivered.length / deliveries.length) * 100) : 0;
+
   return (
     <AppShell
-      roleKey="student"
+      roleKey="instructor"
       title="Deliveries"
-      subtitle="2 scheduled · 100% on-time history"
+      subtitle={`${scheduled.length} scheduled · next Aug 5 · 10:00`}
       actions={
         <>
-          <Badge className="bg-success/10 text-success border-0 font-semibold">All tracked</Badge>
+          <Badge className="bg-success/10 text-success border-0 font-semibold">
+            {deliveries.length > 0 ? `${onTimePct}% on time` : "—"}
+          </Badge>
           <Button asChild variant="outline" size="sm" className="font-semibold">
             <Link to="/app/supplier">
               <ArrowLeft className="size-4" /> Supplier hub
@@ -61,29 +55,29 @@ function SupplierDeliveries() {
         {[
           {
             label: "Scheduled",
-            value: "2",
-            delta: "this week",
-            icon: CalendarClock,
-            tone: "bg-primary/10 text-primary",
-          },
-          {
-            label: "In transit",
-            value: "0",
-            delta: "—",
-            icon: Truck,
+            value: deliveries.length > 0 ? String(scheduled.length) : "—",
+            delta: "next: Aug 5",
+            icon: Clock3,
             tone: "bg-learning/10 text-learning",
           },
           {
             label: "Delivered (30d)",
-            value: "11",
-            delta: "100% on time",
-            icon: PackageCheck,
+            value: deliveries.length > 0 ? String(delivered.length) : "—",
+            delta: "confirmed by store",
+            icon: CheckCircle2,
             tone: "bg-success/10 text-success",
           },
           {
-            label: "Routes",
-            value: "3",
-            delta: "HQ · VI · satellite",
+            label: "On-time rate",
+            value: deliveries.length > 0 ? `${onTimePct}%` : "—",
+            delta: "vs. agreed windows",
+            icon: Truck,
+            tone: "bg-primary/10 text-primary",
+          },
+          {
+            label: "Next destination",
+            value: "Ikeja HQ",
+            delta: "store · Aug 5",
             icon: MapPin,
             tone: "bg-warning/10 text-warning",
           },
@@ -112,20 +106,42 @@ function SupplierDeliveries() {
           </CardTitle>
         </CardHeader>
         <CardContent className="divide-y">
-          {deliveries.map((d) => (
-            <div key={d.d} className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0">
-              <div className="min-w-0 flex-1">
-                <p className="text-sm font-bold">{d.d}</p>
-                <p className="text-muted-foreground text-xs">
-                  {d.t} · to {d.to}
-                </p>
-              </div>
-              <Badge className={cn("border-0 font-semibold", d.tone)}>{d.s}</Badge>
-              <Button variant="outline" size="sm" className="shrink-0 font-semibold">
-                {d.s === "Delivered" ? "Receipt" : "Mark delivered"}
-              </Button>
-            </div>
-          ))}
+          <QueryState<SupDelivery[]>
+            query={deliveriesQuery}
+            error={{ title: "Deliveries unavailable" }}
+            empty={{ title: "No deliveries", description: "Scheduled deliveries will show here." }}
+            isEmpty={(rows) => rows.length === 0}
+          >
+            {(rows) => (
+              <>
+                {rows.map((d) => {
+                  const meta = statusMeta[d.status] ?? {
+                    label: d.status,
+                    tone: "bg-muted text-muted-foreground",
+                  };
+                  return (
+                    <div
+                      key={d.id}
+                      className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
+                    >
+                      <div className="min-w-0 flex-1">
+                        <p className="text-sm font-bold">{d.poLabel}</p>
+                        <p className="text-muted-foreground text-xs">
+                          {d.whenLabel} · {d.toLabel}
+                        </p>
+                      </div>
+                      <Badge className={cn("border-0 font-semibold", meta.tone)}>
+                        {meta.label}
+                      </Badge>
+                      <Button variant="outline" size="sm" className="shrink-0 font-semibold">
+                        {d.status === "scheduled" ? "Reschedule" : "Details"}
+                      </Button>
+                    </div>
+                  );
+                })}
+              </>
+            )}
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>

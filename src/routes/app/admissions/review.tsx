@@ -135,7 +135,10 @@ function AdmissionsReview() {
             {(rows) => (
               <>
                 {rows.map((q) => (
-                  <div key={q.id} className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0">
+                  <div
+                    key={q.id}
+                    className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
+                  >
                     <div className="min-w-0 flex-1">
                       <p className="text-sm font-bold">
                         {q.fullName}

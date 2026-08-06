@@ -4,6 +4,12 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import {
+  usePtnAgreementItems,
+  usePtnCollaborationItems,
+  usePtnReferralItems,
+  usePtnReportItems,
+} from "@/lib/query/supplierPartner";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/partner/hub")({
@@ -51,6 +57,17 @@ const actions = [
 ];
 
 function PartnerHub() {
+  const referrals = usePtnReferralItems();
+  const collaborations = usePtnCollaborationItems();
+  const agreements = usePtnAgreementItems();
+  const reports = usePtnReportItems();
+
+  const enrolled = referrals.filter((r) => r.status === "Enrolled").length;
+  const upcoming = collaborations.filter((c) => c.status === "scheduled").length;
+  const activeAgreements = agreements.filter((a) => a.status === "active");
+  const renewal = agreements.find((a) => a.renewLabel);
+  const revenueShare = reports.find((r) => r.kind === "revenue-share")?.valueLabel ?? "—";
+
   return (
     <AppShell
       roleKey="student"
@@ -59,7 +76,9 @@ function PartnerHub() {
       actions={
         <>
           <Badge className="bg-success/10 text-success border-0 font-semibold">
-            Active agreement
+            {agreements.length > 0
+              ? `${activeAgreements.length} active agreement${activeAgreements.length === 1 ? "" : "s"}`
+              : "—"}
           </Badge>
           <Button asChild variant="outline" size="sm" className="font-semibold">
             <Link to="/portal/partner">
@@ -73,29 +92,29 @@ function PartnerHub() {
         {[
           {
             label: "Referrals sent",
-            value: "34",
-            delta: "8 enrolled",
+            value: referrals.length > 0 ? String(referrals.length) : "—",
+            delta: `${enrolled} enrolled`,
             icon: TrendingUp,
             tone: "bg-primary/10 text-primary",
           },
           {
             label: "Revenue share",
-            value: "₦1.9m",
+            value: revenueShare,
             delta: "Q3 to date",
             icon: Handshake,
             tone: "bg-success/10 text-success",
           },
           {
             label: "Co-branded events",
-            value: "3",
-            delta: "1 upcoming",
+            value: collaborations.length > 0 ? String(collaborations.length) : "—",
+            delta: `${upcoming} upcoming`,
             icon: Megaphone,
             tone: "bg-learning/10 text-learning",
           },
           {
             label: "Agreement status",
-            value: "Live",
-            delta: "renews Feb 2027",
+            value: activeAgreements.length > 0 ? "Live" : "—",
+            delta: renewal?.renewLabel ?? "no renewals",
             icon: Users,
             tone: "bg-warning/10 text-warning",
           },

@@ -129,6 +129,12 @@ export const RBAC_RULES: RbacRule[] = [
   /* IT support suite — admin + instructor only */
   { methods: ["*"], path: "/v1/it/*", roles: ["admin", "instructor"] },
 
+  /* Supplier dashboard — admin + instructor only */
+  { methods: ["*"], path: "/v1/supplier-dashboard/*", roles: ["admin", "instructor"] },
+
+  /* Partner dashboard — admin + instructor only */
+  { methods: ["*"], path: "/v1/partner-dashboard/*", roles: ["admin", "instructor"] },
+
   /* Admin portal */
   { methods: ["GET"], path: "/v1/admin/users", roles: ["admin"] },
   { methods: ["POST"], path: "/v1/admin/users", roles: ["admin"] },

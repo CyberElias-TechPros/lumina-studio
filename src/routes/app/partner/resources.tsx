@@ -4,6 +4,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import { usePtnResourceItems, usePtnResources } from "@/lib/query/supplierPartner";
+import type { PtnResource } from "@/lib/api/supplierPartner";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/partner/resources")({
@@ -16,42 +19,31 @@ export const Route = createFileRoute("/app/partner/resources")({
   component: PartnerResources,
 });
 
-const resources = [
-  {
-    r: "Co-branded logo kit",
-    t: "PNG · SVG · 12 assets",
-    icon: Palette,
-    tone: "bg-primary/10 text-primary",
-  },
-  {
-    r: "Program flyer templates",
-    t: "Figma · 4 sizes",
-    icon: Image,
-    tone: "bg-learning/10 text-learning",
-  },
-  {
-    r: "Partner brand guidelines",
-    t: "PDF · v2.1",
-    icon: Library,
-    tone: "bg-success/10 text-success",
-  },
-  {
-    r: "Email banner set",
-    t: "PNG · 6 variants",
-    icon: MessagesSquare,
-    tone: "bg-warning/10 text-warning",
-  },
-];
+const kindMeta: Record<string, { icon: typeof Palette; tone: string }> = {
+  logo: { icon: Palette, tone: "bg-primary/10 text-primary" },
+  flyer: { icon: Image, tone: "bg-learning/10 text-learning" },
+  guidelines: { icon: Library, tone: "bg-success/10 text-success" },
+  banner: { icon: MessagesSquare, tone: "bg-warning/10 text-warning" },
+};
 
 function PartnerResources() {
+  const resourcesQuery = usePtnResources();
+  const resources = usePtnResourceItems();
+
   return (
     <AppShell
       roleKey="student"
       title="Resources"
-      subtitle="Co-branded materials · updated Aug 1"
+      subtitle={
+        resources.length > 0
+          ? `Co-branded materials · ${resources.length} asset pack${resources.length === 1 ? "" : "s"}`
+          : "Co-branded materials"
+      }
       actions={
         <>
-          <Badge className="bg-success/10 text-success border-0 font-semibold">24 assets</Badge>
+          <Badge className="bg-success/10 text-success border-0 font-semibold">
+            {resources.length > 0 ? "Updated Aug 1" : "—"}
+          </Badge>
           <Button asChild variant="outline" size="sm" className="font-semibold">
             <Link to="/app/partner/hub">
               <ArrowLeft className="size-4" /> Partner hub
@@ -70,18 +62,40 @@ function PartnerResources() {
           </Button>
         </CardHeader>
         <CardContent className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-          {resources.map((r) => (
-            <div key={r.r} className="group flex flex-col rounded-xl border p-4">
-              <span className={cn("grid size-9 place-items-center rounded-lg", r.tone)}>
-                <r.icon className="size-4" />
-              </span>
-              <p className="mt-3 text-sm font-bold">{r.r}</p>
-              <p className="text-muted-foreground mt-0.5 text-xs">{r.t}</p>
-              <Button variant="ghost" size="sm" className="mt-3 justify-start px-0 font-semibold">
-                <Download className="size-3.5" /> Download
-              </Button>
-            </div>
-          ))}
+          <QueryState<PtnResource[]>
+            query={resourcesQuery}
+            error={{ title: "Resources unavailable" }}
+            empty={{ title: "No resources", description: "Brand assets will appear here." }}
+            isEmpty={(rows) => rows.length === 0}
+          >
+            {(rows) => (
+              <>
+                {rows.map((r) => {
+                  const meta = kindMeta[r.kind] ?? {
+                    icon: Library,
+                    tone: "bg-muted text-muted-foreground",
+                  };
+                  const Icon = meta.icon;
+                  return (
+                    <div key={r.id} className="group flex flex-col rounded-xl border p-4">
+                      <span className={cn("grid size-9 place-items-center rounded-lg", meta.tone)}>
+                        <Icon className="size-4" />
+                      </span>
+                      <p className="mt-3 text-sm font-bold">{r.title}</p>
+                      <p className="text-muted-foreground mt-0.5 text-xs">{r.detail}</p>
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        className="mt-3 justify-start px-0 font-semibold"
+                      >
+                        <Download className="size-3.5" /> Download
+                      </Button>
+                    </div>
+                  );
+                })}
+              </>
+            )}
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>

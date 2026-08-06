@@ -49,9 +49,7 @@ function ParentStudentAttendance() {
           <Badge
             className={cn(
               "border-0 font-semibold",
-              (data?.pct ?? 0) >= 90
-                ? "bg-success/10 text-success"
-                : "bg-warning/10 text-warning",
+              (data?.pct ?? 0) >= 90 ? "bg-success/10 text-success" : "bg-warning/10 text-warning",
             )}
           >
             {data ? `${data.pct}% · above 90% policy` : "Loading…"}
@@ -179,7 +177,11 @@ function ParentStudentAttendance() {
                             ? "bg-success/10 text-success"
                             : "bg-warning/10 text-warning",
                       },
-                      { t: "Sessions on record", v: String(current.total), tone: "bg-learning/10 text-learning" },
+                      {
+                        t: "Sessions on record",
+                        v: String(current.total),
+                        tone: "bg-learning/10 text-learning",
+                      },
                     ].map((x) => (
                       <div
                         key={x.t}

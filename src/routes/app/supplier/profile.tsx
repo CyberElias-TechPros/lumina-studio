@@ -1,36 +1,39 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowLeft, BadgeCheck, FileBadge2, PackageSearch, Star, Store } from "lucide-react";
+import { ArrowLeft, Award, Boxes, FileCheck, TrendingUp } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import { useSupCerts, useSupCertItems } from "@/lib/query/supplierPartner";
+import type { SupCert } from "@/lib/api/supplierPartner";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/supplier/profile")({
   head: () => ({
     meta: [
-      { title: "Company Profile — CEA-OS" },
-      { name: "description", content: "Catalog, certifications and company details." },
+      { title: "Supplier profile — CEA-OS" },
+      { name: "description", content: "Company profile, certifications and catalogue." },
     ],
   }),
   component: SupplierProfile,
 });
 
-const certs = [
-  { c: "CAC registration", d: "Verified 2024", tone: "bg-success/10 text-success" },
-  { c: "Quality service cert", d: "Renews Jan 2027", tone: "bg-primary/10 text-primary" },
-];
-
 function SupplierProfile() {
+  const certsQuery = useSupCerts();
+  const certs = useSupCertItems();
+
+  const verified = certs.filter((c) => c.verified === 1);
+
   return (
     <AppShell
-      roleKey="student"
-      title="Company profile"
-      subtitle="OfficeMate Ltd · stationery & office supplies"
+      roleKey="instructor"
+      title="Supplier profile"
+      subtitle="OfficeMate Ltd · Office & refreshment supplies"
       actions={
         <>
           <Badge className="bg-success/10 text-success border-0 font-semibold">
-            Verified supplier
+            {certs.length > 0 ? `${verified.length}/${certs.length} certs verified` : "—"}
           </Badge>
           <Button asChild variant="outline" size="sm" className="font-semibold">
             <Link to="/app/supplier">
@@ -43,32 +46,32 @@ function SupplierProfile() {
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         {[
           {
-            label: "Catalog SKUs",
-            value: "34",
-            delta: "live for CEA",
-            icon: PackageSearch,
+            label: "Company",
+            value: "OfficeMate Ltd",
+            delta: "vendor since 2024",
+            icon: Award,
             tone: "bg-primary/10 text-primary",
+          },
+          {
+            label: "Certifications",
+            value: certs.length > 0 ? String(verified.length) : "—",
+            delta: "verified",
+            icon: FileCheck,
+            tone: "bg-success/10 text-success",
+          },
+          {
+            label: "Catalogue",
+            value: "34",
+            delta: "active SKUs",
+            icon: Boxes,
+            tone: "bg-learning/10 text-learning",
           },
           {
             label: "Rating",
             value: "4.8",
-            delta: "24 reviews",
-            icon: Star,
+            delta: "up 0.1 this quarter",
+            icon: TrendingUp,
             tone: "bg-warning/10 text-warning",
-          },
-          {
-            label: "Certifications",
-            value: "2",
-            delta: "all verified",
-            icon: BadgeCheck,
-            tone: "bg-success/10 text-success",
-          },
-          {
-            label: "Partner since",
-            value: "2024",
-            delta: "2+ years",
-            icon: Store,
-            tone: "bg-learning/10 text-learning",
           },
         ].map((k) => (
           <Card key={k.label} className="bg-card shadow-soft border">
@@ -91,19 +94,48 @@ function SupplierProfile() {
       <Card className="bg-card mt-5 shadow-soft border">
         <CardHeader>
           <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
-            <FileBadge2 className="text-primary size-4" /> Certifications
+            <FileCheck className="text-primary size-4" /> Certifications
           </CardTitle>
         </CardHeader>
         <CardContent className="divide-y">
-          {certs.map((c) => (
-            <div key={c.c} className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0">
-              <div className="min-w-0 flex-1">
-                <p className="text-sm font-bold">{c.c}</p>
-                <p className="text-muted-foreground text-xs">{c.d}</p>
-              </div>
-              <Badge className={cn("border-0 font-semibold", c.tone)}>Verified</Badge>
-            </div>
-          ))}
+          <QueryState<SupCert[]>
+            query={certsQuery}
+            error={{ title: "Certifications unavailable" }}
+            empty={{
+              title: "No certifications",
+              description: "Uploaded certifications show here.",
+            }}
+            isEmpty={(rows) => rows.length === 0}
+          >
+            {(rows) => (
+              <>
+                {rows.map((c) => (
+                  <div
+                    key={c.id}
+                    className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
+                  >
+                    <div className="min-w-0 flex-1">
+                      <p className="text-sm font-bold">{c.title}</p>
+                      <p className="text-muted-foreground text-xs">{c.detail}</p>
+                    </div>
+                    <Badge
+                      className={cn(
+                        "border-0 font-semibold",
+                        c.verified === 1
+                          ? "bg-success/10 text-success"
+                          : "bg-warning/10 text-warning",
+                      )}
+                    >
+                      {c.verified === 1 ? "Verified" : "Pending"}
+                    </Badge>
+                    <Button variant="outline" size="sm" className="shrink-0 font-semibold">
+                      Details
+                    </Button>
+                  </div>
+                ))}
+              </>
+            )}
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>

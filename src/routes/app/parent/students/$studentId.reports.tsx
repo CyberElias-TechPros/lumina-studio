@@ -1,11 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import {
-  ArrowLeft,
-  BookOpen,
-  GraduationCap,
-  Receipt,
-  UserCheck,
-} from "lucide-react";
+import { ArrowLeft, BookOpen, GraduationCap, Receipt, UserCheck } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -95,8 +89,16 @@ function ParentStudentReports() {
                   ? "bg-success/10 text-success"
                   : "bg-warning/10 text-warning",
             },
-            { t: "Term average", v: rows.length ? `${avg}%` : "—", tone: "bg-primary/10 text-primary" },
-            { t: "Courses enrolled", v: String(courses.length), tone: "bg-learning/10 text-learning" },
+            {
+              t: "Term average",
+              v: rows.length ? `${avg}%` : "—",
+              tone: "bg-primary/10 text-primary",
+            },
+            {
+              t: "Courses enrolled",
+              v: String(courses.length),
+              tone: "bg-learning/10 text-learning",
+            },
             {
               t: "Attendance",
               v: attendance.data ? `${attendance.data.pct}%` : "—",
@@ -150,7 +152,12 @@ function ParentStudentReports() {
                         params={{ studentId }}
                         className="hover:bg-muted/50 flex items-center gap-3 rounded-xl border p-3 transition-colors"
                       >
-                        <span className={cn("grid size-9 shrink-0 place-items-center rounded-lg", s.tone)}>
+                        <span
+                          className={cn(
+                            "grid size-9 shrink-0 place-items-center rounded-lg",
+                            s.tone,
+                          )}
+                        >
                           <s.icon className="size-4" />
                         </span>
                         <div className="min-w-0 flex-1">

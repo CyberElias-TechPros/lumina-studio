@@ -4,6 +4,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import { usePtnReferralItems, usePtnReferrals } from "@/lib/query/supplierPartner";
+import type { PtnReferral } from "@/lib/api/supplierPartner";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/partner/referrals")({
@@ -16,18 +19,29 @@ export const Route = createFileRoute("/app/partner/referrals")({
   component: PartnerReferrals,
 });
 
-const referrals = [
-  { n: "Tola Bakare", s: "Enrolled", v: "₦120,000", tone: "bg-success/10 text-success" },
-  { n: "Musa Danjuma", s: "Applied", v: "Pending", tone: "bg-primary/10 text-primary" },
-  { n: "Ngozi Eze", s: "Contacted", v: "—", tone: "bg-warning/10 text-warning" },
-];
+const statusMeta: Record<string, string> = {
+  Enrolled: "bg-success/10 text-success",
+  Applied: "bg-primary/10 text-primary",
+  Contacted: "bg-warning/10 text-warning",
+};
 
 function PartnerReferrals() {
+  const referralsQuery = usePtnReferrals();
+  const referrals = usePtnReferralItems();
+
+  const enrolled = referrals.filter((r) => r.status === "Enrolled");
+  const conversion =
+    referrals.length > 0 ? Math.round((enrolled.length / referrals.length) * 100) : 0;
+
   return (
     <AppShell
       roleKey="student"
       title="Referral portal"
-      subtitle="34 referrals · 8 enrolled · ₦1.9m share earned"
+      subtitle={
+        referrals.length > 0
+          ? `${referrals.length} referrals · ${enrolled.length} enrolled · share stats auto-synced`
+          : "Referral tracking"
+      }
       actions={
         <>
           <Badge className="bg-success/10 text-success border-0 font-semibold">
@@ -45,15 +59,15 @@ function PartnerReferrals() {
         {[
           {
             label: "Referrals",
-            value: "34",
-            delta: "+6 this month",
+            value: referrals.length > 0 ? String(referrals.length) : "—",
+            delta: "recent referrals",
             icon: UserRound,
             tone: "bg-primary/10 text-primary",
           },
           {
             label: "Enrolled",
-            value: "8",
-            delta: "23.5% conversion",
+            value: referrals.length > 0 ? String(enrolled.length) : "—",
+            delta: `${conversion}% conversion`,
             icon: BadgeCheck,
             tone: "bg-success/10 text-success",
           },
@@ -99,19 +113,43 @@ function PartnerReferrals() {
           </Button>
         </CardHeader>
         <CardContent className="divide-y">
-          {referrals.map((r) => (
-            <div key={r.n} className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0">
-              <span className="bg-muted text-muted-foreground grid size-9 shrink-0 place-items-center rounded-lg">
-                <UserRound className="size-4" />
-              </span>
-              <div className="min-w-0 flex-1">
-                <p className="text-sm font-bold">{r.n}</p>
-                <p className="text-muted-foreground text-xs">Referred via partner link</p>
-              </div>
-              <p className="text-sm font-semibold">{r.v}</p>
-              <Badge className={cn("border-0 font-semibold", r.tone)}>{r.s}</Badge>
-            </div>
-          ))}
+          <QueryState<PtnReferral[]>
+            query={referralsQuery}
+            error={{ title: "Referrals unavailable" }}
+            empty={{
+              title: "No referrals",
+              description: "Referrals via your partner link show here.",
+            }}
+            isEmpty={(rows) => rows.length === 0}
+          >
+            {(rows) => (
+              <>
+                {rows.map((r) => (
+                  <div
+                    key={r.id}
+                    className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
+                  >
+                    <span className="bg-muted text-muted-foreground grid size-9 shrink-0 place-items-center rounded-lg">
+                      <UserRound className="size-4" />
+                    </span>
+                    <div className="min-w-0 flex-1">
+                      <p className="text-sm font-bold">{r.name}</p>
+                      <p className="text-muted-foreground text-xs">Referred via partner link</p>
+                    </div>
+                    <p className="text-sm font-semibold">{r.valueLabel}</p>
+                    <Badge
+                      className={cn(
+                        "border-0 font-semibold",
+                        statusMeta[r.status] ?? "bg-muted text-muted-foreground",
+                      )}
+                    >
+                      {r.status}
+                    </Badge>
+                  </div>
+                ))}
+              </>
+            )}
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>

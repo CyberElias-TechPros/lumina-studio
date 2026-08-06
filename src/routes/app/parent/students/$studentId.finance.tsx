@@ -56,10 +56,7 @@ function ParentStudentFinance() {
             {data ? `${formatNaira(data.totals.outstanding)} due` : "Loading…"}
           </Badge>
           <Button asChild variant="outline" size="sm" className="font-semibold">
-            <Link
-              to="/app/parent/students/$studentId"
-              params={{ studentId }}
-            >
+            <Link to="/app/parent/students/$studentId" params={{ studentId }}>
               <ArrowLeft className="size-4" /> Overview
             </Link>
           </Button>

@@ -5,6 +5,12 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
 import { cn } from "@/lib/utils";
+import {
+  useSupDeliveryItems,
+  useSupInvoiceItems,
+  useSupOrderItems,
+  useSupPerformanceItems,
+} from "@/lib/query/supplierPartner";
 
 export const Route = createFileRoute("/app/supplier/")({
   head: () => ({
@@ -47,15 +53,33 @@ const screens = [
   },
 ];
 
+const formatNaira = (n: number) => (n >= 1000 ? `₦${(n / 1000).toFixed(0)}k` : `₦${n}`);
+
 function SupplierHub() {
+  const orders = useSupOrderItems();
+  const deliveries = useSupDeliveryItems();
+  const invoices = useSupInvoiceItems();
+  const performance = useSupPerformanceItems();
+
+  const openOrders = orders.filter((o) => o.status !== "completed");
+  const openValue = openOrders.reduce((n, o) => n + o.amount, 0);
+  const pendingInvoices = invoices.filter((i) => i.status === "awaiting payment");
+  const pendingValue = pendingInvoices.reduce((n, i) => n + i.amount, 0);
+  const delivered = deliveries.filter((d) => d.status === "delivered");
+  const onTimePct =
+    deliveries.length > 0 ? Math.round((delivered.length / deliveries.length) * 100) : 0;
+  const rating = performance.find((p) => p.metric === "Overall")?.valueLabel ?? "—";
+
   return (
     <AppShell
-      roleKey="student"
+      roleKey="instructor"
       title="Supplier hub"
       subtitle="OfficeMate Ltd · CEA vendor since 2024"
       actions={
         <>
-          <Badge className="bg-success/10 text-success border-0 font-semibold">4.8 rating</Badge>
+          <Badge className="bg-success/10 text-success border-0 font-semibold">
+            {rating} rating
+          </Badge>
           <Button asChild variant="outline" size="sm" className="font-semibold">
             <Link to="/portal/supplier">
               <ArrowLeft className="size-4" /> Supplier portal
@@ -68,29 +92,29 @@ function SupplierHub() {
         {[
           {
             label: "Open orders",
-            value: "2",
-            delta: "1 due this week",
+            value: orders.length > 0 ? String(openOrders.length) : "—",
+            delta: `${formatNaira(openValue)} value`,
             icon: Boxes,
             tone: "bg-primary/10 text-primary",
           },
           {
             label: "Deliveries",
-            value: "11",
-            delta: "100% on time",
+            value: deliveries.length > 0 ? String(deliveries.length) : "—",
+            delta: `${onTimePct}% on time`,
             icon: Truck,
             tone: "bg-success/10 text-success",
           },
           {
             label: "Invoices pending",
-            value: "₦640k",
-            delta: "2 invoices",
+            value: pendingInvoices.length > 0 ? formatNaira(pendingValue) : "—",
+            delta: `${pendingInvoices.length} invoices`,
             icon: Banknote,
             tone: "bg-learning/10 text-learning",
           },
           {
             label: "Rating",
-            value: "4.8",
-            delta: "24 reviews",
+            value: rating,
+            delta: "from CEA reviews",
             icon: Star,
             tone: "bg-warning/10 text-warning",
           },

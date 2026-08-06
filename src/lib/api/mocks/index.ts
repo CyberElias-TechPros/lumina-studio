@@ -1784,18 +1784,90 @@ export function registerAllMocks(): void {
 
   /* Intern dashboard — mirrors backend seeds (migrations/0017_intern.sql) */
   const intTasks = [
-    { id: "it-task-01", title: "CI pipeline fix — Jenkins job", status: "in-progress", dueLabel: "Due Fri", category: "DevOps" },
-    { id: "it-task-02", title: "Monitoring dashboard widgets", status: "assigned", dueLabel: "Due Aug 12", category: "Data" },
-    { id: "it-task-03", title: "Infra docs update", status: "assigned", dueLabel: "Due Aug 15", category: "Docs" },
-    { id: "it-task-04", title: "Load test report", status: "approved", dueLabel: "Done Jul 29", category: "QA" },
-    { id: "it-task-05", title: "API rate-limit test results", status: "in-review", dueLabel: "Due today", category: "QA" },
-    { id: "it-task-06", title: "Docker image audit", status: "assigned", dueLabel: "Due Aug 18", category: "DevOps" },
-    { id: "it-task-07", title: "Staging env provisioning", status: "in-progress", dueLabel: "Due Aug 20", category: "Cloud" },
-    { id: "it-task-08", title: "Alert threshold tuning", status: "assigned", dueLabel: "Due Aug 24", category: "Monitoring" },
-    { id: "it-task-09", title: "Release notes for v2.4", status: "approved", dueLabel: "Done Jul 25", category: "Docs" },
-    { id: "it-task-10", title: "Postgres backup verification", status: "approved", dueLabel: "Done Jul 22", category: "Data" },
-    { id: "it-task-11", title: "New relic dashboard sync", status: "assigned", dueLabel: "Due Aug 28", category: "Monitoring" },
-    { id: "it-task-12", title: "Incident post-mortem summary", status: "approved", dueLabel: "Done Jul 18", category: "Docs" },
+    {
+      id: "it-task-01",
+      title: "CI pipeline fix — Jenkins job",
+      status: "in-progress",
+      dueLabel: "Due Fri",
+      category: "DevOps",
+    },
+    {
+      id: "it-task-02",
+      title: "Monitoring dashboard widgets",
+      status: "assigned",
+      dueLabel: "Due Aug 12",
+      category: "Data",
+    },
+    {
+      id: "it-task-03",
+      title: "Infra docs update",
+      status: "assigned",
+      dueLabel: "Due Aug 15",
+      category: "Docs",
+    },
+    {
+      id: "it-task-04",
+      title: "Load test report",
+      status: "approved",
+      dueLabel: "Done Jul 29",
+      category: "QA",
+    },
+    {
+      id: "it-task-05",
+      title: "API rate-limit test results",
+      status: "in-review",
+      dueLabel: "Due today",
+      category: "QA",
+    },
+    {
+      id: "it-task-06",
+      title: "Docker image audit",
+      status: "assigned",
+      dueLabel: "Due Aug 18",
+      category: "DevOps",
+    },
+    {
+      id: "it-task-07",
+      title: "Staging env provisioning",
+      status: "in-progress",
+      dueLabel: "Due Aug 20",
+      category: "Cloud",
+    },
+    {
+      id: "it-task-08",
+      title: "Alert threshold tuning",
+      status: "assigned",
+      dueLabel: "Due Aug 24",
+      category: "Monitoring",
+    },
+    {
+      id: "it-task-09",
+      title: "Release notes for v2.4",
+      status: "approved",
+      dueLabel: "Done Jul 25",
+      category: "Docs",
+    },
+    {
+      id: "it-task-10",
+      title: "Postgres backup verification",
+      status: "approved",
+      dueLabel: "Done Jul 22",
+      category: "Data",
+    },
+    {
+      id: "it-task-11",
+      title: "New relic dashboard sync",
+      status: "assigned",
+      dueLabel: "Due Aug 28",
+      category: "Monitoring",
+    },
+    {
+      id: "it-task-12",
+      title: "Incident post-mortem summary",
+      status: "approved",
+      dueLabel: "Done Jul 18",
+      category: "Docs",
+    },
   ];
   const intTimesheets = [
     { id: "its-01", weekLabel: "Jul 27 – Jul 31", hours: 38, status: "approved" },
@@ -1805,15 +1877,44 @@ export function registerAllMocks(): void {
     { id: "its-05", weekLabel: "Jun 29 – Jul 3", hours: 28, status: "approved" },
   ];
   const intMentorSessions = [
-    { id: "itm-01", title: "Sprint planning & career roadmap", dateText: "Wed 10:00", durationText: "60 min", status: "upcoming" },
-    { id: "itm-02", title: "Career direction & growth plan", dateText: "Jul 24", durationText: "45 min", status: "completed" },
-    { id: "itm-03", title: "CI/CD deep dive", dateText: "Jul 10", durationText: "60 min", status: "completed" },
-    { id: "itm-04", title: "Onboarding & expectations", dateText: "Jun 26", durationText: "40 min", status: "completed" },
+    {
+      id: "itm-01",
+      title: "Sprint planning & career roadmap",
+      dateText: "Wed 10:00",
+      durationText: "60 min",
+      status: "upcoming",
+    },
+    {
+      id: "itm-02",
+      title: "Career direction & growth plan",
+      dateText: "Jul 24",
+      durationText: "45 min",
+      status: "completed",
+    },
+    {
+      id: "itm-03",
+      title: "CI/CD deep dive",
+      dateText: "Jul 10",
+      durationText: "60 min",
+      status: "completed",
+    },
+    {
+      id: "itm-04",
+      title: "Onboarding & expectations",
+      dateText: "Jun 26",
+      durationText: "40 min",
+      status: "completed",
+    },
   ];
   const intMilestones = [
     { id: "itmst-01", title: "Onboarding & environment setup", progressPct: 100, status: "done" },
     { id: "itmst-02", title: "Linux & scripting fundamentals", progressPct: 100, status: "done" },
-    { id: "itmst-03", title: "CI/CD pipeline fundamentals", progressPct: 65, status: "in progress" },
+    {
+      id: "itmst-03",
+      title: "CI/CD pipeline fundamentals",
+      progressPct: 65,
+      status: "in progress",
+    },
     { id: "itmst-04", title: "Monitoring & alerting", progressPct: 40, status: "in progress" },
     { id: "itmst-05", title: "Containerization basics", progressPct: 30, status: "in progress" },
     { id: "itmst-06", title: "Cloud provisioning basics", progressPct: 0, status: "not started" },
@@ -1858,19 +1959,73 @@ export function registerAllMocks(): void {
     { id: "ite-03", kind: "final", score: 0, status: "due week 12" },
   ];
   const intProjects = [
-    { id: "itp-01", title: "CI pipeline modernization", category: "DevOps", artifacts: 3, views: 36, status: "featured" },
-    { id: "itp-02", title: "Monitoring dashboard", category: "Data", artifacts: 2, views: 28, status: "active" },
-    { id: "itp-03", title: "Infra runbooks", category: "Docs", artifacts: 5, views: 22, status: "active" },
+    {
+      id: "itp-01",
+      title: "CI pipeline modernization",
+      category: "DevOps",
+      artifacts: 3,
+      views: 36,
+      status: "featured",
+    },
+    {
+      id: "itp-02",
+      title: "Monitoring dashboard",
+      category: "Data",
+      artifacts: 2,
+      views: 28,
+      status: "active",
+    },
+    {
+      id: "itp-03",
+      title: "Infra runbooks",
+      category: "Docs",
+      artifacts: 5,
+      views: 22,
+      status: "active",
+    },
   ];
   const intConversations = [
-    { id: "itc-01", name: "Ms. Chidera · Supervisor", preview: "Re: pipeline fix — looks good", timeLabel: "09:12", unread: 1 },
-    { id: "itc-02", name: "DevOps team", preview: "Standup notes · 09:12", timeLabel: "09:14", unread: 0 },
-    { id: "itc-03", name: "HR · Onboarding", preview: "Evaluation reminder · Jul 30", timeLabel: "Jul 30", unread: 2 },
+    {
+      id: "itc-01",
+      name: "Ms. Chidera · Supervisor",
+      preview: "Re: pipeline fix — looks good",
+      timeLabel: "09:12",
+      unread: 1,
+    },
+    {
+      id: "itc-02",
+      name: "DevOps team",
+      preview: "Standup notes · 09:12",
+      timeLabel: "09:14",
+      unread: 0,
+    },
+    {
+      id: "itc-03",
+      name: "HR · Onboarding",
+      preview: "Evaluation reminder · Jul 30",
+      timeLabel: "Jul 30",
+      unread: 2,
+    },
   ];
   const intThread = [
-    { id: "ith-01", fromLabel: "You", body: "CI pipeline fix is deployed to staging, tests green.", timeLabel: "Yesterday 17:20" },
-    { id: "ith-02", fromLabel: "Ms. Chidera", body: "Nice work — I gave it a quick review, looks good.", timeLabel: "Yesterday 18:05" },
-    { id: "ith-03", fromLabel: "Ms. Chidera", body: "Let us walk through the release checklist on Monday.", timeLabel: "Today 09:12" },
+    {
+      id: "ith-01",
+      fromLabel: "You",
+      body: "CI pipeline fix is deployed to staging, tests green.",
+      timeLabel: "Yesterday 17:20",
+    },
+    {
+      id: "ith-02",
+      fromLabel: "Ms. Chidera",
+      body: "Nice work — I gave it a quick review, looks good.",
+      timeLabel: "Yesterday 18:05",
+    },
+    {
+      id: "ith-03",
+      fromLabel: "Ms. Chidera",
+      body: "Let us walk through the release checklist on Monday.",
+      timeLabel: "Today 09:12",
+    },
   ];
   registerMockPattern("GET", "/v1/intern-dashboard/*", async (init: ApiRequestInit) => {
     await delay();
@@ -1893,6 +2048,348 @@ export function registerAllMocks(): void {
       evaluations: intEvaluations,
       projects: intProjects,
       conversations: intConversations,
+    };
+    const items = collections[collection] ?? [];
+    return { items, total: items.length };
+  });
+
+  /* Supplier + Partner dashboard suites — mirrors backend seeds (migrations/0018_supplier_partner.sql) */
+  const supOrders = [
+    {
+      id: "sup-po-01",
+      ref: "PO-2413",
+      items: "Toner HP 62 x6, A4 paper x20",
+      amount: 185000,
+      dueLabel: "Due Aug 5",
+      status: "confirmed",
+    },
+    {
+      id: "sup-po-02",
+      ref: "PO-2412",
+      items: "Cafeteria gas cylinders x4",
+      amount: 96000,
+      dueLabel: "Due Aug 7",
+      status: "pending confirm",
+    },
+    {
+      id: "sup-po-03",
+      ref: "PO-2408",
+      items: "Desk chairs x10",
+      amount: 310000,
+      dueLabel: "Delivered Jul 24",
+      status: "completed",
+    },
+    {
+      id: "sup-po-04",
+      ref: "PO-2405",
+      items: "Whiteboard markers x40",
+      amount: 85000,
+      dueLabel: "Delivered Jul 10",
+      status: "completed",
+    },
+    {
+      id: "sup-po-05",
+      ref: "PO-2402",
+      items: "Printer drums x3",
+      amount: 132000,
+      dueLabel: "Delivered Jul 3",
+      status: "completed",
+    },
+  ];
+  const supDeliveries = [
+    {
+      id: "sup-dl-01",
+      poLabel: "PO-2413 · Toner + paper",
+      whenLabel: "Aug 5 · 10:00",
+      toLabel: "Ikeja HQ · store",
+      status: "scheduled",
+    },
+    {
+      id: "sup-dl-02",
+      poLabel: "PO-2412 · Gas cylinders",
+      whenLabel: "Aug 7 · 09:00",
+      toLabel: "Ikeja HQ · cafeteria",
+      status: "scheduled",
+    },
+    {
+      id: "sup-dl-03",
+      poLabel: "PO-2408 · Chairs",
+      whenLabel: "Jul 24 · 11:30",
+      toLabel: "VI campus",
+      status: "delivered",
+    },
+    {
+      id: "sup-dl-04",
+      poLabel: "PO-2405 · Markers",
+      whenLabel: "Jul 10 · 14:00",
+      toLabel: "Satellite lab",
+      status: "delivered",
+    },
+  ];
+  const supInvoices = [
+    {
+      id: "sup-inv-01",
+      ref: "INV-8821",
+      amount: 385000,
+      issuedLabel: "Issued Jul 28 · net-30",
+      paidLabel: "",
+      status: "awaiting payment",
+    },
+    {
+      id: "sup-inv-02",
+      ref: "INV-8740",
+      amount: 255000,
+      issuedLabel: "Issued Jul 10",
+      paidLabel: "Paid Jul 29",
+      status: "paid",
+    },
+    {
+      id: "sup-inv-03",
+      ref: "INV-8695",
+      amount: 310000,
+      issuedLabel: "Issued Jun 28",
+      paidLabel: "Paid Jul 15",
+      status: "paid",
+    },
+    {
+      id: "sup-inv-04",
+      ref: "INV-8610",
+      amount: 120000,
+      issuedLabel: "Issued Jun 14",
+      paidLabel: "Paid Jun 28",
+      status: "paid",
+    },
+  ];
+  const supPerformance = [
+    { id: "sup-pf-01", metric: "Overall", valueLabel: "4.8" },
+    { id: "sup-pf-02", metric: "Delivery on-time", valueLabel: "100%" },
+    { id: "sup-pf-03", metric: "Quality of goods", valueLabel: "4.9 / 5" },
+    { id: "sup-pf-04", metric: "Responsiveness", valueLabel: "4.7 / 5" },
+    { id: "sup-pf-05", metric: "Pricing fairness", valueLabel: "4.6 / 5" },
+  ];
+  const supCerts = [
+    { id: "sup-crt-01", title: "CAC registration", detail: "Verified 2024", verified: 1 },
+    { id: "sup-crt-02", title: "Quality service cert", detail: "Renews Jan 2027", verified: 1 },
+  ];
+  const supConversations = [
+    {
+      id: "sup-conv-01",
+      name: "CEA Procurement",
+      preview: "Re: PO-2413 delivery window",
+      timeLabel: "Today 08:40",
+      unread: 1,
+    },
+    {
+      id: "sup-conv-02",
+      name: "CEA Accounts",
+      preview: "INV-8821 processing · Jul 31",
+      timeLabel: "Jul 31",
+      unread: 0,
+    },
+    {
+      id: "sup-conv-03",
+      name: "CEA Store",
+      preview: "Chairs received, thanks!",
+      timeLabel: "Jul 24",
+      unread: 0,
+    },
+  ];
+  const supThread = [
+    {
+      id: "sup-th-01",
+      fromLabel: "CEA Procurement",
+      body: "Can we move the PO-2413 delivery to the morning window on Aug 5?",
+      timeLabel: "Yesterday 16:20",
+    },
+    {
+      id: "sup-th-02",
+      fromLabel: "You",
+      body: "Yes, 10:00 works for us — confirming now.",
+      timeLabel: "Yesterday 17:05",
+    },
+    {
+      id: "sup-th-03",
+      fromLabel: "CEA Procurement",
+      body: "Confirmed. Store will sign for it.",
+      timeLabel: "Today 08:40",
+    },
+  ];
+  registerMockPattern("GET", "/v1/supplier-dashboard/*", async (init: ApiRequestInit) => {
+    await delay();
+    const segments = (init.path ?? "").split("/").filter(Boolean);
+    const collection = segments[2] ?? "";
+    const id = segments[3] ?? "";
+    if (id) {
+      if (collection === "conversations") {
+        const convo = supConversations.find((c) => c.id === id);
+        if (convo) return { ...convo, thread: supThread };
+      }
+    }
+    const collections: Record<string, Record<string, unknown>[]> = {
+      orders: supOrders,
+      deliveries: supDeliveries,
+      invoices: supInvoices,
+      performance: supPerformance,
+      certs: supCerts,
+      conversations: supConversations,
+    };
+    const items = collections[collection] ?? [];
+    return { items, total: items.length };
+  });
+
+  const ptnAgreements = [
+    {
+      id: "ptn-agr-01",
+      title: "Master partnership agreement",
+      detail: "Signed Feb 2025",
+      status: "active",
+      renewLabel: "renews Feb 2027",
+    },
+    {
+      id: "ptn-agr-02",
+      title: "Revenue share addendum",
+      detail: "Signed Jan 2026 · 12% share",
+      status: "active",
+      renewLabel: "",
+    },
+    {
+      id: "ptn-agr-03",
+      title: "Event co-branding MOU",
+      detail: "Draft · review by Aug 10",
+      status: "draft",
+      renewLabel: "",
+    },
+  ];
+  const ptnCollaborations = [
+    {
+      id: "ptn-coll-01",
+      title: "Tech Skills Bootcamp",
+      detail: "Aug 22 · Ikeja HQ",
+      status: "scheduled",
+    },
+    {
+      id: "ptn-coll-02",
+      title: "Employer roundtable",
+      detail: "Sep 10 · VI campus",
+      status: "confirmed",
+    },
+    {
+      id: "ptn-coll-03",
+      title: "Hackathon sponsorship",
+      detail: "Proposal with marketing",
+      status: "in discussion",
+    },
+  ];
+  const ptnReferrals = [
+    { id: "ptn-ref-01", name: "Tola Bakare", status: "Enrolled", valueLabel: "₦120,000" },
+    { id: "ptn-ref-02", name: "Musa Danjuma", status: "Applied", valueLabel: "Pending" },
+    { id: "ptn-ref-03", name: "Ngozi Eze", status: "Contacted", valueLabel: "—" },
+  ];
+  const ptnResources = [
+    {
+      id: "ptn-res-01",
+      title: "Co-branded logo kit",
+      kind: "logo",
+      detail: "PNG · SVG · 12 assets",
+    },
+    {
+      id: "ptn-res-02",
+      title: "Program flyer templates",
+      kind: "flyer",
+      detail: "Figma · 4 sizes",
+    },
+    {
+      id: "ptn-res-03",
+      title: "Partner brand guidelines",
+      kind: "guidelines",
+      detail: "PDF · v2.1",
+    },
+    { id: "ptn-res-04", title: "Email banner set", kind: "banner", detail: "PNG · 6 variants" },
+  ];
+  const ptnReports = [
+    {
+      id: "ptn-rep-01",
+      title: "Q3 revenue share statement",
+      detail: "Aug 2 · PDF",
+      kind: "revenue-share",
+      valueLabel: "₦1.9m",
+    },
+    {
+      id: "ptn-rep-02",
+      title: "Referral impact report",
+      detail: "Jul 31 · PDF",
+      kind: "referral-impact",
+      valueLabel: "₦720k",
+    },
+    {
+      id: "ptn-rep-03",
+      title: "Co-branded event recap",
+      detail: "Jul 20 · Slides",
+      kind: "event-recap",
+      valueLabel: "",
+    },
+  ];
+  const ptnConversations = [
+    {
+      id: "ptn-conv-01",
+      name: "CEA Partnerships team",
+      preview: "Re: Hackathon sponsorship — sent today",
+      timeLabel: "Today 09:15",
+      unread: 2,
+    },
+    {
+      id: "ptn-conv-02",
+      name: "Marketing · co-branding",
+      preview: "New banner set ready — Aug 1",
+      timeLabel: "Aug 1",
+      unread: 0,
+    },
+    {
+      id: "ptn-conv-03",
+      name: "Ops · procurement",
+      preview: "PO-2413 confirmation — Jul 29",
+      timeLabel: "Jul 29",
+      unread: 0,
+    },
+  ];
+  const ptnThread = [
+    {
+      id: "ptn-th-01",
+      fromLabel: "CEA Partnerships team",
+      body: "Following up on the hackathon sponsorship — the marketing team has a slot.",
+      timeLabel: "Yesterday 15:02",
+    },
+    {
+      id: "ptn-th-02",
+      fromLabel: "You",
+      body: "Great — sending our one-pager and budget ask today.",
+      timeLabel: "Yesterday 16:45",
+    },
+    {
+      id: "ptn-th-03",
+      fromLabel: "CEA Partnerships team",
+      body: "Received. Sending to the sponsorship committee.",
+      timeLabel: "Today 09:15",
+    },
+  ];
+  registerMockPattern("GET", "/v1/partner-dashboard/*", async (init: ApiRequestInit) => {
+    await delay();
+    const segments = (init.path ?? "").split("/").filter(Boolean);
+    const collection = segments[2] ?? "";
+    const id = segments[3] ?? "";
+    if (id) {
+      if (collection === "conversations") {
+        const convo = ptnConversations.find((c) => c.id === id);
+        if (convo) return { ...convo, thread: ptnThread };
+      }
+    }
+    const collections: Record<string, Record<string, unknown>[]> = {
+      agreements: ptnAgreements,
+      collaborations: ptnCollaborations,
+      referrals: ptnReferrals,
+      resources: ptnResources,
+      reports: ptnReports,
+      conversations: ptnConversations,
     };
     const items = collections[collection] ?? [];
     return { items, total: items.length };

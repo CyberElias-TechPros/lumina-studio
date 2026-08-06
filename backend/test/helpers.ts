@@ -17,6 +17,7 @@ import opsSql from "../migrations/0014_ops.sql?raw";
 import itSql from "../migrations/0015_it.sql?raw";
 import mentorDashboardSql from "../migrations/0016_mentor_dashboard.sql?raw";
 import internSql from "../migrations/0017_intern.sql?raw";
+import supplierPartnerSql from "../migrations/0018_supplier_partner.sql?raw";
 import { seedContentSql } from "../seeds/content";
 import { seedLmsSql } from "../seeds/lms";
 import { seedDomainSql } from "../seeds/domain";
@@ -29,6 +30,7 @@ import { seedOpsSql } from "../seeds/ops";
 import { seedItSql } from "../seeds/it";
 import { seedMentorDashboardSql } from "../seeds/mentor-dashboard";
 import { seedInternSql } from "../seeds/intern";
+import { seedSupplierPartnerSql } from "../seeds/supplier-partner";
 import type { Session } from "../src/schema/api";
 
 export const SESSION_COOKIE = "cea_session";
@@ -65,6 +67,7 @@ export async function setupDb(): Promise<void> {
     itSql,
     mentorDashboardSql,
     internSql,
+    supplierPartnerSql,
   ]) {
     const statements = sql
       .split("\n")
@@ -89,6 +92,7 @@ export async function setupDb(): Promise<void> {
   await execStatements(seedItSql);
   await execStatements(seedMentorDashboardSql);
   await execStatements(seedInternSql);
+  await execStatements(seedSupplierPartnerSql);
 }
 
 export function api(path: string, init?: RequestInit): Promise<Response> {

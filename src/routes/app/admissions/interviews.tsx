@@ -126,7 +126,10 @@ function AdmissionsInterviews() {
             {(rows) => (
               <>
                 {rows.map((i) => (
-                  <div key={i.id} className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0">
+                  <div
+                    key={i.id}
+                    className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
+                  >
                     <div className="min-w-0 flex-1">
                       <p className="text-sm font-bold">
                         {i.fullName}

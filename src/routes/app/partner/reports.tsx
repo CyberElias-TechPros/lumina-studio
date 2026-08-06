@@ -4,6 +4,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import { usePtnReportItems, usePtnReports } from "@/lib/query/supplierPartner";
+import type { PtnReport } from "@/lib/api/supplierPartner";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/partner/reports")({
@@ -16,18 +19,28 @@ export const Route = createFileRoute("/app/partner/reports")({
   component: PartnerReports,
 });
 
-const reports = [
-  { r: "Q3 revenue share statement", d: "Aug 2 · PDF", tone: "bg-success/10 text-success" },
-  { r: "Referral impact report", d: "Jul 31 · PDF", tone: "bg-primary/10 text-primary" },
-  { r: "Co-branded event recap", d: "Jul 20 · Slides", tone: "bg-learning/10 text-learning" },
-];
+const kindMeta: Record<string, { tone: string }> = {
+  "revenue-share": { tone: "bg-success/10 text-success" },
+  "referral-impact": { tone: "bg-primary/10 text-primary" },
+  "event-recap": { tone: "bg-learning/10 text-learning" },
+};
 
 function PartnerReports() {
+  const reportsQuery = usePtnReports();
+  const reports = usePtnReportItems();
+
+  const revenueShare = reports.find((r) => r.kind === "revenue-share")?.valueLabel ?? "—";
+  const referralValue = reports.find((r) => r.kind === "referral-impact")?.valueLabel ?? "—";
+
   return (
     <AppShell
       roleKey="student"
       title="Reports & impact"
-      subtitle="Revenue share ₦1.9m Q3 · 1,400 people reached"
+      subtitle={
+        reports.length > 0
+          ? `Revenue share ${revenueShare} Q3 · 1,400 people reached`
+          : "Impact and revenue share reports"
+      }
       actions={
         <>
           <Badge className="bg-success/10 text-success border-0 font-semibold">
@@ -45,7 +58,7 @@ function PartnerReports() {
         {[
           {
             label: "Revenue share",
-            value: "₦1.9m",
+            value: revenueShare,
             delta: "Q3 to date",
             icon: Handshake,
             tone: "bg-success/10 text-success",
@@ -59,14 +72,14 @@ function PartnerReports() {
           },
           {
             label: "Referral value",
-            value: "₦720k",
+            value: referralValue,
             delta: "attributed",
             icon: TrendingUp,
             tone: "bg-learning/10 text-learning",
           },
           {
             label: "Reports (30d)",
-            value: "3",
+            value: reports.length > 0 ? String(reports.length) : "—",
             delta: "all delivered",
             icon: BarChart3,
             tone: "bg-warning/10 text-warning",
@@ -96,17 +109,42 @@ function PartnerReports() {
           </CardTitle>
         </CardHeader>
         <CardContent className="divide-y">
-          {reports.map((r) => (
-            <div key={r.r} className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0">
-              <div className="min-w-0 flex-1">
-                <p className="text-sm font-bold">{r.r}</p>
-                <p className="text-muted-foreground text-xs">{r.d}</p>
-              </div>
-              <Button variant="outline" size="sm" className="shrink-0 font-semibold">
-                Open
-              </Button>
-            </div>
-          ))}
+          <QueryState<PtnReport[]>
+            query={reportsQuery}
+            error={{ title: "Reports unavailable" }}
+            empty={{ title: "No reports", description: "Generated reports will appear here." }}
+            isEmpty={(rows) => rows.length === 0}
+          >
+            {(rows) => (
+              <>
+                {rows.map((r) => (
+                  <div
+                    key={r.id}
+                    className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
+                  >
+                    <span
+                      className={cn(
+                        "grid size-9 shrink-0 place-items-center rounded-lg",
+                        kindMeta[r.kind]?.tone ?? "bg-muted text-muted-foreground",
+                      )}
+                    >
+                      <FileBarChart2 className="size-4" />
+                    </span>
+                    <div className="min-w-0 flex-1">
+                      <p className="text-sm font-bold">
+                        {r.title}
+                        {r.valueLabel ? ` · ${r.valueLabel}` : ""}
+                      </p>
+                      <p className="text-muted-foreground text-xs">{r.detail}</p>
+                    </div>
+                    <Button variant="outline" size="sm" className="shrink-0 font-semibold">
+                      Open
+                    </Button>
+                  </div>
+                ))}
+              </>
+            )}
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>
