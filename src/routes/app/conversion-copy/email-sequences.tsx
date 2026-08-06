@@ -4,6 +4,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import type { CcpSequence } from "@/lib/query/conversionCopy";
+import { useCcpSequences } from "@/lib/query/conversionCopy";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/conversion-copy/email-sequences")({
@@ -16,28 +19,16 @@ export const Route = createFileRoute("/app/conversion-copy/email-sequences")({
   component: CopyEmailSequences,
 });
 
-const sequences = [
-  {
-    s: "Application follow-up · 5 emails",
-    v: "Open 42% · click 9.1%",
-    s2: "Live",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    s: "Cohort 17 nurture · 7 emails",
-    v: "Open 38% · click 7.4%",
-    s2: "Live",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    s: "Scholarship reminder · 3 emails",
-    v: "Testing variant B",
-    s2: "Testing",
-    tone: "bg-warning/10 text-warning",
-  },
+const sequenceTones = [
+  "bg-success/10 text-success",
+  "bg-primary/10 text-primary",
+  "bg-warning/10 text-warning",
+  "bg-muted-foreground/10 text-muted-foreground",
 ];
 
 function CopyEmailSequences() {
+  const sequencesQuery = useCcpSequences();
+
   return (
     <AppShell
       roleKey="instructor"
@@ -109,18 +100,44 @@ function CopyEmailSequences() {
           </CardTitle>
         </CardHeader>
         <CardContent className="divide-y">
-          {sequences.map((s) => (
-            <div key={s.s} className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0">
-              <div className="min-w-0 flex-1">
-                <p className="text-sm font-bold">{s.s}</p>
-                <p className="text-muted-foreground text-xs">{s.v}</p>
-              </div>
-              <Badge className={cn("border-0 font-semibold", s.tone)}>{s.s2}</Badge>
-              <Button variant="outline" size="sm" className="shrink-0 font-semibold">
-                Builder
-              </Button>
-            </div>
-          ))}
+          <QueryState<CcpSequence[]>
+            query={sequencesQuery}
+            error={{ title: "Sequences unavailable" }}
+            empty={{
+              title: "No sequences yet",
+              description: "Nurture and conversion sequences will show here.",
+            }}
+            isEmpty={(rows) => rows.length === 0}
+          >
+            {(rows) => (
+              <>
+                {rows.map((s, i) => (
+                  <div
+                    key={s.id}
+                    className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
+                  >
+                    <div className="min-w-0 flex-1">
+                      <p className="text-sm font-bold">{s.title}</p>
+                      <p className="text-muted-foreground text-xs">
+                        {s.emails} emails · Open {s.openRate} · click {s.clickRate}
+                      </p>
+                    </div>
+                    <Badge
+                      className={cn(
+                        "border-0 font-semibold",
+                        sequenceTones[i % sequenceTones.length],
+                      )}
+                    >
+                      {s.status}
+                    </Badge>
+                    <Button variant="outline" size="sm" className="shrink-0 font-semibold">
+                      Builder
+                    </Button>
+                  </div>
+                ))}
+              </>
+            )}
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>

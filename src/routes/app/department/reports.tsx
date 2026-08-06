@@ -4,6 +4,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import type { DepReport } from "@/lib/api/department";
+import { useDepReports } from "@/lib/query/department";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/department/reports")({
@@ -16,28 +19,15 @@ export const Route = createFileRoute("/app/department/reports")({
   component: DeptReports,
 });
 
-const reports = [
-  {
-    r: "Student outcomes · Q2 2026",
-    v: "92% completion · 84% placement",
-    s: "Published",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    r: "Instructor performance · Q2",
-    v: "Avg score 4.6 · 14 observations",
-    s: "Published",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    r: "Curriculum audit · draft",
-    v: "Due Aug 20 · 3 programs",
-    s: "Draft",
-    tone: "bg-warning/10 text-warning",
-  },
-];
+const reportTones: Record<string, string> = {
+  Published: "bg-success/10 text-success",
+  Draft: "bg-warning/10 text-warning",
+  Archived: "bg-muted-foreground/10 text-muted-foreground",
+};
 
 function DeptReports() {
+  const reportsQuery = useDepReports();
+
   return (
     <AppShell
       roleKey="instructor"
@@ -109,18 +99,42 @@ function DeptReports() {
           </CardTitle>
         </CardHeader>
         <CardContent className="divide-y">
-          {reports.map((r) => (
-            <div key={r.r} className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0">
-              <div className="min-w-0 flex-1">
-                <p className="text-sm font-bold">{r.r}</p>
-                <p className="text-muted-foreground text-xs">{r.v}</p>
-              </div>
-              <Badge className={cn("border-0 font-semibold", r.tone)}>{r.s}</Badge>
-              <Button variant="outline" size="sm" className="shrink-0 font-semibold">
-                View
-              </Button>
-            </div>
-          ))}
+          <QueryState<DepReport[]>
+            query={reportsQuery}
+            error={{ title: "Reports unavailable" }}
+            empty={{
+              title: "No reports yet",
+              description: "Department performance reports will appear here.",
+            }}
+            isEmpty={(rows) => rows.length === 0}
+          >
+            {(rows) => (
+              <>
+                {rows.map((r) => (
+                  <div
+                    key={r.id}
+                    className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
+                  >
+                    <div className="min-w-0 flex-1">
+                      <p className="text-sm font-bold">{r.title}</p>
+                      <p className="text-muted-foreground text-xs">{r.detail}</p>
+                    </div>
+                    <Badge
+                      className={cn(
+                        "border-0 font-semibold",
+                        reportTones[r.status] ?? "bg-muted text-muted-foreground",
+                      )}
+                    >
+                      {r.status}
+                    </Badge>
+                    <Button variant="outline" size="sm" className="shrink-0 font-semibold">
+                      View
+                    </Button>
+                  </div>
+                ))}
+              </>
+            )}
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>

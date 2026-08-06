@@ -4,6 +4,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import type { CliTicket } from "@/lib/query/clientEngagement";
+import { useCliTickets } from "@/lib/query/clientEngagement";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/client/support")({
@@ -16,34 +19,17 @@ export const Route = createFileRoute("/app/client/support")({
   component: ClientSupport,
 });
 
-const tickets = [
-  {
-    t: "Can't access project repo",
-    id: "TK-2214",
-    d: "Aug 3 · 09:12",
-    sla: "SLA: 4h",
-    status: "Open",
-    tone: "bg-primary/10 text-primary",
-  },
-  {
-    t: "Invoice PDF not loading",
-    id: "TK-2198",
-    d: "Jul 29 · 14:40",
-    sla: "SLA: 24h",
-    status: "In progress",
-    tone: "bg-warning/10 text-warning",
-  },
-  {
-    t: "Add team member to portal",
-    id: "TK-2175",
-    d: "Jul 22 · 11:05",
-    sla: "SLA: 24h",
-    status: "Resolved",
-    tone: "bg-success/10 text-success",
-  },
-];
+function statusTone(s: string) {
+  const l = s.toLowerCase();
+  if (l.includes("resolved")) return "bg-success/10 text-success";
+  if (l.includes("progress")) return "bg-warning/10 text-warning";
+  if (l.includes("open")) return "bg-primary/10 text-primary";
+  return "bg-muted-foreground/10 text-muted-foreground";
+}
 
 function ClientSupport() {
+  const ticketsQuery = useCliTickets();
+
   return (
     <AppShell
       roleKey="instructor"
@@ -113,23 +99,42 @@ function ClientSupport() {
           </CardTitle>
         </CardHeader>
         <CardContent className="divide-y">
-          {tickets.map((t) => (
-            <div key={t.id} className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0">
-              <span className="bg-muted text-muted-foreground grid size-9 shrink-0 place-items-center rounded-lg">
-                <Headset className="size-4" />
-              </span>
-              <div className="min-w-0 flex-1">
-                <p className="text-sm font-bold">{t.t}</p>
-                <p className="text-muted-foreground text-xs">
-                  {t.id} · {t.d} · {t.sla}
-                </p>
-              </div>
-              <Badge className={cn("border-0 font-semibold", t.tone)}>{t.status}</Badge>
-              <Button variant="outline" size="sm" className="shrink-0 font-semibold">
-                Open
-              </Button>
-            </div>
-          ))}
+          <QueryState<CliTicket[]>
+            query={ticketsQuery}
+            error={{ title: "Tickets unavailable" }}
+            empty={{
+              title: "No support tickets",
+              description: "Your support tickets will appear here.",
+            }}
+            isEmpty={(rows) => rows.length === 0}
+          >
+            {(rows) => (
+              <>
+                {rows.map((t) => (
+                  <div
+                    key={t.id}
+                    className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
+                  >
+                    <span className="bg-muted text-muted-foreground grid size-9 shrink-0 place-items-center rounded-lg">
+                      <Headset className="size-4" />
+                    </span>
+                    <div className="min-w-0 flex-1">
+                      <p className="text-sm font-bold">{t.title}</p>
+                      <p className="text-muted-foreground text-xs">
+                        {t.reference} · {t.dateLabel} · {t.sla}
+                      </p>
+                    </div>
+                    <Badge className={cn("border-0 font-semibold", statusTone(t.status))}>
+                      {t.status}
+                    </Badge>
+                    <Button variant="outline" size="sm" className="shrink-0 font-semibold">
+                      Open
+                    </Button>
+                  </div>
+                ))}
+              </>
+            )}
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>

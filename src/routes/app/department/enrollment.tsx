@@ -4,6 +4,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import type { DepCohort } from "@/lib/api/department";
+import { useDepCohorts } from "@/lib/query/department";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/department/enrollment")({
@@ -16,42 +19,15 @@ export const Route = createFileRoute("/app/department/enrollment")({
   component: DepartmentEnrollment,
 });
 
-const cohorts = [
-  {
-    t: "Cohort 15 — Full-Stack",
-    size: 48,
-    target: 50,
-    pct: 96,
-    status: "Active",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    t: "Cohort 16 — Full-Stack",
-    size: 42,
-    target: 50,
-    pct: 84,
-    status: "Admitting",
-    tone: "bg-primary/10 text-primary",
-  },
-  {
-    t: "Cohort 14 — DevOps",
-    size: 36,
-    target: 40,
-    pct: 90,
-    status: "Active",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    t: "Cohort 16 — Product Design",
-    size: 30,
-    target: 40,
-    pct: 75,
-    status: "Admitting",
-    tone: "bg-warning/10 text-warning",
-  },
-];
+const cohortTones: Record<string, string> = {
+  Active: "bg-success/10 text-success",
+  Admitting: "bg-primary/10 text-primary",
+  Closed: "bg-muted-foreground/10 text-muted-foreground",
+};
 
 function DepartmentEnrollment() {
+  const cohortsQuery = useDepCohorts();
+
   return (
     <AppShell
       roleKey="instructor"
@@ -123,22 +99,46 @@ function DepartmentEnrollment() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
-          {cohorts.map((c) => (
-            <div key={c.t} className="rounded-xl border p-4">
-              <div className="flex flex-wrap items-center justify-between gap-2">
-                <p className="text-sm font-bold">{c.t}</p>
-                <div className="flex items-center gap-2">
-                  <span className="text-muted-foreground text-xs font-semibold">
-                    {c.size} / {c.target} students
-                  </span>
-                  <Badge className={cn("border-0 font-semibold", c.tone)}>{c.status}</Badge>
-                </div>
-              </div>
-              <div className="bg-muted mt-2.5 h-1.5 overflow-hidden rounded-full">
-                <div className="bg-primary h-full rounded-full" style={{ width: `${c.pct}%` }} />
-              </div>
-            </div>
-          ))}
+          <QueryState<DepCohort[]>
+            query={cohortsQuery}
+            error={{ title: "Cohorts unavailable" }}
+            empty={{
+              title: "No cohorts yet",
+              description: "Cohort sizes, retention and capacity will appear here.",
+            }}
+            isEmpty={(rows) => rows.length === 0}
+          >
+            {(rows) => (
+              <>
+                {rows.map((c) => (
+                  <div key={c.id} className="rounded-xl border p-4">
+                    <div className="flex flex-wrap items-center justify-between gap-2">
+                      <p className="text-sm font-bold">{c.name}</p>
+                      <div className="flex items-center gap-2">
+                        <span className="text-muted-foreground text-xs font-semibold">
+                          {c.enrolled} / {c.capacity} students
+                        </span>
+                        <Badge
+                          className={cn(
+                            "border-0 font-semibold",
+                            cohortTones[c.status] ?? "bg-muted text-muted-foreground",
+                          )}
+                        >
+                          {c.status}
+                        </Badge>
+                      </div>
+                    </div>
+                    <div className="bg-muted mt-2.5 h-1.5 overflow-hidden rounded-full">
+                      <div
+                        className="bg-primary h-full rounded-full"
+                        style={{ width: `${c.pct}%` }}
+                      />
+                    </div>
+                  </div>
+                ))}
+              </>
+            )}
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>

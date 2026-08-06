@@ -4,6 +4,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import type { NgoThread } from "@/lib/api/ngo";
+import { useNgoThreads } from "@/lib/query/ngo";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/ngo/messaging")({
@@ -16,31 +19,16 @@ export const Route = createFileRoute("/app/ngo/messaging")({
   component: NgoMessaging,
 });
 
-const messages = [
-  {
-    m: "Scholarship cohort 16 disbursement",
-    f: "CEA finance",
-    t: "Jul 29 · 11:02",
-    s: "Open",
-    tone: "bg-primary/10 text-primary",
-  },
-  {
-    m: "Impact report H1 review",
-    f: "CEA programs",
-    t: "Jul 22 · 09:18",
-    s: "Closed",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    m: "STEM Saturdays venue change",
-    f: "CEA ops",
-    t: "Jul 18 · 15:44",
-    s: "Closed",
-    tone: "bg-success/10 text-success",
-  },
+const tones = [
+  "bg-primary/10 text-primary",
+  "bg-success/10 text-success",
+  "bg-warning/10 text-warning",
+  "bg-muted-foreground/10 text-muted-foreground",
 ];
 
 function NgoMessaging() {
+  const threadsQuery = useNgoThreads();
+
   return (
     <AppShell
       roleKey="instructor"
@@ -112,23 +100,39 @@ function NgoMessaging() {
           </CardTitle>
         </CardHeader>
         <CardContent className="divide-y">
-          {messages.map((m) => (
-            <div
-              key={m.m + m.t}
-              className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
-            >
-              <div className="min-w-0 flex-1">
-                <p className="text-sm font-bold">{m.m}</p>
-                <p className="text-muted-foreground text-xs">
-                  {m.f} · {m.t}
-                </p>
-              </div>
-              <Badge className={cn("border-0 font-semibold", m.tone)}>{m.s}</Badge>
-              <Button variant="outline" size="sm" className="shrink-0 font-semibold">
-                Open
-              </Button>
-            </div>
-          ))}
+          <QueryState<NgoThread[]>
+            query={threadsQuery}
+            error={{ title: "Threads unavailable" }}
+            empty={{
+              title: "No threads yet",
+              description: "Message threads will appear here.",
+            }}
+            isEmpty={(rows) => rows.length === 0}
+          >
+            {(rows) => (
+              <>
+                {rows.map((m, i) => (
+                  <div
+                    key={m.id}
+                    className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
+                  >
+                    <div className="min-w-0 flex-1">
+                      <p className="text-sm font-bold">{m.title}</p>
+                      <p className="text-muted-foreground text-xs">
+                        {m.fromLabel} · {m.timeLabel}
+                      </p>
+                    </div>
+                    <Badge className={cn("border-0 font-semibold", tones[i % tones.length])}>
+                      {m.status}
+                    </Badge>
+                    <Button variant="outline" size="sm" className="shrink-0 font-semibold">
+                      Open
+                    </Button>
+                  </div>
+                ))}
+              </>
+            )}
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>

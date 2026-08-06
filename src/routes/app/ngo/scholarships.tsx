@@ -4,6 +4,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import type { NgoFund } from "@/lib/api/ngo";
+import { useNgoFunds } from "@/lib/query/ngo";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/ngo/scholarships")({
@@ -16,28 +19,16 @@ export const Route = createFileRoute("/app/ngo/scholarships")({
   component: NgoScholarships,
 });
 
-const scholarships = [
-  {
-    s: "Girls in Tech · Cohort 16",
-    v: "18 scholars · ₦1.2m in tuition",
-    st: "Active",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    s: "Merit scholar pool",
-    v: "12 scholars · ₦840k in tuition",
-    st: "Active",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    s: "Refugee STEM fund",
-    v: "8 applicants · selection in progress",
-    st: "Selecting",
-    tone: "bg-warning/10 text-warning",
-  },
+const tones = [
+  "bg-success/10 text-success",
+  "bg-primary/10 text-primary",
+  "bg-warning/10 text-warning",
+  "bg-muted-foreground/10 text-muted-foreground",
 ];
 
 function NgoScholarships() {
+  const fundsQuery = useNgoFunds();
+
   return (
     <AppShell
       roleKey="instructor"
@@ -109,18 +100,39 @@ function NgoScholarships() {
           </CardTitle>
         </CardHeader>
         <CardContent className="divide-y">
-          {scholarships.map((s) => (
-            <div key={s.s} className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0">
-              <div className="min-w-0 flex-1">
-                <p className="text-sm font-bold">{s.s}</p>
-                <p className="text-muted-foreground text-xs">{s.v}</p>
-              </div>
-              <Badge className={cn("border-0 font-semibold", s.tone)}>{s.st}</Badge>
-              <Button variant="outline" size="sm" className="shrink-0 font-semibold">
-                Manage
-              </Button>
-            </div>
-          ))}
+          <QueryState<NgoFund[]>
+            query={fundsQuery}
+            error={{ title: "Funds unavailable" }}
+            empty={{
+              title: "No funds yet",
+              description: "Scholarship funds will appear here.",
+            }}
+            isEmpty={(rows) => rows.length === 0}
+          >
+            {(rows) => (
+              <>
+                {rows.map((f, i) => (
+                  <div
+                    key={f.id}
+                    className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
+                  >
+                    <div className="min-w-0 flex-1">
+                      <p className="text-sm font-bold">{f.name}</p>
+                      <p className="text-muted-foreground text-xs">
+                        {f.scholars} · {f.amount}
+                      </p>
+                    </div>
+                    <Badge className={cn("border-0 font-semibold", tones[i % tones.length])}>
+                      {f.status}
+                    </Badge>
+                    <Button variant="outline" size="sm" className="shrink-0 font-semibold">
+                      Manage
+                    </Button>
+                  </div>
+                ))}
+              </>
+            )}
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>

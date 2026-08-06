@@ -4,6 +4,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import type { DepObservation } from "@/lib/api/department";
+import { useDepObservations } from "@/lib/query/department";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/department/quality")({
@@ -16,31 +19,15 @@ export const Route = createFileRoute("/app/department/quality")({
   component: DepartmentQuality,
 });
 
-const observations = [
-  {
-    t: "Class observation — Mr. Adeyemi",
-    c: "Backend & APIs",
-    d: "Scheduled Aug 11",
-    status: "Scheduled",
-    tone: "bg-primary/10 text-primary",
-  },
-  {
-    t: "Class observation — Ms. Chidera",
-    c: "DevOps Fundamentals",
-    d: "Scheduled Aug 13",
-    status: "Scheduled",
-    tone: "bg-primary/10 text-primary",
-  },
-  {
-    t: "Course evaluation — Design Systems",
-    c: "Cohort 15",
-    d: "Closed Jul 30 · 4.7★",
-    status: "Completed",
-    tone: "bg-success/10 text-success",
-  },
-];
+const observationTones: Record<string, string> = {
+  Scheduled: "bg-primary/10 text-primary",
+  Completed: "bg-success/10 text-success",
+  Pending: "bg-warning/10 text-warning",
+};
 
 function DepartmentQuality() {
+  const observationsQuery = useDepObservations();
+
   return (
     <AppShell
       roleKey="instructor"
@@ -114,23 +101,45 @@ function DepartmentQuality() {
           </CardTitle>
         </CardHeader>
         <CardContent className="divide-y">
-          {observations.map((o) => (
-            <div key={o.t} className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0">
-              <span className="bg-muted text-muted-foreground grid size-9 shrink-0 place-items-center rounded-lg">
-                <Eye className="size-4" />
-              </span>
-              <div className="min-w-0 flex-1">
-                <p className="text-sm font-bold">{o.t}</p>
-                <p className="text-muted-foreground text-xs">
-                  {o.c} · {o.d}
-                </p>
-              </div>
-              <Badge className={cn("border-0 font-semibold", o.tone)}>{o.status}</Badge>
-              <Button variant="outline" size="sm" className="shrink-0 font-semibold">
-                Open
-              </Button>
-            </div>
-          ))}
+          <QueryState<DepObservation[]>
+            query={observationsQuery}
+            error={{ title: "Observations unavailable" }}
+            empty={{
+              title: "No observations yet",
+              description: "Class observations and course evaluations will appear here.",
+            }}
+            isEmpty={(rows) => rows.length === 0}
+          >
+            {(rows) => (
+              <>
+                {rows.map((o) => (
+                  <div
+                    key={o.id}
+                    className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
+                  >
+                    <span className="bg-muted text-muted-foreground grid size-9 shrink-0 place-items-center rounded-lg">
+                      <Eye className="size-4" />
+                    </span>
+                    <div className="min-w-0 flex-1">
+                      <p className="text-sm font-bold">{o.title}</p>
+                      <p className="text-muted-foreground text-xs">{o.detail}</p>
+                    </div>
+                    <Badge
+                      className={cn(
+                        "border-0 font-semibold",
+                        observationTones[o.status] ?? "bg-muted text-muted-foreground",
+                      )}
+                    >
+                      {o.status}
+                    </Badge>
+                    <Button variant="outline" size="sm" className="shrink-0 font-semibold">
+                      Open
+                    </Button>
+                  </div>
+                ))}
+              </>
+            )}
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>

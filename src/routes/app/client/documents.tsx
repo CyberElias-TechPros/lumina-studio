@@ -4,6 +4,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import type { CliDocument } from "@/lib/query/clientEngagement";
+import { useCliDocuments } from "@/lib/query/clientEngagement";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/client/documents")({
@@ -16,28 +19,16 @@ export const Route = createFileRoute("/app/client/documents")({
   component: ClientDocuments,
 });
 
-const documents = [
-  {
-    d: "SOW · Platform rebuild v2",
-    v: "PDF · 2.4 MB · updated Jul 28",
-    s: "Shared",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    d: "Weekly status report · W31",
-    v: "PDF · 1.1 MB · Jul 31",
-    s: "New",
-    tone: "bg-primary/10 text-primary",
-  },
-  {
-    d: "Invoice + receipt archive",
-    v: "Folder · 14 files · Q3",
-    s: "Shared",
-    tone: "bg-success/10 text-success",
-  },
-];
+function statusTone(s: string) {
+  const l = s.toLowerCase();
+  if (l.includes("shared")) return "bg-success/10 text-success";
+  if (l.includes("new")) return "bg-primary/10 text-primary";
+  return "bg-muted-foreground/10 text-muted-foreground";
+}
 
 function ClientDocuments() {
+  const documentsQuery = useCliDocuments();
+
   return (
     <AppShell
       roleKey="instructor"
@@ -109,18 +100,39 @@ function ClientDocuments() {
           </CardTitle>
         </CardHeader>
         <CardContent className="divide-y">
-          {documents.map((d) => (
-            <div key={d.d} className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0">
-              <div className="min-w-0 flex-1">
-                <p className="text-sm font-bold">{d.d}</p>
-                <p className="text-muted-foreground text-xs">{d.v}</p>
-              </div>
-              <Badge className={cn("border-0 font-semibold", d.tone)}>{d.s}</Badge>
-              <Button variant="outline" size="sm" className="shrink-0 font-semibold">
-                <Download className="size-3.5" /> Download
-              </Button>
-            </div>
-          ))}
+          <QueryState<CliDocument[]>
+            query={documentsQuery}
+            error={{ title: "Documents unavailable" }}
+            empty={{
+              title: "No documents",
+              description: "Your documents will appear here.",
+            }}
+            isEmpty={(rows) => rows.length === 0}
+          >
+            {(rows) => (
+              <>
+                {rows.map((d) => (
+                  <div
+                    key={d.id}
+                    className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
+                  >
+                    <div className="min-w-0 flex-1">
+                      <p className="text-sm font-bold">{d.title}</p>
+                      <p className="text-muted-foreground text-xs">
+                        {d.type} · {d.size} · {d.updated}
+                      </p>
+                    </div>
+                    <Badge className={cn("border-0 font-semibold", statusTone(d.status))}>
+                      {d.status}
+                    </Badge>
+                    <Button variant="outline" size="sm" className="shrink-0 font-semibold">
+                      <Download className="size-3.5" /> Download
+                    </Button>
+                  </div>
+                ))}
+              </>
+            )}
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>

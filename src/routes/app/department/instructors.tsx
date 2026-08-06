@@ -4,6 +4,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import type { DepFacultyMember } from "@/lib/api/department";
+import { useDepFaculty } from "@/lib/query/department";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/department/instructors")({
@@ -16,42 +19,16 @@ export const Route = createFileRoute("/app/department/instructors")({
   component: DepartmentInstructors,
 });
 
-const faculty = [
-  {
-    n: "Mr. Adeyemi",
-    courses: 4,
-    students: 62,
-    load: 85,
-    rating: 4.8,
-    tone: "bg-primary/10 text-primary",
-  },
-  {
-    n: "Ms. Chidera",
-    courses: 3,
-    students: 48,
-    load: 70,
-    rating: 4.6,
-    tone: "bg-learning/10 text-learning",
-  },
-  {
-    n: "Mr. Bello",
-    courses: 3,
-    students: 55,
-    load: 78,
-    rating: 4.7,
-    tone: "bg-success/10 text-success",
-  },
-  {
-    n: "Mrs. Eze",
-    courses: 2,
-    students: 34,
-    load: 52,
-    rating: 4.4,
-    tone: "bg-warning/10 text-warning",
-  },
+const facultyTones = [
+  "bg-primary/10 text-primary",
+  "bg-learning/10 text-learning",
+  "bg-success/10 text-success",
+  "bg-warning/10 text-warning",
 ];
 
 function DepartmentInstructors() {
+  const facultyQuery = useDepFaculty();
+
   return (
     <AppShell
       roleKey="instructor"
@@ -125,38 +102,61 @@ function DepartmentInstructors() {
           </CardTitle>
         </CardHeader>
         <CardContent className="divide-y">
-          {faculty.map((f) => (
-            <div key={f.n} className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0">
-              <span
-                className={cn(
-                  "grid size-9 shrink-0 place-items-center rounded-lg text-xs font-extrabold",
-                  f.tone,
-                )}
-              >
-                {f.n.split(" ")[1]}
-              </span>
-              <div className="min-w-0 flex-1">
-                <p className="text-sm font-bold">{f.n}</p>
-                <p className="text-muted-foreground text-xs">
-                  {f.courses} courses · {f.students} students · rating {f.rating}
-                </p>
-              </div>
-              <div className="flex items-center gap-3">
-                <div className="bg-muted h-1.5 w-24 overflow-hidden rounded-full">
-                  <div
-                    className={cn("h-full rounded-full", f.load > 80 ? "bg-warning" : "bg-primary")}
-                    style={{ width: `${f.load}%` }}
-                  />
-                </div>
-                <span className="text-muted-foreground w-8 text-right text-xs font-semibold">
-                  {f.load}%
-                </span>
-              </div>
-              <Button variant="outline" size="sm" className="shrink-0 font-semibold">
-                Profile
-              </Button>
-            </div>
-          ))}
+          <QueryState<DepFacultyMember[]>
+            query={facultyQuery}
+            error={{ title: "Faculty unavailable" }}
+            empty={{
+              title: "No faculty yet",
+              description: "Instructor workload and performance will appear here.",
+            }}
+            isEmpty={(rows) => rows.length === 0}
+          >
+            {(rows) => (
+              <>
+                {rows.map((f, i) => {
+                  const load = Number.parseInt(f.workload, 10) || 0;
+                  return (
+                    <div
+                      key={f.id}
+                      className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
+                    >
+                      <span
+                        className={cn(
+                          "grid size-9 shrink-0 place-items-center rounded-lg text-xs font-extrabold",
+                          facultyTones[i % facultyTones.length],
+                        )}
+                      >
+                        {f.name.split(" ")[1]}
+                      </span>
+                      <div className="min-w-0 flex-1">
+                        <p className="text-sm font-bold">{f.name}</p>
+                        <p className="text-muted-foreground text-xs">
+                          {f.courses} courses · {f.students} students · rating {f.rating}
+                        </p>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <div className="bg-muted h-1.5 w-24 overflow-hidden rounded-full">
+                          <div
+                            className={cn(
+                              "h-full rounded-full",
+                              load > 80 ? "bg-warning" : "bg-primary",
+                            )}
+                            style={{ width: `${load}%` }}
+                          />
+                        </div>
+                        <span className="text-muted-foreground w-8 text-right text-xs font-semibold">
+                          {f.workload}
+                        </span>
+                      </div>
+                      <Button variant="outline" size="sm" className="shrink-0 font-semibold">
+                        Profile
+                      </Button>
+                    </div>
+                  );
+                })}
+              </>
+            )}
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>

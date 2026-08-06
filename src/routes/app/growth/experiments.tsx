@@ -12,6 +12,9 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import type { GrwExperiment } from "@/lib/api/growth";
+import { useGrwExperiments } from "@/lib/query/growth";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/growth/experiments")({
@@ -24,42 +27,26 @@ export const Route = createFileRoute("/app/growth/experiments")({
   component: ExperimentBuilder,
 });
 
-const experiments = [
-  {
-    t: "WhatsApp onboarding nudges",
-    h: "WhatsApp nudges lift week-1 activation",
-    v: "A/B · 50/50",
-    result: "+9% activation",
-    status: "Winning",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    t: "Pay-later at checkout",
-    h: "Flexible terms raise conversion",
-    v: "3 variants",
-    result: "+6% conversion",
-    status: "Live",
-    tone: "bg-primary/10 text-primary",
-  },
-  {
-    t: "Open-day reminder cadence",
-    h: "2 reminders beat 3 reminders",
-    v: "A/B/C",
-    result: "Running",
-    status: "In test",
-    tone: "bg-warning/10 text-warning",
-  },
-  {
-    t: "Referral reward framing",
-    h: "Cash beats credit for invites",
-    v: "Draft",
-    result: "—",
-    status: "Draft",
-    tone: "bg-muted-foreground/10 text-muted-foreground",
-  },
-];
+function experimentTone(status: string) {
+  switch (status) {
+    case "Winning":
+    case "Won":
+      return "bg-success/10 text-success";
+    case "Live":
+    case "Running":
+      return "bg-primary/10 text-primary";
+    case "In test":
+      return "bg-warning/10 text-warning";
+    case "Draft":
+      return "bg-muted-foreground/10 text-muted-foreground";
+    default:
+      return "bg-muted-foreground/10 text-muted-foreground";
+  }
+}
 
 function ExperimentBuilder() {
+  const experimentsQuery = useGrwExperiments();
+
   return (
     <AppShell
       roleKey="growth"
@@ -131,34 +118,50 @@ function ExperimentBuilder() {
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead>Experiment</TableHead>
-                <TableHead>Hypothesis</TableHead>
-                <TableHead>Variant</TableHead>
-                <TableHead>Result</TableHead>
-                <TableHead>Status</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {experiments.map((e) => (
-                <TableRow key={e.t}>
-                  <TableCell className="font-semibold">{e.t}</TableCell>
-                  <TableCell className="max-w-[280px] text-muted-foreground">{e.h}</TableCell>
-                  <TableCell>{e.v}</TableCell>
-                  <TableCell
-                    className={cn("font-bold", e.result.startsWith("+") && "text-success")}
-                  >
-                    {e.result}
-                  </TableCell>
-                  <TableCell>
-                    <Badge className={cn("border-0 font-semibold", e.tone)}>{e.status}</Badge>
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
+          <QueryState<GrwExperiment[]>
+            query={experimentsQuery}
+            error={{ title: "Experiment data unavailable" }}
+            empty={{
+              title: "No experiments yet",
+              description: "Growth experiments will appear here.",
+            }}
+            isEmpty={(rows) => rows.length === 0}
+          >
+            {(rows) => (
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead>Experiment</TableHead>
+                    <TableHead>Hypothesis</TableHead>
+                    <TableHead>Variant</TableHead>
+                    <TableHead>Result</TableHead>
+                    <TableHead>Status</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {rows.map((e) => (
+                    <TableRow key={e.id}>
+                      <TableCell className="font-semibold">{e.title}</TableCell>
+                      <TableCell className="max-w-[280px] text-muted-foreground">
+                        {e.hypothesis}
+                      </TableCell>
+                      <TableCell>{e.variant}</TableCell>
+                      <TableCell
+                        className={cn("font-bold", e.result.startsWith("+") && "text-success")}
+                      >
+                        {e.result}
+                      </TableCell>
+                      <TableCell>
+                        <Badge className={cn("border-0 font-semibold", experimentTone(e.status))}>
+                          {e.status}
+                        </Badge>
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            )}
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>

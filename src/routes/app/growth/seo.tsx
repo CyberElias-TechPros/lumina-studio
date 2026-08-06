@@ -12,6 +12,9 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import type { GrwSeoCluster } from "@/lib/api/growth";
+import { useGrwSeo } from "@/lib/query/growth";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/growth/seo")({
@@ -24,50 +27,17 @@ export const Route = createFileRoute("/app/growth/seo")({
   component: SeoPlanner,
 });
 
-const clusters = [
-  {
-    t: "Bootcamps in Lagos",
-    vol: "4,800",
-    rank: "3",
-    trend: "+2",
-    priority: "High",
-    tone: "bg-primary/10 text-primary",
-  },
-  {
-    t: "Data analytics courses Nigeria",
-    vol: "2,900",
-    rank: "7",
-    trend: "+1",
-    priority: "High",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    t: "UX design certification",
-    vol: "1,600",
-    rank: "11",
-    trend: "−2",
-    priority: "Medium",
-    tone: "bg-warning/10 text-warning",
-  },
-  {
-    t: "Scholarships for tech in Nigeria",
-    vol: "3,200",
-    rank: "9",
-    trend: "+4",
-    priority: "Medium",
-    tone: "bg-learning/10 text-learning",
-  },
-  {
-    t: "Employer talent programs",
-    vol: "720",
-    rank: "5",
-    trend: "0",
-    priority: "Low",
-    tone: "bg-muted-foreground/10 text-muted-foreground",
-  },
+const seoTones = [
+  "bg-primary/10 text-primary",
+  "bg-success/10 text-success",
+  "bg-warning/10 text-warning",
+  "bg-learning/10 text-learning",
+  "bg-muted-foreground/10 text-muted-foreground",
 ];
 
 function SeoPlanner() {
+  const seoQuery = useGrwSeo();
+
   return (
     <AppShell
       roleKey="growth"
@@ -139,41 +109,59 @@ function SeoPlanner() {
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead>Cluster</TableHead>
-                <TableHead>Volume</TableHead>
-                <TableHead>Rank</TableHead>
-                <TableHead>Trend</TableHead>
-                <TableHead>Priority</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {clusters.map((c) => (
-                <TableRow key={c.t}>
-                  <TableCell className="font-semibold">{c.t}</TableCell>
-                  <TableCell className="text-muted-foreground">{c.vol}/mo</TableCell>
-                  <TableCell className="font-bold">#{c.rank}</TableCell>
-                  <TableCell
-                    className={cn(
-                      "font-semibold",
-                      c.trend.startsWith("+")
-                        ? "text-success"
-                        : c.trend.startsWith("−")
-                          ? "text-error"
-                          : "text-muted-foreground",
-                    )}
-                  >
-                    {c.trend}
-                  </TableCell>
-                  <TableCell>
-                    <Badge className={cn("border-0 font-semibold", c.tone)}>{c.priority}</Badge>
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
+          <QueryState<GrwSeoCluster[]>
+            query={seoQuery}
+            error={{ title: "SEO data unavailable" }}
+            empty={{
+              title: "No keyword clusters yet",
+              description: "Keyword clusters will appear here.",
+            }}
+            isEmpty={(rows) => rows.length === 0}
+          >
+            {(rows) => (
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead>Cluster</TableHead>
+                    <TableHead>Volume</TableHead>
+                    <TableHead>Rank</TableHead>
+                    <TableHead>Trend</TableHead>
+                    <TableHead>Priority</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {rows.map((c, i) => (
+                    <TableRow key={c.id}>
+                      <TableCell className="font-semibold">{c.keyword}</TableCell>
+                      <TableCell className="text-muted-foreground">
+                        {c.volume.toLocaleString()}/mo
+                      </TableCell>
+                      <TableCell className="font-bold">#{c.rank}</TableCell>
+                      <TableCell
+                        className={cn(
+                          "font-semibold",
+                          c.trend.startsWith("+")
+                            ? "text-success"
+                            : c.trend.startsWith("\u2212")
+                              ? "text-error"
+                              : "text-muted-foreground",
+                        )}
+                      >
+                        {c.trend}
+                      </TableCell>
+                      <TableCell>
+                        <Badge
+                          className={cn("border-0 font-semibold", seoTones[i % seoTones.length])}
+                        >
+                          {c.priority}
+                        </Badge>
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            )}
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>

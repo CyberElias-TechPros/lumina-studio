@@ -4,6 +4,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import type { NgoTransaction } from "@/lib/api/ngo";
+import { useNgoTransactions } from "@/lib/query/ngo";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/ngo/donations")({
@@ -16,28 +19,16 @@ export const Route = createFileRoute("/app/ngo/donations")({
   component: NgoDonations,
 });
 
-const donations = [
-  {
-    d: "Global Giving grant",
-    v: "₦18.0m inbound · Jul 14",
-    s: "Received",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    d: "Scholarship disbursement",
-    v: "₦2.4m outbound · Jul 02",
-    s: "Disbursed",
-    tone: "bg-primary/10 text-primary",
-  },
-  {
-    d: "Crowdfund · drive 2026",
-    v: "₦6.1m raised · 84% of target",
-    s: "Ongoing",
-    tone: "bg-warning/10 text-warning",
-  },
+const tones = [
+  "bg-success/10 text-success",
+  "bg-primary/10 text-primary",
+  "bg-warning/10 text-warning",
+  "bg-muted-foreground/10 text-muted-foreground",
 ];
 
 function NgoDonations() {
+  const transactionsQuery = useNgoTransactions();
+
   return (
     <AppShell
       roleKey="instructor"
@@ -109,21 +100,39 @@ function NgoDonations() {
           </CardTitle>
         </CardHeader>
         <CardContent className="divide-y">
-          {donations.map((d) => (
-            <div
-              key={d.d + d.v}
-              className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
-            >
-              <div className="min-w-0 flex-1">
-                <p className="text-sm font-bold">{d.d}</p>
-                <p className="text-muted-foreground text-xs">{d.v}</p>
-              </div>
-              <Badge className={cn("border-0 font-semibold", d.tone)}>{d.s}</Badge>
-              <Button variant="outline" size="sm" className="shrink-0 font-semibold">
-                Details
-              </Button>
-            </div>
-          ))}
+          <QueryState<NgoTransaction[]>
+            query={transactionsQuery}
+            error={{ title: "Transactions unavailable" }}
+            empty={{
+              title: "No transactions yet",
+              description: "Donation transactions will appear here.",
+            }}
+            isEmpty={(rows) => rows.length === 0}
+          >
+            {(rows) => (
+              <>
+                {rows.map((d, i) => (
+                  <div
+                    key={d.id}
+                    className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
+                  >
+                    <div className="min-w-0 flex-1">
+                      <p className="text-sm font-bold">{d.title}</p>
+                      <p className="text-muted-foreground text-xs">
+                        {d.amount} · {d.dateLabel}
+                      </p>
+                    </div>
+                    <Badge className={cn("border-0 font-semibold", tones[i % tones.length])}>
+                      {d.status}
+                    </Badge>
+                    <Button variant="outline" size="sm" className="shrink-0 font-semibold">
+                      Details
+                    </Button>
+                  </div>
+                ))}
+              </>
+            )}
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>

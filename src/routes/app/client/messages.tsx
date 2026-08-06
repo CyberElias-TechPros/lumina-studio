@@ -4,6 +4,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import type { CliThread } from "@/lib/query/clientEngagement";
+import { useCliThreads } from "@/lib/query/clientEngagement";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/client/messages")({
@@ -16,31 +19,17 @@ export const Route = createFileRoute("/app/client/messages")({
   component: ClientMessages,
 });
 
-const messages = [
-  {
-    m: "Landing page build — review needed",
-    f: "Project manager · Simi",
-    t: "Aug 2 · 16:20",
-    s: "New",
-    tone: "bg-primary/10 text-primary",
-  },
-  {
-    m: "API docs draft for sign-off",
-    f: "Tech lead · Dayo",
-    t: "Jul 31 · 11:08",
-    s: "Open",
-    tone: "bg-warning/10 text-warning",
-  },
-  {
-    m: "Weekly sync moved to Thursday",
-    f: "Project manager · Simi",
-    t: "Jul 28 · 09:45",
-    s: "Closed",
-    tone: "bg-success/10 text-success",
-  },
-];
+function statusTone(s: string) {
+  const l = s.toLowerCase();
+  if (l.includes("closed")) return "bg-success/10 text-success";
+  if (l.includes("open")) return "bg-warning/10 text-warning";
+  if (l.includes("new")) return "bg-primary/10 text-primary";
+  return "bg-muted-foreground/10 text-muted-foreground";
+}
 
 function ClientMessages() {
+  const threadsQuery = useCliThreads();
+
   return (
     <AppShell
       roleKey="instructor"
@@ -112,23 +101,39 @@ function ClientMessages() {
           </CardTitle>
         </CardHeader>
         <CardContent className="divide-y">
-          {messages.map((m) => (
-            <div
-              key={m.m + m.t}
-              className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
-            >
-              <div className="min-w-0 flex-1">
-                <p className="text-sm font-bold">{m.m}</p>
-                <p className="text-muted-foreground text-xs">
-                  {m.f} · {m.t}
-                </p>
-              </div>
-              <Badge className={cn("border-0 font-semibold", m.tone)}>{m.s}</Badge>
-              <Button variant="outline" size="sm" className="shrink-0 font-semibold">
-                Open
-              </Button>
-            </div>
-          ))}
+          <QueryState<CliThread[]>
+            query={threadsQuery}
+            error={{ title: "Threads unavailable" }}
+            empty={{
+              title: "No messages",
+              description: "Your messages will appear here.",
+            }}
+            isEmpty={(rows) => rows.length === 0}
+          >
+            {(rows) => (
+              <>
+                {rows.map((m) => (
+                  <div
+                    key={m.id}
+                    className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
+                  >
+                    <div className="min-w-0 flex-1">
+                      <p className="text-sm font-bold">{m.title}</p>
+                      <p className="text-muted-foreground text-xs">
+                        {m.fromLabel} · {m.timeLabel}
+                      </p>
+                    </div>
+                    <Badge className={cn("border-0 font-semibold", statusTone(m.status))}>
+                      {m.status}
+                    </Badge>
+                    <Button variant="outline" size="sm" className="shrink-0 font-semibold">
+                      Open
+                    </Button>
+                  </div>
+                ))}
+              </>
+            )}
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>

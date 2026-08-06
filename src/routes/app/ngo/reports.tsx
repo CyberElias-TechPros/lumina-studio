@@ -4,6 +4,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import type { NgoReport } from "@/lib/api/ngo";
+import { useNgoReports } from "@/lib/query/ngo";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/ngo/reports")({
@@ -16,28 +19,16 @@ export const Route = createFileRoute("/app/ngo/reports")({
   component: NgoReports,
 });
 
-const reports = [
-  {
-    r: "Impact report · H1 2026",
-    v: "740 beneficiaries · ₦8.2m deployed",
-    s: "Published",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    r: "Girls Code Bootcamp report",
-    v: "320 graduates · 91% completion",
-    s: "Published",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    r: "Q3 draft · STEM Saturdays",
-    v: "In review · due Aug 15",
-    s: "Draft",
-    tone: "bg-warning/10 text-warning",
-  },
+const tones = [
+  "bg-success/10 text-success",
+  "bg-primary/10 text-primary",
+  "bg-warning/10 text-warning",
+  "bg-muted-foreground/10 text-muted-foreground",
 ];
 
 function NgoReports() {
+  const reportsQuery = useNgoReports();
+
   return (
     <AppShell
       roleKey="instructor"
@@ -109,18 +100,37 @@ function NgoReports() {
           </CardTitle>
         </CardHeader>
         <CardContent className="divide-y">
-          {reports.map((r) => (
-            <div key={r.r} className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0">
-              <div className="min-w-0 flex-1">
-                <p className="text-sm font-bold">{r.r}</p>
-                <p className="text-muted-foreground text-xs">{r.v}</p>
-              </div>
-              <Badge className={cn("border-0 font-semibold", r.tone)}>{r.s}</Badge>
-              <Button variant="outline" size="sm" className="shrink-0 font-semibold">
-                View
-              </Button>
-            </div>
-          ))}
+          <QueryState<NgoReport[]>
+            query={reportsQuery}
+            error={{ title: "Reports unavailable" }}
+            empty={{
+              title: "No reports yet",
+              description: "Impact reports will appear here.",
+            }}
+            isEmpty={(rows) => rows.length === 0}
+          >
+            {(rows) => (
+              <>
+                {rows.map((r, i) => (
+                  <div
+                    key={r.id}
+                    className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
+                  >
+                    <div className="min-w-0 flex-1">
+                      <p className="text-sm font-bold">{r.title}</p>
+                      <p className="text-muted-foreground text-xs">{r.detail}</p>
+                    </div>
+                    <Badge className={cn("border-0 font-semibold", tones[i % tones.length])}>
+                      {r.status}
+                    </Badge>
+                    <Button variant="outline" size="sm" className="shrink-0 font-semibold">
+                      View
+                    </Button>
+                  </div>
+                ))}
+              </>
+            )}
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>

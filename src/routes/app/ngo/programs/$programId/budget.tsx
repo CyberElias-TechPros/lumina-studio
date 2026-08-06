@@ -4,6 +4,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import type { NgoExpenseLine } from "@/lib/api/ngo";
+import { useNgoExpenses } from "@/lib/query/ngo";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/ngo/programs/$programId/budget")({
@@ -16,19 +19,16 @@ export const Route = createFileRoute("/app/ngo/programs/$programId/budget")({
   component: NgoProgramBudget,
 });
 
-const lines = [
-  {
-    l: "Facilitator stipends",
-    v: "₦1.8m · 36%",
-    s: "On track",
-    tone: "bg-success/10 text-success",
-  },
-  { l: "Learning materials", v: "₦940k · 19%", s: "On track", tone: "bg-success/10 text-success" },
-  { l: "Logistics & venues", v: "₦720k · 14%", s: "On track", tone: "bg-success/10 text-success" },
-  { l: "Contingency", v: "₦240k · 5%", s: "Unspent", tone: "bg-warning/10 text-warning" },
+const tones = [
+  "bg-success/10 text-success",
+  "bg-primary/10 text-primary",
+  "bg-warning/10 text-warning",
+  "bg-muted-foreground/10 text-muted-foreground",
 ];
 
 function NgoProgramBudget() {
+  const expensesQuery = useNgoExpenses();
+
   return (
     <AppShell
       roleKey="instructor"
@@ -100,18 +100,39 @@ function NgoProgramBudget() {
           </CardTitle>
         </CardHeader>
         <CardContent className="divide-y">
-          {lines.map((l) => (
-            <div key={l.l} className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0">
-              <div className="min-w-0 flex-1">
-                <p className="text-sm font-bold">{l.l}</p>
-                <p className="text-muted-foreground text-xs">{l.v}</p>
-              </div>
-              <Badge className={cn("border-0 font-semibold", l.tone)}>{l.s}</Badge>
-              <Button variant="outline" size="sm" className="shrink-0 font-semibold">
-                Details
-              </Button>
-            </div>
-          ))}
+          <QueryState<NgoExpenseLine[]>
+            query={expensesQuery}
+            error={{ title: "Expenses unavailable" }}
+            empty={{
+              title: "No expense lines yet",
+              description: "Budget lines will appear here.",
+            }}
+            isEmpty={(rows) => rows.length === 0}
+          >
+            {(rows) => (
+              <>
+                {rows.map((l, i) => (
+                  <div
+                    key={l.id}
+                    className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
+                  >
+                    <div className="min-w-0 flex-1">
+                      <p className="text-sm font-bold">{l.title}</p>
+                      <p className="text-muted-foreground text-xs">
+                        {l.amount} · {l.pct}
+                      </p>
+                    </div>
+                    <Badge className={cn("border-0 font-semibold", tones[i % tones.length])}>
+                      {l.status}
+                    </Badge>
+                    <Button variant="outline" size="sm" className="shrink-0 font-semibold">
+                      Details
+                    </Button>
+                  </div>
+                ))}
+              </>
+            )}
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>

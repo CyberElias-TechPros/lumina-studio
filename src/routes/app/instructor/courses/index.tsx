@@ -26,6 +26,9 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import { useInstructorCourses } from "@/lib/query/instructor";
+import type { InstructorCourse } from "@/lib/api/instructor";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/instructor/courses/")({
@@ -38,58 +41,12 @@ export const Route = createFileRoute("/app/instructor/courses/")({
   component: CourseBuilderPage,
 });
 
-const courses = [
-  {
-    code: "FWD-301",
-    title: "Frontend Development III",
-    students: 42,
-    modules: 8,
-    lessons: 34,
-    progress: 72,
-    status: "In progress",
-    tone: "bg-primary/10 text-primary",
-  },
-  {
-    code: "FWD-101",
-    title: "Frontend Development I",
-    students: 68,
-    modules: 6,
-    lessons: 28,
-    progress: 100,
-    status: "Published",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    code: "UX-201",
-    title: "UX Research & Testing",
-    students: 35,
-    modules: 5,
-    lessons: 22,
-    progress: 100,
-    status: "Published",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    code: "DSA-102",
-    title: "Data Structures & Algorithms",
-    students: 51,
-    modules: 9,
-    lessons: 41,
-    progress: 45,
-    status: "Draft",
-    tone: "bg-muted-foreground/10 text-muted-foreground",
-  },
-  {
-    code: "MKT-204",
-    title: "Growth Marketing Sprint",
-    students: 29,
-    modules: 4,
-    lessons: 16,
-    progress: 18,
-    status: "Draft",
-    tone: "bg-warning/10 text-warning",
-  },
-];
+function statusTone(status: string) {
+  if (/published/i.test(status)) return "bg-success/10 text-success";
+  if (/draft/i.test(status)) return "bg-warning/10 text-warning";
+  if (/in progress|active/i.test(status)) return "bg-primary/10 text-primary";
+  return "bg-muted-foreground/10 text-muted-foreground";
+}
 
 const recentModules = [
   { course: "FWD-301", module: "React Performance", lessons: 6, updated: "2h ago" },
@@ -99,6 +56,8 @@ const recentModules = [
 ];
 
 function CourseBuilderPage() {
+  const coursesQuery = useInstructorCourses();
+
   return (
     <AppShell
       roleKey="instructor"
@@ -189,42 +148,65 @@ function CourseBuilderPage() {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead>Course</TableHead>
-                  <TableHead>Enrolled</TableHead>
-                  <TableHead>Structure</TableHead>
-                  <TableHead>Build progress</TableHead>
-                  <TableHead>Status</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {courses.map((c) => (
-                  <TableRow key={c.code}>
-                    <TableCell>
-                      <p className="text-sm font-bold">{c.title}</p>
-                      <p className="text-muted-foreground text-xs">{c.code}</p>
-                    </TableCell>
-                    <TableCell className="text-sm font-semibold">{c.students}</TableCell>
-                    <TableCell className="text-muted-foreground text-xs">
-                      {c.modules} modules · {c.lessons} lessons
-                    </TableCell>
-                    <TableCell>
-                      <div className="flex items-center gap-2">
-                        <Progress value={c.progress} className="h-1.5 w-16" />
-                        <span className="text-muted-foreground text-xs font-semibold">
-                          {c.progress}%
-                        </span>
-                      </div>
-                    </TableCell>
-                    <TableCell>
-                      <Badge className={cn("border-0 font-semibold", c.tone)}>{c.status}</Badge>
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
+            <QueryState<InstructorCourse[]>
+              query={coursesQuery}
+              error={{ title: "Courses unavailable" }}
+              empty={{
+                title: "No courses yet",
+                description: "Courses you build will show here.",
+              }}
+              isEmpty={(rows) => rows.length === 0}
+            >
+              {(courses) => (
+                <Table>
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead>Course</TableHead>
+                      <TableHead>Enrolled</TableHead>
+                      <TableHead>Structure</TableHead>
+                      <TableHead>Build progress</TableHead>
+                      <TableHead>Status</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {courses.map((c) => {
+                      const lessons = c.modules.flatMap((m) => m.lessons);
+                      const built = lessons.filter((l) => l.status !== "draft").length;
+                      const progress = lessons.length
+                        ? Math.round((built / lessons.length) * 100)
+                        : 0;
+                      return (
+                        <TableRow key={c.id}>
+                          <TableCell>
+                            <p className="text-sm font-bold">{c.title}</p>
+                            <p className="text-muted-foreground text-xs">{c.cohort}</p>
+                          </TableCell>
+                          <TableCell className="text-muted-foreground text-xs font-semibold">
+                            —
+                          </TableCell>
+                          <TableCell className="text-muted-foreground text-xs">
+                            {c.modules.length} modules · {lessons.length} lessons
+                          </TableCell>
+                          <TableCell>
+                            <div className="flex items-center gap-2">
+                              <Progress value={progress} className="h-1.5 w-16" />
+                              <span className="text-muted-foreground text-xs font-semibold">
+                                {progress}%
+                              </span>
+                            </div>
+                          </TableCell>
+                          <TableCell>
+                            <Badge className={cn("border-0 font-semibold", statusTone(c.status))}>
+                              {c.status}
+                            </Badge>
+                          </TableCell>
+                        </TableRow>
+                      );
+                    })}
+                  </TableBody>
+                </Table>
+              )}
+            </QueryState>
           </CardContent>
         </Card>
 

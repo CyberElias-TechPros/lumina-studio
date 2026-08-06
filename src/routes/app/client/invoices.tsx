@@ -4,6 +4,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import type { CliInvoice } from "@/lib/query/clientEngagement";
+import { useCliInvoices } from "@/lib/query/clientEngagement";
 import { formatNaira } from "@/data/site";
 import { cn } from "@/lib/utils";
 
@@ -17,31 +20,16 @@ export const Route = createFileRoute("/app/client/invoices")({
   component: ClientInvoices,
 });
 
-const invoices = [
-  {
-    ref: "INV-ST-0142-1",
-    item: "Deposit — OrderPadi build",
-    amount: 350000,
-    status: "Paid",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    ref: "INV-ST-0142-2",
-    item: "Milestone 2 — mockups approved",
-    amount: 175000,
-    status: "Paid",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    ref: "INV-ST-0142-3",
-    item: "Milestone 3 — core build",
-    amount: 175000,
-    status: "Due Aug 25",
-    tone: "bg-warning/10 text-warning",
-  },
-];
+function statusTone(s: string) {
+  const l = s.toLowerCase();
+  if (l.includes("paid")) return "bg-success/10 text-success";
+  if (l.includes("due") || l.includes("pending")) return "bg-warning/10 text-warning";
+  return "bg-muted-foreground/10 text-muted-foreground";
+}
 
 function ClientInvoices() {
+  const invoicesQuery = useCliInvoices();
+
   return (
     <AppShell
       roleKey="instructor"
@@ -113,25 +101,45 @@ function ClientInvoices() {
           </CardTitle>
         </CardHeader>
         <CardContent className="divide-y">
-          {invoices.map((i) => (
-            <div
-              key={i.ref}
-              className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
-            >
-              <span className="bg-muted text-muted-foreground grid size-9 shrink-0 place-items-center rounded-lg">
-                <Receipt className="size-4" />
-              </span>
-              <div className="min-w-0 flex-1">
-                <p className="text-sm font-bold">{i.item}</p>
-                <p className="text-muted-foreground text-xs">{i.ref}</p>
-              </div>
-              <span className="text-sm font-extrabold">{formatNaira(i.amount)}</span>
-              <Badge className={cn("border-0 font-semibold", i.tone)}>{i.status}</Badge>
-              <Button variant="ghost" size="sm" className="text-primary shrink-0 font-semibold">
-                <Download className="size-3.5" /> PDF
-              </Button>
-            </div>
-          ))}
+          <QueryState<CliInvoice[]>
+            query={invoicesQuery}
+            error={{ title: "Invoices unavailable" }}
+            empty={{
+              title: "No invoices",
+              description: "Your invoices will appear here.",
+            }}
+            isEmpty={(rows) => rows.length === 0}
+          >
+            {(rows) => (
+              <>
+                {rows.map((i) => (
+                  <div
+                    key={i.id}
+                    className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
+                  >
+                    <span className="bg-muted text-muted-foreground grid size-9 shrink-0 place-items-center rounded-lg">
+                      <Receipt className="size-4" />
+                    </span>
+                    <div className="min-w-0 flex-1">
+                      <p className="text-sm font-bold">{i.title}</p>
+                      <p className="text-muted-foreground text-xs">{i.reference}</p>
+                    </div>
+                    <span className="text-sm font-extrabold">{i.amount}</span>
+                    <Badge className={cn("border-0 font-semibold", statusTone(i.status))}>
+                      {i.status}
+                    </Badge>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      className="text-primary shrink-0 font-semibold"
+                    >
+                      <Download className="size-3.5" /> PDF
+                    </Button>
+                  </div>
+                ))}
+              </>
+            )}
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>

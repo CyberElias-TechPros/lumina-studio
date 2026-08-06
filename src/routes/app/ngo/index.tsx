@@ -4,6 +4,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import type { NgoKpi } from "@/lib/api/ngo";
+import { useNgoOverview } from "@/lib/query/ngo";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/ngo/")({
@@ -54,7 +57,16 @@ const screens = [
   },
 ];
 
+const kpiMeta = [
+  { icon: HandCoins, tone: "bg-primary/10 text-primary" },
+  { icon: Megaphone, tone: "bg-learning/10 text-learning" },
+  { icon: Users, tone: "bg-success/10 text-success" },
+  { icon: Heart, tone: "bg-warning/10 text-warning" },
+];
+
 function NgoHub() {
+  const overviewQuery = useNgoOverview();
+
   return (
     <AppShell
       roleKey="instructor"
@@ -71,53 +83,39 @@ function NgoHub() {
         </>
       }
     >
-      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-        {[
-          {
-            label: "Scholarships funded",
-            value: "38",
-            delta: "₦12.4m disbursed",
-            icon: HandCoins,
-            tone: "bg-primary/10 text-primary",
-          },
-          {
-            label: "Programs",
-            value: "3",
-            delta: "2 ongoing",
-            icon: Megaphone,
-            tone: "bg-learning/10 text-learning",
-          },
-          {
-            label: "Volunteers",
-            value: "86",
-            delta: "14 active",
-            icon: Users,
-            tone: "bg-success/10 text-success",
-          },
-          {
-            label: "Impact (2026)",
-            value: "1,240",
-            delta: "beneficiaries",
-            icon: Heart,
-            tone: "bg-warning/10 text-warning",
-          },
-        ].map((k) => (
-          <Card key={k.label} className="bg-card shadow-soft border">
-            <CardContent className="p-5">
-              <div className="flex items-center justify-between">
-                <p className="text-muted-foreground text-xs font-bold tracking-wide uppercase">
-                  {k.label}
-                </p>
-                <span className={cn("grid size-8 place-items-center rounded-lg", k.tone)}>
-                  <k.icon className="size-4" />
-                </span>
-              </div>
-              <p className="font-display mt-3 text-2xl font-extrabold">{k.value}</p>
-              <p className="text-muted-foreground mt-0.5 text-xs font-semibold">{k.delta}</p>
-            </CardContent>
-          </Card>
-        ))}
-      </div>
+      <QueryState<NgoKpi[]>
+        query={overviewQuery}
+        error={{ title: "Stats unavailable" }}
+        empty={{
+          title: "No stats yet",
+          description: "NGO partnership stats will appear here.",
+        }}
+        isEmpty={(rows) => rows.length === 0}
+      >
+        {(rows) => (
+          <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+            {rows.map((k, i) => {
+              const meta = kpiMeta[i % kpiMeta.length];
+              return (
+                <Card key={k.id} className="bg-card shadow-soft border">
+                  <CardContent className="p-5">
+                    <div className="flex items-center justify-between">
+                      <p className="text-muted-foreground text-xs font-bold tracking-wide uppercase">
+                        {k.metric}
+                      </p>
+                      <span className={cn("grid size-8 place-items-center rounded-lg", meta.tone)}>
+                        <meta.icon className="size-4" />
+                      </span>
+                    </div>
+                    <p className="font-display mt-3 text-2xl font-extrabold">{k.valueLabel}</p>
+                    <p className="text-muted-foreground mt-0.5 text-xs font-semibold">{k.delta}</p>
+                  </CardContent>
+                </Card>
+              );
+            })}
+          </div>
+        )}
+      </QueryState>
 
       <Card className="bg-card mt-5 shadow-soft border">
         <CardHeader>

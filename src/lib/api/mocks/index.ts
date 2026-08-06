@@ -3924,4 +3924,998 @@ export function registerAllMocks(): void {
     const items = devCollections[collection] ?? [];
     return { items, total: items.length };
   });
+
+  /* Growth suite — mirrors backend seeds (migrations/0025_growth.sql) */
+  const grwCollections: Record<string, Record<string, unknown>[]> = {
+    overview: [
+      { id: "grw-hb-01", metric: "New learners", valueLabel: "148", delta: "+22% MoM" },
+      { id: "grw-hb-02", metric: "Activation", valueLabel: "64%", delta: "first lesson in 3d" },
+      { id: "grw-hb-03", metric: "Referral signups", valueLabel: "27", delta: "18% of signups" },
+      { id: "grw-hb-04", metric: "CAC", valueLabel: "₦64k", delta: "target ₦70k" },
+    ],
+    simulations: [
+      {
+        id: "grw-sm-01",
+        name: "Base case",
+        spend: "₦12m/qtr",
+        conversionPct: 16,
+        learners: 612,
+        cac: "₦64k",
+        revenue: "₦48.9m",
+      },
+      {
+        id: "grw-sm-02",
+        name: "Referral push",
+        spend: "₦14.5m",
+        conversionPct: 19,
+        learners: 748,
+        cac: "₦58k",
+        revenue: "₦59.8m",
+      },
+      {
+        id: "grw-sm-03",
+        name: "Meta-heavy",
+        spend: "₦16m",
+        conversionPct: 14,
+        learners: 712,
+        cac: "₦71k",
+        revenue: "₦56.9m",
+      },
+      {
+        id: "grw-sm-04",
+        name: "Radio + OOH push",
+        spend: "₦13.5m",
+        conversionPct: 13,
+        learners: 580,
+        cac: "₦82k",
+        revenue: "₦46.4m",
+      },
+    ],
+    funnel: [
+      { id: "grw-fn-01", name: "Visitors", visitors: 14200, percentage: 100, delta: "—" },
+      { id: "grw-fn-02", name: "Leads", visitors: 2270, percentage: 16, delta: "−84%" },
+      { id: "grw-fn-03", name: "Activated", visitors: 1453, percentage: 64, delta: "−36%" },
+      { id: "grw-fn-04", name: "Retained 30d", visitors: 1322, percentage: 91, delta: "−9%" },
+      { id: "grw-fn-05", name: "Paying", visitors: 891, percentage: 67, delta: "−33%" },
+    ],
+    experiments: [
+      {
+        id: "grw-ex-01",
+        title: "WhatsApp onboarding nudges",
+        hypothesis: "WhatsApp nudges lift week-1 activation",
+        variant: "A/B 50/50",
+        result: "+9% activation",
+        status: "Winning",
+      },
+      {
+        id: "grw-ex-02",
+        title: "Pay-later at checkout",
+        hypothesis: "Flexible terms raise conversion",
+        variant: "3 variants",
+        result: "+6% conversion",
+        status: "Live",
+      },
+      {
+        id: "grw-ex-03",
+        title: "Open-day reminder cadence",
+        hypothesis: "2 reminders beat 3 reminders",
+        variant: "A/B/C",
+        result: "Running",
+        status: "In test",
+      },
+      {
+        id: "grw-ex-04",
+        title: "Referral reward framing",
+        hypothesis: "Cash beats credit for invites",
+        variant: "Draft",
+        result: "—",
+        status: "Draft",
+      },
+    ],
+    cohorts: [
+      { id: "grw-ch-01", name: "W1", w1: 100, w2: 88, w3: 81, w4: 76, w5: 72, w6: 68 },
+      { id: "grw-ch-02", name: "W2", w1: 100, w2: 91, w3: 84, w4: 79, w5: 74, w6: null },
+      { id: "grw-ch-03", name: "W3", w1: 100, w2: 89, w3: 82, w4: 77, w5: null, w6: null },
+      { id: "grw-ch-04", name: "W4", w1: 100, w2: 93, w3: 86, w4: null, w5: null, w6: null },
+      { id: "grw-ch-05", name: "W5", w1: 100, w2: 90, w3: null, w4: null, w5: null, w6: null },
+    ],
+    channels: [
+      {
+        id: "grw-cn-01",
+        name: "Referral",
+        cac: "₦42k",
+        ltv: "₦312k",
+        roas: "7.4x",
+        spend: "₦1.1m",
+      },
+      {
+        id: "grw-cn-02",
+        name: "Meta ads",
+        cac: "₦68k",
+        ltv: "₦256k",
+        roas: "3.8x",
+        spend: "₦4.2m",
+      },
+      {
+        id: "grw-cn-03",
+        name: "LinkedIn",
+        cac: "₦84k",
+        ltv: "₦284k",
+        roas: "3.4x",
+        spend: "₦2.6m",
+      },
+      {
+        id: "grw-cn-04",
+        name: "TikTok & reels",
+        cac: "₦51k",
+        ltv: "₦198k",
+        roas: "3.9x",
+        spend: "₦1.8m",
+      },
+      {
+        id: "grw-cn-05",
+        name: "Radio & OOH",
+        cac: "₦92k",
+        ltv: "₦241k",
+        roas: "2.6x",
+        spend: "₦1.4m",
+      },
+    ],
+    referrals: [
+      {
+        id: "grw-rf-01",
+        name: "Learner invites learner",
+        reward: "₦50k credit",
+        invites: 412,
+        conversions: 27,
+        paidOut: "₦1.2m",
+        status: "Live",
+      },
+      {
+        id: "grw-rf-02",
+        name: "Alumni refer employer",
+        reward: "₦100k cash",
+        invites: 86,
+        conversions: 6,
+        paidOut: "₦540k",
+        status: "Live",
+      },
+      {
+        id: "grw-rf-03",
+        name: "Open-day bring a friend",
+        reward: "₦25k discount",
+        invites: 0,
+        conversions: 0,
+        paidOut: "₦0",
+        status: "Scheduled",
+      },
+    ],
+    seo: [
+      {
+        id: "grw-se-01",
+        keyword: "Bootcamps in Lagos",
+        volume: 4800,
+        rank: "#3",
+        trend: "+2",
+        priority: "High",
+      },
+      {
+        id: "grw-se-02",
+        keyword: "Data analytics courses Nigeria",
+        volume: 2900,
+        rank: "#7",
+        trend: "+1",
+        priority: "High",
+      },
+      {
+        id: "grw-se-03",
+        keyword: "UX design certification",
+        volume: 1600,
+        rank: "#11",
+        trend: "−2",
+        priority: "Medium",
+      },
+      {
+        id: "grw-se-04",
+        keyword: "Scholarships for tech in Nigeria",
+        volume: 3200,
+        rank: "#9",
+        trend: "+4",
+        priority: "Medium",
+      },
+      {
+        id: "grw-se-05",
+        keyword: "Employer talent programs",
+        volume: 720,
+        rank: "#5",
+        trend: "0",
+        priority: "Low",
+      },
+    ],
+  };
+  registerMockPattern("GET", "/v1/growth-dashboard/*", async (init: ApiRequestInit) => {
+    await delay();
+    const segments = (init.path ?? "").split("/").filter(Boolean);
+    const collection = segments[2] ?? "";
+    const items = grwCollections[collection] ?? [];
+    return { items, total: items.length };
+  });
+
+  /* Conversion copy suite — mirrors backend seeds (migrations/0026_conversion_copy.sql) */
+  const ccpCollections: Record<string, Record<string, unknown>[]> = {
+    overview: [
+      { id: "ccp-hb-01", metric: "Assets", valueLabel: "214", delta: "112 email · 64 page" },
+      { id: "ccp-hb-02", metric: "Variants", valueLabel: "38", delta: "A/B ready" },
+      { id: "ccp-hb-03", metric: "Reused (30d)", valueLabel: "142", delta: "pull count" },
+      { id: "ccp-hb-04", metric: "Drafts", valueLabel: "7", delta: "in progress" },
+    ],
+    assets: [
+      {
+        id: "ccp-as-01",
+        title: "Enrolment page H1 set",
+        category: "Page",
+        variants: 12,
+        lastUsed: "Jul 28",
+        status: "Active",
+      },
+      {
+        id: "ccp-as-02",
+        title: "Cohort 17 launch email",
+        category: "Email",
+        variants: 4,
+        lastUsed: "Jul 20",
+        status: "Active",
+      },
+      {
+        id: "ccp-as-03",
+        title: "Scholarship hero copy",
+        category: "Page",
+        variants: 3,
+        lastUsed: "review pending",
+        status: "Draft",
+      },
+    ],
+    rules: [
+      {
+        id: "ccp-rl-01",
+        name: "Tone",
+        category: "Voice",
+        detail: "Confident, warm, zero hype…",
+        status: "Enforced",
+      },
+      {
+        id: "ccp-rl-02",
+        name: "Formatting",
+        category: "Grammar",
+        detail: "Sentences ≤ 20 words…",
+        status: "Enforced",
+      },
+      {
+        id: "ccp-rl-03",
+        name: "Localization",
+        category: "Voice",
+        detail: "English + pidgin variants…",
+        status: "Draft",
+      },
+    ],
+    sequences: [
+      {
+        id: "ccp-sq-01",
+        title: "Application follow-up",
+        emails: 5,
+        openRate: "42%",
+        clickRate: "9.1%",
+        status: "Live",
+      },
+      {
+        id: "ccp-sq-02",
+        title: "Cohort 17 nurture",
+        emails: 7,
+        openRate: "38%",
+        clickRate: "7.4%",
+        status: "Live",
+      },
+      {
+        id: "ccp-sq-03",
+        title: "Scholarship reminder",
+        emails: 3,
+        openRate: "—",
+        clickRate: "—",
+        status: "Testing",
+      },
+    ],
+    briefs: [
+      {
+        id: "ccp-br-01",
+        title: "Cohort 17 landing refresh",
+        requester: "Marketing",
+        dateLabel: "Jul 31",
+        status: "In progress",
+      },
+      {
+        id: "ccp-br-02",
+        title: "Scholarship campaign copy",
+        requester: "NGO partner",
+        dateLabel: "Jul 28",
+        status: "In review",
+      },
+      {
+        id: "ccp-br-03",
+        title: "Alumni referral email",
+        requester: "Career services",
+        dateLabel: "Jul 25",
+        status: "Done",
+      },
+    ],
+    analytics: [
+      {
+        id: "ccp-an-01",
+        stage: "Organic → application",
+        visits: "18.4k",
+        conversion: "5.4%",
+        delta: "+0.8 pts",
+      },
+      {
+        id: "ccp-an-02",
+        stage: "Paid → application",
+        visits: "22.1k",
+        conversion: "3.1%",
+        delta: "+0.4 pts",
+      },
+      {
+        id: "ccp-an-03",
+        stage: "Application → enrolment",
+        visits: "1,612",
+        conversion: "26.4%",
+        delta: "−1.2 pts",
+      },
+    ],
+    ads: [
+      {
+        id: "ccp-ad-01",
+        name: "Cohort 17 launch",
+        channel: "Meta",
+        ctr: "2.1%",
+        variants: 4,
+        status: "Running",
+      },
+      {
+        id: "ccp-ad-02",
+        name: "Scholarship search",
+        channel: "Google",
+        ctr: "3.4%",
+        variants: 3,
+        status: "Running",
+      },
+      {
+        id: "ccp-ad-03",
+        name: "Day in the life",
+        channel: "TikTok",
+        ctr: "1.2%",
+        variants: 2,
+        status: "Paused",
+      },
+    ],
+    tests: [
+      {
+        id: "ccp-tt-01",
+        title: "Enrolment H1 · A vs B",
+        result: "B wins +12% · deployed",
+        status: "Winner",
+      },
+      {
+        id: "ccp-tt-02",
+        title: "Email subject · A vs B",
+        result: "A wins +8% opens · deployed",
+        status: "Winner",
+      },
+      {
+        id: "ccp-tt-03",
+        title: "Scholarship hero · A vs B",
+        result: "Running · 4,200 visits",
+        status: "Running",
+      },
+    ],
+    sections: [
+      {
+        id: "ccp-sc-01",
+        title: "Hero",
+        copy: "Cohort 17 applications open — pay in installments",
+        conversion: "6.2%",
+        status: "Active",
+      },
+      {
+        id: "ccp-sc-02",
+        title: "Social proof",
+        copy: "1,240+ alumni placed in tech roles",
+        conversion: "4.8%",
+        status: "Active",
+      },
+      {
+        id: "ccp-sc-03",
+        title: "FAQ",
+        copy: "12 questions · updated by admissions",
+        conversion: "Saves 31% of tickets",
+        status: "Active",
+      },
+    ],
+  };
+  registerMockPattern("GET", "/v1/conversion-copy-dashboard/*", async (init: ApiRequestInit) => {
+    await delay();
+    const segments = (init.path ?? "").split("/").filter(Boolean);
+    const collection = segments[2] ?? "";
+    const items = ccpCollections[collection] ?? [];
+    return { items, total: items.length };
+  });
+
+  /* Department suite — mirrors backend seeds (migrations/0027_department.sql) */
+  const depCollections: Record<string, Record<string, unknown>[]> = {
+    overview: [
+      { id: "dep-hb-01", metric: "Reports (year)", valueLabel: "12", delta: "4 per quarter" },
+      { id: "dep-hb-02", metric: "Completion rate", valueLabel: "92%", delta: "+3 pts YoY" },
+      { id: "dep-hb-03", metric: "Placement rate", valueLabel: "84%", delta: "within 6 months" },
+      { id: "dep-hb-04", metric: "Exports (30d)", valueLabel: "6", delta: "by stakeholders" },
+    ],
+    reports: [
+      {
+        id: "dep-rp-01",
+        title: "Student outcomes · Q2 2026",
+        detail: "92% completion · 84% placement",
+        status: "Published",
+      },
+      {
+        id: "dep-rp-02",
+        title: "Instructor performance · Q2",
+        detail: "Avg score 4.6 · 14 observations",
+        status: "Published",
+      },
+      {
+        id: "dep-rp-03",
+        title: "Curriculum audit · draft",
+        detail: "Due Aug 20 · 3 programs",
+        status: "Draft",
+      },
+    ],
+    observations: [
+      {
+        id: "dep-ob-01",
+        title: "Class observation — Mr. Adeyemi",
+        detail: "Backend & APIs · Scheduled Aug 11",
+        status: "Scheduled",
+      },
+      {
+        id: "dep-ob-02",
+        title: "Class observation — Ms. Chidera",
+        detail: "DevOps Fundamentals · Scheduled Aug 13",
+        status: "Scheduled",
+      },
+      {
+        id: "dep-ob-03",
+        title: "Course evaluation — Design Systems",
+        detail: "Cohort 15 · Closed Jul 30 · 4.7★",
+        status: "Completed",
+      },
+    ],
+    faculty: [
+      {
+        id: "dep-fa-01",
+        name: "Mr. Adeyemi",
+        courses: 4,
+        students: 62,
+        workload: "85%",
+        rating: "4.8",
+      },
+      {
+        id: "dep-fa-02",
+        name: "Ms. Chidera",
+        courses: 3,
+        students: 48,
+        workload: "70%",
+        rating: "4.6",
+      },
+      {
+        id: "dep-fa-03",
+        name: "Mr. Bello",
+        courses: 3,
+        students: 55,
+        workload: "78%",
+        rating: "4.7",
+      },
+      {
+        id: "dep-fa-04",
+        name: "Mrs. Eze",
+        courses: 2,
+        students: 34,
+        workload: "52%",
+        rating: "4.4",
+      },
+    ],
+    cohorts: [
+      {
+        id: "dep-ch-01",
+        name: "Cohort 15 — Full-Stack",
+        enrolled: 48,
+        capacity: 50,
+        pct: 96,
+        status: "Active",
+      },
+      {
+        id: "dep-ch-02",
+        name: "Cohort 16 — Full-Stack",
+        enrolled: 42,
+        capacity: 50,
+        pct: 84,
+        status: "Admitting",
+      },
+      {
+        id: "dep-ch-03",
+        name: "Cohort 14 — DevOps",
+        enrolled: 36,
+        capacity: 40,
+        pct: 90,
+        status: "Active",
+      },
+      {
+        id: "dep-ch-04",
+        name: "Cohort 16 — Product Design",
+        enrolled: 30,
+        capacity: 40,
+        pct: 75,
+        status: "Admitting",
+      },
+    ],
+    programs: [
+      {
+        id: "dep-pg-01",
+        name: "Full-Stack Software Development",
+        version: "v3.1",
+        year: "2026",
+        status: "Active",
+      },
+      {
+        id: "dep-pg-02",
+        name: "Cloud Engineering & DevOps",
+        version: "v2.4",
+        year: "2026",
+        status: "In review",
+      },
+      {
+        id: "dep-pg-03",
+        name: "Product & UI/UX Design",
+        version: "v2.0",
+        year: "2025",
+        status: "Active",
+      },
+      { id: "dep-pg-04", name: "Data & AI", version: "v1.0", year: "draft", status: "Draft" },
+    ],
+    events: [
+      {
+        id: "dep-ev-01",
+        title: "Mid-term assessments",
+        dateLabel: "Aug 17–21 · all programs",
+        status: "Upcoming",
+      },
+      {
+        id: "dep-ev-02",
+        title: "Industry guest lecture",
+        dateLabel: "Aug 24 · 2:00 PM · Cloud track",
+        status: "Scheduled",
+      },
+      {
+        id: "dep-ev-03",
+        title: "Graduation rehearsal",
+        dateLabel: "Sep 05 · 10:00 AM · Main hall",
+        status: "Scheduled",
+      },
+    ],
+    approvals: [
+      {
+        id: "dep-ap-01",
+        title: "Curriculum update · Frontend track",
+        requester: "Instructor Adesuwa",
+        dateLabel: "Jul 30",
+        status: "Pending",
+      },
+      {
+        id: "dep-ap-02",
+        title: "New course · Cloud Fundamentals",
+        requester: "Instructor Tobi",
+        dateLabel: "Jul 29",
+        status: "Pending",
+      },
+      {
+        id: "dep-ap-03",
+        title: "Leave request · Ngozi E.",
+        requester: "Instructor",
+        dateLabel: "Jul 28",
+        status: "Approved",
+      },
+    ],
+  };
+  registerMockPattern("GET", "/v1/department-dashboard/*", async (init: ApiRequestInit) => {
+    await delay();
+    const segments = (init.path ?? "").split("/").filter(Boolean);
+    const collection = segments[2] ?? "";
+    const items = depCollections[collection] ?? [];
+    return { items, total: items.length };
+  });
+
+  /* NGO partnership suite — mirrors backend seeds (migrations/0028_ngo.sql) */
+  const ngoCollections: Record<string, Record<string, unknown>[]> = {
+    overview: [
+      {
+        id: "ngo-hb-01",
+        metric: "Scholarships funded",
+        valueLabel: "38",
+        delta: "₦12.4m disbursed",
+      },
+      { id: "ngo-hb-02", metric: "Programs", valueLabel: "3", delta: "2 ongoing" },
+      { id: "ngo-hb-03", metric: "Volunteers", valueLabel: "86", delta: "14 active" },
+      { id: "ngo-hb-04", metric: "Impact (2026)", valueLabel: "1,240", delta: "beneficiaries" },
+    ],
+    funds: [
+      {
+        id: "ngo-fd-01",
+        name: "Girls in Tech · Cohort 16",
+        scholars: "18 scholars",
+        amount: "₦1.2m in tuition",
+        status: "Active",
+      },
+      {
+        id: "ngo-fd-02",
+        name: "Merit scholar pool",
+        scholars: "12 scholars",
+        amount: "₦840k in tuition",
+        status: "Active",
+      },
+      {
+        id: "ngo-fd-03",
+        name: "Refugee STEM fund",
+        scholars: "8 applicants",
+        amount: "selection in progress",
+        status: "Selecting",
+      },
+    ],
+    programs: [
+      {
+        id: "ngo-pr-01",
+        name: "STEM Saturdays",
+        location: "Lagos",
+        beneficiaries: "480 beneficiaries",
+        status: "Ongoing",
+      },
+      {
+        id: "ngo-pr-02",
+        name: "Girls Code Bootcamp",
+        location: "Abuja",
+        beneficiaries: "320 beneficiaries",
+        status: "Ongoing",
+      },
+      {
+        id: "ngo-pr-03",
+        name: "Digital Literacy Drive",
+        location: "Port Harcourt",
+        beneficiaries: "planned Oct",
+        status: "Planned",
+      },
+    ],
+    expenses: [
+      {
+        id: "ngo-ex-01",
+        title: "Facilitator stipends",
+        amount: "₦1.8m",
+        pct: "36%",
+        status: "On track",
+      },
+      {
+        id: "ngo-ex-02",
+        title: "Learning materials",
+        amount: "₦940k",
+        pct: "19%",
+        status: "On track",
+      },
+      {
+        id: "ngo-ex-03",
+        title: "Logistics & venues",
+        amount: "₦720k",
+        pct: "14%",
+        status: "On track",
+      },
+      { id: "ngo-ex-04", title: "Contingency", amount: "₦240k", pct: "5%", status: "Unspent" },
+    ],
+    teams: [
+      {
+        id: "ngo-tm-01",
+        name: "STEM Saturdays · facilitators",
+        volunteers: 12,
+        slots: "8 slots left",
+        status: "Recruiting",
+      },
+      {
+        id: "ngo-tm-02",
+        name: "Girls Code · mentors",
+        volunteers: 9,
+        slots: "3 slots left",
+        status: "Recruiting",
+      },
+      {
+        id: "ngo-tm-03",
+        name: "Digital Literacy · coordinators",
+        volunteers: 6,
+        slots: "full",
+        status: "Filled",
+      },
+    ],
+    transactions: [
+      {
+        id: "ngo-tr-01",
+        title: "Global Giving grant",
+        amount: "₦18.0m inbound",
+        dateLabel: "Jul 14",
+        status: "Received",
+      },
+      {
+        id: "ngo-tr-02",
+        title: "Scholarship disbursement",
+        amount: "₦2.4m outbound",
+        dateLabel: "Jul 02",
+        status: "Disbursed",
+      },
+      {
+        id: "ngo-tr-03",
+        title: "Crowdfund · drive 2026",
+        amount: "₦6.1m raised · 84% of target",
+        dateLabel: "Ongoing",
+        status: "Ongoing",
+      },
+    ],
+    reports: [
+      {
+        id: "ngo-rp-01",
+        title: "Impact report · H1 2026",
+        detail: "740 beneficiaries · ₦8.2m deployed",
+        status: "Published",
+      },
+      {
+        id: "ngo-rp-02",
+        title: "Girls Code Bootcamp report",
+        detail: "320 graduates · 91% completion",
+        status: "Published",
+      },
+      {
+        id: "ngo-rp-03",
+        title: "Q3 draft · STEM Saturdays",
+        detail: "In review · due Aug 15",
+        status: "Draft",
+      },
+    ],
+    metrics: [
+      { id: "ngo-mt-01", label: "Cost per beneficiary", value: "₦6,600", delta: "down 12% YoY" },
+      { id: "ngo-mt-02", label: "Retention", value: "87%", delta: "of scholars re-engage" },
+      { id: "ngo-mt-03", label: "Outcome rate", value: "91%", delta: "of goals met" },
+    ],
+    threads: [
+      {
+        id: "ngo-th-01",
+        title: "Scholarship cohort 16 disbursement",
+        fromLabel: "CEA finance",
+        timeLabel: "Jul 29 · 11:02",
+        status: "Open",
+      },
+      {
+        id: "ngo-th-02",
+        title: "Impact report H1 review",
+        fromLabel: "CEA programs",
+        timeLabel: "Jul 22 · 09:18",
+        status: "Closed",
+      },
+      {
+        id: "ngo-th-03",
+        title: "STEM Saturdays venue change",
+        fromLabel: "CEA ops",
+        timeLabel: "Jul 18 · 15:44",
+        status: "Closed",
+      },
+    ],
+  };
+  registerMockPattern("GET", "/v1/ngo-dashboard/*", async (init: ApiRequestInit) => {
+    await delay();
+    const segments = (init.path ?? "").split("/").filter(Boolean);
+    const collection = segments[2] ?? "";
+    const items = ngoCollections[collection] ?? [];
+    return { items, total: items.length };
+  });
+
+  /* Client engagement suite — mirrors backend seeds (migrations/0029_client.sql) */
+  const cliCollections: Record<string, Record<string, unknown>[]> = {
+    tickets: [
+      {
+        id: "cli-tk-01",
+        title: "Can't access project repo",
+        reference: "TK-2214",
+        dateLabel: "Aug 3 · 09:12",
+        sla: "SLA: 4h",
+        status: "Open",
+      },
+      {
+        id: "cli-tk-02",
+        title: "Invoice PDF not loading",
+        reference: "TK-2198",
+        dateLabel: "Jul 29 · 14:40",
+        sla: "SLA: 24h",
+        status: "In progress",
+      },
+      {
+        id: "cli-tk-03",
+        title: "Add team member to portal",
+        reference: "TK-2175",
+        dateLabel: "Jul 22 · 11:05",
+        sla: "SLA: 24h",
+        status: "Resolved",
+      },
+    ],
+    proposals: [
+      {
+        id: "cli-pr-01",
+        title: "Learning platform rebuild",
+        amount: "₦8.4m",
+        scope: "12 weeks · scope v2",
+        status: "Open",
+      },
+      {
+        id: "cli-pr-02",
+        title: "Mobile app MVP",
+        amount: "₦12.0m",
+        scope: "16 weeks · scope v1",
+        status: "Negotiating",
+      },
+      {
+        id: "cli-pr-03",
+        title: "Data migration project",
+        amount: "₦3.2m",
+        scope: "6 weeks · completed",
+        status: "Signed",
+      },
+    ],
+    documents: [
+      {
+        id: "cli-dc-01",
+        title: "SOW · Platform rebuild v2",
+        type: "PDF",
+        size: "2.4 MB",
+        updated: "Jul 28",
+        status: "Shared",
+      },
+      {
+        id: "cli-dc-02",
+        title: "Weekly status report · W31",
+        type: "PDF",
+        size: "1.1 MB",
+        updated: "Jul 31",
+        status: "New",
+      },
+      {
+        id: "cli-dc-03",
+        title: "Invoice + receipt archive",
+        type: "Folder",
+        size: "14 files",
+        updated: "Q3",
+        status: "Shared",
+      },
+    ],
+    contracts: [
+      {
+        id: "cli-ct-01",
+        name: "Platform rebuild · MS-2026-014",
+        reference: "MS-2026-014",
+        amount: "₦8.4m",
+        dateLabel: "ends Nov 30",
+        status: "Active",
+      },
+      {
+        id: "cli-ct-02",
+        name: "Support retainer · annual",
+        reference: "SR-2026-002",
+        amount: "₦2.4m",
+        dateLabel: "renews Sep 01",
+        status: "Renewing",
+      },
+      {
+        id: "cli-ct-03",
+        name: "Mobile app MVP · MS-2026-021",
+        reference: "MS-2026-021",
+        amount: "₦12.0m",
+        dateLabel: "ends Mar 2027",
+        status: "Active",
+      },
+    ],
+    invoices: [
+      {
+        id: "cli-iv-01",
+        title: "Deposit — OrderPadi build",
+        reference: "INV-ST-0142-1",
+        amount: "₦350k",
+        status: "Paid",
+      },
+      {
+        id: "cli-iv-02",
+        title: "Milestone 2 — mockups approved",
+        reference: "INV-ST-0142-2",
+        amount: "₦175k",
+        status: "Paid",
+      },
+      {
+        id: "cli-iv-03",
+        title: "Milestone 3 — core build",
+        reference: "INV-ST-0142-3",
+        amount: "₦175k",
+        status: "Due Aug 25",
+      },
+    ],
+    threads: [
+      {
+        id: "cli-th-01",
+        title: "Landing page build — review needed",
+        fromLabel: "Project manager · Simi",
+        timeLabel: "Aug 2 · 16:20",
+        status: "New",
+      },
+      {
+        id: "cli-th-02",
+        title: "API docs draft for sign-off",
+        fromLabel: "Tech lead · Dayo",
+        timeLabel: "Jul 31 · 11:08",
+        status: "Open",
+      },
+      {
+        id: "cli-th-03",
+        title: "Weekly sync moved to Thursday",
+        fromLabel: "Project manager · Simi",
+        timeLabel: "Jul 28 · 09:45",
+        status: "Closed",
+      },
+    ],
+    milestones: [
+      { id: "cli-ms-01", title: "Kickoff & discovery", dateLabel: "Jul 1", status: "Done" },
+      { id: "cli-ms-02", title: "Design mockups", dateLabel: "Jul 15", status: "Done" },
+      {
+        id: "cli-ms-03",
+        title: "Core build (API + UI)",
+        dateLabel: "Aug 20",
+        status: "In progress",
+      },
+      { id: "cli-ms-04", title: "QA & polish", dateLabel: "Sep 5", status: "Upcoming" },
+      { id: "cli-ms-05", title: "Launch", dateLabel: "Sep 15", status: "Upcoming" },
+    ],
+    tasks: [
+      {
+        id: "cli-ts-01",
+        title: "Design system handoff",
+        kind: "Deliverable",
+        detail: "v2 in review",
+        status: "Approved",
+      },
+      {
+        id: "cli-ts-02",
+        title: "Landing page build",
+        kind: "Deliverable",
+        detail: "submitted Aug 2",
+        status: "In review",
+      },
+      {
+        id: "cli-ts-03",
+        title: "API integration docs",
+        kind: "In progress",
+        detail: "60% done",
+        status: "Doing",
+      },
+    ],
+  };
+  registerMockPattern("GET", "/v1/client-dashboard/*", async (init: ApiRequestInit) => {
+    await delay();
+    const segments = (init.path ?? "").split("/").filter(Boolean);
+    const collection = segments[2] ?? "";
+    const items = cliCollections[collection] ?? [];
+    return { items, total: items.length };
+  });
 }

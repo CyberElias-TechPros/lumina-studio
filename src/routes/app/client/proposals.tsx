@@ -4,6 +4,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import type { CliProposal } from "@/lib/query/clientEngagement";
+import { useCliProposals } from "@/lib/query/clientEngagement";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/client/proposals")({
@@ -16,28 +19,17 @@ export const Route = createFileRoute("/app/client/proposals")({
   component: ClientProposals,
 });
 
-const proposals = [
-  {
-    p: "Learning platform rebuild",
-    v: "₦8.4m · 12 weeks · scope v2",
-    s: "Open",
-    tone: "bg-primary/10 text-primary",
-  },
-  {
-    p: "Mobile app MVP",
-    v: "₦12.0m · 16 weeks · scope v1",
-    s: "Negotiating",
-    tone: "bg-warning/10 text-warning",
-  },
-  {
-    p: "Data migration project",
-    v: "₦3.2m · 6 weeks · completed",
-    s: "Signed",
-    tone: "bg-success/10 text-success",
-  },
-];
+function statusTone(s: string) {
+  const l = s.toLowerCase();
+  if (l.includes("signed")) return "bg-success/10 text-success";
+  if (l.includes("negotiat")) return "bg-warning/10 text-warning";
+  if (l.includes("open")) return "bg-primary/10 text-primary";
+  return "bg-muted-foreground/10 text-muted-foreground";
+}
 
 function ClientProposals() {
+  const proposalsQuery = useCliProposals();
+
   return (
     <AppShell
       roleKey="instructor"
@@ -109,18 +101,39 @@ function ClientProposals() {
           </CardTitle>
         </CardHeader>
         <CardContent className="divide-y">
-          {proposals.map((p) => (
-            <div key={p.p} className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0">
-              <div className="min-w-0 flex-1">
-                <p className="text-sm font-bold">{p.p}</p>
-                <p className="text-muted-foreground text-xs">{p.v}</p>
-              </div>
-              <Badge className={cn("border-0 font-semibold", p.tone)}>{p.s}</Badge>
-              <Button variant="outline" size="sm" className="shrink-0 font-semibold">
-                Review
-              </Button>
-            </div>
-          ))}
+          <QueryState<CliProposal[]>
+            query={proposalsQuery}
+            error={{ title: "Proposals unavailable" }}
+            empty={{
+              title: "No proposals",
+              description: "Your proposals will appear here.",
+            }}
+            isEmpty={(rows) => rows.length === 0}
+          >
+            {(rows) => (
+              <>
+                {rows.map((p) => (
+                  <div
+                    key={p.id}
+                    className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
+                  >
+                    <div className="min-w-0 flex-1">
+                      <p className="text-sm font-bold">{p.title}</p>
+                      <p className="text-muted-foreground text-xs">
+                        {p.amount} · {p.scope}
+                      </p>
+                    </div>
+                    <Badge className={cn("border-0 font-semibold", statusTone(p.status))}>
+                      {p.status}
+                    </Badge>
+                    <Button variant="outline" size="sm" className="shrink-0 font-semibold">
+                      Review
+                    </Button>
+                  </div>
+                ))}
+              </>
+            )}
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>

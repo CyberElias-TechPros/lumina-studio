@@ -4,6 +4,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import type { CcpSection } from "@/lib/query/conversionCopy";
+import { useCcpSections } from "@/lib/query/conversionCopy";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/conversion-copy/landing-pages/$id")({
@@ -16,28 +19,15 @@ export const Route = createFileRoute("/app/conversion-copy/landing-pages/$id")({
   component: CopyLandingPage,
 });
 
-const sections = [
-  {
-    s: "Hero",
-    v: "Cohort 17 applications open — pay in installments",
-    c: "Conversion rate 6.2%",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    s: "Social proof",
-    v: "1,240+ alumni placed in tech roles",
-    c: "Conversion rate 4.8%",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    s: "FAQ",
-    v: "12 questions · updated by admissions",
-    c: "Saves 31% of tickets",
-    tone: "bg-primary/10 text-primary",
-  },
+const sectionTones = [
+  "bg-success/10 text-success",
+  "bg-success/10 text-success",
+  "bg-primary/10 text-primary",
 ];
 
 function CopyLandingPage() {
+  const sectionsQuery = useCcpSections();
+
   return (
     <AppShell
       roleKey="instructor"
@@ -109,18 +99,42 @@ function CopyLandingPage() {
           </CardTitle>
         </CardHeader>
         <CardContent className="divide-y">
-          {sections.map((s) => (
-            <div key={s.s} className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0">
-              <div className="min-w-0 flex-1">
-                <p className="text-sm font-bold">{s.s}</p>
-                <p className="text-muted-foreground text-xs">{s.v}</p>
-              </div>
-              <Badge className={cn("border-0 font-semibold", s.tone)}>{s.c}</Badge>
-              <Button variant="outline" size="sm" className="shrink-0 font-semibold">
-                Edit
-              </Button>
-            </div>
-          ))}
+          <QueryState<CcpSection[]>
+            query={sectionsQuery}
+            error={{ title: "Sections unavailable" }}
+            empty={{
+              title: "No sections yet",
+              description: "Conversion copy sections will show here.",
+            }}
+            isEmpty={(rows) => rows.length === 0}
+          >
+            {(rows) => (
+              <>
+                {rows.map((s, i) => (
+                  <div
+                    key={s.id}
+                    className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
+                  >
+                    <div className="min-w-0 flex-1">
+                      <p className="text-sm font-bold">{s.title}</p>
+                      <p className="text-muted-foreground text-xs">{s.copy}</p>
+                    </div>
+                    <Badge
+                      className={cn(
+                        "border-0 font-semibold",
+                        sectionTones[i % sectionTones.length],
+                      )}
+                    >
+                      {s.conversion}
+                    </Badge>
+                    <Button variant="outline" size="sm" className="shrink-0 font-semibold">
+                      Edit
+                    </Button>
+                  </div>
+                ))}
+              </>
+            )}
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>

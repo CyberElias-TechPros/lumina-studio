@@ -1,0 +1,35 @@
+-- 0029 seeds -- Client dashboard, mirroring the static app pages.
+
+INSERT OR IGNORE INTO cli_tickets (id, title, reference, date_label, sla, status, sort_order) VALUES ('cli-tk-01', 'Can''t access project repo', 'TK-2214', 'Aug 3 · 09:12', 'SLA: 4h', 'Open', 1);
+INSERT OR IGNORE INTO cli_tickets (id, title, reference, date_label, sla, status, sort_order) VALUES ('cli-tk-02', 'Invoice PDF not loading', 'TK-2198', 'Jul 29 · 14:40', 'SLA: 24h', 'In progress', 2);
+INSERT OR IGNORE INTO cli_tickets (id, title, reference, date_label, sla, status, sort_order) VALUES ('cli-tk-03', 'Add team member to portal', 'TK-2175', 'Jul 22 · 11:05', 'SLA: 24h', 'Resolved', 3);
+
+INSERT OR IGNORE INTO cli_proposals (id, title, amount, scope, status, sort_order) VALUES ('cli-pr-01', 'Learning platform rebuild', '₦8.4m', '12 weeks · scope v2', 'Open', 1);
+INSERT OR IGNORE INTO cli_proposals (id, title, amount, scope, status, sort_order) VALUES ('cli-pr-02', 'Mobile app MVP', '₦12.0m', '16 weeks · scope v1', 'Negotiating', 2);
+INSERT OR IGNORE INTO cli_proposals (id, title, amount, scope, status, sort_order) VALUES ('cli-pr-03', 'Data migration project', '₦3.2m', '6 weeks · completed', 'Signed', 3);
+
+INSERT OR IGNORE INTO cli_documents (id, title, type, size, updated, status, sort_order) VALUES ('cli-dc-01', 'SOW · Platform rebuild v2', 'PDF', '2.4 MB', 'Jul 28', 'Shared', 1);
+INSERT OR IGNORE INTO cli_documents (id, title, type, size, updated, status, sort_order) VALUES ('cli-dc-02', 'Weekly status report · W31', 'PDF', '1.1 MB', 'Jul 31', 'New', 2);
+INSERT OR IGNORE INTO cli_documents (id, title, type, size, updated, status, sort_order) VALUES ('cli-dc-03', 'Invoice + receipt archive', 'Folder', '14 files', 'Q3', 'Shared', 3);
+
+INSERT OR IGNORE INTO cli_contracts (id, name, reference, amount, date_label, status, sort_order) VALUES ('cli-ct-01', 'Platform rebuild · MS-2026-014', 'MS-2026-014', '₦8.4m', 'ends Nov 30', 'Active', 1);
+INSERT OR IGNORE INTO cli_contracts (id, name, reference, amount, date_label, status, sort_order) VALUES ('cli-ct-02', 'Support retainer · annual', 'SR-2026-002', '₦2.4m', 'renews Sep 01', 'Renewing', 2);
+INSERT OR IGNORE INTO cli_contracts (id, name, reference, amount, date_label, status, sort_order) VALUES ('cli-ct-03', 'Mobile app MVP · MS-2026-021', 'MS-2026-021', '₦12.0m', 'ends Mar 2027', 'Active', 3);
+
+INSERT OR IGNORE INTO cli_invoices (id, title, reference, amount, status, sort_order) VALUES ('cli-iv-01', 'Deposit — OrderPadi build', 'INV-ST-0142-1', '₦350k', 'Paid', 1);
+INSERT OR IGNORE INTO cli_invoices (id, title, reference, amount, status, sort_order) VALUES ('cli-iv-02', 'Milestone 2 — mockups approved', 'INV-ST-0142-2', '₦175k', 'Paid', 2);
+INSERT OR IGNORE INTO cli_invoices (id, title, reference, amount, status, sort_order) VALUES ('cli-iv-03', 'Milestone 3 — core build', 'INV-ST-0142-3', '₦175k', 'Due Aug 25', 3);
+
+INSERT OR IGNORE INTO cli_threads (id, title, from_label, time_label, status, sort_order) VALUES ('cli-th-01', 'Landing page build — review needed', 'Project manager · Simi', 'Aug 2 · 16:20', 'New', 1);
+INSERT OR IGNORE INTO cli_threads (id, title, from_label, time_label, status, sort_order) VALUES ('cli-th-02', 'API docs draft for sign-off', 'Tech lead · Dayo', 'Jul 31 · 11:08', 'Open', 2);
+INSERT OR IGNORE INTO cli_threads (id, title, from_label, time_label, status, sort_order) VALUES ('cli-th-03', 'Weekly sync moved to Thursday', 'Project manager · Simi', 'Jul 28 · 09:45', 'Closed', 3);
+
+INSERT OR IGNORE INTO cli_milestones (id, title, date_label, status, sort_order) VALUES ('cli-ms-01', 'Kickoff & discovery', 'Jul 1', 'Done', 1);
+INSERT OR IGNORE INTO cli_milestones (id, title, date_label, status, sort_order) VALUES ('cli-ms-02', 'Design mockups', 'Jul 15', 'Done', 2);
+INSERT OR IGNORE INTO cli_milestones (id, title, date_label, status, sort_order) VALUES ('cli-ms-03', 'Core build (API + UI)', 'Aug 20', 'In progress', 3);
+INSERT OR IGNORE INTO cli_milestones (id, title, date_label, status, sort_order) VALUES ('cli-ms-04', 'QA & polish', 'Sep 5', 'Upcoming', 4);
+INSERT OR IGNORE INTO cli_milestones (id, title, date_label, status, sort_order) VALUES ('cli-ms-05', 'Launch', 'Sep 15', 'Upcoming', 5);
+
+INSERT OR IGNORE INTO cli_tasks (id, title, kind, detail, status, sort_order) VALUES ('cli-ts-01', 'Design system handoff', 'Deliverable', 'v2 in review', 'Approved', 1);
+INSERT OR IGNORE INTO cli_tasks (id, title, kind, detail, status, sort_order) VALUES ('cli-ts-02', 'Landing page build', 'Deliverable', 'submitted Aug 2', 'In review', 2);
+INSERT OR IGNORE INTO cli_tasks (id, title, kind, detail, status, sort_order) VALUES ('cli-ts-03', 'API integration docs', 'In progress', '60% done', 'Doing', 3);

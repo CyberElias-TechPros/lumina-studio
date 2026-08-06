@@ -11,6 +11,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import type { CliContract } from "@/lib/query/clientEngagement";
+import { useCliContracts } from "@/lib/query/clientEngagement";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/client/contracts")({
@@ -23,28 +26,16 @@ export const Route = createFileRoute("/app/client/contracts")({
   component: ClientContracts,
 });
 
-const contracts = [
-  {
-    c: "Platform rebuild · MS-2026-014",
-    v: "₦8.4m · ends Nov 30",
-    s: "Active",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    c: "Support retainer · annual",
-    v: "₦2.4m · renews Sep 01",
-    s: "Renewing",
-    tone: "bg-warning/10 text-warning",
-  },
-  {
-    c: "Mobile app MVP · MS-2026-021",
-    v: "₦12.0m · ends Mar 2027",
-    s: "Active",
-    tone: "bg-success/10 text-success",
-  },
-];
+function statusTone(s: string) {
+  const l = s.toLowerCase();
+  if (l.includes("active")) return "bg-success/10 text-success";
+  if (l.includes("renew")) return "bg-warning/10 text-warning";
+  return "bg-muted-foreground/10 text-muted-foreground";
+}
 
 function ClientContracts() {
+  const contractsQuery = useCliContracts();
+
   return (
     <AppShell
       roleKey="instructor"
@@ -116,18 +107,39 @@ function ClientContracts() {
           </CardTitle>
         </CardHeader>
         <CardContent className="divide-y">
-          {contracts.map((c) => (
-            <div key={c.c} className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0">
-              <div className="min-w-0 flex-1">
-                <p className="text-sm font-bold">{c.c}</p>
-                <p className="text-muted-foreground text-xs">{c.v}</p>
-              </div>
-              <Badge className={cn("border-0 font-semibold", c.tone)}>{c.s}</Badge>
-              <Button variant="outline" size="sm" className="shrink-0 font-semibold">
-                View
-              </Button>
-            </div>
-          ))}
+          <QueryState<CliContract[]>
+            query={contractsQuery}
+            error={{ title: "Contracts unavailable" }}
+            empty={{
+              title: "No contracts",
+              description: "Your contracts will appear here.",
+            }}
+            isEmpty={(rows) => rows.length === 0}
+          >
+            {(rows) => (
+              <>
+                {rows.map((c) => (
+                  <div
+                    key={c.id}
+                    className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
+                  >
+                    <div className="min-w-0 flex-1">
+                      <p className="text-sm font-bold">{c.name}</p>
+                      <p className="text-muted-foreground text-xs">
+                        {c.reference} · {c.amount} · {c.dateLabel}
+                      </p>
+                    </div>
+                    <Badge className={cn("border-0 font-semibold", statusTone(c.status))}>
+                      {c.status}
+                    </Badge>
+                    <Button variant="outline" size="sm" className="shrink-0 font-semibold">
+                      View
+                    </Button>
+                  </div>
+                ))}
+              </>
+            )}
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>

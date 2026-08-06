@@ -24,6 +24,11 @@ import behavioralSql from "../migrations/0021_behavioral.sql?raw";
 import productMarketingSql from "../migrations/0022_product_marketing.sql?raw";
 import alumniSql from "../migrations/0023_alumni.sql?raw";
 import devSql from "../migrations/0024_dev.sql?raw";
+import growthSql from "../migrations/0025_growth.sql?raw";
+import conversionCopySql from "../migrations/0026_conversion_copy.sql?raw";
+import departmentSql from "../migrations/0027_department.sql?raw";
+import ngoSql from "../migrations/0028_ngo.sql?raw";
+import clientSql from "../migrations/0029_client.sql?raw";
 import { seedContentSql } from "../seeds/content";
 import { seedLmsSql } from "../seeds/lms";
 import { seedDomainSql } from "../seeds/domain";
@@ -43,6 +48,11 @@ import { seedBehavioralSql } from "../seeds/behavioral";
 import { seedProductMarketingSql } from "../seeds/product-marketing";
 import { seedAlumniSql } from "../seeds/alumni";
 import { seedDevSql } from "../seeds/dev";
+import { seedGrowthSql } from "../seeds/growth";
+import { seedConversionCopySql } from "../seeds/conversion-copy";
+import { seedDepartmentSql } from "../seeds/department";
+import { seedNgoSql } from "../seeds/ngo";
+import { seedClientSql } from "../seeds/client";
 import type { Session } from "../src/schema/api";
 
 export const SESSION_COOKIE = "cea_session";
@@ -86,6 +96,11 @@ export async function setupDb(): Promise<void> {
     productMarketingSql,
     alumniSql,
     devSql,
+    growthSql,
+    conversionCopySql,
+    departmentSql,
+    ngoSql,
+    clientSql,
   ]) {
     const statements = sql
       .split("\n")
@@ -117,6 +132,11 @@ export async function setupDb(): Promise<void> {
   await execStatements(seedProductMarketingSql);
   await execStatements(seedAlumniSql);
   await execStatements(seedDevSql);
+  await execStatements(seedGrowthSql);
+  await execStatements(seedConversionCopySql);
+  await execStatements(seedDepartmentSql);
+  await execStatements(seedNgoSql);
+  await execStatements(seedClientSql);
 }
 
 export function api(path: string, init?: RequestInit): Promise<Response> {

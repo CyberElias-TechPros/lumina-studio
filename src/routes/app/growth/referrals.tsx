@@ -13,6 +13,9 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import type { GrwReferralCampaign } from "@/lib/api/growth";
+import { useGrwReferrals } from "@/lib/query/growth";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/growth/referrals")({
@@ -25,37 +28,20 @@ export const Route = createFileRoute("/app/growth/referrals")({
   component: ReferralManager,
 });
 
-const campaigns = [
-  {
-    t: "Learner invites learner",
-    reward: "₦50k credit each",
-    invites: "412",
-    conv: "27 signups",
-    paid: "₦1.2m",
-    status: "Live",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    t: "Alumni refer employer",
-    reward: "₦100k cash",
-    invites: "86",
-    conv: "6 placements",
-    paid: "₦540k",
-    status: "Live",
-    tone: "bg-primary/10 text-primary",
-  },
-  {
-    t: "Open-day bring a friend",
-    reward: "₦25k discount",
-    invites: "0",
-    conv: "—",
-    paid: "—",
-    status: "Scheduled",
-    tone: "bg-warning/10 text-warning",
-  },
-];
+function referralTone(status: string) {
+  switch (status) {
+    case "Live":
+      return "bg-success/10 text-success";
+    case "Scheduled":
+      return "bg-warning/10 text-warning";
+    default:
+      return "bg-muted-foreground/10 text-muted-foreground";
+  }
+}
 
 function ReferralManager() {
+  const referralsQuery = useGrwReferrals();
+
   return (
     <AppShell
       roleKey="growth"
@@ -129,32 +115,46 @@ function ReferralManager() {
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead>Campaign</TableHead>
-                <TableHead>Reward</TableHead>
-                <TableHead>Invites</TableHead>
-                <TableHead>Conversions</TableHead>
-                <TableHead>Paid out</TableHead>
-                <TableHead>Status</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {campaigns.map((c) => (
-                <TableRow key={c.t}>
-                  <TableCell className="font-semibold">{c.t}</TableCell>
-                  <TableCell className="text-muted-foreground">{c.reward}</TableCell>
-                  <TableCell>{c.invites}</TableCell>
-                  <TableCell>{c.conv}</TableCell>
-                  <TableCell className="text-muted-foreground">{c.paid}</TableCell>
-                  <TableCell>
-                    <Badge className={cn("border-0 font-semibold", c.tone)}>{c.status}</Badge>
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
+          <QueryState<GrwReferralCampaign[]>
+            query={referralsQuery}
+            error={{ title: "Referral data unavailable" }}
+            empty={{
+              title: "No campaigns yet",
+              description: "Referral campaigns will appear here.",
+            }}
+            isEmpty={(rows) => rows.length === 0}
+          >
+            {(rows) => (
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead>Campaign</TableHead>
+                    <TableHead>Reward</TableHead>
+                    <TableHead>Invites</TableHead>
+                    <TableHead>Conversions</TableHead>
+                    <TableHead>Paid out</TableHead>
+                    <TableHead>Status</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {rows.map((c) => (
+                    <TableRow key={c.id}>
+                      <TableCell className="font-semibold">{c.name}</TableCell>
+                      <TableCell className="text-muted-foreground">{c.reward}</TableCell>
+                      <TableCell>{c.invites}</TableCell>
+                      <TableCell>{c.conversions}</TableCell>
+                      <TableCell className="text-muted-foreground">{c.paidOut}</TableCell>
+                      <TableCell>
+                        <Badge className={cn("border-0 font-semibold", referralTone(c.status))}>
+                          {c.status}
+                        </Badge>
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            )}
+          </QueryState>
         </CardContent>
       </Card>
 

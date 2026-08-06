@@ -4,6 +4,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import type { NgoProgram } from "@/lib/api/ngo";
+import { useNgoPrograms } from "@/lib/query/ngo";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/ngo/programs")({
@@ -16,28 +19,16 @@ export const Route = createFileRoute("/app/ngo/programs")({
   component: NgoPrograms,
 });
 
-const programs = [
-  {
-    p: "STEM Saturdays",
-    v: "Lagos · 480 beneficiaries",
-    s: "Ongoing",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    p: "Girls Code Bootcamp",
-    v: "Abuja · 320 beneficiaries",
-    s: "Ongoing",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    p: "Digital Literacy Drive",
-    v: "Port Harcourt · planned Oct",
-    s: "Planned",
-    tone: "bg-primary/10 text-primary",
-  },
+const tones = [
+  "bg-success/10 text-success",
+  "bg-primary/10 text-primary",
+  "bg-warning/10 text-warning",
+  "bg-muted-foreground/10 text-muted-foreground",
 ];
 
 function NgoPrograms() {
+  const programsQuery = useNgoPrograms();
+
   return (
     <AppShell
       roleKey="instructor"
@@ -109,23 +100,41 @@ function NgoPrograms() {
           </CardTitle>
         </CardHeader>
         <CardContent className="divide-y">
-          {programs.map((p) => (
-            <div key={p.p} className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0">
-              <div className="min-w-0 flex-1">
-                <p className="text-sm font-bold">{p.p}</p>
-                <p className="text-muted-foreground text-xs">{p.v}</p>
-              </div>
-              <Badge className={cn("border-0 font-semibold", p.tone)}>{p.s}</Badge>
-              <Button asChild variant="outline" size="sm" className="shrink-0 font-semibold">
-                <Link
-                  to="/app/ngo/programs/$programId/budget"
-                  params={{ programId: p.p.split(" ")[0].toLowerCase() }}
-                >
-                  Budget
-                </Link>
-              </Button>
-            </div>
-          ))}
+          <QueryState<NgoProgram[]>
+            query={programsQuery}
+            error={{ title: "Programs unavailable" }}
+            empty={{
+              title: "No programs yet",
+              description: "Community programs will appear here.",
+            }}
+            isEmpty={(rows) => rows.length === 0}
+          >
+            {(rows) => (
+              <>
+                {rows.map((p, i) => (
+                  <div
+                    key={p.id}
+                    className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
+                  >
+                    <div className="min-w-0 flex-1">
+                      <p className="text-sm font-bold">{p.name}</p>
+                      <p className="text-muted-foreground text-xs">
+                        {p.location} · {p.beneficiaries}
+                      </p>
+                    </div>
+                    <Badge className={cn("border-0 font-semibold", tones[i % tones.length])}>
+                      {p.status}
+                    </Badge>
+                    <Button asChild variant="outline" size="sm" className="shrink-0 font-semibold">
+                      <Link to="/app/ngo/programs/$programId/budget" params={{ programId: p.id }}>
+                        Budget
+                      </Link>
+                    </Button>
+                  </div>
+                ))}
+              </>
+            )}
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>

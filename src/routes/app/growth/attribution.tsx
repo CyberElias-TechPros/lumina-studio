@@ -4,6 +4,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import type { GrwChannel } from "@/lib/api/growth";
+import { useGrwChannels } from "@/lib/query/growth";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/growth/attribution")({
@@ -16,50 +19,17 @@ export const Route = createFileRoute("/app/growth/attribution")({
   component: ChannelAttribution,
 });
 
-const channels = [
-  {
-    t: "Referral",
-    cac: "₦42k",
-    ltv: "₦312k",
-    roas: "7.4x",
-    spend: "₦1.1m",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    t: "Meta ads",
-    cac: "₦68k",
-    ltv: "₦256k",
-    roas: "3.8x",
-    spend: "₦4.2m",
-    tone: "bg-primary/10 text-primary",
-  },
-  {
-    t: "LinkedIn",
-    cac: "₦84k",
-    ltv: "₦284k",
-    roas: "3.4x",
-    spend: "₦2.6m",
-    tone: "bg-learning/10 text-learning",
-  },
-  {
-    t: "TikTok & reels",
-    cac: "₦51k",
-    ltv: "₦198k",
-    roas: "3.9x",
-    spend: "₦1.8m",
-    tone: "bg-warning/10 text-warning",
-  },
-  {
-    t: "Radio & OOH",
-    cac: "₦92k",
-    ltv: "₦241k",
-    roas: "2.6x",
-    spend: "₦1.4m",
-    tone: "bg-muted-foreground/10 text-muted-foreground",
-  },
+const channelTones = [
+  "bg-success/10 text-success",
+  "bg-primary/10 text-primary",
+  "bg-learning/10 text-learning",
+  "bg-warning/10 text-warning",
+  "bg-muted-foreground/10 text-muted-foreground",
 ];
 
 function ChannelAttribution() {
+  const channelsQuery = useGrwChannels();
+
   return (
     <AppShell
       roleKey="growth"
@@ -127,36 +97,51 @@ function ChannelAttribution() {
       </div>
 
       <div className="mt-5 grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
-        {channels.map((c) => (
-          <Card key={c.t} className="bg-card shadow-soft border">
-            <CardHeader className="flex-row items-center justify-between">
-              <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
-                <Share2 className={cn("size-4", c.tone)} /> {c.t}
-              </CardTitle>
-              <Badge className={cn("border-0 font-semibold", c.tone)}>{c.roas} ROAS</Badge>
-            </CardHeader>
-            <CardContent className="grid grid-cols-3 gap-3">
-              <div className="rounded-xl border p-3">
-                <p className="text-muted-foreground text-[10px] font-bold tracking-wide uppercase">
-                  CAC
-                </p>
-                <p className="font-display mt-1 text-sm font-extrabold">{c.cac}</p>
-              </div>
-              <div className="rounded-xl border p-3">
-                <p className="text-muted-foreground text-[10px] font-bold tracking-wide uppercase">
-                  LTV
-                </p>
-                <p className="font-display mt-1 text-sm font-extrabold">{c.ltv}</p>
-              </div>
-              <div className="rounded-xl border p-3">
-                <p className="text-muted-foreground text-[10px] font-bold tracking-wide uppercase">
-                  Spend
-                </p>
-                <p className="font-display mt-1 text-sm font-extrabold">{c.spend}</p>
-              </div>
-            </CardContent>
-          </Card>
-        ))}
+        <QueryState<GrwChannel[]>
+          query={channelsQuery}
+          error={{ title: "Channel data unavailable" }}
+          empty={{
+            title: "No channels yet",
+            description: "Channel attribution data will appear here.",
+          }}
+          isEmpty={(rows) => rows.length === 0}
+        >
+          {(rows) =>
+            rows.map((c, i) => {
+              const tone = channelTones[i % channelTones.length];
+              return (
+                <Card key={c.id} className="bg-card shadow-soft border">
+                  <CardHeader className="flex-row items-center justify-between">
+                    <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
+                      <Share2 className={cn("size-4", tone)} /> {c.name}
+                    </CardTitle>
+                    <Badge className={cn("border-0 font-semibold", tone)}>{c.roas} ROAS</Badge>
+                  </CardHeader>
+                  <CardContent className="grid grid-cols-3 gap-3">
+                    <div className="rounded-xl border p-3">
+                      <p className="text-muted-foreground text-[10px] font-bold tracking-wide uppercase">
+                        CAC
+                      </p>
+                      <p className="font-display mt-1 text-sm font-extrabold">{c.cac}</p>
+                    </div>
+                    <div className="rounded-xl border p-3">
+                      <p className="text-muted-foreground text-[10px] font-bold tracking-wide uppercase">
+                        LTV
+                      </p>
+                      <p className="font-display mt-1 text-sm font-extrabold">{c.ltv}</p>
+                    </div>
+                    <div className="rounded-xl border p-3">
+                      <p className="text-muted-foreground text-[10px] font-bold tracking-wide uppercase">
+                        Spend
+                      </p>
+                      <p className="font-display mt-1 text-sm font-extrabold">{c.spend}</p>
+                    </div>
+                  </CardContent>
+                </Card>
+              );
+            })
+          }
+        </QueryState>
       </div>
     </AppShell>
   );

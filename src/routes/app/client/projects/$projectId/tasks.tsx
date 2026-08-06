@@ -4,6 +4,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import type { CliTask } from "@/lib/query/clientEngagement";
+import { useCliTasks } from "@/lib/query/clientEngagement";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/client/projects/$projectId/tasks")({
@@ -16,28 +19,17 @@ export const Route = createFileRoute("/app/client/projects/$projectId/tasks")({
   component: ClientProjectTasks,
 });
 
-const tasks = [
-  {
-    t: "Design system handoff",
-    d: "Deliverable · v2 in review",
-    s: "Approved",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    t: "Landing page build",
-    d: "Deliverable · submitted Aug 2",
-    s: "In review",
-    tone: "bg-warning/10 text-warning",
-  },
-  {
-    t: "API integration docs",
-    d: "In progress · 60%",
-    s: "Doing",
-    tone: "bg-primary/10 text-primary",
-  },
-];
+function statusTone(s: string) {
+  const l = s.toLowerCase();
+  if (l.includes("approved") || l.includes("done")) return "bg-success/10 text-success";
+  if (l.includes("review")) return "bg-warning/10 text-warning";
+  if (l.includes("doing") || l.includes("progress")) return "bg-primary/10 text-primary";
+  return "bg-muted-foreground/10 text-muted-foreground";
+}
 
 function ClientProjectTasks() {
+  const tasksQuery = useCliTasks();
+
   return (
     <AppShell
       roleKey="instructor"
@@ -109,18 +101,39 @@ function ClientProjectTasks() {
           </CardTitle>
         </CardHeader>
         <CardContent className="divide-y">
-          {tasks.map((t) => (
-            <div key={t.t} className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0">
-              <div className="min-w-0 flex-1">
-                <p className="text-sm font-bold">{t.t}</p>
-                <p className="text-muted-foreground text-xs">{t.d}</p>
-              </div>
-              <Badge className={cn("border-0 font-semibold", t.tone)}>{t.s}</Badge>
-              <Button variant="outline" size="sm" className="shrink-0 font-semibold">
-                Open
-              </Button>
-            </div>
-          ))}
+          <QueryState<CliTask[]>
+            query={tasksQuery}
+            error={{ title: "Tasks unavailable" }}
+            empty={{
+              title: "No tasks",
+              description: "Project tasks will appear here.",
+            }}
+            isEmpty={(rows) => rows.length === 0}
+          >
+            {(rows) => (
+              <>
+                {rows.map((t) => (
+                  <div
+                    key={t.id}
+                    className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
+                  >
+                    <div className="min-w-0 flex-1">
+                      <p className="text-sm font-bold">{t.title}</p>
+                      <p className="text-muted-foreground text-xs">
+                        {t.kind} · {t.detail}
+                      </p>
+                    </div>
+                    <Badge className={cn("border-0 font-semibold", statusTone(t.status))}>
+                      {t.status}
+                    </Badge>
+                    <Button variant="outline" size="sm" className="shrink-0 font-semibold">
+                      Open
+                    </Button>
+                  </div>
+                ))}
+              </>
+            )}
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>

@@ -12,6 +12,9 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import type { GrwCohort } from "@/lib/api/growth";
+import { useGrwCohorts } from "@/lib/query/growth";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/growth/cohorts")({
@@ -24,60 +27,17 @@ export const Route = createFileRoute("/app/growth/cohorts")({
   component: CohortRetention,
 });
 
-const cohorts = [
-  {
-    w: "W1",
-    c1: "100%",
-    c2: "88%",
-    c3: "81%",
-    c4: "76%",
-    c5: "72%",
-    c6: "68%",
-    best: "bg-primary/10 text-primary",
-  },
-  {
-    w: "W2",
-    c1: "100%",
-    c2: "91%",
-    c3: "84%",
-    c4: "79%",
-    c5: "74%",
-    c6: "—",
-    best: "bg-success/10 text-success",
-  },
-  {
-    w: "W3",
-    c1: "100%",
-    c2: "89%",
-    c3: "82%",
-    c4: "77%",
-    c5: "—",
-    c6: "—",
-    best: "bg-learning/10 text-learning",
-  },
-  {
-    w: "W4",
-    c1: "100%",
-    c2: "93%",
-    c3: "86%",
-    c4: "—",
-    c5: "—",
-    c6: "—",
-    best: "bg-success/10 text-success",
-  },
-  {
-    w: "W5",
-    c1: "100%",
-    c2: "90%",
-    c3: "—",
-    c4: "—",
-    c5: "—",
-    c6: "—",
-    best: "bg-warning/10 text-warning",
-  },
+const cohortTones = [
+  "bg-primary/10 text-primary",
+  "bg-success/10 text-success",
+  "bg-learning/10 text-learning",
+  "bg-success/10 text-success",
+  "bg-warning/10 text-warning",
 ];
 
 function CohortRetention() {
+  const cohortsQuery = useGrwCohorts();
+
   return (
     <AppShell
       roleKey="growth"
@@ -149,34 +109,61 @@ function CohortRetention() {
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead>Cohort</TableHead>
-                <TableHead>W1</TableHead>
-                <TableHead>W2</TableHead>
-                <TableHead>W3</TableHead>
-                <TableHead>W4</TableHead>
-                <TableHead>W5</TableHead>
-                <TableHead>W6</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {cohorts.map((c) => (
-                <TableRow key={c.w}>
-                  <TableCell className="font-semibold">{c.w}</TableCell>
-                  <TableCell className="font-bold">{c.c1}</TableCell>
-                  <TableCell>
-                    <Badge className={cn("border-0 font-semibold", c.best)}>{c.c2}</Badge>
-                  </TableCell>
-                  <TableCell className="font-semibold">{c.c3}</TableCell>
-                  <TableCell className="font-semibold">{c.c4}</TableCell>
-                  <TableCell className="font-semibold">{c.c5}</TableCell>
-                  <TableCell className="font-semibold">{c.c6}</TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
+          <QueryState<GrwCohort[]>
+            query={cohortsQuery}
+            error={{ title: "Cohort data unavailable" }}
+            empty={{
+              title: "No cohorts yet",
+              description: "Cohort retention data will appear here.",
+            }}
+            isEmpty={(rows) => rows.length === 0}
+          >
+            {(rows) => (
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead>Cohort</TableHead>
+                    <TableHead>W1</TableHead>
+                    <TableHead>W2</TableHead>
+                    <TableHead>W3</TableHead>
+                    <TableHead>W4</TableHead>
+                    <TableHead>W5</TableHead>
+                    <TableHead>W6</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {rows.map((c, i) => (
+                    <TableRow key={c.id}>
+                      <TableCell className="font-semibold">{c.name}</TableCell>
+                      <TableCell className="font-bold">{c.w1}%</TableCell>
+                      <TableCell>
+                        <Badge
+                          className={cn(
+                            "border-0 font-semibold",
+                            cohortTones[i % cohortTones.length],
+                          )}
+                        >
+                          {c.w2 != null ? `${c.w2}%` : "\u2014"}
+                        </Badge>
+                      </TableCell>
+                      <TableCell className="font-semibold">
+                        {c.w3 != null ? `${c.w3}%` : "\u2014"}
+                      </TableCell>
+                      <TableCell className="font-semibold">
+                        {c.w4 != null ? `${c.w4}%` : "\u2014"}
+                      </TableCell>
+                      <TableCell className="font-semibold">
+                        {c.w5 != null ? `${c.w5}%` : "\u2014"}
+                      </TableCell>
+                      <TableCell className="font-semibold">
+                        {c.w6 != null ? `${c.w6}%` : "\u2014"}
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            )}
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>

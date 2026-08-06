@@ -30,6 +30,7 @@ import {
 import { Switch } from "@/components/ui/switch";
 import { Textarea } from "@/components/ui/textarea";
 import { AppShell } from "@/components/app/app-shell";
+import { useInstructorCourses } from "@/lib/query/instructor";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/instructor/lessons/create")({
@@ -53,6 +54,9 @@ const lessonTypes = [
 ];
 
 function LessonCreator() {
+  const coursesQuery = useInstructorCourses();
+  const courses = coursesQuery.data?.pages.flatMap((p) => p.items) ?? [];
+
   return (
     <AppShell
       roleKey="instructor"
@@ -93,15 +97,16 @@ function LessonCreator() {
                 <Label htmlFor="course" className="text-xs font-bold tracking-wide uppercase">
                   Course
                 </Label>
-                <Select defaultValue="backend">
+                <Select defaultValue={courses[0]?.id}>
                   <SelectTrigger id="course" className="border font-semibold">
                     <SelectValue placeholder="Select course" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="backend">Backend & APIs</SelectItem>
-                    <SelectItem value="frontend">Frontend Foundations</SelectItem>
-                    <SelectItem value="design">Product Design</SelectItem>
-                    <SelectItem value="devops">DevOps Essentials</SelectItem>
+                    {courses.map((c) => (
+                      <SelectItem key={c.id} value={c.id}>
+                        {c.title}
+                      </SelectItem>
+                    ))}
                   </SelectContent>
                 </Select>
               </div>

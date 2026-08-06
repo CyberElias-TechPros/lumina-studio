@@ -4,6 +4,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import type { NgoTeam } from "@/lib/api/ngo";
+import { useNgoTeams } from "@/lib/query/ngo";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/ngo/volunteers")({
@@ -16,28 +19,16 @@ export const Route = createFileRoute("/app/ngo/volunteers")({
   component: NgoVolunteers,
 });
 
-const teams = [
-  {
-    t: "STEM Saturdays · facilitators",
-    v: "12 volunteers · 8 slots left",
-    s: "Recruiting",
-    tone: "bg-primary/10 text-primary",
-  },
-  {
-    t: "Girls Code · mentors",
-    v: "9 volunteers · 3 slots left",
-    s: "Recruiting",
-    tone: "bg-primary/10 text-primary",
-  },
-  {
-    t: "Digital Literacy · coordinators",
-    v: "6 volunteers · full",
-    s: "Filled",
-    tone: "bg-success/10 text-success",
-  },
+const tones = [
+  "bg-primary/10 text-primary",
+  "bg-success/10 text-success",
+  "bg-warning/10 text-warning",
+  "bg-muted-foreground/10 text-muted-foreground",
 ];
 
 function NgoVolunteers() {
+  const teamsQuery = useNgoTeams();
+
   return (
     <AppShell
       roleKey="instructor"
@@ -109,18 +100,39 @@ function NgoVolunteers() {
           </CardTitle>
         </CardHeader>
         <CardContent className="divide-y">
-          {teams.map((t) => (
-            <div key={t.t} className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0">
-              <div className="min-w-0 flex-1">
-                <p className="text-sm font-bold">{t.t}</p>
-                <p className="text-muted-foreground text-xs">{t.v}</p>
-              </div>
-              <Badge className={cn("border-0 font-semibold", t.tone)}>{t.s}</Badge>
-              <Button variant="outline" size="sm" className="shrink-0 font-semibold">
-                Manage
-              </Button>
-            </div>
-          ))}
+          <QueryState<NgoTeam[]>
+            query={teamsQuery}
+            error={{ title: "Teams unavailable" }}
+            empty={{
+              title: "No teams yet",
+              description: "Volunteer teams will appear here.",
+            }}
+            isEmpty={(rows) => rows.length === 0}
+          >
+            {(rows) => (
+              <>
+                {rows.map((t, i) => (
+                  <div
+                    key={t.id}
+                    className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
+                  >
+                    <div className="min-w-0 flex-1">
+                      <p className="text-sm font-bold">{t.name}</p>
+                      <p className="text-muted-foreground text-xs">
+                        {t.volunteers} volunteers · {t.slots}
+                      </p>
+                    </div>
+                    <Badge className={cn("border-0 font-semibold", tones[i % tones.length])}>
+                      {t.status}
+                    </Badge>
+                    <Button variant="outline" size="sm" className="shrink-0 font-semibold">
+                      Manage
+                    </Button>
+                  </div>
+                ))}
+              </>
+            )}
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>

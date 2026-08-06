@@ -4,6 +4,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import type { CcpTest } from "@/lib/query/conversionCopy";
+import { useCcpTests } from "@/lib/query/conversionCopy";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/conversion-copy/ab-tests")({
@@ -16,28 +19,15 @@ export const Route = createFileRoute("/app/conversion-copy/ab-tests")({
   component: CopyAbTests,
 });
 
-const tests = [
-  {
-    t: "Enrolment H1 · A vs B",
-    v: "B wins +12% · deployed",
-    s: "Winner",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    t: "Email subject · A vs B",
-    v: "A wins +8% opens · deployed",
-    s: "Winner",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    t: "Scholarship hero · A vs B",
-    v: "Running · 4,200 visits",
-    s: "Running",
-    tone: "bg-primary/10 text-primary",
-  },
+const testTones = [
+  "bg-success/10 text-success",
+  "bg-success/10 text-success",
+  "bg-primary/10 text-primary",
 ];
 
 function CopyAbTests() {
+  const testsQuery = useCcpTests();
+
   return (
     <AppShell
       roleKey="instructor"
@@ -109,18 +99,39 @@ function CopyAbTests() {
           </CardTitle>
         </CardHeader>
         <CardContent className="divide-y">
-          {tests.map((t) => (
-            <div key={t.t} className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0">
-              <div className="min-w-0 flex-1">
-                <p className="text-sm font-bold">{t.t}</p>
-                <p className="text-muted-foreground text-xs">{t.v}</p>
-              </div>
-              <Badge className={cn("border-0 font-semibold", t.tone)}>{t.s}</Badge>
-              <Button variant="outline" size="sm" className="shrink-0 font-semibold">
-                Results
-              </Button>
-            </div>
-          ))}
+          <QueryState<CcpTest[]>
+            query={testsQuery}
+            error={{ title: "Tests unavailable" }}
+            empty={{
+              title: "No tests yet",
+              description: "Copy test results and winners will show here.",
+            }}
+            isEmpty={(rows) => rows.length === 0}
+          >
+            {(rows) => (
+              <>
+                {rows.map((t, i) => (
+                  <div
+                    key={t.id}
+                    className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
+                  >
+                    <div className="min-w-0 flex-1">
+                      <p className="text-sm font-bold">{t.title}</p>
+                      <p className="text-muted-foreground text-xs">{t.result}</p>
+                    </div>
+                    <Badge
+                      className={cn("border-0 font-semibold", testTones[i % testTones.length])}
+                    >
+                      {t.status}
+                    </Badge>
+                    <Button variant="outline" size="sm" className="shrink-0 font-semibold">
+                      Results
+                    </Button>
+                  </div>
+                ))}
+              </>
+            )}
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>

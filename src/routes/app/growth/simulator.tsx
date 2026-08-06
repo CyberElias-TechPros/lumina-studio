@@ -22,6 +22,9 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import type { GrwSimulation } from "@/lib/api/growth";
+import { useGrwSimulations } from "@/lib/query/growth";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/growth/simulator")({
@@ -34,46 +37,16 @@ export const Route = createFileRoute("/app/growth/simulator")({
   component: GrowthSimulator,
 });
 
-const scenarios = [
-  {
-    t: "Base case",
-    spend: "₦12m/qtr",
-    conv: "16%",
-    users: "612",
-    cac: "₦64k",
-    rev: "₦48.9m",
-    tone: "bg-primary/10 text-primary",
-  },
-  {
-    t: "Referral push",
-    spend: "₦14.5m/qtr",
-    conv: "19%",
-    users: "748",
-    cac: "₦58k",
-    rev: "₦59.8m",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    t: "Meta-heavy",
-    spend: "₦16m/qtr",
-    conv: "14%",
-    users: "712",
-    cac: "₦71k",
-    rev: "₦56.9m",
-    tone: "bg-warning/10 text-warning",
-  },
-  {
-    t: "Radio + OOH push",
-    spend: "₦13.5m/qtr",
-    conv: "13%",
-    users: "580",
-    cac: "₦82k",
-    rev: "₦46.4m",
-    tone: "bg-muted-foreground/10 text-muted-foreground",
-  },
+const simTones = [
+  "bg-primary/10 text-primary",
+  "bg-success/10 text-success",
+  "bg-warning/10 text-warning",
+  "bg-muted-foreground/10 text-muted-foreground",
 ];
 
 function GrowthSimulator() {
+  const simulationsQuery = useGrwSimulations();
+
   return (
     <AppShell
       roleKey="growth"
@@ -185,32 +158,48 @@ function GrowthSimulator() {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead>Scenario</TableHead>
-                  <TableHead>Spend</TableHead>
-                  <TableHead>Conv.</TableHead>
-                  <TableHead>Learners</TableHead>
-                  <TableHead>CAC</TableHead>
-                  <TableHead>Revenue</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {scenarios.map((s) => (
-                  <TableRow key={s.t}>
-                    <TableCell className="font-semibold">{s.t}</TableCell>
-                    <TableCell className="text-muted-foreground">{s.spend}</TableCell>
-                    <TableCell>{s.conv}</TableCell>
-                    <TableCell className="font-bold">{s.users}</TableCell>
-                    <TableCell className="text-muted-foreground">{s.cac}</TableCell>
-                    <TableCell>
-                      <Badge className={cn("border-0 font-semibold", s.tone)}>{s.rev}</Badge>
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
+            <QueryState<GrwSimulation[]>
+              query={simulationsQuery}
+              error={{ title: "Simulation data unavailable" }}
+              empty={{
+                title: "No simulations yet",
+                description: "Run a scenario to see projected output.",
+              }}
+              isEmpty={(rows) => rows.length === 0}
+            >
+              {(rows) => (
+                <Table>
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead>Scenario</TableHead>
+                      <TableHead>Spend</TableHead>
+                      <TableHead>Conv.</TableHead>
+                      <TableHead>Learners</TableHead>
+                      <TableHead>CAC</TableHead>
+                      <TableHead>Revenue</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {rows.map((s, i) => (
+                      <TableRow key={s.id}>
+                        <TableCell className="font-semibold">{s.name}</TableCell>
+                        <TableCell className="text-muted-foreground">{s.spend}</TableCell>
+                        <TableCell>{s.conversionPct}%</TableCell>
+                        <TableCell className="font-bold">{s.learners}</TableCell>
+                        <TableCell className="text-muted-foreground">{s.cac}</TableCell>
+                        <TableCell>
+                          <Badge
+                            className={cn("border-0 font-semibold", simTones[i % simTones.length])}
+                          >
+                            {s.revenue}
+                          </Badge>
+                        </TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              )}
+            </QueryState>
           </CardContent>
         </Card>
       </div>

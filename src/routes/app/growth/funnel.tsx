@@ -5,6 +5,9 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import type { GrwFunnelStage } from "@/lib/api/growth";
+import { useGrwFunnel } from "@/lib/query/growth";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/growth/funnel")({
@@ -20,50 +23,17 @@ export const Route = createFileRoute("/app/growth/funnel")({
   component: FunnelAnalyzer,
 });
 
-const stages = [
-  {
-    t: "Visitors",
-    v: "14,200",
-    conv: "100%",
-    drop: "—",
-    pct: 100,
-    tone: "bg-primary/10 text-primary",
-  },
-  {
-    t: "Leads",
-    v: "2,270",
-    conv: "16%",
-    drop: "−84%",
-    pct: 16,
-    tone: "bg-learning/10 text-learning",
-  },
-  {
-    t: "Activated",
-    v: "1,453",
-    conv: "64% of leads",
-    drop: "−36%",
-    pct: 10,
-    tone: "bg-success/10 text-success",
-  },
-  {
-    t: "Retained 30d",
-    v: "1,322",
-    conv: "91% of activated",
-    drop: "−9%",
-    pct: 9,
-    tone: "bg-warning/10 text-warning",
-  },
-  {
-    t: "Paying",
-    v: "891",
-    conv: "67% of retained",
-    drop: "−33%",
-    pct: 6,
-    tone: "bg-error/10 text-error",
-  },
+const funnelTones = [
+  "bg-primary/10 text-primary",
+  "bg-learning/10 text-learning",
+  "bg-success/10 text-success",
+  "bg-warning/10 text-warning",
+  "bg-error/10 text-error",
 ];
 
 function FunnelAnalyzer() {
+  const funnelQuery = useGrwFunnel();
+
   return (
     <AppShell
       roleKey="growth"
@@ -136,18 +106,39 @@ function FunnelAnalyzer() {
             <Percent className="text-primary size-4" /> Stage conversion
           </CardTitle>
         </CardHeader>
-        <CardContent className="space-y-5">
-          {stages.map((s) => (
-            <div key={s.t}>
-              <div className="flex flex-wrap items-center gap-2 text-xs font-semibold">
-                <span className="text-sm font-bold">{s.t}</span>
-                <span className="text-muted-foreground">{s.v}</span>
-                <span className="text-muted-foreground ml-auto">{s.drop}</span>
-                <Badge className={cn("border-0 font-semibold", s.tone)}>{s.conv}</Badge>
+        <CardContent>
+          <QueryState<GrwFunnelStage[]>
+            query={funnelQuery}
+            error={{ title: "Funnel data unavailable" }}
+            empty={{
+              title: "No funnel stages yet",
+              description: "Funnel stages will appear here.",
+            }}
+            isEmpty={(rows) => rows.length === 0}
+          >
+            {(rows) => (
+              <div className="space-y-5">
+                {rows.map((s, i) => (
+                  <div key={s.id}>
+                    <div className="flex flex-wrap items-center gap-2 text-xs font-semibold">
+                      <span className="text-sm font-bold">{s.name}</span>
+                      <span className="text-muted-foreground">{s.visitors.toLocaleString()}</span>
+                      <span className="text-muted-foreground ml-auto">{s.delta}</span>
+                      <Badge
+                        className={cn(
+                          "border-0 font-semibold",
+                          funnelTones[i % funnelTones.length],
+                        )}
+                      >
+                        {s.percentage}%
+                      </Badge>
+                    </div>
+                    <Progress value={s.percentage} className="mt-1.5 h-2.5" />
+                  </div>
+                ))}
               </div>
-              <Progress value={s.pct} className="mt-1.5 h-2.5" />
-            </div>
-          ))}
+            )}
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>

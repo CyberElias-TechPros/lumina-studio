@@ -4,6 +4,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import type { DepApproval } from "@/lib/api/department";
+import { useDepApprovals } from "@/lib/query/department";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/department/approvals")({
@@ -16,28 +19,15 @@ export const Route = createFileRoute("/app/department/approvals")({
   component: DeptApprovals,
 });
 
-const approvals = [
-  {
-    a: "Curriculum update · Frontend track",
-    f: "Instructor Adesuwa · Jul 30",
-    s: "Pending",
-    tone: "bg-primary/10 text-primary",
-  },
-  {
-    a: "New course · Cloud Fundamentals",
-    f: "Instructor Tobi · Jul 29",
-    s: "Pending",
-    tone: "bg-primary/10 text-primary",
-  },
-  {
-    a: "Leave request · Ngozi E.",
-    f: "Instructor · Jul 28",
-    s: "Approved",
-    tone: "bg-success/10 text-success",
-  },
-];
+const approvalTones: Record<string, string> = {
+  Pending: "bg-primary/10 text-primary",
+  Approved: "bg-success/10 text-success",
+  Rejected: "bg-warning/10 text-warning",
+};
 
 function DeptApprovals() {
+  const approvalsQuery = useDepApprovals();
+
   return (
     <AppShell
       roleKey="instructor"
@@ -109,18 +99,44 @@ function DeptApprovals() {
           </CardTitle>
         </CardHeader>
         <CardContent className="divide-y">
-          {approvals.map((a) => (
-            <div key={a.a} className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0">
-              <div className="min-w-0 flex-1">
-                <p className="text-sm font-bold">{a.a}</p>
-                <p className="text-muted-foreground text-xs">{a.f}</p>
-              </div>
-              <Badge className={cn("border-0 font-semibold", a.tone)}>{a.s}</Badge>
-              <Button variant="outline" size="sm" className="shrink-0 font-semibold">
-                Review
-              </Button>
-            </div>
-          ))}
+          <QueryState<DepApproval[]>
+            query={approvalsQuery}
+            error={{ title: "Approvals unavailable" }}
+            empty={{
+              title: "No approvals yet",
+              description: "Curriculum, course and leave approvals will appear here.",
+            }}
+            isEmpty={(rows) => rows.length === 0}
+          >
+            {(rows) => (
+              <>
+                {rows.map((a) => (
+                  <div
+                    key={a.id}
+                    className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
+                  >
+                    <div className="min-w-0 flex-1">
+                      <p className="text-sm font-bold">{a.title}</p>
+                      <p className="text-muted-foreground text-xs">
+                        {a.requester} · {a.dateLabel}
+                      </p>
+                    </div>
+                    <Badge
+                      className={cn(
+                        "border-0 font-semibold",
+                        approvalTones[a.status] ?? "bg-muted text-muted-foreground",
+                      )}
+                    >
+                      {a.status}
+                    </Badge>
+                    <Button variant="outline" size="sm" className="shrink-0 font-semibold">
+                      Review
+                    </Button>
+                  </div>
+                ))}
+              </>
+            )}
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>

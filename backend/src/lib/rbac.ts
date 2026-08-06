@@ -164,6 +164,29 @@ export const RBAC_RULES: RbacRule[] = [
   /* Dev dashboard — admin + instructor + student only */
   { methods: ["*"], path: "/v1/dev-dashboard/*", roles: ["admin", "instructor", "student"] },
 
+  /* Growth dashboard — admin + instructor + student only */
+  { methods: ["*"], path: "/v1/growth-dashboard/*", roles: ["admin", "instructor", "student"] },
+
+  /* Conversion copy dashboard — admin + instructor only */
+  {
+    methods: ["*"],
+    path: "/v1/conversion-copy-dashboard/*",
+    roles: ["admin", "instructor"],
+  },
+
+  /* Department dashboard — admin + instructor only */
+  { methods: ["*"], path: "/v1/department-dashboard/*", roles: ["admin", "instructor"] },
+
+  /* NGO partnership dashboard — staff and students */
+  {
+    methods: ["*"],
+    path: "/v1/ngo-dashboard/*",
+    roles: ["admin", "instructor", "student"],
+  },
+
+  /* Client engagement dashboard — admin + instructor only */
+  { methods: ["*"], path: "/v1/client-dashboard/*", roles: ["admin", "instructor"] },
+
   /* Admin portal */
   { methods: ["GET"], path: "/v1/admin/users", roles: ["admin"] },
   { methods: ["POST"], path: "/v1/admin/users", roles: ["admin"] },

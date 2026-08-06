@@ -4,6 +4,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import type { DepProgram } from "@/lib/api/department";
+import { useDepPrograms } from "@/lib/query/department";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/department/curriculum")({
@@ -16,27 +19,11 @@ export const Route = createFileRoute("/app/department/curriculum")({
   component: DepartmentCurriculum,
 });
 
-const programs = [
-  {
-    t: "Full-Stack Software Development",
-    v: "v3.1 · 2026",
-    status: "Active",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    t: "Cloud Engineering & DevOps",
-    v: "v2.4 · 2026",
-    status: "In review",
-    tone: "bg-warning/10 text-warning",
-  },
-  {
-    t: "Product & UI/UX Design",
-    v: "v2.0 · 2025",
-    status: "Active",
-    tone: "bg-success/10 text-success",
-  },
-  { t: "Data & AI", v: "v1.0 · draft", status: "Draft", tone: "bg-primary/10 text-primary" },
-];
+const programTones: Record<string, string> = {
+  Active: "bg-success/10 text-success",
+  "In review": "bg-warning/10 text-warning",
+  Draft: "bg-primary/10 text-primary",
+};
 
 const pending = [
   {
@@ -54,6 +41,8 @@ const pending = [
 ];
 
 function DepartmentCurriculum() {
+  const programsQuery = useDepPrograms();
+
   return (
     <AppShell
       roleKey="instructor"
@@ -128,21 +117,44 @@ function DepartmentCurriculum() {
             </CardTitle>
           </CardHeader>
           <CardContent className="divide-y">
-            {programs.map((p) => (
-              <div
-                key={p.t}
-                className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
-              >
-                <div className="min-w-0 flex-1">
-                  <p className="text-sm font-bold">{p.t}</p>
-                  <p className="text-muted-foreground text-xs">{p.v}</p>
-                </div>
-                <Badge className={cn("border-0 font-semibold", p.tone)}>{p.status}</Badge>
-                <Button variant="outline" size="sm" className="shrink-0 font-semibold">
-                  Open
-                </Button>
-              </div>
-            ))}
+            <QueryState<DepProgram[]>
+              query={programsQuery}
+              error={{ title: "Programs unavailable" }}
+              empty={{
+                title: "No programs yet",
+                description: "Program versions and reviews will appear here.",
+              }}
+              isEmpty={(rows) => rows.length === 0}
+            >
+              {(rows) => (
+                <>
+                  {rows.map((p) => (
+                    <div
+                      key={p.id}
+                      className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
+                    >
+                      <div className="min-w-0 flex-1">
+                        <p className="text-sm font-bold">{p.name}</p>
+                        <p className="text-muted-foreground text-xs">
+                          {p.version} · {p.year}
+                        </p>
+                      </div>
+                      <Badge
+                        className={cn(
+                          "border-0 font-semibold",
+                          programTones[p.status] ?? "bg-muted text-muted-foreground",
+                        )}
+                      >
+                        {p.status}
+                      </Badge>
+                      <Button variant="outline" size="sm" className="shrink-0 font-semibold">
+                        Open
+                      </Button>
+                    </div>
+                  ))}
+                </>
+              )}
+            </QueryState>
           </CardContent>
         </Card>
 

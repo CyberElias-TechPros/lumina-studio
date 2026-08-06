@@ -22,6 +22,9 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import { useAssessments } from "@/lib/query/assessments";
+import type { Assessment } from "@/data/learning";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/instructor/assessments")({
@@ -37,48 +40,18 @@ export const Route = createFileRoute("/app/instructor/assessments")({
   component: AssessmentEngine,
 });
 
-const assessments = [
-  {
-    title: "REST API Quiz 2",
-    course: "Backend & APIs",
-    type: "Quiz",
-    due: "Aug 1",
-    status: "Published",
-    auto: true,
-  },
-  {
-    title: "SQL Mid-term Exam",
-    course: "Backend & APIs",
-    type: "Exam",
-    due: "Aug 8",
-    status: "Scheduled",
-    auto: false,
-  },
-  {
-    title: "Middleware Take-home",
-    course: "Backend & APIs",
-    type: "Take-home",
-    due: "Aug 3",
-    status: "Published",
-    auto: true,
-  },
-  {
-    title: "Portfolio Sprint Review",
-    course: "Frontend Foundations",
-    type: "Oral",
-    due: "Aug 15",
-    status: "Draft",
-    auto: false,
-  },
-  {
-    title: "DevOps Mock Certification",
-    course: "DevOps Essentials",
-    type: "Practice",
-    due: "Aug 22",
-    status: "Scheduled",
-    auto: true,
-  },
-];
+const statusTone: Record<string, string> = {
+  available: "bg-primary/10 text-primary",
+  scheduled: "bg-learning/10 text-learning",
+  done: "bg-success/10 text-success",
+  overdue: "bg-error/10 text-error",
+};
+
+const typeLabel: Record<string, string> = {
+  quiz: "Quiz",
+  exam: "Exam",
+  test: "Test",
+};
 
 const submissions = [
   {
@@ -119,6 +92,8 @@ const submissions = [
 ];
 
 function AssessmentEngine() {
+  const assessmentsQuery = useAssessments();
+
   return (
     <AppShell
       roleKey="instructor"
@@ -191,55 +166,60 @@ function AssessmentEngine() {
           <Badge className="bg-warning/10 text-warning border-0 font-semibold">2 due soon</Badge>
         </CardHeader>
         <CardContent className="p-0">
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead>Title</TableHead>
-                <TableHead>Course</TableHead>
-                <TableHead>Type</TableHead>
-                <TableHead>Due</TableHead>
-                <TableHead>Status</TableHead>
-                <TableHead>Auto-graded</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {assessments.map((a) => (
-                <TableRow key={a.title}>
-                  <TableCell className="text-xs font-bold">{a.title}</TableCell>
-                  <TableCell className="text-muted-foreground text-xs">{a.course}</TableCell>
-                  <TableCell>
-                    <Badge variant="secondary" className="font-semibold">
-                      {a.type}
-                    </Badge>
-                  </TableCell>
-                  <TableCell className="text-muted-foreground text-xs">{a.due}</TableCell>
-                  <TableCell>
-                    <Badge
-                      className={cn(
-                        "border-0 font-semibold",
-                        a.status === "Published"
-                          ? "bg-success/10 text-success"
-                          : a.status === "Scheduled"
-                            ? "bg-primary/10 text-primary"
-                            : "bg-warning/10 text-warning",
-                      )}
-                    >
-                      {a.status}
-                    </Badge>
-                  </TableCell>
-                  <TableCell>
-                    {a.auto ? (
-                      <span className="flex items-center gap-1.5 text-xs font-semibold">
-                        <Zap className="text-success size-3.5" /> Yes
-                      </span>
-                    ) : (
-                      <span className="text-muted-foreground text-xs font-semibold">Manual</span>
-                    )}
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
+          <QueryState<Assessment[]>
+            query={assessmentsQuery}
+            error={{ title: "Assessments unavailable" }}
+            empty={{
+              title: "No assessments",
+              description: "Quizzes, exams and checkpoints you create will show here.",
+            }}
+            isEmpty={(rows) => rows.length === 0}
+          >
+            {(assessments) => (
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead>Title</TableHead>
+                    <TableHead>Course</TableHead>
+                    <TableHead>Type</TableHead>
+                    <TableHead>Due</TableHead>
+                    <TableHead>Status</TableHead>
+                    <TableHead>Auto-graded</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {assessments.map((a) => (
+                    <TableRow key={a.id}>
+                      <TableCell className="text-xs font-bold">{a.title}</TableCell>
+                      <TableCell className="text-muted-foreground text-xs">{a.course}</TableCell>
+                      <TableCell>
+                        <Badge variant="secondary" className="font-semibold">
+                          {typeLabel[a.kind] ?? a.kind}
+                        </Badge>
+                      </TableCell>
+                      <TableCell className="text-muted-foreground text-xs">{a.due}</TableCell>
+                      <TableCell>
+                        <Badge className={cn("border-0 font-semibold", statusTone[a.status])}>
+                          {a.status}
+                        </Badge>
+                      </TableCell>
+                      <TableCell>
+                        {a.kind === "quiz" ? (
+                          <span className="flex items-center gap-1.5 text-xs font-semibold">
+                            <Zap className="text-success size-3.5" /> Yes
+                          </span>
+                        ) : (
+                          <span className="text-muted-foreground text-xs font-semibold">
+                            Manual
+                          </span>
+                        )}
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            )}
+          </QueryState>
         </CardContent>
       </Card>
 

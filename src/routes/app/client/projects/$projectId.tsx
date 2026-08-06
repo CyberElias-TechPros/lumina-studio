@@ -15,6 +15,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import type { CliMilestone } from "@/lib/query/clientEngagement";
+import { useCliMilestones } from "@/lib/query/clientEngagement";
 import { formatNaira } from "@/data/site";
 import { cn } from "@/lib/utils";
 
@@ -28,30 +31,16 @@ export const Route = createFileRoute("/app/client/projects/$projectId")({
   component: ClientProject,
 });
 
-const milestones = [
-  { t: "Kickoff & discovery", d: "Jul 1", status: "Done", tone: "bg-success/10 text-success" },
-  { t: "Design mockups", d: "Jul 15", status: "Done", tone: "bg-success/10 text-success" },
-  {
-    t: "Core build (API + UI)",
-    d: "Aug 20",
-    status: "In progress",
-    tone: "bg-primary/10 text-primary",
-  },
-  {
-    t: "QA & polish",
-    d: "Sep 5",
-    status: "Upcoming",
-    tone: "bg-muted-foreground/10 text-muted-foreground",
-  },
-  {
-    t: "Launch",
-    d: "Sep 15",
-    status: "Upcoming",
-    tone: "bg-muted-foreground/10 text-muted-foreground",
-  },
-];
+function statusTone(s: string) {
+  const l = s.toLowerCase();
+  if (l.includes("done") || l.includes("complete")) return "bg-success/10 text-success";
+  if (l.includes("progress")) return "bg-primary/10 text-primary";
+  return "bg-muted-foreground/10 text-muted-foreground";
+}
 
 function ClientProject() {
+  const milestonesQuery = useCliMilestones();
+
   return (
     <AppShell
       roleKey="instructor"
@@ -125,31 +114,47 @@ function ClientProject() {
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-3">
-              {milestones.map((m) => (
-                <div key={m.t} className="flex items-center gap-3 rounded-xl border p-3">
-                  <span
-                    className={cn(
-                      "grid size-8 shrink-0 place-items-center rounded-lg",
-                      m.status === "Done"
-                        ? "bg-success/10 text-success"
-                        : m.status === "In progress"
-                          ? "bg-primary/10 text-primary"
-                          : "bg-muted text-muted-foreground",
-                    )}
-                  >
-                    {m.status === "Done" ? (
-                      <CheckCircle2 className="size-4" />
-                    ) : (
-                      <Timer className="size-4" />
-                    )}
-                  </span>
-                  <div className="min-w-0 flex-1">
-                    <p className="text-sm font-bold">{m.t}</p>
-                    <p className="text-muted-foreground text-xs">{m.d}</p>
-                  </div>
-                  <Badge className={cn("border-0 font-semibold", m.tone)}>{m.status}</Badge>
-                </div>
-              ))}
+              <QueryState<CliMilestone[]>
+                query={milestonesQuery}
+                error={{ title: "Milestones unavailable" }}
+                empty={{
+                  title: "No milestones",
+                  description: "Project milestones will show here.",
+                }}
+                isEmpty={(rows) => rows.length === 0}
+              >
+                {(rows) => (
+                  <>
+                    {rows.map((m) => (
+                      <div key={m.id} className="flex items-center gap-3 rounded-xl border p-3">
+                        <span
+                          className={cn(
+                            "grid size-8 shrink-0 place-items-center rounded-lg",
+                            m.status === "Done" || m.status === "Completed"
+                              ? "bg-success/10 text-success"
+                              : m.status === "In progress"
+                                ? "bg-primary/10 text-primary"
+                                : "bg-muted text-muted-foreground",
+                          )}
+                        >
+                          {m.status === "Done" || m.status === "Completed" ? (
+                            <CheckCircle2 className="size-4" />
+                          ) : (
+                            <Timer className="size-4" />
+                          )}
+                        </span>
+                        <div className="min-w-0 flex-1">
+                          <p className="text-sm font-bold">{m.title}</p>
+                          <p className="text-muted-foreground text-xs">{m.dateLabel}</p>
+                        </div>
+                        <Badge className={cn("border-0 font-semibold", statusTone(m.status))}>
+                          {m.status}
+                        </Badge>
+                      </div>
+                    ))}
+                  </>
+                )}
+              </QueryState>
             </CardContent>
           </Card>
 

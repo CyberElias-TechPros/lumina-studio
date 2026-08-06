@@ -4,6 +4,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import type { CcpBrief } from "@/lib/query/conversionCopy";
+import { useCcpBriefs } from "@/lib/query/conversionCopy";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/conversion-copy/briefs")({
@@ -16,28 +19,16 @@ export const Route = createFileRoute("/app/conversion-copy/briefs")({
   component: CopyBriefs,
 });
 
-const briefs = [
-  {
-    b: "Cohort 17 landing refresh",
-    f: "Marketing · Jul 31",
-    s: "In progress",
-    tone: "bg-primary/10 text-primary",
-  },
-  {
-    b: "Scholarship campaign copy",
-    f: "NGO partner · Jul 28",
-    s: "In review",
-    tone: "bg-warning/10 text-warning",
-  },
-  {
-    b: "Alumni referral email",
-    f: "Career services · Jul 25",
-    s: "Done",
-    tone: "bg-success/10 text-success",
-  },
+const briefTones = [
+  "bg-primary/10 text-primary",
+  "bg-warning/10 text-warning",
+  "bg-success/10 text-success",
+  "bg-muted-foreground/10 text-muted-foreground",
 ];
 
 function CopyBriefs() {
+  const briefsQuery = useCcpBriefs();
+
   return (
     <AppShell
       roleKey="instructor"
@@ -109,18 +100,41 @@ function CopyBriefs() {
           </CardTitle>
         </CardHeader>
         <CardContent className="divide-y">
-          {briefs.map((b) => (
-            <div key={b.b} className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0">
-              <div className="min-w-0 flex-1">
-                <p className="text-sm font-bold">{b.b}</p>
-                <p className="text-muted-foreground text-xs">{b.f}</p>
-              </div>
-              <Badge className={cn("border-0 font-semibold", b.tone)}>{b.s}</Badge>
-              <Button variant="outline" size="sm" className="shrink-0 font-semibold">
-                Open
-              </Button>
-            </div>
-          ))}
+          <QueryState<CcpBrief[]>
+            query={briefsQuery}
+            error={{ title: "Briefs unavailable" }}
+            empty={{
+              title: "No briefs yet",
+              description: "Incoming copy briefs will show here.",
+            }}
+            isEmpty={(rows) => rows.length === 0}
+          >
+            {(rows) => (
+              <>
+                {rows.map((b, i) => (
+                  <div
+                    key={b.id}
+                    className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
+                  >
+                    <div className="min-w-0 flex-1">
+                      <p className="text-sm font-bold">{b.title}</p>
+                      <p className="text-muted-foreground text-xs">
+                        {b.requester} · {b.dateLabel}
+                      </p>
+                    </div>
+                    <Badge
+                      className={cn("border-0 font-semibold", briefTones[i % briefTones.length])}
+                    >
+                      {b.status}
+                    </Badge>
+                    <Button variant="outline" size="sm" className="shrink-0 font-semibold">
+                      Open
+                    </Button>
+                  </div>
+                ))}
+              </>
+            )}
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>

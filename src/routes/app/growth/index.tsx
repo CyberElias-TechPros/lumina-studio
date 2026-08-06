@@ -15,6 +15,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import type { GrwKpi } from "@/lib/api/growth";
+import { useGrwOverview } from "@/lib/query/growth";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/growth/")({
@@ -82,7 +85,16 @@ const screens = [
   },
 ];
 
+const kpiMeta = [
+  { icon: Users, tone: "bg-primary/10 text-primary" },
+  { icon: Rocket, tone: "bg-learning/10 text-learning" },
+  { icon: Gift, tone: "bg-success/10 text-success" },
+  { icon: Wallet, tone: "bg-warning/10 text-warning" },
+];
+
 function GrowthHub() {
+  const overviewQuery = useGrwOverview();
+
   return (
     <AppShell
       roleKey="growth"
@@ -99,53 +111,39 @@ function GrowthHub() {
         </>
       }
     >
-      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-        {[
-          {
-            label: "New learners",
-            value: "148",
-            delta: "+22% MoM",
-            icon: Users,
-            tone: "bg-primary/10 text-primary",
-          },
-          {
-            label: "Activation",
-            value: "64%",
-            delta: "first lesson in 3d",
-            icon: Rocket,
-            tone: "bg-learning/10 text-learning",
-          },
-          {
-            label: "Referral signups",
-            value: "27",
-            delta: "18% of total",
-            icon: Gift,
-            tone: "bg-success/10 text-success",
-          },
-          {
-            label: "CAC",
-            value: "₦64k",
-            delta: "target ₦70k",
-            icon: Wallet,
-            tone: "bg-warning/10 text-warning",
-          },
-        ].map((k) => (
-          <Card key={k.label} className="bg-card shadow-soft border">
-            <CardContent className="p-5">
-              <div className="flex items-center justify-between">
-                <p className="text-muted-foreground text-xs font-bold tracking-wide uppercase">
-                  {k.label}
-                </p>
-                <span className={cn("grid size-8 place-items-center rounded-lg", k.tone)}>
-                  <k.icon className="size-4" />
-                </span>
-              </div>
-              <p className="font-display mt-3 text-2xl font-extrabold">{k.value}</p>
-              <p className="text-muted-foreground mt-0.5 text-xs font-semibold">{k.delta}</p>
-            </CardContent>
-          </Card>
-        ))}
-      </div>
+      <QueryState<GrwKpi[]>
+        query={overviewQuery}
+        error={{ title: "Growth stats unavailable" }}
+        empty={{
+          title: "No growth data yet",
+          description: "Growth metrics will appear here.",
+        }}
+        isEmpty={(rows) => rows.length === 0}
+      >
+        {(rows) => (
+          <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+            {rows.map((k, i) => {
+              const meta = kpiMeta[i % kpiMeta.length];
+              return (
+                <Card key={k.id} className="bg-card shadow-soft border">
+                  <CardContent className="p-5">
+                    <div className="flex items-center justify-between">
+                      <p className="text-muted-foreground text-xs font-bold tracking-wide uppercase">
+                        {k.metric}
+                      </p>
+                      <span className={cn("grid size-8 place-items-center rounded-lg", meta.tone)}>
+                        <meta.icon className="size-4" />
+                      </span>
+                    </div>
+                    <p className="font-display mt-3 text-2xl font-extrabold">{k.valueLabel}</p>
+                    <p className="text-muted-foreground mt-0.5 text-xs font-semibold">{k.delta}</p>
+                  </CardContent>
+                </Card>
+              );
+            })}
+          </div>
+        )}
+      </QueryState>
 
       <Card className="bg-card mt-5 shadow-soft border">
         <CardHeader>

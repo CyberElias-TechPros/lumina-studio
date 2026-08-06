@@ -4,6 +4,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import type { NgoMetric } from "@/lib/api/ngo";
+import { useNgoMetrics } from "@/lib/query/ngo";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/ngo/analytics")({
@@ -16,13 +19,16 @@ export const Route = createFileRoute("/app/ngo/analytics")({
   component: NgoAnalytics,
 });
 
-const metrics = [
-  { m: "Cost per beneficiary", v: "₦6,600", d: "down 12% YoY", tone: "bg-success/10 text-success" },
-  { m: "Retention", v: "87%", d: "of scholars re-engage", tone: "bg-primary/10 text-primary" },
-  { m: "Outcome rate", v: "91%", d: "of goals met", tone: "bg-learning/10 text-learning" },
+const tones = [
+  "bg-success/10 text-success",
+  "bg-primary/10 text-primary",
+  "bg-learning/10 text-learning",
+  "bg-warning/10 text-warning",
 ];
 
 function NgoAnalytics() {
+  const metricsQuery = useNgoMetrics();
+
   return (
     <AppShell
       roleKey="instructor"
@@ -94,18 +100,37 @@ function NgoAnalytics() {
           </CardTitle>
         </CardHeader>
         <CardContent className="divide-y">
-          {metrics.map((m) => (
-            <div key={m.m} className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0">
-              <div className="min-w-0 flex-1">
-                <p className="text-sm font-bold">{m.m}</p>
-                <p className="text-muted-foreground text-xs">{m.d}</p>
-              </div>
-              <Badge className={cn("border-0 font-semibold", m.tone)}>{m.v}</Badge>
-              <Button variant="outline" size="sm" className="shrink-0 font-semibold">
-                Explore
-              </Button>
-            </div>
-          ))}
+          <QueryState<NgoMetric[]>
+            query={metricsQuery}
+            error={{ title: "Metrics unavailable" }}
+            empty={{
+              title: "No metrics yet",
+              description: "Analytics metrics will appear here.",
+            }}
+            isEmpty={(rows) => rows.length === 0}
+          >
+            {(rows) => (
+              <>
+                {rows.map((m, i) => (
+                  <div
+                    key={m.id}
+                    className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
+                  >
+                    <div className="min-w-0 flex-1">
+                      <p className="text-sm font-bold">{m.label}</p>
+                      <p className="text-muted-foreground text-xs">{m.delta}</p>
+                    </div>
+                    <Badge className={cn("border-0 font-semibold", tones[i % tones.length])}>
+                      {m.value}
+                    </Badge>
+                    <Button variant="outline" size="sm" className="shrink-0 font-semibold">
+                      Explore
+                    </Button>
+                  </div>
+                ))}
+              </>
+            )}
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>

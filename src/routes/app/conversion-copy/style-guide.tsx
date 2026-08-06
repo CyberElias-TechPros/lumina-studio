@@ -4,6 +4,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import type { CcpRule } from "@/lib/query/conversionCopy";
+import { useCcpRules } from "@/lib/query/conversionCopy";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/conversion-copy/style-guide")({
@@ -16,28 +19,16 @@ export const Route = createFileRoute("/app/conversion-copy/style-guide")({
   component: CopyStyleGuide,
 });
 
-const rules = [
-  {
-    r: "Tone",
-    v: "Confident, warm, zero hype — 'join' not 'seize your chance'",
-    s: "Enforced",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    r: "Formatting",
-    v: "Sentences ≤ 20 words · bullets for benefits",
-    s: "Enforced",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    r: "Localization",
-    v: "English + pidgin variants reviewed by native speakers",
-    s: "Draft",
-    tone: "bg-warning/10 text-warning",
-  },
+const ruleTones = [
+  "bg-success/10 text-success",
+  "bg-primary/10 text-primary",
+  "bg-warning/10 text-warning",
+  "bg-muted-foreground/10 text-muted-foreground",
 ];
 
 function CopyStyleGuide() {
+  const rulesQuery = useCcpRules();
+
   return (
     <AppShell
       roleKey="instructor"
@@ -109,18 +100,41 @@ function CopyStyleGuide() {
           </CardTitle>
         </CardHeader>
         <CardContent className="divide-y">
-          {rules.map((r) => (
-            <div key={r.r} className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0">
-              <div className="min-w-0 flex-1">
-                <p className="text-sm font-bold">{r.r}</p>
-                <p className="text-muted-foreground text-xs">{r.v}</p>
-              </div>
-              <Badge className={cn("border-0 font-semibold", r.tone)}>{r.s}</Badge>
-              <Button variant="outline" size="sm" className="shrink-0 font-semibold">
-                Edit
-              </Button>
-            </div>
-          ))}
+          <QueryState<CcpRule[]>
+            query={rulesQuery}
+            error={{ title: "Rules unavailable" }}
+            empty={{
+              title: "No rules yet",
+              description: "Voice, tone and grammar rules will show here.",
+            }}
+            isEmpty={(rows) => rows.length === 0}
+          >
+            {(rows) => (
+              <>
+                {rows.map((r, i) => (
+                  <div
+                    key={r.id}
+                    className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
+                  >
+                    <div className="min-w-0 flex-1">
+                      <p className="text-sm font-bold">{r.name}</p>
+                      <p className="text-muted-foreground text-xs">
+                        {r.category} · {r.detail}
+                      </p>
+                    </div>
+                    <Badge
+                      className={cn("border-0 font-semibold", ruleTones[i % ruleTones.length])}
+                    >
+                      {r.status}
+                    </Badge>
+                    <Button variant="outline" size="sm" className="shrink-0 font-semibold">
+                      Edit
+                    </Button>
+                  </div>
+                ))}
+              </>
+            )}
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>

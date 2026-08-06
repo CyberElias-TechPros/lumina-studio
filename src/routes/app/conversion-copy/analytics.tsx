@@ -11,6 +11,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import type { CcpAnalyticsRow } from "@/lib/query/conversionCopy";
+import { useCcpAnalytics } from "@/lib/query/conversionCopy";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/conversion-copy/analytics")({
@@ -23,28 +26,15 @@ export const Route = createFileRoute("/app/conversion-copy/analytics")({
   component: CopyAnalytics,
 });
 
-const funnels = [
-  {
-    f: "Organic → application",
-    v: "18.4k visits · 5.4% conv",
-    s: "+0.8 pts",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    f: "Paid → application",
-    v: "22.1k visits · 3.1% conv",
-    s: "+0.4 pts",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    f: "Application → enrolment",
-    v: "1,612 apps · 26.4% conv",
-    s: "-1.2 pts",
-    tone: "bg-warning/10 text-warning",
-  },
+const funnelTones = [
+  "bg-success/10 text-success",
+  "bg-success/10 text-success",
+  "bg-warning/10 text-warning",
 ];
 
 function CopyAnalytics() {
+  const analyticsQuery = useCcpAnalytics();
+
   return (
     <AppShell
       roleKey="instructor"
@@ -116,18 +106,41 @@ function CopyAnalytics() {
           </CardTitle>
         </CardHeader>
         <CardContent className="divide-y">
-          {funnels.map((f) => (
-            <div key={f.f} className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0">
-              <div className="min-w-0 flex-1">
-                <p className="text-sm font-bold">{f.f}</p>
-                <p className="text-muted-foreground text-xs">{f.v}</p>
-              </div>
-              <Badge className={cn("border-0 font-semibold", f.tone)}>{f.s}</Badge>
-              <Button variant="outline" size="sm" className="shrink-0 font-semibold">
-                <Download className="size-3.5" /> Export
-              </Button>
-            </div>
-          ))}
+          <QueryState<CcpAnalyticsRow[]>
+            query={analyticsQuery}
+            error={{ title: "Analytics unavailable" }}
+            empty={{
+              title: "No funnel data yet",
+              description: "Funnel performance across channels will show here.",
+            }}
+            isEmpty={(rows) => rows.length === 0}
+          >
+            {(rows) => (
+              <>
+                {rows.map((f, i) => (
+                  <div
+                    key={f.id}
+                    className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
+                  >
+                    <div className="min-w-0 flex-1">
+                      <p className="text-sm font-bold">{f.stage}</p>
+                      <p className="text-muted-foreground text-xs">
+                        {f.visits} visits · {f.conversion} conv
+                      </p>
+                    </div>
+                    <Badge
+                      className={cn("border-0 font-semibold", funnelTones[i % funnelTones.length])}
+                    >
+                      {f.delta}
+                    </Badge>
+                    <Button variant="outline" size="sm" className="shrink-0 font-semibold">
+                      <Download className="size-3.5" /> Export
+                    </Button>
+                  </div>
+                ))}
+              </>
+            )}
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>

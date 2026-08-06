@@ -4,6 +4,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import { useDevErrors } from "@/lib/query/dev";
+import type { DevError } from "@/lib/api/dev";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/admin/monitoring")({
@@ -16,6 +19,12 @@ export const Route = createFileRoute("/app/admin/monitoring")({
   component: AdminMonitoring,
 });
 
+function errorTone(status: string) {
+  if (/fixed|resolved|success/i.test(status)) return "bg-success/10 text-success";
+  if (/new|critical|urgent/i.test(status)) return "bg-destructive/10 text-destructive";
+  return "bg-warning/10 text-warning";
+}
+
 const services = [
   { s: "web", v: "8 pods · 34% CPU", st: "Healthy", tone: "bg-success/10 text-success" },
   { s: "api", v: "6 pods · 41% CPU", st: "Healthy", tone: "bg-success/10 text-success" },
@@ -23,6 +32,8 @@ const services = [
 ];
 
 function AdminMonitoring() {
+  const errorsQuery = useDevErrors();
+
   return (
     <AppShell
       roleKey="admin"
