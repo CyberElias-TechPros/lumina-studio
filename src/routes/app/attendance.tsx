@@ -4,6 +4,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import { useStuAttendance, useStuPolicy, useStuRecords } from "@/lib/query/studentSelf";
+import type { StuKpi, StuPolicy, StuRecord } from "@/lib/api/studentSelf";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/attendance")({
@@ -16,45 +19,32 @@ export const Route = createFileRoute("/app/attendance")({
   component: StudentAttendance,
 });
 
-const records = [
-  {
-    d: "Mon, Jul 28",
-    c: "Full-Stack Development",
-    status: "Present",
-    tone: "bg-success/10 text-success",
-    icon: CheckCircle2,
-  },
-  {
-    d: "Thu, Jul 24",
-    c: "Cloud & DevOps",
-    status: "Present",
-    tone: "bg-success/10 text-success",
-    icon: CheckCircle2,
-  },
-  {
-    d: "Wed, Jul 23",
-    c: "Product Design",
-    status: "Late 12m",
-    tone: "bg-warning/10 text-warning",
-    icon: Clock,
-  },
-  {
-    d: "Mon, Jul 21",
-    c: "Full-Stack Development",
-    status: "Present",
-    tone: "bg-success/10 text-success",
-    icon: CheckCircle2,
-  },
-  {
-    d: "Thu, Jul 17",
-    c: "Cloud & DevOps",
-    status: "Excused",
-    tone: "bg-primary/10 text-primary",
-    icon: UserCheck,
-  },
+const kpiMeta = [
+  { icon: CheckCircle2, tone: "bg-success/10 text-success" },
+  { icon: Clock, tone: "bg-warning/10 text-warning" },
+  { icon: UserCheck, tone: "bg-primary/10 text-primary" },
+  { icon: XCircle, tone: "bg-destructive/10 text-destructive" },
 ];
 
+const policyTones = [
+  "bg-success/10 text-success",
+  "bg-primary/10 text-primary",
+  "bg-warning/10 text-warning",
+  "bg-learning/10 text-learning",
+];
+
+function recordMeta(status: string) {
+  if (/late/i.test(status)) return { icon: Clock, tone: "bg-warning/10 text-warning" };
+  if (/excused/i.test(status)) return { icon: UserCheck, tone: "bg-primary/10 text-primary" };
+  if (/unexcused/i.test(status))
+    return { icon: XCircle, tone: "bg-destructive/10 text-destructive" };
+  return { icon: CheckCircle2, tone: "bg-success/10 text-success" };
+}
+
 function StudentAttendance() {
+  const kpisQuery = useStuAttendance();
+  const recordsQuery = useStuRecords();
+  const policyQuery = useStuPolicy();
   return (
     <AppShell
       roleKey="student"
@@ -71,53 +61,36 @@ function StudentAttendance() {
         </>
       }
     >
-      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-        {[
-          {
-            label: "Present",
-            value: "61",
-            delta: "of 65 sessions",
-            icon: CheckCircle2,
-            tone: "bg-success/10 text-success",
-          },
-          {
-            label: "Late arrivals",
-            value: "3",
-            delta: "avg 9m",
-            icon: Clock,
-            tone: "bg-warning/10 text-warning",
-          },
-          {
-            label: "Excused",
-            value: "1",
-            delta: "medical",
-            icon: UserCheck,
-            tone: "bg-primary/10 text-primary",
-          },
-          {
-            label: "Unexcused",
-            value: "0",
-            delta: "no strikes",
-            icon: XCircle,
-            tone: "bg-learning/10 text-learning",
-          },
-        ].map((k) => (
-          <Card key={k.label} className="bg-card shadow-soft border">
-            <CardContent className="p-5">
-              <div className="flex items-center justify-between">
-                <p className="text-muted-foreground text-xs font-bold tracking-wide uppercase">
-                  {k.label}
-                </p>
-                <span className={cn("grid size-8 place-items-center rounded-lg", k.tone)}>
-                  <k.icon className="size-4" />
-                </span>
-              </div>
-              <p className="font-display mt-3 text-2xl font-extrabold">{k.value}</p>
-              <p className="text-muted-foreground mt-0.5 text-xs font-semibold">{k.delta}</p>
-            </CardContent>
-          </Card>
-        ))}
-      </div>
+      <QueryState<StuKpi[]>
+        query={kpisQuery}
+        error={{ title: "Failed to load attendance metrics" }}
+        empty={{ title: "No attendance metrics yet" }}
+        isEmpty={(rows) => rows.length === 0}
+      >
+        {(kpis) => (
+          <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+            {kpis.map((k, i) => {
+              const meta = kpiMeta[i % kpiMeta.length];
+              return (
+                <Card key={k.id} className="bg-card shadow-soft border">
+                  <CardContent className="p-5">
+                    <div className="flex items-center justify-between">
+                      <p className="text-muted-foreground text-xs font-bold tracking-wide uppercase">
+                        {k.metric}
+                      </p>
+                      <span className={cn("grid size-8 place-items-center rounded-lg", meta.tone)}>
+                        <meta.icon className="size-4" />
+                      </span>
+                    </div>
+                    <p className="font-display mt-3 text-2xl font-extrabold">{k.valueLabel}</p>
+                    <p className="text-muted-foreground mt-0.5 text-xs font-semibold">{k.delta}</p>
+                  </CardContent>
+                </Card>
+              );
+            })}
+          </div>
+        )}
+      </QueryState>
 
       <div className="mt-5 grid gap-5 xl:grid-cols-[1.5fr_1fr]">
         <Card className="bg-card shadow-soft border">
@@ -127,21 +100,38 @@ function StudentAttendance() {
             </CardTitle>
           </CardHeader>
           <CardContent className="divide-y">
-            {records.map((r) => (
-              <div
-                key={r.d + r.c}
-                className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
-              >
-                <span className={cn("grid size-9 shrink-0 place-items-center rounded-lg", r.tone)}>
-                  <r.icon className="size-4" />
-                </span>
-                <div className="min-w-0 flex-1">
-                  <p className="text-sm font-bold">{r.c}</p>
-                  <p className="text-muted-foreground text-xs">{r.d}</p>
-                </div>
-                <Badge className={cn("border-0 font-semibold", r.tone)}>{r.status}</Badge>
-              </div>
-            ))}
+            <QueryState<StuRecord[]>
+              query={recordsQuery}
+              error={{ title: "Failed to load sessions" }}
+              empty={{ title: "No sessions recorded" }}
+              isEmpty={(rows) => rows.length === 0}
+            >
+              {(items) =>
+                items.map((r) => {
+                  const meta = recordMeta(r.status);
+                  return (
+                    <div
+                      key={r.id}
+                      className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
+                    >
+                      <span
+                        className={cn(
+                          "grid size-9 shrink-0 place-items-center rounded-lg",
+                          meta.tone,
+                        )}
+                      >
+                        <meta.icon className="size-4" />
+                      </span>
+                      <div className="min-w-0 flex-1">
+                        <p className="text-sm font-bold">{r.course}</p>
+                        <p className="text-muted-foreground text-xs">{r.dateLabel}</p>
+                      </div>
+                      <Badge className={cn("border-0 font-semibold", meta.tone)}>{r.status}</Badge>
+                    </div>
+                  );
+                })
+              }
+            </QueryState>
           </CardContent>
         </Card>
 
@@ -153,16 +143,31 @@ function StudentAttendance() {
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-3">
-              {[
-                { t: "90% minimum per term", v: "You: 94%", tone: "bg-success/10 text-success" },
-                { t: "Lates allowed", v: "3 per term", tone: "bg-primary/10 text-primary" },
-                { t: "Check-in window", v: "QR · 10 min", tone: "bg-warning/10 text-warning" },
-              ].map((x) => (
-                <div key={x.t} className="flex items-center justify-between rounded-xl border p-3">
-                  <span className="text-sm font-semibold">{x.t}</span>
-                  <Badge className={cn("border-0 font-semibold", x.tone)}>{x.v}</Badge>
-                </div>
-              ))}
+              <QueryState<StuPolicy[]>
+                query={policyQuery}
+                error={{ title: "Failed to load policy" }}
+                empty={{ title: "No policy rules" }}
+                isEmpty={(rows) => rows.length === 0}
+              >
+                {(items) =>
+                  items.map((x, i) => (
+                    <div
+                      key={x.id}
+                      className="flex items-center justify-between rounded-xl border p-3"
+                    >
+                      <span className="text-sm font-semibold">{x.rule}</span>
+                      <Badge
+                        className={cn(
+                          "border-0 font-semibold",
+                          policyTones[i % policyTones.length],
+                        )}
+                      >
+                        {x.valueLabel}
+                      </Badge>
+                    </div>
+                  ))
+                }
+              </QueryState>
             </CardContent>
           </Card>
 

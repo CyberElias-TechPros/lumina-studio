@@ -4,9 +4,6 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
-import { QueryState } from "@/components/ui/query-state";
-import { useDevErrors } from "@/lib/query/dev";
-import type { DevError } from "@/lib/api/dev";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/admin/monitoring")({
@@ -32,8 +29,6 @@ const services = [
 ];
 
 function AdminMonitoring() {
-  const errorsQuery = useDevErrors();
-
   return (
     <AppShell
       roleKey="admin"

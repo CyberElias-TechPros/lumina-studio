@@ -187,6 +187,43 @@ export const RBAC_RULES: RbacRule[] = [
   /* Client engagement dashboard — admin + instructor only */
   { methods: ["*"], path: "/v1/client-dashboard/*", roles: ["admin", "instructor"] },
 
+  /* Admin systems dashboard — admin + instructor */
+  { methods: ["*"], path: "/v1/admin-systems-dashboard/*", roles: ["admin", "instructor"] },
+
+  /* Director dashboard — admin + instructor */
+  { methods: ["*"], path: "/v1/director-dashboard/*", roles: ["admin", "instructor"] },
+
+  /* Instructor extras dashboard — admin + instructor */
+  {
+    methods: ["*"],
+    path: "/v1/instructor-extras-dashboard/*",
+    roles: ["admin", "instructor"],
+  },
+
+  /* Admissions extras dashboard — admin + instructor */
+  {
+    methods: ["*"],
+    path: "/v1/admissions-extras-dashboard/*",
+    roles: ["admin", "instructor"],
+  },
+
+  /* Parent extras dashboard — admin + parent + student + instructor */
+  {
+    methods: ["*"],
+    path: "/v1/parent-extras-dashboard/*",
+    roles: ["admin", "parent", "student", "instructor"],
+  },
+
+  /* HR training dashboard — admin + instructor */
+  { methods: ["*"], path: "/v1/hr-training-dashboard/*", roles: ["admin", "instructor"] },
+
+  /* Student self dashboard — admin + student + instructor */
+  {
+    methods: ["*"],
+    path: "/v1/student-self-dashboard/*",
+    roles: ["admin", "student", "instructor"],
+  },
+
   /* Admin portal */
   { methods: ["GET"], path: "/v1/admin/users", roles: ["admin"] },
   { methods: ["POST"], path: "/v1/admin/users", roles: ["admin"] },

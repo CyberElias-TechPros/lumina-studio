@@ -12,6 +12,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import { useDirBranches } from "@/lib/query/director";
+import type { DirBranch } from "@/lib/api/director";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/director/operations")({
@@ -24,13 +27,14 @@ export const Route = createFileRoute("/app/director/operations")({
   component: DirectorOperations,
 });
 
-const branches = [
-  { b: "Ikeja HQ", u: "86%", c: "₦8.2/seat-day", tone: "bg-success/10 text-success" },
-  { b: "Victoria Island", u: "79%", c: "₦9.6/seat-day", tone: "bg-primary/10 text-primary" },
-  { b: "Abeokuta", u: "53%", c: "₦11.4/seat-day", tone: "bg-warning/10 text-warning" },
-];
+function branchTone(status: string) {
+  if (/high/i.test(status)) return "bg-success/10 text-success";
+  if (/normal/i.test(status)) return "bg-primary/10 text-primary";
+  return "bg-warning/10 text-warning";
+}
 
 function DirectorOperations() {
+  const branchesQuery = useDirBranches();
   return (
     <AppShell
       roleKey="admin"
@@ -109,24 +113,38 @@ function DirectorOperations() {
           </Button>
         </CardHeader>
         <CardContent className="divide-y">
-          {branches.map((b) => (
-            <div key={b.b} className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0">
-              <div className="min-w-0 flex-1">
-                <p className="text-sm font-bold">{b.b}</p>
-                <p className="text-muted-foreground text-xs">Cost {b.c}</p>
-              </div>
-              <div className="bg-muted h-2 w-32 overflow-hidden rounded-full">
+          <QueryState<DirBranch[]>
+            query={branchesQuery}
+            empty={{ title: "No branch data yet" }}
+            error={{ title: "Failed to load branches" }}
+            isEmpty={(rows) => rows.length === 0}
+          >
+            {(rows) =>
+              rows.map((b) => (
                 <div
-                  className={cn(
-                    "h-full rounded-full",
-                    parseInt(b.u) >= 70 ? "bg-success" : "bg-warning",
-                  )}
-                  style={{ width: b.u }}
-                />
-              </div>
-              <Badge className={cn("shrink-0 border-0 font-semibold", b.tone)}>{b.u} used</Badge>
-            </div>
-          ))}
+                  key={b.id}
+                  className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
+                >
+                  <div className="min-w-0 flex-1">
+                    <p className="text-sm font-bold">{b.name}</p>
+                    <p className="text-muted-foreground text-xs">Cost {b.cost}</p>
+                  </div>
+                  <div className="bg-muted h-2 w-32 overflow-hidden rounded-full">
+                    <div
+                      className={cn(
+                        "h-full rounded-full",
+                        parseInt(b.utilization) >= 70 ? "bg-success" : "bg-warning",
+                      )}
+                      style={{ width: b.utilization }}
+                    />
+                  </div>
+                  <Badge className={cn("shrink-0 border-0 font-semibold", branchTone(b.status))}>
+                    {b.utilization} used
+                  </Badge>
+                </div>
+              ))
+            }
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>

@@ -12,6 +12,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import { useDirModules, useDirSaved } from "@/lib/query/director";
+import type { DirModule, DirSavedReport } from "@/lib/api/director";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/director/reports")({
@@ -24,30 +27,21 @@ export const Route = createFileRoute("/app/director/reports")({
   component: DirectorReports,
 });
 
-const modules = [
-  { m: "Finance", d: "P&L · cash · receivables", tone: "bg-success/10 text-success" },
-  { m: "Academic", d: "Enrolment · completion · placement", tone: "bg-primary/10 text-primary" },
-  { m: "Operations", d: "Efficiency · cost per branch", tone: "bg-learning/10 text-learning" },
-  { m: "People", d: "Headcount · turnover · eNPS", tone: "bg-community/10 text-community" },
-  { m: "Marketing", d: "CAC · funnel · ROI", tone: "bg-warning/10 text-warning" },
-  { m: "Quality", d: "Reviews · audits · accreditation", tone: "bg-erp/10 text-erp" },
-];
-
-const saved = [
-  { r: "Board pack — Q3", d: "Generated Aug 1 · PDF", tone: "bg-success/10 text-success" },
-  {
-    r: "Cohort 14 placement deep-dive",
-    d: "Generated Jul 28 · CSV",
-    tone: "bg-primary/10 text-primary",
-  },
-  {
-    r: "Branch P&L comparison",
-    d: "Generated Jul 25 · XLSX",
-    tone: "bg-learning/10 text-learning",
-  },
-];
+function moduleTone(name: string) {
+  const tones: Record<string, string> = {
+    Finance: "bg-success/10 text-success",
+    Academic: "bg-primary/10 text-primary",
+    Operations: "bg-learning/10 text-learning",
+    People: "bg-community/10 text-community",
+    Marketing: "bg-warning/10 text-warning",
+    Quality: "bg-erp/10 text-erp",
+  };
+  return tones[name] ?? "bg-primary/10 text-primary";
+}
 
 function DirectorReports() {
+  const modulesQuery = useDirModules();
+  const savedQuery = useDirSaved();
   return (
     <AppShell
       roleKey="admin"
@@ -88,27 +82,38 @@ function DirectorReports() {
             </CardTitle>
           </CardHeader>
           <CardContent className="grid gap-3 sm:grid-cols-2">
-            {modules.map((m) => (
-              <div
-                key={m.m}
-                className="group flex flex-col justify-between rounded-xl border p-3.5"
-              >
-                <div className="flex items-center gap-2">
-                  <Badge className={cn("border-0 font-semibold", m.tone)}>{m.m}</Badge>
-                </div>
-                <p className="text-muted-foreground mt-2 text-xs">{m.d}</p>
-                <Button
-                  asChild
-                  variant="ghost"
-                  size="sm"
-                  className="mt-3 justify-start px-0 font-semibold"
-                >
-                  <Link to="/app/director/command-center">
-                    Drill down <ArrowRight className="ml-1 size-3.5" />
-                  </Link>
-                </Button>
-              </div>
-            ))}
+            <QueryState<DirModule[]>
+              query={modulesQuery}
+              empty={{ title: "No modules yet" }}
+              error={{ title: "Failed to load modules" }}
+              isEmpty={(rows) => rows.length === 0}
+            >
+              {(rows) =>
+                rows.map((m) => (
+                  <div
+                    key={m.id}
+                    className="group flex flex-col justify-between rounded-xl border p-3.5"
+                  >
+                    <div className="flex items-center gap-2">
+                      <Badge className={cn("border-0 font-semibold", moduleTone(m.name))}>
+                        {m.name}
+                      </Badge>
+                    </div>
+                    <p className="text-muted-foreground mt-2 text-xs">{m.detail}</p>
+                    <Button
+                      asChild
+                      variant="ghost"
+                      size="sm"
+                      className="mt-3 justify-start px-0 font-semibold"
+                    >
+                      <Link to="/app/director/command-center">
+                        Drill down <ArrowRight className="ml-1 size-3.5" />
+                      </Link>
+                    </Button>
+                  </div>
+                ))
+              }
+            </QueryState>
           </CardContent>
         </Card>
 
@@ -122,20 +127,29 @@ function DirectorReports() {
             </Badge>
           </CardHeader>
           <CardContent className="divide-y">
-            {saved.map((r) => (
-              <div
-                key={r.r}
-                className="flex flex-wrap items-center gap-3 py-3.5 first:pt-0 last:pb-0"
-              >
-                <div className="min-w-0 flex-1">
-                  <p className="text-sm font-bold">{r.r}</p>
-                  <p className="text-muted-foreground text-xs">{r.d}</p>
-                </div>
-                <Button variant="outline" size="sm" className="shrink-0 font-semibold">
-                  <Download className="size-3.5" /> Export
-                </Button>
-              </div>
-            ))}
+            <QueryState<DirSavedReport[]>
+              query={savedQuery}
+              empty={{ title: "No saved reports yet" }}
+              error={{ title: "Failed to load saved reports" }}
+              isEmpty={(rows) => rows.length === 0}
+            >
+              {(rows) =>
+                rows.map((r) => (
+                  <div
+                    key={r.id}
+                    className="flex flex-wrap items-center gap-3 py-3.5 first:pt-0 last:pb-0"
+                  >
+                    <div className="min-w-0 flex-1">
+                      <p className="text-sm font-bold">{r.name}</p>
+                      <p className="text-muted-foreground text-xs">{r.detail}</p>
+                    </div>
+                    <Button variant="outline" size="sm" className="shrink-0 font-semibold">
+                      <Download className="size-3.5" /> Export
+                    </Button>
+                  </div>
+                ))
+              }
+            </QueryState>
           </CardContent>
         </Card>
       </div>

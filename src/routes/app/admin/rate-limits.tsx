@@ -4,6 +4,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import { useAdmRules } from "@/lib/query/adminSystems";
+import type { AdmRule } from "@/lib/api/adminSystems";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/admin/rate-limits")({
@@ -16,18 +19,16 @@ export const Route = createFileRoute("/app/admin/rate-limits")({
   component: AdminRateLimits,
 });
 
-const rules = [
-  {
-    r: "API · global",
-    v: "600 req/min · burst 1,000",
-    s: "Enforcing",
-    tone: "bg-success/10 text-success",
-  },
-  { r: "Auth · login", v: "5 / 15 min per IP", s: "Enforcing", tone: "bg-success/10 text-success" },
-  { r: "Webhooks · outbound", v: "120 / min", s: "Enforcing", tone: "bg-success/10 text-success" },
-];
+function statusTone(status: string) {
+  if (/active|verified|connected|on track|published/i.test(status))
+    return "bg-success/10 text-success";
+  if (/expiring|pending|paused/i.test(status)) return "bg-warning/10 text-warning";
+  if (/failed|rejected|revoked/i.test(status)) return "bg-destructive/10 text-destructive";
+  return "bg-primary/10 text-primary";
+}
 
 function AdminRateLimits() {
+  const rulesQuery = useAdmRules();
   return (
     <AppShell
       roleKey="admin"
@@ -99,18 +100,32 @@ function AdminRateLimits() {
           </CardTitle>
         </CardHeader>
         <CardContent className="divide-y">
-          {rules.map((r) => (
-            <div key={r.r} className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0">
-              <div className="min-w-0 flex-1">
-                <p className="text-sm font-bold">{r.r}</p>
-                <p className="text-muted-foreground text-xs">{r.v}</p>
-              </div>
-              <Badge className={cn("border-0 font-semibold", r.tone)}>{r.s}</Badge>
-              <Button variant="outline" size="sm" className="shrink-0 font-semibold">
-                Adjust
-              </Button>
-            </div>
-          ))}
+          <QueryState<AdmRule[]>
+            query={rulesQuery}
+            error={{ title: "Failed to load rate limit rules" }}
+            empty={{ title: "No rules yet" }}
+            isEmpty={(rows) => rows.length === 0}
+          >
+            {(rows) =>
+              rows.map((r) => (
+                <div
+                  key={r.id}
+                  className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
+                >
+                  <div className="min-w-0 flex-1">
+                    <p className="text-sm font-bold">{r.name}</p>
+                    <p className="text-muted-foreground text-xs">{r.valueLabel}</p>
+                  </div>
+                  <Badge className={cn("border-0 font-semibold", statusTone(r.status))}>
+                    {r.status}
+                  </Badge>
+                  <Button variant="outline" size="sm" className="shrink-0 font-semibold">
+                    Adjust
+                  </Button>
+                </div>
+              ))
+            }
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>

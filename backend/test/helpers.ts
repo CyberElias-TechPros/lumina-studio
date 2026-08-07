@@ -29,6 +29,13 @@ import conversionCopySql from "../migrations/0026_conversion_copy.sql?raw";
 import departmentSql from "../migrations/0027_department.sql?raw";
 import ngoSql from "../migrations/0028_ngo.sql?raw";
 import clientSql from "../migrations/0029_client.sql?raw";
+import adminSystemsSql from "../migrations/0030_admin_systems.sql?raw";
+import directorSql from "../migrations/0031_director.sql?raw";
+import instructorExtrasSql from "../migrations/0032_instructor_extras.sql?raw";
+import admissionsExtrasSql from "../migrations/0033_admissions_extras.sql?raw";
+import parentExtrasSql from "../migrations/0034_parent_extras.sql?raw";
+import hrTrainingSql from "../migrations/0035_hr_training.sql?raw";
+import studentSelfSql from "../migrations/0036_student_self.sql?raw";
 import { seedContentSql } from "../seeds/content";
 import { seedLmsSql } from "../seeds/lms";
 import { seedDomainSql } from "../seeds/domain";
@@ -53,6 +60,13 @@ import { seedConversionCopySql } from "../seeds/conversion-copy";
 import { seedDepartmentSql } from "../seeds/department";
 import { seedNgoSql } from "../seeds/ngo";
 import { seedClientSql } from "../seeds/client";
+import { seedAdminSystemsSql } from "../seeds/admin-systems";
+import { seedDirectorSql } from "../seeds/director";
+import { seedInstructorExtrasSql } from "../seeds/instructor-extras";
+import { seedAdmissionsExtrasSql } from "../seeds/admissions-extras";
+import { seedParentExtrasSql } from "../seeds/parent-extras";
+import { seedHrTrainingSql } from "../seeds/hr-training";
+import { seedStudentSelfSql } from "../seeds/student-self";
 import type { Session } from "../src/schema/api";
 
 export const SESSION_COOKIE = "cea_session";
@@ -101,6 +115,13 @@ export async function setupDb(): Promise<void> {
     departmentSql,
     ngoSql,
     clientSql,
+    adminSystemsSql,
+    directorSql,
+    instructorExtrasSql,
+    admissionsExtrasSql,
+    parentExtrasSql,
+    hrTrainingSql,
+    studentSelfSql,
   ]) {
     const statements = sql
       .split("\n")
@@ -137,6 +158,13 @@ export async function setupDb(): Promise<void> {
   await execStatements(seedDepartmentSql);
   await execStatements(seedNgoSql);
   await execStatements(seedClientSql);
+  await execStatements(seedAdminSystemsSql);
+  await execStatements(seedDirectorSql);
+  await execStatements(seedInstructorExtrasSql);
+  await execStatements(seedAdmissionsExtrasSql);
+  await execStatements(seedParentExtrasSql);
+  await execStatements(seedHrTrainingSql);
+  await execStatements(seedStudentSelfSql);
 }
 
 export function api(path: string, init?: RequestInit): Promise<Response> {

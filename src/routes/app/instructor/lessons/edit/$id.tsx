@@ -29,6 +29,9 @@ import {
 import { Switch } from "@/components/ui/switch";
 import { Textarea } from "@/components/ui/textarea";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import { useInsRevisions } from "@/lib/query/instructorExtras";
+import type { InsRevision } from "@/lib/api/instructorExtras";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/instructor/lessons/edit/$id")({
@@ -44,14 +47,9 @@ export const Route = createFileRoute("/app/instructor/lessons/edit/$id")({
   component: LessonEditor,
 });
 
-const revisions = [
-  { v: "v3", t: "Fixed middleware demo bug", by: "Ada Obi", d: "Jul 30 · 16:42" },
-  { v: "v2", t: "Added JWT refresh section", by: "Ada Obi", d: "Jul 29 · 11:18" },
-  { v: "v1", t: "Initial draft from outline", by: "Ada Obi", d: "Jul 27 · 09:03" },
-];
-
 function LessonEditor() {
   const { id } = Route.useParams();
+  const revisionsQuery = useInsRevisions();
 
   return (
     <AppShell
@@ -269,22 +267,34 @@ Homework: extend the lab with a CSRF guard before Friday."
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-3">
-              {revisions.map((r) => (
-                <div key={r.v} className="flex flex-wrap items-center gap-3 rounded-xl border p-3">
-                  <span className="bg-primary/10 text-primary grid size-8 place-items-center rounded-lg text-xs font-extrabold">
-                    {r.v}
-                  </span>
-                  <div className="min-w-0 flex-1">
-                    <p className="text-xs font-bold">{r.t}</p>
-                    <p className="text-muted-foreground text-[11px]">
-                      {r.by} · {r.d}
-                    </p>
-                  </div>
-                  <Button variant="ghost" size="sm" className="text-primary font-semibold">
-                    Restore
-                  </Button>
-                </div>
-              ))}
+              <QueryState<InsRevision[]>
+                query={revisionsQuery}
+                error={{ title: "Failed to load revisions" }}
+                empty={{ title: "No revisions yet" }}
+                isEmpty={(rows) => rows.length === 0}
+              >
+                {(revisions) =>
+                  revisions.map((r) => (
+                    <div
+                      key={r.id}
+                      className="flex flex-wrap items-center gap-3 rounded-xl border p-3"
+                    >
+                      <span className="bg-primary/10 text-primary grid size-8 place-items-center rounded-lg text-xs font-extrabold">
+                        {r.version}
+                      </span>
+                      <div className="min-w-0 flex-1">
+                        <p className="text-xs font-bold">{r.title}</p>
+                        <p className="text-muted-foreground text-[11px]">
+                          {r.author} · {r.dateLabel}
+                        </p>
+                      </div>
+                      <Button variant="ghost" size="sm" className="text-primary font-semibold">
+                        Restore
+                      </Button>
+                    </div>
+                  ))
+                }
+              </QueryState>
             </CardContent>
           </Card>
         </div>

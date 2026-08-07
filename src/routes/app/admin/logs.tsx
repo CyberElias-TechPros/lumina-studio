@@ -4,6 +4,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import { useDevErrors } from "@/lib/query/dev";
+import type { DevError } from "@/lib/api/dev";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/admin/logs")({
@@ -16,28 +19,14 @@ export const Route = createFileRoute("/app/admin/logs")({
   component: AdminLogs,
 });
 
-const logs = [
-  {
-    l: "ERROR · api · 500 GET /invoices",
-    t: "Jul 31 · 07:12",
-    s: "Error",
-    tone: "bg-destructive/10 text-destructive",
-  },
-  {
-    l: "WARN · worker · queue backlog > 1k",
-    t: "Jul 31 · 06:58",
-    s: "Warn",
-    tone: "bg-warning/10 text-warning",
-  },
-  {
-    l: "INFO · web · deploy v1.42.0",
-    t: "Jul 31 · 06:12",
-    s: "Info",
-    tone: "bg-success/10 text-success",
-  },
-];
+function errorTone(status: string) {
+  if (/fixed|resolved|success|info/i.test(status)) return "bg-success/10 text-success";
+  if (/new|critical|urgent|error|warn/i.test(status)) return "bg-destructive/10 text-destructive";
+  return "bg-warning/10 text-warning";
+}
 
 function AdminLogs() {
+  const errorsQuery = useDevErrors();
   return (
     <AppShell
       roleKey="admin"
@@ -109,18 +98,26 @@ function AdminLogs() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-3">
-          {logs.map((l) => (
-            <div
-              key={l.l + l.t}
-              className="flex flex-wrap items-center gap-3 rounded-xl border p-3"
-            >
-              <div className="min-w-0 flex-1">
-                <p className="font-mono text-xs font-bold">{l.l}</p>
-                <p className="text-muted-foreground text-xs">{l.t}</p>
-              </div>
-              <Badge className={cn("border-0 font-semibold", l.tone)}>{l.s}</Badge>
-            </div>
-          ))}
+          <QueryState<DevError[]>
+            query={errorsQuery}
+            error={{ title: "Failed to load log lines" }}
+            empty={{ title: "No log lines" }}
+            isEmpty={(rows) => rows.length === 0}
+          >
+            {(items) =>
+              items.map((l) => (
+                <div key={l.id} className="flex flex-wrap items-center gap-3 rounded-xl border p-3">
+                  <div className="min-w-0 flex-1">
+                    <p className="font-mono text-xs font-bold">{l.title}</p>
+                    <p className="text-muted-foreground text-xs">{l.countLabel}</p>
+                  </div>
+                  <Badge className={cn("border-0 font-semibold", errorTone(l.status))}>
+                    {l.status}
+                  </Badge>
+                </div>
+              ))
+            }
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>

@@ -4,6 +4,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import { useDirOkrs } from "@/lib/query/director";
+import type { DirOkr } from "@/lib/api/director";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/director/okrs")({
@@ -16,37 +19,34 @@ export const Route = createFileRoute("/app/director/okrs")({
   component: DirectorOkrs,
 });
 
-const okrs = [
-  {
-    o: "O1 · Hit 240 enrolled students",
-    pct: 89,
-    tone: "bg-primary/10 text-primary",
-    krs: [
-      { k: "Complete fall admissions cycle", pct: 92 },
-      { k: "Referral program → 80 signups", pct: 64 },
-    ],
-  },
-  {
-    o: "O2 · 75% placement by Q4",
-    pct: 71,
-    tone: "bg-career/10 text-career",
-    krs: [
-      { k: "Add 12 employer partners", pct: 75 },
-      { k: "Interview readiness pass rate 90%", pct: 68 },
-    ],
-  },
-  {
-    o: "O3 · 30% gross margin",
-    pct: 27,
-    tone: "bg-success/10 text-success",
-    krs: [
-      { k: "Cut facilities cost 8%", pct: 52 },
-      { k: "Lift services revenue ₦2m", pct: 61 },
-    ],
-  },
-];
+interface GroupedOkr {
+  objective: string;
+  pct: number;
+  krs: Array<{ k: string; pct: number }>;
+}
+
+function groupOkrs(rows: DirOkr[]): GroupedOkr[] {
+  const map = new Map<string, Array<{ k: string; pct: number }>>();
+  for (const row of rows) {
+    const krs = map.get(row.objectiveLabel) ?? [];
+    krs.push({ k: row.krLabel, pct: row.pct });
+    map.set(row.objectiveLabel, krs);
+  }
+  return Array.from(map, ([objective, krs]) => ({
+    objective,
+    pct: Math.round(krs.reduce((sum, kr) => sum + kr.pct, 0) / krs.length),
+    krs,
+  }));
+}
+
+function pctTone(pct: number) {
+  if (pct >= 75) return "bg-success/10 text-success";
+  if (pct >= 40) return "bg-primary/10 text-primary";
+  return "bg-warning/10 text-warning";
+}
 
 function DirectorOkrs() {
+  const okrsQuery = useDirOkrs();
   return (
     <AppShell
       roleKey="admin"
@@ -114,32 +114,41 @@ function DirectorOkrs() {
       </div>
 
       <div className="mt-5 grid gap-5 xl:grid-cols-2">
-        {okrs.map((o) => (
-          <Card key={o.o} className="bg-card shadow-soft border">
-            <CardHeader className="flex-row items-center justify-between">
-              <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
-                <Target className={cn("size-4", o.tone)} /> {o.o}
-              </CardTitle>
-              <Badge className={cn("border-0 font-semibold", o.tone)}>{o.pct}%</Badge>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              {o.krs.map((k) => (
-                <div key={k.k}>
-                  <div className="flex items-center justify-between text-xs font-semibold">
-                    <span>{k.k}</span>
-                    <span>{k.pct}%</span>
-                  </div>
-                  <div className="bg-muted mt-1.5 h-2 overflow-hidden rounded-full">
-                    <div
-                      className="bg-gradient-brand h-full rounded-full"
-                      style={{ width: `${k.pct}%` }}
-                    />
-                  </div>
-                </div>
-              ))}
-            </CardContent>
-          </Card>
-        ))}
+        <QueryState<DirOkr[]>
+          query={okrsQuery}
+          empty={{ title: "No OKRs yet" }}
+          error={{ title: "Failed to load OKRs" }}
+          isEmpty={(rows) => rows.length === 0}
+        >
+          {(rows) =>
+            groupOkrs(rows).map((o) => (
+              <Card key={o.objective} className="bg-card shadow-soft border">
+                <CardHeader className="flex-row items-center justify-between">
+                  <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
+                    <Target className={cn("size-4", pctTone(o.pct))} /> {o.objective}
+                  </CardTitle>
+                  <Badge className={cn("border-0 font-semibold", pctTone(o.pct))}>{o.pct}%</Badge>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  {o.krs.map((k) => (
+                    <div key={k.k}>
+                      <div className="flex items-center justify-between text-xs font-semibold">
+                        <span>{k.k}</span>
+                        <span>{k.pct}%</span>
+                      </div>
+                      <div className="bg-muted mt-1.5 h-2 overflow-hidden rounded-full">
+                        <div
+                          className="bg-gradient-brand h-full rounded-full"
+                          style={{ width: `${k.pct}%` }}
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </CardContent>
+              </Card>
+            ))
+          }
+        </QueryState>
         <div className="flex items-center justify-center">
           <Button size="sm" className="bg-gradient-brand shadow-glow border-0 font-semibold">
             <Plus className="size-4" /> New objective

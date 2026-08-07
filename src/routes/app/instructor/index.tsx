@@ -29,6 +29,9 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import { useInsOverview } from "@/lib/query/instructorExtras";
+import type { InsKpi } from "@/lib/api/instructorExtras";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/instructor/")({
@@ -174,7 +177,23 @@ const queue = [
   },
 ];
 
+function kpiMeta(metric: string) {
+  switch (metric.toLowerCase()) {
+    case "active students":
+      return { icon: Users, tone: "bg-primary/10 text-primary" };
+    case "pending grading":
+      return { icon: ListChecks, tone: "bg-warning/10 text-warning" };
+    case "completion rate":
+      return { icon: TrendingUp, tone: "bg-success/10 text-success" };
+    case "avg class attendance":
+      return { icon: CalendarCheck, tone: "bg-learning/10 text-learning" };
+    default:
+      return { icon: ListChecks, tone: "bg-primary/10 text-primary" };
+  }
+}
+
 function InstructorDashboard() {
+  const overviewQuery = useInsOverview();
   return (
     <AppShell
       roleKey="instructor"
@@ -192,51 +211,34 @@ function InstructorDashboard() {
       }
     >
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-        {[
-          {
-            label: "Active students",
-            value: "128",
-            delta: "+9 this week",
-            icon: Users,
-            tone: "bg-primary/10 text-primary",
-          },
-          {
-            label: "Pending grading",
-            value: "23",
-            delta: "4 due today",
-            icon: ListChecks,
-            tone: "bg-warning/10 text-warning",
-          },
-          {
-            label: "Completion rate",
-            value: "84%",
-            delta: "+3.2% vs last term",
-            icon: TrendingUp,
-            tone: "bg-success/10 text-success",
-          },
-          {
-            label: "Avg class attendance",
-            value: "91%",
-            delta: "vs 85% target",
-            icon: CalendarCheck,
-            tone: "bg-learning/10 text-learning",
-          },
-        ].map((k) => (
-          <Card key={k.label} className="bg-card shadow-soft border">
-            <CardContent className="p-5">
-              <div className="flex items-center justify-between">
-                <p className="text-muted-foreground text-xs font-bold tracking-wide uppercase">
-                  {k.label}
-                </p>
-                <span className={cn("grid size-8 place-items-center rounded-lg", k.tone)}>
-                  <k.icon className="size-4" />
-                </span>
-              </div>
-              <p className="font-display mt-3 text-2xl font-extrabold">{k.value}</p>
-              <p className="text-muted-foreground mt-0.5 text-xs font-semibold">{k.delta}</p>
-            </CardContent>
-          </Card>
-        ))}
+        <QueryState<InsKpi[]>
+          query={overviewQuery}
+          error={{ title: "Failed to load overview" }}
+          empty={{ title: "No metrics yet" }}
+          isEmpty={(rows) => rows.length === 0}
+        >
+          {(kpis) =>
+            kpis.map((k) => {
+              const meta = kpiMeta(k.metric);
+              return (
+                <Card key={k.id} className="bg-card shadow-soft border">
+                  <CardContent className="p-5">
+                    <div className="flex items-center justify-between">
+                      <p className="text-muted-foreground text-xs font-bold tracking-wide uppercase">
+                        {k.metric}
+                      </p>
+                      <span className={cn("grid size-8 place-items-center rounded-lg", meta.tone)}>
+                        <meta.icon className="size-4" />
+                      </span>
+                    </div>
+                    <p className="font-display mt-3 text-2xl font-extrabold">{k.valueLabel}</p>
+                    <p className="text-muted-foreground mt-0.5 text-xs font-semibold">{k.delta}</p>
+                  </CardContent>
+                </Card>
+              );
+            })
+          }
+        </QueryState>
       </div>
 
       <Card className="bg-card mt-5 shadow-soft border">

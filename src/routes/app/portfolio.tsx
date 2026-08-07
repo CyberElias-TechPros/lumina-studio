@@ -14,6 +14,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import { useStuCv, useStuPortfolio, useStuProjects, useStuSkills } from "@/lib/query/studentSelf";
+import type { StuCvFile, StuKpi, StuProject, StuSkill } from "@/lib/api/studentSelf";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/portfolio")({
@@ -26,35 +29,20 @@ export const Route = createFileRoute("/app/portfolio")({
   component: PortfolioBuilder,
 });
 
-const projects = [
-  {
-    t: "NaijaEats — food delivery API",
-    desc: "REST API + PostgreSQL, 40+ endpoints, rate limiting, Swagger docs.",
-    tags: ["Node.js", "PostgreSQL", "Docker"],
-    featured: true,
-  },
-  {
-    t: "BudgetPadi — expense tracker",
-    desc: "PWA with offline mode, charts and bank-format CSV export.",
-    tags: ["React", "PWA", "Chart.js"],
-    featured: true,
-  },
-  {
-    t: "ClassBoard — LMS dashboard UI",
-    desc: "Design system and component library in Figma, 60+ components.",
-    tags: ["Figma", "Design system", "a11y"],
-    featured: false,
-  },
+const kpiMeta = [
+  { icon: FolderGit2, tone: "bg-primary/10 text-primary" },
+  { icon: Award, tone: "bg-learning/10 text-learning" },
+  { icon: Download, tone: "bg-success/10 text-success" },
+  { icon: Sparkles, tone: "bg-warning/10 text-warning" },
 ];
 
-const skills = [
-  { s: "JavaScript / TypeScript", pct: 92 },
-  { s: "Node.js & REST APIs", pct: 84 },
-  { s: "React & Tailwind", pct: 88 },
-  { s: "Docker & CI/CD", pct: 61 },
-];
+const cvTones = ["bg-success/10 text-success", "bg-primary/10 text-primary"];
 
 function PortfolioBuilder() {
+  const kpisQuery = useStuPortfolio();
+  const projectsQuery = useStuProjects();
+  const skillsQuery = useStuSkills();
+  const cvQuery = useStuCv();
   return (
     <AppShell
       roleKey="student"
@@ -71,53 +59,36 @@ function PortfolioBuilder() {
         </>
       }
     >
-      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-        {[
-          {
-            label: "Projects",
-            value: "3",
-            delta: "2 featured",
-            icon: FolderGit2,
-            tone: "bg-primary/10 text-primary",
-          },
-          {
-            label: "Skills verified",
-            value: "11",
-            delta: "16 OSKM skills",
-            icon: Award,
-            tone: "bg-learning/10 text-learning",
-          },
-          {
-            label: "CV downloads",
-            value: "27",
-            delta: "this month",
-            icon: Download,
-            tone: "bg-success/10 text-success",
-          },
-          {
-            label: "Profile views",
-            value: "142",
-            delta: "+38% this week",
-            icon: Sparkles,
-            tone: "bg-warning/10 text-warning",
-          },
-        ].map((k) => (
-          <Card key={k.label} className="bg-card shadow-soft border">
-            <CardContent className="p-5">
-              <div className="flex items-center justify-between">
-                <p className="text-muted-foreground text-xs font-bold tracking-wide uppercase">
-                  {k.label}
-                </p>
-                <span className={cn("grid size-8 place-items-center rounded-lg", k.tone)}>
-                  <k.icon className="size-4" />
-                </span>
-              </div>
-              <p className="font-display mt-3 text-2xl font-extrabold">{k.value}</p>
-              <p className="text-muted-foreground mt-0.5 text-xs font-semibold">{k.delta}</p>
-            </CardContent>
-          </Card>
-        ))}
-      </div>
+      <QueryState<StuKpi[]>
+        query={kpisQuery}
+        error={{ title: "Failed to load portfolio metrics" }}
+        empty={{ title: "No portfolio metrics yet" }}
+        isEmpty={(rows) => rows.length === 0}
+      >
+        {(kpis) => (
+          <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+            {kpis.map((k, i) => {
+              const meta = kpiMeta[i % kpiMeta.length];
+              return (
+                <Card key={k.id} className="bg-card shadow-soft border">
+                  <CardContent className="p-5">
+                    <div className="flex items-center justify-between">
+                      <p className="text-muted-foreground text-xs font-bold tracking-wide uppercase">
+                        {k.metric}
+                      </p>
+                      <span className={cn("grid size-8 place-items-center rounded-lg", meta.tone)}>
+                        <meta.icon className="size-4" />
+                      </span>
+                    </div>
+                    <p className="font-display mt-3 text-2xl font-extrabold">{k.valueLabel}</p>
+                    <p className="text-muted-foreground mt-0.5 text-xs font-semibold">{k.delta}</p>
+                  </CardContent>
+                </Card>
+              );
+            })}
+          </div>
+        )}
+      </QueryState>
 
       <div className="mt-5 grid gap-5 xl:grid-cols-[1.5fr_1fr]">
         <Card className="bg-card shadow-soft border">
@@ -130,33 +101,44 @@ function PortfolioBuilder() {
             </Button>
           </CardHeader>
           <CardContent className="space-y-4">
-            {projects.map((p) => (
-              <div key={p.t} className="rounded-xl border p-4">
-                <div className="flex flex-wrap items-center justify-between gap-2">
-                  <p className="font-display flex items-center gap-2 text-sm font-bold">
-                    {p.featured && <Sparkles className="text-warning size-4" />} {p.t}
-                  </p>
-                  <div className="flex gap-2">
-                    {p.featured && (
-                      <Badge className="bg-warning/10 text-warning border-0 font-semibold">
-                        Featured
-                      </Badge>
-                    )}
-                    <Button variant="ghost" size="sm" className="text-primary font-semibold">
-                      <ExternalLink className="size-3.5" /> Live
-                    </Button>
+            <QueryState<StuProject[]>
+              query={projectsQuery}
+              error={{ title: "Failed to load projects" }}
+              empty={{ title: "No projects yet" }}
+              isEmpty={(rows) => rows.length === 0}
+            >
+              {(items) =>
+                items.map((p) => (
+                  <div key={p.id} className="rounded-xl border p-4">
+                    <div className="flex flex-wrap items-center justify-between gap-2">
+                      <p className="font-display flex items-center gap-2 text-sm font-bold">
+                        {p.featured > 0 && <Sparkles className="text-warning size-4" />} {p.name}
+                      </p>
+                      <div className="flex gap-2">
+                        {p.featured > 0 && (
+                          <Badge className="bg-warning/10 text-warning border-0 font-semibold">
+                            Featured
+                          </Badge>
+                        )}
+                        <Button variant="ghost" size="sm" className="text-primary font-semibold">
+                          <ExternalLink className="size-3.5" /> Live
+                        </Button>
+                      </div>
+                    </div>
+                    <p className="text-muted-foreground mt-1.5 text-xs leading-relaxed">
+                      {p.detail}
+                    </p>
+                    <div className="mt-3 flex flex-wrap gap-1.5">
+                      {p.tags.map((t) => (
+                        <Badge key={t} variant="secondary" className="font-semibold">
+                          {t}
+                        </Badge>
+                      ))}
+                    </div>
                   </div>
-                </div>
-                <p className="text-muted-foreground mt-1.5 text-xs leading-relaxed">{p.desc}</p>
-                <div className="mt-3 flex flex-wrap gap-1.5">
-                  {p.tags.map((t) => (
-                    <Badge key={t} variant="secondary" className="font-semibold">
-                      {t}
-                    </Badge>
-                  ))}
-                </div>
-              </div>
-            ))}
+                ))
+              }
+            </QueryState>
             <Button variant="outline" size="sm" className="w-full font-semibold">
               <Plus className="size-3.5" /> Import from GitHub
             </Button>
@@ -171,20 +153,29 @@ function PortfolioBuilder() {
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-3">
-              {skills.map((s) => (
-                <div key={s.s}>
-                  <div className="flex items-center justify-between text-xs font-semibold">
-                    <span>{s.s}</span>
-                    <span className="text-muted-foreground">{s.pct}%</span>
-                  </div>
-                  <div className="bg-muted mt-1.5 h-1.5 overflow-hidden rounded-full">
-                    <div
-                      className="bg-primary h-full rounded-full"
-                      style={{ width: `${s.pct}%` }}
-                    />
-                  </div>
-                </div>
-              ))}
+              <QueryState<StuSkill[]>
+                query={skillsQuery}
+                error={{ title: "Failed to load skills" }}
+                empty={{ title: "No verified skills" }}
+                isEmpty={(rows) => rows.length === 0}
+              >
+                {(items) =>
+                  items.map((s) => (
+                    <div key={s.id}>
+                      <div className="flex items-center justify-between text-xs font-semibold">
+                        <span>{s.name}</span>
+                        <span className="text-muted-foreground">{s.pct}%</span>
+                      </div>
+                      <div className="bg-muted mt-1.5 h-1.5 overflow-hidden rounded-full">
+                        <div
+                          className="bg-primary h-full rounded-full"
+                          style={{ width: `${s.pct}%` }}
+                        />
+                      </div>
+                    </div>
+                  ))
+                }
+              </QueryState>
               <p className="text-muted-foreground pt-1 text-xs">
                 Skill scores combine coursework, projects and mentor endorsements.
               </p>
@@ -198,17 +189,30 @@ function PortfolioBuilder() {
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-2">
-              {[
-                { f: "CEA_Ada_Okafor_CV.pdf", tone: "bg-success/10 text-success" },
-                { f: "One-page resume (ATS)", tone: "bg-primary/10 text-primary" },
-              ].map((x) => (
-                <div key={x.f} className="flex items-center justify-between rounded-xl border p-3">
-                  <span className="text-sm font-semibold">{x.f}</span>
-                  <Button variant="ghost" size="sm" className={cn("font-semibold", x.tone)}>
-                    <Download className="size-3.5" />
-                  </Button>
-                </div>
-              ))}
+              <QueryState<StuCvFile[]>
+                query={cvQuery}
+                error={{ title: "Failed to load CV files" }}
+                empty={{ title: "No CV files" }}
+                isEmpty={(rows) => rows.length === 0}
+              >
+                {(items) =>
+                  items.map((x, i) => (
+                    <div
+                      key={x.id}
+                      className="flex items-center justify-between rounded-xl border p-3"
+                    >
+                      <span className="text-sm font-semibold">{x.filename}</span>
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        className={cn("font-semibold", cvTones[i % cvTones.length])}
+                      >
+                        <Download className="size-3.5" />
+                      </Button>
+                    </div>
+                  ))
+                }
+              </QueryState>
               <p className="text-muted-foreground pt-1 text-xs">
                 Auto-updated from your projects, grades and work history.
               </p>

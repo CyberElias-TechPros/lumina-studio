@@ -1,0 +1,23 @@
+-- Seed: Admin systems.
+INSERT OR IGNORE INTO adm_hub (id, metric, value_label, delta, sort_order) VALUES ('adm-hb-01', 'Users', '8,412', '+214 this month', 1);
+INSERT OR IGNORE INTO adm_hub (id, metric, value_label, delta, sort_order) VALUES ('adm-hb-02', 'Security alerts', '0', 'last 24h', 2);
+INSERT OR IGNORE INTO adm_hub (id, metric, value_label, delta, sort_order) VALUES ('adm-hb-03', 'Uptime (30d)', '99.99%', 'two nines nine', 3);
+INSERT OR IGNORE INTO adm_hub (id, metric, value_label, delta, sort_order) VALUES ('adm-hb-04', 'Backups', '12', 'all verified', 4);
+INSERT OR IGNORE INTO adm_keys (id, name, scope, last_used, status, sort_order) VALUES ('adm-ky-01', 'ci-deploy', 'deploy:prod', 'Rotated Jul 30', 'Active', 1);
+INSERT OR IGNORE INTO adm_keys (id, name, scope, last_used, status, sort_order) VALUES ('adm-ky-02', 'billing-worker', 'invoices:write', 'Created Jul 12', 'Active', 2);
+INSERT OR IGNORE INTO adm_keys (id, name, scope, last_used, status, sort_order) VALUES ('adm-ky-03', 'legacy-cron', 'reports:read', 'Created Jan 04', 'Expiring', 3);
+INSERT OR IGNORE INTO adm_backups (id, name, detail, status, sort_order) VALUES ('adm-bk-01', 'Production · nightly', 'Jul 31 · 02:00 · 8.4 GB', 'Verified', 1);
+INSERT OR IGNORE INTO adm_backups (id, name, detail, status, sort_order) VALUES ('adm-bk-02', 'Production · nightly', 'Jul 30 · 02:00 · 8.3 GB', 'Verified', 2);
+INSERT OR IGNORE INTO adm_backups (id, name, detail, status, sort_order) VALUES ('adm-bk-03', 'Pre-migration snapshot', 'Jul 15 · 14:00 · 7.9 GB', 'Verified', 3);
+INSERT OR IGNORE INTO adm_backups (id, name, detail, status, sort_order) VALUES ('adm-bk-04', 'Staging · nightly', 'Jul 31 · 02:15 · 2.1 GB', 'Verified', 4);
+INSERT OR IGNORE INTO adm_backups (id, name, detail, status, sort_order) VALUES ('adm-bk-05', 'Production · weekly', 'Jul 28 · 03:00 · 8.4 GB', 'Verified', 5);
+INSERT OR IGNORE INTO adm_integrations (id, name, detail, status, sort_order) VALUES ('adm-in-01', 'GitHub', '3 repos · 12 workflows', 'Connected', 1);
+INSERT OR IGNORE INTO adm_integrations (id, name, detail, status, sort_order) VALUES ('adm-in-02', 'Slack', 'cea-os workspace · 42 channels', 'Connected', 2);
+INSERT OR IGNORE INTO adm_integrations (id, name, detail, status, sort_order) VALUES ('adm-in-03', 'Resend', 'Transactional email · 99.2% delivery', 'Connected', 3);
+INSERT OR IGNORE INTO adm_integrations (id, name, detail, status, sort_order) VALUES ('adm-in-04', 'Sentry', 'cea-api project · 3 envs', 'Connected', 4);
+INSERT OR IGNORE INTO adm_rules (id, name, value_label, status, sort_order) VALUES ('adm-rl-01', 'Global', '1,000 req/min', 'Active', 1);
+INSERT OR IGNORE INTO adm_rules (id, name, value_label, status, sort_order) VALUES ('adm-rl-02', '/v1/auth/sign-in', '5 req/min', 'Active', 2);
+INSERT OR IGNORE INTO adm_rules (id, name, value_label, status, sort_order) VALUES ('adm-rl-03', '/v1/applications', '10 req/min', 'Active', 3);
+INSERT OR IGNORE INTO adm_rules (id, name, value_label, status, sort_order) VALUES ('adm-rl-04', '/v1/admin/*', '100 req/min', 'Active', 4);
+INSERT OR IGNORE INTO adm_rules (id, name, value_label, status, sort_order) VALUES ('adm-rl-05', 'ci-deploy key', '500 req/min', 'Active', 5);
+INSERT OR IGNORE INTO adm_rules (id, name, value_label, status, sort_order) VALUES ('adm-rl-06', 'Custom', '200 req/min', 'Pending', 6);

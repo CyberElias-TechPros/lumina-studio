@@ -4,6 +4,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import { useAdmKeys } from "@/lib/query/adminSystems";
+import type { AdmKey } from "@/lib/api/adminSystems";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/admin/api-keys")({
@@ -16,31 +19,16 @@ export const Route = createFileRoute("/app/admin/api-keys")({
   component: AdminApiKeys,
 });
 
-const keys = [
-  {
-    k: "ci-deploy",
-    s: "deploy:prod",
-    l: "Rotated Jul 30",
-    st: "Active",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    k: "billing-worker",
-    s: "invoices:write",
-    l: "Created Jul 12",
-    st: "Active",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    k: "legacy-cron",
-    s: "reports:read",
-    l: "Created Jan 04",
-    st: "Expiring",
-    tone: "bg-warning/10 text-warning",
-  },
-];
+function statusTone(status: string) {
+  if (/active|verified|connected|on track|published/i.test(status))
+    return "bg-success/10 text-success";
+  if (/expiring|pending|paused/i.test(status)) return "bg-warning/10 text-warning";
+  if (/failed|rejected|revoked/i.test(status)) return "bg-destructive/10 text-destructive";
+  return "bg-primary/10 text-primary";
+}
 
 function AdminApiKeys() {
+  const keysQuery = useAdmKeys();
   return (
     <AppShell
       roleKey="admin"
@@ -112,27 +100,34 @@ function AdminApiKeys() {
           </CardTitle>
         </CardHeader>
         <CardContent className="divide-y">
-          {keys.map((k) => (
-            <div key={k.k} className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0">
-              <div className="min-w-0 flex-1">
-                <p className="font-mono text-sm font-bold">{k.k}</p>
-                <p className="text-muted-foreground text-xs">
-                  {k.s} · {k.l}
-                </p>
-              </div>
-              <Badge
-                className={cn(
-                  "border-0 font-semibold",
-                  k.st === "Active" ? "bg-success/10 text-success" : "bg-warning/10 text-warning",
-                )}
-              >
-                {k.st}
-              </Badge>
-              <Button variant="outline" size="sm" className="shrink-0 font-semibold">
-                Rotate
-              </Button>
-            </div>
-          ))}
+          <QueryState<AdmKey[]>
+            query={keysQuery}
+            error={{ title: "Failed to load service tokens" }}
+            empty={{ title: "No service tokens yet" }}
+            isEmpty={(rows) => rows.length === 0}
+          >
+            {(rows) =>
+              rows.map((k) => (
+                <div
+                  key={k.id}
+                  className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
+                >
+                  <div className="min-w-0 flex-1">
+                    <p className="font-mono text-sm font-bold">{k.name}</p>
+                    <p className="text-muted-foreground text-xs">
+                      {k.scope} · {k.lastUsed}
+                    </p>
+                  </div>
+                  <Badge className={cn("border-0 font-semibold", statusTone(k.status))}>
+                    {k.status}
+                  </Badge>
+                  <Button variant="outline" size="sm" className="shrink-0 font-semibold">
+                    Rotate
+                  </Button>
+                </div>
+              ))
+            }
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>

@@ -13,6 +13,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import { useAdmOverview } from "@/lib/query/adminSystems";
+import type { AdmKpi } from "@/lib/api/adminSystems";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/admin/")({
@@ -70,7 +73,23 @@ const screens = [
   },
 ];
 
+function kpiMeta(metric: string) {
+  switch (metric) {
+    case "Users":
+      return { icon: Users, tone: "bg-primary/10 text-primary" };
+    case "Security alerts":
+      return { icon: ShieldAlert, tone: "bg-success/10 text-success" };
+    case "Uptime (30d)":
+      return { icon: Gauge, tone: "bg-learning/10 text-learning" };
+    case "Backups":
+      return { icon: Settings2, tone: "bg-warning/10 text-warning" };
+    default:
+      return { icon: Gauge, tone: "bg-primary/10 text-primary" };
+  }
+}
+
 function AdminHub() {
+  const overviewQuery = useAdmOverview();
   return (
     <AppShell
       roleKey="admin"
@@ -88,51 +107,34 @@ function AdminHub() {
       }
     >
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-        {[
-          {
-            label: "Users",
-            value: "8,412",
-            delta: "+214 this month",
-            icon: Users,
-            tone: "bg-primary/10 text-primary",
-          },
-          {
-            label: "Security alerts",
-            value: "0",
-            delta: "last 24h",
-            icon: ShieldAlert,
-            tone: "bg-success/10 text-success",
-          },
-          {
-            label: "Uptime (30d)",
-            value: "99.99%",
-            delta: "two nines nine",
-            icon: Gauge,
-            tone: "bg-learning/10 text-learning",
-          },
-          {
-            label: "Backups",
-            value: "12",
-            delta: "all verified",
-            icon: Settings2,
-            tone: "bg-warning/10 text-warning",
-          },
-        ].map((k) => (
-          <Card key={k.label} className="bg-card shadow-soft border">
-            <CardContent className="p-5">
-              <div className="flex items-center justify-between">
-                <p className="text-muted-foreground text-xs font-bold tracking-wide uppercase">
-                  {k.label}
-                </p>
-                <span className={cn("grid size-8 place-items-center rounded-lg", k.tone)}>
-                  <k.icon className="size-4" />
-                </span>
-              </div>
-              <p className="font-display mt-3 text-2xl font-extrabold">{k.value}</p>
-              <p className="text-muted-foreground mt-0.5 text-xs font-semibold">{k.delta}</p>
-            </CardContent>
-          </Card>
-        ))}
+        <QueryState<AdmKpi[]>
+          query={overviewQuery}
+          error={{ title: "Failed to load system metrics" }}
+          empty={{ title: "No metrics yet" }}
+          isEmpty={(rows) => rows.length === 0}
+        >
+          {(kpis) =>
+            kpis.map((k) => {
+              const meta = kpiMeta(k.metric);
+              return (
+                <Card key={k.id} className="bg-card shadow-soft border">
+                  <CardContent className="p-5">
+                    <div className="flex items-center justify-between">
+                      <p className="text-muted-foreground text-xs font-bold tracking-wide uppercase">
+                        {k.metric}
+                      </p>
+                      <span className={cn("grid size-8 place-items-center rounded-lg", meta.tone)}>
+                        <meta.icon className="size-4" />
+                      </span>
+                    </div>
+                    <p className="font-display mt-3 text-2xl font-extrabold">{k.valueLabel}</p>
+                    <p className="text-muted-foreground mt-0.5 text-xs font-semibold">{k.delta}</p>
+                  </CardContent>
+                </Card>
+              );
+            })
+          }
+        </QueryState>
       </div>
 
       <Card className="bg-card mt-5 shadow-soft border">

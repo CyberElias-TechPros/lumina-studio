@@ -14,6 +14,9 @@ import {
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import { useInsAnnouncements } from "@/lib/query/instructorExtras";
+import type { InsAnnouncement } from "@/lib/api/instructorExtras";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/instructor/announcements")({
@@ -29,50 +32,14 @@ export const Route = createFileRoute("/app/instructor/announcements")({
   component: InstructorAnnouncements,
 });
 
-const published = [
-  {
-    title: "Mid-term exam format & schedule",
-    audience: "Cohort 15",
-    date: "Aug 1 · 08:00",
-    status: "Published",
-    pinned: true,
-    tone: "bg-success/10 text-success",
-  },
-  {
-    title: "Lab B3 maintenance — next Friday",
-    audience: "Backend & APIs",
-    date: "Jul 30 · 14:30",
-    status: "Published",
-    pinned: false,
-    tone: "bg-success/10 text-success",
-  },
-  {
-    title: "Guest lecture: payments at scale",
-    audience: "All cohorts",
-    date: "Jul 28 · 10:15",
-    status: "Scheduled",
-    pinned: false,
-    tone: "bg-primary/10 text-primary",
-  },
-  {
-    title: "Gradebook freeze reminder",
-    audience: "Cohort 15",
-    date: "Jul 25 · 17:00",
-    status: "Published",
-    pinned: false,
-    tone: "bg-success/10 text-success",
-  },
-  {
-    title: "Internship fair — early bird list",
-    audience: "Frontend Foundations",
-    date: "Jul 22 · 09:45",
-    status: "Archived",
-    pinned: false,
-    tone: "bg-muted/60 text-muted-foreground",
-  },
-];
+function announcementTone(status: string) {
+  if (/published|live|sent/i.test(status)) return "bg-success/10 text-success";
+  if (/draft|scheduled|pending/i.test(status)) return "bg-warning/10 text-warning";
+  return "bg-muted/60 text-muted-foreground";
+}
 
 function InstructorAnnouncements() {
+  const announcementsQuery = useInsAnnouncements();
   return (
     <AppShell
       roleKey="instructor"
@@ -154,45 +121,62 @@ function InstructorAnnouncements() {
               </Badge>
             </CardHeader>
             <CardContent className="divide-y">
-              {published.map((p) => (
-                <div
-                  key={p.title}
-                  className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
-                >
-                  <span
-                    className={cn(
-                      "grid size-9 shrink-0 place-items-center rounded-lg",
-                      p.pinned ? "bg-warning/10 text-warning" : "bg-muted text-muted-foreground",
-                    )}
-                  >
-                    {p.pinned ? <Pin className="size-4" /> : <Megaphone className="size-4" />}
-                  </span>
-                  <div className="min-w-0 flex-1">
-                    <p className="flex items-center gap-2 text-sm font-bold">
-                      {p.title}
-                      {p.pinned && (
-                        <Badge className="bg-warning/10 text-warning border-0 font-semibold">
-                          Pinned
+              <QueryState<InsAnnouncement[]>
+                query={announcementsQuery}
+                error={{ title: "Failed to load announcements" }}
+                empty={{ title: "No announcements yet" }}
+                isEmpty={(rows) => rows.length === 0}
+              >
+                {(announcements) =>
+                  announcements.map((a) => (
+                    <div
+                      key={a.id}
+                      className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
+                    >
+                      <span
+                        className={cn(
+                          "grid size-9 shrink-0 place-items-center rounded-lg",
+                          a.pinned === 1
+                            ? "bg-warning/10 text-warning"
+                            : "bg-muted text-muted-foreground",
+                        )}
+                      >
+                        {a.pinned === 1 ? (
+                          <Pin className="size-4" />
+                        ) : (
+                          <Megaphone className="size-4" />
+                        )}
+                      </span>
+                      <div className="min-w-0 flex-1">
+                        <p className="flex items-center gap-2 text-sm font-bold">
+                          {a.title}
+                          {a.pinned === 1 && (
+                            <Badge className="bg-warning/10 text-warning border-0 font-semibold">
+                              Pinned
+                            </Badge>
+                          )}
+                        </p>
+                        <p className="text-muted-foreground flex flex-wrap items-center gap-x-2 text-xs">
+                          {a.audience === "All cohorts" ? (
+                            <Globe className="size-3" />
+                          ) : (
+                            <GraduationCap className="size-3" />
+                          )}
+                          {a.audience} · {a.dateLabel}
+                        </p>
+                      </div>
+                      <div className="flex shrink-0 items-center gap-2">
+                        <Badge className={cn("border-0 font-semibold", announcementTone(a.status))}>
+                          {a.status}
                         </Badge>
-                      )}
-                    </p>
-                    <p className="text-muted-foreground flex flex-wrap items-center gap-x-2 text-xs">
-                      {p.audience === "All cohorts" ? (
-                        <Globe className="size-3" />
-                      ) : (
-                        <GraduationCap className="size-3" />
-                      )}
-                      {p.audience} · {p.date}
-                    </p>
-                  </div>
-                  <div className="flex shrink-0 items-center gap-2">
-                    <Badge className={cn("border-0 font-semibold", p.tone)}>{p.status}</Badge>
-                    <Button variant="outline" size="sm" className="font-semibold">
-                      <Eye className="size-3.5" /> View
-                    </Button>
-                  </div>
-                </div>
-              ))}
+                        <Button variant="outline" size="sm" className="font-semibold">
+                          <Eye className="size-3.5" /> View
+                        </Button>
+                      </div>
+                    </div>
+                  ))
+                }
+              </QueryState>
             </CardContent>
           </Card>
 

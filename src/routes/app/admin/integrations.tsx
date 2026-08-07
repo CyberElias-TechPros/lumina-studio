@@ -4,6 +4,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import { useAdmIntegrations } from "@/lib/query/adminSystems";
+import type { AdmIntegration } from "@/lib/api/adminSystems";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/admin/integrations")({
@@ -16,18 +19,16 @@ export const Route = createFileRoute("/app/admin/integrations")({
   component: AdminIntegrations,
 });
 
-const integrations = [
-  { i: "Paystack", v: "Payments · live", s: "Connected", tone: "bg-success/10 text-success" },
-  {
-    i: "Gmail Workspace",
-    v: "Mail · 214 seats",
-    s: "Connected",
-    tone: "bg-success/10 text-success",
-  },
-  { i: "Slack (ops)", v: "Alerts · 4 channels", s: "Degraded", tone: "bg-warning/10 text-warning" },
-];
+function statusTone(status: string) {
+  if (/active|verified|connected|on track|published/i.test(status))
+    return "bg-success/10 text-success";
+  if (/expiring|pending|paused/i.test(status)) return "bg-warning/10 text-warning";
+  if (/failed|rejected|revoked/i.test(status)) return "bg-destructive/10 text-destructive";
+  return "bg-primary/10 text-primary";
+}
 
 function AdminIntegrations() {
+  const integrationsQuery = useAdmIntegrations();
   return (
     <AppShell
       roleKey="admin"
@@ -99,18 +100,32 @@ function AdminIntegrations() {
           </CardTitle>
         </CardHeader>
         <CardContent className="divide-y">
-          {integrations.map((i) => (
-            <div key={i.i} className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0">
-              <div className="min-w-0 flex-1">
-                <p className="text-sm font-bold">{i.i}</p>
-                <p className="text-muted-foreground text-xs">{i.v}</p>
-              </div>
-              <Badge className={cn("border-0 font-semibold", i.tone)}>{i.s}</Badge>
-              <Button variant="outline" size="sm" className="shrink-0 font-semibold">
-                Configure
-              </Button>
-            </div>
-          ))}
+          <QueryState<AdmIntegration[]>
+            query={integrationsQuery}
+            error={{ title: "Failed to load integrations" }}
+            empty={{ title: "No integrations yet" }}
+            isEmpty={(rows) => rows.length === 0}
+          >
+            {(rows) =>
+              rows.map((i) => (
+                <div
+                  key={i.id}
+                  className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
+                >
+                  <div className="min-w-0 flex-1">
+                    <p className="text-sm font-bold">{i.name}</p>
+                    <p className="text-muted-foreground text-xs">{i.detail}</p>
+                  </div>
+                  <Badge className={cn("border-0 font-semibold", statusTone(i.status))}>
+                    {i.status}
+                  </Badge>
+                  <Button variant="outline" size="sm" className="shrink-0 font-semibold">
+                    Configure
+                  </Button>
+                </div>
+              ))
+            }
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>

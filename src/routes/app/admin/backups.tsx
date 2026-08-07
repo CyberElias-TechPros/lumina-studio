@@ -11,6 +11,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import { useAdmBackups } from "@/lib/query/adminSystems";
+import type { AdmBackup } from "@/lib/api/adminSystems";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/admin/backups")({
@@ -23,28 +26,16 @@ export const Route = createFileRoute("/app/admin/backups")({
   component: AdminBackups,
 });
 
-const backups = [
-  {
-    b: "Production · nightly",
-    t: "Jul 31 · 02:00 · 8.4 GB",
-    s: "Verified",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    b: "Production · nightly",
-    t: "Jul 30 · 02:00 · 8.3 GB",
-    s: "Verified",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    b: "Pre-migration snapshot",
-    t: "Jul 24 · 14:00 · 8.1 GB",
-    s: "Archived",
-    tone: "bg-muted text-muted-foreground",
-  },
-];
+function statusTone(status: string) {
+  if (/active|verified|connected|on track|published/i.test(status))
+    return "bg-success/10 text-success";
+  if (/expiring|pending|paused/i.test(status)) return "bg-warning/10 text-warning";
+  if (/failed|rejected|revoked/i.test(status)) return "bg-destructive/10 text-destructive";
+  return "bg-primary/10 text-primary";
+}
 
 function AdminBackups() {
+  const backupsQuery = useAdmBackups();
   return (
     <AppShell
       roleKey="admin"
@@ -118,21 +109,32 @@ function AdminBackups() {
           </CardTitle>
         </CardHeader>
         <CardContent className="divide-y">
-          {backups.map((b) => (
-            <div
-              key={b.b + b.t}
-              className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
-            >
-              <div className="min-w-0 flex-1">
-                <p className="text-sm font-bold">{b.b}</p>
-                <p className="text-muted-foreground text-xs">{b.t}</p>
-              </div>
-              <Badge className={cn("border-0 font-semibold", b.tone)}>{b.s}</Badge>
-              <Button variant="outline" size="sm" className="shrink-0 font-semibold">
-                Restore
-              </Button>
-            </div>
-          ))}
+          <QueryState<AdmBackup[]>
+            query={backupsQuery}
+            error={{ title: "Failed to load backups" }}
+            empty={{ title: "No backups yet" }}
+            isEmpty={(rows) => rows.length === 0}
+          >
+            {(rows) =>
+              rows.map((b) => (
+                <div
+                  key={b.id}
+                  className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
+                >
+                  <div className="min-w-0 flex-1">
+                    <p className="text-sm font-bold">{b.name}</p>
+                    <p className="text-muted-foreground text-xs">{b.detail}</p>
+                  </div>
+                  <Badge className={cn("border-0 font-semibold", statusTone(b.status))}>
+                    {b.status}
+                  </Badge>
+                  <Button variant="outline" size="sm" className="shrink-0 font-semibold">
+                    Restore
+                  </Button>
+                </div>
+              ))
+            }
+          </QueryState>
         </CardContent>
       </Card>
     </AppShell>

@@ -4918,4 +4918,587 @@ export function registerAllMocks(): void {
     const items = cliCollections[collection] ?? [];
     return { items, total: items.length };
   });
+
+  /* Admin systems suite — mirrors backend seeds (migrations/0030_admin_systems.sql) */
+  const admCollections: Record<string, Record<string, unknown>[]> = {
+    overview: [
+      { id: "adm-hb-01", metric: "Users", valueLabel: "8,412", delta: "+214 this month" },
+      { id: "adm-hb-02", metric: "Security alerts", valueLabel: "0", delta: "last 24h" },
+      { id: "adm-hb-03", metric: "Uptime (30d)", valueLabel: "99.99%", delta: "two nines nine" },
+      { id: "adm-hb-04", metric: "Backups", valueLabel: "12", delta: "all verified" },
+    ],
+    keys: [
+      {
+        id: "adm-ky-01",
+        name: "ci-deploy",
+        scope: "deploy:prod",
+        lastUsed: "Rotated Jul 30",
+        status: "Active",
+      },
+      {
+        id: "adm-ky-02",
+        name: "billing-worker",
+        scope: "invoices:write",
+        lastUsed: "Created Jul 12",
+        status: "Active",
+      },
+      {
+        id: "adm-ky-03",
+        name: "legacy-cron",
+        scope: "reports:read",
+        lastUsed: "Created Jan 04",
+        status: "Expiring",
+      },
+    ],
+    backups: [
+      {
+        id: "adm-bk-01",
+        name: "Production · nightly",
+        detail: "Jul 31 · 02:00 · 8.4 GB",
+        status: "Verified",
+      },
+      {
+        id: "adm-bk-02",
+        name: "Production · nightly",
+        detail: "Jul 30 · 02:00 · 8.3 GB",
+        status: "Verified",
+      },
+      {
+        id: "adm-bk-03",
+        name: "Pre-migration snapshot",
+        detail: "Jul 15 · 14:00 · 7.9 GB",
+        status: "Verified",
+      },
+      {
+        id: "adm-bk-04",
+        name: "Staging · nightly",
+        detail: "Jul 31 · 02:15 · 2.1 GB",
+        status: "Verified",
+      },
+      {
+        id: "adm-bk-05",
+        name: "Production · weekly",
+        detail: "Jul 28 · 03:00 · 8.4 GB",
+        status: "Verified",
+      },
+    ],
+    integrations: [
+      { id: "adm-in-01", name: "GitHub", detail: "3 repos · 12 workflows", status: "Connected" },
+      {
+        id: "adm-in-02",
+        name: "Slack",
+        detail: "cea-os workspace · 42 channels",
+        status: "Connected",
+      },
+      {
+        id: "adm-in-03",
+        name: "Resend",
+        detail: "Transactional email · 99.2% delivery",
+        status: "Connected",
+      },
+      { id: "adm-in-04", name: "Sentry", detail: "cea-api project · 3 envs", status: "Connected" },
+    ],
+    rules: [
+      { id: "adm-rl-01", name: "Global", valueLabel: "1,000 req/min", status: "Active" },
+      { id: "adm-rl-02", name: "/v1/auth/sign-in", valueLabel: "5 req/min", status: "Active" },
+      { id: "adm-rl-03", name: "/v1/applications", valueLabel: "10 req/min", status: "Active" },
+      { id: "adm-rl-04", name: "/v1/admin/*", valueLabel: "100 req/min", status: "Active" },
+      { id: "adm-rl-05", name: "ci-deploy key", valueLabel: "500 req/min", status: "Active" },
+      { id: "adm-rl-06", name: "Custom", valueLabel: "200 req/min", status: "Pending" },
+    ],
+  };
+  registerMockPattern("GET", "/v1/admin-systems-dashboard/*", async (init: ApiRequestInit) => {
+    await delay();
+    const segments = (init.path ?? "").split("/").filter(Boolean);
+    const collection = segments[2] ?? "";
+    const items = admCollections[collection] ?? [];
+    return { items, total: items.length };
+  });
+
+  /* Director suite — mirrors backend seeds (migrations/0031_director.sql) */
+  const dirCollections: Record<string, Record<string, unknown>[]> = {
+    overview: [
+      { id: "dir-hb-01", metric: "Objectives", valueLabel: "3", delta: "2 on track" },
+      { id: "dir-hb-02", metric: "Key results", valueLabel: "9", delta: "6 on track" },
+      { id: "dir-hb-03", metric: "Cycle progress", valueLabel: "62%", delta: "week 6 of 13" },
+      { id: "dir-hb-04", metric: "Confidence", valueLabel: "High", delta: "1 flagged risk" },
+    ],
+    okrs: [
+      {
+        id: "dir-ok-01",
+        objectiveLabel: "O1 · Hit 240 enrolled students",
+        krLabel: "Complete fall admissions cycle",
+        pct: 92,
+      },
+      {
+        id: "dir-ok-02",
+        objectiveLabel: "O1 · Hit 240 enrolled students",
+        krLabel: "Referral program → 80 signups",
+        pct: 64,
+      },
+      {
+        id: "dir-ok-03",
+        objectiveLabel: "O2 · 75% placement by Q4",
+        krLabel: "Add 12 employer partners",
+        pct: 75,
+      },
+      {
+        id: "dir-ok-04",
+        objectiveLabel: "O2 · 75% placement by Q4",
+        krLabel: "Interview readiness pass rate 90%",
+        pct: 68,
+      },
+      {
+        id: "dir-ok-05",
+        objectiveLabel: "O3 · 30% gross margin",
+        krLabel: "Cut facilities cost 8%",
+        pct: 52,
+      },
+      {
+        id: "dir-ok-06",
+        objectiveLabel: "O3 · 30% gross margin",
+        krLabel: "Lift services revenue ₦2m",
+        pct: 61,
+      },
+    ],
+    branches: [
+      {
+        id: "dir-br-01",
+        name: "Ikeja HQ",
+        utilization: "86%",
+        cost: "₦8.2/seat-day",
+        status: "High",
+      },
+      {
+        id: "dir-br-02",
+        name: "Victoria Island",
+        utilization: "79%",
+        cost: "₦9.6/seat-day",
+        status: "Normal",
+      },
+      {
+        id: "dir-br-03",
+        name: "Abeokuta",
+        utilization: "53%",
+        cost: "₦11.4/seat-day",
+        status: "Low",
+      },
+    ],
+    modules: [
+      { id: "dir-mod-01", name: "Finance", detail: "P&L · cash flow · budget" },
+      { id: "dir-mod-02", name: "Academic", detail: "Enrollment · grades · outcomes" },
+      { id: "dir-mod-03", name: "Operations", detail: "Attendance · resources · uptime" },
+      { id: "dir-mod-04", name: "People", detail: "Staff · performance · payroll" },
+      { id: "dir-mod-05", name: "Marketing", detail: "Leads · campaigns · conversion" },
+      { id: "dir-mod-06", name: "Quality", detail: "Reviews · audits · accreditation" },
+    ],
+    saved: [
+      { id: "dir-sr-01", name: "Board pack — Q3", detail: "Generated Aug 1 · PDF" },
+      { id: "dir-sr-02", name: "Cohort 14 placement deep-dive", detail: "Generated Jul 28 · CSV" },
+      { id: "dir-sr-03", name: "Branch P&L comparison", detail: "Generated Jul 25 · XLSX" },
+    ],
+  };
+  registerMockPattern("GET", "/v1/director-dashboard/*", async (init: ApiRequestInit) => {
+    await delay();
+    const segments = (init.path ?? "").split("/").filter(Boolean);
+    const collection = segments[2] ?? "";
+    const items = dirCollections[collection] ?? [];
+    return { items, total: items.length };
+  });
+
+  /* Instructor extras suite — mirrors backend seeds (migrations/0032_instructor_extras.sql) */
+  const insCollections: Record<string, Record<string, unknown>[]> = {
+    overview: [
+      { id: "ins-hb-01", metric: "Active students", valueLabel: "128", delta: "+9 this week" },
+      { id: "ins-hb-02", metric: "Pending grading", valueLabel: "23", delta: "4 due today" },
+      {
+        id: "ins-hb-03",
+        metric: "Completion rate",
+        valueLabel: "84%",
+        delta: "+3.2% vs last term",
+      },
+      {
+        id: "ins-hb-04",
+        metric: "Avg class attendance",
+        valueLabel: "91%",
+        delta: "vs 85% target",
+      },
+    ],
+    classes: [
+      {
+        id: "ins-cl-01",
+        timeLabel: "09:00",
+        title: "Backend & APIs · live lab",
+        place: "Lab B3 · Yaba campus",
+      },
+      {
+        id: "ins-cl-02",
+        timeLabel: "12:00",
+        title: "System design · mock interviews",
+        place: "Zoom · link sent 08:00",
+      },
+      {
+        id: "ins-cl-03",
+        timeLabel: "16:00",
+        title: "Office hours",
+        place: "Room 12 · first come first served",
+      },
+    ],
+    announcements: [
+      {
+        id: "ins-an-01",
+        title: "Mid-term exam format & schedule",
+        audience: "Cohort 15",
+        dateLabel: "Aug 1 · 08:00",
+        pinned: 1,
+        status: "Published",
+      },
+      {
+        id: "ins-an-02",
+        title: "Lab B3 maintenance — next Friday",
+        audience: "Backend & APIs",
+        dateLabel: "Jul 30 · 14:30",
+        pinned: 0,
+        status: "Published",
+      },
+      {
+        id: "ins-an-03",
+        title: "Guest lecture: payments at scale",
+        audience: "All cohorts",
+        dateLabel: "Jul 28 · 10:15",
+        pinned: 0,
+        status: "Published",
+      },
+      {
+        id: "ins-an-04",
+        title: "Gradebook freeze reminder",
+        audience: "Cohort 15",
+        dateLabel: "Jul 25 · 17:00",
+        pinned: 0,
+        status: "Published",
+      },
+      {
+        id: "ins-an-05",
+        title: "Internship fair — early bird list",
+        audience: "Frontend Foundations",
+        dateLabel: "Jul 22 · 09:45",
+        pinned: 0,
+        status: "Archived",
+      },
+    ],
+    queue: [
+      {
+        id: "ins-qu-01",
+        student: "Chiamaka Eze",
+        item: "REST API Assignment 3",
+        course: "Backend & APIs",
+        submitted: "Jul 31 · 09:12",
+        due: "Due today",
+      },
+      {
+        id: "ins-qu-02",
+        student: "Ibrahim Sule",
+        item: "SQL Fundamentals Quiz",
+        course: "Backend & APIs",
+        submitted: "Jul 30 · 18:40",
+        due: "Due today",
+      },
+      {
+        id: "ins-qu-03",
+        student: "Funke Adeyemi",
+        item: "Auth & JWT Lab",
+        course: "Backend & APIs",
+        submitted: "Jul 30 · 14:22",
+        due: "Due Aug 1",
+      },
+      {
+        id: "ins-qu-04",
+        student: "Tunde Bakare",
+        item: "Middleware Take-home",
+        course: "Backend & APIs",
+        submitted: "Jul 29 · 21:05",
+        due: "Due Aug 1",
+      },
+      {
+        id: "ins-qu-05",
+        student: "Ngozi Umeh",
+        item: "Data Modelling Brief",
+        course: "Frontend Foundations",
+        submitted: "Jul 29 · 10:30",
+        due: "Overdue",
+      },
+    ],
+    revisions: [
+      {
+        id: "ins-rv-01",
+        version: "v3",
+        title: "Fixed middleware demo bug",
+        author: "Ada Obi",
+        dateLabel: "Jul 30 · 16:42",
+      },
+      {
+        id: "ins-rv-02",
+        version: "v2",
+        title: "Added JWT refresh section",
+        author: "Ada Obi",
+        dateLabel: "Jul 29 · 11:18",
+      },
+      {
+        id: "ins-rv-03",
+        version: "v1",
+        title: "Initial draft from outline",
+        author: "Ada Obi",
+        dateLabel: "Jul 27 · 09:03",
+      },
+    ],
+  };
+  registerMockPattern("GET", "/v1/instructor-extras-dashboard/*", async (init: ApiRequestInit) => {
+    await delay();
+    const segments = (init.path ?? "").split("/").filter(Boolean);
+    const collection = segments[2] ?? "";
+    const items = insCollections[collection] ?? [];
+    return { items, total: items.length };
+  });
+
+  /* Admissions extras suite — mirrors backend seeds (migrations/0033_admissions_extras.sql) */
+  const admExtrasCollections: Record<string, Record<string, unknown>[]> = {
+    docOverview: [
+      { id: "adh-dh-01", metric: "Verified", valueLabel: "1,206", delta: "of 1,322 docs" },
+      { id: "adh-dh-02", metric: "Pending", valueLabel: "116", delta: "9 applicants" },
+      { id: "adh-dh-03", metric: "Rejected", valueLabel: "14", delta: "re-upload sent" },
+      { id: "adh-dh-04", metric: "Avg. verify", valueLabel: "1.8 days", delta: "target < 2" },
+    ],
+    checks: [
+      {
+        id: "adh-dc-01",
+        name: "National ID verification",
+        detail: "92% complete · 9 pending",
+        status: "On track",
+      },
+      {
+        id: "adh-dc-02",
+        name: "Certificate checks",
+        detail: "88% complete · 14 pending",
+        status: "On track",
+      },
+      {
+        id: "adh-dc-03",
+        name: "Photo & consent forms",
+        detail: "96% complete · 5 pending",
+        status: "On track",
+      },
+    ],
+    commOverview: [
+      { id: "adh-ch-01", metric: "Sent (30d)", valueLabel: "412", delta: "10 templates" },
+      { id: "adh-ch-02", metric: "Open rate", valueLabel: "71%", delta: "vs 45% bench" },
+      { id: "adh-ch-03", metric: "Offers out", valueLabel: "24", delta: "11 accepted" },
+      { id: "adh-ch-04", metric: "Templates", valueLabel: "10", delta: "3 drafts" },
+    ],
+    templates: [
+      {
+        id: "adh-ct-01",
+        title: "Offer letter — full-time",
+        usage: "Sent 24x this month",
+        status: "Published",
+      },
+      {
+        id: "adh-ct-02",
+        title: "Assessment invitation",
+        usage: "Sent 89x this month",
+        status: "Published",
+      },
+      {
+        id: "adh-ct-03",
+        title: "Interview confirmation",
+        usage: "Sent 64x this month",
+        status: "Published",
+      },
+    ],
+  };
+  registerMockPattern("GET", "/v1/admissions-extras-dashboard/*", async (init: ApiRequestInit) => {
+    await delay();
+    const segments = (init.path ?? "").split("/").filter(Boolean);
+    const collection = segments.slice(2).join("/");
+    const items = admExtrasCollections[collection] ?? [];
+    return { items, total: items.length };
+  });
+
+  /* Parent extras suite — mirrors backend seeds (migrations/0034_parent_extras.sql) */
+  const parExtrasCollections: Record<string, Record<string, unknown>[]> = {
+    contacts: [
+      { id: "par-cn-01", name: "Mr. Adeyemi", role: "Full-Stack instructor", kind: "Message" },
+      { id: "par-cn-02", name: "Ms. Chidera", role: "Cloud & DevOps instructor", kind: "Message" },
+      { id: "par-cn-03", name: "Mrs. Obi", role: "Ada's mentor", kind: "Video" },
+      { id: "par-cn-04", name: "Registrar's office", role: "Records & billing", kind: "Mail" },
+    ],
+    meetings: [
+      {
+        id: "par-mt-01",
+        title: "Parent–teacher meeting",
+        dateLabel: "Sep 5–9, 2026",
+        status: "Booking open",
+      },
+      {
+        id: "par-mt-02",
+        title: "Mentor check-in (Mrs. Obi)",
+        dateLabel: "Aug 21, 16:00",
+        status: "Confirmed",
+      },
+      { id: "par-mt-03", title: "Career day webinar", dateLabel: "Sep 14, 18:00", status: "RSVP" },
+    ],
+  };
+  registerMockPattern("GET", "/v1/parent-extras-dashboard/*", async (init: ApiRequestInit) => {
+    await delay();
+    const segments = (init.path ?? "").split("/").filter(Boolean);
+    const collection = segments[2] ?? "";
+    const items = parExtrasCollections[collection] ?? [];
+    return { items, total: items.length };
+  });
+
+  /* HR training suite — mirrors backend seeds (migrations/0035_hr_training.sql) */
+  const hrCollections: Record<string, Record<string, unknown>[]> = {
+    overview: [
+      { id: "hr-hb-01", metric: "Programs", valueLabel: "8", delta: "3 mandatory" },
+      { id: "hr-hb-02", metric: "Completions", valueLabel: "142", delta: "this year" },
+      { id: "hr-hb-03", metric: "Hours trained", valueLabel: "640h", delta: "staff-wide" },
+      { id: "hr-hb-04", metric: "Due (90d)", valueLabel: "3", delta: "safety course" },
+    ],
+    programs: [
+      {
+        id: "hr-pr-01",
+        name: "Instructor pedagogy bootcamp",
+        detail: "18 enrolled · 12 complete",
+        status: "Ongoing",
+      },
+      {
+        id: "hr-pr-02",
+        name: "Safety & first aid",
+        detail: "All staff due Q4",
+        status: "Scheduled",
+      },
+      {
+        id: "hr-pr-03",
+        name: "Cybersecurity awareness",
+        detail: "94 enrolled · 80 complete",
+        status: "Ongoing",
+      },
+    ],
+  };
+  registerMockPattern("GET", "/v1/hr-training-dashboard/*", async (init: ApiRequestInit) => {
+    await delay();
+    const segments = (init.path ?? "").split("/").filter(Boolean);
+    const collection = segments[2] ?? "";
+    const items = hrCollections[collection] ?? [];
+    return { items, total: items.length };
+  });
+
+  /* Student self-service suite — mirrors backend seeds (migrations/0036_student_self.sql) */
+  const stuCollections: Record<string, Record<string, unknown>[]> = {
+    attendance: [
+      { id: "sah-hb-01", metric: "Present", valueLabel: "61", delta: "of 65 sessions" },
+      { id: "sah-hb-02", metric: "Late arrivals", valueLabel: "3", delta: "avg 9m" },
+      { id: "sah-hb-03", metric: "Excused", valueLabel: "1", delta: "medical" },
+      { id: "sah-hb-04", metric: "Unexcused", valueLabel: "0", delta: "no strikes" },
+    ],
+    records: [
+      {
+        id: "sah-rd-01",
+        dateLabel: "Mon, Jul 28",
+        course: "Full-Stack Development",
+        status: "Present",
+      },
+      { id: "sah-rd-02", dateLabel: "Thu, Jul 24", course: "Cloud & DevOps", status: "Present" },
+      { id: "sah-rd-03", dateLabel: "Wed, Jul 23", course: "Product Design", status: "Late 12m" },
+      {
+        id: "sah-rd-04",
+        dateLabel: "Mon, Jul 21",
+        course: "Full-Stack Development",
+        status: "Present",
+      },
+      { id: "sah-rd-05", dateLabel: "Thu, Jul 17", course: "Cloud & DevOps", status: "Excused" },
+    ],
+    policy: [
+      { id: "sah-po-01", rule: "90% minimum per term", valueLabel: "You: 94%" },
+      { id: "sah-po-02", rule: "Lates allowed", valueLabel: "3 per term" },
+      { id: "sah-po-03", rule: "Check-in window", valueLabel: "QR · 10 min" },
+    ],
+    portfolio: [
+      { id: "sph-hb-01", metric: "Projects", valueLabel: "3", delta: "2 featured" },
+      { id: "sph-hb-02", metric: "Skills verified", valueLabel: "11", delta: "16 OSKM skills" },
+      { id: "sph-hb-03", metric: "CV downloads", valueLabel: "27", delta: "this month" },
+      { id: "sph-hb-04", metric: "Profile views", valueLabel: "142", delta: "+38% this week" },
+    ],
+    projects: [
+      {
+        id: "sph-pj-01",
+        name: "NaijaEats — food delivery API",
+        detail: "REST API + PostgreSQL, 40+ endpoints, rate limiting, Swagger docs.",
+        tags: ["Node.js", "PostgreSQL", "Docker"],
+        featured: 1,
+      },
+      {
+        id: "sph-pj-02",
+        name: "BudgetPadi — expense tracker",
+        detail: "PWA with offline mode, charts and bank-format CSV export.",
+        tags: ["React", "PWA", "Chart.js"],
+        featured: 1,
+      },
+      {
+        id: "sph-pj-03",
+        name: "ClassBoard — LMS dashboard UI",
+        detail: "Design system and component library in Figma, 60+ components.",
+        tags: ["Figma", "Design system", "a11y"],
+        featured: 0,
+      },
+    ],
+    skills: [
+      { id: "sph-sk-01", name: "JavaScript / TypeScript", pct: 92 },
+      { id: "sph-sk-02", name: "Node.js & REST APIs", pct: 84 },
+      { id: "sph-sk-03", name: "React & Tailwind", pct: 88 },
+      { id: "sph-sk-04", name: "Docker & CI/CD", pct: 61 },
+    ],
+    cv: [
+      { id: "sph-cv-01", filename: "CEA_Ada_Okafor_CV.pdf" },
+      { id: "sph-cv-02", filename: "One-page resume (ATS)" },
+    ],
+    reportKpis: [
+      { id: "srh-hb-01", metric: "Saved reports", valueLabel: "6", delta: "shared with 3 roles" },
+      { id: "srh-hb-02", metric: "Runs this month", valueLabel: "42", delta: "avg 11 templates" },
+      { id: "srh-hb-03", metric: "Scheduled", valueLabel: "3", delta: "weekly delivery" },
+      { id: "srh-hb-04", metric: "Data sources", valueLabel: "12", delta: "all modules live" },
+    ],
+    templates: [
+      {
+        id: "sph-tpl-01",
+        name: "Attendance summary — by cohort",
+        category: "Academics",
+        usage: "14 runs",
+      },
+      {
+        id: "sph-tpl-02",
+        name: "Grade distribution — by course",
+        category: "Academics",
+        usage: "9 runs",
+      },
+      {
+        id: "sph-tpl-03",
+        name: "Revenue by stream (tuition, services)",
+        category: "Finance",
+        usage: "11 runs",
+      },
+      {
+        id: "sph-tpl-04",
+        name: "Placement outcomes — by cohort",
+        category: "Career",
+        usage: "8 runs",
+      },
+    ],
+  };
+  registerMockPattern("GET", "/v1/student-self-dashboard/*", async (init: ApiRequestInit) => {
+    await delay();
+    const segments = (init.path ?? "").split("/").filter(Boolean);
+    const collection = segments.slice(2).join("/");
+    const items = stuCollections[collection] ?? [];
+    return { items, total: items.length };
+  });
 }
