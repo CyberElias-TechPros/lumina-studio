@@ -2,6 +2,8 @@
 INSERT OR IGNORE INTO users (id, name, email, role_key, status)
 VALUES ('00000000-0000-4000-8000-000000000020', 'Emeka Okafor', 'parent@cea.ng', 'parent', 'active');
 
+UPDATE users SET password_hash = 'pbkdf2$100000$Ji2F9wTwR5Xqenb7vFV/AQ==$9BO5Y8tQuzR2g447yIJWQ7AtcmF38eaCRuxQturwFoU=' WHERE email = 'parent@cea.ng' AND password_hash IS NULL;
+
 INSERT OR IGNORE INTO parent_students (parent_id, student_id)
 VALUES ('00000000-0000-4000-8000-000000000020', '00000000-0000-4000-8000-000000000001');
 

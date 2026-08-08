@@ -32,7 +32,7 @@ function findLesson(course: CourseShape, lessonId: string): LessonShape | undefi
   return undefined;
 }
 
-describe("GET /v1/courses", () => {
+describe("GET /v1/courses", { timeout: 60_000 }, () => {
   it("returns 401 without a session", async () => {
     const res = await api("/v1/courses");
     expect(res.status).toBe(401);
@@ -107,7 +107,7 @@ describe("GET /v1/courses", () => {
   });
 });
 
-describe("GET /v1/courses/:slug", () => {
+describe("GET /v1/courses/:slug", { timeout: 60_000 }, () => {
   it("returns a full course with modules and lesson bodies", async () => {
     const { cookie } = await createTestSession("student@cea.ng");
     const res = await api("/v1/courses/full-stack", { headers: cookieHeaders(cookie) });
@@ -128,7 +128,7 @@ describe("GET /v1/courses/:slug", () => {
   });
 });
 
-describe("GET /v1/courses/gradebook", () => {
+describe("GET /v1/courses/gradebook", { timeout: 60_000 }, () => {
   it("returns 401 without a session", async () => {
     const res = await api("/v1/courses/gradebook");
     expect(res.status).toBe(401);

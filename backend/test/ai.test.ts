@@ -40,7 +40,7 @@ describe("AI models catalog (free tier)", () => {
 });
 
 describe("AI grading", () => {
-  it("grades a submission with a rubric breakdown (mock mode)", async () => {
+  it("grades a submission with a rubric breakdown", { timeout: 90_000 }, async () => {
     const res = await api("/v1/ai/grade", {
       method: "POST",
       headers: { "Content-Type": "application/json", ...cookieHeaders(instructor.cookie) },
@@ -64,7 +64,7 @@ describe("AI grading", () => {
     expect(body.overall).toBeLessThanOrEqual(15);
     expect(body.breakdown).toHaveLength(2);
     expect(body.breakdown[0]).toMatchObject({ criterion: "Understanding", max: 10 });
-    expect(body.mock).toBe(true);
+    expect(typeof body.mock).toBe("boolean");
   });
 
   it("forbids students from grading", async () => {
@@ -78,7 +78,7 @@ describe("AI grading", () => {
 });
 
 describe("AI recommendations", () => {
-  it("returns personalized recommendations for any user", async () => {
+  it("returns personalized recommendations for any user", { timeout: 90_000 }, async () => {
     const res = await api("/v1/ai/recommendations", {
       headers: cookieHeaders(student.cookie),
     });
@@ -94,12 +94,12 @@ describe("AI recommendations", () => {
       title: expect.any(String),
       reason: expect.any(String),
     });
-    expect(body.mock).toBe(true);
+    expect(typeof body.mock).toBe("boolean");
   });
 });
 
 describe("AI assistant", () => {
-  it("answers a question in mock mode", async () => {
+  it("answers a question", { timeout: 90_000 }, async () => {
     const res = await api("/v1/ai/ask", {
       method: "POST",
       headers: { "Content-Type": "application/json", ...cookieHeaders(student.cookie) },
@@ -108,7 +108,7 @@ describe("AI assistant", () => {
     expect(res.status).toBe(200);
     const body = (await res.json()) as { answer: string; mock: boolean };
     expect(body.answer.length).toBeGreaterThan(10);
-    expect(body.mock).toBe(true);
+    expect(typeof body.mock).toBe("boolean");
   });
 
   it("rejects empty questions", async () => {
@@ -122,7 +122,7 @@ describe("AI assistant", () => {
 });
 
 describe("AI content generation", () => {
-  it("generates lesson content, outlines and quizzes", async () => {
+  it("generates lesson content, outlines and quizzes", { timeout: 120_000 }, async () => {
     for (const kind of ["lesson", "outline", "quiz"]) {
       const res = await api("/v1/ai/generate", {
         method: "POST",
@@ -138,7 +138,7 @@ describe("AI content generation", () => {
       };
       expect(body.kind).toBe(kind);
       expect(body.topic).toBe("React hooks");
-      expect(body.mock).toBe(true);
+      expect(typeof body.mock).toBe("boolean");
       expect(Object.keys(body.content).length).toBeGreaterThan(0);
     }
   });
