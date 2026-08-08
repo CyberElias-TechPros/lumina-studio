@@ -5,7 +5,3 @@ import type { MessageThread } from "@/data/learning";
 export function fetchMessageThreads(): Promise<Paginated<MessageThread>> {
   return apiFetch<Paginated<MessageThread>>("/v1/messages/threads");
 }
-
-export function fetchMessageThread(id: string): Promise<MessageThread> {
-  return apiFetch<MessageThread>(`/v1/messages/threads/${id}`);
-}

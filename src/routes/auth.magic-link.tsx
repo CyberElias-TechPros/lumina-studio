@@ -32,7 +32,16 @@ function MagicLinkPage() {
     if (token && verify.isIdle) {
       verify.mutate(token, {
         onSuccess: () => {
-          navigate({ to: "/app" });
+          const pendingInvite = sessionStorage.getItem("cea_pending_invite");
+          sessionStorage.removeItem("cea_pending_invite");
+          if (pendingInvite) {
+            navigate({
+              to: "/app/parent/invitation/accept",
+              search: { token: pendingInvite },
+            });
+          } else {
+            navigate({ to: "/app" });
+          }
         },
       });
     }

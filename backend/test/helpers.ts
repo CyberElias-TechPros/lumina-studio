@@ -36,6 +36,8 @@ import admissionsExtrasSql from "../migrations/0033_admissions_extras.sql?raw";
 import parentExtrasSql from "../migrations/0034_parent_extras.sql?raw";
 import hrTrainingSql from "../migrations/0035_hr_training.sql?raw";
 import studentSelfSql from "../migrations/0036_student_self.sql?raw";
+import adminMetricsSql from "../migrations/0037_admin_system_metrics.sql?raw";
+import parentInvitationsSql from "../migrations/0038_parent_invitations.sql?raw";
 import { seedContentSql } from "../seeds/content";
 import { seedLmsSql } from "../seeds/lms";
 import { seedDomainSql } from "../seeds/domain";
@@ -67,6 +69,7 @@ import { seedAdmissionsExtrasSql } from "../seeds/admissions-extras";
 import { seedParentExtrasSql } from "../seeds/parent-extras";
 import { seedHrTrainingSql } from "../seeds/hr-training";
 import { seedStudentSelfSql } from "../seeds/student-self";
+import { seedAdminMetricsSql } from "../seeds/admin-metrics";
 import type { Session } from "../src/schema/api";
 
 export const SESSION_COOKIE = "cea_session";
@@ -122,6 +125,8 @@ export async function setupDb(): Promise<void> {
     parentExtrasSql,
     hrTrainingSql,
     studentSelfSql,
+    adminMetricsSql,
+    parentInvitationsSql,
   ]) {
     const statements = sql
       .split("\n")
@@ -165,6 +170,7 @@ export async function setupDb(): Promise<void> {
   await execStatements(seedParentExtrasSql);
   await execStatements(seedHrTrainingSql);
   await execStatements(seedStudentSelfSql);
+  await execStatements(seedAdminMetricsSql);
 }
 
 export function api(path: string, init?: RequestInit): Promise<Response> {

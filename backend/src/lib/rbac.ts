@@ -39,6 +39,11 @@ export const RBAC_RULES: RbacRule[] = [
   { methods: ["POST"], path: "/v1/contact", public: true },
   { methods: ["GET"], path: "/v1/library/catalog", public: true },
 
+  /* Parent invitations — verify is public; accept requires a session; create is staff-only */
+  { methods: ["GET"], path: "/v1/invitations/:token", public: true },
+  { methods: ["POST"], path: "/v1/invitations/:token/accept" },
+  { methods: ["POST"], path: "/v1/invitations", roles: ["admin", "instructor"] },
+
   /* Auth */
   { methods: ["GET"], path: "/v1/auth/session" },
   { methods: ["POST"], path: "/v1/auth/refresh" },

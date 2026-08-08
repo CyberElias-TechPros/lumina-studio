@@ -432,12 +432,14 @@ Pages under `/app/admin/*`:
 
 ## 10. Flows that don't exist yet (honest list)
 
-1. **Email delivery of magic links / reset tokens** — Resend vars are set
-   but `EMAIL_API_KEY` is not; in production the token is only in D1 (dev
-   shows it in the UI). Add the Resend key as a Worker secret to enable.
-2. **AI in production** — `AI_API_KEY` not set → deterministic answers.
+1. **Email delivery of magic links / reset tokens** — `EMAIL_API_KEY` (Resend)
+   is now set as a Worker secret; magic-link/reset emails will send. Dev still
+   shows the dev token in the UI.
+2. **AI in production** — `AI_API_KEY` (NVIDIA NIM) is now set as a Worker
+   secret; `ask`/`generate`/`recommendations` hit real models. Falls back to
+   deterministic answers only if the key is missing or the provider errors.
 3. **Assessment answer-save, attendance mark, portfolio, employer
-   applications** — read-only/static screens.
+   applications** — read-only/static screens (no write endpoints yet).
 4. **WebSocket UI** — chat/live pages poll REST; fan-out exists but nothing
    opens a socket.
 5. **Push receiving in a real browser** — the send UI exists, but push

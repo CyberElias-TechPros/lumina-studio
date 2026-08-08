@@ -165,6 +165,7 @@ import { Route as AppConversionCopyBriefsRouteImport } from './routes/app/conver
 import { Route as AppConversionCopyEmailSequencesRouteImport } from './routes/app/conversion-copy/email-sequences'
 import { Route as AppConversionCopyLibraryRouteImport } from './routes/app/conversion-copy/library'
 import { Route as AppConversionCopyStyleGuideRouteImport } from './routes/app/conversion-copy/style-guide'
+import { Route as AppDepartmentIndexRouteImport } from './routes/app/department/index'
 import { Route as AppDepartmentApprovalsRouteImport } from './routes/app/department/approvals'
 import { Route as AppDepartmentCalendarRouteImport } from './routes/app/department/calendar'
 import { Route as AppDepartmentCurriculumRouteImport } from './routes/app/department/curriculum'
@@ -193,6 +194,7 @@ import { Route as AppDevMonitoringRouteImport } from './routes/app/dev/monitorin
 import { Route as AppDevQueuesRouteImport } from './routes/app/dev/queues'
 import { Route as AppDevReviewsRouteImport } from './routes/app/dev/reviews'
 import { Route as AppDevTasksRouteImport } from './routes/app/dev/tasks'
+import { Route as AppDirectorIndexRouteImport } from './routes/app/director/index'
 import { Route as AppDirectorAcademicRouteImport } from './routes/app/director/academic'
 import { Route as AppDirectorApprovalsRouteImport } from './routes/app/director/approvals'
 import { Route as AppDirectorCommandCenterRouteImport } from './routes/app/director/command-center'
@@ -245,13 +247,17 @@ import { Route as AppInstructorAnnouncementsRouteImport } from './routes/app/ins
 import { Route as AppInstructorAssessmentsRouteImport } from './routes/app/instructor/assessments'
 import { Route as AppInstructorAttendanceRouteImport } from './routes/app/instructor/attendance'
 import { Route as AppInstructorCalendarRouteImport } from './routes/app/instructor/calendar'
+import { Route as AppInstructorClassesRouteImport } from './routes/app/instructor/classes'
 import { Route as AppInstructorGradebookRouteImport } from './routes/app/instructor/gradebook'
+import { Route as AppInstructorGradingQueueRouteImport } from './routes/app/instructor/grading-queue'
 import { Route as AppInternIndexRouteImport } from './routes/app/intern/index'
 import { Route as AppInternEvaluationRouteImport } from './routes/app/intern/evaluation'
 import { Route as AppInternLearningPlanRouteImport } from './routes/app/intern/learning-plan'
 import { Route as AppInternMentorshipRouteImport } from './routes/app/intern/mentorship'
 import { Route as AppInternMessagesRouteImport } from './routes/app/intern/messages'
 import { Route as AppInternPortfolioRouteImport } from './routes/app/intern/portfolio'
+import { Route as AppInternResourcesRouteImport } from './routes/app/intern/resources'
+import { Route as AppInternSkillsRouteImport } from './routes/app/intern/skills'
 import { Route as AppInternTasksRouteImport } from './routes/app/intern/tasks'
 import { Route as AppInternTimesheetRouteImport } from './routes/app/intern/timesheet'
 import { Route as AppItAssetsRouteImport } from './routes/app/it/assets'
@@ -1173,6 +1179,11 @@ const AppConversionCopyStyleGuideRoute =
     path: '/app/conversion-copy/style-guide',
     getParentRoute: () => rootRouteImport,
   } as any)
+const AppDepartmentIndexRoute = AppDepartmentIndexRouteImport.update({
+  id: '/app/department/',
+  path: '/app/department/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AppDepartmentApprovalsRoute = AppDepartmentApprovalsRouteImport.update({
   id: '/app/department/approvals',
   path: '/app/department/approvals',
@@ -1312,6 +1323,11 @@ const AppDevReviewsRoute = AppDevReviewsRouteImport.update({
 const AppDevTasksRoute = AppDevTasksRouteImport.update({
   id: '/app/dev/tasks',
   path: '/app/dev/tasks',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppDirectorIndexRoute = AppDirectorIndexRouteImport.update({
+  id: '/app/director/',
+  path: '/app/director/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AppDirectorAcademicRoute = AppDirectorAcademicRouteImport.update({
@@ -1578,11 +1594,22 @@ const AppInstructorCalendarRoute = AppInstructorCalendarRouteImport.update({
   path: '/app/instructor/calendar',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AppInstructorClassesRoute = AppInstructorClassesRouteImport.update({
+  id: '/app/instructor/classes',
+  path: '/app/instructor/classes',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AppInstructorGradebookRoute = AppInstructorGradebookRouteImport.update({
   id: '/app/instructor/gradebook',
   path: '/app/instructor/gradebook',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AppInstructorGradingQueueRoute =
+  AppInstructorGradingQueueRouteImport.update({
+    id: '/app/instructor/grading-queue',
+    path: '/app/instructor/grading-queue',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const AppInternIndexRoute = AppInternIndexRouteImport.update({
   id: '/app/intern/',
   path: '/app/intern/',
@@ -1611,6 +1638,16 @@ const AppInternMessagesRoute = AppInternMessagesRouteImport.update({
 const AppInternPortfolioRoute = AppInternPortfolioRouteImport.update({
   id: '/app/intern/portfolio',
   path: '/app/intern/portfolio',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppInternResourcesRoute = AppInternResourcesRouteImport.update({
+  id: '/app/intern/resources',
+  path: '/app/intern/resources',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppInternSkillsRoute = AppInternSkillsRouteImport.update({
+  id: '/app/intern/skills',
+  path: '/app/intern/skills',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AppInternTasksRoute = AppInternTasksRouteImport.update({
@@ -2495,12 +2532,16 @@ export interface FileRoutesByFullPath {
   '/app/instructor/assessments': typeof AppInstructorAssessmentsRoute
   '/app/instructor/attendance': typeof AppInstructorAttendanceRoute
   '/app/instructor/calendar': typeof AppInstructorCalendarRoute
+  '/app/instructor/classes': typeof AppInstructorClassesRoute
   '/app/instructor/gradebook': typeof AppInstructorGradebookRoute
+  '/app/instructor/grading-queue': typeof AppInstructorGradingQueueRoute
   '/app/intern/evaluation': typeof AppInternEvaluationRoute
   '/app/intern/learning-plan': typeof AppInternLearningPlanRoute
   '/app/intern/mentorship': typeof AppInternMentorshipRoute
   '/app/intern/messages': typeof AppInternMessagesRoute
   '/app/intern/portfolio': typeof AppInternPortfolioRoute
+  '/app/intern/resources': typeof AppInternResourcesRoute
+  '/app/intern/skills': typeof AppInternSkillsRoute
   '/app/intern/tasks': typeof AppInternTasksRoute
   '/app/intern/timesheet': typeof AppInternTimesheetRoute
   '/app/it/assets': typeof AppItAssetsRoute
@@ -2594,8 +2635,10 @@ export interface FileRoutesByFullPath {
   '/app/assessments/': typeof AppAssessmentsIndexRoute
   '/app/assignments/': typeof AppAssignmentsIndexRoute
   '/app/behavioral-design/': typeof AppBehavioralDesignIndexRoute
+  '/app/department/': typeof AppDepartmentIndexRoute
   '/app/design/': typeof AppDesignIndexRoute
   '/app/dev/': typeof AppDevIndexRoute
+  '/app/director/': typeof AppDirectorIndexRoute
   '/app/government/': typeof AppGovernmentIndexRoute
   '/app/growth/': typeof AppGrowthIndexRoute
   '/app/hr/': typeof AppHrIndexRoute
@@ -2862,12 +2905,16 @@ export interface FileRoutesByTo {
   '/app/instructor/assessments': typeof AppInstructorAssessmentsRoute
   '/app/instructor/attendance': typeof AppInstructorAttendanceRoute
   '/app/instructor/calendar': typeof AppInstructorCalendarRoute
+  '/app/instructor/classes': typeof AppInstructorClassesRoute
   '/app/instructor/gradebook': typeof AppInstructorGradebookRoute
+  '/app/instructor/grading-queue': typeof AppInstructorGradingQueueRoute
   '/app/intern/evaluation': typeof AppInternEvaluationRoute
   '/app/intern/learning-plan': typeof AppInternLearningPlanRoute
   '/app/intern/mentorship': typeof AppInternMentorshipRoute
   '/app/intern/messages': typeof AppInternMessagesRoute
   '/app/intern/portfolio': typeof AppInternPortfolioRoute
+  '/app/intern/resources': typeof AppInternResourcesRoute
+  '/app/intern/skills': typeof AppInternSkillsRoute
   '/app/intern/tasks': typeof AppInternTasksRoute
   '/app/intern/timesheet': typeof AppInternTimesheetRoute
   '/app/it/assets': typeof AppItAssetsRoute
@@ -2961,8 +3008,10 @@ export interface FileRoutesByTo {
   '/app/assessments': typeof AppAssessmentsIndexRoute
   '/app/assignments': typeof AppAssignmentsIndexRoute
   '/app/behavioral-design': typeof AppBehavioralDesignIndexRoute
+  '/app/department': typeof AppDepartmentIndexRoute
   '/app/design': typeof AppDesignIndexRoute
   '/app/dev': typeof AppDevIndexRoute
+  '/app/director': typeof AppDirectorIndexRoute
   '/app/government': typeof AppGovernmentIndexRoute
   '/app/growth': typeof AppGrowthIndexRoute
   '/app/hr': typeof AppHrIndexRoute
@@ -3230,12 +3279,16 @@ export interface FileRoutesById {
   '/app/instructor/assessments': typeof AppInstructorAssessmentsRoute
   '/app/instructor/attendance': typeof AppInstructorAttendanceRoute
   '/app/instructor/calendar': typeof AppInstructorCalendarRoute
+  '/app/instructor/classes': typeof AppInstructorClassesRoute
   '/app/instructor/gradebook': typeof AppInstructorGradebookRoute
+  '/app/instructor/grading-queue': typeof AppInstructorGradingQueueRoute
   '/app/intern/evaluation': typeof AppInternEvaluationRoute
   '/app/intern/learning-plan': typeof AppInternLearningPlanRoute
   '/app/intern/mentorship': typeof AppInternMentorshipRoute
   '/app/intern/messages': typeof AppInternMessagesRoute
   '/app/intern/portfolio': typeof AppInternPortfolioRoute
+  '/app/intern/resources': typeof AppInternResourcesRoute
+  '/app/intern/skills': typeof AppInternSkillsRoute
   '/app/intern/tasks': typeof AppInternTasksRoute
   '/app/intern/timesheet': typeof AppInternTimesheetRoute
   '/app/it/assets': typeof AppItAssetsRoute
@@ -3329,8 +3382,10 @@ export interface FileRoutesById {
   '/app/assessments/': typeof AppAssessmentsIndexRoute
   '/app/assignments/': typeof AppAssignmentsIndexRoute
   '/app/behavioral-design/': typeof AppBehavioralDesignIndexRoute
+  '/app/department/': typeof AppDepartmentIndexRoute
   '/app/design/': typeof AppDesignIndexRoute
   '/app/dev/': typeof AppDevIndexRoute
+  '/app/director/': typeof AppDirectorIndexRoute
   '/app/government/': typeof AppGovernmentIndexRoute
   '/app/growth/': typeof AppGrowthIndexRoute
   '/app/hr/': typeof AppHrIndexRoute
@@ -3599,12 +3654,16 @@ export interface FileRouteTypes {
     | '/app/instructor/assessments'
     | '/app/instructor/attendance'
     | '/app/instructor/calendar'
+    | '/app/instructor/classes'
     | '/app/instructor/gradebook'
+    | '/app/instructor/grading-queue'
     | '/app/intern/evaluation'
     | '/app/intern/learning-plan'
     | '/app/intern/mentorship'
     | '/app/intern/messages'
     | '/app/intern/portfolio'
+    | '/app/intern/resources'
+    | '/app/intern/skills'
     | '/app/intern/tasks'
     | '/app/intern/timesheet'
     | '/app/it/assets'
@@ -3698,8 +3757,10 @@ export interface FileRouteTypes {
     | '/app/assessments/'
     | '/app/assignments/'
     | '/app/behavioral-design/'
+    | '/app/department/'
     | '/app/design/'
     | '/app/dev/'
+    | '/app/director/'
     | '/app/government/'
     | '/app/growth/'
     | '/app/hr/'
@@ -3966,12 +4027,16 @@ export interface FileRouteTypes {
     | '/app/instructor/assessments'
     | '/app/instructor/attendance'
     | '/app/instructor/calendar'
+    | '/app/instructor/classes'
     | '/app/instructor/gradebook'
+    | '/app/instructor/grading-queue'
     | '/app/intern/evaluation'
     | '/app/intern/learning-plan'
     | '/app/intern/mentorship'
     | '/app/intern/messages'
     | '/app/intern/portfolio'
+    | '/app/intern/resources'
+    | '/app/intern/skills'
     | '/app/intern/tasks'
     | '/app/intern/timesheet'
     | '/app/it/assets'
@@ -4065,8 +4130,10 @@ export interface FileRouteTypes {
     | '/app/assessments'
     | '/app/assignments'
     | '/app/behavioral-design'
+    | '/app/department'
     | '/app/design'
     | '/app/dev'
+    | '/app/director'
     | '/app/government'
     | '/app/growth'
     | '/app/hr'
@@ -4333,12 +4400,16 @@ export interface FileRouteTypes {
     | '/app/instructor/assessments'
     | '/app/instructor/attendance'
     | '/app/instructor/calendar'
+    | '/app/instructor/classes'
     | '/app/instructor/gradebook'
+    | '/app/instructor/grading-queue'
     | '/app/intern/evaluation'
     | '/app/intern/learning-plan'
     | '/app/intern/mentorship'
     | '/app/intern/messages'
     | '/app/intern/portfolio'
+    | '/app/intern/resources'
+    | '/app/intern/skills'
     | '/app/intern/tasks'
     | '/app/intern/timesheet'
     | '/app/it/assets'
@@ -4432,8 +4503,10 @@ export interface FileRouteTypes {
     | '/app/assessments/'
     | '/app/assignments/'
     | '/app/behavioral-design/'
+    | '/app/department/'
     | '/app/design/'
     | '/app/dev/'
+    | '/app/director/'
     | '/app/government/'
     | '/app/growth/'
     | '/app/hr/'
@@ -4700,12 +4773,16 @@ export interface RootRouteChildren {
   AppInstructorAssessmentsRoute: typeof AppInstructorAssessmentsRoute
   AppInstructorAttendanceRoute: typeof AppInstructorAttendanceRoute
   AppInstructorCalendarRoute: typeof AppInstructorCalendarRoute
+  AppInstructorClassesRoute: typeof AppInstructorClassesRoute
   AppInstructorGradebookRoute: typeof AppInstructorGradebookRoute
+  AppInstructorGradingQueueRoute: typeof AppInstructorGradingQueueRoute
   AppInternEvaluationRoute: typeof AppInternEvaluationRoute
   AppInternLearningPlanRoute: typeof AppInternLearningPlanRoute
   AppInternMentorshipRoute: typeof AppInternMentorshipRoute
   AppInternMessagesRoute: typeof AppInternMessagesRoute
   AppInternPortfolioRoute: typeof AppInternPortfolioRoute
+  AppInternResourcesRoute: typeof AppInternResourcesRoute
+  AppInternSkillsRoute: typeof AppInternSkillsRoute
   AppInternTasksRoute: typeof AppInternTasksRoute
   AppInternTimesheetRoute: typeof AppInternTimesheetRoute
   AppItAssetsRoute: typeof AppItAssetsRoute
@@ -4798,8 +4875,10 @@ export interface RootRouteChildren {
   AppAssessmentsIndexRoute: typeof AppAssessmentsIndexRoute
   AppAssignmentsIndexRoute: typeof AppAssignmentsIndexRoute
   AppBehavioralDesignIndexRoute: typeof AppBehavioralDesignIndexRoute
+  AppDepartmentIndexRoute: typeof AppDepartmentIndexRoute
   AppDesignIndexRoute: typeof AppDesignIndexRoute
   AppDevIndexRoute: typeof AppDevIndexRoute
+  AppDirectorIndexRoute: typeof AppDirectorIndexRoute
   AppGovernmentIndexRoute: typeof AppGovernmentIndexRoute
   AppGrowthIndexRoute: typeof AppGrowthIndexRoute
   AppHrIndexRoute: typeof AppHrIndexRoute
@@ -5923,6 +6002,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppConversionCopyStyleGuideRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/app/department/': {
+      id: '/app/department/'
+      path: '/app/department'
+      fullPath: '/app/department/'
+      preLoaderRoute: typeof AppDepartmentIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/app/department/approvals': {
       id: '/app/department/approvals'
       path: '/app/department/approvals'
@@ -6117,6 +6203,13 @@ declare module '@tanstack/react-router' {
       path: '/app/dev/tasks'
       fullPath: '/app/dev/tasks'
       preLoaderRoute: typeof AppDevTasksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/director/': {
+      id: '/app/director/'
+      path: '/app/director'
+      fullPath: '/app/director/'
+      preLoaderRoute: typeof AppDirectorIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/app/director/academic': {
@@ -6483,11 +6576,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppInstructorCalendarRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/app/instructor/classes': {
+      id: '/app/instructor/classes'
+      path: '/app/instructor/classes'
+      fullPath: '/app/instructor/classes'
+      preLoaderRoute: typeof AppInstructorClassesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/app/instructor/gradebook': {
       id: '/app/instructor/gradebook'
       path: '/app/instructor/gradebook'
       fullPath: '/app/instructor/gradebook'
       preLoaderRoute: typeof AppInstructorGradebookRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/instructor/grading-queue': {
+      id: '/app/instructor/grading-queue'
+      path: '/app/instructor/grading-queue'
+      fullPath: '/app/instructor/grading-queue'
+      preLoaderRoute: typeof AppInstructorGradingQueueRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/app/intern/': {
@@ -6530,6 +6637,20 @@ declare module '@tanstack/react-router' {
       path: '/app/intern/portfolio'
       fullPath: '/app/intern/portfolio'
       preLoaderRoute: typeof AppInternPortfolioRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/intern/resources': {
+      id: '/app/intern/resources'
+      path: '/app/intern/resources'
+      fullPath: '/app/intern/resources'
+      preLoaderRoute: typeof AppInternResourcesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/intern/skills': {
+      id: '/app/intern/skills'
+      path: '/app/intern/skills'
+      fullPath: '/app/intern/skills'
+      preLoaderRoute: typeof AppInternSkillsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/app/intern/tasks': {
@@ -7756,12 +7877,16 @@ const rootRouteChildren: RootRouteChildren = {
   AppInstructorAssessmentsRoute: AppInstructorAssessmentsRoute,
   AppInstructorAttendanceRoute: AppInstructorAttendanceRoute,
   AppInstructorCalendarRoute: AppInstructorCalendarRoute,
+  AppInstructorClassesRoute: AppInstructorClassesRoute,
   AppInstructorGradebookRoute: AppInstructorGradebookRoute,
+  AppInstructorGradingQueueRoute: AppInstructorGradingQueueRoute,
   AppInternEvaluationRoute: AppInternEvaluationRoute,
   AppInternLearningPlanRoute: AppInternLearningPlanRoute,
   AppInternMentorshipRoute: AppInternMentorshipRoute,
   AppInternMessagesRoute: AppInternMessagesRoute,
   AppInternPortfolioRoute: AppInternPortfolioRoute,
+  AppInternResourcesRoute: AppInternResourcesRoute,
+  AppInternSkillsRoute: AppInternSkillsRoute,
   AppInternTasksRoute: AppInternTasksRoute,
   AppInternTimesheetRoute: AppInternTimesheetRoute,
   AppItAssetsRoute: AppItAssetsRoute,
@@ -7855,8 +7980,10 @@ const rootRouteChildren: RootRouteChildren = {
   AppAssessmentsIndexRoute: AppAssessmentsIndexRoute,
   AppAssignmentsIndexRoute: AppAssignmentsIndexRoute,
   AppBehavioralDesignIndexRoute: AppBehavioralDesignIndexRoute,
+  AppDepartmentIndexRoute: AppDepartmentIndexRoute,
   AppDesignIndexRoute: AppDesignIndexRoute,
   AppDevIndexRoute: AppDevIndexRoute,
+  AppDirectorIndexRoute: AppDirectorIndexRoute,
   AppGovernmentIndexRoute: AppGovernmentIndexRoute,
   AppGrowthIndexRoute: AppGrowthIndexRoute,
   AppHrIndexRoute: AppHrIndexRoute,

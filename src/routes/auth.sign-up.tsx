@@ -76,7 +76,18 @@ function SignUpPage() {
     signUp.mutate(
       { name, email, password, roleKey: role },
       {
-        onSuccess: () => navigate({ to: "/app" }),
+        onSuccess: () => {
+          const pendingInvite = sessionStorage.getItem("cea_pending_invite");
+          sessionStorage.removeItem("cea_pending_invite");
+          if (pendingInvite) {
+            void navigate({
+              to: "/app/parent/invitation/accept",
+              search: { token: pendingInvite },
+            });
+          } else {
+            void navigate({ to: "/app" });
+          }
+        },
         onError: (err) => {
           setError(err instanceof Error ? err.message : "Could not create your account.");
         },

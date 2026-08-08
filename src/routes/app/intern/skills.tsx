@@ -1,0 +1,85 @@
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { ArrowLeft } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { AppShell } from "@/components/app/app-shell";
+import { QueryState } from "@/components/ui/query-state";
+import { useIntSkills } from "@/lib/query/internDashboard";
+import type { IntSkill } from "@/lib/api/internDashboard";
+import { cn } from "@/lib/utils";
+
+export const Route = createFileRoute("/app/intern/skills")({
+  head: () => ({
+    meta: [
+      { title: "Skills Tracker — CEA-OS Intern" },
+      { name: "description", content: "Track your skill mastery and learning progress." },
+    ],
+  }),
+  component: InternSkills,
+});
+
+function masteryBadge(mastery: number) {
+  if (mastery >= 80) return "bg-success/10 text-success";
+  if (mastery >= 50) return "bg-primary/10 text-primary";
+  if (mastery >= 25) return "bg-warning/10 text-warning";
+  return "bg-muted text-muted-foreground";
+}
+
+function InternSkills() {
+  const skills = useIntSkills();
+
+  return (
+    <AppShell
+      roleKey="student"
+      title="Skills tracker"
+      subtitle="Your growing toolkit — mastery levels and next steps"
+      actions={
+        <Button asChild variant="outline" size="sm" className="font-semibold">
+          <Link to="/app/intern">
+            <ArrowLeft className="size-4" /> Intern hub
+          </Link>
+        </Button>
+      }
+    >
+      <QueryState<IntSkill[]> query={skills} empty={{ title: "No skills tracked yet" }}>
+        {(items) => (
+          <Card className="bg-card shadow-soft border overflow-hidden">
+            <div className="divide-y">
+              {items.map((s) => {
+                const mastery = Number(s.mastery) || 0;
+                return (
+                  <div key={s.id} className="p-4 flex flex-wrap items-center gap-4">
+                    <div className="min-w-0 flex-1">
+                      <p className="font-bold text-sm">{s.name}</p>
+                      <div className="mt-2 flex items-center gap-2">
+                        <div className="flex-1 h-2 bg-muted rounded-full overflow-hidden">
+                          <div
+                            className="h-full bg-primary rounded-full transition-all"
+                            style={{ width: `${Math.min(100, Math.max(0, mastery))}%` }}
+                          />
+                        </div>
+                        <span className="text-xs font-bold text-primary w-10 text-right">
+                          {mastery}%
+                        </span>
+                      </div>
+                    </div>
+                    <Badge className={cn("border-0 font-semibold", masteryBadge(mastery))}>
+                      {mastery >= 80
+                        ? "Expert"
+                        : mastery >= 50
+                          ? "Proficient"
+                          : mastery >= 25
+                            ? "Developing"
+                            : "Learning"}
+                    </Badge>
+                  </div>
+                );
+              })}
+            </div>
+          </Card>
+        )}
+      </QueryState>
+    </AppShell>
+  );
+}

@@ -6,13 +6,11 @@ import {
   fetchExpenses,
   fetchPaymentBatches,
   updateInvoiceStatus,
-  updateExpenseStatus,
   runPayroll,
   type Invoice,
   type Expense,
   type PaymentBatch,
   type InvoiceStatus,
-  type ExpenseStatus,
 } from "@/lib/api/finance";
 
 export const financeKeys = {
@@ -52,17 +50,6 @@ export function useUpdateInvoiceStatus() {
       updateInvoiceStatus(input.id, input.status),
     onSuccess: () => {
       void queryClient.invalidateQueries({ queryKey: financeKeys.invoices });
-    },
-  });
-}
-
-export function useUpdateExpenseStatus() {
-  const queryClient = useQueryClient();
-  return useMutation({
-    mutationFn: (input: { id: string; status: ExpenseStatus }) =>
-      updateExpenseStatus(input.id, input.status),
-    onSuccess: () => {
-      void queryClient.invalidateQueries({ queryKey: financeKeys.expenses });
     },
   });
 }

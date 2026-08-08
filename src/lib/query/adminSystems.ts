@@ -1,15 +1,19 @@
-import { usePaginatedQuery, flattenPages } from "@/lib/query/hooks";
+import { usePaginatedQuery, useApiQuery, flattenPages } from "@/lib/query/hooks";
 import {
   fetchAdmOverview,
   fetchAdmKeys,
   fetchAdmBackups,
   fetchAdmIntegrations,
   fetchAdmRules,
+  fetchAdmServices,
+  fetchAdmMetrics,
   type AdmKpi,
   type AdmKey,
   type AdmBackup,
   type AdmIntegration,
   type AdmRule,
+  type AdmService,
+  type AdmMetrics,
 } from "@/lib/api/adminSystems";
 
 export const admKeys = {
@@ -19,6 +23,7 @@ export const admKeys = {
   backups: ["admin-systems-dashboard", "backups"] as const,
   integrations: ["admin-systems-dashboard", "integrations"] as const,
   rules: ["admin-systems-dashboard", "rules"] as const,
+  services: ["admin-systems-dashboard", "services"] as const,
 };
 
 export function useAdmOverview() {
@@ -51,5 +56,22 @@ export function useAdmRules() {
 export function useAdmRuleItems(): AdmRule[] {
   return flattenPages(useAdmRules().data?.pages);
 }
+export function useAdmServices() {
+  return usePaginatedQuery<AdmService>(admKeys.services, fetchAdmServices);
+}
+export function useAdmServiceItems(): AdmService[] {
+  return flattenPages(useAdmServices().data?.pages);
+}
+export function useAdmMetrics() {
+  return useApiQuery<AdmMetrics>(["admin-systems-dashboard", "metrics"], fetchAdmMetrics);
+}
 
-export type { AdmKpi, AdmKey, AdmBackup, AdmIntegration, AdmRule } from "@/lib/api/adminSystems";
+export type {
+  AdmKpi,
+  AdmKey,
+  AdmBackup,
+  AdmIntegration,
+  AdmRule,
+  AdmService,
+  AdmMetrics,
+} from "@/lib/api/adminSystems";

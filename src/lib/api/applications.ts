@@ -95,3 +95,23 @@ export interface ApplicationResult {
 export function submitApplication(input: SubmitApplicationInput): Promise<ApplicationResult> {
   return apiFetch<ApplicationResult>("/v1/applications", { method: "POST", body: input });
 }
+
+export interface ApplicationStageState {
+  key: string;
+  label: string;
+  done: boolean;
+  active: boolean;
+}
+
+export interface ApplicationStatus {
+  ref: string;
+  status: string;
+  programTitle: string | null;
+  stages: ApplicationStageState[];
+  updatedAt: string | null;
+}
+
+/** Public endpoint — track an application by its reference code. */
+export function fetchApplicationStatus(ref: string): Promise<ApplicationStatus> {
+  return apiFetch<ApplicationStatus>(`/v1/applications/${encodeURIComponent(ref)}`);
+}

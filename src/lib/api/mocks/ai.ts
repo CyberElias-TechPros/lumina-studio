@@ -6,8 +6,17 @@ import type {
   AiModelsResponse,
   AiRecommendation,
   GenerateResponse,
-  GradeResult,
 } from "@/lib/api/ai";
+
+interface GradeResult {
+  submissionId: string;
+  score: number;
+  maxScore: number;
+  feedback: string;
+  rubricBreakdown: { criteria: string; score: number; maxScore: number; note: string }[];
+  model: string;
+  mock: boolean;
+}
 
 function delay(milliseconds = 180): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, milliseconds));

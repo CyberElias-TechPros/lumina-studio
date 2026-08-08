@@ -1,15 +1,26 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useMutation } from "@tanstack/react-query";
 import { useState } from "react";
-import { ArrowRight, CheckCircle2, MessageCircle, Send, Star, ThumbsUp } from "lucide-react";
+import {
+  ArrowRight,
+  CheckCircle2,
+  Loader2,
+  MessageCircle,
+  Send,
+  Star,
+  ThumbsUp,
+} from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Textarea } from "@/components/ui/textarea";
 import { PageShell, PageHero, CTASection } from "@/components/marketing/shell";
 import { Reveal } from "@/components/motion";
 import { cn } from "@/lib/utils";
+import { submitContact } from "@/lib/api/marketing";
 
 export const Route = createFileRoute("/visit/feedback")({
   head: () => ({
@@ -29,7 +40,40 @@ const quickRatings = ["Excellent", "Good", "Average", "Poor"];
 
 function VisitFeedbackPage() {
   const [rating, setRating] = useState(0);
+  const [impression, setImpression] = useState("Excellent");
+  const [whatStoodOut, setWhatStoodOut] = useState("");
+  const [improvements, setImprovements] = useState("");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
   const [sent, setSent] = useState(false);
+  const [error, setError] = useState("");
+
+  const submit = useMutation({
+    mutationFn: async (data: { name: string; email: string; message: string }) => {
+      return submitContact(data);
+    },
+    onSuccess: () => {
+      setSent(true);
+    },
+    onError: (err) => {
+      setError(err instanceof Error ? err.message : "Could not submit feedback.");
+    },
+  });
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setError("");
+    if (rating === 0) {
+      setError("Please select a rating.");
+      return;
+    }
+    if (!name.trim() || !email.trim()) {
+      setError("Name and email are required.");
+      return;
+    }
+    const message = `Visit feedback (${rating}/5): ${impression}\n\nWhat stood out: ${whatStoodOut}\n\nImprovements: ${improvements}`;
+    submit.mutate({ name: name.trim(), email: email.trim(), message });
+  };
 
   return (
     <PageShell>
@@ -70,13 +114,31 @@ function VisitFeedbackPage() {
                     </div>
                   </div>
                 ) : (
-                  <form
-                    className="space-y-6"
-                    onSubmit={(e) => {
-                      e.preventDefault();
-                      setSent(true);
-                    }}
-                  >
+                  <form className="space-y-6" onSubmit={handleSubmit}>
+                    <div className="grid gap-3 sm:grid-cols-2">
+                      <div className="space-y-1.5">
+                        <Label htmlFor="f-name">Your name</Label>
+                        <Input
+                          id="f-name"
+                          value={name}
+                          onChange={(e) => setName(e.target.value)}
+                          placeholder="Your name"
+                          required
+                        />
+                      </div>
+                      <div className="space-y-1.5">
+                        <Label htmlFor="f-email">Email</Label>
+                        <Input
+                          id="f-email"
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
+                          type="email"
+                          placeholder="you@example.com"
+                          required
+                        />
+                      </div>
+                    </div>
+
                     <div>
                       <Label>How would you rate your visit?</Label>
                       <div className="mt-3 flex gap-2">
@@ -100,7 +162,11 @@ function VisitFeedbackPage() {
 
                     <div>
                       <Label>Overall impression</Label>
-                      <RadioGroup defaultValue="Excellent" className="mt-2 flex flex-wrap gap-2">
+                      <RadioGroup
+                        value={impression}
+                        onValueChange={setImpression}
+                        className="mt-2 flex flex-wrap gap-2"
+                      >
                         {quickRatings.map((r) => (
                           <label
                             key={r}
@@ -117,6 +183,8 @@ function VisitFeedbackPage() {
                       <Label htmlFor="f-what">What stood out?</Label>
                       <Textarea
                         id="f-what"
+                        value={whatStoodOut}
+                        onChange={(e) => setWhatStoodOut(e.target.value)}
                         rows={3}
                         placeholder="The lab tour was… the demo day was…"
                       />
@@ -126,12 +194,25 @@ function VisitFeedbackPage() {
                       <Label htmlFor="f-improve">What could we do better?</Label>
                       <Textarea
                         id="f-improve"
+                        value={improvements}
+                        onChange={(e) => setImprovements(e.target.value)}
                         rows={3}
                         placeholder="Optional — honest answers welcome"
                       />
                     </div>
 
-                    <Button type="submit" className="bg-gradient-brand shadow-glow w-full border-0">
+                    {error && (
+                      <p className="bg-error/10 text-error rounded-lg px-3 py-2 text-xs font-semibold">
+                        {error}
+                      </p>
+                    )}
+
+                    <Button
+                      type="submit"
+                      disabled={submit.isPending}
+                      className="bg-gradient-brand shadow-glow w-full border-0"
+                    >
+                      {submit.isPending && <Loader2 className="mr-1.5 size-4 animate-spin" />}
                       <Send className="mr-1.5 size-4" /> Submit feedback
                     </Button>
                   </form>

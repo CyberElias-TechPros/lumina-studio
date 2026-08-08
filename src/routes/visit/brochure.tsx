@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useMutation } from "@tanstack/react-query";
 import { useState } from "react";
 import {
   ArrowRight,
@@ -7,6 +8,7 @@ import {
   GraduationCap,
   HandCoins,
   Laptop,
+  Loader2,
   Rocket,
   Send,
   Sparkles,
@@ -22,6 +24,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { PageShell, PageHero, CTASection } from "@/components/marketing/shell";
 import { Reveal } from "@/components/motion";
 import { cn } from "@/lib/utils";
+import { submitContact } from "@/lib/api/marketing";
 
 export const Route = createFileRoute("/visit/brochure")({
   head: () => ({
@@ -75,6 +78,31 @@ const tracks = [
 
 function BrochurePage() {
   const [sent, setSent] = useState(false);
+  const [email, setEmail] = useState("");
+  const [error, setError] = useState("");
+  const request = useMutation({
+    mutationFn: async (data: { email: string }) => {
+      return submitContact({
+        name: "Brochure request",
+        email: data.email,
+        message: "Requested the digital brochure and cohort dates.",
+      });
+    },
+    onSuccess: () => {
+      setSent(true);
+      setEmail("");
+    },
+    onError: (err) => {
+      setError(err instanceof Error ? err.message : "Could not send the brochure request.");
+    },
+  });
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setError("");
+    if (!email.trim()) return;
+    request.mutate({ email: email.trim() });
+  };
 
   return (
     <PageShell>
@@ -185,20 +213,31 @@ function BrochurePage() {
                     </p>
                   </div>
                 ) : (
-                  <form
-                    className="mt-6 space-y-4"
-                    onSubmit={(e) => {
-                      e.preventDefault();
-                      setSent(true);
-                    }}
-                  >
+                  <form className="mt-6 space-y-4" onSubmit={handleSubmit}>
                     <div className="space-y-1.5">
                       <Label htmlFor="b-email">Email address</Label>
-                      <Input id="b-email" type="email" placeholder="you@example.com" required />
+                      <Input
+                        id="b-email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        type="email"
+                        placeholder="you@example.com"
+                        required
+                      />
                     </div>
-                    <Button type="submit" className="bg-gradient-brand shadow-glow w-full border-0">
+                    <Button
+                      type="submit"
+                      disabled={request.isPending}
+                      className="bg-gradient-brand shadow-glow w-full border-0"
+                    >
+                      {request.isPending && <Loader2 className="mr-1.5 size-4 animate-spin" />}
                       <Send className="mr-1.5 size-4" /> Send me the brochure
                     </Button>
+                    {error && (
+                      <p className="bg-error/10 text-error rounded-lg px-3 py-2 text-xs font-semibold">
+                        {error}
+                      </p>
+                    )}
                   </form>
                 )}
               </CardContent>

@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useMutation } from "@tanstack/react-query";
 import { useState } from "react";
 import {
   ArrowRight,
@@ -6,6 +7,7 @@ import {
   CalendarDays,
   CheckCircle2,
   Coffee,
+  Loader2,
   MapPin,
   Plane,
   TrainFront,
@@ -26,6 +28,7 @@ import {
 import { PageShell, PageHero, CTASection, SectionHeading } from "@/components/marketing/shell";
 import { Reveal, StaggerGroup, StaggerItem } from "@/components/motion";
 import { cn } from "@/lib/utils";
+import { submitContact } from "@/lib/api/marketing";
 
 export const Route = createFileRoute("/visit/")({
   head: () => ({
@@ -86,6 +89,36 @@ const gettingHere = [
 function VisitPage() {
   const [type, setType] = useState("tour");
   const [booked, setBooked] = useState(false);
+  const [registerError, setRegisterError] = useState("");
+  const register = useMutation({
+    mutationFn: async (data: { name: string; email: string; phone: string; city: string }) => {
+      return submitContact({
+        name: data.name,
+        email: data.email,
+        message: `Visit interest (${type}): ${data.name}, ${data.phone}, ${data.city}`,
+      });
+    },
+    onSuccess: () => setBooked(true),
+    onError: (err) => {
+      setRegisterError(err instanceof Error ? err.message : "Could not register interest.");
+    },
+  });
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setRegisterError("");
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    const name = (formData.get("name") as string)?.trim();
+    const email = (formData.get("email") as string)?.trim();
+    const phone = (formData.get("phone") as string)?.trim();
+    const city = (formData.get("city") as string)?.trim();
+    if (!name || !email || !phone) {
+      setRegisterError("Name, email and phone are required.");
+      return;
+    }
+    register.mutate({ name, email, phone, city });
+  };
 
   return (
     <PageShell>
@@ -208,15 +241,31 @@ function VisitPage() {
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div className="space-y-1.5">
                     <Label htmlFor="v-name">Full name</Label>
-                    <Input id="v-name" placeholder="Your name" />
+                    <Input id="v-name" name="name" placeholder="Your name" required />
                   </div>
                   <div className="space-y-1.5">
                     <Label htmlFor="v-phone">Phone / WhatsApp</Label>
-                    <Input id="v-phone" type="tel" placeholder="+234 800 000 0000" />
+                    <Input
+                      id="v-phone"
+                      name="phone"
+                      type="tel"
+                      placeholder="+234 800 000 0000"
+                      required
+                    />
+                  </div>
+                  <div className="space-y-1.5">
+                    <Label htmlFor="v-email">Email address</Label>
+                    <Input
+                      id="v-email"
+                      name="email"
+                      type="email"
+                      placeholder="you@example.com"
+                      required
+                    />
                   </div>
                   <div className="space-y-1.5">
                     <Label htmlFor="v-city">Your city</Label>
-                    <Input id="v-city" placeholder="e.g. Port Harcourt, Aba, Lagos" />
+                    <Input id="v-city" name="city" placeholder="e.g. Port Harcourt, Aba, Lagos" />
                   </div>
                   <div className="space-y-1.5">
                     <Label htmlFor="v-time">Preferred time</Label>
@@ -235,29 +284,38 @@ function VisitPage() {
                   </div>
                 </div>
 
-                <div className="rounded-xl border border-dashed p-4">
-                  <p className="flex items-center gap-2 text-sm font-bold">
-                    <CalendarDays className="text-primary size-4" /> Coming from far?
-                  </p>
-                  <p className="text-muted-foreground mt-1 text-xs">
-                    Add your city in the form and we'll include pickup and accommodation tips in the
-                    opening announcements.
-                  </p>
-                </div>
+                <form onSubmit={handleSubmit}>
+                  <div className="rounded-xl border border-dashed p-4">
+                    <p className="flex items-center gap-2 text-sm font-bold">
+                      <CalendarDays className="text-primary size-4" /> Coming from far?
+                    </p>
+                    <p className="text-muted-foreground mt-1 text-xs">
+                      Add your city in the form and we'll include pickup and accommodation tips in
+                      the opening announcements.
+                    </p>
+                  </div>
 
-                <Button
-                  onClick={() => setBooked(true)}
-                  className="bg-gradient-brand shadow-glow w-full border-0"
-                >
-                  Register interest <ArrowRight className="ml-1.5 size-4" />
-                </Button>
-                <p className="text-muted-foreground text-center text-xs">
-                  Prefer virtual? Book a{" "}
-                  <Link to="/contact" className="text-primary font-semibold">
-                    video call
-                  </Link>{" "}
-                  instead.
-                </p>
+                  <Button
+                    type="submit"
+                    disabled={register.isPending}
+                    className="bg-gradient-brand shadow-glow w-full border-0"
+                  >
+                    {register.isPending && <Loader2 className="mr-1.5 size-4 animate-spin" />}
+                    Register interest <ArrowRight className="ml-1.5 size-4" />
+                  </Button>
+                  {registerError && (
+                    <p className="bg-error/10 text-error rounded-lg px-3 py-2 text-xs font-semibold">
+                      {registerError}
+                    </p>
+                  )}
+                  <p className="text-muted-foreground text-center text-xs">
+                    Prefer virtual? Book a{" "}
+                    <Link to="/contact" className="text-primary font-semibold">
+                      video call
+                    </Link>{" "}
+                    instead.
+                  </p>
+                </form>
               </CardContent>
             </Card>
           </div>

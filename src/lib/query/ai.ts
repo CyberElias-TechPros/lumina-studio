@@ -5,12 +5,10 @@ import {
   fetchAiModels,
   fetchAiRecommendations,
   generateContent,
-  gradeSubmission,
   type AiAskInput,
   type AiModelsResponse,
   type AiRecommendation,
   type GenerateInput,
-  type GradeInput,
 } from "@/lib/api/ai";
 
 export const aiKeys = {
@@ -24,12 +22,6 @@ export function useAiRecommendations() {
 
 export function useAiModels() {
   return useApiQuery<AiModelsResponse>(aiKeys.models, fetchAiModels, { staleTime: 60_000 });
-}
-
-export function useGradeSubmission() {
-  return useMutation({
-    mutationFn: (input: GradeInput) => gradeSubmission(input),
-  });
 }
 
 export function useAskAssistant() {

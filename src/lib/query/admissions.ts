@@ -3,15 +3,18 @@ import { useApiQuery, usePaginatedQuery, flattenPages } from "@/lib/query/hooks"
 import {
   fetchAdminApplications,
   fetchAdmissionsStats,
+  fetchApplicationStatus,
   updateApplicationStatus,
   type AdminApplication,
   type AdmissionsStats,
+  type ApplicationStatus,
   type PipelineStage,
 } from "@/lib/api/applications";
 
 export const admissionsKeys = {
   applications: ["admissions", "applications"] as const,
   stats: ["admissions", "stats"] as const,
+  status: (ref: string) => ["admissions", "status", ref] as const,
 };
 
 export function useAdminApplications(stage?: PipelineStage) {
@@ -27,6 +30,13 @@ export function useApplicationItems(stage?: PipelineStage): AdminApplication[] {
 
 export function useAdmissionsStats() {
   return useApiQuery<AdmissionsStats>(admissionsKeys.stats, fetchAdmissionsStats);
+}
+
+/** Public application status lookup by reference code. */
+export function useApplicationStatus(ref: string) {
+  return useApiQuery<ApplicationStatus>(admissionsKeys.status(ref), () =>
+    fetchApplicationStatus(ref),
+  );
 }
 
 export function useUpdateApplicationStatus() {

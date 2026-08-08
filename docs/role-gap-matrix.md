@@ -13,6 +13,7 @@ Backend coverage = routes registered in `backend/src/lib/rbac.ts` (the full `/v1
 
 | Date | Change |
 | --- | --- |
+| 2026-08-08 | **Tier 6 — production-readiness close-out** — backend: migrations `0037_admin_system_metrics.sql` (adm_monitor_services) + `0038_parent_invitations.sql` (token-based guardian links), seeds `admin-metrics-data.sql`/`admin-metrics.ts`, `GET /v1/admin-systems-dashboard/metrics` (computed cards + service roster) + `/services` list, new `backend/src/routes/invitations.ts` (`POST /v1/invitations` staff-create, `GET /:token` public verify, `POST /:token/accept` links `parent_students` + upgrades student→parent), RBAC + index.ts wiring; `backend/test/tier6-closeout.test.ts` 14/14 (401/403 gates, create/verify/accept/conflict, monitoring metrics). Frontend: `admin/monitoring` wired to metrics, `parent/invitation/accept` fully token-based (verify → accept / sign-up sign-in handoff via sessionStorage), `apply/status` + `$id` live against public `GET /v1/applications/:ref`, `visit/{feedback,brochure,index}` forms POST `/v1/contact`; 6 new pages (department/index, director/index, instructor/classes, instructor/grading-queue, intern/resources, intern/skills) wired to existing suite endpoints; dead hooks removed (`useMessageThread`, `useGradeSubmission`, `useUpdateExpenseStatus`, `useUploadFile`). Full backend suite 664 passed (4 pre-existing `ai.test` network timeouts). Typecheck + eslint + build green. |
 | 2026-08-03 | **Director suite 6/9 wired (composed reads)** — command-center (org health + alerts from finance/hr/marketing/recruitment/academic aggregates), finance (invoice/expense/payment pivots, live margin + receivables), hr (employees/leave/payroll/postings), marketing (campaign ROAS + funnel stages + leads → CAC), academic (course catalog completion + interview placement + at-risk gradebook), approvals (leave + payroll + overdue-invoice queue). `operations`/`okrs`/`reports` still static (no backend source). Also wired `accountant/audit` → `admin/audit-log` reuse (accountant now 9/10, banking only static). Typecheck + eslint green. |
 | 2026-08-03 | **Tier 1 remaining clusters wired** — `hr` (attendance/onboarding/performance/reports + hub live via `hr/*` + `recruitment/postings`), `employer` hub/analytics/brand/feedback (recruitment counts/pipeline/interviews/talent), `alumni/jobs` (postings), `instructor` analytics + attendance (gradebook/submissions aggregates), `admin` config (flags), security (audit-log), roles (accounts) — monitoring + api-keys left static (no infra/key endpoints), `dev` feature-flags (`/v1/flags`). Typecheck + eslint green. |
 | 2026-08-03 | **Accountant suite 8/10 wired** — index KPIs, billing (live invoice PATCH "Pay"), budgets (expense pivots), payroll (payroll-changes + employees), reports (aggregates); added `PATCH /v1/invoices/:id` + `/v1/expenses/:id` client mutations + mock handlers. Remaining static: `banking` (no reconciliation endpoint) and `audit` (could reuse `admin/audit-log` with role extension). |
@@ -44,12 +45,25 @@ Backend coverage = routes registered in `backend/src/lib/rbac.ts` (the full `/v1
 
 | Metric | Value |
 | --- | --- |
-| App pages under `src/routes/app/` | **283** |
-| Wired to live backend | **~236** |
-| Static dashboards (placeholder) | **~47** |
-| Backend route suites live | **~35 domains + Tier 2/3/4: parent, mentor, applications admin, payroll run, ops, it, mentor-dashboard, intern-dashboard, supplier-dashboard, partner-dashboard, volunteer-dashboard, receptionist-dashboard, government-dashboard, behavioral-dashboard, product-marketing-dashboard, alumni-dashboard, dev-dashboard, growth-dashboard, conversion-copy-dashboard, department-dashboard, ngo-dashboard, client-dashboard** (rbac.ts) |
-| Backend suites NOT built yet | **none** (remaining static pages have no dedicated suite and no clean existing source: director/okrs, director/reports, admin index/api-keys/backups/integrations/rate-limits, instructor index/announcements/lessons-edit, hr/training, admissions documents/communication, parent communication/invitation, root attendance/portfolio/reports) |
+| App pages under `src/routes/app/` | **290** (284 live before Tier 6 + 6 new: department/index, director/index, instructor/classes, instructor/grading-queue, intern/resources, intern/skills) |
+| Wired to live backend | **~288** (all app pages except the 40 public `portal/*` showcase mockups) |
+| Static dashboards (placeholder) | **2** (public `portal/*` role-landing showcase pages only; every `app/*` page is wired) |
+| Backend route suites live | **~35 domains + Tier 2/3/4/5/6: parent, mentor, applications admin, payroll run, ops, it, mentor-dashboard, intern-dashboard, supplier-dashboard, partner-dashboard, volunteer-dashboard, receptionist-dashboard, government-dashboard, behavioral-dashboard, product-marketing-dashboard, alumni-dashboard, dev-dashboard, growth-dashboard, conversion-copy-dashboard, department-dashboard, ngo-dashboard, client-dashboard, admin-systems-dashboard, director-dashboard, instructor-extras-dashboard, admissions-extras-dashboard, parent-extras-dashboard, hr-training-dashboard, student-self-dashboard, invitations** (rbac.ts) |
+| Backend suites NOT built yet | **none** (migrations 0000–0038 applied; invitations + admin metrics added in Tier 6) |
 | Public/locale data | `jobs/gigs/events/caseStudies/testimonials` seeded in `src/data/site.ts` ✅ |
+
+### Tier 6 — PRODUCTION READINESS CLOSE-OUT (2026-08-08)
+
+| Item | Status |
+| --- | --- |
+| `admin/monitoring` wired | ✅ `GET /v1/admin-systems-dashboard/metrics` (computed cards: services/healthy/errors/db) + `/services` list; migration `0037_admin_system_metrics.sql` + `adm_monitor_services` seeds |
+| `parent/invitation/accept` wired | ✅ new `parent_invitations` table (migration `0038`), `POST /v1/invitations` (staff), `GET /v1/invitations/:token` (public verify), `POST /:token/accept` (links `parent_students`, upgrades student→parent); `?token=` flow + sessionStorage handoff through sign-up/magic-link |
+| `apply/status` + `apply/status/$id` wired | ✅ public `GET /v1/applications/:ref` (already existed) now consumed by live lookup form + detail page with real pipeline stages |
+| `visit/*` forms wired | ✅ feedback + brochure + registration now POST `/v1/contact` (leads table) |
+| 6 new pages (dead hooks) | ✅ `department/index`, `director/index`, `instructor/classes`, `instructor/grading-queue`, `intern/resources`, `intern/skills` — wired to existing suite endpoints |
+| Dead hooks removed | ✅ `useMessageThread`, `useGradeSubmission`, `useUpdateExpenseStatus`, `useUploadFile` (api + query) |
+| Backend tests | `backend/test/tier6-closeout.test.ts` 14/14; full suite 664 passed (4 pre-existing `ai.test` network timeouts — AI_API_KEY only in prod) |
+| Production env | `EMAIL_API_KEY` (Resend) + `AI_API_KEY` (NVIDIA NIM) set as worker secrets ✅ |
 
 ---
 

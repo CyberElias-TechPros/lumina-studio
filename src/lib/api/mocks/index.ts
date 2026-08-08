@@ -311,6 +311,36 @@ export function registerAllMocks(): void {
     };
   });
 
+  /* Public application status lookup by reference code */
+  registerMockPattern("GET", "/v1/applications/*", async (init: ApiRequestInit) => {
+    await delay();
+    const segments = (init.path ?? "").split("/").filter(Boolean);
+    const ref = (segments[segments.length - 1] ?? "CEA-2026-0142").toUpperCase();
+    const pipeline = [
+      { key: "submitted", label: "Application received" },
+      { key: "screening", label: "Screening" },
+      { key: "assessment", label: "Assessment" },
+      { key: "interview", label: "Interview" },
+      { key: "offer", label: "Offer" },
+      { key: "enrolled", label: "Enrolled" },
+    ];
+    const status = pipeline[(ref.length + ref.charCodeAt(0)) % pipeline.length]!.key;
+    const idx = pipeline.findIndex((s) => s.key === status);
+    const programs = [
+      "Full-Stack Software Development",
+      "UI/UX Design",
+      "Backend Engineering",
+      "Data Analytics",
+    ];
+    return {
+      ref,
+      status,
+      programTitle: programs[ref.length % programs.length] ?? null,
+      stages: pipeline.map((s, i) => ({ ...s, done: i < idx, active: i === idx })),
+      updatedAt: new Date().toISOString(),
+    };
+  });
+
   /* Parent portal (linked learners + gradebook) */
   registerMock("GET", "/v1/parent/students", async () => {
     await delay();
@@ -5006,6 +5036,14 @@ export function registerAllMocks(): void {
       { id: "adm-rl-05", name: "ci-deploy key", valueLabel: "500 req/min", status: "Active" },
       { id: "adm-rl-06", name: "Custom", valueLabel: "200 req/min", status: "Pending" },
     ],
+    services: [
+      { id: 1, name: "web", detail: "cea-os.vercel.app · edge delivery", status: "Healthy" },
+      { id: 2, name: "api", detail: "cea-api worker · 42 suites", status: "Healthy" },
+      { id: 3, name: "db", detail: "Cloudflare D1 · production", status: "Healthy" },
+      { id: 4, name: "email", detail: "Resend · transactional", status: "Healthy" },
+      { id: 5, name: "payments", detail: "Paystack · checkout + webhook", status: "Healthy" },
+      { id: 6, name: "storage", detail: "Cloudflare R2 · uploads", status: "Healthy" },
+    ],
   };
   registerMockPattern("GET", "/v1/admin-systems-dashboard/*", async (init: ApiRequestInit) => {
     await delay();
@@ -5013,6 +5051,58 @@ export function registerAllMocks(): void {
     const collection = segments[2] ?? "";
     const items = admCollections[collection] ?? [];
     return { items, total: items.length };
+  });
+  registerMock("GET", "/v1/admin-systems-dashboard/metrics", async () => {
+    await delay();
+    return {
+      cards: [
+        { label: "Services", value: "6", delta: "6 healthy" },
+        { label: "Healthy", value: "6", delta: "0 degraded" },
+        { label: "Reported errors", value: "12", delta: "across all suites" },
+        { label: "Database", value: "OK", delta: "D1 reachable" },
+      ],
+      services: [
+        { name: "web", status: "Healthy" },
+        { name: "api", status: "Healthy" },
+        { name: "db", status: "Healthy" },
+        { name: "email", status: "Healthy" },
+        { name: "payments", status: "Healthy" },
+        { name: "storage", status: "Healthy" },
+      ],
+      generatedAt: new Date().toISOString(),
+    };
+  });
+
+  /* Parent invitations — token-based guardian links */
+  registerMockPattern("GET", "/v1/invitations/*", async () => {
+    await delay();
+    return {
+      status: "pending",
+      studentName: "Ada Okafor",
+      guardianName: "Chiamaka Okafor",
+      note: "Primary guardian · admission 2026",
+      expiresAt: "2026-08-30T23:59:59Z",
+    };
+  });
+  registerMockPattern("POST", "/v1/invitations/*/accept", async () => {
+    await delay();
+    return {
+      ok: true,
+      studentId: "stu-ada",
+      studentName: "Ada Okafor",
+      roleUpdated: true,
+      linked: true,
+    };
+  });
+  registerMock("POST", "/v1/invitations", async () => {
+    await delay();
+    const token = "mock-invite-token";
+    return {
+      ok: true,
+      token,
+      url: `${window.location.origin}/app/parent/invitation/accept?token=${token}`,
+      expiresAt: "2026-09-06T23:59:59Z",
+    };
   });
 
   /* Director suite — mirrors backend seeds (migrations/0031_director.sql) */
