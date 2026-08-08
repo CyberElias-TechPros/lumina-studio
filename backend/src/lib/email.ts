@@ -73,7 +73,7 @@ export async function sendEmail(
     return { sent: false, provider, error: "EMAIL_API_KEY is not configured." };
   }
   if (provider === "mailgun") {
-    const domain = c.env.EMAIL_DOMAIN || "mail.cea.academy";
+    const domain = c.env.EMAIL_DOMAIN || "mail.cea.ng";
     return sendMailgun(apiKey, domain, from, msg);
   }
   return sendResend(apiKey, from, msg);

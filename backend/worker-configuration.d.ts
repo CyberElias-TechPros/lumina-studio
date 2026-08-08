@@ -6,9 +6,9 @@ interface __BaseEnv_Env {
 	RATE_LIMIT: KVNamespace;
 	UPLOADS: R2Bucket;
 	DB: D1Database;
-	FRONTEND_ORIGINS: "http://localhost:5173,http://127.0.0.1:5173,https://cea-os.vercel.app";
+	FRONTEND_ORIGINS: "http://localhost:5173,http://127.0.0.1:5173,http://localhost:8081,http://127.0.0.1:8081,https://cea-os.vercel.app,https://cea.ng,https://www.cea.ng";
 	UPLOADS_PRESIGN_URL: "";
-	APP_URL: "https://cea-os.vercel.app";
+	APP_URL: "https://cea.ng";
 	EMAIL_PROVIDER: "mailgun";
 	EMAIL_DOMAIN: "mg.cyberelias.com";
 	EMAIL_FROM: "Cyber Elias Academy <no-reply@mg.cyberelias.com>";

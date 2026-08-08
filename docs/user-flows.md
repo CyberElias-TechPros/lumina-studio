@@ -46,7 +46,7 @@ password `cea-demo-pass-2026`, MFA off).
   Unregistered paths → **403** (not 404). Public rules skip auth; rules with
   `roles` reject mismatched roles with 403; the rest need any valid session.
 - CORS: only origins in `FRONTEND_ORIGINS` (currently `localhost:5173`,
-  `127.0.0.1:5173`, `https://cea-os.vercel.app`) — or *any* origin if that
+   `127.0.0.1:5173`, `https://cea.ng`, `https://cea-os.vercel.app`) — or *any* origin if that
   var is empty. Cookies: `HttpOnly; SameSite=None; Secure` in production.
 - All list endpoints are paginated: `?limit=` (default 20, max 50) and
   `?cursor=`; responses are `{ items, nextCursor?, total }`.
