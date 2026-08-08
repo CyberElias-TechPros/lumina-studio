@@ -142,8 +142,8 @@ invitations.post("/", requireAuth, requireAnyRole(["admin", "instructor"]), asyn
     .run();
 
   const origins = (c.env.FRONTEND_ORIGINS ?? "").split(",").map((s: string) => s.trim()).filter(Boolean);
-  const origin = origins[0] ?? "";
-  const url = `${origin}/app/parent/invitation/accept?token=${token}`;
+  const origin = c.env.APP_URL || origins[0] || "";
+  const url = `${origin.replace(/\/+$/, "")}/app/parent/invitation/accept?token=${token}`;
 
   return c.json({ ok: true, token, url, expiresAt }, 201);
 });
