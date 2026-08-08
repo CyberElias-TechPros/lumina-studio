@@ -66,7 +66,7 @@ export function SiteFooter() {
                 <Phone className="size-4 shrink-0" /> +234 801 234 5678
               </p>
               <p className="text-ink-foreground/70 flex items-center gap-2.5">
-                <Mail className="size-4 shrink-0" /> hello@cea.academy
+                <Mail className="size-4 shrink-0" /> hello@cea.ng
               </p>
             </div>
 

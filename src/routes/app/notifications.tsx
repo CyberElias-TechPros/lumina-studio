@@ -290,7 +290,7 @@ function SendPushCard() {
               id="push-url"
               value={url}
               onChange={(e) => setUrl(e.target.value)}
-              placeholder="https://cea-os.vercel.app/app/…"
+              placeholder="https://cea.ng/app/…"
             />
           </div>
 

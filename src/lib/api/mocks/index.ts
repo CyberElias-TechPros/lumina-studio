@@ -5037,7 +5037,7 @@ export function registerAllMocks(): void {
       { id: "adm-rl-06", name: "Custom", valueLabel: "200 req/min", status: "Pending" },
     ],
     services: [
-      { id: 1, name: "web", detail: "cea-os.vercel.app · edge delivery", status: "Healthy" },
+      { id: 1, name: "web", detail: "cea.ng · edge delivery", status: "Healthy" },
       { id: 2, name: "api", detail: "cea-api worker · 42 suites", status: "Healthy" },
       { id: 3, name: "db", detail: "Cloudflare D1 · production", status: "Healthy" },
       { id: 4, name: "email", detail: "Resend · transactional", status: "Healthy" },

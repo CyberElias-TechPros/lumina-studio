@@ -17,7 +17,8 @@ mock mode).
 | **Mock** | `VITE_API_URL` unset | Every `src/lib/api` call is served by in-memory mocks (`src/lib/api/mocks/*`) seeded from `src/data/*`. You are always "signed in" as `Adaeze Okafor / student@cea.ng / student`, session 24h. Paystack checkout returns a fake URL, flags return defaults. |
 | **Live** | `VITE_API_URL` set | All calls hit the Cloudflare worker at `https://cea-api.cyber-e54.workers.dev` (currently configured in `.env`). Cookie-based sessions, real D1 data, real Paystack. |
 
-**Deployed reality (today):** frontend `https://cea-os.vercel.app` runs live
+**Deployed reality (today):** frontend `https://cea.ng` (official custom domain;
+legacy alias `https://cea-os.vercel.app`) runs live
 mode against `https://cea-api.cyber-e54.workers.dev`; the worker runs with
 `APP_ENV=production` and live Paystack + VAPID secrets. Feature flags flipped
 on: `payments.paystack`, `realtime.chat`, `realtime.live-class`, `uploads.r2`,
@@ -30,7 +31,8 @@ are single opaque bearer tokens stored in an HttpOnly cookie (`cea_session`),
 7-day sliding expiry, rotated on every refresh, revoked on sign-out. Users
 with **MFA enabled** get a challenge step after password sign-in. Seeded
 accounts: `student@cea.ng`, `instructor@cea.ng`, `admin@cea.ng`, `hr@cea.ng`,
-`finance@cea.ng` (all seeded with the password `cea-demo-pass-2026`, MFA off).
+`finance@cea.ng`, `parent@cea.ng`, `mentor@cea.ng` (all seeded with the
+password `cea-demo-pass-2026`, MFA off).
 
 **Every API response** is either data or the error envelope
 `{ "error": { "code", "message", "fieldErrors?" } }`. Codes: `FIELD_VALIDATION`
@@ -469,7 +471,7 @@ into the seeds and applied to production D1.
 
 ---
 
-## 12. Live-mode flow checklist (what actually happens on cea-os.vercel.app today)
+## 12. Live-mode flow checklist (what actually happens on cea.ng today)
 
 1. Visitor browses static marketing pages; can apply (`/apply` → real
    `POST /v1/applications`, gets a reference), verify certificates (real

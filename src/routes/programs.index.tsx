@@ -19,7 +19,7 @@ export const Route = createFileRoute("/programs/")({
         content:
           "Browse cohort programs in software development, cybersecurity, cloud, data & AI, design, marketing, networking and mobile — from scratch to advanced.",
       },
-      { property: "og:image", content: "https://cea-os.vercel.app/og-programs.svg" },
+      { property: "og:image", content: "https://cea.ng/og-programs.svg" },
       { property: "og:type", content: "website" },
     ],
   }),

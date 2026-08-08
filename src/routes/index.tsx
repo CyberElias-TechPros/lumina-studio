@@ -55,7 +55,7 @@ export const Route = createFileRoute("/")({
         property: "og:description",
         content: "One platform. Multiple engines. Every actor connected.",
       },
-      { property: "og:image", content: "https://cea-os.vercel.app/og-card.svg" },
+      { property: "og:image", content: "https://cea.ng/og-card.svg" },
       { property: "og:type", content: "website" },
     ],
   }),

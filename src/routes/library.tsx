@@ -21,7 +21,7 @@ export const Route = createFileRoute("/library")({
         content:
           "Browse our public knowledge base — glossaries, data dictionaries, guides and templates. Students get full access to all course materials after signing in.",
       },
-      { property: "og:image", content: "https://cea-os.vercel.app/og-library.svg" },
+      { property: "og:image", content: "https://cea.ng/og-library.svg" },
       { property: "og:type", content: "website" },
     ],
   }),

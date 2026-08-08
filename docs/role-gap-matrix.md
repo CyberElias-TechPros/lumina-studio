@@ -1,7 +1,7 @@
 ﻿# Role gap matrix + rollout plan
 
 Audited 2026-08-03 against live deployment:
-worker `https://cea-api.cyber-e54.workers.dev` (d1 live, secrets set: `AI_API_KEY`, `EMAIL_API_KEY`, `PAYSTACK_SECRET_KEY`, `JWT_SECRET`, `VAPID_*`, `APP_ENV`) and frontend `https://cea-os.vercel.app`.
+worker `https://cea-api.cyber-e54.workers.dev` (d1 live, secrets set: `AI_API_KEY`, `EMAIL_API_KEY`, `PAYSTACK_SECRET_KEY`, `JWT_SECRET`, `VAPID_*`, `APP_ENV`) and frontend `https://cea.ng` (Vercel custom domain; `https://cea-os.vercel.app` legacy alias).
 
 Method: for every page under `src/routes/app/**`, grep for `@/lib/query`, `@/lib/api`, `@/data/`.
 `wired` = uses ≥1 backend data source. `static` = pure JSX (hardcoded numbers, no data, no persisting actions).

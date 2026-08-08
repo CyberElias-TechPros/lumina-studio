@@ -63,7 +63,7 @@ export async function sendEmail(
   msg: EmailMessage,
 ): Promise<EmailResult> {
   const provider = configuredProvider(c);
-  const from = c.env.EMAIL_FROM || "CEA <no-reply@cea.academy>";
+  const from = c.env.EMAIL_FROM || "CEA <no-reply@cea.ng>";
   if (provider === "console") {
     console.log(`[email:console] to=${msg.to} subject=${msg.subject} html=${msg.html.slice(0, 500)}`);
     return { sent: true, provider: "console" };
@@ -88,6 +88,6 @@ export function hasRealEmail(c: { env: AppEnv }): boolean {
 
 /** Build the absolute magic-link / reset URL for the user. */
 export function appUrl(c: { env: AppEnv }, path: string): string {
-  const base = (c.env.APP_URL || "https://cea-os.vercel.app").replace(/\/+$/, "");
+  const base = (c.env.APP_URL || "https://cea.ng").replace(/\/+$/, "");
   return `${base}${path.startsWith("/") ? path : `/${path}`}`;
 }
