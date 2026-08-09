@@ -353,6 +353,7 @@ import { Route as AppVolunteerHoursRouteImport } from './routes/app/volunteer/ho
 import { Route as AppVolunteerImpactRouteImport } from './routes/app/volunteer/impact'
 import { Route as AppVolunteerMyVolunteeringRouteImport } from './routes/app/volunteer/my-volunteering'
 import { Route as AppVolunteerOpportunitiesRouteImport } from './routes/app/volunteer/opportunities'
+import { Route as ApplyStatusIndexRouteImport } from './routes/apply/status/index'
 import { Route as ApplyStatusIdRouteImport } from './routes/apply/status/$id'
 import { Route as AppAdmissionsApplicationsIdRouteImport } from './routes/app/admissions/applications/$id'
 import { Route as AppAssessmentsAssessmentIdTakeRouteImport } from './routes/app/assessments/$assessmentId/take'
@@ -2146,6 +2147,11 @@ const AppVolunteerOpportunitiesRoute =
     path: '/app/volunteer/opportunities',
     getParentRoute: () => rootRouteImport,
   } as any)
+const ApplyStatusIndexRoute = ApplyStatusIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => ApplyStatusRoute,
+} as any)
 const ApplyStatusIdRoute = ApplyStatusIdRouteImport.update({
   id: '/$id',
   path: '/$id',
@@ -2653,6 +2659,7 @@ export interface FileRoutesByFullPath {
   '/app/parent/': typeof AppParentIndexRoute
   '/app/product-marketing/': typeof AppProductMarketingIndexRoute
   '/app/supplier/': typeof AppSupplierIndexRoute
+  '/apply/status/': typeof ApplyStatusIndexRoute
   '/app/admissions/applications/$id': typeof AppAdmissionsApplicationsIdRoute
   '/app/assessments/$assessmentId/take': typeof AppAssessmentsAssessmentIdTakeRoute
   '/app/client/projects/$projectId': typeof AppClientProjectsProjectIdRouteWithChildren
@@ -2712,7 +2719,6 @@ export interface FileRoutesByTo {
   '/app/notifications': typeof AppNotificationsRoute
   '/app/portfolio': typeof AppPortfolioRoute
   '/app/reports': typeof AppReportsRoute
-  '/apply/status': typeof ApplyStatusRouteWithChildren
   '/auth/forgot-password': typeof AuthForgotPasswordRoute
   '/auth/magic-link': typeof AuthMagicLinkRoute
   '/auth/mfa': typeof AuthMfaRoute
@@ -3026,6 +3032,7 @@ export interface FileRoutesByTo {
   '/app/parent': typeof AppParentIndexRoute
   '/app/product-marketing': typeof AppProductMarketingIndexRoute
   '/app/supplier': typeof AppSupplierIndexRoute
+  '/apply/status': typeof ApplyStatusIndexRoute
   '/app/admissions/applications/$id': typeof AppAdmissionsApplicationsIdRoute
   '/app/assessments/$assessmentId/take': typeof AppAssessmentsAssessmentIdTakeRoute
   '/app/client/projects/$projectId': typeof AppClientProjectsProjectIdRouteWithChildren
@@ -3400,6 +3407,7 @@ export interface FileRoutesById {
   '/app/parent/': typeof AppParentIndexRoute
   '/app/product-marketing/': typeof AppProductMarketingIndexRoute
   '/app/supplier/': typeof AppSupplierIndexRoute
+  '/apply/status/': typeof ApplyStatusIndexRoute
   '/app/admissions/applications/$id': typeof AppAdmissionsApplicationsIdRoute
   '/app/assessments/$assessmentId/take': typeof AppAssessmentsAssessmentIdTakeRoute
   '/app/client/projects/$projectId': typeof AppClientProjectsProjectIdRouteWithChildren
@@ -3775,6 +3783,7 @@ export interface FileRouteTypes {
     | '/app/parent/'
     | '/app/product-marketing/'
     | '/app/supplier/'
+    | '/apply/status/'
     | '/app/admissions/applications/$id'
     | '/app/assessments/$assessmentId/take'
     | '/app/client/projects/$projectId'
@@ -3834,7 +3843,6 @@ export interface FileRouteTypes {
     | '/app/notifications'
     | '/app/portfolio'
     | '/app/reports'
-    | '/apply/status'
     | '/auth/forgot-password'
     | '/auth/magic-link'
     | '/auth/mfa'
@@ -4148,6 +4156,7 @@ export interface FileRouteTypes {
     | '/app/parent'
     | '/app/product-marketing'
     | '/app/supplier'
+    | '/apply/status'
     | '/app/admissions/applications/$id'
     | '/app/assessments/$assessmentId/take'
     | '/app/client/projects/$projectId'
@@ -4521,6 +4530,7 @@ export interface FileRouteTypes {
     | '/app/parent/'
     | '/app/product-marketing/'
     | '/app/supplier/'
+    | '/apply/status/'
     | '/app/admissions/applications/$id'
     | '/app/assessments/$assessmentId/take'
     | '/app/client/projects/$projectId'
@@ -7318,6 +7328,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppVolunteerOpportunitiesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/apply/status/': {
+      id: '/apply/status/'
+      path: '/'
+      fullPath: '/apply/status/'
+      preLoaderRoute: typeof ApplyStatusIndexRouteImport
+      parentRoute: typeof ApplyStatusRoute
+    }
     '/apply/status/$id': {
       id: '/apply/status/$id'
       path: '/$id'
@@ -7524,10 +7541,12 @@ const AppFinanceRouteWithChildren = AppFinanceRoute._addFileChildren(
 
 interface ApplyStatusRouteChildren {
   ApplyStatusIdRoute: typeof ApplyStatusIdRoute
+  ApplyStatusIndexRoute: typeof ApplyStatusIndexRoute
 }
 
 const ApplyStatusRouteChildren: ApplyStatusRouteChildren = {
   ApplyStatusIdRoute: ApplyStatusIdRoute,
+  ApplyStatusIndexRoute: ApplyStatusIndexRoute,
 }
 
 const ApplyStatusRouteWithChildren = ApplyStatusRoute._addFileChildren(

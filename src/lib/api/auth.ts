@@ -14,20 +14,23 @@ export function fetchSession(): Promise<Session> {
 export type SignInResult = Session | { mfaRequired: true; expiresAt: string };
 
 export function signIn(input: SignInInput): Promise<SignInResult> {
-  return apiFetch<SignInResult>("/v1/auth/sign-in", { method: "POST", body: input });
+  return apiFetch<SignInResult>("/v1/auth/sign-in", { method: "POST", body: input, noRefresh: true });
 }
 
 export function signUp(input: SignUpInput): Promise<Session> {
-  return apiFetch<Session>("/v1/auth/sign-up", { method: "POST", body: input });
+  return apiFetch<Session>("/v1/auth/sign-up", { method: "POST", body: input, noRefresh: true });
 }
 
 export function requestMagicLink(input: MagicLinkRequestInput): Promise<{ ok: true }> {
-  return apiFetch("/v1/auth/magic-link", { method: "POST", body: input });
+  return apiFetch("/v1/auth/magic-link", { method: "POST", body: input, noRefresh: true });
 }
 
 /** Verifies a one-time magic link token. The session is stored in an HttpOnly cookie. */
 export function verifyMagicLink(input: MagicLinkVerifyInput): Promise<Session> {
-  return apiFetch<Session>(`/v1/auth/magic-link/verify?token=${encodeURIComponent(input.token)}`);
+  return apiFetch<Session>(
+    `/v1/auth/magic-link/verify?token=${encodeURIComponent(input.token)}`,
+    { noRefresh: true },
+  );
 }
 
 export function signOut(): Promise<{ ok: true }> {
@@ -35,11 +38,11 @@ export function signOut(): Promise<{ ok: true }> {
 }
 
 export function forgotPassword(input: { email: string }): Promise<{ ok: true; sent: boolean }> {
-  return apiFetch("/v1/auth/forgot-password", { method: "POST", body: input });
+  return apiFetch("/v1/auth/forgot-password", { method: "POST", body: input, noRefresh: true });
 }
 
 export function resetPassword(input: { token: string; password: string }): Promise<{ ok: true }> {
-  return apiFetch("/v1/auth/reset-password", { method: "POST", body: input });
+  return apiFetch("/v1/auth/reset-password", { method: "POST", body: input, noRefresh: true });
 }
 
 export function mfaSetup(): Promise<{
@@ -61,7 +64,7 @@ export function mfaDisable(input: { code: string }): Promise<{ ok: true; enabled
 
 /** Completes a pending MFA challenge with an app code or recovery key. */
 export function mfaVerify(input: { code: string }): Promise<Session> {
-  return apiFetch<Session>("/v1/auth/mfa/verify", { method: "POST", body: input });
+  return apiFetch<Session>("/v1/auth/mfa/verify", { method: "POST", body: input, noRefresh: true });
 }
 
 export interface AuthDevice {

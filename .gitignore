@@ -47,3 +47,8 @@ backend/seeds/library-upload-errors.log
 *.sw?
 .vercel
 .env*
+
+# Playwright
+test-results/
+playwright-report/
+
