@@ -35,7 +35,7 @@ function ItUsers() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="it"
       title="User management"
       subtitle={
         accounts.length > 0

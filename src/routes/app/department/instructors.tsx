@@ -31,7 +31,7 @@ function DepartmentInstructors() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="department"
       title="Instructor management"
       subtitle="Software Engineering · 9 instructors"
       actions={

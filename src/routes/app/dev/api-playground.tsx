@@ -30,7 +30,7 @@ function DevApiPlayground() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="dev"
       title="API playground"
       subtitle="OpenAPI 3.1 · 84 endpoints · sandbox token active"
       actions={

@@ -31,7 +31,7 @@ function NgoPrograms() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="ngo"
       title="Community programs"
       subtitle="3 programs · 1,240 beneficiaries · 12 partners"
       actions={

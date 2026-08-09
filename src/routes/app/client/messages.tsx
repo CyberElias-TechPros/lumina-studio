@@ -32,7 +32,7 @@ function ClientMessages() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="client"
       title="Messaging"
       subtitle="3 active projects · team responds < 4h"
       actions={

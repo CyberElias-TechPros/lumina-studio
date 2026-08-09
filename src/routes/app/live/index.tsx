@@ -31,7 +31,7 @@ function LiveClasses() {
 
   return (
     <AppShell
-      roleKey="student"
+      roleKey="live"
       title="Live classes"
       subtitle="Weekly sessions with instructors — video, chat, polls and whiteboard"
       actions={

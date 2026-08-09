@@ -39,7 +39,7 @@ function VolunteerImpact() {
 
   return (
     <AppShell
-      roleKey="student"
+      roleKey="volunteer"
       title="Impact dashboard"
       subtitle="Your contribution · 2026"
       actions={

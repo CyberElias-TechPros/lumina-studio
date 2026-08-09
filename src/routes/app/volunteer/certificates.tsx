@@ -27,7 +27,7 @@ function VolunteerCertificates() {
 
   return (
     <AppShell
-      roleKey="student"
+      roleKey="volunteer"
       title="Certificates"
       subtitle={
         certs.length > 0

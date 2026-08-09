@@ -37,7 +37,7 @@ function AdmissionsApplicationDetail() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="admissions"
       title={app ? `Application · ${app.fullName}` : "Application"}
       subtitle={
         app

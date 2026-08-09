@@ -52,7 +52,7 @@ function OperationsInventory() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="ops"
       title="Inventory"
       subtitle={
         items.length > 0

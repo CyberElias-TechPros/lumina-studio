@@ -35,7 +35,7 @@ function SupplierDeliveries() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="supplier"
       title="Deliveries"
       subtitle={`${scheduled.length} scheduled · next Aug 5 · 10:00`}
       actions={

@@ -50,7 +50,7 @@ function AdmissionsDocuments() {
   const checksQuery = useAdmChecks();
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="admissions"
       title="Document verification"
       subtitle="118 applicants · 91% doc completeness"
       actions={

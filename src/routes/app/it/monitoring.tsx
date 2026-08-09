@@ -37,7 +37,7 @@ function ItMonitoring() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="it"
       title="System monitoring"
       subtitle={
         services.length > 0

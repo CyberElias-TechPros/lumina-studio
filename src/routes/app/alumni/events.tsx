@@ -31,7 +31,7 @@ function AlumniEvents() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="alumni"
       title="Alumni events"
       subtitle="6 events this quarter · 2 RSVP'd"
       actions={

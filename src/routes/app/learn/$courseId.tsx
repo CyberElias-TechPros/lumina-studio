@@ -47,7 +47,7 @@ function CourseDetail() {
 
   return (
     <AppShell
-      roleKey="student"
+      roleKey="learn"
       title={courseQuery.data?.title ?? "Course"}
       subtitle={
         courseQuery.data

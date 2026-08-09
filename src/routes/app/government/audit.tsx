@@ -51,7 +51,7 @@ function GovernmentAudit() {
 
   return (
     <AppShell
-      roleKey="admin"
+      roleKey="government"
       title="Audit module"
       subtitle="Next audit Sep 18 · 1 open finding · remediation on track"
       actions={

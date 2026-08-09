@@ -25,7 +25,7 @@ function ReceptionistCheckIn() {
 
   return (
     <AppShell
-      roleKey="student"
+      roleKey="receptionist"
       title="Visitor check-in"
       subtitle={`Front desk · Ikeja campus · ${queue.length > 0 ? `${queue.length} visitors waiting` : "3 visitors today"}`}
       actions={

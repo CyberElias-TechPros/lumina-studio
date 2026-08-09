@@ -30,7 +30,7 @@ function DevQueues() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="dev"
       title="Job queues"
       subtitle="4 queues · 3 workers · concurrency 10"
       actions={

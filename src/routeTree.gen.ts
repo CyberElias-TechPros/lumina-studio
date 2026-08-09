@@ -152,6 +152,7 @@ import { Route as AppBehavioralDesignHabitsRouteImport } from './routes/app/beha
 import { Route as AppBehavioralDesignInterventionsRouteImport } from './routes/app/behavioral-design/interventions'
 import { Route as AppBehavioralDesignNudgeCampaignsRouteImport } from './routes/app/behavioral-design/nudge-campaigns'
 import { Route as AppBehavioralDesignSegmentsRouteImport } from './routes/app/behavioral-design/segments'
+import { Route as AppClientIndexRouteImport } from './routes/app/client/index'
 import { Route as AppClientContractsRouteImport } from './routes/app/client/contracts'
 import { Route as AppClientDocumentsRouteImport } from './routes/app/client/documents'
 import { Route as AppClientInvoicesRouteImport } from './routes/app/client/invoices'
@@ -260,6 +261,7 @@ import { Route as AppInternResourcesRouteImport } from './routes/app/intern/reso
 import { Route as AppInternSkillsRouteImport } from './routes/app/intern/skills'
 import { Route as AppInternTasksRouteImport } from './routes/app/intern/tasks'
 import { Route as AppInternTimesheetRouteImport } from './routes/app/intern/timesheet'
+import { Route as AppItIndexRouteImport } from './routes/app/it/index'
 import { Route as AppItAssetsRouteImport } from './routes/app/it/assets'
 import { Route as AppItKnowledgeBaseRouteImport } from './routes/app/it/knowledge-base'
 import { Route as AppItLicensesRouteImport } from './routes/app/it/licenses'
@@ -308,6 +310,7 @@ import { Route as AppNgoProgramsRouteImport } from './routes/app/ngo/programs'
 import { Route as AppNgoReportsRouteImport } from './routes/app/ngo/reports'
 import { Route as AppNgoScholarshipsRouteImport } from './routes/app/ngo/scholarships'
 import { Route as AppNgoVolunteersRouteImport } from './routes/app/ngo/volunteers'
+import { Route as AppOpsIndexRouteImport } from './routes/app/ops/index'
 import { Route as AppOpsAutomationRouteImport } from './routes/app/ops/automation'
 import { Route as AppOpsBranchesRouteImport } from './routes/app/ops/branches'
 import { Route as AppOpsFacilitiesRouteImport } from './routes/app/ops/facilities'
@@ -332,6 +335,7 @@ import { Route as AppProductMarketingLaunchCalendarRouteImport } from './routes/
 import { Route as AppProductMarketingMessagingRouteImport } from './routes/app/product-marketing/messaging'
 import { Route as AppProductMarketingPositioningRouteImport } from './routes/app/product-marketing/positioning'
 import { Route as AppProductMarketingResearchRouteImport } from './routes/app/product-marketing/research'
+import { Route as AppReceptionistIndexRouteImport } from './routes/app/receptionist/index'
 import { Route as AppReceptionistAppointmentsRouteImport } from './routes/app/receptionist/appointments'
 import { Route as AppReceptionistCheckInRouteImport } from './routes/app/receptionist/check-in'
 import { Route as AppReceptionistCheckOutRouteImport } from './routes/app/receptionist/check-out'
@@ -347,6 +351,7 @@ import { Route as AppSupplierMessagesRouteImport } from './routes/app/supplier/m
 import { Route as AppSupplierOrdersRouteImport } from './routes/app/supplier/orders'
 import { Route as AppSupplierPerformanceRouteImport } from './routes/app/supplier/performance'
 import { Route as AppSupplierProfileRouteImport } from './routes/app/supplier/profile'
+import { Route as AppVolunteerIndexRouteImport } from './routes/app/volunteer/index'
 import { Route as AppVolunteerCertificatesRouteImport } from './routes/app/volunteer/certificates'
 import { Route as AppVolunteerCommunityRouteImport } from './routes/app/volunteer/community'
 import { Route as AppVolunteerHoursRouteImport } from './routes/app/volunteer/hours'
@@ -1110,6 +1115,11 @@ const AppBehavioralDesignSegmentsRoute =
     path: '/app/behavioral-design/segments',
     getParentRoute: () => rootRouteImport,
   } as any)
+const AppClientIndexRoute = AppClientIndexRouteImport.update({
+  id: '/app/client/',
+  path: '/app/client/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AppClientContractsRoute = AppClientContractsRouteImport.update({
   id: '/app/client/contracts',
   path: '/app/client/contracts',
@@ -1661,6 +1671,11 @@ const AppInternTimesheetRoute = AppInternTimesheetRouteImport.update({
   path: '/app/intern/timesheet',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AppItIndexRoute = AppItIndexRouteImport.update({
+  id: '/app/it/',
+  path: '/app/it/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AppItAssetsRoute = AppItAssetsRouteImport.update({
   id: '/app/it/assets',
   path: '/app/it/assets',
@@ -1906,6 +1921,11 @@ const AppNgoVolunteersRoute = AppNgoVolunteersRouteImport.update({
   path: '/app/ngo/volunteers',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AppOpsIndexRoute = AppOpsIndexRouteImport.update({
+  id: '/app/ops/',
+  path: '/app/ops/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AppOpsAutomationRoute = AppOpsAutomationRouteImport.update({
   id: '/app/ops/automation',
   path: '/app/ops/automation',
@@ -2035,6 +2055,11 @@ const AppProductMarketingResearchRoute =
     path: '/app/product-marketing/research',
     getParentRoute: () => rootRouteImport,
   } as any)
+const AppReceptionistIndexRoute = AppReceptionistIndexRouteImport.update({
+  id: '/app/receptionist/',
+  path: '/app/receptionist/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AppReceptionistAppointmentsRoute =
   AppReceptionistAppointmentsRouteImport.update({
     id: '/app/receptionist/appointments',
@@ -2112,6 +2137,11 @@ const AppSupplierPerformanceRoute = AppSupplierPerformanceRouteImport.update({
 const AppSupplierProfileRoute = AppSupplierProfileRouteImport.update({
   id: '/app/supplier/profile',
   path: '/app/supplier/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppVolunteerIndexRoute = AppVolunteerIndexRouteImport.update({
+  id: '/app/volunteer/',
+  path: '/app/volunteer/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AppVolunteerCertificatesRoute =
@@ -2641,6 +2671,7 @@ export interface FileRoutesByFullPath {
   '/app/assessments/': typeof AppAssessmentsIndexRoute
   '/app/assignments/': typeof AppAssignmentsIndexRoute
   '/app/behavioral-design/': typeof AppBehavioralDesignIndexRoute
+  '/app/client/': typeof AppClientIndexRoute
   '/app/department/': typeof AppDepartmentIndexRoute
   '/app/design/': typeof AppDesignIndexRoute
   '/app/dev/': typeof AppDevIndexRoute
@@ -2650,15 +2681,19 @@ export interface FileRoutesByFullPath {
   '/app/hr/': typeof AppHrIndexRoute
   '/app/instructor/': typeof AppInstructorIndexRoute
   '/app/intern/': typeof AppInternIndexRoute
+  '/app/it/': typeof AppItIndexRoute
   '/app/learn/': typeof AppLearnIndexRoute
   '/app/live/': typeof AppLiveIndexRoute
   '/app/localization/': typeof AppLocalizationIndexRoute
   '/app/marketing/': typeof AppMarketingIndexRoute
   '/app/mentor/': typeof AppMentorIndexRoute
   '/app/ngo/': typeof AppNgoIndexRoute
+  '/app/ops/': typeof AppOpsIndexRoute
   '/app/parent/': typeof AppParentIndexRoute
   '/app/product-marketing/': typeof AppProductMarketingIndexRoute
+  '/app/receptionist/': typeof AppReceptionistIndexRoute
   '/app/supplier/': typeof AppSupplierIndexRoute
+  '/app/volunteer/': typeof AppVolunteerIndexRoute
   '/apply/status/': typeof ApplyStatusIndexRoute
   '/app/admissions/applications/$id': typeof AppAdmissionsApplicationsIdRoute
   '/app/assessments/$assessmentId/take': typeof AppAssessmentsAssessmentIdTakeRoute
@@ -3014,6 +3049,7 @@ export interface FileRoutesByTo {
   '/app/assessments': typeof AppAssessmentsIndexRoute
   '/app/assignments': typeof AppAssignmentsIndexRoute
   '/app/behavioral-design': typeof AppBehavioralDesignIndexRoute
+  '/app/client': typeof AppClientIndexRoute
   '/app/department': typeof AppDepartmentIndexRoute
   '/app/design': typeof AppDesignIndexRoute
   '/app/dev': typeof AppDevIndexRoute
@@ -3023,15 +3059,19 @@ export interface FileRoutesByTo {
   '/app/hr': typeof AppHrIndexRoute
   '/app/instructor': typeof AppInstructorIndexRoute
   '/app/intern': typeof AppInternIndexRoute
+  '/app/it': typeof AppItIndexRoute
   '/app/learn': typeof AppLearnIndexRoute
   '/app/live': typeof AppLiveIndexRoute
   '/app/localization': typeof AppLocalizationIndexRoute
   '/app/marketing': typeof AppMarketingIndexRoute
   '/app/mentor': typeof AppMentorIndexRoute
   '/app/ngo': typeof AppNgoIndexRoute
+  '/app/ops': typeof AppOpsIndexRoute
   '/app/parent': typeof AppParentIndexRoute
   '/app/product-marketing': typeof AppProductMarketingIndexRoute
+  '/app/receptionist': typeof AppReceptionistIndexRoute
   '/app/supplier': typeof AppSupplierIndexRoute
+  '/app/volunteer': typeof AppVolunteerIndexRoute
   '/apply/status': typeof ApplyStatusIndexRoute
   '/app/admissions/applications/$id': typeof AppAdmissionsApplicationsIdRoute
   '/app/assessments/$assessmentId/take': typeof AppAssessmentsAssessmentIdTakeRoute
@@ -3389,6 +3429,7 @@ export interface FileRoutesById {
   '/app/assessments/': typeof AppAssessmentsIndexRoute
   '/app/assignments/': typeof AppAssignmentsIndexRoute
   '/app/behavioral-design/': typeof AppBehavioralDesignIndexRoute
+  '/app/client/': typeof AppClientIndexRoute
   '/app/department/': typeof AppDepartmentIndexRoute
   '/app/design/': typeof AppDesignIndexRoute
   '/app/dev/': typeof AppDevIndexRoute
@@ -3398,15 +3439,19 @@ export interface FileRoutesById {
   '/app/hr/': typeof AppHrIndexRoute
   '/app/instructor/': typeof AppInstructorIndexRoute
   '/app/intern/': typeof AppInternIndexRoute
+  '/app/it/': typeof AppItIndexRoute
   '/app/learn/': typeof AppLearnIndexRoute
   '/app/live/': typeof AppLiveIndexRoute
   '/app/localization/': typeof AppLocalizationIndexRoute
   '/app/marketing/': typeof AppMarketingIndexRoute
   '/app/mentor/': typeof AppMentorIndexRoute
   '/app/ngo/': typeof AppNgoIndexRoute
+  '/app/ops/': typeof AppOpsIndexRoute
   '/app/parent/': typeof AppParentIndexRoute
   '/app/product-marketing/': typeof AppProductMarketingIndexRoute
+  '/app/receptionist/': typeof AppReceptionistIndexRoute
   '/app/supplier/': typeof AppSupplierIndexRoute
+  '/app/volunteer/': typeof AppVolunteerIndexRoute
   '/apply/status/': typeof ApplyStatusIndexRoute
   '/app/admissions/applications/$id': typeof AppAdmissionsApplicationsIdRoute
   '/app/assessments/$assessmentId/take': typeof AppAssessmentsAssessmentIdTakeRoute
@@ -3765,6 +3810,7 @@ export interface FileRouteTypes {
     | '/app/assessments/'
     | '/app/assignments/'
     | '/app/behavioral-design/'
+    | '/app/client/'
     | '/app/department/'
     | '/app/design/'
     | '/app/dev/'
@@ -3774,15 +3820,19 @@ export interface FileRouteTypes {
     | '/app/hr/'
     | '/app/instructor/'
     | '/app/intern/'
+    | '/app/it/'
     | '/app/learn/'
     | '/app/live/'
     | '/app/localization/'
     | '/app/marketing/'
     | '/app/mentor/'
     | '/app/ngo/'
+    | '/app/ops/'
     | '/app/parent/'
     | '/app/product-marketing/'
+    | '/app/receptionist/'
     | '/app/supplier/'
+    | '/app/volunteer/'
     | '/apply/status/'
     | '/app/admissions/applications/$id'
     | '/app/assessments/$assessmentId/take'
@@ -4138,6 +4188,7 @@ export interface FileRouteTypes {
     | '/app/assessments'
     | '/app/assignments'
     | '/app/behavioral-design'
+    | '/app/client'
     | '/app/department'
     | '/app/design'
     | '/app/dev'
@@ -4147,15 +4198,19 @@ export interface FileRouteTypes {
     | '/app/hr'
     | '/app/instructor'
     | '/app/intern'
+    | '/app/it'
     | '/app/learn'
     | '/app/live'
     | '/app/localization'
     | '/app/marketing'
     | '/app/mentor'
     | '/app/ngo'
+    | '/app/ops'
     | '/app/parent'
     | '/app/product-marketing'
+    | '/app/receptionist'
     | '/app/supplier'
+    | '/app/volunteer'
     | '/apply/status'
     | '/app/admissions/applications/$id'
     | '/app/assessments/$assessmentId/take'
@@ -4512,6 +4567,7 @@ export interface FileRouteTypes {
     | '/app/assessments/'
     | '/app/assignments/'
     | '/app/behavioral-design/'
+    | '/app/client/'
     | '/app/department/'
     | '/app/design/'
     | '/app/dev/'
@@ -4521,15 +4577,19 @@ export interface FileRouteTypes {
     | '/app/hr/'
     | '/app/instructor/'
     | '/app/intern/'
+    | '/app/it/'
     | '/app/learn/'
     | '/app/live/'
     | '/app/localization/'
     | '/app/marketing/'
     | '/app/mentor/'
     | '/app/ngo/'
+    | '/app/ops/'
     | '/app/parent/'
     | '/app/product-marketing/'
+    | '/app/receptionist/'
     | '/app/supplier/'
+    | '/app/volunteer/'
     | '/apply/status/'
     | '/app/admissions/applications/$id'
     | '/app/assessments/$assessmentId/take'
@@ -4885,6 +4945,7 @@ export interface RootRouteChildren {
   AppAssessmentsIndexRoute: typeof AppAssessmentsIndexRoute
   AppAssignmentsIndexRoute: typeof AppAssignmentsIndexRoute
   AppBehavioralDesignIndexRoute: typeof AppBehavioralDesignIndexRoute
+  AppClientIndexRoute: typeof AppClientIndexRoute
   AppDepartmentIndexRoute: typeof AppDepartmentIndexRoute
   AppDesignIndexRoute: typeof AppDesignIndexRoute
   AppDevIndexRoute: typeof AppDevIndexRoute
@@ -4894,15 +4955,19 @@ export interface RootRouteChildren {
   AppHrIndexRoute: typeof AppHrIndexRoute
   AppInstructorIndexRoute: typeof AppInstructorIndexRoute
   AppInternIndexRoute: typeof AppInternIndexRoute
+  AppItIndexRoute: typeof AppItIndexRoute
   AppLearnIndexRoute: typeof AppLearnIndexRoute
   AppLiveIndexRoute: typeof AppLiveIndexRoute
   AppLocalizationIndexRoute: typeof AppLocalizationIndexRoute
   AppMarketingIndexRoute: typeof AppMarketingIndexRoute
   AppMentorIndexRoute: typeof AppMentorIndexRoute
   AppNgoIndexRoute: typeof AppNgoIndexRoute
+  AppOpsIndexRoute: typeof AppOpsIndexRoute
   AppParentIndexRoute: typeof AppParentIndexRoute
   AppProductMarketingIndexRoute: typeof AppProductMarketingIndexRoute
+  AppReceptionistIndexRoute: typeof AppReceptionistIndexRoute
   AppSupplierIndexRoute: typeof AppSupplierIndexRoute
+  AppVolunteerIndexRoute: typeof AppVolunteerIndexRoute
   AppAssessmentsAssessmentIdTakeRoute: typeof AppAssessmentsAssessmentIdTakeRoute
   AppClientProjectsProjectIdRoute: typeof AppClientProjectsProjectIdRouteWithChildren
   AppConversionCopyLandingPagesIdRoute: typeof AppConversionCopyLandingPagesIdRoute
@@ -5921,6 +5986,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppBehavioralDesignSegmentsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/app/client/': {
+      id: '/app/client/'
+      path: '/app/client'
+      fullPath: '/app/client/'
+      preLoaderRoute: typeof AppClientIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/app/client/contracts': {
       id: '/app/client/contracts'
       path: '/app/client/contracts'
@@ -6677,6 +6749,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppInternTimesheetRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/app/it/': {
+      id: '/app/it/'
+      path: '/app/it'
+      fullPath: '/app/it/'
+      preLoaderRoute: typeof AppItIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/app/it/assets': {
       id: '/app/it/assets'
       path: '/app/it/assets'
@@ -7013,6 +7092,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppNgoVolunteersRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/app/ops/': {
+      id: '/app/ops/'
+      path: '/app/ops'
+      fullPath: '/app/ops/'
+      preLoaderRoute: typeof AppOpsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/app/ops/automation': {
       id: '/app/ops/automation'
       path: '/app/ops/automation'
@@ -7181,6 +7267,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppProductMarketingResearchRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/app/receptionist/': {
+      id: '/app/receptionist/'
+      path: '/app/receptionist'
+      fullPath: '/app/receptionist/'
+      preLoaderRoute: typeof AppReceptionistIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/app/receptionist/appointments': {
       id: '/app/receptionist/appointments'
       path: '/app/receptionist/appointments'
@@ -7284,6 +7377,13 @@ declare module '@tanstack/react-router' {
       path: '/app/supplier/profile'
       fullPath: '/app/supplier/profile'
       preLoaderRoute: typeof AppSupplierProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/volunteer/': {
+      id: '/app/volunteer/'
+      path: '/app/volunteer'
+      fullPath: '/app/volunteer/'
+      preLoaderRoute: typeof AppVolunteerIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/app/volunteer/certificates': {
@@ -7999,6 +8099,7 @@ const rootRouteChildren: RootRouteChildren = {
   AppAssessmentsIndexRoute: AppAssessmentsIndexRoute,
   AppAssignmentsIndexRoute: AppAssignmentsIndexRoute,
   AppBehavioralDesignIndexRoute: AppBehavioralDesignIndexRoute,
+  AppClientIndexRoute: AppClientIndexRoute,
   AppDepartmentIndexRoute: AppDepartmentIndexRoute,
   AppDesignIndexRoute: AppDesignIndexRoute,
   AppDevIndexRoute: AppDevIndexRoute,
@@ -8008,15 +8109,19 @@ const rootRouteChildren: RootRouteChildren = {
   AppHrIndexRoute: AppHrIndexRoute,
   AppInstructorIndexRoute: AppInstructorIndexRoute,
   AppInternIndexRoute: AppInternIndexRoute,
+  AppItIndexRoute: AppItIndexRoute,
   AppLearnIndexRoute: AppLearnIndexRoute,
   AppLiveIndexRoute: AppLiveIndexRoute,
   AppLocalizationIndexRoute: AppLocalizationIndexRoute,
   AppMarketingIndexRoute: AppMarketingIndexRoute,
   AppMentorIndexRoute: AppMentorIndexRoute,
   AppNgoIndexRoute: AppNgoIndexRoute,
+  AppOpsIndexRoute: AppOpsIndexRoute,
   AppParentIndexRoute: AppParentIndexRoute,
   AppProductMarketingIndexRoute: AppProductMarketingIndexRoute,
+  AppReceptionistIndexRoute: AppReceptionistIndexRoute,
   AppSupplierIndexRoute: AppSupplierIndexRoute,
+  AppVolunteerIndexRoute: AppVolunteerIndexRoute,
   AppAssessmentsAssessmentIdTakeRoute: AppAssessmentsAssessmentIdTakeRoute,
   AppClientProjectsProjectIdRoute: AppClientProjectsProjectIdRouteWithChildren,
   AppConversionCopyLandingPagesIdRoute: AppConversionCopyLandingPagesIdRoute,

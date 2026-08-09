@@ -72,7 +72,7 @@ function SupplierHub() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="supplier"
       title="Supplier hub"
       subtitle="OfficeMate Ltd · CEA vendor since 2024"
       actions={

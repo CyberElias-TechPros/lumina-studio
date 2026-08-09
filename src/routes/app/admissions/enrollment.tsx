@@ -41,7 +41,7 @@ function AdmissionsEnrollment() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="admissions"
       title="Enrollment tracker"
       subtitle={s ? `${value("enrolled")} enrolled · ${value("offer")} offers sent` : "Loading…"}
       actions={

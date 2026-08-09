@@ -30,7 +30,7 @@ function EmployerTalentSearch() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="employer"
       title="Talent search"
       subtitle="OSKM-verified candidates · 214 profiles in your filters"
       actions={

@@ -61,7 +61,7 @@ function OperationsReports() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="ops"
       title="Reports & analytics"
       subtitle={
         branches.length > 0 ? `Efficiency by campus · updated daily 07:00` : "Loading reports…"

@@ -80,7 +80,7 @@ function DirectorFinance() {
 
   return (
     <AppShell
-      roleKey="admin"
+      roleKey="director"
       title="Financial overview"
       subtitle={`${formatNairaCompact(revenue)} collected · ${formatNairaCompact(spend)} expenses · ${margin}% margin`}
       actions={

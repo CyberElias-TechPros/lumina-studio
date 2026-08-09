@@ -39,7 +39,7 @@ function MentorSessions() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="mentor"
       title="Session hub"
       subtitle="Schedule, run and review mentor sessions"
       actions={

@@ -26,7 +26,7 @@ function PayVerifyPage() {
   const paymentQuery = useVerifyPayment(reference ?? "");
 
   return (
-    <AppShell roleKey="student" title="Payment verification" subtitle="Confirming your payment">
+    <AppShell roleKey="finance" title="Payment verification" subtitle="Confirming your payment">
       <div className="mx-auto max-w-md">
         <Card className="bg-card shadow-soft border">
           <CardContent className="p-8 text-center">

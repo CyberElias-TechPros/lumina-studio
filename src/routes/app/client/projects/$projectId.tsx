@@ -43,7 +43,7 @@ function ClientProject() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="client"
       title="OrderPadi web app"
       subtitle="CEA Studio project #CEA-0142 · 8-week build"
       actions={

@@ -52,7 +52,7 @@ function GovernmentInstitution() {
 
   return (
     <AppShell
-      roleKey="admin"
+      roleKey="government"
       title="Institutional data"
       subtitle="Read-only · updated Jul 31 · data verified by 2 officers"
       actions={

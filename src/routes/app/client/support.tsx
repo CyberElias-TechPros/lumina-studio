@@ -32,7 +32,7 @@ function ClientSupport() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="client"
       title="Support tickets"
       subtitle="SLA 4h–24h · response time avg 2.1h"
       actions={

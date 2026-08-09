@@ -77,7 +77,7 @@ function DirectorHub() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="director"
       title="Director hub"
       subtitle="Strategy, operations and campus-wide oversight"
       actions={

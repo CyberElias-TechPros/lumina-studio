@@ -39,7 +39,7 @@ function OperationsFacilities() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="ops"
       title="Facilities"
       subtitle={
         rooms.length > 0

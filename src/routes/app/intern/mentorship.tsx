@@ -42,7 +42,7 @@ function InternMentorship() {
 
   return (
     <AppShell
-      roleKey="student"
+      roleKey="intern"
       title="Mentorship"
       subtitle={
         sessions.length > 0

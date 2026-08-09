@@ -54,7 +54,7 @@ function AdmissionsReview() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="admissions"
       title="Review pipeline"
       subtitle={s ? `${queueCount} awaiting review · ${active} in active stages` : "Loading…"}
       actions={

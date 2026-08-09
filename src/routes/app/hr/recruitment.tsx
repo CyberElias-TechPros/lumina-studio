@@ -30,7 +30,7 @@ function HrRecruitment() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="hr"
       title="Recruitment"
       subtitle={`${openRoles} open roles · ${applications} applications · ${offersOut} offers out`}
       actions={

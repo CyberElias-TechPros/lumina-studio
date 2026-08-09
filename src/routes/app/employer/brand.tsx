@@ -39,7 +39,7 @@ function EmployerBrand() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="employer"
       title="Brand page"
       subtitle="How candidates see your company"
       actions={

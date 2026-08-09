@@ -49,7 +49,7 @@ function HrTraining() {
   const programsQuery = useHrPrograms();
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="hr"
       title="Training records"
       subtitle="8 programs · 142 completions this year"
       actions={

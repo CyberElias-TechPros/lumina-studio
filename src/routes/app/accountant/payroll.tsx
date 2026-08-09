@@ -41,7 +41,7 @@ function AccountantPayroll() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="finance"
       title="Payroll"
       subtitle={`${changeRows.length} payroll changes · ${staff.length} employees · ${sent.length} processed`}
       actions={

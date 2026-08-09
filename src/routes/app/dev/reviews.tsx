@@ -30,7 +30,7 @@ function DevReviews() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="dev"
       title="Code reviews"
       subtitle="3 in queue · median turnaround 6h"
       actions={

@@ -62,7 +62,7 @@ function AccountantReports() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="finance"
       title="Reports"
       subtitle={`Net ${formatNairaCompact(net)} · ${paidCount} invoices settled · ${expRows.length} claims`}
       actions={

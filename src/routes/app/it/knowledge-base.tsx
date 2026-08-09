@@ -37,7 +37,7 @@ function ItKnowledgeBase() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="it"
       title="Knowledge base"
       subtitle={
         articles.length > 0

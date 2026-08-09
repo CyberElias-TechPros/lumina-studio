@@ -47,7 +47,7 @@ function AdmissionsReports() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="admissions"
       title="Reports"
       subtitle={
         s ? `${value("offer")} offers · ${value("enrolled")} enrolled of ${s?.total}` : "Loading…"

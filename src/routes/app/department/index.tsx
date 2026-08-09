@@ -86,7 +86,7 @@ function DepartmentHub() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="department"
       title="Department hub"
       subtitle="Academic operations, curriculum and faculty oversight"
       actions={

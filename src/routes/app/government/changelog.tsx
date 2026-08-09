@@ -50,7 +50,7 @@ function GovernmentChangelog() {
 
   return (
     <AppShell
-      roleKey="admin"
+      roleKey="government"
       title="Regulatory change log"
       subtitle="Tracked since 2022 · 34 regulations · auto-impact analysis"
       actions={

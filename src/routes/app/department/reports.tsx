@@ -30,7 +30,7 @@ function DeptReports() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="department"
       title="Reports & analytics"
       subtitle="Software Engineering · FY 2026 · auto-generated"
       actions={

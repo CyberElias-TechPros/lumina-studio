@@ -142,7 +142,7 @@ function DirectorCommandCenter() {
 
   return (
     <AppShell
-      roleKey="admin"
+      roleKey="director"
       title="Executive command center"
       subtitle={`Real-time KPIs · ${formatNairaCompact(revenue)} collected · ${openRoles} open roles · Q3 2026`}
       actions={

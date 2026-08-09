@@ -28,7 +28,7 @@ function MentorSessionDetail() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="mentor"
       title={detail ? detail.title : "Session"}
       subtitle={detail ? `${detail.datetimeText} · ${detail.mode}` : "Loading session…"}
       actions={

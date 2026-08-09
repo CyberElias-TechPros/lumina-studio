@@ -35,7 +35,7 @@ function PartnerCollaborations() {
 
   return (
     <AppShell
-      roleKey="student"
+      roleKey="partner"
       title="Collaborations"
       subtitle={
         collaborations.length > 0

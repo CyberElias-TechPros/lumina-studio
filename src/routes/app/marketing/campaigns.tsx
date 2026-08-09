@@ -32,7 +32,7 @@ function MarketingCampaigns() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="marketing"
       title="Campaigns"
       subtitle="8 live · ₦1.4m budget · avg. ROAS 4.2x"
       actions={

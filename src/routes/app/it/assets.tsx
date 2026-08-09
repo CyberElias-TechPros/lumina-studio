@@ -40,7 +40,7 @@ function ItAssets() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="it"
       title="Asset management"
       subtitle={
         assets.length > 0

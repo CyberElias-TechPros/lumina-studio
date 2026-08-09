@@ -32,7 +32,7 @@ function ReceptionistDirectory() {
 
   return (
     <AppShell
-      roleKey="student"
+      roleKey="receptionist"
       title="Staff directory"
       subtitle="94 staff · 6 departments · all extensions live"
       actions={

@@ -32,7 +32,7 @@ function ItTicketDetail() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="it"
       title={ticket ? `${ticket.id} · ${ticket.subject}` : "Ticket"}
       subtitle={
         ticket

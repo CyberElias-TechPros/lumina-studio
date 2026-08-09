@@ -35,7 +35,7 @@ function ItRemoteSupport() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="it"
       title="Remote support"
       subtitle={
         sessions.length > 0

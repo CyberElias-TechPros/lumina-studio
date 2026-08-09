@@ -32,7 +32,7 @@ function MarketingReports() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="marketing"
       title="Reports"
       subtitle="Shared with director · monthly cadence"
       actions={

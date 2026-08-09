@@ -41,7 +41,7 @@ function OperationsVendors() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="ops"
       title="Vendor management"
       subtitle={
         vendors.length > 0

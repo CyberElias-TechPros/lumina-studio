@@ -81,7 +81,7 @@ function AlumniHub() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="alumni"
       title="Alumni hub"
       subtitle="Cohort 12 · Full-Stack · Class of 2024"
       actions={

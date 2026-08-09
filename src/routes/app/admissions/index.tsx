@@ -82,7 +82,7 @@ function AdmissionsHub() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="admissions"
       title="Admissions hub"
       subtitle={
         total !== undefined

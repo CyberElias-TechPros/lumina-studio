@@ -56,7 +56,7 @@ function DirectorAcademic() {
 
   return (
     <AppShell
-      roleKey="admin"
+      roleKey="director"
       title="Academic overview"
       subtitle={`${courseRows.length} programs · ${avgCompletion}% completion · ${placement}% interview→completed`}
       actions={

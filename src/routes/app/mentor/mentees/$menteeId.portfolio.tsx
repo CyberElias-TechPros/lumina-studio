@@ -41,7 +41,7 @@ function MentorPortfolioReview() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="mentor"
       title="Portfolio review"
       subtitle={
         projects.length > 0

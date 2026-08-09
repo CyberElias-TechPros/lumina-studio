@@ -30,7 +30,7 @@ function CopyLandingPage() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="conversion-copy"
       title="Landing page copy"
       subtitle="/enroll · cohort 17 · conversion rate 5.4%"
       actions={

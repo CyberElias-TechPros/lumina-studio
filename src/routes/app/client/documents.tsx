@@ -31,7 +31,7 @@ function ClientDocuments() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="client"
       title="Documents"
       subtitle="48 files · 12 folders · versioned"
       actions={

@@ -37,7 +37,7 @@ function DevTasks() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="dev"
       title="Tasks"
       subtitle="Sprint 14 · 9 done · 5 doing · 4 todo"
       actions={

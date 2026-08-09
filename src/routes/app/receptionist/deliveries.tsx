@@ -33,7 +33,7 @@ function ReceptionistDeliveries() {
 
   return (
     <AppShell
-      roleKey="student"
+      roleKey="receptionist"
       title="Delivery log"
       subtitle={`Front desk · ${deliveries.length > 0 ? `${deliveries.length} parcels logged` : "3 parcels today"}`}
       actions={

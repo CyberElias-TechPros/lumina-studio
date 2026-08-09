@@ -32,7 +32,7 @@ function ClientInvoices() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="client"
       title="Invoices & payments"
       subtitle="CEA Studio · OrderPadi project"
       actions={

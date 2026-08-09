@@ -33,7 +33,7 @@ function VolunteerCommunity() {
 
   return (
     <AppShell
-      roleKey="student"
+      roleKey="volunteer"
       title="Community"
       subtitle="Chat, forums and announcements"
       actions={

@@ -37,7 +37,7 @@ function SupplierInvoices() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="supplier"
       title="Invoices"
       subtitle={
         invoices.length > 0

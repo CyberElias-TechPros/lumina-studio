@@ -35,7 +35,7 @@ function PartnerReferrals() {
 
   return (
     <AppShell
-      roleKey="student"
+      roleKey="partner"
       title="Referral portal"
       subtitle={
         referrals.length > 0

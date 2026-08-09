@@ -80,7 +80,7 @@ function AccountantHub() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="finance"
       title="Finance hub"
       subtitle={`AR ${formatNairaCompact(outstanding)} · AP ${formatNairaCompact(spent)} · ${batchRows.length} batches`}
       actions={

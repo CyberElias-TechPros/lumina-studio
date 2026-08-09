@@ -38,7 +38,7 @@ function ClientContracts() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="client"
       title="Contracts"
       subtitle="3 active · digital signatures · auto-renewals"
       actions={

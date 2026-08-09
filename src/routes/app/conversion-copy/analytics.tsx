@@ -37,7 +37,7 @@ function CopyAnalytics() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="conversion-copy"
       title="Conversion analytics"
       subtitle="Funnel · last 30 days · updated hourly"
       actions={

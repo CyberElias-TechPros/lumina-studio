@@ -52,7 +52,7 @@ function AdmissionsApplications() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="admissions"
       title="Applications"
       subtitle={`${items.length} total · ${PIPELINE_STAGE_LABELS.submitted} → ${PIPELINE_STAGE_LABELS.enrolled}`}
       actions={

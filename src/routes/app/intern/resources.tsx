@@ -37,7 +37,7 @@ function InternResources() {
 
   return (
     <AppShell
-      roleKey="student"
+      roleKey="intern"
       title="Resources"
       subtitle="Curated materials, templates and references"
       actions={

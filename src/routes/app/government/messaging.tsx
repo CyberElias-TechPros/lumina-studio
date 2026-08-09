@@ -50,7 +50,7 @@ function GovernmentMessaging() {
 
   return (
     <AppShell
-      roleKey="admin"
+      roleKey="government"
       title="Messaging"
       subtitle="End-to-end encrypted · audited by system admin"
       actions={

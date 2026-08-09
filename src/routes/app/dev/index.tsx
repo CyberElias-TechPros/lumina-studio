@@ -80,7 +80,7 @@ function DevHub() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="dev"
       title="Dev hub"
       subtitle="cea-os monorepo · main branch green · sprint 14"
       actions={

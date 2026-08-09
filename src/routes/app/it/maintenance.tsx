@@ -38,7 +38,7 @@ function ItMaintenance() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="it"
       title="Scheduled maintenance"
       subtitle={
         windows.length > 0

@@ -69,7 +69,7 @@ function HrHub() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="hr"
       title="HR hub"
       subtitle={`${staff.length} staff · ${roles.length} open roles · ${pendingPayroll.length} payroll changes pending`}
       actions={

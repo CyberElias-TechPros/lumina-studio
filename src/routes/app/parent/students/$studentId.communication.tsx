@@ -36,7 +36,7 @@ function ParentStudentCommunication() {
   const meetingsQuery = useParMeetings();
   return (
     <AppShell
-      roleKey="student"
+      roleKey="parent"
       title="Communication"
       subtitle="Ada Okafor · teachers, mentor and office"
       actions={

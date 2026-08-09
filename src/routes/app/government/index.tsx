@@ -92,7 +92,7 @@ function GovernmentHub() {
 
   return (
     <AppShell
-      roleKey="admin"
+      roleKey="government"
       title="Compliance portal"
       subtitle="Federal Ministry of Education · read-only access · IP-whitelisted"
       actions={

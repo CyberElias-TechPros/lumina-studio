@@ -48,7 +48,7 @@ function AccountantBanking() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="finance"
       title="Banking reconciliation"
       subtitle={
         payments.length > 0

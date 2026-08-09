@@ -29,7 +29,7 @@ function DevEnv() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="dev"
       title="Environment variables"
       subtitle="3 environments · secrets encrypted at rest"
       actions={

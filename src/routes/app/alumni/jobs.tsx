@@ -35,7 +35,7 @@ function AlumniJobs() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="alumni"
       title="Alumni job board"
       subtitle={`${postings.length} roles · ${open.length} open · ${applications} applications`}
       actions={

@@ -52,7 +52,7 @@ function MentorSettings() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="mentor"
       title="Availability & settings"
       subtitle="When mentees can book you"
       actions={

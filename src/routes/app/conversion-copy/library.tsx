@@ -38,7 +38,7 @@ function CopyLibrary() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="conversion-copy"
       title="Copy asset library"
       subtitle="214 assets · tagged · versioned · 1-click reuse"
       actions={

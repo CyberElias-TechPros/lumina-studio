@@ -29,7 +29,7 @@ function ItTemplates() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="it"
       title="Ticket templates"
       subtitle={
         templates.length > 0

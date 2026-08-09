@@ -31,7 +31,7 @@ function AccountantAudit() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="finance"
       title="Audit log"
       subtitle={`${audit.length} events on record · immutable · exportable`}
       actions={

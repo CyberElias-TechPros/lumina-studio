@@ -24,7 +24,7 @@ function DevDocs() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="dev"
       title="Developer docs"
       subtitle="24 pages · versioned · searchable"
       actions={

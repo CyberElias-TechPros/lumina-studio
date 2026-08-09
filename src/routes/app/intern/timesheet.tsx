@@ -32,7 +32,7 @@ function InternTimesheet() {
 
   return (
     <AppShell
-      roleKey="student"
+      roleKey="intern"
       title="Timesheet"
       subtitle={
         timesheets.length > 0

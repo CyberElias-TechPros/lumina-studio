@@ -28,7 +28,7 @@ function ReceptionistPhoneLog() {
 
   return (
     <AppShell
-      roleKey="student"
+      roleKey="receptionist"
       title="Phone log"
       subtitle={`Front desk · ${calls.length > 0 ? `${calls.length} calls today` : "14 calls today"}`}
       actions={

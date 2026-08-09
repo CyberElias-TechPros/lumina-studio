@@ -37,7 +37,7 @@ function DirectorOperations() {
   const branchesQuery = useDirBranches();
   return (
     <AppShell
-      roleKey="admin"
+      roleKey="director"
       title="Operations overview"
       subtitle="3 campuses · 82% utilization · 0 incidents (30d)"
       actions={

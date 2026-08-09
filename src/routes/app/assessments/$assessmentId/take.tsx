@@ -67,7 +67,7 @@ function AssessmentPlayer() {
 
   return (
     <AppShell
-      roleKey="student"
+      roleKey="assessments"
       title="Assessment"
       subtitle="Loading…"
       actions={

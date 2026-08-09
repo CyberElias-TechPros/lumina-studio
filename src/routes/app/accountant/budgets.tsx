@@ -46,7 +46,7 @@ function AccountantBudgets() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="finance"
       title="Budgets"
       subtitle={`${formatNairaCompact(total)} spent · ${categories.length} categories · ${rows.length} claims`}
       actions={

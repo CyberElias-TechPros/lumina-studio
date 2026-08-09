@@ -25,7 +25,7 @@ function HrEmployees() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="hr"
       title="Employee database"
       subtitle={`${rows.length} records · 96% docs complete`}
       actions={

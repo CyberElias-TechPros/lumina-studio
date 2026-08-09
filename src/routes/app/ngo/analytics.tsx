@@ -31,7 +31,7 @@ function NgoAnalytics() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="ngo"
       title="Partner reports & analytics"
       subtitle="12 dashboards · donor-ready exports · quarterly"
       actions={

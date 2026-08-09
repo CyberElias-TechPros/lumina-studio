@@ -29,7 +29,7 @@ function EmployerJobs() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="employer"
       title="Job management"
       subtitle={`${postings.length} roles · ${applications} total applications`}
       actions={

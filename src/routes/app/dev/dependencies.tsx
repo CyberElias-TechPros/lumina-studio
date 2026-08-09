@@ -37,7 +37,7 @@ function DevDependencies() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="dev"
       title="Dependencies"
       subtitle="126 direct · 412 transitive · Dependabot on"
       actions={

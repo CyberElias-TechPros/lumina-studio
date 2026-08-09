@@ -41,7 +41,7 @@ function InternTasks() {
 
   return (
     <AppShell
-      roleKey="student"
+      roleKey="intern"
       title="Tasks"
       subtitle={
         tasks.length > 0

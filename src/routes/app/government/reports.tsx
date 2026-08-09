@@ -50,7 +50,7 @@ function GovernmentReports() {
 
   return (
     <AppShell
-      roleKey="admin"
+      roleKey="government"
       title="Regulatory reports"
       subtitle="12 reports · auto-prepared quarterly · filings-ready"
       actions={

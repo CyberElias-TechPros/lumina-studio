@@ -30,7 +30,7 @@ function DepartmentEnrollment() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="department"
       title="Enrollment overview"
       subtitle="Software Engineering · 4 active cohorts"
       actions={

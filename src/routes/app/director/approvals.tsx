@@ -67,7 +67,7 @@ function DirectorApprovals() {
 
   return (
     <AppShell
-      roleKey="admin"
+      roleKey="director"
       title="Approvals"
       subtitle={`${pending} pending · leave + payroll + overdue invoices · SLA 24h`}
       actions={

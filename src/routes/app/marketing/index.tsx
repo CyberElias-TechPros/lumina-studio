@@ -69,7 +69,7 @@ function MarketingHub() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="marketing"
       title="Marketing hub"
       subtitle="Q3 · ₦1.4m spend · CAC ₦96k · ROAS 4.2x"
       actions={

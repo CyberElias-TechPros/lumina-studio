@@ -30,7 +30,7 @@ function DevMonitoring() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="dev"
       title="Monitoring & errors"
       subtitle="Error rate 0.4% · p95 latency 210 ms"
       actions={

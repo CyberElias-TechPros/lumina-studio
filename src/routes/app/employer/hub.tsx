@@ -90,7 +90,7 @@ function EmployerHub() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="employer"
       title="Employer hub"
       subtitle={`${openRoles} open roles · ${applications} applications · ${talentPool} verified candidates`}
       actions={

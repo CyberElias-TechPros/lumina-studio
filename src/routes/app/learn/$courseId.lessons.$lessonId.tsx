@@ -38,7 +38,7 @@ function LessonViewer() {
 
   return (
     <AppShell
-      roleKey="student"
+      roleKey="learn"
       title="Lesson"
       subtitle={courseQuery.data ? courseQuery.data.title : "Course"}
       actions={

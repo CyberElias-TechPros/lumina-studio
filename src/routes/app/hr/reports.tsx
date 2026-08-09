@@ -61,7 +61,7 @@ function HrReports() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="hr"
       title="HR reports"
       subtitle={`${staff.length} headcount · ${requests.length} leave requests · ${changes.length} payroll changes`}
       actions={

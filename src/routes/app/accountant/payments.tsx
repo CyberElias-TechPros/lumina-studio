@@ -32,7 +32,7 @@ function AccountantPayments() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="finance"
       title="Payments"
       subtitle={`${batches.reduce((s, b) => s + b.count, 0)} transactions · ${formatNairaCompact(processed)} processed`}
       actions={

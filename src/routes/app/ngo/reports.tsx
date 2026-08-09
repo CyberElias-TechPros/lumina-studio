@@ -31,7 +31,7 @@ function NgoReports() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="ngo"
       title="Impact reports"
       subtitle="6 published · auto-collected from CEA data"
       actions={

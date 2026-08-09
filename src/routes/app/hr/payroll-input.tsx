@@ -32,7 +32,7 @@ function HrPayrollInput() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="hr"
       title="Payroll input"
       subtitle={`${changes.length} changes for August · cut-off Aug 5`}
       actions={

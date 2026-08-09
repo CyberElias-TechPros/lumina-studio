@@ -31,7 +31,7 @@ function NgoScholarships() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="ngo"
       title="Scholarships"
       subtitle="3 funds · 38 scholars this year · ₦12.4m committed"
       actions={

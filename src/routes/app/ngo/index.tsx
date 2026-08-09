@@ -69,7 +69,7 @@ function NgoHub() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="ngo"
       title="Partnership hub"
       subtitle="Lift Africa Foundation · 3 active programs · 2026"
       actions={

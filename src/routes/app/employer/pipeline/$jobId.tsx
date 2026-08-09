@@ -46,7 +46,7 @@ function EmployerPipeline() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="employer"
       title="Junior Backend Engineer"
       subtitle="14 applicants · posted Jul 28 · Paystack"
       actions={

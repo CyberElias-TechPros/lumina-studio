@@ -32,7 +32,7 @@ function ClientProjectTasks() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="client"
       title="Project tasks"
       subtitle="Platform rebuild · 14 tasks · 8 approved"
       actions={

@@ -33,7 +33,7 @@ function AssignmentDetail() {
 
   return (
     <AppShell
-      roleKey="student"
+      roleKey="assignments"
       title="Assignment"
       subtitle="Loading…"
       actions={

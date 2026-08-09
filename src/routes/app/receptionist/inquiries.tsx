@@ -31,7 +31,7 @@ function ReceptionistInquiries() {
 
   return (
     <AppShell
-      roleKey="student"
+      roleKey="receptionist"
       title="Inquiry log"
       subtitle={`Walk-ins → CRM leads · ${inquiries.length > 0 ? `${inquiries.length} this week` : "4 this week"}`}
       actions={

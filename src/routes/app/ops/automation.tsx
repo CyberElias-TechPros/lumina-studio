@@ -29,7 +29,7 @@ function OperationsAutomation() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="ops"
       title="Process automation"
       subtitle={
         workflows.length > 0

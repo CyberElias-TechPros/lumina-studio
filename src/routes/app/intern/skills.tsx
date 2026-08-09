@@ -31,7 +31,7 @@ function InternSkills() {
 
   return (
     <AppShell
-      roleKey="student"
+      roleKey="intern"
       title="Skills tracker"
       subtitle="Your growing toolkit — mastery levels and next steps"
       actions={

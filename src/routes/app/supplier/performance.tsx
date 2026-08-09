@@ -28,7 +28,7 @@ function SupplierPerformance() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="supplier"
       title="Performance"
       subtitle={`Overall rating ${overall} · rated by CEA procurement`}
       actions={

@@ -86,7 +86,7 @@ function MentorDashboard() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="mentor"
       title="Mentor dashboard"
       subtitle={
         mentees.length > 0

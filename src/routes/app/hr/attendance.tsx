@@ -42,7 +42,7 @@ function HrAttendance() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="hr"
       title="Attendance"
       subtitle={`${staff.length} staff · ${active} active today · ${onLeave} on leave`}
       actions={

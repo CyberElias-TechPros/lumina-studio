@@ -58,7 +58,7 @@ function HrPerformance() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="hr"
       title="Performance"
       subtitle={`${staff.length} staff · ${requests.length} leave requests · 2 cycles on record`}
       actions={

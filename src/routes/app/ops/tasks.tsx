@@ -39,7 +39,7 @@ function OperationsTasks() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="ops"
       title="Task management"
       subtitle={tasks.length > 0 ? `Ops board · ${open} open · ${done} done` : "Loading tasks…"}
       actions={

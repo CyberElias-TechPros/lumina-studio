@@ -110,7 +110,7 @@ function LearningHub() {
 
   return (
     <AppShell
-      roleKey="student"
+      roleKey="learn"
       title="Learning hub"
       subtitle={
         dashboard.data

@@ -25,7 +25,7 @@ function AlumniGiveBack() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="alumni"
       title="Give back"
       subtitle="2 scholarships funded · ₦480k lifetime giving"
       actions={

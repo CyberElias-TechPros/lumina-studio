@@ -31,7 +31,7 @@ function MentorRequests() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="mentor"
       title="Mentorship requests"
       subtitle={
         requests.length > 0 ? `${pending} pending · respond within 7 days` : "Loading requests…"

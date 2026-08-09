@@ -30,7 +30,7 @@ function CopyAbTests() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="conversion-copy"
       title="A/B test dashboard"
       subtitle="6 running · 14 concluded this month · 11 winners deployed"
       actions={

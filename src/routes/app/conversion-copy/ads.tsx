@@ -30,7 +30,7 @@ function CopyAds() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="conversion-copy"
       title="Ad copy manager"
       subtitle="24 ad sets · 12 live · ₦4.2m spend this month"
       actions={

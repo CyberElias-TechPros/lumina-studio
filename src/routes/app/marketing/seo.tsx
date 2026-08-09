@@ -32,7 +32,7 @@ function MarketingSeo() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="marketing"
       title="SEO dashboard"
       subtitle="48 tracked keywords · avg. position 7.2"
       actions={

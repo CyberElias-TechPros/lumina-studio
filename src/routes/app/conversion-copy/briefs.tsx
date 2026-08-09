@@ -31,7 +31,7 @@ function CopyBriefs() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="conversion-copy"
       title="Brief intake"
       subtitle="12 this month · median turnaround 2.1 days"
       actions={

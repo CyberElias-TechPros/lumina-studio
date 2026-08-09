@@ -38,7 +38,7 @@ function SupplierOrders() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="supplier"
       title="Orders"
       subtitle={`${active.length} active · auto-synced with CEA procurement`}
       actions={

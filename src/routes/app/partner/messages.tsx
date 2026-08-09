@@ -46,7 +46,7 @@ function PartnerMessages() {
 
   return (
     <AppShell
-      roleKey="student"
+      roleKey="partner"
       title="Messaging"
       subtitle={
         conversations.length > 0 ? "Partnerships team · response < 4h" : "Partnerships team"

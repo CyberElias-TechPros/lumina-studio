@@ -31,7 +31,7 @@ function VolunteerOpportunities() {
 
   return (
     <AppShell
-      roleKey="student"
+      roleKey="volunteer"
       title="Opportunities"
       subtitle="9 open · matches your interests"
       actions={

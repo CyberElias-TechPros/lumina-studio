@@ -32,7 +32,7 @@ function ClientProposals() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="client"
       title="Proposals"
       subtitle="2 active · median response 2 days"
       actions={

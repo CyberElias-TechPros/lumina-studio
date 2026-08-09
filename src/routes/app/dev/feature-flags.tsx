@@ -34,7 +34,7 @@ function DevFeatureFlags() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="dev"
       title="Feature flags"
       subtitle={`${entries.length} flags · ${enabled.length} live · kill switch armed`}
       actions={

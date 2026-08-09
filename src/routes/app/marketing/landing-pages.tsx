@@ -34,7 +34,7 @@ function MarketingLandingPages() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="marketing"
       title="Landing pages"
       subtitle="6 live · 3 in testing · avg. conversion 4.4%"
       actions={

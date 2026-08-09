@@ -34,7 +34,7 @@ function MentorResources() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="mentor"
       title="Resources library"
       subtitle="Templates, banks and guides · updated weekly"
       actions={

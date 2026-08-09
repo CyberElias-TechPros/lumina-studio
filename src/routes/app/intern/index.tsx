@@ -88,7 +88,7 @@ function InternHub() {
 
   return (
     <AppShell
-      roleKey="student"
+      roleKey="intern"
       title="Intern hub"
       subtitle={
         tasks.length > 0

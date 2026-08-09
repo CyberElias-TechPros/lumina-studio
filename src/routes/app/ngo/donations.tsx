@@ -31,7 +31,7 @@ function NgoDonations() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="ngo"
       title="Donations"
       subtitle="₦46.2m received · ₦38.1m deployed · 100% accounted"
       actions={

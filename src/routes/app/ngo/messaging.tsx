@@ -31,7 +31,7 @@ function NgoMessaging() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="ngo"
       title="Messaging"
       subtitle="9 threads with CEA · E2EE · 24h response"
       actions={

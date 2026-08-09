@@ -34,7 +34,7 @@ function PartnerReports() {
 
   return (
     <AppShell
-      roleKey="student"
+      roleKey="partner"
       title="Reports & impact"
       subtitle={
         reports.length > 0

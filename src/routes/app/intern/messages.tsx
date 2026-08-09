@@ -35,7 +35,7 @@ function InternMessages() {
 
   return (
     <AppShell
-      roleKey="student"
+      roleKey="intern"
       title="Messages"
       subtitle="Supervisor, mentor and team channels"
       actions={

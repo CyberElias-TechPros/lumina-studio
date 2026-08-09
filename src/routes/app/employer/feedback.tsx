@@ -34,7 +34,7 @@ function EmployerFeedback() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="employer"
       title="Feedback & reviews"
       subtitle={`${interviews.length} interviews · ${completed} completed · ${positiveRate}% positive`}
       actions={

@@ -49,7 +49,7 @@ function GovernmentCalendar() {
 
   return (
     <AppShell
-      roleKey="admin"
+      roleKey="government"
       title="Compliance calendar"
       subtitle="22 events this year · 3 upcoming · auto-reminders on"
       actions={

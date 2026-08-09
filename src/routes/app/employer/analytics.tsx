@@ -36,7 +36,7 @@ function EmployerAnalytics() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="employer"
       title="Hiring analytics"
       subtitle={`${postings.length} roles · ${applications} applications · ${views} views`}
       actions={

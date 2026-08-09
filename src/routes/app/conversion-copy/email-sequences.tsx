@@ -31,7 +31,7 @@ function CopyEmailSequences() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="conversion-copy"
       title="Email sequence builder"
       subtitle="8 sequences · 44 emails · automated triggers"
       actions={

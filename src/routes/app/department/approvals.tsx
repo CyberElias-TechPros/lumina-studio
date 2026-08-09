@@ -30,7 +30,7 @@ function DeptApprovals() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="department"
       title="Approvals"
       subtitle="6 pending · median decision 1.4 days"
       actions={

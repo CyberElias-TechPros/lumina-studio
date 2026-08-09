@@ -39,7 +39,7 @@ function HrOnboarding() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="hr"
       title="Onboarding / offboarding"
       subtitle={`${starters.length} staffing changes · ${completed} complete · ${inProgress} in progress`}
       actions={

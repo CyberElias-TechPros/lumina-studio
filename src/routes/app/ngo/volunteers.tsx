@@ -31,7 +31,7 @@ function NgoVolunteers() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="ngo"
       title="Volunteer coordination"
       subtitle="86 registered · 14 active this week · 1,240 hours logged"
       actions={

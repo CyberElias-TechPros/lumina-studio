@@ -50,7 +50,7 @@ function GovernmentIntegrity() {
 
   return (
     <AppShell
-      roleKey="admin"
+      roleKey="government"
       title="Data integrity verification"
       subtitle="Automated cross-checks · nightly · hash-verified"
       actions={

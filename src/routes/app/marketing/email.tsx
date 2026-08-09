@@ -35,7 +35,7 @@ function MarketingEmail() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="marketing"
       title="Email marketing"
       subtitle="12k subscribers · 71% avg. open rate"
       actions={

@@ -70,7 +70,7 @@ function PartnerHub() {
 
   return (
     <AppShell
-      roleKey="student"
+      roleKey="partner"
       title="Partnership hub"
       subtitle="TechHub Ltd · partner since 2025 · Q3 2026"
       actions={

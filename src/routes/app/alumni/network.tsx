@@ -24,7 +24,7 @@ function AlumniNetwork() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="alumni"
       title="Alumni network"
       subtitle="1,247 members · 32 countries · 640 in tech"
       actions={

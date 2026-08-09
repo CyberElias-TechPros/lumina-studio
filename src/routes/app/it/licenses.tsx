@@ -30,7 +30,7 @@ function ItLicenses() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="it"
       title="Software licenses"
       subtitle={
         licenses.length > 0

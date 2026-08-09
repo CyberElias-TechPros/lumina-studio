@@ -44,7 +44,7 @@ function OperationsBranches() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="ops"
       title="Branch management"
       subtitle={
         branches.length > 0

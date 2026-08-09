@@ -35,7 +35,7 @@ function ItReports() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="it"
       title="Reports"
       subtitle={tickets.length > 0 ? `${solved} tickets solved · ${open} open` : "Loading reports…"}
       actions={

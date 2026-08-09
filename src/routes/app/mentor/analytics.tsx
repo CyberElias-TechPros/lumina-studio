@@ -59,7 +59,7 @@ function MentorAnalytics() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="mentor"
       title="Analytics & impact"
       subtitle={mentees.length > 0 ? `Term 2 · across your ${mentees.length} mentees` : "Loading…"}
       actions={

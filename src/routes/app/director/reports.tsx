@@ -44,7 +44,7 @@ function DirectorReports() {
   const savedQuery = useDirSaved();
   return (
     <AppShell
-      roleKey="admin"
+      roleKey="director"
       title="Reports drill-down"
       subtitle="Any module · any department · any period"
       actions={

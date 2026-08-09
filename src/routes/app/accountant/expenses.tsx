@@ -26,7 +26,7 @@ function AccountantExpenses() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="finance"
       title="Expenses"
       subtitle={`${formatNairaCompact(claimed)} this month · ${rows.length} categories`}
       actions={

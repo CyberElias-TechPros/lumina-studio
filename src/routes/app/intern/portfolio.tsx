@@ -30,7 +30,7 @@ function InternPortfolio() {
 
   return (
     <AppShell
-      roleKey="student"
+      roleKey="intern"
       title="Intern portfolio"
       subtitle="Linked to your learner portfolio · auto-synced tasks"
       actions={

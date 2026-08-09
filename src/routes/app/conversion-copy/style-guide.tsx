@@ -31,7 +31,7 @@ function CopyStyleGuide() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="conversion-copy"
       title="Style guide"
       subtitle="v4.2 · 48 rules · enforced in editor"
       actions={

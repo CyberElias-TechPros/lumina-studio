@@ -33,7 +33,7 @@ function MarketingContentCalendar() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="marketing"
       title="Content calendar"
       subtitle="14 items this month · 8 published"
       actions={

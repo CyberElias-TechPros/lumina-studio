@@ -45,7 +45,7 @@ function LiveClass() {
 
   return (
     <AppShell
-      roleKey="student"
+      roleKey="live"
       title={session?.title ?? "Live class"}
       subtitle={
         session ? `${session.instructor} · ${session.cohort} · ${session.startsAt}` : "Loading…"

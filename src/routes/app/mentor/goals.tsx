@@ -40,7 +40,7 @@ function MentorGoals() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="mentor"
       title="Goal management"
       subtitle={
         goals.length > 0

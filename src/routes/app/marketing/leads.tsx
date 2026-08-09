@@ -44,7 +44,7 @@ function MarketingLeads() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="marketing"
       title="Lead management"
       subtitle="412 leads · 96 hot · routing to admissions"
       actions={

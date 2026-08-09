@@ -37,7 +37,7 @@ function MarketingAnalytics() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="marketing"
       title="Analytics"
       subtitle="Attribution window 30d · last-click model"
       actions={

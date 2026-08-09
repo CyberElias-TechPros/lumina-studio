@@ -34,7 +34,7 @@ function AssessmentsPage() {
 
   return (
     <AppShell
-      roleKey="student"
+      roleKey="assessments"
       title="Assessments"
       subtitle="Quizzes, tests and exams · windows and attempts"
       actions={

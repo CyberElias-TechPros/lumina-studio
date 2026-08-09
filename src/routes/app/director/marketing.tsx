@@ -39,7 +39,7 @@ function DirectorMarketing() {
 
   return (
     <AppShell
-      roleKey="admin"
+      roleKey="director"
       title="Marketing overview"
       subtitle={`${leads.length} leads · ${formatNairaCompact(spend)} spend · funnel ${conversion}% lead→enrol`}
       actions={

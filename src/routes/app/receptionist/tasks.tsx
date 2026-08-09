@@ -50,7 +50,7 @@ function ReceptionistTasks() {
 
   return (
     <AppShell
-      roleKey="student"
+      roleKey="receptionist"
       title="Shift & tasks"
       subtitle="Morning shift · 08:00–17:00 · desk 1"
       actions={

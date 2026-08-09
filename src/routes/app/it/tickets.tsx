@@ -44,7 +44,7 @@ function ItTickets() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="it"
       title="Ticket hub"
       subtitle={tickets.length > 0 ? `${open} open · ${high} high priority` : "Loading tickets…"}
       actions={

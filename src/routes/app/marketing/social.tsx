@@ -46,7 +46,7 @@ function MarketingSocial() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="marketing"
       title="Social media"
       subtitle="4 channels · 24 posts this month · 32k followers"
       actions={

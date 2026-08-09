@@ -50,7 +50,7 @@ function GovernmentDocuments() {
 
   return (
     <AppShell
-      roleKey="admin"
+      roleKey="government"
       title="Documentation library"
       subtitle="64 documents · versioned · digitally signed"
       actions={

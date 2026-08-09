@@ -39,7 +39,7 @@ function AccountantBilling() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="finance"
       title="Billing · AP"
       subtitle={`${formatNairaCompact(openTotal)} payable · ${overdue.length} overdue · ${paid.length} paid`}
       actions={

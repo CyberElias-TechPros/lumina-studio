@@ -56,7 +56,7 @@ function MenteeOverview() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="mentor"
       title={detail ? detail.name : "Mentee overview"}
       subtitle={
         detail

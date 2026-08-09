@@ -49,7 +49,7 @@ function DirectorOkrs() {
   const okrsQuery = useDirOkrs();
   return (
     <AppShell
-      roleKey="admin"
+      roleKey="director"
       title="Strategic planning · OKRs"
       subtitle="Q3 2026 cycle · 3 objectives · 9 key results · check-in week 6"
       actions={

@@ -43,7 +43,7 @@ function AdmissionsInterviews() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="admissions"
       title="Interview scheduler"
       subtitle={s ? `${items.length} applicants in interview` : "Loading…"}
       actions={

@@ -45,7 +45,7 @@ function DepartmentCurriculum() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="department"
       title="Curriculum manager"
       subtitle="Software Engineering department · 4 programs"
       actions={

@@ -30,7 +30,7 @@ function DepartmentQuality() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="department"
       title="Quality assurance"
       subtitle="Observations, evaluations and standards"
       actions={

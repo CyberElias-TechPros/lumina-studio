@@ -54,7 +54,7 @@ function AssignmentsCenter() {
 
   return (
     <AppShell
-      roleKey="student"
+      roleKey="assignments"
       title="Assignments"
       subtitle="Term 2 · all courses · sorted by deadline"
       actions={

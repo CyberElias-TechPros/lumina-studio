@@ -39,7 +39,7 @@ function PartnerAgreements() {
 
   return (
     <AppShell
-      roleKey="student"
+      roleKey="partner"
       title="Agreements"
       subtitle={
         agreements.length > 0

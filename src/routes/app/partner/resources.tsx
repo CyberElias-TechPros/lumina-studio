@@ -32,7 +32,7 @@ function PartnerResources() {
 
   return (
     <AppShell
-      roleKey="student"
+      roleKey="partner"
       title="Resources"
       subtitle={
         resources.length > 0

@@ -50,7 +50,7 @@ function AdmissionsCommunication() {
   const templatesQuery = useAdmTemplates();
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="admissions"
       title="Communication center"
       subtitle="Email + in-app · 98% delivery rate"
       actions={

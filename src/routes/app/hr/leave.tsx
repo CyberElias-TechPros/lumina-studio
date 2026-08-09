@@ -34,7 +34,7 @@ function HrLeave() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="hr"
       title="Leave management"
       subtitle={`${requests.length} open · ${approved} approved · ${pending} pending`}
       actions={

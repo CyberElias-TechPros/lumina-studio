@@ -38,7 +38,7 @@ function DevGit() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="dev"
       title="Git & PR status"
       subtitle="main green · 9 open PRs · merge queue on"
       actions={

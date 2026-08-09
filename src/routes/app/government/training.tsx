@@ -50,7 +50,7 @@ function GovernmentTraining() {
 
   return (
     <AppShell
-      roleKey="admin"
+      roleKey="government"
       title="Compliance training"
       subtitle="6 mandatory courses · 92% coverage · auto-reminders"
       actions={

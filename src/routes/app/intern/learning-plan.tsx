@@ -42,7 +42,7 @@ function InternLearningPlan() {
 
   return (
     <AppShell
-      roleKey="student"
+      roleKey="intern"
       title="Learning plan"
       subtitle={
         milestones.length > 0

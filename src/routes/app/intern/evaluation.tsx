@@ -50,7 +50,7 @@ function InternEvaluation() {
 
   return (
     <AppShell
-      roleKey="student"
+      roleKey="intern"
       title="Evaluation"
       subtitle={
         scored.length > 0

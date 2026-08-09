@@ -62,7 +62,7 @@ function DirectorHr() {
 
   return (
     <AppShell
-      roleKey="admin"
+      roleKey="director"
       title="HR overview"
       subtitle={`${employees.length} staff · ${active} active · ${onLeave} on leave · ${openRoles} open roles`}
       actions={

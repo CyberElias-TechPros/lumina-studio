@@ -28,7 +28,7 @@ function VolunteerHours() {
 
   return (
     <AppShell
-      roleKey="student"
+      roleKey="volunteer"
       title="Hours tracker"
       subtitle={
         entries.length > 0

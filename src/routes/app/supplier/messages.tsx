@@ -45,7 +45,7 @@ function SupplierMessages() {
 
   return (
     <AppShell
-      roleKey="student"
+      roleKey="supplier"
       title="Messages"
       subtitle={
         conversations.length > 0

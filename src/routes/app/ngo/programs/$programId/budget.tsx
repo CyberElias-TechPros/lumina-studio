@@ -31,7 +31,7 @@ function NgoProgramBudget() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="ngo"
       title="Program budget"
       subtitle="STEM Saturdays · FY 2026"
       actions={

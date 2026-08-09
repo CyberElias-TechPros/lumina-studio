@@ -27,7 +27,7 @@ function SupplierProfile() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="supplier"
       title="Supplier profile"
       subtitle="OfficeMate Ltd · Office & refreshment supplies"
       actions={

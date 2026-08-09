@@ -38,7 +38,7 @@ function DeptCalendar() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="department"
       title="Department calendar"
       subtitle="Term 2 · 14 events · synced with academic board"
       actions={

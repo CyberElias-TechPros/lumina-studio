@@ -36,7 +36,7 @@ function AccountantInvoicing() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="finance"
       title="Invoicing"
       subtitle={`${rows.length} invoices this month · ${formatNairaCompact(billed)} billed`}
       actions={

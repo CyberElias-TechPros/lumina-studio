@@ -32,7 +32,7 @@ function DevDeployments() {
 
   return (
     <AppShell
-      roleKey="instructor"
+      roleKey="dev"
       title="Deployments"
       subtitle="18 this month · 100% success · auto-rollback on"
       actions={

@@ -31,7 +31,7 @@ function ReceptionistAppointments() {
 
   return (
     <AppShell
-      roleKey="student"
+      roleKey="receptionist"
       title="Appointments"
       subtitle={`Front desk · today · ${slots.length > 0 ? `${slots.length} appointments` : "9 appointments"}`}
       actions={
