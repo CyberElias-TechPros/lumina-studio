@@ -1,11 +1,11 @@
-# Cyber Elias Academy — Digital Operating System (CEA-OS)
+﻿# Cyber Elias Academy â€” Digital Operating System (CEA-OS)
 
 # Master Actor & App Plan
 
 > **Frontend:** Vercel (Next.js/React 19, TypeScript, Tailwind, shadcn/ui, Redux Toolkit, Framer Motion)
-> **Design Language:** Hybrid of digitalskillsacademy.org (clean professional) × dskillacademy.com.ng (vibrant gradients) — see `CEA_OS_DESIGN_LANGUAGE.md`
+> **Design Language:** Hybrid of digitalskillsacademy.org (clean professional) Ã— dskillacademy.com.ng (vibrant gradients) â€” see `CEA_OS_DESIGN_LANGUAGE.md`
 > **Backend:** Cloudflare Workers + Hono + D1 + R2 + KV + Queues + Durable Objects  
-> **Academy Focus:** General digital/tech skills academy — from scratch to advanced in software dev, networking, cloud, cybersecurity, digital marketing, AI, data science, UI/UX, mobile, hardware, IT support.
+> **Academy Focus:** General digital/tech skills academy â€” from scratch to advanced in software dev, networking, cloud, cybersecurity, digital marketing, AI, data science, UI/UX, mobile, hardware, IT support.
 > **Philosophy:** One platform. Multiple engines. Every actor connected.
 
 ---
@@ -88,9 +88,9 @@
 
 ### Key User Journeys
 
-1. **Discovery → Application:** Browses courses → Reads curriculum → Applies online → Uploads documents → Receives confirmation → Tracks status
-2. **Scholarship Inquiry:** Visits scholarship page → Checks eligibility → Applies for scholarship → Attached to application
-3. **Pre-Enrollment:** Gets accepted → Receives offer letter → Accepts → Makes initial payment → Onboarded as Current Student
+1. **Discovery â†’ Application:** Browses courses â†’ Reads curriculum â†’ Applies online â†’ Uploads documents â†’ Receives confirmation â†’ Tracks status
+2. **Scholarship Inquiry:** Visits scholarship page â†’ Checks eligibility â†’ Applies for scholarship â†’ Attached to application
+3. **Pre-Enrollment:** Gets accepted â†’ Receives offer letter â†’ Accepts â†’ Makes initial payment â†’ Onboarded as Current Student
 
 ### Notifications
 
@@ -147,11 +147,11 @@
 
 ### Key User Journeys
 
-1. **Daily Learning:** Login → Dashboard shows next class → Attend → Access materials → Submit assignment → Check grade
-2. **Taking an Exam:** Notification → Enter assessment portal → Read instructions → Answer questions → Submit → View result
-3. **Building Portfolio:** Add project → Describe role/tech → Upload screenshots → Link to certificate → Publish → Share link
-4. **Freelance Job Hunt:** Browse marketplace → Filter by skill → Apply → Get hired → Deliver work → Get paid → Get reviewed
-5. **Career Coaching:** Schedule mentor session → Prepare questions → Attend → Follow up → Update goals
+1. **Daily Learning:** Login â†’ Dashboard shows next class â†’ Attend â†’ Access materials â†’ Submit assignment â†’ Check grade
+2. **Taking an Exam:** Notification â†’ Enter assessment portal â†’ Read instructions â†’ Answer questions â†’ Submit â†’ View result
+3. **Building Portfolio:** Add project â†’ Describe role/tech â†’ Upload screenshots â†’ Link to certificate â†’ Publish â†’ Share link
+4. **Freelance Job Hunt:** Browse marketplace â†’ Filter by skill â†’ Apply â†’ Get hired â†’ Deliver work â†’ Get paid â†’ Get reviewed
+5. **Career Coaching:** Schedule mentor session â†’ Prepare questions â†’ Attend â†’ Follow up â†’ Update goals
 
 ### Notifications
 
@@ -199,9 +199,9 @@
 
 ### Key User Journeys
 
-1. **Progress Check:** Login → See child's dashboard → Review grades → Contact instructor if concern
-2. **Fee Payment:** View invoice → Pay online → Download receipt
-3. **Meeting Request:** Schedule parent-teacher meeting → Confirm → Attend
+1. **Progress Check:** Login â†’ See child's dashboard â†’ Review grades â†’ Contact instructor if concern
+2. **Fee Payment:** View invoice â†’ Pay online â†’ Download receipt
+3. **Meeting Request:** Schedule parent-teacher meeting â†’ Confirm â†’ Attend
 
 ### Notifications
 
@@ -253,11 +253,11 @@
 
 ### Key User Journeys
 
-1. **Course Creation:** New course → Add modules → Upload materials → Set prerequisites → Publish
-2. **Daily Teaching:** Start class → Mark attendance → Deliver lesson → Post materials → Remind of assignments
-3. **Grading:** Open assignment → View submissions → Grade → Add feedback → Publish → Notify students
-4. **Exam Day:** Open assessment → Monitor live submissions → Auto-grade runs → Review flagged answers → Publish results
-5. **Student Intervention:** View analytics → Identify low performer → Message student → Schedule extra session
+1. **Course Creation:** New course â†’ Add modules â†’ Upload materials â†’ Set prerequisites â†’ Publish
+2. **Daily Teaching:** Start class â†’ Mark attendance â†’ Deliver lesson â†’ Post materials â†’ Remind of assignments
+3. **Grading:** Open assignment â†’ View submissions â†’ Grade â†’ Add feedback â†’ Publish â†’ Notify students
+4. **Exam Day:** Open assessment â†’ Monitor live submissions â†’ Auto-grade runs â†’ Review flagged answers â†’ Publish results
+5. **Student Intervention:** View analytics â†’ Identify low performer â†’ Message student â†’ Schedule extra session
 
 ### Notifications
 
@@ -303,9 +303,9 @@
 
 ### Key User Journeys
 
-1. **First Session:** Review mentee profile → Schedule first meeting → Prepare talking points → Conduct session → Log notes → Set goals
-2. **Portfolio Review:** Mentee shares portfolio → Review projects → Write feedback → Suggest improvements → Approve
-3. **Career Checkpoint:** Monthly check-in → Review progress → Update goals → Suggest resources → Log session
+1. **First Session:** Review mentee profile â†’ Schedule first meeting â†’ Prepare talking points â†’ Conduct session â†’ Log notes â†’ Set goals
+2. **Portfolio Review:** Mentee shares portfolio â†’ Review projects â†’ Write feedback â†’ Suggest improvements â†’ Approve
+3. **Career Checkpoint:** Monthly check-in â†’ Review progress â†’ Update goals â†’ Suggest resources â†’ Log session
 
 ### Notifications
 
@@ -353,9 +353,9 @@
 
 ### Key User Journeys
 
-1. **Curriculum Review:** Review course feedback → Identify gaps → Propose changes → Discuss with instructors → Submit for approval → Implement
-2. **Instructor Evaluation:** View performance metrics → Review student feedback → Conduct review meeting → Log evaluation → Set improvement plan
-3. **End of Term:** Generate department report → Analyze pass rates → Identify trends → Present to Director
+1. **Curriculum Review:** Review course feedback â†’ Identify gaps â†’ Propose changes â†’ Discuss with instructors â†’ Submit for approval â†’ Implement
+2. **Instructor Evaluation:** View performance metrics â†’ Review student feedback â†’ Conduct review meeting â†’ Log evaluation â†’ Set improvement plan
+3. **End of Term:** Generate department report â†’ Analyze pass rates â†’ Identify trends â†’ Present to Director
 
 ### Notifications
 
@@ -384,7 +384,7 @@
 - **Front Desk Hub:** Today's visitors, appointments, calls log
 - **Visitor Management:** Check-in form, badge printing, check-out
 - **Appointment Scheduler:** View/create appointments for staff
-- **Inquiry Log:** Walk-in inquiries, capture leads → route to admissions
+- **Inquiry Log:** Walk-in inquiries, capture leads â†’ route to admissions
 - **Phone System:** Log calls, take messages, route to staff
 - **Delivery Log:** Incoming packages, notify recipients, pickup tracking
 - **Directory:** Staff contact list, department directory
@@ -400,9 +400,9 @@
 
 ### Key User Journeys
 
-1. **Visitor Check-in:** Guest arrives → Capture ID → Notify host → Print badge → Check-out on departure
-2. **Walk-in Inquiry:** Prospect arrives → Capture details → Explain programs → Route to admissions → Log in CRM
-3. **Phone Call:** Call comes in → Take message → Log call → Route to appropriate staff → Follow up
+1. **Visitor Check-in:** Guest arrives â†’ Capture ID â†’ Notify host â†’ Print badge â†’ Check-out on departure
+2. **Walk-in Inquiry:** Prospect arrives â†’ Capture details â†’ Explain programs â†’ Route to admissions â†’ Log in CRM
+3. **Phone Call:** Call comes in â†’ Take message â†’ Log call â†’ Route to appropriate staff â†’ Follow up
 
 ### Notifications
 
@@ -451,9 +451,9 @@
 
 ### Key User Journeys
 
-1. **Inventory Reorder:** Stock low alert → Review supplier → Create PO → Approve → Send to supplier → Track delivery → Update inventory
-2. **Facility Issue:** Maintenance request submitted → Assign technician → Track repair → Verify completion → Close ticket
-3. **End of Month:** Generate ops report → Review costs → Compare branches → Identify savings → Report to Director
+1. **Inventory Reorder:** Stock low alert â†’ Review supplier â†’ Create PO â†’ Approve â†’ Send to supplier â†’ Track delivery â†’ Update inventory
+2. **Facility Issue:** Maintenance request submitted â†’ Assign technician â†’ Track repair â†’ Verify completion â†’ Close ticket
+3. **End of Month:** Generate ops report â†’ Review costs â†’ Compare branches â†’ Identify savings â†’ Report to Director
 
 ### Notifications
 
@@ -502,10 +502,10 @@
 
 ### Key User Journeys
 
-1. **Morning Review:** Login → View executive dashboard → Check revenue → Review enrollment → Scan alerts → Drill down on anomaly
-2. **Budget Approval:** Receive budget request → Review justification → Compare with forecast → Approve/decline → Notify finance
-3. **Quarterly Review:** Generate Q report → Analyze vs OKRs → Identify gaps → Adjust strategy → Communicate to team
-4. **Crisis Response:** Alert triggers (e.g., low enrollment) → Drill into data → Convene meeting → Decide action → Track response
+1. **Morning Review:** Login â†’ View executive dashboard â†’ Check revenue â†’ Review enrollment â†’ Scan alerts â†’ Drill down on anomaly
+2. **Budget Approval:** Receive budget request â†’ Review justification â†’ Compare with forecast â†’ Approve/decline â†’ Notify finance
+3. **Quarterly Review:** Generate Q report â†’ Analyze vs OKRs â†’ Identify gaps â†’ Adjust strategy â†’ Communicate to team
+4. **Crisis Response:** Alert triggers (e.g., low enrollment) â†’ Drill into data â†’ Convene meeting â†’ Decide action â†’ Track response
 
 ### Notifications
 
@@ -556,10 +556,10 @@
 
 ### Key User Journeys
 
-1. **Project Kickoff:** Sign contract → Kickoff meeting → Access project board → See milestones → Receive welcome kit
-2. **Project Tracking:** Login → View project dashboard → Check progress → Review deliverables → Approve → Next milestone
-3. **Issue Reporting:** Problem occurs → Create support ticket → Describe issue → Track resolution → Confirm closure
-4. **Invoice Payment:** Receive invoice notification → View details → Pay via card/bank → Download receipt
+1. **Project Kickoff:** Sign contract â†’ Kickoff meeting â†’ Access project board â†’ See milestones â†’ Receive welcome kit
+2. **Project Tracking:** Login â†’ View project dashboard â†’ Check progress â†’ Review deliverables â†’ Approve â†’ Next milestone
+3. **Issue Reporting:** Problem occurs â†’ Create support ticket â†’ Describe issue â†’ Track resolution â†’ Confirm closure
+4. **Invoice Payment:** Receive invoice notification â†’ View details â†’ Pay via card/bank â†’ Download receipt
 
 ### Notifications
 
@@ -609,9 +609,9 @@
 
 ### Key User Journeys
 
-1. **Post a Job:** Create listing → Define role/skills/compensation → Set visibility → Publish → Receive applications → Review
-2. **Find Talent:** Search by skill → View portfolios → Shortlist → Message candidates → Schedule interviews
-3. **Hire & Feedback:** Conduct interviews → Select candidate → Notify → Fill placement survey → Track retention
+1. **Post a Job:** Create listing â†’ Define role/skills/compensation â†’ Set visibility â†’ Publish â†’ Receive applications â†’ Review
+2. **Find Talent:** Search by skill â†’ View portfolios â†’ Shortlist â†’ Message candidates â†’ Schedule interviews
+3. **Hire & Feedback:** Conduct interviews â†’ Select candidate â†’ Notify â†’ Fill placement survey â†’ Track retention
 
 ### Notifications
 
@@ -658,9 +658,9 @@
 
 ### Key User Journeys
 
-1. **Onboarding:** Sign agreement → Access partner portal → Upload logo → Set up referral link → Start collaboration
-2. **Joint Event:** Propose event → Agree on format → Co-brand materials → Promote to both audiences → Execute → Report impact
-3. **Referral Tracking:** Send referral link → Candidate applies/enrolls → Track status → Receive payout → Review performance
+1. **Onboarding:** Sign agreement â†’ Access partner portal â†’ Upload logo â†’ Set up referral link â†’ Start collaboration
+2. **Joint Event:** Propose event â†’ Agree on format â†’ Co-brand materials â†’ Promote to both audiences â†’ Execute â†’ Report impact
+3. **Referral Tracking:** Send referral link â†’ Candidate applies/enrolls â†’ Track status â†’ Receive payout â†’ Review performance
 
 ### Notifications
 
@@ -705,9 +705,9 @@
 
 ### Key User Journeys
 
-1. **Sign Up:** Browse opportunities → Read description → Register → Receive confirmation → Attend → Log hours → Get certificate
-2. **Event Volunteering:** Volunteer for event → Receive briefing → Check in at event → Perform duties → Check out → Hours approved
-3. **Community Contribution:** Join volunteer group → Participate in discussions → Suggest ideas → Lead initiative → Earn recognition
+1. **Sign Up:** Browse opportunities â†’ Read description â†’ Register â†’ Receive confirmation â†’ Attend â†’ Log hours â†’ Get certificate
+2. **Event Volunteering:** Volunteer for event â†’ Receive briefing â†’ Check in at event â†’ Perform duties â†’ Check out â†’ Hours approved
+3. **Community Contribution:** Join volunteer group â†’ Participate in discussions â†’ Suggest ideas â†’ Lead initiative â†’ Earn recognition
 
 ### Notifications
 
@@ -755,9 +755,9 @@
 
 ### Key User Journeys
 
-1. **Onboarding:** Accept offer → Complete paperwork → Set up accounts → Meet team → Review learning plan → Start tasks
-2. **Daily Work:** Check tasks → Work on deliverables → Log hours → Ask mentor questions → Submit work → Get feedback
-3. **Mid/End Review:** Self-evaluation → Supervisor evaluation → Review session → Receive feedback → Get recommendation letter
+1. **Onboarding:** Accept offer â†’ Complete paperwork â†’ Set up accounts â†’ Meet team â†’ Review learning plan â†’ Start tasks
+2. **Daily Work:** Check tasks â†’ Work on deliverables â†’ Log hours â†’ Ask mentor questions â†’ Submit work â†’ Get feedback
+3. **Mid/End Review:** Self-evaluation â†’ Supervisor evaluation â†’ Review session â†’ Receive feedback â†’ Get recommendation letter
 
 ### Notifications
 
@@ -807,9 +807,9 @@
 
 ### Key User Journeys
 
-1. **Stay Connected:** Update profile → Browse news → RSVP for reunion → Connect with classmates → Share job referral
-2. **Give Back:** Sign up as mentor → Get matched with student → Conduct sessions → Guide career → Celebrate their success
-3. **Career Update:** Got a promotion → Update profile → Share success story → Featured on alumni page → Inspire students
+1. **Stay Connected:** Update profile â†’ Browse news â†’ RSVP for reunion â†’ Connect with classmates â†’ Share job referral
+2. **Give Back:** Sign up as mentor â†’ Get matched with student â†’ Conduct sessions â†’ Guide career â†’ Celebrate their success
+3. **Career Update:** Got a promotion â†’ Update profile â†’ Share success story â†’ Featured on alumni page â†’ Inspire students
 
 ### Notifications
 
@@ -847,8 +847,8 @@
 
 ### Key User Journeys
 
-1. **Schedule Visit:** Fill form → Select date/time → Receive confirmation QR → Arrive → Scan QR → Get badge → Visit → Check out
-2. **Walk-in:** Arrive → Reception logs you → Get visitor badge → Complete visit → Check out
+1. **Schedule Visit:** Fill form â†’ Select date/time â†’ Receive confirmation QR â†’ Arrive â†’ Scan QR â†’ Get badge â†’ Visit â†’ Check out
+2. **Walk-in:** Arrive â†’ Reception logs you â†’ Get visitor badge â†’ Complete visit â†’ Check out
 
 ### Notifications
 
@@ -890,8 +890,8 @@
 
 ### Key User Journeys
 
-1. **Order Fulfillment:** Receive PO → Confirm → Prepare goods → Deliver → Mark delivered → Submit invoice → Track payment
-2. **Profile Update:** Update catalog → Add certifications → Respond to RFP → Get new orders
+1. **Order Fulfillment:** Receive PO â†’ Confirm â†’ Prepare goods â†’ Deliver â†’ Mark delivered â†’ Submit invoice â†’ Track payment
+2. **Profile Update:** Update catalog â†’ Add certifications â†’ Respond to RFP â†’ Get new orders
 
 ### Notifications
 
@@ -940,9 +940,9 @@
 
 ### Key User Journeys
 
-1. **Monthly Closing:** Reconcile bank → Review AR/AP → Post adjustments → Run P&L → Review with Director → Close period
-2. **Invoice Client:** Create invoice → Send to client → Track → Receive payment → Reconcile → Mark paid
-3. **Payroll Run:** Verify timesheets → Calculate salaries → Deductions → Process payments → Generate payslips → Distribute
+1. **Monthly Closing:** Reconcile bank â†’ Review AR/AP â†’ Post adjustments â†’ Run P&L â†’ Review with Director â†’ Close period
+2. **Invoice Client:** Create invoice â†’ Send to client â†’ Track â†’ Receive payment â†’ Reconcile â†’ Mark paid
+3. **Payroll Run:** Verify timesheets â†’ Calculate salaries â†’ Deductions â†’ Process payments â†’ Generate payslips â†’ Distribute
 
 ### Notifications
 
@@ -994,9 +994,9 @@
 
 ### Key User Journeys
 
-1. **Recruitment:** Open requisition → Post job → Screen applications → Schedule interviews → Evaluate → Extend offer → Contract signed → Onboard
-2. **Leave Management:** Employee submits request → Verify balance → Approve/decline → Update calendar → Notify team
-3. **Performance Review:** Open review cycle → Send self-assessments → Schedule manager reviews → Compile results → Identify top/low performers → Plan development
+1. **Recruitment:** Open requisition â†’ Post job â†’ Screen applications â†’ Schedule interviews â†’ Evaluate â†’ Extend offer â†’ Contract signed â†’ Onboard
+2. **Leave Management:** Employee submits request â†’ Verify balance â†’ Approve/decline â†’ Update calendar â†’ Notify team
+3. **Performance Review:** Open review cycle â†’ Send self-assessments â†’ Schedule manager reviews â†’ Compile results â†’ Identify top/low performers â†’ Plan development
 
 ### Notifications
 
@@ -1011,7 +1011,7 @@
 
 ## 1.20 Admissions Officer
 
-**Tagline:** "From prospect to student — I guide the journey."
+**Tagline:** "From prospect to student â€” I guide the journey."
 
 ### Goals
 
@@ -1046,9 +1046,9 @@
 
 ### Key User Journeys
 
-1. **Application Review:** New application alert → Review profile → Check documents → Shortlist or reject → Schedule interview → Log decision
-2. **Interview Day:** View interview schedule → Access applicant info → Interview → Record assessment → Update status → Send follow-up
-3. **Enrollment Conversion:** Accepted student → Send offer → Follow up → Payment received → Confirm enrollment → Hand off to student services
+1. **Application Review:** New application alert â†’ Review profile â†’ Check documents â†’ Shortlist or reject â†’ Schedule interview â†’ Log decision
+2. **Interview Day:** View interview schedule â†’ Access applicant info â†’ Interview â†’ Record assessment â†’ Update status â†’ Send follow-up
+3. **Enrollment Conversion:** Accepted student â†’ Send offer â†’ Follow up â†’ Payment received â†’ Confirm enrollment â†’ Hand off to student services
 
 ### Notifications
 
@@ -1100,9 +1100,9 @@
 
 ### Key User Journeys
 
-1. **Campaign Launch:** Define target audience → Create landing page → Set up email sequence → Launch ads → Track leads → Optimize → Report
-2. **Content Creation:** Plan content → Write blog → Publish (CMS) → Promote (social/email) → Track engagement → Iterate
-3. **Lead Nurturing:** New lead enters CRM → Score → Route to admissions → Follow-up email sequence → Track conversion → Attribute source
+1. **Campaign Launch:** Define target audience â†’ Create landing page â†’ Set up email sequence â†’ Launch ads â†’ Track leads â†’ Optimize â†’ Report
+2. **Content Creation:** Plan content â†’ Write blog â†’ Publish (CMS) â†’ Promote (social/email) â†’ Track engagement â†’ Iterate
+3. **Lead Nurturing:** New lead enters CRM â†’ Score â†’ Route to admissions â†’ Follow-up email sequence â†’ Track conversion â†’ Attribute source
 
 ### Notifications
 
@@ -1150,9 +1150,9 @@
 
 ### Key User Journeys
 
-1. **Ticket Resolution:** Ticket assigned → Review issue → Diagnose → Fix → Log resolution → Close ticket → Request feedback
-2. **New Hire Setup:** Receive onboarding notice → Create accounts → Assign hardware → Configure access → Deliver to employee → Log assets
-3. **System Outage:** Alert received → Assess impact → Communicate status → Fix → Verify → Post-mortem → Update docs
+1. **Ticket Resolution:** Ticket assigned â†’ Review issue â†’ Diagnose â†’ Fix â†’ Log resolution â†’ Close ticket â†’ Request feedback
+2. **New Hire Setup:** Receive onboarding notice â†’ Create accounts â†’ Assign hardware â†’ Configure access â†’ Deliver to employee â†’ Log assets
+3. **System Outage:** Alert received â†’ Assess impact â†’ Communicate status â†’ Fix â†’ Verify â†’ Post-mortem â†’ Update docs
 
 ### Notifications
 
@@ -1199,9 +1199,9 @@
 
 ### Key User Journeys
 
-1. **Feature Development:** Pick task → Branch → Code → Test locally → Push → Create PR → Code review → Merge → Deploy → Monitor
-2. **Bug Fix:** Bug report → Reproduce → Debug → Fix → Write test → PR → Deploy → Verify fix → Close ticket
-3. **API Integration:** Read API docs → Generate key → Test endpoint → Integrate → Deploy → Monitor
+1. **Feature Development:** Pick task â†’ Branch â†’ Code â†’ Test locally â†’ Push â†’ Create PR â†’ Code review â†’ Merge â†’ Deploy â†’ Monitor
+2. **Bug Fix:** Bug report â†’ Reproduce â†’ Debug â†’ Fix â†’ Write test â†’ PR â†’ Deploy â†’ Verify fix â†’ Close ticket
+3. **API Integration:** Read API docs â†’ Generate key â†’ Test endpoint â†’ Integrate â†’ Deploy â†’ Monitor
 
 ### Notifications
 
@@ -1252,9 +1252,9 @@
 
 ### Key User Journeys
 
-1. **New User Setup:** Request received → Create user → Assign role → Set permissions → Notify user → Log action
-2. **Security Review:** Check audit log → Review failed logins → Verify 2FA adoption → Check API key usage → Generate security report → Recommend changes
-3. **System Maintenance:** Enable maintenance mode → Backup DB → Deploy update → Run migrations → Test → Disable maintenance → Verify
+1. **New User Setup:** Request received â†’ Create user â†’ Assign role â†’ Set permissions â†’ Notify user â†’ Log action
+2. **Security Review:** Check audit log â†’ Review failed logins â†’ Verify 2FA adoption â†’ Check API key usage â†’ Generate security report â†’ Recommend changes
+3. **System Maintenance:** Enable maintenance mode â†’ Backup DB â†’ Deploy update â†’ Run migrations â†’ Test â†’ Disable maintenance â†’ Verify
 
 ### Notifications
 
@@ -1301,8 +1301,8 @@
 
 ### Key User Journeys
 
-1. **Annual Compliance Review:** Receive access → Review institutional data → Check documentation → Run compliance report → Submit findings → Schedule follow-up
-2. **Accreditation Audit:** Announce audit → Access all required docs → Conduct review → Identify gaps → Share report → Track remediation → Certify
+1. **Annual Compliance Review:** Receive access â†’ Review institutional data â†’ Check documentation â†’ Run compliance report â†’ Submit findings â†’ Schedule follow-up
+2. **Accreditation Audit:** Announce audit â†’ Access all required docs â†’ Conduct review â†’ Identify gaps â†’ Share report â†’ Track remediation â†’ Certify
 
 ### Notifications
 
@@ -1350,9 +1350,9 @@
 
 ### Key User Journeys
 
-1. **Scholarship Program:** Define criteria → Allocate funds → Receive applications → Select recipients → Disburse → Track progress → Report impact
-2. **Community Outreach:** Plan event → Coordinate with academy → Recruit volunteers → Execute → Track beneficiaries → Report to donors
-3. **Impact Reporting:** Compile data → Generate impact report → Share with donors → Celebrate results → Plan next initiative
+1. **Scholarship Program:** Define criteria â†’ Allocate funds â†’ Receive applications â†’ Select recipients â†’ Disburse â†’ Track progress â†’ Report impact
+2. **Community Outreach:** Plan event â†’ Coordinate with academy â†’ Recruit volunteers â†’ Execute â†’ Track beneficiaries â†’ Report to donors
+3. **Impact Reporting:** Compile data â†’ Generate impact report â†’ Share with donors â†’ Celebrate results â†’ Plan next initiative
 
 ### Notifications
 
@@ -1369,53 +1369,53 @@
 ## 2.1 Architecture Overview
 
 ```
-┌─────────────────────────────────────────────────────┐
-│                    VERCEL (Frontend)                  │
-│  ┌─────────────────────────────────────────────────┐ │
-│  │           Next.js Application (React 19)         │ │
-│  │  ┌──────┐ ┌───────┐ ┌──────┐ ┌───────────────┐ │ │
-│  │  │Public│ │Student│ │Admin │ │ Dynamic Role   │ │ │
-│  │  │Pages │ │Portal │ │Portal│ │ Dashboard      │ │ │
-│  │  └──────┘ └───────┘ └──────┘ └───────────────┘ │ │
-│  │  ┌─────────────────────────────────────────────┐ │ │
-│  │  │   Shared Component Library (shadcn/ui)       │ │ │
-│  │  │   State: Redux Toolkit + RTK Query           │ │ │
-│  │  │   Forms: React Hook Form + Zod              │ │ │
-│  │  │   Tables: TanStack Table                    │ │ │
-│  │  │   Charts: Recharts                          │ │ │
-│  │  │   Animations: Framer Motion                 │ │ │
-│  │  └─────────────────────────────────────────────┘ │ │
-│  └─────────────────────────────────────────────────┘ │
-└──────────────────────┬──────────────────────────────┘
-                       │ HTTPS
-                       ▼
-┌─────────────────────────────────────────────────────┐
-│                CLOUDFLARE WORKERS (API Gateway)       │
-│  ┌─────────────────────────────────────────────────┐ │
-│  │                  Hono API Server                 │ │
-│  │  ┌────────┐ ┌──────────┐ ┌────────┐ ┌────────┐ │ │
-│  │  │Auth RW │ │  RBAC    │ │  Rate  │ │  Audit │ │ │
-│  │  │Middleware│ │Middleware│ │ Limiter│ │ Logger │ │ │
-│  │  └────────┘ └──────────┘ └────────┘ └────────┘ │ │
-│  └─────────────────────────────────────────────────┘ │
-└──────────┬──────────┬──────────┬──────────┬─────────┘
-           │          │          │          │
-           ▼          ▼          ▼          ▼
-┌──────────┐ ┌──────────┐ ┌──────────┐ ┌──────────┐
-│  D1 (SQL) │ │ KV (Cache)│ │R2 (Files)│ │ Queues    │
-│ (Drizzle  │ │ (Session)│ │(Images,  │ │ (Email,   │
-│  ORM)     │ │ (Config) │ │ Docs)    │ │  Notifs)  │
-└──────────┘ └──────────┘ └──────────┘ └──────────┘
-           │                     │
-           ▼                     ▼
-┌──────────────────┐ ┌──────────────────────────────┐
-│ Durable Objects   │ │ Cloudflare Workflows          │
-│ (Real-time: chat, │ │ (Long-running: onboarding,    │
-│  collaboration)   │ │  admissions pipeline)         │
-└──────────────────┘ └──────────────────────────────┘
+â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
+â”‚                    VERCEL (Frontend)                  â”‚
+â”‚  â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â” â”‚
+â”‚  â”‚           Next.js Application (React 19)         â”‚ â”‚
+â”‚  â”‚  â”Œâ”€â”€â”€â”€â”€â”€â” â”Œâ”€â”€â”€â”€â”€â”€â”€â” â”Œâ”€â”€â”€â”€â”€â”€â” â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â” â”‚ â”‚
+â”‚  â”‚  â”‚Publicâ”‚ â”‚Studentâ”‚ â”‚Admin â”‚ â”‚ Dynamic Role   â”‚ â”‚ â”‚
+â”‚  â”‚  â”‚Pages â”‚ â”‚Portal â”‚ â”‚Portalâ”‚ â”‚ Dashboard      â”‚ â”‚ â”‚
+â”‚  â”‚  â””â”€â”€â”€â”€â”€â”€â”˜ â””â”€â”€â”€â”€â”€â”€â”€â”˜ â””â”€â”€â”€â”€â”€â”€â”˜ â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜ â”‚ â”‚
+â”‚  â”‚  â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â” â”‚ â”‚
+â”‚  â”‚  â”‚   Shared Component Library (shadcn/ui)       â”‚ â”‚ â”‚
+â”‚  â”‚  â”‚   State: Redux Toolkit + RTK Query           â”‚ â”‚ â”‚
+â”‚  â”‚  â”‚   Forms: React Hook Form + Zod              â”‚ â”‚ â”‚
+â”‚  â”‚  â”‚   Tables: TanStack Table                    â”‚ â”‚ â”‚
+â”‚  â”‚  â”‚   Charts: Recharts                          â”‚ â”‚ â”‚
+â”‚  â”‚  â”‚   Animations: Framer Motion                 â”‚ â”‚ â”‚
+â”‚  â”‚  â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜ â”‚ â”‚
+â”‚  â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜ â”‚
+â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
+                       â”‚ HTTPS
+                       â–¼
+â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
+â”‚                CLOUDFLARE WORKERS (API Gateway)       â”‚
+â”‚  â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â” â”‚
+â”‚  â”‚                  Hono API Server                 â”‚ â”‚
+â”‚  â”‚  â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â” â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â” â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â” â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â” â”‚ â”‚
+â”‚  â”‚  â”‚Auth RW â”‚ â”‚  RBAC    â”‚ â”‚  Rate  â”‚ â”‚  Audit â”‚ â”‚ â”‚
+â”‚  â”‚  â”‚Middlewareâ”‚ â”‚Middlewareâ”‚ â”‚ Limiterâ”‚ â”‚ Logger â”‚ â”‚ â”‚
+â”‚  â”‚  â””â”€â”€â”€â”€â”€â”€â”€â”€â”˜ â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜ â””â”€â”€â”€â”€â”€â”€â”€â”€â”˜ â””â”€â”€â”€â”€â”€â”€â”€â”€â”˜ â”‚ â”‚
+â”‚  â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜ â”‚
+â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
+           â”‚          â”‚          â”‚          â”‚
+           â–¼          â–¼          â–¼          â–¼
+â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â” â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â” â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â” â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
+â”‚  D1 (SQL) â”‚ â”‚ KV (Cache)â”‚ â”‚R2 (Files)â”‚ â”‚ Queues    â”‚
+â”‚ (Drizzle  â”‚ â”‚ (Session)â”‚ â”‚(Images,  â”‚ â”‚ (Email,   â”‚
+â”‚  ORM)     â”‚ â”‚ (Config) â”‚ â”‚ Docs)    â”‚ â”‚  Notifs)  â”‚
+â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜ â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜ â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜ â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
+           â”‚                     â”‚
+           â–¼                     â–¼
+â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â” â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
+â”‚ Durable Objects   â”‚ â”‚ Cloudflare Workflows          â”‚
+â”‚ (Real-time: chat, â”‚ â”‚ (Long-running: onboarding,    â”‚
+â”‚  collaboration)   â”‚ â”‚  admissions pipeline)         â”‚
+â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜ â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
 ```
 
-### Frontend (Vercel — Next.js)
+### Frontend (Vercel â€” Next.js)
 
 - **Why Vercel:** Optimal Next.js hosting, edge functions, ISR, preview deployments
 - **App Structure:** Monorepo with `apps/web` (Next.js) and `packages/ui` (shared components)
@@ -1423,7 +1423,7 @@
 - **Authentication:** OAuth (Google, GitHub) + Email/Password via Cloudflare + Magic Link
 - **Deployment:** Automatic deploys from `main` branch, preview deploys for PRs
 
-### Backend (Cloudflare Workers — Hono)
+### Backend (Cloudflare Workers â€” Hono)
 
 - **Why Cloudflare:** Global edge distribution, zero cold starts (Workers), integrated ecosystem
 - **API:** RESTful + GraphQL (for complex queries), Hono framework
@@ -1495,7 +1495,7 @@
 
 ## 2.3 Phase-by-Phase Build Plan
 
-### Phase 0 — Foundation (Months 1-2)
+### Phase 0 â€” Foundation (Months 1-2)
 
 **Goal:** Scaffold the platform. No business features yet. Just the chassis.
 
@@ -1522,7 +1522,7 @@
 
 **Actors enabled:** Visitor, System Admin, Developer
 
-### Phase 1 — Education Engine (Months 3-5)
+### Phase 1 â€” Education Engine (Months 3-5)
 
 **Goal:** Core learning functionality live.
 
@@ -1543,7 +1543,7 @@
 
 **Actors enabled:** Current Student, Instructor
 
-### Phase 2 — Career Engine (Months 5-7)
+### Phase 2 â€” Career Engine (Months 5-7)
 
 **Goal:** Bridge learning to earning.
 
@@ -1560,7 +1560,7 @@
 
 **Actors enabled:** Employer, Alumni
 
-### Phase 3 — Technology Services (Months 7-10)
+### Phase 3 â€” Technology Services (Months 7-10)
 
 **Goal:** Client-facing business operations.
 
@@ -1577,13 +1577,13 @@
 
 **Actors enabled:** Client, Partner
 
-### Phase 4 — Academy ERP (Months 10-14)
+### Phase 4 â€” Academy ERP (Months 10-14)
 
 **Goal:** Run the company on the platform.
 
 **Deliverables:**
 
-- [x] Admissions pipeline (application → enrollment)
+- [x] Admissions pipeline (application â†’ enrollment)
 - [x] Finance (full AR/AP, invoicing, reconciliation)
 - [x] Payroll processing
 - [x] HR (employee records, leave, attendance)
@@ -1596,7 +1596,7 @@
 
 **Actors enabled:** Admissions Officer, Accountant, HR Officer, Receptionist, Supplier, Operations Manager, Department Head
 
-### Phase 5 — Community Engine (Months 14-17)
+### Phase 5 â€” Community Engine (Months 14-17)
 
 **Goal:** Build the ecosystem.
 
@@ -1614,7 +1614,7 @@
 
 **Actors enabled:** Volunteer, NGO, Government Representative
 
-### Phase 6 — AI Engine (Months 17-20)
+### Phase 6 â€” AI Engine (Months 17-20)
 
 **Goal:** Intelligence layer across everything.
 
@@ -1640,49 +1640,49 @@
 ### Core Data Entities (D1 Tables)
 
 ```
-Users ──► Roles ──► Permissions
-  │
-  ├──► Students ──► Enrollments ──► Courses ──► Modules ──► Lessons
-  │       │            │
-  │       │            ├──► Assignments ──► Submissions ──► Grades
-  │       │            ├──► Assessments ──► Attempts ──► Results
-  │       │            └──► Attendance
-  │       │
-  │       ├──► Portfolio ──► Projects
-  │       ├──► Marketplace ──► Applications ──► Contracts
-  │       └──► Certificates
-  │
-  ├──► Instructors ──► Course Assignments
-  │       └──► Gradebook
-  │
-  ├──► Staff ──► HR Records ──► Leave ──► Attendance
-  │       ├──► Payroll
-  │       └──► Performance Reviews
-  │
-  ├──► Clients ──► Projects ──► Tasks
-  │       ├──► Invoices ──► Payments
-  │       ├──► Support Tickets
-  │       │──► Proposals
-  │       └──► Contracts
-  │
-  ├──► Employers ──► Job Listings ──► Applications
-  │       └──► Hires
-  │
-  ├──► Partners ──► Agreements ──► Collaborations
-  │       └──► Referrals
-  │
-  └──► Prospects ──► Applications ──► Enrollments
+Users â”€â”€â–º Roles â”€â”€â–º Permissions
+  â”‚
+  â”œâ”€â”€â–º Students â”€â”€â–º Enrollments â”€â”€â–º Courses â”€â”€â–º Modules â”€â”€â–º Lessons
+  â”‚       â”‚            â”‚
+  â”‚       â”‚            â”œâ”€â”€â–º Assignments â”€â”€â–º Submissions â”€â”€â–º Grades
+  â”‚       â”‚            â”œâ”€â”€â–º Assessments â”€â”€â–º Attempts â”€â”€â–º Results
+  â”‚       â”‚            â””â”€â”€â–º Attendance
+  â”‚       â”‚
+  â”‚       â”œâ”€â”€â–º Portfolio â”€â”€â–º Projects
+  â”‚       â”œâ”€â”€â–º Marketplace â”€â”€â–º Applications â”€â”€â–º Contracts
+  â”‚       â””â”€â”€â–º Certificates
+  â”‚
+  â”œâ”€â”€â–º Instructors â”€â”€â–º Course Assignments
+  â”‚       â””â”€â”€â–º Gradebook
+  â”‚
+  â”œâ”€â”€â–º Staff â”€â”€â–º HR Records â”€â”€â–º Leave â”€â”€â–º Attendance
+  â”‚       â”œâ”€â”€â–º Payroll
+  â”‚       â””â”€â”€â–º Performance Reviews
+  â”‚
+  â”œâ”€â”€â–º Clients â”€â”€â–º Projects â”€â”€â–º Tasks
+  â”‚       â”œâ”€â”€â–º Invoices â”€â”€â–º Payments
+  â”‚       â”œâ”€â”€â–º Support Tickets
+  â”‚       â”‚â”€â”€â–º Proposals
+  â”‚       â””â”€â”€â–º Contracts
+  â”‚
+  â”œâ”€â”€â–º Employers â”€â”€â–º Job Listings â”€â”€â–º Applications
+  â”‚       â””â”€â”€â–º Hires
+  â”‚
+  â”œâ”€â”€â–º Partners â”€â”€â–º Agreements â”€â”€â–º Collaborations
+  â”‚       â””â”€â”€â–º Referrals
+  â”‚
+  â””â”€â”€â–º Prospects â”€â”€â–º Applications â”€â”€â–º Enrollments
 
-Organizations ──► Branches ──► Departments
-  └──► Inventory ──► Assets
-  └──► Suppliers ──► POs
+Organizations â”€â”€â–º Branches â”€â”€â–º Departments
+  â””â”€â”€â–º Inventory â”€â”€â–º Assets
+  â””â”€â”€â–º Suppliers â”€â”€â–º POs
 
-Community ──► Forums ──► Posts ──► Comments
-  ├──► Events ──► Registrations
-  ├──► Groups ──► Members
-  └──► Scholarships ──► Applications
+Community â”€â”€â–º Forums â”€â”€â–º Posts â”€â”€â–º Comments
+  â”œâ”€â”€â–º Events â”€â”€â–º Registrations
+  â”œâ”€â”€â–º Groups â”€â”€â–º Members
+  â””â”€â”€â–º Scholarships â”€â”€â–º Applications
 
-Notifications ──► Templates ──► Queue
+Notifications â”€â”€â–º Templates â”€â”€â–º Queue
 AuditLog
 ```
 
@@ -1690,53 +1690,53 @@ AuditLog
 
 | Integration               | Direction            | Technology          | Purpose                      |
 | ------------------------- | -------------------- | ------------------- | ---------------------------- |
-| Email (SendGrid / Resend) | CEA → External       | Cloudflare Queues   | Notifications, marketing     |
-| SMS (Twilio)              | CEA → External       | Cloudflare Queues   | Alerts, OTP                  |
-| Cloudflare Images         | CEA ↔ R2             | R2 + Presigned URLs | User uploads, course media   |
-| Payment (Paystack)         | CEA ↔ Paystack        | Paystack API         | Tuition, client invoices     |
-| Calendar Sync             | CEA ↔ Google/Outlook | OAuth + API         | Two-way calendar sync        |
-| Video (Zoom/Meet)         | CEA ↔ External       | OAuth + API         | Class, meeting, interview    |
-| Social Media              | CEA ↔ Social APIs    | Queue + API         | Scheduled posting, analytics |
-| CDN (Vercel)              | Vercel → Edge        | Next.js ISR         | Public content, images       |
+| Email (SendGrid / Resend) | CEA â†’ External       | Cloudflare Queues   | Notifications, marketing     |
+| SMS (Twilio)              | CEA â†’ External       | Cloudflare Queues   | Alerts, OTP                  |
+| Cloudflare Images         | CEA â†” R2             | R2 + Presigned URLs | User uploads, course media   |
+| Payment (Paystack)         | CEA â†” Paystack        | Paystack API         | Tuition, client invoices     |
+| Calendar Sync             | CEA â†” Google/Outlook | OAuth + API         | Two-way calendar sync        |
+| Video (Zoom/Meet)         | CEA â†” External       | OAuth + API         | Class, meeting, interview    |
+| Social Media              | CEA â†” Social APIs    | Queue + API         | Scheduled posting, analytics |
+| CDN (Vercel)              | Vercel â†’ Edge        | Next.js ISR         | Public content, images       |
 
 ---
 
 ## 2.5 Permission Matrix (RBAC)
 
-This is a simplified matrix. Each cell = Read (R), Create (C), Update (U), Delete (D), or — (none).
+This is a simplified matrix. Each cell = Read (R), Create (C), Update (U), Delete (D), or â€” (none).
 
 | Module        | Student    | Instructor | Dept Head | Ops Mgr  | Director | Accountant | HR      | Sys Admin |
 | ------------- | ---------- | ---------- | --------- | -------- | -------- | ---------- | ------- | --------- |
 | Auth          | Own        | Own        | Own       | Own      | Own      | Own        | Own     | Full      |
 | User Profile  | Own        | Own        | Own       | Own      | Own      | Own        | Own     | Full      |
-| Learning      | R          | CRUD Own   | CRUD Dept | —        | R        | —          | —       | —         |
-| Assessments   | R/C Own    | CRUD Own   | R Dept    | —        | R        | —          | —       | —         |
-| Grades        | R Own      | CRUD Own   | R Dept    | —        | R        | —          | —       | —         |
-| Attendance    | R Own      | CRUD       | R Dept    | R        | R        | —          | R       | —         |
-| Certificates  | R Own      | C          | —         | —        | —        | —          | —       | —         |
-| Portfolio     | CRUD Own   | R Mentee   | —         | —        | —        | —          | —       | —         |
-| Marketplace   | R/C        | —          | —         | —        | R        | —          | —       | —         |
-| CRM           | —          | —          | —         | —        | R        | —          | —       | —         |
-| Client Portal | —          | —          | —         | —        | R        | R          | —       | —         |
-| Projects      | R Assigned | R Assigned | R Dept    | R        | R        | —          | —       | —         |
-| Support       | C          | C          | —         | —        | R        | —          | —       | Full      |
-| Contracts     | —          | —          | —         | —        | R        | —          | —       | —         |
-| Finance       | R Own      | —          | R Budget  | R Budget | Full     | Full       | —       | —         |
-| Payroll       | —          | —          | —         | —        | R        | CRUD       | R Input | —         |
-| HR            | —          | —          | R Dept    | —        | Full     | R Payroll  | Full    | —         |
-| Inventory     | —          | —          | —         | Full     | R        | —          | —       | R         |
-| Procurement   | —          | —          | —         | CRUD     | R        | R          | —       | —         |
-| Admissions    | —          | —          | —         | —        | R        | —          | —       | —         |
-| Community     | CRUD       | CRUD       | R         | R        | R        | —          | —       | Full      |
-| Events        | R/C        | R/C        | R         | CRUD     | R        | —          | —       | —         |
-| Alumni        | CRUD Own   | —          | —         | —        | R        | —          | —       | —         |
-| Partners      | —          | —          | —         | —        | R        | —          | —       | —         |
+| Learning      | R          | CRUD Own   | CRUD Dept | â€”        | R        | â€”          | â€”       | â€”         |
+| Assessments   | R/C Own    | CRUD Own   | R Dept    | â€”        | R        | â€”          | â€”       | â€”         |
+| Grades        | R Own      | CRUD Own   | R Dept    | â€”        | R        | â€”          | â€”       | â€”         |
+| Attendance    | R Own      | CRUD       | R Dept    | R        | R        | â€”          | R       | â€”         |
+| Certificates  | R Own      | C          | â€”         | â€”        | â€”        | â€”          | â€”       | â€”         |
+| Portfolio     | CRUD Own   | R Mentee   | â€”         | â€”        | â€”        | â€”          | â€”       | â€”         |
+| Marketplace   | R/C        | â€”          | â€”         | â€”        | R        | â€”          | â€”       | â€”         |
+| CRM           | â€”          | â€”          | â€”         | â€”        | R        | â€”          | â€”       | â€”         |
+| Client Portal | â€”          | â€”          | â€”         | â€”        | R        | R          | â€”       | â€”         |
+| Projects      | R Assigned | R Assigned | R Dept    | R        | R        | â€”          | â€”       | â€”         |
+| Support       | C          | C          | â€”         | â€”        | R        | â€”          | â€”       | Full      |
+| Contracts     | â€”          | â€”          | â€”         | â€”        | R        | â€”          | â€”       | â€”         |
+| Finance       | R Own      | â€”          | R Budget  | R Budget | Full     | Full       | â€”       | â€”         |
+| Payroll       | â€”          | â€”          | â€”         | â€”        | R        | CRUD       | R Input | â€”         |
+| HR            | â€”          | â€”          | R Dept    | â€”        | Full     | R Payroll  | Full    | â€”         |
+| Inventory     | â€”          | â€”          | â€”         | Full     | R        | â€”          | â€”       | R         |
+| Procurement   | â€”          | â€”          | â€”         | CRUD     | R        | R          | â€”       | â€”         |
+| Admissions    | â€”          | â€”          | â€”         | â€”        | R        | â€”          | â€”       | â€”         |
+| Community     | CRUD       | CRUD       | R         | R        | R        | â€”          | â€”       | Full      |
+| Events        | R/C        | R/C        | R         | CRUD     | R        | â€”          | â€”       | â€”         |
+| Alumni        | CRUD Own   | â€”          | â€”         | â€”        | R        | â€”          | â€”       | â€”         |
+| Partners      | â€”          | â€”          | â€”         | â€”        | R        | â€”          | â€”       | â€”         |
 | Reports       | R Own      | R Own      | R Dept    | R Ops    | Full     | Full Fin   | R HR    | Full      |
-| Audit         | —          | —          | —         | —        | R        | R          | —       | Full      |
-| System Config | —          | —          | —         | —        | —        | —          | —       | Full      |
-| User Mgmt     | —          | —          | —         | —        | —        | —          | R Org   | Full      |
+| Audit         | â€”          | â€”          | â€”         | â€”        | R        | R          | â€”       | Full      |
+| System Config | â€”          | â€”          | â€”         | â€”        | â€”        | â€”          | â€”       | Full      |
+| User Mgmt     | â€”          | â€”          | â€”         | â€”        | â€”        | â€”          | R Org   | Full      |
 | Analytics     | R Own      | R Own      | R Dept    | R Ops    | Full     | R Fin      | R HR    | Full      |
-| Governance    | —          | —          | —         | —        | Full     | —          | —       | Full      |
+| Governance    | â€”          | â€”          | â€”         | â€”        | Full     | â€”          | â€”       | Full      |
 
 ---
 
@@ -1764,101 +1764,101 @@ vercel.json
 
 **Deployment Strategy:**
 
-- Production: `main` branch → auto-deploy to `cea.academy`
-- Preview: every PR → unique preview URL
-- Staging: `staging` branch → `staging.cea.academy`
+- Production: `main` branch â†’ auto-deploy to `cea.ng`
+- Preview: every PR â†’ unique preview URL
+- Staging: `staging` branch â†’ `staging.cea.ng`
 - Environment variables: managed in Vercel dashboard per environment
 
 ### Cloudflare (Backend)
 
 ```
 Workers:
-  api.cea.academy/*          → Hono API server (all REST endpoints)
-  auth.cea.academy/*          → Authentication service
-  ws.cea.academy/*            → Durable Objects (WebSocket)
-  cdn.cea.academy/*           → R2 asset proxy (images, files)
+  api.cea.ng/*          â†’ Hono API server (all REST endpoints)
+  auth.cea.ng/*          â†’ Authentication service
+  ws.cea.ng/*            â†’ Durable Objects (WebSocket)
+  cdn.cea.ng/*           â†’ R2 asset proxy (images, files)
 
 D1:
-  cea-db-prod                 → Primary database
-  cea-db-staging              → Staging database
+  cea-db-prod                 â†’ Primary database
+  cea-db-staging              â†’ Staging database
 
 R2:
-  cea-uploads                 → User-uploaded files
-  cea-assets                  → System assets (logos, templates)
-  cea-backups                 → Database backups
+  cea-uploads                 â†’ User-uploaded files
+  cea-assets                  â†’ System assets (logos, templates)
+  cea-backups                 â†’ Database backups
 
 KV:
-  cea-sessions                → Session tokens
-  cea-cache                   → API response cache
-  cea-config                  → Feature flags, global config
+  cea-sessions                â†’ Session tokens
+  cea-cache                   â†’ API response cache
+  cea-config                  â†’ Feature flags, global config
 
 Queues:
-  cea-email-queue             → Email sending
-  cea-notif-queue             → Push notifications
-  cea-webhook-queue           → Outgoing webhooks
-  cea-background-queue        → Heavy processing tasks
+  cea-email-queue             â†’ Email sending
+  cea-notif-queue             â†’ Push notifications
+  cea-webhook-queue           â†’ Outgoing webhooks
+  cea-background-queue        â†’ Heavy processing tasks
 
 Durable Objects:
-  cea-chat-room               → Real-time messaging rooms
-  cea-collab-doc              → Collaborative document editing
-  cea-live-class              → Live streaming / whiteboard
+  cea-chat-room               â†’ Real-time messaging rooms
+  cea-collab-doc              â†’ Collaborative document editing
+  cea-live-class              â†’ Live streaming / whiteboard
 
 Workflows:
-  admissions-pipeline         → Multi-step admissions process
-  employee-onboarding         → New hire onboarding steps
-  leave-approval              → Leave request approval chain
-  invoice-collection          → Automated invoice follow-up
+  admissions-pipeline         â†’ Multi-step admissions process
+  employee-onboarding         â†’ New hire onboarding steps
+  leave-approval              â†’ Leave request approval chain
+  invoice-collection          â†’ Automated invoice follow-up
 
 Cloudflare Pages:
-  docs.cea.academy            → Developer documentation (public)
+  docs.cea.ng            â†’ Developer documentation (public)
 
 Cloudflare Images:
-  cea-images                  → Optimized image delivery
+  cea-images                  â†’ Optimized image delivery
 
 Cloudflare Turnstile:
-  cea-turnstile               → Bot protection on forms
+  cea-turnstile               â†’ Bot protection on forms
 
 Cloudflare Zero Trust:
-  cea-internal                → Internal staff app access (zero-trust)
+  cea-internal                â†’ Internal staff app access (zero-trust)
 ```
 
 ### DNS
 
 ```
-cea.academy          → Vercel (frontend)
-api.cea.academy      → Cloudflare Worker (API)
-auth.cea.academy     → Cloudflare Worker (Auth)
-ws.cea.academy       → Cloudflare Worker (WebSocket)
-cdn.cea.academy      → Cloudflare R2 (assets)
-docs.cea.academy     → Cloudflare Pages (docs)
-admin.cea.academy    → Vercel (admin route — or protected via Zero Trust)
+cea.ng          â†’ Vercel (frontend)
+api.cea.ng      â†’ Cloudflare Worker (API)
+auth.cea.ng     â†’ Cloudflare Worker (Auth)
+ws.cea.ng       â†’ Cloudflare Worker (WebSocket)
+cdn.cea.ng      â†’ Cloudflare R2 (assets)
+docs.cea.ng     â†’ Cloudflare Pages (docs)
+admin.cea.ng    â†’ Vercel (admin route â€” or protected via Zero Trust)
 ```
 
 ### Security Architecture
 
 ```
-┌──────────┐     ┌──────────────┐     ┌──────────────────┐
-│  Browser │────▶│ Cloudflare   │────▶│ Vercel Edge      │
-│  (User)  │     │ Turnstile    │     │ (Next.js)        │
-└──────────┘     └──────────────┘     └────────┬─────────┘
-                                               │
-                                        ┌──────▼──────────┐
-                                        │ Cloudflare       │
-                                        │ Worker (API)     │
-                                        │ ┌──────────────┐ │
-                                        │ │ JWT Verify   │ │
-                                        │ │ RBAC Check   │ │
-                                        │ │ Rate Limit   │ │
-                                        │ │ Audit Log    │ │
-                                        │ └──────────────┘ │
-                                        └────────┬─────────┘
-                                                 │
-                               ┌─────────────────┼──────────────┐
-                               ▼                 ▼              ▼
-                          ┌─────────┐     ┌──────────┐   ┌──────────┐
-                          │   D1    │     │    KV    │   │    R2    │
-                          │ (SQL)   │     │ (Cache)  │   │ (Files)  │
-                          └─────────┘     └──────────┘   └──────────┘
+â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”     â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”     â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
+â”‚  Browser â”‚â”€â”€â”€â”€â–¶â”‚ Cloudflare   â”‚â”€â”€â”€â”€â–¶â”‚ Vercel Edge      â”‚
+â”‚  (User)  â”‚     â”‚ Turnstile    â”‚     â”‚ (Next.js)        â”‚
+â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜     â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜     â””â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
+                                               â”‚
+                                        â”Œâ”€â”€â”€â”€â”€â”€â–¼â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
+                                        â”‚ Cloudflare       â”‚
+                                        â”‚ Worker (API)     â”‚
+                                        â”‚ â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â” â”‚
+                                        â”‚ â”‚ JWT Verify   â”‚ â”‚
+                                        â”‚ â”‚ RBAC Check   â”‚ â”‚
+                                        â”‚ â”‚ Rate Limit   â”‚ â”‚
+                                        â”‚ â”‚ Audit Log    â”‚ â”‚
+                                        â”‚ â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜ â”‚
+                                        â””â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
+                                                 â”‚
+                               â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¼â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
+                               â–¼                 â–¼              â–¼
+                          â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”     â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”   â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
+                          â”‚   D1    â”‚     â”‚    KV    â”‚   â”‚    R2    â”‚
+                          â”‚ (SQL)   â”‚     â”‚ (Cache)  â”‚   â”‚ (Files)  â”‚
+                          â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜     â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜   â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
 ```
 
 ---
@@ -1870,32 +1870,32 @@ admin.cea.academy    → Vercel (admin route — or protected via Zero Trust)
 | Priority | Module Group                        | Why First                               |
 | -------- | ----------------------------------- | --------------------------------------- |
 | **P0**   | Foundation, Auth, RBAC, CMS, Audit  | Everything depends on this              |
-| **P1**   | Learning, Assessments, Gradebook    | Core product — students enroll for this |
-| **P2**   | Admissions, CRM                     | Fill the pipeline — you need students   |
-| **P3**   | Finance, Invoicing, Payments        | Get paid — sustainability               |
+| **P1**   | Learning, Assessments, Gradebook    | Core product â€” students enroll for this |
+| **P2**   | Admissions, CRM                     | Fill the pipeline â€” you need students   |
+| **P3**   | Finance, Invoicing, Payments        | Get paid â€” sustainability               |
 | **P4**   | Client Portal, Projects, Support    | Revenue diversification                 |
-| **P5**   | Portfolio, Marketplace, Jobs        | Student outcomes — your brand           |
-| **P6**   | HR, Payroll, Inventory, Procurement | Internal efficiency — scale             |
-| **P7**   | Community, Events, Alumni, Partners | Ecosystem — moat                        |
-| **P8**   | AI features                         | Differentiation — competitive advantage |
+| **P5**   | Portfolio, Marketplace, Jobs        | Student outcomes â€” your brand           |
+| **P6**   | HR, Payroll, Inventory, Procurement | Internal efficiency â€” scale             |
+| **P7**   | Community, Events, Alumni, Partners | Ecosystem â€” moat                        |
+| **P8**   | AI features                         | Differentiation â€” competitive advantage |
 
 ### Quick Start (First 2 Weeks)
 
 ```
 Week 1:
-  ├── Scaffold monorepo (packages/app, packages/ui)
-  ├── Set up Vercel project + Cloudflare Workers
-  ├── Initialize D1 + Drizzle schema (users, roles, permissions)
-  ├── Implement auth (register, login, JWT)
-  └── Deploy "Hello World" end-to-end
+  â”œâ”€â”€ Scaffold monorepo (packages/app, packages/ui)
+  â”œâ”€â”€ Set up Vercel project + Cloudflare Workers
+  â”œâ”€â”€ Initialize D1 + Drizzle schema (users, roles, permissions)
+  â”œâ”€â”€ Implement auth (register, login, JWT)
+  â””â”€â”€ Deploy "Hello World" end-to-end
 
 Week 2:
-  ├── Build RBAC middleware
-  ├── Create admin user management
-  ├── Set up audit logging
-  ├── Build public CMS (landing page, course catalog)
-  ├── Create base component library (Button, Card, Input, etc.)
-  └── Deploy with dark/light mode + PWA manifest
+  â”œâ”€â”€ Build RBAC middleware
+  â”œâ”€â”€ Create admin user management
+  â”œâ”€â”€ Set up audit logging
+  â”œâ”€â”€ Build public CMS (landing page, course catalog)
+  â”œâ”€â”€ Create base component library (Button, Card, Input, etc.)
+  â””â”€â”€ Deploy with dark/light mode + PWA manifest
 ```
 
 ---
@@ -1907,3 +1907,4 @@ Week 2:
 > Start with Foundation. Ship fast. Iterate. Never build a feature without knowing which actor needs it and what business objective it serves.
 >
 > **One platform. Multiple engines. Every actor connected.**
+

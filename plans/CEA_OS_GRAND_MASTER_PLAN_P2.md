@@ -1,4 +1,4 @@
-# Grand Master Plan - Part 2: API, Components, Permissions, State
+﻿# Grand Master Plan - Part 2: API, Components, Permissions, State
 
 ---
 
@@ -7,37 +7,37 @@
 ## 4.1 API Architecture
 
 ```
-api.cea.academy/v1/
-├── auth/           ── Authentication & authorization
-├── users/          ── User management
-├── roles/          ── Role & permission management
-├── learning/       ── Courses, modules, lessons
-├── assessments/    ── Quizzes, exams, assignments
-├── enrollments/    ── Enrollment & progress
-├── grades/         ── Gradebook
-├── attendance/     ── Attendance tracking
-├── certificates/   ── Certificate issuance & verification
-├── portfolio/      ── Student portfolios
-├── marketplace/    ── Jobs & freelance gigs
-├── crm/            ── Contacts, deals, pipeline
-├── clients/        ── Client portal
-├── projects/       ── Project management
-├── tickets/        ── Support tickets
-├── finance/        ── Invoices, payments, accounting
-├── hr/             ── HR & employee management
-├── inventory/      ── Inventory & assets
-├── procurement/    ── Purchase orders & suppliers
-├── admissions/     ── Admissions pipeline
-├── community/      ── Forums, events, groups
-├── partners/       ── Partners & agreements
-├── mentorship/     ── Mentorship program
-├── volunteer/      ── Volunteer management
-├── alumni/         ── Alumni network
-├── analytics/      ── Analytics & reporting
-├── notifications/  ── Notification management
-├── cms/            ── Content management (public)
-├── config/         ── System configuration
-└── integrations/   ── Third-party integrations
+api.cea.ng/v1/
+â”œâ”€â”€ auth/           â”€â”€ Authentication & authorization
+â”œâ”€â”€ users/          â”€â”€ User management
+â”œâ”€â”€ roles/          â”€â”€ Role & permission management
+â”œâ”€â”€ learning/       â”€â”€ Courses, modules, lessons
+â”œâ”€â”€ assessments/    â”€â”€ Quizzes, exams, assignments
+â”œâ”€â”€ enrollments/    â”€â”€ Enrollment & progress
+â”œâ”€â”€ grades/         â”€â”€ Gradebook
+â”œâ”€â”€ attendance/     â”€â”€ Attendance tracking
+â”œâ”€â”€ certificates/   â”€â”€ Certificate issuance & verification
+â”œâ”€â”€ portfolio/      â”€â”€ Student portfolios
+â”œâ”€â”€ marketplace/    â”€â”€ Jobs & freelance gigs
+â”œâ”€â”€ crm/            â”€â”€ Contacts, deals, pipeline
+â”œâ”€â”€ clients/        â”€â”€ Client portal
+â”œâ”€â”€ projects/       â”€â”€ Project management
+â”œâ”€â”€ tickets/        â”€â”€ Support tickets
+â”œâ”€â”€ finance/        â”€â”€ Invoices, payments, accounting
+â”œâ”€â”€ hr/             â”€â”€ HR & employee management
+â”œâ”€â”€ inventory/      â”€â”€ Inventory & assets
+â”œâ”€â”€ procurement/    â”€â”€ Purchase orders & suppliers
+â”œâ”€â”€ admissions/     â”€â”€ Admissions pipeline
+â”œâ”€â”€ community/      â”€â”€ Forums, events, groups
+â”œâ”€â”€ partners/       â”€â”€ Partners & agreements
+â”œâ”€â”€ mentorship/     â”€â”€ Mentorship program
+â”œâ”€â”€ volunteer/      â”€â”€ Volunteer management
+â”œâ”€â”€ alumni/         â”€â”€ Alumni network
+â”œâ”€â”€ analytics/      â”€â”€ Analytics & reporting
+â”œâ”€â”€ notifications/  â”€â”€ Notification management
+â”œâ”€â”€ cms/            â”€â”€ Content management (public)
+â”œâ”€â”€ config/         â”€â”€ System configuration
+â””â”€â”€ integrations/   â”€â”€ Third-party integrations
 ```
 
 ## 4.2 Endpoint Conventions
@@ -127,7 +127,7 @@ interface PaginatedResponse<T> extends ApiResponse<T[]> {
    { fileName: "report.pdf", contentType: "application/pdf", size: 1048576 }
 
 2. Server returns:
-   { uploadUrl: "https://...", publicUrl: "https://cdn.cea.academy/...", key: "uploads/abc123.pdf" }
+   { uploadUrl: "https://...", publicUrl: "https://cdn.cea.ng/...", key: "uploads/abc123.pdf" }
 
 3. Client PUTs file directly to R2 uploadUrl
 
@@ -256,25 +256,25 @@ const tokens = {
 | **Checkbox**      | default, indeterminate                               | checked, unchecked, disabled                      | label                                            |
 | **Radio**         | default                                              | selected, unselected, disabled                    | label, description                               |
 | **Switch**        | default                                              | on, off, disabled                                 | label                                            |
-| **Badge**         | default, success, warning, error, info, outline, dot | —                                                 | dot indicator                                    |
+| **Badge**         | default, success, warning, error, info, outline, dot | â€”                                                 | dot indicator                                    |
 | **Avatar**        | sm, md, lg, xl                                       | image loaded, fallback (initials), offline/online | badge, status                                    |
 | **Card**          | default, interactive, selected                       | hover, selected, disabled                         | header, body, footer                             |
-| **Dialog**        | —                                                    | open, closed                                      | header, body, footer, backdrop                   |
+| **Dialog**        | â€”                                                    | open, closed                                      | header, body, footer, backdrop                   |
 | **Sheet**         | left, right, top, bottom                             | open, closed                                      | header, body, footer                             |
-| **Popover**       | —                                                    | open, closed                                      | trigger, content, arrow                          |
-| **Tooltip**       | top, bottom, left, right                             | —                                                 | delay, maxWidth                                  |
-| **Dropdown Menu** | —                                                    | open, closed                                      | item, separator, icon, shortcut                  |
+| **Popover**       | â€”                                                    | open, closed                                      | trigger, content, arrow                          |
+| **Tooltip**       | top, bottom, left, right                             | â€”                                                 | delay, maxWidth                                  |
+| **Dropdown Menu** | â€”                                                    | open, closed                                      | item, separator, icon, shortcut                  |
 | **Tabs**          | underline, pill                                      | active, hover, disabled, focus                    | icon, badge                                      |
 | **Accordion**     | single, multiple                                     | open, closed                                      | chevron animation                                |
 | **Toast**         | success, error, warning, info                        | enter, exit, swipe                                | undo action, dismiss                             |
 | **Progress**      | default, success, error                              | determinate, indeterminate                        | label, percentage                                |
-| **Skeleton**      | text, circle, rect, card                             | shimmer animation                                 | —                                                |
+| **Skeleton**      | text, circle, rect, card                             | shimmer animation                                 | â€”                                                |
 | **Table**         | default, compact                                     | sortable, selectable, hover                       | sticky header                                    |
-| **Pagination**    | —                                                    | —                                                 | page numbers, prev/next, ellipsis, size selector |
+| **Pagination**    | â€”                                                    | â€”                                                 | page numbers, prev/next, ellipsis, size selector |
 | **Alert**         | default, success, warning, error, info               | dismissible                                       | icon, action                                     |
-| **Form**          | —                                                    | —                                                 | field-level errors via Zod                       |
-| **Separator**     | horizontal, vertical                                 | —                                                 | —                                                |
-| **ScrollArea**    | —                                                    | —                                                 | custom scrollbar                                 |
+| **Form**          | â€”                                                    | â€”                                                 | field-level errors via Zod                       |
+| **Separator**     | horizontal, vertical                                 | â€”                                                 | â€”                                                |
+| **ScrollArea**    | â€”                                                    | â€”                                                 | custom scrollbar                                 |
 
 ## 5.3 Composite Components
 
@@ -313,7 +313,7 @@ const tokens = {
 | **CertificateViewer**   | PDF viewer + verification badge + social share                           | Student, Alumni        |
 | **PortfolioBuilder**    | Drag-drop sections (projects, skills, experience) + preview + share link | Student                |
 | **CourseBuilder**       | Tree view of modules/lessons + content editor + reorder                  | Instructor             |
-| **GradebookTable**      | Matrix (students × assignments) with inline edit + filters               | Instructor, Dept Head  |
+| **GradebookTable**      | Matrix (students Ã— assignments) with inline edit + filters               | Instructor, Dept Head  |
 | **AttendanceMarker**    | Student grid + QR scanner + bulk actions + geolocation                   | Instructor             |
 | **ApplicationPipeline** | Kanban columns with drag-drop + bulk actions + filters                   | Admissions Officer     |
 | **InvoiceBuilder**      | Line items table + tax/discount + preview + PDF                          | Accountant             |
@@ -339,7 +339,7 @@ const tokens = {
 | **Sidebar**       | Nav links + role-based sections + collapse toggle + user info      | Hidden on <1024px, triggered by hamburger |
 | **Topbar**        | Breadcrumbs + search + notifications + profile menu + theme toggle | Stacks vertically on mobile               |
 | **MobileNav**     | Bottom tab bar with icons                                          | Visible only on <768px                    |
-| **DashboardGrid** | CSS Grid of MetricCards + widgets (dynamic layout)                 | 1-col → 2-col → 3-col → 4-col             |
+| **DashboardGrid** | CSS Grid of MetricCards + widgets (dynamic layout)                 | 1-col â†’ 2-col â†’ 3-col â†’ 4-col             |
 | **PageHeader**    | Title + description + breadcrumbs + action buttons                 | Actions collapse to dropdown on mobile    |
 | **SplitPane**     | Resizable left/right panels + collapse                             | Stacks vertically on <768px               |
 | **ModalLayout**   | Center modal + backdrop + header + body + footer                   | Full-screen sheet on mobile               |
@@ -352,20 +352,20 @@ const tokens = {
 ## 6.1 Role Hierarchy & Inheritance
 
 ```
-System Administrator (level 0) — global access
-  └── Director (level 1) — cross-department read + approve
-       ├── Department Head (level 2) — department scope
-       │    ├── Instructor (level 3) — own courses
-       │    └── Mentor (level 3) — assigned mentees
-       ├── Operations Manager (level 2) — all branches
-       │    ├── Receptionist (level 3) — front desk
-       │    └── IT Support (level 3) — ticketing
-       ├── Accountant (level 2) — financial
-       └── HR Officer (level 2) — people
+System Administrator (level 0) â€” global access
+  â””â”€â”€ Director (level 1) â€” cross-department read + approve
+       â”œâ”€â”€ Department Head (level 2) â€” department scope
+       â”‚    â”œâ”€â”€ Instructor (level 3) â€” own courses
+       â”‚    â””â”€â”€ Mentor (level 3) â€” assigned mentees
+       â”œâ”€â”€ Operations Manager (level 2) â€” all branches
+       â”‚    â”œâ”€â”€ Receptionist (level 3) â€” front desk
+       â”‚    â””â”€â”€ IT Support (level 3) â€” ticketing
+       â”œâ”€â”€ Accountant (level 2) â€” financial
+       â””â”€â”€ HR Officer (level 2) â€” people
 
-  ├── Developer (level 2) — engineering access
-  ├── Marketing Officer (level 2) — campaigns
-  └── Admissions Officer (level 2) — enrollment pipeline
+  â”œâ”€â”€ Developer (level 2) â€” engineering access
+  â”œâ”€â”€ Marketing Officer (level 2) â€” campaigns
+  â””â”€â”€ Admissions Officer (level 2) â€” enrollment pipeline
 
 Independent Roles (no hierarchy inheritance):
   Current Student, Prospective Student, Parent, Client,
@@ -390,40 +390,40 @@ Beyond RBAC, these ABAC rules constrain data access dynamically:
 | Certificate verification | Public certificate              | `certificate.isVerified === true`                   | Public endpoint    |
 | Invoice visibility       | Client invoices                 | `invoice.billToId === auth.contactId`               | On finance queries |
 
-## 6.3 RBAC Matrix Summary (All Actors × Key Resources)
+## 6.3 RBAC Matrix Summary (All Actors Ã— Key Resources)
 
-Legend: `R`=Read (own), `R*`=Read (scope), `R**`=Read (global), `C`=Create, `U`=Update (own), `U*`=Update (scope), `D`=Delete, `A`=Approve, `—`=None
+Legend: `R`=Read (own), `R*`=Read (scope), `R**`=Read (global), `C`=Create, `U`=Update (own), `U*`=Update (scope), `D`=Delete, `A`=Approve, `â€”`=None
 
 | Resource | Student | Parent | Instructor | Mentor | Dept Head | Ops Mgr | Director | Recpt | Client | Employer | Partner | Vol | Intern | Alumni | Supplier | Acct | HR | Admissions | Mktg | IT | Dev | Sys Admin | Gov Rep | NGO |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | Users | RU | R | RU | RU | R* | R* | R** | R | R | R | R | RU | RU | RU | R | R* | R* | R* | R* | R* | R | CRUD | R | R |
-| Courses | R | RW | CRUD | R | CRUD* | — | R** | R | — | — | — | — | R | R | — | — | — | — | — | — | R | R | R | — |
-| Modules | R | RW | CRUD | R | CRUD* | — | R** | — | — | — | — | — | R | R | — | — | — | — | — | — | — | — | — |
-| Enrollments | R | RW | R** | R* | R* | — | R** | — | — | — | — | — | — | — | — | — | — | C | — | — | — | — | — |
-| Assignments | R | RW | CRUD | — | R* | — | R** | — | — | — | — | — | R | — | — | — | — | — | — | — | — | — | — |
-| Submissions | CRU | RW | CRUD | — | R* | — | R** | — | — | — | — | — | CRU | — | — | — | — | — | — | — | — | — | — |
-| Assessments | R | — | CRUD | — | R* | — | R** | — | — | — | — | — | R | — | — | — | — | — | — | — | — | — | — |
-| Grades | R | RW | CRUD | — | R* | — | R** | — | — | — | — | — | R | — | — | — | — | — | — | — | — | — | — |
-| Attendance | R | RW | CRUD | — | R* | R* | R** | C | — | — | — | — | C | — | — | — | — | — | — | — | — | — | — |
-| Certificates | R | R | C | — | R* | — | R** | — | — | — | — | — | — | R | — | — | — | — | — | — | — | — | — |
-| Portfolio | CRUD | RW | R | R* | — | — | R** | — | — | R | — | — | CRU | CRU | — | — | — | — | — | — | — | — | — |
-| Jobs/Marketplace | RC | — | — | — | — | — | R** | — | — | CRUD | — | — | RC | RC | — | — | — | — | — | — | — | — | — |
-| CRM/Contacts | — | — | — | — | — | — | R** | C | R | — | R | — | — | — | — | — | — | CRUD | CRUD | — | — | R | — |
-| Projects | — | — | R* | — | — | CRUD | R** | — | R | — | — | — | R* | — | — | — | — | — | — | — | — | — | — |
-| Tickets | C | C | C | — | — | — | R** | — | CRU | — | — | — | C | — | — | — | — | — | — | CRUD | — | R | — |
-| Invoices | R | RW | — | — | R* | R* | R** | — | R | — | R | — | — | — | R | CRUD | — | — | — | — | — | R | — |
-| Payments | C | C | — | — | — | — | R** | — | C | — | — | — | — | — | — | CRUD | — | — | — | — | — | — | — |
-| HR Records | — | — | — | — | R* | R* | R** | — | — | — | — | — | — | — | — | — | CRUD | — | — | — | — | — | — |
-| Leave Requests | C | — | C | C | A* | A* | R** | — | — | — | — | — | C | — | — | — | A | — | — | — | — | — | — |
-| Admissions | — | — | — | — | — | — | R** | — | — | — | — | — | — | — | — | — | — | CRUD | — | — | — | R | — |
-| Inventory | — | — | — | — | — | CRUD | R** | — | — | — | — | — | — | — | — | — | — | — | — | R | — | R | — |
-| Procurement | — | — | — | — | — | CRUDA | R** | — | — | — | — | — | — | — | R | R | — | — | — | — | — | R | — |
-| Community/Forum | CRUD | R | CRUD | CRUD | — | — | R** | — | — | — | CRUD | CRUD | CRUD | CRUD | — | — | — | — | CRUD | — | — | R | — | CRUD |
-| Events | CR | R | CR | CR | — | — | R** | — | — | — | CR | CR | CR | CR | — | — | — | CR | CRUD | — | — | R | — | CRUD |
-| Visitors | — | — | — | — | — | — | R** | CRUD | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — |
-| Analytics | R | RW | R | R* | R* | R* | R** | — | R | R | R | R | R | R | — | R* | R* | R | R* | R* | R | R** | R | R |
-| System Config | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | — | R | CRUD | — | — |
-| Audit Logs | — | — | — | — | — | — | R** | — | — | — | — | — | — | — | — | R | — | — | — | — | — | CRUD | — | — |
+| Courses | R | RW | CRUD | R | CRUD* | â€” | R** | R | â€” | â€” | â€” | â€” | R | R | â€” | â€” | â€” | â€” | â€” | â€” | R | R | R | â€” |
+| Modules | R | RW | CRUD | R | CRUD* | â€” | R** | â€” | â€” | â€” | â€” | â€” | R | R | â€” | â€” | â€” | â€” | â€” | â€” | â€” | â€” | â€” |
+| Enrollments | R | RW | R** | R* | R* | â€” | R** | â€” | â€” | â€” | â€” | â€” | â€” | â€” | â€” | â€” | â€” | C | â€” | â€” | â€” | â€” | â€” |
+| Assignments | R | RW | CRUD | â€” | R* | â€” | R** | â€” | â€” | â€” | â€” | â€” | R | â€” | â€” | â€” | â€” | â€” | â€” | â€” | â€” | â€” | â€” |
+| Submissions | CRU | RW | CRUD | â€” | R* | â€” | R** | â€” | â€” | â€” | â€” | â€” | CRU | â€” | â€” | â€” | â€” | â€” | â€” | â€” | â€” | â€” | â€” |
+| Assessments | R | â€” | CRUD | â€” | R* | â€” | R** | â€” | â€” | â€” | â€” | â€” | R | â€” | â€” | â€” | â€” | â€” | â€” | â€” | â€” | â€” | â€” |
+| Grades | R | RW | CRUD | â€” | R* | â€” | R** | â€” | â€” | â€” | â€” | â€” | R | â€” | â€” | â€” | â€” | â€” | â€” | â€” | â€” | â€” | â€” |
+| Attendance | R | RW | CRUD | â€” | R* | R* | R** | C | â€” | â€” | â€” | â€” | C | â€” | â€” | â€” | â€” | â€” | â€” | â€” | â€” | â€” | â€” |
+| Certificates | R | R | C | â€” | R* | â€” | R** | â€” | â€” | â€” | â€” | â€” | â€” | R | â€” | â€” | â€” | â€” | â€” | â€” | â€” | â€” | â€” |
+| Portfolio | CRUD | RW | R | R* | â€” | â€” | R** | â€” | â€” | R | â€” | â€” | CRU | CRU | â€” | â€” | â€” | â€” | â€” | â€” | â€” | â€” | â€” |
+| Jobs/Marketplace | RC | â€” | â€” | â€” | â€” | â€” | R** | â€” | â€” | CRUD | â€” | â€” | RC | RC | â€” | â€” | â€” | â€” | â€” | â€” | â€” | â€” | â€” |
+| CRM/Contacts | â€” | â€” | â€” | â€” | â€” | â€” | R** | C | R | â€” | R | â€” | â€” | â€” | â€” | â€” | â€” | CRUD | CRUD | â€” | â€” | R | â€” |
+| Projects | â€” | â€” | R* | â€” | â€” | CRUD | R** | â€” | R | â€” | â€” | â€” | R* | â€” | â€” | â€” | â€” | â€” | â€” | â€” | â€” | â€” | â€” |
+| Tickets | C | C | C | â€” | â€” | â€” | R** | â€” | CRU | â€” | â€” | â€” | C | â€” | â€” | â€” | â€” | â€” | â€” | CRUD | â€” | R | â€” |
+| Invoices | R | RW | â€” | â€” | R* | R* | R** | â€” | R | â€” | R | â€” | â€” | â€” | R | CRUD | â€” | â€” | â€” | â€” | â€” | R | â€” |
+| Payments | C | C | â€” | â€” | â€” | â€” | R** | â€” | C | â€” | â€” | â€” | â€” | â€” | â€” | CRUD | â€” | â€” | â€” | â€” | â€” | â€” | â€” |
+| HR Records | â€” | â€” | â€” | â€” | R* | R* | R** | â€” | â€” | â€” | â€” | â€” | â€” | â€” | â€” | â€” | CRUD | â€” | â€” | â€” | â€” | â€” | â€” |
+| Leave Requests | C | â€” | C | C | A* | A* | R** | â€” | â€” | â€” | â€” | â€” | C | â€” | â€” | â€” | A | â€” | â€” | â€” | â€” | â€” | â€” |
+| Admissions | â€” | â€” | â€” | â€” | â€” | â€” | R** | â€” | â€” | â€” | â€” | â€” | â€” | â€” | â€” | â€” | â€” | CRUD | â€” | â€” | â€” | R | â€” |
+| Inventory | â€” | â€” | â€” | â€” | â€” | CRUD | R** | â€” | â€” | â€” | â€” | â€” | â€” | â€” | â€” | â€” | â€” | â€” | â€” | R | â€” | R | â€” |
+| Procurement | â€” | â€” | â€” | â€” | â€” | CRUDA | R** | â€” | â€” | â€” | â€” | â€” | â€” | â€” | R | R | â€” | â€” | â€” | â€” | â€” | R | â€” |
+| Community/Forum | CRUD | R | CRUD | CRUD | â€” | â€” | R** | â€” | â€” | â€” | CRUD | CRUD | CRUD | CRUD | â€” | â€” | â€” | â€” | CRUD | â€” | â€” | R | â€” | CRUD |
+| Events | CR | R | CR | CR | â€” | â€” | R** | â€” | â€” | â€” | CR | CR | CR | CR | â€” | â€” | â€” | CR | CRUD | â€” | â€” | R | â€” | CRUD |
+| Visitors | â€” | â€” | â€” | â€” | â€” | â€” | R** | CRUD | â€” | â€” | â€” | â€” | â€” | â€” | â€” | â€” | â€” | â€” | â€” | â€” | â€” | â€” | â€” | â€” |
+| Analytics | R | RW | R | R* | R* | R* | R** | â€” | R | R | R | R | R | R | â€” | R* | R* | R | R* | R* | R | R** | R | R |
+| System Config | â€” | â€” | â€” | â€” | â€” | â€” | â€” | â€” | â€” | â€” | â€” | â€” | â€” | â€” | â€” | â€” | â€” | â€” | â€” | â€” | R | CRUD | â€” | â€” |
+| Audit Logs | â€” | â€” | â€” | â€” | â€” | â€” | R** | â€” | â€” | â€” | â€” | â€” | â€” | â€” | â€” | R | â€” | â€” | â€” | â€” | â€” | CRUD | â€” | â€” |
 
 ---
 
@@ -551,7 +551,7 @@ const baseApi = createApi({
 ### Cache Invalidation Rules
 
 ```typescript
-// Mutation → Tags invalidated
+// Mutation â†’ Tags invalidated
 const cacheInvalidation = {
   createSubmission: ["Submission", "Assignment", "Enrollment"],
   updateSubmission: ["Submission", "Grade"],
@@ -618,9 +618,10 @@ const optimisticUpdates = {
 | Live class              | WebSocket                             | Real-time                   |
 | Active enrollments      | Polling                               | Every 60s                   |
 | Ticket status           | Polling                               | Every 30s                   |
-| Payment status          | Polling (after payment action)        | Every 10s × 10, then stop   |
+| Payment status          | Polling (after payment action)        | Every 10s Ã— 10, then stop   |
 | Analytics dashboards    | Manual refresh + auto every 5min      | On focus, every 5min        |
 | Course catalog (public) | ISR (Incremental Static Regeneration) | Revalidate every 60s        |
 | Other data              | Cache-then-network (RTK Query)        | On mutation invalidation    |
 
 ---
+

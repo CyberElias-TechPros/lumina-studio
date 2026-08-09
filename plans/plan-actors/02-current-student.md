@@ -1,10 +1,10 @@
-# Actor: Current Student
+﻿# Actor: Current Student
 
 ## 1. Identity & Role Definition
 
 **Actor Name:** Current Student  
 **System Role ID:** `role_current_student`  
-**Description:** An individual who has been accepted, enrolled, and is actively participating in one or more programs at Cyber Elias Academy. This actor is in the core "student" lifecycle — consuming content, completing assignments, taking assessments, communicating with peers and instructors, tracking progress, managing finances, and ultimately earning certificates.
+**Description:** An individual who has been accepted, enrolled, and is actively participating in one or more programs at Cyber Elias Academy. This actor is in the core "student" lifecycle â€” consuming content, completing assignments, taking assessments, communicating with peers and instructors, tracking progress, managing finances, and ultimately earning certificates.
 
 **Key Characteristics:**
 
@@ -17,12 +17,12 @@
 
 **Student Lifecycle States:**
 
-1. **Pre-Start** — Enrolled, program hasn't started yet (orientation)
-2. **Active** — Currently taking courses, attending classes
-3. **On Leave** — Temporary pause (medical, personal, military)
-4. **Graduated** — Completed all requirements, certificate issued
-5. **Expelled** — Removed due to policy violation
-6. **Dropped Out** — Voluntarily withdrew
+1. **Pre-Start** â€” Enrolled, program hasn't started yet (orientation)
+2. **Active** â€” Currently taking courses, attending classes
+3. **On Leave** â€” Temporary pause (medical, personal, military)
+4. **Graduated** â€” Completed all requirements, certificate issued
+5. **Expelled** â€” Removed due to policy violation
+6. **Dropped Out** â€” Voluntarily withdrew
 
 ---
 
@@ -30,43 +30,43 @@
 
 **Goal 1: Consume Learning Content Effectively**
 
-- KPI: Lesson completion rate ≥ 85%
-- KPI: Avg time spent per week ≥ 8 hours
+- KPI: Lesson completion rate â‰¥ 85%
+- KPI: Avg time spent per week â‰¥ 8 hours
 - KPI: Video lesson retention rate (25%/50%/75%/100% markers)
 
 **Goal 2: Complete Assignments & Assessments**
 
-- KPI: Assignment submission rate ≥ 95%
-- KPI: On-time submission rate ≥ 80%
-- KPI: Assessment average score ≥ 75%
+- KPI: Assignment submission rate â‰¥ 95%
+- KPI: On-time submission rate â‰¥ 80%
+- KPI: Assessment average score â‰¥ 75%
 
 **Goal 3: Track Academic Progress**
 
-- KPI: Gradebook check frequency ≥ 1x per week
+- KPI: Gradebook check frequency â‰¥ 1x per week
 - KPI: Gradebook page views per session
 - KPI: GPA awareness (quiz: "What's your current GPA?")
 
 **Goal 4: Build Professional Portfolio**
 
-- KPI: Portfolio items added per month ≥ 2
+- KPI: Portfolio items added per month â‰¥ 2
 - KPI: Portfolio share/external link clicks
 - KPI: Portfolio completion percentage (profile + projects + certs)
 
 **Goal 5: Engage with Community**
 
-- KPI: Forum posts per week ≥ 3
-- KPI: Messages sent/received per week ≥ 5
-- KPI: Study group membership ≥ 1
+- KPI: Forum posts per week â‰¥ 3
+- KPI: Messages sent/received per week â‰¥ 5
+- KPI: Study group membership â‰¥ 1
 
 **Goal 6: Manage Finances Successfully**
 
-- KPI: Payment on-time rate ≥ 95%
+- KPI: Payment on-time rate â‰¥ 95%
 - KPI: Payment plan adherence
 - KPI: Financial aid application rate
 
 **Goal 7: Earn Certificates & Graduate**
 
-- KPI: Module completion rate → program completion → graduation
+- KPI: Module completion rate â†’ program completion â†’ graduation
 - KPI: Certificate download rate within 30 days of issue
 
 ---
@@ -75,47 +75,47 @@
 
 ### Screen 3.1: Student Dashboard (`/dashboard`)
 
-**Purpose:** Central hub showing at-a-glance everything important — next class, pending assignments, recent grades, announcements.
+**Purpose:** Central hub showing at-a-glance everything important â€” next class, pending assignments, recent grades, announcements.
 
 **Wireframe Layout:**
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│  [Logo] Dashboard  Learning  Community  ...  [Profile ▼]   │
-├─────────────────────────────────────────────────────────────┤
-│  Welcome back, Alex!     [Resume Learning →]               │
-│  Program: Cybersecurity Fundamentals | Term: Fall 2026     │
-├──────────────────┬──────────────────┬──────────────────────┤
-│  Next Class      │  Pending Tasks   │  This Week's Stats   │
-│  ┌────────────┐  │  ┌────────────┐  │  ┌────────────────┐  │
-│  │ Network    │  │  │ Assignment │  │  │ ⏱ 12.5h spent │  │
-│  │ Defense    │  │  │ Lab 4      │  │  │ 📊 88% avg    │  │
-│  │ Module 3   │  │  │ Due: Fri   │  │  │ ✅ 6/8 done   │  │
-│  │ 2:00 PM    │  │  │ [Start →]  │  │  │ 🏆 Top 15%   │  │
-│  │ [Join]     │  │  └────────────┘  │  └────────────────┘  │
-│  │            │  │  ┌────────────┐  │                      │
-│  │            │  │  │ Quiz:     │  │  │                      │
-│  │            │  │  │ Crypto    │  │  │                      │
-│  └────────────┘  │  │ Due: Wed  │  │  │                      │
-│                  │  │ [Start →] │  │  │                      │
-│                  │  └────────────┘  │                      │
-├──────────────────┴──────────────────┴──────────────────────┤
-│  Recent Activity                                             │
-│  ● Scored 92% on "Cryptography Quiz" — 2h ago              │
-│  ● Submitted "Lab 3: Packet Analysis" — Yesterday           │
-│  ● Instructor posted "Week 4 Announcement" — Yesterday      │
-├──────────────────┬──────────────────────────────────────────┤
-│  Quick Actions   │  Upcoming Deadlines                      │
-│  [New Message]   │  ● Lab 4      — Fri 11:59 PM             │
-│  [Browse Market] │  ● Project 1  — Nov 15                   │
-│  [View Calendar] │  ● Exam 1     — Nov 22                   │
-│  [Find Study Grp]│                                           │
-└──────────────────┴──────────────────────────────────────────┘
+â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
+â”‚  [Logo] Dashboard  Learning  Community  ...  [Profile â–¼]   â”‚
+â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
+â”‚  Welcome back, Alex!     [Resume Learning â†’]               â”‚
+â”‚  Program: Cybersecurity Fundamentals | Term: Fall 2026     â”‚
+â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
+â”‚  Next Class      â”‚  Pending Tasks   â”‚  This Week's Stats   â”‚
+â”‚  â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”  â”‚  â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”  â”‚  â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”  â”‚
+â”‚  â”‚ Network    â”‚  â”‚  â”‚ Assignment â”‚  â”‚  â”‚ â± 12.5h spent â”‚  â”‚
+â”‚  â”‚ Defense    â”‚  â”‚  â”‚ Lab 4      â”‚  â”‚  â”‚ ðŸ“Š 88% avg    â”‚  â”‚
+â”‚  â”‚ Module 3   â”‚  â”‚  â”‚ Due: Fri   â”‚  â”‚  â”‚ âœ… 6/8 done   â”‚  â”‚
+â”‚  â”‚ 2:00 PM    â”‚  â”‚  â”‚ [Start â†’]  â”‚  â”‚  â”‚ ðŸ† Top 15%   â”‚  â”‚
+â”‚  â”‚ [Join]     â”‚  â”‚  â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜  â”‚  â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜  â”‚
+â”‚  â”‚            â”‚  â”‚  â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”  â”‚                      â”‚
+â”‚  â”‚            â”‚  â”‚  â”‚ Quiz:     â”‚  â”‚  â”‚                      â”‚
+â”‚  â”‚            â”‚  â”‚  â”‚ Crypto    â”‚  â”‚  â”‚                      â”‚
+â”‚  â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜  â”‚  â”‚ Due: Wed  â”‚  â”‚  â”‚                      â”‚
+â”‚                  â”‚  â”‚ [Start â†’] â”‚  â”‚  â”‚                      â”‚
+â”‚                  â”‚  â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜  â”‚                      â”‚
+â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”´â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”´â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
+â”‚  Recent Activity                                             â”‚
+â”‚  â— Scored 92% on "Cryptography Quiz" â€” 2h ago              â”‚
+â”‚  â— Submitted "Lab 3: Packet Analysis" â€” Yesterday           â”‚
+â”‚  â— Instructor posted "Week 4 Announcement" â€” Yesterday      â”‚
+â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
+â”‚  Quick Actions   â”‚  Upcoming Deadlines                      â”‚
+â”‚  [New Message]   â”‚  â— Lab 4      â€” Fri 11:59 PM             â”‚
+â”‚  [Browse Market] â”‚  â— Project 1  â€” Nov 15                   â”‚
+â”‚  [View Calendar] â”‚  â— Exam 1     â€” Nov 22                   â”‚
+â”‚  [Find Study Grp]â”‚                                           â”‚
+â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”´â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
 ```
 
 **Data Sources:**
 
-- `GET /api/student/dashboard` — aggregated dashboard data
+- `GET /api/student/dashboard` â€” aggregated dashboard data
 - `GET /api/student/tasks?filter=pending`
 - `GET /api/student/activity?limit=10`
 - `GET /api/student/next-class`
@@ -123,10 +123,10 @@
 **States:**
 
 - **Loading:** 4 skeleton cards layout
-- **Empty (no tasks):** "All caught up! 🎉 No pending tasks."
+- **Empty (no tasks):** "All caught up! ðŸŽ‰ No pending tasks."
 - **Empty (no activity):** "Your activity will show here once you start learning."
-- **Error:** Dashboard card fails → inline error per card, rest of page still renders
-- **Edge Cases:** Between terms → "Enjoy your break! Next term starts Jan 15." First day → "Welcome! Start with your first lesson."
+- **Error:** Dashboard card fails â†’ inline error per card, rest of page still renders
+- **Edge Cases:** Between terms â†’ "Enjoy your break! Next term starts Jan 15." First day â†’ "Welcome! Start with your first lesson."
 
 ### Screen 3.2: Learning Hub (`/learning`)
 
@@ -135,71 +135,71 @@
 **Wireframe Layout:**
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│  My Learning                                                 │
-├─────────────────────────────────────────────────────────────┤
-│  Program: Cybersecurity Fundamentals (65% complete)        │
-│  [████████████████░░░░░░░░░░░░░░░░░]                        │
-│                                                             │
-│  Modules:                                                    │
-│  ┌──────────────────────────────────────────────────────┐  │
-│  │ ✅ Module 1: Foundations          100% ████████████  │  │
-│  │  Lessons 1-6 complete                                │  │
-│  ├──────────────────────────────────────────────────────┤  │
-│  │ ✅ Module 2: Network Basics       100% ████████████  │  │
-│  │  Lessons 7-12 complete                               │  │
-│  ├──────────────────────────────────────────────────────┤  │
-│  │ ◉ Module 3: Cryptography          42% ██████░░░░░░░  │  │
-│  │  → Lesson 13: Symmetric Encryption [Resume] ←       │  │
-│  │  → Lesson 14: Asymmetric Encryption                  │  │
-│  │  → Lesson 15: Hashing (not started)                  │  │
-│  │  → Quiz: Crypto Fundamentals (not started)           │  │
-│  ├──────────────────────────────────────────────────────┤  │
-│  │ ⬜ Module 4: Network Defense        0% ░░░░░░░░░░░░  │  │
-│  └──────────────────────────────────────────────────────┘  │
-│                                                             │
-│  Archived Programs [▼]                                       │
-└─────────────────────────────────────────────────────────────┘
+â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
+â”‚  My Learning                                                 â”‚
+â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
+â”‚  Program: Cybersecurity Fundamentals (65% complete)        â”‚
+â”‚  [â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–‘â–‘â–‘â–‘â–‘â–‘â–‘â–‘â–‘â–‘â–‘â–‘â–‘â–‘â–‘â–‘â–‘]                        â”‚
+â”‚                                                             â”‚
+â”‚  Modules:                                                    â”‚
+â”‚  â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”  â”‚
+â”‚  â”‚ âœ… Module 1: Foundations          100% â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ  â”‚  â”‚
+â”‚  â”‚  Lessons 1-6 complete                                â”‚  â”‚
+â”‚  â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤  â”‚
+â”‚  â”‚ âœ… Module 2: Network Basics       100% â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ  â”‚  â”‚
+â”‚  â”‚  Lessons 7-12 complete                               â”‚  â”‚
+â”‚  â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤  â”‚
+â”‚  â”‚ â—‰ Module 3: Cryptography          42% â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–‘â–‘â–‘â–‘â–‘â–‘â–‘  â”‚  â”‚
+â”‚  â”‚  â†’ Lesson 13: Symmetric Encryption [Resume] â†       â”‚  â”‚
+â”‚  â”‚  â†’ Lesson 14: Asymmetric Encryption                  â”‚  â”‚
+â”‚  â”‚  â†’ Lesson 15: Hashing (not started)                  â”‚  â”‚
+â”‚  â”‚  â†’ Quiz: Crypto Fundamentals (not started)           â”‚  â”‚
+â”‚  â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤  â”‚
+â”‚  â”‚ â¬œ Module 4: Network Defense        0% â–‘â–‘â–‘â–‘â–‘â–‘â–‘â–‘â–‘â–‘â–‘â–‘  â”‚  â”‚
+â”‚  â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜  â”‚
+â”‚                                                             â”‚
+â”‚  Archived Programs [â–¼]                                       â”‚
+â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
 ```
 
-**API:** `GET /api/student/enrollments` → enrollments with nested modules/lessons/progress  
+**API:** `GET /api/student/enrollments` â†’ enrollments with nested modules/lessons/progress  
 **States:** Loading (skeleton accordions), Empty ("No enrollments yet"), Error (retry banner)
 
 ### Screen 3.3: Lesson Viewer (`/learning/lessons/[lessonId]`)
 
-**Purpose:** Consume lesson content — video player, article reader, interactive coding environment, quiz interface.
+**Purpose:** Consume lesson content â€” video player, article reader, interactive coding environment, quiz interface.
 
 **Wireframe Layout:**
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│  ← Back to Module 3: Cryptography                           │
-├─────────────────────────────────────────────────────────────┤
-│  ┌────────────────────────────────────────────────────┐    │
-│  │  [Video Player / Article Content / Interactive]    │    │
-│  │                                                     │    │
-│  │  [▶ Play] | Speed: 1x | Captions: On | Quality: HD │    │
-│  │  Progress: ████████████░░░░░░░ 65%                  │    │
-│  └────────────────────────────────────────────────────┘    │
-│                                                             │
-│  Lesson: Symmetric Encryption                              │
-│  Module 3 · Lesson 13 of 24 · Est. 35 min                 │
-│                                                             │
-│  Below the fold:                                            │
-│  ┌────────────────────────────────────────────────────┐    │
-│  │  📝 Key Takeaways                                  │    │
-│  │  ● AES is a symmetric encryption algorithm         │    │
-│  │  ● Uses same key for enc/dec                       │    │
-│  │  ● Key sizes: 128, 192, 256 bits                   │    │
-│  └────────────────────────────────────────────────────┘    │
-│                                                             │
-│  ┌────────────────────────────────────────────────────┐    │
-│  │  📄 Transcript (expandable)                        │    │
-│  │  "Welcome to lesson 13. In this video we'll..."    │    │
-│  └────────────────────────────────────────────────────┘    │
-│                                                             │
-│  [Mark Complete] [Previous Lesson ←] [Next Lesson →]       │
-└─────────────────────────────────────────────────────────────┘
+â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
+â”‚  â† Back to Module 3: Cryptography                           â”‚
+â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
+â”‚  â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”    â”‚
+â”‚  â”‚  [Video Player / Article Content / Interactive]    â”‚    â”‚
+â”‚  â”‚                                                     â”‚    â”‚
+â”‚  â”‚  [â–¶ Play] | Speed: 1x | Captions: On | Quality: HD â”‚    â”‚
+â”‚  â”‚  Progress: â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–‘â–‘â–‘â–‘â–‘â–‘â–‘ 65%                  â”‚    â”‚
+â”‚  â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜    â”‚
+â”‚                                                             â”‚
+â”‚  Lesson: Symmetric Encryption                              â”‚
+â”‚  Module 3 Â· Lesson 13 of 24 Â· Est. 35 min                 â”‚
+â”‚                                                             â”‚
+â”‚  Below the fold:                                            â”‚
+â”‚  â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”    â”‚
+â”‚  â”‚  ðŸ“ Key Takeaways                                  â”‚    â”‚
+â”‚  â”‚  â— AES is a symmetric encryption algorithm         â”‚    â”‚
+â”‚  â”‚  â— Uses same key for enc/dec                       â”‚    â”‚
+â”‚  â”‚  â— Key sizes: 128, 192, 256 bits                   â”‚    â”‚
+â”‚  â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜    â”‚
+â”‚                                                             â”‚
+â”‚  â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”    â”‚
+â”‚  â”‚  ðŸ“„ Transcript (expandable)                        â”‚    â”‚
+â”‚  â”‚  "Welcome to lesson 13. In this video we'll..."    â”‚    â”‚
+â”‚  â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜    â”‚
+â”‚                                                             â”‚
+â”‚  [Mark Complete] [Previous Lesson â†] [Next Lesson â†’]       â”‚
+â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
 ```
 
 **Content Types:** `video`, `article`, `quiz`, `coding_exercise`, `project`
@@ -209,7 +209,7 @@
 - **Loading:** Player skeleton, title placeholder
 - **Error (404):** "Lesson not found"
 - **Error (video fails):** "Video failed to load. [Refresh] [Download]"
-- **Edge Cases:** Long video → auto-save progress every 10 seconds. Resize viewport → responsive player. Slow connection → adaptive bitrate streaming. Ad blockers (none, but may affect tracking).
+- **Edge Cases:** Long video â†’ auto-save progress every 10 seconds. Resize viewport â†’ responsive player. Slow connection â†’ adaptive bitrate streaming. Ad blockers (none, but may affect tracking).
 
 ### Screen 3.4: Assignments Center (`/assignments`)
 
@@ -218,27 +218,27 @@
 **Wireframe Layout:**
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│  Assignments                                                 │
-│  [All] [Pending] [Submitted] [Graded] [Late]               │
-├─────────────────────────────────────────────────────────────┤
-│  ┌──────────────────────────────────────────────────────┐  │
-│  │ ⚠ Lab 4: Packet Analysis                    Due Fri │  │
-│  │ Course: Network Defense | Points: 100 | Est: 3h    │  │
-│  │ Status: NOT STARTED                                  │  │
-│  │ [Start Assignment →]                                 │  │
-│  ├──────────────────────────────────────────────────────┤  │
-│  │ 📝 Project 1: Security Audit                 Nov 15 │  │
-│  │ Course: Fundamentals | Points: 250 | Est: 10h      │  │
-│  │ Status: IN PROGRESS (35%)                           │  │
-│  │ [Continue →]                                         │  │
-│  ├──────────────────────────────────────────────────────┤  │
-│  │ ✅ Lab 3: Packet Analysis                    90/100 │  │
-│  │ Course: Network Defense | Submitted: Oct 28         │  │
-│  │ Status: GRADED | Feedback: "Great analysis..."      │  │
-│  │ [View Feedback] [Resubmit (if allowed)]             │  │
-│  └──────────────────────────────────────────────────────┘  │
-└─────────────────────────────────────────────────────────────┘
+â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
+â”‚  Assignments                                                 â”‚
+â”‚  [All] [Pending] [Submitted] [Graded] [Late]               â”‚
+â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
+â”‚  â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”  â”‚
+â”‚  â”‚ âš  Lab 4: Packet Analysis                    Due Fri â”‚  â”‚
+â”‚  â”‚ Course: Network Defense | Points: 100 | Est: 3h    â”‚  â”‚
+â”‚  â”‚ Status: NOT STARTED                                  â”‚  â”‚
+â”‚  â”‚ [Start Assignment â†’]                                 â”‚  â”‚
+â”‚  â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤  â”‚
+â”‚  â”‚ ðŸ“ Project 1: Security Audit                 Nov 15 â”‚  â”‚
+â”‚  â”‚ Course: Fundamentals | Points: 250 | Est: 10h      â”‚  â”‚
+â”‚  â”‚ Status: IN PROGRESS (35%)                           â”‚  â”‚
+â”‚  â”‚ [Continue â†’]                                         â”‚  â”‚
+â”‚  â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤  â”‚
+â”‚  â”‚ âœ… Lab 3: Packet Analysis                    90/100 â”‚  â”‚
+â”‚  â”‚ Course: Network Defense | Submitted: Oct 28         â”‚  â”‚
+â”‚  â”‚ Status: GRADED | Feedback: "Great analysis..."      â”‚  â”‚
+â”‚  â”‚ [View Feedback] [Resubmit (if allowed)]             â”‚  â”‚
+â”‚  â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜  â”‚
+â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
 ```
 
 **API:** `GET /api/student/assignments?filter=pending|submitted|graded|late`
@@ -257,34 +257,34 @@
 **Wireframe:**
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│  ← Back to Assignments                                       │
-├─────────────────────────────────────────────────────────────┤
-│  Lab 4: Packet Analysis                                      │
-│  Network Defense · Module 3 · Due: Fri Nov 3, 11:59 PM      │
-├─────────────────────────────────────────────────────────────┤
-│  Instructions:                                                │
-│  "Using Wireshark, analyze the provided pcap file..."        │
-│  [Download Assignment Files] [View Rubric]                   │
-├─────────────────────────────────────────────────────────────┤
-│  Resources:                                                   │
-│  ● [Wireshark Guide PDF] ● [Sample Report Template]         │
-├─────────────────────────────────────────────────────────────┤
-│  Submission:                                                  │
-│  ┌──────────────────────────────────────────────────────┐   │
-│  │ 📎 Drag & drop files or click to upload              │   │
-│  │ Accepted: .pdf, .doc, .docx, .zip, .pcap            │   │
-│  │ Max: 50MB total                                       │   │
-│  │ Current files:                                        │   │
-│  │ ✅ analysis_report.pdf (2.3MB)                [Remove]│   │
-│  │ ✅ capture_analysis.pcap (15.1MB)            [Remove]│   │
-│  └──────────────────────────────────────────────────────┘   │
-│                                                             │
-│  Comments to Instructor (optional):                         │
-│  [________________________________________________]        │
-│                                                             │
-│  [Submit Assignment] [Save as Draft]                        │
-└─────────────────────────────────────────────────────────────┘
+â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
+â”‚  â† Back to Assignments                                       â”‚
+â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
+â”‚  Lab 4: Packet Analysis                                      â”‚
+â”‚  Network Defense Â· Module 3 Â· Due: Fri Nov 3, 11:59 PM      â”‚
+â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
+â”‚  Instructions:                                                â”‚
+â”‚  "Using Wireshark, analyze the provided pcap file..."        â”‚
+â”‚  [Download Assignment Files] [View Rubric]                   â”‚
+â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
+â”‚  Resources:                                                   â”‚
+â”‚  â— [Wireshark Guide PDF] â— [Sample Report Template]         â”‚
+â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
+â”‚  Submission:                                                  â”‚
+â”‚  â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”   â”‚
+â”‚  â”‚ ðŸ“Ž Drag & drop files or click to upload              â”‚   â”‚
+â”‚  â”‚ Accepted: .pdf, .doc, .docx, .zip, .pcap            â”‚   â”‚
+â”‚  â”‚ Max: 50MB total                                       â”‚   â”‚
+â”‚  â”‚ Current files:                                        â”‚   â”‚
+â”‚  â”‚ âœ… analysis_report.pdf (2.3MB)                [Remove]â”‚   â”‚
+â”‚  â”‚ âœ… capture_analysis.pcap (15.1MB)            [Remove]â”‚   â”‚
+â”‚  â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜   â”‚
+â”‚                                                             â”‚
+â”‚  Comments to Instructor (optional):                         â”‚
+â”‚  [________________________________________________]        â”‚
+â”‚                                                             â”‚
+â”‚  [Submit Assignment] [Save as Draft]                        â”‚
+â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
 ```
 
 **States:** Loading, Not Found, Already Submitted (show submitted version + resubmit if allowed), Past Due (warn before submit), Empty (no files yet)
@@ -296,23 +296,23 @@
 **Layout (taking a quiz):**
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│  Module 3 Quiz: Cryptography Fundamentals                   │
-│  Question 4 of 15                     Timer: 12:34 remaining│
-├─────────────────────────────────────────────────────────────┤
-│  Question:                                                   │
-│  Which of the following is a symmetric encryption algorithm? │
-│                                                             │
-│  ○ A) RSA                                                   │
-│  ○ B) AES          ← Selected                               │
-│  ○ C) Diffie-Hellman                                        │
-│  ○ D) ECDSA                                                 │
-│                                                             │
-├─────────────────────────────────────────────────────────────┤
-│  Question Progress: ■■□■■□■■□□□□□                          │
-│  [← Previous]                         [Next →]             │
-│                                  [Submit Quiz]              │
-└─────────────────────────────────────────────────────────────┘
+â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
+â”‚  Module 3 Quiz: Cryptography Fundamentals                   â”‚
+â”‚  Question 4 of 15                     Timer: 12:34 remainingâ”‚
+â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
+â”‚  Question:                                                   â”‚
+â”‚  Which of the following is a symmetric encryption algorithm? â”‚
+â”‚                                                             â”‚
+â”‚  â—‹ A) RSA                                                   â”‚
+â”‚  â—‹ B) AES          â† Selected                               â”‚
+â”‚  â—‹ C) Diffie-Hellman                                        â”‚
+â”‚  â—‹ D) ECDSA                                                 â”‚
+â”‚                                                             â”‚
+â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
+â”‚  Question Progress: â– â– â–¡â– â– â–¡â– â– â–¡â–¡â–¡â–¡â–¡                          â”‚
+â”‚  [â† Previous]                         [Next â†’]             â”‚
+â”‚                                  [Submit Quiz]              â”‚
+â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
 ```
 
 **Question Types:** Multiple choice, multiple answer, true/false, short answer, code block, file upload, essay
@@ -324,7 +324,7 @@
 - **In Progress:** Questions with timer
 - **Submitted:** Score page with correct/incorrect breakdown
 - **Timeout:** Auto-submit when timer reaches 0
-- **Error:** Save fails → local persistence, retry on submit
+- **Error:** Save fails â†’ local persistence, retry on submit
 
 ### Screen 3.7: Gradebook (`/grades`)
 
@@ -333,30 +333,30 @@
 **Wireframe:**
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│  Your Grades                                                 │
-│  Overall GPA: 3.72 | Program: Cybersecurity Fundamentals    │
-├─────────────────────────────────────────────────────────────┤
-│  ┌──────────────────────────────────────────────────────┐  │
-│  │ Course                │ Grade │ Weight │ Letter     │  │
-│  ├──────────────────────────────────────────────────────┤  │
-│  │ Network Defense       │ 88.5% │  25%   │ B+         │  │
-│  │ Cryptography          │ 94.2% │  25%   │ A          │  │
-│  │ Security Foundations  │ 91.0% │  25%   │ A-         │  │
-│  │ Ethics & Compliance   │ 85.0% │  25%   │ B          │  │
-│  └──────────────────────────────────────────────────────┘  │
-│                                                             │
-│  ┌──────────────────────────────────────────────────────┐  │
-│  │ Network Defense - Grade Breakdown                   │  │
-│  │ Assignment        │ Score │ Max │ %     │ Weight   │  │
-│  │ Lab 1             │ 45    │ 50  │ 90%   │ 10%      │  │
-│  │ Lab 2             │ 48    │ 50  │ 96%   │ 10%      │  │
-│  │ Lab 3             │ 42    │ 50  │ 84%   │ 10%      │  │
-│  │ Midterm Exam      │ 85    │ 100 │ 85%   │ 30%      │  │
-│  │ Final Project     │ 0     │ 100 │ —     │ 40%      │  │
-│  └──────────────────────────────────────────────────────┘  │
-│  What-if GPA Calculator [▼]                                  │
-└─────────────────────────────────────────────────────────────┘
+â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
+â”‚  Your Grades                                                 â”‚
+â”‚  Overall GPA: 3.72 | Program: Cybersecurity Fundamentals    â”‚
+â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
+â”‚  â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”  â”‚
+â”‚  â”‚ Course                â”‚ Grade â”‚ Weight â”‚ Letter     â”‚  â”‚
+â”‚  â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤  â”‚
+â”‚  â”‚ Network Defense       â”‚ 88.5% â”‚  25%   â”‚ B+         â”‚  â”‚
+â”‚  â”‚ Cryptography          â”‚ 94.2% â”‚  25%   â”‚ A          â”‚  â”‚
+â”‚  â”‚ Security Foundations  â”‚ 91.0% â”‚  25%   â”‚ A-         â”‚  â”‚
+â”‚  â”‚ Ethics & Compliance   â”‚ 85.0% â”‚  25%   â”‚ B          â”‚  â”‚
+â”‚  â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜  â”‚
+â”‚                                                             â”‚
+â”‚  â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”  â”‚
+â”‚  â”‚ Network Defense - Grade Breakdown                   â”‚  â”‚
+â”‚  â”‚ Assignment        â”‚ Score â”‚ Max â”‚ %     â”‚ Weight   â”‚  â”‚
+â”‚  â”‚ Lab 1             â”‚ 45    â”‚ 50  â”‚ 90%   â”‚ 10%      â”‚  â”‚
+â”‚  â”‚ Lab 2             â”‚ 48    â”‚ 50  â”‚ 96%   â”‚ 10%      â”‚  â”‚
+â”‚  â”‚ Lab 3             â”‚ 42    â”‚ 50  â”‚ 84%   â”‚ 10%      â”‚  â”‚
+â”‚  â”‚ Midterm Exam      â”‚ 85    â”‚ 100 â”‚ 85%   â”‚ 30%      â”‚  â”‚
+â”‚  â”‚ Final Project     â”‚ 0     â”‚ 100 â”‚ â€”     â”‚ 40%      â”‚  â”‚
+â”‚  â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜  â”‚
+â”‚  What-if GPA Calculator [â–¼]                                  â”‚
+â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
 ```
 
 **API:** `GET /api/student/grades?courseId=optional`
@@ -370,42 +370,42 @@
 **Layout:**
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│  My Portfolio                                     [Share]   │
-│  Public URL: cea.academy/portfolio/alex-johnson             │
-├─────────────────────────────────────────────────────────────┤
-│  Profile Section                                             │
-│  [Avatar Upload] Alex Johnson                               │
-│  Cybersecurity Student | Cyber Elias Academy                │
-│  [Edit Bio] [Edit Contact Info]                              │
-├─────────────────────────────────────────────────────────────┤
-│  Skills (drag to reorder)                                    │
-│  +------------------------+--------------------------------+ │
-│  │ 🛡 Network Security    │ ⭐⭐⭐⭐⭐                       │ │
-│  │ 🔐 Cryptography       │ ⭐⭐⭐⭐                        │ │
-│  │ 🐍 Python             │ ⭐⭐⭐                          │ │
-│  │ 📊 Wireshark          │ ⭐⭐⭐⭐⭐                       │ │
-│  │ [Add Skill]           │                                │ │
-│  +------------------------+--------------------------------+ │
-├─────────────────────────────────────────────────────────────┤
-│  Projects                                                    │
-│  ┌──────────────────────────────────────────────────────┐  │
-│  │ 🔒 Security Audit: ABC Corp                      🖊🗑 │  │
-│  │ "Conducted full security audit for ABC Corp..."     │  │
-│  │ Skills: Network Security, Compliance                │  │
-│  │ [Edit] [Add Media] [View Live]                      │  │
-│  └──────────────────────────────────────────────────────┘  │
-│  [Add Project]                                              │
-├─────────────────────────────────────────────────────────────┤
-│  Certificates                                                │
-│  ┌──────────────────────────────────────────────────────┐  │
-│  │ 🏆 Python for Cybersecurity — Issued Oct 2026       │  │
-│  │ [View Certificate] [Download PDF] [Share on LinkedIn]│  │
-│  └──────────────────────────────────────────────────────┘  │
-├─────────────────────────────────────────────────────────────┤
-│  Education & Experience                                     │
-│  [Add Education] [Add Experience]                            │
-└─────────────────────────────────────────────────────────────┘
+â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
+â”‚  My Portfolio                                     [Share]   â”‚
+â”‚  Public URL: cea.ng/portfolio/alex-johnson             â”‚
+â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
+â”‚  Profile Section                                             â”‚
+â”‚  [Avatar Upload] Alex Johnson                               â”‚
+â”‚  Cybersecurity Student | Cyber Elias Academy                â”‚
+â”‚  [Edit Bio] [Edit Contact Info]                              â”‚
+â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
+â”‚  Skills (drag to reorder)                                    â”‚
+â”‚  +------------------------+--------------------------------+ â”‚
+â”‚  â”‚ ðŸ›¡ Network Security    â”‚ â­â­â­â­â­                       â”‚ â”‚
+â”‚  â”‚ ðŸ” Cryptography       â”‚ â­â­â­â­                        â”‚ â”‚
+â”‚  â”‚ ðŸ Python             â”‚ â­â­â­                          â”‚ â”‚
+â”‚  â”‚ ðŸ“Š Wireshark          â”‚ â­â­â­â­â­                       â”‚ â”‚
+â”‚  â”‚ [Add Skill]           â”‚                                â”‚ â”‚
+â”‚  +------------------------+--------------------------------+ â”‚
+â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
+â”‚  Projects                                                    â”‚
+â”‚  â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”  â”‚
+â”‚  â”‚ ðŸ”’ Security Audit: ABC Corp                      ðŸ–ŠðŸ—‘ â”‚  â”‚
+â”‚  â”‚ "Conducted full security audit for ABC Corp..."     â”‚  â”‚
+â”‚  â”‚ Skills: Network Security, Compliance                â”‚  â”‚
+â”‚  â”‚ [Edit] [Add Media] [View Live]                      â”‚  â”‚
+â”‚  â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜  â”‚
+â”‚  [Add Project]                                              â”‚
+â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
+â”‚  Certificates                                                â”‚
+â”‚  â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”  â”‚
+â”‚  â”‚ ðŸ† Python for Cybersecurity â€” Issued Oct 2026       â”‚  â”‚
+â”‚  â”‚ [View Certificate] [Download PDF] [Share on LinkedIn]â”‚  â”‚
+â”‚  â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜  â”‚
+â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
+â”‚  Education & Experience                                     â”‚
+â”‚  [Add Education] [Add Experience]                            â”‚
+â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
 ```
 
 **API:** `GET/PUT /api/student/portfolio` , `GET/POST/PUT/DELETE /api/student/portfolio/projects`
@@ -417,24 +417,24 @@
 **Layout:**
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│  Marketplace                                     🛒 Cart (2)│
-│  [Search resources...]  [Categories ▼]                     │
-├─────────────────────────────────────────────────────────────┤
-│  Featured                                                    │
-│  ┌──────────┐ ┌──────────┐ ┌──────────┐ ┌──────────┐     │
-│  │ $29      │ │ $99      │ │ $199     │ │ Free     │     │
-│  │ Kali     │ │ Mentoring│ │ Advanced  │ │ Study    │     │
-│  │ Linux    │ │ Session  │ │ Malware   │ │ Template │     │
-│  │ Guide    │ │ (1-on-1) │ │ Analysis  │ │ Pack     │     │
-│  │ [Add+]   │ │ [Add+]   │ │ [Add+]    │ │ [Add+]   │     │
-│  └──────────┘ └──────────┘ └──────────┘ └──────────┘     │
-│                                                             │
-│  My Purchases [▼]                                           │
-└─────────────────────────────────────────────────────────────┘
+â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
+â”‚  Marketplace                                     ðŸ›’ Cart (2)â”‚
+â”‚  [Search resources...]  [Categories â–¼]                     â”‚
+â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
+â”‚  Featured                                                    â”‚
+â”‚  â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â” â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â” â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â” â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”     â”‚
+â”‚  â”‚ $29      â”‚ â”‚ $99      â”‚ â”‚ $199     â”‚ â”‚ Free     â”‚     â”‚
+â”‚  â”‚ Kali     â”‚ â”‚ Mentoringâ”‚ â”‚ Advanced  â”‚ â”‚ Study    â”‚     â”‚
+â”‚  â”‚ Linux    â”‚ â”‚ Session  â”‚ â”‚ Malware   â”‚ â”‚ Template â”‚     â”‚
+â”‚  â”‚ Guide    â”‚ â”‚ (1-on-1) â”‚ â”‚ Analysis  â”‚ â”‚ Pack     â”‚     â”‚
+â”‚  â”‚ [Add+]   â”‚ â”‚ [Add+]   â”‚ â”‚ [Add+]    â”‚ â”‚ [Add+]   â”‚     â”‚
+â”‚  â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜ â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜ â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜ â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜     â”‚
+â”‚                                                             â”‚
+â”‚  My Purchases [â–¼]                                           â”‚
+â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
 ```
 
-**Cart checkout:** `POST /api/marketplace/checkout` → KV payment session → Stripe
+**Cart checkout:** `POST /api/marketplace/checkout` â†’ KV payment session â†’ Stripe
 
 ### Screen 3.10: Community / Forum (`/community`)
 
@@ -443,29 +443,29 @@
 **Layout:**
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│  Community                                   [New Post]     │
-│  [All] [Q&A] [Study Groups] [Announcements] [Off-Topic]    │
-├─────────────────────────────────────────────────────────────┤
-│  🔍 [Search discussions...]                                  │
-├─────────────────────────────────────────────────────────────┤
-│  📌 Pinned: Welcome to the Community!                       │
-│  📌 Pinned: Study Group Formation for Fall 2026             │
-│                                                             │
-│  ┌──────────────────────────────────────────────────────┐  │
-│  │ 🔒 How do I configure Wireshark filters?             │  │
-│  │ by jdoe · Q&A · 3h ago · 5 replies · 👁 24          │  │
-│  └──────────────────────────────────────────────────────┘  │
-│  ┌──────────────────────────────────────────────────────┐  │
-│  │ 📚 Study Group: Network Defense Exam Prep            │  │
-│  │ by msmith · Study Groups · Yesterday · 12 members    │  │
-│  │ [Join Group]                                          │  │
-│  └──────────────────────────────────────────────────────┘  │
-│  ┌──────────────────────────────────────────────────────┐  │
-│  │ 💡 Pro tip: Use nmap -sV for service detection       │  │
-│  │ by instructor_kate · Tips · 2d ago · 18 upvotes     │  │
-│  └──────────────────────────────────────────────────────┘  │
-└─────────────────────────────────────────────────────────────┘
+â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
+â”‚  Community                                   [New Post]     â”‚
+â”‚  [All] [Q&A] [Study Groups] [Announcements] [Off-Topic]    â”‚
+â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
+â”‚  ðŸ” [Search discussions...]                                  â”‚
+â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
+â”‚  ðŸ“Œ Pinned: Welcome to the Community!                       â”‚
+â”‚  ðŸ“Œ Pinned: Study Group Formation for Fall 2026             â”‚
+â”‚                                                             â”‚
+â”‚  â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”  â”‚
+â”‚  â”‚ ðŸ”’ How do I configure Wireshark filters?             â”‚  â”‚
+â”‚  â”‚ by jdoe Â· Q&A Â· 3h ago Â· 5 replies Â· ðŸ‘ 24          â”‚  â”‚
+â”‚  â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜  â”‚
+â”‚  â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”  â”‚
+â”‚  â”‚ ðŸ“š Study Group: Network Defense Exam Prep            â”‚  â”‚
+â”‚  â”‚ by msmith Â· Study Groups Â· Yesterday Â· 12 members    â”‚  â”‚
+â”‚  â”‚ [Join Group]                                          â”‚  â”‚
+â”‚  â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜  â”‚
+â”‚  â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”  â”‚
+â”‚  â”‚ ðŸ’¡ Pro tip: Use nmap -sV for service detection       â”‚  â”‚
+â”‚  â”‚ by instructor_kate Â· Tips Â· 2d ago Â· 18 upvotes     â”‚  â”‚
+â”‚  â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜  â”‚
+â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
 ```
 
 **Real-time:** WebSocket for new posts, replies, upvotes.  
@@ -478,26 +478,26 @@
 **Layout:**
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│  Calendar                   [Month ▼] [Week ▼] [Day ▼]     │
-│  ◀ November 2026 ▶                                          │
-├────┬────┬────┬────┬────┬────┬───────────────────────────────┤
-│ Sun│ Mon│ Tue│ Wed│ Thu│ Fri│ Sat                           │
-├────┼────┼────┼────┼────┼────┼───────────────────────────────┤
-│    │  1 │  2 │  3 │  4 │  5 │  6                            │
-│    │    │    │ 📝 │    │ Lab│                               │
-│    │    │    │Quiz│    │Due │                               │
-│    │    │    │    │    │    │                               │
-├────┼────┼────┼────┼────┼────┼───────────────────────────────┤
-│  7 │  8 │  9 │ 10 │ 11 │ 12 │ 13                            │
-│    │    │    │    │    │    │                               │
-└────┴────┴────┴────┴────┴────┴───────────────────────────────┘
-│  Upcoming Events:                                            │
-│  ● Today 2:00 PM — Network Defense Class                    │
-│  ● Wed Nov 3 — Quiz: Cryptography Fundamentals             │
-│  ● Fri Nov 5 — Lab 4 Due                                   │
-│  ● Mon Nov 8 — Office Hours: Prof. Smith                    │
-└─────────────────────────────────────────────────────────────┘
+â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
+â”‚  Calendar                   [Month â–¼] [Week â–¼] [Day â–¼]     â”‚
+â”‚  â—€ November 2026 â–¶                                          â”‚
+â”œâ”€â”€â”€â”€â”¬â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
+â”‚ Sunâ”‚ Monâ”‚ Tueâ”‚ Wedâ”‚ Thuâ”‚ Friâ”‚ Sat                           â”‚
+â”œâ”€â”€â”€â”€â”¼â”€â”€â”€â”€â”¼â”€â”€â”€â”€â”¼â”€â”€â”€â”€â”¼â”€â”€â”€â”€â”¼â”€â”€â”€â”€â”¼â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
+â”‚    â”‚  1 â”‚  2 â”‚  3 â”‚  4 â”‚  5 â”‚  6                            â”‚
+â”‚    â”‚    â”‚    â”‚ ðŸ“ â”‚    â”‚ Labâ”‚                               â”‚
+â”‚    â”‚    â”‚    â”‚Quizâ”‚    â”‚Due â”‚                               â”‚
+â”‚    â”‚    â”‚    â”‚    â”‚    â”‚    â”‚                               â”‚
+â”œâ”€â”€â”€â”€â”¼â”€â”€â”€â”€â”¼â”€â”€â”€â”€â”¼â”€â”€â”€â”€â”¼â”€â”€â”€â”€â”¼â”€â”€â”€â”€â”¼â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
+â”‚  7 â”‚  8 â”‚  9 â”‚ 10 â”‚ 11 â”‚ 12 â”‚ 13                            â”‚
+â”‚    â”‚    â”‚    â”‚    â”‚    â”‚    â”‚                               â”‚
+â””â”€â”€â”€â”€â”´â”€â”€â”€â”€â”´â”€â”€â”€â”€â”´â”€â”€â”€â”€â”´â”€â”€â”€â”€â”´â”€â”€â”€â”€â”´â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
+â”‚  Upcoming Events:                                            â”‚
+â”‚  â— Today 2:00 PM â€” Network Defense Class                    â”‚
+â”‚  â— Wed Nov 3 â€” Quiz: Cryptography Fundamentals             â”‚
+â”‚  â— Fri Nov 5 â€” Lab 4 Due                                   â”‚
+â”‚  â— Mon Nov 8 â€” Office Hours: Prof. Smith                    â”‚
+â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
 ```
 
 **API:** `GET /api/student/calendar?start=&end=`
@@ -509,22 +509,22 @@
 **Layout:**
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│  Messages                                                    │
-├───────────────┬─────────────────────────────────────────────┤
-│  Conversations│  Chat: Prof. Smith                           │
-│  🔍 Search    ├─────────────────────────────────────────────┤
-│               │  Prof. Smith: Hi Alex, regarding your       │
-│  📌 Prof.     │  question about Lab 4...                    │
-│     Smith ✅  │                                             │
-│  👤 Jane      │  You: Oh thanks! I was stuck on the         │
-│     Doe       │  packet analysis step.                      │
-│  👤 Study     │                                             │
-│     Group:    │  Prof. Smith: Use filter "tcp.port==443"    │
-│     Crypto    │                                             │
-│  👤 Support   │  [Type a message...]                    [→] │
-│  Bot          │                                             │
-└───────────────┴─────────────────────────────────────────────┘
+â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
+â”‚  Messages                                                    â”‚
+â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
+â”‚  Conversationsâ”‚  Chat: Prof. Smith                           â”‚
+â”‚  ðŸ” Search    â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
+â”‚               â”‚  Prof. Smith: Hi Alex, regarding your       â”‚
+â”‚  ðŸ“Œ Prof.     â”‚  question about Lab 4...                    â”‚
+â”‚     Smith âœ…  â”‚                                             â”‚
+â”‚  ðŸ‘¤ Jane      â”‚  You: Oh thanks! I was stuck on the         â”‚
+â”‚     Doe       â”‚  packet analysis step.                      â”‚
+â”‚  ðŸ‘¤ Study     â”‚                                             â”‚
+â”‚     Group:    â”‚  Prof. Smith: Use filter "tcp.port==443"    â”‚
+â”‚     Crypto    â”‚                                             â”‚
+â”‚  ðŸ‘¤ Support   â”‚  [Type a message...]                    [â†’] â”‚
+â”‚  Bot          â”‚                                             â”‚
+â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”´â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
 ```
 
 **Real-time:** WebSocket for instant messaging.  
@@ -537,32 +537,32 @@
 **Layout:**
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│  Finance & Billing                                           │
-├─────────────────────────────────────────────────────────────┤
-│  Total Balance: $2,450.00                    [Pay Now]      │
-│  ┌──────────────────────────────────────────────────────┐  │
-│  │ Payment Plan: 4-month installment                   │  │
-│  │ Next Payment: $1,225.00 — Due Nov 15, 2026         │  │
-│  └──────────────────────────────────────────────────────┘  │
-├─────────────────────────────────────────────────────────────┤
-│  Recent Invoices                                             │
-│  ┌────────────┬──────────┬──────────┬────────┬──────────┐  │
-│  │ #INV-2026  │ Oct 1    │ $1,225   │ Paid   │ [PDF]   │  │
-│  │ -001       │          │          │ ✅    │         │  │
-│  ├────────────┼──────────┼──────────┼────────┼──────────┤  │
-│  │ #INV-2026  │ Sep 1    │ $1,225   │ Paid   │ [PDF]   │  │
-│  │ -000       │          │          │ ✅    │         │  │
-│  └────────────┴──────────┴──────────┴────────┴──────────┘  │
-├─────────────────────────────────────────────────────────────┤
-│  Payment Methods                                             │
-│  ● Visa ending in 4242 (default)       [Edit] [Remove]      │
-│  [Add Payment Method]                                        │
-├─────────────────────────────────────────────────────────────┤
-│  Financial Aid                                                │
-│  ● Merit Scholarship: $500/semester — Active                 │
-│  ● Need-Based Grant: Applied — Pending                       │
-└─────────────────────────────────────────────────────────────┘
+â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
+â”‚  Finance & Billing                                           â”‚
+â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
+â”‚  Total Balance: $2,450.00                    [Pay Now]      â”‚
+â”‚  â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”  â”‚
+â”‚  â”‚ Payment Plan: 4-month installment                   â”‚  â”‚
+â”‚  â”‚ Next Payment: $1,225.00 â€” Due Nov 15, 2026         â”‚  â”‚
+â”‚  â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜  â”‚
+â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
+â”‚  Recent Invoices                                             â”‚
+â”‚  â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”  â”‚
+â”‚  â”‚ #INV-2026  â”‚ Oct 1    â”‚ $1,225   â”‚ Paid   â”‚ [PDF]   â”‚  â”‚
+â”‚  â”‚ -001       â”‚          â”‚          â”‚ âœ…    â”‚         â”‚  â”‚
+â”‚  â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¼â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¼â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¼â”€â”€â”€â”€â”€â”€â”€â”€â”¼â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤  â”‚
+â”‚  â”‚ #INV-2026  â”‚ Sep 1    â”‚ $1,225   â”‚ Paid   â”‚ [PDF]   â”‚  â”‚
+â”‚  â”‚ -000       â”‚          â”‚          â”‚ âœ…    â”‚         â”‚  â”‚
+â”‚  â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”´â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”´â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”´â”€â”€â”€â”€â”€â”€â”€â”€â”´â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜  â”‚
+â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
+â”‚  Payment Methods                                             â”‚
+â”‚  â— Visa ending in 4242 (default)       [Edit] [Remove]      â”‚
+â”‚  [Add Payment Method]                                        â”‚
+â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
+â”‚  Financial Aid                                                â”‚
+â”‚  â— Merit Scholarship: $500/semester â€” Active                 â”‚
+â”‚  â— Need-Based Grant: Applied â€” Pending                       â”‚
+â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
 ```
 
 ### Screen 3.14: Attendance (`/attendance`)
@@ -572,26 +572,26 @@
 **Layout:**
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│  Attendance                                                  │
-│  Overall: 92% (46/50 sessions attended)     [View Policy]   │
-├─────────────────────────────────────────────────────────────┤
-│  Course: Network Defense                                     │
-│  ┌────────┬────────┬──────────┬──────────┬────────────────┐ │
-│  │ Date   │ Class  │ Status   │ Excused  │ Notes          │ │
-│  ├────────┼────────┼──────────┼──────────┼────────────────┤ │
-│  │ Oct 30 │ Module │ ✅ Present│ —        │                │ │
-│  │        │ 3      │          │          │                │ │
-│  │ Oct 28 │ Module │ ❌ Absent │ Yes      │ Doctor's note │ │
-│  │        │ 2      │          │          │ attached       │ │
-│  │ Oct 25 │ Module │ ✅ Present│ —        │                │ │
-│  │        │ 2      │          │          │                │ │
-│  └────────┴────────┴──────────┴──────────┴────────────────┘ │
-├─────────────────────────────────────────────────────────────┤
-│  Attendance Policy Warning (if below threshold)              │
-│  ⚠ Your attendance is below the 85% threshold. Continued    │
-│    absences may affect your standing.                       │
-└─────────────────────────────────────────────────────────────┘
+â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
+â”‚  Attendance                                                  â”‚
+â”‚  Overall: 92% (46/50 sessions attended)     [View Policy]   â”‚
+â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
+â”‚  Course: Network Defense                                     â”‚
+â”‚  â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â” â”‚
+â”‚  â”‚ Date   â”‚ Class  â”‚ Status   â”‚ Excused  â”‚ Notes          â”‚ â”‚
+â”‚  â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”¼â”€â”€â”€â”€â”€â”€â”€â”€â”¼â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¼â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¼â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤ â”‚
+â”‚  â”‚ Oct 30 â”‚ Module â”‚ âœ… Presentâ”‚ â€”        â”‚                â”‚ â”‚
+â”‚  â”‚        â”‚ 3      â”‚          â”‚          â”‚                â”‚ â”‚
+â”‚  â”‚ Oct 28 â”‚ Module â”‚ âŒ Absent â”‚ Yes      â”‚ Doctor's note â”‚ â”‚
+â”‚  â”‚        â”‚ 2      â”‚          â”‚          â”‚ attached       â”‚ â”‚
+â”‚  â”‚ Oct 25 â”‚ Module â”‚ âœ… Presentâ”‚ â€”        â”‚                â”‚ â”‚
+â”‚  â”‚        â”‚ 2      â”‚          â”‚          â”‚                â”‚ â”‚
+â”‚  â””â”€â”€â”€â”€â”€â”€â”€â”€â”´â”€â”€â”€â”€â”€â”€â”€â”€â”´â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”´â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”´â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜ â”‚
+â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
+â”‚  Attendance Policy Warning (if below threshold)              â”‚
+â”‚  âš  Your attendance is below the 85% threshold. Continued    â”‚
+â”‚    absences may affect your standing.                       â”‚
+â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
 ```
 
 ### Screen 3.15: Certificates (`/certificates`)
@@ -601,25 +601,25 @@
 **Layout:**
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│  My Certificates                                             │
-├─────────────────────────────────────────────────────────────┤
-│  ┌──────────────────────────────────────────────────────┐  │
-│  │ 🏆 Python for Cybersecurity                          │  │
-│  │ Issued: October 15, 2026 | Expires: Never            │  │
-│  │ Credential ID: CEA-CERT-2026-00421                   │  │
-│  │ [View Certificate] [Download PDF] [Share] [Verify]   │  │
-│  └──────────────────────────────────────────────────────┘  │
-│  ┌──────────────────────────────────────────────────────┐  │
-│  │ 🏆 Network Security Fundamentals                     │  │
-│  │ Issued: September 1, 2026 | Expires: Never           │  │
-│  │ [View Certificate] [Download PDF] [Share] [Verify]   │  │
-│  └──────────────────────────────────────────────────────┘  │
-├─────────────────────────────────────────────────────────────┤
-│  In Progress (earnable certificates)                         │
-│  ● Cyber Defense Specialist — 65% complete                  │
-│  ● Certified Ethical Hacker Prep — 30% complete             │
-└─────────────────────────────────────────────────────────────┘
+â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
+â”‚  My Certificates                                             â”‚
+â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
+â”‚  â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”  â”‚
+â”‚  â”‚ ðŸ† Python for Cybersecurity                          â”‚  â”‚
+â”‚  â”‚ Issued: October 15, 2026 | Expires: Never            â”‚  â”‚
+â”‚  â”‚ Credential ID: CEA-CERT-2026-00421                   â”‚  â”‚
+â”‚  â”‚ [View Certificate] [Download PDF] [Share] [Verify]   â”‚  â”‚
+â”‚  â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜  â”‚
+â”‚  â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”  â”‚
+â”‚  â”‚ ðŸ† Network Security Fundamentals                     â”‚  â”‚
+â”‚  â”‚ Issued: September 1, 2026 | Expires: Never           â”‚  â”‚
+â”‚  â”‚ [View Certificate] [Download PDF] [Share] [Verify]   â”‚  â”‚
+â”‚  â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜  â”‚
+â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
+â”‚  In Progress (earnable certificates)                         â”‚
+â”‚  â— Cyber Defense Specialist â€” 65% complete                  â”‚
+â”‚  â— Certified Ethical Hacker Prep â€” 30% complete             â”‚
+â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
 ```
 
 ---
@@ -630,23 +630,23 @@
 
 | Column                  | Type           | Constraints                   | Default       | Description                                                   |
 | ----------------------- | -------------- | ----------------------------- | ------------- | ------------------------------------------------------------- |
-| `id`                    | `UUID`         | PK, FK → users.id             | —             | Same as user ID                                               |
-| `student_number`        | `VARCHAR(20)`  | UNIQUE, NOT NULL              | —             | CEA-STU-YYYY-NNNNN                                            |
+| `id`                    | `UUID`         | PK, FK â†’ users.id             | â€”             | Same as user ID                                               |
+| `student_number`        | `VARCHAR(20)`  | UNIQUE, NOT NULL              | â€”             | CEA-STU-YYYY-NNNNN                                            |
 | `enrollment_status`     | `VARCHAR(50)`  | NOT NULL                      | `'pre_start'` | pre_start, active, on_leave, graduated, expelled, dropped_out |
-| `cohort_id`             | `UUID`         | FK → cohorts.id, NULLABLE     | —             | Assigned cohort group                                         |
-| `program_id`            | `UUID`         | FK → programs.id, NOT NULL    | —             | Primary program                                               |
-| `enrollment_term`       | `VARCHAR(50)`  | NOT NULL                      | —             | Fall 2026, etc.                                               |
-| `enrolled_at`           | `TIMESTAMPTZ`  | NOT NULL                      | —             | When enrolled                                                 |
-| `start_date`            | `DATE`         | NULLABLE                      | —             | Program start                                                 |
-| `expected_graduation`   | `DATE`         | NULLABLE                      | —             | —                                                             |
-| `graduated_at`          | `TIMESTAMPTZ`  | NULLABLE                      | —             | —                                                             |
+| `cohort_id`             | `UUID`         | FK â†’ cohorts.id, NULLABLE     | â€”             | Assigned cohort group                                         |
+| `program_id`            | `UUID`         | FK â†’ programs.id, NOT NULL    | â€”             | Primary program                                               |
+| `enrollment_term`       | `VARCHAR(50)`  | NOT NULL                      | â€”             | Fall 2026, etc.                                               |
+| `enrolled_at`           | `TIMESTAMPTZ`  | NOT NULL                      | â€”             | When enrolled                                                 |
+| `start_date`            | `DATE`         | NULLABLE                      | â€”             | Program start                                                 |
+| `expected_graduation`   | `DATE`         | NULLABLE                      | â€”             | â€”                                                             |
+| `graduated_at`          | `TIMESTAMPTZ`  | NULLABLE                      | â€”             | â€”                                                             |
 | `cumulative_gpa`        | `DECIMAL(3,2)` | NOT NULL                      | `0.00`        | 0.00-4.00                                                     |
-| `total_credits_earned`  | `INTEGER`      | NOT NULL                      | `0`           | —                                                             |
+| `total_credits_earned`  | `INTEGER`      | NOT NULL                      | `0`           | â€”                                                             |
 | `attendance_percentage` | `DECIMAL(5,2)` | NOT NULL                      | `100.00`      | 0.00-100.00                                                   |
-| `advisor_id`            | `UUID`         | FK → instructors.id, NULLABLE | —             | Academic advisor                                              |
-| `portfolio_url`         | `VARCHAR(500)` | NULLABLE                      | —             | Public portfolio slug                                         |
-| `created_at`            | `TIMESTAMPTZ`  | NOT NULL                      | `NOW()`       | —                                                             |
-| `updated_at`            | `TIMESTAMPTZ`  | NOT NULL                      | `NOW()`       | —                                                             |
+| `advisor_id`            | `UUID`         | FK â†’ instructors.id, NULLABLE | â€”             | Academic advisor                                              |
+| `portfolio_url`         | `VARCHAR(500)` | NULLABLE                      | â€”             | Public portfolio slug                                         |
+| `created_at`            | `TIMESTAMPTZ`  | NOT NULL                      | `NOW()`       | â€”                                                             |
+| `updated_at`            | `TIMESTAMPTZ`  | NOT NULL                      | `NOW()`       | â€”                                                             |
 
 **Indexes:**
 
@@ -660,29 +660,29 @@
 
 | Column       | Type           | Constraints                | Default | Description      |
 | ------------ | -------------- | -------------------------- | ------- | ---------------- |
-| `id`         | `UUID`         | PK                         | —       | —                |
-| `name`       | `VARCHAR(200)` | NOT NULL                   | —       | "CF-2026-Fall-A" |
-| `program_id` | `UUID`         | FK → programs.id, NOT NULL | —       | —                |
-| `term`       | `VARCHAR(50)`  | NOT NULL                   | —       | —                |
-| `start_date` | `DATE`         | NOT NULL                   | —       | —                |
-| `end_date`   | `DATE`         | NOT NULL                   | —       | —                |
-| `max_size`   | `INTEGER`      | NOT NULL                   | —       | —                |
-| `created_at` | `TIMESTAMPTZ`  | NOT NULL                   | `NOW()` | —                |
+| `id`         | `UUID`         | PK                         | â€”       | â€”                |
+| `name`       | `VARCHAR(200)` | NOT NULL                   | â€”       | "CF-2026-Fall-A" |
+| `program_id` | `UUID`         | FK â†’ programs.id, NOT NULL | â€”       | â€”                |
+| `term`       | `VARCHAR(50)`  | NOT NULL                   | â€”       | â€”                |
+| `start_date` | `DATE`         | NOT NULL                   | â€”       | â€”                |
+| `end_date`   | `DATE`         | NOT NULL                   | â€”       | â€”                |
+| `max_size`   | `INTEGER`      | NOT NULL                   | â€”       | â€”                |
+| `created_at` | `TIMESTAMPTZ`  | NOT NULL                   | `NOW()` | â€”                |
 
 ### Table: `enrollments`
 
 | Column                | Type           | Constraints                | Default    | Description                |
 | --------------------- | -------------- | -------------------------- | ---------- | -------------------------- |
-| `id`                  | `UUID`         | PK                         | —          | —                          |
-| `student_id`          | `UUID`         | FK → students.id, NOT NULL | —          | —                          |
-| `course_id`           | `UUID`         | FK → courses.id, NOT NULL  | —          | —                          |
+| `id`                  | `UUID`         | PK                         | â€”          | â€”                          |
+| `student_id`          | `UUID`         | FK â†’ students.id, NOT NULL | â€”          | â€”                          |
+| `course_id`           | `UUID`         | FK â†’ courses.id, NOT NULL  | â€”          | â€”                          |
 | `status`              | `VARCHAR(50)`  | NOT NULL                   | `'active'` | active, completed, dropped |
 | `progress_percentage` | `INTEGER`      | NOT NULL                   | `0`        | 0-100                      |
-| `started_at`          | `TIMESTAMPTZ`  | NULLABLE                   | —          | —                          |
-| `completed_at`        | `TIMESTAMPTZ`  | NULLABLE                   | —          | —                          |
-| `grade`               | `DECIMAL(5,2)` | NULLABLE                   | —          | 0-100                      |
-| `letter_grade`        | `VARCHAR(2)`   | NULLABLE                   | —          | A, A-, B+, etc.            |
-| `created_at`          | `TIMESTAMPTZ`  | NOT NULL                   | `NOW()`    | —                          |
+| `started_at`          | `TIMESTAMPTZ`  | NULLABLE                   | â€”          | â€”                          |
+| `completed_at`        | `TIMESTAMPTZ`  | NULLABLE                   | â€”          | â€”                          |
+| `grade`               | `DECIMAL(5,2)` | NULLABLE                   | â€”          | 0-100                      |
+| `letter_grade`        | `VARCHAR(2)`   | NULLABLE                   | â€”          | A, A-, B+, etc.            |
+| `created_at`          | `TIMESTAMPTZ`  | NOT NULL                   | `NOW()`    | â€”                          |
 
 **Indexes:** UNIQUE(student_id, course_id)
 
@@ -690,63 +690,63 @@
 
 | Column          | Type           | Constraints                   | Default | Description        |
 | --------------- | -------------- | ----------------------------- | ------- | ------------------ |
-| `id`            | `UUID`         | PK                            | —       | —                  |
-| `program_id`    | `UUID`         | FK → programs.id, NOT NULL    | —       | —                  |
-| `title`         | `VARCHAR(255)` | NOT NULL                      | —       | —                  |
-| `slug`          | `VARCHAR(200)` | UNIQUE                        | —       | —                  |
-| `description`   | `TEXT`         | NOT NULL                      | —       | —                  |
-| `instructor_id` | `UUID`         | FK → instructors.id, NULLABLE | —       | Primary instructor |
-| `sort_order`    | `INTEGER`      | NOT NULL                      | —       | —                  |
-| `credits`       | `INTEGER`      | NOT NULL                      | `3`     | —                  |
-| `passing_grade` | `DECIMAL(5,2)` | NOT NULL                      | `70.00` | —                  |
-| `created_at`    | `TIMESTAMPTZ`  | NOT NULL                      | `NOW()` | —                  |
+| `id`            | `UUID`         | PK                            | â€”       | â€”                  |
+| `program_id`    | `UUID`         | FK â†’ programs.id, NOT NULL    | â€”       | â€”                  |
+| `title`         | `VARCHAR(255)` | NOT NULL                      | â€”       | â€”                  |
+| `slug`          | `VARCHAR(200)` | UNIQUE                        | â€”       | â€”                  |
+| `description`   | `TEXT`         | NOT NULL                      | â€”       | â€”                  |
+| `instructor_id` | `UUID`         | FK â†’ instructors.id, NULLABLE | â€”       | Primary instructor |
+| `sort_order`    | `INTEGER`      | NOT NULL                      | â€”       | â€”                  |
+| `credits`       | `INTEGER`      | NOT NULL                      | `3`     | â€”                  |
+| `passing_grade` | `DECIMAL(5,2)` | NOT NULL                      | `70.00` | â€”                  |
+| `created_at`    | `TIMESTAMPTZ`  | NOT NULL                      | `NOW()` | â€”                  |
 
 ### Table: `modules`
 
 | Column            | Type           | Constraints               | Default | Description |
 | ----------------- | -------------- | ------------------------- | ------- | ----------- |
-| `id`              | `UUID`         | PK                        | —       | —           |
-| `course_id`       | `UUID`         | FK → courses.id, NOT NULL | —       | —           |
-| `title`           | `VARCHAR(255)` | NOT NULL                  | —       | —           |
-| `sort_order`      | `INTEGER`      | NOT NULL                  | —       | —           |
-| `description`     | `TEXT`         | NULLABLE                  | —       | —           |
-| `estimated_hours` | `DECIMAL(5,1)` | NOT NULL                  | —       | —           |
-| `created_at`      | `TIMESTAMPTZ`  | NOT NULL                  | `NOW()` | —           |
+| `id`              | `UUID`         | PK                        | â€”       | â€”           |
+| `course_id`       | `UUID`         | FK â†’ courses.id, NOT NULL | â€”       | â€”           |
+| `title`           | `VARCHAR(255)` | NOT NULL                  | â€”       | â€”           |
+| `sort_order`      | `INTEGER`      | NOT NULL                  | â€”       | â€”           |
+| `description`     | `TEXT`         | NULLABLE                  | â€”       | â€”           |
+| `estimated_hours` | `DECIMAL(5,1)` | NOT NULL                  | â€”       | â€”           |
+| `created_at`      | `TIMESTAMPTZ`  | NOT NULL                  | `NOW()` | â€”           |
 
 ### Table: `lessons`
 
 | Column             | Type           | Constraints               | Default | Description                                       |
 | ------------------ | -------------- | ------------------------- | ------- | ------------------------------------------------- |
-| `id`               | `UUID`         | PK                        | —       | —                                                 |
-| `module_id`        | `UUID`         | FK → modules.id, NOT NULL | —       | —                                                 |
-| `title`            | `VARCHAR(255)` | NOT NULL                  | —       | —                                                 |
-| `slug`             | `VARCHAR(200)` | NOT NULL                  | —       | —                                                 |
-| `sort_order`       | `INTEGER`      | NOT NULL                  | —       | —                                                 |
-| `content_type`     | `VARCHAR(50)`  | NOT NULL                  | —       | video, article, quiz, coding_exercise, assignment |
-| `content_data`     | `JSONB`        | NOT NULL                  | —       | Type-specific content payload                     |
-| `duration_minutes` | `INTEGER`      | NOT NULL                  | —       | —                                                 |
-| `video_url`        | `VARCHAR(500)` | NULLABLE                  | —       | Mux/Cloudflare Stream URL                         |
-| `video_duration`   | `INTEGER`      | NULLABLE                  | —       | In seconds                                        |
-| `transcript`       | `TEXT`         | NULLABLE                  | —       | Full transcript                                   |
-| `is_required`      | `BOOLEAN`      | NOT NULL                  | `true`  | —                                                 |
-| `created_at`       | `TIMESTAMPTZ`  | NOT NULL                  | `NOW()` | —                                                 |
-| `updated_at`       | `TIMESTAMPTZ`  | NOT NULL                  | `NOW()` | —                                                 |
+| `id`               | `UUID`         | PK                        | â€”       | â€”                                                 |
+| `module_id`        | `UUID`         | FK â†’ modules.id, NOT NULL | â€”       | â€”                                                 |
+| `title`            | `VARCHAR(255)` | NOT NULL                  | â€”       | â€”                                                 |
+| `slug`             | `VARCHAR(200)` | NOT NULL                  | â€”       | â€”                                                 |
+| `sort_order`       | `INTEGER`      | NOT NULL                  | â€”       | â€”                                                 |
+| `content_type`     | `VARCHAR(50)`  | NOT NULL                  | â€”       | video, article, quiz, coding_exercise, assignment |
+| `content_data`     | `JSONB`        | NOT NULL                  | â€”       | Type-specific content payload                     |
+| `duration_minutes` | `INTEGER`      | NOT NULL                  | â€”       | â€”                                                 |
+| `video_url`        | `VARCHAR(500)` | NULLABLE                  | â€”       | Mux/Cloudflare Stream URL                         |
+| `video_duration`   | `INTEGER`      | NULLABLE                  | â€”       | In seconds                                        |
+| `transcript`       | `TEXT`         | NULLABLE                  | â€”       | Full transcript                                   |
+| `is_required`      | `BOOLEAN`      | NOT NULL                  | `true`  | â€”                                                 |
+| `created_at`       | `TIMESTAMPTZ`  | NOT NULL                  | `NOW()` | â€”                                                 |
+| `updated_at`       | `TIMESTAMPTZ`  | NOT NULL                  | `NOW()` | â€”                                                 |
 
 ### Table: `lesson_progress`
 
 | Column                | Type           | Constraints                | Default         | Description                         |
 | --------------------- | -------------- | -------------------------- | --------------- | ----------------------------------- |
-| `id`                  | `UUID`         | PK                         | —               | —                                   |
-| `student_id`          | `UUID`         | FK → students.id, NOT NULL | —               | —                                   |
-| `lesson_id`           | `UUID`         | FK → lessons.id, NOT NULL  | —               | —                                   |
+| `id`                  | `UUID`         | PK                         | â€”               | â€”                                   |
+| `student_id`          | `UUID`         | FK â†’ students.id, NOT NULL | â€”               | â€”                                   |
+| `lesson_id`           | `UUID`         | FK â†’ lessons.id, NOT NULL  | â€”               | â€”                                   |
 | `status`              | `VARCHAR(50)`  | NOT NULL                   | `'not_started'` | not_started, in_progress, completed |
 | `progress_percentage` | `INTEGER`      | NOT NULL                   | `0`             | 0-100                               |
 | `video_position`      | `INTEGER`      | NOT NULL                   | `0`             | Seconds                             |
-| `completed_at`        | `TIMESTAMPTZ`  | NULLABLE                   | —               | —                                   |
-| `attempts`            | `INTEGER`      | NOT NULL                   | `0`             | —                                   |
-| `score`               | `DECIMAL(5,2)` | NULLABLE                   | —               | For quizzes/coding                  |
-| `started_at`          | `TIMESTAMPTZ`  | NULLABLE                   | —               | —                                   |
-| `updated_at`          | `TIMESTAMPTZ`  | NOT NULL                   | `NOW()`         | —                                   |
+| `completed_at`        | `TIMESTAMPTZ`  | NULLABLE                   | â€”               | â€”                                   |
+| `attempts`            | `INTEGER`      | NOT NULL                   | `0`             | â€”                                   |
+| `score`               | `DECIMAL(5,2)` | NULLABLE                   | â€”               | For quizzes/coding                  |
+| `started_at`          | `TIMESTAMPTZ`  | NULLABLE                   | â€”               | â€”                                   |
+| `updated_at`          | `TIMESTAMPTZ`  | NOT NULL                   | `NOW()`         | â€”                                   |
 
 **Indexes:** UNIQUE(student_id, lesson_id)
 
@@ -754,46 +754,46 @@
 
 | Column                  | Type           | Constraints               | Default | Description                                     |
 | ----------------------- | -------------- | ------------------------- | ------- | ----------------------------------------------- |
-| `id`                    | `UUID`         | PK                        | —       | —                                               |
-| `course_id`             | `UUID`         | FK → courses.id, NOT NULL | —       | —                                               |
-| `module_id`             | `UUID`         | FK → modules.id, NULLABLE | —       | —                                               |
-| `title`                 | `VARCHAR(255)` | NOT NULL                  | —       | —                                               |
-| `description`           | `TEXT`         | NOT NULL                  | —       | Full instructions                               |
-| `assignment_type`       | `VARCHAR(50)`  | NOT NULL                  | —       | lab, project, essay, coding_challenge, research |
-| `points_possible`       | `INTEGER`      | NOT NULL                  | —       | —                                               |
-| `weight`                | `DECIMAL(5,2)` | NOT NULL                  | —       | Percentage weight in course grade               |
-| `due_at`                | `TIMESTAMPTZ`  | NOT NULL                  | —       | —                                               |
-| `available_from`        | `TIMESTAMPTZ`  | NULLABLE                  | —       | —                                               |
-| `available_until`       | `TIMESTAMPTZ`  | NULLABLE                  | —       | Hard cutoff                                     |
-| `allow_late_submission` | `BOOLEAN`      | NOT NULL                  | `false` | —                                               |
-| `late_penalty_percent`  | `DECIMAL(5,2)` | NULLABLE                  | —       | Per-day penalty %                               |
+| `id`                    | `UUID`         | PK                        | â€”       | â€”                                               |
+| `course_id`             | `UUID`         | FK â†’ courses.id, NOT NULL | â€”       | â€”                                               |
+| `module_id`             | `UUID`         | FK â†’ modules.id, NULLABLE | â€”       | â€”                                               |
+| `title`                 | `VARCHAR(255)` | NOT NULL                  | â€”       | â€”                                               |
+| `description`           | `TEXT`         | NOT NULL                  | â€”       | Full instructions                               |
+| `assignment_type`       | `VARCHAR(50)`  | NOT NULL                  | â€”       | lab, project, essay, coding_challenge, research |
+| `points_possible`       | `INTEGER`      | NOT NULL                  | â€”       | â€”                                               |
+| `weight`                | `DECIMAL(5,2)` | NOT NULL                  | â€”       | Percentage weight in course grade               |
+| `due_at`                | `TIMESTAMPTZ`  | NOT NULL                  | â€”       | â€”                                               |
+| `available_from`        | `TIMESTAMPTZ`  | NULLABLE                  | â€”       | â€”                                               |
+| `available_until`       | `TIMESTAMPTZ`  | NULLABLE                  | â€”       | Hard cutoff                                     |
+| `allow_late_submission` | `BOOLEAN`      | NOT NULL                  | `false` | â€”                                               |
+| `late_penalty_percent`  | `DECIMAL(5,2)` | NULLABLE                  | â€”       | Per-day penalty %                               |
 | `max_attempts`          | `INTEGER`      | NOT NULL                  | `1`     | Resubmission limit                              |
-| `allow_resubmission`    | `BOOLEAN`      | NOT NULL                  | `false` | —                                               |
-| `rubric`                | `JSONB`        | NULLABLE                  | —       | Criterias with max points                       |
-| `attachment_urls`       | `JSONB`        | NULLABLE                  | —       | Resource files                                  |
-| `created_at`            | `TIMESTAMPTZ`  | NOT NULL                  | `NOW()` | —                                               |
+| `allow_resubmission`    | `BOOLEAN`      | NOT NULL                  | `false` | â€”                                               |
+| `rubric`                | `JSONB`        | NULLABLE                  | â€”       | Criterias with max points                       |
+| `attachment_urls`       | `JSONB`        | NULLABLE                  | â€”       | Resource files                                  |
+| `created_at`            | `TIMESTAMPTZ`  | NOT NULL                  | `NOW()` | â€”                                               |
 
 ### Table: `submissions`
 
 | Column            | Type           | Constraints                   | Default   | Description                        |
 | ----------------- | -------------- | ----------------------------- | --------- | ---------------------------------- |
-| `id`              | `UUID`         | PK                            | —         | —                                  |
-| `assignment_id`   | `UUID`         | FK → assignments.id, NOT NULL | —         | —                                  |
-| `student_id`      | `UUID`         | FK → students.id, NOT NULL    | —         | —                                  |
-| `attempt_number`  | `INTEGER`      | NOT NULL                      | `1`       | —                                  |
+| `id`              | `UUID`         | PK                            | â€”         | â€”                                  |
+| `assignment_id`   | `UUID`         | FK â†’ assignments.id, NOT NULL | â€”         | â€”                                  |
+| `student_id`      | `UUID`         | FK â†’ students.id, NOT NULL    | â€”         | â€”                                  |
+| `attempt_number`  | `INTEGER`      | NOT NULL                      | `1`       | â€”                                  |
 | `status`          | `VARCHAR(50)`  | NOT NULL                      | `'draft'` | draft, submitted, graded, returned |
-| `submission_text` | `TEXT`         | NULLABLE                      | —         | Rich text answer                   |
-| `file_urls`       | `JSONB`        | NULLABLE                      | —         | Submitted file R2 keys             |
-| `comments`        | `TEXT`         | NULLABLE                      | —         | Student note to instructor         |
-| `submitted_at`    | `TIMESTAMPTZ`  | NULLABLE                      | —         | —                                  |
-| `grade`           | `DECIMAL(5,2)` | NULLABLE                      | —         | 0-100                              |
-| `letter_grade`    | `VARCHAR(2)`   | NULLABLE                      | —         | —                                  |
-| `grader_id`       | `UUID`         | FK → instructors.id, NULLABLE | —         | —                                  |
-| `graded_at`       | `TIMESTAMPTZ`  | NULLABLE                      | —         | —                                  |
-| `feedback`        | `TEXT`         | NULLABLE                      | —         | Instructor feedback                |
-| `rubric_scores`   | `JSONB`        | NULLABLE                      | —         | Per-criterion scores               |
-| `penalty_points`  | `DECIMAL(5,2)` | NOT NULL                      | `0`       | —                                  |
-| `created_at`      | `TIMESTAMPTZ`  | NOT NULL                      | `NOW()`   | —                                  |
+| `submission_text` | `TEXT`         | NULLABLE                      | â€”         | Rich text answer                   |
+| `file_urls`       | `JSONB`        | NULLABLE                      | â€”         | Submitted file R2 keys             |
+| `comments`        | `TEXT`         | NULLABLE                      | â€”         | Student note to instructor         |
+| `submitted_at`    | `TIMESTAMPTZ`  | NULLABLE                      | â€”         | â€”                                  |
+| `grade`           | `DECIMAL(5,2)` | NULLABLE                      | â€”         | 0-100                              |
+| `letter_grade`    | `VARCHAR(2)`   | NULLABLE                      | â€”         | â€”                                  |
+| `grader_id`       | `UUID`         | FK â†’ instructors.id, NULLABLE | â€”         | â€”                                  |
+| `graded_at`       | `TIMESTAMPTZ`  | NULLABLE                      | â€”         | â€”                                  |
+| `feedback`        | `TEXT`         | NULLABLE                      | â€”         | Instructor feedback                |
+| `rubric_scores`   | `JSONB`        | NULLABLE                      | â€”         | Per-criterion scores               |
+| `penalty_points`  | `DECIMAL(5,2)` | NOT NULL                      | `0`       | â€”                                  |
+| `created_at`      | `TIMESTAMPTZ`  | NOT NULL                      | `NOW()`   | â€”                                  |
 
 **Indexes:** UNIQUE(assignment_id, student_id, attempt_number)
 
@@ -801,49 +801,49 @@
 
 | Column               | Type           | Constraints               | Default | Description                    |
 | -------------------- | -------------- | ------------------------- | ------- | ------------------------------ |
-| `id`                 | `UUID`         | PK                        | —       | —                              |
-| `course_id`          | `UUID`         | FK → courses.id, NOT NULL | —       | —                              |
-| `module_id`          | `UUID`         | FK → modules.id, NULLABLE | —       | —                              |
-| `title`              | `VARCHAR(255)` | NOT NULL                  | —       | —                              |
-| `assessment_type`    | `VARCHAR(50)`  | NOT NULL                  | —       | quiz, midterm, final, practice |
-| `time_limit_minutes` | `INTEGER`      | NULLABLE                  | —       | Null = no limit                |
-| `max_attempts`       | `INTEGER`      | NOT NULL                  | `1`     | —                              |
-| `passing_score`      | `DECIMAL(5,2)` | NULLABLE                  | —       | —                              |
-| `shuffle_questions`  | `BOOLEAN`      | NOT NULL                  | `true`  | —                              |
+| `id`                 | `UUID`         | PK                        | â€”       | â€”                              |
+| `course_id`          | `UUID`         | FK â†’ courses.id, NOT NULL | â€”       | â€”                              |
+| `module_id`          | `UUID`         | FK â†’ modules.id, NULLABLE | â€”       | â€”                              |
+| `title`              | `VARCHAR(255)` | NOT NULL                  | â€”       | â€”                              |
+| `assessment_type`    | `VARCHAR(50)`  | NOT NULL                  | â€”       | quiz, midterm, final, practice |
+| `time_limit_minutes` | `INTEGER`      | NULLABLE                  | â€”       | Null = no limit                |
+| `max_attempts`       | `INTEGER`      | NOT NULL                  | `1`     | â€”                              |
+| `passing_score`      | `DECIMAL(5,2)` | NULLABLE                  | â€”       | â€”                              |
+| `shuffle_questions`  | `BOOLEAN`      | NOT NULL                  | `true`  | â€”                              |
 | `show_results`       | `BOOLEAN`      | NOT NULL                  | `true`  | Show correct answers after     |
-| `questions`          | `JSONB`        | NOT NULL                  | —       | Array of question objects      |
-| `created_at`         | `TIMESTAMPTZ`  | NOT NULL                  | `NOW()` | —                              |
+| `questions`          | `JSONB`        | NOT NULL                  | â€”       | Array of question objects      |
+| `created_at`         | `TIMESTAMPTZ`  | NOT NULL                  | `NOW()` | â€”                              |
 
 ### Table: `assessment_attempts`
 
 | Column               | Type           | Constraints                   | Default         | Description                               |
 | -------------------- | -------------- | ----------------------------- | --------------- | ----------------------------------------- |
-| `id`                 | `UUID`         | PK                            | —               | —                                         |
-| `assessment_id`      | `UUID`         | FK → assessments.id, NOT NULL | —               | —                                         |
-| `student_id`         | `UUID`         | FK → students.id, NOT NULL    | —               | —                                         |
-| `attempt_number`     | `INTEGER`      | NOT NULL                      | —               | —                                         |
+| `id`                 | `UUID`         | PK                            | â€”               | â€”                                         |
+| `assessment_id`      | `UUID`         | FK â†’ assessments.id, NOT NULL | â€”               | â€”                                         |
+| `student_id`         | `UUID`         | FK â†’ students.id, NOT NULL    | â€”               | â€”                                         |
+| `attempt_number`     | `INTEGER`      | NOT NULL                      | â€”               | â€”                                         |
 | `status`             | `VARCHAR(50)`  | NOT NULL                      | `'in_progress'` | in_progress, submitted, timed_out, graded |
-| `answers`            | `JSONB`        | NULLABLE                      | —               | Question_id → answer                      |
-| `score`              | `DECIMAL(5,2)` | NULLABLE                      | —               | —                                         |
-| `started_at`         | `TIMESTAMPTZ`  | NOT NULL                      | —               | —                                         |
-| `submitted_at`       | `TIMESTAMPTZ`  | NULLABLE                      | —               | —                                         |
-| `time_spent_seconds` | `INTEGER`      | NOT NULL                      | `0`             | —                                         |
-| `created_at`         | `TIMESTAMPTZ`  | NOT NULL                      | `NOW()`         | —                                         |
+| `answers`            | `JSONB`        | NULLABLE                      | â€”               | Question_id â†’ answer                      |
+| `score`              | `DECIMAL(5,2)` | NULLABLE                      | â€”               | â€”                                         |
+| `started_at`         | `TIMESTAMPTZ`  | NOT NULL                      | â€”               | â€”                                         |
+| `submitted_at`       | `TIMESTAMPTZ`  | NULLABLE                      | â€”               | â€”                                         |
+| `time_spent_seconds` | `INTEGER`      | NOT NULL                      | `0`             | â€”                                         |
+| `created_at`         | `TIMESTAMPTZ`  | NOT NULL                      | `NOW()`         | â€”                                         |
 
 ### Table: `grades`
 
 | Column          | Type           | Constraints                | Default | Description                                    |
 | --------------- | -------------- | -------------------------- | ------- | ---------------------------------------------- |
-| `id`            | `UUID`         | PK                         | —       | —                                              |
-| `student_id`    | `UUID`         | FK → students.id, NOT NULL | —       | —                                              |
-| `course_id`     | `UUID`         | FK → courses.id, NOT NULL  | —       | —                                              |
-| `gradable_type` | `VARCHAR(50)`  | NOT NULL                   | —       | assignment, assessment, participation, project |
-| `gradable_id`   | `UUID`         | NOT NULL                   | —       | Polymorphic reference                          |
-| `score`         | `DECIMAL(5,2)` | NOT NULL                   | —       | 0-100                                          |
-| `max_score`     | `DECIMAL(5,2)` | NOT NULL                   | —       | —                                              |
-| `weight`        | `DECIMAL(5,4)` | NOT NULL                   | —       | —                                              |
-| `letter_grade`  | `VARCHAR(2)`   | NULLABLE                   | —       | —                                              |
-| `created_at`    | `TIMESTAMPTZ`  | NOT NULL                   | `NOW()` | —                                              |
+| `id`            | `UUID`         | PK                         | â€”       | â€”                                              |
+| `student_id`    | `UUID`         | FK â†’ students.id, NOT NULL | â€”       | â€”                                              |
+| `course_id`     | `UUID`         | FK â†’ courses.id, NOT NULL  | â€”       | â€”                                              |
+| `gradable_type` | `VARCHAR(50)`  | NOT NULL                   | â€”       | assignment, assessment, participation, project |
+| `gradable_id`   | `UUID`         | NOT NULL                   | â€”       | Polymorphic reference                          |
+| `score`         | `DECIMAL(5,2)` | NOT NULL                   | â€”       | 0-100                                          |
+| `max_score`     | `DECIMAL(5,2)` | NOT NULL                   | â€”       | â€”                                              |
+| `weight`        | `DECIMAL(5,4)` | NOT NULL                   | â€”       | â€”                                              |
+| `letter_grade`  | `VARCHAR(2)`   | NULLABLE                   | â€”       | â€”                                              |
+| `created_at`    | `TIMESTAMPTZ`  | NOT NULL                   | `NOW()` | â€”                                              |
 
 **Indexes:** UNIQUE(student_id, course_id, gradable_type, gradable_id)
 
@@ -851,29 +851,29 @@
 
 | Column        | Type           | Constraints                | Default | Description         |
 | ------------- | -------------- | -------------------------- | ------- | ------------------- |
-| `id`          | `UUID`         | PK                         | —       | —                   |
-| `student_id`  | `UUID`         | FK → students.id, NOT NULL | —       | —                   |
-| `title`       | `VARCHAR(255)` | NOT NULL                   | —       | —                   |
-| `description` | `TEXT`         | NULLABLE                   | —       | —                   |
-| `project_url` | `VARCHAR(500)` | NULLABLE                   | —       | Live demo link      |
-| `github_url`  | `VARCHAR(500)` | NULLABLE                   | —       | Source code         |
-| `media_urls`  | `JSONB`        | NULLABLE                   | —       | Screenshots, videos |
-| `skills`      | `JSONB`        | NULLABLE                   | —       | Array of skill tags |
-| `sort_order`  | `INTEGER`      | NOT NULL                   | `0`     | —                   |
-| `is_public`   | `BOOLEAN`      | NOT NULL                   | `true`  | —                   |
-| `created_at`  | `TIMESTAMPTZ`  | NOT NULL                   | `NOW()` | —                   |
-| `updated_at`  | `TIMESTAMPTZ`  | NOT NULL                   | `NOW()` | —                   |
+| `id`          | `UUID`         | PK                         | â€”       | â€”                   |
+| `student_id`  | `UUID`         | FK â†’ students.id, NOT NULL | â€”       | â€”                   |
+| `title`       | `VARCHAR(255)` | NOT NULL                   | â€”       | â€”                   |
+| `description` | `TEXT`         | NULLABLE                   | â€”       | â€”                   |
+| `project_url` | `VARCHAR(500)` | NULLABLE                   | â€”       | Live demo link      |
+| `github_url`  | `VARCHAR(500)` | NULLABLE                   | â€”       | Source code         |
+| `media_urls`  | `JSONB`        | NULLABLE                   | â€”       | Screenshots, videos |
+| `skills`      | `JSONB`        | NULLABLE                   | â€”       | Array of skill tags |
+| `sort_order`  | `INTEGER`      | NOT NULL                   | `0`     | â€”                   |
+| `is_public`   | `BOOLEAN`      | NOT NULL                   | `true`  | â€”                   |
+| `created_at`  | `TIMESTAMPTZ`  | NOT NULL                   | `NOW()` | â€”                   |
+| `updated_at`  | `TIMESTAMPTZ`  | NOT NULL                   | `NOW()` | â€”                   |
 
 ### Table: `portfolio_skills`
 
 | Column        | Type           | Constraints                | Default | Description |
 | ------------- | -------------- | -------------------------- | ------- | ----------- |
-| `id`          | `UUID`         | PK                         | —       | —           |
-| `student_id`  | `UUID`         | FK → students.id, NOT NULL | —       | —           |
-| `name`        | `VARCHAR(100)` | NOT NULL                   | —       | —           |
+| `id`          | `UUID`         | PK                         | â€”       | â€”           |
+| `student_id`  | `UUID`         | FK â†’ students.id, NOT NULL | â€”       | â€”           |
+| `name`        | `VARCHAR(100)` | NOT NULL                   | â€”       | â€”           |
 | `proficiency` | `INTEGER`      | NOT NULL                   | `3`     | 1-5         |
-| `sort_order`  | `INTEGER`      | NOT NULL                   | `0`     | —           |
-| `created_at`  | `TIMESTAMPTZ`  | NOT NULL                   | `NOW()` | —           |
+| `sort_order`  | `INTEGER`      | NOT NULL                   | `0`     | â€”           |
+| `created_at`  | `TIMESTAMPTZ`  | NOT NULL                   | `NOW()` | â€”           |
 
 **Indexes:** UNIQUE(student_id, name)
 
@@ -881,106 +881,106 @@
 
 | Column             | Type           | Constraints                | Default | Description                                             |
 | ------------------ | -------------- | -------------------------- | ------- | ------------------------------------------------------- |
-| `id`               | `UUID`         | PK                         | —       | —                                                       |
-| `student_id`       | `UUID`         | FK → students.id, NOT NULL | —       | —                                                       |
-| `type`             | `VARCHAR(50)`  | NOT NULL                   | —       | course_completion, program_completion, micro_credential |
-| `name`             | `VARCHAR(255)` | NOT NULL                   | —       | "Python for Cybersecurity"                              |
-| `credential_id`    | `VARCHAR(100)` | UNIQUE, NOT NULL           | —       | CEA-CERT-YYYY-NNNNN                                     |
-| `issued_at`        | `TIMESTAMPTZ`  | NOT NULL                   | —       | —                                                       |
-| `expires_at`       | `TIMESTAMPTZ`  | NULLABLE                   | —       | If applicable                                           |
-| `pdf_url`          | `VARCHAR(500)` | NOT NULL                   | —       | Generated PDF in R2                                     |
-| `verification_url` | `VARCHAR(500)` | NOT NULL                   | —       | Public verify page                                      |
-| `metadata`         | `JSONB`        | NULLABLE                   | —       | Skills, scores, etc.                                    |
-| `created_at`       | `TIMESTAMPTZ`  | NOT NULL                   | `NOW()` | —                                                       |
+| `id`               | `UUID`         | PK                         | â€”       | â€”                                                       |
+| `student_id`       | `UUID`         | FK â†’ students.id, NOT NULL | â€”       | â€”                                                       |
+| `type`             | `VARCHAR(50)`  | NOT NULL                   | â€”       | course_completion, program_completion, micro_credential |
+| `name`             | `VARCHAR(255)` | NOT NULL                   | â€”       | "Python for Cybersecurity"                              |
+| `credential_id`    | `VARCHAR(100)` | UNIQUE, NOT NULL           | â€”       | CEA-CERT-YYYY-NNNNN                                     |
+| `issued_at`        | `TIMESTAMPTZ`  | NOT NULL                   | â€”       | â€”                                                       |
+| `expires_at`       | `TIMESTAMPTZ`  | NULLABLE                   | â€”       | If applicable                                           |
+| `pdf_url`          | `VARCHAR(500)` | NOT NULL                   | â€”       | Generated PDF in R2                                     |
+| `verification_url` | `VARCHAR(500)` | NOT NULL                   | â€”       | Public verify page                                      |
+| `metadata`         | `JSONB`        | NULLABLE                   | â€”       | Skills, scores, etc.                                    |
+| `created_at`       | `TIMESTAMPTZ`  | NOT NULL                   | `NOW()` | â€”                                                       |
 
 ### Table: `marketplace_items`
 
 | Column          | Type            | Constraints | Default | Description                                 |
 | --------------- | --------------- | ----------- | ------- | ------------------------------------------- |
-| `id`            | `UUID`          | PK          | —       | —                                           |
-| `title`         | `VARCHAR(255)`  | NOT NULL    | —       | —                                           |
-| `description`   | `TEXT`          | NOT NULL    | —       | —                                           |
-| `price`         | `DECIMAL(10,2)` | NOT NULL    | —       | 0 = free                                    |
-| `currency`      | `VARCHAR(3)`    | NOT NULL    | `'USD'` | —                                           |
-| `category`      | `VARCHAR(100)`  | NOT NULL    | —       | resource, tool, mentoring, template, course |
-| `thumbnail_url` | `VARCHAR(500)`  | NULLABLE    | —       | —                                           |
-| `file_url`      | `VARCHAR(500)`  | NULLABLE    | —       | Digital download                            |
-| `is_featured`   | `BOOLEAN`       | NOT NULL    | `false` | —                                           |
-| `active`        | `BOOLEAN`       | NOT NULL    | `true`  | —                                           |
-| `created_at`    | `TIMESTAMPTZ`   | NOT NULL    | `NOW()` | —                                           |
+| `id`            | `UUID`          | PK          | â€”       | â€”                                           |
+| `title`         | `VARCHAR(255)`  | NOT NULL    | â€”       | â€”                                           |
+| `description`   | `TEXT`          | NOT NULL    | â€”       | â€”                                           |
+| `price`         | `DECIMAL(10,2)` | NOT NULL    | â€”       | 0 = free                                    |
+| `currency`      | `VARCHAR(3)`    | NOT NULL    | `'USD'` | â€”                                           |
+| `category`      | `VARCHAR(100)`  | NOT NULL    | â€”       | resource, tool, mentoring, template, course |
+| `thumbnail_url` | `VARCHAR(500)`  | NULLABLE    | â€”       | â€”                                           |
+| `file_url`      | `VARCHAR(500)`  | NULLABLE    | â€”       | Digital download                            |
+| `is_featured`   | `BOOLEAN`       | NOT NULL    | `false` | â€”                                           |
+| `active`        | `BOOLEAN`       | NOT NULL    | `true`  | â€”                                           |
+| `created_at`    | `TIMESTAMPTZ`   | NOT NULL    | `NOW()` | â€”                                           |
 
 ### Table: `purchases`
 
 | Column                     | Type            | Constraints                         | Default       | Description                  |
 | -------------------------- | --------------- | ----------------------------------- | ------------- | ---------------------------- |
-| `id`                       | `UUID`          | PK                                  | —             | —                            |
-| `student_id`               | `UUID`          | FK → students.id, NOT NULL          | —             | —                            |
-| `item_id`                  | `UUID`          | FK → marketplace_items.id, NOT NULL | —             | —                            |
-| `stripe_payment_intent_id` | `VARCHAR(255)`  | NOT NULL                            | —             | —                            |
-| `amount`                   | `DECIMAL(10,2)` | NOT NULL                            | —             | —                            |
+| `id`                       | `UUID`          | PK                                  | â€”             | â€”                            |
+| `student_id`               | `UUID`          | FK â†’ students.id, NOT NULL          | â€”             | â€”                            |
+| `item_id`                  | `UUID`          | FK â†’ marketplace_items.id, NOT NULL | â€”             | â€”                            |
+| `stripe_payment_intent_id` | `VARCHAR(255)`  | NOT NULL                            | â€”             | â€”                            |
+| `amount`                   | `DECIMAL(10,2)` | NOT NULL                            | â€”             | â€”                            |
 | `status`                   | `VARCHAR(50)`   | NOT NULL                            | `'completed'` | completed, refunded, pending |
-| `purchased_at`             | `TIMESTAMPTZ`   | NOT NULL                            | `NOW()`       | —                            |
+| `purchased_at`             | `TIMESTAMPTZ`   | NOT NULL                            | `NOW()`       | â€”                            |
 
 ### Table: `forum_posts`
 
 | Column            | Type           | Constraints             | Default | Description                                      |
 | ----------------- | -------------- | ----------------------- | ------- | ------------------------------------------------ |
-| `id`              | `UUID`         | PK                      | —       | —                                                |
-| `author_id`       | `UUID`         | FK → users.id, NOT NULL | —       | —                                                |
-| `category`        | `VARCHAR(50)`  | NOT NULL                | —       | qa, study_groups, announcements, off_topic, tips |
-| `title`           | `VARCHAR(255)` | NOT NULL                | —       | —                                                |
-| `content`         | `TEXT`         | NOT NULL                | —       | Rich text                                        |
-| `is_pinned`       | `BOOLEAN`      | NOT NULL                | `false` | —                                                |
-| `is_announcement` | `BOOLEAN`      | NOT NULL                | `false` | —                                                |
-| `upvote_count`    | `INTEGER`      | NOT NULL                | `0`     | —                                                |
-| `reply_count`     | `INTEGER`      | NOT NULL                | `0`     | —                                                |
-| `view_count`      | `INTEGER`      | NOT NULL                | `0`     | —                                                |
-| `created_at`      | `TIMESTAMPTZ`  | NOT NULL                | `NOW()` | —                                                |
-| `updated_at`      | `TIMESTAMPTZ`  | NOT NULL                | `NOW()` | —                                                |
+| `id`              | `UUID`         | PK                      | â€”       | â€”                                                |
+| `author_id`       | `UUID`         | FK â†’ users.id, NOT NULL | â€”       | â€”                                                |
+| `category`        | `VARCHAR(50)`  | NOT NULL                | â€”       | qa, study_groups, announcements, off_topic, tips |
+| `title`           | `VARCHAR(255)` | NOT NULL                | â€”       | â€”                                                |
+| `content`         | `TEXT`         | NOT NULL                | â€”       | Rich text                                        |
+| `is_pinned`       | `BOOLEAN`      | NOT NULL                | `false` | â€”                                                |
+| `is_announcement` | `BOOLEAN`      | NOT NULL                | `false` | â€”                                                |
+| `upvote_count`    | `INTEGER`      | NOT NULL                | `0`     | â€”                                                |
+| `reply_count`     | `INTEGER`      | NOT NULL                | `0`     | â€”                                                |
+| `view_count`      | `INTEGER`      | NOT NULL                | `0`     | â€”                                                |
+| `created_at`      | `TIMESTAMPTZ`  | NOT NULL                | `NOW()` | â€”                                                |
+| `updated_at`      | `TIMESTAMPTZ`  | NOT NULL                | `NOW()` | â€”                                                |
 
 ### Table: `forum_replies`
 
 | Column         | Type          | Constraints                     | Default | Description      |
 | -------------- | ------------- | ------------------------------- | ------- | ---------------- |
-| `id`           | `UUID`        | PK                              | —       | —                |
-| `post_id`      | `UUID`        | FK → forum_posts.id, NOT NULL   | —       | —                |
-| `parent_id`    | `UUID`        | FK → forum_replies.id, NULLABLE | —       | Nested threading |
-| `author_id`    | `UUID`        | FK → users.id, NOT NULL         | —       | —                |
-| `content`      | `TEXT`        | NOT NULL                        | —       | —                |
-| `upvote_count` | `INTEGER`     | NOT NULL                        | `0`     | —                |
+| `id`           | `UUID`        | PK                              | â€”       | â€”                |
+| `post_id`      | `UUID`        | FK â†’ forum_posts.id, NOT NULL   | â€”       | â€”                |
+| `parent_id`    | `UUID`        | FK â†’ forum_replies.id, NULLABLE | â€”       | Nested threading |
+| `author_id`    | `UUID`        | FK â†’ users.id, NOT NULL         | â€”       | â€”                |
+| `content`      | `TEXT`        | NOT NULL                        | â€”       | â€”                |
+| `upvote_count` | `INTEGER`     | NOT NULL                        | `0`     | â€”                |
 | `is_solution`  | `BOOLEAN`     | NOT NULL                        | `false` | Marked as answer |
-| `created_at`   | `TIMESTAMPTZ` | NOT NULL                        | `NOW()` | —                |
+| `created_at`   | `TIMESTAMPTZ` | NOT NULL                        | `NOW()` | â€”                |
 
 ### Table: `messages`
 
 | Column            | Type           | Constraints                     | Default  | Description             |
 | ----------------- | -------------- | ------------------------------- | -------- | ----------------------- |
-| `id`              | `UUID`         | PK                              | —        | —                       |
-| `sender_id`       | `UUID`         | FK → users.id, NOT NULL         | —        | —                       |
-| `conversation_id` | `UUID`         | FK → conversations.id, NOT NULL | —        | —                       |
-| `content`         | `TEXT`         | NOT NULL                        | —        | —                       |
+| `id`              | `UUID`         | PK                              | â€”        | â€”                       |
+| `sender_id`       | `UUID`         | FK â†’ users.id, NOT NULL         | â€”        | â€”                       |
+| `conversation_id` | `UUID`         | FK â†’ conversations.id, NOT NULL | â€”        | â€”                       |
+| `content`         | `TEXT`         | NOT NULL                        | â€”        | â€”                       |
 | `content_type`    | `VARCHAR(50)`  | NOT NULL                        | `'text'` | text, image, file, code |
-| `file_url`        | `VARCHAR(500)` | NULLABLE                        | —        | —                       |
-| `read_at`         | `TIMESTAMPTZ`  | NULLABLE                        | —        | —                       |
-| `created_at`      | `TIMESTAMPTZ`  | NOT NULL                        | `NOW()`  | —                       |
+| `file_url`        | `VARCHAR(500)` | NULLABLE                        | â€”        | â€”                       |
+| `read_at`         | `TIMESTAMPTZ`  | NULLABLE                        | â€”        | â€”                       |
+| `created_at`      | `TIMESTAMPTZ`  | NOT NULL                        | `NOW()`  | â€”                       |
 
 ### Table: `conversations`
 
 | Column       | Type           | Constraints | Default    | Description                |
 | ------------ | -------------- | ----------- | ---------- | -------------------------- |
-| `id`         | `UUID`         | PK          | —          | —                          |
+| `id`         | `UUID`         | PK          | â€”          | â€”                          |
 | `type`       | `VARCHAR(50)`  | NOT NULL    | `'direct'` | direct, group, study_group |
-| `title`      | `VARCHAR(255)` | NULLABLE    | —          | For group chats            |
-| `created_at` | `TIMESTAMPTZ`  | NOT NULL    | `NOW()`    | —                          |
+| `title`      | `VARCHAR(255)` | NULLABLE    | â€”          | For group chats            |
+| `created_at` | `TIMESTAMPTZ`  | NOT NULL    | `NOW()`    | â€”                          |
 
 ### Table: `conversation_participants`
 
 | Column            | Type          | Constraints                     | Default | Description |
 | ----------------- | ------------- | ------------------------------- | ------- | ----------- |
-| `conversation_id` | `UUID`        | FK → conversations.id, NOT NULL | —       | —           |
-| `user_id`         | `UUID`        | FK → users.id, NOT NULL         | —       | —           |
-| `last_read_at`    | `TIMESTAMPTZ` | NOT NULL                        | `NOW()` | —           |
-| `joined_at`       | `TIMESTAMPTZ` | NOT NULL                        | `NOW()` | —           |
+| `conversation_id` | `UUID`        | FK â†’ conversations.id, NOT NULL | â€”       | â€”           |
+| `user_id`         | `UUID`        | FK â†’ users.id, NOT NULL         | â€”       | â€”           |
+| `last_read_at`    | `TIMESTAMPTZ` | NOT NULL                        | `NOW()` | â€”           |
+| `joined_at`       | `TIMESTAMPTZ` | NOT NULL                        | `NOW()` | â€”           |
 
 **PK:** (conversation_id, user_id)
 
@@ -988,15 +988,15 @@
 
 | Column                  | Type           | Constraints                   | Default | Description                    |
 | ----------------------- | -------------- | ----------------------------- | ------- | ------------------------------ |
-| `id`                    | `UUID`         | PK                            | —       | —                              |
-| `student_id`            | `UUID`         | FK → students.id, NOT NULL    | —       | —                              |
-| `course_id`             | `UUID`         | FK → courses.id, NOT NULL     | —       | —                              |
-| `session_date`          | `DATE`         | NOT NULL                      | —       | —                              |
-| `status`                | `VARCHAR(50)`  | NOT NULL                      | —       | present, absent, excused, late |
-| `excused_reason`        | `TEXT`         | NULLABLE                      | —       | —                              |
-| `excuse_attachment_url` | `VARCHAR(500)` | NULLABLE                      | —       | —                              |
-| `marked_by`             | `UUID`         | FK → instructors.id, NOT NULL | —       | —                              |
-| `created_at`            | `TIMESTAMPTZ`  | NOT NULL                      | `NOW()` | —                              |
+| `id`                    | `UUID`         | PK                            | â€”       | â€”                              |
+| `student_id`            | `UUID`         | FK â†’ students.id, NOT NULL    | â€”       | â€”                              |
+| `course_id`             | `UUID`         | FK â†’ courses.id, NOT NULL     | â€”       | â€”                              |
+| `session_date`          | `DATE`         | NOT NULL                      | â€”       | â€”                              |
+| `status`                | `VARCHAR(50)`  | NOT NULL                      | â€”       | present, absent, excused, late |
+| `excused_reason`        | `TEXT`         | NULLABLE                      | â€”       | â€”                              |
+| `excuse_attachment_url` | `VARCHAR(500)` | NULLABLE                      | â€”       | â€”                              |
+| `marked_by`             | `UUID`         | FK â†’ instructors.id, NOT NULL | â€”       | â€”                              |
+| `created_at`            | `TIMESTAMPTZ`  | NOT NULL                      | `NOW()` | â€”                              |
 
 **Indexes:** UNIQUE(student_id, course_id, session_date)
 
@@ -1004,60 +1004,60 @@
 
 | Column        | Type           | Constraints                | Default | Description                                                   |
 | ------------- | -------------- | -------------------------- | ------- | ------------------------------------------------------------- |
-| `id`          | `UUID`         | PK                         | —       | —                                                             |
-| `student_id`  | `UUID`         | FK → students.id, NULLABLE | —       | Null = global event                                           |
-| `course_id`   | `UUID`         | FK → courses.id, NULLABLE  | —       | —                                                             |
-| `title`       | `VARCHAR(255)` | NOT NULL                   | —       | —                                                             |
-| `description` | `TEXT`         | NULLABLE                   | —       | —                                                             |
-| `event_type`  | `VARCHAR(50)`  | NOT NULL                   | —       | class, office_hours, deadline, exam, study_group, appointment |
-| `start_at`    | `TIMESTAMPTZ`  | NOT NULL                   | —       | —                                                             |
-| `end_at`      | `TIMESTAMPTZ`  | NOT NULL                   | —       | —                                                             |
-| `all_day`     | `BOOLEAN`      | NOT NULL                   | `false` | —                                                             |
-| `location`    | `VARCHAR(255)` | NULLABLE                   | —       | Room or virtual link                                          |
-| `meeting_url` | `VARCHAR(500)` | NULLABLE                   | —       | Zoom/Teams link                                               |
-| `created_at`  | `TIMESTAMPTZ`  | NOT NULL                   | `NOW()` | —                                                             |
+| `id`          | `UUID`         | PK                         | â€”       | â€”                                                             |
+| `student_id`  | `UUID`         | FK â†’ students.id, NULLABLE | â€”       | Null = global event                                           |
+| `course_id`   | `UUID`         | FK â†’ courses.id, NULLABLE  | â€”       | â€”                                                             |
+| `title`       | `VARCHAR(255)` | NOT NULL                   | â€”       | â€”                                                             |
+| `description` | `TEXT`         | NULLABLE                   | â€”       | â€”                                                             |
+| `event_type`  | `VARCHAR(50)`  | NOT NULL                   | â€”       | class, office_hours, deadline, exam, study_group, appointment |
+| `start_at`    | `TIMESTAMPTZ`  | NOT NULL                   | â€”       | â€”                                                             |
+| `end_at`      | `TIMESTAMPTZ`  | NOT NULL                   | â€”       | â€”                                                             |
+| `all_day`     | `BOOLEAN`      | NOT NULL                   | `false` | â€”                                                             |
+| `location`    | `VARCHAR(255)` | NULLABLE                   | â€”       | Room or virtual link                                          |
+| `meeting_url` | `VARCHAR(500)` | NULLABLE                   | â€”       | Zoom/Teams link                                               |
+| `created_at`  | `TIMESTAMPTZ`  | NOT NULL                   | `NOW()` | â€”                                                             |
 
 ### Table: `invoices`
 
 | Column              | Type            | Constraints                | Default     | Description                                 |
 | ------------------- | --------------- | -------------------------- | ----------- | ------------------------------------------- |
-| `id`                | `UUID`          | PK                         | —           | —                                           |
-| `student_id`        | `UUID`          | FK → students.id, NOT NULL | —           | —                                           |
-| `invoice_number`    | `VARCHAR(50)`   | UNIQUE, NOT NULL           | —           | INV-YYYY-NNNNN                              |
-| `description`       | `VARCHAR(500)`  | NOT NULL                   | —           | —                                           |
-| `amount`            | `DECIMAL(10,2)` | NOT NULL                   | —           | —                                           |
-| `currency`          | `VARCHAR(3)`    | NOT NULL                   | `'USD'`     | —                                           |
+| `id`                | `UUID`          | PK                         | â€”           | â€”                                           |
+| `student_id`        | `UUID`          | FK â†’ students.id, NOT NULL | â€”           | â€”                                           |
+| `invoice_number`    | `VARCHAR(50)`   | UNIQUE, NOT NULL           | â€”           | INV-YYYY-NNNNN                              |
+| `description`       | `VARCHAR(500)`  | NOT NULL                   | â€”           | â€”                                           |
+| `amount`            | `DECIMAL(10,2)` | NOT NULL                   | â€”           | â€”                                           |
+| `currency`          | `VARCHAR(3)`    | NOT NULL                   | `'USD'`     | â€”                                           |
 | `status`            | `VARCHAR(50)`   | NOT NULL                   | `'pending'` | pending, paid, overdue, cancelled, refunded |
-| `due_date`          | `DATE`          | NOT NULL                   | —           | —                                           |
-| `paid_at`           | `TIMESTAMPTZ`   | NULLABLE                   | —           | —                                           |
-| `stripe_invoice_id` | `VARCHAR(255)`  | NULLABLE                   | —           | —                                           |
-| `pdf_url`           | `VARCHAR(500)`  | NULLABLE                   | —           | —                                           |
-| `created_at`        | `TIMESTAMPTZ`   | NOT NULL                   | `NOW()`     | —                                           |
+| `due_date`          | `DATE`          | NOT NULL                   | â€”           | â€”                                           |
+| `paid_at`           | `TIMESTAMPTZ`   | NULLABLE                   | â€”           | â€”                                           |
+| `stripe_invoice_id` | `VARCHAR(255)`  | NULLABLE                   | â€”           | â€”                                           |
+| `pdf_url`           | `VARCHAR(500)`  | NULLABLE                   | â€”           | â€”                                           |
+| `created_at`        | `TIMESTAMPTZ`   | NOT NULL                   | `NOW()`     | â€”                                           |
 
 ### Table: `payments`
 
 | Column                     | Type            | Constraints                | Default | Description                 |
 | -------------------------- | --------------- | -------------------------- | ------- | --------------------------- |
-| `id`                       | `UUID`          | PK                         | —       | —                           |
-| `invoice_id`               | `UUID`          | FK → invoices.id, NOT NULL | —       | —                           |
-| `student_id`               | `UUID`          | FK → students.id, NOT NULL | —       | —                           |
-| `amount`                   | `DECIMAL(10,2)` | NOT NULL                   | —       | —                           |
-| `stripe_payment_intent_id` | `VARCHAR(255)`  | NOT NULL                   | —       | —                           |
-| `stripe_payment_method`    | `VARCHAR(50)`   | NULLABLE                   | —       | card, bank_transfer         |
-| `status`                   | `VARCHAR(50)`   | NOT NULL                   | —       | succeeded, failed, refunded |
-| `paid_at`                  | `TIMESTAMPTZ`   | NOT NULL                   | `NOW()` | —                           |
+| `id`                       | `UUID`          | PK                         | â€”       | â€”                           |
+| `invoice_id`               | `UUID`          | FK â†’ invoices.id, NOT NULL | â€”       | â€”                           |
+| `student_id`               | `UUID`          | FK â†’ students.id, NOT NULL | â€”       | â€”                           |
+| `amount`                   | `DECIMAL(10,2)` | NOT NULL                   | â€”       | â€”                           |
+| `stripe_payment_intent_id` | `VARCHAR(255)`  | NOT NULL                   | â€”       | â€”                           |
+| `stripe_payment_method`    | `VARCHAR(50)`   | NULLABLE                   | â€”       | card, bank_transfer         |
+| `status`                   | `VARCHAR(50)`   | NOT NULL                   | â€”       | succeeded, failed, refunded |
+| `paid_at`                  | `TIMESTAMPTZ`   | NOT NULL                   | `NOW()` | â€”                           |
 
 ### Table: `study_groups`
 
 | Column        | Type           | Constraints               | Default | Description |
 | ------------- | -------------- | ------------------------- | ------- | ----------- |
-| `id`          | `UUID`         | PK                        | —       | —           |
-| `name`        | `VARCHAR(255)` | NOT NULL                  | —       | —           |
-| `course_id`   | `UUID`         | FK → courses.id, NULLABLE | —       | —           |
-| `created_by`  | `UUID`         | FK → users.id, NOT NULL   | —       | —           |
-| `max_members` | `INTEGER`      | NOT NULL                  | `10`    | —           |
-| `description` | `TEXT`         | NULLABLE                  | —       | —           |
-| `created_at`  | `TIMESTAMPTZ`  | NOT NULL                  | `NOW()` | —           |
+| `id`          | `UUID`         | PK                        | â€”       | â€”           |
+| `name`        | `VARCHAR(255)` | NOT NULL                  | â€”       | â€”           |
+| `course_id`   | `UUID`         | FK â†’ courses.id, NULLABLE | â€”       | â€”           |
+| `created_by`  | `UUID`         | FK â†’ users.id, NOT NULL   | â€”       | â€”           |
+| `max_members` | `INTEGER`      | NOT NULL                  | `10`    | â€”           |
+| `description` | `TEXT`         | NULLABLE                  | â€”       | â€”           |
+| `created_at`  | `TIMESTAMPTZ`  | NOT NULL                  | `NOW()` | â€”           |
 
 ---
 
@@ -1441,11 +1441,11 @@ interface CreatePostRequest {
 
 ### `GET /api/student/conversations`
 
-**Auth:** Required (student) — returns list of conversations with unread counts
+**Auth:** Required (student) â€” returns list of conversations with unread counts
 
 ### `POST /api/student/messages`
 
-**Auth:** Required (student) — send message
+**Auth:** Required (student) â€” send message
 
 **Request:**
 
@@ -1578,205 +1578,205 @@ interface CertificateProgress {
 
 ```
 StudentLayout
-├── StudentNavBar
-│   ├── Logo
-│   ├── NavLinks (Dashboard, Learning, Assignments, Community, Marketplace)
-│   ├── NotificationBell (with unread count badge)
-│   ├── MessageIndicator (unread count)
-│   └── UserMenu (Profile, Portfolio, Finance, Settings, Logout)
-│
-├── StudentDashboard
-│   ├── WelcomeHeader (name, program, resume button)
-│   ├── DashboardGrid
-│   │   ├── NextClassCard
-│   │   │   ├── CourseName, ModuleName, Time
-│   │   │   ├── InstructorName
-│   │   │   └── JoinButton
-│   │   ├── PendingTasksCard
-│   │   │   └── TaskItem[] (title, due, type icon, start button)
-│   │   └── WeeklyStatsCard
-│   │       ├── StatCircle (hours)
-│   │       ├── StatCircle (avg score)
-│   │       ├── StatRow (completed/total)
-│   │       └── Badge (top percentile)
-│   ├── RecentActivityFeed
-│   │   └── ActivityItem[] (icon, message, timestamp, link)
-│   ├── QuickActions
-│   │   ├── QuickActionButton("New Message")
-│   │   ├── QuickActionButton("Browse Market")
-│   │   ├── QuickActionButton("View Calendar")
-│   │   └── QuickActionButton("Find Study Group")
-│   └── UpcomingDeadlines
-│       └── DeadlineItem[] (title, date, course)
-│
-├── LearningHub
-│   ├── PageHeader (title + overview progress)
-│   ├── ProgramProgressBar (overall %)
-│   ├── ModuleList (accordion)
-│   │   └── ModuleAccordion[]
-│   │       ├── ModuleHeader (title, progress bar, status icon)
-│   │       └── LessonItem[] (title, type icon, duration, status, score, resume button)
-│   └── ArchivedEnrollments (collapsible)
-│
-├── LessonViewer
-│   ├── LessonBreadcrumb
-│   ├── LessonHeader (title, module, position, estimated time)
-│   ├── ContentRenderer (switches by contentType)
-│   │   ├── VideoPlayer (Mux/Cloudflare Stream)
-│   │   │   ├── PlayPauseButton, SeekBar, VolumeControl
-│   │   │   ├── SpeedSelector, QualitySelector, CaptionsToggle
-│   │   │   ├── PictureInPictureButton, FullscreenButton
-│   │   │   └── ProgressTracker (auto-saves position)
-│   │   ├── ArticleRenderer (MDX content, code highlighting)
-│   │   ├── QuizRenderer (see assessment)
-│   │   ├── CodingExercise (monaco editor + test runner)
-│   │   └── ProjectViewer (instructions + submission form)
-│   ├── KeyTakeaways (expandable)
-│   ├── TranscriptPanel (expandable, searchable)
-│   ├── LessonNavigation (Mark Complete, Prev, Next buttons)
-│   └── LessonSidebar (module lesson list, scroll spy)
-│
-├── AssignmentsCenter
-│   ├── FilterTabs (All, Pending, Submitted, Graded, Late)
-│   ├── AssignmentCard[] (title, course, due, status badge, score, action button)
-│   └── EmptyState (per filter)
-│
-├── AssignmentDetail
-│   ├── AssignmentHeader (title, course, due date, points)
-│   ├── InstructionsPanel (rich HTML content)
-│   ├── ResourcesPanel (downloadable files)
-│   ├── RubricTable (criterion, max points, score if graded)
-│   ├── SubmissionPanel
-│   │   ├── FileUploader (drag & drop, list, remove)
-│   │   ├── RichTextEditor (submission text)
-│   │   ├── CommentsTextArea
-│   │   ├── SubmitButton
-│   │   └── SubmitConfirmationModal
-│   ├── PreviousSubmissions (accordion of past attempts)
-│   └── GradedFeedback (if graded: score, letter, feedback text, rubric scores)
-│
-├── AssessmentEngine
-│   ├── AssessmentList (upcoming, available, completed)
-│   ├── AssessmentInstructions (time limit, attempts, passing score)
-│   ├── QuizTaker
-│   │   ├── TimerBar (auto-submit warning at 1 min)
-│   │   ├── QuestionRenderer (type switch)
-│   │   │   ├── MultipleChoiceQuestion
-│   │   │   ├── MultipleAnswerQuestion
-│   │   │   ├── TrueFalseQuestion
-│   │   │   ├── ShortAnswerQuestion
-│   │   │   ├── CodingQuestion (monaco editor)
-│   │   │   └── EssayQuestion (rich text)
-│   │   ├── QuestionNavigator (numbered grid, color-coded)
-│   │   ├── NavigationButtons (Prev/Next/Submit)
-│   │   └── SubmitModal (review unanswered)
-│   └── AssessmentResult
-│       ├── ScoreDisplay (percentage, bar, pass/fail)
-│       ├── QuestionReview[] (correct/incorrect, correct answer)
-│       └── RetryButton (if attempts remain)
-│
-├── Gradebook
-│   ├── OverallGpaCard (GPA, program, rank)
-│   ├── CourseGradeList
-│   │   └── CourseGradeRow[]
-│   │       ├── CourseHeader (title, avg, letter, weight)
-│   │       ├── GradeItemsTable (name, score, max, %, weight, letter)
-│   │       └── ExpandToggle
-│   └── WhatIfCalculator
-│       ├── GradeAdjustSlider (per item)
-│       ├── ProjectedGpa
-│       └── ResetButton
-│
-├── PortfolioBuilder
-│   ├── ProfileSection (avatar, name, title, bio, links, edit mode)
-│   ├── SkillsManager
-│   │   ├── SkillChip[] (name, stars, remove)
-│   │   ├── AddSkillForm (name + proficiency slider)
-│   │   └── DragSortContainer
-│   ├── ProjectsSection
-│   │   ├── ProjectCard[] (title, desc, links, media, skills, edit/delete)
-│   │   ├── AddProjectButton → ProjectFormModal
-│   │   └── ProjectFormModal (title, desc, URL, media upload, skills multi-select)
-│   ├── CertificatesSection (read-only list from certificates table)
-│   ├── EducationSection (add/edit/delete education entries)
-│   └── ExperienceSection (add/edit/delete work experience)
-│
-├── Marketplace
-│   ├── SearchBar
-│   ├── CategoryFilter
-│   ├── ProductGrid
-│   │   └── ProductCard[] (title, price, thumbnail, category, add to cart button)
-│   ├── ShoppingCart (slide-out drawer)
-│   │   ├── CartItem[] (title, price, quantity, remove)
-│   │   ├── CartTotal
-│   │   └── CheckoutButton
-│   └── PurchasesList (my purchases, download links)
-│
-├── CommunityPage
-│   ├── CategoryTabs
-│   ├── SearchInput
-│   ├── PinnedPosts (top)
-│   ├── PostList (cursor paginated)
-│   │   └── PostCard[] (title, author badge, category, reply count, upvotes, time)
-│   ├── NewPostButton → NewPostModal
-│   └── PostDetail
-│       ├── PostContent (title, author, content, upvote)
-│       ├── ReplyList (nested threading)
-│       │   └── ReplyCard[] (author, content, upvote, isSolution badge)
-│       ├── ReplyForm (rich text + submit)
-│       └── SharePostButton
-│
-├── CalendarPage
-│   ├── ViewToggle (month/week/day)
-│   ├── CalendarHeader (month nav + today button)
-│   ├── CalendarGrid (month view with event dots)
-│   ├── WeekView / DayView (time slots)
-│   ├── EventDetail (popover on click: title, time, description, link)
-│   └── UpcomingList (sidebar list)
-│
-├── MessagingPage
-│   ├── ConversationList (sidebar)
-│   │   ├── SearchConversations
-│   │   └── ConversationItem[] (avatar, name, last message, time, unread badge)
-│   ├── MessageArea
-│   │   ├── ConversationHeader (name, online status, actions)
-│   │   ├── MessageList (scrollable, auto-scroll to bottom)
-│   │   │   └── MessageBubble[] (content, time, read receipt, file preview)
-│   │   ├── MessageInput
-│   │   │   ├── TextArea (auto-resize)
-│   │   │   ├── FileAttachButton
-│   │   │   ├── CodeSnippetButton
-│   │   │   ├── EmojiPicker
-│   │   │   └── SendButton
-│   │   └── TypingIndicator
-│   └── NewConversationModal (search users, multi-select)
-│
-├── FinancePage
-│   ├── BalanceOverview (total, next payment, pay now button)
-│   ├── PaymentPlanCard (type, progress bar, remaining)
-│   ├── InvoiceTable (number, date, amount, status, PDF download)
-│   ├── PaymentMethods (saved cards, add new)
-│   ├── PaymentForm (Stripe Elements)
-│   ├── ScholarshipList (name, amount, status)
-│   └── TransactionHistory
-│
-├── AttendancePage
-│   ├── OverallStatCircle (percentage, color-coded)
-│   ├── CourseAttendanceList (per course table)
-│   ├── AttendancePolicyBanner (if below threshold)
-│   └── ExcuseFormModal (reason, file attach)
-│
-├── CertificatesPage
-│   ├── EarnedSection
-│   │   └── CertificateCard[] (name, date, ID, actions: view/download/share/verify)
-│   └── InProgressSection
-│       └── CertificateProgressItem[] (name, progress bar, requirement checklist)
-│
-└── StudentSettings
-    ├── ProfileSettings (name, email, phone, password)
-    ├── NotificationPreferences (email, push, SMS toggles per category)
-    ├── PrivacySettings (portfolio visibility, online status)
-    └── ThemeSettings (light/dark/system)
+â”œâ”€â”€ StudentNavBar
+â”‚   â”œâ”€â”€ Logo
+â”‚   â”œâ”€â”€ NavLinks (Dashboard, Learning, Assignments, Community, Marketplace)
+â”‚   â”œâ”€â”€ NotificationBell (with unread count badge)
+â”‚   â”œâ”€â”€ MessageIndicator (unread count)
+â”‚   â””â”€â”€ UserMenu (Profile, Portfolio, Finance, Settings, Logout)
+â”‚
+â”œâ”€â”€ StudentDashboard
+â”‚   â”œâ”€â”€ WelcomeHeader (name, program, resume button)
+â”‚   â”œâ”€â”€ DashboardGrid
+â”‚   â”‚   â”œâ”€â”€ NextClassCard
+â”‚   â”‚   â”‚   â”œâ”€â”€ CourseName, ModuleName, Time
+â”‚   â”‚   â”‚   â”œâ”€â”€ InstructorName
+â”‚   â”‚   â”‚   â””â”€â”€ JoinButton
+â”‚   â”‚   â”œâ”€â”€ PendingTasksCard
+â”‚   â”‚   â”‚   â””â”€â”€ TaskItem[] (title, due, type icon, start button)
+â”‚   â”‚   â””â”€â”€ WeeklyStatsCard
+â”‚   â”‚       â”œâ”€â”€ StatCircle (hours)
+â”‚   â”‚       â”œâ”€â”€ StatCircle (avg score)
+â”‚   â”‚       â”œâ”€â”€ StatRow (completed/total)
+â”‚   â”‚       â””â”€â”€ Badge (top percentile)
+â”‚   â”œâ”€â”€ RecentActivityFeed
+â”‚   â”‚   â””â”€â”€ ActivityItem[] (icon, message, timestamp, link)
+â”‚   â”œâ”€â”€ QuickActions
+â”‚   â”‚   â”œâ”€â”€ QuickActionButton("New Message")
+â”‚   â”‚   â”œâ”€â”€ QuickActionButton("Browse Market")
+â”‚   â”‚   â”œâ”€â”€ QuickActionButton("View Calendar")
+â”‚   â”‚   â””â”€â”€ QuickActionButton("Find Study Group")
+â”‚   â””â”€â”€ UpcomingDeadlines
+â”‚       â””â”€â”€ DeadlineItem[] (title, date, course)
+â”‚
+â”œâ”€â”€ LearningHub
+â”‚   â”œâ”€â”€ PageHeader (title + overview progress)
+â”‚   â”œâ”€â”€ ProgramProgressBar (overall %)
+â”‚   â”œâ”€â”€ ModuleList (accordion)
+â”‚   â”‚   â””â”€â”€ ModuleAccordion[]
+â”‚   â”‚       â”œâ”€â”€ ModuleHeader (title, progress bar, status icon)
+â”‚   â”‚       â””â”€â”€ LessonItem[] (title, type icon, duration, status, score, resume button)
+â”‚   â””â”€â”€ ArchivedEnrollments (collapsible)
+â”‚
+â”œâ”€â”€ LessonViewer
+â”‚   â”œâ”€â”€ LessonBreadcrumb
+â”‚   â”œâ”€â”€ LessonHeader (title, module, position, estimated time)
+â”‚   â”œâ”€â”€ ContentRenderer (switches by contentType)
+â”‚   â”‚   â”œâ”€â”€ VideoPlayer (Mux/Cloudflare Stream)
+â”‚   â”‚   â”‚   â”œâ”€â”€ PlayPauseButton, SeekBar, VolumeControl
+â”‚   â”‚   â”‚   â”œâ”€â”€ SpeedSelector, QualitySelector, CaptionsToggle
+â”‚   â”‚   â”‚   â”œâ”€â”€ PictureInPictureButton, FullscreenButton
+â”‚   â”‚   â”‚   â””â”€â”€ ProgressTracker (auto-saves position)
+â”‚   â”‚   â”œâ”€â”€ ArticleRenderer (MDX content, code highlighting)
+â”‚   â”‚   â”œâ”€â”€ QuizRenderer (see assessment)
+â”‚   â”‚   â”œâ”€â”€ CodingExercise (monaco editor + test runner)
+â”‚   â”‚   â””â”€â”€ ProjectViewer (instructions + submission form)
+â”‚   â”œâ”€â”€ KeyTakeaways (expandable)
+â”‚   â”œâ”€â”€ TranscriptPanel (expandable, searchable)
+â”‚   â”œâ”€â”€ LessonNavigation (Mark Complete, Prev, Next buttons)
+â”‚   â””â”€â”€ LessonSidebar (module lesson list, scroll spy)
+â”‚
+â”œâ”€â”€ AssignmentsCenter
+â”‚   â”œâ”€â”€ FilterTabs (All, Pending, Submitted, Graded, Late)
+â”‚   â”œâ”€â”€ AssignmentCard[] (title, course, due, status badge, score, action button)
+â”‚   â””â”€â”€ EmptyState (per filter)
+â”‚
+â”œâ”€â”€ AssignmentDetail
+â”‚   â”œâ”€â”€ AssignmentHeader (title, course, due date, points)
+â”‚   â”œâ”€â”€ InstructionsPanel (rich HTML content)
+â”‚   â”œâ”€â”€ ResourcesPanel (downloadable files)
+â”‚   â”œâ”€â”€ RubricTable (criterion, max points, score if graded)
+â”‚   â”œâ”€â”€ SubmissionPanel
+â”‚   â”‚   â”œâ”€â”€ FileUploader (drag & drop, list, remove)
+â”‚   â”‚   â”œâ”€â”€ RichTextEditor (submission text)
+â”‚   â”‚   â”œâ”€â”€ CommentsTextArea
+â”‚   â”‚   â”œâ”€â”€ SubmitButton
+â”‚   â”‚   â””â”€â”€ SubmitConfirmationModal
+â”‚   â”œâ”€â”€ PreviousSubmissions (accordion of past attempts)
+â”‚   â””â”€â”€ GradedFeedback (if graded: score, letter, feedback text, rubric scores)
+â”‚
+â”œâ”€â”€ AssessmentEngine
+â”‚   â”œâ”€â”€ AssessmentList (upcoming, available, completed)
+â”‚   â”œâ”€â”€ AssessmentInstructions (time limit, attempts, passing score)
+â”‚   â”œâ”€â”€ QuizTaker
+â”‚   â”‚   â”œâ”€â”€ TimerBar (auto-submit warning at 1 min)
+â”‚   â”‚   â”œâ”€â”€ QuestionRenderer (type switch)
+â”‚   â”‚   â”‚   â”œâ”€â”€ MultipleChoiceQuestion
+â”‚   â”‚   â”‚   â”œâ”€â”€ MultipleAnswerQuestion
+â”‚   â”‚   â”‚   â”œâ”€â”€ TrueFalseQuestion
+â”‚   â”‚   â”‚   â”œâ”€â”€ ShortAnswerQuestion
+â”‚   â”‚   â”‚   â”œâ”€â”€ CodingQuestion (monaco editor)
+â”‚   â”‚   â”‚   â””â”€â”€ EssayQuestion (rich text)
+â”‚   â”‚   â”œâ”€â”€ QuestionNavigator (numbered grid, color-coded)
+â”‚   â”‚   â”œâ”€â”€ NavigationButtons (Prev/Next/Submit)
+â”‚   â”‚   â””â”€â”€ SubmitModal (review unanswered)
+â”‚   â””â”€â”€ AssessmentResult
+â”‚       â”œâ”€â”€ ScoreDisplay (percentage, bar, pass/fail)
+â”‚       â”œâ”€â”€ QuestionReview[] (correct/incorrect, correct answer)
+â”‚       â””â”€â”€ RetryButton (if attempts remain)
+â”‚
+â”œâ”€â”€ Gradebook
+â”‚   â”œâ”€â”€ OverallGpaCard (GPA, program, rank)
+â”‚   â”œâ”€â”€ CourseGradeList
+â”‚   â”‚   â””â”€â”€ CourseGradeRow[]
+â”‚   â”‚       â”œâ”€â”€ CourseHeader (title, avg, letter, weight)
+â”‚   â”‚       â”œâ”€â”€ GradeItemsTable (name, score, max, %, weight, letter)
+â”‚   â”‚       â””â”€â”€ ExpandToggle
+â”‚   â””â”€â”€ WhatIfCalculator
+â”‚       â”œâ”€â”€ GradeAdjustSlider (per item)
+â”‚       â”œâ”€â”€ ProjectedGpa
+â”‚       â””â”€â”€ ResetButton
+â”‚
+â”œâ”€â”€ PortfolioBuilder
+â”‚   â”œâ”€â”€ ProfileSection (avatar, name, title, bio, links, edit mode)
+â”‚   â”œâ”€â”€ SkillsManager
+â”‚   â”‚   â”œâ”€â”€ SkillChip[] (name, stars, remove)
+â”‚   â”‚   â”œâ”€â”€ AddSkillForm (name + proficiency slider)
+â”‚   â”‚   â””â”€â”€ DragSortContainer
+â”‚   â”œâ”€â”€ ProjectsSection
+â”‚   â”‚   â”œâ”€â”€ ProjectCard[] (title, desc, links, media, skills, edit/delete)
+â”‚   â”‚   â”œâ”€â”€ AddProjectButton â†’ ProjectFormModal
+â”‚   â”‚   â””â”€â”€ ProjectFormModal (title, desc, URL, media upload, skills multi-select)
+â”‚   â”œâ”€â”€ CertificatesSection (read-only list from certificates table)
+â”‚   â”œâ”€â”€ EducationSection (add/edit/delete education entries)
+â”‚   â””â”€â”€ ExperienceSection (add/edit/delete work experience)
+â”‚
+â”œâ”€â”€ Marketplace
+â”‚   â”œâ”€â”€ SearchBar
+â”‚   â”œâ”€â”€ CategoryFilter
+â”‚   â”œâ”€â”€ ProductGrid
+â”‚   â”‚   â””â”€â”€ ProductCard[] (title, price, thumbnail, category, add to cart button)
+â”‚   â”œâ”€â”€ ShoppingCart (slide-out drawer)
+â”‚   â”‚   â”œâ”€â”€ CartItem[] (title, price, quantity, remove)
+â”‚   â”‚   â”œâ”€â”€ CartTotal
+â”‚   â”‚   â””â”€â”€ CheckoutButton
+â”‚   â””â”€â”€ PurchasesList (my purchases, download links)
+â”‚
+â”œâ”€â”€ CommunityPage
+â”‚   â”œâ”€â”€ CategoryTabs
+â”‚   â”œâ”€â”€ SearchInput
+â”‚   â”œâ”€â”€ PinnedPosts (top)
+â”‚   â”œâ”€â”€ PostList (cursor paginated)
+â”‚   â”‚   â””â”€â”€ PostCard[] (title, author badge, category, reply count, upvotes, time)
+â”‚   â”œâ”€â”€ NewPostButton â†’ NewPostModal
+â”‚   â””â”€â”€ PostDetail
+â”‚       â”œâ”€â”€ PostContent (title, author, content, upvote)
+â”‚       â”œâ”€â”€ ReplyList (nested threading)
+â”‚       â”‚   â””â”€â”€ ReplyCard[] (author, content, upvote, isSolution badge)
+â”‚       â”œâ”€â”€ ReplyForm (rich text + submit)
+â”‚       â””â”€â”€ SharePostButton
+â”‚
+â”œâ”€â”€ CalendarPage
+â”‚   â”œâ”€â”€ ViewToggle (month/week/day)
+â”‚   â”œâ”€â”€ CalendarHeader (month nav + today button)
+â”‚   â”œâ”€â”€ CalendarGrid (month view with event dots)
+â”‚   â”œâ”€â”€ WeekView / DayView (time slots)
+â”‚   â”œâ”€â”€ EventDetail (popover on click: title, time, description, link)
+â”‚   â””â”€â”€ UpcomingList (sidebar list)
+â”‚
+â”œâ”€â”€ MessagingPage
+â”‚   â”œâ”€â”€ ConversationList (sidebar)
+â”‚   â”‚   â”œâ”€â”€ SearchConversations
+â”‚   â”‚   â””â”€â”€ ConversationItem[] (avatar, name, last message, time, unread badge)
+â”‚   â”œâ”€â”€ MessageArea
+â”‚   â”‚   â”œâ”€â”€ ConversationHeader (name, online status, actions)
+â”‚   â”‚   â”œâ”€â”€ MessageList (scrollable, auto-scroll to bottom)
+â”‚   â”‚   â”‚   â””â”€â”€ MessageBubble[] (content, time, read receipt, file preview)
+â”‚   â”‚   â”œâ”€â”€ MessageInput
+â”‚   â”‚   â”‚   â”œâ”€â”€ TextArea (auto-resize)
+â”‚   â”‚   â”‚   â”œâ”€â”€ FileAttachButton
+â”‚   â”‚   â”‚   â”œâ”€â”€ CodeSnippetButton
+â”‚   â”‚   â”‚   â”œâ”€â”€ EmojiPicker
+â”‚   â”‚   â”‚   â””â”€â”€ SendButton
+â”‚   â”‚   â””â”€â”€ TypingIndicator
+â”‚   â””â”€â”€ NewConversationModal (search users, multi-select)
+â”‚
+â”œâ”€â”€ FinancePage
+â”‚   â”œâ”€â”€ BalanceOverview (total, next payment, pay now button)
+â”‚   â”œâ”€â”€ PaymentPlanCard (type, progress bar, remaining)
+â”‚   â”œâ”€â”€ InvoiceTable (number, date, amount, status, PDF download)
+â”‚   â”œâ”€â”€ PaymentMethods (saved cards, add new)
+â”‚   â”œâ”€â”€ PaymentForm (Stripe Elements)
+â”‚   â”œâ”€â”€ ScholarshipList (name, amount, status)
+â”‚   â””â”€â”€ TransactionHistory
+â”‚
+â”œâ”€â”€ AttendancePage
+â”‚   â”œâ”€â”€ OverallStatCircle (percentage, color-coded)
+â”‚   â”œâ”€â”€ CourseAttendanceList (per course table)
+â”‚   â”œâ”€â”€ AttendancePolicyBanner (if below threshold)
+â”‚   â””â”€â”€ ExcuseFormModal (reason, file attach)
+â”‚
+â”œâ”€â”€ CertificatesPage
+â”‚   â”œâ”€â”€ EarnedSection
+â”‚   â”‚   â””â”€â”€ CertificateCard[] (name, date, ID, actions: view/download/share/verify)
+â”‚   â””â”€â”€ InProgressSection
+â”‚       â””â”€â”€ CertificateProgressItem[] (name, progress bar, requirement checklist)
+â”‚
+â””â”€â”€ StudentSettings
+    â”œâ”€â”€ ProfileSettings (name, email, phone, password)
+    â”œâ”€â”€ NotificationPreferences (email, push, SMS toggles per category)
+    â”œâ”€â”€ PrivacySettings (portfolio visibility, online status)
+    â””â”€â”€ ThemeSettings (light/dark/system)
 ```
 
 ---
@@ -1789,242 +1789,242 @@ StudentLayout
 Prerequisite: Student enrolled, program start date has arrived or imminent
 
 Step 1: Student receives welcome email: "Your classroom is ready!"
-  → CTA: "Go to Dashboard" → https://cea.academy/dashboard
-  → Student logs in (POST /api/auth/login)
+  â†’ CTA: "Go to Dashboard" â†’ https://cea.ng/dashboard
+  â†’ Student logs in (POST /api/auth/login)
 
 Step 2: Dashboard loads
-  → System fetches GET /api/student/dashboard
-  → Shows "Welcome back, Alex!"
-  → Shows next class: Network Defense, Module 3, 2:00 PM today
-  → Shows pending tasks: Lab 4 (due Fri), Quiz (due Wed)
-  → Shows weekly stats: 12.5h spent, 88% avg, 6/8 done
+  â†’ System fetches GET /api/student/dashboard
+  â†’ Shows "Welcome back, Alex!"
+  â†’ Shows next class: Network Defense, Module 3, 2:00 PM today
+  â†’ Shows pending tasks: Lab 4 (due Fri), Quiz (due Wed)
+  â†’ Shows weekly stats: 12.5h spent, 88% avg, 6/8 done
 
 Step 3: Student clicks pending task "Lab 4"
-  → Navigates to /assignments/{id}
-  → System loads assignment detail
-  → Student reads instructions, downloads assignment files
-  → Starts working
+  â†’ Navigates to /assignments/{id}
+  â†’ System loads assignment detail
+  â†’ Student reads instructions, downloads assignment files
+  â†’ Starts working
 
 Alternative Path:
-  Step 2a: Student clicks "Resume Learning" → redirects to learning hub
-  Step 2b: Student clicks "Join" on next class → opens meeting URL in new tab
-  Step 2c: No next class today → card shows "No classes scheduled" with calendar link
+  Step 2a: Student clicks "Resume Learning" â†’ redirects to learning hub
+  Step 2b: Student clicks "Join" on next class â†’ opens meeting URL in new tab
+  Step 2c: No next class today â†’ card shows "No classes scheduled" with calendar link
 ```
 
 ### Journey 7.2: Consuming a Video Lesson
 
 ```
-Step 1: Student navigates to /learning → sees module 3 at 42%
-  → Clicks "Resume" on Lesson 13: Symmetric Encryption
+Step 1: Student navigates to /learning â†’ sees module 3 at 42%
+  â†’ Clicks "Resume" on Lesson 13: Symmetric Encryption
 
 Step 2: Lesson viewer loads with video player
-  → Video starts from last position (saved via lesson_progress.video_position)
-  → Student watches video, pauses, rewinds
-  → System saves progress every 10s (POST /api/student/lessons/:id/progress)
+  â†’ Video starts from last position (saved via lesson_progress.video_position)
+  â†’ Student watches video, pauses, rewinds
+  â†’ System saves progress every 10s (POST /api/student/lessons/:id/progress)
 
 Step 3: Student reaches 100% of video
-  → "Mark Complete" button becomes active
-  → Student clicks "Mark Complete"
-  → API call: progress { status: 'completed', progressPercentage: 100 }
-  → Module progress recalculates from 42% → 57%
-  → "Next Lesson →" button appears
-  → Confetti micro-animation
+  â†’ "Mark Complete" button becomes active
+  â†’ Student clicks "Mark Complete"
+  â†’ API call: progress { status: 'completed', progressPercentage: 100 }
+  â†’ Module progress recalculates from 42% â†’ 57%
+  â†’ "Next Lesson â†’" button appears
+  â†’ Confetti micro-animation
 
 Step 4: Student clicks "Next Lesson"
-  → Navigates to Lesson 14
+  â†’ Navigates to Lesson 14
 
 Alternative Path:
-  Step 3a: Student doesn't mark complete → navigates away → progress saved at 85%
-  Step 3b: Video fails midway → "Video playback error. [Refresh] [Download]"
-  Step 3c: Student watches on mobile → responsive player, limited quality options
+  Step 3a: Student doesn't mark complete â†’ navigates away â†’ progress saved at 85%
+  Step 3b: Video fails midway â†’ "Video playback error. [Refresh] [Download]"
+  Step 3c: Student watches on mobile â†’ responsive player, limited quality options
 ```
 
 ### Journey 7.3: Submitting an Assignment
 
 ```
-Step 1: Student sees pending assignment in dashboard → clicks "Start →"
-  → Navigates to /assignments/{id}
+Step 1: Student sees pending assignment in dashboard â†’ clicks "Start â†’"
+  â†’ Navigates to /assignments/{id}
 
 Step 2: Assignment instructions loaded
-  → Student reads "Analyze packet capture with Wireshark"
-  → Downloads assignment files (PCAP + template)
-  → Views rubric: 4 criteria × 25 points = 100 total
+  â†’ Student reads "Analyze packet capture with Wireshark"
+  â†’ Downloads assignment files (PCAP + template)
+  â†’ Views rubric: 4 criteria Ã— 25 points = 100 total
 
 Step 3: Student works offline, returns to submit
-  → Drags analysis_report.pdf and capture_analysis.pcap to upload zone
-  → Files upload with progress bar (POST /api/upload per file)
-  → Adds comment: "Please check my analysis in section 3"
+  â†’ Drags analysis_report.pdf and capture_analysis.pcap to upload zone
+  â†’ Files upload with progress bar (POST /api/upload per file)
+  â†’ Adds comment: "Please check my analysis in section 3"
 
 Step 4: Clicks "Submit Assignment"
-  → Confirmation modal: "Submit Lab 4? You have 1 attempt remaining."
-  → Student confirms → POST /api/student/assignments/:id/submit
-  → Success: status changes to 'submitted'
-  → Toast: "Submitted successfully! Waiting for grade."
-  → Redirect back to assignments list
+  â†’ Confirmation modal: "Submit Lab 4? You have 1 attempt remaining."
+  â†’ Student confirms â†’ POST /api/student/assignments/:id/submit
+  â†’ Success: status changes to 'submitted'
+  â†’ Toast: "Submitted successfully! Waiting for grade."
+  â†’ Redirect back to assignments list
 
 Alternative Paths:
-  Step 4a: File too large (50MB limit) → "File exceeds 50MB limit"
-  Step 4b: Network fails during submit → queue in IndexedDB, retry on reconnect
-  Step 4c: Past due → warning "This assignment is X days late. Late penalty applies."
-  Step 4d: Last attempt → warning "This is your final submission attempt."
-  Step 4e: Resubmission allowed → student can submit again
+  Step 4a: File too large (50MB limit) â†’ "File exceeds 50MB limit"
+  Step 4b: Network fails during submit â†’ queue in IndexedDB, retry on reconnect
+  Step 4c: Past due â†’ warning "This assignment is X days late. Late penalty applies."
+  Step 4d: Last attempt â†’ warning "This is your final submission attempt."
+  Step 4e: Resubmission allowed â†’ student can submit again
 ```
 
 ### Journey 7.4: Taking a Timed Quiz
 
 ```
 Step 1: Student clicks quiz link from learning hub or assignments
-  → Assessment instructions page: "Cryptography Fundamentals"
-  → Shows: 15 questions, 30-minute time limit, 2 attempts, 70% passing
+  â†’ Assessment instructions page: "Cryptography Fundamentals"
+  â†’ Shows: 15 questions, 30-minute time limit, 2 attempts, 70% passing
 
 Step 2: Student clicks "Start Quiz"
-  → POST /api/student/assessments/:id/attempt
-  → First question renders, timer starts counting down
+  â†’ POST /api/student/assessments/:id/attempt
+  â†’ First question renders, timer starts counting down
 
 Step 3: Student answers questions
-  → Q1: Multiple choice → selects "AES"
-  → Q4: Multiple answer → checks 3/4 correct options
-  → Q7: True/False → selects "True"
-  → Q10: Short answer → types "Symmetric encryption uses one key"
+  â†’ Q1: Multiple choice â†’ selects "AES"
+  â†’ Q4: Multiple answer â†’ checks 3/4 correct options
+  â†’ Q7: True/False â†’ selects "True"
+  â†’ Q10: Short answer â†’ types "Symmetric encryption uses one key"
 
 Step 4: Student uses question navigator
-  → Answered: green, Unanswered: red, Current: blue
-  → Sees questions 12, 14 unanswered
-  → Goes back to Q12, answers it
+  â†’ Answered: green, Unanswered: red, Current: blue
+  â†’ Sees questions 12, 14 unanswered
+  â†’ Goes back to Q12, answers it
 
 Step 5: Student clicks "Submit Quiz"
-  → Modal: "You have 2 unanswered questions. Submit anyway?"
-  → Student confirms
-  → POST /api/student/assessments/:id/attempt/submit
-  → Auto-graded immediately
-  → Score: 13/15 = 86.7% → Passed!
+  â†’ Modal: "You have 2 unanswered questions. Submit anyway?"
+  â†’ Student confirms
+  â†’ POST /api/student/assessments/:id/attempt/submit
+  â†’ Auto-graded immediately
+  â†’ Score: 13/15 = 86.7% â†’ Passed!
 
 Step 6: Results page shows
-  → Score: 86.7% (passing: 70%) → Green "Passed" badge
-  → Per-question breakdown: which correct/incorrect, correct answer shown
-  → Q3 wrong: "The correct answer was Diffie-Hellman (asymmetric)."
-  → "Attempt 1 of 2 used. You can retry for a higher score."
+  â†’ Score: 86.7% (passing: 70%) â†’ Green "Passed" badge
+  â†’ Per-question breakdown: which correct/incorrect, correct answer shown
+  â†’ Q3 wrong: "The correct answer was Diffie-Hellman (asymmetric)."
+  â†’ "Attempt 1 of 2 used. You can retry for a higher score."
 
 Alternative Paths:
-  Step 5a: Timer reaches 0 → auto-submit with whatever answered
-  Step 5b: Student runs out of attempts → "No attempts remaining. Final score: 86.7%"
-  Step 5c: Student closes browser mid-quiz → on return, resume from where left off
-  Step 5d: Student fails (<70%) → "You scored 60%. Review the material and try again."
+  Step 5a: Timer reaches 0 â†’ auto-submit with whatever answered
+  Step 5b: Student runs out of attempts â†’ "No attempts remaining. Final score: 86.7%"
+  Step 5c: Student closes browser mid-quiz â†’ on return, resume from where left off
+  Step 5d: Student fails (<70%) â†’ "You scored 60%. Review the material and try again."
 ```
 
 ### Journey 7.5: Checking Grades
 
 ```
-Step 1: Student clicks "Grades" in nav → /grades
+Step 1: Student clicks "Grades" in nav â†’ /grades
 
 Step 2: Overall GPA card shows 3.72
-  → 4 courses listed with grade bars
-  → Network Defense: 88.5% (B+)
-  → Cryptography: 94.2% (A)
+  â†’ 4 courses listed with grade bars
+  â†’ Network Defense: 88.5% (B+)
+  â†’ Cryptography: 94.2% (A)
 
 Step 3: Student expands Network Defense
-  → Sees 5 grade items:
-    → Lab 1: 45/50 (90%)
-    → Lab 2: 48/50 (96%)
-    → Lab 3: 42/50 (84%)
-    → Midterm: 85/100 (85%)
-    → Final Project: 0/100 (not yet graded)
+  â†’ Sees 5 grade items:
+    â†’ Lab 1: 45/50 (90%)
+    â†’ Lab 2: 48/50 (96%)
+    â†’ Lab 3: 42/50 (84%)
+    â†’ Midterm: 85/100 (85%)
+    â†’ Final Project: 0/100 (not yet graded)
 
 Step 4: Student opens "What-if Calculator"
-  → Adjusts Final Project slider to 90%
-  → Projected grade updates: 88.5% → 89.5% (still B+)
-  → Adjusts to 95% → sees it would bump to A-
-  → Closes calculator
+  â†’ Adjusts Final Project slider to 90%
+  â†’ Projected grade updates: 88.5% â†’ 89.5% (still B+)
+  â†’ Adjusts to 95% â†’ sees it would bump to A-
+  â†’ Closes calculator
 ```
 
 ### Journey 7.6: Building Portfolio
 
 ```
 Step 1: Student navigates to /portfolio
-  → Currently empty profile
+  â†’ Currently empty profile
 
 Step 2: Student edits profile
-  → Uploads avatar
-  → Sets title: "Cybersecurity Student"
-  → Writes bio: "Passionate about network security..."
-  → Adds GitHub link
+  â†’ Uploads avatar
+  â†’ Sets title: "Cybersecurity Student"
+  â†’ Writes bio: "Passionate about network security..."
+  â†’ Adds GitHub link
 
 Step 3: Adds skills
-  → "Network Security" → 5 stars
-  → "Cryptography" → 4 stars
-  → "Python" → 3 stars
+  â†’ "Network Security" â†’ 5 stars
+  â†’ "Cryptography" â†’ 4 stars
+  â†’ "Python" â†’ 3 stars
 
 Step 4: Adds project
-  → Title: "Security Audit: ABC Corp"
-  → Description: "Conducted full penetration test..."
-  → GitHub URL: https://github.com/...
-  → Uploads 3 screenshots
-  → Tags skills: Network Security, Compliance
+  â†’ Title: "Security Audit: ABC Corp"
+  â†’ Description: "Conducted full penetration test..."
+  â†’ GitHub URL: https://github.com/...
+  â†’ Uploads 3 screenshots
+  â†’ Tags skills: Network Security, Compliance
 
 Step 5: Shares portfolio
-  → Clicks "Share" → copies public URL
-  → Posts to LinkedIn
+  â†’ Clicks "Share" â†’ copies public URL
+  â†’ Posts to LinkedIn
 
 Alternative Paths:
-  Step 4a: Accepts auto-import from completed assignments → pre-populated projects
+  Step 4a: Accepts auto-import from completed assignments â†’ pre-populated projects
   Step 4b: Certificate auto-appears from completed courses
 ```
 
 ### Journey 7.7: Messaging an Instructor
 
 ```
-Step 1: Student clicks Messages icon → /messages
+Step 1: Student clicks Messages icon â†’ /messages
 
 Step 2: Conversation list shows Prof. Smith (unread), Jane Doe, Study Group
 
 Step 3: Student clicks Prof. Smith
-  → Previous messages loaded (WebSocket connects for real-time)
+  â†’ Previous messages loaded (WebSocket connects for real-time)
 
 Step 4: Student types: "Hi Prof. Smith, I'm stuck on Lab 4 step 3. The packets aren't showing up with the filter you mentioned."
-  → Clicks Send → message sent via WebSocket
+  â†’ Clicks Send â†’ message sent via WebSocket
 
-Step 5: Prof. Smith is online → replies within 2 min
-  → "Hi Alex, try using 'tcp.port==443' instead. The traffic is HTTPS."
+Step 5: Prof. Smith is online â†’ replies within 2 min
+  â†’ "Hi Alex, try using 'tcp.port==443' instead. The traffic is HTTPS."
 
-Step 6: Student tries filter → works! → replies: "Got it, thank you!"
-  → Marks conversation as resolved
+Step 6: Student tries filter â†’ works! â†’ replies: "Got it, thank you!"
+  â†’ Marks conversation as resolved
 
 Alternative:
-  Step 2: Student clicks "New Message" → searches "Jane Doe" → sends direct message
-  Step 2b: Student receives file from instructor → image preview or file download
-  Step 5: Prof. Smith offline → message delivered, push notification sent
+  Step 2: Student clicks "New Message" â†’ searches "Jane Doe" â†’ sends direct message
+  Step 2b: Student receives file from instructor â†’ image preview or file download
+  Step 5: Prof. Smith offline â†’ message delivered, push notification sent
 ```
 
 ### Journey 7.8: Making a Purchase in Marketplace
 
 ```
-Step 1: Student clicks Marketplace → /marketplace
+Step 1: Student clicks Marketplace â†’ /marketplace
 
 Step 2: Browses featured items
-  → Sees "Kali Linux Guide" ($29), "Mentoring Session" ($99)
+  â†’ Sees "Kali Linux Guide" ($29), "Mentoring Session" ($99)
 
 Step 3: Student clicks "Add+" on Kali Linux Guide
-  → Item added to cart
-  → Cart badge shows (1)
+  â†’ Item added to cart
+  â†’ Cart badge shows (1)
 
-Step 4: Clicks cart icon → slide-out drawer shows:
-  → Kali Linux Guide - $29
-  → Subtotal: $29
-  → [Checkout]
+Step 4: Clicks cart icon â†’ slide-out drawer shows:
+  â†’ Kali Linux Guide - $29
+  â†’ Subtotal: $29
+  â†’ [Checkout]
 
 Step 5: Clicks "Checkout"
-  → POST /api/student/marketplace/checkout
-  → Returns Stripe Checkout session URL
-  → Redirected to Stripe Checkout
+  â†’ POST /api/student/marketplace/checkout
+  â†’ Returns Stripe Checkout session URL
+  â†’ Redirected to Stripe Checkout
 
-Step 6: Student enters card info → payment succeeds
-  → Webhook: stripe → POST /api/webhooks/stripe → creates purchase record
-  → Redirect back to marketplace → success toast
-  → Item available in "My Purchases" for download
+Step 6: Student enters card info â†’ payment succeeds
+  â†’ Webhook: stripe â†’ POST /api/webhooks/stripe â†’ creates purchase record
+  â†’ Redirect back to marketplace â†’ success toast
+  â†’ Item available in "My Purchases" for download
 
 Alternative:
-  Step 5: Free item → no checkout → immediate access
-  Step 6: Payment fails → "Payment failed. Please try a different card."
+  Step 5: Free item â†’ no checkout â†’ immediate access
+  Step 6: Payment fails â†’ "Payment failed. Please try a different card."
 ```
 
 ---
@@ -2033,7 +2033,7 @@ Alternative:
 
 ### BR-CS-001: Grade Calculation
 
-**Formula:** `course_grade = Σ(grade_items[i].score / grade_items[i].maxScore * grade_items[i].weight)` where `Σ weight = 1.0`  
+**Formula:** `course_grade = Î£(grade_items[i].score / grade_items[i].maxScore * grade_items[i].weight)` where `Î£ weight = 1.0`  
 **Letter Grade Mapping:** A (93-100), A- (90-92), B+ (87-89), B (83-86), B- (80-82), C+ (77-79), C (73-76), C- (70-72), D+ (67-69), D (63-66), D- (60-62), F (<60)  
 **GPA:** A=4.0, A-=3.7, B+=3.3, B=3.0, B-=2.7, C+=2.3, C=2.0, C-=1.7, D+=1.3, D=1.0, F=0.0
 
@@ -2047,9 +2047,9 @@ Alternative:
 ### BR-CS-003: Attendance Policy
 
 - Minimum attendance: 85% per course
-- Below 85% → warning banner on dashboard + email
-- Below 75% → mandatory meeting with advisor
-- Below 60% → risk of expulsion
+- Below 85% â†’ warning banner on dashboard + email
+- Below 75% â†’ mandatory meeting with advisor
+- Below 60% â†’ risk of expulsion
 - Excused absences: require documentation (doctor's note, etc.)
 
 ### BR-CS-004: Assessment Retake Policy
@@ -2061,21 +2061,21 @@ Alternative:
 
 ### BR-CS-005: Minimum Progress Requirement
 
-- Students must complete ≥ 25% of weekly assigned work to remain in good standing
+- Students must complete â‰¥ 25% of weekly assigned work to remain in good standing
 - Tracked per week, rolling 4-week window
-- Below threshold → advisor notification + study plan meeting
+- Below threshold â†’ advisor notification + study plan meeting
 
 ### BR-CS-006: Portfolio Auto-Population
 
-- Completed assignments with grade ≥ 80% are auto-suggested as portfolio projects
+- Completed assignments with grade â‰¥ 80% are auto-suggested as portfolio projects
 - Certificates auto-appear upon course/program completion
 - Skills auto-suggest from completed courses (instructor-defined)
 
 ### BR-CS-007: Certificate Issuance
 
-- Course certificate: issued when course grade ≥ passing_grade
-- Program certificate: issued when all courses passed with cumulative GPA ≥ 2.0
-- PDF generated via Puppeteer → stored in R2 → `certificates.pdf_url`
+- Course certificate: issued when course grade â‰¥ passing_grade
+- Program certificate: issued when all courses passed with cumulative GPA â‰¥ 2.0
+- PDF generated via Puppeteer â†’ stored in R2 â†’ `certificates.pdf_url`
 - Blockchain hash stored for verification (optional)
 
 ### BR-CS-008: Marketplace Refund Policy
@@ -2235,30 +2235,30 @@ Alternative:
 
 | Entity       | Action            | Student         | Instructor    | Admin           | Parent          |
 | ------------ | ----------------- | --------------- | ------------- | --------------- | --------------- |
-| Courses      | Read enrolled     | ✅              | ✅ (assigned) | ✅              | ❌              |
-| Courses      | Read not enrolled | ❌              | ✅            | ✅              | ❌              |
-| Lessons      | Read              | ✅ (enrolled)   | ✅            | ✅              | ❌              |
-| Lessons      | Update progress   | ✅ (own)        | ❌            | ❌              | ❌              |
-| Assignments  | Read              | ✅ (own course) | ✅ (assigned) | ✅              | ❌              |
-| Assignments  | Submit            | ✅ (own)        | ❌            | ❌              | ❌              |
-| Assignments  | Grade             | ❌              | ✅            | ✅              | ❌              |
-| Assessments  | Take              | ✅ (own)        | ❌            | ✅ (as student) | ❌              |
-| Grades       | Read own          | ✅              | ✅ (assigned) | ✅              | ✅ (child)      |
-| Portfolio    | CRUD own          | ✅              | ❌            | ❌              | ❌              |
-| Portfolio    | Read public       | ✅              | ✅            | ✅              | ✅              |
-| Marketplace  | Browse            | ✅              | ✅            | ✅              | ❌              |
-| Marketplace  | Purchase          | ✅              | ✅            | ❌              | ❌              |
-| Community    | Read              | ✅              | ✅            | ✅              | ❌              |
-| Community    | Post              | ✅              | ✅            | ✅              | ❌              |
-| Community    | Moderate          | ❌              | ✅            | ✅              | ❌              |
-| Messages     | Send              | ✅              | ✅            | ✅              | ❌ (restricted) |
-| Calendar     | Read own          | ✅              | ✅            | ✅              | ❌              |
-| Finance      | Read own          | ✅              | ❌            | ✅              | ✅ (child)      |
-| Finance      | Pay               | ✅              | ❌            | ✅              | ✅              |
-| Attendance   | Read own          | ✅              | ✅ (assigned) | ✅              | ✅ (child)      |
-| Certificates | Read own          | ✅              | ✅            | ✅              | ✅ (child)      |
-| Profile      | Read own          | ✅              | ✅            | ✅              | ❌              |
-| Profile      | Update own        | ✅              | ✅            | ✅              | ❌              |
+| Courses      | Read enrolled     | âœ…              | âœ… (assigned) | âœ…              | âŒ              |
+| Courses      | Read not enrolled | âŒ              | âœ…            | âœ…              | âŒ              |
+| Lessons      | Read              | âœ… (enrolled)   | âœ…            | âœ…              | âŒ              |
+| Lessons      | Update progress   | âœ… (own)        | âŒ            | âŒ              | âŒ              |
+| Assignments  | Read              | âœ… (own course) | âœ… (assigned) | âœ…              | âŒ              |
+| Assignments  | Submit            | âœ… (own)        | âŒ            | âŒ              | âŒ              |
+| Assignments  | Grade             | âŒ              | âœ…            | âœ…              | âŒ              |
+| Assessments  | Take              | âœ… (own)        | âŒ            | âœ… (as student) | âŒ              |
+| Grades       | Read own          | âœ…              | âœ… (assigned) | âœ…              | âœ… (child)      |
+| Portfolio    | CRUD own          | âœ…              | âŒ            | âŒ              | âŒ              |
+| Portfolio    | Read public       | âœ…              | âœ…            | âœ…              | âœ…              |
+| Marketplace  | Browse            | âœ…              | âœ…            | âœ…              | âŒ              |
+| Marketplace  | Purchase          | âœ…              | âœ…            | âŒ              | âŒ              |
+| Community    | Read              | âœ…              | âœ…            | âœ…              | âŒ              |
+| Community    | Post              | âœ…              | âœ…            | âœ…              | âŒ              |
+| Community    | Moderate          | âŒ              | âœ…            | âœ…              | âŒ              |
+| Messages     | Send              | âœ…              | âœ…            | âœ…              | âŒ (restricted) |
+| Calendar     | Read own          | âœ…              | âœ…            | âœ…              | âŒ              |
+| Finance      | Read own          | âœ…              | âŒ            | âœ…              | âœ… (child)      |
+| Finance      | Pay               | âœ…              | âŒ            | âœ…              | âœ…              |
+| Attendance   | Read own          | âœ…              | âœ… (assigned) | âœ…              | âœ… (child)      |
+| Certificates | Read own          | âœ…              | âœ…            | âœ…              | âœ… (child)      |
+| Profile      | Read own          | âœ…              | âœ…            | âœ…              | âŒ              |
+| Profile      | Update own        | âœ…              | âœ…            | âœ…              | âŒ              |
 
 ---
 
@@ -2544,7 +2544,7 @@ export const StudyGroupSchema = z.object({
 
 - Skip to content link at top of every page
 - All headings use proper h1-h6 hierarchy
-- Color contrast ratios ≥ 4.5:1 (normal text), ≥ 3:1 (large text)
+- Color contrast ratios â‰¥ 4.5:1 (normal text), â‰¥ 3:1 (large text)
 - Focus indicators visible on all interactive elements
   -aria-live regions for dynamic content updates
 
@@ -2584,4 +2584,5 @@ export const StudyGroupSchema = z.object({
 
 ---
 
-_End of Current Student Actor Plan — 02_
+_End of Current Student Actor Plan â€” 02_
+

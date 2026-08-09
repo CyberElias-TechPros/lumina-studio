@@ -1,4 +1,4 @@
-export type RoleKey =
+﻿export type RoleKey =
   | "student"
   | "instructor"
   | "department-head"
@@ -25,7 +25,7 @@ export const roles: {
     label: "Student",
     engine: "learning",
     person: "Chiamaka Obi",
-    title: "Cohort 12 · Full-Stack",
+    title: "Cohort 12 Â· Full-Stack",
     home: "/app/student",
   },
   {
@@ -316,7 +316,7 @@ export const portfolioProjects = [
 export const cohorts = [
   {
     id: "co-12",
-    name: "Cohort 12 · Full-Stack",
+    name: "Cohort 12 Â· Full-Stack",
     students: 42,
     progress: 68,
     attendance: 91,
@@ -324,13 +324,13 @@ export const cohorts = [
   },
   {
     id: "co-09",
-    name: "Cohort 9 · Cybersecurity",
+    name: "Cohort 9 Â· Cybersecurity",
     students: 31,
     progress: 74,
     attendance: 88,
     atRisk: 2,
   },
-  { id: "co-14", name: "Cohort 14 · Cloud", students: 28, progress: 41, attendance: 84, atRisk: 6 },
+  { id: "co-14", name: "Cohort 14 Â· Cloud", students: 28, progress: 41, attendance: 84, atRisk: 6 },
 ];
 
 export const gradebook = [
@@ -529,27 +529,27 @@ export const headcountSeries = [
 
 export const payrollChanges = [
   {
-    title: "New starter — K. Okafor",
+    title: "New starter â€” K. Okafor",
     detail: "Effective Aug 1",
     status: "sent",
   },
   {
-    title: "Salary revision — 3 staff",
+    title: "Salary revision â€” 3 staff",
     detail: "Approved by director",
     status: "sent",
   },
   {
-    title: "Leaver — J. Okonkwo",
+    title: "Leaver â€” J. Okonkwo",
     detail: "Effective Aug 15",
     status: "draft",
   },
   {
-    title: "Stipend adjustment — interns",
+    title: "Stipend adjustment â€” interns",
     detail: "Pending director sign-off",
     status: "draft",
   },
   {
-    title: "Payroll run #128 — July",
+    title: "Payroll run #128 â€” July",
     detail: "Processed Jul 31",
     status: "sent",
   },
@@ -557,21 +557,21 @@ export const payrollChanges = [
 
 export const paymentBatches = [
   {
-    batch: "Batch #204 — tuition instalments",
+    batch: "Batch #204 â€” tuition instalments",
     amount: 4800000,
     count: 22,
     date: "Jul 30",
     status: "Reconciled",
   },
   {
-    batch: "Batch #203 — supplier bills",
+    batch: "Batch #203 â€” supplier bills",
     amount: 1900000,
     count: 6,
     date: "Jul 26",
     status: "Reconciled",
   },
   {
-    batch: "Batch #205 — stipends",
+    batch: "Batch #205 â€” stipends",
     amount: 620000,
     count: 8,
     date: "Aug 1",
@@ -588,7 +588,7 @@ export const payments = [
     currency: "NGN",
     status: "success",
     provider: "paystack",
-    description: "Tuition — instalment 1 of 2",
+    description: "Tuition â€” instalment 1 of 2",
     paidAt: "Jul 30, 2026",
   },
   {
@@ -621,7 +621,7 @@ export const payments = [
     currency: "NGN",
     status: "pending",
     provider: "paystack",
-    description: "Tuition — instalment 2 of 2",
+    description: "Tuition â€” instalment 2 of 2",
   },
 ];
 
@@ -797,7 +797,7 @@ export const leadSources = [
 /* ---------------- Director / Admin ---------------- */
 
 export const directorKpis = [
-  { label: "Monthly revenue", value: "₦109m", delta: "+14.2%", positive: true },
+  { label: "Monthly revenue", value: "â‚¦109m", delta: "+14.2%", positive: true },
   { label: "Active learners", value: "3,412", delta: "+8.6%", positive: true },
   { label: "Placement rate", value: "78%", delta: "+3.1%", positive: true },
   { label: "Churn", value: "4.2%", delta: "-0.8%", positive: true },
@@ -815,35 +815,35 @@ export const enrollmentSeries = [
 export const systemUsers = [
   {
     name: "Chiamaka Obi",
-    email: "chiamaka@cea.academy",
+    email: "chiamaka@cea.ng",
     role: "Student",
     status: "Active",
     lastSeen: "2m ago",
   },
   {
     name: "Ifeanyi Duru",
-    email: "ifeanyi@cea.academy",
+    email: "ifeanyi@cea.ng",
     role: "Instructor",
     status: "Active",
     lastSeen: "18m ago",
   },
   {
     name: "Musa Ibrahim",
-    email: "musa@cea.academy",
+    email: "musa@cea.ng",
     role: "Accountant",
     status: "Active",
     lastSeen: "1h ago",
   },
   {
     name: "Tolu Ajayi",
-    email: "tolu@cea.academy",
+    email: "tolu@cea.ng",
     role: "Admissions",
     status: "Active",
     lastSeen: "3h ago",
   },
   {
     name: "Zainab Lawal",
-    email: "zainab@cea.academy",
+    email: "zainab@cea.ng",
     role: "Marketing",
     status: "Suspended",
     lastSeen: "6d ago",
@@ -888,7 +888,7 @@ export const approvals = [
     age: "2 days",
   },
   {
-    item: "Certificate issue — 34 graduates",
+    item: "Certificate issue â€” 34 graduates",
     requester: "Tolu Ajayi",
     type: "Certificates",
     age: "1 day",
@@ -912,8 +912,9 @@ export const notifications = [
   { title: "Invoice due soon", body: "Instalment 4 is due 1 October.", time: "3h", engine: "erp" },
   {
     title: "Job match",
-    body: "Paystack Frontend Engineer — 96% match.",
+    body: "Paystack Frontend Engineer â€” 96% match.",
     time: "1d",
     engine: "career",
   },
 ];
+
