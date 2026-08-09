@@ -8,6 +8,7 @@ import {
   Scripts,
 } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
@@ -148,6 +149,7 @@ function RootComponent() {
       </SessionProvider>
       <Toaster position="top-right" richColors />
       <RootEffects />
+      <SpeedInsights />
     </QueryClientProvider>
   );
 }
