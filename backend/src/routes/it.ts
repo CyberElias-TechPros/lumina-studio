@@ -1,9 +1,11 @@
 import { Hono } from "hono";
 import type { AppEnv } from "../types";
-import { base64UrlDecode, base64UrlEncode } from "../lib/crypto";
+import { base64UrlDecode, base64UrlEncode, isoNow } from "../lib/crypto";
 import { paginate, parsePagination } from "../lib/pagination";
 import { requireAuth, requireAnyRole } from "../lib/auth";
 import { ApiError } from "../lib/errors";
+import { parseBody } from "../lib/validate";
+import { z } from "zod";
 
 export const it = new Hono<{ Bindings: AppEnv }>();
 
@@ -67,4 +69,47 @@ it.get("/tickets/:id", async (c) => {
     .bind(ticket.id)
     .all<TicketEventRow>();
   return c.json({ ...ticket, events: events.results });
+});
+
+const ticketStatusSchema = z.object({
+  status: z.enum(["queued", "in-progress", "resolved", "closed"], {
+    message: "Invalid ticket status.",
+  }),
+});
+
+/** IT/admin: advance a ticket's status. */
+it.patch("/tickets/:id", async (c) => {
+  const { status } = await parseBody(c, ticketStatusSchema);
+  const id = c.req.param("id");
+  const existing = await c.env.DB.prepare(`SELECT id FROM it_tickets WHERE id = ?`)
+    .bind(id)
+    .first<{ id: string }>();
+  if (!existing) throw ApiError.notFound("Ticket not found.");
+  await c.env.DB.prepare(`UPDATE it_tickets SET status = ? WHERE id = ?`).bind(status, id).run();
+  return c.json({ ok: true, id, status });
+});
+
+const ticketEventSchema = z.object({
+  event: z.string().trim().min(1, "Event text is required.").max(2_000),
+});
+
+/** IT/admin: append an event/comment to a ticket. */
+it.post("/tickets/:id/events", async (c) => {
+  const { event } = await parseBody(c, ticketEventSchema);
+  const id = c.req.param("id");
+  const existing = await c.env.DB.prepare(`SELECT id FROM it_tickets WHERE id = ?`)
+    .bind(id)
+    .first<{ id: string }>();
+  if (!existing) throw ApiError.notFound("Ticket not found.");
+  const count = await c.env.DB.prepare(`SELECT COUNT(*) AS n FROM it_ticket_events WHERE ticket_id = ?`)
+    .bind(id)
+    .first<{ n: number }>();
+  const eventId = crypto.randomUUID();
+  await c.env.DB.prepare(
+    `INSERT INTO it_ticket_events (id, ticket_id, event, when_text, sort_order)
+     VALUES (?, ?, ?, ?, ?)`,
+  )
+    .bind(eventId, id, event, isoNow(), count?.n ?? 0)
+    .run();
+  return c.json({ ok: true, id: eventId, event, whenText: isoNow() }, 201);
 });

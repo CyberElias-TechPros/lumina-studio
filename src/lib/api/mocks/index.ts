@@ -1540,6 +1540,19 @@ export function registerAllMocks(): void {
     return { items, total: items.length };
   });
 
+  registerMockPattern("PATCH", "/v1/it/tickets/*", async (init: ApiRequestInit) => {
+    await delay(150);
+    const { status } = (init.body ?? {}) as { status?: string };
+    const id = (init.path ?? "").split("/").pop() ?? "";
+    return { ok: true, id, status: status ?? "in-progress" };
+  });
+
+  registerMockPattern("POST", "/v1/it/tickets/*/events", async (init: ApiRequestInit) => {
+    await delay(150);
+    const { event } = (init.body ?? {}) as { event?: string };
+    return { ok: true, id: `evt-${Date.now()}`, event: event ?? "", whenText: "Just now" };
+  });
+
   /* Mentor dashboard — mirrors backend seeds (migrations/0016_mentor_dashboard.sql) */
   const mntMentees = [
     {
@@ -2603,6 +2616,18 @@ export function registerAllMocks(): void {
     };
     const items = collections[collection] ?? [];
     return { items, total: items.length };
+  });
+
+  registerMock("POST", "/v1/volunteer-dashboard/hours", async (init) => {
+    await delay(200);
+    const body = (init.body ?? {}) as { title?: string; hours?: number; dateLabel?: string };
+    return {
+      ok: true,
+      id: `volh-${Date.now()}`,
+      title: body.title ?? "Volunteer shift",
+      hours: body.hours ?? 0,
+      status: "pending",
+    };
   });
 
   const recAppointments = [

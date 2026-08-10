@@ -1,11 +1,12 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowLeft, CheckCircle2, Clock3, MessageSquare, MonitorCheck, Send } from "lucide-react";
+import { useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { QueryState } from "@/components/ui/query-state";
 import { AppShell } from "@/components/app/app-shell";
-import { useTicketDetail } from "@/lib/query/it";
+import { useTicketDetail, useUpdateTicketStatus, useAddTicketEvent } from "@/lib/query/it";
 import type { TicketDetail } from "@/lib/api/it";
 import { cn } from "@/lib/utils";
 
@@ -24,6 +25,58 @@ const priorityLabel: Record<string, string> = {
   P2: "P2 · Normal",
   P3: "P3 · Low",
 };
+
+const NEXT_STATUS: Record<string, "queued" | "in-progress" | "resolved" | "closed"> = {
+  queued: "in-progress",
+  "in-progress": "resolved",
+  resolved: "closed",
+};
+
+function StatusActions({ id, status }: { id: string; status: string }) {
+  const update = useUpdateTicketStatus(id);
+  const next = NEXT_STATUS[status];
+  if (!next) {
+    return <Badge className="bg-success/10 text-success border-0 font-semibold">Closed</Badge>;
+  }
+  return (
+    <Button
+      size="sm"
+      className="bg-gradient-brand shadow-glow w-full border-0 font-semibold"
+      disabled={update.isPending}
+      onClick={() => update.mutate(next)}
+    >
+      <CheckCircle2 className="size-4" /> Move to {next}
+    </Button>
+  );
+}
+
+function ReplyBox({ id }: { id: string }) {
+  const addEvent = useAddTicketEvent(id);
+  const [text, setText] = useState("");
+  const submit = () => {
+    const trimmed = text.trim();
+    if (!trimmed || addEvent.isPending) return;
+    addEvent.mutate(trimmed, { onSuccess: () => setText("") });
+  };
+  return (
+    <>
+      <textarea
+        value={text}
+        onChange={(e) => setText(e.target.value)}
+        className="bg-muted placeholder:text-muted-foreground min-h-20 w-full resize-none rounded-xl border-0 p-3 text-sm font-medium outline-none"
+        placeholder="Update the reporter…"
+      />
+      <Button
+        size="sm"
+        className="bg-gradient-brand shadow-glow w-full border-0 font-semibold"
+        disabled={addEvent.isPending || text.trim().length === 0}
+        onClick={submit}
+      >
+        <Send className="size-3.5" /> Send update
+      </Button>
+    </>
+  );
+}
 
 function ItTicketDetail() {
   const { id } = Route.useParams();
@@ -100,13 +153,8 @@ function ItTicketDetail() {
                 Diagnose and replace the faulty part. Log the replacement in the asset record, then
                 confirm with the reporter. Spare parts available in store.
               </p>
-              <Button
-                size="sm"
-                className="bg-gradient-brand shadow-glow w-full border-0 font-semibold"
-              >
-                <CheckCircle2 className="size-4" /> Mark resolved
-              </Button>
-              <Button variant="outline" size="sm" className="w-full font-semibold">
+              {ticket && <StatusActions id={id} status={ticket.status} />}
+              <Button variant="outline" size="sm" className="w-full font-semibold" disabled>
                 <Clock3 className="size-3.5" /> Escalate
               </Button>
             </CardContent>
@@ -119,16 +167,7 @@ function ItTicketDetail() {
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-3">
-              <textarea
-                className="bg-muted placeholder:text-muted-foreground min-h-20 w-full resize-none rounded-xl border-0 p-3 text-sm font-medium outline-none"
-                placeholder="Update the reporter…"
-              />
-              <Button
-                size="sm"
-                className="bg-gradient-brand shadow-glow w-full border-0 font-semibold"
-              >
-                <Send className="size-3.5" /> Send update
-              </Button>
+              <ReplyBox id={id} />
             </CardContent>
           </Card>
         </div>

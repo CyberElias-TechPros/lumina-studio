@@ -1,11 +1,13 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowLeft, Clock3, Play, Square, Timer, Wallet } from "lucide-react";
+import { ArrowLeft, Clock3, Play, Plus, Square, Timer, Wallet } from "lucide-react";
+import { useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
 import { AppShell } from "@/components/app/app-shell";
 import { QueryState } from "@/components/ui/query-state";
-import { useVolHours, useVolHourItems } from "@/lib/query/volunteerReceptionist";
+import { useVolHours, useVolHourItems, useLogVolunteerHours } from "@/lib/query/volunteerReceptionist";
 import type { VolHour } from "@/lib/api/volunteerReceptionist";
 import { cn } from "@/lib/utils";
 
@@ -22,9 +24,27 @@ export const Route = createFileRoute("/app/volunteer/hours")({
 function VolunteerHours() {
   const entriesQuery = useVolHours();
   const entries = useVolHourItems();
+  const logHours = useLogVolunteerHours();
+  const [title, setTitle] = useState("");
+  const [hours, setHours] = useState("");
 
   const logged = entries.reduce((n, e) => n + e.hours, 0);
   const approved = entries.filter((e) => e.status === "approved").reduce((n, e) => n + e.hours, 0);
+
+  const submit = (event: React.FormEvent) => {
+    event.preventDefault();
+    const h = Number(hours);
+    if (!title.trim() || Number.isNaN(h) || h <= 0 || logHours.isPending) return;
+    logHours.mutate(
+      { title: title.trim(), hours: h },
+      {
+        onSuccess: () => {
+          setTitle("");
+          setHours("");
+        },
+      },
+    );
+  };
 
   return (
     <AppShell
@@ -101,16 +121,38 @@ function VolunteerHours() {
       <Card className="bg-card mt-5 shadow-soft border">
         <CardHeader className="flex-row items-center justify-between">
           <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
-            <Timer className="text-primary size-4" /> Clock in / out
+            <Timer className="text-primary size-4" /> Log hours
           </CardTitle>
           <Badge variant="secondary" className="font-semibold">
-            Not clocked in
+            {entries.length > 0 ? `${approved}h approved` : "Not clocked in"}
           </Badge>
         </CardHeader>
-        <CardContent className="flex flex-wrap items-center gap-3">
-          <Button size="sm" className="bg-gradient-brand shadow-glow border-0 font-semibold">
-            <Play className="size-3.5" /> Clock in
-          </Button>
+        <CardContent className="space-y-3">
+          <form onSubmit={submit} className="flex flex-wrap items-center gap-3">
+            <Input
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              placeholder="Activity (e.g. Career fair booth)"
+              className="h-9 flex-1"
+            />
+            <Input
+              value={hours}
+              onChange={(e) => setHours(e.target.value)}
+              placeholder="Hours"
+              type="number"
+              min={0}
+              max={24}
+              className="h-9 w-20"
+            />
+            <Button
+              type="submit"
+              size="sm"
+              className="bg-gradient-brand shadow-glow border-0 font-semibold"
+              disabled={logHours.isPending || !title.trim() || !hours.trim()}
+            >
+              <Plus className="size-3.5" /> Log entry
+            </Button>
+          </form>
           <p className="text-muted-foreground text-xs font-semibold">
             Approved by community manager within 48h. Manual entries need a note.
           </p>

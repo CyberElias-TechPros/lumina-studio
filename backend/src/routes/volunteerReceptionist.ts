@@ -98,6 +98,29 @@ export const volunteerDashboard = new Hono<{ Bindings: AppEnv }>();
 volunteerDashboard.use("*", requireAuth, requireAnyRole(["volunteer", "admin"]));
 registerLists(volunteerDashboard, VOL_COLS);
 
+const logHoursSchema = z.object({
+  title: z.string().trim().min(1, "Title is required.").max(200),
+  hours: z.number().int().min(0, "Hours must be 0 or more.").max(24, "Hours too large."),
+  dateLabel: z.string().trim().max(50).optional(),
+});
+
+/** Volunteer/admin: log volunteer hours. */
+volunteerDashboard.post("/hours", async (c) => {
+  const user = c.get("authUser");
+  const body = await parseBody(c, logHoursSchema);
+  const id = crypto.randomUUID();
+  const count = await c.env.DB.prepare(`SELECT COUNT(*) AS n FROM vol_hours`).first<{
+    n: number;
+  }>();
+  await c.env.DB.prepare(
+    `INSERT INTO vol_hours (id, title, date_label, hours, status, sort_order)
+     VALUES (?, ?, ?, ?, 'pending', ?)`,
+  )
+    .bind(id, body.title, body.dateLabel ?? new Date().toISOString().slice(0, 10), body.hours, count?.n ?? 0)
+    .run();
+  return c.json({ ok: true, id, title: body.title, hours: body.hours, status: "pending" }, 201);
+});
+
 export const receptionistDashboard = new Hono<{ Bindings: AppEnv }>();
 receptionistDashboard.use("*", requireAuth, requireAnyRole(["receptionist", "admin"]));
 registerLists(receptionistDashboard, REC_COLS);

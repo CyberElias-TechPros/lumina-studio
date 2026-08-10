@@ -1,3 +1,4 @@
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { usePaginatedQuery, flattenPages } from "@/lib/query/hooks";
 import {
   fetchVolOpportunities,
@@ -16,6 +17,7 @@ import {
   fetchRecStaff,
   fetchRecTasks,
   fetchRecHandover,
+  logVolunteerHours,
   type VolOpportunity,
   type VolSignup,
   type VolMetric,
@@ -168,6 +170,17 @@ export function useRecHandover() {
 }
 export function useRecHandoverItems(): RecHandoverNote[] {
   return flattenPages(useRecHandover().data?.pages);
+}
+
+export function useLogVolunteerHours() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: logVolunteerHours,
+    onSuccess: () => {
+      void queryClient.invalidateQueries({ queryKey: volKeys.hours });
+      void queryClient.invalidateQueries({ queryKey: volKeys.metrics });
+    },
+  });
 }
 
 export type {

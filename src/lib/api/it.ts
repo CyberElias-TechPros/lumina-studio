@@ -99,3 +99,33 @@ export const fetchItAccounts = fetchPage<ItAccount>("/v1/it/accounts");
 export function fetchTicketDetail(id: string): Promise<TicketDetail> {
   return apiFetch<TicketDetail>(`/v1/it/tickets/${id}`);
 }
+
+export interface TicketStatusResult {
+  ok: boolean;
+  id: string;
+  status: string;
+}
+
+export function updateTicketStatus(
+  id: string,
+  status: "queued" | "in-progress" | "resolved" | "closed",
+): Promise<TicketStatusResult> {
+  return apiFetch<TicketStatusResult>(`/v1/it/tickets/${id}`, {
+    method: "PATCH",
+    body: { status },
+  });
+}
+
+export interface AddTicketEventResult {
+  ok: boolean;
+  id: string;
+  event: string;
+  whenText: string;
+}
+
+export function addTicketEvent(id: string, event: string): Promise<AddTicketEventResult> {
+  return apiFetch<AddTicketEventResult>(`/v1/it/tickets/${id}/events`, {
+    method: "POST",
+    body: { event },
+  });
+}

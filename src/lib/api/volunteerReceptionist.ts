@@ -147,3 +147,24 @@ export const fetchRecCalls = volPage<RecCall>("/v1/receptionist-dashboard/calls"
 export const fetchRecStaff = volPage<RecStaffMember>("/v1/receptionist-dashboard/staff");
 export const fetchRecTasks = volPage<RecTask>("/v1/receptionist-dashboard/tasks");
 export const fetchRecHandover = volPage<RecHandoverNote>("/v1/receptionist-dashboard/handover");
+
+export interface LogHoursInput {
+  title: string;
+  hours: number;
+  dateLabel?: string;
+}
+
+export interface LogHoursResult {
+  ok: boolean;
+  id: string;
+  title: string;
+  hours: number;
+  status: string;
+}
+
+export function logVolunteerHours(input: LogHoursInput): Promise<LogHoursResult> {
+  return apiFetch<LogHoursResult>("/v1/volunteer-dashboard/hours", {
+    method: "POST",
+    body: input,
+  });
+}

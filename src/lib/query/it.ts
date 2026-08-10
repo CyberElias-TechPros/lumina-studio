@@ -1,6 +1,7 @@
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { usePaginatedQuery, flattenPages } from "@/lib/query/hooks";
 import {
+  addTicketEvent,
   fetchItTickets,
   fetchItArticles,
   fetchItAssets,
@@ -11,6 +12,7 @@ import {
   fetchItTemplates,
   fetchItAccounts,
   fetchTicketDetail,
+  updateTicketStatus,
   type ItTicket,
   type TicketDetail,
   type ItArticle,
@@ -109,4 +111,26 @@ export function useItAccounts() {
 }
 export function useItAccountItems(): ItAccount[] {
   return flattenPages(useItAccounts().data?.pages);
+}
+
+export function useUpdateTicketStatus(id: string) {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (status: "queued" | "in-progress" | "resolved" | "closed") =>
+      updateTicketStatus(id, status),
+    onSuccess: () => {
+      void queryClient.invalidateQueries({ queryKey: itKeys.ticket(id) });
+      void queryClient.invalidateQueries({ queryKey: itKeys.tickets });
+    },
+  });
+}
+
+export function useAddTicketEvent(id: string) {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (event: string) => addTicketEvent(id, event),
+    onSuccess: () => {
+      void queryClient.invalidateQueries({ queryKey: itKeys.ticket(id) });
+    },
+  });
 }
