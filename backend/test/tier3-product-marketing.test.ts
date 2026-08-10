@@ -4,20 +4,20 @@ import { api, cookieHeaders, createTestSession, setupDb } from "./helpers";
 type TestSession = Awaited<ReturnType<typeof createTestSession>>;
 
 let staff: TestSession;
-let student: TestSession;
+let productMarketing: TestSession;
 
 beforeAll(async () => {
   await setupDb();
   staff = await createTestSession("admin@cea.ng");
-  student = await createTestSession("student@cea.ng");
+  productMarketing = await createTestSession("product-marketing@cea.ng");
 });
 
 describe("GET /v1/product-marketing-dashboard (Product marketing suite)", () => {
   it("403s non-staff roles on launch gates", async () => {
     const res = await api("/v1/product-marketing-dashboard/gates", {
-      headers: cookieHeaders(student.cookie),
+      headers: cookieHeaders(productMarketing.cookie),
     });
-    // product-marketing is admin+instructor+student; a mentor must be denied
+    // product-marketing + admin are allowed; a mentor must be denied
     expect(res.status).toBe(200);
 
     const mentor = await createTestSession("mentor@cea.ng");
@@ -53,7 +53,7 @@ describe("GET /v1/product-marketing-dashboard (Product marketing suite)", () => 
 
   it("returns overview KPIs with value labels", async () => {
     const res = await api("/v1/product-marketing-dashboard/overview", {
-      headers: cookieHeaders(staff.cookie),
+      headers: cookieHeaders(productMarketing.cookie),
     });
     const body = (await res.json()) as {
       items: Array<{ id: string; metric: string; valueLabel: string; delta: string }>;
@@ -66,7 +66,7 @@ describe("GET /v1/product-marketing-dashboard (Product marketing suite)", () => 
 
   it("returns launch phases with pct and status", async () => {
     const res = await api("/v1/product-marketing-dashboard/phases", {
-      headers: cookieHeaders(staff.cookie),
+      headers: cookieHeaders(productMarketing.cookie),
     });
     const body = (await res.json()) as {
       items: Array<{ id: string; launch: string; pct: number; status: string }>;
@@ -80,7 +80,7 @@ describe("GET /v1/product-marketing-dashboard (Product marketing suite)", () => 
 
   it("returns tasks with owner and status", async () => {
     const res = await api("/v1/product-marketing-dashboard/tasks", {
-      headers: cookieHeaders(staff.cookie),
+      headers: cookieHeaders(productMarketing.cookie),
     });
     const body = (await res.json()) as {
       items: Array<{ id: string; title: string; owner: string; status: string }>;
@@ -94,7 +94,7 @@ describe("GET /v1/product-marketing-dashboard (Product marketing suite)", () => 
 
   it("returns positioning statements with pain and benefit", async () => {
     const res = await api("/v1/product-marketing-dashboard/statements", {
-      headers: cookieHeaders(staff.cookie),
+      headers: cookieHeaders(productMarketing.cookie),
     });
     const body = (await res.json()) as {
       items: Array<{ id: string; product: string; pain: string; benefit: string }>;
@@ -107,7 +107,7 @@ describe("GET /v1/product-marketing-dashboard (Product marketing suite)", () => 
 
   it("returns competitor matrix features as 0/1 flags", async () => {
     const res = await api("/v1/product-marketing-dashboard/features", {
-      headers: cookieHeaders(staff.cookie),
+      headers: cookieHeaders(productMarketing.cookie),
     });
     const body = (await res.json()) as {
       items: Array<{ id: string; capability: string; cea: number; skilledge: number; aptbridge: number }>;
@@ -121,7 +121,7 @@ describe("GET /v1/product-marketing-dashboard (Product marketing suite)", () => 
 
   it("returns monthly performance bars", async () => {
     const res = await api("/v1/product-marketing-dashboard/months", {
-      headers: cookieHeaders(staff.cookie),
+      headers: cookieHeaders(productMarketing.cookie),
     });
     const body = (await res.json()) as {
       items: Array<{ id: string; month: string; roi: string; winRate: number; pct: number }>;

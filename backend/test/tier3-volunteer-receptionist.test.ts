@@ -5,19 +5,23 @@ type TestSession = Awaited<ReturnType<typeof createTestSession>>;
 
 let staff: TestSession;
 let student: TestSession;
+let volunteer: TestSession;
+let receptionist: TestSession;
 
 beforeAll(async () => {
   await setupDb();
   staff = await createTestSession("admin@cea.ng");
   student = await createTestSession("student@cea.ng");
+  volunteer = await createTestSession("volunteer@cea.ng");
+  receptionist = await createTestSession("receptionist@cea.ng");
 });
 
 describe("GET /v1/volunteer-dashboard (Volunteer dashboard suite)", () => {
-  it("allows students but 403s other roles on volunteer lists", async () => {
-    const studentRes = await api("/v1/volunteer-dashboard/opportunities", {
-      headers: cookieHeaders(student.cookie),
+  it("allows volunteers but 403s other roles on volunteer lists", async () => {
+    const volunteerRes = await api("/v1/volunteer-dashboard/opportunities", {
+      headers: cookieHeaders(volunteer.cookie),
     });
-    expect(studentRes.status).toBe(200);
+    expect(volunteerRes.status).toBe(200);
 
     const mentor = await createTestSession("mentor@cea.ng");
     const mentorRes = await api("/v1/volunteer-dashboard/opportunities", {
@@ -44,7 +48,7 @@ describe("GET /v1/volunteer-dashboard (Volunteer dashboard suite)", () => {
 
   it("returns opportunities with slots and camelCase fields", async () => {
     const res = await api("/v1/volunteer-dashboard/opportunities", {
-      headers: cookieHeaders(staff.cookie),
+      headers: cookieHeaders(volunteer.cookie),
     });
     const body = (await res.json()) as {
       items: Array<{
@@ -66,7 +70,7 @@ describe("GET /v1/volunteer-dashboard (Volunteer dashboard suite)", () => {
 
   it("returns impact metrics with value labels", async () => {
     const res = await api("/v1/volunteer-dashboard/impact", {
-      headers: cookieHeaders(staff.cookie),
+      headers: cookieHeaders(volunteer.cookie),
     });
     const body = (await res.json()) as {
       items: Array<{ id: string; metric: string; valueLabel: string; detail: string }>;
@@ -79,7 +83,7 @@ describe("GET /v1/volunteer-dashboard (Volunteer dashboard suite)", () => {
 
   it("returns hours entries with hours numeric and status", async () => {
     const res = await api("/v1/volunteer-dashboard/hours", {
-      headers: cookieHeaders(staff.cookie),
+      headers: cookieHeaders(volunteer.cookie),
     });
     const body = (await res.json()) as {
       items: Array<{ id: string; title: string; dateLabel: string; hours: number; status: string }>;
@@ -92,7 +96,7 @@ describe("GET /v1/volunteer-dashboard (Volunteer dashboard suite)", () => {
 
   it("returns monthly hours bars", async () => {
     const res = await api("/v1/volunteer-dashboard/months", {
-      headers: cookieHeaders(staff.cookie),
+      headers: cookieHeaders(volunteer.cookie),
     });
     const body = (await res.json()) as {
       items: Array<{ id: string; month: string; pct: number }>;
@@ -132,7 +136,7 @@ describe("GET /v1/receptionist-dashboard (Receptionist dashboard suite)", () => 
 
   it("returns appointments with visitor and status", async () => {
     const res = await api("/v1/receptionist-dashboard/appointments", {
-      headers: cookieHeaders(staff.cookie),
+      headers: cookieHeaders(receptionist.cookie),
     });
     const body = (await res.json()) as {
       items: Array<{ id: string; title: string; detail: string; who: string; status: string }>;
@@ -145,7 +149,7 @@ describe("GET /v1/receptionist-dashboard (Receptionist dashboard suite)", () => 
 
   it("returns deliveries with carrier, item and status", async () => {
     const res = await api("/v1/receptionist-dashboard/deliveries", {
-      headers: cookieHeaders(staff.cookie),
+      headers: cookieHeaders(receptionist.cookie),
     });
     const body = (await res.json()) as {
       items: Array<{
@@ -164,7 +168,7 @@ describe("GET /v1/receptionist-dashboard (Receptionist dashboard suite)", () => 
 
   it("returns calls with kind answered/missed", async () => {
     const res = await api("/v1/receptionist-dashboard/calls", {
-      headers: cookieHeaders(staff.cookie),
+      headers: cookieHeaders(receptionist.cookie),
     });
     const body = (await res.json()) as {
       items: Array<{ id: string; name: string; topic: string; timeLabel: string; kind: string }>;
@@ -177,7 +181,7 @@ describe("GET /v1/receptionist-dashboard (Receptionist dashboard suite)", () => 
 
   it("returns tasks with done flags and handover notes", async () => {
     const res = await api("/v1/receptionist-dashboard/tasks", {
-      headers: cookieHeaders(staff.cookie),
+      headers: cookieHeaders(receptionist.cookie),
     });
     const body = (await res.json()) as {
       items: Array<{ id: string; title: string; timeLabel: string; done: number }>;
@@ -188,7 +192,7 @@ describe("GET /v1/receptionist-dashboard (Receptionist dashboard suite)", () => 
     expect(body.items[1]?.done).toBe(0);
 
     const handoverRes = await api("/v1/receptionist-dashboard/handover", {
-      headers: cookieHeaders(staff.cookie),
+      headers: cookieHeaders(receptionist.cookie),
     });
     const handover = (await handoverRes.json()) as {
       items: Array<{ id: string; note: string }>;

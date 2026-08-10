@@ -4,10 +4,12 @@ import { api, cookieHeaders, createTestSession, setupDb } from "./helpers";
 type TestSession = Awaited<ReturnType<typeof createTestSession>>;
 
 let student: TestSession;
+let admin: TestSession;
 
 beforeAll(async () => {
   await setupDb();
   student = await createTestSession("student@cea.ng");
+  admin = await createTestSession("admin@cea.ng");
 });
 
 interface Page<T> {
@@ -56,8 +58,8 @@ describe.each(ENDPOINTS)("Phase 4 endpoint %s", (path) => {
     expect(res.status).toBe(401);
   });
 
-  it("returns a seeded Paginated<T> page", async () => {
-    const res = await api(path, { headers: cookieHeaders(student.cookie) });
+  it("returns a seeded Paginated<T> page for admin", async () => {
+    const res = await api(path, { headers: cookieHeaders(admin.cookie) });
     expect(res.status).toBe(200);
     const body = (await res.json()) as Page<Record<string, unknown>>;
     expect(body.items.length).toBeGreaterThan(0);
@@ -69,7 +71,7 @@ describe.each(ENDPOINTS)("Phase 4 endpoint %s", (path) => {
 describe("Phase 4 recruitment", () => {
   it("returns pipeline candidates for a job", async () => {
     const res = await api("/v1/recruitment/postings/post-4/candidates", {
-      headers: cookieHeaders(student.cookie),
+      headers: cookieHeaders(admin.cookie),
     });
     expect(res.status).toBe(200);
     const body = (await res.json()) as Page<{
@@ -89,7 +91,7 @@ describe("Phase 4 recruitment", () => {
 
   it("parses talent skills as arrays", async () => {
     const res = await api("/v1/recruitment/talent", {
-      headers: cookieHeaders(student.cookie),
+      headers: cookieHeaders(admin.cookie),
     });
     const body = (await res.json()) as Page<{ skills: string[]; match: number }>;
     expect(Array.isArray(body.items[0]?.skills)).toBe(true);
@@ -100,7 +102,7 @@ describe("Phase 4 recruitment", () => {
 describe("Phase 4 marketing shapes", () => {
   it("campaigns expose numeric spend/leads and roas", async () => {
     const res = await api("/v1/marketing/campaigns", {
-      headers: cookieHeaders(student.cookie),
+      headers: cookieHeaders(admin.cookie),
     });
     const body = (await res.json()) as Page<{ spend: number; leads: number; roas: number }>;
     expect(body.items[0]).toMatchObject({
@@ -112,7 +114,7 @@ describe("Phase 4 marketing shapes", () => {
 
   it("email campaigns map open_rate to openRate", async () => {
     const res = await api("/v1/marketing/email", {
-      headers: cookieHeaders(student.cookie),
+      headers: cookieHeaders(admin.cookie),
     });
     const body = (await res.json()) as Page<{
       title: string;
@@ -130,7 +132,7 @@ describe("Phase 4 marketing shapes", () => {
 describe("Phase 4 design shapes", () => {
   it("flows expose step lists", async () => {
     const res = await api("/v1/design/flows", {
-      headers: cookieHeaders(student.cookie),
+      headers: cookieHeaders(admin.cookie),
     });
     const body = (await res.json()) as Page<{ t: string; steps: number; list: string[] }>;
     expect(body.items[0]).toMatchObject({ t: expect.any(String) });
@@ -139,7 +141,7 @@ describe("Phase 4 design shapes", () => {
 
   it("tokens expose kind-aware fields", async () => {
     const res = await api("/v1/design/tokens", {
-      headers: cookieHeaders(student.cookie),
+      headers: cookieHeaders(admin.cookie),
     });
     const body = (await res.json()) as Page<{ kind: string; t: string; v: string }>;
     expect(["color", "type"]).toContain(body.items[0]?.kind);
@@ -150,7 +152,7 @@ describe("Phase 4 design shapes", () => {
 describe("Phase 4 localization shapes", () => {
   it("style guides parse dos/donts as arrays", async () => {
     const res = await api("/v1/localization/style-guides", {
-      headers: cookieHeaders(student.cookie),
+      headers: cookieHeaders(admin.cookie),
     });
     const body = (await res.json()) as Page<{ market: string; dos: string[]; donts: string[] }>;
     expect(Array.isArray(body.items[0]?.dos)).toBe(true);
@@ -159,7 +161,7 @@ describe("Phase 4 localization shapes", () => {
 
   it("dialects parse variants as arrays", async () => {
     const res = await api("/v1/localization/dialects", {
-      headers: cookieHeaders(student.cookie),
+      headers: cookieHeaders(admin.cookie),
     });
     const body = (await res.json()) as Page<{
       group: string;
@@ -174,14 +176,14 @@ describe("Phase 4 localization shapes", () => {
 describe("Phase 4 pagination", () => {
   it("postings paginate with a cursor", async () => {
     const res = await api("/v1/recruitment/postings?limit=2", {
-      headers: cookieHeaders(student.cookie),
+      headers: cookieHeaders(admin.cookie),
     });
     expect(res.status).toBe(200);
     const body = (await res.json()) as Page<unknown>;
     expect(body.items).toHaveLength(2);
     expect(body.nextCursor).toBeTruthy();
     const page2 = await api(`/v1/recruitment/postings?limit=2&cursor=${body.nextCursor}`, {
-      headers: cookieHeaders(student.cookie),
+      headers: cookieHeaders(admin.cookie),
     });
     const body2 = (await page2.json()) as Page<unknown>;
     expect(body2.items.length).toBeGreaterThan(0);

@@ -73,5 +73,5 @@ function registerLists(router: Hono<{ Bindings: AppEnv }>, collections: typeof B
 }
 
 export const behavioralDashboard = new Hono<{ Bindings: AppEnv }>();
-behavioralDashboard.use("*", requireAuth, requireAnyRole(["admin", "instructor", "student"]));
+behavioralDashboard.use("*", requireAuth, requireAnyRole(["behavioral-design", "admin"]));
 registerLists(behavioralDashboard, BD_COLS);

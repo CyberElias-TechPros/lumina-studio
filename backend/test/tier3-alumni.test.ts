@@ -4,20 +4,20 @@ import { api, cookieHeaders, createTestSession, setupDb } from "./helpers";
 type TestSession = Awaited<ReturnType<typeof createTestSession>>;
 
 let staff: TestSession;
-let student: TestSession;
+let alumni: TestSession;
 
 beforeAll(async () => {
   await setupDb();
   staff = await createTestSession("admin@cea.ng");
-  student = await createTestSession("student@cea.ng");
+  alumni = await createTestSession("alumni@cea.ng");
 });
 
 describe("GET /v1/alumni-dashboard (Alumni suite)", () => {
   it("403s non-staff roles", async () => {
     const res = await api("/v1/alumni-dashboard/events", {
-      headers: cookieHeaders(student.cookie),
+      headers: cookieHeaders(alumni.cookie),
     });
-    // alumni + student are allowed; an unrelated role must be denied
+    // alumni + admin are allowed; an unrelated role must be denied
     expect(res.status).toBe(200);
 
     const mentor = await createTestSession("mentor@cea.ng");
@@ -62,7 +62,7 @@ describe("GET /v1/alumni-dashboard (Alumni suite)", () => {
 
   it("returns events with location, going and status", async () => {
     const res = await api("/v1/alumni-dashboard/events", {
-      headers: cookieHeaders(staff.cookie),
+      headers: cookieHeaders(alumni.cookie),
     });
     const body = (await res.json()) as {
       items: Array<{ id: string; title: string; location: string; going: number; status: string }>;
@@ -76,7 +76,7 @@ describe("GET /v1/alumni-dashboard (Alumni suite)", () => {
 
   it("returns members with cohort, roleLabel and city", async () => {
     const res = await api("/v1/alumni-dashboard/members", {
-      headers: cookieHeaders(staff.cookie),
+      headers: cookieHeaders(alumni.cookie),
     });
     const body = (await res.json()) as {
       items: Array<{ id: string; name: string; roleLabel: string; city: string; conn: number }>;
@@ -90,7 +90,7 @@ describe("GET /v1/alumni-dashboard (Alumni suite)", () => {
 
   it("returns stories with company, role and excerpt", async () => {
     const res = await api("/v1/alumni-dashboard/stories", {
-      headers: cookieHeaders(staff.cookie),
+      headers: cookieHeaders(alumni.cookie),
     });
     const body = (await res.json()) as {
       items: Array<{ id: string; name: string; company: string; role: string; excerpt: string }>;
@@ -104,7 +104,7 @@ describe("GET /v1/alumni-dashboard (Alumni suite)", () => {
 
   it("returns jobs with period, place and current flag", async () => {
     const res = await api("/v1/alumni-dashboard/jobs", {
-      headers: cookieHeaders(staff.cookie),
+      headers: cookieHeaders(alumni.cookie),
     });
     const body = (await res.json()) as {
       items: Array<{ id: string; role: string; company: string; period: string; current: number }>;
@@ -118,7 +118,7 @@ describe("GET /v1/alumni-dashboard (Alumni suite)", () => {
 
   it("returns commitments with mentee and cadence", async () => {
     const res = await api("/v1/alumni-dashboard/commitments", {
-      headers: cookieHeaders(staff.cookie),
+      headers: cookieHeaders(alumni.cookie),
     });
     const body = (await res.json()) as {
       items: Array<{ id: string; mentee: string; cadence: string; status: string }>;
@@ -132,7 +132,7 @@ describe("GET /v1/alumni-dashboard (Alumni suite)", () => {
 
   it("returns impact rows with value and label", async () => {
     const res = await api("/v1/alumni-dashboard/impact", {
-      headers: cookieHeaders(staff.cookie),
+      headers: cookieHeaders(alumni.cookie),
     });
     const body = (await res.json()) as {
       items: Array<{ id: string; value: string; label: string }>;

@@ -46,7 +46,7 @@ function toProfile(row: MentorProfileRow): ApiMentorProfile {
 
 export const mentor = new Hono<{ Bindings: AppEnv }>();
 
-mentor.use("*", requireAuth, requireAnyRole(["student", "alumni", "mentor"]));
+mentor.use("*", requireAuth, requireAnyRole(["student", "alumni", "mentor", "admin"]));
 
 mentor.get("/profiles", async (c) => {
   const { cursor, limit } = parsePagination(c);

@@ -38,6 +38,6 @@ export const parentExtrasDashboard = new Hono<{ Bindings: AppEnv }>();
 parentExtrasDashboard.use(
   "*",
   requireAuth,
-  requireAnyRole(["admin", "parent", "student", "instructor"]),
+  requireAnyRole(["parent", "admin"]),
 );
 registerLists(parentExtrasDashboard, PAR_EXT_COLS);

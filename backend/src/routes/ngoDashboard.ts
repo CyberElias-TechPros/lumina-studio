@@ -63,5 +63,5 @@ function registerLists(router: Hono<{ Bindings: AppEnv }>, collections: typeof N
 }
 
 export const ngoDashboard = new Hono<{ Bindings: AppEnv }>();
-ngoDashboard.use("*", requireAuth, requireAnyRole(["admin", "instructor", "student"]));
+ngoDashboard.use("*", requireAuth, requireAnyRole(["ngo", "admin"]));
 registerLists(ngoDashboard, NGO_COLS);

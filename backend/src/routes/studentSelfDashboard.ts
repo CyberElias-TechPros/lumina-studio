@@ -63,5 +63,5 @@ function registerLists(router: Hono<{ Bindings: AppEnv }>, collections: typeof S
 }
 
 export const studentSelfDashboard = new Hono<{ Bindings: AppEnv }>();
-studentSelfDashboard.use("*", requireAuth, requireAnyRole(["admin", "student", "instructor"]));
+studentSelfDashboard.use("*", requireAuth, requireAnyRole(["student", "admin"]));
 registerLists(studentSelfDashboard, STU_SELF_COLS);

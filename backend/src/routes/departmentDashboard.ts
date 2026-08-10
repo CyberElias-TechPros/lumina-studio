@@ -59,5 +59,5 @@ function registerLists(router: Hono<{ Bindings: AppEnv }>, collections: typeof D
 }
 
 export const departmentDashboard = new Hono<{ Bindings: AppEnv }>();
-departmentDashboard.use("*", requireAuth, requireAnyRole(["admin", "instructor"]));
+departmentDashboard.use("*", requireAuth, requireAnyRole(["department", "admin"]));
 registerLists(departmentDashboard, DEP_COLS);

@@ -71,5 +71,5 @@ function registerLists(router: Hono<{ Bindings: AppEnv }>, collections: typeof A
 }
 
 export const alumniDashboard = new Hono<{ Bindings: AppEnv }>();
-alumniDashboard.use("*", requireAuth, requireAnyRole(["admin", "instructor", "student", "alumni"]));
+alumniDashboard.use("*", requireAuth, requireAnyRole(["alumni", "admin"]));
 registerLists(alumniDashboard, ALU_COLS);

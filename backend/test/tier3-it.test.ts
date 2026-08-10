@@ -5,13 +5,13 @@ type TestSession = Awaited<ReturnType<typeof createTestSession>>;
 
 let student: TestSession;
 let admin: TestSession;
-let instructor: TestSession;
+let itStaff: TestSession;
 
 beforeAll(async () => {
   await setupDb();
   student = await createTestSession("student@cea.ng");
   admin = await createTestSession("admin@cea.ng");
-  instructor = await createTestSession("instructor@cea.ng");
+  itStaff = await createTestSession("it@cea.ng");
 });
 
 describe("GET /v1/it (IT support suite)", () => {
@@ -38,9 +38,9 @@ describe("GET /v1/it (IT support suite)", () => {
     expect(body.items[0]?.id).toBeTruthy();
   });
 
-  it("returns the ticket detail with camelCase events for an instructor", async () => {
+  it("returns the ticket detail with camelCase events for an IT user", async () => {
     const res = await api("/v1/it/tickets/TKT-1042", {
-      headers: cookieHeaders(instructor.cookie),
+      headers: cookieHeaders(itStaff.cookie),
     });
     expect(res.status).toBe(200);
     const body = (await res.json()) as {

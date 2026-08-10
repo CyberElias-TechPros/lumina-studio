@@ -4,18 +4,18 @@ import { api, cookieHeaders, createTestSession, setupDb } from "./helpers";
 type TestSession = Awaited<ReturnType<typeof createTestSession>>;
 
 let staff: TestSession;
-let student: TestSession;
+let growth: TestSession;
 
 beforeAll(async () => {
   await setupDb();
   staff = await createTestSession("admin@cea.ng");
-  student = await createTestSession("student@cea.ng");
+  growth = await createTestSession("growth@cea.ng");
 });
 
 describe("GET /v1/growth-dashboard (Growth suite)", () => {
   it("403s non-staff roles", async () => {
     const res = await api("/v1/growth-dashboard/overview", {
-      headers: cookieHeaders(student.cookie),
+      headers: cookieHeaders(growth.cookie),
     });
     expect(res.status).toBe(200);
 
@@ -45,7 +45,7 @@ describe("GET /v1/growth-dashboard (Growth suite)", () => {
 
   it("returns overview KPIs with value labels", async () => {
     const res = await api("/v1/growth-dashboard/overview", {
-      headers: cookieHeaders(staff.cookie),
+      headers: cookieHeaders(growth.cookie),
     });
     const body = (await res.json()) as {
       items: Array<{ id: string; metric: string; valueLabel: string; delta: string }>;
@@ -59,7 +59,7 @@ describe("GET /v1/growth-dashboard (Growth suite)", () => {
 
   it("returns simulator scenarios with numeric conversion", async () => {
     const res = await api("/v1/growth-dashboard/simulations", {
-      headers: cookieHeaders(staff.cookie),
+      headers: cookieHeaders(growth.cookie),
     });
     const body = (await res.json()) as {
       items: Array<{
@@ -79,7 +79,7 @@ describe("GET /v1/growth-dashboard (Growth suite)", () => {
 
   it("returns funnel stages with visitors and deltas", async () => {
     const res = await api("/v1/growth-dashboard/funnel", {
-      headers: cookieHeaders(staff.cookie),
+      headers: cookieHeaders(growth.cookie),
     });
     const body = (await res.json()) as {
       items: Array<{ id: string; name: string; visitors: number; delta: string }>;
@@ -94,7 +94,7 @@ describe("GET /v1/growth-dashboard (Growth suite)", () => {
 
   it("returns experiments with hypotheses and statuses", async () => {
     const res = await api("/v1/growth-dashboard/experiments", {
-      headers: cookieHeaders(staff.cookie),
+      headers: cookieHeaders(growth.cookie),
     });
     const body = (await res.json()) as {
       items: Array<{ id: string; title: string; hypothesis: string; status: string }>;
@@ -107,7 +107,7 @@ describe("GET /v1/growth-dashboard (Growth suite)", () => {
 
   it("returns cohort retention grid with nullable weeks", async () => {
     const res = await api("/v1/growth-dashboard/cohorts", {
-      headers: cookieHeaders(staff.cookie),
+      headers: cookieHeaders(growth.cookie),
     });
     const body = (await res.json()) as {
       items: Array<{ id: string; name: string; w1: number; w6: number | null }>;
@@ -122,7 +122,7 @@ describe("GET /v1/growth-dashboard (Growth suite)", () => {
 
   it("returns channel attribution with CAC/LTV/ROAS", async () => {
     const res = await api("/v1/growth-dashboard/channels", {
-      headers: cookieHeaders(staff.cookie),
+      headers: cookieHeaders(growth.cookie),
     });
     const body = (await res.json()) as {
       items: Array<{ id: string; name: string; cac: string; ltv: string; roas: string }>;
@@ -136,7 +136,7 @@ describe("GET /v1/growth-dashboard (Growth suite)", () => {
 
   it("returns referral campaigns with paid amounts", async () => {
     const res = await api("/v1/growth-dashboard/referrals", {
-      headers: cookieHeaders(staff.cookie),
+      headers: cookieHeaders(growth.cookie),
     });
     const body = (await res.json()) as {
       items: Array<{
@@ -157,7 +157,7 @@ describe("GET /v1/growth-dashboard (Growth suite)", () => {
 
   it("returns SEO keyword clusters with priorities", async () => {
     const res = await api("/v1/growth-dashboard/seo", {
-      headers: cookieHeaders(staff.cookie),
+      headers: cookieHeaders(growth.cookie),
     });
     const body = (await res.json()) as {
       items: Array<{ id: string; keyword: string; volume: number; priority: string }>;

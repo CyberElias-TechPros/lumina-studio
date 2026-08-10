@@ -254,9 +254,10 @@ describe("finance actions", () => {
 
 describe("recruitment actions", () => {
   it("publishes a posting, advances a candidate, and schedules an interview", async () => {
+    const employer = await createTestSession("employer@cea.ng");
     const created = await api("/v1/recruitment/postings", {
       method: "POST",
-      headers: { "Content-Type": "application/json", ...cookieHeaders(admin.cookie) },
+      headers: { "Content-Type": "application/json", ...cookieHeaders(employer.cookie) },
       body: JSON.stringify({ title: "Frontend Intern (Test)" }),
     });
     expect(created.status).toBe(201);
@@ -270,7 +271,7 @@ describe("recruitment actions", () => {
 
     const advanced = await api(`/v1/recruitment/postings/${postingId}/candidates/cand-act-1`, {
       method: "PATCH",
-      headers: { "Content-Type": "application/json", ...cookieHeaders(admin.cookie) },
+      headers: { "Content-Type": "application/json", ...cookieHeaders(employer.cookie) },
       body: JSON.stringify({ stage: "interview" }),
     });
     expect(advanced.status).toBe(200);
@@ -280,14 +281,14 @@ describe("recruitment actions", () => {
 
     const closed = await api(`/v1/recruitment/postings/${postingId}`, {
       method: "PATCH",
-      headers: { "Content-Type": "application/json", ...cookieHeaders(admin.cookie) },
+      headers: { "Content-Type": "application/json", ...cookieHeaders(employer.cookie) },
       body: JSON.stringify({ status: "closed" }),
     });
     expect(closed.status).toBe(200);
 
     const interview = await api("/v1/recruitment/interviews", {
       method: "POST",
-      headers: { "Content-Type": "application/json", ...cookieHeaders(admin.cookie) },
+      headers: { "Content-Type": "application/json", ...cookieHeaders(employer.cookie) },
       body: JSON.stringify({ candidate: "Ada Test", role: "Frontend Intern", date: "2026-08-12" }),
     });
     expect(interview.status).toBe(201);

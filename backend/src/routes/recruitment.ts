@@ -1,4 +1,4 @@
-import { Hono } from "hono";
+import { Hono, type Context } from "hono";
 import type { AppEnv } from "../types";
 import { z } from "zod";
 import { base64UrlDecode, base64UrlEncode, isoNow } from "../lib/crypto";
@@ -89,16 +89,28 @@ export const recruitment = new Hono<{ Bindings: AppEnv }>();
 
 recruitment.use("*", requireAuth);
 
+/** Employers only ever see their own postings; HR and admin see everything. */
+function ownerClause(c: Context<{ Bindings: AppEnv }>): { sql: string; bind: string } {
+  const roleKey = c.get("authUser").roleKey;
+  if (roleKey === "employer") {
+    return { sql: "created_by = ?", bind: c.get("authUser").id };
+  }
+  return { sql: "1 = 1", bind: "" };
+}
+
 recruitment.get("/postings", async (c) => {
   const { cursor, limit } = parsePagination(c);
-  const total = await c.env.DB.prepare(`SELECT COUNT(*) AS n FROM job_postings`).first<{
-    n: number;
-  }>();
+  const owner = ownerClause(c);
+  const total = await c.env.DB.prepare(
+    `SELECT COUNT(*) AS n FROM job_postings WHERE ${owner.sql}`,
+  )
+    .bind(...(owner.bind ? [owner.bind] : []))
+    .first<{ n: number }>();
   const rows = await c.env.DB.prepare(
     `SELECT id, title, applicants, views, posted, status, detail, tone FROM job_postings
-      ${cursor ? "WHERE id > ?" : ""} ORDER BY id ASC LIMIT ?`,
+      WHERE ${owner.sql}${cursor ? " AND id > ?" : ""} ORDER BY id ASC LIMIT ?`,
   )
-    .bind(...(cursor ? [base64UrlDecode(cursor) ?? ""] : []), limit)
+    .bind(...(owner.bind ? [owner.bind] : []), ...(cursor ? [base64UrlDecode(cursor) ?? ""] : []), limit)
     .all<JobPostingRow>();
   const items: ApiJobPosting[] = rows.results.map((r) => ({ ...r }));
   const result: Paginated<ApiJobPosting> = paginate(items, total?.n ?? 0, (last) =>
@@ -107,8 +119,24 @@ recruitment.get("/postings", async (c) => {
   return c.json(result);
 });
 
+/** Guards a posting id for employer role (owning employer or staff). */
+async function assertPostingAccess(
+  c: Context<{ Bindings: AppEnv }>,
+  postingId: string,
+): Promise<void> {
+  const user = c.get("authUser");
+  const row = await c.env.DB.prepare(`SELECT id, created_by FROM job_postings WHERE id = ?`)
+    .bind(postingId)
+    .first<{ id: string; created_by: string }>();
+  if (!row) throw ApiError.notFound("Posting not found.");
+  if (user.roleKey === "employer" && row.created_by !== user.id) {
+    throw ApiError.forbidden("You can only access your own postings.");
+  }
+}
+
 recruitment.get("/postings/:id/candidates", async (c) => {
   const postingId = c.req.param("id");
+  await assertPostingAccess(c, postingId);
   const { cursor, limit } = parsePagination(c);
   const total = await c.env.DB.prepare(
     `SELECT COUNT(*) AS n FROM pipeline_candidates WHERE job_id = ?`,
@@ -130,14 +158,15 @@ recruitment.get("/postings/:id/candidates", async (c) => {
 
 recruitment.get("/interviews", async (c) => {
   const { cursor, limit } = parsePagination(c);
-  const total = await c.env.DB.prepare(`SELECT COUNT(*) AS n FROM interviews`).first<{
-    n: number;
-  }>();
+  const owner = ownerClause(c);
+  const total = await c.env.DB.prepare(`SELECT COUNT(*) AS n FROM interviews WHERE ${owner.sql}`)
+    .bind(...(owner.bind ? [owner.bind] : []))
+    .first<{ n: number }>();
   const rows = await c.env.DB.prepare(
     `SELECT id, candidate, role, date, mode, status FROM interviews
-      ${cursor ? "WHERE id > ?" : ""} ORDER BY id ASC LIMIT ?`,
+      WHERE ${owner.sql}${cursor ? " AND id > ?" : ""} ORDER BY id ASC LIMIT ?`,
   )
-    .bind(...(cursor ? [base64UrlDecode(cursor) ?? ""] : []), limit)
+    .bind(...(owner.bind ? [owner.bind] : []), ...(cursor ? [base64UrlDecode(cursor) ?? ""] : []), limit)
     .all<InterviewRow>();
   const items: ApiInterview[] = rows.results.map((r) => ({ ...r }));
   const result: Paginated<ApiInterview> = paginate(items, total?.n ?? 0, (last) =>
@@ -185,10 +214,10 @@ recruitment.post("/postings", requireAnyRole(["employer", "hr", "admin"]), async
   const body = await parseBody(c, postingSchema);
   const id = crypto.randomUUID();
   await c.env.DB.prepare(
-    `INSERT INTO job_postings (id, title, detail, tone, status, applicants, views, posted, sort_order)
-     VALUES (?, ?, ?, ?, 'open', 0, 0, ?, 0)`,
+    `INSERT INTO job_postings (id, title, detail, tone, status, applicants, views, posted, created_by, sort_order)
+     VALUES (?, ?, ?, ?, 'open', 0, 0, ?, ?, 0)`,
   )
-    .bind(id, body.title, body.detail ?? "", body.tone ?? "", isoNow())
+    .bind(id, body.title, body.detail ?? "", body.tone ?? "", isoNow(), user.id)
     .run();
   return c.json(
     { ok: true, id, title: body.title, applicants: 0, views: 0, posted: isoNow(), status: "open" },
@@ -204,10 +233,7 @@ const postingPatchSchema = z.object({
 recruitment.patch("/postings/:id", requireAnyRole(["employer", "hr", "admin"]), async (c) => {
   const { status } = await parseBody(c, postingPatchSchema);
   const id = c.req.param("id");
-  const row = await c.env.DB.prepare(`SELECT id FROM job_postings WHERE id = ?`)
-    .bind(id)
-    .first<{ id: string }>();
-  if (!row) throw ApiError.notFound("Posting not found.");
+  await assertPostingAccess(c, id);
   await c.env.DB.prepare(`UPDATE job_postings SET status = ? WHERE id = ?`).bind(status, id).run();
   return c.json({ ok: true, id, status });
 });
@@ -223,6 +249,7 @@ recruitment.patch(
   async (c) => {
     const { stage } = await parseBody(c, advanceCandidateSchema);
     const { id: postingId, candidateId } = c.req.param();
+    await assertPostingAccess(c, postingId);
     const row = await c.env.DB.prepare(
       `SELECT id FROM pipeline_candidates WHERE id = ? AND job_id = ?`,
     )
@@ -249,9 +276,9 @@ recruitment.post("/interviews", requireAnyRole(["employer", "hr", "admin"]), asy
   const body = await parseBody(c, interviewSchema);
   const id = crypto.randomUUID();
   await c.env.DB.prepare(
-    `INSERT INTO interviews (id, candidate, role, date, mode, status, sort_order) VALUES (?, ?, ?, ?, ?, 'scheduled', 0)`,
+    `INSERT INTO interviews (id, candidate, role, date, mode, status, created_by, sort_order) VALUES (?, ?, ?, ?, ?, 'scheduled', ?, 0)`,
   )
-    .bind(id, body.candidate, body.role, body.date, body.mode ?? "virtual")
+    .bind(id, body.candidate, body.role, body.date, body.mode ?? "virtual", user.id)
     .run();
   return c.json(
     { ok: true, id, candidate: body.candidate, role: body.role, date: body.date, mode: body.mode ?? "virtual", status: "scheduled" },

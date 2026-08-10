@@ -71,5 +71,5 @@ function registerLists(router: Hono<{ Bindings: AppEnv }>, collections: typeof G
 }
 
 export const governmentDashboard = new Hono<{ Bindings: AppEnv }>();
-governmentDashboard.use("*", requireAuth, requireAnyRole(["admin", "instructor"]));
+governmentDashboard.use("*", requireAuth, requireAnyRole(["government", "admin"]));
 registerLists(governmentDashboard, GOVT_COLS);

@@ -95,9 +95,9 @@ function registerLists(router: Hono<{ Bindings: AppEnv }>, collections: typeof V
 }
 
 export const volunteerDashboard = new Hono<{ Bindings: AppEnv }>();
-volunteerDashboard.use("*", requireAuth, requireAnyRole(["admin", "instructor", "student"]));
+volunteerDashboard.use("*", requireAuth, requireAnyRole(["volunteer", "admin"]));
 registerLists(volunteerDashboard, VOL_COLS);
 
 export const receptionistDashboard = new Hono<{ Bindings: AppEnv }>();
-receptionistDashboard.use("*", requireAuth, requireAnyRole(["admin", "instructor"]));
+receptionistDashboard.use("*", requireAuth, requireAnyRole(["receptionist", "admin"]));
 registerLists(receptionistDashboard, REC_COLS);

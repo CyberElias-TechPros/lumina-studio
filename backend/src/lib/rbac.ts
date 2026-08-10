@@ -39,10 +39,10 @@ export const RBAC_RULES: RbacRule[] = [
   { methods: ["POST"], path: "/v1/contact", public: true },
   { methods: ["GET"], path: "/v1/library/catalog", public: true },
 
-  /* Parent invitations — verify is public; accept requires a session; create is staff-only */
+  /* Parent invitations — verify is public; accept requires a session; create is admin-only */
   { methods: ["GET"], path: "/v1/invitations/:token", public: true },
   { methods: ["POST"], path: "/v1/invitations/:token/accept" },
-  { methods: ["POST"], path: "/v1/invitations", roles: ["admin", "instructor"] },
+  { methods: ["POST"], path: "/v1/invitations", roles: ["admin"] },
 
   /* Auth */
   { methods: ["GET"], path: "/v1/auth/session" },
@@ -122,81 +122,81 @@ export const RBAC_RULES: RbacRule[] = [
   { methods: ["GET"], path: "/v1/mentor/profiles", roles: ["student", "alumni", "mentor"] },
   { methods: ["POST"], path: "/v1/mentor/match", roles: ["student", "alumni", "mentor"] },
 
-  /* Mentor dashboard — admin + instructor + mentor only */
-  { methods: ["*"], path: "/v1/mentor-dashboard/*", roles: ["admin", "instructor", "mentor"] },
+  /* Mentor dashboard — mentor + admin only */
+  { methods: ["*"], path: "/v1/mentor-dashboard/*", roles: ["mentor", "admin"] },
 
-  /* Intern dashboard — admin + instructor + student only */
-  { methods: ["*"], path: "/v1/intern-dashboard/*", roles: ["admin", "instructor", "student"] },
+  /* Intern dashboard — intern + admin only */
+  { methods: ["*"], path: "/v1/intern-dashboard/*", roles: ["intern", "admin"] },
 
-  /* Operations suite — admin + instructor only */
-  { methods: ["*"], path: "/v1/ops/*", roles: ["admin", "instructor"] },
+  /* Operations suite — ops + admin only */
+  { methods: ["*"], path: "/v1/ops/*", roles: ["ops", "admin"] },
 
-  /* IT support suite — admin + instructor only */
-  { methods: ["*"], path: "/v1/it/*", roles: ["admin", "instructor"] },
+  /* IT support suite — it + admin only */
+  { methods: ["*"], path: "/v1/it/*", roles: ["it", "admin"] },
 
-  /* Supplier dashboard — admin + instructor only */
-  { methods: ["*"], path: "/v1/supplier-dashboard/*", roles: ["admin", "instructor"] },
+  /* Supplier dashboard — supplier + admin only */
+  { methods: ["*"], path: "/v1/supplier-dashboard/*", roles: ["supplier", "admin"] },
 
-  /* Partner dashboard — admin + instructor only */
-  { methods: ["*"], path: "/v1/partner-dashboard/*", roles: ["admin", "instructor"] },
+  /* Partner dashboard — partner + admin only */
+  { methods: ["*"], path: "/v1/partner-dashboard/*", roles: ["partner", "admin"] },
 
-  /* Volunteer dashboard — admin + instructor + student (volunteers are learners/alumni) */
-  { methods: ["*"], path: "/v1/volunteer-dashboard/*", roles: ["admin", "instructor", "student"] },
+  /* Volunteer dashboard — volunteer + admin only */
+  { methods: ["*"], path: "/v1/volunteer-dashboard/*", roles: ["volunteer", "admin"] },
 
-  /* Receptionist dashboard — admin + instructor only */
-  { methods: ["*"], path: "/v1/receptionist-dashboard/*", roles: ["admin", "instructor"] },
+  /* Receptionist dashboard — receptionist + admin only */
+  { methods: ["*"], path: "/v1/receptionist-dashboard/*", roles: ["receptionist", "admin"] },
 
-  /* Government/compliance dashboard — admin + instructor only */
-  { methods: ["*"], path: "/v1/government-dashboard/*", roles: ["admin", "instructor"] },
+  /* Government/compliance dashboard — government + admin only */
+  { methods: ["*"], path: "/v1/government-dashboard/*", roles: ["government", "admin"] },
 
-  /* Behavioral design dashboard — admin + instructor + student only */
-  { methods: ["*"], path: "/v1/behavioral-dashboard/*", roles: ["admin", "instructor", "student"] },
+  /* Behavioral design dashboard — behavioral-design + admin only */
+  { methods: ["*"], path: "/v1/behavioral-dashboard/*", roles: ["behavioral-design", "admin"] },
 
-  /* Product marketing dashboard — admin + instructor + student only */
+  /* Product marketing dashboard — product-marketing + admin only */
   {
     methods: ["*"],
     path: "/v1/product-marketing-dashboard/*",
-    roles: ["admin", "instructor", "student"],
+    roles: ["product-marketing", "admin"],
   },
 
-  /* Alumni dashboard — staff, students and alumni */
+  /* Alumni dashboard — alumni + admin only */
   {
     methods: ["*"],
     path: "/v1/alumni-dashboard/*",
-    roles: ["admin", "instructor", "student", "alumni"],
+    roles: ["alumni", "admin"],
   },
 
-  /* Dev dashboard — admin + instructor + student only */
-  { methods: ["*"], path: "/v1/dev-dashboard/*", roles: ["admin", "instructor", "student"] },
+  /* Dev dashboard — dev + admin only */
+  { methods: ["*"], path: "/v1/dev-dashboard/*", roles: ["dev", "admin"] },
 
-  /* Growth dashboard — admin + instructor + student only */
-  { methods: ["*"], path: "/v1/growth-dashboard/*", roles: ["admin", "instructor", "student"] },
+  /* Growth dashboard — growth + admin only */
+  { methods: ["*"], path: "/v1/growth-dashboard/*", roles: ["growth", "admin"] },
 
-  /* Conversion copy dashboard — admin + instructor only */
+  /* Conversion copy dashboard — conversion-copy + admin only */
   {
     methods: ["*"],
     path: "/v1/conversion-copy-dashboard/*",
-    roles: ["admin", "instructor"],
+    roles: ["conversion-copy", "admin"],
   },
 
-  /* Department dashboard — admin + instructor only */
-  { methods: ["*"], path: "/v1/department-dashboard/*", roles: ["admin", "instructor"] },
+  /* Department dashboard — department + admin only */
+  { methods: ["*"], path: "/v1/department-dashboard/*", roles: ["department", "admin"] },
 
-  /* NGO partnership dashboard — staff and students */
+  /* NGO partnership dashboard — ngo + admin only */
   {
     methods: ["*"],
     path: "/v1/ngo-dashboard/*",
-    roles: ["admin", "instructor", "student"],
+    roles: ["ngo", "admin"],
   },
 
-  /* Client engagement dashboard — admin + instructor only */
-  { methods: ["*"], path: "/v1/client-dashboard/*", roles: ["admin", "instructor"] },
+  /* Client engagement dashboard — client + admin only */
+  { methods: ["*"], path: "/v1/client-dashboard/*", roles: ["client", "admin"] },
 
-  /* Admin systems dashboard — admin + instructor */
-  { methods: ["*"], path: "/v1/admin-systems-dashboard/*", roles: ["admin", "instructor"] },
+  /* Admin systems dashboard — admin only */
+  { methods: ["*"], path: "/v1/admin-systems-dashboard/*", roles: ["admin"] },
 
-  /* Director dashboard — admin + instructor */
-  { methods: ["*"], path: "/v1/director-dashboard/*", roles: ["admin", "instructor"] },
+  /* Director dashboard — director + admin */
+  { methods: ["*"], path: "/v1/director-dashboard/*", roles: ["director", "admin"] },
 
   /* Instructor extras dashboard — admin + instructor */
   {
@@ -205,28 +205,28 @@ export const RBAC_RULES: RbacRule[] = [
     roles: ["admin", "instructor"],
   },
 
-  /* Admissions extras dashboard — admin + instructor */
+  /* Admissions extras dashboard — admissions + admin */
   {
     methods: ["*"],
     path: "/v1/admissions-extras-dashboard/*",
-    roles: ["admin", "instructor"],
+    roles: ["admissions", "admin"],
   },
 
-  /* Parent extras dashboard — admin + parent + student + instructor */
+  /* Parent extras dashboard — parent + admin */
   {
     methods: ["*"],
     path: "/v1/parent-extras-dashboard/*",
-    roles: ["admin", "parent", "student", "instructor"],
+    roles: ["parent", "admin"],
   },
 
-  /* HR training dashboard — admin + instructor */
-  { methods: ["*"], path: "/v1/hr-training-dashboard/*", roles: ["admin", "instructor"] },
+  /* HR training dashboard — hr + admin */
+  { methods: ["*"], path: "/v1/hr-training-dashboard/*", roles: ["hr", "admin"] },
 
-  /* Student self dashboard — admin + student + instructor */
+  /* Student self dashboard — student + admin */
   {
     methods: ["*"],
     path: "/v1/student-self-dashboard/*",
-    roles: ["admin", "student", "instructor"],
+    roles: ["student", "admin"],
   },
 
   /* Admin portal */

@@ -5,13 +5,14 @@ import { paginate, parsePagination } from "../lib/pagination";
 import { requireAuth, requireAnyRole } from "../lib/auth";
 import { ApiError } from "../lib/errors";
 
-const STAFF = ["admin", "instructor"];
+const SUPPLIER_STAFF = ["supplier", "admin"];
+const PARTNER_STAFF = ["partner", "admin"];
 
 export const supplierDashboard = new Hono<{ Bindings: AppEnv }>();
 export const partnerDashboard = new Hono<{ Bindings: AppEnv }>();
 
-supplierDashboard.use("*", requireAuth, requireAnyRole(STAFF));
-partnerDashboard.use("*", requireAuth, requireAnyRole(STAFF));
+supplierDashboard.use("*", requireAuth, requireAnyRole(SUPPLIER_STAFF));
+partnerDashboard.use("*", requireAuth, requireAnyRole(PARTNER_STAFF));
 
 const SUP_COLS: Record<string, { table: string; columns: string }> = {
   orders: {

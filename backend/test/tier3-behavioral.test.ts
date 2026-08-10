@@ -5,19 +5,26 @@ type TestSession = Awaited<ReturnType<typeof createTestSession>>;
 
 let staff: TestSession;
 let student: TestSession;
+let behavioral: TestSession;
 
 beforeAll(async () => {
   await setupDb();
   staff = await createTestSession("admin@cea.ng");
   student = await createTestSession("student@cea.ng");
+  behavioral = await createTestSession("behavioral@cea.ng");
 });
 
 describe("GET /v1/behavioral-dashboard (Behavioral design suite)", () => {
-  it("allows students on behavioral lists", async () => {
+  it("403s unrelated roles on behavioral lists", async () => {
     const res = await api("/v1/behavioral-dashboard/interventions", {
       headers: cookieHeaders(student.cookie),
     });
-    expect(res.status).toBe(200);
+    expect(res.status).toBe(403);
+
+    const allowed = await api("/v1/behavioral-dashboard/interventions", {
+      headers: cookieHeaders(behavioral.cookie),
+    });
+    expect(allowed.status).toBe(200);
   });
 
   it.each([
@@ -42,7 +49,7 @@ describe("GET /v1/behavioral-dashboard (Behavioral design suite)", () => {
 
   it("returns overview KPIs with value labels", async () => {
     const res = await api("/v1/behavioral-dashboard/overview", {
-      headers: cookieHeaders(staff.cookie),
+      headers: cookieHeaders(behavioral.cookie),
     });
     const body = (await res.json()) as {
       items: Array<{ id: string; metric: string; valueLabel: string; delta: string }>;
@@ -55,7 +62,7 @@ describe("GET /v1/behavioral-dashboard (Behavioral design suite)", () => {
 
   it("returns interventions with effort, evidence and testsRun", async () => {
     const res = await api("/v1/behavioral-dashboard/interventions", {
-      headers: cookieHeaders(staff.cookie),
+      headers: cookieHeaders(behavioral.cookie),
     });
     const body = (await res.json()) as {
       items: Array<{
@@ -75,7 +82,7 @@ describe("GET /v1/behavioral-dashboard (Behavioral design suite)", () => {
 
   it("returns campaigns with channel, sends and optOut", async () => {
     const res = await api("/v1/behavioral-dashboard/campaigns", {
-      headers: cookieHeaders(staff.cookie),
+      headers: cookieHeaders(behavioral.cookie),
     });
     const body = (await res.json()) as {
       items: Array<{ id: string; title: string; channel: string; sends: string; optOut: string }>;
@@ -89,7 +96,7 @@ describe("GET /v1/behavioral-dashboard (Behavioral design suite)", () => {
 
   it("returns funnel stages with users and percent", async () => {
     const res = await api("/v1/behavioral-dashboard/stages", {
-      headers: cookieHeaders(staff.cookie),
+      headers: cookieHeaders(behavioral.cookie),
     });
     const body = (await res.json()) as {
       items: Array<{ id: string; name: string; users: number; percent: number }>;
@@ -104,7 +111,7 @@ describe("GET /v1/behavioral-dashboard (Behavioral design suite)", () => {
 
   it("returns checkins with learner and streak", async () => {
     const res = await api("/v1/behavioral-dashboard/checkins", {
-      headers: cookieHeaders(staff.cookie),
+      headers: cookieHeaders(behavioral.cookie),
     });
     const body = (await res.json()) as {
       items: Array<{ id: string; learner: string; streak: string; status: string }>;

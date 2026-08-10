@@ -165,9 +165,9 @@ describe("GET /v1/admin-systems-dashboard/metrics (monitoring)", () => {
     expect(body.generatedAt).toBeTruthy();
   });
 
-  it("lists monitoring services for staff", async () => {
+  it("lists monitoring services for admin", async () => {
     const res = await api("/v1/admin-systems-dashboard/services", {
-      headers: cookieHeaders(instructor.cookie),
+      headers: cookieHeaders(admin.cookie),
     });
     expect(res.status).toBe(200);
     const body = (await res.json()) as {

@@ -107,6 +107,37 @@ for (const email of ["admin@cea.ng", "hr@cea.ng", "finance@cea.ng"]) {
   );
 }
 
+const ACTOR_USERS: Array<{ id: string; name: string; email: string; role: string }> = [
+  { id: "00000000-0000-4000-8000-000000000006", name: "Emeka Adebayo", email: "mentor@cea.ng", role: "mentor" },
+  { id: "00000000-0000-4000-8000-000000000021", name: "Test Intern", email: "intern@cea.ng", role: "intern" },
+  { id: "00000000-0000-4000-8000-000000000022", name: "Test IT", email: "it@cea.ng", role: "it" },
+  { id: "00000000-0000-4000-8000-000000000023", name: "Test Ops", email: "ops@cea.ng", role: "ops" },
+  { id: "00000000-0000-4000-8000-000000000024", name: "Test Dev", email: "dev@cea.ng", role: "dev" },
+  { id: "00000000-0000-4000-8000-000000000025", name: "Test Alumni", email: "alumni@cea.ng", role: "alumni" },
+  { id: "00000000-0000-4000-8000-000000000026", name: "Test NGO", email: "ngo@cea.ng", role: "ngo" },
+  { id: "00000000-0000-4000-8000-000000000027", name: "Test Growth", email: "growth@cea.ng", role: "growth" },
+  { id: "00000000-0000-4000-8000-000000000028", name: "Test Product Marketing", email: "product-marketing@cea.ng", role: "product-marketing" },
+  { id: "00000000-0000-4000-8000-000000000029", name: "Test Behavioral", email: "behavioral@cea.ng", role: "behavioral-design" },
+  { id: "00000000-0000-4000-8000-000000000030", name: "Test Volunteer", email: "volunteer@cea.ng", role: "volunteer" },
+  { id: "00000000-0000-4000-8000-000000000031", name: "Test Receptionist", email: "receptionist@cea.ng", role: "receptionist" },
+  { id: "00000000-0000-4000-8000-000000000032", name: "Test Employer", email: "employer@cea.ng", role: "employer" },
+];
+
+for (const u of ACTOR_USERS) {
+  statements.push(
+    `INSERT OR IGNORE INTO users (id, name, email, role_key, status) ` +
+      `VALUES (${sqlString(u.id)}, ${sqlString(u.name)}, ${sqlString(u.email)}, ${sqlString(u.role)}, 'active');`,
+  );
+}
+
+const ACTOR_EMAILS = ACTOR_USERS.map((u) => u.email);
+for (const email of ACTOR_EMAILS) {
+  statements.push(
+    `UPDATE users SET password_hash = ${sqlString(DEMO_PASSWORD_HASH)} ` +
+      `WHERE email = '${email}' AND password_hash IS NULL;`,
+  );
+}
+
 const seededCourses = [
   ...learningCourses.map((c) => ({
     slug: c.slug,

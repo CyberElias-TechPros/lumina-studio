@@ -115,7 +115,7 @@ invitations.post("/:token/accept", requireAuth, async (c) => {
 });
 
 /** Admin/instructor — create an invitation for a student. */
-invitations.post("/", requireAuth, requireAnyRole(["admin", "instructor"]), async (c) => {
+invitations.post("/", requireAuth, requireAnyRole(["admin"]), async (c) => {
   const creator = c.get("authUser");
   const body = await parseBody(c, createSchema);
 

@@ -90,6 +90,6 @@ export const productMarketingDashboard = new Hono<{ Bindings: AppEnv }>();
 productMarketingDashboard.use(
   "*",
   requireAuth,
-  requireAnyRole(["admin", "instructor", "student"]),
+  requireAnyRole(["product-marketing", "admin"]),
 );
 registerLists(productMarketingDashboard, PM_COLS);

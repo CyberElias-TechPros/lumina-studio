@@ -35,5 +35,5 @@ function registerLists(router: Hono<{ Bindings: AppEnv }>, collections: typeof H
 }
 
 export const hrTrainingDashboard = new Hono<{ Bindings: AppEnv }>();
-hrTrainingDashboard.use("*", requireAuth, requireAnyRole(["admin", "instructor"]));
+hrTrainingDashboard.use("*", requireAuth, requireAnyRole(["hr", "admin"]));
 registerLists(hrTrainingDashboard, HR_TRN_COLS);

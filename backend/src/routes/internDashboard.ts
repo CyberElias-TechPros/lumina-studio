@@ -7,7 +7,7 @@ import { ApiError } from "../lib/errors";
 
 export const internDashboard = new Hono<{ Bindings: AppEnv }>();
 
-internDashboard.use("*", requireAuth, requireAnyRole(["admin", "instructor", "student"]));
+internDashboard.use("*", requireAuth, requireAnyRole(["intern", "admin"]));
 
 const COLS: Record<string, { table: string; columns: string }> = {
   tasks: {

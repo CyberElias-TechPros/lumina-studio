@@ -63,5 +63,5 @@ function registerLists(router: Hono<{ Bindings: AppEnv }>, collections: typeof C
 }
 
 export const conversionCopyDashboard = new Hono<{ Bindings: AppEnv }>();
-conversionCopyDashboard.use("*", requireAuth, requireAnyRole(["admin", "instructor"]));
+conversionCopyDashboard.use("*", requireAuth, requireAnyRole(["conversion-copy", "admin"]));
 registerLists(conversionCopyDashboard, CCP_COLS);

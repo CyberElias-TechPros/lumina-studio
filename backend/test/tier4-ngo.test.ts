@@ -4,18 +4,18 @@ import { api, cookieHeaders, createTestSession, setupDb } from "./helpers";
 type TestSession = Awaited<ReturnType<typeof createTestSession>>;
 
 let staff: TestSession;
-let student: TestSession;
+let ngo: TestSession;
 
 beforeAll(async () => {
   await setupDb();
   staff = await createTestSession("admin@cea.ng");
-  student = await createTestSession("student@cea.ng");
+  ngo = await createTestSession("ngo@cea.ng");
 });
 
 describe("GET /v1/ngo-dashboard (NGO partnership suite)", () => {
   it("403s non-staff roles", async () => {
     const res = await api("/v1/ngo-dashboard/overview", {
-      headers: cookieHeaders(student.cookie),
+      headers: cookieHeaders(ngo.cookie),
     });
     expect(res.status).toBe(200);
 
@@ -46,7 +46,7 @@ describe("GET /v1/ngo-dashboard (NGO partnership suite)", () => {
 
   it("returns overview KPIs with value labels", async () => {
     const res = await api("/v1/ngo-dashboard/overview", {
-      headers: cookieHeaders(staff.cookie),
+      headers: cookieHeaders(ngo.cookie),
     });
     const body = (await res.json()) as {
       items: Array<{ id: string; metric: string; valueLabel: string; delta: string }>;
@@ -60,7 +60,7 @@ describe("GET /v1/ngo-dashboard (NGO partnership suite)", () => {
 
   it("returns scholarship funds with statuses", async () => {
     const res = await api("/v1/ngo-dashboard/funds", {
-      headers: cookieHeaders(staff.cookie),
+      headers: cookieHeaders(ngo.cookie),
     });
     const body = (await res.json()) as {
       items: Array<{ id: string; name: string; scholars: string; amount: string; status: string }>;
@@ -74,7 +74,7 @@ describe("GET /v1/ngo-dashboard (NGO partnership suite)", () => {
 
   it("returns community programs with locations", async () => {
     const res = await api("/v1/ngo-dashboard/programs", {
-      headers: cookieHeaders(staff.cookie),
+      headers: cookieHeaders(ngo.cookie),
     });
     const body = (await res.json()) as {
       items: Array<{ id: string; name: string; location: string; beneficiaries: string; status: string }>;
@@ -88,7 +88,7 @@ describe("GET /v1/ngo-dashboard (NGO partnership suite)", () => {
 
   it("returns program budget expense lines", async () => {
     const res = await api("/v1/ngo-dashboard/expenses", {
-      headers: cookieHeaders(staff.cookie),
+      headers: cookieHeaders(ngo.cookie),
     });
     const body = (await res.json()) as {
       items: Array<{ id: string; title: string; amount: string; pct: string; status: string }>;
@@ -103,7 +103,7 @@ describe("GET /v1/ngo-dashboard (NGO partnership suite)", () => {
 
   it("returns volunteer teams with slots", async () => {
     const res = await api("/v1/ngo-dashboard/teams", {
-      headers: cookieHeaders(staff.cookie),
+      headers: cookieHeaders(ngo.cookie),
     });
     const body = (await res.json()) as {
       items: Array<{ id: string; name: string; volunteers: number; slots: string; status: string }>;
@@ -117,7 +117,7 @@ describe("GET /v1/ngo-dashboard (NGO partnership suite)", () => {
 
   it("returns donation transactions with directions", async () => {
     const res = await api("/v1/ngo-dashboard/transactions", {
-      headers: cookieHeaders(staff.cookie),
+      headers: cookieHeaders(ngo.cookie),
     });
     const body = (await res.json()) as {
       items: Array<{ id: string; title: string; amount: string; dateLabel: string; status: string }>;
@@ -131,7 +131,7 @@ describe("GET /v1/ngo-dashboard (NGO partnership suite)", () => {
 
   it("returns impact reports with statuses", async () => {
     const res = await api("/v1/ngo-dashboard/reports", {
-      headers: cookieHeaders(staff.cookie),
+      headers: cookieHeaders(ngo.cookie),
     });
     const body = (await res.json()) as {
       items: Array<{ id: string; title: string; detail: string; status: string }>;
@@ -144,7 +144,7 @@ describe("GET /v1/ngo-dashboard (NGO partnership suite)", () => {
 
   it("returns partner metrics with values", async () => {
     const res = await api("/v1/ngo-dashboard/metrics", {
-      headers: cookieHeaders(staff.cookie),
+      headers: cookieHeaders(ngo.cookie),
     });
     const body = (await res.json()) as {
       items: Array<{ id: string; label: string; value: string; delta: string }>;
@@ -157,7 +157,7 @@ describe("GET /v1/ngo-dashboard (NGO partnership suite)", () => {
 
   it("returns messaging threads with labels", async () => {
     const res = await api("/v1/ngo-dashboard/threads", {
-      headers: cookieHeaders(staff.cookie),
+      headers: cookieHeaders(ngo.cookie),
     });
     const body = (await res.json()) as {
       items: Array<{ id: string; title: string; fromLabel: string; timeLabel: string; status: string }>;

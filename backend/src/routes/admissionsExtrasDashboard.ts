@@ -43,5 +43,5 @@ function registerLists(router: Hono<{ Bindings: AppEnv }>, collections: typeof A
 }
 
 export const admissionsExtrasDashboard = new Hono<{ Bindings: AppEnv }>();
-admissionsExtrasDashboard.use("*", requireAuth, requireAnyRole(["admin", "instructor"]));
+admissionsExtrasDashboard.use("*", requireAuth, requireAnyRole(["admissions", "admin"]));
 registerLists(admissionsExtrasDashboard, ADM_EXT_COLS);

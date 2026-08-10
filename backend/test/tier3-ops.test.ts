@@ -5,13 +5,13 @@ type TestSession = Awaited<ReturnType<typeof createTestSession>>;
 
 let student: TestSession;
 let admin: TestSession;
-let instructor: TestSession;
+let ops: TestSession;
 
 beforeAll(async () => {
   await setupDb();
   student = await createTestSession("student@cea.ng");
   admin = await createTestSession("admin@cea.ng");
-  instructor = await createTestSession("instructor@cea.ng");
+  ops = await createTestSession("ops@cea.ng");
 });
 
 describe("GET /v1/ops (operations suite)", () => {
@@ -39,7 +39,7 @@ describe("GET /v1/ops (operations suite)", () => {
   });
 
   it("returns camelCase fields for branches", async () => {
-    const res = await api("/v1/ops/branches", { headers: cookieHeaders(instructor.cookie) });
+    const res = await api("/v1/ops/branches", { headers: cookieHeaders(ops.cookie) });
     expect(res.status).toBe(200);
     const body = (await res.json()) as {
       items: Array<{ id: string; name: string; occupied: number; costSeatDay: number }>;

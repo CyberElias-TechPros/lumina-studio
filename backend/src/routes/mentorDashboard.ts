@@ -7,7 +7,7 @@ import { ApiError } from "../lib/errors";
 
 export const mentorDashboard = new Hono<{ Bindings: AppEnv }>();
 
-mentorDashboard.use("*", requireAuth, requireAnyRole(["admin", "instructor", "mentor"]));
+mentorDashboard.use("*", requireAuth, requireAnyRole(["mentor", "admin"]));
 
 const COLS: Record<string, { table: string; columns: string }> = {
   mentees: {

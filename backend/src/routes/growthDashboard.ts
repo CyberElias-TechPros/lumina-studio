@@ -59,5 +59,5 @@ function registerLists(router: Hono<{ Bindings: AppEnv }>, collections: typeof G
 }
 
 export const growthDashboard = new Hono<{ Bindings: AppEnv }>();
-growthDashboard.use("*", requireAuth, requireAnyRole(["admin", "instructor", "student"]));
+growthDashboard.use("*", requireAuth, requireAnyRole(["growth", "admin"]));
 registerLists(growthDashboard, GRW_COLS);

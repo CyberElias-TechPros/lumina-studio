@@ -51,7 +51,7 @@ function registerLists(router: Hono<{ Bindings: AppEnv }>, collections: typeof A
 }
 
 export const adminSystemsDashboard = new Hono<{ Bindings: AppEnv }>();
-adminSystemsDashboard.use("*", requireAuth, requireAnyRole(["admin", "instructor"]));
+adminSystemsDashboard.use("*", requireAuth, requireAnyRole(["admin"]));
 registerLists(adminSystemsDashboard, ADM_SYS_COLS);
 
 /** Live monitoring summary: service roster + reported app errors from dev_errors. */

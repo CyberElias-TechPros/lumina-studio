@@ -7,7 +7,7 @@ import { ApiError } from "../lib/errors";
 
 export const it = new Hono<{ Bindings: AppEnv }>();
 
-it.use("*", requireAuth, requireAnyRole(["admin", "instructor"]));
+it.use("*", requireAuth, requireAnyRole(["it", "admin"]));
 
 const COLS: Record<string, { table: string; columns: string }> = {
   tickets: {

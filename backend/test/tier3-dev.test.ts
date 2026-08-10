@@ -4,20 +4,20 @@ import { api, cookieHeaders, createTestSession, setupDb } from "./helpers";
 type TestSession = Awaited<ReturnType<typeof createTestSession>>;
 
 let staff: TestSession;
-let student: TestSession;
+let dev: TestSession;
 
 beforeAll(async () => {
   await setupDb();
   staff = await createTestSession("admin@cea.ng");
-  student = await createTestSession("student@cea.ng");
+  dev = await createTestSession("dev@cea.ng");
 });
 
 describe("GET /v1/dev-dashboard (Dev suite)", () => {
   it("403s non-staff roles", async () => {
     const res = await api("/v1/dev-dashboard/prs", {
-      headers: cookieHeaders(student.cookie),
+      headers: cookieHeaders(dev.cookie),
     });
-    // dev is admin+instructor+student; a mentor must be denied
+    // dev + admin are allowed; a mentor must be denied
     expect(res.status).toBe(200);
 
     const mentor = await createTestSession("mentor@cea.ng");
@@ -49,7 +49,7 @@ describe("GET /v1/dev-dashboard (Dev suite)", () => {
 
   it("returns overview KPIs with value labels", async () => {
     const res = await api("/v1/dev-dashboard/overview", {
-      headers: cookieHeaders(staff.cookie),
+      headers: cookieHeaders(dev.cookie),
     });
     const body = (await res.json()) as {
       items: Array<{ id: string; metric: string; valueLabel: string; delta: string }>;
@@ -62,7 +62,7 @@ describe("GET /v1/dev-dashboard (Dev suite)", () => {
 
   it("returns deploys with versionLabel and timeLabel", async () => {
     const res = await api("/v1/dev-dashboard/deploys", {
-      headers: cookieHeaders(staff.cookie),
+      headers: cookieHeaders(dev.cookie),
     });
     const body = (await res.json()) as {
       items: Array<{ id: string; versionLabel: string; status: string; timeLabel: string }>;
@@ -76,7 +76,7 @@ describe("GET /v1/dev-dashboard (Dev suite)", () => {
 
   it("returns PRs with branch and status", async () => {
     const res = await api("/v1/dev-dashboard/prs", {
-      headers: cookieHeaders(staff.cookie),
+      headers: cookieHeaders(dev.cookie),
     });
     const body = (await res.json()) as {
       items: Array<{ id: string; title: string; branch: string; status: string }>;
@@ -90,7 +90,7 @@ describe("GET /v1/dev-dashboard (Dev suite)", () => {
 
   it("returns errors with countLabel and status", async () => {
     const res = await api("/v1/dev-dashboard/errors", {
-      headers: cookieHeaders(staff.cookie),
+      headers: cookieHeaders(dev.cookie),
     });
     const body = (await res.json()) as {
       items: Array<{ id: string; title: string; countLabel: string; status: string }>;
@@ -104,7 +104,7 @@ describe("GET /v1/dev-dashboard (Dev suite)", () => {
 
   it("returns environment vars with key, value and env", async () => {
     const res = await api("/v1/dev-dashboard/vars", {
-      headers: cookieHeaders(staff.cookie),
+      headers: cookieHeaders(dev.cookie),
     });
     const body = (await res.json()) as {
       items: Array<{ id: string; key: string; value: string; env: string }>;
@@ -117,7 +117,7 @@ describe("GET /v1/dev-dashboard (Dev suite)", () => {
 
   it("returns queues with detail and status", async () => {
     const res = await api("/v1/dev-dashboard/queues", {
-      headers: cookieHeaders(staff.cookie),
+      headers: cookieHeaders(dev.cookie),
     });
     const body = (await res.json()) as {
       items: Array<{ id: string; name: string; detail: string; status: string }>;
@@ -131,7 +131,7 @@ describe("GET /v1/dev-dashboard (Dev suite)", () => {
 
   it("returns docs with updatedLabel", async () => {
     const res = await api("/v1/dev-dashboard/docs", {
-      headers: cookieHeaders(staff.cookie),
+      headers: cookieHeaders(dev.cookie),
     });
     const body = (await res.json()) as {
       items: Array<{ id: string; title: string; updatedLabel: string }>;

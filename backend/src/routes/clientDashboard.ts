@@ -59,5 +59,5 @@ function registerLists(router: Hono<{ Bindings: AppEnv }>, collections: typeof C
 }
 
 export const clientDashboard = new Hono<{ Bindings: AppEnv }>();
-clientDashboard.use("*", requireAuth, requireAnyRole(["admin", "instructor"]));
+clientDashboard.use("*", requireAuth, requireAnyRole(["client", "admin"]));
 registerLists(clientDashboard, CLI_COLS);

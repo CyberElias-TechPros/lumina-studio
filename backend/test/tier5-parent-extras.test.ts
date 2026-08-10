@@ -4,18 +4,18 @@ import { api, cookieHeaders, createTestSession, setupDb } from "./helpers";
 type TestSession = Awaited<ReturnType<typeof createTestSession>>;
 
 let staff: TestSession;
-let student: TestSession;
+let parent: TestSession;
 
 beforeAll(async () => {
   await setupDb();
   staff = await createTestSession("admin@cea.ng");
-  student = await createTestSession("student@cea.ng");
+  parent = await createTestSession("parent@cea.ng");
 });
 
 describe("GET /v1/parent-extras-dashboard (Parent extras suite)", () => {
   it("403s non-staff roles", async () => {
     const res = await api("/v1/parent-extras-dashboard/contacts", {
-      headers: cookieHeaders(student.cookie),
+      headers: cookieHeaders(parent.cookie),
     });
     expect(res.status).toBe(200);
 
@@ -39,7 +39,7 @@ describe("GET /v1/parent-extras-dashboard (Parent extras suite)", () => {
 
   it("returns contacts with names and roles", async () => {
     const res = await api("/v1/parent-extras-dashboard/contacts", {
-      headers: cookieHeaders(staff.cookie),
+      headers: cookieHeaders(parent.cookie),
     });
     const body = (await res.json()) as {
       items: Array<{ id: string; name: string; role: string; kind: string }>;
@@ -53,7 +53,7 @@ describe("GET /v1/parent-extras-dashboard (Parent extras suite)", () => {
 
   it("returns meetings with dates and statuses", async () => {
     const res = await api("/v1/parent-extras-dashboard/meetings", {
-      headers: cookieHeaders(staff.cookie),
+      headers: cookieHeaders(parent.cookie),
     });
     const body = (await res.json()) as {
       items: Array<{ id: string; title: string; dateLabel: string; status: string }>;

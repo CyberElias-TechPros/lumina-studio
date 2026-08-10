@@ -6,7 +6,7 @@ import { requireAuth, requireAnyRole } from "../lib/auth";
 
 export const ops = new Hono<{ Bindings: AppEnv }>();
 
-ops.use("*", requireAuth, requireAnyRole(["admin", "instructor"]));
+ops.use("*", requireAuth, requireAnyRole(["ops", "admin"]));
 
 const COLS: Record<string, string> = {
   inventory: "id, name, category, qty, unit, reorder_point AS reorderPoint, auto_reorder AS autoReorder, unit_price AS unitPrice, location",

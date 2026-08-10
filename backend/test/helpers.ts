@@ -38,6 +38,7 @@ import hrTrainingSql from "../migrations/0035_hr_training.sql?raw";
 import studentSelfSql from "../migrations/0036_student_self.sql?raw";
 import adminMetricsSql from "../migrations/0037_admin_system_metrics.sql?raw";
 import parentInvitationsSql from "../migrations/0038_parent_invitations.sql?raw";
+import ownershipSql from "../migrations/0039_ownership.sql?raw";
 import { seedContentSql } from "../seeds/content";
 import { seedLmsSql } from "../seeds/lms";
 import { seedDomainSql } from "../seeds/domain";
@@ -127,6 +128,7 @@ export async function setupDb(): Promise<void> {
     studentSelfSql,
     adminMetricsSql,
     parentInvitationsSql,
+    ownershipSql,
   ]) {
     const statements = sql
       .split("\n")
