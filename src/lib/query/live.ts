@@ -6,9 +6,12 @@ import {
   fetchLiveClassChat,
   fetchLiveClassPolls,
   fetchLiveClasses,
+  fetchWhiteboardOps,
+  postWhiteboardOp,
   sendLiveClassChat,
   type LiveClassSession,
   type LivePoll,
+  type WhiteboardOp,
 } from "@/lib/api/live";
 import type { RealtimeMessage } from "@/lib/api/realtime";
 
@@ -18,6 +21,7 @@ export const liveKeys = {
   class: (id: string) => ["live", "classes", id] as const,
   chat: (id: string) => ["live", "classes", id, "chat"] as const,
   polls: (id: string) => ["live", "classes", id, "polls"] as const,
+  whiteboard: (id: string) => ["live", "classes", id, "whiteboard"] as const,
 };
 
 export function useLiveClasses() {
@@ -73,6 +77,22 @@ export function useCastLivePollVote(classId: string) {
       castLivePollVote(classId, input.pollId, input.option),
     onSuccess: () => {
       void queryClient.invalidateQueries({ queryKey: liveKeys.polls(classId) });
+    },
+  });
+}
+
+export function useWhiteboardOps(classId: string) {
+  return useApiQuery<WhiteboardOp[]>(liveKeys.whiteboard(classId), () => fetchWhiteboardOps(classId), {
+    enabled: classId.length > 0,
+  });
+}
+
+export function usePostWhiteboardOp(classId: string) {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (op: string) => postWhiteboardOp(classId, op),
+    onSuccess: () => {
+      void queryClient.invalidateQueries({ queryKey: liveKeys.whiteboard(classId) });
     },
   });
 }

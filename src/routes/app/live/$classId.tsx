@@ -23,9 +23,11 @@ import {
   useLiveClass,
   useLiveClassChat,
   useLiveClassPolls,
+  usePostWhiteboardOp,
   useSendLiveClassChat,
+  useWhiteboardOps,
 } from "@/lib/query/live";
-import type { LivePoll } from "@/lib/api/live";
+import type { LivePoll, WhiteboardOp } from "@/lib/api/live";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/live/$classId")({
@@ -37,6 +39,61 @@ export const Route = createFileRoute("/app/live/$classId")({
   }),
   component: LiveClass,
 });
+
+function WhiteboardPanel({ classId }: { classId: string }) {
+  const opsQuery = useWhiteboardOps(classId);
+  const postOp = usePostWhiteboardOp(classId);
+  const [draft, setDraft] = useState("");
+
+  const submit = (event: React.FormEvent) => {
+    event.preventDefault();
+    const trimmed = draft.trim();
+    if (!trimmed || postOp.isPending) return;
+    postOp.mutate(trimmed, { onSuccess: () => setDraft("") });
+  };
+
+  return (
+    <Card className="bg-card shadow-soft border">
+      <CardContent className="p-5">
+        <div className="flex items-center justify-between">
+          <p className="font-display flex items-center gap-2 text-sm font-bold">
+            <PenLine className="text-primary size-4" /> Whiteboard
+          </p>
+          <Badge variant="secondary" className="font-semibold">
+            Shared by instructor
+          </Badge>
+        </div>
+        <div className="bg-muted/50 mt-4 max-h-48 space-y-1 overflow-y-auto rounded-xl border p-3">
+          <QueryState<WhiteboardOp[]>
+            query={opsQuery}
+            isEmpty={(data) => (Array.isArray(data) ? data.length === 0 : false)}
+            empty={{ title: "Empty board", description: "Add the first note.", icon: <PenLine className="size-6" /> }}
+            loading={<p className="text-muted-foreground py-4 text-center text-xs">Loading board…</p>}
+          >
+            {(ops) =>
+              ops.map((op) => (
+                <p key={op.id} className="text-xs">
+                  <strong className="text-primary">{op.userName}:</strong> {op.op}
+                </p>
+              ))
+            }
+          </QueryState>
+        </div>
+        <form onSubmit={submit} className="mt-3 flex items-center gap-2">
+          <input
+            value={draft}
+            onChange={(e) => setDraft(e.target.value)}
+            placeholder="Add a note…"
+            className="bg-muted h-9 flex-1 rounded-lg border-0 px-3 text-xs outline-none"
+          />
+          <Button type="submit" size="sm" className="shrink-0" disabled={postOp.isPending || !draft.trim()}>
+            <Send className="size-3.5" />
+          </Button>
+        </form>
+      </CardContent>
+    </Card>
+  );
+}
 
 function LiveClass() {
   const { classId } = Route.useParams();
@@ -154,24 +211,7 @@ function ClassContent({ classId, status }: { classId: string; status: string }) 
           )}
         </div>
 
-        <Card className="bg-card shadow-soft border">
-          <CardContent className="p-5">
-            <div className="flex items-center justify-between">
-              <p className="font-display flex items-center gap-2 text-sm font-bold">
-                <PenLine className="text-primary size-4" /> Whiteboard
-              </p>
-              <Badge variant="secondary" className="font-semibold">
-                Shared by instructor
-              </Badge>
-            </div>
-            <div className="bg-muted/50 mt-4 grid aspect-[2/1] place-items-center rounded-xl border">
-              <BarChart3 className="text-muted-foreground size-8" />
-              <p className="text-muted-foreground text-xs font-semibold">
-                Whiteboard canvas — live sync
-              </p>
-            </div>
-          </CardContent>
-        </Card>
+        <WhiteboardPanel classId={classId} />
       </div>
 
       <div className="space-y-5">

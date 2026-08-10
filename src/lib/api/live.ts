@@ -70,3 +70,17 @@ export function castLivePollVote(
     body: { option },
   });
 }
+
+export function fetchWhiteboardOps(classId: string): Promise<WhiteboardOp[]> {
+  return apiFetch<WhiteboardOp[]>(`/v1/live/classes/${classId}/whiteboard/ops`);
+}
+
+export function postWhiteboardOp(
+  classId: string,
+  op: string,
+): Promise<WhiteboardOp> {
+  return apiFetch<WhiteboardOp>(`/v1/live/classes/${classId}/whiteboard/ops`, {
+    method: "POST",
+    body: { op },
+  });
+}

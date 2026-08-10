@@ -57,6 +57,15 @@ interface PollState extends LivePoll {
   votes: Record<string, string>;
 }
 
+interface MockWhiteboardOp {
+  id: string;
+  classId: string;
+  userId: string;
+  userName: string;
+  op: string;
+  createdAt: string;
+}
+
 const polls: PollState[] = [
   {
     id: "poll-1",
@@ -165,6 +174,32 @@ export function registerLiveMocks(): void {
     const session = sessions.find((s) => s.id === id);
     if (!session) throw new ApiError(404, "NOT_FOUND", "Class not found.");
     return session;
+  });
+
+  const whiteboardStore: Map<string, MockWhiteboardOp[]> = new Map();
+
+  registerMockPattern("GET", "/v1/live/classes/*/whiteboard/ops", async (init: ApiRequestInit) => {
+    await delay();
+    const classId = segmentAt(init.path ?? "", 3);
+    return whiteboardStore.get(classId) ?? [];
+  });
+
+  registerMockPattern("POST", "/v1/live/classes/*/whiteboard/ops", async (init: ApiRequestInit) => {
+    await delay();
+    const classId = segmentAt(init.path ?? "", 3);
+    const input = (init.body ?? {}) as { op?: string };
+    const op: MockWhiteboardOp = {
+      id: `wbo-${Date.now()}`,
+      classId,
+      userId: MOCK_USER_ID,
+      userName: "Adaeze Okafor",
+      op: input.op ?? "",
+      createdAt: new Date().toISOString(),
+    };
+    const list = whiteboardStore.get(classId) ?? [];
+    list.push(op);
+    whiteboardStore.set(classId, list);
+    return op;
   });
 }
 
