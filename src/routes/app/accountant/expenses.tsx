@@ -1,11 +1,12 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowLeft, BadgeCheck, CheckCircle2, Clock3, ReceiptText } from "lucide-react";
+import { useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { QueryState } from "@/components/ui/query-state";
 import { AppShell } from "@/components/app/app-shell";
-import { useExpenses } from "@/lib/query/finance";
+import { useExpenses, useExpenseItems, useUpdateExpenseStatus } from "@/lib/query/finance";
 import type { Expense } from "@/lib/api/finance";
 import { cn, formatNaira, formatNairaCompact } from "@/lib/utils";
 
@@ -19,9 +20,47 @@ export const Route = createFileRoute("/app/accountant/expenses")({
   component: AccountantExpenses,
 });
 
+function ReviewButton({ expense }: { expense: Expense }) {
+  const update = useUpdateExpenseStatus();
+  const [done, setDone] = useState(false);
+  const [status, setStatus] = useState<"approved" | "rejected">("approved");
+
+  if (done) {
+    return <Badge className="bg-success/10 text-success border-0 font-semibold">{status}</Badge>;
+  }
+
+  return (
+    <div className="flex shrink-0 gap-1">
+      <Button
+        size="sm"
+        className="h-8 px-2 text-xs"
+        disabled={update.isPending}
+        onClick={() => {
+          setStatus("approved");
+          update.mutate({ id: expense.id, status: "approved" }, { onSuccess: () => setDone(true) });
+        }}
+      >
+        Approve
+      </Button>
+      <Button
+        size="sm"
+        variant="outline"
+        className="h-8 px-2 text-xs"
+        disabled={update.isPending}
+        onClick={() => {
+          setStatus("rejected");
+          update.mutate({ id: expense.id, status: "rejected" }, { onSuccess: () => setDone(true) });
+        }}
+      >
+        Reject
+      </Button>
+    </div>
+  );
+}
+
 function AccountantExpenses() {
   const query = useExpenses();
-  const rows = query.data?.pages.flatMap((p) => p.items) ?? [];
+  const rows = useExpenseItems();
   const claimed = rows.reduce((s, e) => s + e.amount, 0);
 
   return (
@@ -112,9 +151,7 @@ function AccountantExpenses() {
                     <Badge variant="secondary" className="font-semibold">
                       Logged
                     </Badge>
-                    <Button variant="outline" size="sm" className="shrink-0 font-semibold">
-                      Review
-                    </Button>
+                    <ReviewButton expense={c} />
                   </div>
                 ))}
               </>

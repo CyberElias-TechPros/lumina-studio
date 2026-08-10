@@ -56,3 +56,12 @@ export function updateInvoiceStatus(
 ): Promise<{ ok: true; id: string; status: string }> {
   return apiFetch(`/v1/invoices/${id}`, { method: "PATCH", body: { status } });
 }
+
+export type ExpenseStatus = "approved" | "rejected";
+
+export function updateExpenseStatus(
+  id: string,
+  status: ExpenseStatus,
+): Promise<{ ok: true; id: string; status: string }> {
+  return apiFetch(`/v1/expenses/${id}`, { method: "PATCH", body: { status } });
+}

@@ -5,8 +5,10 @@ import {
   fetchInvoices,
   fetchExpenses,
   fetchPaymentBatches,
+  updateExpenseStatus,
   updateInvoiceStatus,
   runPayroll,
+  type ExpenseStatus,
   type Invoice,
   type Expense,
   type PaymentBatch,
@@ -61,6 +63,17 @@ export function useRunPayroll() {
     onSuccess: () => {
       void queryClient.invalidateQueries({ queryKey: financeKeys.payments });
       void queryClient.invalidateQueries({ queryKey: hrKeys.payroll });
+    },
+  });
+}
+
+export function useUpdateExpenseStatus() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (input: { id: string; status: ExpenseStatus }) =>
+      updateExpenseStatus(input.id, input.status),
+    onSuccess: () => {
+      void queryClient.invalidateQueries({ queryKey: financeKeys.expenses });
     },
   });
 }

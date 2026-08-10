@@ -1,6 +1,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { usePaginatedQuery, flattenPages } from "@/lib/query/hooks";
 import {
+  advanceCandidate,
   createPosting,
   fetchPostings,
   fetchPipelineCandidates,
@@ -43,6 +44,17 @@ export function useInterviews() {
 
 export function useInterviewItems(): Interview[] {
   return flattenPages(useInterviews().data?.pages);
+}
+
+export function useAdvanceCandidate(jobId: string) {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (input: { candidateId: string; stage: string }) =>
+      advanceCandidate(jobId, input.candidateId, input.stage),
+    onSuccess: () => {
+      void queryClient.invalidateQueries({ queryKey: recruitmentKeys.pipeline(jobId) });
+    },
+  });
 }
 
 export function useTalentCandidates() {

@@ -1,4 +1,4 @@
-import { registerMock } from "@/lib/api/client";
+import { registerMock, registerMockPattern } from "@/lib/api/client";
 import { postings, pipelineCandidates, interviews, talentCandidates } from "@/data/recruitment";
 
 function delay(milliseconds = 120): Promise<void> {
@@ -51,5 +51,13 @@ export function registerRecruitmentMocks(): void {
       status: "open",
       posted: "Just now",
     };
+  });
+
+  registerMockPattern("PATCH", "/v1/recruitment/postings/*/candidates/*", async (init) => {
+    await delay(200);
+    const { stage } = (init.body ?? {}) as { stage?: string };
+    const segs = (init.path ?? "").split("/");
+    const candidateId = segs[segs.length - 1] ?? "";
+    return { ok: true, id: candidateId, stage: stage ?? "interview" };
   });
 }

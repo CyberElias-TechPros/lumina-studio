@@ -56,6 +56,23 @@ export function fetchTalentCandidates(): Promise<Paginated<TalentCandidate>> {
   return apiFetch<Paginated<TalentCandidate>>("/v1/recruitment/talent");
 }
 
+export interface AdvanceCandidateResult {
+  ok: boolean;
+  id: string;
+  stage: string;
+}
+
+export function advanceCandidate(
+  jobId: string,
+  candidateId: string,
+  stage: string,
+): Promise<AdvanceCandidateResult> {
+  return apiFetch<AdvanceCandidateResult>(
+    `/v1/recruitment/postings/${jobId}/candidates/${candidateId}`,
+    { method: "PATCH", body: { stage } },
+  );
+}
+
 export interface CreatePostingInput {
   title: string;
   detail?: string;

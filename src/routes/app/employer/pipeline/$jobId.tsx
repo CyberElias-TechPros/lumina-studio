@@ -1,21 +1,20 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import {
-  ArrowLeft,
-  BriefcaseBusiness,
-  CalendarDays,
-  CheckCircle2,
-  FileText,
-  MessageSquare,
-  XCircle,
-} from "lucide-react";
+import { ArrowDown, ArrowLeft, BriefcaseBusiness, CalendarDays, CheckCircle2, FileText, MessageSquare, XCircle } from "lucide-react";
+import { useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { QueryState } from "@/components/ui/query-state";
 import { AppShell } from "@/components/app/app-shell";
-import { usePipelineCandidates } from "@/lib/query/recruitment";
+import { usePipelineCandidates, useAdvanceCandidate } from "@/lib/query/recruitment";
 import type { PipelineCandidate } from "@/lib/api/recruitment";
 import { cn } from "@/lib/utils";
+
+const NEXT_STAGE: Record<string, string> = {
+  applied: "shortlist",
+  shortlist: "interview",
+  interview: "offer",
+};
 
 export const Route = createFileRoute("/app/employer/pipeline/$jobId")({
   head: () => ({
@@ -38,6 +37,24 @@ function candidateTone(stage: string): string {
   if (stage === "Interview") return "bg-primary/10 text-primary";
   if (stage === "Shortlist") return "bg-learning/10 text-learning";
   return "bg-muted-foreground/10 text-muted-foreground";
+}
+
+function AdvanceButton({ jobId, candidate }: { jobId: string; candidate: PipelineCandidate }) {
+  const advance = useAdvanceCandidate(jobId);
+  const next = NEXT_STAGE[candidate.stage.toLowerCase()];
+  if (!next) {
+    return <Badge className="bg-success/10 text-success border-0 font-semibold">Hired</Badge>;
+  }
+  return (
+    <Button
+      size="sm"
+      className="h-8 px-2 text-xs"
+      disabled={advance.isPending}
+      onClick={() => advance.mutate({ candidateId: candidate.id, stage: next })}
+    >
+      <ArrowDown className="mr-1 size-3" /> Advance to {next}
+    </Button>
+  );
 }
 
 function EmployerPipeline() {
@@ -111,12 +128,7 @@ function EmployerPipeline() {
                       {c.stage}
                     </Badge>
                     <div className="flex shrink-0 gap-1">
-                      <Button variant="outline" size="sm" className="font-semibold">
-                        <FileText className="size-3.5" /> CV
-                      </Button>
-                      <Button variant="outline" size="sm" className="font-semibold">
-                        <MessageSquare className="size-3.5" />
-                      </Button>
+                      <AdvanceButton jobId={jobId} candidate={c} />
                       <Button size="sm" className="font-semibold">
                         <CalendarDays className="size-3.5" /> Schedule
                       </Button>
