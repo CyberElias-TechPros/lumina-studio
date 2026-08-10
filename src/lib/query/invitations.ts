@@ -2,8 +2,11 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useApiQuery } from "@/lib/query/hooks";
 import {
   acceptInvitation,
+  createInvitation,
   fetchInvitation,
   type AcceptInvitationResult,
+  type CreateInvitationInput,
+  type CreateInvitationResult,
   type InvitationInfo,
 } from "@/lib/api/invitations";
 
@@ -26,5 +29,13 @@ export function useAcceptInvitation() {
     onSuccess: (_data, token) => {
       void queryClient.invalidateQueries({ queryKey: invitationKeys.info(token) });
     },
+  });
+}
+
+/** Staff — create an invitation for a student's guardian. */
+export function useCreateInvitation() {
+  return useMutation({
+    mutationFn: (input: CreateInvitationInput): Promise<CreateInvitationResult> =>
+      createInvitation(input),
   });
 }

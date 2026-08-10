@@ -729,6 +729,23 @@ export function registerAllMocks(): void {
     };
   });
 
+  registerMock("POST", "/v1/admin/users", async (init) => {
+    await delay(200);
+    const body = (init.body ?? {}) as { name?: string; email?: string; roleKey?: string };
+    return {
+      ok: true,
+      id: `usr-${Date.now()}`,
+      email: body.email ?? "",
+      roleKey: body.roleKey ?? "student",
+      inviteUrl: `/app/parent/invitation/accept?token=mock-${Date.now()}`,
+    };
+  });
+
+  registerMockPattern("PATCH", "/v1/admin/users/*", async () => {
+    await delay(150);
+    return { ok: true };
+  });
+
   /* Instructor */
   const instructorCourses = [
     ...learningCourses.map((c) => ({

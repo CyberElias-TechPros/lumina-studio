@@ -1,8 +1,11 @@
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { usePaginatedQuery, flattenPages } from "@/lib/query/hooks";
 import {
   fetchAdminUsers,
   fetchAuditLog,
   fetchAdminAccounts,
+  provisionUser,
+  updateUser,
   type AdminUser,
   type AuditEntry,
   type AdminAccount,
@@ -36,4 +39,26 @@ export function useAdminAccounts() {
 
 export function useAdminAccountItems(): AdminAccount[] {
   return flattenPages(useAdminAccounts().data?.pages);
+}
+
+export function useProvisionUser() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: provisionUser,
+    onSuccess: () => {
+      void queryClient.invalidateQueries({ queryKey: adminKeys.users });
+      void queryClient.invalidateQueries({ queryKey: adminKeys.accounts });
+    },
+  });
+}
+
+export function useUpdateUser(id: string) {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (input: { roleKey?: string; status?: string }) => updateUser(id, input),
+    onSuccess: () => {
+      void queryClient.invalidateQueries({ queryKey: adminKeys.users });
+      void queryClient.invalidateQueries({ queryKey: adminKeys.accounts });
+    },
+  });
 }

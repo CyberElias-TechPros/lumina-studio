@@ -39,6 +39,7 @@ import studentSelfSql from "../migrations/0036_student_self.sql?raw";
 import adminMetricsSql from "../migrations/0037_admin_system_metrics.sql?raw";
 import parentInvitationsSql from "../migrations/0038_parent_invitations.sql?raw";
 import ownershipSql from "../migrations/0039_ownership.sql?raw";
+import submissionsColumnsSql from "../migrations/0040_submissions_columns.sql?raw";
 import { seedContentSql } from "../seeds/content";
 import { seedLmsSql } from "../seeds/lms";
 import { seedDomainSql } from "../seeds/domain";
@@ -129,6 +130,7 @@ export async function setupDb(): Promise<void> {
     adminMetricsSql,
     parentInvitationsSql,
     ownershipSql,
+    submissionsColumnsSql,
   ]) {
     const statements = sql
       .split("\n")
@@ -138,7 +140,14 @@ export async function setupDb(): Promise<void> {
       .map((s) => s.trim())
       .filter((s) => s.length > 0);
     for (const statement of statements) {
-      await env.DB.exec(statement);
+      try {
+        await env.DB.exec(statement);
+      } catch (err) {
+        const message = err instanceof Error ? err.message : String(err);
+        if (!message.includes("duplicate column name") && !message.includes("already exists")) {
+          throw err;
+        }
+      }
     }
   }
   await execStatements(seedContentSql);

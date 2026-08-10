@@ -93,8 +93,7 @@ export const RBAC_RULES: RbacRule[] = [
   { methods: ["GET"], path: "/v1/instructor/courses/:slug", roles: ["instructor"] },
   { methods: ["GET"], path: "/v1/instructor/assignments", roles: ["instructor"] },
   { methods: ["GET"], path: "/v1/instructor/assignments/:id", roles: ["instructor"] },
-  { methods: ["POST"], path: "/v1/instructor/submissions/:id", roles: ["instructor"] },
-  { methods: ["GET"], path: "/v1/instructor/submissions/:id", roles: ["instructor"] },
+  { methods: ["GET", "POST", "PATCH"], path: "/v1/instructor/submissions/:id", roles: ["instructor"] },
 
   /* HR portal */
   { methods: ["GET"], path: "/v1/hr/employees", roles: ["hr", "admin"] },

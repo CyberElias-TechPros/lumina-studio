@@ -39,3 +39,36 @@ export function fetchAdminAccounts(): Promise<Paginated<AdminAccount>> {
 export function fetchAuditLog(): Promise<Paginated<AuditEntry>> {
   return apiFetch<Paginated<AuditEntry>>("/v1/admin/audit-log");
 }
+
+export interface ProvisionUserInput {
+  name: string;
+  email: string;
+  roleKey: string;
+}
+
+export interface ProvisionUserResult {
+  ok: boolean;
+  id: string;
+  email: string;
+  roleKey: string;
+  inviteUrl: string;
+}
+
+export function provisionUser(input: ProvisionUserInput): Promise<ProvisionUserResult> {
+  return apiFetch<ProvisionUserResult>("/v1/admin/users", {
+    method: "POST",
+    body: input,
+  });
+}
+
+export interface UpdateUserInput {
+  roleKey?: string;
+  status?: string;
+}
+
+export function updateUser(id: string, input: UpdateUserInput): Promise<{ ok: boolean }> {
+  return apiFetch<{ ok: boolean }>(`/v1/admin/users/${id}`, {
+    method: "PATCH",
+    body: input,
+  });
+}
