@@ -1,3 +1,4 @@
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useApiQuery, usePaginatedQuery, flattenPages } from "@/lib/query/hooks";
 import {
   fetchInstructorGradebook,
@@ -5,6 +6,7 @@ import {
   fetchInstructorCourse,
   fetchInstructorAssignments,
   fetchInstructorAssignment,
+  gradeSubmission,
   type InstructorCourse,
 } from "@/lib/api/instructor";
 import type { InstructorGradebookRow, InstructorSubmission } from "@/data/learning";
@@ -57,4 +59,15 @@ export function useInstructorAssignment(id: string) {
       enabled: id.length > 0,
     },
   );
+}
+
+export function useGradeSubmission(submissionId: string) {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (input: { score: number; feedback?: string }) => gradeSubmission(submissionId, input),
+    onSuccess: () => {
+      void queryClient.invalidateQueries({ queryKey: instructorKeys.assignment(submissionId) });
+      void queryClient.invalidateQueries({ queryKey: instructorKeys.assignments });
+    },
+  });
 }

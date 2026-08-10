@@ -326,7 +326,7 @@ function ApplyPage() {
                       <Input
                         id="phone"
                         type="tel"
-                        placeholder="+234 801 234 5678"
+                        placeholder="+234 905 862 8386"
                         value={profile.phone}
                         onChange={(e) => setField("phone")(e.target.value)}
                         aria-invalid={Boolean(fieldErrors.phone)}

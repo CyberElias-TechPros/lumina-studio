@@ -1,11 +1,13 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowLeft, BriefcaseBusiness, Eye, FileText, Pencil, Plus, Users, X } from "lucide-react";
+import { ArrowLeft, BriefcaseBusiness, Eye, FileText, Pencil, Plus, Send, Users, X } from "lucide-react";
+import { useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
 import { QueryState } from "@/components/ui/query-state";
 import { AppShell } from "@/components/app/app-shell";
-import { usePostings, useInterviews } from "@/lib/query/recruitment";
+import { usePostings, useInterviews, useCreatePosting } from "@/lib/query/recruitment";
 import type { JobPosting } from "@/lib/api/recruitment";
 import { cn } from "@/lib/utils";
 
@@ -42,9 +44,7 @@ function EmployerJobs() {
               <ArrowLeft className="size-4" /> Employer hub
             </Link>
           </Button>
-          <Button size="sm">
-            <Plus className="size-4" /> Post a job
-          </Button>
+          <CreatePostingButton />
         </>
       }
     >
@@ -142,5 +142,60 @@ function EmployerJobs() {
         </CardContent>
       </Card>
     </AppShell>
+  );
+}
+
+function CreatePostingButton() {
+  const [open, setOpen] = useState(false);
+  const [title, setTitle] = useState("");
+  const [detail, setDetail] = useState("");
+  const create = useCreatePosting();
+
+  const submit = (event: React.FormEvent) => {
+    event.preventDefault();
+    const trimmedTitle = title.trim();
+    if (trimmedTitle.length === 0 || create.isPending) return;
+    create.mutate(
+      { title: trimmedTitle, detail: detail.trim() || undefined },
+      {
+        onSuccess: () => {
+          setTitle("");
+          setDetail("");
+          setOpen(false);
+        },
+      },
+    );
+  };
+
+  if (!open) {
+    return (
+      <Button size="sm" onClick={() => setOpen(true)}>
+        <Plus className="size-4" /> Post a job
+      </Button>
+    );
+  }
+
+  return (
+    <form onSubmit={submit} className="flex items-center gap-2">
+      <Input
+        value={title}
+        onChange={(event) => setTitle(event.target.value)}
+        placeholder="Role title…"
+        className="h-9 w-44 text-xs"
+        autoFocus
+      />
+      <Input
+        value={detail}
+        onChange={(event) => setDetail(event.target.value)}
+        placeholder="Detail (optional)"
+        className="h-9 w-44 text-xs"
+      />
+      <Button size="sm" className="shrink-0" disabled={create.isPending}>
+        <Send className="size-3.5" />
+      </Button>
+      <Button type="button" size="sm" variant="ghost" onClick={() => setOpen(false)}>
+        Cancel
+      </Button>
+    </form>
   );
 }

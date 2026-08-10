@@ -104,7 +104,7 @@ function FaqPage() {
                   </span>
                   <h3 className="font-display mt-4 text-base font-extrabold">Admissions hotline</h3>
                   <p className="text-muted-foreground mt-1 text-sm">
-                    +234 801 234 5678 · Mon–Sat, 9am–6pm
+                    +234 905 862 8386 · Mon–Sat, 9am–6pm
                   </p>
                   <Button asChild variant="outline" size="sm" className="mt-4">
                     <Link to="/contact">Call us</Link>

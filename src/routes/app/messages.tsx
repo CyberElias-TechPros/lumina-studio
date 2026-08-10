@@ -1,11 +1,12 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowLeft, CheckCheck, Phone, Search, Send, Video } from "lucide-react";
+import { useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { QueryState } from "@/components/ui/query-state";
 import { AppShell } from "@/components/app/app-shell";
-import { useMessageThreads } from "@/lib/query/messages";
+import { useMessageThreads, useThreadItems, useSendMessage } from "@/lib/query/messages";
 import type { MessageThread } from "@/data/learning";
 import { cn } from "@/lib/utils";
 
@@ -24,6 +25,12 @@ export const Route = createFileRoute("/app/messages")({
 
 function MessagesPage() {
   const threadsQuery = useMessageThreads();
+  const threads = useThreadItems();
+  const [activeId, setActiveId] = useState<string>(threads[0]?.id ?? "");
+  const [draft, setDraft] = useState("");
+  const activeIdResolved = activeId || threads[0]?.id || "";
+  const active = threads.find((t) => t.id === activeIdResolved) ?? threads[0];
+  const send = useSendMessage(active?.id ?? "");
 
   return (
     <AppShell
@@ -41,8 +48,6 @@ function MessagesPage() {
     >
       <QueryState<MessageThread[]> query={threadsQuery} error={{ title: "Messages unavailable" }}>
         {(threads) => {
-          const unreadTotal = threads.reduce((sum, t) => sum + t.unread, 0);
-          const active = threads[0];
           return (
             <>
               <div className="grid h-[640px] gap-5 lg:grid-cols-[1fr_1.6fr]">
@@ -62,9 +67,10 @@ function MessagesPage() {
                       <button
                         key={t.id}
                         type="button"
+                        onClick={() => setActiveId(t.id)}
                         className={cn(
                           "flex w-full items-center gap-3 p-4 text-left transition-colors",
-                          t.id === active.id ? "bg-primary/5" : "hover:bg-muted/50",
+                          t.id === activeIdResolved ? "bg-primary/5" : "hover:bg-muted/50",
                         )}
                       >
                         <span className="bg-gradient-brand text-primary-foreground font-display grid size-10 shrink-0 place-items-center rounded-full text-xs font-bold">
@@ -159,6 +165,18 @@ function MessagesPage() {
                   <CardContent className="flex items-center gap-2 border-t p-3">
                     <input
                       type="text"
+                      value={draft}
+                      onChange={(event) => setDraft(event.target.value)}
+                      onKeyDown={(event) => {
+                        if (event.key === "Enter" && !event.shiftKey) {
+                          event.preventDefault();
+                          const trimmed = draft.trim();
+                          if (trimmed && !send.isPending) {
+                            send.mutate(trimmed);
+                            setDraft("");
+                          }
+                        }
+                      }}
                       placeholder="Type a message…"
                       className="bg-muted flex-1 rounded-xl border-0 px-4 py-2.5 text-sm outline-none"
                     />
@@ -166,6 +184,14 @@ function MessagesPage() {
                       size="icon"
                       className="bg-gradient-brand size-10 border-0"
                       aria-label="Send message"
+                      disabled={send.isPending || draft.trim().length === 0}
+                      onClick={() => {
+                        const trimmed = draft.trim();
+                        if (trimmed && !send.isPending) {
+                          send.mutate(trimmed);
+                          setDraft("");
+                        }
+                      }}
                     >
                       <Send className="size-4" />
                     </Button>

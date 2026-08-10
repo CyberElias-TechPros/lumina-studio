@@ -576,6 +576,32 @@ export function registerAllMocks(): void {
       await delay();
       return assignment;
     });
+    registerMock("GET", `/v1/assignments/${assignment.id}/submission`, async () => {
+      await delay();
+      return {
+        id: `sub-${assignment.id}`,
+        status: assignment.status === "graded" ? "graded" : "submitted",
+        score: assignment.score ?? null,
+        feedback: assignment.status === "graded" ? "Rubric feedback attached." : "",
+        submitted: "Jul 28, 9:14am",
+        graded_at: assignment.status === "graded" ? "Aug 1, 2:00pm" : null,
+        late: 0,
+        file: "starter-repo-link",
+        size: "GitHub",
+      };
+    });
+    registerMock("POST", `/v1/assignments/${assignment.id}/submit`, async () => {
+      await delay(300);
+      return {
+        id: `sub-${assignment.id}`,
+        assignmentId: assignment.id,
+        status: "submitted",
+        submittedAt: new Date().toISOString(),
+        late: false,
+        file: "starter-repo-link",
+        size: "GitHub",
+      };
+    });
   }
 
   /* Assessments */
@@ -605,6 +631,11 @@ export function registerAllMocks(): void {
     registerMock("GET", `/v1/messages/threads/${thread.id}`, async () => {
       await delay();
       return thread;
+    });
+    registerMock("POST", `/v1/messages/threads/${thread.id}/messages`, async (init) => {
+      await delay(150);
+      const body = (init.body ?? {}) as { body?: string };
+      return { text: body.body ?? "", time: "Just now", mine: true };
     });
   }
 
@@ -737,6 +768,18 @@ export function registerAllMocks(): void {
     registerMock("GET", `/v1/instructor/assignments/${submission.id}`, async () => {
       await delay();
       return submission;
+    });
+    registerMock("PATCH", `/v1/instructor/submissions/${submission.id}`, async (init) => {
+      await delay(300);
+      const body = (init?.body ?? {}) as { score?: number; feedback?: string };
+      return {
+        id: submission.id,
+        score: body.score ?? 0,
+        status: "graded",
+        feedback: body.feedback,
+        gradedBy: "instructor@cea.ng",
+        gradedAt: new Date().toISOString(),
+      };
     });
   }
 

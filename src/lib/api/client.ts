@@ -165,9 +165,11 @@ function matchesPattern(segments: string[], pathname: string): boolean {
 }
 
 function getMock(method: string, path: string): MockHandler | undefined {
-  if (!mocksLoaded) {
+  if (!mocksLoaded && !import.meta.env.VITE_API_URL) {
     mocksLoaded = true;
-    // Lazy import keeps the mock registry out of the production bundle.
+    // Lazy import keeps the mock registry out of the production bundle:
+    // VITE_API_URL is a compile-time constant, so when it is set (real mode)
+    // the dead branch — and the ~3 MB mock chunk — is tree-shaken away.
     void import("@/lib/api/mocks").then((module) => module.registerAllMocks());
   }
   const pathname = path.split("?")[0] ?? path;

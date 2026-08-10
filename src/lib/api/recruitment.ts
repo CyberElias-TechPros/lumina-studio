@@ -55,3 +55,24 @@ export function fetchInterviews(): Promise<Paginated<Interview>> {
 export function fetchTalentCandidates(): Promise<Paginated<TalentCandidate>> {
   return apiFetch<Paginated<TalentCandidate>>("/v1/recruitment/talent");
 }
+
+export interface CreatePostingInput {
+  title: string;
+  detail?: string;
+  tone?: string;
+}
+
+export interface CreatePostingResult {
+  ok: boolean;
+  id: string;
+  title: string;
+  status: string;
+  posted: string;
+}
+
+export function createPosting(input: CreatePostingInput): Promise<CreatePostingResult> {
+  return apiFetch<CreatePostingResult>("/v1/recruitment/postings", {
+    method: "POST",
+    body: input,
+  });
+}

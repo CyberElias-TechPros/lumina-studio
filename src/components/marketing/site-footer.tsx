@@ -60,10 +60,10 @@ export function SiteFooter() {
 
             <div className="mt-7 space-y-2.5 text-sm">
               <p className="text-ink-foreground/70 flex items-center gap-2.5">
-                <MapPin className="size-4 shrink-0" /> Port Harcourt, Rivers State, Nigeria
+                <MapPin className="size-4 shrink-0" /> 26 Ebony Road, Off Rumuola Road, Port Harcourt, Rivers State, Nigeria
               </p>
               <p className="text-ink-foreground/70 flex items-center gap-2.5">
-                <Phone className="size-4 shrink-0" /> +234 801 234 5678
+                <Phone className="size-4 shrink-0" /> +234 905 862 8386
               </p>
               <p className="text-ink-foreground/70 flex items-center gap-2.5">
                 <Mail className="size-4 shrink-0" /> hello@cea.ng

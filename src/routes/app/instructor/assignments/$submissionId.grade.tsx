@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useState } from "react";
 import {
   ArrowLeft,
   ArrowRight,
@@ -14,7 +15,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { QueryState } from "@/components/ui/query-state";
 import { AppShell } from "@/components/app/app-shell";
-import { useInstructorAssignment } from "@/lib/query/instructor";
+import { useInstructorAssignment, useGradeSubmission } from "@/lib/query/instructor";
 import type { InstructorSubmission } from "@/data/learning";
 import { cn } from "@/lib/utils";
 
@@ -25,18 +26,29 @@ export const Route = createFileRoute("/app/instructor/assignments/$submissionId/
   component: Grader,
 });
 
-const criteria = [
-  { c: "API design & routes", w: 20, score: 17 },
-  { c: "Auth & security", w: 25, score: 23 },
-  { c: "Data layer", w: 25, score: 24 },
-  { c: "Tests & docs", w: 15, score: 13 },
-  { c: "Code quality", w: 15, score: 14 },
-];
+interface Criterion {
+  c: string;
+  w: number;
+  score: number;
+}
 
 function Grader() {
   const { submissionId } = Route.useParams();
   const sQuery = useInstructorAssignment(submissionId);
+  const grade = useGradeSubmission(submissionId);
+  const [feedback, setFeedback] = useState(
+    "Strong submission — auth rotation is implemented correctly and the schema is well indexed. Watch the test for the rate-limiter edge case (it skipped the 429 path).",
+  );
+  const [criteria, setCriteria] = useState<Criterion[]>([
+    { c: "API design & routes", w: 20, score: 17 },
+    { c: "Auth & security", w: 25, score: 23 },
+    { c: "Data layer", w: 25, score: 24 },
+    { c: "Tests & docs", w: 15, score: 13 },
+    { c: "Code quality", w: 15, score: 14 },
+  ]);
 
+  const setScore = (i: number, score: number) =>
+    setCriteria((prev) => prev.map((c, idx) => (idx === i ? { ...c, score } : c)));
   const total = criteria.reduce((sum, c) => sum + c.score, 0);
   const rubric = [
     { name: "Express routes", lines: 214, status: "ok" },
@@ -112,9 +124,8 @@ function Grader() {
                 <CardContent className="space-y-4">
                   <textarea
                     rows={4}
-                    defaultValue={
-                      "Strong submission — auth rotation is implemented correctly and the schema is well indexed. Watch the test for the rate-limiter edge case (it skipped the 429 path)."
-                    }
+                    value={feedback}
+                    onChange={(e) => setFeedback(e.target.value)}
                     className="bg-muted w-full rounded-xl border-0 px-4 py-3 text-sm leading-relaxed outline-none"
                   />
                   <div className="flex flex-wrap gap-2">
@@ -137,7 +148,7 @@ function Grader() {
                   <span className="text-muted-foreground text-xs font-semibold">total · 100</span>
                 </CardHeader>
                 <CardContent className="space-y-4">
-                  {criteria.map((c) => (
+                  {criteria.map((c, i) => (
                     <div key={c.c}>
                       <div className="flex items-center justify-between text-xs font-semibold">
                         <span>{c.c}</span>
@@ -150,7 +161,8 @@ function Grader() {
                         type="range"
                         min={0}
                         max={c.w}
-                        defaultValue={c.score}
+                        value={c.score}
+                        onChange={(e) => setScore(i, Number(e.target.value))}
                         aria-label={`${c.c} score`}
                         className="mt-2 w-full accent-[var(--primary)]"
                       />
@@ -168,12 +180,23 @@ function Grader() {
               </Card>
 
               <div className="grid gap-3">
-                <Button className="bg-gradient-brand w-full border-0">
+                <Button
+                  className="bg-gradient-brand w-full border-0"
+                  disabled={grade.isPending}
+                  onClick={() =>
+                    grade.mutate({
+                      score: Math.round(total),
+                      feedback: feedback.trim() || undefined,
+                    })
+                  }
+                >
                   <Send className="mr-1.5 size-4" /> Return grade to {s.student.split(" ")[0]}
                 </Button>
-                <Button variant="outline" className="w-full font-semibold">
-                  Save draft
-                </Button>
+                {grade.isError && (
+                  <p className="text-destructive text-xs">
+                    Grading failed — please try again or contact support.
+                  </p>
+                )}
               </div>
 
               <div className="flex flex-wrap items-center justify-between gap-2">

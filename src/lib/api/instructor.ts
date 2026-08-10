@@ -33,3 +33,22 @@ export function fetchInstructorAssignments(): Promise<Paginated<InstructorSubmis
 export function fetchInstructorAssignment(id: string): Promise<InstructorSubmission> {
   return apiFetch<InstructorSubmission>(`/v1/instructor/assignments/${id}`);
 }
+
+export interface GradeResult {
+  id: string;
+  score: number;
+  status: string;
+  feedback?: string;
+  gradedBy: string;
+  gradedAt: string;
+}
+
+export function gradeSubmission(
+  id: string,
+  input: { score: number; feedback?: string },
+): Promise<GradeResult> {
+  return apiFetch<GradeResult>(`/v1/instructor/submissions/${id}`, {
+    method: "PATCH",
+    body: input,
+  });
+}

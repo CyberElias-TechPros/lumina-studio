@@ -263,7 +263,7 @@ function VisitFeedbackPage() {
                     Prefer to talk it through?
                   </p>
                   <p className="text-ink-foreground/70 mt-1 text-sm">
-                    WhatsApp our front desk on +234 801 234 5678 — a real person replies.
+                    WhatsApp our front desk on +234 905 862 8386 — a real person replies.
                   </p>
                   <Badge className="bg-ink-foreground/15 text-ink-foreground mt-4 border-0 font-semibold">
                     Mon–Sat · 9am–6pm

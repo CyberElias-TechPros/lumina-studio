@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useState } from "react";
 import {
   ArrowLeft,
   ArrowRight,
@@ -8,6 +9,7 @@ import {
   FileText,
   Link2,
   ListChecks,
+  Loader2,
   Paperclip,
   UploadCloud,
 } from "lucide-react";
@@ -16,7 +18,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { QueryState } from "@/components/ui/query-state";
 import { AppShell } from "@/components/app/app-shell";
-import { useAssignment } from "@/lib/query/assignments";
+import { useAssignment, useSubmitAssignment } from "@/lib/query/assignments";
 import type { StudentAssignment } from "@/data/learning";
 import { cn } from "@/lib/utils";
 
@@ -191,11 +193,9 @@ function AssignmentDetail() {
                           <p className="text-muted-foreground mt-1 text-xs">
                             Zip your repo or share a link
                           </p>
-                          <Button size="sm" className="bg-gradient-brand mt-4 border-0">
-                            <UploadCloud className="mr-1.5 size-4" /> Upload submission
-                          </Button>
                         </div>
                       )}
+                      <SubmitForm assignmentId={assignmentId} />
                       {a.status !== "graded" && (
                         <p className="text-muted-foreground text-xs">
                           You can resubmit before the deadline — latest submission wins.
@@ -249,5 +249,40 @@ function AssignmentDetail() {
         )}
       </QueryState>
     </AppShell>
+  );
+}
+
+function SubmitForm({ assignmentId }: { assignmentId: string }) {
+  const [value, setValue] = useState("");
+  const submit = useSubmitAssignment(assignmentId);
+
+  return (
+    <div className="space-y-2">
+      <textarea
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        placeholder="Paste your repo link or submission note…"
+        rows={3}
+        className="bg-muted w-full resize-none rounded-xl border-0 px-4 py-3 text-sm outline-none"
+      />
+      <Button
+        size="sm"
+        className="bg-gradient-brand w-full border-0"
+        disabled={submit.isPending || value.trim().length === 0}
+        onClick={() => value.trim() && submit.mutate({ file: value.trim() })}
+      >
+        {submit.isPending ? (
+          <Loader2 className="mr-1.5 size-4 animate-spin" />
+        ) : (
+          <UploadCloud className="mr-1.5 size-4" />
+        )}
+        Submit work
+      </Button>
+      {submit.isError && (
+        <p className="text-destructive text-xs">
+          Submission failed — please try again or contact support.
+        </p>
+      )}
+    </div>
   );
 }

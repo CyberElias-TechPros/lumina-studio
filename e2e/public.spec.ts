@@ -33,7 +33,7 @@ test.describe("Public marketing + application journey", () => {
     await page.locator("#firstName").fill("E2E");
     await page.locator("#lastName").fill("Tester");
     await page.locator("#email").fill(email);
-    await page.locator("#phone").fill("+2348012345678");
+    await page.locator("#phone").fill("+2349058628386");
 
     await page.locator("#city").click();
     await page.getByRole("option", { name: /lagos/i }).click();
@@ -76,7 +76,7 @@ test.describe("Public marketing + application journey", () => {
       data: {
         fullName: "E2E Tracker",
         email,
-        phone: "+2348012345678",
+        phone: "+2349058628386",
         programSlug: "full-stack-software-development",
       },
     });

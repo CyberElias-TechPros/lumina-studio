@@ -40,4 +40,16 @@ export function registerRecruitmentMocks(): void {
       total: talentCandidates.length,
     };
   });
+
+  registerMock("POST", "/v1/recruitment/postings", async (init) => {
+    await delay(200);
+    const body = (init.body ?? {}) as { title?: string; detail?: string; tone?: string };
+    return {
+      ok: true,
+      id: `post-${Date.now()}`,
+      title: body.title ?? "Untitled role",
+      status: "open",
+      posted: "Just now",
+    };
+  });
 }

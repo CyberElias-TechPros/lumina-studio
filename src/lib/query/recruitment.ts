@@ -1,5 +1,7 @@
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { usePaginatedQuery, flattenPages } from "@/lib/query/hooks";
 import {
+  createPosting,
   fetchPostings,
   fetchPipelineCandidates,
   fetchInterviews,
@@ -49,4 +51,14 @@ export function useTalentCandidates() {
 
 export function useTalentCandidateItems(): TalentCandidate[] {
   return flattenPages(useTalentCandidates().data?.pages);
+}
+
+export function useCreatePosting() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: createPosting,
+    onSuccess: () => {
+      void queryClient.invalidateQueries({ queryKey: recruitmentKeys.postings });
+    },
+  });
 }
