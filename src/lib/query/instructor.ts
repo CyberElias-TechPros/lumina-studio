@@ -64,7 +64,8 @@ export function useInstructorAssignment(id: string) {
 export function useGradeSubmission(submissionId: string) {
   const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: (input: { score: number; feedback?: string }) => gradeSubmission(submissionId, input),
+    mutationFn: (input: { score: number; feedback?: string }) =>
+      gradeSubmission(submissionId, input),
     onSuccess: () => {
       void queryClient.invalidateQueries({ queryKey: instructorKeys.assignment(submissionId) });
       void queryClient.invalidateQueries({ queryKey: instructorKeys.assignments });

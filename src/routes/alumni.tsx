@@ -13,18 +13,16 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { CTASection, PageHero, PageShell, SectionHeading } from "@/components/marketing/shell";
 import { Reveal, StaggerGroup, StaggerItem, TiltCard } from "@/components/motion";
+import { getPageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/alumni")({
-  head: () => ({
-    meta: [
-      { title: "Alumni Network — Cyber Elias Academy" },
-      {
-        name: "description",
-        content:
-          "Once an Elias, always an Elias. The network is built by every graduating cohort — mentor, hire and give back from day one.",
-      },
-    ],
-  }),
+  head: () =>
+    getPageHead({
+      title: "Alumni Network",
+      description:
+        "Once an Elias, always an Elias. The network is built by every graduating cohort — mentor, hire and give back from day one.",
+      path: "/alumni",
+    }),
   component: Alumni,
 });
 

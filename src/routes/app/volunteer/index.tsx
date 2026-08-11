@@ -60,9 +60,9 @@ function VolunteerHub() {
   const logged = hours.reduce((n, h) => n + h.hours, 0);
   const openRoles = opportunities.filter((o) => o.slotsFilled < o.slotsTotal).length;
   const impact =
-    metrics.find((m) => m.metric.toLowerCase().includes("serve") || m.metric.toLowerCase().includes("impact"))
-      ?.valueLabel ??
-    (metrics.length > 0 ? metrics[0].valueLabel : "—");
+    metrics.find(
+      (m) => m.metric.toLowerCase().includes("serve") || m.metric.toLowerCase().includes("impact"),
+    )?.valueLabel ?? (metrics.length > 0 ? metrics[0].valueLabel : "—");
 
   return (
     <AppShell

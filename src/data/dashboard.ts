@@ -330,7 +330,14 @@ export const cohorts = [
     attendance: 88,
     atRisk: 2,
   },
-  { id: "co-14", name: "Cohort 14 Â· Cloud", students: 28, progress: 41, attendance: 84, atRisk: 6 },
+  {
+    id: "co-14",
+    name: "Cohort 14 Â· Cloud",
+    students: 28,
+    progress: 41,
+    attendance: 84,
+    atRisk: 6,
+  },
 ];
 
 export const gradebook = [
@@ -917,4 +924,3 @@ export const notifications = [
     engine: "career",
   },
 ];
-

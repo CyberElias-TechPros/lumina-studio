@@ -15,18 +15,16 @@ import { Button } from "@/components/ui/button";
 import { CTASection, PageHero, PageShell, SectionHeading } from "@/components/marketing/shell";
 import { Marquee, Reveal, StaggerGroup, StaggerItem, TiltCard } from "@/components/motion";
 import { partnersList } from "@/data/site";
+import { getPageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/partners")({
-  head: () => ({
-    meta: [
-      { title: "Partners — Cyber Elias Academy" },
-      {
-        name: "description",
-        content:
-          "Employers, institutions, NGOs and sponsors — partner with the academy to hire talent, co-brand programs, fund scholarships and build the tech ecosystem.",
-      },
-    ],
-  }),
+  head: () =>
+    getPageHead({
+      title: "Partners",
+      description:
+        "Employers, institutions, NGOs and sponsors — partner with the academy to hire talent, co-brand programs, fund scholarships and build the tech ecosystem.",
+      path: "/partners",
+    }),
   component: Partners,
 });
 

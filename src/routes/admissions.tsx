@@ -18,18 +18,16 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { CTASection, PageHero, PageShell, SectionHeading } from "@/components/marketing/shell";
 import { Reveal, StaggerGroup, StaggerItem } from "@/components/motion";
+import { getPageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/admissions")({
-  head: () => ({
-    meta: [
-      { title: "Admissions — Cyber Elias Academy" },
-      {
-        name: "description",
-        content:
-          "How admission to Cyber Elias Academy works: apply online, upload documents, sit an interview or entrance exam, get an offer and enroll.",
-      },
-    ],
-  }),
+  head: () =>
+    getPageHead({
+      title: "Admissions",
+      description:
+        "How admission to Cyber Elias Academy works: apply online, upload documents, sit an interview or entrance exam, get an offer and enroll.",
+      path: "/admissions",
+    }),
   component: Admissions,
 });
 

@@ -249,7 +249,7 @@ function VisitPage() {
                       id="v-phone"
                       name="phone"
                       type="tel"
-                      placeholder="+234 800 000 0000"
+                      placeholder="+234 905 862 8386"
                       required
                     />
                   </div>

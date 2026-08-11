@@ -3,18 +3,16 @@ import { ArrowRight, ArrowUpRight, Quote } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { PageShell, PageHero, CTASection } from "@/components/marketing/shell";
 import { Reveal } from "@/components/motion";
+import { getPageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/stories")({
-  head: () => ({
-    meta: [
-      { title: "Alumni Stories — Cyber Elias Academy" },
-      {
-        name: "description",
-        content:
-          "Real stories from CEA alumni — how they found their tracks, survived the capstone and built careers that weren't on their radar.",
-      },
-    ],
-  }),
+  head: () =>
+    getPageHead({
+      title: "Alumni Stories",
+      description:
+        "Real stories from CEA alumni — how they found their tracks, survived the capstone and built careers that weren't on their radar.",
+      path: "/stories",
+    }),
   component: StoriesPage,
 });
 

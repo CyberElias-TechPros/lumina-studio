@@ -5,17 +5,33 @@ import { Button } from "@/components/ui/button";
 import { CTASection, PageShell } from "@/components/marketing/shell";
 import { Reveal } from "@/components/motion";
 import { blogPosts, engineMap } from "@/data/site";
+import { getPageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/blog/$slug")({
-  head: () => ({
-    meta: [
-      { title: "Article — Cyber Elias Academy" },
-      {
-        name: "description",
-        content: "Article at Cyber Elias Academy.",
+  head: ({ params }) => {
+    const post = blogPosts.find((p) => p.slug === params.slug) ?? blogPosts[0];
+    const articleSchema = {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      headline: post.title,
+      description: post.excerpt,
+      datePublished: post.date,
+      author: { "@type": "Person", name: post.author },
+      publisher: {
+        "@type": "Organization",
+        name: "Cyber Elias Academy",
+        logo: { "@type": "ImageObject", url: "https://cea.ng/icon.svg" },
       },
-    ],
-  }),
+      mainEntityOfPage: `https://cea.ng/blog/${post.slug}`,
+    };
+    return getPageHead({
+      title: post.title,
+      description: post.excerpt,
+      path: `/blog/${post.slug}`,
+      type: "article",
+      structuredData: articleSchema,
+    });
+  },
   component: Article,
 });
 

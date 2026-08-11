@@ -18,18 +18,16 @@ import { Card, CardContent } from "@/components/ui/card";
 import { PageShell, PageHero, CTASection, SectionHeading } from "@/components/marketing/shell";
 import { Reveal, StaggerGroup, StaggerItem } from "@/components/motion";
 import { cn } from "@/lib/utils";
+import { getPageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/careers")({
-  head: () => ({
-    meta: [
-      { title: "Careers at CEA — Cyber Elias Academy" },
-      {
-        name: "description",
-        content:
-          "Build the platform that builds careers. Open roles at Cyber Elias Academy — engineering, teaching, design, operations and more.",
-      },
-    ],
-  }),
+  head: () =>
+    getPageHead({
+      title: "Careers at CEA",
+      description:
+        "Build the platform that builds careers. Open roles at Cyber Elias Academy — engineering, teaching, design, operations and more.",
+      path: "/careers",
+    }),
   component: CareersPage,
 });
 

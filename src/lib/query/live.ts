@@ -82,9 +82,13 @@ export function useCastLivePollVote(classId: string) {
 }
 
 export function useWhiteboardOps(classId: string) {
-  return useApiQuery<WhiteboardOp[]>(liveKeys.whiteboard(classId), () => fetchWhiteboardOps(classId), {
-    enabled: classId.length > 0,
-  });
+  return useApiQuery<WhiteboardOp[]>(
+    liveKeys.whiteboard(classId),
+    () => fetchWhiteboardOps(classId),
+    {
+      enabled: classId.length > 0,
+    },
+  );
 }
 
 export function usePostWhiteboardOp(classId: string) {

@@ -15,18 +15,16 @@ import { Button } from "@/components/ui/button";
 import { CTASection, PageHero, PageShell, SectionHeading } from "@/components/marketing/shell";
 import { Reveal, StaggerGroup, StaggerItem, TiltCard } from "@/components/motion";
 import { caseStudies, formatNaira, services } from "@/data/site";
+import { getPageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/services")({
-  head: () => ({
-    meta: [
-      { title: "Services — Cyber Elias Academy" },
-      {
-        name: "description",
-        content:
-          "The academy as an agency: custom software, cybersecurity audits, cloud migration, corporate training, design and growth — delivered by senior-led student squads.",
-      },
-    ],
-  }),
+  head: () =>
+    getPageHead({
+      title: "Services",
+      description:
+        "Technology services for businesses: custom software, cybersecurity audits, cloud migration, corporate training, design and growth — delivered by senior-led student squads.",
+      path: "/services",
+    }),
   component: Services,
 });
 

@@ -60,7 +60,8 @@ export function SiteFooter() {
 
             <div className="mt-7 space-y-2.5 text-sm">
               <p className="text-ink-foreground/70 flex items-center gap-2.5">
-                <MapPin className="size-4 shrink-0" /> 26 Ebony Road, Off Rumuola Road, Port Harcourt, Rivers State, Nigeria
+                <MapPin className="size-4 shrink-0" /> 26 Ebony Road, Off Rumuola Road, Port
+                Harcourt, Rivers State, Nigeria
               </p>
               <p className="text-ink-foreground/70 flex items-center gap-2.5">
                 <Phone className="size-4 shrink-0" /> +234 905 862 8386
@@ -136,9 +137,15 @@ export function SiteFooter() {
         <div className="border-ink-foreground/15 text-ink-foreground/50 mt-10 flex flex-col gap-3 border-t pt-8 text-xs sm:flex-row sm:items-center sm:justify-between">
           <p>© {new Date().getFullYear()} Cyber Elias Academy. All rights reserved.</p>
           <p className="flex gap-5">
-            <span>Privacy</span>
-            <span>Terms</span>
-            <span>Accessibility</span>
+            <Link to="/privacy" className="hover:text-ink-foreground transition-colors">
+              Privacy
+            </Link>
+            <Link to="/terms" className="hover:text-ink-foreground transition-colors">
+              Terms
+            </Link>
+            <Link to="/accessibility" className="hover:text-ink-foreground transition-colors">
+              Accessibility
+            </Link>
           </p>
         </div>
       </div>

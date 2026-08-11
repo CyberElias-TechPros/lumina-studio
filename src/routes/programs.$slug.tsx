@@ -1,4 +1,5 @@
-import { createFileRoute, Link, useParams } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
+import { getPageHead } from "@/lib/seo";
 import {
   ArrowLeft,
   ArrowRight,
@@ -20,15 +21,37 @@ import { Reveal, StaggerGroup, StaggerItem, TiltCard } from "@/components/motion
 import { engineMap, formatNaira, programs } from "@/data/site";
 
 export const Route = createFileRoute("/programs/$slug")({
-  head: () => ({
-    meta: [
-      { title: "Program — Cyber Elias Academy" },
-      {
-        name: "description",
-        content: "Program detail at Cyber Elias Academy.",
+  head: ({ params }) => {
+    const program = programs.find((p) => p.slug === params.slug) ?? programs[0];
+    const courseSchema = {
+      "@context": "https://schema.org",
+      "@type": "Course",
+      name: program.title,
+      description: program.blurb,
+      provider: {
+        "@type": "EducationalOrganization",
+        name: "Cyber Elias Academy",
+        sameAs: "https://cea.ng",
       },
-    ],
-  }),
+      offers: {
+        "@type": "Offer",
+        price: program.price,
+        priceCurrency: "NGN",
+        category: program.category,
+      },
+      hasCourseInstance: {
+        "@type": "CourseInstance",
+        courseMode: "online",
+        courseWorkload: program.duration,
+      },
+    };
+    return getPageHead({
+      title: program.title,
+      description: program.blurb,
+      path: `/programs/${program.slug}`,
+      structuredData: courseSchema,
+    });
+  },
   component: ProgramDetail,
 });
 

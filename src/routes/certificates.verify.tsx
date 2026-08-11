@@ -16,21 +16,19 @@ import { PageShell, PageHero, CTASection, SectionHeading } from "@/components/ma
 import { Reveal } from "@/components/motion";
 import { verifyCertificate, type CertificateVerifyResult } from "@/lib/api/certificates";
 import { ApiError } from "@/lib/errors";
+import { getPageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/certificates/verify")({
   validateSearch: (search: Record<string, unknown>): { code?: string } => ({
     code: typeof search.code === "string" ? search.code : undefined,
   }),
-  head: () => ({
-    meta: [
-      { title: "Verify a Certificate — Cyber Elias Academy" },
-      {
-        name: "description",
-        content:
-          "Verify a Cyber Elias Academy certificate in seconds. Every credential carries a unique code tied to our OSKM skill records.",
-      },
-    ],
-  }),
+  head: () =>
+    getPageHead({
+      title: "Verify a Certificate",
+      description:
+        "Verify a Cyber Elias Academy certificate in seconds. Every credential carries a unique code tied to our OSKM skill records.",
+      path: "/certificates/verify",
+    }),
   component: VerifyPage,
 });
 

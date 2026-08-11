@@ -43,7 +43,7 @@ export function useWebSocket(path: string | undefined, enabled: boolean): UseWeb
     if (typeof window === "undefined" || !enabled || !path) return;
 
     let socket: WebSocket | null = null;
-    let reconnectTimer: ReturnType<typeof setTimeout> | null = null;
+    const reconnectTimer: ReturnType<typeof setTimeout> | null = null;
     let closedByUs = false;
 
     const connect = () => {
@@ -111,17 +111,14 @@ export function useWebSocket(path: string | undefined, enabled: boolean): UseWeb
     };
   }, [path, enabled]);
 
-  const send = useCallback(
-    (body: string) => {
-      const socket = socketRef.current;
-      if (!socket || socket.readyState !== WebSocket.OPEN) {
-        setError("Not connected — message not sent");
-        return;
-      }
-      socket.send(JSON.stringify({ type: "message", body }));
-    },
-    [],
-  );
+  const send = useCallback((body: string) => {
+    const socket = socketRef.current;
+    if (!socket || socket.readyState !== WebSocket.OPEN) {
+      setError("Not connected — message not sent");
+      return;
+    }
+    socket.send(JSON.stringify({ type: "message", body }));
+  }, []);
 
   return { status, users, messages, send, error };
 }

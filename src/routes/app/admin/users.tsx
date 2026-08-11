@@ -14,7 +14,12 @@ import {
 import { Input } from "@/components/ui/input";
 import { QueryState } from "@/components/ui/query-state";
 import { AppShell } from "@/components/app/app-shell";
-import { useAdminUsers, useAdminUserItems, useProvisionUser, useUpdateUser } from "@/lib/query/admin";
+import {
+  useAdminUsers,
+  useAdminUserItems,
+  useProvisionUser,
+  useUpdateUser,
+} from "@/lib/query/admin";
 import { useCreateInvitation } from "@/lib/query/invitations";
 import type { AdminUser } from "@/lib/api/admin";
 import { cn } from "@/lib/utils";
@@ -194,7 +199,12 @@ function AdminUsers() {
                     <Badge className={cn("border-0 font-semibold", statusTone(u.status))}>
                       {u.status}
                     </Badge>
-                    <Button variant="outline" size="sm" className="shrink-0 font-semibold" onClick={() => openManage(u)}>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="shrink-0 font-semibold"
+                      onClick={() => openManage(u)}
+                    >
                       Manage
                     </Button>
                   </div>
@@ -297,7 +307,12 @@ function ProvisionDialog({
         </DialogHeader>
         <form onSubmit={onSubmit} className="space-y-3">
           <Input value={name} onChange={(e) => setName(e.target.value)} placeholder="Full name" />
-          <Input value={email} onChange={(e) => setEmail(e.target.value)} placeholder="email@cea.ng" type="email" />
+          <Input
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="email@cea.ng"
+            type="email"
+          />
           <select
             value={roleKey}
             onChange={(e) => setRoleKey(e.target.value)}

@@ -67,8 +67,14 @@ function WhiteboardPanel({ classId }: { classId: string }) {
           <QueryState<WhiteboardOp[]>
             query={opsQuery}
             isEmpty={(data) => (Array.isArray(data) ? data.length === 0 : false)}
-            empty={{ title: "Empty board", description: "Add the first note.", icon: <PenLine className="size-6" /> }}
-            loading={<p className="text-muted-foreground py-4 text-center text-xs">Loading board…</p>}
+            empty={{
+              title: "Empty board",
+              description: "Add the first note.",
+              icon: <PenLine className="size-6" />,
+            }}
+            loading={
+              <p className="text-muted-foreground py-4 text-center text-xs">Loading board…</p>
+            }
           >
             {(ops) =>
               ops.map((op) => (
@@ -86,7 +92,12 @@ function WhiteboardPanel({ classId }: { classId: string }) {
             placeholder="Add a note…"
             className="bg-muted h-9 flex-1 rounded-lg border-0 px-3 text-xs outline-none"
           />
-          <Button type="submit" size="sm" className="shrink-0" disabled={postOp.isPending || !draft.trim()}>
+          <Button
+            type="submit"
+            size="sm"
+            className="shrink-0"
+            disabled={postOp.isPending || !draft.trim()}
+          >
             <Send className="size-3.5" />
           </Button>
         </form>

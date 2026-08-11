@@ -18,18 +18,16 @@ import { PageShell, PageHero, CTASection } from "@/components/marketing/shell";
 import { Reveal, StaggerGroup, StaggerItem } from "@/components/motion";
 import { SceneArt } from "@/components/art/scene-art";
 import { cn } from "@/lib/utils";
+import { getPageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/virtual-tour")({
-  head: () => ({
-    meta: [
-      { title: "Virtual Campus Tour — Cyber Elias Academy" },
-      {
-        name: "description",
-        content:
-          "Tour Cyber Elias Academy from anywhere: studios, labs, café, demo stage and the community floor — with live 360° recordings.",
-      },
-    ],
-  }),
+  head: () =>
+    getPageHead({
+      title: "Virtual Campus Tour",
+      description:
+        "Tour Cyber Elias Academy from anywhere: studios, labs, café, demo stage and the community floor — with live 360° recordings.",
+      path: "/virtual-tour",
+    }),
   component: VirtualTourPage,
 });
 

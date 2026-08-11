@@ -16,6 +16,7 @@ import { Reveal, StaggerGroup, StaggerItem, TiltCard } from "@/components/motion
 import { gigs, jobs } from "@/data/site";
 import { cn } from "@/lib/utils";
 import type { LucideIcon } from "lucide-react";
+import { getPageHead } from "@/lib/seo";
 
 function MarketplaceEmpty({
   icon: Icon,
@@ -45,16 +46,13 @@ function MarketplaceEmpty({
 }
 
 export const Route = createFileRoute("/marketplace")({
-  head: () => ({
-    meta: [
-      { title: "Marketplace — Jobs & Gigs | Cyber Elias Academy" },
-      {
-        name: "description",
-        content:
-          "The Career Engine marketplace: full-time roles, internships and freelance gigs for students and alumni — vetted by the employer network.",
-      },
-    ],
-  }),
+  head: () =>
+    getPageHead({
+      title: "Marketplace",
+      description:
+        "The Career Engine marketplace: full-time roles, internships and freelance gigs for students and alumni — vetted by the employer network.",
+      path: "/marketplace",
+    }),
   component: Marketplace,
 });
 

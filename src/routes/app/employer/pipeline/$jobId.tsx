@@ -1,5 +1,14 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowDown, ArrowLeft, BriefcaseBusiness, CalendarDays, CheckCircle2, FileText, MessageSquare, XCircle } from "lucide-react";
+import {
+  ArrowDown,
+  ArrowLeft,
+  BriefcaseBusiness,
+  CalendarDays,
+  CheckCircle2,
+  FileText,
+  MessageSquare,
+  XCircle,
+} from "lucide-react";
 import { useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";

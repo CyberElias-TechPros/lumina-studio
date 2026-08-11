@@ -139,11 +139,27 @@ export const appRoles: AppRole[] = [
     emoji: "💼",
     gradient: "bg-gradient-career",
     nav: [
-      { label: "Employer Hub", icon: <LayoutDashboard className="size-4" />, to: "/app/employer/hub" },
-      { label: "Job Management", icon: <BriefcaseBusiness className="size-4" />, to: "/app/employer/jobs" },
+      {
+        label: "Employer Hub",
+        icon: <LayoutDashboard className="size-4" />,
+        to: "/app/employer/hub",
+      },
+      {
+        label: "Job Management",
+        icon: <BriefcaseBusiness className="size-4" />,
+        to: "/app/employer/jobs",
+      },
       { label: "Talent Search", icon: <Users className="size-4" />, to: "/app/employer/talent" },
-      { label: "Candidate Pipeline", icon: <FileText className="size-4" />, to: "/app/employer/pipeline" },
-      { label: "Interviews", icon: <CalendarDays className="size-4" />, to: "/app/employer/interviews" },
+      {
+        label: "Candidate Pipeline",
+        icon: <FileText className="size-4" />,
+        to: "/app/employer/pipeline",
+      },
+      {
+        label: "Interviews",
+        icon: <CalendarDays className="size-4" />,
+        to: "/app/employer/interviews",
+      },
       { label: "Analytics", icon: <Building2 className="size-4" />, to: "/app/employer/analytics" },
       { label: "Messages", icon: <MessageSquare className="size-4" />, to: "/app/messages" },
     ],
@@ -154,7 +170,11 @@ export const appRoles: AppRole[] = [
     emoji: "👨‍👩‍👧",
     gradient: "bg-gradient-community",
     nav: [
-      { label: "Parent Dashboard", icon: <LayoutDashboard className="size-4" />, to: "/app/parent" },
+      {
+        label: "Parent Dashboard",
+        icon: <LayoutDashboard className="size-4" />,
+        to: "/app/parent",
+      },
       { label: "Messages", icon: <MessageSquare className="size-4" />, to: "/app/messages" },
     ],
   },
@@ -164,7 +184,11 @@ export const appRoles: AppRole[] = [
     emoji: "🧭",
     gradient: "bg-gradient-career",
     nav: [
-      { label: "Mentor Dashboard", icon: <LayoutDashboard className="size-4" />, to: "/app/mentor" },
+      {
+        label: "Mentor Dashboard",
+        icon: <LayoutDashboard className="size-4" />,
+        to: "/app/mentor",
+      },
       { label: "Mentees", icon: <Users className="size-4" />, to: "/app/mentor/requests" },
       { label: "Sessions", icon: <CalendarDays className="size-4" />, to: "/app/mentor/sessions" },
       { label: "Resources", icon: <BookOpen className="size-4" />, to: "/app/mentor/resources" },
@@ -182,7 +206,11 @@ export const appRoles: AppRole[] = [
     nav: [
       { label: "HR Hub", icon: <LayoutDashboard className="size-4" />, to: "/app/hr" },
       { label: "Employees", icon: <Users className="size-4" />, to: "/app/hr/employees" },
-      { label: "Recruitment", icon: <BriefcaseBusiness className="size-4" />, to: "/app/hr/recruitment" },
+      {
+        label: "Recruitment",
+        icon: <BriefcaseBusiness className="size-4" />,
+        to: "/app/hr/recruitment",
+      },
       { label: "Leave", icon: <CalendarDays className="size-4" />, to: "/app/hr/leave" },
       { label: "Attendance", icon: <Users className="size-4" />, to: "/app/hr/attendance" },
       { label: "Training", icon: <BookOpen className="size-4" />, to: "/app/hr/training" },
@@ -197,11 +225,19 @@ export const appRoles: AppRole[] = [
     gradient: "bg-gradient-services",
     nav: [
       { label: "Finance Hub", icon: <LayoutDashboard className="size-4" />, to: "/app/accountant" },
-      { label: "Invoicing", icon: <FileText className="size-4" />, to: "/app/accountant/invoicing" },
+      {
+        label: "Invoicing",
+        icon: <FileText className="size-4" />,
+        to: "/app/accountant/invoicing",
+      },
       { label: "Payments", icon: <Building2 className="size-4" />, to: "/app/accountant/payments" },
       { label: "Payroll", icon: <Users className="size-4" />, to: "/app/accountant/payroll" },
       { label: "Expenses", icon: <FileDown className="size-4" />, to: "/app/accountant/expenses" },
-      { label: "Budgets", icon: <CalendarDays className="size-4" />, to: "/app/accountant/budgets" },
+      {
+        label: "Budgets",
+        icon: <CalendarDays className="size-4" />,
+        to: "/app/accountant/budgets",
+      },
       { label: "Reports", icon: <LineChart className="size-4" />, to: "/app/accountant/reports" },
     ],
   },
@@ -213,7 +249,11 @@ export const appRoles: AppRole[] = [
     nav: [
       { label: "Admin Hub", icon: <LayoutDashboard className="size-4" />, to: "/app/admin" },
       { label: "User Management", icon: <Users className="size-4" />, to: "/app/admin/users" },
-      { label: "Roles & Permissions", icon: <ShieldCheck className="size-4" />, to: "/app/admin/roles" },
+      {
+        label: "Roles & Permissions",
+        icon: <ShieldCheck className="size-4" />,
+        to: "/app/admin/roles",
+      },
       { label: "Security", icon: <ShieldCheck className="size-4" />, to: "/app/admin/security" },
       { label: "Audit Log", icon: <FileText className="size-4" />, to: "/app/admin/audit" },
       { label: "System Config", icon: <Settings className="size-4" />, to: "/app/admin/config" },
@@ -228,15 +268,51 @@ export const appRoles: AppRole[] = [
     emoji: "📣",
     gradient: "bg-gradient-erp",
     nav: [
-      { label: "PM Hub", icon: <LayoutDashboard className="size-4" />, to: "/app/product-marketing" },
-      { label: "GTM Planner", icon: <Rocket className="size-4" />, to: "/app/product-marketing/gtm" },
-      { label: "Positioning", icon: <Target className="size-4" />, to: "/app/product-marketing/positioning" },
-      { label: "Competitive Intel", icon: <Sword className="size-4" />, to: "/app/product-marketing/competitive" },
-      { label: "Launch Calendar", icon: <CalendarDays className="size-4" />, to: "/app/product-marketing/launch-calendar" },
-      { label: "Market Research", icon: <BookOpen className="size-4" />, to: "/app/product-marketing/research" },
-      { label: "Messaging Matrix", icon: <MessageSquare className="size-4" />, to: "/app/product-marketing/messaging" },
-      { label: "Campaign Briefs", icon: <FileText className="size-4" />, to: "/app/product-marketing/briefs" },
-      { label: "Analytics", icon: <LineChart className="size-4" />, to: "/app/product-marketing/analytics" },
+      {
+        label: "PM Hub",
+        icon: <LayoutDashboard className="size-4" />,
+        to: "/app/product-marketing",
+      },
+      {
+        label: "GTM Planner",
+        icon: <Rocket className="size-4" />,
+        to: "/app/product-marketing/gtm",
+      },
+      {
+        label: "Positioning",
+        icon: <Target className="size-4" />,
+        to: "/app/product-marketing/positioning",
+      },
+      {
+        label: "Competitive Intel",
+        icon: <Sword className="size-4" />,
+        to: "/app/product-marketing/competitive",
+      },
+      {
+        label: "Launch Calendar",
+        icon: <CalendarDays className="size-4" />,
+        to: "/app/product-marketing/launch-calendar",
+      },
+      {
+        label: "Market Research",
+        icon: <BookOpen className="size-4" />,
+        to: "/app/product-marketing/research",
+      },
+      {
+        label: "Messaging Matrix",
+        icon: <MessageSquare className="size-4" />,
+        to: "/app/product-marketing/messaging",
+      },
+      {
+        label: "Campaign Briefs",
+        icon: <FileText className="size-4" />,
+        to: "/app/product-marketing/briefs",
+      },
+      {
+        label: "Analytics",
+        icon: <LineChart className="size-4" />,
+        to: "/app/product-marketing/analytics",
+      },
     ],
   },
   {
@@ -245,15 +321,47 @@ export const appRoles: AppRole[] = [
     emoji: "🧠",
     gradient: "bg-gradient-learning",
     nav: [
-      { label: "Behavioral Hub", icon: <LayoutDashboard className="size-4" />, to: "/app/behavioral-design" },
-      { label: "Interventions", icon: <Brain className="size-4" />, to: "/app/behavioral-design/interventions" },
-      { label: "Flow Designer", icon: <Workflow className="size-4" />, to: "/app/behavioral-design/flow-designer" },
-      { label: "Nudge Campaigns", icon: <Zap className="size-4" />, to: "/app/behavioral-design/nudge-campaigns" },
-      { label: "A/B Tests", icon: <FlaskConical className="size-4" />, to: "/app/behavioral-design/ab-tests" },
-      { label: "Funnels", icon: <Layers className="size-4" />, to: "/app/behavioral-design/funnels" },
+      {
+        label: "Behavioral Hub",
+        icon: <LayoutDashboard className="size-4" />,
+        to: "/app/behavioral-design",
+      },
+      {
+        label: "Interventions",
+        icon: <Brain className="size-4" />,
+        to: "/app/behavioral-design/interventions",
+      },
+      {
+        label: "Flow Designer",
+        icon: <Workflow className="size-4" />,
+        to: "/app/behavioral-design/flow-designer",
+      },
+      {
+        label: "Nudge Campaigns",
+        icon: <Zap className="size-4" />,
+        to: "/app/behavioral-design/nudge-campaigns",
+      },
+      {
+        label: "A/B Tests",
+        icon: <FlaskConical className="size-4" />,
+        to: "/app/behavioral-design/ab-tests",
+      },
+      {
+        label: "Funnels",
+        icon: <Layers className="size-4" />,
+        to: "/app/behavioral-design/funnels",
+      },
       { label: "Habits", icon: <Timer className="size-4" />, to: "/app/behavioral-design/habits" },
-      { label: "Segments", icon: <Users className="size-4" />, to: "/app/behavioral-design/segments" },
-      { label: "Analytics", icon: <LineChart className="size-4" />, to: "/app/behavioral-design/analytics" },
+      {
+        label: "Segments",
+        icon: <Users className="size-4" />,
+        to: "/app/behavioral-design/segments",
+      },
+      {
+        label: "Analytics",
+        icon: <LineChart className="size-4" />,
+        to: "/app/behavioral-design/analytics",
+      },
     ],
   },
   {
@@ -263,12 +371,24 @@ export const appRoles: AppRole[] = [
     gradient: "bg-gradient-career",
     nav: [
       { label: "Growth Hub", icon: <LayoutDashboard className="size-4" />, to: "/app/growth" },
-      { label: "Experiments", icon: <FlaskConical className="size-4" />, to: "/app/growth/experiments" },
-      { label: "Funnel Analyzer", icon: <TrendingUp className="size-4" />, to: "/app/growth/funnel" },
+      {
+        label: "Experiments",
+        icon: <FlaskConical className="size-4" />,
+        to: "/app/growth/experiments",
+      },
+      {
+        label: "Funnel Analyzer",
+        icon: <TrendingUp className="size-4" />,
+        to: "/app/growth/funnel",
+      },
       { label: "Cohorts", icon: <Layers className="size-4" />, to: "/app/growth/cohorts" },
       { label: "Referrals", icon: <Gift className="size-4" />, to: "/app/growth/referrals" },
       { label: "Attribution", icon: <Share2 className="size-4" />, to: "/app/growth/attribution" },
-      { label: "Simulator", icon: <SlidersHorizontal className="size-4" />, to: "/app/growth/simulator" },
+      {
+        label: "Simulator",
+        icon: <SlidersHorizontal className="size-4" />,
+        to: "/app/growth/simulator",
+      },
       { label: "SEO Planner", icon: <Search className="size-4" />, to: "/app/growth/seo" },
     ],
   },
@@ -278,14 +398,38 @@ export const appRoles: AppRole[] = [
     emoji: "🌍",
     gradient: "bg-gradient-services",
     nav: [
-      { label: "Localization Hub", icon: <LayoutDashboard className="size-4" />, to: "/app/localization" },
-      { label: "Copy Variants", icon: <Languages className="size-4" />, to: "/app/localization/variants" },
-      { label: "Translation Memory", icon: <Database className="size-4" />, to: "/app/localization/translation-memory" },
-      { label: "Glossary", icon: <BookOpen className="size-4" />, to: "/app/localization/glossary" },
-      { label: "Style Guides", icon: <PenTool className="size-4" />, to: "/app/localization/style-guides" },
+      {
+        label: "Localization Hub",
+        icon: <LayoutDashboard className="size-4" />,
+        to: "/app/localization",
+      },
+      {
+        label: "Copy Variants",
+        icon: <Languages className="size-4" />,
+        to: "/app/localization/variants",
+      },
+      {
+        label: "Translation Memory",
+        icon: <Database className="size-4" />,
+        to: "/app/localization/translation-memory",
+      },
+      {
+        label: "Glossary",
+        icon: <BookOpen className="size-4" />,
+        to: "/app/localization/glossary",
+      },
+      {
+        label: "Style Guides",
+        icon: <PenTool className="size-4" />,
+        to: "/app/localization/style-guides",
+      },
       { label: "Page Preview", icon: <Eye className="size-4" />, to: "/app/localization/preview" },
       { label: "Dialects", icon: <Globe className="size-4" />, to: "/app/localization/dialects" },
-      { label: "Analytics", icon: <LineChart className="size-4" />, to: "/app/localization/analytics" },
+      {
+        label: "Analytics",
+        icon: <LineChart className="size-4" />,
+        to: "/app/localization/analytics",
+      },
     ],
   },
   {
@@ -297,11 +441,19 @@ export const appRoles: AppRole[] = [
       { label: "Design Hub", icon: <LayoutDashboard className="size-4" />, to: "/app/design" },
       { label: "Design System", icon: <Palette className="size-4" />, to: "/app/design/system" },
       { label: "Components", icon: <Component className="size-4" />, to: "/app/design/components" },
-      { label: "Prototypes", icon: <MousePointerClick className="size-4" />, to: "/app/design/prototypes" },
+      {
+        label: "Prototypes",
+        icon: <MousePointerClick className="size-4" />,
+        to: "/app/design/prototypes",
+      },
       { label: "User Flows", icon: <Workflow className="size-4" />, to: "/app/design/flows" },
       { label: "Tokens", icon: <Pipette className="size-4" />, to: "/app/design/tokens" },
       { label: "Exports", icon: <FileDown className="size-4" />, to: "/app/design/exports" },
-      { label: "Collaboration", icon: <MessagesSquare className="size-4" />, to: "/app/design/collaboration" },
+      {
+        label: "Collaboration",
+        icon: <MessagesSquare className="size-4" />,
+        to: "/app/design/collaboration",
+      },
       { label: "Versions", icon: <History className="size-4" />, to: "/app/design/versions" },
     ],
   },
@@ -312,12 +464,20 @@ export const appRoles: AppRole[] = [
     gradient: "bg-gradient-learning",
     nav: [
       { label: "Intern Hub", icon: <LayoutDashboard className="size-4" />, to: "/app/intern" },
-      { label: "Learning Plan", icon: <BookOpen className="size-4" />, to: "/app/intern/learning-plan" },
+      {
+        label: "Learning Plan",
+        icon: <BookOpen className="size-4" />,
+        to: "/app/intern/learning-plan",
+      },
       { label: "Skills Tracker", icon: <Target className="size-4" />, to: "/app/intern/skills" },
       { label: "Tasks", icon: <FileText className="size-4" />, to: "/app/intern/tasks" },
       { label: "Timesheet", icon: <Timer className="size-4" />, to: "/app/intern/timesheet" },
       { label: "Mentorship", icon: <Users className="size-4" />, to: "/app/intern/mentorship" },
-      { label: "Portfolio", icon: <BriefcaseBusiness className="size-4" />, to: "/app/intern/portfolio" },
+      {
+        label: "Portfolio",
+        icon: <BriefcaseBusiness className="size-4" />,
+        to: "/app/intern/portfolio",
+      },
       { label: "Resources", icon: <Library className="size-4" />, to: "/app/intern/resources" },
       { label: "Messages", icon: <MessageSquare className="size-4" />, to: "/app/intern/messages" },
       { label: "Evaluation", icon: <LineChart className="size-4" />, to: "/app/intern/evaluation" },
@@ -331,11 +491,19 @@ export const appRoles: AppRole[] = [
     nav: [
       { label: "Alumni Hub", icon: <LayoutDashboard className="size-4" />, to: "/app/alumni/hub" },
       { label: "Network", icon: <Users className="size-4" />, to: "/app/alumni/network" },
-      { label: "Job Board", icon: <BriefcaseBusiness className="size-4" />, to: "/app/alumni/jobs" },
+      {
+        label: "Job Board",
+        icon: <BriefcaseBusiness className="size-4" />,
+        to: "/app/alumni/jobs",
+      },
       { label: "Events", icon: <CalendarDays className="size-4" />, to: "/app/alumni/events" },
       { label: "Mentorship", icon: <Sparkles className="size-4" />, to: "/app/alumni/mentorship" },
       { label: "Find a Mentor", icon: <Search className="size-4" />, to: "/app/alumni/find" },
-      { label: "Give Back", icon: <HeartHandshake className="size-4" />, to: "/app/alumni/give-back" },
+      {
+        label: "Give Back",
+        icon: <HeartHandshake className="size-4" />,
+        to: "/app/alumni/give-back",
+      },
       { label: "Success Stories", icon: <PenTool className="size-4" />, to: "/app/alumni/stories" },
       { label: "My Profile", icon: <Settings className="size-4" />, to: "/app/alumni/profile" },
     ],
@@ -361,7 +529,11 @@ export const appRoles: AppRole[] = [
     gradient: "bg-gradient-services",
     nav: [
       { label: "Dev Hub", icon: <LayoutDashboard className="size-4" />, to: "/app/dev" },
-      { label: "API Playground", icon: <FlaskConical className="size-4" />, to: "/app/dev/api-playground" },
+      {
+        label: "API Playground",
+        icon: <FlaskConical className="size-4" />,
+        to: "/app/dev/api-playground",
+      },
       { label: "Deployments", icon: <Rocket className="size-4" />, to: "/app/dev/deployments" },
       { label: "Monitoring", icon: <LineChart className="size-4" />, to: "/app/dev/monitoring" },
       { label: "Feature Flags", icon: <Layers className="size-4" />, to: "/app/dev/feature-flags" },
@@ -380,15 +552,31 @@ export const appRoles: AppRole[] = [
     emoji: "📣",
     gradient: "bg-gradient-services",
     nav: [
-      { label: "Marketing Hub", icon: <LayoutDashboard className="size-4" />, to: "/app/marketing" },
+      {
+        label: "Marketing Hub",
+        icon: <LayoutDashboard className="size-4" />,
+        to: "/app/marketing",
+      },
       { label: "Campaigns", icon: <Rocket className="size-4" />, to: "/app/marketing/campaigns" },
-      { label: "Content Calendar", icon: <CalendarDays className="size-4" />, to: "/app/marketing/content-calendar" },
+      {
+        label: "Content Calendar",
+        icon: <CalendarDays className="size-4" />,
+        to: "/app/marketing/content-calendar",
+      },
       { label: "Email", icon: <MessageSquare className="size-4" />, to: "/app/marketing/email" },
-      { label: "Landing Pages", icon: <PenTool className="size-4" />, to: "/app/marketing/landing-pages" },
+      {
+        label: "Landing Pages",
+        icon: <PenTool className="size-4" />,
+        to: "/app/marketing/landing-pages",
+      },
       { label: "Leads", icon: <Users className="size-4" />, to: "/app/marketing/leads" },
       { label: "Social", icon: <Share2 className="size-4" />, to: "/app/marketing/social" },
       { label: "SEO", icon: <Search className="size-4" />, to: "/app/marketing/seo" },
-      { label: "Analytics", icon: <LineChart className="size-4" />, to: "/app/marketing/analytics" },
+      {
+        label: "Analytics",
+        icon: <LineChart className="size-4" />,
+        to: "/app/marketing/analytics",
+      },
       { label: "Reports", icon: <FileText className="size-4" />, to: "/app/marketing/reports" },
     ],
   },
@@ -398,13 +586,33 @@ export const appRoles: AppRole[] = [
     emoji: "✍️",
     gradient: "bg-gradient-services",
     nav: [
-      { label: "Copy Hub", icon: <LayoutDashboard className="size-4" />, to: "/app/conversion-copy/analytics" },
-      { label: "A/B Tests", icon: <FlaskConical className="size-4" />, to: "/app/conversion-copy/ab-tests" },
+      {
+        label: "Copy Hub",
+        icon: <LayoutDashboard className="size-4" />,
+        to: "/app/conversion-copy/analytics",
+      },
+      {
+        label: "A/B Tests",
+        icon: <FlaskConical className="size-4" />,
+        to: "/app/conversion-copy/ab-tests",
+      },
       { label: "Ads", icon: <Share2 className="size-4" />, to: "/app/conversion-copy/ads" },
-      { label: "Email Sequences", icon: <MessageSquare className="size-4" />, to: "/app/conversion-copy/email-sequences" },
+      {
+        label: "Email Sequences",
+        icon: <MessageSquare className="size-4" />,
+        to: "/app/conversion-copy/email-sequences",
+      },
       { label: "Briefs", icon: <FileText className="size-4" />, to: "/app/conversion-copy/briefs" },
-      { label: "Library", icon: <Library className="size-4" />, to: "/app/conversion-copy/library" },
-      { label: "Style Guide", icon: <PenTool className="size-4" />, to: "/app/conversion-copy/style-guide" },
+      {
+        label: "Library",
+        icon: <Library className="size-4" />,
+        to: "/app/conversion-copy/library",
+      },
+      {
+        label: "Style Guide",
+        icon: <PenTool className="size-4" />,
+        to: "/app/conversion-copy/style-guide",
+      },
     ],
   },
   {
@@ -419,8 +627,16 @@ export const appRoles: AppRole[] = [
       { label: "Licenses", icon: <ShieldCheck className="size-4" />, to: "/app/it/licenses" },
       { label: "Maintenance", icon: <Wrench className="size-4" />, to: "/app/it/maintenance" },
       { label: "Monitoring", icon: <LineChart className="size-4" />, to: "/app/it/monitoring" },
-      { label: "Remote Support", icon: <Workflow className="size-4" />, to: "/app/it/remote-support" },
-      { label: "Knowledge Base", icon: <BookOpen className="size-4" />, to: "/app/it/knowledge-base" },
+      {
+        label: "Remote Support",
+        icon: <Workflow className="size-4" />,
+        to: "/app/it/remote-support",
+      },
+      {
+        label: "Knowledge Base",
+        icon: <BookOpen className="size-4" />,
+        to: "/app/it/knowledge-base",
+      },
       { label: "Templates", icon: <FileText className="size-4" />, to: "/app/it/templates" },
       { label: "Users", icon: <Users className="size-4" />, to: "/app/it/users" },
       { label: "Reports", icon: <FileDown className="size-4" />, to: "/app/it/reports" },
@@ -448,13 +664,37 @@ export const appRoles: AppRole[] = [
     emoji: "🎯",
     gradient: "bg-gradient-erp",
     nav: [
-      { label: "Admissions Hub", icon: <LayoutDashboard className="size-4" />, to: "/app/admissions" },
-      { label: "Applications", icon: <FileText className="size-4" />, to: "/app/admissions/applications" },
-      { label: "Review Pipeline", icon: <Workflow className="size-4" />, to: "/app/admissions/review" },
-      { label: "Interviews", icon: <CalendarDays className="size-4" />, to: "/app/admissions/interviews" },
+      {
+        label: "Admissions Hub",
+        icon: <LayoutDashboard className="size-4" />,
+        to: "/app/admissions",
+      },
+      {
+        label: "Applications",
+        icon: <FileText className="size-4" />,
+        to: "/app/admissions/applications",
+      },
+      {
+        label: "Review Pipeline",
+        icon: <Workflow className="size-4" />,
+        to: "/app/admissions/review",
+      },
+      {
+        label: "Interviews",
+        icon: <CalendarDays className="size-4" />,
+        to: "/app/admissions/interviews",
+      },
       { label: "Enrollment", icon: <Users className="size-4" />, to: "/app/admissions/enrollment" },
-      { label: "Communication", icon: <MessageSquare className="size-4" />, to: "/app/admissions/communication" },
-      { label: "Documents", icon: <FileDown className="size-4" />, to: "/app/admissions/documents" },
+      {
+        label: "Communication",
+        icon: <MessageSquare className="size-4" />,
+        to: "/app/admissions/communication",
+      },
+      {
+        label: "Documents",
+        icon: <FileDown className="size-4" />,
+        to: "/app/admissions/documents",
+      },
       { label: "Reports", icon: <LineChart className="size-4" />, to: "/app/admissions/reports" },
     ],
   },
@@ -464,13 +704,33 @@ export const appRoles: AppRole[] = [
     emoji: "🏫",
     gradient: "bg-gradient-erp",
     nav: [
-      { label: "Department Hub", icon: <LayoutDashboard className="size-4" />, to: "/app/department" },
-      { label: "Curriculum", icon: <BookOpen className="size-4" />, to: "/app/department/curriculum" },
-      { label: "Instructors", icon: <Users className="size-4" />, to: "/app/department/instructors" },
+      {
+        label: "Department Hub",
+        icon: <LayoutDashboard className="size-4" />,
+        to: "/app/department",
+      },
+      {
+        label: "Curriculum",
+        icon: <BookOpen className="size-4" />,
+        to: "/app/department/curriculum",
+      },
+      {
+        label: "Instructors",
+        icon: <Users className="size-4" />,
+        to: "/app/department/instructors",
+      },
       { label: "Quality", icon: <ShieldCheck className="size-4" />, to: "/app/department/quality" },
-      { label: "Enrollment", icon: <GraduationCap className="size-4" />, to: "/app/department/enrollment" },
+      {
+        label: "Enrollment",
+        icon: <GraduationCap className="size-4" />,
+        to: "/app/department/enrollment",
+      },
       { label: "Approvals", icon: <Check className="size-4" />, to: "/app/department/approvals" },
-      { label: "Calendar", icon: <CalendarDays className="size-4" />, to: "/app/department/calendar" },
+      {
+        label: "Calendar",
+        icon: <CalendarDays className="size-4" />,
+        to: "/app/department/calendar",
+      },
       { label: "Reports", icon: <LineChart className="size-4" />, to: "/app/department/reports" },
     ],
   },
@@ -481,14 +741,26 @@ export const appRoles: AppRole[] = [
     gradient: "bg-gradient-erp",
     nav: [
       { label: "Director Hub", icon: <LayoutDashboard className="size-4" />, to: "/app/director" },
-      { label: "Command Center", icon: <Zap className="size-4" />, to: "/app/director/command-center" },
+      {
+        label: "Command Center",
+        icon: <Zap className="size-4" />,
+        to: "/app/director/command-center",
+      },
       { label: "Academic", icon: <BookOpen className="size-4" />, to: "/app/director/academic" },
       { label: "Finance", icon: <Building2 className="size-4" />, to: "/app/director/finance" },
       { label: "HR", icon: <Users className="size-4" />, to: "/app/director/hr" },
       { label: "Marketing", icon: <Rocket className="size-4" />, to: "/app/director/marketing" },
-      { label: "Operations", icon: <Workflow className="size-4" />, to: "/app/director/operations" },
+      {
+        label: "Operations",
+        icon: <Workflow className="size-4" />,
+        to: "/app/director/operations",
+      },
       { label: "OKRs", icon: <Target className="size-4" />, to: "/app/director/okrs" },
-      { label: "Approvals", icon: <ShieldCheck className="size-4" />, to: "/app/director/approvals" },
+      {
+        label: "Approvals",
+        icon: <ShieldCheck className="size-4" />,
+        to: "/app/director/approvals",
+      },
       { label: "Reports", icon: <LineChart className="size-4" />, to: "/app/director/reports" },
     ],
   },
@@ -498,13 +770,33 @@ export const appRoles: AppRole[] = [
     emoji: "🪪",
     gradient: "bg-gradient-erp",
     nav: [
-      { label: "Reception Hub", icon: <LayoutDashboard className="size-4" />, to: "/app/receptionist" },
+      {
+        label: "Reception Hub",
+        icon: <LayoutDashboard className="size-4" />,
+        to: "/app/receptionist",
+      },
       { label: "Check-In", icon: <PenTool className="size-4" />, to: "/app/receptionist/check-in" },
-      { label: "Check-Out", icon: <FileDown className="size-4" />, to: "/app/receptionist/check-out" },
-      { label: "Appointments", icon: <CalendarDays className="size-4" />, to: "/app/receptionist/appointments" },
+      {
+        label: "Check-Out",
+        icon: <FileDown className="size-4" />,
+        to: "/app/receptionist/check-out",
+      },
+      {
+        label: "Appointments",
+        icon: <CalendarDays className="size-4" />,
+        to: "/app/receptionist/appointments",
+      },
       { label: "Directory", icon: <Users className="size-4" />, to: "/app/receptionist/directory" },
-      { label: "Inquiries", icon: <MessageSquare className="size-4" />, to: "/app/receptionist/inquiries" },
-      { label: "Deliveries", icon: <Boxes className="size-4" />, to: "/app/receptionist/deliveries" },
+      {
+        label: "Inquiries",
+        icon: <MessageSquare className="size-4" />,
+        to: "/app/receptionist/inquiries",
+      },
+      {
+        label: "Deliveries",
+        icon: <Boxes className="size-4" />,
+        to: "/app/receptionist/deliveries",
+      },
       { label: "Phone Log", icon: <Phone className="size-4" />, to: "/app/receptionist/phone-log" },
       { label: "Tasks", icon: <FileText className="size-4" />, to: "/app/receptionist/tasks" },
     ],
@@ -520,7 +812,11 @@ export const appRoles: AppRole[] = [
       { label: "Deliveries", icon: <Truck className="size-4" />, to: "/app/supplier/deliveries" },
       { label: "Invoices", icon: <Building2 className="size-4" />, to: "/app/supplier/invoices" },
       { label: "Performance", icon: <Star className="size-4" />, to: "/app/supplier/performance" },
-      { label: "Messages", icon: <MessageSquare className="size-4" />, to: "/app/supplier/messages" },
+      {
+        label: "Messages",
+        icon: <MessageSquare className="size-4" />,
+        to: "/app/supplier/messages",
+      },
     ],
   },
   {
@@ -529,12 +825,28 @@ export const appRoles: AppRole[] = [
     emoji: "🤝",
     gradient: "bg-gradient-community",
     nav: [
-      { label: "Volunteer Hub", icon: <LayoutDashboard className="size-4" />, to: "/app/volunteer" },
-      { label: "Opportunities", icon: <Search className="size-4" />, to: "/app/volunteer/opportunities" },
-      { label: "My Volunteering", icon: <HeartHandshake className="size-4" />, to: "/app/volunteer/my-volunteering" },
+      {
+        label: "Volunteer Hub",
+        icon: <LayoutDashboard className="size-4" />,
+        to: "/app/volunteer",
+      },
+      {
+        label: "Opportunities",
+        icon: <Search className="size-4" />,
+        to: "/app/volunteer/opportunities",
+      },
+      {
+        label: "My Volunteering",
+        icon: <HeartHandshake className="size-4" />,
+        to: "/app/volunteer/my-volunteering",
+      },
       { label: "Hours Tracker", icon: <Timer className="size-4" />, to: "/app/volunteer/hours" },
       { label: "Impact", icon: <LineChart className="size-4" />, to: "/app/volunteer/impact" },
-      { label: "Certificates", icon: <GraduationCap className="size-4" />, to: "/app/volunteer/certificates" },
+      {
+        label: "Certificates",
+        icon: <GraduationCap className="size-4" />,
+        to: "/app/volunteer/certificates",
+      },
       { label: "Community", icon: <Users className="size-4" />, to: "/app/volunteer/community" },
     ],
   },
@@ -546,7 +858,11 @@ export const appRoles: AppRole[] = [
     nav: [
       { label: "Partnership Hub", icon: <LayoutDashboard className="size-4" />, to: "/app/ngo" },
       { label: "Programs", icon: <BookOpen className="size-4" />, to: "/app/ngo/programs" },
-      { label: "Scholarships", icon: <GraduationCap className="size-4" />, to: "/app/ngo/scholarships" },
+      {
+        label: "Scholarships",
+        icon: <GraduationCap className="size-4" />,
+        to: "/app/ngo/scholarships",
+      },
       { label: "Donations", icon: <HeartHandshake className="size-4" />, to: "/app/ngo/donations" },
       { label: "Volunteers", icon: <Users className="size-4" />, to: "/app/ngo/volunteers" },
       { label: "Messaging", icon: <MessageSquare className="size-4" />, to: "/app/ngo/messaging" },
@@ -560,16 +876,40 @@ export const appRoles: AppRole[] = [
     emoji: "🏛️",
     gradient: "bg-gradient-community",
     nav: [
-      { label: "Compliance Portal", icon: <LayoutDashboard className="size-4" />, to: "/app/government" },
+      {
+        label: "Compliance Portal",
+        icon: <LayoutDashboard className="size-4" />,
+        to: "/app/government",
+      },
       { label: "Audit", icon: <ShieldCheck className="size-4" />, to: "/app/government/audit" },
       { label: "Filings", icon: <FileText className="size-4" />, to: "/app/government/filings" },
       { label: "Reports", icon: <LineChart className="size-4" />, to: "/app/government/reports" },
-      { label: "Calendar", icon: <CalendarDays className="size-4" />, to: "/app/government/calendar" },
-      { label: "Documents", icon: <FileDown className="size-4" />, to: "/app/government/documents" },
+      {
+        label: "Calendar",
+        icon: <CalendarDays className="size-4" />,
+        to: "/app/government/calendar",
+      },
+      {
+        label: "Documents",
+        icon: <FileDown className="size-4" />,
+        to: "/app/government/documents",
+      },
       { label: "Training", icon: <BookOpen className="size-4" />, to: "/app/government/training" },
-      { label: "Integrity", icon: <Database className="size-4" />, to: "/app/government/integrity" },
-      { label: "Institution", icon: <Building2 className="size-4" />, to: "/app/government/institution" },
-      { label: "Messaging", icon: <MessageSquare className="size-4" />, to: "/app/government/messaging" },
+      {
+        label: "Integrity",
+        icon: <Database className="size-4" />,
+        to: "/app/government/integrity",
+      },
+      {
+        label: "Institution",
+        icon: <Building2 className="size-4" />,
+        to: "/app/government/institution",
+      },
+      {
+        label: "Messaging",
+        icon: <MessageSquare className="size-4" />,
+        to: "/app/government/messaging",
+      },
       { label: "Changelog", icon: <History className="size-4" />, to: "/app/government/changelog" },
     ],
   },
@@ -579,13 +919,25 @@ export const appRoles: AppRole[] = [
     emoji: "🤝",
     gradient: "bg-gradient-community",
     nav: [
-      { label: "Partner Hub", icon: <LayoutDashboard className="size-4" />, to: "/app/partner/hub" },
+      {
+        label: "Partner Hub",
+        icon: <LayoutDashboard className="size-4" />,
+        to: "/app/partner/hub",
+      },
       { label: "Agreements", icon: <FileText className="size-4" />, to: "/app/partner/agreements" },
-      { label: "Collaborations", icon: <Workflow className="size-4" />, to: "/app/partner/collaborations" },
+      {
+        label: "Collaborations",
+        icon: <Workflow className="size-4" />,
+        to: "/app/partner/collaborations",
+      },
       { label: "Referrals", icon: <Share2 className="size-4" />, to: "/app/partner/referrals" },
       { label: "Resources", icon: <Library className="size-4" />, to: "/app/partner/resources" },
       { label: "Reports", icon: <LineChart className="size-4" />, to: "/app/partner/reports" },
-      { label: "Messages", icon: <MessageSquare className="size-4" />, to: "/app/partner/messages" },
+      {
+        label: "Messages",
+        icon: <MessageSquare className="size-4" />,
+        to: "/app/partner/messages",
+      },
     ],
   },
 ];
@@ -667,7 +1019,9 @@ export function AppShell({
               "flex w-full items-center gap-2.5 rounded-xl border p-2.5 text-left transition-colors hover:border-primary/40",
             )}
           >
-            <span className={cn("grid size-9 place-items-center rounded-lg text-lg", role.gradient)}>
+            <span
+              className={cn("grid size-9 place-items-center rounded-lg text-lg", role.gradient)}
+            >
               {role.emoji}
             </span>
             <span className="flex-1">
@@ -678,7 +1032,9 @@ export function AppShell({
           </button>
         ) : (
           <div className="flex w-full items-center gap-2.5 rounded-xl border p-2.5">
-            <span className={cn("grid size-9 place-items-center rounded-lg text-lg", role.gradient)}>
+            <span
+              className={cn("grid size-9 place-items-center rounded-lg text-lg", role.gradient)}
+            >
               {role.emoji}
             </span>
             <span className="flex-1">

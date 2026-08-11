@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as AccessibilityRouteImport } from './routes/accessibility'
 import { Route as AdmissionsRouteImport } from './routes/admissions'
 import { Route as AlumniRouteImport } from './routes/alumni'
 import { Route as CareersRouteImport } from './routes/careers'
@@ -23,9 +24,11 @@ import { Route as LibraryRouteImport } from './routes/library'
 import { Route as MarketplaceRouteImport } from './routes/marketplace'
 import { Route as PartnersRouteImport } from './routes/partners'
 import { Route as PricingRouteImport } from './routes/pricing'
+import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as ScholarshipsRouteImport } from './routes/scholarships'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as StoriesRouteImport } from './routes/stories'
+import { Route as TermsRouteImport } from './routes/terms'
 import { Route as VirtualTourRouteImport } from './routes/virtual-tour'
 import { Route as WorkRouteImport } from './routes/work'
 import { Route as AppIndexRouteImport } from './routes/app.index'
@@ -97,6 +100,7 @@ import { Route as PortalVolunteerRouteImport } from './routes/portal/volunteer'
 import { Route as ProgramsIndexRouteImport } from './routes/programs.index'
 import { Route as ProgramsSlugRouteImport } from './routes/programs.$slug'
 import { Route as ProgramsCompareRouteImport } from './routes/programs/compare'
+import { Route as SitemapXmlRouteImport } from './routes/sitemap.xml'
 import { Route as VisitIndexRouteImport } from './routes/visit/index'
 import { Route as VisitBrochureRouteImport } from './routes/visit/brochure'
 import { Route as VisitFeedbackRouteImport } from './routes/visit/feedback'
@@ -397,6 +401,11 @@ const AboutRoute = AboutRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AccessibilityRoute = AccessibilityRouteImport.update({
+  id: '/accessibility',
+  path: '/accessibility',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AdmissionsRoute = AdmissionsRouteImport.update({
   id: '/admissions',
   path: '/admissions',
@@ -457,6 +466,11 @@ const PricingRoute = PricingRouteImport.update({
   path: '/pricing',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ScholarshipsRoute = ScholarshipsRouteImport.update({
   id: '/scholarships',
   path: '/scholarships',
@@ -470,6 +484,11 @@ const ServicesRoute = ServicesRouteImport.update({
 const StoriesRoute = StoriesRouteImport.update({
   id: '/stories',
   path: '/stories',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
   getParentRoute: () => rootRouteImport,
 } as any)
 const VirtualTourRoute = VirtualTourRouteImport.update({
@@ -826,6 +845,11 @@ const ProgramsSlugRoute = ProgramsSlugRouteImport.update({
 const ProgramsCompareRoute = ProgramsCompareRouteImport.update({
   id: '/programs/compare',
   path: '/programs/compare',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapXmlRoute = SitemapXmlRouteImport.update({
+  id: '/sitemap/xml',
+  path: '/sitemap/xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 const VisitIndexRoute = VisitIndexRouteImport.update({
@@ -2346,6 +2370,7 @@ const AppParentStudentsStudentIdReportsRoute =
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/accessibility': typeof AccessibilityRoute
   '/admissions': typeof AdmissionsRoute
   '/alumni': typeof AlumniRoute
   '/careers': typeof CareersRoute
@@ -2358,9 +2383,11 @@ export interface FileRoutesByFullPath {
   '/marketplace': typeof MarketplaceRoute
   '/partners': typeof PartnersRoute
   '/pricing': typeof PricingRoute
+  '/privacy': typeof PrivacyRoute
   '/scholarships': typeof ScholarshipsRoute
   '/services': typeof ServicesRoute
   '/stories': typeof StoriesRoute
+  '/terms': typeof TermsRoute
   '/virtual-tour': typeof VirtualTourRoute
   '/work': typeof WorkRoute
   '/app/ai': typeof AppAiRoute
@@ -2427,6 +2454,7 @@ export interface FileRoutesByFullPath {
   '/portal/volunteer': typeof PortalVolunteerRoute
   '/programs/$slug': typeof ProgramsSlugRoute
   '/programs/compare': typeof ProgramsCompareRoute
+  '/sitemap/xml': typeof SitemapXmlRoute
   '/visit/brochure': typeof VisitBrochureRoute
   '/visit/feedback': typeof VisitFeedbackRoute
   '/visit/info': typeof VisitInfoRoute
@@ -2725,6 +2753,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/accessibility': typeof AccessibilityRoute
   '/admissions': typeof AdmissionsRoute
   '/alumni': typeof AlumniRoute
   '/careers': typeof CareersRoute
@@ -2737,9 +2766,11 @@ export interface FileRoutesByTo {
   '/marketplace': typeof MarketplaceRoute
   '/partners': typeof PartnersRoute
   '/pricing': typeof PricingRoute
+  '/privacy': typeof PrivacyRoute
   '/scholarships': typeof ScholarshipsRoute
   '/services': typeof ServicesRoute
   '/stories': typeof StoriesRoute
+  '/terms': typeof TermsRoute
   '/virtual-tour': typeof VirtualTourRoute
   '/work': typeof WorkRoute
   '/app/ai': typeof AppAiRoute
@@ -2805,6 +2836,7 @@ export interface FileRoutesByTo {
   '/portal/volunteer': typeof PortalVolunteerRoute
   '/programs/$slug': typeof ProgramsSlugRoute
   '/programs/compare': typeof ProgramsCompareRoute
+  '/sitemap/xml': typeof SitemapXmlRoute
   '/visit/brochure': typeof VisitBrochureRoute
   '/visit/feedback': typeof VisitFeedbackRoute
   '/visit/info': typeof VisitInfoRoute
@@ -3104,6 +3136,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/accessibility': typeof AccessibilityRoute
   '/admissions': typeof AdmissionsRoute
   '/alumni': typeof AlumniRoute
   '/careers': typeof CareersRoute
@@ -3116,9 +3149,11 @@ export interface FileRoutesById {
   '/marketplace': typeof MarketplaceRoute
   '/partners': typeof PartnersRoute
   '/pricing': typeof PricingRoute
+  '/privacy': typeof PrivacyRoute
   '/scholarships': typeof ScholarshipsRoute
   '/services': typeof ServicesRoute
   '/stories': typeof StoriesRoute
+  '/terms': typeof TermsRoute
   '/virtual-tour': typeof VirtualTourRoute
   '/work': typeof WorkRoute
   '/app/ai': typeof AppAiRoute
@@ -3185,6 +3220,7 @@ export interface FileRoutesById {
   '/portal/volunteer': typeof PortalVolunteerRoute
   '/programs/$slug': typeof ProgramsSlugRoute
   '/programs/compare': typeof ProgramsCompareRoute
+  '/sitemap/xml': typeof SitemapXmlRoute
   '/visit/brochure': typeof VisitBrochureRoute
   '/visit/feedback': typeof VisitFeedbackRoute
   '/visit/info': typeof VisitInfoRoute
@@ -3485,6 +3521,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/accessibility'
     | '/admissions'
     | '/alumni'
     | '/careers'
@@ -3497,9 +3534,11 @@ export interface FileRouteTypes {
     | '/marketplace'
     | '/partners'
     | '/pricing'
+    | '/privacy'
     | '/scholarships'
     | '/services'
     | '/stories'
+    | '/terms'
     | '/virtual-tour'
     | '/work'
     | '/app/ai'
@@ -3566,6 +3605,7 @@ export interface FileRouteTypes {
     | '/portal/volunteer'
     | '/programs/$slug'
     | '/programs/compare'
+    | '/sitemap/xml'
     | '/visit/brochure'
     | '/visit/feedback'
     | '/visit/info'
@@ -3864,6 +3904,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/about'
+    | '/accessibility'
     | '/admissions'
     | '/alumni'
     | '/careers'
@@ -3876,9 +3917,11 @@ export interface FileRouteTypes {
     | '/marketplace'
     | '/partners'
     | '/pricing'
+    | '/privacy'
     | '/scholarships'
     | '/services'
     | '/stories'
+    | '/terms'
     | '/virtual-tour'
     | '/work'
     | '/app/ai'
@@ -3944,6 +3987,7 @@ export interface FileRouteTypes {
     | '/portal/volunteer'
     | '/programs/$slug'
     | '/programs/compare'
+    | '/sitemap/xml'
     | '/visit/brochure'
     | '/visit/feedback'
     | '/visit/info'
@@ -4242,6 +4286,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/about'
+    | '/accessibility'
     | '/admissions'
     | '/alumni'
     | '/careers'
@@ -4254,9 +4299,11 @@ export interface FileRouteTypes {
     | '/marketplace'
     | '/partners'
     | '/pricing'
+    | '/privacy'
     | '/scholarships'
     | '/services'
     | '/stories'
+    | '/terms'
     | '/virtual-tour'
     | '/work'
     | '/app/ai'
@@ -4323,6 +4370,7 @@ export interface FileRouteTypes {
     | '/portal/volunteer'
     | '/programs/$slug'
     | '/programs/compare'
+    | '/sitemap/xml'
     | '/visit/brochure'
     | '/visit/feedback'
     | '/visit/info'
@@ -4622,6 +4670,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  AccessibilityRoute: typeof AccessibilityRoute
   AdmissionsRoute: typeof AdmissionsRoute
   AlumniRoute: typeof AlumniRoute
   CareersRoute: typeof CareersRoute
@@ -4634,9 +4683,11 @@ export interface RootRouteChildren {
   MarketplaceRoute: typeof MarketplaceRoute
   PartnersRoute: typeof PartnersRoute
   PricingRoute: typeof PricingRoute
+  PrivacyRoute: typeof PrivacyRoute
   ScholarshipsRoute: typeof ScholarshipsRoute
   ServicesRoute: typeof ServicesRoute
   StoriesRoute: typeof StoriesRoute
+  TermsRoute: typeof TermsRoute
   VirtualTourRoute: typeof VirtualTourRoute
   WorkRoute: typeof WorkRoute
   AppAiRoute: typeof AppAiRoute
@@ -4703,6 +4754,7 @@ export interface RootRouteChildren {
   PortalVolunteerRoute: typeof PortalVolunteerRoute
   ProgramsSlugRoute: typeof ProgramsSlugRoute
   ProgramsCompareRoute: typeof ProgramsCompareRoute
+  SitemapXmlRoute: typeof SitemapXmlRoute
   VisitBrochureRoute: typeof VisitBrochureRoute
   VisitFeedbackRoute: typeof VisitFeedbackRoute
   VisitInfoRoute: typeof VisitInfoRoute
@@ -4999,6 +5051,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/accessibility': {
+      id: '/accessibility'
+      path: '/accessibility'
+      fullPath: '/accessibility'
+      preLoaderRoute: typeof AccessibilityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/admissions': {
       id: '/admissions'
       path: '/admissions'
@@ -5083,6 +5142,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PricingRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/scholarships': {
       id: '/scholarships'
       path: '/scholarships'
@@ -5102,6 +5168,13 @@ declare module '@tanstack/react-router' {
       path: '/stories'
       fullPath: '/stories'
       preLoaderRoute: typeof StoriesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/virtual-tour': {
@@ -5599,6 +5672,13 @@ declare module '@tanstack/react-router' {
       path: '/programs/compare'
       fullPath: '/programs/compare'
       preLoaderRoute: typeof ProgramsCompareRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap/xml': {
+      id: '/sitemap/xml'
+      path: '/sitemap/xml'
+      fullPath: '/sitemap/xml'
+      preLoaderRoute: typeof SitemapXmlRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/visit/': {
@@ -7774,6 +7854,7 @@ const AppParentStudentsStudentIdRouteWithChildren =
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  AccessibilityRoute: AccessibilityRoute,
   AdmissionsRoute: AdmissionsRoute,
   AlumniRoute: AlumniRoute,
   CareersRoute: CareersRoute,
@@ -7786,9 +7867,11 @@ const rootRouteChildren: RootRouteChildren = {
   MarketplaceRoute: MarketplaceRoute,
   PartnersRoute: PartnersRoute,
   PricingRoute: PricingRoute,
+  PrivacyRoute: PrivacyRoute,
   ScholarshipsRoute: ScholarshipsRoute,
   ServicesRoute: ServicesRoute,
   StoriesRoute: StoriesRoute,
+  TermsRoute: TermsRoute,
   VirtualTourRoute: VirtualTourRoute,
   WorkRoute: WorkRoute,
   AppAiRoute: AppAiRoute,
@@ -7855,6 +7938,7 @@ const rootRouteChildren: RootRouteChildren = {
   PortalVolunteerRoute: PortalVolunteerRoute,
   ProgramsSlugRoute: ProgramsSlugRoute,
   ProgramsCompareRoute: ProgramsCompareRoute,
+  SitemapXmlRoute: SitemapXmlRoute,
   VisitBrochureRoute: VisitBrochureRoute,
   VisitFeedbackRoute: VisitFeedbackRoute,
   VisitInfoRoute: VisitInfoRoute,

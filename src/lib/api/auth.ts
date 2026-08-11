@@ -14,7 +14,11 @@ export function fetchSession(): Promise<Session> {
 export type SignInResult = Session | { mfaRequired: true; expiresAt: string };
 
 export function signIn(input: SignInInput): Promise<SignInResult> {
-  return apiFetch<SignInResult>("/v1/auth/sign-in", { method: "POST", body: input, noRefresh: true });
+  return apiFetch<SignInResult>("/v1/auth/sign-in", {
+    method: "POST",
+    body: input,
+    noRefresh: true,
+  });
 }
 
 export function signUp(input: SignUpInput): Promise<Session> {
@@ -27,10 +31,9 @@ export function requestMagicLink(input: MagicLinkRequestInput): Promise<{ ok: tr
 
 /** Verifies a one-time magic link token. The session is stored in an HttpOnly cookie. */
 export function verifyMagicLink(input: MagicLinkVerifyInput): Promise<Session> {
-  return apiFetch<Session>(
-    `/v1/auth/magic-link/verify?token=${encodeURIComponent(input.token)}`,
-    { noRefresh: true },
-  );
+  return apiFetch<Session>(`/v1/auth/magic-link/verify?token=${encodeURIComponent(input.token)}`, {
+    noRefresh: true,
+  });
 }
 
 export function signOut(): Promise<{ ok: true }> {

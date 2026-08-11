@@ -16,18 +16,16 @@ import { PageShell, PageHero, CTASection, SectionHeading } from "@/components/ma
 import { Reveal, StaggerGroup, StaggerItem, Counter } from "@/components/motion";
 import { formatNaira } from "@/data/site";
 import { cn } from "@/lib/utils";
+import { getPageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/scholarships")({
-  head: () => ({
-    meta: [
-      { title: "Scholarships & Funding — Cyber Elias Academy" },
-      {
-        name: "description",
-        content:
-          "Merit, need-based and women-in-tech scholarships covering up to 100% of tuition. Plus instalments, deferred payment and employer sponsorship.",
-      },
-    ],
-  }),
+  head: () =>
+    getPageHead({
+      title: "Scholarships & Funding",
+      description:
+        "Merit, need-based and women-in-tech scholarships covering up to 100% of tuition. Plus instalments, deferred payment and employer sponsorship.",
+      path: "/scholarships",
+    }),
   component: ScholarshipsPage,
 });
 

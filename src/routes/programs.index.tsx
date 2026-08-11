@@ -9,20 +9,17 @@ import { ProgramArt } from "@/components/art/program-art";
 import { Reveal, StaggerGroup, StaggerItem } from "@/components/motion";
 import { engines, formatNaira, programs } from "@/data/site";
 import { cn } from "@/lib/utils";
+import { getPageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/programs/")({
-  head: () => ({
-    meta: [
-      { title: "Programs & Courses — Cyber Elias Academy" },
-      {
-        name: "description",
-        content:
-          "Browse cohort programs in software development, cybersecurity, cloud, data & AI, design, marketing, networking and mobile — from scratch to advanced.",
-      },
-      { property: "og:image", content: "https://cea.ng/og-programs.svg" },
-      { property: "og:type", content: "website" },
-    ],
-  }),
+  head: () =>
+    getPageHead({
+      title: "Programs & Courses — Cyber Elias Academy",
+      description:
+        "Browse cohort programs in software development, cybersecurity, cloud, data & AI, design, marketing, networking and mobile — from scratch to advanced.",
+      path: "/programs",
+      image: "https://cea.ng/og-programs.svg",
+    }),
   component: Programs,
 });
 

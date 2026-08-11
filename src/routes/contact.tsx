@@ -27,17 +27,16 @@ import { Reveal } from "@/components/motion";
 import { submitContact } from "@/lib/api/marketing";
 import { ApiError } from "@/lib/errors";
 
+import { getPageHead } from "@/lib/seo";
+
 export const Route = createFileRoute("/contact")({
-  head: () => ({
-    meta: [
-      { title: "Contact — Cyber Elias Academy" },
-      {
-        name: "description",
-        content:
-          "Talk to admissions, request a quote, book a campus tour or partner with Cyber Elias Academy. We reply within one working day.",
-      },
-    ],
-  }),
+  head: () =>
+    getPageHead({
+      title: "Contact — Cyber Elias Academy",
+      description:
+        "Talk to admissions, request a quote, book a campus tour or partner with Cyber Elias Academy. We reply within one working day.",
+      path: "/contact",
+    }),
   component: Contact,
 });
 
@@ -50,7 +49,7 @@ const channels = [
   {
     icon: Phone,
     title: "Phone",
-    lines: ["+234 800 000 0000", "Mon–Sat, 8:00–20:00 WAT"],
+    lines: ["+234 905 862 8386", "Mon–Sat, 8:00–20:00 WAT"],
   },
   {
     icon: Mail,

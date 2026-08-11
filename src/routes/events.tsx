@@ -16,18 +16,16 @@ import { CTASection, PageHero, PageShell, SectionHeading } from "@/components/ma
 import { Reveal, StaggerGroup, StaggerItem, TiltCard } from "@/components/motion";
 import { engineMap, events } from "@/data/site";
 import { cn } from "@/lib/utils";
+import { getPageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/events")({
-  head: () => ({
-    meta: [
-      { title: "Events — Cyber Elias Academy" },
-      {
-        name: "description",
-        content:
-          "Open days, AI builder nights, career fairs, alumni summits, cloud clinics and design workshops — join the academy live in Port Harcourt or online.",
-      },
-    ],
-  }),
+  head: () =>
+    getPageHead({
+      title: "Events",
+      description:
+        "Open days, AI builder nights, career fairs, alumni summits, cloud clinics and design workshops — join the academy live in Port Harcourt or online.",
+      path: "/events",
+    }),
   component: Events,
 });
 

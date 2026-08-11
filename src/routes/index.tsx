@@ -40,25 +40,28 @@ import {
 import { engines, faqs, formatNaira, partnersList, programs } from "@/data/site";
 import { ProgramArt } from "@/components/art/program-art";
 import { SceneArt } from "@/components/art/scene-art";
+import { getPageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "Cyber Elias Academy — Learn Tech. Build Work. Get Hired." },
-      {
-        name: "description",
-        content:
-          "Nigeria's digital skills academy: software, cloud, cybersecurity, data, AI, design and marketing programs with mentorship, portfolios and employer placement.",
-      },
-      { property: "og:title", content: "Cyber Elias Academy — Learn Tech. Build Work. Get Hired." },
-      {
-        property: "og:description",
-        content: "One platform. Multiple engines. Every actor connected.",
-      },
-      { property: "og:image", content: "https://cea.ng/og-card.svg" },
-      { property: "og:type", content: "website" },
-    ],
-  }),
+  head: () => {
+    const faqSchema = {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: faqs.map((f) => ({
+        "@type": "Question",
+        name: f.q,
+        acceptedAnswer: { "@type": "Answer", text: f.a },
+      })),
+    };
+    return getPageHead({
+      title: "Cyber Elias Academy — Learn Tech. Build Work. Get Hired.",
+      description:
+        "Nigeria's digital skills academy: software, cloud, cybersecurity, data, AI, design and marketing programs with mentorship, portfolios and employer placement.",
+      path: "/",
+      image: "https://cea.ng/og-card.svg",
+      structuredData: faqSchema,
+    });
+  },
   component: Home,
 });
 

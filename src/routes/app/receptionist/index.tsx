@@ -1,13 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import {
-  ArrowLeft,
-  ArrowRight,
-  CalendarDays,
-  LogIn,
-  LogOut,
-  Phone,
-  Users,
-} from "lucide-react";
+import { ArrowLeft, ArrowRight, CalendarDays, LogIn, LogOut, Phone, Users } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";

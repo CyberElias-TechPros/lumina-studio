@@ -11,20 +11,17 @@ import { SceneArt } from "@/components/art/scene-art";
 import { useLibraryCatalog } from "@/lib/query/library";
 import type { LibraryCatalog } from "@/lib/api/library";
 import { cn } from "@/lib/utils";
+import { getPageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/library")({
-  head: () => ({
-    meta: [
-      { title: "Digital Library — Cyber Elias Academy" },
-      {
-        name: "description",
-        content:
-          "Browse our public knowledge base — glossaries, data dictionaries, guides and templates. Students get full access to all course materials after signing in.",
-      },
-      { property: "og:image", content: "https://cea.ng/og-library.svg" },
-      { property: "og:type", content: "website" },
-    ],
-  }),
+  head: () =>
+    getPageHead({
+      title: "Digital Library",
+      description:
+        "Browse our public knowledge base — glossaries, data dictionaries, guides and templates. Students get full access to all course materials after signing in.",
+      path: "/library",
+      image: "https://cea.ng/og-library.svg",
+    }),
   component: LibraryPage,
 });
 

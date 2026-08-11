@@ -29,18 +29,16 @@ import {
   TiltCard,
 } from "@/components/motion";
 import { engines, engineMap } from "@/data/site";
+import { getPageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/engines")({
-  head: () => ({
-    meta: [
-      { title: "The Five Engines — CEA-OS | Cyber Elias Academy" },
-      {
-        name: "description",
-        content:
-          "One platform, five engines: Learning, Career, Services, ERP and Community. Every actor in the academy connected on a single operating system.",
-      },
-    ],
-  }),
+  head: () =>
+    getPageHead({
+      title: "The Five Engines",
+      description:
+        "One platform, five engines: Learning, Career, Services, ERP and Community. Every actor in the academy connected on a single operating system.",
+      path: "/engines",
+    }),
   component: Engines,
 });
 

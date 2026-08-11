@@ -33,9 +33,7 @@ export function fetchAssignment(id: string): Promise<StudentAssignment> {
   return apiFetch<StudentAssignment>(`/v1/assignments/${id}`);
 }
 
-export function fetchAssignmentSubmission(
-  id: string,
-): Promise<AssignmentSubmission | null> {
+export function fetchAssignmentSubmission(id: string): Promise<AssignmentSubmission | null> {
   return apiFetch<AssignmentSubmission>(`/v1/assignments/${id}/submission`).catch(
     (err: unknown) => {
       if (err instanceof ApiError && err.status === 404) return null;

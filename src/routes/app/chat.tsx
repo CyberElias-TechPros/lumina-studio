@@ -118,9 +118,9 @@ function Chat() {
               {activeRoom?.name ?? "Select a room"}
             </CardTitle>
           </CardHeader>
-            {activeRoom ? (
-              <Thread room={activeRoom} wsMessages={wsMessages} wsSend={ws.send} />
-            ) : (
+          {activeRoom ? (
+            <Thread room={activeRoom} wsMessages={wsMessages} wsSend={ws.send} />
+          ) : (
             <CardContent>
               <p className="text-muted-foreground py-10 text-center text-xs font-semibold">
                 Pick a room on the left to read and send messages.
@@ -178,7 +178,15 @@ function CreateRoomButton({ onCreated }: { onCreated: (id: string) => void }) {
   );
 }
 
-function Thread({ room, wsMessages, wsSend }: { room: RealtimeRoom; wsMessages: Array<{ body: string; userName: string; at: string }>; wsSend: (body: string) => void }) {
+function Thread({
+  room,
+  wsMessages,
+  wsSend,
+}: {
+  room: RealtimeRoom;
+  wsMessages: Array<{ body: string; userName: string; at: string }>;
+  wsSend: (body: string) => void;
+}) {
   const { session: authSession } = useSessionContext();
   const currentUserId = authSession?.user.id ?? "";
   const [draft, setDraft] = useState("");
@@ -190,8 +198,22 @@ function Thread({ room, wsMessages, wsSend }: { room: RealtimeRoom; wsMessages: 
   // Merge REST history with live WS messages (dedupe by body+time).
   const liveByKey = new Map(wsMessages.map((m) => [`${m.at}:${m.body}`, m]));
   const merged = [
-    ...restMessages.map((m) => ({ id: m.id, userName: m.userName, body: m.body, at: m.createdAt, mine: m.userId === currentUserId })),
-    ...wsMessages.filter((m) => !restMessages.some((r) => r.body === m.body)).map((m) => ({ id: `live-${m.at}`, userName: m.userName, body: m.body, at: m.at, mine: false })),
+    ...restMessages.map((m) => ({
+      id: m.id,
+      userName: m.userName,
+      body: m.body,
+      at: m.createdAt,
+      mine: m.userId === currentUserId,
+    })),
+    ...wsMessages
+      .filter((m) => !restMessages.some((r) => r.body === m.body))
+      .map((m) => ({
+        id: `live-${m.at}`,
+        userName: m.userName,
+        body: m.body,
+        at: m.at,
+        mine: false,
+      })),
   ];
 
   useEffect(() => {

@@ -17,6 +17,26 @@ import { OnboardingTour } from "@/components/app/onboarding-tour";
 import { registerServiceWorker, subscribeToPush } from "@/lib/pwa";
 import { useFlag } from "@/lib/flags";
 
+import { ORGANIZATION_LD, WEBSITE_LD, LOCAL_BUSINESS_LD } from "../lib/seo";
+import { CookieConsent } from "@/components/marketing/cookie-consent";
+import { initGA4 } from "@/lib/ga4";
+import { initAdSense } from "@/lib/adsense";
+
+function StructuredData({ data }: { data: Record<string, unknown> | Record<string, unknown>[] }) {
+  const items = Array.isArray(data) ? data : [data];
+  return (
+    <>
+      {items.map((item, i) => (
+        <script
+          key={i}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(item) }}
+        />
+      ))}
+    </>
+  );
+}
+
 function NotFoundComponent() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
@@ -93,6 +113,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "Nigeria's digital skills academy and technology studio. Train from scratch to advanced, build a portfolio, and get hired.",
       },
       { name: "author", content: "Cyber Elias Academy" },
+      { name: "google-adsense-account", content: "" },
       { property: "og:title", content: "Cyber Elias Academy" },
       {
         property: "og:description",
@@ -129,6 +150,7 @@ function RootShell({ children }: { children: ReactNode }) {
         <HeadContent />
       </head>
       <body>
+        <StructuredData data={[ORGANIZATION_LD, LOCAL_BUSINESS_LD, WEBSITE_LD]} />
         {children}
         <Scripts />
       </body>
@@ -147,6 +169,7 @@ function RootComponent() {
         <OnboardingTour />
       </SessionProvider>
       <Toaster position="top-right" richColors />
+      <CookieConsent />
       <RootEffects />
     </QueryClientProvider>
   );
@@ -162,6 +185,15 @@ function RootEffects() {
   useEffect(() => {
     void subscribeToPush(pushEnabled);
   }, [pushEnabled]);
+
+  useEffect(() => {
+    const id = import.meta.env.VITE_GA4_ID;
+    if (id) initGA4(id);
+  }, []);
+
+  useEffect(() => {
+    initAdSense();
+  }, []);
 
   return null;
 }

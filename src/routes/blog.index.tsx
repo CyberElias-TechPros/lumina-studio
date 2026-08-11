@@ -9,16 +9,13 @@ import { blogPosts, engineMap } from "@/data/site";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/blog/")({
-  head: () => ({
-    meta: [
-      { title: "Insights — Cyber Elias Academy" },
-      {
-        name: "description",
-        content:
-          "Writing from the academy on Nigerian tech talent, cybersecurity, career strategy, learning and hiring.",
-      },
-    ],
-  }),
+  head: () =>
+    getPageHead({
+      title: "Insights",
+      description:
+        "Original reporting, analysis and opinion on tech talent, education and the digital economy in Nigeria and beyond.",
+      path: "/blog",
+    }),
   component: Blog,
 });
 

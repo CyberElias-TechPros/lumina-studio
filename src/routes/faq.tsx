@@ -12,19 +12,29 @@ import { Card, CardContent } from "@/components/ui/card";
 import { PageShell, PageHero, CTASection, SectionHeading } from "@/components/marketing/shell";
 import { Reveal, StaggerGroup, StaggerItem } from "@/components/motion";
 import { faqs } from "@/data/site";
+import { getPageHead } from "@/lib/seo";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/faq")({
-  head: () => ({
-    meta: [
-      { title: "FAQ — Cyber Elias Academy" },
-      {
-        name: "description",
-        content:
-          "Answers about programs, admissions, tuition, scholarships, schedules and outcomes at Cyber Elias Academy.",
-      },
-    ],
-  }),
+  head: () => {
+    const allFaqs = [...faqs, ...extraFaqs];
+    const faqSchema = {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: allFaqs.map((f) => ({
+        "@type": "Question",
+        name: f.q,
+        acceptedAnswer: { "@type": "Answer", text: f.a },
+      })),
+    };
+    return getPageHead({
+      title: "FAQ — Cyber Elias Academy",
+      description:
+        "Answers about programs, admissions, tuition, scholarships, schedules and outcomes at Cyber Elias Academy.",
+      path: "/faq",
+      structuredData: faqSchema,
+    });
+  },
   component: FaqPage,
 });
 

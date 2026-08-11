@@ -21,18 +21,16 @@ import {
 import { CTASection, PageHero, PageShell, SectionHeading } from "@/components/marketing/shell";
 import { Reveal, StaggerGroup, StaggerItem, TiltCard } from "@/components/motion";
 import { faqs, formatNaira, pricingTiers } from "@/data/site";
+import { getPageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/pricing")({
-  head: () => ({
-    meta: [
-      { title: "Pricing & Tuition — Cyber Elias Academy" },
-      {
-        name: "description",
-        content:
-          "Tuition for every budget: instalment plans, income-share agreements and scholarships. Find out what a program at Cyber Elias Academy costs.",
-      },
-    ],
-  }),
+  head: () =>
+    getPageHead({
+      title: "Pricing & Tuition",
+      description:
+        "Transparent tuition for every budget: monthly instalments, income-share agreements and scholarships. Find out what a program at Cyber Elias Academy costs.",
+      path: "/pricing",
+    }),
   component: Pricing,
 });
 

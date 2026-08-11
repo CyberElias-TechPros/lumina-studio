@@ -7,7 +7,11 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { AppShell } from "@/components/app/app-shell";
 import { QueryState } from "@/components/ui/query-state";
-import { useVolHours, useVolHourItems, useLogVolunteerHours } from "@/lib/query/volunteerReceptionist";
+import {
+  useVolHours,
+  useVolHourItems,
+  useLogVolunteerHours,
+} from "@/lib/query/volunteerReceptionist";
 import type { VolHour } from "@/lib/api/volunteerReceptionist";
 import { cn } from "@/lib/utils";
 

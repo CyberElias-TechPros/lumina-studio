@@ -13,18 +13,16 @@ import { Button } from "@/components/ui/button";
 import { CTASection, PageHero, PageShell, SectionHeading } from "@/components/marketing/shell";
 import { Reveal, StaggerGroup, StaggerItem, TiltCard } from "@/components/motion";
 import { events } from "@/data/site";
+import { getPageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/community")({
-  head: () => ({
-    meta: [
-      { title: "Community — Cyber Elias Academy" },
-      {
-        name: "description",
-        content:
-          "Forums, study groups, events and the alumni network — the culture layer of the academy that compounds long after graduation.",
-      },
-    ],
-  }),
+  head: () =>
+    getPageHead({
+      title: "Community",
+      description:
+        "Forums, study groups, events and the alumni network — the culture layer of the academy that compounds long after graduation.",
+      path: "/community",
+    }),
   component: Community,
 });
 

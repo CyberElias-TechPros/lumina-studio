@@ -1,13 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import {
-  ArrowLeft,
-  ArrowRight,
-  Boxes,
-  Building2,
-  RefreshCw,
-  Users,
-  Workflow,
-} from "lucide-react";
+import { ArrowLeft, ArrowRight, Boxes, Building2, RefreshCw, Users, Workflow } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";

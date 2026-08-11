@@ -35,17 +35,16 @@ import {
 import { Reveal, StaggerGroup, StaggerItem, TiltCard } from "@/components/motion";
 import { cn } from "@/lib/utils";
 
+import { getPageHead } from "@/lib/seo";
+
 export const Route = createFileRoute("/about")({
-  head: () => ({
-    meta: [
-      { title: "About — Cyber Elias Academy" },
-      {
-        name: "description",
-        content:
-          "From practical IT roots in Port Harcourt to a vision for a complete skills-to-opportunity ecosystem: the story, philosophy and roadmap of Cyber Elias Academy.",
-      },
-    ],
-  }),
+  head: () =>
+    getPageHead({
+      title: "About — Cyber Elias Academy",
+      description:
+        "From practical IT roots in Port Harcourt to a vision for a complete skills-to-opportunity ecosystem: the story, philosophy and roadmap of Cyber Elias Academy.",
+      path: "/about",
+    }),
   component: About,
 });
 

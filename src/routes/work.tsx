@@ -5,18 +5,16 @@ import { Button } from "@/components/ui/button";
 import { CTASection, PageHero, PageShell, SectionHeading } from "@/components/marketing/shell";
 import { Reveal } from "@/components/motion";
 import { caseStudies } from "@/data/site";
+import { getPageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/work")({
-  head: () => ({
-    meta: [
-      { title: "Client Work & Case Studies — Cyber Elias Academy" },
-      {
-        name: "description",
-        content:
-          "Selected work from the Services Engine: logistics platforms, security overhauls, multi-campus ERPs and public-sector talent pipelines.",
-      },
-    ],
-  }),
+  head: () =>
+    getPageHead({
+      title: "Client Work & Case Studies",
+      description:
+        "Selected client work: logistics platforms, security overhauls, multi-campus ERPs and public-sector talent pipelines delivered by Cyber Elias Academy.",
+      path: "/work",
+    }),
   component: Work,
 });
 
