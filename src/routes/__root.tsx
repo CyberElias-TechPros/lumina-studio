@@ -15,6 +15,7 @@ import { Toaster } from "@/components/ui/sonner";
 import { SessionProvider } from "@/components/app/session-provider";
 import { OnboardingTour } from "@/components/app/onboarding-tour";
 import { registerServiceWorker, subscribeToPush } from "@/lib/pwa";
+import { useFlag } from "@/lib/flags";
 import { CookieConsent } from "@/components/marketing/cookie-consent";
 
 import { ORGANIZATION_LD, WEBSITE_LD, LOCAL_BUSINESS_LD } from "../lib/seo";
