@@ -358,75 +358,39 @@ export const services = [
   },
 ];
 
-export const caseStudies: {
-  slug: string;
-  client: string;
-  title: string;
+export const engagements: {
   sector: string;
-  engine: Engine;
-  result: string;
-  summary: string;
-  metrics: { label: string; value: string }[];
+  title: string;
+  description: string;
+  capabilities: string[];
 }[] = [
   {
-    slug: "greenfield-enrolment",
-    client: "Greenfield Schools",
-    title: "Digital enrolment that cut the admission cycle by 38%",
     sector: "Education",
-    engine: "erp",
-    result: "2.1× enrolment throughput",
-    summary:
-      "Greenfield ran a paper application pipeline across 4 campuses. We mapped their workflows into CEA-OS, automated document checks and payment reconciliation, and trained their admissions team on the live dashboard.",
-    metrics: [
-      { label: "Admission cycle", value: "−38%" },
-      { label: "Campuses live", value: "4" },
-      { label: "Fees collected via portal", value: "91%" },
-    ],
+    title: "Digital operations for schools and institutions",
+    description:
+      "Admissions, fee management, attendance, and reporting — digitised into a single workspace that administrators, teachers, and parents can access.",
+    capabilities: ["Enrollment management", "Fee collection portals", "Attendance tracking", "Reporting dashboards"],
   },
   {
-    slug: "sabi-soc",
-    client: "Sabi Logistics",
-    title: "A working SOC on a Nigerian budget in 90 days",
-    sector: "Logistics",
-    engine: "learning",
-    result: "SOC live in 90 days",
-    summary:
-      "Sabi had fleet telematics and a payment gateway but no detection capability. We trained a 4-person analyst team through our cybersecurity tracks and stood up detection rules on their existing log estate.",
-    metrics: [
-      { label: "Median time-to-detect", value: "−63%" },
-      { label: "Analysts trained", value: "4" },
-      { label: "Detection rules shipped", value: "42" },
-    ],
+    sector: "Cybersecurity",
+    title: "Building detection capability",
+    description:
+      "Training analyst teams and standing up practical security operations on existing infrastructure — without requiring new tooling investment.",
+    capabilities: ["Analyst training", "Detection rule development", "SOC setup", "Incident response playbooks"],
   },
   {
-    slug: "kuda-talent",
-    client: "Kudia Fintech",
-    title: "Three verified hires in eight weeks",
-    sector: "Fintech",
-    engine: "career",
-    result: "3 hires in 8 weeks",
-    summary:
-      "Kudia needed junior engineers who could ship on day one. Through the Career Engine they reviewed graded capstones, ran paid trial tasks in-app, and hired three graduates with tracked retention.",
-    metrics: [
-      { label: "Resume → interview", value: "2.4× faster" },
-      { label: "Hires", value: "3" },
-      { label: "90-day retention", value: "100%" },
-    ],
+    sector: "Talent & Recruitment",
+    title: "Verified hiring pipelines",
+    description:
+      "Connecting employers to job-ready graduates through graded capstones, trial tasks, and tracked placement — replacing CV screening with skills verification.",
+    capabilities: ["Skills-based screening", "Trial task management", "Placement tracking", "Employer onboarding"],
   },
   {
-    slug: "kaduna-govtech",
-    client: "Kaduna State ICT",
-    title: "GovTech field teams that actually report in",
-    sector: "Government",
-    engine: "erp",
-    result: "Weekly reporting from day one",
-    summary:
-      "Field officers across 12 LGAs now log inspections, training and escalations on a shared CEA-OS workspace — with offline-tolerant forms and a command dashboard for the state ICT office.",
-    metrics: [
-      { label: "Officers onboarded", value: "180" },
-      { label: "Reports filed weekly", value: "440+" },
-      { label: "Escalation turnaround", value: "−71%" },
-    ],
+    sector: "Public Sector & NGOs",
+    title: "Field operations and coordination",
+    description:
+      "Digitising field reporting, training logs, and escalations for distributed teams — with offline-tolerant tools that work on basic connectivity.",
+    capabilities: ["Field data collection", "Team coordination", "Reporting automation", "Command dashboards"],
   },
 ];
 
@@ -437,7 +401,7 @@ export const stats = [
   { label: "Journey stages", value: 10, suffix: "" },
 ];
 
-export const partnersList = [
+export const partnersList: string[] = [
   "Employers",
   "Schools & Colleges",
   "NGOs",
@@ -446,49 +410,6 @@ export const partnersList = [
   "Institutions",
   "Sponsors & Scholars",
   "Community groups",
-];
-
-export const testimonials: {
-  name: string;
-  role: string;
-  quote: string;
-  program: string;
-}[] = [
-  {
-    name: "Blessing Okafor",
-    role: "Security Operations Analyst",
-    quote:
-      "I applied with my graded capstone instead of a CV. The interview was about the SOC I actually built — I started two weeks after the cohort ended.",
-    program: "Cybersecurity Professional",
-  },
-  {
-    name: "Ibrahim Musa",
-    role: "Frontend Engineer",
-    quote:
-      "The mentor matched me two weeks in and reviewed every portfolio draft. My first client gig came from the marketplace before graduation.",
-    program: "Web Development Professional",
-  },
-  {
-    name: "Chidinma Eze",
-    role: "Founder, Greenfield Schools",
-    quote:
-      "We stopped running admissions on WhatsApp and spreadsheets. The enrolment dashboard paid for itself in one term.",
-    program: "CEA-OS for Institutions",
-  },
-  {
-    name: "Tunde Adeyemi",
-    role: "Head of Talent, Kudia Fintech",
-    quote:
-      "Trial tasks are the only filter that matters. Every hire from the Career Engine has cleared our 90-day review.",
-    program: "Employer Network",
-  },
-  {
-    name: "Fatima Bello",
-    role: "Parent of a graduate",
-    quote:
-      "I could see attendance, grades and the certificate verify link on my own portal. I never had to call the academy office once.",
-    program: "Parent Portal",
-  },
 ];
 
 export const events: {
@@ -558,7 +479,22 @@ export const events: {
   },
 ];
 
-export const blogPosts = [
+import type { Engine } from "./site";
+import { newBlogPosts } from "./blog-posts-new";
+
+export const blogPosts: {
+  slug: string;
+  title: string;
+  excerpt: string;
+  category: string;
+  author: string;
+  role: string;
+  date: string;
+  readingTime: string;
+  engine: Engine;
+  body: string[];
+}[] = [
+  ...newBlogPosts,
   {
     slug: "nigeria-tech-talent-2026",
     title: "The state of Nigerian tech talent in 2026",

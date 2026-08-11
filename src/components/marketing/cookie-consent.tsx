@@ -1,58 +1,54 @@
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { grantConsent, denyConsent, getConsent } from "@/lib/ga4";
-import { initAdSense } from "@/lib/adsense";
-import { X } from "lucide-react";
+import { Link } from "@tanstack/react-router";
+
+const STORAGE_KEY = "cea-cookie-consent";
 
 export function CookieConsent() {
-  const [open, setOpen] = useState(false);
+  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    const consent = getConsent();
-    if (!consent) setOpen(true);
+    const stored = localStorage.getItem(STORAGE_KEY);
+    if (!stored) {
+      const timer = setTimeout(() => setVisible(true), 1500);
+      return () => clearTimeout(timer);
+    }
   }, []);
 
-  if (!open) return null;
-
-  const handleAccept = () => {
-    grantConsent();
-    initAdSense();
-    setOpen(false);
+  const accept = () => {
+    localStorage.setItem(STORAGE_KEY, "accepted");
+    setVisible(false);
   };
 
-  const handleDeny = () => {
-    denyConsent();
-    setOpen(false);
+  const dismiss = () => {
+    localStorage.setItem(STORAGE_KEY, "dismissed");
+    setVisible(false);
   };
+
+  if (!visible) return null;
 
   return (
-    <div className="fixed inset-x-0 bottom-0 z-50 border-t bg-background/95 p-4 backdrop-blur">
-      <div className="container-page flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <p className="text-muted-foreground text-sm leading-relaxed">
-          We use cookies and similar technologies to improve your experience, analyze traffic, and
-          serve relevant ads. You can accept all cookies or manage preferences in your browser
-          settings. See our{" "}
-          <a href="/privacy" className="text-primary underline">
-            Privacy Policy
-          </a>
-          .
-        </p>
-        <div className="flex shrink-0 gap-2">
-          <Button variant="outline" size="sm" onClick={handleDeny}>
-            Deny
-          </Button>
-          <Button size="sm" onClick={handleAccept} className="bg-gradient-brand border-0">
-            Accept all
-          </Button>
+    <div className="fixed inset-x-0 bottom-0 z-[100] p-4 sm:p-6">
+      <div className="container-page">
+        <div className="bg-card shadow-elevated rounded-2xl border p-5 sm:flex sm:items-center sm:justify-between sm:gap-4">
+          <p className="text-muted-foreground text-sm leading-relaxed">
+            We use essential cookies to make our site work and optional analytics cookies to
+            understand how you use it. By continuing to use this site, you agree to our{" "}
+            <Link to="/privacy" className="text-primary underline">
+              cookie policy
+            </Link>
+            .
+          </p>
+          <div className="mt-4 flex shrink-0 gap-2 sm:mt-0">
+            <Button variant="outline" size="sm" onClick={dismiss}>
+              Decline
+            </Button>
+            <Button size="sm" className="bg-gradient-brand border-0" onClick={accept}>
+              Accept
+            </Button>
+          </div>
         </div>
       </div>
-      <button
-        onClick={handleDeny}
-        className="text-muted-foreground hover:text-foreground absolute top-2 right-2 rounded-lg p-1 transition-colors sm:hidden"
-        aria-label="Dismiss"
-      >
-        <X className="size-4" />
-      </button>
     </div>
   );
 }

@@ -14,7 +14,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { CTASection, PageHero, PageShell, SectionHeading } from "@/components/marketing/shell";
 import { Reveal, StaggerGroup, StaggerItem, TiltCard } from "@/components/motion";
-import { caseStudies, formatNaira, services } from "@/data/site";
+import { engagements, formatNaira, services } from "@/data/site";
 import { getPageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/services")({
@@ -177,57 +177,35 @@ function Services() {
       <section className="container-page py-20 md:py-24">
         <div className="flex flex-wrap items-end justify-between gap-6">
           <SectionHeading
-            eyebrow="Proof"
-            title="Recent client work"
-            description="Selected engagements with measurable outcomes."
+            eyebrow="Services in action"
+            title="Where we focus"
+            description="We work across sectors where practical technology makes an immediate difference."
           />
-          <Reveal delay={0.1}>
-            <Button asChild variant="outline">
-              <Link to="/work">
-                All case studies <ArrowRight className="ml-1.5 size-4" />
-              </Link>
-            </Button>
-          </Reveal>
         </div>
-        {caseStudies.length > 0 ? (
-          <StaggerGroup className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-            {caseStudies.map((c) => (
-              <StaggerItem key={c.slug}>
-                <Link
-                  to="/work"
-                  className="group bg-card shadow-soft hover:shadow-elevated flex h-full flex-col rounded-2xl border p-6 transition-all hover:-translate-y-1"
-                >
-                  <Badge variant="secondary" className="w-fit font-semibold">
-                    {c.sector}
-                  </Badge>
-                  <p className="font-display text-muted-foreground mt-4 text-xs font-bold tracking-[0.14em] uppercase">
-                    {c.client}
-                  </p>
-                  <h3 className="font-display group-hover:text-primary mt-1.5 flex-1 text-base leading-snug font-bold">
-                    {c.title}
-                  </h3>
-                  <span className="text-services mt-4 inline-flex items-center gap-1 text-sm font-bold">
-                    {c.result}{" "}
-                    <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                  </span>
-                </Link>
-              </StaggerItem>
-            ))}
-          </StaggerGroup>
-        ) : (
-          <div className="border-dashed bg-card/50 mt-12 flex flex-col items-center rounded-3xl border p-12 text-center">
-            <p className="font-display text-xl font-extrabold">Case studies are on the way</p>
-            <p className="text-muted-foreground mt-2 max-w-md text-sm">
-              We publish engagements only after clients sign off on the numbers. The first ones land
-              as the Services Engine goes live.
-            </p>
-            <Button asChild variant="outline" className="mt-6">
-              <Link to="/work">
-                See the portfolio <ArrowRight className="ml-1.5 size-4" />
-              </Link>
-            </Button>
-          </div>
-        )}
+        <StaggerGroup className="mt-12 grid gap-5 md:grid-cols-2">
+          {engagements.map((e) => (
+            <StaggerItem key={e.sector}>
+              <div className="bg-card shadow-soft hover:shadow-elevated flex h-full flex-col rounded-2xl border p-6 transition-all hover:-translate-y-1">
+                <Badge variant="secondary" className="w-fit font-semibold">
+                  {e.sector}
+                </Badge>
+                <h3 className="font-display mt-4 text-base leading-snug font-bold">
+                  {e.title}
+                </h3>
+                <p className="text-muted-foreground mt-2 flex-1 text-sm leading-relaxed">
+                  {e.description}
+                </p>
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {e.capabilities.map((cap) => (
+                    <span key={cap} className="bg-muted text-muted-foreground rounded-full px-2.5 py-1 text-xs font-medium">
+                      {cap}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </StaggerItem>
+          ))}
+        </StaggerGroup>
       </section>
 
       <CTASection

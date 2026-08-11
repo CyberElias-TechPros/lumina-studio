@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Mail, MapPin, Phone, Linkedin, Twitter, Instagram, Youtube } from "lucide-react";
+import { Mail, MapPin, Phone, Linkedin, Twitter, Instagram, Youtube, Facebook } from "lucide-react";
 import { BrandMark } from "./site-header";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -12,6 +12,7 @@ const columns = [
       { label: "Engines", to: "/engines" },
       { label: "Pricing", to: "/pricing" },
       { label: "Admissions", to: "/admissions" },
+      { label: "Scholarships", to: "/scholarships" },
     ],
   },
   {
@@ -21,6 +22,7 @@ const columns = [
       { label: "Case studies", to: "/work" },
       { label: "Marketplace", to: "/marketplace" },
       { label: "Partners", to: "/partners" },
+      { label: "Contact", to: "/contact" },
     ],
   },
   {
@@ -29,16 +31,18 @@ const columns = [
       { label: "Events", to: "/events" },
       { label: "Community", to: "/community" },
       { label: "Alumni", to: "/alumni" },
-      { label: "Insights", to: "/blog" },
+      { label: "Insights & Blog", to: "/blog" },
+      { label: "FAQ", to: "/faq" },
     ],
   },
   {
-    title: "Academy",
+    title: "Company",
     links: [
       { label: "About", to: "/about" },
-      { label: "Contact", to: "/contact" },
+      { label: "Privacy Policy", to: "/privacy" },
+      { label: "Terms of Service", to: "/terms" },
+      { label: "Accessibility", to: "/accessibility" },
       { label: "Sign in", to: "/auth/sign-in" },
-      { label: "Dashboards", to: "/app" },
     ],
   },
 ];
@@ -72,11 +76,19 @@ export function SiteFooter() {
             </div>
 
             <div className="mt-7 flex gap-2">
-              {[Linkedin, Twitter, Instagram, Youtube].map((Icon, i) => (
+              {[
+                { Icon: Facebook, href: "https://www.facebook.com/cybereliasacademy/", label: "Facebook" },
+                { Icon: Twitter, href: "https://x.com/cybeliasacademy", label: "Twitter/X" },
+                { Icon: Instagram, href: "https://www.instagram.com/cyberelias.tk/", label: "Instagram" },
+                { Icon: Youtube, href: "https://www.youtube.com/@CyberEliasAcademy", label: "YouTube" },
+                { Icon: Linkedin, href: "https://www.linkedin.com/company/cyber-elias-academy", label: "LinkedIn" },
+              ].map(({ Icon, href, label }) => (
                 <a
-                  key={i}
-                  href="#"
-                  aria-label="Social link"
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
                   className="border-ink-foreground/15 hover:bg-ink-foreground/10 grid size-9 place-items-center rounded-lg border transition-colors"
                 >
                   <Icon className="size-4" />
@@ -134,19 +146,8 @@ export function SiteFooter() {
           </form>
         </div>
 
-        <div className="border-ink-foreground/15 text-ink-foreground/50 mt-10 flex flex-col gap-3 border-t pt-8 text-xs sm:flex-row sm:items-center sm:justify-between">
-          <p>© {new Date().getFullYear()} Cyber Elias Academy. All rights reserved.</p>
-          <p className="flex gap-5">
-            <Link to="/privacy" className="hover:text-ink-foreground transition-colors">
-              Privacy
-            </Link>
-            <Link to="/terms" className="hover:text-ink-foreground transition-colors">
-              Terms
-            </Link>
-            <Link to="/accessibility" className="hover:text-ink-foreground transition-colors">
-              Accessibility
-            </Link>
-          </p>
+        <div className="border-ink-foreground/15 text-ink-foreground/50 mt-10 border-t pt-8 text-xs text-center">
+          <p>© {new Date().getFullYear()} Cyber Elias Academy Ltd. RC 8413776. All rights reserved.</p>
         </div>
       </div>
     </footer>

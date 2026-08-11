@@ -28,6 +28,7 @@ import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as ScholarshipsRouteImport } from './routes/scholarships'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as StoriesRouteImport } from './routes/stories'
+import { Route as TeamRouteImport } from './routes/team'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as VirtualTourRouteImport } from './routes/virtual-tour'
 import { Route as WorkRouteImport } from './routes/work'
@@ -484,6 +485,11 @@ const ServicesRoute = ServicesRouteImport.update({
 const StoriesRoute = StoriesRouteImport.update({
   id: '/stories',
   path: '/stories',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TeamRoute = TeamRouteImport.update({
+  id: '/team',
+  path: '/team',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TermsRoute = TermsRouteImport.update({
@@ -2387,6 +2393,7 @@ export interface FileRoutesByFullPath {
   '/scholarships': typeof ScholarshipsRoute
   '/services': typeof ServicesRoute
   '/stories': typeof StoriesRoute
+  '/team': typeof TeamRoute
   '/terms': typeof TermsRoute
   '/virtual-tour': typeof VirtualTourRoute
   '/work': typeof WorkRoute
@@ -2770,6 +2777,7 @@ export interface FileRoutesByTo {
   '/scholarships': typeof ScholarshipsRoute
   '/services': typeof ServicesRoute
   '/stories': typeof StoriesRoute
+  '/team': typeof TeamRoute
   '/terms': typeof TermsRoute
   '/virtual-tour': typeof VirtualTourRoute
   '/work': typeof WorkRoute
@@ -3153,6 +3161,7 @@ export interface FileRoutesById {
   '/scholarships': typeof ScholarshipsRoute
   '/services': typeof ServicesRoute
   '/stories': typeof StoriesRoute
+  '/team': typeof TeamRoute
   '/terms': typeof TermsRoute
   '/virtual-tour': typeof VirtualTourRoute
   '/work': typeof WorkRoute
@@ -3538,6 +3547,7 @@ export interface FileRouteTypes {
     | '/scholarships'
     | '/services'
     | '/stories'
+    | '/team'
     | '/terms'
     | '/virtual-tour'
     | '/work'
@@ -3921,6 +3931,7 @@ export interface FileRouteTypes {
     | '/scholarships'
     | '/services'
     | '/stories'
+    | '/team'
     | '/terms'
     | '/virtual-tour'
     | '/work'
@@ -4303,6 +4314,7 @@ export interface FileRouteTypes {
     | '/scholarships'
     | '/services'
     | '/stories'
+    | '/team'
     | '/terms'
     | '/virtual-tour'
     | '/work'
@@ -4687,6 +4699,7 @@ export interface RootRouteChildren {
   ScholarshipsRoute: typeof ScholarshipsRoute
   ServicesRoute: typeof ServicesRoute
   StoriesRoute: typeof StoriesRoute
+  TeamRoute: typeof TeamRoute
   TermsRoute: typeof TermsRoute
   VirtualTourRoute: typeof VirtualTourRoute
   WorkRoute: typeof WorkRoute
@@ -5168,6 +5181,13 @@ declare module '@tanstack/react-router' {
       path: '/stories'
       fullPath: '/stories'
       preLoaderRoute: typeof StoriesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/team': {
+      id: '/team'
+      path: '/team'
+      fullPath: '/team'
+      preLoaderRoute: typeof TeamRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/terms': {
@@ -7871,6 +7891,7 @@ const rootRouteChildren: RootRouteChildren = {
   ScholarshipsRoute: ScholarshipsRoute,
   ServicesRoute: ServicesRoute,
   StoriesRoute: StoriesRoute,
+  TeamRoute: TeamRoute,
   TermsRoute: TermsRoute,
   VirtualTourRoute: VirtualTourRoute,
   WorkRoute: WorkRoute,

@@ -8,13 +8,23 @@ import { Magnetic } from "@/components/motion";
 
 const nav = [
   { label: "Programs", to: "/programs" },
+  { label: "Pricing", to: "/pricing" },
   { label: "Engines", to: "/engines" },
   { label: "Services", to: "/services" },
-  { label: "Library", to: "/library" },
   { label: "Work", to: "/work" },
-  { label: "Marketplace", to: "/marketplace" },
   { label: "Community", to: "/community" },
   { label: "About", to: "/about" },
+  { label: "Team", to: "/team" },
+  { label: "More", to: "/blog", subLinks: [
+    { label: "Blog & Insights", to: "/blog" },
+    { label: "FAQ", to: "/faq" },
+    { label: "Events", to: "/events" },
+    { label: "Scholarships", to: "/scholarships" },
+    { label: "Contact", to: "/contact" },
+    { label: "Privacy", to: "/privacy" },
+    { label: "Terms", to: "/terms" },
+    { label: "Accessibility", to: "/accessibility" },
+  ]},
 ];
 
 export function BrandMark({ className }: { className?: string }) {
@@ -97,24 +107,46 @@ export function SiteHeader() {
         <nav className="hidden items-center gap-1 lg:flex">
           {nav.map((item) => {
             const active = pathname.startsWith(item.to);
+            const hasSub = "subLinks" in item && item.subLinks;
             return (
-              <Link
-                key={item.to}
-                to={item.to}
-                className={cn(
-                  "relative rounded-lg px-3 py-2 text-sm font-medium transition-colors",
-                  active ? "text-foreground" : "text-muted-foreground hover:text-foreground",
+              <div key={item.to} className="group relative">
+                <Link
+                  to={item.to}
+                  className={cn(
+                    "relative flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-medium transition-colors",
+                    active ? "text-foreground" : "text-muted-foreground hover:text-foreground",
+                  )}
+                >
+                  {active && !hasSub && (
+                    <motion.span
+                      layoutId="nav-pill"
+                      className="bg-accent absolute inset-0 rounded-lg"
+                      transition={{ type: "spring", stiffness: 380, damping: 32 }}
+                    />
+                  )}
+                  <span className="relative">{item.label}</span>
+                  {hasSub && (
+                    <svg className="relative size-3.5 opacity-60" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  )}
+                </Link>
+                {hasSub && (
+                  <div className="pointer-events-none absolute left-1/2 top-full z-50 w-56 -translate-x-1/2 pt-2 opacity-0 transition-opacity group-hover:pointer-events-auto group-hover:opacity-100">
+                    <div className="bg-popover text-popover-foreground shadow-elevated mt-1 rounded-xl border p-2">
+                      {item.subLinks!.map((sub) => (
+                        <Link
+                          key={sub.to}
+                          to={sub.to}
+                          className="hover:bg-accent block rounded-lg px-3 py-2 text-sm font-medium transition-colors"
+                        >
+                          {sub.label}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
                 )}
-              >
-                {active && (
-                  <motion.span
-                    layoutId="nav-pill"
-                    className="bg-accent absolute inset-0 rounded-lg"
-                    transition={{ type: "spring", stiffness: 380, damping: 32 }}
-                  />
-                )}
-                <span className="relative">{item.label}</span>
-              </Link>
+              </div>
             );
           })}
         </nav>
@@ -151,21 +183,43 @@ export function SiteHeader() {
             className="glass overflow-hidden border-t lg:hidden"
           >
             <div className="container-page grid gap-1 py-4">
-              {nav.map((item, i) => (
-                <motion.div
-                  key={item.to}
-                  initial={{ opacity: 0, x: -12 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.04 }}
-                >
-                  <Link
-                    to={item.to}
-                    className="hover:bg-accent block rounded-lg px-3 py-2.5 text-sm font-medium"
+              {nav.flatMap((item, i) => {
+                const items = [
+                  <motion.div
+                    key={item.to}
+                    initial={{ opacity: 0, x: -12 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: i * 0.04 }}
                   >
-                    {item.label}
-                  </Link>
-                </motion.div>
-              ))}
+                    <Link
+                      to={item.to}
+                      className="hover:bg-accent block rounded-lg px-3 py-2.5 text-sm font-medium"
+                    >
+                      {item.label}
+                    </Link>
+                  </motion.div>,
+                ];
+                if ("subLinks" in item && item.subLinks) {
+                  item.subLinks.forEach((sub, j) => {
+                    items.push(
+                      <motion.div
+                        key={sub.to}
+                        initial={{ opacity: 0, x: -12 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: (i + j + 1) * 0.04 }}
+                      >
+                        <Link
+                          to={sub.to}
+                          className="text-muted-foreground hover:bg-accent block rounded-lg px-6 py-1.5 text-sm transition-colors"
+                        >
+                          {sub.label}
+                        </Link>
+                      </motion.div>,
+                    );
+                  });
+                }
+                return items;
+              })}
               <div className="mt-3 grid grid-cols-2 gap-2">
                 <Button asChild variant="outline">
                   <Link to="/auth/sign-in">Sign in</Link>

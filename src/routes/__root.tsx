@@ -15,12 +15,9 @@ import { Toaster } from "@/components/ui/sonner";
 import { SessionProvider } from "@/components/app/session-provider";
 import { OnboardingTour } from "@/components/app/onboarding-tour";
 import { registerServiceWorker, subscribeToPush } from "@/lib/pwa";
-import { useFlag } from "@/lib/flags";
+import { CookieConsent } from "@/components/marketing/cookie-consent";
 
 import { ORGANIZATION_LD, WEBSITE_LD, LOCAL_BUSINESS_LD } from "../lib/seo";
-import { CookieConsent } from "@/components/marketing/cookie-consent";
-import { initGA4 } from "@/lib/ga4";
-import { initAdSense } from "@/lib/adsense";
 
 function StructuredData({ data }: { data: Record<string, unknown> | Record<string, unknown>[] }) {
   const items = Array.isArray(data) ? data : [data];
@@ -130,7 +127,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap",
       },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "icon", href: "/icon.svg", type: "image/svg+xml" },
+      { rel: "apple-touch-icon", href: "/icon.svg" },
       { rel: "manifest", href: "/manifest.webmanifest" },
       { rel: "apple-touch-icon", href: "/icon.svg" },
       { rel: "mask-icon", href: "/icon.svg", color: "#7a2434" },
@@ -169,8 +167,8 @@ function RootComponent() {
         <OnboardingTour />
       </SessionProvider>
       <Toaster position="top-right" richColors />
-      <CookieConsent />
       <RootEffects />
+      <CookieConsent />
     </QueryClientProvider>
   );
 }

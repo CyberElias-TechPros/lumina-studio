@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { getPageHead } from "@/lib/seo";
 import { PageShell, PageHero, SectionHeading } from "@/components/marketing/shell";
 import { Reveal } from "@/components/motion";
