@@ -58,7 +58,6 @@ export const Route = createFileRoute("/")({
       description:
         "Nigeria's digital skills academy: software, cloud, cybersecurity, data, AI, design and marketing programs with mentorship, portfolios and employer placement.",
       path: "/",
-      image: "https://cea.ng/og-card.svg",
       structuredData: faqSchema,
     });
   },

@@ -1,4 +1,4 @@
-import type { Engine } from "./site";
+export type Engine = "learning" | "career" | "services" | "erp" | "community";
 
 export const newBlogPosts: {
   slug: string;
