@@ -479,7 +479,6 @@ export const events: {
   },
 ];
 
-import type { Engine } from "./site";
 import { newBlogPosts } from "./blog-posts-new";
 
 export const blogPosts: {
