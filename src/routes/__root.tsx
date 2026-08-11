@@ -112,7 +112,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "Nigeria's digital skills academy and technology studio. Train from scratch to advanced, build a portfolio, and get hired.",
       },
       { name: "author", content: "Cyber Elias Academy" },
-      { name: "google-adsense-account", content: "" },
+      { name: "google-adsense-account", content: "ca-pub-9117572925263537" },
       { property: "og:title", content: "Cyber Elias Academy" },
       {
         property: "og:description",
@@ -148,6 +148,7 @@ function RootShell({ children }: { children: ReactNode }) {
     <html lang="en">
       <head>
         <HeadContent />
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9117572925263537" crossorigin="anonymous"></script>
       </head>
       <body>
         <StructuredData data={[ORGANIZATION_LD, LOCAL_BUSINESS_LD, WEBSITE_LD]} />
