@@ -54,7 +54,7 @@ const channels = [
   {
     icon: Mail,
     title: "Email",
-    lines: ["hello@cyberelias.academy", "admissions@cyberelias.academy"],
+    lines: ["hello@cea.ng", "admissions@cea.ng"],
   },
   {
     icon: Clock,

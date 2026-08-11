@@ -1899,7 +1899,7 @@ export const employmentEntrySchema = z.object({
 | ALU-019    | Rate limit exceeded       | 429         | Throttle                | "Too many requests. Please wait before trying again."                       | Retry after shown duration    |
 | ALU-020    | Network offline           | —           | navigator.onLine        | "You are offline. Changes will be saved when reconnected."                  | Queue, sync on reconnect      |
 | ALU-021    | Session expired           | 401         | JWT expired             | "Session expired. Please log in again."                                     | Redirect to login             |
-| ALU-022    | Account suspended         | 403         | Status check            | "Your alumni account has been suspended. Contact alumni@cyberelias.academy" | Show support contact          |
+| ALU-022    | Account suspended         | 403         | Status check            | "Your alumni account has been suspended. Contact alumni@cea.ng" | Show support contact          |
 | ALU-023    | Duplicate education entry | 409         | Same institution+degree | "This education entry already exists."                                      | Edit existing entry           |
 | ALU-024    | Graduation year in future | 400         | Year > current          | "Graduation year cannot be in the future."                                  | Correct year                  |
 | ALU-025    | Story already liked       | 409         | Check existing like     | "You have already liked this story."                                        | Toggle off                    |

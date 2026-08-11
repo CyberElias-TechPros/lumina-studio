@@ -56,7 +56,7 @@
 - **Edge — Date is holiday**: Show "Campus is closed on {date}. Please select another date."
 - **Edge — Time outside hours**: "Visits are available between 8:00 AM and 6:00 PM."
 - **Edge — Same-day booking cut-off**: "Same-day bookings must be made at least 2 hours before arrival."
-- **Edge — Max guests exceeded**: "Maximum 20 guests per visit. For larger groups, contact events@cyberelias.academy"
+- **Edge — Max guests exceeded**: "Maximum 20 guests per visit. For larger groups, contact events@cea.ng"
 
 ### 3.2 QR Check-In Screen
 
