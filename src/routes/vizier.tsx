@@ -22,7 +22,7 @@ import { PageHero, PageShell, SectionHeading } from "@/components/marketing/shel
 import { Aurora, Reveal, Spotlight, StaggerGroup, StaggerItem } from "@/components/motion";
 import { getPageHead } from "@/lib/seo";
 
-const MARKETPLACE_URL = "https://marketplace.visualstudio.com/items?itemName=CyberElias.vizier";
+const MARKETPLACE_URL = "https://marketplace.visualstudio.com/items?itemName=cyberelias.vizier";
 
 const features = [
   {
