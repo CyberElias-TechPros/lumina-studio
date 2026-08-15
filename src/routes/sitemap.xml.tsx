@@ -40,6 +40,7 @@ const staticRoutes: StaticRoute[] = [
   { path: "/services", priority: "0.8", changefreq: "weekly", lastmod: "2025-08-02" },
   { path: "/stories", priority: "0.7", changefreq: "monthly", lastmod: "2025-07-21" },
   { path: "/virtual-tour", priority: "0.7", changefreq: "monthly", lastmod: "2025-07-17" },
+  { path: "/vizier", priority: "0.8", changefreq: "weekly", lastmod: "2025-08-15" },
   { path: "/visit", priority: "0.8", changefreq: "monthly", lastmod: "2025-07-29" },
   { path: "/visit/info", priority: "0.7", changefreq: "monthly", lastmod: "2025-07-24" },
   { path: "/visit/feedback", priority: "0.6", changefreq: "monthly", lastmod: "2025-07-12" },

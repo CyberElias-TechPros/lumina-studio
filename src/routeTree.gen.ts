@@ -31,6 +31,7 @@ import { Route as StoriesRouteImport } from './routes/stories'
 import { Route as TeamRouteImport } from './routes/team'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as VirtualTourRouteImport } from './routes/virtual-tour'
+import { Route as VizierRouteImport } from './routes/vizier'
 import { Route as WorkRouteImport } from './routes/work'
 import { Route as AppIndexRouteImport } from './routes/app.index'
 import { Route as AppAiRouteImport } from './routes/app/ai'
@@ -500,6 +501,11 @@ const TermsRoute = TermsRouteImport.update({
 const VirtualTourRoute = VirtualTourRouteImport.update({
   id: '/virtual-tour',
   path: '/virtual-tour',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VizierRoute = VizierRouteImport.update({
+  id: '/vizier',
+  path: '/vizier',
   getParentRoute: () => rootRouteImport,
 } as any)
 const WorkRoute = WorkRouteImport.update({
@@ -2396,6 +2402,7 @@ export interface FileRoutesByFullPath {
   '/team': typeof TeamRoute
   '/terms': typeof TermsRoute
   '/virtual-tour': typeof VirtualTourRoute
+  '/vizier': typeof VizierRoute
   '/work': typeof WorkRoute
   '/app/ai': typeof AppAiRoute
   '/app/attendance': typeof AppAttendanceRoute
@@ -2780,6 +2787,7 @@ export interface FileRoutesByTo {
   '/team': typeof TeamRoute
   '/terms': typeof TermsRoute
   '/virtual-tour': typeof VirtualTourRoute
+  '/vizier': typeof VizierRoute
   '/work': typeof WorkRoute
   '/app/ai': typeof AppAiRoute
   '/app/attendance': typeof AppAttendanceRoute
@@ -3164,6 +3172,7 @@ export interface FileRoutesById {
   '/team': typeof TeamRoute
   '/terms': typeof TermsRoute
   '/virtual-tour': typeof VirtualTourRoute
+  '/vizier': typeof VizierRoute
   '/work': typeof WorkRoute
   '/app/ai': typeof AppAiRoute
   '/app/attendance': typeof AppAttendanceRoute
@@ -3550,6 +3559,7 @@ export interface FileRouteTypes {
     | '/team'
     | '/terms'
     | '/virtual-tour'
+    | '/vizier'
     | '/work'
     | '/app/ai'
     | '/app/attendance'
@@ -3934,6 +3944,7 @@ export interface FileRouteTypes {
     | '/team'
     | '/terms'
     | '/virtual-tour'
+    | '/vizier'
     | '/work'
     | '/app/ai'
     | '/app/attendance'
@@ -4317,6 +4328,7 @@ export interface FileRouteTypes {
     | '/team'
     | '/terms'
     | '/virtual-tour'
+    | '/vizier'
     | '/work'
     | '/app/ai'
     | '/app/attendance'
@@ -4702,6 +4714,7 @@ export interface RootRouteChildren {
   TeamRoute: typeof TeamRoute
   TermsRoute: typeof TermsRoute
   VirtualTourRoute: typeof VirtualTourRoute
+  VizierRoute: typeof VizierRoute
   WorkRoute: typeof WorkRoute
   AppAiRoute: typeof AppAiRoute
   AppAttendanceRoute: typeof AppAttendanceRoute
@@ -5202,6 +5215,13 @@ declare module '@tanstack/react-router' {
       path: '/virtual-tour'
       fullPath: '/virtual-tour'
       preLoaderRoute: typeof VirtualTourRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/vizier': {
+      id: '/vizier'
+      path: '/vizier'
+      fullPath: '/vizier'
+      preLoaderRoute: typeof VizierRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/work': {
@@ -7894,6 +7914,7 @@ const rootRouteChildren: RootRouteChildren = {
   TeamRoute: TeamRoute,
   TermsRoute: TermsRoute,
   VirtualTourRoute: VirtualTourRoute,
+  VizierRoute: VizierRoute,
   WorkRoute: WorkRoute,
   AppAiRoute: AppAiRoute,
   AppAttendanceRoute: AppAttendanceRoute,

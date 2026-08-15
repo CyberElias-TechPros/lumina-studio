@@ -21,6 +21,7 @@ const nav = [
     { label: "Events", to: "/events" },
     { label: "Scholarships", to: "/scholarships" },
     { label: "Contact", to: "/contact" },
+    { label: "Vizier", to: "/vizier" },
     { label: "Privacy", to: "/privacy" },
     { label: "Terms", to: "/terms" },
     { label: "Accessibility", to: "/accessibility" },
