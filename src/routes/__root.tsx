@@ -17,6 +17,7 @@ import { OnboardingTour } from "@/components/app/onboarding-tour";
 import { registerServiceWorker, subscribeToPush } from "@/lib/pwa";
 import { useFlag } from "@/lib/flags";
 import { initAdSense } from "@/lib/adsense";
+import { initGA4 } from "@/lib/ga4";
 import { CookieConsent } from "@/components/marketing/cookie-consent";
 
 import { ORGANIZATION_LD, WEBSITE_LD, LOCAL_BUSINESS_LD } from "../lib/seo";
@@ -148,7 +149,7 @@ function RootShell({ children }: { children: ReactNode }) {
     <html lang="en">
       <head>
         <HeadContent />
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9117572925263537" crossorigin="anonymous"></script>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9117572925263537" crossOrigin="anonymous"></script>
       </head>
       <body>
         <StructuredData data={[ORGANIZATION_LD, LOCAL_BUSINESS_LD, WEBSITE_LD]} />
