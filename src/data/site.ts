@@ -369,28 +369,48 @@ export const engagements: {
     title: "Digital operations for schools and institutions",
     description:
       "Admissions, fee management, attendance, and reporting — digitised into a single workspace that administrators, teachers, and parents can access.",
-    capabilities: ["Enrollment management", "Fee collection portals", "Attendance tracking", "Reporting dashboards"],
+    capabilities: [
+      "Enrollment management",
+      "Fee collection portals",
+      "Attendance tracking",
+      "Reporting dashboards",
+    ],
   },
   {
     sector: "Cybersecurity",
     title: "Building detection capability",
     description:
       "Training analyst teams and standing up practical security operations on existing infrastructure — without requiring new tooling investment.",
-    capabilities: ["Analyst training", "Detection rule development", "SOC setup", "Incident response playbooks"],
+    capabilities: [
+      "Analyst training",
+      "Detection rule development",
+      "SOC setup",
+      "Incident response playbooks",
+    ],
   },
   {
     sector: "Talent & Recruitment",
     title: "Verified hiring pipelines",
     description:
       "Connecting employers to job-ready graduates through graded capstones, trial tasks, and tracked placement — replacing CV screening with skills verification.",
-    capabilities: ["Skills-based screening", "Trial task management", "Placement tracking", "Employer onboarding"],
+    capabilities: [
+      "Skills-based screening",
+      "Trial task management",
+      "Placement tracking",
+      "Employer onboarding",
+    ],
   },
   {
     sector: "Public Sector & NGOs",
     title: "Field operations and coordination",
     description:
       "Digitising field reporting, training logs, and escalations for distributed teams — with offline-tolerant tools that work on basic connectivity.",
-    capabilities: ["Field data collection", "Team coordination", "Reporting automation", "Command dashboards"],
+    capabilities: [
+      "Field data collection",
+      "Team coordination",
+      "Reporting automation",
+      "Command dashboards",
+    ],
   },
 ];
 
@@ -431,7 +451,7 @@ export const events: {
     location: "Port Harcourt Campus & Online",
     engine: "career",
     blurb:
-      "Meet 25+ employers from the network, submit to live openings and get portfolio reviews from hiring practitioners.",
+      "Meet employers from the network, submit to live openings and get portfolio reviews from hiring practitioners.",
   },
   {
     slug: "build-night-soc",

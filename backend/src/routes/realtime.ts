@@ -10,7 +10,6 @@ export interface ApiRealtimeRoom {
   name: string;
   kind: string;
   createdAt: string;
-  connected: number;
 }
 
 export interface ApiRealtimeMessage {
@@ -65,7 +64,6 @@ realtime.post("/chat/rooms", async (c) => {
     name,
     kind: input.kind === "live" ? "live" : "chat",
     createdAt: now,
-    connected: 0,
   };
   return c.json(room, 201);
 });
@@ -86,7 +84,6 @@ realtime.get("/chat/rooms", async (c) => {
     name: r.name,
     kind: r.kind,
     createdAt: r.created_at,
-    connected: 0,
   }));
   const result: Paginated<ApiRealtimeRoom> = paginate(items, total?.n ?? 0, (last) =>
     base64UrlEncode(last.id),

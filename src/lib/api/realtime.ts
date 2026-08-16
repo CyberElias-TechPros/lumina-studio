@@ -7,7 +7,6 @@ export interface RealtimeRoom {
   name: string;
   kind: string;
   createdAt: string;
-  connected: number;
 }
 
 export interface RealtimeMessage {

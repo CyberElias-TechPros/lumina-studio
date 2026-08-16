@@ -18,14 +18,12 @@ const rooms: RealtimeRoom[] = [
     name: "Cohort 15 — project sync",
     kind: "chat",
     createdAt: new Date(Date.now() - 3 * 86_400_000).toISOString(),
-    connected: 2,
   },
   {
     id: "room-qna",
     name: "Week 12 Q&A — Backend",
     kind: "chat",
     createdAt: new Date(Date.now() - 86_400_000).toISOString(),
-    connected: 0,
   },
 ];
 
@@ -70,7 +68,6 @@ export function registerRealtimeMocks(): void {
       name,
       kind: input.kind === "live" ? "live" : "chat",
       createdAt: new Date().toISOString(),
-      connected: 0,
     };
     rooms.unshift(room);
     return room;

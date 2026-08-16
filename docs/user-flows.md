@@ -193,8 +193,10 @@ user** (name/email/initials) and redirects signed-out visitors to sign-in
 in live mode; the "Viewing as" role switcher remains a demo affordance.
 
 ### 3.1 Dashboard â€” `/app` and `/app/learn`
-- `/app` (STATIC): hard-coded "Good morning, Ada" dashboard, static KPIs,
-  onboarding tour (4 steps, `localStorage`, gated by `onboarding.tours`).
+- `/app` (LIVE-ISH): greets the **real signed-in user** by first name (no hard-coded persona)
+  and links to the actual workspaces (learning, assignments, grades, messages) plus quick
+  links; no fabricated KPIs or course progress. Onboarding tour (4 steps, `localStorage`,
+  gated by `onboarding.tours`).
 - `/app/learn` (LIVE): `GET /v1/dashboard/student` (**student role only**):
   KPIs (enrolled, overall progress, lessons this week vs goal, study hours,
   streak), next-up lesson, per-course progress.
@@ -253,8 +255,9 @@ in live mode; the "Viewing as" role switcher remains a demo affordance.
    queries Paystack `transaction/verify` and syncs the status. Renders
    success / failed / pending states with a link back to `/app/finance`.
 6. History `GET /v1/payments/history` (own rows; webhook keeps them fresh).
-7. The invoices card, "Balance: â‚¦0" badge and receipt buttons remain
-   hard-coded/static.
+7. The page renders **real payment history** (KPIs: total paid / pending / count;
+   "Pay now" amount is user-editable). No hard-coded invoices or fabricated
+   scholarship claims.
 
 **Paystack dashboard setup:** webhook URL
 `https://cea-api.cyber-e54.workers.dev/v1/payments/webhook`; callback is

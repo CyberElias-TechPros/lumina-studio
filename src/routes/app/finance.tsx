@@ -1,8 +1,8 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import { useState } from "react";
 import {
   Banknote,
   CreditCard,
-  Download,
   Landmark,
   Loader2,
   Receipt,
@@ -12,6 +12,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
 import { QueryState } from "@/components/ui/query-state";
 import { AppShell } from "@/components/app/app-shell";
 import { useCreateCheckout, usePaymentHistory } from "@/lib/query/payments";
@@ -22,42 +23,11 @@ export const Route = createFileRoute("/app/finance")({
   head: () => ({
     meta: [
       { title: "Finance — CEA-OS" },
-      { name: "description", content: "Tuition, invoices, instalments and receipts." },
+      { name: "description", content: "Tuition payments and receipts." },
     ],
   }),
   component: StudentFinance,
 });
-
-const invoices = [
-  {
-    ref: "INV-2026-0142",
-    item: "Term 1 instalment",
-    amount: 140000,
-    status: "Paid",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    ref: "INV-2026-0814",
-    item: "Term 2 instalment",
-    amount: 140000,
-    status: "Paid",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    ref: "INV-2026-0911",
-    item: "Term 3 instalment",
-    amount: 140000,
-    status: "Due Sep 1",
-    tone: "bg-warning/10 text-warning",
-  },
-  {
-    ref: "INV-2026-0912",
-    item: "Laptop deposit (refundable)",
-    amount: 50000,
-    status: "Paid",
-    tone: "bg-success/10 text-success",
-  },
-];
 
 function paymentTone(status: Payment["status"]): string {
   if (status === "success") return "bg-success/10 text-success";
@@ -70,14 +40,16 @@ function StudentFinance() {
   const rows = query.data?.pages.flatMap((p) => p.items) ?? [];
   const paid = rows.filter((p) => p.status === "success");
   const paidTotal = paid.reduce((s, p) => s + p.amount, 0);
+  const pending = rows.filter((p) => p.status === "pending").length;
   const checkout = useCreateCheckout();
   const navigate = useNavigate();
+  const [amount, setAmount] = useState(140000);
 
   const handlePayNow = () => {
     checkout.mutate(
       {
-        amount: 140000,
-        description: "Term 3 instalment — INV-2026-0911",
+        amount,
+        description: "Tuition instalment",
         redirectUrl: `${window.location.origin}/app/finance/pay-verify`,
       },
       {
@@ -92,15 +64,47 @@ function StudentFinance() {
     );
   };
 
+  const kpis = [
+    {
+      label: "Total paid",
+      value: formatNaira(paidTotal),
+      delta: `${paid.length} successful ${paid.length === 1 ? "payment" : "payments"}`,
+      icon: Wallet,
+      tone: "bg-success/10 text-success",
+    },
+    {
+      label: "Pending",
+      value: String(pending),
+      delta: pending ? "Awaiting confirmation" : "All settled",
+      icon: Receipt,
+      tone: "bg-warning/10 text-warning",
+    },
+    {
+      label: "Payments",
+      value: String(rows.length),
+      delta: "All recorded",
+      icon: Banknote,
+      tone: "bg-primary/10 text-primary",
+    },
+  ];
+
   return (
     <AppShell
       roleKey="student"
       title="Finance"
-      subtitle="Tuition, invoices and receipts · Scholarship: Merit 50%"
+      subtitle="Your tuition payments and receipts"
       actions={
-        <>
-          <Badge className="bg-success/10 text-success border-0 font-semibold">Balance: ₦0</Badge>
-          <Button size="sm" onClick={handlePayNow} disabled={checkout.isPending}>
+        <div className="flex items-center gap-2">
+          <Input
+            type="number"
+            min={1}
+            max={10_000_000}
+            value={amount}
+            onChange={(e) => setAmount(Number(e.target.value))}
+            className="h-9 w-36 text-sm"
+            aria-label="Amount to pay"
+          />
+          <Button size="sm" onClick={handlePayNow} disabled={checkout.isPending || amount < 1}>
             {checkout.isPending ? (
               <Loader2 className="size-4 animate-spin" />
             ) : (
@@ -108,40 +112,11 @@ function StudentFinance() {
             )}
             {checkout.isPending ? "Opening Paystack…" : "Pay now"}
           </Button>
-        </>
+        </div>
       }
     >
-      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-        {[
-          {
-            label: "Balance due",
-            value: formatNaira(0),
-            delta: "All clear",
-            icon: Wallet,
-            tone: "bg-success/10 text-success",
-          },
-          {
-            label: "Next instalment",
-            value: formatNaira(140000),
-            delta: "Sep 1, 2026",
-            icon: Receipt,
-            tone: "bg-warning/10 text-warning",
-          },
-          {
-            label: "Paid this year",
-            value: formatNaira(paidTotal),
-            delta: `${paid.length} payments`,
-            icon: Banknote,
-            tone: "bg-primary/10 text-primary",
-          },
-          {
-            label: "Scholarship",
-            value: "50%",
-            delta: "Merit · renewed",
-            icon: ShieldCheck,
-            tone: "bg-learning/10 text-learning",
-          },
-        ].map((k) => (
+      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+        {kpis.map((k) => (
           <Card key={k.label} className="bg-card shadow-soft border">
             <CardContent className="p-5">
               <div className="flex items-center justify-between">
@@ -163,29 +138,41 @@ function StudentFinance() {
         <Card className="bg-card shadow-soft border">
           <CardHeader>
             <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
-              <Receipt className="text-primary size-4" /> Invoices
+              <Receipt className="text-primary size-4" /> Payments
             </CardTitle>
           </CardHeader>
-          <CardContent className="divide-y">
-            {invoices.map((i) => (
-              <div
-                key={i.ref}
-                className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
-              >
-                <span className="bg-muted text-muted-foreground grid size-9 shrink-0 place-items-center rounded-lg">
-                  <Receipt className="size-4" />
-                </span>
-                <div className="min-w-0 flex-1">
-                  <p className="text-sm font-bold">{i.item}</p>
-                  <p className="text-muted-foreground text-xs">{i.ref}</p>
+          <CardContent>
+            <QueryState<Payment[]>
+              query={query}
+              error={{ title: "Payments unavailable" }}
+              empty={{
+                title: "No payments yet",
+                description: "Your Paystack transactions will appear here.",
+              }}
+            >
+              {(payments) => (
+                <div className="divide-y">
+                  {payments.map((p) => (
+                    <div
+                      key={p.id}
+                      className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
+                    >
+                      <span className="bg-muted text-muted-foreground grid size-9 shrink-0 place-items-center rounded-lg">
+                        <Receipt className="size-4" />
+                      </span>
+                      <div className="min-w-0 flex-1">
+                        <p className="text-sm font-bold">{p.description || p.reference}</p>
+                        <p className="text-muted-foreground text-xs">{p.reference}</p>
+                      </div>
+                      <span className="text-sm font-extrabold">{formatNaira(p.amount)}</span>
+                      <Badge className={cn("border-0 font-semibold", paymentTone(p.status))}>
+                        {p.status}
+                      </Badge>
+                    </div>
+                  ))}
                 </div>
-                <span className="text-sm font-extrabold">{formatNaira(i.amount)}</span>
-                <Badge className={cn("border-0 font-semibold", i.tone)}>{i.status}</Badge>
-                <Button variant="ghost" size="sm" className="text-primary shrink-0 font-semibold">
-                  <Download className="size-3.5" /> Receipt
-                </Button>
-              </div>
-            ))}
+              )}
+            </QueryState>
           </CardContent>
         </Card>
 
@@ -239,8 +226,8 @@ function StudentFinance() {
               <ShieldCheck className="text-success size-5" />
               <p className="font-display mt-3 text-base font-extrabold">Financial aid</p>
               <p className="text-ink-foreground/70 mt-1 text-sm">
-                Your Merit 50% scholarship covers instalments 1–6. NGO partner funding tops up term
-                3.
+                Scholarships and instalment plans are reviewed by the admissions and finance teams.
+                Contact the finance office for the options available to you.
               </p>
             </CardContent>
           </Card>

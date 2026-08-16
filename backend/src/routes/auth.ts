@@ -47,17 +47,12 @@ const signInSchema = z.object({
 const signUpSchema = z.object({
   name: z.string().trim().min(2, "Name must be at least 2 characters."),
   email: z.string().trim().email("Enter a valid email address."),
-  password: z
-    .string()
-    .min(PASSWORD_MIN, `Password must be at least ${PASSWORD_MIN} characters.`),
-  roleKey: z.string().trim().optional().default("student"),
+  password: z.string().min(PASSWORD_MIN, `Password must be at least ${PASSWORD_MIN} characters.`),
 });
 
 const resetPasswordSchema = z.object({
   token: z.string().min(16, "Reset token is required."),
-  password: z
-    .string()
-    .min(PASSWORD_MIN, `Password must be at least ${PASSWORD_MIN} characters.`),
+  password: z.string().min(PASSWORD_MIN, `Password must be at least ${PASSWORD_MIN} characters.`),
 });
 
 const mfaCodeSchema = z.object({
@@ -76,18 +71,17 @@ function nameFromEmail(email: string): string {
 
 function deviceLabelFromUserAgent(ua: string | null): string {
   if (!ua) return "Unknown device";
-  const browser =
-    /edg\//i.test(ua)
-      ? "Edge"
-      : /firefox\//i.test(ua)
-        ? "Firefox"
-        : /chrome\//i.test(ua)
-          ? "Chrome"
-          : /safari\//i.test(ua)
-            ? "Safari"
-            : /curl|wget|fetch/i.test(ua)
-              ? "CLI"
-              : "Browser";
+  const browser = /edg\//i.test(ua)
+    ? "Edge"
+    : /firefox\//i.test(ua)
+      ? "Firefox"
+      : /chrome\//i.test(ua)
+        ? "Chrome"
+        : /safari\//i.test(ua)
+          ? "Safari"
+          : /curl|wget|fetch/i.test(ua)
+            ? "CLI"
+            : "Browser";
   const os = /windows/i.test(ua)
     ? "Windows"
     : /android/i.test(ua)
@@ -103,7 +97,11 @@ function deviceLabelFromUserAgent(ua: string | null): string {
 }
 
 function clientIp(c: Context): string {
-  return c.req.header("CF-Connecting-IP") ?? c.req.header("x-forwarded-for")?.split(",")[0]?.trim() ?? "unknown";
+  return (
+    c.req.header("CF-Connecting-IP") ??
+    c.req.header("x-forwarded-for")?.split(",")[0]?.trim() ??
+    "unknown"
+  );
 }
 
 interface SessionUserRow {
@@ -117,12 +115,12 @@ interface SessionUserRow {
 async function createSession(
   c: Context,
   user: SessionUserRow,
-  opts: { mfaPending?: boolean; rawToken?: string } = {},
+  opts: { mfaPending?: boolean; rawToken?: string; remember?: boolean } = {},
 ): Promise<{ token: string; expiresAt: string; user: AuthUser }> {
   const token = opts.rawToken ?? randomToken(32);
   const tokenHash = await sha256Hex(token);
   const now = isoNow();
-  const expiresAt = isoInDays(SESSION_TTL_DAYS);
+  const expiresAt = opts.remember === false ? isoInMinutes(60 * 24) : isoInDays(SESSION_TTL_DAYS);
   await c.env.DB.prepare(
     `INSERT INTO sessions (id, user_id, token_hash, created_at, expires_at, device_label, created_ip, mfa_pending)
      VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
@@ -218,10 +216,14 @@ auth.get("/magic-link/verify", async (c) => {
 
   const email = normalizeEmail(link.email);
   const existing = await c.env.DB.prepare(
-    `SELECT id, name, email, avatar_url, role_key, email_verified_at FROM users WHERE email = ?`,
+    `SELECT id, name, email, avatar_url, role_key, status, email_verified_at FROM users WHERE email = ?`,
   )
     .bind(email)
-    .first<SessionUserRow & { email_verified_at: string | null }>();
+    .first<SessionUserRow & { status: string; email_verified_at: string | null }>();
+
+  if (existing && existing.status !== "active") {
+    throw new ApiError(403, "FORBIDDEN", "This account has been suspended.");
+  }
 
   const userId = existing?.id ?? crypto.randomUUID();
   if (!existing) {
@@ -237,7 +239,11 @@ auth.get("/magic-link/verify", async (c) => {
       .run();
   }
 
-  const { token: sessionToken, expiresAt, user } = await createSession(c, {
+  const {
+    token: sessionToken,
+    expiresAt,
+    user,
+  } = await createSession(c, {
     id: userId,
     name: existing?.name ?? nameFromEmail(email),
     email,
@@ -340,6 +346,7 @@ auth.post("/sign-in", async (c) => {
 
   const { expiresAt, user } = await createSession(c, row, {
     mfaPending: row.mfa_enabled === 1,
+    remember: body.remember,
   });
   if (row.mfa_enabled === 1) {
     return c.json({ mfaRequired: true, expiresAt });
@@ -383,7 +390,10 @@ auth.post("/reset-password", async (c) => {
   const { token, password } = await parseBody(c, resetPasswordSchema);
   const tokenHash = await sha256Hex(token);
   const tokenHashId = await hashIdentifier(token);
-  await rateLimit(c.env.RATE_LIMIT, "reset-password", tokenHashId, { limit: 5, windowSeconds: 600 });
+  await rateLimit(c.env.RATE_LIMIT, "reset-password", tokenHashId, {
+    limit: 5,
+    windowSeconds: 600,
+  });
 
   const link = await c.env.DB.prepare(
     `SELECT id, email, expires_at, consumed_at FROM magic_links WHERE token_hash = ? AND kind = 'reset'`,
@@ -403,15 +413,15 @@ auth.post("/reset-password", async (c) => {
 
   const now = isoNow();
   const passwordHash = await hashPassword(password);
-  await c.env.DB.prepare(
-    `UPDATE users SET password_hash = ?, updated_at = ? WHERE id = ?`,
-  )
+  await c.env.DB.prepare(`UPDATE users SET password_hash = ?, updated_at = ? WHERE id = ?`)
     .bind(passwordHash, now, user.id)
     .run();
   await c.env.DB.prepare(`UPDATE magic_links SET consumed_at = ? WHERE id = ?`)
     .bind(now, link.id)
     .run();
-  await c.env.DB.prepare(`UPDATE sessions SET revoked_at = ? WHERE user_id = ? AND revoked_at IS NULL`)
+  await c.env.DB.prepare(
+    `UPDATE sessions SET revoked_at = ? WHERE user_id = ? AND revoked_at IS NULL`,
+  )
     .bind(now, user.id)
     .run();
   return c.json({ ok: true });
@@ -580,9 +590,7 @@ auth.post("/devices/:id/revoke", requireAuth, async (c) => {
   const user = c.get("authUser");
   const current = c.get("authSession").id;
   const id = c.req.param("id");
-  const row = await c.env.DB.prepare(
-    `SELECT id FROM sessions WHERE id = ? AND user_id = ?`,
-  )
+  const row = await c.env.DB.prepare(`SELECT id FROM sessions WHERE id = ? AND user_id = ?`)
     .bind(id, user.id)
     .first<{ id: string }>();
   if (!row) throw ApiError.notFound("Device not found.");
@@ -593,7 +601,9 @@ auth.post("/devices/:id/revoke", requireAuth, async (c) => {
   return c.json({ ok: true });
 });
 
-function getSessionTokenRaw(c: { req: { header: (name: string) => string | undefined } }): string | null {
+function getSessionTokenRaw(c: {
+  req: { header: (name: string) => string | undefined };
+}): string | null {
   const cookie = c.req.header("cookie");
   if (cookie) {
     for (const part of cookie.split(";")) {

@@ -100,7 +100,7 @@ function Chat() {
                       <span className="min-w-0 flex-1">
                         <span className="block truncate text-sm font-bold">{room.name}</span>
                         <span className="text-muted-foreground block text-[11px] font-semibold">
-                          {room.connected} online
+                          {room.kind === "live" ? "Live class" : "Chat room"}
                         </span>
                       </span>
                     </button>

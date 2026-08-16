@@ -23,12 +23,10 @@ describe("realtime chat rooms", () => {
       name: string;
       kind: string;
       createdAt: string;
-      connected: number;
     };
     expect(room).toMatchObject({
       name: "Cohort 15 — project sync",
       kind: "chat",
-      connected: 0,
     });
 
     const list = await api("/v1/realtime/chat/rooms", {
