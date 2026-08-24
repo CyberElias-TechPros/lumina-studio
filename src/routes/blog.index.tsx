@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+﻿import { useMemo, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { getPageHead } from "@/lib/seo";
 import { ArrowUpRight, Clock, Search } from "lucide-react";
@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { CTASection, PageHero, PageShell, SectionHeading } from "@/components/marketing/shell";
 import { Reveal, StaggerGroup, StaggerItem } from "@/components/motion";
 import { blogPosts, engineMap } from "@/data/site";
+import { readingTimeLabel } from "@/lib/blog-reading-time";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/blog/")({
@@ -48,7 +49,7 @@ function Blog() {
             Ideas from the <span className="text-gradient">engine room</span>
           </>
         }
-        description="Research, field notes and honest opinions from the people who run the academy — on hiring, learning, security and the Nigerian tech economy."
+        description="Research, field notes and honest opinions from the people who run the academy â€” on hiring, learning, security and the Nigerian tech economy."
       >
         <div className="mt-10 flex max-w-xl flex-col gap-4 sm:flex-row">
           <div className="relative flex-1">
@@ -56,7 +57,7 @@ function Blog() {
             <Input
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder="Search articles…"
+              placeholder="Search articlesâ€¦"
               className="bg-card h-12 border pl-11 shadow-sm"
             />
           </div>
@@ -77,7 +78,7 @@ function Blog() {
                   {featured.category}
                 </Badge>
                 <span className="text-ink-foreground/60 flex items-center gap-1.5 text-xs font-semibold">
-                  <Clock className="size-3.5" /> {featured.readingTime}
+                  <Clock className="size-3.5" /> {readingTimeLabel(featured.body)}
                 </span>
                 <span className="text-ink-foreground/60 text-xs font-semibold">
                   {featured.date}
@@ -144,7 +145,7 @@ function Blog() {
                       {p.category}
                     </Badge>
                     <span className="text-muted-foreground flex items-center gap-1.5 text-xs font-medium">
-                      <Clock className="size-3.5" /> {p.readingTime}
+                      <Clock className="size-3.5" /> {readingTimeLabel(p.body)}
                     </span>
                   </div>
                   <h3 className="font-display group-hover:text-primary mt-4 flex-1 text-lg leading-snug font-bold transition-colors">

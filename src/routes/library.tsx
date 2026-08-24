@@ -104,6 +104,38 @@ function LibraryPage() {
           </Reveal>
 
           <Reveal>
+            <div className="space-y-5 text-muted-foreground leading-relaxed">
+              <p>
+                The CEA digital library is how we practice what we teach: learning materials
+                organised like a real engineering knowledge base rather than a pile of downloads.
+                Everything here serves one of two audiences — prospective students deciding whether
+                our teaching style suits them, and enrolled learners accessing their full course
+                materials through their student account.
+              </p>
+              <p>
+                Public resources include the guides and templates our instructors reference in
+                class: career playbooks for each track, technical cheat sheets (Git commands, SQL
+                patterns, networking basics), portfolio and CV templates used in our career studio,
+                and glossaries that translate industry jargon into plain language. These stay free
+                permanently — they are also the same materials our blog articles draw from, so if a
+                post helped you, the deeper version lives here.
+              </p>
+              <p>
+                Protected content covers everything a registered student needs during their
+                programme: full module workbooks, lab exercises and datasets, project briefs with
+                grading rubrics, recorded session archives and assessment preparation packs. Access
+                is tied to active enrolment and revokes cleanly when programmes end — your
+                certificates and verification records remain yours regardless.
+              </p>
+              <p>
+                Looking for something specific? The search below indexes every public item by title
+                and description. If a resource you need is not listed, ask in the community —
+                instructor-curated requests regularly become new public entries.
+              </p>
+            </div>
+          </Reveal>
+
+          <Reveal>
             <div className="flex flex-wrap items-center justify-between gap-3">
               <SectionHeading
                 eyebrow="Browse"
@@ -145,8 +177,8 @@ function LibraryPage() {
                     Students & team members: full course library
                   </p>
                   <p className="text-ink-foreground/70 mt-0.5 text-sm">
-                    All 900+ course materials — agile, SQL, data analytics, project management and
-                    more — unlock when you sign in.
+                    Full course materials — module workbooks, lab exercises, datasets and recorded
+                    sessions — unlock when you sign in as a registered student or team member.
                   </p>
                 </div>
                 <Button variant="secondary" className="font-semibold" asChild>

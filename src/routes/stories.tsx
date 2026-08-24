@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, ArrowUpRight, Quote } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { PageShell, PageHero, CTASection } from "@/components/marketing/shell";
+import { PageShell, PageHero, CTASection, SectionHeading } from "@/components/marketing/shell";
 import { Reveal } from "@/components/motion";
 import { getPageHead } from "@/lib/seo";
 
@@ -52,6 +52,45 @@ function StoriesPage() {
                 Read our insights <ArrowUpRight className="ml-1.5 size-4" />
               </Link>
             </Button>
+          </div>
+        </div>
+      </section>
+
+      <section className="border-b">
+        <div className="container-page max-w-3xl pb-20">
+          <SectionHeading
+            eyebrow="Editorial standard"
+            title="What a CEA story looks like"
+            description="Our commitment for every story this page will ever publish."
+          />
+          <div className="mt-8 space-y-5 text-muted-foreground leading-relaxed">
+            <p>
+              Most academy websites publish success stories that read like advertising: flawless
+              journeys, improbable salaries, stock-photo smiles. We have all learned to scroll past
+              them. Our story series is built against that cynicism with an editorial standard we
+              are stating publicly before a single story exists.
+            </p>
+            <p>
+              Every story published here will follow the same shape. The starting point: where this
+              person actually was before CEA — including false starts, gaps and non-traditional
+              paths, told in their own words. The work: what the programme genuinely demanded of
+              them, which weeks were hard, what nearly made them quit. The evidence: real artifacts
+              — their capstone project, their portfolio, their GitHub — linked so you can judge
+              rather than trust. The outcome: stated plainly, whether that is a job offer, a
+              freelance client, or simply honest progress toward one.
+            </p>
+            <p>
+              Nothing gets published without written consent from the graduate it belongs to, and
+              nobody will ever be pressured to share figures they prefer to keep private. Where
+              numbers appear (salaries, timelines), they come from the person themselves, not our
+              marketing team's enthusiasm.
+            </p>
+            <p>
+              In the meantime, the closest thing to student experience we can honestly offer today
+              is our writing: the insights on our blog are drawn from what we see teaching, building
+              CEA-OS and working with employers daily. Start there — then check back as the first
+              cohort writes the rest.
+            </p>
           </div>
         </div>
       </section>

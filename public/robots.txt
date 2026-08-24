@@ -23,4 +23,4 @@ Allow: /
 Disallow: /app/
 Disallow: /auth/
 
-Sitemap: https://cea.ng/sitemap/xml
+Sitemap: https://cea.ng/sitemap.xml

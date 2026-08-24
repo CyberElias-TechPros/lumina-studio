@@ -6,6 +6,7 @@ import { CTASection, PageShell } from "@/components/marketing/shell";
 import { Reveal } from "@/components/motion";
 import { blogPosts, engineMap } from "@/data/site";
 import { getPageHead } from "@/lib/seo";
+import { readingTimeLabel } from "@/lib/blog-reading-time";
 
 export const Route = createFileRoute("/blog/$slug")({
   head: ({ params }) => {
@@ -89,7 +90,7 @@ function Article() {
                 <CalendarDays className="size-3.5" /> {post.date}
               </span>
               <span className="flex items-center gap-1.5">
-                <Clock className="size-3.5" /> {post.readingTime} read
+                <Clock className="size-3.5" /> {readingTimeLabel(post.body)} read
               </span>
             </div>
           </div>
@@ -127,7 +128,7 @@ function Article() {
                   {p.title}
                 </h3>
                 <span className="text-muted-foreground mt-4 flex items-center gap-1 text-xs font-medium">
-                  {p.author} · {p.readingTime}
+                  {p.author} · {readingTimeLabel(p.body)}
                 </span>
               </Link>
             ))}

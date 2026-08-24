@@ -73,6 +73,17 @@ function VerifyPage() {
       <section className="container-page pb-20">
         <div className="mx-auto max-w-2xl">
           <Reveal>
+            <p className="text-muted-foreground mb-8 leading-relaxed text-pretty">
+              Every certificate issued by Cyber Elias Academy is recorded in the CEA-OS skills
+              ledger — the same system that tracks module completion, capstone grades and assessed
+              competencies during each student's programme. The verification code printed on your
+              physical and digital certificates is a direct lookup into that ledger: employers,
+              agencies or clients can confirm in seconds what the holder studied, what they were
+              assessed on and whether the credential is still current.
+            </p>
+          </Reveal>
+
+          <Reveal>
             <Card className="bg-card shadow-soft border">
               <CardContent className="p-6 sm:p-8">
                 <Label htmlFor="cert-code" className="flex items-center gap-2">
@@ -223,6 +234,33 @@ function VerifyPage() {
               ))}
             </div>
           </div>
+
+          <Reveal>
+            <div className="mt-14 space-y-5 text-muted-foreground leading-relaxed">
+              <p>
+                Why build a public verification system? Because credential fraud is widespread in
+                every market CEA operates in, and traditional certificate checks (emailing an
+                institution, waiting for a response) are slow and unreliable. A public lookup means
+                employers can verify credentials during their hiring process rather than after a
+                conditional offer — saving both sides time and catching fraud before it becomes a
+                legal issue.
+              </p>
+              <p>
+                The verification goes beyond 'real or fake'. Employers can see the specific
+                programme completed, the assessed skill level mapped to the OSKM framework, and
+                whether the credential is still current. Skills are re-verified on a two-year cycle
+                — graduates maintain active credentials by demonstrating continued competence
+                through the CEA-OS platform, so a certificate does not freeze someone's capabilities
+                at the moment of graduation.
+              </p>
+              <p>
+                If you are an employer reading this and would like a bulk verification API for your
+                hiring process, contact us. Several organisations in our partner network already use
+                a programmatic version of this verification system to screen applications before
+                interviews begin — it reduces the CV embellishment problem dramatically.
+              </p>
+            </div>
+          </Reveal>
         </div>
       </section>
 

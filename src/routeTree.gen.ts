@@ -102,7 +102,6 @@ import { Route as PortalVolunteerRouteImport } from './routes/portal/volunteer'
 import { Route as ProgramsIndexRouteImport } from './routes/programs.index'
 import { Route as ProgramsSlugRouteImport } from './routes/programs.$slug'
 import { Route as ProgramsCompareRouteImport } from './routes/programs/compare'
-import { Route as SitemapXmlRouteImport } from './routes/sitemap.xml'
 import { Route as VisitIndexRouteImport } from './routes/visit/index'
 import { Route as VisitBrochureRouteImport } from './routes/visit/brochure'
 import { Route as VisitFeedbackRouteImport } from './routes/visit/feedback'
@@ -857,11 +856,6 @@ const ProgramsSlugRoute = ProgramsSlugRouteImport.update({
 const ProgramsCompareRoute = ProgramsCompareRouteImport.update({
   id: '/programs/compare',
   path: '/programs/compare',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SitemapXmlRoute = SitemapXmlRouteImport.update({
-  id: '/sitemap/xml',
-  path: '/sitemap/xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 const VisitIndexRoute = VisitIndexRouteImport.update({
@@ -2468,7 +2462,6 @@ export interface FileRoutesByFullPath {
   '/portal/volunteer': typeof PortalVolunteerRoute
   '/programs/$slug': typeof ProgramsSlugRoute
   '/programs/compare': typeof ProgramsCompareRoute
-  '/sitemap/xml': typeof SitemapXmlRoute
   '/visit/brochure': typeof VisitBrochureRoute
   '/visit/feedback': typeof VisitFeedbackRoute
   '/visit/info': typeof VisitInfoRoute
@@ -2852,7 +2845,6 @@ export interface FileRoutesByTo {
   '/portal/volunteer': typeof PortalVolunteerRoute
   '/programs/$slug': typeof ProgramsSlugRoute
   '/programs/compare': typeof ProgramsCompareRoute
-  '/sitemap/xml': typeof SitemapXmlRoute
   '/visit/brochure': typeof VisitBrochureRoute
   '/visit/feedback': typeof VisitFeedbackRoute
   '/visit/info': typeof VisitInfoRoute
@@ -3238,7 +3230,6 @@ export interface FileRoutesById {
   '/portal/volunteer': typeof PortalVolunteerRoute
   '/programs/$slug': typeof ProgramsSlugRoute
   '/programs/compare': typeof ProgramsCompareRoute
-  '/sitemap/xml': typeof SitemapXmlRoute
   '/visit/brochure': typeof VisitBrochureRoute
   '/visit/feedback': typeof VisitFeedbackRoute
   '/visit/info': typeof VisitInfoRoute
@@ -3625,7 +3616,6 @@ export interface FileRouteTypes {
     | '/portal/volunteer'
     | '/programs/$slug'
     | '/programs/compare'
-    | '/sitemap/xml'
     | '/visit/brochure'
     | '/visit/feedback'
     | '/visit/info'
@@ -4009,7 +3999,6 @@ export interface FileRouteTypes {
     | '/portal/volunteer'
     | '/programs/$slug'
     | '/programs/compare'
-    | '/sitemap/xml'
     | '/visit/brochure'
     | '/visit/feedback'
     | '/visit/info'
@@ -4394,7 +4383,6 @@ export interface FileRouteTypes {
     | '/portal/volunteer'
     | '/programs/$slug'
     | '/programs/compare'
-    | '/sitemap/xml'
     | '/visit/brochure'
     | '/visit/feedback'
     | '/visit/info'
@@ -4780,7 +4768,6 @@ export interface RootRouteChildren {
   PortalVolunteerRoute: typeof PortalVolunteerRoute
   ProgramsSlugRoute: typeof ProgramsSlugRoute
   ProgramsCompareRoute: typeof ProgramsCompareRoute
-  SitemapXmlRoute: typeof SitemapXmlRoute
   VisitBrochureRoute: typeof VisitBrochureRoute
   VisitFeedbackRoute: typeof VisitFeedbackRoute
   VisitInfoRoute: typeof VisitInfoRoute
@@ -5712,13 +5699,6 @@ declare module '@tanstack/react-router' {
       path: '/programs/compare'
       fullPath: '/programs/compare'
       preLoaderRoute: typeof ProgramsCompareRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/sitemap/xml': {
-      id: '/sitemap/xml'
-      path: '/sitemap/xml'
-      fullPath: '/sitemap/xml'
-      preLoaderRoute: typeof SitemapXmlRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/visit/': {
@@ -7980,7 +7960,6 @@ const rootRouteChildren: RootRouteChildren = {
   PortalVolunteerRoute: PortalVolunteerRoute,
   ProgramsSlugRoute: ProgramsSlugRoute,
   ProgramsCompareRoute: ProgramsCompareRoute,
-  SitemapXmlRoute: SitemapXmlRoute,
   VisitBrochureRoute: VisitBrochureRoute,
   VisitFeedbackRoute: VisitFeedbackRoute,
   VisitInfoRoute: VisitInfoRoute,

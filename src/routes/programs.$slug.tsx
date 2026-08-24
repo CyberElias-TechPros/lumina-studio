@@ -14,6 +14,12 @@ import {
   Users,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { CTASection, PageHero, PageShell, SectionHeading } from "@/components/marketing/shell";
 import { ProgramArt } from "@/components/art/program-art";
@@ -45,11 +51,20 @@ export const Route = createFileRoute("/programs/$slug")({
         courseWorkload: program.duration,
       },
     };
+    const faqSchema = {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: program.faqs.map((f) => ({
+        "@type": "Question",
+        name: f.q,
+        acceptedAnswer: { "@type": "Answer", text: f.a },
+      })),
+    };
     return getPageHead({
       title: program.title,
       description: program.blurb,
       path: `/programs/${program.slug}`,
-      structuredData: courseSchema,
+      structuredData: [courseSchema, faqSchema],
     });
   },
   component: ProgramDetail,
@@ -186,6 +201,25 @@ function ProgramDetail() {
       </section>
 
       <section className="border-b">
+        <div className="container-page max-w-3xl py-16 md:py-20">
+          <Reveal>
+            <SectionHeading
+              eyebrow="About this programme"
+              title="How it works"
+              description="What you'll learn, how you'll learn it, and where it leads."
+            />
+            <div className="mt-8 space-y-5">
+              {program.about.map((para, i) => (
+                <Reveal key={i} delay={i * 0.04}>
+                  <p className="text-muted-foreground leading-relaxed text-pretty">{para}</p>
+                </Reveal>
+              ))}
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      <section className="border-b">
         <div className="container-page py-20 md:py-24">
           <SectionHeading
             eyebrow="Outcomes"
@@ -270,6 +304,30 @@ function ProgramDetail() {
               </div>
             </Reveal>
           </div>
+        </div>
+      </section>
+
+      <section className="border-b">
+        <div className="container-page max-w-3xl py-16 md:py-20">
+          <Reveal>
+            <SectionHeading
+              eyebrow="Questions"
+              title="Programme FAQ"
+              description="The things prospective students ask us most about this track."
+            />
+            <Accordion type="single" collapsible className="mt-8">
+              {program.faqs.map((f, i) => (
+                <AccordionItem key={i} value={`faq-${i}`}>
+                  <AccordionTrigger className="text-left text-sm font-bold sm:text-base">
+                    {f.q}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-muted-foreground leading-relaxed">
+                    {f.a}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </Reveal>
         </div>
       </section>
 
