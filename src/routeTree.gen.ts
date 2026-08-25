@@ -20,7 +20,6 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as EnginesRouteImport } from './routes/engines'
 import { Route as EventsRouteImport } from './routes/events'
 import { Route as FaqRouteImport } from './routes/faq'
-import { Route as LibraryRouteImport } from './routes/library'
 import { Route as MarketplaceRouteImport } from './routes/marketplace'
 import { Route as PartnersRouteImport } from './routes/partners'
 import { Route as PricingRouteImport } from './routes/pricing'
@@ -59,6 +58,7 @@ import { Route as AuthVerifyEmailRouteImport } from './routes/auth.verify-email'
 import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 import { Route as CertificatesVerifyRouteImport } from './routes/certificates.verify'
+import { Route as LibraryIndexRouteImport } from './routes/library.index'
 import { Route as LibraryCategoryRouteImport } from './routes/library.$category'
 import { Route as PortalIndexRouteImport } from './routes/portal/index'
 import { Route as PortalAcademicBoardRouteImport } from './routes/portal/academic-board'
@@ -448,11 +448,6 @@ const FaqRoute = FaqRouteImport.update({
   path: '/faq',
   getParentRoute: () => rootRouteImport,
 } as any)
-const LibraryRoute = LibraryRouteImport.update({
-  id: '/library',
-  path: '/library',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const MarketplaceRoute = MarketplaceRouteImport.update({
   id: '/marketplace',
   path: '/marketplace',
@@ -641,6 +636,11 @@ const BlogSlugRoute = BlogSlugRouteImport.update({
 const CertificatesVerifyRoute = CertificatesVerifyRouteImport.update({
   id: '/certificates/verify',
   path: '/certificates/verify',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LibraryIndexRoute = LibraryIndexRouteImport.update({
+  id: '/library/',
+  path: '/library/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LibraryCategoryRoute = LibraryCategoryRouteImport.update({
@@ -2391,7 +2391,6 @@ export interface FileRoutesByFullPath {
   '/engines': typeof EnginesRoute
   '/events': typeof EventsRoute
   '/faq': typeof FaqRoute
-  '/library': typeof LibraryRouteWithChildren
   '/marketplace': typeof MarketplaceRoute
   '/partners': typeof PartnersRoute
   '/pricing': typeof PricingRoute
@@ -2475,6 +2474,7 @@ export interface FileRoutesByFullPath {
   '/app/': typeof AppIndexRoute
   '/apply/': typeof ApplyIndexRoute
   '/blog/': typeof BlogIndexRoute
+  '/library/': typeof LibraryIndexRoute
   '/portal/': typeof PortalIndexRoute
   '/programs/': typeof ProgramsIndexRoute
   '/visit/': typeof VisitIndexRoute
@@ -2776,7 +2776,6 @@ export interface FileRoutesByTo {
   '/engines': typeof EnginesRoute
   '/events': typeof EventsRoute
   '/faq': typeof FaqRoute
-  '/library': typeof LibraryRouteWithChildren
   '/marketplace': typeof MarketplaceRoute
   '/partners': typeof PartnersRoute
   '/pricing': typeof PricingRoute
@@ -2859,6 +2858,7 @@ export interface FileRoutesByTo {
   '/app': typeof AppIndexRoute
   '/apply': typeof ApplyIndexRoute
   '/blog': typeof BlogIndexRoute
+  '/library': typeof LibraryIndexRoute
   '/portal': typeof PortalIndexRoute
   '/programs': typeof ProgramsIndexRoute
   '/visit': typeof VisitIndexRoute
@@ -3161,7 +3161,6 @@ export interface FileRoutesById {
   '/engines': typeof EnginesRoute
   '/events': typeof EventsRoute
   '/faq': typeof FaqRoute
-  '/library': typeof LibraryRouteWithChildren
   '/marketplace': typeof MarketplaceRoute
   '/partners': typeof PartnersRoute
   '/pricing': typeof PricingRoute
@@ -3245,6 +3244,7 @@ export interface FileRoutesById {
   '/app/': typeof AppIndexRoute
   '/apply/': typeof ApplyIndexRoute
   '/blog/': typeof BlogIndexRoute
+  '/library/': typeof LibraryIndexRoute
   '/portal/': typeof PortalIndexRoute
   '/programs/': typeof ProgramsIndexRoute
   '/visit/': typeof VisitIndexRoute
@@ -3548,7 +3548,6 @@ export interface FileRouteTypes {
     | '/engines'
     | '/events'
     | '/faq'
-    | '/library'
     | '/marketplace'
     | '/partners'
     | '/pricing'
@@ -3632,6 +3631,7 @@ export interface FileRouteTypes {
     | '/app/'
     | '/apply/'
     | '/blog/'
+    | '/library/'
     | '/portal/'
     | '/programs/'
     | '/visit/'
@@ -3933,7 +3933,6 @@ export interface FileRouteTypes {
     | '/engines'
     | '/events'
     | '/faq'
-    | '/library'
     | '/marketplace'
     | '/partners'
     | '/pricing'
@@ -4016,6 +4015,7 @@ export interface FileRouteTypes {
     | '/app'
     | '/apply'
     | '/blog'
+    | '/library'
     | '/portal'
     | '/programs'
     | '/visit'
@@ -4317,7 +4317,6 @@ export interface FileRouteTypes {
     | '/engines'
     | '/events'
     | '/faq'
-    | '/library'
     | '/marketplace'
     | '/partners'
     | '/pricing'
@@ -4401,6 +4400,7 @@ export interface FileRouteTypes {
     | '/app/'
     | '/apply/'
     | '/blog/'
+    | '/library/'
     | '/portal/'
     | '/programs/'
     | '/visit/'
@@ -4703,7 +4703,6 @@ export interface RootRouteChildren {
   EnginesRoute: typeof EnginesRoute
   EventsRoute: typeof EventsRoute
   FaqRoute: typeof FaqRoute
-  LibraryRoute: typeof LibraryRouteWithChildren
   MarketplaceRoute: typeof MarketplaceRoute
   PartnersRoute: typeof PartnersRoute
   PricingRoute: typeof PricingRoute
@@ -4786,6 +4785,7 @@ export interface RootRouteChildren {
   AppIndexRoute: typeof AppIndexRoute
   ApplyIndexRoute: typeof ApplyIndexRoute
   BlogIndexRoute: typeof BlogIndexRoute
+  LibraryIndexRoute: typeof LibraryIndexRoute
   PortalIndexRoute: typeof PortalIndexRoute
   ProgramsIndexRoute: typeof ProgramsIndexRoute
   VisitIndexRoute: typeof VisitIndexRoute
@@ -5139,13 +5139,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FaqRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/library': {
-      id: '/library'
-      path: '/library'
-      fullPath: '/library'
-      preLoaderRoute: typeof LibraryRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/marketplace': {
       id: '/marketplace'
       path: '/marketplace'
@@ -5410,6 +5403,13 @@ declare module '@tanstack/react-router' {
       path: '/certificates/verify'
       fullPath: '/certificates/verify'
       preLoaderRoute: typeof CertificatesVerifyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/library/': {
+      id: '/library/'
+      path: '/library'
+      fullPath: '/library/'
+      preLoaderRoute: typeof LibraryIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/library/$category': {
@@ -7746,17 +7746,6 @@ declare module '@tanstack/react-router' {
   }
 }
 
-interface LibraryRouteChildren {
-  LibraryCategoryRoute: typeof LibraryCategoryRoute
-}
-
-const LibraryRouteChildren: LibraryRouteChildren = {
-  LibraryCategoryRoute: LibraryCategoryRoute,
-}
-
-const LibraryRouteWithChildren =
-  LibraryRoute._addFileChildren(LibraryRouteChildren)
-
 interface AppFinanceRouteChildren {
   AppFinancePayVerifyRoute: typeof AppFinancePayVerifyRoute
 }
@@ -7913,7 +7902,6 @@ const rootRouteChildren: RootRouteChildren = {
   EnginesRoute: EnginesRoute,
   EventsRoute: EventsRoute,
   FaqRoute: FaqRoute,
-  LibraryRoute: LibraryRouteWithChildren,
   MarketplaceRoute: MarketplaceRoute,
   PartnersRoute: PartnersRoute,
   PricingRoute: PricingRoute,
@@ -7996,6 +7984,7 @@ const rootRouteChildren: RootRouteChildren = {
   AppIndexRoute: AppIndexRoute,
   ApplyIndexRoute: ApplyIndexRoute,
   BlogIndexRoute: BlogIndexRoute,
+  LibraryIndexRoute: LibraryIndexRoute,
   PortalIndexRoute: PortalIndexRoute,
   ProgramsIndexRoute: ProgramsIndexRoute,
   VisitIndexRoute: VisitIndexRoute,
