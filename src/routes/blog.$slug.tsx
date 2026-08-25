@@ -4,6 +4,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { CTASection, PageShell } from "@/components/marketing/shell";
 import { Reveal } from "@/components/motion";
+import { GlossaryLinkedText } from "@/components/glossary-linked-text";
+import { RelatedContent } from "@/components/related-content";
+import { ContentFreshness } from "@/components/content-freshness";
 import { blogPosts, engineMap } from "@/data/site";
 import { getPageHead } from "@/lib/seo";
 import { readingTimeLabel } from "@/lib/blog-reading-time";
@@ -102,11 +105,20 @@ function Article() {
               {post.excerpt}
             </p>
           </Reveal>
-          {post.body.map((para, i) => (
-            <Reveal key={i} delay={0.03}>
-              <p className="leading-relaxed text-pretty">{para}</p>
-            </Reveal>
-          ))}
+          <GlossaryLinkedText
+            paragraphs={post.body}
+            className="space-y-6"
+            maxLinksPerParagraph={3}
+          />
+          <ContentFreshness
+            lastReviewed={post.date}
+            author={post.author}
+            className="mt-8 pt-6 border-t"
+          />
+        </div>
+
+        <div className="mt-12">
+          <RelatedContent currentSlug={post.slug} currentType="blog" maxItems={4} />
         </div>
       </article>
 

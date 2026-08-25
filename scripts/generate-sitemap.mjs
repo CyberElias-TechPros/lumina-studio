@@ -14,6 +14,7 @@ const staticRoutes = [
   ["/alumni", "monthly", "0.7"],
   ["/apply", "weekly", "0.9"],
   ["/blog", "weekly", "0.8"],
+  ["/career-guides", "monthly", "0.7"],
   ["/careers", "monthly", "0.7"],
   ["/certificates/verify", "monthly", "0.6"],
   ["/community", "monthly", "0.7"],
@@ -21,12 +22,14 @@ const staticRoutes = [
   ["/engines", "weekly", "0.8"],
   ["/events", "weekly", "0.7"],
   ["/faq", "monthly", "0.8"],
+  ["/glossary", "weekly", "0.7"],
   ["/library", "weekly", "0.7"],
   ["/marketplace", "daily", "0.7"],
   ["/pricing", "monthly", "0.8"],
   ["/privacy", "yearly", "0.4"],
   ["/programs", "weekly", "0.9"],
   ["/programs/compare", "monthly", "0.8"],
+  ["/resources", "weekly", "0.7"],
   ["/scholarships", "monthly", "0.8"],
   ["/services", "weekly", "0.8"],
   ["/stories", "monthly", "0.7"],
@@ -69,6 +72,16 @@ const blogSlugs = [
   ]),
 ];
 
+// Glossary term slugs from the build-time glossary data.
+let glossarySlugs = [];
+try {
+  const gl = readFileSync(join(root, "src/data/glossary.ts"), "utf8");
+  const matches = [...gl.matchAll(/slug:\s*"([a-z0-9-]+)"/g)];
+  glossarySlugs = matches.map((m) => m[1]);
+} catch {
+  console.warn("glossary.ts not loadable; sitemap will omit glossary terms");
+}
+
 // Library collection slugs from the build-time catalog snapshot.
 let librarySlugs = [];
 try {
@@ -76,6 +89,47 @@ try {
   librarySlugs = (lib.categories ?? []).map((c) => c.slug);
 } catch {
   console.warn("library-catalog.json missing; sitemap will omit library categories");
+}
+
+// Career guide slugs from the build-time career guides data.
+let careerGuideSlugs = [];
+try {
+  const cg = readFileSync(join(root, "src/data/career-guides.ts"), "utf8");
+  const matches = [...cg.matchAll(/slug:\s*"([a-z0-9-]+)"/g)];
+  careerGuideSlugs = [...new Set(matches.map((m) => m[1]))];
+} catch {
+  console.warn("career-guides.ts not loadable; sitemap will omit career guides");
+}
+
+// Resource slugs from the build-time resources data.
+let resourceSlugs = [];
+try {
+  const rs = readFileSync(join(root, "src/data/resources.ts"), "utf8");
+  const matches = [...rs.matchAll(/slug:\s*"([a-z0-9-]+)"/g)];
+  resourceSlugs = [...new Set(matches.map((m) => m[1]))];
+} catch {
+  console.warn("resources.ts not loadable; sitemap will omit resources");
+}
+
+// Extract module titles from programs in site.ts and compute slugified slugs.
+const moduleUrls = [];
+try {
+  const siteSrc = readFileSync(join(root, "src/data/site.ts"), "utf8");
+  // Match each program block: slug: "...", ... modules: [ ... ]
+  const programRe = /slug:\s*"([a-z0-9-]+)"[\s\S]*?modules:\s*\[([^\]]*)\]/g;
+  let pm;
+  while ((pm = programRe.exec(siteSrc))) {
+    const pSlug = pm[1];
+    const moduleBlock = pm[2];
+    const titleMatches = [...moduleBlock.matchAll(/title:\s*"([^"]+)"/g)];
+    for (const tm of titleMatches) {
+      const title = tm[1];
+      const modSlug = title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+      moduleUrls.push({ pSlug, modSlug });
+    }
+  }
+} catch {
+  console.warn("Could not parse modules from site.ts");
 }
 
 const today = new Date().toISOString().slice(0, 10);
@@ -105,6 +159,30 @@ const urls = [
     changefreq: "weekly",
     priority: "0.6",
   })),
+  ...glossarySlugs.map((slug) => ({
+    loc: `${SITE_URL}/glossary/${slug}`,
+    lastmod: today,
+    changefreq: "monthly",
+    priority: "0.7",
+  })),
+  ...moduleUrls.map(({ pSlug, modSlug }) => ({
+    loc: `${SITE_URL}/programs/${pSlug}/${modSlug}`,
+    lastmod: today,
+    changefreq: "monthly",
+    priority: "0.8",
+  })),
+  ...careerGuideSlugs.map((slug) => ({
+    loc: `${SITE_URL}/career-guides/${slug}`,
+    lastmod: today,
+    changefreq: "monthly",
+    priority: "0.7",
+  })),
+  ...resourceSlugs.map((slug) => ({
+    loc: `${SITE_URL}/resources/${slug}`,
+    lastmod: today,
+    changefreq: "monthly",
+    priority: "0.7",
+  })),
 ];
 
 const xml = `<?xml version="1.0" encoding="UTF-8"?>
@@ -119,4 +197,4 @@ ${urls.map((u) => `  <url>
 `;
 
 writeFileSync(join(root, "public", "sitemap.xml"), xml);
-console.log(`sitemap.xml written: ${urls.length} URLs (${staticRoutes.length} static, ${programSlugs.length} programs, ${blogSlugs.length} posts, ${librarySlugs.length} library collections)`);
+console.log(`sitemap.xml written: ${urls.length} URLs (${staticRoutes.length} static, ${programSlugs.length} programs, ${blogSlugs.length} posts, ${librarySlugs.length} library collections, ${glossarySlugs.length} glossary terms, ${moduleUrls.length} module detail pages, ${careerGuideSlugs.length} career guides, ${resourceSlugs.length} resources)`);

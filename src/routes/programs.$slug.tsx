@@ -24,6 +24,9 @@ import { Button } from "@/components/ui/button";
 import { CTASection, PageHero, PageShell, SectionHeading } from "@/components/marketing/shell";
 import { ProgramArt } from "@/components/art/program-art";
 import { Reveal, StaggerGroup, StaggerItem, TiltCard } from "@/components/motion";
+import { GlossaryLinkedText } from "@/components/glossary-linked-text";
+import { RelatedContent } from "@/components/related-content";
+import { ContentFreshness } from "@/components/content-freshness";
 import { engineMap, formatNaira, programs } from "@/data/site";
 
 export const Route = createFileRoute("/programs/$slug")({
@@ -208,13 +211,12 @@ function ProgramDetail() {
               title="How it works"
               description="What you'll learn, how you'll learn it, and where it leads."
             />
-            <div className="mt-8 space-y-5">
-              {program.about.map((para, i) => (
-                <Reveal key={i} delay={i * 0.04}>
-                  <p className="text-muted-foreground leading-relaxed text-pretty">{para}</p>
-                </Reveal>
-              ))}
-            </div>
+            <GlossaryLinkedText
+              paragraphs={program.about}
+              className="text-muted-foreground mt-8 space-y-5"
+              maxLinksPerParagraph={4}
+            />
+            <ContentFreshness lastReviewed="August 2025" author="CEA Admissions" className="mt-6" />
           </Reveal>
         </div>
       </section>
@@ -329,6 +331,10 @@ function ProgramDetail() {
             </Accordion>
           </Reveal>
         </div>
+      </section>
+
+      <section className="container-page py-12">
+        <RelatedContent currentSlug={program.slug} currentType="program" maxItems={6} />
       </section>
 
       <section className="bg-muted/40 border-y py-20 md:py-24">

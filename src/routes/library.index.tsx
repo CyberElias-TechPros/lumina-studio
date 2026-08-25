@@ -22,7 +22,7 @@ import { cn } from "@/lib/utils";
 import { getPageHead } from "@/lib/seo";
 import { getLibraryCategories, libraryCatalogMeta } from "@/data/library-catalog";
 
-export const Route = createFileRoute("/library")({
+export const Route = createFileRoute("/library/")({
   head: () =>
     getPageHead({
       title: "Digital Library — free tech learning resources",

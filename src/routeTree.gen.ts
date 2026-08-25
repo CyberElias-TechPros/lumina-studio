@@ -14,16 +14,19 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as AccessibilityRouteImport } from './routes/accessibility'
 import { Route as AdmissionsRouteImport } from './routes/admissions'
 import { Route as AlumniRouteImport } from './routes/alumni'
+import { Route as CareerGuidesRouteImport } from './routes/career-guides'
 import { Route as CareersRouteImport } from './routes/careers'
 import { Route as CommunityRouteImport } from './routes/community'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as EnginesRouteImport } from './routes/engines'
 import { Route as EventsRouteImport } from './routes/events'
 import { Route as FaqRouteImport } from './routes/faq'
+import { Route as GlossaryRouteImport } from './routes/glossary'
 import { Route as MarketplaceRouteImport } from './routes/marketplace'
 import { Route as PartnersRouteImport } from './routes/partners'
 import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as ResourcesRouteImport } from './routes/resources'
 import { Route as ScholarshipsRouteImport } from './routes/scholarships'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as StoriesRouteImport } from './routes/stories'
@@ -57,7 +60,9 @@ import { Route as AuthSignUpRouteImport } from './routes/auth.sign-up'
 import { Route as AuthVerifyEmailRouteImport } from './routes/auth.verify-email'
 import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
+import { Route as CareerGuidesSlugRouteImport } from './routes/career-guides.$slug'
 import { Route as CertificatesVerifyRouteImport } from './routes/certificates.verify'
+import { Route as GlossarySlugRouteImport } from './routes/glossary.$slug'
 import { Route as LibraryIndexRouteImport } from './routes/library.index'
 import { Route as LibraryCategoryRouteImport } from './routes/library.$category'
 import { Route as PortalIndexRouteImport } from './routes/portal/index'
@@ -103,6 +108,7 @@ import { Route as PortalVolunteerRouteImport } from './routes/portal/volunteer'
 import { Route as ProgramsIndexRouteImport } from './routes/programs.index'
 import { Route as ProgramsSlugRouteImport } from './routes/programs.$slug'
 import { Route as ProgramsCompareRouteImport } from './routes/programs/compare'
+import { Route as ResourcesSlugRouteImport } from './routes/resources.$slug'
 import { Route as VisitIndexRouteImport } from './routes/visit/index'
 import { Route as VisitBrochureRouteImport } from './routes/visit/brochure'
 import { Route as VisitFeedbackRouteImport } from './routes/visit/feedback'
@@ -366,6 +372,7 @@ import { Route as AppVolunteerMyVolunteeringRouteImport } from './routes/app/vol
 import { Route as AppVolunteerOpportunitiesRouteImport } from './routes/app/volunteer/opportunities'
 import { Route as ApplyStatusIndexRouteImport } from './routes/apply/status/index'
 import { Route as ApplyStatusIdRouteImport } from './routes/apply/status/$id'
+import { Route as ProgramsSlugModuleRouteImport } from './routes/programs.$slug.$module'
 import { Route as AppAdmissionsApplicationsIdRouteImport } from './routes/app/admissions/applications/$id'
 import { Route as AppAssessmentsAssessmentIdTakeRouteImport } from './routes/app/assessments/$assessmentId/take'
 import { Route as AppClientProjectsProjectIdRouteImport } from './routes/app/client/projects/$projectId'
@@ -418,6 +425,11 @@ const AlumniRoute = AlumniRouteImport.update({
   path: '/alumni',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CareerGuidesRoute = CareerGuidesRouteImport.update({
+  id: '/career-guides',
+  path: '/career-guides',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CareersRoute = CareersRouteImport.update({
   id: '/careers',
   path: '/careers',
@@ -448,6 +460,11 @@ const FaqRoute = FaqRouteImport.update({
   path: '/faq',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GlossaryRoute = GlossaryRouteImport.update({
+  id: '/glossary',
+  path: '/glossary',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const MarketplaceRoute = MarketplaceRouteImport.update({
   id: '/marketplace',
   path: '/marketplace',
@@ -466,6 +483,11 @@ const PricingRoute = PricingRouteImport.update({
 const PrivacyRoute = PrivacyRouteImport.update({
   id: '/privacy',
   path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResourcesRoute = ResourcesRouteImport.update({
+  id: '/resources',
+  path: '/resources',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ScholarshipsRoute = ScholarshipsRouteImport.update({
@@ -633,10 +655,20 @@ const BlogSlugRoute = BlogSlugRouteImport.update({
   path: '/blog/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CareerGuidesSlugRoute = CareerGuidesSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => CareerGuidesRoute,
+} as any)
 const CertificatesVerifyRoute = CertificatesVerifyRouteImport.update({
   id: '/certificates/verify',
   path: '/certificates/verify',
   getParentRoute: () => rootRouteImport,
+} as any)
+const GlossarySlugRoute = GlossarySlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => GlossaryRoute,
 } as any)
 const LibraryIndexRoute = LibraryIndexRouteImport.update({
   id: '/library/',
@@ -863,6 +895,11 @@ const ProgramsCompareRoute = ProgramsCompareRouteImport.update({
   id: '/programs/compare',
   path: '/programs/compare',
   getParentRoute: () => rootRouteImport,
+} as any)
+const ResourcesSlugRoute = ResourcesSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => ResourcesRoute,
 } as any)
 const VisitIndexRoute = VisitIndexRouteImport.update({
   id: '/visit/',
@@ -2223,6 +2260,11 @@ const ApplyStatusIdRoute = ApplyStatusIdRouteImport.update({
   path: '/$id',
   getParentRoute: () => ApplyStatusRoute,
 } as any)
+const ProgramsSlugModuleRoute = ProgramsSlugModuleRouteImport.update({
+  id: '/$module',
+  path: '/$module',
+  getParentRoute: () => ProgramsSlugRoute,
+} as any)
 const AppAdmissionsApplicationsIdRoute =
   AppAdmissionsApplicationsIdRouteImport.update({
     id: '/$id',
@@ -2385,16 +2427,19 @@ export interface FileRoutesByFullPath {
   '/accessibility': typeof AccessibilityRoute
   '/admissions': typeof AdmissionsRoute
   '/alumni': typeof AlumniRoute
+  '/career-guides': typeof CareerGuidesRouteWithChildren
   '/careers': typeof CareersRoute
   '/community': typeof CommunityRoute
   '/contact': typeof ContactRoute
   '/engines': typeof EnginesRoute
   '/events': typeof EventsRoute
   '/faq': typeof FaqRoute
+  '/glossary': typeof GlossaryRouteWithChildren
   '/marketplace': typeof MarketplaceRoute
   '/partners': typeof PartnersRoute
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
+  '/resources': typeof ResourcesRouteWithChildren
   '/scholarships': typeof ScholarshipsRoute
   '/services': typeof ServicesRoute
   '/stories': typeof StoriesRoute
@@ -2425,7 +2470,9 @@ export interface FileRoutesByFullPath {
   '/auth/sign-up': typeof AuthSignUpRoute
   '/auth/verify-email': typeof AuthVerifyEmailRoute
   '/blog/$slug': typeof BlogSlugRoute
+  '/career-guides/$slug': typeof CareerGuidesSlugRoute
   '/certificates/verify': typeof CertificatesVerifyRoute
+  '/glossary/$slug': typeof GlossarySlugRoute
   '/library/$category': typeof LibraryCategoryRoute
   '/portal/academic-board': typeof PortalAcademicBoardRoute
   '/portal/accountant': typeof PortalAccountantRoute
@@ -2466,8 +2513,9 @@ export interface FileRoutesByFullPath {
   '/portal/supplier': typeof PortalSupplierRoute
   '/portal/visual-designer': typeof PortalVisualDesignerRoute
   '/portal/volunteer': typeof PortalVolunteerRoute
-  '/programs/$slug': typeof ProgramsSlugRoute
+  '/programs/$slug': typeof ProgramsSlugRouteWithChildren
   '/programs/compare': typeof ProgramsCompareRoute
+  '/resources/$slug': typeof ResourcesSlugRoute
   '/visit/brochure': typeof VisitBrochureRoute
   '/visit/feedback': typeof VisitFeedbackRoute
   '/visit/info': typeof VisitInfoRoute
@@ -2707,6 +2755,7 @@ export interface FileRoutesByFullPath {
   '/app/volunteer/my-volunteering': typeof AppVolunteerMyVolunteeringRoute
   '/app/volunteer/opportunities': typeof AppVolunteerOpportunitiesRoute
   '/apply/status/$id': typeof ApplyStatusIdRoute
+  '/programs/$slug/$module': typeof ProgramsSlugModuleRoute
   '/app/accountant/': typeof AppAccountantIndexRoute
   '/app/admin/': typeof AppAdminIndexRoute
   '/app/admissions/': typeof AppAdmissionsIndexRoute
@@ -2770,16 +2819,19 @@ export interface FileRoutesByTo {
   '/accessibility': typeof AccessibilityRoute
   '/admissions': typeof AdmissionsRoute
   '/alumni': typeof AlumniRoute
+  '/career-guides': typeof CareerGuidesRouteWithChildren
   '/careers': typeof CareersRoute
   '/community': typeof CommunityRoute
   '/contact': typeof ContactRoute
   '/engines': typeof EnginesRoute
   '/events': typeof EventsRoute
   '/faq': typeof FaqRoute
+  '/glossary': typeof GlossaryRouteWithChildren
   '/marketplace': typeof MarketplaceRoute
   '/partners': typeof PartnersRoute
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
+  '/resources': typeof ResourcesRouteWithChildren
   '/scholarships': typeof ScholarshipsRoute
   '/services': typeof ServicesRoute
   '/stories': typeof StoriesRoute
@@ -2809,7 +2861,9 @@ export interface FileRoutesByTo {
   '/auth/sign-up': typeof AuthSignUpRoute
   '/auth/verify-email': typeof AuthVerifyEmailRoute
   '/blog/$slug': typeof BlogSlugRoute
+  '/career-guides/$slug': typeof CareerGuidesSlugRoute
   '/certificates/verify': typeof CertificatesVerifyRoute
+  '/glossary/$slug': typeof GlossarySlugRoute
   '/library/$category': typeof LibraryCategoryRoute
   '/portal/academic-board': typeof PortalAcademicBoardRoute
   '/portal/accountant': typeof PortalAccountantRoute
@@ -2850,8 +2904,9 @@ export interface FileRoutesByTo {
   '/portal/supplier': typeof PortalSupplierRoute
   '/portal/visual-designer': typeof PortalVisualDesignerRoute
   '/portal/volunteer': typeof PortalVolunteerRoute
-  '/programs/$slug': typeof ProgramsSlugRoute
+  '/programs/$slug': typeof ProgramsSlugRouteWithChildren
   '/programs/compare': typeof ProgramsCompareRoute
+  '/resources/$slug': typeof ResourcesSlugRoute
   '/visit/brochure': typeof VisitBrochureRoute
   '/visit/feedback': typeof VisitFeedbackRoute
   '/visit/info': typeof VisitInfoRoute
@@ -3091,6 +3146,7 @@ export interface FileRoutesByTo {
   '/app/volunteer/my-volunteering': typeof AppVolunteerMyVolunteeringRoute
   '/app/volunteer/opportunities': typeof AppVolunteerOpportunitiesRoute
   '/apply/status/$id': typeof ApplyStatusIdRoute
+  '/programs/$slug/$module': typeof ProgramsSlugModuleRoute
   '/app/accountant': typeof AppAccountantIndexRoute
   '/app/admin': typeof AppAdminIndexRoute
   '/app/admissions': typeof AppAdmissionsIndexRoute
@@ -3155,16 +3211,19 @@ export interface FileRoutesById {
   '/accessibility': typeof AccessibilityRoute
   '/admissions': typeof AdmissionsRoute
   '/alumni': typeof AlumniRoute
+  '/career-guides': typeof CareerGuidesRouteWithChildren
   '/careers': typeof CareersRoute
   '/community': typeof CommunityRoute
   '/contact': typeof ContactRoute
   '/engines': typeof EnginesRoute
   '/events': typeof EventsRoute
   '/faq': typeof FaqRoute
+  '/glossary': typeof GlossaryRouteWithChildren
   '/marketplace': typeof MarketplaceRoute
   '/partners': typeof PartnersRoute
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
+  '/resources': typeof ResourcesRouteWithChildren
   '/scholarships': typeof ScholarshipsRoute
   '/services': typeof ServicesRoute
   '/stories': typeof StoriesRoute
@@ -3195,7 +3254,9 @@ export interface FileRoutesById {
   '/auth/sign-up': typeof AuthSignUpRoute
   '/auth/verify-email': typeof AuthVerifyEmailRoute
   '/blog/$slug': typeof BlogSlugRoute
+  '/career-guides/$slug': typeof CareerGuidesSlugRoute
   '/certificates/verify': typeof CertificatesVerifyRoute
+  '/glossary/$slug': typeof GlossarySlugRoute
   '/library/$category': typeof LibraryCategoryRoute
   '/portal/academic-board': typeof PortalAcademicBoardRoute
   '/portal/accountant': typeof PortalAccountantRoute
@@ -3236,8 +3297,9 @@ export interface FileRoutesById {
   '/portal/supplier': typeof PortalSupplierRoute
   '/portal/visual-designer': typeof PortalVisualDesignerRoute
   '/portal/volunteer': typeof PortalVolunteerRoute
-  '/programs/$slug': typeof ProgramsSlugRoute
+  '/programs/$slug': typeof ProgramsSlugRouteWithChildren
   '/programs/compare': typeof ProgramsCompareRoute
+  '/resources/$slug': typeof ResourcesSlugRoute
   '/visit/brochure': typeof VisitBrochureRoute
   '/visit/feedback': typeof VisitFeedbackRoute
   '/visit/info': typeof VisitInfoRoute
@@ -3477,6 +3539,7 @@ export interface FileRoutesById {
   '/app/volunteer/my-volunteering': typeof AppVolunteerMyVolunteeringRoute
   '/app/volunteer/opportunities': typeof AppVolunteerOpportunitiesRoute
   '/apply/status/$id': typeof ApplyStatusIdRoute
+  '/programs/$slug/$module': typeof ProgramsSlugModuleRoute
   '/app/accountant/': typeof AppAccountantIndexRoute
   '/app/admin/': typeof AppAdminIndexRoute
   '/app/admissions/': typeof AppAdmissionsIndexRoute
@@ -3542,16 +3605,19 @@ export interface FileRouteTypes {
     | '/accessibility'
     | '/admissions'
     | '/alumni'
+    | '/career-guides'
     | '/careers'
     | '/community'
     | '/contact'
     | '/engines'
     | '/events'
     | '/faq'
+    | '/glossary'
     | '/marketplace'
     | '/partners'
     | '/pricing'
     | '/privacy'
+    | '/resources'
     | '/scholarships'
     | '/services'
     | '/stories'
@@ -3582,7 +3648,9 @@ export interface FileRouteTypes {
     | '/auth/sign-up'
     | '/auth/verify-email'
     | '/blog/$slug'
+    | '/career-guides/$slug'
     | '/certificates/verify'
+    | '/glossary/$slug'
     | '/library/$category'
     | '/portal/academic-board'
     | '/portal/accountant'
@@ -3625,6 +3693,7 @@ export interface FileRouteTypes {
     | '/portal/volunteer'
     | '/programs/$slug'
     | '/programs/compare'
+    | '/resources/$slug'
     | '/visit/brochure'
     | '/visit/feedback'
     | '/visit/info'
@@ -3864,6 +3933,7 @@ export interface FileRouteTypes {
     | '/app/volunteer/my-volunteering'
     | '/app/volunteer/opportunities'
     | '/apply/status/$id'
+    | '/programs/$slug/$module'
     | '/app/accountant/'
     | '/app/admin/'
     | '/app/admissions/'
@@ -3927,16 +3997,19 @@ export interface FileRouteTypes {
     | '/accessibility'
     | '/admissions'
     | '/alumni'
+    | '/career-guides'
     | '/careers'
     | '/community'
     | '/contact'
     | '/engines'
     | '/events'
     | '/faq'
+    | '/glossary'
     | '/marketplace'
     | '/partners'
     | '/pricing'
     | '/privacy'
+    | '/resources'
     | '/scholarships'
     | '/services'
     | '/stories'
@@ -3966,7 +4039,9 @@ export interface FileRouteTypes {
     | '/auth/sign-up'
     | '/auth/verify-email'
     | '/blog/$slug'
+    | '/career-guides/$slug'
     | '/certificates/verify'
+    | '/glossary/$slug'
     | '/library/$category'
     | '/portal/academic-board'
     | '/portal/accountant'
@@ -4009,6 +4084,7 @@ export interface FileRouteTypes {
     | '/portal/volunteer'
     | '/programs/$slug'
     | '/programs/compare'
+    | '/resources/$slug'
     | '/visit/brochure'
     | '/visit/feedback'
     | '/visit/info'
@@ -4248,6 +4324,7 @@ export interface FileRouteTypes {
     | '/app/volunteer/my-volunteering'
     | '/app/volunteer/opportunities'
     | '/apply/status/$id'
+    | '/programs/$slug/$module'
     | '/app/accountant'
     | '/app/admin'
     | '/app/admissions'
@@ -4311,16 +4388,19 @@ export interface FileRouteTypes {
     | '/accessibility'
     | '/admissions'
     | '/alumni'
+    | '/career-guides'
     | '/careers'
     | '/community'
     | '/contact'
     | '/engines'
     | '/events'
     | '/faq'
+    | '/glossary'
     | '/marketplace'
     | '/partners'
     | '/pricing'
     | '/privacy'
+    | '/resources'
     | '/scholarships'
     | '/services'
     | '/stories'
@@ -4351,7 +4431,9 @@ export interface FileRouteTypes {
     | '/auth/sign-up'
     | '/auth/verify-email'
     | '/blog/$slug'
+    | '/career-guides/$slug'
     | '/certificates/verify'
+    | '/glossary/$slug'
     | '/library/$category'
     | '/portal/academic-board'
     | '/portal/accountant'
@@ -4394,6 +4476,7 @@ export interface FileRouteTypes {
     | '/portal/volunteer'
     | '/programs/$slug'
     | '/programs/compare'
+    | '/resources/$slug'
     | '/visit/brochure'
     | '/visit/feedback'
     | '/visit/info'
@@ -4633,6 +4716,7 @@ export interface FileRouteTypes {
     | '/app/volunteer/my-volunteering'
     | '/app/volunteer/opportunities'
     | '/apply/status/$id'
+    | '/programs/$slug/$module'
     | '/app/accountant/'
     | '/app/admin/'
     | '/app/admissions/'
@@ -4697,16 +4781,19 @@ export interface RootRouteChildren {
   AccessibilityRoute: typeof AccessibilityRoute
   AdmissionsRoute: typeof AdmissionsRoute
   AlumniRoute: typeof AlumniRoute
+  CareerGuidesRoute: typeof CareerGuidesRouteWithChildren
   CareersRoute: typeof CareersRoute
   CommunityRoute: typeof CommunityRoute
   ContactRoute: typeof ContactRoute
   EnginesRoute: typeof EnginesRoute
   EventsRoute: typeof EventsRoute
   FaqRoute: typeof FaqRoute
+  GlossaryRoute: typeof GlossaryRouteWithChildren
   MarketplaceRoute: typeof MarketplaceRoute
   PartnersRoute: typeof PartnersRoute
   PricingRoute: typeof PricingRoute
   PrivacyRoute: typeof PrivacyRoute
+  ResourcesRoute: typeof ResourcesRouteWithChildren
   ScholarshipsRoute: typeof ScholarshipsRoute
   ServicesRoute: typeof ServicesRoute
   StoriesRoute: typeof StoriesRoute
@@ -4777,7 +4864,7 @@ export interface RootRouteChildren {
   PortalSupplierRoute: typeof PortalSupplierRoute
   PortalVisualDesignerRoute: typeof PortalVisualDesignerRoute
   PortalVolunteerRoute: typeof PortalVolunteerRoute
-  ProgramsSlugRoute: typeof ProgramsSlugRoute
+  ProgramsSlugRoute: typeof ProgramsSlugRouteWithChildren
   ProgramsCompareRoute: typeof ProgramsCompareRoute
   VisitBrochureRoute: typeof VisitBrochureRoute
   VisitFeedbackRoute: typeof VisitFeedbackRoute
@@ -5097,6 +5184,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AlumniRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/career-guides': {
+      id: '/career-guides'
+      path: '/career-guides'
+      fullPath: '/career-guides'
+      preLoaderRoute: typeof CareerGuidesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/careers': {
       id: '/careers'
       path: '/careers'
@@ -5139,6 +5233,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FaqRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/glossary': {
+      id: '/glossary'
+      path: '/glossary'
+      fullPath: '/glossary'
+      preLoaderRoute: typeof GlossaryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/marketplace': {
       id: '/marketplace'
       path: '/marketplace'
@@ -5165,6 +5266,13 @@ declare module '@tanstack/react-router' {
       path: '/privacy'
       fullPath: '/privacy'
       preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/resources': {
+      id: '/resources'
+      path: '/resources'
+      fullPath: '/resources'
+      preLoaderRoute: typeof ResourcesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/scholarships': {
@@ -5398,12 +5506,26 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BlogSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/career-guides/$slug': {
+      id: '/career-guides/$slug'
+      path: '/$slug'
+      fullPath: '/career-guides/$slug'
+      preLoaderRoute: typeof CareerGuidesSlugRouteImport
+      parentRoute: typeof CareerGuidesRoute
+    }
     '/certificates/verify': {
       id: '/certificates/verify'
       path: '/certificates/verify'
       fullPath: '/certificates/verify'
       preLoaderRoute: typeof CertificatesVerifyRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/glossary/$slug': {
+      id: '/glossary/$slug'
+      path: '/$slug'
+      fullPath: '/glossary/$slug'
+      preLoaderRoute: typeof GlossarySlugRouteImport
+      parentRoute: typeof GlossaryRoute
     }
     '/library/': {
       id: '/library/'
@@ -5719,6 +5841,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/programs/compare'
       preLoaderRoute: typeof ProgramsCompareRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/resources/$slug': {
+      id: '/resources/$slug'
+      path: '/$slug'
+      fullPath: '/resources/$slug'
+      preLoaderRoute: typeof ResourcesSlugRouteImport
+      parentRoute: typeof ResourcesRoute
     }
     '/visit/': {
       id: '/visit/'
@@ -7561,6 +7690,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApplyStatusIdRouteImport
       parentRoute: typeof ApplyStatusRoute
     }
+    '/programs/$slug/$module': {
+      id: '/programs/$slug/$module'
+      path: '/$module'
+      fullPath: '/programs/$slug/$module'
+      preLoaderRoute: typeof ProgramsSlugModuleRouteImport
+      parentRoute: typeof ProgramsSlugRoute
+    }
     '/app/admissions/applications/$id': {
       id: '/app/admissions/applications/$id'
       path: '/$id'
@@ -7746,6 +7882,42 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface CareerGuidesRouteChildren {
+  CareerGuidesSlugRoute: typeof CareerGuidesSlugRoute
+}
+
+const CareerGuidesRouteChildren: CareerGuidesRouteChildren = {
+  CareerGuidesSlugRoute: CareerGuidesSlugRoute,
+}
+
+const CareerGuidesRouteWithChildren = CareerGuidesRoute._addFileChildren(
+  CareerGuidesRouteChildren,
+)
+
+interface GlossaryRouteChildren {
+  GlossarySlugRoute: typeof GlossarySlugRoute
+}
+
+const GlossaryRouteChildren: GlossaryRouteChildren = {
+  GlossarySlugRoute: GlossarySlugRoute,
+}
+
+const GlossaryRouteWithChildren = GlossaryRoute._addFileChildren(
+  GlossaryRouteChildren,
+)
+
+interface ResourcesRouteChildren {
+  ResourcesSlugRoute: typeof ResourcesSlugRoute
+}
+
+const ResourcesRouteChildren: ResourcesRouteChildren = {
+  ResourcesSlugRoute: ResourcesSlugRoute,
+}
+
+const ResourcesRouteWithChildren = ResourcesRoute._addFileChildren(
+  ResourcesRouteChildren,
+)
+
 interface AppFinanceRouteChildren {
   AppFinancePayVerifyRoute: typeof AppFinancePayVerifyRoute
 }
@@ -7770,6 +7942,18 @@ const ApplyStatusRouteChildren: ApplyStatusRouteChildren = {
 
 const ApplyStatusRouteWithChildren = ApplyStatusRoute._addFileChildren(
   ApplyStatusRouteChildren,
+)
+
+interface ProgramsSlugRouteChildren {
+  ProgramsSlugModuleRoute: typeof ProgramsSlugModuleRoute
+}
+
+const ProgramsSlugRouteChildren: ProgramsSlugRouteChildren = {
+  ProgramsSlugModuleRoute: ProgramsSlugModuleRoute,
+}
+
+const ProgramsSlugRouteWithChildren = ProgramsSlugRoute._addFileChildren(
+  ProgramsSlugRouteChildren,
 )
 
 interface AppAdmissionsApplicationsRouteChildren {
@@ -7896,16 +8080,19 @@ const rootRouteChildren: RootRouteChildren = {
   AccessibilityRoute: AccessibilityRoute,
   AdmissionsRoute: AdmissionsRoute,
   AlumniRoute: AlumniRoute,
+  CareerGuidesRoute: CareerGuidesRouteWithChildren,
   CareersRoute: CareersRoute,
   CommunityRoute: CommunityRoute,
   ContactRoute: ContactRoute,
   EnginesRoute: EnginesRoute,
   EventsRoute: EventsRoute,
   FaqRoute: FaqRoute,
+  GlossaryRoute: GlossaryRouteWithChildren,
   MarketplaceRoute: MarketplaceRoute,
   PartnersRoute: PartnersRoute,
   PricingRoute: PricingRoute,
   PrivacyRoute: PrivacyRoute,
+  ResourcesRoute: ResourcesRouteWithChildren,
   ScholarshipsRoute: ScholarshipsRoute,
   ServicesRoute: ServicesRoute,
   StoriesRoute: StoriesRoute,
@@ -7976,7 +8163,7 @@ const rootRouteChildren: RootRouteChildren = {
   PortalSupplierRoute: PortalSupplierRoute,
   PortalVisualDesignerRoute: PortalVisualDesignerRoute,
   PortalVolunteerRoute: PortalVolunteerRoute,
-  ProgramsSlugRoute: ProgramsSlugRoute,
+  ProgramsSlugRoute: ProgramsSlugRouteWithChildren,
   ProgramsCompareRoute: ProgramsCompareRoute,
   VisitBrochureRoute: VisitBrochureRoute,
   VisitFeedbackRoute: VisitFeedbackRoute,
