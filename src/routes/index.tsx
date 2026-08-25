@@ -447,6 +447,52 @@ function FaqSection() {
   );
 }
 
+function ResourcesSection() {
+  const items = [
+    { label: "Glossary", count: "62 terms", description: "Technical terms explained with Nigerian context", to: "/glossary" },
+    { label: "Career Guides", count: "19 roadmaps", description: "Salary ranges, 90-day plans and pitfalls for every role", to: "/career-guides" },
+    { label: "Resources", count: "12 templates", description: "Ungated checklists, templates and cheat sheets", to: "/resources" },
+    { label: "Library", count: "1,958 items", description: "Books, courses and tools curated for Nigerian learners", to: "/library" },
+  ];
+
+  return (
+    <section className="bg-muted/40 border-y">
+      <div className="container-page py-20 md:py-28">
+        <Reveal>
+          <SectionHeading
+            eyebrow="Free resources"
+            title="Learn beyond the classroom"
+            description="Practical resources to support your learning — no sign-up required."
+          />
+        </Reveal>
+        <StaggerGroup className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {items.map((item) => (
+            <StaggerItem key={item.to}>
+              <Link
+                to={item.to}
+                className="group bg-card shadow-soft hover:shadow-elevated block rounded-2xl border p-6 transition-all hover:-translate-y-1"
+              >
+                <p className="text-primary text-xs font-bold tracking-widest uppercase">
+                  {item.count}
+                </p>
+                <h3 className="font-display group-hover:text-primary mt-2 text-lg font-bold transition-colors">
+                  {item.label}
+                </h3>
+                <p className="text-muted-foreground mt-2 text-sm leading-relaxed">
+                  {item.description}
+                </p>
+                <span className="text-primary mt-4 inline-flex items-center gap-1 text-sm font-semibold">
+                  Explore <ArrowRight className="size-3.5" />
+                </span>
+              </Link>
+            </StaggerItem>
+          ))}
+        </StaggerGroup>
+      </div>
+    </section>
+  );
+}
+
 function Home() {
   return (
     <PageShell>
@@ -454,6 +500,7 @@ function Home() {
       <StatBand />
       <EnginesSection />
       <ProgramsSection />
+      <ResourcesSection />
       <TestimonialSection />
       <FaqSection />
       <CTASection />

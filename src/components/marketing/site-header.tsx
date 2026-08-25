@@ -17,6 +17,10 @@ const nav = [
   { label: "Team", to: "/team" },
   { label: "More", to: "/blog", subLinks: [
     { label: "Blog & Insights", to: "/blog" },
+    { label: "Glossary", to: "/glossary" },
+    { label: "Career Guides", to: "/career-guides" },
+    { label: "Resources", to: "/resources" },
+    { label: "Library", to: "/library" },
     { label: "FAQ", to: "/faq" },
     { label: "Events", to: "/events" },
     { label: "Scholarships", to: "/scholarships" },

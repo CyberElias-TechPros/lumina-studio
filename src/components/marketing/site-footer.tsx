@@ -16,6 +16,16 @@ const columns = [
     ],
   },
   {
+    title: "Resources",
+    links: [
+      { label: "Glossary", to: "/glossary" },
+      { label: "Career Guides", to: "/career-guides" },
+      { label: "Templates & Checklists", to: "/resources" },
+      { label: "Public Library", to: "/library" },
+      { label: "Blog & Insights", to: "/blog" },
+    ],
+  },
+  {
     title: "Work",
     links: [
       { label: "Services", to: "/services" },
@@ -31,7 +41,6 @@ const columns = [
       { label: "Events", to: "/events" },
       { label: "Community", to: "/community" },
       { label: "Alumni", to: "/alumni" },
-      { label: "Insights & Blog", to: "/blog" },
       { label: "FAQ", to: "/faq" },
     ],
   },
