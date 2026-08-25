@@ -69,6 +69,15 @@ const blogSlugs = [
   ]),
 ];
 
+// Library collection slugs from the build-time catalog snapshot.
+let librarySlugs = [];
+try {
+  const lib = JSON.parse(readFileSync(join(root, "src/data/library-catalog.json"), "utf8"));
+  librarySlugs = (lib.categories ?? []).map((c) => c.slug);
+} catch {
+  console.warn("library-catalog.json missing; sitemap will omit library categories");
+}
+
 const today = new Date().toISOString().slice(0, 10);
 
 const urls = [
@@ -90,6 +99,12 @@ const urls = [
     changefreq: "monthly",
     priority: "0.7",
   })),
+  ...librarySlugs.map((slug) => ({
+    loc: `${SITE_URL}/library/${slug}`,
+    lastmod: today,
+    changefreq: "weekly",
+    priority: "0.6",
+  })),
 ];
 
 const xml = `<?xml version="1.0" encoding="UTF-8"?>
@@ -104,4 +119,4 @@ ${urls.map((u) => `  <url>
 `;
 
 writeFileSync(join(root, "public", "sitemap.xml"), xml);
-console.log(`sitemap.xml written: ${urls.length} URLs (${staticRoutes.length} static, ${programSlugs.length} programs, ${blogSlugs.length} posts)`);
+console.log(`sitemap.xml written: ${urls.length} URLs (${staticRoutes.length} static, ${programSlugs.length} programs, ${blogSlugs.length} posts, ${librarySlugs.length} library collections)`);

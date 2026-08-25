@@ -59,6 +59,7 @@ import { Route as AuthVerifyEmailRouteImport } from './routes/auth.verify-email'
 import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 import { Route as CertificatesVerifyRouteImport } from './routes/certificates.verify'
+import { Route as LibraryCategoryRouteImport } from './routes/library.$category'
 import { Route as PortalIndexRouteImport } from './routes/portal/index'
 import { Route as PortalAcademicBoardRouteImport } from './routes/portal/academic-board'
 import { Route as PortalAccountantRouteImport } from './routes/portal/accountant'
@@ -641,6 +642,11 @@ const CertificatesVerifyRoute = CertificatesVerifyRouteImport.update({
   id: '/certificates/verify',
   path: '/certificates/verify',
   getParentRoute: () => rootRouteImport,
+} as any)
+const LibraryCategoryRoute = LibraryCategoryRouteImport.update({
+  id: '/$category',
+  path: '/$category',
+  getParentRoute: () => LibraryRoute,
 } as any)
 const PortalIndexRoute = PortalIndexRouteImport.update({
   id: '/portal/',
@@ -2385,7 +2391,7 @@ export interface FileRoutesByFullPath {
   '/engines': typeof EnginesRoute
   '/events': typeof EventsRoute
   '/faq': typeof FaqRoute
-  '/library': typeof LibraryRoute
+  '/library': typeof LibraryRouteWithChildren
   '/marketplace': typeof MarketplaceRoute
   '/partners': typeof PartnersRoute
   '/pricing': typeof PricingRoute
@@ -2421,6 +2427,7 @@ export interface FileRoutesByFullPath {
   '/auth/verify-email': typeof AuthVerifyEmailRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/certificates/verify': typeof CertificatesVerifyRoute
+  '/library/$category': typeof LibraryCategoryRoute
   '/portal/academic-board': typeof PortalAcademicBoardRoute
   '/portal/accountant': typeof PortalAccountantRoute
   '/portal/admin': typeof PortalAdminRoute
@@ -2769,7 +2776,7 @@ export interface FileRoutesByTo {
   '/engines': typeof EnginesRoute
   '/events': typeof EventsRoute
   '/faq': typeof FaqRoute
-  '/library': typeof LibraryRoute
+  '/library': typeof LibraryRouteWithChildren
   '/marketplace': typeof MarketplaceRoute
   '/partners': typeof PartnersRoute
   '/pricing': typeof PricingRoute
@@ -2804,6 +2811,7 @@ export interface FileRoutesByTo {
   '/auth/verify-email': typeof AuthVerifyEmailRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/certificates/verify': typeof CertificatesVerifyRoute
+  '/library/$category': typeof LibraryCategoryRoute
   '/portal/academic-board': typeof PortalAcademicBoardRoute
   '/portal/accountant': typeof PortalAccountantRoute
   '/portal/admin': typeof PortalAdminRoute
@@ -3153,7 +3161,7 @@ export interface FileRoutesById {
   '/engines': typeof EnginesRoute
   '/events': typeof EventsRoute
   '/faq': typeof FaqRoute
-  '/library': typeof LibraryRoute
+  '/library': typeof LibraryRouteWithChildren
   '/marketplace': typeof MarketplaceRoute
   '/partners': typeof PartnersRoute
   '/pricing': typeof PricingRoute
@@ -3189,6 +3197,7 @@ export interface FileRoutesById {
   '/auth/verify-email': typeof AuthVerifyEmailRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/certificates/verify': typeof CertificatesVerifyRoute
+  '/library/$category': typeof LibraryCategoryRoute
   '/portal/academic-board': typeof PortalAcademicBoardRoute
   '/portal/accountant': typeof PortalAccountantRoute
   '/portal/admin': typeof PortalAdminRoute
@@ -3575,6 +3584,7 @@ export interface FileRouteTypes {
     | '/auth/verify-email'
     | '/blog/$slug'
     | '/certificates/verify'
+    | '/library/$category'
     | '/portal/academic-board'
     | '/portal/accountant'
     | '/portal/admin'
@@ -3958,6 +3968,7 @@ export interface FileRouteTypes {
     | '/auth/verify-email'
     | '/blog/$slug'
     | '/certificates/verify'
+    | '/library/$category'
     | '/portal/academic-board'
     | '/portal/accountant'
     | '/portal/admin'
@@ -4342,6 +4353,7 @@ export interface FileRouteTypes {
     | '/auth/verify-email'
     | '/blog/$slug'
     | '/certificates/verify'
+    | '/library/$category'
     | '/portal/academic-board'
     | '/portal/accountant'
     | '/portal/admin'
@@ -4691,7 +4703,7 @@ export interface RootRouteChildren {
   EnginesRoute: typeof EnginesRoute
   EventsRoute: typeof EventsRoute
   FaqRoute: typeof FaqRoute
-  LibraryRoute: typeof LibraryRoute
+  LibraryRoute: typeof LibraryRouteWithChildren
   MarketplaceRoute: typeof MarketplaceRoute
   PartnersRoute: typeof PartnersRoute
   PricingRoute: typeof PricingRoute
@@ -5399,6 +5411,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/certificates/verify'
       preLoaderRoute: typeof CertificatesVerifyRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/library/$category': {
+      id: '/library/$category'
+      path: '/$category'
+      fullPath: '/library/$category'
+      preLoaderRoute: typeof LibraryCategoryRouteImport
+      parentRoute: typeof LibraryRoute
     }
     '/portal/': {
       id: '/portal/'
@@ -7727,6 +7746,17 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface LibraryRouteChildren {
+  LibraryCategoryRoute: typeof LibraryCategoryRoute
+}
+
+const LibraryRouteChildren: LibraryRouteChildren = {
+  LibraryCategoryRoute: LibraryCategoryRoute,
+}
+
+const LibraryRouteWithChildren =
+  LibraryRoute._addFileChildren(LibraryRouteChildren)
+
 interface AppFinanceRouteChildren {
   AppFinancePayVerifyRoute: typeof AppFinancePayVerifyRoute
 }
@@ -7883,7 +7913,7 @@ const rootRouteChildren: RootRouteChildren = {
   EnginesRoute: EnginesRoute,
   EventsRoute: EventsRoute,
   FaqRoute: FaqRoute,
-  LibraryRoute: LibraryRoute,
+  LibraryRoute: LibraryRouteWithChildren,
   MarketplaceRoute: MarketplaceRoute,
   PartnersRoute: PartnersRoute,
   PricingRoute: PricingRoute,
