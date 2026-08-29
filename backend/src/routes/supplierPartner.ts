@@ -162,9 +162,97 @@ function registerConversationDetail(
 }
 
 registerLists(supplierDashboard, SUP_COLS);
+
+const supplierOrderActionSchema = z.object({
+  status: z.enum(["confirmed", "completed"], { message: "Invalid order status." }),
+});
+
+/** Supplier/admin: confirm or complete a purchase order. */
+supplierDashboard.patch("/orders/:id", async (c) => {
+  const { status } = await parseBody(c, supplierOrderActionSchema);
+  const id = c.req.param("id");
+  const order = await c.env.DB.prepare(`SELECT id, status FROM sup_orders WHERE id = ?`)
+    .bind(id)
+    .first<{ id: string; status: string }>();
+  if (!order) throw ApiError.notFound("Order not found.");
+  if (status === "confirmed" && order.status !== "pending confirm") {
+    throw ApiError.conflict("Only pending orders can be confirmed.");
+  }
+  if (status === "completed" && order.status !== "confirmed") {
+    throw ApiError.conflict("Only confirmed orders can be completed.");
+  }
+  await c.env.DB.prepare(`UPDATE sup_orders SET status = ? WHERE id = ?`).bind(status, id).run();
+  return c.json({ ok: true, id, status });
+});
+
 registerConversationDetail(supplierDashboard, "sup_conversations", "sup_threads", "Conversation");
 registerConversationMessages(supplierDashboard, "sup_conversations", "sup_threads");
 
 registerLists(partnerDashboard, PTN_COLS);
+
+const partnerAgreementSchema = z.object({
+  title: z.string().trim().min(1, "Agreement title is required.").max(160),
+  detail: z.string().trim().max(240).optional(),
+});
+
+/** Partner/admin: create a draft MOU request. */
+partnerDashboard.post("/agreements", async (c) => {
+  const input = await parseBody(c, partnerAgreementSchema);
+  const id = `ptn-agreement-${crypto.randomUUID()}`;
+  await c.env.DB.prepare(
+    `INSERT INTO ptn_agreements (id, partner_id, title, detail, status, renew_label, sort_order)
+     VALUES (?, '', ?, ?, 'draft', '', ?)`,
+  )
+    .bind(id, input.title, input.detail ?? "MOU request submitted for review", Date.now())
+    .run();
+  return c.json(
+    {
+      agreement: {
+        id,
+        ...input,
+        detail: input.detail ?? "MOU request submitted for review",
+        status: "draft",
+        renewLabel: "",
+      },
+    },
+    201,
+  );
+});
+
+const partnerCollaborationSchema = z.object({
+  title: z.string().trim().min(1, "Event title is required.").max(160),
+  detail: z.string().trim().min(1, "Event details are required.").max(240),
+});
+
+/** Partner/admin: propose a co-branded event. */
+partnerDashboard.post("/collaborations", async (c) => {
+  const input = await parseBody(c, partnerCollaborationSchema);
+  const id = `ptn-collaboration-${crypto.randomUUID()}`;
+  await c.env.DB.prepare(
+    `INSERT INTO ptn_collaborations (id, partner_id, title, detail, status, sort_order)
+     VALUES (?, '', ?, ?, 'in discussion', ?)`,
+  )
+    .bind(id, input.title, input.detail, Date.now())
+    .run();
+  return c.json({ collaboration: { id, ...input, status: "in discussion" } }, 201);
+});
+
+const partnerReferralSchema = z.object({
+  name: z.string().trim().min(1, "Referral name is required.").max(160),
+});
+
+/** Partner/admin: add a referral to the partner pipeline. */
+partnerDashboard.post("/referrals", async (c) => {
+  const input = await parseBody(c, partnerReferralSchema);
+  const id = `ptn-referral-${crypto.randomUUID()}`;
+  await c.env.DB.prepare(
+    `INSERT INTO ptn_referrals (id, partner_id, name, status, value_label, sort_order)
+     VALUES (?, '', ?, 'Contacted', 'Pending', ?)`,
+  )
+    .bind(id, input.name, Date.now())
+    .run();
+  return c.json({ referral: { id, ...input, status: "Contacted", valueLabel: "Pending" } }, 201);
+});
+
 registerConversationDetail(partnerDashboard, "ptn_conversations", "ptn_threads", "Conversation");
 registerConversationMessages(partnerDashboard, "ptn_conversations", "ptn_threads");

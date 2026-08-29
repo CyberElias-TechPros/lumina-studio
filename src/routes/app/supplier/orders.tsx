@@ -1,11 +1,16 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowLeft, Boxes, CheckCircle2, Clock3, ShoppingCart } from "lucide-react";
+import { toast } from "sonner";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
 import { QueryState } from "@/components/ui/query-state";
-import { useSupOrderItems, useSupOrders } from "@/lib/query/supplierPartner";
+import {
+  useSupOrderItems,
+  useSupOrders,
+  useUpdateSupOrderStatus,
+} from "@/lib/query/supplierPartner";
 import type { SupOrder } from "@/lib/api/supplierPartner";
 import { cn } from "@/lib/utils";
 
@@ -26,6 +31,28 @@ const statusMeta: Record<string, { label: string; tone: string }> = {
   "pending confirm": { label: "Pending confirm", tone: "bg-warning/10 text-warning" },
   completed: { label: "Completed", tone: "bg-success/10 text-success" },
 };
+
+function SupplierOrderAction({ order }: { order: SupOrder }) {
+  const update = useUpdateSupOrderStatus();
+  const pendingConfirm = order.status === "pending confirm";
+  return (
+    <Button
+      variant={pendingConfirm ? "default" : "outline"}
+      size="sm"
+      className="shrink-0 font-semibold"
+      disabled={update.isPending}
+      onClick={() => {
+        if (!pendingConfirm) return;
+        update.mutate(
+          { id: order.id, status: "confirmed" },
+          { onSuccess: () => toast.success(`${order.ref} confirmed`) },
+        );
+      }}
+    >
+      {update.isPending ? "Confirming…" : pendingConfirm ? "Confirm" : "View"}
+    </Button>
+  );
+}
 
 function SupplierOrders() {
   const ordersQuery = useSupOrders();
@@ -136,9 +163,7 @@ function SupplierOrders() {
                       <Badge className={cn("border-0 font-semibold", meta.tone)}>
                         {meta.label}
                       </Badge>
-                      <Button variant="outline" size="sm" className="shrink-0 font-semibold">
-                        {o.status === "pending confirm" ? "Confirm" : "View"}
-                      </Button>
+                      <SupplierOrderAction order={o} />
                     </div>
                   );
                 })}

@@ -46,11 +46,12 @@ const REC_COLS: Record<string, { table: string; columns: string }> = {
   },
   queue: {
     table: "rec_queue",
-    columns: "id, name, host_label AS hostLabel, purpose, time_label AS timeLabel",
+    columns: "id, name, host_label AS hostLabel, purpose, time_label AS timeLabel, notified",
   },
   inside: {
     table: "rec_inside",
-    columns: "id, name, since_label AS sinceLabel, badge_label AS badgeLabel",
+    columns:
+      "id, name, since_label AS sinceLabel, badge_label AS badgeLabel, host_label AS hostLabel, phone, purpose",
   },
   deliveries: {
     table: "rec_deliveries",
@@ -195,6 +196,94 @@ volunteerDashboard.post("/hours", async (c) => {
   return c.json({ ok: true, id, title: body.title, hours: body.hours, status: "pending" }, 201);
 });
 
+const visitorSchema = z.object({
+  fullName: z.string().trim().min(1, "Visitor name is required.").max(160),
+  hostLabel: z.string().trim().min(1, "Host name is required.").max(160),
+  phone: z.string().trim().max(40).optional(),
+  purpose: z.string().trim().min(1, "Visit purpose is required.").max(160),
+});
+
 export const receptionistDashboard = new Hono<{ Bindings: AppEnv }>();
 receptionistDashboard.use("*", requireAuth, requireAnyRole(["receptionist", "admin"]));
 registerLists(receptionistDashboard, REC_COLS);
+
+/** Receptionist/admin: add a visitor to the active on-site register. */
+receptionistDashboard.post("/check-in", requireAnyRole(["receptionist", "admin"]), async (c) => {
+  const input = await parseBody(c, visitorSchema);
+  const id = `visitor-${crypto.randomUUID()}`;
+  const sinceLabel = `Today · ${new Date().toLocaleTimeString("en-GB", {
+    hour: "2-digit",
+    minute: "2-digit",
+  })}`;
+  await c.env.DB.prepare(
+    `INSERT INTO rec_inside (id, name, since_label, badge_label, sort_order, host_label, phone, purpose)
+       VALUES (?, ?, ?, 'Visitor', ?, ?, ?, ?)`,
+  )
+    .bind(
+      id,
+      input.fullName,
+      sinceLabel,
+      Date.now(),
+      input.hostLabel,
+      input.phone ?? "",
+      input.purpose,
+    )
+    .run();
+  return c.json(
+    {
+      visitor: {
+        id,
+        name: input.fullName,
+        sinceLabel,
+        badgeLabel: "Visitor",
+        hostLabel: input.hostLabel,
+        phone: input.phone ?? "",
+        purpose: input.purpose,
+      },
+    },
+    201,
+  );
+});
+
+/** Receptionist/admin: mark a visitor as checked out. */
+receptionistDashboard.delete(
+  "/inside/:id",
+  requireAnyRole(["receptionist", "admin"]),
+  async (c) => {
+    const id = c.req.param("id");
+    const result = await c.env.DB.prepare(`DELETE FROM rec_inside WHERE id = ?`).bind(id).run();
+    if (result.meta.changes !== 1) throw ApiError.notFound("Visitor not found.");
+    return c.json({ ok: true, id });
+  },
+);
+
+const taskUpdateSchema = z.object({
+  done: z
+    .union([z.boolean(), z.number().int().min(0).max(1)])
+    .transform((value) => (typeof value === "boolean" ? (value ? 1 : 0) : value)),
+});
+
+/** Receptionist/admin: update a shift task's completion state. */
+receptionistDashboard.patch("/tasks/:id", requireAnyRole(["receptionist", "admin"]), async (c) => {
+  const { done } = await parseBody(c, taskUpdateSchema);
+  const id = c.req.param("id");
+  const result = await c.env.DB.prepare(`UPDATE rec_tasks SET done = ? WHERE id = ?`)
+    .bind(done, id)
+    .run();
+  if (result.meta.changes !== 1) throw ApiError.notFound("Task not found.");
+  return c.json({ ok: true, id, done });
+});
+
+/** Receptionist/admin: record that a visitor's host has been notified. */
+receptionistDashboard.patch(
+  "/queue/:id/notify",
+  requireAnyRole(["receptionist", "admin"]),
+  async (c) => {
+    const id = c.req.param("id");
+    const result = await c.env.DB.prepare(`UPDATE rec_queue SET notified = 1 WHERE id = ?`)
+      .bind(id)
+      .run();
+    if (result.meta.changes !== 1) throw ApiError.notFound("Queue entry not found.");
+    return c.json({ ok: true, id, notified: 1 });
+  },
+);

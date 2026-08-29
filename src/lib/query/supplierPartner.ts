@@ -2,6 +2,10 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { usePaginatedQuery, flattenPages } from "@/lib/query/hooks";
 import {
   fetchSupOrders,
+  updateSupOrderStatus,
+  createPtnAgreement,
+  createPtnCollaboration,
+  createPtnReferral,
   fetchSupDeliveries,
   fetchSupInvoices,
   fetchSupPerformance,
@@ -18,6 +22,8 @@ import {
   fetchPtnConversations,
   fetchPtnConversationDetail,
   type SupOrder,
+  type CreatePtnAgreementInput,
+  type CreatePtnCollaborationInput,
   type SupDelivery,
   type SupInvoice,
   type SupPerformance,
@@ -70,6 +76,17 @@ export function useSupOrderItems(): SupOrder[] {
   return flattenPages(useSupOrders().data?.pages);
 }
 
+export function useUpdateSupOrderStatus() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (input: { id: string; status: "confirmed" | "completed" }) =>
+      updateSupOrderStatus(input.id, input.status),
+    onSuccess: () => {
+      void queryClient.invalidateQueries({ queryKey: supKeys.orders });
+    },
+  });
+}
+
 export function useSupDeliveries() {
   return useSup<SupDelivery>(supKeys.deliveries, fetchSupDeliveries);
 }
@@ -120,6 +137,36 @@ export function useSendSupConversationMessage(id: string) {
     onSuccess: () => {
       void queryClient.invalidateQueries({ queryKey: supKeys.conversation(id) });
       void queryClient.invalidateQueries({ queryKey: supKeys.conversations });
+    },
+  });
+}
+
+export function useCreatePtnAgreement() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (input: CreatePtnAgreementInput) => createPtnAgreement(input),
+    onSuccess: () => {
+      void queryClient.invalidateQueries({ queryKey: ptnKeys.agreements });
+    },
+  });
+}
+
+export function useCreatePtnCollaboration() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (input: CreatePtnCollaborationInput) => createPtnCollaboration(input),
+    onSuccess: () => {
+      void queryClient.invalidateQueries({ queryKey: ptnKeys.collaborations });
+    },
+  });
+}
+
+export function useCreatePtnReferral() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (input: { name: string }) => createPtnReferral(input),
+    onSuccess: () => {
+      void queryClient.invalidateQueries({ queryKey: ptnKeys.referrals });
     },
   });
 }

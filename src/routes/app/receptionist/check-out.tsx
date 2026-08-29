@@ -1,11 +1,16 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowLeft, Clock, DoorOpen, LogOut, QrCode, UserRound } from "lucide-react";
+import { toast } from "sonner";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
 import { QueryState } from "@/components/ui/query-state";
-import { useRecInside, useRecInsideItems } from "@/lib/query/volunteerReceptionist";
+import {
+  useCheckOutVisitor,
+  useRecInside,
+  useRecInsideItems,
+} from "@/lib/query/volunteerReceptionist";
 import type { RecInsideEntry } from "@/lib/api/volunteerReceptionist";
 import { cn } from "@/lib/utils";
 
@@ -28,6 +33,7 @@ const tones = [
 function ReceptionistCheckOut() {
   const insideQuery = useRecInside();
   const inside = useRecInsideItems();
+  const checkOut = useCheckOutVisitor();
 
   return (
     <AppShell
@@ -125,8 +131,19 @@ function ReceptionistCheckOut() {
                     <Badge className={cn("border-0 font-semibold", tones[i % tones.length])}>
                       {v.badgeLabel}
                     </Badge>
-                    <Button size="sm" variant="outline" className="shrink-0 font-semibold">
-                      <LogOut className="size-3.5" /> Check out
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      className="shrink-0 font-semibold"
+                      disabled={checkOut.isPending}
+                      onClick={() =>
+                        checkOut.mutate(v.id, {
+                          onSuccess: () => toast.success(`${v.name} checked out`),
+                        })
+                      }
+                    >
+                      <LogOut className="size-3.5" />{" "}
+                      {checkOut.isPending ? "Checking out…" : "Check out"}
                     </Button>
                   </div>
                 ))}

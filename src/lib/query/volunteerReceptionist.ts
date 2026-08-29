@@ -19,6 +19,10 @@ import {
   fetchRecHandover,
   logVolunteerHours,
   signUpForOpportunity,
+  checkInVisitor,
+  notifyQueueHost,
+  checkOutVisitor,
+  updateRecTask,
   type VolOpportunity,
   type VolSignup,
   type VolMetric,
@@ -35,6 +39,7 @@ import {
   type RecStaffMember,
   type RecTask,
   type RecHandoverNote,
+  type CheckInVisitorInput,
 } from "@/lib/api/volunteerReceptionist";
 
 export const volKeys = {
@@ -171,6 +176,46 @@ export function useRecHandover() {
 }
 export function useRecHandoverItems(): RecHandoverNote[] {
   return flattenPages(useRecHandover().data?.pages);
+}
+
+export function useCheckInVisitor() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (input: CheckInVisitorInput) => checkInVisitor(input),
+    onSuccess: () => {
+      void queryClient.invalidateQueries({ queryKey: recKeys.inside });
+    },
+  });
+}
+
+export function useNotifyQueueHost() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (id: string) => notifyQueueHost(id),
+    onSuccess: () => {
+      void queryClient.invalidateQueries({ queryKey: recKeys.queue });
+    },
+  });
+}
+
+export function useCheckOutVisitor() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (id: string) => checkOutVisitor(id),
+    onSuccess: () => {
+      void queryClient.invalidateQueries({ queryKey: recKeys.inside });
+    },
+  });
+}
+
+export function useUpdateRecTask() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (input: { id: string; done: boolean }) => updateRecTask(input.id, input.done),
+    onSuccess: () => {
+      void queryClient.invalidateQueries({ queryKey: recKeys.tasks });
+    },
+  });
 }
 
 export function useLogVolunteerHours() {

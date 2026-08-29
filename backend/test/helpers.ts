@@ -45,6 +45,8 @@ import studentActionsSql from "../migrations/0042_student_actions.sql?raw";
 import notificationPreferencesSql from "../migrations/0043_notification_preferences.sql?raw";
 import volunteerSignupsSql from "../migrations/0044_volunteer_signups.sql?raw";
 import volunteerSignupConstraintsSql from "../migrations/0045_volunteer_signup_constraints.sql?raw";
+import receptionistActionsSql from "../migrations/0046_receptionist_actions.sql?raw";
+import clientTicketOwnershipSql from "../migrations/0047_client_ticket_ownership.sql?raw";
 import { seedContentSql } from "../seeds/content";
 import { seedLmsSql } from "../seeds/lms";
 import { seedDomainSql } from "../seeds/domain";
@@ -141,6 +143,8 @@ export async function setupDb(): Promise<void> {
     notificationPreferencesSql,
     volunteerSignupsSql,
     volunteerSignupConstraintsSql,
+    receptionistActionsSql,
+    clientTicketOwnershipSql,
   ]) {
     const statements = sql
       .split("\n")

@@ -68,6 +68,7 @@ export interface RecQueueEntry {
   hostLabel: string;
   purpose: string;
   timeLabel: string;
+  notified: number;
 }
 
 export interface RecInsideEntry {
@@ -75,6 +76,20 @@ export interface RecInsideEntry {
   name: string;
   sinceLabel: string;
   badgeLabel: string;
+  hostLabel: string;
+  phone: string;
+  purpose: string;
+}
+
+export interface CheckInVisitorInput {
+  fullName: string;
+  hostLabel: string;
+  phone?: string;
+  purpose: string;
+}
+
+export interface CheckInVisitorResult {
+  visitor: RecInsideEntry;
 }
 
 export interface RecDelivery {
@@ -147,6 +162,37 @@ export const fetchRecCalls = volPage<RecCall>("/v1/receptionist-dashboard/calls"
 export const fetchRecStaff = volPage<RecStaffMember>("/v1/receptionist-dashboard/staff");
 export const fetchRecTasks = volPage<RecTask>("/v1/receptionist-dashboard/tasks");
 export const fetchRecHandover = volPage<RecHandoverNote>("/v1/receptionist-dashboard/handover");
+
+export function checkInVisitor(input: CheckInVisitorInput): Promise<CheckInVisitorResult> {
+  return apiFetch<CheckInVisitorResult>("/v1/receptionist-dashboard/check-in", {
+    method: "POST",
+    body: input,
+  });
+}
+
+export function notifyQueueHost(id: string): Promise<{ ok: true; id: string; notified: 1 }> {
+  return apiFetch<{ ok: true; id: string; notified: 1 }>(
+    `/v1/receptionist-dashboard/queue/${encodeURIComponent(id)}/notify`,
+    { method: "PATCH", body: {} },
+  );
+}
+
+export function checkOutVisitor(id: string): Promise<{ ok: true; id: string }> {
+  return apiFetch<{ ok: true; id: string }>(
+    `/v1/receptionist-dashboard/inside/${encodeURIComponent(id)}`,
+    { method: "DELETE" },
+  );
+}
+
+export function updateRecTask(
+  id: string,
+  done: boolean,
+): Promise<{ ok: true; id: string; done: number }> {
+  return apiFetch<{ ok: true; id: string; done: number }>(
+    `/v1/receptionist-dashboard/tasks/${encodeURIComponent(id)}`,
+    { method: "PATCH", body: { done } },
+  );
+}
 
 export interface LogHoursInput {
   title: string;

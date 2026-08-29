@@ -1,11 +1,26 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useState, type FormEvent } from "react";
 import { ArrowLeft, BadgeCheck, Banknote, Gift, TrendingUp, UserRound } from "lucide-react";
+import { toast } from "sonner";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
 import { AppShell } from "@/components/app/app-shell";
 import { QueryState } from "@/components/ui/query-state";
-import { usePtnReferralItems, usePtnReferrals } from "@/lib/query/supplierPartner";
+import {
+  useCreatePtnReferral,
+  usePtnReferralItems,
+  usePtnReferrals,
+} from "@/lib/query/supplierPartner";
 import type { PtnReferral } from "@/lib/api/supplierPartner";
 import { cn } from "@/lib/utils";
 
@@ -28,6 +43,24 @@ const statusMeta: Record<string, string> = {
 function PartnerReferrals() {
   const referralsQuery = usePtnReferrals();
   const referrals = usePtnReferralItems();
+  const create = useCreatePtnReferral();
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const [name, setName] = useState("");
+
+  const submitReferral = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (!name.trim() || create.isPending) return;
+    create.mutate(
+      { name: name.trim() },
+      {
+        onSuccess: () => {
+          setDialogOpen(false);
+          setName("");
+          toast.success("Referral added to your pipeline");
+        },
+      },
+    );
+  };
 
   const enrolled = referrals.filter((r) => r.status === "Enrolled");
   const conversion =
@@ -103,12 +136,55 @@ function PartnerReferrals() {
         ))}
       </div>
 
+      <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Add a referral</DialogTitle>
+            <DialogDescription>
+              Add a person to your partner referral pipeline for follow-up.
+            </DialogDescription>
+          </DialogHeader>
+          <form onSubmit={submitReferral} className="space-y-4">
+            <div className="space-y-1.5">
+              <label htmlFor="referral-name" className="text-sm font-semibold">
+                Full name
+              </label>
+              <Input
+                id="referral-name"
+                value={name}
+                onChange={(event) => setName(event.target.value)}
+                placeholder="e.g. Chinedu Okoro"
+                maxLength={160}
+                required
+              />
+            </div>
+            {create.error && (
+              <p role="alert" className="text-destructive text-sm">
+                {create.error.message}
+              </p>
+            )}
+            <DialogFooter className="gap-2">
+              <Button type="button" variant="outline" onClick={() => setDialogOpen(false)}>
+                Cancel
+              </Button>
+              <Button type="submit" disabled={create.isPending || !name.trim()}>
+                {create.isPending ? "Adding…" : "Add referral"}
+              </Button>
+            </DialogFooter>
+          </form>
+        </DialogContent>
+      </Dialog>
+
       <Card className="bg-card mt-5 shadow-soft border">
         <CardHeader className="flex-row items-center justify-between">
           <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
             <TrendingUp className="text-primary size-4" /> Recent referrals
           </CardTitle>
-          <Button size="sm" className="bg-gradient-brand shadow-glow border-0 font-semibold">
+          <Button
+            size="sm"
+            className="bg-gradient-brand shadow-glow border-0 font-semibold"
+            onClick={() => setDialogOpen(true)}
+          >
             Refer someone
           </Button>
         </CardHeader>

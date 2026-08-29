@@ -1,5 +1,5 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowLeft, CreditCard, Download, FileText, Receipt, Wallet } from "lucide-react";
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
+import { ArrowLeft, CreditCard, Download, FileText, Loader2, Receipt, Wallet } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -8,6 +8,7 @@ import { QueryState } from "@/components/ui/query-state";
 import type { CliInvoice } from "@/lib/query/clientEngagement";
 import { useCliInvoices } from "@/lib/query/clientEngagement";
 import { formatNaira } from "@/data/site";
+import { useCreateCheckout } from "@/lib/query/payments";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/client/invoices")({
@@ -29,6 +30,27 @@ function statusTone(s: string) {
 
 function ClientInvoices() {
   const invoicesQuery = useCliInvoices();
+  const checkout = useCreateCheckout();
+  const navigate = useNavigate();
+
+  const payOutstanding = () => {
+    checkout.mutate(
+      {
+        amount: 175000,
+        description: "CEA Studio project milestone",
+        redirectUrl: `${window.location.origin}/app/finance/pay-verify`,
+      },
+      {
+        onSuccess: (result) => {
+          if (result.mock) {
+            navigate({ to: "/app/finance/pay-verify", search: { reference: result.reference } });
+          } else {
+            window.open(result.authorizationUrl, "_blank", "noopener,noreferrer");
+          }
+        },
+      },
+    );
+  };
 
   return (
     <AppShell
@@ -40,8 +62,13 @@ function ClientInvoices() {
           <Badge className="bg-warning/10 text-warning border-0 font-semibold">
             {formatNaira(175000)} due Aug 25
           </Badge>
-          <Button size="sm">
-            <CreditCard className="size-4" /> Pay online
+          <Button size="sm" onClick={payOutstanding} disabled={checkout.isPending}>
+            {checkout.isPending ? (
+              <Loader2 className="size-4 animate-spin" />
+            ) : (
+              <CreditCard className="size-4" />
+            )}
+            {checkout.isPending ? "Opening payment…" : "Pay online"}
           </Button>
         </>
       }
