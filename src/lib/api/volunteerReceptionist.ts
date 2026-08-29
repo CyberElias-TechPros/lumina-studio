@@ -168,3 +168,18 @@ export function logVolunteerHours(input: LogHoursInput): Promise<LogHoursResult>
     body: input,
   });
 }
+
+export interface SignupResult {
+  ok: boolean;
+  id: string;
+  title: string;
+  detail: string;
+  upcoming: number;
+}
+
+export function signUpForOpportunity(opportunityId: string): Promise<SignupResult> {
+  return apiFetch<SignupResult>("/v1/volunteer-dashboard/signups", {
+    method: "POST",
+    body: { opportunityId },
+  });
+}

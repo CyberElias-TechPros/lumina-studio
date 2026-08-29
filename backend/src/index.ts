@@ -3,6 +3,7 @@ import { cors } from "hono/cors";
 import { sendError } from "./lib/errors";
 import type { AppEnv } from "./types";
 import { rbacGuard } from "./lib/rbac";
+import { corsOrigin } from "./lib/origin";
 import { flags } from "./routes/flags";
 import { contact } from "./routes/contact";
 import { auth } from "./routes/auth";
@@ -15,6 +16,7 @@ import { assessments } from "./routes/assessments";
 import { calendar } from "./routes/calendar";
 import { messages } from "./routes/messages";
 import { instructor } from "./routes/instructor";
+import { attendance } from "./routes/attendance";
 import { hr } from "./routes/hr";
 import { finance } from "./routes/finance";
 import { admin } from "./routes/admin";
@@ -66,17 +68,11 @@ const app = new Hono<{ Bindings: AppEnv }>();
 app.use(
   "*",
   cors({
-    origin: (origin, c) => {
-      const allowed = (c.env.FRONTEND_ORIGINS ?? "")
-        .split(",")
-        .map((s: string) => s.trim())
-        .filter(Boolean);
-      if (allowed.length === 0) return origin ?? "";
-      return allowed.includes(origin) ? origin : "";
-    },
+    origin: (origin, c) => corsOrigin(origin, c.env),
     allowHeaders: ["Content-Type", "Authorization"],
     allowMethods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
     credentials: true,
+    exposeHeaders: ["Retry-After"],
     maxAge: 86_400,
   }),
 );
@@ -93,6 +89,7 @@ v1.route("/assessments", assessments);
 v1.route("/calendar", calendar);
 v1.route("/messages", messages);
 v1.route("/instructor", instructor);
+v1.route("/attendance", attendance);
 v1.route("/hr", hr);
 v1.route("/", finance);
 v1.route("/admin", admin);

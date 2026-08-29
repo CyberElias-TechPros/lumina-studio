@@ -210,16 +210,28 @@ auth.get("/magic-link/verify", async (c) => {
     throw new ApiError(400, "INVALID_MAGIC_TOKEN", "This link type cannot be used to sign in.");
   }
 
-  await c.env.DB.prepare(`UPDATE magic_links SET consumed_at = ? WHERE id = ?`)
-    .bind(now, link.id)
+  // Consume atomically so two requests using the same link cannot both create
+  // sessions. D1's affected-row count is the single-use guard.
+  const consumed = await c.env.DB.prepare(
+    `UPDATE magic_links SET consumed_at = ?
+      WHERE id = ? AND consumed_at IS NULL AND expires_at > ?`,
+  )
+    .bind(now, link.id, now)
     .run();
+  if (consumed.meta.changes !== 1) {
+    throw new ApiError(400, "INVALID_MAGIC_TOKEN", "This sign-in link is invalid or has expired.");
+  }
 
   const email = normalizeEmail(link.email);
   const existing = await c.env.DB.prepare(
-    `SELECT id, name, email, avatar_url, role_key, status, email_verified_at FROM users WHERE email = ?`,
+    `SELECT id, name, email, avatar_url, role_key, status, email_verified_at, mfa_enabled FROM users WHERE email = ?`,
   )
     .bind(email)
-    .first<SessionUserRow & { status: string; email_verified_at: string | null }>();
+    .first<SessionUserRow & {
+      status: string;
+      email_verified_at: string | null;
+      mfa_enabled: number;
+    }>();
 
   if (existing && existing.status !== "active") {
     throw new ApiError(403, "FORBIDDEN", "This account has been suspended.");
@@ -249,7 +261,12 @@ auth.get("/magic-link/verify", async (c) => {
     email,
     avatar_url: existing?.avatar_url ?? null,
     role_key: existing?.role_key ?? "student",
+  }, {
+    mfaPending: existing?.mfa_enabled === 1,
   });
+  if (existing?.mfa_enabled === 1) {
+    return c.json({ mfaRequired: true, expiresAt });
+  }
   return c.json(sessionResponse(user, expiresAt));
 });
 
@@ -412,12 +429,21 @@ auth.post("/reset-password", async (c) => {
   if (!user) throw ApiError.notFound("No account found for this email.");
 
   const now = isoNow();
+  // Consume before changing the password. This closes the check-then-use race
+  // where concurrent requests could both redeem a reset token.
+  const consumed = await c.env.DB.prepare(
+    `UPDATE magic_links SET consumed_at = ?
+      WHERE id = ? AND consumed_at IS NULL AND expires_at > ?`,
+  )
+    .bind(now, link.id, now)
+    .run();
+  if (consumed.meta.changes !== 1) {
+    throw new ApiError(400, "INVALID_MAGIC_TOKEN", "This reset link is invalid or has expired.");
+  }
+
   const passwordHash = await hashPassword(password);
   await c.env.DB.prepare(`UPDATE users SET password_hash = ?, updated_at = ? WHERE id = ?`)
     .bind(passwordHash, now, user.id)
-    .run();
-  await c.env.DB.prepare(`UPDATE magic_links SET consumed_at = ? WHERE id = ?`)
-    .bind(now, link.id)
     .run();
   await c.env.DB.prepare(
     `UPDATE sessions SET revoked_at = ? WHERE user_id = ? AND revoked_at IS NULL`,
@@ -515,9 +541,23 @@ auth.post("/mfa/verify", async (c) => {
     throw ApiError.conflict("No pending MFA challenge for this session.");
   }
 
+  await rateLimit(c.env.RATE_LIMIT, "mfa-verify", await hashIdentifier(token), {
+    limit: 10,
+    windowSeconds: 900,
+  });
+
   let verified = await verifyTotpCode(row.mfa_secret, code);
   if (!verified) {
-    const recoveryCodes = JSON.parse(row.recovery_codes) as string[];
+    let recoveryCodes: string[] = [];
+    try {
+      const parsed = JSON.parse(row.recovery_codes);
+      if (Array.isArray(parsed) && parsed.every((value) => typeof value === "string")) {
+        recoveryCodes = parsed;
+      }
+    } catch {
+      // Treat malformed recovery-code storage as no available recovery codes,
+      // rather than turning an invalid user record into a server error.
+    }
     const codeHash = await sha256Hex(code.trim());
     const idx = recoveryCodes.findIndex((h) => timingSafeEqualHex(h, codeHash));
     if (idx >= 0) {

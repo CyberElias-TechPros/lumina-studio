@@ -1,8 +1,10 @@
 import { Link } from "@tanstack/react-router";
+import { useState } from "react";
 import { Mail, MapPin, Phone, Linkedin, Twitter, Instagram, Youtube, Facebook } from "lucide-react";
 import { BrandMark } from "./site-header";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { submitContact } from "@/lib/api/marketing";
 
 const columns = [
   {
@@ -57,6 +59,33 @@ const columns = [
 ];
 
 export function SiteFooter() {
+  const [submitting, setSubmitting] = useState(false);
+  const [subscribed, setSubscribed] = useState(false);
+  const [newsletterError, setNewsletterError] = useState<string | null>(null);
+
+  const submitNewsletter = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const email = new FormData(form).get("email");
+    if (typeof email !== "string") return;
+    setSubmitting(true);
+    setNewsletterError(null);
+    try {
+      await submitContact({
+        name: "Newsletter subscriber",
+        email,
+        message: "Monthly briefing subscription",
+        kind: "newsletter",
+      });
+      setSubscribed(true);
+      form.reset();
+    } catch {
+      setNewsletterError("We couldn't subscribe you right now. Please try again.");
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
   return (
     <footer className="bg-gradient-ink text-ink-foreground relative overflow-hidden">
       <div className="grid-lines pointer-events-none absolute inset-0 opacity-[0.06]" />
@@ -86,11 +115,27 @@ export function SiteFooter() {
 
             <div className="mt-7 flex gap-2">
               {[
-                { Icon: Facebook, href: "https://www.facebook.com/cybereliasacademy/", label: "Facebook" },
+                {
+                  Icon: Facebook,
+                  href: "https://www.facebook.com/cybereliasacademy/",
+                  label: "Facebook",
+                },
                 { Icon: Twitter, href: "https://x.com/cybeliasacademy", label: "Twitter/X" },
-                { Icon: Instagram, href: "https://www.instagram.com/cyberelias.tk/", label: "Instagram" },
-                { Icon: Youtube, href: "https://www.youtube.com/@CyberEliasAcademy", label: "YouTube" },
-                { Icon: Linkedin, href: "https://www.linkedin.com/company/cyber-elias-academy", label: "LinkedIn" },
+                {
+                  Icon: Instagram,
+                  href: "https://www.instagram.com/cyberelias.tk/",
+                  label: "Instagram",
+                },
+                {
+                  Icon: Youtube,
+                  href: "https://www.youtube.com/@CyberEliasAcademy",
+                  label: "YouTube",
+                },
+                {
+                  Icon: Linkedin,
+                  href: "https://www.linkedin.com/company/cyber-elias-academy",
+                  label: "LinkedIn",
+                },
               ].map(({ Icon, href, label }) => (
                 <a
                   key={label}
@@ -136,27 +181,43 @@ export function SiteFooter() {
               Curriculum updates, hiring trends and open cohorts. No noise.
             </p>
           </div>
-          <form
-            className="flex gap-2"
-            onSubmit={(e) => {
-              e.preventDefault();
-              (e.currentTarget as HTMLFormElement).reset();
-            }}
-          >
-            <Input
-              type="email"
-              required
-              placeholder="you@company.com"
-              className="border-ink-foreground/15 bg-ink-foreground/5 text-ink-foreground placeholder:text-ink-foreground/40"
-            />
-            <Button type="submit" className="bg-gradient-brand shrink-0 border-0">
-              Subscribe
-            </Button>
-          </form>
+          {subscribed ? (
+            <p
+              className="text-success rounded-lg border border-success/30 bg-success/10 px-4 py-3 text-sm font-semibold"
+              aria-live="polite"
+            >
+              You're on the list. Watch your inbox for the next briefing.
+            </p>
+          ) : (
+            <form className="flex gap-2" onSubmit={submitNewsletter}>
+              <Input
+                name="email"
+                type="email"
+                required
+                placeholder="you@company.com"
+                disabled={submitting}
+                className="border-ink-foreground/15 bg-ink-foreground/5 text-ink-foreground placeholder:text-ink-foreground/40"
+              />
+              <Button
+                type="submit"
+                disabled={submitting}
+                className="bg-gradient-brand shrink-0 border-0"
+              >
+                {submitting ? "Joining…" : "Subscribe"}
+              </Button>
+            </form>
+          )}
+          {newsletterError && (
+            <p className="text-error mt-2 text-xs" role="alert">
+              {newsletterError}
+            </p>
+          )}
         </div>
 
         <div className="border-ink-foreground/15 text-ink-foreground/50 mt-10 border-t pt-8 text-xs text-center">
-          <p>© {new Date().getFullYear()} Cyber Elias Academy Ltd. RC 8413776. All rights reserved.</p>
+          <p>
+            © {new Date().getFullYear()} Cyber Elias Academy Ltd. RC 8413776. All rights reserved.
+          </p>
         </div>
       </div>
     </footer>

@@ -1,3 +1,4 @@
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { usePaginatedQuery, flattenPages } from "@/lib/query/hooks";
 import {
   fetchStuAttendance,
@@ -9,6 +10,8 @@ import {
   fetchStuCv,
   fetchStuReportKpis,
   fetchStuTemplates,
+  createStuProject,
+  type CreateStuProjectInput,
   type StuKpi,
   type StuRecord,
   type StuPolicy,
@@ -84,6 +87,17 @@ export function useStuTemplates() {
 }
 export function useStuTemplateItems(): StuReportTemplate[] {
   return flattenPages(useStuTemplates().data?.pages);
+}
+
+export function useCreateStuProject() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (input: CreateStuProjectInput) => createStuProject(input),
+    onSuccess: () => {
+      void queryClient.invalidateQueries({ queryKey: stuKeys.projects });
+      void queryClient.invalidateQueries({ queryKey: stuKeys.portfolio });
+    },
+  });
 }
 
 export type {

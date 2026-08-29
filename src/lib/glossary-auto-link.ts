@@ -47,10 +47,7 @@ export function findGlossaryLinks(text: string): LinkMatch[] {
   return matches;
 }
 
-export function applyGlossaryLinks(
-  html: string,
-  maxLinks = 8,
-): string {
+export function applyGlossaryLinks(html: string, maxLinks = 8): string {
   const matches = findGlossaryLinks(html);
   if (matches.length === 0) return html;
 

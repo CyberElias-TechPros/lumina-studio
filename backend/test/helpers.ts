@@ -40,6 +40,11 @@ import adminMetricsSql from "../migrations/0037_admin_system_metrics.sql?raw";
 import parentInvitationsSql from "../migrations/0038_parent_invitations.sql?raw";
 import ownershipSql from "../migrations/0039_ownership.sql?raw";
 import submissionsColumnsSql from "../migrations/0040_submissions_columns.sql?raw";
+import notificationReadsSql from "../migrations/0041_notification_reads.sql?raw";
+import studentActionsSql from "../migrations/0042_student_actions.sql?raw";
+import notificationPreferencesSql from "../migrations/0043_notification_preferences.sql?raw";
+import volunteerSignupsSql from "../migrations/0044_volunteer_signups.sql?raw";
+import volunteerSignupConstraintsSql from "../migrations/0045_volunteer_signup_constraints.sql?raw";
 import { seedContentSql } from "../seeds/content";
 import { seedLmsSql } from "../seeds/lms";
 import { seedDomainSql } from "../seeds/domain";
@@ -131,6 +136,11 @@ export async function setupDb(): Promise<void> {
     parentInvitationsSql,
     ownershipSql,
     submissionsColumnsSql,
+    notificationReadsSql,
+    studentActionsSql,
+    notificationPreferencesSql,
+    volunteerSignupsSql,
+    volunteerSignupConstraintsSql,
   ]) {
     const statements = sql
       .split("\n")

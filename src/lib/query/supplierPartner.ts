@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { usePaginatedQuery, flattenPages } from "@/lib/query/hooks";
 import {
   fetchSupOrders,
@@ -8,6 +8,8 @@ import {
   fetchSupCerts,
   fetchSupConversations,
   fetchSupConversationDetail,
+  sendSupConversationMessage,
+  sendPtnConversationMessage,
   fetchPtnAgreements,
   fetchPtnCollaborations,
   fetchPtnReferrals,
@@ -107,6 +109,18 @@ export function useSupConversationDetail(id: string) {
   return useQuery({
     queryKey: supKeys.conversation(id),
     queryFn: () => fetchSupConversationDetail(id),
+    enabled: Boolean(id),
+  });
+}
+
+export function useSendSupConversationMessage(id: string) {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (body: string) => sendSupConversationMessage(id, body),
+    onSuccess: () => {
+      void queryClient.invalidateQueries({ queryKey: supKeys.conversation(id) });
+      void queryClient.invalidateQueries({ queryKey: supKeys.conversations });
+    },
   });
 }
 
@@ -156,6 +170,18 @@ export function usePtnConversationDetail(id: string) {
   return useQuery({
     queryKey: ptnKeys.conversation(id),
     queryFn: () => fetchPtnConversationDetail(id),
+    enabled: Boolean(id),
+  });
+}
+
+export function useSendPtnConversationMessage(id: string) {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (body: string) => sendPtnConversationMessage(id, body),
+    onSuccess: () => {
+      void queryClient.invalidateQueries({ queryKey: ptnKeys.conversation(id) });
+      void queryClient.invalidateQueries({ queryKey: ptnKeys.conversations });
+    },
   });
 }
 

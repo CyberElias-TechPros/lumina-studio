@@ -1,13 +1,26 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
+import { toast } from "sonner";
 import { CalendarDays, CheckCircle2, Clock, QrCode, Timer, UserCheck, XCircle } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import { AppShell } from "@/components/app/app-shell";
 import { QueryState } from "@/components/ui/query-state";
 import { useStuAttendance, useStuPolicy, useStuRecords } from "@/lib/query/studentSelf";
 import type { StuKpi, StuPolicy, StuRecord } from "@/lib/api/studentSelf";
 import { cn } from "@/lib/utils";
+import { useCheckInAttendance } from "@/lib/query/attendance";
 
 export const Route = createFileRoute("/app/attendance")({
   head: () => ({
@@ -45,6 +58,34 @@ function StudentAttendance() {
   const kpisQuery = useStuAttendance();
   const recordsQuery = useStuRecords();
   const policyQuery = useStuPolicy();
+  const checkIn = useCheckInAttendance();
+  const [checkInOpen, setCheckInOpen] = useState(false);
+  const [sessionCode, setSessionCode] = useState("");
+
+  useEffect(() => {
+    const code = new URLSearchParams(window.location.search).get("code");
+    if (code) {
+      setSessionCode(code);
+      setCheckInOpen(true);
+    }
+  }, []);
+
+  const submitCheckIn = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const code = sessionCode.trim();
+    if (!code || checkIn.isPending) return;
+    checkIn.mutate(code, {
+      onSuccess: (result) => {
+        toast.success(
+          result.alreadyCheckedIn ? "You are already checked in" : "Attendance recorded",
+          { description: `${result.course} · Present` },
+        );
+        setCheckInOpen(false);
+        setSessionCode("");
+      },
+    });
+  };
+
   return (
     <AppShell
       roleKey="student"
@@ -55,7 +96,7 @@ function StudentAttendance() {
           <Badge className="bg-success/10 text-success border-0 font-semibold">
             94% — Good standing
           </Badge>
-          <Button size="sm">
+          <Button size="sm" onClick={() => setCheckInOpen(true)}>
             <QrCode className="size-4" /> Check in
           </Button>
         </>
@@ -183,6 +224,45 @@ function StudentAttendance() {
           </Card>
         </div>
       </div>
+      <Dialog open={checkInOpen} onOpenChange={setCheckInOpen}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Check in to class</DialogTitle>
+            <DialogDescription>
+              Enter the eight-character code shown by your instructor. Codes close automatically
+              when the check-in window ends.
+            </DialogDescription>
+          </DialogHeader>
+          <form onSubmit={submitCheckIn} className="space-y-4">
+            <div className="space-y-2">
+              <Label htmlFor="session-code">Class code</Label>
+              <Input
+                id="session-code"
+                value={sessionCode}
+                onChange={(event) => setSessionCode(event.target.value.toUpperCase())}
+                placeholder="e.g. C15BE081"
+                autoComplete="one-time-code"
+                autoFocus
+                maxLength={80}
+                required
+              />
+              {checkIn.error && (
+                <p role="alert" className="text-destructive text-sm font-medium">
+                  {checkIn.error.message}
+                </p>
+              )}
+            </div>
+            <DialogFooter>
+              <Button type="button" variant="outline" onClick={() => setCheckInOpen(false)}>
+                Cancel
+              </Button>
+              <Button type="submit" disabled={checkIn.isPending || !sessionCode.trim()}>
+                {checkIn.isPending ? "Checking in…" : "Check in"}
+              </Button>
+            </DialogFooter>
+          </form>
+        </DialogContent>
+      </Dialog>
     </AppShell>
   );
 }

@@ -18,6 +18,7 @@ import {
   fetchRecTasks,
   fetchRecHandover,
   logVolunteerHours,
+  signUpForOpportunity,
   type VolOpportunity,
   type VolSignup,
   type VolMetric,
@@ -179,6 +180,17 @@ export function useLogVolunteerHours() {
     onSuccess: () => {
       void queryClient.invalidateQueries({ queryKey: volKeys.hours });
       void queryClient.invalidateQueries({ queryKey: volKeys.metrics });
+    },
+  });
+}
+
+export function useSignUpForOpportunity() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (opportunityId: string) => signUpForOpportunity(opportunityId),
+    onSuccess: () => {
+      void queryClient.invalidateQueries({ queryKey: volKeys.opportunities });
+      void queryClient.invalidateQueries({ queryKey: volKeys.signups });
     },
   });
 }

@@ -1,7 +1,10 @@
+import { getConsent } from "@/lib/ga4";
+
 const ADSense_CLIENT = "";
 
 export function loadAdSense() {
   if (typeof window === "undefined" || !ADSense_CLIENT) return;
+  if (getConsent() !== "granted") return;
   if (document.querySelector(`script[data-adsense="${ADSense_CLIENT}"]`)) return;
 
   const script = document.createElement("script");

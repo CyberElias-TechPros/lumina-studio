@@ -7,6 +7,7 @@ import {
   fetchInstructorAssignments,
   fetchInstructorAssignment,
   gradeSubmission,
+  createInstructorLesson,
   type InstructorCourse,
 } from "@/lib/api/instructor";
 import type { InstructorGradebookRow, InstructorSubmission } from "@/data/learning";
@@ -42,6 +43,18 @@ export function useInstructorCourse(slug: string) {
       enabled: slug.length > 0,
     },
   );
+}
+
+export function useCreateInstructorLesson(courseId: string) {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (input: Parameters<typeof createInstructorLesson>[1]) =>
+      createInstructorLesson(courseId, input),
+    onSuccess: () => {
+      void queryClient.invalidateQueries({ queryKey: instructorKeys.courses });
+      void queryClient.invalidateQueries({ queryKey: instructorKeys.course(courseId) });
+    },
+  });
 }
 
 export function useInstructorAssignments() {

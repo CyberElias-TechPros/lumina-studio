@@ -5,7 +5,7 @@
   "account_id": "e543b6a0521fc8fd76447ceba097b665",
   "compatibility_date": "2025-11-01",
   "observability": {
-    "enabled": true
+    "enabled": true,
   },
   "vars": {
     "FRONTEND_ORIGINS": "http://localhost:5173,http://127.0.0.1:5173,http://localhost:8081,http://127.0.0.1:8081,https://cea-os.vercel.app,https://cea.ng,https://www.cea.ng",
@@ -14,43 +14,43 @@
     "EMAIL_PROVIDER": "resend",
     "EMAIL_FROM": "Cyber Elias Academy <no-reply@cea.ng>",
     "AI_BASE_URL": "https://integrate.api.nvidia.com/v1",
-    "AI_MODEL": "nvidia/llama-3.3-nemotron-super-49b-v1"
+    "AI_MODEL": "nvidia/llama-3.3-nemotron-super-49b-v1",
   },
   "kv_namespaces": [
     {
       "binding": "FLAGS",
-      "id": "8077455f347342c293f4df75faa65723"
+      "id": "8077455f347342c293f4df75faa65723",
     },
     {
       "binding": "RATE_LIMIT",
-      "id": "cecad90caa824e689d7d7dfb334fed0d"
-    }
+      "id": "cecad90caa824e689d7d7dfb334fed0d",
+    },
   ],
   "d1_databases": [
     {
       "binding": "DB",
       "database_name": "cea-db",
-      "database_id": "f673c459-0dfb-4e77-be5c-38ccbdc58838"
-    }
+      "database_id": "f673c459-0dfb-4e77-be5c-38ccbdc58838",
+    },
   ],
   "r2_buckets": [
     {
       "binding": "UPLOADS",
-      "bucket_name": "cea-uploads"
-    }
+      "bucket_name": "cea-uploads",
+    },
   ],
   "durable_objects": {
     "bindings": [
       {
         "name": "REALTIME_ROOMS",
-        "class_name": "RealtimeRoom"
-      }
-    ]
+        "class_name": "RealtimeRoom",
+      },
+    ],
   },
   "migrations": [
     {
       "tag": "v1",
-      "new_sqlite_classes": ["RealtimeRoom"]
-    }
-  ]
+      "new_sqlite_classes": ["RealtimeRoom"],
+    },
+  ],
 }

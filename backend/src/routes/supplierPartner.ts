@@ -1,9 +1,11 @@
 import { Hono } from "hono";
+import { z } from "zod";
 import type { AppEnv } from "../types";
 import { base64UrlDecode, base64UrlEncode } from "../lib/crypto";
 import { paginate, parsePagination } from "../lib/pagination";
 import { requireAuth, requireAnyRole } from "../lib/auth";
 import { ApiError } from "../lib/errors";
+import { parseBody } from "../lib/validate";
 
 const SUPPLIER_STAFF = ["supplier", "admin"];
 const PARTNER_STAFF = ["partner", "admin"];
@@ -25,8 +27,7 @@ const SUP_COLS: Record<string, { table: string; columns: string }> = {
   },
   invoices: {
     table: "sup_invoices",
-    columns:
-      "id, ref, amount, issued_label AS issuedLabel, paid_label AS paidLabel, status",
+    columns: "id, ref, amount, issued_label AS issuedLabel, paid_label AS paidLabel, status",
   },
   performance: {
     table: "sup_performance",
@@ -81,7 +82,9 @@ function registerLists(router: Hono<{ Bindings: AppEnv }>, cols: typeof SUP_COLS
       )
         .bind(...(cursor ? [base64UrlDecode(cursor) ?? ""] : []), limit)
         .all();
-      return c.json(paginate(rows.results, total?.n ?? 0, (last) => base64UrlEncode(String(last.id))));
+      return c.json(
+        paginate(rows.results, total?.n ?? 0, (last) => base64UrlEncode(String(last.id))),
+      );
     });
   }
 }
@@ -91,6 +94,49 @@ interface ThreadRow {
   from_label: string;
   body: string;
   time_label: string;
+}
+
+const sendMessageSchema = z.object({
+  body: z.string().trim().min(1, "Message cannot be empty.").max(5_000),
+});
+
+function registerConversationMessages(
+  router: Hono<{ Bindings: AppEnv }>,
+  table: string,
+  threadTable: string,
+): void {
+  router.post("/conversations/:id/messages", async (c) => {
+    const body = await parseBody(c, sendMessageSchema);
+    const conversationId = c.req.param("id");
+    const conversation = await c.env.DB.prepare(`SELECT id FROM ${table} WHERE id = ?`)
+      .bind(conversationId)
+      .first<{ id: string }>();
+    if (!conversation) throw ApiError.notFound("Conversation not found.");
+    const nextOrder = await c.env.DB.prepare(
+      `SELECT COALESCE(MAX(sort_order), -1) + 1 AS n FROM ${threadTable} WHERE conversation_id = ?`,
+    )
+      .bind(conversationId)
+      .first<{ n: number }>();
+    const message = {
+      id: `${threadTable}-${crypto.randomUUID()}`,
+      conversationId,
+      fromLabel: "You",
+      body: body.body,
+      timeLabel: "Just now",
+    };
+    await c.env.DB.prepare(
+      `INSERT INTO ${threadTable} (id, conversation_id, from_label, body, time_label, sort_order)
+       VALUES (?, ?, 'You', ?, 'Just now', ?)`,
+    )
+      .bind(message.id, conversationId, message.body, nextOrder?.n ?? 0)
+      .run();
+    await c.env.DB.prepare(
+      `UPDATE ${table} SET preview = ?, time_label = ?, unread = 0 WHERE id = ?`,
+    )
+      .bind(message.body, message.timeLabel, conversationId)
+      .run();
+    return c.json(message, 201);
+  });
 }
 
 function registerConversationDetail(
@@ -117,6 +163,8 @@ function registerConversationDetail(
 
 registerLists(supplierDashboard, SUP_COLS);
 registerConversationDetail(supplierDashboard, "sup_conversations", "sup_threads", "Conversation");
+registerConversationMessages(supplierDashboard, "sup_conversations", "sup_threads");
 
 registerLists(partnerDashboard, PTN_COLS);
 registerConversationDetail(partnerDashboard, "ptn_conversations", "ptn_threads", "Conversation");
+registerConversationMessages(partnerDashboard, "ptn_conversations", "ptn_threads");

@@ -132,6 +132,13 @@ export const fetchSupConversations = supPage<SupConversation>(
 export const fetchSupConversationDetail = (id: string): Promise<SupConversationDetail> =>
   apiFetch<SupConversationDetail>(`/v1/supplier-dashboard/conversations/${id}`);
 
+export function sendSupConversationMessage(id: string, body: string): Promise<SupThreadMessage> {
+  return apiFetch<SupThreadMessage>(`/v1/supplier-dashboard/conversations/${id}/messages`, {
+    method: "POST",
+    body: { body },
+  });
+}
+
 export const fetchPtnAgreements = supPage<PtnAgreement>("/v1/partner-dashboard/agreements");
 export const fetchPtnCollaborations = supPage<PtnCollaboration>(
   "/v1/partner-dashboard/collaborations",
@@ -145,3 +152,10 @@ export const fetchPtnConversations = supPage<PtnConversation>(
 
 export const fetchPtnConversationDetail = (id: string): Promise<PtnConversationDetail> =>
   apiFetch<PtnConversationDetail>(`/v1/partner-dashboard/conversations/${id}`);
+
+export function sendPtnConversationMessage(id: string, body: string): Promise<PtnThreadMessage> {
+  return apiFetch<PtnThreadMessage>(`/v1/partner-dashboard/conversations/${id}/messages`, {
+    method: "POST",
+    body: { body },
+  });
+}

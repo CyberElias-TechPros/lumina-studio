@@ -1,4 +1,5 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
+import { useCreateCheckout } from "@/lib/query/payments";
 import {
   ArrowLeft,
   Banknote,
@@ -40,6 +41,28 @@ function ParentStudentFinance() {
   const student = useParentStudent(studentId);
   const data = finance.data;
   const name = student.data?.name;
+  const checkout = useCreateCheckout();
+  const navigate = useNavigate();
+
+  const payOutstanding = (amount: number) => {
+    if (amount < 1 || checkout.isPending) return;
+    checkout.mutate(
+      {
+        amount,
+        description: `${name ?? "Learner"} tuition payment`,
+        redirectUrl: `${window.location.origin}/app/finance/pay-verify`,
+      },
+      {
+        onSuccess: (result) => {
+          if (result.mock) {
+            navigate({ to: "/app/finance/pay-verify", search: { reference: result.reference } });
+          } else {
+            window.open(result.authorizationUrl, "_blank", "noopener,noreferrer");
+          }
+        },
+      },
+    );
+  };
 
   return (
     <AppShell
@@ -181,9 +204,20 @@ function ParentStudentFinance() {
                       Card, bank transfer or USSD — receipts land in your email instantly and the
                       registrar's ledger updates automatically.
                     </p>
-                    <Button className="bg-ink-foreground text-ink mt-4 w-full font-semibold hover:bg-ink-foreground/90">
-                      Pay {formatNaira(current.totals.outstanding)} now
+                    <Button
+                      className="bg-ink-foreground text-ink mt-4 w-full font-semibold hover:bg-ink-foreground/90"
+                      onClick={() => payOutstanding(current.totals.outstanding)}
+                      disabled={checkout.isPending || current.totals.outstanding < 1}
+                    >
+                      {checkout.isPending
+                        ? "Opening payment…"
+                        : `Pay ${formatNaira(current.totals.outstanding)} now`}
                     </Button>
+                    {checkout.error && (
+                      <p role="alert" className="text-destructive mt-2 text-xs font-semibold">
+                        {checkout.error.message}
+                      </p>
+                    )}
                   </CardContent>
                 </Card>
               </div>

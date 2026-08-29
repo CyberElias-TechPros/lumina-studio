@@ -10,6 +10,17 @@ function arrayBufferToBase64Url(buffer: ArrayBuffer): string {
   return btoa(bin).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/g, "");
 }
 
+function base64UrlToArrayBuffer(value: string): ArrayBuffer {
+  const base64 = value.replace(/-/g, "+").replace(/_/g, "/");
+  const padded = base64.padEnd(Math.ceil(base64.length / 4) * 4, "=");
+  const binary = atob(padded);
+  const bytes = new Uint8Array(new ArrayBuffer(binary.length));
+  for (let index = 0; index < binary.length; index += 1) {
+    bytes[index] = binary.charCodeAt(index);
+  }
+  return bytes.buffer as ArrayBuffer;
+}
+
 /**
  * Registers the service worker (offline app shell + push notifications).
  * Skipped in mock mode (no API URL — local/preview without backend), when the
@@ -52,7 +63,7 @@ export async function subscribeToPush(enabled: boolean): Promise<void> {
     if (!subscription) {
       subscription = await registration.pushManager.subscribe({
         userVisibleOnly: true,
-        applicationServerKey: env.vapidPublicKey,
+        applicationServerKey: base64UrlToArrayBuffer(env.vapidPublicKey),
       });
     }
     const p256dh = subscription.getKey("p256dh");

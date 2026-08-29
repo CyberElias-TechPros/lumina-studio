@@ -2,6 +2,7 @@ import { createMiddleware } from "hono/factory";
 import type { AppEnv } from "../types";
 import { ApiError } from "./errors";
 import { loadSession } from "./auth";
+import { isTrustedOrigin } from "./origin";
 
 /**
  * Declarative route → access rules. Every /v1 endpoint must be listed here so
@@ -51,7 +52,10 @@ export const RBAC_RULES: RbacRule[] = [
   { methods: ["POST"], path: "/v1/auth/mfa/setup" },
   { methods: ["POST"], path: "/v1/auth/mfa/enable" },
   { methods: ["POST"], path: "/v1/auth/mfa/disable" },
-  { methods: ["POST"], path: "/v1/auth/mfa/verify" },
+  // Verification intentionally bypasses the normal session guard: the session
+  // is marked mfa_pending and loadSession must reject it until this endpoint
+  // completes the challenge. The handler still requires that exact session.
+  { methods: ["POST"], path: "/v1/auth/mfa/verify", public: true },
   { methods: ["GET"], path: "/v1/auth/devices" },
   { methods: ["POST"], path: "/v1/auth/devices/:id/revoke" },
 
@@ -68,6 +72,8 @@ export const RBAC_RULES: RbacRule[] = [
   { methods: ["GET"], path: "/v1/courses/:slug" },
   { methods: ["POST"], path: "/v1/courses/:slug/enroll", roles: ["student"] },
   { methods: ["POST"], path: "/v1/courses/:slug/lessons/:lessonId/complete", roles: ["student"] },
+  { methods: ["POST"], path: "/v1/attendance/sessions", roles: ["instructor", "admin"] },
+  { methods: ["POST"], path: "/v1/attendance/check-in", roles: ["student"] },
   { methods: ["GET"], path: "/v1/dashboard/student", roles: ["student"] },
   { methods: ["GET"], path: "/v1/assignments", roles: ["student"] },
   { methods: ["GET"], path: "/v1/assignments/:id", roles: ["student"] },
@@ -80,6 +86,7 @@ export const RBAC_RULES: RbacRule[] = [
   { methods: ["GET"], path: "/v1/messages/threads/:id" },
   { methods: ["POST"], path: "/v1/messages/threads/:id/messages" },
   { methods: ["GET"], path: "/v1/notifications" },
+  { methods: ["GET", "PATCH"], path: "/v1/notifications/preferences" },
   { methods: ["POST"], path: "/v1/notifications/:id/read" },
   { methods: ["POST"], path: "/v1/notifications/read-all" },
 
@@ -88,12 +95,21 @@ export const RBAC_RULES: RbacRule[] = [
   { methods: ["GET"], path: "/v1/library/:id" },
 
   /* Instructor portal */
-  { methods: ["GET"], path: "/v1/instructor/gradebook", roles: ["instructor"] },
-  { methods: ["GET"], path: "/v1/instructor/courses", roles: ["instructor"] },
-  { methods: ["GET"], path: "/v1/instructor/courses/:slug", roles: ["instructor"] },
-  { methods: ["GET"], path: "/v1/instructor/assignments", roles: ["instructor"] },
-  { methods: ["GET"], path: "/v1/instructor/assignments/:id", roles: ["instructor"] },
-  { methods: ["GET", "POST", "PATCH"], path: "/v1/instructor/submissions/:id", roles: ["instructor"] },
+  { methods: ["GET"], path: "/v1/instructor/gradebook", roles: ["instructor", "admin"] },
+  { methods: ["GET"], path: "/v1/instructor/courses", roles: ["instructor", "admin"] },
+  { methods: ["GET"], path: "/v1/instructor/courses/:slug", roles: ["instructor", "admin"] },
+  {
+    methods: ["POST"],
+    path: "/v1/instructor/courses/:slug/lessons",
+    roles: ["instructor", "admin"],
+  },
+  { methods: ["GET"], path: "/v1/instructor/assignments", roles: ["instructor", "admin"] },
+  { methods: ["GET"], path: "/v1/instructor/assignments/:id", roles: ["instructor", "admin"] },
+  {
+    methods: ["GET", "POST", "PATCH"],
+    path: "/v1/instructor/submissions/:id",
+    roles: ["instructor", "admin"],
+  },
 
   /* HR portal */
   { methods: ["GET"], path: "/v1/hr/employees", roles: ["hr", "admin"] },
@@ -104,11 +120,11 @@ export const RBAC_RULES: RbacRule[] = [
   { methods: ["PATCH"], path: "/v1/hr/payroll-changes/:id", roles: ["hr", "admin"] },
 
   /* Finance portal */
-  { methods: ["GET"], path: "/v1/invoices", roles: ["finance", "admin"] },
+  { methods: ["GET", "POST"], path: "/v1/invoices", roles: ["finance", "admin"] },
   { methods: ["PATCH"], path: "/v1/invoices/:id", roles: ["finance", "admin"] },
   { methods: ["GET"], path: "/v1/expenses", roles: ["finance", "admin"] },
   { methods: ["PATCH"], path: "/v1/expenses/:id", roles: ["finance", "admin"] },
-  { methods: ["GET"], path: "/v1/payments", roles: ["finance", "admin"] },
+  { methods: ["GET", "POST"], path: "/v1/payments", roles: ["finance", "admin"] },
   { methods: ["POST"], path: "/v1/payroll/run", roles: ["finance", "admin"] },
 
   /* Parent portal — parents only; admins may introspect */
@@ -299,7 +315,19 @@ export function matchRbacRule(method: string, path: string): RbacRule | null {
  * rather than silently open, so new endpoints must be registered here.
  */
 export const rbacGuard = createMiddleware<{ Bindings: AppEnv }>(async (c, next) => {
-  const rule = matchRbacRule(c.req.method, new URL(c.req.url).pathname);
+  const method = c.req.method.toUpperCase();
+  const origin = c.req.header("origin");
+  const pathname = new URL(c.req.url).pathname;
+  const signedWebhook = pathname === "/v1/payments/webhook";
+  if (
+    !signedWebhook &&
+    !["GET", "HEAD", "OPTIONS"].includes(method) &&
+    !isTrustedOrigin(origin, c.env)
+  ) {
+    throw ApiError.forbidden("This request origin is not allowed.");
+  }
+
+  const rule = matchRbacRule(method, pathname);
   if (!rule) throw ApiError.forbidden("This route is not registered with an access rule.");
   if (rule.public) return next();
 

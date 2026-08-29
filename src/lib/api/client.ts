@@ -64,7 +64,7 @@ export async function apiFetch<T>(path: string, init: ApiRequestInit = {}): Prom
   const { body, query, noRefresh, ...requestInit } = init;
 
   if (isMockMode) {
-    const handler = getMock(init.method ?? "GET", path);
+    const handler = await getMock(init.method ?? "GET", path);
     if (!handler) {
       throw new ApiError(
         501,
@@ -83,7 +83,10 @@ export async function apiFetch<T>(path: string, init: ApiRequestInit = {}): Prom
   }
 
   let attempt = 0;
+  let authRetried = false;
   let response: Response | undefined;
+  const method = (requestInit.method ?? "GET").toUpperCase();
+  const retryableMethod = method === "GET" || method === "HEAD" || method === "OPTIONS";
 
   while (attempt <= MAX_RETRIES) {
     response = await fetch(url, {
@@ -100,17 +103,23 @@ export async function apiFetch<T>(path: string, init: ApiRequestInit = {}): Prom
     if (response.ok) return (await readBody(response)) as T;
 
     const payload = (await readBody(response)) as unknown;
-    if (response.status === 401 && !noRefresh && !refreshPromise) {
+    if (response.status === 401 && !noRefresh && !authRetried) {
+      // Await the existing single-flight refresh when another request started
+      // it first, then retry this request exactly once as well.
+      authRetried = true;
       await beginSessionRefresh();
       attempt += 1;
       continue;
     }
-    if (response.status === 429 && attempt < MAX_RETRIES) {
+    // Retrying writes can duplicate payments, applications, messages or
+    // uploads. Callers can retry those deliberately; only safe reads are
+    // automatically retried for transient failures/rate limits.
+    if (retryableMethod && response.status === 429 && attempt < MAX_RETRIES) {
       await sleep(retryDelayMs(response, attempt));
       attempt += 1;
       continue;
     }
-    if (response.status >= 500 && attempt < MAX_RETRIES) {
+    if (retryableMethod && response.status >= 500 && attempt < MAX_RETRIES) {
       await sleep(retryDelayMs(response, attempt));
       attempt += 1;
       continue;
@@ -140,6 +149,7 @@ const mockRegistry = new Map<string, MockHandler>();
  * segment; a trailing `*` also matches any deeper suffix. */
 const mockPatterns: { method: string; segments: string[]; handler: MockHandler }[] = [];
 let mocksLoaded = false;
+let mocksLoadPromise: Promise<void> | null = null;
 
 const mockKey = (method: string, path: string) => `${method.toUpperCase()} ${path.split("?")[0]}`;
 
@@ -164,21 +174,29 @@ function matchesPattern(segments: string[], pathname: string): boolean {
   return segments.every((segment, i) => segment === "*" || segment === pathSegments[i]);
 }
 
-function getMock(method: string, path: string): MockHandler | undefined {
+async function getMock(method: string, path: string): Promise<MockHandler | undefined> {
   if (!mocksLoaded && !import.meta.env.VITE_API_URL) {
-    mocksLoaded = true;
-    // Lazy import keeps the mock registry out of the production bundle:
-    // VITE_API_URL is a compile-time constant, so when it is set (real mode)
-    // the dead branch — and the ~3 MB mock chunk — is tree-shaken away.
-    void import("@/lib/api/mocks").then((module) => module.registerAllMocks());
+    // The first request used to race this dynamic import and fail with
+    // MOCK_NOT_FOUND. Share one promise so simultaneous queries wait for the
+    // registry exactly once while keeping the mock chunk out of real builds.
+    if (!mocksLoadPromise) {
+      mocksLoadPromise = import("@/lib/api/mocks").then((module) => {
+        module.registerAllMocks();
+        mocksLoaded = true;
+      });
+    }
+    await mocksLoadPromise;
   }
   const pathname = path.split("?")[0] ?? path;
   const exact = mockRegistry.get(mockKey(method, pathname));
   if (exact) return exact;
-  for (const pattern of mockPatterns) {
-    if (pattern.method === method.toUpperCase() && matchesPattern(pattern.segments, pathname)) {
-      return pattern.handler;
-    }
-  }
-  return undefined;
+  // Prefer the most specific dynamic route. A broad `/postings/*` handler
+  // must not swallow a deeper `/postings/*/candidates/*` request.
+  const matchingPatterns = mockPatterns
+    .filter(
+      (pattern) =>
+        pattern.method === method.toUpperCase() && matchesPattern(pattern.segments, pathname),
+    )
+    .sort((a, b) => b.segments.length - a.segments.length);
+  return matchingPatterns[0]?.handler;
 }

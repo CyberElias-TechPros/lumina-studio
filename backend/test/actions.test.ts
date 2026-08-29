@@ -339,6 +339,8 @@ describe("notifications", () => {
     const body = (await list.json()) as { items: { id: string; read?: boolean }[] };
     const ntf = body.items.find((i) => i.id === "ntf-act-1");
     expect(ntf?.read).toBe(true);
+    const global = body.items.find((i) => i.id === "ntf-1");
+    expect(global?.read).toBe(true);
   });
 });
 

@@ -15,21 +15,25 @@ const nav = [
   { label: "Community", to: "/community" },
   { label: "About", to: "/about" },
   { label: "Team", to: "/team" },
-  { label: "More", to: "/blog", subLinks: [
-    { label: "Blog & Insights", to: "/blog" },
-    { label: "Glossary", to: "/glossary" },
-    { label: "Career Guides", to: "/career-guides" },
-    { label: "Resources", to: "/resources" },
-    { label: "Library", to: "/library" },
-    { label: "FAQ", to: "/faq" },
-    { label: "Events", to: "/events" },
-    { label: "Scholarships", to: "/scholarships" },
-    { label: "Contact", to: "/contact" },
-    { label: "Vizier", to: "/vizier" },
-    { label: "Privacy", to: "/privacy" },
-    { label: "Terms", to: "/terms" },
-    { label: "Accessibility", to: "/accessibility" },
-  ]},
+  {
+    label: "More",
+    to: "/blog",
+    subLinks: [
+      { label: "Blog & Insights", to: "/blog" },
+      { label: "Glossary", to: "/glossary" },
+      { label: "Career Guides", to: "/career-guides" },
+      { label: "Resources", to: "/resources" },
+      { label: "Library", to: "/library" },
+      { label: "FAQ", to: "/faq" },
+      { label: "Events", to: "/events" },
+      { label: "Scholarships", to: "/scholarships" },
+      { label: "Contact", to: "/contact" },
+      { label: "Vizier", to: "/vizier" },
+      { label: "Privacy", to: "/privacy" },
+      { label: "Terms", to: "/terms" },
+      { label: "Accessibility", to: "/accessibility" },
+    ],
+  },
 ];
 
 export function BrandMark({ className }: { className?: string }) {
@@ -131,7 +135,13 @@ export function SiteHeader() {
                   )}
                   <span className="relative">{item.label}</span>
                   {hasSub && (
-                    <svg className="relative size-3.5 opacity-60" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <svg
+                      className="relative size-3.5 opacity-60"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth={2}
+                    >
                       <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
                     </svg>
                   )}

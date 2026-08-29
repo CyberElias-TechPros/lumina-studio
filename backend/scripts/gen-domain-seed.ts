@@ -74,6 +74,7 @@ const DEMO_STUDENT_ID = "00000000-0000-4000-8000-000000000001";
 const DEMO_ADMIN_ID = "00000000-0000-4000-8000-000000000003";
 const DEMO_HR_ID = "00000000-0000-4000-8000-000000000004";
 const DEMO_FINANCE_ID = "00000000-0000-4000-8000-000000000005";
+const DEMO_EMPLOYER_ID = "00000000-0000-4000-8000-000000000032";
 
 function sqlString(value: string): string {
   return `'${value.replace(/'/g, "''").replace(/\\/g, "\\\\")}'`;
@@ -108,19 +109,79 @@ for (const email of ["admin@cea.ng", "hr@cea.ng", "finance@cea.ng"]) {
 }
 
 const ACTOR_USERS: Array<{ id: string; name: string; email: string; role: string }> = [
-  { id: "00000000-0000-4000-8000-000000000006", name: "Emeka Adebayo", email: "mentor@cea.ng", role: "mentor" },
-  { id: "00000000-0000-4000-8000-000000000021", name: "Test Intern", email: "intern@cea.ng", role: "intern" },
+  {
+    id: "00000000-0000-4000-8000-000000000006",
+    name: "Emeka Adebayo",
+    email: "mentor@cea.ng",
+    role: "mentor",
+  },
+  {
+    id: "00000000-0000-4000-8000-000000000021",
+    name: "Test Intern",
+    email: "intern@cea.ng",
+    role: "intern",
+  },
   { id: "00000000-0000-4000-8000-000000000022", name: "Test IT", email: "it@cea.ng", role: "it" },
-  { id: "00000000-0000-4000-8000-000000000023", name: "Test Ops", email: "ops@cea.ng", role: "ops" },
-  { id: "00000000-0000-4000-8000-000000000024", name: "Test Dev", email: "dev@cea.ng", role: "dev" },
-  { id: "00000000-0000-4000-8000-000000000025", name: "Test Alumni", email: "alumni@cea.ng", role: "alumni" },
-  { id: "00000000-0000-4000-8000-000000000026", name: "Test NGO", email: "ngo@cea.ng", role: "ngo" },
-  { id: "00000000-0000-4000-8000-000000000027", name: "Test Growth", email: "growth@cea.ng", role: "growth" },
-  { id: "00000000-0000-4000-8000-000000000028", name: "Test Product Marketing", email: "product-marketing@cea.ng", role: "product-marketing" },
-  { id: "00000000-0000-4000-8000-000000000029", name: "Test Behavioral", email: "behavioral@cea.ng", role: "behavioral-design" },
-  { id: "00000000-0000-4000-8000-000000000030", name: "Test Volunteer", email: "volunteer@cea.ng", role: "volunteer" },
-  { id: "00000000-0000-4000-8000-000000000031", name: "Test Receptionist", email: "receptionist@cea.ng", role: "receptionist" },
-  { id: "00000000-0000-4000-8000-000000000032", name: "Test Employer", email: "employer@cea.ng", role: "employer" },
+  {
+    id: "00000000-0000-4000-8000-000000000023",
+    name: "Test Ops",
+    email: "ops@cea.ng",
+    role: "ops",
+  },
+  {
+    id: "00000000-0000-4000-8000-000000000024",
+    name: "Test Dev",
+    email: "dev@cea.ng",
+    role: "dev",
+  },
+  {
+    id: "00000000-0000-4000-8000-000000000025",
+    name: "Test Alumni",
+    email: "alumni@cea.ng",
+    role: "alumni",
+  },
+  {
+    id: "00000000-0000-4000-8000-000000000026",
+    name: "Test NGO",
+    email: "ngo@cea.ng",
+    role: "ngo",
+  },
+  {
+    id: "00000000-0000-4000-8000-000000000027",
+    name: "Test Growth",
+    email: "growth@cea.ng",
+    role: "growth",
+  },
+  {
+    id: "00000000-0000-4000-8000-000000000028",
+    name: "Test Product Marketing",
+    email: "product-marketing@cea.ng",
+    role: "product-marketing",
+  },
+  {
+    id: "00000000-0000-4000-8000-000000000029",
+    name: "Test Behavioral",
+    email: "behavioral@cea.ng",
+    role: "behavioral-design",
+  },
+  {
+    id: "00000000-0000-4000-8000-000000000030",
+    name: "Test Volunteer",
+    email: "volunteer@cea.ng",
+    role: "volunteer",
+  },
+  {
+    id: "00000000-0000-4000-8000-000000000031",
+    name: "Test Receptionist",
+    email: "receptionist@cea.ng",
+    role: "receptionist",
+  },
+  {
+    id: "00000000-0000-4000-8000-000000000032",
+    name: "Test Employer",
+    email: "employer@cea.ng",
+    role: "employer",
+  },
 ];
 
 for (const u of ACTOR_USERS) {
@@ -279,10 +340,11 @@ for (const p of payments) {
 for (const r of postings) {
   statements.push(
     `INSERT OR IGNORE INTO job_postings (id, title, applicants, views, posted, status, detail, ` +
-      `tone, sort_order) ` +
+      `tone, sort_order, created_by) ` +
       `VALUES (${sqlString(`post-${postings.indexOf(r) + 1}`)}, ${sqlString(r.title)}, ` +
       `${r.applicants}, ${r.views}, ${sqlString(r.posted)}, ${sqlString(r.status)}, ` +
-      `${sqlString(r.detail)}, ${sqlString(r.tone)}, ${postings.indexOf(r)});`,
+      `${sqlString(r.detail)}, ${sqlString(r.tone)}, ${postings.indexOf(r)}, ` +
+      `${sqlString(DEMO_EMPLOYER_ID)});`,
   );
 }
 
@@ -298,10 +360,10 @@ for (const c of pipelineCandidates) {
 
 for (const i of interviews) {
   statements.push(
-    `INSERT OR IGNORE INTO interviews (id, candidate, role, date, mode, status, sort_order) ` +
+    `INSERT OR IGNORE INTO interviews (id, candidate, role, date, mode, status, sort_order, created_by) ` +
       `VALUES (${sqlString(`ivw-${interviews.indexOf(i) + 1}`)}, ${sqlString(i.candidate)}, ` +
       `${sqlString(i.role)}, ${sqlString(i.date)}, ${sqlString(i.mode)}, ` +
-      `${sqlString(i.status)}, ${interviews.indexOf(i)});`,
+      `${sqlString(i.status)}, ${interviews.indexOf(i)}, ${sqlString(DEMO_EMPLOYER_ID)});`,
   );
 }
 
