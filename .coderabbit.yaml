@@ -1,0 +1,39 @@
+language: en-US
+
+reviews:
+  profile: chill
+  auto_review:
+    enabled: true
+    drafts: false
+  high_level_summary: true
+  review_status: true
+  collapse_walkthrough: true
+  poem: false
+
+  # Keep generated output and dependency lockfiles out of the review signal.
+  # Source generators and the migration files remain reviewable.
+  path_filters:
+    - "!**/*.lock"
+    - "!src/routeTree.gen.ts"
+    - "!public/sitemap.xml"
+    - "!backend/worker-configuration.d.ts"
+    - "!backend/seeds/domain.ts"
+    - "!backend/seeds/domain-data.sql"
+
+  path_instructions:
+    - path: "backend/migrations/**"
+      instructions: |
+        Check migration ordering, idempotency, foreign-key dependencies, and
+        whether existing production data can be migrated without loss.
+    - path: "backend/src/routes/**"
+      instructions: |
+        Check authentication, authorization, tenant or user scoping, input
+        validation, safe error responses, and consistent HTTP status codes.
+    - path: "backend/src/lib/auth.ts"
+      instructions: |
+        Treat this as security-sensitive. Check session invalidation, token
+        handling, password verification, and protection against account or
+        privilege escalation.
+
+chat:
+  auto_reply: true
