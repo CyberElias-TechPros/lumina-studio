@@ -95,10 +95,12 @@ part of the change.
 
 - `scripts/check-pr-size.mjs` counts the same three-dot PR diff and fails over
   150 files. It warns above 140 to leave room for follow-up fixes.
-- The `pr-size` CI job runs this check on every pull request with the actual
-  GitHub base and head SHAs.
 - `.coderabbit.yaml` removes lockfiles and generated output from review noise
   and adds focused guidance for migrations, routes, and authentication.
+- The check is ready to wire into CI once the repository connection has
+  `workflows` write permission; this PR deliberately does not modify the
+  workflow file because the current GitHub App token cannot push workflow
+  changes.
 
 For future initiatives, use the backend/frontend split above as the default
 starting point, then split a slice further by product area if it approaches
