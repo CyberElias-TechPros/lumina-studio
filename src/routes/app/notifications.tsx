@@ -1,6 +1,15 @@
 import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { Bell, CheckCheck, Inbox, Radio, Send, Settings2, Sparkles } from "lucide-react";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { Switch } from "@/components/ui/switch";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -20,6 +29,8 @@ import {
   useNotifications,
   useMarkAllNotificationsRead,
   useMarkNotificationRead,
+  useNotificationPreferences,
+  useUpdateNotificationPreferences,
 } from "@/lib/query/notifications";
 import { useSendPush } from "@/lib/query/push";
 import { useCertificateCandidates } from "@/lib/query/certificates";
@@ -50,7 +61,21 @@ function Notifications() {
   const rows = query.data?.pages.flatMap((p) => p.items) ?? [];
   const markAll = useMarkAllNotificationsRead();
   const markRead = useMarkNotificationRead();
+  const preferencesQuery = useNotificationPreferences();
+  const updatePreferences = useUpdateNotificationPreferences();
   const unread = rows.filter((n) => !n.read).length;
+  const [preferencesOpen, setPreferencesOpen] = useState(false);
+  const preferences = preferencesQuery.data ?? {
+    appEnabled: true,
+    emailEnabled: true,
+    smsEnabled: false,
+    quietStart: "21:00",
+    quietEnd: "08:00",
+  };
+
+  const updatePreference = (input: Parameters<typeof updatePreferences.mutate>[0]) => {
+    updatePreferences.mutate(input);
+  };
 
   return (
     <AppShell
@@ -71,7 +96,12 @@ function Notifications() {
           >
             <CheckCheck className="size-4" /> {markAll.isPending ? "Marking…" : "Mark all read"}
           </Button>
-          <Button variant="ghost" size="sm" className="font-semibold">
+          <Button
+            variant="ghost"
+            size="sm"
+            className="font-semibold"
+            onClick={() => setPreferencesOpen(true)}
+          >
             <Settings2 className="size-4" /> Preferences
           </Button>
         </>
@@ -187,6 +217,85 @@ function Notifications() {
 
         <SendPushCard />
       </div>
+      <Dialog open={preferencesOpen} onOpenChange={setPreferencesOpen}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Notification preferences</DialogTitle>
+            <DialogDescription>
+              Choose where routine updates are delivered. Urgent safeguarding and security alerts
+              may still be sent through the required channel.
+            </DialogDescription>
+          </DialogHeader>
+          <div className="space-y-4">
+            {[
+              {
+                id: "app",
+                label: "In-app notifications",
+                value: preferences.appEnabled,
+                key: "appEnabled" as const,
+              },
+              {
+                id: "email",
+                label: "Email updates",
+                value: preferences.emailEnabled,
+                key: "emailEnabled" as const,
+              },
+              {
+                id: "sms",
+                label: "SMS updates",
+                value: preferences.smsEnabled,
+                key: "smsEnabled" as const,
+              },
+            ].map((item) => (
+              <div
+                key={item.id}
+                className="flex items-center justify-between gap-4 rounded-xl border p-3"
+              >
+                <Label htmlFor={`preference-${item.id}`} className="font-semibold">
+                  {item.label}
+                </Label>
+                <Switch
+                  id={`preference-${item.id}`}
+                  checked={item.value}
+                  onCheckedChange={(checked) => updatePreference({ [item.key]: checked })}
+                  disabled={updatePreferences.isPending}
+                  aria-label={item.label}
+                />
+              </div>
+            ))}
+            <div className="grid gap-3 sm:grid-cols-2">
+              <div className="space-y-1.5">
+                <Label htmlFor="quiet-start">Quiet hours start</Label>
+                <Input
+                  id="quiet-start"
+                  type="time"
+                  value={preferences.quietStart}
+                  onChange={(event) => updatePreference({ quietStart: event.target.value })}
+                />
+              </div>
+              <div className="space-y-1.5">
+                <Label htmlFor="quiet-end">Quiet hours end</Label>
+                <Input
+                  id="quiet-end"
+                  type="time"
+                  value={preferences.quietEnd}
+                  onChange={(event) => updatePreference({ quietEnd: event.target.value })}
+                />
+              </div>
+            </div>
+            {updatePreferences.error && (
+              <p role="alert" className="text-destructive text-sm font-medium">
+                {updatePreferences.error.message}
+              </p>
+            )}
+          </div>
+          <DialogFooter>
+            <Button type="button" onClick={() => setPreferencesOpen(false)}>
+              Done
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </AppShell>
   );
 }

@@ -11,7 +11,8 @@ export const Route = createFileRoute("/career-guides")({
   head: () =>
     getPageHead({
       title: "Career Guides — honest roadmaps for Nigerian tech careers",
-      description: "Practical career roadmaps for frontend, backend, cloud, cybersecurity, data, marketing and design roles in Nigeria. Salary ranges, 90-day plans and common pitfalls.",
+      description:
+        "Practical career roadmaps for frontend, backend, cloud, cybersecurity, data, marketing and design roles in Nigeria. Salary ranges, 90-day plans and common pitfalls.",
       path: "/career-guides",
       image: "https://cea.ng/og-career-guides.svg",
     }),
@@ -70,7 +71,9 @@ function CareerGuidesPage() {
               ].map((k) => (
                 <Card key={k.label} className="bg-card shadow-soft border">
                   <CardContent className="flex items-center gap-3 p-4">
-                    <span className={`grid size-9 shrink-0 place-items-center rounded-lg ${k.tone}`}>
+                    <span
+                      className={`grid size-9 shrink-0 place-items-center rounded-lg ${k.tone}`}
+                    >
                       <k.icon className="size-4" />
                     </span>
                     <div className="min-w-0">

@@ -78,7 +78,7 @@ export async function loadSession(
   const now = new Date().toISOString();
 
   const row = await c.env.DB.prepare(
-    `SELECT s.id AS session_id, s.expires_at, s.revoked_at,
+    `SELECT s.id AS session_id, s.expires_at, s.revoked_at, s.mfa_pending,
             u.id AS user_id, u.name, u.email, u.avatar_url, u.role_key, u.status
        FROM sessions s
        JOIN users u ON u.id = s.user_id
@@ -89,6 +89,7 @@ export async function loadSession(
       session_id: string;
       expires_at: string;
       revoked_at: string | null;
+      mfa_pending: number;
       user_id: string;
       name: string;
       email: string;
@@ -98,6 +99,9 @@ export async function loadSession(
     }>();
 
   if (!row || row.revoked_at || row.status !== "active") return null;
+  // Password sign-in creates a short-lived pending session when MFA is
+  // enabled. It must not authorize API access until /mfa/verify completes.
+  if (row.mfa_pending === 1) return null;
   if (row.expires_at <= now) return null;
 
   return {

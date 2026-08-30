@@ -13,11 +13,7 @@ export function ContentFreshness({ lastReviewed, author, className }: Props) {
         <CalendarDays className="size-3.5" />
         Last reviewed: {lastReviewed}
       </span>
-      {author && (
-        <span className="text-muted-foreground">
-          By {author}
-        </span>
-      )}
+      {author && <span className="text-muted-foreground">By {author}</span>}
     </div>
   );
 }

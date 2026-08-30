@@ -1,5 +1,13 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowLeft, ArrowRight, BookOpen, CheckCircle2, Clock, Hammer, ListChecks } from "lucide-react";
+import {
+  ArrowLeft,
+  ArrowRight,
+  BookOpen,
+  CheckCircle2,
+  Clock,
+  Hammer,
+  ListChecks,
+} from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -12,8 +20,12 @@ import { getModuleKey, moduleDetails, slugifyModuleTitle } from "@/data/module-d
 export const Route = createFileRoute("/programs/$slug/$module")({
   head: ({ params }) => {
     const program = programs.find((p) => p.slug === params.slug);
-    const idx = program?.modules.findIndex((m) => slugifyModuleTitle(m.title) === params.module) ?? -1;
-    const key = program && idx >= 0 ? getModuleKey(program.slug, slugifyModuleTitle(program.modules[idx].title)) : "";
+    const idx =
+      program?.modules.findIndex((m) => slugifyModuleTitle(m.title) === params.module) ?? -1;
+    const key =
+      program && idx >= 0
+        ? getModuleKey(program.slug, slugifyModuleTitle(program.modules[idx].title))
+        : "";
     const detail = moduleDetails[key];
     if (!program || idx < 0 || !detail) {
       return getPageHead({
@@ -91,7 +103,9 @@ function ModuleDetailPage() {
             <div className="space-y-5">
               <h2 className="font-display text-2xl font-extrabold">Overview</h2>
               {detail.overview.map((para, i) => (
-                <p key={i} className="text-muted-foreground leading-relaxed">{para}</p>
+                <p key={i} className="text-muted-foreground leading-relaxed">
+                  {para}
+                </p>
               ))}
             </div>
           </Reveal>
@@ -124,7 +138,9 @@ function ModuleDetailPage() {
                   <Card key={project.name} className="shadow-soft">
                     <CardContent className="p-5">
                       <h3 className="font-display mb-1.5 font-extrabold">{project.name}</h3>
-                      <p className="text-muted-foreground text-sm leading-relaxed">{project.description}</p>
+                      <p className="text-muted-foreground text-sm leading-relaxed">
+                        {project.description}
+                      </p>
                     </CardContent>
                   </Card>
                 ))}
@@ -153,7 +169,9 @@ function ModuleDetailPage() {
                     <span className="text-muted-foreground flex items-center gap-1.5 text-xs font-bold uppercase tracking-wide">
                       <ArrowLeft className="size-3.5" /> Previous module
                     </span>
-                    <p className="group-hover:text-primary mt-1.5 text-sm font-extrabold transition-colors">{prev.title}</p>
+                    <p className="group-hover:text-primary mt-1.5 text-sm font-extrabold transition-colors">
+                      {prev.title}
+                    </p>
                   </Link>
                 )}
                 {next && nextSlug && (
@@ -165,7 +183,9 @@ function ModuleDetailPage() {
                     <span className="text-muted-foreground flex items-center justify-end gap-1.5 text-xs font-bold uppercase tracking-wide">
                       Next module <ArrowRight className="size-3.5" />
                     </span>
-                    <p className="group-hover:text-primary mt-1.5 text-sm font-extrabold transition-colors">{next.title}</p>
+                    <p className="group-hover:text-primary mt-1.5 text-sm font-extrabold transition-colors">
+                      {next.title}
+                    </p>
                   </Link>
                 )}
               </nav>

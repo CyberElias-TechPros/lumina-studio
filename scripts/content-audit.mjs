@@ -9,7 +9,15 @@ function walk(dir) {
     const p = join(dir, e);
     const s = statSync(p);
     if (s.isDirectory()) out = out.concat(walk(p));
-    else if (e.endsWith(".tsx") && !e.startsWith("app.") && !e.startsWith("auth.") && e !== "__root.tsx" && e !== "sitemap.xml.tsx" && !p.includes("portal")) out.push(p);
+    else if (
+      e.endsWith(".tsx") &&
+      !e.startsWith("app.") &&
+      !e.startsWith("auth.") &&
+      e !== "__root.tsx" &&
+      e !== "sitemap.xml.tsx" &&
+      !p.includes("portal")
+    )
+      out.push(p);
   }
   return out;
 }
@@ -35,9 +43,16 @@ function analyze(file) {
   const uniq = new Set(words.map((w) => w.toLowerCase().replace(/[^a-z0-9]/g, "")));
   // headings give structure hints
   const h2 = [...src.matchAll(/<CardTitle[^>]*>([\s\S]*?)<\/CardTitle>/g)].length;
-  return { file: file.replace(/\\/g, "/"), textNodes: nodes.length, words: words.length, uniqueWords: uniq.size };
+  return {
+    file: file.replace(/\\/g, "/"),
+    textNodes: nodes.length,
+    words: words.length,
+    uniqueWords: uniq.size,
+  };
 }
 
-const files = walk(ROUTES).map(analyze).sort((a, b) => a.words - b.words);
+const files = walk(ROUTES)
+  .map(analyze)
+  .sort((a, b) => a.words - b.words);
 console.log("file\ttextNodes\twords\tuniqueWords");
 for (const r of files) console.log(`${r.file}\t${r.textNodes}\t${r.words}\t${r.uniqueWords}`);

@@ -156,14 +156,18 @@ function AssessmentsPage() {
                             Start <ArrowRight className="ml-1 size-3.5" />
                           </Link>
                         </Button>
+                      ) : a.status === "done" ? (
+                        <Button asChild variant="outline" size="sm" className="font-semibold">
+                          <Link
+                            to="/app/assessments/$assessmentId/take"
+                            params={{ assessmentId: a.id }}
+                          >
+                            Review <ArrowRight className="ml-1 size-3.5" />
+                          </Link>
+                        </Button>
                       ) : (
-                        <Button
-                          variant="outline"
-                          size="sm"
-                          className="font-semibold"
-                          disabled={a.status !== "done"}
-                        >
-                          {a.status === "done" ? "Review" : "Locked"}
+                        <Button variant="outline" size="sm" className="font-semibold" disabled>
+                          Locked
                         </Button>
                       )}
                     </CardContent>

@@ -110,7 +110,13 @@ describe("GET /v1/product-marketing-dashboard (Product marketing suite)", () => 
       headers: cookieHeaders(productMarketing.cookie),
     });
     const body = (await res.json()) as {
-      items: Array<{ id: string; capability: string; cea: number; skilledge: number; aptbridge: number }>;
+      items: Array<{
+        id: string;
+        capability: string;
+        cea: number;
+        skilledge: number;
+        aptbridge: number;
+      }>;
       total: number;
     };
     expect(body.total).toBeGreaterThanOrEqual(5);

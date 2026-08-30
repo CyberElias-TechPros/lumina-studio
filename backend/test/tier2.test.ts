@@ -80,7 +80,10 @@ describe("GET /v1/applications/admin/stats (admissions funnel)", () => {
 
 describe("POST /v1/payroll/run (finance payroll batch)", () => {
   it("403s non-finance roles", async () => {
-    const res = await api("/v1/payroll/run", { method: "POST", headers: cookieHeaders(student.cookie) });
+    const res = await api("/v1/payroll/run", {
+      method: "POST",
+      headers: cookieHeaders(student.cookie),
+    });
     expect(res.status).toBe(403);
   });
 
@@ -96,7 +99,11 @@ describe("POST /v1/payroll/run (finance payroll batch)", () => {
       headers: cookieHeaders(finance.cookie),
     });
     expect(res.status).toBe(200);
-    const body = (await res.json()) as { ok: boolean; processed: number; batch: { batch: string } | null };
+    const body = (await res.json()) as {
+      ok: boolean;
+      processed: number;
+      batch: { batch: string } | null;
+    };
     expect(body.ok).toBe(true);
     expect(body.processed).toBeGreaterThanOrEqual(1);
     expect(body.batch?.batch).toContain("Payroll");
@@ -226,7 +233,10 @@ describe("GET /v1/parent/students/:id/attendance (records)", () => {
 
 describe("POST /v1/mentor/match (rule-based matchmaking)", () => {
   it("403s roles outside the learner set", async () => {
-    const res = await api("/v1/mentor/match", { method: "POST", headers: cookieHeaders(parent.cookie) });
+    const res = await api("/v1/mentor/match", {
+      method: "POST",
+      headers: cookieHeaders(parent.cookie),
+    });
     expect(res.status).toBe(403);
   });
 
@@ -234,7 +244,10 @@ describe("POST /v1/mentor/match (rule-based matchmaking)", () => {
     const res = await api("/v1/mentor/match", {
       method: "POST",
       headers: { "Content-Type": "application/json", ...cookieHeaders(student.cookie) },
-      body: JSON.stringify({ program: "Backend & APIs", goal: "Prepare for backend engineering interviews" }),
+      body: JSON.stringify({
+        program: "Backend & APIs",
+        goal: "Prepare for backend engineering interviews",
+      }),
     });
     expect(res.status).toBe(200);
     const body = (await res.json()) as {
@@ -242,16 +255,17 @@ describe("POST /v1/mentor/match (rule-based matchmaking)", () => {
     };
     expect(body.matches.length).toBeGreaterThan(0);
     expect(body.matches[0]!.match).toBeGreaterThanOrEqual(40);
-    const ranked = body.matches.every(
-      (m, i) => i === 0 || body.matches[i - 1]!.match >= m.match,
-    );
+    const ranked = body.matches.every((m, i) => i === 0 || body.matches[i - 1]!.match >= m.match);
     expect(ranked).toBe(true);
   });
 
   it("lists mentor profiles", async () => {
     const res = await api("/v1/mentor/profiles", { headers: cookieHeaders(student.cookie) });
     expect(res.status).toBe(200);
-    const body = (await res.json()) as { items: Array<{ name: string; focus: string }>; total: number };
+    const body = (await res.json()) as {
+      items: Array<{ name: string; focus: string }>;
+      total: number;
+    };
     expect(body.total).toBeGreaterThanOrEqual(3);
     expect(body.items[0]!.focus).toBeTruthy();
   });

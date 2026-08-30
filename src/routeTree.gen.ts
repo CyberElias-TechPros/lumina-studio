@@ -331,6 +331,7 @@ import { Route as AppOpsReportsRouteImport } from './routes/app/ops/reports'
 import { Route as AppOpsTasksRouteImport } from './routes/app/ops/tasks'
 import { Route as AppOpsVendorsRouteImport } from './routes/app/ops/vendors'
 import { Route as AppParentIndexRouteImport } from './routes/app/parent/index'
+import { Route as AppPartnerIndexRouteImport } from './routes/app/partner/index'
 import { Route as AppPartnerAgreementsRouteImport } from './routes/app/partner/agreements'
 import { Route as AppPartnerCollaborationsRouteImport } from './routes/app/partner/collaborations'
 import { Route as AppPartnerHubRouteImport } from './routes/app/partner/hub'
@@ -377,6 +378,7 @@ import { Route as AppAdmissionsApplicationsIdRouteImport } from './routes/app/ad
 import { Route as AppAssessmentsAssessmentIdTakeRouteImport } from './routes/app/assessments/$assessmentId/take'
 import { Route as AppClientProjectsProjectIdRouteImport } from './routes/app/client/projects/$projectId'
 import { Route as AppConversionCopyLandingPagesIdRouteImport } from './routes/app/conversion-copy/landing-pages/$id'
+import { Route as AppEmployerPipelineIndexRouteImport } from './routes/app/employer/pipeline/index'
 import { Route as AppEmployerPipelineJobIdRouteImport } from './routes/app/employer/pipeline/$jobId'
 import { Route as AppInstructorAssignmentsIndexRouteImport } from './routes/app/instructor/assignments/index'
 import { Route as AppInstructorCoursesIndexRouteImport } from './routes/app/instructor/courses/index'
@@ -676,9 +678,9 @@ const LibraryIndexRoute = LibraryIndexRouteImport.update({
   getParentRoute: () => rootRouteImport,
 } as any)
 const LibraryCategoryRoute = LibraryCategoryRouteImport.update({
-  id: '/$category',
-  path: '/$category',
-  getParentRoute: () => LibraryRoute,
+  id: '/library/$category',
+  path: '/library/$category',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const PortalIndexRoute = PortalIndexRouteImport.update({
   id: '/portal/',
@@ -2039,6 +2041,11 @@ const AppParentIndexRoute = AppParentIndexRouteImport.update({
   path: '/app/parent/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AppPartnerIndexRoute = AppPartnerIndexRouteImport.update({
+  id: '/app/partner/',
+  path: '/app/partner/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AppPartnerAgreementsRoute = AppPartnerAgreementsRouteImport.update({
   id: '/app/partner/agreements',
   path: '/app/partner/agreements',
@@ -2287,6 +2294,12 @@ const AppConversionCopyLandingPagesIdRoute =
   AppConversionCopyLandingPagesIdRouteImport.update({
     id: '/app/conversion-copy/landing-pages/$id',
     path: '/app/conversion-copy/landing-pages/$id',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AppEmployerPipelineIndexRoute =
+  AppEmployerPipelineIndexRouteImport.update({
+    id: '/app/employer/pipeline/',
+    path: '/app/employer/pipeline/',
     getParentRoute: () => rootRouteImport,
   } as any)
 const AppEmployerPipelineJobIdRoute =
@@ -2781,6 +2794,7 @@ export interface FileRoutesByFullPath {
   '/app/ngo/': typeof AppNgoIndexRoute
   '/app/ops/': typeof AppOpsIndexRoute
   '/app/parent/': typeof AppParentIndexRoute
+  '/app/partner/': typeof AppPartnerIndexRoute
   '/app/product-marketing/': typeof AppProductMarketingIndexRoute
   '/app/receptionist/': typeof AppReceptionistIndexRoute
   '/app/supplier/': typeof AppSupplierIndexRoute
@@ -2798,6 +2812,7 @@ export interface FileRoutesByFullPath {
   '/app/mentor/sessions/$sessionId': typeof AppMentorSessionsSessionIdRoute
   '/app/parent/invitation/accept': typeof AppParentInvitationAcceptRoute
   '/app/parent/students/$studentId': typeof AppParentStudentsStudentIdRouteWithChildren
+  '/app/employer/pipeline/': typeof AppEmployerPipelineIndexRoute
   '/app/instructor/assignments/': typeof AppInstructorAssignmentsIndexRoute
   '/app/instructor/courses/': typeof AppInstructorCoursesIndexRoute
   '/app/client/projects/$projectId/tasks': typeof AppClientProjectsProjectIdTasksRoute
@@ -3172,6 +3187,7 @@ export interface FileRoutesByTo {
   '/app/ngo': typeof AppNgoIndexRoute
   '/app/ops': typeof AppOpsIndexRoute
   '/app/parent': typeof AppParentIndexRoute
+  '/app/partner': typeof AppPartnerIndexRoute
   '/app/product-marketing': typeof AppProductMarketingIndexRoute
   '/app/receptionist': typeof AppReceptionistIndexRoute
   '/app/supplier': typeof AppSupplierIndexRoute
@@ -3189,6 +3205,7 @@ export interface FileRoutesByTo {
   '/app/mentor/sessions/$sessionId': typeof AppMentorSessionsSessionIdRoute
   '/app/parent/invitation/accept': typeof AppParentInvitationAcceptRoute
   '/app/parent/students/$studentId': typeof AppParentStudentsStudentIdRouteWithChildren
+  '/app/employer/pipeline': typeof AppEmployerPipelineIndexRoute
   '/app/instructor/assignments': typeof AppInstructorAssignmentsIndexRoute
   '/app/instructor/courses': typeof AppInstructorCoursesIndexRoute
   '/app/client/projects/$projectId/tasks': typeof AppClientProjectsProjectIdTasksRoute
@@ -3565,6 +3582,7 @@ export interface FileRoutesById {
   '/app/ngo/': typeof AppNgoIndexRoute
   '/app/ops/': typeof AppOpsIndexRoute
   '/app/parent/': typeof AppParentIndexRoute
+  '/app/partner/': typeof AppPartnerIndexRoute
   '/app/product-marketing/': typeof AppProductMarketingIndexRoute
   '/app/receptionist/': typeof AppReceptionistIndexRoute
   '/app/supplier/': typeof AppSupplierIndexRoute
@@ -3582,6 +3600,7 @@ export interface FileRoutesById {
   '/app/mentor/sessions/$sessionId': typeof AppMentorSessionsSessionIdRoute
   '/app/parent/invitation/accept': typeof AppParentInvitationAcceptRoute
   '/app/parent/students/$studentId': typeof AppParentStudentsStudentIdRouteWithChildren
+  '/app/employer/pipeline/': typeof AppEmployerPipelineIndexRoute
   '/app/instructor/assignments/': typeof AppInstructorAssignmentsIndexRoute
   '/app/instructor/courses/': typeof AppInstructorCoursesIndexRoute
   '/app/client/projects/$projectId/tasks': typeof AppClientProjectsProjectIdTasksRoute
@@ -3959,6 +3978,7 @@ export interface FileRouteTypes {
     | '/app/ngo/'
     | '/app/ops/'
     | '/app/parent/'
+    | '/app/partner/'
     | '/app/product-marketing/'
     | '/app/receptionist/'
     | '/app/supplier/'
@@ -3976,6 +3996,7 @@ export interface FileRouteTypes {
     | '/app/mentor/sessions/$sessionId'
     | '/app/parent/invitation/accept'
     | '/app/parent/students/$studentId'
+    | '/app/employer/pipeline/'
     | '/app/instructor/assignments/'
     | '/app/instructor/courses/'
     | '/app/client/projects/$projectId/tasks'
@@ -4350,6 +4371,7 @@ export interface FileRouteTypes {
     | '/app/ngo'
     | '/app/ops'
     | '/app/parent'
+    | '/app/partner'
     | '/app/product-marketing'
     | '/app/receptionist'
     | '/app/supplier'
@@ -4367,6 +4389,7 @@ export interface FileRouteTypes {
     | '/app/mentor/sessions/$sessionId'
     | '/app/parent/invitation/accept'
     | '/app/parent/students/$studentId'
+    | '/app/employer/pipeline'
     | '/app/instructor/assignments'
     | '/app/instructor/courses'
     | '/app/client/projects/$projectId/tasks'
@@ -4742,6 +4765,7 @@ export interface FileRouteTypes {
     | '/app/ngo/'
     | '/app/ops/'
     | '/app/parent/'
+    | '/app/partner/'
     | '/app/product-marketing/'
     | '/app/receptionist/'
     | '/app/supplier/'
@@ -4759,6 +4783,7 @@ export interface FileRouteTypes {
     | '/app/mentor/sessions/$sessionId'
     | '/app/parent/invitation/accept'
     | '/app/parent/students/$studentId'
+    | '/app/employer/pipeline/'
     | '/app/instructor/assignments/'
     | '/app/instructor/courses/'
     | '/app/client/projects/$projectId/tasks'
@@ -4825,6 +4850,7 @@ export interface RootRouteChildren {
   AuthVerifyEmailRoute: typeof AuthVerifyEmailRoute
   BlogSlugRoute: typeof BlogSlugRoute
   CertificatesVerifyRoute: typeof CertificatesVerifyRoute
+  LibraryCategoryRoute: typeof LibraryCategoryRoute
   PortalAcademicBoardRoute: typeof PortalAcademicBoardRoute
   PortalAccountantRoute: typeof PortalAccountantRoute
   PortalAdminRoute: typeof PortalAdminRoute
@@ -5128,6 +5154,7 @@ export interface RootRouteChildren {
   AppNgoIndexRoute: typeof AppNgoIndexRoute
   AppOpsIndexRoute: typeof AppOpsIndexRoute
   AppParentIndexRoute: typeof AppParentIndexRoute
+  AppPartnerIndexRoute: typeof AppPartnerIndexRoute
   AppProductMarketingIndexRoute: typeof AppProductMarketingIndexRoute
   AppReceptionistIndexRoute: typeof AppReceptionistIndexRoute
   AppSupplierIndexRoute: typeof AppSupplierIndexRoute
@@ -5141,6 +5168,7 @@ export interface RootRouteChildren {
   AppMentorMenteesMenteeIdRoute: typeof AppMentorMenteesMenteeIdRouteWithChildren
   AppParentInvitationAcceptRoute: typeof AppParentInvitationAcceptRoute
   AppParentStudentsStudentIdRoute: typeof AppParentStudentsStudentIdRouteWithChildren
+  AppEmployerPipelineIndexRoute: typeof AppEmployerPipelineIndexRoute
   AppInstructorAssignmentsIndexRoute: typeof AppInstructorAssignmentsIndexRoute
   AppInstructorCoursesIndexRoute: typeof AppInstructorCoursesIndexRoute
   AppInstructorAssignmentsSubmissionIdGradeRoute: typeof AppInstructorAssignmentsSubmissionIdGradeRoute
@@ -5536,10 +5564,10 @@ declare module '@tanstack/react-router' {
     }
     '/library/$category': {
       id: '/library/$category'
-      path: '/$category'
+      path: '/library/$category'
       fullPath: '/library/$category'
       preLoaderRoute: typeof LibraryCategoryRouteImport
-      parentRoute: typeof LibraryRoute
+      parentRoute: typeof rootRouteImport
     }
     '/portal/': {
       id: '/portal/'
@@ -7403,6 +7431,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppParentIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/app/partner/': {
+      id: '/app/partner/'
+      path: '/app/partner'
+      fullPath: '/app/partner/'
+      preLoaderRoute: typeof AppPartnerIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/app/partner/agreements': {
       id: '/app/partner/agreements'
       path: '/app/partner/agreements'
@@ -7723,6 +7758,13 @@ declare module '@tanstack/react-router' {
       path: '/app/conversion-copy/landing-pages/$id'
       fullPath: '/app/conversion-copy/landing-pages/$id'
       preLoaderRoute: typeof AppConversionCopyLandingPagesIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/employer/pipeline/': {
+      id: '/app/employer/pipeline/'
+      path: '/app/employer/pipeline'
+      fullPath: '/app/employer/pipeline/'
+      preLoaderRoute: typeof AppEmployerPipelineIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/app/employer/pipeline/$jobId': {
@@ -8124,6 +8166,7 @@ const rootRouteChildren: RootRouteChildren = {
   AuthVerifyEmailRoute: AuthVerifyEmailRoute,
   BlogSlugRoute: BlogSlugRoute,
   CertificatesVerifyRoute: CertificatesVerifyRoute,
+  LibraryCategoryRoute: LibraryCategoryRoute,
   PortalAcademicBoardRoute: PortalAcademicBoardRoute,
   PortalAccountantRoute: PortalAccountantRoute,
   PortalAdminRoute: PortalAdminRoute,
@@ -8429,6 +8472,7 @@ const rootRouteChildren: RootRouteChildren = {
   AppNgoIndexRoute: AppNgoIndexRoute,
   AppOpsIndexRoute: AppOpsIndexRoute,
   AppParentIndexRoute: AppParentIndexRoute,
+  AppPartnerIndexRoute: AppPartnerIndexRoute,
   AppProductMarketingIndexRoute: AppProductMarketingIndexRoute,
   AppReceptionistIndexRoute: AppReceptionistIndexRoute,
   AppSupplierIndexRoute: AppSupplierIndexRoute,
@@ -8442,6 +8486,7 @@ const rootRouteChildren: RootRouteChildren = {
   AppMentorMenteesMenteeIdRoute: AppMentorMenteesMenteeIdRouteWithChildren,
   AppParentInvitationAcceptRoute: AppParentInvitationAcceptRoute,
   AppParentStudentsStudentIdRoute: AppParentStudentsStudentIdRouteWithChildren,
+  AppEmployerPipelineIndexRoute: AppEmployerPipelineIndexRoute,
   AppInstructorAssignmentsIndexRoute: AppInstructorAssignmentsIndexRoute,
   AppInstructorCoursesIndexRoute: AppInstructorCoursesIndexRoute,
   AppInstructorAssignmentsSubmissionIdGradeRoute:

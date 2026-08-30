@@ -1,8 +1,16 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useState } from "react";
 import { ArrowLeft, Download, FileCheck, ScrollText, Search } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import { QueryState } from "@/components/ui/query-state";
 import { AppShell } from "@/components/app/app-shell";
 import { useAuditLog } from "@/lib/query/admin";
@@ -29,6 +37,7 @@ function AdminAudit() {
   const query = useAuditLog();
   const rows = query.data?.pages.flatMap((p) => p.items) ?? [];
   const critical = rows.filter((e) => e.severity === "critical").length;
+  const [selectedEvent, setSelectedEvent] = useState<AuditEntry | null>(null);
 
   return (
     <AppShell
@@ -118,7 +127,12 @@ function AdminAudit() {
                     <Badge className={cn("border-0 font-semibold", severityTone(ev.severity))}>
                       {ev.severity}
                     </Badge>
-                    <Button variant="outline" size="sm" className="shrink-0 font-semibold">
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="shrink-0 font-semibold"
+                      onClick={() => setSelectedEvent(ev)}
+                    >
                       Details
                     </Button>
                   </div>
@@ -128,6 +142,39 @@ function AdminAudit() {
           </QueryState>
         </CardContent>
       </Card>
+      <Dialog
+        open={selectedEvent !== null}
+        onOpenChange={(open) => !open && setSelectedEvent(null)}
+      >
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Audit event details</DialogTitle>
+            <DialogDescription>
+              This event is read-only and retained as part of the immutable audit trail.
+            </DialogDescription>
+          </DialogHeader>
+          {selectedEvent && (
+            <dl className="grid gap-3 rounded-xl border p-4 text-sm">
+              <div>
+                <dt className="text-muted-foreground text-xs font-bold uppercase">Action</dt>
+                <dd className="mt-1 font-semibold">{selectedEvent.action}</dd>
+              </div>
+              <div>
+                <dt className="text-muted-foreground text-xs font-bold uppercase">Actor</dt>
+                <dd className="mt-1 font-semibold">{selectedEvent.actor}</dd>
+              </div>
+              <div>
+                <dt className="text-muted-foreground text-xs font-bold uppercase">Time</dt>
+                <dd className="mt-1 font-semibold">{selectedEvent.time}</dd>
+              </div>
+              <div>
+                <dt className="text-muted-foreground text-xs font-bold uppercase">Severity</dt>
+                <dd className="mt-1 font-semibold capitalize">{selectedEvent.severity}</dd>
+              </div>
+            </dl>
+          )}
+        </DialogContent>
+      </Dialog>
     </AppShell>
   );
 }

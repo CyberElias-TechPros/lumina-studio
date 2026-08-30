@@ -1,4 +1,5 @@
 import { apiFetch } from "./client";
+import { ApiError } from "@/lib/errors";
 import type { Paginated } from "./types";
 
 export interface AluKpi {
@@ -102,3 +103,58 @@ export const fetchAluSkills = aluPage<AluSkill>("/v1/alumni-dashboard/skills");
 export const fetchAluCommitments = aluPage<AluCommitment>("/v1/alumni-dashboard/commitments");
 export const fetchAluWays = aluPage<AluWay>("/v1/alumni-dashboard/ways");
 export const fetchAluImpact = aluPage<AluImpactRow>("/v1/alumni-dashboard/impact");
+
+export interface AluEventRsvpResult {
+  ok: true;
+  alreadyRsvpd: boolean;
+  eventId: string;
+  title: string;
+}
+
+export interface AluMentorAvailability {
+  skill: string;
+  weeklyHours: number;
+  format: "video" | "group" | "async" | "onsite";
+  bio: string;
+  status: "draft" | "published";
+  updatedAt: string;
+}
+
+export function fetchAluMentorAvailability(): Promise<AluMentorAvailability | null> {
+  return apiFetch<AluMentorAvailability>("/v1/alumni-dashboard/mentorship/availability").catch(
+    (error: unknown) => {
+      if (error instanceof ApiError && error.status === 404) return null;
+      throw error;
+    },
+  );
+}
+
+export function saveAluMentorAvailability(
+  input: Omit<AluMentorAvailability, "updatedAt">,
+): Promise<AluMentorAvailability> {
+  return apiFetch<AluMentorAvailability>("/v1/alumni-dashboard/mentorship/availability", {
+    method: "PUT",
+    body: input,
+  });
+}
+
+export function rsvpToAluEvent(eventId: string): Promise<AluEventRsvpResult> {
+  return apiFetch<AluEventRsvpResult>(
+    `/v1/alumni-dashboard/events/${encodeURIComponent(eventId)}/rsvp`,
+    { method: "POST", body: {} },
+  );
+}
+
+export interface AluConnectionResult {
+  ok: true;
+  alreadyConnected: boolean;
+  id: string;
+  member: string;
+}
+
+export function connectToAluMember(memberId: string): Promise<AluConnectionResult> {
+  return apiFetch<AluConnectionResult>(
+    `/v1/alumni-dashboard/members/${encodeURIComponent(memberId)}/connect`,
+    { method: "POST", body: {} },
+  );
+}

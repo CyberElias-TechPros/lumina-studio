@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useMemo, useState } from "react";
 import { ArrowLeft, Phone, Search, UserRound, Users } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -29,6 +30,16 @@ const tones = [
 function ReceptionistDirectory() {
   const staffQuery = useRecStaff();
   const staff = useRecStaffItems();
+  const [search, setSearch] = useState("");
+  const visibleStaff = useMemo(() => {
+    const term = search.trim().toLowerCase();
+    if (!term) return staff;
+    return staff.filter((member) =>
+      [member.name, member.role, member.extension, member.office].some((value) =>
+        value.toLowerCase().includes(term),
+      ),
+    );
+  }, [search, staff]);
 
   return (
     <AppShell
@@ -46,18 +57,24 @@ function ReceptionistDirectory() {
         </>
       }
     >
-      <div className="bg-card shadow-soft flex flex-wrap items-center gap-2 rounded-2xl border p-3">
+      <form
+        className="bg-card shadow-soft flex flex-wrap items-center gap-2 rounded-2xl border p-3"
+        onSubmit={(event) => event.preventDefault()}
+      >
         <div className="bg-muted flex min-w-0 flex-1 items-center gap-2 rounded-xl px-3 py-2">
           <Search className="text-muted-foreground size-4 shrink-0" />
           <input
+            value={search}
+            onChange={(event) => setSearch(event.target.value)}
             className="placeholder:text-muted-foreground w-full bg-transparent text-sm font-medium outline-none"
             placeholder="Name, department, extension…"
+            aria-label="Search staff directory"
           />
         </div>
-        <Button size="sm" className="font-semibold">
+        <Button type="submit" size="sm" className="font-semibold">
           Search
         </Button>
-      </div>
+      </form>
 
       <Card className="bg-card mt-5 shadow-soft border">
         <CardHeader>
@@ -72,35 +89,48 @@ function ReceptionistDirectory() {
             empty={{ title: "No staff found", description: "Directory entries will show here." }}
             isEmpty={(rows) => rows.length === 0}
           >
-            {(rows) => (
+            {() => (
               <>
-                {rows.map((s, i) => (
-                  <div
-                    key={s.id}
-                    className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
-                  >
-                    <span
-                      className={cn(
-                        "grid size-9 shrink-0 place-items-center rounded-lg",
-                        tones[i % tones.length],
-                      )}
+                {visibleStaff.length === 0 ? (
+                  <p className="text-muted-foreground py-6 text-center text-sm font-semibold">
+                    No staff match “{search}”.
+                  </p>
+                ) : (
+                  visibleStaff.map((s, i) => (
+                    <div
+                      key={s.id}
+                      className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
                     >
-                      <UserRound className="size-4" />
-                    </span>
-                    <div className="min-w-0 flex-1">
-                      <p className="text-sm font-bold">{s.name}</p>
-                      <p className="text-muted-foreground text-xs">
-                        {s.role} · {s.office}
-                      </p>
+                      <span
+                        className={cn(
+                          "grid size-9 shrink-0 place-items-center rounded-lg",
+                          tones[i % tones.length],
+                        )}
+                      >
+                        <UserRound className="size-4" />
+                      </span>
+                      <div className="min-w-0 flex-1">
+                        <p className="text-sm font-bold">{s.name}</p>
+                        <p className="text-muted-foreground text-xs">
+                          {s.role} · {s.office}
+                        </p>
+                      </div>
+                      <Badge variant="secondary" className="font-semibold">
+                        {s.extension}
+                      </Badge>
+                      <Button
+                        asChild
+                        variant="outline"
+                        size="sm"
+                        className="shrink-0 font-semibold"
+                      >
+                        <a href={`tel:${s.extension}`}>
+                          <Phone className="size-3.5" /> Call
+                        </a>
+                      </Button>
                     </div>
-                    <Badge variant="secondary" className="font-semibold">
-                      {s.extension}
-                    </Badge>
-                    <Button variant="outline" size="sm" className="shrink-0 font-semibold">
-                      <Phone className="size-3.5" /> Call
-                    </Button>
-                  </div>
-                ))}
+                  ))
+                )}
               </>
             )}
           </QueryState>

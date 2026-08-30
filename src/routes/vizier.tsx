@@ -278,8 +278,8 @@ AGENTS.md          # generic`}</pre>
               <div className="relative flex flex-wrap items-center gap-3 text-sm">
                 <Lock className="size-5" />
                 <p>
-                  <span className="font-bold">Privacy-first:</span> planning sends only your idea + a
-                  workspace summary. Progress monitoring is 100% local and never transmits source
+                  <span className="font-bold">Privacy-first:</span> planning sends only your idea +
+                  a workspace summary. Progress monitoring is 100% local and never transmits source
                   code. API keys are stored in VS Code Secret Storage.
                 </p>
               </div>
@@ -335,8 +335,8 @@ AGENTS.md          # generic`}</pre>
                 Plan your next app in VS Code
               </h2>
               <p className="text-ink-foreground/75 mt-5 text-lg leading-relaxed text-pretty">
-                Install Vizier and turn the next idea into a blueprint your AI agent can build from —
-                today. Free and open source under MIT.
+                Install Vizier and turn the next idea into a blueprint your AI agent can build from
+                — today. Free and open source under MIT.
               </p>
               <div className="mt-9 flex flex-wrap gap-3">
                 <Button asChild size="lg" className="bg-gradient-brand shadow-glow border-0">

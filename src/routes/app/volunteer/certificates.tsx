@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { toast } from "sonner";
 import { ArrowLeft, Award, BadgeCheck, Download, FileBadge2 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -20,6 +21,22 @@ export const Route = createFileRoute("/app/volunteer/certificates")({
 });
 
 const tones = ["bg-success/10 text-success", "bg-primary/10 text-primary"];
+
+function downloadCertificateSummary(certificate: VolCert) {
+  const contents = [
+    "CEA Volunteer certificate",
+    `Certificate: ${certificate.title}`,
+    `Details: ${certificate.detail}`,
+    "Verification: Issued by CEA Studio",
+  ].join("\n");
+  const url = URL.createObjectURL(new Blob([contents], { type: "text/plain;charset=utf-8" }));
+  const anchor = document.createElement("a");
+  anchor.href = url;
+  anchor.download = `${certificate.title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}.txt`;
+  anchor.click();
+  URL.revokeObjectURL(url);
+  toast.success("Certificate summary downloaded");
+}
 
 function VolunteerCertificates() {
   const certsQuery = useVolCerts();
@@ -121,8 +138,13 @@ function VolunteerCertificates() {
                       <p className="text-muted-foreground text-xs">{c.detail}</p>
                     </div>
                     <span className={cn("size-2.5 rounded-full", tones[i % tones.length])} />
-                    <Button variant="outline" size="sm" className="shrink-0 font-semibold">
-                      <Download className="size-3.5" /> Download
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="shrink-0 font-semibold"
+                      onClick={() => downloadCertificateSummary(c)}
+                    >
+                      <Download className="size-3.5" /> Download summary
                     </Button>
                   </div>
                 ))}

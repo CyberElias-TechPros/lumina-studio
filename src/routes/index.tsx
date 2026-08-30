@@ -449,10 +449,30 @@ function FaqSection() {
 
 function ResourcesSection() {
   const items = [
-    { label: "Glossary", count: "62 terms", description: "Technical terms explained with Nigerian context", to: "/glossary" },
-    { label: "Career Guides", count: "19 roadmaps", description: "Salary ranges, 90-day plans and pitfalls for every role", to: "/career-guides" },
-    { label: "Resources", count: "12 templates", description: "Ungated checklists, templates and cheat sheets", to: "/resources" },
-    { label: "Library", count: "1,958 items", description: "Books, courses and tools curated for Nigerian learners", to: "/library" },
+    {
+      label: "Glossary",
+      count: "62 terms",
+      description: "Technical terms explained with Nigerian context",
+      to: "/glossary",
+    },
+    {
+      label: "Career Guides",
+      count: "19 roadmaps",
+      description: "Salary ranges, 90-day plans and pitfalls for every role",
+      to: "/career-guides",
+    },
+    {
+      label: "Resources",
+      count: "12 templates",
+      description: "Ungated checklists, templates and cheat sheets",
+      to: "/resources",
+    },
+    {
+      label: "Library",
+      count: "1,958 items",
+      description: "Books, courses and tools curated for Nigerian learners",
+      to: "/library",
+    },
   ];
 
   return (

@@ -1,6 +1,7 @@
 import { Hono } from "hono";
 import type { AppEnv } from "../types";
-import { base64UrlDecode, base64UrlEncode } from "../lib/crypto";
+import { base64UrlDecode, base64UrlEncode, isoNow, randomToken, sha256Hex } from "../lib/crypto";
+import { ApiError } from "../lib/errors";
 import { paginate, parsePagination } from "../lib/pagination";
 import { requireAuth, requireAnyRole } from "../lib/auth";
 
@@ -54,6 +55,67 @@ export const adminSystemsDashboard = new Hono<{ Bindings: AppEnv }>();
 adminSystemsDashboard.use("*", requireAuth, requireAnyRole(["admin"]));
 registerLists(adminSystemsDashboard, ADM_SYS_COLS);
 
+/** Queue an audited restore request. The infrastructure performs the actual restore asynchronously. */
+adminSystemsDashboard.post("/backups/:id/restore", async (c) => {
+  const backupId = c.req.param("id");
+  const backup = await c.env.DB.prepare(`SELECT id, name, status FROM adm_backups WHERE id = ?`)
+    .bind(backupId)
+    .first<{ id: string; name: string; status: string }>();
+  if (!backup) throw ApiError.notFound("Backup not found.");
+  if (!/verified|complete|success/i.test(backup.status)) {
+    throw ApiError.conflict("Only a verified backup can be restored.");
+  }
+
+  const existing = await c.env.DB.prepare(
+    `SELECT id, status FROM adm_backup_restores
+      WHERE backup_id = ? AND status IN ('queued', 'running')
+      ORDER BY requested_at DESC LIMIT 1`,
+  )
+    .bind(backupId)
+    .first<{ id: string; status: string }>();
+  if (existing) {
+    return c.json({
+      ok: true,
+      alreadyQueued: true,
+      id: existing.id,
+      backup: backup.name,
+      status: existing.status,
+    });
+  }
+
+  const id = crypto.randomUUID();
+  const requestedAt = isoNow();
+  await c.env.DB.prepare(
+    `INSERT INTO adm_backup_restores (id, backup_id, requested_by, status, requested_at)
+     VALUES (?, ?, ?, 'queued', ?)`,
+  )
+    .bind(id, backupId, c.get("authUser").id, requestedAt)
+    .run();
+  return c.json(
+    { ok: true, alreadyQueued: false, id, backup: backup.name, status: "queued", requestedAt },
+    202,
+  );
+});
+
+/** Rotate a service token. The new plaintext token is returned once and never stored. */
+adminSystemsDashboard.post("/keys/:id/rotate", async (c) => {
+  const keyId = c.req.param("id");
+  const key = await c.env.DB.prepare(`SELECT id FROM adm_keys WHERE id = ?`)
+    .bind(keyId)
+    .first<{ id: string }>();
+  if (!key) throw ApiError.notFound("API key not found.");
+
+  const token = `cea_${randomToken(24)}`;
+  const now = isoNow();
+  await c.env.DB.prepare(
+    `INSERT INTO adm_key_rotations (id, key_id, token_hash, created_at) VALUES (?, ?, ?, ?)`,
+  )
+    .bind(crypto.randomUUID(), keyId, await sha256Hex(token), now)
+    .run();
+
+  return c.json({ ok: true, id: keyId, token, rotatedAt: now });
+});
+
 /** Live monitoring summary: service roster + reported app errors from dev_errors. */
 adminSystemsDashboard.get("/metrics", async (c) => {
   const services = await c.env.DB.prepare(
@@ -64,7 +126,9 @@ adminSystemsDashboard.get("/metrics", async (c) => {
   }>();
 
   const total = services.results.length;
-  const healthy = services.results.filter((s) => /healthy|ok|active|connected/i.test(s.status)).length;
+  const healthy = services.results.filter((s) =>
+    /healthy|ok|active|connected/i.test(s.status),
+  ).length;
 
   return c.json({
     cards: [

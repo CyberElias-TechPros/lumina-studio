@@ -26,9 +26,10 @@ contact.post("/", async (c) => {
   const ipHash = await hashIdentifier(ip);
   await rateLimit(c.env.RATE_LIMIT, "contact", ipHash, { limit: 5, windowSeconds: 600 });
 
-  const detail = body.kind === "newsletter"
-    ? `Newsletter subscription: ${email}`
-    : `Message from ${body.name} (${email}): ${body.message}`;
+  const detail =
+    body.kind === "newsletter"
+      ? `Newsletter subscription: ${email}`
+      : `Message from ${body.name} (${email}): ${body.message}`;
 
   await c.env.DB.prepare(
     `INSERT INTO leads (id, name, score, detail, sort_order)

@@ -101,16 +101,18 @@ function ownerClause(c: Context<{ Bindings: AppEnv }>): { sql: string; bind: str
 recruitment.get("/postings", async (c) => {
   const { cursor, limit } = parsePagination(c);
   const owner = ownerClause(c);
-  const total = await c.env.DB.prepare(
-    `SELECT COUNT(*) AS n FROM job_postings WHERE ${owner.sql}`,
-  )
+  const total = await c.env.DB.prepare(`SELECT COUNT(*) AS n FROM job_postings WHERE ${owner.sql}`)
     .bind(...(owner.bind ? [owner.bind] : []))
     .first<{ n: number }>();
   const rows = await c.env.DB.prepare(
     `SELECT id, title, applicants, views, posted, status, detail, tone FROM job_postings
       WHERE ${owner.sql}${cursor ? " AND id > ?" : ""} ORDER BY id ASC LIMIT ?`,
   )
-    .bind(...(owner.bind ? [owner.bind] : []), ...(cursor ? [base64UrlDecode(cursor) ?? ""] : []), limit)
+    .bind(
+      ...(owner.bind ? [owner.bind] : []),
+      ...(cursor ? [base64UrlDecode(cursor) ?? ""] : []),
+      limit,
+    )
     .all<JobPostingRow>();
   const items: ApiJobPosting[] = rows.results.map((r) => ({ ...r }));
   const result: Paginated<ApiJobPosting> = paginate(items, total?.n ?? 0, (last) =>
@@ -166,7 +168,11 @@ recruitment.get("/interviews", async (c) => {
     `SELECT id, candidate, role, date, mode, status FROM interviews
       WHERE ${owner.sql}${cursor ? " AND id > ?" : ""} ORDER BY id ASC LIMIT ?`,
   )
-    .bind(...(owner.bind ? [owner.bind] : []), ...(cursor ? [base64UrlDecode(cursor) ?? ""] : []), limit)
+    .bind(
+      ...(owner.bind ? [owner.bind] : []),
+      ...(cursor ? [base64UrlDecode(cursor) ?? ""] : []),
+      limit,
+    )
     .all<InterviewRow>();
   const items: ApiInterview[] = rows.results.map((r) => ({ ...r }));
   const result: Paginated<ApiInterview> = paginate(items, total?.n ?? 0, (last) =>
@@ -225,17 +231,37 @@ recruitment.post("/postings", requireAnyRole(["employer", "hr", "admin"]), async
   );
 });
 
-const postingPatchSchema = z.object({
-  status: z.enum(["open", "closed"], { message: "Invalid posting status." }),
-});
+const postingPatchSchema = z
+  .object({
+    title: z.string().trim().min(1, "Title is required.").max(200).optional(),
+    detail: z.string().trim().max(5_000).optional(),
+    status: z.enum(["open", "closed"], { message: "Invalid posting status." }).optional(),
+  })
+  .refine(
+    (body) => body.title !== undefined || body.detail !== undefined || body.status !== undefined,
+    {
+      message: "Provide a title, detail or status to update.",
+    },
+  );
 
-/** Employer/HR/admin: open or close a posting. */
+/** Employer/HR/admin: edit a posting or open/close it. */
 recruitment.patch("/postings/:id", requireAnyRole(["employer", "hr", "admin"]), async (c) => {
-  const { status } = await parseBody(c, postingPatchSchema);
+  const body = await parseBody(c, postingPatchSchema);
   const id = c.req.param("id");
   await assertPostingAccess(c, id);
-  await c.env.DB.prepare(`UPDATE job_postings SET status = ? WHERE id = ?`).bind(status, id).run();
-  return c.json({ ok: true, id, status });
+  await c.env.DB.prepare(
+    `UPDATE job_postings
+        SET title = COALESCE(?, title), detail = COALESCE(?, detail), status = COALESCE(?, status)
+      WHERE id = ?`,
+  )
+    .bind(body.title ?? null, body.detail ?? null, body.status ?? null, id)
+    .run();
+  const updated = await c.env.DB.prepare(
+    `SELECT id, title, detail, status FROM job_postings WHERE id = ?`,
+  )
+    .bind(id)
+    .first<{ id: string; title: string; detail: string; status: string }>();
+  return c.json({ ok: true, ...updated });
 });
 
 const advanceCandidateSchema = z.object({
@@ -281,7 +307,15 @@ recruitment.post("/interviews", requireAnyRole(["employer", "hr", "admin"]), asy
     .bind(id, body.candidate, body.role, body.date, body.mode ?? "virtual", user.id)
     .run();
   return c.json(
-    { ok: true, id, candidate: body.candidate, role: body.role, date: body.date, mode: body.mode ?? "virtual", status: "scheduled" },
+    {
+      ok: true,
+      id,
+      candidate: body.candidate,
+      role: body.role,
+      date: body.date,
+      mode: body.mode ?? "virtual",
+      status: "scheduled",
+    },
     201,
   );
 });

@@ -41,4 +41,3 @@ test.describe("Auth journey", () => {
     await page.waitForURL("**/app**", { timeout: 30_000 });
   });
 });
-

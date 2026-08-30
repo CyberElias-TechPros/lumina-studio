@@ -52,9 +52,9 @@ export async function rateLimit(
 
 /** Safe identifier hashing so raw emails/IPs are not stored in KV. */
 export async function hashIdentifier(value: string): Promise<string> {
-  const digest = await crypto.subtle.digest(
-    "SHA-256",
-    new TextEncoder().encode(`rl:${value}`),
-  );
-  return [...new Uint8Array(digest)].map((b) => b.toString(16).padStart(2, "0")).join("").slice(0, 16);
+  const digest = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(`rl:${value}`));
+  return [...new Uint8Array(digest)]
+    .map((b) => b.toString(16).padStart(2, "0"))
+    .join("")
+    .slice(0, 16);
 }

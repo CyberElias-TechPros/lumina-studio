@@ -44,12 +44,45 @@ export function registerRecruitmentMocks(): void {
   registerMock("POST", "/v1/recruitment/postings", async (init) => {
     await delay(200);
     const body = (init.body ?? {}) as { title?: string; detail?: string; tone?: string };
+    const title = body.title ?? "Untitled role";
+    postings.push({
+      title,
+      applicants: 0,
+      views: 0,
+      posted: "Just now",
+      detail: body.detail ?? "",
+      status: "Open",
+      tone: body.tone ?? "bg-success/10 text-success",
+    });
     return {
       ok: true,
-      id: `post-${Date.now()}`,
-      title: body.title ?? "Untitled role",
+      id: `post-${postings.length}`,
+      title,
       status: "open",
       posted: "Just now",
+    };
+  });
+
+  registerMockPattern("PATCH", "/v1/recruitment/postings/*", async (init) => {
+    await delay(160);
+    const body = (init.body ?? {}) as {
+      title?: string;
+      detail?: string;
+      status?: string;
+    };
+    const id = (init.path ?? "").split("/").pop() ?? "";
+    const source = postings[Number(id.replace("post-", "")) - 1];
+    if (source) {
+      if (body.title !== undefined) source.title = body.title;
+      if (body.detail !== undefined) source.detail = body.detail;
+      if (body.status !== undefined) source.status = body.status === "closed" ? "Closed" : "Open";
+    }
+    return {
+      ok: true,
+      id,
+      title: source?.title ?? body.title ?? "Untitled role",
+      detail: source?.detail ?? body.detail ?? "",
+      status: source?.status?.toLowerCase() ?? body.status ?? "open",
     };
   });
 

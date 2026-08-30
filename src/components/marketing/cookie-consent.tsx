@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Link } from "@tanstack/react-router";
+import { grantConsent, denyConsent, getConsent } from "@/lib/ga4";
+import { initAdSense } from "@/lib/adsense";
 
 const STORAGE_KEY = "cea-cookie-consent";
 
@@ -9,6 +11,9 @@ export function CookieConsent() {
 
   useEffect(() => {
     const stored = localStorage.getItem(STORAGE_KEY);
+    // Migrate consent recorded by the original banner implementation.
+    if (!getConsent() && stored === "accepted") grantConsent();
+    if (!getConsent() && stored === "dismissed") denyConsent();
     if (!stored) {
       const timer = setTimeout(() => setVisible(true), 1500);
       return () => clearTimeout(timer);
@@ -17,11 +22,14 @@ export function CookieConsent() {
 
   const accept = () => {
     localStorage.setItem(STORAGE_KEY, "accepted");
+    grantConsent();
+    initAdSense();
     setVisible(false);
   };
 
   const dismiss = () => {
     localStorage.setItem(STORAGE_KEY, "dismissed");
+    denyConsent();
     setVisible(false);
   };
 

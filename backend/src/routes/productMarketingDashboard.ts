@@ -87,9 +87,5 @@ function registerLists(router: Hono<{ Bindings: AppEnv }>, collections: typeof P
 }
 
 export const productMarketingDashboard = new Hono<{ Bindings: AppEnv }>();
-productMarketingDashboard.use(
-  "*",
-  requireAuth,
-  requireAnyRole(["product-marketing", "admin"]),
-);
+productMarketingDashboard.use("*", requireAuth, requireAnyRole(["product-marketing", "admin"]));
 registerLists(productMarketingDashboard, PM_COLS);

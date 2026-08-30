@@ -47,7 +47,12 @@ describe("POST /v1/invitations (create ??? parent invitation)", () => {
       }),
     });
     expect(res.status).toBe(201);
-    const body = (await res.json()) as { ok: boolean; token: string; url: string; expiresAt: string };
+    const body = (await res.json()) as {
+      ok: boolean;
+      token: string;
+      url: string;
+      expiresAt: string;
+    };
     expect(body.ok).toBe(true);
     expect(body.token).toMatch(/^[0-9a-f]{48}$/);
     expect(body.url).toContain(`/app/parent/invitation/accept?token=${body.token}`);
@@ -68,7 +73,10 @@ describe("POST /v1/invitations (create ??? parent invitation)", () => {
     const res = await api("/v1/invitations", {
       method: "POST",
       headers: { ...cookieHeaders(admin.cookie), "Content-Type": "application/json" },
-      body: JSON.stringify({ studentId: "00000000-0000-4000-8000-000000000002", guardianName: "G" }),
+      body: JSON.stringify({
+        studentId: "00000000-0000-4000-8000-000000000002",
+        guardianName: "G",
+      }),
     });
     expect(res.status).toBe(400);
   });
@@ -133,7 +141,9 @@ describe("POST /v1/invitations/:token/accept", () => {
     const res = await api("/v1/parent/students", { headers: cookieHeaders(student.cookie) });
     expect(res.status).toBe(200);
     const body = (await res.json()) as { items: Array<{ studentId: string }> };
-    expect(body.items.some((s) => s.studentId === "00000000-0000-4000-8000-000000000001")).toBe(true);
+    expect(body.items.some((s) => s.studentId === "00000000-0000-4000-8000-000000000001")).toBe(
+      true,
+    );
   });
 });
 
@@ -179,4 +189,3 @@ describe("GET /v1/admin-systems-dashboard/metrics (monitoring)", () => {
     expect(body.items[0]?.status).toBe("Healthy");
   });
 });
-

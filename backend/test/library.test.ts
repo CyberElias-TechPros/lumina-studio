@@ -20,11 +20,12 @@ interface CatalogBody {
   total: number;
 }
 
-const EXTERNAL_LINK_COUNT =
-  seedExternalLinksSql.split("\n").filter((l) => l.trim().startsWith("INSERT OR IGNORE"))
-    .length;
-const LIBRARY_ITEM_COUNT =
-  seedLibrarySql.split("\n").filter((l) => l.trim().startsWith("INSERT OR IGNORE")).length;
+const EXTERNAL_LINK_COUNT = seedExternalLinksSql
+  .split("\n")
+  .filter((l) => l.trim().startsWith("INSERT OR IGNORE")).length;
+const LIBRARY_ITEM_COUNT = seedLibrarySql
+  .split("\n")
+  .filter((l) => l.trim().startsWith("INSERT OR IGNORE")).length;
 const FULL_TOTAL = LIBRARY_ITEM_COUNT + EXTERNAL_LINK_COUNT;
 
 let studentCookie: string;
@@ -52,15 +53,12 @@ describe("GET /v1/library/catalog (public)", () => {
     const links = body.items.filter((i) => i.kind === "link");
     expect(links.length).toBeGreaterThan(100);
     expect(links.some((i) => i.sourceKey === "external")).toBe(true);
-    expect(
-      links.some((i) => i.folderPath === "External Resources / Coding Roadmaps"),
-    ).toBe(true);
+    expect(links.some((i) => i.folderPath === "External Resources / Coding Roadmaps")).toBe(true);
     expect(links.every((i) => i.url.startsWith("http"))).toBe(true);
   });
 
   it("reports public and protected counts from the auth endpoint", async () => {
-    const publicCount = ((await (await api("/v1/library/catalog")).json()) as CatalogBody)
-      .total;
+    const publicCount = ((await (await api("/v1/library/catalog")).json()) as CatalogBody).total;
     const full = (await (
       await api("/v1/library", { headers: cookieHeaders(studentCookie) })
     ).json()) as { total: number };
@@ -78,12 +76,8 @@ describe("GET /v1/library (authenticated)", () => {
     expect(body.total).toBe(FULL_TOTAL);
     expect(body.items.some((i) => i.isProtected)).toBe(true);
     expect(body.items.some((i) => i.sourceKey === "ds-toolbox")).toBe(true);
-    expect(body.items.some((i) => i.kind === "file" && i.url.includes("/file/d/"))).toBe(
-      true,
-    );
-    expect(body.items.some((i) => i.kind === "link" && i.url.startsWith("https://"))).toBe(
-      true,
-    );
+    expect(body.items.some((i) => i.kind === "file" && i.url.includes("/file/d/"))).toBe(true);
+    expect(body.items.some((i) => i.kind === "link" && i.url.startsWith("https://"))).toBe(true);
   });
 
   it("requires auth", async () => {

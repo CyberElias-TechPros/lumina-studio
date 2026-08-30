@@ -1,11 +1,16 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { toast } from "sonner";
 import { ArrowLeft, CalendarDays, HandHeart, MapPin, Users } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
 import { QueryState } from "@/components/ui/query-state";
-import { useVolOpportunities, useVolOpportunityItems } from "@/lib/query/volunteerReceptionist";
+import {
+  useSignUpForOpportunity,
+  useVolOpportunities,
+  useVolOpportunityItems,
+} from "@/lib/query/volunteerReceptionist";
 import type { VolOpportunity } from "@/lib/api/volunteerReceptionist";
 import { cn } from "@/lib/utils";
 
@@ -28,6 +33,7 @@ const tones = [
 function VolunteerOpportunities() {
   const opsQuery = useVolOpportunities();
   const ops = useVolOpportunityItems();
+  const signUp = useSignUpForOpportunity();
 
   return (
     <AppShell
@@ -137,14 +143,25 @@ function VolunteerOpportunities() {
                     <Button
                       size="sm"
                       className="bg-gradient-brand shadow-glow shrink-0 border-0 font-semibold"
+                      onClick={() =>
+                        signUp.mutate(o.id, {
+                          onSuccess: () => toast.success(`Signed up for ${o.title}`),
+                        })
+                      }
+                      disabled={signUp.isPending || o.slotsFilled >= o.slotsTotal}
                     >
-                      Sign up
+                      {signUp.isPending ? "Signing up…" : "Sign up"}
                     </Button>
                   </div>
                 ))}
               </>
             )}
           </QueryState>
+          {signUp.error && (
+            <p role="alert" className="text-destructive text-sm font-semibold">
+              {signUp.error.message}
+            </p>
+          )}
         </CardContent>
       </Card>
     </AppShell>

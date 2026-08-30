@@ -35,9 +35,5 @@ function registerLists(router: Hono<{ Bindings: AppEnv }>, collections: typeof P
 }
 
 export const parentExtrasDashboard = new Hono<{ Bindings: AppEnv }>();
-parentExtrasDashboard.use(
-  "*",
-  requireAuth,
-  requireAnyRole(["parent", "admin"]),
-);
+parentExtrasDashboard.use("*", requireAuth, requireAnyRole(["parent", "admin"]));
 registerLists(parentExtrasDashboard, PAR_EXT_COLS);

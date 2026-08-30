@@ -55,12 +55,18 @@ function CareerGuidePage() {
       <PageShell>
         <PageHero
           eyebrow="Career Guides"
-          title={<>Guide <span className="text-gradient">not found</span></>}
+          title={
+            <>
+              Guide <span className="text-gradient">not found</span>
+            </>
+          }
           description="The career guide you're looking for does not exist yet."
         />
         <section className="container-page pb-20">
           <Button variant="ghost" size="sm" className="-mx-2 mb-6" asChild>
-            <Link to="/career-guides"><ArrowLeft className="size-4" /> All career guides</Link>
+            <Link to="/career-guides">
+              <ArrowLeft className="size-4" /> All career guides
+            </Link>
           </Button>
         </section>
       </PageShell>
@@ -96,7 +102,9 @@ function CareerGuidePage() {
         <div className="mx-auto max-w-3xl space-y-12">
           <Reveal>
             <Button variant="ghost" size="sm" className="-mx-2" asChild>
-              <Link to="/career-guides"><ArrowLeft className="size-4" /> All career guides</Link>
+              <Link to="/career-guides">
+                <ArrowLeft className="size-4" /> All career guides
+              </Link>
             </Button>
           </Reveal>
 
@@ -104,7 +112,9 @@ function CareerGuidePage() {
             <div className="space-y-5">
               <h2 className="font-display text-2xl font-extrabold">Overview</h2>
               {guide.overview.map((para, i) => (
-                <p key={i} className="text-muted-foreground leading-relaxed">{para}</p>
+                <p key={i} className="text-muted-foreground leading-relaxed">
+                  {para}
+                </p>
               ))}
             </div>
           </Reveal>
@@ -189,7 +199,9 @@ function CareerGuidePage() {
                       className="group bg-card shadow-soft flex items-center gap-3 rounded-xl border p-4 hover:border-primary/40 transition-colors"
                     >
                       <ExternalLink className="text-muted-foreground group-hover:text-primary size-4 shrink-0" />
-                      <span className="group-hover:text-primary text-sm font-semibold transition-colors">{r.name}</span>
+                      <span className="group-hover:text-primary text-sm font-semibold transition-colors">
+                        {r.name}
+                      </span>
                     </a>
                   ))}
                 </div>
@@ -209,7 +221,9 @@ function CareerGuidePage() {
                       params={{ slug: g.slug }}
                       className="group bg-card shadow-soft rounded-xl border p-4 hover:border-primary/40 transition-colors"
                     >
-                      <h3 className="group-hover:text-primary text-sm font-extrabold transition-colors">{g.title}</h3>
+                      <h3 className="group-hover:text-primary text-sm font-extrabold transition-colors">
+                        {g.title}
+                      </h3>
                       <p className="text-muted-foreground mt-1 text-xs line-clamp-2">{g.tagline}</p>
                     </Link>
                   ))}

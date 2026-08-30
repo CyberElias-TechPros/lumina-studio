@@ -126,17 +126,21 @@ ai.post("/grade", requireInstructorOrAdmin, async (c) => {
 
   let mock = true;
   let body: Omit<ApiGrade, "mock"> = mockGrade(rubric);
-  const res = await chatCompletion(c, [
-    {
-      role: "system",
-      content:
-        "You are a strict but fair instructor. Grade the work against the rubric. Reply with ONLY valid JSON matching {\"overall\":number,\"max\":number,\"breakdown\":[{\"criterion\":string,\"score\":number,\"max\":number,\"comment\":string}],\"summary\":string}. Scores must not exceed each criterion's max.",
-    },
-    {
-      role: "user",
-      content: `Rubric: ${JSON.stringify(rubric)}. Grade the submitted work accordingly.`,
-    },
-  ], { json: true, model });
+  const res = await chatCompletion(
+    c,
+    [
+      {
+        role: "system",
+        content:
+          'You are a strict but fair instructor. Grade the work against the rubric. Reply with ONLY valid JSON matching {"overall":number,"max":number,"breakdown":[{"criterion":string,"score":number,"max":number,"comment":string}],"summary":string}. Scores must not exceed each criterion\'s max.',
+      },
+      {
+        role: "user",
+        content: `Rubric: ${JSON.stringify(rubric)}. Grade the submitted work accordingly.`,
+      },
+    ],
+    { json: true, model },
+  );
   if (res.ok) {
     try {
       const parsed = JSON.parse(res.text) as Omit<ApiGrade, "mock">;
@@ -157,14 +161,18 @@ ai.get("/recommendations", async (c) => {
   const model = resolveAiModel(c, url.searchParams.get("model") ?? undefined);
   let items: ApiRecommendation[] = mockRecommendations();
   let mock = true;
-  const res = await chatCompletion(c, [
-    {
-      role: "system",
-      content:
-        "You recommend courses, assignments and career actions for a student. Reply with ONLY valid JSON: an array of [{\"id\":string,\"kind\":\"course\"|\"assignment\"|\"career\",\"title\":string,\"reason\":string,\"cta\":string}]. Max 4 items.",
-    },
-    { role: "user", content: `Student interests: frontend web development.` },
-  ], { json: true, model });
+  const res = await chatCompletion(
+    c,
+    [
+      {
+        role: "system",
+        content:
+          'You recommend courses, assignments and career actions for a student. Reply with ONLY valid JSON: an array of [{"id":string,"kind":"course"|"assignment"|"career","title":string,"reason":string,"cta":string}]. Max 4 items.',
+      },
+      { role: "user", content: `Student interests: frontend web development.` },
+    ],
+    { json: true, model },
+  );
   if (res.ok) {
     try {
       const parsed = JSON.parse(res.text) as ApiRecommendation[];
@@ -196,14 +204,18 @@ ai.post("/ask", async (c) => {
 
   let answer = `Good question about "${question.slice(0, 80)}". In mock mode I can't research live content, but here's the pattern: start from the lesson notes in your current module, then check the forum thread for this week's topic.`;
   let mock = true;
-  const res = await chatCompletion(c, [
-    {
-      role: "system",
-      content:
-        "You are a knowledgeable tutor assistant for a digital skills academy. Answer concisely (under 250 words) and practically, referencing lessons and careers where relevant.",
-    },
-    { role: "user", content: question },
-  ], { model });
+  const res = await chatCompletion(
+    c,
+    [
+      {
+        role: "system",
+        content:
+          "You are a knowledgeable tutor assistant for a digital skills academy. Answer concisely (under 250 words) and practically, referencing lessons and careers where relevant.",
+      },
+      { role: "user", content: question },
+    ],
+    { model },
+  );
   if (res.ok) {
     answer = res.text;
     mock = false;
@@ -256,14 +268,18 @@ ai.post("/generate", async (c) => {
 
   let content: Record<string, unknown> = mockGenerated(kind, topic);
   let mock = true;
-  const res = await chatCompletion(c, [
-    {
-      role: "system",
-      content:
-        "You are a curriculum designer. Generate course content. Reply with ONLY valid JSON. For kind=quiz: {\"questions\":[{\"prompt\":string,\"options\":string[],\"answer\":number}]}. For kind=outline: {\"modules\":[{\"title\":string,\"lessons\":number}]}. Otherwise: {\"title\":string,\"objectives\":string[],\"durationMinutes\":number}.",
-    },
-    { role: "user", content: `Generate ${kind} content about: ${topic}` },
-  ], { json: true, model });
+  const res = await chatCompletion(
+    c,
+    [
+      {
+        role: "system",
+        content:
+          'You are a curriculum designer. Generate course content. Reply with ONLY valid JSON. For kind=quiz: {"questions":[{"prompt":string,"options":string[],"answer":number}]}. For kind=outline: {"modules":[{"title":string,"lessons":number}]}. Otherwise: {"title":string,"objectives":string[],"durationMinutes":number}.',
+      },
+      { role: "user", content: `Generate ${kind} content about: ${topic}` },
+    ],
+    { json: true, model },
+  );
   if (res.ok) {
     try {
       const parsed = JSON.parse(res.text) as Record<string, unknown>;
@@ -275,7 +291,10 @@ ai.post("/generate", async (c) => {
       // fall through to mock
     }
   }
-  return c.json({ kind, topic, content, model, mock } satisfies ApiGeneratedContent & { model: string }, 201);
+  return c.json(
+    { kind, topic, content, model, mock } satisfies ApiGeneratedContent & { model: string },
+    201,
+  );
 });
 
 /** Free model choices, served to the app so students can pick a completely

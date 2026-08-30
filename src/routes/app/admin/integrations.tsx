@@ -1,8 +1,16 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useState } from "react";
 import { ArrowLeft, CheckCircle2, Link2, Webhook, Workflow, Zap } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import { AppShell } from "@/components/app/app-shell";
 import { QueryState } from "@/components/ui/query-state";
 import { useAdmIntegrations } from "@/lib/query/adminSystems";
@@ -29,6 +37,7 @@ function statusTone(status: string) {
 
 function AdminIntegrations() {
   const integrationsQuery = useAdmIntegrations();
+  const [selectedIntegration, setSelectedIntegration] = useState<AdmIntegration | null>(null);
   return (
     <AppShell
       roleKey="admin"
@@ -119,7 +128,12 @@ function AdminIntegrations() {
                   <Badge className={cn("border-0 font-semibold", statusTone(i.status))}>
                     {i.status}
                   </Badge>
-                  <Button variant="outline" size="sm" className="shrink-0 font-semibold">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="shrink-0 font-semibold"
+                    onClick={() => setSelectedIntegration(i)}
+                  >
                     Configure
                   </Button>
                 </div>
@@ -128,6 +142,31 @@ function AdminIntegrations() {
           </QueryState>
         </CardContent>
       </Card>
+      <Dialog
+        open={selectedIntegration !== null}
+        onOpenChange={(open) => !open && setSelectedIntegration(null)}
+      >
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>{selectedIntegration?.name ?? "Integration details"}</DialogTitle>
+            <DialogDescription>
+              Connection details from the system integration registry.
+            </DialogDescription>
+          </DialogHeader>
+          {selectedIntegration && (
+            <dl className="grid gap-3 rounded-xl border p-4 text-sm">
+              <div>
+                <dt className="text-muted-foreground text-xs font-bold uppercase">Configuration</dt>
+                <dd className="mt-1 font-semibold">{selectedIntegration.detail}</dd>
+              </div>
+              <div>
+                <dt className="text-muted-foreground text-xs font-bold uppercase">Status</dt>
+                <dd className="mt-1 font-semibold">{selectedIntegration.status}</dd>
+              </div>
+            </dl>
+          )}
+        </DialogContent>
+      </Dialog>
     </AppShell>
   );
 }

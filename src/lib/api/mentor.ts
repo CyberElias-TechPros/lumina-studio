@@ -23,6 +23,24 @@ export interface MentorMatchResult {
   matches: MentorMatch[];
 }
 
+export interface MentorRequestResult {
+  ok: true;
+  alreadyRequested: boolean;
+  id: string;
+  mentor: string;
+}
+
+export function requestMentor(input: {
+  mentorId: string;
+  goal: string;
+  program?: string;
+}): Promise<MentorRequestResult> {
+  return apiFetch<MentorRequestResult>("/v1/mentor/requests", {
+    method: "POST",
+    body: input,
+  });
+}
+
 /** Mentor endpoint — browse available mentor profiles. */
 export function fetchMentorProfiles(cursor?: string): Promise<Paginated<MentorProfile>> {
   return apiFetch<Paginated<MentorProfile>>("/v1/mentor/profiles", {

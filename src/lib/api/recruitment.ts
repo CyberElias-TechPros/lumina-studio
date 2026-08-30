@@ -45,7 +45,9 @@ export function fetchPostings(): Promise<Paginated<JobPosting>> {
 }
 
 export function fetchPipelineCandidates(jobId: string): Promise<Paginated<PipelineCandidate>> {
-  return apiFetch<Paginated<PipelineCandidate>>(`/v1/recruitment/postings/${jobId}/candidates`);
+  const id = jobId.trim();
+  if (!id) return Promise.resolve({ items: [], total: 0 });
+  return apiFetch<Paginated<PipelineCandidate>>(`/v1/recruitment/postings/${id}/candidates`);
 }
 
 export function fetchInterviews(): Promise<Paginated<Interview>> {
@@ -71,6 +73,27 @@ export function advanceCandidate(
     `/v1/recruitment/postings/${jobId}/candidates/${candidateId}`,
     { method: "PATCH", body: { stage } },
   );
+}
+
+export interface UpdatePostingInput {
+  title?: string;
+  detail?: string;
+  status?: "open" | "closed";
+}
+
+export interface UpdatePostingResult {
+  ok: boolean;
+  id: string;
+  title: string;
+  detail: string;
+  status: string;
+}
+
+export function updatePosting(id: string, input: UpdatePostingInput): Promise<UpdatePostingResult> {
+  return apiFetch<UpdatePostingResult>(`/v1/recruitment/postings/${id}`, {
+    method: "PATCH",
+    body: input,
+  });
 }
 
 export interface CreatePostingInput {

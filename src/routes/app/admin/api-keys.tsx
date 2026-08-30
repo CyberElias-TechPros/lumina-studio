@@ -1,11 +1,29 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowLeft, CheckCircle2, KeyRound, RefreshCcw, ShieldCheck, Terminal } from "lucide-react";
+import { useState } from "react";
+import { toast } from "sonner";
+import {
+  ArrowLeft,
+  CheckCircle2,
+  Copy,
+  KeyRound,
+  RefreshCcw,
+  ShieldCheck,
+  Terminal,
+} from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import { AppShell } from "@/components/app/app-shell";
 import { QueryState } from "@/components/ui/query-state";
-import { useAdmKeys } from "@/lib/query/adminSystems";
+import { useAdmKeys, useRotateAdmKey } from "@/lib/query/adminSystems";
 import type { AdmKey } from "@/lib/api/adminSystems";
 import { cn } from "@/lib/utils";
 
@@ -29,6 +47,16 @@ function statusTone(status: string) {
 
 function AdminApiKeys() {
   const keysQuery = useAdmKeys();
+  const rotate = useRotateAdmKey();
+  const [newToken, setNewToken] = useState<{ key: AdmKey; token: string } | null>(null);
+
+  const rotateKey = (key: AdmKey) => {
+    if (rotate.isPending) return;
+    rotate.mutate(key.id, {
+      onSuccess: (result) => setNewToken({ key, token: result.token }),
+    });
+  };
+
   return (
     <AppShell
       roleKey="admin"
@@ -121,8 +149,14 @@ function AdminApiKeys() {
                   <Badge className={cn("border-0 font-semibold", statusTone(k.status))}>
                     {k.status}
                   </Badge>
-                  <Button variant="outline" size="sm" className="shrink-0 font-semibold">
-                    Rotate
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="shrink-0 font-semibold"
+                    disabled={rotate.isPending}
+                    onClick={() => rotateKey(k)}
+                  >
+                    {rotate.isPending ? "Rotating…" : "Rotate"}
                   </Button>
                 </div>
               ))
@@ -130,6 +164,42 @@ function AdminApiKeys() {
           </QueryState>
         </CardContent>
       </Card>
+      {rotate.error && (
+        <p role="alert" className="text-destructive mt-3 text-sm font-semibold">
+          {rotate.error.message}
+        </p>
+      )}
+      <Dialog open={newToken !== null} onOpenChange={(open) => !open && setNewToken(null)}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>New token for {newToken?.key.name}</DialogTitle>
+            <DialogDescription>
+              This token is shown once. Copy it to the service configuration before closing this
+              dialog.
+            </DialogDescription>
+          </DialogHeader>
+          {newToken && (
+            <div className="bg-muted flex items-center gap-2 rounded-xl border p-3">
+              <code className="min-w-0 flex-1 break-all text-xs font-semibold">
+                {newToken.token}
+              </code>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => {
+                  void navigator.clipboard.writeText(newToken.token);
+                  toast.success("Token copied");
+                }}
+              >
+                <Copy className="size-3.5" /> Copy
+              </Button>
+            </div>
+          )}
+          <DialogFooter>
+            <Button onClick={() => setNewToken(null)}>Done</Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </AppShell>
   );
 }

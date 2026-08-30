@@ -58,7 +58,9 @@ invitations.get("/:token", async (c) => {
   const now = Date.now();
   const expiresAt = new Date(row.expires_at).getTime();
   const status =
-    row.status === "pending" && now > expiresAt ? "expired" : (row.status as (typeof INVITE_STATUSES)[number]);
+    row.status === "pending" && now > expiresAt
+      ? "expired"
+      : (row.status as (typeof INVITE_STATUSES)[number]);
 
   return c.json({
     status,
@@ -76,9 +78,13 @@ invitations.post("/:token/accept", requireAuth, async (c) => {
   if (!row) throw ApiError.notFound("This invitation link is invalid.");
 
   const now = Date.now();
-  if (row.status === "accepted") throw ApiError.conflict("This invitation has already been accepted.");
+  if (row.status === "accepted")
+    throw ApiError.conflict("This invitation has already been accepted.");
   if (row.status === "revoked") throw ApiError.forbidden("This invitation was revoked.");
-  if (row.status === "expired" || (row.status === "pending" && now > new Date(row.expires_at).getTime())) {
+  if (
+    row.status === "expired" ||
+    (row.status === "pending" && now > new Date(row.expires_at).getTime())
+  ) {
     throw ApiError.conflict("This invitation has expired.");
   }
 
@@ -138,10 +144,24 @@ invitations.post("/", requireAuth, requireAnyRole(["admin"]), async (c) => {
         expires_at, created_by, created_at, updated_at)
      VALUES (?, ?, ?, ?, ?, ?, 'pending', ?, ?, ?, ?)`,
   )
-    .bind(id, token, student.id, student.name, body.guardianName, body.note, expiresAt, creator.id, now, now)
+    .bind(
+      id,
+      token,
+      student.id,
+      student.name,
+      body.guardianName,
+      body.note,
+      expiresAt,
+      creator.id,
+      now,
+      now,
+    )
     .run();
 
-  const origins = (c.env.FRONTEND_ORIGINS ?? "").split(",").map((s: string) => s.trim()).filter(Boolean);
+  const origins = (c.env.FRONTEND_ORIGINS ?? "")
+    .split(",")
+    .map((s: string) => s.trim())
+    .filter(Boolean);
   const origin = c.env.APP_URL || origins[0] || "";
   const url = `${origin.replace(/\/+$/, "")}/app/parent/invitation/accept?token=${token}`;
 

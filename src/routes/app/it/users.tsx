@@ -1,9 +1,18 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useMemo, useState } from "react";
 import { ArrowLeft, KeyRound, Search, UserRound, UserRoundCheck, Users } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import { QueryState } from "@/components/ui/query-state";
+import { Input } from "@/components/ui/input";
 import { AppShell } from "@/components/app/app-shell";
 import { useItAccounts, useItAccountItems } from "@/lib/query/it";
 import type { ItAccount } from "@/lib/api/it";
@@ -28,6 +37,15 @@ const statusTone: Record<string, string> = {
 function ItUsers() {
   const query = useItAccounts();
   const accounts = useItAccountItems();
+  const [search, setSearch] = useState("");
+  const [selectedAccount, setSelectedAccount] = useState<ItAccount | null>(null);
+  const visibleAccounts = useMemo(() => {
+    const term = search.trim().toLowerCase();
+    if (!term) return accounts;
+    return accounts.filter((account) =>
+      `${account.name} ${account.role} ${account.status}`.toLowerCase().includes(term),
+    );
+  }, [accounts, search]);
 
   const active = accounts.filter((a) => a.status === "active").length;
   const pending = accounts.filter((a) => a.status === "awaiting invite").length;
@@ -104,13 +122,22 @@ function ItUsers() {
       </div>
 
       <Card className="bg-card mt-5 shadow-soft border">
-        <CardHeader className="flex-row items-center justify-between">
+        <CardHeader className="flex-row items-center justify-between gap-3">
           <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
             <UserRound className="text-primary size-4" /> Accounts
           </CardTitle>
-          <Button variant="outline" size="sm" className="font-semibold">
-            <Search className="size-3.5" /> Find user
-          </Button>
+          <form className="flex items-center gap-2" onSubmit={(event) => event.preventDefault()}>
+            <Input
+              value={search}
+              onChange={(event) => setSearch(event.target.value)}
+              placeholder="Name or role"
+              aria-label="Find an account"
+              className="h-9 w-40 text-xs"
+            />
+            <Button type="submit" variant="outline" size="sm" className="font-semibold">
+              <Search className="size-3.5" /> Find user
+            </Button>
+          </form>
         </CardHeader>
         <CardContent className="divide-y">
           <QueryState<ItAccount[]>
@@ -122,33 +149,69 @@ function ItUsers() {
             }}
             isEmpty={(rows) => rows.length === 0}
           >
-            {(rows) =>
-              rows.map((u) => (
-                <div
-                  key={u.id}
-                  className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
-                >
-                  <div className="min-w-0 flex-1">
-                    <p className="text-sm font-bold">{u.name}</p>
-                    <p className="text-muted-foreground text-xs">{u.role}</p>
-                  </div>
-                  <Badge
-                    className={cn(
-                      "border-0 font-semibold capitalize",
-                      statusTone[u.status] ?? "bg-muted/20 text-muted-foreground",
-                    )}
+            {() =>
+              visibleAccounts.length === 0 ? (
+                <p className="text-muted-foreground py-6 text-center text-sm font-semibold">
+                  No accounts match “{search}”.
+                </p>
+              ) : (
+                visibleAccounts.map((u) => (
+                  <div
+                    key={u.id}
+                    className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
                   >
-                    {u.status}
-                  </Badge>
-                  <Button variant="outline" size="sm" className="shrink-0 font-semibold">
-                    Manage
-                  </Button>
-                </div>
-              ))
+                    <div className="min-w-0 flex-1">
+                      <p className="text-sm font-bold">{u.name}</p>
+                      <p className="text-muted-foreground text-xs">{u.role}</p>
+                    </div>
+                    <Badge
+                      className={cn(
+                        "border-0 font-semibold capitalize",
+                        statusTone[u.status] ?? "bg-muted/20 text-muted-foreground",
+                      )}
+                    >
+                      {u.status}
+                    </Badge>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="shrink-0 font-semibold"
+                      onClick={() => setSelectedAccount(u)}
+                    >
+                      Manage
+                    </Button>
+                  </div>
+                ))
+              )
             }
           </QueryState>
         </CardContent>
       </Card>
+      <Dialog
+        open={selectedAccount !== null}
+        onOpenChange={(open) => !open && setSelectedAccount(null)}
+      >
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>{selectedAccount?.name ?? "Account details"}</DialogTitle>
+            <DialogDescription>
+              Review the account record before opening the appropriate access workflow.
+            </DialogDescription>
+          </DialogHeader>
+          {selectedAccount && (
+            <dl className="grid gap-3 rounded-xl border p-4 text-sm">
+              <div>
+                <dt className="text-muted-foreground text-xs font-bold uppercase">Role</dt>
+                <dd className="mt-1 font-semibold">{selectedAccount.role}</dd>
+              </div>
+              <div>
+                <dt className="text-muted-foreground text-xs font-bold uppercase">Status</dt>
+                <dd className="mt-1 font-semibold capitalize">{selectedAccount.status}</dd>
+              </div>
+            </dl>
+          )}
+        </DialogContent>
+      </Dialog>
     </AppShell>
   );
 }

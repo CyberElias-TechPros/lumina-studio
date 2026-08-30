@@ -152,9 +152,7 @@ function fallbackTitle(url: string): string {
   try {
     const u = new URL(url);
     const segs = u.pathname.split("/").filter(Boolean).slice(-2);
-    return segs.length > 0
-      ? `${u.hostname.replace(/^www\./, "")}/${segs.join("/")}`
-      : hostOf(url);
+    return segs.length > 0 ? `${u.hostname.replace(/^www\./, "")}/${segs.join("/")}` : hostOf(url);
   } catch {
     return url.slice(0, 120);
   }
@@ -205,9 +203,7 @@ function parseMarkdownResourceList(
       seq += 1;
       seen.set(key, seq);
       const labelName =
-        label && label !== section && label.length <= 40
-          ? `${section} — ${label}`
-          : label;
+        label && label !== section && label.length <= 40 ? `${section} — ${label}` : label;
       items.push({
         id: `lib-ext-${seq}`,
         sourceKey: "external",
@@ -273,11 +269,7 @@ async function main(): Promise<void> {
         for (const rawUrl of urls) {
           const key = normalizeUrl(rawUrl);
           if (seen.has(key)) continue;
-          const title =
-            label ||
-            rowLabel ||
-            section ||
-            fallbackTitle(rawUrl);
+          const title = label || rowLabel || section || fallbackTitle(rawUrl);
           seq += 1;
           seen.set(key, seq);
           items.push({

@@ -131,3 +131,37 @@ describe("GET /v1/admin-systems-dashboard (Admin systems suite)", () => {
     expect(res.status).toBe(404);
   });
 });
+
+describe("POST /v1/admin-systems-dashboard/keys/:id/rotate", () => {
+  it("rotates a key for admins and returns a one-time token", async () => {
+    const res = await api("/v1/admin-systems-dashboard/keys/adm-ky-01/rotate", {
+      method: "POST",
+      headers: cookieHeaders(staff.cookie),
+    });
+    expect(res.status).toBe(200);
+    const body = (await res.json()) as {
+      ok: boolean;
+      id: string;
+      token: string;
+      rotatedAt: string;
+    };
+    expect(body.ok).toBe(true);
+    expect(body.id).toBe("adm-ky-01");
+    expect(body.token).toMatch(/^cea_[a-f0-9]{48}$/);
+    expect(body.rotatedAt).toBeTruthy();
+  });
+
+  it("rejects non-admins and unknown keys", async () => {
+    const denied = await api("/v1/admin-systems-dashboard/keys/adm-ky-01/rotate", {
+      method: "POST",
+      headers: cookieHeaders(student.cookie),
+    });
+    expect(denied.status).toBe(403);
+
+    const missing = await api("/v1/admin-systems-dashboard/keys/missing/rotate", {
+      method: "POST",
+      headers: cookieHeaders(staff.cookie),
+    });
+    expect(missing.status).toBe(404);
+  });
+});

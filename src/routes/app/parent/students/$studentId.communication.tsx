@@ -87,8 +87,10 @@ function ParentStudentCommunication() {
                         <p className="text-sm font-bold">{c.name}</p>
                         <p className="text-muted-foreground text-xs">{c.role}</p>
                       </div>
-                      <Button variant="outline" size="sm" className="font-semibold">
-                        <Send className="size-3.5" /> Message
+                      <Button asChild variant="outline" size="sm" className="font-semibold">
+                        <Link to="/app/messages">
+                          <Send className="size-3.5" /> Message
+                        </Link>
                       </Button>
                     </div>
                   );

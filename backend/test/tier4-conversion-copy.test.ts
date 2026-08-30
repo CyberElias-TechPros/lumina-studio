@@ -57,7 +57,14 @@ describe("GET /v1/conversion-copy-dashboard (Conversion copy suite)", () => {
       headers: cookieHeaders(staff.cookie),
     });
     const body = (await res.json()) as {
-      items: Array<{ id: string; title: string; category: string; variants: number; lastUsed: string; status: string }>;
+      items: Array<{
+        id: string;
+        title: string;
+        category: string;
+        variants: number;
+        lastUsed: string;
+        status: string;
+      }>;
       total: number;
     };
     expect(body.items[0]?.title).toBe("Enrolment page H1 set");
@@ -84,7 +91,14 @@ describe("GET /v1/conversion-copy-dashboard (Conversion copy suite)", () => {
       headers: cookieHeaders(staff.cookie),
     });
     const body = (await res.json()) as {
-      items: Array<{ id: string; title: string; emails: number; openRate: string; clickRate: string; status: string }>;
+      items: Array<{
+        id: string;
+        title: string;
+        emails: number;
+        openRate: string;
+        clickRate: string;
+        status: string;
+      }>;
       total: number;
     };
     expect(body.items[0]?.title).toBe("Application follow-up");
@@ -99,7 +113,13 @@ describe("GET /v1/conversion-copy-dashboard (Conversion copy suite)", () => {
       headers: cookieHeaders(staff.cookie),
     });
     const body = (await res.json()) as {
-      items: Array<{ id: string; title: string; requester: string; dateLabel: string; status: string }>;
+      items: Array<{
+        id: string;
+        title: string;
+        requester: string;
+        dateLabel: string;
+        status: string;
+      }>;
       total: number;
     };
     expect(body.items[0]?.title).toBe("Cohort 17 landing refresh");
@@ -113,7 +133,13 @@ describe("GET /v1/conversion-copy-dashboard (Conversion copy suite)", () => {
       headers: cookieHeaders(staff.cookie),
     });
     const body = (await res.json()) as {
-      items: Array<{ id: string; stage: string; visits: string; conversion: string; delta: string }>;
+      items: Array<{
+        id: string;
+        stage: string;
+        visits: string;
+        conversion: string;
+        delta: string;
+      }>;
       total: number;
     };
     expect(body.items[0]?.stage).toBe("Organic → application");
@@ -127,7 +153,14 @@ describe("GET /v1/conversion-copy-dashboard (Conversion copy suite)", () => {
       headers: cookieHeaders(staff.cookie),
     });
     const body = (await res.json()) as {
-      items: Array<{ id: string; name: string; channel: string; ctr: string; variants: number; status: string }>;
+      items: Array<{
+        id: string;
+        name: string;
+        channel: string;
+        ctr: string;
+        variants: number;
+        status: string;
+      }>;
       total: number;
     };
     expect(body.items[0]?.name).toBe("Cohort 17 launch");

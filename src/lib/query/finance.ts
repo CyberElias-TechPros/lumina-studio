@@ -3,12 +3,16 @@ import { usePaginatedQuery, flattenPages } from "@/lib/query/hooks";
 import { hrKeys } from "@/lib/query/hr";
 import {
   fetchInvoices,
+  createInvoice,
+  createPaymentBatch,
   fetchExpenses,
   fetchPaymentBatches,
   updateExpenseStatus,
   updateInvoiceStatus,
   runPayroll,
   type ExpenseStatus,
+  type CreateInvoiceInput,
+  type CreatePaymentBatchInput,
   type Invoice,
   type Expense,
   type PaymentBatch,
@@ -29,6 +33,16 @@ export function useInvoiceItems(): Invoice[] {
   return flattenPages(useInvoices().data?.pages);
 }
 
+export function useCreateInvoice() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (input: CreateInvoiceInput) => createInvoice(input),
+    onSuccess: () => {
+      void queryClient.invalidateQueries({ queryKey: financeKeys.invoices });
+    },
+  });
+}
+
 export function useExpenses() {
   return usePaginatedQuery<Expense>(financeKeys.expenses, fetchExpenses);
 }
@@ -43,6 +57,16 @@ export function usePaymentBatches() {
 
 export function usePaymentBatchItems(): PaymentBatch[] {
   return flattenPages(usePaymentBatches().data?.pages);
+}
+
+export function useCreatePaymentBatch() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (input: CreatePaymentBatchInput) => createPaymentBatch(input),
+    onSuccess: () => {
+      void queryClient.invalidateQueries({ queryKey: financeKeys.payments });
+    },
+  });
 }
 
 export function useUpdateInvoiceStatus() {

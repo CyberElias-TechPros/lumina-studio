@@ -28,7 +28,6 @@
     "@types/node": "^26.1.2",
     "@types/ssh2-sftp-client": "^9.0.6",
     "basic-ftp": "^6.1.0",
-    "drizzle-kit": "^0.31.10",
     "ssh2-sftp-client": "^12.1.1",
     "tsx": "^4.23.1",
     "typescript": "^7.0.2",

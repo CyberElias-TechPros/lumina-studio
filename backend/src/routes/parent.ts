@@ -81,7 +81,10 @@ async function loadEnrollments(db: AppEnv["DB"], userId: string): Promise<Enroll
   return rows.results;
 }
 
-async function loadOutstanding(db: AppEnv["DB"], userId: string): Promise<{
+async function loadOutstanding(
+  db: AppEnv["DB"],
+  userId: string,
+): Promise<{
   total: number;
   count: number;
 }> {

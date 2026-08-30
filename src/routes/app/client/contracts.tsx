@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useState } from "react";
 import {
   ArrowLeft,
   CalendarClock,
@@ -10,6 +11,13 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import { AppShell } from "@/components/app/app-shell";
 import { QueryState } from "@/components/ui/query-state";
 import type { CliContract } from "@/lib/query/clientEngagement";
@@ -35,6 +43,7 @@ function statusTone(s: string) {
 
 function ClientContracts() {
   const contractsQuery = useCliContracts();
+  const [selectedContract, setSelectedContract] = useState<CliContract | null>(null);
 
   return (
     <AppShell
@@ -132,7 +141,12 @@ function ClientContracts() {
                     <Badge className={cn("border-0 font-semibold", statusTone(c.status))}>
                       {c.status}
                     </Badge>
-                    <Button variant="outline" size="sm" className="shrink-0 font-semibold">
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="shrink-0 font-semibold"
+                      onClick={() => setSelectedContract(c)}
+                    >
                       View
                     </Button>
                   </div>
@@ -142,6 +156,37 @@ function ClientContracts() {
           </QueryState>
         </CardContent>
       </Card>
+      <Dialog
+        open={selectedContract !== null}
+        onOpenChange={(open) => !open && setSelectedContract(null)}
+      >
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>{selectedContract?.name ?? "Contract details"}</DialogTitle>
+            <DialogDescription>Contract record from the client workspace.</DialogDescription>
+          </DialogHeader>
+          {selectedContract && (
+            <dl className="grid gap-3 rounded-xl border p-4 text-sm">
+              <div>
+                <dt className="text-muted-foreground text-xs font-bold uppercase">Reference</dt>
+                <dd className="mt-1 font-semibold">{selectedContract.reference}</dd>
+              </div>
+              <div>
+                <dt className="text-muted-foreground text-xs font-bold uppercase">Value</dt>
+                <dd className="mt-1 font-semibold">{selectedContract.amount}</dd>
+              </div>
+              <div>
+                <dt className="text-muted-foreground text-xs font-bold uppercase">Effective</dt>
+                <dd className="mt-1 font-semibold">{selectedContract.dateLabel}</dd>
+              </div>
+              <div>
+                <dt className="text-muted-foreground text-xs font-bold uppercase">Status</dt>
+                <dd className="mt-1 font-semibold">{selectedContract.status}</dd>
+              </div>
+            </dl>
+          )}
+        </DialogContent>
+      </Dialog>
     </AppShell>
   );
 }

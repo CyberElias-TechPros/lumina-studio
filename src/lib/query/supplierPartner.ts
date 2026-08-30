@@ -1,13 +1,19 @@
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { usePaginatedQuery, flattenPages } from "@/lib/query/hooks";
 import {
   fetchSupOrders,
+  updateSupOrderStatus,
+  createPtnAgreement,
+  createPtnCollaboration,
+  createPtnReferral,
   fetchSupDeliveries,
   fetchSupInvoices,
   fetchSupPerformance,
   fetchSupCerts,
   fetchSupConversations,
   fetchSupConversationDetail,
+  sendSupConversationMessage,
+  sendPtnConversationMessage,
   fetchPtnAgreements,
   fetchPtnCollaborations,
   fetchPtnReferrals,
@@ -16,6 +22,8 @@ import {
   fetchPtnConversations,
   fetchPtnConversationDetail,
   type SupOrder,
+  type CreatePtnAgreementInput,
+  type CreatePtnCollaborationInput,
   type SupDelivery,
   type SupInvoice,
   type SupPerformance,
@@ -68,6 +76,17 @@ export function useSupOrderItems(): SupOrder[] {
   return flattenPages(useSupOrders().data?.pages);
 }
 
+export function useUpdateSupOrderStatus() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (input: { id: string; status: "confirmed" | "completed" }) =>
+      updateSupOrderStatus(input.id, input.status),
+    onSuccess: () => {
+      void queryClient.invalidateQueries({ queryKey: supKeys.orders });
+    },
+  });
+}
+
 export function useSupDeliveries() {
   return useSup<SupDelivery>(supKeys.deliveries, fetchSupDeliveries);
 }
@@ -107,6 +126,48 @@ export function useSupConversationDetail(id: string) {
   return useQuery({
     queryKey: supKeys.conversation(id),
     queryFn: () => fetchSupConversationDetail(id),
+    enabled: Boolean(id),
+  });
+}
+
+export function useSendSupConversationMessage(id: string) {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (body: string) => sendSupConversationMessage(id, body),
+    onSuccess: () => {
+      void queryClient.invalidateQueries({ queryKey: supKeys.conversation(id) });
+      void queryClient.invalidateQueries({ queryKey: supKeys.conversations });
+    },
+  });
+}
+
+export function useCreatePtnAgreement() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (input: CreatePtnAgreementInput) => createPtnAgreement(input),
+    onSuccess: () => {
+      void queryClient.invalidateQueries({ queryKey: ptnKeys.agreements });
+    },
+  });
+}
+
+export function useCreatePtnCollaboration() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (input: CreatePtnCollaborationInput) => createPtnCollaboration(input),
+    onSuccess: () => {
+      void queryClient.invalidateQueries({ queryKey: ptnKeys.collaborations });
+    },
+  });
+}
+
+export function useCreatePtnReferral() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (input: { name: string }) => createPtnReferral(input),
+    onSuccess: () => {
+      void queryClient.invalidateQueries({ queryKey: ptnKeys.referrals });
+    },
   });
 }
 
@@ -156,6 +217,18 @@ export function usePtnConversationDetail(id: string) {
   return useQuery({
     queryKey: ptnKeys.conversation(id),
     queryFn: () => fetchPtnConversationDetail(id),
+    enabled: Boolean(id),
+  });
+}
+
+export function useSendPtnConversationMessage(id: string) {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (body: string) => sendPtnConversationMessage(id, body),
+    onSuccess: () => {
+      void queryClient.invalidateQueries({ queryKey: ptnKeys.conversation(id) });
+      void queryClient.invalidateQueries({ queryKey: ptnKeys.conversations });
+    },
   });
 }
 

@@ -27,7 +27,8 @@ export const moduleDetails: Record<string, ModuleDetail> = {
     projects: [
       {
         name: "Personal portfolio site",
-        description: "Semantic, responsive HTML/CSS site deployed to a live URL — your first public artefact.",
+        description:
+          "Semantic, responsive HTML/CSS site deployed to a live URL — your first public artefact.",
       },
       {
         name: "Interactive quiz app",
@@ -35,10 +36,12 @@ export const moduleDetails: Record<string, ModuleDetail> = {
       },
       {
         name: "API-driven dashboard",
-        description: "Fetch and display live data from a public API with loading and error states handled properly.",
+        description:
+          "Fetch and display live data from a public API with loading and error states handled properly.",
       },
     ],
-    assessment: "Weekly auto-graded coding challenges plus two instructor-reviewed project checkpoints. Passing requires functional deployed projects, not just quizzes.",
+    assessment:
+      "Weekly auto-graded coding challenges plus two instructor-reviewed project checkpoints. Passing requires functional deployed projects, not just quizzes.",
   },
   "full-stack-software-development--frontend-with-react-typescript": {
     overview: [
@@ -62,18 +65,22 @@ export const moduleDetails: Record<string, ModuleDetail> = {
     projects: [
       {
         name: "Multi-page dashboard application",
-        description: "Authenticated dashboard with routing, role-based views and cached server state — the pattern most Nigerian product interviews probe.",
+        description:
+          "Authenticated dashboard with routing, role-based views and cached server state — the pattern most Nigerian product interviews probe.",
       },
       {
         name: "E-commerce storefront UI",
-        description: "Product listing, filtering, cart state and checkout flow built against a mock API.",
+        description:
+          "Product listing, filtering, cart state and checkout flow built against a mock API.",
       },
       {
         name: "Component library contribution",
-        description: "Build and document reusable components with tests, mirroring how team design systems evolve.",
+        description:
+          "Build and document reusable components with tests, mirroring how team design systems evolve.",
       },
     ],
-    assessment: "Code reviews on every project (the same review process you will face at work), a written TypeScript exam, and a timed build challenge where you ship a small feature from a ticket.",
+    assessment:
+      "Code reviews on every project (the same review process you will face at work), a written TypeScript exam, and a timed build challenge where you ship a small feature from a ticket.",
   },
   "full-stack-software-development--backend-apis-databases": {
     overview: [
@@ -97,18 +104,22 @@ export const moduleDetails: Record<string, ModuleDetail> = {
     projects: [
       {
         name: "Multi-tenant SaaS API",
-        description: "Organisations, users, roles and billing-ready endpoints with full test coverage.",
+        description:
+          "Organisations, users, roles and billing-ready endpoints with full test coverage.",
       },
       {
         name: "Payment-enabled booking system",
-        description: "Reserve, pay via Paystack test mode, handle webhook verification and idempotent confirmation.",
+        description:
+          "Reserve, pay via Paystack test mode, handle webhook verification and idempotent confirmation.",
       },
       {
         name: "Database optimisation exercise",
-        description: "Take a slow realistic dataset, profile queries, add indexes and document the improvement — interview gold.",
+        description:
+          "Take a slow realistic dataset, profile queries, add indexes and document the improvement — interview gold.",
       },
     ],
-    assessment: "APIs are assessed by automated test suites hitting your live endpoints (does it actually work?) plus manual code review covering security, structure and error handling.",
+    assessment:
+      "APIs are assessed by automated test suites hitting your live endpoints (does it actually work?) plus manual code review covering security, structure and error handling.",
   },
   "full-stack-software-development--cloud-ci-cd-devops-basics": {
     overview: [
@@ -130,14 +141,17 @@ export const moduleDetails: Record<string, ModuleDetail> = {
     projects: [
       {
         name: "Fully automated pipeline",
-        description: "Push to main triggers tests, builds Docker images, deploys staging then production on approval.",
+        description:
+          "Push to main triggers tests, builds Docker images, deploys staging then production on approval.",
       },
       {
         name: "Production deployment of your capstone preview",
-        description: "Your full-stack app live on a custom domain with monitoring and a documented rollback procedure.",
+        description:
+          "Your full-stack app live on a custom domain with monitoring and a documented rollback procedure.",
       },
     ],
-    assessment: "Pipeline must demonstrably run green from a fresh clone; deployment is verified by instructors hitting your live URL and intentionally breaking things to watch recovery.",
+    assessment:
+      "Pipeline must demonstrably run green from a fresh clone; deployment is verified by instructors hitting your live URL and intentionally breaking things to watch recovery.",
   },
   "full-stack-software-development--capstone-client-project": {
     overview: [
@@ -158,14 +172,17 @@ export const moduleDetails: Record<string, ModuleDetail> = {
     projects: [
       {
         name: "Client product delivery",
-        description: "A production application delivered to a paying or institutional client, from kickoff meeting to launch.",
+        description:
+          "A production application delivered to a paying or institutional client, from kickoff meeting to launch.",
       },
       {
         name: "Portfolio case study",
-        description: "A written case study documenting decisions, trade-offs and outcomes — the artefact that wins interviews.",
+        description:
+          "A written case study documenting decisions, trade-offs and outcomes — the artefact that wins interviews.",
       },
     ],
-    assessment: "Assessment combines client satisfaction, technical review of the codebase, individual contribution tracking and your capstone defence presentation to an industry panel.",
+    assessment:
+      "Assessment combines client satisfaction, technical review of the codebase, individual contribution tracking and your capstone defence presentation to an industry panel.",
   },
   "cybersecurity-analyst--security-fundamentals": {
     overview: [
@@ -188,18 +205,22 @@ export const moduleDetails: Record<string, ModuleDetail> = {
     projects: [
       {
         name: "Personal security lab",
-        description: "Documented multi-VM lab environment you will use throughout the programme — and throughout your career.",
+        description:
+          "Documented multi-VM lab environment you will use throughout the programme — and throughout your career.",
       },
       {
         name: "Network assessment report",
-        description: "Reconnaissance exercise on lab infrastructure with a professional findings report.",
+        description:
+          "Reconnaissance exercise on lab infrastructure with a professional findings report.",
       },
       {
         name: "Web vulnerability walkthrough",
-        description: "Exploit deliberately vulnerable apps (DVWA-style), then write remediation guidance for each finding.",
+        description:
+          "Exploit deliberately vulnerable apps (DVWA-style), then write remediation guidance for each finding.",
       },
     ],
-    assessment: "Lab practicals checked by instructors, a written foundations exam, and report quality graded against industry standards for clarity and actionability.",
+    assessment:
+      "Lab practicals checked by instructors, a written foundations exam, and report quality graded against industry standards for clarity and actionability.",
   },
   "cybersecurity-analyst--network-endpoint-defense": {
     overview: [
@@ -221,18 +242,22 @@ export const moduleDetails: Record<string, ModuleDetail> = {
     projects: [
       {
         name: "Segmented lab network",
-        description: "Design and implement a segmented network with firewall policies between zones, documented to enterprise standard.",
+        description:
+          "Design and implement a segmented network with firewall policies between zones, documented to enterprise standard.",
       },
       {
         name: "Hardened golden images",
-        description: "Windows and Linux builds hardened to benchmark with compliance evidence generated by script.",
+        description:
+          "Windows and Linux builds hardened to benchmark with compliance evidence generated by script.",
       },
       {
         name: "EDR detection lab",
-        description: "Deploy EDR, execute simulated attack techniques, tune noisy detections and document tuning rationale.",
+        description:
+          "Deploy EDR, execute simulated attack techniques, tune noisy detections and document tuning rationale.",
       },
     ],
-    assessment: "Configuration audits against benchmarks, detection exercises scored on true-positive rate, and a mid-programme practical where you defend an already-hardened environment against red-team attempts.",
+    assessment:
+      "Configuration audits against benchmarks, detection exercises scored on true-positive rate, and a mid-programme practical where you defend an already-hardened environment against red-team attempts.",
   },
   "cybersecurity-analyst--siem-detection-threat-hunting": {
     overview: [
@@ -254,18 +279,22 @@ export const moduleDetails: Record<string, ModuleDetail> = {
     projects: [
       {
         name: "Home SOC build",
-        description: "Complete SIEM deployment ingesting multiple log source types from your lab machines.",
+        description:
+          "Complete SIEM deployment ingesting multiple log source types from your lab machines.",
       },
       {
         name: "Detection rule library",
-        description: "Author and validate 15+ detections mapped to ATT&CK techniques, each tested against simulation.",
+        description:
+          "Author and validate 15+ detections mapped to ATT&CK techniques, each tested against simulation.",
       },
       {
         name: "Threat hunt report",
-        description: "Executive-readable hunt document: hypothesis, method, findings and resulting detection improvements.",
+        description:
+          "Executive-readable hunt document: hypothesis, method, findings and resulting detection improvements.",
       },
     ],
-    assessment: "Live detection exercises (attacks are simulated against your SIEM; did yours catch them?), peer review of detection rules, and a graded hunt report defending methodology choices.",
+    assessment:
+      "Live detection exercises (attacks are simulated against your SIEM; did yours catch them?), peer review of detection rules, and a graded hunt report defending methodology choices.",
   },
   "cybersecurity-analyst--incident-response-forensics": {
     overview: [
@@ -288,18 +317,22 @@ export const moduleDetails: Record<string, ModuleDetail> = {
     projects: [
       {
         name: "Full IR simulation",
-        description: "Respond to a staged multi-stage intrusion: contain it, investigate it, recover, report — against the clock.",
+        description:
+          "Respond to a staged multi-stage intrusion: contain it, investigate it, recover, report — against the clock.",
       },
       {
         name: "Forensic examination",
-        description: "Acquire and analyse a disk image, reconstruct attacker activity, produce court-ready findings documentation.",
+        description:
+          "Acquire and analyse a disk image, reconstruct attacker activity, produce court-ready findings documentation.",
       },
       {
         name: "Playbook authorship",
-        description: "Write response playbooks for scenarios Nigerian organisations actually face: BEC, ransomware, insider data theft.",
+        description:
+          "Write response playbooks for scenarios Nigerian organisations actually face: BEC, ransomware, insider data theft.",
       },
     ],
-    assessment: "Timed IR exercises scored on decision quality and completeness, forensic accuracy verified against ground truth, and report writing graded to professional standard.",
+    assessment:
+      "Timed IR exercises scored on decision quality and completeness, forensic accuracy verified against ground truth, and report writing graded to professional standard.",
   },
   "cybersecurity-analyst--grc-capstone-soc-simulation": {
     overview: [
@@ -320,14 +353,17 @@ export const moduleDetails: Record<string, ModuleDetail> = {
     projects: [
       {
         name: "Risk assessment for a real organisation",
-        description: "Scoped assessment of a partner SME or nonprofit, delivered as a professional consulting artefact.",
+        description:
+          "Scoped assessment of a partner SME or nonprofit, delivered as a professional consulting artefact.",
       },
       {
         name: "SOC capstone rotation",
-        description: "Two weeks operating the cohort SOC: triage, escalate, respond, document, brief leadership.",
+        description:
+          "Two weeks operating the cohort SOC: triage, escalate, respond, document, brief leadership.",
       },
     ],
-    assessment: "Capstone performance is assessed on operational metrics (alert handling quality, response times), leadership during your rotation, and the professional polish of your final portfolio.",
+    assessment:
+      "Capstone performance is assessed on operational metrics (alert handling quality, response times), leadership during your rotation, and the professional polish of your final portfolio.",
   },
   "cloud-engineering-devops--linux-networking-core": {
     overview: [
@@ -350,14 +386,17 @@ export const moduleDetails: Record<string, ModuleDetail> = {
     projects: [
       {
         name: "Automated server provisioning script",
-        description: "Bash script that provisions a hardened web server from bare install — parameterised and idempotent.",
+        description:
+          "Bash script that provisions a hardened web server from bare install — parameterised and idempotent.",
       },
       {
         name: "Virtual network lab",
-        description: "Multi-subnet topology with routing and firewall rules, plus a troubleshooting scenario set you exchange with peers.",
+        description:
+          "Multi-subnet topology with routing and firewall rules, plus a troubleshooting scenario set you exchange with peers.",
       },
     ],
-    assessment: "Terminal-based practical exams (no GUI crutches), script review for correctness and safety, and subnetting speed drills that mirror certification exam conditions.",
+    assessment:
+      "Terminal-based practical exams (no GUI crutches), script review for correctness and safety, and subnetting speed drills that mirror certification exam conditions.",
   },
   "cloud-engineering-devops--cloud-architecture": {
     overview: [
@@ -380,14 +419,17 @@ export const moduleDetails: Record<string, ModuleDetail> = {
     projects: [
       {
         name: "Three-tier production architecture",
-        description: "Highly available web application with separated tiers, monitoring and cost dashboard — rebuilt twice as you learn.",
+        description:
+          "Highly available web application with separated tiers, monitoring and cost dashboard — rebuilt twice as you learn.",
       },
       {
         name: "Architecture design defence",
-        description: "Design a complete solution for a realistic brief within budget constraints; defend choices to a panel.",
+        description:
+          "Design a complete solution for a realistic brief within budget constraints; defend choices to a panel.",
       },
     ],
-    assessment: "Hands-on labs verified in your own AWS account (we check the resources exist and work), scenario-based exams mirroring SA Associate difficulty, and the design defence.",
+    assessment:
+      "Hands-on labs verified in your own AWS account (we check the resources exist and work), scenario-based exams mirroring SA Associate difficulty, and the design defence.",
   },
   "cloud-engineering-devops--containers-kubernetes": {
     overview: [
@@ -411,18 +453,22 @@ export const moduleDetails: Record<string, ModuleDetail> = {
     projects: [
       {
         name: "Microservices platform on EKS",
-        description: "Deploy a multi-service application with Ingress, autoscaling, secrets management and monitoring — production-shaped.",
+        description:
+          "Deploy a multi-service application with Ingress, autoscaling, secrets management and monitoring — production-shaped.",
       },
       {
         name: "Helm chart library",
-        description: "Package your applications as reusable charts with values files per environment.",
+        description:
+          "Package your applications as reusable charts with values files per environment.",
       },
       {
         name: "Break-fix marathon",
-        description: "Twelve broken cluster scenarios diagnosed and repaired under time pressure, documented as a runbook.",
+        description:
+          "Twelve broken cluster scenarios diagnosed and repaired under time pressure, documented as a runbook.",
       },
     ],
-    assessment: "Practical cluster exams (fix this, deploy that), CKA-style timed exercises, and review of your Helm charts for reusability and correctness.",
+    assessment:
+      "Practical cluster exams (fix this, deploy that), CKA-style timed exercises, and review of your Helm charts for reusability and correctness.",
   },
   "cloud-engineering-devops--iac-cicd-gitops": {
     overview: [
@@ -445,14 +491,17 @@ export const moduleDetails: Record<string, ModuleDetail> = {
     projects: [
       {
         name: "Terraform module collection",
-        description: "Reusable, documented modules for networking, compute and databases published for cohort use.",
+        description:
+          "Reusable, documented modules for networking, compute and databases published for cohort use.",
       },
       {
         name: "End-to-end GitOps platform",
-        description: "Merge-to-deploy platform: Terraform provisions, Actions builds, ArgoCD delivers, monitoring observes.",
+        description:
+          "Merge-to-deploy platform: Terraform provisions, Actions builds, ArgoCD delivers, monitoring observes.",
       },
     ],
-    assessment: "Infrastructure code review (would a teammate thank you?), live pipeline demonstrations from clean clones, and disaster drills — destroy part of your platform, restore it from code.",
+    assessment:
+      "Infrastructure code review (would a teammate thank you?), live pipeline demonstrations from clean clones, and disaster drills — destroy part of your platform, restore it from code.",
   },
   "cloud-engineering-devops--sre-capstone": {
     overview: [
@@ -474,18 +523,22 @@ export const moduleDetails: Record<string, ModuleDetail> = {
     projects: [
       {
         name: "Six-week production tenure",
-        description: "Operational responsibility for a live platform with rotating on-call, documented in shift logs.",
+        description:
+          "Operational responsibility for a live platform with rotating on-call, documented in shift logs.",
       },
       {
         name: "Postmortem portfolio",
-        description: "Three blameless postmortems from real (or realistically injected) incidents, with completed actions.",
+        description:
+          "Three blameless postmortems from real (or realistically injected) incidents, with completed actions.",
       },
       {
         name: "Reliability review presentation",
-        description: "Present your tenure: SLO attainment, incidents handled, toil reduced, costs managed.",
+        description:
+          "Present your tenure: SLO attainment, incidents handled, toil reduced, costs managed.",
       },
     ],
-    assessment: "Operational metrics during your tenure, postmortem quality reviewed by practising SREs, and the final review defence.",
+    assessment:
+      "Operational metrics during your tenure, postmortem quality reviewed by practising SREs, and the final review defence.",
   },
   "data-science-ai--python-statistics": {
     overview: [
@@ -508,14 +561,17 @@ export const moduleDetails: Record<string, ModuleDetail> = {
     projects: [
       {
         name: "Exploratory analysis of Nigerian open data",
-        description: "Pick a public dataset (power, health, prices), clean it and tell the story it holds — presented to the cohort.",
+        description:
+          "Pick a public dataset (power, health, prices), clean it and tell the story it holds — presented to the cohort.",
       },
       {
         name: "A/B test analysis",
-        description: "Given experiment results with traps planted, determine significance correctly and communicate recommendation.",
+        description:
+          "Given experiment results with traps planted, determine significance correctly and communicate recommendation.",
       },
     ],
-    assessment: "Weekly notebook reviews, a statistics exam focused on interpretation over computation, and peer-reviewed analysis presentations.",
+    assessment:
+      "Weekly notebook reviews, a statistics exam focused on interpretation over computation, and peer-reviewed analysis presentations.",
   },
   "data-science-ai--data-wrangling-visualization": {
     overview: [
@@ -538,14 +594,17 @@ export const moduleDetails: Record<string, ModuleDetail> = {
     projects: [
       {
         name: "Messy-to-analysis pipeline",
-        description: "Take a deliberately ruined real-world dataset from raw chaos to analysis-ready, fully scripted and documented.",
+        description:
+          "Take a deliberately ruined real-world dataset from raw chaos to analysis-ready, fully scripted and documented.",
       },
       {
         name: "Insight dashboard",
-        description: "Interactive Streamlit dashboard answering a business question for a partner organisation.",
+        description:
+          "Interactive Streamlit dashboard answering a business question for a partner organisation.",
       },
     ],
-    assessment: "Pipeline reproducibility tested on unseen data variants, dashboard review by classmates playing executives, and wrangling speed rounds on fresh messy datasets.",
+    assessment:
+      "Pipeline reproducibility tested on unseen data variants, dashboard review by classmates playing executives, and wrangling speed rounds on fresh messy datasets.",
   },
   "data-science-ai--machine-learning": {
     overview: [
@@ -569,18 +628,22 @@ export const moduleDetails: Record<string, ModuleDetail> = {
     projects: [
       {
         name: "Churn prediction for telecom data",
-        description: "Full cycle: framing, features, model comparison, threshold selection, business recommendation.",
+        description:
+          "Full cycle: framing, features, model comparison, threshold selection, business recommendation.",
       },
       {
         name: "Fraud/anomaly detection",
-        description: "Imbalanced-data problem solved with appropriate metrics and honest uncertainty communication.",
+        description:
+          "Imbalanced-data problem solved with appropriate metrics and honest uncertainty communication.",
       },
       {
         name: "Image classifier with PyTorch",
-        description: "Transfer-learning CNN solving a locally relevant recognition task, trained on cloud GPU.",
+        description:
+          "Transfer-learning CNN solving a locally relevant recognition task, trained on cloud GPU.",
       },
     ],
-    assessment: "Kaggle-style cohort competition (leaderboard position matters less than methodology), model interpretation interviews, and reproducibility checks — can your results regenerate from your repo?",
+    assessment:
+      "Kaggle-style cohort competition (leaderboard position matters less than methodology), model interpretation interviews, and reproducibility checks — can your results regenerate from your repo?",
   },
   "data-science-ai--llms-applied-ai": {
     overview: [
@@ -604,14 +667,17 @@ export const moduleDetails: Record<string, ModuleDetail> = {
     projects: [
       {
         name: "Document intelligence RAG system",
-        description: "Question-answering assistant over a substantial document corpus, with citations and eval scores reported.",
+        description:
+          "Question-answering assistant over a substantial document corpus, with citations and eval scores reported.",
       },
       {
         name: "Agent workflow",
-        description: "Tool-using agent automating a realistic multi-step task with human-in-the-loop checkpoints.",
+        description:
+          "Tool-using agent automating a realistic multi-step task with human-in-the-loop checkpoints.",
       },
     ],
-    assessment: "System demos scored on reliability (not demo magic), eval harness quality reviewed, and a technical viva probing your understanding of failure modes.",
+    assessment:
+      "System demos scored on reliability (not demo magic), eval harness quality reviewed, and a technical viva probing your understanding of failure modes.",
   },
   "data-science-ai--mlops-capstone": {
     overview: [
@@ -634,14 +700,16 @@ export const moduleDetails: Record<string, ModuleDetail> = {
     projects: [
       {
         name: "End-to-end ML product",
-        description: "Deployed, monitored, documented ML system solving a real problem — your definitive portfolio centrepiece.",
+        description:
+          "Deployed, monitored, documented ML system solving a real problem — your definitive portfolio centrepiece.",
       },
       {
         name: "Capstone defence",
         description: "Present architecture, results, limitations and roadmap to an industry panel.",
       },
     ],
-    assessment: "Deployment verified live by panel members, monitoring demonstrated by injecting drift, code review, and the defence presentation.",
+    assessment:
+      "Deployment verified live by panel members, monitoring demonstrated by injecting drift, code review, and the defence presentation.",
   },
   "product-ui-ux-design--design-foundations": {
     overview: [
@@ -663,18 +731,22 @@ export const moduleDetails: Record<string, ModuleDetail> = {
     projects: [
       {
         name: "Brand poster series",
-        description: "Typographic posters demonstrating hierarchy and restraint — printed and critiqued.",
+        description:
+          "Typographic posters demonstrating hierarchy and restraint — printed and critiqued.",
       },
       {
         name: "Accessible palette study",
-        description: "Build and document an AA-compliant palette for a Nigerian brand, including culturally-informed choices.",
+        description:
+          "Build and document an AA-compliant palette for a Nigerian brand, including culturally-informed choices.",
       },
       {
         name: "Landing page recreation",
-        description: "Pixel-faithful Figma recreation of a quality landing page, then a redesigned variant defending improvements.",
+        description:
+          "Pixel-faithful Figma recreation of a quality landing page, then a redesigned variant defending improvements.",
       },
     ],
-    assessment: "Critique participation graded on both giving and receiving feedback, project rubrics emphasising fundamentals, and a Figma efficiency practical.",
+    assessment:
+      "Critique participation graded on both giving and receiving feedback, project rubrics emphasising fundamentals, and a Figma efficiency practical.",
   },
   "product-ui-ux-design--ux-research-strategy": {
     overview: [
@@ -697,14 +769,17 @@ export const moduleDetails: Record<string, ModuleDetail> = {
     projects: [
       {
         name: "Full research cycle",
-        description: "Interviews, synthesis and insights for a real local business, delivered as an actionable findings report.",
+        description:
+          "Interviews, synthesis and insights for a real local business, delivered as an actionable findings report.",
       },
       {
         name: "Usability test programme",
-        description: "Plan, moderate, analyse and report a five-participant usability study with prioritised fixes.",
+        description:
+          "Plan, moderate, analyse and report a five-participant usability study with prioritised fixes.",
       },
     ],
-    assessment: "Research artifacts reviewed against rigour criteria, moderation observed and scored live, and a strategy presentation defending recommendations with evidence.",
+    assessment:
+      "Research artifacts reviewed against rigour criteria, moderation observed and scored live, and a strategy presentation defending recommendations with evidence.",
   },
   "product-ui-ux-design--interface-design-systems": {
     overview: [
@@ -727,14 +802,17 @@ export const moduleDetails: Record<string, ModuleDetail> = {
     projects: [
       {
         name: "Mini design system",
-        description: "Tokenised, componentised, documented system covering 12+ components across states.",
+        description:
+          "Tokenised, componentised, documented system covering 12+ components across states.",
       },
       {
         name: "Multi-screen product design",
-        description: "A complete product flow (8–12 screens) built entirely from your system, responsive across breakpoints.",
+        description:
+          "A complete product flow (8–12 screens) built entirely from your system, responsive across breakpoints.",
       },
     ],
-    assessment: "System review for completeness and consistency, accessibility audit of your screens, and handoff simulation with a developer teammate grading your specs.",
+    assessment:
+      "System review for completeness and consistency, accessibility audit of your screens, and handoff simulation with a developer teammate grading your specs.",
   },
   "product-ui-ux-design--prototyping-testing": {
     overview: [
@@ -757,14 +835,17 @@ export const moduleDetails: Record<string, ModuleDetail> = {
     projects: [
       {
         name: "Tested product redesign",
-        description: "Redesign a flawed local product interface, validated through three rounds of user testing.",
+        description:
+          "Redesign a flawed local product interface, validated through three rounds of user testing.",
       },
       {
         name: "Motion prototype",
-        description: "Animated interaction sequence demonstrating purposeful motion guiding a critical user flow.",
+        description:
+          "Animated interaction sequence demonstrating purposeful motion guiding a critical user flow.",
       },
     ],
-    assessment: "Testing rigour audited from session recordings, revision quality measured against original findings, and a final usability benchmark showing measurable improvement.",
+    assessment:
+      "Testing rigour audited from session recordings, revision quality measured against original findings, and a final usability benchmark showing measurable improvement.",
   },
   "product-ui-ux-design--portfolio-studio": {
     overview: [
@@ -785,14 +866,17 @@ export const moduleDetails: Record<string, ModuleDetail> = {
     projects: [
       {
         name: "Portfolio site launch",
-        description: "Live portfolio with 3–4 polished case studies, custom domain, reviewed by practitioners.",
+        description:
+          "Live portfolio with 3–4 polished case studies, custom domain, reviewed by practitioners.",
       },
       {
         name: "Panel defence",
-        description: "Formal presentation of your portfolio to an industry panel with Q&A — rehearsed to competence.",
+        description:
+          "Formal presentation of your portfolio to an industry panel with Q&A — rehearsed to competence.",
       },
     ],
-    assessment: "Portfolio reviewed against hiring-manager rubrics, presentation scored on clarity and poise, and completion of at least two mock interviews with recorded feedback.",
+    assessment:
+      "Portfolio reviewed against hiring-manager rubrics, presentation scored on clarity and poise, and completion of at least two mock interviews with recorded feedback.",
   },
   "digital-marketing-growth--marketing-fundamentals": {
     overview: [
@@ -813,14 +897,17 @@ export const moduleDetails: Record<string, ModuleDetail> = {
     projects: [
       {
         name: "Positioning teardown",
-        description: "Analyse and reposition a real Nigerian brand, with revised messaging tested on actual consumers.",
+        description:
+          "Analyse and reposition a real Nigerian brand, with revised messaging tested on actual consumers.",
       },
       {
         name: "Go-to-market campaign plan",
-        description: "Full campaign plan for a local business: research, strategy, channel mix, budget and KPIs.",
+        description:
+          "Full campaign plan for a local business: research, strategy, channel mix, budget and KPIs.",
       },
     ],
-    assessment: "Campaign plan reviewed against unit-economics rigour, consumer-testing evidence required, and plan defence before cohort and invited business owners.",
+    assessment:
+      "Campaign plan reviewed against unit-economics rigour, consumer-testing evidence required, and plan defence before cohort and invited business owners.",
   },
   "digital-marketing-growth--paid-acquisition": {
     overview: [
@@ -844,14 +931,17 @@ export const moduleDetails: Record<string, ModuleDetail> = {
     projects: [
       {
         name: "Live campaign management",
-        description: "Run a real ₦50,000+ campaign on academy-funded accounts with weekly optimisation reviews.",
+        description:
+          "Run a real ₦50,000+ campaign on academy-funded accounts with weekly optimisation reviews.",
       },
       {
         name: "Full-funnel retargeting build",
-        description: "Architect and launch a complete cold-warm-hot funnel with creative sequenced by temperature.",
+        description:
+          "Architect and launch a complete cold-warm-hot funnel with creative sequenced by temperature.",
       },
     ],
-    assessment: "Campaign results reviewed for learning velocity (what did you test and kill?), optimisation log quality, and a live account audit by a practising media buyer.",
+    assessment:
+      "Campaign results reviewed for learning velocity (what did you test and kill?), optimisation log quality, and a live account audit by a practising media buyer.",
   },
   "digital-marketing-growth--content-seo-social": {
     overview: [
@@ -874,14 +964,17 @@ export const moduleDetails: Record<string, ModuleDetail> = {
     projects: [
       {
         name: "SEO audit and remediation",
-        description: "Audit a real Nigerian SME site, implement fixes, track ranking movement over eight weeks.",
+        description:
+          "Audit a real Nigerian SME site, implement fixes, track ranking movement over eight weeks.",
       },
       {
         name: "Content engine launch",
-        description: "Build and run a month of content for a partner business: cluster plan, four assets, social distribution, measured outcomes.",
+        description:
+          "Build and run a month of content for a partner business: cluster plan, four assets, social distribution, measured outcomes.",
       },
     ],
-    assessment: "Audit quality benchmarked against professional tools' findings, content performance tracked against baselines, and strategy documentation reviewed for repeatability.",
+    assessment:
+      "Audit quality benchmarked against professional tools' findings, content performance tracked against baselines, and strategy documentation reviewed for repeatability.",
   },
   "digital-marketing-growth--funnels-cro": {
     overview: [
@@ -903,14 +996,17 @@ export const moduleDetails: Record<string, ModuleDetail> = {
     projects: [
       {
         name: "Funnel rebuild",
-        description: "Diagnose and rebuild a leaking funnel for a real business, documenting each intervention's reasoning.",
+        description:
+          "Diagnose and rebuild a leaking funnel for a real business, documenting each intervention's reasoning.",
       },
       {
         name: "Experimentation programme",
-        description: "Four-plus A/B tests run to conclusion with statistically sound readouts, win or lose.",
+        description:
+          "Four-plus A/B tests run to conclusion with statistically sound readouts, win or lose.",
       },
     ],
-    assessment: "Experiment rigour audited (sample sizes, test durations, conclusions drawn), funnel metrics before/after, and a CRO playbook documenting your repeatable process.",
+    assessment:
+      "Experiment rigour audited (sample sizes, test durations, conclusions drawn), funnel metrics before/after, and a CRO playbook documenting your repeatable process.",
   },
   "digital-marketing-growth--analytics-capstone": {
     overview: [
@@ -931,14 +1027,17 @@ export const moduleDetails: Record<string, ModuleDetail> = {
     projects: [
       {
         name: "Measurement system implementation",
-        description: "Full GA4 + Looker Stack installed, validated and documented for a partner business.",
+        description:
+          "Full GA4 + Looker Stack installed, validated and documented for a partner business.",
       },
       {
         name: "Growth capstone",
-        description: "Quarter-long growth engagement: strategy, execution, measurement and boardroom-grade final review.",
+        description:
+          "Quarter-long growth engagement: strategy, execution, measurement and boardroom-grade final review.",
       },
     ],
-    assessment: "Implementation validated against QA checklist, dashboard adoption judged by the actual business owner, and capstone defence scored by practising growth leads.",
+    assessment:
+      "Implementation validated against QA checklist, dashboard adoption judged by the actual business owner, and capstone defence scored by practising growth leads.",
   },
   "networking-it-support--hardware-operating-systems": {
     overview: [
@@ -961,18 +1060,22 @@ export const moduleDetails: Record<string, ModuleDetail> = {
     projects: [
       {
         name: "Build-and-document a workstation",
-        description: "Source components locally, assemble, configure and document a complete workstation within a budget.",
+        description:
+          "Source components locally, assemble, configure and document a complete workstation within a budget.",
       },
       {
         name: "OS deployment lab",
-        description: "Automate Windows and Linux installations with drivers and baseline config, imaged for reuse.",
+        description:
+          "Automate Windows and Linux installations with drivers and baseline config, imaged for reuse.",
       },
       {
         name: "Repair clinic rotation",
-        description: "Real devices from the community diagnosed and repaired under supervision, logged professionally.",
+        description:
+          "Real devices from the community diagnosed and repaired under supervision, logged professionally.",
       },
     ],
-    assessment: "Timed hardware practicals (diagnose this dead machine), OS administration exams, and repair-log quality review.",
+    assessment:
+      "Timed hardware practicals (diagnose this dead machine), OS administration exams, and repair-log quality review.",
   },
   "networking-it-support--networking-essentials": {
     overview: [
@@ -995,14 +1098,17 @@ export const moduleDetails: Record<string, ModuleDetail> = {
     projects: [
       {
         name: "Office network build",
-        description: "Design, cable, configure and document a complete small-office network including wireless and guest access.",
+        description:
+          "Design, cable, configure and document a complete small-office network including wireless and guest access.",
       },
       {
         name: "Protocol investigation portfolio",
-        description: "Capture-and-explain dossier: ten protocols analysed live in Wireshark with annotated packets.",
+        description:
+          "Capture-and-explain dossier: ten protocols analysed live in Wireshark with annotated packets.",
       },
     ],
-    assessment: "Subnetting exams under time pressure, hands-on network configuration assessments, and troubleshooting stations where broken networks await diagnosis.",
+    assessment:
+      "Subnetting exams under time pressure, hands-on network configuration assessments, and troubleshooting stations where broken networks await diagnosis.",
   },
   "networking-it-support--routing-switching": {
     overview: [
@@ -1027,14 +1133,17 @@ export const moduleDetails: Record<string, ModuleDetail> = {
     projects: [
       {
         name: "Enterprise campus topology",
-        description: "Multi-building campus network with redundancy, segmentation and full documentation — built and defended.",
+        description:
+          "Multi-building campus network with redundancy, segmentation and full documentation — built and defended.",
       },
       {
         name: "CCNA practice battery",
-        description: "Timed configuration and troubleshooting labs mirroring certification exam conditions.",
+        description:
+          "Timed configuration and troubleshooting labs mirroring certification exam conditions.",
       },
     ],
-    assessment: "Configuration practicals graded on working outcomes, troubleshooting challenges against sabotaged networks, and readiness checkpoint aligned to CCNA domains.",
+    assessment:
+      "Configuration practicals graded on working outcomes, troubleshooting challenges against sabotaged networks, and readiness checkpoint aligned to CCNA domains.",
   },
   "networking-it-support--enterprise-support-desk": {
     overview: [
@@ -1057,7 +1166,8 @@ export const moduleDetails: Record<string, ModuleDetail> = {
     projects: [
       {
         name: "Live desk rotation",
-        description: "Staff the academy's real support queue for two weeks under mentor supervision, with metrics.",
+        description:
+          "Staff the academy's real support queue for two weeks under mentor supervision, with metrics.",
       },
       {
         name: "KB article portfolio",
@@ -1065,10 +1175,12 @@ export const moduleDetails: Record<string, ModuleDetail> = {
       },
       {
         name: "Escalation simulation suite",
-        description: "Role-played difficult scenarios recorded, reviewed and coached to competence.",
+        description:
+          "Role-played difficult scenarios recorded, reviewed and coached to competence.",
       },
     ],
-    assessment: "Ticket quality metrics from your rotation (first-contact resolution, CSAT, SLA adherence), KB article usefulness ratings, and observed communication assessments.",
+    assessment:
+      "Ticket quality metrics from your rotation (first-contact resolution, CSAT, SLA adherence), KB article usefulness ratings, and observed communication assessments.",
   },
   "networking-it-support--field-practicum": {
     overview: [
@@ -1087,14 +1199,17 @@ export const moduleDetails: Record<string, ModuleDetail> = {
     projects: [
       {
         name: "Four-week placement",
-        description: "Embedded support work at a partner organisation with documented contributions.",
+        description:
+          "Embedded support work at a partner organisation with documented contributions.",
       },
       {
         name: "Improvement capstone",
-        description: "Identify, propose and implement a durable improvement to host-site IT operations.",
+        description:
+          "Identify, propose and implement a durable improvement to host-site IT operations.",
       },
     ],
-    assessment: "Host supervisor evaluation weighted primarily, capstone project review, reflective log quality, and completion of placement hours.",
+    assessment:
+      "Host supervisor evaluation weighted primarily, capstone project review, reflective log quality, and completion of placement hours.",
   },
   "mobile-app-development--mobile-foundations": {
     overview: [
@@ -1117,14 +1232,17 @@ export const moduleDetails: Record<string, ModuleDetail> = {
     projects: [
       {
         name: "First complete app",
-        description: "Multi-screen app with navigation and persistence, running on your own device.",
+        description:
+          "Multi-screen app with navigation and persistence, running on your own device.",
       },
       {
         name: "Device matrix report",
-        description: "Test your app across classmates' devices; document and fix fragmentation issues found.",
+        description:
+          "Test your app across classmates' devices; document and fix fragmentation issues found.",
       },
     ],
-    assessment: "Working-app demonstrations on real hardware, platform-concept quizzes, and code review focused on mobile-appropriate patterns.",
+    assessment:
+      "Working-app demonstrations on real hardware, platform-concept quizzes, and code review focused on mobile-appropriate patterns.",
   },
   "mobile-app-development--react-native-core": {
     overview: [
@@ -1147,14 +1265,17 @@ export const moduleDetails: Record<string, ModuleDetail> = {
     projects: [
       {
         name: "Consumer-grade app build",
-        description: "A polished multi-flow app (auth, lists, detail, settings) with animations and tests.",
+        description:
+          "A polished multi-flow app (auth, lists, detail, settings) with animations and tests.",
       },
       {
         name: "Performance audit",
-        description: "Profile and optimise a janky app: render reduction, list virtualisation, animation offloading.",
+        description:
+          "Profile and optimise a janky app: render reduction, list virtualisation, animation offloading.",
       },
     ],
-    assessment: "Code review against production RN standards, app performance benchmarks on low-end devices specifically, and feature-build practicals from written specs.",
+    assessment:
+      "Code review against production RN standards, app performance benchmarks on low-end devices specifically, and feature-build practicals from written specs.",
   },
   "mobile-app-development--data-offline-sync": {
     overview: [
@@ -1177,14 +1298,17 @@ export const moduleDetails: Record<string, ModuleDetail> = {
     projects: [
       {
         name: "Offline-first notes app",
-        description: "Full CRUD app surviving airplane mode, syncing bidirectionally with conflict-safe reconciliation.",
+        description:
+          "Full CRUD app surviving airplane mode, syncing bidirectionally with conflict-safe reconciliation.",
       },
       {
         name: "Chaos testing suite",
-        description: "Scripted network degradation tests proving your sync survives drops, duplicates and clock skew.",
+        description:
+          "Scripted network degradation tests proving your sync survives drops, duplicates and clock skew.",
       },
     ],
-    assessment: "Chaos-suite survival is binary (your app handles it or it doesn't), code review of sync logic, and a written architecture defence of your conflict-resolution choices.",
+    assessment:
+      "Chaos-suite survival is binary (your app handles it or it doesn't), code review of sync logic, and a written architecture defence of your conflict-resolution choices.",
   },
   "mobile-app-development--native-modules-release": {
     overview: [
@@ -1207,14 +1331,17 @@ export const moduleDetails: Record<string, ModuleDetail> = {
     projects: [
       {
         name: "Custom native module",
-        description: "Bridge a native capability to JS with proper typing, error handling and documentation.",
+        description:
+          "Bridge a native capability to JS with proper typing, error handling and documentation.",
       },
       {
         name: "Store-track release",
-        description: "Ship an app through internal/closed testing tracks on both stores, responding to real review feedback.",
+        description:
+          "Ship an app through internal/closed testing tracks on both stores, responding to real review feedback.",
       },
     ],
-    assessment: "Working native module demonstrated on device, successful store-track submissions verified, and release-process documentation quality reviewed.",
+    assessment:
+      "Working native module demonstrated on device, successful store-track submissions verified, and release-process documentation quality reviewed.",
   },
   "mobile-app-development--store-launch-capstone": {
     overview: [
@@ -1235,14 +1362,17 @@ export const moduleDetails: Record<string, ModuleDetail> = {
     projects: [
       {
         name: "Public store launch",
-        description: "Your app, live on Google Play (and App Store where feasible), with real users and analytics.",
+        description:
+          "Your app, live on Google Play (and App Store where feasible), with real users and analytics.",
       },
       {
         name: "Launch retrospective",
-        description: "Data-backed review of launch outcomes, user feedback themes and the next iteration plan.",
+        description:
+          "Data-backed review of launch outcomes, user feedback themes and the next iteration plan.",
       },
     ],
-    assessment: "Public launch achieved (hard requirement), retrospective quality, store-listing conversion craft, and the app's stability metrics in its first weeks.",
+    assessment:
+      "Public launch achieved (hard requirement), retrospective quality, store-listing conversion craft, and the app's stability metrics in its first weeks.",
   },
 };
 

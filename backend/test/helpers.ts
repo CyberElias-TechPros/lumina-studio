@@ -40,6 +40,20 @@ import adminMetricsSql from "../migrations/0037_admin_system_metrics.sql?raw";
 import parentInvitationsSql from "../migrations/0038_parent_invitations.sql?raw";
 import ownershipSql from "../migrations/0039_ownership.sql?raw";
 import submissionsColumnsSql from "../migrations/0040_submissions_columns.sql?raw";
+import notificationReadsSql from "../migrations/0041_notification_reads.sql?raw";
+import studentActionsSql from "../migrations/0042_student_actions.sql?raw";
+import notificationPreferencesSql from "../migrations/0043_notification_preferences.sql?raw";
+import volunteerSignupsSql from "../migrations/0044_volunteer_signups.sql?raw";
+import volunteerSignupConstraintsSql from "../migrations/0045_volunteer_signup_constraints.sql?raw";
+import receptionistActionsSql from "../migrations/0046_receptionist_actions.sql?raw";
+import clientTicketOwnershipSql from "../migrations/0047_client_ticket_ownership.sql?raw";
+import adminKeyRotationsSql from "../migrations/0048_admin_key_rotations.sql?raw";
+import alumniEventRsvpsSql from "../migrations/0049_alumni_event_rsvps.sql?raw";
+import alumniMentorshipSql from "../migrations/0050_alumni_mentorship_availability.sql?raw";
+import mentorRequestTargetsSql from "../migrations/0051_mentor_request_targets.sql?raw";
+import alumniConnectionsSql from "../migrations/0052_alumni_connections.sql?raw";
+import backupRestoreRequestsSql from "../migrations/0053_backup_restore_requests.sql?raw";
+import assessmentAttemptsSql from "../migrations/0054_assessment_attempts.sql?raw";
 import { seedContentSql } from "../seeds/content";
 import { seedLmsSql } from "../seeds/lms";
 import { seedDomainSql } from "../seeds/domain";
@@ -131,6 +145,20 @@ export async function setupDb(): Promise<void> {
     parentInvitationsSql,
     ownershipSql,
     submissionsColumnsSql,
+    notificationReadsSql,
+    studentActionsSql,
+    notificationPreferencesSql,
+    volunteerSignupsSql,
+    volunteerSignupConstraintsSql,
+    receptionistActionsSql,
+    clientTicketOwnershipSql,
+    adminKeyRotationsSql,
+    alumniEventRsvpsSql,
+    alumniMentorshipSql,
+    mentorRequestTargetsSql,
+    alumniConnectionsSql,
+    backupRestoreRequestsSql,
+    assessmentAttemptsSql,
   ]) {
     const statements = sql
       .split("\n")

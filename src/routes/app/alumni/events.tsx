@@ -1,12 +1,21 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useState } from "react";
+import { toast } from "sonner";
 import { ArrowLeft, CalendarDays, MapPin, PartyPopper, Users } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import { AppShell } from "@/components/app/app-shell";
 import { QueryState } from "@/components/ui/query-state";
 import type { AluEvent } from "@/lib/api/alumni";
-import { useAluEvents } from "@/lib/query/alumni";
+import { useAluEvents, useRsvpToAluEvent } from "@/lib/query/alumni";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/alumni/events")({
@@ -28,6 +37,24 @@ const eventTones = [
 
 function AlumniEvents() {
   const eventsQuery = useAluEvents();
+  const rsvp = useRsvpToAluEvent();
+  const [selectedEvent, setSelectedEvent] = useState<AluEvent | null>(null);
+
+  const submitRsvp = () => {
+    if (!selectedEvent || rsvp.isPending || /rsvp/i.test(selectedEvent.status)) return;
+    rsvp.mutate(selectedEvent.id, {
+      onSuccess: (result) => {
+        toast.success(
+          result.alreadyRsvpd ? "You are already RSVP'd" : `RSVP confirmed for ${result.title}`,
+        );
+        if (!result.alreadyRsvpd) {
+          setSelectedEvent((event) =>
+            event ? { ...event, going: event.going + 1, status: "RSVP'd" } : event,
+          );
+        }
+      },
+    });
+  };
 
   return (
     <AppShell
@@ -130,7 +157,12 @@ function AlumniEvents() {
                     >
                       {e.status}
                     </Badge>
-                    <Button variant="outline" size="sm" className="shrink-0 font-semibold">
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="shrink-0 font-semibold"
+                      onClick={() => setSelectedEvent(e)}
+                    >
                       Details
                     </Button>
                   </div>
@@ -140,6 +172,55 @@ function AlumniEvents() {
           </QueryState>
         </CardContent>
       </Card>
+      <Dialog
+        open={selectedEvent !== null}
+        onOpenChange={(open) => !open && setSelectedEvent(null)}
+      >
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>{selectedEvent?.title ?? "Event details"}</DialogTitle>
+            <DialogDescription>
+              Alumni event information from the community calendar.
+            </DialogDescription>
+          </DialogHeader>
+          {selectedEvent && (
+            <dl className="grid gap-3 rounded-xl border p-4 text-sm">
+              <div>
+                <dt className="text-muted-foreground text-xs font-bold uppercase">When</dt>
+                <dd className="mt-1 font-semibold">{selectedEvent.dateLabel}</dd>
+              </div>
+              <div>
+                <dt className="text-muted-foreground text-xs font-bold uppercase">Where</dt>
+                <dd className="mt-1 font-semibold">{selectedEvent.location}</dd>
+              </div>
+              <div>
+                <dt className="text-muted-foreground text-xs font-bold uppercase">Attendance</dt>
+                <dd className="mt-1 font-semibold">{selectedEvent.going} going</dd>
+              </div>
+              <div>
+                <dt className="text-muted-foreground text-xs font-bold uppercase">Your status</dt>
+                <dd className="mt-1 font-semibold">{selectedEvent.status}</dd>
+              </div>
+            </dl>
+          )}
+          <Button
+            className="bg-gradient-brand border-0"
+            onClick={submitRsvp}
+            disabled={!selectedEvent || rsvp.isPending || /rsvp/i.test(selectedEvent.status)}
+          >
+            {rsvp.isPending
+              ? "Confirming…"
+              : selectedEvent && /rsvp/i.test(selectedEvent.status)
+                ? "RSVP confirmed"
+                : "RSVP to event"}
+          </Button>
+          {rsvp.error && (
+            <p role="alert" className="text-destructive text-sm font-semibold">
+              {rsvp.error.message}
+            </p>
+          )}
+        </DialogContent>
+      </Dialog>
     </AppShell>
   );
 }

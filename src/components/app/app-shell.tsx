@@ -1,5 +1,5 @@
 import { useEffect, useState, type ReactNode } from "react";
-import { Link, useNavigate } from "@tanstack/react-router";
+import { Link, useLocation, useNavigate } from "@tanstack/react-router";
 import {
   Bell,
   BookOpen,
@@ -67,6 +67,7 @@ import { useSignOut, useSession } from "@/lib/auth/session";
 import { useSessionUser } from "@/components/app/session-provider";
 import { isMockMode } from "@/lib/env";
 import { track } from "@/lib/analytics";
+import { resolveRoleKey } from "@/data/rbac";
 
 export type AppRole = {
   key: string;
@@ -125,8 +126,16 @@ export const appRoles: AppRole[] = [
         icon: <ShieldCheck className="size-4" />,
         to: "/app/assessments",
       },
-      { label: "Gradebook", icon: <GraduationCap className="size-4" />, to: "/app/grades" },
-      { label: "Attendance", icon: <Users className="size-4" />, to: "/app/attendance" },
+      {
+        label: "Gradebook",
+        icon: <GraduationCap className="size-4" />,
+        to: "/app/instructor/gradebook",
+      },
+      {
+        label: "Attendance",
+        icon: <Users className="size-4" />,
+        to: "/app/instructor/attendance",
+      },
       { label: "Analytics", icon: <Building2 className="size-4" />, to: "/app/reports" },
       { label: "Calendar", icon: <CalendarDays className="size-4" />, to: "/app/calendar" },
       { label: "Messages", icon: <MessageSquare className="size-4" />, to: "/app/messages" },
@@ -942,6 +951,30 @@ export const appRoles: AppRole[] = [
   },
 ];
 
+const SHARED_APP_PATHS = [
+  "/app/calendar",
+  "/app/messages",
+  "/app/chat",
+  "/app/ai",
+  "/app/notifications",
+  "/app/live",
+  "/app/assignments",
+  "/app/assessments",
+  "/app/finance/pay-verify",
+];
+
+function requiredRolesForAppPath(pathname: string, contextRole: string): string[] | null {
+  if (!pathname.startsWith("/app/") || pathname === "/app/") return null;
+  if (SHARED_APP_PATHS.some((path) => pathname === path || pathname.startsWith(`${path}/`))) {
+    if (["live", "assignments", "assessments"].includes(contextRole)) {
+      return ["student", "instructor", "admin"];
+    }
+    if (contextRole === "finance") return ["student", "finance", "admin"];
+    return null;
+  }
+  return appRoles.some((role) => role.key === contextRole) ? [contextRole, "admin"] : null;
+}
+
 export function AppShell({
   roleKey = "student",
   title,
@@ -957,13 +990,25 @@ export function AppShell({
 }) {
   const [roleKeyState, setRoleKeyState] = useState(roleKey);
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const activeRoleKey = roleKeyState || roleKey;
-  const role = appRoles.find((r) => r.key === activeRoleKey) ?? appRoles[0];
   const { open: paletteOpen, setOpen: setPaletteOpen } = useCommandPalette();
+  const location = useLocation();
   const navigate = useNavigate();
   const signOut = useSignOut();
   const user = useSessionUser();
   const { data: sessionData, isPending: sessionLoading } = useSession();
+  // Mock mode intentionally exposes the role switcher for demos. In a real
+  // deployment the server-issued role is authoritative; never let a route's
+  // presentation prop make an authenticated user look like another role.
+  const activeRoleKey = isMockMode
+    ? roleKeyState || roleKey
+    : resolveRoleKey(sessionData?.user.roleKey ?? roleKey);
+  const role = appRoles.find((r) => r.key === activeRoleKey) ?? appRoles[0];
+
+  const requiredRoles = requiredRolesForAppPath(location.pathname, roleKey);
+  const actualRoleKey = sessionData?.user ? resolveRoleKey(sessionData.user.roleKey) : null;
+  const accessDenied =
+    !isMockMode &&
+    Boolean(actualRoleKey && requiredRoles && !requiredRoles.includes(actualRoleKey));
 
   const signedOutInLiveMode = !sessionLoading && !sessionData?.user && !isMockMode;
   useEffect(() => {
@@ -1169,7 +1214,27 @@ export function AppShell({
           )}
         </header>
 
-        <main className="flex-1 px-4 py-6 sm:px-6 lg:px-8">{children}</main>
+        <main className="flex-1 px-4 py-6 sm:px-6 lg:px-8">
+          {accessDenied ? (
+            <div className="mx-auto flex min-h-[420px] max-w-xl flex-col items-center justify-center text-center">
+              <span className="bg-error/10 text-error grid size-14 place-items-center rounded-2xl text-2xl">
+                🔒
+              </span>
+              <h2 className="font-display mt-5 text-xl font-extrabold">
+                This workspace is restricted
+              </h2>
+              <p className="text-muted-foreground mt-2 max-w-md text-sm leading-relaxed">
+                Your signed-in role does not have access to this area. Use the workspace navigation
+                to open the tools available to you.
+              </p>
+              <Button asChild className="bg-gradient-brand shadow-glow mt-5 border-0">
+                <Link to="/app">Return to my dashboard</Link>
+              </Button>
+            </div>
+          ) : (
+            children
+          )}
+        </main>
       </div>
     </div>
   );

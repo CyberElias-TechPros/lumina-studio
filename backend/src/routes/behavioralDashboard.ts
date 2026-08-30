@@ -11,8 +11,7 @@ const BD_COLS: Record<string, { table: string; columns: string }> = {
   },
   interventions: {
     table: "bd_interventions",
-    columns:
-      "id, title, goal, mechanism, effort, evidence, tests_run AS testsRun, status",
+    columns: "id, title, goal, mechanism, effort, evidence, tests_run AS testsRun, status",
   },
   flows: {
     table: "bd_flows",

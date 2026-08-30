@@ -41,7 +41,13 @@ describe("GET /v1/intern-dashboard (Intern dashboard suite)", () => {
       headers: cookieHeaders(intern.cookie),
     });
     const body = (await res.json()) as {
-      items: Array<{ id: string; title: string; status: string; dueLabel: string; category: string }>;
+      items: Array<{
+        id: string;
+        title: string;
+        status: string;
+        dueLabel: string;
+        category: string;
+      }>;
       total: number;
     };
     expect(body.total).toBeGreaterThanOrEqual(4);
@@ -79,7 +85,13 @@ describe("GET /v1/intern-dashboard (Intern dashboard suite)", () => {
       headers: cookieHeaders(intern.cookie),
     });
     const body = (await res.json()) as {
-      items: Array<{ id: string; title: string; category: string; artifacts: number; views: number }>;
+      items: Array<{
+        id: string;
+        title: string;
+        category: string;
+        artifacts: number;
+        views: number;
+      }>;
       total: number;
     };
     expect(body.total).toBeGreaterThanOrEqual(1);

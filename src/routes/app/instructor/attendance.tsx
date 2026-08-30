@@ -1,10 +1,14 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useState } from "react";
+import { toast } from "sonner";
 import { Camera, CheckCircle2, ListChecks, QrCode, ScanLine, Users, XCircle } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
 import { useInstructorGradebookRows } from "@/lib/query/instructor";
+import { useCreateAttendanceSession } from "@/lib/query/attendance";
+import type { AttendanceSession } from "@/lib/api/attendance";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/instructor/attendance")({
@@ -21,6 +25,22 @@ type RosterRow = { name: string; status: "present" | "late" | "absent" };
 
 function AttendanceMarker() {
   const rows = useInstructorGradebookRows();
+  const createSession = useCreateAttendanceSession();
+  const [session, setSession] = useState<AttendanceSession | null>(null);
+
+  const openQrWindow = () => {
+    createSession.mutate(
+      { course: "Backend & APIs", durationMinutes: 15 },
+      {
+        onSuccess: (nextSession) => {
+          setSession(nextSession);
+          toast.success("QR check-in window opened", {
+            description: `Students can enter ${nextSession.code} for the next 15 minutes.`,
+          });
+        },
+      },
+    );
+  };
 
   const roster: RosterRow[] = rows.map((r, i) => ({
     name: r.student,
@@ -40,10 +60,12 @@ function AttendanceMarker() {
       actions={
         <>
           <Badge className="bg-success/10 text-success border-0 font-semibold">
-            QR window open
+            {session ? "QR window open" : "QR window ready"}
           </Badge>
           <Badge variant="secondary" className="font-semibold">
-            Opened 09:58 · closes 10:15
+            {session
+              ? `Closes ${new Date(session.closesAt).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}`
+              : "Not started"}
           </Badge>
         </>
       }
@@ -124,13 +146,30 @@ function AttendanceMarker() {
                 </div>
               </div>
               <p className="text-center text-xs font-bold">
-                Class code: <span className="font-mono text-primary">C15-BE-081</span>
+                Class code:{" "}
+                <span className="font-mono text-primary">{session?.code ?? "Not opened"}</span>
               </p>
-              <Button size="sm" className="bg-gradient-brand w-full border-0">
-                <Camera className="mr-1.5 size-4" /> Scan student QR
+              <Button
+                size="sm"
+                className="bg-gradient-brand w-full border-0"
+                onClick={openQrWindow}
+                disabled={createSession.isPending}
+              >
+                <Camera className="mr-1.5 size-4" />
+                {createSession.isPending
+                  ? "Opening…"
+                  : session
+                    ? "Refresh QR window"
+                    : "Open QR window"}
               </Button>
+              {createSession.error && (
+                <p role="alert" className="text-destructive text-center text-xs font-semibold">
+                  {createSession.error.message}
+                </p>
+              )}
               <p className="text-muted-foreground text-center text-[11px] font-semibold">
-                Students scan the projected code from the app. Geofence: campus only.
+                Project this code for students to enter in Attendance. A new code expires after 15
+                minutes.
               </p>
             </CardContent>
           </Card>

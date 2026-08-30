@@ -81,7 +81,14 @@ describe("GET /v1/department-dashboard (Department suite)", () => {
       headers: cookieHeaders(staff.cookie),
     });
     const body = (await res.json()) as {
-      items: Array<{ id: string; name: string; courses: number; students: number; workload: string; rating: string }>;
+      items: Array<{
+        id: string;
+        name: string;
+        courses: number;
+        students: number;
+        workload: string;
+        rating: string;
+      }>;
       total: number;
     };
     expect(body.total).toBeGreaterThanOrEqual(4);
@@ -97,7 +104,14 @@ describe("GET /v1/department-dashboard (Department suite)", () => {
       headers: cookieHeaders(staff.cookie),
     });
     const body = (await res.json()) as {
-      items: Array<{ id: string; name: string; enrolled: number; capacity: number; pct: number; status: string }>;
+      items: Array<{
+        id: string;
+        name: string;
+        enrolled: number;
+        capacity: number;
+        pct: number;
+        status: string;
+      }>;
       total: number;
     };
     expect(body.items[0]?.name).toBe("Cohort 15 — Full-Stack");
@@ -139,7 +153,13 @@ describe("GET /v1/department-dashboard (Department suite)", () => {
       headers: cookieHeaders(staff.cookie),
     });
     const body = (await res.json()) as {
-      items: Array<{ id: string; title: string; requester: string; dateLabel: string; status: string }>;
+      items: Array<{
+        id: string;
+        title: string;
+        requester: string;
+        dateLabel: string;
+        status: string;
+      }>;
       total: number;
     };
     expect(body.items[0]?.title).toBe("Curriculum update · Frontend track");

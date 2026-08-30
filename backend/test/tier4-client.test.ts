@@ -42,7 +42,14 @@ describe("GET /v1/client-dashboard (Client engagement suite)", () => {
       headers: cookieHeaders(staff.cookie),
     });
     const body = (await res.json()) as {
-      items: Array<{ id: string; title: string; reference: string; dateLabel: string; sla: string; status: string }>;
+      items: Array<{
+        id: string;
+        title: string;
+        reference: string;
+        dateLabel: string;
+        sla: string;
+        status: string;
+      }>;
       total: number;
     };
     expect(body.items[0]?.title).toBe("Can't access project repo");
@@ -71,7 +78,14 @@ describe("GET /v1/client-dashboard (Client engagement suite)", () => {
       headers: cookieHeaders(staff.cookie),
     });
     const body = (await res.json()) as {
-      items: Array<{ id: string; title: string; type: string; size: string; updated: string; status: string }>;
+      items: Array<{
+        id: string;
+        title: string;
+        type: string;
+        size: string;
+        updated: string;
+        status: string;
+      }>;
       total: number;
     };
     expect(body.items[0]?.title).toBe("SOW · Platform rebuild v2");
@@ -86,7 +100,14 @@ describe("GET /v1/client-dashboard (Client engagement suite)", () => {
       headers: cookieHeaders(staff.cookie),
     });
     const body = (await res.json()) as {
-      items: Array<{ id: string; name: string; reference: string; amount: string; dateLabel: string; status: string }>;
+      items: Array<{
+        id: string;
+        name: string;
+        reference: string;
+        amount: string;
+        dateLabel: string;
+        status: string;
+      }>;
       total: number;
     };
     expect(body.items[0]?.name).toBe("Platform rebuild · MS-2026-014");
@@ -102,7 +123,13 @@ describe("GET /v1/client-dashboard (Client engagement suite)", () => {
       headers: cookieHeaders(staff.cookie),
     });
     const body = (await res.json()) as {
-      items: Array<{ id: string; title: string; reference: string; amount: string; status: string }>;
+      items: Array<{
+        id: string;
+        title: string;
+        reference: string;
+        amount: string;
+        status: string;
+      }>;
       total: number;
     };
     expect(body.items[0]?.title).toBe("Deposit — OrderPadi build");
@@ -117,7 +144,13 @@ describe("GET /v1/client-dashboard (Client engagement suite)", () => {
       headers: cookieHeaders(staff.cookie),
     });
     const body = (await res.json()) as {
-      items: Array<{ id: string; title: string; fromLabel: string; timeLabel: string; status: string }>;
+      items: Array<{
+        id: string;
+        title: string;
+        fromLabel: string;
+        timeLabel: string;
+        status: string;
+      }>;
       total: number;
     };
     expect(body.items[0]?.title).toBe("Landing page build — review needed");

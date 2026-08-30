@@ -30,10 +30,15 @@ export function requestMagicLink(input: MagicLinkRequestInput): Promise<{ ok: tr
 }
 
 /** Verifies a one-time magic link token. The session is stored in an HttpOnly cookie. */
-export function verifyMagicLink(input: MagicLinkVerifyInput): Promise<Session> {
-  return apiFetch<Session>(`/v1/auth/magic-link/verify?token=${encodeURIComponent(input.token)}`, {
-    noRefresh: true,
-  });
+export type MagicLinkVerifyResult = Session | { mfaRequired: true; expiresAt: string };
+
+export function verifyMagicLink(input: MagicLinkVerifyInput): Promise<MagicLinkVerifyResult> {
+  return apiFetch<MagicLinkVerifyResult>(
+    `/v1/auth/magic-link/verify?token=${encodeURIComponent(input.token)}`,
+    {
+      noRefresh: true,
+    },
+  );
 }
 
 export function signOut(): Promise<{ ok: true }> {

@@ -12,7 +12,7 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Toaster } from "@/components/ui/sonner";
-import { SessionProvider } from "@/components/app/session-provider";
+import { SessionProvider, useSessionContext } from "@/components/app/session-provider";
 import { OnboardingTour } from "@/components/app/onboarding-tour";
 import { registerServiceWorker, subscribeToPush } from "@/lib/pwa";
 import { useFlag } from "@/lib/flags";
@@ -133,7 +133,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "icon", href: "/icon.svg", type: "image/svg+xml" },
       { rel: "apple-touch-icon", href: "/icon.svg" },
       { rel: "manifest", href: "/manifest.webmanifest" },
-      { rel: "apple-touch-icon", href: "/icon.svg" },
       { rel: "mask-icon", href: "/icon.svg", color: "#7a2434" },
     ],
   }),
@@ -149,7 +148,6 @@ function RootShell({ children }: { children: ReactNode }) {
     <html lang="en">
       <head>
         <HeadContent />
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9117572925263537" crossOrigin="anonymous"></script>
       </head>
       <body>
         <StructuredData data={[ORGANIZATION_LD, LOCAL_BUSINESS_LD, WEBSITE_LD]} />
@@ -169,9 +167,9 @@ function RootComponent() {
         {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
         <Outlet />
         <OnboardingTour />
+        <RootEffects />
       </SessionProvider>
       <Toaster position="top-right" richColors />
-      <RootEffects />
       <CookieConsent />
     </QueryClientProvider>
   );
@@ -179,14 +177,17 @@ function RootComponent() {
 
 function RootEffects() {
   const pushEnabled = useFlag("pwa.push");
+  const { session } = useSessionContext();
 
   useEffect(() => {
     registerServiceWorker();
   }, []);
 
   useEffect(() => {
-    void subscribeToPush(pushEnabled);
-  }, [pushEnabled]);
+    // Push subscriptions belong to signed-in users. In particular, do not
+    // prompt anonymous visitors for notification permission on public pages.
+    if (session?.user.id) void subscribeToPush(pushEnabled);
+  }, [pushEnabled, session?.user.id]);
 
   useEffect(() => {
     const id = import.meta.env.VITE_GA4_ID;

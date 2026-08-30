@@ -7,16 +7,23 @@ import {
   CalendarDays,
   CheckCircle2,
   Clock,
+  Flame,
   GraduationCap,
   MessageSquare,
+  Target,
   Users,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Progress } from "@/components/ui/progress";
+import { QueryState } from "@/components/ui/query-state";
 import { AppShell } from "@/components/app/app-shell";
 import { SceneArt } from "@/components/art/scene-art";
 import { useSession } from "@/lib/auth/session";
+import { resolveRoleKey } from "@/data/rbac";
+import { useStudentDashboard } from "@/lib/query/dashboard";
+import type { StudentDashboard } from "@/lib/api/dashboard";
 
 export const Route = createFileRoute("/app/")({
   head: () => ({
@@ -34,7 +41,9 @@ export const Route = createFileRoute("/app/")({
 
 function Dashboard() {
   const { data } = useSession();
+  const role = resolveRoleKey(data?.user.roleKey);
   const name = data?.user.name?.split(" ")[0] ?? "there";
+  const studentDashboardQuery = useStudentDashboard(role === "student");
 
   return (
     <AppShell
@@ -142,6 +151,88 @@ function Dashboard() {
           </CardContent>
         </Card>
       </div>
+
+      {role === "student" && (
+        <div className="mt-5">
+          <QueryState<StudentDashboard>
+            query={studentDashboardQuery}
+            error={{ title: "Learning momentum unavailable" }}
+          >
+            {(dashboard) => {
+              const goalPct = Math.min(
+                100,
+                Math.round(
+                  (dashboard.weeklyGoal.done / Math.max(dashboard.weeklyGoal.goal, 1)) * 100,
+                ),
+              );
+              const nextCourse = dashboard.courses.find((course) => course.nextUp);
+              return (
+                <Card className="bg-card shadow-soft border">
+                  <CardHeader className="flex-row flex-wrap items-center justify-between gap-3">
+                    <div>
+                      <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
+                        <Target className="text-primary size-4" /> Your momentum
+                      </CardTitle>
+                      <p className="text-muted-foreground mt-1 text-xs">
+                        A live plan built from your progress, deadlines and study rhythm.
+                      </p>
+                    </div>
+                    <Badge className="bg-success/10 text-success border-0 font-semibold">
+                      {dashboard.kpis.overallProgress}% course progress
+                    </Badge>
+                  </CardHeader>
+                  <CardContent className="grid gap-4 md:grid-cols-[1.4fr_1fr_1fr]">
+                    <div className="rounded-xl border p-4">
+                      <div className="flex items-center justify-between gap-3">
+                        <p className="text-sm font-bold">Weekly learning goal</p>
+                        <span className="text-muted-foreground text-xs font-semibold">
+                          {dashboard.weeklyGoal.done}/{dashboard.weeklyGoal.goal} lessons
+                        </span>
+                      </div>
+                      <Progress value={goalPct} className="mt-3 h-2" />
+                      <p className="text-muted-foreground mt-2 text-xs leading-relaxed">
+                        {dashboard.weeklyGoal.note}
+                      </p>
+                    </div>
+                    <div className="bg-primary/5 rounded-xl p-4">
+                      <Flame className="text-warning size-5" />
+                      <p className="font-display mt-3 text-2xl font-extrabold">
+                        {dashboard.kpis.streakDays} days
+                      </p>
+                      <p className="text-muted-foreground text-xs font-semibold">
+                        Current study streak
+                      </p>
+                    </div>
+                    <div className="bg-learning/5 rounded-xl p-4">
+                      <GraduationCap className="text-learning size-5" />
+                      <p className="font-display mt-3 truncate text-sm font-extrabold">
+                        {nextCourse?.nextUp ??
+                          dashboard.nextDeadline?.title ??
+                          "Keep your momentum"}
+                      </p>
+                      <p className="text-muted-foreground mt-1 text-xs font-semibold">
+                        {dashboard.nextDeadline
+                          ? `Due ${dashboard.nextDeadline.due}`
+                          : `${dashboard.kpis.studyHours} studied this period`}
+                      </p>
+                      <Button
+                        asChild
+                        variant="link"
+                        size="sm"
+                        className="text-primary mt-2 h-auto p-0 text-xs font-bold"
+                      >
+                        <Link to={dashboard.nextDeadline ? "/app/assignments" : "/app/learn"}>
+                          Take the next step <ArrowRight className="ml-1 size-3" />
+                        </Link>
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+              );
+            }}
+          </QueryState>
+        </div>
+      )}
 
       <div className="mt-5 grid gap-5 xl:grid-cols-2">
         <Card className="bg-card shadow-soft border">

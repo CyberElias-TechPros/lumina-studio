@@ -27,6 +27,7 @@ export interface StuProject {
   detail: string;
   tags: string[];
   featured: number;
+  url?: string;
 }
 
 export interface StuSkill {
@@ -61,3 +62,17 @@ export const fetchStuSkills = stuPage<StuSkill>("/v1/student-self-dashboard/skil
 export const fetchStuCv = stuPage<StuCvFile>("/v1/student-self-dashboard/cv");
 export const fetchStuReportKpis = stuPage<StuKpi>("/v1/student-self-dashboard/reportKpis");
 export const fetchStuTemplates = stuPage<StuReportTemplate>("/v1/student-self-dashboard/templates");
+
+export interface CreateStuProjectInput {
+  name: string;
+  detail: string;
+  tags: string[];
+  url?: string;
+}
+
+export function createStuProject(input: CreateStuProjectInput): Promise<StuProject> {
+  return apiFetch<StuProject>("/v1/student-self-dashboard/projects", {
+    method: "POST",
+    body: input,
+  });
+}

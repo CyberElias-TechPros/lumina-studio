@@ -1,4 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useState } from "react";
+import { toast } from "sonner";
 import {
   ArrowRight,
   CalendarDays,
@@ -54,24 +56,108 @@ const legend: { kind: string; label: string }[] = [
   { kind: "exam", label: "Exam" },
 ];
 
+function calendarCells(month: Date): { day: number; inMonth: boolean; key: string }[] {
+  const year = month.getFullYear();
+  const monthIndex = month.getMonth();
+  const firstWeekday = (new Date(year, monthIndex, 1).getDay() + 6) % 7;
+  const daysInMonth = new Date(year, monthIndex + 1, 0).getDate();
+  const previousDays = new Date(year, monthIndex, 0).getDate();
+  const cells: { day: number; inMonth: boolean; key: string }[] = [];
+
+  for (let i = firstWeekday - 1; i >= 0; i -= 1) {
+    const day = previousDays - i;
+    cells.push({ day, inMonth: false, key: `previous-${day}` });
+  }
+  for (let day = 1; day <= daysInMonth; day += 1) {
+    cells.push({ day, inMonth: true, key: `current-${day}` });
+  }
+  let nextDay = 1;
+  while (cells.length < 42) {
+    cells.push({ day: nextDay, inMonth: false, key: `next-${nextDay}` });
+    nextDay += 1;
+  }
+  return cells;
+}
+
+function calendarText(value: string): string {
+  return value
+    .replaceAll("\\", "\\\\")
+    .replaceAll(";", "\\;")
+    .replaceAll(",", "\\,")
+    .replaceAll("\n", "\\n");
+}
+
+function downloadCalendar(events: CalendarEvent[], provider: string): void {
+  const lines = [
+    "BEGIN:VCALENDAR",
+    "VERSION:2.0",
+    "PRODID:-//Cyber Elias Academy//CEA-OS//EN",
+    "CALSCALE:GREGORIAN",
+    "METHOD:PUBLISH",
+  ];
+  for (const event of events) {
+    const start = new Date(2026, 7, Number(event.date));
+    const end = new Date(start);
+    end.setDate(end.getDate() + 1);
+    const icsDate = (date: Date) =>
+      `${date.getFullYear()}${String(date.getMonth() + 1).padStart(2, "0")}${String(date.getDate()).padStart(2, "0")}`;
+    lines.push(
+      "BEGIN:VEVENT",
+      `UID:${event.id}@cea.ng`,
+      `DTSTAMP:${icsDate(new Date())}T000000Z`,
+      `DTSTART;VALUE=DATE:${icsDate(start)}`,
+      `DTEND;VALUE=DATE:${icsDate(end)}`,
+      `SUMMARY:${calendarText(event.title)}`,
+      `LOCATION:${calendarText(event.location)}`,
+      `DESCRIPTION:${calendarText(`${event.kind} · ${event.time}`)}`,
+      "END:VEVENT",
+    );
+  }
+  lines.push("END:VCALENDAR");
+  const blob = new Blob([`${lines.join("\\r\\n")}\\r\\n`], { type: "text/calendar;charset=utf-8" });
+  const url = URL.createObjectURL(blob);
+  const anchor = document.createElement("a");
+  anchor.href = url;
+  anchor.download = "cea-calendar.ics";
+  anchor.click();
+  URL.revokeObjectURL(url);
+  toast.success(`${provider} calendar file downloaded`, {
+    description: "Import the .ics file into your calendar app to add your CEA events.",
+  });
+}
+
 function CalendarPage() {
   const eventsQuery = useCalendarEvents();
+  const [month, setMonth] = useState(() => new Date(2026, 7, 1));
+  const eventItems = eventsQuery.data?.pages.flatMap((page) => page.items) ?? [];
+  const monthLabel = month.toLocaleDateString("en-NG", { month: "long", year: "numeric" });
+  const cells = calendarCells(month);
 
   return (
     <AppShell
       roleKey="student"
       title="Calendar"
-      subtitle="August 2026 · Lagos · WAT"
+      subtitle={`${monthLabel} · Lagos · WAT`}
       actions={
         <>
           <Badge className="bg-warning/10 text-warning border-0 font-semibold">3 deadlines</Badge>
           <Badge variant="secondary" className="font-semibold">
             Synced
           </Badge>
-          <Button variant="outline" size="sm" className="font-semibold">
+          <Button
+            variant="outline"
+            size="sm"
+            className="font-semibold"
+            onClick={() => downloadCalendar(eventItems, "Google")}
+          >
             <CalendarDays className="size-4" /> Google
           </Button>
-          <Button variant="outline" size="sm" className="font-semibold">
+          <Button
+            variant="outline"
+            size="sm"
+            className="font-semibold"
+            onClick={() => downloadCalendar(eventItems, "Outlook")}
+          >
             <CalendarDays className="size-4" /> Outlook
           </Button>
         </>
@@ -90,6 +176,11 @@ function CalendarPage() {
                         size="icon"
                         className="size-8"
                         aria-label="Previous month"
+                        onClick={() =>
+                          setMonth(
+                            (current) => new Date(current.getFullYear(), current.getMonth() - 1, 1),
+                          )
+                        }
                       >
                         <ChevronLeft className="size-4" />
                       </Button>
@@ -98,12 +189,25 @@ function CalendarPage() {
                         size="icon"
                         className="size-8"
                         aria-label="Next month"
+                        onClick={() =>
+                          setMonth(
+                            (current) => new Date(current.getFullYear(), current.getMonth() + 1, 1),
+                          )
+                        }
                       >
                         <ChevronRight className="size-4" />
                       </Button>
                     </div>
-                    <p className="font-display text-sm font-extrabold">August 2026</p>
-                    <Button variant="outline" size="sm" className="font-semibold">
+                    <p className="font-display text-sm font-extrabold">{monthLabel}</p>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="font-semibold"
+                      onClick={() => {
+                        const now = new Date();
+                        setMonth(new Date(now.getFullYear(), now.getMonth(), 1));
+                      }}
+                    >
                       Today
                     </Button>
                   </div>
@@ -116,21 +220,23 @@ function CalendarPage() {
                         {d}
                       </p>
                     ))}
-                    {[
-                      27, 28, 29, 30, 31, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,
-                      18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30,
-                    ].map((day, i) => {
-                      const evt = events.find((e) => Number(e.date) === day && i < 31);
+                    {cells.map(({ day, inMonth, key }) => {
+                      const evt =
+                        inMonth && month.getFullYear() === 2026 && month.getMonth() === 7
+                          ? events.find((event) => Number(event.date) === day)
+                          : undefined;
                       return (
                         <div
-                          key={`${day}-${i}`}
+                          key={key}
                           className={cn(
                             "relative aspect-square rounded-lg text-xs font-semibold",
-                            day === 31 && i < 5
+                            !inMonth && "text-muted-foreground/40",
+                            inMonth && "hover:bg-muted/60",
+                            inMonth &&
+                              day === new Date().getDate() &&
+                              month.getMonth() === new Date().getMonth()
                               ? "bg-primary/10 text-primary"
-                              : i < 5
-                                ? "bg-muted/60 text-muted-foreground"
-                                : "hover:bg-muted/60",
+                              : "",
                           )}
                         >
                           <span className="absolute inset-0 grid place-items-center">{day}</span>

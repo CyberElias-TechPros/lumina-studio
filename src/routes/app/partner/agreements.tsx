@@ -1,11 +1,26 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useState, type FormEvent } from "react";
 import { ArrowLeft, CalendarClock, FileSignature, Handshake, ScrollText } from "lucide-react";
+import { toast } from "sonner";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
 import { AppShell } from "@/components/app/app-shell";
 import { QueryState } from "@/components/ui/query-state";
-import { usePtnAgreementItems, usePtnAgreements } from "@/lib/query/supplierPartner";
+import {
+  useCreatePtnAgreement,
+  usePtnAgreementItems,
+  usePtnAgreements,
+} from "@/lib/query/supplierPartner";
 import type { PtnAgreement } from "@/lib/api/supplierPartner";
 import { cn } from "@/lib/utils";
 
@@ -28,6 +43,26 @@ const statusMeta: Record<string, { label: string; tone: string }> = {
 function PartnerAgreements() {
   const agreementsQuery = usePtnAgreements();
   const agreements = usePtnAgreementItems();
+  const create = useCreatePtnAgreement();
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const [title, setTitle] = useState("");
+  const [detail, setDetail] = useState("");
+
+  const submitRequest = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (!title.trim() || create.isPending) return;
+    create.mutate(
+      { title: title.trim(), detail: detail.trim() || undefined },
+      {
+        onSuccess: () => {
+          setDialogOpen(false);
+          setTitle("");
+          setDetail("");
+          toast.success("MOU request submitted");
+        },
+      },
+    );
+  };
 
   const active = agreements.filter((a) => a.status === "active");
   const drafts = agreements.filter((a) => a.status === "draft");
@@ -107,12 +142,68 @@ function PartnerAgreements() {
         ))}
       </div>
 
+      <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Request an MOU</DialogTitle>
+            <DialogDescription>
+              Submit a partnership agreement request for the CEA team to review.
+            </DialogDescription>
+          </DialogHeader>
+          <form onSubmit={submitRequest} className="space-y-4">
+            <div className="space-y-1.5">
+              <label htmlFor="mou-title" className="text-sm font-semibold">
+                Agreement title
+              </label>
+              <Input
+                id="mou-title"
+                value={title}
+                onChange={(event) => setTitle(event.target.value)}
+                placeholder="e.g. Community scholarship partnership"
+                maxLength={160}
+                required
+              />
+            </div>
+            <div className="space-y-1.5">
+              <label htmlFor="mou-detail" className="text-sm font-semibold">
+                Notes
+              </label>
+              <Input
+                id="mou-detail"
+                value={detail}
+                onChange={(event) => setDetail(event.target.value)}
+                placeholder="Scope, dates or proposed terms"
+                maxLength={240}
+              />
+            </div>
+            {create.error && (
+              <p role="alert" className="text-destructive text-sm">
+                {create.error.message}
+              </p>
+            )}
+            <DialogFooter className="gap-2">
+              <Button type="button" variant="outline" onClick={() => setDialogOpen(false)}>
+                Cancel
+              </Button>
+              <Button type="submit" disabled={create.isPending || !title.trim()}>
+                {create.isPending ? "Submitting…" : "Submit request"}
+              </Button>
+            </DialogFooter>
+          </form>
+        </DialogContent>
+      </Dialog>
+
       <Card className="bg-card mt-5 shadow-soft border">
         <CardHeader className="flex-row items-center justify-between">
           <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
             <FileSignature className="text-primary size-4" /> Your agreements
           </CardTitle>
-          <Button variant="outline" size="sm" className="font-semibold">
+          <Button
+            variant="outline"
+            size="sm"
+            className="font-semibold"
+            onClick={() => setDialogOpen(true)}
+          >
             Request MOU
           </Button>
         </CardHeader>

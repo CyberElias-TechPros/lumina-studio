@@ -6,7 +6,20 @@ import reactRefresh from "eslint-plugin-react-refresh";
 import tseslint from "typescript-eslint";
 
 export default tseslint.config(
-  { ignores: ["dist", ".output", ".vinxi", "api/.wrangler", "src/data/library.ts", "src/data/external-links.ts"] },
+  {
+    ignores: [
+      "dist",
+      ".output",
+      ".vinxi",
+      ".vercel",
+      ".wrangler",
+      "api/.wrangler",
+      "backend/.wrangler",
+      "backend/worker-configuration.d.ts",
+      "src/data/library.ts",
+      "src/data/external-links.ts",
+    ],
+  },
   {
     extends: [js.configs.recommended, ...tseslint.configs.recommended],
     files: ["**/*.{ts,tsx}"],

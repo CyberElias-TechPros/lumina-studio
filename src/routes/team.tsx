@@ -72,7 +72,9 @@ function TeamPage() {
                     <div className="flex-1">
                       <h3 className="font-display text-xl font-bold">{member.name}</h3>
                       <p className="text-primary mt-1 text-sm font-semibold">{member.role}</p>
-                      <p className="text-muted-foreground mt-4 text-sm leading-relaxed">{member.bio}</p>
+                      <p className="text-muted-foreground mt-4 text-sm leading-relaxed">
+                        {member.bio}
+                      </p>
 
                       <div className="mt-5 flex flex-wrap gap-4 text-sm">
                         <span className="text-muted-foreground flex items-center gap-2">
@@ -133,7 +135,10 @@ function TeamPage() {
               { label: "Founded", value: "2025" },
               { label: "Based in", value: "Port Harcourt, Rivers State, Nigeria" },
               { label: "Business type", value: "Digital skills academy & IT services" },
-              { label: "Focus areas", value: "Software, Cloud, Cybersecurity, AI, Design, Marketing" },
+              {
+                label: "Focus areas",
+                value: "Software, Cloud, Cybersecurity, AI, Design, Marketing",
+              },
               { label: "Training modes", value: "In-person, Online, Hybrid" },
               { label: "Contact", value: "hello@cea.ng · +234 905 862 8386" },
             ].map((fact) => (

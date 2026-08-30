@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { toast } from "sonner";
 import { ArrowLeft, Download, FileText, FolderOpen, Search, Share2 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -24,6 +25,24 @@ function statusTone(s: string) {
   if (l.includes("shared")) return "bg-success/10 text-success";
   if (l.includes("new")) return "bg-primary/10 text-primary";
   return "bg-muted-foreground/10 text-muted-foreground";
+}
+
+function downloadDocumentSummary(item: CliDocument) {
+  const contents = [
+    "CEA Studio document summary",
+    `Title: ${item.title}`,
+    `Type: ${item.type}`,
+    `Size: ${item.size}`,
+    `Last updated: ${item.updated}`,
+    `Status: ${item.status}`,
+  ].join("\n");
+  const url = URL.createObjectURL(new Blob([contents], { type: "text/plain;charset=utf-8" }));
+  const anchor = document.createElement("a");
+  anchor.href = url;
+  anchor.download = `${item.title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}-summary.txt`;
+  anchor.click();
+  URL.revokeObjectURL(url);
+  toast.success("Document summary downloaded");
 }
 
 function ClientDocuments() {
@@ -125,8 +144,13 @@ function ClientDocuments() {
                     <Badge className={cn("border-0 font-semibold", statusTone(d.status))}>
                       {d.status}
                     </Badge>
-                    <Button variant="outline" size="sm" className="shrink-0 font-semibold">
-                      <Download className="size-3.5" /> Download
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="shrink-0 font-semibold"
+                      onClick={() => downloadDocumentSummary(d)}
+                    >
+                      <Download className="size-3.5" /> Download summary
                     </Button>
                   </div>
                 ))}

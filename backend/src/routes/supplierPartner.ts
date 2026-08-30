@@ -1,9 +1,11 @@
 import { Hono } from "hono";
+import { z } from "zod";
 import type { AppEnv } from "../types";
 import { base64UrlDecode, base64UrlEncode } from "../lib/crypto";
 import { paginate, parsePagination } from "../lib/pagination";
 import { requireAuth, requireAnyRole } from "../lib/auth";
 import { ApiError } from "../lib/errors";
+import { parseBody } from "../lib/validate";
 
 const SUPPLIER_STAFF = ["supplier", "admin"];
 const PARTNER_STAFF = ["partner", "admin"];
@@ -25,8 +27,7 @@ const SUP_COLS: Record<string, { table: string; columns: string }> = {
   },
   invoices: {
     table: "sup_invoices",
-    columns:
-      "id, ref, amount, issued_label AS issuedLabel, paid_label AS paidLabel, status",
+    columns: "id, ref, amount, issued_label AS issuedLabel, paid_label AS paidLabel, status",
   },
   performance: {
     table: "sup_performance",
@@ -81,7 +82,9 @@ function registerLists(router: Hono<{ Bindings: AppEnv }>, cols: typeof SUP_COLS
       )
         .bind(...(cursor ? [base64UrlDecode(cursor) ?? ""] : []), limit)
         .all();
-      return c.json(paginate(rows.results, total?.n ?? 0, (last) => base64UrlEncode(String(last.id))));
+      return c.json(
+        paginate(rows.results, total?.n ?? 0, (last) => base64UrlEncode(String(last.id))),
+      );
     });
   }
 }
@@ -91,6 +94,49 @@ interface ThreadRow {
   from_label: string;
   body: string;
   time_label: string;
+}
+
+const sendMessageSchema = z.object({
+  body: z.string().trim().min(1, "Message cannot be empty.").max(5_000),
+});
+
+function registerConversationMessages(
+  router: Hono<{ Bindings: AppEnv }>,
+  table: string,
+  threadTable: string,
+): void {
+  router.post("/conversations/:id/messages", async (c) => {
+    const body = await parseBody(c, sendMessageSchema);
+    const conversationId = c.req.param("id");
+    const conversation = await c.env.DB.prepare(`SELECT id FROM ${table} WHERE id = ?`)
+      .bind(conversationId)
+      .first<{ id: string }>();
+    if (!conversation) throw ApiError.notFound("Conversation not found.");
+    const nextOrder = await c.env.DB.prepare(
+      `SELECT COALESCE(MAX(sort_order), -1) + 1 AS n FROM ${threadTable} WHERE conversation_id = ?`,
+    )
+      .bind(conversationId)
+      .first<{ n: number }>();
+    const message = {
+      id: `${threadTable}-${crypto.randomUUID()}`,
+      conversationId,
+      fromLabel: "You",
+      body: body.body,
+      timeLabel: "Just now",
+    };
+    await c.env.DB.prepare(
+      `INSERT INTO ${threadTable} (id, conversation_id, from_label, body, time_label, sort_order)
+       VALUES (?, ?, 'You', ?, 'Just now', ?)`,
+    )
+      .bind(message.id, conversationId, message.body, nextOrder?.n ?? 0)
+      .run();
+    await c.env.DB.prepare(
+      `UPDATE ${table} SET preview = ?, time_label = ?, unread = 0 WHERE id = ?`,
+    )
+      .bind(message.body, message.timeLabel, conversationId)
+      .run();
+    return c.json(message, 201);
+  });
 }
 
 function registerConversationDetail(
@@ -116,7 +162,97 @@ function registerConversationDetail(
 }
 
 registerLists(supplierDashboard, SUP_COLS);
+
+const supplierOrderActionSchema = z.object({
+  status: z.enum(["confirmed", "completed"], { message: "Invalid order status." }),
+});
+
+/** Supplier/admin: confirm or complete a purchase order. */
+supplierDashboard.patch("/orders/:id", async (c) => {
+  const { status } = await parseBody(c, supplierOrderActionSchema);
+  const id = c.req.param("id");
+  const order = await c.env.DB.prepare(`SELECT id, status FROM sup_orders WHERE id = ?`)
+    .bind(id)
+    .first<{ id: string; status: string }>();
+  if (!order) throw ApiError.notFound("Order not found.");
+  if (status === "confirmed" && order.status !== "pending confirm") {
+    throw ApiError.conflict("Only pending orders can be confirmed.");
+  }
+  if (status === "completed" && order.status !== "confirmed") {
+    throw ApiError.conflict("Only confirmed orders can be completed.");
+  }
+  await c.env.DB.prepare(`UPDATE sup_orders SET status = ? WHERE id = ?`).bind(status, id).run();
+  return c.json({ ok: true, id, status });
+});
+
 registerConversationDetail(supplierDashboard, "sup_conversations", "sup_threads", "Conversation");
+registerConversationMessages(supplierDashboard, "sup_conversations", "sup_threads");
 
 registerLists(partnerDashboard, PTN_COLS);
+
+const partnerAgreementSchema = z.object({
+  title: z.string().trim().min(1, "Agreement title is required.").max(160),
+  detail: z.string().trim().max(240).optional(),
+});
+
+/** Partner/admin: create a draft MOU request. */
+partnerDashboard.post("/agreements", async (c) => {
+  const input = await parseBody(c, partnerAgreementSchema);
+  const id = `ptn-agreement-${crypto.randomUUID()}`;
+  await c.env.DB.prepare(
+    `INSERT INTO ptn_agreements (id, partner_id, title, detail, status, renew_label, sort_order)
+     VALUES (?, '', ?, ?, 'draft', '', ?)`,
+  )
+    .bind(id, input.title, input.detail ?? "MOU request submitted for review", Date.now())
+    .run();
+  return c.json(
+    {
+      agreement: {
+        id,
+        ...input,
+        detail: input.detail ?? "MOU request submitted for review",
+        status: "draft",
+        renewLabel: "",
+      },
+    },
+    201,
+  );
+});
+
+const partnerCollaborationSchema = z.object({
+  title: z.string().trim().min(1, "Event title is required.").max(160),
+  detail: z.string().trim().min(1, "Event details are required.").max(240),
+});
+
+/** Partner/admin: propose a co-branded event. */
+partnerDashboard.post("/collaborations", async (c) => {
+  const input = await parseBody(c, partnerCollaborationSchema);
+  const id = `ptn-collaboration-${crypto.randomUUID()}`;
+  await c.env.DB.prepare(
+    `INSERT INTO ptn_collaborations (id, partner_id, title, detail, status, sort_order)
+     VALUES (?, '', ?, ?, 'in discussion', ?)`,
+  )
+    .bind(id, input.title, input.detail, Date.now())
+    .run();
+  return c.json({ collaboration: { id, ...input, status: "in discussion" } }, 201);
+});
+
+const partnerReferralSchema = z.object({
+  name: z.string().trim().min(1, "Referral name is required.").max(160),
+});
+
+/** Partner/admin: add a referral to the partner pipeline. */
+partnerDashboard.post("/referrals", async (c) => {
+  const input = await parseBody(c, partnerReferralSchema);
+  const id = `ptn-referral-${crypto.randomUUID()}`;
+  await c.env.DB.prepare(
+    `INSERT INTO ptn_referrals (id, partner_id, name, status, value_label, sort_order)
+     VALUES (?, '', ?, 'Contacted', 'Pending', ?)`,
+  )
+    .bind(id, input.name, Date.now())
+    .run();
+  return c.json({ referral: { id, ...input, status: "Contacted", valueLabel: "Pending" } }, 201);
+});
+
 registerConversationDetail(partnerDashboard, "ptn_conversations", "ptn_threads", "Conversation");
+registerConversationMessages(partnerDashboard, "ptn_conversations", "ptn_threads");

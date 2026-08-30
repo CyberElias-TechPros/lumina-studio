@@ -143,3 +143,98 @@ describe("GET /v1/alumni-dashboard (Alumni suite)", () => {
     expect(body.items[0]?.label).toBe("scholarships funded");
   });
 });
+
+describe("PUT /v1/alumni-dashboard/mentorship/availability", () => {
+  it("persists and returns an alumni mentor profile", async () => {
+    const payload = {
+      skill: "backend",
+      weeklyHours: 3,
+      format: "video",
+      bio: "I mentor learners through production APIs and interviews.",
+      status: "published",
+    };
+    const saved = await api("/v1/alumni-dashboard/mentorship/availability", {
+      method: "PUT",
+      headers: { ...cookieHeaders(alumni.cookie), "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
+    expect(saved.status).toBe(200);
+    expect(await saved.json()).toMatchObject(payload);
+
+    const loaded = await api("/v1/alumni-dashboard/mentorship/availability", {
+      headers: cookieHeaders(alumni.cookie),
+    });
+    expect(loaded.status).toBe(200);
+    expect(await loaded.json()).toMatchObject(payload);
+  });
+
+  it("rejects malformed availability and non-alumni roles", async () => {
+    const invalid = await api("/v1/alumni-dashboard/mentorship/availability", {
+      method: "PUT",
+      headers: { ...cookieHeaders(alumni.cookie), "Content-Type": "application/json" },
+      body: JSON.stringify({
+        skill: "",
+        weeklyHours: 100,
+        format: "video",
+        bio: "short",
+        status: "draft",
+      }),
+    });
+    expect(invalid.status).toBe(400);
+
+    const student = await createTestSession("student@cea.ng");
+    const denied = await api("/v1/alumni-dashboard/mentorship/availability", {
+      method: "PUT",
+      headers: { ...cookieHeaders(student.cookie), "Content-Type": "application/json" },
+      body: JSON.stringify({
+        skill: "backend",
+        weeklyHours: 3,
+        format: "video",
+        bio: "I mentor learners through production APIs and interviews.",
+        status: "draft",
+      }),
+    });
+    expect(denied.status).toBe(403);
+  });
+});
+
+describe("POST /v1/alumni-dashboard/events/:id/rsvp", () => {
+  it("creates one RSVP and treats a repeat request as idempotent", async () => {
+    const first = await api("/v1/alumni-dashboard/events/alu-ev-03/rsvp", {
+      method: "POST",
+      headers: { ...cookieHeaders(alumni.cookie), "Content-Type": "application/json" },
+      body: "{}",
+    });
+    expect(first.status).toBe(201);
+    expect((await first.json()) as { alreadyRsvpd: boolean }).toMatchObject({
+      alreadyRsvpd: false,
+    });
+
+    const repeat = await api("/v1/alumni-dashboard/events/alu-ev-03/rsvp", {
+      method: "POST",
+      headers: { ...cookieHeaders(alumni.cookie), "Content-Type": "application/json" },
+      body: "{}",
+    });
+    expect(repeat.status).toBe(200);
+    expect((await repeat.json()) as { alreadyRsvpd: boolean }).toMatchObject({
+      alreadyRsvpd: true,
+    });
+  });
+
+  it("rejects students and unknown events", async () => {
+    const student = await createTestSession("student@cea.ng");
+    const denied = await api("/v1/alumni-dashboard/events/alu-ev-04/rsvp", {
+      method: "POST",
+      headers: { ...cookieHeaders(student.cookie), "Content-Type": "application/json" },
+      body: "{}",
+    });
+    expect(denied.status).toBe(403);
+
+    const missing = await api("/v1/alumni-dashboard/events/missing/rsvp", {
+      method: "POST",
+      headers: { ...cookieHeaders(alumni.cookie), "Content-Type": "application/json" },
+      body: "{}",
+    });
+    expect(missing.status).toBe(404);
+  });
+});

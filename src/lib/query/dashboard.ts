@@ -6,6 +6,8 @@ export const studentDashboardKeys = {
 };
 
 /** Student dashboard query (KPI cards, weekly goal, enrolled courses). */
-export function useStudentDashboard() {
-  return useApiQuery<StudentDashboard>(studentDashboardKeys.all, fetchStudentDashboard);
+export function useStudentDashboard(enabled = true) {
+  return useApiQuery<StudentDashboard>(studentDashboardKeys.all, fetchStudentDashboard, {
+    enabled,
+  });
 }

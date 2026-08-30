@@ -1,11 +1,26 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useState, type FormEvent } from "react";
 import { ArrowLeft, CalendarDays, Megaphone, Sparkles, Users } from "lucide-react";
+import { toast } from "sonner";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
 import { AppShell } from "@/components/app/app-shell";
 import { QueryState } from "@/components/ui/query-state";
-import { usePtnCollaborationItems, usePtnCollaborations } from "@/lib/query/supplierPartner";
+import {
+  useCreatePtnCollaboration,
+  usePtnCollaborationItems,
+  usePtnCollaborations,
+} from "@/lib/query/supplierPartner";
 import type { PtnCollaboration } from "@/lib/api/supplierPartner";
 import { cn } from "@/lib/utils";
 
@@ -29,6 +44,26 @@ const statusMeta: Record<string, { label: string; tone: string }> = {
 function PartnerCollaborations() {
   const collaborationsQuery = usePtnCollaborations();
   const collaborations = usePtnCollaborationItems();
+  const create = useCreatePtnCollaboration();
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const [title, setTitle] = useState("");
+  const [detail, setDetail] = useState("");
+
+  const submitProposal = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (!title.trim() || !detail.trim() || create.isPending) return;
+    create.mutate(
+      { title: title.trim(), detail: detail.trim() },
+      {
+        onSuccess: () => {
+          setDialogOpen(false);
+          setTitle("");
+          setDetail("");
+          toast.success("Event proposal submitted");
+        },
+      },
+    );
+  };
 
   const confirmed = collaborations.filter((c) => c.status === "confirmed");
   const upcoming = collaborations.filter((c) => c.status === "scheduled");
@@ -103,12 +138,67 @@ function PartnerCollaborations() {
         ))}
       </div>
 
+      <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Propose a co-branded event</DialogTitle>
+            <DialogDescription>Send an event idea to the CEA partnerships team.</DialogDescription>
+          </DialogHeader>
+          <form onSubmit={submitProposal} className="space-y-4">
+            <div className="space-y-1.5">
+              <label htmlFor="event-title" className="text-sm font-semibold">
+                Event title
+              </label>
+              <Input
+                id="event-title"
+                value={title}
+                onChange={(event) => setTitle(event.target.value)}
+                placeholder="e.g. Women in tech masterclass"
+                maxLength={160}
+                required
+              />
+            </div>
+            <div className="space-y-1.5">
+              <label htmlFor="event-detail" className="text-sm font-semibold">
+                Event details
+              </label>
+              <Input
+                id="event-detail"
+                value={detail}
+                onChange={(event) => setDetail(event.target.value)}
+                placeholder="Proposed date, venue and audience"
+                maxLength={240}
+                required
+              />
+            </div>
+            {create.error && (
+              <p role="alert" className="text-destructive text-sm">
+                {create.error.message}
+              </p>
+            )}
+            <DialogFooter className="gap-2">
+              <Button type="button" variant="outline" onClick={() => setDialogOpen(false)}>
+                Cancel
+              </Button>
+              <Button type="submit" disabled={create.isPending || !title.trim() || !detail.trim()}>
+                {create.isPending ? "Submitting…" : "Submit proposal"}
+              </Button>
+            </DialogFooter>
+          </form>
+        </DialogContent>
+      </Dialog>
+
       <Card className="bg-card mt-5 shadow-soft border">
         <CardHeader className="flex-row items-center justify-between">
           <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
             <Megaphone className="text-primary size-4" /> Co-branded programs
           </CardTitle>
-          <Button variant="outline" size="sm" className="font-semibold">
+          <Button
+            variant="outline"
+            size="sm"
+            className="font-semibold"
+            onClick={() => setDialogOpen(true)}
+          >
             Propose event
           </Button>
         </CardHeader>

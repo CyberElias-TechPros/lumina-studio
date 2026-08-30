@@ -206,8 +206,14 @@ function GradebookPage() {
                   Weighted average across {units} units — grades final after the Aug 28 dispute
                   window.
                 </p>
-                <Button variant="outline" size="sm" className="font-semibold">
-                  <Download className="mr-1.5 size-3.5" /> Export transcript (PDF)
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="font-semibold"
+                  onClick={() => window.print()}
+                  title="Open the browser print dialog, then choose Save as PDF"
+                >
+                  <Download className="mr-1.5 size-3.5" /> Print / save transcript PDF
                 </Button>
               </div>
 

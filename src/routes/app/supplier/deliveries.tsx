@@ -1,8 +1,16 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useState } from "react";
 import { ArrowLeft, CheckCircle2, Clock3, MapPin, Truck } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import { AppShell } from "@/components/app/app-shell";
 import { QueryState } from "@/components/ui/query-state";
 import { useSupDeliveries, useSupDeliveryItems } from "@/lib/query/supplierPartner";
@@ -27,6 +35,7 @@ const statusMeta: Record<string, { label: string; tone: string }> = {
 function SupplierDeliveries() {
   const deliveriesQuery = useSupDeliveries();
   const deliveries = useSupDeliveryItems();
+  const [selectedDelivery, setSelectedDelivery] = useState<SupDelivery | null>(null);
 
   const scheduled = deliveries.filter((d) => d.status === "scheduled");
   const delivered = deliveries.filter((d) => d.status === "delivered");
@@ -133,9 +142,29 @@ function SupplierDeliveries() {
                       <Badge className={cn("border-0 font-semibold", meta.tone)}>
                         {meta.label}
                       </Badge>
-                      <Button variant="outline" size="sm" className="shrink-0 font-semibold">
-                        {d.status === "scheduled" ? "Reschedule" : "Details"}
-                      </Button>
+                      {d.status === "scheduled" ? (
+                        <Button
+                          asChild
+                          variant="outline"
+                          size="sm"
+                          className="shrink-0 font-semibold"
+                        >
+                          <a
+                            href={`mailto:logistics@cea.ng?subject=${encodeURIComponent(`Reschedule delivery: ${d.poLabel}`)}`}
+                          >
+                            Reschedule
+                          </a>
+                        </Button>
+                      ) : (
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          className="shrink-0 font-semibold"
+                          onClick={() => setSelectedDelivery(d)}
+                        >
+                          Details
+                        </Button>
+                      )}
                     </div>
                   );
                 })}
@@ -144,6 +173,35 @@ function SupplierDeliveries() {
           </QueryState>
         </CardContent>
       </Card>
+      <Dialog
+        open={selectedDelivery !== null}
+        onOpenChange={(open) => !open && setSelectedDelivery(null)}
+      >
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>{selectedDelivery?.poLabel ?? "Delivery details"}</DialogTitle>
+            <DialogDescription>Delivery record from the procurement feed.</DialogDescription>
+          </DialogHeader>
+          {selectedDelivery && (
+            <dl className="grid gap-3 rounded-xl border p-4 text-sm">
+              <div>
+                <dt className="text-muted-foreground text-xs font-bold uppercase">
+                  Scheduled time
+                </dt>
+                <dd className="mt-1 font-semibold">{selectedDelivery.whenLabel}</dd>
+              </div>
+              <div>
+                <dt className="text-muted-foreground text-xs font-bold uppercase">Destination</dt>
+                <dd className="mt-1 font-semibold">{selectedDelivery.toLabel}</dd>
+              </div>
+              <div>
+                <dt className="text-muted-foreground text-xs font-bold uppercase">Status</dt>
+                <dd className="mt-1 font-semibold capitalize">{selectedDelivery.status}</dd>
+              </div>
+            </dl>
+          )}
+        </DialogContent>
+      </Dialog>
     </AppShell>
   );
 }

@@ -1,5 +1,8 @@
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { usePaginatedQuery, flattenPages } from "@/lib/query/hooks";
 import {
+  createCliTicket,
+  type CreateCliTicketInput,
   fetchCliTickets,
   fetchCliProposals,
   fetchCliDocuments,
@@ -35,6 +38,15 @@ export function useCliTickets() {
 }
 export function useCliTicketItems(): CliTicket[] {
   return flattenPages(useCliTickets().data?.pages);
+}
+export function useCreateCliTicket() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (input: CreateCliTicketInput) => createCliTicket(input),
+    onSuccess: () => {
+      void queryClient.invalidateQueries({ queryKey: cliKeys.tickets });
+    },
+  });
 }
 export function useCliProposals() {
   return usePaginatedQuery<CliProposal>(cliKeys.proposals, fetchCliProposals);

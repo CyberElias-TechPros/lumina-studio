@@ -89,7 +89,14 @@ describe("GET /v1/instructor-extras-dashboard (Instructor extras suite)", () => 
       headers: cookieHeaders(staff.cookie),
     });
     const body = (await res.json()) as {
-      items: Array<{ id: string; student: string; item: string; course: string; submitted: string; due: string }>;
+      items: Array<{
+        id: string;
+        student: string;
+        item: string;
+        course: string;
+        submitted: string;
+        due: string;
+      }>;
       total: number;
     };
     expect(body.total).toBeGreaterThanOrEqual(5);
@@ -104,7 +111,13 @@ describe("GET /v1/instructor-extras-dashboard (Instructor extras suite)", () => 
       headers: cookieHeaders(staff.cookie),
     });
     const body = (await res.json()) as {
-      items: Array<{ id: string; version: string; title: string; author: string; dateLabel: string }>;
+      items: Array<{
+        id: string;
+        version: string;
+        title: string;
+        author: string;
+        dateLabel: string;
+      }>;
       total: number;
     };
     expect(body.total).toBeGreaterThanOrEqual(3);

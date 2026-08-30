@@ -77,7 +77,9 @@ certificates.get("/candidates", requireAuth, requireIssuer, async (c) => {
 
 certificates.post("/", requireAuth, requireIssuer, async (c) => {
   const body = await parseBody(c, issueSchema);
-  const user = await c.env.DB.prepare(`SELECT id, name FROM users WHERE id = ? AND status = 'active'`)
+  const user = await c.env.DB.prepare(
+    `SELECT id, name FROM users WHERE id = ? AND status = 'active'`,
+  )
     .bind(body.userId)
     .first<{ id: string; name: string }>();
   if (!user) throw ApiError.notFound("User not found.");
@@ -97,5 +99,8 @@ certificates.post("/", requireAuth, requireIssuer, async (c) => {
   )
     .bind(id, body.userId, body.courseSlug, body.title, code, isoNow())
     .run();
-  return c.json({ id, code, courseSlug: body.courseSlug, title: body.title, issuedAt: isoNow() }, 201);
+  return c.json(
+    { id, code, courseSlug: body.courseSlug, title: body.title, issuedAt: isoNow() },
+    201,
+  );
 });

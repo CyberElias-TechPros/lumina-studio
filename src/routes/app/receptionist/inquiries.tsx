@@ -1,8 +1,16 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useState } from "react";
 import { ArrowLeft, FileText, Inbox, PhoneCall, TrendingUp, UserRound } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import { AppShell } from "@/components/app/app-shell";
 import { QueryState } from "@/components/ui/query-state";
 import { useRecInquiries, useRecInquiryItems } from "@/lib/query/volunteerReceptionist";
@@ -28,6 +36,7 @@ const tones = [
 function ReceptionistInquiries() {
   const inquiriesQuery = useRecInquiries();
   const inquiries = useRecInquiryItems();
+  const [selectedInquiry, setSelectedInquiry] = useState<RecInquiry | null>(null);
 
   return (
     <AppShell
@@ -127,7 +136,12 @@ function ReceptionistInquiries() {
                     <Badge className={cn("border-0 font-semibold", tones[idx % tones.length])}>
                       {i.stage}
                     </Badge>
-                    <Button variant="outline" size="sm" className="shrink-0 font-semibold">
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="shrink-0 font-semibold"
+                      onClick={() => setSelectedInquiry(i)}
+                    >
                       Open
                     </Button>
                   </div>
@@ -137,6 +151,33 @@ function ReceptionistInquiries() {
           </QueryState>
         </CardContent>
       </Card>
+      <Dialog
+        open={selectedInquiry !== null}
+        onOpenChange={(open) => !open && setSelectedInquiry(null)}
+      >
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>{selectedInquiry?.name ?? "Inquiry details"}</DialogTitle>
+            <DialogDescription>Inquiry captured at the front desk.</DialogDescription>
+          </DialogHeader>
+          {selectedInquiry && (
+            <dl className="grid gap-3 rounded-xl border p-4 text-sm">
+              <div>
+                <dt className="text-muted-foreground text-xs font-bold uppercase">Topic</dt>
+                <dd className="mt-1 font-semibold">{selectedInquiry.topic}</dd>
+              </div>
+              <div>
+                <dt className="text-muted-foreground text-xs font-bold uppercase">Received</dt>
+                <dd className="mt-1 font-semibold">{selectedInquiry.timeLabel}</dd>
+              </div>
+              <div>
+                <dt className="text-muted-foreground text-xs font-bold uppercase">CRM stage</dt>
+                <dd className="mt-1 font-semibold">{selectedInquiry.stage}</dd>
+              </div>
+            </dl>
+          )}
+        </DialogContent>
+      </Dialog>
     </AppShell>
   );
 }

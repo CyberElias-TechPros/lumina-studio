@@ -1,14 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
-import {
-  ArrowLeft,
-  Mail,
-  MessageSquareText,
-  MessagesSquare,
-  Paperclip,
-  Send,
-  UserRound,
-} from "lucide-react";
+import { toast } from "sonner";
+import { ArrowLeft, Mail, MessageSquareText, MessagesSquare, Send, UserRound } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -18,6 +11,7 @@ import {
   usePtnConversationDetail,
   usePtnConversationItems,
   usePtnConversations,
+  useSendPtnConversationMessage,
 } from "@/lib/query/supplierPartner";
 import type { PtnConversation, PtnConversationDetail } from "@/lib/api/supplierPartner";
 import { cn } from "@/lib/utils";
@@ -41,8 +35,21 @@ function PartnerMessages() {
   const [activeId, setActiveId] = useState<string | null>(null);
   const selectedId = activeId ?? defaultId;
   const detailQuery = usePtnConversationDetail(selectedId);
+  const sendMessage = useSendPtnConversationMessage(selectedId);
+  const [draft, setDraft] = useState("");
 
   const active = conversations.find((c) => c.id === selectedId);
+
+  const submitMessage = () => {
+    const body = draft.trim();
+    if (!body || !selectedId || sendMessage.isPending) return;
+    sendMessage.mutate(body, {
+      onSuccess: () => {
+        setDraft("");
+        toast.success("Message sent");
+      },
+    });
+  };
 
   return (
     <AppShell
@@ -169,13 +176,26 @@ function PartnerMessages() {
             <textarea
               className="bg-muted placeholder:text-muted-foreground min-h-24 w-full resize-none rounded-xl border-0 p-3 text-sm font-medium outline-none"
               placeholder="Type your message…"
+              value={draft}
+              onChange={(event) => setDraft(event.target.value)}
+              onKeyDown={(event) => {
+                if (event.key === "Enter" && (event.metaKey || event.ctrlKey)) submitMessage();
+              }}
+              aria-label="Message"
             />
-            <div className="flex items-center justify-between gap-3">
-              <Button variant="outline" size="sm" className="font-semibold">
-                <Paperclip className="size-3.5" /> Attach
-              </Button>
-              <Button size="sm" className="bg-gradient-brand shadow-glow border-0 font-semibold">
-                <Send className="size-3.5" /> Send
+            {sendMessage.error && (
+              <p role="alert" className="text-destructive text-xs font-semibold">
+                {sendMessage.error.message}
+              </p>
+            )}
+            <div className="flex items-center justify-end gap-3">
+              <Button
+                size="sm"
+                className="bg-gradient-brand shadow-glow border-0 font-semibold"
+                onClick={submitMessage}
+                disabled={sendMessage.isPending || !draft.trim()}
+              >
+                <Send className="size-3.5" /> {sendMessage.isPending ? "Sending…" : "Send"}
               </Button>
             </div>
           </CardContent>

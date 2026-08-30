@@ -124,7 +124,10 @@ try {
     const titleMatches = [...moduleBlock.matchAll(/title:\s*"([^"]+)"/g)];
     for (const tm of titleMatches) {
       const title = tm[1];
-      const modSlug = title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+      const modSlug = title
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/^-+|-+$/g, "");
       moduleUrls.push({ pSlug, modSlug });
     }
   }
@@ -187,14 +190,20 @@ const urls = [
 
 const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${urls.map((u) => `  <url>
+${urls
+  .map(
+    (u) => `  <url>
     <loc>${u.loc}</loc>
     <lastmod>${u.lastmod}</lastmod>
     <changefreq>${u.changefreq}</changefreq>
     <priority>${u.priority}</priority>
-  </url>`).join("\n")}
+  </url>`,
+  )
+  .join("\n")}
 </urlset>
 `;
 
 writeFileSync(join(root, "public", "sitemap.xml"), xml);
-console.log(`sitemap.xml written: ${urls.length} URLs (${staticRoutes.length} static, ${programSlugs.length} programs, ${blogSlugs.length} posts, ${librarySlugs.length} library collections, ${glossarySlugs.length} glossary terms, ${moduleUrls.length} module detail pages, ${careerGuideSlugs.length} career guides, ${resourceSlugs.length} resources)`);
+console.log(
+  `sitemap.xml written: ${urls.length} URLs (${staticRoutes.length} static, ${programSlugs.length} programs, ${blogSlugs.length} posts, ${librarySlugs.length} library collections, ${glossarySlugs.length} glossary terms, ${moduleUrls.length} module detail pages, ${careerGuideSlugs.length} career guides, ${resourceSlugs.length} resources)`,
+);

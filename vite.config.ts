@@ -7,6 +7,14 @@
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
 export default defineConfig({
+  // Arena/Vercel preview hosts are generated dynamically. Allow the dev server
+  // to receive proxied requests from the preview origin instead of returning
+  // Vite's host-blocked 403 page.
+  vite: {
+    server: {
+      allowedHosts: true,
+    },
+  },
   tanstackStart: {
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
     // nitro/vite builds from this

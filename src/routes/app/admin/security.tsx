@@ -1,8 +1,16 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useState } from "react";
 import { ArrowLeft, Fingerprint, Globe, KeyRound, Lock, ShieldAlert } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import { AppShell } from "@/components/app/app-shell";
 import { useAdminUserItems, useAuditItems } from "@/lib/query/admin";
 import { cn } from "@/lib/utils";
@@ -25,11 +33,13 @@ function AdminSecurity() {
   const staff = users.filter((u) => u.status === "Active").length;
 
   const events = audit.slice(0, 6).map((e) => ({
-    e: `${e.action} · ${e.actor}`,
+    e,
+    label: `${e.action} · ${e.actor}`,
     t: e.time,
     s: e.severity === "high" ? "Blocked" : "Normal",
     tone: e.severity === "high" ? "bg-warning/10 text-warning" : "bg-success/10 text-success",
   }));
+  const [selectedEvent, setSelectedEvent] = useState<(typeof events)[number]["e"] | null>(null);
 
   return (
     <AppShell
@@ -110,13 +120,21 @@ function AdminSecurity() {
         </CardHeader>
         <CardContent className="divide-y">
           {events.map((e) => (
-            <div key={e.e} className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0">
+            <div
+              key={e.e.id}
+              className="flex flex-wrap items-center gap-3 py-4 first:pt-0 last:pb-0"
+            >
               <div className="min-w-0 flex-1">
-                <p className="text-sm font-bold">{e.e}</p>
+                <p className="text-sm font-bold">{e.label}</p>
                 <p className="text-muted-foreground text-xs">{e.t}</p>
               </div>
               <Badge className={cn("border-0 font-semibold", e.tone)}>{e.s}</Badge>
-              <Button variant="outline" size="sm" className="shrink-0 font-semibold">
+              <Button
+                variant="outline"
+                size="sm"
+                className="shrink-0 font-semibold"
+                onClick={() => setSelectedEvent(e.e)}
+              >
                 Inspect
               </Button>
             </div>
@@ -126,6 +144,39 @@ function AdminSecurity() {
           )}
         </CardContent>
       </Card>
+      <Dialog
+        open={selectedEvent !== null}
+        onOpenChange={(open) => !open && setSelectedEvent(null)}
+      >
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Security event inspection</DialogTitle>
+            <DialogDescription>
+              Review the recorded event before taking action in the relevant admin workflow.
+            </DialogDescription>
+          </DialogHeader>
+          {selectedEvent && (
+            <dl className="grid gap-3 rounded-xl border p-4 text-sm">
+              <div>
+                <dt className="text-muted-foreground text-xs font-bold uppercase">Action</dt>
+                <dd className="mt-1 font-semibold">{selectedEvent.action}</dd>
+              </div>
+              <div>
+                <dt className="text-muted-foreground text-xs font-bold uppercase">Actor</dt>
+                <dd className="mt-1 font-semibold">{selectedEvent.actor}</dd>
+              </div>
+              <div>
+                <dt className="text-muted-foreground text-xs font-bold uppercase">Time</dt>
+                <dd className="mt-1 font-semibold">{selectedEvent.time}</dd>
+              </div>
+              <div>
+                <dt className="text-muted-foreground text-xs font-bold uppercase">Severity</dt>
+                <dd className="mt-1 font-semibold capitalize">{selectedEvent.severity}</dd>
+              </div>
+            </dl>
+          )}
+        </DialogContent>
+      </Dialog>
     </AppShell>
   );
 }

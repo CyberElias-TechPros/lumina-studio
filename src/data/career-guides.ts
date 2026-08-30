@@ -17,7 +17,8 @@ export const careerGuides: CareerGuide[] = [
   {
     slug: "frontend-developer",
     title: "Frontend Developer",
-    tagline: "Build the interfaces users touch — web applications, dashboards and mobile experiences.",
+    tagline:
+      "Build the interfaces users touch — web applications, dashboards and mobile experiences.",
     salaryRange: "₦250,000–₦800,000",
     difficulty: "Beginner",
     timeToJob: "4–8 months",
@@ -40,17 +41,29 @@ export const careerGuides: CareerGuide[] = [
       {
         phase: "Days 1–30: Foundations",
         focus: "HTML/CSS mastery, vanilla JavaScript fluency, Git basics",
-        deliverables: ["Portfolio site with 3 pages", "Interactive quiz app", "Git history showing consistent commits"],
+        deliverables: [
+          "Portfolio site with 3 pages",
+          "Interactive quiz app",
+          "Git history showing consistent commits",
+        ],
       },
       {
         phase: "Days 31–60: Framework mastery",
         focus: "React components, hooks, state management, TypeScript, Tailwind CSS",
-        deliverables: ["React dashboard with routing and auth", "E-commerce storefront UI", "TypeScript quiz app"],
+        deliverables: [
+          "React dashboard with routing and auth",
+          "E-commerce storefront UI",
+          "TypeScript quiz app",
+        ],
       },
       {
         phase: "Days 61–90: Deployment and portfolio",
         focus: "API integration, deployment, code quality, portfolio polish",
-        deliverables: ["Deployed app on Vercel with custom domain", "3 portfolio case studies", "GitHub READMEs for each project"],
+        deliverables: [
+          "Deployed app on Vercel with custom domain",
+          "3 portfolio case studies",
+          "GitHub READMEs for each project",
+        ],
       },
     ],
     commonFailures: [
@@ -70,7 +83,8 @@ export const careerGuides: CareerGuide[] = [
   {
     slug: "backend-developer",
     title: "Backend Developer",
-    tagline: "Build the APIs, databases and infrastructure that power applications users never see.",
+    tagline:
+      "Build the APIs, databases and infrastructure that power applications users never see.",
     salaryRange: "₦300,000–₦900,000",
     difficulty: "Intermediate",
     timeToJob: "5–9 months",
@@ -94,17 +108,29 @@ export const careerGuides: CareerGuide[] = [
       {
         phase: "Days 1–30: Language and database",
         focus: "Node.js fundamentals, Express routing, SQL mastery, PostgreSQL setup",
-        deliverables: ["CRUD API with validation", "PostgreSQL schema with migrations", "API tested with supertest"],
+        deliverables: [
+          "CRUD API with validation",
+          "PostgreSQL schema with migrations",
+          "API tested with supertest",
+        ],
       },
       {
         phase: "Days 31–60: Authentication and payments",
         focus: "JWT auth, OAuth flows, Paystack integration, error handling patterns",
-        deliverables: ["Auth system with refresh tokens", "Payment webhook integration", "Rate limiting implementation"],
+        deliverables: [
+          "Auth system with refresh tokens",
+          "Payment webhook integration",
+          "Rate limiting implementation",
+        ],
       },
       {
         phase: "Days 61–90: Deployment and portfolio",
         focus: "Docker, CI/CD pipeline, deployment, documentation",
-        deliverables: ["Dockerised application", "CI/CD pipeline running tests", "Portfolio with API docs and live URLs"],
+        deliverables: [
+          "Dockerised application",
+          "CI/CD pipeline running tests",
+          "Portfolio with API docs and live URLs",
+        ],
       },
     ],
     commonFailures: [
@@ -124,7 +150,8 @@ export const careerGuides: CareerGuide[] = [
   {
     slug: "cybersecurity-analyst",
     title: "Cybersecurity Analyst",
-    tagline: "Monitor, detect and respond to security threats — the first line of defence in every organisation.",
+    tagline:
+      "Monitor, detect and respond to security threats — the first line of defence in every organisation.",
     salaryRange: "₦400,000–₦1,200,000",
     difficulty: "Intermediate",
     timeToJob: "6–12 months",
@@ -148,17 +175,29 @@ export const careerGuides: CareerGuide[] = [
       {
         phase: "Days 1–30: Foundations",
         focus: "Networking, Linux security, cryptography basics, home lab setup",
-        deliverables: ["Home lab with multiple VMs", "Nmap network scan report", "Wireshark packet analysis exercises"],
+        deliverables: [
+          "Home lab with multiple VMs",
+          "Nmap network scan report",
+          "Wireshark packet analysis exercises",
+        ],
       },
       {
         phase: "Days 31–60: Detection and monitoring",
         focus: "SIEM deployment, log sources, detection rule authoring, MITRE mapping",
-        deliverables: ["Working SIEM with log ingestion", "15+ detection rules tested", "Dashboard documenting detections"],
+        deliverables: [
+          "Working SIEM with log ingestion",
+          "15+ detection rules tested",
+          "Dashboard documenting detections",
+        ],
       },
       {
         phase: "Days 61–90: Response and portfolio",
         focus: "Incident response exercises, forensics basics, portfolio documentation",
-        deliverables: ["Incident response simulation report", "Forensic examination exercise", "Professional portfolio with lab evidence"],
+        deliverables: [
+          "Incident response simulation report",
+          "Forensic examination exercise",
+          "Professional portfolio with lab evidence",
+        ],
       },
     ],
     commonFailures: [
@@ -178,7 +217,8 @@ export const careerGuides: CareerGuide[] = [
   {
     slug: "cloud-engineer",
     title: "Cloud Engineer",
-    tagline: "Design, deploy and operate cloud infrastructure that keeps applications reliable and scalable.",
+    tagline:
+      "Design, deploy and operate cloud infrastructure that keeps applications reliable and scalable.",
     salaryRange: "₦450,000–₦1,300,000",
     difficulty: "Intermediate",
     timeToJob: "6–10 months",
@@ -202,17 +242,29 @@ export const careerGuides: CareerGuide[] = [
       {
         phase: "Days 1–30: Linux and AWS foundations",
         focus: "Linux administration, AWS core services, VPC design, IAM policies",
-        deliverables: ["AWS account with multi-tier architecture", "Linux administration lab", "VPC design with public and private subnets"],
+        deliverables: [
+          "AWS account with multi-tier architecture",
+          "Linux administration lab",
+          "VPC design with public and private subnets",
+        ],
       },
       {
         phase: "Days 31–60: Infrastructure as Code",
         focus: "Terraform resources, modules, state management, environments",
-        deliverables: ["Terraform module for networking", "Multi-environment infrastructure deployment", "CI/CD pipeline for infrastructure changes"],
+        deliverables: [
+          "Terraform module for networking",
+          "Multi-environment infrastructure deployment",
+          "CI/CD pipeline for infrastructure changes",
+        ],
       },
       {
         phase: "Days 61–90: Containers and portfolio",
         focus: "Docker, Kubernetes basics, Helm charts, deployment portfolio",
-        deliverables: ["Application containerised and deployed to Kubernetes", "Helm chart packaging", "Architecture decision records for infrastructure choices"],
+        deliverables: [
+          "Application containerised and deployed to Kubernetes",
+          "Helm chart packaging",
+          "Architecture decision records for infrastructure choices",
+        ],
       },
     ],
     commonFailures: [
@@ -255,17 +307,30 @@ export const careerGuides: CareerGuide[] = [
       {
         phase: "Days 1–30: SQL and Excel mastery",
         focus: "SQL queries, joins, aggregation, window functions; Excel pivots and formulas",
-        deliverables: ["Portfolio of SQL exercises with business context", "Excel dashboard with real data", "Kaggle SQL competition submissions"],
+        deliverables: [
+          "Portfolio of SQL exercises with business context",
+          "Excel dashboard with real data",
+          "Kaggle SQL competition submissions",
+        ],
       },
       {
         phase: "Days 31–60: Python and statistics",
-        focus: "pandas for data manipulation, matplotlib/seaborn for visualisation, statistics foundations",
-        deliverables: ["Python data cleaning pipeline", "Exploratory data analysis notebook", "Statistical analysis exercises"],
+        focus:
+          "pandas for data manipulation, matplotlib/seaborn for visualisation, statistics foundations",
+        deliverables: [
+          "Python data cleaning pipeline",
+          "Exploratory data analysis notebook",
+          "Statistical analysis exercises",
+        ],
       },
       {
         phase: "Days 61–90: Dashboards and portfolio",
         focus: "Power BI or Tableau dashboards, stakeholder communication, portfolio polish",
-        deliverables: ["Interactive dashboard with business metrics", "Case study documentation", "Portfolio with 3 analysis projects"],
+        deliverables: [
+          "Interactive dashboard with business metrics",
+          "Case study documentation",
+          "Portfolio with 3 analysis projects",
+        ],
       },
     ],
     commonFailures: [
@@ -278,14 +343,18 @@ export const careerGuides: CareerGuide[] = [
     localResources: [
       { name: "Mode Analytics SQL Tutorial", url: "https://mode.com/sql-tutorial" },
       { name: "Kaggle Datasets", url: "https://www.kaggle.com/datasets" },
-      { name: "Power BI Guided Learning", url: "https://learn.microsoft.com/en-us/power-bi/guided-learning/" },
+      {
+        name: "Power BI Guided Learning",
+        url: "https://learn.microsoft.com/en-us/power-bi/guided-learning/",
+      },
       { name: "StatQuest YouTube", url: "https://www.youtube.com/c/joshstarmer" },
     ],
   },
   {
     slug: "machine-learning-engineer",
     title: "Machine Learning Engineer",
-    tagline: "Deploy and maintain ML models in production — the bridge between data science and engineering.",
+    tagline:
+      "Deploy and maintain ML models in production — the bridge between data science and engineering.",
     salaryRange: "₦500,000–₦1,500,000",
     difficulty: "Advanced",
     timeToJob: "8–14 months",
@@ -309,17 +378,29 @@ export const careerGuides: CareerGuide[] = [
       {
         phase: "Days 1–30: ML foundations and Python production code",
         focus: "Classical ML algorithms, Python code quality, testing basics, Docker",
-        deliverables: ["Clean ML project with tests", "Dockerised model serving application", "MLflow experiment tracking setup"],
+        deliverables: [
+          "Clean ML project with tests",
+          "Dockerised model serving application",
+          "MLflow experiment tracking setup",
+        ],
       },
       {
         phase: "Days 31–60: MLOps and deployment",
         focus: "FastAPI model serving, CI/CD for ML, monitoring setup, cloud deployment",
-        deliverables: ["Model deployed behind API on cloud", "Monitoring dashboard with drift detection", "CI/CD pipeline for model retraining"],
+        deliverables: [
+          "Model deployed behind API on cloud",
+          "Monitoring dashboard with drift detection",
+          "CI/CD pipeline for model retraining",
+        ],
       },
       {
         phase: "Days 61–90: Portfolio and interview prep",
         focus: "Complete project documentation, system design practice, portfolio presentation",
-        deliverables: ["Complete MLOps project with README", "Architecture decision records", "Portfolio case study with metrics"],
+        deliverables: [
+          "Complete MLOps project with README",
+          "Architecture decision records",
+          "Portfolio case study with metrics",
+        ],
       },
     ],
     commonFailures: [
@@ -339,7 +420,8 @@ export const careerGuides: CareerGuide[] = [
   {
     slug: "product-designer",
     title: "Product Designer",
-    tagline: "Research, design and test digital products — from problem discovery through pixel-perfect interfaces.",
+    tagline:
+      "Research, design and test digital products — from problem discovery through pixel-perfect interfaces.",
     salaryRange: "₦300,000–₦900,000",
     difficulty: "Intermediate",
     timeToJob: "5–9 months",
@@ -363,17 +445,29 @@ export const careerGuides: CareerGuide[] = [
       {
         phase: "Days 1–30: Design foundations",
         focus: "Typography, colour, layout, Figma proficiency, design critique practice",
-        deliverables: ["Figma portfolio with typography and colour explorations", "Pixel-perfect recreation of quality app", "Accessibility audit of existing product"],
+        deliverables: [
+          "Figma portfolio with typography and colour explorations",
+          "Pixel-perfect recreation of quality app",
+          "Accessibility audit of existing product",
+        ],
       },
       {
         phase: "Days 31–60: Research and prototyping",
         focus: "User interviews, usability testing, interactive prototyping, component design",
-        deliverables: ["Research report from real user interviews", "Interactive prototype of key flow", "12-component design system in Figma"],
+        deliverables: [
+          "Research report from real user interviews",
+          "Interactive prototype of key flow",
+          "12-component design system in Figma",
+        ],
       },
       {
         phase: "Days 61–90: Case studies and portfolio",
         focus: "Case study writing, portfolio site launch, presentation practice",
-        deliverables: ["3 polished case studies with process documentation", "Live portfolio site", "Mock interview recordings"],
+        deliverables: [
+          "3 polished case studies with process documentation",
+          "Live portfolio site",
+          "Mock interview recordings",
+        ],
       },
     ],
     commonFailures: [
@@ -387,7 +481,10 @@ export const careerGuides: CareerGuide[] = [
       { name: "Figma Learning", url: "https://www.figma.com/resource-library" },
       { name: "Nielsen Norman Group", url: "https://www.nngroup.com/articles/" },
       { name: "Mobbin Design Patterns", url: "https://mobbin.com" },
-      { name: "UX Research Guide", url: "https://www.nngroup.com/articles/which-ux-research-methods/" },
+      {
+        name: "UX Research Guide",
+        url: "https://www.nngroup.com/articles/which-ux-research-methods/",
+      },
     ],
   },
   {
@@ -417,17 +514,29 @@ export const careerGuides: CareerGuide[] = [
       {
         phase: "Days 1–30: Foundations and tools",
         focus: "Google Ads certification, Meta Blueprint, GA4 setup, SEO fundamentals",
-        deliverables: ["Google Ads certification completed", "Meta Blueprint certification", "GA4 property configured with conversions"],
+        deliverables: [
+          "Google Ads certification completed",
+          "Meta Blueprint certification",
+          "GA4 property configured with conversions",
+        ],
       },
       {
         phase: "Days 31–60: Campaign execution",
         focus: "Live campaign management, SEO audit, content creation, A/B testing",
-        deliverables: ["Live campaign with real budget", "SEO audit of real website", "Monthly content calendar with 8 assets"],
+        deliverables: [
+          "Live campaign with real budget",
+          "SEO audit of real website",
+          "Monthly content calendar with 8 assets",
+        ],
       },
       {
         phase: "Days 61–90: Analytics and portfolio",
         focus: "Campaign optimisation, analytics reporting, case study writing, portfolio",
-        deliverables: ["Campaign performance report with ROI calculation", "SEO case study with ranking improvements", "Portfolio with 2 campaign case studies"],
+        deliverables: [
+          "Campaign performance report with ROI calculation",
+          "SEO case study with ranking improvements",
+          "Portfolio with 2 campaign case studies",
+        ],
       },
     ],
     commonFailures: [
@@ -447,7 +556,8 @@ export const careerGuides: CareerGuide[] = [
   {
     slug: "devops-engineer",
     title: "DevOps Engineer",
-    tagline: "Bridge development and operations — CI/CD, containerisation, cloud automation and monitoring.",
+    tagline:
+      "Bridge development and operations — CI/CD, containerisation, cloud automation and monitoring.",
     salaryRange: "₦500,000–₦1,400,000",
     difficulty: "Advanced",
     timeToJob: "7–12 months",
@@ -471,17 +581,29 @@ export const careerGuides: CareerGuide[] = [
       {
         phase: "Days 1–30: Linux and Docker",
         focus: "Linux administration, Bash scripting, Docker fundamentals, CI basics",
-        deliverables: ["Bash automation scripts", "Dockerised application", "GitHub Actions workflow running tests"],
+        deliverables: [
+          "Bash automation scripts",
+          "Dockerised application",
+          "GitHub Actions workflow running tests",
+        ],
       },
       {
         phase: "Days 31–60: Infrastructure and Kubernetes",
         focus: "Terraform, Kubernetes basics, Helm charts, monitoring setup",
-        deliverables: ["Terraform infrastructure module", "Application deployed to Kubernetes", "Grafana dashboard monitoring application health"],
+        deliverables: [
+          "Terraform infrastructure module",
+          "Application deployed to Kubernetes",
+          "Grafana dashboard monitoring application health",
+        ],
       },
       {
         phase: "Days 61–90: GitOps and portfolio",
         focus: "ArgoCD GitOps, pipeline documentation, portfolio presentation",
-        deliverables: ["GitOps delivery pipeline", "Runbook documentation", "Portfolio case study of complete pipeline"],
+        deliverables: [
+          "GitOps delivery pipeline",
+          "Runbook documentation",
+          "Portfolio case study of complete pipeline",
+        ],
       },
     ],
     commonFailures: [
@@ -501,7 +623,8 @@ export const careerGuides: CareerGuide[] = [
   {
     slug: "mobile-app-developer",
     title: "Mobile App Developer",
-    tagline: "Build cross-platform mobile applications with React Native — ships to both iOS and Android.",
+    tagline:
+      "Build cross-platform mobile applications with React Native — ships to both iOS and Android.",
     salaryRange: "₦350,000–₦1,000,000",
     difficulty: "Intermediate",
     timeToJob: "5–9 months",
@@ -525,17 +648,29 @@ export const careerGuides: CareerGuide[] = [
       {
         phase: "Days 1–30: React Native fundamentals",
         focus: "Component architecture, navigation, styling, state management, TypeScript",
-        deliverables: ["Multi-screen app with navigation and state", "App running on physical device via Expo", "TypeScript configuration and typed components"],
+        deliverables: [
+          "Multi-screen app with navigation and state",
+          "App running on physical device via Expo",
+          "TypeScript configuration and typed components",
+        ],
       },
       {
         phase: "Days 31–60: Data and native features",
         focus: "Local storage, API integration, offline-first patterns, camera/location",
-        deliverables: ["App with persistent data and offline support", "API integration with auth flow", "Push notification implementation"],
+        deliverables: [
+          "App with persistent data and offline support",
+          "API integration with auth flow",
+          "Push notification implementation",
+        ],
       },
       {
         phase: "Days 61–90: Release and portfolio",
         focus: "App store submission, performance optimisation, portfolio presentation",
-        deliverables: ["App submitted to app stores (or internal distribution)", "Performance audit report", "Portfolio with app store links"],
+        deliverables: [
+          "App submitted to app stores (or internal distribution)",
+          "Performance audit report",
+          "Portfolio with app store links",
+        ],
       },
     ],
     commonFailures: [
@@ -549,13 +684,17 @@ export const careerGuides: CareerGuide[] = [
       { name: "React Native Documentation", url: "https://reactnative.dev" },
       { name: "Expo Documentation", url: "https://docs.expo.dev" },
       { name: "React Navigation", url: "https://reactnavigation.org" },
-      { name: "App Store Guidelines", url: "https://developer.apple.com/app-store/review/guidelines/" },
+      {
+        name: "App Store Guidelines",
+        url: "https://developer.apple.com/app-store/review/guidelines/",
+      },
     ],
   },
   {
     slug: "network-engineer",
     title: "Network Engineer",
-    tagline: "Design, implement and maintain the networks that connect organisations — switches, routers, firewalls and wireless.",
+    tagline:
+      "Design, implement and maintain the networks that connect organisations — switches, routers, firewalls and wireless.",
     salaryRange: "₦250,000–₦700,000",
     difficulty: "Intermediate",
     timeToJob: "4–8 months",
@@ -579,17 +718,29 @@ export const careerGuides: CareerGuide[] = [
       {
         phase: "Days 1–30: Networking fundamentals",
         focus: "OSI/TCP-IP models, IP subnetting, Ethernet, cabling, Packet Tracer labs",
-        deliverables: ["Subnetting exercises completed daily", "Packet Tracer topology with VLANs", "Physical cable termination practice"],
+        deliverables: [
+          "Subnetting exercises completed daily",
+          "Packet Tracer topology with VLANs",
+          "Physical cable termination practice",
+        ],
       },
       {
         phase: "Days 31–60: Switching and routing",
         focus: "VLANs, STP, OSPF, ACLs, NAT, hands-on lab equipment",
-        deliverables: ["Multi-switch campus network lab", "OSPF multi-area routing configuration", "ACL-based traffic filtering exercise"],
+        deliverables: [
+          "Multi-switch campus network lab",
+          "OSPF multi-area routing configuration",
+          "ACL-based traffic filtering exercise",
+        ],
       },
       {
         phase: "Days 61–90: Wireless, security and CCNA prep",
         focus: "Wireless deployment, VPN, network security, CCNA exam preparation",
-        deliverables: ["Complete small-office network design", "CCNA practice exam scores", "Network documentation package"],
+        deliverables: [
+          "Complete small-office network design",
+          "CCNA practice exam scores",
+          "Network documentation package",
+        ],
       },
     ],
     commonFailures: [
@@ -603,13 +754,17 @@ export const careerGuides: CareerGuide[] = [
       { name: "Cisco Packet Tracer", url: "https://www.netacad.com/courses/packet-tracer" },
       { name: "Subnet Calculator", url: "https://www.subnet-calculator.com" },
       { name: "NetworkLessons", url: "https://networklessons.com" },
-      { name: "CCNA Study Guide", url: "https://www.ciscopress.com/store/ccna-200-301-official-cert-guide-library-9781587144905" },
+      {
+        name: "CCNA Study Guide",
+        url: "https://www.ciscopress.com/store/ccna-200-301-official-cert-guide-library-9781587144905",
+      },
     ],
   },
   {
     slug: "technical-writer",
     title: "Technical Writer",
-    tagline: "Create clear documentation for software products, APIs and systems — the role that scales engineering knowledge.",
+    tagline:
+      "Create clear documentation for software products, APIs and systems — the role that scales engineering knowledge.",
     salaryRange: "₦200,000–₦500,000",
     difficulty: "Beginner",
     timeToJob: "2–4 months",
@@ -632,17 +787,29 @@ export const careerGuides: CareerGuide[] = [
       {
         phase: "Days 1–30: Writing foundations",
         focus: "Technical writing principles, Markdown, Git, docs-as-code workflow",
-        deliverables: ["Technical tutorial published on dev.to or similar", "API documentation sample", "Documentation contribution to open-source project"],
+        deliverables: [
+          "Technical tutorial published on dev.to or similar",
+          "API documentation sample",
+          "Documentation contribution to open-source project",
+        ],
       },
       {
         phase: "Days 31–60: Technical depth",
         focus: "API documentation, architecture decision records, user guide writing",
-        deliverables: ["Complete API reference documentation", "Architecture decision record for a real project", "User guide for a developer tool"],
+        deliverables: [
+          "Complete API reference documentation",
+          "Architecture decision record for a real project",
+          "User guide for a developer tool",
+        ],
       },
       {
         phase: "Days 61–90: Portfolio and job search",
         focus: "Portfolio site, writing samples, LinkedIn optimization, application",
-        deliverables: ["Portfolio with 5+ writing samples", "Published tutorials with real engagement", "LinkedIn profile showcasing technical writing work"],
+        deliverables: [
+          "Portfolio with 5+ writing samples",
+          "Published tutorials with real engagement",
+          "LinkedIn profile showcasing technical writing work",
+        ],
       },
     ],
     commonFailures: [
@@ -656,13 +823,17 @@ export const careerGuides: CareerGuide[] = [
       { name: "Write the Docs Community", url: "https://www.writethedocs.org" },
       { name: "Google Developer Style Guide", url: "https://developers.google.com/style" },
       { name: "Docusaurus", url: "https://docusaurus.io" },
-      { name: "Technical Writing Course (Google)", url: "https://developers.google.com/tech-writing" },
+      {
+        name: "Technical Writing Course (Google)",
+        url: "https://developers.google.com/tech-writing",
+      },
     ],
   },
   {
     slug: "it-support-specialist",
     title: "IT Support Specialist",
-    tagline: "Keep organisations running — hardware repair, software troubleshooting, user support and systems management.",
+    tagline:
+      "Keep organisations running — hardware repair, software troubleshooting, user support and systems management.",
     salaryRange: "₦150,000–₦400,000",
     difficulty: "Beginner",
     timeToJob: "2–4 months",
@@ -686,17 +857,29 @@ export const careerGuides: CareerGuide[] = [
       {
         phase: "Days 1–30: Hardware and OS fundamentals",
         focus: "PC components, troubleshooting methodology, Windows administration, Linux basics",
-        deliverables: ["Hardware diagnosis exercises", "Windows administration lab", "Linux installation and basic commands"],
+        deliverables: [
+          "Hardware diagnosis exercises",
+          "Windows administration lab",
+          "Linux installation and basic commands",
+        ],
       },
       {
         phase: "Days 31–60: Networking and accounts",
         focus: "Network troubleshooting, Active Directory, Office 365, remote support tools",
-        deliverables: ["Active Directory lab setup", "Office 365 user management", "Network troubleshooting exercises"],
+        deliverables: [
+          "Active Directory lab setup",
+          "Office 365 user management",
+          "Network troubleshooting exercises",
+        ],
       },
       {
         phase: "Days 61–90: Certification and portfolio",
         focus: "CompTIA A+ exam preparation, helpdesk simulation, portfolio documentation",
-        deliverables: ["CompTIA A+ practice exam scores", "Helpdesk ticket documentation", "Portfolio with troubleshooting case studies"],
+        deliverables: [
+          "CompTIA A+ practice exam scores",
+          "Helpdesk ticket documentation",
+          "Portfolio with troubleshooting case studies",
+        ],
       },
     ],
     commonFailures: [
@@ -716,7 +899,8 @@ export const careerGuides: CareerGuide[] = [
   {
     slug: "fullstack-developer",
     title: "Full-Stack Developer",
-    tagline: "Build complete applications from database to interface — the versatile engineer every startup needs.",
+    tagline:
+      "Build complete applications from database to interface — the versatile engineer every startup needs.",
     salaryRange: "₦350,000–₦1,100,000",
     difficulty: "Intermediate",
     timeToJob: "6–10 months",
@@ -740,17 +924,29 @@ export const careerGuides: CareerGuide[] = [
       {
         phase: "Days 1–30: Frontend mastery",
         focus: "React, TypeScript, Tailwind CSS, routing, state management, API integration",
-        deliverables: ["React dashboard with auth and routing", "TypeScript configuration and typed components", "API-connected frontend application"],
+        deliverables: [
+          "React dashboard with auth and routing",
+          "TypeScript configuration and typed components",
+          "API-connected frontend application",
+        ],
       },
       {
         phase: "Days 31–60: Backend and database",
         focus: "Node.js, Express, PostgreSQL, authentication, payment integration",
-        deliverables: ["REST API with auth and validation", "PostgreSQL schema with migrations", "Paystack payment webhook integration"],
+        deliverables: [
+          "REST API with auth and validation",
+          "PostgreSQL schema with migrations",
+          "Paystack payment webhook integration",
+        ],
       },
       {
         phase: "Days 61–90: Full-stack integration and deployment",
         focus: "End-to-end feature delivery, Docker, CI/CD, deployment",
-        deliverables: ["Full-stack application deployed to production", "CI/CD pipeline running tests", "Portfolio with 3 complete projects"],
+        deliverables: [
+          "Full-stack application deployed to production",
+          "CI/CD pipeline running tests",
+          "Portfolio with 3 complete projects",
+        ],
       },
     ],
     commonFailures: [
@@ -770,7 +966,8 @@ export const careerGuides: CareerGuide[] = [
   {
     slug: "content-strategist",
     title: "Content Strategist",
-    tagline: "Plan, create and distribute content that drives organic traffic and builds brand authority.",
+    tagline:
+      "Plan, create and distribute content that drives organic traffic and builds brand authority.",
     salaryRange: "₦200,000–₦500,000",
     difficulty: "Beginner",
     timeToJob: "2–5 months",
@@ -794,17 +991,29 @@ export const careerGuides: CareerGuide[] = [
       {
         phase: "Days 1–30: SEO and content fundamentals",
         focus: "Keyword research, on-page SEO, content types, analytics setup",
-        deliverables: ["Keyword research for a real business", "SEO audit of existing content", "GA4 and Search Console configured"],
+        deliverables: [
+          "Keyword research for a real business",
+          "SEO audit of existing content",
+          "GA4 and Search Console configured",
+        ],
       },
       {
         phase: "Days 31–60: Strategy and planning",
         focus: "Content calendars, editorial workflows, content briefs, distribution planning",
-        deliverables: ["Monthly content calendar for a real business", "Content brief template", "Distribution strategy document"],
+        deliverables: [
+          "Monthly content calendar for a real business",
+          "Content brief template",
+          "Distribution strategy document",
+        ],
       },
       {
         phase: "Days 61–90: Execution and measurement",
         focus: "Content creation, performance analysis, portfolio presentation",
-        deliverables: ["Published content with measurable results", "Content performance report", "Portfolio with content strategy case study"],
+        deliverables: [
+          "Published content with measurable results",
+          "Content performance report",
+          "Portfolio with content strategy case study",
+        ],
       },
     ],
     commonFailures: [
@@ -815,7 +1024,10 @@ export const careerGuides: CareerGuide[] = [
       "Not understanding the target audience deeply enough to create relevant content",
     ],
     localResources: [
-      { name: "HubSpot Content Marketing", url: "https://academy.hubspot.com/courses/content-marketing" },
+      {
+        name: "HubSpot Content Marketing",
+        url: "https://academy.hubspot.com/courses/content-marketing",
+      },
       { name: "Ahrefs Blog", url: "https://ahrefs.com/blog" },
       { name: "Google Search Console", url: "https://search.google.com/search-console/about" },
       { name: "CoSchedule Marketing Blog", url: "https://coschedule.com/blog" },
@@ -824,7 +1036,8 @@ export const careerGuides: CareerGuide[] = [
   {
     slug: "qa-engineer",
     title: "QA Engineer",
-    tagline: "Ensure software quality through systematic testing — manual, automated and everything in between.",
+    tagline:
+      "Ensure software quality through systematic testing — manual, automated and everything in between.",
     salaryRange: "₦250,000–₦700,000",
     difficulty: "Beginner",
     timeToJob: "3–6 months",
@@ -848,17 +1061,29 @@ export const careerGuides: CareerGuide[] = [
       {
         phase: "Days 1–30: Testing fundamentals",
         focus: "Test case design, bug reporting, manual testing techniques, test documentation",
-        deliverables: ["Test plan for a real application", "Bug report portfolio", "Test case management exercises"],
+        deliverables: [
+          "Test plan for a real application",
+          "Bug report portfolio",
+          "Test case management exercises",
+        ],
       },
       {
         phase: "Days 31–60: Automation basics",
         focus: "Playwright or Cypress fundamentals, API testing, SQL for testing",
-        deliverables: ["Automated test suite for a web application", "API test collection", "Database verification queries"],
+        deliverables: [
+          "Automated test suite for a web application",
+          "API test collection",
+          "Database verification queries",
+        ],
       },
       {
         phase: "Days 61–90: Strategy and portfolio",
         focus: "Test strategy, CI/CD integration, portfolio presentation",
-        deliverables: ["Test strategy document", "Automated tests in CI pipeline", "Portfolio with testing case studies"],
+        deliverables: [
+          "Test strategy document",
+          "Automated tests in CI pipeline",
+          "Portfolio with testing case studies",
+        ],
       },
     ],
     commonFailures: [
@@ -878,7 +1103,8 @@ export const careerGuides: CareerGuide[] = [
   {
     slug: "startup-cto",
     title: "Startup CTO / Technical Lead",
-    tagline: "Lead engineering teams and make technical decisions that shape product direction — from architecture to hiring.",
+    tagline:
+      "Lead engineering teams and make technical decisions that shape product direction — from architecture to hiring.",
     salaryRange: "₦800,000–₦2,500,000+",
     difficulty: "Advanced",
     timeToJob: "Requires 3+ years of prior engineering experience",
@@ -901,18 +1127,31 @@ export const careerGuides: CareerGuide[] = [
     ninetyDayPlan: [
       {
         phase: "Days 1–30: Technical architecture",
-        focus: "System design patterns, architecture decision records, technology evaluation frameworks",
-        deliverables: ["Architecture decision record for a real project", "Technology evaluation matrix", "System design practice exercises"],
+        focus:
+          "System design patterns, architecture decision records, technology evaluation frameworks",
+        deliverables: [
+          "Architecture decision record for a real project",
+          "Technology evaluation matrix",
+          "System design practice exercises",
+        ],
       },
       {
         phase: "Days 31–60: Leadership and communication",
         focus: "Team management, code review leadership, stakeholder communication, hiring",
-        deliverables: ["Technical team charter document", "Interview questions and scoring rubric", "Stakeholder communication templates"],
+        deliverables: [
+          "Technical team charter document",
+          "Interview questions and scoring rubric",
+          "Stakeholder communication templates",
+        ],
       },
       {
         phase: "Days 61–90: Strategy and operations",
         focus: "Engineering strategy, budget planning, operational metrics, career development",
-        deliverables: ["Engineering team strategy document", "Technical budget proposal", "Quarterly engineering metrics dashboard"],
+        deliverables: [
+          "Engineering team strategy document",
+          "Technical budget proposal",
+          "Quarterly engineering metrics dashboard",
+        ],
       },
     ],
     commonFailures: [
@@ -925,14 +1164,18 @@ export const careerGuides: CareerGuide[] = [
     localResources: [
       { name: "StaffEng", url: "https://staffeng.com" },
       { name: "The Pragmatic Engineer", url: "https://blog.pragmaticengineer.com" },
-      { name: "Manager's Path", url: "https://www.oreilly.com/library/view/the-managers-path/9781491973882/" },
+      {
+        name: "Manager's Path",
+        url: "https://www.oreilly.com/library/view/the-managers-path/9781491973882/",
+      },
       { name: "CTO Craft", url: "https://ctocraft.com" },
     ],
   },
   {
     slug: "blockchain-developer",
     title: "Blockchain Developer",
-    tagline: "Build decentralised applications and smart contracts — the infrastructure layer of Web3.",
+    tagline:
+      "Build decentralised applications and smart contracts — the infrastructure layer of Web3.",
     salaryRange: "₦500,000–₦1,500,000",
     difficulty: "Advanced",
     timeToJob: "6–12 months",
@@ -956,17 +1199,29 @@ export const careerGuides: CareerGuide[] = [
       {
         phase: "Days 1–30: Blockchain fundamentals",
         focus: "Ethereum architecture, Solidity basics, smart contract patterns, Hardhat setup",
-        deliverables: ["Simple token contract deployed to testnet", "Hardhat testing exercises", "Blockchain fundamentals notes"],
+        deliverables: [
+          "Simple token contract deployed to testnet",
+          "Hardhat testing exercises",
+          "Blockchain fundamentals notes",
+        ],
       },
       {
         phase: "Days 31–60: Smart contract development",
         focus: "Advanced Solidity, security patterns, DeFi primitives, contract testing",
-        deliverables: ["DeFi smart contract with tests", "Security audit checklist applied", "Gas optimisation exercises"],
+        deliverables: [
+          "DeFi smart contract with tests",
+          "Security audit checklist applied",
+          "Gas optimisation exercises",
+        ],
       },
       {
         phase: "Days 61–90: dApp integration and portfolio",
         focus: "Frontend dApp development, IPFS integration, portfolio presentation",
-        deliverables: ["Working dApp with smart contract integration", "IPFS-based decentralised storage", "Portfolio with smart contract examples"],
+        deliverables: [
+          "Working dApp with smart contract integration",
+          "IPFS-based decentralised storage",
+          "Portfolio with smart contract examples",
+        ],
       },
     ],
     commonFailures: [
@@ -986,7 +1241,8 @@ export const careerGuides: CareerGuide[] = [
   {
     slug: "ux-researcher",
     title: "UX Researcher",
-    tagline: "Understand users through rigorous research methods — interviews, testing, surveys and data analysis.",
+    tagline:
+      "Understand users through rigorous research methods — interviews, testing, surveys and data analysis.",
     salaryRange: "₦300,000–₦800,000",
     difficulty: "Intermediate",
     timeToJob: "4–7 months",
@@ -1010,17 +1266,29 @@ export const careerGuides: CareerGuide[] = [
       {
         phase: "Days 1–30: Research methods",
         focus: "Qualitative and quantitative methods, research design, ethics, tools setup",
-        deliverables: ["Research methods cheat sheet", "Interview guide template", "Survey design exercise"],
+        deliverables: [
+          "Research methods cheat sheet",
+          "Interview guide template",
+          "Survey design exercise",
+        ],
       },
       {
         phase: "Days 31–60: Applied research",
         focus: "Conducting real research studies, usability testing, data analysis",
-        deliverables: ["Interview study with 5+ participants", "Usability test with report", "Affinity mapping exercise"],
+        deliverables: [
+          "Interview study with 5+ participants",
+          "Usability test with report",
+          "Affinity mapping exercise",
+        ],
       },
       {
         phase: "Days 61–90: Insights and portfolio",
         focus: "Stakeholder presentation, research portfolio, career positioning",
-        deliverables: ["Research portfolio with 3 case studies", "Stakeholder presentation deck", "Published research insights article"],
+        deliverables: [
+          "Research portfolio with 3 case studies",
+          "Stakeholder presentation deck",
+          "Published research insights article",
+        ],
       },
     ],
     commonFailures: [

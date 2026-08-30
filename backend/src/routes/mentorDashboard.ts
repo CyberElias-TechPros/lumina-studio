@@ -48,7 +48,9 @@ for (const [key, { table, columns }] of Object.entries(COLS)) {
     )
       .bind(...(cursor ? [base64UrlDecode(cursor) ?? ""] : []), limit)
       .all();
-    return c.json(paginate(rows.results, total?.n ?? 0, (last) => base64UrlEncode(String(last.id))));
+    return c.json(
+      paginate(rows.results, total?.n ?? 0, (last) => base64UrlEncode(String(last.id))),
+    );
   });
 }
 
@@ -60,9 +62,9 @@ interface ResourceRow {
 
 mentorDashboard.get("/resources", async (c) => {
   const { cursor, limit } = parsePagination(c);
-  const total = await c.env.DB.prepare(
-    `SELECT COUNT(*) AS n FROM mnt_resources`,
-  ).first<{ n: number }>();
+  const total = await c.env.DB.prepare(`SELECT COUNT(*) AS n FROM mnt_resources`).first<{
+    n: number;
+  }>();
   const rows = await c.env.DB.prepare(
     `SELECT id, group_title AS groupTitle, items_json AS itemsJson FROM mnt_resources ${
       cursor ? "WHERE id > ?" : ""

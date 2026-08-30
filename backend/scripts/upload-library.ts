@@ -38,7 +38,10 @@ async function loadDotEnv(): Promise<void> {
     const eq = trimmed.indexOf("=");
     if (eq < 1) continue;
     const key = trimmed.slice(0, eq).trim();
-    const value = trimmed.slice(eq + 1).trim().replace(/^["']|["']$/g, "");
+    const value = trimmed
+      .slice(eq + 1)
+      .trim()
+      .replace(/^["']|["']$/g, "");
     if (!(key in process.env)) process.env[key] = value;
   }
 }
@@ -98,6 +101,8 @@ async function saveProgress(): Promise<void> {
 
 function sanitize(name: string): string {
   const cleaned = name
+    // Control characters are invalid in local paths and must be stripped.
+    // eslint-disable-next-line no-control-regex
     .replace(/[<>:"/\\|?*\u0000-\u001f]/g, "_")
     .replace(/[. ]+$/g, "")
     .trim();
@@ -227,10 +232,7 @@ async function connect(): Promise<FtpBackend | SftpBackend> {
 
 async function run(): Promise<void> {
   await loadDotEnv();
-  PROTO = (process.env.LIBRARY_FTP_PROTO ?? "ftps").toLowerCase() as
-    | "ftp"
-    | "ftps"
-    | "sftp";
+  PROTO = (process.env.LIBRARY_FTP_PROTO ?? "ftps").toLowerCase() as "ftp" | "ftps" | "sftp";
   FTP_ENV = {
     host: process.env.LIBRARY_FTP_HOST ?? "",
     user: process.env.LIBRARY_FTP_USER ?? "",
@@ -258,12 +260,11 @@ async function run(): Promise<void> {
     .map((file) => ({ file, remote: remotePathFor(file, usedNames) }))
     .filter(({ remote }) => !PROGRESS_SET.has(remote));
   const preSkipped = files.length - jobs.length;
-  if (preSkipped > 0) console.log(`  ${preSkipped} already recorded — skipping without touching FTP`);
+  if (preSkipped > 0)
+    console.log(`  ${preSkipped} already recorded — skipping without touching FTP`);
   console.log(`  ${jobs.length} remaining`);
 
-  const backends = await Promise.all(
-    Array.from({ length: CONCURRENCY }, () => connect()),
-  );
+  const backends = await Promise.all(Array.from({ length: CONCURRENCY }, () => connect()));
 
   const failures: { name: string; remote: string; error: string }[] = [];
   let skipped = 0;

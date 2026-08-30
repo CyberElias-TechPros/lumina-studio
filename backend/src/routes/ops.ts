@@ -9,9 +9,11 @@ export const ops = new Hono<{ Bindings: AppEnv }>();
 ops.use("*", requireAuth, requireAnyRole(["ops", "admin"]));
 
 const COLS: Record<string, string> = {
-  inventory: "id, name, category, qty, unit, reorder_point AS reorderPoint, auto_reorder AS autoReorder, unit_price AS unitPrice, location",
+  inventory:
+    "id, name, category, qty, unit, reorder_point AS reorderPoint, auto_reorder AS autoReorder, unit_price AS unitPrice, location",
   "purchase-orders": "id, vendor, items, amount, eta, status",
-  branches: "id, name, location, capacity, occupied, staff_onsite AS staffOnsite, cost_seat_day AS costSeatDay, status",
+  branches:
+    "id, name, location, capacity, occupied, staff_onsite AS staffOnsite, cost_seat_day AS costSeatDay, status",
   rooms: "id, name, block, seats, next_event AS nextEvent, status",
   maintenance: "id, title, detail, status",
   vendors: "id, name, category, rating, status",
@@ -36,7 +38,9 @@ for (const [key, columns] of Object.entries(COLS)) {
   ops.get(`/${key}`, async (c) => {
     const { cursor, limit } = parsePagination(c);
     const table = TABLES[key];
-    const total = await c.env.DB.prepare(`SELECT COUNT(*) AS n FROM ${table}`).first<{ n: number }>();
+    const total = await c.env.DB.prepare(`SELECT COUNT(*) AS n FROM ${table}`).first<{
+      n: number;
+    }>();
     const rows = await c.env.DB.prepare(
       `SELECT ${columns} FROM ${table} ${cursor ? "WHERE id > ?" : ""} ORDER BY id ASC LIMIT ?`,
     )
