@@ -34,6 +34,8 @@ Using the original base and head above produces two reviewable slices:
 \*The CodeRabbit count excludes the relevant lockfile. The repository config
 also excludes generated route, sitemap, Wrangler type, and generated domain
 seed output, while keeping their source generators and migrations reviewable.
+Those filters reduce review noise but are not a workaround for the 150-file
+limit; the historical change still needs the two-PR split.
 
 ### Slice 1: API and data workflows
 
