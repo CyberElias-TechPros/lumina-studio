@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowLeft, CheckCheck, Phone, Search, Send, Video } from "lucide-react";
 import { useState } from "react";
+import { toast } from "sonner";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -27,10 +28,18 @@ function MessagesPage() {
   const threadsQuery = useMessageThreads();
   const threads = useThreadItems();
   const [activeId, setActiveId] = useState<string>(threads[0]?.id ?? "");
+  const [search, setSearch] = useState("");
   const [draft, setDraft] = useState("");
   const activeIdResolved = activeId || threads[0]?.id || "";
   const active = threads.find((t) => t.id === activeIdResolved) ?? threads[0];
   const send = useSendMessage(active?.id ?? "");
+
+  const openMeeting = (kind: "voice" | "video") => {
+    window.open("https://meet.google.com/new", "_blank", "noopener,noreferrer");
+    toast.success(`${kind === "video" ? "Video" : "Voice"} room opened`, {
+      description: `Share the meeting link with ${active?.name ?? "your contact"}.`,
+    });
+  };
 
   return (
     <AppShell
@@ -48,6 +57,14 @@ function MessagesPage() {
     >
       <QueryState<MessageThread[]> query={threadsQuery} error={{ title: "Messages unavailable" }}>
         {(threads) => {
+          const normalizedSearch = search.trim().toLowerCase();
+          const visibleThreads = normalizedSearch
+            ? threads.filter((thread) =>
+                `${thread.name} ${thread.role} ${thread.last.text}`
+                  .toLowerCase()
+                  .includes(normalizedSearch),
+              )
+            : threads;
           return (
             <>
               <div className="grid h-[640px] gap-5 lg:grid-cols-[1fr_1.6fr]">
@@ -56,50 +73,59 @@ function MessagesPage() {
                     <div className="bg-muted flex items-center gap-2 rounded-xl px-3 py-2">
                       <Search className="text-muted-foreground size-4" />
                       <input
-                        type="text"
+                        type="search"
+                        value={search}
+                        onChange={(event) => setSearch(event.target.value)}
                         placeholder="Search conversations…"
+                        aria-label="Search conversations"
                         className="bg-transparent w-full text-sm outline-none"
                       />
                     </div>
                   </CardContent>
                   <CardContent className="flex-1 divide-y overflow-y-auto p-0">
-                    {threads.map((t) => (
-                      <button
-                        key={t.id}
-                        type="button"
-                        onClick={() => setActiveId(t.id)}
-                        className={cn(
-                          "flex w-full items-center gap-3 p-4 text-left transition-colors",
-                          t.id === activeIdResolved ? "bg-primary/5" : "hover:bg-muted/50",
-                        )}
-                      >
-                        <span className="bg-gradient-brand text-primary-foreground font-display grid size-10 shrink-0 place-items-center rounded-full text-xs font-bold">
-                          {t.name
-                            .split(" ")
-                            .map((n) => n[0])
-                            .join("")
-                            .slice(0, 2)
-                            .toUpperCase()}
-                        </span>
-                        <div className="min-w-0 flex-1">
-                          <div className="flex items-center justify-between gap-2">
-                            <p className="truncate text-sm font-bold">{t.name}</p>
-                            <span className="text-muted-foreground shrink-0 text-[11px] font-semibold">
-                              {t.last.time}
-                            </span>
+                    {visibleThreads.length === 0 ? (
+                      <p className="text-muted-foreground p-5 text-center text-sm">
+                        No conversations match “{search}”.
+                      </p>
+                    ) : (
+                      visibleThreads.map((t) => (
+                        <button
+                          key={t.id}
+                          type="button"
+                          onClick={() => setActiveId(t.id)}
+                          className={cn(
+                            "flex w-full items-center gap-3 p-4 text-left transition-colors",
+                            t.id === activeIdResolved ? "bg-primary/5" : "hover:bg-muted/50",
+                          )}
+                        >
+                          <span className="bg-gradient-brand text-primary-foreground font-display grid size-10 shrink-0 place-items-center rounded-full text-xs font-bold">
+                            {t.name
+                              .split(" ")
+                              .map((n) => n[0])
+                              .join("")
+                              .slice(0, 2)
+                              .toUpperCase()}
+                          </span>
+                          <div className="min-w-0 flex-1">
+                            <div className="flex items-center justify-between gap-2">
+                              <p className="truncate text-sm font-bold">{t.name}</p>
+                              <span className="text-muted-foreground shrink-0 text-[11px] font-semibold">
+                                {t.last.time}
+                              </span>
+                            </div>
+                            <p className="text-muted-foreground truncate text-xs">{t.role}</p>
+                            <p className="text-muted-foreground mt-0.5 truncate text-xs">
+                              {t.last.text}
+                            </p>
                           </div>
-                          <p className="text-muted-foreground truncate text-xs">{t.role}</p>
-                          <p className="text-muted-foreground mt-0.5 truncate text-xs">
-                            {t.last.text}
-                          </p>
-                        </div>
-                        {t.unread > 0 && (
-                          <Badge className="bg-error text-error-foreground h-5 min-w-5 justify-center rounded-full border-0 px-1.5 text-[10px] font-bold">
-                            {t.unread}
-                          </Badge>
-                        )}
-                      </button>
-                    ))}
+                          {t.unread > 0 && (
+                            <Badge className="bg-error text-error-foreground h-5 min-w-5 justify-center rounded-full border-0 px-1.5 text-[10px] font-bold">
+                              {t.unread}
+                            </Badge>
+                          )}
+                        </button>
+                      ))
+                    )}
                   </CardContent>
                 </Card>
 
@@ -121,7 +147,9 @@ function MessagesPage() {
                       variant="ghost"
                       size="icon"
                       className="text-muted-foreground"
-                      aria-label="Voice call"
+                      aria-label="Start voice call"
+                      title="Start a voice room"
+                      onClick={() => openMeeting("voice")}
                     >
                       <Phone className="size-4" />
                     </Button>
@@ -129,7 +157,9 @@ function MessagesPage() {
                       variant="ghost"
                       size="icon"
                       className="text-muted-foreground"
-                      aria-label="Video call"
+                      aria-label="Start video call"
+                      title="Start a video room"
+                      onClick={() => openMeeting("video")}
                     >
                       <Video className="size-4" />
                     </Button>

@@ -126,8 +126,8 @@ function VolunteerCommunity() {
                     <span
                       className={cn("size-2.5 rounded-full", i === 1 ? "bg-success" : "bg-primary")}
                     />
-                    <Button variant="outline" size="sm" className="shrink-0 font-semibold">
-                      Open chat
+                    <Button asChild variant="outline" size="sm" className="shrink-0 font-semibold">
+                      <Link to="/app/chat">Open chat</Link>
                     </Button>
                   </div>
                 ))}

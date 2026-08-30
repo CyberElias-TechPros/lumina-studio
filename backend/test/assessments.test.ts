@@ -78,3 +78,57 @@ describe("GET /v1/assessments/:id", () => {
     expect(res.status).toBe(404);
   });
 });
+
+describe("POST /v1/assessments/:id/submit", () => {
+  it("scores answers on the server and closes the assessment", async () => {
+    const { cookie } = await createTestSession("student@cea.ng");
+    const res = await api("/v1/assessments/q1/submit", {
+      method: "POST",
+      headers: { ...cookieHeaders(cookie), "Content-Type": "application/json" },
+      body: JSON.stringify({ answers: [1, 0, 2, 0, 2] }),
+    });
+    expect(res.status).toBe(200);
+    const body = (await res.json()) as {
+      status: string;
+      score: number;
+      max: number;
+      attemptsLeft: number;
+    };
+    expect(body.status).toBe("done");
+    expect(body.score).toBe(5);
+    expect(body.max).toBe(5);
+    expect(body.attemptsLeft).toBe(1);
+
+    const detail = await api("/v1/assessments/q1", { headers: cookieHeaders(cookie) });
+    const assessment = (await detail.json()) as AssessmentShape;
+    expect(assessment.status).toBe("done");
+    expect(assessment.score).toBe(5);
+
+    const attempts = await api("/v1/assessments/q1/attempts", {
+      headers: cookieHeaders(cookie),
+    });
+    expect(attempts.status).toBe(200);
+    expect(await attempts.json()).toMatchObject({
+      total: 1,
+      items: [{ score: 5, max: 5 }],
+    });
+  });
+
+  it("rejects malformed submissions and non-students", async () => {
+    const student = await createTestSession("student@cea.ng");
+    const invalid = await api("/v1/assessments/q1/submit", {
+      method: "POST",
+      headers: { ...cookieHeaders(student.cookie), "Content-Type": "application/json" },
+      body: JSON.stringify({ answers: [9] }),
+    });
+    expect(invalid.status).toBe(400);
+
+    const instructor = await createTestSession("instructor@cea.ng");
+    const forbidden = await api("/v1/assessments/q1/submit", {
+      method: "POST",
+      headers: { ...cookieHeaders(instructor.cookie), "Content-Type": "application/json" },
+      body: JSON.stringify({ answers: [1, 0, 2, 0, 2] }),
+    });
+    expect(forbidden.status).toBe(403);
+  });
+});

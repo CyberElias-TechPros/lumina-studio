@@ -4,6 +4,7 @@ import type { Paginated } from "./types";
 export interface CliTicket {
   id: string;
   title: string;
+  description?: string;
   reference: string;
   dateLabel: string;
   sla: string;
@@ -70,6 +71,22 @@ export interface CliTask {
 function cliPage<T>(path: string) {
   return (cursor?: string): Promise<Paginated<T>> =>
     apiFetch<Paginated<T>>(path, { query: { cursor } });
+}
+
+export interface CreateCliTicketInput {
+  title: string;
+  description?: string;
+}
+
+export interface CreateCliTicketResult {
+  ticket: CliTicket;
+}
+
+export function createCliTicket(input: CreateCliTicketInput): Promise<CreateCliTicketResult> {
+  return apiFetch<CreateCliTicketResult>("/v1/client-dashboard/tickets", {
+    method: "POST",
+    body: input,
+  });
 }
 
 export const fetchCliTickets = cliPage<CliTicket>("/v1/client-dashboard/tickets");

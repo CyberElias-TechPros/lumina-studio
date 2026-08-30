@@ -1,8 +1,16 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useState } from "react";
 import { ArrowLeft, Inbox, Lock, MessageSquare, Send } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import { AppShell } from "@/components/app/app-shell";
 import { QueryState } from "@/components/ui/query-state";
 import type { CliThread } from "@/lib/query/clientEngagement";
@@ -29,6 +37,7 @@ function statusTone(s: string) {
 
 function ClientMessages() {
   const threadsQuery = useCliThreads();
+  const [selectedThread, setSelectedThread] = useState<CliThread | null>(null);
 
   return (
     <AppShell
@@ -126,7 +135,12 @@ function ClientMessages() {
                     <Badge className={cn("border-0 font-semibold", statusTone(m.status))}>
                       {m.status}
                     </Badge>
-                    <Button variant="outline" size="sm" className="shrink-0 font-semibold">
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="shrink-0 font-semibold"
+                      onClick={() => setSelectedThread(m)}
+                    >
                       Open
                     </Button>
                   </div>
@@ -136,6 +150,33 @@ function ClientMessages() {
           </QueryState>
         </CardContent>
       </Card>
+      <Dialog
+        open={selectedThread !== null}
+        onOpenChange={(open) => !open && setSelectedThread(null)}
+      >
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>{selectedThread?.title ?? "Message thread"}</DialogTitle>
+            <DialogDescription>Secure project-team message thread.</DialogDescription>
+          </DialogHeader>
+          {selectedThread && (
+            <dl className="grid gap-3 rounded-xl border p-4 text-sm">
+              <div>
+                <dt className="text-muted-foreground text-xs font-bold uppercase">From</dt>
+                <dd className="mt-1 font-semibold">{selectedThread.fromLabel}</dd>
+              </div>
+              <div>
+                <dt className="text-muted-foreground text-xs font-bold uppercase">Last activity</dt>
+                <dd className="mt-1 font-semibold">{selectedThread.timeLabel}</dd>
+              </div>
+              <div>
+                <dt className="text-muted-foreground text-xs font-bold uppercase">Status</dt>
+                <dd className="mt-1 font-semibold">{selectedThread.status}</dd>
+              </div>
+            </dl>
+          )}
+        </DialogContent>
+      </Dialog>
     </AppShell>
   );
 }

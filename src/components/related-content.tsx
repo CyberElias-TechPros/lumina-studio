@@ -41,13 +41,12 @@ function getRelatedItems(
         }));
 
       const relatedBlogs = blogPosts
-        .filter(
-          (b) =>
-            b.body.some(
-              (para) =>
-                para.toLowerCase().includes(program.title.toLowerCase()) ||
-                para.toLowerCase().includes(program.category.toLowerCase()),
-            ),
+        .filter((b) =>
+          b.body.some(
+            (para) =>
+              para.toLowerCase().includes(program.title.toLowerCase()) ||
+              para.toLowerCase().includes(program.category.toLowerCase()),
+          ),
         )
         .slice(0, 2)
         .map((b) => ({
@@ -85,13 +84,12 @@ function getRelatedItems(
         }));
 
       const relatedPrograms = programs
-        .filter(
-          (p) =>
-            post.body.some(
-              (para) =>
-                para.toLowerCase().includes(p.title.toLowerCase()) ||
-                para.toLowerCase().includes(p.category.toLowerCase()),
-            ),
+        .filter((p) =>
+          post.body.some(
+            (para) =>
+              para.toLowerCase().includes(p.title.toLowerCase()) ||
+              para.toLowerCase().includes(p.category.toLowerCase()),
+          ),
         )
         .slice(0, 2)
         .map((p) => ({
@@ -129,12 +127,7 @@ const typeLabels = {
   module: "Module",
 };
 
-export function RelatedContent({
-  currentSlug,
-  currentType,
-  className,
-  maxItems = 6,
-}: Props) {
+export function RelatedContent({ currentSlug, currentType, className, maxItems = 6 }: Props) {
   const items = getRelatedItems(currentSlug, currentType, maxItems);
   if (items.length === 0) return null;
 

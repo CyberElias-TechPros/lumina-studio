@@ -456,8 +456,6 @@ live.patch("/classes/:id", requireInstructorOrAdmin, async (c) => {
     .bind(id)
     .first<{ id: string }>();
   if (!row) throw ApiError.notFound("Live class not found.");
-  await c.env.DB.prepare(`UPDATE live_sessions SET status = ? WHERE id = ?`)
-    .bind(status, id)
-    .run();
+  await c.env.DB.prepare(`UPDATE live_sessions SET status = ? WHERE id = ?`).bind(status, id).run();
   return c.json({ ok: true, id, status });
 });

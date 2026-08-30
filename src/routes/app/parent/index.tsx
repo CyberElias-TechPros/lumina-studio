@@ -82,8 +82,10 @@ function ParentDashboard() {
                 : "Payments pending"
               : "Checking…"}
           </Badge>
-          <Button size="sm">
-            <MessageSquare className="size-4" /> Contact school
+          <Button asChild size="sm">
+            <Link to="/app/messages">
+              <MessageSquare className="size-4" /> Contact school
+            </Link>
           </Button>
         </>
       }

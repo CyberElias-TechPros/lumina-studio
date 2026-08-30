@@ -70,7 +70,16 @@ test("mobile menu shows More dropdown links", async ({ page }) => {
 
   await page.click('aria-label="Menu"');
 
-  const subLinks = ["Blog & Insights", "FAQ", "Events", "Scholarships", "Contact", "Privacy", "Terms", "Accessibility"];
+  const subLinks = [
+    "Blog & Insights",
+    "FAQ",
+    "Events",
+    "Scholarships",
+    "Contact",
+    "Privacy",
+    "Terms",
+    "Accessibility",
+  ];
   for (const link of subLinks) {
     await expect(page.locator(`a:has-text("${link}")`).first()).toBeVisible();
   }
@@ -97,7 +106,15 @@ test("Apply now button links to admissions", async ({ page }) => {
 });
 
 test("no 404 errors on key navigation", async ({ page }) => {
-  const paths = ["/programs", "/about", "/blog", "/pricing", "/privacy", "/terms", "/accessibility"];
+  const paths = [
+    "/programs",
+    "/about",
+    "/blog",
+    "/pricing",
+    "/privacy",
+    "/terms",
+    "/accessibility",
+  ];
 
   for (const path of paths) {
     const response = await page.goto(`${BASE_URL}${path}`);

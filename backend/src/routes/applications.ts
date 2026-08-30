@@ -4,9 +4,10 @@ import { z } from "zod";
 import { ApiError } from "../lib/errors";
 import { parseBody } from "../lib/validate";
 import { requireAuth, requireAdmin } from "../lib/auth";
-import { isoNow, randomToken } from "../lib/crypto";
+import { base64UrlDecode, base64UrlEncode, isoNow, randomToken } from "../lib/crypto";
 import { normalizeEmail } from "../db/client";
 import { paginate, parsePagination } from "../lib/pagination";
+import { hashIdentifier, rateLimit } from "../lib/rate-limit";
 
 export const PIPELINE_STAGES = [
   { key: "submitted", label: "Application received" },
@@ -31,10 +32,9 @@ const createApplicationSchema = z.object({
 function newRef(): string {
   const year = new Date().getFullYear();
   const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
-  let suffix = "";
-  for (let i = 0; i < 6; i++) {
-    suffix += chars[Math.floor(Math.random() * chars.length)];
-  }
+  const bytes = new Uint8Array(6);
+  crypto.getRandomValues(bytes);
+  const suffix = Array.from(bytes, (byte) => chars[byte % chars.length]).join("");
   return `CEA-${year}-${suffix}`;
 }
 
@@ -42,6 +42,11 @@ export const applications = new Hono<{ Bindings: AppEnv }>();
 
 applications.post("/", async (c) => {
   const input = await parseBody(c, createApplicationSchema);
+  const ip = c.req.header("CF-Connecting-IP") ?? c.req.header("x-forwarded-for") ?? "unknown";
+  await rateLimit(c.env.RATE_LIMIT, "applications", await hashIdentifier(ip), {
+    limit: 10,
+    windowSeconds: 3600,
+  });
   const email = normalizeEmail(input.email);
 
   const program = await c.env.DB.prepare(`SELECT title FROM programs WHERE slug = ?`)
@@ -83,9 +88,18 @@ applications.get("/admin", requireAuth, requireAdmin, async (c) => {
   const { cursor, limit } = parsePagination(c);
   const stage = c.req.query("stage");
   const stageValid = stage && STATUS_ORDER.includes(stage as (typeof STATUS_ORDER)[number]);
-  const where = stageValid ? "WHERE a.status = ?" : "";
+  const predicates: string[] = [];
+  const args: string[] = [];
+  if (stageValid) {
+    predicates.push("a.status = ?");
+    args.push(stage);
+  }
+  if (cursor) {
+    predicates.push("a.id > ?");
+    args.push(base64UrlDecode(cursor) ?? "");
+  }
+  const where = predicates.length > 0 ? `WHERE ${predicates.join(" AND ")}` : "";
   const base = `FROM applications a LEFT JOIN programs p ON p.slug = a.program_slug ${where}`;
-  const args = stageValid ? [stage] : [];
 
   const total = await c.env.DB.prepare(`SELECT COUNT(*) AS n ${base}`)
     .bind(...args)
@@ -94,7 +108,7 @@ applications.get("/admin", requireAuth, requireAdmin, async (c) => {
     `SELECT a.id, a.ref, a.full_name, a.email, a.phone, a.city, a.program_slug, a.experience,
             a.status, a.note, a.created_at, a.updated_at, p.title AS program_title
        ${base}
-      ORDER BY a.created_at DESC, a.id DESC LIMIT ?`,
+      ORDER BY a.id ASC LIMIT ?`,
   )
     .bind(...args, limit)
     .all<{
@@ -127,9 +141,7 @@ applications.get("/admin", requireAuth, requireAdmin, async (c) => {
     createdAt: r.created_at,
     updatedAt: r.updated_at,
   }));
-  return c.json(
-    paginate(items, total?.n ?? 0, (last) => last.id),
-  );
+  return c.json(paginate(items, total?.n ?? 0, (last) => last.id));
 });
 
 /** Admin: pipeline funnel counts by stage for the admissions hub. */
@@ -191,17 +203,22 @@ applications.get("/", requireAuth, async (c) => {
   const user = c.get("authUser");
   const { cursor, limit } = parsePagination(c);
 
-  const base = `FROM applications WHERE user_id = ? OR (user_id IS NULL AND email = ?)`;
-  const total = await c.env.DB.prepare(`SELECT COUNT(*) AS n ${base}`)
+  const base = `FROM applications WHERE (user_id = ? OR (user_id IS NULL AND email = ?))${
+    cursor ? " AND id > ?" : ""
+  }`;
+  const cursorId = cursor ? (base64UrlDecode(cursor) ?? "") : undefined;
+  const total = await c.env.DB.prepare(
+    `SELECT COUNT(*) AS n FROM applications WHERE user_id = ? OR (user_id IS NULL AND email = ?)`,
+  )
     .bind(user.id, user.email)
     .first<{ n: number }>();
 
   const rows = await c.env.DB.prepare(
     `SELECT id, ref, program_slug, status, created_at, updated_at
        ${base}
-      ORDER BY created_at DESC, id DESC LIMIT ?`,
+      ORDER BY id ASC LIMIT ?`,
   )
-    .bind(user.id, user.email, limit)
+    .bind(...(cursorId ? [user.id, user.email, cursorId, limit] : [user.id, user.email, limit]))
     .all<{
       id: string;
       ref: string;

@@ -1,8 +1,16 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useState } from "react";
 import { ArrowLeft, Clock3, FileText, Handshake, Inbox, ThumbsUp } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import { AppShell } from "@/components/app/app-shell";
 import { QueryState } from "@/components/ui/query-state";
 import type { CliProposal } from "@/lib/query/clientEngagement";
@@ -29,6 +37,7 @@ function statusTone(s: string) {
 
 function ClientProposals() {
   const proposalsQuery = useCliProposals();
+  const [selectedProposal, setSelectedProposal] = useState<CliProposal | null>(null);
 
   return (
     <AppShell
@@ -126,7 +135,12 @@ function ClientProposals() {
                     <Badge className={cn("border-0 font-semibold", statusTone(p.status))}>
                       {p.status}
                     </Badge>
-                    <Button variant="outline" size="sm" className="shrink-0 font-semibold">
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="shrink-0 font-semibold"
+                      onClick={() => setSelectedProposal(p)}
+                    >
                       Review
                     </Button>
                   </div>
@@ -136,6 +150,35 @@ function ClientProposals() {
           </QueryState>
         </CardContent>
       </Card>
+      <Dialog
+        open={selectedProposal !== null}
+        onOpenChange={(open) => !open && setSelectedProposal(null)}
+      >
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>{selectedProposal?.title ?? "Proposal review"}</DialogTitle>
+            <DialogDescription>
+              Review the current commercial scope before replying to CEA.
+            </DialogDescription>
+          </DialogHeader>
+          {selectedProposal && (
+            <dl className="grid gap-3 rounded-xl border p-4 text-sm">
+              <div>
+                <dt className="text-muted-foreground text-xs font-bold uppercase">Amount</dt>
+                <dd className="mt-1 font-semibold">{selectedProposal.amount}</dd>
+              </div>
+              <div>
+                <dt className="text-muted-foreground text-xs font-bold uppercase">Scope</dt>
+                <dd className="mt-1 font-semibold">{selectedProposal.scope}</dd>
+              </div>
+              <div>
+                <dt className="text-muted-foreground text-xs font-bold uppercase">Status</dt>
+                <dd className="mt-1 font-semibold">{selectedProposal.status}</dd>
+              </div>
+            </dl>
+          )}
+        </DialogContent>
+      </Dialog>
     </AppShell>
   );
 }

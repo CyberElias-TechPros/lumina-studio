@@ -1,4 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
+import { toast } from "sonner";
 import {
   ArrowLeft,
   BadgeCheck,
@@ -27,7 +29,11 @@ import { Textarea } from "@/components/ui/textarea";
 import { AppShell } from "@/components/app/app-shell";
 import { QueryState } from "@/components/ui/query-state";
 import type { AluCommitment } from "@/lib/api/alumni";
-import { useAluCommitments } from "@/lib/query/alumni";
+import {
+  useAluCommitments,
+  useAluMentorAvailability,
+  useSaveAluMentorAvailability,
+} from "@/lib/query/alumni";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/alumni/mentorship")({
@@ -51,6 +57,33 @@ const commitmentTones = [
 
 function AlumniMentorship() {
   const commitmentsQuery = useAluCommitments();
+  const availabilityQuery = useAluMentorAvailability();
+  const saveAvailability = useSaveAluMentorAvailability();
+  const [skill, setSkill] = useState("backend");
+  const [weeklyHours, setWeeklyHours] = useState("3");
+  const [format, setFormat] = useState<"video" | "group" | "async" | "onsite">("video");
+  const [bio, setBio] = useState(
+    "Backend engineer at Flutterwave. I help learners reason about APIs, auth and production readiness — and I'm brutal about clean commit messages.",
+  );
+
+  useEffect(() => {
+    const saved = availabilityQuery.data;
+    if (!saved) return;
+    setSkill(saved.skill);
+    setWeeklyHours(String(saved.weeklyHours));
+    setFormat(saved.format);
+    setBio(saved.bio);
+  }, [availabilityQuery.data]);
+
+  const save = (status: "draft" | "published") => {
+    saveAvailability.mutate(
+      { skill, weeklyHours: Number(weeklyHours), format, bio, status },
+      {
+        onSuccess: () =>
+          toast.success(status === "published" ? "Availability published" : "Draft saved"),
+      },
+    );
+  };
 
   return (
     <AppShell
@@ -113,7 +146,7 @@ function AlumniMentorship() {
               <Label htmlFor="skills" className="text-xs font-bold tracking-wide uppercase">
                 What can you mentor on?
               </Label>
-              <Select defaultValue="backend">
+              <Select value={skill} onValueChange={setSkill}>
                 <SelectTrigger id="skills" className="border font-semibold">
                   <SelectValue placeholder="Select focus area" />
                 </SelectTrigger>
@@ -132,7 +165,7 @@ function AlumniMentorship() {
                 <Label htmlFor="hours" className="text-xs font-bold tracking-wide uppercase">
                   Weekly hours
                 </Label>
-                <Select defaultValue="3">
+                <Select value={weeklyHours} onValueChange={setWeeklyHours}>
                   <SelectTrigger id="hours" className="border font-semibold">
                     <SelectValue placeholder="Select hours" />
                   </SelectTrigger>
@@ -148,7 +181,11 @@ function AlumniMentorship() {
                 <Label className="text-xs font-bold tracking-wide uppercase">
                   Preferred format
                 </Label>
-                <RadioGroup defaultValue="video" className="flex flex-wrap gap-2">
+                <RadioGroup
+                  value={format}
+                  onValueChange={(value) => setFormat(value as typeof format)}
+                  className="flex flex-wrap gap-2"
+                >
                   {[
                     { v: "video", label: "1:1 video" },
                     { v: "group", label: "Group session" },
@@ -176,19 +213,37 @@ function AlumniMentorship() {
               </Label>
               <Textarea
                 id="bio"
-                defaultValue="Backend engineer at Flutterwave. I help learners reason about APIs, auth and production readiness — and I'm brutal about clean commit messages."
+                value={bio}
+                onChange={(event) => setBio(event.target.value)}
                 className="min-h-28 border font-medium"
               />
             </div>
 
             <div className="flex flex-wrap items-center justify-end gap-3 border-t pt-5">
-              <Button variant="outline" size="sm" className="font-semibold">
+              <Button
+                variant="outline"
+                size="sm"
+                className="font-semibold"
+                onClick={() => save("draft")}
+                disabled={saveAvailability.isPending || bio.trim().length < 10}
+              >
                 Save draft
               </Button>
-              <Button size="sm" className="bg-gradient-brand shadow-glow border-0 font-semibold">
-                <HeartHandshake className="size-3.5" /> Publish availability
+              <Button
+                size="sm"
+                className="bg-gradient-brand shadow-glow border-0 font-semibold"
+                onClick={() => save("published")}
+                disabled={saveAvailability.isPending || bio.trim().length < 10}
+              >
+                <HeartHandshake className="size-3.5" />
+                {saveAvailability.isPending ? "Saving…" : "Publish availability"}
               </Button>
             </div>
+            {saveAvailability.error && (
+              <p role="alert" className="text-destructive text-sm font-semibold">
+                {saveAvailability.error.message}
+              </p>
+            )}
           </CardContent>
         </Card>
 

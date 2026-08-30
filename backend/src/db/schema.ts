@@ -1,4 +1,12 @@
-import { sqliteTable, text, integer, real, index, uniqueIndex, primaryKey } from "drizzle-orm/sqlite-core";
+import {
+  sqliteTable,
+  text,
+  integer,
+  real,
+  index,
+  uniqueIndex,
+  primaryKey,
+} from "drizzle-orm/sqlite-core";
 
 export const engines = sqliteTable("engines", {
   key: text("key").primaryKey(),
@@ -407,7 +415,8 @@ export const paymentBatches = sqliteTable("payment_batches", {
 });
 
 export const payments = sqliteTable(
-  "payments",  {
+  "payments",
+  {
     id: text("id").primaryKey(),
     userId: text("user_id")
       .notNull()
@@ -441,6 +450,23 @@ export const notifications = sqliteTable(
     sortOrder: integer("sort_order").notNull().default(0),
   },
   (t) => [index("idx_notifications_user").on(t.userId)],
+);
+
+export const notificationReads = sqliteTable(
+  "notification_reads",
+  {
+    notificationId: text("notification_id")
+      .notNull()
+      .references(() => notifications.id, { onDelete: "cascade" }),
+    userId: text("user_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    readAt: text("read_at").notNull(),
+  },
+  (t) => [
+    primaryKey({ columns: [t.notificationId, t.userId] }),
+    index("idx_notification_reads_user").on(t.userId),
+  ],
 );
 
 /* ---------------- Phase 4: recruitment ---------------- */

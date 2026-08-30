@@ -52,7 +52,10 @@ test.describe("Authorization negatives (401/403)", () => {
     }
   });
 
-  test("rejects a student from advancing an application (admin-only PATCH)", async ({ page, request }) => {
+  test("rejects a student from advancing an application (admin-only PATCH)", async ({
+    page,
+    request,
+  }) => {
     const email = `e2e.rbac.${Date.now()}@example.com`;
     const create = await request.post(`${API_BASE}/v1/applications`, {
       data: { fullName: "RBAC Tester", email, programSlug: "full-stack-software-development" },
@@ -88,7 +91,9 @@ test.describe("Data scoping + row-level ownership", () => {
     expect(foreign.status()).toBe(404);
   });
 
-  test("employer can create and read back their own posting (ownership round-trip)", async ({ page }) => {
+  test("employer can create and read back their own posting (ownership round-trip)", async ({
+    page,
+  }) => {
     await signInViaUi(page, "employer@cea.ng", "cea-demo-pass-2026");
     test.skip(
       !(await expectAuthenticated(page, "employer")),

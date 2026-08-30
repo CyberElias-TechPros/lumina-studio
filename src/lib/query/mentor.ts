@@ -1,7 +1,9 @@
+import { useMutation } from "@tanstack/react-query";
 import { useApiQuery, usePaginatedQuery } from "@/lib/query/hooks";
 import {
   fetchMentorProfiles,
   matchMentor,
+  requestMentor,
   type MentorMatchResult,
   type MentorProfile,
 } from "@/lib/api/mentor";
@@ -20,4 +22,11 @@ export function useMentorMatch(input: { program?: string; goal?: string }, enabl
     () => matchMentor(input),
     { enabled },
   );
+}
+
+export function useRequestMentor() {
+  return useMutation({
+    mutationFn: (input: { mentorId: string; goal: string; program?: string }) =>
+      requestMentor(input),
+  });
 }

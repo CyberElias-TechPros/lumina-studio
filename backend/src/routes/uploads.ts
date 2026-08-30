@@ -50,12 +50,6 @@ const ALLOWED_TYPES: Record<string, string> = {
   "application/vnd.openxmlformats-officedocument.wordprocessingml.document": ".docx",
 };
 
-function safeExt(filename: string): string {
-  const match = /\.([a-zA-Z0-9]{1,12})$/.exec(filename.trim());
-  const ext = match?.[1];
-  return ext ? `.${ext.toLowerCase()}` : "";
-}
-
 const presignSchema = z.object({
   filename: z.string().trim().min(1, "Filename is required.").max(200),
   contentType: z.string().trim().max(100).optional(),
@@ -69,10 +63,15 @@ uploads.post("/presign", async (c) => {
   const expectedExt = ALLOWED_TYPES[requestedType];
   if (!expectedExt) {
     throw ApiError.validation({
-      contentType: ["This file type is not allowed. Use PNG, JPG, WebP, SVG, PDF, TXT, ZIP, DOC or DOCX."],
+      contentType: [
+        "This file type is not allowed. Use PNG, JPG, WebP, SVG, PDF, TXT, ZIP, DOC or DOCX.",
+      ],
     });
   }
-  const key = `${user.id}/${crypto.randomUUID()}${safeExt(filename) || expectedExt}`;
+  // Derive the stored suffix from the validated MIME type rather than the
+  // user-controlled filename. This keeps object names consistent and avoids
+  // giving a file an executable-looking extension after content validation.
+  const key = `${user.id}/${crypto.randomUUID()}${expectedExt}`;
 
   const bucket = c.env.UPLOADS as R2WithPresign;
   let uploadUrl = `/v1/uploads/${key}`;
@@ -100,6 +99,35 @@ uploads.post("/presign", async (c) => {
   return c.json(result, 201);
 });
 
+async function readUploadBody(request: Request): Promise<ArrayBuffer> {
+  if (!request.body) return new ArrayBuffer(0);
+  const reader = request.body.getReader();
+  const chunks: Uint8Array[] = [];
+  let total = 0;
+  try {
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      if (!value) continue;
+      total += value.byteLength;
+      if (total > MAX_UPLOAD_BYTES) {
+        await reader.cancel("upload exceeds limit");
+        throw new ApiError(413, "PAYLOAD_TOO_LARGE", "Upload exceeds the 10 MB limit.");
+      }
+      chunks.push(value);
+    }
+  } finally {
+    reader.releaseLock();
+  }
+  const result = new Uint8Array(total);
+  let offset = 0;
+  for (const chunk of chunks) {
+    result.set(chunk, offset);
+    offset += chunk.byteLength;
+  }
+  return result.buffer;
+}
+
 uploads.put("/:key{.*}", async (c) => {
   const key = c.req.param("key");
   if (!ownsKey(key, c.get("authUser"))) throw ApiError.forbidden();
@@ -107,11 +135,21 @@ uploads.put("/:key{.*}", async (c) => {
   if (!ALLOWED_TYPES[contentType]) {
     throw ApiError.validation({ contentType: ["This file type is not allowed."] });
   }
-  const contentLength = Number(c.req.header("content-length") ?? 0);
-  if (contentLength > MAX_UPLOAD_BYTES) {
-    throw new ApiError(413, "PAYLOAD_TOO_LARGE", "Upload exceeds the 10 MB limit.");
+  const contentLengthHeader = c.req.header("content-length");
+  if (contentLengthHeader !== undefined) {
+    const contentLength = Number(contentLengthHeader);
+    if (!Number.isSafeInteger(contentLength) || contentLength < 0) {
+      throw ApiError.validation({
+        "content-length": ["Content-Length must be a valid non-negative integer."],
+      });
+    }
+    if (contentLength > MAX_UPLOAD_BYTES) {
+      throw new ApiError(413, "PAYLOAD_TOO_LARGE", "Upload exceeds the 10 MB limit.");
+    }
   }
-  const object = await c.env.UPLOADS.put(key, c.req.raw.body ?? "", {
+  // Do not rely only on Content-Length: chunked requests can omit it.
+  const body = await readUploadBody(c.req.raw);
+  const object = await c.env.UPLOADS.put(key, body, {
     httpMetadata: { contentType },
   });
   return c.json({ ok: true, key: object.key, size: object.size }, 201);

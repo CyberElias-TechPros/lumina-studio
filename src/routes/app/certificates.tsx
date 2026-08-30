@@ -171,8 +171,14 @@ function StudentCertificates() {
                         Issued
                       </Badge>
                       <div className="flex shrink-0 gap-1">
-                        <Button variant="outline" size="sm" className="font-semibold">
-                          <Download className="size-3.5" /> PDF
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          className="font-semibold"
+                          onClick={() => window.print()}
+                          title="Open the browser print dialog, then choose Save as PDF"
+                        >
+                          <Download className="size-3.5" /> Print / save PDF
                         </Button>
                         <Button
                           variant="ghost"

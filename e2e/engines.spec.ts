@@ -107,7 +107,10 @@ test.describe("Engine 4 — ERP (admin, finance, HR, admissions, ops, IT, leader
     ]);
   });
 
-  test("ERP ops + IT + reception + supplier + leadership surfaces load", async ({ page, signIn }) => {
+  test("ERP ops + IT + reception + supplier + leadership surfaces load", async ({
+    page,
+    signIn,
+  }) => {
     await signIn("admin");
     await walk(page, [
       ["/app/ops", /Ops Hub/],

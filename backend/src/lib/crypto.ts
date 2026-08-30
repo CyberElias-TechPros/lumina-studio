@@ -217,8 +217,9 @@ export async function verifyTotpCode(secret: string, code: string): Promise<bool
 export function generateRecoveryCode(): string {
   const alphabet = "ABCDEFGHJKMNPQRSTUVWXYZ23456789";
   const pick = (n: number) =>
-    Array.from(crypto.getRandomValues(new Uint8Array(n)), (b) => alphabet[b % alphabet.length]).join(
-      "",
-    );
+    Array.from(
+      crypto.getRandomValues(new Uint8Array(n)),
+      (b) => alphabet[b % alphabet.length],
+    ).join("");
   return `cea-${pick(4)}-${pick(4)}`;
 }

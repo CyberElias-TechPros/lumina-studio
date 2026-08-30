@@ -51,6 +51,36 @@ export const fetchAdmIntegrations = admPage<AdmIntegration>(
 export const fetchAdmRules = admPage<AdmRule>("/v1/admin-systems-dashboard/rules");
 export const fetchAdmServices = admPage<AdmService>("/v1/admin-systems-dashboard/services");
 
+export interface AdmKeyRotationResult {
+  ok: true;
+  id: string;
+  token: string;
+  rotatedAt: string;
+}
+
+export function rotateAdmKey(id: string): Promise<AdmKeyRotationResult> {
+  return apiFetch<AdmKeyRotationResult>(
+    `/v1/admin-systems-dashboard/keys/${encodeURIComponent(id)}/rotate`,
+    { method: "POST" },
+  );
+}
+
+export interface AdmBackupRestoreResult {
+  ok: true;
+  alreadyQueued: boolean;
+  id: string;
+  backup: string;
+  status: "queued" | "running";
+  requestedAt?: string;
+}
+
+export function restoreAdmBackup(id: string): Promise<AdmBackupRestoreResult> {
+  return apiFetch<AdmBackupRestoreResult>(
+    `/v1/admin-systems-dashboard/backups/${encodeURIComponent(id)}/restore`,
+    { method: "POST" },
+  );
+}
+
 export interface AdmMetricCard {
   label: string;
   value: string;

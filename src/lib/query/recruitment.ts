@@ -3,6 +3,7 @@ import { usePaginatedQuery, flattenPages } from "@/lib/query/hooks";
 import {
   advanceCandidate,
   createPosting,
+  updatePosting,
   fetchPostings,
   fetchPipelineCandidates,
   fetchInterviews,
@@ -29,8 +30,10 @@ export function usePostingItems(): JobPosting[] {
 }
 
 export function usePipelineCandidates(jobId: string) {
-  return usePaginatedQuery<PipelineCandidate>(recruitmentKeys.pipeline(jobId), () =>
-    fetchPipelineCandidates(jobId),
+  return usePaginatedQuery<PipelineCandidate>(
+    recruitmentKeys.pipeline(jobId),
+    () => fetchPipelineCandidates(jobId),
+    { enabled: jobId.trim().length > 0 },
   );
 }
 
@@ -69,6 +72,24 @@ export function useCreatePosting() {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: createPosting,
+    onSuccess: () => {
+      void queryClient.invalidateQueries({ queryKey: recruitmentKeys.postings });
+    },
+  });
+}
+
+export function useUpdatePosting() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: ({
+      id,
+      ...input
+    }: {
+      id: string;
+      title?: string;
+      detail?: string;
+      status?: "open" | "closed";
+    }) => updatePosting(id, input),
     onSuccess: () => {
       void queryClient.invalidateQueries({ queryKey: recruitmentKeys.postings });
     },

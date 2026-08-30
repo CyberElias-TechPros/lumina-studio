@@ -43,19 +43,20 @@ function applyLinksToParagraph(text: string, maxLinks: number): React.ReactNode[
   return parts;
 }
 
-export function GlossaryLinkedText({
-  paragraphs,
-  className,
-  maxLinksPerParagraph = 3,
-}: Props) {
+export function GlossaryLinkedText({ paragraphs, className, maxLinksPerParagraph = 3 }: Props) {
+  const linkedParagraphs = useMemo(
+    () => paragraphs.map((paragraph) => applyLinksToParagraph(paragraph, maxLinksPerParagraph)),
+    [paragraphs, maxLinksPerParagraph],
+  );
+
   return (
     <div className={className}>
-      {paragraphs.map((para, i) => (
-        <p key={i} className="leading-relaxed text-pretty">
-          {useMemo(
-            () => applyLinksToParagraph(para, maxLinksPerParagraph),
-            [para, maxLinksPerParagraph],
-          )}
+      {linkedParagraphs.map((content, i) => (
+        <p
+          key={`${i}-${paragraphs[i]?.slice(0, 24) ?? "paragraph"}`}
+          className="leading-relaxed text-pretty"
+        >
+          {content}
         </p>
       ))}
     </div>

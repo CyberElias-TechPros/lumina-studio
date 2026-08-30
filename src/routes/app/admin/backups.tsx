@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { toast } from "sonner";
 import {
   ArrowLeft,
   CheckCircle2,
@@ -12,7 +13,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
 import { QueryState } from "@/components/ui/query-state";
-import { useAdmBackups } from "@/lib/query/adminSystems";
+import { useAdmBackups, useRestoreAdmBackup } from "@/lib/query/adminSystems";
 import type { AdmBackup } from "@/lib/api/adminSystems";
 import { cn } from "@/lib/utils";
 
@@ -36,6 +37,28 @@ function statusTone(status: string) {
 
 function AdminBackups() {
   const backupsQuery = useAdmBackups();
+  const restore = useRestoreAdmBackup();
+
+  const requestRestore = (backup: AdmBackup) => {
+    if (restore.isPending) return;
+    if (
+      !window.confirm(
+        `Queue a restore from ${backup.name}? The infrastructure team will perform it asynchronously.`,
+      )
+    ) {
+      return;
+    }
+    restore.mutate(backup.id, {
+      onSuccess: (result) => {
+        toast.success(
+          result.alreadyQueued
+            ? `A restore for ${result.backup} is already queued`
+            : `Restore queued for ${result.backup}`,
+        );
+      },
+    });
+  };
+
   return (
     <AppShell
       roleKey="admin"
@@ -128,8 +151,14 @@ function AdminBackups() {
                   <Badge className={cn("border-0 font-semibold", statusTone(b.status))}>
                     {b.status}
                   </Badge>
-                  <Button variant="outline" size="sm" className="shrink-0 font-semibold">
-                    Restore
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="shrink-0 font-semibold"
+                    onClick={() => requestRestore(b)}
+                    disabled={restore.isPending}
+                  >
+                    {restore.isPending ? "Queueing…" : "Restore"}
                   </Button>
                 </div>
               ))

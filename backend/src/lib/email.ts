@@ -58,14 +58,13 @@ async function sendMailgun(
 }
 
 /** Send an email. Returns whether delivery was attempted successfully. */
-export async function sendEmail(
-  c: { env: AppEnv },
-  msg: EmailMessage,
-): Promise<EmailResult> {
+export async function sendEmail(c: { env: AppEnv }, msg: EmailMessage): Promise<EmailResult> {
   const provider = configuredProvider(c);
   const from = c.env.EMAIL_FROM || "CEA <no-reply@cea.ng>";
   if (provider === "console") {
-    console.log(`[email:console] to=${msg.to} subject=${msg.subject} html=${msg.html.slice(0, 500)}`);
+    console.log(
+      `[email:console] to=${msg.to} subject=${msg.subject} html=${msg.html.slice(0, 500)}`,
+    );
     return { sent: true, provider: "console" };
   }
   const apiKey = c.env.EMAIL_API_KEY;

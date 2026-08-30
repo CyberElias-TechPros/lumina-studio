@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { toast } from "sonner";
 import { ArrowLeft, Download, Image, Library, MessagesSquare, Palette } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -25,6 +26,29 @@ const kindMeta: Record<string, { icon: typeof Palette; tone: string }> = {
   guidelines: { icon: Library, tone: "bg-success/10 text-success" },
   banner: { icon: MessagesSquare, tone: "bg-warning/10 text-warning" },
 };
+
+function downloadResourceManifest(resources: PtnResource[], single?: PtnResource) {
+  const selected = single ? [single] : resources;
+  if (selected.length === 0) return;
+  const contents = [
+    "CEA partner resource manifest",
+    ...selected.flatMap((resource) => [
+      "",
+      resource.title,
+      resource.detail,
+      `Type: ${resource.kind}`,
+    ]),
+  ].join("\n");
+  const url = URL.createObjectURL(new Blob([contents], { type: "text/plain;charset=utf-8" }));
+  const anchor = document.createElement("a");
+  anchor.href = url;
+  anchor.download = single
+    ? `${single.title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}-manifest.txt`
+    : "cea-partner-resources.txt";
+  anchor.click();
+  URL.revokeObjectURL(url);
+  toast.success(single ? "Resource manifest downloaded" : "Resource manifest downloaded");
+}
 
 function PartnerResources() {
   const resourcesQuery = usePtnResources();
@@ -57,8 +81,14 @@ function PartnerResources() {
           <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
             <Library className="text-primary size-4" /> Brand & content kit
           </CardTitle>
-          <Button variant="outline" size="sm" className="font-semibold">
-            <Download className="size-3.5" /> Download all
+          <Button
+            variant="outline"
+            size="sm"
+            className="font-semibold"
+            onClick={() => downloadResourceManifest(resources)}
+            disabled={resources.length === 0}
+          >
+            <Download className="size-3.5" /> Download manifest
           </Button>
         </CardHeader>
         <CardContent className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
@@ -87,8 +117,9 @@ function PartnerResources() {
                         variant="ghost"
                         size="sm"
                         className="mt-3 justify-start px-0 font-semibold"
+                        onClick={() => downloadResourceManifest(resources, r)}
                       >
-                        <Download className="size-3.5" /> Download
+                        <Download className="size-3.5" /> Download manifest
                       </Button>
                     </div>
                   );

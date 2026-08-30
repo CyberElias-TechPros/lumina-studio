@@ -61,7 +61,10 @@ function Work() {
                 </p>
                 <div className="mt-6 flex flex-wrap gap-2">
                   {engagements[0].capabilities.map((cap) => (
-                    <span key={cap} className="bg-ink-foreground/10 rounded-full px-3 py-1 text-xs font-medium">
+                    <span
+                      key={cap}
+                      className="bg-ink-foreground/10 rounded-full px-3 py-1 text-xs font-medium"
+                    >
                       {cap}
                     </span>
                   ))}

@@ -36,11 +36,13 @@ self.addEventListener("fetch", (event) => {
     event.respondWith(
       fetch(request)
         .then((response) => {
-          const copy = response.clone();
-          caches.open(CACHE).then((cache) => cache.put("/", copy));
+          if (response.ok && url.pathname === "/") {
+            const copy = response.clone();
+            void caches.open(CACHE).then((cache) => cache.put("/", copy));
+          }
           return response;
         })
-        .catch(() => caches.match("/")),
+        .catch(() => caches.match(request).then((cached) => cached || caches.match("/"))),
     );
     return;
   }
@@ -53,7 +55,7 @@ self.addEventListener("fetch", (event) => {
         fetch(request).then((response) => {
           if (response.ok) {
             const copy = response.clone();
-            caches.open(CACHE).then((cache) => cache.put(request, copy));
+            void caches.open(CACHE).then((cache) => cache.put(request, copy));
           }
           return response;
         }),
@@ -65,11 +67,20 @@ self.addEventListener("fetch", (event) => {
  * endpoint is configured. */
 self.addEventListener("push", (event) => {
   if (!event.data) return;
-  const payload = event.data.json().catch
-    ? event.data.json()
-    : { title: "Lumina Studio", body: event.data.text() };
-  const { title = "Lumina Studio", body = "", icon = "/icon.svg", badge = "/icon.svg" } = payload;
-  event.waitUntil(self.registration.showNotification(title, { body, icon, badge }));
+  let payload;
+  try {
+    payload = event.data.json();
+  } catch {
+    payload = { title: "Lumina Studio", body: event.data.text() };
+  }
+  const {
+    title = "Lumina Studio",
+    body = "",
+    icon = "/icon.svg",
+    badge = "/icon.svg",
+    url = "/",
+  } = payload || {};
+  event.waitUntil(self.registration.showNotification(title, { body, icon, badge, data: { url } }));
 });
 
 self.addEventListener("notificationclick", (event) => {

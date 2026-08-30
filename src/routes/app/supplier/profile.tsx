@@ -1,8 +1,16 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useState } from "react";
 import { ArrowLeft, Award, Boxes, FileCheck, TrendingUp } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import { AppShell } from "@/components/app/app-shell";
 import { QueryState } from "@/components/ui/query-state";
 import { useSupCerts, useSupCertItems } from "@/lib/query/supplierPartner";
@@ -22,6 +30,7 @@ export const Route = createFileRoute("/app/supplier/profile")({
 function SupplierProfile() {
   const certsQuery = useSupCerts();
   const certs = useSupCertItems();
+  const [selectedCert, setSelectedCert] = useState<SupCert | null>(null);
 
   const verified = certs.filter((c) => c.verified === 1);
 
@@ -128,7 +137,12 @@ function SupplierProfile() {
                     >
                       {c.verified === 1 ? "Verified" : "Pending"}
                     </Badge>
-                    <Button variant="outline" size="sm" className="shrink-0 font-semibold">
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="shrink-0 font-semibold"
+                      onClick={() => setSelectedCert(c)}
+                    >
                       Details
                     </Button>
                   </div>
@@ -138,6 +152,31 @@ function SupplierProfile() {
           </QueryState>
         </CardContent>
       </Card>
+      <Dialog open={selectedCert !== null} onOpenChange={(open) => !open && setSelectedCert(null)}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>{selectedCert?.title ?? "Certification details"}</DialogTitle>
+            <DialogDescription>
+              Verification status recorded on the supplier profile.
+            </DialogDescription>
+          </DialogHeader>
+          {selectedCert && (
+            <div className="space-y-3 rounded-xl border p-4 text-sm">
+              <p className="font-semibold">{selectedCert.detail}</p>
+              <Badge
+                className={cn(
+                  "border-0 font-semibold",
+                  selectedCert.verified === 1
+                    ? "bg-success/10 text-success"
+                    : "bg-warning/10 text-warning",
+                )}
+              >
+                {selectedCert.verified === 1 ? "Verified" : "Pending review"}
+              </Badge>
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
     </AppShell>
   );
 }

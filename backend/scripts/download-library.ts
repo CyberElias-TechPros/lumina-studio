@@ -37,6 +37,8 @@ interface SeedItem {
 
 function sanitize(name: string): string {
   const cleaned = name
+    // Control characters are invalid in local paths and must be stripped.
+    // eslint-disable-next-line no-control-regex
     .replace(/[<>:"/\\|?*\u0000-\u001f]/g, "_")
     .replace(/[. ]+$/g, "")
     .trim();
@@ -45,13 +47,7 @@ function sanitize(name: string): string {
 
 /** Resolves a destination path for a file, deduping names within its folder. */
 function destFor(file: SeedItem, usedNames: Map<string, Set<string>>): string {
-  const dir = resolve(
-    OUT_ROOT,
-    ...file.folderPath
-      .split(" / ")
-      .map(sanitize)
-      .filter(Boolean),
-  );
+  const dir = resolve(OUT_ROOT, ...file.folderPath.split(" / ").map(sanitize).filter(Boolean));
   let name = sanitize(file.name);
   const taken = usedNames.get(dir) ?? new Set<string>();
   usedNames.set(dir, taken);
@@ -66,10 +62,7 @@ function destFor(file: SeedItem, usedNames: Map<string, Set<string>>): string {
   return join(dir, name);
 }
 
-async function fetchWithRedirects(
-  url: string,
-  redirectsLeft: number,
-): Promise<Response> {
+async function fetchWithRedirects(url: string, redirectsLeft: number): Promise<Response> {
   const res = await fetch(url, { redirect: "manual" });
   if (
     (res.status === 301 || res.status === 302 || res.status === 303 || res.status === 307) &&
@@ -166,9 +159,7 @@ async function run(): Promise<void> {
         processed += 1;
       }
       if (processed % 50 === 0) {
-        console.log(
-          `  ${processed}/${jobs.length} processed (${failures.length} failed)`,
-        );
+        console.log(`  ${processed}/${jobs.length} processed (${failures.length} failed)`);
       }
     }
   }

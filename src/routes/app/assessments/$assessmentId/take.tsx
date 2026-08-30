@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useCallback, useEffect, useState } from "react";
 import {
   AlertTriangle,
   ArrowLeft,
@@ -17,7 +18,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { QueryState } from "@/components/ui/query-state";
 import { AppShell } from "@/components/app/app-shell";
-import { useAssessment } from "@/lib/query/assessments";
+import { useAssessment, useSubmitAssessment } from "@/lib/query/assessments";
 import type { Assessment } from "@/data/learning";
 import { cn } from "@/lib/utils";
 
@@ -61,9 +62,61 @@ const questions = [
   },
 ];
 
+function formatDuration(totalSeconds: number) {
+  const minutes = Math.floor(totalSeconds / 60)
+    .toString()
+    .padStart(2, "0");
+  const seconds = (totalSeconds % 60).toString().padStart(2, "0");
+  return `${minutes}:${seconds}`;
+}
+
+function scoreAnswers(answers: Record<number, number>, questionCount: number) {
+  const correctAnswers = [1, 0, 2, 0, 2];
+  return Array.from({ length: questionCount }).reduce<number>(
+    (total, _, index) => total + (answers[index] === correctAnswers[index] ? 1 : 0),
+    0,
+  );
+}
+
 function AssessmentPlayer() {
   const { assessmentId } = Route.useParams();
   const aQuery = useAssessment(assessmentId);
+  const submitAssessmentMutation = useSubmitAssessment(assessmentId);
+  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [answers, setAnswers] = useState<Record<number, number>>({});
+  const [score, setScore] = useState<number | null>(null);
+  const [secondsLeft, setSecondsLeft] = useState(20 * 60);
+  const questionCount = Math.min(
+    Math.max(aQuery.data?.questions ?? questions.length, 1),
+    questions.length,
+  );
+  const submitAnswers = useCallback(
+    (selectedAnswers = answers) => {
+      if (submitAssessmentMutation.isPending) return;
+      const payload = Array.from(
+        { length: questionCount },
+        (_, index) => selectedAnswers[index] ?? -1,
+      );
+      submitAssessmentMutation.mutate(payload, {
+        onSuccess: (result) => setScore(result.score),
+      });
+    },
+    [answers, questionCount, submitAssessmentMutation],
+  );
+
+  useEffect(() => {
+    if (aQuery.data?.status !== "available" || score !== null) return;
+    if (secondsLeft === 0) {
+      submitAnswers();
+      return;
+    }
+    const timer = window.setInterval(() => {
+      setSecondsLeft((remaining) => Math.max(remaining - 1, 0));
+    }, 1000);
+    return () => window.clearInterval(timer);
+  }, [aQuery.data?.status, score, secondsLeft, submitAnswers]);
+
+  const submitAssessment = () => submitAnswers();
 
   return (
     <AppShell
@@ -73,7 +126,7 @@ function AssessmentPlayer() {
       actions={
         <>
           <Badge className="bg-error/10 text-error border-0 font-semibold">
-            <Timer className="mr-1 size-3.5" /> 18:42 left
+            <Timer className="mr-1 size-3.5" /> {formatDuration(secondsLeft)} left
           </Badge>
           <Badge variant="secondary" className="font-semibold">
             Attempt 1 of 3
@@ -83,6 +136,24 @@ function AssessmentPlayer() {
     >
       <QueryState<Assessment> query={aQuery} error={{ title: "Assessment unavailable" }}>
         {(a) => {
+          if (a.status === "done" || score !== null) {
+            const resultScore = score ?? a.score ?? 0;
+            const resultMax = score !== null ? questionCount : (a.max ?? questionCount);
+            return (
+              <Card className="bg-card shadow-soft border">
+                <CardContent className="p-8 text-center">
+                  <CheckCircle2 className="text-success mx-auto size-12" />
+                  <p className="font-display mt-4 text-2xl font-extrabold">Assessment submitted</p>
+                  <p className="text-muted-foreground mt-2 text-sm">
+                    You scored {resultScore}/{resultMax}. Your result will appear in your gradebook.
+                  </p>
+                  <Button asChild className="bg-gradient-brand mt-6 border-0">
+                    <Link to="/app/assessments">Back to assessments</Link>
+                  </Button>
+                </CardContent>
+              </Card>
+            );
+          }
           if (a.status !== "available") {
             return (
               <Card className="bg-card shadow-soft border">
@@ -100,6 +171,7 @@ function AssessmentPlayer() {
               </Card>
             );
           }
+          const question = questions[currentQuestion % questionCount]!;
           return (
             <>
               <div className="bg-warning/10 text-warning mb-5 flex flex-wrap items-center gap-3 rounded-2xl border border-warning/20 p-4 text-sm">
@@ -116,24 +188,27 @@ function AssessmentPlayer() {
                   <Card className="bg-card shadow-soft border">
                     <CardContent className="p-6">
                       <p className="text-muted-foreground text-xs font-bold tracking-wide uppercase">
-                        Question 1 · single choice
+                        Question {currentQuestion + 1} · single choice
                       </p>
-                      <h2 className="font-display mt-3 text-lg font-extrabold">{questions[0].q}</h2>
+                      <h2 className="font-display mt-3 text-lg font-extrabold">{question.q}</h2>
                       <div className="mt-5 space-y-3">
-                        {questions[0].options.map((opt, i) => (
+                        {question.options.map((opt, i) => (
                           <label
                             key={opt}
                             className={cn(
                               "flex cursor-pointer items-center gap-3 rounded-xl border p-4 transition-colors",
-                              i === 1
+                              answers[currentQuestion] === i
                                 ? "border-primary/60 bg-primary/5"
                                 : "hover:border-primary/40 hover:bg-primary/5",
                             )}
                           >
                             <input
                               type="radio"
-                              name="q1"
-                              defaultChecked={i === 1}
+                              name={`question-${currentQuestion}`}
+                              checked={answers[currentQuestion] === i}
+                              onChange={() =>
+                                setAnswers((previous) => ({ ...previous, [currentQuestion]: i }))
+                              }
                               className="text-primary accent-primary"
                             />
                             <span className="text-sm font-semibold">{opt}</span>
@@ -147,10 +222,21 @@ function AssessmentPlayer() {
                   </Card>
 
                   <div className="flex items-center justify-between gap-3">
-                    <Button variant="outline" className="font-semibold" disabled>
+                    <Button
+                      variant="outline"
+                      className="font-semibold"
+                      disabled={currentQuestion === 0}
+                      onClick={() => setCurrentQuestion((index) => Math.max(index - 1, 0))}
+                    >
                       <ChevronLeft className="mr-1 size-4" /> Previous
                     </Button>
-                    <Button className="bg-gradient-brand border-0">
+                    <Button
+                      className="bg-gradient-brand border-0"
+                      disabled={currentQuestion === questionCount - 1}
+                      onClick={() =>
+                        setCurrentQuestion((index) => Math.min(index + 1, questionCount - 1))
+                      }
+                    >
                       Next <ChevronRight className="ml-1 size-4" />
                     </Button>
                   </div>
@@ -162,7 +248,7 @@ function AssessmentPlayer() {
                           Timer
                         </p>
                         <p className="font-display mt-2 flex items-center gap-2 text-xl font-extrabold">
-                          <Clock className="text-error size-5" /> 18:42
+                          <Clock className="text-error size-5" /> {formatDuration(secondsLeft)}
                         </p>
                         <p className="text-muted-foreground text-xs">
                           Auto-submit at 0:00 · 20 minutes total
@@ -174,9 +260,19 @@ function AssessmentPlayer() {
                         <p className="text-muted-foreground text-xs font-bold tracking-wide uppercase">
                           Submit
                         </p>
-                        <Button className="bg-gradient-brand mt-3 w-full border-0">
-                          <Send className="mr-1.5 size-4" /> Submit assessment
+                        <Button
+                          className="bg-gradient-brand mt-3 w-full border-0"
+                          onClick={submitAssessment}
+                          disabled={submitAssessmentMutation.isPending}
+                        >
+                          <Send className="mr-1.5 size-4" />
+                          {submitAssessmentMutation.isPending ? "Submitting…" : "Submit assessment"}
                         </Button>
+                        {submitAssessmentMutation.error && (
+                          <p role="alert" className="text-destructive mt-2 text-xs font-semibold">
+                            {submitAssessmentMutation.error.message}
+                          </p>
+                        )}
                         <p className="text-muted-foreground mt-2 text-[11px]">
                           You can review flagged questions before submitting.
                         </p>
@@ -192,15 +288,17 @@ function AssessmentPlayer() {
                         Question navigator
                       </p>
                       <div className="mt-3 grid grid-cols-5 gap-2">
-                        {Array.from({ length: a.questions }).map((_, i) => (
+                        {Array.from({ length: questionCount }).map((_, i) => (
                           <button
                             key={i}
                             type="button"
+                            onClick={() => setCurrentQuestion(i)}
+                            aria-label={`Go to question ${i + 1}`}
                             className={cn(
                               "grid aspect-square place-items-center rounded-lg text-xs font-bold transition-colors",
-                              i === 0
+                              i === currentQuestion
                                 ? "bg-primary text-white"
-                                : i % 3 === 0
+                                : answers[i] !== undefined
                                   ? "bg-success/15 text-success"
                                   : "bg-muted text-muted-foreground hover:bg-primary/10 hover:text-primary",
                             )}

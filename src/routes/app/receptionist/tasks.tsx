@@ -17,6 +17,7 @@ import { QueryState } from "@/components/ui/query-state";
 import {
   useRecTasks,
   useRecTaskItems,
+  useUpdateRecTask,
   useRecHandover,
   useRecHandoverItems,
 } from "@/lib/query/volunteerReceptionist";
@@ -44,6 +45,7 @@ function ReceptionistTasks() {
   const tasks = useRecTaskItems();
   const handoverQuery = useRecHandover();
   const handover = useRecHandoverItems();
+  const updateTask = useUpdateRecTask();
 
   const done = tasks.filter((t) => t.done === 1).length;
   const left = tasks.length > 0 ? tasks.length - done : 0;
@@ -140,12 +142,22 @@ function ReceptionistTasks() {
                           isDone && "opacity-60",
                         )}
                       >
-                        <CheckCircle2
-                          className={cn(
-                            "size-4 shrink-0",
-                            isDone ? "text-success" : "text-muted-foreground",
-                          )}
-                        />
+                        <Button
+                          type="button"
+                          variant="ghost"
+                          size="icon"
+                          className="size-8 shrink-0"
+                          aria-label={isDone ? `Mark ${t.title} incomplete` : `Complete ${t.title}`}
+                          disabled={updateTask.isPending}
+                          onClick={() => updateTask.mutate({ id: t.id, done: !isDone })}
+                        >
+                          <CheckCircle2
+                            className={cn(
+                              "size-4",
+                              isDone ? "text-success" : "text-muted-foreground",
+                            )}
+                          />
+                        </Button>
                         <div className="min-w-0 flex-1">
                           <p className="text-sm font-medium">{t.title}</p>
                           <p className="text-muted-foreground text-xs">{t.timeLabel}</p>

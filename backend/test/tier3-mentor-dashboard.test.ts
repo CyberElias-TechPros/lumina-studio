@@ -18,7 +18,9 @@ beforeAll(async () => {
 
 describe("GET /v1/mentor-dashboard (Mentor dashboard suite)", () => {
   it("403s non-staff roles", async () => {
-    const res = await api("/v1/mentor-dashboard/mentees", { headers: cookieHeaders(student.cookie) });
+    const res = await api("/v1/mentor-dashboard/mentees", {
+      headers: cookieHeaders(student.cookie),
+    });
     expect(res.status).toBe(403);
   });
 
@@ -47,7 +49,13 @@ describe("GET /v1/mentor-dashboard (Mentor dashboard suite)", () => {
       id: string;
       name: string;
       track: string;
-      goals: Array<{ id: string; title: string; progressPct: number; dueDate: string; status: string }>;
+      goals: Array<{
+        id: string;
+        title: string;
+        progressPct: number;
+        dueDate: string;
+        status: string;
+      }>;
     };
     expect(body.id).toBe("mn-ada");
     expect(body.name).toBe("Ada Okafor");
@@ -80,7 +88,13 @@ describe("GET /v1/mentor-dashboard (Mentor dashboard suite)", () => {
     });
     expect(res.status).toBe(200);
     const body = (await res.json()) as {
-      items: Array<{ id: string; projectName: string; status: string; stars: number; feedback: string }>;
+      items: Array<{
+        id: string;
+        projectName: string;
+        status: string;
+        stars: number;
+        feedback: string;
+      }>;
       total: number;
     };
     expect(body.total).toBeGreaterThanOrEqual(1);
@@ -106,7 +120,13 @@ describe("GET /v1/mentor-dashboard (Mentor dashboard suite)", () => {
     });
     expect(res.status).toBe(200);
     const body = (await res.json()) as {
-      items: Array<{ id: string; role: string; company: string; stage: string; appliedDate: string }>;
+      items: Array<{
+        id: string;
+        role: string;
+        company: string;
+        stage: string;
+        appliedDate: string;
+      }>;
       total: number;
     };
     expect(body.total).toBeGreaterThanOrEqual(1);

@@ -16,7 +16,10 @@ const COLS: Record<string, { table: string; columns: string }> = {
     table: "it_tickets",
     columns: "id, subject, reporter, priority, sla, elapsed, status",
   },
-  articles: { table: "it_articles", columns: "id, title, views, helpful_pct AS helpfulPct, category" },
+  articles: {
+    table: "it_articles",
+    columns: "id, title, views, helpful_pct AS helpfulPct, category",
+  },
   assets: { table: "it_assets", columns: "id, name, assigned_to AS assignedTo, category, status" },
   licenses: { table: "it_licenses", columns: "id, product, seats, used AS inUse, renews, status" },
   services: { table: "it_services", columns: "id, name, uptime, latency, status" },
@@ -37,7 +40,9 @@ for (const [key, { table, columns }] of Object.entries(COLS)) {
     )
       .bind(...(cursor ? [base64UrlDecode(cursor) ?? ""] : []), limit)
       .all();
-    return c.json(paginate(rows.results, total?.n ?? 0, (last) => base64UrlEncode(String(last.id))));
+    return c.json(
+      paginate(rows.results, total?.n ?? 0, (last) => base64UrlEncode(String(last.id))),
+    );
   });
 }
 
@@ -101,7 +106,9 @@ it.post("/tickets/:id/events", async (c) => {
     .bind(id)
     .first<{ id: string }>();
   if (!existing) throw ApiError.notFound("Ticket not found.");
-  const count = await c.env.DB.prepare(`SELECT COUNT(*) AS n FROM it_ticket_events WHERE ticket_id = ?`)
+  const count = await c.env.DB.prepare(
+    `SELECT COUNT(*) AS n FROM it_ticket_events WHERE ticket_id = ?`,
+  )
     .bind(id)
     .first<{ n: number }>();
   const eventId = crypto.randomUUID();

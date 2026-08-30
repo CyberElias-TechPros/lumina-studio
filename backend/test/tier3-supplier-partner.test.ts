@@ -40,7 +40,14 @@ describe("GET /v1/supplier-dashboard (Supplier dashboard suite)", () => {
       headers: cookieHeaders(staff.cookie),
     });
     const body = (await res.json()) as {
-      items: Array<{ id: string; ref: string; items: string; amount: number; dueLabel: string; status: string }>;
+      items: Array<{
+        id: string;
+        ref: string;
+        items: string;
+        amount: number;
+        dueLabel: string;
+        status: string;
+      }>;
       total: number;
     };
     expect(body.total).toBeGreaterThanOrEqual(3);
@@ -54,7 +61,14 @@ describe("GET /v1/supplier-dashboard (Supplier dashboard suite)", () => {
       headers: cookieHeaders(staff.cookie),
     });
     const body = (await res.json()) as {
-      items: Array<{ id: string; ref: string; amount: number; issuedLabel: string; paidLabel: string; status: string }>;
+      items: Array<{
+        id: string;
+        ref: string;
+        amount: number;
+        issuedLabel: string;
+        paidLabel: string;
+        status: string;
+      }>;
       total: number;
     };
     expect(body.total).toBeGreaterThanOrEqual(3);
@@ -127,7 +141,13 @@ describe("GET /v1/partner-dashboard (Partner dashboard suite)", () => {
       headers: cookieHeaders(staff.cookie),
     });
     const body = (await res.json()) as {
-      items: Array<{ id: string; title: string; detail: string; status: string; renewLabel: string }>;
+      items: Array<{
+        id: string;
+        title: string;
+        detail: string;
+        status: string;
+        renewLabel: string;
+      }>;
       total: number;
     };
     expect(body.total).toBeGreaterThanOrEqual(3);

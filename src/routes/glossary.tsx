@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useState } from "react";
 import { BookOpen, Search } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -9,10 +10,14 @@ import { getPageHead } from "@/lib/seo";
 import { getGlossaryTerms, type GlossaryTerm } from "@/data/glossary";
 
 export const Route = createFileRoute("/glossary")({
+  validateSearch: (search: Record<string, unknown>): { q?: string } => ({
+    q: typeof search.q === "string" && search.q.trim().length > 0 ? search.q.trim() : undefined,
+  }),
   head: () =>
     getPageHead({
       title: "Tech Glossary — plain definitions with Nigerian context",
-      description: "Understand the terms that matter for tech careers in Nigeria. Each entry gives you the definition, why it matters, and how it shows up in local workplaces.",
+      description:
+        "Understand the terms that matter for tech careers in Nigeria. Each entry gives you the definition, why it matters, and how it shows up in local workplaces.",
       path: "/glossary",
       image: "https://cea.ng/og-glossary.svg",
     }),
@@ -20,7 +25,18 @@ export const Route = createFileRoute("/glossary")({
 });
 
 function GlossaryPage() {
-  const terms = getGlossaryTerms();
+  const { q } = Route.useSearch();
+  const allTerms = getGlossaryTerms();
+  const [query, setQuery] = useState(q ?? "");
+  const normalizedQuery = query.trim().toLowerCase();
+  const terms = normalizedQuery
+    ? allTerms.filter(
+        (term) =>
+          term.term.toLowerCase().includes(normalizedQuery) ||
+          term.definition.toLowerCase().includes(normalizedQuery) ||
+          term.whyItMatters.toLowerCase().includes(normalizedQuery),
+      )
+    : allTerms;
   const categories = categorizeTerms(terms);
 
   return (
@@ -32,7 +48,7 @@ function GlossaryPage() {
             Tech <span className="text-gradient">Glossary</span>
           </>
         }
-        description={`${terms.length} terms defined with honest, Nigeria-specific context. No jargon for jargon's sake — just what you need to know to do the work.`}
+        description={`${allTerms.length} terms defined with honest, Nigeria-specific context. No jargon for jargon's sake — just what you need to know to do the work.`}
       />
 
       <section className="container-page pb-20">
@@ -42,7 +58,7 @@ function GlossaryPage() {
               {[
                 {
                   label: "Total terms",
-                  value: String(terms.length),
+                  value: String(allTerms.length),
                   icon: BookOpen,
                   tone: "bg-primary/10 text-primary",
                 },
@@ -55,7 +71,9 @@ function GlossaryPage() {
               ].map((k) => (
                 <Card key={k.label} className="bg-card shadow-soft border">
                   <CardContent className="flex items-center gap-3 p-4">
-                    <span className={`grid size-9 shrink-0 place-items-center rounded-lg ${k.tone}`}>
+                    <span
+                      className={`grid size-9 shrink-0 place-items-center rounded-lg ${k.tone}`}
+                    >
                       <k.icon className="size-4" />
                     </span>
                     <div className="min-w-0">
@@ -69,16 +87,29 @@ function GlossaryPage() {
           </Reveal>
 
           <Reveal>
-            <form className="relative max-w-xl mx-auto" role="search">
+            <form
+              className="relative mx-auto max-w-xl"
+              role="search"
+              onSubmit={(event) => event.preventDefault()}
+            >
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
               <input
                 type="search"
                 id="glossary-search"
+                value={query}
+                onChange={(event) => setQuery(event.target.value)}
                 placeholder="Search terms (e.g., SIEM, CI/CD, RAG)..."
-                className="w-full bg-input/50 border rounded-xl py-3 pl-10 pr-4 text-base font-semibold placeholder:text-muted-foreground focus:border-primary focus:outline-none"
+                className="w-full rounded-xl border bg-input/50 py-3 pl-10 pr-4 text-base font-semibold placeholder:text-muted-foreground focus:border-primary focus:outline-none"
                 aria-label="Search glossary"
               />
             </form>
+            {normalizedQuery && (
+              <p className="text-muted-foreground text-center text-sm" aria-live="polite">
+                {terms.length === 0
+                  ? `No glossary terms match “${query.trim()}”.`
+                  : `${terms.length} matching term${terms.length === 1 ? "" : "s"}`}
+              </p>
+            )}
           </Reveal>
 
           {Object.entries(categories).map(([category, catTerms]) => (
@@ -124,12 +155,10 @@ function GlossaryPage() {
           <Reveal>
             <Card className="bg-gradient-ink text-ink-foreground shadow-elevated border-0">
               <CardContent className="p-6 text-center">
-                <p className="font-display text-lg font-extrabold mb-2">
-                  Missing a term?
-                </p>
+                <p className="font-display text-lg font-extrabold mb-2">Missing a term?</p>
                 <p className="text-ink-foreground/70 text-sm mb-4">
-                  Suggest it in the community and we'll add it — this glossary grows with the
-                  people who use it.
+                  Suggest it in the community and we'll add it — this glossary grows with the people
+                  who use it.
                 </p>
                 <Button variant="secondary" className="font-semibold" asChild>
                   <Link to="/community">Join the community</Link>
@@ -156,7 +185,8 @@ function categorizeTerms(terms: GlossaryTerm[]) {
 function inferCategory(term: GlossaryTerm): string {
   if (term.relatedPrograms?.includes("cybersecurity-analyst")) return "Cybersecurity";
   if (term.relatedPrograms?.includes("cloud-engineering-devops")) return "Cloud & DevOps";
-  if (term.relatedPrograms?.includes("full-stack-software-development")) return "Software Engineering";
+  if (term.relatedPrograms?.includes("full-stack-software-development"))
+    return "Software Engineering";
   if (term.relatedPrograms?.includes("data-science-ai")) return "Data & AI";
   if (term.relatedPrograms?.includes("product-ui-ux-design")) return "Product & Design";
   if (term.relatedPrograms?.includes("digital-marketing-growth")) return "Marketing & Growth";

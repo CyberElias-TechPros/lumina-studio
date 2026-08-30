@@ -1,4 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { toast } from "sonner";
+import { useState } from "react";
 import {
   Award,
   BadgeCheck,
@@ -48,6 +50,26 @@ function AlumniProfile() {
   const jobsQuery = useAluJobs();
   const achievementsQuery = useAluAchievements();
   const skillsQuery = useAluSkills();
+  const [visibleToEmployers, setVisibleToEmployers] = useState(true);
+
+  const shareProfile = async () => {
+    const shareData = {
+      title: "Ada Obi · CEA alumni profile",
+      text: "View Ada Obi's verified CEA alumni profile.",
+      url: window.location.href,
+    };
+    try {
+      if (navigator.share) {
+        await navigator.share(shareData);
+      } else {
+        await navigator.clipboard.writeText(shareData.url);
+        toast.success("Profile link copied");
+      }
+    } catch (error) {
+      if (error instanceof DOMException && error.name === "AbortError") return;
+      toast.error("Could not share the profile link");
+    }
+  };
 
   return (
     <AppShell
@@ -104,7 +126,11 @@ function AlumniProfile() {
             <Button variant="outline" size="sm" className="font-semibold">
               <Pencil className="size-3.5" /> Edit
             </Button>
-            <Button size="sm" className="bg-gradient-brand shadow-glow border-0 font-semibold">
+            <Button
+              size="sm"
+              className="bg-gradient-brand shadow-glow border-0 font-semibold"
+              onClick={shareProfile}
+            >
               <Share2 className="size-3.5" /> Share profile
             </Button>
           </div>
@@ -252,8 +278,21 @@ function AlumniProfile() {
             </p>
           </div>
           <div className="flex items-center gap-2">
-            <Badge className="bg-success/10 text-success border-0 font-semibold">On</Badge>
-            <Switch defaultChecked aria-label="Visible to employers" />
+            <Badge
+              className={cn(
+                "border-0 font-semibold",
+                visibleToEmployers
+                  ? "bg-success/10 text-success"
+                  : "bg-muted text-muted-foreground",
+              )}
+            >
+              {visibleToEmployers ? "On" : "Off"}
+            </Badge>
+            <Switch
+              checked={visibleToEmployers}
+              onCheckedChange={setVisibleToEmployers}
+              aria-label="Visible to employers"
+            />
           </div>
         </CardContent>
       </Card>

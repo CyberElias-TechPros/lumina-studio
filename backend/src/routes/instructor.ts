@@ -4,7 +4,7 @@ import { z } from "zod";
 import { ApiError } from "../lib/errors";
 import { base64UrlDecode, base64UrlEncode, isoNow } from "../lib/crypto";
 import { paginate, parsePagination, type Paginated } from "../lib/pagination";
-import { requireAuth, requireInstructor, requireAnyRole } from "../lib/auth";
+import { requireAuth, requireAnyRole } from "../lib/auth";
 import { parseBody } from "../lib/validate";
 
 const requireInstructorOrAdmin = requireAnyRole(["instructor", "admin"]);
@@ -75,7 +75,7 @@ interface SubmissionRow {
 
 export const instructor = new Hono<{ Bindings: AppEnv }>();
 
-instructor.use("*", requireAuth, requireInstructor);
+instructor.use("*", requireAuth, requireAnyRole(["instructor", "admin"]));
 
 instructor.get("/gradebook", async (c) => {
   const { cursor, limit } = parsePagination(c);
@@ -152,6 +152,61 @@ instructor.get("/courses/:slug", async (c) => {
     status: row.status,
     modules: JSON.parse(row.modules),
   });
+});
+
+const createLessonSchema = z.object({
+  moduleId: z.string().trim().min(1, "Module is required.").max(100),
+  title: z.string().trim().min(1, "Lesson title is required.").max(200),
+  type: z.enum(["video", "live", "reading", "lab", "article", "quiz", "assignment"]),
+  duration: z.string().trim().max(40).optional(),
+  videoUrl: z.string().trim().url("Video URL must be a valid URL.").max(2_000).optional(),
+  materials: z.string().trim().max(10_000).optional(),
+  published: z.boolean().default(false),
+});
+
+/** Instructor/admin: append a lesson to one of the caller's course modules. */
+instructor.post("/courses/:slug/lessons", async (c) => {
+  const userId = c.get("authUser").id;
+  const body = await parseBody(c, createLessonSchema);
+  const row = await c.env.DB.prepare(
+    `SELECT id, title, cohort, status, modules FROM instructor_courses
+      WHERE user_id = ? AND id = ?`,
+  )
+    .bind(userId, c.req.param("slug"))
+    .first<CourseRow>();
+  if (!row) throw ApiError.notFound("Course not found.");
+
+  const modules = JSON.parse(row.modules) as Array<{
+    id: string;
+    title: string;
+    lessons: Array<Record<string, unknown>>;
+  }>;
+  const module = modules.find((candidate) => candidate.id === body.moduleId);
+  if (!module) throw ApiError.notFound("Module not found in this course.");
+
+  const lesson = {
+    id: `lesson-${crypto.randomUUID()}`,
+    title: body.title,
+    type: body.type,
+    duration: body.duration ?? "",
+    status: body.published ? "published" : "draft",
+    ...(body.videoUrl ? { videoUrl: body.videoUrl } : {}),
+    ...(body.materials ? { materials: body.materials } : {}),
+  };
+  module.lessons.push(lesson);
+  await c.env.DB.prepare(`UPDATE instructor_courses SET modules = ? WHERE id = ? AND user_id = ?`)
+    .bind(JSON.stringify(modules), row.id, userId)
+    .run();
+
+  return c.json(
+    {
+      ok: true,
+      courseId: row.id,
+      moduleId: body.moduleId,
+      lesson,
+    },
+    201,
+  );
 });
 
 instructor.get("/assignments", async (c) => {

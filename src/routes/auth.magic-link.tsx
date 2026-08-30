@@ -31,7 +31,11 @@ function MagicLinkPage() {
   useEffect(() => {
     if (token && verify.isIdle) {
       verify.mutate(token, {
-        onSuccess: () => {
+        onSuccess: (result) => {
+          if ("mfaRequired" in result) {
+            navigate({ to: "/auth/mfa", search: { email: "" } });
+            return;
+          }
           const pendingInvite = sessionStorage.getItem("cea_pending_invite");
           sessionStorage.removeItem("cea_pending_invite");
           if (pendingInvite) {

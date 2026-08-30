@@ -59,7 +59,9 @@ for (const [key, { table, columns }] of Object.entries(COLS)) {
     )
       .bind(...(cursor ? [base64UrlDecode(cursor) ?? ""] : []), limit)
       .all();
-    return c.json(paginate(rows.results, total?.n ?? 0, (last) => base64UrlEncode(String(last.id))));
+    return c.json(
+      paginate(rows.results, total?.n ?? 0, (last) => base64UrlEncode(String(last.id))),
+    );
   });
 }
 

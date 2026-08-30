@@ -107,7 +107,7 @@ assignments.post("/:id/submit", async (c) => {
   }
 
   const now = isoNow();
-  const late = row.due ? row.due < now ? 1 : 0 : 0;
+  const late = row.due ? (row.due < now ? 1 : 0) : 0;
   const submissionId = crypto.randomUUID();
   await c.env.DB.prepare(
     `INSERT INTO submissions
@@ -129,7 +129,12 @@ assignments.post("/:id/submit", async (c) => {
     .run();
 
   const submissions = JSON.parse(row.submissions) as unknown[];
-  submissions.push({ at: now, file: input.file ?? "", size: input.size ?? "", body: input.body ?? "" });
+  submissions.push({
+    at: now,
+    file: input.file ?? "",
+    size: input.size ?? "",
+    body: input.body ?? "",
+  });
   await c.env.DB.prepare(
     `UPDATE assignments SET status = 'submitted', submitted_at = ?, submissions = ? WHERE id = ?`,
   )

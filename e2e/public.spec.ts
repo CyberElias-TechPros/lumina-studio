@@ -54,7 +54,10 @@ test.describe("Public marketing + application journey", () => {
     await expect(page.getByRole("heading", { name: /application submitted/i })).toBeVisible({
       timeout: 30_000,
     });
-    const ref = await page.getByText(/CEA-2026-[A-Z0-9]+/i).first().textContent();
+    const ref = await page
+      .getByText(/CEA-2026-[A-Z0-9]+/i)
+      .first()
+      .textContent();
     if (!ref) throw new Error("no application reference shown after submit");
   });
 
@@ -65,8 +68,13 @@ test.describe("Public marketing + application journey", () => {
     await page.locator("#name").fill("E2E Visitor");
     await page.locator("#email").fill(email);
     await page.locator("#message").fill("E2E smoke test message.");
-    await page.getByRole("button", { name: /send|submit/i }).first().click();
-    await expect(page.getByText(/thanks|received|sent|message/i).first()).toBeVisible({ timeout: 20_000 });
+    await page
+      .getByRole("button", { name: /send|submit/i })
+      .first()
+      .click();
+    await expect(page.getByText(/thanks|received|sent|message/i).first()).toBeVisible({
+      timeout: 20_000,
+    });
   });
 
   test("application status lookup renders the pipeline", async ({ page, request }) => {
@@ -82,7 +90,10 @@ test.describe("Public marketing + application journey", () => {
     });
     const created = (await res.json()) as { application?: { ref: string } };
     const ref = created.application?.ref;
-    if (!ref) throw new Error(`could not create application for tracking: ${res.status()} ${JSON.stringify(created)}`);
+    if (!ref)
+      throw new Error(
+        `could not create application for tracking: ${res.status()} ${JSON.stringify(created)}`,
+      );
 
     await page.goto("/apply/status");
     await page.locator("#appId").fill(ref);
@@ -97,4 +108,3 @@ test.describe("Public marketing + application journey", () => {
     await expect(page.getByText(/application received|submitted|screening/i).first()).toBeVisible();
   });
 });
-

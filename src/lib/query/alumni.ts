@@ -1,4 +1,5 @@
-import { usePaginatedQuery, flattenPages } from "@/lib/query/hooks";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useApiQuery, usePaginatedQuery, flattenPages } from "@/lib/query/hooks";
 import {
   fetchAluOverview,
   fetchAluEvents,
@@ -11,6 +12,10 @@ import {
   fetchAluCommitments,
   fetchAluWays,
   fetchAluImpact,
+  rsvpToAluEvent,
+  connectToAluMember,
+  fetchAluMentorAvailability,
+  saveAluMentorAvailability,
   type AluKpi,
   type AluEvent,
   type AluMember,
@@ -22,6 +27,7 @@ import {
   type AluCommitment,
   type AluWay,
   type AluImpactRow,
+  type AluMentorAvailability,
 } from "@/lib/api/alumni";
 
 export const aluKeys = {
@@ -37,6 +43,7 @@ export const aluKeys = {
   commitments: ["alumni-dashboard", "commitments"] as const,
   ways: ["alumni-dashboard", "ways"] as const,
   impact: ["alumni-dashboard", "impact"] as const,
+  availability: ["alumni-dashboard", "mentorship", "availability"] as const,
 };
 
 export function useAluOverview() {
@@ -114,6 +121,45 @@ export function useAluImpact() {
 }
 export function useAluImpactItems(): AluImpactRow[] {
   return flattenPages(useAluImpact().data?.pages);
+}
+
+export function useAluMentorAvailability() {
+  return useApiQuery<AluMentorAvailability | null>(
+    aluKeys.availability,
+    fetchAluMentorAvailability,
+  );
+}
+
+export function useSaveAluMentorAvailability() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (input: Omit<AluMentorAvailability, "updatedAt">) =>
+      saveAluMentorAvailability(input),
+    onSuccess: () => {
+      void queryClient.invalidateQueries({ queryKey: aluKeys.availability });
+    },
+  });
+}
+
+export function useRsvpToAluEvent() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (eventId: string) => rsvpToAluEvent(eventId),
+    onSuccess: () => {
+      void queryClient.invalidateQueries({ queryKey: aluKeys.events });
+      void queryClient.invalidateQueries({ queryKey: aluKeys.overview });
+    },
+  });
+}
+
+export function useConnectToAluMember() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (memberId: string) => connectToAluMember(memberId),
+    onSuccess: () => {
+      void queryClient.invalidateQueries({ queryKey: aluKeys.members });
+    },
+  });
 }
 
 export type {

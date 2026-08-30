@@ -1,11 +1,18 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useState, type FormEvent } from "react";
 import { ArrowLeft, BadgeCheck, Bell, Camera, DoorOpen, QrCode, UserRound } from "lucide-react";
+import { toast } from "sonner";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
 import { QueryState } from "@/components/ui/query-state";
-import { useRecQueue, useRecQueueItems } from "@/lib/query/volunteerReceptionist";
+import {
+  useCheckInVisitor,
+  useNotifyQueueHost,
+  useRecQueue,
+  useRecQueueItems,
+} from "@/lib/query/volunteerReceptionist";
 import type { RecQueueEntry } from "@/lib/api/volunteerReceptionist";
 import { cn } from "@/lib/utils";
 
@@ -22,6 +29,36 @@ export const Route = createFileRoute("/app/receptionist/check-in")({
 function ReceptionistCheckIn() {
   const queueQuery = useRecQueue();
   const queue = useRecQueueItems();
+  const checkIn = useCheckInVisitor();
+  const notifyHost = useNotifyQueueHost();
+  const [fullName, setFullName] = useState("");
+  const [hostLabel, setHostLabel] = useState("");
+  const [phone, setPhone] = useState("");
+  const [purpose, setPurpose] = useState("");
+
+  const submitCheckIn = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (!fullName.trim() || !hostLabel.trim() || !purpose.trim() || checkIn.isPending) return;
+    checkIn.mutate(
+      {
+        fullName: fullName.trim(),
+        hostLabel: hostLabel.trim(),
+        phone: phone.trim(),
+        purpose: purpose.trim(),
+      },
+      {
+        onSuccess: () => {
+          setFullName("");
+          setHostLabel("");
+          setPhone("");
+          setPurpose("");
+          toast.success("Visitor checked in", {
+            description: "The visitor was added to the on-site register.",
+          });
+        },
+      },
+    );
+  };
 
   return (
     <AppShell
@@ -55,32 +92,65 @@ function ReceptionistCheckIn() {
                 Camera preview — ID capture
               </p>
             </div>
-            <div className="mt-4 grid gap-3 sm:grid-cols-2">
-              <input
-                className="bg-muted placeholder:text-muted-foreground h-10 rounded-lg border-0 px-3 text-sm font-medium outline-none"
-                placeholder="Full name"
-              />
-              <input
-                className="bg-muted placeholder:text-muted-foreground h-10 rounded-lg border-0 px-3 text-sm font-medium outline-none"
-                placeholder="Who are you visiting"
-              />
-              <input
-                className="bg-muted placeholder:text-muted-foreground h-10 rounded-lg border-0 px-3 text-sm font-medium outline-none"
-                placeholder="Phone number"
-              />
-              <input
-                className="bg-muted placeholder:text-muted-foreground h-10 rounded-lg border-0 px-3 text-sm font-medium outline-none"
-                placeholder="Purpose of visit"
-              />
-            </div>
-            <div className="mt-4 flex flex-wrap gap-2">
-              <Button className="font-semibold">
-                <BadgeCheck className="size-4" /> Check in
-              </Button>
-              <Button variant="outline" className="font-semibold">
-                <QrCode className="size-4" /> Scan visitor QR
-              </Button>
-            </div>
+            <form onSubmit={submitCheckIn}>
+              <div className="mt-4 grid gap-3 sm:grid-cols-2">
+                <input
+                  className="bg-muted placeholder:text-muted-foreground h-10 rounded-lg border-0 px-3 text-sm font-medium outline-none"
+                  placeholder="Full name"
+                  aria-label="Visitor full name"
+                  value={fullName}
+                  onChange={(event) => setFullName(event.target.value)}
+                  maxLength={160}
+                  required
+                />
+                <input
+                  className="bg-muted placeholder:text-muted-foreground h-10 rounded-lg border-0 px-3 text-sm font-medium outline-none"
+                  placeholder="Who are you visiting"
+                  aria-label="Host name"
+                  value={hostLabel}
+                  onChange={(event) => setHostLabel(event.target.value)}
+                  maxLength={160}
+                  required
+                />
+                <input
+                  className="bg-muted placeholder:text-muted-foreground h-10 rounded-lg border-0 px-3 text-sm font-medium outline-none"
+                  placeholder="Phone number"
+                  aria-label="Visitor phone number"
+                  value={phone}
+                  onChange={(event) => setPhone(event.target.value)}
+                  maxLength={40}
+                  type="tel"
+                />
+                <input
+                  className="bg-muted placeholder:text-muted-foreground h-10 rounded-lg border-0 px-3 text-sm font-medium outline-none"
+                  placeholder="Purpose of visit"
+                  aria-label="Visit purpose"
+                  value={purpose}
+                  onChange={(event) => setPurpose(event.target.value)}
+                  maxLength={160}
+                  required
+                />
+              </div>
+              {checkIn.error && (
+                <p role="alert" className="text-destructive mt-3 text-sm">
+                  {checkIn.error.message}
+                </p>
+              )}
+              <div className="mt-4 flex flex-wrap gap-2">
+                <Button type="submit" className="font-semibold" disabled={checkIn.isPending}>
+                  <BadgeCheck className="size-4" />{" "}
+                  {checkIn.isPending ? "Checking in…" : "Check in"}
+                </Button>
+                <Button
+                  type="button"
+                  variant="outline"
+                  className="font-semibold"
+                  onClick={() => toast.info("QR scanning is available when a camera is connected.")}
+                >
+                  <QrCode className="size-4" /> Scan visitor QR
+                </Button>
+              </div>
+            </form>
           </CardContent>
         </Card>
 
@@ -111,8 +181,19 @@ function ReceptionistCheckIn() {
                         <p className="text-muted-foreground mt-1 text-xs">
                           Visiting {v.hostLabel} · {v.purpose}
                         </p>
-                        <Button size="sm" variant="outline" className="mt-2 font-semibold">
-                          <Bell className="size-3.5" /> Notify host
+                        <Button
+                          size="sm"
+                          variant="outline"
+                          className="mt-2 font-semibold"
+                          disabled={v.notified === 1 || notifyHost.isPending}
+                          onClick={() =>
+                            notifyHost.mutate(v.id, {
+                              onSuccess: () => toast.success(`Host notified for ${v.name}`),
+                            })
+                          }
+                        >
+                          <Bell className="size-3.5" />{" "}
+                          {v.notified === 1 ? "Host notified" : "Notify host"}
                         </Button>
                       </div>
                     ))}

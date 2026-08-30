@@ -121,6 +121,17 @@ function supPage<T>(path: string) {
 }
 
 export const fetchSupOrders = supPage<SupOrder>("/v1/supplier-dashboard/orders");
+
+export function updateSupOrderStatus(
+  id: string,
+  status: "confirmed" | "completed",
+): Promise<{ ok: true; id: string; status: string }> {
+  return apiFetch<{ ok: true; id: string; status: string }>(
+    `/v1/supplier-dashboard/orders/${encodeURIComponent(id)}`,
+    { method: "PATCH", body: { status } },
+  );
+}
+
 export const fetchSupDeliveries = supPage<SupDelivery>("/v1/supplier-dashboard/deliveries");
 export const fetchSupInvoices = supPage<SupInvoice>("/v1/supplier-dashboard/invoices");
 export const fetchSupPerformance = supPage<SupPerformance>("/v1/supplier-dashboard/performance");
@@ -131,6 +142,48 @@ export const fetchSupConversations = supPage<SupConversation>(
 
 export const fetchSupConversationDetail = (id: string): Promise<SupConversationDetail> =>
   apiFetch<SupConversationDetail>(`/v1/supplier-dashboard/conversations/${id}`);
+
+export function sendSupConversationMessage(id: string, body: string): Promise<SupThreadMessage> {
+  return apiFetch<SupThreadMessage>(`/v1/supplier-dashboard/conversations/${id}/messages`, {
+    method: "POST",
+    body: { body },
+  });
+}
+
+export interface CreatePtnAgreementInput {
+  title: string;
+  detail?: string;
+}
+
+export function createPtnAgreement(
+  input: CreatePtnAgreementInput,
+): Promise<{ agreement: PtnAgreement }> {
+  return apiFetch<{ agreement: PtnAgreement }>("/v1/partner-dashboard/agreements", {
+    method: "POST",
+    body: input,
+  });
+}
+
+export interface CreatePtnCollaborationInput {
+  title: string;
+  detail: string;
+}
+
+export function createPtnCollaboration(
+  input: CreatePtnCollaborationInput,
+): Promise<{ collaboration: PtnCollaboration }> {
+  return apiFetch<{ collaboration: PtnCollaboration }>("/v1/partner-dashboard/collaborations", {
+    method: "POST",
+    body: input,
+  });
+}
+
+export function createPtnReferral(input: { name: string }): Promise<{ referral: PtnReferral }> {
+  return apiFetch<{ referral: PtnReferral }>("/v1/partner-dashboard/referrals", {
+    method: "POST",
+    body: input,
+  });
+}
 
 export const fetchPtnAgreements = supPage<PtnAgreement>("/v1/partner-dashboard/agreements");
 export const fetchPtnCollaborations = supPage<PtnCollaboration>(
@@ -145,3 +198,10 @@ export const fetchPtnConversations = supPage<PtnConversation>(
 
 export const fetchPtnConversationDetail = (id: string): Promise<PtnConversationDetail> =>
   apiFetch<PtnConversationDetail>(`/v1/partner-dashboard/conversations/${id}`);
+
+export function sendPtnConversationMessage(id: string, body: string): Promise<PtnThreadMessage> {
+  return apiFetch<PtnThreadMessage>(`/v1/partner-dashboard/conversations/${id}/messages`, {
+    method: "POST",
+    body: { body },
+  });
+}

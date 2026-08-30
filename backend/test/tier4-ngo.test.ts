@@ -77,7 +77,13 @@ describe("GET /v1/ngo-dashboard (NGO partnership suite)", () => {
       headers: cookieHeaders(ngo.cookie),
     });
     const body = (await res.json()) as {
-      items: Array<{ id: string; name: string; location: string; beneficiaries: string; status: string }>;
+      items: Array<{
+        id: string;
+        name: string;
+        location: string;
+        beneficiaries: string;
+        status: string;
+      }>;
       total: number;
     };
     expect(body.items[0]?.name).toBe("STEM Saturdays");
@@ -120,7 +126,13 @@ describe("GET /v1/ngo-dashboard (NGO partnership suite)", () => {
       headers: cookieHeaders(ngo.cookie),
     });
     const body = (await res.json()) as {
-      items: Array<{ id: string; title: string; amount: string; dateLabel: string; status: string }>;
+      items: Array<{
+        id: string;
+        title: string;
+        amount: string;
+        dateLabel: string;
+        status: string;
+      }>;
       total: number;
     };
     expect(body.items[0]?.title).toBe("Global Giving grant");
@@ -160,7 +172,13 @@ describe("GET /v1/ngo-dashboard (NGO partnership suite)", () => {
       headers: cookieHeaders(ngo.cookie),
     });
     const body = (await res.json()) as {
-      items: Array<{ id: string; title: string; fromLabel: string; timeLabel: string; status: string }>;
+      items: Array<{
+        id: string;
+        title: string;
+        fromLabel: string;
+        timeLabel: string;
+        status: string;
+      }>;
       total: number;
     };
     expect(body.items[0]?.title).toBe("Scholarship cohort 16 disbursement");

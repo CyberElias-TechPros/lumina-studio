@@ -11,6 +11,7 @@ import {
 import { paginate, parsePagination, type Paginated } from "../lib/pagination";
 import { requireAuth } from "../lib/auth";
 import { ApiError } from "../lib/errors";
+import { isTrustedOrigin } from "../lib/origin";
 
 export interface ApiPayment {
   id: string;
@@ -97,14 +98,21 @@ payments.post("/checkout", requireAuth, async (c) => {
   }
   let redirectUrl = "";
   if (body?.redirectUrl !== undefined && body?.redirectUrl !== null) {
-    if (
-      typeof body.redirectUrl !== "string" ||
-      body.redirectUrl.length > 500 ||
-      !/^https:\/\/[^/]/.test(body.redirectUrl)
-    ) {
+    let parsedRedirect: URL | null = null;
+    if (typeof body.redirectUrl === "string" && body.redirectUrl.length <= 500) {
+      try {
+        const candidate = new URL(body.redirectUrl);
+        if (candidate.protocol === "https:") parsedRedirect = candidate;
+      } catch {
+        parsedRedirect = null;
+      }
+    }
+    if (!parsedRedirect) {
       fieldErrors.redirectUrl = ["redirectUrl must be an https URL."];
+    } else if (!isTrustedOrigin(parsedRedirect.origin, c.env)) {
+      fieldErrors.redirectUrl = ["redirectUrl must use an approved application origin."];
     } else {
-      redirectUrl = body.redirectUrl;
+      redirectUrl = body.redirectUrl as string;
     }
   }
   if (Object.keys(fieldErrors).length > 0) throw ApiError.validation(fieldErrors);

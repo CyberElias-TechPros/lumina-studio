@@ -20,16 +20,16 @@ describe("GET /v1/hr-training-dashboard (HR training suite)", () => {
     expect(denied.status).toBe(403);
   });
 
-  it.each([
-    "/v1/hr-training-dashboard/overview",
-    "/v1/hr-training-dashboard/programs",
-  ])("lists %s for staff", async (path) => {
-    const res = await api(path, { headers: cookieHeaders(staff.cookie) });
-    expect(res.status).toBe(200);
-    const body = (await res.json()) as { items: Array<Record<string, unknown>>; total: number };
-    expect(body.total).toBeGreaterThanOrEqual(1);
-    expect(body.items[0]?.id).toBeTruthy();
-  });
+  it.each(["/v1/hr-training-dashboard/overview", "/v1/hr-training-dashboard/programs"])(
+    "lists %s for staff",
+    async (path) => {
+      const res = await api(path, { headers: cookieHeaders(staff.cookie) });
+      expect(res.status).toBe(200);
+      const body = (await res.json()) as { items: Array<Record<string, unknown>>; total: number };
+      expect(body.total).toBeGreaterThanOrEqual(1);
+      expect(body.items[0]?.id).toBeTruthy();
+    },
+  );
 
   it("returns overview KPIs with value labels", async () => {
     const res = await api("/v1/hr-training-dashboard/overview", {

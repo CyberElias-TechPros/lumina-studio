@@ -1,12 +1,18 @@
+const CONSENT_KEY = "cea:consent";
+const SCRIPT_ATTRIBUTE = "data-cea-ga4";
+
 export function initGA4(measurementId: string) {
   if (typeof window === "undefined" || !measurementId) return;
 
-  const consent = localStorage.getItem("cea:consent");
-  if (consent === "denied") return;
+  // Analytics is optional. Do not load a third-party script before the visitor
+  // has explicitly opted in from the consent banner.
+  if (localStorage.getItem(CONSENT_KEY) !== "granted") return;
+  if (document.querySelector(`script[${SCRIPT_ATTRIBUTE}="${measurementId}"]`)) return;
 
   const script = document.createElement("script");
-  script.src = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
+  script.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(measurementId)}`;
   script.async = true;
+  script.setAttribute(SCRIPT_ATTRIBUTE, measurementId);
   document.head.appendChild(script);
 
   const config = () => {
@@ -27,15 +33,15 @@ export function initGA4(measurementId: string) {
 }
 
 export function grantConsent() {
-  localStorage.setItem("cea:consent", "granted");
+  localStorage.setItem(CONSENT_KEY, "granted");
   const id = import.meta.env.VITE_GA4_ID;
   if (id) initGA4(id);
 }
 
 export function denyConsent() {
-  localStorage.setItem("cea:consent", "denied");
+  localStorage.setItem(CONSENT_KEY, "denied");
 }
 
 export function getConsent() {
-  return localStorage.getItem("cea:consent");
+  return localStorage.getItem(CONSENT_KEY);
 }

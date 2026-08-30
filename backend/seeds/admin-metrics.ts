@@ -7,4 +7,3 @@ INSERT OR IGNORE INTO adm_monitor_services (id, name, detail, status, sort_order
 INSERT OR IGNORE INTO adm_monitor_services (id, name, detail, status, sort_order) VALUES (5, 'payments', 'Paystack ?? checkout + webhook', 'Healthy', 5);
 INSERT OR IGNORE INTO adm_monitor_services (id, name, detail, status, sort_order) VALUES (6, 'storage', 'Cloudflare R2 ?? uploads', 'Healthy', 6);
 `;
-

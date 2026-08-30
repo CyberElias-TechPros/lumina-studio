@@ -81,7 +81,9 @@ async function fetchEntries(folderId: string): Promise<Entry[]> {
   const parts = html.split('<div class="flip-entry" id="entry-');
   for (const part of parts.slice(1)) {
     const id = part.slice(0, part.indexOf('"'));
-    const hrefMatch = part.match(/<a href="(https:\/\/drive\.google\.com\/(?:drive\/folders|file\/d)\/[^"]+)"/);
+    const hrefMatch = part.match(
+      /<a href="(https:\/\/drive\.google\.com\/(?:drive\/folders|file\/d)\/[^"]+)"/,
+    );
     const titleMatch = part.match(/<div class="flip-entry-title">([^<]+)<\/div>/);
     if (!hrefMatch?.[1] || !titleMatch?.[1]) continue;
     const href = hrefMatch[1].replace(/&amp;/g, "&");
@@ -207,7 +209,9 @@ export const libraryItems: LibraryItem[] = ${JSON.stringify(
     )}\n`,
   );
   writeFileSync(resolve(DATA_DIR, "library.ts"), tsData);
-  console.log(`Wrote seeds/library-data.sql, seeds/library.ts, seeds/library-items.json and src/data/library.ts (${unique.length} entries).`);
+  console.log(
+    `Wrote seeds/library-data.sql, seeds/library.ts, seeds/library-items.json and src/data/library.ts (${unique.length} entries).`,
+  );
 }
 
 void main();

@@ -87,6 +87,25 @@ finance.get("/expenses", requireAuth, requireFinance, async (c) => {
   return c.json(result);
 });
 
+const createPaymentBatchSchema = z.object({
+  batch: z.string().trim().min(1, "Batch name is required.").max(160),
+  amount: z.number().int().min(0).max(100_000_000),
+  count: z.number().int().min(1).max(100_000),
+  date: z.string().trim().min(1).max(40),
+});
+
+/** Finance: register a payment batch for later reconciliation. */
+finance.post("/payments", requireAuth, requireFinance, async (c) => {
+  const input = await parseBody(c, createPaymentBatchSchema);
+  const id = `BATCH-${crypto.randomUUID()}`;
+  await c.env.DB.prepare(
+    `INSERT INTO payment_batches (id, batch, amount, count, date, status, sort_order) VALUES (?, ?, ?, ?, ?, 'Pending approval', 0)`,
+  )
+    .bind(id, input.batch, input.amount, input.count, input.date)
+    .run();
+  return c.json({ batch: { id, ...input, status: "Pending approval" } }, 201);
+});
+
 finance.get("/payments", requireAuth, requireFinance, async (c) => {
   const { cursor, limit } = parsePagination(c);
   const total = await c.env.DB.prepare(`SELECT COUNT(*) AS n FROM payment_batches`).first<{
@@ -105,8 +124,26 @@ finance.get("/payments", requireAuth, requireFinance, async (c) => {
   return c.json(result);
 });
 
+const createInvoiceSchema = z.object({
+  party: z.string().trim().min(1, "Customer or learner name is required.").max(160),
+  amount: z.number().int().min(1).max(100_000_000),
+  due: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, "Due date must use YYYY-MM-DD format."),
+});
+
+/** Finance: create a draft invoice in the receivables ledger. */
+finance.post("/invoices", requireAuth, requireFinance, async (c) => {
+  const input = await parseBody(c, createInvoiceSchema);
+  const id = `INV-${crypto.randomUUID()}`;
+  await c.env.DB.prepare(
+    `INSERT INTO invoices (id, party, amount, due, status, sort_order) VALUES (?, ?, ?, ?, 'Draft', 0)`,
+  )
+    .bind(id, input.party, input.amount, input.due)
+    .run();
+  return c.json({ invoice: { id, ...input, status: "Draft" } }, 201);
+});
+
 const invoiceActionSchema = z.object({
-  status: z.enum(["paid", "refunded", "void"], { message: "Invalid invoice status." }),
+  status: z.enum(["sent", "paid", "refunded", "void"], { message: "Invalid invoice status." }),
 });
 
 /** Finance: mark an invoice paid, refunded, or void. */

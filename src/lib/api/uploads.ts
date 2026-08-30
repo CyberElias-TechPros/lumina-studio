@@ -31,6 +31,8 @@ export async function uploadToWorker(
   key: string,
   body: Blob,
   contentType: string,
+  /** A native R2 presigned URL, or the worker proxy path returned by presign. */
+  uploadUrl?: string,
 ): Promise<UploadedObject> {
   if (env.apiUrl.length === 0) {
     return apiFetch<UploadedObject>(`/v1/uploads/${key}`, {
@@ -39,9 +41,17 @@ export async function uploadToWorker(
       body,
     });
   }
-  const response = await fetch(`${env.apiUrl}/v1/uploads/${key}`, {
+
+  const target = uploadUrl ?? `/v1/uploads/${key}`;
+  const url = target.startsWith("http")
+    ? target
+    : `${env.apiUrl}${target.startsWith("/") ? target : `/${target}`}`;
+  const response = await fetch(url, {
     method: "PUT",
-    credentials: "include",
+    // Native presigned R2 URLs authenticate through their signature. The
+    // worker proxy instead uses the session cookie; sending credentials to a
+    // third-party upload host would leak cookies.
+    credentials: target.startsWith("http") ? "omit" : "include",
     headers: { "Content-Type": contentType },
     body,
   });
@@ -51,7 +61,10 @@ export async function uploadToWorker(
     };
     throw new Error(payload?.error?.message ?? `Upload failed with status ${response.status}.`);
   }
-  return (await response.json()) as UploadedObject;
+
+  // R2's native S3-compatible presigned PUT commonly returns an empty 200.
+  const payload = (await response.json().catch(() => undefined)) as UploadedObject | undefined;
+  return payload ?? { key, size: body.size };
 }
 
 /** Fetch an object's text content (used for previews/attachments). */
@@ -76,6 +89,9 @@ export async function fetchUploadedText(key: string): Promise<{
 
 /** Convenience: presign + upload in one call. Returns the object key. */
 export async function uploadFile(file: File): Promise<UploadedObject> {
-  const { key, contentType } = await presignUpload(file.name, file.type);
-  return uploadToWorker(key, file, contentType || "application/octet-stream");
+  const { key, uploadUrl, contentType } = await presignUpload(
+    file.name,
+    file.type || "application/octet-stream",
+  );
+  return uploadToWorker(key, file, contentType || "application/octet-stream", uploadUrl);
 }

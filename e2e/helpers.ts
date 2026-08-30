@@ -32,11 +32,14 @@ export async function signInViaApi(page: Page, role: Role): Promise<void> {
     error?: { message?: string };
   };
   if (!res.ok()) {
-    throw new Error(`sign-in failed for ${email}: ${res.status()} ${body.error?.message ?? JSON.stringify(body)}`);
+    throw new Error(
+      `sign-in failed for ${email}: ${res.status()} ${body.error?.message ?? JSON.stringify(body)}`,
+    );
   }
   const cookies = await request.storageState();
   const sessionCookie = cookies.cookies.find(
-    (c) => c.name === "cea_session" || (c.name === "cea_session" && c.domain.includes("workers.dev")),
+    (c) =>
+      c.name === "cea_session" || (c.name === "cea_session" && c.domain.includes("workers.dev")),
   );
   if (!sessionCookie) {
     throw new Error(`no cea_session cookie returned for ${email}`);
@@ -92,7 +95,9 @@ export async function signInViaUi(page: Page, email: string, password: string): 
 /** Wait for a heading/text to appear, throwing a readable error otherwise. */
 export async function expectVisible(page: Page, selector: string | RegExp): Promise<void> {
   const locator =
-    typeof selector === "string" ? page.locator(selector).first() : page.getByText(selector).first();
+    typeof selector === "string"
+      ? page.locator(selector).first()
+      : page.getByText(selector).first();
   await locator.waitFor({ state: "visible", timeout: 20_000 });
 }
 
@@ -108,6 +113,8 @@ export async function expectNoErrorState(page: Page): Promise<void> {
 /** Convenience test wrapper with helpers attached. */
 export const test = base.extend<{ signIn: (role: Role) => Promise<void> }>({
   signIn: async ({ page }, use) => {
+    // `use` is Playwright's fixture callback, not a React Hook.
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     await use((role: Role) => signInViaApi(page, role));
   },
 });

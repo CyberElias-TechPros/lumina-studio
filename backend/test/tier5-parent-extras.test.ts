@@ -26,16 +26,16 @@ describe("GET /v1/parent-extras-dashboard (Parent extras suite)", () => {
     expect(denied.status).toBe(403);
   });
 
-  it.each([
-    "/v1/parent-extras-dashboard/contacts",
-    "/v1/parent-extras-dashboard/meetings",
-  ])("lists %s for staff", async (path) => {
-    const res = await api(path, { headers: cookieHeaders(staff.cookie) });
-    expect(res.status).toBe(200);
-    const body = (await res.json()) as { items: Array<Record<string, unknown>>; total: number };
-    expect(body.total).toBeGreaterThanOrEqual(1);
-    expect(body.items[0]?.id).toBeTruthy();
-  });
+  it.each(["/v1/parent-extras-dashboard/contacts", "/v1/parent-extras-dashboard/meetings"])(
+    "lists %s for staff",
+    async (path) => {
+      const res = await api(path, { headers: cookieHeaders(staff.cookie) });
+      expect(res.status).toBe(200);
+      const body = (await res.json()) as { items: Array<Record<string, unknown>>; total: number };
+      expect(body.total).toBeGreaterThanOrEqual(1);
+      expect(body.items[0]?.id).toBeTruthy();
+    },
+  );
 
   it("returns contacts with names and roles", async () => {
     const res = await api("/v1/parent-extras-dashboard/contacts", {

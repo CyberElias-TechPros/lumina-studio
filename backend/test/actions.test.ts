@@ -1,12 +1,6 @@
 import { beforeAll, describe, expect, it } from "vitest";
 import { env } from "cloudflare:workers";
-import {
-  api,
-  cookieHeaders,
-  createTestSession,
-  sessionCookieFrom,
-  setupDb,
-} from "./helpers";
+import { api, cookieHeaders, createTestSession, sessionCookieFrom, setupDb } from "./helpers";
 
 type TestSession = Awaited<ReturnType<typeof createTestSession>>;
 
@@ -309,7 +303,11 @@ describe("payment verification", () => {
       headers: cookieHeaders(student.cookie),
     });
     expect(verified.status).toBe(200);
-    const body = (await verified.json()) as { verified: boolean; status: string; reference: string };
+    const body = (await verified.json()) as {
+      verified: boolean;
+      status: string;
+      reference: string;
+    };
     expect(body.verified).toBe(true);
     expect(body.reference).toBe(reference);
     expect(["pending", "success", "failed"]).toContain(body.status);
@@ -339,6 +337,8 @@ describe("notifications", () => {
     const body = (await list.json()) as { items: { id: string; read?: boolean }[] };
     const ntf = body.items.find((i) => i.id === "ntf-act-1");
     expect(ntf?.read).toBe(true);
+    const global = body.items.find((i) => i.id === "ntf-1");
+    expect(global?.read).toBe(true);
   });
 });
 
@@ -389,7 +389,10 @@ describe("MFA", () => {
     expect(signUp.status).toBe(201);
     const mfaCookie = sessionCookieFrom(signUp)!;
 
-    const setup = await api("/v1/auth/mfa/setup", { method: "POST", headers: cookieHeaders(mfaCookie) });
+    const setup = await api("/v1/auth/mfa/setup", {
+      method: "POST",
+      headers: cookieHeaders(mfaCookie),
+    });
     expect(setup.status).toBe(200);
     const { secret, recoveryCodes } = (await setup.json()) as {
       secret: string;

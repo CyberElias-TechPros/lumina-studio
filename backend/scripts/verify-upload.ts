@@ -17,7 +17,11 @@ async function loadDotEnv(): Promise<void> {
   }
 }
 
-async function walk(client: Client, dir: string, depth: number): Promise<{ dirs: number; files: number }> {
+async function walk(
+  client: Client,
+  dir: string,
+  depth: number,
+): Promise<{ dirs: number; files: number }> {
   let dirs = 0;
   let files = 0;
   let entries;

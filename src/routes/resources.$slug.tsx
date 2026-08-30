@@ -57,19 +57,27 @@ function ResourcePage() {
       <PageShell>
         <PageHero
           eyebrow="Resources"
-          title={<>Resource <span className="text-gradient">not found</span></>}
+          title={
+            <>
+              Resource <span className="text-gradient">not found</span>
+            </>
+          }
           description="The resource you're looking for does not exist yet."
         />
         <section className="container-page pb-20">
           <Button variant="ghost" size="sm" className="-mx-2" asChild>
-            <Link to="/resources"><ArrowLeft className="size-4" /> All resources</Link>
+            <Link to="/resources">
+              <ArrowLeft className="size-4" /> All resources
+            </Link>
           </Button>
         </section>
       </PageShell>
     );
   }
 
-  const allResources = getResources().filter((r) => r.slug !== slug).slice(0, 4);
+  const allResources = getResources()
+    .filter((r) => r.slug !== slug)
+    .slice(0, 4);
 
   return (
     <PageShell>
@@ -95,7 +103,9 @@ function ResourcePage() {
         <div className="mx-auto max-w-3xl space-y-12">
           <Reveal>
             <Button variant="ghost" size="sm" className="-mx-2" asChild>
-              <Link to="/resources"><ArrowLeft className="size-4" /> All resources</Link>
+              <Link to="/resources">
+                <ArrowLeft className="size-4" /> All resources
+              </Link>
             </Button>
           </Reveal>
 
@@ -103,7 +113,9 @@ function ResourcePage() {
             <div className="space-y-5">
               <h2 className="font-display text-2xl font-extrabold">Overview</h2>
               {resource.overview.map((para, i) => (
-                <p key={i} className="text-muted-foreground leading-relaxed">{para}</p>
+                <p key={i} className="text-muted-foreground leading-relaxed">
+                  {para}
+                </p>
               ))}
             </div>
           </Reveal>
@@ -137,12 +149,16 @@ function ResourcePage() {
                         </span>
                         <div className="min-w-0 flex-1">
                           <h3 className="font-display font-extrabold text-base">{step.title}</h3>
-                          <p className="text-muted-foreground mt-1.5 text-sm leading-relaxed">{step.description}</p>
+                          <p className="text-muted-foreground mt-1.5 text-sm leading-relaxed">
+                            {step.description}
+                          </p>
                           {step.tips && step.tips.length > 0 && (
                             <div className="mt-3 rounded-lg bg-amber-50 dark:bg-amber-950/20 p-3">
                               <div className="flex items-center gap-1.5 mb-1.5">
                                 <Lightbulb className="text-amber-600 dark:text-amber-400 size-3.5" />
-                                <span className="text-xs font-bold uppercase tracking-wide">Tips</span>
+                                <span className="text-xs font-bold uppercase tracking-wide">
+                                  Tips
+                                </span>
                               </div>
                               <ul className="space-y-1">
                                 {step.tips.map((tip) => (
@@ -177,7 +193,9 @@ function ResourcePage() {
                       <Badge variant="outline" className="text-[10px] mb-1.5">
                         {r.category}
                       </Badge>
-                      <h3 className="group-hover:text-primary text-sm font-extrabold transition-colors">{r.title}</h3>
+                      <h3 className="group-hover:text-primary text-sm font-extrabold transition-colors">
+                        {r.title}
+                      </h3>
                       <p className="text-muted-foreground mt-1 text-xs line-clamp-2">{r.tagline}</p>
                     </Link>
                   ))}

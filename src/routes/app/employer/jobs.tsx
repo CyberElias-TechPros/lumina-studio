@@ -17,7 +17,12 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { QueryState } from "@/components/ui/query-state";
 import { AppShell } from "@/components/app/app-shell";
-import { usePostings, useInterviews, useCreatePosting } from "@/lib/query/recruitment";
+import {
+  usePostings,
+  useInterviews,
+  useCreatePosting,
+  useUpdatePosting,
+} from "@/lib/query/recruitment";
 import type { JobPosting } from "@/lib/api/recruitment";
 import { cn } from "@/lib/utils";
 
@@ -36,7 +41,7 @@ function EmployerJobs() {
   const interviewsQuery = useInterviews();
   const postings = postingsQuery.data?.pages.flatMap((p) => p.items) ?? [];
   const interviews = interviewsQuery.data?.pages.flatMap((p) => p.items) ?? [];
-  const activeRoles = postings.filter((p) => p.status !== "Closed").length;
+  const activeRoles = postings.filter((p) => p.status.toLowerCase() !== "closed").length;
   const applications = postings.reduce((s, p) => s + p.applicants, 0);
 
   return (
@@ -131,19 +136,7 @@ function EmployerJobs() {
                       </p>
                     </div>
                     <Badge className={cn("border-0 font-semibold", j.tone)}>{j.status}</Badge>
-                    <div className="flex shrink-0 gap-1">
-                      <Button asChild variant="outline" size="sm" className="font-semibold">
-                        <Link to="/app/employer/pipeline/$jobId" params={{ jobId: j.id }}>
-                          Pipeline
-                        </Link>
-                      </Button>
-                      <Button variant="ghost" size="sm" className="text-muted-foreground">
-                        <Pencil className="size-3.5" />
-                      </Button>
-                      <Button variant="ghost" size="sm" className="text-muted-foreground">
-                        <X className="size-3.5" />
-                      </Button>
-                    </div>
+                    <PostingActions posting={j} />
                   </div>
                 ))}
               </>
@@ -152,6 +145,82 @@ function EmployerJobs() {
         </CardContent>
       </Card>
     </AppShell>
+  );
+}
+
+function PostingActions({ posting }: { posting: JobPosting }) {
+  const update = useUpdatePosting();
+  const [editing, setEditing] = useState(false);
+  const [title, setTitle] = useState(posting.title);
+  const [detail, setDetail] = useState(posting.detail);
+  const closed = posting.status.toLowerCase() === "closed";
+
+  const submit = (event: React.FormEvent) => {
+    event.preventDefault();
+    const nextTitle = title.trim();
+    if (!nextTitle || update.isPending) return;
+    update.mutate(
+      { id: posting.id, title: nextTitle, detail: detail.trim() },
+      { onSuccess: () => setEditing(false) },
+    );
+  };
+
+  if (editing) {
+    return (
+      <form onSubmit={submit} className="flex min-w-full flex-wrap items-center gap-2 sm:min-w-0">
+        <Input
+          value={title}
+          onChange={(event) => setTitle(event.target.value)}
+          aria-label="Job title"
+          className="h-8 w-44 text-xs"
+          autoFocus
+        />
+        <Input
+          value={detail}
+          onChange={(event) => setDetail(event.target.value)}
+          aria-label="Job detail"
+          placeholder="Detail"
+          className="h-8 w-44 text-xs"
+        />
+        <Button type="submit" size="sm" disabled={update.isPending || !title.trim()}>
+          Save
+        </Button>
+        <Button type="button" variant="ghost" size="sm" onClick={() => setEditing(false)}>
+          Cancel
+        </Button>
+      </form>
+    );
+  }
+
+  return (
+    <div className="flex shrink-0 gap-1">
+      <Button asChild variant="outline" size="sm" className="font-semibold">
+        <Link to="/app/employer/pipeline/$jobId" params={{ jobId: posting.id }}>
+          Pipeline
+        </Link>
+      </Button>
+      <Button
+        variant="ghost"
+        size="sm"
+        className="text-muted-foreground"
+        aria-label={`Edit ${posting.title}`}
+        title="Edit posting"
+        onClick={() => setEditing(true)}
+      >
+        <Pencil className="size-3.5" />
+      </Button>
+      <Button
+        variant="ghost"
+        size="sm"
+        className="text-muted-foreground"
+        aria-label={closed ? `Reopen ${posting.title}` : `Close ${posting.title}`}
+        title={closed ? "Reopen posting" : "Close posting"}
+        disabled={update.isPending}
+        onClick={() => update.mutate({ id: posting.id, status: closed ? "open" : "closed" })}
+      >
+        <X className="size-3.5" />
+      </Button>
+    </div>
   );
 }
 

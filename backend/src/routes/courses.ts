@@ -136,7 +136,8 @@ courses.get("/", async (c) => {
 });
 
 // NOTE: /gradebook must stay registered before /:slug (Hono matches in order).
-courses.get("/gradebook", async (c) => {  const user = c.get("authUser");
+courses.get("/gradebook", async (c) => {
+  const user = c.get("authUser");
   if (user.roleKey !== "student") {
     throw ApiError.forbidden("Only students can access the gradebook.");
   }

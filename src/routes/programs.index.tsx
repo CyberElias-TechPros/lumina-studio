@@ -189,14 +189,14 @@ function Programs() {
                         <span>·</span>
                         <span>{p.mode}</span>
                       </div>
-{/* Module count badge */}
-                       <div className="mt-3 flex items-center gap-2">
-                         <Badge variant="outline" className="flex items-center gap-1 text-xs">
-                           <BookOpen className="size-3" /> 5 modules
-                         </Badge>
-                       </div>
-                       <div className="mt-5 flex items-center justify-between border-t pt-4">
-                         <span className="font-display font-bold">{formatNaira(p.price)}</span>
+                      {/* Module count badge */}
+                      <div className="mt-3 flex items-center gap-2">
+                        <Badge variant="outline" className="flex items-center gap-1 text-xs">
+                          <BookOpen className="size-3" /> 5 modules
+                        </Badge>
+                      </div>
+                      <div className="mt-5 flex items-center justify-between border-t pt-4">
+                        <span className="font-display font-bold">{formatNaira(p.price)}</span>
                         {p.learners > 0 && (
                           <span className="text-muted-foreground text-xs font-medium">
                             {p.learners.toLocaleString()} learners

@@ -142,9 +142,30 @@ function SupplierInvoices() {
                       <Badge className={cn("border-0 font-semibold", meta.tone)}>
                         {meta.label}
                       </Badge>
-                      <Button variant="outline" size="sm" className="shrink-0 font-semibold">
-                        {inv.status === "awaiting payment" ? "Follow up" : "Receipt"}
-                      </Button>
+                      {inv.status === "awaiting payment" ? (
+                        <Button
+                          asChild
+                          variant="outline"
+                          size="sm"
+                          className="shrink-0 font-semibold"
+                        >
+                          <a
+                            href={`mailto:procurement@cea.ng?subject=${encodeURIComponent(`Invoice follow-up: ${inv.ref}`)}`}
+                          >
+                            Follow up
+                          </a>
+                        </Button>
+                      ) : (
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          className="shrink-0 font-semibold"
+                          onClick={() => window.print()}
+                          title="Open the browser print dialog, then choose Save as PDF"
+                        >
+                          Receipt
+                        </Button>
+                      )}
                     </div>
                   );
                 })}

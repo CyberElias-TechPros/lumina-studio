@@ -189,15 +189,16 @@ function Services() {
                 <Badge variant="secondary" className="w-fit font-semibold">
                   {e.sector}
                 </Badge>
-                <h3 className="font-display mt-4 text-base leading-snug font-bold">
-                  {e.title}
-                </h3>
+                <h3 className="font-display mt-4 text-base leading-snug font-bold">{e.title}</h3>
                 <p className="text-muted-foreground mt-2 flex-1 text-sm leading-relaxed">
                   {e.description}
                 </p>
                 <div className="mt-4 flex flex-wrap gap-2">
                   {e.capabilities.map((cap) => (
-                    <span key={cap} className="bg-muted text-muted-foreground rounded-full px-2.5 py-1 text-xs font-medium">
+                    <span
+                      key={cap}
+                      className="bg-muted text-muted-foreground rounded-full px-2.5 py-1 text-xs font-medium"
+                    >
                       {cap}
                     </span>
                   ))}

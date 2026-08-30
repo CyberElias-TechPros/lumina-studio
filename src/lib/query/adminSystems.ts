@@ -1,3 +1,4 @@
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { usePaginatedQuery, useApiQuery, flattenPages } from "@/lib/query/hooks";
 import {
   fetchAdmOverview,
@@ -7,6 +8,8 @@ import {
   fetchAdmRules,
   fetchAdmServices,
   fetchAdmMetrics,
+  rotateAdmKey,
+  restoreAdmBackup,
   type AdmKpi,
   type AdmKey,
   type AdmBackup,
@@ -64,6 +67,20 @@ export function useAdmServiceItems(): AdmService[] {
 }
 export function useAdmMetrics() {
   return useApiQuery<AdmMetrics>(["admin-systems-dashboard", "metrics"], fetchAdmMetrics);
+}
+
+export function useRotateAdmKey() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (id: string) => rotateAdmKey(id),
+    onSuccess: () => {
+      void queryClient.invalidateQueries({ queryKey: admKeys.keys });
+    },
+  });
+}
+
+export function useRestoreAdmBackup() {
+  return useMutation({ mutationFn: (id: string) => restoreAdmBackup(id) });
 }
 
 export type {

@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
+import { toast } from "sonner";
 import {
   ArrowLeft,
   ArrowRight,
@@ -25,7 +26,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { AppShell } from "@/components/app/app-shell";
-import { useMentorMatch, useMentorProfiles } from "@/lib/query/mentor";
+import { useMentorMatch, useMentorProfiles, useRequestMentor } from "@/lib/query/mentor";
 import type { MentorMatchResult, MentorProfile } from "@/lib/api/mentor";
 import { cn } from "@/lib/utils";
 
@@ -39,7 +40,19 @@ export const Route = createFileRoute("/app/alumni/find")({
   component: AlumniFindMentor,
 });
 
-function MentorCard({ mentor, matched }: { mentor: MentorProfile; matched?: number }) {
+function MentorCard({
+  mentor,
+  matched,
+  onRequest,
+  requestPending = false,
+  requestDisabled = false,
+}: {
+  mentor: MentorProfile;
+  matched?: number;
+  onRequest?: () => void;
+  requestPending?: boolean;
+  requestDisabled?: boolean;
+}) {
   return (
     <Card className="bg-card shadow-soft border">
       <CardContent className="p-5">
@@ -76,8 +89,13 @@ function MentorCard({ mentor, matched }: { mentor: MentorProfile; matched?: numb
             <Users className="size-3" /> {mentor.sessionsCount} sessions
           </span>
         </div>
-        <Button size="sm" className="mt-4 w-full font-semibold">
-          Request mentorship
+        <Button
+          size="sm"
+          className="mt-4 w-full font-semibold"
+          onClick={onRequest}
+          disabled={requestDisabled || requestPending}
+        >
+          {requestPending ? "Sending request…" : "Request mentorship"}
         </Button>
       </CardContent>
     </Card>
@@ -92,6 +110,23 @@ function AlumniFindMentor() {
   const [goal, setGoal] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const matches = useMentorMatch({ program, goal }, submitted);
+  const request = useRequestMentor();
+
+  const requestMentorship = (mentor: MentorProfile) => {
+    const trimmedGoal = goal.trim();
+    if (!trimmedGoal || request.isPending) return;
+    request.mutate(
+      { mentorId: mentor.id, goal: trimmedGoal, program: program || undefined },
+      {
+        onSuccess: (result) =>
+          toast.success(
+            result.alreadyRequested
+              ? `Your request to ${result.mentor} is already pending`
+              : `Mentorship request sent to ${result.mentor}`,
+          ),
+      },
+    );
+  };
 
   const avgRating =
     mentors.length > 0
@@ -245,7 +280,18 @@ function AlumniFindMentor() {
               }}
               isEmpty={(r) => r.matches.length === 0}
             >
-              {(r) => r.matches.map((m) => <MentorCard key={m.id} mentor={m} matched={m.match} />)}
+              {(r) =>
+                r.matches.map((m) => (
+                  <MentorCard
+                    key={m.id}
+                    mentor={m}
+                    matched={m.match}
+                    onRequest={() => requestMentorship(m)}
+                    requestPending={request.isPending}
+                    requestDisabled={!goal.trim()}
+                  />
+                ))
+              }
             </QueryState>
           </CardContent>
         </Card>
@@ -267,10 +313,25 @@ function AlumniFindMentor() {
             }}
             isEmpty={(rows) => rows.length === 0}
           >
-            {(rows) => rows.map((m) => <MentorCard key={m.id} mentor={m} />)}
+            {(rows) =>
+              rows.map((m) => (
+                <MentorCard
+                  key={m.id}
+                  mentor={m}
+                  onRequest={() => requestMentorship(m)}
+                  requestPending={request.isPending}
+                  requestDisabled={!goal.trim()}
+                />
+              ))
+            }
           </QueryState>
         </CardContent>
       </Card>
+      {request.error && (
+        <p role="alert" className="text-destructive mt-3 text-sm font-semibold">
+          {request.error.message}
+        </p>
+      )}
     </AppShell>
   );
 }

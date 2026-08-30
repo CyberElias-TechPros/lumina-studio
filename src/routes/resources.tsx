@@ -11,7 +11,8 @@ export const Route = createFileRoute("/resources")({
   head: () =>
     getPageHead({
       title: "Free tech resources — templates, checklists, cheat sheets and guides",
-      description: "Ungated, practical resources for Nigerian tech professionals: resume templates, interview prep, contract templates, CI/CD checklists and more. No sign-up required.",
+      description:
+        "Ungated, practical resources for Nigerian tech professionals: resume templates, interview prep, contract templates, CI/CD checklists and more. No sign-up required.",
       path: "/resources",
       image: "https://cea.ng/og-resources.svg",
     }),
