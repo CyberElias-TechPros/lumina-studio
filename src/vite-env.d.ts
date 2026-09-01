@@ -11,6 +11,10 @@ interface ImportMetaEnv {
   readonly VITE_PAYSTACK_PUBLIC_KEY?: string;
   /** "dev" | "staging" | "prod". */
   readonly VITE_APP_ENV?: string;
+  /** Safety valve; production mocks require the literal string "true". */
+  readonly VITE_ENABLE_MOCKS?: string;
+  /** VAPID public key (Web Push). */
+  readonly VITE_VAPID_PUBLIC_KEY?: string;
 }
 
 interface ImportMeta {

@@ -65,6 +65,18 @@ export { RealtimeRoom };
 
 const app = new Hono<{ Bindings: AppEnv }>();
 
+// Baseline browser hardening belongs at the API boundary, not only at the
+// frontend. The CSP is intentionally not set here because this Worker serves
+// JSON and consumers may have their own document policy.
+app.use("*", async (c, next) => {
+  const requestId = c.req.header("x-request-id")?.slice(0, 128) || crypto.randomUUID();
+  c.header("x-request-id", requestId);
+  c.header("X-Content-Type-Options", "nosniff");
+  c.header("Referrer-Policy", "no-referrer");
+  c.header("Permissions-Policy", "camera=(), microphone=(), geolocation=()");
+  await next();
+});
+
 app.use(
   "*",
   cors({

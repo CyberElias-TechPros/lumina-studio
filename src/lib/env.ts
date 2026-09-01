@@ -20,7 +20,15 @@ export const env = {
   get isProd() {
     return this.appEnv === "prod";
   },
+  /** Explicit opt-in for using the local mock registry in a production build. */
+  get mocksEnabled() {
+    return import.meta.env.VITE_ENABLE_MOCKS === "true";
+  },
 } as const;
 
-/** True when no API URL is configured: all API calls resolve against src/data mocks. */
-export const isMockMode = env.apiUrl.length === 0;
+/**
+ * Mocks are useful during local development, but must never silently become
+ * the production data layer when an environment variable is missing.
+ */
+export const isMockMode =
+  env.apiUrl.length === 0 && (!import.meta.env.PROD || env.mocksEnabled);

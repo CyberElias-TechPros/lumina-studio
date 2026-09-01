@@ -8,9 +8,11 @@
     "enabled": true,
   },
   "vars": {
+    "APP_ENV": "production",
     "FRONTEND_ORIGINS": "http://localhost:5173,http://127.0.0.1:5173,http://localhost:8081,http://127.0.0.1:8081,https://cea-os.vercel.app,https://cea.ng,https://www.cea.ng",
     "UPLOADS_PRESIGN_URL": "",
     "APP_URL": "https://cea.ng",
+    // Secrets are configured with `wrangler secret put`; do not place them in vars.
     "EMAIL_PROVIDER": "resend",
     "EMAIL_FROM": "Cyber Elias Academy <no-reply@cea.ng>",
     "AI_BASE_URL": "https://integrate.api.nvidia.com/v1",
