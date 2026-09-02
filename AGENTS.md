@@ -15,50 +15,78 @@
 - `npm run build` — TanStack Start + Nitro, must pass
 - `npx tsc --noEmit` — TypeScript check, must pass
 - `npm run lint` — ESLint, slow on full repo; run selectively
-- **Production**: www.cea.ng (Vercel), backend: cea-api.cyber-e54.workers.dev
+- **Backend**: `cd backend && npm run typecheck && npm test` (Vitest + Workers runtime, 64 suites / 713 tests)
+- **Production**: www.cea.ng (Vercel), backend: cea-api.cyber-e54.workers.dev (Cloudflare Worker, D1)
 
-## Sitemap: 214 URLs (auto-generated at build)
-Static pages: 35 · Programs: 8 · Blog: 26 · Library: 12 · Glossary: 62 · Module detail: 40 · Career guides: 19 · Resources: 12
+## Product Overview
 
-## Current Status: Competitor-Standard Content System
+Cyber Elias Academy's platform: a public marketing/admissions site plus CEA-OS,
+a role-based operating system for the whole academy. Public content (programs,
+blog, glossary, career guides, resources, library) is static + SEO-complete and
+server-rendered; every `/app/*` workspace talks to the `/v1/*` Worker API.
 
-### Completed (deployed to production)
-1. **Technical AdSense requirements**: `public/ads.txt`, `public/sitemap.xml` (build-generated, 214 URLs), `robots.txt`, all legal pages present.
-2. **Content depth**: All 20 blog posts expanded to 800-1,118 words with honest reading time. All 8 program pages have `about` (3-4 paragraphs) + 5 FAQs + FAQPage JSON-LD.
-3. **Thin pages fixed**: stories, library, FAQ, certificates/verify all substantive. "900+ materials" fabrication removed.
-4. **Public library**: 1,958 items across 12 categories, server-rendered, no auth required. `/library/$category` with pagination.
-5. **Glossary system** (63 pages): `src/data/glossary.ts` → `/glossary` index + `/glossary/$slug` pages with DefinedTerm schema, Nigeria-specific context, related programs/posts.
-6. **Module detail pages** (40 pages): `src/data/module-details.ts` → `/programs/$slug/$module` with overview, topics, projects, assessment, prev/next navigation. Course schema.
-7. **Career guides** (20 pages): `src/data/career-guides.ts` → `/career-guides` index + `/career-guides/$slug` with salary ranges, 90-day plans, pitfalls, resources. Article schema.
-8. **Resource/templates** (12 pages): `src/data/resources.ts` → `/resources` index + `/resources/$slug` with step-by-step guides, HowTo schema, templates/checklists/cheat sheets.
-9. **Glossary auto-linker**: `src/lib/glossary-auto-link.ts` + `src/components/glossary-linked-text.tsx` — auto-link glossary terms in program and blog content.
-10. **Related content**: `src/components/related-content.tsx` — context-aware related links on program and blog pages.
-11. **Content freshness**: `src/components/content-freshness.tsx` — last-reviewed dates on program and blog pages.
-12. **Internal linking**: Glossary auto-links wired into program `about` text and blog post bodies; related content blocks on program pages, blog pages.
-13. **Competitor analysis**: `docs/competitor-gap-analysis.md`, `docs/content-style-guide.md`.
+## Data Architecture (do not break these invariants)
+
+1. **Two runtime modes** decided by `VITE_API_URL` at build time (`src/lib/env.ts`):
+   - Mock (unset): `src/lib/api/client.ts` serves every call from
+     `src/lib/api/mocks/*`, seeded by `src/data/*`; role switcher is visible.
+   - Live (set): real Worker + D1; server-issued `role_key` is authoritative.
+2. **RBAC is enforced server-side.** `backend/src/lib/rbac.ts` is a declarative
+   allowlist of every `/v1` route (`public` | `roles` | any-session). New
+   backend routes MUST be added there or they 403. UI gating (`Gate`,
+   role-scoped AppShell nav, workspace-restricted state) is convenience only.
+3. **Auth**: password + magic link; Argon2id password hashes; opaque session
+   tokens in the `cea_session` HttpOnly cookie (SameSite=None + Secure in
+   production); MFA (TOTP) challenge for opted-in users; sessions rotate on
+   refresh and revoke on sign-out/reset. Never expose `devToken` paths in
+   production (they are gated on `APP_ENV !== "production"`).
+4. **Seeds are generated from `src/data/*`** (`backend/scripts/gen-*.ts` →
+   `backend/seeds/*-data.sql`). Keep the two layers in sync when adding demo
+   records; migrations live in `backend/migrations/*.sql` and are schema-only.
+5. **Testing**: `backend/vitest.config.ts` pins `APP_ENV="test"` in the Workers
+   pool (production `wrangler.jsonc` vars would otherwise disable the dev
+   magic-link tokens every suite depends on). Do not "fix" the tests by
+   re-enabling dev tokens in production code.
+
+## Frontend Conventions
+- File-based routing under `src/routes/`; a `head` export per page carries SEO
+  title/description/structured data (`src/lib/seo.ts` helpers).
+- Components: `PageShell`, `PageHero`, `SectionHeading`, `CTASection`
+  (`src/components/marketing/shell`); `Reveal`/`StaggerGroup` from
+  `src/components/motion`; Radix-based UI in `src/components/ui`.
+- Query hooks live in `src/lib/query/` (one module per API domain) and always
+  use the shared `useApiQuery`/`apiFetch` plumbing — no ad-hoc fetch.
+- Role workspaces: every `/app/<role>` page renders inside `AppShell`
+  (`src/components/app/app-shell.tsx`), which owns signed-out redirects,
+  role-scoped navigation, the workspace-restricted screen, and mock role
+  switching. Role URL stubs without a dashboard at the exact path redirect
+  (e.g. `/app/partner` → `/app/partner/hub`).
+
+## Deployment Recipes
+- Frontend: `npm run build` (Nitro Build Output API), deploy the `.vercel/output`
+  to Vercel with `VITE_*` env vars set. Rebuild generates the 214-URL sitemap.
+- Backend: `cd backend && npm run typecheck && npm test`, apply migrations
+  (`wrangler d1 migrations apply DB`), then `npm run deploy`.
+
+## Current Status: Production Candidate — platform complete, hardening phase
+- Public SEO/content layer: 214-URL sitemap, blog/glossary/career
+  guides/resources/module pages, AdSense-ready, honest content (no fabricated
+  ratings/testimonials).
+- CEA-OS: ~46 role workspaces wired to the Worker API through typed
+  client/query modules; 55 D1 migrations; per-domain seeds; full RBAC.
+- Backend test suite: 713 tests green (Vitest + Workers runtime).
+- Remaining known work is tracked in `docs/` and `plans/` (cross-cutting
+  automations, growth of test coverage on new endpoints, monitoring polish).
 
 ## Key Data Files
-- `src/data/site.ts` — programs with `about`/`faqs`/`outcomes`, engines, faqs
-- `src/data/blog-posts-new.ts` — 26 blog posts (1 expanded to 800+ words, rest 412-618)
-- `src/data/glossary.ts` — 62 terms with auto-link support
-- `src/data/module-details.ts` — 40 module overviews, topics, projects, assessment
-- `src/data/career-guides.ts` — 19 career roadmaps with 90-day plans
-- `src/data/resources.ts` — 12 ungated templates, checklists, guides, cheat sheets
-- `src/data/library-catalog.json` — build-time library snapshot (1,958 items, 12 categories)
-- `src/lib/glossary-auto-link.ts` — auto-link utility for glossary terms
-- `src/lib/reading-time.ts` — honest word-based reading time
-- `scripts/generate-sitemap.mjs` — prebuild sitemap (214 URLs)
-- `scripts/generate-library-data.mjs` — library catalog snapshot
+- `src/data/site.ts` — programs, engines, FAQs, landing stats
+- `src/data/blog-posts-new.ts`, `glossary.ts`, `module-details.ts`,
+  `career-guides.ts`, `resources.ts`, `library-catalog.json`
+- `src/data/rbac.ts` — canonical role keys, aliases, default permissions
+- `backend/migrations/*.sql` + `backend/seeds/*` — D1 schema and data
+- `src/lib/api/mocks/index.ts` — offline API registry
 
-## Components
-- `GlossaryLinkedText` — renders paragraph arrays with glossary term auto-links
-- `RelatedContent` — context-aware related content blocks (programs, blogs, glossary)
-- `ContentFreshness` — last-reviewed date and author display
-
-## Design Patterns
-- Routes: `createFileRoute("/path")` with `head:` for SEO
-- Components: `PageShell`, `PageHero`, `SectionHeading`, `CTASection` from `@/components/marketing/shell`
-- Motion: `Reveal`, `StaggerGroup`, `StaggerItem` from `@/components/motion`
-- UI: `Card`, `CardContent`, `Badge`, `Button` from `@/components/ui/`
-- Data: typed exports from `src/data/`, slugified keys for lookups
-- SEO: `getPageHead()` from `@/lib/seo` with structured data
+## Documentation
+- `README.md` — architecture, local dev, deployment, testing
+- `docs/user-flows.md`, `docs/role-gap-matrix.md`, `docs/audit-mock-data-gaps.md`
+- `plans/` — product plans and per-actor specs

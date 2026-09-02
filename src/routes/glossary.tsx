@@ -19,7 +19,7 @@ export const Route = createFileRoute("/glossary")({
       description:
         "Understand the terms that matter for tech careers in Nigeria. Each entry gives you the definition, why it matters, and how it shows up in local workplaces.",
       path: "/glossary",
-      image: "https://cea.ng/og-glossary.svg",
+      image: "https://cea.ng/og-default.png",
     }),
   component: GlossaryPage,
 });

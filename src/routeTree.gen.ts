@@ -143,6 +143,7 @@ import { Route as AppAdmissionsEnrollmentRouteImport } from './routes/app/admiss
 import { Route as AppAdmissionsInterviewsRouteImport } from './routes/app/admissions/interviews'
 import { Route as AppAdmissionsReportsRouteImport } from './routes/app/admissions/reports'
 import { Route as AppAdmissionsReviewRouteImport } from './routes/app/admissions/review'
+import { Route as AppAlumniIndexRouteImport } from './routes/app/alumni/index'
 import { Route as AppAlumniEventsRouteImport } from './routes/app/alumni/events'
 import { Route as AppAlumniFindRouteImport } from './routes/app/alumni/find'
 import { Route as AppAlumniGiveBackRouteImport } from './routes/app/alumni/give-back'
@@ -171,6 +172,7 @@ import { Route as AppClientInvoicesRouteImport } from './routes/app/client/invoi
 import { Route as AppClientMessagesRouteImport } from './routes/app/client/messages'
 import { Route as AppClientProposalsRouteImport } from './routes/app/client/proposals'
 import { Route as AppClientSupportRouteImport } from './routes/app/client/support'
+import { Route as AppConversionCopyIndexRouteImport } from './routes/app/conversion-copy/index'
 import { Route as AppConversionCopyAbTestsRouteImport } from './routes/app/conversion-copy/ab-tests'
 import { Route as AppConversionCopyAdsRouteImport } from './routes/app/conversion-copy/ads'
 import { Route as AppConversionCopyAnalyticsRouteImport } from './routes/app/conversion-copy/analytics'
@@ -217,6 +219,7 @@ import { Route as AppDirectorMarketingRouteImport } from './routes/app/director/
 import { Route as AppDirectorOkrsRouteImport } from './routes/app/director/okrs'
 import { Route as AppDirectorOperationsRouteImport } from './routes/app/director/operations'
 import { Route as AppDirectorReportsRouteImport } from './routes/app/director/reports'
+import { Route as AppEmployerIndexRouteImport } from './routes/app/employer/index'
 import { Route as AppEmployerAnalyticsRouteImport } from './routes/app/employer/analytics'
 import { Route as AppEmployerBrandRouteImport } from './routes/app/employer/brand'
 import { Route as AppEmployerFeedbackRouteImport } from './routes/app/employer/feedback'
@@ -1075,6 +1078,11 @@ const AppAdmissionsReviewRoute = AppAdmissionsReviewRouteImport.update({
   path: '/app/admissions/review',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AppAlumniIndexRoute = AppAlumniIndexRouteImport.update({
+  id: '/app/alumni/',
+  path: '/app/alumni/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AppAlumniEventsRoute = AppAlumniEventsRouteImport.update({
   id: '/app/alumni/events',
   path: '/app/alumni/events',
@@ -1223,6 +1231,11 @@ const AppClientProposalsRoute = AppClientProposalsRouteImport.update({
 const AppClientSupportRoute = AppClientSupportRouteImport.update({
   id: '/app/client/support',
   path: '/app/client/support',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppConversionCopyIndexRoute = AppConversionCopyIndexRouteImport.update({
+  id: '/app/conversion-copy/',
+  path: '/app/conversion-copy/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AppConversionCopyAbTestsRoute =
@@ -1460,6 +1473,11 @@ const AppDirectorOperationsRoute = AppDirectorOperationsRouteImport.update({
 const AppDirectorReportsRoute = AppDirectorReportsRouteImport.update({
   id: '/app/director/reports',
   path: '/app/director/reports',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppEmployerIndexRoute = AppEmployerIndexRouteImport.update({
+  id: '/app/employer/',
+  path: '/app/employer/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AppEmployerAnalyticsRoute = AppEmployerAnalyticsRouteImport.update({
@@ -2772,14 +2790,17 @@ export interface FileRoutesByFullPath {
   '/app/accountant/': typeof AppAccountantIndexRoute
   '/app/admin/': typeof AppAdminIndexRoute
   '/app/admissions/': typeof AppAdmissionsIndexRoute
+  '/app/alumni/': typeof AppAlumniIndexRoute
   '/app/assessments/': typeof AppAssessmentsIndexRoute
   '/app/assignments/': typeof AppAssignmentsIndexRoute
   '/app/behavioral-design/': typeof AppBehavioralDesignIndexRoute
   '/app/client/': typeof AppClientIndexRoute
+  '/app/conversion-copy/': typeof AppConversionCopyIndexRoute
   '/app/department/': typeof AppDepartmentIndexRoute
   '/app/design/': typeof AppDesignIndexRoute
   '/app/dev/': typeof AppDevIndexRoute
   '/app/director/': typeof AppDirectorIndexRoute
+  '/app/employer/': typeof AppEmployerIndexRoute
   '/app/government/': typeof AppGovernmentIndexRoute
   '/app/growth/': typeof AppGrowthIndexRoute
   '/app/hr/': typeof AppHrIndexRoute
@@ -3165,14 +3186,17 @@ export interface FileRoutesByTo {
   '/app/accountant': typeof AppAccountantIndexRoute
   '/app/admin': typeof AppAdminIndexRoute
   '/app/admissions': typeof AppAdmissionsIndexRoute
+  '/app/alumni': typeof AppAlumniIndexRoute
   '/app/assessments': typeof AppAssessmentsIndexRoute
   '/app/assignments': typeof AppAssignmentsIndexRoute
   '/app/behavioral-design': typeof AppBehavioralDesignIndexRoute
   '/app/client': typeof AppClientIndexRoute
+  '/app/conversion-copy': typeof AppConversionCopyIndexRoute
   '/app/department': typeof AppDepartmentIndexRoute
   '/app/design': typeof AppDesignIndexRoute
   '/app/dev': typeof AppDevIndexRoute
   '/app/director': typeof AppDirectorIndexRoute
+  '/app/employer': typeof AppEmployerIndexRoute
   '/app/government': typeof AppGovernmentIndexRoute
   '/app/growth': typeof AppGrowthIndexRoute
   '/app/hr': typeof AppHrIndexRoute
@@ -3560,14 +3584,17 @@ export interface FileRoutesById {
   '/app/accountant/': typeof AppAccountantIndexRoute
   '/app/admin/': typeof AppAdminIndexRoute
   '/app/admissions/': typeof AppAdmissionsIndexRoute
+  '/app/alumni/': typeof AppAlumniIndexRoute
   '/app/assessments/': typeof AppAssessmentsIndexRoute
   '/app/assignments/': typeof AppAssignmentsIndexRoute
   '/app/behavioral-design/': typeof AppBehavioralDesignIndexRoute
   '/app/client/': typeof AppClientIndexRoute
+  '/app/conversion-copy/': typeof AppConversionCopyIndexRoute
   '/app/department/': typeof AppDepartmentIndexRoute
   '/app/design/': typeof AppDesignIndexRoute
   '/app/dev/': typeof AppDevIndexRoute
   '/app/director/': typeof AppDirectorIndexRoute
+  '/app/employer/': typeof AppEmployerIndexRoute
   '/app/government/': typeof AppGovernmentIndexRoute
   '/app/growth/': typeof AppGrowthIndexRoute
   '/app/hr/': typeof AppHrIndexRoute
@@ -3956,14 +3983,17 @@ export interface FileRouteTypes {
     | '/app/accountant/'
     | '/app/admin/'
     | '/app/admissions/'
+    | '/app/alumni/'
     | '/app/assessments/'
     | '/app/assignments/'
     | '/app/behavioral-design/'
     | '/app/client/'
+    | '/app/conversion-copy/'
     | '/app/department/'
     | '/app/design/'
     | '/app/dev/'
     | '/app/director/'
+    | '/app/employer/'
     | '/app/government/'
     | '/app/growth/'
     | '/app/hr/'
@@ -4349,14 +4379,17 @@ export interface FileRouteTypes {
     | '/app/accountant'
     | '/app/admin'
     | '/app/admissions'
+    | '/app/alumni'
     | '/app/assessments'
     | '/app/assignments'
     | '/app/behavioral-design'
     | '/app/client'
+    | '/app/conversion-copy'
     | '/app/department'
     | '/app/design'
     | '/app/dev'
     | '/app/director'
+    | '/app/employer'
     | '/app/government'
     | '/app/growth'
     | '/app/hr'
@@ -4743,14 +4776,17 @@ export interface FileRouteTypes {
     | '/app/accountant/'
     | '/app/admin/'
     | '/app/admissions/'
+    | '/app/alumni/'
     | '/app/assessments/'
     | '/app/assignments/'
     | '/app/behavioral-design/'
     | '/app/client/'
+    | '/app/conversion-copy/'
     | '/app/department/'
     | '/app/design/'
     | '/app/dev/'
     | '/app/director/'
+    | '/app/employer/'
     | '/app/government/'
     | '/app/growth/'
     | '/app/hr/'
@@ -5132,14 +5168,17 @@ export interface RootRouteChildren {
   AppAccountantIndexRoute: typeof AppAccountantIndexRoute
   AppAdminIndexRoute: typeof AppAdminIndexRoute
   AppAdmissionsIndexRoute: typeof AppAdmissionsIndexRoute
+  AppAlumniIndexRoute: typeof AppAlumniIndexRoute
   AppAssessmentsIndexRoute: typeof AppAssessmentsIndexRoute
   AppAssignmentsIndexRoute: typeof AppAssignmentsIndexRoute
   AppBehavioralDesignIndexRoute: typeof AppBehavioralDesignIndexRoute
   AppClientIndexRoute: typeof AppClientIndexRoute
+  AppConversionCopyIndexRoute: typeof AppConversionCopyIndexRoute
   AppDepartmentIndexRoute: typeof AppDepartmentIndexRoute
   AppDesignIndexRoute: typeof AppDesignIndexRoute
   AppDevIndexRoute: typeof AppDevIndexRoute
   AppDirectorIndexRoute: typeof AppDirectorIndexRoute
+  AppEmployerIndexRoute: typeof AppEmployerIndexRoute
   AppGovernmentIndexRoute: typeof AppGovernmentIndexRoute
   AppGrowthIndexRoute: typeof AppGrowthIndexRoute
   AppHrIndexRoute: typeof AppHrIndexRoute
@@ -6115,6 +6154,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppAdmissionsReviewRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/app/alumni/': {
+      id: '/app/alumni/'
+      path: '/app/alumni'
+      fullPath: '/app/alumni/'
+      preLoaderRoute: typeof AppAlumniIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/app/alumni/events': {
       id: '/app/alumni/events'
       path: '/app/alumni/events'
@@ -6309,6 +6355,13 @@ declare module '@tanstack/react-router' {
       path: '/app/client/support'
       fullPath: '/app/client/support'
       preLoaderRoute: typeof AppClientSupportRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/conversion-copy/': {
+      id: '/app/conversion-copy/'
+      path: '/app/conversion-copy'
+      fullPath: '/app/conversion-copy/'
+      preLoaderRoute: typeof AppConversionCopyIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/app/conversion-copy/ab-tests': {
@@ -6631,6 +6684,13 @@ declare module '@tanstack/react-router' {
       path: '/app/director/reports'
       fullPath: '/app/director/reports'
       preLoaderRoute: typeof AppDirectorReportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/employer/': {
+      id: '/app/employer/'
+      path: '/app/employer'
+      fullPath: '/app/employer/'
+      preLoaderRoute: typeof AppEmployerIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/app/employer/analytics': {
@@ -8450,14 +8510,17 @@ const rootRouteChildren: RootRouteChildren = {
   AppAccountantIndexRoute: AppAccountantIndexRoute,
   AppAdminIndexRoute: AppAdminIndexRoute,
   AppAdmissionsIndexRoute: AppAdmissionsIndexRoute,
+  AppAlumniIndexRoute: AppAlumniIndexRoute,
   AppAssessmentsIndexRoute: AppAssessmentsIndexRoute,
   AppAssignmentsIndexRoute: AppAssignmentsIndexRoute,
   AppBehavioralDesignIndexRoute: AppBehavioralDesignIndexRoute,
   AppClientIndexRoute: AppClientIndexRoute,
+  AppConversionCopyIndexRoute: AppConversionCopyIndexRoute,
   AppDepartmentIndexRoute: AppDepartmentIndexRoute,
   AppDesignIndexRoute: AppDesignIndexRoute,
   AppDevIndexRoute: AppDevIndexRoute,
   AppDirectorIndexRoute: AppDirectorIndexRoute,
+  AppEmployerIndexRoute: AppEmployerIndexRoute,
   AppGovernmentIndexRoute: AppGovernmentIndexRoute,
   AppGrowthIndexRoute: AppGrowthIndexRoute,
   AppHrIndexRoute: AppHrIndexRoute,
