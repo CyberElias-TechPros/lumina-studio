@@ -313,7 +313,7 @@ const tokens = {
 | **CertificateViewer**   | PDF viewer + verification badge + social share                           | Student, Alumni        |
 | **PortfolioBuilder**    | Drag-drop sections (projects, skills, experience) + preview + share link | Student                |
 | **CourseBuilder**       | Tree view of modules/lessons + content editor + reorder                  | Instructor             |
-| **GradebookTable**      | Matrix (students × assignments) with inline edit + filters               | Instructor, Dept Head  |
+| **GradebookTable**      | Matrix (students à— assignments) with inline edit + filters               | Instructor, Dept Head  |
 | **AttendanceMarker**    | Student grid + QR scanner + bulk actions + geolocation                   | Instructor             |
 | **ApplicationPipeline** | Kanban columns with drag-drop + bulk actions + filters                   | Admissions Officer     |
 | **InvoiceBuilder**      | Line items table + tax/discount + preview + PDF                          | Accountant             |
@@ -390,7 +390,7 @@ Beyond RBAC, these ABAC rules constrain data access dynamically:
 | Certificate verification | Public certificate              | `certificate.isVerified === true`                   | Public endpoint    |
 | Invoice visibility       | Client invoices                 | `invoice.billToId === auth.contactId`               | On finance queries |
 
-## 6.3 RBAC Matrix Summary (All Actors × Key Resources)
+## 6.3 RBAC Matrix Summary (All Actors à— Key Resources)
 
 Legend: `R`=Read (own), `R*`=Read (scope), `R**`=Read (global), `C`=Create, `U`=Update (own), `U*`=Update (scope), `D`=Delete, `A`=Approve, `—`=None
 
@@ -618,7 +618,7 @@ const optimisticUpdates = {
 | Live class              | WebSocket                             | Real-time                   |
 | Active enrollments      | Polling                               | Every 60s                   |
 | Ticket status           | Polling                               | Every 30s                   |
-| Payment status          | Polling (after payment action)        | Every 10s × 10, then stop   |
+| Payment status          | Polling (after payment action)        | Every 10s à— 10, then stop   |
 | Analytics dashboards    | Manual refresh + auto every 5min      | On focus, every 5min        |
 | Course catalog (public) | ISR (Incremental Static Regeneration) | Revalidate every 60s        |
 | Other data              | Cache-then-network (RTK Query)        | On mutation invalidation    |

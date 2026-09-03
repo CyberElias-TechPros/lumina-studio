@@ -581,7 +581,7 @@
 â”‚  Bio: [Industry professional with 10+ years in cybersecurity...]    â”‚
 â”‚  Company: [CyberDefense Inc.]  Job Title: [Security Architect]      â”‚
 â”‚  LinkedIn: [https://linkedin.com/in/sarahchen]                      â”‚
-â”‚  Expertise Tags: [Cloud Security] [Pen Testing] [Compliance] [×]   â”‚
+â”‚  Expertise Tags: [Cloud Security] [Pen Testing] [Compliance] [à—]   â”‚
 â”‚  [Add Tag]                                                            â”‚
 â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
 â”‚  Availability Schedule                                                  â”‚
@@ -622,7 +622,7 @@
 
 | Column                     | Type           | Constraints       | Default     | Description                                      |
 | -------------------------- | -------------- | ----------------- | ----------- | ------------------------------------------------ |
-| `id`                       | `UUID`         | PK, FK → users.id | —           | Same as user ID                                  |
+| `id`                       | `UUID`         | PK, FK â†’ users.id | —           | Same as user ID                                  |
 | `mentor_type`              | `VARCHAR(50)`  | NOT NULL          | `'career'`  | career, academic, peer, alumni, industry         |
 | `employee_id`              | `VARCHAR(20)`  | UNIQUE, NULLABLE  | —           | CEA-MNT-YYYY-NNNNN                               |
 | `title`                    | `VARCHAR(200)` | NOT NULL          | —           | "Career Mentor", "Industry Mentor"               |
@@ -654,7 +654,7 @@
 | Column        | Type          | Constraints               | Default | Description              |
 | ------------- | ------------- | ------------------------- | ------- | ------------------------ |
 | `id`          | `UUID`        | PK                        | —       | —                        |
-| `mentor_id`   | `UUID`        | FK → mentors.id, NOT NULL | —       | —                        |
+| `mentor_id`   | `UUID`        | FK â†’ mentors.id, NOT NULL | —       | —                        |
 | `day_of_week` | `INTEGER`     | NOT NULL                  | —       | 0=Sun, 1=Mon, ..., 6=Sat |
 | `start_time`  | `TIME`        | NOT NULL                  | —       | Available from           |
 | `end_time`    | `TIME`        | NOT NULL                  | —       | Available until          |
@@ -669,8 +669,8 @@
 | Column                    | Type           | Constraints                | Default             | Description                                      |
 | ------------------------- | -------------- | -------------------------- | ------------------- | ------------------------------------------------ |
 | `id`                      | `UUID`         | PK                         | `gen_random_uuid()` | —                                                |
-| `mentor_id`               | `UUID`         | FK → mentors.id, NOT NULL  | —                   | —                                                |
-| `student_id`              | `UUID`         | FK → students.id, NOT NULL | —                   | —                                                |
+| `mentor_id`               | `UUID`         | FK â†’ mentors.id, NOT NULL  | —                   | —                                                |
+| `student_id`              | `UUID`         | FK â†’ students.id, NOT NULL | —                   | —                                                |
 | `relationship_type`       | `VARCHAR(50)`  | NOT NULL                   | —                   | career, academic, peer                           |
 | `status`                  | `VARCHAR(50)`  | NOT NULL                   | `'requested'`       | requested, active, paused, completed, terminated |
 | `requested_by`            | `VARCHAR(20)`  | NOT NULL                   | —                   | student, admin, mentor                           |
@@ -700,9 +700,9 @@
 | Column                | Type           | Constraints                                | Default             | Description                                                                                                                               |
 | --------------------- | -------------- | ------------------------------------------ | ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
 | `id`                  | `UUID`         | PK                                         | `gen_random_uuid()` | —                                                                                                                                         |
-| `mentor_id`           | `UUID`         | FK → mentors.id, NOT NULL                  | —                   | —                                                                                                                                         |
-| `mentee_id`           | `UUID`         | FK → students.id, NOT NULL                 | —                   | —                                                                                                                                         |
-| `relationship_id`     | `UUID`         | FK → mentorship_relationships.id, NOT NULL | —                   | —                                                                                                                                         |
+| `mentor_id`           | `UUID`         | FK â†’ mentors.id, NOT NULL                  | —                   | —                                                                                                                                         |
+| `mentee_id`           | `UUID`         | FK â†’ students.id, NOT NULL                 | —                   | —                                                                                                                                         |
+| `relationship_id`     | `UUID`         | FK â†’ mentorship_relationships.id, NOT NULL | —                   | —                                                                                                                                         |
 | `session_type`        | `VARCHAR(50)`  | NOT NULL                                   | —                   | career_roadmap, mock_interview, resume_review, portfolio_review, goal_setting, networking_strategy, skills_assessment, general_mentorship |
 | `title`               | `VARCHAR(255)` | NOT NULL                                   | —                   | Session title                                                                                                                             |
 | `description`         | `TEXT`         | NULLABLE                                   | —                   | Session description/purpose                                                                                                               |
@@ -738,9 +738,9 @@
 | Column                | Type           | Constraints                                | Default             | Description                                                                                                            |
 | --------------------- | -------------- | ------------------------------------------ | ------------------- | ---------------------------------------------------------------------------------------------------------------------- |
 | `id`                  | `UUID`         | PK                                         | `gen_random_uuid()` | —                                                                                                                      |
-| `relationship_id`     | `UUID`         | FK → mentorship_relationships.id, NOT NULL | —                   | —                                                                                                                      |
-| `mentor_id`           | `UUID`         | FK → mentors.id, NOT NULL                  | —                   | —                                                                                                                      |
-| `mentee_id`           | `UUID`         | FK → students.id, NOT NULL                 | —                   | —                                                                                                                      |
+| `relationship_id`     | `UUID`         | FK â†’ mentorship_relationships.id, NOT NULL | —                   | —                                                                                                                      |
+| `mentor_id`           | `UUID`         | FK â†’ mentors.id, NOT NULL                  | —                   | —                                                                                                                      |
+| `mentee_id`           | `UUID`         | FK â†’ students.id, NOT NULL                 | —                   | —                                                                                                                      |
 | `category`            | `VARCHAR(50)`  | NOT NULL                                   | —                   | certification, job_application, networking, skill_development, portfolio, resume, interview_prep, personal_development |
 | `title`               | `VARCHAR(255)` | NOT NULL                                   | —                   | Goal description                                                                                                       |
 | `description`         | `TEXT`         | NULLABLE                                   | —                   | Detailed goal                                                                                                          |
@@ -763,7 +763,7 @@
 | Column         | Type           | Constraints                    | Default | Description           |
 | -------------- | -------------- | ------------------------------ | ------- | --------------------- |
 | `id`           | `UUID`         | PK                             | —       | —                     |
-| `goal_id`      | `UUID`         | FK → mentor_goals.id, NOT NULL | —       | —                     |
+| `goal_id`      | `UUID`         | FK â†’ mentor_goals.id, NOT NULL | —       | —                     |
 | `title`        | `VARCHAR(255)` | NOT NULL                       | —       | Milestone description |
 | `completed`    | `BOOLEAN`      | NOT NULL                       | `false` | —                     |
 | `completed_at` | `TIMESTAMPTZ`  | NULLABLE                       | —       | —                     |
@@ -775,9 +775,9 @@
 | Column                   | Type          | Constraints                                | Default   | Description                                                    |
 | ------------------------ | ------------- | ------------------------------------------ | --------- | -------------------------------------------------------------- |
 | `id`                     | `UUID`        | PK                                         | —         | —                                                              |
-| `relationship_id`        | `UUID`        | FK → mentorship_relationships.id, NOT NULL | —         | —                                                              |
-| `mentor_id`              | `UUID`        | FK → mentors.id, NOT NULL                  | —         | —                                                              |
-| `mentee_id`              | `UUID`        | FK → students.id, NOT NULL                 | —         | —                                                              |
+| `relationship_id`        | `UUID`        | FK â†’ mentorship_relationships.id, NOT NULL | —         | —                                                              |
+| `mentor_id`              | `UUID`        | FK â†’ mentors.id, NOT NULL                  | —         | —                                                              |
+| `mentee_id`              | `UUID`        | FK â†’ students.id, NOT NULL                 | —         | —                                                              |
 | `overall_score`          | `INTEGER`     | NULLABLE                                   | —         | 0-100 computed score                                           |
 | `overall_feedback`       | `TEXT`        | NULLABLE                                   | —         | General feedback                                               |
 | `section_scores`         | `JSONB`       | NULLABLE                                   | —         | {profile, skills, projects, certifications, experience} scores |
@@ -795,8 +795,8 @@
 | Column            | Type           | Constraints                                | Default     | Description                                                                                                                      |
 | ----------------- | -------------- | ------------------------------------------ | ----------- | -------------------------------------------------------------------------------------------------------------------------------- |
 | `id`              | `UUID`         | PK                                         | —           | —                                                                                                                                |
-| `relationship_id` | `UUID`         | FK → mentorship_relationships.id, NOT NULL | —           | —                                                                                                                                |
-| `mentee_id`       | `UUID`         | FK → students.id, NOT NULL                 | —           | —                                                                                                                                |
+| `relationship_id` | `UUID`         | FK â†’ mentorship_relationships.id, NOT NULL | —           | —                                                                                                                                |
+| `mentee_id`       | `UUID`         | FK â†’ students.id, NOT NULL                 | —           | —                                                                                                                                |
 | `company_name`    | `VARCHAR(255)` | NOT NULL                                   | —           | —                                                                                                                                |
 | `job_title`       | `VARCHAR(255)` | NOT NULL                                   | —           | —                                                                                                                                |
 | `job_url`         | `VARCHAR(500)` | NULLABLE                                   | —           | —                                                                                                                                |
@@ -814,7 +814,7 @@
 | Column            | Type           | Constraints                                | Default | Description                                                   |
 | ----------------- | -------------- | ------------------------------------------ | ------- | ------------------------------------------------------------- |
 | `id`              | `UUID`         | PK                                         | —       | —                                                             |
-| `relationship_id` | `UUID`         | FK → mentorship_relationships.id, NOT NULL | —       | —                                                             |
+| `relationship_id` | `UUID`         | FK â†’ mentorship_relationships.id, NOT NULL | —       | —                                                             |
 | `title`           | `VARCHAR(255)` | NOT NULL                                   | —       | —                                                             |
 | `category`        | `VARCHAR(50)`  | NOT NULL                                   | —       | resume, linkedin, applications, interviews, networking, offer |
 | `completed`       | `BOOLEAN`      | NOT NULL                                   | `false` | —                                                             |
@@ -827,7 +827,7 @@
 | Column                | Type           | Constraints               | Default     | Description                                                        |
 | --------------------- | -------------- | ------------------------- | ----------- | ------------------------------------------------------------------ |
 | `id`                  | `UUID`         | PK                        | —           | —                                                                  |
-| `mentor_id`           | `UUID`         | FK → mentors.id, NOT NULL | —           | Owner                                                              |
+| `mentor_id`           | `UUID`         | FK â†’ mentors.id, NOT NULL | —           | Owner                                                              |
 | `title`               | `VARCHAR(255)` | NOT NULL                  | —           | —                                                                  |
 | `description`         | `TEXT`         | NULLABLE                  | —           | —                                                                  |
 | `resource_type`       | `VARCHAR(50)`  | NOT NULL                  | —           | pdf, link, video, article, template, course, job_board             |
@@ -846,8 +846,8 @@
 | Column            | Type           | Constraints                            | Default  | Description                       |
 | ----------------- | -------------- | -------------------------------------- | -------- | --------------------------------- |
 | `id`              | `UUID`         | PK                                     | —        | —                                 |
-| `conversation_id` | `UUID`         | FK → mentor_conversations.id, NOT NULL | —        | —                                 |
-| `sender_id`       | `UUID`         | FK → users.id, NOT NULL                | —        | —                                 |
+| `conversation_id` | `UUID`         | FK â†’ mentor_conversations.id, NOT NULL | —        | —                                 |
+| `sender_id`       | `UUID`         | FK â†’ users.id, NOT NULL                | —        | —                                 |
 | `sender_type`     | `VARCHAR(20)`  | NOT NULL                               | —        | mentor, mentee                    |
 | `content`         | `TEXT`         | NOT NULL                               | —        | Message body                      |
 | `content_type`    | `VARCHAR(50)`  | NOT NULL                               | `'text'` | text, image, file, resource_share |
@@ -861,9 +861,9 @@
 | Column                 | Type           | Constraints                                | Default | Description |
 | ---------------------- | -------------- | ------------------------------------------ | ------- | ----------- |
 | `id`                   | `UUID`         | PK                                         | —       | —           |
-| `mentor_id`            | `UUID`         | FK → mentors.id, NOT NULL                  | —       | —           |
-| `student_id`           | `UUID`         | FK → students.id, NOT NULL                 | —       | —           |
-| `relationship_id`      | `UUID`         | FK → mentorship_relationships.id, NOT NULL | —       | —           |
+| `mentor_id`            | `UUID`         | FK â†’ mentors.id, NOT NULL                  | —       | —           |
+| `student_id`           | `UUID`         | FK â†’ students.id, NOT NULL                 | —       | —           |
+| `relationship_id`      | `UUID`         | FK â†’ mentorship_relationships.id, NOT NULL | —       | —           |
 | `last_message_at`      | `TIMESTAMPTZ`  | NULLABLE                                   | —       | —           |
 | `last_message_preview` | `VARCHAR(200)` | NULLABLE                                   | —       | —           |
 | `unread_count_mentor`  | `INTEGER`      | NOT NULL                                   | `0`     | —           |
@@ -876,7 +876,7 @@
 | Column                | Type          | Constraints                                | Default | Description |
 | --------------------- | ------------- | ------------------------------------------ | ------- | ----------- |
 | `id`                  | `UUID`        | PK                                         | —       | —           |
-| `relationship_id`     | `UUID`        | FK → mentorship_relationships.id, NOT NULL | —       | —           |
+| `relationship_id`     | `UUID`        | FK â†’ mentorship_relationships.id, NOT NULL | —       | —           |
 | `assessed_at`         | `TIMESTAMPTZ` | NOT NULL                                   | `NOW()` | —           |
 | `overall_score`       | `INTEGER`     | NOT NULL                                   | —       | 0-100       |
 | `resume_score`        | `INTEGER`     | NULLABLE                                   | —       | 0-100       |
@@ -885,7 +885,7 @@
 | `skills_score`        | `INTEGER`     | NULLABLE                                   | —       | 0-100       |
 | `networking_score`    | `INTEGER`     | NULLABLE                                   | —       | 0-100       |
 | `interview_readiness` | `INTEGER`     | NULLABLE                                   | —       | 0-100       |
-| `assessed_by`         | `UUID`        | FK → mentors.id, NOT NULL                  | —       | —           |
+| `assessed_by`         | `UUID`        | FK â†’ mentors.id, NOT NULL                  | —       | —           |
 | `notes`               | `TEXT`        | NULLABLE                                   | —       | —           |
 | `created_at`          | `TIMESTAMPTZ` | NOT NULL                                   | `NOW()` | —           |
 
@@ -1212,7 +1212,7 @@ interface PendingRequestsResponse {
 
 **Auth:** Required (mentor)
 
-**Response:** `{ relationship: MentorshipRelationship }` — status → `active`
+**Response:** `{ relationship: MentorshipRelationship }` — status â†’ `active`
 
 **Error Codes:**
 
@@ -1863,7 +1863,7 @@ Alternative:
 
 ```
 Step 1: Dashboard shows "Today 3:00 PM — Alex Johnson — Career Roadmap"
-  → Mentor clicks "Prepare" → opens session with prep notes from last session
+  â†’ Mentor clicks "Prepare" â†’ opens session with prep notes from last session
 
 Step 2: At session time, clicks "Join" → meeting URL opens in new tab
   → Session becomes "In Progress" via POST /api/mentor/sessions/:id/start
@@ -1924,9 +1924,9 @@ Step 4: Submits review → POST /api/mentor/mentees/:id/portfolio/review
   → Alex notified: "Your mentor has reviewed your portfolio. [View Feedback]"
 
 Step 5: Alex makes changes, marks as ready for re-review
-  → Mentor notified: "Alex updated portfolio — ready for re-review"
-  → Mentor reviews again → approves
-  → Portfolio section scores updated in readiness assessment
+  â†’ Mentor notified: "Alex updated portfolio — ready for re-review"
+  â†’ Mentor reviews again â†’ approves
+  â†’ Portfolio section scores updated in readiness assessment
 
 Alternative:
   Step 2a: Portfolio is excellent → "Approve" directly

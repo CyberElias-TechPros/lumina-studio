@@ -3,7 +3,7 @@
 # Master Actor & App Plan
 
 > **Frontend:** Vercel (Next.js/React 19, TypeScript, Tailwind, shadcn/ui, Redux Toolkit, Framer Motion)
-> **Design Language:** Hybrid of digitalskillsacademy.org (clean professional) × dskillacademy.com.ng (vibrant gradients) — see `CEA_OS_DESIGN_LANGUAGE.md`
+> **Design Language:** Hybrid of digitalskillsacademy.org (clean professional) à— dskillacademy.com.ng (vibrant gradients) — see `CEA_OS_DESIGN_LANGUAGE.md`
 > **Backend:** Cloudflare Workers + Hono + D1 + R2 + KV + Queues + Durable Objects  
 > **Academy Focus:** General digital/tech skills academy — from scratch to advanced in software dev, networking, cloud, cybersecurity, digital marketing, AI, data science, UI/UX, mobile, hardware, IT support.
 > **Philosophy:** One platform. Multiple engines. Every actor connected.
@@ -1825,13 +1825,13 @@ Cloudflare Zero Trust:
 ### DNS
 
 ```
-cea.ng          → Vercel (frontend)
-api.cea.ng      → Cloudflare Worker (API)
-auth.cea.ng     → Cloudflare Worker (Auth)
-ws.cea.ng       → Cloudflare Worker (WebSocket)
-cdn.cea.ng      → Cloudflare R2 (assets)
-docs.cea.ng     → Cloudflare Pages (docs)
-admin.cea.ng    → Vercel (admin route — or protected via Zero Trust)
+cea.ng          â†’ Vercel (frontend)
+api.cea.ng      â†’ Cloudflare Worker (API)
+auth.cea.ng     â†’ Cloudflare Worker (Auth)
+ws.cea.ng       â†’ Cloudflare Worker (WebSocket)
+cdn.cea.ng      â†’ Cloudflare R2 (assets)
+docs.cea.ng     â†’ Cloudflare Pages (docs)
+admin.cea.ng    â†’ Vercel (admin route — or protected via Zero Trust)
 ```
 
 ### Security Architecture

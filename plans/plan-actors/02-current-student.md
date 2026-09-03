@@ -630,11 +630,11 @@
 
 | Column                  | Type           | Constraints                   | Default       | Description                                                   |
 | ----------------------- | -------------- | ----------------------------- | ------------- | ------------------------------------------------------------- |
-| `id`                    | `UUID`         | PK, FK → users.id             | —             | Same as user ID                                               |
+| `id`                    | `UUID`         | PK, FK â†’ users.id             | —             | Same as user ID                                               |
 | `student_number`        | `VARCHAR(20)`  | UNIQUE, NOT NULL              | —             | CEA-STU-YYYY-NNNNN                                            |
 | `enrollment_status`     | `VARCHAR(50)`  | NOT NULL                      | `'pre_start'` | pre_start, active, on_leave, graduated, expelled, dropped_out |
-| `cohort_id`             | `UUID`         | FK → cohorts.id, NULLABLE     | —             | Assigned cohort group                                         |
-| `program_id`            | `UUID`         | FK → programs.id, NOT NULL    | —             | Primary program                                               |
+| `cohort_id`             | `UUID`         | FK â†’ cohorts.id, NULLABLE     | —             | Assigned cohort group                                         |
+| `program_id`            | `UUID`         | FK â†’ programs.id, NOT NULL    | —             | Primary program                                               |
 | `enrollment_term`       | `VARCHAR(50)`  | NOT NULL                      | —             | Fall 2026, etc.                                               |
 | `enrolled_at`           | `TIMESTAMPTZ`  | NOT NULL                      | —             | When enrolled                                                 |
 | `start_date`            | `DATE`         | NULLABLE                      | —             | Program start                                                 |
@@ -643,7 +643,7 @@
 | `cumulative_gpa`        | `DECIMAL(3,2)` | NOT NULL                      | `0.00`        | 0.00-4.00                                                     |
 | `total_credits_earned`  | `INTEGER`      | NOT NULL                      | `0`           | —                                                             |
 | `attendance_percentage` | `DECIMAL(5,2)` | NOT NULL                      | `100.00`      | 0.00-100.00                                                   |
-| `advisor_id`            | `UUID`         | FK → instructors.id, NULLABLE | —             | Academic advisor                                              |
+| `advisor_id`            | `UUID`         | FK â†’ instructors.id, NULLABLE | —             | Academic advisor                                              |
 | `portfolio_url`         | `VARCHAR(500)` | NULLABLE                      | —             | Public portfolio slug                                         |
 | `created_at`            | `TIMESTAMPTZ`  | NOT NULL                      | `NOW()`       | —                                                             |
 | `updated_at`            | `TIMESTAMPTZ`  | NOT NULL                      | `NOW()`       | —                                                             |
@@ -662,7 +662,7 @@
 | ------------ | -------------- | -------------------------- | ------- | ---------------- |
 | `id`         | `UUID`         | PK                         | —       | —                |
 | `name`       | `VARCHAR(200)` | NOT NULL                   | —       | "CF-2026-Fall-A" |
-| `program_id` | `UUID`         | FK → programs.id, NOT NULL | —       | —                |
+| `program_id` | `UUID`         | FK â†’ programs.id, NOT NULL | —       | —                |
 | `term`       | `VARCHAR(50)`  | NOT NULL                   | —       | —                |
 | `start_date` | `DATE`         | NOT NULL                   | —       | —                |
 | `end_date`   | `DATE`         | NOT NULL                   | —       | —                |
@@ -674,8 +674,8 @@
 | Column                | Type           | Constraints                | Default    | Description                |
 | --------------------- | -------------- | -------------------------- | ---------- | -------------------------- |
 | `id`                  | `UUID`         | PK                         | —          | —                          |
-| `student_id`          | `UUID`         | FK → students.id, NOT NULL | —          | —                          |
-| `course_id`           | `UUID`         | FK → courses.id, NOT NULL  | —          | —                          |
+| `student_id`          | `UUID`         | FK â†’ students.id, NOT NULL | —          | —                          |
+| `course_id`           | `UUID`         | FK â†’ courses.id, NOT NULL  | —          | —                          |
 | `status`              | `VARCHAR(50)`  | NOT NULL                   | `'active'` | active, completed, dropped |
 | `progress_percentage` | `INTEGER`      | NOT NULL                   | `0`        | 0-100                      |
 | `started_at`          | `TIMESTAMPTZ`  | NULLABLE                   | —          | —                          |
@@ -691,11 +691,11 @@
 | Column          | Type           | Constraints                   | Default | Description        |
 | --------------- | -------------- | ----------------------------- | ------- | ------------------ |
 | `id`            | `UUID`         | PK                            | —       | —                  |
-| `program_id`    | `UUID`         | FK → programs.id, NOT NULL    | —       | —                  |
+| `program_id`    | `UUID`         | FK â†’ programs.id, NOT NULL    | —       | —                  |
 | `title`         | `VARCHAR(255)` | NOT NULL                      | —       | —                  |
 | `slug`          | `VARCHAR(200)` | UNIQUE                        | —       | —                  |
 | `description`   | `TEXT`         | NOT NULL                      | —       | —                  |
-| `instructor_id` | `UUID`         | FK → instructors.id, NULLABLE | —       | Primary instructor |
+| `instructor_id` | `UUID`         | FK â†’ instructors.id, NULLABLE | —       | Primary instructor |
 | `sort_order`    | `INTEGER`      | NOT NULL                      | —       | —                  |
 | `credits`       | `INTEGER`      | NOT NULL                      | `3`     | —                  |
 | `passing_grade` | `DECIMAL(5,2)` | NOT NULL                      | `70.00` | —                  |
@@ -706,7 +706,7 @@
 | Column            | Type           | Constraints               | Default | Description |
 | ----------------- | -------------- | ------------------------- | ------- | ----------- |
 | `id`              | `UUID`         | PK                        | —       | —           |
-| `course_id`       | `UUID`         | FK → courses.id, NOT NULL | —       | —           |
+| `course_id`       | `UUID`         | FK â†’ courses.id, NOT NULL | —       | —           |
 | `title`           | `VARCHAR(255)` | NOT NULL                  | —       | —           |
 | `sort_order`      | `INTEGER`      | NOT NULL                  | —       | —           |
 | `description`     | `TEXT`         | NULLABLE                  | —       | —           |
@@ -718,7 +718,7 @@
 | Column             | Type           | Constraints               | Default | Description                                       |
 | ------------------ | -------------- | ------------------------- | ------- | ------------------------------------------------- |
 | `id`               | `UUID`         | PK                        | —       | —                                                 |
-| `module_id`        | `UUID`         | FK → modules.id, NOT NULL | —       | —                                                 |
+| `module_id`        | `UUID`         | FK â†’ modules.id, NOT NULL | —       | —                                                 |
 | `title`            | `VARCHAR(255)` | NOT NULL                  | —       | —                                                 |
 | `slug`             | `VARCHAR(200)` | NOT NULL                  | —       | —                                                 |
 | `sort_order`       | `INTEGER`      | NOT NULL                  | —       | —                                                 |
@@ -737,8 +737,8 @@
 | Column                | Type           | Constraints                | Default         | Description                         |
 | --------------------- | -------------- | -------------------------- | --------------- | ----------------------------------- |
 | `id`                  | `UUID`         | PK                         | —               | —                                   |
-| `student_id`          | `UUID`         | FK → students.id, NOT NULL | —               | —                                   |
-| `lesson_id`           | `UUID`         | FK → lessons.id, NOT NULL  | —               | —                                   |
+| `student_id`          | `UUID`         | FK â†’ students.id, NOT NULL | —               | —                                   |
+| `lesson_id`           | `UUID`         | FK â†’ lessons.id, NOT NULL  | —               | —                                   |
 | `status`              | `VARCHAR(50)`  | NOT NULL                   | `'not_started'` | not_started, in_progress, completed |
 | `progress_percentage` | `INTEGER`      | NOT NULL                   | `0`             | 0-100                               |
 | `video_position`      | `INTEGER`      | NOT NULL                   | `0`             | Seconds                             |
@@ -755,8 +755,8 @@
 | Column                  | Type           | Constraints               | Default | Description                                     |
 | ----------------------- | -------------- | ------------------------- | ------- | ----------------------------------------------- |
 | `id`                    | `UUID`         | PK                        | —       | —                                               |
-| `course_id`             | `UUID`         | FK → courses.id, NOT NULL | —       | —                                               |
-| `module_id`             | `UUID`         | FK → modules.id, NULLABLE | —       | —                                               |
+| `course_id`             | `UUID`         | FK â†’ courses.id, NOT NULL | —       | —                                               |
+| `module_id`             | `UUID`         | FK â†’ modules.id, NULLABLE | —       | —                                               |
 | `title`                 | `VARCHAR(255)` | NOT NULL                  | —       | —                                               |
 | `description`           | `TEXT`         | NOT NULL                  | —       | Full instructions                               |
 | `assignment_type`       | `VARCHAR(50)`  | NOT NULL                  | —       | lab, project, essay, coding_challenge, research |
@@ -778,8 +778,8 @@
 | Column            | Type           | Constraints                   | Default   | Description                        |
 | ----------------- | -------------- | ----------------------------- | --------- | ---------------------------------- |
 | `id`              | `UUID`         | PK                            | —         | —                                  |
-| `assignment_id`   | `UUID`         | FK → assignments.id, NOT NULL | —         | —                                  |
-| `student_id`      | `UUID`         | FK → students.id, NOT NULL    | —         | —                                  |
+| `assignment_id`   | `UUID`         | FK â†’ assignments.id, NOT NULL | —         | —                                  |
+| `student_id`      | `UUID`         | FK â†’ students.id, NOT NULL    | —         | —                                  |
 | `attempt_number`  | `INTEGER`      | NOT NULL                      | `1`       | —                                  |
 | `status`          | `VARCHAR(50)`  | NOT NULL                      | `'draft'` | draft, submitted, graded, returned |
 | `submission_text` | `TEXT`         | NULLABLE                      | —         | Rich text answer                   |
@@ -788,7 +788,7 @@
 | `submitted_at`    | `TIMESTAMPTZ`  | NULLABLE                      | —         | —                                  |
 | `grade`           | `DECIMAL(5,2)` | NULLABLE                      | —         | 0-100                              |
 | `letter_grade`    | `VARCHAR(2)`   | NULLABLE                      | —         | —                                  |
-| `grader_id`       | `UUID`         | FK → instructors.id, NULLABLE | —         | —                                  |
+| `grader_id`       | `UUID`         | FK â†’ instructors.id, NULLABLE | —         | —                                  |
 | `graded_at`       | `TIMESTAMPTZ`  | NULLABLE                      | —         | —                                  |
 | `feedback`        | `TEXT`         | NULLABLE                      | —         | Instructor feedback                |
 | `rubric_scores`   | `JSONB`        | NULLABLE                      | —         | Per-criterion scores               |
@@ -802,8 +802,8 @@
 | Column               | Type           | Constraints               | Default | Description                    |
 | -------------------- | -------------- | ------------------------- | ------- | ------------------------------ |
 | `id`                 | `UUID`         | PK                        | —       | —                              |
-| `course_id`          | `UUID`         | FK → courses.id, NOT NULL | —       | —                              |
-| `module_id`          | `UUID`         | FK → modules.id, NULLABLE | —       | —                              |
+| `course_id`          | `UUID`         | FK â†’ courses.id, NOT NULL | —       | —                              |
+| `module_id`          | `UUID`         | FK â†’ modules.id, NULLABLE | —       | —                              |
 | `title`              | `VARCHAR(255)` | NOT NULL                  | —       | —                              |
 | `assessment_type`    | `VARCHAR(50)`  | NOT NULL                  | —       | quiz, midterm, final, practice |
 | `time_limit_minutes` | `INTEGER`      | NULLABLE                  | —       | Null = no limit                |
@@ -819,11 +819,11 @@
 | Column               | Type           | Constraints                   | Default         | Description                               |
 | -------------------- | -------------- | ----------------------------- | --------------- | ----------------------------------------- |
 | `id`                 | `UUID`         | PK                            | —               | —                                         |
-| `assessment_id`      | `UUID`         | FK → assessments.id, NOT NULL | —               | —                                         |
-| `student_id`         | `UUID`         | FK → students.id, NOT NULL    | —               | —                                         |
+| `assessment_id`      | `UUID`         | FK â†’ assessments.id, NOT NULL | —               | —                                         |
+| `student_id`         | `UUID`         | FK â†’ students.id, NOT NULL    | —               | —                                         |
 | `attempt_number`     | `INTEGER`      | NOT NULL                      | —               | —                                         |
 | `status`             | `VARCHAR(50)`  | NOT NULL                      | `'in_progress'` | in_progress, submitted, timed_out, graded |
-| `answers`            | `JSONB`        | NULLABLE                      | —               | Question_id → answer                      |
+| `answers`            | `JSONB`        | NULLABLE                      | —               | Question_id â†’ answer                      |
 | `score`              | `DECIMAL(5,2)` | NULLABLE                      | —               | —                                         |
 | `started_at`         | `TIMESTAMPTZ`  | NOT NULL                      | —               | —                                         |
 | `submitted_at`       | `TIMESTAMPTZ`  | NULLABLE                      | —               | —                                         |
@@ -835,8 +835,8 @@
 | Column          | Type           | Constraints                | Default | Description                                    |
 | --------------- | -------------- | -------------------------- | ------- | ---------------------------------------------- |
 | `id`            | `UUID`         | PK                         | —       | —                                              |
-| `student_id`    | `UUID`         | FK → students.id, NOT NULL | —       | —                                              |
-| `course_id`     | `UUID`         | FK → courses.id, NOT NULL  | —       | —                                              |
+| `student_id`    | `UUID`         | FK â†’ students.id, NOT NULL | —       | —                                              |
+| `course_id`     | `UUID`         | FK â†’ courses.id, NOT NULL  | —       | —                                              |
 | `gradable_type` | `VARCHAR(50)`  | NOT NULL                   | —       | assignment, assessment, participation, project |
 | `gradable_id`   | `UUID`         | NOT NULL                   | —       | Polymorphic reference                          |
 | `score`         | `DECIMAL(5,2)` | NOT NULL                   | —       | 0-100                                          |
@@ -852,7 +852,7 @@
 | Column        | Type           | Constraints                | Default | Description         |
 | ------------- | -------------- | -------------------------- | ------- | ------------------- |
 | `id`          | `UUID`         | PK                         | —       | —                   |
-| `student_id`  | `UUID`         | FK → students.id, NOT NULL | —       | —                   |
+| `student_id`  | `UUID`         | FK â†’ students.id, NOT NULL | —       | —                   |
 | `title`       | `VARCHAR(255)` | NOT NULL                   | —       | —                   |
 | `description` | `TEXT`         | NULLABLE                   | —       | —                   |
 | `project_url` | `VARCHAR(500)` | NULLABLE                   | —       | Live demo link      |
@@ -869,7 +869,7 @@
 | Column        | Type           | Constraints                | Default | Description |
 | ------------- | -------------- | -------------------------- | ------- | ----------- |
 | `id`          | `UUID`         | PK                         | —       | —           |
-| `student_id`  | `UUID`         | FK → students.id, NOT NULL | —       | —           |
+| `student_id`  | `UUID`         | FK â†’ students.id, NOT NULL | —       | —           |
 | `name`        | `VARCHAR(100)` | NOT NULL                   | —       | —           |
 | `proficiency` | `INTEGER`      | NOT NULL                   | `3`     | 1-5         |
 | `sort_order`  | `INTEGER`      | NOT NULL                   | `0`     | —           |
@@ -882,7 +882,7 @@
 | Column             | Type           | Constraints                | Default | Description                                             |
 | ------------------ | -------------- | -------------------------- | ------- | ------------------------------------------------------- |
 | `id`               | `UUID`         | PK                         | —       | —                                                       |
-| `student_id`       | `UUID`         | FK → students.id, NOT NULL | —       | —                                                       |
+| `student_id`       | `UUID`         | FK â†’ students.id, NOT NULL | —       | —                                                       |
 | `type`             | `VARCHAR(50)`  | NOT NULL                   | —       | course_completion, program_completion, micro_credential |
 | `name`             | `VARCHAR(255)` | NOT NULL                   | —       | "Python for Cybersecurity"                              |
 | `credential_id`    | `VARCHAR(100)` | UNIQUE, NOT NULL           | —       | CEA-CERT-YYYY-NNNNN                                     |
@@ -914,8 +914,8 @@
 | Column                     | Type            | Constraints                         | Default       | Description                  |
 | -------------------------- | --------------- | ----------------------------------- | ------------- | ---------------------------- |
 | `id`                       | `UUID`          | PK                                  | —             | —                            |
-| `student_id`               | `UUID`          | FK → students.id, NOT NULL          | —             | —                            |
-| `item_id`                  | `UUID`          | FK → marketplace_items.id, NOT NULL | —             | —                            |
+| `student_id`               | `UUID`          | FK â†’ students.id, NOT NULL          | —             | —                            |
+| `item_id`                  | `UUID`          | FK â†’ marketplace_items.id, NOT NULL | —             | —                            |
 | `stripe_payment_intent_id` | `VARCHAR(255)`  | NOT NULL                            | —             | —                            |
 | `amount`                   | `DECIMAL(10,2)` | NOT NULL                            | —             | —                            |
 | `status`                   | `VARCHAR(50)`   | NOT NULL                            | `'completed'` | completed, refunded, pending |
@@ -926,7 +926,7 @@
 | Column            | Type           | Constraints             | Default | Description                                      |
 | ----------------- | -------------- | ----------------------- | ------- | ------------------------------------------------ |
 | `id`              | `UUID`         | PK                      | —       | —                                                |
-| `author_id`       | `UUID`         | FK → users.id, NOT NULL | —       | —                                                |
+| `author_id`       | `UUID`         | FK â†’ users.id, NOT NULL | —       | —                                                |
 | `category`        | `VARCHAR(50)`  | NOT NULL                | —       | qa, study_groups, announcements, off_topic, tips |
 | `title`           | `VARCHAR(255)` | NOT NULL                | —       | —                                                |
 | `content`         | `TEXT`         | NOT NULL                | —       | Rich text                                        |
@@ -943,9 +943,9 @@
 | Column         | Type          | Constraints                     | Default | Description      |
 | -------------- | ------------- | ------------------------------- | ------- | ---------------- |
 | `id`           | `UUID`        | PK                              | —       | —                |
-| `post_id`      | `UUID`        | FK → forum_posts.id, NOT NULL   | —       | —                |
-| `parent_id`    | `UUID`        | FK → forum_replies.id, NULLABLE | —       | Nested threading |
-| `author_id`    | `UUID`        | FK → users.id, NOT NULL         | —       | —                |
+| `post_id`      | `UUID`        | FK â†’ forum_posts.id, NOT NULL   | —       | —                |
+| `parent_id`    | `UUID`        | FK â†’ forum_replies.id, NULLABLE | —       | Nested threading |
+| `author_id`    | `UUID`        | FK â†’ users.id, NOT NULL         | —       | —                |
 | `content`      | `TEXT`        | NOT NULL                        | —       | —                |
 | `upvote_count` | `INTEGER`     | NOT NULL                        | `0`     | —                |
 | `is_solution`  | `BOOLEAN`     | NOT NULL                        | `false` | Marked as answer |
@@ -956,8 +956,8 @@
 | Column            | Type           | Constraints                     | Default  | Description             |
 | ----------------- | -------------- | ------------------------------- | -------- | ----------------------- |
 | `id`              | `UUID`         | PK                              | —        | —                       |
-| `sender_id`       | `UUID`         | FK → users.id, NOT NULL         | —        | —                       |
-| `conversation_id` | `UUID`         | FK → conversations.id, NOT NULL | —        | —                       |
+| `sender_id`       | `UUID`         | FK â†’ users.id, NOT NULL         | —        | —                       |
+| `conversation_id` | `UUID`         | FK â†’ conversations.id, NOT NULL | —        | —                       |
 | `content`         | `TEXT`         | NOT NULL                        | —        | —                       |
 | `content_type`    | `VARCHAR(50)`  | NOT NULL                        | `'text'` | text, image, file, code |
 | `file_url`        | `VARCHAR(500)` | NULLABLE                        | —        | —                       |
@@ -977,8 +977,8 @@
 
 | Column            | Type          | Constraints                     | Default | Description |
 | ----------------- | ------------- | ------------------------------- | ------- | ----------- |
-| `conversation_id` | `UUID`        | FK → conversations.id, NOT NULL | —       | —           |
-| `user_id`         | `UUID`        | FK → users.id, NOT NULL         | —       | —           |
+| `conversation_id` | `UUID`        | FK â†’ conversations.id, NOT NULL | —       | —           |
+| `user_id`         | `UUID`        | FK â†’ users.id, NOT NULL         | —       | —           |
 | `last_read_at`    | `TIMESTAMPTZ` | NOT NULL                        | `NOW()` | —           |
 | `joined_at`       | `TIMESTAMPTZ` | NOT NULL                        | `NOW()` | —           |
 
@@ -989,13 +989,13 @@
 | Column                  | Type           | Constraints                   | Default | Description                    |
 | ----------------------- | -------------- | ----------------------------- | ------- | ------------------------------ |
 | `id`                    | `UUID`         | PK                            | —       | —                              |
-| `student_id`            | `UUID`         | FK → students.id, NOT NULL    | —       | —                              |
-| `course_id`             | `UUID`         | FK → courses.id, NOT NULL     | —       | —                              |
+| `student_id`            | `UUID`         | FK â†’ students.id, NOT NULL    | —       | —                              |
+| `course_id`             | `UUID`         | FK â†’ courses.id, NOT NULL     | —       | —                              |
 | `session_date`          | `DATE`         | NOT NULL                      | —       | —                              |
 | `status`                | `VARCHAR(50)`  | NOT NULL                      | —       | present, absent, excused, late |
 | `excused_reason`        | `TEXT`         | NULLABLE                      | —       | —                              |
 | `excuse_attachment_url` | `VARCHAR(500)` | NULLABLE                      | —       | —                              |
-| `marked_by`             | `UUID`         | FK → instructors.id, NOT NULL | —       | —                              |
+| `marked_by`             | `UUID`         | FK â†’ instructors.id, NOT NULL | —       | —                              |
 | `created_at`            | `TIMESTAMPTZ`  | NOT NULL                      | `NOW()` | —                              |
 
 **Indexes:** UNIQUE(student_id, course_id, session_date)
@@ -1005,8 +1005,8 @@
 | Column        | Type           | Constraints                | Default | Description                                                   |
 | ------------- | -------------- | -------------------------- | ------- | ------------------------------------------------------------- |
 | `id`          | `UUID`         | PK                         | —       | —                                                             |
-| `student_id`  | `UUID`         | FK → students.id, NULLABLE | —       | Null = global event                                           |
-| `course_id`   | `UUID`         | FK → courses.id, NULLABLE  | —       | —                                                             |
+| `student_id`  | `UUID`         | FK â†’ students.id, NULLABLE | —       | Null = global event                                           |
+| `course_id`   | `UUID`         | FK â†’ courses.id, NULLABLE  | —       | —                                                             |
 | `title`       | `VARCHAR(255)` | NOT NULL                   | —       | —                                                             |
 | `description` | `TEXT`         | NULLABLE                   | —       | —                                                             |
 | `event_type`  | `VARCHAR(50)`  | NOT NULL                   | —       | class, office_hours, deadline, exam, study_group, appointment |
@@ -1022,7 +1022,7 @@
 | Column              | Type            | Constraints                | Default     | Description                                 |
 | ------------------- | --------------- | -------------------------- | ----------- | ------------------------------------------- |
 | `id`                | `UUID`          | PK                         | —           | —                                           |
-| `student_id`        | `UUID`          | FK → students.id, NOT NULL | —           | —                                           |
+| `student_id`        | `UUID`          | FK â†’ students.id, NOT NULL | —           | —                                           |
 | `invoice_number`    | `VARCHAR(50)`   | UNIQUE, NOT NULL           | —           | INV-YYYY-NNNNN                              |
 | `description`       | `VARCHAR(500)`  | NOT NULL                   | —           | —                                           |
 | `amount`            | `DECIMAL(10,2)` | NOT NULL                   | —           | —                                           |
@@ -1039,8 +1039,8 @@
 | Column                     | Type            | Constraints                | Default | Description                 |
 | -------------------------- | --------------- | -------------------------- | ------- | --------------------------- |
 | `id`                       | `UUID`          | PK                         | —       | —                           |
-| `invoice_id`               | `UUID`          | FK → invoices.id, NOT NULL | —       | —                           |
-| `student_id`               | `UUID`          | FK → students.id, NOT NULL | —       | —                           |
+| `invoice_id`               | `UUID`          | FK â†’ invoices.id, NOT NULL | —       | —                           |
+| `student_id`               | `UUID`          | FK â†’ students.id, NOT NULL | —       | —                           |
 | `amount`                   | `DECIMAL(10,2)` | NOT NULL                   | —       | —                           |
 | `stripe_payment_intent_id` | `VARCHAR(255)`  | NOT NULL                   | —       | —                           |
 | `stripe_payment_method`    | `VARCHAR(50)`   | NULLABLE                   | —       | card, bank_transfer         |
@@ -1053,8 +1053,8 @@
 | ------------- | -------------- | ------------------------- | ------- | ----------- |
 | `id`          | `UUID`         | PK                        | —       | —           |
 | `name`        | `VARCHAR(255)` | NOT NULL                  | —       | —           |
-| `course_id`   | `UUID`         | FK → courses.id, NULLABLE | —       | —           |
-| `created_by`  | `UUID`         | FK → users.id, NOT NULL   | —       | —           |
+| `course_id`   | `UUID`         | FK â†’ courses.id, NULLABLE | —       | —           |
+| `created_by`  | `UUID`         | FK â†’ users.id, NOT NULL   | —       | —           |
 | `max_members` | `INTEGER`      | NOT NULL                  | `10`    | —           |
 | `description` | `TEXT`         | NULLABLE                  | —       | —           |
 | `created_at`  | `TIMESTAMPTZ`  | NOT NULL                  | `NOW()` | —           |
@@ -1846,9 +1846,9 @@ Step 1: Student sees pending assignment in dashboard → clicks "Start →"
   → Navigates to /assignments/{id}
 
 Step 2: Assignment instructions loaded
-  → Student reads "Analyze packet capture with Wireshark"
-  → Downloads assignment files (PCAP + template)
-  → Views rubric: 4 criteria × 25 points = 100 total
+  â†’ Student reads "Analyze packet capture with Wireshark"
+  â†’ Downloads assignment files (PCAP + template)
+  â†’ Views rubric: 4 criteria à— 25 points = 100 total
 
 Step 3: Student works offline, returns to submit
   → Drags analysis_report.pdf and capture_analysis.pcap to upload zone

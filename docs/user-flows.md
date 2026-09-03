@@ -70,6 +70,7 @@ render static data instead.
 
 ### 1.1 Apply to a program — `/apply` (LIVE)
 - 4-step wizard (program → profile → assessment → financing); the profile
+- 4-step wizard (program â†’ profile â†’ assessment â†’ financing); the profile
   step collects first/last name + email.
 - Submit → `POST /v1/applications` (public) with
   `{ fullName, email, programSlug }`.
@@ -85,12 +86,16 @@ render static data instead.
 - Enter an ID → static mock state only.
 - **Real equivalent (public):** `GET /v1/applications/:ref` → status +
   stage list (`submitted → screening → assessment → interview → offer →
+- Enter an ID â†’ static mock state only.
+- **Real equivalent (public):** `GET /v1/applications/:ref` â†’ status +
+  stage list (`submitted â†’ screening â†’ assessment â†’ interview â†’ offer â†’
   enrolled`, each stage `done`/`active`). 404 if the ref is unknown.
 - **Advancement (admin only):** `PATCH /v1/applications/:ref` `{ status }` —
   rejects backwards moves (400), 404 unknown ref, writes an audit log entry.
 
 ### 1.3 Certificate verification — `/certificates/verify` (LIVE)
 - Code input (or `?code=` search param) → `GET /v1/certificates/verify?code=`
+- Code input (or `?code=` search param) â†’ `GET /v1/certificates/verify?code=`
   (public, code uppercased server-side).
   - < 8 chars → 400. Unknown code → `{ valid: false, message }`.
   - Valid → `{ valid: true, certificate: { code, title, issuedAt } }`; the
@@ -121,6 +126,7 @@ Two tabs on the page:
 - **Password tab (real):** posts `POST /v1/auth/sign-in`
   `{ email, password, remember }` (rate-limited 5/min per email+IP).
   - Wrong email/password → **401** (same message either way — no user
+  - Wrong email/password â†’ **401** (same message either way — no user
     enumeration).
   - Suspended user → 403.
   - No MFA on the account → `200 { user, expiresAt }` → navigate `/app`.
@@ -238,6 +244,9 @@ in live mode; the "Viewing as" role switcher remains a demo affordance.
    <origin>/app/finance/pay-verify }` → `POST /v1/payments/checkout`
    (any authenticated). Amount must be whole NGN 1–10,000,000; description
    â‰¤ 120 chars; `redirectUrl` must be an https URL → else 400.
+   <origin>/app/finance/pay-verify }` â†’ `POST /v1/payments/checkout`
+   (any authenticated). Amount must be whole NGN 1–10,000,000; description
+   â‰¤ 120 chars; `redirectUrl` must be an https URL â†’ else 400.
 2. A `payments` row is inserted: `reference = cea_<16 hex>`, `status =
    "pending"`, `provider = "paystack"`.
 3. **Real mode:** Paystack `transaction/initialize` with `amount * 100` and
@@ -306,6 +315,7 @@ now set per-checkout via `redirect_url` (see step 1).
   (own only).
 - Send: `POST /v1/push/send` `{ title, body, url?, userId? }` — anyone to
   self; **admin/instructor** to any user (403 otherwise). No VAPID → 503.
+  self; **admin/instructor** to any user (403 otherwise). No VAPID â†’ 503.
   Dead endpoints auto-removed; response `{ sent, removed }`.
 - **UI (live):** "Send a push" card on `/app/notifications` — title, message,
   optional open-link URL; admin/instructor pick the recipient (candidates
@@ -411,6 +421,7 @@ Pages under `/app/admin/*`:
 
 ### 9.1 Paystack webhook — `POST /v1/payments/webhook` (public)
 1. With a secret: requires `x-paystack-signature` (missing/bad → 401),
+1. With a secret: requires `x-paystack-signature` (missing/bad â†’ 401),
    HMAC-SHA512 of the raw body, constant-time compare. No secret +
    `APP_ENV=production` → 503; dev → signature skipped.
 2. `charge.success` → row `success`, amount corrected, `paid_at` set,

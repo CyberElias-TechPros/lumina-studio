@@ -1,4 +1,4 @@
-﻿# Lumina Studio — Frontend→Backend Preparation Plan
+﻿# Lumina Studio — Frontendâ†’Backend Preparation Plan
 
 > Source: deep audit of all 358 route files, all 32 actor plan files (~2.7 MB),
 > the 5 master plan documents, and the actual runtime config.
@@ -15,8 +15,8 @@ between the current frontend and the future Cloudflare backend, organized as:
 - Â§2 Verified ground truth (what the repo actually is)
 - Â§3 Target architecture (reconciled with the repo — conflicts resolved)
 - Â§4 Frontend prep backlog (A–Q layers, each with concrete file targets)
-- Â§5 API surface catalog (endpoint groups × consuming screens)
-- Â§6 D1 data model mapping (mock data → tables/seeds)
+- Â§5 API surface catalog (endpoint groups à— consuming screens)
+- Â§6 D1 data model mapping (mock data â†’ tables/seeds)
 - Â§7 Realtime protocol (chat / live / presence / notifications)
 - Â§8 Uploads (presigned R2 flow + file-input catalog)
 - Â§9 Payments (Paystack integration + pay-button catalog)
@@ -134,9 +134,9 @@ Ordered by dependency. Each item names the concrete file(s) to create/edit.
 - `apiFetch<T>(path, { method, body, signal, retry, priority })`:
   - Base URL from `env.apiUrl`; JSON body; `credentials: 'include'`.
   - Parse error envelope `{ error: { code, message, fieldErrors } }`.
-  - Auto `401` → single-flight refresh → retry once; `429` → honor `Retry-After`; `408/503` → backoff.
+  - Auto `401` â†’ single-flight refresh â†’ retry once; `429` â†’ honor `Retry-After`; `408/503` â†’ backoff.
 - Domain modules: `src/lib/api/{auth,lms,hr,finance,recruitment,marketing,design,alumni,admin}.ts` — one function per endpoint in Â§5, grouped and typed from the shared schema package (Â§N).
-- Mock-mode switch: when `VITE_API_URL` unset → `src/lib/api/mock.ts` returns current mock arrays (keeps the app runnable before the backend exists).
+- Mock-mode switch: when `VITE_API_URL` unset â†’ `src/lib/api/mock.ts` returns current mock arrays (keeps the app runnable before the backend exists).
 
 ### C. Auth & session (`src/lib/auth/`)
 - `session-store.ts` — zustand-free approach: react-query `useSession` keyed on `/v1/auth/session` with 30s staleTime + window focus refetch; no extra state lib needed.
@@ -159,26 +159,26 @@ Ordered by dependency. Each item names the concrete file(s) to create/edit.
   - `useLiveClass(classId)` — presence, polls, raise-hand, whiteboard ops, recording state.
   - `usePresence(orgId)` — online staff/students for dashboards.
   - `useNotificationStream()` — bell badge + toast for `notification.new` events.
-- Fallback: when WS unavailable → polling interval (×2) for chat + notifications.
+- Fallback: when WS unavailable â†’ polling interval (à—2) for chat + notifications.
 
 ### F. Uploads (`src/lib/upload.ts`)
-- `uploadFile(file, { kind, onProgress, signal })` → `POST /v1/uploads/presign` → `PUT R2` with progress → `POST /v1/uploads/complete`.
+- `uploadFile(file, { kind, onProgress, signal })` â†’ `POST /v1/uploads/presign` â†’ `PUT R2` with progress â†’ `POST /v1/uploads/complete`.
 - `src/components/ui/file-input.tsx` — drag/drop, preview, validation (mime/size per `kind`), progress bar, error states.
 - Catalog of screens with file inputs (from route inventory): application documents, HR onboarding docs, LMS lesson resources/assignments, certificate/logo images, avatar on profile, recruitment CVs, marketing creatives, legal documents. Each needs: `kind` mapping (Â§8.3) + `uploadFile` call.
 
 ### G. Payments (`src/lib/payments.ts`)
-- `createCheckout(items)` → `POST /v1/payments/checkout` → Paystack Checkout (hosted standard checkout) or open Paystack Inline JS modal; NGN primary currency.
+- `createCheckout(items)` â†’ `POST /v1/payments/checkout` â†’ Paystack Checkout (hosted standard checkout) or open Paystack Inline JS modal; NGN primary currency.
 - `handlePaymentStatus(reference)` — poll `/v1/payments/session/:reference` after redirect; success/processing/failed UI states (sonner + inline).
-- Payment touchpoints from inventory: tuition/fees (student), invoice pay (finance), employer plans, event tickets, program installments, grants disbursement (read-only). Each pay button → `createCheckout`.
+- Payment touchpoints from inventory: tuition/fees (student), invoice pay (finance), employer plans, event tickets, program installments, grants disbursement (read-only). Each pay button â†’ `createCheckout`.
 
 ### H. Forms → RHF+zod contracts
 - Move every inline form (catalog Â§13) to react-hook-form + `zodResolver` (already installed).
 - `src/lib/schema/*.ts` — shared zod schemas for ~40 forms (auth, apply, enrollment, HR, LMS, finance, recruitment, marketing, design briefs, localization).
-- UI contract: `onSubmit(values) → mutation.mutate(values)`; submit button disabled + spinner during `isPending`; `fieldErrors` map from API envelope into `setError`; sonner success/error.
+- UI contract: `onSubmit(values) â†’ mutation.mutate(values)`; submit button disabled + spinner during `isPending`; `fieldErrors` map from API envelope into `setError`; sonner success/error.
 
 ### I. UI states (`src/components/ui/`)
 - `query-state.tsx` — `<QueryState query={q}>` switching between: `Skeleton` (loading), `EmptyState` (icon+title+action, per-role copy), `ErrorState` (retry button), children (data).
-- Replace hardcoded arrays with these on the KPI-heavy dashboards first (they're identical shape → fastest win).
+- Replace hardcoded arrays with these on the KPI-heavy dashboards first (they're identical shape â†’ fastest win).
 - Onboarding tours: add `src/components/app/onboarding-tour.tsx` (walkthroughs per role, backed by KV flag `onboarding.<userId>.<step>`).
 
 ### J. Analytics wiring
@@ -190,7 +190,7 @@ Ordered by dependency. Each item names the concrete file(s) to create/edit.
 ### K. PWA + push
 - `public/manifest.webmanifest` (name, icons, theme `#0f172a`), `public/sw.js` (precache + cache-first for static assets).
 - Register in `src/entry.tsx` (or root layout) only when `VITE_APP_ENV !== 'dev'`.
-- Push: `PushManager.subscribe()` → `POST /v1/push/subscriptions`; backend sends via Web Push (VAPID keys in KV). Notifications UI already has Quiet-hours preferences (`app/notifications.tsx`) — wire push prefs there.
+- Push: `PushManager.subscribe()` â†’ `POST /v1/push/subscriptions`; backend sends via Web Push (VAPID keys in KV). Notifications UI already has Quiet-hours preferences (`app/notifications.tsx`) — wire push prefs there.
 
 ### L. Turnstile
 - `src/components/ui/turnstile.tsx` — invisible+managed widget via `@cloudflare/turnstile` script tag (no npm dep needed) or the official package.
@@ -201,7 +201,7 @@ Ordered by dependency. Each item names the concrete file(s) to create/edit.
 - Inline per-screen consts get promoted into `src/data/*` first (so seeds cover all 60+ collections), then replaced by queries.
 
 ### N. Type sharing (the schema contract)
-- Keep zod schemas in `src/lib/schema/*.ts` as the source of truth → generate OpenAPI 3.1 via `zod-to-openapi` in CI → backend imports/validates with the same zod package (via npm workspace or a `shared/` folder). No codegen client needed — fetch + `zodParse` on responses in dev.
+- Keep zod schemas in `src/lib/schema/*.ts` as the source of truth â†’ generate OpenAPI 3.1 via `zod-to-openapi` in CI â†’ backend imports/validates with the same zod package (via npm workspace or a `shared/` folder). No codegen client needed — fetch + `zodParse` on responses in dev.
 - Fallback: hand-written `src/lib/api/types.ts` until the workspace split happens.
 
 ### O. Feature flags
@@ -211,11 +211,11 @@ Ordered by dependency. Each item names the concrete file(s) to create/edit.
 - Localization suite screens exist (localization/*). Add `src/lib/i18n.ts` (tiny dictionary loader, `locale` from session/URL) only when second locale is actually commissioned (decision D-6); otherwise keep copy in English and ship locale-ready strings object.
 
 ### Q. Error & monitoring
-- `src/lib/errors.ts` — normalize API envelope → user messages; sentinel log to `console.error` + optional `/v1/telemetry/client` in prod.
+- `src/lib/errors.ts` — normalize API envelope â†’ user messages; sentinel log to `console.error` + optional `/v1/telemetry/client` in prod.
 
 ---
 
-## 5. API surface catalog (endpoint groups × consumers)
+## 5. API surface catalog (endpoint groups à— consumers)
 
 > Derived from route inventory. Full per-screen mapping lives in the Agent-A
 > deliverable; this is the consolidated contract.
@@ -284,14 +284,14 @@ Domain schemas per master plan (10+): `identity, lms, assessment, hr, finance, r
 
 > Provider decision (user, Aug 2026): **Paystack**, not Stripe — NGN-first, standard Checkout + Inline JS, webhooks `charge.success` / `invoice.paid` / `charge.failed`.
 
-- `POST /v1/payments/checkout` → `{ authorizationUrl, accessCode?, mock }` — hosted Paystack Checkout (NGN); server-side `transaction/initialize` call with `PAYSTACK_SECRET_KEY`; no secret (dev) → `mock: true` + `checkout.paystack.com/<ref>` URL. Body `{ amount (naira, int 1..10M), description? }`, creates a `pending` row in `payments` (unique `reference` = `cea_<hex>`, kobo conversion happens at the Paystack boundary).
-- Webhooks (backend): `POST /v1/payments/webhook` (public) — `charge.success` / `charge.failed` / other events; HMAC-SHA512 signature verified via `x-paystack-signature` when a secret is configured (constant-time compare; prod without secret → 503); success → ledger row `success` + `paid_at` + "Payment received" notification; failed → `failed` + notification; unknown events → `200 { ok: true }`, idempotent (no duplicate notifications on redelivery).
+- `POST /v1/payments/checkout` â†’ `{ authorizationUrl, accessCode?, mock }` — hosted Paystack Checkout (NGN); server-side `transaction/initialize` call with `PAYSTACK_SECRET_KEY`; no secret (dev) â†’ `mock: true` + `checkout.paystack.com/<ref>` URL. Body `{ amount (naira, int 1..10M), description? }`, creates a `pending` row in `payments` (unique `reference` = `cea_<hex>`, kobo conversion happens at the Paystack boundary).
+- Webhooks (backend): `POST /v1/payments/webhook` (public) — `charge.success` / `charge.failed` / other events; HMAC-SHA512 signature verified via `x-paystack-signature` when a secret is configured (constant-time compare; prod without secret â†’ 503); success â†’ ledger row `success` + `paid_at` + "Payment received" notification; failed â†’ `failed` + notification; unknown events â†’ `200 { ok: true }`, idempotent (no duplicate notifications on redelivery).
 - Client: `GET /v1/payments/session/:reference` (owner-only, 403 otherwise) for `handlePaymentStatus` polling; `GET /v1/payments/history` (own payments, keyset paginated). Frontend: `src/lib/api/payments.ts` + `src/lib/query/payments.ts` (`usePaymentHistory`, `useCreateCheckout`) + mock handlers; pay-button pages (student billing, finance invoice pay, employer plan upgrade) wire these when their pages land.
 - Pay-button touchpoints (from inventory): student tuition/installments, finance invoice pay, employer plan upgrade, event tickets, program compare → enroll checkout.
 
 ---
 
-## 10. Notifications (templates × channels)
+## 10. Notifications (templates à— channels)
 
 - 42 email templates (master plan Â§notifications) + 65+ event types; matrix table: event → { in-app, email, push, quiet-hours-aware }.
 - In-app: `GET /v1/notifications` (cursor), `POST /v1/notifications/read-all`, WS `notification.new` → bell badge + sonner toast; prefs UI already exists (`app/notifications.tsx` with Quiet hours) → back with `notification_preferences`.
@@ -315,8 +315,8 @@ Domain schemas per master plan (10+): `identity, lms, assessment, hr, finance, r
 
 ## 12. Auth / RBAC (roleKey problem)
 
-- Current: `AppShell` takes a free-string `roleKey`; observed misuse (`director→admin`, `finance→instructor`). Fix:
-  - `src/data/rbac.ts` — canonical role map: `student, instructor, employer, admin, product-marketing, behavioral-design, growth, localization, design` (9 appRoles already registered) + alias resolution (`director`, `government`, `finance`, `accountant`, `recruiter`, `mentor`, `alumni` → canonical keys).
+- Current: `AppShell` takes a free-string `roleKey`; observed misuse (`directorâ†’admin`, `financeâ†’instructor`). Fix:
+  - `src/data/rbac.ts` — canonical role map: `student, instructor, employer, admin, product-marketing, behavioral-design, growth, localization, design` (9 appRoles already registered) + alias resolution (`director`, `government`, `finance`, `accountant`, `recruiter`, `mentor`, `alumni` â†’ canonical keys).
   - Route meta: `roleKey` validated against the map in `beforeLoad`; `requireRole` guard; `<Gate permission="finance.invoice.pay">` component for in-page gating.
   - Backend mirror: `roles`/`permissions` tables + permission codes; client checks against session `permissions[]` array (server-authoritative), not hardcoded strings.
 - Session: opaque cookie + `refresh_tokens` + `device_sessions`; silent refresh in client (single-flight); logout revokes device.
@@ -394,8 +394,8 @@ Auth (3): sign-in, register, magic-link. Apply (3): personal, documents, fee. LM
 **Phase 2 done (Jul 2026):** LMS core shipped.
 - Migration `0001_lms.sql`: `courses` (modules/lessons as JSON, template statuses `preview`/`locked`), `enrollments`, `lesson_progress`, `gradebook`, `student_stats` — per-user state separated from course content.
 - `GET /v1/courses` + `GET /v1/courses/:slug` (requireAuth): lessons status computed per user — `lesson_progress` overrides, else `preview` passthrough, else `locked`; `pct` from enrollment. `/gradebook` registered before `/:slug` (Hono order).
-- `GET /v1/courses/gradebook` + `GET /v1/dashboard/student` (requireAuth + student-only → 403): gradebook paginated by course name; dashboard assembles kpis (enrolled/avg pct/student_stats), summary (progress counts), weeklyGoal note (generated), nextDeadline (student_stats), courses with `nextUp` = first in-progress lesson.
-- Seeds: `scripts/gen-lms-seed.ts` → `seeds/lms.{sql,ts}` from `src/data/learning.ts` — demo users `student@cea.ng` / `instructor@cea.ng`, 3 courses, enrollments + 15 progress rows, 4 gradebook entries, stats. All seeds idempotent (`INSERT OR IGNORE`); `db:seed:local` runs content + lms.
+- `GET /v1/courses/gradebook` + `GET /v1/dashboard/student` (requireAuth + student-only â†’ 403): gradebook paginated by course name; dashboard assembles kpis (enrolled/avg pct/student_stats), summary (progress counts), weeklyGoal note (generated), nextDeadline (student_stats), courses with `nextUp` = first in-progress lesson.
+- Seeds: `scripts/gen-lms-seed.ts` â†’ `seeds/lms.{sql,ts}` from `src/data/learning.ts` — demo users `student@cea.ng` / `instructor@cea.ng`, 3 courses, enrollments + 15 progress rows, 4 gradebook entries, stats. All seeds idempotent (`INSERT OR IGNORE`); `db:seed:local` runs content + lms.
 - Tests: 44 total (courses 9: auth, merged statuses, fresh-user locking, cursor walk, detail, 404, gradebook 401/200/403; dashboard 4). Also raised vitest `testTimeout` to 15s (parallel worker boot contention).
 
 **Next (Phase 2 remainder):** app-panel wiring — switch `/app/learn`, `/app/grades`, `/app/assignments`, `/app/assessments`, `/app/instructor/*` pages from `src/data/*` imports to `src/lib/api/*` + query hooks; then Phase 3 (assignments/assessments/submissions endpoints per `src/data/learning.ts` remaining collections).
@@ -410,8 +410,8 @@ Auth (3): sign-in, register, magic-link. Apply (3): personal, documents, fee. LM
 **Phase 3.5 done (Aug 2026):** domain backend (instructor/HR/finance/admin/notifications) + full instructor suite wiring.
 - Migration `0003_domain.sql`: per-instructor `instructor_courses` (modules JSON), `submissions`, `instructor_gradebook` (quiz/lab/assignment/midterm/total/letter/atRisk columns); shared `employees`, `leave_requests` (`from_date`/`to_date`), `invoices`, `expenses`, `admin_users`, `audit_log`, `notifications` (`user_id` NULL = shared). Drizzle schema mirrored in `api/src/db/schema.ts`.
 - Role middleware: `requireAnyRole(roles)` factory + `requireInstructor`, `requireHr` (hr|admin), `requireFinance` (finance|admin), `requireAdmin` — 403 `FORBIDDEN` otherwise.
-- New routes (all `Paginated<T>` keyset): `GET /v1/instructor/{gradebook,courses,courses/:slug,assignments,assignments/:id}`; `GET /v1/hr/{employees,leave-requests}` (leave maps `name→employee`, `from_date→from`, `to_date→to`); finance mounted at `v1.route("/", finance)` so `GET /v1/{invoices,expenses}`; `GET /v1/admin/{users,audit-log}`; `GET /v1/notifications` (any auth; `WHERE (user_id = ? OR user_id IS NULL)`).
-- Seeds: `gen-domain-seed.ts` → `seeds/domain.{sql,ts}` (53 idempotent stmts) from `src/data/learning.ts` + `src/data/dashboard.ts`; demo users `admin@cea.ng`/`hr@cea.ng`/`finance@cea.ng` (UUIDs …-003/…-004/…-005); magic-link sign-in preserves seeded `role_key`; `gen:seed` + `db:seed:local` chain all 3 generators.
+- New routes (all `Paginated<T>` keyset): `GET /v1/instructor/{gradebook,courses,courses/:slug,assignments,assignments/:id}`; `GET /v1/hr/{employees,leave-requests}` (leave maps `nameâ†’employee`, `from_dateâ†’from`, `to_dateâ†’to`); finance mounted at `v1.route("/", finance)` so `GET /v1/{invoices,expenses}`; `GET /v1/admin/{users,audit-log}`; `GET /v1/notifications` (any auth; `WHERE (user_id = ? OR user_id IS NULL)`).
+- Seeds: `gen-domain-seed.ts` â†’ `seeds/domain.{sql,ts}` (53 idempotent stmts) from `src/data/learning.ts` + `src/data/dashboard.ts`; demo users `admin@cea.ng`/`hr@cea.ng`/`finance@cea.ng` (UUIDs …-003/…-004/…-005); magic-link sign-in preserves seeded `role_key`; `gen:seed` + `db:seed:local` chain all 3 generators.
 - Frontend: clients `src/lib/api/{instructor,hr,finance,admin,notifications}.ts` + query hooks under `src/lib/query/`, mock registrations for all new endpoints, and all 4 instructor pages wired to live data (`gradebook`, `courses/$courseId`, `assignments/index`, `assignments/$submissionId/grade`) via `QueryState` + `useInstructor*` hooks. Research note: admin/hr/accountant pages use inline `const` arrays (not `src/data` imports) — wiring them requires a refactor; deferred to next step.
 - Verified: 83/83 api tests green (new `domain.test.ts`, 20 tests), `tsc --noEmit` clean, lint clean, frontend build green, migration applied + seeded locally. Commits `299df57` (backend) + `9dcf560` (wiring), pushed.
 
@@ -424,7 +424,7 @@ Auth (3): sign-in, register, magic-link. Apply (3): personal, documents, fee. LM
 - Verified: `tsc --noEmit` clean, lint clean, frontend build green. Commit `f01dd90`, pushed.
 
 **Phase 3.7 done (Aug 2026):** payroll + payments endpoints shipped; provider switched to Paystack (not Stripe).
-- Sweep: `VITE_STRIPE_PUBLISHABLE_KEY` → `VITE_PAYSTACK_PUBLIC_KEY` (`src/vite-env.d.ts`, `src/lib/env.ts`, `.env.example`, dev/env page); flag key `payments.stripe` → `payments.paystack` (`src/lib/flags.ts`, mock flags, `api/src/routes/flags.ts` + test); Â§9/Â§4-A/Â§16/Â§3/Â§18 docs rewritten for Paystack (`charge.success`/`charge.failed` webhooks, `{ authorization_url }` checkout, `PAYSTACK_SECRET_KEY`); UI has no Paystack SDK — plain fetch.
+- Sweep: `VITE_STRIPE_PUBLISHABLE_KEY` â†’ `VITE_PAYSTACK_PUBLIC_KEY` (`src/vite-env.d.ts`, `src/lib/env.ts`, `.env.example`, dev/env page); flag key `payments.stripe` â†’ `payments.paystack` (`src/lib/flags.ts`, mock flags, `api/src/routes/flags.ts` + test); Â§9/Â§4-A/Â§16/Â§3/Â§18 docs rewritten for Paystack (`charge.success`/`charge.failed` webhooks, `{ authorization_url }` checkout, `PAYSTACK_SECRET_KEY`); UI has no Paystack SDK — plain fetch.
 - New data collections in `src/data/dashboard.ts`: `payrollChanges` (`{title, detail, status}` sent|draft) + `paymentBatches` (`{batch, amount, count, date, status}` Reconciled|Pending approval, naira int amounts).
 - Migration `0004_payroll_payments.sql` + Drizzle mirrors (`payroll_changes`, `payment_batches`); routes `GET /v1/hr/payroll-changes` (requireHr) + `GET /v1/payments` (requireFinance), both `Paginated<T>` keyset.
 - Seed generator extended → `seeds/domain.{sql,ts}` now 61 stmts (pc-/pb- ids); migration 0004 applied + seeds re-run locally; `api/test/helpers.ts` loads 0004; `domain.test.ts` +4 tests (200 shapes + student 403 each) → **87/87 green**.
@@ -433,13 +433,13 @@ Auth (3): sign-in, register, magic-link. Apply (3): personal, documents, fee. LM
 
 **Phase 3.8 done (Aug 2026):** Paystack checkout + webhook endpoints live.
 - Migration `0005_payments.sql`: `payments` (user_id FK, unique `reference`, `amount` naira, `currency`, `status` pending|success|failed, `provider`, `description`, `paid_at`) + Drizzle mirror; `PAYSTACK_SECRET_KEY` added to `AppEnv`.
-- Routes (`api/src/routes/payments.ts`, mounted `v1.route("/payments", …)` alongside finance's `/payments` batches): `POST /v1/payments/checkout` (requireAuth; validates amount int 1..10M; inserts pending row; real `transaction/initialize` call when secret set, else `mock: true` URL — deterministic in tests); `POST /v1/payments/webhook` (public; HMAC-SHA512 via `x-paystack-signature` + constant-time compare when secret configured, prod-without-secret → 503; `charge.success`/`charge.failed` → status + `paid_at` + notification, idempotent, unknown events → ok); `GET /v1/payments/session/:reference` (owner-only, 404/403); `GET /v1/payments/history` (own payments, keyset paginated).
+- Routes (`api/src/routes/payments.ts`, mounted `v1.route("/payments", …)` alongside finance's `/payments` batches): `POST /v1/payments/checkout` (requireAuth; validates amount int 1..10M; inserts pending row; real `transaction/initialize` call when secret set, else `mock: true` URL — deterministic in tests); `POST /v1/payments/webhook` (public; HMAC-SHA512 via `x-paystack-signature` + constant-time compare when secret configured, prod-without-secret â†’ 503; `charge.success`/`charge.failed` â†’ status + `paid_at` + notification, idempotent, unknown events â†’ ok); `GET /v1/payments/session/:reference` (owner-only, 404/403); `GET /v1/payments/history` (own payments, keyset paginated).
 - `api/src/lib/crypto.ts`: `hmacSha512Hex` + `timingSafeEqualHex` (unit-tested against the RFC-style SHA-512 HMAC vector `b42af090…`).
-- Seeds: `payments` collection in `src/data/dashboard.ts` (4 rows for `student@cea.ng`, 3 success + 1 pending) → gen-domain-seed (DEMO_STUDENT_ID) → `seeds/domain.{sql,ts}` now 65 stmts; migration 0005 applied + reseeded locally.
-- Tests: `api/test/payments.test.ts` 15 tests (checkout 401/validation/shape, webhook success/failed/unknown/no-ref, session 404/403/owner, history auth/shape/cursor) → **102/102 green across 12 files**.
+- Seeds: `payments` collection in `src/data/dashboard.ts` (4 rows for `student@cea.ng`, 3 success + 1 pending) â†’ gen-domain-seed (DEMO_STUDENT_ID) â†’ `seeds/domain.{sql,ts}` now 65 stmts; migration 0005 applied + reseeded locally.
+- Tests: `api/test/payments.test.ts` 15 tests (checkout 401/validation/shape, webhook success/failed/unknown/no-ref, session 404/403/owner, history auth/shape/cursor) â†’ **102/102 green across 12 files**.
 - Frontend: `src/lib/api/payments.ts` (`Payment`, `CheckoutResponse`, fetch history/session, `createCheckout`), `src/lib/query/payments.ts` (`usePaymentHistory` + `useCreateCheckout` mutation invalidating history), mock handlers (checkout registers a per-reference session mock; seeded sessions pre-registered). No billing page exists yet — pay buttons wire in when their pages land.
 - Verified: 102/102 api tests, `tsc --noEmit` clean (api + frontend), lint clean, frontend build green. Commit `4918325`, pushed.
-- **Follow-up (`f995d4f`):** student `/app/finance` page wired to live payments — "Recent payments" card now renders `usePaymentHistory` via `QueryState` (description/reference/`paidAt`/status badges: success/failed/pending tones), "Paid this year" KPI derived from successful payments, and "Pay now" runs `useCreateCheckout` (₦140k Term 3 instalment → opens returned `authorizationUrl`, history invalidated so the new pending row appears instantly). Invoices card still inline (student invoices endpoint is future work).
+- **Follow-up (`f995d4f`):** student `/app/finance` page wired to live payments — "Recent payments" card now renders `usePaymentHistory` via `QueryState` (description/reference/`paidAt`/status badges: success/failed/pending tones), "Paid this year" KPI derived from successful payments, and "Pay now" runs `useCreateCheckout` (â‚¦140k Term 3 instalment â†’ opens returned `authorizationUrl`, history invalidated so the new pending row appears instantly). Invoices card still inline (student invoices endpoint is future work).
 
 **Next (Phase 3 remainder):** remaining app suites are off-plan (recruitment, marketing, design, localization, mentor, client/employer, director, dev) — Phase 4 in the roadmap. Paystack Inline modal (`POST /v1/payments/intent`, `VITE_PAYSTACK_PUBLIC_KEY` client key) + billing/pay-button pages can follow; optional polish: search/filter actions on wired pages, expense status columns (backend + seed change).
 

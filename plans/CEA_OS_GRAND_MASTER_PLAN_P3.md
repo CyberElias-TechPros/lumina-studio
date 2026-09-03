@@ -233,7 +233,7 @@ Notification Service (Worker)
 | Proposal Accepted/Rejected | Client responds           | in-app, email                    | Sales, PM            | `proposal.response`         |
 | Invoice Issued             | Invoice created           | in-app, email                    | Client, Student      | `invoice.issued`            |
 | Payment Received           | Payment completed         | in-app, email                    | Accountant, Client   | `payment.received`          |
-| Payment Overdue            | Due date passed           | in-app, email, SMS (×3)          | Client, Student      | `payment.overdue`           |
+| Payment Overdue            | Due date passed           | in-app, email, SMS (à—3)          | Client, Student      | `payment.overdue`           |
 | Ticket Created             | Ticket submitted          | in-app, email                    | IT Support           | `ticket.created`            |
 | Ticket Resolved            | Ticket closed             | in-app, email                    | Requester            | `ticket.resolved`           |
 | Ticket SLA Breach          | SLA time exceeded         | in-app, email, SMS               | IT Support, Manager  | `ticket.sla_breach`         |
@@ -1087,7 +1087,7 @@ Key design tokens are defined as CSS variables for shadcn/ui theming, with engin
 >
 > **32 actors. 55+ modules. 220+ database tables. 550+ API endpoints. 120+ React components. 12 cross-actor workflows. 65+ notification types. 7 construction phases over 20 months.**
 >
-> The design language is a **hybrid of digitalskillsacademy.org** (clean, professional, Kadence structure) **× dskillacademy.com.ng** (vibrant gradient richness, energetic visual identity) — delivering a platform that feels both authoritative and exciting, premium and approachable, global and locally relevant.
+> The design language is a **hybrid of digitalskillsacademy.org** (clean, professional, Kadence structure) **à— dskillacademy.com.ng** (vibrant gradient richness, energetic visual identity) — delivering a platform that feels both authoritative and exciting, premium and approachable, global and locally relevant.
 >
 > Every actor has a dedicated ultra-granular plan file. Every relationship is mapped. Every business rule is documented. Every screen is spec'd. Every error is catalogued.
 >
