@@ -24,12 +24,12 @@ test.describe("Public marketing + application journey", () => {
     await page.goto("/apply");
     await expect(page).toHaveTitle(/Apply/);
 
-    // Step 1 â€” choose program
+    // Step 1 — choose program
     await page.getByRole("button", { name: /full-stack software development/i }).click();
     await page.getByRole("button", { name: /continue/i }).click();
     await expect(page.getByRole("heading", { name: /your profile/i })).toBeVisible();
 
-    // Step 2 â€” profile
+    // Step 2 — profile
     await page.locator("#firstName").fill("E2E");
     await page.locator("#lastName").fill("Tester");
     await page.locator("#email").fill(email);
@@ -44,11 +44,11 @@ test.describe("Public marketing + application journey", () => {
     await page.getByRole("button", { name: /continue/i }).click();
     await expect(page.getByRole("heading", { name: /background assessment/i })).toBeVisible();
 
-    // Step 3 â€” assessment (checkboxes are pre-checked)
+    // Step 3 — assessment (checkboxes are pre-checked)
     await page.getByRole("button", { name: /continue/i }).click();
     await expect(page.getByRole("heading", { name: /financing/i })).toBeVisible();
 
-    // Step 4 â€” financing then submit
+    // Step 4 — financing then submit
     await page.getByRole("button", { name: /submit application/i }).click();
 
     await expect(page.getByRole("heading", { name: /application submitted/i })).toBeVisible({

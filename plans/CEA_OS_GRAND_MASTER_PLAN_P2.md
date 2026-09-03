@@ -339,7 +339,7 @@ const tokens = {
 | **Sidebar**       | Nav links + role-based sections + collapse toggle + user info      | Hidden on <1024px, triggered by hamburger |
 | **Topbar**        | Breadcrumbs + search + notifications + profile menu + theme toggle | Stacks vertically on mobile               |
 | **MobileNav**     | Bottom tab bar with icons                                          | Visible only on <768px                    |
-| **DashboardGrid** | CSS Grid of MetricCards + widgets (dynamic layout)                 | 1-col â†’ 2-col â†’ 3-col â†’ 4-col             |
+| **DashboardGrid** | CSS Grid of MetricCards + widgets (dynamic layout)                 | 1-col → 2-col → 3-col → 4-col             |
 | **PageHeader**    | Title + description + breadcrumbs + action buttons                 | Actions collapse to dropdown on mobile    |
 | **SplitPane**     | Resizable left/right panels + collapse                             | Stacks vertically on <768px               |
 | **ModalLayout**   | Center modal + backdrop + header + body + footer                   | Full-screen sheet on mobile               |
@@ -551,7 +551,7 @@ const baseApi = createApi({
 ### Cache Invalidation Rules
 
 ```typescript
-// Mutation â†’ Tags invalidated
+// Mutation → Tags invalidated
 const cacheInvalidation = {
   createSubmission: ["Submission", "Assignment", "Enrollment"],
   updateSubmission: ["Submission", "Grade"],

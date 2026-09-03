@@ -22,8 +22,8 @@ between the current frontend and the future Cloudflare backend, organized as:
 - Â§9 Payments (Paystack integration + pay-button catalog)
 - Â§10 Notifications (template matrix + UI wiring)
 - Â§11 Analytics (taxonomy + `track()` wiring)
-- Â§12 Auth / RBAC (roleKey â†’ permission matrix + guards)
-- Â§13 Forms catalog (~40 forms â†’ RHF+zod contracts)
+- Â§12 Auth / RBAC (roleKey → permission matrix + guards)
+- Â§13 Forms catalog (~40 forms → RHF+zod contracts)
 - Â§14 UI states (loading / empty / error / skeleton plan)
 - Â§15 PWA + push
 - Â§16 Env / config map
@@ -106,17 +106,17 @@ Docs: Cloudflare Pages
 ```
 Auth: JWT-free session design per master plan — opaque session cookie + `refresh_tokens` table + `device_sessions`; CORS locked to the Vercel origin.
 
-### 3.2 Conflicts between master plans and the repo â†’ resolution
+### 3.2 Conflicts between master plans and the repo → resolution
 | # | Conflict | Resolution (recommended) |
 |---|---|---|
 | C-1 | Plans say Next.js/React 19 + shadcn | **Repo wins**: Vite + TanStack Start + Radix. Backend is framework-agnostic (plain HTTP). |
 | C-2 | Plans say Redux | **Repo wins**: react-query 5 already installed; server state belongs in react-query, local UI state in components. |
-| C-3 | Plans say Vercel frontend | Keep Vercel for static SPA. But Nitro already targets `cloudflare` â†’ SSR on Cloudflare is a free upgrade path (decision D-1). |
+| C-3 | Plans say Vercel frontend | Keep Vercel for static SPA. But Nitro already targets `cloudflare` → SSR on Cloudflare is a free upgrade path (decision D-1). |
 | C-4 | Plans mention `admin.cea.ng` subdomain | Implement as one SPA + role-gated routing (already the architecture). No separate app. |
-| C-5 | Locale inconsistency: plan text mixes "SA" (Saudi) and "NG" (Nigeria) cohorts | Pick primary locale **NG (â‚¦, Lagos)**; localization suite handles others (decision D-6). |
+| C-5 | Locale inconsistency: plan text mixes "SA" (Saudi) and "NG" (Nigeria) cohorts | Pick primary locale **NG (₦, Lagos)**; localization suite handles others (decision D-6). |
 | C-6 | Analytics: "CEA custom analytics" (P3 Â§12) vs Cloudflare Analytics | Ship **Cloudflare Analytics** (free, zero client work) + our `track()` for product events only (decision D-5). |
 | C-7 | Rate limits (P2) | Implement server-side; client must handle `429` + `Retry-After` in the API client (Â§4-B). |
-| C-8 | 42 email templates vs "65+ notification types" claim | Notification *events* (65+) vs *email templates* (42). One table maps event â†’ template â†’ channels. |
+| C-8 | 42 email templates vs "65+ notification types" claim | Notification *events* (65+) vs *email templates* (42). One table maps event → template → channels. |
 
 ---
 
@@ -150,7 +150,7 @@ Ordered by dependency. Each item names the concrete file(s) to create/edit.
 - **List endpoints**: cursor pagination helper `usePaginatedQuery` (backend returns `{ items, nextCursor }`).
 - **Mutations**: `useMutation` + `invalidationMap` (e.g., `postEnrollment` invalidates `['enrollments']`, `['courses', id]`).
 - Optimistic updates for: chat messages, announcements, feedback, KPI toggles.
-- Replace all 278 screens' inline consts incrementally by suite (priority: student â†’ instructor â†’ admin â†’ finance â†’ HR/recruitment â†’ marketing suites).
+- Replace all 278 screens' inline consts incrementally by suite (priority: student → instructor → admin → finance → HR/recruitment → marketing suites).
 
 ### E. Realtime client (`src/lib/ws.ts` + hooks)
 - `wsConnect(roomType, id)` with exponential backoff + `?token=` auth, heartbeat every 25s, `visibilitychange` reconnect.
@@ -171,7 +171,7 @@ Ordered by dependency. Each item names the concrete file(s) to create/edit.
 - `handlePaymentStatus(reference)` — poll `/v1/payments/session/:reference` after redirect; success/processing/failed UI states (sonner + inline).
 - Payment touchpoints from inventory: tuition/fees (student), invoice pay (finance), employer plans, event tickets, program installments, grants disbursement (read-only). Each pay button â†’ `createCheckout`.
 
-### H. Forms â†’ RHF+zod contracts
+### H. Forms → RHF+zod contracts
 - Move every inline form (catalog Â§13) to react-hook-form + `zodResolver` (already installed).
 - `src/lib/schema/*.ts` — shared zod schemas for ~40 forms (auth, apply, enrollment, HR, LMS, finance, recruitment, marketing, design briefs, localization).
 - UI contract: `onSubmit(values) â†’ mutation.mutate(values)`; submit button disabled + spinner during `isPending`; `fieldErrors` map from API envelope into `setError`; sonner success/error.
@@ -184,7 +184,7 @@ Ordered by dependency. Each item names the concrete file(s) to create/edit.
 ### J. Analytics wiring
 - `src/lib/analytics.ts` already exists (`track()`, `flushAnalytics()`, `cea:analytics` CustomEvent). Extend:
   - Typed taxonomy from Â§11 (autocomplete enum of event names).
-  - Flush â†’ `POST /v1/analytics/events` (batch, 10s debounce) when backend exists; no-op in mock mode.
+  - Flush → `POST /v1/analytics/events` (batch, 10s debounce) when backend exists; no-op in mock mode.
 - Add `track()` calls on: auth events, enrollment start/complete, payment attempts, lesson completion, certificate download, job apply, campaign publish, design submission.
 
 ### K. PWA + push
@@ -196,7 +196,7 @@ Ordered by dependency. Each item names the concrete file(s) to create/edit.
 - `src/components/ui/turnstile.tsx` — invisible+managed widget via `@cloudflare/turnstile` script tag (no npm dep needed) or the official package.
 - Mount on public forms: apply, contact, feedback, brochure request, blog comments, register. Backend validates `cf-turnstile-response` on those endpoints.
 
-### M. Seed data â†’ D1
+### M. Seed data → D1
 - `src/data/*.ts` (mock collections) become the **single source for seed fixtures**: a codegen script `scripts/gen-seeds.mjs` converts each collection into Drizzle insert statements (or keep collections as canonical JSON in the backend repo and import both ways). Decide D-7.
 - Inline per-screen consts get promoted into `src/data/*` first (so seeds cover all 60+ collections), then replaced by queries.
 
@@ -242,7 +242,7 @@ Ordered by dependency. Each item names the concrete file(s) to create/edit.
 
 ---
 
-## 6. D1 data model mapping (mock â†’ tables)
+## 6. D1 data model mapping (mock → tables)
 
 Domain schemas per master plan (10+): `identity, lms, assessment, hr, finance, recruitment, marketing, design, localization, alumni, support, analytics`. 220+ tables, UUID text PKs, `deletedAt` soft delete, `createdAt/updatedAt` on all.
 
@@ -258,7 +258,7 @@ Domain schemas per master plan (10+): `identity, lms, assessment, hr, finance, r
 | `notifications` | `notifications`, `notification_preferences` | |
 | `auditLog` | `audit_logs` | |
 | `certificates`, `cohorts` | `certificates`, `cohort_members` | |
-| inline consts in 278 screens | promoted to `src/data/*` â†’ seeds | Â§4-M |
+| inline consts in 278 screens | promoted to `src/data/*` → seeds | Â§4-M |
 
 ---
 
@@ -274,7 +274,7 @@ Domain schemas per master plan (10+): `identity, lms, assessment, hr, finance, r
 
 ## 8. Uploads (R2 presign)
 
-- Flow: `POST /v1/uploads/presign { kind, filename, size, mime }` â†’ `{ url, uploadId }` (URL valid 10 min) â†’ `PUT` to R2 with progress â†’ `POST /v1/uploads/complete { uploadId }` â†’ server inserts row + runs post-processing (Image resize / PDF meta).
+- Flow: `POST /v1/uploads/presign { kind, filename, size, mime }` → `{ url, uploadId }` (URL valid 10 min) → `PUT` to R2 with progress → `POST /v1/uploads/complete { uploadId }` → server inserts row + runs post-processing (Image resize / PDF meta).
 - Kinds (server-enforced mime + size limits): `avatar`, `application-doc`, `hr-doc`, `lesson-resource`, `assignment-submission`, `certificate-logo`, `recruitment-cv`, `marketing-creative`, `legal-doc`, `event-media`.
 - File-input catalog (from inventory, representative): student profile, apply/status documents, instructor lesson create/edit, HR onboarding, recruitment candidate, employer job postings, marketing campaign creatives, design brief assets, admin org logo.
 
@@ -287,22 +287,22 @@ Domain schemas per master plan (10+): `identity, lms, assessment, hr, finance, r
 - `POST /v1/payments/checkout` â†’ `{ authorizationUrl, accessCode?, mock }` — hosted Paystack Checkout (NGN); server-side `transaction/initialize` call with `PAYSTACK_SECRET_KEY`; no secret (dev) â†’ `mock: true` + `checkout.paystack.com/<ref>` URL. Body `{ amount (naira, int 1..10M), description? }`, creates a `pending` row in `payments` (unique `reference` = `cea_<hex>`, kobo conversion happens at the Paystack boundary).
 - Webhooks (backend): `POST /v1/payments/webhook` (public) — `charge.success` / `charge.failed` / other events; HMAC-SHA512 signature verified via `x-paystack-signature` when a secret is configured (constant-time compare; prod without secret â†’ 503); success â†’ ledger row `success` + `paid_at` + "Payment received" notification; failed â†’ `failed` + notification; unknown events â†’ `200 { ok: true }`, idempotent (no duplicate notifications on redelivery).
 - Client: `GET /v1/payments/session/:reference` (owner-only, 403 otherwise) for `handlePaymentStatus` polling; `GET /v1/payments/history` (own payments, keyset paginated). Frontend: `src/lib/api/payments.ts` + `src/lib/query/payments.ts` (`usePaymentHistory`, `useCreateCheckout`) + mock handlers; pay-button pages (student billing, finance invoice pay, employer plan upgrade) wire these when their pages land.
-- Pay-button touchpoints (from inventory): student tuition/installments, finance invoice pay, employer plan upgrade, event tickets, program compare â†’ enroll checkout.
+- Pay-button touchpoints (from inventory): student tuition/installments, finance invoice pay, employer plan upgrade, event tickets, program compare → enroll checkout.
 
 ---
 
 ## 10. Notifications (templates à— channels)
 
-- 42 email templates (master plan Â§notifications) + 65+ event types; matrix table: event â†’ { in-app, email, push, quiet-hours-aware }.
-- In-app: `GET /v1/notifications` (cursor), `POST /v1/notifications/read-all`, WS `notification.new` â†’ bell badge + sonner toast; prefs UI already exists (`app/notifications.tsx` with Quiet hours) â†’ back with `notification_preferences`.
+- 42 email templates (master plan Â§notifications) + 65+ event types; matrix table: event → { in-app, email, push, quiet-hours-aware }.
+- In-app: `GET /v1/notifications` (cursor), `POST /v1/notifications/read-all`, WS `notification.new` → bell badge + sonner toast; prefs UI already exists (`app/notifications.tsx` with Quiet hours) → back with `notification_preferences`.
 - Email via Resend; push via Web Push (VAPID in KV).
-- Client work: bell dropdown component + badge count (react-query + WS stream), prefs form â†’ PATCH, quiet-hours honored client-side for toasts too.
+- Client work: bell dropdown component + badge count (react-query + WS stream), prefs form → PATCH, quiet-hours honored client-side for toasts too.
 
 ---
 
 ## 11. Analytics taxonomy (P3 Â§12.1–12.3)
 
-- Pipeline: `track()` â†’ batch â†’ `POST /v1/analytics/events` â†’ D1 `analytics_events` â†’ hourly aggregation â†’ dashboards (`/v1/analytics/*`). Cloudflare Analytics covers infra/web vitals (decision D-5).
+- Pipeline: `track()` → batch → `POST /v1/analytics/events` → D1 `analytics_events` → hourly aggregation → dashboards (`/v1/analytics/*`). Cloudflare Analytics covers infra/web vitals (decision D-5).
 - Taxonomy (typed in `src/lib/analytics.ts`):
   - `identity`: signup, signin, device_added, mfa_enrolled
   - `lms`: course_view, lesson_start, lesson_complete, assessment_start, assessment_submit, cert_download
@@ -323,16 +323,16 @@ Domain schemas per master plan (10+): `identity, lms, assessment, hr, finance, r
 
 ---
 
-## 13. Forms catalog (~40 forms â†’ contracts)
+## 13. Forms catalog (~40 forms → contracts)
 
 Auth (3): sign-in, register, magic-link. Apply (3): personal, documents, fee. LMS (6): lesson create/edit, assignment, assessment builder, grade entry, announcement. HR (6): employee create/edit, leave request/approve, attendance, onboarding docs, payroll. Finance (4): invoice create, pay, refund, wallet top-up. Recruitment (4): job post, candidate stage, interview schedule, offer. Marketing (4): campaign, segment, creative brief, report. Design (3): brief, approval, asset upload. Localization (3): locale config, key add, review. Misc (4): contact, feedback, support ticket, profile.
-â†’ Each: zod schema in `src/lib/schema/`, RHF form, mutation hook, error mapping (Â§4-H). This is the largest mechanical chunk.
+→ Each: zod schema in `src/lib/schema/`, RHF form, mutation hook, error mapping (Â§4-H). This is the largest mechanical chunk.
 
 ---
 
 ## 14. UI states plan (checklist items 7)
 
-- `QueryState` component wraps all query-driven screens: skeleton â†’ empty â†’ error â†’ content.
+- `QueryState` component wraps all query-driven screens: skeleton → empty → error → content.
 - Empty states: role-specific CTA (e.g., instructor "Create your first lesson", finance "No invoices").
 - KPI cards: `Skeleton` while loading; real values from `/v1/dashboard/kpis` (per role); sparkline from analytics.
 - Onboarding tours: per-role first-run walkthrough keyed by KV flag.
@@ -342,7 +342,7 @@ Auth (3): sign-in, register, magic-link. Apply (3): personal, documents, fee. LM
 ## 15. PWA + push (checklist item 6)
 
 - manifest + SW (precache routeTree assets), install prompt, offline fallback page.
-- Push: VAPID subscribe â†’ store â†’ server send on notification events (respecting prefs).
+- Push: VAPID subscribe → store → server send on notification events (respecting prefs).
 - Scope: installable on desktop/mobile; keep as progressive enhancement (mock mode unaffected).
 
 ---
@@ -362,8 +362,8 @@ Auth (3): sign-in, register, magic-link. Apply (3): personal, documents, fee. LM
 
 ## 17. CI/CD + migrations
 
-- Backend repo: `drizzle-kit` migrations â†’ `wrangler d1 migrations apply cea-db-prod` (preview DB in PRs), `wrangler deploy` on merge; GitHub Actions.
-- Frontend: current flow unchanged (push â†’ Lovable/Vercel deploy). Add `.env.production` via Vercel env vars.
+- Backend repo: `drizzle-kit` migrations → `wrangler d1 migrations apply cea-db-prod` (preview DB in PRs), `wrangler deploy` on merge; GitHub Actions.
+- Frontend: current flow unchanged (push → Lovable/Vercel deploy). Add `.env.production` via Vercel env vars.
 - OpenAPI spec generation from zod in CI (Â§4-N).
 
 ---
@@ -385,7 +385,7 @@ Auth (3): sign-in, register, magic-link. Apply (3): personal, documents, fee. LM
 **Done (Jul 2026, `api/` subfolder, scope: auth + core):**
 - Scaffolded `api/` package: Hono v4 worker, D1 binding (`cea-db`), Drizzle schema, hand-written wrangler-format migration `migrations/0000_init.sql` (engines, programs, users, sessions, magic_links, applications), CORS for the SPA with credentials.
 - Error envelope `{ error: { code, message, fieldErrors? } }` matches `src/lib/errors.ts` exactly (UNAUTHORIZED / FIELD_VALIDATION / NOT_FOUND / INVALID_MAGIC_TOKEN / PASSWORD_NOT_ENABLED).
-- Auth: `POST /v1/auth/magic-link` (15-min single-use tokens, `devToken` returned when `APP_ENV != production` for local/dev flows), `GET /v1/auth/magic-link/verify` (upserts user, sets HttpOnly `cea_session` cookie; SameSite=Lax dev / None+Secure prod; Bearer header still accepted as API fallback), `GET /v1/auth/session`, `POST /v1/auth/refresh` (rotates token + cookie), `POST /v1/auth/sign-out` (revokes + clears cookie), `sign-in`/`sign-up` â†’ 501 until password phase. Permissions served from `src/lib/permissions.ts` (mirror of `src/data/rbac.ts`; DB-backed roles deferred to Phase 2).
+- Auth: `POST /v1/auth/magic-link` (15-min single-use tokens, `devToken` returned when `APP_ENV != production` for local/dev flows), `GET /v1/auth/magic-link/verify` (upserts user, sets HttpOnly `cea_session` cookie; SameSite=Lax dev / None+Secure prod; Bearer header still accepted as API fallback), `GET /v1/auth/session`, `POST /v1/auth/refresh` (rotates token + cookie), `POST /v1/auth/sign-out` (revokes + clears cookie), `sign-in`/`sign-up` → 501 until password phase. Permissions served from `src/lib/permissions.ts` (mirror of `src/data/rbac.ts`; DB-backed roles deferred to Phase 2).
 - Programs: `GET /v1/programs` (cursor pagination, `Paginated<T>` shape), `GET /v1/programs/:slug`. Applications: public `POST /v1/applications` (CEA refs, validated programSlug), public status lookup `GET /v1/applications/:ref` (stage timeline), auth-only `GET /v1/applications`. Flags: `GET /v1/flags` (mirrors `src/lib/flags.ts`; KV-backed in Phase 5).
 - Seeds: `npm run gen:seed` generates `seeds/content.{sql,ts}` from `src/data/site.ts` (engines + programs) — D-7 pattern; `db:migrate:local` + `db:seed:local` scripts; applied + smoke-verified against local D1.
 - Tests: 31 vitest integration tests (workers pool, per-file D1 isolation) — auth flow (cookie-based, incl. rotation + sign-out clearing), programs pagination, applications, flags. `npm test`, `npm run typecheck`, `wrangler deploy --dry-run` all green.
@@ -427,7 +427,7 @@ Auth (3): sign-in, register, magic-link. Apply (3): personal, documents, fee. LM
 - Sweep: `VITE_STRIPE_PUBLISHABLE_KEY` â†’ `VITE_PAYSTACK_PUBLIC_KEY` (`src/vite-env.d.ts`, `src/lib/env.ts`, `.env.example`, dev/env page); flag key `payments.stripe` â†’ `payments.paystack` (`src/lib/flags.ts`, mock flags, `api/src/routes/flags.ts` + test); Â§9/Â§4-A/Â§16/Â§3/Â§18 docs rewritten for Paystack (`charge.success`/`charge.failed` webhooks, `{ authorization_url }` checkout, `PAYSTACK_SECRET_KEY`); UI has no Paystack SDK — plain fetch.
 - New data collections in `src/data/dashboard.ts`: `payrollChanges` (`{title, detail, status}` sent|draft) + `paymentBatches` (`{batch, amount, count, date, status}` Reconciled|Pending approval, naira int amounts).
 - Migration `0004_payroll_payments.sql` + Drizzle mirrors (`payroll_changes`, `payment_batches`); routes `GET /v1/hr/payroll-changes` (requireHr) + `GET /v1/payments` (requireFinance), both `Paginated<T>` keyset.
-- Seed generator extended â†’ `seeds/domain.{sql,ts}` now 61 stmts (pc-/pb- ids); migration 0004 applied + seeds re-run locally; `api/test/helpers.ts` loads 0004; `domain.test.ts` +4 tests (200 shapes + student 403 each) â†’ **87/87 green**.
+- Seed generator extended → `seeds/domain.{sql,ts}` now 61 stmts (pc-/pb- ids); migration 0004 applied + seeds re-run locally; `api/test/helpers.ts` loads 0004; `domain.test.ts` +4 tests (200 shapes + student 403 each) → **87/87 green**.
 - Frontend: clients `src/lib/api/hr.ts` (fetchPayrollChanges) + `finance.ts` (fetchPaymentBatches), hooks `usePayrollChanges`/`usePaymentBatches` + item hooks, mock handlers with stable ids, and both pages wired via `QueryState`: `hr/payroll-input.tsx` (sent/draft counts from status, "Sent to finance"/"Draft" badges) + `accountant/payments.tsx` (processed total + tx count derived, `formatNaira`/`formatNairaCompact`, reconciled % badge).
 - Verified: 87/87 api tests, `tsc --noEmit` clean (api + frontend), lint clean, frontend build green. Commit `0777e43`, pushed.
 
@@ -449,10 +449,10 @@ Auth (3): sign-in, register, magic-link. Apply (3): personal, documents, fee. LM
 
 | # | Decision | Recommendation |
 |---|---|---|
-| D-1 | Frontend hosting: static SPA on Vercel vs SSR via Nitroâ†’Cloudflare | **Static SPA on Vercel** (fastest, matches plan); keep Nitro `cloudflare` target as later SSR upgrade (C-3) |
+| D-1 | Frontend hosting: static SPA on Vercel vs SSR via Nitro→Cloudflare | **Static SPA on Vercel** (fastest, matches plan); keep Nitro `cloudflare` target as later SSR upgrade (C-3) |
 | D-2 | API base: `api.cea.ng` worker subdomain vs `/api/*` route on same host | **`api.cea.ng`** (clean separation, CORS single origin) |
 | D-3 | Start Phase 0 now, or review this plan first | **Review + start Phase 0** (items are low-risk, mock-mode safe) |
-| D-4 | Auth: email+password first vs magic-link-first | Magic-link already built in UI â†’ ship **magic-link + passwordless** first; password as P1 |
+| D-4 | Auth: email+password first vs magic-link-first | Magic-link already built in UI → ship **magic-link + passwordless** first; password as P1 |
 | D-5 | Analytics stack | **Cloudflare Analytics for infra** + custom `/v1/analytics/events` for product events |
 | D-6 | Locale scope | **NG primary**; localize only after L1 marketing suite ships |
 | D-7 | Seeds: import `src/data/*` into backend repo vs duplicate | **Generate seeds from `src/data/*`** via script (single source) |
@@ -460,5 +460,5 @@ Auth (3): sign-in, register, magic-link. Apply (3): personal, documents, fee. LM
 
 ---
 
-*Appendices (kept separately, from audit agents): full per-screenâ†’endpoint map (Agent A), per-actor entity/workflow extraction (Agent B), schema/API conventions detail (Agent C).*
+*Appendices (kept separately, from audit agents): full per-screen→endpoint map (Agent A), per-actor entity/workflow extraction (Agent B), schema/API conventions detail (Agent C).*
 

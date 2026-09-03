@@ -66,7 +66,7 @@
 
 **Goal 7: Earn Certificates & Graduate**
 
-- KPI: Module completion rate â†’ program completion â†’ graduation
+- KPI: Module completion rate → program completion → graduation
 - KPI: Certificate download rate within 30 days of issue
 
 ---
@@ -83,7 +83,7 @@
 â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
 â”‚  [Logo] Dashboard  Learning  Community  ...  [Profile â–¼]   â”‚
 â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
-â”‚  Welcome back, Alex!     [Resume Learning â†’]               â”‚
+â”‚  Welcome back, Alex!     [Resume Learning →]               â”‚
 â”‚  Program: Cybersecurity Fundamentals | Term: Fall 2026     â”‚
 â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
 â”‚  Next Class      â”‚  Pending Tasks   â”‚  This Week's Stats   â”‚
@@ -91,13 +91,13 @@
 â”‚  â”‚ Network    â”‚  â”‚  â”‚ Assignment â”‚  â”‚  â”‚ â± 12.5h spent â”‚  â”‚
 â”‚  â”‚ Defense    â”‚  â”‚  â”‚ Lab 4      â”‚  â”‚  â”‚ ðŸ“Š 88% avg    â”‚  â”‚
 â”‚  â”‚ Module 3   â”‚  â”‚  â”‚ Due: Fri   â”‚  â”‚  â”‚ âœ… 6/8 done   â”‚  â”‚
-â”‚  â”‚ 2:00 PM    â”‚  â”‚  â”‚ [Start â†’]  â”‚  â”‚  â”‚ ðŸ† Top 15%   â”‚  â”‚
+â”‚  â”‚ 2:00 PM    â”‚  â”‚  â”‚ [Start →]  â”‚  â”‚  â”‚ ðŸ† Top 15%   â”‚  â”‚
 â”‚  â”‚ [Join]     â”‚  â”‚  â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜  â”‚  â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜  â”‚
 â”‚  â”‚            â”‚  â”‚  â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”  â”‚                      â”‚
 â”‚  â”‚            â”‚  â”‚  â”‚ Quiz:     â”‚  â”‚  â”‚                      â”‚
 â”‚  â”‚            â”‚  â”‚  â”‚ Crypto    â”‚  â”‚  â”‚                      â”‚
 â”‚  â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜  â”‚  â”‚ Due: Wed  â”‚  â”‚  â”‚                      â”‚
-â”‚                  â”‚  â”‚ [Start â†’] â”‚  â”‚  â”‚                      â”‚
+â”‚                  â”‚  â”‚ [Start →] â”‚  â”‚  â”‚                      â”‚
 â”‚                  â”‚  â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜  â”‚                      â”‚
 â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”´â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”´â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
 â”‚  Recent Activity                                             â”‚
@@ -125,8 +125,8 @@
 - **Loading:** 4 skeleton cards layout
 - **Empty (no tasks):** "All caught up! ðŸŽ‰ No pending tasks."
 - **Empty (no activity):** "Your activity will show here once you start learning."
-- **Error:** Dashboard card fails â†’ inline error per card, rest of page still renders
-- **Edge Cases:** Between terms â†’ "Enjoy your break! Next term starts Jan 15." First day â†’ "Welcome! Start with your first lesson."
+- **Error:** Dashboard card fails → inline error per card, rest of page still renders
+- **Edge Cases:** Between terms → "Enjoy your break! Next term starts Jan 15." First day → "Welcome! Start with your first lesson."
 
 ### Screen 3.2: Learning Hub (`/learning`)
 
@@ -150,10 +150,10 @@
 â”‚  â”‚  Lessons 7-12 complete                               â”‚  â”‚
 â”‚  â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤  â”‚
 â”‚  â”‚ â—‰ Module 3: Cryptography          42% â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–‘â–‘â–‘â–‘â–‘â–‘â–‘  â”‚  â”‚
-â”‚  â”‚  â†’ Lesson 13: Symmetric Encryption [Resume] â†       â”‚  â”‚
-â”‚  â”‚  â†’ Lesson 14: Asymmetric Encryption                  â”‚  â”‚
-â”‚  â”‚  â†’ Lesson 15: Hashing (not started)                  â”‚  â”‚
-â”‚  â”‚  â†’ Quiz: Crypto Fundamentals (not started)           â”‚  â”‚
+â”‚  â”‚  → Lesson 13: Symmetric Encryption [Resume] â†       â”‚  â”‚
+â”‚  â”‚  → Lesson 14: Asymmetric Encryption                  â”‚  â”‚
+â”‚  â”‚  → Lesson 15: Hashing (not started)                  â”‚  â”‚
+â”‚  â”‚  → Quiz: Crypto Fundamentals (not started)           â”‚  â”‚
 â”‚  â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤  â”‚
 â”‚  â”‚ â¬œ Module 4: Network Defense        0% â–‘â–‘â–‘â–‘â–‘â–‘â–‘â–‘â–‘â–‘â–‘â–‘  â”‚  â”‚
 â”‚  â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜  â”‚
@@ -162,7 +162,7 @@
 â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
 ```
 
-**API:** `GET /api/student/enrollments` â†’ enrollments with nested modules/lessons/progress  
+**API:** `GET /api/student/enrollments` → enrollments with nested modules/lessons/progress  
 **States:** Loading (skeleton accordions), Empty ("No enrollments yet"), Error (retry banner)
 
 ### Screen 3.3: Lesson Viewer (`/learning/lessons/[lessonId]`)
@@ -183,7 +183,7 @@
 â”‚  â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜    â”‚
 â”‚                                                             â”‚
 â”‚  Lesson: Symmetric Encryption                              â”‚
-â”‚  Module 3 Â· Lesson 13 of 24 Â· Est. 35 min                 â”‚
+â”‚  Module 3 · Lesson 13 of 24 · Est. 35 min                 â”‚
 â”‚                                                             â”‚
 â”‚  Below the fold:                                            â”‚
 â”‚  â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”    â”‚
@@ -198,7 +198,7 @@
 â”‚  â”‚  "Welcome to lesson 13. In this video we'll..."    â”‚    â”‚
 â”‚  â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜    â”‚
 â”‚                                                             â”‚
-â”‚  [Mark Complete] [Previous Lesson â†] [Next Lesson â†’]       â”‚
+â”‚  [Mark Complete] [Previous Lesson â†] [Next Lesson →]       â”‚
 â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
 ```
 
@@ -209,7 +209,7 @@
 - **Loading:** Player skeleton, title placeholder
 - **Error (404):** "Lesson not found"
 - **Error (video fails):** "Video failed to load. [Refresh] [Download]"
-- **Edge Cases:** Long video â†’ auto-save progress every 10 seconds. Resize viewport â†’ responsive player. Slow connection â†’ adaptive bitrate streaming. Ad blockers (none, but may affect tracking).
+- **Edge Cases:** Long video → auto-save progress every 10 seconds. Resize viewport → responsive player. Slow connection → adaptive bitrate streaming. Ad blockers (none, but may affect tracking).
 
 ### Screen 3.4: Assignments Center (`/assignments`)
 
@@ -226,12 +226,12 @@
 â”‚  â”‚ âš  Lab 4: Packet Analysis                    Due Fri â”‚  â”‚
 â”‚  â”‚ Course: Network Defense | Points: 100 | Est: 3h    â”‚  â”‚
 â”‚  â”‚ Status: NOT STARTED                                  â”‚  â”‚
-â”‚  â”‚ [Start Assignment â†’]                                 â”‚  â”‚
+â”‚  â”‚ [Start Assignment →]                                 â”‚  â”‚
 â”‚  â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤  â”‚
 â”‚  â”‚ ðŸ“ Project 1: Security Audit                 Nov 15 â”‚  â”‚
 â”‚  â”‚ Course: Fundamentals | Points: 250 | Est: 10h      â”‚  â”‚
 â”‚  â”‚ Status: IN PROGRESS (35%)                           â”‚  â”‚
-â”‚  â”‚ [Continue â†’]                                         â”‚  â”‚
+â”‚  â”‚ [Continue →]                                         â”‚  â”‚
 â”‚  â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤  â”‚
 â”‚  â”‚ âœ… Lab 3: Packet Analysis                    90/100 â”‚  â”‚
 â”‚  â”‚ Course: Network Defense | Submitted: Oct 28         â”‚  â”‚
@@ -261,7 +261,7 @@
 â”‚  â† Back to Assignments                                       â”‚
 â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
 â”‚  Lab 4: Packet Analysis                                      â”‚
-â”‚  Network Defense Â· Module 3 Â· Due: Fri Nov 3, 11:59 PM      â”‚
+â”‚  Network Defense · Module 3 · Due: Fri Nov 3, 11:59 PM      â”‚
 â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
 â”‚  Instructions:                                                â”‚
 â”‚  "Using Wireshark, analyze the provided pcap file..."        â”‚
@@ -310,7 +310,7 @@
 â”‚                                                             â”‚
 â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
 â”‚  Question Progress: â– â– â–¡â– â– â–¡â– â– â–¡â–¡â–¡â–¡â–¡                          â”‚
-â”‚  [â† Previous]                         [Next â†’]             â”‚
+â”‚  [â† Previous]                         [Next →]             â”‚
 â”‚                                  [Submit Quiz]              â”‚
 â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
 ```
@@ -324,7 +324,7 @@
 - **In Progress:** Questions with timer
 - **Submitted:** Score page with correct/incorrect breakdown
 - **Timeout:** Auto-submit when timer reaches 0
-- **Error:** Save fails â†’ local persistence, retry on submit
+- **Error:** Save fails → local persistence, retry on submit
 
 ### Screen 3.7: Gradebook (`/grades`)
 
@@ -434,7 +434,7 @@
 â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
 ```
 
-**Cart checkout:** `POST /api/marketplace/checkout` â†’ KV payment session â†’ Stripe
+**Cart checkout:** `POST /api/marketplace/checkout` → KV payment session → Stripe
 
 ### Screen 3.10: Community / Forum (`/community`)
 
@@ -454,16 +454,16 @@
 â”‚                                                             â”‚
 â”‚  â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”  â”‚
 â”‚  â”‚ ðŸ”’ How do I configure Wireshark filters?             â”‚  â”‚
-â”‚  â”‚ by jdoe Â· Q&A Â· 3h ago Â· 5 replies Â· ðŸ‘ 24          â”‚  â”‚
+â”‚  â”‚ by jdoe · Q&A · 3h ago · 5 replies · ðŸ‘ 24          â”‚  â”‚
 â”‚  â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜  â”‚
 â”‚  â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”  â”‚
 â”‚  â”‚ ðŸ“š Study Group: Network Defense Exam Prep            â”‚  â”‚
-â”‚  â”‚ by msmith Â· Study Groups Â· Yesterday Â· 12 members    â”‚  â”‚
+â”‚  â”‚ by msmith · Study Groups · Yesterday · 12 members    â”‚  â”‚
 â”‚  â”‚ [Join Group]                                          â”‚  â”‚
 â”‚  â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜  â”‚
 â”‚  â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”  â”‚
 â”‚  â”‚ ðŸ’¡ Pro tip: Use nmap -sV for service detection       â”‚  â”‚
-â”‚  â”‚ by instructor_kate Â· Tips Â· 2d ago Â· 18 upvotes     â”‚  â”‚
+â”‚  â”‚ by instructor_kate · Tips · 2d ago · 18 upvotes     â”‚  â”‚
 â”‚  â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜  â”‚
 â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
 ```
@@ -522,7 +522,7 @@
 â”‚  ðŸ‘¤ Study     â”‚                                             â”‚
 â”‚     Group:    â”‚  Prof. Smith: Use filter "tcp.port==443"    â”‚
 â”‚     Crypto    â”‚                                             â”‚
-â”‚  ðŸ‘¤ Support   â”‚  [Type a message...]                    [â†’] â”‚
+â”‚  ðŸ‘¤ Support   â”‚  [Type a message...]                    [→] â”‚
 â”‚  Bot          â”‚                                             â”‚
 â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”´â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
 ```
@@ -1695,7 +1695,7 @@ StudentLayout
 â”‚   â”‚   â””â”€â”€ DragSortContainer
 â”‚   â”œâ”€â”€ ProjectsSection
 â”‚   â”‚   â”œâ”€â”€ ProjectCard[] (title, desc, links, media, skills, edit/delete)
-â”‚   â”‚   â”œâ”€â”€ AddProjectButton â†’ ProjectFormModal
+â”‚   â”‚   â”œâ”€â”€ AddProjectButton → ProjectFormModal
 â”‚   â”‚   â””â”€â”€ ProjectFormModal (title, desc, URL, media upload, skills multi-select)
 â”‚   â”œâ”€â”€ CertificatesSection (read-only list from certificates table)
 â”‚   â”œâ”€â”€ EducationSection (add/edit/delete education entries)
@@ -1718,7 +1718,7 @@ StudentLayout
 â”‚   â”œâ”€â”€ PinnedPosts (top)
 â”‚   â”œâ”€â”€ PostList (cursor paginated)
 â”‚   â”‚   â””â”€â”€ PostCard[] (title, author badge, category, reply count, upvotes, time)
-â”‚   â”œâ”€â”€ NewPostButton â†’ NewPostModal
+â”‚   â”œâ”€â”€ NewPostButton → NewPostModal
 â”‚   â””â”€â”€ PostDetail
 â”‚       â”œâ”€â”€ PostContent (title, author, content, upvote)
 â”‚       â”œâ”€â”€ ReplyList (nested threading)
@@ -1789,61 +1789,61 @@ StudentLayout
 Prerequisite: Student enrolled, program start date has arrived or imminent
 
 Step 1: Student receives welcome email: "Your classroom is ready!"
-  â†’ CTA: "Go to Dashboard" â†’ https://cea.ng/dashboard
-  â†’ Student logs in (POST /api/auth/login)
+  → CTA: "Go to Dashboard" → https://cea.ng/dashboard
+  → Student logs in (POST /api/auth/login)
 
 Step 2: Dashboard loads
-  â†’ System fetches GET /api/student/dashboard
-  â†’ Shows "Welcome back, Alex!"
-  â†’ Shows next class: Network Defense, Module 3, 2:00 PM today
-  â†’ Shows pending tasks: Lab 4 (due Fri), Quiz (due Wed)
-  â†’ Shows weekly stats: 12.5h spent, 88% avg, 6/8 done
+  → System fetches GET /api/student/dashboard
+  → Shows "Welcome back, Alex!"
+  → Shows next class: Network Defense, Module 3, 2:00 PM today
+  → Shows pending tasks: Lab 4 (due Fri), Quiz (due Wed)
+  → Shows weekly stats: 12.5h spent, 88% avg, 6/8 done
 
 Step 3: Student clicks pending task "Lab 4"
-  â†’ Navigates to /assignments/{id}
-  â†’ System loads assignment detail
-  â†’ Student reads instructions, downloads assignment files
-  â†’ Starts working
+  → Navigates to /assignments/{id}
+  → System loads assignment detail
+  → Student reads instructions, downloads assignment files
+  → Starts working
 
 Alternative Path:
-  Step 2a: Student clicks "Resume Learning" â†’ redirects to learning hub
-  Step 2b: Student clicks "Join" on next class â†’ opens meeting URL in new tab
-  Step 2c: No next class today â†’ card shows "No classes scheduled" with calendar link
+  Step 2a: Student clicks "Resume Learning" → redirects to learning hub
+  Step 2b: Student clicks "Join" on next class → opens meeting URL in new tab
+  Step 2c: No next class today → card shows "No classes scheduled" with calendar link
 ```
 
 ### Journey 7.2: Consuming a Video Lesson
 
 ```
-Step 1: Student navigates to /learning â†’ sees module 3 at 42%
-  â†’ Clicks "Resume" on Lesson 13: Symmetric Encryption
+Step 1: Student navigates to /learning → sees module 3 at 42%
+  → Clicks "Resume" on Lesson 13: Symmetric Encryption
 
 Step 2: Lesson viewer loads with video player
-  â†’ Video starts from last position (saved via lesson_progress.video_position)
-  â†’ Student watches video, pauses, rewinds
-  â†’ System saves progress every 10s (POST /api/student/lessons/:id/progress)
+  → Video starts from last position (saved via lesson_progress.video_position)
+  → Student watches video, pauses, rewinds
+  → System saves progress every 10s (POST /api/student/lessons/:id/progress)
 
 Step 3: Student reaches 100% of video
-  â†’ "Mark Complete" button becomes active
-  â†’ Student clicks "Mark Complete"
-  â†’ API call: progress { status: 'completed', progressPercentage: 100 }
-  â†’ Module progress recalculates from 42% â†’ 57%
-  â†’ "Next Lesson â†’" button appears
-  â†’ Confetti micro-animation
+  → "Mark Complete" button becomes active
+  → Student clicks "Mark Complete"
+  → API call: progress { status: 'completed', progressPercentage: 100 }
+  → Module progress recalculates from 42% → 57%
+  → "Next Lesson →" button appears
+  → Confetti micro-animation
 
 Step 4: Student clicks "Next Lesson"
-  â†’ Navigates to Lesson 14
+  → Navigates to Lesson 14
 
 Alternative Path:
-  Step 3a: Student doesn't mark complete â†’ navigates away â†’ progress saved at 85%
-  Step 3b: Video fails midway â†’ "Video playback error. [Refresh] [Download]"
-  Step 3c: Student watches on mobile â†’ responsive player, limited quality options
+  Step 3a: Student doesn't mark complete → navigates away → progress saved at 85%
+  Step 3b: Video fails midway → "Video playback error. [Refresh] [Download]"
+  Step 3c: Student watches on mobile → responsive player, limited quality options
 ```
 
 ### Journey 7.3: Submitting an Assignment
 
 ```
-Step 1: Student sees pending assignment in dashboard â†’ clicks "Start â†’"
-  â†’ Navigates to /assignments/{id}
+Step 1: Student sees pending assignment in dashboard → clicks "Start →"
+  → Navigates to /assignments/{id}
 
 Step 2: Assignment instructions loaded
   â†’ Student reads "Analyze packet capture with Wireshark"
@@ -1851,180 +1851,180 @@ Step 2: Assignment instructions loaded
   â†’ Views rubric: 4 criteria à— 25 points = 100 total
 
 Step 3: Student works offline, returns to submit
-  â†’ Drags analysis_report.pdf and capture_analysis.pcap to upload zone
-  â†’ Files upload with progress bar (POST /api/upload per file)
-  â†’ Adds comment: "Please check my analysis in section 3"
+  → Drags analysis_report.pdf and capture_analysis.pcap to upload zone
+  → Files upload with progress bar (POST /api/upload per file)
+  → Adds comment: "Please check my analysis in section 3"
 
 Step 4: Clicks "Submit Assignment"
-  â†’ Confirmation modal: "Submit Lab 4? You have 1 attempt remaining."
-  â†’ Student confirms â†’ POST /api/student/assignments/:id/submit
-  â†’ Success: status changes to 'submitted'
-  â†’ Toast: "Submitted successfully! Waiting for grade."
-  â†’ Redirect back to assignments list
+  → Confirmation modal: "Submit Lab 4? You have 1 attempt remaining."
+  → Student confirms → POST /api/student/assignments/:id/submit
+  → Success: status changes to 'submitted'
+  → Toast: "Submitted successfully! Waiting for grade."
+  → Redirect back to assignments list
 
 Alternative Paths:
-  Step 4a: File too large (50MB limit) â†’ "File exceeds 50MB limit"
-  Step 4b: Network fails during submit â†’ queue in IndexedDB, retry on reconnect
-  Step 4c: Past due â†’ warning "This assignment is X days late. Late penalty applies."
-  Step 4d: Last attempt â†’ warning "This is your final submission attempt."
-  Step 4e: Resubmission allowed â†’ student can submit again
+  Step 4a: File too large (50MB limit) → "File exceeds 50MB limit"
+  Step 4b: Network fails during submit → queue in IndexedDB, retry on reconnect
+  Step 4c: Past due → warning "This assignment is X days late. Late penalty applies."
+  Step 4d: Last attempt → warning "This is your final submission attempt."
+  Step 4e: Resubmission allowed → student can submit again
 ```
 
 ### Journey 7.4: Taking a Timed Quiz
 
 ```
 Step 1: Student clicks quiz link from learning hub or assignments
-  â†’ Assessment instructions page: "Cryptography Fundamentals"
-  â†’ Shows: 15 questions, 30-minute time limit, 2 attempts, 70% passing
+  → Assessment instructions page: "Cryptography Fundamentals"
+  → Shows: 15 questions, 30-minute time limit, 2 attempts, 70% passing
 
 Step 2: Student clicks "Start Quiz"
-  â†’ POST /api/student/assessments/:id/attempt
-  â†’ First question renders, timer starts counting down
+  → POST /api/student/assessments/:id/attempt
+  → First question renders, timer starts counting down
 
 Step 3: Student answers questions
-  â†’ Q1: Multiple choice â†’ selects "AES"
-  â†’ Q4: Multiple answer â†’ checks 3/4 correct options
-  â†’ Q7: True/False â†’ selects "True"
-  â†’ Q10: Short answer â†’ types "Symmetric encryption uses one key"
+  → Q1: Multiple choice → selects "AES"
+  → Q4: Multiple answer → checks 3/4 correct options
+  → Q7: True/False → selects "True"
+  → Q10: Short answer → types "Symmetric encryption uses one key"
 
 Step 4: Student uses question navigator
-  â†’ Answered: green, Unanswered: red, Current: blue
-  â†’ Sees questions 12, 14 unanswered
-  â†’ Goes back to Q12, answers it
+  → Answered: green, Unanswered: red, Current: blue
+  → Sees questions 12, 14 unanswered
+  → Goes back to Q12, answers it
 
 Step 5: Student clicks "Submit Quiz"
-  â†’ Modal: "You have 2 unanswered questions. Submit anyway?"
-  â†’ Student confirms
-  â†’ POST /api/student/assessments/:id/attempt/submit
-  â†’ Auto-graded immediately
-  â†’ Score: 13/15 = 86.7% â†’ Passed!
+  → Modal: "You have 2 unanswered questions. Submit anyway?"
+  → Student confirms
+  → POST /api/student/assessments/:id/attempt/submit
+  → Auto-graded immediately
+  → Score: 13/15 = 86.7% → Passed!
 
 Step 6: Results page shows
-  â†’ Score: 86.7% (passing: 70%) â†’ Green "Passed" badge
-  â†’ Per-question breakdown: which correct/incorrect, correct answer shown
-  â†’ Q3 wrong: "The correct answer was Diffie-Hellman (asymmetric)."
-  â†’ "Attempt 1 of 2 used. You can retry for a higher score."
+  → Score: 86.7% (passing: 70%) → Green "Passed" badge
+  → Per-question breakdown: which correct/incorrect, correct answer shown
+  → Q3 wrong: "The correct answer was Diffie-Hellman (asymmetric)."
+  → "Attempt 1 of 2 used. You can retry for a higher score."
 
 Alternative Paths:
-  Step 5a: Timer reaches 0 â†’ auto-submit with whatever answered
-  Step 5b: Student runs out of attempts â†’ "No attempts remaining. Final score: 86.7%"
-  Step 5c: Student closes browser mid-quiz â†’ on return, resume from where left off
-  Step 5d: Student fails (<70%) â†’ "You scored 60%. Review the material and try again."
+  Step 5a: Timer reaches 0 → auto-submit with whatever answered
+  Step 5b: Student runs out of attempts → "No attempts remaining. Final score: 86.7%"
+  Step 5c: Student closes browser mid-quiz → on return, resume from where left off
+  Step 5d: Student fails (<70%) → "You scored 60%. Review the material and try again."
 ```
 
 ### Journey 7.5: Checking Grades
 
 ```
-Step 1: Student clicks "Grades" in nav â†’ /grades
+Step 1: Student clicks "Grades" in nav → /grades
 
 Step 2: Overall GPA card shows 3.72
-  â†’ 4 courses listed with grade bars
-  â†’ Network Defense: 88.5% (B+)
-  â†’ Cryptography: 94.2% (A)
+  → 4 courses listed with grade bars
+  → Network Defense: 88.5% (B+)
+  → Cryptography: 94.2% (A)
 
 Step 3: Student expands Network Defense
-  â†’ Sees 5 grade items:
-    â†’ Lab 1: 45/50 (90%)
-    â†’ Lab 2: 48/50 (96%)
-    â†’ Lab 3: 42/50 (84%)
-    â†’ Midterm: 85/100 (85%)
-    â†’ Final Project: 0/100 (not yet graded)
+  → Sees 5 grade items:
+    → Lab 1: 45/50 (90%)
+    → Lab 2: 48/50 (96%)
+    → Lab 3: 42/50 (84%)
+    → Midterm: 85/100 (85%)
+    → Final Project: 0/100 (not yet graded)
 
 Step 4: Student opens "What-if Calculator"
-  â†’ Adjusts Final Project slider to 90%
-  â†’ Projected grade updates: 88.5% â†’ 89.5% (still B+)
-  â†’ Adjusts to 95% â†’ sees it would bump to A-
-  â†’ Closes calculator
+  → Adjusts Final Project slider to 90%
+  → Projected grade updates: 88.5% → 89.5% (still B+)
+  → Adjusts to 95% → sees it would bump to A-
+  → Closes calculator
 ```
 
 ### Journey 7.6: Building Portfolio
 
 ```
 Step 1: Student navigates to /portfolio
-  â†’ Currently empty profile
+  → Currently empty profile
 
 Step 2: Student edits profile
-  â†’ Uploads avatar
-  â†’ Sets title: "Cybersecurity Student"
-  â†’ Writes bio: "Passionate about network security..."
-  â†’ Adds GitHub link
+  → Uploads avatar
+  → Sets title: "Cybersecurity Student"
+  → Writes bio: "Passionate about network security..."
+  → Adds GitHub link
 
 Step 3: Adds skills
-  â†’ "Network Security" â†’ 5 stars
-  â†’ "Cryptography" â†’ 4 stars
-  â†’ "Python" â†’ 3 stars
+  → "Network Security" → 5 stars
+  → "Cryptography" → 4 stars
+  → "Python" → 3 stars
 
 Step 4: Adds project
-  â†’ Title: "Security Audit: ABC Corp"
-  â†’ Description: "Conducted full penetration test..."
-  â†’ GitHub URL: https://github.com/...
-  â†’ Uploads 3 screenshots
-  â†’ Tags skills: Network Security, Compliance
+  → Title: "Security Audit: ABC Corp"
+  → Description: "Conducted full penetration test..."
+  → GitHub URL: https://github.com/...
+  → Uploads 3 screenshots
+  → Tags skills: Network Security, Compliance
 
 Step 5: Shares portfolio
-  â†’ Clicks "Share" â†’ copies public URL
-  â†’ Posts to LinkedIn
+  → Clicks "Share" → copies public URL
+  → Posts to LinkedIn
 
 Alternative Paths:
-  Step 4a: Accepts auto-import from completed assignments â†’ pre-populated projects
+  Step 4a: Accepts auto-import from completed assignments → pre-populated projects
   Step 4b: Certificate auto-appears from completed courses
 ```
 
 ### Journey 7.7: Messaging an Instructor
 
 ```
-Step 1: Student clicks Messages icon â†’ /messages
+Step 1: Student clicks Messages icon → /messages
 
 Step 2: Conversation list shows Prof. Smith (unread), Jane Doe, Study Group
 
 Step 3: Student clicks Prof. Smith
-  â†’ Previous messages loaded (WebSocket connects for real-time)
+  → Previous messages loaded (WebSocket connects for real-time)
 
 Step 4: Student types: "Hi Prof. Smith, I'm stuck on Lab 4 step 3. The packets aren't showing up with the filter you mentioned."
-  â†’ Clicks Send â†’ message sent via WebSocket
+  → Clicks Send → message sent via WebSocket
 
-Step 5: Prof. Smith is online â†’ replies within 2 min
-  â†’ "Hi Alex, try using 'tcp.port==443' instead. The traffic is HTTPS."
+Step 5: Prof. Smith is online → replies within 2 min
+  → "Hi Alex, try using 'tcp.port==443' instead. The traffic is HTTPS."
 
-Step 6: Student tries filter â†’ works! â†’ replies: "Got it, thank you!"
-  â†’ Marks conversation as resolved
+Step 6: Student tries filter → works! → replies: "Got it, thank you!"
+  → Marks conversation as resolved
 
 Alternative:
-  Step 2: Student clicks "New Message" â†’ searches "Jane Doe" â†’ sends direct message
-  Step 2b: Student receives file from instructor â†’ image preview or file download
-  Step 5: Prof. Smith offline â†’ message delivered, push notification sent
+  Step 2: Student clicks "New Message" → searches "Jane Doe" → sends direct message
+  Step 2b: Student receives file from instructor → image preview or file download
+  Step 5: Prof. Smith offline → message delivered, push notification sent
 ```
 
 ### Journey 7.8: Making a Purchase in Marketplace
 
 ```
-Step 1: Student clicks Marketplace â†’ /marketplace
+Step 1: Student clicks Marketplace → /marketplace
 
 Step 2: Browses featured items
-  â†’ Sees "Kali Linux Guide" ($29), "Mentoring Session" ($99)
+  → Sees "Kali Linux Guide" ($29), "Mentoring Session" ($99)
 
 Step 3: Student clicks "Add+" on Kali Linux Guide
-  â†’ Item added to cart
-  â†’ Cart badge shows (1)
+  → Item added to cart
+  → Cart badge shows (1)
 
-Step 4: Clicks cart icon â†’ slide-out drawer shows:
-  â†’ Kali Linux Guide - $29
-  â†’ Subtotal: $29
-  â†’ [Checkout]
+Step 4: Clicks cart icon → slide-out drawer shows:
+  → Kali Linux Guide - $29
+  → Subtotal: $29
+  → [Checkout]
 
 Step 5: Clicks "Checkout"
-  â†’ POST /api/student/marketplace/checkout
-  â†’ Returns Stripe Checkout session URL
-  â†’ Redirected to Stripe Checkout
+  → POST /api/student/marketplace/checkout
+  → Returns Stripe Checkout session URL
+  → Redirected to Stripe Checkout
 
-Step 6: Student enters card info â†’ payment succeeds
-  â†’ Webhook: stripe â†’ POST /api/webhooks/stripe â†’ creates purchase record
-  â†’ Redirect back to marketplace â†’ success toast
-  â†’ Item available in "My Purchases" for download
+Step 6: Student enters card info → payment succeeds
+  → Webhook: stripe → POST /api/webhooks/stripe → creates purchase record
+  → Redirect back to marketplace → success toast
+  → Item available in "My Purchases" for download
 
 Alternative:
-  Step 5: Free item â†’ no checkout â†’ immediate access
-  Step 6: Payment fails â†’ "Payment failed. Please try a different card."
+  Step 5: Free item → no checkout → immediate access
+  Step 6: Payment fails → "Payment failed. Please try a different card."
 ```
 
 ---
@@ -2047,9 +2047,9 @@ Alternative:
 ### BR-CS-003: Attendance Policy
 
 - Minimum attendance: 85% per course
-- Below 85% â†’ warning banner on dashboard + email
-- Below 75% â†’ mandatory meeting with advisor
-- Below 60% â†’ risk of expulsion
+- Below 85% → warning banner on dashboard + email
+- Below 75% → mandatory meeting with advisor
+- Below 60% → risk of expulsion
 - Excused absences: require documentation (doctor's note, etc.)
 
 ### BR-CS-004: Assessment Retake Policy
@@ -2063,7 +2063,7 @@ Alternative:
 
 - Students must complete â‰¥ 25% of weekly assigned work to remain in good standing
 - Tracked per week, rolling 4-week window
-- Below threshold â†’ advisor notification + study plan meeting
+- Below threshold → advisor notification + study plan meeting
 
 ### BR-CS-006: Portfolio Auto-Population
 
@@ -2075,7 +2075,7 @@ Alternative:
 
 - Course certificate: issued when course grade â‰¥ passing_grade
 - Program certificate: issued when all courses passed with cumulative GPA â‰¥ 2.0
-- PDF generated via Puppeteer â†’ stored in R2 â†’ `certificates.pdf_url`
+- PDF generated via Puppeteer → stored in R2 → `certificates.pdf_url`
 - Blockchain hash stored for verification (optional)
 
 ### BR-CS-008: Marketplace Refund Policy

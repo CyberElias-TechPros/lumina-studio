@@ -43,7 +43,7 @@ password `cea-demo-pass-2026`, MFA off).
 
 **Security rules worth knowing:**
 - Every `/v1/*` request passes the RBAC guard (`backend/src/lib/rbac.ts`).
-  Unregistered paths â†’ **403** (not 404). Public rules skip auth; rules with
+  Unregistered paths → **403** (not 404). Public rules skip auth; rules with
   `roles` reject mismatched roles with 403; the rest need any valid session.
 - CORS: only origins in `FRONTEND_ORIGINS` (currently `localhost:5173`,
    `127.0.0.1:5173`, `https://cea.ng`, `https://www.cea.ng`) — or *any* origin if that
@@ -69,19 +69,23 @@ pagination), but **the frontend never calls them** — the `/programs` pages
 render static data instead.
 
 ### 1.1 Apply to a program — `/apply` (LIVE)
+- 4-step wizard (program → profile → assessment → financing); the profile
 - 4-step wizard (program â†’ profile â†’ assessment â†’ financing); the profile
   step collects first/last name + email.
-- Submit â†’ `POST /v1/applications` (public) with
+- Submit → `POST /v1/applications` (public) with
   `{ fullName, email, programSlug }`.
   - 400 `FIELD_VALIDATION` if missing/invalid; 400 `PROGRAM_NOT_FOUND` if the
     slug doesn't match a program in D1.
-  - Success â†’ `201 { application: { id, ref, status: "submitted" } }`; the
+  - Success → `201 { application: { id, ref, status: "submitted" } }`; the
     success screen shows the **application reference** (`CEA-<year>-<6 chars>`)
     and links to `/apply/status`.
   - **No email, no notification, no user created, no auto-enrollment** (by
     design — a human reviews each application).
 
 ### 1.2 Track application — `/apply/status` (STATIC MOCK)
+- Enter an ID → static mock state only.
+- **Real equivalent (public):** `GET /v1/applications/:ref` → status +
+  stage list (`submitted → screening → assessment → interview → offer →
 - Enter an ID â†’ static mock state only.
 - **Real equivalent (public):** `GET /v1/applications/:ref` â†’ status +
   stage list (`submitted â†’ screening â†’ assessment â†’ interview â†’ offer â†’
@@ -90,10 +94,11 @@ render static data instead.
   rejects backwards moves (400), 404 unknown ref, writes an audit log entry.
 
 ### 1.3 Certificate verification — `/certificates/verify` (LIVE)
+- Code input (or `?code=` search param) → `GET /v1/certificates/verify?code=`
 - Code input (or `?code=` search param) â†’ `GET /v1/certificates/verify?code=`
   (public, code uppercased server-side).
-  - < 8 chars â†’ 400. Unknown code â†’ `{ valid: false, message }`.
-  - Valid â†’ `{ valid: true, certificate: { code, title, issuedAt } }`; the
+  - < 8 chars → 400. Unknown code → `{ valid: false, message }`.
+  - Valid → `{ valid: true, certificate: { code, title, issuedAt } }`; the
     page renders a "Valid credential" card with title, code and issue date.
 - Verified codes only exist once a certificate has been issued (Â§3.12).
 
@@ -101,7 +106,7 @@ render static data instead.
 - The contact form posts `POST /v1/contact` (public, rate-limited 5/10min
   per IP): `{ name, email, message, kind: "contact" | "newsletter" }`.
   - 400 `FIELD_VALIDATION` on bad input; 429 when rate-limited.
-  - Success â†’ `201 { ok: true, kind }`; row written to the marketing `leads`
+  - Success → `201 { ok: true, kind }`; row written to the marketing `leads`
     table so the marketing suite sees real submissions.
 - Footer newsletter form: none exists (no duplicate capture point).
 
@@ -113,20 +118,21 @@ render static data instead.
 - Posts `POST /v1/auth/sign-up` `{ name, email, password }` (public,
   rate-limited per IP).
   - 400 `FIELD_VALIDATION`; 409 `EMAIL_TAKEN` if the email exists.
-  - Success â†’ `201 { user, expiresAt }` + `cea_session` cookie; navigates
+  - Success → `201 { user, expiresAt }` + `cea_session` cookie; navigates
     straight to `/app`. Role is always `student`.
 
 ### 2.2 Sign in — `/auth/sign-in` (LIVE)
 Two tabs on the page:
 - **Password tab (real):** posts `POST /v1/auth/sign-in`
   `{ email, password, remember }` (rate-limited 5/min per email+IP).
+  - Wrong email/password → **401** (same message either way — no user
   - Wrong email/password â†’ **401** (same message either way — no user
     enumeration).
-  - Suspended user â†’ 403.
-  - No MFA on the account â†’ `200 { user, expiresAt }` â†’ navigate `/app`.
-  - **MFA enabled** â†’ `200 { mfaRequired: true, expiresAt }` (no `user`).
+  - Suspended user → 403.
+  - No MFA on the account → `200 { user, expiresAt }` → navigate `/app`.
+  - **MFA enabled** → `200 { mfaRequired: true, expiresAt }` (no `user`).
     The frontend detects this and navigates to `/auth/mfa`.
-- **Magic link tab:** enter email â†’
+- **Magic link tab:** enter email →
   1. `POST /v1/auth/magic-link` (public, rate-limited 3/15min). Stores a
      hashed token in D1 `magic_links`, **expires 15 minutes, single-use**.
       Returns `201 { ok: true }`; in non-production also `devToken` shown as
@@ -141,22 +147,22 @@ Two tabs on the page:
 ### 2.3 MFA challenge — `/auth/mfa` (LIVE)
 - Shown after password sign-in when the account has MFA enabled (the
   pending session cookie `cea_session` carries the half-auth state).
-- Two methods on the page: **app code** or **recovery key** â†’
+- Two methods on the page: **app code** or **recovery key** →
   `POST /v1/auth/mfa/verify` `{ code }`.
-  - Wrong code â†’ 401 `MFA_INVALID`. Valid â†’ `200 { user, expiresAt }` and
-    the pending flag on the session is cleared â†’ navigate `/app`.
+  - Wrong code → 401 `MFA_INVALID`. Valid → `200 { user, expiresAt }` and
+    the pending flag on the session is cleared → navigate `/app`.
 - MFA setup lives on the security page (Â§2.6); recovery keys are 24-char,
   single-use each.
 
 ### 2.4 Forgot / reset password (LIVE)
-- `/auth/forgot-password` â†’ `POST /v1/auth/forgot-password` `{ email }`
+- `/auth/forgot-password` → `POST /v1/auth/forgot-password` `{ email }`
   (public, rate-limited). Always `200 { ok: true, sent }` (no enumeration);
   when a token is produced (dev), the response carries it for the demo.
-- `/auth/reset-password?token=` â†’ `POST /v1/auth/reset-password`
+- `/auth/reset-password?token=` → `POST /v1/auth/reset-password`
   `{ token, password }` (public, rate-limited). Validates the token
-  (unknown/expired â†’ 400 `INVALID_RESET_TOKEN`), enforces password strength
+  (unknown/expired → 400 `INVALID_RESET_TOKEN`), enforces password strength
   (8+ chars, uppercase, number/symbol), hashes and stores the new password.
-  Success â†’ success state â†’ link to sign-in.
+  Success → success state → link to sign-in.
 
 ### 2.5 Session lifecycle (automatic, client-side)
 - Session lives only in the HttpOnly cookie; react-query caches it under
@@ -166,7 +172,7 @@ Two tabs on the page:
   expiry to +7 days** (sliding window), sets a new cookie. If refresh fails,
   the user is signed out in the UI.
 - **Sign-out:** the AppShell sidebar button (and header avatar area) calls
-  `POST /v1/auth/sign-out` â†’ revokes the session, clears the cookie,
+  `POST /v1/auth/sign-out` → revokes the session, clears the cookie,
   navigates home. The AppShell also **redirects signed-out visitors** away
   from `/app/*` to `/auth/sign-in` in live mode (mock mode is unaffected).
 
@@ -175,9 +181,9 @@ Renamed in purpose to an account-security page:
 - **Devices:** `GET /v1/auth/devices` (any authenticated) — your sessions
   (label, IP, created, active, `current` flag). Revoke:
   `POST /v1/auth/devices/:id/revoke` (own devices only; 403 otherwise).
-- **MFA:** "Set up" â†’ `POST /v1/auth/mfa/setup` â†’ `{ secret, otpauth,
-  recoveryCodes, enabled }`. Enter a 6-digit code â†’
-  `POST /v1/auth/mfa/enable` `{ code }` (wrong â†’ 400) â†’ MFA on. Disable
+- **MFA:** "Set up" → `POST /v1/auth/mfa/setup` → `{ secret, otpauth,
+  recoveryCodes, enabled }`. Enter a 6-digit code →
+  `POST /v1/auth/mfa/enable` `{ code }` (wrong → 400) → MFA on. Disable
   requires the current code: `POST /v1/auth/mfa/disable`. Recovery keys are
   shown with copy buttons + a downloadable text file.
 
@@ -235,15 +241,18 @@ in live mode; the "Viewing as" role switcher remains a demo affordance.
 
 ### 3.6 Payments — `/app/finance` (LIVE)
 1. "Pay now" posts `{ amount: 140000, description, redirectUrl:
+   <origin>/app/finance/pay-verify }` → `POST /v1/payments/checkout`
+   (any authenticated). Amount must be whole NGN 1–10,000,000; description
+   â‰¤ 120 chars; `redirectUrl` must be an https URL → else 400.
    <origin>/app/finance/pay-verify }` â†’ `POST /v1/payments/checkout`
    (any authenticated). Amount must be whole NGN 1–10,000,000; description
    â‰¤ 120 chars; `redirectUrl` must be an https URL â†’ else 400.
 2. A `payments` row is inserted: `reference = cea_<16 hex>`, `status =
    "pending"`, `provider = "paystack"`.
 3. **Real mode:** Paystack `transaction/initialize` with `amount * 100` and
-   `callback_url = <redirectUrl>?reference=<reference>`. Success â†’ `201
+   `callback_url = <redirectUrl>?reference=<reference>`. Success → `201
    { reference, authorizationUrl, accessCode, mock: false }`; Paystack
-   failure â†’ 502 `PAYMENT_PROVIDER_ERROR`. **Mock mode** (no secret):
+   failure → 502 `PAYMENT_PROVIDER_ERROR`. **Mock mode** (no secret):
    `201 { authorizationUrl: https://checkout.paystack.com/<reference>,
    mock: true }`.
 4. Frontend: live mode opens Paystack in a new tab — the Paystack tab
@@ -277,7 +286,7 @@ now set per-checkout via `redirect_url` (see step 1).
   `{ status }` (live/ended transitions).
 - Class page: chat `GET/POST /v1/live/classes/:id/chat`; polls
   `GET/POST .../polls`, vote `POST .../polls/:pollId/vote` (one vote per
-  user, closed polls â†’ 409); whiteboard ops `GET` (any) / `POST`
+  user, closed polls → 409); whiteboard ops `GET` (any) / `POST`
   (instructor/admin). WS upgrades exist for fan-out; UI doesn't open them.
 
 ### 3.9 AI assistant — `/app/ai` (LIVE, deterministic unless keyed)
@@ -292,12 +301,12 @@ now set per-checkout via `redirect_url` (see step 1).
 ### 3.10 Uploads (LIVE, proxy mode)
 - `POST /v1/uploads/presign` `{ filename?, contentType? }` (any
   authenticated). Key = `<userId>/<uuid>.<ext>`; MIME allowlist
-  (jpg/png/webp/gif/pdf/txt), 10MB cap â†’ 400/413 otherwise.
-- `UPLOADS_PRESIGN_URL` is empty â†’ returns the **worker proxy** path
+  (jpg/png/webp/gif/pdf/txt), 10MB cap → 400/413 otherwise.
+- `UPLOADS_PRESIGN_URL` is empty → returns the **worker proxy** path
   `uploadUrl: /v1/uploads/<key>`, `mock: true`.
 - `PUT /v1/uploads/:key` streams to R2 (201 + size); `GET` streams back;
   `DELETE` removes. **Ownership enforced:** the key must start with
-  `<userId>/` â†’ else 403.
+  `<userId>/` → else 403.
 
 ### 3.11 Push notifications
 - Auto-subscribe on load when `pwa.push` on + VAPID present + permission:
@@ -305,6 +314,7 @@ now set per-checkout via `redirect_url` (see step 1).
   endpoint. List: `GET /v1/push/subscriptions`; remove: `DELETE .../:id`
   (own only).
 - Send: `POST /v1/push/send` `{ title, body, url?, userId? }` — anyone to
+  self; **admin/instructor** to any user (403 otherwise). No VAPID → 503.
   self; **admin/instructor** to any user (403 otherwise). No VAPID â†’ 503.
   Dead endpoints auto-removed; response `{ sent, removed }`.
 - **UI (live):** "Send a push" card on `/app/notifications` — title, message,
@@ -323,7 +333,7 @@ now set per-checkout via `redirect_url` (see step 1).
   roles. Picks the recipient from `GET /v1/certificates/candidates` (active
   users, instructor/admin only) and the course from the catalog, auto-fills
   the title (editable), then `POST /v1/certificates`
-  `{ userId, courseSlug, title }` (duplicate â†’ 409). The returned code is
+  `{ userId, courseSlug, title }` (duplicate → 409). The returned code is
   shown inline and can be verified publicly immediately.
 
 ---
@@ -365,7 +375,7 @@ Pages under `/app/accountant/*`. **New write actions:**
   "paid"|"overdue"|"cancelled" }`.
 - `GET /v1/expenses` + **`PATCH /v1/expenses/:id`** `{ status:
   "approved"|"rejected" }`.
-- `GET /v1/payments` â†’ `payment_batches` (payout list; separate from the
+- `GET /v1/payments` → `payment_batches` (payout list; separate from the
   consumer payments router).
 - Finance users also have a normal account and can use student flows (Â§3.6).
 
@@ -380,7 +390,7 @@ Pages under `/app/employer/*`. **New write actions:**
   `["employer", "hr", "admin"]` (the GET is open to any authenticated user).
 - `GET /v1/recruitment/postings/:id/candidates` + **`PATCH
   .../candidates/:candidateId`** `{ stage }` (advance a candidate through
-  applied â†’ screening â†’ interview â†’ offer).
+  applied → screening → interview → offer).
 - `GET /v1/recruitment/interviews` + **`POST /v1/recruitment/interviews`**
   `{ candidate, role, date, mode? }` (role-gated).
 - `GET /v1/recruitment/talent`.
@@ -390,7 +400,7 @@ Pages under `/app/employer/*`. **New write actions:**
 ## 8. Admin flows (role: `admin`)
 
 Pages under `/app/admin/*`:
-- `GET /v1/admin/users` â†’ the **`admin_users`** table (separate from
+- `GET /v1/admin/users` → the **`admin_users`** table (separate from
   `users`).
 - **`GET /v1/admin/accounts`** — the real `users` table with role/status
   (the audit trail for provisioning).
@@ -410,12 +420,13 @@ Pages under `/app/admin/*`:
 ## 9. System-level flows
 
 ### 9.1 Paystack webhook — `POST /v1/payments/webhook` (public)
+1. With a secret: requires `x-paystack-signature` (missing/bad → 401),
 1. With a secret: requires `x-paystack-signature` (missing/bad â†’ 401),
    HMAC-SHA512 of the raw body, constant-time compare. No secret +
-   `APP_ENV=production` â†’ 503; dev â†’ signature skipped.
-2. `charge.success` â†’ row `success`, amount corrected, `paid_at` set,
+   `APP_ENV=production` → 503; dev → signature skipped.
+2. `charge.success` → row `success`, amount corrected, `paid_at` set,
    "Payment received" notification (first transition only); `charge.failed`
-   â†’ `failed` + notification; unknown â†’ `{ ok: true }`.
+   → `failed` + notification; unknown → `{ ok: true }`.
 3. Configured at `https://cea-api.cyber-e54.workers.dev/v1/payments/webhook`.
 
 ### 9.2 Health — `GET /v1/health` (public) — `SELECT 1` on D1.
@@ -476,15 +487,15 @@ into the seeds and applied to production D1.
 
 ## 12. Live-mode flow checklist (what actually happens on cea.ng today)
 
-1. Visitor browses static marketing pages; can apply (`/apply` â†’ real
+1. Visitor browses static marketing pages; can apply (`/apply` → real
    `POST /v1/applications`, gets a reference), verify certificates (real
    public lookup), and send the contact form (real lead write).
 2. Signs up with email+password (real, hashed) or signs in as a seeded
    account; users with MFA enabled complete the `/auth/mfa` challenge.
 3. Student lands on `/app`, reads real dashboard/courses/assignments/
    grades/calendar/messages/notifications; marks notifications read.
-4. Pays via finance page â†’ Paystack tab â†’ callback to
-   `/app/finance/pay-verify?reference=` (real verification) â†’ history +
+4. Pays via finance page → Paystack tab → callback to
+   `/app/finance/pay-verify?reference=` (real verification) → history +
    notification update via webhook.
 5. Chats in `/app/chat` (REST, D1), joins live-class chat/polls.
 6. Staff roles (admin/hr/finance/instructor/employer) can perform the new

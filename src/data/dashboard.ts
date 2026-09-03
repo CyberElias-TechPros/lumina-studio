@@ -25,7 +25,7 @@ export const roles: {
     label: "Student",
     engine: "learning",
     person: "Chiamaka Obi",
-    title: "Cohort 12 Â· Full-Stack",
+    title: "Cohort 12 · Full-Stack",
     home: "/app/student",
   },
   {
@@ -316,7 +316,7 @@ export const portfolioProjects = [
 export const cohorts = [
   {
     id: "co-12",
-    name: "Cohort 12 Â· Full-Stack",
+    name: "Cohort 12 · Full-Stack",
     students: 42,
     progress: 68,
     attendance: 91,
@@ -324,7 +324,7 @@ export const cohorts = [
   },
   {
     id: "co-09",
-    name: "Cohort 9 Â· Cybersecurity",
+    name: "Cohort 9 · Cybersecurity",
     students: 31,
     progress: 74,
     attendance: 88,
@@ -332,7 +332,7 @@ export const cohorts = [
   },
   {
     id: "co-14",
-    name: "Cohort 14 Â· Cloud",
+    name: "Cohort 14 · Cloud",
     students: 28,
     progress: 41,
     attendance: 84,
@@ -804,7 +804,7 @@ export const leadSources = [
 /* ---------------- Director / Admin ---------------- */
 
 export const directorKpis = [
-  { label: "Monthly revenue", value: "â‚¦109m", delta: "+14.2%", positive: true },
+  { label: "Monthly revenue", value: "₦109m", delta: "+14.2%", positive: true },
   { label: "Active learners", value: "3,412", delta: "+8.6%", positive: true },
   { label: "Placement rate", value: "78%", delta: "+3.1%", positive: true },
   { label: "Churn", value: "4.2%", delta: "-0.8%", positive: true },

@@ -84,14 +84,14 @@
 â”‚  â”‚ Alex       â”‚  â”‚  â”‚ Today 3PM      â”‚  â”‚  â”‚ ðŸ‘¤ Mike Brown     â”‚   â”‚
 â”‚  â”‚ Johnson    â”‚  â”‚  â”‚ Alex Johnson   â”‚  â”‚  â”‚ "Looking for help â”‚   â”‚
 â”‚  â”‚ CS: 78% â–¶ â”‚  â”‚  â”‚ Career roadmap  â”‚  â”‚  â”‚  with resume"     â”‚   â”‚
-â”‚  â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤  â”‚  â”‚ [Join â†’]       â”‚  â”‚  â”‚ [Accept][Decline] â”‚   â”‚
+â”‚  â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤  â”‚  â”‚ [Join →]       â”‚  â”‚  â”‚ [Accept][Decline] â”‚   â”‚
 â”‚  â”‚ Jane Doe   â”‚  â”‚  â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤  â”‚  â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤   â”‚
 â”‚  â”‚ CS: 62% âš  â”‚  â”‚  â”‚ Tomorrow 10AM  â”‚  â”‚  â”‚ ðŸ‘¤ Lisa Park      â”‚   â”‚
 â”‚  â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤  â”‚  â”‚ Jane Doe       â”‚  â”‚  â”‚ "Interview prep   â”‚   â”‚
 â”‚  â”‚ John Smith â”‚  â”‚  â”‚ Mock interview  â”‚  â”‚  â”‚  for Google"      â”‚   â”‚
-â”‚  â”‚ CS: 91% â˜… â”‚  â”‚  â”‚ [Prepare â†’]    â”‚  â”‚  â”‚ [Accept][Decline] â”‚   â”‚
+â”‚  â”‚ CS: 91% â˜… â”‚  â”‚  â”‚ [Prepare →]    â”‚  â”‚  â”‚ [Accept][Decline] â”‚   â”‚
 â”‚  â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜  â”‚  â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜  â”‚  â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜   â”‚
-â”‚  [View All â†’]    â”‚  [View Calendar â†’]  â”‚                            â”‚
+â”‚  [View All →]    â”‚  [View Calendar →]  â”‚                            â”‚
 â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”´â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”´â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
 â”‚  Quick Stats                                                           â”‚
 â”‚  â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”  â”‚
@@ -118,11 +118,11 @@
 **States:**
 
 - **Loading:** 6 skeleton cards in grid layout
-- **Empty (no mentees):** "You haven't been assigned any mentees yet. [Browse Available Students â†’]"
+- **Empty (no mentees):** "You haven't been assigned any mentees yet. [Browse Available Students →]"
 - **Empty (no requests):** "No pending mentorship requests."
-- **Empty (no sessions):** "No upcoming sessions. [Schedule a Session â†’]"
-- **Error:** Dashboard fails â†’ inline error per card, rest renders
-- **Edge Cases:** Mentor at capacity â†’ banner "You've reached your maximum mentee load (10)."
+- **Empty (no sessions):** "No upcoming sessions. [Schedule a Session →]"
+- **Error:** Dashboard fails → inline error per card, rest renders
+- **Edge Cases:** Mentor at capacity → banner "You've reached your maximum mentee load (10)."
 - **New mentor:** Welcome wizard prompt on first login
 
 ### Screen 3.2: Mentee Overview (`/mentor/mentees/[id]`)
@@ -157,7 +157,7 @@
 â”‚  â”‚  [View Breakdown] â”‚  â”‚  â”‚ ðŸŽ¯ Build network of 10 connections  â”‚  â”‚
 â”‚  â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜  â”‚  â”‚   20% â–ˆâ–ˆâ–‘â–‘â–‘â–‘â–‘â–‘â–‘â–‘â–‘ [Update]         â”‚  â”‚
 â”‚                          â”‚  â”‚                                     â”‚  â”‚
-â”‚                          â”‚  â”‚  [Add Goal]  [View All Goals â†’]    â”‚  â”‚
+â”‚                          â”‚  â”‚  [Add Goal]  [View All Goals →]    â”‚  â”‚
 â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”´â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
 â”‚  Session History                                                        â”‚
 â”‚  â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”  â”‚
@@ -183,8 +183,8 @@
 - **Loading:** Profile card skeleton + 2 column skeleton
 - **Error (404):** "Mentee not found or no longer in your roster."
 - **Error (network):** "Failed to load mentee data. [Retry]"
-- **Edge Cases:** Mentee on leave â†’ banner "Mentee is currently on academic leave until [date]"
-- Mentorship ended â†’ archived view, read-only
+- **Edge Cases:** Mentee on leave → banner "Mentee is currently on academic leave until [date]"
+- Mentorship ended → archived view, read-only
 
 ### Screen 3.3: Session Hub (`/mentor/sessions` and `/mentor/sessions/[id]`)
 
@@ -269,12 +269,12 @@
 **States:**
 
 - **Loading (list):** 3 session card skeletons
-- **Empty (upcoming):** "No upcoming sessions. [Schedule One Now â†’]"
+- **Empty (upcoming):** "No upcoming sessions. [Schedule One Now →]"
 - **Empty (past):** "No past sessions yet."
 - **In-session:** Active timer, green live indicator
 - **Completed:** Feedback form, summary view
 - **Cancelled:** Greyed out with cancellation reason
-- **Error:** Session load fails â†’ inline error
+- **Error:** Session load fails → inline error
 
 ### Screen 3.4: Portfolio Reviewer (`/mentor/mentees/[id]/portfolio`)
 
@@ -438,8 +438,8 @@
 **States:**
 
 - **Loading:** Goal card skeletons (2-3)
-- **Empty:** "No goals set yet. [Create first goal â†’]"
-- **All completed:** "All goals achieved! ðŸŽ‰ [Celebrate] [Set new goals â†’]"
+- **Empty:** "No goals set yet. [Create first goal →]"
+- **All completed:** "All goals achieved! ðŸŽ‰ [Celebrate] [Set new goals →]"
 - **Error:** "Could not load goals. [Retry]"
 
 ### Screen 3.7: Messaging (`/mentor/messages`)
@@ -468,7 +468,7 @@
 â”‚                 â”‚                                                   â”‚
 â”‚                 â”‚  ðŸ“Ž Shared Resource: resume_template_2026.pdf    â”‚
 â”‚                 â”‚                                                   â”‚
-â”‚                 â”‚  [Type a message...]                        [ðŸ“Žâ†’] â”‚
+â”‚                 â”‚  [Type a message...]                        [ðŸ“Ž→] â”‚
 â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”´â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
 ```
 
@@ -481,7 +481,7 @@
 **States:**
 
 - **Loading:** Split pane skeleton
-- **Empty (no conversations):** "No conversations yet. [Message a Mentee â†’]"
+- **Empty (no conversations):** "No conversations yet. [Message a Mentee →]"
 - **Empty (no messages in thread):** "Start a conversation with Alex."
 - **Error:** "Unable to load messages. [Retry]"
 
@@ -1673,7 +1673,7 @@ MentorLayout
 â”‚   â”‚           â”œâ”€â”€ PrepNotesSection (collapsible)
 â”‚   â”‚           â”œâ”€â”€ ActionButtons (Join, Prepare, Reschedule, Cancel, End)
 â”‚   â”‚           â””â”€â”€ StatusBadge (scheduled, in_progress, completed, cancelled)
-â”‚   â””â”€â”€ NewSessionButton â†’ SessionSchedulerModal
+â”‚   â””â”€â”€ NewSessionButton → SessionSchedulerModal
 â”‚       â”œâ”€â”€ MenteeSelect
 â”‚       â”œâ”€â”€ SessionTypeSelect
 â”‚       â”œâ”€â”€ DateTimePicker
@@ -1713,10 +1713,10 @@ MentorLayout
 â”‚   â”œâ”€â”€ MenteeHeader
 â”‚   â”œâ”€â”€ CareerGoalSection (view/edit goal, target timeline)
 â”‚   â”œâ”€â”€ PipelineKanbanBoard
-â”‚   â”‚   â”œâ”€â”€ KanbanColumn("Applied") â†’ ApplicationCard[]
-â”‚   â”‚   â”œâ”€â”€ KanbanColumn("Interviewing") â†’ ApplicationCard[]
-â”‚   â”‚   â”œâ”€â”€ KanbanColumn("Offer") â†’ ApplicationCard[]
-â”‚   â”‚   â””â”€â”€ KanbanColumn("Rejected/Closed") â†’ ApplicationCard[]
+â”‚   â”‚   â”œâ”€â”€ KanbanColumn("Applied") → ApplicationCard[]
+â”‚   â”‚   â”œâ”€â”€ KanbanColumn("Interviewing") → ApplicationCard[]
+â”‚   â”‚   â”œâ”€â”€ KanbanColumn("Offer") → ApplicationCard[]
+â”‚   â”‚   â””â”€â”€ KanbanColumn("Rejected/Closed") → ApplicationCard[]
 â”‚   â”‚       â””â”€â”€ ApplicationCard (company, title, stage, date, drag to update stage)
 â”‚   â”œâ”€â”€ AddApplicationModal (company, title, url, date)
 â”‚   â”œâ”€â”€ SkillsGapRadarChart
@@ -1758,7 +1758,7 @@ MentorLayout
 â”‚   â”œâ”€â”€ SearchInput
 â”‚   â”œâ”€â”€ ResourceGrid
 â”‚   â”‚   â””â”€â”€ ResourceCard[] (type icon, title, description, share count, share with mentee)
-â”‚   â”œâ”€â”€ AddResourceButton â†’ AddResourceModal
+â”‚   â”œâ”€â”€ AddResourceButton → AddResourceModal
 â”‚   â”‚   â”œâ”€â”€ ResourceTypeSelect
 â”‚   â”‚   â”œâ”€â”€ TitleInput, DescriptionInput
 â”‚   â”‚   â”œâ”€â”€ FileUpload / URLInput
@@ -1798,41 +1798,41 @@ MentorLayout
 ```
 Prerequisite: Mentor invited by admin, account created.
 
-Step 1: First login â†’ redirected to /mentor/settings?welcome=true
-  â†’ Welcome modal: "Welcome to the Mentor Hub! Let's get your profile set up."
+Step 1: First login → redirected to /mentor/settings?welcome=true
+  → Welcome modal: "Welcome to the Mentor Hub! Let's get your profile set up."
 
 Step 2: Mentor fills profile:
   - Mentor type: "Career Mentor"
   - Bio, company, job title, LinkedIn URL
   - Expertise tags: "Cloud Security", "Penetration Testing", "Compliance"
   - Uploads avatar
-  â†’ Auto-saves as they type
+  → Auto-saves as they type
 
 Step 3: Sets availability schedule:
   - Monday-Friday, 9AM-5PM
   - Max 4 slots per day
   - Default session duration: 45 min
   - Virtual meeting link: Zoom URL
-  â†’ Clicks "Save Availability"
+  → Clicks "Save Availability"
 
 Step 4: Sets capacity:
   - Max mentees: 10 (default)
-  â†’ Clicks "Complete Setup"
+  → Clicks "Complete Setup"
 
 Step 5: Redirected to dashboard
-  â†’ "Your profile is complete! You can now receive mentee requests."
-  â†’ Status changes to "Active"
+  → "Your profile is complete! You can now receive mentee requests."
+  → Status changes to "Active"
 
 Alternative:
-  Step 2a: Skips profile setup â†’ incomplete profile banner persists
-  Step 4a: Requests capacity > 10 â†’ pending admin approval
+  Step 2a: Skips profile setup → incomplete profile banner persists
+  Step 4a: Requests capacity > 10 → pending admin approval
 ```
 
 ### Journey 7.2: Accepting a Mentorship Request
 
 ```
 Step 1: Notification badge appears on dashboard: "2 pending requests"
-  â†’ Mentor clicks notification â†’ opens pending requests
+  → Mentor clicks notification → opens pending requests
 
 Step 2: Review request from Mike Brown:
   - Student: Mike Brown — Cybersecurity Fundamentals
@@ -1840,23 +1840,23 @@ Step 2: Review request from Mike Brown:
   - Requested: 2 days ago
 
 Step 3: Mentor clicks "Accept"
-  â†’ Confirmation dialog: "Accept mentorship with Mike Brown?"
-  â†’ Clicks "Confirm"
-  â†’ POST /api/mentor/requests/:id/accept â†’ 200
-  â†’ Mike added to mentee roster
-  â†’ Auto-generated welcome message sent to Mike
-  â†’ Capacity: 8/10 â†’ 9/10
+  → Confirmation dialog: "Accept mentorship with Mike Brown?"
+  → Clicks "Confirm"
+  → POST /api/mentor/requests/:id/accept → 200
+  → Mike added to mentee roster
+  → Auto-generated welcome message sent to Mike
+  → Capacity: 8/10 → 9/10
 
 Step 4: Mentor clicks "Decline" on another request
-  â†’ Reason dropdown: "At capacity" â†’ "Not aligned with expertise" â†’ "Other"
-  â†’ Selects "Not aligned with expertise"
-  â†’ POST /api/mentor/requests/:id/decline
-  â†’ Student notified: "Your mentorship request was declined. Reason: Not aligned with expertise."
+  → Reason dropdown: "At capacity" → "Not aligned with expertise" → "Other"
+  → Selects "Not aligned with expertise"
+  → POST /api/mentor/requests/:id/decline
+  → Student notified: "Your mentorship request was declined. Reason: Not aligned with expertise."
 
 Alternative:
-  Step 3a: Mentor at capacity (10/10) â†’ accept disabled, "Increase capacity in settings"
-  Step 3b: Mentor wants to review student profile first â†’ clicks student name â†’ profile opens in new tab
-  Step 4a: Defers decision â†’ request stays pending, reminder in 48h
+  Step 3a: Mentor at capacity (10/10) → accept disabled, "Increase capacity in settings"
+  Step 3b: Mentor wants to review student profile first → clicks student name → profile opens in new tab
+  Step 4a: Defers decision → request stays pending, reminder in 48h
 ```
 
 ### Journey 7.3: Conducting a Mentorship Session
@@ -1865,16 +1865,16 @@ Alternative:
 Step 1: Dashboard shows "Today 3:00 PM — Alex Johnson — Career Roadmap"
   â†’ Mentor clicks "Prepare" â†’ opens session with prep notes from last session
 
-Step 2: At session time, clicks "Join" â†’ meeting URL opens in new tab
-  â†’ Session becomes "In Progress" via POST /api/mentor/sessions/:id/start
+Step 2: At session time, clicks "Join" → meeting URL opens in new tab
+  → Session becomes "In Progress" via POST /api/mentor/sessions/:id/start
 
 Step 3: Mentor follows agenda:
-  â–¡ Review updated resume (5 min) â†’ checks off
-  â–¡ Discuss career path (15 min) â†’ types live notes:
+  â–¡ Review updated resume (5 min) → checks off
+  â–¡ Discuss career path (15 min) → types live notes:
     "Alex interested in cloud security. Discussed AWS, GCP, Azure paths.
      Recommended CCSP certification. Alex concerned about experience requirements."
-  â–¡ Identify target companies (10 min) â†’ adds action items
-  â–¡ Set next steps (10 min) â†’ adds action items
+  â–¡ Identify target companies (10 min) → adds action items
+  â–¡ Set next steps (10 min) → adds action items
 
 Step 4: Adds action items:
   - Alex: Research AWS Security cert requirements [Due: Nov 8]
@@ -1882,46 +1882,46 @@ Step 4: Adds action items:
   - Mentor: Send list of cloud security job postings [Due: Nov 3]
 
 Step 5: Shares a resource:
-  â†’ Clicks "Share Resource"
-  â†’ Selects "Top 20 Cybersecurity Job Boards"
-  â†’ Sends to Alex via chat
-  â†’ Resource shared_count increments
+  → Clicks "Share Resource"
+  → Selects "Top 20 Cybersecurity Job Boards"
+  → Sends to Alex via chat
+  → Resource shared_count increments
 
 Step 6: Ends session
-  â†’ POST /api/mentor/sessions/:id/complete
-  â†’ Feedback form appears:
+  → POST /api/mentor/sessions/:id/complete
+  → Feedback form appears:
     - Topics covered: [Resume] [Career Path] [Certifications] [Networking]
     - Mentee rating: 5/5
     - Mentor notes: "Good session. Alex is motivated and focused on cloud security."
-  â†’ Submits
-  â†’ Session marked as completed
+  → Submits
+  → Session marked as completed
 
 Alternative:
-  Step 2a: Mentee doesn't show â†’ wait 10 min â†’ "Mark as No Show" â†’ status: no_show
-  Step 3a: Mentor goes off-agenda â†’ adjusts on the fly
-  Step 5a: Session ends early â†’ complete with shorter duration
-  Step 6a: Mentor wants to add notes later â†’ saves draft â†’ completes later
+  Step 2a: Mentee doesn't show → wait 10 min → "Mark as No Show" → status: no_show
+  Step 3a: Mentor goes off-agenda → adjusts on the fly
+  Step 5a: Session ends early → complete with shorter duration
+  Step 6a: Mentor wants to add notes later → saves draft → completes later
 ```
 
 ### Journey 7.4: Portfolio Review & Feedback
 
 ```
-Step 1: Mentor navigates to Alex's profile â†’ Portfolio tab
-  â†’ Portfolio loaded: profile complete, skills listed, 2 projects, 1 cert
+Step 1: Mentor navigates to Alex's profile → Portfolio tab
+  → Portfolio loaded: profile complete, skills listed, 2 projects, 1 cert
 
 Step 2: Mentor reviews each section:
   - Profile: "Bio is good but could mention specific interests. [Request Changes]"
-  - Skills: Python needs validation evidence â†’ "Add course completion proof"
-  - Projects: "Security Audit" project needs screenshots â†’ comment added
+  - Skills: Python needs validation evidence → "Add course completion proof"
+  - Projects: "Security Audit" project needs screenshots → comment added
   - Certifications: Verified âœ“
 
 Step 3: Mentor enters overall score: 70/100
-  â†’ Overall feedback: "Solid foundation! Focus on adding project media and
+  → Overall feedback: "Solid foundation! Focus on adding project media and
     validating skills with course completions. Your LinkedIn section is excellent."
 
-Step 4: Submits review â†’ POST /api/mentor/mentees/:id/portfolio/review
-  â†’ Status: "changes_requested"
-  â†’ Alex notified: "Your mentor has reviewed your portfolio. [View Feedback]"
+Step 4: Submits review → POST /api/mentor/mentees/:id/portfolio/review
+  → Status: "changes_requested"
+  → Alex notified: "Your mentor has reviewed your portfolio. [View Feedback]"
 
 Step 5: Alex makes changes, marks as ready for re-review
   â†’ Mentor notified: "Alex updated portfolio — ready for re-review"
@@ -1929,102 +1929,102 @@ Step 5: Alex makes changes, marks as ready for re-review
   â†’ Portfolio section scores updated in readiness assessment
 
 Alternative:
-  Step 2a: Portfolio is excellent â†’ "Approve" directly
-  Step 4a: Mentor marks as "Approved" â†’ portfolio readiness score improves
-  Step 5a: Alex doesn't make changes â†’ mentor nudges via message
+  Step 2a: Portfolio is excellent → "Approve" directly
+  Step 4a: Mentor marks as "Approved" → portfolio readiness score improves
+  Step 5a: Alex doesn't make changes → mentor nudges via message
 ```
 
 ### Journey 7.5: Career Pipeline Tracking
 
 ```
 Step 1: Mentor opens Alex's Career tab
-  â†’ Pipeline shows: 2 applied, 1 interviewing, 0 offers
+  → Pipeline shows: 2 applied, 1 interviewing, 0 offers
 
 Step 2: Mentor adds new application:
   - Company: "Cloudflare"
   - Title: "Security Engineer Intern"
   - URL: careers.cloudflare.com/...
   - Applied: Oct 28
-  â†’ POST /api/mentor/mentees/:id/career/applications
+  → POST /api/mentor/mentees/:id/career/applications
 
 Step 3: Updates interview stage for Google application:
-  â†’ Drags "Google Security Engineer" from "Applied" to "Interviewing"
-  â†’ Modal: Stage: "Phone Interview", Date: Nov 10
-  â†’ PUT /api/mentor/mentees/:id/career/applications/:appId
+  → Drags "Google Security Engineer" from "Applied" to "Interviewing"
+  → Modal: Stage: "Phone Interview", Date: Nov 10
+  → PUT /api/mentor/mentees/:id/career/applications/:appId
 
 Step 4: Reviews skills gap section
-  â†’ Sees "Incident Response" at 60% (needs work)
-  â†’ Clicks "Recommend Resources"
-  â†’ Selects resource: "Incident Response Guide for Beginners"
-  â†’ Shares with Alex â†’ notification sent
+  → Sees "Incident Response" at 60% (needs work)
+  → Clicks "Recommend Resources"
+  → Selects resource: "Incident Response Guide for Beginners"
+  → Shares with Alex → notification sent
 
-Step 5: Mark milestone complete: "Applied to 10+ positions" â†’ 5/10 â†’ progress updated
+Step 5: Mark milestone complete: "Applied to 10+ positions" → 5/10 → progress updated
 
 Alternative:
-  Step 2a: Alex adds application themselves â†’ mentor sees it in pipeline
-  Step 3a: Offer received â†’ drag to "Offer" column â†’ mentor celebrates with Alex
-  Step 4a: Skills gap minimal â†’ mentor notes "Ready for interviews"
+  Step 2a: Alex adds application themselves → mentor sees it in pipeline
+  Step 3a: Offer received → drag to "Offer" column → mentor celebrates with Alex
+  Step 4a: Skills gap minimal → mentor notes "Ready for interviews"
 ```
 
 ### Journey 7.6: Goal Setting & Tracking
 
 ```
-Step 1: Mentor opens Goals tab â†’ "No goals set yet. [Create first goal â†’]"
+Step 1: Mentor opens Goals tab → "No goals set yet. [Create first goal →]"
 
 Step 2: Clicks "New Goal"
-  â†’ Mentee: Alex Johnson (pre-selected)
-  â†’ Category: "Certification"
-  â†’ Title: "Complete CompTIA Security+ certification"
-  â†’ Target: Dec 31, 2026
-  â†’ Milestones:
+  → Mentee: Alex Johnson (pre-selected)
+  → Category: "Certification"
+  → Title: "Complete CompTIA Security+ certification"
+  → Target: Dec 31, 2026
+  → Milestones:
     1. Purchase study materials
     2. Complete online course
     3. Pass practice test 1 (>80%)
     4. Pass practice test 2 (>85%)
     5. Schedule exam
     6. Pass exam
-  â†’ Clicks "Create Goal"
+  → Clicks "Create Goal"
 
 Step 3: Two weeks later, mentor updates progress:
-  â†’ Opens goal â†’ marks milestones 1-3 complete
-  â†’ Progress: 50% â†’ manually adjusts slider to 50%
-  â†’ Adds note: "Alex passed first practice test with 85%. On track!"
+  → Opens goal → marks milestones 1-3 complete
+  → Progress: 50% → manually adjusts slider to 50%
+  → Adds note: "Alex passed first practice test with 85%. On track!"
 
 Step 4: Goal nears completion:
-  â†’ Milestone 6 complete â†’ progress: 100%
-  â†’ Clicks "Mark Complete"
-  â†’ Goal moved to "Completed" section
-  â†’ Readiness score recalculated (+5%)
+  → Milestone 6 complete → progress: 100%
+  → Clicks "Mark Complete"
+  → Goal moved to "Completed" section
+  → Readiness score recalculated (+5%)
 
 Alternative:
-  Step 3a: Goal is off-track â†’ mentor adjusts target date, adds extra milestones
-  Step 4a: Goal cancelled â†’ select reason, archived
+  Step 3a: Goal is off-track → mentor adjusts target date, adds extra milestones
+  Step 4a: Goal cancelled → select reason, archived
 ```
 
 ### Journey 7.7: Resource Sharing & Communication
 
 ```
 Step 1: Mentor notices Alex needs resume help while reviewing dashboard
-  â†’ Opens Messaging â†’ selects Alex's conversation
+  → Opens Messaging → selects Alex's conversation
 
 Step 2: Types quick message or selects template:
   "Hi Alex! I came across this resource that might help with [topic].
    Check it out: [link]"
 
-Step 3: Clicks resource share button â†’ selects "Resume Template for Cybersecurity"
-  â†’ Message sends with resource attached
-  â†’ Resource shared_count increments
+Step 3: Clicks resource share button → selects "Resume Template for Cybersecurity"
+  → Message sends with resource attached
+  → Resource shared_count increments
 
 Step 4: Alex replies: "Thanks Sarah! This is exactly what I needed."
-  â†’ Mentor gets push notification
-  â†’ Unread badge increments
+  → Mentor gets push notification
+  → Unread badge increments
 
-Step 5: Mentor continues conversation â†’ offers quick feedback
+Step 5: Mentor continues conversation → offers quick feedback
 
 Alternative:
   Step 2a: Mentor uses template library for common messages
   Step 3a: Mentor uploads new file directly in chat
-  Step 4a: Mentor sets up scheduled message â†’ "Send this tip next week"
+  Step 4a: Mentor sets up scheduled message → "Send this tip next week"
 ```
 
 ---
@@ -2071,13 +2071,13 @@ Alternative:
 - Each active relationship must have â‰¥ 1 active goal
 - Goals must have a target date â‰¤ 6 months from creation
 - Max 5 active goals per relationship
-- Goals with no progress update for 60 days â†’ auto-archived
+- Goals with no progress update for 60 days → auto-archived
 - Progress percentage auto-calculated from milestone completion if milestones > 0
 
 ### BR-ME-006: Career Pipeline Rules
 
-- Application stages are sequential: applied â†’ screening â†’ phone â†’ technical â†’ onsite â†’ offer
-- Cannot skip stages (e.g., applied â†’ offer without intermediate)
+- Application stages are sequential: applied → screening → phone → technical → onsite → offer
+- Cannot skip stages (e.g., applied → offer without intermediate)
 - Rejected/withdrawn/ghosted are terminal stages
 - Max 1 offer tracking per company (dedup by company+title)
 
@@ -2095,12 +2095,12 @@ Alternative:
 - Minimum 4 hours total availability per week
 - Slots are 30/45/60 minute increments
 - Availability changes take effect immediately for future scheduling
-- Mentor can block dates (vacation) â†’ no sessions those days
+- Mentor can block dates (vacation) → no sessions those days
 
 ### BR-ME-009: Mentorship Relationship Duration
 
 - Minimum commitment: 1 term (12 weeks)
-- Automatic review at 12 weeks â†’ option to continue or end
+- Automatic review at 12 weeks → option to continue or end
 - If inactive for 60+ days (no sessions), relationship auto-paused
 - Paused relationships resume with a "check-in" session
 - Terminated relationships archived after 30 days
@@ -2109,7 +2109,7 @@ Alternative:
 
 - Mentor must respond to mentee messages within 24 hours (business days)
 - After 48 hours of no response, system sends gentle reminder
-- Inappropriate content â†’ report to admin, auto-flag, relationship review
+- Inappropriate content → report to admin, auto-flag, relationship review
 - Resource sharing limited to 10 per day (anti-spam)
 - Message attachments max 25MB per file
 

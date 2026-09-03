@@ -30,5 +30,4 @@ export const env = {
  * Mocks are useful during local development, but must never silently become
  * the production data layer when an environment variable is missing.
  */
-export const isMockMode =
-  env.apiUrl.length === 0 && (!import.meta.env.PROD || env.mocksEnabled);
+export const isMockMode = env.apiUrl.length === 0 && (!import.meta.env.PROD || env.mocksEnabled);

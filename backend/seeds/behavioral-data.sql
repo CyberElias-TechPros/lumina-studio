@@ -1,56 +1,56 @@
 -- 0021 seeds — Behavioral design dashboard, mirroring the static app pages.
 
-INSERT INTO bd_hub (id, metric, value_label, delta, sort_order) VALUES ('bd-hb-01', 'Live experiments', '7', '2 winning', 1);
-INSERT INTO bd_hub (id, metric, value_label, delta, sort_order) VALUES ('bd-hb-02', 'Avg. lift', '+7.4%', 'across wins', 2);
-INSERT INTO bd_hub (id, metric, value_label, delta, sort_order) VALUES ('bd-hb-03', 'Funnels mapped', '11', '2 to redesign', 3);
-INSERT INTO bd_hub (id, metric, value_label, delta, sort_order) VALUES ('bd-hb-04', 'Segments explored', '9', '2 new this qtr', 4);
+INSERT OR IGNORE INTO bd_hub (id, metric, value_label, delta, sort_order) VALUES ('bd-hb-01', 'Live experiments', '7', '2 winning', 1);
+INSERT OR IGNORE INTO bd_hub (id, metric, value_label, delta, sort_order) VALUES ('bd-hb-02', 'Avg. lift', '+7.4%', 'across wins', 2);
+INSERT OR IGNORE INTO bd_hub (id, metric, value_label, delta, sort_order) VALUES ('bd-hb-03', 'Funnels mapped', '11', '2 to redesign', 3);
+INSERT OR IGNORE INTO bd_hub (id, metric, value_label, delta, sort_order) VALUES ('bd-hb-04', 'Segments explored', '9', '2 new this qtr', 4);
 
-INSERT INTO bd_interventions (id, title, goal, mechanism, effort, evidence, tests_run, status, sort_order) VALUES ('bd-in-01', 'Streak & streak-saver', 'Daily lesson consistency', 'Loss-framed reminder after 6pm', 'Low', 'RCT · 2025', 100, 'Live', 1);
-INSERT INTO bd_interventions (id, title, goal, mechanism, effort, evidence, tests_run, status, sort_order) VALUES ('bd-in-02', 'Commitment email before drop-off', 'Cut mid-course churn', 'Self-pledge + peer account', 'Low', 'Quasi-exp · 2025', 62, 'In test', 2);
-INSERT INTO bd_interventions (id, title, goal, mechanism, effort, evidence, tests_run, status, sort_order) VALUES ('bd-in-03', 'Deadline anchoring in apply flow', 'Faster enrolment decisions', 'Cohort start-date anchor', 'Medium', 'A/B · live', 41, 'Testing', 3);
-INSERT INTO bd_interventions (id, title, goal, mechanism, effort, evidence, tests_run, status, sort_order) VALUES ('bd-in-04', 'Social proof bubbles', 'Referral adoption', 'Peer success notifications', 'Medium', 'Pilot · 2026', 18, 'Designing', 4);
+INSERT OR IGNORE INTO bd_interventions (id, title, goal, mechanism, effort, evidence, tests_run, status, sort_order) VALUES ('bd-in-01', 'Streak & streak-saver', 'Daily lesson consistency', 'Loss-framed reminder after 6pm', 'Low', 'RCT · 2025', 100, 'Live', 1);
+INSERT OR IGNORE INTO bd_interventions (id, title, goal, mechanism, effort, evidence, tests_run, status, sort_order) VALUES ('bd-in-02', 'Commitment email before drop-off', 'Cut mid-course churn', 'Self-pledge + peer account', 'Low', 'Quasi-exp · 2025', 62, 'In test', 2);
+INSERT OR IGNORE INTO bd_interventions (id, title, goal, mechanism, effort, evidence, tests_run, status, sort_order) VALUES ('bd-in-03', 'Deadline anchoring in apply flow', 'Faster enrolment decisions', 'Cohort start-date anchor', 'Medium', 'A/B · live', 41, 'Testing', 3);
+INSERT OR IGNORE INTO bd_interventions (id, title, goal, mechanism, effort, evidence, tests_run, status, sort_order) VALUES ('bd-in-04', 'Social proof bubbles', 'Referral adoption', 'Peer success notifications', 'Medium', 'Pilot · 2026', 18, 'Designing', 4);
 
-INSERT INTO bd_flows (id, name, stage, status, sort_order) VALUES ('bd-fl-01', 'New learner activation', 6, 'Live', 1);
-INSERT INTO bd_flows (id, name, stage, status, sort_order) VALUES ('bd-fl-02', 'Week-3 retention rescue', 5, 'Draft', 2);
-INSERT INTO bd_flows (id, name, stage, status, sort_order) VALUES ('bd-fl-03', 'Referral ask after cert', 4, 'Draft', 3);
+INSERT OR IGNORE INTO bd_flows (id, name, stage, status, sort_order) VALUES ('bd-fl-01', 'New learner activation', 6, 'Live', 1);
+INSERT OR IGNORE INTO bd_flows (id, name, stage, status, sort_order) VALUES ('bd-fl-02', 'Week-3 retention rescue', 5, 'Draft', 2);
+INSERT OR IGNORE INTO bd_flows (id, name, stage, status, sort_order) VALUES ('bd-fl-03', 'Referral ask after cert', 4, 'Draft', 3);
 
-INSERT INTO bd_flow_steps (id, flow_id, step_no, title, subtitle, sort_order) VALUES ('bd-fs-01', 'activation', 1, 'Enrolment confirmed', 'Trigger · 5 min delay', 1);
-INSERT INTO bd_flow_steps (id, flow_id, step_no, title, subtitle, sort_order) VALUES ('bd-fs-02', 'activation', 2, 'Welcome message', 'WhatsApp + email', 2);
-INSERT INTO bd_flow_steps (id, flow_id, step_no, title, subtitle, sort_order) VALUES ('bd-fs-03', 'activation', 3, 'Set weekly goal', 'In-app prompt · 3 options', 3);
-INSERT INTO bd_flow_steps (id, flow_id, step_no, title, subtitle, sort_order) VALUES ('bd-fs-04', 'activation', 4, 'First lesson complete?', 'Branch on completion', 4);
-INSERT INTO bd_flow_steps (id, flow_id, step_no, title, subtitle, sort_order) VALUES ('bd-fs-05', 'activation', 5, 'Streak nudge', 'If not started · 6pm', 5);
+INSERT OR IGNORE INTO bd_flow_steps (id, flow_id, step_no, title, subtitle, sort_order) VALUES ('bd-fs-01', 'activation', 1, 'Enrolment confirmed', 'Trigger · 5 min delay', 1);
+INSERT OR IGNORE INTO bd_flow_steps (id, flow_id, step_no, title, subtitle, sort_order) VALUES ('bd-fs-02', 'activation', 2, 'Welcome message', 'WhatsApp + email', 2);
+INSERT OR IGNORE INTO bd_flow_steps (id, flow_id, step_no, title, subtitle, sort_order) VALUES ('bd-fs-03', 'activation', 3, 'Set weekly goal', 'In-app prompt · 3 options', 3);
+INSERT OR IGNORE INTO bd_flow_steps (id, flow_id, step_no, title, subtitle, sort_order) VALUES ('bd-fs-04', 'activation', 4, 'First lesson complete?', 'Branch on completion', 4);
+INSERT OR IGNORE INTO bd_flow_steps (id, flow_id, step_no, title, subtitle, sort_order) VALUES ('bd-fs-05', 'activation', 5, 'Streak nudge', 'If not started · 6pm', 5);
 
-INSERT INTO bd_campaigns (id, title, trigger, channel, sends, opt_out, status, sort_order) VALUES ('bd-cg-01', 'Streak saver · evening', 'Missed 2 lessons before 6pm', 'WhatsApp', '1,240', '0.8%', 'Live', 1);
-INSERT INTO bd_campaigns (id, title, trigger, channel, sends, opt_out, status, sort_order) VALUES ('bd-cg-02', 'Deadline anchor · cohort 17', 'Viewed apply page twice', 'Email', '860', '1.1%', 'Live', 2);
-INSERT INTO bd_campaigns (id, title, trigger, channel, sends, opt_out, status, sort_order) VALUES ('bd-cg-03', 'Referral thank-you', 'Successful referral paid', 'In-app', '312', '0.4%', 'Scheduled', 3);
-INSERT INTO bd_campaigns (id, title, trigger, channel, sends, opt_out, status, sort_order) VALUES ('bd-cg-04', 'Portfolio milestone', 'Project 3 submitted', 'Email', '0', '—', 'Draft', 4);
+INSERT OR IGNORE INTO bd_campaigns (id, title, trigger, channel, sends, opt_out, status, sort_order) VALUES ('bd-cg-01', 'Streak saver · evening', 'Missed 2 lessons before 6pm', 'WhatsApp', '1,240', '0.8%', 'Live', 1);
+INSERT OR IGNORE INTO bd_campaigns (id, title, trigger, channel, sends, opt_out, status, sort_order) VALUES ('bd-cg-02', 'Deadline anchor · cohort 17', 'Viewed apply page twice', 'Email', '860', '1.1%', 'Live', 2);
+INSERT OR IGNORE INTO bd_campaigns (id, title, trigger, channel, sends, opt_out, status, sort_order) VALUES ('bd-cg-03', 'Referral thank-you', 'Successful referral paid', 'In-app', '312', '0.4%', 'Scheduled', 3);
+INSERT OR IGNORE INTO bd_campaigns (id, title, trigger, channel, sends, opt_out, status, sort_order) VALUES ('bd-cg-04', 'Portfolio milestone', 'Project 3 submitted', 'Email', '0', '—', 'Draft', 4);
 
-INSERT INTO bd_tests (id, name, variants, sample_label, lift_label, sig_label, status, sort_order) VALUES ('bd-ab-01', 'Streak nudge wording', 2, '2,400', '+9%', '95.2%', 'Winning', 1);
-INSERT INTO bd_tests (id, name, variants, sample_label, lift_label, sig_label, status, sort_order) VALUES ('bd-ab-02', 'Deadline anchor position', 3, '3,100', '+6%', '91.4%', 'Live', 2);
-INSERT INTO bd_tests (id, name, variants, sample_label, lift_label, sig_label, status, sort_order) VALUES ('bd-ab-03', 'Goal-setting prompt', 2, '1,800', '+3%', '68.0%', 'Running', 3);
-INSERT INTO bd_tests (id, name, variants, sample_label, lift_label, sig_label, status, sort_order) VALUES ('bd-ab-04', 'Social proof placement', 2, '—', '—', '—', 'Draft', 4);
+INSERT OR IGNORE INTO bd_tests (id, name, variants, sample_label, lift_label, sig_label, status, sort_order) VALUES ('bd-ab-01', 'Streak nudge wording', 2, '2,400', '+9%', '95.2%', 'Winning', 1);
+INSERT OR IGNORE INTO bd_tests (id, name, variants, sample_label, lift_label, sig_label, status, sort_order) VALUES ('bd-ab-02', 'Deadline anchor position', 3, '3,100', '+6%', '91.4%', 'Live', 2);
+INSERT OR IGNORE INTO bd_tests (id, name, variants, sample_label, lift_label, sig_label, status, sort_order) VALUES ('bd-ab-03', 'Goal-setting prompt', 2, '1,800', '+3%', '68.0%', 'Running', 3);
+INSERT OR IGNORE INTO bd_tests (id, name, variants, sample_label, lift_label, sig_label, status, sort_order) VALUES ('bd-ab-04', 'Social proof placement', 2, '—', '—', '—', 'Draft', 4);
 
-INSERT INTO bd_results (id, metric, baseline, change_label, status, sort_order) VALUES ('bd-rl-01', 'Streak nudges · Weekly lessons', '+4.2%', '+9.1%', 'Winning', 1);
-INSERT INTO bd_results (id, metric, baseline, change_label, status, sort_order) VALUES ('bd-rl-02', 'Deadline anchoring · Submissions', '+3.1%', '+6.4%', 'Live', 2);
-INSERT INTO bd_results (id, metric, baseline, change_label, status, sort_order) VALUES ('bd-rl-03', 'Commitment emails · Churn', '−1.8%', '−4.0%', 'Running', 3);
-INSERT INTO bd_results (id, metric, baseline, change_label, status, sort_order) VALUES ('bd-rl-04', 'Social proof bubbles · Referrals', '+1.2%', '+2.8%', 'Pilot', 4);
+INSERT OR IGNORE INTO bd_results (id, metric, baseline, change_label, status, sort_order) VALUES ('bd-rl-01', 'Streak nudges · Weekly lessons', '+4.2%', '+9.1%', 'Winning', 1);
+INSERT OR IGNORE INTO bd_results (id, metric, baseline, change_label, status, sort_order) VALUES ('bd-rl-02', 'Deadline anchoring · Submissions', '+3.1%', '+6.4%', 'Live', 2);
+INSERT OR IGNORE INTO bd_results (id, metric, baseline, change_label, status, sort_order) VALUES ('bd-rl-03', 'Commitment emails · Churn', '−1.8%', '−4.0%', 'Running', 3);
+INSERT OR IGNORE INTO bd_results (id, metric, baseline, change_label, status, sort_order) VALUES ('bd-rl-04', 'Social proof bubbles · Referrals', '+1.2%', '+2.8%', 'Pilot', 4);
 
-INSERT INTO bd_funnel_stages (id, name, users, percent, status, sort_order) VALUES ('bd-fu-01', 'Signup', 8400, 100, 'Complete', 1);
-INSERT INTO bd_funnel_stages (id, name, users, percent, status, sort_order) VALUES ('bd-fu-02', 'First lesson started', 5376, 64, 'Opening', 2);
-INSERT INTO bd_funnel_stages (id, name, users, percent, status, sort_order) VALUES ('bd-fu-03', 'Week-2 active', 3864, 46, 'Losing', 3);
-INSERT INTO bd_funnel_stages (id, name, users, percent, status, sort_order) VALUES ('bd-fu-04', 'Week-4 still enrolled', 3024, 36, 'Open', 4);
-INSERT INTO bd_funnel_stages (id, name, users, percent, status, sort_order) VALUES ('bd-fu-05', 'First assessment passed', 2352, 28, 'Closed', 5);
+INSERT OR IGNORE INTO bd_funnel_stages (id, name, users, percent, status, sort_order) VALUES ('bd-fu-01', 'Signup', 8400, 100, 'Complete', 1);
+INSERT OR IGNORE INTO bd_funnel_stages (id, name, users, percent, status, sort_order) VALUES ('bd-fu-02', 'First lesson started', 5376, 64, 'Opening', 2);
+INSERT OR IGNORE INTO bd_funnel_stages (id, name, users, percent, status, sort_order) VALUES ('bd-fu-03', 'Week-2 active', 3864, 46, 'Losing', 3);
+INSERT OR IGNORE INTO bd_funnel_stages (id, name, users, percent, status, sort_order) VALUES ('bd-fu-04', 'Week-4 still enrolled', 3024, 36, 'Open', 4);
+INSERT OR IGNORE INTO bd_funnel_stages (id, name, users, percent, status, sort_order) VALUES ('bd-fu-05', 'First assessment passed', 2352, 28, 'Closed', 5);
 
-INSERT INTO bd_segments (id, name, size, traits, status, sort_order) VALUES ('bd-sg-01', 'Weekend warriors', 1120, 'Evening study · mobile-first · deadline-driven', 'Mapped', 1);
-INSERT INTO bd_segments (id, name, size, traits, status, sort_order) VALUES ('bd-sg-02', 'Career switchers', 980, '28-40 · low time budget · job-focused', 'Mapped', 2);
-INSERT INTO bd_segments (id, name, size, traits, status, sort_order) VALUES ('bd-sg-03', 'Early adopters', 640, 'High streak · referral active · forum posters', 'Mapped', 3);
-INSERT INTO bd_segments (id, name, size, traits, status, sort_order) VALUES ('bd-sg-04', 'At-risk lurkers', 520, 'Enrolled 30d+ · no lesson in 7d', 'Flagged', 4);
+INSERT OR IGNORE INTO bd_segments (id, name, size, traits, status, sort_order) VALUES ('bd-sg-01', 'Weekend warriors', 1120, 'Evening study · mobile-first · deadline-driven', 'Mapped', 1);
+INSERT OR IGNORE INTO bd_segments (id, name, size, traits, status, sort_order) VALUES ('bd-sg-02', 'Career switchers', 980, '28-40 · low time budget · job-focused', 'Mapped', 2);
+INSERT OR IGNORE INTO bd_segments (id, name, size, traits, status, sort_order) VALUES ('bd-sg-03', 'Early adopters', 640, 'High streak · referral active · forum posters', 'Mapped', 3);
+INSERT OR IGNORE INTO bd_segments (id, name, size, traits, status, sort_order) VALUES ('bd-sg-04', 'At-risk lurkers', 520, 'Enrolled 30d+ · no lesson in 7d', 'Flagged', 4);
 
-INSERT INTO bd_programs (id, name, goal, streak, status, sort_order) VALUES ('bd-pr-01', 'Daily 15-minute lesson', '30-day streak', '12d avg', 'Live', 1);
-INSERT INTO bd_programs (id, name, goal, streak, status, sort_order) VALUES ('bd-pr-02', 'Weekly portfolio commit', '8-week project cadence', '5w avg', 'Live', 2);
-INSERT INTO bd_programs (id, name, goal, streak, status, sort_order) VALUES ('bd-pr-03', 'Peer accountability pair', 'Bi-weekly check-ins', '3w avg', 'Pilot', 3);
+INSERT OR IGNORE INTO bd_programs (id, name, goal, streak, status, sort_order) VALUES ('bd-pr-01', 'Daily 15-minute lesson', '30-day streak', '12d avg', 'Live', 1);
+INSERT OR IGNORE INTO bd_programs (id, name, goal, streak, status, sort_order) VALUES ('bd-pr-02', 'Weekly portfolio commit', '8-week project cadence', '5w avg', 'Live', 2);
+INSERT OR IGNORE INTO bd_programs (id, name, goal, streak, status, sort_order) VALUES ('bd-pr-03', 'Peer accountability pair', 'Bi-weekly check-ins', '3w avg', 'Pilot', 3);
 
-INSERT INTO bd_checkins (id, learner, cycle, streak, status, sort_order) VALUES ('bd-ck-01', 'Ada Obi', 'Daily lesson', '21d', 'Checked in', 1);
-INSERT INTO bd_checkins (id, learner, cycle, streak, status, sort_order) VALUES ('bd-ck-02', 'Tunde Bakare', 'Portfolio commit', '6w', 'Checked in', 2);
-INSERT INTO bd_checkins (id, learner, cycle, streak, status, sort_order) VALUES ('bd-ck-03', 'Chiamaka Eze', 'Daily lesson', '9d', 'Due soon', 3);
-INSERT INTO bd_checkins (id, learner, cycle, streak, status, sort_order) VALUES ('bd-ck-04', 'Ngozi Adeyemi', 'Peer pair', '1w', 'Due today', 4);
+INSERT OR IGNORE INTO bd_checkins (id, learner, cycle, streak, status, sort_order) VALUES ('bd-ck-01', 'Ada Obi', 'Daily lesson', '21d', 'Checked in', 1);
+INSERT OR IGNORE INTO bd_checkins (id, learner, cycle, streak, status, sort_order) VALUES ('bd-ck-02', 'Tunde Bakare', 'Portfolio commit', '6w', 'Checked in', 2);
+INSERT OR IGNORE INTO bd_checkins (id, learner, cycle, streak, status, sort_order) VALUES ('bd-ck-03', 'Chiamaka Eze', 'Daily lesson', '9d', 'Due soon', 3);
+INSERT OR IGNORE INTO bd_checkins (id, learner, cycle, streak, status, sort_order) VALUES ('bd-ck-04', 'Ngozi Adeyemi', 'Peer pair', '1w', 'Due today', 4);

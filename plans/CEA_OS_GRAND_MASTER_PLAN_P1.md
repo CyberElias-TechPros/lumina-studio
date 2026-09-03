@@ -103,13 +103,13 @@ L0: Edge (Vercel + Cloudflare)
   â””â”€â”€ Auth token verification (Worker Edge)
 
 L1: API Layer (Cloudflare Workers)
-  â”œâ”€â”€ Hono router â†’ middleware stack:
+  â”œâ”€â”€ Hono router → middleware stack:
   â”‚   â”œâ”€â”€ AuthMiddleware (JWT verify)
   â”‚   â”œâ”€â”€ RBACMiddleware (permission check)
   â”‚   â”œâ”€â”€ AuditMiddleware (log action)
   â”‚   â”œâ”€â”€ RateLimitMiddleware (per-user/IP)
   â”‚   â””â”€â”€ ValidationMiddleware (Zod)
-  â””â”€â”€ Route handlers â†’ service layer
+  â””â”€â”€ Route handlers → service layer
 
 L2: Service Layer (Workers)
   â”œâ”€â”€ UserService â”‚ CourseService â”‚ AssessmentService
@@ -149,16 +149,16 @@ L4: External Integrations (via Queues or direct)
 
 ### Subdomain Routing Strategy
 
-- `cea.ng/` â†’ Public pages (landing, courses, blog, about)
-- `cea.ng/learn` â†’ Student learning portal
-- `cea.ng/dashboard` â†’ Role-based dashboard (redirects by role)
-- `cea.ng/admin` â†’ Admin functions (behind Zero Trust)
-- `api.cea.ng/v1/` â†’ All REST endpoints
-- `api.cea.ng/graphql` â†’ GraphQL endpoint (for complex queries)
-- `auth.cea.ng/` â†’ Auth endpoints (login, register, refresh, logout, MFA)
-- `ws.cea.ng/chat/{roomId}` â†’ Real-time chat
-- `ws.cea.ng/live/{classId}` â†’ Live class
-- `cdn.cea.ng/{bucket}/{key}` â†’ File/Image delivery
+- `cea.ng/` → Public pages (landing, courses, blog, about)
+- `cea.ng/learn` → Student learning portal
+- `cea.ng/dashboard` → Role-based dashboard (redirects by role)
+- `cea.ng/admin` → Admin functions (behind Zero Trust)
+- `api.cea.ng/v1/` → All REST endpoints
+- `api.cea.ng/graphql` → GraphQL endpoint (for complex queries)
+- `auth.cea.ng/` → Auth endpoints (login, register, refresh, logout, MFA)
+- `ws.cea.ng/chat/{roomId}` → Real-time chat
+- `ws.cea.ng/live/{classId}` → Live class
+- `cdn.cea.ng/{bucket}/{key}` → File/Image delivery
 
 ## 1.3 Security Architecture
 
@@ -230,7 +230,7 @@ Layer 5: Authentication
 | #   | Actor               | Primary Domain      | Engagement Stage     |
 | --- | ------------------- | ------------------- | -------------------- |
 | 16  | Visitor             | Physical campus     | Pre-lead             |
-| 1   | Prospective Student | Admissions pipeline | Lead â†’ Applicant     |
+| 1   | Prospective Student | Admissions pipeline | Lead → Applicant     |
 | 3   | Parent              | Student support     | Accompanying student |
 
 ### Learner Actors
@@ -311,7 +311,7 @@ Layer 5: Authentication
 
 ```
 Prospective Student â—„â”€â”€â–º Admissions Officer  (application process)
-Prospective Student â—„â”€â”€â–º Marketing Officer    (inquiry â†’ lead)
+Prospective Student â—„â”€â”€â–º Marketing Officer    (inquiry → lead)
 Current Student     â—„â”€â”€â–º Instructor          (learning delivery)
 Current Student     â—„â”€â”€â–º Mentor              (career guidance)
 Current Student     â—„â”€â”€â–º Department Head     (academic oversight)
@@ -390,18 +390,18 @@ Each business process involves multiple actors working in sequence. Below is the
 
 | Process ID | Process Name                       | Actors Involved (in order)                                                                  | Phase |
 | ---------- | ---------------------------------- | ------------------------------------------------------------------------------------------- | ----- |
-| BP-001     | Prospect â†’ Student Admission       | Prospective Student â†’ Marketing Officer â†’ Admissions Officer â†’ Accountant â†’ Current Student | 1     |
-| BP-002     | Course Delivery Lifecycle          | Department Head â†’ Instructor â†’ Current Student â†’ Instructor â†’ Current Student               | 1     |
-| BP-003     | Student Assessment & Grading       | Instructor â†’ Current Student â†’ Instructor â†’ Department Head                                 | 1     |
-| BP-004     | Student Portfolio to Job Placement | Current Student â†’ Mentor â†’ Alumni â†’ Employer â†’ Current Student                              | 2     |
-| BP-005     | Freelance Gig Lifecycle            | Employer â†’ Current Student/Alumni â†’ Employer â†’ Accountant                                   | 2     |
-| BP-006     | Client Service Delivery            | Marketing Officer â†’ Client â†’ Project Team â†’ Client â†’ Accountant                             | 3     |
-| BP-007     | Support Ticket Resolution          | Client â†’ IT Support â†’ Client                                                                | 3     |
-| BP-008     | Employee Onboarding                | HR Officer â†’ System Admin â†’ IT Support â†’ Department Head â†’ Employee                         | 4     |
-| BP-009     | Procurement & Payment              | Operations Manager â†’ Supplier â†’ Accountant â†’ Supplier                                       | 4     |
-| BP-010     | Community Program Execution        | NGO â†’ Community Manager â†’ Volunteer â†’ NGO                                                   | 5     |
-| BP-011     | Alumni Mentorship                  | Alumni â†’ Current Student â†’ Mentor                                                           | 5     |
-| BP-012     | Accreditation/Compliance Review    | Government Rep â†’ Director â†’ Department Head â†’ Government Rep                                | 5     |
+| BP-001     | Prospect → Student Admission       | Prospective Student → Marketing Officer → Admissions Officer → Accountant → Current Student | 1     |
+| BP-002     | Course Delivery Lifecycle          | Department Head → Instructor → Current Student → Instructor → Current Student               | 1     |
+| BP-003     | Student Assessment & Grading       | Instructor → Current Student → Instructor → Department Head                                 | 1     |
+| BP-004     | Student Portfolio to Job Placement | Current Student → Mentor → Alumni → Employer → Current Student                              | 2     |
+| BP-005     | Freelance Gig Lifecycle            | Employer → Current Student/Alumni → Employer → Accountant                                   | 2     |
+| BP-006     | Client Service Delivery            | Marketing Officer → Client → Project Team → Client → Accountant                             | 3     |
+| BP-007     | Support Ticket Resolution          | Client → IT Support → Client                                                                | 3     |
+| BP-008     | Employee Onboarding                | HR Officer → System Admin → IT Support → Department Head → Employee                         | 4     |
+| BP-009     | Procurement & Payment              | Operations Manager → Supplier → Accountant → Supplier                                       | 4     |
+| BP-010     | Community Program Execution        | NGO → Community Manager → Volunteer → NGO                                                   | 5     |
+| BP-011     | Alumni Mentorship                  | Alumni → Current Student → Mentor                                                           | 5     |
+| BP-012     | Accreditation/Compliance Review    | Government Rep → Director → Department Head → Government Rep                                | 5     |
 
 ---
 

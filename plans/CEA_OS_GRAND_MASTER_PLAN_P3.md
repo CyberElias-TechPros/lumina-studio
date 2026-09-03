@@ -32,20 +32,20 @@ graph TD
   T --> U[Current Student]
 ```
 
-**Actor Sequence:** Prospective Student â†’ Marketing Officer â†’ Admissions Officer â†’ Student (resubmit) â†’ Instructor (interview) â†’ Admissions Officer (decision) â†’ Accountant (payment) â†’ System Admin (account creation) â†’ Current Student
+**Actor Sequence:** Prospective Student → Marketing Officer → Admissions Officer → Student (resubmit) → Instructor (interview) → Admissions Officer (decision) → Accountant (payment) → System Admin (account creation) → Current Student
 
 **Workflow Steps (Cloudflare Workflow):**
 
-1. Application submitted â†’ trigger `admissions-pipeline` workflow
+1. Application submitted → trigger `admissions-pipeline` workflow
 2. Auto-validate documents with AI (check completeness, clarity)
 3. Route to admissions officer based on program
 4. Send reminders every 48h if documents missing
 5. Schedule interview (auto-suggest time slots)
 6. Send offer letter (template-based)
 7. Follow up every 3 days if no response
-8. On acceptance â†’ create enrollment, trigger onboarding
+8. On acceptance → create enrollment, trigger onboarding
 
-## 8.2 Student Lifecycle (BP-002 â†’ BP-004)
+## 8.2 Student Lifecycle (BP-002 → BP-004)
 
 ```mermaid
 graph LR
@@ -68,7 +68,7 @@ graph LR
   L -->|Further Study| P[Advanced Program]
 ```
 
-**Actor Sequence:** Student â†’ Instructor (teach/grade) â†’ Department Head (approve completion) â†’ System Admin (issue cert) â†’ Alumni â†’ Employer/Mentor
+**Actor Sequence:** Student → Instructor (teach/grade) → Department Head (approve completion) → System Admin (issue cert) → Alumni → Employer/Mentor
 
 ## 8.3 Client Service Delivery (BP-006)
 
@@ -96,7 +96,7 @@ graph TD
   S --> T[Case Study Created]
 ```
 
-**Actor Sequence:** Marketing Officer â†’ Client â†’ Project Manager â†’ Team â†’ Client â†’ Accountant â†’ Client
+**Actor Sequence:** Marketing Officer → Client → Project Manager → Team → Client → Accountant → Client
 
 ## 8.4 Employee Lifecycle (BP-008)
 
@@ -124,7 +124,7 @@ graph TD
   T --> U[Alumni Status]
 ```
 
-**Actor Sequence:** HR Officer â†’ System Admin â†’ IT Support â†’ Department Head â†’ Employee â†’ HR Officer (reviews) â†’ IT Support (offboarding)
+**Actor Sequence:** HR Officer → System Admin → IT Support → Department Head → Employee → HR Officer (reviews) → IT Support (offboarding)
 
 ## 8.5 Freelance Marketplace Flow (BP-005)
 
@@ -145,7 +145,7 @@ graph TD
   M --> N[Portfolio Updated]
 ```
 
-**Actor Sequence:** Employer â†’ Student/Alumni â†’ Employer â†’ Accountant (payment) â†’ Student (portfolio)
+**Actor Sequence:** Employer → Student/Alumni → Employer → Accountant (payment) → Student (portfolio)
 
 ## 8.6 Community Program Flow (BP-010)
 
@@ -163,7 +163,7 @@ graph TD
   J --> K[Donor Reporting]
 ```
 
-**Actor Sequence:** NGO â†’ Director â†’ Community Manager â†’ Volunteer â†’ NGO
+**Actor Sequence:** NGO → Director → Community Manager → Volunteer → NGO
 
 ---
 
@@ -411,8 +411,8 @@ interface NotificationPreferences {
 main â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ Production (auto-deploy Vercel + Cloudflare)
   â””â”€â”€ staging â”€â”€â”€â”€â”€ Pre-production (auto-deploy staging environment)
        â””â”€â”€ develop â”€â”€ Integration branch
-            â”œâ”€â”€ feature/xxx â”€â”€ Feature branches (PR â†’ develop)
-            â””â”€â”€ fix/xxx â”€â”€â”€â”€â”€â”€ Bug fix branches (PR â†’ develop)
+            â”œâ”€â”€ feature/xxx â”€â”€ Feature branches (PR → develop)
+            â””â”€â”€ fix/xxx â”€â”€â”€â”€â”€â”€ Bug fix branches (PR → develop)
 ```
 
 ### Vercel Deployments
@@ -448,7 +448,7 @@ jobs:
 ### Quality Gates
 
 ```
-PR â†’ Lint â†’ Type Check â†’ Unit Tests â†’ Integration Tests â†’ Build â†’ Preview Deploy â†’ E2E Tests â†’ Merge
+PR → Lint → Type Check → Unit Tests → Integration Tests → Build → Preview Deploy → E2E Tests → Merge
 ```
 
 | Gate              | Tool       | Command                    |
@@ -527,10 +527,10 @@ PR â†’ Lint â†’ Type Check â†’ Unit Tests â†’ Integration Te
 
 | Log Type                  | Storage                   | Retention           | Access                         |
 | ------------------------- | ------------------------- | ------------------- | ------------------------------ |
-| Application logs (Worker) | CF Logpush â†’ R2           | 30d                 | Sys Admin, Developer           |
+| Application logs (Worker) | CF Logpush → R2           | 30d                 | Sys Admin, Developer           |
 | Audit trail               | D1 `audit_logs` table     | 7 years (immutable) | Sys Admin, Accountant, Gov Rep |
 | Error traces              | Sentry                    | 90d                 | Developer                      |
-| Access logs (HTTP)        | CF Logpush â†’ R2           | 30d                 | Sys Admin                      |
+| Access logs (HTTP)        | CF Logpush → R2           | 30d                 | Sys Admin                      |
 | Business events           | Custom analytics pipeline | 2 years             | Director, Analytics            |
 
 ---
@@ -637,7 +637,7 @@ PR â†’ Lint â†’ Type Check â†’ Unit Tests â†’ Integration Te
 
 | Feature                                         | Effort | Dependencies       |
 | ----------------------------------------------- | ------ | ------------------ |
-| Admissions pipeline (application â†’ enrollment)  | 12d    | Auth, CMS          |
+| Admissions pipeline (application → enrollment)  | 12d    | Auth, CMS          |
 | Application review + interview scheduling       | 6d     | Admissions         |
 | Document verification                           | 4d     | Admissions         |
 | Finance (chart of accounts, transactions)       | 10d    | Auth               |
@@ -820,7 +820,7 @@ interface AnalyticsEvent {
 â”‚ â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â” â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â” â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â” â”‚
 â”‚ â”‚Dept. Perf.   â”‚ â”‚ Student      â”‚ â”‚ Client Projects    â”‚ â”‚
 â”‚ â”‚[Radar Chart] â”‚ â”‚[Funnel:      â”‚ â”‚ [Pipeline Chart]   â”‚ â”‚
-â”‚ â”‚              â”‚ â”‚ Appâ†’Enroll]  â”‚ â”‚                    â”‚ â”‚
+â”‚ â”‚              â”‚ â”‚ App→Enroll]  â”‚ â”‚                    â”‚ â”‚
 â”‚ â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜ â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜ â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜ â”‚
 â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
 ```
@@ -960,11 +960,11 @@ Users with appropriate permissions can build custom reports:
 
 **Key scaling triggers:**
 
-- > 500 concurrent users â†’ enable D1 read replicas
-- > 1M API requests/day â†’ enable KV caching for common queries
-- > 100GB R2 storage â†’ enable R2 lifecycle policies
-- > 50k Queues messages/day â†’ monitor, scale queue consumers
-- > 5M database rows â†’ implement pagination, archiving
+- > 500 concurrent users → enable D1 read replicas
+- > 1M API requests/day → enable KV caching for common queries
+- > 100GB R2 storage → enable R2 lifecycle policies
+- > 50k Queues messages/day → monitor, scale queue consumers
+- > 5M database rows → implement pagination, archiving
 
 ---
 
@@ -1071,11 +1071,11 @@ See `CEA_OS_DESIGN_LANGUAGE.md` for the complete hybrid design language specific
 
 Key design tokens are defined as CSS variables for shadcn/ui theming, with engine-specific gradients for wayfinding:
 
-- **Learning Engine** â†’ Cool blues `#0ea5e9`
-- **Career Engine** â†’ Warm ambers `#f59e0b`
-- **Services Engine** â†’ Purples `#8b5cf6`
-- **ERP Engine** â†’ Emeralds `#10b981`
-- **Community Engine** â†’ Roses `#f43f5e`
+- **Learning Engine** → Cool blues `#0ea5e9`
+- **Career Engine** → Warm ambers `#f59e0b`
+- **Services Engine** → Purples `#8b5cf6`
+- **ERP Engine** → Emeralds `#10b981`
+- **Community Engine** → Roses `#f43f5e`
 
 ---
 
@@ -1091,7 +1091,7 @@ Key design tokens are defined as CSS variables for shadcn/ui theming, with engin
 >
 > Every actor has a dedicated ultra-granular plan file. Every relationship is mapped. Every business rule is documented. Every screen is spec'd. Every error is catalogued.
 >
-> The platform is designed to be built incrementally (Phase 0 â†’ 6), with each phase delivering tangible business value. The foundation (Phase 0) enables everything. The AI Engine (Phase 6) differentiates everything.
+> The platform is designed to be built incrementally (Phase 0 → 6), with each phase delivering tangible business value. The foundation (Phase 0) enables everything. The AI Engine (Phase 6) differentiates everything.
 >
 > **One platform. Multiple engines. Every actor connected. Every process automated. Every decision data-driven.**
 >

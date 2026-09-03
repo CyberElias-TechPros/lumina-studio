@@ -30,7 +30,11 @@ function StructuredData({ data }: { data: Record<string, unknown> | Record<strin
         <script
           key={i}
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(item) }}
+          dangerouslySetInnerHTML={{
+            // Escape `<` so a `</script>` sequence inside a string value can
+            // never break out of the inline script element.
+            __html: JSON.stringify(item).replace(/</g, "\\u003c"),
+          }}
         />
       ))}
     </>

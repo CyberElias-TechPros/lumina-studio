@@ -2,6 +2,7 @@ import { Hono } from "hono";
 import type { AppEnv } from "../types";
 import { requireAuth, requireAnyRole } from "../lib/auth";
 import { ApiError } from "../lib/errors";
+import { rateLimit, hashIdentifier } from "../lib/rate-limit";
 import {
   chatCompletion,
   resolveAiModel,
@@ -14,6 +15,16 @@ import {
  * is set; falls back to deterministic mock output otherwise (development).
  * Every response carries a `mock` flag so clients can show a "preview" badge.
  */
+
+/** Per-user budget for LLM-backed endpoints (each call hits an external API). */
+const AI_RATE_LIMIT = { limit: 20, windowSeconds: 600 };
+const MAX_PROMPT_CHARS = 2_000;
+
+/** Consume one unit of the per-user AI budget. Throws 429 (RateLimitExceeded) when over. */
+async function limitAiUsage(env: AppEnv, userId: string): Promise<void> {
+  const identifier = await hashIdentifier(`user:${userId}`);
+  await rateLimit(env.RATE_LIMIT, "ai", identifier, AI_RATE_LIMIT);
+}
 
 export interface ApiGrade {
   overall: number;
@@ -114,13 +125,17 @@ function mockRecommendations(): ApiRecommendation[] {
 }
 
 ai.post("/grade", requireInstructorOrAdmin, async (c) => {
+  await limitAiUsage(c.env, c.get("authUser").id);
   const input = (await c.req.json().catch(() => ({}))) as {
     rubric?: { criterion?: string; max?: number }[];
     model?: string;
   };
   const rubric =
     Array.isArray(input.rubric) && input.rubric.length > 0
-      ? input.rubric.map((r) => ({ criterion: r.criterion ?? "Criterion", max: r.max ?? 5 }))
+      ? input.rubric.slice(0, 20).map((r) => ({
+          criterion: String(r.criterion ?? "Criterion").slice(0, 200),
+          max: r.max ?? 5,
+        }))
       : fallbackRubric();
   const model = resolveAiModel(c, input.model);
 
@@ -157,6 +172,7 @@ ai.post("/grade", requireInstructorOrAdmin, async (c) => {
 
 ai.get("/recommendations", async (c) => {
   const user = c.get("authUser");
+  await limitAiUsage(c.env, user.id);
   const url = new URL(c.req.url);
   const model = resolveAiModel(c, url.searchParams.get("model") ?? undefined);
   let items: ApiRecommendation[] = mockRecommendations();
@@ -194,12 +210,18 @@ ai.get("/recommendations", async (c) => {
 });
 
 ai.post("/ask", async (c) => {
+  await limitAiUsage(c.env, c.get("authUser").id);
   const input = (await c.req.json().catch(() => ({}))) as {
     question?: string;
     model?: string;
   };
   const question = (input.question ?? "").trim();
   if (question.length === 0) throw ApiError.validation({ question: ["Question is required."] });
+  if (question.length > MAX_PROMPT_CHARS) {
+    throw ApiError.validation({
+      question: [`Keep questions under ${MAX_PROMPT_CHARS} characters.`],
+    });
+  }
   const model = resolveAiModel(c, input.model);
 
   let answer = `Good question about "${question.slice(0, 80)}". In mock mode I can't research live content, but here's the pattern: start from the lesson notes in your current module, then check the forum thread for this week's topic.`;
@@ -256,6 +278,7 @@ function mockGenerated(kind: string, topic: string): Record<string, unknown> {
 }
 
 ai.post("/generate", async (c) => {
+  await limitAiUsage(c.env, c.get("authUser").id);
   const input = (await c.req.json().catch(() => ({}))) as {
     kind?: string;
     topic?: string;
@@ -264,6 +287,11 @@ ai.post("/generate", async (c) => {
   const kind = input.kind === "quiz" || input.kind === "outline" ? input.kind : "lesson";
   const topic = (input.topic ?? "Digital skills").trim();
   if (topic.length === 0) throw ApiError.validation({ topic: ["Topic is required."] });
+  if (topic.length > MAX_PROMPT_CHARS) {
+    throw ApiError.validation({
+      topic: [`Keep topics under ${MAX_PROMPT_CHARS} characters.`],
+    });
+  }
   const model = resolveAiModel(c, input.model);
 
   let content: Record<string, unknown> = mockGenerated(kind, topic);
