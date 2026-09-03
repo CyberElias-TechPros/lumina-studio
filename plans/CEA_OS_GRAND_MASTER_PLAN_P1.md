@@ -1,14 +1,14 @@
-﻿# Cyber Elias Academy â€” Digital Operating System
+﻿# Cyber Elias Academy — Digital Operating System
 
 # GRAND MASTER PLAN
 
 > **The unified blueprint incorporating all 32 actors, 55+ modules, and every business process of CEA-OS.**
 >
 > **Frontend:** Vercel (Next.js 19, TypeScript, Tailwind, shadcn/ui, Redux Toolkit, Framer Motion, TanStack Table, Recharts)
-> **Design Language:** Premium hybrid of digitalskillsacademy.org (clean professional structure) Ã— dskillacademy.com.ng (vibrant gradient richness) â€” see `CEA_OS_DESIGN_LANGUAGE.md`
+> **Design Language:** Premium hybrid of digitalskillsacademy.org (clean professional structure) × dskillacademy.com.ng (vibrant gradient richness) — see `CEA_OS_DESIGN_LANGUAGE.md`
 > **Backend:** Cloudflare Workers (Hono, Drizzle ORM, D1, R2, KV, Queues, Durable Objects, Workflows, Images, Turnstile, Zero Trust, Analytics)
 > **Philosophy:** One platform. Multiple engines. Every actor connected. Every process automated. Every decision data-driven.
-> **Academy Focus:** General digital/tech skills academy â€” software dev, networking, cloud, cybersecurity, digital marketing, AI, automation, data science, UI/UX, mobile dev, hardware, IT support. From scratch to advanced.
+> **Academy Focus:** General digital/tech skills academy — software dev, networking, cloud, cybersecurity, digital marketing, AI, automation, data science, UI/UX, mobile dev, hardware, IT support. From scratch to advanced.
 
 ---
 
@@ -103,13 +103,13 @@ L0: Edge (Vercel + Cloudflare)
   â””â”€â”€ Auth token verification (Worker Edge)
 
 L1: API Layer (Cloudflare Workers)
-  â”œâ”€â”€ Hono router â†’ middleware stack:
+  â”œâ”€â”€ Hono router → middleware stack:
   â”‚   â”œâ”€â”€ AuthMiddleware (JWT verify)
   â”‚   â”œâ”€â”€ RBACMiddleware (permission check)
   â”‚   â”œâ”€â”€ AuditMiddleware (log action)
   â”‚   â”œâ”€â”€ RateLimitMiddleware (per-user/IP)
   â”‚   â””â”€â”€ ValidationMiddleware (Zod)
-  â””â”€â”€ Route handlers â†’ service layer
+  â””â”€â”€ Route handlers → service layer
 
 L2: Service Layer (Workers)
   â”œâ”€â”€ UserService â”‚ CourseService â”‚ AssessmentService
@@ -149,16 +149,16 @@ L4: External Integrations (via Queues or direct)
 
 ### Subdomain Routing Strategy
 
-- `cea.ng/` â†’ Public pages (landing, courses, blog, about)
-- `cea.ng/learn` â†’ Student learning portal
-- `cea.ng/dashboard` â†’ Role-based dashboard (redirects by role)
-- `cea.ng/admin` â†’ Admin functions (behind Zero Trust)
-- `api.cea.ng/v1/` â†’ All REST endpoints
-- `api.cea.ng/graphql` â†’ GraphQL endpoint (for complex queries)
-- `auth.cea.ng/` â†’ Auth endpoints (login, register, refresh, logout, MFA)
-- `ws.cea.ng/chat/{roomId}` â†’ Real-time chat
-- `ws.cea.ng/live/{classId}` â†’ Live class
-- `cdn.cea.ng/{bucket}/{key}` â†’ File/Image delivery
+- `cea.ng/` → Public pages (landing, courses, blog, about)
+- `cea.ng/learn` → Student learning portal
+- `cea.ng/dashboard` → Role-based dashboard (redirects by role)
+- `cea.ng/admin` → Admin functions (behind Zero Trust)
+- `api.cea.ng/v1/` → All REST endpoints
+- `api.cea.ng/graphql` → GraphQL endpoint (for complex queries)
+- `auth.cea.ng/` → Auth endpoints (login, register, refresh, logout, MFA)
+- `ws.cea.ng/chat/{roomId}` → Real-time chat
+- `ws.cea.ng/live/{classId}` → Live class
+- `cdn.cea.ng/{bucket}/{key}` → File/Image delivery
 
 ## 1.3 Security Architecture
 
@@ -215,7 +215,7 @@ Layer 5: Authentication
 
 - **GDPR** (if EU students)
 - **POPIA** (if South African students)
-- **PCI DSS** (if handling credit cards â€” use Stripe, never store raw)
+- **PCI DSS** (if handling credit cards — use Stripe, never store raw)
 - **SOC 2 Type II** (for client services)
 - **Local education authority regulations**
 
@@ -230,7 +230,7 @@ Layer 5: Authentication
 | #   | Actor               | Primary Domain      | Engagement Stage     |
 | --- | ------------------- | ------------------- | -------------------- |
 | 16  | Visitor             | Physical campus     | Pre-lead             |
-| 1   | Prospective Student | Admissions pipeline | Lead â†’ Applicant     |
+| 1   | Prospective Student | Admissions pipeline | Lead → Applicant     |
 | 3   | Parent              | Student support     | Accompanying student |
 
 ### Learner Actors
@@ -311,7 +311,7 @@ Layer 5: Authentication
 
 ```
 Prospective Student â—„â”€â”€â–º Admissions Officer  (application process)
-Prospective Student â—„â”€â”€â–º Marketing Officer    (inquiry â†’ lead)
+Prospective Student â—„â”€â”€â–º Marketing Officer    (inquiry → lead)
 Current Student     â—„â”€â”€â–º Instructor          (learning delivery)
 Current Student     â—„â”€â”€â–º Mentor              (career guidance)
 Current Student     â—„â”€â”€â–º Department Head     (academic oversight)
@@ -390,18 +390,18 @@ Each business process involves multiple actors working in sequence. Below is the
 
 | Process ID | Process Name                       | Actors Involved (in order)                                                                  | Phase |
 | ---------- | ---------------------------------- | ------------------------------------------------------------------------------------------- | ----- |
-| BP-001     | Prospect â†’ Student Admission       | Prospective Student â†’ Marketing Officer â†’ Admissions Officer â†’ Accountant â†’ Current Student | 1     |
-| BP-002     | Course Delivery Lifecycle          | Department Head â†’ Instructor â†’ Current Student â†’ Instructor â†’ Current Student               | 1     |
-| BP-003     | Student Assessment & Grading       | Instructor â†’ Current Student â†’ Instructor â†’ Department Head                                 | 1     |
-| BP-004     | Student Portfolio to Job Placement | Current Student â†’ Mentor â†’ Alumni â†’ Employer â†’ Current Student                              | 2     |
-| BP-005     | Freelance Gig Lifecycle            | Employer â†’ Current Student/Alumni â†’ Employer â†’ Accountant                                   | 2     |
-| BP-006     | Client Service Delivery            | Marketing Officer â†’ Client â†’ Project Team â†’ Client â†’ Accountant                             | 3     |
-| BP-007     | Support Ticket Resolution          | Client â†’ IT Support â†’ Client                                                                | 3     |
-| BP-008     | Employee Onboarding                | HR Officer â†’ System Admin â†’ IT Support â†’ Department Head â†’ Employee                         | 4     |
-| BP-009     | Procurement & Payment              | Operations Manager â†’ Supplier â†’ Accountant â†’ Supplier                                       | 4     |
-| BP-010     | Community Program Execution        | NGO â†’ Community Manager â†’ Volunteer â†’ NGO                                                   | 5     |
-| BP-011     | Alumni Mentorship                  | Alumni â†’ Current Student â†’ Mentor                                                           | 5     |
-| BP-012     | Accreditation/Compliance Review    | Government Rep â†’ Director â†’ Department Head â†’ Government Rep                                | 5     |
+| BP-001     | Prospect → Student Admission       | Prospective Student → Marketing Officer → Admissions Officer → Accountant → Current Student | 1     |
+| BP-002     | Course Delivery Lifecycle          | Department Head → Instructor → Current Student → Instructor → Current Student               | 1     |
+| BP-003     | Student Assessment & Grading       | Instructor → Current Student → Instructor → Department Head                                 | 1     |
+| BP-004     | Student Portfolio to Job Placement | Current Student → Mentor → Alumni → Employer → Current Student                              | 2     |
+| BP-005     | Freelance Gig Lifecycle            | Employer → Current Student/Alumni → Employer → Accountant                                   | 2     |
+| BP-006     | Client Service Delivery            | Marketing Officer → Client → Project Team → Client → Accountant                             | 3     |
+| BP-007     | Support Ticket Resolution          | Client → IT Support → Client                                                                | 3     |
+| BP-008     | Employee Onboarding                | HR Officer → System Admin → IT Support → Department Head → Employee                         | 4     |
+| BP-009     | Procurement & Payment              | Operations Manager → Supplier → Accountant → Supplier                                       | 4     |
+| BP-010     | Community Program Execution        | NGO → Community Manager → Volunteer → NGO                                                   | 5     |
+| BP-011     | Alumni Mentorship                  | Alumni → Current Student → Mentor                                                           | 5     |
+| BP-012     | Accreditation/Compliance Review    | Government Rep → Director → Department Head → Government Rep                                | 5     |
 
 ---
 
@@ -512,17 +512,17 @@ All tables use Drizzle ORM for Cloudflare D1 (SQLite-compatible). Full schemas w
 
 | Table              | Primary Key | Key Columns                                                                                                                                                            | Indexes                                         | FK References                                                                      |
 | ------------------ | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `organizations`    | `id: text`  | name, slug, registrationNumber, taxId, logoUrl, website, email, phone, address fields, timezone, locale, status, type, metadata, timestamps                            | slug (unique)                                   | â€”                                                                                  |
-| `branches`         | `id: text`  | organizationId, name, code, type, capacity, operatingHours, facilities, status                                                                                         | code (unique)                                   | organizationId â†’ organizations.id                                                  |
-| `departments`      | `id: text`  | branchId, name, code, headUserId, parentDepartmentId, description, budgetId, status                                                                                    | code (unique)                                   | branchId â†’ branches.id, headUserId â†’ users.id, parentDepartmentId â†’ departments.id |
-| `users`            | `id: text`  | email, passwordHash, firstName, lastName, avatarUrl, phone, emailVerified, twoFactorEnabled, status, lastLoginAt, loginAttempts, lockoutUntil, preferences, timestamps | email (unique)                                  | â€”                                                                                  |
-| `roles`            | `id: text`  | name, slug, description, hierarchy, isSystem, isAssignable                                                                                                             | name (unique), slug (unique)                    | â€”                                                                                  |
-| `permissions`      | `id: text`  | resource, action, description, conditions                                                                                                                              | â€”                                               | â€”                                                                                  |
-| `role_permissions` | `id: text`  | roleId, permissionId, constraints                                                                                                                                      | â€”                                               | roleId â†’ roles.id, permissionId â†’ permissions.id                                   |
-| `user_roles`       | `id: text`  | userId, roleId, scopeType, scopeId, assignedById, expiresAt, isActive                                                                                                  | â€”                                               | userId â†’ users.id, roleId â†’ roles.id                                               |
-| `sessions`         | `id: text`  | userId, token, refreshToken, deviceInfo, ipAddress, isMfaVerified, expiresAt, refreshExpiresAt, revokedAt                                                              | token (unique), refreshToken (unique)           | userId â†’ users.id                                                                  |
-| `audit_logs`       | `id: text`  | userId, sessionId, action, resource, resourceId, details, ipAddress, userAgent, severity, immutable                                                                    | idx_user, idx_resource, idx_action, idx_created | userId â†’ users.id                                                                  |
-| `user_preferences` | `id: text`  | userId, theme, language, timezone, dateFormat, timeFormat, notificationPreferences, emailDigest, sidebarCollapsed, dashboardLayout                                     | userId (unique)                                 | userId â†’ users.id                                                                  |
+| `organizations`    | `id: text`  | name, slug, registrationNumber, taxId, logoUrl, website, email, phone, address fields, timezone, locale, status, type, metadata, timestamps                            | slug (unique)                                   | —                                                                                  |
+| `branches`         | `id: text`  | organizationId, name, code, type, capacity, operatingHours, facilities, status                                                                                         | code (unique)                                   | organizationId → organizations.id                                                  |
+| `departments`      | `id: text`  | branchId, name, code, headUserId, parentDepartmentId, description, budgetId, status                                                                                    | code (unique)                                   | branchId → branches.id, headUserId → users.id, parentDepartmentId → departments.id |
+| `users`            | `id: text`  | email, passwordHash, firstName, lastName, avatarUrl, phone, emailVerified, twoFactorEnabled, status, lastLoginAt, loginAttempts, lockoutUntil, preferences, timestamps | email (unique)                                  | —                                                                                  |
+| `roles`            | `id: text`  | name, slug, description, hierarchy, isSystem, isAssignable                                                                                                             | name (unique), slug (unique)                    | —                                                                                  |
+| `permissions`      | `id: text`  | resource, action, description, conditions                                                                                                                              | —                                               | —                                                                                  |
+| `role_permissions` | `id: text`  | roleId, permissionId, constraints                                                                                                                                      | —                                               | roleId → roles.id, permissionId → permissions.id                                   |
+| `user_roles`       | `id: text`  | userId, roleId, scopeType, scopeId, assignedById, expiresAt, isActive                                                                                                  | —                                               | userId → users.id, roleId → roles.id                                               |
+| `sessions`         | `id: text`  | userId, token, refreshToken, deviceInfo, ipAddress, isMfaVerified, expiresAt, refreshExpiresAt, revokedAt                                                              | token (unique), refreshToken (unique)           | userId → users.id                                                                  |
+| `audit_logs`       | `id: text`  | userId, sessionId, action, resource, resourceId, details, ipAddress, userAgent, severity, immutable                                                                    | idx_user, idx_resource, idx_action, idx_created | userId → users.id                                                                  |
+| `user_preferences` | `id: text`  | userId, theme, language, timezone, dateFormat, timeFormat, notificationPreferences, emailDigest, sidebarCollapsed, dashboardLayout                                     | userId (unique)                                 | userId → users.id                                                                  |
 
 ### Learning Tables
 
@@ -530,10 +530,10 @@ All tables use Drizzle ORM for Cloudflare D1 (SQLite-compatible). Full schemas w
 | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
 | `programs`           | departmentId, code, name, duration, credentialType, level, learningOutcomes, prerequisites, price, currency, maxStudents, status                                                                                                              | code (unique)                                                                                              |
 | `courses`            | programId, code, name, slug, description, category, difficulty, durationHours, learningObjectives, syllabus, price, isFree, hasCertificate, passThreshold, maxStudents, enrollmentStart/End, startDate, endDate, status, version, createdById | code (unique), slug (unique)                                                                               |
-| `course_instructors` | courseId, userId, role, isActive                                                                                                                                                                                                              | â€”                                                                                                          |
-| `modules`            | courseId, title, description, orderIndex, estimatedDuration, isRequired, status                                                                                                                                                               | â€”                                                                                                          |
-| `lessons`            | moduleId, title, contentType, videoUrl, articleBody, embedUrl, orderIndex, estimatedDuration, isFreePreview, status, createdById                                                                                                              | â€”                                                                                                          |
-| `lesson_materials`   | lessonId, type, title, fileUrl, fileSize, mimeType, orderIndex, isRequired                                                                                                                                                                    | â€”                                                                                                          |
+| `course_instructors` | courseId, userId, role, isActive                                                                                                                                                                                                              | —                                                                                                          |
+| `modules`            | courseId, title, description, orderIndex, estimatedDuration, isRequired, status                                                                                                                                                               | —                                                                                                          |
+| `lessons`            | moduleId, title, contentType, videoUrl, articleBody, embedUrl, orderIndex, estimatedDuration, isFreePreview, status, createdById                                                                                                              | —                                                                                                          |
+| `lesson_materials`   | lessonId, type, title, fileUrl, fileSize, mimeType, orderIndex, isRequired                                                                                                                                                                    | —                                                                                                          |
 | `enrollments`        | userId, courseId, type, status, enrolledAt, startedAt, completedAt, progress (0-100), finalGrade, passed, certificateIssued, paymentStatus, feePaid                                                                                           | idx_user (userId), idx_course (courseId), idx_status (status), idx_user_course (userId, courseId - unique) |
 | `progress_tracking`  | enrollmentId, lessonId, status, progress, timeSpent, lastAccessedAt, completedAt, score, attempts                                                                                                                                             | idx_enrollment (enrollmentId), idx_enrollment_lesson (enrollmentId, lessonId - unique)                     |
 
@@ -541,13 +541,13 @@ All tables use Drizzle ORM for Cloudflare D1 (SQLite-compatible). Full schemas w
 
 | Table                  | Key Columns                                                                                                                                                                                                                                                                | Key Indexes                                                                                  |
 | ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
-| `assignments`          | moduleId, title, description, type, pointsPossible, passingPoints, weight, dueDate, availableFrom/Until, submissionType, allowedFileTypes, maxFileSize, maxAttempts, isGroupAssignment, rubric, latePenaltyPercent, plagiarismCheck, aiGradingEnabled, status, createdById | â€”                                                                                            |
+| `assignments`          | moduleId, title, description, type, pointsPossible, passingPoints, weight, dueDate, availableFrom/Until, submissionType, allowedFileTypes, maxFileSize, maxAttempts, isGroupAssignment, rubric, latePenaltyPercent, plagiarismCheck, aiGradingEnabled, status, createdById | —                                                                                            |
 | `submissions`          | assignmentId, userId, attempt, status, content, files, textEntry, url, codeRepoUrl, submittedAt, isLate, lateMinutes, plagiarismScore, aiGradeScore                                                                                                                        | idx_assignment (assignmentId), idx_user (userId), idx_assignment_user (assignmentId, userId) |
-| `grades`               | enrollmentId, gradedItemId, gradedItemType, graderId, score, pointsPossible, percentage, letterGrade, feedback, isPassing, isFinal, gradedAt                                                                                                                               | â€”                                                                                            |
-| `assessments`          | moduleId, title, type, timeLimit, maxAttempts, shuffleQuestions/Options, showResults, passThreshold, questionsPerPage, allowNavigation, allowPause, proctoringRequired, totalPoints, weight, dueDate, availableFrom/Until, status, createdById                             | â€”                                                                                            |
-| `assessment_questions` | assessmentId, type, questionText, options, correctAnswer, points, orderIndex, difficulty, tags, explanation                                                                                                                                                                | â€”                                                                                            |
-| `assessment_attempts`  | assessmentId, userId, attempt, status, startedAt, submittedAt, timeSpent, score, totalPoints, percentage, passed, proctoringLog                                                                                                                                            | â€”                                                                                            |
-| `assessment_responses` | attemptId, questionId, response, isCorrect, pointsAwarded, aiFeedback, graderId, graderFeedback, timeSpent                                                                                                                                                                 | â€”                                                                                            |
+| `grades`               | enrollmentId, gradedItemId, gradedItemType, graderId, score, pointsPossible, percentage, letterGrade, feedback, isPassing, isFinal, gradedAt                                                                                                                               | —                                                                                            |
+| `assessments`          | moduleId, title, type, timeLimit, maxAttempts, shuffleQuestions/Options, showResults, passThreshold, questionsPerPage, allowNavigation, allowPause, proctoringRequired, totalPoints, weight, dueDate, availableFrom/Until, status, createdById                             | —                                                                                            |
+| `assessment_questions` | assessmentId, type, questionText, options, correctAnswer, points, orderIndex, difficulty, tags, explanation                                                                                                                                                                | —                                                                                            |
+| `assessment_attempts`  | assessmentId, userId, attempt, status, startedAt, submittedAt, timeSpent, score, totalPoints, percentage, passed, proctoringLog                                                                                                                                            | —                                                                                            |
+| `assessment_responses` | attemptId, questionId, response, isCorrect, pointsAwarded, aiFeedback, graderId, graderFeedback, timeSpent                                                                                                                                                                 | —                                                                                            |
 
 ### Attendance Tables
 

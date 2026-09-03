@@ -14,7 +14,7 @@ export const Route = createFileRoute("/career-guides")({
       description:
         "Practical career roadmaps for frontend, backend, cloud, cybersecurity, data, marketing and design roles in Nigeria. Salary ranges, 90-day plans and common pitfalls.",
       path: "/career-guides",
-      image: "https://cea.ng/og-career-guides.svg",
+      image: "https://cea.ng/og-default.png",
     }),
   component: CareerGuidesPage,
 });

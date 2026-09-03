@@ -1,46 +1,46 @@
 -- 0024 seeds — Dev dashboard, mirroring the static app pages.
 
-INSERT INTO dev_hub (id, metric, value_label, delta, sort_order) VALUES ('dev-hb-01', 'Open PRs', '9', '3 ready to merge', 1);
-INSERT INTO dev_hub (id, metric, value_label, delta, sort_order) VALUES ('dev-hb-02', 'Deploys (30d)', '18', '100% success', 2);
-INSERT INTO dev_hub (id, metric, value_label, delta, sort_order) VALUES ('dev-hb-03', 'API uptime', '99.98%', '30-day', 3);
-INSERT INTO dev_hub (id, metric, value_label, delta, sort_order) VALUES ('dev-hb-04', 'Open issues', '14', '5 bugs', 4);
+INSERT OR IGNORE INTO dev_hub (id, metric, value_label, delta, sort_order) VALUES ('dev-hb-01', 'Open PRs', '9', '3 ready to merge', 1);
+INSERT OR IGNORE INTO dev_hub (id, metric, value_label, delta, sort_order) VALUES ('dev-hb-02', 'Deploys (30d)', '18', '100% success', 2);
+INSERT OR IGNORE INTO dev_hub (id, metric, value_label, delta, sort_order) VALUES ('dev-hb-03', 'API uptime', '99.98%', '30-day', 3);
+INSERT OR IGNORE INTO dev_hub (id, metric, value_label, delta, sort_order) VALUES ('dev-hb-04', 'Open issues', '14', '5 bugs', 4);
 
-INSERT INTO dev_endpoints (id, endpoint, description, sort_order) VALUES ('dev-ep-01', 'GET /api/v1/students', 'List students', 1);
-INSERT INTO dev_endpoints (id, endpoint, description, sort_order) VALUES ('dev-ep-02', 'POST /api/v1/applications', 'Create application', 2);
-INSERT INTO dev_endpoints (id, endpoint, description, sort_order) VALUES ('dev-ep-03', 'GET /api/v1/finance/invoices', 'List invoices', 3);
+INSERT OR IGNORE INTO dev_endpoints (id, endpoint, description, sort_order) VALUES ('dev-ep-01', 'GET /api/v1/students', 'List students', 1);
+INSERT OR IGNORE INTO dev_endpoints (id, endpoint, description, sort_order) VALUES ('dev-ep-02', 'POST /api/v1/applications', 'Create application', 2);
+INSERT OR IGNORE INTO dev_endpoints (id, endpoint, description, sort_order) VALUES ('dev-ep-03', 'GET /api/v1/finance/invoices', 'List invoices', 3);
 
-INSERT INTO dev_deploys (id, version_label, status, time_label, sort_order) VALUES ('dev-dp-01', 'v1.42.0 · prod', 'Live', 'Aug 1 · 06:12 · 4m 12s', 1);
-INSERT INTO dev_deploys (id, version_label, status, time_label, sort_order) VALUES ('dev-dp-02', 'v1.41.2 · prod', 'Live', 'Jul 28 · 05:58 · 3m 48s', 2);
-INSERT INTO dev_deploys (id, version_label, status, time_label, sort_order) VALUES ('dev-dp-03', 'v1.41.1 · staging', 'Rolled back', 'Jul 27 · 14:20', 3);
+INSERT OR IGNORE INTO dev_deploys (id, version_label, status, time_label, sort_order) VALUES ('dev-dp-01', 'v1.42.0 · prod', 'Live', 'Aug 1 · 06:12 · 4m 12s', 1);
+INSERT OR IGNORE INTO dev_deploys (id, version_label, status, time_label, sort_order) VALUES ('dev-dp-02', 'v1.41.2 · prod', 'Live', 'Jul 28 · 05:58 · 3m 48s', 2);
+INSERT OR IGNORE INTO dev_deploys (id, version_label, status, time_label, sort_order) VALUES ('dev-dp-03', 'v1.41.1 · staging', 'Rolled back', 'Jul 27 · 14:20', 3);
 
-INSERT INTO dev_prs (id, title, branch, status, sort_order) VALUES ('dev-pr-01', '#142 · feat: invoice webhooks', 'main ← feat/invoice-webhooks', 'Checks passed', 1);
-INSERT INTO dev_prs (id, title, branch, status, sort_order) VALUES ('dev-pr-02', '#141 · fix: portal nav caching', 'main ← fix/nav-cache', 'Review requested', 2);
-INSERT INTO dev_prs (id, title, branch, status, sort_order) VALUES ('dev-pr-03', '#140 · chore: deps upgrade', 'main ← chore/deps', 'CI running', 3);
+INSERT OR IGNORE INTO dev_prs (id, title, branch, status, sort_order) VALUES ('dev-pr-01', '#142 · feat: invoice webhooks', 'main ← feat/invoice-webhooks', 'Checks passed', 1);
+INSERT OR IGNORE INTO dev_prs (id, title, branch, status, sort_order) VALUES ('dev-pr-02', '#141 · fix: portal nav caching', 'main ← fix/nav-cache', 'Review requested', 2);
+INSERT OR IGNORE INTO dev_prs (id, title, branch, status, sort_order) VALUES ('dev-pr-03', '#140 · chore: deps upgrade', 'main ← chore/deps', 'CI running', 3);
 
-INSERT INTO dev_errors (id, title, count_label, status, sort_order) VALUES ('dev-er-01', 'API · 500 on /invoices', '2 in 24h', 'New', 1);
-INSERT INTO dev_errors (id, title, count_label, status, sort_order) VALUES ('dev-er-02', 'Web · JS error on dashboard', '1.2% sessions', 'Investigating', 2);
-INSERT INTO dev_errors (id, title, count_label, status, sort_order) VALUES ('dev-er-03', 'Worker · timeout in email queue', '3 in 24h', 'Fixed', 3);
+INSERT OR IGNORE INTO dev_errors (id, title, count_label, status, sort_order) VALUES ('dev-er-01', 'API · 500 on /invoices', '2 in 24h', 'New', 1);
+INSERT OR IGNORE INTO dev_errors (id, title, count_label, status, sort_order) VALUES ('dev-er-02', 'Web · JS error on dashboard', '1.2% sessions', 'Investigating', 2);
+INSERT OR IGNORE INTO dev_errors (id, title, count_label, status, sort_order) VALUES ('dev-er-03', 'Worker · timeout in email queue', '3 in 24h', 'Fixed', 3);
 
-INSERT INTO dev_tasks (id, title, detail, status, sort_order) VALUES ('dev-ts-01', 'CEA-214 · Invoice PDF regression', 'Sprint 14 · in progress', 'Doing', 1);
-INSERT INTO dev_tasks (id, title, detail, status, sort_order) VALUES ('dev-ts-02', 'CEA-218 · Webhook retry logic', 'Sprint 14 · ready', 'Todo', 2);
-INSERT INTO dev_tasks (id, title, detail, status, sort_order) VALUES ('dev-ts-03', 'CEA-205 · Portals nav caching', 'Sprint 13 · done', 'Done', 3);
+INSERT OR IGNORE INTO dev_tasks (id, title, detail, status, sort_order) VALUES ('dev-ts-01', 'CEA-214 · Invoice PDF regression', 'Sprint 14 · in progress', 'Doing', 1);
+INSERT OR IGNORE INTO dev_tasks (id, title, detail, status, sort_order) VALUES ('dev-ts-02', 'CEA-218 · Webhook retry logic', 'Sprint 14 · ready', 'Todo', 2);
+INSERT OR IGNORE INTO dev_tasks (id, title, detail, status, sort_order) VALUES ('dev-ts-03', 'CEA-205 · Portals nav caching', 'Sprint 13 · done', 'Done', 3);
 
-INSERT INTO dev_deps (id, name, version, status, sort_order) VALUES ('dev-de-01', 'lucide-react', '0.4xx', 'Current', 1);
-INSERT INTO dev_deps (id, name, version, status, sort_order) VALUES ('dev-de-02', 'tanstack-router', '1.9x', 'Update avail.', 2);
-INSERT INTO dev_deps (id, name, version, status, sort_order) VALUES ('dev-de-03', 'axios (legacy)', '1.7', '1 vuln · patch', 3);
+INSERT OR IGNORE INTO dev_deps (id, name, version, status, sort_order) VALUES ('dev-de-01', 'lucide-react', '0.4xx', 'Current', 1);
+INSERT OR IGNORE INTO dev_deps (id, name, version, status, sort_order) VALUES ('dev-de-02', 'tanstack-router', '1.9x', 'Update avail.', 2);
+INSERT OR IGNORE INTO dev_deps (id, name, version, status, sort_order) VALUES ('dev-de-03', 'axios (legacy)', '1.7', '1 vuln · patch', 3);
 
-INSERT INTO dev_reviews (id, title, detail, status, sort_order) VALUES ('dev-rv-01', 'PR #142 · invoice webhooks', '2 comments · waiting on author', 'Changes', 1);
-INSERT INTO dev_reviews (id, title, detail, status, sort_order) VALUES ('dev-rv-02', 'PR #141 · portal nav caching', 'Approved by Segun A.', 'Approved', 2);
-INSERT INTO dev_reviews (id, title, detail, status, sort_order) VALUES ('dev-rv-03', 'PR #139 · auth refresh tokens', 'No comments yet', 'Reviewing', 3);
+INSERT OR IGNORE INTO dev_reviews (id, title, detail, status, sort_order) VALUES ('dev-rv-01', 'PR #142 · invoice webhooks', '2 comments · waiting on author', 'Changes', 1);
+INSERT OR IGNORE INTO dev_reviews (id, title, detail, status, sort_order) VALUES ('dev-rv-02', 'PR #141 · portal nav caching', 'Approved by Segun A.', 'Approved', 2);
+INSERT OR IGNORE INTO dev_reviews (id, title, detail, status, sort_order) VALUES ('dev-rv-03', 'PR #139 · auth refresh tokens', 'No comments yet', 'Reviewing', 3);
 
-INSERT INTO dev_vars (id, key, value, env, sort_order) VALUES ('dev-vr-01', 'VITE_API_URL', 'https://api.cea.edu.ng', 'Prod', 1);
-INSERT INTO dev_vars (id, key, value, env, sort_order) VALUES ('dev-vr-02', 'VITE_PAYSTACK_PUBLIC_KEY', 'pk_live_••••••••', 'Prod', 2);
-INSERT INTO dev_vars (id, key, value, env, sort_order) VALUES ('dev-vr-03', 'VITE_ANALYTICS_ID', 'G-8QP2X4M9', 'Staging', 3);
+INSERT OR IGNORE INTO dev_vars (id, key, value, env, sort_order) VALUES ('dev-vr-01', 'VITE_API_URL', 'https://api.cea.edu.ng', 'Prod', 1);
+INSERT OR IGNORE INTO dev_vars (id, key, value, env, sort_order) VALUES ('dev-vr-02', 'VITE_PAYSTACK_PUBLIC_KEY', 'pk_live_••••••••', 'Prod', 2);
+INSERT OR IGNORE INTO dev_vars (id, key, value, env, sort_order) VALUES ('dev-vr-03', 'VITE_ANALYTICS_ID', 'G-8QP2X4M9', 'Staging', 3);
 
-INSERT INTO dev_queues (id, name, detail, status, sort_order) VALUES ('dev-qq-01', 'email', '7 pending · 1.2k processed today', 'Healthy', 1);
-INSERT INTO dev_queues (id, name, detail, status, sort_order) VALUES ('dev-qq-02', 'notifications', '0 pending · backlog clear', 'Healthy', 2);
-INSERT INTO dev_queues (id, name, detail, status, sort_order) VALUES ('dev-qq-03', 'exports', '1 pending · running 2m 14s', 'Processing', 3);
+INSERT OR IGNORE INTO dev_queues (id, name, detail, status, sort_order) VALUES ('dev-qq-01', 'email', '7 pending · 1.2k processed today', 'Healthy', 1);
+INSERT OR IGNORE INTO dev_queues (id, name, detail, status, sort_order) VALUES ('dev-qq-02', 'notifications', '0 pending · backlog clear', 'Healthy', 2);
+INSERT OR IGNORE INTO dev_queues (id, name, detail, status, sort_order) VALUES ('dev-qq-03', 'exports', '1 pending · running 2m 14s', 'Processing', 3);
 
-INSERT INTO dev_docs (id, title, updated_label, sort_order) VALUES ('dev-dc-01', 'API reference v3', 'Updated Jul 30 · 84 endpoints', 1);
-INSERT INTO dev_docs (id, title, updated_label, sort_order) VALUES ('dev-dc-02', 'Onboarding runbook', 'Updated Jul 12 · 14 steps', 2);
-INSERT INTO dev_docs (id, title, updated_label, sort_order) VALUES ('dev-dc-03', 'Deploy playbook', 'Updated Jun 28 · 6 sections', 3);
+INSERT OR IGNORE INTO dev_docs (id, title, updated_label, sort_order) VALUES ('dev-dc-01', 'API reference v3', 'Updated Jul 30 · 84 endpoints', 1);
+INSERT OR IGNORE INTO dev_docs (id, title, updated_label, sort_order) VALUES ('dev-dc-02', 'Onboarding runbook', 'Updated Jul 12 · 14 steps', 2);
+INSERT OR IGNORE INTO dev_docs (id, title, updated_label, sort_order) VALUES ('dev-dc-03', 'Deploy playbook', 'Updated Jun 28 · 6 sections', 3);

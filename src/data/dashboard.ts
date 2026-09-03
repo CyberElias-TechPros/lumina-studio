@@ -25,7 +25,7 @@ export const roles: {
     label: "Student",
     engine: "learning",
     person: "Chiamaka Obi",
-    title: "Cohort 12 Â· Full-Stack",
+    title: "Cohort 12 · Full-Stack",
     home: "/app/student",
   },
   {
@@ -316,7 +316,7 @@ export const portfolioProjects = [
 export const cohorts = [
   {
     id: "co-12",
-    name: "Cohort 12 Â· Full-Stack",
+    name: "Cohort 12 · Full-Stack",
     students: 42,
     progress: 68,
     attendance: 91,
@@ -324,7 +324,7 @@ export const cohorts = [
   },
   {
     id: "co-09",
-    name: "Cohort 9 Â· Cybersecurity",
+    name: "Cohort 9 · Cybersecurity",
     students: 31,
     progress: 74,
     attendance: 88,
@@ -332,7 +332,7 @@ export const cohorts = [
   },
   {
     id: "co-14",
-    name: "Cohort 14 Â· Cloud",
+    name: "Cohort 14 · Cloud",
     students: 28,
     progress: 41,
     attendance: 84,
@@ -536,27 +536,27 @@ export const headcountSeries = [
 
 export const payrollChanges = [
   {
-    title: "New starter â€” K. Okafor",
+    title: "New starter — K. Okafor",
     detail: "Effective Aug 1",
     status: "sent",
   },
   {
-    title: "Salary revision â€” 3 staff",
+    title: "Salary revision — 3 staff",
     detail: "Approved by director",
     status: "sent",
   },
   {
-    title: "Leaver â€” J. Okonkwo",
+    title: "Leaver — J. Okonkwo",
     detail: "Effective Aug 15",
     status: "draft",
   },
   {
-    title: "Stipend adjustment â€” interns",
+    title: "Stipend adjustment — interns",
     detail: "Pending director sign-off",
     status: "draft",
   },
   {
-    title: "Payroll run #128 â€” July",
+    title: "Payroll run #128 — July",
     detail: "Processed Jul 31",
     status: "sent",
   },
@@ -564,21 +564,21 @@ export const payrollChanges = [
 
 export const paymentBatches = [
   {
-    batch: "Batch #204 â€” tuition instalments",
+    batch: "Batch #204 — tuition instalments",
     amount: 4800000,
     count: 22,
     date: "Jul 30",
     status: "Reconciled",
   },
   {
-    batch: "Batch #203 â€” supplier bills",
+    batch: "Batch #203 — supplier bills",
     amount: 1900000,
     count: 6,
     date: "Jul 26",
     status: "Reconciled",
   },
   {
-    batch: "Batch #205 â€” stipends",
+    batch: "Batch #205 — stipends",
     amount: 620000,
     count: 8,
     date: "Aug 1",
@@ -595,7 +595,7 @@ export const payments = [
     currency: "NGN",
     status: "success",
     provider: "paystack",
-    description: "Tuition â€” instalment 1 of 2",
+    description: "Tuition — instalment 1 of 2",
     paidAt: "Jul 30, 2026",
   },
   {
@@ -628,7 +628,7 @@ export const payments = [
     currency: "NGN",
     status: "pending",
     provider: "paystack",
-    description: "Tuition â€” instalment 2 of 2",
+    description: "Tuition — instalment 2 of 2",
   },
 ];
 
@@ -804,7 +804,7 @@ export const leadSources = [
 /* ---------------- Director / Admin ---------------- */
 
 export const directorKpis = [
-  { label: "Monthly revenue", value: "â‚¦109m", delta: "+14.2%", positive: true },
+  { label: "Monthly revenue", value: "₦109m", delta: "+14.2%", positive: true },
   { label: "Active learners", value: "3,412", delta: "+8.6%", positive: true },
   { label: "Placement rate", value: "78%", delta: "+3.1%", positive: true },
   { label: "Churn", value: "4.2%", delta: "-0.8%", positive: true },
@@ -895,7 +895,7 @@ export const approvals = [
     age: "2 days",
   },
   {
-    item: "Certificate issue â€” 34 graduates",
+    item: "Certificate issue — 34 graduates",
     requester: "Tolu Ajayi",
     type: "Certificates",
     age: "1 day",
@@ -919,7 +919,7 @@ export const notifications = [
   { title: "Invoice due soon", body: "Instalment 4 is due 1 October.", time: "3h", engine: "erp" },
   {
     title: "Job match",
-    body: "Paystack Frontend Engineer â€” 96% match.",
+    body: "Paystack Frontend Engineer — 96% match.",
     time: "1d",
     engine: "career",
   },

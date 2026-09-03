@@ -33,7 +33,7 @@ test.describe("Auth journey", () => {
 
     await page.getByTitle("Sign out").click();
     await page.waitForURL("**/**", { timeout: 20_000 });
-    // Back on the marketing site â€” session cookie cleared.
+    // Back on the marketing site — session cookie cleared.
     await page.goto("/auth/sign-in");
     await page.locator("#email").fill(DEMO_USERS.admin);
     await page.locator("#password").fill(DEMO_PASSWORD);

@@ -1,6 +1,8 @@
 import { test, expect } from "@playwright/test";
 
-const BASE_URL = "https://lumina-studio-rosy-eta.vercel.app";
+// Pages are relative — playwright.config.ts supplies the baseURL
+// (E2E_BASE_URL, defaulting to https://cea.ng).
+const BASE_URL = "";
 
 const publicPages = [
   { path: "/", title: "Cyber Elias Academy" },
