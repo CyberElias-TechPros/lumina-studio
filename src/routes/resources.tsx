@@ -14,7 +14,7 @@ export const Route = createFileRoute("/resources")({
       description:
         "Ungated, practical resources for Nigerian tech professionals: resume templates, interview prep, contract templates, CI/CD checklists and more. No sign-up required.",
       path: "/resources",
-      image: "https://cea.ng/og-resources.svg",
+      image: "https://cea.ng/og-default.png",
     }),
   component: ResourcesPage,
 });

@@ -1,11 +1,11 @@
-﻿# Cyber Elias Academy â€” Digital Operating System (CEA-OS)
+﻿# Cyber Elias Academy — Digital Operating System (CEA-OS)
 
 # Master Actor & App Plan
 
 > **Frontend:** Vercel (Next.js/React 19, TypeScript, Tailwind, shadcn/ui, Redux Toolkit, Framer Motion)
-> **Design Language:** Hybrid of digitalskillsacademy.org (clean professional) Ã— dskillacademy.com.ng (vibrant gradients) â€” see `CEA_OS_DESIGN_LANGUAGE.md`
+> **Design Language:** Hybrid of digitalskillsacademy.org (clean professional) à— dskillacademy.com.ng (vibrant gradients) — see `CEA_OS_DESIGN_LANGUAGE.md`
 > **Backend:** Cloudflare Workers + Hono + D1 + R2 + KV + Queues + Durable Objects  
-> **Academy Focus:** General digital/tech skills academy â€” from scratch to advanced in software dev, networking, cloud, cybersecurity, digital marketing, AI, data science, UI/UX, mobile, hardware, IT support.
+> **Academy Focus:** General digital/tech skills academy — from scratch to advanced in software dev, networking, cloud, cybersecurity, digital marketing, AI, data science, UI/UX, mobile, hardware, IT support.
 > **Philosophy:** One platform. Multiple engines. Every actor connected.
 
 ---
@@ -1011,7 +1011,7 @@
 
 ## 1.20 Admissions Officer
 
-**Tagline:** "From prospect to student â€” I guide the journey."
+**Tagline:** "From prospect to student — I guide the journey."
 
 ### Goals
 
@@ -1415,7 +1415,7 @@
 â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜ â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
 ```
 
-### Frontend (Vercel â€” Next.js)
+### Frontend (Vercel — Next.js)
 
 - **Why Vercel:** Optimal Next.js hosting, edge functions, ISR, preview deployments
 - **App Structure:** Monorepo with `apps/web` (Next.js) and `packages/ui` (shared components)
@@ -1423,7 +1423,7 @@
 - **Authentication:** OAuth (Google, GitHub) + Email/Password via Cloudflare + Magic Link
 - **Deployment:** Automatic deploys from `main` branch, preview deploys for PRs
 
-### Backend (Cloudflare Workers â€” Hono)
+### Backend (Cloudflare Workers — Hono)
 
 - **Why Cloudflare:** Global edge distribution, zero cold starts (Workers), integrated ecosystem
 - **API:** RESTful + GraphQL (for complex queries), Hono framework
@@ -1495,7 +1495,7 @@
 
 ## 2.3 Phase-by-Phase Build Plan
 
-### Phase 0 â€” Foundation (Months 1-2)
+### Phase 0 — Foundation (Months 1-2)
 
 **Goal:** Scaffold the platform. No business features yet. Just the chassis.
 
@@ -1522,7 +1522,7 @@
 
 **Actors enabled:** Visitor, System Admin, Developer
 
-### Phase 1 â€” Education Engine (Months 3-5)
+### Phase 1 — Education Engine (Months 3-5)
 
 **Goal:** Core learning functionality live.
 
@@ -1543,7 +1543,7 @@
 
 **Actors enabled:** Current Student, Instructor
 
-### Phase 2 â€” Career Engine (Months 5-7)
+### Phase 2 — Career Engine (Months 5-7)
 
 **Goal:** Bridge learning to earning.
 
@@ -1560,7 +1560,7 @@
 
 **Actors enabled:** Employer, Alumni
 
-### Phase 3 â€” Technology Services (Months 7-10)
+### Phase 3 — Technology Services (Months 7-10)
 
 **Goal:** Client-facing business operations.
 
@@ -1577,7 +1577,7 @@
 
 **Actors enabled:** Client, Partner
 
-### Phase 4 â€” Academy ERP (Months 10-14)
+### Phase 4 — Academy ERP (Months 10-14)
 
 **Goal:** Run the company on the platform.
 
@@ -1596,7 +1596,7 @@
 
 **Actors enabled:** Admissions Officer, Accountant, HR Officer, Receptionist, Supplier, Operations Manager, Department Head
 
-### Phase 5 â€” Community Engine (Months 14-17)
+### Phase 5 — Community Engine (Months 14-17)
 
 **Goal:** Build the ecosystem.
 
@@ -1614,7 +1614,7 @@
 
 **Actors enabled:** Volunteer, NGO, Government Representative
 
-### Phase 6 â€” AI Engine (Months 17-20)
+### Phase 6 — AI Engine (Months 17-20)
 
 **Goal:** Intelligence layer across everything.
 
@@ -1703,40 +1703,40 @@ AuditLog
 
 ## 2.5 Permission Matrix (RBAC)
 
-This is a simplified matrix. Each cell = Read (R), Create (C), Update (U), Delete (D), or â€” (none).
+This is a simplified matrix. Each cell = Read (R), Create (C), Update (U), Delete (D), or — (none).
 
 | Module        | Student    | Instructor | Dept Head | Ops Mgr  | Director | Accountant | HR      | Sys Admin |
 | ------------- | ---------- | ---------- | --------- | -------- | -------- | ---------- | ------- | --------- |
 | Auth          | Own        | Own        | Own       | Own      | Own      | Own        | Own     | Full      |
 | User Profile  | Own        | Own        | Own       | Own      | Own      | Own        | Own     | Full      |
-| Learning      | R          | CRUD Own   | CRUD Dept | â€”        | R        | â€”          | â€”       | â€”         |
-| Assessments   | R/C Own    | CRUD Own   | R Dept    | â€”        | R        | â€”          | â€”       | â€”         |
-| Grades        | R Own      | CRUD Own   | R Dept    | â€”        | R        | â€”          | â€”       | â€”         |
-| Attendance    | R Own      | CRUD       | R Dept    | R        | R        | â€”          | R       | â€”         |
-| Certificates  | R Own      | C          | â€”         | â€”        | â€”        | â€”          | â€”       | â€”         |
-| Portfolio     | CRUD Own   | R Mentee   | â€”         | â€”        | â€”        | â€”          | â€”       | â€”         |
-| Marketplace   | R/C        | â€”          | â€”         | â€”        | R        | â€”          | â€”       | â€”         |
-| CRM           | â€”          | â€”          | â€”         | â€”        | R        | â€”          | â€”       | â€”         |
-| Client Portal | â€”          | â€”          | â€”         | â€”        | R        | R          | â€”       | â€”         |
-| Projects      | R Assigned | R Assigned | R Dept    | R        | R        | â€”          | â€”       | â€”         |
-| Support       | C          | C          | â€”         | â€”        | R        | â€”          | â€”       | Full      |
-| Contracts     | â€”          | â€”          | â€”         | â€”        | R        | â€”          | â€”       | â€”         |
-| Finance       | R Own      | â€”          | R Budget  | R Budget | Full     | Full       | â€”       | â€”         |
-| Payroll       | â€”          | â€”          | â€”         | â€”        | R        | CRUD       | R Input | â€”         |
-| HR            | â€”          | â€”          | R Dept    | â€”        | Full     | R Payroll  | Full    | â€”         |
-| Inventory     | â€”          | â€”          | â€”         | Full     | R        | â€”          | â€”       | R         |
-| Procurement   | â€”          | â€”          | â€”         | CRUD     | R        | R          | â€”       | â€”         |
-| Admissions    | â€”          | â€”          | â€”         | â€”        | R        | â€”          | â€”       | â€”         |
-| Community     | CRUD       | CRUD       | R         | R        | R        | â€”          | â€”       | Full      |
-| Events        | R/C        | R/C        | R         | CRUD     | R        | â€”          | â€”       | â€”         |
-| Alumni        | CRUD Own   | â€”          | â€”         | â€”        | R        | â€”          | â€”       | â€”         |
-| Partners      | â€”          | â€”          | â€”         | â€”        | R        | â€”          | â€”       | â€”         |
+| Learning      | R          | CRUD Own   | CRUD Dept | —        | R        | —          | —       | —         |
+| Assessments   | R/C Own    | CRUD Own   | R Dept    | —        | R        | —          | —       | —         |
+| Grades        | R Own      | CRUD Own   | R Dept    | —        | R        | —          | —       | —         |
+| Attendance    | R Own      | CRUD       | R Dept    | R        | R        | —          | R       | —         |
+| Certificates  | R Own      | C          | —         | —        | —        | —          | —       | —         |
+| Portfolio     | CRUD Own   | R Mentee   | —         | —        | —        | —          | —       | —         |
+| Marketplace   | R/C        | —          | —         | —        | R        | —          | —       | —         |
+| CRM           | —          | —          | —         | —        | R        | —          | —       | —         |
+| Client Portal | —          | —          | —         | —        | R        | R          | —       | —         |
+| Projects      | R Assigned | R Assigned | R Dept    | R        | R        | —          | —       | —         |
+| Support       | C          | C          | —         | —        | R        | —          | —       | Full      |
+| Contracts     | —          | —          | —         | —        | R        | —          | —       | —         |
+| Finance       | R Own      | —          | R Budget  | R Budget | Full     | Full       | —       | —         |
+| Payroll       | —          | —          | —         | —        | R        | CRUD       | R Input | —         |
+| HR            | —          | —          | R Dept    | —        | Full     | R Payroll  | Full    | —         |
+| Inventory     | —          | —          | —         | Full     | R        | —          | —       | R         |
+| Procurement   | —          | —          | —         | CRUD     | R        | R          | —       | —         |
+| Admissions    | —          | —          | —         | —        | R        | —          | —       | —         |
+| Community     | CRUD       | CRUD       | R         | R        | R        | —          | —       | Full      |
+| Events        | R/C        | R/C        | R         | CRUD     | R        | —          | —       | —         |
+| Alumni        | CRUD Own   | —          | —         | —        | R        | —          | —       | —         |
+| Partners      | —          | —          | —         | —        | R        | —          | —       | —         |
 | Reports       | R Own      | R Own      | R Dept    | R Ops    | Full     | Full Fin   | R HR    | Full      |
-| Audit         | â€”          | â€”          | â€”         | â€”        | R        | R          | â€”       | Full      |
-| System Config | â€”          | â€”          | â€”         | â€”        | â€”        | â€”          | â€”       | Full      |
-| User Mgmt     | â€”          | â€”          | â€”         | â€”        | â€”        | â€”          | R Org   | Full      |
+| Audit         | —          | —          | —         | —        | R        | R          | —       | Full      |
+| System Config | —          | —          | —         | —        | —        | —          | —       | Full      |
+| User Mgmt     | —          | —          | —         | —        | —        | —          | R Org   | Full      |
 | Analytics     | R Own      | R Own      | R Dept    | R Ops    | Full     | R Fin      | R HR    | Full      |
-| Governance    | â€”          | â€”          | â€”         | â€”        | Full     | â€”          | â€”       | Full      |
+| Governance    | —          | —          | —         | —        | Full     | —          | —       | Full      |
 
 ---
 
@@ -1831,7 +1831,7 @@ auth.cea.ng     â†’ Cloudflare Worker (Auth)
 ws.cea.ng       â†’ Cloudflare Worker (WebSocket)
 cdn.cea.ng      â†’ Cloudflare R2 (assets)
 docs.cea.ng     â†’ Cloudflare Pages (docs)
-admin.cea.ng    â†’ Vercel (admin route â€” or protected via Zero Trust)
+admin.cea.ng    â†’ Vercel (admin route — or protected via Zero Trust)
 ```
 
 ### Security Architecture
@@ -1870,14 +1870,14 @@ admin.cea.ng    â†’ Vercel (admin route â€” or protected via Zero Trus
 | Priority | Module Group                        | Why First                               |
 | -------- | ----------------------------------- | --------------------------------------- |
 | **P0**   | Foundation, Auth, RBAC, CMS, Audit  | Everything depends on this              |
-| **P1**   | Learning, Assessments, Gradebook    | Core product â€” students enroll for this |
-| **P2**   | Admissions, CRM                     | Fill the pipeline â€” you need students   |
-| **P3**   | Finance, Invoicing, Payments        | Get paid â€” sustainability               |
+| **P1**   | Learning, Assessments, Gradebook    | Core product — students enroll for this |
+| **P2**   | Admissions, CRM                     | Fill the pipeline — you need students   |
+| **P3**   | Finance, Invoicing, Payments        | Get paid — sustainability               |
 | **P4**   | Client Portal, Projects, Support    | Revenue diversification                 |
-| **P5**   | Portfolio, Marketplace, Jobs        | Student outcomes â€” your brand           |
-| **P6**   | HR, Payroll, Inventory, Procurement | Internal efficiency â€” scale             |
-| **P7**   | Community, Events, Alumni, Partners | Ecosystem â€” moat                        |
-| **P8**   | AI features                         | Differentiation â€” competitive advantage |
+| **P5**   | Portfolio, Marketplace, Jobs        | Student outcomes — your brand           |
+| **P6**   | HR, Payroll, Inventory, Procurement | Internal efficiency — scale             |
+| **P7**   | Community, Events, Alumni, Partners | Ecosystem — moat                        |
+| **P8**   | AI features                         | Differentiation — competitive advantage |
 
 ### Quick Start (First 2 Weeks)
 

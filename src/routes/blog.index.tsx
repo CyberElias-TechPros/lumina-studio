@@ -49,7 +49,7 @@ function Blog() {
             Ideas from the <span className="text-gradient">engine room</span>
           </>
         }
-        description="Research, field notes and honest opinions from the people who run the academy â€” on hiring, learning, security and the Nigerian tech economy."
+        description="Research, field notes and honest opinions from the people who run the academy — on hiring, learning, security and the Nigerian tech economy."
       >
         <div className="mt-10 flex max-w-xl flex-col gap-4 sm:flex-row">
           <div className="relative flex-1">
@@ -57,7 +57,7 @@ function Blog() {
             <Input
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder="Search articlesâ€¦"
+              placeholder="Search articles…"
               className="bg-card h-12 border pl-11 shadow-sm"
             />
           </div>

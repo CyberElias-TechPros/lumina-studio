@@ -4,7 +4,7 @@
 
 **Actor Name:** Current Student  
 **System Role ID:** `role_current_student`  
-**Description:** An individual who has been accepted, enrolled, and is actively participating in one or more programs at Cyber Elias Academy. This actor is in the core "student" lifecycle â€” consuming content, completing assignments, taking assessments, communicating with peers and instructors, tracking progress, managing finances, and ultimately earning certificates.
+**Description:** An individual who has been accepted, enrolled, and is actively participating in one or more programs at Cyber Elias Academy. This actor is in the core "student" lifecycle — consuming content, completing assignments, taking assessments, communicating with peers and instructors, tracking progress, managing finances, and ultimately earning certificates.
 
 **Key Characteristics:**
 
@@ -17,12 +17,12 @@
 
 **Student Lifecycle States:**
 
-1. **Pre-Start** â€” Enrolled, program hasn't started yet (orientation)
-2. **Active** â€” Currently taking courses, attending classes
-3. **On Leave** â€” Temporary pause (medical, personal, military)
-4. **Graduated** â€” Completed all requirements, certificate issued
-5. **Expelled** â€” Removed due to policy violation
-6. **Dropped Out** â€” Voluntarily withdrew
+1. **Pre-Start** — Enrolled, program hasn't started yet (orientation)
+2. **Active** — Currently taking courses, attending classes
+3. **On Leave** — Temporary pause (medical, personal, military)
+4. **Graduated** — Completed all requirements, certificate issued
+5. **Expelled** — Removed due to policy violation
+6. **Dropped Out** — Voluntarily withdrew
 
 ---
 
@@ -75,7 +75,7 @@
 
 ### Screen 3.1: Student Dashboard (`/dashboard`)
 
-**Purpose:** Central hub showing at-a-glance everything important â€” next class, pending assignments, recent grades, announcements.
+**Purpose:** Central hub showing at-a-glance everything important — next class, pending assignments, recent grades, announcements.
 
 **Wireframe Layout:**
 
@@ -101,21 +101,21 @@
 â”‚                  â”‚  â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜  â”‚                      â”‚
 â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”´â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”´â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
 â”‚  Recent Activity                                             â”‚
-â”‚  â— Scored 92% on "Cryptography Quiz" â€” 2h ago              â”‚
-â”‚  â— Submitted "Lab 3: Packet Analysis" â€” Yesterday           â”‚
-â”‚  â— Instructor posted "Week 4 Announcement" â€” Yesterday      â”‚
+â”‚  â— Scored 92% on "Cryptography Quiz" — 2h ago              â”‚
+â”‚  â— Submitted "Lab 3: Packet Analysis" — Yesterday           â”‚
+â”‚  â— Instructor posted "Week 4 Announcement" — Yesterday      â”‚
 â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
 â”‚  Quick Actions   â”‚  Upcoming Deadlines                      â”‚
-â”‚  [New Message]   â”‚  â— Lab 4      â€” Fri 11:59 PM             â”‚
-â”‚  [Browse Market] â”‚  â— Project 1  â€” Nov 15                   â”‚
-â”‚  [View Calendar] â”‚  â— Exam 1     â€” Nov 22                   â”‚
+â”‚  [New Message]   â”‚  â— Lab 4      — Fri 11:59 PM             â”‚
+â”‚  [Browse Market] â”‚  â— Project 1  — Nov 15                   â”‚
+â”‚  [View Calendar] â”‚  â— Exam 1     — Nov 22                   â”‚
 â”‚  [Find Study Grp]â”‚                                           â”‚
 â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”´â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
 ```
 
 **Data Sources:**
 
-- `GET /api/student/dashboard` â€” aggregated dashboard data
+- `GET /api/student/dashboard` — aggregated dashboard data
 - `GET /api/student/tasks?filter=pending`
 - `GET /api/student/activity?limit=10`
 - `GET /api/student/next-class`
@@ -167,7 +167,7 @@
 
 ### Screen 3.3: Lesson Viewer (`/learning/lessons/[lessonId]`)
 
-**Purpose:** Consume lesson content â€” video player, article reader, interactive coding environment, quiz interface.
+**Purpose:** Consume lesson content — video player, article reader, interactive coding environment, quiz interface.
 
 **Wireframe Layout:**
 
@@ -353,7 +353,7 @@
 â”‚  â”‚ Lab 2             â”‚ 48    â”‚ 50  â”‚ 96%   â”‚ 10%      â”‚  â”‚
 â”‚  â”‚ Lab 3             â”‚ 42    â”‚ 50  â”‚ 84%   â”‚ 10%      â”‚  â”‚
 â”‚  â”‚ Midterm Exam      â”‚ 85    â”‚ 100 â”‚ 85%   â”‚ 30%      â”‚  â”‚
-â”‚  â”‚ Final Project     â”‚ 0     â”‚ 100 â”‚ â€”     â”‚ 40%      â”‚  â”‚
+â”‚  â”‚ Final Project     â”‚ 0     â”‚ 100 â”‚ —     â”‚ 40%      â”‚  â”‚
 â”‚  â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜  â”‚
 â”‚  What-if GPA Calculator [â–¼]                                  â”‚
 â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
@@ -399,7 +399,7 @@
 â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
 â”‚  Certificates                                                â”‚
 â”‚  â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”  â”‚
-â”‚  â”‚ ðŸ† Python for Cybersecurity â€” Issued Oct 2026       â”‚  â”‚
+â”‚  â”‚ ðŸ† Python for Cybersecurity — Issued Oct 2026       â”‚  â”‚
 â”‚  â”‚ [View Certificate] [Download PDF] [Share on LinkedIn]â”‚  â”‚
 â”‚  â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜  â”‚
 â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
@@ -493,10 +493,10 @@
 â”‚    â”‚    â”‚    â”‚    â”‚    â”‚    â”‚                               â”‚
 â””â”€â”€â”€â”€â”´â”€â”€â”€â”€â”´â”€â”€â”€â”€â”´â”€â”€â”€â”€â”´â”€â”€â”€â”€â”´â”€â”€â”€â”€â”´â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
 â”‚  Upcoming Events:                                            â”‚
-â”‚  â— Today 2:00 PM â€” Network Defense Class                    â”‚
-â”‚  â— Wed Nov 3 â€” Quiz: Cryptography Fundamentals             â”‚
-â”‚  â— Fri Nov 5 â€” Lab 4 Due                                   â”‚
-â”‚  â— Mon Nov 8 â€” Office Hours: Prof. Smith                    â”‚
+â”‚  â— Today 2:00 PM — Network Defense Class                    â”‚
+â”‚  â— Wed Nov 3 — Quiz: Cryptography Fundamentals             â”‚
+â”‚  â— Fri Nov 5 — Lab 4 Due                                   â”‚
+â”‚  â— Mon Nov 8 — Office Hours: Prof. Smith                    â”‚
 â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
 ```
 
@@ -543,7 +543,7 @@
 â”‚  Total Balance: $2,450.00                    [Pay Now]      â”‚
 â”‚  â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”  â”‚
 â”‚  â”‚ Payment Plan: 4-month installment                   â”‚  â”‚
-â”‚  â”‚ Next Payment: $1,225.00 â€” Due Nov 15, 2026         â”‚  â”‚
+â”‚  â”‚ Next Payment: $1,225.00 — Due Nov 15, 2026         â”‚  â”‚
 â”‚  â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜  â”‚
 â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
 â”‚  Recent Invoices                                             â”‚
@@ -560,8 +560,8 @@
 â”‚  [Add Payment Method]                                        â”‚
 â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
 â”‚  Financial Aid                                                â”‚
-â”‚  â— Merit Scholarship: $500/semester â€” Active                 â”‚
-â”‚  â— Need-Based Grant: Applied â€” Pending                       â”‚
+â”‚  â— Merit Scholarship: $500/semester — Active                 â”‚
+â”‚  â— Need-Based Grant: Applied — Pending                       â”‚
 â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
 ```
 
@@ -580,11 +580,11 @@
 â”‚  â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â” â”‚
 â”‚  â”‚ Date   â”‚ Class  â”‚ Status   â”‚ Excused  â”‚ Notes          â”‚ â”‚
 â”‚  â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”¼â”€â”€â”€â”€â”€â”€â”€â”€â”¼â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¼â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¼â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤ â”‚
-â”‚  â”‚ Oct 30 â”‚ Module â”‚ âœ… Presentâ”‚ â€”        â”‚                â”‚ â”‚
+â”‚  â”‚ Oct 30 â”‚ Module â”‚ âœ… Presentâ”‚ —        â”‚                â”‚ â”‚
 â”‚  â”‚        â”‚ 3      â”‚          â”‚          â”‚                â”‚ â”‚
 â”‚  â”‚ Oct 28 â”‚ Module â”‚ âŒ Absent â”‚ Yes      â”‚ Doctor's note â”‚ â”‚
 â”‚  â”‚        â”‚ 2      â”‚          â”‚          â”‚ attached       â”‚ â”‚
-â”‚  â”‚ Oct 25 â”‚ Module â”‚ âœ… Presentâ”‚ â€”        â”‚                â”‚ â”‚
+â”‚  â”‚ Oct 25 â”‚ Module â”‚ âœ… Presentâ”‚ —        â”‚                â”‚ â”‚
 â”‚  â”‚        â”‚ 2      â”‚          â”‚          â”‚                â”‚ â”‚
 â”‚  â””â”€â”€â”€â”€â”€â”€â”€â”€â”´â”€â”€â”€â”€â”€â”€â”€â”€â”´â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”´â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”´â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜ â”‚
 â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
@@ -617,8 +617,8 @@
 â”‚  â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜  â”‚
 â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
 â”‚  In Progress (earnable certificates)                         â”‚
-â”‚  â— Cyber Defense Specialist â€” 65% complete                  â”‚
-â”‚  â— Certified Ethical Hacker Prep â€” 30% complete             â”‚
+â”‚  â— Cyber Defense Specialist — 65% complete                  â”‚
+â”‚  â— Certified Ethical Hacker Prep — 30% complete             â”‚
 â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
 ```
 
@@ -630,23 +630,23 @@
 
 | Column                  | Type           | Constraints                   | Default       | Description                                                   |
 | ----------------------- | -------------- | ----------------------------- | ------------- | ------------------------------------------------------------- |
-| `id`                    | `UUID`         | PK, FK â†’ users.id             | â€”             | Same as user ID                                               |
-| `student_number`        | `VARCHAR(20)`  | UNIQUE, NOT NULL              | â€”             | CEA-STU-YYYY-NNNNN                                            |
+| `id`                    | `UUID`         | PK, FK â†’ users.id             | —             | Same as user ID                                               |
+| `student_number`        | `VARCHAR(20)`  | UNIQUE, NOT NULL              | —             | CEA-STU-YYYY-NNNNN                                            |
 | `enrollment_status`     | `VARCHAR(50)`  | NOT NULL                      | `'pre_start'` | pre_start, active, on_leave, graduated, expelled, dropped_out |
-| `cohort_id`             | `UUID`         | FK â†’ cohorts.id, NULLABLE     | â€”             | Assigned cohort group                                         |
-| `program_id`            | `UUID`         | FK â†’ programs.id, NOT NULL    | â€”             | Primary program                                               |
-| `enrollment_term`       | `VARCHAR(50)`  | NOT NULL                      | â€”             | Fall 2026, etc.                                               |
-| `enrolled_at`           | `TIMESTAMPTZ`  | NOT NULL                      | â€”             | When enrolled                                                 |
-| `start_date`            | `DATE`         | NULLABLE                      | â€”             | Program start                                                 |
-| `expected_graduation`   | `DATE`         | NULLABLE                      | â€”             | â€”                                                             |
-| `graduated_at`          | `TIMESTAMPTZ`  | NULLABLE                      | â€”             | â€”                                                             |
+| `cohort_id`             | `UUID`         | FK â†’ cohorts.id, NULLABLE     | —             | Assigned cohort group                                         |
+| `program_id`            | `UUID`         | FK â†’ programs.id, NOT NULL    | —             | Primary program                                               |
+| `enrollment_term`       | `VARCHAR(50)`  | NOT NULL                      | —             | Fall 2026, etc.                                               |
+| `enrolled_at`           | `TIMESTAMPTZ`  | NOT NULL                      | —             | When enrolled                                                 |
+| `start_date`            | `DATE`         | NULLABLE                      | —             | Program start                                                 |
+| `expected_graduation`   | `DATE`         | NULLABLE                      | —             | —                                                             |
+| `graduated_at`          | `TIMESTAMPTZ`  | NULLABLE                      | —             | —                                                             |
 | `cumulative_gpa`        | `DECIMAL(3,2)` | NOT NULL                      | `0.00`        | 0.00-4.00                                                     |
-| `total_credits_earned`  | `INTEGER`      | NOT NULL                      | `0`           | â€”                                                             |
+| `total_credits_earned`  | `INTEGER`      | NOT NULL                      | `0`           | —                                                             |
 | `attendance_percentage` | `DECIMAL(5,2)` | NOT NULL                      | `100.00`      | 0.00-100.00                                                   |
-| `advisor_id`            | `UUID`         | FK â†’ instructors.id, NULLABLE | â€”             | Academic advisor                                              |
-| `portfolio_url`         | `VARCHAR(500)` | NULLABLE                      | â€”             | Public portfolio slug                                         |
-| `created_at`            | `TIMESTAMPTZ`  | NOT NULL                      | `NOW()`       | â€”                                                             |
-| `updated_at`            | `TIMESTAMPTZ`  | NOT NULL                      | `NOW()`       | â€”                                                             |
+| `advisor_id`            | `UUID`         | FK â†’ instructors.id, NULLABLE | —             | Academic advisor                                              |
+| `portfolio_url`         | `VARCHAR(500)` | NULLABLE                      | —             | Public portfolio slug                                         |
+| `created_at`            | `TIMESTAMPTZ`  | NOT NULL                      | `NOW()`       | —                                                             |
+| `updated_at`            | `TIMESTAMPTZ`  | NOT NULL                      | `NOW()`       | —                                                             |
 
 **Indexes:**
 
@@ -660,29 +660,29 @@
 
 | Column       | Type           | Constraints                | Default | Description      |
 | ------------ | -------------- | -------------------------- | ------- | ---------------- |
-| `id`         | `UUID`         | PK                         | â€”       | â€”                |
-| `name`       | `VARCHAR(200)` | NOT NULL                   | â€”       | "CF-2026-Fall-A" |
-| `program_id` | `UUID`         | FK â†’ programs.id, NOT NULL | â€”       | â€”                |
-| `term`       | `VARCHAR(50)`  | NOT NULL                   | â€”       | â€”                |
-| `start_date` | `DATE`         | NOT NULL                   | â€”       | â€”                |
-| `end_date`   | `DATE`         | NOT NULL                   | â€”       | â€”                |
-| `max_size`   | `INTEGER`      | NOT NULL                   | â€”       | â€”                |
-| `created_at` | `TIMESTAMPTZ`  | NOT NULL                   | `NOW()` | â€”                |
+| `id`         | `UUID`         | PK                         | —       | —                |
+| `name`       | `VARCHAR(200)` | NOT NULL                   | —       | "CF-2026-Fall-A" |
+| `program_id` | `UUID`         | FK â†’ programs.id, NOT NULL | —       | —                |
+| `term`       | `VARCHAR(50)`  | NOT NULL                   | —       | —                |
+| `start_date` | `DATE`         | NOT NULL                   | —       | —                |
+| `end_date`   | `DATE`         | NOT NULL                   | —       | —                |
+| `max_size`   | `INTEGER`      | NOT NULL                   | —       | —                |
+| `created_at` | `TIMESTAMPTZ`  | NOT NULL                   | `NOW()` | —                |
 
 ### Table: `enrollments`
 
 | Column                | Type           | Constraints                | Default    | Description                |
 | --------------------- | -------------- | -------------------------- | ---------- | -------------------------- |
-| `id`                  | `UUID`         | PK                         | â€”          | â€”                          |
-| `student_id`          | `UUID`         | FK â†’ students.id, NOT NULL | â€”          | â€”                          |
-| `course_id`           | `UUID`         | FK â†’ courses.id, NOT NULL  | â€”          | â€”                          |
+| `id`                  | `UUID`         | PK                         | —          | —                          |
+| `student_id`          | `UUID`         | FK â†’ students.id, NOT NULL | —          | —                          |
+| `course_id`           | `UUID`         | FK â†’ courses.id, NOT NULL  | —          | —                          |
 | `status`              | `VARCHAR(50)`  | NOT NULL                   | `'active'` | active, completed, dropped |
 | `progress_percentage` | `INTEGER`      | NOT NULL                   | `0`        | 0-100                      |
-| `started_at`          | `TIMESTAMPTZ`  | NULLABLE                   | â€”          | â€”                          |
-| `completed_at`        | `TIMESTAMPTZ`  | NULLABLE                   | â€”          | â€”                          |
-| `grade`               | `DECIMAL(5,2)` | NULLABLE                   | â€”          | 0-100                      |
-| `letter_grade`        | `VARCHAR(2)`   | NULLABLE                   | â€”          | A, A-, B+, etc.            |
-| `created_at`          | `TIMESTAMPTZ`  | NOT NULL                   | `NOW()`    | â€”                          |
+| `started_at`          | `TIMESTAMPTZ`  | NULLABLE                   | —          | —                          |
+| `completed_at`        | `TIMESTAMPTZ`  | NULLABLE                   | —          | —                          |
+| `grade`               | `DECIMAL(5,2)` | NULLABLE                   | —          | 0-100                      |
+| `letter_grade`        | `VARCHAR(2)`   | NULLABLE                   | —          | A, A-, B+, etc.            |
+| `created_at`          | `TIMESTAMPTZ`  | NOT NULL                   | `NOW()`    | —                          |
 
 **Indexes:** UNIQUE(student_id, course_id)
 
@@ -690,63 +690,63 @@
 
 | Column          | Type           | Constraints                   | Default | Description        |
 | --------------- | -------------- | ----------------------------- | ------- | ------------------ |
-| `id`            | `UUID`         | PK                            | â€”       | â€”                  |
-| `program_id`    | `UUID`         | FK â†’ programs.id, NOT NULL    | â€”       | â€”                  |
-| `title`         | `VARCHAR(255)` | NOT NULL                      | â€”       | â€”                  |
-| `slug`          | `VARCHAR(200)` | UNIQUE                        | â€”       | â€”                  |
-| `description`   | `TEXT`         | NOT NULL                      | â€”       | â€”                  |
-| `instructor_id` | `UUID`         | FK â†’ instructors.id, NULLABLE | â€”       | Primary instructor |
-| `sort_order`    | `INTEGER`      | NOT NULL                      | â€”       | â€”                  |
-| `credits`       | `INTEGER`      | NOT NULL                      | `3`     | â€”                  |
-| `passing_grade` | `DECIMAL(5,2)` | NOT NULL                      | `70.00` | â€”                  |
-| `created_at`    | `TIMESTAMPTZ`  | NOT NULL                      | `NOW()` | â€”                  |
+| `id`            | `UUID`         | PK                            | —       | —                  |
+| `program_id`    | `UUID`         | FK â†’ programs.id, NOT NULL    | —       | —                  |
+| `title`         | `VARCHAR(255)` | NOT NULL                      | —       | —                  |
+| `slug`          | `VARCHAR(200)` | UNIQUE                        | —       | —                  |
+| `description`   | `TEXT`         | NOT NULL                      | —       | —                  |
+| `instructor_id` | `UUID`         | FK â†’ instructors.id, NULLABLE | —       | Primary instructor |
+| `sort_order`    | `INTEGER`      | NOT NULL                      | —       | —                  |
+| `credits`       | `INTEGER`      | NOT NULL                      | `3`     | —                  |
+| `passing_grade` | `DECIMAL(5,2)` | NOT NULL                      | `70.00` | —                  |
+| `created_at`    | `TIMESTAMPTZ`  | NOT NULL                      | `NOW()` | —                  |
 
 ### Table: `modules`
 
 | Column            | Type           | Constraints               | Default | Description |
 | ----------------- | -------------- | ------------------------- | ------- | ----------- |
-| `id`              | `UUID`         | PK                        | â€”       | â€”           |
-| `course_id`       | `UUID`         | FK â†’ courses.id, NOT NULL | â€”       | â€”           |
-| `title`           | `VARCHAR(255)` | NOT NULL                  | â€”       | â€”           |
-| `sort_order`      | `INTEGER`      | NOT NULL                  | â€”       | â€”           |
-| `description`     | `TEXT`         | NULLABLE                  | â€”       | â€”           |
-| `estimated_hours` | `DECIMAL(5,1)` | NOT NULL                  | â€”       | â€”           |
-| `created_at`      | `TIMESTAMPTZ`  | NOT NULL                  | `NOW()` | â€”           |
+| `id`              | `UUID`         | PK                        | —       | —           |
+| `course_id`       | `UUID`         | FK â†’ courses.id, NOT NULL | —       | —           |
+| `title`           | `VARCHAR(255)` | NOT NULL                  | —       | —           |
+| `sort_order`      | `INTEGER`      | NOT NULL                  | —       | —           |
+| `description`     | `TEXT`         | NULLABLE                  | —       | —           |
+| `estimated_hours` | `DECIMAL(5,1)` | NOT NULL                  | —       | —           |
+| `created_at`      | `TIMESTAMPTZ`  | NOT NULL                  | `NOW()` | —           |
 
 ### Table: `lessons`
 
 | Column             | Type           | Constraints               | Default | Description                                       |
 | ------------------ | -------------- | ------------------------- | ------- | ------------------------------------------------- |
-| `id`               | `UUID`         | PK                        | â€”       | â€”                                                 |
-| `module_id`        | `UUID`         | FK â†’ modules.id, NOT NULL | â€”       | â€”                                                 |
-| `title`            | `VARCHAR(255)` | NOT NULL                  | â€”       | â€”                                                 |
-| `slug`             | `VARCHAR(200)` | NOT NULL                  | â€”       | â€”                                                 |
-| `sort_order`       | `INTEGER`      | NOT NULL                  | â€”       | â€”                                                 |
-| `content_type`     | `VARCHAR(50)`  | NOT NULL                  | â€”       | video, article, quiz, coding_exercise, assignment |
-| `content_data`     | `JSONB`        | NOT NULL                  | â€”       | Type-specific content payload                     |
-| `duration_minutes` | `INTEGER`      | NOT NULL                  | â€”       | â€”                                                 |
-| `video_url`        | `VARCHAR(500)` | NULLABLE                  | â€”       | Mux/Cloudflare Stream URL                         |
-| `video_duration`   | `INTEGER`      | NULLABLE                  | â€”       | In seconds                                        |
-| `transcript`       | `TEXT`         | NULLABLE                  | â€”       | Full transcript                                   |
-| `is_required`      | `BOOLEAN`      | NOT NULL                  | `true`  | â€”                                                 |
-| `created_at`       | `TIMESTAMPTZ`  | NOT NULL                  | `NOW()` | â€”                                                 |
-| `updated_at`       | `TIMESTAMPTZ`  | NOT NULL                  | `NOW()` | â€”                                                 |
+| `id`               | `UUID`         | PK                        | —       | —                                                 |
+| `module_id`        | `UUID`         | FK â†’ modules.id, NOT NULL | —       | —                                                 |
+| `title`            | `VARCHAR(255)` | NOT NULL                  | —       | —                                                 |
+| `slug`             | `VARCHAR(200)` | NOT NULL                  | —       | —                                                 |
+| `sort_order`       | `INTEGER`      | NOT NULL                  | —       | —                                                 |
+| `content_type`     | `VARCHAR(50)`  | NOT NULL                  | —       | video, article, quiz, coding_exercise, assignment |
+| `content_data`     | `JSONB`        | NOT NULL                  | —       | Type-specific content payload                     |
+| `duration_minutes` | `INTEGER`      | NOT NULL                  | —       | —                                                 |
+| `video_url`        | `VARCHAR(500)` | NULLABLE                  | —       | Mux/Cloudflare Stream URL                         |
+| `video_duration`   | `INTEGER`      | NULLABLE                  | —       | In seconds                                        |
+| `transcript`       | `TEXT`         | NULLABLE                  | —       | Full transcript                                   |
+| `is_required`      | `BOOLEAN`      | NOT NULL                  | `true`  | —                                                 |
+| `created_at`       | `TIMESTAMPTZ`  | NOT NULL                  | `NOW()` | —                                                 |
+| `updated_at`       | `TIMESTAMPTZ`  | NOT NULL                  | `NOW()` | —                                                 |
 
 ### Table: `lesson_progress`
 
 | Column                | Type           | Constraints                | Default         | Description                         |
 | --------------------- | -------------- | -------------------------- | --------------- | ----------------------------------- |
-| `id`                  | `UUID`         | PK                         | â€”               | â€”                                   |
-| `student_id`          | `UUID`         | FK â†’ students.id, NOT NULL | â€”               | â€”                                   |
-| `lesson_id`           | `UUID`         | FK â†’ lessons.id, NOT NULL  | â€”               | â€”                                   |
+| `id`                  | `UUID`         | PK                         | —               | —                                   |
+| `student_id`          | `UUID`         | FK â†’ students.id, NOT NULL | —               | —                                   |
+| `lesson_id`           | `UUID`         | FK â†’ lessons.id, NOT NULL  | —               | —                                   |
 | `status`              | `VARCHAR(50)`  | NOT NULL                   | `'not_started'` | not_started, in_progress, completed |
 | `progress_percentage` | `INTEGER`      | NOT NULL                   | `0`             | 0-100                               |
 | `video_position`      | `INTEGER`      | NOT NULL                   | `0`             | Seconds                             |
-| `completed_at`        | `TIMESTAMPTZ`  | NULLABLE                   | â€”               | â€”                                   |
-| `attempts`            | `INTEGER`      | NOT NULL                   | `0`             | â€”                                   |
-| `score`               | `DECIMAL(5,2)` | NULLABLE                   | â€”               | For quizzes/coding                  |
-| `started_at`          | `TIMESTAMPTZ`  | NULLABLE                   | â€”               | â€”                                   |
-| `updated_at`          | `TIMESTAMPTZ`  | NOT NULL                   | `NOW()`         | â€”                                   |
+| `completed_at`        | `TIMESTAMPTZ`  | NULLABLE                   | —               | —                                   |
+| `attempts`            | `INTEGER`      | NOT NULL                   | `0`             | —                                   |
+| `score`               | `DECIMAL(5,2)` | NULLABLE                   | —               | For quizzes/coding                  |
+| `started_at`          | `TIMESTAMPTZ`  | NULLABLE                   | —               | —                                   |
+| `updated_at`          | `TIMESTAMPTZ`  | NOT NULL                   | `NOW()`         | —                                   |
 
 **Indexes:** UNIQUE(student_id, lesson_id)
 
@@ -754,46 +754,46 @@
 
 | Column                  | Type           | Constraints               | Default | Description                                     |
 | ----------------------- | -------------- | ------------------------- | ------- | ----------------------------------------------- |
-| `id`                    | `UUID`         | PK                        | â€”       | â€”                                               |
-| `course_id`             | `UUID`         | FK â†’ courses.id, NOT NULL | â€”       | â€”                                               |
-| `module_id`             | `UUID`         | FK â†’ modules.id, NULLABLE | â€”       | â€”                                               |
-| `title`                 | `VARCHAR(255)` | NOT NULL                  | â€”       | â€”                                               |
-| `description`           | `TEXT`         | NOT NULL                  | â€”       | Full instructions                               |
-| `assignment_type`       | `VARCHAR(50)`  | NOT NULL                  | â€”       | lab, project, essay, coding_challenge, research |
-| `points_possible`       | `INTEGER`      | NOT NULL                  | â€”       | â€”                                               |
-| `weight`                | `DECIMAL(5,2)` | NOT NULL                  | â€”       | Percentage weight in course grade               |
-| `due_at`                | `TIMESTAMPTZ`  | NOT NULL                  | â€”       | â€”                                               |
-| `available_from`        | `TIMESTAMPTZ`  | NULLABLE                  | â€”       | â€”                                               |
-| `available_until`       | `TIMESTAMPTZ`  | NULLABLE                  | â€”       | Hard cutoff                                     |
-| `allow_late_submission` | `BOOLEAN`      | NOT NULL                  | `false` | â€”                                               |
-| `late_penalty_percent`  | `DECIMAL(5,2)` | NULLABLE                  | â€”       | Per-day penalty %                               |
+| `id`                    | `UUID`         | PK                        | —       | —                                               |
+| `course_id`             | `UUID`         | FK â†’ courses.id, NOT NULL | —       | —                                               |
+| `module_id`             | `UUID`         | FK â†’ modules.id, NULLABLE | —       | —                                               |
+| `title`                 | `VARCHAR(255)` | NOT NULL                  | —       | —                                               |
+| `description`           | `TEXT`         | NOT NULL                  | —       | Full instructions                               |
+| `assignment_type`       | `VARCHAR(50)`  | NOT NULL                  | —       | lab, project, essay, coding_challenge, research |
+| `points_possible`       | `INTEGER`      | NOT NULL                  | —       | —                                               |
+| `weight`                | `DECIMAL(5,2)` | NOT NULL                  | —       | Percentage weight in course grade               |
+| `due_at`                | `TIMESTAMPTZ`  | NOT NULL                  | —       | —                                               |
+| `available_from`        | `TIMESTAMPTZ`  | NULLABLE                  | —       | —                                               |
+| `available_until`       | `TIMESTAMPTZ`  | NULLABLE                  | —       | Hard cutoff                                     |
+| `allow_late_submission` | `BOOLEAN`      | NOT NULL                  | `false` | —                                               |
+| `late_penalty_percent`  | `DECIMAL(5,2)` | NULLABLE                  | —       | Per-day penalty %                               |
 | `max_attempts`          | `INTEGER`      | NOT NULL                  | `1`     | Resubmission limit                              |
-| `allow_resubmission`    | `BOOLEAN`      | NOT NULL                  | `false` | â€”                                               |
-| `rubric`                | `JSONB`        | NULLABLE                  | â€”       | Criterias with max points                       |
-| `attachment_urls`       | `JSONB`        | NULLABLE                  | â€”       | Resource files                                  |
-| `created_at`            | `TIMESTAMPTZ`  | NOT NULL                  | `NOW()` | â€”                                               |
+| `allow_resubmission`    | `BOOLEAN`      | NOT NULL                  | `false` | —                                               |
+| `rubric`                | `JSONB`        | NULLABLE                  | —       | Criterias with max points                       |
+| `attachment_urls`       | `JSONB`        | NULLABLE                  | —       | Resource files                                  |
+| `created_at`            | `TIMESTAMPTZ`  | NOT NULL                  | `NOW()` | —                                               |
 
 ### Table: `submissions`
 
 | Column            | Type           | Constraints                   | Default   | Description                        |
 | ----------------- | -------------- | ----------------------------- | --------- | ---------------------------------- |
-| `id`              | `UUID`         | PK                            | â€”         | â€”                                  |
-| `assignment_id`   | `UUID`         | FK â†’ assignments.id, NOT NULL | â€”         | â€”                                  |
-| `student_id`      | `UUID`         | FK â†’ students.id, NOT NULL    | â€”         | â€”                                  |
-| `attempt_number`  | `INTEGER`      | NOT NULL                      | `1`       | â€”                                  |
+| `id`              | `UUID`         | PK                            | —         | —                                  |
+| `assignment_id`   | `UUID`         | FK â†’ assignments.id, NOT NULL | —         | —                                  |
+| `student_id`      | `UUID`         | FK â†’ students.id, NOT NULL    | —         | —                                  |
+| `attempt_number`  | `INTEGER`      | NOT NULL                      | `1`       | —                                  |
 | `status`          | `VARCHAR(50)`  | NOT NULL                      | `'draft'` | draft, submitted, graded, returned |
-| `submission_text` | `TEXT`         | NULLABLE                      | â€”         | Rich text answer                   |
-| `file_urls`       | `JSONB`        | NULLABLE                      | â€”         | Submitted file R2 keys             |
-| `comments`        | `TEXT`         | NULLABLE                      | â€”         | Student note to instructor         |
-| `submitted_at`    | `TIMESTAMPTZ`  | NULLABLE                      | â€”         | â€”                                  |
-| `grade`           | `DECIMAL(5,2)` | NULLABLE                      | â€”         | 0-100                              |
-| `letter_grade`    | `VARCHAR(2)`   | NULLABLE                      | â€”         | â€”                                  |
-| `grader_id`       | `UUID`         | FK â†’ instructors.id, NULLABLE | â€”         | â€”                                  |
-| `graded_at`       | `TIMESTAMPTZ`  | NULLABLE                      | â€”         | â€”                                  |
-| `feedback`        | `TEXT`         | NULLABLE                      | â€”         | Instructor feedback                |
-| `rubric_scores`   | `JSONB`        | NULLABLE                      | â€”         | Per-criterion scores               |
-| `penalty_points`  | `DECIMAL(5,2)` | NOT NULL                      | `0`       | â€”                                  |
-| `created_at`      | `TIMESTAMPTZ`  | NOT NULL                      | `NOW()`   | â€”                                  |
+| `submission_text` | `TEXT`         | NULLABLE                      | —         | Rich text answer                   |
+| `file_urls`       | `JSONB`        | NULLABLE                      | —         | Submitted file R2 keys             |
+| `comments`        | `TEXT`         | NULLABLE                      | —         | Student note to instructor         |
+| `submitted_at`    | `TIMESTAMPTZ`  | NULLABLE                      | —         | —                                  |
+| `grade`           | `DECIMAL(5,2)` | NULLABLE                      | —         | 0-100                              |
+| `letter_grade`    | `VARCHAR(2)`   | NULLABLE                      | —         | —                                  |
+| `grader_id`       | `UUID`         | FK â†’ instructors.id, NULLABLE | —         | —                                  |
+| `graded_at`       | `TIMESTAMPTZ`  | NULLABLE                      | —         | —                                  |
+| `feedback`        | `TEXT`         | NULLABLE                      | —         | Instructor feedback                |
+| `rubric_scores`   | `JSONB`        | NULLABLE                      | —         | Per-criterion scores               |
+| `penalty_points`  | `DECIMAL(5,2)` | NOT NULL                      | `0`       | —                                  |
+| `created_at`      | `TIMESTAMPTZ`  | NOT NULL                      | `NOW()`   | —                                  |
 
 **Indexes:** UNIQUE(assignment_id, student_id, attempt_number)
 
@@ -801,49 +801,49 @@
 
 | Column               | Type           | Constraints               | Default | Description                    |
 | -------------------- | -------------- | ------------------------- | ------- | ------------------------------ |
-| `id`                 | `UUID`         | PK                        | â€”       | â€”                              |
-| `course_id`          | `UUID`         | FK â†’ courses.id, NOT NULL | â€”       | â€”                              |
-| `module_id`          | `UUID`         | FK â†’ modules.id, NULLABLE | â€”       | â€”                              |
-| `title`              | `VARCHAR(255)` | NOT NULL                  | â€”       | â€”                              |
-| `assessment_type`    | `VARCHAR(50)`  | NOT NULL                  | â€”       | quiz, midterm, final, practice |
-| `time_limit_minutes` | `INTEGER`      | NULLABLE                  | â€”       | Null = no limit                |
-| `max_attempts`       | `INTEGER`      | NOT NULL                  | `1`     | â€”                              |
-| `passing_score`      | `DECIMAL(5,2)` | NULLABLE                  | â€”       | â€”                              |
-| `shuffle_questions`  | `BOOLEAN`      | NOT NULL                  | `true`  | â€”                              |
+| `id`                 | `UUID`         | PK                        | —       | —                              |
+| `course_id`          | `UUID`         | FK â†’ courses.id, NOT NULL | —       | —                              |
+| `module_id`          | `UUID`         | FK â†’ modules.id, NULLABLE | —       | —                              |
+| `title`              | `VARCHAR(255)` | NOT NULL                  | —       | —                              |
+| `assessment_type`    | `VARCHAR(50)`  | NOT NULL                  | —       | quiz, midterm, final, practice |
+| `time_limit_minutes` | `INTEGER`      | NULLABLE                  | —       | Null = no limit                |
+| `max_attempts`       | `INTEGER`      | NOT NULL                  | `1`     | —                              |
+| `passing_score`      | `DECIMAL(5,2)` | NULLABLE                  | —       | —                              |
+| `shuffle_questions`  | `BOOLEAN`      | NOT NULL                  | `true`  | —                              |
 | `show_results`       | `BOOLEAN`      | NOT NULL                  | `true`  | Show correct answers after     |
-| `questions`          | `JSONB`        | NOT NULL                  | â€”       | Array of question objects      |
-| `created_at`         | `TIMESTAMPTZ`  | NOT NULL                  | `NOW()` | â€”                              |
+| `questions`          | `JSONB`        | NOT NULL                  | —       | Array of question objects      |
+| `created_at`         | `TIMESTAMPTZ`  | NOT NULL                  | `NOW()` | —                              |
 
 ### Table: `assessment_attempts`
 
 | Column               | Type           | Constraints                   | Default         | Description                               |
 | -------------------- | -------------- | ----------------------------- | --------------- | ----------------------------------------- |
-| `id`                 | `UUID`         | PK                            | â€”               | â€”                                         |
-| `assessment_id`      | `UUID`         | FK â†’ assessments.id, NOT NULL | â€”               | â€”                                         |
-| `student_id`         | `UUID`         | FK â†’ students.id, NOT NULL    | â€”               | â€”                                         |
-| `attempt_number`     | `INTEGER`      | NOT NULL                      | â€”               | â€”                                         |
+| `id`                 | `UUID`         | PK                            | —               | —                                         |
+| `assessment_id`      | `UUID`         | FK â†’ assessments.id, NOT NULL | —               | —                                         |
+| `student_id`         | `UUID`         | FK â†’ students.id, NOT NULL    | —               | —                                         |
+| `attempt_number`     | `INTEGER`      | NOT NULL                      | —               | —                                         |
 | `status`             | `VARCHAR(50)`  | NOT NULL                      | `'in_progress'` | in_progress, submitted, timed_out, graded |
-| `answers`            | `JSONB`        | NULLABLE                      | â€”               | Question_id â†’ answer                      |
-| `score`              | `DECIMAL(5,2)` | NULLABLE                      | â€”               | â€”                                         |
-| `started_at`         | `TIMESTAMPTZ`  | NOT NULL                      | â€”               | â€”                                         |
-| `submitted_at`       | `TIMESTAMPTZ`  | NULLABLE                      | â€”               | â€”                                         |
-| `time_spent_seconds` | `INTEGER`      | NOT NULL                      | `0`             | â€”                                         |
-| `created_at`         | `TIMESTAMPTZ`  | NOT NULL                      | `NOW()`         | â€”                                         |
+| `answers`            | `JSONB`        | NULLABLE                      | —               | Question_id â†’ answer                      |
+| `score`              | `DECIMAL(5,2)` | NULLABLE                      | —               | —                                         |
+| `started_at`         | `TIMESTAMPTZ`  | NOT NULL                      | —               | —                                         |
+| `submitted_at`       | `TIMESTAMPTZ`  | NULLABLE                      | —               | —                                         |
+| `time_spent_seconds` | `INTEGER`      | NOT NULL                      | `0`             | —                                         |
+| `created_at`         | `TIMESTAMPTZ`  | NOT NULL                      | `NOW()`         | —                                         |
 
 ### Table: `grades`
 
 | Column          | Type           | Constraints                | Default | Description                                    |
 | --------------- | -------------- | -------------------------- | ------- | ---------------------------------------------- |
-| `id`            | `UUID`         | PK                         | â€”       | â€”                                              |
-| `student_id`    | `UUID`         | FK â†’ students.id, NOT NULL | â€”       | â€”                                              |
-| `course_id`     | `UUID`         | FK â†’ courses.id, NOT NULL  | â€”       | â€”                                              |
-| `gradable_type` | `VARCHAR(50)`  | NOT NULL                   | â€”       | assignment, assessment, participation, project |
-| `gradable_id`   | `UUID`         | NOT NULL                   | â€”       | Polymorphic reference                          |
-| `score`         | `DECIMAL(5,2)` | NOT NULL                   | â€”       | 0-100                                          |
-| `max_score`     | `DECIMAL(5,2)` | NOT NULL                   | â€”       | â€”                                              |
-| `weight`        | `DECIMAL(5,4)` | NOT NULL                   | â€”       | â€”                                              |
-| `letter_grade`  | `VARCHAR(2)`   | NULLABLE                   | â€”       | â€”                                              |
-| `created_at`    | `TIMESTAMPTZ`  | NOT NULL                   | `NOW()` | â€”                                              |
+| `id`            | `UUID`         | PK                         | —       | —                                              |
+| `student_id`    | `UUID`         | FK â†’ students.id, NOT NULL | —       | —                                              |
+| `course_id`     | `UUID`         | FK â†’ courses.id, NOT NULL  | —       | —                                              |
+| `gradable_type` | `VARCHAR(50)`  | NOT NULL                   | —       | assignment, assessment, participation, project |
+| `gradable_id`   | `UUID`         | NOT NULL                   | —       | Polymorphic reference                          |
+| `score`         | `DECIMAL(5,2)` | NOT NULL                   | —       | 0-100                                          |
+| `max_score`     | `DECIMAL(5,2)` | NOT NULL                   | —       | —                                              |
+| `weight`        | `DECIMAL(5,4)` | NOT NULL                   | —       | —                                              |
+| `letter_grade`  | `VARCHAR(2)`   | NULLABLE                   | —       | —                                              |
+| `created_at`    | `TIMESTAMPTZ`  | NOT NULL                   | `NOW()` | —                                              |
 
 **Indexes:** UNIQUE(student_id, course_id, gradable_type, gradable_id)
 
@@ -851,29 +851,29 @@
 
 | Column        | Type           | Constraints                | Default | Description         |
 | ------------- | -------------- | -------------------------- | ------- | ------------------- |
-| `id`          | `UUID`         | PK                         | â€”       | â€”                   |
-| `student_id`  | `UUID`         | FK â†’ students.id, NOT NULL | â€”       | â€”                   |
-| `title`       | `VARCHAR(255)` | NOT NULL                   | â€”       | â€”                   |
-| `description` | `TEXT`         | NULLABLE                   | â€”       | â€”                   |
-| `project_url` | `VARCHAR(500)` | NULLABLE                   | â€”       | Live demo link      |
-| `github_url`  | `VARCHAR(500)` | NULLABLE                   | â€”       | Source code         |
-| `media_urls`  | `JSONB`        | NULLABLE                   | â€”       | Screenshots, videos |
-| `skills`      | `JSONB`        | NULLABLE                   | â€”       | Array of skill tags |
-| `sort_order`  | `INTEGER`      | NOT NULL                   | `0`     | â€”                   |
-| `is_public`   | `BOOLEAN`      | NOT NULL                   | `true`  | â€”                   |
-| `created_at`  | `TIMESTAMPTZ`  | NOT NULL                   | `NOW()` | â€”                   |
-| `updated_at`  | `TIMESTAMPTZ`  | NOT NULL                   | `NOW()` | â€”                   |
+| `id`          | `UUID`         | PK                         | —       | —                   |
+| `student_id`  | `UUID`         | FK â†’ students.id, NOT NULL | —       | —                   |
+| `title`       | `VARCHAR(255)` | NOT NULL                   | —       | —                   |
+| `description` | `TEXT`         | NULLABLE                   | —       | —                   |
+| `project_url` | `VARCHAR(500)` | NULLABLE                   | —       | Live demo link      |
+| `github_url`  | `VARCHAR(500)` | NULLABLE                   | —       | Source code         |
+| `media_urls`  | `JSONB`        | NULLABLE                   | —       | Screenshots, videos |
+| `skills`      | `JSONB`        | NULLABLE                   | —       | Array of skill tags |
+| `sort_order`  | `INTEGER`      | NOT NULL                   | `0`     | —                   |
+| `is_public`   | `BOOLEAN`      | NOT NULL                   | `true`  | —                   |
+| `created_at`  | `TIMESTAMPTZ`  | NOT NULL                   | `NOW()` | —                   |
+| `updated_at`  | `TIMESTAMPTZ`  | NOT NULL                   | `NOW()` | —                   |
 
 ### Table: `portfolio_skills`
 
 | Column        | Type           | Constraints                | Default | Description |
 | ------------- | -------------- | -------------------------- | ------- | ----------- |
-| `id`          | `UUID`         | PK                         | â€”       | â€”           |
-| `student_id`  | `UUID`         | FK â†’ students.id, NOT NULL | â€”       | â€”           |
-| `name`        | `VARCHAR(100)` | NOT NULL                   | â€”       | â€”           |
+| `id`          | `UUID`         | PK                         | —       | —           |
+| `student_id`  | `UUID`         | FK â†’ students.id, NOT NULL | —       | —           |
+| `name`        | `VARCHAR(100)` | NOT NULL                   | —       | —           |
 | `proficiency` | `INTEGER`      | NOT NULL                   | `3`     | 1-5         |
-| `sort_order`  | `INTEGER`      | NOT NULL                   | `0`     | â€”           |
-| `created_at`  | `TIMESTAMPTZ`  | NOT NULL                   | `NOW()` | â€”           |
+| `sort_order`  | `INTEGER`      | NOT NULL                   | `0`     | —           |
+| `created_at`  | `TIMESTAMPTZ`  | NOT NULL                   | `NOW()` | —           |
 
 **Indexes:** UNIQUE(student_id, name)
 
@@ -881,106 +881,106 @@
 
 | Column             | Type           | Constraints                | Default | Description                                             |
 | ------------------ | -------------- | -------------------------- | ------- | ------------------------------------------------------- |
-| `id`               | `UUID`         | PK                         | â€”       | â€”                                                       |
-| `student_id`       | `UUID`         | FK â†’ students.id, NOT NULL | â€”       | â€”                                                       |
-| `type`             | `VARCHAR(50)`  | NOT NULL                   | â€”       | course_completion, program_completion, micro_credential |
-| `name`             | `VARCHAR(255)` | NOT NULL                   | â€”       | "Python for Cybersecurity"                              |
-| `credential_id`    | `VARCHAR(100)` | UNIQUE, NOT NULL           | â€”       | CEA-CERT-YYYY-NNNNN                                     |
-| `issued_at`        | `TIMESTAMPTZ`  | NOT NULL                   | â€”       | â€”                                                       |
-| `expires_at`       | `TIMESTAMPTZ`  | NULLABLE                   | â€”       | If applicable                                           |
-| `pdf_url`          | `VARCHAR(500)` | NOT NULL                   | â€”       | Generated PDF in R2                                     |
-| `verification_url` | `VARCHAR(500)` | NOT NULL                   | â€”       | Public verify page                                      |
-| `metadata`         | `JSONB`        | NULLABLE                   | â€”       | Skills, scores, etc.                                    |
-| `created_at`       | `TIMESTAMPTZ`  | NOT NULL                   | `NOW()` | â€”                                                       |
+| `id`               | `UUID`         | PK                         | —       | —                                                       |
+| `student_id`       | `UUID`         | FK â†’ students.id, NOT NULL | —       | —                                                       |
+| `type`             | `VARCHAR(50)`  | NOT NULL                   | —       | course_completion, program_completion, micro_credential |
+| `name`             | `VARCHAR(255)` | NOT NULL                   | —       | "Python for Cybersecurity"                              |
+| `credential_id`    | `VARCHAR(100)` | UNIQUE, NOT NULL           | —       | CEA-CERT-YYYY-NNNNN                                     |
+| `issued_at`        | `TIMESTAMPTZ`  | NOT NULL                   | —       | —                                                       |
+| `expires_at`       | `TIMESTAMPTZ`  | NULLABLE                   | —       | If applicable                                           |
+| `pdf_url`          | `VARCHAR(500)` | NOT NULL                   | —       | Generated PDF in R2                                     |
+| `verification_url` | `VARCHAR(500)` | NOT NULL                   | —       | Public verify page                                      |
+| `metadata`         | `JSONB`        | NULLABLE                   | —       | Skills, scores, etc.                                    |
+| `created_at`       | `TIMESTAMPTZ`  | NOT NULL                   | `NOW()` | —                                                       |
 
 ### Table: `marketplace_items`
 
 | Column          | Type            | Constraints | Default | Description                                 |
 | --------------- | --------------- | ----------- | ------- | ------------------------------------------- |
-| `id`            | `UUID`          | PK          | â€”       | â€”                                           |
-| `title`         | `VARCHAR(255)`  | NOT NULL    | â€”       | â€”                                           |
-| `description`   | `TEXT`          | NOT NULL    | â€”       | â€”                                           |
-| `price`         | `DECIMAL(10,2)` | NOT NULL    | â€”       | 0 = free                                    |
-| `currency`      | `VARCHAR(3)`    | NOT NULL    | `'USD'` | â€”                                           |
-| `category`      | `VARCHAR(100)`  | NOT NULL    | â€”       | resource, tool, mentoring, template, course |
-| `thumbnail_url` | `VARCHAR(500)`  | NULLABLE    | â€”       | â€”                                           |
-| `file_url`      | `VARCHAR(500)`  | NULLABLE    | â€”       | Digital download                            |
-| `is_featured`   | `BOOLEAN`       | NOT NULL    | `false` | â€”                                           |
-| `active`        | `BOOLEAN`       | NOT NULL    | `true`  | â€”                                           |
-| `created_at`    | `TIMESTAMPTZ`   | NOT NULL    | `NOW()` | â€”                                           |
+| `id`            | `UUID`          | PK          | —       | —                                           |
+| `title`         | `VARCHAR(255)`  | NOT NULL    | —       | —                                           |
+| `description`   | `TEXT`          | NOT NULL    | —       | —                                           |
+| `price`         | `DECIMAL(10,2)` | NOT NULL    | —       | 0 = free                                    |
+| `currency`      | `VARCHAR(3)`    | NOT NULL    | `'USD'` | —                                           |
+| `category`      | `VARCHAR(100)`  | NOT NULL    | —       | resource, tool, mentoring, template, course |
+| `thumbnail_url` | `VARCHAR(500)`  | NULLABLE    | —       | —                                           |
+| `file_url`      | `VARCHAR(500)`  | NULLABLE    | —       | Digital download                            |
+| `is_featured`   | `BOOLEAN`       | NOT NULL    | `false` | —                                           |
+| `active`        | `BOOLEAN`       | NOT NULL    | `true`  | —                                           |
+| `created_at`    | `TIMESTAMPTZ`   | NOT NULL    | `NOW()` | —                                           |
 
 ### Table: `purchases`
 
 | Column                     | Type            | Constraints                         | Default       | Description                  |
 | -------------------------- | --------------- | ----------------------------------- | ------------- | ---------------------------- |
-| `id`                       | `UUID`          | PK                                  | â€”             | â€”                            |
-| `student_id`               | `UUID`          | FK â†’ students.id, NOT NULL          | â€”             | â€”                            |
-| `item_id`                  | `UUID`          | FK â†’ marketplace_items.id, NOT NULL | â€”             | â€”                            |
-| `stripe_payment_intent_id` | `VARCHAR(255)`  | NOT NULL                            | â€”             | â€”                            |
-| `amount`                   | `DECIMAL(10,2)` | NOT NULL                            | â€”             | â€”                            |
+| `id`                       | `UUID`          | PK                                  | —             | —                            |
+| `student_id`               | `UUID`          | FK â†’ students.id, NOT NULL          | —             | —                            |
+| `item_id`                  | `UUID`          | FK â†’ marketplace_items.id, NOT NULL | —             | —                            |
+| `stripe_payment_intent_id` | `VARCHAR(255)`  | NOT NULL                            | —             | —                            |
+| `amount`                   | `DECIMAL(10,2)` | NOT NULL                            | —             | —                            |
 | `status`                   | `VARCHAR(50)`   | NOT NULL                            | `'completed'` | completed, refunded, pending |
-| `purchased_at`             | `TIMESTAMPTZ`   | NOT NULL                            | `NOW()`       | â€”                            |
+| `purchased_at`             | `TIMESTAMPTZ`   | NOT NULL                            | `NOW()`       | —                            |
 
 ### Table: `forum_posts`
 
 | Column            | Type           | Constraints             | Default | Description                                      |
 | ----------------- | -------------- | ----------------------- | ------- | ------------------------------------------------ |
-| `id`              | `UUID`         | PK                      | â€”       | â€”                                                |
-| `author_id`       | `UUID`         | FK â†’ users.id, NOT NULL | â€”       | â€”                                                |
-| `category`        | `VARCHAR(50)`  | NOT NULL                | â€”       | qa, study_groups, announcements, off_topic, tips |
-| `title`           | `VARCHAR(255)` | NOT NULL                | â€”       | â€”                                                |
-| `content`         | `TEXT`         | NOT NULL                | â€”       | Rich text                                        |
-| `is_pinned`       | `BOOLEAN`      | NOT NULL                | `false` | â€”                                                |
-| `is_announcement` | `BOOLEAN`      | NOT NULL                | `false` | â€”                                                |
-| `upvote_count`    | `INTEGER`      | NOT NULL                | `0`     | â€”                                                |
-| `reply_count`     | `INTEGER`      | NOT NULL                | `0`     | â€”                                                |
-| `view_count`      | `INTEGER`      | NOT NULL                | `0`     | â€”                                                |
-| `created_at`      | `TIMESTAMPTZ`  | NOT NULL                | `NOW()` | â€”                                                |
-| `updated_at`      | `TIMESTAMPTZ`  | NOT NULL                | `NOW()` | â€”                                                |
+| `id`              | `UUID`         | PK                      | —       | —                                                |
+| `author_id`       | `UUID`         | FK â†’ users.id, NOT NULL | —       | —                                                |
+| `category`        | `VARCHAR(50)`  | NOT NULL                | —       | qa, study_groups, announcements, off_topic, tips |
+| `title`           | `VARCHAR(255)` | NOT NULL                | —       | —                                                |
+| `content`         | `TEXT`         | NOT NULL                | —       | Rich text                                        |
+| `is_pinned`       | `BOOLEAN`      | NOT NULL                | `false` | —                                                |
+| `is_announcement` | `BOOLEAN`      | NOT NULL                | `false` | —                                                |
+| `upvote_count`    | `INTEGER`      | NOT NULL                | `0`     | —                                                |
+| `reply_count`     | `INTEGER`      | NOT NULL                | `0`     | —                                                |
+| `view_count`      | `INTEGER`      | NOT NULL                | `0`     | —                                                |
+| `created_at`      | `TIMESTAMPTZ`  | NOT NULL                | `NOW()` | —                                                |
+| `updated_at`      | `TIMESTAMPTZ`  | NOT NULL                | `NOW()` | —                                                |
 
 ### Table: `forum_replies`
 
 | Column         | Type          | Constraints                     | Default | Description      |
 | -------------- | ------------- | ------------------------------- | ------- | ---------------- |
-| `id`           | `UUID`        | PK                              | â€”       | â€”                |
-| `post_id`      | `UUID`        | FK â†’ forum_posts.id, NOT NULL   | â€”       | â€”                |
-| `parent_id`    | `UUID`        | FK â†’ forum_replies.id, NULLABLE | â€”       | Nested threading |
-| `author_id`    | `UUID`        | FK â†’ users.id, NOT NULL         | â€”       | â€”                |
-| `content`      | `TEXT`        | NOT NULL                        | â€”       | â€”                |
-| `upvote_count` | `INTEGER`     | NOT NULL                        | `0`     | â€”                |
+| `id`           | `UUID`        | PK                              | —       | —                |
+| `post_id`      | `UUID`        | FK â†’ forum_posts.id, NOT NULL   | —       | —                |
+| `parent_id`    | `UUID`        | FK â†’ forum_replies.id, NULLABLE | —       | Nested threading |
+| `author_id`    | `UUID`        | FK â†’ users.id, NOT NULL         | —       | —                |
+| `content`      | `TEXT`        | NOT NULL                        | —       | —                |
+| `upvote_count` | `INTEGER`     | NOT NULL                        | `0`     | —                |
 | `is_solution`  | `BOOLEAN`     | NOT NULL                        | `false` | Marked as answer |
-| `created_at`   | `TIMESTAMPTZ` | NOT NULL                        | `NOW()` | â€”                |
+| `created_at`   | `TIMESTAMPTZ` | NOT NULL                        | `NOW()` | —                |
 
 ### Table: `messages`
 
 | Column            | Type           | Constraints                     | Default  | Description             |
 | ----------------- | -------------- | ------------------------------- | -------- | ----------------------- |
-| `id`              | `UUID`         | PK                              | â€”        | â€”                       |
-| `sender_id`       | `UUID`         | FK â†’ users.id, NOT NULL         | â€”        | â€”                       |
-| `conversation_id` | `UUID`         | FK â†’ conversations.id, NOT NULL | â€”        | â€”                       |
-| `content`         | `TEXT`         | NOT NULL                        | â€”        | â€”                       |
+| `id`              | `UUID`         | PK                              | —        | —                       |
+| `sender_id`       | `UUID`         | FK â†’ users.id, NOT NULL         | —        | —                       |
+| `conversation_id` | `UUID`         | FK â†’ conversations.id, NOT NULL | —        | —                       |
+| `content`         | `TEXT`         | NOT NULL                        | —        | —                       |
 | `content_type`    | `VARCHAR(50)`  | NOT NULL                        | `'text'` | text, image, file, code |
-| `file_url`        | `VARCHAR(500)` | NULLABLE                        | â€”        | â€”                       |
-| `read_at`         | `TIMESTAMPTZ`  | NULLABLE                        | â€”        | â€”                       |
-| `created_at`      | `TIMESTAMPTZ`  | NOT NULL                        | `NOW()`  | â€”                       |
+| `file_url`        | `VARCHAR(500)` | NULLABLE                        | —        | —                       |
+| `read_at`         | `TIMESTAMPTZ`  | NULLABLE                        | —        | —                       |
+| `created_at`      | `TIMESTAMPTZ`  | NOT NULL                        | `NOW()`  | —                       |
 
 ### Table: `conversations`
 
 | Column       | Type           | Constraints | Default    | Description                |
 | ------------ | -------------- | ----------- | ---------- | -------------------------- |
-| `id`         | `UUID`         | PK          | â€”          | â€”                          |
+| `id`         | `UUID`         | PK          | —          | —                          |
 | `type`       | `VARCHAR(50)`  | NOT NULL    | `'direct'` | direct, group, study_group |
-| `title`      | `VARCHAR(255)` | NULLABLE    | â€”          | For group chats            |
-| `created_at` | `TIMESTAMPTZ`  | NOT NULL    | `NOW()`    | â€”                          |
+| `title`      | `VARCHAR(255)` | NULLABLE    | —          | For group chats            |
+| `created_at` | `TIMESTAMPTZ`  | NOT NULL    | `NOW()`    | —                          |
 
 ### Table: `conversation_participants`
 
 | Column            | Type          | Constraints                     | Default | Description |
 | ----------------- | ------------- | ------------------------------- | ------- | ----------- |
-| `conversation_id` | `UUID`        | FK â†’ conversations.id, NOT NULL | â€”       | â€”           |
-| `user_id`         | `UUID`        | FK â†’ users.id, NOT NULL         | â€”       | â€”           |
-| `last_read_at`    | `TIMESTAMPTZ` | NOT NULL                        | `NOW()` | â€”           |
-| `joined_at`       | `TIMESTAMPTZ` | NOT NULL                        | `NOW()` | â€”           |
+| `conversation_id` | `UUID`        | FK â†’ conversations.id, NOT NULL | —       | —           |
+| `user_id`         | `UUID`        | FK â†’ users.id, NOT NULL         | —       | —           |
+| `last_read_at`    | `TIMESTAMPTZ` | NOT NULL                        | `NOW()` | —           |
+| `joined_at`       | `TIMESTAMPTZ` | NOT NULL                        | `NOW()` | —           |
 
 **PK:** (conversation_id, user_id)
 
@@ -988,15 +988,15 @@
 
 | Column                  | Type           | Constraints                   | Default | Description                    |
 | ----------------------- | -------------- | ----------------------------- | ------- | ------------------------------ |
-| `id`                    | `UUID`         | PK                            | â€”       | â€”                              |
-| `student_id`            | `UUID`         | FK â†’ students.id, NOT NULL    | â€”       | â€”                              |
-| `course_id`             | `UUID`         | FK â†’ courses.id, NOT NULL     | â€”       | â€”                              |
-| `session_date`          | `DATE`         | NOT NULL                      | â€”       | â€”                              |
-| `status`                | `VARCHAR(50)`  | NOT NULL                      | â€”       | present, absent, excused, late |
-| `excused_reason`        | `TEXT`         | NULLABLE                      | â€”       | â€”                              |
-| `excuse_attachment_url` | `VARCHAR(500)` | NULLABLE                      | â€”       | â€”                              |
-| `marked_by`             | `UUID`         | FK â†’ instructors.id, NOT NULL | â€”       | â€”                              |
-| `created_at`            | `TIMESTAMPTZ`  | NOT NULL                      | `NOW()` | â€”                              |
+| `id`                    | `UUID`         | PK                            | —       | —                              |
+| `student_id`            | `UUID`         | FK â†’ students.id, NOT NULL    | —       | —                              |
+| `course_id`             | `UUID`         | FK â†’ courses.id, NOT NULL     | —       | —                              |
+| `session_date`          | `DATE`         | NOT NULL                      | —       | —                              |
+| `status`                | `VARCHAR(50)`  | NOT NULL                      | —       | present, absent, excused, late |
+| `excused_reason`        | `TEXT`         | NULLABLE                      | —       | —                              |
+| `excuse_attachment_url` | `VARCHAR(500)` | NULLABLE                      | —       | —                              |
+| `marked_by`             | `UUID`         | FK â†’ instructors.id, NOT NULL | —       | —                              |
+| `created_at`            | `TIMESTAMPTZ`  | NOT NULL                      | `NOW()` | —                              |
 
 **Indexes:** UNIQUE(student_id, course_id, session_date)
 
@@ -1004,60 +1004,60 @@
 
 | Column        | Type           | Constraints                | Default | Description                                                   |
 | ------------- | -------------- | -------------------------- | ------- | ------------------------------------------------------------- |
-| `id`          | `UUID`         | PK                         | â€”       | â€”                                                             |
-| `student_id`  | `UUID`         | FK â†’ students.id, NULLABLE | â€”       | Null = global event                                           |
-| `course_id`   | `UUID`         | FK â†’ courses.id, NULLABLE  | â€”       | â€”                                                             |
-| `title`       | `VARCHAR(255)` | NOT NULL                   | â€”       | â€”                                                             |
-| `description` | `TEXT`         | NULLABLE                   | â€”       | â€”                                                             |
-| `event_type`  | `VARCHAR(50)`  | NOT NULL                   | â€”       | class, office_hours, deadline, exam, study_group, appointment |
-| `start_at`    | `TIMESTAMPTZ`  | NOT NULL                   | â€”       | â€”                                                             |
-| `end_at`      | `TIMESTAMPTZ`  | NOT NULL                   | â€”       | â€”                                                             |
-| `all_day`     | `BOOLEAN`      | NOT NULL                   | `false` | â€”                                                             |
-| `location`    | `VARCHAR(255)` | NULLABLE                   | â€”       | Room or virtual link                                          |
-| `meeting_url` | `VARCHAR(500)` | NULLABLE                   | â€”       | Zoom/Teams link                                               |
-| `created_at`  | `TIMESTAMPTZ`  | NOT NULL                   | `NOW()` | â€”                                                             |
+| `id`          | `UUID`         | PK                         | —       | —                                                             |
+| `student_id`  | `UUID`         | FK â†’ students.id, NULLABLE | —       | Null = global event                                           |
+| `course_id`   | `UUID`         | FK â†’ courses.id, NULLABLE  | —       | —                                                             |
+| `title`       | `VARCHAR(255)` | NOT NULL                   | —       | —                                                             |
+| `description` | `TEXT`         | NULLABLE                   | —       | —                                                             |
+| `event_type`  | `VARCHAR(50)`  | NOT NULL                   | —       | class, office_hours, deadline, exam, study_group, appointment |
+| `start_at`    | `TIMESTAMPTZ`  | NOT NULL                   | —       | —                                                             |
+| `end_at`      | `TIMESTAMPTZ`  | NOT NULL                   | —       | —                                                             |
+| `all_day`     | `BOOLEAN`      | NOT NULL                   | `false` | —                                                             |
+| `location`    | `VARCHAR(255)` | NULLABLE                   | —       | Room or virtual link                                          |
+| `meeting_url` | `VARCHAR(500)` | NULLABLE                   | —       | Zoom/Teams link                                               |
+| `created_at`  | `TIMESTAMPTZ`  | NOT NULL                   | `NOW()` | —                                                             |
 
 ### Table: `invoices`
 
 | Column              | Type            | Constraints                | Default     | Description                                 |
 | ------------------- | --------------- | -------------------------- | ----------- | ------------------------------------------- |
-| `id`                | `UUID`          | PK                         | â€”           | â€”                                           |
-| `student_id`        | `UUID`          | FK â†’ students.id, NOT NULL | â€”           | â€”                                           |
-| `invoice_number`    | `VARCHAR(50)`   | UNIQUE, NOT NULL           | â€”           | INV-YYYY-NNNNN                              |
-| `description`       | `VARCHAR(500)`  | NOT NULL                   | â€”           | â€”                                           |
-| `amount`            | `DECIMAL(10,2)` | NOT NULL                   | â€”           | â€”                                           |
-| `currency`          | `VARCHAR(3)`    | NOT NULL                   | `'USD'`     | â€”                                           |
+| `id`                | `UUID`          | PK                         | —           | —                                           |
+| `student_id`        | `UUID`          | FK â†’ students.id, NOT NULL | —           | —                                           |
+| `invoice_number`    | `VARCHAR(50)`   | UNIQUE, NOT NULL           | —           | INV-YYYY-NNNNN                              |
+| `description`       | `VARCHAR(500)`  | NOT NULL                   | —           | —                                           |
+| `amount`            | `DECIMAL(10,2)` | NOT NULL                   | —           | —                                           |
+| `currency`          | `VARCHAR(3)`    | NOT NULL                   | `'USD'`     | —                                           |
 | `status`            | `VARCHAR(50)`   | NOT NULL                   | `'pending'` | pending, paid, overdue, cancelled, refunded |
-| `due_date`          | `DATE`          | NOT NULL                   | â€”           | â€”                                           |
-| `paid_at`           | `TIMESTAMPTZ`   | NULLABLE                   | â€”           | â€”                                           |
-| `stripe_invoice_id` | `VARCHAR(255)`  | NULLABLE                   | â€”           | â€”                                           |
-| `pdf_url`           | `VARCHAR(500)`  | NULLABLE                   | â€”           | â€”                                           |
-| `created_at`        | `TIMESTAMPTZ`   | NOT NULL                   | `NOW()`     | â€”                                           |
+| `due_date`          | `DATE`          | NOT NULL                   | —           | —                                           |
+| `paid_at`           | `TIMESTAMPTZ`   | NULLABLE                   | —           | —                                           |
+| `stripe_invoice_id` | `VARCHAR(255)`  | NULLABLE                   | —           | —                                           |
+| `pdf_url`           | `VARCHAR(500)`  | NULLABLE                   | —           | —                                           |
+| `created_at`        | `TIMESTAMPTZ`   | NOT NULL                   | `NOW()`     | —                                           |
 
 ### Table: `payments`
 
 | Column                     | Type            | Constraints                | Default | Description                 |
 | -------------------------- | --------------- | -------------------------- | ------- | --------------------------- |
-| `id`                       | `UUID`          | PK                         | â€”       | â€”                           |
-| `invoice_id`               | `UUID`          | FK â†’ invoices.id, NOT NULL | â€”       | â€”                           |
-| `student_id`               | `UUID`          | FK â†’ students.id, NOT NULL | â€”       | â€”                           |
-| `amount`                   | `DECIMAL(10,2)` | NOT NULL                   | â€”       | â€”                           |
-| `stripe_payment_intent_id` | `VARCHAR(255)`  | NOT NULL                   | â€”       | â€”                           |
-| `stripe_payment_method`    | `VARCHAR(50)`   | NULLABLE                   | â€”       | card, bank_transfer         |
-| `status`                   | `VARCHAR(50)`   | NOT NULL                   | â€”       | succeeded, failed, refunded |
-| `paid_at`                  | `TIMESTAMPTZ`   | NOT NULL                   | `NOW()` | â€”                           |
+| `id`                       | `UUID`          | PK                         | —       | —                           |
+| `invoice_id`               | `UUID`          | FK â†’ invoices.id, NOT NULL | —       | —                           |
+| `student_id`               | `UUID`          | FK â†’ students.id, NOT NULL | —       | —                           |
+| `amount`                   | `DECIMAL(10,2)` | NOT NULL                   | —       | —                           |
+| `stripe_payment_intent_id` | `VARCHAR(255)`  | NOT NULL                   | —       | —                           |
+| `stripe_payment_method`    | `VARCHAR(50)`   | NULLABLE                   | —       | card, bank_transfer         |
+| `status`                   | `VARCHAR(50)`   | NOT NULL                   | —       | succeeded, failed, refunded |
+| `paid_at`                  | `TIMESTAMPTZ`   | NOT NULL                   | `NOW()` | —                           |
 
 ### Table: `study_groups`
 
 | Column        | Type           | Constraints               | Default | Description |
 | ------------- | -------------- | ------------------------- | ------- | ----------- |
-| `id`          | `UUID`         | PK                        | â€”       | â€”           |
-| `name`        | `VARCHAR(255)` | NOT NULL                  | â€”       | â€”           |
-| `course_id`   | `UUID`         | FK â†’ courses.id, NULLABLE | â€”       | â€”           |
-| `created_by`  | `UUID`         | FK â†’ users.id, NOT NULL   | â€”       | â€”           |
-| `max_members` | `INTEGER`      | NOT NULL                  | `10`    | â€”           |
-| `description` | `TEXT`         | NULLABLE                  | â€”       | â€”           |
-| `created_at`  | `TIMESTAMPTZ`  | NOT NULL                  | `NOW()` | â€”           |
+| `id`          | `UUID`         | PK                        | —       | —           |
+| `name`        | `VARCHAR(255)` | NOT NULL                  | —       | —           |
+| `course_id`   | `UUID`         | FK â†’ courses.id, NULLABLE | —       | —           |
+| `created_by`  | `UUID`         | FK â†’ users.id, NOT NULL   | —       | —           |
+| `max_members` | `INTEGER`      | NOT NULL                  | `10`    | —           |
+| `description` | `TEXT`         | NULLABLE                  | —       | —           |
+| `created_at`  | `TIMESTAMPTZ`  | NOT NULL                  | `NOW()` | —           |
 
 ---
 
@@ -1441,11 +1441,11 @@ interface CreatePostRequest {
 
 ### `GET /api/student/conversations`
 
-**Auth:** Required (student) â€” returns list of conversations with unread counts
+**Auth:** Required (student) — returns list of conversations with unread counts
 
 ### `POST /api/student/messages`
 
-**Auth:** Required (student) â€” send message
+**Auth:** Required (student) — send message
 
 **Request:**
 
@@ -1848,7 +1848,7 @@ Step 1: Student sees pending assignment in dashboard â†’ clicks "Start â�
 Step 2: Assignment instructions loaded
   â†’ Student reads "Analyze packet capture with Wireshark"
   â†’ Downloads assignment files (PCAP + template)
-  â†’ Views rubric: 4 criteria Ã— 25 points = 100 total
+  â†’ Views rubric: 4 criteria à— 25 points = 100 total
 
 Step 3: Student works offline, returns to submit
   â†’ Drags analysis_report.pdf and capture_analysis.pcap to upload zone
@@ -2584,5 +2584,5 @@ export const StudyGroupSchema = z.object({
 
 ---
 
-_End of Current Student Actor Plan â€” 02_
+_End of Current Student Actor Plan — 02_
 

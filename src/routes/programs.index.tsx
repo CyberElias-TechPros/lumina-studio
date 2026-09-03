@@ -18,7 +18,7 @@ export const Route = createFileRoute("/programs/")({
       description:
         "Browse cohort programs in software development, cybersecurity, cloud, data & AI, design, marketing, networking and mobile — from scratch to advanced.",
       path: "/programs",
-      image: "https://cea.ng/og-programs.svg",
+      image: "https://cea.ng/og-programs.png",
     }),
   component: Programs,
 });

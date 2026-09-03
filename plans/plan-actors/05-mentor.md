@@ -8,27 +8,27 @@
 
 **Mentor Types:**
 
-1. **Career Mentor** â€” Industry professional focused on job readiness, resume review, interview prep, networking
-2. **Academic Mentor** â€” Provides supplemental academic support, study strategies, course selection advice
-3. **Peer Mentor** â€” Senior student or recent graduate helping new students navigate the program
-4. **Alumni Mentor** â€” Graduate of the academy giving back through career guidance
-5. **Industry Mentor** â€” External professional from partner company providing industry insights
+1. **Career Mentor** — Industry professional focused on job readiness, resume review, interview prep, networking
+2. **Academic Mentor** — Provides supplemental academic support, study strategies, course selection advice
+3. **Peer Mentor** — Senior student or recent graduate helping new students navigate the program
+4. **Alumni Mentor** — Graduate of the academy giving back through career guidance
+5. **Industry Mentor** — External professional from partner company providing industry insights
 
 **Mentor States:**
 
-1. **Pending Onboarding** â€” Profile created, background check pending
-2. **Active** â€” Available for student assignments
-3. **At Capacity** â€” Max mentee load reached
-4. **On Break** â€” Temporarily unavailable
-5. **Inactive** â€” No longer mentoring
+1. **Pending Onboarding** — Profile created, background check pending
+2. **Active** — Available for student assignments
+3. **At Capacity** — Max mentee load reached
+4. **On Break** — Temporarily unavailable
+5. **Inactive** — No longer mentoring
 
 **Mentorship Relationship States:**
 
-1. **Requested** â€” Student requested, pending mentor approval
-2. **Active** â€” Mentor-student relationship active
-3. **Paused** â€” Temporary hiatus
-4. **Completed** â€” Goals achieved, relationship ended successfully
-5. **Terminated** â€” Ended early by either party or admin
+1. **Requested** — Student requested, pending mentor approval
+2. **Active** — Mentor-student relationship active
+3. **Paused** — Temporary hiatus
+4. **Completed** — Goals achieved, relationship ended successfully
+5. **Terminated** — Ended early by either party or admin
 
 ---
 
@@ -70,14 +70,14 @@
 
 ### Screen 3.1: Mentor Dashboard (`/mentor/dashboard`)
 
-**Purpose:** Central hub â€” upcoming sessions, mentee overview, pending requests, recent activity.
+**Purpose:** Central hub — upcoming sessions, mentee overview, pending requests, recent activity.
 
 **Wireframe Layout:**
 
 ```
 â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
 â”‚  Mentor Hub                                                  [Profile]â”‚
-â”‚  Welcome, Sarah Chen â€” Career Mentor                        [Settings]â”‚
+â”‚  Welcome, Sarah Chen — Career Mentor                        [Settings]â”‚
 â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
 â”‚  My Mentees (8)  â”‚  Upcoming Sessions   â”‚  Pending Requests (2)     â”‚
 â”‚  â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”  â”‚  â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”  â”‚  â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”   â”‚
@@ -101,19 +101,19 @@
 â”‚  â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”´â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”´â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”´â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”´â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”´â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜  â”‚
 â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
 â”‚  Recent Activity                                                        â”‚
-â”‚  â— Reviewed Alex's resume â€” 2h ago                                   â”‚
-â”‚  â— Completed session with Jane Doe â€” Yesterday                        â”‚
-â”‚  â— Sent career resources to John Smith â€” Yesterday                    â”‚
-â”‚  â— Approved mentorship request from Mike Brown â€” 2 days ago           â”‚
+â”‚  â— Reviewed Alex's resume — 2h ago                                   â”‚
+â”‚  â— Completed session with Jane Doe — Yesterday                        â”‚
+â”‚  â— Sent career resources to John Smith — Yesterday                    â”‚
+â”‚  â— Approved mentorship request from Mike Brown — 2 days ago           â”‚
 â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
 ```
 
 **Data Sources:**
 
-- `GET /api/mentor/dashboard` â€” aggregated dashboard data
-- `GET /api/mentor/mentees` â€” mentee list with readiness scores
-- `GET /api/mentor/sessions?upcoming=true` â€” upcoming sessions
-- `GET /api/mentor/requests/pending` â€” pending mentorship requests
+- `GET /api/mentor/dashboard` — aggregated dashboard data
+- `GET /api/mentor/mentees` — mentee list with readiness scores
+- `GET /api/mentor/sessions?upcoming=true` — upcoming sessions
+- `GET /api/mentor/requests/pending` — pending mentorship requests
 
 **States:**
 
@@ -138,7 +138,7 @@
 â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
 â”‚  Profile Card                                                          â”‚
 â”‚  â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”â”‚
-â”‚  â”‚ [Avatar] Alex Johnson â€” Cybersecurity Fundamentals              â”‚â”‚
+â”‚  â”‚ [Avatar] Alex Johnson — Cybersecurity Fundamentals              â”‚â”‚
 â”‚  â”‚ Student #: CEA-STU-2026-00421 | Term: Fall 2026                â”‚â”‚
 â”‚  â”‚ Program Progress: 65% | GPA: 3.72                              â”‚â”‚
 â”‚  â”‚ Career Goal: "Security Engineer at a FAANG company"            â”‚â”‚
@@ -174,7 +174,7 @@
 â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
 ```
 
-**API:** `GET /api/mentor/mentees/:id` â€” full mentee profile with readiness, goals, sessions
+**API:** `GET /api/mentor/mentees/:id` — full mentee profile with readiness, goals, sessions
 
 **Sub-tabs:** Overview | Goals | Sessions | Portfolio | Career Track | Messages | Notes
 
@@ -197,9 +197,9 @@
 â”‚  Session Hub                                             [+ New]    â”‚
 â”‚  [Upcoming] [Past] [Cancelled] [All]                               â”‚
 â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
-â”‚  Today â€” Nov 1, 2026                                                  â”‚
+â”‚  Today — Nov 1, 2026                                                  â”‚
 â”‚  â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”  â”‚
-â”‚  â”‚ â° 3:00 PM â€” Alex Johnson â€” Career Roadmap (45 min)       â”‚  â”‚
+â”‚  â”‚ â° 3:00 PM — Alex Johnson — Career Roadmap (45 min)       â”‚  â”‚
 â”‚  â”‚ ðŸ“ Virtual: [Zoom Link]  [Join]  [Reschedule]  [Cancel]   â”‚  â”‚
 â”‚  â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤  â”‚
 â”‚  â”‚ ðŸ“ Prep notes: "Review Alex's updated resume, discuss      â”‚  â”‚
@@ -207,16 +207,16 @@
 â”‚  â”‚    companies"                                               â”‚  â”‚
 â”‚  â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜  â”‚
 â”‚                                                                       â”‚
-â”‚  Tomorrow â€” Nov 2, 2026                                                â”‚
+â”‚  Tomorrow — Nov 2, 2026                                                â”‚
 â”‚  â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”  â”‚
-â”‚  â”‚ â° 10:00 AM â€” Jane Doe â€” Mock Interview (60 min)          â”‚  â”‚
+â”‚  â”‚ â° 10:00 AM — Jane Doe — Mock Interview (60 min)          â”‚  â”‚
 â”‚  â”‚ ðŸ“ In-person: Room 204                                      â”‚  â”‚
 â”‚  â”‚ [Prepare] [Reschedule] [Cancel]                              â”‚  â”‚
 â”‚  â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜  â”‚
 â”‚                                                                       â”‚
 â”‚  Nov 5, 2026                                                          â”‚
 â”‚  â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”  â”‚
-â”‚  â”‚ â° 2:00 PM â€” John Smith â€” Portfolio Review (30 min)        â”‚  â”‚
+â”‚  â”‚ â° 2:00 PM — John Smith — Portfolio Review (30 min)        â”‚  â”‚
 â”‚  â”‚ ðŸ“ Virtual: [Zoom Link]                                      â”‚  â”‚
 â”‚  â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜  â”‚
 â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
@@ -278,13 +278,13 @@
 
 ### Screen 3.4: Portfolio Reviewer (`/mentor/mentees/[id]/portfolio`)
 
-**Purpose:** Review and provide feedback on a mentee's portfolio â€” projects, skills, certifications, experience.
+**Purpose:** Review and provide feedback on a mentee's portfolio — projects, skills, certifications, experience.
 
 **Wireframe Layout:**
 
 ```
 â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
-â”‚  â† Alex Johnson â€” Portfolio                                         â”‚
+â”‚  â† Alex Johnson — Portfolio                                         â”‚
 â”‚  Portfolio Review                                        [Export]    â”‚
 â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
 â”‚  Public URL: cea.ng/portfolio/alex-johnson                     â”‚
@@ -293,27 +293,27 @@
 â”‚  Sections Feedback                                                     â”‚
 â”‚  â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”  â”‚
 â”‚  â”‚ Profile Section                                          âœ… â”‚  â”‚
-â”‚  â”‚ Bio: "Cybersecurity student..." â€” Good, add more specifics â”‚  â”‚
+â”‚  â”‚ Bio: "Cybersecurity student..." — Good, add more specifics â”‚  â”‚
 â”‚  â”‚ Avatar: âœ“ | Contact: âœ“ | Social Links: âœ“                  â”‚  â”‚
 â”‚  â”‚ [Approve] [Request Changes] [Add Comment]                  â”‚  â”‚
 â”‚  â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤  â”‚
 â”‚  â”‚ Skills Section                                          âš  â”‚  â”‚
-â”‚  â”‚ ðŸ›¡ Network Security â€” â­â­â­â­  (Validated: Yes)              â”‚  â”‚
-â”‚  â”‚ ðŸ” Cryptography â€” â­â­â­  (Validated: Course completed)       â”‚  â”‚
-â”‚  â”‚ ðŸ Python â€” â­â­â­  (Validated: No)                          â”‚  â”‚
+â”‚  â”‚ ðŸ›¡ Network Security — â­â­â­â­  (Validated: Yes)              â”‚  â”‚
+â”‚  â”‚ ðŸ” Cryptography — â­â­â­  (Validated: Course completed)       â”‚  â”‚
+â”‚  â”‚ ðŸ Python — â­â­â­  (Validated: No)                          â”‚  â”‚
 â”‚  â”‚ [Suggest Skill Additions]  [Validate Skills]                â”‚  â”‚
 â”‚  â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤  â”‚
 â”‚  â”‚ Projects Section                                        âš  â”‚  â”‚
-â”‚  â”‚ ðŸ”’ Security Audit: ABC Corp â€” 80% complete, needs media    â”‚  â”‚
+â”‚  â”‚ ðŸ”’ Security Audit: ABC Corp — 80% complete, needs media    â”‚  â”‚
 â”‚  â”‚      Comment: "Great project! Add screenshots of findings" â”‚  â”‚
-â”‚  â”‚ ðŸ”¬ Malware Analysis Lab â€” 60% complete, needs description â”‚  â”‚
+â”‚  â”‚ ðŸ”¬ Malware Analysis Lab — 60% complete, needs description â”‚  â”‚
 â”‚  â”‚ [Approve] [Request Changes]                                   â”‚  â”‚
 â”‚  â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤  â”‚
 â”‚  â”‚ Certifications Section                                   âœ… â”‚  â”‚
-â”‚  â”‚ ðŸ† Python for Cybersecurity â€” Verified âœ“                    â”‚  â”‚
+â”‚  â”‚ ðŸ† Python for Cybersecurity — Verified âœ“                    â”‚  â”‚
 â”‚  â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤  â”‚
 â”‚  â”‚ Education & Experience                                  ðŸ”¶ â”‚  â”‚
-â”‚  â”‚ Missing work experience â€” suggest adding internships        â”‚  â”‚
+â”‚  â”‚ Missing work experience — suggest adding internships        â”‚  â”‚
 â”‚  â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜  â”‚
 â”‚                                                                       â”‚
 â”‚  [Submit Overall Feedback]  [Mark as Reviewed]  [Share with Mentee] â”‚
@@ -331,13 +331,13 @@
 
 ### Screen 3.5: Career Tracking (`/mentor/mentees/[id]/career` and `/mentor/career-tracking`)
 
-**Purpose:** Track career milestones â€” job applications, interviews, offers, placements.
+**Purpose:** Track career milestones — job applications, interviews, offers, placements.
 
 **Wireframe Layout:**
 
 ```
 â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
-â”‚  â† Alex Johnson â€” Career Track                                      â”‚
+â”‚  â† Alex Johnson — Career Track                                      â”‚
 â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
 â”‚  Career Goal: Security Engineer at FAANG company                    â”‚
 â”‚  Target Timeline: Graduation + 3 months                            â”‚
@@ -363,18 +363,18 @@
 â”‚  Skills Gap Analysis                                                    â”‚
 â”‚  â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”  â”‚
 â”‚  â”‚ Required for Security Engineer vs Current                    â”‚  â”‚
-â”‚  â”‚ â— Cloud Security (AWS/GCP)        â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–‘â–‘â–‘â–‘ 80% â€” Good  â”‚  â”‚
-â”‚  â”‚ â— Incident Response               â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–‘â–‘â–‘â–‘â–‘â–‘ 60% â€” Needs â”‚  â”‚
-â”‚  â”‚ â— Compliance Frameworks           â–ˆâ–ˆâ–ˆâ–ˆâ–‘â–‘â–‘â–‘â–‘â–‘â–‘â–‘ 40% â€” Weak  â”‚  â”‚
-â”‚  â”‚ â— Scripting (Python/Bash)         â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ 95% â€” Strongâ”‚  â”‚
+â”‚  â”‚ â— Cloud Security (AWS/GCP)        â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–‘â–‘â–‘â–‘ 80% — Good  â”‚  â”‚
+â”‚  â”‚ â— Incident Response               â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–‘â–‘â–‘â–‘â–‘â–‘ 60% — Needs â”‚  â”‚
+â”‚  â”‚ â— Compliance Frameworks           â–ˆâ–ˆâ–ˆâ–ˆâ–‘â–‘â–‘â–‘â–‘â–‘â–‘â–‘ 40% — Weak  â”‚  â”‚
+â”‚  â”‚ â— Scripting (Python/Bash)         â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ 95% — Strongâ”‚  â”‚
 â”‚  â”‚ [Recommend Resources to Fill Gaps]                           â”‚  â”‚
 â”‚  â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜  â”‚
 â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
 â”‚  Career Milestones                                                     â”‚
-â”‚  âœ… Resume approved by mentor â€” Oct 15                               â”‚
-â”‚  âœ… LinkedIn profile optimized â€” Oct 20                             â”‚
-â”‚  ðŸ”„ Applied to 10+ positions â€” 5/10 (in progress)                   â”‚
-â”‚  â¬œ Completed 5 mock interviews â€” 2/5                                â”‚
+â”‚  âœ… Resume approved by mentor — Oct 15                               â”‚
+â”‚  âœ… LinkedIn profile optimized — Oct 20                             â”‚
+â”‚  ðŸ”„ Applied to 10+ positions — 5/10 (in progress)                   â”‚
+â”‚  â¬œ Completed 5 mock interviews — 2/5                                â”‚
 â”‚  [Add Milestone]  [Mark Complete]                                     â”‚
 â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
 ```
@@ -395,7 +395,7 @@
 
 ```
 â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
-â”‚  â† Alex Johnson â€” Goals                                             â”‚
+â”‚  â† Alex Johnson — Goals                                             â”‚
 â”‚                                       [New Goal]  [View All Goals]  â”‚
 â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
 â”‚  Active Goals                                                          â”‚
@@ -404,9 +404,9 @@
 â”‚  â”‚ ðŸ“… Target: Dec 31, 2026 | Status: ðŸ”„ In Progress            â”‚  â”‚
 â”‚  â”‚ Progress: 85% â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–‘â–‘                                  â”‚  â”‚
 â”‚  â”‚ Milestones:                                                  â”‚  â”‚
-â”‚  â”‚  âœ… Passed practice test 1 (85%) â€” Oct 15                    â”‚  â”‚
-â”‚  â”‚  âœ… Completed study guide â€” Oct 28                           â”‚  â”‚
-â”‚  â”‚  ðŸ”„ Final review â€” 2 weeks remaining                        â”‚  â”‚
+â”‚  â”‚  âœ… Passed practice test 1 (85%) — Oct 15                    â”‚  â”‚
+â”‚  â”‚  âœ… Completed study guide — Oct 28                           â”‚  â”‚
+â”‚  â”‚  ðŸ”„ Final review — 2 weeks remaining                        â”‚  â”‚
 â”‚  â”‚ [Update Progress] [Add Milestone] [Mark Complete] [Edit]     â”‚  â”‚
 â”‚  â”‚ Mentor notes: "Alex is on track. Recommending additional     â”‚  â”‚
 â”‚  â”‚   practice exams from MeasureUp."                            â”‚  â”‚
@@ -415,11 +415,11 @@
 â”‚  â”‚ ðŸŽ¯ Apply to 5 cybersecurity internships                     â”‚  â”‚
 â”‚  â”‚ ðŸ“… Target: Nov 30, 2026 | Status: ðŸ”„ In Progress            â”‚  â”‚
 â”‚  â”‚ Progress: 40% â–ˆâ–ˆâ–ˆâ–ˆâ–‘â–‘â–‘â–‘â–‘â–‘â–‘â–‘                                   â”‚  â”‚
-â”‚  â”‚ â–¡ 1. AWS Security Intern â€” Applied âœ“                        â”‚  â”‚
-â”‚  â”‚ â–¡ 2. Google Security Intern â€” Applied âœ“                    â”‚  â”‚
-â”‚  â”‚ â–¡ 3. Microsoft Security Intern â€” Drafting                    â”‚  â”‚
-â”‚  â”‚ â–¡ 4. Cloudflare â€” Researching                                â”‚  â”‚
-â”‚  â”‚ â–¡ 5. Palo Alto Networks â€” Researching                        â”‚  â”‚
+â”‚  â”‚ â–¡ 1. AWS Security Intern — Applied âœ“                        â”‚  â”‚
+â”‚  â”‚ â–¡ 2. Google Security Intern — Applied âœ“                    â”‚  â”‚
+â”‚  â”‚ â–¡ 3. Microsoft Security Intern — Drafting                    â”‚  â”‚
+â”‚  â”‚ â–¡ 4. Cloudflare — Researching                                â”‚  â”‚
+â”‚  â”‚ â–¡ 5. Palo Alto Networks — Researching                        â”‚  â”‚
 â”‚  â”‚ [Update Progress] [Add Milestone]                             â”‚  â”‚
 â”‚  â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜  â”‚
 â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
@@ -473,7 +473,7 @@
 ```
 
 **Real-time:** WebSocket for instant messaging  
-**Resource Sharing:** Upload PDFs, links, images â€” stored in R2  
+**Resource Sharing:** Upload PDFs, links, images — stored in R2  
 **Templates:** Quick message templates for common scenarios
 
 **API:** `GET /api/mentor/messages` (conversations list), `GET /api/mentor/messages/:conversationId`, `POST /api/mentor/messages/:conversationId`, `POST /api/mentor/messages/new`
@@ -514,9 +514,9 @@
 â”‚  â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜  â”‚
 â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
 â”‚  Recommended Resources (from Academy)                                 â”‚
-â”‚  â— [Career Readiness Workshop Series â€” Starts Nov 15]               â”‚
-â”‚  â— [Tech Interview Prep Bootcamp â€” Dec 1-5]                        â”‚
-â”‚  â— [Networking Event: Cybersecurity Mixer â€” Nov 20]                 â”‚
+â”‚  â— [Career Readiness Workshop Series — Starts Nov 15]               â”‚
+â”‚  â— [Tech Interview Prep Bootcamp — Dec 1-5]                        â”‚
+â”‚  â— [Networking Event: Cybersecurity Mixer — Nov 20]                 â”‚
 â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
 ```
 
@@ -581,7 +581,7 @@
 â”‚  Bio: [Industry professional with 10+ years in cybersecurity...]    â”‚
 â”‚  Company: [CyberDefense Inc.]  Job Title: [Security Architect]      â”‚
 â”‚  LinkedIn: [https://linkedin.com/in/sarahchen]                      â”‚
-â”‚  Expertise Tags: [Cloud Security] [Pen Testing] [Compliance] [Ã—]   â”‚
+â”‚  Expertise Tags: [Cloud Security] [Pen Testing] [Compliance] [à—]   â”‚
 â”‚  [Add Tag]                                                            â”‚
 â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
 â”‚  Availability Schedule                                                  â”‚
@@ -589,11 +589,11 @@
 â”‚  â”‚ Day       â”‚ Available â”‚ Start â”‚ End   â”‚ Max Slots/Day       â”‚  â”‚
 â”‚  â”‚ Monday    â”‚ âœ…        â”‚ 9:00  â”‚ 17:00 â”‚ 4                   â”‚  â”‚
 â”‚  â”‚ Tuesday   â”‚ âœ…        â”‚ 10:00 â”‚ 16:00 â”‚ 3                   â”‚  â”‚
-â”‚  â”‚ Wednesday â”‚ âŒ        â”‚ â€”     â”‚ â€”     â”‚ 0                   â”‚  â”‚
+â”‚  â”‚ Wednesday â”‚ âŒ        â”‚ —     â”‚ —     â”‚ 0                   â”‚  â”‚
 â”‚  â”‚ Thursday  â”‚ âœ…        â”‚ 9:00  â”‚ 17:00 â”‚ 4                   â”‚  â”‚
 â”‚  â”‚ Friday    â”‚ âœ…        â”‚ 9:00  â”‚ 14:00 â”‚ 2                   â”‚  â”‚
-â”‚  â”‚ Saturday  â”‚ âŒ        â”‚ â€”     â”‚ â€”     â”‚ 0                   â”‚  â”‚
-â”‚  â”‚ Sunday    â”‚ âŒ        â”‚ â€”     â”‚ â€”     â”‚ 0                   â”‚  â”‚
+â”‚  â”‚ Saturday  â”‚ âŒ        â”‚ —     â”‚ —     â”‚ 0                   â”‚  â”‚
+â”‚  â”‚ Sunday    â”‚ âŒ        â”‚ —     â”‚ —     â”‚ 0                   â”‚  â”‚
 â”‚  â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜  â”‚
 â”‚  Session Duration: [30 min â–¼]  [45 min â–¼]  [60 min â–¼]            â”‚
 â”‚  Virtual Meeting Link: [https://zoom.us/j/...]                    â”‚
@@ -622,26 +622,26 @@
 
 | Column                     | Type           | Constraints       | Default     | Description                                      |
 | -------------------------- | -------------- | ----------------- | ----------- | ------------------------------------------------ |
-| `id`                       | `UUID`         | PK, FK â†’ users.id | â€”           | Same as user ID                                  |
+| `id`                       | `UUID`         | PK, FK â†’ users.id | —           | Same as user ID                                  |
 | `mentor_type`              | `VARCHAR(50)`  | NOT NULL          | `'career'`  | career, academic, peer, alumni, industry         |
-| `employee_id`              | `VARCHAR(20)`  | UNIQUE, NULLABLE  | â€”           | CEA-MNT-YYYY-NNNNN                               |
-| `title`                    | `VARCHAR(200)` | NOT NULL          | â€”           | "Career Mentor", "Industry Mentor"               |
-| `company`                  | `VARCHAR(200)` | NULLABLE          | â€”           | Current employer                                 |
-| `job_title`                | `VARCHAR(200)` | NULLABLE          | â€”           | Current position                                 |
-| `bio`                      | `TEXT`         | NULLABLE          | â€”           | Professional background                          |
-| `avatar_url`               | `VARCHAR(500)` | NULLABLE          | â€”           | Profile photo                                    |
-| `linkedin_url`             | `VARCHAR(500)` | NULLABLE          | â€”           | LinkedIn profile                                 |
-| `expertise_tags`           | `JSONB`        | NULLABLE          | â€”           | Array of expertise areas                         |
+| `employee_id`              | `VARCHAR(20)`  | UNIQUE, NULLABLE  | —           | CEA-MNT-YYYY-NNNNN                               |
+| `title`                    | `VARCHAR(200)` | NOT NULL          | —           | "Career Mentor", "Industry Mentor"               |
+| `company`                  | `VARCHAR(200)` | NULLABLE          | —           | Current employer                                 |
+| `job_title`                | `VARCHAR(200)` | NULLABLE          | —           | Current position                                 |
+| `bio`                      | `TEXT`         | NULLABLE          | —           | Professional background                          |
+| `avatar_url`               | `VARCHAR(500)` | NULLABLE          | —           | Profile photo                                    |
+| `linkedin_url`             | `VARCHAR(500)` | NULLABLE          | —           | LinkedIn profile                                 |
+| `expertise_tags`           | `JSONB`        | NULLABLE          | —           | Array of expertise areas                         |
 | `max_mentees`              | `INTEGER`      | NOT NULL          | `10`        | Maximum capacity                                 |
 | `current_mentees`          | `INTEGER`      | NOT NULL          | `0`         | Active mentee count                              |
 | `session_duration_minutes` | `INTEGER`      | NOT NULL          | `45`        | Default session length                           |
-| `virtual_meeting_url`      | `VARCHAR(500)` | NULLABLE          | â€”           | Default Zoom/Teams link                          |
+| `virtual_meeting_url`      | `VARCHAR(500)` | NULLABLE          | —           | Default Zoom/Teams link                          |
 | `status`                   | `VARCHAR(50)`  | NOT NULL          | `'pending'` | pending, active, at_capacity, on_break, inactive |
 | `total_sessions`           | `INTEGER`      | NOT NULL          | `0`         | Lifetime session count                           |
-| `avg_rating`               | `DECIMAL(2,1)` | NULLABLE          | â€”           | 1.0-5.0 computed rating                          |
+| `avg_rating`               | `DECIMAL(2,1)` | NULLABLE          | —           | 1.0-5.0 computed rating                          |
 | `total_placements`         | `INTEGER`      | NOT NULL          | `0`         | Number of mentees placed                         |
-| `created_at`               | `TIMESTAMPTZ`  | NOT NULL          | `NOW()`     | â€”                                                |
-| `updated_at`               | `TIMESTAMPTZ`  | NOT NULL          | `NOW()`     | â€”                                                |
+| `created_at`               | `TIMESTAMPTZ`  | NOT NULL          | `NOW()`     | —                                                |
+| `updated_at`               | `TIMESTAMPTZ`  | NOT NULL          | `NOW()`     | —                                                |
 
 **Indexes:**
 
@@ -653,14 +653,14 @@
 
 | Column        | Type          | Constraints               | Default | Description              |
 | ------------- | ------------- | ------------------------- | ------- | ------------------------ |
-| `id`          | `UUID`        | PK                        | â€”       | â€”                        |
-| `mentor_id`   | `UUID`        | FK â†’ mentors.id, NOT NULL | â€”       | â€”                        |
-| `day_of_week` | `INTEGER`     | NOT NULL                  | â€”       | 0=Sun, 1=Mon, ..., 6=Sat |
-| `start_time`  | `TIME`        | NOT NULL                  | â€”       | Available from           |
-| `end_time`    | `TIME`        | NOT NULL                  | â€”       | Available until          |
+| `id`          | `UUID`        | PK                        | —       | —                        |
+| `mentor_id`   | `UUID`        | FK â†’ mentors.id, NOT NULL | —       | —                        |
+| `day_of_week` | `INTEGER`     | NOT NULL                  | —       | 0=Sun, 1=Mon, ..., 6=Sat |
+| `start_time`  | `TIME`        | NOT NULL                  | —       | Available from           |
+| `end_time`    | `TIME`        | NOT NULL                  | —       | Available until          |
 | `max_slots`   | `INTEGER`     | NOT NULL                  | `4`     | Max sessions this day    |
-| `is_active`   | `BOOLEAN`     | NOT NULL                  | `true`  | â€”                        |
-| `created_at`  | `TIMESTAMPTZ` | NOT NULL                  | `NOW()` | â€”                        |
+| `is_active`   | `BOOLEAN`     | NOT NULL                  | `true`  | —                        |
+| `created_at`  | `TIMESTAMPTZ` | NOT NULL                  | `NOW()` | —                        |
 
 **Indexes:** UNIQUE(mentor_id, day_of_week)
 
@@ -668,26 +668,26 @@
 
 | Column                    | Type           | Constraints                | Default             | Description                                      |
 | ------------------------- | -------------- | -------------------------- | ------------------- | ------------------------------------------------ |
-| `id`                      | `UUID`         | PK                         | `gen_random_uuid()` | â€”                                                |
-| `mentor_id`               | `UUID`         | FK â†’ mentors.id, NOT NULL  | â€”                   | â€”                                                |
-| `student_id`              | `UUID`         | FK â†’ students.id, NOT NULL | â€”                   | â€”                                                |
-| `relationship_type`       | `VARCHAR(50)`  | NOT NULL                   | â€”                   | career, academic, peer                           |
+| `id`                      | `UUID`         | PK                         | `gen_random_uuid()` | —                                                |
+| `mentor_id`               | `UUID`         | FK â†’ mentors.id, NOT NULL  | —                   | —                                                |
+| `student_id`              | `UUID`         | FK â†’ students.id, NOT NULL | —                   | —                                                |
+| `relationship_type`       | `VARCHAR(50)`  | NOT NULL                   | —                   | career, academic, peer                           |
 | `status`                  | `VARCHAR(50)`  | NOT NULL                   | `'requested'`       | requested, active, paused, completed, terminated |
-| `requested_by`            | `VARCHAR(20)`  | NOT NULL                   | â€”                   | student, admin, mentor                           |
-| `requested_at`            | `TIMESTAMPTZ`  | NOT NULL                   | `NOW()`             | â€”                                                |
-| `accepted_at`             | `TIMESTAMPTZ`  | NULLABLE                   | â€”                   | When mentor approved                             |
-| `paused_at`               | `TIMESTAMPTZ`  | NULLABLE                   | â€”                   | â€”                                                |
-| `paused_reason`           | `VARCHAR(500)` | NULLABLE                   | â€”                   | â€”                                                |
-| `completed_at`            | `TIMESTAMPTZ`  | NULLABLE                   | â€”                   | â€”                                                |
-| `completion_reason`       | `VARCHAR(500)` | NULLABLE                   | â€”                   | goals_achieved, graduated, transferred, other    |
-| `terminated_at`           | `TIMESTAMPTZ`  | NULLABLE                   | â€”                   | â€”                                                |
-| `terminated_by`           | `VARCHAR(20)`  | NULLABLE                   | â€”                   | mentor, student, admin                           |
-| `termination_reason`      | `VARCHAR(500)` | NULLABLE                   | â€”                   | â€”                                                |
-| `career_goal`             | `TEXT`         | NULLABLE                   | â€”                   | Mentee's stated career goal                      |
-| `initial_readiness_score` | `INTEGER`      | NULLABLE                   | â€”                   | 0-100 at start                                   |
+| `requested_by`            | `VARCHAR(20)`  | NOT NULL                   | —                   | student, admin, mentor                           |
+| `requested_at`            | `TIMESTAMPTZ`  | NOT NULL                   | `NOW()`             | —                                                |
+| `accepted_at`             | `TIMESTAMPTZ`  | NULLABLE                   | —                   | When mentor approved                             |
+| `paused_at`               | `TIMESTAMPTZ`  | NULLABLE                   | —                   | —                                                |
+| `paused_reason`           | `VARCHAR(500)` | NULLABLE                   | —                   | —                                                |
+| `completed_at`            | `TIMESTAMPTZ`  | NULLABLE                   | —                   | —                                                |
+| `completion_reason`       | `VARCHAR(500)` | NULLABLE                   | —                   | goals_achieved, graduated, transferred, other    |
+| `terminated_at`           | `TIMESTAMPTZ`  | NULLABLE                   | —                   | —                                                |
+| `terminated_by`           | `VARCHAR(20)`  | NULLABLE                   | —                   | mentor, student, admin                           |
+| `termination_reason`      | `VARCHAR(500)` | NULLABLE                   | —                   | —                                                |
+| `career_goal`             | `TEXT`         | NULLABLE                   | —                   | Mentee's stated career goal                      |
+| `initial_readiness_score` | `INTEGER`      | NULLABLE                   | —                   | 0-100 at start                                   |
 | `current_readiness_score` | `INTEGER`      | NULLABLE                   | `0`                 | 0-100 current                                    |
-| `created_at`              | `TIMESTAMPTZ`  | NOT NULL                   | `NOW()`             | â€”                                                |
-| `updated_at`              | `TIMESTAMPTZ`  | NOT NULL                   | `NOW()`             | â€”                                                |
+| `created_at`              | `TIMESTAMPTZ`  | NOT NULL                   | `NOW()`             | —                                                |
+| `updated_at`              | `TIMESTAMPTZ`  | NOT NULL                   | `NOW()`             | —                                                |
 
 **Indexes:**
 
@@ -699,33 +699,33 @@
 
 | Column                | Type           | Constraints                                | Default             | Description                                                                                                                               |
 | --------------------- | -------------- | ------------------------------------------ | ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| `id`                  | `UUID`         | PK                                         | `gen_random_uuid()` | â€”                                                                                                                                         |
-| `mentor_id`           | `UUID`         | FK â†’ mentors.id, NOT NULL                  | â€”                   | â€”                                                                                                                                         |
-| `mentee_id`           | `UUID`         | FK â†’ students.id, NOT NULL                 | â€”                   | â€”                                                                                                                                         |
-| `relationship_id`     | `UUID`         | FK â†’ mentorship_relationships.id, NOT NULL | â€”                   | â€”                                                                                                                                         |
-| `session_type`        | `VARCHAR(50)`  | NOT NULL                                   | â€”                   | career_roadmap, mock_interview, resume_review, portfolio_review, goal_setting, networking_strategy, skills_assessment, general_mentorship |
-| `title`               | `VARCHAR(255)` | NOT NULL                                   | â€”                   | Session title                                                                                                                             |
-| `description`         | `TEXT`         | NULLABLE                                   | â€”                   | Session description/purpose                                                                                                               |
+| `id`                  | `UUID`         | PK                                         | `gen_random_uuid()` | —                                                                                                                                         |
+| `mentor_id`           | `UUID`         | FK â†’ mentors.id, NOT NULL                  | —                   | —                                                                                                                                         |
+| `mentee_id`           | `UUID`         | FK â†’ students.id, NOT NULL                 | —                   | —                                                                                                                                         |
+| `relationship_id`     | `UUID`         | FK â†’ mentorship_relationships.id, NOT NULL | —                   | —                                                                                                                                         |
+| `session_type`        | `VARCHAR(50)`  | NOT NULL                                   | —                   | career_roadmap, mock_interview, resume_review, portfolio_review, goal_setting, networking_strategy, skills_assessment, general_mentorship |
+| `title`               | `VARCHAR(255)` | NOT NULL                                   | —                   | Session title                                                                                                                             |
+| `description`         | `TEXT`         | NULLABLE                                   | —                   | Session description/purpose                                                                                                               |
 | `status`              | `VARCHAR(50)`  | NOT NULL                                   | `'scheduled'`       | scheduled, in_progress, completed, cancelled, no_show                                                                                     |
-| `scheduled_at`        | `TIMESTAMPTZ`  | NOT NULL                                   | â€”                   | Start time                                                                                                                                |
+| `scheduled_at`        | `TIMESTAMPTZ`  | NOT NULL                                   | —                   | Start time                                                                                                                                |
 | `duration_minutes`    | `INTEGER`      | NOT NULL                                   | `45`                | Planned duration                                                                                                                          |
-| `actual_started_at`   | `TIMESTAMPTZ`  | NULLABLE                                   | â€”                   | When session actually started                                                                                                             |
-| `actual_ended_at`     | `TIMESTAMPTZ`  | NULLABLE                                   | â€”                   | When session ended                                                                                                                        |
+| `actual_started_at`   | `TIMESTAMPTZ`  | NULLABLE                                   | —                   | When session actually started                                                                                                             |
+| `actual_ended_at`     | `TIMESTAMPTZ`  | NULLABLE                                   | —                   | When session ended                                                                                                                        |
 | `location_type`       | `VARCHAR(50)`  | NOT NULL                                   | `'virtual'`         | virtual, in_person                                                                                                                        |
-| `location_details`    | `VARCHAR(500)` | NULLABLE                                   | â€”                   | Room number or meeting URL                                                                                                                |
-| `meeting_url`         | `VARCHAR(500)` | NULLABLE                                   | â€”                   | Override default URL                                                                                                                      |
-| `agenda_items`        | `JSONB`        | NULLABLE                                   | â€”                   | Array of agenda items {title, duration, completed}                                                                                        |
-| `live_notes`          | `TEXT`         | NULLABLE                                   | â€”                   | Notes taken during session                                                                                                                |
-| `action_items`        | `JSONB`        | NULLABLE                                   | â€”                   | Array of action items {text, assignedTo: mentor                                                                                           | mentee, dueDate, completed} |
-| `topics_covered`      | `JSONB`        | NULLABLE                                   | â€”                   | Array of topic tags                                                                                                                       |
-| `mentee_rating`       | `INTEGER`      | NULLABLE                                   | â€”                   | 1-5 mentee feedback                                                                                                                       |
-| `mentee_feedback`     | `TEXT`         | NULLABLE                                   | â€”                   | Mentee's session feedback                                                                                                                 |
-| `mentor_notes`        | `TEXT`         | NULLABLE                                   | â€”                   | Private mentor notes                                                                                                                      |
-| `cancelled_at`        | `TIMESTAMPTZ`  | NULLABLE                                   | â€”                   | â€”                                                                                                                                         |
-| `cancellation_reason` | `VARCHAR(500)` | NULLABLE                                   | â€”                   | â€”                                                                                                                                         |
-| `cancelled_by`        | `VARCHAR(20)`  | NULLABLE                                   | â€”                   | mentor, mentee, system                                                                                                                    |
-| `created_at`          | `TIMESTAMPTZ`  | NOT NULL                                   | `NOW()`             | â€”                                                                                                                                         |
-| `updated_at`          | `TIMESTAMPTZ`  | NOT NULL                                   | `NOW()`             | â€”                                                                                                                                         |
+| `location_details`    | `VARCHAR(500)` | NULLABLE                                   | —                   | Room number or meeting URL                                                                                                                |
+| `meeting_url`         | `VARCHAR(500)` | NULLABLE                                   | —                   | Override default URL                                                                                                                      |
+| `agenda_items`        | `JSONB`        | NULLABLE                                   | —                   | Array of agenda items {title, duration, completed}                                                                                        |
+| `live_notes`          | `TEXT`         | NULLABLE                                   | —                   | Notes taken during session                                                                                                                |
+| `action_items`        | `JSONB`        | NULLABLE                                   | —                   | Array of action items {text, assignedTo: mentor                                                                                           | mentee, dueDate, completed} |
+| `topics_covered`      | `JSONB`        | NULLABLE                                   | —                   | Array of topic tags                                                                                                                       |
+| `mentee_rating`       | `INTEGER`      | NULLABLE                                   | —                   | 1-5 mentee feedback                                                                                                                       |
+| `mentee_feedback`     | `TEXT`         | NULLABLE                                   | —                   | Mentee's session feedback                                                                                                                 |
+| `mentor_notes`        | `TEXT`         | NULLABLE                                   | —                   | Private mentor notes                                                                                                                      |
+| `cancelled_at`        | `TIMESTAMPTZ`  | NULLABLE                                   | —                   | —                                                                                                                                         |
+| `cancellation_reason` | `VARCHAR(500)` | NULLABLE                                   | —                   | —                                                                                                                                         |
+| `cancelled_by`        | `VARCHAR(20)`  | NULLABLE                                   | —                   | mentor, mentee, system                                                                                                                    |
+| `created_at`          | `TIMESTAMPTZ`  | NOT NULL                                   | `NOW()`             | —                                                                                                                                         |
+| `updated_at`          | `TIMESTAMPTZ`  | NOT NULL                                   | `NOW()`             | —                                                                                                                                         |
 
 **Indexes:**
 
@@ -737,21 +737,21 @@
 
 | Column                | Type           | Constraints                                | Default             | Description                                                                                                            |
 | --------------------- | -------------- | ------------------------------------------ | ------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| `id`                  | `UUID`         | PK                                         | `gen_random_uuid()` | â€”                                                                                                                      |
-| `relationship_id`     | `UUID`         | FK â†’ mentorship_relationships.id, NOT NULL | â€”                   | â€”                                                                                                                      |
-| `mentor_id`           | `UUID`         | FK â†’ mentors.id, NOT NULL                  | â€”                   | â€”                                                                                                                      |
-| `mentee_id`           | `UUID`         | FK â†’ students.id, NOT NULL                 | â€”                   | â€”                                                                                                                      |
-| `category`            | `VARCHAR(50)`  | NOT NULL                                   | â€”                   | certification, job_application, networking, skill_development, portfolio, resume, interview_prep, personal_development |
-| `title`               | `VARCHAR(255)` | NOT NULL                                   | â€”                   | Goal description                                                                                                       |
-| `description`         | `TEXT`         | NULLABLE                                   | â€”                   | Detailed goal                                                                                                          |
-| `target_date`         | `DATE`         | NULLABLE                                   | â€”                   | Target completion                                                                                                      |
+| `id`                  | `UUID`         | PK                                         | `gen_random_uuid()` | —                                                                                                                      |
+| `relationship_id`     | `UUID`         | FK â†’ mentorship_relationships.id, NOT NULL | —                   | —                                                                                                                      |
+| `mentor_id`           | `UUID`         | FK â†’ mentors.id, NOT NULL                  | —                   | —                                                                                                                      |
+| `mentee_id`           | `UUID`         | FK â†’ students.id, NOT NULL                 | —                   | —                                                                                                                      |
+| `category`            | `VARCHAR(50)`  | NOT NULL                                   | —                   | certification, job_application, networking, skill_development, portfolio, resume, interview_prep, personal_development |
+| `title`               | `VARCHAR(255)` | NOT NULL                                   | —                   | Goal description                                                                                                       |
+| `description`         | `TEXT`         | NULLABLE                                   | —                   | Detailed goal                                                                                                          |
+| `target_date`         | `DATE`         | NULLABLE                                   | —                   | Target completion                                                                                                      |
 | `progress_percentage` | `INTEGER`      | NOT NULL                                   | `0`                 | 0-100                                                                                                                  |
 | `status`              | `VARCHAR(50)`  | NOT NULL                                   | `'active'`          | active, completed, cancelled, archived                                                                                 |
-| `completed_at`        | `TIMESTAMPTZ`  | NULLABLE                                   | â€”                   | â€”                                                                                                                      |
-| `mentor_notes`        | `TEXT`         | NULLABLE                                   | â€”                   | Private notes                                                                                                          |
-| `sort_order`          | `INTEGER`      | NOT NULL                                   | `0`                 | â€”                                                                                                                      |
-| `created_at`          | `TIMESTAMPTZ`  | NOT NULL                                   | `NOW()`             | â€”                                                                                                                      |
-| `updated_at`          | `TIMESTAMPTZ`  | NOT NULL                                   | `NOW()`             | â€”                                                                                                                      |
+| `completed_at`        | `TIMESTAMPTZ`  | NULLABLE                                   | —                   | —                                                                                                                      |
+| `mentor_notes`        | `TEXT`         | NULLABLE                                   | —                   | Private notes                                                                                                          |
+| `sort_order`          | `INTEGER`      | NOT NULL                                   | `0`                 | —                                                                                                                      |
+| `created_at`          | `TIMESTAMPTZ`  | NOT NULL                                   | `NOW()`             | —                                                                                                                      |
+| `updated_at`          | `TIMESTAMPTZ`  | NOT NULL                                   | `NOW()`             | —                                                                                                                      |
 
 **Indexes:**
 
@@ -762,50 +762,50 @@
 
 | Column         | Type           | Constraints                    | Default | Description           |
 | -------------- | -------------- | ------------------------------ | ------- | --------------------- |
-| `id`           | `UUID`         | PK                             | â€”       | â€”                     |
-| `goal_id`      | `UUID`         | FK â†’ mentor_goals.id, NOT NULL | â€”       | â€”                     |
-| `title`        | `VARCHAR(255)` | NOT NULL                       | â€”       | Milestone description |
-| `completed`    | `BOOLEAN`      | NOT NULL                       | `false` | â€”                     |
-| `completed_at` | `TIMESTAMPTZ`  | NULLABLE                       | â€”       | â€”                     |
-| `sort_order`   | `INTEGER`      | NOT NULL                       | `0`     | â€”                     |
-| `created_at`   | `TIMESTAMPTZ`  | NOT NULL                       | `NOW()` | â€”                     |
+| `id`           | `UUID`         | PK                             | —       | —                     |
+| `goal_id`      | `UUID`         | FK â†’ mentor_goals.id, NOT NULL | —       | —                     |
+| `title`        | `VARCHAR(255)` | NOT NULL                       | —       | Milestone description |
+| `completed`    | `BOOLEAN`      | NOT NULL                       | `false` | —                     |
+| `completed_at` | `TIMESTAMPTZ`  | NULLABLE                       | —       | —                     |
+| `sort_order`   | `INTEGER`      | NOT NULL                       | `0`     | —                     |
+| `created_at`   | `TIMESTAMPTZ`  | NOT NULL                       | `NOW()` | —                     |
 
 ### Table: `mentor_portfolio_reviews`
 
 | Column                   | Type          | Constraints                                | Default   | Description                                                    |
 | ------------------------ | ------------- | ------------------------------------------ | --------- | -------------------------------------------------------------- |
-| `id`                     | `UUID`        | PK                                         | â€”         | â€”                                                              |
-| `relationship_id`        | `UUID`        | FK â†’ mentorship_relationships.id, NOT NULL | â€”         | â€”                                                              |
-| `mentor_id`              | `UUID`        | FK â†’ mentors.id, NOT NULL                  | â€”         | â€”                                                              |
-| `mentee_id`              | `UUID`        | FK â†’ students.id, NOT NULL                 | â€”         | â€”                                                              |
-| `overall_score`          | `INTEGER`     | NULLABLE                                   | â€”         | 0-100 computed score                                           |
-| `overall_feedback`       | `TEXT`        | NULLABLE                                   | â€”         | General feedback                                               |
-| `section_scores`         | `JSONB`       | NULLABLE                                   | â€”         | {profile, skills, projects, certifications, experience} scores |
-| `section_feedback`       | `JSONB`       | NULLABLE                                   | â€”         | Per-section comments                                           |
+| `id`                     | `UUID`        | PK                                         | —         | —                                                              |
+| `relationship_id`        | `UUID`        | FK â†’ mentorship_relationships.id, NOT NULL | —         | —                                                              |
+| `mentor_id`              | `UUID`        | FK â†’ mentors.id, NOT NULL                  | —         | —                                                              |
+| `mentee_id`              | `UUID`        | FK â†’ students.id, NOT NULL                 | —         | —                                                              |
+| `overall_score`          | `INTEGER`     | NULLABLE                                   | —         | 0-100 computed score                                           |
+| `overall_feedback`       | `TEXT`        | NULLABLE                                   | —         | General feedback                                               |
+| `section_scores`         | `JSONB`       | NULLABLE                                   | —         | {profile, skills, projects, certifications, experience} scores |
+| `section_feedback`       | `JSONB`       | NULLABLE                                   | —         | Per-section comments                                           |
 | `status`                 | `VARCHAR(50)` | NOT NULL                                   | `'draft'` | draft, submitted, approved, changes_requested                  |
-| `submitted_at`           | `TIMESTAMPTZ` | NULLABLE                                   | â€”         | â€”                                                              |
-| `mentee_acknowledged_at` | `TIMESTAMPTZ` | NULLABLE                                   | â€”         | When mentee saw feedback                                       |
-| `created_at`             | `TIMESTAMPTZ` | NOT NULL                                   | `NOW()`   | â€”                                                              |
-| `updated_at`             | `TIMESTAMPTZ` | NOT NULL                                   | `NOW()`   | â€”                                                              |
+| `submitted_at`           | `TIMESTAMPTZ` | NULLABLE                                   | —         | —                                                              |
+| `mentee_acknowledged_at` | `TIMESTAMPTZ` | NULLABLE                                   | —         | When mentee saw feedback                                       |
+| `created_at`             | `TIMESTAMPTZ` | NOT NULL                                   | `NOW()`   | —                                                              |
+| `updated_at`             | `TIMESTAMPTZ` | NOT NULL                                   | `NOW()`   | —                                                              |
 
-**Indexes:** UNIQUE(relationship_id) â€” one active review per relationship
+**Indexes:** UNIQUE(relationship_id) — one active review per relationship
 
 ### Table: `mentor_career_applications`
 
 | Column            | Type           | Constraints                                | Default     | Description                                                                                                                      |
 | ----------------- | -------------- | ------------------------------------------ | ----------- | -------------------------------------------------------------------------------------------------------------------------------- |
-| `id`              | `UUID`         | PK                                         | â€”           | â€”                                                                                                                                |
-| `relationship_id` | `UUID`         | FK â†’ mentorship_relationships.id, NOT NULL | â€”           | â€”                                                                                                                                |
-| `mentee_id`       | `UUID`         | FK â†’ students.id, NOT NULL                 | â€”           | â€”                                                                                                                                |
-| `company_name`    | `VARCHAR(255)` | NOT NULL                                   | â€”           | â€”                                                                                                                                |
-| `job_title`       | `VARCHAR(255)` | NOT NULL                                   | â€”           | â€”                                                                                                                                |
-| `job_url`         | `VARCHAR(500)` | NULLABLE                                   | â€”           | â€”                                                                                                                                |
+| `id`              | `UUID`         | PK                                         | —           | —                                                                                                                                |
+| `relationship_id` | `UUID`         | FK â†’ mentorship_relationships.id, NOT NULL | —           | —                                                                                                                                |
+| `mentee_id`       | `UUID`         | FK â†’ students.id, NOT NULL                 | —           | —                                                                                                                                |
+| `company_name`    | `VARCHAR(255)` | NOT NULL                                   | —           | —                                                                                                                                |
+| `job_title`       | `VARCHAR(255)` | NOT NULL                                   | —           | —                                                                                                                                |
+| `job_url`         | `VARCHAR(500)` | NULLABLE                                   | —           | —                                                                                                                                |
 | `stage`           | `VARCHAR(50)`  | NOT NULL                                   | `'applied'` | applied, screening, phone_interview, technical_interview, onsite_interview, reference_check, offer, rejected, withdrawn, ghosted |
-| `applied_at`      | `DATE`         | NULLABLE                                   | â€”           | â€”                                                                                                                                |
-| `last_updated_at` | `TIMESTAMPTZ`  | NULLABLE                                   | â€”           | â€”                                                                                                                                |
-| `notes`           | `TEXT`         | NULLABLE                                   | â€”           | â€”                                                                                                                                |
-| `created_at`      | `TIMESTAMPTZ`  | NOT NULL                                   | `NOW()`     | â€”                                                                                                                                |
-| `updated_at`      | `TIMESTAMPTZ`  | NOT NULL                                   | `NOW()`     | â€”                                                                                                                                |
+| `applied_at`      | `DATE`         | NULLABLE                                   | —           | —                                                                                                                                |
+| `last_updated_at` | `TIMESTAMPTZ`  | NULLABLE                                   | —           | —                                                                                                                                |
+| `notes`           | `TEXT`         | NULLABLE                                   | —           | —                                                                                                                                |
+| `created_at`      | `TIMESTAMPTZ`  | NOT NULL                                   | `NOW()`     | —                                                                                                                                |
+| `updated_at`      | `TIMESTAMPTZ`  | NOT NULL                                   | `NOW()`     | —                                                                                                                                |
 
 **Indexes:** `idx_mca_mentee` ON `mentee_id`, `idx_mca_stage` ON `stage`
 
@@ -813,61 +813,61 @@
 
 | Column            | Type           | Constraints                                | Default | Description                                                   |
 | ----------------- | -------------- | ------------------------------------------ | ------- | ------------------------------------------------------------- |
-| `id`              | `UUID`         | PK                                         | â€”       | â€”                                                             |
-| `relationship_id` | `UUID`         | FK â†’ mentorship_relationships.id, NOT NULL | â€”       | â€”                                                             |
-| `title`           | `VARCHAR(255)` | NOT NULL                                   | â€”       | â€”                                                             |
-| `category`        | `VARCHAR(50)`  | NOT NULL                                   | â€”       | resume, linkedin, applications, interviews, networking, offer |
-| `completed`       | `BOOLEAN`      | NOT NULL                                   | `false` | â€”                                                             |
-| `completed_at`    | `TIMESTAMPTZ`  | NULLABLE                                   | â€”       | â€”                                                             |
-| `sort_order`      | `INTEGER`      | NOT NULL                                   | `0`     | â€”                                                             |
-| `created_at`      | `TIMESTAMPTZ`  | NOT NULL                                   | `NOW()` | â€”                                                             |
+| `id`              | `UUID`         | PK                                         | —       | —                                                             |
+| `relationship_id` | `UUID`         | FK â†’ mentorship_relationships.id, NOT NULL | —       | —                                                             |
+| `title`           | `VARCHAR(255)` | NOT NULL                                   | —       | —                                                             |
+| `category`        | `VARCHAR(50)`  | NOT NULL                                   | —       | resume, linkedin, applications, interviews, networking, offer |
+| `completed`       | `BOOLEAN`      | NOT NULL                                   | `false` | —                                                             |
+| `completed_at`    | `TIMESTAMPTZ`  | NULLABLE                                   | —       | —                                                             |
+| `sort_order`      | `INTEGER`      | NOT NULL                                   | `0`     | —                                                             |
+| `created_at`      | `TIMESTAMPTZ`  | NOT NULL                                   | `NOW()` | —                                                             |
 
 ### Table: `mentor_resources`
 
 | Column                | Type           | Constraints               | Default     | Description                                                        |
 | --------------------- | -------------- | ------------------------- | ----------- | ------------------------------------------------------------------ |
-| `id`                  | `UUID`         | PK                        | â€”           | â€”                                                                  |
-| `mentor_id`           | `UUID`         | FK â†’ mentors.id, NOT NULL | â€”           | Owner                                                              |
-| `title`               | `VARCHAR(255)` | NOT NULL                  | â€”           | â€”                                                                  |
-| `description`         | `TEXT`         | NULLABLE                  | â€”           | â€”                                                                  |
-| `resource_type`       | `VARCHAR(50)`  | NOT NULL                  | â€”           | pdf, link, video, article, template, course, job_board             |
-| `url`                 | `VARCHAR(500)` | NULLABLE                  | â€”           | External URL                                                       |
-| `file_key`            | `VARCHAR(500)` | NULLABLE                  | â€”           | R2 key if uploaded                                                 |
-| `file_name`           | `VARCHAR(255)` | NULLABLE                  | â€”           | Original filename                                                  |
+| `id`                  | `UUID`         | PK                        | —           | —                                                                  |
+| `mentor_id`           | `UUID`         | FK â†’ mentors.id, NOT NULL | —           | Owner                                                              |
+| `title`               | `VARCHAR(255)` | NOT NULL                  | —           | —                                                                  |
+| `description`         | `TEXT`         | NULLABLE                  | —           | —                                                                  |
+| `resource_type`       | `VARCHAR(50)`  | NOT NULL                  | —           | pdf, link, video, article, template, course, job_board             |
+| `url`                 | `VARCHAR(500)` | NULLABLE                  | —           | External URL                                                       |
+| `file_key`            | `VARCHAR(500)` | NULLABLE                  | —           | R2 key if uploaded                                                 |
+| `file_name`           | `VARCHAR(255)` | NULLABLE                  | —           | Original filename                                                  |
 | `category`            | `VARCHAR(100)` | NOT NULL                  | `'general'` | resume, interview, career_path, skills, networking, certifications |
-| `tags`                | `JSONB`        | NULLABLE                  | â€”           | Array of tags                                                      |
+| `tags`                | `JSONB`        | NULLABLE                  | —           | Array of tags                                                      |
 | `shared_count`        | `INTEGER`      | NOT NULL                  | `0`         | Times shared                                                       |
 | `is_academy_resource` | `BOOLEAN`      | NOT NULL                  | `false`     | Curated by academy                                                 |
-| `created_at`          | `TIMESTAMPTZ`  | NOT NULL                  | `NOW()`     | â€”                                                                  |
-| `updated_at`          | `TIMESTAMPTZ`  | NOT NULL                  | `NOW()`     | â€”                                                                  |
+| `created_at`          | `TIMESTAMPTZ`  | NOT NULL                  | `NOW()`     | —                                                                  |
+| `updated_at`          | `TIMESTAMPTZ`  | NOT NULL                  | `NOW()`     | —                                                                  |
 
 ### Table: `mentor_messages`
 
 | Column            | Type           | Constraints                            | Default  | Description                       |
 | ----------------- | -------------- | -------------------------------------- | -------- | --------------------------------- |
-| `id`              | `UUID`         | PK                                     | â€”        | â€”                                 |
-| `conversation_id` | `UUID`         | FK â†’ mentor_conversations.id, NOT NULL | â€”        | â€”                                 |
-| `sender_id`       | `UUID`         | FK â†’ users.id, NOT NULL                | â€”        | â€”                                 |
-| `sender_type`     | `VARCHAR(20)`  | NOT NULL                               | â€”        | mentor, mentee                    |
-| `content`         | `TEXT`         | NOT NULL                               | â€”        | Message body                      |
+| `id`              | `UUID`         | PK                                     | —        | —                                 |
+| `conversation_id` | `UUID`         | FK â†’ mentor_conversations.id, NOT NULL | —        | —                                 |
+| `sender_id`       | `UUID`         | FK â†’ users.id, NOT NULL                | —        | —                                 |
+| `sender_type`     | `VARCHAR(20)`  | NOT NULL                               | —        | mentor, mentee                    |
+| `content`         | `TEXT`         | NOT NULL                               | —        | Message body                      |
 | `content_type`    | `VARCHAR(50)`  | NOT NULL                               | `'text'` | text, image, file, resource_share |
-| `attachment_url`  | `VARCHAR(500)` | NULLABLE                               | â€”        | File URL if attachment            |
-| `attachment_name` | `VARCHAR(255)` | NULLABLE                               | â€”        | â€”                                 |
-| `read_at`         | `TIMESTAMPTZ`  | NULLABLE                               | â€”        | â€”                                 |
-| `created_at`      | `TIMESTAMPTZ`  | NOT NULL                               | `NOW()`  | â€”                                 |
+| `attachment_url`  | `VARCHAR(500)` | NULLABLE                               | —        | File URL if attachment            |
+| `attachment_name` | `VARCHAR(255)` | NULLABLE                               | —        | —                                 |
+| `read_at`         | `TIMESTAMPTZ`  | NULLABLE                               | —        | —                                 |
+| `created_at`      | `TIMESTAMPTZ`  | NOT NULL                               | `NOW()`  | —                                 |
 
 ### Table: `mentor_conversations`
 
 | Column                 | Type           | Constraints                                | Default | Description |
 | ---------------------- | -------------- | ------------------------------------------ | ------- | ----------- |
-| `id`                   | `UUID`         | PK                                         | â€”       | â€”           |
-| `mentor_id`            | `UUID`         | FK â†’ mentors.id, NOT NULL                  | â€”       | â€”           |
-| `student_id`           | `UUID`         | FK â†’ students.id, NOT NULL                 | â€”       | â€”           |
-| `relationship_id`      | `UUID`         | FK â†’ mentorship_relationships.id, NOT NULL | â€”       | â€”           |
-| `last_message_at`      | `TIMESTAMPTZ`  | NULLABLE                                   | â€”       | â€”           |
-| `last_message_preview` | `VARCHAR(200)` | NULLABLE                                   | â€”       | â€”           |
-| `unread_count_mentor`  | `INTEGER`      | NOT NULL                                   | `0`     | â€”           |
-| `created_at`           | `TIMESTAMPTZ`  | NOT NULL                                   | `NOW()` | â€”           |
+| `id`                   | `UUID`         | PK                                         | —       | —           |
+| `mentor_id`            | `UUID`         | FK â†’ mentors.id, NOT NULL                  | —       | —           |
+| `student_id`           | `UUID`         | FK â†’ students.id, NOT NULL                 | —       | —           |
+| `relationship_id`      | `UUID`         | FK â†’ mentorship_relationships.id, NOT NULL | —       | —           |
+| `last_message_at`      | `TIMESTAMPTZ`  | NULLABLE                                   | —       | —           |
+| `last_message_preview` | `VARCHAR(200)` | NULLABLE                                   | —       | —           |
+| `unread_count_mentor`  | `INTEGER`      | NOT NULL                                   | `0`     | —           |
+| `created_at`           | `TIMESTAMPTZ`  | NOT NULL                                   | `NOW()` | —           |
 
 **Indexes:** UNIQUE(mentor_id, student_id)
 
@@ -875,19 +875,19 @@
 
 | Column                | Type          | Constraints                                | Default | Description |
 | --------------------- | ------------- | ------------------------------------------ | ------- | ----------- |
-| `id`                  | `UUID`        | PK                                         | â€”       | â€”           |
-| `relationship_id`     | `UUID`        | FK â†’ mentorship_relationships.id, NOT NULL | â€”       | â€”           |
-| `assessed_at`         | `TIMESTAMPTZ` | NOT NULL                                   | `NOW()` | â€”           |
-| `overall_score`       | `INTEGER`     | NOT NULL                                   | â€”       | 0-100       |
-| `resume_score`        | `INTEGER`     | NULLABLE                                   | â€”       | 0-100       |
-| `portfolio_score`     | `INTEGER`     | NULLABLE                                   | â€”       | 0-100       |
-| `linkedin_score`      | `INTEGER`     | NULLABLE                                   | â€”       | 0-100       |
-| `skills_score`        | `INTEGER`     | NULLABLE                                   | â€”       | 0-100       |
-| `networking_score`    | `INTEGER`     | NULLABLE                                   | â€”       | 0-100       |
-| `interview_readiness` | `INTEGER`     | NULLABLE                                   | â€”       | 0-100       |
-| `assessed_by`         | `UUID`        | FK â†’ mentors.id, NOT NULL                  | â€”       | â€”           |
-| `notes`               | `TEXT`        | NULLABLE                                   | â€”       | â€”           |
-| `created_at`          | `TIMESTAMPTZ` | NOT NULL                                   | `NOW()` | â€”           |
+| `id`                  | `UUID`        | PK                                         | —       | —           |
+| `relationship_id`     | `UUID`        | FK â†’ mentorship_relationships.id, NOT NULL | —       | —           |
+| `assessed_at`         | `TIMESTAMPTZ` | NOT NULL                                   | `NOW()` | —           |
+| `overall_score`       | `INTEGER`     | NOT NULL                                   | —       | 0-100       |
+| `resume_score`        | `INTEGER`     | NULLABLE                                   | —       | 0-100       |
+| `portfolio_score`     | `INTEGER`     | NULLABLE                                   | —       | 0-100       |
+| `linkedin_score`      | `INTEGER`     | NULLABLE                                   | —       | 0-100       |
+| `skills_score`        | `INTEGER`     | NULLABLE                                   | —       | 0-100       |
+| `networking_score`    | `INTEGER`     | NULLABLE                                   | —       | 0-100       |
+| `interview_readiness` | `INTEGER`     | NULLABLE                                   | —       | 0-100       |
+| `assessed_by`         | `UUID`        | FK â†’ mentors.id, NOT NULL                  | —       | —           |
+| `notes`               | `TEXT`        | NULLABLE                                   | —       | —           |
+| `created_at`          | `TIMESTAMPTZ` | NOT NULL                                   | `NOW()` | —           |
 
 **Indexes:** UNIQUE(relationship_id, assessed_at)
 
@@ -1162,7 +1162,7 @@ interface CreateSessionRequest {
 
 **Auth:** Required (mentor, owner)
 
-**Response:** `{ session: MentorSessionFull }` â€” status changes to `in_progress`, `actualStartedAt` set
+**Response:** `{ session: MentorSessionFull }` — status changes to `in_progress`, `actualStartedAt` set
 
 ### `POST /api/mentor/sessions/:id/complete`
 
@@ -1212,7 +1212,7 @@ interface PendingRequestsResponse {
 
 **Auth:** Required (mentor)
 
-**Response:** `{ relationship: MentorshipRelationship }` â€” status â†’ `active`
+**Response:** `{ relationship: MentorshipRelationship }` — status â†’ `active`
 
 **Error Codes:**
 
@@ -1835,7 +1835,7 @@ Step 1: Notification badge appears on dashboard: "2 pending requests"
   â†’ Mentor clicks notification â†’ opens pending requests
 
 Step 2: Review request from Mike Brown:
-  - Student: Mike Brown â€” Cybersecurity Fundamentals
+  - Student: Mike Brown — Cybersecurity Fundamentals
   - Reason: "Looking for help with resume and career guidance"
   - Requested: 2 days ago
 
@@ -1862,7 +1862,7 @@ Alternative:
 ### Journey 7.3: Conducting a Mentorship Session
 
 ```
-Step 1: Dashboard shows "Today 3:00 PM â€” Alex Johnson â€” Career Roadmap"
+Step 1: Dashboard shows "Today 3:00 PM — Alex Johnson — Career Roadmap"
   â†’ Mentor clicks "Prepare" â†’ opens session with prep notes from last session
 
 Step 2: At session time, clicks "Join" â†’ meeting URL opens in new tab
@@ -1924,7 +1924,7 @@ Step 4: Submits review â†’ POST /api/mentor/mentees/:id/portfolio/review
   â†’ Alex notified: "Your mentor has reviewed your portfolio. [View Feedback]"
 
 Step 5: Alex makes changes, marks as ready for re-review
-  â†’ Mentor notified: "Alex updated portfolio â€” ready for re-review"
+  â†’ Mentor notified: "Alex updated portfolio — ready for re-review"
   â†’ Mentor reviews again â†’ approves
   â†’ Portfolio section scores updated in readiness assessment
 
@@ -2823,5 +2823,5 @@ export const MentorResourceSchema = z.object({
 
 ---
 
-_End of Mentor Actor Plan â€” 05_
+_End of Mentor Actor Plan — 05_
 
