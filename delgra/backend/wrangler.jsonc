@@ -1,41 +1,32 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "delgra-api",
+  "name": "delgra",
   "main": "src/index.ts",
   "compatibility_date": "2025-08-15",
   "compatibility_flags": ["nodejs_compat"],
   "observability": { "enabled": true },
 
-  // NOTE: `account_id` is intentionally omitted. Run `wrangler login` once and
-  // Wrangler resolves it, or set CLOUDFLARE_ACCOUNT_ID in CI. See
-  // docs/DEPLOYMENT.md — you must also create the D1/R2/KV resources and paste
-  // their ids back in here before the first remote deploy.
   "vars": {
     "APP_ENV": "production",
-    // Comma-separated list of origins allowed to call the API with credentials.
     "FRONTEND_ORIGINS": "http://localhost:5173,http://127.0.0.1:5173,https://ledger.delgra.example",
     "APP_URL": "https://ledger.delgra.example",
     "COOKIE_SECURE": "true",
     "SESSION_TTL_MINUTES": "10080",
-    // Upload ceiling for R2 attachments.
     "MAX_UPLOAD_BYTES": "10485760"
   },
 
-  {
   "kv_namespaces": [
     { "binding": "RATE_LIMIT", "id": "f044a32617a44503b55b63ae033ab4e7" }
-  ]
-},
+  ],
 
   "d1_databases": [
-    { "binding": "DB", "database_name": "delgra-db", "database_id": "REPLACE_WITH_D1_DATABASE_ID", "migrations_dir": "migrations" }
+    { "binding": "DB", "database_name": "delgra-db", "database_id": "820bba6c-c457-4bba-a056-55029f59c444", "migrations_dir": "migrations" }
   ],
 
   "r2_buckets": [
     { "binding": "UPLOADS", "bucket_name": "delgra-uploads" }
   ],
 
-  // Nightly: flag overdue invoices, expire stale sessions, prune R2 orphans.
   "triggers": {
     "crons": ["15 6 * * *"]
   }
