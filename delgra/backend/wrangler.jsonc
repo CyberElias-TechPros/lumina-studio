@@ -8,8 +8,8 @@
 
   "vars": {
     "APP_ENV": "production",
-    "FRONTEND_ORIGINS": "http://localhost:5173,http://127.0.0.1:5173,https://ledger.delgra.example",
-    "APP_URL": "https://ledger.delgra.example",
+    "FRONTEND_ORIGINS": "http://localhost:5173,http://127.0.0.1:5173,https://delgra.freegameplay.site,https://frontend-phi-one-blilpsvwav.vercel.app",
+    "APP_URL": "https://delgra.freegameplay.site/",
     "COOKIE_SECURE": "true",
     "SESSION_TTL_MINUTES": "10080",
     "MAX_UPLOAD_BYTES": "10485760"
