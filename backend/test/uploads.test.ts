@@ -88,6 +88,54 @@ describe("R2 uploads", () => {
     expect(foreign.status).toBe(403);
   });
 
+  it("serves uploaded SVG as an attachment with a sandboxed CSP (no active content on API origin)", async () => {
+    const svg = `<svg xmlns="http://www.w3.org/2000/svg"><script>alert(1)</script><rect width="4" height="4"/></svg>`;
+    const presign = await api("/v1/uploads/presign", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", ...cookieHeaders(student.cookie) },
+      body: JSON.stringify({ filename: "logo.svg", contentType: "image/svg+xml" }),
+    });
+    expect(presign.status).toBe(201);
+    const { key } = (await presign.json()) as { key: string };
+
+    const upload = await api(`/v1/uploads/${key}`, {
+      method: "PUT",
+      headers: { "Content-Type": "image/svg+xml", ...cookieHeaders(student.cookie) },
+      body: svg,
+    });
+    expect(upload.status).toBe(201);
+
+    const download = await api(`/v1/uploads/${key}`, {
+      headers: cookieHeaders(student.cookie),
+    });
+    expect(download.status).toBe(200);
+    expect(download.headers.get("content-disposition")).toMatch(/^attachment/);
+    expect(download.headers.get("content-security-policy")).toBe("sandbox");
+    expect(download.headers.get("x-content-type-options")).toBe("nosniff");
+  });
+
+  it("keeps inert file types inline-previewable", async () => {
+    const presign = await api("/v1/uploads/presign", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", ...cookieHeaders(student.cookie) },
+      body: JSON.stringify({ filename: "notes2.txt", contentType: "text/plain" }),
+    });
+    const { key } = (await presign.json()) as { key: string };
+    await api(`/v1/uploads/${key}`, {
+      method: "PUT",
+      headers: { "Content-Type": "text/plain", ...cookieHeaders(student.cookie) },
+      body: "plain text stays inline",
+    });
+
+    const download = await api(`/v1/uploads/${key}`, {
+      headers: cookieHeaders(student.cookie),
+    });
+    expect(download.status).toBe(200);
+    expect(download.headers.get("content-disposition")).toMatch(/^inline/);
+    expect(download.headers.get("content-security-policy")).toBeNull();
+    expect(download.headers.get("x-content-type-options")).toBe("nosniff");
+  });
+
   it("requires auth everywhere", async () => {
     const authChecks = [
       ["POST", "/v1/uploads/presign", { body: "" }],

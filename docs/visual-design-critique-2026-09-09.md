@@ -91,15 +91,15 @@ functional role dashboards into visual experiments (§33).
 
 ## Self-critique (§54) — weakest areas found and fixed
 
-| Check | Finding | Fix |
-| --- | --- | --- |
-| Motion | JS animations ignored reduced-motion | `MotionProvider` + component guards |
-| Interaction | Dropdown menus mouse-only | Keyboard disclosure w/ Escape + focus rings |
-| Depth | Hero composition flat while scrolling | Parallax on art column + floating card |
-| Typography | Fixed h1 sizes, no editorial scale | clamp `text-hero`/`text-h2`, tabular numerals |
-| Performance | Spotlight re-rendered page on mousemove | Motion-template rewrite |
-| States | 404 plain; auth pages identity-free | Branded 404; depth system on auth |
-| Texture | `noise` utility was an empty stub | Real grain layer on hero/CTA/auth |
+| Check       | Finding                                 | Fix                                           |
+| ----------- | --------------------------------------- | --------------------------------------------- |
+| Motion      | JS animations ignored reduced-motion    | `MotionProvider` + component guards           |
+| Interaction | Dropdown menus mouse-only               | Keyboard disclosure w/ Escape + focus rings   |
+| Depth       | Hero composition flat while scrolling   | Parallax on art column + floating card        |
+| Typography  | Fixed h1 sizes, no editorial scale      | clamp `text-hero`/`text-h2`, tabular numerals |
+| Performance | Spotlight re-rendered page on mousemove | Motion-template rewrite                       |
+| States      | 404 plain; auth pages identity-free     | Branded 404; depth system on auth             |
+| Texture     | `noise` utility was an empty stub       | Real grain layer on hero/CTA/auth             |
 
 ## Deliberately NOT done
 

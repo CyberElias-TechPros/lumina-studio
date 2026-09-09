@@ -1,9 +1,12 @@
-﻿const SITE_NAME = "Cyber Elias Academy";
+const SITE_NAME = "Cyber Elias Academy";
 const SITE_URL = "https://cea.ng";
 const SITE_PHONE = "+234 905 862 8386";
 const SITE_EMAIL = "hello@cea.ng";
 const SITE_LOGO = "/icon.svg";
-const TWITTER_HANDLE = "@cea_ng";
+// Keep these in sync with the footer social links (src/components/marketing/
+// site-footer.tsx). Entity profiles must match across structured data and the
+// visible page or the knowledge-graph disambiguation weakens.
+const TWITTER_HANDLE = "@cybeliasacademy";
 
 export interface SeoInput {
   title: string;
@@ -92,9 +95,10 @@ export const ORGANIZATION_LD = {
   },
   sameAs: [
     "https://www.linkedin.com/company/cyber-elias-academy",
-    "https://twitter.com/cea_ng",
-    "https://www.instagram.com/cea_ng",
-    "https://www.youtube.com/@cea_ng",
+    "https://www.facebook.com/cybereliasacademy/",
+    "https://x.com/cybeliasacademy",
+    "https://www.instagram.com/cyberelias.tk/",
+    "https://www.youtube.com/@CyberEliasAcademy",
   ],
 };
 
@@ -128,19 +132,15 @@ export const LOCAL_BUSINESS_LD = {
   priceRange: "₦₦",
 };
 
+// NOTE: deliberately no SearchAction potentialAction — the site has no
+// server-rendered /search route; search lives inside /library, /glossary and
+// /programs. Advertising a sitelinks search box that 404s is invalid markup
+// noise, so the WebSite node stays minimal and truthful.
 export const WEBSITE_LD = {
   "@context": "https://schema.org",
   "@type": "WebSite",
   name: SITE_NAME,
   url: SITE_URL,
-  potentialAction: {
-    "@type": "SearchAction",
-    target: {
-      "@type": "EntryPoint",
-      urlTemplate: `${SITE_URL}/search?q={search_term_string}`,
-    },
-    "query-input": "required name=search_term_string",
-  },
 };
 export function getPageHead(input: SeoInput) {
   const { meta, links } = buildSeo(input);

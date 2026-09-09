@@ -4,10 +4,10 @@
 
 | Layer      | Stack                                                                                              |
 | ---------- | -------------------------------------------------------------------------------------------------- |
-| Frontend   | React 19 · TanStack Start (SSR) · Vite · Tailwind v4 · shadcn/ui · Motion · TanStack Query          |
+| Frontend   | React 19 · TanStack Start (SSR) · Vite · Tailwind v4 · shadcn/ui · Motion · TanStack Query         |
 | Backend    | Cloudflare Workers · Hono · Zod                                                                    |
-| Data       | Cloudflare D1 (SQLite) · R2 (uploads) · KV (flags, rate limits) · Durable Objects (realtime rooms)  |
-| Deployment | Frontend → Vercel (SSR via Nitro) · Backend → Cloudflare Workers (`cea-api.cyber-e54.workers.dev`)   |
+| Data       | Cloudflare D1 (SQLite) · R2 (uploads) · KV (flags, rate limits) · Durable Objects (realtime rooms) |
+| Deployment | Frontend → Vercel (SSR via Nitro) · Backend → Cloudflare Workers (`cea-api.cyber-e54.workers.dev`) |
 
 > The original project sketch said "Next.js" — the repo actually builds on **TanStack Start** (React 19 + Vite). All UI is framework-agnostic React; only route files and data-loading wrappers would change in a port.
 
@@ -69,11 +69,16 @@ cd backend
 npm install
 npm run db:migrate:local   # apply D1 migrations to the local miniflare DB
 npm run db:seed:local      # idempotent seeds (re-runnable)
-npm run dev                # wrangler dev → http://localhost:8787
+npm run dev                # wrangler dev -e dev → http://localhost:8787
 
 # from the repo root
 VITE_API_URL=http://localhost:8787 npm run dev
 ```
+
+> The Worker's `wrangler.jsonc` is environment-split: the **top-level** config is
+> what `wrangler deploy` ships (production origins only, `APP_ENV=production`);
+> the **`dev` environment** (`npm run dev` uses it via `-e dev`) adds localhost
+> CORS origins and enables dev magic-link tokens. Never deploy with `-e`.
 
 Copy `.env.example` → `.env` for public site keys (API URL, Turnstile, Paystack public key, VAPID public key). **Mock mode**: leaving `VITE_API_URL` empty runs against `src/lib/api/mocks` — fine for development; production builds should always set `VITE_API_URL` (mocks are opt-in via `VITE_ENABLE_MOCKS=true` only).
 
@@ -141,6 +146,7 @@ Production: **www.cea.ng** (frontend, Vercel) · **cea-api.cyber-e54.workers.dev
 - `docs/role-gap-matrix.md` — wiring status per role suite (all `/app/**` pages live)
 - `docs/audit-mock-data-gaps.md` — mock-data audit + remediation log
 - `plans/CEA_OS_MASTER_PLAN.md` — the original product master plan
+
 # Lumina Studio — Cyber Elias Academy (CEA)
 
 Production web platform for **Cyber Elias Academy** (cea.ng), a Nigerian digital
@@ -152,14 +158,14 @@ growth, design, government compliance, and more).
 
 ## Architecture
 
-| Layer | Technology | Hosting |
-| --- | --- | --- |
-| Frontend | TanStack Start (React 19, file-based routing) + TanStack Router/Query, Tailwind CSS v4, Radix UI components, motion | **Vercel** (Nitro Build Output API) |
-| Backend API | Hono on Cloudflare Workers (`/v1/*`) | **Cloudflare Workers** |
-| Database | Cloudflare D1 (SQL migrations + generated seeds) | **Cloudflare D1** |
-| Cache / config / feature flags | Cloudflare KV (`FLAGS`, `RATE_LIMIT`) | Cloudflare |
-| Object storage | Cloudflare R2 (`UPLOADS`) | Cloudflare |
-| Real-time rooms | Durable Object `RealtimeRoom` (WebSockets) | Cloudflare |
+| Layer                          | Technology                                                                                                          | Hosting                             |
+| ------------------------------ | ------------------------------------------------------------------------------------------------------------------- | ----------------------------------- |
+| Frontend                       | TanStack Start (React 19, file-based routing) + TanStack Router/Query, Tailwind CSS v4, Radix UI components, motion | **Vercel** (Nitro Build Output API) |
+| Backend API                    | Hono on Cloudflare Workers (`/v1/*`)                                                                                | **Cloudflare Workers**              |
+| Database                       | Cloudflare D1 (SQL migrations + generated seeds)                                                                    | **Cloudflare D1**                   |
+| Cache / config / feature flags | Cloudflare KV (`FLAGS`, `RATE_LIMIT`)                                                                               | Cloudflare                          |
+| Object storage                 | Cloudflare R2 (`UPLOADS`)                                                                                           | Cloudflare                          |
+| Real-time rooms                | Durable Object `RealtimeRoom` (WebSockets)                                                                          | Cloudflare                          |
 
 The frontend never talks to a traditional Node server; it talks to the Worker
 API over HTTPS. All `/v1/*` requests pass a declarative RBAC guard
@@ -212,7 +218,9 @@ npm test                    # 713 tests across 64 suites (ai.test.ts excluded:
 # Local Worker + D1 (first time: apply migrations then seeds)
 npm run db:migrate:local
 npm run db:seed:local
-npm run dev                 # wrangler dev --local  → http://localhost:8787
+npm run dev                 # wrangler dev --local -e dev → http://localhost:8787
+                            #   (dev env = localhost CORS + dev tokens; top-level config
+                            #    is production-only and is what `wrangler deploy` ships)
 ```
 
 ### Mock mode vs live mode

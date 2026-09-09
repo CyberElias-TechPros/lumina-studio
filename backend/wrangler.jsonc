@@ -9,7 +9,7 @@
   },
   "vars": {
     "APP_ENV": "production",
-    "FRONTEND_ORIGINS": "http://localhost:5173,http://127.0.0.1:5173,http://localhost:8081,http://127.0.0.1:8081,https://cea-os.vercel.app,https://cea.ng,https://www.cea.ng",
+    "FRONTEND_ORIGINS": "https://cea.ng,https://www.cea.ng,https://cea-os.vercel.app",
     "UPLOADS_PRESIGN_URL": "",
     "APP_URL": "https://cea.ng",
     // Secrets are configured with `wrangler secret put`; do not place them in vars.
@@ -55,4 +55,42 @@
       "new_sqlite_classes": ["RealtimeRoom"],
     },
   ],
+  // Local development profile: run with `wrangler dev -e dev` (npm run dev).
+  // Keeps localhost origins and dev magic-link tokens OUT of the deployed
+  // production config — the top-level section above is what `wrangler deploy`
+  // ships. Wrangler does NOT inherit bindings into environments, so the dev
+  // profile re-declares them (same resources; only vars differ).
+  "env": {
+    "dev": {
+      "vars": {
+        "APP_ENV": "development",
+        "FRONTEND_ORIGINS": "http://localhost:5173,http://127.0.0.1:5173,http://localhost:8081,http://127.0.0.1:8081,http://localhost:3000,http://127.0.0.1:3000,http://localhost:8787,http://127.0.0.1:8787",
+        "APP_URL": "http://localhost:5173",
+        "UPLOADS_PRESIGN_URL": "",
+        // "console" provider prints emails instead of sending; secrets (Re-send,
+        // Paystack, Turnstile, VAPID) stay in the top-level production deploy.
+        "EMAIL_PROVIDER": "console",
+        "EMAIL_FROM": "Cyber Elias Academy <dev@cea.ng>",
+        // Harmless in dev: the AI lib mocks until the AI_API_KEY secret exists.
+        "AI_BASE_URL": "https://integrate.api.nvidia.com/v1",
+        "AI_MODEL": "nvidia/llama-3.3-nemotron-super-49b-v1",
+      },
+      "kv_namespaces": [
+        { "binding": "FLAGS", "id": "8077455f347342c293f4df75faa65723" },
+        { "binding": "RATE_LIMIT", "id": "cecad90caa824e689d7d7dfb334fed0d" },
+      ],
+      "d1_databases": [
+        {
+          "binding": "DB",
+          "database_name": "cea-db",
+          "database_id": "f673c459-0dfb-4e77-be5c-38ccbdc58838",
+        },
+      ],
+      "r2_buckets": [{ "binding": "UPLOADS", "bucket_name": "cea-uploads" }],
+      "durable_objects": {
+        "bindings": [{ "name": "REALTIME_ROOMS", "class_name": "RealtimeRoom" }],
+      },
+      "migrations": [{ "tag": "v1", "new_sqlite_classes": ["RealtimeRoom"] }],
+    },
+  },
 }
