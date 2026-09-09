@@ -23,6 +23,7 @@ export const newBlogPosts: {
     date: "2026-08-10",
     readingTime: "11 min",
     engine: "career",
+    imageUrl: "https://picsum.photos/seed/cea-starting-tech-career-nigeria-2026/800/400",
     body: [
       "If you are reading this, you are probably considering a move into tech or trying to understand where the industry actually stands. The good news: demand for Nigerian tech talent is real and growing. The harder truth: the path in has become more specific than the broad promises of a few years ago.",
       "The learners we see succeed tend to share a few patterns. They pick one domain and go deep rather than sampling everything. They build things that work, not just tutorials they followed. They share their work publicly, even when it is imperfect. And they find a community that holds them accountable.",
@@ -59,6 +60,7 @@ export const newBlogPosts: {
     date: "2026-08-05",
     readingTime: "11 min",
     engine: "learning",
+    imageUrl: "https://picsum.photos/seed/cea-choosing-bootcamp-and-university/800/400",
     body: [
       "This is one of the most common questions we get, and the honest answer is that it depends. Your financial situation, your learning style, your timeline, and your goals all matter.",
       "A computer science degree gives you depth: algorithms, theory, systems thinking. It takes years and costs significant money, but it builds a foundation that lasts across technology cycles.",
@@ -88,6 +90,7 @@ export const newBlogPosts: {
     category: "Cybersecurity",
     author: "Cyber Elias Academy",
     role: "Team CEA",
+    imageUrl: "https://picsum.photos/seed/cea-cybersecurity-small-business/800/400",
     date: "2026-07-28",
     readingTime: "12 min",
     engine: "learning",
@@ -122,6 +125,7 @@ export const newBlogPosts: {
     date: "2026-07-22",
     readingTime: "10 min",
     engine: "career",
+    imageUrl: "https://picsum.photos/seed/cea-building-first-web-portfolio/800/400",
     body: [
       "A portfolio is not a collection of everything you have ever built. It is a curated argument for why someone should hire you. Every project you include should earn its place by demonstrating something specific.",
       "Start with three to four projects. For each one, answer three questions: what problem did you solve, what did you specifically do, and what was the result?",
@@ -154,6 +158,7 @@ export const newBlogPosts: {
     role: "Team CEA",
     date: "2026-07-15",
     readingTime: "11 min",
+    imageUrl: "https://picsum.photos/seed/cea-data-analytics-nigeria-career/800/400",
     engine: "career",
     body: [
       "Data analytics is often described as one of the most accessible paths into tech. You do not need a computer science degree. You do need to be curious, comfortable with uncertainty, and willing to ask better questions.",
@@ -186,6 +191,7 @@ export const newBlogPosts: {
     date: "2026-07-08",
     readingTime: "11 min",
     engine: "erp",
+    imageUrl: "https://picsum.photos/seed/cea-cloud-computing-nigerian-businesses/800/400",
     body: [
       "Cloud computing has become one of those words that means everything and nothing. For Nigerian businesses, it is worth cutting through the noise to understand what it actually offers.",
       "The practical benefits for a Nigerian SME are real. No more worrying about generator failures taking down your server. No more buying hardware that is outdated in three years. Your team can work from office or home.",

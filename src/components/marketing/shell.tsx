@@ -120,10 +120,24 @@ export function PageHero({
   artWidth?: string;
 }) {
   return (
-    <section className="bg-card/60 noise relative overflow-hidden border-b">
-      <Aurora className="opacity-60" />
-      <Spotlight />
-      <div className="grid-lines pointer-events-none absolute inset-0 opacity-40 [mask-image:radial-gradient(70%_60%_at_50%_0%,black,transparent)]" />
+    <section
+      className={cn(
+        "relative overflow-hidden border-b",
+        "motion-reduce:!bg-transparent motion-reduce:!no-pointer-events",
+      )}
+    >
+      {/* Atmospheric aura that respects reduced‑motion */}
+      <Aurora
+        className={cn("opacity-60 motion-reduce:opacity-0", { "motion-reduce:transition": "none" })}
+      />
+      <Spotlight className="motion-reduce:opacity-0" />
+      {/* Subtle grid that degrades gracefully */}
+      <div
+        className={cn(
+          "pointer-events-none absolute inset-0 opacity-40 motion-reduce:opacity-0",
+          "[mask-image:radial-gradient(70%_60%_at_50%_0%,black,transparent)]",
+        )}
+      />
       <div className="container-page relative py-20 md:py-28">
         <div className={cn("grid items-center gap-12", art && "lg:grid-cols-[1fr_auto]")}>
           <div>
@@ -142,7 +156,10 @@ export function PageHero({
           </div>
           {art && (
             <Reveal delay={0.16} className="hidden lg:block">
-              <Parallax speed={0.055}>
+              <Parallax
+                speed={0.055}
+                className={cn("motion-reduce:transition-none", { "motion-reduce:transform": "none" })}
+              >
                 <div
                   className={cn(
                     "shadow-elevated relative h-72 w-80 overflow-hidden rounded-[2rem] border transition-transform duration-500 hover:rotate-[-0.6deg] hover:scale-[1.015] md:h-80 md:w-96 xl:h-96 xl:w-[24rem]",
@@ -157,6 +174,7 @@ export function PageHero({
           )}
         </div>
       </div>
+      {/* Hairline brand gradient at the bottom */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent"
@@ -167,25 +185,44 @@ export function PageHero({
 
 export function StatBand() {
   return (
-    <section className="border-y">
-      <div className="container-page grid divide-y sm:grid-cols-2 sm:divide-y-0 lg:grid-cols-4 lg:divide-x">
-        {stats.map((s, i) => (
-          <Reveal key={s.label} delay={i * 0.08} className="group relative px-2 py-10 text-center">
-            <span
-              aria-hidden="true"
-              className="bg-gradient-brand absolute top-0 left-1/2 h-[3px] w-14 -translate-x-1/2 origin-left scale-x-0 rounded-full opacity-0 transition-all duration-500 group-hover:scale-x-100 group-hover:opacity-80"
-            />
-            <p className="font-display text-gradient text-4xl font-extrabold tabular-nums sm:text-5xl">
-              <Counter
-                to={s.value}
-                suffix={s.suffix}
-                decimals={"decimals" in s ? (s.decimals as number) : 0}
+    <section
+      className={cn(
+        "relative border-y border-border/20",
+        "motion-reduce:!border-0",
+      )}
+    >
+      <div className="container-page relative py-12">
+        <div className="grid divide-y sm:grid-cols-2 sm:divide-y-0 lg:grid-cols-4 lg:divide-x">
+          {stats.map((s, i) => (
+            <Reveal
+              key={s.label}
+              delay={i * 0.08}
+              className="group relative px-2 py-10 text-center"
+            >
+              <span
+                aria-hidden="true"
+                className={cn(
+                  "bg-gradient-brand absolute top-0 left-1/2 h-[3px] w-14 -translate-x-1/2 origin-left rounded-full opacity-0 transition-all duration-500 group-hover:scale-x-100 group-hover:opacity-80",
+                  "motion-reduce:transition-none",
+                  "motion-reduce:scale-x-0",
+                  "motion-reduce:opacity-0",
+                )}
               />
-            </p>
-            <p className="text-muted-foreground mt-2 text-sm font-medium">{s.label}</p>
-          </Reveal>
-        ))}
+              <p className="font-display text-gradient text-4xl font-extrabold tabular-nums sm:text-5xl">
+                <Counter
+                  to={s.value}
+                  suffix={s.suffix}
+                  decimals={"decimals" in s ? (s.decimals as number) : 0}
+                />
+              </p>
+              <p className="text-muted-foreground mt-2 text-sm font-medium">{s.label}</p>
+            </Reveal>
+          ))}
+        </div>
       </div>
+      {/* Subtle atmospheric overlay */}
+      <Aurora className="opacity-20 motion-reduce:opacity-0" />
+      <Spotlight className="motion-reduce:opacity-0" />
     </section>
   );
 }
@@ -202,15 +239,23 @@ export function CTASection({
   secondary?: { label: string; to: string };
 }) {
   return (
-    <section className="container-page py-20 md:py-28">
+    <section className="container-page py-20 md:py-28 relative">
       <Reveal>
-        <div className="bg-gradient-ink text-ink-foreground shadow-elevated noise relative overflow-hidden rounded-3xl px-8 py-16 md:px-16 md:py-20">
-          <Aurora className="opacity-70" />
-          <Spotlight />
+        <div
+          className={cn(
+            "bg-gradient-brand/5 noise relative overflow-hidden rounded-3xl px-8 py-16 md:px-16 md:py-20",
+            "motion-reduce:!bg-transparent",
+          )}
+        >
+          <Aurora className="opacity-70 motion-reduce:opacity-0" />
+          <Spotlight className="motion-reduce:opacity-0" />
           {/* rim light — a hairline of brand gradient along the top edge */}
           <span
             aria-hidden="true"
-            className="bg-gradient-brand absolute inset-x-16 top-0 h-px opacity-70 [mask-image:linear-gradient(90deg,transparent,black_30%,black_70%,transparent)]"
+            className={cn(
+              "bg-gradient-brand absolute inset-x-16 top-0 h-px opacity-70 [mask-image:linear-gradient(90deg,transparent,black_30%,black_70%,transparent)]",
+              "motion-reduce:transition-none",
+            )}
           />
           <div className="relative z-[2] max-w-2xl">
             <h2 className="text-h2 font-extrabold text-balance">{title}</h2>
@@ -221,7 +266,10 @@ export function CTASection({
               <Button
                 asChild
                 size="lg"
-                className="sheen bg-gradient-brand shadow-glow border-0 transition-transform duration-200 hover:-translate-y-0.5 active:translate-y-0"
+                className={cn(
+                  "sheen bg-gradient-brand shadow-glow border-0 transition-transform duration-200 hover:-translate-y-0.5 active:translate-y-0",
+                  "motion-reduce:transition-none",
+                )}
               >
                 <Link to={primary.to}>
                   {primary.label} <ArrowRight className="ml-1.5 size-4" />
@@ -231,7 +279,10 @@ export function CTASection({
                 asChild
                 size="lg"
                 variant="outline"
-                className="border-ink-foreground/25 text-ink-foreground hover:bg-ink-foreground/10 bg-transparent"
+                className={cn(
+                  "border-ink-foreground/25 text-ink-foreground hover:bg-ink-foreground/10 bg-transparent",
+                  "motion-reduce:transition-none",
+                )}
               >
                 <Link to={secondary.to}>{secondary.label}</Link>
               </Button>

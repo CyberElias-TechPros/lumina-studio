@@ -99,6 +99,16 @@ function Article() {
           </div>
         </Reveal>
 
+{post.imageUrl && (
+          <Reveal>
+            <a href={post.imageUrl} target="_blank" rel="noopener noreferrer" className="group relative w-full rounded-2xl overflow-hidden mb-6">
+              <img src={post.imageUrl} alt={post.title} className="w-full h-64 object-cover transition-transform duration-500 hover:scale-105 motion-reduce:transition-none motion-reduce:scale-100" />
+              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 motion-reduce:transition-none">
+                <span className="text-white text-2xl">📖</span>
+              </div>
+            </a>
+          </Reveal>
+        )}
         <div className="mt-8 space-y-6">
           <Reveal delay={0.05}>
             <p className="text-muted-foreground border-l-2 pl-5 text-lg leading-relaxed font-medium text-pretty italic">
