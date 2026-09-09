@@ -1,10 +1,22 @@
 import { Link } from "@tanstack/react-router";
-import { useState } from "react";
-import { Mail, MapPin, Phone, Linkedin, Twitter, Instagram, Youtube, Facebook } from "lucide-react";
+import { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "motion/react";
+import {
+  ArrowUp,
+  Mail,
+  MapPin,
+  Phone,
+  Linkedin,
+  Twitter,
+  Instagram,
+  Youtube,
+  Facebook,
+} from "lucide-react";
 import { BrandMark } from "./site-header";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { submitContact } from "@/lib/api/marketing";
+import { SPRING } from "@/components/motion";
 
 const columns = [
   {
@@ -58,6 +70,56 @@ const columns = [
   },
 ];
 
+/** Floating return-to-top control — appears once the page has scrolled. */
+function BackToTop() {
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setVisible(window.scrollY > 900);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+  return (
+    <AnimatePresence>
+      {visible && (
+        <motion.button
+          type="button"
+          aria-label="Back to top"
+          onClick={() =>
+            window.scrollTo({
+              top: 0,
+              behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
+                ? "auto"
+                : "smooth",
+            })
+          }
+          initial={{ opacity: 0, y: 12, scale: 0.9 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          exit={{ opacity: 0, y: 12, scale: 0.9 }}
+          transition={SPRING.soft}
+          className="glass shadow-elevated text-foreground hover:text-primary fixed right-5 bottom-5 z-40 grid size-11 place-items-center rounded-full border hover:-translate-y-0.5 motion-reduce:transition-none"
+        >
+          <ArrowUp className="size-4" />
+        </motion.button>
+      )}
+    </AnimatePresence>
+  );
+}
+
+/** Engine wayfinding strip — the five-engine motif closes every page. */
+function EngineStrip() {
+  return (
+    <div
+      aria-hidden="true"
+      className="h-[3px] w-full"
+      style={{
+        backgroundImage:
+          "linear-gradient(90deg, var(--learning) 0%, var(--career) 26%, var(--services) 50%, var(--erp) 74%, var(--community) 100%)",
+      }}
+    />
+  );
+}
+
 export function SiteFooter() {
   const [submitting, setSubmitting] = useState(false);
   const [subscribed, setSubscribed] = useState(false);
@@ -88,8 +150,10 @@ export function SiteFooter() {
 
   return (
     <footer className="bg-gradient-ink text-ink-foreground relative overflow-hidden">
+      <EngineStrip />
       <div className="grid-lines pointer-events-none absolute inset-0 opacity-[0.06]" />
       <div className="bg-gradient-brand pointer-events-none absolute -top-40 left-1/4 size-[36rem] rounded-full opacity-25 blur-[130px]" />
+      <BackToTop />
 
       <div className="container-page relative py-20">
         <div className="grid gap-12 lg:grid-cols-[1.4fr_2fr]">
@@ -162,8 +226,9 @@ export function SiteFooter() {
                     <li key={l.label}>
                       <Link
                         to={l.to}
-                        className="text-ink-foreground/65 hover:text-ink-foreground text-sm transition-colors"
+                        className="text-ink-foreground/65 hover:text-ink-foreground group/link inline-flex items-center gap-1.5 text-sm transition-colors motion-reduce:transition-none"
                       >
+                        <span className="bg-ink-foreground/0 group-hover/link:bg-ink-foreground inline-block size-1 rounded-full transition-colors duration-300 motion-reduce:transition-none" />
                         {l.label}
                       </Link>
                     </li>

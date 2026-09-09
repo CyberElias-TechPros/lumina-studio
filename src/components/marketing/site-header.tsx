@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, useRouterState } from "@tanstack/react-router";
 import { AnimatePresence, motion } from "motion/react";
-import { Menu, X, ArrowUpRight, Moon, Sun, ShieldCheck } from "lucide-react";
+import { Menu, X, ArrowUpRight, Moon, Sun, ShieldCheck, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { Magnetic } from "@/components/motion";
+import { Magnetic, SPRING } from "@/components/motion";
 
 const nav = [
   { label: "Programs", to: "/programs" },
@@ -39,9 +39,9 @@ const nav = [
 export function BrandMark({ className }: { className?: string }) {
   return (
     <Link to="/" className={cn("group flex items-center gap-2.5", className)}>
-      <span className="bg-gradient-brand shadow-glow relative grid size-9 place-items-center rounded-xl">
+      <span className="bg-gradient-brand shadow-glow relative grid size-9 place-items-center rounded-xl transition-transform duration-300 group-hover:-rotate-6 group-hover:scale-105 motion-reduce:transition-none motion-reduce:group-hover:rotate-0 motion-reduce:group-hover:scale-100">
         <ShieldCheck className="text-primary-foreground size-5" />
-        <span className="bg-gradient-brand absolute inset-0 rounded-xl opacity-0 blur-md transition-opacity group-hover:opacity-70" />
+        <span className="bg-gradient-brand absolute inset-0 rounded-xl opacity-0 blur-md transition-opacity duration-300 group-hover:opacity-70 motion-reduce:transition-none" />
       </span>
       <span className="leading-none">
         <span className="font-display block text-[15px] font-extrabold tracking-tight">
@@ -72,7 +72,7 @@ export function ThemeToggle() {
         document.documentElement.classList.toggle("dark", next);
         localStorage.setItem("cea-theme", next ? "dark" : "light");
       }}
-      className="hover:bg-accent relative grid size-9 place-items-center rounded-lg border transition-colors"
+      className="hover:bg-accent relative grid size-9 place-items-center rounded-lg border transition-colors motion-reduce:transition-none"
     >
       <AnimatePresence mode="wait" initial={false}>
         <motion.span
@@ -87,6 +87,110 @@ export function ThemeToggle() {
         </motion.span>
       </AnimatePresence>
     </button>
+  );
+}
+
+function MoreMenu() {
+  const item = nav[nav.length - 1] as (typeof nav)[number] & {
+    subLinks: { label: string; to: string }[];
+  };
+  const [open, setOpen] = useState(false);
+  const wrapRef = useRef<HTMLDivElement>(null);
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const activeSub = item.subLinks.some((s) => pathname.startsWith(s.to));
+
+  useEffect(() => {
+    if (!open) return;
+    const onPointerDown = (e: PointerEvent) => {
+      if (!wrapRef.current?.contains(e.target as Node)) setOpen(false);
+    };
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    document.addEventListener("pointerdown", onPointerDown);
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("pointerdown", onPointerDown);
+      document.removeEventListener("keydown", onKey);
+    };
+  }, [open]);
+
+  // Close on navigation.
+  useEffect(() => setOpen(false), [pathname]);
+
+  return (
+    <div
+      ref={wrapRef}
+      className="group relative"
+      onMouseEnter={() => {
+        clearTimeout(closeTimer.current);
+        setOpen(true);
+      }}
+      onMouseLeave={() => {
+        closeTimer.current = setTimeout(() => setOpen(false), 140);
+      }}
+    >
+      <button
+        type="button"
+        aria-expanded={open}
+        aria-haspopup="true"
+        onClick={() => setOpen((v) => !v)}
+        className={cn(
+          "relative flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-medium transition-colors motion-reduce:transition-none",
+          open || activeSub ? "text-foreground" : "text-muted-foreground hover:text-foreground",
+        )}
+      >
+        {open && (
+          <motion.span
+            layoutId="nav-pill"
+            className="bg-accent absolute inset-0 rounded-lg"
+            transition={SPRING.soft}
+          />
+        )}
+        <span className="relative">More</span>
+        <ChevronDown
+          className={cn(
+            "relative size-3.5 opacity-60 transition-transform duration-200 motion-reduce:transition-none",
+            open && "rotate-180",
+          )}
+        />
+      </button>
+
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            role="menu"
+            aria-label="More sections"
+            initial={{ opacity: 0, y: 6, scale: 0.98 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 4, scale: 0.98 }}
+            transition={SPRING.snappy}
+            className="bg-popover text-popover-foreground shadow-elevated absolute left-1/2 top-full z-50 w-64 -translate-x-1/2 rounded-xl border p-2"
+          >
+            <div className="max-h-[min(60vh,26rem)] overflow-y-auto">
+              {item.subLinks.map((sub, i) => (
+                <motion.div
+                  key={sub.to}
+                  role="none"
+                  initial={{ opacity: 0, y: 4 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.03 + i * 0.018, duration: 0.25 }}
+                >
+                  <Link
+                    to={sub.to}
+                    role="menuitem"
+                    className="hover:bg-accent focus-visible:bg-accent relative block rounded-lg px-3 py-2 text-sm font-medium transition-colors motion-reduce:transition-none after:absolute after:inset-y-2 after:left-0 after:w-[3px] after:scale-y-0 after:rounded-full after:bg-gradient-to-b after:from-primary after:to-primary-glow after:transition-transform hover:after:scale-y-100"
+                  >
+                    {sub.label}
+                  </Link>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
   );
 }
 
@@ -106,64 +210,48 @@ export function SiteHeader() {
   return (
     <header
       className={cn(
-        "fixed inset-x-0 top-0 z-50 transition-all duration-300",
-        scrolled ? "glass border-b py-2 shadow-soft" : "border-b border-transparent py-4",
+        "fixed inset-x-0 top-0 z-50 transition-all duration-300 motion-reduce:transition-none",
+        scrolled
+          ? "glass shadow-soft border-b py-2 backdrop-saturate-150"
+          : "border-b border-transparent py-4",
       )}
     >
+      {/* hairline brand glow along the top — reads as depth, not decoration */}
+      <span
+        aria-hidden="true"
+        className={cn(
+          "bg-gradient-brand pointer-events-none absolute inset-x-0 top-0 h-px transition-opacity duration-300 motion-reduce:transition-none",
+          scrolled ? "opacity-60" : "opacity-0",
+        )}
+      />
       <div className="container-page flex items-center justify-between gap-4">
         <BrandMark />
 
-        <nav className="hidden items-center gap-1 lg:flex">
-          {nav.map((item) => {
+        <nav className="hidden items-center gap-1 lg:flex" aria-label="Primary">
+          {nav.slice(0, -1).map((item) => {
             const active = pathname.startsWith(item.to);
-            const hasSub = "subLinks" in item && item.subLinks;
             return (
-              <div key={item.to} className="group relative">
-                <Link
-                  to={item.to}
-                  className={cn(
-                    "relative flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-medium transition-colors",
-                    active ? "text-foreground" : "text-muted-foreground hover:text-foreground",
-                  )}
-                >
-                  {active && !hasSub && (
-                    <motion.span
-                      layoutId="nav-pill"
-                      className="bg-accent absolute inset-0 rounded-lg"
-                      transition={{ type: "spring", stiffness: 380, damping: 32 }}
-                    />
-                  )}
-                  <span className="relative">{item.label}</span>
-                  {hasSub && (
-                    <svg
-                      className="relative size-3.5 opacity-60"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      strokeWidth={2}
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-                    </svg>
-                  )}
-                </Link>
-                {hasSub && (
-                  <div className="pointer-events-none absolute left-1/2 top-full z-50 w-56 -translate-x-1/2 pt-2 opacity-0 transition-opacity group-hover:pointer-events-auto group-hover:opacity-100">
-                    <div className="bg-popover text-popover-foreground shadow-elevated mt-1 rounded-xl border p-2">
-                      {item.subLinks!.map((sub) => (
-                        <Link
-                          key={sub.to}
-                          to={sub.to}
-                          className="hover:bg-accent block rounded-lg px-3 py-2 text-sm font-medium transition-colors"
-                        >
-                          {sub.label}
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
+              <Link
+                key={item.to}
+                to={item.to}
+                aria-current={active ? "page" : undefined}
+                className={cn(
+                  "relative flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-medium transition-colors motion-reduce:transition-none",
+                  active ? "text-foreground" : "text-muted-foreground hover:text-foreground",
                 )}
-              </div>
+              >
+                {active && (
+                  <motion.span
+                    layoutId="nav-pill"
+                    className="bg-accent absolute inset-0 rounded-lg"
+                    transition={SPRING.soft}
+                  />
+                )}
+                <span className="relative">{item.label}</span>
+              </Link>
             );
           })}
+          <MoreMenu />
         </nav>
 
         <div className="flex items-center gap-2">
@@ -172,15 +260,20 @@ export function SiteHeader() {
             <Link to="/auth/sign-in">Sign in</Link>
           </Button>
           <Magnetic className="hidden sm:block">
-            <Button asChild size="sm" className="bg-gradient-brand shadow-glow border-0">
+            <Button
+              asChild
+              size="sm"
+              className="sheen bg-gradient-brand shadow-glow border-0 transition-transform duration-200 hover:-translate-y-px active:translate-y-0 active:scale-[0.98] motion-reduce:transition-none"
+            >
               <Link to="/admissions">
                 Apply now <ArrowUpRight className="ml-1 size-4" />
               </Link>
             </Button>
           </Magnetic>
           <button
-            aria-label="Menu"
-            className="hover:bg-accent grid size-9 place-items-center rounded-lg border lg:hidden"
+            aria-label={open ? "Close menu" : "Open menu"}
+            aria-expanded={open}
+            className="hover:bg-accent grid size-9 place-items-center rounded-lg border transition-colors lg:hidden"
             onClick={() => setOpen((v) => !v)}
           >
             {open ? <X className="size-4" /> : <Menu className="size-4" />}
@@ -191,6 +284,7 @@ export function SiteHeader() {
       <AnimatePresence>
         {open && (
           <motion.div
+            id="mobile-menu"
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
@@ -208,6 +302,7 @@ export function SiteHeader() {
                   >
                     <Link
                       to={item.to}
+                      aria-current={pathname.startsWith(item.to) ? "page" : undefined}
                       className="hover:bg-accent block rounded-lg px-3 py-2.5 text-sm font-medium"
                     >
                       {item.label}
@@ -225,7 +320,7 @@ export function SiteHeader() {
                       >
                         <Link
                           to={sub.to}
-                          className="text-muted-foreground hover:bg-accent block rounded-lg px-6 py-1.5 text-sm transition-colors"
+                          className="text-muted-foreground hover:bg-accent block rounded-lg px-6 py-1.5 text-sm transition-colors motion-reduce:transition-none"
                         >
                           {sub.label}
                         </Link>

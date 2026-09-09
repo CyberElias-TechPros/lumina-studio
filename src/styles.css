@@ -256,6 +256,12 @@
 
   html {
     scroll-behavior: smooth;
+    /* Native UI surfaces (form controls, scrollbars) follow the theme. */
+    color-scheme: light;
+  }
+
+  html.dark {
+    color-scheme: dark;
   }
 
   body {
@@ -263,6 +269,7 @@
     color: var(--color-foreground);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
   }
 
   h1,
@@ -272,10 +279,44 @@
   .font-display {
     font-family: var(--font-display);
     letter-spacing: -0.02em;
+    font-feature-settings:
+      "ss01" on,
+      "kern" on;
   }
 
   ::selection {
     background: color-mix(in oklab, var(--primary-glow) 35%, transparent);
+  }
+
+  /* Visible, brand-consistent focus for every interactive element —
+     including card-style links that carry no component-level ring. */
+  :where(a, button, [role="button"], [tabindex]):focus-visible {
+    outline: 2px solid color-mix(in oklab, var(--primary-glow) 80%, var(--primary));
+    outline-offset: 2px;
+    border-radius: calc(var(--radius) / 2);
+  }
+  /* Quiet, branded scrollbars on WebKit (Firefox takes scrollbar-color). */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: color-mix(in oklab, var(--foreground) 22%, transparent) transparent;
+  }
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: color-mix(in oklab, var(--foreground) 18%, transparent);
+    border: 3px solid transparent;
+    background-clip: content-box;
+    border-radius: 999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: color-mix(in oklab, var(--primary-glow) 55%, transparent);
+    border: 3px solid transparent;
+    background-clip: content-box;
   }
 }
 
@@ -292,6 +333,45 @@
   background-image: var(--gradient-brand);
   background-clip: text;
   color: transparent;
+}
+
+/* Fluid display scales — the typographic voice of the brand (§46).
+   clamp() keeps hero copy cinematic on desktop and controlled on mobile. */
+@utility text-hero {
+  font-size: clamp(2.6rem, 1.55rem + 4.4vw, 4.6rem);
+  line-height: 0.99;
+  letter-spacing: -0.032em;
+}
+
+@utility text-h2 {
+  font-size: clamp(1.8rem, 1.35rem + 1.9vw, 2.75rem);
+  line-height: 1.06;
+  letter-spacing: -0.022em;
+}
+
+@utility mask-fade-b {
+  mask-image: linear-gradient(to bottom, black 72%, transparent 100%);
+}
+
+/* One-tap brand treatment for primary CTAs: a light sheen sweeps across
+   the surface on hover — micro-motion that stays cheap (one background
+   animation, compositor-friendly). */
+@utility sheen {
+  position: relative;
+  overflow: hidden;
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: var(--gradient-sheen);
+    background-size: 220% 100%;
+    opacity: 0;
+  }
+  &:hover::after {
+    opacity: 0.9;
+    animation: cea-shimmer 1.15s ease-out 1 forwards;
+  }
 }
 
 @utility bg-gradient-brand {
@@ -347,8 +427,21 @@
   background-size: 56px 56px;
 }
 
+/* Film grain — a static, inline SVG turbulence texture. It costs one
+   painted layer per section and buys cinematic materiality (§33, §36). */
 @utility noise {
   position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.17;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='160'%20height='160'%3E%3Cfilter%20id='n'%3E%3CfeTurbulence%20type='fractalNoise'%20baseFrequency='0.86'%20numOctaves='2'%20stitchTiles='stitch'/%3E%3CfeColorMatrix%20type='saturate'%20values='0'/%3E%3C/filter%3E%3Crect%20width='160'%20height='160'%20filter='url(%23n)'%20opacity='0.5'/%3E%3C/svg%3E");
+    background-size: 160px 160px;
+  }
 }
 
 @utility animate-marquee {

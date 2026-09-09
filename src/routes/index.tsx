@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { motion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
 import {
+  ArrowDown,
   ArrowRight,
   ArrowUpRight,
   Award,
@@ -30,7 +31,10 @@ import {
 } from "@/components/marketing/shell";
 import {
   Aurora,
+  EASE,
   Marquee,
+  Parallax,
+  PulseDot,
   Reveal,
   Spotlight,
   StaggerGroup,
@@ -65,31 +69,53 @@ export const Route = createFileRoute("/")({
 });
 
 function Hero() {
+  const reduce = useReducedMotion();
+  const heroWords = ["Learn tech.", "Build real work.", "Get hired."];
   return (
-    <section className="relative overflow-hidden">
+    <section className="noise relative overflow-hidden">
       <Aurora />
       <Spotlight />
       <div className="grid-lines pointer-events-none absolute inset-0 opacity-40 [mask-image:radial-gradient(75%_60%_at_50%_0%,black,transparent)]" />
 
       <div className="container-page relative grid items-center gap-16 py-20 lg:grid-cols-[1.1fr_0.9fr] lg:py-28">
-        <div>
+        <div className="relative z-[2]">
           <Reveal>
-            <Eyebrow>Applications opening · Cohort 01</Eyebrow>
+            <Eyebrow>
+              <PulseDot className="mr-0.5" />
+              Applications opening · Cohort 01
+            </Eyebrow>
           </Reveal>
 
           <Reveal delay={0.05}>
-            <h1 className="mt-7 text-4xl font-extrabold tracking-tight text-balance sm:text-5xl lg:text-[4.1rem] lg:leading-[0.98]">
-              Learn tech.{" "}
-              <span className="relative inline-block">
-                <span className="text-gradient">Build real work.</span>
-                <motion.span
-                  initial={{ scaleX: 0 }}
-                  animate={{ scaleX: 1 }}
-                  transition={{ delay: 0.8, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                  className="bg-gradient-brand absolute -bottom-1 left-0 h-[6px] w-full origin-left rounded-full opacity-70"
-                />
-              </span>{" "}
-              Get hired.
+            <h1 className="text-hero mt-7 font-extrabold text-balance">
+              {heroWords.map((line, i) => (
+                <span key={line} className="mb-[-0.12em] block overflow-hidden pb-[0.12em]">
+                  <motion.span
+                    className="inline-block"
+                    initial={{ y: "115%" }}
+                    animate={{ y: 0 }}
+                    transition={{
+                      duration: 0.85,
+                      delay: 0.15 + i * 0.14,
+                      ease: EASE,
+                    }}
+                  >
+                    {i === 1 ? (
+                      <span className="relative inline-block">
+                        <span className="text-gradient">{line}</span>
+                        <motion.span
+                          initial={{ scaleX: 0 }}
+                          animate={{ scaleX: 1 }}
+                          transition={{ delay: 0.95, duration: 0.8, ease: EASE }}
+                          className="bg-gradient-brand absolute -bottom-1 left-0 h-[6px] w-full origin-left rounded-full opacity-70"
+                        />
+                      </span>
+                    ) : (
+                      line
+                    )}
+                  </motion.span>
+                </span>
+              ))}
             </h1>
           </Reveal>
 
@@ -139,14 +165,14 @@ function Hero() {
           </Reveal>
         </div>
 
-        <div className="relative">
+        <Parallax speed={0.06} className="relative">
           <div aria-hidden="true" className="pointer-events-none absolute -inset-8 sm:-inset-16">
             <SceneArt variant="code" className="rounded-[2.5rem]" />
           </div>
           <motion.div
             initial={{ opacity: 0, y: 40, rotateX: 12 }}
             animate={{ opacity: 1, y: 0, rotateX: 0 }}
-            transition={{ duration: 0.9, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.9, delay: 0.2, ease: EASE }}
             style={{ transformPerspective: 1200 }}
             className="relative z-10"
           >
@@ -202,26 +228,49 @@ function Hero() {
             </TiltCard>
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.7, duration: 0.7 }}
-            className="animate-float glass shadow-elevated absolute -right-2 -bottom-8 hidden w-56 rounded-2xl p-4 z-20 sm:block"
-          >
-            <p className="text-muted-foreground text-[11px] font-bold tracking-[0.16em] uppercase">
-              Job match · preview
-            </p>
-            <p className="font-display mt-1.5 text-sm font-bold">Frontend Engineer</p>
-            <p className="text-muted-foreground text-xs">Employer partner · Lagos</p>
-            <div className="mt-3 flex items-center gap-2">
-              <div className="bg-muted h-1.5 flex-1 overflow-hidden rounded-full">
-                <div className="bg-gradient-career h-full w-[96%] rounded-full" />
+          <Parallax speed={-0.05} className="absolute -right-2 -bottom-8 z-20 hidden w-56 sm:block">
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.7, duration: 0.7, ease: EASE }}
+              className="animate-float glass shadow-elevated rounded-2xl p-4"
+            >
+              <p className="text-muted-foreground text-[11px] font-bold tracking-[0.16em] uppercase">
+                Job match · preview
+              </p>
+              <p className="font-display mt-1.5 text-sm font-bold">Frontend Engineer</p>
+              <p className="text-muted-foreground text-xs">Employer partner · Lagos</p>
+              <div className="mt-3 flex items-center gap-2">
+                <div className="bg-muted h-1.5 flex-1 overflow-hidden rounded-full">
+                  <div className="bg-gradient-career h-full w-[96%] rounded-full" />
+                </div>
+                <span className="text-career text-xs font-bold">96%</span>
               </div>
-              <span className="text-career text-xs font-bold">96%</span>
-            </div>
-          </motion.div>
-        </div>
+            </motion.div>
+          </Parallax>
+        </Parallax>
       </div>
+
+      {!reduce && (
+        <motion.div
+          aria-hidden="true"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.4, duration: 0.8 }}
+          className="pointer-events-none relative z-[2] mb-6 hidden justify-center lg:flex"
+        >
+          <span className="text-muted-foreground/60 flex items-center gap-2 text-[10px] font-bold tracking-[0.3em] uppercase">
+            <motion.span
+              animate={{ y: [0, 6, 0] }}
+              transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
+              className="inline-flex"
+            >
+              <ArrowDown className="size-3.5" />
+            </motion.span>
+            Scroll
+          </span>
+        </motion.div>
+      )}
 
       <div className="border-y py-7">
         <p className="text-muted-foreground container-page mb-5 text-center text-[11px] font-bold tracking-[0.2em] uppercase">
@@ -237,6 +286,7 @@ function EnginesSection() {
   return (
     <section className="container-page py-20 md:py-28">
       <SectionHeading
+        number="01"
         eyebrow="The operating system"
         title={
           <>
@@ -318,6 +368,7 @@ function ProgramsSection() {
       <div className="container-page">
         <div className="flex flex-wrap items-end justify-between gap-6">
           <SectionHeading
+            number="02"
             eyebrow="Programs"
             title="Pick the track that changes your next five years"
             description="Every program is cohort-based, project-heavy and ends in a capstone reviewed by a working practitioner."
@@ -337,10 +388,11 @@ function ProgramsSection() {
               <Link
                 to="/programs/$slug"
                 params={{ slug: p.slug }}
-                className="group bg-card shadow-soft hover:shadow-elevated flex h-full flex-col rounded-2xl border p-6 transition-all hover:-translate-y-1"
+                className="group bg-card shadow-soft hover:shadow-elevated hover:border-primary/30 flex h-full flex-col rounded-2xl border p-6 transition-all hover:-translate-y-1 motion-reduce:transition-none"
               >
-                <div className="relative mb-5 h-36 overflow-hidden rounded-2xl border sm:h-40">
+                <div className="mask-fade-b relative mb-5 h-36 overflow-hidden rounded-2xl border sm:h-40">
                   <ProgramArt slug={p.slug} interactive />
+                  <span className="bg-gradient-brand absolute inset-x-0 bottom-0 h-0.5 origin-left scale-x-0 transition-transform duration-500 group-hover:scale-x-100" />
                 </div>
                 <div className="flex items-center justify-between">
                   <Badge variant="secondary" className="font-semibold">
@@ -387,6 +439,7 @@ function TestimonialSection() {
     <section className="container-page py-20 md:py-28">
       <SectionHeading
         align="center"
+        number="04"
         eyebrow="Outcomes"
         title="Stories we're yet to earn"
         description="The first testimonials will be written by the first cohort — and we'll publish them exactly as they happened."
@@ -424,6 +477,7 @@ function FaqSection() {
     <section className="border-t">
       <div className="container-page grid gap-12 py-20 md:py-28 lg:grid-cols-[0.9fr_1.1fr]">
         <SectionHeading
+          number="05"
           eyebrow="Questions"
           title="Everything you were about to ask"
           description="Still unsure? Our admissions team answers within one working day."
@@ -480,6 +534,7 @@ function ResourcesSection() {
       <div className="container-page py-20 md:py-28">
         <Reveal>
           <SectionHeading
+            number="03"
             eyebrow="Free resources"
             title="Learn beyond the classroom"
             description="Practical resources to support your learning — no sign-up required."
@@ -490,7 +545,7 @@ function ResourcesSection() {
             <StaggerItem key={item.to}>
               <Link
                 to={item.to}
-                className="group bg-card shadow-soft hover:shadow-elevated block rounded-2xl border p-6 transition-all hover:-translate-y-1"
+                className="group bg-card shadow-soft hover:shadow-elevated hover:border-primary/30 block rounded-2xl border p-6 transition-all hover:-translate-y-1 motion-reduce:transition-none"
               >
                 <p className="text-primary text-xs font-bold tracking-widest uppercase">
                   {item.count}
