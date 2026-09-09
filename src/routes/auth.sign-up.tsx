@@ -96,7 +96,9 @@ function SignUpPage() {
   };
 
   return (
-    <div className="bg-muted/40 relative grid min-h-screen place-items-center overflow-hidden px-4 py-16">
+    <div className="bg-muted/40 noise relative grid min-h-screen place-items-center overflow-hidden px-4 py-16">
+      <div className="grid-lines pointer-events-none absolute inset-0 opacity-30 [mask-image:radial-gradient(60%_50%_at_50%_0%,black,transparent)]" aria-hidden="true" />
+      <span aria-hidden="true" className="bg-gradient-brand absolute inset-x-0 top-0 h-1 opacity-80" />
       <div className="bg-gradient-services absolute -top-32 -left-32 size-96 rounded-full opacity-10 blur-3xl" />
       <div className="bg-gradient-community absolute -right-32 -bottom-32 size-96 rounded-full opacity-10 blur-3xl" />
 

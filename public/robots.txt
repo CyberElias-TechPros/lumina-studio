@@ -1,7 +1,12 @@
+# Cyber Elias Academy — crawler policy
+# https://cea.ng/robots.txt
+
 User-agent: Googlebot
 Allow: /
 Disallow: /app/
 Disallow: /auth/
+Disallow: /portal/
+Disallow: /apply/status
 Disallow: /*?*
 Disallow: /*&*
 
@@ -9,6 +14,8 @@ User-agent: Bingbot
 Allow: /
 Disallow: /app/
 Disallow: /auth/
+Disallow: /portal/
+Disallow: /apply/status
 
 User-agent: Twitterbot
 Allow: /
@@ -18,9 +25,15 @@ User-agent: facebookexternalhit
 Allow: /
 Disallow: /app/
 
+# Everyone else: same core protection. /app, /auth, /portal and the
+# application-status lookups are additionally served with an
+# `X-Robots-Tag: noindex` response header (nitro.config.ts), so they stay
+# out of the index even if a crawler ignores this file.
 User-agent: *
 Allow: /
 Disallow: /app/
 Disallow: /auth/
+Disallow: /portal/
+Disallow: /apply/status
 
 Sitemap: https://cea.ng/sitemap.xml

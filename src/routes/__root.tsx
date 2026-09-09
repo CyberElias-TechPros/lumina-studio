@@ -19,6 +19,7 @@ import { useFlag } from "@/lib/flags";
 import { initAdSense } from "@/lib/adsense";
 import { initGA4 } from "@/lib/ga4";
 import { CookieConsent } from "@/components/marketing/cookie-consent";
+import { MotionProvider } from "@/components/motion";
 
 import { ORGANIZATION_LD, WEBSITE_LD, LOCAL_BUSINESS_LD } from "../lib/seo";
 
@@ -43,19 +44,34 @@ function StructuredData({ data }: { data: Record<string, unknown> | Record<strin
 
 function NotFoundComponent() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
-      <div className="max-w-md text-center">
-        <h1 className="text-7xl font-bold text-foreground">404</h1>
-        <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
-        <p className="mt-2 text-sm text-muted-foreground">
-          The page you're looking for doesn't exist or has been moved.
+    <div className="relative flex min-h-screen items-center justify-center overflow-hidden bg-background px-4">
+      <div
+        aria-hidden="true"
+        className="bg-gradient-brand pointer-events-none absolute -top-32 left-1/2 size-[38rem] -translate-x-1/2 rounded-full opacity-[0.16] blur-[120px]"
+      />
+      <div className="relative text-center">
+        <p className="font-display text-gradient text-8xl font-extrabold tracking-tight sm:text-9xl">
+          404
         </p>
-        <div className="mt-6">
+        <h1 className="font-display mt-4 text-xl font-bold text-foreground sm:text-2xl">
+          This page hasn't been built yet
+        </h1>
+        <p className="mx-auto mt-2 max-w-sm text-sm leading-relaxed text-muted-foreground">
+          The link may be old, or we moved something. The academy keeps building — start from the
+          home page and you'll find your way.
+        </p>
+        <div className="mt-7 flex flex-wrap justify-center gap-3">
           <Link
             to="/"
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+            className="bg-gradient-brand shadow-glow inline-flex h-10 items-center justify-center rounded-md border-0 px-6 text-sm font-semibold text-primary-foreground transition-transform duration-200 hover:-translate-y-px active:translate-y-0 motion-reduce:transition-none"
           >
             Go home
+          </Link>
+          <Link
+            to="/programs"
+            className="inline-flex h-10 items-center justify-center rounded-md border border-input bg-background px-6 text-sm font-medium text-foreground transition-colors hover:bg-accent motion-reduce:transition-none"
+          >
+            Browse programs
           </Link>
         </div>
       </div>
@@ -166,14 +182,16 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <SessionProvider>
-        {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-        <Outlet />
-        <OnboardingTour />
-        <RootEffects />
-      </SessionProvider>
-      <Toaster position="top-right" richColors />
-      <CookieConsent />
+      <MotionProvider>
+        <SessionProvider>
+          {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
+          <Outlet />
+          <OnboardingTour />
+          <RootEffects />
+        </SessionProvider>
+        <Toaster position="top-right" richColors />
+        <CookieConsent />
+      </MotionProvider>
     </QueryClientProvider>
   );
 }

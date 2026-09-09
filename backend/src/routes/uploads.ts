@@ -160,14 +160,28 @@ uploads.get("/:key{.*}", async (c) => {
   if (!ownsKey(key, c.get("authUser"))) throw ApiError.forbidden();
   const object = await c.env.UPLOADS.get(key);
   if (!object) throw ApiError.notFound("Object not found.");
-  return new Response(object.body, {
-    headers: {
-      "content-type": object.httpMetadata?.contentType ?? "application/octet-stream",
-      "content-length": String(object.size),
-      "cache-control": "private, max-age=3600",
-      "content-disposition": `inline; filename="${encodeURIComponent(key.split("/").pop() ?? "file")}"`,
-    },
+  const contentType = object.httpMetadata?.contentType ?? "application/octet-stream";
+  const filename = encodeURIComponent(key.split("/").pop() ?? "file");
+  /**
+   * Hardening for stored active content (§26): objects are served from the
+   * API origin where browsers attach SameSite=None session cookies, and an
+   * SVG opened as a document runs embedded script in that origin — which can
+   * then call /v1/* as the owner. SVG (the only scriptable type in the
+   * allowlist) is therefore forced to `attachment` and given a sandboxed CSP
+   * for the rare browser that renders it anyway. Images, PDFs and text keep
+   * inline preview behavior; embedded <img> rendering ignores
+   * Content-Disposition, so avatars/logos continue to render as before.
+   */
+  const scriptable = contentType === "image/svg+xml" || contentType === "text/html";
+  const headers = new Headers({
+    "content-type": contentType,
+    "content-length": String(object.size),
+    "cache-control": "private, max-age=3600",
+    "x-content-type-options": "nosniff",
+    "content-disposition": `${scriptable ? "attachment" : "inline"}; filename="${filename}"`,
   });
+  if (scriptable) headers.set("content-security-policy", "sandbox");
+  return new Response(object.body, { headers });
 });
 
 uploads.delete("/:key{.*}", async (c) => {
