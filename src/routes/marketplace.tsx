@@ -52,6 +52,7 @@ export const Route = createFileRoute("/marketplace")({
       description:
         "The Career Engine marketplace: full-time roles, internships and freelance gigs for students and alumni — vetted by the employer network.",
       path: "/marketplace",
+      noIndex: true,
     }),
   component: Marketplace,
 });

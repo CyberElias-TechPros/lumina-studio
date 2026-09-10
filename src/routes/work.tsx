@@ -10,10 +10,11 @@ import { getPageHead } from "@/lib/seo";
 export const Route = createFileRoute("/work")({
   head: () =>
     getPageHead({
-      title: "Client Work & Case Studies",
+      title: "Services & selected work",
       description:
-        "Selected client work: logistics platforms, security overhauls, multi-campus ERPs and public-sector talent pipelines delivered by Cyber Elias Academy.",
+        "Technology services from Cyber Elias Academy: web development, IT support, training and design for small businesses in Rivers State. Detailed case studies coming soon.",
       path: "/work",
+      noIndex: true,
     }),
   component: Work,
 });

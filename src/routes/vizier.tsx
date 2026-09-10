@@ -95,6 +95,7 @@ export const Route = createFileRoute("/vizier")({
       description:
         "Vizier turns a loose app idea into a structured, agent-ready build plan: PRD, architecture, data model, API contract, tasks and decisions — exported straight to your workspace.",
       path: "/vizier",
+      noIndex: true,
       structuredData: {
         "@context": "https://schema.org",
         "@type": "SoftwareApplication",

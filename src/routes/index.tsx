@@ -1,16 +1,12 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { motion, useReducedMotion } from "motion/react";
 import {
-  ArrowDown,
   ArrowRight,
   ArrowUpRight,
-  Award,
-  BriefcaseBusiness,
-  Building2,
+  Camera,
   Check,
-  GraduationCap,
-  Play,
-  Quote,
+  Clock,
+  MapPin,
+  MessageCircle,
   Star,
   Users,
 } from "lucide-react";
@@ -29,21 +25,11 @@ import {
   SectionHeading,
   StatBand,
 } from "@/components/marketing/shell";
-import {
-  Aurora,
-  EASE,
-  Marquee,
-  Parallax,
-  PulseDot,
-  Reveal,
-  Spotlight,
-  StaggerGroup,
-  StaggerItem,
-  TiltCard,
-} from "@/components/motion";
-import { engines, faqs, formatNaira, partnersList, programs } from "@/data/site";
+import { Reveal, StaggerGroup, StaggerItem } from "@/components/motion";
+import { SiteImage, Portrait } from "@/components/media/site-image";
+import { CONTACT, mapsUrl, whatsappUrl } from "@/lib/contact";
+import { blogPosts, faqs, formatNaira, programs } from "@/data/site";
 import { ProgramArt } from "@/components/art/program-art";
-import { SceneArt } from "@/components/art/scene-art";
 import { getPageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/")({
@@ -58,9 +44,9 @@ export const Route = createFileRoute("/")({
       })),
     };
     return getPageHead({
-      title: "Cyber Elias Academy — Learn Tech. Build Work. Get Hired.",
+      title: "Practical Tech Training in Port Harcourt — Cyber Elias Academy",
       description:
-        "Nigeria's digital skills academy: software, cloud, cybersecurity, data, AI, design and marketing programs with mentorship, portfolios and employer placement.",
+        "Learn tech by building real things: software, design, data, AI, cybersecurity and marketing. Small classes at 26 Ebony Road, Rumuigbo, Port Harcourt — or online. Chat with us on WhatsApp.",
       path: "/",
       structuredData: faqSchema,
     });
@@ -69,309 +55,153 @@ export const Route = createFileRoute("/")({
 });
 
 function Hero() {
-  const reduce = useReducedMotion();
-  const heroWords = ["Learn tech.", "Build real work.", "Get hired."];
   return (
     <section className="noise relative overflow-hidden">
-      <Aurora />
-      <Spotlight />
       <div className="grid-lines pointer-events-none absolute inset-0 opacity-40 [mask-image:radial-gradient(75%_60%_at_50%_0%,black,transparent)]" />
 
-      <div className="container-page relative grid items-center gap-16 py-20 lg:grid-cols-[1.1fr_0.9fr] lg:py-28">
-        <div className="relative z-[2]">
+      <div className="container-page relative grid items-center gap-12 py-16 lg:grid-cols-[1.05fr_0.95fr] lg:py-24">
+        <div>
           <Reveal>
             <Eyebrow>
-              <PulseDot className="mr-0.5" />
-              Applications opening · Cohort 01
+              <MapPin className="size-3.5" /> Rumuigbo, Port Harcourt · In-person & online
             </Eyebrow>
           </Reveal>
 
           <Reveal delay={0.05}>
-            <h1 className="text-hero mt-7 font-extrabold text-balance">
-              {heroWords.map((line, i) => (
-                <span key={line} className="mb-[-0.12em] block overflow-hidden pb-[0.12em]">
-                  <motion.span
-                    className="inline-block"
-                    initial={{ y: "115%" }}
-                    animate={{ y: 0 }}
-                    transition={{
-                      duration: 0.85,
-                      delay: 0.15 + i * 0.14,
-                      ease: EASE,
-                    }}
-                  >
-                    {i === 1 ? (
-                      <span className="relative inline-block">
-                        <span className="text-gradient">{line}</span>
-                        <motion.span
-                          initial={{ scaleX: 0 }}
-                          animate={{ scaleX: 1 }}
-                          transition={{ delay: 0.95, duration: 0.8, ease: EASE }}
-                          className="bg-gradient-brand absolute -bottom-1 left-0 h-[6px] w-full origin-left rounded-full opacity-70"
-                        />
-                      </span>
-                    ) : (
-                      line
-                    )}
-                  </motion.span>
-                </span>
-              ))}
+            <h1 className="text-hero mt-6 font-extrabold text-balance">
+              Learn tech by <span className="text-gradient">building real things.</span>
             </h1>
           </Reveal>
 
-          <Reveal delay={0.12}>
-            <p className="text-muted-foreground mt-7 max-w-xl text-lg leading-relaxed text-pretty">
-              From absolute scratch to advanced practitioner — software development, cloud,
-              cybersecurity, data and AI, design and digital marketing. Taught by people who ship,
-              backed by an employer network we're building from day one.
+          <Reveal delay={0.1}>
+            <p className="text-muted-foreground mt-6 max-w-xl text-lg leading-relaxed text-pretty">
+              Cyber Elias Academy is a small, practical tech school in Port Harcourt. No
+              hundred-student lecture halls, no tutorial hell — you sit at a computer, a teacher
+              sits with you, and you build until you can do it on your own.
             </p>
           </Reveal>
 
-          <Reveal delay={0.18}>
-            <div className="mt-9 flex flex-wrap items-center gap-3">
+          <Reveal delay={0.15}>
+            <div className="mt-8 flex flex-wrap items-center gap-3">
+              <Button asChild size="lg" className="bg-gradient-brand shadow-glow h-12 border-0 px-7">
+                <Link to="/programs">
+                  See the programs <ArrowRight className="ml-1.5 size-4" />
+                </Link>
+              </Button>
               <Button
                 asChild
                 size="lg"
-                className="bg-gradient-brand shadow-glow h-12 border-0 px-7"
+                className="h-12 border-0 bg-[#25D366] px-6 hover:bg-[#1fb857]"
               >
-                <Link to="/admissions">
-                  Start your application <ArrowRight className="ml-1.5 size-4" />
-                </Link>
-              </Button>
-              <Button asChild size="lg" variant="outline" className="h-12 px-6">
-                <Link to="/programs">
-                  <Play className="mr-1.5 size-4" /> Explore programs
-                </Link>
+                <a
+                  href={whatsappUrl("Hello CEA! I want to learn tech. Where do I start?")}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <MessageCircle className="mr-1.5 size-4" /> WhatsApp us
+                </a>
               </Button>
             </div>
           </Reveal>
 
-          <Reveal delay={0.24}>
-            <div className="mt-10 flex flex-wrap items-center gap-x-7 gap-y-3">
-              {[
-                { icon: GraduationCap, label: "Cohort 01 · Port Harcourt" },
-                { icon: BriefcaseBusiness, label: "Placement promise included" },
-                { icon: Star, label: "Portfolio-first learning" },
-              ].map((item) => (
-                <span
-                  key={item.label}
-                  className="text-muted-foreground flex items-center gap-2 text-sm font-medium"
-                >
-                  <item.icon className="text-primary size-4" />
-                  {item.label}
-                </span>
-              ))}
+          <Reveal delay={0.2}>
+            <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
+              <a
+                href={mapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-muted-foreground hover:text-foreground flex items-center gap-2 text-sm font-medium transition-colors"
+              >
+                <MapPin className="text-primary size-4" /> {CONTACT.address.street},{" "}
+                {CONTACT.address.city}
+              </a>
+              <span className="text-muted-foreground flex items-center gap-2 text-sm font-medium">
+                <Users className="text-primary size-4" /> Small classes, every student on a machine
+              </span>
+              <span className="text-muted-foreground flex items-center gap-2 text-sm font-medium">
+                <Clock className="text-primary size-4" /> {CONTACT.hours}
+              </span>
             </div>
           </Reveal>
         </div>
 
-        <Parallax speed={0.06} className="relative">
-          <div aria-hidden="true" className="pointer-events-none absolute -inset-8 sm:-inset-16">
-            <SceneArt variant="code" className="rounded-[2.5rem]" />
+        <Reveal delay={0.1} className="relative">
+          <SiteImage
+            src="/images/campus/classroom-main.jpg"
+            alt="Students learning at computers in the Cyber Elias Academy classroom in Port Harcourt"
+            caption="Our classroom in Rumuigbo — August 2026 holiday program"
+            ratio="aspect-[4/3]"
+            eager
+          />
+          <div className="glass shadow-elevated absolute -bottom-6 -left-3 flex items-center gap-3 rounded-2xl border p-4 sm:-left-6">
+            <Portrait src="/images/team/ellis.jpg" name="Ellis Dennis Graham" className="size-12 text-sm" />
+            <div>
+              <p className="text-sm font-bold">Ellis Dennis Graham</p>
+              <p className="text-muted-foreground text-xs">Founder — he teaches here too</p>
+            </div>
           </div>
-          <motion.div
-            initial={{ opacity: 0, y: 40, rotateX: 12 }}
-            animate={{ opacity: 1, y: 0, rotateX: 0 }}
-            transition={{ duration: 0.9, delay: 0.2, ease: EASE }}
-            style={{ transformPerspective: 1200 }}
-            className="relative z-10"
-          >
-            <TiltCard intensity={6}>
-              <div className="glass shadow-elevated relative rounded-3xl p-6">
-                <div className="bg-gradient-brand absolute -top-px left-8 h-px w-32 opacity-80" />
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="text-muted-foreground text-xs font-semibold tracking-[0.16em] uppercase">
-                      Student dashboard · preview
-                    </p>
-                    <p className="font-display mt-1 text-lg font-bold">Full-Stack · Cohort 01</p>
-                  </div>
-                  <Badge className="bg-success/15 text-success border-0">Product preview</Badge>
-                </div>
-
-                <div className="mt-6 space-y-3">
-                  {[
-                    { name: "Frontend with React", pct: 78, tone: "bg-gradient-learning" },
-                    { name: "Backend & Databases", pct: 54, tone: "bg-gradient-erp" },
-                    { name: "Cloud & DevOps", pct: 31, tone: "bg-gradient-services" },
-                  ].map((row, i) => (
-                    <div key={row.name}>
-                      <div className="mb-1.5 flex items-center justify-between text-sm">
-                        <span className="font-medium">{row.name}</span>
-                        <span className="text-muted-foreground tabular-nums">{row.pct}%</span>
-                      </div>
-                      <div className="bg-muted h-2 overflow-hidden rounded-full">
-                        <motion.div
-                          initial={{ width: 0 }}
-                          animate={{ width: `${row.pct}%` }}
-                          transition={{ delay: 0.8 + i * 0.15, duration: 1, ease: "easeOut" }}
-                          className={`h-full rounded-full ${row.tone}`}
-                        />
-                      </div>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="mt-6 grid grid-cols-3 gap-3">
-                  {[
-                    { icon: Users, label: "42 peers" },
-                    { icon: Award, label: "6 projects" },
-                    { icon: Building2, label: "1 client" },
-                  ].map((s) => (
-                    <div key={s.label} className="bg-muted/60 rounded-xl p-3 text-center">
-                      <s.icon className="text-primary mx-auto size-4" />
-                      <p className="mt-1.5 text-xs font-semibold">{s.label}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </TiltCard>
-          </motion.div>
-
-          <Parallax speed={-0.05} className="absolute -right-2 -bottom-8 z-20 hidden w-56 sm:block">
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.7, duration: 0.7, ease: EASE }}
-              className="animate-float glass shadow-elevated rounded-2xl p-4"
-            >
-              <p className="text-muted-foreground text-[11px] font-bold tracking-[0.16em] uppercase">
-                Job match · preview
-              </p>
-              <p className="font-display mt-1.5 text-sm font-bold">Frontend Engineer</p>
-              <p className="text-muted-foreground text-xs">Employer partner · Lagos</p>
-              <div className="mt-3 flex items-center gap-2">
-                <div className="bg-muted h-1.5 flex-1 overflow-hidden rounded-full">
-                  <div className="bg-gradient-career h-full w-[96%] rounded-full" />
-                </div>
-                <span className="text-career text-xs font-bold">96%</span>
-              </div>
-            </motion.div>
-          </Parallax>
-        </Parallax>
-      </div>
-
-      {!reduce && (
-        <motion.div
-          aria-hidden="true"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.4, duration: 0.8 }}
-          className="pointer-events-none relative z-[2] mb-6 hidden justify-center lg:flex"
-        >
-          <span className="text-muted-foreground/60 flex items-center gap-2 text-[10px] font-bold tracking-[0.3em] uppercase">
-            <motion.span
-              animate={{ y: [0, 6, 0] }}
-              transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
-              className="inline-flex"
-            >
-              <ArrowDown className="size-3.5" />
-            </motion.span>
-            Scroll
-          </span>
-        </motion.div>
-      )}
-
-      <div className="border-y py-7">
-        <p className="text-muted-foreground container-page mb-5 text-center text-[11px] font-bold tracking-[0.2em] uppercase">
-          We're building relationships with
-        </p>
-        <Marquee items={partnersList} />
+        </Reveal>
       </div>
     </section>
   );
 }
 
-function EnginesSection() {
+function ClassroomProof() {
   return (
-    <section className="container-page py-20 md:py-28">
+    <section className="container-page py-16 md:py-24">
       <SectionHeading
-        number="01"
-        eyebrow="The operating system"
-        title={
-          <>
-            Five engines. <span className="text-gradient">One academy.</span>
-          </>
-        }
-        description="Everything from your first lesson to your first client invoice runs on a single connected platform — so nothing about your progress gets lost between systems."
+        eyebrow="Proof, not promises"
+        title="This is the actual room"
+        description="Every photo on this page was taken in our classroom — including during the 1-month holiday program we ran in August 2026. Come and see it yourself any visiting day."
       />
-
-      <StaggerGroup className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-        {engines.map((engine) => (
-          <StaggerItem key={engine.key}>
-            <TiltCard intensity={5} className="h-full">
-              <Link
-                to="/engines"
-                className="group bg-card shadow-soft hover:shadow-elevated relative flex h-full flex-col overflow-hidden rounded-2xl border p-7 transition-shadow"
-              >
-                <div
-                  className={`${engine.gradient} absolute inset-x-0 top-0 h-1 origin-left scale-x-0 transition-transform duration-500 group-hover:scale-x-100`}
-                />
-                <div
-                  className={`${engine.gradient} grid size-11 place-items-center rounded-xl opacity-90`}
-                >
-                  <span className="size-4 rounded-sm bg-white/85" />
-                </div>
-                <h3 className="font-display mt-5 text-xl font-bold">{engine.name}</h3>
-                <p className={`${engine.text} mt-1 text-xs font-bold tracking-[0.14em] uppercase`}>
-                  {engine.tagline}
-                </p>
-                <p className="text-muted-foreground mt-4 text-sm leading-relaxed">
-                  {engine.description}
-                </p>
-                <ul className="mt-5 space-y-2">
-                  {engine.bullets.map((b) => (
-                    <li key={b} className="flex items-center gap-2 text-sm">
-                      <Check className={`${engine.text} size-4 shrink-0`} />
-                      {b}
-                    </li>
-                  ))}
-                </ul>
-                <span className="text-primary mt-6 inline-flex items-center gap-1 text-sm font-semibold">
-                  Explore engine
-                  <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                </span>
-              </Link>
-            </TiltCard>
-          </StaggerItem>
-        ))}
-
+      <StaggerGroup className="mt-10 grid gap-5 sm:grid-cols-3">
         <StaggerItem>
-          <div className="bg-gradient-ink text-ink-foreground relative flex h-full flex-col justify-between overflow-hidden rounded-2xl p-7">
-            <Aurora className="opacity-60" />
-            <div className="relative">
-              <h3 className="font-display text-xl font-bold">Built for 32 actors</h3>
-              <p className="text-ink-foreground/70 mt-3 text-sm leading-relaxed">
-                Students, instructors, mentors, clients, employers, finance, HR and leadership all
-                work in the same system with role-aware dashboards.
-              </p>
-            </div>
-            <Button
-              asChild
-              variant="outline"
-              className="border-ink-foreground/25 text-ink-foreground hover:bg-ink-foreground/10 relative mt-6 bg-transparent"
-            >
-              <Link to="/app">
-                Preview the dashboards <ArrowRight className="ml-1.5 size-4" />
-              </Link>
-            </Button>
-          </div>
+          <SiteImage
+            src="/images/campus/students-laptops.jpg"
+            alt="Students working on laptops during a CEA class"
+            caption="Hands-on class session"
+          />
+        </StaggerItem>
+        <StaggerItem>
+          <SiteImage
+            src="/images/campus/classroom-tv.jpg"
+            alt="Class following a lesson on the wall screen"
+            caption="Following the lesson on the wall screen"
+          />
+        </StaggerItem>
+        <StaggerItem>
+          <SiteImage
+            src="/images/campus/learning-together.jpg"
+            alt="Students learning together and helping each other"
+            caption="Students helping each other"
+          />
         </StaggerItem>
       </StaggerGroup>
+      <Reveal delay={0.1} className="mt-8 flex flex-wrap gap-3">
+        <Button asChild variant="outline">
+          <Link to="/visit">
+            <Camera className="mr-1.5 size-4" /> Plan a visit
+          </Link>
+        </Button>
+        <Button asChild variant="outline">
+          <Link to="/events">
+            See what we've run <ArrowRight className="ml-1.5 size-4" />
+          </Link>
+        </Button>
+      </Reveal>
     </section>
   );
 }
 
 function ProgramsSection() {
   return (
-    <section className="bg-muted/40 border-y py-20 md:py-28">
+    <section className="bg-muted/40 border-y py-16 md:py-24">
       <div className="container-page">
         <div className="flex flex-wrap items-end justify-between gap-6">
           <SectionHeading
-            number="02"
             eyebrow="Programs"
-            title="Pick the track that changes your next five years"
-            description="Every program is cohort-based, project-heavy and ends in a capstone reviewed by a working practitioner."
+            title="Pick a skill. We'll sit with you until you can do it."
+            description="Every program is project-based: you learn a concept, then immediately use it to build something. Evening and weekend options for workers and students."
           />
           <Reveal delay={0.1}>
             <Button asChild variant="outline">
@@ -382,7 +212,7 @@ function ProgramsSection() {
           </Reveal>
         </div>
 
-        <StaggerGroup className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+        <StaggerGroup className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {programs.slice(0, 6).map((p) => (
             <StaggerItem key={p.slug}>
               <Link
@@ -414,12 +244,6 @@ function ProgramsSection() {
                   <span>{p.duration}</span>
                   <span>·</span>
                   <span>{p.level}</span>
-                  {p.learners > 0 && (
-                    <>
-                      <span>·</span>
-                      <span>{p.learners.toLocaleString()} learners</span>
-                    </>
-                  )}
                 </div>
                 <div className="mt-5 flex items-center justify-between border-t pt-4">
                   <span className="font-display font-bold">{formatNaira(p.price)}</span>
@@ -434,40 +258,139 @@ function ProgramsSection() {
   );
 }
 
-function TestimonialSection() {
+function HowItWorks() {
+  const steps = [
+    {
+      n: "1",
+      title: "Talk to us",
+      body: "Message us on WhatsApp or walk into the campus. We help you pick the right starting point — including telling you honestly if you're not ready yet.",
+    },
+    {
+      n: "2",
+      title: "Learn by doing",
+      body: "Small classes, every student on a computer. Short explanations, long practice. Instructors review your work with you, not just mark it.",
+    },
+    {
+      n: "3",
+      title: "Build real projects",
+      body: "Websites, designs, apps, campaigns — things you can show. Your portfolio grows every month, not just at graduation.",
+    },
+    {
+      n: "4",
+      title: "Get guided to work",
+      body: "Freelance gigs, internships, jobs. We review your CV, rehearse you for interviews, and introduce you to people who need your skill.",
+    },
+  ];
   return (
-    <section className="container-page py-20 md:py-28">
+    <section className="container-page py-16 md:py-24">
       <SectionHeading
         align="center"
-        number="04"
-        eyebrow="Outcomes"
-        title="Stories we're yet to earn"
-        description="The first testimonials will be written by the first cohort — and we'll publish them exactly as they happened."
+        eyebrow="How it works"
+        title="Four steps. No mystery."
+        description="This is exactly what happens from the day you message us to the day you start earning."
       />
-      <Reveal delay={0.1} className="mx-auto mt-12 max-w-3xl">
-        <div className="bg-card shadow-soft relative rounded-3xl border p-8 text-center md:p-10">
-          <Quote className="text-primary/15 absolute -top-2 right-6 size-16" />
-          <p className="relative text-lg leading-relaxed font-medium text-pretty sm:text-xl">
-            “We don't fake outcomes. We build the machine that produces them — then we show the
-            receipts.”
-          </p>
-          <p className="text-muted-foreground relative mt-6 text-sm font-semibold">
-            A founding principle, from day one
-          </p>
-          <div className="mt-7 flex flex-wrap justify-center gap-3">
-            <Button asChild className="bg-gradient-brand shadow-glow border-0">
-              <Link to="/about">
-                Read our story <ArrowRight className="ml-1.5 size-4" />
-              </Link>
-            </Button>
-            <Button asChild variant="outline">
-              <Link to="/stories">
-                See the stories page <ArrowUpRight className="ml-1.5 size-4" />
-              </Link>
-            </Button>
-          </div>
-        </div>
+      <StaggerGroup className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        {steps.map((s) => (
+          <StaggerItem key={s.n}>
+            <div className="bg-card shadow-soft h-full rounded-2xl border p-6">
+              <span className="bg-gradient-brand text-primary-foreground font-display grid size-10 place-items-center rounded-xl text-lg font-extrabold">
+                {s.n}
+              </span>
+              <h3 className="font-display mt-4 text-base font-bold">{s.title}</h3>
+              <p className="text-muted-foreground mt-2 text-sm leading-relaxed">{s.body}</p>
+            </div>
+          </StaggerItem>
+        ))}
+      </StaggerGroup>
+      <Reveal className="mt-10 text-center">
+        <ul className="mx-auto flex max-w-2xl flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm font-medium">
+          {["No experience needed to start", "Pay in instalments", "Evening & weekend classes"].map(
+            (t) => (
+              <li key={t} className="flex items-center gap-2">
+                <Check className="text-primary size-4" /> {t}
+              </li>
+            ),
+          )}
+        </ul>
       </Reveal>
+    </section>
+  );
+}
+
+function FounderStrip() {
+  return (
+    <section className="bg-muted/40 border-y py-16 md:py-20">
+      <div className="container-page grid items-center gap-10 lg:grid-cols-[auto_1fr_auto]">
+        <Reveal>
+          <Portrait
+            src="/images/team/ellis.jpg"
+            name="Ellis Dennis Graham"
+            className="size-28 text-2xl sm:size-36"
+          />
+        </Reveal>
+        <Reveal delay={0.08}>
+          <p className="font-display text-xl leading-relaxed font-bold text-balance sm:text-2xl">
+            “I started this academy because I kept meeting young people who had certificates but
+            couldn't do the work. Here, you don't graduate until you can actually build.”
+          </p>
+          <p className="text-muted-foreground mt-4 text-sm font-semibold">
+            Ellis Dennis Graham — Founder, Cyber Elias Academy
+          </p>
+        </Reveal>
+        <Reveal delay={0.14}>
+          <Button asChild variant="outline">
+            <Link to="/about">
+              Our story <ArrowRight className="ml-1.5 size-4" />
+            </Link>
+          </Button>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+function BlogLatest() {
+  const latest = blogPosts.slice(0, 3);
+  return (
+    <section className="container-page py-16 md:py-24">
+      <div className="flex flex-wrap items-end justify-between gap-6">
+        <SectionHeading
+          eyebrow="From the classroom"
+          title="We write about what we teach"
+          description="Practical notes from our instructors — no fluff, no copied content."
+        />
+        <Reveal delay={0.1}>
+          <Button asChild variant="outline">
+            <Link to="/blog">
+              All articles <ArrowRight className="ml-1.5 size-4" />
+            </Link>
+          </Button>
+        </Reveal>
+      </div>
+      <StaggerGroup className="mt-10 grid gap-5 md:grid-cols-3">
+        {latest.map((p) => (
+          <StaggerItem key={p.slug}>
+            <Link
+              to="/blog/$slug"
+              params={{ slug: p.slug }}
+              className="group bg-card shadow-soft hover:shadow-elevated flex h-full flex-col rounded-2xl border p-6 transition-all hover:-translate-y-1"
+            >
+              <Badge variant="secondary" className="w-fit font-semibold">
+                {p.category}
+              </Badge>
+              <h3 className="font-display group-hover:text-primary mt-3 flex-1 text-lg leading-snug font-bold transition-colors">
+                {p.title}
+              </h3>
+              <p className="text-muted-foreground mt-2 line-clamp-2 text-sm leading-relaxed">
+                {p.excerpt}
+              </p>
+              <span className="text-muted-foreground mt-4 flex items-center gap-1 text-xs font-medium">
+                {p.author} · {p.date}
+              </span>
+            </Link>
+          </StaggerItem>
+        ))}
+      </StaggerGroup>
     </section>
   );
 }
@@ -475,12 +398,11 @@ function TestimonialSection() {
 function FaqSection() {
   return (
     <section className="border-t">
-      <div className="container-page grid gap-12 py-20 md:py-28 lg:grid-cols-[0.9fr_1.1fr]">
+      <div className="container-page grid gap-12 py-16 md:py-24 lg:grid-cols-[0.9fr_1.1fr]">
         <SectionHeading
-          number="05"
           eyebrow="Questions"
           title="Everything you were about to ask"
-          description="Still unsure? Our admissions team answers within one working day."
+          description="Still unsure? Message us on WhatsApp — a real person replies, usually within hours."
         />
         <Reveal delay={0.1}>
           <Accordion type="single" collapsible className="w-full">
@@ -501,84 +423,23 @@ function FaqSection() {
   );
 }
 
-function ResourcesSection() {
-  const items = [
-    {
-      label: "Glossary",
-      count: "62 terms",
-      description: "Technical terms explained with Nigerian context",
-      to: "/glossary",
-    },
-    {
-      label: "Career Guides",
-      count: "19 roadmaps",
-      description: "Salary ranges, 90-day plans and pitfalls for every role",
-      to: "/career-guides",
-    },
-    {
-      label: "Resources",
-      count: "12 templates",
-      description: "Ungated checklists, templates and cheat sheets",
-      to: "/resources",
-    },
-    {
-      label: "Library",
-      count: "1,958 items",
-      description: "Books, courses and tools curated for Nigerian learners",
-      to: "/library",
-    },
-  ];
-
-  return (
-    <section className="bg-muted/40 border-y">
-      <div className="container-page py-20 md:py-28">
-        <Reveal>
-          <SectionHeading
-            number="03"
-            eyebrow="Free resources"
-            title="Learn beyond the classroom"
-            description="Practical resources to support your learning — no sign-up required."
-          />
-        </Reveal>
-        <StaggerGroup className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {items.map((item) => (
-            <StaggerItem key={item.to}>
-              <Link
-                to={item.to}
-                className="group bg-card shadow-soft hover:shadow-elevated hover:border-primary/30 block rounded-2xl border p-6 transition-all hover:-translate-y-1 motion-reduce:transition-none"
-              >
-                <p className="text-primary text-xs font-bold tracking-widest uppercase">
-                  {item.count}
-                </p>
-                <h3 className="font-display group-hover:text-primary mt-2 text-lg font-bold transition-colors">
-                  {item.label}
-                </h3>
-                <p className="text-muted-foreground mt-2 text-sm leading-relaxed">
-                  {item.description}
-                </p>
-                <span className="text-primary mt-4 inline-flex items-center gap-1 text-sm font-semibold">
-                  Explore <ArrowRight className="size-3.5" />
-                </span>
-              </Link>
-            </StaggerItem>
-          ))}
-        </StaggerGroup>
-      </div>
-    </section>
-  );
-}
-
 function Home() {
   return (
     <PageShell>
       <Hero />
       <StatBand />
-      <EnginesSection />
+      <ClassroomProof />
       <ProgramsSection />
-      <ResourcesSection />
-      <TestimonialSection />
+      <HowItWorks />
+      <FounderStrip />
+      <BlogLatest />
       <FaqSection />
-      <CTASection />
+      <CTASection
+        title="Come and see the classroom before you decide"
+        description="Walk in any weekday, sit in on a session, talk to the students. Or start with a WhatsApp message — whichever is easier."
+        primary={{ label: "Plan a visit", to: "/visit" }}
+        secondary={{ label: "Browse programs", to: "/programs" }}
+      />
     </PageShell>
   );
 }

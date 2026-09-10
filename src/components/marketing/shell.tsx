@@ -4,6 +4,7 @@ import { motion } from "motion/react";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { SiteHeader } from "./site-header";
 import { SiteFooter } from "./site-footer";
+import { WhatsAppFloat } from "./whatsapp-float";
 import { Button } from "@/components/ui/button";
 import { SceneArt, type ArtVariant } from "@/components/art/scene-art";
 import { cn } from "@/lib/utils";
@@ -17,8 +18,6 @@ import {
   ScrollProgressBar,
   Spotlight,
 } from "@/components/motion";
-import { stats } from "@/data/site";
-
 export function PageShell({ children }: { children: ReactNode }) {
   return (
     <div className="flex min-h-screen flex-col">
@@ -40,6 +39,7 @@ export function PageShell({ children }: { children: ReactNode }) {
         {children}
       </motion.main>
       <SiteFooter />
+      <WhatsAppFloat />
     </div>
   );
 }
@@ -165,11 +165,22 @@ export function PageHero({
   );
 }
 
+/**
+ * Honest numbers only. Every figure here must be literally true and
+ * provable — no vanity stats, no projections (AdSense recovery rule).
+ */
+const honestStats = [
+  { value: 8, suffix: "", label: "Career programs", decimals: 0 },
+  { value: 6, suffix: "", label: "Teachers, mentors & interns", decimals: 0 },
+  { value: 1, suffix: "", label: "Campus · Port Harcourt", decimals: 0 },
+  { value: 1, suffix: "-month", label: "Holiday program · Aug 2026", decimals: 0 },
+];
+
 export function StatBand() {
   return (
     <section className="border-y">
       <div className="container-page grid divide-y sm:grid-cols-2 sm:divide-y-0 lg:grid-cols-4 lg:divide-x">
-        {stats.map((s, i) => (
+        {honestStats.map((s, i) => (
           <Reveal key={s.label} delay={i * 0.08} className="group relative px-2 py-10 text-center">
             <span
               aria-hidden="true"

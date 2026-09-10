@@ -1,21 +1,19 @@
-import { useMemo, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   ArrowRight,
   CalendarDays,
+  CheckCircle2,
   Clock,
-  Laptop,
   MapPin,
-  MonitorPlay,
-  Sparkles,
+  MessageCircle,
   Users,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { CTASection, PageHero, PageShell, SectionHeading } from "@/components/marketing/shell";
-import { Reveal, StaggerGroup, StaggerItem, TiltCard } from "@/components/motion";
-import { engineMap, events } from "@/data/site";
-import { cn } from "@/lib/utils";
+import { Reveal, StaggerGroup, StaggerItem } from "@/components/motion";
+import { SiteImage } from "@/components/media/site-image";
+import { CONTACT, whatsappUrl } from "@/lib/contact";
 import { getPageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/events")({
@@ -23,220 +21,122 @@ export const Route = createFileRoute("/events")({
     getPageHead({
       title: "Events",
       description:
-        "Open days, AI builder nights, career fairs, alumni summits, cloud clinics and design workshops — join the academy live in Port Harcourt or online.",
+        "Holiday programs, open days and workshops at Cyber Elias Academy in Port Harcourt. See what we've run and get notified about the next one.",
       path: "/events",
     }),
   component: Events,
 });
 
-const formats = ["All", ...Array.from(new Set(events.map((e) => e.type)))];
-
-function formatDate(date: string) {
-  return new Date(`${date}T00:00:00`).toLocaleDateString("en-NG", {
-    weekday: "short",
-    day: "numeric",
-    month: "short",
-    year: "numeric",
-  });
-}
-
 function Events() {
-  const [format, setFormat] = useState("All");
-
-  const upcoming = useMemo(() => {
-    const list = format === "All" ? events : events.filter((e) => e.type === format);
-    return [...list].sort((a, b) => a.date.localeCompare(b.date));
-  }, [format]);
-
   return (
     <PageShell>
       <PageHero
         eyebrow="Events"
-        art="community"
         title={
           <>
-            Come see it <span className="text-gradient">live</span>
+            Real gatherings, <span className="text-gradient">not webinars about webinars</span>
           </>
         }
-        description="Open days, build nights, career fairs and workshops — on campus in Port Harcourt or online from anywhere. Most events are free and open to everyone."
-      >
-        <div className="mt-8 flex flex-wrap gap-2">
-          {formats.map((f) => (
-            <button
-              key={f}
-              onClick={() => setFormat(f)}
-              className={cn(
-                "rounded-full border px-4 py-2 text-sm font-semibold transition-colors",
-                format === f
-                  ? "bg-gradient-brand border-transparent text-white shadow"
-                  : "bg-card text-muted-foreground hover:text-foreground",
-              )}
-            >
-              {f}
-            </button>
-          ))}
-        </div>
-      </PageHero>
+        description="When we run something, we run it in person at the campus in Port Harcourt — and we publish photos afterwards so you can see what actually happened."
+      />
 
+      {/* Past event: the holiday program */}
       <section className="container-page py-16 md:py-20">
-        {upcoming.length > 0 ? (
-          <StaggerGroup className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-            {upcoming.map((e) => {
-              const engine = engineMap[e.engine];
-              return (
-                <StaggerItem key={e.slug}>
-                  <TiltCard intensity={5} className="h-full">
-                    <div className="group bg-card shadow-soft hover:shadow-elevated relative flex h-full flex-col overflow-hidden rounded-2xl border transition-shadow">
-                      <div
-                        className={`${engine?.gradient ?? "bg-gradient-brand"} absolute inset-x-0 top-0 h-1`}
-                      />
-                      <div className="flex flex-1 flex-col p-7">
-                        <div className="flex items-center justify-between">
-                          <Badge variant="secondary" className="font-semibold">
-                            {e.type}
-                          </Badge>
-                          {engine && (
-                            <span
-                              className={`${engine.text} text-xs font-bold tracking-wide uppercase`}
-                            >
-                              {engine.name.split(" ")[0]} Engine
-                            </span>
-                          )}
-                        </div>
-                        <div className="mt-5 flex items-center gap-4">
-                          <div className="bg-primary/10 text-primary font-display grid size-14 shrink-0 place-items-center rounded-2xl text-center leading-tight">
-                            <span className="text-lg font-extrabold">
-                              {formatDate(e.date).split(",")[1]?.trim()}
-                            </span>
-                            <span className="text-[10px] font-bold tracking-wide uppercase">
-                              {formatDate(e.date).split(",")[0]}
-                            </span>
-                          </div>
-                          <div>
-                            <h3 className="font-display text-lg leading-snug font-bold">
-                              {e.title}
-                            </h3>
-                            <p className="text-muted-foreground mt-1 flex items-center gap-1.5 text-xs font-medium">
-                              <Clock className="size-3.5" /> {e.time}
-                            </p>
-                          </div>
-                        </div>
-                        <p className="text-muted-foreground mt-4 flex-1 text-sm leading-relaxed">
-                          {e.blurb}
-                        </p>
-                        <div className="text-muted-foreground mt-5 flex items-center gap-2 border-t pt-4 text-sm font-medium">
-                          <MapPin className="text-primary size-4 shrink-0" /> {e.location}
-                        </div>
-                        <Button asChild className="bg-gradient-brand shadow-glow mt-5 border-0">
-                          <Link to="/contact">
-                            Register interest <ArrowRight className="ml-1.5 size-4" />
-                          </Link>
-                        </Button>
-                      </div>
-                    </div>
-                  </TiltCard>
-                </StaggerItem>
-              );
-            })}
-          </StaggerGroup>
-        ) : (
-          <div className="border-dashed bg-card/50 flex flex-col items-center rounded-3xl border p-12 text-center md:p-16">
-            <CalendarDays className="text-muted-foreground size-9" />
-            <h3 className="font-display mt-5 text-2xl font-extrabold">
-              The calendar is being planned
-            </h3>
-            <p className="text-muted-foreground mt-3 max-w-lg leading-relaxed">
-              Our first open days and build nights will be announced here as the Port Harcourt
-              campus takes shape. Be the first to know when dates are confirmed.
-            </p>
-            <Button asChild variant="outline" className="mt-7">
-              <Link to="/contact">
-                Get notified <ArrowRight className="ml-1.5 size-4" />
-              </Link>
-            </Button>
-          </div>
-        )}
-      </section>
+        <SectionHeading
+          eyebrow="August 2026 · Done"
+          title="1-month holiday tech program"
+          description="Our first holiday program brought students into the classroom for a full month of hands-on computer training. Here is the room it happened in."
+        />
 
-      <section className="bg-muted/40 border-y py-20 md:py-24">
-        <div className="container-page">
-          <SectionHeading
-            align="center"
-            eyebrow="Every month"
-            title="The academy runs on a live rhythm"
-            description="A snapshot of the community engine's weekly calendar."
-          />
-          <StaggerGroup className="mx-auto mt-12 grid max-w-4xl gap-4 sm:grid-cols-2">
-            {[
-              {
-                icon: Users,
-                title: "Open day",
-                body: "First Saturday. Tour labs, sit in on a cohort, meet instructors.",
-              },
-              {
-                icon: MonitorPlay,
-                title: "Build night",
-                body: "Every two weeks. Student squads demo what they shipped.",
-              },
-              {
-                icon: Sparkles,
-                title: "Career fair",
-                body: "Quarterly. Employers interviewing graduating cohorts.",
-              },
-              {
-                icon: CalendarDays,
-                title: "Alumni gathering",
-                body: "Monthly. Talks, networking and the alumni fund.",
-              },
-            ].map((r, i) => (
-              <StaggerItem key={r.title}>
-                <div className="bg-card shadow-soft flex h-full items-start gap-4 rounded-2xl border p-6">
-                  <span className="bg-primary/10 text-primary grid size-11 shrink-0 place-items-center rounded-xl">
-                    <r.icon className="size-5" />
-                  </span>
-                  <div>
-                    <h3 className="font-display text-base font-bold">{r.title}</h3>
-                    <p className="text-muted-foreground mt-1.5 text-sm leading-relaxed">{r.body}</p>
-                  </div>
-                </div>
-              </StaggerItem>
-            ))}
-          </StaggerGroup>
+        <div className="mt-10 grid gap-5 lg:grid-cols-2">
+          <Reveal>
+            <SiteImage
+              src="/images/events/holiday-program-2026.jpg"
+              alt="Students learning during the CEA August 2026 holiday program"
+              caption="August 2026 holiday program — class in session"
+              eager
+            />
+          </Reveal>
+          <Reveal delay={0.08}>
+            <SiteImage
+              src="/images/campus/classroom-main.jpg"
+              alt="Wide view of the CEA classroom with students at computers"
+              caption="The classroom at 26 Ebony Road, Rumuigbo"
+            />
+          </Reveal>
         </div>
+
+        <StaggerGroup className="mt-8 grid gap-4 sm:grid-cols-3">
+          {[
+            { icon: Users, title: "Small by design", body: "One room, one instructor, every student on a machine. Nobody watched over someone else's shoulder." },
+            { icon: Clock, title: "A full month", body: "Daily hands-on sessions through August 2026 — fundamentals first, then real practice." },
+            { icon: MapPin, title: "On campus", body: `${CONTACT.address.street}, ${CONTACT.address.city}. Parents could walk in any day and see the class.` },
+          ].map((c) => (
+            <StaggerItem key={c.title}>
+              <div className="bg-card shadow-soft h-full rounded-2xl border p-6">
+                <span className="bg-primary/10 text-primary grid size-11 place-items-center rounded-xl">
+                  <c.icon className="size-5" />
+                </span>
+                <h3 className="font-display mt-4 text-base font-bold">{c.title}</h3>
+                <p className="text-muted-foreground mt-2 text-sm leading-relaxed">{c.body}</p>
+              </div>
+            </StaggerItem>
+          ))}
+        </StaggerGroup>
       </section>
 
-      <section className="container-page py-20">
-        <Reveal>
-          <div className="bg-gradient-ink text-ink-foreground shadow-elevated relative overflow-hidden rounded-3xl px-8 py-14 md:px-14">
-            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(70%_60%_at_85%_0%,oklch(0.55_0.15_330/0.3),transparent)]" />
-            <div className="relative grid items-center gap-8 md:grid-cols-[1fr_auto]">
-              <div>
-                <h2 className="font-display text-2xl font-extrabold sm:text-3xl">
-                  Host an event with us
-                </h2>
-                <p className="text-ink-foreground/75 mt-3 max-w-xl leading-relaxed">
-                  Employers, partners and NGOs will co-host hiring days, workshops and community
-                  programs at the academy. Let's plan yours.
-                </p>
+      {/* What's next */}
+      <section className="bg-muted/40 border-y py-16 md:py-20">
+        <div className="container-page">
+          <div className="mx-auto max-w-2xl text-center">
+            <Reveal>
+              <Badge variant="secondary" className="font-semibold">
+                <CalendarDays className="mr-1.5 size-3.5" /> Next up
+              </Badge>
+              <h2 className="font-display mt-5 text-2xl font-extrabold text-balance sm:text-3xl">
+                Open day & next holiday program dates drop on WhatsApp first
+              </h2>
+              <p className="text-muted-foreground mt-4 leading-relaxed">
+                We announce every event — open days, holiday programs, workshops — to our WhatsApp
+                line before anywhere else. Message us once and you'll hear about the next one the
+                day it's fixed. No spam, no mailing-list noise.
+              </p>
+              <div className="mt-7 flex flex-wrap justify-center gap-3">
+                <Button asChild size="lg" className="border-0 bg-[#25D366] hover:bg-[#1fb857]">
+                  <a
+                    href={whatsappUrl("Hello CEA! Please notify me about your next event / holiday program.")}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <MessageCircle className="mr-1.5 size-4" /> Notify me on WhatsApp
+                  </a>
+                </Button>
+                <Button asChild size="lg" variant="outline">
+                  <Link to="/visit">
+                    Visit the campus <ArrowRight className="ml-1.5 size-4" />
+                  </Link>
+                </Button>
               </div>
-              <Button
-                asChild
-                variant="outline"
-                className="border-ink-foreground/25 text-ink-foreground hover:bg-ink-foreground/10 bg-transparent"
-              >
-                <Link to="/partners">
-                  Partner with us <ArrowRight className="ml-1.5 size-4" />
-                </Link>
-              </Button>
-            </div>
+            </Reveal>
           </div>
-        </Reveal>
+
+          <Reveal delay={0.1}>
+            <div className="bg-card mx-auto mt-10 flex max-w-2xl items-start gap-3 rounded-2xl border p-5 text-left">
+              <CheckCircle2 className="text-primary mt-0.5 size-5 shrink-0" />
+              <p className="text-muted-foreground text-sm leading-relaxed">
+                <span className="text-foreground font-semibold">Our rule for this page:</span> an
+                event only appears here if it has a fixed date — and past events only stay listed
+                if we can show you photos. No filler calendar.
+              </p>
+            </div>
+          </Reveal>
+        </div>
       </section>
 
       <CTASection
-        title="Never miss an event"
-        description="Join the community mailing list for invites, early access and monthly digests of everything the academy is shipping."
-        primary={{ label: "Talk to us", to: "/contact" }}
+        title="Want to run a training or workshop with us?"
+        description="Schools, churches and organisations in Rivers State: talk to us about holiday programs, staff training and community workshops."
+        primary={{ label: "Start your application", to: "/apply" }}
         secondary={{ label: "Visit the campus", to: "/visit" }}
       />
     </PageShell>

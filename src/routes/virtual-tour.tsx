@@ -27,6 +27,7 @@ export const Route = createFileRoute("/virtual-tour")({
       description:
         "Tour Cyber Elias Academy from anywhere: studios, labs, café, demo stage and the community floor — with live 360° recordings.",
       path: "/virtual-tour",
+      noIndex: true,
     }),
   component: VirtualTourPage,
 });

@@ -22,6 +22,7 @@ export const Route = createFileRoute("/alumni")({
       description:
         "Once an Elias, always an Elias. The network is built by every graduating cohort — mentor, hire and give back from day one.",
       path: "/alumni",
+      noIndex: true,
     }),
   component: Alumni,
 });

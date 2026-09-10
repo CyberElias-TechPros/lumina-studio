@@ -24,6 +24,7 @@ export const Route = createFileRoute("/partners")({
       description:
         "Employers, institutions, NGOs and sponsors — partner with the academy to hire talent, co-brand programs, fund scholarships and build the tech ecosystem.",
       path: "/partners",
+      noIndex: true,
     }),
   component: Partners,
 });

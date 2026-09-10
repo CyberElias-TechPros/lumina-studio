@@ -23,6 +23,7 @@ export const Route = createFileRoute("/library/$category")({
       title: `${name} — free resources`,
       description: `Browse ${category?.count ?? 0} curated free resources in ${name}: hand-picked links maintained by Cyber Elias Academy instructors. Open to everyone.`,
       path: `/library/${params.category}`,
+      noIndex: true,
     });
   },
   component: LibraryCategoryPage,

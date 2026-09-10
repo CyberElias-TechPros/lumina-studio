@@ -44,11 +44,11 @@ const channels = [
   {
     icon: MapPin,
     title: "Campus",
-    lines: ["Port Harcourt, Rivers State", "Nigeria"],
+    lines: ["26 Ebony Road, Off Rumuola Road", "Rumuigbo, Port Harcourt"],
   },
   {
     icon: Phone,
-    title: "Phone",
+    title: "Phone & WhatsApp",
     lines: ["+234 905 862 8386", "Mon–Sat, 8:00–20:00 WAT"],
   },
   {
@@ -59,7 +59,7 @@ const channels = [
   {
     icon: Clock,
     title: "Response time",
-    lines: ["Admissions: within 24h", "Partnerships: within 48h"],
+    lines: ["WhatsApp: usually within hours", "Email: within one working day"],
   },
 ];
 
@@ -252,12 +252,12 @@ function Contact() {
             Tuition & payment plans
           </Link>
           <span className="text-muted-foreground">·</span>
-          <Link to="/scholarships" className="text-primary hover:underline text-sm font-semibold">
-            Scholarships
-          </Link>
-          <span className="text-muted-foreground">·</span>
           <Link to="/visit" className="text-primary hover:underline text-sm font-semibold">
             Book a campus tour
+          </Link>
+          <span className="text-muted-foreground">·</span>
+          <Link to="/faq" className="text-primary hover:underline text-sm font-semibold">
+            Common questions
           </Link>
         </div>
       </section>

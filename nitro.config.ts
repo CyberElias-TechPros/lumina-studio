@@ -23,5 +23,24 @@ export default defineNitroConfig({
     "/portal": { headers: { "x-robots-tag": "noindex" } },
     // Application status lookups carry personal data via token/id.
     "/apply/status/**": { headers: { "x-robots-tag": "noindex, nofollow" } },
+    // AdSense recovery (Phase 0): thin/placeholder marketing surfaces stay
+    // reachable for users but out of the index until they carry real
+    // substance. Each has a relaunch checklist in plans/adsense-recovery-plan.md.
+    // NOTE: do NOT Disallow these in robots.txt — crawlers must be able to
+    // fetch them to observe the noindex directive.
+    "/stories": { headers: { "x-robots-tag": "noindex, follow" } },
+    "/work": { headers: { "x-robots-tag": "noindex, follow" } },
+    "/alumni": { headers: { "x-robots-tag": "noindex, follow" } },
+    "/marketplace": { headers: { "x-robots-tag": "noindex, follow" } },
+    "/community": { headers: { "x-robots-tag": "noindex, follow" } },
+    "/partners": { headers: { "x-robots-tag": "noindex, follow" } },
+    "/virtual-tour": { headers: { "x-robots-tag": "noindex, follow" } },
+    "/vizier": { headers: { "x-robots-tag": "noindex, follow" } },
+    "/engines": { headers: { "x-robots-tag": "noindex, follow" } },
+    "/careers": { headers: { "x-robots-tag": "noindex, follow" } },
+    "/scholarships": { headers: { "x-robots-tag": "noindex, follow" } },
+    "/library": { headers: { "x-robots-tag": "noindex, follow" } },
+    "/library/**": { headers: { "x-robots-tag": "noindex, follow" } },
+    "/glossary/**": { headers: { "x-robots-tag": "noindex, follow" } },
   },
 });

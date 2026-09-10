@@ -20,6 +20,7 @@ export const Route = createFileRoute("/glossary/$slug")({
         title: "Term not found — Glossary",
         description: "The requested glossary term does not exist.",
         path: `/glossary/${params.slug}`,
+      noIndex: true,
       });
     }
     return getPageHead({

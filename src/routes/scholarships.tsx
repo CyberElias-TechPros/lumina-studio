@@ -25,6 +25,7 @@ export const Route = createFileRoute("/scholarships")({
       description:
         "Merit, need-based and women-in-tech scholarships covering up to 100% of tuition. Plus instalments, deferred payment and employer sponsorship.",
       path: "/scholarships",
+      noIndex: true,
     }),
   component: ScholarshipsPage,
 });

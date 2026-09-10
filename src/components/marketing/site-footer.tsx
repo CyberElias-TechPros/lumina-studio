@@ -5,6 +5,7 @@ import {
   ArrowUp,
   Mail,
   MapPin,
+  MessageCircle,
   Phone,
   Linkedin,
   Twitter,
@@ -12,6 +13,7 @@ import {
   Youtube,
   Facebook,
 } from "lucide-react";
+import { WHATSAPP_DEFAULT } from "@/lib/contact";
 import { BrandMark } from "./site-header";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -23,49 +25,40 @@ const columns = [
     title: "Learn",
     links: [
       { label: "All programs", to: "/programs" },
-      { label: "Engines", to: "/engines" },
-      { label: "Pricing", to: "/pricing" },
       { label: "Admissions", to: "/admissions" },
-      { label: "Scholarships", to: "/scholarships" },
+      { label: "Pricing", to: "/pricing" },
+      { label: "Visit the campus", to: "/visit" },
+      { label: "Apply", to: "/apply" },
     ],
   },
   {
     title: "Resources",
     links: [
-      { label: "Glossary", to: "/glossary" },
+      { label: "Blog", to: "/blog" },
       { label: "Career Guides", to: "/career-guides" },
       { label: "Templates & Checklists", to: "/resources" },
-      { label: "Public Library", to: "/library" },
-      { label: "Blog & Insights", to: "/blog" },
+      { label: "Glossary", to: "/glossary" },
+      { label: "Library", to: "/library" },
     ],
   },
   {
-    title: "Work",
-    links: [
-      { label: "Services", to: "/services" },
-      { label: "Case studies", to: "/work" },
-      { label: "Marketplace", to: "/marketplace" },
-      { label: "Partners", to: "/partners" },
-      { label: "Contact", to: "/contact" },
-    ],
-  },
-  {
-    title: "Community",
-    links: [
-      { label: "Events", to: "/events" },
-      { label: "Community", to: "/community" },
-      { label: "Alumni", to: "/alumni" },
-      { label: "FAQ", to: "/faq" },
-    ],
-  },
-  {
-    title: "Company",
+    title: "Academy",
     links: [
       { label: "About", to: "/about" },
+      { label: "Team", to: "/team" },
+      { label: "Visit the campus", to: "/visit" },
+      { label: "Events", to: "/events" },
+      { label: "Services for business", to: "/services" },
+    ],
+  },
+  {
+    title: "Support",
+    links: [
+      { label: "Contact", to: "/contact" },
+      { label: "FAQ", to: "/faq" },
       { label: "Privacy Policy", to: "/privacy" },
       { label: "Terms of Service", to: "/terms" },
       { label: "Accessibility", to: "/accessibility" },
-      { label: "Sign in", to: "/auth/sign-in" },
     ],
   },
 ];

@@ -22,6 +22,7 @@ export const Route = createFileRoute("/community")({
       description:
         "Forums, study groups, events and the alumni network — the culture layer of the academy that compounds long after graduation.",
       path: "/community",
+      noIndex: true,
     }),
   component: Community,
 });

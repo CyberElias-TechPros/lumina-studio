@@ -6,42 +6,37 @@ const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const SITE_URL = "https://cea.ng";
 
 // Static public routes with change frequency + priority.
+//
+// AdSense recovery: noindexed surfaces (/stories, /work, /alumni,
+// /marketplace, /community, /partners, /virtual-tour, /vizier, /engines,
+// /careers, /scholarships, /library) are deliberately NOT submitted here.
+// A sitemap must never contradict robots directives. Re-add each URL only
+// when its page is de-noindexed per plans/adsense-recovery-plan.md.
 const staticRoutes = [
   ["/", "weekly", "1.0"],
   ["/about", "monthly", "0.8"],
   ["/accessibility", "yearly", "0.4"],
   ["/admissions", "weekly", "0.9"],
-  ["/alumni", "monthly", "0.7"],
   ["/apply", "weekly", "0.9"],
   ["/blog", "weekly", "0.8"],
   ["/career-guides", "monthly", "0.7"],
-  ["/careers", "monthly", "0.7"],
   ["/certificates/verify", "monthly", "0.6"],
-  ["/community", "monthly", "0.7"],
   ["/contact", "monthly", "0.8"],
-  ["/engines", "weekly", "0.8"],
   ["/events", "weekly", "0.7"],
   ["/faq", "monthly", "0.8"],
   ["/glossary", "weekly", "0.7"],
-  ["/library", "weekly", "0.7"],
-  ["/marketplace", "daily", "0.7"],
   ["/pricing", "monthly", "0.8"],
   ["/privacy", "yearly", "0.4"],
   ["/programs", "weekly", "0.9"],
   ["/programs/compare", "monthly", "0.8"],
   ["/resources", "weekly", "0.7"],
-  ["/scholarships", "monthly", "0.8"],
   ["/services", "weekly", "0.8"],
-  ["/stories", "monthly", "0.7"],
   ["/team", "monthly", "0.6"],
   ["/terms", "yearly", "0.4"],
-  ["/virtual-tour", "monthly", "0.7"],
-  ["/vizier", "weekly", "0.8"],
   ["/visit", "monthly", "0.8"],
   ["/visit/info", "monthly", "0.7"],
   ["/visit/brochure", "monthly", "0.6"],
   ["/visit/feedback", "monthly", "0.5"],
-  ["/work", "monthly", "0.7"],
 ];
 
 function extractSlugs(file) {
@@ -70,7 +65,8 @@ const blogSlugs = [
     ...extractSlugs("src/data/blog-posts-new.ts"),
     ...extractSlugsBetween("src/data/site.ts", /export const blogPosts/, /export const jobs/),
   ]),
-];
+  // AdSense recovery: keep in sync with NOINDEX_SLUGS in src/routes/blog.$slug.tsx
+].filter((slug) => !["why-we-are-building-cea-os"].includes(slug));
 
 // Glossary term slugs from the build-time glossary data.
 let glossarySlugs = [];
@@ -156,18 +152,9 @@ const urls = [
     changefreq: "monthly",
     priority: "0.7",
   })),
-  ...librarySlugs.map((slug) => ({
-    loc: `${SITE_URL}/library/${slug}`,
-    lastmod: today,
-    changefreq: "weekly",
-    priority: "0.6",
-  })),
-  ...glossarySlugs.map((slug) => ({
-    loc: `${SITE_URL}/glossary/${slug}`,
-    lastmod: today,
-    changefreq: "monthly",
-    priority: "0.7",
-  })),
+  // AdSense recovery: library categories + glossary terms are noindexed,
+  // so they stay out of the sitemap until rebuilt (see recovery plan §6).
+  // ...librarySlugs / ...glossarySlugs intentionally omitted.
   ...moduleUrls.map(({ pSlug, modSlug }) => ({
     loc: `${SITE_URL}/programs/${pSlug}/${modSlug}`,
     lastmod: today,
@@ -205,5 +192,5 @@ ${urls
 
 writeFileSync(join(root, "public", "sitemap.xml"), xml);
 console.log(
-  `sitemap.xml written: ${urls.length} URLs (${staticRoutes.length} static, ${programSlugs.length} programs, ${blogSlugs.length} posts, ${librarySlugs.length} library collections, ${glossarySlugs.length} glossary terms, ${moduleUrls.length} module detail pages, ${careerGuideSlugs.length} career guides, ${resourceSlugs.length} resources)`,
+  `sitemap.xml written: ${urls.length} URLs (${staticRoutes.length} static, ${programSlugs.length} programs, ${blogSlugs.length} posts, ${moduleUrls.length} module detail pages, ${careerGuideSlugs.length} career guides, ${resourceSlugs.length} resources; library + glossary terms excluded while noindexed)`,
 );

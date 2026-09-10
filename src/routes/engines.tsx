@@ -38,6 +38,7 @@ export const Route = createFileRoute("/engines")({
       description:
         "One platform, five engines: Learning, Career, Services, ERP and Community. Every actor in the academy connected on a single operating system.",
       path: "/engines",
+      noIndex: true,
     }),
   component: Engines,
 });

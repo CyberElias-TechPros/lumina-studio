@@ -28,6 +28,7 @@ export const Route = createFileRoute("/library/")({
       title: "Digital Library — free tech learning resources",
       description: `${libraryCatalogMeta.totalItems} free, public resources: coding roadmaps, career links, internships, resumes, mentorship guides and more. No signup required.`,
       path: "/library",
+      noIndex: true,
       image: "https://cea.ng/og-library.png",
     }),
   component: LibraryPage,

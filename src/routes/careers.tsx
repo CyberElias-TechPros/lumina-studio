@@ -27,6 +27,7 @@ export const Route = createFileRoute("/careers")({
       description:
         "Build the platform that builds careers. Open roles at Cyber Elias Academy — engineering, teaching, design, operations and more.",
       path: "/careers",
+      noIndex: true,
     }),
   component: CareersPage,
 });

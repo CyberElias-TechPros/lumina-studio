@@ -12,6 +12,7 @@ export const Route = createFileRoute("/stories")({
       description:
         "Real stories from CEA alumni — how they found their tracks, survived the capstone and built careers that weren't on their radar.",
       path: "/stories",
+      noIndex: true,
     }),
   component: StoriesPage,
 });
