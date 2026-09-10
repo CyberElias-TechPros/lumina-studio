@@ -12,6 +12,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { PageShell, PageHero, CTASection, SectionHeading } from "@/components/marketing/shell";
 import { Reveal, StaggerGroup, StaggerItem } from "@/components/motion";
 import { faqs } from "@/data/site";
+import { CONTACT, whatsappUrl } from "@/lib/contact";
 import { getPageHead } from "@/lib/seo";
 import { cn } from "@/lib/utils";
 
@@ -30,7 +31,7 @@ export const Route = createFileRoute("/faq")({
     return getPageHead({
       title: "FAQ — Cyber Elias Academy",
       description:
-        "Answers about programs, admissions, tuition, scholarships, schedules and outcomes at Cyber Elias Academy.",
+        "Answers about programs, admissions, tuition, schedules and career support at Cyber Elias Academy.",
       path: "/faq",
       structuredData: faqSchema,
     });
@@ -41,15 +42,15 @@ export const Route = createFileRoute("/faq")({
 const extraFaqs = [
   {
     q: "Are your certificates recognised?",
-    a: "Our certificates are endorsed by our employer network and map to the OSKM (Occupational Skills & Knowledge Map) framework. They carry a verification code employers can check — the same way we verify every credential on the CEA-OS platform.",
+    a: "Every certificate carries a verification code any employer can check on our public verification page. It lists your program, capstone project and assessed competencies — not just attendance. We are a registered Nigerian company (RC 8413776), not a university or polytechnic, and we make no NBTE accreditation claim.",
   },
   {
     q: "Can I study while working?",
     a: "Yes. Live classes run in the evenings (18:00–21:00 WAT) and Saturdays, and every session is recorded. Most learners commit 12–15 hours a week.",
   },
   {
-    q: "What happens if I miss the placement deadline?",
-    a: "The Placement Promise continues until you're placed, with no time limit. If you've completed your capstone and follow our placement process, we work with you until you land the role.",
+    q: "What career support do I get after graduating?",
+    a: "Career support with no expiry date: portfolio reviews, mock interviews, and introductions to employers and freelance contacts as opportunities come in. If you've completed your capstone and follow our process, we work with you until you land something. We don't guarantee jobs — no honest school can — but we don't disappear after graduation either.",
   },
   {
     q: "Do you accept international students?",
@@ -114,7 +115,7 @@ function FaqPage() {
                   </span>
                   <h3 className="font-display mt-4 text-base font-extrabold">Admissions hotline</h3>
                   <p className="text-muted-foreground mt-1 text-sm">
-                    +234 905 862 8386 · Mon–Sat, 9am–6pm
+                    {CONTACT.phoneDisplay} · {CONTACT.hours}
                   </p>
                   <Button asChild variant="outline" size="sm" className="mt-4">
                     <Link to="/contact">Call us</Link>
@@ -128,14 +129,19 @@ function FaqPage() {
                   <span className="bg-ink-foreground/10 text-ink-foreground grid size-11 place-items-center rounded-xl">
                     <MessageCircle className="size-5" />
                   </span>
-                  <h3 className="font-display mt-4 text-base font-extrabold">WhatsApp community</h3>
+                  <h3 className="font-display mt-4 text-base font-extrabold">WhatsApp us directly</h3>
                   <p className="text-ink-foreground/70 mt-1 text-sm">
-                    A growing group of applicants, learners and alumni — questions welcome.
+                    Questions about fees, schedules or courses — a real person replies, usually
+                    within hours.
                   </p>
-                  <Button asChild size="sm" className="bg-gradient-brand shadow-glow mt-4 border-0">
-                    <Link to="/community">
-                      Join WhatsApp <ArrowRight className="ml-1 size-3.5" />
-                    </Link>
+                  <Button asChild size="sm" className="mt-4 border-0 bg-[#25D366] hover:bg-[#1fb857]">
+                    <a
+                      href={whatsappUrl("Hello CEA! I have a question.")}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Chat on WhatsApp <ArrowRight className="ml-1 size-3.5" />
+                    </a>
                   </Button>
                 </CardContent>
               </Card>

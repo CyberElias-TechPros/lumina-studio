@@ -276,6 +276,15 @@ export function SiteFooter() {
           <p>
             © {new Date().getFullYear()} Cyber Elias Academy Ltd. RC 8413776. All rights reserved.
           </p>
+          <p className="mt-3">
+            <button
+              type="button"
+              onClick={() => window.dispatchEvent(new Event("cea:open-cookie-settings"))}
+              className="hover:text-ink-foreground underline underline-offset-2 transition-colors"
+            >
+              Cookie settings
+            </button>
+          </p>
         </div>
       </div>
     </footer>

@@ -54,7 +54,7 @@ function Programs() {
             From scratch to <span className="text-gradient">advanced</span>
           </>
         }
-        description="Cohort programs across the academy's five engines. Every track is project-heavy, capped by a practitioner-graded capstone and backed by the employer network."
+        description="Project-heavy programs taught in small classes in Port Harcourt and online. Every track ends in a capstone project reviewed by a working practitioner."
       >
         <div className="mt-10 flex max-w-2xl flex-col gap-4 sm:flex-row">
           <div className="relative flex-1">
@@ -152,13 +152,6 @@ function Programs() {
                           <Badge variant="secondary" className="font-semibold">
                             {p.category}
                           </Badge>
-                          {engine && (
-                            <span
-                              className={`${engine.text} text-xs font-bold tracking-wide uppercase`}
-                            >
-                              {engine.name.split(" ")[0]}
-                            </span>
-                          )}
                           {p.rating > 0 && (
                             <span className="text-muted-foreground flex items-center gap-1 text-xs font-semibold">
                               <Star className="fill-career text-career size-3.5" /> {p.rating}

@@ -1,5 +1,12 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+  "redirects": [
+    {
+      "source": "/virtual-tour",
+      "destination": "/visit",
+      "permanent": true
+    }
+  ],
   "headers": [
     {
       "source": "/sw.js",

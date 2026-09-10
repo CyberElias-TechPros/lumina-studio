@@ -27,3 +27,19 @@ changes.
 Next batch (unique heroes for remaining posts): `cloud-computing.jpg`,
 `digital-marketing.jpg`, `mobile-apps.jpg`, `ui-design.jpg`, plus unique
 picks so no two posts share art.
+
+| `cloud-computing.jpg` | https://www.pexels.com/photo/8003994/ (photo 8003994) |
+| `digital-marketing.jpg` | https://www.pexels.com/photo/7971602/ (photo 7971602) |
+| `mobile-apps-nigeria.jpg` | https://www.pexels.com/photo/17617058/ (photo 17617058) |
+| `ui-design-africa.jpg` | https://www.pexels.com/photo/notebook-beside-the-iphone-on-table-196644/ (photo 196644) |
+| `api-development.jpg` | https://www.pexels.com/photo/6424584/ (photo 6424584) |
+| `react-hooks.jpg` | https://www.pexels.com/photo/546819/ (photo 546819) |
+| `git-version-control.jpg` | https://www.pexels.com/photo/10816120/ (photo 10816120) |
+| `devops-small-teams.jpg` | https://www.pexels.com/photo/2422279/ (photo 2422279) |
+| `product-management.jpg` | https://www.pexels.com/photo/7793750/ (photo 7793750) |
+| `networking-career.jpg` | https://www.pexels.com/photo/office-team-having-a-meeting-3869649/ (photo 3869649) |
+| `soc-on-budget.jpg` | https://www.pexels.com/photo/4657256/ (photo 4657256) |
+| `tech-talent-2026.jpg` | https://www.pexels.com/photo/7433898/ (photo 7433898) |
+| `portfolio-hired.jpg` | https://www.pexels.com/photo/3471423/ (photo 3471423) |
+| `hiring-juniors.jpg` | https://www.pexels.com/photo/8550496/ (photo 8550496) |
+| `tech-community.jpg` | https://www.pexels.com/photo/9572688/ (photo 9572688) |

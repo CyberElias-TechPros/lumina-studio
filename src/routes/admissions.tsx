@@ -60,7 +60,7 @@ const steps = [
     icon: CalendarCheck,
     step: "05",
     title: "Reserve & enroll",
-    body: "Pay a deposit or arrange an ISA, complete onboarding, and meet your cohort and mentor.",
+    body: "Pay a deposit or agree a payment plan, complete onboarding, and meet your cohort and mentor.",
   },
   {
     icon: GraduationCap,

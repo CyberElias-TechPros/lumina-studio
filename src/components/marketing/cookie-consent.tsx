@@ -20,6 +20,13 @@ export function CookieConsent() {
     }
   }, []);
 
+  // Allow the footer "Cookie settings" link to reopen this banner.
+  useEffect(() => {
+    const reopen = () => setVisible(true);
+    window.addEventListener("cea:open-cookie-settings", reopen);
+    return () => window.removeEventListener("cea:open-cookie-settings", reopen);
+  }, []);
+
   const accept = () => {
     localStorage.setItem(STORAGE_KEY, "accepted");
     grantConsent();

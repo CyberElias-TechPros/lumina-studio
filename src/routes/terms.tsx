@@ -95,7 +95,7 @@ function TermsPage() {
             <h3 className="font-semibold mt-6">4.1 Enrollment</h3>
             <p className="text-muted-foreground mt-3 leading-relaxed">
               Enrollment in a programme requires a completed application, acceptance by CEA, and
-              payment of applicable fees (or approval for scholarship/ISA). Admission is at CEA's
+              payment of applicable fees (or an agreed payment plan). Admission is at CEA's
               sole discretion.
             </p>
             <h3 className="font-semibold mt-6">4.2 Programme Changes</h3>
@@ -147,7 +147,7 @@ function TermsPage() {
                 at CEA's discretion for documented medical/family emergencies.
               </li>
               <li>
-                <strong>Scholarship/ISA recipients:</strong> refund terms per the award agreement.
+                <strong>Assisted-fee recipients:</strong> refund terms per the individual award agreement.
               </li>
               <li>Refunds are processed within 30 business days to the original payment method.</li>
             </ul>

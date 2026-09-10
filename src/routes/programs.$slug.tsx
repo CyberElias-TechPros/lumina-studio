@@ -109,13 +109,8 @@ function ProgramDetail() {
                   <Badge variant="secondary" className="font-semibold">
                     {program.category}
                   </Badge>
-                  <Badge
-                    className={engine?.text ? `border-0 ${engine.text}` : ""}
-                    variant="outline"
-                  >
-                    {engine?.name}
-                  </Badge>
                   <Badge variant="outline">{program.level}</Badge>
+                  <Badge variant="outline">{program.duration}</Badge>
                 </div>
               </Reveal>
               <Reveal delay={0.1}>
@@ -167,7 +162,7 @@ function ProgramDetail() {
                     {formatNaira(program.price)}
                   </p>
                   <p className="text-muted-foreground mt-1 text-sm">
-                    Split into monthly instalments · ISAs for selected tracks
+                    Split into monthly instalments · payment plans available
                   </p>
                   <div className="my-6 h-px bg-border" />
                   <ul className="space-y-3 text-sm">
@@ -175,7 +170,7 @@ function ProgramDetail() {
                       "Live cohort sessions, recorded within 2 hours",
                       "Practitioner-graded capstone project",
                       "Mentor matching & portfolio studio",
-                      "Career Engine access: jobs, gigs & employer network",
+                      "Career support: portfolio, interviews & introductions",
                       "Verifiable certificate on completion",
                     ].map((f) => (
                       <li key={f} className="flex items-start gap-2.5">

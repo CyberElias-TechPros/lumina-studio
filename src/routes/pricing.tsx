@@ -21,6 +21,7 @@ import {
 import { CTASection, PageHero, PageShell, SectionHeading } from "@/components/marketing/shell";
 import { Reveal, StaggerGroup, StaggerItem, TiltCard } from "@/components/motion";
 import { faqs, formatNaira, pricingTiers } from "@/data/site";
+import { whatsappUrl } from "@/lib/contact";
 import { getPageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/pricing")({
@@ -28,7 +29,7 @@ export const Route = createFileRoute("/pricing")({
     getPageHead({
       title: "Pricing & Tuition",
       description:
-        "Transparent tuition for every budget: monthly instalments, income-share agreements and scholarships. Find out what a program at Cyber Elias Academy costs.",
+        "Transparent tuition in naira with monthly instalments and no hidden fees. See what a program at Cyber Elias Academy costs and how to pay.",
       path: "/pricing",
     }),
   component: Pricing,
@@ -42,8 +43,8 @@ const paymentOptions = [
   },
   {
     icon: HandCoins,
-    title: "Income-share (ISA)",
-    body: "Selected tracks: pay nothing upfront, contribute a share once you're earning above a threshold.",
+    title: "Talk us through your budget",
+    body: "If cash flow is the blocker, tell admissions honestly. We'd rather structure payments around your reality than lose a committed learner.",
   },
   {
     icon: CalendarCheck,
@@ -195,8 +196,8 @@ function Pricing() {
       </section>
 
       <CTASection
-        title="Ready to price your future?"
-        description="Use the scholarship estimator or talk to admissions about which payment structure fits best."
+        title="Ready to start?"
+        description="Apply online in about ten minutes, or talk to admissions first about which program and payment structure fit you."
         primary={{ label: "Apply now", to: "/apply" }}
         secondary={{ label: "Talk to admissions", to: "/contact" }}
       />
