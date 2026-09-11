@@ -1,5 +1,6 @@
 import { useEffect, useState, type ReactNode } from "react";
 import { Link, useLocation, useNavigate } from "@tanstack/react-router";
+import { motion } from "motion/react";
 import {
   Bell,
   BookOpen,
@@ -1100,11 +1101,16 @@ export function AppShell({
               key={item.label}
               to={item.to ?? "/app"}
               data-tour={i === 0 ? "nav-home" : i === 1 ? "nav-learn" : undefined}
-              activeProps={{ className: "bg-primary/10 text-primary" }}
+              activeProps={{ className: "bg-primary/10 text-primary after:scale-y-100" }}
               activeOptions={{ exact: item.to === "/app" }}
               className={cn(
-                "flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-semibold transition-colors",
-                "text-muted-foreground hover:bg-muted/70 hover:text-foreground",
+                "relative flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-semibold transition-all duration-200",
+                "text-muted-foreground hover:bg-muted/70 hover:text-foreground hover:translate-x-0.5",
+                // Gradient rail: a 3px brand bar that grows in on the active item —
+                // the chapter-index motif, miniature. Pure CSS via activeProps.
+                "after:absolute after:top-1/2 after:left-0 after:h-5 after:w-[3px] after:-translate-y-1/2",
+                "after:rounded-full after:bg-gradient-brand after:scale-y-0 after:transition-transform after:duration-300",
+                "motion-reduce:transition-none motion-reduce:hover:translate-x-0",
               )}
             >
               {item.icon}
@@ -1152,7 +1158,10 @@ export function AppShell({
 
       {sidebarOpen && (
         <div className="fixed inset-0 z-50 lg:hidden">
-          <div className="absolute inset-0 bg-black/50" onClick={() => setSidebarOpen(false)} />
+          <div
+            className="absolute inset-0 bg-black/50 backdrop-blur-sm"
+            onClick={() => setSidebarOpen(false)}
+          />
           <aside className="bg-card absolute inset-y-0 left-0 w-72 border-r shadow-2xl">
             <button
               onClick={() => setSidebarOpen(false)}
@@ -1167,7 +1176,11 @@ export function AppShell({
 
       <div className="flex min-w-0 flex-1 flex-col lg:pl-64">
         <header className="bg-card/80 sticky top-0 z-30 border-b backdrop-blur">
-          <div className="flex h-16 items-center gap-3 px-4 sm:px-6">
+          <span
+            aria-hidden="true"
+            className="hairline-brand pointer-events-none absolute inset-x-0 bottom-0 z-[1] h-px opacity-50"
+          />
+          <div className="relative flex h-16 items-center gap-3 px-4 sm:px-6">
             <button
               onClick={() => setSidebarOpen(true)}
               className="text-muted-foreground hover:text-foreground lg:hidden"
@@ -1175,9 +1188,7 @@ export function AppShell({
               <Menu className="size-5" />
             </button>
             <div>
-              <h1 className="font-display text-base leading-tight font-extrabold sm:text-lg">
-                {title}
-              </h1>
+              <h1 className="font-display text-h3 leading-tight font-extrabold">{title}</h1>
               {subtitle && (
                 <p className="text-muted-foreground hidden text-xs sm:block">{subtitle}</p>
               )}
@@ -1214,7 +1225,12 @@ export function AppShell({
           )}
         </header>
 
-        <main className="flex-1 px-4 py-6 sm:px-6 lg:px-8">
+        <motion.main
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+          className="flex-1 px-4 py-6 sm:px-6 lg:px-8"
+        >
           {accessDenied ? (
             <div className="mx-auto flex min-h-[420px] max-w-xl flex-col items-center justify-center text-center">
               <span className="bg-error/10 text-error grid size-14 place-items-center rounded-2xl text-2xl">
@@ -1234,7 +1250,7 @@ export function AppShell({
           ) : (
             children
           )}
-        </main>
+        </motion.main>
       </div>
     </div>
   );

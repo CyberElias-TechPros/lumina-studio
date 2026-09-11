@@ -84,6 +84,17 @@
 :root {
   --radius: 0.75rem;
 
+  /* Motion tokens — the CSS mirror of the JS motion system (EASE / EASE_OUT_EXPO).
+     One timing language across animations, transitions and view transitions. */
+  --ease-out-expo: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out-soft: cubic-bezier(0.65, 0, 0.35, 1);
+  --duration-fast: 160ms;
+  --duration-normal: 320ms;
+  --duration-slow: 640ms;
+
+  /* Elevation ladder — soft (rest) → elevated (hover) → lift (raised) → glow (brand) */
+  --shadow-lift: 0 2px 4px oklch(0.2 0.03 265 / 0.05), 0 16px 40px -16px oklch(0.2 0.03 265 / 0.28);
+
   --background: oklch(0.995 0.003 90);
   --foreground: oklch(0.19 0.03 275);
   --card: oklch(1 0 0);
@@ -353,6 +364,49 @@
   mask-image: linear-gradient(to bottom, black 72%, transparent 100%);
 }
 
+@utility mask-fade-x {
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 12%,
+    black 88%,
+    transparent
+  );
+}
+
+/* Fluid h3 — the third rung of the editorial scale under text-hero/text-h2. */
+@utility text-h3 {
+  font-size: clamp(1.35rem, 1.14rem + 0.85vw, 1.85rem);
+  line-height: 1.16;
+  letter-spacing: -0.018em;
+}
+
+/* Glass at two strengths: `glass` floats over calm surfaces, `glass-strong`
+   sits over busy art/photography where more blur is needed to read. */
+@utility glass-strong {
+  background-color: color-mix(in oklab, var(--card) 82%, transparent);
+  backdrop-filter: blur(24px) saturate(160%);
+  border: 1px solid color-mix(in oklab, var(--border) 70%, transparent);
+  box-shadow: var(--shadow-soft);
+}
+
+/* Brand hairline — the house rule. A 1px gradient edge used to cap panels,
+   sections and CTA finales; it is the recurring motif that survives
+   logo/color removal. */
+@utility hairline-brand {
+  background-image: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in oklab, var(--primary-glow) 65%, transparent) 30%,
+    color-mix(in oklab, var(--primary) 55%, transparent) 70%,
+    transparent
+  );
+}
+
+@utility shadow-lift {
+  box-shadow: var(--shadow-lift);
+}
+
 /* One-tap brand treatment for primary CTAs: a light sheen sweeps across
    the surface on hover — micro-motion that stays cheap (one background
    animation, compositor-friendly). */
@@ -499,6 +553,33 @@
   }
 }
 
+/* ---------- Route continuity (View Transitions) ----------
+ * Client-side navigations wrap in the browser's View Transitions API
+ * (enabled via `defaultViewTransition` on the router). The default UA
+ * cross-fade is re-timed to the house curve so moving between routes feels
+ * like the same surface settling, not a page being replaced. Motion-reduced
+ * visitors get an instant cut (no animation at all).
+ */
+::view-transition-old(root) {
+  animation: cea-vt-out 240ms var(--ease-out-expo) both;
+}
+::view-transition-new(root) {
+  animation: cea-vt-in 320ms var(--ease-out-expo) both;
+}
+
+@keyframes cea-vt-out {
+  to {
+    opacity: 0;
+    transform: translateY(-6px) scale(0.996);
+  }
+}
+@keyframes cea-vt-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(1.004);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -507,5 +588,10 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
     scroll-behavior: auto !important;
+  }
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
   }
 }

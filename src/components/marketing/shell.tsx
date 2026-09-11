@@ -14,6 +14,7 @@ import {
   LineMaskReveal,
   Parallax,
   Reveal,
+  ScrollCue,
   ScrollProgressBar,
   Spotlight,
 } from "@/components/motion";
@@ -69,6 +70,7 @@ export function SectionHeading({
   description,
   align = "left",
   number,
+  aside,
   className,
 }: {
   eyebrow?: string;
@@ -76,31 +78,46 @@ export function SectionHeading({
   description?: ReactNode;
   align?: "left" | "center";
   number?: string;
+  /** Editorial split header: supporting content set to the right on wide screens. */
+  aside?: ReactNode;
   className?: string;
 }) {
   return (
-    <Reveal className={cn("max-w-2xl", align === "center" && "mx-auto text-center", className)}>
-      {number && (
-        <p
-          aria-hidden="true"
-          className={cn(
-            "text-muted-foreground mb-4 flex items-center gap-3 text-[11px] font-extrabold tracking-[0.3em] tabular-nums",
-            align === "center" && "justify-center",
-          )}
-        >
-          <span className="bg-gradient-brand inline-block h-px w-8" />
-          {number}
-          <span className="bg-border inline-block h-px w-16" />
-        </p>
+    <div
+      className={cn(
+        "flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between",
+        align === "center" && "lg:flex-col lg:items-center",
+        className,
       )}
-      {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
-      <h2 className="text-h2 mt-5 font-extrabold text-balance">{title}</h2>
-      {description && (
-        <p className="text-muted-foreground mt-4 text-base leading-relaxed text-pretty sm:text-lg">
-          {description}
-        </p>
+    >
+      <Reveal className={cn("max-w-2xl", align === "center" && "mx-auto text-center")}>
+        {number && (
+          <p
+            aria-hidden="true"
+            className={cn(
+              "text-muted-foreground mb-4 flex items-center gap-3 text-[11px] font-extrabold tracking-[0.3em] tabular-nums",
+              align === "center" && "justify-center",
+            )}
+          >
+            <span className="bg-gradient-brand inline-block h-px w-8" />
+            {number}
+            <span className="bg-border inline-block h-px w-16" />
+          </p>
+        )}
+        {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
+        <h2 className="text-h2 mt-5 font-extrabold text-balance">{title}</h2>
+        {description && (
+          <p className="text-muted-foreground mt-4 text-base leading-relaxed text-pretty sm:text-lg">
+            {description}
+          </p>
+        )}
+      </Reveal>
+      {aside && (
+        <Reveal delay={0.12} className={cn("shrink-0", align === "center" && "lg:mt-2")}>
+          {aside}
+        </Reveal>
       )}
-    </Reveal>
+    </div>
   );
 }
 
@@ -111,6 +128,8 @@ export function PageHero({
   children,
   art,
   artWidth,
+  artCaption,
+  cue,
 }: {
   eyebrow: string;
   title: ReactNode;
@@ -118,6 +137,10 @@ export function PageHero({
   children?: ReactNode;
   art?: ArtVariant;
   artWidth?: string;
+  /** Label chip floating on the art panel — names the scene being viewed. */
+  artCaption?: string;
+  /** Scroll bridge to the content below; off by default on tight heroes. */
+  cue?: boolean;
 }) {
   return (
     <section
@@ -158,26 +181,48 @@ export function PageHero({
             <Reveal delay={0.16} className="hidden lg:block">
               <Parallax
                 speed={0.055}
-                className={cn("motion-reduce:transition-none", { "motion-reduce:transform": "none" })}
+                className={cn("motion-reduce:transition-none", {
+                  "motion-reduce:transform": "none",
+                })}
               >
-                <div
-                  className={cn(
-                    "shadow-elevated relative h-72 w-80 overflow-hidden rounded-[2rem] border transition-transform duration-500 hover:rotate-[-0.6deg] hover:scale-[1.015] md:h-80 md:w-96 xl:h-96 xl:w-[24rem]",
-                    artWidth,
-                  )}
-                >
-                  <SceneArt variant={art} />
-                  <div className="from-card pointer-events-none absolute inset-x-0 bottom-0 h-10 bg-gradient-to-b to-transparent opacity-70" />
+                <div className="relative">
+                  {/* Offset ground layer — the panel casts a presence behind itself */}
+                  <span
+                    aria-hidden="true"
+                    className="bg-gradient-brand absolute -right-4 -bottom-4 h-full w-full rounded-[2.25rem] opacity-20 blur-[2px] motion-reduce:hidden"
+                  />
+                  <div
+                    className={cn(
+                      "shadow-elevated relative h-72 w-80 overflow-hidden rounded-[2rem] border transition-transform duration-500 hover:rotate-[-0.6deg] hover:scale-[1.015] md:h-80 md:w-96 xl:h-96 xl:w-[24rem]",
+                      artWidth,
+                    )}
+                  >
+                    <SceneArt variant={art} />
+                    <div className="from-card pointer-events-none absolute inset-x-0 bottom-0 h-10 bg-gradient-to-b to-transparent opacity-70" />
+                    {artCaption && (
+                      <div className="glass-strong absolute bottom-4 left-4 flex items-center gap-2 rounded-full py-1.5 pr-4 pl-3">
+                        <span className="bg-gradient-brand inline-block size-1.5 rounded-full" />
+                        <span className="text-foreground/90 text-xs font-bold tracking-wide">
+                          {artCaption}
+                        </span>
+                      </div>
+                    )}
+                  </div>
                 </div>
               </Parallax>
             </Reveal>
           )}
         </div>
+        {cue && (
+          <div className="mt-14 flex justify-center md:mt-16">
+            <ScrollCue />
+          </div>
+        )}
       </div>
-      {/* Hairline brand gradient at the bottom */}
+      {/* Hairline brand gradient caps the section */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent"
+        className="hairline-brand pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-px opacity-80"
       />
     </section>
   );
@@ -185,19 +230,14 @@ export function PageHero({
 
 export function StatBand() {
   return (
-    <section
-      className={cn(
-        "relative border-y border-border/20",
-        "motion-reduce:!border-0",
-      )}
-    >
+    <section className={cn("relative border-y border-border/20", "motion-reduce:!border-0")}>
       <div className="container-page relative py-12">
         <div className="grid divide-y sm:grid-cols-2 sm:divide-y-0 lg:grid-cols-4 lg:divide-x">
           {stats.map((s, i) => (
             <Reveal
               key={s.label}
               delay={i * 0.08}
-              className="group relative px-2 py-10 text-center"
+              className="group relative px-4 py-10 text-center"
             >
               <span
                 aria-hidden="true"
@@ -208,6 +248,13 @@ export function StatBand() {
                   "motion-reduce:opacity-0",
                 )}
               />
+              {/* Index numeral — the chapter motif, miniature */}
+              <p
+                aria-hidden="true"
+                className="text-muted-foreground/70 mb-3 text-[10px] font-extrabold tracking-[0.3em] tabular-nums"
+              >
+                {String(i + 1).padStart(2, "0")}
+              </p>
               <p className="font-display text-gradient text-4xl font-extrabold tabular-nums sm:text-5xl">
                 <Counter
                   to={s.value}
@@ -239,16 +286,19 @@ export function CTASection({
   secondary?: { label: string; to: string };
 }) {
   return (
-    <section className="container-page py-20 md:py-28 relative">
+    <section className="container-page relative py-20 md:py-28">
       <Reveal>
         <div
           className={cn(
-            "bg-gradient-brand/5 noise relative overflow-hidden rounded-3xl px-8 py-16 md:px-16 md:py-20",
-            "motion-reduce:!bg-transparent",
+            "bg-gradient-ink noise relative overflow-hidden rounded-3xl px-8 py-16 md:px-16 md:py-20",
+            "motion-reduce:!bg-none",
           )}
         >
-          <Aurora className="opacity-70 motion-reduce:opacity-0" />
-          <Spotlight className="motion-reduce:opacity-0" />
+          {/* Brand light bleeding through the ink — atmosphere, not decoration */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute -top-40 -right-24 size-[34rem] rounded-full bg-gradient-brand opacity-25 blur-[120px] motion-reduce:opacity-20"
+          />
           {/* rim light — a hairline of brand gradient along the top edge */}
           <span
             aria-hidden="true"
@@ -258,16 +308,14 @@ export function CTASection({
             )}
           />
           <div className="relative z-[2] max-w-2xl">
-            <h2 className="text-h2 font-extrabold text-balance">{title}</h2>
-            <p className="text-ink-foreground/75 mt-5 text-lg leading-relaxed text-pretty">
-              {description}
-            </p>
+            <h2 className="text-h2 font-extrabold text-balance text-white">{title}</h2>
+            <p className="mt-5 text-lg leading-relaxed text-pretty text-white/75">{description}</p>
             <div className="mt-9 flex flex-wrap gap-3">
               <Button
                 asChild
                 size="lg"
                 className={cn(
-                  "sheen bg-gradient-brand shadow-glow border-0 transition-transform duration-200 hover:-translate-y-0.5 active:translate-y-0",
+                  "sheen border-0 bg-white text-ink shadow-lift transition-transform duration-200 hover:-translate-y-0.5 active:translate-y-0",
                   "motion-reduce:transition-none",
                 )}
               >
@@ -280,13 +328,22 @@ export function CTASection({
                 size="lg"
                 variant="outline"
                 className={cn(
-                  "border-ink-foreground/25 text-ink-foreground hover:bg-ink-foreground/10 bg-transparent",
+                  "border-white/25 bg-transparent text-white hover:border-white/50 hover:bg-white/10",
                   "motion-reduce:transition-none",
                 )}
               >
                 <Link to={secondary.to}>{secondary.label}</Link>
               </Button>
             </div>
+          </div>
+          {/* The five-engine hairline — the wayfinding motif, miniature. Each
+              engine claims one segment; the strip reads as one chord. */}
+          <div aria-hidden="true" className="absolute inset-x-16 bottom-0 flex h-[3px] gap-1.5">
+            <span className="bg-gradient-learning w-full rounded-full opacity-70" />
+            <span className="bg-gradient-career w-full rounded-full opacity-70" />
+            <span className="bg-gradient-services w-full rounded-full opacity-70" />
+            <span className="bg-gradient-erp w-full rounded-full opacity-70" />
+            <span className="bg-gradient-community w-full rounded-full opacity-70" />
           </div>
         </div>
       </Reveal>
