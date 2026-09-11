@@ -167,7 +167,7 @@ export function LibraryBrowser({ items, sourceName, canAccessProtected }: Librar
               </Badge>
             )}
             <Button variant="ghost" size="sm" className="h-7 px-2.5 font-semibold" asChild>
-              <a href={item.url} target="_blank" rel="noreferrer">
+              <a href={item.url} target="_self" rel="noopener noreferrer">
                 {item.kind === "link" ? "Visit" : "Open"}
               </a>
             </Button>
@@ -233,7 +233,7 @@ export function LibraryBrowser({ items, sourceName, canAccessProtected }: Librar
                 </Badge>
               ) : (
                 <Button variant="outline" size="sm" className="h-7 px-2.5 font-semibold" asChild>
-                  <a href={item.url} target="_blank" rel="noreferrer">
+                  <a href={item.url} target="_self" rel="noopener noreferrer">
                     Open
                   </a>
                 </Button>

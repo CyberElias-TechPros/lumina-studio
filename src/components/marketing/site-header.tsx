@@ -212,8 +212,8 @@ export function SiteHeader() {
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-all duration-300 motion-reduce:transition-none",
         scrolled
-          ? "glass shadow-soft border-b py-2 backdrop-saturate-150"
-          : "border-b border-transparent py-4",
+          ? "glass shadow-soft border-b py-2 backdrop-saturate-150 bg-gradient-to-b from-brand via-accent to-transparent"
+          : "border-b border-transparent py-4 bg-gradient-to-b from-brand/20",
       )}
     >
       {/* hairline brand glow along the top — reads as depth, not decoration */}

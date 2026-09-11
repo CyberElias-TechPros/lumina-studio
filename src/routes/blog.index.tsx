@@ -1,4 +1,4 @@
-﻿import { useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { getPageHead } from "@/lib/seo";
 import { ArrowUpRight, Clock, Search } from "lucide-react";
@@ -138,8 +138,23 @@ function Blog() {
                   className="group bg-card shadow-soft hover:shadow-elevated relative flex h-full flex-col overflow-hidden rounded-2xl border p-7 transition-all hover:-translate-y-1"
                 >
                   <div
-                    className={`${engine?.gradient ?? "bg-gradient-brand"} absolute inset-x-0 top-0 h-1 origin-left scale-x-0 transition-transform duration-500 group-hover:scale-x-100`}
-                  />
+className={`${engine?.gradient ?? "bg-gradient-brand"} absolute inset-x-0 top-0 h-1 origin-left scale-x-0 transition-transform duration-500 group-hover:scale-x-100`}
+/>
+                  {/* Blog hero image – AdSense‑friendly, visible on hover/focus */}
+                  {p.imageUrl && (
+                    <a
+                      href={p.imageUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="absolute inset-0 group-hover:opacity-20 transition-opacity duration-300 motion-reduce:transition-none"
+                    >
+                      <img
+                        src={p.imageUrl}
+                        alt={p.title}
+                        className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-105 motion-reduce:transition-none motion-reduce:scale-100"
+                      />
+                    </a>
+                  )}
                   <div className="flex items-center justify-between">
                     <Badge variant="secondary" className="font-semibold">
                       {p.category}

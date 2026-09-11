@@ -1,4 +1,4 @@
-﻿export type Engine = "learning" | "career" | "services" | "erp" | "community";
+export type Engine = "learning" | "career" | "services" | "erp" | "community";
 
 export const engines: {
   key: Engine;
@@ -730,6 +730,7 @@ export const blogPosts: {
   readingTime: string;
   engine: Engine;
   body: string[];
+  imageUrl?: string;
 }[] = [
   ...newBlogPosts,
   {
