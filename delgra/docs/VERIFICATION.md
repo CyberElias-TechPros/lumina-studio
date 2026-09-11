@@ -36,6 +36,37 @@ Per file:
 These run inside `@cloudflare/vitest-pool-workers` — a real workerd runtime with
 real D1, R2 and KV — not a mock.
 
+## Seeder (local end-to-end, this session)
+
+Against `wrangler dev --local` + a freshly migrated local D1:
+
+```
+$ npm run seed:local
+Catalog: built-in
+✓ registered owner owner@delgra.test
+✓ configured business profile and DEL-{year}-TF-{seq} numbering
+✓ directory: 4 customers, 2 suppliers, 6 products
+  • DEL-2026-TF-01 — total ₦60,000      … 5 invoices, payments, waybill
+  • WB-2026-TF-01 — delivered against DEL-2026-TF-01
+  • PO-2026-TF-01 — received from Alaba International Traders
+Done. 26 records created, 0 already existed.
+```
+
+Un-migrated database (state before `db:migrate:local`): the seeder stops with
+the 503 `service_unavailable` message naming `wrangler d1 migrations apply`,
+and writes nothing.
+
+`SEED_USE_AI=1` against a mock of the Workers AI REST endpoint (same response
+shape, JSON wrapped in markdown fences): catalog parsed, clamped and seeded —
+invoice totals follow the AI prices (e.g. ₦46,200,000 for the 45 kVA UPS +
+installation line at 10% of the flagship price). Remote guards verified: the
+demo credentials are refused on a non-localhost base, a remote target without
+`--yes` in a non-TTY is refused, and `--ai` without
+`CLOUDFLARE_ACCOUNT_ID`/`CLOUDFLARE_API_TOKEN` explains what to set.
+
+Re-run over a seeded workspace: directory and owner are skipped
+(“13 records created, 13 already existed” on the second built-in run).
+
 ## Frontend
 
 ```

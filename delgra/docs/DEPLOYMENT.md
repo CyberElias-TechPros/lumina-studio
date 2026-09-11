@@ -60,7 +60,7 @@ You should see 23 rows (20 tables plus SQLite's internal bookkeeping).
 
 ```bash
 npm run typecheck     # must exit 0
-npm test              # must be 160/160
+npm test              # must be 163/163
 npm run deploy
 ```
 
@@ -127,14 +127,76 @@ curl -X POST https://api.yourdomain.com/v1/auth/register \
 # 403 — "This workspace already has an owner."
 ```
 
-## 6. Configure the business
+## 6. Populate the workspace (optional)
+
+`scripts/seed-demo.ts` fills a workspace with a realistic trading history —
+customers, suppliers, stock, five invoices with payments, a delivered waybill, a
+purchase order and expenses. It drives the **public HTTP API**, never raw SQL,
+so the demo data is produced by the same numbering, totals and stock-ledger
+code real users hit (a raw-SQL seed can insert an invoice whose total does not
+match its items; this cannot).
+
+```bash
+cd backend
+npm run seed:local          # against wrangler dev (http://127.0.0.1:8787/v1)
+```
+
+Against the deployed Worker:
+
+```bash
+SEED_BASE_URL=https://<worker>.workers.dev/v1 \
+SEED_EMAIL=you@example.com \
+SEED_PASSWORD='<a real password, min 10 chars>' \
+npm run seed:remote -- --yes
+```
+
+`seed:local` and `seed:remote` run the same script; the target comes from
+`SEED_BASE_URL`. On a remote target the seeder refuses the demo credentials
+that ship in this repository and asks for confirmation (add `--yes` in
+non-interactive shells). If the database has not been migrated yet it stops
+before writing anything and names the migration command.
+
+On an empty workspace the seed account becomes the `owner`; on a workspace
+that already has one, pass the existing owner's credentials. Re-running skips
+customers/suppliers/products that already exist but always adds a new batch of
+transactions.
+
+### Letting Cloudflare Workers AI write the catalog
+
+Add `SEED_USE_AI=1` and the seeder asks Workers AI to invent the customers,
+suppliers, products and expenses instead of using the built-in catalog —
+Nigerian company names, `+234` phone numbers, plausible fairly-used equipment
+pricing. The transaction skeleton (which invoice gets which line, payment
+shares, dates, stock levels) stays deterministic, and every AI value is
+validated and clamped, so the money and the stock ledger still reconcile. Any
+AI failure falls back to the built-in catalog.
+
+You need an API token with the **Workers AI:Edit** permission
+(<https://dash.cloudflare.com/profile/api-tokens>) and your account id (Workers
+& Pages overview, or `npx wrangler whoami`):
+
+```bash
+SEED_USE_AI=1 \
+CLOUDFLARE_ACCOUNT_ID=<account id> \
+CLOUDFLARE_API_TOKEN=<token> \
+SEED_BASE_URL=https://<worker>.workers.dev/v1 \
+SEED_EMAIL=you@example.com SEED_PASSWORD='...' \
+npm run seed:remote -- --yes
+```
+
+The model defaults to `@cf/meta/llama-3.3-70b-instruct-fp8-fast` and retries
+once on `@cf/meta/llama-3.1-8b-instruct`; override with `SEED_AI_MODEL`. AI
+mode invents a fresh catalog on every run — re-running adds a second batch
+rather than skipping.
+
+## 7. Configure the business
 
 Sign in and go to **Settings**. Set the trading name, address, bank details, and
 the numbering prefixes. The default series produces `DEL-{YEAR}-TF-{SEQ}`.
 
 Upload a logo if you have one — it appears on PDFs.
 
-## 7. Cron
+## 8. Cron
 
 `wrangler.jsonc` declares `"15 6 * * *"`. It expires stale sessions, prunes
 orphaned R2 objects, and recomputes the overdue and low-stock counts. Nothing to
