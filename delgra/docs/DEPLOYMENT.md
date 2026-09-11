@@ -182,9 +182,12 @@ curl -s https://api.yourdomain.com/v1/health
 
 `tables: 1` means the schema is not applied remotely at all. Every database-backed
 route — including `/v1/bootstrap`, which the sign-in screen calls before you are
-authenticated — returns a 500 until you run
-`npx wrangler d1 migrations apply DB --remote`. `needsOwner: true` from
-`/v1/bootstrap` is what a healthy, empty workspace looks like.
+authenticated — fails until you run `npx wrangler d1 migrations apply DB --remote`.
+`/v1/bootstrap` names the problem itself in that state: a 503 with
+`code: "service_unavailable"` and a message quoting the migration command, which
+the sign-in screen shows instead of a login form that could never succeed.
+`needsOwner: true` from `/v1/bootstrap` is what a healthy, empty workspace looks
+like.
 
 Then confirm CORS from the browser's point of view (an `Origin` header is what the
 browser sends, so send one):

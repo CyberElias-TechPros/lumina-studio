@@ -87,8 +87,9 @@ Local development cannot show you either of these, because the Vite proxy rewrit
 1. **`VITE_API_URL` must include the `/v1` suffix.** `api/client.ts` appends it if
    you forget, but the variable should still be right.
 2. **`npx wrangler d1 migrations apply DB --remote`.** `wrangler deploy` publishes
-   code, never schema. An un-migrated database answers `/v1/bootstrap` with a 500
-   and `/v1/health` with `tables: 1`.
+   code, never schema. An un-migrated database answers `/v1/bootstrap` with a
+   503 (`service_unavailable`, naming the migration command) and `/v1/health`
+   with `tables: 1`.
 
 See [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md#troubleshooting) for the failure modes
 and the commands that confirm each one.
