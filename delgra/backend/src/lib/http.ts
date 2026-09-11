@@ -1,5 +1,5 @@
 import type { Context, MiddlewareHandler } from "hono";
-import { allowedOrigins, type Env, type SessionUser } from "./env.ts";
+import { isAllowedOrigin, type Env, type SessionUser } from "./env.ts";
 import { AppError } from "./errors.ts";
 
 /**
@@ -9,21 +9,31 @@ import { AppError } from "./errors.ts";
  * session travels in a cookie, so this must be an exact allowlist with
  * `credentials: true`. A reflected wildcard (`*`) combined with credentials is
  * both invalid per spec and a cross-site data-theft hole; we never emit it.
+ *
+ * Mounted on `*` rather than `/v1/*`: an unmatched path still has to answer the
+ * preflight and carry the headers, or the browser hides a plain 404 behind a CORS
+ * error message. See the mount in `index.ts`.
  */
 export function corsMiddleware(): MiddlewareHandler<{ Bindings: Env }> {
   return async (c, next) => {
     const origin = c.req.header("origin");
-    const allowed = allowedOrigins(c.env);
+    const allowed = isAllowedOrigin(c.env, origin);
 
-    if (origin && allowed.includes(origin)) {
+    if (origin && allowed) {
       c.header("access-control-allow-origin", origin);
       c.header("access-control-allow-credentials", "true");
-      c.header("vary", "Origin", { append: true });
       c.header("access-control-allow-methods", "GET,POST,PATCH,PUT,DELETE,OPTIONS");
       c.header("access-control-allow-headers", "Content-Type,Idempotency-Key,X-Requested-With");
       c.header("access-control-max-age", "86400");
     }
 
+    // Emitted whether or not the origin is allowed: the answer differs by Origin,
+    // so a cache that ignores this header can serve one origin's reply to another
+    // (including a "denied" reply to the real frontend).
+    c.header("vary", "Origin", { append: true });
+
+    // A preflight carries no cookie and must never reach the session gate, so
+    // it is answered here for every path, allowed origin or not.
     if (c.req.method === "OPTIONS") return c.body(null, 204);
     await next();
   };

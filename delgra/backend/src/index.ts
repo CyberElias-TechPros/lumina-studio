@@ -27,9 +27,21 @@ type AppEnv = { Bindings: Env; Variables: { user: import("./lib/env.ts").Session
 
 const app = new Hono<AppEnv>();
 
+/**
+ * CORS is mounted on every path, not just `/v1/*`.
+ *
+ * Scoping it to the versioned prefix means anything else — a stale frontend
+ * build calling `/bootstrap` instead of `/v1/bootstrap`, a typo, a health probe —
+ * comes back as a 404 *without* CORS headers, which the browser reports as
+ * "No 'Access-Control-Allow-Origin' header is present" and hides the real cause.
+ * Answering CORS globally turns that class of failure into a readable 404 in
+ * devtools and lets the preflight be settled before the session gate can 401 it.
+ * It widens nothing: the allowlist still decides who gets headers, and every
+ * guarded route still requires a session.
+ */
+app.use("*", corsMiddleware());
 app.use("*", requestId());
 app.use("*", securityHeaders());
-app.use("/v1/*", corsMiddleware());
 
 /* ------------------------------------------------------------------ public */
 
@@ -112,9 +124,26 @@ app.route("/v1", api);
 
 /* -------------------------------------------------------------- not found */
 
-app.notFound((c) =>
-  c.json({ error: { code: "not_found", message: "That endpoint does not exist.", requestId: c.get("requestId") } }, 404),
-);
+/**
+ * Unmatched path that *looks* like a route from inside the `/v1` namespace.
+ *
+ * Every API route lives under `/v1`, and the SPA is built with `VITE_API_URL`
+ * pointing at `<origin>/v1`. Drop that suffix and the browser starts calling
+ * `/auth/session` and `/bootstrap`, which match nothing. Say so in the body —
+ * with CORS now on every path, this response is readable, and the alternative
+ * is a bare 404 that gets blamed on CORS.
+ */
+const VERSION_PREFIX = /^\/v\d+(?:\/|$)/;
+
+app.notFound((c) => {
+  const path = c.req.path;
+  const unversioned = path !== "/" && !VERSION_PREFIX.test(path);
+  const message = unversioned
+    ? `That endpoint does not exist. Every route lives under /v1 — expected /v1${path}. ` +
+      `Check that the client's API base URL includes the /v1 suffix.`
+    : "That endpoint does not exist.";
+  return c.json({ error: { code: "not_found", message, requestId: c.get("requestId") } }, 404);
+});
 
 /* ----------------------------------------------------------- error handler */
 

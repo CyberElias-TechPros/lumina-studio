@@ -259,7 +259,11 @@ CSP only if the route has not already set one, so a route serving a binary can
 apply a stricter policy without being clobbered.
 
 **CORS.** Exact allowlist from `FRONTEND_ORIGINS`, credentials enabled, `Vary:
-Origin` so caches cannot cross-contaminate.
+Origin` (emitted on every response, allowed or denied) so caches cannot
+cross-contaminate. It is mounted on `*`, not `/v1/*`: an unmatched path must still
+answer the preflight and carry the headers, or the browser reports an opaque "no
+Access-Control-Allow-Origin" instead of the 404 it actually is. Preflights are
+answered there too, before the session gate can 401 an `OPTIONS`.
 
 **Audit.** Every state change is logged with actor, action, entity, IP and a
 summary capped at 500 chars. `redact()` strips password / token / session /

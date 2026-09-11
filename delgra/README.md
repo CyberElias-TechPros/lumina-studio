@@ -43,7 +43,7 @@ the PDF itself never arrived, so the visual design is a reconstruction.
 
 ## Status
 
-Working and verified. Backend: `tsc --noEmit` clean, **149/149 tests passing**.
+Working and verified. Backend: `tsc --noEmit` clean, **160/160 tests passing**.
 Frontend: typecheck clean, production build succeeds, every module served by the
 dev server. See [docs/VERIFICATION.md](docs/VERIFICATION.md) for exactly what was
 run and what came back.
@@ -79,6 +79,20 @@ cookie same-origin, so there is no CORS or third-party-cookie problem.
 > `npm run db:reset:local` deletes `.wrangler/state`. Stop `wrangler dev`
 > first — a running Worker loses its database handle and starts returning 500s.
 
+### The two things that only go wrong in production
+
+Local development cannot show you either of these, because the Vite proxy rewrites
+`/api` → `/v1` on its own and applies migrations to the local D1 for you:
+
+1. **`VITE_API_URL` must include the `/v1` suffix.** `api/client.ts` appends it if
+   you forget, but the variable should still be right.
+2. **`npx wrangler d1 migrations apply DB --remote`.** `wrangler deploy` publishes
+   code, never schema. An un-migrated database answers `/v1/bootstrap` with a 500
+   and `/v1/health` with `tables: 1`.
+
+See [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md#troubleshooting) for the failure modes
+and the commands that confirm each one.
+
 ## Repository layout
 
 ```
@@ -91,7 +105,7 @@ delgra/
 │   ├── src/index.ts         app assembly, CORS, session gate, error envelope
 │   ├── src/cron.ts          daily maintenance
 │   ├── scripts/seed-demo.ts demo data via the public API
-│   └── test/                7 suites, 149 tests
+│   └── test/                8 suites, 160 tests
 └── frontend/                React 19 + Vite + Tailwind 4 SPA
     ├── src/api/             client, hooks, response types
     ├── src/components/      primitives + app shell
