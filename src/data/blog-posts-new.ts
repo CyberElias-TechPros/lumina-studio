@@ -10,6 +10,8 @@ export const newBlogPosts: {
   date: string;
   readingTime: string;
   engine: Engine;
+  /** Optional cover image (seeded picsum URL). Absent on older posts. */
+  imageUrl?: string;
   body: string[];
 }[] = [
   {

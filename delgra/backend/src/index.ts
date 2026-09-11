@@ -79,14 +79,35 @@ app.get("/v1/health", async (c) => {
 /**
  * Public bootstrap probe: tells the frontend whether the workspace still needs
  * its first owner account, so signup can be offered instead of a dead login.
+ *
+ * This is the first database-backed route a visitor hits, so it is also where
+ * an un-migrated remote D1 announces itself. `wrangler deploy` publishes code,
+ * never schema; on a database where `0001_init.sql` was never applied the
+ * queries below fail with "no such table", and the generic 500 that follows
+ * tells the operator nothing. Catch that one case and name the command that
+ * fixes it — the same philosophy as the `/v1` hint in the 404 handler.
  */
 app.get("/v1/bootstrap", async (c) => {
-  const row = await c.env.DB.prepare(`SELECT COUNT(*) AS n FROM users WHERE is_active = 1`).first<{
-    n: number;
-  }>();
-  const business = await c.env.DB.prepare(
-    `SELECT name, currency_symbol AS currencySymbol FROM business WHERE id = 'business'`,
-  ).first<{ name: string; currencySymbol: string }>();
+  let row: { n: number } | null;
+  let business: { name: string; currencySymbol: string } | null;
+  try {
+    row = await c.env.DB.prepare(`SELECT COUNT(*) AS n FROM users WHERE is_active = 1`).first<{
+      n: number;
+    }>();
+    business = await c.env.DB.prepare(
+      `SELECT name, currency_symbol AS currencySymbol FROM business WHERE id = 'business'`,
+    ).first<{ name: string; currencySymbol: string }>();
+  } catch (err) {
+    if (err instanceof Error && /no such table/i.test(err.message)) {
+      throw AppError.serviceUnavailable(
+        `The workspace database is not set up yet — its schema has not been applied. ` +
+          `Run \`npx wrangler d1 migrations apply DB --remote\` from the backend directory ` +
+          `(wrangler deploy never applies migrations), then reload this page.`,
+        { cause: err },
+      );
+    }
+    throw err;
+  }
   return c.json({
     needsOwner: (row?.n ?? 0) === 0,
     business: { name: business?.name ?? "DELGRA LTD", currencySymbol: business?.currencySymbol ?? "₦" },

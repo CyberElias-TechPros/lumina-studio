@@ -10,6 +10,10 @@ export const getRouter = () => {
     context: { queryClient },
     scrollRestoration: true,
     defaultPreloadStaleTime: 0,
+    // Route continuity: client-side navigations cross-fade through the
+    // browser's View Transitions API. Browsers without support (and
+    // reduced-motion users, via CSS) get an instant cut instead.
+    defaultViewTransition: true,
   });
 
   return router;

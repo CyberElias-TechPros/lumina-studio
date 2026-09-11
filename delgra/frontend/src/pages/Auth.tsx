@@ -20,20 +20,27 @@ export function AuthPage({ mode }: { mode: "login" | "register" }) {
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
   const [needsOwner, setNeedsOwner] = useState<boolean | null>(null);
+  const [setupError, setSetupError] = useState<string | null>(null);
 
   // On a brand-new workspace there is no account to sign into, so we send the
   // visitor to signup instead of showing a login form that can never succeed.
+  // A failed probe is not silently ignorable either: whatever it says — the
+  // database is unreachable or un-migrated, the API URL is wrong — login and
+  // signup alike will keep failing until it is fixed, so show why.
   useEffect(() => {
     let cancelled = false;
     apiFetch<Bootstrap>("/bootstrap")
       .then((result) => {
         if (cancelled) return;
+        setSetupError(null);
         setNeedsOwner(result.needsOwner);
         if (result.business?.name) setBusinessName(result.business.name);
         if (result.needsOwner && mode === "login") navigate("/register", { replace: true });
       })
-      .catch(() => {
-        if (!cancelled) setNeedsOwner(false);
+      .catch((err) => {
+        if (cancelled) return;
+        setNeedsOwner(false);
+        setSetupError(errorMessage(err));
       });
     return () => {
       cancelled = true;
@@ -72,6 +79,12 @@ export function AuthPage({ mode }: { mode: "login" | "register" }) {
         </div>
 
         <form onSubmit={onSubmit} className="card space-y-4 p-6">
+          {setupError && (
+            <p role="alert" className="rounded-lg bg-red-50 px-3 py-2 text-sm text-red-800">
+              <span className="font-semibold">Can’t reach the workspace.</span> {setupError}
+            </p>
+          )}
+
           {needsOwner && mode === "register" && (
             <p className="rounded-lg bg-brand-50 px-3 py-2 text-sm text-brand-800">
               This is a fresh workspace — the first account becomes the owner.

@@ -20,6 +20,7 @@ export type ErrorCode =
   | "rate_limited"
   | "payload_too_large"
   | "unsupported_media_type"
+  | "service_unavailable"
   | "internal_error";
 
 const STATUS: Record<ErrorCode, number> = {
@@ -32,6 +33,7 @@ const STATUS: Record<ErrorCode, number> = {
   rate_limited: 429,
   payload_too_large: 413,
   unsupported_media_type: 415,
+  service_unavailable: 503,
   internal_error: 500,
 };
 
@@ -74,6 +76,11 @@ export class AppError extends Error {
     return new AppError("rate_limited", "Too many requests. Please slow down.", {
       details: { retryAfterSeconds },
     });
+  }
+  /** 503 with an operator-facing message — used for infrastructure states
+   *  (e.g. an un-migrated database) the caller cannot fix from the UI. */
+  static serviceUnavailable(message: string, options: { cause?: unknown } = {}) {
+    return new AppError("service_unavailable", message, { cause: options.cause });
   }
 }
 

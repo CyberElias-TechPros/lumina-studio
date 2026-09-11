@@ -423,12 +423,7 @@ export function Aurora({ className }: { className?: string }) {
  */
 export function Marquee({ items, className }: { items: string[]; className?: string }) {
   return (
-    <div
-      className={cn(
-        "group relative flex overflow-hidden [mask-image:linear-gradient(90deg,transparent,black_6%,black_94%,transparent)]",
-        className,
-      )}
-    >
+    <div className={cn("mask-fade-x group relative flex overflow-hidden", className)}>
       <div className="animate-marquee flex min-w-full shrink-0 items-center gap-14 group-hover:[animation-play-state:paused] motion-reduce:animate-none">
         {[...items, ...items].map((item, i) => (
           <span
@@ -469,5 +464,55 @@ export function PulseDot({ className }: { className?: string }) {
         />
       )}
     </span>
+  );
+}
+
+/**
+ * Scroll cue — the bridge between a hero and the story below it. A hairline
+ * track with a drifting dot; the whole cue fades out once the visitor starts
+ * scrolling (feedback: "there is more, and you're moving into it"). Static
+ * and fully visible under reduced motion.
+ */
+export function ScrollCue({ label = "Scroll", className }: { label?: string; className?: string }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const reduce = useReducedMotion();
+  const { scrollY } = useScroll();
+  const [gone, setGone] = useState(false);
+  const opacity = useTransform(scrollY, [0, 120], [1, 0]);
+
+  useEffect(() => {
+    const unsub = scrollY.on("change", (v) => setGone(v > 140));
+    return unsub;
+  }, [scrollY]);
+
+  return (
+    <motion.div
+      ref={ref}
+      aria-hidden="true"
+      style={reduce ? undefined : { opacity }}
+      className={cn(
+        "pointer-events-none flex flex-col items-center gap-2 transition-opacity duration-500",
+        gone && "opacity-0",
+        className,
+      )}
+    >
+      <span className="text-muted-foreground text-[10px] font-bold tracking-[0.28em] uppercase">
+        {label}
+      </span>
+      <span className="bg-border relative h-10 w-px overflow-hidden">
+        {!reduce && (
+          <motion.span
+            className="bg-gradient-brand absolute inset-x-0 top-0 h-4 rounded-full"
+            animate={{ y: [-16, 40] }}
+            transition={{
+              duration: 1.8,
+              repeat: Infinity,
+              ease: [0.45, 0, 0.55, 1],
+              repeatDelay: 0.35,
+            }}
+          />
+        )}
+      </span>
+    </motion.div>
   );
 }
