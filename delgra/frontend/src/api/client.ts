@@ -6,17 +6,46 @@
  * through this — no ad-hoc fetch calls anywhere in the app.
  */
 
-const CONFIGURED = import.meta.env.VITE_API_URL as string | undefined;
-
 /**
  * Base URL for API calls.
  *
- * - Production: `VITE_API_URL` (e.g. https://delgra-api.<account>.workers.dev)
+ * Every route on the Worker lives under `/v1` (`/v1/bootstrap`,
+ * `/v1/auth/session`, …), so the base URL has to carry that prefix. It is the
+ * one part of the production config a bare origin can't stand in for: setting
+ * `VITE_API_URL=https://<worker>.workers.dev` makes the browser call
+ * `/bootstrap`, which matches no route — and the resulting 404s reach the
+ * console as "No 'Access-Control-Allow-Origin' header" rather than as missing
+ * paths. So the prefix is applied here instead of being trusted to the env var.
+ *
+ * - Production: `VITE_API_URL` (e.g. https://delgra-api.<account>.workers.dev/v1)
  * - Development: unset, so we use `/api`, which Vite proxies to the local Worker.
  *   Going through the proxy keeps the session cookie same-origin, which avoids
  *   third-party-cookie blocking entirely while developing.
  */
-export const API_BASE = CONFIGURED && CONFIGURED.trim() ? CONFIGURED.replace(/\/$/, "") : "/api";
+export const API_BASE = resolveApiBase(import.meta.env.VITE_API_URL as string | undefined);
+
+function resolveApiBase(configured: string | undefined): string {
+  const raw = configured?.trim().replace(/\/+$/, "");
+  // Unset (dev) or a relative path the dev server proxies — leave it alone.
+  if (!raw || !/^https?:\/\//i.test(raw)) return raw || "/api";
+
+  let url: URL;
+  try {
+    url = new URL(raw);
+  } catch {
+    return raw;
+  }
+  const pathname = url.pathname.replace(/\/+$/, "");
+  if (/\/v\d+$/.test(pathname)) return raw; // already versioned, e.g. …/v1
+
+  url.pathname = `${pathname}/v1`;
+  const corrected = url.toString().replace(/\/+$/, "");
+  console.warn(
+    `[api] VITE_API_URL was missing the /v1 prefix; using ${corrected}. ` +
+      `Set VITE_API_URL=${corrected} and redeploy so this warning goes away.`,
+  );
+  return corrected;
+}
 
 export interface ApiFieldErrors {
   [field: string]: string;
@@ -84,13 +113,28 @@ export async function apiFetch<T>(path: string, options: RequestOptions = {}): P
   }
   if (options.idempotencyKey) headers["idempotency-key"] = options.idempotencyKey;
 
-  const response = await fetch(`${API_BASE}${path}`, {
-    method: options.method ?? "GET",
-    headers,
-    body: payload,
-    credentials: "include",
-    signal: options.signal,
-  });
+  let response: Response;
+  try {
+    response = await fetch(`${API_BASE}${path}`, {
+      method: options.method ?? "GET",
+      headers,
+      body: payload,
+      credentials: "include",
+      signal: options.signal,
+    });
+  } catch (err) {
+    // A rejected fetch with no response at all means the request never completed:
+    // offline, DNS, TLS, or a CORS block. The browser deliberately hides the
+    // reason, so name the base URL — "Failed to fetch" tells an operator nothing,
+    // and this is the one failure the app cannot describe from the response.
+    if (options.signal?.aborted) throw err; // a cancelled query, not an outage
+    throw new ApiError(0, {
+      code: "network_error",
+      message: `Cannot reach the API at ${API_BASE}. The browser blocks the request before the Worker `
+        + `answers, so check for a CORS error in the console and confirm VITE_API_URL points at the `
+        + `Worker with its /v1 suffix.`,
+    });
+  }
 
   if (response.status === 204) return undefined as T;
 

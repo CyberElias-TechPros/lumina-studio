@@ -60,7 +60,7 @@ You should see 23 rows (20 tables plus SQLite's internal bookkeeping).
 
 ```bash
 npm run typecheck     # must exit 0
-npm test              # must be 149/149
+npm test              # must be 160/160
 npm run deploy
 ```
 
@@ -97,10 +97,20 @@ Create a Vercel project pointed at this directory. Set one environment variable:
 | --- | --- |
 | `VITE_API_URL` | `https://api.yourdomain.com/v1` |
 
-Build command `npm run build`, output directory `dist`. `vercel.json` already
-handles the SPA rewrite, cache headers and security headers.
+**The `/v1` suffix is part of the value, not part of the path.** Every route on
+the Worker is mounted under `/v1`, so a base URL of just
+`https://api.yourdomain.com` makes the browser call `/bootstrap` and
+`/auth/session`, which match nothing. Build command `npm run build`, output
+directory `dist`. `vercel.json` already handles the SPA rewrite, cache headers
+and security headers.
 
-Because `VITE_API_URL` is inlined at build time, changing it requires a redeploy.
+Because `VITE_API_URL` is inlined at build time, changing it requires a redeploy —
+an env var edit alone does nothing.
+
+`api/client.ts` now appends the missing `/v1` itself if the variable is set to a
+bare origin, and logs a warning naming the value it used. That is a safety net for
+a symptom that is otherwise invisible in devtools, not a licence to leave the
+variable wrong: fix it and the warning disappears.
 
 ## 5. First account
 
@@ -161,10 +171,77 @@ curl -s -o /dev/null -w '%{http_code}\n' https://api.yourdomain.com/v1/invoices 
 curl -s -o /dev/null -w '%{http_code}\n' https://api.yourdomain.com/v1/nope       # 401 (not 404)
 ```
 
-Then, signed in as the owner: create a customer, create and send an invoice with
-a stock line, confirm stock decremented, record a partial payment, confirm the
-invoice reads `partial`, download the PDF, create a share link and open it in a
-private window.
+`/v1/health` also reports the table count — this is the fastest check that
+migrations reached the **remote** database, which `wrangler deploy` never does for
+you:
+
+```bash
+curl -s https://api.yourdomain.com/v1/health
+# {"status":"ok","database":"connected","tables":23,...}
+```
+
+`tables: 1` means the schema is not applied remotely at all. Every database-backed
+route — including `/v1/bootstrap`, which the sign-in screen calls before you are
+authenticated — returns a 500 until you run
+`npx wrangler d1 migrations apply DB --remote`. `needsOwner: true` from
+`/v1/bootstrap` is what a healthy, empty workspace looks like.
+
+Then confirm CORS from the browser's point of view (an `Origin` header is what the
+browser sends, so send one):
+
+```bash
+curl -si -X OPTIONS https://api.yourdomain.com/v1/bootstrap \
+  -H 'Origin: https://app.yourdomain.com' \
+  -H 'Access-Control-Request-Method: GET' | grep -i '^access-control'
+# access-control-allow-origin: https://app.yourdomain.com
+# access-control-allow-credentials: true
+```
+
+If the origin is missing from that output, it is not in `FRONTEND_ORIGINS` — and
+note that `wrangler deploy` pushes the `vars` block in `wrangler.jsonc`, which
+overrides anything edited in the Cloudflare dashboard. Keep the two in sync or
+expect the allowlist to revert on the next deploy.
+
+---
+
+## Troubleshooting
+
+### "No 'Access-Control-Allow-Origin' header is present"
+
+The console says CORS; the cause is usually not CORS. Three things produce that
+exact message, in the order they bite:
+
+1. **The base URL lost its `/v1`.** Requests land on `/bootstrap` instead of
+   `/v1/bootstrap`, match no route, and the 404 arrives without CORS headers
+   because the origin never got as far as a real endpoint. Check the Network tab:
+   if the failing request path has no `/v1` in it, this is it. The Worker now
+   answers CORS on every path and the 404 body names the prefix, so the real
+   reason is visible instead of masked; the frontend also self-corrects the base.
+2. **The origin is not allowlisted.** `FRONTEND_ORIGINS` must contain the exact
+   `Origin` value — scheme, host, no trailing slash, no path. `https://app.example`
+   and `https://app.example/` are the same entry as of this writing; `*` is not a
+   wildcard and matches nothing, deliberately, because credentials are sent.
+3. **The Worker threw before responding.** A 500 (typically `no such table: users`)
+   still carries the CORS headers now, but the browser will show a failed fetch, so
+   read the status code in the Network tab before assuming anything about CORS.
+
+### The sign-in screen never gets past "Sign in" on a `workers.dev` API
+
+CORS can be entirely correct and the session still won't stick: the cookie is
+`SameSite=None; Secure` set by a *different registrable domain* than the page, so
+Safari and other ITP-style blockers drop it. This is why the docs recommend a
+custom domain. The cheapest fix is to put both halves under one registrable
+domain — `delgra.freegameplay.site` for the UI and `api.freegameplay.site` for the
+Worker: that is still cross-origin, so CORS still applies, but it is same-*site*,
+so the cookie is first-party and every browser sends it.
+
+### 401 immediately after a successful login
+
+`Set-Cookie` was accepted but not sent back. Confirm the cookie name
+(`tf_session`), that `COOKIE_SECURE` is not `false` in production over HTTPS or
+`true` on http://localhost, and — if the frontend is deployed anywhere under a
+path rather than a bare origin — that the Worker is being asked to set the cookie
+on a host the browser will echo back.
 
 ## Rollback
 

@@ -39,11 +39,28 @@ export function isProduction(env: Env): boolean {
   return (env.APP_ENV ?? "production") === "production";
 }
 
+/**
+ * The CORS allowlist, from `FRONTEND_ORIGINS` (comma-separated).
+ *
+ * Entries are compared to the raw `Origin` header, which never carries a path or
+ * a trailing slash — so a trailing slash on an entry can only ever be a typo (it
+ * is easy to paste `APP_URL`, which does carry one). Normalise it away rather
+ * than silently shipping a frontend that gets no CORS headers.
+ *
+ * Matching is exact and case-sensitive by design: `*` is treated as a literal
+ * entry that matches nothing, never as a wildcard, because credentials are sent.
+ */
 export function allowedOrigins(env: Env): string[] {
   return (env.FRONTEND_ORIGINS ?? "")
     .split(",")
-    .map((o) => o.trim())
+    .map((origin) => origin.trim().replace(/\/+$/, ""))
     .filter(Boolean);
+}
+
+/** Is this request's `Origin` allowed to read the response with credentials? */
+export function isAllowedOrigin(env: Env, origin: string | undefined): boolean {
+  if (!origin) return false;
+  return allowedOrigins(env).includes(origin.replace(/\/+$/, ""));
 }
 
 export function sessionTtlMinutes(env: Env): number {

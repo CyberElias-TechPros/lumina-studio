@@ -13,8 +13,8 @@ $ npx tsc --noEmit
 (exit 0, no output)
 
 $ npx vitest run
- Test Files  7 passed (7)
-      Tests  149 passed (149)
+ Test Files  8 passed (8)
+      Tests  160 passed (160)
 ```
 
 Per file:
@@ -28,6 +28,7 @@ Per file:
 | `rbac.test.ts` | 22 |
 | `invoices.test.ts` | 27 |
 | `operations.test.ts` | 30 |
+| `cors.test.ts` | 11 |
 
 12 tests are skipped (email delivery, which needs a live Resend key).
 
