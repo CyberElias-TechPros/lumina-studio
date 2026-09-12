@@ -7,7 +7,7 @@ import { Reveal } from "@/components/motion";
 import { getPageHead } from "@/lib/seo";
 import { getResources, type Resource } from "@/data/resources";
 
-export const Route = createFileRoute("/resources")({
+export const Route = createFileRoute("/resources/")({
   head: () =>
     getPageHead({
       title: "Free tech resources — templates, checklists, cheat sheets and guides",

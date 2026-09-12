@@ -50,7 +50,7 @@ export const Route = createFileRoute("/marketplace")({
     getPageHead({
       title: "Marketplace",
       description:
-        "The Career Engine marketplace: full-time roles, internships and freelance gigs for students and alumni — vetted by the employer network.",
+        "Full-time roles, internships and paid freelance gigs for our students and alumni — every listing vetted by our employer network.",
       path: "/marketplace",
     }),
   component: Marketplace,
@@ -62,7 +62,7 @@ function Marketplace() {
   return (
     <PageShell>
       <PageHero
-        eyebrow="Career Engine"
+        eyebrow="Jobs & paid gigs"
         art="market"
         title={
           <>
@@ -200,7 +200,7 @@ function Marketplace() {
           <MarketplaceEmpty
             icon={Wrench}
             title="Freelance gigs are on the way"
-            body="The Services Engine will route real client work to learners under practitioner supervision. Gigs appear here as the first client engagements go live."
+            body="Real client work is routed to learners under instructor supervision. Gigs appear here as the first client engagements go live."
           />
         )}
       </section>
