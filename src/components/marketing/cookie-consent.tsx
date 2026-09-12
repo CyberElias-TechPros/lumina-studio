@@ -39,7 +39,7 @@ export function CookieConsent() {
     <div className="fixed inset-x-0 bottom-0 z-[100] p-4 sm:p-6">
       <div className="container-page">
         <div className="bg-card shadow-elevated rounded-2xl border p-5 sm:flex sm:items-center sm:justify-between sm:gap-4">
-          <p className="text-muted-foreground text-sm leading-relaxed">
+          <p className="text-foreground/75 text-sm leading-relaxed">
             We use essential cookies to make our site work and optional analytics cookies to
             understand how you use it. By continuing to use this site, you agree to our{" "}
             <Link to="/privacy" className="text-primary underline">
