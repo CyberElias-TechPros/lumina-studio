@@ -1,42 +1,74 @@
-import type { ReactNode } from "react";
+import { useEffect, type ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
 import { motion } from "motion/react";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { SiteHeader } from "./site-header";
 import { SiteFooter } from "./site-footer";
 import { Button } from "@/components/ui/button";
 import { SceneArt, type ArtVariant } from "@/components/art/scene-art";
 import { cn } from "@/lib/utils";
 import {
-  Aurora,
   Counter,
+  CustomCursor,
   EASE,
+  Grain,
+  LightField,
   LineMaskReveal,
+  Magnetic,
   Parallax,
   Reveal,
+  Scramble,
   ScrollCue,
   ScrollProgressBar,
-  Spotlight,
 } from "@/components/motion";
 import { stats } from "@/data/site";
 
+/**
+ * The public-site shell. The marketing site is dark by default (Lumina is a
+ * dark identity); a visitor who explicitly chose daylight keeps daylight, and
+ * the class is removed again when we navigate into the light app workspace.
+ */
 export function PageShell({ children }: { children: ReactNode }) {
+  useEffect(() => {
+    let pref: string | null = null;
+    try {
+      pref = localStorage.getItem("cea-marketing-theme");
+    } catch {
+      /* storage blocked — fall back to the default */
+    }
+    const root = document.documentElement;
+    if (pref !== "light") root.classList.add("dark");
+    return () => {
+      // Handing off to a workspace: restore that surface's own preference
+      // rather than leaving the public site's dark identity behind.
+      let appPref: string | null = null;
+      try {
+        appPref = localStorage.getItem("cea-theme");
+      } catch {
+        /* storage blocked — treat as light */
+      }
+      root.classList.toggle("dark", appPref === "dark");
+    };
+  }, []);
+
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="bg-background text-foreground relative flex min-h-screen flex-col">
+      <CustomCursor />
+      <Grain />
       <ScrollProgressBar />
       <a
         href="#main-content"
-        className="bg-background text-foreground shadow-soft fixed top-3 left-1/2 z-[70] -translate-x-1/2 -translate-y-24 rounded-full border px-4 py-2 text-sm font-semibold transition-transform duration-200 focus-visible:translate-y-0 motion-reduce:transition-none"
+        className="bg-foreground text-background shadow-soft fixed top-3 left-1/2 z-[95] -translate-x-1/2 -translate-y-28 rounded-full px-5 py-2 text-sm font-semibold transition-transform duration-200 focus-visible:translate-y-0 motion-reduce:transition-none"
       >
         Skip to content
       </a>
       <SiteHeader />
       <motion.main
         id="main-content"
-        initial={{ opacity: 0, y: 8 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, ease: EASE }}
-        className="flex-1 pt-20"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.7, ease: EASE }}
+        className="flex-1"
       >
         {children}
       </motion.main>
@@ -45,24 +77,35 @@ export function PageShell({ children }: { children: ReactNode }) {
   );
 }
 
-export function Eyebrow({ children, className }: { children: ReactNode; className?: string }) {
+/** Mono micro-label — the wayfinding voice of the site. */
+export function Eyebrow({
+  children,
+  className,
+  scramble = false,
+}: {
+  children: ReactNode;
+  className?: string;
+  scramble?: boolean;
+}) {
+  const content =
+    typeof children === "string" && scramble ? <Scramble text={children} /> : children;
   return (
     <span
       className={cn(
-        "border-primary/25 bg-primary/8 text-primary inline-flex items-center gap-2 rounded-full border px-3.5 py-1.5 text-[11px] font-bold tracking-[0.16em] uppercase",
+        "font-label text-primary inline-flex items-center gap-2.5 text-[10px]",
         className,
       )}
     >
-      <Sparkles className="size-3.5" />
-      {children}
+      <span aria-hidden="true" className="bg-primary inline-block h-px w-6" />
+      {content}
     </span>
   );
 }
 
 /**
  * The editorial section heading used across the public site.
- * `number` adds the house motif — "01 —" index rule — so sections read
- * like chapters of one story rather than detached page blocks (§43).
+ * `number` adds the house motif — an oversized index numeral — so sections
+ * read like chapters of one story rather than detached page blocks.
  */
 export function SectionHeading({
   eyebrow,
@@ -85,38 +128,62 @@ export function SectionHeading({
   return (
     <div
       className={cn(
-        "flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between",
+        "flex flex-col gap-10 lg:flex-row lg:items-end lg:justify-between",
         align === "center" && "lg:flex-col lg:items-center",
         className,
       )}
     >
-      <Reveal className={cn("max-w-2xl", align === "center" && "mx-auto text-center")}>
-        {number && (
-          <p
-            aria-hidden="true"
-            className={cn(
-              "text-muted-foreground mb-4 flex items-center gap-3 text-[11px] font-extrabold tracking-[0.3em] tabular-nums",
-              align === "center" && "justify-center",
+      <div className={cn("max-w-3xl", align === "center" && "mx-auto text-center")}>
+        <Reveal>
+          <div className={cn("flex items-center gap-4", align === "center" && "justify-center")}>
+            {number && (
+              <span
+                aria-hidden="true"
+                className="font-display text-outline text-[2.75rem] leading-none font-light tabular-nums"
+              >
+                {number}
+              </span>
             )}
-          >
-            <span className="bg-gradient-brand inline-block h-px w-8" />
-            {number}
-            <span className="bg-border inline-block h-px w-16" />
-          </p>
-        )}
-        {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
-        <h2 className="text-h2 mt-5 font-extrabold text-balance">{title}</h2>
+            {eyebrow && <Eyebrow scramble>{eyebrow}</Eyebrow>}
+          </div>
+        </Reveal>
+        <h2 className="text-h2 font-display mt-6 font-semibold text-balance">
+          {typeof title === "string" ? <LineMaskReveal text={title} /> : title}
+        </h2>
         {description && (
-          <p className="text-muted-foreground mt-4 text-base leading-relaxed text-pretty sm:text-lg">
-            {description}
-          </p>
+          <Reveal delay={0.1}>
+            <p
+              className={cn(
+                "text-muted-foreground mt-5 max-w-2xl text-body-lg text-pretty",
+                align === "center" && "mx-auto",
+              )}
+            >
+              {description}
+            </p>
+          </Reveal>
         )}
-      </Reveal>
+      </div>
       {aside && (
         <Reveal delay={0.12} className={cn("shrink-0", align === "center" && "lg:mt-2")}>
           {aside}
         </Reveal>
       )}
+    </div>
+  );
+}
+
+/** Corner registration marks — the crop marks that frame a full-bleed panel. */
+export function CornerMarks({ className }: { className?: string }) {
+  return (
+    <div aria-hidden="true" className={cn("pointer-events-none absolute inset-4", className)}>
+      {[
+        "left-0 top-0 border-l border-t",
+        "right-0 top-0 border-r border-t",
+        "left-0 bottom-0 border-l border-b",
+        "right-0 bottom-0 border-r border-b",
+      ].map((pos) => (
+        <span key={pos} className={cn("absolute size-3 border-foreground/25", pos)} />
+      ))}
     </div>
   );
 }
@@ -130,6 +197,7 @@ export function PageHero({
   artWidth,
   artCaption,
   cue,
+  meta,
 }: {
   eyebrow: string;
   title: ReactNode;
@@ -141,70 +209,61 @@ export function PageHero({
   artCaption?: string;
   /** Scroll bridge to the content below; off by default on tight heroes. */
   cue?: boolean;
+  /** Mono facts strip under the copy (e.g. duration · level · mode). */
+  meta?: string[];
 }) {
   return (
-    <section
-      className={cn(
-        "relative overflow-hidden border-b",
-        "motion-reduce:!bg-transparent motion-reduce:!no-pointer-events",
-      )}
-    >
-      {/* Atmospheric aura that respects reduced‑motion */}
-      <Aurora
-        className={cn("opacity-60 motion-reduce:opacity-0", { "motion-reduce:transition": "none" })}
-      />
-      <Spotlight className="motion-reduce:opacity-0" />
-      {/* Subtle grid that degrades gracefully */}
-      <div
-        className={cn(
-          "pointer-events-none absolute inset-0 opacity-40 motion-reduce:opacity-0",
-          "[mask-image:radial-gradient(70%_60%_at_50%_0%,black,transparent)]",
-        )}
-      />
-      <div className="container-page relative py-20 md:py-28">
-        <div className={cn("grid items-center gap-12", art && "lg:grid-cols-[1fr_auto]")}>
+    <section className="relative overflow-hidden border-b border-foreground/10 pt-28 pb-16 md:pt-36 md:pb-24">
+      <LightField density={4} opacity={0.55} />
+      <div className="rule-grid pointer-events-none absolute inset-0 opacity-60 [mask-image:radial-gradient(70%_60%_at_50%_0%,black,transparent)]" />
+
+      <div className="container-page relative">
+        <div className={cn("grid items-center gap-14", art && "lg:grid-cols-[1.15fr_0.85fr]")}>
           <div>
             <Reveal>
-              <Eyebrow>{eyebrow}</Eyebrow>
+              <Eyebrow scramble>{eyebrow}</Eyebrow>
             </Reveal>
-            <h1 className="text-hero mt-6 max-w-4xl font-extrabold text-balance">
+            <h1 className="text-hero font-display mt-7 max-w-5xl font-semibold text-balance">
               {typeof title === "string" ? <LineMaskReveal text={title} /> : title}
             </h1>
             <Reveal delay={0.12}>
-              <p className="text-muted-foreground mt-6 max-w-2xl text-lg leading-relaxed text-pretty sm:text-xl">
+              <p className="text-muted-foreground mt-7 max-w-2xl text-body-lg text-pretty">
                 {description}
               </p>
             </Reveal>
-            {children && <Reveal delay={0.18}>{children}</Reveal>}
+            {meta && (
+              <Reveal delay={0.16}>
+                <ul className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2">
+                  {meta.map((m) => (
+                    <li
+                      key={m}
+                      className="font-label text-muted-foreground flex items-center gap-2 text-[10px]"
+                    >
+                      <span aria-hidden="true" className="bg-primary size-1 rounded-full" />
+                      {m}
+                    </li>
+                  ))}
+                </ul>
+              </Reveal>
+            )}
+            {children && <Reveal delay={0.2}>{children}</Reveal>}
           </div>
           {art && (
             <Reveal delay={0.16} className="hidden lg:block">
-              <Parallax
-                speed={0.055}
-                className={cn("motion-reduce:transition-none", {
-                  "motion-reduce:transform": "none",
-                })}
-              >
+              <Parallax speed={0.05}>
                 <div className="relative">
-                  {/* Offset ground layer — the panel casts a presence behind itself */}
-                  <span
-                    aria-hidden="true"
-                    className="bg-gradient-brand absolute -right-4 -bottom-4 h-full w-full rounded-[2.25rem] opacity-20 blur-[2px] motion-reduce:hidden"
-                  />
                   <div
                     className={cn(
-                      "shadow-elevated relative h-72 w-80 overflow-hidden rounded-[2rem] border transition-transform duration-500 hover:rotate-[-0.6deg] hover:scale-[1.015] md:h-80 md:w-96 xl:h-96 xl:w-[24rem]",
+                      "border-foreground/12 relative h-80 w-full overflow-hidden rounded-[3px] border md:h-96",
                       artWidth,
                     )}
                   >
                     <SceneArt variant={art} />
-                    <div className="from-card pointer-events-none absolute inset-x-0 bottom-0 h-10 bg-gradient-to-b to-transparent opacity-70" />
+                    <CornerMarks />
                     {artCaption && (
-                      <div className="glass-strong absolute bottom-4 left-4 flex items-center gap-2 rounded-full py-1.5 pr-4 pl-3">
+                      <div className="bg-background/80 absolute bottom-4 left-4 flex items-center gap-2 rounded-full px-3.5 py-1.5 backdrop-blur-md">
                         <span className="bg-gradient-brand inline-block size-1.5 rounded-full" />
-                        <span className="text-foreground/90 text-xs font-bold tracking-wide">
-                          {artCaption}
-                        </span>
+                        <span className="font-label text-[9px]">{artCaption}</span>
                       </div>
                     )}
                   </div>
@@ -214,62 +273,48 @@ export function PageHero({
           )}
         </div>
         {cue && (
-          <div className="mt-14 flex justify-center md:mt-16">
+          <div className="mt-20 flex justify-center">
             <ScrollCue />
           </div>
         )}
       </div>
-      {/* Hairline brand gradient caps the section */}
-      <div
-        aria-hidden="true"
-        className="hairline-brand pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-px opacity-80"
-      />
     </section>
   );
 }
 
 export function StatBand() {
   return (
-    <section className={cn("relative border-y border-border/20", "motion-reduce:!border-0")}>
-      <div className="container-page relative py-12">
-        <div className="grid divide-y sm:grid-cols-2 sm:divide-y-0 lg:grid-cols-4 lg:divide-x">
+    <section className="relative border-y border-foreground/10">
+      <div className="container-page py-14">
+        <div className="grid divide-y divide-foreground/10 sm:grid-cols-2 sm:divide-y-0 lg:grid-cols-4 lg:divide-x">
           {stats.map((s, i) => (
             <Reveal
               key={s.label}
-              delay={i * 0.08}
-              className="group relative px-4 py-10 text-center"
+              delay={i * 0.07}
+              className="group relative px-2 py-8 text-center sm:px-6"
             >
               <span
                 aria-hidden="true"
-                className={cn(
-                  "bg-gradient-brand absolute top-0 left-1/2 h-[3px] w-14 -translate-x-1/2 origin-left rounded-full opacity-0 transition-all duration-500 group-hover:scale-x-100 group-hover:opacity-80",
-                  "motion-reduce:transition-none",
-                  "motion-reduce:scale-x-0",
-                  "motion-reduce:opacity-0",
-                )}
+                className="bg-gradient-brand absolute top-0 left-1/2 h-px w-0 -translate-x-1/2 transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:w-full motion-reduce:transition-none"
               />
-              {/* Index numeral — the chapter motif, miniature */}
               <p
                 aria-hidden="true"
-                className="text-muted-foreground/70 mb-3 text-[10px] font-extrabold tracking-[0.3em] tabular-nums"
+                className="font-label text-muted-foreground/60 mb-4 text-[10px] tabular-nums"
               >
                 {String(i + 1).padStart(2, "0")}
               </p>
-              <p className="font-display text-gradient text-4xl font-extrabold tabular-nums sm:text-5xl">
+              <p className="font-display text-[clamp(2.75rem,6vw,4.5rem)] leading-none font-semibold tabular-nums">
                 <Counter
                   to={s.value}
                   suffix={s.suffix}
                   decimals={"decimals" in s ? (s.decimals as number) : 0}
                 />
               </p>
-              <p className="text-muted-foreground mt-2 text-sm font-medium">{s.label}</p>
+              <p className="text-muted-foreground mt-3 text-sm">{s.label}</p>
             </Reveal>
           ))}
         </div>
       </div>
-      {/* Subtle atmospheric overlay */}
-      <Aurora className="opacity-20 motion-reduce:opacity-0" />
-      <Spotlight className="motion-reduce:opacity-0" />
     </section>
   );
 }
@@ -286,67 +331,57 @@ export function CTASection({
   secondary?: { label: string; to: string };
 }) {
   return (
-    <section className="container-page relative py-20 md:py-28">
-      <Reveal>
-        <div
-          className={cn(
-            "bg-gradient-ink noise relative overflow-hidden rounded-3xl px-8 py-16 md:px-16 md:py-20",
-            "motion-reduce:!bg-none",
-          )}
-        >
-          {/* Brand light bleeding through the ink — atmosphere, not decoration */}
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute -top-40 -right-24 size-[34rem] rounded-full bg-gradient-brand opacity-25 blur-[120px] motion-reduce:opacity-20"
-          />
-          {/* rim light — a hairline of brand gradient along the top edge */}
-          <span
-            aria-hidden="true"
-            className={cn(
-              "bg-gradient-brand absolute inset-x-16 top-0 h-px opacity-70 [mask-image:linear-gradient(90deg,transparent,black_30%,black_70%,transparent)]",
-              "motion-reduce:transition-none",
-            )}
-          />
-          <div className="relative z-[2] max-w-2xl">
-            <h2 className="text-h2 font-extrabold text-balance text-white">{title}</h2>
-            <p className="mt-5 text-lg leading-relaxed text-pretty text-white/75">{description}</p>
-            <div className="mt-9 flex flex-wrap gap-3">
+    <section className="relative overflow-hidden border-t border-foreground/10 py-24 md:py-32">
+      <LightField density={5} opacity={0.7} />
+      <div className="container-page relative">
+        <div className="grid gap-12 lg:grid-cols-[1.4fr_0.6fr] lg:items-end">
+          <div>
+            <Reveal>
+              <Eyebrow scramble>Applications open</Eyebrow>
+            </Reveal>
+            <h2 className="text-h2 font-display mt-7 font-semibold text-balance">
+              {typeof title === "string" ? <LineMaskReveal text={title} /> : title}
+            </h2>
+            <Reveal delay={0.1}>
+              <p className="text-muted-foreground mt-6 max-w-xl text-body-lg text-pretty">
+                {description}
+              </p>
+            </Reveal>
+          </div>
+          <Reveal delay={0.16} className="flex flex-wrap gap-3 lg:justify-end">
+            <Magnetic strength={12}>
               <Button
                 asChild
                 size="lg"
-                className={cn(
-                  "sheen border-0 bg-white text-ink shadow-lift transition-transform duration-200 hover:-translate-y-0.5 active:translate-y-0",
-                  "motion-reduce:transition-none",
-                )}
+                className="bg-foreground text-background hover:bg-primary hover:text-primary-foreground h-14 rounded-full border-0 px-8 text-base font-semibold transition-colors duration-300"
               >
                 <Link to={primary.to}>
-                  {primary.label} <ArrowRight className="ml-1.5 size-4" />
+                  {primary.label} <ArrowRight className="ml-2 size-4" />
                 </Link>
               </Button>
-              <Button
-                asChild
-                size="lg"
-                variant="outline"
-                className={cn(
-                  "border-white/25 bg-transparent text-white hover:border-white/50 hover:bg-white/10",
-                  "motion-reduce:transition-none",
-                )}
-              >
-                <Link to={secondary.to}>{secondary.label}</Link>
-              </Button>
-            </div>
-          </div>
-          {/* The five-engine hairline — the wayfinding motif, miniature. Each
-              engine claims one segment; the strip reads as one chord. */}
-          <div aria-hidden="true" className="absolute inset-x-16 bottom-0 flex h-[3px] gap-1.5">
-            <span className="bg-gradient-learning w-full rounded-full opacity-70" />
-            <span className="bg-gradient-career w-full rounded-full opacity-70" />
-            <span className="bg-gradient-services w-full rounded-full opacity-70" />
-            <span className="bg-gradient-erp w-full rounded-full opacity-70" />
-            <span className="bg-gradient-community w-full rounded-full opacity-70" />
-          </div>
+            </Magnetic>
+            <Button
+              asChild
+              size="lg"
+              variant="outline"
+              className="border-foreground/20 hover:border-foreground/50 hover:bg-foreground/5 h-14 rounded-full px-8 text-base font-medium transition-colors"
+            >
+              <Link to={secondary.to}>
+                {secondary.label} <ArrowUpRight className="ml-2 size-4" />
+              </Link>
+            </Button>
+          </Reveal>
         </div>
-      </Reveal>
+
+        {/* The five-engine hairline — the wayfinding motif, miniature. */}
+        <div aria-hidden="true" className="mt-20 flex h-px gap-1.5">
+          <span className="bg-gradient-learning w-full" />
+          <span className="bg-gradient-career w-full" />
+          <span className="bg-gradient-services w-full" />
+          <span className="bg-gradient-erp w-full" />
+          <span className="bg-gradient-community w-full" />
+        </div>
+      </div>
     </section>
   );
 }

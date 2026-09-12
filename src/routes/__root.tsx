@@ -23,6 +23,17 @@ import { MotionProvider } from "@/components/motion";
 
 import { ORGANIZATION_LD, WEBSITE_LD, LOCAL_BUSINESS_LD } from "../lib/seo";
 
+const THEME_SCRIPT = `(function(){try{
+  var workspace = /^\\/(app|portal|auth)(\\/|$)/.test(location.pathname);
+  var marketing = localStorage.getItem("cea-marketing-theme");
+  // Workspaces follow the visitor's saved app theme; the public site is dark
+  // unless the visitor explicitly asked for daylight.
+  var dark = workspace
+    ? localStorage.getItem("cea-theme") === "dark"
+    : marketing !== "light";
+  if (dark) document.documentElement.classList.add("dark");
+} catch (e) {}})();`;
+
 function StructuredData({ data }: { data: Record<string, unknown> | Record<string, unknown>[] }) {
   const items = Array.isArray(data) ? data : [data];
   return (
@@ -144,11 +155,21 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     ],
     links: [
       { rel: "stylesheet", href: appCss },
-      { rel: "preconnect", href: "https://fonts.googleapis.com" },
-      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+      // Fonts are self-hosted variable faces (see src/styles.css) — no
+      // third-party requests, and they still resolve offline in the PWA.
       {
-        rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap",
+        rel: "preload",
+        href: "/fonts/bricolage-grotesque-var.woff2",
+        as: "font",
+        type: "font/woff2",
+        crossOrigin: "anonymous",
+      },
+      {
+        rel: "preload",
+        href: "/fonts/geist-var.woff2",
+        as: "font",
+        type: "font/woff2",
+        crossOrigin: "anonymous",
       },
       { rel: "icon", href: "/icon.svg", type: "image/svg+xml" },
       { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
@@ -167,6 +188,19 @@ function RootShell({ children }: { children: ReactNode }) {
     <html lang="en">
       <head>
         <HeadContent />
+        {/* Runs before first paint so the dark Lumina identity never flashes
+            light. The public site is dark unless the visitor chose daylight;
+            the /app and /portal workspaces stay light. */}
+        <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
+        {/* The public site's entrance choreography is JS-driven. Without JS the
+            content must still be readable: drop the arrival curtain and undo
+            motion's initial inline styles (classes are untouched, so Tailwind's
+            own translate/rotate utilities keep working). */}
+        <noscript>
+          <style>{`[data-arrival]{display:none !important}
+main,main *{opacity:1 !important;filter:none !important}
+main [style*="translateY"],main [style*="translateX"]{transform:none !important}`}</style>
+        </noscript>
       </head>
       <body>
         <StructuredData data={[ORGANIZATION_LD, LOCAL_BUSINESS_LD, WEBSITE_LD]} />

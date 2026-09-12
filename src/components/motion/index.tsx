@@ -516,3 +516,784 @@ export function ScrollCue({ label = "Scroll", className }: { label?: string; cla
     </motion.div>
   );
 }
+
+/* ------------------------------------------------------------------ *
+ * LUMINA signature layer
+ *
+ * The pieces that make the public site feel authored rather than
+ * assembled: liquid light, a bespoke pointer, decoding labels, pinned
+ * storytelling and a drag rail. Every one of them degrades to a calm,
+ * readable static state under reduced motion or on touch devices.
+ * ------------------------------------------------------------------ */
+
+/** Palette of the light field, in sRGB (canvas cannot read oklch tokens). */
+const LIGHT_PALETTE = [
+  "226, 74, 55", // ember
+  "124, 16, 52", // burgundy
+  "240, 190, 110", // gold
+  "122, 84, 200", // violet
+  "58, 168, 150", // teal
+];
+
+/**
+ * Liquid light — a canvas of slow-moving radial lights, additively blended
+ * and heavily blurred. It is the atmospheric signature of the site: cheap
+ * (rendered at a quarter resolution, paused off-screen), never interactive,
+ * and it leans toward the pointer so the page feels aware of you.
+ */
+export function LightField({
+  className,
+  density = 5,
+  pointer = true,
+  opacity = 0.85,
+}: {
+  className?: string;
+  density?: number;
+  pointer?: boolean;
+  opacity?: number;
+}) {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const hostRef = useRef<HTMLDivElement>(null);
+  const reduce = useReducedMotion();
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    const host = hostRef.current;
+    if (!canvas || !host) return;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    const RENDER_SCALE = 0.22; // blurred anyway — a quarter res is plenty
+    let width = 1;
+    let height = 1;
+    let raf = 0;
+    let visible = true;
+    let started = false;
+
+    const pointerLight = { x: 0.5, y: 0.42, tx: 0.5, ty: 0.42 };
+
+    const orbs = Array.from({ length: density }, (_, i) => {
+      const t = i / Math.max(1, density - 1);
+      return {
+        x: 0.12 + t * 0.76,
+        y: 0.22 + (i % 3) * 0.24,
+        r: 0.34 + (i % 3) * 0.13,
+        ax: 0.05 + (i % 4) * 0.022,
+        ay: 0.04 + ((i + 1) % 3) * 0.026,
+        sx: 0.00007 + (i % 3) * 0.000035,
+        sy: 0.00006 + ((i + 2) % 4) * 0.00003,
+        phase: i * 1.7,
+        color: LIGHT_PALETTE[i % LIGHT_PALETTE.length],
+        alpha: 0.5 - t * 0.16,
+      };
+    });
+
+    const resize = () => {
+      const rect = host.getBoundingClientRect();
+      width = Math.max(1, Math.round(rect.width * RENDER_SCALE));
+      height = Math.max(1, Math.round(rect.height * RENDER_SCALE));
+      canvas.width = width;
+      canvas.height = height;
+    };
+
+    const paint = (now: number) => {
+      ctx.clearRect(0, 0, width, height);
+      ctx.globalCompositeOperation = "lighter";
+      for (const orb of orbs) {
+        const cx = (orb.x + Math.sin(now * orb.sx + orb.phase) * orb.ax) * width;
+        const cy = (orb.y + Math.cos(now * orb.sy + orb.phase * 1.3) * orb.ay) * height;
+        const radius = orb.r * Math.max(width, height);
+        const grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, radius);
+        grad.addColorStop(0, `rgba(${orb.color}, ${orb.alpha})`);
+        grad.addColorStop(0.45, `rgba(${orb.color}, ${orb.alpha * 0.28})`);
+        grad.addColorStop(1, `rgba(${orb.color}, 0)`);
+        ctx.fillStyle = grad;
+        ctx.fillRect(0, 0, width, height);
+      }
+
+      // The pointer light — the page acknowledging you.
+      pointerLight.x += (pointerLight.tx - pointerLight.x) * 0.06;
+      pointerLight.y += (pointerLight.ty - pointerLight.y) * 0.06;
+      const px = pointerLight.x * width;
+      const py = pointerLight.y * height;
+      const pr = 0.42 * Math.max(width, height);
+      const pGrad = ctx.createRadialGradient(px, py, 0, px, py, pr);
+      pGrad.addColorStop(0, "rgba(255, 214, 170, 0.34)");
+      pGrad.addColorStop(0.5, "rgba(226, 74, 55, 0.14)");
+      pGrad.addColorStop(1, "rgba(226, 74, 55, 0)");
+      ctx.fillStyle = pGrad;
+      ctx.fillRect(0, 0, width, height);
+      ctx.globalCompositeOperation = "source-over";
+    };
+
+    const loop = (now: number) => {
+      if (visible) paint(now);
+      raf = requestAnimationFrame(loop);
+    };
+
+    const start = () => {
+      if (started) return;
+      started = true;
+      resize();
+      paint(performance.now());
+      if (!reduce) raf = requestAnimationFrame(loop);
+    };
+
+    resize();
+    start();
+
+    const onResize = () => {
+      resize();
+      paint(performance.now());
+    };
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        visible = entries[0]?.isIntersecting ?? true;
+      },
+      { threshold: 0 },
+    );
+    observer.observe(host);
+    window.addEventListener("resize", onResize);
+
+    let moveHandler: ((e: MouseEvent) => void) | undefined;
+    if (pointer && !reduce) {
+      moveHandler = (e: MouseEvent) => {
+        const rect = host.getBoundingClientRect();
+        pointerLight.tx = (e.clientX - rect.left) / Math.max(1, rect.width);
+        pointerLight.ty = (e.clientY - rect.top) / Math.max(1, rect.height);
+      };
+      window.addEventListener("mousemove", moveHandler, { passive: true });
+    }
+
+    return () => {
+      cancelAnimationFrame(raf);
+      observer.disconnect();
+      window.removeEventListener("resize", onResize);
+      if (moveHandler) window.removeEventListener("mousemove", moveHandler);
+    };
+  }, [density, pointer, reduce]);
+
+  return (
+    <div
+      ref={hostRef}
+      aria-hidden="true"
+      className={cn("pointer-events-none absolute inset-0 overflow-hidden", className)}
+    >
+      <canvas
+        ref={canvasRef}
+        className="size-full scale-[1.08] blur-[64px] saturate-[155%]"
+        style={{ opacity }}
+      />
+      <div className="vignette absolute inset-0" />
+    </div>
+  );
+}
+
+/**
+ * The bespoke pointer: a solid core that tracks exactly, and a lagging ring
+ * that stretches toward whatever it is over. Elements opt into a label with
+ * `data-cursor="Drag"` etc. Hidden entirely on touch and under reduced
+ * motion — those visitors keep the native cursor.
+ */
+export function CustomCursor() {
+  const [enabled, setEnabled] = useState(false);
+  const [label, setLabel] = useState<string | null>(null);
+  const [active, setActive] = useState(false);
+  const x = useMotionValue(-100);
+  const y = useMotionValue(-100);
+  const ringX = useSpring(x, { stiffness: 320, damping: 30, mass: 0.5 });
+  const ringY = useSpring(y, { stiffness: 320, damping: 30, mass: 0.5 });
+
+  useEffect(() => {
+    const fine = window.matchMedia("(pointer: fine)").matches;
+    const calm = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (!fine || calm) return;
+    setEnabled(true);
+    document.documentElement.classList.add("cursor-off");
+
+    const onMove = (e: MouseEvent) => {
+      x.set(e.clientX);
+      y.set(e.clientY);
+      const target = (e.target as Element | null)?.closest?.(
+        "a,button,[role=button],[data-cursor],input,textarea,select,[tabindex]",
+      );
+      if (!target) {
+        setActive(false);
+        setLabel(null);
+        return;
+      }
+      setActive(true);
+      const custom = target.getAttribute("data-cursor");
+      setLabel(custom);
+    };
+    const onLeave = () => {
+      setActive(false);
+      setLabel(null);
+    };
+
+    window.addEventListener("mousemove", onMove, { passive: true });
+    document.addEventListener("mouseleave", onLeave);
+    return () => {
+      window.removeEventListener("mousemove", onMove);
+      document.removeEventListener("mouseleave", onLeave);
+      document.documentElement.classList.remove("cursor-off");
+    };
+  }, [x, y]);
+
+  if (!enabled) return null;
+
+  return (
+    <div aria-hidden="true" className="pointer-events-none fixed inset-0 z-[90]">
+      <motion.div
+        className="bg-foreground absolute top-0 left-0 size-[7px] rounded-full mix-blend-difference"
+        style={{ x, y, translateX: "-50%", translateY: "-50%" }}
+        animate={{ scale: active ? 0.4 : 1 }}
+        transition={{ duration: 0.25, ease: EASE }}
+      />
+      <motion.div
+        className="border-foreground absolute top-0 left-0 flex items-center justify-center rounded-full border mix-blend-difference"
+        style={{ x: ringX, y: ringY, translateX: "-50%", translateY: "-50%" }}
+        animate={{
+          width: label ? 74 : active ? 54 : 34,
+          height: label ? 74 : active ? 54 : 34,
+          opacity: 0.85,
+        }}
+        transition={{ duration: 0.32, ease: EASE }}
+      >
+        {label && (
+          <span className="font-label text-foreground text-[9px] leading-none">{label}</span>
+        )}
+      </motion.div>
+    </div>
+  );
+}
+
+const SCRAMBLE_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789/\\<>*#";
+
+/**
+ * Decode-on-reveal micro-type. Used for eyebrows and index labels so the
+ * wayfinding copy arrives like a signal locking on. Reduced motion → the
+ * final string, immediately.
+ */
+export function Scramble({
+  text,
+  className,
+  delay = 0,
+  speed = 34,
+}: {
+  text: string;
+  className?: string;
+  delay?: number;
+  speed?: number;
+}) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-60px" });
+  const reduce = useReducedMotion();
+  const [out, setOut] = useState(text);
+
+  useEffect(() => {
+    if (!inView || reduce) {
+      setOut(text);
+      return;
+    }
+    let frame = 0;
+    let iteration = 0;
+    const timer = window.setTimeout(() => {
+      const id = window.setInterval(() => {
+        setOut(
+          text
+            .split("")
+            .map((ch, i) => {
+              if (ch === " ") return " ";
+              if (i < iteration) return ch;
+              return SCRAMBLE_CHARS[Math.floor(Math.random() * SCRAMBLE_CHARS.length)];
+            })
+            .join(""),
+        );
+        iteration += 1 / 2;
+        if (iteration >= text.length) window.clearInterval(id);
+      }, speed);
+      frame = id;
+    }, delay * 1000);
+    return () => {
+      window.clearTimeout(timer);
+      window.clearInterval(frame);
+    };
+  }, [inView, text, reduce, delay, speed]);
+
+  return (
+    <span ref={ref} className={className}>
+      {out}
+    </span>
+  );
+}
+
+/**
+ * The editorial reveal: each line rises from behind a mask while the whole
+ * block drifts up. Splits on explicit lines so headlines can be composed
+ * with intent rather than by wherever the browser wraps them.
+ */
+export function SplitReveal({
+  lines,
+  className,
+  lineClassName,
+  delay = 0,
+  stagger = 0.11,
+  start = true,
+  as: Tag = "span",
+}: {
+  lines: ReactNode[];
+  className?: string;
+  lineClassName?: string;
+  delay?: number;
+  stagger?: number;
+  /** Hold the reveal until the caller says go (used behind the arrival curtain). */
+  start?: boolean;
+  as?: "span" | "h1" | "h2" | "p" | "div";
+}) {
+  return (
+    <Tag className={cn("block", className)}>
+      {lines.map((line, i) => (
+        <span
+          key={i}
+          className={cn("mb-[-0.16em] block overflow-hidden pb-[0.16em]", lineClassName)}
+        >
+          <motion.span
+            className="block"
+            initial={{ y: "112%", opacity: 0 }}
+            animate={start ? { y: 0, opacity: 1 } : { y: "112%", opacity: 0 }}
+            transition={{ duration: 0.95, delay: delay + i * stagger, ease: EASE }}
+          >
+            {line}
+          </motion.span>
+        </span>
+      ))}
+    </Tag>
+  );
+}
+
+/** Live clock chip — a small proof that the page is awake. */
+export function LiveClock({
+  timeZone = "Africa/Lagos",
+  className,
+}: {
+  timeZone?: string;
+  className?: string;
+}) {
+  const [time, setTime] = useState<string>("--:--:--");
+  useEffect(() => {
+    const tick = () =>
+      setTime(
+        new Intl.DateTimeFormat("en-GB", {
+          hour: "2-digit",
+          minute: "2-digit",
+          second: "2-digit",
+          hour12: false,
+          timeZone,
+        }).format(new Date()),
+      );
+    tick();
+    const id = window.setInterval(tick, 1000);
+    return () => window.clearInterval(id);
+  }, [timeZone]);
+  return <span className={cn("tabular-nums", className)}>{time}</span>;
+}
+
+export type ShowcaseStep = {
+  index: string;
+  title: string;
+  kicker?: string;
+  body: string;
+  points?: string[];
+  accent?: string;
+  media?: ReactNode;
+};
+
+/**
+ * Pinned storytelling — the section that earns the scroll. The visual column
+ * stays fixed while the chapter list moves past it; the active chapter drives
+ * the visual, the accent light and the progress rail.
+ */
+export function StickyShowcase({
+  steps,
+  className,
+  heading,
+}: {
+  steps: ShowcaseStep[];
+  className?: string;
+  heading?: ReactNode;
+}) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const reduce = useReducedMotion();
+  const [active, setActive] = useState(0);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end end"],
+  });
+
+  useEffect(() => {
+    if (steps.length === 0) return;
+    return scrollYProgress.on("change", (v) => {
+      const next = Math.min(steps.length - 1, Math.max(0, Math.round(v * (steps.length - 1))));
+      setActive((prev) => (prev === next ? prev : next));
+    });
+  }, [scrollYProgress, steps.length]);
+
+  return (
+    <div ref={containerRef} className={className}>
+      {/* Heading sits above the pinned pair so the sticky column never has to
+          hold more than the viewport can show. */}
+      {heading && <div className="max-w-3xl pb-16 md:pb-24">{heading}</div>}
+      <div className="grid gap-14 lg:grid-cols-[0.95fr_1.05fr] lg:gap-20">
+        <div className="relative hidden lg:sticky lg:top-0 lg:block lg:h-screen lg:self-start">
+          <div className="flex h-full flex-col justify-center py-10">
+            <div className="panel relative aspect-[4/3.2] max-h-[52vh] overflow-hidden rounded-[2px]">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={active}
+                  initial={{ opacity: 0, scale: reduce ? 1 : 1.04 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.6, ease: EASE }}
+                  className="absolute inset-0"
+                >
+                  {steps[active]?.media}
+                  <div
+                    aria-hidden="true"
+                    className="absolute inset-0"
+                    style={{
+                      background: `radial-gradient(70% 60% at 30% 20%, ${steps[active]?.accent ?? "var(--primary)"}33, transparent 70%)`,
+                    }}
+                  />
+                </motion.div>
+              </AnimatePresence>
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-0 opacity-[0.16] mix-blend-overlay"
+                style={{ backgroundImage: "var(--grain-image)", backgroundSize: "180px 180px" }}
+              />
+            </div>
+
+            {/* Chapter rail */}
+            <div className="mt-8 flex items-center gap-3">
+              {steps.map((step, i) => (
+                <span
+                  key={step.index}
+                  className="relative h-px flex-1 overflow-hidden bg-foreground/12"
+                >
+                  <motion.span
+                    className="absolute inset-y-0 left-0 bg-foreground/70"
+                    initial={false}
+                    animate={{ width: i <= active ? "100%" : "0%" }}
+                    transition={{ duration: 0.6, ease: EASE }}
+                  />
+                </span>
+              ))}
+              <span className="font-label text-muted-foreground ml-2 text-[10px] tabular-nums">
+                {String(active + 1).padStart(2, "0")}/{String(steps.length).padStart(2, "0")}
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div className="lg:py-[12vh]">
+          {steps.map((step, i) => (
+            <motion.article
+              key={step.index}
+              initial={{ opacity: 0.35 }}
+              animate={{ opacity: active === i ? 1 : 0.35 }}
+              transition={{ duration: 0.5, ease: EASE }}
+              className="flex min-h-[58vh] flex-col justify-center gap-5 border-t border-foreground/10 py-10 first:border-t-0 lg:min-h-[70vh]"
+            >
+              <div className="flex items-baseline gap-5">
+                <span
+                  className="font-display text-[3.5rem] leading-none font-extralight tabular-nums lg:text-[4.5rem]"
+                  style={{ color: step.accent ?? "var(--primary)" }}
+                >
+                  {step.index}
+                </span>
+                {step.kicker && (
+                  <span className="font-label text-muted-foreground text-[10px]">
+                    {step.kicker}
+                  </span>
+                )}
+              </div>
+              <h3 className="text-h3 font-display font-bold text-balance">{step.title}</h3>
+              <p className="text-muted-foreground max-w-xl text-body-lg text-pretty">{step.body}</p>
+              {step.points && (
+                <ul className="mt-2 grid gap-2.5">
+                  {step.points.map((p) => (
+                    <li key={p} className="flex items-start gap-3 text-sm">
+                      <span
+                        aria-hidden="true"
+                        className="mt-[0.55em] size-1 shrink-0 rounded-full"
+                        style={{ background: step.accent ?? "var(--primary)" }}
+                      />
+                      <span className="text-foreground/85">{p}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </motion.article>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/**
+ * Drag rail — a horizontal, snap-scrolling gallery you can grab. Pointer
+ * drag, momentum-free but forgiving, with a live progress hairline and
+ * arrow keys. Falls back to native scroll (and visible scrollbars hidden).
+ */
+export function DragRail({
+  children,
+  className,
+  ariaLabel = "Gallery",
+}: {
+  children: ReactNode;
+  className?: string;
+  ariaLabel?: string;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const progress = useMotionValue(0);
+  const drag = useRef({ down: false, startX: 0, startScroll: 0, moved: 0 });
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const update = () => {
+      const max = el.scrollWidth - el.clientWidth;
+      progress.set(max > 0 ? el.scrollLeft / max : 0);
+    };
+    update();
+    el.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    return () => {
+      el.removeEventListener("scroll", update);
+      window.removeEventListener("resize", update);
+    };
+  }, [progress]);
+
+  const nudge = (dir: number) => {
+    const el = ref.current;
+    if (!el) return;
+    el.scrollBy({ left: dir * Math.max(280, el.clientWidth * 0.7), behavior: "smooth" });
+  };
+
+  return (
+    <div className={className}>
+      <div
+        ref={ref}
+        role="region"
+        aria-label={ariaLabel}
+        data-cursor="Drag"
+        tabIndex={0}
+        onPointerDown={(e) => {
+          if (e.pointerType !== "mouse") return;
+          const el = ref.current;
+          if (!el) return;
+          drag.current = {
+            down: true,
+            startX: e.clientX,
+            startScroll: el.scrollLeft,
+            moved: 0,
+          };
+          el.setPointerCapture(e.pointerId);
+        }}
+        onPointerMove={(e) => {
+          const el = ref.current;
+          if (!el || !drag.current.down) return;
+          const dx = e.clientX - drag.current.startX;
+          drag.current.moved = Math.max(drag.current.moved, Math.abs(dx));
+          el.scrollLeft = drag.current.startScroll - dx;
+        }}
+        onPointerUp={() => {
+          drag.current.down = false;
+        }}
+        onClickCapture={(e) => {
+          if (drag.current.moved > 8) {
+            e.preventDefault();
+            e.stopPropagation();
+          }
+          drag.current.moved = 0;
+        }}
+        onKeyDown={(e) => {
+          if (e.key === "ArrowRight") nudge(1);
+          if (e.key === "ArrowLeft") nudge(-1);
+        }}
+        className="flex snap-x snap-mandatory gap-6 overflow-x-auto overscroll-x-contain pb-4 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+      >
+        {children}
+      </div>
+
+      <div className="mt-6 flex items-center gap-5">
+        <div className="bg-foreground/10 relative h-px flex-1 overflow-hidden">
+          <motion.span
+            className="bg-foreground absolute inset-y-0 left-0 w-1/4 origin-left"
+            style={{ scaleX: progress }}
+          />
+        </div>
+        <div className="flex gap-2">
+          <button
+            type="button"
+            aria-label="Previous"
+            onClick={() => nudge(-1)}
+            className="border-foreground/15 hover:border-foreground/45 hover:bg-foreground/5 grid size-9 place-items-center rounded-full border transition-colors"
+          >
+            <span aria-hidden="true" className="text-sm">
+              ←
+            </span>
+          </button>
+          <button
+            type="button"
+            aria-label="Next"
+            onClick={() => nudge(1)}
+            className="border-foreground/15 hover:border-foreground/45 hover:bg-foreground/5 grid size-9 place-items-center rounded-full border transition-colors"
+          >
+            <span aria-hidden="true" className="text-sm">
+              →
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/** Page grain — one fixed texture above the whole document. */
+export function Grain() {
+  return <div aria-hidden="true" className="grain-fixed" />;
+}
+
+/**
+ * Arrival curtain — runs once per session on the marketing site: the
+ * wordmark locks in while a counter climbs, then the curtain lifts. Never
+ * traps the visitor (hard 1.6s cap) and never plays under reduced motion.
+ */
+export function Arrival({
+  wordmark = "CYBER ELIAS",
+  onDone,
+}: {
+  wordmark?: string;
+  /** Fires when the curtain starts lifting — the page may begin its entrance. */
+  onDone?: () => void;
+}) {
+  const [progress, setProgress] = useState(0);
+  const [done, setDone] = useState(false);
+  const reduce = useReducedMotion();
+
+  useEffect(() => {
+    if (reduce) {
+      setDone(true);
+      onDone?.();
+      return;
+    }
+    if (typeof window !== "undefined" && window.sessionStorage.getItem("cea.arrived") === "1") {
+      setDone(true);
+      onDone?.();
+      return;
+    }
+    const start = performance.now();
+    const DURATION = 1300;
+    let raf = 0;
+    const tick = (now: number) => {
+      const p = Math.min(1, (now - start) / DURATION);
+      setProgress(Math.round(p * 100));
+      if (p < 1) raf = requestAnimationFrame(tick);
+      else {
+        window.sessionStorage.setItem("cea.arrived", "1");
+        onDone?.();
+        window.setTimeout(() => setDone(true), 420);
+      }
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [reduce, onDone]);
+
+  if (done) return null;
+
+  return (
+    <motion.div
+      aria-hidden="true"
+      data-arrival=""
+      className="bg-background fixed inset-0 z-[120] flex flex-col justify-between overflow-hidden px-6 py-6 md:px-12 md:py-10"
+      exit={{ y: "-100%" }}
+      transition={{ duration: 0.9, ease: EASE }}
+    >
+      <div className="flex items-center justify-between font-label text-muted-foreground text-[10px]">
+        <span>CEA&nbsp;·&nbsp;LUMINA</span>
+        <span>PORT HARCOURT&nbsp;·&nbsp;NG</span>
+      </div>
+      <div className="flex items-end justify-between gap-6">
+        <span className="font-display text-outline select-none text-[clamp(2.2rem,9.5vw,12rem)] leading-[0.8]">
+          {wordmark}
+        </span>
+        <span className="font-display text-4xl font-extralight tabular-nums md:text-6xl">
+          {String(progress).padStart(3, "0")}
+        </span>
+      </div>
+      <div className="bg-foreground/10 relative h-px w-full overflow-hidden">
+        <motion.span
+          className="bg-gradient-brand absolute inset-y-0 left-0"
+          initial={{ width: "0%" }}
+          animate={{ width: `${progress}%` }}
+          transition={{ ease: "linear", duration: 0.1 }}
+        />
+      </div>
+    </motion.div>
+  );
+}
+
+/** Marquee variant with oversized editorial type and a separator glyph. */
+export function BigMarquee({
+  items,
+  className,
+  reverse = false,
+  duration = 38,
+  glyph = "✦",
+  itemClassName,
+  glyphClassName,
+}: {
+  items: string[];
+  className?: string;
+  reverse?: boolean;
+  duration?: number;
+  glyph?: string;
+  itemClassName?: string;
+  glyphClassName?: string;
+}) {
+  const row = [...items, ...items];
+  return (
+    <div className={cn("mask-fade-x group relative flex overflow-hidden", className)}>
+      <div
+        className={cn(
+          "flex min-w-full shrink-0 items-center gap-10 whitespace-nowrap group-hover:[animation-play-state:paused] motion-reduce:animate-none",
+          reverse ? "animate-marquee-rev" : "animate-marquee",
+        )}
+        style={{ animationDuration: `${duration}s` }}
+      >
+        {row.map((item, i) => (
+          <span key={`${item}-${i}`} className="flex items-center gap-10">
+            <span
+              className={cn(
+                "font-display text-[clamp(2.5rem,7vw,7rem)] leading-none font-semibold tracking-tight",
+                itemClassName,
+              )}
+            >
+              {item}
+            </span>
+            <span
+              aria-hidden="true"
+              className={cn("text-primary text-[clamp(1rem,2vw,2rem)]", glyphClassName)}
+            >
+              {glyph}
+            </span>
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+}
