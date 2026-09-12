@@ -47,7 +47,7 @@ function Article() {
 
   return (
     <PageShell>
-      <article className="container-page max-w-3xl py-16 md:py-20">
+      <article className="container-page max-w-3xl pt-32 pb-16 md:pt-36 md:pb-20">
         <Reveal>
           <Link
             to="/blog"
@@ -99,10 +99,19 @@ function Article() {
           </div>
         </Reveal>
 
-{post.imageUrl && (
+        {post.imageUrl && (
           <Reveal>
-            <a href={post.imageUrl} target="_blank" rel="noopener noreferrer" className="group relative w-full rounded-2xl overflow-hidden mb-6">
-              <img src={post.imageUrl} alt={post.title} className="w-full h-64 object-cover transition-transform duration-500 hover:scale-105 motion-reduce:transition-none motion-reduce:scale-100" />
+            <a
+              href={post.imageUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative w-full rounded-2xl overflow-hidden mb-6"
+            >
+              <img
+                src={post.imageUrl}
+                alt={post.title}
+                className="w-full h-64 object-cover transition-transform duration-500 hover:scale-105 motion-reduce:transition-none motion-reduce:scale-100"
+              />
               <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 motion-reduce:transition-none">
                 <span className="text-white text-2xl">📖</span>
               </div>

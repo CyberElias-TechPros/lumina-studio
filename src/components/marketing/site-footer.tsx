@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import {
   ArrowUp,
+  ArrowUpRight,
   Mail,
   MapPin,
   Phone,
@@ -16,7 +17,7 @@ import { BrandMark } from "./site-header";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { submitContact } from "@/lib/api/marketing";
-import { SPRING } from "@/components/motion";
+import { BigMarquee, LiveClock, Reveal, SPRING } from "@/components/motion";
 
 const columns = [
   {
@@ -55,6 +56,7 @@ const columns = [
       { label: "Events", to: "/events" },
       { label: "Community", to: "/community" },
       { label: "Alumni", to: "/alumni" },
+      { label: "Stories", to: "/stories" },
       { label: "FAQ", to: "/faq" },
     ],
   },
@@ -62,11 +64,35 @@ const columns = [
     title: "Company",
     links: [
       { label: "About", to: "/about" },
+      { label: "Team", to: "/team" },
       { label: "Privacy Policy", to: "/privacy" },
       { label: "Terms of Service", to: "/terms" },
       { label: "Accessibility", to: "/accessibility" },
-      { label: "Sign in", to: "/auth/sign-in" },
     ],
+  },
+];
+
+const socials = [
+  {
+    Icon: Facebook,
+    href: "https://www.facebook.com/cybereliasacademy/",
+    label: "Facebook",
+  },
+  { Icon: Twitter, href: "https://x.com/cybeliasacademy", label: "Twitter/X" },
+  {
+    Icon: Instagram,
+    href: "https://www.instagram.com/cyberelias.tk/",
+    label: "Instagram",
+  },
+  {
+    Icon: Youtube,
+    href: "https://www.youtube.com/@CyberEliasAcademy",
+    label: "YouTube",
+  },
+  {
+    Icon: Linkedin,
+    href: "https://www.linkedin.com/company/cyber-elias-academy",
+    label: "LinkedIn",
   },
 ];
 
@@ -97,7 +123,7 @@ function BackToTop() {
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: 12, scale: 0.9 }}
           transition={SPRING.soft}
-          className="glass shadow-elevated text-foreground hover:text-primary fixed right-5 bottom-5 z-40 grid size-11 place-items-center rounded-full border hover:-translate-y-0.5 motion-reduce:transition-none"
+          className="border-foreground/15 hover:border-foreground/40 hover:bg-foreground/5 fixed right-5 bottom-5 z-40 grid size-11 place-items-center rounded-full border backdrop-blur-md transition-colors"
         >
           <ArrowUp className="size-4" />
         </motion.button>
@@ -109,14 +135,16 @@ function BackToTop() {
 /** Engine wayfinding strip — the five-engine motif closes every page. */
 function EngineStrip() {
   return (
-    <div
-      aria-hidden="true"
-      className="h-[3px] w-full"
-      style={{
-        backgroundImage:
-          "linear-gradient(90deg, var(--learning) 0%, var(--career) 26%, var(--services) 50%, var(--erp) 74%, var(--community) 100%)",
-      }}
-    />
+    <div aria-hidden="true" className="h-px w-full overflow-hidden">
+      <div
+        className="h-full w-full"
+        style={{
+          backgroundImage:
+            "linear-gradient(90deg, var(--learning) 0%, var(--career) 26%, var(--services) 50%, var(--erp) 74%, var(--community) 100%)",
+          opacity: 0.85,
+        }}
+      />
+    </div>
   );
 }
 
@@ -149,65 +177,60 @@ export function SiteFooter() {
   };
 
   return (
-    <footer className="bg-gradient-ink text-ink-foreground relative overflow-hidden">
+    <footer className="relative overflow-hidden border-t border-foreground/10">
       <EngineStrip />
-      <div className="grid-lines pointer-events-none absolute inset-0 opacity-[0.06]" />
-      <div className="bg-gradient-brand pointer-events-none absolute -top-40 left-1/4 size-[36rem] rounded-full opacity-25 blur-[130px]" />
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="bg-gradient-brand absolute -bottom-64 left-1/2 size-[46rem] -translate-x-1/2 rounded-full opacity-[0.14] blur-[140px]" />
+      </div>
+
       <BackToTop />
 
-      <div className="container-page relative py-20">
-        <div className="grid gap-12 lg:grid-cols-[1.4fr_2fr]">
+      {/* The wordmark as architecture — oversized, kinetic, hollow. */}
+      <div className="relative overflow-hidden pt-16 pb-10">
+        <BigMarquee
+          items={["Cyber Elias Academy", "Learn tech", "Build real work", "Get hired"]}
+          duration={46}
+          itemClassName="text-outline"
+        />
+      </div>
+
+      <div className="container-page relative border-t border-foreground/10 py-16">
+        <div className="grid gap-14 lg:grid-cols-[1.25fr_2fr]">
           <div>
             <BrandMark />
-            <p className="text-ink-foreground/70 mt-5 max-w-sm text-sm leading-relaxed">
+            <p className="text-muted-foreground mt-6 max-w-sm text-sm leading-relaxed">
               One platform. Multiple engines. Every actor connected. Cyber Elias Academy trains
-              Nigeria's next generation of technologists and puts them to work.
+              Nigeria's next generation of technologists — then puts them to work.
             </p>
 
-            <div className="mt-7 space-y-2.5 text-sm">
-              <p className="text-ink-foreground/70 flex items-center gap-2.5">
-                <MapPin className="size-4 shrink-0" /> 26 Ebony Road, Off Rumuola Road, Port
-                Harcourt, Rivers State, Nigeria
+            <div className="mt-8 space-y-3 text-sm">
+              <p className="text-muted-foreground flex items-start gap-3">
+                <MapPin className="mt-0.5 size-4 shrink-0" /> 26 Ebony Road, Off Rumuola Road, Port
+                Harcourt, Rivers State
               </p>
-              <p className="text-ink-foreground/70 flex items-center gap-2.5">
+              <a
+                href="tel:+2349058628386"
+                className="hover:text-primary flex items-center gap-3 transition-colors"
+              >
                 <Phone className="size-4 shrink-0" /> +234 905 862 8386
-              </p>
-              <p className="text-ink-foreground/70 flex items-center gap-2.5">
+              </a>
+              <a
+                href="mailto:hello@cea.ng"
+                className="hover:text-primary flex items-center gap-3 transition-colors"
+              >
                 <Mail className="size-4 shrink-0" /> hello@cea.ng
-              </p>
+              </a>
             </div>
 
-            <div className="mt-7 flex gap-2">
-              {[
-                {
-                  Icon: Facebook,
-                  href: "https://www.facebook.com/cybereliasacademy/",
-                  label: "Facebook",
-                },
-                { Icon: Twitter, href: "https://x.com/cybeliasacademy", label: "Twitter/X" },
-                {
-                  Icon: Instagram,
-                  href: "https://www.instagram.com/cyberelias.tk/",
-                  label: "Instagram",
-                },
-                {
-                  Icon: Youtube,
-                  href: "https://www.youtube.com/@CyberEliasAcademy",
-                  label: "YouTube",
-                },
-                {
-                  Icon: Linkedin,
-                  href: "https://www.linkedin.com/company/cyber-elias-academy",
-                  label: "LinkedIn",
-                },
-              ].map(({ Icon, href, label }) => (
+            <div className="mt-8 flex gap-2">
+              {socials.map(({ Icon, href, label }) => (
                 <a
                   key={label}
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={label}
-                  className="border-ink-foreground/15 hover:bg-ink-foreground/10 grid size-9 place-items-center rounded-lg border transition-colors"
+                  className="border-foreground/12 hover:border-foreground/40 hover:bg-foreground/5 grid size-9 place-items-center rounded-full border transition-colors"
                 >
                   <Icon className="size-4" />
                 </a>
@@ -215,20 +238,17 @@ export function SiteFooter() {
             </div>
           </div>
 
-          <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
             {columns.map((col) => (
               <div key={col.title}>
-                <h4 className="text-ink-foreground text-xs font-bold tracking-[0.18em] uppercase">
-                  {col.title}
-                </h4>
-                <ul className="mt-4 space-y-2.5">
+                <h4 className="font-label text-muted-foreground text-[10px]">{col.title}</h4>
+                <ul className="mt-5 space-y-2.5">
                   {col.links.map((l) => (
                     <li key={l.label}>
                       <Link
                         to={l.to}
-                        className="text-ink-foreground/65 hover:text-ink-foreground group/link inline-flex items-center gap-1.5 text-sm transition-colors motion-reduce:transition-none"
+                        className="link-wipe text-foreground/75 hover:text-foreground inline-block text-sm transition-colors"
                       >
-                        <span className="bg-ink-foreground/0 group-hover/link:bg-ink-foreground inline-block size-1 rounded-full transition-colors duration-300 motion-reduce:transition-none" />
                         {l.label}
                       </Link>
                     </li>
@@ -239,49 +259,58 @@ export function SiteFooter() {
           </div>
         </div>
 
-        <div className="border-ink-foreground/15 mt-16 grid gap-6 border-t pt-10 md:grid-cols-2 md:items-center">
+        <Reveal className="mt-20 grid gap-8 border-t border-foreground/10 pt-12 lg:grid-cols-[1fr_1fr] lg:items-end">
           <div>
-            <p className="font-display text-lg font-bold">Get the monthly briefing</p>
-            <p className="text-ink-foreground/65 text-sm">
-              Curriculum updates, hiring trends and open cohorts. No noise.
+            <p className="font-display text-h3 font-semibold text-balance">
+              Get the monthly briefing
+            </p>
+            <p className="text-muted-foreground mt-3 max-w-md text-sm leading-relaxed">
+              Curriculum updates, hiring trends and open cohorts. One email a month, no noise.
             </p>
           </div>
           {subscribed ? (
             <p
-              className="text-success rounded-lg border border-success/30 bg-success/10 px-4 py-3 text-sm font-semibold"
+              className="text-success border-success/30 bg-success/10 rounded-sm border px-4 py-3 text-sm font-semibold"
               aria-live="polite"
             >
               You're on the list. Watch your inbox for the next briefing.
             </p>
           ) : (
-            <form className="flex gap-2" onSubmit={submitNewsletter}>
+            <form className="flex flex-col gap-3 sm:flex-row" onSubmit={submitNewsletter}>
               <Input
                 name="email"
                 type="email"
                 required
                 placeholder="you@company.com"
                 disabled={submitting}
-                className="border-ink-foreground/15 bg-ink-foreground/5 text-ink-foreground placeholder:text-ink-foreground/40"
+                aria-label="Email address"
+                className="bg-foreground/5 border-foreground/12 focus-visible:border-primary/60 h-11 rounded-sm"
               />
               <Button
                 type="submit"
                 disabled={submitting}
-                className="bg-gradient-brand shrink-0 border-0"
+                className="bg-foreground text-background hover:bg-primary hover:text-primary-foreground h-11 shrink-0 rounded-sm px-6 border-0 transition-colors"
               >
                 {submitting ? "Joining…" : "Subscribe"}
+                <ArrowUpRight className="ml-1.5 size-4" />
               </Button>
             </form>
           )}
-          {newsletterError && (
-            <p className="text-error mt-2 text-xs" role="alert">
-              {newsletterError}
-            </p>
-          )}
-        </div>
+        </Reveal>
+        {newsletterError && (
+          <p className="text-error mt-3 text-xs" role="alert">
+            {newsletterError}
+          </p>
+        )}
 
-        <div className="border-ink-foreground/15 text-ink-foreground/50 mt-10 border-t pt-8 text-xs text-center">
+        <div className="text-muted-foreground mt-16 flex flex-col items-start justify-between gap-4 border-t border-foreground/10 pt-8 text-xs md:flex-row md:items-center">
           <p>
             © {new Date().getFullYear()} Cyber Elias Academy Ltd. RC 8413776. All rights reserved.
+          </p>
+          <p className="font-label flex items-center gap-3 text-[10px]">
+            <LiveClock />
+            <span className="text-foreground/20">|</span>
+            <span>Port Harcourt, NG</span>
           </p>
         </div>
       </div>
