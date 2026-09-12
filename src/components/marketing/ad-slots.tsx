@@ -16,10 +16,10 @@ export function AdSlot({
       )}
     >
       <div className="space-y-1">
-        <p className="text-muted-foreground text-[10px] font-bold tracking-[0.18em] uppercase">
+        <p className="text-foreground/60 text-[10px] font-bold tracking-[0.18em] uppercase">
           {label}
         </p>
-        <p className="text-muted-foreground text-xs">
+        <p className="text-foreground/70 text-xs">
           Ad space — enable via{" "}
           <code className="bg-muted rounded px-1 py-0.5 text-[11px]">ADSENSE_CLIENT</code>
         </p>
