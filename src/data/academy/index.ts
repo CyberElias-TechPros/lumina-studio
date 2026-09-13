@@ -20,6 +20,9 @@ import { webDesignLessonsC } from "./lessons/web-design-c";
 import { computerRepairsLessonsA } from "./lessons/computer-repairs";
 import { computerRepairsLessonsB } from "./lessons/computer-repairs-b";
 import { computerRepairsLessonsC } from "./lessons/computer-repairs-c";
+import { cybersecurityLessonsA } from "./lessons/cybersecurity";
+import { cybersecurityLessonsB } from "./lessons/cybersecurity-b";
+import { cybersecurityLessonsC } from "./lessons/cybersecurity-c";
 
 export * from "./types";
 export { allCourses, flyerCourses, rotatingCourses };
@@ -57,6 +60,11 @@ export const sessionLectures: Record<string, SessionLecture> = {
     ...computerRepairsLessonsA,
     ...computerRepairsLessonsB,
     ...computerRepairsLessonsC,
+  }),
+  ...withCoursePrefix("cybersecurity", {
+    ...cybersecurityLessonsA,
+    ...cybersecurityLessonsB,
+    ...cybersecurityLessonsC,
   }),
 };
 
