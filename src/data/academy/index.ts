@@ -12,6 +12,8 @@ import { dataEntryLessonsB } from "./lessons/data-entry-b";
 import { graphicDesignLessonsA } from "./lessons/graphic-design";
 import { graphicDesignLessonsB } from "./lessons/graphic-design-b";
 import { graphicDesignLessonsC } from "./lessons/graphic-design-c";
+import { socialMediaLessonsA } from "./lessons/social-media-management";
+import { socialMediaLessonsB } from "./lessons/social-media-management-b";
 
 export * from "./types";
 export { allCourses, flyerCourses, rotatingCourses };
@@ -35,6 +37,10 @@ export const sessionLectures: Record<string, SessionLecture> = {
     ...graphicDesignLessonsA,
     ...graphicDesignLessonsB,
     ...graphicDesignLessonsC,
+  }),
+  ...withCoursePrefix("social-media-management", {
+    ...socialMediaLessonsA,
+    ...socialMediaLessonsB,
   }),
 };
 
