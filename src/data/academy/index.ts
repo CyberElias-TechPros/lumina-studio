@@ -23,6 +23,9 @@ import { computerRepairsLessonsC } from "./lessons/computer-repairs-c";
 import { cybersecurityLessonsA } from "./lessons/cybersecurity";
 import { cybersecurityLessonsB } from "./lessons/cybersecurity-b";
 import { cybersecurityLessonsC } from "./lessons/cybersecurity-c";
+import { digitalMarketingLessonsA } from "./lessons/digital-marketing";
+import { digitalMarketingLessonsB } from "./lessons/digital-marketing-b";
+import { digitalMarketingLessonsC } from "./lessons/digital-marketing-c";
 
 export * from "./types";
 export { allCourses, flyerCourses, rotatingCourses };
@@ -65,6 +68,11 @@ export const sessionLectures: Record<string, SessionLecture> = {
     ...cybersecurityLessonsA,
     ...cybersecurityLessonsB,
     ...cybersecurityLessonsC,
+  }),
+  ...withCoursePrefix("digital-marketing", {
+    ...digitalMarketingLessonsA,
+    ...digitalMarketingLessonsB,
+    ...digitalMarketingLessonsC,
   }),
 };
 
