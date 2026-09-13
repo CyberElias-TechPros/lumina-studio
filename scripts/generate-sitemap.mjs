@@ -19,7 +19,7 @@ const staticRoutes = [
   ["/certificates/verify", "monthly", "0.6"],
   ["/community", "monthly", "0.7"],
   ["/contact", "monthly", "0.8"],
-  ["/engines", "weekly", "0.8"],
+  ["/classes", "weekly", "0.9"],
   ["/events", "weekly", "0.7"],
   ["/faq", "monthly", "0.8"],
   ["/glossary", "weekly", "0.7"],
@@ -111,6 +111,34 @@ try {
   console.warn("resources.ts not loadable; sitemap will omit resources");
 }
 
+// Academy curriculum: course slugs from the catalog, session slugs per course.
+let classUrls = [];
+try {
+  const catalog = readFileSync(join(root, "src/data/academy/catalog.ts"), "utf8");
+  const courseRe = /slug:\s*"([a-z0-9-]+)",\s*\n\s*title:/g;
+  const slugs = [...new Set([...catalog.matchAll(courseRe)].map((m) => m[1]))];
+  // Session slugs appear as s(n, w, "Title", "session-slug", [...])
+  for (const slug of slugs) {
+    classUrls.push({ type: "course", course: slug });
+  }
+  const sessionRe = /s\(\s*\d+,\s*\d+,\s*"[^"]*",\s*"([a-z0-9-]+)"/g;
+  // Sessions are listed inside each course object; walk course boundaries.
+  const boundaries = [];
+  for (const m of catalog.matchAll(/slug:\s*"([a-z0-9-]+)",\s*\n\s*title:/g)) {
+    boundaries.push({ slug: m[1], index: m.index });
+  }
+  for (let i = 0; i < boundaries.length; i++) {
+    const start = boundaries[i].index;
+    const end = i + 1 < boundaries.length ? boundaries[i + 1].index : catalog.length;
+    const block = catalog.slice(start, end);
+    for (const sm of block.matchAll(sessionRe)) {
+      classUrls.push({ type: "session", course: boundaries[i].slug, session: sm[1] });
+    }
+  }
+} catch {
+  console.warn("academy/catalog.ts not loadable; sitemap will omit class pages");
+}
+
 // Extract module titles from programs in site.ts and compute slugified slugs.
 const moduleUrls = [];
 try {
@@ -186,6 +214,22 @@ const urls = [
     changefreq: "monthly",
     priority: "0.7",
   })),
+  ...classUrls
+    .filter((u) => u.type === "course")
+    .map((u) => ({
+      loc: `${SITE_URL}/classes/${u.course}`,
+      lastmod: today,
+      changefreq: "weekly",
+      priority: "0.8",
+    })),
+  ...classUrls
+    .filter((u) => u.type === "session")
+    .map((u) => ({
+      loc: `${SITE_URL}/classes/${u.course}/${u.session}`,
+      lastmod: today,
+      changefreq: "monthly",
+      priority: "0.8",
+    })),
 ];
 
 const xml = `<?xml version="1.0" encoding="UTF-8"?>
@@ -205,5 +249,5 @@ ${urls
 
 writeFileSync(join(root, "public", "sitemap.xml"), xml);
 console.log(
-  `sitemap.xml written: ${urls.length} URLs (${staticRoutes.length} static, ${programSlugs.length} programs, ${blogSlugs.length} posts, ${librarySlugs.length} library collections, ${glossarySlugs.length} glossary terms, ${moduleUrls.length} module detail pages, ${careerGuideSlugs.length} career guides, ${resourceSlugs.length} resources)`,
+  `sitemap.xml written: ${urls.length} URLs (${staticRoutes.length} static, ${programSlugs.length} programs, ${blogSlugs.length} posts, ${librarySlugs.length} library collections, ${glossarySlugs.length} glossary terms, ${moduleUrls.length} module detail pages, ${careerGuideSlugs.length} career guides, ${resourceSlugs.length} resources, ${classUrls.filter((u) => u.type === "course").length} academy courses, ${classUrls.filter((u) => u.type === "session").length} class session pages)`,
 );

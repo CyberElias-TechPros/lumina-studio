@@ -56,7 +56,7 @@ const funds = [
     name: "Women in Technology",
     cover: "40% of tuition",
     who: "Women joining tech tracks",
-    desc: "Every woman admitted to a Learning Engine program receives an automatic 40% tuition reduction. Because representation is not charity — it's a strategy.",
+    desc: "Every woman admitted to any CEA programme receives an automatic 40% tuition reduction. Because representation is not charity — it's a strategy.",
     count: "All eligible",
     note: "Automatic",
   },
