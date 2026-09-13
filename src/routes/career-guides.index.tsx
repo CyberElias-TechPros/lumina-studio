@@ -7,7 +7,7 @@ import { Reveal } from "@/components/motion";
 import { getPageHead } from "@/lib/seo";
 import { getCareerGuides, type CareerGuide } from "@/data/career-guides";
 
-export const Route = createFileRoute("/career-guides")({
+export const Route = createFileRoute("/career-guides/")({
   head: () =>
     getPageHead({
       title: "Career Guides — honest roadmaps for Nigerian tech careers",

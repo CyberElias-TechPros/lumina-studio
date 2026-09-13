@@ -78,8 +78,21 @@ server-rendered; every `/app/*` workspace talks to the `/v1/*` Worker API.
 - Remaining known work is tracked in `docs/` and `plans/` (cross-cutting
   automations, growth of test coverage on new endpoints, monitoring polish).
 
+## Routing invariant (this has bitten us)
+Flat route files nest by dot prefix: `foo.tsx` becomes the **layout parent** of
+`foo.$param.tsx`. A parent that renders a page but no `<Outlet />` silently
+swallows its children — the child URL returns the *parent's* body under the
+child's `<title>`. Any route that is both a page and a prefix must be an
+**index** file (`foo.index.tsx`, declared `createFileRoute("/foo/")`), not
+`foo.tsx`. `useParams({ from: ... })` inside an index file must use the
+trailing-slash route id (`"/foo/$param/"`).
+
 ## Key Data Files
 - `src/data/site.ts` — programs, engines, FAQs, landing stats
+- `src/data/academy/` — the practical digital skills curriculum: `catalog.ts`
+  (22 courses / 142 sessions from the course flyer), `lessons/*.ts` (one full
+  class lecture per session), `index.ts` (resolution + reading-time helpers).
+  Adding a lecture = add its key to `sessionLectures` in `index.ts`.
 - `src/data/blog-posts-new.ts`, `glossary.ts`, `module-details.ts`,
   `career-guides.ts`, `resources.ts`, `library-catalog.json`
 - `src/data/rbac.ts` — canonical role keys, aliases, default permissions
