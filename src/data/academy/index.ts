@@ -35,6 +35,7 @@ import { onlineTeachingLessonsB } from "./lessons/online-teaching-b";
 import { webDevelopmentLessonsA } from "./lessons/web-development";
 import { webDevelopmentLessonsB } from "./lessons/web-development-b";
 import { webDevelopmentLessonsC } from "./lessons/web-development-c";
+import { webDevelopmentLessonsD } from "./lessons/web-development-d";
 
 export * from "./types";
 export { allCourses, flyerCourses, rotatingCourses };
@@ -99,6 +100,7 @@ export const sessionLectures: Record<string, SessionLecture> = {
     ...webDevelopmentLessonsA,
     ...webDevelopmentLessonsB,
     ...webDevelopmentLessonsC,
+    ...webDevelopmentLessonsD,
   }),
 };
 
