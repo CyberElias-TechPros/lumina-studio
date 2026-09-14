@@ -14,19 +14,16 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as AccessibilityRouteImport } from './routes/accessibility'
 import { Route as AdmissionsRouteImport } from './routes/admissions'
 import { Route as AlumniRouteImport } from './routes/alumni'
-import { Route as CareerGuidesRouteImport } from './routes/career-guides'
 import { Route as CareersRouteImport } from './routes/careers'
 import { Route as CommunityRouteImport } from './routes/community'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as EnginesRouteImport } from './routes/engines'
 import { Route as EventsRouteImport } from './routes/events'
 import { Route as FaqRouteImport } from './routes/faq'
-import { Route as GlossaryRouteImport } from './routes/glossary'
 import { Route as MarketplaceRouteImport } from './routes/marketplace'
 import { Route as PartnersRouteImport } from './routes/partners'
 import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as PrivacyRouteImport } from './routes/privacy'
-import { Route as ResourcesRouteImport } from './routes/resources'
 import { Route as ScholarshipsRouteImport } from './routes/scholarships'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as StoriesRouteImport } from './routes/stories'
@@ -60,8 +57,11 @@ import { Route as AuthSignUpRouteImport } from './routes/auth.sign-up'
 import { Route as AuthVerifyEmailRouteImport } from './routes/auth.verify-email'
 import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
+import { Route as CareerGuidesIndexRouteImport } from './routes/career-guides.index'
 import { Route as CareerGuidesSlugRouteImport } from './routes/career-guides.$slug'
 import { Route as CertificatesVerifyRouteImport } from './routes/certificates.verify'
+import { Route as ClassesIndexRouteImport } from './routes/classes.index'
+import { Route as GlossaryIndexRouteImport } from './routes/glossary.index'
 import { Route as GlossarySlugRouteImport } from './routes/glossary.$slug'
 import { Route as LibraryIndexRouteImport } from './routes/library.index'
 import { Route as LibraryCategoryRouteImport } from './routes/library.$category'
@@ -106,8 +106,8 @@ import { Route as PortalSupplierRouteImport } from './routes/portal/supplier'
 import { Route as PortalVisualDesignerRouteImport } from './routes/portal/visual-designer'
 import { Route as PortalVolunteerRouteImport } from './routes/portal/volunteer'
 import { Route as ProgramsIndexRouteImport } from './routes/programs.index'
-import { Route as ProgramsSlugRouteImport } from './routes/programs.$slug'
 import { Route as ProgramsCompareRouteImport } from './routes/programs/compare'
+import { Route as ResourcesIndexRouteImport } from './routes/resources.index'
 import { Route as ResourcesSlugRouteImport } from './routes/resources.$slug'
 import { Route as VisitIndexRouteImport } from './routes/visit/index'
 import { Route as VisitBrochureRouteImport } from './routes/visit/brochure'
@@ -288,7 +288,6 @@ import { Route as AppItTemplatesRouteImport } from './routes/app/it/templates'
 import { Route as AppItTicketsRouteImport } from './routes/app/it/tickets'
 import { Route as AppItUsersRouteImport } from './routes/app/it/users'
 import { Route as AppLearnIndexRouteImport } from './routes/app/learn/index'
-import { Route as AppLearnCourseIdRouteImport } from './routes/app/learn/$courseId'
 import { Route as AppLiveIndexRouteImport } from './routes/app/live/index'
 import { Route as AppLiveClassIdRouteImport } from './routes/app/live/$classId'
 import { Route as AppLocalizationIndexRouteImport } from './routes/app/localization/index'
@@ -376,6 +375,9 @@ import { Route as AppVolunteerMyVolunteeringRouteImport } from './routes/app/vol
 import { Route as AppVolunteerOpportunitiesRouteImport } from './routes/app/volunteer/opportunities'
 import { Route as ApplyStatusIndexRouteImport } from './routes/apply/status/index'
 import { Route as ApplyStatusIdRouteImport } from './routes/apply/status/$id'
+import { Route as ClassesCourseSlugIndexRouteImport } from './routes/classes.$courseSlug.index'
+import { Route as ClassesCourseSlugSessionSlugRouteImport } from './routes/classes.$courseSlug.$sessionSlug'
+import { Route as ProgramsSlugIndexRouteImport } from './routes/programs.$slug.index'
 import { Route as ProgramsSlugModuleRouteImport } from './routes/programs.$slug.$module'
 import { Route as AppAdmissionsApplicationsIdRouteImport } from './routes/app/admissions/applications/$id'
 import { Route as AppAssessmentsAssessmentIdTakeRouteImport } from './routes/app/assessments/$assessmentId/take'
@@ -388,17 +390,18 @@ import { Route as AppInstructorCoursesIndexRouteImport } from './routes/app/inst
 import { Route as AppInstructorCoursesCourseIdRouteImport } from './routes/app/instructor/courses/$courseId'
 import { Route as AppInstructorLessonsCreateRouteImport } from './routes/app/instructor/lessons/create'
 import { Route as AppItTicketsIdRouteImport } from './routes/app/it/tickets/$id'
-import { Route as AppMentorMenteesMenteeIdRouteImport } from './routes/app/mentor/mentees/$menteeId'
+import { Route as AppLearnCourseIdIndexRouteImport } from './routes/app/learn/$courseId.index'
 import { Route as AppMentorSessionsSessionIdRouteImport } from './routes/app/mentor/sessions/$sessionId'
 import { Route as AppParentInvitationAcceptRouteImport } from './routes/app/parent/invitation/accept'
-import { Route as AppParentStudentsStudentIdRouteImport } from './routes/app/parent/students/$studentId'
 import { Route as AppClientProjectsProjectIdTasksRouteImport } from './routes/app/client/projects/$projectId/tasks'
 import { Route as AppInstructorAssignmentsSubmissionIdGradeRouteImport } from './routes/app/instructor/assignments/$submissionId.grade'
 import { Route as AppInstructorLessonsEditIdRouteImport } from './routes/app/instructor/lessons/edit/$id'
 import { Route as AppLearnCourseIdLessonsLessonIdRouteImport } from './routes/app/learn/$courseId.lessons.$lessonId'
+import { Route as AppMentorMenteesMenteeIdIndexRouteImport } from './routes/app/mentor/mentees/$menteeId.index'
 import { Route as AppMentorMenteesMenteeIdCareerRouteImport } from './routes/app/mentor/mentees/$menteeId.career'
 import { Route as AppMentorMenteesMenteeIdPortfolioRouteImport } from './routes/app/mentor/mentees/$menteeId.portfolio'
 import { Route as AppNgoProgramsProgramIdBudgetRouteImport } from './routes/app/ngo/programs/$programId/budget'
+import { Route as AppParentStudentsStudentIdIndexRouteImport } from './routes/app/parent/students/$studentId.index'
 import { Route as AppParentStudentsStudentIdAttendanceRouteImport } from './routes/app/parent/students/$studentId.attendance'
 import { Route as AppParentStudentsStudentIdCommunicationRouteImport } from './routes/app/parent/students/$studentId.communication'
 import { Route as AppParentStudentsStudentIdFinanceRouteImport } from './routes/app/parent/students/$studentId.finance'
@@ -428,11 +431,6 @@ const AdmissionsRoute = AdmissionsRouteImport.update({
 const AlumniRoute = AlumniRouteImport.update({
   id: '/alumni',
   path: '/alumni',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const CareerGuidesRoute = CareerGuidesRouteImport.update({
-  id: '/career-guides',
-  path: '/career-guides',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CareersRoute = CareersRouteImport.update({
@@ -465,11 +463,6 @@ const FaqRoute = FaqRouteImport.update({
   path: '/faq',
   getParentRoute: () => rootRouteImport,
 } as any)
-const GlossaryRoute = GlossaryRouteImport.update({
-  id: '/glossary',
-  path: '/glossary',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const MarketplaceRoute = MarketplaceRouteImport.update({
   id: '/marketplace',
   path: '/marketplace',
@@ -488,11 +481,6 @@ const PricingRoute = PricingRouteImport.update({
 const PrivacyRoute = PrivacyRouteImport.update({
   id: '/privacy',
   path: '/privacy',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ResourcesRoute = ResourcesRouteImport.update({
-  id: '/resources',
-  path: '/resources',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ScholarshipsRoute = ScholarshipsRouteImport.update({
@@ -660,20 +648,35 @@ const BlogSlugRoute = BlogSlugRouteImport.update({
   path: '/blog/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CareerGuidesIndexRoute = CareerGuidesIndexRouteImport.update({
+  id: '/career-guides/',
+  path: '/career-guides/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CareerGuidesSlugRoute = CareerGuidesSlugRouteImport.update({
-  id: '/$slug',
-  path: '/$slug',
-  getParentRoute: () => CareerGuidesRoute,
+  id: '/career-guides/$slug',
+  path: '/career-guides/$slug',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const CertificatesVerifyRoute = CertificatesVerifyRouteImport.update({
   id: '/certificates/verify',
   path: '/certificates/verify',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ClassesIndexRoute = ClassesIndexRouteImport.update({
+  id: '/classes/',
+  path: '/classes/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GlossaryIndexRoute = GlossaryIndexRouteImport.update({
+  id: '/glossary/',
+  path: '/glossary/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const GlossarySlugRoute = GlossarySlugRouteImport.update({
-  id: '/$slug',
-  path: '/$slug',
-  getParentRoute: () => GlossaryRoute,
+  id: '/glossary/$slug',
+  path: '/glossary/$slug',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const LibraryIndexRoute = LibraryIndexRouteImport.update({
   id: '/library/',
@@ -891,20 +894,20 @@ const ProgramsIndexRoute = ProgramsIndexRouteImport.update({
   path: '/programs/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ProgramsSlugRoute = ProgramsSlugRouteImport.update({
-  id: '/programs/$slug',
-  path: '/programs/$slug',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const ProgramsCompareRoute = ProgramsCompareRouteImport.update({
   id: '/programs/compare',
   path: '/programs/compare',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ResourcesIndexRoute = ResourcesIndexRouteImport.update({
+  id: '/resources/',
+  path: '/resources/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ResourcesSlugRoute = ResourcesSlugRouteImport.update({
-  id: '/$slug',
-  path: '/$slug',
-  getParentRoute: () => ResourcesRoute,
+  id: '/resources/$slug',
+  path: '/resources/$slug',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const VisitIndexRoute = VisitIndexRouteImport.update({
   id: '/visit/',
@@ -1824,11 +1827,6 @@ const AppLearnIndexRoute = AppLearnIndexRouteImport.update({
   path: '/app/learn/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AppLearnCourseIdRoute = AppLearnCourseIdRouteImport.update({
-  id: '/app/learn/$courseId',
-  path: '/app/learn/$courseId',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const AppLiveIndexRoute = AppLiveIndexRouteImport.update({
   id: '/app/live/',
   path: '/app/live/',
@@ -2285,10 +2283,26 @@ const ApplyStatusIdRoute = ApplyStatusIdRouteImport.update({
   path: '/$id',
   getParentRoute: () => ApplyStatusRoute,
 } as any)
+const ClassesCourseSlugIndexRoute = ClassesCourseSlugIndexRouteImport.update({
+  id: '/classes/$courseSlug/',
+  path: '/classes/$courseSlug/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ClassesCourseSlugSessionSlugRoute =
+  ClassesCourseSlugSessionSlugRouteImport.update({
+    id: '/classes/$courseSlug/$sessionSlug',
+    path: '/classes/$courseSlug/$sessionSlug',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ProgramsSlugIndexRoute = ProgramsSlugIndexRouteImport.update({
+  id: '/programs/$slug/',
+  path: '/programs/$slug/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProgramsSlugModuleRoute = ProgramsSlugModuleRouteImport.update({
-  id: '/$module',
-  path: '/$module',
-  getParentRoute: () => ProgramsSlugRoute,
+  id: '/programs/$slug/$module',
+  path: '/programs/$slug/$module',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const AppAdmissionsApplicationsIdRoute =
   AppAdmissionsApplicationsIdRouteImport.update({
@@ -2355,12 +2369,11 @@ const AppItTicketsIdRoute = AppItTicketsIdRouteImport.update({
   path: '/$id',
   getParentRoute: () => AppItTicketsRoute,
 } as any)
-const AppMentorMenteesMenteeIdRoute =
-  AppMentorMenteesMenteeIdRouteImport.update({
-    id: '/app/mentor/mentees/$menteeId',
-    path: '/app/mentor/mentees/$menteeId',
-    getParentRoute: () => rootRouteImport,
-  } as any)
+const AppLearnCourseIdIndexRoute = AppLearnCourseIdIndexRouteImport.update({
+  id: '/app/learn/$courseId/',
+  path: '/app/learn/$courseId/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AppMentorSessionsSessionIdRoute =
   AppMentorSessionsSessionIdRouteImport.update({
     id: '/$sessionId',
@@ -2371,12 +2384,6 @@ const AppParentInvitationAcceptRoute =
   AppParentInvitationAcceptRouteImport.update({
     id: '/app/parent/invitation/accept',
     path: '/app/parent/invitation/accept',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const AppParentStudentsStudentIdRoute =
-  AppParentStudentsStudentIdRouteImport.update({
-    id: '/app/parent/students/$studentId',
-    path: '/app/parent/students/$studentId',
     getParentRoute: () => rootRouteImport,
   } as any)
 const AppClientProjectsProjectIdTasksRoute =
@@ -2399,21 +2406,27 @@ const AppInstructorLessonsEditIdRoute =
   } as any)
 const AppLearnCourseIdLessonsLessonIdRoute =
   AppLearnCourseIdLessonsLessonIdRouteImport.update({
-    id: '/lessons/$lessonId',
-    path: '/lessons/$lessonId',
-    getParentRoute: () => AppLearnCourseIdRoute,
+    id: '/app/learn/$courseId/lessons/$lessonId',
+    path: '/app/learn/$courseId/lessons/$lessonId',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AppMentorMenteesMenteeIdIndexRoute =
+  AppMentorMenteesMenteeIdIndexRouteImport.update({
+    id: '/app/mentor/mentees/$menteeId/',
+    path: '/app/mentor/mentees/$menteeId/',
+    getParentRoute: () => rootRouteImport,
   } as any)
 const AppMentorMenteesMenteeIdCareerRoute =
   AppMentorMenteesMenteeIdCareerRouteImport.update({
-    id: '/career',
-    path: '/career',
-    getParentRoute: () => AppMentorMenteesMenteeIdRoute,
+    id: '/app/mentor/mentees/$menteeId/career',
+    path: '/app/mentor/mentees/$menteeId/career',
+    getParentRoute: () => rootRouteImport,
   } as any)
 const AppMentorMenteesMenteeIdPortfolioRoute =
   AppMentorMenteesMenteeIdPortfolioRouteImport.update({
-    id: '/portfolio',
-    path: '/portfolio',
-    getParentRoute: () => AppMentorMenteesMenteeIdRoute,
+    id: '/app/mentor/mentees/$menteeId/portfolio',
+    path: '/app/mentor/mentees/$menteeId/portfolio',
+    getParentRoute: () => rootRouteImport,
   } as any)
 const AppNgoProgramsProgramIdBudgetRoute =
   AppNgoProgramsProgramIdBudgetRouteImport.update({
@@ -2421,35 +2434,41 @@ const AppNgoProgramsProgramIdBudgetRoute =
     path: '/$programId/budget',
     getParentRoute: () => AppNgoProgramsRoute,
   } as any)
+const AppParentStudentsStudentIdIndexRoute =
+  AppParentStudentsStudentIdIndexRouteImport.update({
+    id: '/app/parent/students/$studentId/',
+    path: '/app/parent/students/$studentId/',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const AppParentStudentsStudentIdAttendanceRoute =
   AppParentStudentsStudentIdAttendanceRouteImport.update({
-    id: '/attendance',
-    path: '/attendance',
-    getParentRoute: () => AppParentStudentsStudentIdRoute,
+    id: '/app/parent/students/$studentId/attendance',
+    path: '/app/parent/students/$studentId/attendance',
+    getParentRoute: () => rootRouteImport,
   } as any)
 const AppParentStudentsStudentIdCommunicationRoute =
   AppParentStudentsStudentIdCommunicationRouteImport.update({
-    id: '/communication',
-    path: '/communication',
-    getParentRoute: () => AppParentStudentsStudentIdRoute,
+    id: '/app/parent/students/$studentId/communication',
+    path: '/app/parent/students/$studentId/communication',
+    getParentRoute: () => rootRouteImport,
   } as any)
 const AppParentStudentsStudentIdFinanceRoute =
   AppParentStudentsStudentIdFinanceRouteImport.update({
-    id: '/finance',
-    path: '/finance',
-    getParentRoute: () => AppParentStudentsStudentIdRoute,
+    id: '/app/parent/students/$studentId/finance',
+    path: '/app/parent/students/$studentId/finance',
+    getParentRoute: () => rootRouteImport,
   } as any)
 const AppParentStudentsStudentIdGradesRoute =
   AppParentStudentsStudentIdGradesRouteImport.update({
-    id: '/grades',
-    path: '/grades',
-    getParentRoute: () => AppParentStudentsStudentIdRoute,
+    id: '/app/parent/students/$studentId/grades',
+    path: '/app/parent/students/$studentId/grades',
+    getParentRoute: () => rootRouteImport,
   } as any)
 const AppParentStudentsStudentIdReportsRoute =
   AppParentStudentsStudentIdReportsRouteImport.update({
-    id: '/reports',
-    path: '/reports',
-    getParentRoute: () => AppParentStudentsStudentIdRoute,
+    id: '/app/parent/students/$studentId/reports',
+    path: '/app/parent/students/$studentId/reports',
+    getParentRoute: () => rootRouteImport,
   } as any)
 
 export interface FileRoutesByFullPath {
@@ -2458,19 +2477,16 @@ export interface FileRoutesByFullPath {
   '/accessibility': typeof AccessibilityRoute
   '/admissions': typeof AdmissionsRoute
   '/alumni': typeof AlumniRoute
-  '/career-guides': typeof CareerGuidesRouteWithChildren
   '/careers': typeof CareersRoute
   '/community': typeof CommunityRoute
   '/contact': typeof ContactRoute
   '/engines': typeof EnginesRoute
   '/events': typeof EventsRoute
   '/faq': typeof FaqRoute
-  '/glossary': typeof GlossaryRouteWithChildren
   '/marketplace': typeof MarketplaceRoute
   '/partners': typeof PartnersRoute
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
-  '/resources': typeof ResourcesRouteWithChildren
   '/scholarships': typeof ScholarshipsRoute
   '/services': typeof ServicesRoute
   '/stories': typeof StoriesRoute
@@ -2544,7 +2560,6 @@ export interface FileRoutesByFullPath {
   '/portal/supplier': typeof PortalSupplierRoute
   '/portal/visual-designer': typeof PortalVisualDesignerRoute
   '/portal/volunteer': typeof PortalVolunteerRoute
-  '/programs/$slug': typeof ProgramsSlugRouteWithChildren
   '/programs/compare': typeof ProgramsCompareRoute
   '/resources/$slug': typeof ResourcesSlugRoute
   '/visit/brochure': typeof VisitBrochureRoute
@@ -2553,9 +2568,13 @@ export interface FileRoutesByFullPath {
   '/app/': typeof AppIndexRoute
   '/apply/': typeof ApplyIndexRoute
   '/blog/': typeof BlogIndexRoute
+  '/career-guides/': typeof CareerGuidesIndexRoute
+  '/classes/': typeof ClassesIndexRoute
+  '/glossary/': typeof GlossaryIndexRoute
   '/library/': typeof LibraryIndexRoute
   '/portal/': typeof PortalIndexRoute
   '/programs/': typeof ProgramsIndexRoute
+  '/resources/': typeof ResourcesIndexRoute
   '/visit/': typeof VisitIndexRoute
   '/app/accountant/audit': typeof AppAccountantAuditRoute
   '/app/accountant/banking': typeof AppAccountantBankingRoute
@@ -2711,7 +2730,6 @@ export interface FileRoutesByFullPath {
   '/app/it/templates': typeof AppItTemplatesRoute
   '/app/it/tickets': typeof AppItTicketsRouteWithChildren
   '/app/it/users': typeof AppItUsersRoute
-  '/app/learn/$courseId': typeof AppLearnCourseIdRouteWithChildren
   '/app/live/$classId': typeof AppLiveClassIdRoute
   '/app/localization/analytics': typeof AppLocalizationAnalyticsRoute
   '/app/localization/dialects': typeof AppLocalizationDialectsRoute
@@ -2786,6 +2804,7 @@ export interface FileRoutesByFullPath {
   '/app/volunteer/my-volunteering': typeof AppVolunteerMyVolunteeringRoute
   '/app/volunteer/opportunities': typeof AppVolunteerOpportunitiesRoute
   '/apply/status/$id': typeof ApplyStatusIdRoute
+  '/classes/$courseSlug/$sessionSlug': typeof ClassesCourseSlugSessionSlugRoute
   '/programs/$slug/$module': typeof ProgramsSlugModuleRoute
   '/app/accountant/': typeof AppAccountantIndexRoute
   '/app/admin/': typeof AppAdminIndexRoute
@@ -2821,6 +2840,8 @@ export interface FileRoutesByFullPath {
   '/app/supplier/': typeof AppSupplierIndexRoute
   '/app/volunteer/': typeof AppVolunteerIndexRoute
   '/apply/status/': typeof ApplyStatusIndexRoute
+  '/classes/$courseSlug/': typeof ClassesCourseSlugIndexRoute
+  '/programs/$slug/': typeof ProgramsSlugIndexRoute
   '/app/admissions/applications/$id': typeof AppAdmissionsApplicationsIdRoute
   '/app/assessments/$assessmentId/take': typeof AppAssessmentsAssessmentIdTakeRoute
   '/app/client/projects/$projectId': typeof AppClientProjectsProjectIdRouteWithChildren
@@ -2829,13 +2850,12 @@ export interface FileRoutesByFullPath {
   '/app/instructor/courses/$courseId': typeof AppInstructorCoursesCourseIdRoute
   '/app/instructor/lessons/create': typeof AppInstructorLessonsCreateRoute
   '/app/it/tickets/$id': typeof AppItTicketsIdRoute
-  '/app/mentor/mentees/$menteeId': typeof AppMentorMenteesMenteeIdRouteWithChildren
   '/app/mentor/sessions/$sessionId': typeof AppMentorSessionsSessionIdRoute
   '/app/parent/invitation/accept': typeof AppParentInvitationAcceptRoute
-  '/app/parent/students/$studentId': typeof AppParentStudentsStudentIdRouteWithChildren
   '/app/employer/pipeline/': typeof AppEmployerPipelineIndexRoute
   '/app/instructor/assignments/': typeof AppInstructorAssignmentsIndexRoute
   '/app/instructor/courses/': typeof AppInstructorCoursesIndexRoute
+  '/app/learn/$courseId/': typeof AppLearnCourseIdIndexRoute
   '/app/client/projects/$projectId/tasks': typeof AppClientProjectsProjectIdTasksRoute
   '/app/instructor/assignments/$submissionId/grade': typeof AppInstructorAssignmentsSubmissionIdGradeRoute
   '/app/instructor/lessons/edit/$id': typeof AppInstructorLessonsEditIdRoute
@@ -2848,6 +2868,8 @@ export interface FileRoutesByFullPath {
   '/app/parent/students/$studentId/finance': typeof AppParentStudentsStudentIdFinanceRoute
   '/app/parent/students/$studentId/grades': typeof AppParentStudentsStudentIdGradesRoute
   '/app/parent/students/$studentId/reports': typeof AppParentStudentsStudentIdReportsRoute
+  '/app/mentor/mentees/$menteeId/': typeof AppMentorMenteesMenteeIdIndexRoute
+  '/app/parent/students/$studentId/': typeof AppParentStudentsStudentIdIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -2855,19 +2877,16 @@ export interface FileRoutesByTo {
   '/accessibility': typeof AccessibilityRoute
   '/admissions': typeof AdmissionsRoute
   '/alumni': typeof AlumniRoute
-  '/career-guides': typeof CareerGuidesRouteWithChildren
   '/careers': typeof CareersRoute
   '/community': typeof CommunityRoute
   '/contact': typeof ContactRoute
   '/engines': typeof EnginesRoute
   '/events': typeof EventsRoute
   '/faq': typeof FaqRoute
-  '/glossary': typeof GlossaryRouteWithChildren
   '/marketplace': typeof MarketplaceRoute
   '/partners': typeof PartnersRoute
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
-  '/resources': typeof ResourcesRouteWithChildren
   '/scholarships': typeof ScholarshipsRoute
   '/services': typeof ServicesRoute
   '/stories': typeof StoriesRoute
@@ -2940,7 +2959,6 @@ export interface FileRoutesByTo {
   '/portal/supplier': typeof PortalSupplierRoute
   '/portal/visual-designer': typeof PortalVisualDesignerRoute
   '/portal/volunteer': typeof PortalVolunteerRoute
-  '/programs/$slug': typeof ProgramsSlugRouteWithChildren
   '/programs/compare': typeof ProgramsCompareRoute
   '/resources/$slug': typeof ResourcesSlugRoute
   '/visit/brochure': typeof VisitBrochureRoute
@@ -2949,9 +2967,13 @@ export interface FileRoutesByTo {
   '/app': typeof AppIndexRoute
   '/apply': typeof ApplyIndexRoute
   '/blog': typeof BlogIndexRoute
+  '/career-guides': typeof CareerGuidesIndexRoute
+  '/classes': typeof ClassesIndexRoute
+  '/glossary': typeof GlossaryIndexRoute
   '/library': typeof LibraryIndexRoute
   '/portal': typeof PortalIndexRoute
   '/programs': typeof ProgramsIndexRoute
+  '/resources': typeof ResourcesIndexRoute
   '/visit': typeof VisitIndexRoute
   '/app/accountant/audit': typeof AppAccountantAuditRoute
   '/app/accountant/banking': typeof AppAccountantBankingRoute
@@ -3107,7 +3129,6 @@ export interface FileRoutesByTo {
   '/app/it/templates': typeof AppItTemplatesRoute
   '/app/it/tickets': typeof AppItTicketsRouteWithChildren
   '/app/it/users': typeof AppItUsersRoute
-  '/app/learn/$courseId': typeof AppLearnCourseIdRouteWithChildren
   '/app/live/$classId': typeof AppLiveClassIdRoute
   '/app/localization/analytics': typeof AppLocalizationAnalyticsRoute
   '/app/localization/dialects': typeof AppLocalizationDialectsRoute
@@ -3182,6 +3203,7 @@ export interface FileRoutesByTo {
   '/app/volunteer/my-volunteering': typeof AppVolunteerMyVolunteeringRoute
   '/app/volunteer/opportunities': typeof AppVolunteerOpportunitiesRoute
   '/apply/status/$id': typeof ApplyStatusIdRoute
+  '/classes/$courseSlug/$sessionSlug': typeof ClassesCourseSlugSessionSlugRoute
   '/programs/$slug/$module': typeof ProgramsSlugModuleRoute
   '/app/accountant': typeof AppAccountantIndexRoute
   '/app/admin': typeof AppAdminIndexRoute
@@ -3217,6 +3239,8 @@ export interface FileRoutesByTo {
   '/app/supplier': typeof AppSupplierIndexRoute
   '/app/volunteer': typeof AppVolunteerIndexRoute
   '/apply/status': typeof ApplyStatusIndexRoute
+  '/classes/$courseSlug': typeof ClassesCourseSlugIndexRoute
+  '/programs/$slug': typeof ProgramsSlugIndexRoute
   '/app/admissions/applications/$id': typeof AppAdmissionsApplicationsIdRoute
   '/app/assessments/$assessmentId/take': typeof AppAssessmentsAssessmentIdTakeRoute
   '/app/client/projects/$projectId': typeof AppClientProjectsProjectIdRouteWithChildren
@@ -3225,13 +3249,12 @@ export interface FileRoutesByTo {
   '/app/instructor/courses/$courseId': typeof AppInstructorCoursesCourseIdRoute
   '/app/instructor/lessons/create': typeof AppInstructorLessonsCreateRoute
   '/app/it/tickets/$id': typeof AppItTicketsIdRoute
-  '/app/mentor/mentees/$menteeId': typeof AppMentorMenteesMenteeIdRouteWithChildren
   '/app/mentor/sessions/$sessionId': typeof AppMentorSessionsSessionIdRoute
   '/app/parent/invitation/accept': typeof AppParentInvitationAcceptRoute
-  '/app/parent/students/$studentId': typeof AppParentStudentsStudentIdRouteWithChildren
   '/app/employer/pipeline': typeof AppEmployerPipelineIndexRoute
   '/app/instructor/assignments': typeof AppInstructorAssignmentsIndexRoute
   '/app/instructor/courses': typeof AppInstructorCoursesIndexRoute
+  '/app/learn/$courseId': typeof AppLearnCourseIdIndexRoute
   '/app/client/projects/$projectId/tasks': typeof AppClientProjectsProjectIdTasksRoute
   '/app/instructor/assignments/$submissionId/grade': typeof AppInstructorAssignmentsSubmissionIdGradeRoute
   '/app/instructor/lessons/edit/$id': typeof AppInstructorLessonsEditIdRoute
@@ -3244,6 +3267,8 @@ export interface FileRoutesByTo {
   '/app/parent/students/$studentId/finance': typeof AppParentStudentsStudentIdFinanceRoute
   '/app/parent/students/$studentId/grades': typeof AppParentStudentsStudentIdGradesRoute
   '/app/parent/students/$studentId/reports': typeof AppParentStudentsStudentIdReportsRoute
+  '/app/mentor/mentees/$menteeId': typeof AppMentorMenteesMenteeIdIndexRoute
+  '/app/parent/students/$studentId': typeof AppParentStudentsStudentIdIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -3252,19 +3277,16 @@ export interface FileRoutesById {
   '/accessibility': typeof AccessibilityRoute
   '/admissions': typeof AdmissionsRoute
   '/alumni': typeof AlumniRoute
-  '/career-guides': typeof CareerGuidesRouteWithChildren
   '/careers': typeof CareersRoute
   '/community': typeof CommunityRoute
   '/contact': typeof ContactRoute
   '/engines': typeof EnginesRoute
   '/events': typeof EventsRoute
   '/faq': typeof FaqRoute
-  '/glossary': typeof GlossaryRouteWithChildren
   '/marketplace': typeof MarketplaceRoute
   '/partners': typeof PartnersRoute
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
-  '/resources': typeof ResourcesRouteWithChildren
   '/scholarships': typeof ScholarshipsRoute
   '/services': typeof ServicesRoute
   '/stories': typeof StoriesRoute
@@ -3338,7 +3360,6 @@ export interface FileRoutesById {
   '/portal/supplier': typeof PortalSupplierRoute
   '/portal/visual-designer': typeof PortalVisualDesignerRoute
   '/portal/volunteer': typeof PortalVolunteerRoute
-  '/programs/$slug': typeof ProgramsSlugRouteWithChildren
   '/programs/compare': typeof ProgramsCompareRoute
   '/resources/$slug': typeof ResourcesSlugRoute
   '/visit/brochure': typeof VisitBrochureRoute
@@ -3347,9 +3368,13 @@ export interface FileRoutesById {
   '/app/': typeof AppIndexRoute
   '/apply/': typeof ApplyIndexRoute
   '/blog/': typeof BlogIndexRoute
+  '/career-guides/': typeof CareerGuidesIndexRoute
+  '/classes/': typeof ClassesIndexRoute
+  '/glossary/': typeof GlossaryIndexRoute
   '/library/': typeof LibraryIndexRoute
   '/portal/': typeof PortalIndexRoute
   '/programs/': typeof ProgramsIndexRoute
+  '/resources/': typeof ResourcesIndexRoute
   '/visit/': typeof VisitIndexRoute
   '/app/accountant/audit': typeof AppAccountantAuditRoute
   '/app/accountant/banking': typeof AppAccountantBankingRoute
@@ -3505,7 +3530,6 @@ export interface FileRoutesById {
   '/app/it/templates': typeof AppItTemplatesRoute
   '/app/it/tickets': typeof AppItTicketsRouteWithChildren
   '/app/it/users': typeof AppItUsersRoute
-  '/app/learn/$courseId': typeof AppLearnCourseIdRouteWithChildren
   '/app/live/$classId': typeof AppLiveClassIdRoute
   '/app/localization/analytics': typeof AppLocalizationAnalyticsRoute
   '/app/localization/dialects': typeof AppLocalizationDialectsRoute
@@ -3580,6 +3604,7 @@ export interface FileRoutesById {
   '/app/volunteer/my-volunteering': typeof AppVolunteerMyVolunteeringRoute
   '/app/volunteer/opportunities': typeof AppVolunteerOpportunitiesRoute
   '/apply/status/$id': typeof ApplyStatusIdRoute
+  '/classes/$courseSlug/$sessionSlug': typeof ClassesCourseSlugSessionSlugRoute
   '/programs/$slug/$module': typeof ProgramsSlugModuleRoute
   '/app/accountant/': typeof AppAccountantIndexRoute
   '/app/admin/': typeof AppAdminIndexRoute
@@ -3615,6 +3640,8 @@ export interface FileRoutesById {
   '/app/supplier/': typeof AppSupplierIndexRoute
   '/app/volunteer/': typeof AppVolunteerIndexRoute
   '/apply/status/': typeof ApplyStatusIndexRoute
+  '/classes/$courseSlug/': typeof ClassesCourseSlugIndexRoute
+  '/programs/$slug/': typeof ProgramsSlugIndexRoute
   '/app/admissions/applications/$id': typeof AppAdmissionsApplicationsIdRoute
   '/app/assessments/$assessmentId/take': typeof AppAssessmentsAssessmentIdTakeRoute
   '/app/client/projects/$projectId': typeof AppClientProjectsProjectIdRouteWithChildren
@@ -3623,13 +3650,12 @@ export interface FileRoutesById {
   '/app/instructor/courses/$courseId': typeof AppInstructorCoursesCourseIdRoute
   '/app/instructor/lessons/create': typeof AppInstructorLessonsCreateRoute
   '/app/it/tickets/$id': typeof AppItTicketsIdRoute
-  '/app/mentor/mentees/$menteeId': typeof AppMentorMenteesMenteeIdRouteWithChildren
   '/app/mentor/sessions/$sessionId': typeof AppMentorSessionsSessionIdRoute
   '/app/parent/invitation/accept': typeof AppParentInvitationAcceptRoute
-  '/app/parent/students/$studentId': typeof AppParentStudentsStudentIdRouteWithChildren
   '/app/employer/pipeline/': typeof AppEmployerPipelineIndexRoute
   '/app/instructor/assignments/': typeof AppInstructorAssignmentsIndexRoute
   '/app/instructor/courses/': typeof AppInstructorCoursesIndexRoute
+  '/app/learn/$courseId/': typeof AppLearnCourseIdIndexRoute
   '/app/client/projects/$projectId/tasks': typeof AppClientProjectsProjectIdTasksRoute
   '/app/instructor/assignments/$submissionId/grade': typeof AppInstructorAssignmentsSubmissionIdGradeRoute
   '/app/instructor/lessons/edit/$id': typeof AppInstructorLessonsEditIdRoute
@@ -3642,6 +3668,8 @@ export interface FileRoutesById {
   '/app/parent/students/$studentId/finance': typeof AppParentStudentsStudentIdFinanceRoute
   '/app/parent/students/$studentId/grades': typeof AppParentStudentsStudentIdGradesRoute
   '/app/parent/students/$studentId/reports': typeof AppParentStudentsStudentIdReportsRoute
+  '/app/mentor/mentees/$menteeId/': typeof AppMentorMenteesMenteeIdIndexRoute
+  '/app/parent/students/$studentId/': typeof AppParentStudentsStudentIdIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -3651,19 +3679,16 @@ export interface FileRouteTypes {
     | '/accessibility'
     | '/admissions'
     | '/alumni'
-    | '/career-guides'
     | '/careers'
     | '/community'
     | '/contact'
     | '/engines'
     | '/events'
     | '/faq'
-    | '/glossary'
     | '/marketplace'
     | '/partners'
     | '/pricing'
     | '/privacy'
-    | '/resources'
     | '/scholarships'
     | '/services'
     | '/stories'
@@ -3737,7 +3762,6 @@ export interface FileRouteTypes {
     | '/portal/supplier'
     | '/portal/visual-designer'
     | '/portal/volunteer'
-    | '/programs/$slug'
     | '/programs/compare'
     | '/resources/$slug'
     | '/visit/brochure'
@@ -3746,9 +3770,13 @@ export interface FileRouteTypes {
     | '/app/'
     | '/apply/'
     | '/blog/'
+    | '/career-guides/'
+    | '/classes/'
+    | '/glossary/'
     | '/library/'
     | '/portal/'
     | '/programs/'
+    | '/resources/'
     | '/visit/'
     | '/app/accountant/audit'
     | '/app/accountant/banking'
@@ -3904,7 +3932,6 @@ export interface FileRouteTypes {
     | '/app/it/templates'
     | '/app/it/tickets'
     | '/app/it/users'
-    | '/app/learn/$courseId'
     | '/app/live/$classId'
     | '/app/localization/analytics'
     | '/app/localization/dialects'
@@ -3979,6 +4006,7 @@ export interface FileRouteTypes {
     | '/app/volunteer/my-volunteering'
     | '/app/volunteer/opportunities'
     | '/apply/status/$id'
+    | '/classes/$courseSlug/$sessionSlug'
     | '/programs/$slug/$module'
     | '/app/accountant/'
     | '/app/admin/'
@@ -4014,6 +4042,8 @@ export interface FileRouteTypes {
     | '/app/supplier/'
     | '/app/volunteer/'
     | '/apply/status/'
+    | '/classes/$courseSlug/'
+    | '/programs/$slug/'
     | '/app/admissions/applications/$id'
     | '/app/assessments/$assessmentId/take'
     | '/app/client/projects/$projectId'
@@ -4022,13 +4052,12 @@ export interface FileRouteTypes {
     | '/app/instructor/courses/$courseId'
     | '/app/instructor/lessons/create'
     | '/app/it/tickets/$id'
-    | '/app/mentor/mentees/$menteeId'
     | '/app/mentor/sessions/$sessionId'
     | '/app/parent/invitation/accept'
-    | '/app/parent/students/$studentId'
     | '/app/employer/pipeline/'
     | '/app/instructor/assignments/'
     | '/app/instructor/courses/'
+    | '/app/learn/$courseId/'
     | '/app/client/projects/$projectId/tasks'
     | '/app/instructor/assignments/$submissionId/grade'
     | '/app/instructor/lessons/edit/$id'
@@ -4041,6 +4070,8 @@ export interface FileRouteTypes {
     | '/app/parent/students/$studentId/finance'
     | '/app/parent/students/$studentId/grades'
     | '/app/parent/students/$studentId/reports'
+    | '/app/mentor/mentees/$menteeId/'
+    | '/app/parent/students/$studentId/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -4048,19 +4079,16 @@ export interface FileRouteTypes {
     | '/accessibility'
     | '/admissions'
     | '/alumni'
-    | '/career-guides'
     | '/careers'
     | '/community'
     | '/contact'
     | '/engines'
     | '/events'
     | '/faq'
-    | '/glossary'
     | '/marketplace'
     | '/partners'
     | '/pricing'
     | '/privacy'
-    | '/resources'
     | '/scholarships'
     | '/services'
     | '/stories'
@@ -4133,7 +4161,6 @@ export interface FileRouteTypes {
     | '/portal/supplier'
     | '/portal/visual-designer'
     | '/portal/volunteer'
-    | '/programs/$slug'
     | '/programs/compare'
     | '/resources/$slug'
     | '/visit/brochure'
@@ -4142,9 +4169,13 @@ export interface FileRouteTypes {
     | '/app'
     | '/apply'
     | '/blog'
+    | '/career-guides'
+    | '/classes'
+    | '/glossary'
     | '/library'
     | '/portal'
     | '/programs'
+    | '/resources'
     | '/visit'
     | '/app/accountant/audit'
     | '/app/accountant/banking'
@@ -4300,7 +4331,6 @@ export interface FileRouteTypes {
     | '/app/it/templates'
     | '/app/it/tickets'
     | '/app/it/users'
-    | '/app/learn/$courseId'
     | '/app/live/$classId'
     | '/app/localization/analytics'
     | '/app/localization/dialects'
@@ -4375,6 +4405,7 @@ export interface FileRouteTypes {
     | '/app/volunteer/my-volunteering'
     | '/app/volunteer/opportunities'
     | '/apply/status/$id'
+    | '/classes/$courseSlug/$sessionSlug'
     | '/programs/$slug/$module'
     | '/app/accountant'
     | '/app/admin'
@@ -4410,6 +4441,8 @@ export interface FileRouteTypes {
     | '/app/supplier'
     | '/app/volunteer'
     | '/apply/status'
+    | '/classes/$courseSlug'
+    | '/programs/$slug'
     | '/app/admissions/applications/$id'
     | '/app/assessments/$assessmentId/take'
     | '/app/client/projects/$projectId'
@@ -4418,13 +4451,12 @@ export interface FileRouteTypes {
     | '/app/instructor/courses/$courseId'
     | '/app/instructor/lessons/create'
     | '/app/it/tickets/$id'
-    | '/app/mentor/mentees/$menteeId'
     | '/app/mentor/sessions/$sessionId'
     | '/app/parent/invitation/accept'
-    | '/app/parent/students/$studentId'
     | '/app/employer/pipeline'
     | '/app/instructor/assignments'
     | '/app/instructor/courses'
+    | '/app/learn/$courseId'
     | '/app/client/projects/$projectId/tasks'
     | '/app/instructor/assignments/$submissionId/grade'
     | '/app/instructor/lessons/edit/$id'
@@ -4437,6 +4469,8 @@ export interface FileRouteTypes {
     | '/app/parent/students/$studentId/finance'
     | '/app/parent/students/$studentId/grades'
     | '/app/parent/students/$studentId/reports'
+    | '/app/mentor/mentees/$menteeId'
+    | '/app/parent/students/$studentId'
   id:
     | '__root__'
     | '/'
@@ -4444,19 +4478,16 @@ export interface FileRouteTypes {
     | '/accessibility'
     | '/admissions'
     | '/alumni'
-    | '/career-guides'
     | '/careers'
     | '/community'
     | '/contact'
     | '/engines'
     | '/events'
     | '/faq'
-    | '/glossary'
     | '/marketplace'
     | '/partners'
     | '/pricing'
     | '/privacy'
-    | '/resources'
     | '/scholarships'
     | '/services'
     | '/stories'
@@ -4530,7 +4561,6 @@ export interface FileRouteTypes {
     | '/portal/supplier'
     | '/portal/visual-designer'
     | '/portal/volunteer'
-    | '/programs/$slug'
     | '/programs/compare'
     | '/resources/$slug'
     | '/visit/brochure'
@@ -4539,9 +4569,13 @@ export interface FileRouteTypes {
     | '/app/'
     | '/apply/'
     | '/blog/'
+    | '/career-guides/'
+    | '/classes/'
+    | '/glossary/'
     | '/library/'
     | '/portal/'
     | '/programs/'
+    | '/resources/'
     | '/visit/'
     | '/app/accountant/audit'
     | '/app/accountant/banking'
@@ -4697,7 +4731,6 @@ export interface FileRouteTypes {
     | '/app/it/templates'
     | '/app/it/tickets'
     | '/app/it/users'
-    | '/app/learn/$courseId'
     | '/app/live/$classId'
     | '/app/localization/analytics'
     | '/app/localization/dialects'
@@ -4772,6 +4805,7 @@ export interface FileRouteTypes {
     | '/app/volunteer/my-volunteering'
     | '/app/volunteer/opportunities'
     | '/apply/status/$id'
+    | '/classes/$courseSlug/$sessionSlug'
     | '/programs/$slug/$module'
     | '/app/accountant/'
     | '/app/admin/'
@@ -4807,6 +4841,8 @@ export interface FileRouteTypes {
     | '/app/supplier/'
     | '/app/volunteer/'
     | '/apply/status/'
+    | '/classes/$courseSlug/'
+    | '/programs/$slug/'
     | '/app/admissions/applications/$id'
     | '/app/assessments/$assessmentId/take'
     | '/app/client/projects/$projectId'
@@ -4815,13 +4851,12 @@ export interface FileRouteTypes {
     | '/app/instructor/courses/$courseId'
     | '/app/instructor/lessons/create'
     | '/app/it/tickets/$id'
-    | '/app/mentor/mentees/$menteeId'
     | '/app/mentor/sessions/$sessionId'
     | '/app/parent/invitation/accept'
-    | '/app/parent/students/$studentId'
     | '/app/employer/pipeline/'
     | '/app/instructor/assignments/'
     | '/app/instructor/courses/'
+    | '/app/learn/$courseId/'
     | '/app/client/projects/$projectId/tasks'
     | '/app/instructor/assignments/$submissionId/grade'
     | '/app/instructor/lessons/edit/$id'
@@ -4834,6 +4869,8 @@ export interface FileRouteTypes {
     | '/app/parent/students/$studentId/finance'
     | '/app/parent/students/$studentId/grades'
     | '/app/parent/students/$studentId/reports'
+    | '/app/mentor/mentees/$menteeId/'
+    | '/app/parent/students/$studentId/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -4842,19 +4879,16 @@ export interface RootRouteChildren {
   AccessibilityRoute: typeof AccessibilityRoute
   AdmissionsRoute: typeof AdmissionsRoute
   AlumniRoute: typeof AlumniRoute
-  CareerGuidesRoute: typeof CareerGuidesRouteWithChildren
   CareersRoute: typeof CareersRoute
   CommunityRoute: typeof CommunityRoute
   ContactRoute: typeof ContactRoute
   EnginesRoute: typeof EnginesRoute
   EventsRoute: typeof EventsRoute
   FaqRoute: typeof FaqRoute
-  GlossaryRoute: typeof GlossaryRouteWithChildren
   MarketplaceRoute: typeof MarketplaceRoute
   PartnersRoute: typeof PartnersRoute
   PricingRoute: typeof PricingRoute
   PrivacyRoute: typeof PrivacyRoute
-  ResourcesRoute: typeof ResourcesRouteWithChildren
   ScholarshipsRoute: typeof ScholarshipsRoute
   ServicesRoute: typeof ServicesRoute
   StoriesRoute: typeof StoriesRoute
@@ -4885,7 +4919,9 @@ export interface RootRouteChildren {
   AuthSignUpRoute: typeof AuthSignUpRoute
   AuthVerifyEmailRoute: typeof AuthVerifyEmailRoute
   BlogSlugRoute: typeof BlogSlugRoute
+  CareerGuidesSlugRoute: typeof CareerGuidesSlugRoute
   CertificatesVerifyRoute: typeof CertificatesVerifyRoute
+  GlossarySlugRoute: typeof GlossarySlugRoute
   LibraryCategoryRoute: typeof LibraryCategoryRoute
   PortalAcademicBoardRoute: typeof PortalAcademicBoardRoute
   PortalAccountantRoute: typeof PortalAccountantRoute
@@ -4926,17 +4962,21 @@ export interface RootRouteChildren {
   PortalSupplierRoute: typeof PortalSupplierRoute
   PortalVisualDesignerRoute: typeof PortalVisualDesignerRoute
   PortalVolunteerRoute: typeof PortalVolunteerRoute
-  ProgramsSlugRoute: typeof ProgramsSlugRouteWithChildren
   ProgramsCompareRoute: typeof ProgramsCompareRoute
+  ResourcesSlugRoute: typeof ResourcesSlugRoute
   VisitBrochureRoute: typeof VisitBrochureRoute
   VisitFeedbackRoute: typeof VisitFeedbackRoute
   VisitInfoRoute: typeof VisitInfoRoute
   AppIndexRoute: typeof AppIndexRoute
   ApplyIndexRoute: typeof ApplyIndexRoute
   BlogIndexRoute: typeof BlogIndexRoute
+  CareerGuidesIndexRoute: typeof CareerGuidesIndexRoute
+  ClassesIndexRoute: typeof ClassesIndexRoute
+  GlossaryIndexRoute: typeof GlossaryIndexRoute
   LibraryIndexRoute: typeof LibraryIndexRoute
   PortalIndexRoute: typeof PortalIndexRoute
   ProgramsIndexRoute: typeof ProgramsIndexRoute
+  ResourcesIndexRoute: typeof ResourcesIndexRoute
   VisitIndexRoute: typeof VisitIndexRoute
   AppAccountantAuditRoute: typeof AppAccountantAuditRoute
   AppAccountantBankingRoute: typeof AppAccountantBankingRoute
@@ -5091,7 +5131,6 @@ export interface RootRouteChildren {
   AppItTemplatesRoute: typeof AppItTemplatesRoute
   AppItTicketsRoute: typeof AppItTicketsRouteWithChildren
   AppItUsersRoute: typeof AppItUsersRoute
-  AppLearnCourseIdRoute: typeof AppLearnCourseIdRouteWithChildren
   AppLiveClassIdRoute: typeof AppLiveClassIdRoute
   AppLocalizationAnalyticsRoute: typeof AppLocalizationAnalyticsRoute
   AppLocalizationDialectsRoute: typeof AppLocalizationDialectsRoute
@@ -5165,6 +5204,8 @@ export interface RootRouteChildren {
   AppVolunteerImpactRoute: typeof AppVolunteerImpactRoute
   AppVolunteerMyVolunteeringRoute: typeof AppVolunteerMyVolunteeringRoute
   AppVolunteerOpportunitiesRoute: typeof AppVolunteerOpportunitiesRoute
+  ClassesCourseSlugSessionSlugRoute: typeof ClassesCourseSlugSessionSlugRoute
+  ProgramsSlugModuleRoute: typeof ProgramsSlugModuleRoute
   AppAccountantIndexRoute: typeof AppAccountantIndexRoute
   AppAdminIndexRoute: typeof AppAdminIndexRoute
   AppAdmissionsIndexRoute: typeof AppAdmissionsIndexRoute
@@ -5198,20 +5239,31 @@ export interface RootRouteChildren {
   AppReceptionistIndexRoute: typeof AppReceptionistIndexRoute
   AppSupplierIndexRoute: typeof AppSupplierIndexRoute
   AppVolunteerIndexRoute: typeof AppVolunteerIndexRoute
+  ClassesCourseSlugIndexRoute: typeof ClassesCourseSlugIndexRoute
+  ProgramsSlugIndexRoute: typeof ProgramsSlugIndexRoute
   AppAssessmentsAssessmentIdTakeRoute: typeof AppAssessmentsAssessmentIdTakeRoute
   AppClientProjectsProjectIdRoute: typeof AppClientProjectsProjectIdRouteWithChildren
   AppConversionCopyLandingPagesIdRoute: typeof AppConversionCopyLandingPagesIdRoute
   AppEmployerPipelineJobIdRoute: typeof AppEmployerPipelineJobIdRoute
   AppInstructorCoursesCourseIdRoute: typeof AppInstructorCoursesCourseIdRoute
   AppInstructorLessonsCreateRoute: typeof AppInstructorLessonsCreateRoute
-  AppMentorMenteesMenteeIdRoute: typeof AppMentorMenteesMenteeIdRouteWithChildren
   AppParentInvitationAcceptRoute: typeof AppParentInvitationAcceptRoute
-  AppParentStudentsStudentIdRoute: typeof AppParentStudentsStudentIdRouteWithChildren
   AppEmployerPipelineIndexRoute: typeof AppEmployerPipelineIndexRoute
   AppInstructorAssignmentsIndexRoute: typeof AppInstructorAssignmentsIndexRoute
   AppInstructorCoursesIndexRoute: typeof AppInstructorCoursesIndexRoute
+  AppLearnCourseIdIndexRoute: typeof AppLearnCourseIdIndexRoute
   AppInstructorAssignmentsSubmissionIdGradeRoute: typeof AppInstructorAssignmentsSubmissionIdGradeRoute
   AppInstructorLessonsEditIdRoute: typeof AppInstructorLessonsEditIdRoute
+  AppLearnCourseIdLessonsLessonIdRoute: typeof AppLearnCourseIdLessonsLessonIdRoute
+  AppMentorMenteesMenteeIdCareerRoute: typeof AppMentorMenteesMenteeIdCareerRoute
+  AppMentorMenteesMenteeIdPortfolioRoute: typeof AppMentorMenteesMenteeIdPortfolioRoute
+  AppParentStudentsStudentIdAttendanceRoute: typeof AppParentStudentsStudentIdAttendanceRoute
+  AppParentStudentsStudentIdCommunicationRoute: typeof AppParentStudentsStudentIdCommunicationRoute
+  AppParentStudentsStudentIdFinanceRoute: typeof AppParentStudentsStudentIdFinanceRoute
+  AppParentStudentsStudentIdGradesRoute: typeof AppParentStudentsStudentIdGradesRoute
+  AppParentStudentsStudentIdReportsRoute: typeof AppParentStudentsStudentIdReportsRoute
+  AppMentorMenteesMenteeIdIndexRoute: typeof AppMentorMenteesMenteeIdIndexRoute
+  AppParentStudentsStudentIdIndexRoute: typeof AppParentStudentsStudentIdIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -5249,13 +5301,6 @@ declare module '@tanstack/react-router' {
       path: '/alumni'
       fullPath: '/alumni'
       preLoaderRoute: typeof AlumniRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/career-guides': {
-      id: '/career-guides'
-      path: '/career-guides'
-      fullPath: '/career-guides'
-      preLoaderRoute: typeof CareerGuidesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/careers': {
@@ -5300,13 +5345,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FaqRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/glossary': {
-      id: '/glossary'
-      path: '/glossary'
-      fullPath: '/glossary'
-      preLoaderRoute: typeof GlossaryRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/marketplace': {
       id: '/marketplace'
       path: '/marketplace'
@@ -5333,13 +5371,6 @@ declare module '@tanstack/react-router' {
       path: '/privacy'
       fullPath: '/privacy'
       preLoaderRoute: typeof PrivacyRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/resources': {
-      id: '/resources'
-      path: '/resources'
-      fullPath: '/resources'
-      preLoaderRoute: typeof ResourcesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/scholarships': {
@@ -5573,12 +5604,19 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BlogSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/career-guides/': {
+      id: '/career-guides/'
+      path: '/career-guides'
+      fullPath: '/career-guides/'
+      preLoaderRoute: typeof CareerGuidesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/career-guides/$slug': {
       id: '/career-guides/$slug'
-      path: '/$slug'
+      path: '/career-guides/$slug'
       fullPath: '/career-guides/$slug'
       preLoaderRoute: typeof CareerGuidesSlugRouteImport
-      parentRoute: typeof CareerGuidesRoute
+      parentRoute: typeof rootRouteImport
     }
     '/certificates/verify': {
       id: '/certificates/verify'
@@ -5587,12 +5625,26 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CertificatesVerifyRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/classes/': {
+      id: '/classes/'
+      path: '/classes'
+      fullPath: '/classes/'
+      preLoaderRoute: typeof ClassesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/glossary/': {
+      id: '/glossary/'
+      path: '/glossary'
+      fullPath: '/glossary/'
+      preLoaderRoute: typeof GlossaryIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/glossary/$slug': {
       id: '/glossary/$slug'
-      path: '/$slug'
+      path: '/glossary/$slug'
       fullPath: '/glossary/$slug'
       preLoaderRoute: typeof GlossarySlugRouteImport
-      parentRoute: typeof GlossaryRoute
+      parentRoute: typeof rootRouteImport
     }
     '/library/': {
       id: '/library/'
@@ -5895,13 +5947,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProgramsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/programs/$slug': {
-      id: '/programs/$slug'
-      path: '/programs/$slug'
-      fullPath: '/programs/$slug'
-      preLoaderRoute: typeof ProgramsSlugRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/programs/compare': {
       id: '/programs/compare'
       path: '/programs/compare'
@@ -5909,12 +5954,19 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProgramsCompareRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/resources/': {
+      id: '/resources/'
+      path: '/resources'
+      fullPath: '/resources/'
+      preLoaderRoute: typeof ResourcesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/resources/$slug': {
       id: '/resources/$slug'
-      path: '/$slug'
+      path: '/resources/$slug'
       fullPath: '/resources/$slug'
       preLoaderRoute: typeof ResourcesSlugRouteImport
-      parentRoute: typeof ResourcesRoute
+      parentRoute: typeof rootRouteImport
     }
     '/visit/': {
       id: '/visit/'
@@ -7169,13 +7221,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppLearnIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/app/learn/$courseId': {
-      id: '/app/learn/$courseId'
-      path: '/app/learn/$courseId'
-      fullPath: '/app/learn/$courseId'
-      preLoaderRoute: typeof AppLearnCourseIdRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/app/live/': {
       id: '/app/live/'
       path: '/app/live'
@@ -7785,12 +7830,33 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApplyStatusIdRouteImport
       parentRoute: typeof ApplyStatusRoute
     }
+    '/classes/$courseSlug/': {
+      id: '/classes/$courseSlug/'
+      path: '/classes/$courseSlug'
+      fullPath: '/classes/$courseSlug/'
+      preLoaderRoute: typeof ClassesCourseSlugIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/classes/$courseSlug/$sessionSlug': {
+      id: '/classes/$courseSlug/$sessionSlug'
+      path: '/classes/$courseSlug/$sessionSlug'
+      fullPath: '/classes/$courseSlug/$sessionSlug'
+      preLoaderRoute: typeof ClassesCourseSlugSessionSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/programs/$slug/': {
+      id: '/programs/$slug/'
+      path: '/programs/$slug'
+      fullPath: '/programs/$slug/'
+      preLoaderRoute: typeof ProgramsSlugIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/programs/$slug/$module': {
       id: '/programs/$slug/$module'
-      path: '/$module'
+      path: '/programs/$slug/$module'
       fullPath: '/programs/$slug/$module'
       preLoaderRoute: typeof ProgramsSlugModuleRouteImport
-      parentRoute: typeof ProgramsSlugRoute
+      parentRoute: typeof rootRouteImport
     }
     '/app/admissions/applications/$id': {
       id: '/app/admissions/applications/$id'
@@ -7869,11 +7935,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppItTicketsIdRouteImport
       parentRoute: typeof AppItTicketsRoute
     }
-    '/app/mentor/mentees/$menteeId': {
-      id: '/app/mentor/mentees/$menteeId'
-      path: '/app/mentor/mentees/$menteeId'
-      fullPath: '/app/mentor/mentees/$menteeId'
-      preLoaderRoute: typeof AppMentorMenteesMenteeIdRouteImport
+    '/app/learn/$courseId/': {
+      id: '/app/learn/$courseId/'
+      path: '/app/learn/$courseId'
+      fullPath: '/app/learn/$courseId/'
+      preLoaderRoute: typeof AppLearnCourseIdIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/app/mentor/sessions/$sessionId': {
@@ -7888,13 +7954,6 @@ declare module '@tanstack/react-router' {
       path: '/app/parent/invitation/accept'
       fullPath: '/app/parent/invitation/accept'
       preLoaderRoute: typeof AppParentInvitationAcceptRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/app/parent/students/$studentId': {
-      id: '/app/parent/students/$studentId'
-      path: '/app/parent/students/$studentId'
-      fullPath: '/app/parent/students/$studentId'
-      preLoaderRoute: typeof AppParentStudentsStudentIdRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/app/client/projects/$projectId/tasks': {
@@ -7920,24 +7979,31 @@ declare module '@tanstack/react-router' {
     }
     '/app/learn/$courseId/lessons/$lessonId': {
       id: '/app/learn/$courseId/lessons/$lessonId'
-      path: '/lessons/$lessonId'
+      path: '/app/learn/$courseId/lessons/$lessonId'
       fullPath: '/app/learn/$courseId/lessons/$lessonId'
       preLoaderRoute: typeof AppLearnCourseIdLessonsLessonIdRouteImport
-      parentRoute: typeof AppLearnCourseIdRoute
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/mentor/mentees/$menteeId/': {
+      id: '/app/mentor/mentees/$menteeId/'
+      path: '/app/mentor/mentees/$menteeId'
+      fullPath: '/app/mentor/mentees/$menteeId/'
+      preLoaderRoute: typeof AppMentorMenteesMenteeIdIndexRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/app/mentor/mentees/$menteeId/career': {
       id: '/app/mentor/mentees/$menteeId/career'
-      path: '/career'
+      path: '/app/mentor/mentees/$menteeId/career'
       fullPath: '/app/mentor/mentees/$menteeId/career'
       preLoaderRoute: typeof AppMentorMenteesMenteeIdCareerRouteImport
-      parentRoute: typeof AppMentorMenteesMenteeIdRoute
+      parentRoute: typeof rootRouteImport
     }
     '/app/mentor/mentees/$menteeId/portfolio': {
       id: '/app/mentor/mentees/$menteeId/portfolio'
-      path: '/portfolio'
+      path: '/app/mentor/mentees/$menteeId/portfolio'
       fullPath: '/app/mentor/mentees/$menteeId/portfolio'
       preLoaderRoute: typeof AppMentorMenteesMenteeIdPortfolioRouteImport
-      parentRoute: typeof AppMentorMenteesMenteeIdRoute
+      parentRoute: typeof rootRouteImport
     }
     '/app/ngo/programs/$programId/budget': {
       id: '/app/ngo/programs/$programId/budget'
@@ -7946,79 +8012,50 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppNgoProgramsProgramIdBudgetRouteImport
       parentRoute: typeof AppNgoProgramsRoute
     }
+    '/app/parent/students/$studentId/': {
+      id: '/app/parent/students/$studentId/'
+      path: '/app/parent/students/$studentId'
+      fullPath: '/app/parent/students/$studentId/'
+      preLoaderRoute: typeof AppParentStudentsStudentIdIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/app/parent/students/$studentId/attendance': {
       id: '/app/parent/students/$studentId/attendance'
-      path: '/attendance'
+      path: '/app/parent/students/$studentId/attendance'
       fullPath: '/app/parent/students/$studentId/attendance'
       preLoaderRoute: typeof AppParentStudentsStudentIdAttendanceRouteImport
-      parentRoute: typeof AppParentStudentsStudentIdRoute
+      parentRoute: typeof rootRouteImport
     }
     '/app/parent/students/$studentId/communication': {
       id: '/app/parent/students/$studentId/communication'
-      path: '/communication'
+      path: '/app/parent/students/$studentId/communication'
       fullPath: '/app/parent/students/$studentId/communication'
       preLoaderRoute: typeof AppParentStudentsStudentIdCommunicationRouteImport
-      parentRoute: typeof AppParentStudentsStudentIdRoute
+      parentRoute: typeof rootRouteImport
     }
     '/app/parent/students/$studentId/finance': {
       id: '/app/parent/students/$studentId/finance'
-      path: '/finance'
+      path: '/app/parent/students/$studentId/finance'
       fullPath: '/app/parent/students/$studentId/finance'
       preLoaderRoute: typeof AppParentStudentsStudentIdFinanceRouteImport
-      parentRoute: typeof AppParentStudentsStudentIdRoute
+      parentRoute: typeof rootRouteImport
     }
     '/app/parent/students/$studentId/grades': {
       id: '/app/parent/students/$studentId/grades'
-      path: '/grades'
+      path: '/app/parent/students/$studentId/grades'
       fullPath: '/app/parent/students/$studentId/grades'
       preLoaderRoute: typeof AppParentStudentsStudentIdGradesRouteImport
-      parentRoute: typeof AppParentStudentsStudentIdRoute
+      parentRoute: typeof rootRouteImport
     }
     '/app/parent/students/$studentId/reports': {
       id: '/app/parent/students/$studentId/reports'
-      path: '/reports'
+      path: '/app/parent/students/$studentId/reports'
       fullPath: '/app/parent/students/$studentId/reports'
       preLoaderRoute: typeof AppParentStudentsStudentIdReportsRouteImport
-      parentRoute: typeof AppParentStudentsStudentIdRoute
+      parentRoute: typeof rootRouteImport
     }
   }
 }
-
-interface CareerGuidesRouteChildren {
-  CareerGuidesSlugRoute: typeof CareerGuidesSlugRoute
-}
-
-const CareerGuidesRouteChildren: CareerGuidesRouteChildren = {
-  CareerGuidesSlugRoute: CareerGuidesSlugRoute,
-}
-
-const CareerGuidesRouteWithChildren = CareerGuidesRoute._addFileChildren(
-  CareerGuidesRouteChildren,
-)
-
-interface GlossaryRouteChildren {
-  GlossarySlugRoute: typeof GlossarySlugRoute
-}
-
-const GlossaryRouteChildren: GlossaryRouteChildren = {
-  GlossarySlugRoute: GlossarySlugRoute,
-}
-
-const GlossaryRouteWithChildren = GlossaryRoute._addFileChildren(
-  GlossaryRouteChildren,
-)
-
-interface ResourcesRouteChildren {
-  ResourcesSlugRoute: typeof ResourcesSlugRoute
-}
-
-const ResourcesRouteChildren: ResourcesRouteChildren = {
-  ResourcesSlugRoute: ResourcesSlugRoute,
-}
-
-const ResourcesRouteWithChildren = ResourcesRoute._addFileChildren(
-  ResourcesRouteChildren,
-)
 
 interface AppFinanceRouteChildren {
   AppFinancePayVerifyRoute: typeof AppFinancePayVerifyRoute
@@ -8046,18 +8083,6 @@ const ApplyStatusRouteWithChildren = ApplyStatusRoute._addFileChildren(
   ApplyStatusRouteChildren,
 )
 
-interface ProgramsSlugRouteChildren {
-  ProgramsSlugModuleRoute: typeof ProgramsSlugModuleRoute
-}
-
-const ProgramsSlugRouteChildren: ProgramsSlugRouteChildren = {
-  ProgramsSlugModuleRoute: ProgramsSlugModuleRoute,
-}
-
-const ProgramsSlugRouteWithChildren = ProgramsSlugRoute._addFileChildren(
-  ProgramsSlugRouteChildren,
-)
-
 interface AppAdmissionsApplicationsRouteChildren {
   AppAdmissionsApplicationsIdRoute: typeof AppAdmissionsApplicationsIdRoute
 }
@@ -8083,17 +8108,6 @@ const AppItTicketsRouteChildren: AppItTicketsRouteChildren = {
 const AppItTicketsRouteWithChildren = AppItTicketsRoute._addFileChildren(
   AppItTicketsRouteChildren,
 )
-
-interface AppLearnCourseIdRouteChildren {
-  AppLearnCourseIdLessonsLessonIdRoute: typeof AppLearnCourseIdLessonsLessonIdRoute
-}
-
-const AppLearnCourseIdRouteChildren: AppLearnCourseIdRouteChildren = {
-  AppLearnCourseIdLessonsLessonIdRoute: AppLearnCourseIdLessonsLessonIdRoute,
-}
-
-const AppLearnCourseIdRouteWithChildren =
-  AppLearnCourseIdRoute._addFileChildren(AppLearnCourseIdRouteChildren)
 
 interface AppMentorSessionsRouteChildren {
   AppMentorSessionsSessionIdRoute: typeof AppMentorSessionsSessionIdRoute
@@ -8132,69 +8146,22 @@ const AppClientProjectsProjectIdRouteWithChildren =
     AppClientProjectsProjectIdRouteChildren,
   )
 
-interface AppMentorMenteesMenteeIdRouteChildren {
-  AppMentorMenteesMenteeIdCareerRoute: typeof AppMentorMenteesMenteeIdCareerRoute
-  AppMentorMenteesMenteeIdPortfolioRoute: typeof AppMentorMenteesMenteeIdPortfolioRoute
-}
-
-const AppMentorMenteesMenteeIdRouteChildren: AppMentorMenteesMenteeIdRouteChildren =
-  {
-    AppMentorMenteesMenteeIdCareerRoute: AppMentorMenteesMenteeIdCareerRoute,
-    AppMentorMenteesMenteeIdPortfolioRoute:
-      AppMentorMenteesMenteeIdPortfolioRoute,
-  }
-
-const AppMentorMenteesMenteeIdRouteWithChildren =
-  AppMentorMenteesMenteeIdRoute._addFileChildren(
-    AppMentorMenteesMenteeIdRouteChildren,
-  )
-
-interface AppParentStudentsStudentIdRouteChildren {
-  AppParentStudentsStudentIdAttendanceRoute: typeof AppParentStudentsStudentIdAttendanceRoute
-  AppParentStudentsStudentIdCommunicationRoute: typeof AppParentStudentsStudentIdCommunicationRoute
-  AppParentStudentsStudentIdFinanceRoute: typeof AppParentStudentsStudentIdFinanceRoute
-  AppParentStudentsStudentIdGradesRoute: typeof AppParentStudentsStudentIdGradesRoute
-  AppParentStudentsStudentIdReportsRoute: typeof AppParentStudentsStudentIdReportsRoute
-}
-
-const AppParentStudentsStudentIdRouteChildren: AppParentStudentsStudentIdRouteChildren =
-  {
-    AppParentStudentsStudentIdAttendanceRoute:
-      AppParentStudentsStudentIdAttendanceRoute,
-    AppParentStudentsStudentIdCommunicationRoute:
-      AppParentStudentsStudentIdCommunicationRoute,
-    AppParentStudentsStudentIdFinanceRoute:
-      AppParentStudentsStudentIdFinanceRoute,
-    AppParentStudentsStudentIdGradesRoute:
-      AppParentStudentsStudentIdGradesRoute,
-    AppParentStudentsStudentIdReportsRoute:
-      AppParentStudentsStudentIdReportsRoute,
-  }
-
-const AppParentStudentsStudentIdRouteWithChildren =
-  AppParentStudentsStudentIdRoute._addFileChildren(
-    AppParentStudentsStudentIdRouteChildren,
-  )
-
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   AccessibilityRoute: AccessibilityRoute,
   AdmissionsRoute: AdmissionsRoute,
   AlumniRoute: AlumniRoute,
-  CareerGuidesRoute: CareerGuidesRouteWithChildren,
   CareersRoute: CareersRoute,
   CommunityRoute: CommunityRoute,
   ContactRoute: ContactRoute,
   EnginesRoute: EnginesRoute,
   EventsRoute: EventsRoute,
   FaqRoute: FaqRoute,
-  GlossaryRoute: GlossaryRouteWithChildren,
   MarketplaceRoute: MarketplaceRoute,
   PartnersRoute: PartnersRoute,
   PricingRoute: PricingRoute,
   PrivacyRoute: PrivacyRoute,
-  ResourcesRoute: ResourcesRouteWithChildren,
   ScholarshipsRoute: ScholarshipsRoute,
   ServicesRoute: ServicesRoute,
   StoriesRoute: StoriesRoute,
@@ -8225,7 +8192,9 @@ const rootRouteChildren: RootRouteChildren = {
   AuthSignUpRoute: AuthSignUpRoute,
   AuthVerifyEmailRoute: AuthVerifyEmailRoute,
   BlogSlugRoute: BlogSlugRoute,
+  CareerGuidesSlugRoute: CareerGuidesSlugRoute,
   CertificatesVerifyRoute: CertificatesVerifyRoute,
+  GlossarySlugRoute: GlossarySlugRoute,
   LibraryCategoryRoute: LibraryCategoryRoute,
   PortalAcademicBoardRoute: PortalAcademicBoardRoute,
   PortalAccountantRoute: PortalAccountantRoute,
@@ -8266,17 +8235,21 @@ const rootRouteChildren: RootRouteChildren = {
   PortalSupplierRoute: PortalSupplierRoute,
   PortalVisualDesignerRoute: PortalVisualDesignerRoute,
   PortalVolunteerRoute: PortalVolunteerRoute,
-  ProgramsSlugRoute: ProgramsSlugRouteWithChildren,
   ProgramsCompareRoute: ProgramsCompareRoute,
+  ResourcesSlugRoute: ResourcesSlugRoute,
   VisitBrochureRoute: VisitBrochureRoute,
   VisitFeedbackRoute: VisitFeedbackRoute,
   VisitInfoRoute: VisitInfoRoute,
   AppIndexRoute: AppIndexRoute,
   ApplyIndexRoute: ApplyIndexRoute,
   BlogIndexRoute: BlogIndexRoute,
+  CareerGuidesIndexRoute: CareerGuidesIndexRoute,
+  ClassesIndexRoute: ClassesIndexRoute,
+  GlossaryIndexRoute: GlossaryIndexRoute,
   LibraryIndexRoute: LibraryIndexRoute,
   PortalIndexRoute: PortalIndexRoute,
   ProgramsIndexRoute: ProgramsIndexRoute,
+  ResourcesIndexRoute: ResourcesIndexRoute,
   VisitIndexRoute: VisitIndexRoute,
   AppAccountantAuditRoute: AppAccountantAuditRoute,
   AppAccountantBankingRoute: AppAccountantBankingRoute,
@@ -8432,7 +8405,6 @@ const rootRouteChildren: RootRouteChildren = {
   AppItTemplatesRoute: AppItTemplatesRoute,
   AppItTicketsRoute: AppItTicketsRouteWithChildren,
   AppItUsersRoute: AppItUsersRoute,
-  AppLearnCourseIdRoute: AppLearnCourseIdRouteWithChildren,
   AppLiveClassIdRoute: AppLiveClassIdRoute,
   AppLocalizationAnalyticsRoute: AppLocalizationAnalyticsRoute,
   AppLocalizationDialectsRoute: AppLocalizationDialectsRoute,
@@ -8507,6 +8479,8 @@ const rootRouteChildren: RootRouteChildren = {
   AppVolunteerImpactRoute: AppVolunteerImpactRoute,
   AppVolunteerMyVolunteeringRoute: AppVolunteerMyVolunteeringRoute,
   AppVolunteerOpportunitiesRoute: AppVolunteerOpportunitiesRoute,
+  ClassesCourseSlugSessionSlugRoute: ClassesCourseSlugSessionSlugRoute,
+  ProgramsSlugModuleRoute: ProgramsSlugModuleRoute,
   AppAccountantIndexRoute: AppAccountantIndexRoute,
   AppAdminIndexRoute: AppAdminIndexRoute,
   AppAdmissionsIndexRoute: AppAdmissionsIndexRoute,
@@ -8540,21 +8514,37 @@ const rootRouteChildren: RootRouteChildren = {
   AppReceptionistIndexRoute: AppReceptionistIndexRoute,
   AppSupplierIndexRoute: AppSupplierIndexRoute,
   AppVolunteerIndexRoute: AppVolunteerIndexRoute,
+  ClassesCourseSlugIndexRoute: ClassesCourseSlugIndexRoute,
+  ProgramsSlugIndexRoute: ProgramsSlugIndexRoute,
   AppAssessmentsAssessmentIdTakeRoute: AppAssessmentsAssessmentIdTakeRoute,
   AppClientProjectsProjectIdRoute: AppClientProjectsProjectIdRouteWithChildren,
   AppConversionCopyLandingPagesIdRoute: AppConversionCopyLandingPagesIdRoute,
   AppEmployerPipelineJobIdRoute: AppEmployerPipelineJobIdRoute,
   AppInstructorCoursesCourseIdRoute: AppInstructorCoursesCourseIdRoute,
   AppInstructorLessonsCreateRoute: AppInstructorLessonsCreateRoute,
-  AppMentorMenteesMenteeIdRoute: AppMentorMenteesMenteeIdRouteWithChildren,
   AppParentInvitationAcceptRoute: AppParentInvitationAcceptRoute,
-  AppParentStudentsStudentIdRoute: AppParentStudentsStudentIdRouteWithChildren,
   AppEmployerPipelineIndexRoute: AppEmployerPipelineIndexRoute,
   AppInstructorAssignmentsIndexRoute: AppInstructorAssignmentsIndexRoute,
   AppInstructorCoursesIndexRoute: AppInstructorCoursesIndexRoute,
+  AppLearnCourseIdIndexRoute: AppLearnCourseIdIndexRoute,
   AppInstructorAssignmentsSubmissionIdGradeRoute:
     AppInstructorAssignmentsSubmissionIdGradeRoute,
   AppInstructorLessonsEditIdRoute: AppInstructorLessonsEditIdRoute,
+  AppLearnCourseIdLessonsLessonIdRoute: AppLearnCourseIdLessonsLessonIdRoute,
+  AppMentorMenteesMenteeIdCareerRoute: AppMentorMenteesMenteeIdCareerRoute,
+  AppMentorMenteesMenteeIdPortfolioRoute:
+    AppMentorMenteesMenteeIdPortfolioRoute,
+  AppParentStudentsStudentIdAttendanceRoute:
+    AppParentStudentsStudentIdAttendanceRoute,
+  AppParentStudentsStudentIdCommunicationRoute:
+    AppParentStudentsStudentIdCommunicationRoute,
+  AppParentStudentsStudentIdFinanceRoute:
+    AppParentStudentsStudentIdFinanceRoute,
+  AppParentStudentsStudentIdGradesRoute: AppParentStudentsStudentIdGradesRoute,
+  AppParentStudentsStudentIdReportsRoute:
+    AppParentStudentsStudentIdReportsRoute,
+  AppMentorMenteesMenteeIdIndexRoute: AppMentorMenteesMenteeIdIndexRoute,
+  AppParentStudentsStudentIdIndexRoute: AppParentStudentsStudentIdIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
