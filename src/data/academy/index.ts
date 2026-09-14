@@ -47,6 +47,7 @@ import { mobileAppLessonsB } from "./lessons/mobile-app-development-b";
 import { mobileAppLessonsC } from "./lessons/mobile-app-development-c";
 import { wordpressLessonsA } from "./lessons/wordpress";
 import { wordpressLessonsB } from "./lessons/wordpress-b";
+import { networkingLessonsA } from "./lessons/computer-networking";
 
 export * from "./types";
 export { allCourses, flyerCourses, rotatingCourses };
@@ -133,6 +134,9 @@ export const sessionLectures: Record<string, SessionLecture> = {
   ...withCoursePrefix("wordpress", {
     ...wordpressLessonsA,
     ...wordpressLessonsB,
+  }),
+  ...withCoursePrefix("computer-networking", {
+    ...networkingLessonsA,
   }),
 };
 
