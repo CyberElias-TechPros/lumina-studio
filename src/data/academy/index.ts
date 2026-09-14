@@ -36,6 +36,7 @@ import { webDevelopmentLessonsA } from "./lessons/web-development";
 import { webDevelopmentLessonsB } from "./lessons/web-development-b";
 import { webDevelopmentLessonsC } from "./lessons/web-development-c";
 import { webDevelopmentLessonsD } from "./lessons/web-development-d";
+import { photographyLessons } from "./lessons/photography";
 
 export * from "./types";
 export { allCourses, flyerCourses, rotatingCourses };
@@ -101,6 +102,7 @@ export const sessionLectures: Record<string, SessionLecture> = {
     ...webDevelopmentLessonsB,
     ...webDevelopmentLessonsC,
     ...webDevelopmentLessonsD,
+    ...photographyLessons,
   }),
 };
 
