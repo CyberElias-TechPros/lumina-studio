@@ -49,6 +49,7 @@ import { wordpressLessonsA } from "./lessons/wordpress";
 import { wordpressLessonsB } from "./lessons/wordpress-b";
 import { networkingLessonsA } from "./lessons/computer-networking";
 import { networkingLessonsB } from "./lessons/computer-networking-b";
+import { itSupportLessonsA } from "./lessons/it-support";
 
 export * from "./types";
 export { allCourses, flyerCourses, rotatingCourses };
@@ -139,6 +140,9 @@ export const sessionLectures: Record<string, SessionLecture> = {
   ...withCoursePrefix("computer-networking", {
     ...networkingLessonsA,
     ...networkingLessonsB,
+  }),
+  ...withCoursePrefix("it-support", {
+    ...itSupportLessonsA,
   }),
 };
 
