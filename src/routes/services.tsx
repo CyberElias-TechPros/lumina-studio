@@ -59,7 +59,7 @@ function Services() {
   return (
     <PageShell>
       <PageHero
-        eyebrow="Services Engine"
+        eyebrow="Client work by our students"
         art="design"
         title={
           <>

@@ -99,7 +99,7 @@ function Events() {
                             <span
                               className={`${engine.text} text-xs font-bold tracking-wide uppercase`}
                             >
-                              {engine.name.split(" ")[0]} Engine
+                              {engine.name.replace(" Engine", "")}
                             </span>
                           )}
                         </div>
