@@ -52,6 +52,7 @@ import { networkingLessonsB } from "./lessons/computer-networking-b";
 import { itSupportLessonsA } from "./lessons/it-support";
 import { itSupportLessonsB } from "./lessons/it-support-b";
 import { digitalProductivityLessons } from "./lessons/digital-productivity";
+import { aiProductivityLessons } from "./lessons/ai-productivity";
 
 export * from "./types";
 export { allCourses, flyerCourses, rotatingCourses };
@@ -149,6 +150,9 @@ export const sessionLectures: Record<string, SessionLecture> = {
   }),
   ...withCoursePrefix("digital-productivity", {
     ...digitalProductivityLessons,
+  }),
+  ...withCoursePrefix("ai-productivity", {
+    ...aiProductivityLessons,
   }),
 };
 
