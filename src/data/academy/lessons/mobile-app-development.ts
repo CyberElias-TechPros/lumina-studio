@@ -31,7 +31,7 @@ export const mobileAppLessonsA: Record<string, SessionLecture> = {
       {
         heading: "Why an app, and why not",
         body: [
-          "You already build for the web, so the first useful question is not *how do I build an app* but *does this need to be one*. An app differs from a website in four specific ways: it is **installed**, so it opens instantly and sits on a home screen; it can **work offline**, holding its own data; it has **direct access to the device** — camera, location, notifications, contacts; and it can run in the **background**, doing things while the user is elsewhere.",
+          "You already build for the web, so the first useful question is not **how do I build an app** but **does this need to be one**. An app differs from a website in four specific ways: it is **installed**, so it opens instantly and sits on a home screen; it can **work offline**, holding its own data; it has **direct access to the device** — camera, location, notifications, contacts; and it can run in the **background**, doing things while the user is elsewhere.",
           "If your idea needs none of those, a website is the better answer. It is cheaper to build, needs no app store approval, updates instantly for everyone, and works on any device with a browser. **A great many app ideas are website ideas wearing a costume**, and recognising that early saves months.",
           "Where an app genuinely wins is **frequency and presence**. Something used several times a day — an expense tracker, a habit log, a delivery app — benefits from being installed, opening fast and working on a bad connection. That is the category our course project sits in, and it is the category worth learning to build for.",
         ],
@@ -47,9 +47,9 @@ export const mobileAppLessonsA: Record<string, SessionLecture> = {
       {
         heading: "Scoping version one",
         body: [
-          "**Scoping** means deciding what version one is, and the discipline is that version one is *the smallest thing that still works as a product*. Not the smallest thing you can build — the smallest thing a user could open and get value from. For the expense tracker that means adding and listing expenses; it does not mean charts, budgets, receipts or multiple currencies, however obvious those feel.",
+          "**Scoping** means deciding what version one is, and the discipline is that version one is **the smallest thing that still works as a product**. Not the smallest thing you can build — the smallest thing a user could open and get value from. For the expense tracker that means adding and listing expenses; it does not mean charts, budgets, receipts or multiple currencies, however obvious those feel.",
           "The method is to write **every feature you can think of**, then split each into **must-have** — without it the app does not work — and **nice-to-have** — with it the app is better. Version one is the must-haves only. The nice-to-haves go in a list for later, which matters psychologically: you are not abandoning them, you are ordering them.",
-          "Then the test that catches most over-scoping: **can you describe version one in one sentence?** *Record expenses and see a monthly total by category.* If your version one needs three sentences, it is three versions. And the corollary worth internalising — **a finished small app is worth more than an unfinished ambitious one**, in your portfolio, in your learning, and in your confidence.",
+          "Then the test that catches most over-scoping: **can you describe version one in one sentence?** **Record expenses and see a monthly total by category.** If your version one needs three sentences, it is three versions. And the corollary worth internalising — **a finished small app is worth more than an unfinished ambitious one**, in your portfolio, in your learning, and in your confidence.",
         ],
       },
       {
@@ -330,7 +330,7 @@ export const mobileAppLessonsA: Record<string, SessionLecture> = {
         heading: "One screen, one job",
         body: [
           "A phone screen holds very little, which forces a discipline desktop design does not: **each screen does exactly one thing**. Our expense tracker has four screens and each has a single job — add an expense, see the list, see the monthly summary, adjust settings. Trying to do two of those on one screen produces a cramped interface where neither task is easy.",
-          "The test is whether you can **name the screen's job in a few words**. *Add expense. Expense list. Monthly summary.* If naming it requires the word *and*, it is two screens. This is not a stylistic preference; it is what makes a small screen usable, and it is why mobile apps have more screens than the equivalent website.",
+          "The test is whether you can **name the screen's job in a few words**. **Add expense. Expense list. Monthly summary.** If naming it requires the word **and**, it is two screens. This is not a stylistic preference; it is what makes a small screen usable, and it is why mobile apps have more screens than the equivalent website.",
           "Then **prioritisation within a screen**. With limited room, decide what the user most needs first and put it highest, and accept that some things will not appear at all. The instinct to include everything because there is data for it is exactly wrong on mobile — **what you leave out is a design decision**, and the most useful mobile interfaces are the ones that removed the most.",
         ],
       },
@@ -346,7 +346,7 @@ export const mobileAppLessonsA: Record<string, SessionLecture> = {
         heading: "States, and prototyping before building",
         body: [
           "Every screen that shows data has **four states**, and designing only the happy one is why so many apps feel broken. **Loading** — what appears while data arrives, which on a poor connection is most of the time. **Empty** — what a brand-new user sees, which should explain what to do rather than showing a blank area. **Error** — what happens when the request fails, which on mobile networks is often. And **populated**, the one everyone designs.",
-          "The empty state deserves particular attention because it is **the first thing every new user sees**, and a blank list with no explanation is where people abandon an app. A good empty state says what the screen will contain and offers the action that fills it — *No expenses yet. Add your first.* That single sentence converts a dead end into an invitation.",
+          "The empty state deserves particular attention because it is **the first thing every new user sees**, and a blank list with no explanation is where people abandon an app. A good empty state says what the screen will contain and offers the action that fills it — **No expenses yet. Add your first.** That single sentence converts a dead end into an invitation.",
           "Then **prototype before you build**, because changes are cheap on paper and expensive in code. Start with **paper sketches** — four boxes, thirty seconds each, and you will find flow problems immediately. Move to a **design tool** for anything a client will see. Then build. The rule is that **every hour spent on paper saves several in code**, and the most common regret in mobile projects is building a flow nobody had drawn.",
         ],
       },

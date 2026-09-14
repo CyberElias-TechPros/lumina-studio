@@ -22,15 +22,15 @@ export const dataAnalyticsLessonsB: Record<string, SessionLecture> = {
         heading: "What a pivot table actually is",
         body: [
           "A pivot table is a **grouped total that you can rebuild without touching the data**. Ask it for revenue by state and it groups 1,200 rows into three; drag Product into Rows instead and it groups them into thirty. The source sheet is never modified, which is why a pivot table is safe in a way that a hundred manual SUMIF formulas are not.",
-          "That rebuilding is the whole value. Analysis is a conversation — a manager hears *Lagos is 61 per cent of revenue* and immediately asks *and which products?* A pivot table answers in two seconds by dragging one field. If your analysis is a fixed grid of formulas, every follow-up question is new work, which is why people stop asking.",
-          "The requirement is that **the data must be ready**, and this is where the last three sessions pay off. A pivot table needs tidy data: one header row, no blank rows or columns inside the data, no merged cells, no total rows, and real dates rather than text. Pivot on our raw export and *LAGOS*, *Lagos* and *Lagos State* appear as three states, and you will report three figures for one state with complete confidence.",
+          "That rebuilding is the whole value. Analysis is a conversation — a manager hears **Lagos is 61 per cent of revenue** and immediately asks **and which products?** A pivot table answers in two seconds by dragging one field. If your analysis is a fixed grid of formulas, every follow-up question is new work, which is why people stop asking.",
+          "The requirement is that **the data must be ready**, and this is where the last three sessions pay off. A pivot table needs tidy data: one header row, no blank rows or columns inside the data, no merged cells, no total rows, and real dates rather than text. Pivot on our raw export and **LAGOS**, **Lagos** and **Lagos State** appear as three states, and you will report three figures for one state with complete confidence.",
         ],
       },
       {
         heading: "The four areas, used deliberately",
         body: [
           "Every pivot table has four areas and each has a specific job. **Rows** holds what you are grouping by — State, Product, SalesRep. **Values** holds what you are measuring — the sum of LineTotal, the count of orders. **Columns** splits each row into sub-columns — State in Rows with Month in Columns gives you a grid of state by month. **Filters** restricts the whole table — one sales rep, one quarter.",
-          "The mistake to avoid is dragging fields around until something looks right. Decide the **question** first, then place the fields: the thing you are grouping by goes in Rows, the thing you are measuring goes in Values. *Which products sell most in Ogun?* puts Product in Rows, LineTotal in Values, and Ogun in Filters.",
+          "The mistake to avoid is dragging fields around until something looks right. Decide the **question** first, then place the fields: the thing you are grouping by goes in Rows, the thing you are measuring goes in Values. **Which products sell most in Ogun?** puts Product in Rows, LineTotal in Values, and Ogun in Filters.",
           "Then a detail that catches everyone: **drag a text field into Values and you get a Count, not a Sum**. Excel chooses for you based on type. If you drag Product into Values expecting quantities, you will get the number of order lines containing that product — which is a different and usually useless number. Always check **Value Field Settings** to confirm you are summing what you think you are.",
         ],
       },
@@ -39,15 +39,15 @@ export const dataAnalyticsLessonsB: Record<string, SessionLecture> = {
         body: [
           "The first thing to know is that **pivot tables do not update automatically**. They read from a cached copy of the data, so when you add rows or change a value you must **right-click and Refresh** — or use Data, Refresh All. A report that quietly shows last month's numbers because nobody refreshed is a very common failure, and it is invisible unless you check the row count.",
           "**Grouping** is what turns raw fields into useful ones. Select any date in the pivot and choose **Group**, and you can group by month, quarter or year — which is why the dates had to be real dates, since text dates cannot be grouped at all. You can also group **numbers into bands**: select the UnitPrice values and group into ranges of 5,000, and a list of thirty products becomes five price bands you can actually reason about.",
-          "**Calculated fields** add a new measure built from existing ones — Profit as LineTotal minus cost, or margin as a ratio. They are useful, with one trap worth memorising: **a calculated field operates on the summed values, not row by row**. So a *margin percentage* calculated field computes total profit divided by total revenue, which is a weighted average and usually what you want — but it will not give you the average of the individual row margins, and if you expected that, your number is wrong. Compute percentages in a column on the source data when you need the row-level version.",
+          "**Calculated fields** add a new measure built from existing ones — Profit as LineTotal minus cost, or margin as a ratio. They are useful, with one trap worth memorising: **a calculated field operates on the summed values, not row by row**. So a **margin percentage** calculated field computes total profit divided by total revenue, which is a weighted average and usually what you want — but it will not give you the average of the individual row margins, and if you expected that, your number is wrong. Compute percentages in a column on the source data when you need the row-level version.",
         ],
       },
       {
         heading: "Value options that turn totals into insight",
         body: [
-          "Value Field Settings offers far more than Sum, and the extras answer better questions. **% of Grand Total** turns *Lagos is 4.2 million* into *Lagos is 61 per cent of revenue*, which is what a manager can act on. **% of Column Total** shows the product mix within each state, revealing that Ogun buys mostly buckets while Lagos buys across the range.",
-          "**Running Total In** turns monthly figures into a cumulative line, which is how you see whether the year is tracking ahead or behind. **Difference From** compares each month with the previous one, which is what *are we growing?* actually means. **Rank** shows which products are first, second and third without sorting anything.",
-          "The habit to build is asking **which denominator makes this number meaningful**. A raw total answers *how much*; a percentage answers *how important*; a change answers *which way*. Most analysis that fails to persuade anyone is analysis that reported a total when the reader needed a comparison.",
+          "Value Field Settings offers far more than Sum, and the extras answer better questions. **% of Grand Total** turns **Lagos is 4.2 million** into **Lagos is 61 per cent of revenue**, which is what a manager can act on. **% of Column Total** shows the product mix within each state, revealing that Ogun buys mostly buckets while Lagos buys across the range.",
+          "**Running Total In** turns monthly figures into a cumulative line, which is how you see whether the year is tracking ahead or behind. **Difference From** compares each month with the previous one, which is what **are we growing?** actually means. **Rank** shows which products are first, second and third without sorting anything.",
+          "The habit to build is asking **which denominator makes this number meaningful**. A raw total answers **how much**; a percentage answers **how important**; a change answers **which way**. Most analysis that fails to persuade anyone is analysis that reported a total when the reader needed a comparison.",
         ],
       },
       {
@@ -55,7 +55,7 @@ export const dataAnalyticsLessonsB: Record<string, SessionLecture> = {
         body: [
           "Three numbers describe a set of values and they answer different questions. The **mean** is the total divided by the count and is what most people mean by average. The **median** is the middle value when sorted. The **mode** is the most common. For symmetrical data they are close; for business data they usually are not.",
           "Our order values are **skewed**, because a few large wholesale orders dwarf the many small retail ones. If the mean order value is 38,000 naira but the median is 9,500, then reporting the mean tells a manager that a typical order is 38,000 — and almost every order is far below that. **The mean is being pulled up by a handful of large orders.** The median describes the typical order; the mean describes the total. Both are true and they answer different questions.",
-          "So report the median whenever you say *typical*, and be suspicious of any mean on money data until you have looked at the distribution. A quick way to see the problem is the **spread**: compare minimum, maximum, median and mean. If the maximum is fifty times the median, the mean is not describing a typical anything, and a single chart of the distribution will show a manager more than any average could.",
+          "So report the median whenever you say **typical**, and be suspicious of any mean on money data until you have looked at the distribution. A quick way to see the problem is the **spread**: compare minimum, maximum, median and mean. If the maximum is fifty times the median, the mean is not describing a typical anything, and a single chart of the distribution will show a manager more than any average could.",
         ],
       },
     ],
@@ -331,14 +331,14 @@ export const dataAnalyticsLessonsB: Record<string, SessionLecture> = {
         heading: "Pie charts, scatter plots and histograms",
         body: [
           "**Pie charts** are widely used and mostly misused, for a specific reason: **people compare angles and areas badly**. Given two slices at 28 and 32 per cent, almost nobody can tell which is larger, while the same two figures as bars are instantly comparable. If you must use a pie, keep it to **three slices at most**, order them largest first, and label them directly with percentages rather than relying on a legend.",
-          "In practice, **a sorted bar chart answers the same question better nearly every time**. The honest position is that a pie is acceptable for one simple share — *Lagos is 61 per cent of revenue* — and is the wrong tool for anything more complicated than that.",
+          "In practice, **a sorted bar chart answers the same question better nearly every time**. The honest position is that a pie is acceptable for one simple share — **Lagos is 61 per cent of revenue** — and is the wrong tool for anything more complicated than that.",
           "**Scatter plots** show whether two things move together, which is how you investigate relationships: order size against margin, delivery days against order value. Add a **trendline** and it shows the direction; the **R-squared** value tells you how much of the variation is explained, and a low R-squared means the apparent pattern is mostly noise. **Histograms** show distribution — how order values are spread — and this is the chart that reveals the skew we found, showing that most orders cluster low while a few are very large. No average can show that; a histogram shows it at a glance.",
         ],
       },
       {
         heading: "Formatting: make the finding obvious",
         body: [
-          "The title is the most wasted space on most charts. *Revenue by State* describes the chart; **Lagos drives 61 per cent of revenue** states the finding. A reader who only reads the title — and most will — should come away with the conclusion. If you cannot write a finding as the title, you do not yet know what the chart says.",
+          "The title is the most wasted space on most charts. **Revenue by State** describes the chart; **Lagos drives 61 per cent of revenue** states the finding. A reader who only reads the title — and most will — should come away with the conclusion. If you cannot write a finding as the title, you do not yet know what the chart says.",
           "Then remove what carries no information: the **legend** where direct labels would do, the **gridlines** where data labels are present, the **border** around the plot area, and any **3D effect** whatsoever. Each of these asks the reader to decode rather than see. **Label the bars directly** with their values, which removes the need to trace a bar to an axis and read a scale.",
           "The test is simple: **can a reader get the point in five seconds without you explaining?** If they need you to talk them through it, the chart is not finished. That is not a low bar — it is the entire purpose of a chart, because the alternative to a chart that works is a reader who does not act.",
         ],
@@ -347,7 +347,7 @@ export const dataAnalyticsLessonsB: Record<string, SessionLecture> = {
         heading: "How charts mislead",
         body: [
           "Most misleading charts are not lies; they are carelessness that produces a false impression. The commonest is the **truncated axis** — starting a bar chart at something other than zero, which exaggerates small differences. On a line chart a truncated axis is often legitimate, because you are showing change rather than magnitude; on a bar chart it is almost always misleading, because the bar's length is the message.",
-          "Then **dual axes**, where two series with different scales share a chart. They can be legitimate, but they invite the reader to see a relationship between two lines that cross by coincidence, and *they crossed* is very often read as *one caused the other*. If you use two axes, label them clearly and say explicitly that the crossing is not a finding.",
+          "Then **dual axes**, where two series with different scales share a chart. They can be legitimate, but they invite the reader to see a relationship between two lines that cross by coincidence, and **they crossed** is very often read as **one caused the other**. If you use two axes, label them clearly and say explicitly that the crossing is not a finding.",
           "The rest are familiar: **3D effects**, which distort the apparent size of slices and bars for no informational gain; **inconsistent scales** between two charts shown side by side, which makes an unchanged value look like growth; **cherry-picked periods**, where a start date is chosen to make a trend look stronger than it is; and **pies with eight slices**, where no comparison is possible at all. None of these require dishonest intent, which is exactly why you need to check for them in your own work before someone else does.",
         ],
       },
@@ -629,17 +629,17 @@ export const dataAnalyticsLessonsB: Record<string, SessionLecture> = {
       {
         heading: "Slicers, timelines and connecting them",
         body: [
-          "**Slicers** are visible filter buttons, and they are what make a dashboard operable by someone who is not you. Insert one for State and one for Product, and a manager can answer *how does Ogun look on its own?* by clicking, without knowing that a pivot table exists. **Timelines** are the date equivalent — a slider over months and quarters — and they are far easier to use than a date filter.",
+          "**Slicers** are visible filter buttons, and they are what make a dashboard operable by someone who is not you. Insert one for State and one for Product, and a manager can answer **how does Ogun look on its own?** by clicking, without knowing that a pivot table exists. **Timelines** are the date equivalent — a slider over months and quarters — and they are far easier to use than a date filter.",
           "The important technical step is **connecting one slicer to several pivot tables**. By default a slicer controls only the pivot it was created from, so clicking Lagos filters one chart and leaves the others showing all states — which produces a dashboard that contradicts itself, the worst failure mode there is. Right-click the slicer, choose **Report Connections**, and tick every pivot table it should control.",
-          "Then keep the filters **visible and reset**. A slicer left set to one state by the last reader will silently show the next reader a partial picture that looks complete, so put a clear *reset* instruction on the sheet and check the slicer state before you trust any figure. This is a small discipline and it prevents a genuinely common wrong decision.",
+          "Then keep the filters **visible and reset**. A slicer left set to one state by the last reader will silently show the next reader a partial picture that looks complete, so put a clear **reset** instruction on the sheet and check the slicer state before you trust any figure. This is a small discipline and it prevents a genuinely common wrong decision.",
         ],
       },
       {
         heading: "Conditional formatting that informs",
         body: [
           "Conditional formatting shows status without a chart. **Data bars** inside a column turn a list of product revenues into an instant ranking. **Colour scales** show a gradient across a table, which is how you spot an outlier in a grid of numbers. **Icon sets** flag status — green, amber, red against a target — which is what a manager scans for.",
-          "The discipline is that **colour must never be the only signal**. Roughly one man in twelve has some colour vision deficiency, and a red-versus-green scheme is invisible to them. So pair colour with a **number, an arrow or a text label**: show *-12 per cent* alongside the red, not just the red. This is the same principle as accessible web design, and it costs nothing.",
-          "The other rule is **restraint**. Colour everywhere means colour nowhere: if every cell is shaded, nothing stands out, and the reader gets no signal at all. Use conditional formatting to answer one question per table — *which of these is behind target?* — and leave everything else plain. A dashboard covered in rainbow gradients looks busy and communicates nothing.",
+          "The discipline is that **colour must never be the only signal**. Roughly one man in twelve has some colour vision deficiency, and a red-versus-green scheme is invisible to them. So pair colour with a **number, an arrow or a text label**: show **-12 per cent** alongside the red, not just the red. This is the same principle as accessible web design, and it costs nothing.",
+          "The other rule is **restraint**. Colour everywhere means colour nowhere: if every cell is shaded, nothing stands out, and the reader gets no signal at all. Use conditional formatting to answer one question per table — **which of these is behind target?** — and leave everything else plain. A dashboard covered in rainbow gradients looks busy and communicates nothing.",
         ],
       },
       {

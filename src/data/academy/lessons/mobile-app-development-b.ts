@@ -46,7 +46,7 @@ export const mobileAppLessonsB: Record<string, SessionLecture> = {
         heading: "Centralising the styling",
         body: [
           "Mobile has no CSS, so consistency is a discipline you impose rather than something a stylesheet gives you. The method is a **theme file**: one module exporting your colours, your spacing scale and your type sizes, which every component imports. **`colors.primary`** rather than a hex code scattered across twenty files; **`spacing.md`** rather than a number someone typed.",
-          "The payoff is immediate and practical. A client asks for a different brand colour and you change one line. Spacing that was *roughly* consistent becomes actually consistent, because there are only four values to choose from. And a new screen looks like the others automatically, because it is built from the same primitives with the same tokens.",
+          "The payoff is immediate and practical. A client asks for a different brand colour and you change one line. Spacing that was **roughly** consistent becomes actually consistent, because there are only four values to choose from. And a new screen looks like the others automatically, because it is built from the same primitives with the same tokens.",
           "Then **`StyleSheet.create`** rather than inline style objects. It is not merely tidier: styles defined this way are created once rather than on every render, which matters on the low-end devices most of your users have, and it gives you a single place per file to see what a component looks like.",
         ],
       },
@@ -333,7 +333,7 @@ export const mobileAppLessonsB: Record<string, SessionLecture> = {
       {
         heading: "Where state should live",
         body: [
-          "**State** is data the app holds and changes over time, and the first question is always *where does it live*. The rule is that state belongs in **the lowest common ancestor of everything that needs it** — high enough that all consumers can reach it, and no higher, because state placed at the root of an app causes every screen to re-render when anything changes.",
+          "**State** is data the app holds and changes over time, and the first question is always **where does it live**. The rule is that state belongs in **the lowest common ancestor of everything that needs it** — high enough that all consumers can reach it, and no higher, because state placed at the root of an app causes every screen to re-render when anything changes.",
           "In the expense tracker, the list of expenses is needed by the list screen and by the summary screen, so it lives above both — typically in the app's root or a shared context — while a form's in-progress text belongs in the add-expense screen alone. **Moving state up is called lifting**, and it is the correct response when two components need the same thing and currently each hold their own copy, which is how two values get out of sync.",
           "The failure to watch for is **duplicated state**: the same fact stored in two places. If the list screen holds the expenses and the summary screen holds its own total, the total goes stale the moment an expense is added. Store the fact once and **derive** everything else — the total is computed from the list, not stored beside it.",
         ],
@@ -366,7 +366,7 @@ export const mobileAppLessonsB: Record<string, SessionLecture> = {
         heading: "Persisting with local storage",
         body: [
           "Without persistence the app forgets everything on close, which makes it a demo rather than a product. **`AsyncStorage`** is the simple key-value store on the device: you write a string under a key and read it back later. Since it holds strings, you **serialise with `JSON.stringify`** on the way in and **parse on the way out**.",
-          "The *async* part is not decoration — reading from storage takes time, so the API is promise-based and you must **await** it. The practical consequence is that **the app starts before the data has loaded**, so there is a moment when the list is empty and you do not yet know whether it is genuinely empty or still loading. Handle that state explicitly, because flashing an empty state and then filling it looks like a bug.",
+          "The **async** part is not decoration — reading from storage takes time, so the API is promise-based and you must **await** it. The practical consequence is that **the app starts before the data has loaded**, so there is a moment when the list is empty and you do not yet know whether it is genuinely empty or still loading. Handle that state explicitly, because flashing an empty state and then filling it looks like a bug.",
           "Then the cautions. **Local storage is not a database**: it holds small amounts of data well and becomes slow with large collections, so it suits the expense tracker and not a catalogue of thousands of items. **Wrap parsing in a try block**, because corrupt or partial data will throw and crash the app at launch — the worst possible moment. And remember it is **per device and not synced**, which is exactly the gap the next session's API work fills.",
         ],
       },
@@ -654,7 +654,7 @@ export const mobileAppLessonsB: Record<string, SessionLecture> = {
         heading: "Loading and error states, for real",
         body: [
           "Session two designed these states; now they have to exist in code. **Loading** should be a **skeleton** — placeholder shapes matching the real layout — rather than a spinner where possible, because a skeleton shows the shape of what is coming and feels faster even when it is not. On a slow connection this state is what the user sees most of the time, so it is not a detail.",
-          "**Error** must say what happened and offer a way out. *Could not load your expenses* with a **Retry** button is useful; a blank screen is not, and a raw error message dumped on the user is worse. Distinguish between **no connection**, **server error** and **not found**, because the user's next action differs: wait, retry, or go back.",
+          "**Error** must say what happened and offer a way out. **Could not load your expenses** with a **Retry** button is useful; a blank screen is not, and a raw error message dumped on the user is worse. Distinguish between **no connection**, **server error** and **not found**, because the user's next action differs: wait, retry, or go back.",
           "Then the discipline that separates finished work from a demo: **never leave the user stuck**. Every failure path must end in something they can do — retry, go back, use the cached data. An app that fails into a dead end on a bad network is an app that gets uninstalled, and on mobile networks a bad network is not an edge case but a normal Tuesday.",
         ],
       },

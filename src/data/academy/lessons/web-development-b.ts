@@ -583,7 +583,7 @@ export const webDevelopmentLessonsB: Record<string, SessionLecture> = {
         heading: "Arrays and objects",
         body: [
           "An **array** is an ordered list, written `[1, 2, 3]`, and its positions start at **zero** — the first item is at index 0, which is the single most important thing to internalise about arrays. Access with `items[0]`, get the length with `items.length`, add with `push`, and check whether something is in there with `includes`.",
-          "An **object** is a collection of named values: `{ name: 'Ada', price: 4500 }`. Access with `obj.name` or `obj['name']`. Objects are how you represent a *thing* — a product, a user, an order — and arrays of objects are how you represent a list of things, which is the shape of almost all real data: `[{ name: 'Ada', price: 4500 }, { name: 'Bisi', price: 3200 }]`.",
+          "An **object** is a collection of named values: `{ name: 'Ada', price: 4500 }`. Access with `obj.name` or `obj['name']`. Objects are how you represent a **thing** — a product, a user, an order — and arrays of objects are how you represent a list of things, which is the shape of almost all real data: `[{ name: 'Ada', price: 4500 }, { name: 'Bisi', price: 3200 }]`.",
           "Then the two things that bite. **Index out of range returns `undefined` rather than an error**, so `items[10]` on a five-item array silently gives you nothing and the error appears later somewhere else. And **accessing a property of `undefined` throws** — `user.address.city` fails entirely if `address` is missing, which is why the **optional chaining** operator `user?.address?.city` exists, returning `undefined` instead of crashing.",
         ],
       },

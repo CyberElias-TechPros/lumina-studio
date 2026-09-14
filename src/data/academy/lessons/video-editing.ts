@@ -51,17 +51,17 @@ export const videoEditingLessonsA: Record<string, SessionLecture> = {
       {
         heading: "The opening three seconds",
         body: [
-          "On short-form video the opening is not an introduction, it is a **claim on attention**. Viewers scrolling on a phone will give you roughly two seconds, and the instinct to open with a logo, a title card, or someone saying *hello everyone, welcome back to my channel* costs you most of them before you have said anything.",
-          "What works is starting **inside the substance**. Open on the strongest sentence in the whole talk. Open on a visual that raises a question. Open mid-action, mid-sentence, with the context arriving afterwards. *Most people selling online in Nigeria are pricing wrong* is a hook; *Good morning, thank you all for coming* is not, however warm the room was.",
+          "On short-form video the opening is not an introduction, it is a **claim on attention**. Viewers scrolling on a phone will give you roughly two seconds, and the instinct to open with a logo, a title card, or someone saying **hello everyone, welcome back to my channel** costs you most of them before you have said anything.",
+          "What works is starting **inside the substance**. Open on the strongest sentence in the whole talk. Open on a visual that raises a question. Open mid-action, mid-sentence, with the context arriving afterwards. **Most people selling online in Nigeria are pricing wrong** is a hook; **Good morning, thank you all for coming** is not, however warm the room was.",
           "The practical method is to **find your hook after you have watched everything**, not before. The best opening line is usually buried in minute twenty-two, and you only know that once you have seen minute forty. So the hook is the last thing you choose and the first thing the viewer sees — which is exactly backwards from how the event happened, and is the whole reason an editor is needed.",
         ],
       },
       {
         heading: "Logging and selecting",
         body: [
-          "The unglamorous step that determines everything after it is **watching all the footage and writing down what is in it**. Not skimming — watching, at speed if you must, and noting timecodes. *14:32 strong point on pricing. 18:05 laugh, good energy. 26:40 camera bumped, unusable. 31:15 best line in the talk.* Twenty minutes of logging saves hours of hunting later.",
+          "The unglamorous step that determines everything after it is **watching all the footage and writing down what is in it**. Not skimming — watching, at speed if you must, and noting timecodes. **14:32 strong point on pricing. 18:05 laugh, good energy. 26:40 camera bumped, unusable. 31:15 best line in the talk.** Twenty minutes of logging saves hours of hunting later.",
           "Selection then becomes a **decision from a list rather than a feeling from scrolling**. Mark your selects — in CapCut by splitting and keeping, in Premiere by marking in and out points or using a bin — and build only from those. The discipline matters because scrolling through footage again and again is how editors end up using a clip because they have seen it eight times rather than because it is good.",
-          "Then **select for the story, not for the shot**. A beautifully framed piece of B-roll that does not support a point is decoration, and decoration is the first thing to cut when a video runs long. Ask of every clip: *which sentence is this illustrating?* If the answer is none, it does not go in the assembly — however good it looks, and however much time you spent shooting it.",
+          "Then **select for the story, not for the shot**. A beautifully framed piece of B-roll that does not support a point is decoration, and decoration is the first thing to cut when a video runs long. Ask of every clip: **which sentence is this illustrating?** If the answer is none, it does not go in the assembly — however good it looks, and however much time you spent shooting it.",
         ],
       },
       {
@@ -333,7 +333,7 @@ export const videoEditingLessonsA: Record<string, SessionLecture> = {
         body: [
           "Everything else in video — filming, lighting, sound, colour — exists in other media. **The cut is the only tool unique to video**, and it is where an editor's judgement actually shows. Two editors given the same footage produce different videos almost entirely because of where they cut and how long each shot lasts.",
           "The core principle is that **a cut should happen at a moment of change the viewer is already expecting**. Cut when something moves, when a sentence completes, when a question has been answered. Cut at a moment of stasis and the viewer notices the cut; cut at a moment of change and they notice only the change.",
-          "This is why good editing is described as invisible. It does not mean nothing happens — it means the viewer is never pulled out of the story to notice the machinery. When someone says a video *flows*, they are describing cuts placed at points of expected change, and they have no idea that is what they are describing.",
+          "This is why good editing is described as invisible. It does not mean nothing happens — it means the viewer is never pulled out of the story to notice the machinery. When someone says a video **flows**, they are describing cuts placed at points of expected change, and they have no idea that is what they are describing.",
         ],
       },
       {
@@ -355,7 +355,7 @@ export const videoEditingLessonsA: Record<string, SessionLecture> = {
       {
         heading: "Trimming dead air without strangling the speech",
         body: [
-          "Live speech is full of material that must go: *um*, *you know*, repeated words, and pauses that felt thoughtful in the room and read as hesitation on screen. Removing it is the biggest single improvement available on talk footage, and it is why a forty-minute talk becomes a five-minute video without losing any content.",
+          "Live speech is full of material that must go: **um**, **you know**, repeated words, and pauses that felt thoughtful in the room and read as hesitation on screen. Removing it is the biggest single improvement available on talk footage, and it is why a forty-minute talk becomes a five-minute video without losing any content.",
           "The trap is **cutting too tight**. Remove every breath and pause and the speaker sounds anxious, rushed and slightly panicked, and the viewer feels it without knowing why. Speech needs air. The rule that works is to **keep a beat before an important line and a beat after it** — the pause before gives weight to what follows, and the pause after lets it land.",
           "So trim the filler and the long middle pauses, and protect the pauses that carry meaning. Then listen back at speed: if the speaker sounds breathless, you have cut air that was doing a job. **The test is not whether it is short but whether it sounds like a confident person talking.**",
         ],
@@ -653,7 +653,7 @@ export const videoEditingLessonsA: Record<string, SessionLecture> = {
         body: [
           "Music is chosen by **tempo and mood**, not by taste. A cut with quick shots wants a track with energy; a reflective moment wants space. The practical test is to play the sequence against two or three tracks and notice which one makes the cutting feel correct — the wrong track makes good cutting feel wrong, which is why music is chosen after the picture is locked rather than before.",
           "The part that costs people money is **licensing**. Music you like on the radio or on a streaming service is almost never cleared for a client's video, and the consequences are real: **Content ID claims** that divert a client's ad revenue to the rights holder, **muted videos** on Instagram and TikTok, and **takedowns** after the client has already paid you. For a church, a business or any paying client this is your responsibility, not theirs.",
-          "So use **properly licensed sources**: royalty-free libraries with a clear licence, platform libraries where the platform's terms cover the use, or music the client has licensed and given you in writing. **Read the licence** — some royalty-free tracks forbid commercial use or require attribution. Keep a copy of the licence with the project, because a client asked about their video in two years will come to you, and *I found it online* is not a defence.",
+          "So use **properly licensed sources**: royalty-free libraries with a clear licence, platform libraries where the platform's terms cover the use, or music the client has licensed and given you in writing. **Read the licence** — some royalty-free tracks forbid commercial use or require attribution. Keep a copy of the licence with the project, because a client asked about their video in two years will come to you, and **I found it online** is not a defence.",
         ],
       },
       {

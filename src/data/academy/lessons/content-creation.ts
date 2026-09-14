@@ -36,7 +36,7 @@ export const contentCreationLessonsA: Record<string, SessionLecture> = {
       {
         heading: "Content pillars and finding topics",
         body: [
-          "**Content pillars** are three or four recurring themes your channel returns to. For a coding channel they might be *learn this concept*, *build this thing*, *career and money*, and *tools that save time*. Every video belongs to one, which means you are never starting from a blank page — you are choosing which pillar today's video serves.",
+          "**Content pillars** are three or four recurring themes your channel returns to. For a coding channel they might be **learn this concept**, **build this thing**, **career and money**, and **tools that save time**. Every video belongs to one, which means you are never starting from a blank page — you are choosing which pillar today's video serves.",
           "Pillars solve three problems at once. They make the channel **coherent**, so a new viewer understands it in three videos. They make planning **fast**, because a pillar is a reusable prompt rather than a fresh idea. And they make the content **cumulative** — twenty videos about one topic become a resource, while twenty unrelated videos add up to nothing and are forgotten as fast as they are watched.",
           "For generating topics, the reliable method is **problem mining**. Write down every question someone in your audience asks, every mistake they make, every thing they find confusing, every decision they face. Twenty such questions is twenty videos, and each one is already validated because someone actually asked it. Your own past confusion is the richest source, because you remember what was hard before you knew it.",
         ],

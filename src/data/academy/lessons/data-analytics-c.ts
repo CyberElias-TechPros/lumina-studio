@@ -21,9 +21,9 @@ export const dataAnalyticsLessonsC: Record<string, SessionLecture> = {
       {
         heading: "Ask a question before you look",
         body: [
-          "There are two ways to approach a dataset, and they produce very different results. The first is to **ask a question and then look**: *is out-of-state revenue growing faster than in-state?* The second is to open the file, pivot everything, and see what turns up. The second feels productive and it is how most false findings are made.",
+          "There are two ways to approach a dataset, and they produce very different results. The first is to **ask a question and then look**: **is out-of-state revenue growing faster than in-state?** The second is to open the file, pivot everything, and see what turns up. The second feels productive and it is how most false findings are made.",
           "The reason is that a dataset of 1,200 rows contains enough combinations that **something will always look significant**. Thirty products across three states across twelve months across several sales reps is thousands of possible comparisons, and in any large set of comparisons some will look dramatic purely by chance. Fishing through them until something appears exciting, then reporting that thing, is how a business ends up acting on noise.",
-          "So the discipline is to **write the question down before you look**, and to say what you would expect to see if the answer were yes. *If out-of-state is growing faster, then its monthly totals should rise while in-state stays flat.* Now the analysis has a test it can fail, which is the difference between an investigation and a hunt for something to say.",
+          "So the discipline is to **write the question down before you look**, and to say what you would expect to see if the answer were yes. **If out-of-state is growing faster, then its monthly totals should rise while in-state stays flat.** Now the analysis has a test it can fail, which is the difference between an investigation and a hunt for something to say.",
         ],
       },
       {
@@ -46,7 +46,7 @@ export const dataAnalyticsLessonsC: Record<string, SessionLecture> = {
         heading: "Sample size and the honesty it requires",
         body: [
           "Small samples produce wild numbers, and the numbers do not announce that they came from a small sample. If Oyo recorded three orders in a month and five the next, that is a 67 per cent increase — and it means nothing at all. **A percentage built on a handful of cases is noise wearing a costume.**",
-          "So **always report the count alongside the percentage**. *Conversion improved 50 per cent* is meaningless; *conversion improved from 2 of 40 to 3 of 40* is honest and obviously not worth a decision. Any figure resting on fewer than about thirty cases should be labelled as such, and any decision resting on it should wait for more data.",
+          "So **always report the count alongside the percentage**. **Conversion improved 50 per cent** is meaningless; **conversion improved from 2 of 40 to 3 of 40** is honest and obviously not worth a decision. Any figure resting on fewer than about thirty cases should be labelled as such, and any decision resting on it should wait for more data.",
           "Related is **regression to the mean**: an unusually good or bad month is usually followed by a more ordinary one, simply because extremes are partly luck. Celebrating your best-ever month as a new baseline, or panicking about your worst, both mistake luck for change. And **selection effects** cut the other way — if you analyse only customers who still buy from you, you will conclude your customers are satisfied, because the dissatisfied ones stopped ordering and left your dataset. What is absent from the data is often the most important thing about it.",
         ],
       },
@@ -310,30 +310,30 @@ export const dataAnalyticsLessonsC: Record<string, SessionLecture> = {
         heading: "Lead with the answer",
         body: [
           "Most analysis is presented in the order it was done: here is the data, here is what I cleaned, here are the pivots, and finally, at the end, the finding. This is exactly backwards for the reader, who has to sit through your process before learning whether any of it matters. **State the conclusion first**, then give the evidence.",
-          "The structure that works is short. **The answer in one sentence.** *Out-of-state revenue grew 14 per cent year-on-year while in-state was flat, and the growth is concentrated in two products.* **Then the evidence** — the two or three figures that support it, each with its count and baseline. **Then the recommendation.** **Then, if anyone wants it, the method.** Nobody who only reads the first line is misled, and nobody who wants the detail is denied it.",
+          "The structure that works is short. **The answer in one sentence.** **Out-of-state revenue grew 14 per cent year-on-year while in-state was flat, and the growth is concentrated in two products.** **Then the evidence** — the two or three figures that support it, each with its count and baseline. **Then the recommendation.** **Then, if anyone wants it, the method.** Nobody who only reads the first line is misled, and nobody who wants the detail is denied it.",
           "The reason this feels uncomfortable is that leading with the answer exposes it to challenge immediately, while burying it delays the challenge. That is the point. **A finding that cannot survive being stated in the first sentence is not ready to be presented**, and it is far better to discover that while drafting than in the meeting.",
         ],
       },
       {
         heading: "Recommendations people can act on",
         body: [
-          "A finding is not a recommendation. *Ogun buys mostly one category* is a finding; it leaves everyone unsure what to do next. A recommendation names an **action**, an **owner** and a **timeframe**: *add the two next-best-selling categories to the Ogun price list by the end of the month, owned by the sales lead.*",
+          "A finding is not a recommendation. **Ogun buys mostly one category** is a finding; it leaves everyone unsure what to do next. A recommendation names an **action**, an **owner** and a **timeframe**: **add the two next-best-selling categories to the Ogun price list by the end of the month, owned by the sales lead.**",
           "Then it must be **proportionate to the evidence**. If the finding rests on three months of data from one state, the recommendation should be a trial, not a policy change. Overselling a weak finding is how analysts lose credibility permanently — and credibility, once lost in front of a manager, is very hard to recover, because every future finding arrives pre-discounted.",
-          "Finally, **say what it would cost and what would count as success**. *Trial the two categories in Ogun for one quarter; success is 10 per cent growth in Ogun revenue without margin falling.* A recommendation with a success test can be evaluated; one without it becomes a permanent maybe that nobody revisits.",
+          "Finally, **say what it would cost and what would count as success**. **Trial the two categories in Ogun for one quarter; success is 10 per cent growth in Ogun revenue without margin falling.** A recommendation with a success test can be evaluated; one without it becomes a permanent maybe that nobody revisits.",
         ],
       },
       {
         heading: "Presenting to a manager",
         body: [
           "Assume you have **five minutes and one question**. Open with the answer, show one chart that supports it, and make the recommendation. Everything else is preparation for the questions, not content for the presentation. A manager who wants more will ask; one who does not will thank you for being brief, and will remember that you were brief next time they need analysis.",
-          "The questions that always come, in roughly this order: **so what?** — which your recommendation should already have answered; **how sure are you?** — which your counts, baselines and limitations note answer; **what would it cost?**; and **what are we not seeing?** That last one is the interesting one, and having an honest answer is what distinguishes an analyst from someone who makes charts. *We cannot see customers who stopped ordering, and that is the biggest gap in this analysis.*",
-          "Then the discipline of **not overselling under pressure**. If challenged and you are wrong, say so plainly and revise — *that is a fair point, the sample is too small for that claim, and I will come back with a full quarter*. Defending a weak finding costs you the room; conceding it precisely costs you nothing and makes the rest of what you said more believable.",
+          "The questions that always come, in roughly this order: **so what?** — which your recommendation should already have answered; **how sure are you?** — which your counts, baselines and limitations note answer; **what would it cost?**; and **what are we not seeing?** That last one is the interesting one, and having an honest answer is what distinguishes an analyst from someone who makes charts. **We cannot see customers who stopped ordering, and that is the biggest gap in this analysis.**",
+          "Then the discipline of **not overselling under pressure**. If challenged and you are wrong, say so plainly and revise — **that is a fair point, the sample is too small for that claim, and I will come back with a full quarter**. Defending a weak finding costs you the room; conceding it precisely costs you nothing and makes the rest of what you said more believable.",
         ],
       },
       {
         heading: "The dashboard and the note are one deliverable",
         body: [
-          "The final project is not two pieces of work but one: **a dashboard that shows the state of the business, and a one-page note that says what to do about it.** The dashboard answers *what is happening* and is consulted weekly; the note answers *so what* and is read once, by the person who decides.",
+          "The final project is not two pieces of work but one: **a dashboard that shows the state of the business, and a one-page note that says what to do about it.** The dashboard answers **what is happening** and is consulted weekly; the note answers **so what** and is read once, by the person who decides.",
           "They must agree, which is a real requirement rather than an obvious one. Every number in the note must be traceable to the dashboard, and the note's headline must be the thing the dashboard makes visible. If the note claims growth the dashboard does not show, one of them is wrong and the reader will find it.",
           "The note itself is **one page**: the answer, three supporting figures with counts, the recommendation with owner and timeframe, the success test, and four sentences of limitations. That constraint is the discipline — it forces you to decide what actually matters, and a reader will read one page but will not read six.",
         ],
@@ -343,7 +343,7 @@ export const dataAnalyticsLessonsC: Record<string, SessionLecture> = {
         body: [
           "The last test of any analysis is whether **someone else can pick it up in six months** and understand what was done and why. Your dashboard will outlive your memory of building it, and the person who inherits it will not have your assumptions.",
           "So document as you go: **which file is the source, what cleaning was applied and why, what each calculated field means, and what the known limitations are.** The cleaning log from week one is exactly this, and it is why it was worth keeping. A dashboard with no documentation becomes a thing nobody dares change, and then a thing nobody trusts, and then a thing that gets rebuilt from scratch.",
-          "The final habit: **say the numbers out loud before you send them**. Reading *revenue grew 14 per cent year-on-year* aloud, then checking it against the dashboard, catches the errors that silent reading misses. Almost every analyst has sent a figure they would have caught in ten seconds by saying it out loud, and the cost of being caught is far higher than the ten seconds.",
+          "The final habit: **say the numbers out loud before you send them**. Reading **revenue grew 14 per cent year-on-year** aloud, then checking it against the dashboard, catches the errors that silent reading misses. Almost every analyst has sent a figure they would have caught in ten seconds by saying it out loud, and the cost of being caught is far higher than the ten seconds.",
         ],
       },
     ],

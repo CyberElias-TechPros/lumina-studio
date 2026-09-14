@@ -28,7 +28,7 @@ export const webDevelopmentLessonsA: Record<string, SessionLecture> = {
       {
         heading: "Semantic versus presentational markup",
         body: [
-          "**Semantic HTML** means using an element because of what it *means*, not because of how it happens to look. `<h1>` means 'this is the main heading', not 'this is big bold text'. `<nav>` means 'this is navigation'. `<button>` means 'this does something when activated'. The visual result is a consequence, not the purpose.",
+          "**Semantic HTML** means using an element because of what it **means**, not because of how it happens to look. `<h1>` means 'this is the main heading', not 'this is big bold text'. `<nav>` means 'this is navigation'. `<button>` means 'this does something when activated'. The visual result is a consequence, not the purpose.",
           "The alternative — using `<div>` and `<span>` for everything and styling it to look right — produces a page that appears identical and works far worse. A screen reader navigating by headings finds nothing. A search engine cannot tell your navigation from your content. A keyboard user cannot tab to the thing that looks like a button because it is not one. **The page looks finished and is broken for anyone not using a mouse and eyes.**",
           "The practical test is simple: **strip the CSS and read the markup**. If the document still makes sense as an outline — headings in order, lists as lists, navigation identifiable — it is semantic. If it collapses into an undifferentiated wall of divs, the meaning was only ever in the styling, and styling can fail, be turned off, or be replaced by an assistive technology that ignores it entirely.",
         ],
@@ -576,7 +576,7 @@ export const webDevelopmentLessonsA: Record<string, SessionLecture> = {
         heading: "The box model",
         body: [
           "Every element on a page is a **rectangular box**, and the box has four layers: the **content**, then **padding** (space inside the box, between the content and its edge), then the **border**, then **margin** (space outside the box, between it and its neighbours). Understanding those four is most of CSS layout, because everything else is arranging boxes.",
-          "The part that confuses everyone is **what `width` means**. By default, `width: 200px` sets the width of the *content only* — add padding and a border and the element becomes visibly wider than 200px. So a 200px box with 20px of padding and a 1px border is 242px across, which breaks layouts in ways that seem arbitrary until you know this.",
+          "The part that confuses everyone is **what `width` means**. By default, `width: 200px` sets the width of the **content only** — add padding and a border and the element becomes visibly wider than 200px. So a 200px box with 20px of padding and a 1px border is 242px across, which breaks layouts in ways that seem arbitrary until you know this.",
           "The fix is one line, and it should be at the top of every stylesheet: `*, *::before, *::after { box-sizing: border-box; }`. This makes `width` mean the **whole box**, padding and border included, which is what everyone expects and what makes layouts predictable. Setting it once removes an entire category of confusion, and virtually every modern project does it.",
         ],
       },

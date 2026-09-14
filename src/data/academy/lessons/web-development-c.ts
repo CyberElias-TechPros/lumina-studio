@@ -600,7 +600,7 @@ export const webDevelopmentLessonsC: Record<string, SessionLecture> = {
         heading: "Reusable thinking",
         body: [
           "Reuse is what separates writing a page from building a system. The habit is to **notice repetition and extract it**: the same card appearing six times is a pattern, and the same button style appearing everywhere belongs in one class. Write it once, use it many times, and change it in one place.",
-          "In plain HTML and CSS this means **classes you apply repeatedly** — `.card`, `.btn`, `.btn-primary` — and consistent naming so the classes describe what something *is* rather than how it currently looks. `.btn-primary` survives a colour change; `.green-button` becomes a lie the first time you restyle.",
+          "In plain HTML and CSS this means **classes you apply repeatedly** — `.card`, `.btn`, `.btn-primary` — and consistent naming so the classes describe what something **is** rather than how it currently looks. `.btn-primary` survives a colour change; `.green-button` becomes a lie the first time you restyle.",
           "The same thinking applies to JavaScript: **a function per repeated behaviour**, taking the parts that vary as parameters. And the discipline behind all of it is **not extracting too early** — waiting until something is genuinely repeated twice or three times before generalising, because guessing at the reusable shape too soon produces abstractions that fit nothing properly.",
         ],
       },

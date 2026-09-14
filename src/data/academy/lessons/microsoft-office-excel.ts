@@ -31,7 +31,7 @@ export const microsoftOfficeExcelLessons: Record<string, SessionLecture> = {
       {
         heading: "Formatting: number formats, borders and dimensions",
         body: [
-          "Number formatting changes how a value *displays* without changing what it *is*. The same number 45000 can show as 45000, 45,000, ₦45,000, 45000.00 or 4.5E+04 depending on format. Home → Number Format dropdown gives you General, Number, Currency, Accounting, Date, Percentage and Text. Use Accounting for financial columns because it aligns the currency symbol at the left of the cell and negatives in brackets, which is what Nigerian financial statements use. Use Percentage when the underlying value is a decimal (0.15 displays as 15%).",
+          "Number formatting changes how a value **displays** without changing what it **is**. The same number 45000 can show as 45000, 45,000, ₦45,000, 45000.00 or 4.5E+04 depending on format. Home → Number Format dropdown gives you General, Number, Currency, Accounting, Date, Percentage and Text. Use Accounting for financial columns because it aligns the currency symbol at the left of the cell and negatives in brackets, which is what Nigerian financial statements use. Use Percentage when the underlying value is a decimal (0.15 displays as 15%).",
           "The trap: formatting does not change the stored value. If a cell holds 45000.678 and you format it to zero decimals, it displays 45001 but any formula using it still uses 45000.678. When displayed totals do not add up to the sum of displayed rows, this is almost always why. Use ROUND() in the formula when the rounded value is the real business value.",
           "Then the visual layer: **borders** (Home → Borders) draw lines around cells — Excel's faint gridlines never print, so if you want lines on paper you must add borders. **Column width** is adjusted by double-clicking the boundary between column headers to auto-fit, or dragging it manually. **Row height** works the same way. **Wrap Text** makes long content flow onto multiple lines within its cell, and after enabling it you usually need to auto-fit the row height. Finally, **Freeze Panes** (View → Freeze Panes) locks your header row and first column in place so a long list stays readable as you scroll — set this on every table longer than a screen.",
         ],
@@ -247,7 +247,7 @@ export const microsoftOfficeExcelLessons: Record<string, SessionLecture> = {
       },
       {
         q: "Why does Excel keep changing my phone numbers into scientific notation?",
-        a: "It is treating the number as a numeric value and abbreviating a long one. Format the column as Text *before* typing, or prefix the entry with an apostrophe ('08034567890). Phone numbers, account numbers and ID numbers are identifiers, not quantities — they should always be text so leading zeros survive.",
+        a: "It is treating the number as a numeric value and abbreviating a long one. Format the column as Text **before** typing, or prefix the entry with an apostrophe ('08034567890). Phone numbers, account numbers and ID numbers are identifiers, not quantities — they should always be text so leading zeros survive.",
       },
       {
         q: "What is the difference between =SUM(A1:A10) and =A1+A2+A3...?",
@@ -295,7 +295,7 @@ export const microsoftOfficeExcelLessons: Record<string, SessionLecture> = {
       {
         heading: "Relative, absolute and mixed references",
         body: [
-          "This is the concept that separates people who use Excel from people who fight it. When you copy a formula, Excel adjusts its references *relative* to how far the formula moved. `=B2*C2` filled down one row becomes `=B3*C3` — usually exactly what you want. But if that formula refers to a fixed cell, like a VAT rate in E1, filling it down turns E1 into E2, E3, E4 and your calculation quietly breaks.",
+          "This is the concept that separates people who use Excel from people who fight it. When you copy a formula, Excel adjusts its references **relative** to how far the formula moved. `=B2*C2` filled down one row becomes `=B3*C3` — usually exactly what you want. But if that formula refers to a fixed cell, like a VAT rate in E1, filling it down turns E1 into E2, E3, E4 and your calculation quietly breaks.",
           "The dollar sign locks a reference. `$E$1` never changes no matter where the formula is copied — that is an **absolute** reference. `$E1` locks the column but lets the row move; `E$1` locks the row but lets the column move — these are **mixed** references and they are what make cross-tabulation tables work. Press **F4** while the cursor is inside a reference to cycle through the four forms. Learn to reach for F4 without thinking: it is the single keystroke that prevents the most expensive category of spreadsheet error, the one where the numbers look plausible and are wrong.",
         ],
       },
@@ -566,7 +566,7 @@ export const microsoftOfficeExcelLessons: Record<string, SessionLecture> = {
         body: [
           "**Speaker notes** (View → Notes, or the Notes pane at the bottom) hold what you will say, not what the slide says. Write them as prompts, not scripts — a script makes you read, and reading loses a room. Three or four keywords per slide are enough if you know the material.",
           "Then the delivery mechanics. **F5** starts from the beginning; **Shift+F5** starts from the current slide. Arrow keys and the space bar advance; Esc exits; the **B** key blacks the screen when you want attention back on you; **Ctrl+P** turns the cursor into a pen for drawing on slides. If you have a second screen, Presenter View (Slide Show → Use Presenter View) shows you the current slide, the next slide, your notes and a timer while the audience sees only the slide — practise with it, because it changes how you present.",
-          "Finally, the habits that make delivery work: arrive early and test on the actual projector; carry your file on a USB drive *and* in your email *and* as a PDF backup, because fonts and layouts do break on unfamiliar machines; keep it to one minute per slide; and rehearse aloud at least twice, timing yourself, because a presentation that has never been spoken always runs long.",
+          "Finally, the habits that make delivery work: arrive early and test on the actual projector; carry your file on a USB drive **and** in your email **and** as a PDF backup, because fonts and layouts do break on unfamiliar machines; keep it to one minute per slide; and rehearse aloud at least twice, timing yourself, because a presentation that has never been spoken always runs long.",
         ],
       },
     ],

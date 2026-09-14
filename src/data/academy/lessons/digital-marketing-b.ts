@@ -28,7 +28,7 @@ export const digitalMarketingLessonsB: Record<string, SessionLecture> = {
       {
         heading: "Content pillars",
         body: [
-          "A **content pillar** is a theme your content returns to repeatedly. Three or four pillars are enough: for a fashion business they might be *how to choose*, *behind the making*, *customer stories* and *what is available now*. Every post belongs to one of them, which means you are never staring at a blank page wondering what to post — you are choosing which pillar today's post serves.",
+          "A **content pillar** is a theme your content returns to repeatedly. Three or four pillars are enough: for a fashion business they might be **how to choose**, **behind the making**, **customer stories** and **what is available now**. Every post belongs to one of them, which means you are never staring at a blank page wondering what to post — you are choosing which pillar today's post serves.",
           "Pillars do three jobs. They make the account **coherent**, so a new visitor understands within a few posts what you are about rather than seeing random topics. They make planning **fast**, because a pillar is a reusable prompt rather than a new idea each time. And they make your content **cumulative** — ten posts about how to choose build into a resource, while ten unrelated posts add up to nothing.",
           "Derive pillars from your audience's problems rather than from your products. 'How to choose work clothes that last' is a pillar; 'our Ankara collection' is not, because it can only ever talk about you. The test of a good pillar is that you could write thirty posts about it without repeating yourself and without the audience getting bored.",
         ],
@@ -583,7 +583,7 @@ export const digitalMarketingLessonsB: Record<string, SessionLecture> = {
         heading: "Lead generation and follow-up",
         body: [
           "A **lead** is a person who has shown interest and given you a way to reach them. Not every message is a lead — some are curiosity, some are price-shopping, some are mistakes. Qualify quickly with two questions: what do they need, and when do they need it? That takes one message and it tells you where to spend your attention.",
-          "Record leads somewhere. A notebook works; a spreadsheet with name, contact, what they want, when they need it and status works better; WhatsApp labels work best because they live where the conversation is. Label them *new*, *quoted*, *follow-up*, *won*, *lost*. Without a record, follow-up depends on memory, and memory fails at exactly the wrong moment.",
+          "Record leads somewhere. A notebook works; a spreadsheet with name, contact, what they want, when they need it and status works better; WhatsApp labels work best because they live where the conversation is. Label them **new**, **quoted**, **follow-up**, **won**, **lost**. Without a record, follow-up depends on memory, and memory fails at exactly the wrong moment.",
           "Then follow up **without pestering**. Most sales happen after the first message, and most businesses stop after one reply. The sequence that works: answer fully the first time, then if there is no reply, follow up in a day or two with new information rather than 'any update?' — a photo of the item, a delivery date, a small deadline. Two or three useful follow-ups is persistence; after that, stop, because continuing damages the brand you are trying to build.",
         ],
       },
