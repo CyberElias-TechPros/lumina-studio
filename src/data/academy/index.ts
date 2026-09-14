@@ -51,6 +51,7 @@ import { networkingLessonsA } from "./lessons/computer-networking";
 import { networkingLessonsB } from "./lessons/computer-networking-b";
 import { itSupportLessonsA } from "./lessons/it-support";
 import { itSupportLessonsB } from "./lessons/it-support-b";
+import { digitalProductivityLessons } from "./lessons/digital-productivity";
 
 export * from "./types";
 export { allCourses, flyerCourses, rotatingCourses };
@@ -145,6 +146,9 @@ export const sessionLectures: Record<string, SessionLecture> = {
   ...withCoursePrefix("it-support", {
     ...itSupportLessonsA,
     ...itSupportLessonsB,
+  }),
+  ...withCoursePrefix("digital-productivity", {
+    ...digitalProductivityLessons,
   }),
 };
 
