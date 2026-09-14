@@ -30,6 +30,8 @@ import { businessFreelancingLessonsA } from "./lessons/business-freelancing";
 import { businessFreelancingLessonsB } from "./lessons/business-freelancing-b";
 import { contentCreationLessonsA } from "./lessons/content-creation";
 import { contentCreationLessonsB } from "./lessons/content-creation-b";
+import { onlineTeachingLessonsA } from "./lessons/online-teaching";
+import { onlineTeachingLessonsB } from "./lessons/online-teaching-b";
 
 export * from "./types";
 export { allCourses, flyerCourses, rotatingCourses };
@@ -85,6 +87,10 @@ export const sessionLectures: Record<string, SessionLecture> = {
   ...withCoursePrefix("content-creation", {
     ...contentCreationLessonsA,
     ...contentCreationLessonsB,
+  }),
+  ...withCoursePrefix("online-teaching", {
+    ...onlineTeachingLessonsA,
+    ...onlineTeachingLessonsB,
   }),
 };
 
