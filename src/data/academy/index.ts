@@ -42,6 +42,7 @@ import { dataAnalyticsLessonsB } from "./lessons/data-analytics-b";
 import { dataAnalyticsLessonsC } from "./lessons/data-analytics-c";
 import { videoEditingLessonsA } from "./lessons/video-editing";
 import { videoEditingLessonsB } from "./lessons/video-editing-b";
+import { mobileAppLessonsA } from "./lessons/mobile-app-development";
 
 export * from "./types";
 export { allCourses, flyerCourses, rotatingCourses };
@@ -119,6 +120,9 @@ export const sessionLectures: Record<string, SessionLecture> = {
   ...withCoursePrefix("video-editing", {
     ...videoEditingLessonsA,
     ...videoEditingLessonsB,
+  }),
+  ...withCoursePrefix("mobile-app-development", {
+    ...mobileAppLessonsA,
   }),
 };
 
