@@ -29,7 +29,7 @@ import { RelatedContent } from "@/components/related-content";
 import { ContentFreshness } from "@/components/content-freshness";
 import { engineMap, formatNaira, programs } from "@/data/site";
 
-export const Route = createFileRoute("/programs/$slug")({
+export const Route = createFileRoute("/programs/$slug/")({
   head: ({ params }) => {
     const program = programs.find((p) => p.slug === params.slug) ?? programs[0];
     const courseSchema = {
@@ -74,7 +74,7 @@ export const Route = createFileRoute("/programs/$slug")({
 });
 
 function ProgramDetail() {
-  const { slug } = useParams({ from: "/programs/$slug" });
+  const { slug } = useParams({ from: "/programs/$slug/" });
   const program = programs.find((p) => p.slug === slug) ?? programs[0];
   const engine = engineMap[program.engine];
 
@@ -175,7 +175,7 @@ function ProgramDetail() {
                       "Live cohort sessions, recorded within 2 hours",
                       "Practitioner-graded capstone project",
                       "Mentor matching & portfolio studio",
-                      "Career Engine access: jobs, gigs & employer network",
+                      "Careers support: jobs, paid gigs & employer introductions",
                       "Verifiable certificate on completion",
                     ].map((f) => (
                       <li key={f} className="flex items-start gap-2.5">

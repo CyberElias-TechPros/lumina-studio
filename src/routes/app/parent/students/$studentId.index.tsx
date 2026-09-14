@@ -20,7 +20,7 @@ import { formatNaira } from "@/data/site";
 import type { ParentStudentDetail } from "@/lib/api/parent";
 import { cn } from "@/lib/utils";
 
-export const Route = createFileRoute("/app/parent/students/$studentId")({
+export const Route = createFileRoute("/app/parent/students/$studentId/")({
   head: () => ({
     meta: [
       { title: "Student Overview — CEA-OS" },

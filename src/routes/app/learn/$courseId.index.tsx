@@ -21,7 +21,7 @@ import { useCourse } from "@/lib/query/courses";
 import type { LearningCourse, LessonType } from "@/data/learning";
 import { cn } from "@/lib/utils";
 
-export const Route = createFileRoute("/app/learn/$courseId")({
+export const Route = createFileRoute("/app/learn/$courseId/")({
   head: () => ({
     meta: [{ title: "Course — CEA-OS" }],
   }),
