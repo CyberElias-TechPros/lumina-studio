@@ -102,6 +102,8 @@ export const sessionLectures: Record<string, SessionLecture> = {
     ...webDevelopmentLessonsB,
     ...webDevelopmentLessonsC,
     ...webDevelopmentLessonsD,
+  }),
+  ...withCoursePrefix("photography", {
     ...photographyLessons,
   }),
 };
