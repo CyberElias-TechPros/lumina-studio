@@ -37,6 +37,7 @@ import { webDevelopmentLessonsB } from "./lessons/web-development-b";
 import { webDevelopmentLessonsC } from "./lessons/web-development-c";
 import { webDevelopmentLessonsD } from "./lessons/web-development-d";
 import { photographyLessons } from "./lessons/photography";
+import { dataAnalyticsLessonsA } from "./lessons/data-analytics";
 
 export * from "./types";
 export { allCourses, flyerCourses, rotatingCourses };
@@ -105,6 +106,9 @@ export const sessionLectures: Record<string, SessionLecture> = {
   }),
   ...withCoursePrefix("photography", {
     ...photographyLessons,
+  }),
+  ...withCoursePrefix("data-analytics", {
+    ...dataAnalyticsLessonsA,
   }),
 };
 
