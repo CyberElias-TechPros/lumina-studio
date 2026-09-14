@@ -69,7 +69,7 @@ function Community() {
   return (
     <PageShell>
       <PageHero
-        eyebrow="Community Engine"
+        eyebrow="Student & alumni community"
         art="community"
         title={
           <>

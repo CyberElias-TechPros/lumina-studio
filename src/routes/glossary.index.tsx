@@ -9,7 +9,7 @@ import { Reveal } from "@/components/motion";
 import { getPageHead } from "@/lib/seo";
 import { getGlossaryTerms, type GlossaryTerm } from "@/data/glossary";
 
-export const Route = createFileRoute("/glossary")({
+export const Route = createFileRoute("/glossary/")({
   validateSearch: (search: Record<string, unknown>): { q?: string } => ({
     q: typeof search.q === "string" && search.q.trim().length > 0 ? search.q.trim() : undefined,
   }),

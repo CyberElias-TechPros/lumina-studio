@@ -405,7 +405,7 @@ function About() {
             "Digital Skills Factory",
             "Talent Pipeline",
             "Technology Solutions Hub",
-            "Community Transformation Engine",
+            "Community Transformation",
             "From Zero to Expert, Together",
           ].map((b) => (
             <Badge key={b} variant="secondary" className="font-medium">

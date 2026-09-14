@@ -207,7 +207,7 @@ function TermsPage() {
                 ban users at its discretion.
               </li>
               <li>
-                Career Engine (job board, employer introductions, gig matching) is a facilitation
+                Careers support (job board, employer introductions, gig matching) is a facilitation
                 service. CEA does not guarantee employment, internships, or income.
               </li>
               <li>Employer introductions require your explicit opt-in per opportunity.</li>

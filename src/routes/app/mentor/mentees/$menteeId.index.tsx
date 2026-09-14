@@ -22,7 +22,7 @@ import {
 import type { MntGoal, MntMenteeDetail, PortfolioItem } from "@/lib/api/mentorDashboard";
 import { cn } from "@/lib/utils";
 
-export const Route = createFileRoute("/app/mentor/mentees/$menteeId")({
+export const Route = createFileRoute("/app/mentor/mentees/$menteeId/")({
   head: () => ({
     meta: [
       { title: "Mentee Overview — CEA-OS" },
