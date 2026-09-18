@@ -1,19 +1,15 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, MessageCircle, PhoneCall } from "lucide-react";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { PageShell, PageHero, CTASection, SectionHeading } from "@/components/marketing/shell";
-import { Reveal, StaggerGroup, StaggerItem } from "@/components/motion";
+import { CTASection, PageHero, PageShell } from "@/components/marketing/shell";
+import { CampusImg } from "@/components/marketing/photos";
 import { faqs } from "@/data/site";
 import { getPageHead } from "@/lib/seo";
-import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/faq")({
   head: () => {
@@ -30,7 +26,7 @@ export const Route = createFileRoute("/faq")({
     return getPageHead({
       title: "FAQ — Cyber Elias Academy",
       description:
-        "Answers about programs, admissions, tuition, scholarships, schedules and outcomes at Cyber Elias Academy.",
+        "Answers about courses, admissions, fees, certificates and the Port Harcourt centre.",
       path: "/faq",
       structuredData: faqSchema,
     });
@@ -40,20 +36,16 @@ export const Route = createFileRoute("/faq")({
 
 const extraFaqs = [
   {
-    q: "Are your certificates recognised?",
-    a: "Our certificates are endorsed by our employer network and map to the OSKM (Occupational Skills & Knowledge Map) framework. They carry a verification code employers can check — the same way we verify every credential on the CEA-OS platform.",
+    q: "Are the certificates recognised?",
+    a: "Certificates are issued by Cyber Elias Academy Ltd and can be checked on our public verification page. They record the course and the work you produced. They are not a government licence or a university degree.",
   },
   {
     q: "Can I study while working?",
-    a: "Yes. Live classes run in the evenings (18:00–21:00 WAT) and Saturdays, and every session is recorded. Most learners commit 12–15 hours a week.",
+    a: "Yes. Sessions are typically two per week. Ask admissions for the current timetable — evening and Saturday slots are used when there is demand.",
   },
   {
-    q: "What happens if I miss the placement deadline?",
-    a: "The Placement Promise continues until you're placed, with no time limit. If you've completed your capstone and follow our placement process, we work with you until you land the role.",
-  },
-  {
-    q: "Do you accept international students?",
-    a: "Yes. Tuition is paid in naira equivalent, and assessments, mentorship and placement support are designed to work fully remotely.",
+    q: "Do I need my own computer?",
+    a: "Computer Basics can be practised on academy machines. Most other courses need a laptop, or reliable access to one, because homework is where the skill is built. Each course page lists requirements.",
   },
 ];
 
@@ -63,84 +55,32 @@ function FaqPage() {
   return (
     <PageShell>
       <PageHero
-        eyebrow="Frequently asked questions"
-        art="data"
-        title={
-          <>
-            Everything you're <span className="text-gradient">wondering</span>
-          </>
-        }
-        description="Straight answers, no jargon. Can't find yours? Talk to admissions — real humans, one working day."
+        eyebrow="FAQ"
+        title="Questions"
+        description="Short answers. If yours is missing, call or email — we reply on working days."
       />
 
-      <section className="container-page pb-20">
-        <div className="mx-auto max-w-3xl">
-          <StaggerGroup className="space-y-3">
-            {all.map((f, i) => (
-              <StaggerItem key={f.q}>
-                <Accordion
-                  type="single"
-                  collapsible
-                  className="bg-card shadow-soft rounded-2xl border px-6"
-                >
-                  <AccordionItem value={`item-${i}`} className="border-0">
-                    <AccordionTrigger className="text-left text-sm font-bold sm:text-base">
-                      {f.q}
-                    </AccordionTrigger>
-                    <AccordionContent className="text-muted-foreground leading-relaxed">
-                      {f.a}
-                    </AccordionContent>
-                  </AccordionItem>
-                </Accordion>
-              </StaggerItem>
-            ))}
-          </StaggerGroup>
-        </div>
-      </section>
-
-      <section className="bg-muted/40 border-y">
-        <div className="container-page py-16">
-          <SectionHeading
-            eyebrow="Quick answers"
-            title="Still curious? Ask us directly"
-            description="WhatsApp or a call — whichever feels human to you."
-          />
-          <div className="mx-auto mt-10 grid max-w-3xl gap-4 sm:grid-cols-2">
-            <Reveal>
-              <Card className="bg-card shadow-soft hover:shadow-elevated border transition-all hover:-translate-y-0.5">
-                <CardContent className="p-6">
-                  <span className="bg-primary/10 text-primary grid size-11 place-items-center rounded-xl">
-                    <PhoneCall className="size-5" />
-                  </span>
-                  <h3 className="font-display mt-4 text-base font-extrabold">Admissions hotline</h3>
-                  <p className="text-muted-foreground mt-1 text-sm">
-                    +234 905 862 8386 · Mon–Sat, 9am–6pm
-                  </p>
-                  <Button asChild variant="outline" size="sm" className="mt-4">
-                    <Link to="/contact">Call us</Link>
-                  </Button>
-                </CardContent>
-              </Card>
-            </Reveal>
-            <Reveal delay={0.1}>
-              <Card className="bg-gradient-ink text-ink-foreground shadow-elevated border-0">
-                <CardContent className="p-6">
-                  <span className="bg-ink-foreground/10 text-ink-foreground grid size-11 place-items-center rounded-xl">
-                    <MessageCircle className="size-5" />
-                  </span>
-                  <h3 className="font-display mt-4 text-base font-extrabold">WhatsApp community</h3>
-                  <p className="text-ink-foreground/70 mt-1 text-sm">
-                    A growing group of applicants, learners and alumni — questions welcome.
-                  </p>
-                  <Button asChild size="sm" className="bg-gradient-brand shadow-glow mt-4 border-0">
-                    <Link to="/community">
-                      Join WhatsApp <ArrowRight className="ml-1 size-3.5" />
-                    </Link>
-                  </Button>
-                </CardContent>
-              </Card>
-            </Reveal>
-          </div>
+      <section className="container-page pb-16">
+        <figure className="border-border mx-auto mb-10 max-w-3xl overflow-hidden rounded-lg border">
+          <CampusImg id="lab-4" className="aspect-[16/9]" />
+          <figcaption className="text-muted-foreground px-3 py-2 text-xs">
+            Classes at 26 Ebony Road, Port Harcourt
+          </figcaption>
+        </figure>
+        <Accordion type="single" collapsible className="mx-auto max-w-3xl">
+          {all.map((f, i) => (
+            <AccordionItem key={f.q} value={`item-${i}`}>
+              <AccordionTrigger className="text-left text-base font-medium">{f.q}</AccordionTrigger>
+              <AccordionContent className="text-muted-foreground leading-relaxed">
+                {f.a}
+              </AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
+        <div className="mx-auto mt-10 max-w-3xl">
+          <Button asChild variant="outline">
+            <Link to="/contact">Ask a question</Link>
+          </Button>
         </div>
       </section>
 

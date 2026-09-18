@@ -31,7 +31,7 @@ export function buildSeo(input: SeoInput) {
   const title = input.title.includes(SITE_NAME) ? input.title : `${input.title} — ${SITE_NAME}`;
   const description = unique(
     input.description,
-    "Nigeria's digital skills academy. Train from scratch to advanced, build a portfolio, and get hired.",
+    "A digital skills training centre in Port Harcourt. Short, practical computer and workplace-digital courses.",
   );
   const url = input.path ? `${SITE_URL}${input.path}` : SITE_URL;
   const image = input.image ?? `${SITE_URL}/og-default.png`;

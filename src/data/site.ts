@@ -993,43 +993,31 @@ export const gigs: {
 export const faqs = [
   {
     q: "Do I need any prior experience?",
-    a: "No. Our beginner tracks assume zero technical background and start from computer fundamentals. Intermediate and advanced tracks list their prerequisites on the program page. What matters more than experience at admission is commitment: these are intensive programmes, and the students who succeed protect consistent weekly hours for study and practice.",
+    a: "Not for beginner courses. Computer Basics and Microsoft Office start from the beginning. Other courses list what you should already be able to do on the course page.",
   },
   {
-    q: "Can I study while working full time?",
-    a: "Yes. Every program runs weekday-evening and weekend streams, and all live sessions are recorded and available in your dashboard within two hours. Most working learners commit 12–20 hours weekly — evenings for live sessions, weekends for projects and lab work. Cohort schedules are published before each intake so you can plan around your job.",
+    q: "Can I study while working?",
+    a: "Yes. Courses run two sessions a week. Ask for the current timetable when you apply — evenings and Saturdays are used when there is demand.",
   },
   {
     q: "Is there a payment plan?",
-    a: "Tuition can be split across the duration of the program in monthly instalments with no added interest, and income-share options are available for selected tracks after an eligibility review. Talk to admissions during your interview — we would rather structure payments honestly than lose a committed learner to cash flow.",
+    a: "Fees are listed in naira on each course page. Monthly instalments can be arranged for the length of the course. Ask when you apply.",
   },
   {
-    q: "What happens after I graduate?",
-    a: "You join the Career Engine: portfolio review, mentor matching, interview preparation and access to our employer network and freelance marketplace. Capstone projects are shared with hiring partners, our team runs mock interviews before you start applying, and alumni keep community access for life.",
+    q: "What do I get at the end?",
+    a: "A named piece of work — a document, a spreadsheet, a design, a website, a serviced machine — and a certificate awarded for that work, not for attendance. Certificates can be checked on our public verification page.",
   },
   {
-    q: "Are the certificates verifiable?",
-    a: "Every certificate carries a unique verification code that any employer can check on our public verification page. The certificate lists your program, capstone project and assessed competencies — not just attendance — because that is what employers actually ask us about.",
+    q: "Where is the academy?",
+    a: "26 Ebony Road, off Rumuola Road, Port Harcourt, Rivers State. Some courses can also be followed online.",
   },
   {
-    q: "Do you offer corporate training?",
-    a: "Yes. We design custom cohorts for teams, from a two-day workshop to a six-month capability programme with competency tracking. Recent engagements have covered security awareness for finance teams and cloud upskilling for engineering departments. Contact us with your team size and goals for a tailored proposal.",
-  },
-  {
-    q: "Where is the campus located?",
-    a: "Our campus is in Port Harcourt, Rivers State — classes run in equipped labs with real networking hardware and workstations. Online learners join the same live sessions remotely with full mentor access, and hybrid tracks let you switch between modes as your schedule demands.",
-  },
-  {
-    q: "How do admissions work?",
-    a: "Apply through the application form (it takes about ten minutes), then complete a short admissions interview — a conversation about your background, goals and schedule rather than a technical exam. Beginner tracks admit on motivation; intermediate tracks include a light skills review so we can place you honestly where you will succeed.",
-  },
-  {
-    q: "What if I fall behind during my program?",
-    a: "Tell your instructor early — that is what they are for. Every programme has catch-up mechanisms: recorded sessions, mentor office hours, and where needed an approved pause or cohort transfer. We would rather adjust your timeline than watch you silently struggle; the failure mode we work hardest to prevent is quiet disappearance.",
+    q: "How do I apply?",
+    a: "Use the application form, or visit or call during opening hours. There is no application fee. We reply with dates, the fee, and what to bring.",
   },
   {
     q: "Is CEA accredited?",
-    a: "Cyber Elias Academy Ltd is a registered Nigerian company (RC 8413776). Our certificates are endorsed by our employer network and map to the OSKM occupational skills framework, with public verification for every credential issued. We are transparent about what this means: employer-recognised evidence of competence, verified by code.",
+    a: "Cyber Elias Academy Ltd is a registered Nigerian company (RC 8413776). Certificates are issued by the academy and can be verified on this site. They are not a university degree or a government licence.",
   },
 ];
 

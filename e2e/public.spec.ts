@@ -1,12 +1,14 @@
-﻿import { expect } from "@playwright/test";
+import { expect } from "@playwright/test";
 import { test, API_BASE } from "./helpers";
 
 test.describe("Public marketing + application journey", () => {
   test("home page loads with core navigation", async ({ page }) => {
     await page.goto("/");
-    await expect(page.getByRole("heading", { name: /learn tech\./i })).toBeVisible();
-    await expect(page.getByRole("link", { name: /programs/i }).first()).toBeVisible();
-    await expect(page.getByRole("link", { name: /start your application/i }).first()).toBeVisible();
+    await expect(
+      page.getByRole("heading", { name: /practical computer and digital-skills training/i }),
+    ).toBeVisible();
+    await expect(page.getByRole("link", { name: /^courses$/i }).first()).toBeVisible();
+    await expect(page.getByRole("link", { name: /^apply$/i }).first()).toBeVisible();
   });
 
   test("programs list + detail pages load", async ({ page }) => {
@@ -24,10 +26,10 @@ test.describe("Public marketing + application journey", () => {
     await page.goto("/apply");
     await expect(page).toHaveTitle(/Apply/);
 
-    // Step 1 — choose program
-    await page.getByRole("button", { name: /full-stack software development/i }).click();
+    // Step 1 — choose course
+    await page.getByRole("button", { name: /microsoft office/i }).click();
     await page.getByRole("button", { name: /continue/i }).click();
-    await expect(page.getByRole("heading", { name: /your profile/i })).toBeVisible();
+    await expect(page.getByRole("heading", { name: /your details/i })).toBeVisible();
 
     // Step 2 — profile
     await page.locator("#firstName").fill("E2E");
@@ -41,14 +43,6 @@ test.describe("Public marketing + application journey", () => {
     await page.locator("#experience").click();
     await page.getByRole("option", { name: /no experience/i }).click();
 
-    await page.getByRole("button", { name: /continue/i }).click();
-    await expect(page.getByRole("heading", { name: /background assessment/i })).toBeVisible();
-
-    // Step 3 — assessment (checkboxes are pre-checked)
-    await page.getByRole("button", { name: /continue/i }).click();
-    await expect(page.getByRole("heading", { name: /financing/i })).toBeVisible();
-
-    // Step 4 — financing then submit
     await page.getByRole("button", { name: /submit application/i }).click();
 
     await expect(page.getByRole("heading", { name: /application submitted/i })).toBeVisible({

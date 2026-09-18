@@ -9,7 +9,7 @@ const publicPages = [
   { path: "/about", title: "About" },
   { path: "/programs", title: "Programs" },
   { path: "/pricing", title: "Pricing" },
-  { path: "/engines", title: "Engines" },
+  { path: "/engines", title: "Practical Digital Skills" },
   { path: "/services", title: "Services" },
   { path: "/work", title: "Work" },
   { path: "/community", title: "Community" },
@@ -51,7 +51,7 @@ test.describe("Public page smoke tests", () => {
 test("navbar has all main links", async ({ page }) => {
   await page.goto(BASE_URL);
 
-  const navLinks = ["Programs", "Pricing", "Engines", "Services", "Work", "Community", "About"];
+  const navLinks = ["Courses", "Admissions", "About", "Contact"];
   for (const link of navLinks) {
     await expect(page.locator(`nav a:has-text("${link}")`).first()).toBeVisible();
   }
@@ -72,16 +72,7 @@ test("mobile menu shows More dropdown links", async ({ page }) => {
 
   await page.click('aria-label="Menu"');
 
-  const subLinks = [
-    "Blog & Insights",
-    "FAQ",
-    "Events",
-    "Scholarships",
-    "Contact",
-    "Privacy",
-    "Terms",
-    "Accessibility",
-  ];
+  const subLinks = ["Courses", "Admissions", "About", "Contact", "FAQ", "Apply"];
   for (const link of subLinks) {
     await expect(page.locator(`a:has-text("${link}")`).first()).toBeVisible();
   }
@@ -103,7 +94,7 @@ test("sitemap.xml is valid XML", async ({ page }) => {
 test("Apply now button links to admissions", async ({ page }) => {
   await page.goto(BASE_URL);
 
-  const applyButton = page.locator('a[href="/admissions"]').first();
+  const applyButton = page.locator('a[href="/apply"]').first();
   await expect(applyButton).toBeVisible();
 });
 
