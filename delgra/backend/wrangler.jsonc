@@ -21,7 +21,7 @@
   ],
 
   "d1_databases": [
-    { "binding": "DB", "database_name": "delgra-db", "database_id": "820bba6c-c457-4bba-a056-55029f59c444", "migrations_dir": "migrations" }
+    { "binding": "DB", "database_name": "delgra-db", "database_id": "dedf269d-e095-499c-bbdc-c16b9b4ac444", "migrations_dir": "migrations" }
   ],
 
   "r2_buckets": [
