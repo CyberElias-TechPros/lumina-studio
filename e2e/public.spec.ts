@@ -11,13 +11,13 @@ test.describe("Public marketing + application journey", () => {
     await expect(page.getByRole("link", { name: /^apply$/i }).first()).toBeVisible();
   });
 
-  test("programs list + detail pages load", async ({ page }) => {
-    await page.goto("/programs");
-    await expect(page).toHaveTitle(/Programs/);
+  test("classes list + detail pages load", async ({ page }) => {
+    await page.goto("/classes");
+    await expect(page).toHaveTitle(/Practical Digital Skills/);
 
-    await page.goto("/programs/full-stack-software-development");
-    await expect(page).toHaveTitle(/Program/);
-    await expect(page.getByText(/node|react|typescript/i).first()).toBeVisible();
+    await page.goto("/classes/web-development");
+    await expect(page).toHaveTitle(/Web Development/);
+    await expect(page.getByText(/html|css|javascript/i).first()).toBeVisible();
   });
 
   test("visitor fills the full application form end-to-end", async ({ page }) => {

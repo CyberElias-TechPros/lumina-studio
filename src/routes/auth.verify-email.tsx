@@ -10,10 +10,10 @@ import { Reveal } from "@/components/motion";
 export const Route = createFileRoute("/auth/verify-email")({
   head: () => ({
     meta: [
-      { title: "Verify email — CEA-OS | Cyber Elias Academy" },
+      { title: "Verify email — Cyber Elias Academy" },
       {
         name: "description",
-        content: "Confirm your email address to activate your CEA-OS account.",
+        content: "Confirm your email address to activate your Cyber Elias Academy account.",
       },
     ],
   }),
@@ -36,13 +36,10 @@ function VerifyEmailPage() {
   const code = digits.join("");
 
   return (
-    <div className="bg-muted/40 noise relative grid min-h-screen place-items-center overflow-hidden px-4 py-16">
-      <div className="grid-lines pointer-events-none absolute inset-0 opacity-30 [mask-image:radial-gradient(60%_50%_at_50%_0%,black,transparent)]" aria-hidden="true" />
-      <span aria-hidden="true" className="bg-gradient-brand absolute inset-x-0 top-0 h-1 opacity-80" />
-      <div className="bg-gradient-career absolute -bottom-32 -right-32 size-96 rounded-full opacity-10 blur-3xl" />
-      <div className="relative w-full max-w-md">
+    <div className="bg-muted/40 grid min-h-screen place-items-center px-4 py-16">
+      <div className="w-full max-w-md">
         <Reveal>
-          <Card className="bg-card shadow-elevated border">
+          <Card className="bg-card border">
             <CardContent className="p-6 sm:p-8">
               {done ? (
                 <div className="text-center">
@@ -51,9 +48,9 @@ function VerifyEmailPage() {
                   </span>
                   <h1 className="font-display mt-4 text-xl font-extrabold">Email verified</h1>
                   <p className="text-muted-foreground mt-2 text-sm">
-                    Your account is active. Welcome to the CEA-OS community.
+                    Your account is active.
                   </p>
-                  <Button asChild className="bg-gradient-brand shadow-glow mt-6 border-0">
+                  <Button asChild className="mt-6">
                     <Link to="/app">
                       Go to my dashboard <ArrowRight className="ml-1.5 size-4" />
                     </Link>
@@ -94,11 +91,7 @@ function VerifyEmailPage() {
                         ))}
                       </div>
                     </div>
-                    <Button
-                      type="submit"
-                      disabled={code.length !== 6}
-                      className="bg-gradient-brand shadow-glow w-full border-0"
-                    >
+                    <Button type="submit" disabled={code.length !== 6} className="w-full">
                       Verify email <ArrowRight className="ml-1.5 size-4" />
                     </Button>
                   </form>

@@ -13,10 +13,10 @@ export const Route = createFileRoute("/auth/magic-link")({
   }),
   head: () => ({
     meta: [
-      { title: "Signing you in — CEA-OS | Cyber Elias Academy" },
+      { title: "Signing you in — Cyber Elias Academy" },
       {
         name: "description",
-        content: "Verifying your one-time sign-in link for CEA-OS.",
+        content: "Verifying your one-time sign-in link.",
       },
     ],
   }),
@@ -62,7 +62,7 @@ function MagicLinkPage() {
         <p className="text-muted-foreground mt-2 text-sm">
           This page verifies a one-time sign-in link. Request a new link to continue.
         </p>
-        <Button asChild className="bg-gradient-brand shadow-glow mt-6 border-0">
+        <Button asChild className="mt-6">
           <Link to="/auth/sign-in">
             Go to sign in <ArrowRight className="ml-1.5 size-4" />
           </Link>
@@ -93,7 +93,7 @@ function MagicLinkPage() {
             ? verify.error.message
             : "The link is invalid or has expired."}
         </p>
-        <Button asChild className="bg-gradient-brand shadow-glow mt-6 border-0">
+        <Button asChild className="mt-6">
           <Link to="/auth/sign-in">
             Request a new link <ArrowRight className="ml-1.5 size-4" />
           </Link>
@@ -115,14 +115,10 @@ function MagicLinkPage() {
 
 function AuthShell({ children }: { children: React.ReactNode }) {
   return (
-    <div className="bg-muted/40 noise relative grid min-h-screen place-items-center overflow-hidden px-4 py-16">
-      <div className="bg-gradient-brand absolute -top-32 -right-32 size-96 rounded-full opacity-10 blur-3xl" />
-      <div className="bg-gradient-learning absolute -bottom-40 -left-32 size-96 rounded-full opacity-10 blur-3xl" />
-      <div className="grid-lines pointer-events-none absolute inset-0 opacity-30 [mask-image:radial-gradient(60%_50%_at_50%_0%,black,transparent)]" />
-      <span aria-hidden="true" className="bg-gradient-brand absolute inset-x-0 top-0 h-1 opacity-80" />
-      <div className="relative w-full max-w-md">
+    <div className="bg-muted/40 grid min-h-screen place-items-center px-4 py-16">
+      <div className="w-full max-w-md">
         <Reveal>
-          <Card className="bg-card shadow-elevated border">
+          <Card className="bg-card border">
             <CardContent className="p-6 text-center sm:p-8">{children}</CardContent>
           </Card>
         </Reveal>

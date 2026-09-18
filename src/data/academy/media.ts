@@ -48,6 +48,21 @@ const COURSE_PHOTOS: Record<string, string> = {
   "web-development": "/images/courses/web-development.jpg",
   "data-entry": "/images/courses/data-entry.jpg",
   "computer-repairs": "/images/courses/computer-repairs.jpg",
+  "digital-marketing": "/images/courses/digital-marketing.jpg",
+  "social-media-management": "/images/courses/social-media.jpg",
+  cybersecurity: "/images/courses/cybersecurity.jpg",
+  "business-freelancing": "/images/courses/business-freelancing.jpg",
+  "content-creation": "/images/courses/content-creation.jpg",
+  "online-teaching": "/images/courses/online-teaching.jpg",
+  photography: "/images/courses/photography.jpg",
+  "video-editing": "/images/courses/video-editing.jpg",
+  wordpress: "/images/courses/wordpress.jpg",
+  "data-analytics": "/images/courses/data-analytics.jpg",
+  "digital-productivity": "/images/courses/microsoft-office.jpg",
+  "ai-productivity": "/images/courses/data-analytics.jpg",
+  "mobile-app-development": "/images/courses/web-development.jpg",
+  "computer-networking": "/images/courses/computer-repairs.jpg",
+  "it-support": "/images/courses/computer-repairs.jpg",
 };
 
 export function coursePhotoSrc(slug: string): string | undefined {

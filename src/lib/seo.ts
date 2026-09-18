@@ -83,7 +83,7 @@ export const ORGANIZATION_LD = {
   url: SITE_URL,
   logo: SITE_LOGO,
   description:
-    "Nigeria's digital skills academy and technology studio. Train from scratch to advanced in software development, cloud, AI, design and digital marketing.",
+    "A digital skills training centre in Port Harcourt. Short, practical computer and workplace-digital courses.",
   telephone: SITE_PHONE,
   email: SITE_EMAIL,
   address: {
@@ -133,9 +133,8 @@ export const LOCAL_BUSINESS_LD = {
 };
 
 // NOTE: deliberately no SearchAction potentialAction — the site has no
-// server-rendered /search route; search lives inside /library, /glossary and
-// /programs. Advertising a sitelinks search box that 404s is invalid markup
-// noise, so the WebSite node stays minimal and truthful.
+// server-rendered /search route. Advertising a sitelinks search box that 404s
+// is invalid markup noise, so the WebSite node stays minimal and truthful.
 export const WEBSITE_LD = {
   "@context": "https://schema.org",
   "@type": "WebSite",

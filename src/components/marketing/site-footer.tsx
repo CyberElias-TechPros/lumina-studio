@@ -21,6 +21,8 @@ const columns = [
       { label: "Apply", to: "/apply" },
       { label: "FAQ", to: "/faq" },
       { label: "Visit", to: "/visit" },
+      { label: "Team", to: "/team" },
+      { label: "Notes", to: "/blog" },
     ],
   },
   {

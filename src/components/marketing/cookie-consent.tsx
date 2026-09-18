@@ -51,7 +51,7 @@ export function CookieConsent() {
             <Button variant="outline" size="sm" onClick={dismiss}>
               Decline
             </Button>
-            <Button size="sm" className="bg-gradient-brand border-0" onClick={accept}>
+            <Button size="sm" onClick={accept}>
               Accept
             </Button>
           </div>

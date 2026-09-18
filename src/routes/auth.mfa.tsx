@@ -15,7 +15,7 @@ export const Route = createFileRoute("/auth/mfa")({
   }),
   head: () => ({
     meta: [
-      { title: "Two-factor authentication — CEA-OS" },
+      { title: "Two-factor authentication — Cyber Elias Academy" },
       {
         name: "description",
         content: "Confirm it's you with a second factor — app code or recovery key.",
@@ -52,13 +52,10 @@ function MfaPage() {
   };
 
   return (
-    <div className="bg-muted/40 noise relative grid min-h-screen place-items-center overflow-hidden px-4 py-16">
-      <div className="grid-lines pointer-events-none absolute inset-0 opacity-30 [mask-image:radial-gradient(60%_50%_at_50%_0%,black,transparent)]" aria-hidden="true" />
-      <span aria-hidden="true" className="bg-gradient-brand absolute inset-x-0 top-0 h-1 opacity-80" />
-      <div className="bg-gradient-community absolute -top-32 -right-32 size-96 rounded-full opacity-10 blur-3xl" />
-      <div className="relative w-full max-w-md">
+    <div className="bg-muted/40 grid min-h-screen place-items-center px-4 py-16">
+      <div className="w-full max-w-md">
         <Reveal>
-          <Card className="bg-card shadow-elevated border">
+          <Card className="bg-card border">
             <CardContent className="p-6 sm:p-8">
               {verify.isSuccess ? (
                 <div className="text-center">
@@ -69,7 +66,7 @@ function MfaPage() {
                   <p className="text-muted-foreground mt-2 text-sm">
                     Second factor verified. Taking you to your dashboard…
                   </p>
-                  <Button asChild className="bg-gradient-brand shadow-glow mt-6 border-0">
+                  <Button asChild className="mt-6">
                     <Link to="/app">
                       Continue <ArrowRight className="ml-1.5 size-4" />
                     </Link>
@@ -135,11 +132,7 @@ function MfaPage() {
                     {error && (
                       <p className="text-error bg-error/10 rounded-lg px-3 py-2 text-sm">{error}</p>
                     )}
-                    <Button
-                      type="submit"
-                      className="bg-gradient-brand shadow-glow w-full border-0"
-                      disabled={verify.isPending}
-                    >
+                    <Button type="submit" className="w-full" disabled={verify.isPending}>
                       {verify.isPending ? "Verifying…" : "Confirm"}{" "}
                       <ArrowRight className="ml-1.5 size-4" />
                     </Button>
