@@ -42,12 +42,7 @@ function extractSlugsBetween(file, startRe, endRe) {
   return [...section.matchAll(/slug:\s*"([a-z0-9-]+)"/g)].map((m) => m[1]);
 }
 
-const blogSlugs = [
-  ...new Set([
-    ...extractSlugs("src/data/blog-posts-new.ts"),
-    ...extractSlugsBetween("src/data/site.ts", /export const blogPosts/, /export const jobs/),
-  ]),
-];
+const blogSlugs = [...new Set(extractSlugs("src/data/blog.ts"))];
 
 let classUrls = [];
 try {

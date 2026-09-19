@@ -1,10 +1,10 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowUpRight, BookOpen, FileText, GraduationCap, Layers } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-import { Card, CardContent } from "@/components/ui/card";
 import { Reveal } from "@/components/motion";
-import { programs, blogPosts } from "@/data/site";
-import { getGlossaryTerms, type GlossaryTerm } from "@/data/glossary";
+import { programs } from "@/data/site";
+import { blogPosts } from "@/data/blog";
+import { getGlossaryTerms } from "@/data/glossary";
 
 interface RelatedItem {
   label: string;
@@ -41,13 +41,13 @@ function getRelatedItems(
         }));
 
       const relatedBlogs = blogPosts
-        .filter((b) =>
-          b.body.some(
-            (para) =>
-              para.toLowerCase().includes(program.title.toLowerCase()) ||
-              para.toLowerCase().includes(program.category.toLowerCase()),
-          ),
-        )
+        .filter((b) => {
+          const hay = `${b.title} ${b.excerpt} ${b.series}`.toLowerCase();
+          return (
+            hay.includes(program.title.toLowerCase()) ||
+            hay.includes(program.category.toLowerCase())
+          );
+        })
         .slice(0, 2)
         .map((b) => ({
           label: b.title,
@@ -74,7 +74,7 @@ function getRelatedItems(
     const post = blogPosts.find((p) => p.slug === currentSlug);
     if (post) {
       const relatedBlogs = blogPosts
-        .filter((b) => b.slug !== currentSlug && b.category === post.category)
+        .filter((b) => b.slug !== currentSlug && b.series === post.series)
         .slice(0, 2)
         .map((b) => ({
           label: b.title,
@@ -83,13 +83,10 @@ function getRelatedItems(
           description: b.excerpt,
         }));
 
+      const hay = `${post.title} ${post.excerpt} ${post.series}`.toLowerCase();
       const relatedPrograms = programs
-        .filter((p) =>
-          post.body.some(
-            (para) =>
-              para.toLowerCase().includes(p.title.toLowerCase()) ||
-              para.toLowerCase().includes(p.category.toLowerCase()),
-          ),
+        .filter(
+          (p) => hay.includes(p.title.toLowerCase()) || hay.includes(p.category.toLowerCase()),
         )
         .slice(0, 2)
         .map((p) => ({

@@ -2,7 +2,7 @@ import { createFileRoute, Link, useParams } from "@tanstack/react-router";
 import { ArrowLeft, CalendarDays, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { CTASection, PageShell } from "@/components/marketing/shell";
-import { blogPosts } from "@/data/site";
+import { blogPosts, type BlogBlock } from "@/data/blog";
 import { getPageHead } from "@/lib/seo";
 import { readingTimeLabel } from "@/lib/blog-reading-time";
 
@@ -15,6 +15,7 @@ export const Route = createFileRoute("/blog/$slug")({
       headline: post.title,
       description: post.excerpt,
       datePublished: post.date,
+      image: `https://cea.ng${post.cover}`,
       author: { "@type": "Person", name: post.author },
       publisher: {
         "@type": "Organization",
@@ -28,16 +29,48 @@ export const Route = createFileRoute("/blog/$slug")({
       description: post.excerpt,
       path: `/blog/${post.slug}`,
       type: "article",
+      image: `https://cea.ng${post.cover}`,
       structuredData: articleSchema,
     });
   },
   component: Article,
 });
 
+function Block({ block }: { block: BlogBlock }) {
+  if (block.type === "h2") {
+    return (
+      <h2 className="font-display mt-10 text-2xl font-semibold tracking-tight">{block.text}</h2>
+    );
+  }
+  if (block.type === "ul") {
+    return (
+      <ul className="text-foreground/80 my-4 list-disc space-y-2 pl-5 leading-relaxed">
+        {block.items.map((item) => (
+          <li key={item.slice(0, 48)}>{item}</li>
+        ))}
+      </ul>
+    );
+  }
+  if (block.type === "figure") {
+    return (
+      <figure className="border-border my-8 overflow-hidden rounded-lg border">
+        <img src={block.src} alt={block.alt} className="h-auto w-full object-cover" loading="lazy" />
+        <figcaption className="text-muted-foreground px-4 py-3 text-sm leading-relaxed">
+          {block.caption}
+        </figcaption>
+      </figure>
+    );
+  }
+  return <p className="text-foreground/80 text-[17px] leading-[1.75]">{block.text}</p>;
+}
+
 function Article() {
   const { slug } = useParams({ from: "/blog/$slug" });
   const post = blogPosts.find((p) => p.slug === slug) ?? blogPosts[0];
-  const related = blogPosts.filter((p) => p.slug !== post.slug).slice(0, 3);
+  const related = blogPosts
+    .filter((p) => p.slug !== post.slug)
+    .sort((a, b) => a.order - b.order)
+    .slice(0, 3);
 
   return (
     <PageShell>
@@ -50,7 +83,9 @@ function Article() {
         </Link>
 
         <p className="text-muted-foreground mt-8 text-xs">
-          {post.category}
+          {post.series}
+          <span className="mx-2">·</span>
+          Lesson {post.order}
           <span className="mx-2">·</span>
           {post.date}
         </p>
@@ -69,32 +104,37 @@ function Article() {
           </span>
         </div>
 
-        <p className="text-muted-foreground mt-8 text-base leading-relaxed">{post.excerpt}</p>
+        <figure className="border-border mt-8 overflow-hidden rounded-lg border">
+          <img src={post.cover} alt={post.coverAlt} className="aspect-[16/9] w-full object-cover" />
+        </figure>
+
+        <p className="text-muted-foreground mt-8 text-lg leading-relaxed">{post.excerpt}</p>
 
         <div className="mt-8 space-y-5">
-          {post.body.map((paragraph) => (
-            <p key={paragraph.slice(0, 48)} className="text-foreground/80 leading-relaxed">
-              {paragraph}
-            </p>
+          {post.body.map((block, i) => (
+            <Block key={i} block={block} />
           ))}
         </div>
       </article>
 
       <section className="border-border bg-muted/40 border-y">
         <div className="container-page py-12 md:py-16">
-          <h2 className="font-display text-xl font-semibold">More notes</h2>
+          <h2 className="font-display text-xl font-semibold">Next in the series</h2>
           <ul className="mt-6 grid gap-4 md:grid-cols-3">
             {related.map((p) => (
               <li key={p.slug}>
                 <Link
                   to="/blog/$slug"
                   params={{ slug: p.slug }}
-                  className="border-border bg-card hover:border-primary/40 block h-full rounded-lg border p-5"
+                  className="border-border bg-card hover:border-primary/40 block h-full overflow-hidden rounded-lg border"
                 >
-                  <p className="text-muted-foreground text-xs">{p.category}</p>
-                  <h3 className="font-display mt-2 text-base font-semibold leading-snug">
-                    {p.title}
-                  </h3>
+                  <img src={p.cover} alt="" className="aspect-[16/9] w-full object-cover" />
+                  <div className="p-5">
+                    <p className="text-muted-foreground text-xs">Lesson {p.order}</p>
+                    <h3 className="font-display mt-2 text-base font-semibold leading-snug">
+                      {p.title}
+                    </h3>
+                  </div>
                 </Link>
               </li>
             ))}
