@@ -4694,5 +4694,255 @@ export const blogPosts: BlogPost[] = [
       ),
     ],
   },
+  {
+    slug: "locking-the-phone-and-the-laptop",
+    title: "Locking the phone and the laptop",
+    excerpt:
+      "A lock is a gate, not a decoration. PIN, pattern, fingerprint, Windows+L. The screen going dark is not a lock. A cousin should meet a gate, not your mail.",
+    series: SERIES,
+    order: 91,
+    author: AUTHOR,
+    date: DATE,
+    cover: "/images/blog/screen-lock.jpg",
+    coverAlt: "A phone lock screen with a PIN pad on a wooden desk.",
+    body: [
+      p(
+        "A phone without a lock is a house with the gate open. Anyone who picks it up is you: WhatsApp, mail, the bank app if it does not ask again. A laptop the same. The screen going dark is only a lamp. The lock is a gate that asks for a key when the lamp comes back. This lesson is a PIN you can remember, a pattern that is not a letter Z, Windows+L when you stand up, and why “none” is not a time-saver.",
+      ),
+      p(
+        "On the phone: Settings, Security, Screen lock — PIN, password, pattern, or fingerprint if the machine has a pad. A PIN of six digits you do not use for the ATM is enough for most people. Four is weak and still better than none. A pattern that is a straight line or your initial is a pattern a shoulder can steal. Fingerprint is convenient; it still needs a PIN as backup when a wet hand fails. Face unlock is a cousin: fine at a desk, weaker in a crowd with a photograph. You choose. You write the PIN hint in the notebook in the drawer, not on a sticky on the phone.",
+      ),
+      fig(
+        "/images/blog/screen-lock.jpg",
+        "A phone lock screen waiting for a PIN.",
+        "The gate. If you can swipe into the home screen with no question, there is no gate. Settings, Screen lock, until a question appears.",
+      ),
+      h2("The laptop, and standing up"),
+      p(
+        "Windows: Settings, Accounts, Sign-in options. A PIN for this machine is not your Microsoft password; it is a local gate. Use a different number from the phone if you can bear it. Windows+L locks at once — lamp off, gate on — without shutting down. Practise it every time you leave the chair, even to the kettle, on a shared desk. A Mac: Control+Command+Q, or close the lid if the lid is set to lock. The lid is not a lock until you have checked that it asks for a password on wake.",
+      ),
+      p(
+        "Require a sign-in when the PC wakes from sleep. A screen saver that does not lock is a curtain. Auto-lock after a few minutes is kindness when you forget Windows+L. On a business-centre machine, do not set your PIN. Guest, then the five-minute walk. Their gate is not yours to change.",
+      ),
+      fig(
+        "/images/blog/lock-screen.jpg",
+        "A learner locking a laptop, phone face-down beside it.",
+        "Two gates. The pocket and the desk. If a child can open the mail, the gate is theatre. Shorten the time to lock. Practise the key until it is a habit, not a performance.",
+      ),
+      ul([
+        "Put a PIN or password on the phone if it has none. Unlock it twice to prove you remember.",
+        "On the laptop, Windows+L. Unlock. Do it again.",
+        "Set a short lock time — one or two minutes on a phone in a compound.",
+        "Do not use 1234, your birthday, or the phone number. You know why.",
+      ]),
+      h2("When the key is forgotten"),
+      p(
+        "Phone: the Google or Apple account you made on purpose is the rope, plus a wait. A shop that “opens it” without that account is often formatting. Backup first, always, if you still can. Windows: the PIN can be reset from the account if you set one; a local account with a forgotten password is a harder day. The notebook in the drawer is cheaper than that day.",
+      ),
+      p(
+        "A lock is not encryption of the whole disk. It is still the difference between a stranger reading your mail and a stranger holding a brick. Use it. The extra three seconds when you sit down are the whole rent. Pay them.",
+      ),
+    ],
+  },
+  {
+    slug: "if-the-phone-is-stolen",
+    title: "If the phone is stolen",
+    excerpt:
+      "Call the network. Change mail and bank from another machine. Find My Device is a map, not a miracle. The lock you set yesterday is today’s whole defence.",
+    series: SERIES,
+    order: 92,
+    author: AUTHOR,
+    date: DATE,
+    cover: "/images/blog/lost-phone.jpg",
+    coverAlt: "A learner at a desk looking at the empty place where a phone was.",
+    body: [
+      p(
+        "A stolen phone is a stolen gate to WhatsApp, mail, and sometimes the bank. Panic wants you to chase the street. The useful hour is elsewhere: the network, the accounts, a second machine. This lesson is that hour, what Find My Device can and cannot do, and why yesterday’s lock and yesterday’s copies matter more than a shop’s “tracker app” from a banner.",
+      ),
+      p(
+        "From another phone or a laptop: call your network — MTN, Glo, Airtel, 9mobile — and block the SIM. The number stops. OTPs stop arriving on the thief’s table. Then mail: from a computer you trust, change the password, sign out other sessions, as in the café lesson. Then the bank, from the real app or the real street, not from a link in a “we saw your phone” SMS. Then WhatsApp: if you still have another phone and the same SIM later, verify; there is also a way to log out other devices from the phone you no longer hold, if you set it up before. Linked devices you already know. Remove what you can from a remaining phone or from Web if a session is open.",
+      ),
+      fig(
+        "/images/blog/lost-phone.jpg",
+        "An empty place on a desk where a phone should be.",
+        "The pocket is gone. The accounts are not gone until someone opens them. Speed belongs to passwords and the SIM, not to a chase.",
+      ),
+      h2("Find, ring, erase"),
+      p(
+        "Google: android.com/find, or Find My Device, signed into the same account the phone used. Apple: iCloud, Find. If the phone is on and on a network, a map may show a neighbourhood, not a house number. You may ring it. You may lock it with a message. You may erase it — a last tap that wipes the pocket if the machine still hears the cloud. Erase after you have copied what you could, which, if the phone is gone, means yesterday’s copies. Do not erase before the SIM is blocked if you still hope to call it; in practice, block first, then find, then lock or erase.",
+      ),
+      p(
+        "If the map is empty, the phone is off, on a plane, or already wiped. The account steps still matter. A police report may be needed for a new SIM with the same number. A tracker app you never heard of until a Facebook post is the virus costume. You do not install new guests on a remaining laptop in this hour.",
+      ),
+      fig(
+        "/images/blog/find-device.jpg",
+        "A find-device map on a laptop, a generic pin.",
+        "A neighbourhood is not a street address. Do not walk into a compound because a pin said so. Use the map to decide lock or erase. Leave the chase to people who do that work.",
+      ),
+      ul([
+        "Today, while the phone is in your hand: confirm you can sign into Find My Device or iCloud from a laptop.",
+        "Confirm the phone has a lock. Confirm photos you care about are on the computer.",
+        "Write the network’s official number in the notebook, not a number from a search advert.",
+        "If it happens: SIM, mail, bank, find, lock or erase. In that spirit. Shame later. Speed now.",
+      ]),
+      h2("After"),
+      p(
+        "A new handset, same Google account, contacts and some apps come back if they lived in the account. WhatsApp backups, if you had Drive or iCloud on, may restore chats. If you had none, the chats are the price. The money in the bank is not, if you were fast. Tell family the old number may be in a thief’s hand until the SIM dies; they should not send OTPs or “urgent” airtime to a message that sounds like you.",
+      ),
+      p(
+        "The lock from the last lesson is the whole difference between a brick and an open mail. The copies are the whole difference between a lost pocket and a lost life. You cannot do those after. You can do them this evening. Then the hour, if it comes, is a list, not a freeze.",
+      ),
+    ],
+  },
+  {
+    slug: "do-not-disturb",
+    title: "Do not disturb",
+    excerpt:
+      "The moon icon silences rings and banners and leaves the radios on. Alarms still speak if you allow them. A class, a night, a driving seat. Not airplane mode.",
+    series: SERIES,
+    order: 93,
+    author: AUTHOR,
+    date: DATE,
+    cover: "/images/blog/do-not-disturb.jpg",
+    coverAlt: "A phone with Do not disturb or a moon icon switched on.",
+    body: [
+      p(
+        "Airplane mode hangs up on the network. Do not disturb — the moon — hangs up on noise. Calls may still arrive in silence. WhatsApp still lands, unseen until you look. The radio is on. The ringer is off. This lesson is that moon, exceptions for a mother or an alarm, and not using the plane when you only meant a quiet hour.",
+      ),
+      p(
+        "Swipe the shade, tap the moon, or Settings, Sound, Do not disturb. On many phones you can schedule it: 11 p.m. to 6 a.m. Alarms from the Clock app still ring on most machines; test once. Favourite contacts can break through if you tick that — so a family call at night still shakes the table, and a group chat does not. People you do not list wait until morning. That is allowed.",
+      ),
+      fig(
+        "/images/blog/do-not-disturb.jpg",
+        "Do not disturb switched on in phone settings.",
+        "The moon is a curtain on sound, not on the network. OTPs still arrive. You will see them when you lift the phone. The bank is not on the plane.",
+      ),
+      h2("A class, a meeting, a laptop"),
+      p(
+        "In a lesson, the moon is kinder than switching off. You still have the clock. You still have the camera for a board if you must. Windows has Focus assist or Do not disturb too — Settings, System — so a mail toast does not ride over a form you are filling. The machine can be quiet without being offline. Use that in a CBT hall if phones are allowed at all; if they are not, the plane or the bag is the rule in the room, not this lesson.",
+      ),
+      p(
+        "Driving: some phones offer a driving mode that is the moon plus maps. Do not polish it while the car is moving. Set it before you start. A voice reading WhatsApp aloud in a danfo is a choice you can refuse.",
+      ),
+      fig(
+        "/images/blog/quiet-desk.jpg",
+        "A quiet desk: dark phone, laptop, closed notebook.",
+        "Silence is a tool. The work is on the laptop. The pocket is not dead. It is waiting. That is enough for an hour.",
+      ),
+      ul([
+        "Turn the moon on. Ask someone to call. Confirm you see a missed call and heard nothing — or heard only a favourite, if you set that.",
+        "Set an alarm five minutes from now. Confirm it still rings.",
+        "Turn the moon off. The banners you missed should be waiting.",
+        "If you needed the network off, that is the plane. Do not confuse the two icons.",
+      ]),
+      h2("What still gets through"),
+      p(
+        "Alarms, timers, and any app you allowed to override. A bank app may still flash. Repeat callers can break through on some Androids — a person who calls twice. That is a kindness for emergencies and a hole for a nuisance. You can switch that off. Read the exceptions list once. Shorten it.",
+      ),
+      p(
+        "The moon is manners for a pocket that never learned to whisper. You do not owe every banner your eyes. Schedule a night. Use a sitting. Then look, on purpose, the way you check mail and not WhatsApp every ten seconds. The messages will wait. They are not more important because they shook.",
+      ),
+    ],
+  },
+  {
+    slug: "the-phone-as-a-hotspot",
+    title: "The phone as a hotspot",
+    excerpt:
+      "The pocket can be a router. A name, a key, the laptop joins. The bundle pays. Heat and battery follow. Switch it off when the sitting ends.",
+    series: SERIES,
+    order: 94,
+    author: AUTHOR,
+    date: DATE,
+    cover: "/images/blog/phone-hotspot.jpg",
+    coverAlt: "Phone hotspot settings on a wooden desk.",
+    body: [
+      p(
+        "You met this as a sentence in the Wi‑Fi lesson: the phone can share its data with a laptop. The name is hotspot, or tethering. The phone becomes a small router. The laptop joins it like a house network. The bundle is the pipe. This lesson is switching it on, a password that is not 12345678, one laptop not a compound, and switching it off so the battery and the naira do not leak overnight.",
+      ),
+      p(
+        "Settings, Network, Hotspot and tethering, Wi‑Fi hotspot. Set a name you will recognise — not “Android” in a hall of Androids. Set a password, eight characters at least, a sentence fragment, not the phone’s unlock PIN. Turn the hotspot on. On the laptop, open the fan list, join that name, type the key. Private network if Windows asks; it is your pocket, not a café. When the page loads, the pipe is the SIM.",
+      ),
+      fig(
+        "/images/blog/phone-hotspot.jpg",
+        "Hotspot settings on a phone.",
+        "The name and the key are the sticker on this tiny router. Write the key in the notebook if you must. Do not shout it in a bus.",
+      ),
+      h2("Who joins, and what it costs"),
+      p(
+        "One laptop is the point. If the list of connected devices shows names you do not know, change the password, switch off, on again. A neighbour can join an open hotspot the way they join an open house Wi‑Fi. Do not leave it without a key. USB tethering — a cable from phone to laptop — is a quieter cousin: no radio for the neighbours, uses the cable you already own. Turn USB tethering on after you plug in. It still spends the bundle.",
+      ),
+      p(
+        "Video will eat a week’s data in an evening. Updates on the laptop will try to drink. Pause Windows Update if you are on a thin bundle, or let it wait for house Wi‑Fi. The phone will get hot. That is the radio working. Take it off the bed, as with a laptop. Charge while you share if you can. A dead phone is a dead pipe, and WhatsApp Web will die with it.",
+      ),
+      fig(
+        "/images/blog/hotspot-laptop.jpg",
+        "A laptop using a phone hotspot on a wooden desk.",
+        "The pocket is the router. When the sitting ends, the hotspot ends. The fan list on the laptop should not still show a phone in another room at midnight.",
+      ),
+      ul([
+        "Set a hotspot name and password. Switch on. Join from the laptop. Load cea.ng.",
+        "Look at the phone’s connected-devices list. You should see one machine.",
+        "Switch the hotspot off. Confirm the laptop has no internet, or has returned to house Wi‑Fi.",
+        "Do not lend an open hotspot to a shop “for a minute.” Give a key, or use USB, or refuse.",
+      ]),
+      h2("When the house Wi‑Fi exists"),
+      p(
+        "Prefer the house pipe. It is cheaper by the gigabyte, cooler, and does not kill the phone. Hotspot is a spare tyre: a form that must go in tonight, a café with a password you do not trust for a bank, a generator night when the router is off. Spare tyres are not daily drivers. If you live on hotspot, you are paying phone prices for a home. Ask the house about data on the router. That is another bill, not this lesson.",
+      ),
+      p(
+        "Off when you stand up. The plane is another off. The hotspot is a tap. Close it. The bundle is not a river. It is a tank you can see in the phone’s data usage if you look. Look once after a hotspot evening. You will learn what a PDF costs, and what a film costs, without a speech.",
+      ),
+    ],
+  },
+  {
+    slug: "wifi-or-mobile-data",
+    title: "Wi‑Fi or mobile data — which tap is open",
+    excerpt:
+      "The fan is house radio. The arrows are the SIM. Both can be on; one is used. Look at the top of the phone before a video. A download on the wrong tap is a bill.",
+    series: SERIES,
+    order: 95,
+    author: AUTHOR,
+    date: DATE,
+    cover: "/images/blog/wifi-vs-data.jpg",
+    coverAlt: "A phone status bar showing Wi-Fi and mobile data icons.",
+    body: [
+      p(
+        "Two pipes can reach a phone: the house Wi‑Fi, and the SIM’s mobile data. The top of the screen tells you which one is actually drinking. A fan or waves means Wi‑Fi. LTE, 4G, 5G, H, E, or two arrows means the SIM. If both radios are on, the phone prefers Wi‑Fi when the fan is connected. When the fan is a lie — connected with no internet — some phones sit there thirsty and do not fall back to the SIM. This lesson is reading the icons, switching a tap, and not starting a film until you know who is paying.",
+      ),
+      p(
+        "Swipe the shade. The Wi‑Fi tile, the data tile. If you are at home and the fan is on, data can stay on as a spare; the phone should use the fan. If you are on the road, Wi‑Fi off saves it hunting for every shop’s radio. If a page fails at home, look: is the fan connected to the wrong name, or to a network with no pipe? Forget the network, join the sticker name, or switch Wi‑Fi off so the SIM can work. You already restarted a router. Do that before you buy more data because a page was slow.",
+      ),
+      fig(
+        "/images/blog/wifi-vs-data.jpg",
+        "Wi-Fi and mobile data icons at the top of a phone.",
+        "One glance before a video. The fan is the house. The 4G is the bundle. If you see E, you are on a slow old pipe and a film will crawl and still charge you.",
+      ),
+      h2("Downloads, updates, and apps that ignore you"),
+      p(
+        "Play Store and iOS can be told: updates only on Wi‑Fi. WhatsApp: Settings, Storage and data, use less data, download media on Wi‑Fi. A child can still start a film. The icon at the top is the parent’s check. Some apps have their own “HD on mobile data” greed. YouTube: settings, quality, or data saving. A form, a PDF, a map — small. A live stream — a tank.",
+      ),
+      p(
+        "Wi‑Fi that asks you to log in through a page — a hotel, a bus, some estates — is a captive portal. Data may pause until you finish that page, or both may fight. Complete the page on the real network, or use your SIM and ignore their radio. Do not type a bank password on a portal that is not your bank. You know the street.",
+      ),
+      fig(
+        "/images/blog/data-toggle.jpg",
+        "A learner checking the top of a phone before playing a video.",
+        "The glance is the skill. If the fan is missing and 4G is on, a tutorial will cost. Wait for the house, or use captions and low quality, or do not play it.",
+      ),
+      ul([
+        "At home, confirm the fan is on and a page loads. Note the icon.",
+        "Switch Wi‑Fi off. Confirm the SIM icon appears and the page still loads, if you have data.",
+        "Switch Wi‑Fi back on. Prefer the fan for a download.",
+        "Open one app’s data settings — WhatsApp or Play Store — and tick Wi‑Fi for heavy things if you can find it.",
+      ]),
+      h2("When both are lying"),
+      p(
+        "Airplane mode, then off, is a reset of both radios. It is cheaper than a shop. If the fan shows connected and nothing loads, the router’s internet light is the next look. If the SIM shows 4G and nothing loads, the bundle may be zero, or the APN is wrong after a new SIM — a shop or the network can set APN; you should not download an “APN tool.”",
+      ),
+      p(
+        "You now have names for the two taps, the plane, the moon, the hotspot. Glance at the top of the phone the way you glance at ENG on the taskbar. Then type, or watch, or wait. The bill is a consequence of that glance, not of bad luck. Look. Then open the film, or do not.",
+      ),
+    ],
+  },
 ];
 
