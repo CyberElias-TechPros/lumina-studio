@@ -3721,5 +3721,249 @@ export const blogPosts: BlogPost[] = [
       ),
     ],
   },
+  {
+    slug: "open-with-the-right-program",
+    title: "Open with — this program, not that one",
+    excerpt:
+      "A file is not a program. Double-click asks Windows to guess. Open with is how you choose. Always is a marriage. Once is a visit.",
+    series: SERIES,
+    order: 71,
+    author: AUTHOR,
+    date: DATE,
+    cover: "/images/blog/open-with.jpg",
+    coverAlt: "An Open with list of programs over a file on a laptop.",
+    body: [
+      p(
+        "A PDF is a plate. A .docx is a working letter. A .jpg is a photograph. None of those is Word, or Chrome, or Photos. They are papers. A program is the pair of hands that opens the paper. Double-click asks Windows to guess which hands. Sometimes the guess is a browser that cannot edit. Sometimes it is a shop's “PDF Professional” that shouts. Open with is how you pick the hands for this sitting, or for always. This lesson is that choice, and why Always is a bigger word than it looks.",
+      ),
+      p(
+        "Right-click the file, Open with, choose a name you recognise — Word, Edge, Photos, Excel. If the list is short, Choose another app, More apps. Once, or Always. Once is a visit: this time, Photos. Always is a marriage: every .jpg from now on. Do not marry a program you met today from a banner. Visit first. If the file opens and looks like itself, you chose well. If Word tries to eat a photograph, you chose badly. Close. Open with, the other hands.",
+      ),
+      fig(
+        "/images/blog/open-with.jpg",
+        "A list of programs offering to open a file.",
+        "The list is a set of hands, not a set of files. Pick the hands that already live on the machine. A name you do not remember installing is the shop guest from the uninstall lesson.",
+      ),
+      h2("When the wrong marriage is already made"),
+      p(
+        "If every PDF now opens in a browser and you wanted a reader, right-click a PDF, Open with, pick the reader, Always. The marriage changes. Settings, Apps, Default apps, is the same idea in a longer list — which program opens .pdf, which opens .jpg. You do not need to tour that list on day one. One file, Open with, is enough to fix a nuisance.",
+      ),
+      p(
+        "A file that says “Windows cannot open this” is often a type you do not have hands for — .psd, .ai, a specialist thing — or a type that was renamed until the dot lied. You know the dot from renaming. Put the real type back if you hid it. If the type is honest and you still have no program, you do not have to fetch one from the first advert. Ask whether you even need to open it, or whether a PDF export exists instead.",
+      ),
+      fig(
+        "/images/blog/default-app.jpg",
+        "A learner looking at a folder of files on a laptop.",
+        "The paper does not change because you changed the hands. A letter opened in Word and in Google Docs is still the letter. Choose the hands you can type with.",
+      ),
+      ul([
+        "Right-click a photograph. Open with Photos or Preview, once. Confirm you see the picture.",
+        "Right-click a PDF. Open with your browser, once. Then try another program if you have one.",
+        "Do not tick Always until you have seen the file look right.",
+        "If a stranger program appears in the list, do not pick it. Uninstall is a different sitting.",
+      ]),
+      h2("The browser is not always the wrong hands"),
+      p(
+        "A PDF in Edge or Chrome is fine for reading. Word is for editing. Photos is for a picture you might crop. Excel is for a grid that must add. Matching the job to the hands is the whole skill. Double-click is a habit. Open with is a decision. When the habit is wrong, use the decision. The file will wait. It is only paper until hands pick it up.",
+      ),
+    ],
+  },
+  {
+    slug: "kilobytes-and-megabytes",
+    title: "What KB, MB and GB actually mean",
+    excerpt:
+      "Size is how heavy the suitcase is. A page of text is light. A phone photograph is a brick. Email has a door that will not take bricks. Look at the Size column.",
+    series: SERIES,
+    order: 72,
+    author: AUTHOR,
+    date: DATE,
+    cover: "/images/blog/file-size-column.jpg",
+    coverAlt: "A folder window showing a Size column for a few files.",
+    body: [
+      p(
+        "A file has a weight. The computer writes it as KB, MB, GB — kilobytes, megabytes, gigabytes. People send five phone photographs, the mail bounces, and they think Gmail is broken. The door has a width. A letter is a letter. A photograph from a modern phone is a wall, as you learned when shrinking. This lesson is the numbers on the Size column, what will travel, and what will fill a USB or a disk until the bar goes red.",
+      ),
+      p(
+        "Rough, in the hand: a page of Word is often tens of KB. A PDF of that page is similar, unless it is full of pictures. One phone photograph is often 2–8 MB. A minute of video can be tens of MB. A gigabyte is about a thousand megabytes — a small pile of video, or hundreds of photographs, or a huge pile of letters. You do not need the exact science. You need: text is light, photos are heavy, video is heavier, and installers are often heavy on purpose.",
+      ),
+      fig(
+        "/images/blog/file-size-column.jpg",
+        "The Size column in a folder of mixed files.",
+        "Details view, Size. Sort by size if the disk is fat. The largest names at the top are the first to walk to a USB or to leave.",
+      ),
+      h2("Email, USB, and the red bar"),
+      p(
+        "Gmail and many offices refuse around 20–25 MB for the whole mail. One unshrunk photograph can be legal. Five can bounce. A zip of a wedding will not go. Drive, or the USB in the pocket, or shrink as you learned. WhatsApp compresses pictures so they travel; that is soup, not a size lesson. Document keeps the weight, and may still refuse if the brick is huge.",
+      ),
+      p(
+        "A USB that says 8 GB is not 8 GB of your photos after formatting, and not 8 GB if it is a fake stick from a stall. Copy, then open a file from the stick, then eject. If the stick claims 1 TB and cost a sandwich, believe the sandwich. On the computer, This PC, the C: bar — green is room, red is the slow-computer lesson. Size is why that bar moves.",
+      ),
+      fig(
+        "/images/blog/storage-bar.jpg",
+        "A laptop disk bar with a USB drive on the desk.",
+        "The bar is the tank. Photographs and video fill it. Letters do not. Empty Recycle Bin after you have looked. Do not delete Windows because a number looked large.",
+      ),
+      ul([
+        "Open Documents. Switch to Details view. Show the Size column if it is hidden.",
+        "Find a letter and a photograph. Compare the two numbers. The photo should be the brick.",
+        "If you have a USB, look at its free space the same way.",
+        "Before you email a picture, look at Size. If it is more than 2 MB and they only need a face, shrink a copy.",
+      ]),
+      h2("What the number is not"),
+      p(
+        "It is not quality by itself. A 50 KB passport photo can be the right photo. A 12 MB blur is still a blur. It is not “speed” of the computer. A large file can open fine on a healthy machine. It is not a virus scan. Bigger is not guiltier. A shop that formats because “too many GB” without copying your Documents is selling convenience, not care.",
+      ),
+      p(
+        "When a form says “maximum 100 KB,” obey the number, as with the small photograph. When a portal says “2 MB,” that is the door. The Size column is how you know before you try. Look, then shrink or zip or Drive. The suitcase has a scale. Use it before you walk to the post.",
+      ),
+    ],
+  },
+  {
+    slug: "the-right-click-menu",
+    title: "The right-click menu is a map",
+    excerpt:
+      "The right button is not a second click. It is a list of extra acts for whatever is under the pointer. Open, Rename, Delete, Open with, Properties. Click empty space to dismiss it.",
+    series: SERIES,
+    order: 73,
+    author: AUTHOR,
+    date: DATE,
+    cover: "/images/blog/right-click-menu.jpg",
+    coverAlt: "A small right-click menu open over a file on a laptop.",
+    body: [
+      p(
+        "The first sitting named the right button and told you not to fear the menu. You have used it since: New folder, Compress, Open with, Restore. This lesson is the menu as a map, not a jump scare. Whatever sits under the pointer — a file, a paragraph, the desktop, a browser link — owns a short list of extra acts. Left click selects or opens. Right click asks “what else?” If the list appears and you did not want it, click empty space, or press Escape. The list is not an error. It is a drawer.",
+      ),
+      p(
+        "On a file: Open, Open with, Rename, Cut, Copy, Delete, Properties, Send to, Compress. On a paragraph in Word: Cut, Copy, Paste, Font, sometimes a translator you did not ask for. On a browser page: Back, Save image, Inspect — Inspect is for builders; you can ignore it. On empty desktop: View, New, Display settings. The list changes because the thing under the pointer changed. That is the whole design. Look at the words. If you do not recognise a word, do not pick it. The drawer will wait.",
+      ),
+      fig(
+        "/images/blog/right-click-menu.jpg",
+        "A short right-click menu over a file icon.",
+        "A few honest verbs. If the menu is a novel of extras, a shop installed guests. You can still pick Open and leave the rest.",
+      ),
+      h2("Trackpad, and the extra guest"),
+      p(
+        "A laptop without a mouse: two-finger tap, or a bottom-right corner of the trackpad, or hold Control and click on a Mac. If nothing appears, the pad may be in a mode that wants a physical button. Try a USB mouse for a week if the pad fights you. You already know USB guests.",
+      ),
+      p(
+        "A menu that offers “Scan with PC Cleaner” or “Upload to MegaSpeed” is a guest talking. You do not owe it a click. Uninstall the guest when you are ready. Right-click is not improved by twelve extra lines. It is worsened. The useful verbs are still near the top: Open, Rename, Delete.",
+      ),
+      fig(
+        "/images/blog/right-click-learner.jpg",
+        "A learner using a mouse, a small menu on the laptop screen.",
+        "Point first, then the right button. If you right-click the wrong icon, the wrong drawer opens. Click away. Point again.",
+      ),
+      ul([
+        "Right-click the desktop. Look. Escape. Nothing should have changed.",
+        "Right-click a file you can afford to practise on. Read Open, Rename, Delete. Do not Delete it.",
+        "Right-click a blank part of a Word page. See how the list differs.",
+        "If a name in the list is a stranger, write it down. That is a clue for Apps, later, not a reason to click it now.",
+      ]),
+      h2("Properties, and the quiet facts"),
+      p(
+        "Properties, at the bottom of many file menus, is a fact sheet: size, type, date modified, sometimes a Security tab you can leave alone. Size you now know. Date modified is when the file last changed — useful when two receipts have similar names. Read-only is a tick that says “do not save over me”; useful on a template. You do not need to live in Properties. Know it exists so a helper who says “check the size” is not speaking a foreign language.",
+      ),
+      p(
+        "The right button is how a computer hides power in a small list instead of fifty icons. You will not memorise every list. You will look, pick a verb you can defend, or leave. That is the same manners as the installer boxes. Next is not a trance. The menu is not a command. It is an offer.",
+      ),
+    ],
+  },
+  {
+    slug: "drag-and-drop",
+    title: "Drag and drop without losing the file",
+    excerpt:
+      "Hold, move, release. Inside one disk, that is often a move. Onto a USB, it is often a copy. Watch the ghost icon. Drop on a folder, not on a hole.",
+    series: SERIES,
+    order: 74,
+    author: AUTHOR,
+    date: DATE,
+    cover: "/images/blog/drag-drop.jpg",
+    coverAlt: "A file icon being dragged toward a folder on a laptop screen.",
+    body: [
+      p(
+        "Drag and drop is pick up, walk, put down. Click a file, keep the button held, move, release on a folder. The file goes, or a copy goes, depending on the walk. People drop onto the gap between windows and the file vanishes into a path they did not mean — Desktop, a neighbour folder, Recycle Bin if they drifted onto the Bin. This lesson is a deliberate drop, the difference between move and copy, and what to do when the ghost icon lies.",
+      ),
+      p(
+        "Open two windows: Documents on the left, the USB or School/2026 on the right. Click the file in the left. Hold. Drag until the right folder is highlighted — a box or a name that lights. Release. If you are walking inside the same disk, Windows often moves: the original leaves the first room. If you are walking to a USB, it often copies: both rooms have it. A small plus sign on the ghost means copy. No plus can mean move. Hold Ctrl while you drop to force a copy. Hold Shift to force a move. If you cannot remember, copy with Ctrl+C and paste. The long way is still correct.",
+      ),
+      fig(
+        "/images/blog/drag-drop.jpg",
+        "A file being dragged from one folder toward another.",
+        "The destination should light up before you release. If nothing is lit, you are dropping into a hole. Keep holding, move until a folder claims it, then release.",
+      ),
+      h2("When it disappears"),
+      p(
+        "Undo in the folder — Ctrl+Z — can put a moved file back, once, if you have not done something else. Search the rooms you know. Check Desktop. Check Recycle Bin if the path crossed the Bin. Check the USB. A drop that looked like a copy to a stick that then ejected early can corrupt, as a yanked USB does. Wait for the progress box. Then open the file from the new room before you delete the old one. Copy, look, then delete, is still the religion. Drag is only a faster copy or move.",
+      ),
+      p(
+        "Dragging a file onto a Word window may insert it as a picture or an attachment inside the letter. Dragging onto a browser may upload it to a site you did not mean to feed. If you did not mean that, undo in Word, or close the tab without sending. Drag onto folders, not onto programs, until you are sure.",
+      ),
+      fig(
+        "/images/blog/dragging-file.jpg",
+        "A learner dragging a file between two folder windows.",
+        "Two windows, both paths visible. A drag across a crowded desktop is how files land in the wrong envelope. Clear the desk, then walk.",
+      ),
+      ul([
+        "Copy a practice file first, so the original is safe.",
+        "Open Documents and a second folder. Drag the copy. Confirm which room it lives in now.",
+        "If it moved and you wanted both, copy it back. Next time hold Ctrl, or use Ctrl+C.",
+        "Do not drag the only wedding folder onto a USB and then empty the laptop before you have opened a photo from the stick.",
+      ]),
+      h2("On a trackpad, and on a phone"),
+      p(
+        "Trackpads make drag fussy: the finger lifts, the drop fires early. A mouse is kinder for this one act. On a phone, hold a photo, then a share sheet — that is not the same as a Windows move. Do not practise drag with files you cannot replace. Practise with delete-practice, zip-practice, the names you already made. When the drop is boring, you have learned it. Boring is the goal. Drama is a file in a hole.",
+      ),
+    ],
+  },
+  {
+    slug: "a-one-page-cv-that-is-honest",
+    title: "A one-page CV that is honest",
+    excerpt:
+      "A CV is a letter about work you have actually done. One page, real dates, a number that rings. Empty years are allowed. Invented jobs are not.",
+    series: SERIES,
+    order: 75,
+    author: AUTHOR,
+    date: DATE,
+    cover: "/images/blog/simple-cv.jpg",
+    coverAlt: "A simple one-page CV on a laptop screen.",
+    body: [
+      p(
+        "A CV is not a poster of who you wish you were. It is a one-page letter that says your name, how to reach you, and what you have actually done — school, a shop, a church role, a computer course you finished. Shops sell templates with gold lines and a photograph that ate the margin. Offices in this city still read a quiet page. This lesson is that page in Word, with the bones you already have: one typeface, a list, the truth.",
+      ),
+      p(
+        "Name at the top, large enough to read, not a banner. Next line: phone, email you can open — the address you made on purpose. Then a short sentence if you must: Seeking computer basics work, or Available for shop and office tasks. Then headings: Education, Experience, Skills. Education can be SSCE, a year, a school that exists. Experience can be “helped at a family stall, 2024–2025” or “completed Computer Basics at Cyber Elias Academy, Port Harcourt.” Skills: things you can do at a desk this week — email, Word, Excel totals, not “Microsoft Office Suite Guru.” If you cannot demonstrate it on a machine, it is not a skill yet.",
+      ),
+      fig(
+        "/images/blog/simple-cv.jpg",
+        "A one-page CV with a name, a few headings and white space.",
+        "White space is honesty. A packed page of twenty courses you have not taken is a poster. One page they can hold is a CV.",
+      ),
+      h2("Dates, gaps, and what to leave off"),
+      p(
+        "Year–year is enough. Do not invent a job to fill 2023. A gap is ordinary. A lie is a conversation you will lose in the room. Do not put a BVN, a home address if you are not asked, a photograph unless they asked, a date of birth unless they asked. Do not put a motivational quote. Do not put “references available on request” if you have no one to name; name one person who will pick up, with their permission, or omit the line.",
+      ),
+      p(
+        "Bullets, not a novel. Two or three lines under each role: what you did, in verbs you can stand by — received customers, kept a fee book in Excel, typed letters. Spell check, then read aloud. Your name must be spelled as on your ID. Save as yourname-cv-2026.docx, then PDF. Send the PDF unless they asked for Word. You know why.",
+      ),
+      fig(
+        "/images/blog/cv-print.jpg",
+        "A printed one-page CV beside a laptop, a learner reading it.",
+        "Print one copy. If you would be embarrassed to hand it over, it is not finished. Fix the page, not the printer.",
+      ),
+      ul([
+        "One page in Word. Name, phone, email, Education, Experience, Skills.",
+        "Three true bullets under one real thing you have done.",
+        "Spell check. Read aloud. PDF. Open the PDF. Confirm it is one page.",
+        "Do not download a “professional CV builder” from an advert. Word is enough.",
+      ]),
+      h2("When they asked for two pages, and when they asked for a form"),
+      p(
+        "Some offices want their own form. Fill the form. Attach the CV if they said so, not instead. Some public-sector processes want NYSC, certificates, a longer pile. That pile is not this one page; it is a folder, School or Work, named. The one page is the door. The folder is the house. Do not email the whole house unasked.",
+      ),
+      p(
+        "A CV is a letter with a longer memory. It should still look like something you would sign. When the page is quiet and true, it is done. Update it when something real happens — a course finished, a role ended — not every Saturday. The file lives in Documents/Work or School, backed up, like anything you would cry about. You already know that part. The new part is refusing to invent a life to fill a margin.",
+      ),
+    ],
+  },
 ];
 
