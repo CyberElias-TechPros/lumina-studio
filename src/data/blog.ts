@@ -1721,4 +1721,254 @@ export const blogPosts: BlogPost[] = [
       ),
     ],
   },
+  {
+    slug: "a-folder-for-school-or-work",
+    title: "A folder structure for school or work",
+    excerpt:
+      "One drawer is not a filing system. School, then the year, then the kind of paper. Name the rooms before the term fills them.",
+    series: SERIES,
+    order: 31,
+    author: AUTHOR,
+    date: DATE,
+    cover: "/images/blog/folder-tree.jpg",
+    coverAlt: "File Explorer showing nested folders named School, 2026 and Fees.",
+    body: [
+      p(
+        "You know a folder is an envelope. This lesson is a small house of envelopes that will still make sense in March. People dump everything on the Desktop because the Desktop is the table they can see. By week six the table is a market stall: three files called assignment, a photograph of a receipt, a zip they never opened. Searching then feels like failure. It is only a house with no rooms.",
+      ),
+      p(
+        "You do not need a masterpiece. You need three levels, named in words you would say to a person. School, or Work, or Church. Inside that, a year. Inside the year, the kinds of paper: Fees, Letters, Notes, Photos. That is enough to start a term. Extra rooms can wait until a pile appears.",
+      ),
+      fig(
+        "/images/blog/folder-tree.jpg",
+        "Nested folders: School, then 2026, then Fees.",
+        "The path along the top of File Explorer is the address of the room you are in. Documents > School > 2026 > Fees is a sentence you can say aloud.",
+      ),
+      h2("Build the rooms once"),
+      p(
+        "Open Documents, not Desktop. Right-click, New, Folder. Name it School. Open it. New folder, 2026. Open that. New folders: Fees, Letters, Notes. If you run a shop, Work, 2026, Invoices, Receipts, Customers. If the academy is your whole computer life, one School tree is enough. Do not make a folder for every day. Daily rooms go stale and you stop using them.",
+      ),
+      p(
+        "When you Save As, walk into the room on purpose. The left side of the Save window is the same house. Click Documents, then School, then 2026, then Fees. Then name the file. Two extra clicks now save twenty minutes in April. If you saved to Desktop by habit, cut the file — Ctrl+X — and paste it into the room. The Desktop is a table. Tables get cleared.",
+      ),
+      fig(
+        "/images/blog/organizing-desk.jpg",
+        "Paper files beside a laptop showing folders.",
+        "The paper pile and the computer pile should use the same words. If the envelope says Fees, the folder should say Fees. Translation is how things go missing.",
+      ),
+      ul([
+        "In Documents, make School, then 2026, then Fees, Letters, Notes.",
+        "Move one real file into Fees — a receipt, a PDF, anything that belongs.",
+        "Save a new one-line letter into Letters using Save As, walking the path.",
+        "Look at the path at the top. Read it out loud. That is the address.",
+      ]),
+      h2("What not to invent"),
+      p(
+        "Do not name a folder Miscellaneous, or New folder (2), or Stuff. Those are unmarked boxes. Do not copy the entire Downloads mat into School. Downloads is still a mat; sort from it, do not bury it. Do not make both School and school — Windows may allow it to look different and then confuse you. One spelling.",
+      ),
+      p(
+        "A USB backup should mirror the same words: backup-2026/School/…. When the laptop dies, you should not have to learn a second language. The rooms are the skill. The files will come. If a new kind of paper appears — Timetable, NYSC — add one room, not a new tree. The house stays small so you will actually walk through it.",
+      ),
+    ],
+  },
+  {
+    slug: "renaming-files-without-breaking-them",
+    title: "Renaming files without breaking them",
+    excerpt:
+      "The name is for you. The part after the last dot is for the computer. Change Chidinma-JAMB. Leave .pdf alone.",
+    series: SERIES,
+    order: 32,
+    author: AUTHOR,
+    date: DATE,
+    cover: "/images/blog/rename-file.jpg",
+    coverAlt: "A file name highlighted in File Explorer, ready to type.",
+    body: [
+      p(
+        "IMG_0048.jpg is a name a camera gave because it cannot care. document(3).docx is a name Word gave because you already had two documents. Neither will help you in October. Rename is how a file becomes a sentence. It is also how people hide a file from the computer by deleting the .pdf at the end. This lesson is the name, the dot, and the slow click.",
+      ),
+      p(
+        "A file name has two parts. Everything before the last dot is yours. Everything after — pdf, jpg, docx, xlsx, zip — is the type. The computer uses the type to choose a program. If you turn receipt.pdf into receipt, Windows may ask which program should open it, as if you had handed it a letter with no envelope. If you turn it into receipt.docx, Word will try to open a PDF and fail in a language you will not enjoy.",
+      ),
+      fig(
+        "/images/blog/rename-file.jpg",
+        "A file name selected for renaming in File Explorer.",
+        "Click once to select, then wait, then click the name — or press F2. If you double-click, you will open the file instead. Opening is not renaming. Escape cancels a rename you do not mean.",
+      ),
+      h2("The slow click, and F2"),
+      p(
+        "Click the file once. Pause. Click the name, not the icon. The name highlights. Type the new name. Watch the .pdf or .jpg at the end. If the type is highlighted too, do not type over it. Click once in the name, or press F2, which on many machines highlights only the name and leaves the type. Enter to confirm. Esc if you panicked.",
+      ),
+      p(
+        "If Windows hides the type — “File Explorer Options, hide extensions” — turn that off so you can see the dot. View, Show, File name extensions, on modern Windows. Seeing the type is how you stop breaking it. A name you cannot see is a name you will damage.",
+      ),
+      fig(
+        "/images/blog/file-names.jpg",
+        "Two files with similar names on a laptop screen.",
+        "document and document-final are a trap. fees-2026-03 and fees-2026-04 are a timeline. Dates and names beat the word final, which is never final.",
+      ),
+      ul([
+        "Copy a practice file. Rename the copy to rename-practice.pdf or whatever type it actually is. Keep the type.",
+        "Open it. If it opens as before, you renamed well.",
+        "Rename it again to include a date: rename-practice-2026-09.",
+        "Do not put a slash, a question mark, or a colon in a name. Windows will refuse, or worse, misread.",
+      ]),
+      h2("Characters that bite, and duplicates"),
+      p(
+        "Avoid / \\ : * ? \" < > | in names. They are commands to the computer, not decoration. Spaces are allowed but a-name-like-this travels better in some links. Accents are allowed; you learned those. A trailing space is a ghost that makes two files look identical. Keep names short enough to read in a narrow window.",
+      ),
+      p(
+        "If a file is open in Word, rename will fail — “in use.” Close, then rename. If two files cannot have the same name in the same folder, that is the computer protecting you. Put them in different rooms, or date them. And if you already stripped a .pdf, rename and put the .pdf back. The file was not converted. It was only disguised. You did not lose the letter. You hid its envelope.",
+      ),
+    ],
+  },
+  {
+    slug: "searching-for-a-lost-file",
+    title: "Searching the computer for a lost file",
+    excerpt:
+      "Search is a clerk who can spell part of a name. Start in Documents, not the whole disk. One word you remember is enough if you named it like a human.",
+    series: SERIES,
+    order: 33,
+    author: AUTHOR,
+    date: DATE,
+    cover: "/images/blog/file-search.jpg",
+    coverAlt: "File Explorer search box with results listed below.",
+    body: [
+      p(
+        "A lost file is usually not lost. It is in Downloads, or on the Desktop, or in a folder you made in a burst of virtue and then forgot. Panic-clicking makes a second copy, then a third. Search is slower in the hands and faster in the outcome. This lesson is the search box, where to stand when you search, and what to do when the clerk shrugs.",
+      ),
+      p(
+        "Windows has two clerks. The taskbar search looks at programs, settings, and some files. File Explorer's box, top-right of a folder window, looks in the room you are standing in, and its inner rooms. Start Explorer in Documents, then search. If you start at This PC, you will wait while it rummages through Windows itself, which is a large house of parts you do not want.",
+      ),
+      fig(
+        "/images/blog/file-search.jpg",
+        "The search box in File Explorer, with a few results.",
+        "Type part of the name you gave it — fees, JAMB, amaka. You do not need the whole sentence. The clerk matches pieces.",
+      ),
+      h2("Stand in the right room"),
+      p(
+        "Open Documents. Click the search box. Type a word you are sure of. Wait for the green bar to finish. If nothing, try Downloads. Then Desktop. Then Pictures. Those four rooms hold almost all human work. If you used a USB last week, plug it in and search there too. A file on a flash drive is not in Documents, however much you remember saving “on the computer.”",
+      ),
+      p(
+        "If you remember when, Explorer can sort results by date. If you remember it was a PDF, type .pdf in the box after a space, or use the filter chips Windows offers: Kind, Document. A word plus a type is a short question: fees .pdf. That is enough.",
+      ),
+      fig(
+        "/images/blog/searching-laptop.jpg",
+        "A young man searching on a laptop, notebook beside him.",
+        "Write the words you already tried. Repeating the same search in the same room is not a strategy. Change the room or change the word.",
+      ),
+      ul([
+        "Save a file named find-me-practice in Documents/School if you have that room, or in Documents.",
+        "Go to Desktop. Search find-me. Confirm it does not appear, or appears as a path pointing at Documents.",
+        "Go to Documents. Search find-me. Open it from the result.",
+        "That is the difference between the whole market and the right stall.",
+      ]),
+      h2("When search finds nothing"),
+      p(
+        "You may have named it document. Search cannot invent a name you never gave. Think of a word inside the file — Windows can search inside many documents, slower. Think of the program: Word's Recent list, Excel's, the browser's downloads history. The last is a list of what landed on the mat, with dates. A bounced download may never have landed.",
+      ),
+      p(
+        "Recycle Bin next, as you learned. Then the USB. Then ask: did I save at all, or only type? If the computer restarted without Ctrl+S, there is no file. That is not a search failure. After you find it, move it to the room it should have lived in, and rename it so next term's clerk has something to hold. Search is a rescue. Rooms are how you stop needing rescue every Friday.",
+      ),
+    ],
+  },
+  {
+    slug: "start-menu-and-taskbar",
+    title: "The Start menu and the taskbar as a map",
+    excerpt:
+      "Start is the front door. The taskbar is the row of rooms you are in. Pin what you use. Do not confuse a pin with the program itself.",
+    series: SERIES,
+    order: 34,
+    author: AUTHOR,
+    date: DATE,
+    cover: "/images/blog/start-menu.jpg",
+    coverAlt: "The Windows Start menu open on a laptop.",
+    body: [
+      p(
+        "Windows hides most of the house until you open the front door. That door is Start — the four squares, or the Windows logo, bottom-left. The strip along the bottom is the taskbar: clocks, Wi‑Fi, and the programs that are open or pinned. People hunt on the Desktop for Word because they can see icons there. Word may never have lived on the Desktop. It lives behind Start. This lesson is the map of the ground floor.",
+      ),
+      p(
+        "Click Start. A list, a search box, a power button you already used to shut down. Type the first letters of what you want — word, excel, chrome, settings — and Enter. That search is faster than scrolling a mural of tiles. If you do this every day for one program, pin it, so the door remembers.",
+      ),
+      fig(
+        "/images/blog/start-menu.jpg",
+        "The Start menu open, search at the ready.",
+        "Typing is allowed. Start is not only a grid of pictures. The box at the top is the same idea as searching for a file: a few letters, then Enter.",
+      ),
+      h2("Pin, unpin, open"),
+      p(
+        "Right-click a program in Start, Pin to Start, or Pin to taskbar. Taskbar pins sit on the strip even when the program is closed. Start pins sit in the menu. Neither moves the program; both are signs on the street, like shortcuts. Unpin if the strip is crowded. Right-click, Unpin. The program is still in the house. You have only taken down the sign.",
+      ),
+      p(
+        "Open programs show a little line or a glow on their taskbar icon. Hover to see the window. Right-click the icon for a jump list — recent files in Word, extra windows. Clicking the icon of an open program minimises it, which is hiding, not closing. Click again to bring it back. The X on the window is close. The line on the taskbar is still in the room.",
+      ),
+      fig(
+        "/images/blog/taskbar.jpg",
+        "The Windows taskbar with Start and a few program icons.",
+        "Clock and Wi‑Fi live at the right. Programs live at the left and centre. The empty middle is not broken. It is waiting for pins.",
+      ),
+      ul([
+        "Open Start. Type notepad. Enter. Close it.",
+        "Open Start, type notepad again, right-click, Pin to taskbar.",
+        "Click the new taskbar icon. Close Notepad with the X. The icon stays. That is a pin, not an open program.",
+        "Right-click, Unpin when you are done practising, or keep it if you write every day.",
+      ]),
+      h2("The tray, and a missing taskbar"),
+      p(
+        "The far right is the system tray: volume, network, battery, hidden extras behind a small arrow. Those extras are background guests. You met them when the machine was slow. You do not need to empty the tray tonight. Know that the fan of Wi‑Fi lives there, and the clock, and sometimes a tiny USB-eject icon.",
+      ),
+      p(
+        "If the taskbar vanished, it may be set to hide: move the pointer to the bottom edge. If Start vanished after a shock, Ctrl+Esc often opens it, or the Windows key. If the whole bar is on the side, you or a helper dragged it; drag it back to the bottom from an empty stretch, after unlocking it if Windows asks. The map is ordinary. When it moves, it is almost never gone. It is only standing somewhere you are not looking.",
+      ),
+    ],
+  },
+  {
+    slug: "a-shortcut-is-not-the-file",
+    title: "A shortcut is not the file",
+    excerpt:
+      "The little arrow means a signpost. Deleting the signpost leaves the house standing. Deleting the real folder takes the house down. Look for the arrow.",
+    series: SERIES,
+    order: 35,
+    author: AUTHOR,
+    date: DATE,
+    cover: "/images/blog/shortcut-icon.jpg",
+    coverAlt: "A desktop shortcut icon with a small arrow, beside a real folder.",
+    body: [
+      p(
+        "A shortcut is a sign on the road that points at a house. The icon looks like the house. It is not the house. Windows draws a small arrow on the corner to say so. People delete a shortcut from the Desktop and think they have uninstalled Word, or they copy a shortcut to a USB and wonder why the letter will not open on another computer. This lesson is the arrow, how to make a sign on purpose, and how not to smash the house while tidying the street.",
+      ),
+      p(
+        "A shortcut is a tiny file whose type is .lnk, often hidden. It stores an address: this program, this folder, this document. Double-clicking the sign is walking to that address. If the house moved, the sign still points at the old street, and Windows says it cannot find it. The file may be fine, in the room you moved it to. The sign is stale.",
+      ),
+      fig(
+        "/images/blog/shortcut-icon.jpg",
+        "A shortcut with a small arrow next to a real folder.",
+        "Arrow: signpost. No arrow: the thing itself. On a crowded Desktop, look at the corner of the icon before you delete.",
+      ),
+      h2("Making a sign, not a second house"),
+      p(
+        "Right-click a folder or a file, Show more options if Windows 11 hides the list, Create shortcut. Or Send to, Desktop (create shortcut). A sign appears on the Desktop. The original stays in Documents. You have not copied the letter. You have put a sign on the table that points at the drawer. That is the right way to keep School in reach without emptying School onto the table.",
+      ),
+      p(
+        "You can pin to the taskbar instead, as in the last lesson. Same idea: a sign. For a program, prefer pin. For a folder you open all day, a Desktop shortcut is fine. For a USB, copy the real files, not the shortcuts. A sign that points at C:\\Users\\… on your laptop is a dead sign on another machine.",
+      ),
+      fig(
+        "/images/blog/desktop-shortcuts.jpg",
+        "A laptop desktop with a few shortcut icons.",
+        "A few signs are a map. Forty signs are a second junk drawer. If the Desktop is full, you are using signs as storage. Move the houses into Documents and leave two or three arrows.",
+      ),
+      ul([
+        "In Documents, right-click your School folder, create a shortcut on the Desktop.",
+        "Open the shortcut. Confirm you are in School. Look at the path at the top — it should still say Documents.",
+        "Delete the shortcut from the Desktop. Open Documents. School should still be there.",
+        "That is the whole difference between tidying a sign and demolishing a room.",
+      ]),
+      h2("When the sign is broken"),
+      p(
+        "“Missing shortcut” means the address inside the sign is wrong. Do not hunt the sign. Hunt the file with search, in the rooms you know. When you find it, delete the stale sign and make a new one if you still want it. Repairing a .lnk by hand is not a first-week skill.",
+      ),
+      p(
+        "Copying a shortcut into email attaches a sign, not the letter. The other person receives a useless arrow. Attach the PDF, or the zip, as you learned. And when a shop Desktop is forty arrows plus five “cleaners,” you now know you can delete arrows without uninstalling Windows. Look for the arrow. If there is none, stop and ask. The house and the sign look alike on purpose. The corner of the icon is the truth.",
+      ),
+    ],
+  },
 ];
