@@ -3965,5 +3965,246 @@ export const blogPosts: BlogPost[] = [
       ),
     ],
   },
+  {
+    slug: "google-docs-when-there-is-no-word",
+    title: "Google Docs when there is no Word",
+    excerpt:
+      "A letter can live in the browser. Same bones: a page, a cursor, Save that happens by itself if you are online. Download a PDF before you send it to an office.",
+    series: SERIES,
+    order: 76,
+    author: AUTHOR,
+    date: DATE,
+    cover: "/images/blog/docs-browser.jpg",
+    coverAlt: "A simple letter open in a browser on a laptop.",
+    body: [
+      p(
+        "Not every machine has Word. A business-centre PC may have a browser and nothing else worth using. Google Docs is a word processor that lives on the internet, behind the Google account you made on purpose. The page looks like a letter. The cursor blinks. The ribbon is quieter. This lesson is opening a blank doc, typing like Word, and taking a PDF home so the office does not have to log into your cloud.",
+      ),
+      p(
+        "Walk to docs.google.com yourself. Blank document. The title at the top, where it says Untitled, is the file name — click it, type letter-landlord-2026, Enter. That is Save As, in a different coat. If you are online, it keeps saving. If the café Wi‑Fi dies, a small notice will say so; stop typing important sentences until the road is back, or copy the text into Notepad as a rope. The cloud is a building with a road. You know that.",
+      ),
+      fig(
+        "/images/blog/docs-browser.jpg",
+        "A one-page letter in a browser window.",
+        "The address bar is still the street. If you arrived from a search advert, you may not be in Docs. Type the address. Then type the letter.",
+      ),
+      h2("The same bones, a few different buttons"),
+      p(
+        "Font, size 12, bold, alignment — they are there. File, Download, PDF, or Microsoft Word (.docx) if someone insisted on Word. Download lands on the mat, then you walk it into Letters. Print still wants preview. A table, a list, find and replace — cousins of what you already learned, sometimes under a smaller menu. You do not need Add-ons. You do not need a template with a purple sidebar. A blank page is still a blank page.",
+      ),
+      p(
+        "Offline: Google can cache Docs on a machine you use often, if you tick that in settings on a calm day. Until then, treat Docs as a café tool and Word or Writer as the desk tool. Do not start a ten-page report in a browser on a dying bundle. A one-page request is the right size for this sitting.",
+      ),
+      fig(
+        "/images/blog/docs-learner.jpg",
+        "A learner typing a letter in the browser, notebook beside the laptop.",
+        "The notebook is still allowed. If the tab closes, the doc should still be in Drive under that title. If the title was Untitled, hunt Untitled. Name it while you remember.",
+      ),
+      ul([
+        "Open docs.google.com signed into your account. Blank document. Name it practice-docs.",
+        "Type a short letter. Download as PDF. Open the PDF from Downloads. Move it to Letters.",
+        "Close the tab. Open docs.google.com again. Confirm practice-docs is in the list.",
+        "Do not install a “Docs offline pro” from a banner. The real setting is inside Google, on the real street.",
+      ]),
+      h2("Whose machine, whose bag"),
+      p(
+        "On a shared computer, Docs in Guest is a trap: you will type, then Guest will throw the bag away if you were not signed in. Sign in, write, Download the PDF to your USB, sign out, as in the five-minute walk. The doc remains in Drive, which is your building, not theirs — if you signed into your account. If you signed into theirs, you have written a letter in their house. Copy it out. Sign out.",
+      ),
+      p(
+        "Docs is Word without a disc. It is not better manners, not worse. A PDF you downloaded is what you attach. A link is the next lesson. For today: a page, a name at the top, a PDF on the USB. The office can read a plate. They should not have to knock on your cloud to do it, unless they asked.",
+      ),
+    ],
+  },
+  {
+    slug: "sharing-a-file-without-publishing-it",
+    title: "Sharing a file without publishing it",
+    excerpt:
+      "Anyone with the link is a public tray. A named email is a letter to one person. Viewer is enough for a receipt. Editor is a second pair of hands on your only copy.",
+    series: SERIES,
+    order: 77,
+    author: AUTHOR,
+    date: DATE,
+    cover: "/images/blog/share-dialog.jpg",
+    coverAlt: "A share dialog with an email field on a laptop screen.",
+    body: [
+      p(
+        "Drive, Docs, and many portals offer Share. A box, an email field, a permission. People tick “anyone with the link” because it is fast, then paste the link in a WhatsApp group of forty, then wonder why a stranger commented. Anyone with the link is a tray on the street. A named address is a letter. This lesson is the box, Viewer versus Editor, and when a PDF attachment is still the kinder door.",
+      ),
+      p(
+        "Share, add the person's real email, choose Viewer if they only need to read, Commenter if they should mark, Editor if they must change the words. Send. They get mail with a link, if that address is a Google address that can open it. If they have no Google account, Viewer links can fail, or ask them to sign in. Then attach a PDF instead. Do not fight the cloud when the envelope still works.",
+      ),
+      fig(
+        "/images/blog/share-dialog.jpg",
+        "A share box with an email and a permission.",
+        "One address, one permission. If the box says Restricted, only people you named. That is the default you want. Anyone with the link is the extra you must mean.",
+      ),
+      h2("Anyone with the link, and the group"),
+      p(
+        "Anyone with the link, Viewer, is for a poster you would tape on a gate — a timetable that is not private. It is not for a passport scan, a fee receipt with an account number, a CV with your phone. A link in a group chat forwards forever. You cannot un-forward. Restricted, named people, is how a receipt should travel. If the school asked for a link, Restricted, their address, Viewer. Then a short WhatsApp that says you shared it, as you learned when chat is a knock.",
+      ),
+      p(
+        "Editor on your only copy is two people in one letter. That is useful for a shared fee list in a family. It is how a cousin deletes a paragraph you needed. File, Make a copy, share the copy, keep the original in a folder they cannot see. You already know Save As. This is Save As for the cloud.",
+      ),
+      fig(
+        "/images/blog/share-learner.jpg",
+        "A learner pausing before sharing a document.",
+        "The pause is: who, and what may they do. If you cannot name both, attach a PDF. The link will wait.",
+      ),
+      ul([
+        "Upload or create a practice doc that holds no secrets.",
+        "Share it to your own second address as Viewer, Restricted. Open it from the other side.",
+        "Look at Anyone with the link. Do not turn it on for this file. Know where the tap is.",
+        "Remove the share when you are done practising. Share, the person, Remove.",
+      ]),
+      h2("Turning it off"),
+      p(
+        "Share, the list of people, Remove, or change Editor to Viewer. Anyone with the link: change back to Restricted. Old links then die for strangers. Copies people already downloaded do not die. A PDF you emailed is out of the house, as paper is. Share is not a spell. It is a door with a list. Keep the list short. Prefer Viewer. Prefer a name. Prefer a PDF when the other person only needs to read and print.",
+      ),
+    ],
+  },
+  {
+    slug: "comments-on-a-document",
+    title: "Comments on a document",
+    excerpt:
+      "A comment is a note in the margin, not a change to the letter. Reply, resolve, or ignore. Suggesting is a cousin that writes in another colour. You still own Accept.",
+    series: SERIES,
+    order: 78,
+    author: AUTHOR,
+    date: DATE,
+    cover: "/images/blog/doc-comment.jpg",
+    coverAlt: "A document with a short comment in the margin.",
+    body: [
+      p(
+        "Two people on one letter can shout in the body: red, caps, “CHANGE THIS.” A comment is a sticky note on a sentence. The sentence stays until someone edits it. Google Docs, Word, and PDFs with comments all use the same idea. This lesson is leaving a note, reading one, and not treating a comment as an order from the machine.",
+      ),
+      p(
+        "Select a word, as you learned. Right-click, Comment, or the + in the margin. Type one thought: “Date is March, should be April.” Send or Comment. A small mark sits in the margin. The other person clicks it, replies, or Resolve. Resolve hides the thread. It does not mean the sentence changed. Look at the words. If they are still wrong, the note was only a note.",
+      ),
+      fig(
+        "/images/blog/doc-comment.jpg",
+        "A highlighted sentence with a comment beside it.",
+        "The letter is the page. The note is the margin. Do not put the whole argument in the body in red. Put a sentence in the margin.",
+      ),
+      h2("Suggesting, and Accept"),
+      p(
+        "Suggesting mode, in Docs, writes new words in a colour and calls them a suggestion. The owner sees Accept or Reject. That is mail merge's cousin: a factory of edits you still have to look at. Accept all is Replace all. Sample first. In Word, Track Changes is the older name. Same manners. If you are the owner, you are not rude to Reject. It is your letter.",
+      ),
+      p(
+        "Turn on Suggesting only when two people agreed to share a draft. If you only needed them to read, Viewer, no comments even, or Commenter without Editor. A stranger with Editor and a loud Suggesting session is how a CV becomes someone else's. Share settings first, comments second.",
+      ),
+      fig(
+        "/images/blog/suggesting-edits.jpg",
+        "Two people looking at a commented document on one laptop.",
+        "Talk if you are in the same room. The margin is for when you are not. A comment that says “see me” is a knock. The body is still the work.",
+      ),
+      ul([
+        "In a practice doc, select one word, add a comment, resolve it. Confirm the word did not change.",
+        "If Docs offers Suggesting, type one suggested word. Reject it. Confirm the original returned.",
+        "Do not comment on a passport number in a file shared with Anyone with the link.",
+        "When a thread is finished, Resolve. A page of old notes is a second letter nobody asked for.",
+      ]),
+      h2("Email comments, and what not to @"),
+      p(
+        "Some tools mail you for every comment. That can be a tap on the shoulder. It can also be a siren. Mute a document you only needed to send. @name in a comment notifies that person if they are on the share list. Do not @ a list. Do not paste an OTP into a comment. The margin is not a vault.",
+      ),
+      p(
+        "A comment is manners for two desks. It is not a court. You may disagree in a short reply, then edit the body yourself if you own it. When the page is clean and the margin is empty, you are done. Download the PDF if the office wants a plate without notes. Notes are for the kitchen. The plate is for the tray.",
+      ),
+    ],
+  },
+  {
+    slug: "sorting-a-spreadsheet-column",
+    title: "Sorting a column without scrambling the rows",
+    excerpt:
+      "Sort is lining up a register. Select the whole table, then sort by one column. Sorting a single column on its own is how names leave their amounts.",
+    series: SERIES,
+    order: 79,
+    author: AUTHOR,
+    date: DATE,
+    cover: "/images/blog/spreadsheet-sort.jpg",
+    coverAlt: "A simple spreadsheet with a column sorted A to Z.",
+    body: [
+      p(
+        "A register in a book is in the order people arrived. A spreadsheet can line the same rows up by name, or by amount, or by date. Sort is that lining up. The danger is sorting one column while the neighbours stay still — Amaka keeps 500, the 500 slides under Chidi, and the book is now a lie. This lesson is select the table, sort by one header, and undo if the amounts look drunk.",
+      ),
+      p(
+        "Click any cell inside the table. Data, Sort, or the small A↓Z button. Tell it which column is the key — Name, or Amount. A to Z, or smallest to largest. Expand the selection if it asks. Yes, expand. That is the machine saying “do you mean the whole register?” You do. Headers: tick “my data has headers” so Name does not sort into the middle of the list as if it were a person.",
+      ),
+      fig(
+        "/images/blog/spreadsheet-sort.jpg",
+        "A Name column sorted, amounts still on the same rows.",
+        "Each row is a person or a fact. Sort moves whole rows. If only one column moved, Undo immediately. The book is wrong until you do.",
+      ),
+      h2("Numbers, text, and mixed cells"),
+      p(
+        "Amounts stored as numbers sort by size. Amounts stored as words — ₦500, or 500 with a space — sort as text, which puts 1000 before 200 because 1 is before 2. You met this in the grid lesson. Format the column as number, or type digits only, then sort. Dates need to be real dates, not “March 3” typed as a story in some cells and 03/03 in others. Clean, then sort. Sorting will not clean.",
+      ),
+      p(
+        "A filter — the funnel — hides rows that do not match. It is not sort. It is a pair of blinkers. Useful when the list is long. Clear the filter when you are done or you will print a half register and call it complete. Undo undoes a sort in Excel and Sheets if you have not closed. Save a copy before you sort a fees book you cannot rebuild. Save As, fees-2026-sorted, leave fees-2026 alone.",
+      ),
+      fig(
+        "/images/blog/sorted-list.jpg",
+        "A paper list beside a sorted spreadsheet.",
+        "If the paper and the grid disagree after a sort, believe the paper until you find the slipped column. Then Undo, expand the selection, sort again.",
+      ),
+      ul([
+        "Make a tiny table: three names, three amounts. Save.",
+        "Sort by Name, whole table. Confirm each name kept its amount.",
+        "Undo. Sort by Amount. Confirm again.",
+        "On a copy, sort only the Name column if the program lets you. See the lie. Undo. Never do that to a real book.",
+      ]),
+      h2("Print after, not before"),
+      p(
+        "Sort, look, then print. A printed pile in arrival order may be what the meeting wants; a sorted pile may be what the accountant wants. Ask. The grid will do either. It will not know which truth you meant. You are still the clerk. Sort is a tool for the eyes. The rows must stay married to their facts. That marriage is the whole lesson.",
+      ),
+    ],
+  },
+  {
+    slug: "printing-a-sheet-so-it-fits",
+    title: "Printing a spreadsheet so it fits",
+    excerpt:
+      "A grid is wider than a letter. Preview, landscape, fit to one page wide. A shrunk ant-stack is not a register. Cut columns, or take two sheets on purpose.",
+    series: SERIES,
+    order: 80,
+    author: AUTHOR,
+    date: DATE,
+    cover: "/images/blog/print-sheet.jpg",
+    coverAlt: "A spreadsheet print preview fitted onto one page.",
+    body: [
+      p(
+        "Excel will print what you asked, including twelve columns of ants across two centimetres, or one column alone on a lonely page. The printer is still a tap. Preview is still looking at the sink. A spreadsheet is just wider than a letter, so the same Print button needs extra manners: orientation, fit, and which rows you meant. This lesson is that preview, landscape, and refusing a page nobody can read.",
+      ),
+      p(
+        "Ctrl+P. Look at the miniature. If columns vanish off the right, the paper is too narrow. Layout, Orientation, Landscape — the wide way. If it still spills, Page Setup, Fit to 1 page wide by 1 page tall — or “fit all columns on one page.” Then look again. If the type is too small to read a naira amount, Fit is a lie. Undo the fit. Hide or delete columns you do not need on paper. A register of Name and Amount may not need a phone, an email, and a remark on the same sheet.",
+      ),
+      fig(
+        "/images/blog/print-sheet.jpg",
+        "Print preview of a grid on one landscape page.",
+        "The miniature is the truth. If you cannot read the numbers there, you will not read them on A4. Fewer columns, or two pages on purpose.",
+      ),
+      h2("Print area, titles, and the header row"),
+      p(
+        "If you only wanted the fees table, not the scratch numbers in column Z, select the table, Print area, Set print area. Preview should show only that. Repeat the header row on each page: Page Setup, Sheet, Rows to repeat at top. Then page 2 still says Name, Amount. Without that, page 2 is a pile of numbers with no names. People invent the names from memory. Memory is how books drift.",
+      ),
+      p(
+        "Gridlines: tick print gridlines if the page looks like free-floating words. Black and white is enough. Colour in a sheet is extra ink and often a grey mess. Draft quality for a working copy; a clearer setting for something you will stamp. You know Economy from the printing lesson. It still spends paper if you print twenty copies. Copies: 1, then look.",
+      ),
+      fig(
+        "/images/blog/fitted-print.jpg",
+        "A printed spreadsheet on one A4 sheet beside a laptop.",
+        "If the paper matches the preview, you are done. If the right edge is missing, the fit was ignored or the printer scaled again. Preview, then the machine.",
+      ),
+      ul([
+        "Open a small table. Ctrl+P. Note whether it spills.",
+        "Landscape. Preview. If needed, fit to one page wide. Preview again. Read a number in the miniature.",
+        "If the number is a speck, cancel. Remove a column. Preview again.",
+        "Print one copy if you can. Write the date on it. Paper is still a witness.",
+      ]),
+      h2("PDF of a sheet"),
+      p(
+        "Save as PDF from Print, or Export. The PDF is a picture of the grid, not a grid that adds. For an office that must add, send the Excel or Sheets file. For an office that must see, send the PDF. Do not send both “in case” unless they asked. One job, one attachment. The sheet on the screen can be as wide as you like. The sheet on the tray has to fit a hand. Preview until it does. Then the tap.",
+      ),
+    ],
+  },
 ];
 
