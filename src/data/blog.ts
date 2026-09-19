@@ -3471,5 +3471,255 @@ export const blogPosts: BlogPost[] = [
       ),
     ],
   },
+  {
+    slug: "undo-and-redo",
+    title: "Undo, and the thing you did not mean",
+    excerpt:
+      "Ctrl+Z takes back the last act. Ctrl+Y puts it back. Save is still the floor. Undo is a rope, not a time machine, and it dies when you close the window.",
+    series: SERIES,
+    order: 66,
+    author: AUTHOR,
+    date: DATE,
+    cover: "/images/blog/undo-menu.jpg",
+    coverAlt: "A word-processor letter on a laptop with an undo control nearby.",
+    body: [
+      p(
+        "You deleted a paragraph. Your stomach dropped. Before you rewrite from memory, try Undo. Ctrl+Z — Command+Z on a Mac — takes back the last thing you did. Type a word, undo, the word leaves. Delete a paragraph, undo, it returns. Do it again, and the thing before that returns. This lesson is that rope, Redo when you undid too far, and the moment the rope is cut: closing the window, or saving over the only copy on purpose.",
+      ),
+      p(
+        "Most programs keep a short memory of acts: typing, delete, paste, a format. Each Ctrl+Z walks one step back. If you undo too many times and the paragraph you wanted is gone the other way, Ctrl+Y or Ctrl+Shift+Z is Redo — walk forward again. You are on a path, not in two universes. Stop when the page looks like the one you meant. Then Save. Undo is not Save. If the light goes, undo dies with the unsaved window.",
+      ),
+      fig(
+        "/images/blog/undo-menu.jpg",
+        "A letter on a laptop, undo within reach.",
+        "The arrow is a rope. Pull it soon. If you type a new sentence after a mistake, that sentence is now the last act. Undo will eat it first. Undo the mistake before you panic-type.",
+      ),
+      h2("What undo will not resurrect"),
+      p(
+        "Empty Recycle Bin is not undone with Ctrl+Z. A file you Shift+Deleted is not in the Bin and not in undo. Replace all, if you then typed, may still undo in Word if you have not closed. A form on a website often has no undo at all. Explorer's undo — Ctrl+Z in a folder — can put a file back you just moved, once, if you have not done something else. Do not rely on it for a wedding folder. Copy, then move, as you learned.",
+      ),
+      p(
+        "Some programs forget after a Save, some do not. Word usually still undoes after Save, until you close. Notepad may be ruder. A browser tab's Back is not undo of a form; it may wipe the form. You have met that cousin. If you pasted the wrong thing over a selected page, undo immediately, before you click elsewhere. Selection plus paste is how whole letters vanish in one act. Undo is the next act. Then breathe.",
+      ),
+      fig(
+        "/images/blog/recovered-letter.jpg",
+        "A learner looking at a recovered letter on a laptop.",
+        "The paragraph came back. Save now. The rope is not a backup. The USB in the drawer is a backup. Undo is only for this sitting.",
+      ),
+      ul([
+        "Open a practice letter. Type a sentence. Ctrl+Z. It should leave. Ctrl+Y. It should return.",
+        "Select a paragraph. Delete. Undo. Confirm it is whole, not half.",
+        "Save. Close. Reopen. Ctrl+Z should do nothing useful. That is the cut rope. The file on disk is the truth now.",
+        "Do not practise undo on the only copy of a real certificate. Copy first.",
+      ]),
+      h2("The manners of a mistake"),
+      p(
+        "If undo cannot help — the window closed, the Bin emptied — stop clicking. Search, Recycle Bin, the USB, last month's backup. Rewriting in a panic makes a second bad copy. You already know the rooms. Walk them in order. A helper can look. A banner that says “restore deleted files — download now” is the virus costume. You know that door.",
+      ),
+      p(
+        "Undo is how a person stays calm at a keyboard. It is not bravery to refuse it. It is not a reason to skip Save every few minutes. The rope is short. The disk is the floor. Use both. Then the thing you did not mean is only a minute, not an afternoon.",
+      ),
+    ],
+  },
+  {
+    slug: "selecting-text",
+    title: "Selecting text without rage",
+    excerpt:
+      "Highlight is how the machine knows which words you mean. A drag, a double-click, Shift and an arrow. Click once in empty space if the blue block was a mistake.",
+    series: SERIES,
+    order: 67,
+    author: AUTHOR,
+    date: DATE,
+    cover: "/images/blog/selecting-text.jpg",
+    coverAlt: "A paragraph on a laptop with a few words highlighted.",
+    body: [
+      p(
+        "Copy, bold, delete, replace — all of them need to know which words. That knowledge is a blue block. People call it highlight, or select. Without it, Ctrl+C copies nothing, or copies the last thing, and you paste an old address into a new letter. With too much of it, one tap of a letter wipes a page, because typing replaces a selection. This lesson is how to paint the words you mean, and how to unpaint them before you type.",
+      ),
+      p(
+        "Click at the start of a word. Hold the left mouse button. Drag to the end. Release. The block should cover only what you meant. If your hand shook and took three extra lines, click once in empty space — the block dies — and try again, slower. Double-click a word to take just that word. Triple-click, in Word, often takes the paragraph. Ctrl+A takes everything in the window. You met Ctrl+A as a danger near Delete. It is useful when you mean the whole page, then Copy, then paste into a new file.",
+      ),
+      fig(
+        "/images/blog/selecting-text.jpg",
+        "A few words highlighted in a paragraph.",
+        "The blue is a choice. Typing now will replace only that choice. If you did not mean the blue, click away before you press a key.",
+      ),
+      h2("The keyboard, when the mouse lies"),
+      p(
+        "Click once to plant the cursor. Hold Shift, tap the right arrow. One letter joins the block. Hold Shift, tap down-arrow, a line joins. Shift+Ctrl+arrow takes a word at a time. This is how you select on a trackpad that jumps, or when a finger is tired. Shift+Home takes to the start of the line. Shift+End to the end. You do not need all of them today. Shift and the arrows are enough to stop fighting the pad.",
+      ),
+      p(
+        "If you click in the margin of Word, you may select a whole line. That is a feature. If the whole document goes blue, you Ctrl+A'd or you clicked the corner. Click once in the page. The blue should leave. Then select smaller. A selection that covers a picture as well as words will copy the picture. Click the picture once to select only it, or avoid it with the arrows.",
+      ),
+      fig(
+        "/images/blog/shift-select.jpg",
+        "A learner selecting a block of text with the keyboard.",
+        "Plant the cursor, then Shift. The block grows from a place you can see. Dragging across a whole page is how people select a heading they did not want.",
+      ),
+      ul([
+        "Type two sentences. Double-click one word. Ctrl+C, click elsewhere, Ctrl+V. Only that word should travel.",
+        "Click away. Shift+arrow across a short phrase. Bold it if you have the B button. Click away.",
+        "Ctrl+A, then click once in the page. Confirm the blue has gone before you type.",
+        "If a whole page vanishes under one letter, Ctrl+Z immediately. That was a selection you did not see.",
+      ]),
+      h2("On phones, and in forms"),
+      p(
+        "On a phone, press and hold a word, then drag the two handles. Copy sits in a small menu. The handles are fussy. Zoom first, last lesson but a few, then hold. In a web form, select the box's text with Ctrl+A inside the box — click the box first — not Ctrl+A on the whole page, which may try to copy the site. A greyed box cannot be selected; it is not yours to copy, or it is already filled.",
+      ),
+      p(
+        "Selection is a quiet skill that sits under copy, under bold, under replace, under “why did my letter disappear.” Look for the blue before you press anything that changes words. If there is blue you did not paint, click it off. Then act. The machine is literal. It will spend its next key on whichever words are wearing the blue coat.",
+      ),
+    ],
+  },
+  {
+    slug: "page-numbers-and-headers",
+    title: "Page numbers and a quiet header",
+    excerpt:
+      "A header is a small line that repeats. A page number is a counter, not a number you type at the bottom of each sheet. Insert it once. The next page will count.",
+    series: SERIES,
+    order: 68,
+    author: AUTHOR,
+    date: DATE,
+    cover: "/images/blog/page-numbers.jpg",
+    coverAlt: "A letter on a laptop with a page number at the bottom of the page.",
+    body: [
+      p(
+        "A one-page letter does not need a number. A three-page request, a report, a list of names — the person who drops the staple needs to know which sheet is two. People type “2” at the bottom of page two, then add a paragraph, and “2” is now in the middle of page three. A page number is a field that counts. You insert it once. Word walks it forward. This lesson is that field, a quiet header, and not building a second letter in the margin.",
+      ),
+      p(
+        "In Word: Insert, Page Number, Bottom of page, a simple centre or right. Close Header and Footer, or double-click the main letter, to return to the body. The number sits in a footer — a strip at the bottom that repeats. A header is the strip at the top. Double-click near the top of the page to type there. Your name, or the title of the document, once, small. Size 10 is enough. The body stays size 12. If the header is as loud as the greeting, it is not a header. It is a poster in the wrong place.",
+      ),
+      fig(
+        "/images/blog/page-numbers.jpg",
+        "A letter with a small page number at the bottom.",
+        "The number is a servant. It should not shout. Centre or right, one typeface, no colour. Close the header to type the letter again.",
+      ),
+      h2("Different first page, and too much"),
+      p(
+        "A letter often wants no number on the first sheet, then 2 on the second. Header & Footer, Different first page. Leave the first footer empty. Put the number on the second. That is enough. Do not invent “Page 1 of 3” unless someone asked. The extra words eat the margin and look like a manual.",
+      ),
+      p(
+        "A header that contains a logo, a slogan, a phone number, an email, a coloured bar, and a line is a letterhead. Schools and offices have those as templates. You do not need to design one for a request to a landlord. Your name at the top of the body is enough, as in the letter lesson. If you must, one line in the header: Amaka Okoro — March fees. Then stop.",
+      ),
+      fig(
+        "/images/blog/header-letter.jpg",
+        "A printed letter with a simple header, beside a laptop.",
+        "Print preview still rules. If the header collides with the greeting, the margin is too small or the header is too tall. Shrink the header, not the courtesy of the letter.",
+      ),
+      ul([
+        "Open a two-page practice by pressing Enter until you have a second sheet.",
+        "Insert a page number at the bottom. Scroll. Page 2 should say 2 without you typing 2.",
+        "Double-click the header. Type one short line. Close the header. Confirm the body is still the body.",
+        "Print preview. If the number sits on the text, increase the bottom margin a little.",
+      ]),
+      h2("PDF, and when to skip"),
+      p(
+        "Save as PDF after the numbers look right. A PDF keeps the footer. If you number in Word then export, do not also stamp numbers in a second program. Two counters fight. For a one-page PDF of a receipt, skip the header. For a ten-page notes file, the number is kindness.",
+      ),
+      p(
+        "Headers are not a place to hide a second essay. They repeat on every page, which is how a joke becomes a punishment. Name, or title, or nothing. Number at the bottom. Body in the middle. You already know white space. The strips at the top and bottom are more of it, with one small fact each.",
+      ),
+    ],
+  },
+  {
+    slug: "cc-bcc-and-reply-all",
+    title: "Cc, Bcc, and Reply all",
+    excerpt:
+      "To is the person who must act. Cc is the person who should see. Bcc is a copy they did not all see each other get. Reply all is a loud room. Use it rarely.",
+    series: SERIES,
+    order: 69,
+    author: AUTHOR,
+    date: DATE,
+    cover: "/images/blog/cc-bcc.jpg",
+    coverAlt: "An email compose window showing To, Cc and Bcc fields.",
+    body: [
+      p(
+        "You already send To, Subject, body. Two extra fields sit on the envelope, often hidden behind a small Cc. Cc means carbon copy — a name from the age of paper: this person should see the letter, but it is not their job to answer. Bcc means blind carbon copy: they get it, and the others do not see their address. Reply all sends your answer to everyone who was on the original. This lesson is who belongs in which field, and the moment Reply all turns a school thread into a market.",
+      ),
+      p(
+        "To: the person who must do something — accounts, the landlord, Mrs Amadi. One address, or two if they share the job. Cc: your own second address if you want a copy; a supervisor who asked to be kept in the picture; a parent on a school mail if the school said so. Not a whole class. Not a group of cousins “for awareness.” Extra eyes are not free. They cost the other person a minute, and they cost you a wider room if you later need to speak plainly.",
+      ),
+      fig(
+        "/images/blog/cc-bcc.jpg",
+        "To, Cc and Bcc on an email, a short body underneath.",
+        "If you cannot say why a person is in Cc, they should not be there. Bcc is not a secret insult. It is a way not to publish a list of addresses.",
+      ),
+      h2("Bcc, and the list you should not expose"),
+      p(
+        "If you must mail twenty parents, or twenty members, put your own address in To, and the twenty in Bcc. Each person receives one letter. They do not receive each other's addresses. Putting twenty people in To or Cc is how a family WhatsApp is born inside email, and how a stranger harvests numbers. Bcc is manners for a list. It is not a place to hide a boss so you can pretend they were not told. If the To person should know the boss was copied, use Cc.",
+      ),
+      p(
+        "Reply is to the sender. Reply all is to the sender and every Cc, and sometimes a list you cannot see. Before you press it, look at the To line of your reply. If there are fifteen names, ask whether fourteen of them need “thank you.” Usually they do not. A thread about a timetable that becomes twenty “noted” mails is how people mute the school. Reply to the sender, or to the one person you must correct.",
+      ),
+      fig(
+        "/images/blog/reply-all.jpg",
+        "A learner pausing at an email on a laptop.",
+        "The pause is the skill. If the mail went to a group, your joke goes to the group. If you did not mean the group, Reply, not Reply all.",
+      ),
+      ul([
+        "Open Compose. Show Cc and Bcc if they are hidden — a small link next to To.",
+        "Send yourself a practice: To your address, Bcc a second address you own if you have one. Confirm both arrive, and that To does not list the Bcc.",
+        "Find an old group mail. Look at Reply versus Reply all. Do not send. Only look at who would receive it.",
+        "Never Bcc a person on a quarrel so they can “see who you are.” That is theatre. Leave them out, or use Cc honestly.",
+      ]),
+      h2("Forward, and the chain"),
+      p(
+        "Forward sends the letter on. The chain below may hold old addresses and an argument. Read the chain before you forward to a new person. Cut what they do not need, or copy the one fact into a new mail. “Please find below” with six weeks of Reply all is not a briefing. It is a pile.",
+      ),
+      p(
+        "You now have four doors: To, Cc, Bcc, Reply all. Most letters use only To. That is not unsophisticated. That is a letter with one job. Extra fields are for extra jobs. If you cannot name the job, close the field. The envelope should be as quiet as the body.",
+      ),
+    ],
+  },
+  {
+    slug: "an-email-signature",
+    title: "A signature at the bottom of a mail",
+    excerpt:
+      "A signature is your name and how to reach you, repeated without retyping. Three lines is enough. A novel, a logo, and a quote are a poster glued to a letter.",
+    series: SERIES,
+    order: 70,
+    author: AUTHOR,
+    date: DATE,
+    cover: "/images/blog/email-signature.jpg",
+    coverAlt: "An email with a short name-and-phone signature at the bottom.",
+    body: [
+      p(
+        "Every mail you send should still sign off like paper: your name, a number. Typing that every time is how people forget the number, or send from a nickname. A signature is a small stamp the mailer adds at the bottom. You write it once. It walks with every new compose. This lesson is three lines, how to switch it on, and what not to paste from a cousin's colourful template.",
+      ),
+      p(
+        "In Gmail: the gear, See all settings, General, Signature. Create new. Type your full name, as on your ID. Next line: a phone number you answer. Next line, if you must: Computer Basics student, or the name of your shop, or nothing. Save. Tick that it applies to new mail, and, if you like, to replies. On Outlook or the Mail app, the words are Signature in settings. Same three lines. You do not need a different stamp for each mood.",
+      ),
+      fig(
+        "/images/blog/email-signature.jpg",
+        "A short signature under an email body.",
+        "Name, number, one optional line. Black, size of the body or a little smaller. If it is louder than the letter, it is wrong.",
+      ),
+      h2("Replies, and the stack of stamps"),
+      p(
+        "A signature on every reply in a long thread repeats your number ten times. Some people switch “insert on reply” off and sign the first mail only. Either is polite. What is not polite is a signature taller than the answer — a logo, a banner, a row of social icons, a confidentially notice copied from a bank, a proverb. The other person has to scroll past your billboard to find “Tuesday is fine.”",
+      ),
+      p(
+        "Do not put a scanned handwriting as a huge image. Do not put a QR to your WhatsApp unless you are a shop and they asked. Do not put a second person's number “in case.” One person, one stamp. If you send for an office, the office will give you the stamp. Until then, you.",
+      ),
+      fig(
+        "/images/blog/signature-block.jpg",
+        "A learner writing a full name in a notebook, an email open on the laptop.",
+        "The paper name and the stamp should match. A nickname in the signature and a legal name in the letter is how clerks file you twice.",
+      ),
+      ul([
+        "Write three lines on paper: name, number, optional one-line role.",
+        "Put them in the mailer's signature settings. Send yourself a new mail. Confirm they appear.",
+        "Open a reply to an old mail. Decide whether you want the stamp there too. One tick.",
+        "If a colourful template arrives in WhatsApp “for professionals,” delete it. Three lines you typed are professional.",
+      ]),
+      h2("When the stamp is wrong"),
+      p(
+        "A new number: edit the signature the same day. An old number in the stamp is how people miss you for a term. If you use two addresses, set the stamp on both, or you will send from the academy-looking address with no name. On a shared computer, do not save a signature in the house profile. Guest, then type your name at the bottom once, as you used to. The stamp lives in the bag. You know whose bag you are in.",
+      ),
+      p(
+        "A signature is not a CV. It is not a poster. It is the printed name under the last sentence, with a number so the other person can call instead of hunting. When the letter is one job, the stamp is one name. You have reached the end of the envelope. To, maybe Cc, body, attachment, stamp. Send. Then wait, like an adult.",
+      ),
+    ],
+  },
 ];
 
