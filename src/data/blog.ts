@@ -1209,4 +1209,262 @@ export const blogPosts: BlogPost[] = [
       ),
     ],
   },
+  {
+    slug: "installing-a-program-on-purpose",
+    title: "Installing a program on purpose",
+    excerpt:
+      "An installer is a guest you invited. Next is not the same as I agree to extra toolbars. Download from the real street, then walk through the boxes with your eyes open.",
+    series: SERIES,
+    order: 21,
+    author: AUTHOR,
+    date: DATE,
+    cover: "/images/blog/installer-window.jpg",
+    coverAlt: "A laptop screen showing a simple software installer with a Next button.",
+    body: [
+      p(
+        "A program is a tool that was not on the machine when you sat down. Word, a browser, a video player, the academy's own software if a course needs it. Installing is inviting that tool into the house. Uninvited guests arrive as pop-ups, “free converters,” and a shop that loaded three extras while fixing the screen. This lesson is the invited kind: you chose it, you fetched it from the real street, and you watch the boxes instead of tapping Next in a trance.",
+      ),
+      p(
+        "You already know downloads land on the mat. An installer is usually a file named Setup, or the program's name plus .exe on Windows, or .dmg on a Mac. Double-clicking it starts a short conversation of windows. Those windows are not decoration. They are where extra toolbars, extra browsers, and a “partner offer” try to sit down beside the guest you wanted.",
+      ),
+      fig(
+        "/images/blog/installer-window.jpg",
+        "A simple installer window on a laptop, with a Next button visible.",
+        "Read the sentence above the button before you press it. Next is “I saw this page.” I agree is a contract. A ticked box you did not tick on purpose is how a second program arrives.",
+      ),
+      h2("Fetch it from the real street"),
+      p(
+        "Open the browser. Type the address you already trust — the maker's own site, or the academy's instruction — not the first advert for “VLC free download fast.” You have met that cousin. If a page shouts DOWNLOAD in three colours, look at the address bar. A small, boring button on the maker's own page is usually the real door. Save the file. Open Downloads. Confirm the name looks like the program you asked for, not “setup_bundle_free.”",
+      ),
+      p(
+        "Windows may then warn: “Do you want to allow this app to make changes?” That is User Account Control, a locked door. If you started the installer on purpose, Yes. If a window you did not start is asking, No. A Mac will similarly ask you to drag an icon into Applications, or to open a file from the internet; Open is fine when you fetched it. Do not fetch installers from a WhatsApp stranger. A USB from a friend is only as safe as that friend's habits.",
+      ),
+      fig(
+        "/images/blog/install-usb.jpg",
+        "A laptop on a wooden desk with a USB flash drive beside it.",
+        "A USB can carry an installer when the network is tired. It can also carry guests you did not invite. Scan if you know how; otherwise use the maker's site when you can, and a known USB when you cannot.",
+      ),
+      h2("The boxes, walked slowly"),
+      p(
+        "Typical pages: welcome, licence, where to put the files, extra offers, install, finish. Licence is legal wallpaper; you will not understand it all. You should still notice a ticked box that says “set as default browser” or “install this toolbar.” Untick extras. Choose Custom or Advanced if the window offers Typical versus Custom — Typical is how extras hide. The folder it suggests, usually Program Files, is fine. Do not browse to Documents. Programs are not letters.",
+      ),
+      ul([
+        "Pick one program you actually need — VLC for video, or LibreOffice if you have no Word. Walk to its real site.",
+        "Download. Open the installer. Untick anything that is not the program's name.",
+        "Finish. Find the new icon in Start. Open it once to prove it is the guest you invited.",
+        "Delete the installer from Downloads if you like, after it works. The program now lives in the house, not on the mat.",
+      ]),
+      h2("When Windows blocks it, and when you should listen"),
+      p(
+        "SmartScreen may say “Windows protected your PC.” If you are on the maker's real site and you recognise the name, More info, then Run anyway. If you do not recognise the name, Close. That warning is not always a liar. It is a cautious clerk. Treat unknown installers as you treat unknown links.",
+      ),
+      p(
+        "After install, a browser may have a new homepage you did not want. That is the extra guest. You will remove it in the next lesson. For today: one program, one purpose, eyes on the ticks. Installing is not dangerous because it is technical. It is dangerous because Next is easy.",
+      ),
+    ],
+  },
+  {
+    slug: "uninstalling-what-a-shop-added",
+    title: "Uninstalling what a shop added",
+    excerpt:
+      "Settings, Apps, the name you do not remember asking for. Uninstall is showing a guest the door. The Start menu is not the same as gone.",
+      series: SERIES,
+    order: 22,
+    author: AUTHOR,
+    date: DATE,
+    cover: "/images/blog/apps-list.jpg",
+    coverAlt: "A Windows Settings list of installed apps on a laptop screen.",
+    body: [
+      p(
+        "Machines come home from the shop with extra furniture: a “PC cleaner,” a second browser, a lottery of PDF tools, a trial antivirus shouting days remaining. Relatives do this too, with love. Each extra is a guest using chairs — memory, disk, a pop-up at breakfast. Uninstall is showing that guest the door. It is not the same as deleting a shortcut from the desktop. The shortcut is a sign on the street. The guest is still in the house.",
+      ),
+      p(
+        "On Windows, the roll call lives in Settings. Start, type Apps, Enter — or Settings, then Apps, Installed apps. You will see a long list, newest or name. You will not recognise half of them. That is normal. Windows itself has many names. You are hunting for the extras: things you can say out loud as “I never asked for this.”",
+      ),
+      fig(
+        "/images/blog/apps-list.jpg",
+        "The Windows installed-apps list on a laptop.",
+        "One row, one program. The three dots, or Uninstall, is the door. If you are not sure, write the name down and ask someone who uses the machine with you before you show it out.",
+      ),
+      h2("What you may show out, and what you must not"),
+      p(
+        "Safe to consider: toolbars, “optimizer,” “driver updater” that is not from the laptop's own maker, extra browsers you do not use if another browser still works, games a shop installed as a gift you do not want. Not safe to guess: anything with Microsoft, Intel, NVIDIA, Realtek, AMD in the name, or the laptop brand — HP, Dell, Lenovo, Acer. Those are often the hands and ears of the machine. When in doubt, leave it. A leftover trial is annoying. A missing driver is a black screen.",
+      ),
+      p(
+        "Click the extra, Uninstall, follow the boxes. Some will plead “are you sure” and offer a survey. No thanks. Some will leave a “keep my settings” tick; for malware-adjacent junk, untick. Restart if it asks. Then look at the desktop. If a shortcut remains, delete the shortcut — that is only the sign. If the program is still in the Apps list, uninstall did not finish; try again, or restart first.",
+      ),
+      fig(
+        "/images/blog/settings-learner.jpg",
+        "A young man looking at a laptop settings screen in a modest room.",
+        "Read the name twice. If you cannot tell whether it is Windows or a shop gift, leave it for a person who can. Uninstall is reversible only if you still have the installer and a reason.",
+      ),
+      ul([
+        "Open Settings, Apps. Scroll slowly. Write down three names you do not remember installing.",
+        "For each, decide: extra, or unknown. Unknown stays.",
+        "Uninstall one extra you are sure of. Restart if asked. Confirm the name is gone from the list.",
+        "If a browser homepage is still a stranger, that is Settings inside the browser — a later five minutes — not a reason to uninstall the browser itself.",
+      ]),
+      h2("The Start menu lie, and the leftover toolbar"),
+      p(
+        "Unpinning from Start, or dragging an icon to Recycle Bin, does not uninstall. It tidies the street. The guest still eats. Always return to the Apps list to know the truth. A toolbar that lives inside the browser may not even appear as its own app — look at the browser's Extensions or Add-ons, and remove the stranger there.",
+      ),
+      p(
+        "If the machine is packed with extras you cannot name, this is a good moment for the backup lesson, then a more patient person, not a “one-click cleaner” from a banner. You already know that banner is a cousin of the fake update. Show guests out one at a time, names you can defend. The machine will feel lighter because it is, not because a percentage said so.",
+      ),
+    ],
+  },
+  {
+    slug: "naira-and-accents",
+    title: "Typing naira, accents, and another language",
+    excerpt:
+      "₦ is a character, not a drawing. A language in the taskbar is a second keyboard laid over the same keys. Alt codes and the emoji panel are how the symbol arrives.",
+    series: SERIES,
+    order: 23,
+    author: AUTHOR,
+    date: DATE,
+    cover: "/images/blog/naira-typing.jpg",
+    coverAlt: "A document on a laptop showing the naira symbol and accented letters.",
+    body: [
+      p(
+        "The keyboard in front of you is mostly English. Nigeria writes ₦, names with accents, and sometimes Igbo, Yoruba, or Hausa letters that the keys do not paint. People draw a N and overstrike it, or type NGN, or skip the mark on a name that should have one. The machine can do better. This lesson is how to ask it for a character that is not printed on the plastic.",
+      ),
+      p(
+        "A character is a letter, a number, or a symbol the file can store. ₦ is one character. If you paste a picture of a naira sign into a spreadsheet, the grid cannot add it. If you type the character, it is money. The same is true of é in a French name, ọ in a Yoruba name, or a naira amount in a letter to a school.",
+      ),
+      fig(
+        "/images/blog/naira-typing.jpg",
+        "A document showing the naira symbol ₦ and accented letters on a laptop screen.",
+        "The symbol is text. It will print, search, and sit in a PDF. A hand-drawn N with a line is a picture, and pictures do not add.",
+      ),
+      h2("₦ on Windows, without a fight"),
+      p(
+        "Several doors. The reliable one: hold the Windows key and press the full stop (period). A panel opens — emoji and symbols. Search naira, or scroll to ₦, click it. It lands where the cursor was. Another door, on many machines: hold Alt and type 8358 on the numeric keypad, then release Alt. Laptops without a keypad may need Fn and a printed number pad. If that is a maze, use the panel. In Word, Insert, Symbol, and find ₦. Once you have it, copy and paste it for the rest of the page.",
+      ),
+      p(
+        "Google Docs and many websites accept the same paste. If a bank form rejects ₦, they want NGN or Naira as a word — obey the form. The symbol is for letters, invoices, and spreadsheets that know it. Do not fight a government box that was built in 2011.",
+      ),
+      fig(
+        "/images/blog/keyboard-language.jpg",
+        "Keyboard or language settings on a laptop screen.",
+        "ENG in the taskbar is a language. Click it. A second keyboard — United States-International, or a Nigerian language pack — uses the same plastic for different marks.",
+      ),
+      h2("A second keyboard on the same keys"),
+      p(
+        "Windows: Settings, Time & language, Language & region, Add a language. English (United States) International, or Yoruba, Igbo, Hausa if you will type those daily. After it installs, look near the clock for ENG. Click it to switch, or hold Windows and press Space. International English lets you type an apostrophe then e to get é, and similar pairs for other accents. It will surprise you the first week — a quote mark that “swallows” the next letter. That is the accent waiting. Press Space if you wanted a plain quote.",
+      ),
+      ul([
+        "Open Notepad. Press Windows and full stop. Insert ₦. Type a price.",
+        "Add a second language you actually need, or skip if ₦ was the only gap.",
+        "Switch with Windows+Space. Type your name as you want it on a letter.",
+        "Switch back to ENG. Save as typing-naira in Documents.",
+      ]),
+      h2("Phones, and names that matter"),
+      p(
+        "On a phone, hold the letter key — e, o, a — to see accents. Hold N or the currency key if your keyboard offers ₦. Gboard and others have a symbols page. Use the character in WhatsApp if you like; use it in the Word letter if the letter will be printed. A name on an ID should match the form. Accents that the ID does not have can wait. Accents that the ID does have should be typed, not approximated, when the box allows it.",
+      ),
+      p(
+        "You do not need every language pack. You need the marks you actually write. One extra keyboard, the naira in the panel, and the habit of checking ENG before you type a password — because a French layout will move where A and Q live, and a password typed on the wrong layout is a lockout. Glance at the taskbar. Then type.",
+      ),
+    ],
+  },
+  {
+    slug: "the-recycle-bin-and-i-deleted-it",
+    title: "The Recycle Bin and “I deleted it”",
+    excerpt:
+      "Delete is a cupboard, not a fire. Restore puts the file back. Empty is the real goodbye. Shift+Delete skipped the cupboard — look twice.",
+    series: SERIES,
+    order: 24,
+    author: AUTHOR,
+    date: DATE,
+    cover: "/images/blog/recycle-bin.jpg",
+    coverAlt: "A Recycle Bin window on a laptop showing a few deleted files.",
+    body: [
+      p(
+        "The first time a file vanishes under your own hand, the stomach drops as if the machine has judged you. Usually it has not. Delete, on a computer, is putting the paper in a cupboard by the door. The cupboard is the Recycle Bin on Windows, Trash on a Mac. Empty Recycle Bin is taking the cupboard to the fire. Until then, Restore is allowed. This lesson is that cupboard, the two deletes, and what to do when the cupboard was skipped.",
+      ),
+      p(
+        "You met this briefly in the files lesson. People still panic because the file is not in Documents, so it must be gone. Look in the cupboard before you rewrite a letter from memory. Look before you pay a shop to “recover.” Recovery after Empty is a maybe, a disk that must not be used, and money. Recovery from the Bin is a click.",
+      ),
+      fig(
+        "/images/blog/recycle-bin.jpg",
+        "The Recycle Bin open, with a short list of deleted files.",
+        "Date deleted is a gift. Sort by date if the name escapes you. Restore puts the file back where it was, or asks you where, if that folder is gone.",
+      ),
+      h2("Ordinary delete, and the one that skips the cupboard"),
+      p(
+        "Select a file. Press Delete, or right-click, Delete. It leaves Documents and appears in the Bin. The desktop icon for the Bin may look empty or full — a small change. Double-click it. Your file should be there. Restore. Close. Open Documents. Breathe.",
+      ),
+      p(
+        "Shift+Delete — the Shift key held while you press Delete — skips the cupboard. Windows will ask “Are you sure you want to permanently delete?” Permanently is the fire. If you did that by accident and said Yes, stop using the machine for heavy work and ask someone about recovery the same day. Do not install a “free recovery tool” from a banner. That banner is an old acquaintance. At the academy, say what happened before you fill the disk with new downloads.",
+      ),
+      fig(
+        "/images/blog/recycle-desktop.jpg",
+        "A laptop desktop with the Recycle Bin icon visible.",
+        "The icon is the cupboard door. If it is missing, the desktop was tidied; search Recycle Bin in Start. It is still there. A USB's delete is often already the fire — many flash drives do not have a bin.",
+      ),
+      ul([
+        "Create a file called delete-practice in Documents. Type one sentence. Save.",
+        "Delete it the ordinary way. Open the Recycle Bin. Restore it. Confirm it is back.",
+        "Delete it again. This time Empty Recycle Bin only after you have looked. That file is gone. That is the point of the practice file.",
+        "Never practise Shift+Delete on a real letter.",
+      ]),
+      h2("USB, photos, and other people's machines"),
+      p(
+        "Delete on a USB flash drive often does not use the Bin. The file is gone. Another reason copy is better than cut when you move photographs off a phone. Email attachments you “removed” from Gmail may sit in Trash on the mail site for thirty days — a different cupboard, in the browser, not on the desktop. Phones have their own recently deleted albums. Different rooms, same idea: look for a recently deleted before you despair.",
+      ),
+      p(
+        "Empty the Bin when you have looked, and when you need the disk space from the slow-computer lesson. Do not empty it because a cousin said it “makes RAM.” It does not. It frees disk. If you empty weekly without looking, you will empty a tax file you deleted by accident on Thursday. Looking is the whole skill. The cupboard is kind until you set it on fire.",
+      ),
+    ],
+  },
+  {
+    slug: "asking-for-help-without-the-password",
+    title: "Asking for help without handing over the password",
+    excerpt:
+      "A helper can look. A helper does not need the keys. You type, they point. Remote “support” from a pop-up is not a nephew.",
+    series: SERIES,
+    order: 25,
+    author: AUTHOR,
+    date: DATE,
+    cover: "/images/blog/asking-help.jpg",
+    coverAlt: "A learner at a laptop with a helper pointing at the screen, not typing.",
+    body: [
+      p(
+        "Sooner or later the machine will confuse you, and another person will stand at your shoulder, or a voice on the phone will say “let me take over.” Help is good. Help that includes your Gmail password, your bank OTP, and a remote-control program from a pop-up is how the house is emptied. This lesson is the manners of asking: you keep the keys, they keep the knowledge, and the screen can be seen without being owned.",
+      ),
+      p(
+        "At the academy, in a family, at a church office — a person you can see is the ordinary case. Let them sit beside you, not in your chair with you in the corridor. You stay signed in as you. You type the password, if one is needed, with their eyes elsewhere. They point. You click. That feels slower. It is how you still know your own machine on Tuesday.",
+      ),
+      fig(
+        "/images/blog/asking-help.jpg",
+        "A helper standing beside a learner, pointing at the laptop screen without taking the keyboard.",
+        "Pointing is teaching. Taking the keyboard is doing it for you. Both can fix today's problem. Only one leaves you able to fix tomorrow's.",
+      ),
+      h2("What you never read out loud"),
+      p(
+        "Password. PIN. OTP from SMS. BVN. The numbers on the back of a card. Recovery phrases for anything. A real helper at a school or a shop that only needed to install a printer does not need those. If they ask, stop. A bank will not phone you to request an OTP. You have had that lesson. It does not change because the voice is kind, or because they know your name from a form you filled.",
+      ),
+      p(
+        "If Windows needs an administrator password to install, and this is your machine, you type it. If it is an office machine, the office types it. If a “Microsoft support” number on the screen asks you to buy a voucher or to install AnyDesk, that is not Microsoft. Close. Real Windows help does not start from a red banner.",
+      ),
+      fig(
+        "/images/blog/cover-password.jpg",
+        "A notebook covering the keyboard while a password is typed, helper looking away.",
+        "This is not rudeness. It is the same as not shouting a gate code in a bus. A helper who minds this is not a helper you want.",
+      ),
+      ul([
+        "The next time someone helps, you sit, they stand or sit beside.",
+        "They name the button. You move the mouse. If a password box appears, they look away. You type.",
+        "If they need to type, they can — after the box is past. Watch what they install. Names you can repeat.",
+        "When they leave, you should be able to say what changed: a printer, a setting, a program. If you cannot, ask them to say it once more before the door.",
+      ]),
+      h2("Remote help, shops, and the academy"),
+      p(
+        "Remote control — AnyDesk, TeamViewer, Quick Assist — means someone far away moves your pointer. Use it only with a person you already know, on a channel you already use, and watch the screen the whole time. When they are done, disconnect. Do not leave the program set to start forever. Do not give a code from a pop-up to a stranger who phoned you.",
+      ),
+      p(
+        "A shop that asks to “just sign into your Google to test the Play Store” can test with a guest or with you standing there. You sign in, they work, you sign out. You met this in the Google-account lesson. Backup before the shop, as you also learned. And at the academy: ask. That is what the room is for. Bring the machine if you can. Bring the question in one sentence. Bring what you already tried. Keep the keys in your pocket. A person who will not teach without the password is offering a service you should not buy.",
+      ),
+    ],
+  },
 ];
