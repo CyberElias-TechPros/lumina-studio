@@ -373,6 +373,36 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://cea.ng/blog/bookmarks-you-can-find-again</loc>
+    <lastmod>2026-09-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://cea.ng/blog/history-and-private-windows</loc>
+    <lastmod>2026-09-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://cea.ng/blog/the-downloads-pile</loc>
+    <lastmod>2026-09-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://cea.ng/blog/the-cloud-in-ordinary-words</loc>
+    <lastmod>2026-09-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://cea.ng/blog/signing-out-of-a-machine-that-is-not-yours</loc>
+    <lastmod>2026-09-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://cea.ng/classes/microsoft-office</loc>
     <lastmod>2026-09-19</lastmod>
     <changefreq>weekly</changefreq>

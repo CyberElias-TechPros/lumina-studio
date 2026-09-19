@@ -2471,4 +2471,254 @@ export const blogPosts: BlogPost[] = [
       ),
     ],
   },
+  {
+    slug: "bookmarks-you-can-find-again",
+    title: "Bookmarks you can find again",
+    excerpt:
+      "The star is a pin in a map. Name it. Put it in a folder. The address bar's memory is not a filing cabinet. A bookmark is.",
+    series: SERIES,
+    order: 46,
+    author: AUTHOR,
+    date: DATE,
+    cover: "/images/blog/bookmarks-bar.jpg",
+    coverAlt: "A browser bookmarks bar with a few named bookmarks.",
+    body: [
+      p(
+        "You already know the address bar and the real street. A bookmark is how you stop searching for your own bank every Saturday. The star at the end of the address bar saves the page you are on. People click the star, then never look at Bookmarks again, then search, then click the wrong result. The pin was made. The map was never opened. This lesson is naming the pin, putting it in a room, and finding it on purpose.",
+      ),
+      p(
+        "Click the star. A small box: name, and a folder. The name should be a word you would say — First Bank, JAMB, CEA, WAEC — not the long title the site gave itself. The folder is Bookmarks bar if you want it on the strip under the address, or Other, or a folder you make: School, Money, Church. Confirm. The star fills in. That is the pin dropped.",
+      ),
+      fig(
+        "/images/blog/bookmarks-bar.jpg",
+        "A bookmarks bar with a few named shortcuts under the address bar.",
+        "The strip under the address is the bookmarks bar. A few names you can read. Forty names is a second address bar nobody uses. Pin the weekly streets, not every article.",
+      ),
+      h2("The bar, the menu, the folders"),
+      p(
+        "Right-click under the address bar if you cannot see the strip: Show bookmarks bar, Always. Drag a pin left or right. Right-click a pin to rename or delete. Delete removes the pin, not the website. The bank still exists. You only took the pin out of your map.",
+      ),
+      p(
+        "Folders on the bar are envelopes. A folder called School can hold CEA, JAMB, the portal. Click the folder, then the name. That is the same idea as Documents/School. If you bookmark on a phone, that pin may live in the Google account if you signed the browser in. On a Guest window, bookmarks die when Guest closes. You learned that bag.",
+      ),
+      fig(
+        "/images/blog/bookmark-star.jpg",
+        "A young woman clicking the star in a browser.",
+        "Star, name, folder, Done. Three extra seconds. The next Saturday is shorter by a search and a fake result.",
+      ),
+      ul([
+        "Open cea.ng. Click the star. Name it CEA. Put it on the bookmarks bar.",
+        "Open a second site you actually use. Star it. Name it in one word.",
+        "Click the CEA pin. Confirm you arrive without typing.",
+        "Delete a pin you made by accident. Confirm the site still opens if you type the address. The pin was not the house.",
+      ]),
+      h2("What not to pin"),
+      p(
+        "Do not pin a page you reached from a strange link. Pin the real street after you typed it. Do not pin “login” pages that are really searches. Do not pin fifty news articles; that is history, next lesson. A bookmark is for a door you will use again. An article is a room you visited.",
+      ),
+      p(
+        "If the bar vanished after an update, it is hiding, not gone. Right-click, show it. If pins duplicated, delete the extras. If you use two computers, signing the browser into your Google account can copy pins. That is useful and it means the bag travels. On a shared computer, do not sign the house browser into your account just for pins. Type the few addresses, or use your profile. The star is a servant. It is not a reason to leave the keys on the table.",
+      ),
+    ],
+  },
+  {
+    slug: "history-and-private-windows",
+    title: "History and private windows",
+    excerpt:
+      "History is a list of rooms you walked through. A private window does not write on that list. It is not invisible to the network, the school, or the café.",
+    series: SERIES,
+    order: 47,
+    author: AUTHOR,
+    date: DATE,
+    cover: "/images/blog/browser-history.jpg",
+    coverAlt: "A browser history list on a laptop screen.",
+    body: [
+      p(
+        "The browser remembers where you went. That list is History. It is how you find a page from Tuesday without a bookmark. It is also how a sibling, a shop, or a business-centre clerk can see what you opened. A private window — Incognito, InPrivate — is a sitting that does not add to that list on this computer. It is not a cloak on the internet. This lesson is the list, the broom, and what private actually hides.",
+      ),
+      p(
+        "Ctrl+H opens History. A list, newest first. Search it like files. Click a line to return. Delete a line if you want that room forgotten here. Clear browsing data is the larger broom: last hour, last day, all time. Cookies you already met. Cached images are leftovers that make pages load faster and can be swept. Passwords and bookmarks are usually separate ticks — do not sweep those by accident.",
+      ),
+      fig(
+        "/images/blog/browser-history.jpg",
+        "Browser history listed on a laptop.",
+        "A diary of addresses. Useful on your machine. Unkind on a shared one if you leave it. Sweep the hour before you stand up in a café.",
+      ),
+      h2("Private is a clean table, not a mask"),
+      p(
+        "Ctrl+Shift+N in Chrome is Incognito. Edge uses Ctrl+Shift+P. A darker window, a hat or a badge. Bookmarks still work. History in this window does not join the main list. Cookies from this sitting die when the last private window closes. Downloads still land in Downloads — files are files. The school Wi‑Fi, the café, your network provider can still see that a connection happened. Private is not a VPN. It is not illegal. It is a clean table on this machine.",
+      ),
+      p(
+        "Use it on a shared computer for mail if you have no Guest profile. Use it to check a bank if you must, then close every private window — all of them, or the sitting continues. Do not use it to feel invisible while clicking the link you should not open. The trap still traps. Private will not save you from a typed password on a fake street.",
+      ),
+      fig(
+        "/images/blog/private-window.jpg",
+        "A private browsing window on a laptop.",
+        "The dark frame is a reminder: this table wipes when you close it. Close it. A private window left open is an ordinary window with a costume.",
+      ),
+      ul([
+        "Open History. Find today's lesson page or cea.ng. That is the diary.",
+        "Open a private window. Visit cea.ng. Close the private window.",
+        "Open History in a normal window. The private visit should not be there.",
+        "On a machine that is not yours, close all windows when you stand up. Private or not.",
+      ]),
+      h2("What still remains"),
+      p(
+        "Files you saved. Things you printed. Mail you sent. The other person's computer if you logged into WhatsApp Web and did not log out. Private does not unsend. It does not hide you from a camera over your shoulder. It hides the diary in this browser. That is still worth doing. It is not magic.",
+      ),
+      p(
+        "If a family needs the history gone on the house profile, clear the last day, then use profiles as you learned. Fighting over History is a sign the bags were mixed. Separate bags beat endless sweeping. The diary is a tool. On your laptop, keep it. On theirs, do not write in it.",
+      ),
+    ],
+  },
+  {
+    slug: "the-downloads-pile",
+    title: "The Downloads pile",
+    excerpt:
+      "The mat by the door fills. A file that matters should walk into Documents the same day. The pile is not a folder structure. It is a habit of not finishing.",
+    series: SERIES,
+    order: 48,
+    author: AUTHOR,
+    date: DATE,
+    cover: "/images/blog/downloads-folder.jpg",
+    coverAlt: "A Downloads folder with mixed files on a laptop.",
+    body: [
+      p(
+        "Every browser, every phone cable, every “save this PDF” drops a parcel on Downloads. You named it a mat in the files lesson. Mats disappear under shoes. Three files called invoice.pdf, a setup.exe you forgot, a photograph of a chalkboard. Then search cannot help because everything is named by someone else. This lesson is a weekly walk from the mat to the rooms, and how to download into the right room the first time.",
+      ),
+      p(
+        "Open File Explorer, Downloads. Sort by date. Newest at the top. That is what landed this week. Anything you still need: cut, walk to School/2026/Fees or Pictures, paste. Anything you already installed: the installer can go to Recycle Bin. Anything you do not recognise from a banner: do not open it. Delete it. You know that guest.",
+      ),
+      fig(
+        "/images/blog/downloads-folder.jpg",
+        "A crowded Downloads folder on a laptop.",
+        "A mat. Useful for an hour. A year of mats is how disks go red and files go missing in plain sight.",
+      ),
+      h2("Save As, not Save wherever"),
+      p(
+        "When the browser asks where to put a file, look. Choose Documents, then the room, then a name. Chrome can be told to ask every time: Settings, Downloads, “Ask where to save.” That extra click is the whole skill. A PDF of a receipt that lands already in Fees will still be there in March. A PDF that lands on the mat will be invoice (4).pdf by Friday.",
+      ),
+      p(
+        "Phones have a Downloads too. The same walk applies when you copy off the phone: do not dump DCIM into Downloads on the laptop. Pictures has a room. Installers from the internet should not live in Pictures. Kind with kind. You built the rooms. Use them on the way in, not only in a guilty sort at midnight.",
+      ),
+      fig(
+        "/images/blog/sorting-downloads.jpg",
+        "A young man moving files from Downloads into Documents.",
+        "Cut, path, paste. The mat should be almost empty if you sit at the machine daily. A business-centre machine: take your files with you. Leave the mat as you found it.",
+      ),
+      ul([
+        "Open Downloads. Sort by date. Move one real file into the room it belongs in.",
+        "Delete one installer you have already used, through the Recycle Bin.",
+        "In the browser, turn on “Ask where to save” if you can find it.",
+        "Download a small PDF on purpose into Documents/School. Confirm it is not on the mat.",
+      ]),
+      h2("When the mat is the disk"),
+      p(
+        "If C: is red, Downloads is often the fat. Videos, installers, zoom recordings. Sort by size. The largest files are the first to walk or to leave. Empty Recycle Bin after you have looked. Do not delete Windows folders because Downloads was scary. You have had that warning.",
+      ),
+      p(
+        "A zip on the mat is still a suitcase. Extract into Documents, then you may bin the zip. Opening a file from inside Downloads and editing it there means Save will keep it on the mat. Save As, room, name. The pile is not a personality. It is unfinished walking. Finish the walk the same sitting you downloaded.",
+      ),
+    ],
+  },
+  {
+    slug: "the-cloud-in-ordinary-words",
+    title: "What the cloud is, in ordinary words",
+    excerpt:
+      "The cloud is a computer that is not in the room, with a door on the internet. Drive, Photos, iCloud are rooms in that building. It is not magic, and it is not a backup until you can open the file on a second machine.",
+    series: SERIES,
+    order: 49,
+    author: AUTHOR,
+    date: DATE,
+    cover: "/images/blog/cloud-folder.jpg",
+    coverAlt: "A cloud storage folder list in a browser on a laptop.",
+    body: [
+      p(
+        "People say “it is in the cloud” as if the file had gone to heaven. It has gone to someone else's computer, in a building you will not visit, behind a password you hold. Google Drive, OneDrive, iCloud, a school portal — those are doors. The internet is the road. If the road is down, the door is down. This lesson is that building, what it is good for, and why it does not replace the USB in the drawer until you have tested it.",
+      ),
+      p(
+        "You already made a Google account. Drive is a folder that lives with that account. Open drive.google.com on the real street. You will see a list that looks like File Explorer. Upload is copy from your machine into that building. Download is copy back. A file only in Drive is not on your USB. A file only on your USB is not in Drive. Two houses, remember.",
+      ),
+      fig(
+        "/images/blog/cloud-folder.jpg",
+        "A cloud storage list of files in a browser.",
+        "A folder with a road. The names should still be human. fees-2026.pdf in Drive is as useful as it is in Documents. IMG_0048 is as useless in both places.",
+      ),
+      h2("What it is for, and what it eats"),
+      p(
+        "It is for a file you want on the phone and the laptop without a cable. It is for a second copy that survives a stolen bag, if the password is yours and the second lock is on. It is for sending a large PDF when email refuses the zip. It eats data when you upload photographs. It eats space in the free allotment — Gmail and Drive often share a tank. When the tank is full, mail may stop. That surprise is why you do not dump the whole DCIM there on a school bundle.",
+      ),
+      p(
+        "Sharing a Drive link is not the same as attaching. Anyone with the link may open it if you set it that way. Anyone with the email you typed may open it if you set it that way. Check the setting. A link in a WhatsApp group is a public tray if “anyone with the link” is on. For a school, prefer email attach or a link to one address.",
+      ),
+      fig(
+        "/images/blog/cloud-devices.jpg",
+        "A laptop, a phone and a notebook on a desk.",
+        "The same file on two devices is the test. If you cannot open it on the phone after you upload from the laptop, it is not in the cloud yet. It is a hope.",
+      ),
+      ul([
+        "Open drive.google.com signed into your account.",
+        "Upload one small PDF you own. Open it in the browser.",
+        "On the phone, open Drive or Gmail's Drive, same account. Confirm the file.",
+        "That is the cloud: a building, a door, two rooms you can walk into.",
+      ]),
+      h2("Not a backup until it is a second house"),
+      p(
+        "Sync folders that “keep a copy here and there” can empty both sides if you delete in one place and do not understand. Until you do, upload copies. Do not turn on a sync you have not been shown. The USB in the drawer is still the backup you can hold. Drive is the backup that survives fire if you also remember the password. Both is adult. One is a start.",
+      ),
+      p(
+        "iCloud is Apple's building. OneDrive is Microsoft's. They are not interchangeable bags. A file in one is not in the other unless you copied it. “The cloud” is not one cupboard. It is several landlords. Know which door you used. Write it next to the account in the notebook. Then the word stops meaning magic and starts meaning a street you can type.",
+      ),
+    ],
+  },
+  {
+    slug: "signing-out-of-a-machine-that-is-not-yours",
+    title: "Signing out of a machine that is not yours",
+    excerpt:
+      "Close is not sign out. Remember me is a trap you tick once. A last five minutes: mail, Drive, WhatsApp Web, browser, Guest. Then stand up.",
+    series: SERIES,
+    order: 50,
+    author: AUTHOR,
+    date: DATE,
+    cover: "/images/blog/sign-out.jpg",
+    coverAlt: "A browser account menu with Sign out visible.",
+    body: [
+      p(
+        "A business centre, a church office, a friend's house, the academy's own machines if you are a visitor — the sitting ends. Closing the laptop lid is not leaving. The next person opens the lid and is you, in Gmail, in Drive, in a bank tab you forgot. This lesson is a short ritual for the last five minutes, so your keys do not stay on someone else's table. You have met the pieces. This is the order to walk them.",
+      ),
+      p(
+        "Sign out is a sentence in an account menu: your picture or name, then Sign out, Log out, or Sign off. Gmail has one. Drive is the same Google, so one Google sign-out often covers both. WhatsApp Web has a menu, Log out. Windows itself may have a user you should not shut down if it is not your PC — Sign out of your sites first, then leave Windows as you found it. Do not shut down a shop's counter machine unless they asked.",
+      ),
+      fig(
+        "/images/blog/sign-out.jpg",
+        "A browser account menu showing Sign out.",
+        "The words are small. They are the whole point. Close without this and the next sitter is you.",
+      ),
+      h2("The five-minute walk"),
+      p(
+        "Mail: picture, Sign out. Confirm the browser is asking for a password again. WhatsApp Web: three dots, Log out. Bank: the bank's own logout, not only the tab's X. Browser: if you used Guest, close all Guest windows. If you used a profile, sign out of the profile or close it. If you used the house browser, clear the last hour of cookies if you can do it without a fight, or at least close every tab. Downloads: copy your files to your USB, then delete those copies from their Downloads if the machine is public. Recycle Bin if you deleted.",
+      ),
+      p(
+        "Remember me, Stay signed in, Trust this device — you should have said no on the way in. If you said yes, sign out is still required, and you may need to remove the device from Google's account later, from a machine that is yours: myaccount.google.com, Security, your devices. That is homework for the evening, not a reason to skip sign-out now.",
+      ),
+      fig(
+        "/images/blog/leaving-shared-pc.jpg",
+        "A young woman closing a laptop at a shared desk.",
+        "USB in your pocket. Tabs gone. Sign out done. The lid is last, not first.",
+      ),
+      ul([
+        "Practise on your own machine: sign out of Gmail, then sign in again. Feel the extra step. That step is what you owe a shared machine.",
+        "Next time you sit at a computer that is not yours, start from Guest or a private window.",
+        "Before you stand: mail, WhatsApp Web, bank, USB, close.",
+        "Do not leave a phone charging in their USB “for a minute” with the phone unlocked.",
+      ]),
+      h2("What still leaks"),
+      p(
+        "A file on their Desktop. A print they have not collected. A photo in their WhatsApp if you sent it to yourself from their app. Paper in the printer tray. Look. The ritual is not paranoia. It is leaving a borrowed room as you found it, plus not leaving your ATM card in the sofa.",
+      ),
+      p(
+        "If you forgot, from home, change the mail password, then the bank if you touched it. Google can sign out other sessions. Do it the same day. Shame is how this one finishes badly, like the phishing lesson. You are not the first person to leave a tab open in a café. You can still lock the door from the other street. Then the next sitting, walk the five minutes. Lid last.",
+      ),
+    ],
+  },
 ];
