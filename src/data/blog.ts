@@ -657,4 +657,283 @@ export const blogPosts: BlogPost[] = [
       ),
     ],
   },
+  {
+    slug: "a-letter-that-looks-like-one",
+    title: "A letter that looks like one",
+    excerpt:
+      "Word is lined paper that can change its mind. Margins, a greeting, one typeface, and Save As PDF so the other person's computer cannot rearrange your name.",
+    series: SERIES,
+    order: 11,
+    author: AUTHOR,
+    date: DATE,
+    cover: "/images/blog/word-letter.jpg",
+    coverAlt: "A laptop showing a one-page formal letter in a word processor.",
+    body: [
+      p(
+        "A word processor is lined paper that can change its mind. Microsoft Word, Google Docs, and LibreOffice Writer are three names for the same job: a page you can type on, move, and print without starting again in ink. Notepad, from the first sitting, has no margins worth showing a school. This lesson is how to make a letter that still looks like a letter when it leaves your desk.",
+      ),
+      p(
+        "Open Word the way you opened everything else: Start, type Word, Enter. If the computer has no Word, Google Docs in the browser is enough, or Writer if it came with the machine. You will see a white page, a blinking cursor, and a ribbon of buttons at the top. Ignore most of the buttons. You need a handful: font, size, bold, alignment, and Save.",
+      ),
+      fig(
+        "/images/blog/word-letter.jpg",
+        "A one-page letter on a laptop screen, with a heading, greeting and short paragraphs.",
+        "One typeface, left-aligned, space between paragraphs. The page should look like something you would still sign. Decoration is not the work.",
+      ),
+      h2("The bones of a letter"),
+      p(
+        "Put your address or your name at the top, then the date, then the name of the person you are writing to, then the greeting. Good morning, Mrs Amadi. Then the body — short paragraphs, one idea each. Then yours faithfully, or yours sincerely if you used their name, then your full name. That order is older than computers. The machine did not invent it. The machine only makes the lines easier to move.",
+      ),
+      p(
+        "Pick one typeface and stay there. Calibri, Times New Roman, or Georgia. Size 12 for the body. Size 11 is small for printing; 14 is a poster. Left-align ordinary letters. Centre only a title, if you must have one. Bold is for a heading, not for a whole paragraph. Colour is almost never needed. If the page looks busy, it will look amateur to the person whose tray it lands in. White space is not wasted paper. It is how the eye rests.",
+      ),
+      h2("Margins, pages, and the things that jump"),
+      p(
+        "A margin is the quiet border around the words. Too narrow and a printer eats the last letters. Too wide and a one-page letter becomes two. In Word, Layout then Margins, then Normal, is enough. If a heading has run onto a second page for three lines, you do not need a new font. You need to look at spacing: after a paragraph, one blank line, not three. Press Enter once between paragraphs. If the computer is adding extra space, look for Paragraph, then the box that says space after, and set it to a small number.",
+      ),
+      p(
+        "Pictures jump. A photograph dropped into the middle of a sentence will shove the text in ways that feel like the page is haunted. If you need a passport photo on an application, Insert, Picture, and then click the picture, choose a wrapping that says In line with text or Top and bottom — not the one that lets it float over words. Keep pictures small. A letter is not a poster.",
+      ),
+      fig(
+        "/images/blog/letter-paper.jpg",
+        "A printed one-page letter on A4 paper beside the laptop that wrote it.",
+        "If it looks right on paper, it is finished. If it only looks right on your screen, Save As PDF before you send it, so another computer cannot restyle your name.",
+      ),
+      ul([
+        "Open a blank document. Type a short letter asking for your own transcript, or a letter to a landlord, or a thank-you. Real words, one page.",
+        "Date, greeting, two short paragraphs, your name. One typeface, size 12.",
+        "Save as letter-practice in Documents. Press Ctrl+S twice while you work.",
+        "File, Save As, choose PDF. Open the PDF. If the letter still looks like a letter, you can attach it.",
+      ]),
+      h2("PDF is how a letter travels"),
+      p(
+        "A .docx is a working file. Another person's Word can change the font, shift a heading, or refuse to open it. A PDF is a photograph of the page that still lets you select the words. When you email a school, a bank, or an office, send the PDF unless they asked for Word so they can edit. File, Save As, PDF. Look at the PDF before you attach it. If a heading has slipped to a lonely last page, go back to Word and fix the spacing, then save the PDF again. Do not send both “because one might work.” Send the one you mean.",
+      ),
+      p(
+        "Spell check is a cousin, not a teacher. The red underline catches letters. It will not catch form instead of from, or the wrong Mrs. Read the letter out loud once. If you would not sign it on paper, do not send it. The machine made the lines neat. You still have to mean them.",
+      ),
+    ],
+  },
+  {
+    slug: "photos-off-the-phone",
+    title: "Getting photographs off the phone",
+    excerpt:
+      "The gallery is a pocket. The computer is a drawer. A cable, a folder called Pictures, and names that will still make sense when the phone is gone.",
+    series: SERIES,
+    order: 12,
+    author: AUTHOR,
+    date: DATE,
+    cover: "/images/blog/phone-usb.jpg",
+    coverAlt: "A USB cable connecting a phone to a laptop on a wooden desk.",
+    body: [
+      p(
+        "The phone is a camera you already know. The gallery fills until the phone is slow, or until it falls in a basin, or until the shop formats it “to repair the screen.” Photographs that live only in the pocket are not kept. They are borrowed. This lesson is how to move them into the Pictures drawer on the computer, name a few that matter, and leave the rest without drowning.",
+      ),
+      p(
+        "Three ordinary roads exist. A USB cable from the phone to the laptop. A cloud — Google Photos, iCloud — if you already signed in and the data can stand it. Bluetooth, which is slow and fine for three pictures, not for a wedding. Start with the cable. It does not need airtime. It does not compress the file into WhatsApp soup.",
+      ),
+      fig(
+        "/images/blog/phone-usb.jpg",
+        "A USB cable connecting an Android phone to a laptop.",
+        "Unlock the phone. When it asks whether to allow the computer, allow. If the computer still cannot see it, the cable may be charge-only. Try another cable before you blame the machine.",
+      ),
+      h2("The cable, said slowly"),
+      p(
+        "Unlock the phone first. A locked phone often shows as an empty drive. Plug the cable into the phone and into a USB port on the computer. On Android, a notice usually appears: charging only, or file transfer. Choose file transfer, or MTP, or the words that mean “share files.” On an iPhone, the computer may ask you to trust this computer; tap Trust, then the passcode. Wait. A new device should appear in File Explorer or Finder, with a name like the phone's model.",
+      ),
+      p(
+        "Open that device as you would a USB drive. On Android you will often walk through Internal storage, then DCIM, then Camera. That Camera folder is the roll. On an iPhone, pictures may appear in a Photos app on the computer rather than as ordinary files — follow that window; it is still a drawer. Do not start dragging yet. First, on the computer, open Pictures and make a folder with a human name: 2026-family, or church-harvest, or id-scans. Then copy.",
+      ),
+      h2("Copy, do not cut"),
+      p(
+        "Select the photographs you want. Click the first, hold Shift, click the last, for a block. Or hold Ctrl and click to pick. Copy — Ctrl+C — then open your new folder and paste. Wait until the progress box finishes. A phone cable that wiggles will corrupt a file in the middle, the way a yanked USB does. When the copy is done, open two or three photographs on the computer to prove they are really there. Only then may you delete from the phone, and only if you need the space. Copy is the safe verb. Cut is how people empty a pocket into a hole.",
+      ),
+      fig(
+        "/images/blog/pictures-folder.jpg",
+        "A Pictures folder on a laptop, with photo thumbnails visible.",
+        "This is the drawer. Rename the ones that must be found — passport-amaka.jpg, not IMG_0048. The camera's numbers are for the camera, not for October.",
+      ),
+      ul([
+        "Plug the phone in. Unlock it. Choose file transfer if asked.",
+        "On the computer, make Pictures/practice-roll.",
+        "Copy five photographs into it. Open one. Confirm you can see it with the cable unplugged.",
+        "Rename one file to something you would search for. Leave the rest until you care.",
+      ]),
+      h2("What to keep, what to leave"),
+      p(
+        "You do not need every blurry plate of rice. You need the passport, the receipt, the group photograph from a funeral, the child's first day. Those get names. Screenshots of a bank OTP can go. WhatsApp images that were compressed twice can go if the original is already in Pictures. A full dump of DCIM is fine as a first backup; sorting can wait. What cannot wait is one copy off the phone.",
+      ),
+      p(
+        "If there is no cable that works, email a few originals to yourself as documents, or use the computer's phone-link app if it already exists. Do not send the wedding through WhatsApp to “save them.” You will save a fog. And when the copy is on the computer, the next lesson but one — backup — is how that drawer survives a stolen laptop. For today: pocket to drawer, cable, copy, look, then maybe delete.",
+      ),
+    ],
+  },
+  {
+    slug: "updates-without-panic",
+    title: "Updates without panic",
+    excerpt:
+      "The restart is not a punishment. Save first, plug in the charger, let the bar finish. An update is a repair the machine already knows how to fetch.",
+    series: SERIES,
+    order: 13,
+    author: AUTHOR,
+    date: DATE,
+    cover: "/images/blog/windows-update.jpg",
+    coverAlt: "A laptop screen showing a Windows restart and update message.",
+    body: [
+      p(
+        "Sooner or later the computer will ask to restart. A bar will crawl. People pull the plug because the wait feels like a freeze, and then the machine wakes half-repaired, if it wakes. An update is not a virus. It is the manufacturer sending a patch for a hole someone found, or a fix for a printer, or a new date on the clock. This lesson is how to let that happen without losing the letter you had not saved.",
+      ),
+      p(
+        "Windows calls it Windows Update. A Mac calls it Software Update. A browser updates itself more quietly. Phone updates are cousins: same idea, smaller screen. The feeling is the same — a request to stop working for ten minutes. Ten honest minutes beat a machine that will not start on Monday.",
+      ),
+      fig(
+        "/images/blog/windows-update.jpg",
+        "A laptop showing a message that Windows is restarting to finish an update.",
+        "Do not hold the power button. Do not close the lid to “pause” it. The bar is working. Leave the charger in.",
+      ),
+      h2("Save, plug in, then say yes"),
+      p(
+        "When a box offers Restart now or later, look at your open windows first. Save every document. Unsaved work dies in a restart the same way it dies when the light goes. Then plug the laptop in. Updates that die at 12 percent because the battery died are how machines spend a day in the shop. On a desktop, ignore the generator for a moment only if you know the light is stable. If NEPA is flickering, choose later and wait for a calmer hour.",
+      ),
+      p(
+        "Later is allowed. “Remind me in 4 hours” is a real button. What is not allowed is later forever. The machine will nag because the patch is sitting in the house unapplied, like medicine on the table. Pick an evening. Let it run while you eat. A long update can take twenty or forty minutes. The screen may go black. The fan may rise. A percentage may freeze at 37 for a while. Frozen is not the same as dead. Give it half an hour before you assume the worst.",
+      ),
+      h2("What you must not do while the bar is moving"),
+      p(
+        "Do not hold the power button. That is a force shutdown, and during an update it can leave Windows unable to start. Do not unplug. Do not close the lid hoping it will sleep; some laptops will sleep in the middle of a write. Do not start a download of something else “since the internet is on.” Sit. If you must leave the room, leave the machine open and charging.",
+      ),
+      fig(
+        "/images/blog/update-wait.jpg",
+        "A laptop on a wooden desk with an update in progress, a glass of water beside it.",
+        "This is the work: waiting. The machine is copying files over itself. Interruptions here are how a quiet evening becomes a recovery screen.",
+      ),
+      ul([
+        "Save everything that is open. Close the browser if you like; it is not required.",
+        "Plug the laptop in. Start, type Windows Update, Enter. On a Mac, System Settings, General, Software Update.",
+        "If updates are waiting, choose Download or Restart when you have twenty quiet minutes.",
+        "Stay until the desktop returns. Sign in. Open one file to prove the house is still standing.",
+      ]),
+      h2("When it goes wrong, and when it is a trick"),
+      p(
+        "If the computer boots to a recovery screen after a failed update, do not click random options. Shut down if you can, plug in, start again, and wait. Windows often finishes on the second try. If it asks to restore to an earlier point, that is a last resort, not the first. At the academy, stop and ask. At home, a second restart is cheaper than a guessed reset.",
+      ),
+      p(
+        "A page or a pop-up that says your Windows is expired and you must call a number, or download a repair tool from a banner, is not Windows Update. Real updates live in Settings, not in an advert. You already met this cousin in the lesson about links. Close the banner. Open Settings yourself. If nothing is waiting, nothing is waiting. Fear is a product someone is selling.",
+      ),
+      p(
+        "Phones: at night, on Wi-Fi, charging. Let the system update. App stores can wait their turn. The principle is identical. Save what you can, give the machine a full cup of power, and do not snatch the cup away because the bar is slow. The bar is the repair.",
+      ),
+    ],
+  },
+  {
+    slug: "backup-before-the-light-goes",
+    title: "Backup before the light goes",
+    excerpt:
+      "One copy is a rumour. Two copies is a backup. A USB, a folder you named, and a date you will actually repeat.",
+    series: SERIES,
+    order: 14,
+    author: AUTHOR,
+    date: DATE,
+    cover: "/images/blog/backup-drives.jpg",
+    coverAlt: "An external drive and a USB flash drive beside a laptop on a wooden desk.",
+    body: [
+      p(
+        "A computer is a house that can burn. Theft, a dead drive, a cup of water, a format at the repair shop — any of these can empty Documents in an afternoon. The photographs you copied off the phone, the letter, the fees spreadsheet, the password notebook if you typed it: if they live in only one place, they are not kept. They are hoped. This lesson is the unglamorous habit of a second house.",
+      ),
+      p(
+        "Backup is not the Recycle Bin. It is not emailing yourself a file once in 2023. It is a copy, on a different object, that you could open if the first object vanished. A USB flash drive is enough to start. An external hard disk is better for photographs. A cloud folder — Google Drive, OneDrive — is a second house that is not in the same room, which matters when the room is the thing that floods. You do not need all three on day one. You need one extra copy of the work you would cry about.",
+      ),
+      fig(
+        "/images/blog/backup-drives.jpg",
+        "A USB flash drive and an external hard drive beside a laptop and a stack of papers.",
+        "Paper is a copy. The computer is a copy. The small drive is a copy. Two of these should hold the files that matter, and they should not all sleep in the same bag.",
+      ),
+      h2("What is worth copying"),
+      p(
+        "Not the whole machine. Not every installer in Downloads. The human work: Documents, Pictures you named, a Desktop if you still keep letters there against advice. School, church, shop, family. If you have a folder called 2026, copy that. If you have nothing named, this is the week to make the folders, then copy them. A jumble copied to a USB is still a jumble, but it is a jumble you still have.",
+      ),
+      p(
+        "Do not back up the only copy of a password list onto a USB that lives in the laptop bag. If you keep hints in a notebook, leave the notebook in the drawer. If you use a password manager, its own backup is a separate conversation. The principle is the same: the key and the house should not travel together.",
+      ),
+      h2("The monthly hour"),
+      p(
+        "Plug in the USB. Open it. Open Documents. Copy the folders that changed. If the drive already has last month's copy, you can replace files with the same names, or keep a folder called 2026-09 and next month 2026-10, until the drive fills. Dated folders are easier to understand when you are frightened. Eject, as you learned. Put the drive somewhere that is not the laptop bag — a drawer, a different room, a trusted person's house if the files are a shop's whole year.",
+      ),
+      fig(
+        "/images/blog/copying-files.jpg",
+        "A young man copying files from a laptop to a USB drive at a small table.",
+        "Watch the progress box finish. Open one file from the USB before you eject. A copy you have not opened is still a rumour.",
+      ),
+      ul([
+        "List, on paper, three things you would hate to lose. Find them on the computer.",
+        "Plug in a USB. Make a folder called backup-2026.",
+        "Copy those three things into it. Open one from the USB. Eject.",
+        "Write the next date on the calendar — a month from today — and the words copy the drawer.",
+      ]),
+      h2("Cloud, theft, and the repair shop"),
+      p(
+        "If you have a Google account, Drive can hold the same folders. That is a backup that survives a stolen bag, if you also had a password you can keep and a second lock on the phone. Use it for the small, important files first: the PDF of a certificate, the passport photograph, the fees sheet. A full photograph library will eat data and space; the cable-and-USB copy is still the workhorse in Port Harcourt when the network is tired.",
+      ),
+      p(
+        "Before a machine goes to the shop, copy first. Say it out loud to the technician: the files have been copied; do not format unless you tell me. Shops format because it is fast. Fast is not your friend if the only wedding photographs were on that disk. After a theft, the backup is the whole point. If you have none, start now with whatever is left. The light will go again. The second house is how you do not start the letter from memory.",
+      ),
+    ],
+  },
+  {
+    slug: "a-google-account-on-purpose",
+    title: "A Google account on purpose",
+    excerpt:
+      "Gmail is a house you rent. Choose a name you can say on the phone, write it down, add a recovery number, and do not let a shop create it for you in a hurry.",
+    series: SERIES,
+    order: 15,
+    author: AUTHOR,
+    date: DATE,
+    cover: "/images/blog/account-form.jpg",
+    coverAlt: "A laptop browser showing a simple account creation form.",
+    body: [
+      p(
+        "Many people in this city have a Gmail address they cannot recite. A shop created it to “open WhatsApp,” or a nephew created it to download an app, and the password is a mystery. Then a school asks for email, and a second address is born, and a third. This lesson is how to make one Google account on purpose: a name you can say, a password you can keep, a phone that can catch the reset, written in the notebook from the keys lesson.",
+      ),
+      p(
+        "Google is not the only house. Outlook and a school address are fine. Google is the one most phones, most Android shops, and most forms in Nigeria expect. If you already have an address you can sign into, and you wrote it down, do not make another. This page is for the person who has none, or who has one they do not own.",
+      ),
+      fig(
+        "/images/blog/account-form.jpg",
+        "A browser on a laptop showing a simple form for creating an account.",
+        "Your name as it appears on paper, then a username you can spell aloud. If the name is taken, add a number you will remember — a year, not your birthday if you can help it.",
+      ),
+      h2("Walk there yourself"),
+      p(
+        "Open the browser. Type accounts.google.com in the address bar. Do not search “create gmail” and tap the first advert. You already know why. Click Create account, then For my personal use. Use your real first and last name — the one on your ID — because this address will sit on applications. A nickname can be the username; the profile name should be you.",
+      ),
+      p(
+        "The username is the part before @gmail.com. Keep it boring and speakable: amaka.okoro, not xXxqueenxXx. You will dictate this over a bad line. If the name is taken, amaka.okoro.26 is better than a random string the page suggests. Avoid your full date of birth. Avoid a BVN. Write the finished address in the notebook before you continue. Read it back. That is the house name.",
+      ),
+      h2("Password, phone, recovery"),
+      p(
+        "Use a sentence password, as you learned, and not the same sentence as the bank. The next screen will ask for a phone number. Give the number you hold. That number is how you get back in when the password slips. A recovery email, if you have a second address you control, is extra rope. If you have none, the phone is the rope. Skip only if the page allows it and you understand you have less rope.",
+      ),
+      fig(
+        "/images/blog/writing-address.jpg",
+        "A young woman writing an email address into a notebook with a laptop open.",
+        "If it is not in the book, it is not yours yet. Address, hint for the password, and the phone number you used for recovery. Drawer, not the laptop bag.",
+      ),
+      ul([
+        "Go to accounts.google.com yourself. Create account.",
+        "Choose a speakable username. Write the full address down before you click Next.",
+        "Set a long password you have not used for the bank. Hint in the notebook.",
+        "Add your own phone number. Finish. Then sign out and sign in once, from memory, to prove it.",
+      ]),
+      h2("What this account is for — and is not"),
+      p(
+        "This is your email, your door to Drive, and often the door to a phone's Play Store. It is not a public noticeboard. Do not type the password into a shop's computer and walk away signed in. If a technician must open the Play Store, stand there, sign in, let them work, sign out. “Remember this computer” is for your house, not theirs.",
+      ),
+      p(
+        "You will be offered Gmail, Drive, Photos, a phone backup. You do not have to switch every tap on. Gmail is enough for today. Drive, when you are ready, is the cloud drawer from the backup lesson. Photos can eat data; wait until you mean it. If Google asks for a second step — a code on the phone — say yes. That is the second lock. You have met it before.",
+      ),
+      p(
+        "If you already have an old address you cannot enter, do not start a maze of resets on a borrowed laptop. Sit at a machine you trust, try Forgot password once, and take the code on your own phone. If the recovery phone is a number you lost years ago, the account may be gone. Make a new one on purpose, write it down, and tell the school, the bank, and the academy the new house. One address, owned, is worth more than four that a shop still knows.",
+      ),
+    ],
+  },
 ];
