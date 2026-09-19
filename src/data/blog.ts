@@ -1467,4 +1467,258 @@ export const blogPosts: BlogPost[] = [
       ),
     ],
   },
+  {
+    slug: "copy-and-paste-between-programs",
+    title: "Copy and paste between programs",
+    excerpt:
+      "The clipboard is a small tray. Select, copy, click the other window, paste. It holds one thing at a time. That is enough to stop retyping your own address.",
+    series: SERIES,
+    order: 26,
+    author: AUTHOR,
+    date: DATE,
+    cover: "/images/blog/selected-text.jpg",
+    coverAlt: "Selected text highlighted in a document on a laptop screen.",
+    body: [
+      p(
+        "You met copy and paste on the keyboard lesson as two shortcuts. This lesson is the tray those shortcuts use, and the fact that the tray travels between programs. A sentence in a browser can become a sentence in Word. A number in a spreadsheet can become a number in an email. People retype because they do not trust the tray. Trust comes from watching it once.",
+      ),
+      p(
+        "The clipboard is an invisible plate that holds one thing. Copy puts something on the plate. Cut puts it on the plate and removes it from where it was. Paste sets down whatever is on the plate, without emptying the plate — you can paste twice. Copy again, and the old thing falls off. There is no cupboard of yesterday's copies unless you install extra software. One plate is enough.",
+      ),
+      fig(
+        "/images/blog/selected-text.jpg",
+        "Text highlighted in a document, ready to copy.",
+        "Selection is the first act. If nothing is highlighted, Copy has nothing to put on the plate. A blinking cursor alone is not a selection.",
+      ),
+      h2("Select, then copy, then the other window"),
+      p(
+        "Drag the mouse across the words, or hold Shift and tap the arrow keys. The words sit on a coloured block. Ctrl+C. Nothing looks different — that is correct. Alt+Tab, or click the other program's title bar, to go to Word or Gmail. Click where the words should land. Ctrl+V. The words arrive. If they do not, you either never selected, or you clicked somewhere that cannot receive paste — a picture, a locked PDF, a box that only wants a date.",
+      ),
+      p(
+        "Pictures copy too. Click a picture in a page, Ctrl+C, then paste into Paint or Word. Websites sometimes block this. A screenshot, next lesson, is the fallback. Files copy in File Explorer the same way: select the file, Ctrl+C, open the other folder, Ctrl+V. That is how you filled the USB. The plate does not care whether it is holding a sentence or a photograph. It cares that you selected first.",
+      ),
+      fig(
+        "/images/blog/copy-between.jpg",
+        "A learner copying from a browser into a Word document.",
+        "Two windows, one plate. The browser still has the original. Word has a copy. That is copy. Cut would have emptied the first window — useful for moving, dangerous for the only copy of a letter.",
+      ),
+      h2("Paste special, and the mess of formatting"),
+      p(
+        "Sometimes the words arrive in a wild font, with a blue underline and a yellow background from the website. That is formatting riding along. In Word, Home, Paste, then Keep text only — or Ctrl then a small menu — strips the costume. The words remain. When you paste into a form, the form usually strips it for you. When you paste into WhatsApp from a laptop, you may get extra blank lines. Delete them. The plate is not a designer.",
+      ),
+      ul([
+        "Open a browser page you trust and a blank Word document.",
+        "Select one sentence on the page. Ctrl+C. Click Word. Ctrl+V.",
+        "Select a different sentence. Copy. Paste again. The first sentence is still in Word; the plate now holds the second.",
+        "Save as copy-practice in Documents. You have stopped retyping.",
+      ]),
+      h2("What the plate will not do"),
+      p(
+        "It will not remember ten things unless you use Windows+V, which on newer Windows opens a clipboard history you can turn on. Until then, assume one thing. Do not copy a password, then copy something else, then expect the password still to paste into the bank. The plate moved on. And do not paste a password into a chat to “save it.” You know that room is the wrong room.",
+      ),
+      p(
+        "If paste is greyed out, the plate is empty or the box refuses it. Copy again. If a website says “do not copy,” that is their wish; a short quote for a form is still ordinary work. Whole books are not. Use the tray for your own life: address, email, the sentence you already wrote. The machine is good at not making you write the same line twice. Let it.",
+      ),
+    ],
+  },
+  {
+    slug: "taking-a-screenshot",
+    title: "Taking a screenshot",
+    excerpt:
+      "The screen can photograph itself. Print Screen is the shutter. Snipping Tool is the crop. Save it in Pictures with a name, not as a rumour in the clipboard.",
+    series: SERIES,
+    order: 27,
+    author: AUTHOR,
+    date: DATE,
+    cover: "/images/blog/printscreen-key.jpg",
+    coverAlt: "A finger near the Print Screen key on a laptop keyboard.",
+    body: [
+      p(
+        "A screenshot is a photograph of the screen, taken by the machine. Receipts that will not download, an error message a shop should see, a timetable that exists only as a page — the shutter is faster than a phone pointed at the laptop, and sharper. People use the phone anyway because nobody named the key. The key is Print Screen, often PrtSc, PrtScn, or a camera-and-screen symbol. This lesson is that shutter, the crop, and saving so the picture is a file.",
+      ),
+      p(
+        "A screenshot is not a scan of a paper. For an ID or a signed letter, a scan or a careful photo of the paper is still better. For something that already lives on the screen, photograph the screen from inside. You avoid glare, crop, and a thumb in the corner.",
+      ),
+      fig(
+        "/images/blog/printscreen-key.jpg",
+        "A laptop keyboard with the Print Screen key in reach.",
+        "PrtSc is often above Insert, sometimes sharing a key with Fn. On many laptops you hold Fn then PrtSc. The screen may dim or a small notice may appear. That is the shutter firing.",
+      ),
+      h2("The whole screen, and one window"),
+      p(
+        "Press PrtSc (with Fn if needed). On older Windows, that only copies to the clipboard — the plate from the last lesson. You must paste into Paint or Word and then Save, or the photograph dies when you copy something else. On newer Windows, PrtSc may open Snipping Tool. Windows+Shift+S is the reliable crop: the screen greys, you drag a rectangle, the snip sits on the plate and often as a notice you can click to save.",
+      ),
+      p(
+        "Alt+PrtSc copies the active window only — the one you last clicked — not the whole desktop. Useful when the desktop has a mess you do not want in the picture. Windows+PrtSc, on many machines, saves a file immediately into Pictures, Screenshots. That is the kindest version: a file, a folder, a name the machine chose. Rename it.",
+      ),
+      fig(
+        "/images/blog/screenshot-file.jpg",
+        "A screenshot image sitting in a Pictures folder on a laptop.",
+        "A file in Pictures is a photograph you still have tomorrow. A snip that only lived on the clipboard is gone when you copy an address. Click the notice, Save as, human name.",
+      ),
+      ul([
+        "Open a simple page. Press Windows+Shift+S. Drag across the bit you want.",
+        "Click the notice if it appears, or open Paint and Ctrl+V.",
+        "Save as practice-snip in Pictures. Close everything. Open the file. That is proof.",
+        "Try Windows+PrtSc if your machine has it. Look in Pictures/Screenshots.",
+      ]),
+      h2("Errors, receipts, and what not to photograph"),
+      p(
+        "When something fails, screenshot the error before you click OK. The OK dismisses the only sentence a helper can use. When a payment page shows a reference, screenshot before you leave. When a form refuses a file, screenshot the red text. Do not screenshot a password, an OTP, or a bank balance to send in a group. Crop if you must send proof of a transfer — amount and reference, not the whole dashboard.",
+      ),
+      p(
+        "Phones already know this gesture: volume down and power, or a swipe. Same idea. For a laptop problem, a laptop screenshot is clearer than a phone photo of the laptop. Save it, name it, then send it as a document if the other person must read the words. WhatsApp will squash it if you send it as a camera picture. You have heard that warning. It still applies to snips.",
+      ),
+    ],
+  },
+  {
+    slug: "zipping-a-folder-to-email",
+    title: "Zipping a folder to email",
+    excerpt:
+      "A zip is a suitcase. Many files become one. Attach the suitcase, not twenty photographs. The other person unzips on their desk.",
+    series: SERIES,
+    order: 28,
+    author: AUTHOR,
+    date: DATE,
+    cover: "/images/blog/zip-folder.jpg",
+    coverAlt: "A File Explorer window showing a zip folder beside ordinary folders.",
+    body: [
+      p(
+        "Email dislikes a crowd of attachments. Twenty photographs, each with its own paperclip, will bounce or clog. A zip is a suitcase: many files, one object, often smaller. Windows can make one without extra software. The other person double-clicks it, or right-clicks Extract, and the files come out on their desk. This lesson is packing, attaching, and not sending a suitcase of the wrong room.",
+      ),
+      p(
+        "A zip is still a file. It has a name and a .zip at the end. It is not encryption unless you added a password, which Windows' simple zip does not really do well. Do not put secrets in a zip and call them safe. Put the school papers you were asked to send together, or the photographs of a filled form, front and back.",
+      ),
+      fig(
+        "/images/blog/zip-folder.jpg",
+        "A compressed folder named school-papers.zip beside ordinary folders.",
+        "The zipper icon is the suitcase. The original folder is still there. You packed a copy. Delete the zip after it has arrived if you need the space; keep the originals in Documents.",
+      ),
+      h2("Packing"),
+      p(
+        "Put the files in one ordinary folder first — school-papers — so you know what is going in. Then right-click the folder, Compress to ZIP file, or Send to, Compressed (zipped) folder, depending on the Windows version. A new file appears beside the folder, same name, .zip. If the name is still highlighted, you can type a better one before you press Enter. school-papers-amaka.zip will still make sense in someone else's Downloads.",
+      ),
+      p(
+        "Open the zip with a double-click if you want to peek. It looks like a folder but it is the suitcase interior. Do not work from inside it as if it were Documents — save and edit in the real folder, then pack again if you changed something. On a Mac, right-click, Compress. Same suitcase, same .zip.",
+      ),
+      fig(
+        "/images/blog/zip-email.jpg",
+        "A laptop ready to email, a USB and notebook on the desk.",
+        "One paperclip, one zip. If the mailer refuses the size, the suitcase is still too heavy — fewer photographs, or a USB, or Drive as you learned in backup.",
+      ),
+      ul([
+        "Make a folder called zip-practice. Put two small files in it.",
+        "Right-click the folder, compress to zip. Confirm school-papers is still there as well as the zip.",
+        "Email the zip to yourself. Download it on the same machine or another. Extract. Open a file.",
+        "That round trip is the whole skill.",
+      ]),
+      h2("Too heavy, and unpacking someone else's suitcase"),
+      p(
+        "Gmail and many offices cap attachments around 20–25 MB. A zip of camera photographs can still exceed that. Then use Drive, or send two zips, or shrink pictures first. A bounced mail with no zip is a silent failure — watch for the failure message. If you were asked for PDF, do not zip a Word file and hope. Pack what they named.",
+      ),
+      p(
+        "When someone sends you a zip: download, then right-click, Extract All, choose Documents, not Desktop if you can help it. Look at the files before you open a .exe inside a zip from a stranger. A suitcase can hold a guest you did not invite. You know installers now. A zip of PDFs and pictures is ordinary. A zip of setup.exe from a person you do not know is the link you should not open, wearing a zipper.",
+      ),
+    ],
+  },
+  {
+    slug: "bluetooth-to-a-phone",
+    title: "Sending a file to a phone with Bluetooth",
+    excerpt:
+      "Bluetooth is a short handshake. Pair once, send a file, turn it off. The cable is still better for a wedding. The radio is enough for one PDF across the desk.",
+    series: SERIES,
+    order: 29,
+    author: AUTHOR,
+    date: DATE,
+    cover: "/images/blog/bluetooth-share.jpg",
+    coverAlt: "A phone and a laptop on a wooden desk, sharing a file over Bluetooth.",
+    body: [
+      p(
+        "Bluetooth is a short radio, shorter than Wi‑Fi, meant for a handshake across a desk: earphones, a mouse, one PDF to a phone. It is not the internet. It does not use your bundle. It is slow for a folder of photographs and fussy about pairing. Use it when you have no cable, no data, and one file that must leave the laptop. Use the cable when you have many files. You already know that road.",
+      ),
+      p(
+        "Pairing is introductions. Each device must be willing to be seen, then they exchange a code or a tap, then they remember each other for next time. If they will not see each other, they are too far, Bluetooth is off, or one is already busy with a speaker. Turn the speaker off in your head. Then try again.",
+      ),
+      fig(
+        "/images/blog/bluetooth-share.jpg",
+        "An Android phone and a laptop on a desk, ready to share a file.",
+        "Both radios on. Phone discoverable. Laptop sending. The file is a document, not a stream. Stand them a hand-span apart the first time.",
+      ),
+      h2("Pair, then send"),
+      p(
+        "On the phone: Settings, Bluetooth, on, and Make visible or Pair new device. On Windows: Start, type Bluetooth, turn it on, Add device, Bluetooth. The phone's name should appear. Click it. Accept on the phone if a code matches. Paired is not sent. It is only introduced.",
+      ),
+      p(
+        "To send: on Windows, right-click the file, Send to, Bluetooth device, choose the phone. Or Share if you see it. The phone should ask to accept. Accept. Wait. A 2 MB PDF is seconds. A 50 MB video is a kettle. If it fails at 90 percent, they drifted or a call interrupted. Send again. On a Mac, Bluetooth in Control Centre, send a file from the Bluetooth menu, or AirDrop if both ends are Apple — a cousin, easier when it works.",
+      ),
+      fig(
+        "/images/blog/phone-received.jpg",
+        "A phone showing a received document, laptop beside it.",
+        "Find the file in Downloads, Bluetooth, or Files — not only in the notification. Open it once on the phone to prove it is not an empty name.",
+      ),
+      ul([
+        "Turn Bluetooth on, both sides. Pair. Send one small PDF you own to yourself.",
+        "Open it on the phone. If it is a letter, confirm you can read the words.",
+        "Turn Bluetooth off on the laptop when you are done. The radio uses a little power and is one more door.",
+        "If pairing fails twice, use the cable or email the file to the Gmail you can open on the phone.",
+      ]),
+      h2("When it is the wrong tool"),
+      p(
+        "A whole DCIM folder: cable. A file for someone in another city: email or Drive, not Bluetooth. Bluetooth will not stretch to the next street. Earphones pairing is the same radio — one pair at a time on many phones. If the laptop steals the earphones, disconnect them from the laptop's Bluetooth list.",
+      ),
+      p(
+        "Do not leave the phone discoverable all day in a market. Pair, send, switch discoverable off. The file on the phone is now in the pocket. If it matters, copy it off the phone later, as you learned. Bluetooth moved it. It did not file it.",
+      ),
+    ],
+  },
+  {
+    slug: "what-a-pdf-is-for",
+    title: "What a PDF is for",
+    excerpt:
+      "A PDF is a photograph of a page that still lets you select the words. It will not rearrange itself on another computer. That is why offices ask for it.",
+    series: SERIES,
+    order: 30,
+    author: AUTHOR,
+    date: DATE,
+    cover: "/images/blog/pdf-letter.jpg",
+    coverAlt: "A laptop screen showing a PDF of a one-page letter.",
+    body: [
+      p(
+        "You have saved as PDF in the letter lesson and attached PDFs in email. This lesson is why the office asked. A Word file is a working notebook. Another person's Word can change the font, shift a heading onto a lonely last page, or refuse to open. A PDF is a finished plate: what you saw is what they print. It is the photocopier of the computer, except the words can still be copied if the sender allowed it.",
+      ),
+      p(
+        "PDF means Portable Document Format. Portable is the point. Phones open it. Business-centre machines open it. A ten-year-old computer opens it. Forms from JAMB, banks, and schools arrive as PDF because they want the layout to survive. You fill a PDF form only if it was built as a form; many are just pictures of boxes, and you print, write, scan. Look before you type into the page.",
+      ),
+      fig(
+        "/images/blog/pdf-letter.jpg",
+        "A one-page letter opened as a PDF on a laptop.",
+        "Same margins, same typeface, another machine. If a heading has slipped, it slipped on your computer first. Fix it in Word, then Save As PDF again. Do not “fix” a PDF in a panic unless you know a PDF editor.",
+      ),
+      h2("Making one, opening one"),
+      p(
+        "In Word: File, Save As, PDF. In Google Docs: File, Download, PDF. In a browser: Print, then Destination, Save as PDF — useful for a receipt that is only a page. Open the PDF after you make it. If it is two pages and you meant one, go back to the source. The PDF will not magically tighten. Print preview and PDF preview are cousins; trust them before you send.",
+      ),
+      p(
+        "Double-click a PDF and Windows may open Edge, or Adobe, or another reader. Any of those is fine for reading. If nothing opens, you need a reader once — fetch it from the real street, as you learned to install. Do not fetch a “PDF professional crack” from a banner. Reading is free.",
+      ),
+      fig(
+        "/images/blog/pdf-print.jpg",
+        "A young man comparing a printed page with a PDF on a laptop.",
+        "If they match, the portable page did its job. If the print is cut off, the margins were too tight in the original, not because PDF “shrunk it.”",
+      ),
+      ul([
+        "Open a one-page letter. Save As PDF. Open the PDF. Confirm it is one page.",
+        "Email it to yourself. Open it on the phone. Confirm the words are still words.",
+        "In the browser, Print a simple page you trust, Save as PDF. Name it in Documents.",
+        "Do not send the Word file as well “in case.” Send the one they asked for.",
+      ]),
+      h2("When PDF is the wrong tool"),
+      p(
+        "If someone must edit the words with you, send Word or Docs, or share a Drive file. A PDF is a finished plate. Editing it is possible and clumsy. If they asked for Excel, a PDF of the sheet is a picture of numbers that will not add. If they asked for a photograph of your face, a PDF is extra wrapping. Obey the request. Then PDF is for the letter, the certificate, the form that should not restyle itself overnight.",
+      ),
+      p(
+        "A scanned pile of photographs in a PDF can be huge. One or two pages is a letter. Forty colour photos is a brick that email will refuse — zip, or Drive, or fewer pages. And a PDF from a stranger that contains only a link and a button is not a document; it is a cousin of the mail you should not open. Close it. Walk to the real street if the story might be true.",
+      ),
+    ],
+  },
 ];
