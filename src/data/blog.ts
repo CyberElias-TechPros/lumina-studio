@@ -3221,4 +3221,255 @@ export const blogPosts: BlogPost[] = [
       ),
     ],
   },
+  {
+    slug: "two-windows-at-once",
+    title: "Two windows at once",
+    excerpt:
+      "A letter on the left, a page on the right. Snap is not magic. Alt+Tab is the other door. You do not have to close one room to stand in the other.",
+    series: SERIES,
+    order: 61,
+    author: AUTHOR,
+    date: DATE,
+    cover: "/images/blog/two-windows.jpg",
+    coverAlt: "A laptop showing a letter and a browser side by side.",
+    body: [
+      p(
+        "People type a letter, minimise it, open a browser, copy an address, minimise the browser, hunt for the letter, paste, forget the next line, and do it again. The machine can hold two rooms open at the same time. One half of the screen is Word. The other is the page you are copying from. That is not advanced. It is the desk with two sheets on it instead of one sheet you keep putting in a drawer. This lesson is snap, Alt+Tab, and not losing the letter because you opened a map.",
+      ),
+      p(
+        "On Windows, click the letter so it is the active window. Hold the Windows key and tap the left arrow. The letter should jump to the left half. Then click the browser, Windows key and right arrow. Two rooms, one desk. Drag the edge in the middle if one needs more width. A click in a window makes it the one that hears the keyboard. Type only after you have clicked the letter. Paste lands where the cursor last sat, not where your eyes are looking.",
+      ),
+      fig(
+        "/images/blog/two-windows.jpg",
+        "A letter and a browser sharing one laptop screen.",
+        "Left is the work. Right is the source. You still Save in the letter. The browser is a window, not a second computer.",
+      ),
+      h2("Alt+Tab is the stack of papers"),
+      p(
+        "Hold Alt, tap Tab, keep Alt down. A row of open programs appears. Each Tab hop is the next paper. Let go on the one you want. That is how you return to the letter without hunting the taskbar. Alt+Tab+Tab walks further. If you let go too soon, you land on the neighbour. Do it again, slower. The taskbar glow you learned is the same stack, seen from the floor.",
+      ),
+      p(
+        "Minimise — the line at the top of a window — hides a room. It does not close it. The X closes it, and unsaved work will ask. People minimise five things, then think the machine is empty. Look at the taskbar. The crowd is still standing. Restore one, or snap two, and send the rest to the line. You do not need six halves. Two is a sitting. Four is a market.",
+      ),
+      fig(
+        "/images/blog/alt-tab.jpg",
+        "Overlapping windows on a laptop, a learner choosing among them.",
+        "The stack is not a crash. It is every room you left open. Alt+Tab is walking the stack. Close what you are not using. Two is enough for a letter and a source.",
+      ),
+      ul([
+        "Open a letter and a browser. Snap one left, one right.",
+        "Click the letter. Type one sentence. Click the browser. You should not be typing in the letter any more.",
+        "Alt+Tab back to the letter. Confirm the sentence is still there. Save.",
+        "Close the extra windows you are not using. Leave two.",
+      ]),
+      h2("When the window vanishes"),
+      p(
+        "A window can sit on a second screen that is unplugged, as in the projector lesson. Windows+P, PC screen only, then Alt+Tab. Or Windows+arrow until it walks back. If the letter is “gone,” it is usually minimised, behind another window, or on a wall that went home. Search will not find an unsaved window. Alt+Tab will.",
+      ),
+      p(
+        "On a small laptop, two halves can feel cramped. Then use Alt+Tab and a larger font, next lesson, instead of snap. The point is not a pretty split. The point is not closing the letter to look at a fee on a website. Two rooms. One save. Then you can stand up.",
+      ),
+    ],
+  },
+  {
+    slug: "making-text-larger",
+    title: "Making the page larger without breaking it",
+    excerpt:
+      "Ctrl and plus is a magnifying glass on this page. It is not a new font. Accessibility is a lamp you are allowed to turn up. Squinting is not a virtue.",
+    series: SERIES,
+    order: 62,
+    author: AUTHOR,
+    date: DATE,
+    cover: "/images/blog/zoom-page.jpg",
+    coverAlt: "A laptop document zoomed in so the words are easy to read.",
+    body: [
+      p(
+        "A page can be too small. People lean in until their neck hurts, then buy glasses they already own, then blame the machine. The machine has a magnifying glass. In a browser, Ctrl and the plus key makes this page larger. Ctrl and minus makes it smaller. Ctrl and 0 puts it back. The website did not change for the world. Only your window did. This lesson is zoom, the Display slider, and the difference between a bigger page and a bigger Windows.",
+      ),
+      p(
+        "Word has its own zoom in the bottom-right corner — 100 percent, 120, 150. That is how the page looks while you type. It is not how it prints. Print preview is still the truth, as you learned. A letter at 200 percent on screen can still be size 12 on paper. Do not raise the font to 28 because you could not find zoom, then email a poster to a school. Zoom for your eyes. Font size for the reader.",
+      ),
+      fig(
+        "/images/blog/zoom-page.jpg",
+        "A document zoomed in on a laptop screen.",
+        "The words are large. The file is the same file. Ctrl+0, or 100 percent, is home if you get lost.",
+      ),
+      h2("Windows itself, and Magnifier"),
+      p(
+        "If every program is tiny, the lamp is the display scale, not each page. Settings, System, Display, Scale — 125 percent or 150 on a small laptop is ordinary. It enlarges buttons, the taskbar, the Start menu. Restart a stubborn program if it looks blurry after. This is not “making Windows for old people.” It is matching the lamp to the room, like brightness.",
+      ),
+      p(
+        "Magnifier is a stronger glass: Windows and the plus key, or Start, Magnifier. A lens follows the pointer. Windows and Esc closes it if you opened it by accident — a common fright. You are allowed to use it for a form with grey-on-grey type. You are allowed to sit at a comfortable distance. Squinting through a whole JAMB page is not toughness. It is how people tick the wrong box.",
+      ),
+      fig(
+        "/images/blog/large-text.jpg",
+        "A learner reading large, comfortable text on a laptop.",
+        "If you can read it without leaning, the sitting will last. Comfort is not decoration. It is how the letter gets finished.",
+      ),
+      ul([
+        "Open cea.ng. Press Ctrl and plus a few times. Read. Ctrl+0 to return.",
+        "Open a letter. Find the zoom percentage at the bottom. Try 130. Type. Print preview — the paper should still be ordinary.",
+        "If the whole machine is tiny, try Display, Scale, 125 percent. Look at Start. If you hate it, 100 is still there.",
+        "Do not change a font to “fix” a website. Zoom the website.",
+      ]),
+      h2("What zoom will not do"),
+      p(
+        "A photograph zoomed in becomes cubes. That is the dots, not a broken file. A PDF of a scan may never become sharp. A form that uses tiny grey type may still print tiny; zoom is for you, on the glass. If a site forbids zoom, that site is rude. The browser still often allows Ctrl+plus. Try.",
+      ),
+      p(
+        "High contrast and narrator are extra doors in Accessibility, for people who need them. You do not have to use them to be allowed a larger page. Ctrl and plus is the everyday glass. Use it at the academy, on a phone (pinch), in a café. The words were always that size. You have only walked closer without moving the chair.",
+      ),
+    ],
+  },
+  {
+    slug: "bullets-and-numbered-lists",
+    title: "Bullets and numbered lists",
+    excerpt:
+      "A list is a set of steps or a set of things. Numbers mean order. Dots mean a pile. Tab nests. Enter twice gets you out. Space-bar art is not a list.",
+      series: SERIES,
+    order: 63,
+    author: AUTHOR,
+    date: DATE,
+    cover: "/images/blog/word-bullets.jpg",
+    coverAlt: "A short bullet list in a word processor on a laptop.",
+    body: [
+      p(
+        "A paragraph is a thought. A list is a set of things or a set of steps. People make lists with a hyphen and a hope, then add a line, then watch the hyphens wander. Word already knows lists. A dot — a bullet — means these items are a pile, not a sequence. A number means do this, then that. Mixing them is how a recipe becomes a shopping list in the middle. This lesson is the two buttons, Tab to nest, and how to leave the list when the thought is over.",
+      ),
+      p(
+        "Type a line. On the Home ribbon, the dots button is bullets, the 123 button is numbers. Click one. Enter makes the next item. Type. Enter. When the list is finished, Enter on an empty item, or Enter twice — you should be back in ordinary paragraphs. If you stay trapped in dots, click the same button again to switch it off. That is the lamp, not a ghost.",
+      ),
+      fig(
+        "/images/blog/word-bullets.jpg",
+        "A short bullet list on a word-processor page.",
+        "One idea per line. If a line is a paragraph, it is not a list item. Lists are for things you can count on fingers.",
+      ),
+      h2("Numbers, nested lists, and Tab"),
+      p(
+        "Numbers restart if you make two lists with a paragraph between them. That is correct. If you want 4 after a break, right-click the number, Continue numbering — when you mean it. If the numbers go 1, 1, 1, you have three lists, not one. Select them, click Numbering once. For steps — how to pay fees — use numbers. For what to bring — card, biro, passport photograph — use bullets.",
+      ),
+      p(
+        "Tab at the start of an item nests it under the one above, a smaller pile. Shift+Tab climbs out. That is how “bring” has “two copies of the receipt” underneath. Do not nest three deep in a letter. A letter is not a legal tree. One nest is plenty. Space-bar indent is the cousin of Space-bar columns. It will break when the font changes.",
+      ),
+      fig(
+        "/images/blog/numbered-list.jpg",
+        "A numbered list on paper beside the same list on a laptop.",
+        "If you print and the numbers still line up, you used a list, not art. If they wander, you used spaces. Undo, real list, print again.",
+      ),
+      ul([
+        "In a blank document, make three bullets: card, biro, photograph.",
+        "Enter twice. Write one ordinary sentence.",
+        "Make a numbered list of three steps you actually know — save, print preview, print.",
+        "Save as list-practice in Letters. PDF if you will send it.",
+      ]),
+      h2("On the web, and in WhatsApp"),
+      p(
+        "Email and many websites have the same two buttons. WhatsApp does not. In chat, a hyphen and a line break is all you get, and that is fine for a pocket. For a school, a list in Word, then PDF, still looks like a list on their printer. Do not screenshot a WhatsApp list and call it a document.",
+      ),
+      p(
+        "A list that is longer than a thumb is probably a table, or two lists. Fees with amounts belong in a table, as you learned. A list is for names of things and names of steps. When the walker can say them aloud, you are done. When you are decorating with wings and arrows from a clip-art pane, you have left the lesson. Dots or numbers. Then stop.",
+      ),
+    ],
+  },
+  {
+    slug: "spell-check-is-a-cousin",
+    title: "Spell check is a cousin, not a teacher",
+    excerpt:
+      "The red line catches letters. It will not catch from for form. Read the letter out loud. Right-click a squiggle. Do not Accept all like a cookie banner.",
+    series: SERIES,
+    order: 64,
+    author: AUTHOR,
+    date: DATE,
+    cover: "/images/blog/spellcheck-red.jpg",
+    coverAlt: "A word-processor paragraph with a red squiggle under a misspelled word.",
+    body: [
+      p(
+        "A red squiggle appears under a word. People either ignore every line until the page is measles, or they right-click Accept until a name becomes something else. Spell check is a cousin who is good at letters and bad at meaning. It will shout at Okoro, at naira, at a street in Rumuola. It will stay quiet for “I have from for you” when you meant form. This lesson is the squiggle, the dictionary, and the only check that still works: reading the letter aloud.",
+      ),
+      p(
+        "Right-click a red word. A short list of guesses. If the guess is right, click it. If the word is a name you meant, Add to dictionary, or Ignore all for this document. Ignore all is for Okoro. Add to dictionary is for a word you will keep typing on this machine. Do not add a misspelling because you are tired. The cousin will then defend the mistake forever.",
+      ),
+      fig(
+        "/images/blog/spellcheck-red.jpg",
+        "A paragraph with a red underline under one wrong word.",
+        "One squiggle is a kindness. A page of them means you have not looked yet. Walk the page before you send, the way you look at print preview.",
+      ),
+      h2("Language, and the blue line"),
+      p(
+        "Word guesses a language. If the whole letter is squiggled, it may think you are writing French. Review, Language, Set proofing language, English (United Kingdom) is close enough for Nigeria; English (United States) is also fine. Mixed languages in one sentence will confuse it. A quote in Pidgin may stay red. That is the cousin, not a verdict on your English.",
+      ),
+      p(
+        "A blue underline, on many versions, is grammar: a missing question mark, a long sentence, “their” when it wanted “there.” It is still a cousin. It will be wrong about names and about the way we write dates. Read the suggestion. If it wants to flatten a greeting into American office-speak, Ignore. You are not obliged to sound like a template.",
+      ),
+      fig(
+        "/images/blog/reading-letter.jpg",
+        "A learner reading a letter on a laptop, a printed draft beside him.",
+        "The mouth catches what the squiggle misses. If you stumble, the reader will stumble. Change that sentence. The cousin cannot hear it.",
+      ),
+      ul([
+        "Type a sentence with a real typo — reciept. See the red line. Right-click, choose receipt.",
+        "Type your surname. If it squiggles, Ignore or Add. Do not change your name to please Word.",
+        "Read the paragraph out loud. Fix one thing the cousin did not see.",
+        "Do not click Change all on a name.",
+      ]),
+      h2("Browser boxes, and what you still owe"),
+      p(
+        "Gmail and many forms squiggle too. The same manners. A phone will autocorrect a name into a stranger on the way to WhatsApp. Watch the name before you send, especially a number that became a word. Autocorrect is a cousin who interrupts. Hold the word, choose what you typed, if the phone allows.",
+      ),
+      p(
+        "Spell check does not make a letter true. It does not check that the fee is 15,000 and not 150,000. It does not check that you attached the file. You still owe a slow read, the attachment glance, and a subject that tells the truth. The red line is a helper on the walk. It is not the walk. When the cousin is quiet and the mouth is quiet, send.",
+      ),
+    ],
+  },
+  {
+    slug: "find-and-replace",
+    title: "Find and replace",
+    excerpt:
+      "Find is search inside the page. Replace is change, once or everywhere. Look at the one before you change the thirty. Replace all is a tap you cannot always undo in email.",
+    series: SERIES,
+    order: 65,
+    author: AUTHOR,
+    date: DATE,
+    cover: "/images/blog/find-replace.jpg",
+    coverAlt: "A Find and Replace box open over a letter on a laptop.",
+    body: [
+      p(
+        "You wrote March in a letter twelve times, and it is now April. You could hunt with your eyes. Find is search for a lost word inside this page, the way Explorer searches a house. Replace is the same hunt, with a new word in its pocket. Ctrl+F finds. Ctrl+H, in Word, opens Find and Replace. This lesson is the box, the one change, and why Replace all is a generator you start only after you have looked.",
+      ),
+      p(
+        "Ctrl+F. A small field. Type the word. Enter, or the arrows, walks to the next. The page jumps. That is enough when you only need to see whether you used a name. In a long PDF, the reader has the same box. In a browser, Ctrl+F finds on this page, not on the whole internet. People forget that and think Google is broken because Find cannot see the next site.",
+      ),
+      fig(
+        "/images/blog/find-replace.jpg",
+        "A Find and Replace dialog over a letter.",
+        "Two fields: what is there, what you want instead. Replace is one. Replace all is the tap. Look at one before you open the tap.",
+      ),
+      h2("One, then maybe all"),
+      p(
+        "In Word, Ctrl+H. Find what: March. Replace with: April. Replace — once — changes the one that is highlighted. Look. If that March was “the Marching band,” you have just made “the Apriling band.” Undo. That is why the next button is not Replace all until you have seen two or three. Match case if you only want March, not march. Whole word if you do not want to cut March out of Marching.",
+      ),
+      p(
+        "Replace all on a name is how Chidi becomes Chidioma in the middle of Chidinma, or how a school’s name eats a similar syllable in a street. If the letter is short, change by hand. The factory is for a long report you have already sampled. Ctrl+Z undoes a Replace all in Word if you do it immediately. In a web form, it may not. In a spreadsheet, Replace all can rewrite a column of codes. Save first, as always.",
+      ),
+      fig(
+        "/images/blog/replace-all.jpg",
+        "A notebook with a name crossed out and rewritten, a laptop beside it.",
+        "Paper still teaches the caution. One name, looked at. Then the next. The machine is faster. It is not wiser.",
+      ),
+      ul([
+        "In a practice letter, type March twice. Ctrl+H. Replace one with April. Look. Then the second.",
+        "Try Find for a word you did not type. Zero results is an answer, not a freeze.",
+        "In the browser, Ctrl+F on this academy site for the word computer. Count a few. That is this page only.",
+        "Never Replace all on a live form you cannot undo. Copy the text out, or go slowly.",
+      ]),
+      h2("What Find cannot see"),
+      p(
+        "It cannot see inside a photograph of a letter. It cannot see a word you spelled three ways. It cannot see “March” if you typed “march” and Match case is on. If you cannot find a sentence you remember, you may be in another window — Alt+Tab — or in an older Save As. Find searches this file, not the house. Explorer searches the house. Two clerks, two rooms.",
+      ),
+      p(
+        "Used gently, Replace is how a wrong phone number leaves a ten-page notice without ten hunts. Used as a panic, it is how a letter becomes nonsense in one click. Sample, then the tap. You already know that manners from printing, from mail merge, from the virus banner. Look. Then act. The box will wait.",
+      ),
+    ],
+  },
 ];
+
