@@ -2221,4 +2221,254 @@ export const blogPosts: BlogPost[] = [
       ),
     ],
   },
+  {
+    slug: "charging-without-killing-the-battery",
+    title: "Charging without killing the battery",
+    excerpt:
+      "The brick and the cable are two parts. Use the one that fits. Leave it on the table while it drinks. A red X on the battery is a story; a swollen pack is a shop the same day.",
+    series: SERIES,
+    order: 41,
+    author: AUTHOR,
+    date: DATE,
+    cover: "/images/blog/laptop-charging.jpg",
+    coverAlt: "A laptop charging cable plugged in on a wooden desk.",
+    body: [
+      p(
+        "A laptop drinks through a brick and a cable. The brick is the heavy square that sits on the floor. The cable is the thin line to the wall, and the thicker line to the machine. People borrow a phone charger, or a cousin's brick that almost fits, and then wonder why the battery icon never moves. Wrong brick, or a cable that only looks right. This lesson is how to feed the machine without cooking it, and without the myths that say you must drain it to zero every time.",
+      ),
+      p(
+        "Use the brick that came with the laptop, or one the maker named. The plug on the laptop side is particular — round with a pin, or USB-C. USB-C chargers from phones may trickle a little charge into some machines and starve others. If the brick is hot as a kettle, unplug. If the cable is broken at the elbow, tape is not a repair; a new cable is. Cheap copies from a market stall fail by melting, slowly.",
+      ),
+      fig(
+        "/images/blog/laptop-charging.jpg",
+        "A charging cable seated in a laptop on a wooden desk.",
+        "Seat it fully. A half-in plug charges when the table is still and dies when you type. The brick should sit where air can reach it, not under a pillow.",
+      ),
+      h2("The icon, and the old story about zero"),
+      p(
+        "The battery icon near the clock tells the truth more often than a cousin. Plugged in, charging. Plugged in, not charging — the brick is wrong, the port is loose, or the battery is full and resting. Not plugged in, a percentage. At 20 percent, save and find a wall. At 5 percent, the machine will sleep itself and take unsaved work with it. You already know Ctrl+S.",
+      ),
+      p(
+        "You do not need to drain to empty to “calibrate” every week. Modern packs prefer not to live at 0 percent. Leaving it on charge while you work is ordinary. Leaving it in a hot car at 100 percent for a month is not. If the maker offers a “care” slider that stops at 80 percent, that is a kindness for a machine that stays on the desk. Use it if you live at a desk. Ignore it if you live on NEPA and need the full tank.",
+      ),
+      fig(
+        "/images/blog/battery-icon.jpg",
+        "A laptop battery or charging icon on screen.",
+        "A lightning bolt means drinking. A red X means Windows cannot see a pack, or the pack has retired. Look before you buy. A shop that “repairs battery in software” is selling a story.",
+      ),
+      ul([
+        "Plug in the proper brick. Confirm the icon changes within a minute.",
+        "Feel the brick. Warm is normal. Too hot to hold is unplug.",
+        "Save a file. Unplug. Confirm the percentage is visible. Plug in again.",
+        "Do not twist the cable at the port. Hold the plastic.",
+      ]),
+      h2("Swollen, wet, and the generator"),
+      p(
+        "If the trackpad no longer sits flat, or the lid will not close, the pack may be swollen. Stop using it. Do not puncture. A shop, same day, after you copy files off if the machine still boots. Water in the port: unplug, dry, wait. Do not blow-dry on hot. A generator's wild voltage can kill a brick; a small surge protector is cheaper than a motherboard. That is household wisdom, not a gadget cult.",
+      ),
+      p(
+        "A desktop does not have this pack. It still wants a good cable to the wall, and a UPS if the light dances. The laptop is just a desktop with a tank. Fill the tank with the right hose. Do not sleep with it charging under a duvet. Heat is the next lesson. Charge on the table, like a kettle on a counter, not in a bed.",
+      ),
+    ],
+  },
+  {
+    slug: "heat-and-the-vents",
+    title: "Heat and the vents",
+    excerpt:
+      "The fan is a lung. Beds and cloths are pillows over the lung. A table, a few centimetres of air, and a shutdown when it is too hot to touch.",
+    series: SERIES,
+    order: 42,
+    author: AUTHOR,
+    date: DATE,
+    cover: "/images/blog/laptop-vents.jpg",
+    coverAlt: "Laptop side vents on a wooden desk.",
+    body: [
+      p(
+        "A laptop makes heat the way a generator makes heat: work. The vents are how it breathes. Put the machine on a bed, a prayer mat, a sofa, and the cloth blocks the vents. The fan screams. The machine slows, as you saw in the slow-computer lesson. Then it dies in the middle of a letter. This lesson is where the lungs are, what not to sit them on, and when heat is a warning rather than a personality.",
+      ),
+      p(
+        "Look at the sides and the underside. Slits, a grille, sometimes a sticker that already peels into the grille. Those must see air. A hard table is enough. A “cooling pad” is optional. A stack of books that leaves the grille in space is a village solution that works. A closed bag with the machine on is a slow oven. If you must move, shut down first.",
+      ),
+      fig(
+        "/images/blog/laptop-vents.jpg",
+        "Laptop vents on a wooden desk, not covered.",
+        "Dust loves Port Harcourt. A dry brush on a cool, unplugged machine is allowed. A knife in the grille is not. Water is not.",
+      ),
+      h2("The bed is the enemy"),
+      p(
+        "Laptops on thighs for ten minutes are a habit. Laptops on duvets for an hour are how fans eat lint. If the underside is too hot to rest a hand, shut down, lift it onto a table, wait. Do not pour water on it. Do not put it in a fridge. Cold drinks next to it are how keyboards drink. Heat leaves through air, not through drama.",
+      ),
+      p(
+        "When the fan is loud and you are only typing a letter, something else is working — a download, an update, a browser with too many tabs. Save, close the crowd, listen again. If the fan is loud at rest, on a table, after a restart, that is dust or a dying fan. Backup, then a shop. A shop that “re-pastes” is sometimes telling the truth. Ask the price first.",
+      ),
+      fig(
+        "/images/blog/laptop-on-bed.jpg",
+        "A laptop on a bedspread, with a clear table nearby.",
+        "The table is the right desk. The bed is comfortable for you and hostile to the vents. Move the machine, not your whole life.",
+      ),
+      ul([
+        "Turn the laptop over, unplugged and off. Find the grille. Remember its face.",
+        "Work on a table for one sitting. Notice the fan.",
+        "If you have been on a bed, move to the table and wait one minute. The pitch of the fan should fall.",
+        "Never block the grille with paper under the machine “to look neat.”",
+      ]),
+      h2("Outdoor sun, and the car"),
+      p(
+        "Direct sun on a black lid is a second heater. Shade, even a veranda, is better. A closed car at noon will cook a pack until it swells. Take the machine with you, or do not leave it there. This is not delicate. It is the same as not leaving a bottle of perfume on a dashboard.",
+      ),
+      p(
+        "If Windows says it is too hot and goes off, believe it. Let it cool on a table, lid open a little, before you start again. Starting immediately to “see if it works” is how you meet a shutdown loop. Heat is a message. The vents are the mouth. Give them air.",
+      ),
+    ],
+  },
+  {
+    slug: "the-webcam-and-who-can-see-you",
+    title: "The webcam and who can see you",
+    excerpt:
+      "The camera is a hole at the top of the screen. A light means it is looking. A cover is a curtain. Off in the meeting is not the same as a closed curtain.",
+    series: SERIES,
+    order: 43,
+    author: AUTHOR,
+    date: DATE,
+    cover: "/images/blog/webcam-cover.jpg",
+    coverAlt: "A laptop webcam with a small sliding privacy cover closed.",
+    body: [
+      p(
+        "At the top of the screen, a small eye. That is the webcam. You used it, or will, in a video call. It can also look when you did not mean it to, if a program asks and you say yes forever, or if a site talks you into allowing the camera for a “preview.” This lesson is the light, the permission, a paper curtain, and the difference between camera off in Zoom and actually covered.",
+      ),
+      p(
+        "Many laptops light a tiny lamp beside the lens when the camera is on. Believe the lamp. If the lamp is on and you are not in a meeting, close the program that is looking — often a leftover browser tab, or a shop's “test.” Task Manager, if you must. A cover — a sliding plastic, a sticker you can lift, a bit of tape you do not love — is a physical no. Software can lie. Tape cannot.",
+      ),
+      fig(
+        "/images/blog/webcam-cover.jpg",
+        "A sliding privacy cover closed over a laptop webcam.",
+        "A curtain. Open it when you join a call. Close it when you leave. Tape works. Muddy tape that never comes off is how people fail interviews. Use something you will actually move.",
+      ),
+      h2("Permission is a yes you can take back"),
+      p(
+        "Windows: Settings, Privacy & security, Camera. A list of programs allowed to look. Turn off the ones you do not recognise. A browser may ask, site by site. Allow for a class. Deny for a random page that wants to “verify you are human” with your face. You can walk. The same list exists for the microphone. They are neighbours. Treat them both as doors.",
+      ),
+      p(
+        "In a meeting, camera off is polite and not the same as covered. A bug, a wrong click, or a host who “enables video” can still open the eye if the cover is off. Cover after class if you share a room with family in the background. You do not owe a stranger your unmade bed.",
+      ),
+      fig(
+        "/images/blog/webcam-preview.jpg",
+        "A young woman in a camera preview on a laptop.",
+        "Preview before Join, as in the video-call lesson. If the preview is you, the curtain is open. If you did not mean that, close the curtain, then the permission.",
+      ),
+      ul([
+        "Find the lens. Cover it with a finger. Open the camera app or Meet preview. Confirm you see dark, not your finger's skin if the cover is opaque.",
+        "Open Settings, Camera. Read the list of allowed programs. Switch off one you do not use.",
+        "Join nothing. Confirm the lamp is off.",
+        "A sticky note folded once is a curtain if you have no slider. Do not use wet glue.",
+      ]),
+      h2("Other people, and shops"),
+      p(
+        "A shop testing a camera should do it in front of you. A “support” person on the phone who needs the camera on while they remote-control the machine is the password lesson wearing a lens. No. Family sharing a laptop: a cover is kinder than an argument. Children: the cover is not a toy. It slides for a reason.",
+      ),
+      p(
+        "You are not being asked to fear the eye every minute. You are being asked to know when it is open. Light, permission, curtain. Three checks. Then use the camera on purpose, as you use the microphone on purpose. The machine looking without you is a guest you did not invite. Show it the door.",
+      ),
+    ],
+  },
+  {
+    slug: "cookies-and-accept-all",
+    title: "Cookies and “Accept all”",
+    excerpt:
+      "A cookie is a small note a site leaves on your machine. Accept all is a long signature. Necessary is often enough. You can refuse a fair without refusing the page.",
+    series: SERIES,
+    order: 44,
+    author: AUTHOR,
+    date: DATE,
+    cover: "/images/blog/cookie-banner.jpg",
+    coverAlt: "A cookie consent banner at the bottom of a browser window.",
+    body: [
+      p(
+        "A banner at the bottom of a page: Accept all, Reject, Manage. People tap Accept all because it is the big button, then wonder why every shop on the internet seems to know they looked at a generator. A cookie is a small note the site stores on your computer so it can remember you — logged in, a language, a cart. That can be useful. “All” often includes notes for other companies, tracking you from page to page. This lesson is the banner, the difference between necessary and advertising, and when to clear the notes.",
+      ),
+      p(
+        "Necessary or essential cookies are how a login stays a login while you move from page to page. Without them, a site may forget you at every click. Functional ones remember a language. Analytics count visitors. Advertising and “partners” are the fair. If the banner offers Reject all or Necessary only, that is usually enough to read the news. If it offers only Accept, and the page is a shop you need, you may have to accept to enter. That is a cost. Know you paid it.",
+      ),
+      fig(
+        "/images/blog/cookie-banner.jpg",
+        "A cookie banner at the bottom of a webpage.",
+        "The large button is not always the kind one. Look for Reject, Necessary, or Manage. Manage is extra taps and worth it on sites you will live on.",
+      ),
+      h2("Manage, and what you are signing"),
+      p(
+        "Manage, or Cookie settings, is a list of taps. Turn advertising off. Turn necessary on — you often cannot turn it off. Save. The banner should leave. If it returns every visit, the site is rude, or you are blocking too much and it cannot remember even your “no.” Allowing necessary is how “no” sticks.",
+      ),
+      p(
+        "A cookie is not a virus. It is not a program. Clearing cookies logs you out of Gmail and shops until you sign in again. That can be a kindness on a shared computer. It is a nuisance on your own if you do it daily. You do not need a “cleaner” app to wipe cookies. The browser can do it.",
+      ),
+      fig(
+        "/images/blog/cookie-dialog.jpg",
+        "A browser with a privacy or cookies dialog open.",
+        "Settings, Privacy, Cookies. A list, a clear button. Clearing “all time” is a full reset of those notes. Clearing “last hour” is a smaller broom.",
+      ),
+      ul([
+        "Open a news site you trust. When the banner appears, find Reject or Necessary. Do not Accept all today.",
+        "Confirm the page still reads.",
+        "In the browser settings, find Cookies. You do not have to clear them now. Know the door.",
+        "On a site you must use that offers no reject, Accept, then remember it is a shop with a guest book.",
+      ]),
+      h2("Shared machines, and fear"),
+      p(
+        "On a business-centre computer, do not Accept all, then leave. Sign out of mail. Close the browser. If you can, clear cookies for the hour. You already know not to remember this computer. Cookies are part of that remembering. Your own laptop can keep the notes for sites you live in. A stranger's laptop should forget you.",
+      ),
+      p(
+        "Ignore pages that say “your cookies are corrupted — download repair.” That is the fake update again. Cookies do not need a doctor from a banner. They need a choice on the banner of the site you meant to visit, and a clear button in your own browser when the computer is not yours. Accept all is easy. Easy is how the fair gets your name.",
+      ),
+    ],
+  },
+  {
+    slug: "a-browser-profile-on-a-shared-computer",
+    title: "A browser profile on a shared computer",
+    excerpt:
+      "A profile is a schoolbag. Yours holds your mail and your passwords. Guest is a bag that empties. Sign out is not as empty as you think. Use Guest, or your own bag, not the house bag.",
+    series: SERIES,
+    order: 45,
+    author: AUTHOR,
+    date: DATE,
+    cover: "/images/blog/browser-profile.jpg",
+    coverAlt: "A browser profile icon in the corner of a laptop window.",
+    body: [
+      p(
+        "A family laptop, a church office, a shop counter — one browser, many hands. If everyone uses the same Chrome window, everyone can open your Gmail with a click, because you stayed signed in. A profile is a separate schoolbag inside the browser: bookmarks, cookies, logged-in sites. Guest is a bag that throws itself away when you close it. This lesson is how to stop leaving your keys in the house bag.",
+      ),
+      p(
+        "In Chrome or Edge, the circle at the top-right is the person. Click it. You may see your name, Guest, Add. Add is a new bag with its own name — yours. Guest is for the cousin who wants to check one thing. When they close the Guest window, their trail goes. Your bag stays shut if you did not open it. That is the point.",
+      ),
+      fig(
+        "/images/blog/browser-profile.jpg",
+        "The profile icon in the corner of a browser.",
+        "The circle is whose bag is open. If it says a sibling's name, you are in their mail if they stayed signed in. Switch. Do not rummage.",
+      ),
+      h2("Your bag, Guest, and the house"),
+      p(
+        "Create a profile with your name. Sign into Gmail only there. Set a browser profile lock if the machine offers it — a second password just for the bag. Windows sign-in is even better: each person their own Windows user. That is a later, larger room. Profiles are the cheap curtain that works today.",
+      ),
+      p(
+        "Sign out of Gmail is not the same as closing the bag. Sign out, then close. On a business-centre machine, do not use your profile at all. Guest, or the machine as you found it, then close every window. Do not tick “remember me.” You have heard that. The profile is how “remember me” becomes a trap at home as well as in a café.",
+      ),
+      fig(
+        "/images/blog/shared-computer.jpg",
+        "Two people taking turns at one laptop in a modest room.",
+        "Turns are fine. One bag for all is how a brother sends mail as you. Guest, or a named profile, then close.",
+      ),
+      ul([
+        "Open the browser. Click the circle. Add a profile with your first name, or open Guest.",
+        "In Guest, visit a site. Close the Guest window. Open the browser again. Guest should be empty.",
+        "If this is your machine, keep your named profile. Do not work in the Default bag if others use it.",
+        "Never save a bank password in a profile that is not locked.",
+      ]),
+      h2("Passwords saved in the browser"),
+      p(
+        "The browser will offer to remember passwords. On your locked profile, on your laptop, that can be a help — one more keyring, with a risk if someone opens the bag. On a shared profile, never. The keyring is then a public hook. You already have a notebook in a drawer, and a sentence password. Use those on a shared machine. Let the browser forget.",
+      ),
+      p(
+        "If you find you have been living in the house bag with three relatives, create your profile today, sign into mail there, sign out of the old window. It is not rude. It is the same as not leaving your ATM card on the table. The circle in the corner tells you whose bag is open. Look at it the way you look at ENG on the taskbar. Then type.",
+      ),
+    ],
+  },
 ];

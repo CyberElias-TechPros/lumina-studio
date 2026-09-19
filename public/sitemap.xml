@@ -343,6 +343,36 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://cea.ng/blog/charging-without-killing-the-battery</loc>
+    <lastmod>2026-09-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://cea.ng/blog/heat-and-the-vents</loc>
+    <lastmod>2026-09-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://cea.ng/blog/the-webcam-and-who-can-see-you</loc>
+    <lastmod>2026-09-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://cea.ng/blog/cookies-and-accept-all</loc>
+    <lastmod>2026-09-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://cea.ng/blog/a-browser-profile-on-a-shared-computer</loc>
+    <lastmod>2026-09-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://cea.ng/classes/microsoft-office</loc>
     <lastmod>2026-09-19</lastmod>
     <changefreq>weekly</changefreq>
