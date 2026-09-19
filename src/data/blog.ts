@@ -4206,5 +4206,243 @@ export const blogPosts: BlogPost[] = [
       ),
     ],
   },
+  {
+    slug: "making-numbers-look-like-money",
+    title: "Making numbers look like money",
+    excerpt:
+      "Type 1500. Then tell the grid it is naira. The sign is a costume. The number underneath still adds. Typing ₦ yourself is how totals become words.",
+    series: SERIES,
+    order: 81,
+    author: AUTHOR,
+    date: DATE,
+    cover: "/images/blog/currency-format.jpg",
+    coverAlt: "A spreadsheet amount column formatted as money.",
+    body: [
+      p(
+        "You already know to type 450, not ₦450, if you want the grid to add. The page still looks naked. Offices like a sign and two decimals. Formatting is a costume on a number that is still a number. This lesson is selecting the amount column, choosing currency or a custom naira, and not painting the header as money so the word Amount becomes a joke in the total.",
+      ),
+      p(
+        "Click the header of the amount column, or select the cells that hold amounts — not the word Amount, not the names. In Excel: Home, the Number box, Currency, or More number formats. If ₦ is in the list, pick it. If not, pick a symbol you can stand, or type NGN in the header and keep the cells as numbers with two decimals. Sheets: Format, Number, Custom currency. Two decimal places is ordinary. 1500 becomes 1,500.00. The comma is the costume. The 1500 is still 1500.",
+      ),
+      fig(
+        "/images/blog/currency-format.jpg",
+        "An amount column wearing a money format.",
+        "The sign sits in the cell. The formula bar, at the top, still shows the plain number when you click. That is the truth the SUM uses.",
+      ),
+      h2("When the costume fights the sum"),
+      p(
+        "If you typed ₦1500 as text in some cells and formatted others, SUM will skip the text. The total looks too small. Delete the sign from the cell, type the digits, format the column. If a cell shows ###### after currency, the column is too thin for the extra characters — next lesson but one, widen it. That is not a lost amount. It is a curtain.",
+      ),
+      p(
+        "Accounting format in Excel adds a dash for zero and hangs the sign on the left. It looks like a bank. It is optional. Do not mix Accounting, Currency, and plain in one column. Pick one costume. The total cell should wear the same clothes as the column, or it looks like a different kind of number. Click the total, format it the same way.",
+      ),
+      fig(
+        "/images/blog/naira-column.jpg",
+        "A learner with a spreadsheet of amounts, naira notes and a receipt on the desk.",
+        "The paper is still the source. The costume on the grid is for reading. If they disagree, the receipt wins until you find the mistyped cell.",
+      ),
+      ul([
+        "Type three amounts as plain digits. SUM them. Note the total.",
+        "Select the amounts and the total. Apply currency or two decimals. Confirm the total did not change in meaning.",
+        "Click a dressed cell. Look at the formula bar. You should see digits, not a picture.",
+        "Do not format the Name column as money. If you did, Undo, or set it back to General or Text.",
+      ]),
+      h2("NGN, and what a form wants"),
+      p(
+        "A government form that wants 1500.00 in a box may reject ₦. Paste digits. A letter to a person may want ₦1,500 — that is Word, Insert symbol, not a spreadsheet cell. Two rooms, two costumes. In the grid, the number is the worker. The sign is a hat. Put the hat on after the worker is in place. Then the total still moves when Friday's figure changes, which was the whole point of the grid.",
+      ),
+    ],
+  },
+  {
+    slug: "freeze-the-top-row",
+    title: "Freeze the top row so the header stays",
+    excerpt:
+      "A long list swallows the words Name and Amount. Freeze panes pins the header. Scroll the people, keep the labels. You have not split the file. You have pinned a ruler.",
+    series: SERIES,
+    order: 82,
+    author: AUTHOR,
+    date: DATE,
+    cover: "/images/blog/freeze-panes.jpg",
+    coverAlt: "A spreadsheet scrolled down with the header row still visible.",
+    body: [
+      p(
+        "Row 1 says Name, Item, Amount. Row 80 is a person you are checking. By the time you are at 80, row 1 has gone to heaven and you are guessing which column is the phone. Freeze is a pin through the header. The names still scroll. The labels do not. This lesson is View, Freeze top row, and unfreezing when the pin is in the wrong place.",
+      ),
+      p(
+        "Click anywhere in the sheet. View, Freeze panes, Freeze top row. Scroll down. Row 1 should sit still. Freeze first column is the cousin, for a wide sheet where the name on the left should not vanish when you hunt amounts on the right. Freeze panes (the general one) pins above and left of the cell you selected — so click the cell just under the header and just right of the names, then Freeze panes, if you want both. If that sounds like a knot, freeze top row only. It solves most registers.",
+      ),
+      fig(
+        "/images/blog/freeze-panes.jpg",
+        "A long sheet with Name, Item, Amount still at the top.",
+        "The pin is not a new row. It is a window. Print does not care about freeze. Headers to repeat at top, from the printing lesson, is the paper version of this pin.",
+      ),
+      h2("When the pin is wrong"),
+      p(
+        "If you froze with a random cell selected, a line may cut the sheet in half and half your data will not scroll. View, Unfreeze panes. Then freeze top row, which does not depend on which cell is active. A thick grey line under row 1 is normal. A thick line under row 20 usually means you froze too late. Unfreeze, try again.",
+      ),
+      p(
+        "Sheets in the browser: View, Freeze, 1 row. Same idea. Split is a different tool — two scroll bars on one sheet — and you do not need it for a fee list. If you split by accident, View, Remove split, or drag the split bar to the edge until it dies.",
+      ),
+      fig(
+        "/images/blog/header-stuck.jpg",
+        "A learner scrolling a long list, a paper register beside the laptop.",
+        "Paper already keeps the column titles in your head. The pin is for when the list is longer than the screen. You should still know which column is which if the pin fails.",
+      ),
+      ul([
+        "Make or open a list longer than the screen. Freeze top row. Scroll. Confirm the headers stay.",
+        "Unfreeze. Scroll. Confirm they leave. Freeze again if you like living with the pin.",
+        "Do not freeze in the middle of a table as a way to “lock” amounts. That is not protection. That is a stuck window.",
+        "Save. Freeze is part of the file's view on this machine. Another person may not see your pin. The data is still there.",
+      ]),
+      h2("What freeze is not"),
+      p(
+        "It is not protect sheet. It is not hide. It is not a backup. People still edit frozen headers if they click them. If you want the header safe, that is a different lock, and you do not need it yet. For today: a ruler that stays while the register walks. When you can name column C at row 90 without scrolling home, the pin has earned its keep.",
+      ),
+    ],
+  },
+  {
+    slug: "filling-a-formula-down",
+    title: "Filling a formula down a column",
+    excerpt:
+      "One SUM or one price times quantity is enough. The fill handle copies the idea down. Each row should keep its own cells. Watch the first three answers before you fill a hundred.",
+    series: SERIES,
+    order: 83,
+    author: AUTHOR,
+    date: DATE,
+    cover: "/images/blog/fill-handle.jpg",
+    coverAlt: "A spreadsheet formula being filled down a column.",
+    body: [
+      p(
+        "A shop book may need quantity times price on every line. You can type =B2*C2, then =B3*C3, then weep. The small square at the corner of a selected cell is the fill handle. Drag it down, or double-click it, and the grid copies the pattern: next row, next cells. This lesson is that handle, the difference between a relative cell and a number you meant to freeze, and why you look at row 3 before you fill to row 200.",
+      ),
+      p(
+        "Click the cell with the first formula. A tiny square at the bottom-right. Pointer becomes a thin cross. Drag down as far as the last row of facts. Release. Each new cell should show an answer, not the formula, unless you are in a view that shows formulas. Click row 4's answer. The formula bar should say =B4*C4, not still B2*C2. If it still says B2, you copied values, not the formula — Undo, copy the cell, paste formulas, or drag the handle again.",
+      ),
+      fig(
+        "/images/blog/fill-handle.jpg",
+        "The fill handle at the corner of a formula cell.",
+        "A thin cross, not a thick arrow. The thick arrow is select. The cross is fill. If you drag with the wrong pointer you will move the cell instead of copying the idea.",
+      ),
+      h2("When one number should not walk"),
+      p(
+        "A tax rate in F1 should stay F1 on every row. If you fill =D2*F1 down, Excel may turn F1 into F2, F3, empty, empty. Put a dollar in: F$1 or $F$1 — the lock. Or type the rate 0.075 in the formula, which is ruder when the rate changes. For this course: keep the rate in a labelled cell, use $ to pin it, fill, check three rows. If that $ is a fog, do not fill a tax column yet. Fill quantity times price, which should walk.",
+      ),
+      p(
+        "Double-click the handle fills down as far as the neighbouring column has facts. If column B stops at 20, the fill stops at 20. If column B has a hole, the fill may stop at the hole. Drag by hand when the list is short. A hundred empty formulas below the data are zeros that will sit in a SUM if you were sloppy with the range. Fill to the last fact, not to row 1000 “in case.”",
+      ),
+      fig(
+        "/images/blog/formula-column.jpg",
+        "A learner checking a column of formula results against a calculator.",
+        "The calculator is the witness for three rows. If three match, the fill is probably honest. If row 1 matches and row 5 does not, look at the formula bar. Do not print yet.",
+      ),
+      ul([
+        "In a practice sheet, quantity in B, price in C, =B2*C2 in D2.",
+        "Fill down three more rows. Click each answer. Confirm the row numbers walked.",
+        "Change one price. Confirm that row's answer moves and the neighbours do not.",
+        "Save as fill-practice. Do not fill a live fees book until three rows have been true.",
+      ]),
+      h2("Paste, and the overfill"),
+      p(
+        "Ctrl+C on a formula, select a block, Ctrl+V, also fills. Same checks. If you overfill onto a total row, the total may become a product and the book will lie with confidence. Leave a blank row before the SUM, or look at the last formula. You already know Undo. Use it the second the column looks too clever. The handle is a servant. It will copy a mistake as cheerfully as a truth.",
+      ),
+    ],
+  },
+  {
+    slug: "a-simple-weekly-money-list",
+    title: "A simple weekly money list",
+    excerpt:
+      "Four columns, seven days, one total. The grid is a shop book for a life. If you will not open it on Sunday, a paper envelope is still allowed.",
+    series: SERIES,
+    order: 84,
+    author: AUTHOR,
+    date: DATE,
+    cover: "/images/blog/weekly-budget.jpg",
+    coverAlt: "A simple weekly spending list on a spreadsheet.",
+    body: [
+      p(
+        "People buy a budget app, then ignore it. A sheet with four columns will do: Date, Item, Amount, maybe In or Out. One week, not a five-year plan. This lesson is that small book, a total, and the honesty of typing the recharge you would rather forget. The grid does not judge. It only adds what you admitted.",
+      ),
+      p(
+        "New sheet. Row 1: Date, Item, Amount. Freeze the top row if you like. Type this week's real lines — transport, photocopy, rice, data. Amounts as digits. SUM at the bottom of Amount. Currency costume if you want. Name the file week-2026-09-22 in whatever room you keep money papers — Work, or a folder called Money inside Documents. Next week, Save As, new date, or a new tab at the bottom named 22-Sep, 29-Sep. One job per tab, as you were told.",
+      ),
+      fig(
+        "/images/blog/weekly-budget.jpg",
+        "A weekly list with a total at the bottom.",
+        "Seven to twenty lines is a week. A hundred categories is a second job. Food, transport, data, other — enough buckets if you even need buckets.",
+      ),
+      h2("In and out, if you must"),
+      p(
+        "If money comes in as well as out, a fourth column, Type, with the word in or out. Then two SUMs, or a column In and a column Out. Keep it ugly and true. A “balance” cell that subtracts is =in_total-out_total. If that formula scares you, two totals at the bottom are enough for a human to subtract. Do not build a dashboard. Do not download a template with 40 coloured tabs. You will not fill it.",
+      ),
+      p(
+        "The sheet is not the money. The envelope or the account is the money. If they disagree, the envelope wins until you find the missing line. A week you did not record is gone; start today, do not invent last month from memory and call it a book.",
+      ),
+      fig(
+        "/images/blog/money-list.jpg",
+        "A paper spending list beside the same list on a laptop.",
+        "Paper in the market, grid on Sunday. Photograph the paper if you must, then type. A blurry stall receipt still wants a line with a date and a number.",
+      ),
+      ul([
+        "Make this week's sheet. Three real lines. A SUM.",
+        "Save it in a named folder. Put the week in the file name.",
+        "Tomorrow, add one line. Confirm the total moves.",
+        "If you will not open it, stop. A notebook in the drawer is a better book than a dead file.",
+      ]),
+      h2("What not to put here"),
+      p(
+        "Card PINs, BVN, the password to the bank. Those are keys. This is a register. Do not share the sheet as Anyone with the link. A PDF of a week, if someone must see, is enough. And do not let a colourful “finance guru” sheet shame you into twenty categories. The skill is the habit of one true line. The grid is only the clerk. You are still the one who spent the naira.",
+      ),
+    ],
+  },
+  {
+    slug: "when-the-cell-looks-broken",
+    title: "When the cell says ##### or #DIV/0!",
+    excerpt:
+      "Hashes are a curtain: the column is too thin. #DIV/0! is divide by empty. #VALUE! is a word where a number should be. The amount is often still there. Widen, or fix the formula, before you panic.",
+    series: SERIES,
+    order: 85,
+    author: AUTHOR,
+    date: DATE,
+    cover: "/images/blog/cell-error.jpg",
+    coverAlt: "A spreadsheet cell filled with hash marks because the column is narrow.",
+    body: [
+      p(
+        "The grid has a few shouts that look like a crash. ##### is the most common: the column is too narrow for the number, especially after you dressed it as money. The amount is still in the cell. Drag the line between C and D at the top until the number appears. Double-click that line and the column fits the widest fact. This lesson is that curtain, the formula errors, and what is not a broken file.",
+      ),
+      p(
+        "#DIV/0! means you divided by zero or by an empty cell — a rate with no quantity, a per-person split with no people. Point the formula at a real number, or leave the cell blank until the quantity exists. #VALUE! means you asked maths to eat a word: =B2*C2 when C2 says “see receipt.” Put the number in C2, the story in Item. #REF! means a cell the formula loved was deleted. Undo if you just deleted a column. #NAME? means a typo in SUM — =SUME or a missing bracket. Look at the formula bar. The grid is literal.",
+      ),
+      fig(
+        "/images/blog/cell-error.jpg",
+        "A cell showing ##### beside ordinary numbers.",
+        "Hashes are not a lost fortune. They are a curtain. Widen before you retype. Retyping is how 1500 becomes 150.",
+      ),
+      h2("Green corners, and the warning triangle"),
+      p(
+        "Excel may put a green mark in a cell it finds odd — a number stored as text, a formula that skips a neighbour. Click, the yellow diamond, read the sentence. Convert to number if that is the truth. Ignore if you meant the skip. Sheets is quieter. Do not Accept every offer. The cousin is still a cousin, like spell check.",
+      ),
+      p(
+        "A cell that shows the formula you typed, =SUM(C2:C6) in plain sight, is often formatted as text, or you missed the equals, or there is a space before =. Delete, type again starting with =. A cell that shows 1/2/2026 when you meant 0.5 is a date costume on a fraction. Format as number. The grid guessed. You can unguess.",
+      ),
+      fig(
+        "/images/blog/wide-column.jpg",
+        "A learner widening a spreadsheet column.",
+        "The line between letters at the top is a handle. Drag. The hashes should become amounts. If they become dates, that is a format, not a width.",
+      ),
+      ul([
+        "Make a number, narrow the column until ##### appears. Widen it. The number should return unchanged.",
+        "In an empty cell, type =1/0 and Enter. See #DIV/0!. Delete it. You do not need it in a real book.",
+        "Type =A1*B1 where A1 is a word. See #VALUE!. Put a number in A1. The error should leave.",
+        "Do not download an “error fixer” for Excel from a banner. The fixer is your eyes and Undo.",
+      ]),
+      h2("When it is actually broken"),
+      p(
+        "A file that will not open, or opens with “repaired” and missing sheets, is the backup lesson. Close, copy the file, try again. Do not keep saving over the only copy while it limps. Circular reference — a SUM that includes itself — makes a warning and a restless total. Look at the range. If C7 is =SUM(C2:C7), the snake is eating its tail. SUM to C6, put the total in C7.",
+      ),
+      p(
+        "Name the shout before you call a shop. Hashes: width. #DIV/0!: empty bottom. #VALUE!: a word in the maths. ##### is the one you will see every week once money wears a costume. Widen, smile, continue. The grid is still a clerk. Clerks sometimes write too large for the column. They rarely burn the book.",
+      ),
+    ],
+  },
 ];
 
