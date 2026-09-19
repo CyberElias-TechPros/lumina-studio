@@ -1971,4 +1971,254 @@ export const blogPosts: BlogPost[] = [
       ),
     ],
   },
+  {
+    slug: "volume-and-headphones",
+    title: "Volume and headphones",
+    excerpt:
+      "Sound has a tap on the keyboard and a tap in the tray. Headphones steal the speakers until you unplug them. Mute is a line through the speaker, not a broken machine.",
+    series: SERIES,
+    order: 36,
+    author: AUTHOR,
+    date: DATE,
+    cover: "/images/blog/volume-keys.jpg",
+    coverAlt: "Laptop keyboard with volume keys, a speaker icon on the screen.",
+    body: [
+      p(
+        "Sound is a tap. Too open, and a video in a class becomes a market. Closed, and you think the machine is dead. There are at least two taps: the keys on the keyboard, often with a speaker symbol, and the speaker icon near the clock. They can disagree. Headphones are a third tap: plug them in, and the speakers often go silent on purpose. This lesson is how to hear what you meant, without a shop.",
+      ),
+      p(
+        "On many laptops the volume keys share F1–F12 with other jobs. You hold Fn, then the key with the speaker. One key mutes, two raise and lower. A tiny on-screen bar should move. If it does not, Fn is inverted on that machine — try without Fn. The tray icon, bottom-right, is the same tap in another place. Click it. A slider. Drag. A speaker with a circle-slash is mute. Click it to unmute. Mute is not broken. It is a closed tap.",
+      ),
+      fig(
+        "/images/blog/volume-keys.jpg",
+        "Volume keys on a laptop keyboard, speaker icon on screen.",
+        "The keys and the tray should agree. If the keys move a bar but you still hear nothing, the sound is going somewhere else — headphones, a mute inside the video, or a wrong speaker.",
+      ),
+      h2("Headphones, the jack, and Bluetooth"),
+      p(
+        "A wired headset uses a round hole, often with a headset symbol. Push in until it clicks. The speakers should stop. If they do not, the machine has not noticed — unplug, wait, plug again. If you hear nothing in the phones, they may be in a microphone-only hole, or the volume inside the video player is at zero. Two taps: Windows, and the program. Both must be open.",
+      ),
+      p(
+        "Bluetooth earphones need pairing, as a phone did. When they connect, Windows may switch output to them without asking. If you then unpair and the laptop stays silent, click the tray speaker, the small arrow, and choose Speakers instead of the missing headphones. The machine is still sending sound down a path that left the room.",
+      ),
+      fig(
+        "/images/blog/earphones-laptop.jpg",
+        "Wired earphones plugged into a laptop on a wooden desk.",
+        "Plugged in, the speakers often rest. Unplug fully — a half-seated jack is a famous silence. The hole is usually on the side, not the USB ports.",
+      ),
+      ul([
+        "Play a short video you trust, volume low.",
+        "Mute from the keyboard. Confirm silence. Unmute. Confirm sound.",
+        "Plug in earphones if you have them. Confirm the speakers stop and the phones work.",
+        "Unplug. If the speakers stay dead, click the tray speaker and choose Speakers.",
+      ]),
+      h2("The program has its own tap"),
+      p(
+        "YouTube, VLC, Zoom each have a volume slider. Windows can be loud and the video silent. Look for a speaker on the player. Zoom mute you already know — a different mute, for the microphone, not the speakers. Hearing others is the speaker tap. Being heard is the mic. People mix them up and shout at a silent room.",
+      ),
+      p(
+        "If the whole machine is loud at night, lower the tray slider rather than hunting every program. If one program is loud and others are fine, open Volume mixer from the tray — a list of taps per program. That is the next lesson's cousin, when there is no sound at all. For today: keys, tray, headphones, then the player. Four places. Not a broken speaker until those four have been looked at.",
+      ),
+    ],
+  },
+  {
+    slug: "brightness-and-night",
+    title: "Brightness and night use",
+    excerpt:
+      "The screen is a lamp. Too bright in a dark room is a headache, not a better computer. A function key, a slider, and a battery that lasts longer when the lamp is dimmer.",
+    series: SERIES,
+    order: 37,
+    author: AUTHOR,
+    date: DATE,
+    cover: "/images/blog/dim-screen.jpg",
+    coverAlt: "A laptop screen at low brightness in a dim room.",
+    body: [
+      p(
+        "The screen is a lamp you look into. In a bright Port Harcourt afternoon you need that lamp high or you will lean in and guess. At night, in a room with one bulb, the same setting is a headache and a dead battery. People raise brightness as if it were volume for the eyes, then leave it there until the fan is loud. This lesson is the dimmer, night light if you have it, and why a dim screen is not a dying screen.",
+      ),
+      p(
+        "Look for a sun symbol on the F-keys. Fn plus that key, up or down. A bar should appear. On a desktop monitor the dimmer is often a physical button on the screen's own frame, not on the keyboard — the computer can be “bright” in software while the monitor is dark. Two lamps, two taps, like volume.",
+      ),
+      fig(
+        "/images/blog/dim-screen.jpg",
+        "A laptop at low brightness in a dim room.",
+        "A dim screen in a dim room is comfort. A dim screen at noon is a setting, or a dying backlight. Match the lamp to the room before you blame the machine.",
+      ),
+      h2("Settings, battery, and the false death"),
+      p(
+        "Windows: Settings, System, Display, Brightness. A slider. On battery, Windows may dim by itself to save power — useful, surprising if you did not know. Plug in, the screen may jump brighter. That is not a ghost. Some laptops have a conserving mode that caps brightness; look in the maker's power app only if the slider will not rise.",
+      ),
+      p(
+        "A screen that is black but the computer is on — power light, fan — may be brightness at zero, or the lid switch, or an extra monitor stealing the picture. Raise brightness first. Then Fn plus the display-switch key if there is one. Then the second-screen lesson. Do not hold the power button yet. A black lamp is not always a dead house.",
+      ),
+      fig(
+        "/images/blog/brightness-learner.jpg",
+        "A young woman adjusting laptop brightness at a small table.",
+        "Afternoon light wants more lamp. Evening light wants less. The battery lasts longer when the lamp is not at full shout.",
+      ),
+      ul([
+        "Find the sun key. Lower brightness until the bar moves. Raise it again.",
+        "Open Settings, Display, and find the same slider. Confirm they agree.",
+        "If you have Night light — Settings, Display — turn it on for a minute. The page goes warmer. Off again if you dislike it.",
+        "At night, prefer a dimmer lamp to a brighter one. Your eyes are not a weakness.",
+      ]),
+      h2("Night light, and not staring"),
+      p(
+        "Night light, or a blue-light filter, tints the screen yellow after sunset. It is optional. It does not repair sleep on its own. What repairs sleep is shutting down, as you learned, and not taking the lamp to bed at full brightness. A phone already taught you that. The laptop is a larger phone in this one way.",
+      ),
+      p(
+        "If the screen flickers at one brightness and not another, that is a hardware conversation — a shop, after backup. If only one program is dark, it is not brightness; it is that window. And if a cousin set the contrast or inverted colours in Accessibility, Settings, Accessibility, Visual effects will undo it. The lamp has a dimmer. Use it like the one on the wall.",
+      ),
+    ],
+  },
+  {
+    slug: "a-second-screen-or-projector",
+    title: "A second screen or a projector",
+    excerpt:
+      "The picture can leave the laptop. Duplicate is the same page twice. Extend is two desks. The projector is just another screen with a long cable.",
+    series: SERIES,
+    order: 38,
+    author: AUTHOR,
+    date: DATE,
+    cover: "/images/blog/second-monitor.jpg",
+    coverAlt: "A laptop connected by a cable to a small extra monitor.",
+    body: [
+      p(
+        "A laptop has a screen. It can also send the picture down a cable to a monitor, a classroom projector, or a television. The first time, the extra screen is black, or the laptop goes black, or the picture is on the wall but the pointer is lost. None of that is failure of the course. It is a missing choice: duplicate, extend, or second screen only. This lesson is the cable, the key, and those three words.",
+      ),
+      p(
+        "Look at the side of the laptop for HDMI — a wide, flat, notched plug — or USB-C. The projector or monitor uses a matching cable. Seat it fully. Turn the extra screen on. Wait. Windows may notice and copy the desktop by itself. If nothing, Windows+P. A small menu: PC screen only, Duplicate, Extend, Second screen only. Duplicate is what a class usually wants: the same page on the wall and on your desk. Extend is two desks — a pointer can vanish onto the wall while you look at the laptop. Second screen only blacks the laptop. PC screen only ignores the wall.",
+      ),
+      fig(
+        "/images/blog/second-monitor.jpg",
+        "A laptop cabled to a small extra monitor on a wooden desk.",
+        "Cable in, extra screen on, then Windows+P. If the extra screen says No signal, the laptop is not sending, or the extra screen is on the wrong input — HDMI 1 versus HDMI 2.",
+      ),
+      h2("Duplicate for a room, extend for you"),
+      p(
+        "Teaching, church, a meeting: Duplicate. You see what they see. If the wall is cropped, the extra screen's resolution is different — Windows will often letterbox. That is all right. Extend is for spreading Word on one side and a browser on the other at a desk. The taskbar may run across both. Drag a window until it appears on the wall. If you lose a window, Windows+P, PC screen only, then Duplicate again. The window comes home.",
+      ),
+      p(
+        "Sound may follow the picture to a television and leave the laptop silent. The volume lesson applies: tray speaker, choose the laptop speakers if you want the sound here. A projector in a hall often has no useful speakers; use the laptop or a cable to the hall sound if someone has set that up. You do not have to invent it on the morning of the talk.",
+      ),
+      fig(
+        "/images/blog/projector.jpg",
+        "A projector throwing a laptop picture onto a wall, laptop in the foreground.",
+        "The projector is a lamp with a cable. Focus and keystone are on the projector, not in Windows. If the wall is blurry, twist the projector's focus ring before you change laptop settings.",
+      ),
+      ul([
+        "If you have no extra screen today, still press Windows+P and look at the four words. Esc to leave.",
+        "When you do have a cable: plug in, power the extra screen, Windows+P, Duplicate.",
+        "Confirm the same picture in both places. Move the pointer. It should appear on both in Duplicate.",
+        "When you unplug, the picture should return to the laptop. If the laptop stays black, Windows+P, PC screen only.",
+      ]),
+      h2("When the laptop goes black"),
+      p(
+        "Second screen only, left on after you unplug, is a famous black laptop. Windows still thinks the picture lives on a wall that has gone home. Windows+P, then the down arrow, then Enter on PC screen only — even if you cannot see it, it often works. Or close the lid, wait, open, or plug the extra screen back in to undo the choice. Do not format. Do not hold power yet.",
+      ),
+      p(
+        "A church projector on VGA — older, blue, screws — may need an adapter on a new laptop. Adapters fail quietly. Try another cable before you blame Windows. And arrive twenty minutes early. The second screen is easy when it is easy, and a teacher of patience when the hall lights and the HDMI handshake disagree. Duplicate, then teach. Extend later, at your own desk.",
+      ),
+    ],
+  },
+  {
+    slug: "usb-devices-that-are-not-flash-drives",
+    title: "USB devices that are not flash drives",
+    excerpt:
+      "The same hole takes a mouse, a keyboard, a printer, a dongle. Plug in, wait, look at the lights. The computer usually knows the guest. You still have to seat the plug.",
+    series: SERIES,
+    order: 39,
+    author: AUTHOR,
+    date: DATE,
+    cover: "/images/blog/usb-devices.jpg",
+    coverAlt: "A USB mouse, a keyboard, and a cable on a desk beside a laptop.",
+    body: [
+      p(
+        "You used USB for a flash drive and for a phone cable. The same rectangular hole takes other guests: a mouse, a keyboard, a printer, a Wi‑Fi dongle, a camera. People buy a wireless mouse, lose the tiny USB nub, and declare the mouse dead. The nub was the radio. This lesson is plugging in a guest that is not a suitcase of files, waiting for Windows to nod, and what to do when the hole is too small.",
+      ),
+      p(
+        "USB-A is the older wide plug. USB-C is the small oval that goes in either way. A mouse with USB-A will not fit USB-C without a cheap adapter. The adapter is not a trick. Ports on the left and right of a laptop are often the same family; one may be marked SS or a lightning bolt for charging. A printer usually wants a USB-A on the computer end and a square USB-B on the printer end. The cable is specific. The phone cable you already own may only charge, not talk, as you learned with photographs.",
+      ),
+      fig(
+        "/images/blog/usb-devices.jpg",
+        "A USB mouse, keyboard and cable on a wooden desk beside a laptop.",
+        "Each guest uses the same family of holes. Seat the plug fully. A half-in mouse dongle is a mouse that works when you press the laptop and fails when you breathe.",
+      ),
+      h2("Plug in, wait, do not stack panic"),
+      p(
+        "Turn the device on if it has a switch. Plug in. Wait ten seconds. A mouse should move the pointer. A keyboard should type in Notepad. A printer may install quietly, then appear in Print. Windows may say “setting up a device.” Let it. If nothing, try another hole. Try another cable for printers. Wireless mouse: the dongle is often in the mouse itself, in a slot, for storage. Pull it out. Plug the dongle into the computer, not into a USB hub that is already full of hungry disks.",
+      ),
+      p(
+        "A red X on a USB device in Device Manager is for later. For now: another port, another cable, restart. Bluetooth mice pair like earphones; they are not USB. Do not hunt a dongle that was never in the box. Read the carton once.",
+      ),
+      fig(
+        "/images/blog/usb-ports.jpg",
+        "USB ports on the side of a laptop with a small dongle plugged in.",
+        "The tiny radio for a wireless mouse is easy to steal with a bag. When the mouse dies, look for the dongle before you buy a new mouse. It is often still in the last port you used.",
+      ),
+      ul([
+        "Plug in a mouse if you have one, or unplug and replug the one you use. Confirm the pointer.",
+        "If you have a spare keyboard, unplug the laptop's thought of an external one by seating it fully.",
+        "Look at every port. Count the dongles. A spare hole is for the next guest, not for dust if you can help it — but a cover is fine.",
+        "Do not force a plug upside down. USB-A only fits one way. USB-C fits both.",
+      ]),
+      h2("Printers, hubs, and power"),
+      p(
+        "A printer on USB still needs power of its own. Cable to the computer, power to the wall, paper in the tray, as in the printing lesson. A USB hub — one hole becoming four — is useful and can starve a hungry disk. Plug the disk into the laptop directly if it keeps disconnecting. Some hubs need their own power brick. That is written on the hub, not on Windows.",
+      ),
+      p(
+        "Unplug by holding the plastic, not the wire. You already eject flash drives; a mouse does not need eject. A printer might — but closing the queue and turning the printer off is enough at this level. If Windows asks for a disc that did not come in the box, cancel and let Windows use its own driver first. A random driver from a banner is an old acquaintance. The hole is simple. The guest is simple. The wait is the skill.",
+      ),
+    ],
+  },
+  {
+    slug: "when-there-is-no-sound",
+    title: "When there is no sound",
+    excerpt:
+      "Silence has a checklist: mute, headphones, the wrong speaker, the player, then the driver. A pop-up “audio fixer” is not on the list.",
+    series: SERIES,
+    order: 40,
+    author: AUTHOR,
+    date: DATE,
+    cover: "/images/blog/no-sound.jpg",
+    coverAlt: "A young man looking at a silent laptop, earphones beside it.",
+    body: [
+      p(
+        "No sound feels like a hardware funeral. Usually it is a closed tap, a pair of earphones Windows still believes in, or a video muted inside itself. You already have the volume lesson. This one is the order to walk when those taps failed, so you do not format a laptop because YouTube was quiet. The speaker inside a laptop is a small, cheap thing, but it rarely dies without a crack or a drowning first.",
+      ),
+      p(
+        "Walk the list without skipping. Mute off, tray slider up. Unplug headphones, including a jack that was half in. Click the tray speaker, choose Speakers or the laptop's real name, not Headphones or HDMI when nothing is plugged in. Play a different file — a second video, a Windows test beep in Settings, Sound. If one video is silent and another is not, the first player is the tap. If everything is silent, keep walking.",
+      ),
+      fig(
+        "/images/blog/no-sound.jpg",
+        "A learner with a silent laptop, earphones on the desk.",
+        "Earphones on the desk and Windows still set to Headphones is a classic. The machine is speaking into a plug that is empty.",
+      ),
+      h2("The mixer, and the HDMI thief"),
+      p(
+        "Right-click the tray speaker, Open volume mixer. Each program has a slider. One of them may be at zero. Raise it. If you had a projector or a TV connected, sound may still be hunting HDMI. Windows+P, PC screen only, then choose Speakers again. Restart after unplugging the extra screen if the list is haunted.",
+      ),
+      p(
+        "Settings, System, Sound, Output. Pick the laptop speakers. Click Test. A chime should play. If Test is silent but the device is listed, a driver may have fallen over — Restart first, always Restart before a shop. If the list is empty, Windows cannot see a speaker. That is more serious, and still not a banner “fixer.”",
+      ),
+      fig(
+        "/images/blog/sound-settings.jpg",
+        "Windows sound settings or volume mixer on a laptop screen.",
+        "Output is who hears. Input is who speaks — the microphone. Test the output. Do not uninstall the microphone to fix speakers. They are neighbours, not the same room.",
+      ),
+      ul([
+        "Unplug headphones. Unmute. Slider up. Play a short video.",
+        "Tray speaker, choose Speakers. Test in Settings, Sound.",
+        "Open the mixer. Confirm no program is at zero.",
+        "Restart. Try again. Only then ask a person, with what you already tried named in one sentence.",
+      ]),
+      h2("What not to download"),
+      p(
+        "A page that says “audio driver outdated — download now” from a pop-up is the same family as the fake update. Close it. Real driver updates live in Windows Update, or the laptop maker's own site, walked to on purpose. A shop can test the speaker with a known file in five minutes. Backup first if they will keep the machine.",
+      ),
+      p(
+        "Bluetooth earphones connected and sitting in another room will steal output. Disconnect them. A USB headset still plugged in will do the same. Silence is almost always a path to the wrong door. Open the right door, then listen. If after restart, Speakers, mixer, and a second file you still hear nothing, and the laptop never cracked or drank water, then a helper. You will not have wasted their time. You will have already walked the house.",
+      ),
+    ],
+  },
 ];

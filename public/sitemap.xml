@@ -313,6 +313,36 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://cea.ng/blog/volume-and-headphones</loc>
+    <lastmod>2026-09-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://cea.ng/blog/brightness-and-night</loc>
+    <lastmod>2026-09-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://cea.ng/blog/a-second-screen-or-projector</loc>
+    <lastmod>2026-09-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://cea.ng/blog/usb-devices-that-are-not-flash-drives</loc>
+    <lastmod>2026-09-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://cea.ng/blog/when-there-is-no-sound</loc>
+    <lastmod>2026-09-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://cea.ng/classes/microsoft-office</loc>
     <lastmod>2026-09-19</lastmod>
     <changefreq>weekly</changefreq>
