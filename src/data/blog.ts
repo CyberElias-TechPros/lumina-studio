@@ -4444,5 +4444,255 @@ export const blogPosts: BlogPost[] = [
       ),
     ],
   },
+  {
+    slug: "watching-a-video-without-getting-lost",
+    title: "Watching a video without getting lost",
+    excerpt:
+      "A video site is a market with a search box. Type the thing you came for. Full screen is not a new street. The sidebar is a stall shouting. You may leave.",
+    series: SERIES,
+    order: 86,
+    author: AUTHOR,
+    date: DATE,
+    cover: "/images/blog/video-search.jpg",
+    coverAlt: "A video site with a search box on a laptop screen.",
+    body: [
+      p(
+        "YouTube, and the other places that play film, are useful and noisy. You came to see how to print a page. An hour later you have watched a lottery and a quarrel. The machine did not kidnap you. The sidebar did what a market does: shout. This lesson is search, the address, full screen, and leaving when the job is done. The internet lesson still applies. A video is a page that moves.",
+      ),
+      p(
+        "Walk to youtube.com yourself, or open the app you installed on purpose. The box at the top is search. Type a full thought: how to save a Word document as PDF, not “computer.” Add Nigeria when the answer depends on here. Read the channel name under the result the way you read the grey address under a Google result. A ten-year-old upload from a school can be better than a loud new one that wants you to download a fixer.",
+      ),
+      fig(
+        "/images/blog/video-search.jpg",
+        "A video search page on a laptop.",
+        "The box at the top is the job. The row of suggestions after you finish is a stall. You do not owe it a click.",
+      ),
+      h2("Play, full screen, and the wrong door"),
+      p(
+        "Click the video you meant. Space bar pauses. The square in the corner is full screen — the picture uses the whole monitor. Esc leaves full screen. Full screen is not a new website. The address bar may hide; move the pointer to the top if you need it. If a video asks you to install a player, or a codec, or to “enable flash,” you are not on the real street. Back. Search again. You already play video in the browser.",
+      ),
+      p(
+        "Autoplay will start the next film. Turn it off if you can see a toggle. The queue is a list the site wants. Your list is the search you typed. On a phone, Wi‑Fi is kinder than a bundle for a long lesson. Download in the app, if you pay for that, is a parcel; a random “download MP4” button under the video is a cousin of the fake update. Do not.",
+      ),
+      fig(
+        "/images/blog/video-learner.jpg",
+        "A learner watching a tutorial on a laptop, earphones beside her.",
+        "Earphones keep the house quiet. The notebook is for one step you will try. Watching ten videos without touching the keyboard is not a class. It is a stall.",
+      ),
+      ul([
+        "Search a thing you already know — how to copy and paste — so you can judge the result.",
+        "Open one video. Pause. Full screen. Esc. Confirm you are still on the same page.",
+        "Do not click a download button under the video. You did not come for a file.",
+        "When the step is clear, pause, try it on your own document. Then come back if you must.",
+      ]),
+      h2("Comments, and what a video cannot do"),
+      p(
+        "Comments are a crowd. A PIN, a “WhatsApp me for the file,” a link in a comment, are the phishing lesson wearing a film. The description can hold a real link to a school; it can also hold a trap. Prefer the site you already trust. A video will not see your computer. A file you download because the video shouted will.",
+      ),
+      p(
+        "You now have a way to learn a button you forgot, at 10 p.m., without a shop. Search, one film, pause, try, leave. The sidebar will still shout. You do not have to answer. The search box is the map. Everything else is a stall on the way to the door.",
+      ),
+    ],
+  },
+  {
+    slug: "captions-pause-and-speed",
+    title: "Captions, pause, and speed",
+    excerpt:
+      "CC is words on the picture. Pause is thinking time. Speed is not a virtue. 0.75 is allowed. A notebook is still faster than rewinding ten times without writing.",
+    series: SERIES,
+    order: 87,
+    author: AUTHOR,
+    date: DATE,
+    cover: "/images/blog/captions-on.jpg",
+    coverAlt: "A paused video with captions at the bottom of the picture.",
+    body: [
+      p(
+        "A video is speech. Speech is easy to miss when the accent is new, the fan is loud, or the teacher talks like a train. Captions — CC, subtitles — write the words on the picture. Pause stops the train. Speed, a gear like 0.75 or 1.25, is a courtesy, not a race. This lesson is those three taps, so a tutorial is a class and not a blur.",
+      ),
+      p(
+        "Look along the bottom of the video for CC, or a wheel, Settings, Subtitles. Turn captions on. English is fine when the speaker is English. Auto-generated captions will miss naira, Okoro, Rumuola — they are a cousin of spell check. If the line is nonsense, use your ears for that word. If the line helps you catch “Save As,” keep them on. Size and colour live in the same settings if the type is small. You may zoom the page, as you learned, without changing the film.",
+      ),
+      fig(
+        "/images/blog/captions-on.jpg",
+        "A video with a caption line at the bottom.",
+        "The words are a lamp, not a second film. If they cover a button the teacher is pointing at, pause, read, play. You are allowed to be slow.",
+      ),
+      h2("Pause, rewind, a notebook"),
+      p(
+        "Space bar, or the tap on the picture, pauses. Left arrow often jumps back a few seconds. That is enough to catch a sentence. If you rewind the same ten seconds five times, pause and write the step. The notebook is cheaper than another pass. Full screen plus captions plus a notebook is a desk. Autoplay plus no notes is a bus window.",
+      ),
+      p(
+        "Speed: the gear, Playback speed. 0.75 when the mouth is fast. 1.25 when they repeat themselves and you only need the shape. 2× is how people “finish” a course and remember nothing. You are not late. The video will wait. On a phone the same gear lives in the three dots. Earphones help captions and speech sit together without the street.",
+      ),
+      fig(
+        "/images/blog/pause-video.jpg",
+        "A learner paused on a tutorial, writing in a notebook.",
+        "The film is still. The hand is working. That is the lesson landing. A finished video with an empty page is a stall you walked through.",
+      ),
+      ul([
+        "Open a short tutorial. Turn captions on. Read one line. Confirm it matches the mouth, more or less.",
+        "Pause. Write one step. Play. Pause again.",
+        "Try 0.75 for a sentence, then 1. You are allowed to return to 1.",
+        "Do not download a “subtitle plugin” from a banner under the video.",
+      ]),
+      h2("When there are no captions"),
+      p(
+        "Some films have none. Lower the speed, use earphones, write. A live class on Meet may have captions if the host switched them on — a different tap, still CC. Do not trust live captions with a fee amount. Ask in the chat. And if a video is only music with no speech, captions will be empty or wild. You did not break them.",
+      ),
+      p(
+        "The point of a tutorial is one thing you can do after. Captions, pause, speed, paper. Then close the tab. The next video will offer itself. You already know how to leave a market. Leave.",
+      ),
+    ],
+  },
+  {
+    slug: "airplane-mode",
+    title: "Airplane mode",
+    excerpt:
+      "The plane icon mutes the radios: calls, data, Wi‑Fi, Bluetooth. The phone is still a clock, a camera, a torch. Use it in a hall, in a queue, and when the bundle must sleep.",
+    series: SERIES,
+    order: 88,
+    author: AUTHOR,
+    date: DATE,
+    cover: "/images/blog/airplane-mode.jpg",
+    coverAlt: "A phone settings screen with Airplane mode switched on.",
+    body: [
+      p(
+        "Airplane mode is a master mute for the phone's radios. It was built so a plane's instruments would not argue with a pocket. On the ground it is still useful: a class, a church, a meeting, a bundle you refuse to feed overnight, a child watching a downloaded film. The phone does not die. It stops talking to masts and to Wi‑Fi until you say so. This lesson is the tap, what still works, and turning Wi‑Fi back on without opening the whole house.",
+      ),
+      p(
+        "Swipe down from the top of an Android, or down from the right on many iPhones. A plane icon. Tap it. The icon lights. The signal bars go. You will not receive WhatsApp until you switch it off. Calls will fail. That is the point. To undo, tap the plane again. If you cannot find the shade, Settings, Network, Airplane mode — the same lamp, a longer walk.",
+      ),
+      fig(
+        "/images/blog/airplane-mode.jpg",
+        "Airplane mode on in phone settings.",
+        "One tap, many radios. If you only meant to silence a ringer, use mute or Do not disturb. The plane is ruder. It hangs up on the network.",
+      ),
+      h2("What still works, and a hole you can open"),
+      p(
+        "Camera, torch, clock, photos already on the phone, a downloaded video, a PDF in Files, the calculator. GPS may sulk. Bluetooth often goes off with the plane; some phones let you switch Bluetooth back on after, for earphones, while the mast stays muted. Wi‑Fi can sometimes be turned on on top of airplane mode — a plane with a café network, no SIM data. That is a useful knot in a hall with Wi‑Fi and a greedy bundle. Look: plane on, then Wi‑Fi on. Data should stay dead.",
+      ),
+      p(
+        "Alarms still ring on most phones. Do not trust that with your life until you have tested it once the night before. A power-off is ruder than the plane: nothing rings. The plane is a sleep for the radios, not a shutdown. Battery lasts longer because the phone stops hunting a mast in a weak area. That hunt is why a phone dies in a bus between towns. Plane, then you arrive, then off.",
+      ),
+      fig(
+        "/images/blog/plane-icon.jpg",
+        "A phone face-down on a desk beside a laptop.",
+        "The desk is working. The pocket is quiet. If you need the laptop's internet, that is a different radio. The phone can rest.",
+      ),
+      ul([
+        "Swipe to the plane. Switch it on. Try to open WhatsApp. It should fail or stall.",
+        "Open the camera. Take a picture. That should work.",
+        "Switch the plane off. Wait a few seconds. Signal should return.",
+        "If you only wanted silence, practise Do not disturb once, so you do not use a sledgehammer for a fly.",
+      ]),
+      h2("When it is the wrong tool"),
+      p(
+        "A bank OTP will not arrive on the plane. Switch off before you pay. Maps that need live data will freeze; an offline map, from the maps lesson, still shows streets. WhatsApp Web on the laptop dies if the phone is on the plane, because the phone is the key. You know that handshake.",
+      ),
+      p(
+        "The plane is a door you close on purpose. It is not broken signal. It is not a virus. If a relative says the phone “has no network,” look for the plane before you buy data. The icon is small. The effect is large. Look, then tap.",
+      ),
+    ],
+  },
+  {
+    slug: "storage-on-the-phone",
+    title: "When the phone says storage is full",
+    excerpt:
+      "Photos, WhatsApp, and video fill a pocket. The computer is a drawer. Delete the soup, keep the originals you already copied. A “cleaner” app is usually a stall.",
+    series: SERIES,
+    order: 89,
+    author: AUTHOR,
+    date: DATE,
+    cover: "/images/blog/phone-storage.jpg",
+    coverAlt: "Phone storage settings showing what is using space.",
+    body: [
+      p(
+        "A phone fills the way Downloads fills: quietly, then all at once. You cannot install an update, cannot receive a photo, the camera refuses. Storage full. The usual fat is the gallery, WhatsApp's own folder of pictures, downloaded films, and apps you have not opened this year. This lesson is looking at the bar, walking copies to the computer first, then deleting with a name, not with a shouting cleaner.",
+      ),
+      p(
+        "Settings, Storage — a bar, then a list: Photos, Apps, Other. Other is often WhatsApp and caches. You already know how to copy photographs off the phone with a cable. Do that before you delete. Open a few on the computer. Then, on the phone, delete the ones you have seen on the larger screen. WhatsApp: Settings, Storage and data, Manage storage. It will offer large files and old videos. Those are often soup. The originals, if they were yours, should already be in Pictures on the computer.",
+      ),
+      fig(
+        "/images/blog/phone-storage.jpg",
+        "A storage bar on a phone: photos, apps, free space.",
+        "The bar is the tank, like C: on the laptop. Photos and video fill it. Letters do not. A 4 GB phone fills faster than a 128 GB one. The habit is the same.",
+      ),
+      h2("What to delete, what to leave"),
+      p(
+        "Safe to consider: downloaded films you have watched, installers, screenshots of OTPs, WhatsApp statuses that landed in the gallery, duplicate burst shots of the same plate of rice. Not safe to guess: the WhatsApp Databases folder if you do not know it, system apps, Downloads you have not opened. Uninstall apps from Settings, Apps — the guest list — not by dragging an icon to a bin that only removes the sign, on some phones. You have met that lie on the desktop.",
+      ),
+      p(
+        "Cache is leftover packing. Clearing cache in Storage, or inside an app's info, can free space without deleting your photos. Clearing data is ruder: it signs you out of that app. Read the word. Cache, not data, unless you mean to start the app from zero.",
+      ),
+      fig(
+        "/images/blog/storage-settings.jpg",
+        "A learner comparing phone storage with files on a laptop.",
+        "The laptop is the drawer. The phone is the pocket. Fill the drawer first. Empty the pocket second. A cleaner that never copied is a hole.",
+      ),
+      ul([
+        "Open Settings, Storage. Note the largest item.",
+        "If it is photos, copy a year to the computer. Open three. Then delete from the phone only those you have confirmed.",
+        "In WhatsApp, Manage storage. Delete a large video you do not need. Do not delete the whole chat until you mean it.",
+        "Do not install a “phone booster” from an advert. Settings is the cleaner.",
+      ]),
+      h2("Cloud, SD cards, and the shop"),
+      p(
+        "Google Photos can offload pictures if you chose that on purpose and the bundle can stand it. An SD card is a second pocket; some phones still have the slot. Apps on the card are fussy. Photos on the card vanish if the card dies. Copy to the computer is still the backup. A shop that “cleans storage” in five minutes without your cable has deleted first. Ask them to copy. Stand there.",
+      ),
+      p(
+        "When the bar has room again, the camera will open. That is the whole practical aim. A full phone is not a virus. It is a pocket with too many bricks. You know bricks from kilobytes. Walk them to the drawer. Then the pocket works.",
+      ),
+    ],
+  },
+  {
+    slug: "app-permissions",
+    title: "When an app asks for the camera or your location",
+    excerpt:
+      "A permission is a door. Camera, microphone, location, contacts. Allow only if the app needs that door for the job you asked. Deny is a full sentence.",
+    series: SERIES,
+    order: 90,
+    author: AUTHOR,
+    date: DATE,
+    cover: "/images/blog/app-permission.jpg",
+    coverAlt: "A phone permission dialog asking for the camera, with Allow and Deny.",
+    body: [
+      p(
+        "You install a torch app. It asks for contacts, location, and the microphone. That is not a torch. That is a guest requesting the house. A permission is a door in the phone: camera, microphone, location, contacts, files, notifications. The app cannot walk through until you say Allow. This lesson is reading the door, saying Deny without shame, and changing your mind later in Settings.",
+      ),
+      p(
+        "When the box appears, name the job. WhatsApp needs the camera for a photo in a chat, the microphone for a voice note, contacts if you want to find who else has the app. A game does not need your contacts. A PDF reader does not need the microphone. Maps needs location while you use it — “only while using the app” is the kind option on modern phones, not “all the time.” Deny, or Don’t allow, is allowed. The app should still do the rest of its job. If it refuses to open until you Allow everything, that app is a stall. Uninstall.",
+      ),
+      fig(
+        "/images/blog/app-permission.jpg",
+        "Allow and Deny on a camera permission.",
+        "Two buttons. The large one is not always the kind one. Deny, then try the job. If the job truly needs the door, you can Allow next time.",
+      ),
+      h2("The list after the fact"),
+      p(
+        "Settings, Apps, the app's name, Permissions. A list of doors and whether they are on. Turn off the ones that surprise you. Photos versus All files: a school app that must upload one PDF needs access to that file, not to the whole gallery forever. On newer Androids you can pick a file at the moment of upload. Prefer that. Notifications are a permission too. A shop app that pings ten times a day can be muted here without uninstalling, if you still need it.",
+      ),
+      p(
+        "The browser asks as well: this site wants to know your location, use the camera, send notifications. A maps site may need location. A news site that wants notifications is a tap on the shoulder you can refuse. You met this in the webcam lesson on the computer. The phone is the same doors, in a pocket.",
+      ),
+      fig(
+        "/images/blog/permission-dialog.jpg",
+        "A learner pausing at a permission prompt on a phone.",
+        "The pause is the skill. If you cannot say why this app needs this door, Deny. You can open the door later. You cannot un-send contacts you already gave.",
+      ),
+      ul([
+        "Open Settings, Apps. Pick one app you use. Read its permissions.",
+        "Switch off one door that does not match the job — a game with contacts, a torch with location.",
+        "Use the app. If it still works, you were right.",
+        "Do not Allow a new app all doors on the first sitting because the screen is in a hurry.",
+      ]),
+      h2("Once you have said yes"),
+      p(
+        "A permission given is not a marriage forever. You can close the door. If you already allowed a random app, turn the doors off, then uninstall. Changing a password is for accounts; permissions are for this device. A cousin who borrowed the phone may have said Allow for you. Look at the list after they leave, the way you look at Linked devices after a café.",
+      ),
+      p(
+        "You are not being asked to fear every app. You are being asked to match the door to the job. Camera for a camera. Location for a map. Microphone for a call. Contacts for a phone book. Everything else can wait. Deny is a full sentence. The app will not take offence. It does not have feelings. It has a list. Keep the list short.",
+      ),
+    ],
+  },
 ];
 
