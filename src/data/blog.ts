@@ -358,4 +358,303 @@ export const blogPosts: BlogPost[] = [
       ),
     ],
   },
+  {
+    slug: "passwords-you-can-keep",
+    title: "Passwords you can keep",
+    excerpt:
+      "A password is a key, not a motto. Long beats clever. One key per house. A notebook in a drawer beats the same word on every door.",
+    series: SERIES,
+    order: 6,
+    author: AUTHOR,
+    date: DATE,
+    cover: "/images/blog/password-notebook.jpg",
+    coverAlt: "A notebook and pen beside a closed laptop on a wooden desk.",
+    body: [
+      p(
+        "A password is a key. You would not cut one key and hang it on every door in the street. That is what people do when they use their child's name plus 1234 for email, the bank app, and the academy login. The first site that leaks — and sites leak — hands a stranger the rest of the house. This lesson is how to make keys you can still find in the dark, without writing the actual key on the doorframe.",
+      ),
+      p(
+        "Forget the old advice about one capital, one number, one symbol, eight characters, changed every month. That produced Passw0rd! and a sticky note on the monitor. What actually resists guessing is length, and what actually fails is reuse. A sentence you can say is stronger than a short tangle you will forget and then reset, badly, from a café.",
+      ),
+      fig(
+        "/images/blog/password-notebook.jpg",
+        "A lined notebook and pen beside a closed laptop on a wooden desk.",
+        "Hints, not keys. Write what will remind you — a hymn line, a stall colour — never the password itself, and never next to the name of the site.",
+      ),
+      h2("Make a sentence, then hide it"),
+      p(
+        "Think of four ordinary words that do not belong together. Rain zinc mango Tuesday. Say them. That is already harder to guess than your birthday. Add a small twist you will remember: the year you started the course, or the bus number you take, in the middle, not at the end. Do not use a proverb everyone knows. Do not use a Bible verse with the reference, because those are in books. The sentence should be boring to anyone who is not you.",
+      ),
+      p(
+        "Each important house gets its own sentence. Email is one. Bank is another. The computer login is a third. WhatsApp PINs and app locks are more keys. If that sounds like too many, you have named the real problem: memory. Two honest answers exist. One is a password manager — a programme whose only job is to remember keys, locked with one long sentence you do memorise. The other, if you do not want another programme yet, is a notebook that lives in a drawer, not in the bag you take to town.",
+      ),
+      h2("The notebook rule"),
+      p(
+        "If you write passwords down, write hints, not the keys. “Gmail — hymn second line” is useful to you and useless to a thief who finds the book. Do not write the site name beside the full password. Do not photograph the page. Do not keep the book in the laptop bag. A drawer at home is dull, which is the point. Dull is how keys survive.",
+      ),
+      ul([
+        "Pick four unrelated words. Say them until they are a rhythm.",
+        "Use that sentence only for your email. Email is the master door: reset links for everything else arrive there.",
+        "Make a different sentence for the bank. Do not “just change the last number.”",
+        "Write a hint in the notebook, close the drawer, and try logging in tomorrow from memory. If you fail, the hint was too thin. Fix the hint, not the sentence, unless the sentence itself is gone.",
+      ]),
+      fig(
+        "/images/blog/phone-login.jpg",
+        "A hand holding a phone that shows a six-digit verification code, laptop open beside it.",
+        "The second lock. A code on the phone means a stolen password is not enough. Turn this on for email and banking before you turn it on for anything else.",
+      ),
+      h2("The second lock on the phone"),
+      p(
+        "Many sites now offer a second step: after the password, they send a code to your phone, or they ask you to tap a prompt. That is two-factor authentication, which is a long name for a second lock. Turn it on for email first, then for the bank. Use the phone number you actually hold. If the site offers an authenticator app — a small programme that shows rotating codes — that is stronger than SMS, because SMS can be stolen with a swapped SIM. SMS is still far better than nothing.",
+      ),
+      p(
+        "When a site offers “remember this computer,” say yes only on a machine that stays in the house. Say no in a business centre, a café, or a friend's laptop. The computer will keep you signed in. That is convenient at home and a gift to the next person on a shared machine. Sign out when you are done on any computer that is not yours. Look for your name in the corner, click it, choose Sign out. Closing the window is not always the same act.",
+      ),
+      h2("What you never type into a surprise"),
+      p(
+        "Nobody who actually works at a bank will ask you to reply with your password. Nobody at the academy will. A page that arrived from a link in a mail or a WhatsApp and then asks for the password is the next lesson. For today: if you did not walk to the real site yourself, do not type the key. Open a new tab. Type the address you already trust. If the story was true, it will still be true there.",
+      ),
+      p(
+        "If you have been using one short password everywhere, change email tonight. That one change closes the master door. The rest can follow this week, one house at a time. You do not need a new personality. You need keys that do not open the neighbour's gate.",
+      ),
+    ],
+  },
+  {
+    slug: "the-link-you-should-not-open",
+    title: "The link you should not open",
+    excerpt:
+      "Hurry is the bait. A real bank already knows you. Open a new tab and walk there yourself. If the story was true, it will still be true on the real street.",
+    series: SERIES,
+    order: 7,
+    author: AUTHOR,
+    date: DATE,
+    cover: "/images/blog/inbox-caution.jpg",
+    coverAlt: "A laptop on a wooden desk showing an email inbox.",
+    body: [
+      p(
+        "The trap has a shape. A message arrives with your name, a familiar colour, and a clock. Your account will close. A parcel is held. A job is waiting. A relative is stranded. The button is large. The English is almost right. Your hands want to tap before your head has sat down. That hurry is the product. This lesson is how to sit down anyway.",
+      ),
+      p(
+        "People call this phishing when it comes as email, and the same play arrives on WhatsApp, SMS, and Facebook. The name does not matter. The move is the same: they want you to walk through their door while thinking it is the bank's. Once you type a password or a BVN or an OTP into their page, they have the key. The page can look finished. A padlock can sit in the address bar. A padlock means the tunnel is encrypted. It does not mean the building is the bank.",
+      ),
+      fig(
+        "/images/blog/inbox-caution.jpg",
+        "A laptop inbox open on a wooden desk in a modest room.",
+        "Read the list before you open the letter. Unknown senders, money, and a deadline in the subject line are three reasons to slow down, not speed up.",
+      ),
+      h2("Three tells you can see without clicking"),
+      p(
+        "Look at the sender the way you look at a stamp. A bank's real mail comes from an address that ends in the bank's own house, not from a free gmail with the bank's name in the display. Display names are costumes. The address behind them is the street. On a phone, tap the name to expand it. On a computer, hover or click once. If the street is strange, you are done. You do not need to open the letter to know the stamp is wrong.",
+      ),
+      p(
+        "Look at the ask. Real institutions already have your details. They do not need you to “confirm your BVN to keep this account.” They do not need a photograph of your ATM card, front and back. They do not need the code that just arrived on your phone — that code is a one-time key, and anyone who asks you to read it out is asking you to open the door from inside. A job that wants a “processing fee” before you start is not a job.",
+      ),
+      p(
+        "Look at the clock. “Within 30 minutes or your account closes” is theatre. Banks do not close accounts by WhatsApp. Couriers do not hold parcels behind a random link. If there is a genuine problem, it will still be there in an hour, on the number or the website you already use. Hurry is not a feature of serious offices. It is a feature of thieves.",
+      ),
+      h2("Walk there yourself"),
+      p(
+        "This is the whole defence, and it fits in one habit. Do not use the link in the message. Open a new tab. Type the address you already trust, or use the bookmark you saved on a calm day, or open the bank's own app from your phone's home screen — the icon you installed, not a new one the message suggested. If the story was true, the real site will show it. If the story was a trap, the real site will be quiet, and you will have lost nothing but a minute.",
+      ),
+      fig(
+        "/images/blog/address-check.jpg",
+        "Close-up of a browser address bar at the top of a laptop screen.",
+        "The street name lives here, not in the logo, not in the button. Read it before you type a password. A letter extra, a missing dot, a different ending — any of those is a different building.",
+      ),
+      p(
+        "When you must look at a link, look at the street in the address bar after the page opens, before you type anything. The important part is the name just before the first slash, the house. firstbank.com is not firstbank.com.ru is not first-bank-secure.xyz. You do not need to memorise every fake. You need to know your real ones: the bank you actually use, the exam body, the academy, the mail you signed up with. Write those few addresses in the same notebook as the password hints.",
+      ),
+      ul([
+        "Open yesterday's mail or WhatsApp. Find one message that asked you to tap a button.",
+        "Do not tap it. Read the sender. Read the ask. Read the clock.",
+        "Open a new tab and type the real address yourself, or open the real app.",
+        "Compare. If the real place is silent, the message was noise. Delete it. If you already tapped one last month, change the email password from the real site, then the bank.",
+      ]),
+      h2("If you already tapped"),
+      p(
+        "Stop typing. Do not “finish the form.” Close the tab. On your phone, do not call the number in the message. From a number you already have — the back of the card, the app, a printed receipt — tell the bank what happened. Change the email password first, because that is the master door, then the bank password, then any other house that used the same key. If money moved, the bank's fraud line is the next call, not a helper in the comment section of Facebook.",
+      ),
+      p(
+        "Shame is how these traps finish the job. People hide the mistake until the account is empty. The academy would rather you say “I tapped” on the same day than “I think something is wrong” three weeks later. You are not the first. The lesson is the walk: new tab, real street, then maybe the story is true. Everything else can wait.",
+      ),
+    ],
+  },
+  {
+    slug: "printing-without-waste",
+    title: "Printing without waste",
+    excerpt:
+      "The printer is a tap. Preview is looking at the sink before you open it. One page, the right side of the paper, and ink that is not a rumour.",
+    series: SERIES,
+    order: 8,
+    author: AUTHOR,
+    date: DATE,
+    cover: "/images/blog/printer-desk.jpg",
+    coverAlt: "A small printer on a wooden desk beside a laptop and a stack of paper.",
+    body: [
+      p(
+        "A printer is a tap. Leave it open and you flood the desk: twenty copies of a page you meant once, the back of a form printed on the front, a photograph that ate a week's ink to look like fog. The machine is not stubborn. It prints exactly what it was last told. This lesson is how to look at the water before you turn the handle.",
+      ),
+      p(
+        "You will meet printers at the academy, in business centres, in church offices, at home if someone bought one. The buttons change. The idea does not. Somewhere on the computer there is a command called Print. Somewhere on the printer there is paper, power, and a warning light. Your job is to join those two only after you have seen a picture of the page.",
+      ),
+      fig(
+        "/images/blog/printer-desk.jpg",
+        "A small inkjet printer on a wooden desk beside a laptop and a short stack of A4 paper.",
+        "Paper in the tray, face the way the little diagram shows. Power on. Then the computer. The printer cannot guess which way you meant the letterhead.",
+      ),
+      h2("Before you press anything"),
+      p(
+        "Check the tray. A4 is the ordinary sheet in Nigeria — the size of a letter, not the long roll of a receipt. If the tray is empty, the printer will either wait or chew the next thing it finds, including the cardboard leftover from the last ream. Fan the paper once so the sheets separate. Put it in the way the icon on the tray shows, usually face down on home inkjets, sometimes face up on office machines. When in doubt, print one test page on cheap paper and look.",
+      ),
+      p(
+        "Check the lights. A steady power light is waiting. A flashing one often means it is hungry for paper or ink, or the lid is open. Opening the lid to stare does not refill ink. If the computer says the printer is offline, it is usually unplugged, asleep, or connected to a different Wi-Fi than the laptop. On a USB printer, the cable is the whole conversation. Wiggle it once, the way you would a kettle that will not boil.",
+      ),
+      h2("Print means preview"),
+      p(
+        "In Word, in a browser, in almost any page, Ctrl and P (Command and P on a Mac) opens Print. Do not hit Enter yet. Look. You should see a small picture of the page, the name of the printer, the number of copies, and whether you meant all pages or only this one. That small picture is the truth. If it shows two pages and you wanted one, you still have time. If it shows a huge empty margin and three words, the paper will look the same, only more expensive.",
+      ),
+      fig(
+        "/images/blog/print-preview.jpg",
+        "A laptop screen showing a print preview of a one-page letter, a printer behind it.",
+        "The miniature page is what will come out. Copies: 1. Pages: this one. Colour only if you need it. Then Print.",
+      ),
+      p(
+        "Copies default to 1 on a good day and to whatever the last person chose on a shared machine. Look every time. Pages can be All, Current, or a range like 1-2. Colour uses more ink than black. For a form, a receipt, a letter, black is enough. Draft or Economy, if you see it, is the pale setting for things you will not keep. Fit to page stops the right edge from vanishing. Portrait is the tall way. Landscape is the wide way, for a table that is too broad.",
+      ),
+      ul([
+        "Open a one-page letter you already saved.",
+        "Press Ctrl+P. Confirm copies is 1, and the preview is one page, the right way up.",
+        "If you are on a shared printer, read the name. Printing to “Office upstairs” from downstairs is how pages go missing.",
+        "Print. Walk to the machine. If nothing comes, look at the lights before you press Print again. Twice is two copies, not one copy faster.",
+      ]),
+      h2("Ink, jams, and the business centre"),
+      p(
+        "Ink runs out in the middle of a sentence. The computer may warn you; it may not. A streaked page is often a clogged nozzle, not an empty tank — but do not shake a cartridge over the desk to find out. At home, run the printer's own cleaning routine from its software once, not five times, because cleaning spends ink. At a business centre, pay for the page you got, and ask them to reprint if the streak is theirs.",
+      ),
+      p(
+        "A jam is a folded sheet in the path. Switch the printer off. Open the doors the arrows point to. Pull the paper in the direction it was travelling, slowly, so it does not tear and leave a tooth behind. If you leave a tooth, the next ten pages jam too. Never use a knife. The rollers are rubber.",
+      ),
+      p(
+        "PDF is your friend when the other person's computer is not yours. File, Save As, PDF, then print the PDF. What you see is what the machine will draw, fonts included. For a form that must stay on one page, preview until it does. For photographs, know that a full-page colour picture can cost more than the document it was meant to illustrate. Ask the price before you send twenty wedding pictures to the shop printer. The tap is patient. You do not have to open it all the way.",
+      ),
+    ],
+  },
+  {
+    slug: "spreadsheets-the-grid-that-counts",
+    title: "Spreadsheets: the grid that counts",
+    excerpt:
+      "Rows, columns, and one cell where they meet. Type a number, not a picture of a number. Let the grid add, so the total is still right when the light returns.",
+    series: SERIES,
+    order: 9,
+    author: AUTHOR,
+    date: DATE,
+    cover: "/images/blog/spreadsheet-grid.jpg",
+    coverAlt: "A laptop screen showing a simple spreadsheet with names, items and amounts.",
+    body: [
+      p(
+        "A spreadsheet is a grid that can count. Lined paper can hold the same numbers. The grid's trick is this: when Friday's figure changes, the total at the bottom can change with it, if you asked the grid to add instead of typing the answer yourself. Microsoft Excel, Google Sheets, and LibreOffice Calc are three names for that grid. The idea is older than all of them: rows across, columns down, a cell where they meet.",
+      ),
+      p(
+        "You already know the picture if you have kept a shop book or a school fee list. Names down the left. Months across the top. Money in the middle. The spreadsheet is that book, with a machine willing to add until the battery dies. This lesson is not “become an analyst.” It is: open a grid, name the columns, type numbers as numbers, and let one cell do the sum.",
+      ),
+      fig(
+        "/images/blog/spreadsheet-grid.jpg",
+        "A laptop screen showing a simple spreadsheet with columns for Name, Item and Amount.",
+        "Each box is a cell. A1 is the corner. Type in the cell, not in the margin. The letters across the top and the numbers down the side are how you name a place.",
+      ),
+      h2("The map: rows, columns, cells"),
+      p(
+        "Columns wear letters: A, B, C. Rows wear numbers: 1, 2, 3. The box where column B meets row 3 is called B3. Click it. A line appears around it. That is the active cell. Whatever you type next will land there, the way the cursor works in a letter. The long field above the grid is the formula bar. It shows what is really inside the cell, which is useful later, when the cell is showing a total but holding a sum.",
+      ),
+      p(
+        "Click A1 and type Name. Press Tab — the cell to the right, B1, becomes active. Type Item. Tab. Type Amount. Press Enter. You are now on the next row, often A2. That first row is a header. It is a label for humans. Do not put a number in it. The numbers start underneath, one fact per cell. Chidinma in A2, exercise book in B2, 450 in C2. Not “Chidinma — book 450” all in one box. The grid can add a column. It cannot easily add a sentence.",
+      ),
+      h2("Numbers are not decoration"),
+      p(
+        "Type 450, not ₦450, if you want the grid to add. The naira sign can come from formatting later — a button that says currency, or a format menu. If you type the sign yourself, some programmes treat the cell as a word, and words do not add. The same trap waits with commas and spaces. 1 200 may be a word. 1200 is a number. Start simple: digits only, then make it pretty after the total is right.",
+      ),
+      fig(
+        "/images/blog/spreadsheet-learner.jpg",
+        "A young woman at a small table with a laptop spreadsheet, a paper receipt and a calculator.",
+        "The receipt is the source. The grid is the copy that can add. If they disagree, believe the paper until you find the mistyped cell.",
+      ),
+      p(
+        "To add a column, click the cell under the last amount — if your amounts are C2 to C6, click C7. Type =SUM(C2:C6) and press Enter. The equals sign tells the grid this is a formula, not a label. SUM is add. C2:C6 means from C2 through C6. The colon is a range, a stretch of cells. If the number that appears matches your calculator, you are done. If you later change C3, C7 should change by itself. That is the whole magic. If it does not change, you typed the total by hand. Undo and put the formula back.",
+      ),
+      ul([
+        "Open Excel, Google Sheets, or the spreadsheet that came with the computer. File, New.",
+        "In row 1, type Name, Item, Amount.",
+        "Enter three real lines from your week — a transport fare, a photocopy, a recharge.",
+        "In the cell under the amounts, type =SUM( and then drag from the first amount to the last, close the bracket, press Enter.",
+        "Change one amount. Watch the total. Save as week-practice in Documents.",
+      ]),
+      h2("The mistakes that look like maths"),
+      p(
+        "A cell that shows ###### is not an error in your life. The column is too narrow for the number. Put the pointer on the line between C and D at the top until it becomes a double arrow, then drag. A cell that shows #DIV/0! means you asked the grid to divide by empty. A cell that shows the formula you typed, instead of an answer, usually means you missed the equals sign, or the cell is formatted as text. Delete, type again starting with =.",
+      ),
+      p(
+        "One sheet, one job. A tab at the bottom is a page in the same book. Fees on one tab, attendance on another, not both tangled in column Z. Name the file as you would a folder: fees-2026, not Book1. Save as you learned — Ctrl+S, often. Google Sheets saves itself if you are online; that is a kindness, not a reason to work without looking. When a number matters — school fees, a shop tally — print a copy or keep the paper receipts. The grid is a good clerk. It is not the only witness.",
+      ),
+    ],
+  },
+  {
+    slug: "whatsapp-is-not-email",
+    title: "WhatsApp is not email",
+    excerpt:
+      "Chat is a tap on the shoulder. Email is a letter on a desk. Schools, banks, and workplaces still want the letter. Knowing which room you are in saves a week of silence.",
+    series: SERIES,
+    order: 10,
+    author: AUTHOR,
+    date: DATE,
+    cover: "/images/blog/phone-and-laptop.jpg",
+    coverAlt: "A smartphone showing a chat beside a laptop with an email open.",
+    body: [
+      p(
+        "In Nigeria, WhatsApp is how the day moves. A pastor, a landlord, a classmate, a mechanic — the green app is the tap on the shoulder. Email is quieter, older, and still the tray on an office desk. Mixing them up is how applications vanish, how a school never saw your receipt, how a job “did not get your CV.” This lesson is not against the phone. It is about knowing which room you are standing in.",
+      ),
+      p(
+        "Chat is for things that can live in a pocket: “I am five minutes late.” “Is the shop open?” “Here is the gate code.” The message sits in a thread that scrolls. Next week it is hard to find. Next year it is gone if the phone dies and was never backed up. Email is for things that must still make sense on a desk in October: an application, a fee receipt, a letter of request, a document someone else must file. The subject line is the label on the envelope. The attachment is the paper inside.",
+      ),
+      fig(
+        "/images/blog/phone-and-laptop.jpg",
+        "A smartphone with a chat open beside a laptop showing an email compose window.",
+        "Same news, two rooms. The phone is fast. The laptop letter has a subject, a file, and a date the other person can search.",
+      ),
+      h2("When the phone is the right room"),
+      p(
+        "Use WhatsApp when you already have the person's number, when the answer is short, and when both of you are in the habit of that chat. A class group that shares tomorrow's time. A “have you reached” to a sibling. A photograph of a blackboard, if the teacher asked for it there. Voice notes for people who listen faster than they read. That is the phone earning its keep.",
+      ),
+      p(
+        "Even then, a few manners transfer from letters. Say who you are if the number is new: “Good afternoon, this is Amaka from Computer Basics.” Do not send five fragments that could have been one message. Do not send a document as nine blurry photographs if you can send one PDF. Do not assume a blue tick means the person can act; it means the phone received a packet. People drive, teach, and sleep.",
+      ),
+      h2("When only email will do"),
+      p(
+        "If an advertisement, a form, or a person with an office says “send it to this address,” they mean email. A WhatsApp to a number you found on Facebook is not the same tray. Admissions, banks, scholarships, job boards, and many lecturers still sort their work by subject line. Your carefully typed chat is invisible there. Use the letter: To, Subject, body, attachment, as the email lesson taught.",
+      ),
+      fig(
+        "/images/blog/whatsapp-vs-letter.jpg",
+        "A young man holding a phone while a laptop with email is open on the desk.",
+        "If you hesitate, look at what they asked for. A number means chat. An address with an @ means a letter. When they asked for both, send the letter and then a short chat that says you sent it.",
+      ),
+      p(
+        "Sometimes you should do both, in that order. Email the receipt to the address on the form. Then send a short WhatsApp: “Good afternoon. I have emailed the fee receipt to accounts@…, subject March fees — Amaka Okoro.” The chat is a knock. The mail is the file. Do not reverse it — a knock with no file, then silence when they ask you to resend, because the photograph compressed into dust.",
+      ),
+      ul([
+        "Find one thing you must send this week: a receipt, a form, a short request.",
+        "If you were given an email address, send it there with a real subject and the file attached, named clearly.",
+        "If you were given only a phone number, send one WhatsApp that states who you are and what the file is, then the file, once.",
+        "If you were given both, email first, then a two-line chat pointing at the subject. Do not send the same PDF five times in five places.",
+      ]),
+      h2("Files, groups, and what disappears"),
+      p(
+        "WhatsApp compresses photographs. A receipt that looked sharp on your screen can arrive as a grey soup. For anything a stranger must read — a passport page, a bank slip, a filled form — a PDF or an original document through email survives. If you must use chat, use Document, not Camera, so the file is not treated as a snapshot. Tap the paperclip, choose Document, find the file in the house you already learned.",
+      ),
+      p(
+        "Groups are rooms with many ears. A class group is not a private letter to the instructor. Do not post your BVN, your OTP, or a quarrel. Reply privately when the matter is one person's. Admin messages pinned at the top are the closest thing chat has to a subject line — read them before asking the question already answered.",
+      ),
+      p(
+        "Back up the phone if the chats matter. WhatsApp can save to Google Drive or iCloud; that is a setting, not a miracle. It still is not a filing cabinet. The academy will not hunt through your backup to find last term's receipt. Put work that must last in Documents, on email, on a USB, the way the files lesson said. Use the green app to live. Use the letter to remain.",
+      ),
+    ],
+  },
 ];
