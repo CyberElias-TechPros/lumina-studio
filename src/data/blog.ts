@@ -2971,4 +2971,254 @@ export const blogPosts: BlogPost[] = [
       ),
     ],
   },
+  {
+    slug: "whatsapp-web-on-a-computer",
+    title: "WhatsApp Web on a computer",
+    excerpt:
+      "The green app can sit in a browser. The phone stays the key. Scan once, type with a keyboard, log out when the desk is not yours.",
+    series: SERIES,
+    order: 56,
+    author: AUTHOR,
+    date: DATE,
+    cover: "/images/blog/whatsapp-web.jpg",
+    coverAlt: "A laptop showing WhatsApp in a browser beside a phone with a QR code.",
+    body: [
+      p(
+        "WhatsApp lives in the pocket. It can also live in a browser, with a real keyboard, so a long letter to a landlord is not thumbs. That sitting is WhatsApp Web — or the Desktop app, which is the same idea in a window of its own. The phone does not retire. The phone is the key. If the phone is off, the computer chat is off. This lesson is opening the door, keeping the phone awake, and shutting the door when you stand up.",
+      ),
+      p(
+        "Walk to web.whatsapp.com yourself. A square of dots waits. On the phone: WhatsApp, the three dots or Linked devices, Link a device, point the camera at the square. When the chats appear on the laptop, you are in. The phone must stay on the internet. A dead phone is a dead Web. Charge it. Do not put it in airplane mode to “save data” and expect the laptop to keep talking.",
+      ),
+      fig(
+        "/images/blog/whatsapp-web.jpg",
+        "WhatsApp in a browser beside a phone showing a QR code.",
+        "The dots are a handshake, not a payment. You are pairing your own phone to your own browser. A square a stranger sent you in a chat is a different story — do not scan that.",
+      ),
+      h2("Typing, files, and two clocks"),
+      p(
+        "The list of chats is on the left. A click opens a thread. Type as you would in email, then Enter to send — or Shift+Enter for a new line, depending on the setting. Paperclip attaches a document from Documents, the house you know. Prefer Document for a PDF, not a camera picture, so the file does not become soup. You have heard that. It is louder on a laptop, where the real file is sitting next to you.",
+      ),
+      p(
+        "Blue ticks and “typing…” still come from the phone's network. If the laptop shows one tick and the phone shows two, wait. Do not send five times. Notifications may ring on both; that is two clocks. Mute one. The computer is for writing. The pocket is for the tap on the shoulder when you leave the desk.",
+      ),
+      fig(
+        "/images/blog/phone-beside-laptop.jpg",
+        "A laptop in use with a phone on the same wooden desk.",
+        "Keep the phone on the desk while Web is open, at least the first week. When the handshake drops, the QR returns. Scan again. You have not lost the chats. You have only lost this sitting.",
+      ),
+      ul([
+        "On your own laptop, open web.whatsapp.com. Link the phone.",
+        "Send yourself a one-line message from the computer. Confirm it on the phone.",
+        "Attach one small PDF as Document. Confirm it arrives readable.",
+        "Log out from the laptop menu before you close if this machine is not only yours.",
+      ]),
+      h2("Log out, and other people's desks"),
+      p(
+        "The menu — three dots, Log out — ends this computer's handshake. Closing the tab is not always enough; a session can linger. On a business-centre machine, log out, then the five-minute walk from the signing-out lesson. Linked devices on the phone lists every computer still holding a key. Remove the ones you do not recognise. That list is worth a look after a café.",
+      ),
+      p(
+        "Do not link WhatsApp to a shop's “test” computer. Do not photograph your own QR and send it to a helper. The square is a key laid on the table. Anyone who scans it sits in your chats until you remove the device. Web is a keyboard for your pocket, not a copy of your life left behind. Type, send, log out. The green app goes back in the pocket, where it belongs.",
+      ),
+    ],
+  },
+  {
+    slug: "maps-without-getting-lost",
+    title: "Maps without getting lost",
+    excerpt:
+      "A map app is a paper map that can talk. Search a place, read the pin, then the road. Download the area if the data will die. The blue dot is you, not the destination.",
+    series: SERIES,
+    order: 57,
+    author: AUTHOR,
+    date: DATE,
+    cover: "/images/blog/maps-screen.jpg",
+    coverAlt: "A map with a search box on a laptop screen.",
+    body: [
+      p(
+        "Google Maps, or the map in a ride-hailing app, is a paper map that knows where you are if the phone allows it. People type a name, tap the first pin, and walk into the wrong street because Lagos and Port Harcourt share shop names. This lesson is search, the pin, the address line, and when to download a piece of the city so the map still works when the bundle ends.",
+      ),
+      p(
+        "On the phone or laptop, maps.google.com, or the Maps app. The box at the top is search, like the internet lesson. Type a full thought: 26 Ebony Road Rumuola, not only “computer school.” Read the grey address under the result before you tap. One pin is a guess. The address line is the street. If two pins share a name, the one with the matching road is yours.",
+      ),
+      fig(
+        "/images/blog/maps-screen.jpg",
+        "A map on a laptop with a search box at the top.",
+        "Search is a question. The pin is an answer you must still read. Zoom out once. If the pin is in another state, you asked too little.",
+      ),
+      h2("The blue dot, and permission"),
+      p(
+        "The blue dot is this device, if Location is on. A grey or missing dot means the phone has not been allowed to say where it is. Settings, Location, on, and Maps allowed. That permission is a door, like the camera. On a laptop, the dot is often weaker; use the phone in the street. The laptop is for planning at the desk: look, print, or screenshot the area, then walk with the phone.",
+      ),
+      p(
+        "Directions: tap Directions, choose walking, driving, or bus if it exists. The minutes are a guess in Port Harcourt traffic. The line on the map is the suggestion, not a law. If the voice says turn and the road is a ditch, believe the road. Mute the voice in a church or a shared taxi if it shouts. You can follow the line with your eyes.",
+      ),
+      fig(
+        "/images/blog/maps-phone.jpg",
+        "A young woman checking directions on a phone, a map on a laptop behind her.",
+        "Plan on the large screen. Walk with the small one. Screenshot the junction before you lose data. A picture of the map is a paper map you made.",
+      ),
+      ul([
+        "Search the academy address or your own street. Confirm the pin matches a road you know.",
+        "Zoom out. Find a landmark you can name — a flyover, a market.",
+        "If you have a phone, turn Location on for Maps only, not for every app that asks.",
+        "Do not share live location in a group you do not trust. That is a moving flag on your body.",
+      ]),
+      h2("Offline, and the wrong pin"),
+      p(
+        "On the phone, search the area, then Download offline map if you will travel where data is rude. A piece of the city sits on the phone. It will not know live traffic. It will still show the streets. That is enough to find a compound. Update the download when you have Wi‑Fi, like any other parcel.",
+      ),
+      p(
+        "A pin dropped by a stranger in WhatsApp is a suggestion. Open it, read the address, match it to a name you were told. If the pin is a beach and you were invited to an office, you are in the link lesson again. Type the street yourself. The map is a servant. It will take you to whichever pin you believed.",
+      ),
+    ],
+  },
+  {
+    slug: "a-simple-poster",
+    title: "A simple poster that can be read",
+    excerpt:
+      "A poster is a shout from across a room. One heading, one sentence, one time and place. Size 72 is not pride. It is distance. Colour is optional. Printing is the test.",
+    series: SERIES,
+    order: 58,
+    author: AUTHOR,
+    date: DATE,
+    cover: "/images/blog/simple-poster.jpg",
+    coverAlt: "A simple poster on a laptop screen with a heading and plenty of white space.",
+    body: [
+      p(
+        "A poster is not a letter. A letter is read at a desk. A poster is read while walking — a church door, a school gate, a shop window. If the walker must stop and squint, the poster failed. Word can make one. Canva can make one. A marker and a card can make one. The tool is not the point. One heading, one sentence, the time and the place. This lesson is that discipline, in Word, because you already have Word.",
+      ),
+      p(
+        "Page Layout or Layout, Orientation, Landscape if you want a wide sheet, Portrait for a door. Margins Normal or narrow. Type the heading first, large — 48 or 72, bold, one typeface. Then a sentence a person can say aloud: Computer Basics, Saturday 9 o'clock, 26 Ebony Road. Then a phone number. Then stop. A photograph is optional and must not sit on the words. If you add one, keep it small, as in the letter lesson.",
+      ),
+      fig(
+        "/images/blog/simple-poster.jpg",
+        "A one-page poster with a heading, a short sentence, and white space.",
+        "White space is the shout. If every inch has a word, nobody reads any word. The heading should work from two metres.",
+      ),
+      h2("Canva, if you must, and the same rules"),
+      p(
+        "Canva is a website of templates. Walk to canva.com on the real street. Sign in with the Google account you made on purpose. Choose a poster size — A4 is enough to print at a business centre. A template is a costume. Delete the extra boxes until you have a heading and a sentence. Free templates are fine. “Pro” lock icons are a shop. You do not need them for a class announcement.",
+      ),
+      p(
+        "Download as PDF for print, PNG for WhatsApp. PDF for the business centre, as you know. A PNG in a group chat will be compressed; the heading must still be large enough to survive soup. If it cannot, the poster was too clever. Make the words bigger. Send.",
+      ),
+      fig(
+        "/images/blog/printed-poster.jpg",
+        "A printed A4 poster on a desk beside a laptop.",
+        "Print one copy. Tape it at arm's length. If you cannot read the heading, the screen lied. Fix, print again. One sheet is cheaper than a hundred unread ones.",
+      ),
+      ul([
+        "In Word, one landscape page. Heading, one sentence, a place, a number.",
+        "No more than two typefaces. Black on white is enough.",
+        "Print preview. Then one real print if you can.",
+        "Do not steal a famous logo to “look official.” A clear sentence is official enough.",
+      ]),
+      h2("What a poster is not"),
+      p(
+        "It is not a programme of ten courses in size 12. That is a flyer for a hand, or a letter. It is not a photograph of a full Word page taken with a phone at an angle. Export. It is not fluorescent text on a fluorescent ground. Contrast is kindness. If the academy already has a simple sheet, copy the bones — heading, date, place — not the decoration from a party invitation.",
+      ),
+      p(
+        "When you can read it from the door, you are done. Save as poster-class.pdf in Documents. A poster is a one-job page. You already know one job per email. Same manners, larger letters.",
+      ),
+    ],
+  },
+  {
+    slug: "shrinking-a-photo-for-email",
+    title: "Shrinking a photo so email will take it",
+    excerpt:
+      "A phone photograph is a wall. Email wants a window. Resize is not crop. Save a copy. The original stays in Pictures.",
+    series: SERIES,
+    order: 59,
+    author: AUTHOR,
+    date: DATE,
+    cover: "/images/blog/resize-photo.jpg",
+    coverAlt: "A photograph being resized in a simple window on a laptop.",
+    body: [
+      p(
+        "Phone cameras save large files. A single portrait can be three or eight megabytes. Five of those will bounce from Gmail or sit in a queue until you leave the café. WhatsApp shrinks by force and makes soup. Email often refuses. The kind middle is a smaller copy: enough to see a face or a receipt, small enough to travel. This lesson is copy, resize, save as, attach the copy.",
+      ),
+      p(
+        "Do not work on the only original. In Pictures, copy the file — Ctrl+C, Ctrl+V — and rename the copy receipt-small.jpg. Open it in Photos, Paint, or whatever preview the machine has. You want Resize, not Crop. Crop cuts the picture. Resize keeps the whole picture and makes the grid of dots smaller. A receipt still shows the whole slip. A head still has shoulders if it had them.",
+      ),
+      fig(
+        "/images/blog/resize-photo.jpg",
+        "A simple image window with a photograph being resized.",
+        "Width in pixels is the useful number. 1280 on the long side is plenty for a form. 4000 is the wall the phone built. You are making a window.",
+      ),
+      h2("Paint, Photos, and a number"),
+      p(
+        "In Paint: Resize, Pixels, uncheck “maintain aspect ratio” only if you like distortion — leave it checked. Set the longer side to 1280 or 1600. OK. Save. In Windows Photos, there is often Edit, then a resize or save a copy. On a Mac, Preview, Tools, Adjust Size. The file size in kilobytes should drop. A passport photo for a form is often asked in kilobytes — 50 KB, 100 KB. That is smaller still; 600 pixels on the long side, saved as JPEG. If the form rejects, you are still too heavy. Smaller, new copy, try again.",
+      ),
+      p(
+        "JPEG is the usual type for photos. PNG is heavier and useful for a poster with text. Do not convert a receipt to a masterpiece. Save as JPEG, quality medium if it asks. The words on the receipt must stay readable. Zoom the small copy before you send. If the naira amount is a blur, you shrank too far. Undo, a middle size.",
+      ),
+      fig(
+        "/images/blog/photo-size.jpg",
+        "A laptop with a large camera photo and a smaller copy for email.",
+        "Two files. The original stays. The small one travels. If you overwrite the original, the wall is gone. Save as, new name, always.",
+      ),
+      ul([
+        "Copy one photo. Rename the copy with -small.",
+        "Resize the long side to about 1280 pixels. Save.",
+        "Compare the two file sizes in File Explorer — Details view, Size column.",
+        "Attach the small one to a mail to yourself. Confirm it opens and can be read.",
+      ]),
+      h2("What not to do"),
+      p(
+        "Do not screenshot a photo to shrink it — you lose quality and gain a taskbar. Do not send the whole DCIM zip and hope. Do not use an online “compressor” you reached from an advert; you are uploading the face to a stranger. Paint is enough. If a job portal wants 20 KB, it will say so. Obey the number. A blurry ID is worse than a second attempt.",
+      ),
+      p(
+        "The original remains in Pictures, in the room you made, backed up if you learned that lesson. The small copy can live next to it or in the Fees folder if it is a receipt. Names: receipt-march-small.jpg. You know why. Email will take a window. It will not take a wall. Give it a window.",
+      ),
+    ],
+  },
+  {
+    slug: "what-a-virus-usually-is",
+    title: "What “the computer has a virus” usually is",
+    excerpt:
+      "A flashing count of infections is usually an advert. A real problem is quieter: a file you cannot open, a browser that will not leave a stranger's page, a program you did not install. Close the scare. Do not call the number on it.",
+    series: SERIES,
+    order: 60,
+    author: AUTHOR,
+    date: DATE,
+    cover: "/images/blog/fake-virus.jpg",
+    coverAlt: "A generic fake virus warning on a laptop screen.",
+    body: [
+      p(
+        "Someone will say the computer has a virus. Sometimes they are pointing at a banner that will not close. Sometimes a cousin installed a “cleaner.” Sometimes a shop wants a fee. Real malware exists. It is usually quiet. It does not put a siren on your screen with a phone number in Lagos or India. This lesson is the scare, the quiet problems, and the first walks that do not begin with a credit card.",
+      ),
+      p(
+        "A page that fills the screen with “YOUR PC IS INFECTED — CALL NOW” is a website. It is not Windows. It cannot see your files. Alt+F4, or close the tab, or close the whole browser. If it went full screen, F11, then close. Do not call the number. Do not download the “removal tool” it offers. You have met this cousin in updates, in audio fixers, in cookies. Same family. Same door: close.",
+      ),
+      fig(
+        "/images/blog/fake-virus.jpg",
+        "A scare pop-up pretending the computer is infected.",
+        "The number on the screen is their shop, not Microsoft. Windows does not advertise a helpline on a red page while you are reading the news.",
+      ),
+      h2("Quiet trouble, and what to actually do"),
+      p(
+        "Quieter signs: the browser's homepage became a stranger and you cannot change it. New toolbars. Passwords that fail because a fake page ate them last week. A program in the Apps list you never chose. Pop-ups even when the browser is closed — that last one is more serious. Walk: uninstall extras you can name, as you learned. Change the email password from a machine you trust. Run Windows Security, which is already on the computer — Start, type Windows Security, Virus & threat protection, a scan. It is not exciting. Excitement is the product they sell.",
+      ),
+      p(
+        "A file that will not open, or a ransom note that says pay in crypto to get your letters back, is a real bad day. Unplug from the network if you can, do not pay from panic, copy nothing onto your only USB until someone who knows backup-for-ransom has spoken. The academy can look. A random Facebook helper cannot. Backup from last month is the whole religion here. If you have no backup, you still do not pay a banner.",
+      ),
+      fig(
+        "/images/blog/closing-popup.jpg",
+        "A young woman closing a scare tab calmly.",
+        "Close. Do not talk to the page. Then, if you wish, scan with Windows Security. The order matters. The scare wants the first word. Do not give it.",
+      ),
+      ul([
+        "If a scare page appears, close the tab. No downloads. No numbers.",
+        "Open Windows Security yourself, from Start, not from a banner. Note what it says. It often says nothing is wrong.",
+        "Look at Apps for a name you do not remember. Uninstall only what you can defend.",
+        "If mail was opened on that sitting, change the mail password from a different, trusted machine.",
+      ]),
+      h2("Prevention is the boring list you already have"),
+      p(
+        "Updates. The real street. No unknown installers. No USB from a stranger without a look. A browser that is not a carnival of toolbars. Guest on shared machines. That list is the antivirus. Windows Security is the night watchman, not a preacher on a billboard. A paid extra antivirus can be fine if you chose it on purpose; three at once fight each other. One is enough. Zero extra is also enough for a careful person.",
+      ),
+      p(
+        "When a relative says “virus,” ask what they saw. A red page is a website. A slow machine is heat, disk, crowd. A missing file is the Recycle Bin. Name the thing. Then walk. You now have enough names to refuse a shop that formats first and talks second. Backup, then a person you can see. The siren on the screen is not the disease. It is an advert with a costume.",
+      ),
+    ],
+  },
 ];
