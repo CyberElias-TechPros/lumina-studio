@@ -936,4 +936,277 @@ export const blogPosts: BlogPost[] = [
       ),
     ],
   },
+  {
+    slug: "wifi-at-home-without-mystery",
+    title: "Wi‑Fi at home without mystery",
+    excerpt:
+      "The router is a small radio. The laptop asks for the house name and the key on the sticker. If the internet dies, check the lights before you blame the website.",
+    series: SERIES,
+    order: 16,
+    author: AUTHOR,
+    date: DATE,
+    cover: "/images/blog/wifi-router.jpg",
+    coverAlt: "A small home Wi-Fi router on a wooden shelf, a laptop in the background.",
+    body: [
+      p(
+        "Wi‑Fi is a short radio conversation between a box in the house and the computer. The box is the router. The conversation is not the same thing as “the internet.” The internet is a pipe that arrives at that box — fibre, a SIM, a dish. Wi‑Fi is only the last few metres, through walls, to your laptop. When people say “the Wi‑Fi is down,” they often mean one of three different deaths. This lesson is how to tell them apart.",
+      ),
+      p(
+        "The router usually lives near the door, on a fridge, or under the television. It has lights. Those lights are the first diagnostic, cheaper than a technician. Power light on means the box is awake. A light labelled WAN, Internet, or a globe means the pipe has arrived. Lights labelled WLAN or Wi‑Fi mean the radio is talking. If power is off, nothing else matters. If power is on and the internet light is off, the radio can still look busy while every website fails. That is a pipe problem, not a laptop problem.",
+      ),
+      fig(
+        "/images/blog/wifi-router.jpg",
+        "A small home router on a wooden shelf, laptop out of focus behind it.",
+        "The sticker on the underside usually holds two facts: the network name (SSID) and the password. That sticker is the keyring. Do not throw the carton away until those two lines are in the notebook.",
+      ),
+      h2("Joining the house radio"),
+      p(
+        "On Windows, click the fan-shaped icon near the clock, bottom-right. A list of names appears. Those names are neighbouring radios — yours, the shop downstairs, a phone someone is sharing. Click yours. Type the password from the sticker or from the person who pays the bill. Click Connect. A padlock on a name means it wants a key. An open name with no padlock is a stranger's door. Do not use café Wi‑Fi for the bank. You already know why.",
+      ),
+      p(
+        "The first time, Windows may ask “Is this a private network?” Private is home. Public is a shop. Private lets printers and folders see each other; public is ruder, which is what you want among strangers. On a Mac, the fan is top-right. Same list, same key. If the name is not in the list, you are too far from the box, the radio is off, or the name was changed and nobody told you.",
+      ),
+      fig(
+        "/images/blog/wifi-list.jpg",
+        "A laptop screen showing a list of available Wi-Fi networks.",
+        "Your house name should look like the sticker, not like “Free_Fibre_Login.” If two names are almost the same, the extra one is often a trap or a neighbour. Ask someone who lives here which is ours.",
+      ),
+      h2("When the fan is empty, or full of strangers"),
+      p(
+        "No list at all usually means the laptop's own radio is off. On many machines a function key with the same fan symbol, used with Fn, toggles it. A tiny physical switch on older laptops does the same. Airplane mode, borrowed from phones, also mutes Wi‑Fi. Turn it off. Then wait ten seconds. Radios are not instant.",
+      ),
+      p(
+        "Connected, but pages will not load: look at the router lights. Internet light dead — call the provider, or check the SIM in an LTE router, or the fibre box in the stairwell. Internet light alive — the problem may be DNS or a captive page. Open a new tab and type the provider's own site, or 1.1.1.1. If a login page appears (hotels, some estates), that page is the gate. Fill it. If nothing loads, restart the router: pull power, count to twenty, put it back. Restart the laptop only after that, and only if the box recovered and the laptop did not notice.",
+      ),
+      ul([
+        "Find the router. Read the sticker. Write the network name and the key in the notebook.",
+        "On the laptop, open the fan list. Connect to that name. Confirm a small “connected” under it.",
+        "Open the browser and type cea.ng. If it loads, the pipe and the radio are both working.",
+        "If it does not, look at the lights before you change any password.",
+      ]),
+      h2("Sharing from a phone, and forgetting a network"),
+      p(
+        "A phone can be a temporary router: hotspot, or tethering. That is useful when the house pipe is dead and you have data. It will eat the phone's battery and the bundle. Turn it off when the laptop is done. The hotspot name and password live in the phone's settings; they are not the house Wi‑Fi. Do not leave a hotspot named “Android” open without a key in a compound.",
+      ),
+      p(
+        "If you typed the house password wrong too many times, Forget the network — in the same fan list, under the name, Forget — then join again slowly. Caps Lock is the usual villain, as it was on the keyboard lesson. And if a shop ever “set up Wi‑Fi” for you, change the sticker password in the router's own page later, or ask someone who already knows that page. A key the shop still knows is a key you do not fully hold.",
+      ),
+    ],
+  },
+  {
+    slug: "shutdown-sleep-and-the-power-button",
+    title: "Shut down, sleep, and the power button",
+    excerpt:
+      "Closing the lid is not the same as leaving. Sleep is a nap. Shut down is going home. Holding the power button is a shove, for when the machine will not wake.",
+    series: SERIES,
+    order: 17,
+    author: AUTHOR,
+    date: DATE,
+    cover: "/images/blog/shutdown-menu.jpg",
+    coverAlt: "A laptop Start menu showing Shut down, Sleep and Restart.",
+    body: [
+      p(
+        "People treat the laptop like a phone: close the lid, walk away, open it tomorrow. Sometimes that is sleep, and the letter is still there. Sometimes the battery died in the bag, and the letter is not. Sometimes the machine is hot because it never stopped working in the dark. The power button is not one action. It is several, depending on how long you hold it, and whether the machine was already awake. This lesson names those acts so you choose them.",
+      ),
+      p(
+        "Awake is the sitting you already know: screen on, programs open. Sleep is a nap: the screen goes dark, the RAM keeps the work in a dim room, a small amount of battery still drains. Shut down is going home: everything closes, the disk rests, battery drain is tiny. Restart is going home and coming back immediately — useful after an update, or when a program is haunted. Hibernate, if you see it, is a deep sleep that writes the nap onto the disk so a dead battery does not erase it. Not every machine offers it.",
+      ),
+      fig(
+        "/images/blog/shutdown-menu.jpg",
+        "The Windows Start menu open to Shut down, Sleep and Restart.",
+        "Start button, power icon, then the word you mean. Shut down closes the work. Sleep keeps it. Restart is the polite repair. The lid is none of these until you have checked what the lid is set to do.",
+      ),
+      h2("The lid, the nap, and the bag"),
+      p(
+        "On most laptops, closing the lid asks the machine to sleep. That is convenient at a desk. It is a bad plan in a school bag. The machine may not sleep. It may stay awake, fan running, and arrive hot, or dead. If you are moving, shut down, or at least click Sleep from the menu and wait until the lights go, then close the lid. Do not assume the click of the lid is a promise.",
+      ),
+      p(
+        "To wake from sleep, open the lid and tap a key, or press the power button once — once, not a hold. The screen should return to the lock picture, then your desktop, programs still open. If it does not, the nap ended in a shutdown because the battery finished. That is why unsaved work is a rumour. Ctrl+S is still the cheaper insurance.",
+      ),
+      fig(
+        "/images/blog/power-button.jpg",
+        "Close-up of a laptop power button and the edge of the lid.",
+        "One press wakes or starts. A long hold of five to ten seconds is a force shutdown — a shove. Use the shove only when the machine will not listen to Shut down.",
+      ),
+      h2("Shut down as a habit"),
+      p(
+        "End of the day, especially if light is unreliable: Start, power icon, Shut down. Wait until the screen is fully dark and the lights die. Then close the lid. That is how a machine survives a night of NEPA and a generator that coughs. Restart is the same menu. Use it when a program freezes, after an update, or when the sound, the Wi‑Fi, or the screen has gone strange. Restart is a smaller medicine than a shove.",
+      ),
+      ul([
+        "Save every open document.",
+        "Start, power icon. Look at the three words. Choose Sleep. Wait for the screen to go dark. Tap a key. Confirm your letter is still there.",
+        "Then Start, Shut down. Wait for darkness. Press the power button once to start again.",
+        "Do not practise the long hold today. Know it exists. It is for a frozen screen that ignores the menu.",
+      ]),
+      h2("When the screen is frozen"),
+      p(
+        "If the pointer will not move and Shut down will not open, wait thirty seconds. Some freezes are a disk catching up. Then try Ctrl+Alt+Delete — three keys together — which on Windows often offers Task Manager or a sign-out. If nothing, the long hold on the power button until the machine dies. Count slowly to ten. Then wait another ten before starting it. That shove can lose unsaved work. It should not be how you leave every evening.",
+      ),
+      p(
+        "A desktop tower's power button is the same family: one press to start, one press often to sleep or to ask Windows to shut down, a long hold to force. The monitor has its own button; turning off only the screen is not shutting down the computer. The box under the desk may still be working, quietly, for hours. If you can hear the fan after you “left,” you have only darkened the window.",
+      ),
+    ],
+  },
+  {
+    slug: "filling-a-form-on-a-website",
+    title: "Filling a form on a website",
+    excerpt:
+      "A form is a paper with boxes. Tab moves to the next box. A red star means required. Submit once, then wait. The back button is how people pay twice.",
+    series: SERIES,
+    order: 18,
+    author: AUTHOR,
+    date: DATE,
+    cover: "/images/blog/web-form.jpg",
+    coverAlt: "A laptop browser showing a simple web form with name, phone and email fields.",
+    body: [
+      p(
+        "A website form is a paper with boxes that send themselves. School applications, JAMB, NYSC, bank KYC, the academy's own apply page — they all ask you to type into rectangles and then press a button that says Submit, Continue, or Pay. The fear is that a wrong click will send the wrong life. The usual disaster is smaller and more common: you press the button twice, or you leave a required box empty, or you use the back button in the middle of a payment. This lesson is how to treat the page like a clerk who can only read what is in the boxes.",
+      ),
+      p(
+        "Walk to the real address yourself, as you learned. Bookmark it if you will return. Do not start a government form from a WhatsApp link you did not ask for. Have the paper beside you: ID, names as they appear on the ID, phone number, email you can open, a passport photograph already on the computer in Pictures. Hunting for a scan in the middle of a form is how sessions expire.",
+      ),
+      fig(
+        "/images/blog/web-form.jpg",
+        "A browser form with fields for full name, phone and email.",
+        "One box, one fact. The little red star or the word required means the clerk will refuse the page without it. A greyed box is not rude; it is already filled or not yours to type.",
+      ),
+      h2("Moving through the boxes"),
+      p(
+        "Click the first box. Type. Tab — the key left of Q — jumps to the next box. Shift+Tab jumps back. That is faster than the mouse and less likely to click Submit by accident. Drop-down lists need a click, then an arrow key, then Enter. Date fields are troublemakers: some want day-month-year, some want you to pick from a calendar icon. Look at the grey example inside the box, if there is one. Do not invent a format.",
+      ),
+      p(
+        "Checkboxes are squares; tick them only if you mean the sentence beside them. Round ones are radio buttons — one choice in the family, not all. CAPTCHA — “select the traffic lights” — is a gate against machines. Do it slowly. File upload boxes want Choose file, then the house you already know: Pictures, Documents. The name of the file should appear beside the button. If it does not, you have not attached anything. Look before you continue.",
+      ),
+      fig(
+        "/images/blog/form-learner.jpg",
+        "A young woman filling a form on a laptop, an ID card and notebook beside her.",
+        "The paper is the source. Type names as they are printed, not as you prefer them. A mismatch with an ID is how applications bounce a month later.",
+      ),
+      h2("Required, errors, and the red text"),
+      p(
+        "When you press Continue and the page jumps, look for red text or a box outlined in red. That is the clerk pointing. Often it is a missing digit in a phone number, an email without the @, or a password that is “too short” by their rule, not yours. Fix the pointed box. Do not start the whole form again unless the page has gone blank. If the page has gone blank, your session may have expired — too many minutes idle. Open the real address again. Keep the paper. You are not starting your life over. You are typing.",
+      ),
+      ul([
+        "Open a practice form — the academy apply page, or a site you already trust.",
+        "Fill three boxes using Tab. Attach nothing you would not send.",
+        "Leave one required box empty on purpose. Press Continue. Find the red text. Fill it.",
+        "Do not press Submit twice. Watch the button. If it says Please wait or becomes grey, the clerk has the paper.",
+      ]),
+      h2("Submit once, especially when money is involved"),
+      p(
+        "The last button is the one that files you, or takes money. One click. Then wait. A slow network will tempt a second click. A second click is how people are charged twice or create two applications. If the page seems dead, look at the tab's little spinner. Count to sixty. If nothing, do not Back. Back in a payment is famous. Open a new tab, go to the same real site, and look for a dashboard, a receipt, or “already submitted.” If money left the bank and the site is silent, you have a receipt in the bank SMS — keep it, then use the site's own contact, not a number from a pop-up.",
+      ),
+      p(
+        "Save or screenshot the success page if the site does not email you. Pictures, named. The form is finished when you have evidence, not when you feel finished. And if a page asks you to create a password for this one form, use a new sentence, write the hint, and do not recycle the Gmail key. Each house its own key. You have heard that before because it keeps being true.",
+      ),
+    ],
+  },
+  {
+    slug: "a-video-call-without-panic",
+    title: "A video call without panic",
+    excerpt:
+      "The link is a room. Mute is a kindness. Camera is optional more often than pride admits. Join five minutes early, from the real address, with the kettle elsewhere.",
+    series: SERIES,
+    order: 19,
+    author: AUTHOR,
+    date: DATE,
+    cover: "/images/blog/video-call.jpg",
+    coverAlt: "Over-the-shoulder view of a laptop on a video call, earphones beside it.",
+    body: [
+      p(
+        "A video call is a room that exists for an hour. Zoom, Google Meet, Microsoft Teams — three doors, same furniture: a camera, a microphone, a red mute button, and a link that should have come from a person you know. Classes, church, a job interview, a family meeting abroad. The panic is always the same: they can hear the generator, the camera is a nostril, the link does nothing. This lesson is a small ritual that makes the room ordinary.",
+      ),
+      p(
+        "You need a link or a meeting ID, the internet you tested by opening a simple page, and a quiet-enough corner. Earphones with a mic are better than the laptop's own, because they reduce echo — that hollow barrel sound when two devices in one room listen to each other. A phone can join the same meeting. A laptop is easier to read a document on. Either works. Both at once, in the same room, with speakers on, is the echo.",
+      ),
+      fig(
+        "/images/blog/video-call.jpg",
+        "A laptop on a wooden desk showing a video call, earphones beside it.",
+        "Join early. Check the preview of your own face before you enter. If the preview is black, the camera is covered, unplugged, or in use by another program. Close the other program.",
+      ),
+      h2("Entering the room"),
+      p(
+        "Open the link from email or from a calendar, on the computer you will use. If the browser asks to open the Zoom app, and you have the app, allow it. If you do not, there is almost always a choice that says Join from browser. Prefer the real host's link, not a forwarded bit.ly with no name. For Meet, the address looks like meet.google.com/three-words. Type that if the link is clumsy.",
+      ),
+      p(
+        "Before you Join, the page usually shows a preview. Camera on or off is a toggle. Microphone on or off is another. Join muted if you are not speaking first — a class of thirty open mics is a market. Your name: type the name the teacher or the interviewer expects, not a nickname from gaming. Then Join. Waiting room means you are in a corridor. Sit. Do not join five times; that is five corridors.",
+      ),
+      fig(
+        "/images/blog/mute-earphones.jpg",
+        "Earphones and a laptop with a muted microphone icon on the screen.",
+        "The mute icon is a microphone with a line through it. Red or struck-through means they cannot hear the kettle. Unmute only when it is your turn, then mute again. This is manners, not fear.",
+      ),
+      h2("Mute, camera, and the generator"),
+      p(
+        "Find mute as soon as you arrive. It is usually bottom-centre. Practise toggling it once if the host has not started. Camera off is allowed in most classes; in an interview, ask or follow what they do. Light from a window on your face is better than a bare bulb behind your head, which turns you into a silhouette. A virtual background is optional and often glitchy; a tidy wall is enough.",
+      ),
+      ul([
+        "Put on earphones. Close extra tabs. Open cea.ng to prove the internet is alive.",
+        "Five minutes before, open the real meeting link. Check preview. Join muted.",
+        "Find the mute button. Find Leave or End — Leave is you going; End meeting is for the host.",
+        "If they cannot hear you, unmute, then check the tiny sound settings: the right microphone, not “Stereo Mix.”",
+      ]),
+      h2("When you cannot get in"),
+      p(
+        "A link that does nothing: copy it, paste it into the address bar yourself. Still nothing: the meeting has not opened yet, or it has ended, or the ID is wrong by one letter. Message the host on the channel they already use — WhatsApp, email — not a second join every ten seconds. Camera not found: close WhatsApp Desktop or another app that might be holding the camera, then rejoin. Echo: mute the laptop speakers and use earphones, or mute one of the two devices in the room.",
+      ),
+      p(
+        "Data: video eats a bundle. If the picture stutters, turn your camera off. Audio-only still counts as present. A phone hotspot will work for a short call and suffer on a two-hour class; sit near the house router if you can. And when it is over, Leave, then close the tab. A meeting left open in the background is a microphone you forgot. The room should not hear you after you think you have gone.",
+      ),
+    ],
+  },
+  {
+    slug: "when-the-computer-is-slow",
+    title: "When the computer is slow",
+    excerpt:
+      "Slow is usually a crowd, a full disk, or a dying drive. Close windows you cannot see. Restart is the polite medicine. A pop-up that sells a “cleaner” is not.",
+    series: SERIES,
+    order: 20,
+    author: AUTHOR,
+    date: DATE,
+    cover: "/images/blog/cluttered-windows.jpg",
+    coverAlt: "A laptop on a wooden desk with many windows open.",
+    body: [
+      p(
+        "A slow computer feels like insult. You click, nothing, you click again, then three windows open at once. Before you spend money, name the usual causes. Too many programs standing up at the same time. A disk so full the machine has no room to think. A browser with forty tabs, each a live market. Dust and heat, so the fan screams and the processor walks. Or a drive that is actually dying — clicks, freezes, a long stare at a blank desktop. This lesson is the cheap checks, in order, before a shop formats you into a new life.",
+      ),
+      p(
+        "Heat first, because it is physical. If the laptop is on a bed or a cloth, the vents are eating fabric. Put it on a table. Feel the underside. If it is too hot to rest a hand, shut down, let it cool, then start again. A desktop's vents fill with dust in a year of Port Harcourt air; a careful vacuum at the grilles, machine off and unplugged, is allowed. Do not pour water. Do not open the case if you have not been shown.",
+      ),
+      fig(
+        "/images/blog/cluttered-windows.jpg",
+        "A laptop with many windows open on a wooden desk.",
+        "Each window is a person standing in the room. Close the ones you cannot see. The programs along the taskbar at the bottom are still standing even if their windows are minimised.",
+      ),
+      h2("Close the crowd"),
+      p(
+        "Look at the taskbar — the strip along the bottom. Each icon is a program. Close the ones you are not using: the X on their window, not just a smaller bar. Browsers: close extra tabs. One tab of a video left playing overnight will slow tomorrow. On Windows, Ctrl+Shift+Esc opens Task Manager. You will see a list. CPU and Memory columns are the crowd noise. If a name you do not recognise is using 90 percent, select it, End task. Do not End task on anything called Windows Explorer or your unsaved Word until you have saved. When in doubt, restart instead.",
+      ),
+      p(
+        "Restart, as you learned, is the polite medicine. Save, Start, Restart. A surprising number of “my computer is finished” stories end there. If slowness returns in ten minutes, it is not a mood. It is a program that starts itself, or a disk that is full.",
+      ),
+      fig(
+        "/images/blog/task-manager.jpg",
+        "A simple list of running programs on a laptop screen.",
+        "Task Manager is a roll call. Sort by Memory or CPU. The top of the list is the crowd. End task on a browser you thought you had closed. Then see if the machine breathes.",
+      ),
+      h2("Room on the disk"),
+      p(
+        "This PC, then the C: drive. If the bar is red, or “a few GB free,” the machine is writing on the last scrap of paper. Empty Recycle Bin after you have looked. Delete installers in Downloads you have already used. Move photographs to the USB you use for backup. Do not delete folders named Windows or Program Files because they look large. They are the house. A shop “cleaner” advertised in a pop-up is the cousin of the fake update. You know that trap.",
+      ),
+      ul([
+        "Save your work. Restart. Use the machine for ten minutes. If it is fine, you had a crowd.",
+        "If it is still slow, open This PC and look at the C: bar. If it is red, move pictures to a USB.",
+        "Open Task Manager. Note the top two names. Close those programs the ordinary way if you recognise them.",
+        "If the disk clicks, or the machine freezes while saving, copy your Documents off today. That is a dying drive, not a mood.",
+      ]),
+      h2("When it is the drive, and when it is a salesman"),
+      p(
+        "A dying disk has a personality: long pauses, files that corrupt, a restart that hangs on the manufacturer's logo. Backup first — the whole point of the earlier lesson — then a shop. Tell them the files are copied. Ask them not to format until you say. A slow-but-healthy machine after a restart and a cleaner disk can live for years. Adding memory (RAM) helps some older laptops; that is a shop conversation with a price, not a pop-up.",
+      ),
+      p(
+        "Ignore banners that say “your PC is 82 percent infected.” Real Windows Security lives in Settings, not in a flashing count. If a relative installed three toolbars and a lottery of free PDFs, those programs are the crowd — Uninstall from Settings, Apps, one by one, names you recognise as extras. When the machine is honest again, it feels like a different object. Usually it was only tired.",
+      ),
+    ],
+  },
 ];
