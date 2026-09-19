@@ -403,6 +403,36 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://cea.ng/blog/tables-in-a-letter</loc>
+    <lastmod>2026-09-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://cea.ng/blog/mail-merge-you-can-skip</loc>
+    <lastmod>2026-09-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://cea.ng/blog/calendar-and-reminders</loc>
+    <lastmod>2026-09-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://cea.ng/blog/contacts-versus-the-phone-book</loc>
+    <lastmod>2026-09-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://cea.ng/blog/what-a-qr-code-is-doing</loc>
+    <lastmod>2026-09-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://cea.ng/classes/microsoft-office</loc>
     <lastmod>2026-09-19</lastmod>
     <changefreq>weekly</changefreq>

@@ -2721,4 +2721,254 @@ export const blogPosts: BlogPost[] = [
       ),
     ],
   },
+  {
+    slug: "tables-in-a-letter",
+    title: "A table in a letter",
+    excerpt:
+      "A table is a grid that lives on a page, not in a spreadsheet. Rows, columns, one fact per cell. Tab moves. The borders are for reading, not for decoration.",
+    series: SERIES,
+    order: 51,
+    author: AUTHOR,
+    date: DATE,
+    cover: "/images/blog/word-table.jpg",
+    coverAlt: "A simple three-column table in a Word document on a laptop.",
+    body: [
+      p(
+        "A letter sometimes needs a list that lines up: three fees, four names, a timetable. People hit Tab and Space until the words look like columns, then print, then watch the line collapse because one name was longer. A table is a grid on the page — the cousin of the spreadsheet, but it does not add unless you ask. It holds. This lesson is Insert Table, Tab through the cells, and not drawing the grid with the mouse like a fence.",
+      ),
+      p(
+        "In Word: Insert, Table, then hover a small grid — 3 columns, 4 rows is enough to start. Click. A box appears in the letter. The first row can be headers: Name, Item, Amount. Click in a cell. Type. Tab to the next cell. At the end of a row, Tab makes a new row. That is the whole trick. You do not need Design until the words are in.",
+      ),
+      fig(
+        "/images/blog/word-table.jpg",
+        "A simple table with names and amounts in a Word document.",
+        "One fact per cell. The line between cells is a wall. Do not put “Amaka — 4500” in one box and hope it lines up with the next person's two boxes.",
+      ),
+      h2("Tab, width, and the page"),
+      p(
+        "If a table runs off the right edge, you have too many columns or the font is large. Click inside the table, then drag the lines, or Table Layout, Autofit, Window. Prefer fewer columns. A letter is not Excel. Amounts can be a column. Dates can be a column. A story cannot. Stories stay in paragraphs above the table.",
+      ),
+      p(
+        "Borders are on by default in Word. That is useful. If a school asked for “no grid,” Table Design, Borders, No border — the cells remain; only the ink of the walls hides. You can still Tab. Do not delete the table to hide the lines. You will be back to Space-bar columns.",
+      ),
+      fig(
+        "/images/blog/table-learner.jpg",
+        "A young woman inserting a table in a Word document.",
+        "Insert, a small grid, click. If you drew a table with the Draw Table pen, Undo. The pen is for odd shapes. A fee list is not an odd shape.",
+      ),
+      ul([
+        "Open a letter. Insert a table, 3 columns, 3 rows.",
+        "Header row: Name, Item, Amount. Two lines of real facts underneath.",
+        "Tab until a fourth row appears. That is enough.",
+        "Save as table-practice.docx in Letters. PDF it if you will email it.",
+      ]),
+      h2("When the spreadsheet is the right tool"),
+      p(
+        "If you must add a column of naira, Excel will not forget the formula. A Word table can add with a formula field, and it is a maze. Copy the numbers to a sheet, add, copy the total back as a number. Or keep the whole list in Excel and put a screenshot in the letter only if they asked for a picture. Usually they asked for a list. A table is a list that will not collapse.",
+      ),
+      p(
+        "Merging cells to make a title across the top is allowed once. Nested tables are not a first-week skill. If the table looks busy, you have too much border, too much colour, too many columns. Black lines, white cells, words. Print preview. If it fits on the page with the greeting still above it, you are done.",
+      ),
+    ],
+  },
+  {
+    slug: "mail-merge-you-can-skip",
+    title: "Mail merge, and when you can skip it",
+    excerpt:
+      "Mail merge is a factory for letters. Thirty names, one template. For three letters, type the name. For thirty, a list and a skip-or-learn moment. You do not owe the factory yet.",
+    series: SERIES,
+    order: 52,
+    author: AUTHOR,
+    date: DATE,
+    cover: "/images/blog/name-list.jpg",
+    coverAlt: "A printed list of names beside a laptop.",
+    body: [
+      p(
+        "Word can take a list of names and pour each one into a copy of the same letter. That factory is mail merge. Offices love it. Beginners are sent to it on day two and drown in “data sources.” This lesson is honest: for three letters, type the name. For a class of thirty identical notes, there is a factory. You may skip it until you have thirty. Knowing it exists is enough to not feel stupid when someone says the words.",
+      ),
+      p(
+        "The factory needs two things: a letter with holes — Dear «Name» — and a list, often Excel, with a column called Name. Word walks the list, fills a hole, prints or saves, next row. If the list is dirty — two spellings, a blank, a nickname in the wrong column — thirty letters come out wrong. Cleaning the list is most of the work. The button is the small part.",
+      ),
+      fig(
+        "/images/blog/name-list.jpg",
+        "A simple list of names on paper beside a laptop.",
+        "If the list fits on one sheet and you can say every name, you may not need the factory. Typing three greetings is not failure. It is proportion.",
+      ),
+      h2("The small way, and the factory door"),
+      p(
+        "Small way: copy the letter, change the name, Save As, next. Three files, three names. You already know Save As. That is skip, and it is correct. Factory door, when you mean it: Mailings in Word, Start Mail Merge, Letters. Select Recipients, Use an existing list, pick the Excel sheet. Insert Merge Field, Name. Preview. Finish & Merge. If any of those words is a wall, close Mailings. You have not failed a computer course. You have refused a factory you do not need.",
+      ),
+      p(
+        "Labels and envelopes are the same factory with stickers. A church with two hundred names may want it. A tenant writing a landlord does not. Do not let a YouTube thumbnail shame you into Mail Merge for a one-page request.",
+      ),
+      fig(
+        "/images/blog/letter-and-list.jpg",
+        "A letter on one window and a list of names on another.",
+        "Two files. The factory joins them. Until the list is clean and long, keep them separate and type.",
+      ),
+      ul([
+        "Write one short letter with a real name in the greeting. Save.",
+        "Save As for a second person. Change only the name. That is the skip, practised.",
+        "If you have an Excel list of more than twenty names you must write to, ask a helper to start Mail Merge beside you — they point, you click.",
+        "Do not download a “mail merge wizard” from a banner.",
+      ]),
+      h2("When you should learn it"),
+      p(
+        "A job that prints fees notices. A union. A school office. Then learn it on a copy of the list, not the only list. Preview ten records before you print two hundred. Paper is a tap, you know that. Merge to PDF first if you can, look, then print. The factory is fast at making mistakes too.",
+      ),
+      p(
+        "You now know the name of the machine so a supervisor cannot use it as a fog. “We will mail-merge” means a list plus a template. Ask to see the list. If there is no list, there is no merge. There is only hope. Skip until the list is real.",
+      ),
+    ],
+  },
+  {
+    slug: "calendar-and-reminders",
+    title: "Calendar and reminders",
+    excerpt:
+      "A calendar is a wall chart that can tap you on the shoulder. One sitting, one date, a time, a name. The phone and the laptop can share it if they share an account.",
+    series: SERIES,
+    order: 53,
+    author: AUTHOR,
+    date: DATE,
+    cover: "/images/blog/calendar-week.jpg",
+    coverAlt: "A week view of a calendar on a laptop screen.",
+    body: [
+      p(
+        "Paper diaries work. Phones already buzz. A calendar on the computer is the same wall chart, with a reminder that does not depend on you opening the book. Google Calendar, Outlook, the Windows calendar — three names. The idea is one: a day, a time, a sentence, an alarm. This lesson is making one event, not becoming a productivity person.",
+      ),
+      p(
+        "If you have Gmail, calendar.google.com on the real street is enough. Click a day, type JAMB registration, set a time, Save. A reminder defaults to ten or thirty minutes before. That is a tap on the shoulder. Put the real time of the thing, not the time you wish to start getting ready, or you will bargain with the alarm and lose.",
+      ),
+      fig(
+        "/images/blog/calendar-week.jpg",
+        "A week on a calendar with a few ordinary appointments.",
+        "A week you can see. Do not colour-code a life you have not yet filled. One colour, names you can read, times that are true.",
+      ),
+      h2("The phone, the laptop, the same account"),
+      p(
+        "Sign the phone into the same Google account and open the Calendar app. The JAMB line should appear. That is the cloud, doing a small job. If it does not appear, pull down to refresh, or confirm the same address. Two accounts is how events vanish. You have one house; use it.",
+      ),
+      p(
+        "All-day events are birthdays and deadlines that are a date, not a clock. Timed events are classes. Recurring — every Tuesday — is useful and dangerous. A class that ends in June should not still buzz in November. When the term ends, open the event, end the series. Do not delete one Tuesday and think the rest have gone.",
+      ),
+      fig(
+        "/images/blog/reminder-phone.jpg",
+        "A young man checking a calendar reminder on a phone, laptop beside him.",
+        "The shoulder-tap is the point. A calendar you never open is a paper diary in a drawer. Let the phone buzz. Then open the thing, not only dismiss.",
+      ),
+      ul([
+        "Open the calendar you already have — Google if you made the account.",
+        "Create one event this week with a real name and a time.",
+        "Set a reminder. When it buzzes, you may dismiss. You have proved the tap.",
+        "Do not import a stranger's ICS file from a WhatsApp. That is a cousin of the link you should not open.",
+      ]),
+      h2("Invitations, and what not to accept"),
+      p(
+        "Email will bring “Will you attend?” calendar invites. Accept only if you know the sender. A meeting invite from a stranger is a phishing costume. Decline, or ignore. Do not click “Join Zoom” from an invite you did not expect. Walk to the real street if the class is real.",
+      ),
+      p(
+        "A calendar is not a cage. Three events a week is a tool. Forty overlapping colours is a second job. Put fees deadlines, class times, a birthday you always miss. Leave the rest to the paper on the wall if that is how the house already works. The computer should tap you. It should not become the only clock in the room.",
+      ),
+    ],
+  },
+  {
+    slug: "contacts-versus-the-phone-book",
+    title: "Contacts versus the phone book",
+    excerpt:
+      "A contact is a card: name, number, maybe email. The SIM is one drawer. The Google account is another. Two drawers is how numbers vanish when the phone dies.",
+    series: SERIES,
+    order: 54,
+    author: AUTHOR,
+    date: DATE,
+    cover: "/images/blog/contacts-list.jpg",
+    coverAlt: "A contacts list showing names and phone numbers.",
+    body: [
+      p(
+        "The phone book on a feature phone lived on the SIM. Android and iPhones keep cards in an account if you let them. People lose a hundred names at a repair shop because the names lived only on a dead handset. A contact is a small file: name, number, email, maybe a photo. This lesson is one card, where it is stored, and copying the drawer before the basin.",
+      ),
+      p(
+        "On the phone, Contacts, add. Name as you would search — Amaka Okoro, not AMK. Number with the country code if they are not beside you every day: +234… Email if you have it, so the card can open a letter. Save. Then look at the save location: Phone, SIM, or Google. Google is the drawer that survives a new handset if you sign in. Phone-only is the basin risk. SIM holds few names and fewer emails.",
+      ),
+      fig(
+        "/images/blog/contacts-list.jpg",
+        "A contacts list with names and numbers.",
+        "A card per person. Duplicates — Amaka, Amaka Okoro, Mrs Amaka — are three cards. Merge when the phone offers. One person, one card.",
+      ),
+      h2("The laptop, and the same house"),
+      p(
+        "contacts.google.com on the real street shows the same cards if the phone used Google. You can add from the laptop, with a proper keyboard, for a list you were given on paper. Export is a backup file. A CSV is a spreadsheet of names. That file in Drive or on a USB is a second house. Do not email your whole book to a stranger who asked nicely.",
+      ),
+      p(
+        "WhatsApp is not the phone book. It reads the book and shows who has the app. If you delete a WhatsApp chat, the number may still be in Contacts. If you “delete contact,” some apps forget the name and keep the number as digits. Look twice. The green app is a room. The book is a drawer.",
+      ),
+      fig(
+        "/images/blog/address-book.jpg",
+        "A paper address book beside a phone and a laptop.",
+        "Paper is still a house. The useful numbers — family, landlord, academy — can live on paper and in Google. Two houses, again.",
+      ),
+      ul([
+        "Add one new contact with a full name and number, saved to Google if you can.",
+        "Open contacts.google.com on the laptop. Confirm the card is there.",
+        "If it is not, the phone saved to Phone only. Edit the contact, move it to the account.",
+        "Do not grant a random app your whole book because a banner asked.",
+      ]),
+      h2("When the phone dies"),
+      p(
+        "A new handset, same Google account, Contacts on: the cards come back. That is the test of the cloud, in names. If they do not, you had saved to the old phone. A shop that “transfers contacts” is copying drawers. Watch which drawer. SIM to SIM is small. Account to account is the real move.",
+      ),
+      p(
+        "Write the academy, the landlord, and two family numbers on paper anyway. Electricity and accounts fail. The book on the computer is a tool. The paper in the drawer is how you still phone a person when the tool is in the shop. You do not need five hundred cards on paper. You need the few that open a door.",
+      ),
+    ],
+  },
+  {
+    slug: "what-a-qr-code-is-doing",
+    title: "What a QR code is doing",
+    excerpt:
+      "A QR code is a printed address. The camera reads it and offers a door. Read the door before you walk. A sticker on a pole is not your bank.",
+    series: SERIES,
+    order: 55,
+    author: AUTHOR,
+    date: DATE,
+    cover: "/images/blog/qr-scan.jpg",
+    coverAlt: "A phone camera pointed at a QR code on a paper flyer.",
+    body: [
+      p(
+        "Those square patches of dots on a flyer, a receipt, a restaurant table, a church poster — QR codes. They are barcodes that hold a sentence, usually a web address, sometimes a Wi‑Fi key, sometimes an account number. Your camera reads the dots and offers to open a door. The door is the point, not the pattern. This lesson is scan, read the address, then decide, the same as a link in mail.",
+      ),
+      p(
+        "Open the camera. Point at the square until a banner appears with a link or a suggestion. Do not tap yet. Read. If it is cea.ng, or a menu, or a Wi‑Fi name you asked for, tap. If it is a shortened link, a bank you did not approach, a “verify your BVN,” put the phone down. The printed square can be stuck over another square. A pole in the street is not a teller.",
+      ),
+      fig(
+        "/images/blog/qr-scan.jpg",
+        "A phone camera aimed at a QR code on a flyer.",
+        "The camera is the reader. The banner is the door. The dots are not a virus. The door might be.",
+      ),
+      h2("What might be inside"),
+      p(
+        "A website. A payment page — then you are in the form lesson, plus money. A Wi‑Fi password, on a café card, which can be kinder than typing. A WhatsApp number. A vCard, which is a contact. None of these is magic. All of them can be forged. A printed menu at a table you are sitting at is ordinary. A code on a sticker over the restaurant's real code is a thief. Look at the plastic. If it sits badly, type the URL from the receipt instead.",
+      ),
+      p(
+        "WhatsApp and bank apps have their own scan buttons for payments. Use the bank's app to pay the bank, not a camera that opened a browser. You already prefer the real app to a surprise link. QR is a surprise link made of ink.",
+      ),
+      fig(
+        "/images/blog/qr-result.jpg",
+        "A young woman looking at a phone after scanning a flyer.",
+        "Read the result like an address bar. If you would not type that street, do not tap it because dots asked.",
+      ),
+      ul([
+        "Find a QR on a packet in the house, or the academy flyer if you have one — something you already trust.",
+        "Scan. Read the banner. If it matches the packet, open it.",
+        "Do not scan a code from an unsolicited WhatsApp image “to claim.”",
+        "If the camera does nothing, more light, hold still. A blurry square is not a broken phone.",
+      ]),
+      h2("Making one, if you must"),
+      p(
+        "You can turn an address into dots on many sites. Walk to a maker you typed, not the first advert. Put cea.ng in, download a PNG, print. That is a signpost to your real street. Do not put a password into a QR on a poster. A Wi‑Fi QR on a café board is a choice they made; on your gate it is a password on a flag.",
+      ),
+      p(
+        "The code is a servant of the address. If you remember nothing else: scan, read, then walk or don't. The square will wait. Hurry is still the bait, even when the bait is printed in a church bulletin. You know how to sit down anyway.",
+      ),
+    ],
+  },
 ];
