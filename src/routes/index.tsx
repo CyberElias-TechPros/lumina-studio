@@ -3,6 +3,7 @@ import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { CTASection, PageShell } from "@/components/marketing/shell";
 import { CampusImg, CourseCover } from "@/components/marketing/photos";
+import { FounderPhoto } from "@/components/marketing/founder-photo";
 import { faqs } from "@/data/site";
 import { blogPosts } from "@/data/blog";
 import { flyerCourses, formatFee, teachingLoop } from "@/data/academy";
@@ -165,6 +166,19 @@ function Home() {
               ))}
             </ol>
           </div>
+        </div>
+      </section>
+
+      <section className="container-page grid gap-8 py-16 md:grid-cols-[8rem_1fr] md:items-center md:py-20">
+        <FounderPhoto className="size-28 rounded-lg md:size-32" />
+        <div>
+          <h2 className="font-display text-2xl font-semibold tracking-tight sm:text-3xl">
+            Ellis Dennis Graham
+          </h2>
+          <p className="text-muted-foreground mt-3 max-w-2xl text-base leading-relaxed">
+            Founder. He runs the centre at 26 Ebony Road and teaches the courses. The notes on this
+            site are his class voice, written down.
+          </p>
         </div>
       </section>
 

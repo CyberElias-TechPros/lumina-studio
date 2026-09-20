@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
 import { CTASection, PageHero, PageShell } from "@/components/marketing/shell";
 import { CampusImg } from "@/components/marketing/photos";
+import { FounderPhoto } from "@/components/marketing/founder-photo";
 import { getPageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/about")({
@@ -37,6 +38,21 @@ function About() {
             Whiteboard, wall screen and practice machines
           </figcaption>
         </figure>
+      </section>
+
+      <section className="container-page grid gap-8 py-8 md:grid-cols-[10rem_1fr] md:items-center md:py-10">
+        <FounderPhoto className="size-32 rounded-lg md:size-40" />
+        <div>
+          <h2 className="font-display text-2xl font-semibold tracking-tight">Who runs it</h2>
+          <p className="text-muted-foreground mt-3 max-w-2xl text-base leading-relaxed">
+            Ellis Dennis Graham founded the academy and teaches here. The centre is small. We will
+            name other people on the{" "}
+            <Link to="/team" className="text-primary underline">
+              team page
+            </Link>{" "}
+            when they actually work here.
+          </p>
+        </div>
       </section>
 
       <section className="container-page grid gap-10 py-16 md:grid-cols-2 md:py-20">

@@ -92,14 +92,8 @@ const urls = [
       changefreq: "weekly",
       priority: "0.8",
     })),
-  ...classUrls
-    .filter((u) => u.type === "session")
-    .map((u) => ({
-      loc: `${SITE_URL}/classes/${u.course}/${u.session}`,
-      lastmod: today,
-      changefreq: "monthly",
-      priority: "0.8",
-    })),
+  // Individual session lectures stay on the site for enrolled learners but
+  // are omitted here so the public sitemap is not 140 near-identical URLs.
 ];
 
 const xml = `<?xml version="1.0" encoding="UTF-8"?>
@@ -119,5 +113,5 @@ ${urls
 
 writeFileSync(join(root, "public", "sitemap.xml"), xml);
 console.log(
-  `sitemap.xml written: ${urls.length} URLs (${staticRoutes.length} static, ${blogSlugs.length} posts, ${classUrls.filter((u) => u.type === "course").length} academy courses, ${classUrls.filter((u) => u.type === "session").length} class session pages)`,
+  `sitemap.xml written: ${urls.length} URLs (${staticRoutes.length} static, ${blogSlugs.length} posts, ${classUrls.filter((u) => u.type === "course").length} academy courses; session pages omitted)`,
 );

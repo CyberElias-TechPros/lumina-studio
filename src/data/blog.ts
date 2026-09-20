@@ -28,8 +28,20 @@ const fig = (src: string, alt: string, caption: string): BlogBlock => ({
 });
 
 const SERIES = "Computer skills from scratch";
-const AUTHOR = "Cyber Elias Academy";
-const DATE = "2026-09-19";
+const AUTHOR = "Ellis Dennis Graham";
+
+export const NOTES_AUTHOR = {
+  name: AUTHOR,
+  role: "Founder, Cyber Elias Academy",
+  photo: "/images/team/ellis-dennis-graham.jpg",
+};
+
+/** Lesson 1 on 13 Jan 2026, then about every two and a half days through September. */
+function lessonDate(order: number): string {
+  const start = Date.UTC(2026, 0, 13);
+  const ms = start + Math.round((order - 1) * 2.525 * 86_400_000);
+  return new Date(ms).toISOString().slice(0, 10);
+}
 
 export const blogPosts: BlogPost[] = [
   {
@@ -40,7 +52,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 1,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(1),
     cover: "/images/blog/computer-desk.jpg",
     coverAlt: "A learner sitting at a wooden desk in front of a desktop computer.",
     body: [
@@ -111,7 +123,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 2,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(2),
     cover: "/images/blog/folders-screen.jpg",
     coverAlt: "A computer screen showing folders named Documents, Pictures and Desktop.",
     body: [
@@ -175,7 +187,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 3,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(3),
     cover: "/images/blog/keyboard-hands.jpg",
     coverAlt: "Two hands resting on the home row of a computer keyboard.",
     body: [
@@ -240,7 +252,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 4,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(4),
     cover: "/images/blog/browser-address.jpg",
     coverAlt: "A laptop screen showing a web browser with the address bar visible at the top.",
     body: [
@@ -305,7 +317,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 5,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(5),
     cover: "/images/blog/email-compose.jpg",
     coverAlt: "A laptop showing an email being written, with To, Subject and a message body.",
     body: [
@@ -366,7 +378,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 6,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(6),
     cover: "/images/blog/password-notebook.jpg",
     coverAlt: "A notebook and pen beside a closed laptop on a wooden desk.",
     body: [
@@ -427,7 +439,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 7,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(7),
     cover: "/images/blog/inbox-caution.jpg",
     coverAlt: "A laptop on a wooden desk showing an email inbox.",
     body: [
@@ -487,7 +499,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 8,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(8),
     cover: "/images/blog/printer-desk.jpg",
     coverAlt: "A small printer on a wooden desk beside a laptop and a stack of paper.",
     body: [
@@ -547,7 +559,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 9,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(9),
     cover: "/images/blog/spreadsheet-grid.jpg",
     coverAlt: "A laptop screen showing a simple spreadsheet with names, items and amounts.",
     body: [
@@ -605,7 +617,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 10,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(10),
     cover: "/images/blog/phone-and-laptop.jpg",
     coverAlt: "A smartphone showing a chat beside a laptop with an email open.",
     body: [
@@ -665,7 +677,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 11,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(11),
     cover: "/images/blog/word-letter.jpg",
     coverAlt: "A laptop showing a one-page formal letter in a word processor.",
     body: [
@@ -722,7 +734,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 12,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(12),
     cover: "/images/blog/phone-usb.jpg",
     coverAlt: "A USB cable connecting a phone to a laptop on a wooden desk.",
     body: [
@@ -776,7 +788,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 13,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(13),
     cover: "/images/blog/windows-update.jpg",
     coverAlt: "A laptop screen showing a Windows restart and update message.",
     body: [
@@ -833,7 +845,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 14,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(14),
     cover: "/images/blog/backup-drives.jpg",
     coverAlt: "An external drive and a USB flash drive beside a laptop on a wooden desk.",
     body: [
@@ -887,7 +899,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 15,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(15),
     cover: "/images/blog/account-form.jpg",
     coverAlt: "A laptop browser showing a simple account creation form.",
     body: [
@@ -944,7 +956,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 16,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(16),
     cover: "/images/blog/wifi-router.jpg",
     coverAlt: "A small home Wi-Fi router on a wooden shelf, a laptop in the background.",
     body: [
@@ -1001,7 +1013,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 17,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(17),
     cover: "/images/blog/shutdown-menu.jpg",
     coverAlt: "A laptop Start menu showing Shut down, Sleep and Restart.",
     body: [
@@ -1055,7 +1067,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 18,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(18),
     cover: "/images/blog/web-form.jpg",
     coverAlt: "A laptop browser showing a simple web form with name, phone and email fields.",
     body: [
@@ -1109,7 +1121,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 19,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(19),
     cover: "/images/blog/video-call.jpg",
     coverAlt: "Over-the-shoulder view of a laptop on a video call, earphones beside it.",
     body: [
@@ -1163,7 +1175,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 20,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(20),
     cover: "/images/blog/cluttered-windows.jpg",
     coverAlt: "A laptop on a wooden desk with many windows open.",
     body: [
@@ -1217,7 +1229,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 21,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(21),
     cover: "/images/blog/installer-window.jpg",
     coverAlt: "A laptop screen showing a simple software installer with a Next button.",
     body: [
@@ -1271,7 +1283,7 @@ export const blogPosts: BlogPost[] = [
       series: SERIES,
     order: 22,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(22),
     cover: "/images/blog/apps-list.jpg",
     coverAlt: "A Windows Settings list of installed apps on a laptop screen.",
     body: [
@@ -1321,7 +1333,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 23,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(23),
     cover: "/images/blog/naira-typing.jpg",
     coverAlt: "A document on a laptop showing the naira symbol and accented letters.",
     body: [
@@ -1375,7 +1387,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 24,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(24),
     cover: "/images/blog/recycle-bin.jpg",
     coverAlt: "A Recycle Bin window on a laptop showing a few deleted files.",
     body: [
@@ -1425,7 +1437,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 25,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(25),
     cover: "/images/blog/asking-help.jpg",
     coverAlt: "A learner at a laptop with a helper pointing at the screen, not typing.",
     body: [
@@ -1475,7 +1487,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 26,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(26),
     cover: "/images/blog/selected-text.jpg",
     coverAlt: "Selected text highlighted in a document on a laptop screen.",
     body: [
@@ -1529,7 +1541,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 27,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(27),
     cover: "/images/blog/printscreen-key.jpg",
     coverAlt: "A finger near the Print Screen key on a laptop keyboard.",
     body: [
@@ -1579,7 +1591,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 28,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(28),
     cover: "/images/blog/zip-folder.jpg",
     coverAlt: "A File Explorer window showing a zip folder beside ordinary folders.",
     body: [
@@ -1629,7 +1641,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 29,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(29),
     cover: "/images/blog/bluetooth-share.jpg",
     coverAlt: "A phone and a laptop on a wooden desk, sharing a file over Bluetooth.",
     body: [
@@ -1679,7 +1691,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 30,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(30),
     cover: "/images/blog/pdf-letter.jpg",
     coverAlt: "A laptop screen showing a PDF of a one-page letter.",
     body: [
@@ -1729,7 +1741,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 31,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(31),
     cover: "/images/blog/folder-tree.jpg",
     coverAlt: "File Explorer showing nested folders named School, 2026 and Fees.",
     body: [
@@ -1779,7 +1791,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 32,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(32),
     cover: "/images/blog/rename-file.jpg",
     coverAlt: "A file name highlighted in File Explorer, ready to type.",
     body: [
@@ -1829,7 +1841,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 33,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(33),
     cover: "/images/blog/file-search.jpg",
     coverAlt: "File Explorer search box with results listed below.",
     body: [
@@ -1879,7 +1891,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 34,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(34),
     cover: "/images/blog/start-menu.jpg",
     coverAlt: "The Windows Start menu open on a laptop.",
     body: [
@@ -1929,7 +1941,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 35,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(35),
     cover: "/images/blog/shortcut-icon.jpg",
     coverAlt: "A desktop shortcut icon with a small arrow, beside a real folder.",
     body: [
@@ -1979,7 +1991,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 36,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(36),
     cover: "/images/blog/volume-keys.jpg",
     coverAlt: "Laptop keyboard with volume keys, a speaker icon on the screen.",
     body: [
@@ -2029,7 +2041,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 37,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(37),
     cover: "/images/blog/dim-screen.jpg",
     coverAlt: "A laptop screen at low brightness in a dim room.",
     body: [
@@ -2079,7 +2091,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 38,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(38),
     cover: "/images/blog/second-monitor.jpg",
     coverAlt: "A laptop connected by a cable to a small extra monitor.",
     body: [
@@ -2129,7 +2141,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 39,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(39),
     cover: "/images/blog/usb-devices.jpg",
     coverAlt: "A USB mouse, a keyboard, and a cable on a desk beside a laptop.",
     body: [
@@ -2179,7 +2191,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 40,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(40),
     cover: "/images/blog/no-sound.jpg",
     coverAlt: "A young man looking at a silent laptop, earphones beside it.",
     body: [
@@ -2229,7 +2241,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 41,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(41),
     cover: "/images/blog/laptop-charging.jpg",
     coverAlt: "A laptop charging cable plugged in on a wooden desk.",
     body: [
@@ -2279,7 +2291,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 42,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(42),
     cover: "/images/blog/laptop-vents.jpg",
     coverAlt: "Laptop side vents on a wooden desk.",
     body: [
@@ -2329,7 +2341,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 43,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(43),
     cover: "/images/blog/webcam-cover.jpg",
     coverAlt: "A laptop webcam with a small sliding privacy cover closed.",
     body: [
@@ -2379,7 +2391,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 44,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(44),
     cover: "/images/blog/cookie-banner.jpg",
     coverAlt: "A cookie consent banner at the bottom of a browser window.",
     body: [
@@ -2429,7 +2441,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 45,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(45),
     cover: "/images/blog/browser-profile.jpg",
     coverAlt: "A browser profile icon in the corner of a laptop window.",
     body: [
@@ -2479,7 +2491,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 46,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(46),
     cover: "/images/blog/bookmarks-bar.jpg",
     coverAlt: "A browser bookmarks bar with a few named bookmarks.",
     body: [
@@ -2529,7 +2541,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 47,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(47),
     cover: "/images/blog/browser-history.jpg",
     coverAlt: "A browser history list on a laptop screen.",
     body: [
@@ -2579,7 +2591,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 48,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(48),
     cover: "/images/blog/downloads-folder.jpg",
     coverAlt: "A Downloads folder with mixed files on a laptop.",
     body: [
@@ -2629,7 +2641,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 49,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(49),
     cover: "/images/blog/cloud-folder.jpg",
     coverAlt: "A cloud storage folder list in a browser on a laptop.",
     body: [
@@ -2679,7 +2691,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 50,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(50),
     cover: "/images/blog/sign-out.jpg",
     coverAlt: "A browser account menu with Sign out visible.",
     body: [
@@ -2729,7 +2741,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 51,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(51),
     cover: "/images/blog/word-table.jpg",
     coverAlt: "A simple three-column table in a Word document on a laptop.",
     body: [
@@ -2779,7 +2791,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 52,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(52),
     cover: "/images/blog/name-list.jpg",
     coverAlt: "A printed list of names beside a laptop.",
     body: [
@@ -2829,7 +2841,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 53,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(53),
     cover: "/images/blog/calendar-week.jpg",
     coverAlt: "A week view of a calendar on a laptop screen.",
     body: [
@@ -2879,7 +2891,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 54,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(54),
     cover: "/images/blog/contacts-list.jpg",
     coverAlt: "A contacts list showing names and phone numbers.",
     body: [
@@ -2929,7 +2941,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 55,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(55),
     cover: "/images/blog/qr-scan.jpg",
     coverAlt: "A phone camera pointed at a QR code on a paper flyer.",
     body: [
@@ -2979,7 +2991,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 56,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(56),
     cover: "/images/blog/whatsapp-web.jpg",
     coverAlt: "A laptop showing WhatsApp in a browser beside a phone with a QR code.",
     body: [
@@ -3029,7 +3041,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 57,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(57),
     cover: "/images/blog/maps-screen.jpg",
     coverAlt: "A map with a search box on a laptop screen.",
     body: [
@@ -3079,7 +3091,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 58,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(58),
     cover: "/images/blog/simple-poster.jpg",
     coverAlt: "A simple poster on a laptop screen with a heading and plenty of white space.",
     body: [
@@ -3129,7 +3141,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 59,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(59),
     cover: "/images/blog/resize-photo.jpg",
     coverAlt: "A photograph being resized in a simple window on a laptop.",
     body: [
@@ -3179,7 +3191,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 60,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(60),
     cover: "/images/blog/fake-virus.jpg",
     coverAlt: "A generic fake virus warning on a laptop screen.",
     body: [
@@ -3229,7 +3241,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 61,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(61),
     cover: "/images/blog/two-windows.jpg",
     coverAlt: "A laptop showing a letter and a browser side by side.",
     body: [
@@ -3279,7 +3291,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 62,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(62),
     cover: "/images/blog/zoom-page.jpg",
     coverAlt: "A laptop document zoomed in so the words are easy to read.",
     body: [
@@ -3329,7 +3341,7 @@ export const blogPosts: BlogPost[] = [
       series: SERIES,
     order: 63,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(63),
     cover: "/images/blog/word-bullets.jpg",
     coverAlt: "A short bullet list in a word processor on a laptop.",
     body: [
@@ -3379,7 +3391,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 64,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(64),
     cover: "/images/blog/spellcheck-red.jpg",
     coverAlt: "A word-processor paragraph with a red squiggle under a misspelled word.",
     body: [
@@ -3429,7 +3441,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 65,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(65),
     cover: "/images/blog/find-replace.jpg",
     coverAlt: "A Find and Replace box open over a letter on a laptop.",
     body: [
@@ -3479,7 +3491,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 66,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(66),
     cover: "/images/blog/undo-menu.jpg",
     coverAlt: "A word-processor letter on a laptop with an undo control nearby.",
     body: [
@@ -3529,7 +3541,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 67,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(67),
     cover: "/images/blog/selecting-text.jpg",
     coverAlt: "A paragraph on a laptop with a few words highlighted.",
     body: [
@@ -3579,7 +3591,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 68,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(68),
     cover: "/images/blog/page-numbers.jpg",
     coverAlt: "A letter on a laptop with a page number at the bottom of the page.",
     body: [
@@ -3629,7 +3641,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 69,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(69),
     cover: "/images/blog/cc-bcc.jpg",
     coverAlt: "An email compose window showing To, Cc and Bcc fields.",
     body: [
@@ -3679,7 +3691,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 70,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(70),
     cover: "/images/blog/email-signature.jpg",
     coverAlt: "An email with a short name-and-phone signature at the bottom.",
     body: [
@@ -3729,7 +3741,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 71,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(71),
     cover: "/images/blog/open-with.jpg",
     coverAlt: "An Open with list of programs over a file on a laptop.",
     body: [
@@ -3776,7 +3788,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 72,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(72),
     cover: "/images/blog/file-size-column.jpg",
     coverAlt: "A folder window showing a Size column for a few files.",
     body: [
@@ -3826,7 +3838,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 73,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(73),
     cover: "/images/blog/right-click-menu.jpg",
     coverAlt: "A small right-click menu open over a file on a laptop.",
     body: [
@@ -3876,7 +3888,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 74,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(74),
     cover: "/images/blog/drag-drop.jpg",
     coverAlt: "A file icon being dragged toward a folder on a laptop screen.",
     body: [
@@ -3923,7 +3935,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 75,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(75),
     cover: "/images/blog/simple-cv.jpg",
     coverAlt: "A simple one-page CV on a laptop screen.",
     body: [
@@ -3973,7 +3985,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 76,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(76),
     cover: "/images/blog/docs-browser.jpg",
     coverAlt: "A simple letter open in a browser on a laptop.",
     body: [
@@ -4023,7 +4035,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 77,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(77),
     cover: "/images/blog/share-dialog.jpg",
     coverAlt: "A share dialog with an email field on a laptop screen.",
     body: [
@@ -4070,7 +4082,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 78,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(78),
     cover: "/images/blog/doc-comment.jpg",
     coverAlt: "A document with a short comment in the margin.",
     body: [
@@ -4120,7 +4132,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 79,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(79),
     cover: "/images/blog/spreadsheet-sort.jpg",
     coverAlt: "A simple spreadsheet with a column sorted A to Z.",
     body: [
@@ -4167,7 +4179,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 80,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(80),
     cover: "/images/blog/print-sheet.jpg",
     coverAlt: "A spreadsheet print preview fitted onto one page.",
     body: [
@@ -4214,7 +4226,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 81,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(81),
     cover: "/images/blog/currency-format.jpg",
     coverAlt: "A spreadsheet amount column formatted as money.",
     body: [
@@ -4261,7 +4273,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 82,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(82),
     cover: "/images/blog/freeze-panes.jpg",
     coverAlt: "A spreadsheet scrolled down with the header row still visible.",
     body: [
@@ -4308,7 +4320,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 83,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(83),
     cover: "/images/blog/fill-handle.jpg",
     coverAlt: "A spreadsheet formula being filled down a column.",
     body: [
@@ -4355,7 +4367,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 84,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(84),
     cover: "/images/blog/weekly-budget.jpg",
     coverAlt: "A simple weekly spending list on a spreadsheet.",
     body: [
@@ -4402,7 +4414,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 85,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(85),
     cover: "/images/blog/cell-error.jpg",
     coverAlt: "A spreadsheet cell filled with hash marks because the column is narrow.",
     body: [
@@ -4452,7 +4464,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 86,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(86),
     cover: "/images/blog/video-search.jpg",
     coverAlt: "A video site with a search box on a laptop screen.",
     body: [
@@ -4502,7 +4514,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 87,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(87),
     cover: "/images/blog/captions-on.jpg",
     coverAlt: "A paused video with captions at the bottom of the picture.",
     body: [
@@ -4552,7 +4564,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 88,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(88),
     cover: "/images/blog/airplane-mode.jpg",
     coverAlt: "A phone settings screen with Airplane mode switched on.",
     body: [
@@ -4602,7 +4614,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 89,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(89),
     cover: "/images/blog/phone-storage.jpg",
     coverAlt: "Phone storage settings showing what is using space.",
     body: [
@@ -4652,7 +4664,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 90,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(90),
     cover: "/images/blog/app-permission.jpg",
     coverAlt: "A phone permission dialog asking for the camera, with Allow and Deny.",
     body: [
@@ -4702,7 +4714,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 91,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(91),
     cover: "/images/blog/screen-lock.jpg",
     coverAlt: "A phone lock screen with a PIN pad on a wooden desk.",
     body: [
@@ -4752,7 +4764,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 92,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(92),
     cover: "/images/blog/lost-phone.jpg",
     coverAlt: "A learner at a desk looking at the empty place where a phone was.",
     body: [
@@ -4802,7 +4814,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 93,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(93),
     cover: "/images/blog/do-not-disturb.jpg",
     coverAlt: "A phone with Do not disturb or a moon icon switched on.",
     body: [
@@ -4852,7 +4864,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 94,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(94),
     cover: "/images/blog/phone-hotspot.jpg",
     coverAlt: "Phone hotspot settings on a wooden desk.",
     body: [
@@ -4902,7 +4914,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 95,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(95),
     cover: "/images/blog/wifi-vs-data.jpg",
     coverAlt: "A phone status bar showing Wi-Fi and mobile data icons.",
     body: [
@@ -4952,7 +4964,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 96,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(96),
     cover: "/images/blog/document-photo.jpg",
     coverAlt: "A phone held directly above a document on a wooden desk.",
     body: [
@@ -4999,7 +5011,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 97,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(97),
     cover: "/images/blog/phone-scan.jpg",
     coverAlt: "A phone camera framing a document to scan.",
     body: [
@@ -5046,7 +5058,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 98,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(98),
     cover: "/images/blog/otp-sms.jpg",
     coverAlt: "A phone showing a short SMS with a six-digit code.",
     body: [
@@ -5096,7 +5108,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 99,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(99),
     cover: "/images/blog/cafe-wifi.jpg",
     coverAlt: "A laptop at a small café table with a Wi-Fi password card.",
     body: [
@@ -5146,7 +5158,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 100,
     author: AUTHOR,
-    date: DATE,
+    date: lessonDate(100),
     cover: "/images/blog/you-have-won.jpg",
     coverAlt: "A phone showing a prize or winnings message.",
     body: [

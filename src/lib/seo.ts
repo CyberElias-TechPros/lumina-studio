@@ -86,6 +86,12 @@ export const ORGANIZATION_LD = {
     "A digital skills training centre in Port Harcourt. Short, practical computer and workplace-digital courses.",
   telephone: SITE_PHONE,
   email: SITE_EMAIL,
+  founder: {
+    "@type": "Person",
+    name: "Ellis Dennis Graham",
+    jobTitle: "Founder",
+    image: `${SITE_URL}/images/team/ellis-dennis-graham.jpg`,
+  },
   address: {
     "@type": "PostalAddress",
     streetAddress: "26 Ebony Road, Off Rumuola Road",
@@ -107,7 +113,7 @@ export const LOCAL_BUSINESS_LD = {
   "@type": "LocalBusiness",
   "@id": `${SITE_URL}/#business`,
   name: SITE_NAME,
-  image: SITE_LOGO,
+  image: `${SITE_URL}/images/campus/lab-1.jpg`,
   url: SITE_URL,
   telephone: SITE_PHONE,
   email: SITE_EMAIL,

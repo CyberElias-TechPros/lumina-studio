@@ -1,16 +1,12 @@
 # Campus photos
 
-Replace these stand-in classroom pictures with the four shots taken at 26 Ebony Road.
+These files are photographs of the classroom at 26 Ebony Road.
 
-Keep the filenames:
-
-| File | What to drop in |
+| File | Shot |
 | --- | --- |
-| `lab-1.jpg` | Wide classroom — whiteboard, wall TV, wooden desks, red chairs, learners from behind |
-| `lab-2.jpg` | Sofa / window corner with practice machines |
-| `lab-3.jpg` | Learners at computers |
-| `lab-4.jpg` | Whiteboard wall with laptops and desktops |
+| `lab-1.jpg` | Class facing the wall screen and whiteboard, orange chairs |
+| `lab-2.jpg` | Practice desks, standing fan, sofa corner |
+| `lab-3.jpg` | Learners at machines, toward the windows |
+| `lab-4.jpg` | Whiteboard wall and desktop row |
 
-Landscape JPEG, about 1600px wide, is enough. No code change is required — the site reads these paths.
-
-The current files are documentary stand-ins of a similar modest computer classroom. They are not the original Ebony Road photographs.
+If you replace a file, keep the same name. No code change is required.

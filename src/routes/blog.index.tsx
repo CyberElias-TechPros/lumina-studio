@@ -38,7 +38,7 @@ function Blog() {
       <PageHero
         eyebrow="Notes"
         title="Computer skills from the first sitting"
-        description="A series for people who have never used a computer, or who have used one without anyone explaining it. Each note is a lesson: what you will see, what to do with your hands, and what to try before you close the machine. One hundred lessons, from the first sitting to staying safe online."
+        description="A series for people who have never used a computer, or who have used one without anyone explaining it. Written by Ellis Dennis Graham at Cyber Elias Academy, Port Harcourt. Each note is a lesson: what you will see, what to do with your hands, and what to try before you close the machine."
       >
         <div className="relative mt-8 max-w-md">
           <Search className="text-muted-foreground absolute top-1/2 left-3 size-4 -translate-y-1/2" />

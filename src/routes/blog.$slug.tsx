@@ -2,7 +2,8 @@ import { createFileRoute, Link, useParams } from "@tanstack/react-router";
 import { ArrowLeft, CalendarDays, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { CTASection, PageShell } from "@/components/marketing/shell";
-import { blogPosts, type BlogBlock } from "@/data/blog";
+import { blogPosts, NOTES_AUTHOR, type BlogBlock } from "@/data/blog";
+import { FounderPhoto } from "@/components/marketing/founder-photo";
 import { getPageHead } from "@/lib/seo";
 import { readingTimeLabel } from "@/lib/blog-reading-time";
 
@@ -16,7 +17,12 @@ export const Route = createFileRoute("/blog/$slug")({
       description: post.excerpt,
       datePublished: post.date,
       image: `https://cea.ng${post.cover}`,
-      author: { "@type": "Organization", name: post.author },
+      author: {
+        "@type": "Person",
+        name: post.author,
+        jobTitle: NOTES_AUTHOR.role,
+        image: `https://cea.ng${NOTES_AUTHOR.photo}`,
+      },
       publisher: {
         "@type": "Organization",
         name: "Cyber Elias Academy",
@@ -98,7 +104,19 @@ function Article() {
         </h1>
 
         <div className="text-muted-foreground mt-6 flex flex-wrap items-center gap-4 border-b pb-6 text-sm">
-          <span>{post.author}</span>
+          <span className="text-foreground flex items-center gap-2.5">
+            <img
+              src={NOTES_AUTHOR.photo}
+              alt={NOTES_AUTHOR.name}
+              width={40}
+              height={40}
+              className="size-10 rounded-full object-cover"
+            />
+            <span>
+              <span className="block font-medium">{post.author}</span>
+              <span className="text-muted-foreground block text-xs">{NOTES_AUTHOR.role}</span>
+            </span>
+          </span>
           <span className="flex items-center gap-1.5">
             <CalendarDays className="size-3.5" /> {post.date}
           </span>

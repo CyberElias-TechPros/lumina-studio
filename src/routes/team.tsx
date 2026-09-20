@@ -1,7 +1,9 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { getPageHead } from "@/lib/seo";
 import { PageShell, PageHero } from "@/components/marketing/shell";
 import { Mail, MapPin } from "lucide-react";
+import { NOTES_AUTHOR } from "@/data/blog";
+import { FounderPhoto } from "@/components/marketing/founder-photo";
 
 export const Route = createFileRoute("/team")({
   head: () =>
@@ -10,6 +12,7 @@ export const Route = createFileRoute("/team")({
       description:
         "Cyber Elias Academy was founded by Ellis Dennis Graham in Port Harcourt. The centre is small; we will name people as they join.",
       path: "/team",
+      image: `https://cea.ng${NOTES_AUTHOR.photo}`,
     }),
   component: TeamPage,
 });
@@ -26,16 +29,14 @@ function TeamPage() {
       <section className="container-page py-12 md:py-16">
         <div className="border-border mx-auto max-w-2xl rounded-lg border p-6 sm:p-8">
           <div className="flex flex-col gap-6 sm:flex-row sm:items-start">
-            <div className="bg-muted text-foreground font-display grid size-16 shrink-0 place-items-center rounded-lg text-lg font-semibold">
-              EDG
-            </div>
+            <FounderPhoto className="size-28 shrink-0 rounded-lg sm:size-36" />
             <div>
               <h2 className="font-display text-xl font-semibold">Ellis Dennis Graham</h2>
               <p className="text-muted-foreground mt-1 text-sm">Founder</p>
               <p className="text-muted-foreground mt-4 text-sm leading-relaxed">
-                Ellis founded Cyber Elias Academy in Port Harcourt. He runs the centre and the
-                courses. We do not list a wider staff, advisory board, or employer network we do
-                not have.
+                Ellis founded Cyber Elias Academy in Port Harcourt. He runs the centre and teaches
+                the courses. We do not list a wider staff, advisory board, or employer network we
+                do not have.
               </p>
               <div className="text-muted-foreground mt-5 flex flex-wrap gap-4 text-sm">
                 <span className="flex items-center gap-2">
@@ -57,13 +58,21 @@ function TeamPage() {
             { label: "Contact", value: "hello@cea.ng · +234 905 862 8386" },
           ].map((fact) => (
             <div key={fact.label} className="border-border rounded-lg border p-4">
-              <dt className="text-muted-foreground text-xs font-medium uppercase tracking-wide">
+              <dt className="text-muted-foreground text-xs font-medium tracking-wide uppercase">
                 {fact.label}
               </dt>
               <dd className="mt-1 text-sm">{fact.value}</dd>
             </div>
           ))}
         </dl>
+
+        <p className="text-muted-foreground mx-auto mt-10 max-w-2xl text-sm">
+          Questions:{" "}
+          <Link to="/contact" className="text-primary underline">
+            contact us
+          </Link>
+          .
+        </p>
       </section>
     </PageShell>
   );

@@ -16,7 +16,7 @@ import { SessionProvider, useSessionContext } from "@/components/app/session-pro
 import { OnboardingTour } from "@/components/app/onboarding-tour";
 import { registerServiceWorker, subscribeToPush } from "@/lib/pwa";
 import { useFlag } from "@/lib/flags";
-import { ADSENSE_CLIENT, ADSENSE_SCRIPT_SRC, initAdSense } from "@/lib/adsense";
+import { initAdSense } from "@/lib/adsense";
 import { initGA4 } from "@/lib/ga4";
 import { CookieConsent } from "@/components/marketing/cookie-consent";
 import { MotionProvider } from "@/components/motion";
@@ -192,14 +192,6 @@ function RootShell({ children }: { children: ReactNode }) {
         {/* Runs before first paint. The public site is light unless the visitor
             chose dark; /app and /portal follow the saved workspace theme. */}
         <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
-        {/* Official AdSense snippet in first-paint HTML so Google can verify
-            site ownership even when JavaScript consent gates do not run. */}
-        <script
-          async
-          crossOrigin="anonymous"
-          src={ADSENSE_SCRIPT_SRC}
-          data-ad-client={ADSENSE_CLIENT}
-        />
         {/* The public site's entrance choreography is JS-driven. Without JS the
             content must still be readable: drop the arrival curtain and undo
             motion's initial inline styles (classes are untouched, so Tailwind's

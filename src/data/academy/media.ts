@@ -1,31 +1,28 @@
 /**
- * Public campus and course pictures.
- *
- * Campus files live in /public/images/campus/. Drop the real Ebony Road
- * classroom JPEGs over lab-1.jpg … lab-4.jpg — same names, no code change.
- * Course stills live in /public/images/courses/. Courses without a photo
- * use a distinct icon on the page (see CourseCover).
+ * Public campus and course pictures. Classroom stills are photographs
+ * taken at 26 Ebony Road (grey room, wooden tables, red/orange chairs).
+ * Course stills live in /public/images/courses/.
  */
 
 export const campusPhotos = {
   "lab-1": {
     src: "/images/campus/lab-1.jpg",
-    alt: "Computer classroom at Cyber Elias Academy, 26 Ebony Road, Port Harcourt: learners at desktop computers, whiteboard and wall screen.",
+    alt: "Class in session at Cyber Elias Academy, 26 Ebony Road: wooden tables, orange chairs, wall screen and whiteboard.",
     caption: "The classroom",
   },
   "lab-2": {
     src: "/images/campus/lab-2.jpg",
-    alt: "Practice desks, red chairs and a seating corner in the Ebony Road computer classroom.",
+    alt: "Learners at laptops and desktops in the Ebony Road classroom, standing fan in the foreground.",
     caption: "Practice desks",
   },
   "lab-3": {
     src: "/images/campus/lab-3.jpg",
-    alt: "Learners working at desktop computers during a class at Cyber Elias Academy.",
+    alt: "Learners at computers during a class at 26 Ebony Road, Port Harcourt.",
     caption: "A class in session",
   },
   "lab-4": {
     src: "/images/campus/lab-4.jpg",
-    alt: "Whiteboard with computer-basics notes, wall screen, laptops and desktop PCs in the academy classroom.",
+    alt: "Whiteboard, wall screen and desktop computers along the side of the academy classroom.",
     caption: "Board and machines",
   },
 } as const;
