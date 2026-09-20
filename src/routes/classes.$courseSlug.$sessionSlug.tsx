@@ -48,7 +48,6 @@ export const Route = createFileRoute("/classes/$courseSlug/$sessionSlug")({
       description,
       path: `/classes/${course.slug}/${session?.slug ?? ""}`,
       type: "article",
-      noIndex: true,
       structuredData: [
         {
           "@context": "https://schema.org",
