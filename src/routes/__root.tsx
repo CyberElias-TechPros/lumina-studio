@@ -16,7 +16,7 @@ import { SessionProvider, useSessionContext } from "@/components/app/session-pro
 import { OnboardingTour } from "@/components/app/onboarding-tour";
 import { registerServiceWorker, subscribeToPush } from "@/lib/pwa";
 import { useFlag } from "@/lib/flags";
-import { initAdSense } from "@/lib/adsense";
+import { ADSENSE_CLIENT, ADSENSE_SCRIPT_SRC, initAdSense } from "@/lib/adsense";
 import { initGA4 } from "@/lib/ga4";
 import { CookieConsent } from "@/components/marketing/cookie-consent";
 import { MotionProvider } from "@/components/motion";
@@ -61,7 +61,7 @@ function NotFoundComponent() {
           404
         </p>
         <h1 className="font-display mt-4 text-xl font-bold text-foreground sm:text-2xl">
-          This page hasn't been built yet
+          Page not found
         </h1>
         <p className="mx-auto mt-2 max-w-sm text-sm leading-relaxed text-muted-foreground">
           The link may be old, or we moved something. Start from the home page.
@@ -78,6 +78,12 @@ function NotFoundComponent() {
             className="inline-flex h-10 items-center justify-center rounded-md border border-input bg-background px-6 text-sm font-medium text-foreground transition-colors hover:bg-accent motion-reduce:transition-none"
           >
             View courses
+          </Link>
+          <Link
+            to="/blog"
+            className="inline-flex h-10 items-center justify-center rounded-md border border-input bg-background px-6 text-sm font-medium text-foreground transition-colors hover:bg-accent motion-reduce:transition-none"
+          >
+            Notes
           </Link>
         </div>
       </div>
@@ -186,6 +192,14 @@ function RootShell({ children }: { children: ReactNode }) {
         {/* Runs before first paint. The public site is light unless the visitor
             chose dark; /app and /portal follow the saved workspace theme. */}
         <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
+        {/* Official AdSense snippet in first-paint HTML so Google can verify
+            site ownership even when JavaScript consent gates do not run. */}
+        <script
+          async
+          crossOrigin="anonymous"
+          src={ADSENSE_SCRIPT_SRC}
+          data-ad-client={ADSENSE_CLIENT}
+        />
         {/* The public site's entrance choreography is JS-driven. Without JS the
             content must still be readable: drop the arrival curtain and undo
             motion's initial inline styles (classes are untouched, so Tailwind's

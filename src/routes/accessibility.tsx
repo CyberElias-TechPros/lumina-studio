@@ -16,7 +16,7 @@ export const Route = createFileRoute("/accessibility")({
 });
 
 function AccessibilityPage() {
-  const lastUpdated = "August 10, 2025";
+  const lastUpdated = "20 September 2026";
   const conformanceLevel = "WCAG 2.1 AA";
 
   return (
@@ -82,25 +82,16 @@ function AccessibilityPage() {
             />
             <ul className="space-y-3 list-disc list-inside text-muted-foreground">
               <li>
-                <strong>Third-party embeds:</strong> Some video players (YouTube, Vimeo), calendar
-                widgets, and payment iframes may not fully meet AA. We provide accessible
-                alternatives where possible.
+                <strong>Third-party scripts:</strong> Sign-in, maps, analytics, and ads (Google
+                AdSense) are not fully under our control and may not meet AA on their own.
               </li>
               <li>
-                <strong>Data visualisations:</strong> Interactive charts (Recharts) rely on colour
-                and hover states. We are adding tabular data fallbacks and pattern fills.
+                <strong>Images:</strong> Course and notes photos have alt text; some decorative
+                campus images are marked as decorative.
               </li>
               <li>
-                <strong>Legacy PDFs:</strong> Older curriculum PDFs may lack tagging. Newer
-                documents are created as tagged PDFs.
-              </li>
-              <li>
-                <strong>Live captions:</strong> Live cohort sessions use auto-generated captions
-                (accuracy ~85%). Human-edited captions are provided for recordings within 48 hours.
-              </li>
-              <li>
-                <strong>Complex drag-and-drop:</strong> Some curriculum builder interfaces require
-                mouse. Keyboard alternatives are being added.
+                <strong>Signed-in workspace:</strong> Some student tools still need a mouse for
+                drag-and-drop. Keyboard alternatives are being added where we can.
               </li>
             </ul>
           </Reveal>
@@ -151,8 +142,8 @@ function AccessibilityPage() {
             <div className="mt-4 space-y-2 text-muted-foreground">
               <p>
                 Email:{" "}
-                <a href="mailto:accessibility@cea.ng" className="text-primary underline">
-                  accessibility@cea.ng
+                <a href="mailto:hello@cea.ng" className="text-primary underline">
+                  hello@cea.ng
                 </a>
               </p>
               <p>Phone/WhatsApp: +234 905 862 8386</p>
@@ -160,8 +151,7 @@ function AccessibilityPage() {
                 Form:{" "}
                 <Link to="/contact" className="text-primary underline">
                   Contact page
-                </Link>{" "}
-                (select "Accessibility")
+                </Link>
               </p>
             </div>
             <p className="text-muted-foreground mt-4 leading-relaxed">
@@ -176,14 +166,9 @@ function AccessibilityPage() {
               description="Planned improvements for the next 12 months."
             />
             <ul className="space-y-3 list-disc list-inside text-muted-foreground">
-              <li>Full keyboard equivalents for all drag-and-drop interfaces (Q3 2025)</li>
-              <li>Human-edited captions for all live sessions (Q4 2025)</li>
-              <li>Tagged PDF regeneration for all legacy curriculum (Q4 2025)</li>
-              <li>High-contrast theme toggle (Q1 2026)</li>
-              <li>Sign-language interpreter option for live sessions (pilot Q1 2026)</li>
-              <li>
-                Accessibility conformance audit by third-party specialist (annual, next Q2 2026)
-              </li>
+              <li>Keyboard alternatives for remaining drag-and-drop tools in the student workspace</li>
+              <li>Keep the public pages (courses, notes, apply, contact) usable without a mouse</li>
+              <li>Fix issues you report, in the order they block people from using the site</li>
             </ul>
           </Reveal>
 
@@ -210,10 +195,10 @@ function AccessibilityPage() {
               </p>
               <div className="mt-4">
                 <a
-                  href="mailto:accessibility@cea.ng"
+                  href="mailto:hello@cea.ng"
                   className="inline-flex items-center gap-2 text-primary underline font-medium hover:text-primary/80"
                 >
-                  Email accessibility@cea.ng
+                  Email hello@cea.ng
                 </a>
               </div>
             </div>

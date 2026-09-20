@@ -140,6 +140,7 @@ export const WEBSITE_LD = {
   "@type": "WebSite",
   name: SITE_NAME,
   url: SITE_URL,
+  publisher: { "@type": "EducationalOrganization", name: SITE_NAME, url: SITE_URL },
 };
 export function getPageHead(input: SeoInput) {
   const { meta, links } = buildSeo(input);

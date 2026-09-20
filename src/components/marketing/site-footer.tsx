@@ -16,13 +16,13 @@ const columns = [
   {
     title: "Academy",
     links: [
+      { label: "Notes", to: "/blog" },
       { label: "About", to: "/about" },
       { label: "Admissions", to: "/admissions" },
       { label: "Apply", to: "/apply" },
       { label: "FAQ", to: "/faq" },
       { label: "Visit", to: "/visit" },
       { label: "Team", to: "/team" },
-      { label: "Notes", to: "/blog" },
     ],
   },
   {

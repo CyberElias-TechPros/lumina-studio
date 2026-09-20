@@ -40,12 +40,13 @@ export function CookieConsent() {
       <div className="container-page">
         <div className="bg-card shadow-elevated rounded-2xl border p-5 sm:flex sm:items-center sm:justify-between sm:gap-4">
           <p className="text-foreground/75 text-sm leading-relaxed">
-            We use essential cookies to make our site work and optional analytics cookies to
-            understand how you use it. By continuing to use this site, you agree to our{" "}
+            We use essential cookies so the site works. This site may also show Google ads
+            (including advertising cookies). If you accept, we may use analytics cookies too. Read
+            the{" "}
             <Link to="/privacy" className="text-primary underline">
-              cookie policy
+              privacy policy
             </Link>
-            .
+            . You can decline optional cookies.
           </p>
           <div className="mt-4 flex shrink-0 gap-2 sm:mt-0">
             <Button variant="outline" size="sm" onClick={dismiss}>

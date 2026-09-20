@@ -16,8 +16,8 @@ export const Route = createFileRoute("/terms")({
 });
 
 function TermsPage() {
-  const lastUpdated = "August 10, 2025";
-  const effectiveDate = "August 10, 2025";
+  const lastUpdated = "20 September 2026";
+  const effectiveDate = "20 September 2026";
 
   return (
     <PageShell>
@@ -94,9 +94,8 @@ function TermsPage() {
             <h2 className="font-display text-2xl font-bold">4. Programmes and Enrollment</h2>
             <h3 className="font-semibold mt-6">4.1 Enrollment</h3>
             <p className="text-muted-foreground mt-3 leading-relaxed">
-              Enrollment in a programme requires a completed application, acceptance by CEA, and
-              payment of applicable fees (or approval for scholarship/ISA). Admission is at CEA's
-              sole discretion.
+              Enrollment in a course requires a completed application, a reply from the academy
+              with dates and the fee, and payment of that fee. Admission is at CEA's discretion.
             </p>
             <h3 className="font-semibold mt-6">4.2 Programme Changes</h3>
             <p className="text-muted-foreground mt-3 leading-relaxed">
@@ -131,9 +130,9 @@ function TermsPage() {
             </p>
             <h3 className="font-semibold mt-6">5.2 Payment Plans</h3>
             <p className="text-muted-foreground mt-3 leading-relaxed">
-              Installment plans and Income Share Agreements (ISAs) are available for eligible
-              programmes. Terms are set out in a separate agreement. Default on payments may result
-              in suspension of access until arrears are cleared.
+              Monthly instalments can be arranged for the length of a course, as agreed when you
+              apply. Default on payments may result in suspension of access until arrears are
+              cleared.
             </p>
             <h3 className="font-semibold mt-6">5.3 Refunds</h3>
             <ul className="mt-3 space-y-2 list-disc list-inside text-muted-foreground">
@@ -147,7 +146,8 @@ function TermsPage() {
                 at CEA's discretion for documented medical/family emergencies.
               </li>
               <li>
-                <strong>Scholarship/ISA recipients:</strong> refund terms per the award agreement.
+                <strong>Instalment plans:</strong> refunds follow the same timetable as full
+                payment, applied to amounts already paid.
               </li>
               <li>Refunds are processed within 30 business days to the original payment method.</li>
             </ul>
@@ -200,17 +200,16 @@ function TermsPage() {
           </Reveal>
 
           <Reveal delay={0.35}>
-            <h2 className="font-display text-2xl font-bold">8. Community and Career Services</h2>
+            <h2 className="font-display text-2xl font-bold">8. Notes, certificates, and jobs</h2>
             <ul className="mt-4 space-y-3 list-disc list-inside text-muted-foreground">
               <li>
-                Community features (forums, chat, events) are moderated. CEA may remove content and
-                ban users at its discretion.
+                Public pages (including the Notes series) and class materials are for learning. Do
+                not copy them as if they were your own course.
               </li>
               <li>
-                Careers support (job board, employer introductions, gig matching) is a facilitation
-                service. CEA does not guarantee employment, internships, or income.
+                The academy does not guarantee a job, an internship, or an income after a course.
+                Certificates are for work you produced here, not a government licence.
               </li>
-              <li>Employer introductions require your explicit opt-in per opportunity.</li>
             </ul>
           </Reveal>
 

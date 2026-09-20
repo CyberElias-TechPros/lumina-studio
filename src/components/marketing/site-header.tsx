@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 
 const nav = [
   { label: "Courses", to: "/classes" },
+  { label: "Notes", to: "/blog" },
   { label: "Admissions", to: "/admissions" },
   { label: "About", to: "/about" },
   { label: "Contact", to: "/contact" },

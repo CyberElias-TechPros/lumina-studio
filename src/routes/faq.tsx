@@ -36,6 +36,10 @@ export const Route = createFileRoute("/faq")({
 
 const extraFaqs = [
   {
+    q: "Are the Notes free to read?",
+    a: "Yes. The Notes series is a from-scratch set of computer-skills lessons anyone can read on this site. Enrolment in a taught course is separate; each course page lists the fee.",
+  },
+  {
     q: "Are the certificates recognised?",
     a: "Certificates are issued by Cyber Elias Academy Ltd and can be checked on our public verification page. They record the course and the work you produced. They are not a government licence or a university degree.",
   },

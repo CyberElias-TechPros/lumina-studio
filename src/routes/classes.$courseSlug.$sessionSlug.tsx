@@ -18,7 +18,6 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { CTASection, PageShell } from "@/components/marketing/shell";
-import { AdInContentSlot } from "@/components/marketing/ad-slots";
 import { Reveal } from "@/components/motion";
 import { ContentFreshness } from "@/components/content-freshness";
 import {
@@ -353,10 +352,6 @@ function SessionPage() {
             ))}
           </div>
         </section>
-
-        <div className="mt-12">
-          <AdInContentSlot />
-        </div>
 
         {/* Demonstration */}
         <section id="demonstration" className="mt-14 scroll-mt-28">

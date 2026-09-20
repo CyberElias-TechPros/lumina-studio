@@ -16,7 +16,7 @@ export const Route = createFileRoute("/blog/$slug")({
       description: post.excerpt,
       datePublished: post.date,
       image: `https://cea.ng${post.cover}`,
-      author: { "@type": "Person", name: post.author },
+      author: { "@type": "Organization", name: post.author },
       publisher: {
         "@type": "Organization",
         name: "Cyber Elias Academy",
@@ -67,10 +67,13 @@ function Block({ block }: { block: BlogBlock }) {
 function Article() {
   const { slug } = useParams({ from: "/blog/$slug" });
   const post = blogPosts.find((p) => p.slug === slug) ?? blogPosts[0];
-  const related = blogPosts
-    .filter((p) => p.slug !== post.slug)
-    .sort((a, b) => a.order - b.order)
-    .slice(0, 3);
+  const later = blogPosts
+    .filter((p) => p.order > post.order)
+    .sort((a, b) => a.order - b.order);
+  const earlier = blogPosts
+    .filter((p) => p.order < post.order)
+    .sort((a, b) => b.order - a.order);
+  const related = [...later, ...earlier].slice(0, 3);
 
   return (
     <PageShell>

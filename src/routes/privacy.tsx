@@ -16,7 +16,7 @@ export const Route = createFileRoute("/privacy")({
 });
 
 function PrivacyPage() {
-  const lastUpdated = "August 10, 2025";
+  const lastUpdated = "20 September 2026";
 
   return (
     <PageShell>
@@ -30,9 +30,9 @@ function PrivacyPage() {
           <Reveal>
             <h2 className="font-display text-2xl font-bold">1. Who we are</h2>
             <p className="text-muted-foreground mt-4 leading-relaxed">
-              Cyber Elias Academy ("CEA", "we", "us", "our") is a digital skills academy and
-              technology studio operating from 26 Ebony Road, Off Rumuola Road, Port Harcourt,
-              Rivers State, Nigeria. You can contact us at hello@cea.ng or +234 905 862 8386.
+              Cyber Elias Academy Ltd ("CEA", "we", "us", "our") is a digital skills training
+              centre at 26 Ebony Road, Off Rumuola Road, Port Harcourt, Rivers State, Nigeria
+              (RC 8413776). You can contact us at hello@cea.ng or +234 905 862 8386.
             </p>
           </Reveal>
 
@@ -85,12 +85,12 @@ function PrivacyPage() {
             <h2 className="font-display text-2xl font-bold">3. How we use your information</h2>
             <ul className="mt-4 space-y-3 list-disc list-inside text-muted-foreground">
               <li>
-                <strong>Deliver and improve services:</strong> run cohorts, grade assignments, issue
-                certificates, match mentors
+                <strong>Deliver and improve services:</strong> run courses, keep applications,
+                issue certificates for completed work
               </li>
               <li>
-                <strong>Communicate:</strong> send cohort updates, assignment reminders, career
-                opportunities, newsletters (opt-out anytime)
+                <strong>Communicate:</strong> reply to enquiries, send course dates and fee
+                information you asked for (opt out of newsletters anytime)
               </li>
               <li>
                 <strong>Safety and security:</strong> detect fraud, prevent abuse, enforce terms,
@@ -101,8 +101,8 @@ function PrivacyPage() {
                 curriculum, measure outcomes (aggregated, pseudonymised)
               </li>
               <li>
-                <strong>Marketing:</strong> with your consent, send relevant programme info, events,
-                partner offers
+                <strong>Marketing:</strong> with your consent, send course dates and notes you asked
+                for
               </li>
             </ul>
           </Reveal>
@@ -138,12 +138,13 @@ function PrivacyPage() {
             </p>
             <ul className="mt-3 space-y-2 list-disc list-inside text-muted-foreground">
               <li>
-                <strong>Service providers:</strong> cloud hosting (Vercel, Cloudflare), email
-                (Resend, SendGrid), analytics, payment processors — under data processing agreements
+                <strong>Service providers:</strong> cloud hosting (Vercel, Cloudflare), email,
+                analytics, payment processors, and Google AdSense for advertisements — under their
+                terms and, where required, data processing agreements
               </li>
               <li>
-                <strong>Employer partners:</strong> only when you opt into the talent pool and
-                explicitly approve a specific introduction
+                <strong>People you ask us to contact:</strong> for example if you name a parent or
+                sponsor on an application
               </li>
               <li>
                 <strong>Legal authorities:</strong> when required by law, court order, or to protect
@@ -168,15 +169,57 @@ function PrivacyPage() {
           <Reveal delay={0.3}>
             <h2 className="font-display text-2xl font-bold">7. Cookies and tracking</h2>
             <p className="text-muted-foreground mt-4 leading-relaxed">
-              We use essential cookies (session, CSRF, preferences) and optional analytics/marketing
-              cookies. You can manage non-essential cookies via the cookie banner or your browser
-              settings. Blocking essential cookies may break core functionality (login, payments,
-              progress tracking).
+              We use essential cookies so the site works (session, security, your theme
+              preference). Optional analytics cookies (Google Analytics, if you accept) help us
+              understand which pages are useful. You can decline optional cookies on the banner, or
+              block them in your browser. Blocking essential cookies may break sign-in and forms.
+            </p>
+          </Reveal>
+
+          <Reveal delay={0.32}>
+            <h2 className="font-display text-2xl font-bold">8. Advertising (Google AdSense)</h2>
+            <p className="text-muted-foreground mt-4 leading-relaxed">
+              This site uses Google AdSense to show advertisements. Google, as a third-party
+              vendor, uses cookies — including the DoubleClick cookie — to serve ads based on your
+              visits to this site and other sites on the internet. Google's use of advertising
+              cookies enables it and its partners to serve ads based on your visit to cea.ng and/or
+              other sites.
+            </p>
+            <p className="text-muted-foreground mt-4 leading-relaxed">
+              You may opt out of personalised advertising by visiting{" "}
+              <a
+                href="https://www.google.com/settings/ads"
+                className="text-primary underline"
+                rel="noopener noreferrer"
+              >
+                Google Ads Settings
+              </a>
+              , or the{" "}
+              <a
+                href="https://optout.aboutads.info/"
+                className="text-primary underline"
+                rel="noopener noreferrer"
+              >
+                Digital Advertising Alliance opt-out
+              </a>
+              . You can also learn how Google uses data when you use our site in{" "}
+              <a
+                href="https://policies.google.com/technologies/partner-sites"
+                className="text-primary underline"
+                rel="noopener noreferrer"
+              >
+                Google's partner-sites policy
+              </a>
+              .
+            </p>
+            <p className="text-muted-foreground mt-4 leading-relaxed">
+              We do not click our own ads, ask visitors to click ads, or place ads in a way that
+              looks like course content. Ads, when they appear, are labelled as advertising.
             </p>
           </Reveal>
 
           <Reveal delay={0.35}>
-            <h2 className="font-display text-2xl font-bold">8. Your rights</h2>
+            <h2 className="font-display text-2xl font-bold">9. Your rights</h2>
             <p className="text-muted-foreground mt-4 leading-relaxed">
               Under the Nigeria Data Protection Act 2023 (and GDPR where applicable), you have the
               right to:
@@ -200,7 +243,7 @@ function PrivacyPage() {
           </Reveal>
 
           <Reveal delay={0.4}>
-            <h2 className="font-display text-2xl font-bold">9. Retention</h2>
+            <h2 className="font-display text-2xl font-bold">10. Retention</h2>
             <ul className="mt-4 space-y-2 list-disc list-inside text-muted-foreground">
               <li>
                 Account data: retained while your account is active, then anonymised after 2 years
@@ -217,7 +260,7 @@ function PrivacyPage() {
           </Reveal>
 
           <Reveal delay={0.45}>
-            <h2 className="font-display text-2xl font-bold">10. Children's privacy</h2>
+            <h2 className="font-display text-2xl font-bold">11. Children's privacy</h2>
             <p className="text-muted-foreground mt-4 leading-relaxed">
               Our services are not directed to children under 16. We do not knowingly collect data
               from children under 16. If you believe we have, contact us and we will delete it
@@ -226,7 +269,7 @@ function PrivacyPage() {
           </Reveal>
 
           <Reveal delay={0.5}>
-            <h2 className="font-display text-2xl font-bold">11. Changes to this policy</h2>
+            <h2 className="font-display text-2xl font-bold">12. Changes to this policy</h2>
             <p className="text-muted-foreground mt-4 leading-relaxed">
               We may update this policy. Material changes will be announced via email and a
               prominent notice on the site at least 14 days before they take effect. Continued use
@@ -235,7 +278,7 @@ function PrivacyPage() {
           </Reveal>
 
           <Reveal delay={0.55}>
-            <h2 className="font-display text-2xl font-bold">12. Contact</h2>
+            <h2 className="font-display text-2xl font-bold">13. Contact</h2>
             <p className="text-muted-foreground mt-4 leading-relaxed">
               Data Protection Officer:{" "}
               <a href="mailto:privacy@cea.ng" className="text-primary underline">

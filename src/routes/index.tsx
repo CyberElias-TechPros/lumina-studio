@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { CTASection, PageShell } from "@/components/marketing/shell";
 import { CampusImg, CourseCover } from "@/components/marketing/photos";
 import { faqs } from "@/data/site";
+import { blogPosts } from "@/data/blog";
 import { flyerCourses, formatFee, teachingLoop } from "@/data/academy";
 import { getPageHead } from "@/lib/seo";
 import {
@@ -189,6 +190,53 @@ function Home() {
               <p className="text-muted-foreground mt-2 text-sm leading-relaxed">{item.body}</p>
             </li>
           ))}
+        </ul>
+      </section>
+
+      <section className="container-page py-16 md:py-20">
+        <div className="flex flex-wrap items-end justify-between gap-4">
+          <div>
+            <h2 className="font-display text-2xl font-semibold tracking-tight sm:text-3xl">
+              Notes: computer skills from scratch
+            </h2>
+            <p className="text-muted-foreground mt-2 max-w-xl text-sm leading-relaxed">
+              Free class notes anyone can read — sitting down at a computer, files, email, Word,
+              spreadsheets, the phone, and staying safe online. One hundred lessons, written as if
+              someone is sitting beside you.
+            </p>
+          </div>
+          <Link to="/blog" className="text-primary text-sm font-medium hover:underline">
+            All notes
+          </Link>
+        </div>
+        <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {[...blogPosts]
+            .sort((a, b) => a.order - b.order)
+            .slice(0, 6)
+            .map((post) => (
+              <li key={post.slug}>
+                <Link
+                  to="/blog/$slug"
+                  params={{ slug: post.slug }}
+                  className="border-border bg-card hover:border-primary/40 flex h-full flex-col overflow-hidden rounded-lg border transition-colors"
+                >
+                  <img
+                    src={post.cover}
+                    alt={post.coverAlt}
+                    className="aspect-[16/9] w-full object-cover"
+                  />
+                  <div className="flex flex-1 flex-col p-5">
+                    <p className="text-muted-foreground text-xs">Lesson {post.order}</p>
+                    <h3 className="font-display mt-2 text-base font-semibold tracking-tight">
+                      {post.title}
+                    </h3>
+                    <p className="text-muted-foreground mt-2 line-clamp-3 flex-1 text-sm leading-relaxed">
+                      {post.excerpt}
+                    </p>
+                  </div>
+                </Link>
+              </li>
+            ))}
         </ul>
       </section>
 
