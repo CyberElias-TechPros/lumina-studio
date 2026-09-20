@@ -1,9 +1,10 @@
 import { createFileRoute, Link, useParams } from "@tanstack/react-router";
-import { ArrowLeft, CalendarDays, Clock } from "lucide-react";
+import { ArrowLeft, ArrowRight, CalendarDays, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { CTASection, PageShell } from "@/components/marketing/shell";
 import { blogPosts, NOTES_AUTHOR, type BlogBlock } from "@/data/blog";
 import { FounderPhoto } from "@/components/marketing/founder-photo";
+import { adjacentNotes, chapterForOrder, relatedNotes } from "@/data/note-chapters";
 import { getPageHead } from "@/lib/seo";
 import { readingTimeLabel } from "@/lib/blog-reading-time";
 
@@ -29,6 +30,11 @@ export const Route = createFileRoute("/blog/$slug")({
         logo: { "@type": "ImageObject", url: "https://cea.ng/icon.svg" },
       },
       mainEntityOfPage: `https://cea.ng/blog/${post.slug}`,
+      isPartOf: {
+        "@type": "CreativeWorkSeries",
+        name: post.series,
+        url: "https://cea.ng/blog",
+      },
     };
     return getPageHead({
       title: post.title,
@@ -73,13 +79,9 @@ function Block({ block }: { block: BlogBlock }) {
 function Article() {
   const { slug } = useParams({ from: "/blog/$slug" });
   const post = blogPosts.find((p) => p.slug === slug) ?? blogPosts[0];
-  const later = blogPosts
-    .filter((p) => p.order > post.order)
-    .sort((a, b) => a.order - b.order);
-  const earlier = blogPosts
-    .filter((p) => p.order < post.order)
-    .sort((a, b) => b.order - a.order);
-  const related = [...later, ...earlier].slice(0, 3);
+  const { prev, next } = adjacentNotes(post);
+  const chapter = chapterForOrder(post.order);
+  const related = relatedNotes(post, 3);
 
   return (
     <PageShell>
@@ -93,10 +95,14 @@ function Article() {
 
         <p className="text-muted-foreground mt-8 text-xs">
           {post.series}
+          {chapter && (
+            <>
+              <span className="mx-2">·</span>
+              {chapter.title}
+            </>
+          )}
           <span className="mx-2">·</span>
-          Lesson {post.order}
-          <span className="mx-2">·</span>
-          {post.date}
+          Lesson {post.order} of {blogPosts.length}
         </p>
 
         <h1 className="font-display mt-3 text-3xl font-semibold tracking-tight text-balance sm:text-4xl">
@@ -105,13 +111,7 @@ function Article() {
 
         <div className="text-muted-foreground mt-6 flex flex-wrap items-center gap-4 border-b pb-6 text-sm">
           <span className="text-foreground flex items-center gap-2.5">
-            <img
-              src={NOTES_AUTHOR.photo}
-              alt={NOTES_AUTHOR.name}
-              width={40}
-              height={40}
-              className="size-10 rounded-full object-cover"
-            />
+            <FounderPhoto className="size-10 shrink-0 rounded-full" alt={NOTES_AUTHOR.name} />
             <span>
               <span className="block font-medium">{post.author}</span>
               <span className="text-muted-foreground block text-xs">{NOTES_AUTHOR.role}</span>
@@ -136,37 +136,106 @@ function Article() {
             <Block key={i} block={block} />
           ))}
         </div>
+
+        <nav
+          aria-label="Next lesson"
+          className="border-border mt-14 grid gap-3 border-t pt-8 sm:grid-cols-2"
+        >
+          {prev ? (
+            <Link
+              to="/blog/$slug"
+              params={{ slug: prev.slug }}
+              className="border-border hover:border-primary/40 rounded-lg border p-4"
+            >
+              <p className="text-muted-foreground flex items-center gap-1.5 text-xs">
+                <ArrowLeft className="size-3.5" /> Previous
+              </p>
+              <p className="font-display mt-2 text-sm font-semibold leading-snug">
+                Lesson {prev.order}: {prev.title}
+              </p>
+            </Link>
+          ) : (
+            <span />
+          )}
+          {next ? (
+            <Link
+              to="/blog/$slug"
+              params={{ slug: next.slug }}
+              className="border-border hover:border-primary/40 rounded-lg border p-4 sm:text-right"
+            >
+              <p className="text-muted-foreground flex items-center gap-1.5 text-xs sm:justify-end">
+                Next <ArrowRight className="size-3.5" />
+              </p>
+              <p className="font-display mt-2 text-sm font-semibold leading-snug">
+                Lesson {next.order}: {next.title}
+              </p>
+            </Link>
+          ) : (
+            <Link
+              to="/blog"
+              className="border-border hover:border-primary/40 rounded-lg border p-4 sm:text-right"
+            >
+              <p className="text-muted-foreground text-xs">End of the series</p>
+              <p className="font-display mt-2 text-sm font-semibold">All notes</p>
+            </Link>
+          )}
+        </nav>
       </article>
 
-      <section className="border-border bg-muted/40 border-y">
-        <div className="container-page py-12 md:py-16">
-          <h2 className="font-display text-xl font-semibold">Next in the series</h2>
-          <ul className="mt-6 grid gap-4 md:grid-cols-3">
-            {related.map((p) => (
-              <li key={p.slug}>
-                <Link
-                  to="/blog/$slug"
-                  params={{ slug: p.slug }}
-                  className="border-border bg-card hover:border-primary/40 block h-full overflow-hidden rounded-lg border"
-                >
-                  <img src={p.cover} alt="" className="aspect-[16/9] w-full object-cover" />
-                  <div className="p-5">
-                    <p className="text-muted-foreground text-xs">Lesson {p.order}</p>
-                    <h3 className="font-display mt-2 text-base font-semibold leading-snug">
-                      {p.title}
-                    </h3>
-                  </div>
-                </Link>
-              </li>
-            ))}
-          </ul>
-          <div className="mt-8">
-            <Button asChild variant="outline">
-              <Link to="/blog">All notes</Link>
-            </Button>
+      {(related.length > 0 || chapter) && (
+        <section className="border-border bg-muted/40 border-y">
+          <div className="container-page py-12 md:py-16">
+            {related.length > 0 && (
+              <>
+                <h2 className="font-display text-xl font-semibold">
+                  {chapter ? `Also in ${chapter.title}` : "Related notes"}
+                </h2>
+                <ul className="mt-6 grid gap-4 md:grid-cols-3">
+                  {related.map((p) => (
+                    <li key={p.slug}>
+                      <Link
+                        to="/blog/$slug"
+                        params={{ slug: p.slug }}
+                        className="border-border bg-card hover:border-primary/40 block h-full overflow-hidden rounded-lg border"
+                      >
+                        <img src={p.cover} alt="" className="aspect-[16/9] w-full object-cover" />
+                        <div className="p-5">
+                          <p className="text-muted-foreground text-xs">Lesson {p.order}</p>
+                          <h3 className="font-display mt-2 text-base font-semibold leading-snug">
+                            {p.title}
+                          </h3>
+                        </div>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            )}
+            {chapter && (
+              <div className="border-border bg-card mt-8 rounded-lg border p-5 sm:flex sm:items-center sm:justify-between sm:gap-6">
+                <div>
+                  <p className="text-muted-foreground text-xs">Taught in the room</p>
+                  <p className="font-display mt-1 text-lg font-semibold">{chapter.courseLabel}</p>
+                  <p className="text-muted-foreground mt-1 max-w-xl text-sm leading-relaxed">
+                    Same ground, with an instructor and a machine in front of you. Two sessions a
+                    week.
+                  </p>
+                </div>
+                <Button asChild className="mt-4 sm:mt-0">
+                  <Link to="/classes/$courseSlug" params={{ courseSlug: chapter.courseSlug }}>
+                    View {chapter.courseLabel}
+                  </Link>
+                </Button>
+              </div>
+            )}
+            <div className="mt-8">
+              <Button asChild variant="outline">
+                <Link to="/blog">All notes</Link>
+              </Button>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       <CTASection
         primary={{ label: "View courses", to: "/classes" }}
