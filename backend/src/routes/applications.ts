@@ -20,6 +20,23 @@ export const PIPELINE_STAGES = [
 
 const STATUS_ORDER = PIPELINE_STAGES.map((s) => s.key);
 
+/** Flyer short-course slugs (src/data/academy/catalog.ts). Not all are rows in `programs`. */
+const SHORT_COURSE_SLUGS = new Set([
+  "microsoft-office",
+  "computer-basics-typing",
+  "graphic-design",
+  "web-design",
+  "digital-marketing",
+  "social-media-management",
+  "data-entry",
+  "computer-repairs",
+  "web-development",
+  "cybersecurity",
+  "business-freelancing",
+  "content-creation",
+  "online-teaching",
+]);
+
 const createApplicationSchema = z.object({
   fullName: z.string().trim().min(2, "Full name must be at least 2 characters.").max(120),
   email: z.string().trim().email("Enter a valid email address."),
@@ -52,7 +69,7 @@ applications.post("/", async (c) => {
   const program = await c.env.DB.prepare(`SELECT title FROM programs WHERE slug = ?`)
     .bind(input.programSlug)
     .first<{ title: string }>();
-  if (!program) {
+  if (!program && !SHORT_COURSE_SLUGS.has(input.programSlug)) {
     throw new ApiError(400, "PROGRAM_NOT_FOUND", "That program does not exist.", {
       programSlug: ["Choose a program from the list."],
     });

@@ -1,93 +1,48 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMutation } from "@tanstack/react-query";
 import { useState } from "react";
-import {
-  ArrowRight,
-  Bus,
-  CalendarDays,
-  CheckCircle2,
-  Coffee,
-  Loader2,
-  MapPin,
-  Plane,
-  TrainFront,
-  Wifi,
-} from "lucide-react";
-import { Badge } from "@/components/ui/badge";
+import { ArrowRight, CheckCircle2, Loader2, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { PageShell, PageHero, CTASection, SectionHeading } from "@/components/marketing/shell";
-import { Reveal, StaggerGroup, StaggerItem } from "@/components/motion";
+import { PageShell, PageHero, CTASection } from "@/components/marketing/shell";
+import { CampusImg } from "@/components/marketing/photos";
+import { campusGallery } from "@/data/academy";
 import { cn } from "@/lib/utils";
 import { submitContact } from "@/lib/api/marketing";
+import { getPageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/visit/")({
-  head: () => ({
-    meta: [
-      { title: "Visit Us — Cyber Elias Academy" },
-      {
-        name: "description",
-        content:
-          "Register for campus tours and open days at Cyber Elias Academy, Port Harcourt — or take a virtual tour from anywhere. See the academy before you commit.",
-      },
-    ],
-  }),
+  head: () =>
+    getPageHead({
+      title: "Visit — Cyber Elias Academy",
+      description:
+        "Visit Cyber Elias Academy at 26 Ebony Road, Port Harcourt. See the classroom, sit in on a session if one is running, or book a video call.",
+      path: "/visit",
+    }),
   component: VisitPage,
 });
 
 const visitTypes = [
   {
-    id: "tour",
-    label: "Campus tour",
-    desc: "First through the doors when the Port Harcourt campus opens",
+    id: "look",
+    label: "See the classroom",
+    desc: "A short look around the centre during opening hours.",
   },
   {
     id: "class",
-    label: "Sit in a live class",
-    desc: "Experience a real evening session with a cohort",
+    label: "Sit in on a session",
+    desc: "Join the back of a class if one is running that day.",
   },
   {
-    id: "open",
-    label: "Open day",
-    desc: "The full Saturday experience — demos, mentors, scholarships",
-  },
-  { id: "virtual", label: "Virtual tour", desc: "A 30-minute guided walkthrough over video call" },
-];
-
-const gettingHere = [
-  {
-    icon: Plane,
-    title: "From the airport",
-    desc: "Port Harcourt International Airport is about 40 minutes from the city. Pickup arranged when visits go live.",
-  },
-  {
-    icon: Bus,
-    title: "By road",
-    desc: "Well connected via the East–West Road and PH–Aba Expressway. Pickup on request.",
-  },
-  {
-    icon: TrainFront,
-    title: "Local transit",
-    desc: "Keke, taxis and City Buses serve every neighbourhood. We'll send precise directions.",
-  },
-  {
-    icon: Coffee,
-    title: "Come hungry",
-    desc: "Free coffee, water and lunch vouchers for every visitor.",
+    id: "virtual",
+    label: "Video call",
+    desc: "A 20–30 minute call if you cannot come in person.",
   },
 ];
 
 function VisitPage() {
-  const [type, setType] = useState("tour");
+  const [type, setType] = useState("look");
   const [booked, setBooked] = useState(false);
   const [registerError, setRegisterError] = useState("");
   const register = useMutation({
@@ -100,7 +55,7 @@ function VisitPage() {
     },
     onSuccess: () => setBooked(true),
     onError: (err) => {
-      setRegisterError(err instanceof Error ? err.message : "Could not register interest.");
+      setRegisterError(err instanceof Error ? err.message : "Could not send your details.");
     },
   });
 
@@ -123,121 +78,79 @@ function VisitPage() {
   return (
     <PageShell>
       <PageHero
-        eyebrow="Visit Cyber Elias Academy"
-        art="tour"
-        title={
-          <>
-            Be there when the <span className="text-gradient">doors open</span>
-          </>
-        }
-        description="The academy is taking shape in Port Harcourt. Register today and you'll be first in line for campus tours, open days and virtual walkthroughs."
+        eyebrow="Visit"
+        title="See the centre before you enrol"
+        description="26 Ebony Road, off Rumuola Road, Port Harcourt. Opening hours Monday to Saturday, 8:00–20:00. Call ahead if you want to sit in on a class."
       />
+
+      <section className="container-page grid gap-4 py-10 sm:grid-cols-2 lg:grid-cols-4 md:py-12">
+        {campusGallery.map((shot) => (
+          <figure key={shot.id} className="border-border overflow-hidden rounded-lg border">
+            <CampusImg id={shot.id} className="aspect-[4/3]" eager={shot.id === "lab-1"} />
+            <figcaption className="text-muted-foreground px-3 py-2 text-xs">{shot.caption}</figcaption>
+          </figure>
+        ))}
+      </section>
 
       {booked ? (
         <section className="container-page py-16">
-          <Reveal className="mx-auto max-w-xl text-center">
-            <span className="bg-success/10 text-success mx-auto grid size-16 place-items-center rounded-full">
-              <CheckCircle2 className="size-8" />
+          <div className="mx-auto max-w-xl text-center">
+            <span className="bg-success/10 text-success mx-auto grid size-12 place-items-center rounded-full">
+              <CheckCircle2 className="size-6" />
             </span>
-            <h2 className="font-display mt-6 text-2xl font-extrabold">Interest registered</h2>
-            <p className="text-muted-foreground mt-3">
-              We'll email you the moment visit dates and directions are confirmed — no obligation,
-              no spam.
+            <h2 className="font-display mt-6 text-2xl font-semibold">We have your details</h2>
+            <p className="text-muted-foreground mt-3 text-sm leading-relaxed">
+              We will reply with a time to visit, or confirm a video call.
             </p>
             <Button asChild variant="outline" className="mt-6">
-              <Link to="/programs">
-                Browse programs while you wait <ArrowRight className="ml-1.5 size-4" />
+              <Link to="/classes">
+                View courses <ArrowRight className="ml-1.5 size-4" />
               </Link>
             </Button>
-          </Reveal>
+          </div>
         </section>
       ) : (
         <section className="container-page pb-20">
-          <div className="grid gap-8 lg:grid-cols-[1fr_1.1fr]">
-            <div className="space-y-6">
-              <div className="bg-card shadow-soft overflow-hidden rounded-2xl border">
-                <div className="bg-gradient-ink text-ink-foreground p-6">
-                  <Badge className="bg-ink-foreground/15 text-ink-foreground border-0">
-                    Port Harcourt Campus
-                  </Badge>
-                  <h3 className="font-display mt-3 text-xl font-extrabold">Cyber Elias Academy</h3>
-                  <p className="text-ink-foreground/70 mt-1 text-sm">
-                    Rivers State, Nigeria — address confirmed at opening
-                  </p>
-                  <div className="mt-5 grid grid-cols-3 gap-3">
-                    {[
-                      { label: "Opening", value: "With cohort one" },
-                      { label: "Open days", value: "Announced soon" },
-                      { label: "Visits", value: "Mon–Sat" },
-                    ].map((s) => (
-                      <div key={s.label} className="rounded-xl bg-ink-foreground/10 p-3">
-                        <p className="text-ink-foreground/60 text-[10px] font-bold tracking-wide uppercase">
-                          {s.label}
-                        </p>
-                        <p className="font-display mt-1 text-xs font-extrabold">{s.value}</p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-                <div className="grid grid-cols-2 divide-x">
-                  {[
-                    { icon: Wifi, label: "Fibre + hotspots" },
-                    { icon: Coffee, label: "Café & lounge" },
-                  ].map((a) => (
-                    <div key={a.label} className="flex items-center gap-2.5 p-4">
-                      <a.icon className="text-primary size-4" />
-                      <span className="text-xs font-bold">{a.label}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <StaggerGroup className="grid gap-3 sm:grid-cols-2">
-                {gettingHere.map((g) => (
-                  <StaggerItem key={g.title}>
-                    <div className="bg-card shadow-soft h-full rounded-xl border p-4">
-                      <g.icon className="text-primary size-4" />
-                      <p className="mt-2 text-sm font-bold">{g.title}</p>
-                      <p className="text-muted-foreground mt-1 text-xs leading-relaxed">{g.desc}</p>
-                    </div>
-                  </StaggerItem>
-                ))}
-              </StaggerGroup>
+          <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
+            <div>
+              <h2 className="font-display text-2xl font-semibold tracking-tight">How to find us</h2>
+              <p className="text-muted-foreground mt-3 flex items-start gap-2 text-sm leading-relaxed">
+                <MapPin className="mt-0.5 size-4 shrink-0" />
+                26 Ebony Road, Off Rumuola Road, Port Harcourt. Keke, taxi or bus to Rumuola, then a
+                short walk. +234 905 862 8386.
+              </p>
+              <ul className="text-muted-foreground mt-6 space-y-2 text-sm leading-relaxed">
+                <li>Monday–Saturday, 8:00–20:00 WAT</li>
+                <li>No appointment needed to look at the room; call if you want to sit in a class</li>
+                <li>Some courses can also be followed online</li>
+              </ul>
             </div>
 
-            <Card className="bg-card shadow-soft h-fit border">
-              <CardHeader>
-                <CardTitle className="font-display text-lg font-extrabold">
-                  Register your interest
-                </CardTitle>
-                <p className="text-muted-foreground text-sm font-normal">
-                  Free · No obligation · You'll be first to know
-                </p>
-              </CardHeader>
-              <CardContent className="space-y-5">
+            <div className="border-border rounded-lg border p-6 sm:p-8">
+              <h2 className="font-display text-lg font-semibold">Tell us you are coming</h2>
+              <p className="text-muted-foreground mt-1 text-sm">
+                Optional — useful if you want a class sit-in or a video call.
+              </p>
+              <form onSubmit={handleSubmit} className="mt-6 space-y-5">
                 <div>
-                  <Label>What would you like to do?</Label>
-                  <div className="mt-2 grid gap-2 sm:grid-cols-2">
+                  <Label>What would you like?</Label>
+                  <div className="mt-2 grid gap-2 sm:grid-cols-3">
                     {visitTypes.map((v) => (
                       <button
                         key={v.id}
+                        type="button"
                         onClick={() => setType(v.id)}
                         className={cn(
-                          "rounded-xl border p-3.5 text-left transition-colors",
-                          type === v.id
-                            ? "border-primary bg-primary/5 ring-2 ring-primary/30"
-                            : "bg-background hover:border-primary/40",
+                          "rounded-lg border p-3 text-left text-sm",
+                          type === v.id ? "border-primary bg-primary/5" : "hover:border-primary/40",
                         )}
                       >
-                        <p className="text-sm font-bold">{v.label}</p>
-                        <p className="text-muted-foreground mt-1 text-xs leading-relaxed">
-                          {v.desc}
-                        </p>
+                        <p className="font-medium">{v.label}</p>
+                        <p className="text-muted-foreground mt-1 text-xs leading-relaxed">{v.desc}</p>
                       </button>
                     ))}
                   </div>
                 </div>
-
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div className="space-y-1.5">
                     <Label htmlFor="v-name">Full name</Label>
@@ -254,95 +167,29 @@ function VisitPage() {
                     />
                   </div>
                   <div className="space-y-1.5">
-                    <Label htmlFor="v-email">Email address</Label>
-                    <Input
-                      id="v-email"
-                      name="email"
-                      type="email"
-                      placeholder="you@example.com"
-                      required
-                    />
+                    <Label htmlFor="v-email">Email</Label>
+                    <Input id="v-email" name="email" type="email" placeholder="you@example.com" required />
                   </div>
                   <div className="space-y-1.5">
                     <Label htmlFor="v-city">Your city</Label>
-                    <Input id="v-city" name="city" placeholder="e.g. Port Harcourt, Aba, Lagos" />
-                  </div>
-                  <div className="space-y-1.5">
-                    <Label htmlFor="v-time">Preferred time</Label>
-                    <Select>
-                      <SelectTrigger id="v-time">
-                        <SelectValue placeholder="Select time" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        {["10:00", "11:00", "14:00", "16:00", "18:00"].map((t) => (
-                          <SelectItem key={t} value={t}>
-                            {t}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
+                    <Input id="v-city" name="city" placeholder="e.g. Port Harcourt" />
                   </div>
                 </div>
-
-                <form onSubmit={handleSubmit}>
-                  <div className="rounded-xl border border-dashed p-4">
-                    <p className="flex items-center gap-2 text-sm font-bold">
-                      <CalendarDays className="text-primary size-4" /> Coming from far?
-                    </p>
-                    <p className="text-muted-foreground mt-1 text-xs">
-                      Add your city in the form and we'll include pickup and accommodation tips in
-                      the opening announcements.
-                    </p>
-                  </div>
-
-                  <Button
-                    type="submit"
-                    disabled={register.isPending}
-                    className="bg-gradient-brand shadow-glow w-full border-0"
-                  >
-                    {register.isPending && <Loader2 className="mr-1.5 size-4 animate-spin" />}
-                    Register interest <ArrowRight className="ml-1.5 size-4" />
-                  </Button>
-                  {registerError && (
-                    <p className="bg-error/10 text-error rounded-lg px-3 py-2 text-xs font-semibold">
-                      {registerError}
-                    </p>
-                  )}
-                  <p className="text-muted-foreground text-center text-xs">
-                    Prefer virtual? Book a{" "}
-                    <Link to="/contact" className="text-primary font-semibold">
-                      video call
-                    </Link>{" "}
-                    instead.
-                  </p>
-                </form>
-              </CardContent>
-            </Card>
+                <Button type="submit" disabled={register.isPending} className="w-full">
+                  {register.isPending && <Loader2 className="size-4 animate-spin" />}
+                  Send
+                </Button>
+                {registerError && <p className="text-error text-sm">{registerError}</p>}
+              </form>
+            </div>
           </div>
         </section>
       )}
 
-      <section className="bg-muted/40 border-y">
-        <div className="container-page py-16">
-          <SectionHeading
-            eyebrow="Open day"
-            title="Open days are being planned"
-            description="Workshop demos, mentor panels, a scholarship desk and a full campus walkthrough — announced here and by email the moment dates are set."
-          />
-          <div className="mt-8 flex flex-wrap justify-center gap-3">
-            <Button asChild className="bg-gradient-brand shadow-glow border-0">
-              <Link to="/events">
-                See all events <ArrowRight className="ml-1.5 size-4" />
-              </Link>
-            </Button>
-            <Button asChild variant="outline">
-              <Link to="/contact">Ask a question</Link>
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      <CTASection />
+      <CTASection
+        title="Or apply from here"
+        description="If you already know the course, send the application. We reply with dates and the fee."
+      />
     </PageShell>
   );
 }

@@ -55,6 +55,7 @@ import { digitalProductivityLessons } from "./lessons/digital-productivity";
 import { aiProductivityLessons } from "./lessons/ai-productivity";
 
 export * from "./types";
+export * from "./media";
 export { allCourses, flyerCourses, rotatingCourses };
 
 /** Every published class lecture, keyed by "course/session". */

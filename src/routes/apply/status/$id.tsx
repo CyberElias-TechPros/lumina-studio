@@ -43,12 +43,12 @@ const STAGE_ICONS: Record<string, typeof FileText> = {
 };
 
 const STAGE_DESCRIPTIONS: Record<string, string> = {
-  submitted: "We've received your application and program choice.",
-  screening: "An admissions officer reviews your profile and background.",
-  assessment: "Your assessment link is sent by email. Complete it within 7 days.",
-  interview: "A short call with your future mentor to confirm fit and cohort.",
-  offer: "Offer letter, scholarship options and enrolment documents.",
-  enrolled: "You're in. Welcome to the cohort — onboarding starts shortly.",
+  submitted: "We have your application.",
+  screening: "We are reading it.",
+  assessment: "If we need more from you, we will email.",
+  interview: "A call, if we need one.",
+  offer: "Dates, the fee, and what to bring.",
+  enrolled: "Your place is confirmed.",
 };
 
 function statusBadge(status: string) {
@@ -76,12 +76,8 @@ function ApplyStatusDetailPage() {
     <PageShell>
       <PageHero
         eyebrow="Application tracking"
-        title={
-          <>
-            Where your application <span className="text-gradient">stands</span>
-          </>
-        }
-        description={`Live status for ${id} — updated whenever our team moves your application.`}
+        title="Your application"
+        description={`Status for ${id}.`}
       />
 
       <section className="container-page pb-20">
@@ -212,25 +208,19 @@ function ApplyStatusDetailPage() {
               </StaggerGroup>
 
               <Reveal delay={0.2}>
-                <Card className="bg-gradient-ink text-ink-foreground shadow-elevated mt-10 border-0">
+                <Card className="bg-card mt-10 border">
                   <CardContent className="p-6">
-                    <p className="font-display flex items-center gap-2 text-base font-extrabold">
+                    <p className="font-display flex items-center gap-2 text-base font-semibold">
                       <Mail className="size-4" /> Need help?
                     </p>
-                    <p className="text-ink-foreground/70 mt-1.5 text-sm">
-                      Admissions replies within one working day. Quote your application ID for a
-                      faster response.
+                    <p className="text-muted-foreground mt-1.5 text-sm">
+                      Quote your application ID when you write.
                     </p>
                     <div className="mt-4 flex flex-wrap gap-3">
-                      <Button asChild size="sm" className="bg-gradient-brand shadow-glow border-0">
-                        <Link to="/contact">Email admissions</Link>
+                      <Button asChild size="sm">
+                        <Link to="/contact">Contact us</Link>
                       </Button>
-                      <Button
-                        asChild
-                        size="sm"
-                        variant="outline"
-                        className="bg-white/10 text-white border-white/30"
-                      >
+                      <Button asChild size="sm" variant="outline">
                         <Link to="/apply/status">Track another ID</Link>
                       </Button>
                     </div>

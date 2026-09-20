@@ -1,0 +1,12 @@
+# Campus photos
+
+These files are photographs of the classroom at 26 Ebony Road.
+
+| File | Shot |
+| --- | --- |
+| `lab-1.jpg` | Class facing the wall screen and whiteboard, orange chairs |
+| `lab-2.jpg` | Practice desks, standing fan, sofa corner |
+| `lab-3.jpg` | Learners at machines, toward the windows |
+| `lab-4.jpg` | Whiteboard wall and desktop row |
+
+If you replace a file, keep the same name. No code change is required.

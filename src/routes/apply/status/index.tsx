@@ -37,18 +37,14 @@ function ApplyStatusPage() {
     <PageShell>
       <PageHero
         eyebrow="Application tracking"
-        title={
-          <>
-            Where your application <span className="text-gradient">stands</span>
-          </>
-        }
-        description="Enter your application ID (e.g. CEA-2026-0142) to see exactly where things are."
+        title="Look up your application"
+        description="Enter the reference we sent you (for example CEA-2026-0142)."
       />
 
       <section className="container-page pb-20">
         <div className="mx-auto max-w-2xl">
           <Reveal>
-            <Card className="bg-card shadow-soft border">
+            <Card className="bg-card border">
               <CardContent className="p-6">
                 <form onSubmit={submit}>
                   <Label htmlFor="appId">Application ID</Label>
@@ -61,9 +57,7 @@ function ApplyStatusPage() {
                       className="flex-1 font-mono"
                       required
                     />
-                    <Button type="submit" className="bg-gradient-brand shadow-glow border-0">
-                      Track application
-                    </Button>
+                    <Button type="submit">Track application</Button>
                   </div>
                 </form>
               </CardContent>
@@ -71,17 +65,16 @@ function ApplyStatusPage() {
           </Reveal>
 
           <Reveal delay={0.1}>
-            <Card className="bg-gradient-ink text-ink-foreground shadow-elevated mt-10 border-0">
+            <Card className="bg-card mt-10 border">
               <CardContent className="p-6">
-                <p className="font-display flex items-center gap-2 text-base font-extrabold">
+                <p className="font-display flex items-center gap-2 text-base font-semibold">
                   <Mail className="size-4" /> Need help?
                 </p>
-                <p className="text-ink-foreground/70 mt-1.5 text-sm">
-                  Admissions replies within one working day. Quote your application ID for a faster
-                  response.
+                <p className="text-muted-foreground mt-1.5 text-sm">
+                  Quote your application ID when you write. We reply during opening hours.
                 </p>
-                <Button asChild size="sm" className="bg-gradient-brand shadow-glow mt-4 border-0">
-                  <Link to="/contact">Email admissions</Link>
+                <Button asChild size="sm" variant="outline" className="mt-4">
+                  <Link to="/contact">Contact us</Link>
                 </Button>
               </CardContent>
             </Card>
@@ -89,12 +82,7 @@ function ApplyStatusPage() {
         </div>
       </section>
 
-      <CTASection
-        title="Your next chapter starts with one application"
-        description="Cohorts fill fast. Reserve your seat, book a campus tour, or talk to an admissions officer today."
-        primary={{ label: "Apply now", to: "/apply" }}
-        secondary={{ label: "Talk to us", to: "/contact" }}
-      />
+      <CTASection />
     </PageShell>
   );
 }

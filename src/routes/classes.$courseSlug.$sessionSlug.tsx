@@ -18,7 +18,6 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { CTASection, PageShell } from "@/components/marketing/shell";
-import { AdInContentSlot } from "@/components/marketing/ad-slots";
 import { Reveal } from "@/components/motion";
 import { ContentFreshness } from "@/components/content-freshness";
 import {
@@ -86,7 +85,11 @@ export const Route = createFileRoute("/classes/$courseSlug/$sessionSlug")({
           description,
           datePublished: LAST_REVIEWED,
           dateModified: LAST_REVIEWED,
-          author: { "@type": "Organization", name: "Cyber Elias Academy" },
+          author: {
+            "@type": "Person",
+            name: "Ellis Dennis Graham",
+            jobTitle: "Founder",
+          },
           publisher: {
             "@type": "Organization",
             name: "Cyber Elias Academy",
@@ -256,7 +259,7 @@ function SessionPage() {
         <Reveal delay={0.14}>
           <div className="text-muted-foreground border-foreground/10 mt-7 flex flex-wrap items-center gap-x-5 gap-y-2 border-b pb-7 text-xs font-medium">
             <span className="flex items-center gap-1.5">
-              <GraduationCap className="size-3.5" /> Cyber Elias Academy faculty
+              <GraduationCap className="size-3.5" /> Ellis Dennis Graham
             </span>
             <span className="flex items-center gap-1.5">
               <Clock className="size-3.5" /> {session.minutes}-minute class
@@ -353,10 +356,6 @@ function SessionPage() {
             ))}
           </div>
         </section>
-
-        <div className="mt-12">
-          <AdInContentSlot />
-        </div>
 
         {/* Demonstration */}
         <section id="demonstration" className="mt-14 scroll-mt-28">

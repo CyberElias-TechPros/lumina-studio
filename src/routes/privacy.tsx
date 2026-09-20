@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { getPageHead } from "@/lib/seo";
-import { PageShell, PageHero, SectionHeading } from "@/components/marketing/shell";
+import { PageShell, PageHero } from "@/components/marketing/shell";
 import { Reveal } from "@/components/motion";
 
 export const Route = createFileRoute("/privacy")({
@@ -8,7 +8,7 @@ export const Route = createFileRoute("/privacy")({
     getPageHead({
       title: "Privacy Policy",
       description:
-        "How Cyber Elias Academy collects, uses, and protects your personal information. Read our privacy policy to understand your rights and our commitments.",
+        "How Cyber Elias Academy collects and uses information: applications, cookies, and Google ads.",
       path: "/privacy",
       type: "article",
     }),
@@ -16,239 +16,188 @@ export const Route = createFileRoute("/privacy")({
 });
 
 function PrivacyPage() {
-  const lastUpdated = "August 10, 2025";
+  const lastUpdated = "20 September 2026";
 
   return (
     <PageShell>
       <PageHero
         eyebrow="Legal"
         title="Privacy Policy"
-        description={`Last updated: ${lastUpdated}. Your privacy matters. This policy explains what data we collect, why we collect it, and how you can control it.`}
+        description={`Last updated: ${lastUpdated}. This page describes the information this website and the academy actually collect.`}
       />
-      <section className="container-page py-20 md:py-28">
-        <div className="max-w-3xl space-y-16">
+      <section className="container-page py-16 md:py-24">
+        <div className="max-w-3xl space-y-14">
           <Reveal>
             <h2 className="font-display text-2xl font-bold">1. Who we are</h2>
             <p className="text-muted-foreground mt-4 leading-relaxed">
-              Cyber Elias Academy ("CEA", "we", "us", "our") is a digital skills academy and
-              technology studio operating from 26 Ebony Road, Off Rumuola Road, Port Harcourt,
-              Rivers State, Nigeria. You can contact us at hello@cea.ng or +234 905 862 8386.
+              Cyber Elias Academy Ltd (“CEA”, “we”) is a digital-skills training centre at 26 Ebony
+              Road, Off Rumuola Road, Port Harcourt, Rivers State, Nigeria (RC 8413776). Contact:{" "}
+              <a href="mailto:hello@cea.ng" className="text-primary underline">
+                hello@cea.ng
+              </a>{" "}
+              or +234 905 862 8386.
             </p>
           </Reveal>
 
           <Reveal delay={0.05}>
             <h2 className="font-display text-2xl font-bold">2. Information we collect</h2>
             <p className="text-muted-foreground mt-4 leading-relaxed">
-              We collect information you provide directly to us, automatically through our services,
-              and from third-party sources.
+              We collect what you type into our forms, and a small amount of technical data so the
+              site can run.
             </p>
-            <h3 className="font-semibold mt-6">Information you provide</h3>
-            <ul className="mt-3 space-y-2 list-disc list-inside text-muted-foreground">
-              <li>Account details: name, email, phone number, password (hashed), profile photo</li>
+            <h3 className="mt-6 font-semibold">You give us</h3>
+            <ul className="text-muted-foreground mt-3 list-inside list-disc space-y-2">
+              <li>Name, email, phone, and the message or application you send</li>
+              <li>The course you asked about, and any notes you include</li>
               <li>
-                Application data: education history, work experience, motivation statements,
-                portfolio links
-              </li>
-              <li>Communication: emails, chat messages, support tickets, feedback forms</li>
-              <li>
-                Payments: billing address, transaction IDs (processed by our payment partners; we do
-                not store full card details)
+                If you create a learner login: email and a hashed password. We do not store card
+                numbers
               </li>
             </ul>
-            <h3 className="font-semibold mt-6">Information collected automatically</h3>
-            <ul className="mt-3 space-y-2 list-disc list-inside text-muted-foreground">
-              <li>
-                Usage data: pages visited, time spent, features used, click paths, device type,
-                browser, OS
-              </li>
-              <li>Log data: IP address, access times, HTTP referrer, error logs</li>
-              <li>
-                Cookies and similar technologies: session tokens, preference cookies, analytics
-                cookies (see §7)
-              </li>
-            </ul>
-            <h3 className="font-semibold mt-6">Third-party sources</h3>
-            <ul className="mt-3 space-y-2 list-disc list-inside text-muted-foreground">
-              <li>
-                Authentication providers (Google, GitHub, LinkedIn) when you sign in via OAuth
-              </li>
-              <li>
-                Payment processors (Flutterwave, Paystack, Stripe) for transaction verification
-              </li>
-              <li>
-                Analytics providers (Google Analytics, Plausible) for aggregate usage insights
-              </li>
+            <h3 className="mt-6 font-semibold">The site collects</h3>
+            <ul className="text-muted-foreground mt-3 list-inside list-disc space-y-2">
+              <li>Essential cookies: session, security, your light/dark preference</li>
+              <li>Server logs: IP address, browser, pages requested, timestamps</li>
+              <li>Optional analytics cookies, only if you press Accept on the cookie banner</li>
+              <li>Advertising cookies from Google, described in §6</li>
             </ul>
           </Reveal>
 
           <Reveal delay={0.1}>
-            <h2 className="font-display text-2xl font-bold">3. How we use your information</h2>
-            <ul className="mt-4 space-y-3 list-disc list-inside text-muted-foreground">
-              <li>
-                <strong>Deliver and improve services:</strong> run cohorts, grade assignments, issue
-                certificates, match mentors
-              </li>
-              <li>
-                <strong>Communicate:</strong> send cohort updates, assignment reminders, career
-                opportunities, newsletters (opt-out anytime)
-              </li>
-              <li>
-                <strong>Safety and security:</strong> detect fraud, prevent abuse, enforce terms,
-                comply with legal obligations
-              </li>
-              <li>
-                <strong>Analytics and research:</strong> understand usage patterns, improve
-                curriculum, measure outcomes (aggregated, pseudonymised)
-              </li>
-              <li>
-                <strong>Marketing:</strong> with your consent, send relevant programme info, events,
-                partner offers
-              </li>
+            <h2 className="font-display text-2xl font-bold">3. How we use it</h2>
+            <ul className="text-muted-foreground mt-4 list-inside list-disc space-y-2">
+              <li>Reply to you, confirm course dates and fees, and run the class you enrolled in</li>
+              <li>Issue and later check a certificate for work produced here</li>
+              <li>Keep the site working and secure</li>
+              <li>Show advertisements (Google AdSense), as described below</li>
             </ul>
+            <p className="text-muted-foreground mt-4 leading-relaxed">
+              We do not sell your information. We do not run a public talent pool or share your
+              details with employers unless you ask us to introduce you to a specific person.
+            </p>
           </Reveal>
 
           <Reveal delay={0.15}>
-            <h2 className="font-display text-2xl font-bold">
-              4. Legal bases (Nigeria Data Protection Act 2023 & GDPR where applicable)
-            </h2>
-            <ul className="mt-4 space-y-3 list-disc list-inside text-muted-foreground">
-              <li>
-                <strong>Contract:</strong> processing necessary to deliver programmes you enrolled
-                in
-              </li>
-              <li>
-                <strong>Legitimate interest:</strong> improving platform security, analytics, fraud
-                prevention
-              </li>
-              <li>
-                <strong>Consent:</strong> marketing emails, non-essential cookies, optional profile
-                fields
-              </li>
-              <li>
-                <strong>Legal obligation:</strong> tax records, anti-money-laundering checks,
-                regulatory reporting
-              </li>
+            <h2 className="font-display text-2xl font-bold">4. Who else sees it</h2>
+            <ul className="text-muted-foreground mt-4 list-inside list-disc space-y-2">
+              <li>Hosting for this website (currently Vercel / Cloudflare)</li>
+              <li>Google, if ads or (with your consent) Analytics run on a page</li>
+              <li>A parent or sponsor, if you named them on an application</li>
+              <li>Authorities, if the law requires it</li>
             </ul>
+            <p className="text-muted-foreground mt-4 leading-relaxed">
+              Some of those companies store data outside Nigeria. If you want more detail, email
+              hello@cea.ng.
+            </p>
           </Reveal>
 
           <Reveal delay={0.2}>
-            <h2 className="font-display text-2xl font-bold">5. Data sharing</h2>
+            <h2 className="font-display text-2xl font-bold">5. Cookies</h2>
             <p className="text-muted-foreground mt-4 leading-relaxed">
-              We do not sell your personal data. We share data only with:
+              Essential cookies make the site work. The banner lets you accept or decline optional
+              analytics cookies. You can also block cookies in your browser. Blocking essential
+              cookies may break sign-in and forms.
             </p>
-            <ul className="mt-3 space-y-2 list-disc list-inside text-muted-foreground">
-              <li>
-                <strong>Service providers:</strong> cloud hosting (Vercel, Cloudflare), email
-                (Resend, SendGrid), analytics, payment processors — under data processing agreements
-              </li>
-              <li>
-                <strong>Employer partners:</strong> only when you opt into the talent pool and
-                explicitly approve a specific introduction
-              </li>
-              <li>
-                <strong>Legal authorities:</strong> when required by law, court order, or to protect
-                rights and safety
-              </li>
-              <li>
-                <strong>Corporate transactions:</strong> in a merger, acquisition, or asset sale
-                (you will be notified)
-              </li>
-            </ul>
           </Reveal>
 
           <Reveal delay={0.25}>
-            <h2 className="font-display text-2xl font-bold">6. International transfers</h2>
+            <h2 className="font-display text-2xl font-bold">6. Advertising (Google AdSense)</h2>
             <p className="text-muted-foreground mt-4 leading-relaxed">
-              Our infrastructure is hosted on Vercel (US) and Cloudflare (global). We rely on
-              standard contractual clauses and adequacy decisions to safeguard transfers outside
-              Nigeria. You may request a copy of the safeguards by emailing hello@cea.ng.
+              This site uses Google AdSense. Google uses cookies, including the DoubleClick cookie,
+              to serve ads based on your visit here and on other sites. We do not load the AdSense
+              script on Privacy, Terms, Accessibility, Apply, or signed-in pages.
+            </p>
+            <p className="text-muted-foreground mt-4 leading-relaxed">
+              Opt out of personalised ads at{" "}
+              <a
+                href="https://www.google.com/settings/ads"
+                className="text-primary underline"
+                rel="noopener noreferrer"
+              >
+                Google Ads Settings
+              </a>{" "}
+              or the{" "}
+              <a
+                href="https://optout.aboutads.info/"
+                className="text-primary underline"
+                rel="noopener noreferrer"
+              >
+                Digital Advertising Alliance
+              </a>
+              . How Google uses data on partner sites:{" "}
+              <a
+                href="https://policies.google.com/technologies/partner-sites"
+                className="text-primary underline"
+                rel="noopener noreferrer"
+              >
+                policies.google.com/technologies/partner-sites
+              </a>
+              .
+            </p>
+            <p className="text-muted-foreground mt-4 leading-relaxed">
+              We do not click our own ads or ask visitors to click ads. Ads, when they appear, are
+              labelled as advertising.
             </p>
           </Reveal>
 
           <Reveal delay={0.3}>
-            <h2 className="font-display text-2xl font-bold">7. Cookies and tracking</h2>
+            <h2 className="font-display text-2xl font-bold">7. Your rights</h2>
             <p className="text-muted-foreground mt-4 leading-relaxed">
-              We use essential cookies (session, CSRF, preferences) and optional analytics/marketing
-              cookies. You can manage non-essential cookies via the cookie banner or your browser
-              settings. Blocking essential cookies may break core functionality (login, payments,
-              progress tracking).
+              Under the Nigeria Data Protection Act 2023 you can ask to see, correct, or delete
+              personal data we hold, or complain to the Nigeria Data Protection Commission. Email{" "}
+              <a href="mailto:hello@cea.ng" className="text-primary underline">
+                hello@cea.ng
+              </a>
+              . We aim to reply within 30 days.
             </p>
           </Reveal>
 
           <Reveal delay={0.35}>
-            <h2 className="font-display text-2xl font-bold">8. Your rights</h2>
-            <p className="text-muted-foreground mt-4 leading-relaxed">
-              Under the Nigeria Data Protection Act 2023 (and GDPR where applicable), you have the
-              right to:
-            </p>
-            <ul className="mt-3 space-y-2 list-disc list-inside text-muted-foreground">
-              <li>Access a copy of your personal data</li>
-              <li>Rectify inaccurate or incomplete data</li>
-              <li>Erasure ("right to be forgotten") — subject to legal retention requirements</li>
-              <li>Restrict or object to processing</li>
-              <li>Data portability — receive your data in a structured, machine-readable format</li>
-              <li>Withdraw consent at any time (for consent-based processing)</li>
-              <li>Lodge a complaint with the Nigeria Data Protection Commission (NDPC)</li>
+            <h2 className="font-display text-2xl font-bold">8. How long we keep it</h2>
+            <ul className="text-muted-foreground mt-4 list-inside list-disc space-y-2">
+              <li>Contact messages: until we have dealt with them, then up to two years</li>
+              <li>Applications and class records: while you are a student, then up to seven years so we can verify a certificate</li>
+              <li>Learner accounts: while the account is used, then deleted or anonymised after two years of silence</li>
             </ul>
-            <p className="text-muted-foreground mt-4">
-              To exercise any right, email{" "}
-              <a href="mailto:privacy@cea.ng" className="text-primary underline">
-                privacy@cea.ng
-              </a>
-              . We respond within 30 days.
-            </p>
           </Reveal>
 
           <Reveal delay={0.4}>
-            <h2 className="font-display text-2xl font-bold">9. Retention</h2>
-            <ul className="mt-4 space-y-2 list-disc list-inside text-muted-foreground">
-              <li>
-                Account data: retained while your account is active, then anonymised after 2 years
-                of inactivity
-              </li>
-              <li>
-                Application and academic records: retained for 7 years for verification and
-                transcript purposes
-              </li>
-              <li>Payment records: retained for 7 years for tax and audit compliance</li>
-              <li>Analytics logs: aggregated after 14 months; raw logs deleted after 30 days</li>
-              <li>Marketing preferences: retained until you unsubscribe</li>
-            </ul>
+            <h2 className="font-display text-2xl font-bold">9. Children</h2>
+            <p className="text-muted-foreground mt-4 leading-relaxed">
+              Some classes include younger learners brought by a parent or guardian. Website forms
+              are meant for an adult applying, or a parent applying for a child. We do not
+              knowingly collect a child’s data through this site without that adult. If you think
+              we have, email hello@cea.ng and we will delete it.
+            </p>
           </Reveal>
 
           <Reveal delay={0.45}>
-            <h2 className="font-display text-2xl font-bold">10. Children's privacy</h2>
+            <h2 className="font-display text-2xl font-bold">10. Changes</h2>
             <p className="text-muted-foreground mt-4 leading-relaxed">
-              Our services are not directed to children under 16. We do not knowingly collect data
-              from children under 16. If you believe we have, contact us and we will delete it
-              promptly.
+              If this policy changes in a material way we will update the date on this page.
             </p>
           </Reveal>
 
           <Reveal delay={0.5}>
-            <h2 className="font-display text-2xl font-bold">11. Changes to this policy</h2>
+            <h2 className="font-display text-2xl font-bold">11. Contact</h2>
             <p className="text-muted-foreground mt-4 leading-relaxed">
-              We may update this policy. Material changes will be announced via email and a
-              prominent notice on the site at least 14 days before they take effect. Continued use
-              after the effective date constitutes acceptance.
-            </p>
-          </Reveal>
-
-          <Reveal delay={0.55}>
-            <h2 className="font-display text-2xl font-bold">12. Contact</h2>
-            <p className="text-muted-foreground mt-4 leading-relaxed">
-              Data Protection Officer:{" "}
-              <a href="mailto:privacy@cea.ng" className="text-primary underline">
-                privacy@cea.ng
-              </a>
-              <br />
-              Cyber Elias Academy
+              Cyber Elias Academy Ltd
               <br />
               26 Ebony Road, Off Rumuola Road
               <br />
               Port Harcourt, Rivers State, Nigeria
               <br />
               +234 905 862 8386
+              <br />
+              <a href="mailto:hello@cea.ng" className="text-primary underline">
+                hello@cea.ng
+              </a>
+              <br />
+              See also our{" "}
+              <Link to="/terms" className="text-primary underline">
+                terms
+              </Link>
+              .
             </p>
           </Reveal>
         </div>

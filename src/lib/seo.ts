@@ -31,7 +31,7 @@ export function buildSeo(input: SeoInput) {
   const title = input.title.includes(SITE_NAME) ? input.title : `${input.title} — ${SITE_NAME}`;
   const description = unique(
     input.description,
-    "Nigeria's digital skills academy. Train from scratch to advanced, build a portfolio, and get hired.",
+    "A digital skills training centre in Port Harcourt. Short, practical computer and workplace-digital courses.",
   );
   const url = input.path ? `${SITE_URL}${input.path}` : SITE_URL;
   const image = input.image ?? `${SITE_URL}/og-default.png`;
@@ -83,9 +83,15 @@ export const ORGANIZATION_LD = {
   url: SITE_URL,
   logo: SITE_LOGO,
   description:
-    "Nigeria's digital skills academy and technology studio. Train from scratch to advanced in software development, cloud, AI, design and digital marketing.",
+    "A digital skills training centre in Port Harcourt. Short, practical computer and workplace-digital courses.",
   telephone: SITE_PHONE,
   email: SITE_EMAIL,
+  founder: {
+    "@type": "Person",
+    name: "Ellis Dennis Graham",
+    jobTitle: "Founder",
+    image: `${SITE_URL}/images/team/ellis-dennis-graham.jpg`,
+  },
   address: {
     "@type": "PostalAddress",
     streetAddress: "26 Ebony Road, Off Rumuola Road",
@@ -107,7 +113,7 @@ export const LOCAL_BUSINESS_LD = {
   "@type": "LocalBusiness",
   "@id": `${SITE_URL}/#business`,
   name: SITE_NAME,
-  image: SITE_LOGO,
+  image: `${SITE_URL}/images/campus/lab-1.jpg`,
   url: SITE_URL,
   telephone: SITE_PHONE,
   email: SITE_EMAIL,
@@ -133,14 +139,14 @@ export const LOCAL_BUSINESS_LD = {
 };
 
 // NOTE: deliberately no SearchAction potentialAction — the site has no
-// server-rendered /search route; search lives inside /library, /glossary and
-// /programs. Advertising a sitelinks search box that 404s is invalid markup
-// noise, so the WebSite node stays minimal and truthful.
+// server-rendered /search route. Advertising a sitelinks search box that 404s
+// is invalid markup noise, so the WebSite node stays minimal and truthful.
 export const WEBSITE_LD = {
   "@context": "https://schema.org",
   "@type": "WebSite",
   name: SITE_NAME,
   url: SITE_URL,
+  publisher: { "@type": "EducationalOrganization", name: SITE_NAME, url: SITE_URL },
 };
 export function getPageHead(input: SeoInput) {
   const { meta, links } = buildSeo(input);

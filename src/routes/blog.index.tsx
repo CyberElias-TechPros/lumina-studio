@@ -1,21 +1,19 @@
 import { useMemo, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { getPageHead } from "@/lib/seo";
-import { ArrowUpRight, Clock, Search } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
+import { Clock, Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
-import { CTASection, PageHero, PageShell, SectionHeading } from "@/components/marketing/shell";
-import { Reveal, StaggerGroup, StaggerItem } from "@/components/motion";
-import { blogPosts, engineMap } from "@/data/site";
+import { CTASection, PageHero, PageShell } from "@/components/marketing/shell";
+import { blogPosts } from "@/data/blog";
+import { noteChapters, notesInChapter } from "@/data/note-chapters";
 import { readingTimeLabel } from "@/lib/blog-reading-time";
-import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/blog/")({
   head: () =>
     getPageHead({
-      title: "Insights",
+      title: "Notes — computer skills from scratch",
       description:
-        "Original reporting, analysis and opinion on tech talent, education and the digital economy in Nigeria and beyond.",
+        "A from-scratch series on using a computer: files, email, Word, spreadsheets, the phone, and staying safe online. Class notes from Cyber Elias Academy, Port Harcourt.",
       path: "/blog",
     }),
   component: Blog,
@@ -23,169 +21,144 @@ export const Route = createFileRoute("/blog/")({
 
 function Blog() {
   const [query, setQuery] = useState("");
-  const [category, setCategory] = useState("All");
-
-  const categories = ["All", ...Array.from(new Set(blogPosts.map((p) => p.category)))];
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
-    return blogPosts.filter((p) => {
-      const matchesQuery =
-        !q || p.title.toLowerCase().includes(q) || p.excerpt.toLowerCase().includes(q);
-      const matchesCategory = category === "All" || p.category === category;
-      return matchesQuery && matchesCategory;
-    });
-  }, [query, category]);
+    const list = [...blogPosts].sort((a, b) => a.order - b.order);
+    if (!q) return list;
+    return list.filter(
+      (p) =>
+        p.title.toLowerCase().includes(q) ||
+        p.excerpt.toLowerCase().includes(q) ||
+        p.series.toLowerCase().includes(q),
+    );
+  }, [query]);
 
-  const featured = blogPosts[0];
+  const searching = query.trim().length > 0;
 
   return (
     <PageShell>
       <PageHero
-        eyebrow="Insights"
-        art="data"
-        title={
-          <>
-            Ideas from the <span className="text-gradient">engine room</span>
-          </>
-        }
-        description="Research, field notes and honest opinions from the people who run the academy — on hiring, learning, security and the Nigerian tech economy."
+        eyebrow="Notes"
+        title="Computer skills from the first sitting"
+        description="A series for people who have never used a computer, or who have used one without anyone explaining it. Written by Ellis Dennis Graham at Cyber Elias Academy, Port Harcourt. One hundred lessons, in order. Read them like a magazine: finish one, turn the page."
       >
-        <div className="mt-10 flex max-w-xl flex-col gap-4 sm:flex-row">
-          <div className="relative flex-1">
-            <Search className="text-muted-foreground absolute top-1/2 left-4 size-4 -translate-y-1/2" />
-            <Input
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              placeholder="Search articles…"
-              className="bg-card h-12 border pl-11 shadow-sm"
-            />
-          </div>
+        <div className="relative mt-8 max-w-md">
+          <Search className="text-muted-foreground absolute top-1/2 left-3 size-4 -translate-y-1/2" />
+          <Input
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Search notes…"
+            className="h-11 pl-10"
+          />
         </div>
       </PageHero>
 
-      <section className="container-page py-16 md:py-20">
-        <Reveal>
-          <Link
-            to="/blog/$slug"
-            params={{ slug: featured.slug }}
-            className="group bg-gradient-ink text-ink-foreground shadow-elevated relative block overflow-hidden rounded-3xl p-10 md:p-14"
-          >
-            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(80%_70%_at_85%_0%,oklch(0.6_0.16_330/0.35),transparent)]" />
-            <div className="relative">
-              <div className="flex flex-wrap items-center gap-3">
-                <Badge className="border-ink-foreground/25 bg-transparent font-semibold">
-                  {featured.category}
-                </Badge>
-                <span className="text-ink-foreground/60 flex items-center gap-1.5 text-xs font-semibold">
-                  <Clock className="size-3.5" /> {readingTimeLabel(featured.body)}
-                </span>
-                <span className="text-ink-foreground/60 text-xs font-semibold">
-                  {featured.date}
-                </span>
-              </div>
-              <h2 className="font-display mt-6 max-w-2xl text-3xl leading-tight font-extrabold text-balance sm:text-4xl">
-                {featured.title}
-              </h2>
-              <p className="text-ink-foreground/75 mt-4 max-w-2xl leading-relaxed">
-                {featured.excerpt}
-              </p>
-              <div className="mt-8 flex items-center gap-3">
-                <span className="bg-ink-foreground/10 font-display grid size-11 place-items-center rounded-full text-sm font-bold">
-                  {featured.author
-                    .split(" ")
-                    .map((n) => n[0])
-                    .join("")}
-                </span>
-                <div>
-                  <p className="text-sm font-bold">{featured.author}</p>
-                  <p className="text-ink-foreground/60 text-xs">{featured.role}</p>
-                </div>
-              </div>
-              <span className="mt-8 inline-flex items-center gap-2 text-sm font-bold">
-                Read the article{" "}
-                <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-              </span>
-            </div>
-          </Link>
-        </Reveal>
-
-        <div className="mt-12 flex flex-wrap items-center gap-2">
-          {categories.map((c) => (
-            <button
-              key={c}
-              onClick={() => setCategory(c)}
-              className={cn(
-                "rounded-full border px-4 py-2 text-sm font-semibold transition-colors",
-                category === c
-                  ? "bg-gradient-brand border-transparent text-white shadow"
-                  : "bg-card text-muted-foreground hover:text-foreground",
-              )}
-            >
-              {c}
-            </button>
-          ))}
-        </div>
-
-        <StaggerGroup className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-          {filtered.map((p) => {
-            const engine = engineMap[p.engine];
-            return (
-              <StaggerItem key={p.slug}>
-                <Link
-                  to="/blog/$slug"
-                  params={{ slug: p.slug }}
-                  className="group bg-card shadow-soft hover:shadow-elevated relative flex h-full flex-col overflow-hidden rounded-2xl border p-7 transition-all hover:-translate-y-1"
+      {!searching && (
+        <nav className="container-page border-border border-b py-6" aria-label="Chapters">
+          <p className="text-muted-foreground text-xs font-medium tracking-wide uppercase">
+            Ten chapters
+          </p>
+          <ul className="mt-3 flex flex-wrap gap-2">
+            {noteChapters.map((ch) => (
+              <li key={ch.slug}>
+                <a
+                  href={`#${ch.slug}`}
+                  className="border-border hover:border-primary/40 hover:bg-muted inline-flex rounded-full border px-3 py-1 text-sm"
                 >
-                  <div
-className={`${engine?.gradient ?? "bg-gradient-brand"} absolute inset-x-0 top-0 h-1 origin-left scale-x-0 transition-transform duration-500 group-hover:scale-x-100`}
-/>
-                  {/* Blog hero image – AdSense‑friendly, visible on hover/focus */}
-                  {p.imageUrl && (
-                    <a
-                      href={p.imageUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="absolute inset-0 group-hover:opacity-20 transition-opacity duration-300 motion-reduce:transition-none"
+                  {ch.from}–{ch.to} · {ch.title}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      )}
+
+      <section className="container-page py-12 md:py-16">
+        {filtered.length === 0 ? (
+          <p className="text-muted-foreground text-sm">No notes match that search.</p>
+        ) : searching ? (
+          <ul className="divide-border divide-y">
+            {filtered.map((p) => (
+              <LessonRow key={p.slug} post={p} />
+            ))}
+          </ul>
+        ) : (
+          <div className="space-y-16">
+            {noteChapters.map((ch) => {
+              const lessons = notesInChapter(ch);
+              return (
+                <section key={ch.slug} id={ch.slug} className="scroll-mt-24">
+                  <div className="flex flex-wrap items-end justify-between gap-3">
+                    <div>
+                      <p className="text-muted-foreground text-xs">
+                        Lessons {ch.from}–{ch.to}
+                      </p>
+                      <h2 className="font-display mt-1 text-2xl font-semibold tracking-tight">
+                        {ch.title}
+                      </h2>
+                      <p className="text-muted-foreground mt-2 max-w-2xl text-sm leading-relaxed">
+                        {ch.blurb}
+                      </p>
+                    </div>
+                    <Link
+                      to="/classes/$courseSlug"
+                      params={{ courseSlug: ch.courseSlug }}
+                      className="text-primary text-sm font-medium hover:underline"
                     >
-                      <img
-                        src={p.imageUrl}
-                        alt={p.title}
-                        className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-105 motion-reduce:transition-none motion-reduce:scale-100"
-                      />
-                    </a>
-                  )}
-                  <div className="flex items-center justify-between">
-                    <Badge variant="secondary" className="font-semibold">
-                      {p.category}
-                    </Badge>
-                    <span className="text-muted-foreground flex items-center gap-1.5 text-xs font-medium">
-                      <Clock className="size-3.5" /> {readingTimeLabel(p.body)}
-                    </span>
+                      {ch.courseLabel} in class
+                    </Link>
                   </div>
-                  <h3 className="font-display group-hover:text-primary mt-4 flex-1 text-lg leading-snug font-bold transition-colors">
-                    {p.title}
-                  </h3>
-                  <p className="text-muted-foreground mt-2.5 line-clamp-3 text-sm leading-relaxed">
-                    {p.excerpt}
-                  </p>
-                  <div className="mt-5 flex items-center justify-between border-t pt-4 text-xs">
-                    <span className="font-semibold">{p.author}</span>
-                    <span className="text-muted-foreground">{p.date}</span>
-                  </div>
-                </Link>
-              </StaggerItem>
-            );
-          })}
-        </StaggerGroup>
+                  <ul className="divide-border mt-6 divide-y border-t">
+                    {lessons.map((p) => (
+                      <LessonRow key={p.slug} post={p} />
+                    ))}
+                  </ul>
+                </section>
+              );
+            })}
+          </div>
+        )}
       </section>
 
       <CTASection
-        title="Want this in your inbox?"
-        description="The monthly digest: one essay, three links and everything the academy shipped that month."
-        primary={{ label: "Subscribe", to: "/contact" }}
-        secondary={{ label: "Browse programs", to: "/programs" }}
+        title="Prefer a class?"
+        description="The same basics are taught at the centre, two sessions a week, with a machine in front of you."
+        primary={{ label: "View courses", to: "/classes" }}
+        secondary={{ label: "Contact us", to: "/contact" }}
       />
     </PageShell>
+  );
+}
+
+function LessonRow({ post }: { post: (typeof blogPosts)[number] }) {
+  return (
+    <li>
+      <Link
+        to="/blog/$slug"
+        params={{ slug: post.slug }}
+        className="group hover:bg-muted/40 -mx-3 flex gap-4 rounded-md px-3 py-4"
+      >
+        <img
+          src={post.cover}
+          alt=""
+          className="border-border hidden size-20 shrink-0 rounded-md border object-cover sm:block"
+        />
+        <div className="min-w-0 flex-1">
+          <p className="text-muted-foreground text-xs">
+            Lesson {post.order}
+            <span className="mx-2">·</span>
+            {readingTimeLabel(post.body)}
+          </p>
+          <h3 className="font-display group-hover:text-primary mt-1 text-base font-semibold tracking-tight">
+            {post.title}
+          </h3>
+          <p className="text-muted-foreground mt-1 line-clamp-2 text-sm leading-relaxed">
+            {post.excerpt}
+          </p>
+        </div>
+        <Clock className="text-muted-foreground mt-1 hidden size-3.5 shrink-0 sm:block" />
+      </Link>
+    </li>
   );
 }

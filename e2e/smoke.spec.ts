@@ -7,28 +7,30 @@ const BASE_URL = "";
 const publicPages = [
   { path: "/", title: "Cyber Elias Academy" },
   { path: "/about", title: "About" },
-  { path: "/programs", title: "Programs" },
-  { path: "/pricing", title: "Pricing" },
-  { path: "/engines", title: "Engines" },
-  { path: "/services", title: "Services" },
-  { path: "/work", title: "Work" },
-  { path: "/community", title: "Community" },
-  { path: "/blog", title: "Blog" },
+  { path: "/classes", title: "Practical Digital Skills" },
+  { path: "/programs", title: "Practical Digital Skills" },
+  { path: "/pricing", title: "Practical Digital Skills" },
+  { path: "/engines", title: "Practical Digital Skills" },
+  { path: "/services", title: "Contact" },
+  { path: "/work", title: "About" },
+  { path: "/community", title: "About" },
+  { path: "/blog", title: "Notes" },
   { path: "/faq", title: "FAQ" },
-  { path: "/events", title: "Events" },
-  { path: "/scholarships", title: "Scholarships" },
+  { path: "/events", title: "Visit" },
+  { path: "/scholarships", title: "Admissions" },
   { path: "/contact", title: "Contact" },
   { path: "/privacy", title: "Privacy" },
   { path: "/terms", title: "Terms" },
   { path: "/accessibility", title: "Accessibility" },
   { path: "/admissions", title: "Admissions" },
-  { path: "/alumni", title: "Alumni" },
-  { path: "/careers", title: "Careers" },
-  { path: "/stories", title: "Stories" },
-  { path: "/virtual-tour", title: "Virtual Tour" },
-  { path: "/library", title: "Library" },
-  { path: "/marketplace", title: "Marketplace" },
-  { path: "/partners", title: "Partners" },
+  { path: "/alumni", title: "About" },
+  { path: "/careers", title: "Contact" },
+  { path: "/stories", title: "About" },
+  { path: "/virtual-tour", title: "Visit" },
+  { path: "/library", title: "Practical Digital Skills" },
+  { path: "/marketplace", title: "Practical Digital Skills" },
+  { path: "/partners", title: "Contact" },
+  { path: "/team", title: "Team" },
   { path: "/sitemap.xml", title: "" },
 ];
 
@@ -51,7 +53,7 @@ test.describe("Public page smoke tests", () => {
 test("navbar has all main links", async ({ page }) => {
   await page.goto(BASE_URL);
 
-  const navLinks = ["Programs", "Pricing", "Engines", "Services", "Work", "Community", "About"];
+  const navLinks = ["Courses", "Admissions", "About", "Contact"];
   for (const link of navLinks) {
     await expect(page.locator(`nav a:has-text("${link}")`).first()).toBeVisible();
   }
@@ -72,16 +74,7 @@ test("mobile menu shows More dropdown links", async ({ page }) => {
 
   await page.click('aria-label="Menu"');
 
-  const subLinks = [
-    "Blog & Insights",
-    "FAQ",
-    "Events",
-    "Scholarships",
-    "Contact",
-    "Privacy",
-    "Terms",
-    "Accessibility",
-  ];
+  const subLinks = ["Courses", "Admissions", "About", "Contact", "FAQ", "Apply"];
   for (const link of subLinks) {
     await expect(page.locator(`a:has-text("${link}")`).first()).toBeVisible();
   }
@@ -103,16 +96,16 @@ test("sitemap.xml is valid XML", async ({ page }) => {
 test("Apply now button links to admissions", async ({ page }) => {
   await page.goto(BASE_URL);
 
-  const applyButton = page.locator('a[href="/admissions"]').first();
+  const applyButton = page.locator('a[href="/apply"]').first();
   await expect(applyButton).toBeVisible();
 });
 
 test("no 404 errors on key navigation", async ({ page }) => {
   const paths = [
-    "/programs",
+    "/classes",
     "/about",
     "/blog",
-    "/pricing",
+    "/admissions",
     "/privacy",
     "/terms",
     "/accessibility",

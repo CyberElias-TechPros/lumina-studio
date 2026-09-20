@@ -3,6 +3,7 @@ import { ArrowRight, ArrowUpRight, Check, Clock, GraduationCap, Wallet } from "l
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { CTASection, PageHero, PageShell } from "@/components/marketing/shell";
+import { CampusImg, CourseCover, CourseIcon } from "@/components/marketing/photos";
 import { Reveal } from "@/components/motion";
 import {
   achievementLevels,
@@ -83,10 +84,15 @@ function CourseCard({ course, index }: { course: ResolvedCourse; index: number }
       <Link
         to="/classes/$courseSlug"
         params={{ courseSlug: course.slug }}
-        className="group border-foreground/12 hover:border-primary/35 bg-card/70 flex h-full flex-col rounded-[14px] border p-6 backdrop-blur-md transition-all duration-500 hover:-translate-y-1"
+        className="group border-foreground/12 hover:border-primary/35 bg-card/70 flex h-full flex-col overflow-hidden rounded-[14px] border backdrop-blur-md transition-all duration-500 hover:-translate-y-1"
       >
+        <div className="bg-muted aspect-[16/9] overflow-hidden">
+          <CourseCover slug={course.slug} />
+        </div>
+        <div className="flex flex-1 flex-col p-6">
         <div className="flex items-start justify-between gap-4">
-          <span className="font-label text-foreground/45 text-[10px] tabular-nums">
+          <span className="font-label text-foreground/45 inline-flex items-center gap-2 text-[10px] tabular-nums">
+            <CourseIcon slug={course.slug} className="text-primary size-3.5" />
             {String(index + 1).padStart(2, "0")}
           </span>
           <div className="flex flex-wrap items-center justify-end gap-2">
@@ -126,6 +132,7 @@ function CourseCard({ course, index }: { course: ResolvedCourse; index: number }
             View
             <ArrowUpRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </span>
+        </div>
         </div>
       </Link>
     </Reveal>
@@ -210,6 +217,9 @@ function HowWeTeach() {
               </ol>
             </Reveal>
             <Reveal delay={0.2}>
+              <figure className="border-foreground/12 mt-8 overflow-hidden rounded-[14px] border">
+                <CampusImg id="lab-3" className="aspect-[16/10]" />
+              </figure>
               <ul className="text-foreground/75 mt-8 space-y-3 text-sm">
                 {[
                   "Theory kept to the minimum necessary",
@@ -232,7 +242,7 @@ function HowWeTeach() {
               <Reveal key={level.name} delay={i * 0.08}>
                 <div className="border-foreground/12 bg-card/60 rounded-[14px] border p-6 backdrop-blur-md">
                   <div className="flex items-center gap-4">
-                    <span className="font-display text-outline text-4xl leading-none font-light tabular-nums">
+                    <span className="text-muted-foreground font-display text-4xl leading-none font-light tabular-nums">
                       {level.level}
                     </span>
                     <div>
@@ -380,34 +390,22 @@ function Classes() {
     <PageShell>
       <PageHero
         eyebrow="Practical digital skills curriculum"
-        title="Thirteen courses. Every session published in full."
-        description="Short, practical, outcome-based classes taught at the Port Harcourt campus and online. Two sessions a week, real deliverables, and the complete class notes for every session published here so you can read the whole curriculum before you pay a naira."
-        art="code"
-        artCaption="2 sessions per week · 1.5–2 hours each"
+        title="Short courses, published session by session"
+        description="Practical classes at the Port Harcourt centre, and online where noted. Two sessions a week. Read the full notes before you enrol. The certificate is awarded for the work you produce."
         meta={[
           `${resolvedFlyerCourses.length} core courses`,
           `${resolvedFlyerCourses.reduce((sum, c) => sum + c.sessions.length, 0)} sessions`,
-          `${resolvedRotatingCourses.length} rotating short courses`,
-          "Certificate on deliverable, not attendance",
+          "Certificate on the deliverable",
         ]}
       >
-        <div className="mt-9 flex flex-wrap gap-3">
-          <Button
-            asChild
-            size="lg"
-            className="bg-foreground text-background hover:bg-primary hover:text-primary-foreground h-13 rounded-full px-7"
-          >
-            <Link to="/admissions">
-              Enrol now <ArrowRight className="ml-2 size-4" />
+        <div className="mt-8 flex flex-wrap gap-3">
+          <Button asChild>
+            <Link to="/apply">
+              Apply <ArrowRight className="ml-2 size-4" />
             </Link>
           </Button>
-          <Button
-            asChild
-            size="lg"
-            variant="outline"
-            className="border-foreground/20 h-13 rounded-full px-7 backdrop-blur-md"
-          >
-            <Link to="/pricing">See fees &amp; payment plans</Link>
+          <Button asChild variant="outline">
+            <Link to="/contact">Ask a question</Link>
           </Button>
         </div>
       </PageHero>
@@ -429,8 +427,8 @@ function Classes() {
 
       <HubFaqs />
       <CTASection
-        title="Pick a course and start this term"
-        description="Classes run on a fixed timetable with limited seats so every learner gets supervised practice time. Reserve your place or ask us which course fits where you are starting from."
+        title="Pick a course"
+        description="Apply with the course you want. We will reply with dates, the fee, and what to bring."
       />
     </PageShell>
   );

@@ -12,10 +12,10 @@ import { ApiError } from "@/lib/errors";
 export const Route = createFileRoute("/auth/forgot-password")({
   head: () => ({
     meta: [
-      { title: "Reset password — CEA-OS | Cyber Elias Academy" },
+      { title: "Reset password — Cyber Elias Academy" },
       {
         name: "description",
-        content: "Reset your CEA-OS password. We'll email you a secure link.",
+        content: "Reset your Cyber Elias Academy password. We will email you a link.",
       },
     ],
   }),
@@ -43,13 +43,10 @@ function ForgotPasswordPage() {
   };
 
   return (
-    <div className="bg-muted/40 noise relative grid min-h-screen place-items-center overflow-hidden px-4 py-16">
-      <div className="grid-lines pointer-events-none absolute inset-0 opacity-30 [mask-image:radial-gradient(60%_50%_at_50%_0%,black,transparent)]" aria-hidden="true" />
-      <span aria-hidden="true" className="bg-gradient-brand absolute inset-x-0 top-0 h-1 opacity-80" />
-      <div className="bg-gradient-brand absolute -top-32 -right-32 size-96 rounded-full opacity-10 blur-3xl" />
-      <div className="relative w-full max-w-md">
+    <div className="bg-muted/40 grid min-h-screen place-items-center px-4 py-16">
+      <div className="w-full max-w-md">
         <Reveal>
-          <Card className="bg-card shadow-elevated border">
+          <Card className="bg-card border">
             <CardContent className="p-6 sm:p-8">
               {sent ? (
                 <div className="text-center">
@@ -77,7 +74,7 @@ function ForgotPasswordPage() {
                   >
                     <ArrowLeft className="size-3.5" /> Back to sign in
                   </Link>
-                  <h1 className="font-display mt-4 text-2xl font-extrabold">
+                  <h1 className="font-display mt-4 text-2xl font-semibold">
                     Forgot your password?
                   </h1>
                   <p className="text-muted-foreground mt-1 text-sm">
@@ -103,11 +100,7 @@ function ForgotPasswordPage() {
                     {error && (
                       <p className="text-error bg-error/10 rounded-lg px-3 py-2 text-sm">{error}</p>
                     )}
-                    <Button
-                      type="submit"
-                      className="bg-gradient-brand shadow-glow w-full border-0"
-                      disabled={forgot.isPending}
-                    >
+                    <Button type="submit" className="w-full" disabled={forgot.isPending}>
                       {forgot.isPending ? "Sending…" : "Send reset link"}{" "}
                       <ArrowRight className="ml-1.5 size-4" />
                     </Button>

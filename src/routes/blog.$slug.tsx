@@ -1,13 +1,10 @@
 import { createFileRoute, Link, useParams } from "@tanstack/react-router";
-import { ArrowLeft, ArrowUpRight, CalendarDays, Clock } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
+import { ArrowLeft, ArrowRight, CalendarDays, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { CTASection, PageShell } from "@/components/marketing/shell";
-import { Reveal } from "@/components/motion";
-import { GlossaryLinkedText } from "@/components/glossary-linked-text";
-import { RelatedContent } from "@/components/related-content";
-import { ContentFreshness } from "@/components/content-freshness";
-import { blogPosts, engineMap } from "@/data/site";
+import { blogPosts, NOTES_AUTHOR, type BlogBlock } from "@/data/blog";
+import { FounderPhoto } from "@/components/marketing/founder-photo";
+import { adjacentNotes, chapterForOrder, relatedNotes } from "@/data/note-chapters";
 import { getPageHead } from "@/lib/seo";
 import { readingTimeLabel } from "@/lib/blog-reading-time";
 
@@ -20,161 +17,230 @@ export const Route = createFileRoute("/blog/$slug")({
       headline: post.title,
       description: post.excerpt,
       datePublished: post.date,
-      author: { "@type": "Person", name: post.author },
+      image: `https://cea.ng${post.cover}`,
+      author: {
+        "@type": "Person",
+        name: post.author,
+        jobTitle: NOTES_AUTHOR.role,
+        image: `https://cea.ng${NOTES_AUTHOR.photo}`,
+      },
       publisher: {
         "@type": "Organization",
         name: "Cyber Elias Academy",
         logo: { "@type": "ImageObject", url: "https://cea.ng/icon.svg" },
       },
       mainEntityOfPage: `https://cea.ng/blog/${post.slug}`,
+      isPartOf: {
+        "@type": "CreativeWorkSeries",
+        name: post.series,
+        url: "https://cea.ng/blog",
+      },
     };
     return getPageHead({
       title: post.title,
       description: post.excerpt,
       path: `/blog/${post.slug}`,
       type: "article",
+      image: `https://cea.ng${post.cover}`,
       structuredData: articleSchema,
     });
   },
   component: Article,
 });
 
+function Block({ block }: { block: BlogBlock }) {
+  if (block.type === "h2") {
+    return (
+      <h2 className="font-display mt-10 text-2xl font-semibold tracking-tight">{block.text}</h2>
+    );
+  }
+  if (block.type === "ul") {
+    return (
+      <ul className="text-foreground/80 my-4 list-disc space-y-2 pl-5 leading-relaxed">
+        {block.items.map((item) => (
+          <li key={item.slice(0, 48)}>{item}</li>
+        ))}
+      </ul>
+    );
+  }
+  if (block.type === "figure") {
+    return (
+      <figure className="border-border my-8 overflow-hidden rounded-lg border">
+        <img src={block.src} alt={block.alt} className="h-auto w-full object-cover" loading="lazy" />
+        <figcaption className="text-muted-foreground px-4 py-3 text-sm leading-relaxed">
+          {block.caption}
+        </figcaption>
+      </figure>
+    );
+  }
+  return <p className="text-foreground/80 text-[17px] leading-[1.75]">{block.text}</p>;
+}
+
 function Article() {
   const { slug } = useParams({ from: "/blog/$slug" });
   const post = blogPosts.find((p) => p.slug === slug) ?? blogPosts[0];
-  const engine = engineMap[post.engine];
-  const related = blogPosts.filter((p) => p.slug !== post.slug).slice(0, 3);
+  const { prev, next } = adjacentNotes(post);
+  const chapter = chapterForOrder(post.order);
+  const related = relatedNotes(post, 3);
 
   return (
     <PageShell>
-      <article className="container-page max-w-3xl pt-32 pb-16 md:pt-36 md:pb-20">
-        <Reveal>
-          <Link
-            to="/blog"
-            className="text-muted-foreground hover:text-foreground inline-flex items-center gap-1.5 text-sm font-semibold transition-colors"
-          >
-            <ArrowLeft className="size-4" /> All insights
-          </Link>
-        </Reveal>
+      <article className="container-page max-w-3xl pt-28 pb-16 md:pt-32 md:pb-20">
+        <Link
+          to="/blog"
+          className="text-muted-foreground hover:text-foreground inline-flex items-center gap-1.5 text-sm"
+        >
+          <ArrowLeft className="size-4" /> All notes
+        </Link>
 
-        <Reveal delay={0.05}>
-          <div className="mt-8 flex flex-wrap items-center gap-2">
-            <Badge variant="secondary" className="font-semibold">
-              {post.category}
-            </Badge>
-            {engine && (
-              <span className={`${engine.text} text-xs font-bold tracking-wide uppercase`}>
-                {engine.name.replace(" Engine", "")}
-              </span>
-            )}
-          </div>
-        </Reveal>
+        <p className="text-muted-foreground mt-8 text-xs">
+          {post.series}
+          {chapter && (
+            <>
+              <span className="mx-2">·</span>
+              {chapter.title}
+            </>
+          )}
+          <span className="mx-2">·</span>
+          Lesson {post.order} of {blogPosts.length}
+        </p>
 
-        <Reveal delay={0.1}>
-          <h1 className="font-display mt-5 text-3xl leading-tight font-extrabold text-balance sm:text-4xl md:text-5xl md:leading-[1.1]">
-            {post.title}
-          </h1>
-        </Reveal>
+        <h1 className="font-display mt-3 text-3xl font-semibold tracking-tight text-balance sm:text-4xl">
+          {post.title}
+        </h1>
 
-        <Reveal delay={0.15}>
-          <div className="mt-7 flex flex-wrap items-center gap-4 border-b pb-8">
-            <span className="bg-gradient-brand text-primary-foreground font-display grid size-12 place-items-center rounded-full text-sm font-bold">
-              {post.author
-                .split(" ")
-                .map((n) => n[0])
-                .join("")}
+        <div className="text-muted-foreground mt-6 flex flex-wrap items-center gap-4 border-b pb-6 text-sm">
+          <span className="text-foreground flex items-center gap-2.5">
+            <FounderPhoto className="size-10 shrink-0 rounded-full" alt={NOTES_AUTHOR.name} />
+            <span>
+              <span className="block font-medium">{post.author}</span>
+              <span className="text-muted-foreground block text-xs">{NOTES_AUTHOR.role}</span>
             </span>
-            <div>
-              <p className="text-sm font-bold">{post.author}</p>
-              <p className="text-muted-foreground text-xs">{post.role}</p>
-            </div>
-            <div className="text-muted-foreground ml-auto flex items-center gap-4 text-xs font-medium">
-              <span className="flex items-center gap-1.5">
-                <CalendarDays className="size-3.5" /> {post.date}
-              </span>
-              <span className="flex items-center gap-1.5">
-                <Clock className="size-3.5" /> {readingTimeLabel(post.body)} read
-              </span>
-            </div>
-          </div>
-        </Reveal>
+          </span>
+          <span className="flex items-center gap-1.5">
+            <CalendarDays className="size-3.5" /> {post.date}
+          </span>
+          <span className="flex items-center gap-1.5">
+            <Clock className="size-3.5" /> {readingTimeLabel(post.body)}
+          </span>
+        </div>
 
-        {post.imageUrl && (
-          <Reveal>
-            <a
-              href={post.imageUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group relative w-full rounded-2xl overflow-hidden mb-6"
+        <figure className="border-border mt-8 overflow-hidden rounded-lg border">
+          <img src={post.cover} alt={post.coverAlt} className="aspect-[16/9] w-full object-cover" />
+        </figure>
+
+        <p className="text-muted-foreground mt-8 text-lg leading-relaxed">{post.excerpt}</p>
+
+        <div className="mt-8 space-y-5">
+          {post.body.map((block, i) => (
+            <Block key={i} block={block} />
+          ))}
+        </div>
+
+        <nav
+          aria-label="Next lesson"
+          className="border-border mt-14 grid gap-3 border-t pt-8 sm:grid-cols-2"
+        >
+          {prev ? (
+            <Link
+              to="/blog/$slug"
+              params={{ slug: prev.slug }}
+              className="border-border hover:border-primary/40 rounded-lg border p-4"
             >
-              <img
-                src={post.imageUrl}
-                alt={post.title}
-                className="w-full h-64 object-cover transition-transform duration-500 hover:scale-105 motion-reduce:transition-none motion-reduce:scale-100"
-              />
-              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 motion-reduce:transition-none">
-                <span className="text-white text-2xl">📖</span>
-              </div>
-            </a>
-          </Reveal>
-        )}
-        <div className="mt-8 space-y-6">
-          <Reveal delay={0.05}>
-            <p className="text-muted-foreground border-l-2 pl-5 text-lg leading-relaxed font-medium text-pretty italic">
-              {post.excerpt}
-            </p>
-          </Reveal>
-          <GlossaryLinkedText
-            paragraphs={post.body}
-            className="space-y-6"
-            maxLinksPerParagraph={3}
-          />
-          <ContentFreshness
-            lastReviewed={post.date}
-            author={post.author}
-            className="mt-8 pt-6 border-t"
-          />
-        </div>
-
-        <div className="mt-12">
-          <RelatedContent currentSlug={post.slug} currentType="blog" maxItems={4} />
-        </div>
+              <p className="text-muted-foreground flex items-center gap-1.5 text-xs">
+                <ArrowLeft className="size-3.5" /> Previous
+              </p>
+              <p className="font-display mt-2 text-sm font-semibold leading-snug">
+                Lesson {prev.order}: {prev.title}
+              </p>
+            </Link>
+          ) : (
+            <span />
+          )}
+          {next ? (
+            <Link
+              to="/blog/$slug"
+              params={{ slug: next.slug }}
+              className="border-border hover:border-primary/40 rounded-lg border p-4 sm:text-right"
+            >
+              <p className="text-muted-foreground flex items-center gap-1.5 text-xs sm:justify-end">
+                Next <ArrowRight className="size-3.5" />
+              </p>
+              <p className="font-display mt-2 text-sm font-semibold leading-snug">
+                Lesson {next.order}: {next.title}
+              </p>
+            </Link>
+          ) : (
+            <Link
+              to="/blog"
+              className="border-border hover:border-primary/40 rounded-lg border p-4 sm:text-right"
+            >
+              <p className="text-muted-foreground text-xs">End of the series</p>
+              <p className="font-display mt-2 text-sm font-semibold">All notes</p>
+            </Link>
+          )}
+        </nav>
       </article>
 
-      <section className="bg-muted/40 border-y">
-        <div className="container-page py-16 md:py-20">
-          <h2 className="font-display text-2xl font-extrabold">Keep reading</h2>
-          <div className="mt-8 grid gap-5 md:grid-cols-3">
-            {related.map((p) => (
-              <Link
-                key={p.slug}
-                to="/blog/$slug"
-                params={{ slug: p.slug }}
-                className="group bg-card shadow-soft hover:shadow-elevated flex flex-col rounded-2xl border p-6 transition-all hover:-translate-y-1"
-              >
-                <Badge variant="secondary" className="w-fit font-semibold">
-                  {p.category}
-                </Badge>
-                <h3 className="font-display group-hover:text-primary mt-3 flex-1 text-base leading-snug font-bold">
-                  {p.title}
-                </h3>
-                <span className="text-muted-foreground mt-4 flex items-center gap-1 text-xs font-medium">
-                  {p.author} · {readingTimeLabel(p.body)}
-                </span>
-              </Link>
-            ))}
+      {(related.length > 0 || chapter) && (
+        <section className="border-border bg-muted/40 border-y">
+          <div className="container-page py-12 md:py-16">
+            {related.length > 0 && (
+              <>
+                <h2 className="font-display text-xl font-semibold">
+                  {chapter ? `Also in ${chapter.title}` : "Related notes"}
+                </h2>
+                <ul className="mt-6 grid gap-4 md:grid-cols-3">
+                  {related.map((p) => (
+                    <li key={p.slug}>
+                      <Link
+                        to="/blog/$slug"
+                        params={{ slug: p.slug }}
+                        className="border-border bg-card hover:border-primary/40 block h-full overflow-hidden rounded-lg border"
+                      >
+                        <img src={p.cover} alt="" className="aspect-[16/9] w-full object-cover" />
+                        <div className="p-5">
+                          <p className="text-muted-foreground text-xs">Lesson {p.order}</p>
+                          <h3 className="font-display mt-2 text-base font-semibold leading-snug">
+                            {p.title}
+                          </h3>
+                        </div>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            )}
+            {chapter && (
+              <div className="border-border bg-card mt-8 rounded-lg border p-5 sm:flex sm:items-center sm:justify-between sm:gap-6">
+                <div>
+                  <p className="text-muted-foreground text-xs">Taught in the room</p>
+                  <p className="font-display mt-1 text-lg font-semibold">{chapter.courseLabel}</p>
+                  <p className="text-muted-foreground mt-1 max-w-xl text-sm leading-relaxed">
+                    Same ground, with an instructor and a machine in front of you. Two sessions a
+                    week.
+                  </p>
+                </div>
+                <Button asChild className="mt-4 sm:mt-0">
+                  <Link to="/classes/$courseSlug" params={{ courseSlug: chapter.courseSlug }}>
+                    View {chapter.courseLabel}
+                  </Link>
+                </Button>
+              </div>
+            )}
+            <div className="mt-8">
+              <Button asChild variant="outline">
+                <Link to="/blog">All notes</Link>
+              </Button>
+            </div>
           </div>
-          <div className="mt-10 text-center">
-            <Button asChild variant="outline">
-              <Link to="/blog">
-                All insights <ArrowUpRight className="ml-1.5 size-4" />
-              </Link>
-            </Button>
-          </div>
-        </div>
-      </section>
+        </section>
+      )}
 
-      <CTASection />
+      <CTASection
+        primary={{ label: "View courses", to: "/classes" }}
+        secondary={{ label: "Contact us", to: "/contact" }}
+      />
     </PageShell>
   );
 }

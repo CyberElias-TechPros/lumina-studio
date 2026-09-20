@@ -26,11 +26,11 @@ import { ORGANIZATION_LD, WEBSITE_LD, LOCAL_BUSINESS_LD } from "../lib/seo";
 const THEME_SCRIPT = `(function(){try{
   var workspace = /^\\/(app|portal|auth)(\\/|$)/.test(location.pathname);
   var marketing = localStorage.getItem("cea-marketing-theme");
-  // Workspaces follow the visitor's saved app theme; the public site is dark
-  // unless the visitor explicitly asked for daylight.
+  // Workspaces follow the visitor's saved app theme; the public site is light
+  // unless the visitor explicitly asked for dark.
   var dark = workspace
     ? localStorage.getItem("cea-theme") === "dark"
-    : marketing !== "light";
+    : marketing === "dark";
   if (dark) document.documentElement.classList.add("dark");
 } catch (e) {}})();`;
 
@@ -56,33 +56,34 @@ function StructuredData({ data }: { data: Record<string, unknown> | Record<strin
 function NotFoundComponent() {
   return (
     <div className="relative flex min-h-screen items-center justify-center overflow-hidden bg-background px-4">
-      <div
-        aria-hidden="true"
-        className="bg-gradient-brand pointer-events-none absolute -top-32 left-1/2 size-[38rem] -translate-x-1/2 rounded-full opacity-[0.16] blur-[120px]"
-      />
       <div className="relative text-center">
-        <p className="font-display text-gradient text-8xl font-extrabold tracking-tight sm:text-9xl">
+        <p className="font-display text-muted-foreground text-7xl font-semibold tracking-tight sm:text-8xl">
           404
         </p>
         <h1 className="font-display mt-4 text-xl font-bold text-foreground sm:text-2xl">
-          This page hasn't been built yet
+          Page not found
         </h1>
         <p className="mx-auto mt-2 max-w-sm text-sm leading-relaxed text-muted-foreground">
-          The link may be old, or we moved something. The academy keeps building — start from the
-          home page and you'll find your way.
+          The link may be old, or we moved something. Start from the home page.
         </p>
         <div className="mt-7 flex flex-wrap justify-center gap-3">
           <Link
             to="/"
-            className="bg-gradient-brand shadow-glow inline-flex h-10 items-center justify-center rounded-md border-0 px-6 text-sm font-semibold text-primary-foreground transition-transform duration-200 hover:-translate-y-px active:translate-y-0 motion-reduce:transition-none"
+            className="bg-primary text-primary-foreground inline-flex h-10 items-center justify-center rounded-md px-6 text-sm font-medium"
           >
             Go home
           </Link>
           <Link
-            to="/programs"
+            to="/classes"
             className="inline-flex h-10 items-center justify-center rounded-md border border-input bg-background px-6 text-sm font-medium text-foreground transition-colors hover:bg-accent motion-reduce:transition-none"
           >
-            Browse programs
+            View courses
+          </Link>
+          <Link
+            to="/blog"
+            className="inline-flex h-10 items-center justify-center rounded-md border border-input bg-background px-6 text-sm font-medium text-foreground transition-colors hover:bg-accent motion-reduce:transition-none"
+          >
+            Notes
           </Link>
         </div>
       </div>
@@ -137,18 +138,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "mobile-web-app-capable", content: "yes" },
       { name: "apple-mobile-web-app-capable", content: "yes" },
       { name: "apple-mobile-web-app-status-bar-style", content: "default" },
-      { title: "Cyber Elias Academy — Digital Skills, Careers & Client Work" },
+      { title: "Cyber Elias Academy — Practical digital skills training in Port Harcourt" },
       {
         name: "description",
         content:
-          "Nigeria's digital skills academy and technology studio. Train from scratch to advanced, build a portfolio, and get hired.",
+          "A digital skills training centre in Port Harcourt. Short, practical computer courses: Office, computer basics, design, web, data entry and repairs.",
       },
       { name: "author", content: "Cyber Elias Academy" },
       { name: "google-adsense-account", content: "ca-pub-9117572925263537" },
       { property: "og:title", content: "Cyber Elias Academy" },
       {
         property: "og:description",
-        content: "One platform. Multiple engines. Every actor connected.",
+        content: "Practical computer and digital-skills training in Port Harcourt.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -188,9 +189,8 @@ function RootShell({ children }: { children: ReactNode }) {
     <html lang="en">
       <head>
         <HeadContent />
-        {/* Runs before first paint so the dark Lumina identity never flashes
-            light. The public site is dark unless the visitor chose daylight;
-            the /app and /portal workspaces stay light. */}
+        {/* Runs before first paint. The public site is light unless the visitor
+            chose dark; /app and /portal follow the saved workspace theme. */}
         <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
         {/* The public site's entrance choreography is JS-driven. Without JS the
             content must still be readable: drop the arrival curtain and undo

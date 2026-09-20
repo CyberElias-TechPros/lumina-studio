@@ -15,9 +15,11 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { CTASection, PageShell } from "@/components/marketing/shell";
+import { CourseCover, CourseIcon } from "@/components/marketing/photos";
 import { Reveal } from "@/components/motion";
 import {
   achievementLevels,
+  coursePhotoSrc,
   findCourse,
   formatFee,
   lectureReadingMinutes,
@@ -32,6 +34,9 @@ export const Route = createFileRoute("/classes/$courseSlug/")({
       title: `${course.title} — ${course.weeks}-Week Practical Course at Cyber Elias Academy`,
       description: `${course.hook} ${formatFee(course.fee)}, ${course.weeks} weeks, ${course.sessions.length} practical sessions with full class notes published for every session.`,
       path: `/classes/${course.slug}`,
+      image: coursePhotoSrc(course.slug)
+        ? `https://cea.ng${coursePhotoSrc(course.slug)}`
+        : undefined,
       structuredData: [
         {
           "@context": "https://schema.org",
@@ -108,9 +113,8 @@ function CoursePage() {
     <PageShell>
       <article>
         {/* Hero */}
-        <header className="border-foreground/10 relative overflow-hidden border-b pt-28 pb-14 md:pt-36 md:pb-20">
-          <div className="bg-gradient-brand pointer-events-none absolute inset-0 opacity-[0.07] [mask-image:radial-gradient(70%_60%_at_50%_0%,black,transparent)]" />
-          <div className="container-page relative">
+        <header className="border-border relative border-b py-12 md:py-16">
+          <div className="container-page">
             <Reveal>
               <nav aria-label="Breadcrumb">
                 <Link
@@ -139,7 +143,7 @@ function CoursePage() {
             </Reveal>
 
             <Reveal delay={0.1}>
-              <h1 className="font-display mt-6 text-4xl leading-[1.05] font-semibold tracking-tight text-balance sm:text-5xl md:text-6xl">
+              <h1 className="font-display mt-6 text-3xl font-semibold tracking-tight text-balance sm:text-4xl">
                 {course.title}
               </h1>
             </Reveal>
@@ -148,6 +152,14 @@ function CoursePage() {
               <p className="text-foreground/80 mt-6 max-w-2xl text-body-lg text-pretty">
                 {course.hook}
               </p>
+            </Reveal>
+
+            <Reveal delay={0.16}>
+              <figure className="border-foreground/12 mt-8 max-w-3xl overflow-hidden rounded-[14px] border">
+                <div className="bg-muted aspect-[16/9]">
+                  <CourseCover slug={course.slug} />
+                </div>
+              </figure>
             </Reveal>
 
             <Reveal delay={0.18}>
@@ -183,21 +195,10 @@ function CoursePage() {
 
             <Reveal delay={0.22}>
               <div className="mt-9 flex flex-wrap gap-3">
-                <Button
-                  asChild
-                  size="lg"
-                  className="bg-foreground text-background hover:bg-primary hover:text-primary-foreground h-13 rounded-full px-7"
-                >
-                  <Link to="/admissions">
-                    Enrol on this course <ArrowUpRight className="ml-2 size-4" />
-                  </Link>
+                <Button asChild>
+                  <Link to="/apply">Apply for this course</Link>
                 </Button>
-                <Button
-                  asChild
-                  size="lg"
-                  variant="outline"
-                  className="border-foreground/20 h-13 rounded-full px-7 backdrop-blur-md"
-                >
+                <Button asChild variant="outline">
                   <Link to="/contact">Ask a question</Link>
                 </Button>
               </div>
@@ -330,9 +331,9 @@ function CoursePage() {
                 </dl>
                 <Button
                   asChild
-                  className="bg-foreground text-background hover:bg-primary hover:text-primary-foreground mt-6 w-full rounded-full"
+                  className="mt-6 w-full"
                 >
-                  <Link to="/admissions">Reserve a seat</Link>
+                  <Link to="/apply">Apply</Link>
                 </Button>
               </div>
             </aside>
@@ -359,7 +360,7 @@ function CoursePage() {
                 return (
                   <div key={week.week}>
                     <div className="border-foreground/10 flex flex-wrap items-baseline gap-4 border-b pb-4">
-                      <span className="font-display text-outline text-3xl leading-none font-light tabular-nums">
+                      <span className="text-muted-foreground font-display text-3xl leading-none font-light tabular-nums">
                         {String(week.week).padStart(2, "0")}
                       </span>
                       <div>
@@ -474,9 +475,14 @@ function CoursePage() {
                   key={other.slug}
                   to="/classes/$courseSlug"
                   params={{ courseSlug: other.slug }}
-                  className="group border-foreground/12 hover:border-primary/35 bg-card/70 flex flex-col rounded-[12px] border p-6 transition-all duration-400 hover:-translate-y-1"
+                  className="group border-foreground/12 hover:border-primary/35 bg-card/70 flex flex-col overflow-hidden rounded-[12px] border transition-all duration-400 hover:-translate-y-1"
                 >
-                  <h3 className="font-display text-lg leading-snug font-semibold transition-colors group-hover:text-primary">
+                  <div className="bg-muted aspect-[16/9]">
+                    <CourseCover slug={other.slug} />
+                  </div>
+                  <div className="flex flex-1 flex-col p-6">
+                  <h3 className="font-display inline-flex items-center gap-2 text-lg leading-snug font-semibold transition-colors group-hover:text-primary">
+                    <CourseIcon slug={other.slug} className="text-primary size-4 shrink-0" />
                     {other.title}
                   </h3>
                   <p className="text-foreground/70 mt-3 flex-1 text-[13.5px] leading-relaxed">
@@ -485,6 +491,7 @@ function CoursePage() {
                   <span className="text-foreground/60 mt-4 text-xs">
                     {formatFee(other.fee)} · {other.weeks} weeks
                   </span>
+                  </div>
                 </Link>
               ))}
             </div>
@@ -500,8 +507,8 @@ function CoursePage() {
       </article>
 
       <CTASection
-        title={`Enrol on ${course.title}`}
-        description={`Two practical sessions a week for ${course.weeks} weeks, ${formatFee(course.fee)} all-in, and you leave with ${course.deliverable.title.toLowerCase()}. Seats are limited so every learner gets supervised practice time.`}
+        title={`Apply for ${course.title}`}
+        description={`${course.weeks} weeks, ${formatFee(course.fee)}. Two sessions a week. You leave with ${course.deliverable.title.toLowerCase()}.`}
       />
     </PageShell>
   );
