@@ -4944,5 +4944,246 @@ export const blogPosts: BlogPost[] = [
       ),
     ],
   },
+  {
+    slug: "photographing-a-document",
+    title: "Photographing a document so it can be read",
+    excerpt:
+      "A receipt at an angle is a riddle. Flatten the paper, stand above it, fill the frame, check the naira amount before you send. Light is the whole trick.",
+    series: SERIES,
+    order: 96,
+    author: AUTHOR,
+    date: DATE,
+    cover: "/images/blog/document-photo.jpg",
+    coverAlt: "A phone held directly above a document on a wooden desk.",
+    body: [
+      p(
+        "Offices still ask for a picture of a paper: a receipt, an ID, a filled form. People photograph from the hip, under a yellow bulb, with a thumb in the corner, then argue that the clerk is wicked. The clerk cannot read a slanted glare. This lesson is a photograph that behaves like a copy: flat, filled, sharp, the amount visible. It is not yet a PDF. It is a picture you would still sign.",
+      ),
+      p(
+        "Put the paper on a dark table, not on a patterned wrapper. Stand above it so the phone is parallel to the page — as if you were the ceiling. The page should fill the screen with a little margin, not sit as a postage stamp in a room. Wait for the camera to settle. Tap the amount so the focus sits there. Take two. Open the better one. Zoom until you can read the naira figure and the date. If you cannot, the clerk cannot. Delete that one. Try again, more light.",
+      ),
+      fig(
+        "/images/blog/document-photo.jpg",
+        "A phone held square above a page on a desk.",
+        "Above, not from a chair at 45 degrees. The edges of the paper should be edges, not trapezoids. A slant is how a 5 becomes a 6.",
+      ),
+      h2("Light, glare, and the plastic cover"),
+      p(
+        "Daylight from the side is kinder than a bare bulb overhead, which turns a laminated ID into a white lake. If the card shines, tilt a few degrees until the lake leaves the numbers, or take the card out of a shiny holder. Flash is a last resort; it often paints a coin of light on the plastic. A second lamp across the room is better than flash in the face of the page.",
+      ),
+      p(
+        "An ID: both sides if they asked. One file per side, named — id-front.jpg, id-back.jpg — not IMG_0048. A receipt: the whole slip, including the shop name. Crop after, in the phone's editor, if the table still crowds the page. Crop is not resize. You already know that pair. Do not beautify, do not add a filter, do not write on the picture in a sticker app. A clerk's machine will see the sticker. They will send you back.",
+      ),
+      fig(
+        "/images/blog/document-glare.jpg",
+        "A flat ID or receipt on a wooden desk, a phone beside it.",
+        "The table is a copier. Wrinkles and a wallet edge are noise. Smooth the paper with a hand, then lift the hand, then shoot.",
+      ),
+      ul([
+        "Photograph a page you can throw away. Open it. Read the smallest line.",
+        "If you cannot, shoot again from higher, with more light, less angle.",
+        "Name the file as a human would. Copy it to the computer if it must last.",
+        "Do not send a photo of a password, an OTP, or a full card number in a group.",
+      ]),
+      h2("When they asked for a scan"),
+      p(
+        "A photograph can pass. A scan is the next lesson — edges found, a PDF, often flatter. If the portal says PDF, do not send a WhatsApp soup of the page. If they say JPEG under 100 KB, shrink a copy, as you learned. The picture is only as good as the last look you took before Send. Zoom. Read. Then the paperclip.",
+      ),
+    ],
+  },
+  {
+    slug: "scanning-to-pdf-on-the-phone",
+    title: "Scanning a page to PDF on the phone",
+    excerpt:
+      "A scan is a photograph with manners: edges found, a page, a PDF. Notes, Drive, and the camera's document mode are enough. A random scanner app from an advert is not.",
+    series: SERIES,
+    order: 97,
+    author: AUTHOR,
+    date: DATE,
+    cover: "/images/blog/phone-scan.jpg",
+    coverAlt: "A phone camera framing a document to scan.",
+    body: [
+      p(
+        "A scan is what a photocopier does: a flat page, honest edges, a file an office can print. Phones can do this without a shop. Google Drive, Google Notes, Apple Notes, many camera apps — Document or Scan. The machine finds the four corners, greys the table, and can save PDF. This lesson is that walk, two pages into one file, and not giving a stranger app your camera roll to “scan better.”",
+      ),
+      p(
+        "Drive on Android: the + or camera, Scan. Hold above the page, as in the last lesson. When the frame hugs the paper, shoot. The preview should look like a page, not a rug. Retake if a corner is missing. Add another page if they asked for front and back. Save as PDF, a human name, into the folder you use for Fees or IDs. On iPhone: Notes, New, the camera, Scan Documents. Same idea. The file should open as a PDF on the laptop, not as a photograph that still shows your bed.",
+      ),
+      fig(
+        "/images/blog/phone-scan.jpg",
+        "A phone framing a page to scan.",
+        "The rectangle is the machine guessing the paper. If it guessed the table, cancel, flatten the sheet, try again. You are the copier operator. It is only a helper.",
+      ),
+      h2("Colour, size, and two sides"),
+      p(
+        "Black and white or greyscale is enough for a letter and a receipt. Colour for a passport photograph if they asked for colour. More contrast is not always more readable; it can eat faint ink. Look at the preview. A two-page ID is one PDF with two pages, not two chats. Offices lose the back. You already know one attachment, one job.",
+      ),
+      p(
+        "The PDF may still be heavy. If the portal refuses, the shrinking lesson applies in spirit: a smaller scan, or a compress that is not an advert. Drive's own quality settings, or a second scan from higher with less colour. Do not screenshot the scan. That puts a taskbar on a copier page.",
+      ),
+      fig(
+        "/images/blog/scan-pdf.jpg",
+        "A scanned letter as a PDF on a laptop, paper original beside it.",
+        "If the screen matches the paper, the scan worked. If the screen is a yellow mattress with a receipt on it, you sent a photograph. Scan again.",
+      ),
+      ul([
+        "Scan one throwaway page to PDF. Open it on the laptop or in Drive.",
+        "Confirm it is a page, not a photo of a room.",
+        "Name it. Move it off the phone's default pile if you can.",
+        "Do not install CamScanner-from-an-advert. The Notes or Drive you already have will do.",
+      ]),
+      h2("What a scan is not"),
+      p(
+        "It is not a signed original if they asked to see ink in person. It is not encryption. A PDF of an ID in Anyone-with-the-link is still an ID on the street. Mail it to the address they gave, or upload to their portal, Restricted. And a scan of a screen — a phone pointed at a laptop — is a photograph of pixels. Use a screenshot on the laptop, or Download the real file. The copier is for paper. The screenshot is for glass. You now have both.",
+      ),
+    ],
+  },
+  {
+    slug: "one-time-passwords",
+    title: "OTPs — codes that die",
+    excerpt:
+      "A six-digit SMS is a key that works once. Nobody who is helping you needs to hear it. Type it into the page you opened on purpose. Then let it expire.",
+    series: SERIES,
+    order: 98,
+    author: AUTHOR,
+    date: DATE,
+    cover: "/images/blog/otp-sms.jpg",
+    coverAlt: "A phone showing a short SMS with a six-digit code.",
+    body: [
+      p(
+        "A bank, a mail, a government portal will send a short number to the phone: one-time password, OTP, token. It is a second lock. It dies in minutes. It is not a PIN you reuse. It is not a balance. The whole crime of the last few years, in this city, is someone asking you to read that number aloud. This lesson is where it belongs — the page you walked to — and where it does not: a call, a WhatsApp, a “Microsoft support.”",
+      ),
+      p(
+        "You typed your password on the real street. The site says it will SMS you. Wait. The phone lights. A sender that looks like the bank, or 33123, or Google. Open the SMS, not a WhatsApp that arrived at the same time. Type the digits into the same page. Submit once. If the page says wrong, wait for a new code; the old one may already be dead. Do not type the code into a second page that popped up. One walk, one box.",
+      ),
+      fig(
+        "/images/blog/otp-sms.jpg",
+        "A six-digit code in an SMS on a phone.",
+        "The number is a key on a timer. Anyone who asks you to read it is asking you to open the door from inside. Hang up.",
+      ),
+      h2("Calls, WhatsApp, and the helpful thief"),
+      p(
+        "A voice: we are the bank, we are reversing a debit, read the code we just sent. Hang up. Call the number on the back of the card. A WhatsApp: send the code to confirm your BVN. You already know that play. A page that arrived from a link and then asks for OTP is two rooms: their fake, then your real SMS, which they will use on the real bank. Close. Walk to the bank yourself. If nothing is wrong, nothing is wrong.",
+      ),
+      p(
+        "Autofill on a phone may offer to paste the code. That is convenient on your phone, on the real app. It is a trap if a fake app is in the foreground. Look at the app name before you Accept. Some banks' own apps ask for a token from a hardware fob or from their app, not SMS. Obey that. Do not hunt a code in SMS that was never sent.",
+      ),
+      fig(
+        "/images/blog/otp-waiting.jpg",
+        "A learner with a laptop login and a phone, waiting for a code.",
+        "The computer is the door. The phone is the second key. Both should be yours. A helper does not need to hold the phone.",
+      ),
+      ul([
+        "The next time a real site sends a code, type it yourself. Do not read it to anyone.",
+        "If a call asks for it, hang up. Dial the printed number.",
+        "Delete old OTP messages when you remember. They are dead, but they clutter.",
+        "Do not screenshot an OTP into a group to “show I tried.”",
+      ]),
+      h2("When it does not arrive"),
+      p(
+        "Airplane mode, no signal, a full SIM, a new number the bank does not have. Switch the plane off. Wait a minute. Resend once. If you just ported a number, tell the bank before you panic. Do not give a shop your OTP to “unlock a faster SIM.” That is the key to the house.",
+      ),
+      p(
+        "The second lock only works if the second key stays in your hand. Password, then OTP, then you are in. Anyone who wants the middle of that sandwich wants the house. You have had this lesson in other clothes. The digits are just smaller. Let them die in the box you chose, not in a stranger's ear.",
+      ),
+    ],
+  },
+  {
+    slug: "public-wifi-and-the-bank",
+    title: "Public Wi‑Fi and the bank",
+    excerpt:
+      "A free fan in a café is a shared tap. Mail can wait. The bank should use the SIM or the house. A login page that is not the café's is a street you did not mean.",
+    series: SERIES,
+    order: 99,
+    author: AUTHOR,
+    date: DATE,
+    cover: "/images/blog/cafe-wifi.jpg",
+    coverAlt: "A laptop at a small café table with a Wi-Fi password card.",
+    body: [
+      p(
+        "Free Wi‑Fi is a kindness and a crowd. The café, the bus, the business centre, an estate's “Guest.” You already know not to tick Remember this computer. This lesson is the extra caution: which jobs may use a stranger's radio, and which jobs pay a little data to stay on the SIM. The bank, a password change, a transfer, a BVN portal — the SIM, or the house, or not today.",
+      ),
+      p(
+        "Joining is the same fan list. The name should match the card on the counter, not “Cafe_Free_Login” with an extra word. A portal page that only asks you to tap Continue is ordinary. A portal that asks for a Google password is not the café; it is a trap wearing a kettle. Close. Use your data. Tell the counter if you like. Do not type the mail key into a page whose address is not the café and not Google.",
+      ),
+      fig(
+        "/images/blog/cafe-wifi.jpg",
+        "A laptop at a café table, a Wi-Fi card beside it.",
+        "The card is the sticker. The list is full of cousins. If two names are almost the same, ask a human who works there which fan is theirs.",
+      ),
+      h2("What you may do, and what you postpone"),
+      p(
+        "Read the news. Search a map. Watch a short video if the bundle at home is the problem. Mail, if you must, in a private window, then sign out. Do not tick Stay signed in. Do not open the bank. Do not type a card number. Do not change a password. The radio is shared; a badly run café, or a neighbour, can be nosy. You do not need the science. You need the habit: money stays on a pipe you pay for.",
+      ),
+      p(
+        "A VPN is a tunnel some people buy. It is not a magic cloak, and a random free VPN is another stall. You do not need one to finish this course. You need the SIM for the bank and the house for the rest. If a form is due tonight and the café is the only light, use the phone's data, even hotspot to the laptop, rather than their fan. You know the spare tyre.",
+      ),
+      fig(
+        "/images/blog/bank-on-public.jpg",
+        "A browser on a laptop, no bank page open.",
+        "If you are not sure whose radio this is, it is public. The bank can wait until the fan is yours. A late transfer is cheaper than a fast one on a stranger's tap.",
+      ),
+      ul([
+        "At a café, join the name on the card. Open cea.ng. That is enough of a test.",
+        "Do not open the bank. If you must pay, switch to mobile data, Wi‑Fi off.",
+        "When you leave: forget the network, or just leave. Sign out of mail if you opened it.",
+        "If a portal asked for your Gmail password, you did not join a café. Change the mail password from a machine you trust.",
+      ]),
+      h2("The business centre"),
+      p(
+        "Their machines plus their Wi‑Fi is two crowds. USB your files, do the work, five-minute walk, take the stick. Their bank login is not a thing you should ever do. If they offer to “help you pay,” they are in the password lesson. You type, they point, or you leave.",
+      ),
+      p(
+        "Public radio is not evil. It is shared. Shared is fine for a newspaper. Shared is not fine for a key. Look at the fan. Name the job. If the job is money, pay for the pipe. The bundle is smaller than a reversal you will not get.",
+      ),
+    ],
+  },
+  {
+    slug: "you-have-won",
+    title: "“You have won” — the message that wants a fee",
+    excerpt:
+      "A prize you did not enter is not a prize. A fee to release money is a tap that only flows out. Delete. Do not call the number. Do not send airtime to claim a car.",
+    series: SERIES,
+    order: 100,
+    author: AUTHOR,
+    date: DATE,
+    cover: "/images/blog/you-have-won.jpg",
+    coverAlt: "A phone showing a prize or winnings message.",
+    body: [
+      p(
+        "You have sat through passwords, links, OTPs, fake virus banners, QR codes on poles. This is the same play in party clothes. A text, a WhatsApp, an email: you have won a car, a grant, a UN fund, a lottery you did not enter, a parcel worth millions. To release it, pay a small fee, send airtime, share a BVN, click a link. The small fee is the whole harvest. There is no car. This lesson is the shape, so you can delete it in one breath and teach the next person the same breath.",
+      ),
+      p(
+        "You did not enter. That is enough. Real lotteries in Nigeria are not in the habit of hunting you on WhatsApp. Banks do not release “USD grants” after a processing fee. A church does not need you to pay Customs for a blessing that arrived as a container. A job that wants a processing fee before you start is not a job — you met that in the form lesson. Hurry, secrecy, a prize, a fee: four tells. You only need one.",
+      ),
+      fig(
+        "/images/blog/you-have-won.jpg",
+        "A prize message on a phone.",
+        "The number will not be in your contacts. The English will be almost right. The amount will be large. The ask will be small. Small is how they pass the gate.",
+      ),
+      h2("Airtime, gift cards, and the kind relative"),
+      p(
+        "Send ₦5,000 airtime to this number to confirm. Buy a Google card and read the code. Pay Customs to this personal account. All of those are one-way taps. Reversals do not come. A relative's voice on the phone, crying, send money, is a different costume — confirm with another number you already have for that relative. Do not use the number that called. The prize message is the simpler cousin. Delete. Block. Do not argue with it. Arguing is how they keep you on the line until a fee feels like your idea.",
+      ),
+      p(
+        "A website with balloons and a form is still a form. You do not put a card into it. You do not download a “claim kit.” You do not call the international number; the call is the bill. If you already sent a little, stop. Do not send a second time to “unlock the first.” Tell the bank if an account you paid is still reachable. Shame is the second harvest. You are not the first. You will not be the last. You can still close the tap.",
+      ),
+      fig(
+        "/images/blog/prize-message.jpg",
+        "A learner looking skeptically at a phone message.",
+        "Skepticism is the whole skill. A prize you cannot name from a life you actually lived is a story. You do not belong in that story. Put the phone down.",
+      ),
+      ul([
+        "The next “you have won,” delete, without opening a link.",
+        "If a family member forwards one, tell them the four tells. Do not click theirs to “see.”",
+        "Nobody at the academy, a bank, or a church needs a fee to release a prize you did not enter.",
+        "If you already paid, stop paying. Bank, then a person you can see. Not a helper in the comments.",
+      ]),
+      h2("What you now have, in this one habit"),
+      p(
+        "Walk there yourself. Do not pay to be paid. Do not read an OTP aloud. Do not trust hurry. The hundred notes in this series are names for rooms you already live in: files, mail, money, the pocket, the street. The prize message is a room with no door out. You do not enter. You already know how to sit down when a message shouts. Sit down. Then delete. Then go back to the letter that is actually yours.",
+      ),
+    ],
+  },
 ];
 
