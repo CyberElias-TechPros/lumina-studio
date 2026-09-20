@@ -41,7 +41,7 @@ function Blog() {
       <PageHero
         eyebrow="Notes"
         title="Computer skills from the first sitting"
-        description="A series for people who have never used a computer, or who have used one without anyone explaining it. Written by Ellis Dennis Graham at Cyber Elias Academy, Port Harcourt. One hundred lessons, in order. Read them like a magazine: finish one, turn the page."
+        description={`A series for people who have never used a computer, or who have used one without anyone explaining it. Written by Ellis Dennis Graham at Cyber Elias Academy, Port Harcourt. ${blogPosts.length} lessons, in order. Read them like a magazine: finish one, turn the page.`}
       >
         <div className="relative mt-8 max-w-md">
           <Search className="text-muted-foreground absolute top-1/2 left-3 size-4 -translate-y-1/2" />
@@ -57,7 +57,7 @@ function Blog() {
       {!searching && (
         <nav className="container-page border-border border-b py-6" aria-label="Chapters">
           <p className="text-muted-foreground text-xs font-medium tracking-wide uppercase">
-            Ten chapters
+            {noteChapters.length} chapters
           </p>
           <ul className="mt-3 flex flex-wrap gap-2">
             {noteChapters.map((ch) => (

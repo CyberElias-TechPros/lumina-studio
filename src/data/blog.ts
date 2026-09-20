@@ -5197,5 +5197,478 @@ export const blogPosts: BlogPost[] = [
       ),
     ],
   },
+  {
+    slug: "six-more-keystrokes",
+    title: "Six more keystrokes, then rest",
+    excerpt:
+      "You already own copy, paste, and undo. Add save, find, select all, and three for the browser — then stop collecting. Six is a year's worth.",
+    series: SERIES,
+    order: 101,
+    author: AUTHOR,
+    date: lessonDate(101),
+    cover: "/images/blog/shortcut-save-hands.jpg",
+    coverAlt: "A left little finger pressing the Ctrl key while another finger presses S on a keyboard.",
+    body: [
+      p(
+        "By now your hands own three: Ctrl and C, Ctrl and V, and the undo that rescued the paragraph you did not mean to kill. Alt and Tab walks you through open windows. That is a respectable number. It is also where most people stop, and then spend ten years clicking through menus for the five acts they perform every day. This lesson adds six more keystrokes. Then it asks you to stop. Collecting shortcuts like proverbs is not skill. Using six until they are reflexes is.",
+      ),
+      p(
+        "The first is Ctrl and S — save. The light does not send a warning before it goes, and neither does a battery. Save every few minutes and a power cut costs you a paragraph, not an evening. It works in Word, in spreadsheets, in Docs, in almost everything that makes documents. In a browser it offers to save the page itself, which you will rarely need — so the rule is simple: Ctrl and S belongs to programs, not to pages.",
+      ),
+      fig(
+        "/images/blog/shortcut-save-hands.jpg",
+        "A left little finger pressing Ctrl while another finger presses S.",
+        "The little finger holds Ctrl; another finger taps S. Two seconds, pressed often, and a power cut becomes a nuisance instead of a funeral.",
+      ),
+      h2("Find, before you read everything"),
+      p(
+        "Ctrl and F opens a small box, usually in a corner. Type a word — bank, deadline, refund — and the page jumps to it, marking every place the word sits. It works in Word, in the browser, in the PDFs you met in their own lesson, on long group pages. It is the difference between scrolling a form with your eyes for ten minutes and asking the machine, which reads the whole page in a blink, to point. People underestimate this one. It is the most intelligent lazy thing a computer does for you.",
+      ),
+      h2("Select all, and three for the browser"),
+      p(
+        "Ctrl and A selects everything in the document or on the page: one press, and the whole text sits highlighted, ready to copy, ready to delete. Ready to delete is why you pause before pressing A in a document you love. In the browser, three small ones. Ctrl and T opens a new tab — a fresh doorway, so you do not type a new address over the page you are reading. Ctrl and L jumps the cursor straight to the address bar, where the internet lesson taught you to type. Ctrl and W closes the tab you have finished with. It closes without asking, so save any form you were filling first.",
+      ),
+      fig(
+        "/images/blog/find-in-page.jpg",
+        "A laptop screen showing a long page with a small find box in the corner and one word highlighted.",
+        "Type the word once; the machine counts every place it appears — 1 of 7 — and walks you through them. Reading a page to find one figure is a tax you can stop paying.",
+      ),
+      ul([
+        "Open the letter you typed last week. Press Ctrl and S now, out of respect.",
+        "Press Ctrl and F on any long page and look for the word price. Watch it count.",
+        "Press Ctrl and A in Notepad, then Ctrl and C. You have copied a page in two seconds.",
+        "Practise Ctrl and T, Ctrl and L, Ctrl and W as one walk: open, address, close. Repeat it on purpose for a week.",
+      ]),
+      h2("Then stop"),
+      p(
+        "There are hundreds more, and one day you will meet Ctrl and P for printing, and be pleased it was waiting. But six is a year's worth. The hands learn by repetition, not by lists, and a shortcut you use weekly is worth fifty you memorised in one proud evening. Close the list. Go and use the six.",
+      ),
+    ],
+  },
+  {
+    slug: "the-keyboard-on-the-phone",
+    title: "The keyboard on the phone",
+    excerpt:
+      "You type more on glass than on any keyboard you will meet. Long-presses, a cursor you can slide, and autocorrect put firmly in its place — one quiet hour with the keys you carry everywhere.",
+    series: SERIES,
+    order: 102,
+    author: AUTHOR,
+    date: lessonDate(102),
+    cover: "/images/blog/phone-keyboard-hands.jpg",
+    coverAlt: "Two thumbs typing on a phone keyboard held in both hands.",
+    body: [
+      p(
+        "The computer keyboard has a home row and ridges on F and J. The phone has a sheet of glass, and yet it is the keyboard you use most — the transfers, the WhatsApps, the searches, the letters begun on the bus. It deserves the same quiet hour. Most people have typed on it for years and were never shown a single trick, the way people carry keys for years without knowing what the deadbolt is.",
+      ),
+      p(
+        "Look at the keyboard as a set of floors. The ground floor is the letters. A key marked ?123 or 123 lifts you to the numbers and the common symbols; a second shift on that floor reveals the rarer ones. The arrow above the letters is Shift — tap once for one capital, as on the computer, and tap twice only if you truly intend to shout. The key that rubs out is Backspace, same as ever. And long-press changes everything: hold a letter and its hidden relatives appear. Hold E and you meet the accents the typing lesson gave you on the computer. Hold N and some keyboards will offer the naira; others keep it on the symbols floor, and now you know where to look.",
+      ),
+      fig(
+        "/images/blog/phone-keyboard-hands.jpg",
+        "Two thumbs typing on a phone keyboard held in both hands.",
+        "Two thumbs, not ten fingers. The phone keyboard is built for the sides of the thumbs; the middle of the screen is where typos are born.",
+      ),
+      h2("The tricks that save the thumbs"),
+      p(
+        "Hold the space bar. On most keyboards the letters fade and the cursor becomes something you can drag through the sentence — no more stabbing a fingertip between two letters and hoping. Double-tap the space bar and most keyboards hand you a full stop, a space, and a capital at once — a small luxury for the end of sentences. Then swipe typing, if your keyboard offers it: rest a thumb on the first letter and drag through the word without lifting, lifting only at the end. It feels like writing in one stroke of ink. Practise on your own name ten times and you will not go back.",
+      ),
+      h2("Autocorrect is a cousin, not a teacher"),
+      p(
+        "The keyboard will correct your village's name into a European lake and a whole Pidgin sentence into nonsense, with great confidence. You met this manner in the spell-check lesson: it is a cousin, not a teacher. When a word comes out wrong, tap it — the original often appears above, and tapping that returns it. When you spell a name the right way once and refuse the correction, many keyboards remember and stop arguing. Feed it the names of your people, your street, your bank. The keyboard is an app; it can be taught the household.",
+      ),
+      fig(
+        "/images/blog/phone-keyboard-longpress.jpg",
+        "A thumb long-pressing a letter on a phone keyboard while a small row of options appears above it.",
+        "Hold a key, slide, release. The hidden symbols live behind a half-second of patience, not behind a settings menu.",
+      ),
+      ul([
+        "Type a sentence that needs a number and a symbol, visiting the number floor no more than twice.",
+        "Hold the space bar and slide the cursor into the middle of a sentence. Fix one letter. Release.",
+        "Long-press five different keys and see what each hides. Note where the naira lives on yours.",
+        "Type your street's name and refuse the correction once. See whether the keyboard learns.",
+      ]),
+      h2("When it misbehaves"),
+      p(
+        "The keyboard vanished? Tap the box you were typing into; it is shy, not broken. It switched itself to French overnight? Look for the globe or language key beside the space bar. The clicks and vibrations madden you? That lives in the keyboard's own settings, usually behind a gear or a long-press on the comma. Nothing here needs a technician. The keyboard is the smallest computer you own, and like all of them, it only wants to be introduced properly.",
+      ),
+    ],
+  },
+  {
+    slug: "talking-to-the-keyboard",
+    title: "Talking to the keyboard",
+    excerpt:
+      "Your voice is faster than your thumbs. The microphone key writes as fast as you speak — where it shines, where it fails, and the codes that must never be spoken aloud.",
+    series: SERIES,
+    order: 103,
+    author: AUTHOR,
+    date: lessonDate(103),
+    cover: "/images/blog/voice-typing-mic.jpg",
+    coverAlt: "A man speaking toward his phone while words appear on the screen as text.",
+    body: [
+      p(
+        "On every good keyboard, beside the space bar, sits a small microphone. It is not decoration. Tap it, speak at your normal pace, and the words land on the screen as they leave you. This is voice typing, and it is not cheating. The letter still needs your judgement, the message still needs your manners; only the writing by thumb is replaced. For a long message, a first draft, or tired eyes at the end of the day, it is the fastest pen in the house.",
+      ),
+      p(
+        "Punctuation can be spoken. Say full stop and one arrives; comma, question mark, new paragraph — the decent keyboards obey. On the computer, the browser carries the same gift: in Google Docs, look under Tools for Voice typing, and speak while it listens. Windows keeps its own under Windows and H. The accent is not a wall — Nigerian English is heard well by the big keyboards. Clarity beats loudness. Speak the way you would speak to a respectful junior: plainly, at your own pace, without shouting.",
+      ),
+      fig(
+        "/images/blog/voice-typing-mic.jpg",
+        "A man speaking toward his phone while the words appear on the screen as text.",
+        "Tap the microphone, speak, watch the sentence build. It hears best when the phone is close and the room is not fighting you.",
+      ),
+      h2("Where it shines, and where it fails"),
+      p(
+        "It shines on length. The two-finger typist writes a paragraph in eight minutes; the voice writes it in two and spends the rest on repairs. It shines on drafts — say the messy first version, then edit with your hands. It fails in noise: a generator, a market, a bus park will sprinkle strangers' words into the sentence. It fails with several speakers; it writes whoever is loudest. And it sometimes stumbles on a heavy Pidgin phrase or an unfamiliar name, which you then repair by thumb. So the rule stands: dictate in quiet, review before sending. The machine types what it hears. You remain the owner of what is sent.",
+      ),
+      p(
+        "One line is drawn hard. Do not speak passwords, PINs, card numbers, or the codes that die — the OTPs you met in their own lesson. A code said aloud in a quiet room is still said aloud. The keypad exists precisely for secrets. Let the fingers carry those.",
+      ),
+      fig(
+        "/images/blog/voice-typing-docs.jpg",
+        "A woman at a desk speaking while a document fills with lines of text.",
+        "A first draft dictated in two minutes, then repaired by hand. The voice writes; the judgement edits. Both belong to you.",
+      ),
+      ul([
+        "Dictate a WhatsApp message to yourself. Read it once, repair two words, then send it on.",
+        "Say a sentence with two commas and a question mark, spoken aloud, and see whether they land.",
+        "In Google Docs, open Tools, then Voice typing, and dictate one paragraph of anything.",
+        "Practise the hard line: the next OTP goes into the keypad with your fingers, never out of your mouth.",
+      ]),
+      h2("A draft, not a finished letter"),
+      p(
+        "Treat dictated text as clay, not pottery. Read it before you send it — the machine will have heard a cousin where you said a name, a sale where you said Sade. Fix, then send. People who trust the first hearing spend their evening on apologies; people who read once send like people who write. The microphone has given your thumbs a holiday. It has not taken over the letter.",
+      ),
+    ],
+  },
+  {
+    slug: "email-in-your-pocket",
+    title: "Your email in your pocket",
+    excerpt:
+      "The desk taught the manners; the phone carries the letter. Attachments opened on glass, the CV attached from where it lives, and the right account chosen before you press send.",
+    series: SERIES,
+    order: 104,
+    author: AUTHOR,
+    date: lessonDate(104),
+    cover: "/images/blog/email-pocket.jpg",
+    coverAlt: "A woman reading an email on her phone in an office corridor.",
+    body: [
+      p(
+        "Your first email was written at a desk, with a keyboard wide enough to be honest. But the letter does not wait at the desk. The interview invitation, the school's admission, the client's correction — they arrive while the phone is already in your hand. So the desk folds into the pocket: the Gmail app, or the phone's own mail app, and everything the desk taught still applies, only smaller.",
+      ),
+      p(
+        "Set it up once. Open the app, choose to add an existing account, give the address you made on purpose in its own lesson, type the password once. The app keeps it; you never type it again on that phone. If you carry two addresses — one serious, one from your younger years — add both. They sit side by side, each labelled, and the app asks which one is speaking every time you compose. Look at that label every time. The classic embarrassment of a working life is a CV that went out under the joke address.",
+      ),
+      fig(
+        "/images/blog/email-pocket.jpg",
+        "A woman reading an email on her phone in an office corridor.",
+        "The inbox in the pocket. Same letters, same manners, smaller desk — and the sender's name checked twice before anything is sent.",
+      ),
+      h2("Reading on glass"),
+      p(
+        "Attachments open with a tap: the CV in PDF, the invoice, the school's letter. If the phone says it cannot open a file, that is the open-with lesson again — the file is not broken, it simply needs to be handed to the right program. Reply sends to one person. Reply all sends to the whole corridor, which you met at the desk and which is no safer for being small. Read the To line before the first word of your reply. Thumbs are quick; that is exactly why you slow them at the top of a letter.",
+      ),
+      h2("Attaching from the pocket"),
+      p(
+        "The paperclip is there. Compose, look for the attachment symbol, and the phone offers where from: Files, Drive, or the camera. Files walks to the scan you made in the documents lesson. Drive reaches whatever you have parked in the cloud. The camera takes something new — right for a form that wants your face today, wrong for a certificate that already exists scanned. Attach, then wait for the file's name to appear above the message before you send. Sending before the attachment finishes is posting the envelope before the letter is inside.",
+      ),
+      fig(
+        "/images/blog/attach-from-phone.jpg",
+        "A phone showing an email being composed, with an attached file sitting above the message.",
+        "The paperclip, the chooser, the file's name sitting above the text like a label on a parcel. Then, and only then, send.",
+      ),
+      ul([
+        "Add your main address to the phone's mail app, and check the label it now carries.",
+        "Email yourself a PDF. Open the attachment, then reply to it from the phone.",
+        "Attach one file — a scan, not a camera photo — to a draft. Do not send the draft. Look at how the attachment sits.",
+        "Read your signature on the phone and shorten it to your name and number, nothing that apologises.",
+      ]),
+      h2("Notifications without drowning"),
+      p(
+        "Email is not WhatsApp, and it must not learn to shout like it. The letter does not need an answer in four minutes; it needs an answer today, thought through. In the app's settings, let the important inbox notify you and let the adverts pass in silence — most apps sort this for you, if you look once. A short signature saying who you are is enough; the phone does not need to tell the world it is a phone. The desk gave you the manners. The pocket keeps them, quietly.",
+      ),
+    ],
+  },
+  {
+    slug: "the-file-that-goes-up",
+    title: "The file that goes up",
+    excerpt:
+      "Downloads taught where files land. Applications need the other direction: choose the file, watch the bar finish, keep the slip. Uploading, done calmly.",
+    series: SERIES,
+    order: 105,
+    author: AUTHOR,
+    date: lessonDate(105),
+    cover: "/images/blog/choose-file.jpg",
+    coverAlt: "A laptop screen showing an online form with a file chosen and its name beside the button.",
+    body: [
+      p(
+        "The Downloads lesson was about files coming down — parcels landing on the mat. The other half of an online life is files going up. A job portal asks for your CV. A school asks for the certificate. A form asks for a passport photograph. Each is the same small act: the machine asks you to choose a file, you choose it, it travels up. People fear this moment more than any other in a form, and it does not deserve the fear. It deserves a slow hand.",
+      ),
+      p(
+        "The button has many names — Choose file, Upload, Attach, Select — but one behaviour. Tap it and a window opens onto your own rooms: Documents, Pictures, the Downloads mat. Walk to where the file lives, tap it once, and its name appears beside the button like a label on a parcel. That is the whole act. What frightens people is not the choosing. It is the size limits and the waiting.",
+      ),
+      fig(
+        "/images/blog/choose-file.jpg",
+        "A laptop screen showing an online form with a Choose file button and the chosen file's name beside it.",
+        "Tap the button, walk to the room, tap the file. The name appearing beside the button is the parcel being labelled — nothing has flown yet.",
+      ),
+      h2("Size limits, and the bar that must finish"),
+      p(
+        "Portals state limits the way airlines state luggage: maximum 500 KB, maximum 2 MB. You already know what KB and MB mean, and you already know how to shrink a photograph. When a form refuses a file for size, the answer is to shrink the file — not to blame the school, not to send the document to a stranger who offers help. When the file is accepted, a bar begins to move. Let it finish. Closing the page mid-upload is hanging up mid-sentence: the form arrives, the paper does not, and nobody writes to tell you. Wait for the word done, the green tick, or the file's name resting quietly in its slot.",
+      ),
+      p(
+        "On the phone, the chooser offers three doors: Camera, Files, Drive. Camera takes a fresh photograph — right for a form that wants your face today. Files walks to the scan you already made. Drive reaches what you have parked in the cloud, which the next lesson turns into a system. For papers that exist as scans, choose Files. Fresh photographs of old certificates come out crooked, with shadows like bruises.",
+      ),
+      fig(
+        "/images/blog/upload-finished.jpg",
+        "A phone screen showing a file upload finishing with a green tick.",
+        "The tick means the parcel was delivered, not merely posted. A screenshot of that moment is cheaper than re-submitting an application.",
+      ),
+      ul([
+        "Practise once where nothing is at stake: upload a photograph to any profile that asks. Walk the whole road for exercise.",
+        "Before a real application, check the size limit first, then check your file's size. Match the luggage to the airline.",
+        "Never close a page while a bar is moving. Go and wash a plate instead.",
+        "When the tick comes, screenshot it. The slip is the proof you were there, on time, complete.",
+      ]),
+      h2("The slip is the receipt"),
+      p(
+        "Most portals, after an upload, show the file's name, or let you download what you submitted. Do download it, once, and look at it with your own eyes. The wrong file — the scanned WAEC where the birth certificate should be — has travelled farther than most lies, and the portal will judge it without pity. Then print or PDF the final confirmation page, the way you keep a teller's slip at the bank. Applications are lost not at the choosing but in the last ten seconds: the bar abandoned, the wrong parcel posted, the slip never kept. You are past all three now.",
+      ),
+    ],
+  },
+  {
+    slug: "papers-the-bag-cannot-lose",
+    title: "Papers the bag cannot lose",
+    excerpt:
+      "Certificates drown, burn, and walk out of bags. Scanned, named, and parked in Drive, they survive all three — one quiet evening of work, private until you say share.",
+    series: SERIES,
+    order: 106,
+    author: AUTHOR,
+    date: lessonDate(106),
+    cover: "/images/blog/drive-papers.jpg",
+    coverAlt: "A phone held in both hands showing cloud storage folders named Papers, Certificates and IDs.",
+    body: [
+      p(
+        "Consider what sits in that bag: birth certificate, WAEC, the degree, NYSC, the CV. One bag. One rain. One theft on a Thursday. The drawer at home holds the originals, but the drawer is in the same house as the leaking roof, and papers do not swim. What the cloud lesson explained, this lesson does: one evening of scanning gives you a set of papers no bag can lose and no rain can reach.",
+      ),
+      p(
+        "The work is plain. Scan each paper properly — good light, flat surface, all four corners, the way the scanning lesson taught — or photograph it squarely if a scanner is far. Then give each one a name that will still make sense in ten years: waec-certificate-2014, not scan12, not IMG_0093. Renaming matters more than scanning; a good paper with a bad name is lost in your own cupboard. Put them in Drive, in a folder called Papers, with rooms inside it: Certificates, IDs, Work. One evening. Done for life.",
+      ),
+      fig(
+        "/images/blog/drive-papers.jpg",
+        "A phone held in both hands showing cloud storage folders named Papers, Certificates and IDs.",
+        "A folder called Papers, rooms inside it, names with years. The cupboard that is not in the house.",
+      ),
+      h2("What this buys you"),
+      p(
+        "A cyber café at eight in the morning, before an interview, with no flash drive: you sign in, the papers are there, you download, you print, you walk in calm. A form that wants the certificate: you upload straight from Drive, no cables, no borrowing a neighbour's laptop. The bag can be stolen in Owerri and the papers still arrive in Lagos by nightfall. This is what backup before the light goes meant — applied to the papers that carry your name.",
+      ),
+      p(
+        "Now the other half, which is where people hurt themselves. A file in Drive is private until you say share, so say it carefully. Certificates and IDs go to the school, the employer, the portal — one address at a time, or a link set so only they can open it. They do not go to groups. They do not go to a helper's WhatsApp. The spirit of the OTP lesson applies: a thing that proves you are you is a key, and keys are not posted on walls.",
+      ),
+      fig(
+        "/images/blog/certificate-folder.jpg",
+        "A scanned certificate on a desk beside a phone showing the same certificate on its screen.",
+        "The original stays in the drawer; the copy floats. When the flood or the thief comes, one of these survives.",
+      ),
+      ul([
+        "Tonight, scan one certificate — just one — and name it with the document and the year.",
+        "Create the Papers folder in Drive and put it there. Ten more evenings will finish the drawer.",
+        "Try the café drill once: on any other machine, sign in, find the paper, download it. That is the whole miracle.",
+        "Share one file with yourself, by your own address, and open it. Then leave everything else unshared.",
+      ]),
+      h2("One evening, then a habit"),
+      p(
+        "Do not attempt the whole drawer in one heroic night. One paper each evening, the way the keyboard was learned — ten honest minutes. The originals stay where your mother can find them; the copies sit above the flood line, above the fire, above the thief. A house may stand for eighty years without trouble. The papers cost you one week of evenings to make sure that if it does not, your name survives the trouble.",
+      ),
+    ],
+  },
+  {
+    slug: "before-you-forget-the-password",
+    title: "Before you forget the password",
+    excerpt:
+      "Recovery is the spare key, cut while the main key still opens the door. Set it today, in daylight, and never accept recovery help from a caller.",
+    series: SERIES,
+    order: 107,
+    author: AUTHOR,
+    date: lessonDate(107),
+    cover: "/images/blog/recovery-screen.jpg",
+    coverAlt: "A man looking thoughtfully at his phone showing an account verification screen.",
+    body: [
+      p(
+        "One day — not today, which is exactly the problem — you will type your password and the machine will say no. Not because you did anything wrong. Because you are a person, and persons forget, and phones are stolen, and numbers change. The passwords lesson taught you to keep the key. This lesson is about the second thing every account has: a spare key called recovery, which can only be cut in advance.",
+      ),
+      p(
+        "Open your Google account, the one made on purpose. Under Security you will find Recovery phone and Recovery email. Set both, today, while the door still opens easily. The recovery phone is your real SIM — the one in your pocket, alive, registered. The recovery email is a second address you actually open, not one you created in 2017 and have never visited since. A spare key to a house you no longer live in is not a spare key. It is a gift to whoever moves in after you.",
+      ),
+      fig(
+        "/images/blog/recovery-screen.jpg",
+        "A man looking thoughtfully at his phone showing an account verification screen.",
+        "Prove you are you — answered not by memory but by the arrangements you made in daylight, months before the question came.",
+      ),
+      h2("The rules of the spare key"),
+      p(
+        "Rule one: the recovery email must be alive. Open it once a month, the way you check that the spare key still turns. Rule two: when your number changes, update the recovery phone that same week. This is not paperwork for its own sake — a stolen or recycled number is how strangers inherit accounts, which is why the SIM itself is guarded like cash. Rule three: WhatsApp is tied to your number and the bank to its registered one. When any of those change, walk through all of them in one evening, the way you change the locks when the key count changes.",
+      ),
+      p(
+        "Then the day comes, and it is mild. On the sign-in page: Forgot password. The code goes to the recovery you set — the phone or the email. You type it, you choose a new password by the old rules, you continue. Ten minutes. What recovery is not: a caller. Nobody from Google, from your bank, from any office, phones you to recover an account, and no helper needs the code that arrives for one. You met that shape in the OTP lesson and the prize lesson; recovery has simply become their favourite costume. Recovery happens on your screen, in the app, at your pace. Hang up on anyone who says otherwise.",
+      ),
+      fig(
+        "/images/blog/recovery-code-paper.jpg",
+        "A small notebook beside a phone, with ten one-use recovery codes written by hand.",
+        "Some accounts offer one-use codes on paper. They live with the password notebook, in the drawer, and they are never typed for anyone who calls.",
+      ),
+      ul([
+        "Today, in daylight: set the recovery phone and recovery email on your main account. Two minutes.",
+        "Open your recovery email once now, and put a reminder in the calendar to open it monthly.",
+        "Write the recovery address in the password notebook. The address is not a secret from the drawer.",
+        "Changed your number? Before the old SIM dies, walk every account through its recovery settings.",
+      ]),
+      h2("The door behind the door"),
+      p(
+        "Every account is a door with a locksmith's record behind it. The password is the key in your hand; recovery is the record that says whose hand the key belongs to. Cut the spare while the main still turns, keep the record current when the house changes, and treat anyone who offers to open your door from outside, by phone, as exactly what they are. The next lesson adds a second lock to the door itself.",
+      ),
+    ],
+  },
+  {
+    slug: "the-second-lock",
+    title: "The second lock",
+    excerpt:
+      "A stolen password should not be enough to be you. Two-step verification, backup codes on paper, and the rule for prompts you did not start.",
+    series: SERIES,
+    order: 108,
+    author: AUTHOR,
+    date: lessonDate(108),
+    cover: "/images/blog/second-lock.jpg",
+    coverAlt: "A phone showing a sign-in approval prompt with two buttons, held by a thoughtful woman.",
+    body: [
+      p(
+        "A password is one lock. Whoever learns it, buys it, or guesses it walks straight in, and you will not see them enter. Two-step verification is the second lock: after the password, the account insists on a code that reaches only your hand — the phone in your pocket, not the thief's laptop. You have watched such codes arrive all your digital life, and the OTP lesson taught you never to read one out. This lesson is the quiet reversal: you start the knock yourself, on purpose, on your own door.",
+      ),
+      p(
+        "Begin with the account that owns the rest. Google: sign in, Security, 2-Step Verification, follow it through, and let it learn the phone you actually carry. WhatsApp: Settings, Account, Two-step verification — a PIN you choose, which is not your birthday and not 1234, because the password rules never retired. Your bank app likely added its own device lock on the day you activated it. Leave it exactly as it is.",
+      ),
+      fig(
+        "/images/blog/second-lock.jpg",
+        "A phone showing a sign-in approval prompt with two buttons, held by a thoughtful woman.",
+        "The password was right; the account still asks for the second proof. This is the door checking both locks — a friend's voice, not a stranger's.",
+      ),
+      h2("Where the code should come from"),
+      p(
+        "By default the code arrives by SMS. That is good enough to start tonight, and starting tonight matters more than the perfect version. The stronger form is an authenticator app, which generates the code on the phone itself every thirty seconds, so that a SIM swap — a stranger convincing the network that your number is theirs — cannot intercept what never travels. When the SMS habit feels like home, spend one evening moving the main account across. Perfection is a poor excuse for refusing the first lock.",
+      ),
+      p(
+        "Before the setup closes, the account will offer backup codes: ten one-use keys, shown once, for the day the phone itself is lost — because the second lock locks you out too, if the phone is at the bottom of a river. Screenshot them, then write them by hand into the password notebook, and keep them where the notebook lives. Losing the phone without the codes means a long, cold proof that you are you. You already built that proof in the recovery lesson; the codes are its fast lane.",
+      ),
+      fig(
+        "/images/blog/backup-codes-paper.jpg",
+        "A strip of handwritten one-use backup codes folded inside a notebook beside a phone.",
+        "Ten paper keys for the day the phone drowns. They live in the drawer, and they are typed only by you, only into the sign-in page.",
+      ),
+      ul([
+        "Tonight: turn on 2-Step Verification on your main Google account. Ten minutes, once in a lifetime.",
+        "Turn on WhatsApp's two-step PIN while the kettle boils.",
+        "Write the backup codes into the notebook by hand — not a photo in the gallery the phone will lose with it.",
+        "Tell no one your WhatsApp PIN, including people who say they are helping you set it up.",
+      ]),
+      h2("The prompt you did not start"),
+      p(
+        "The second lock brings one new danger, and one new rule. A thief with your password can press sign in, which sends an approval prompt to your phone — a question asking, may I come in? If it is 2 a.m. and you are asleep and not signing in, the answer is no: deny, then change the password, because the password is out there now. Never approve a knock you did not knock; never read out a code you did not ask for. The two sentences are the same sentence. The first lock keeps out the lazy. The second keeps out the lucky. After that, what protects you is the habit of pausing.",
+      ),
+    ],
+  },
+  {
+    slug: "the-forward-that-lies",
+    title: "The forward that lies",
+    excerpt:
+      "Some lies want your money; some want only your finger. The sixty-second check before you forward, and your name as the envelope every lie travels in.",
+    series: SERIES,
+    order: 109,
+    author: AUTHOR,
+    date: lessonDate(109),
+    cover: "/images/blog/forwarded-many-times.jpg",
+    coverAlt: "A phone screen showing a chat message marked Forwarded many times.",
+    body: [
+      p(
+        "Not every lie asks for a fee. Some ask for something you give free, a hundred times a day: your finger on Forward. The invented cure — salt, bitter kola, hot water — that sends a frightened family past the pharmacy. The quote the minister never said, dressed in a broadcaster's logo. The security warning that turns a street against a stranger. Send to ten groups and something will happen; do not break the chain. The prize lesson's lies wore hurry and a fee. These wear care — forward, because you love them — and they travel under your face.",
+      ),
+      p(
+        "Because that is the mechanics of it: a lie forwarded by an honest person arrives wearing the honest person's face. Your aunt does not believe the cure; she believes you. The label at the top — Forwarded many times — is not a certificate of importance. It is a smoke alarm. The further a message has travelled, the less anyone in the chain knows about where it began, and the thing that began it may not be a person at all.",
+      ),
+      fig(
+        "/images/blog/forwarded-many-times.jpg",
+        "A phone screen showing a chat message marked Forwarded many times.",
+        "The label is the platform counting. It is not a source. Ask what the message knows about its own birth: nothing.",
+      ),
+      h2("The sixty-second check"),
+      p(
+        "Before your finger moves, spend one minute. Read past the headline — screenshots crop, and the second paragraph often reverses the first. Search the striking phrase on the real street, in quotes; if the broadcaster truly said it, the words sit on the broadcaster's own site, not only in a status. Check the date — old riots and old deaths are resold as this morning's news every few months. Then ask the oldest question: who gains? A message built to frighten ten thousand people tonight has a landlord somewhere, even if you never learn the name. And for health, the rule is absolute: the cure that skips the hospital is a story. Ask a pharmacist you can stand in front of.",
+      ),
+      p(
+        "If it is false, and a relative sent it, correct in private, gently, with the link: I checked — they did not say this; here is the real one. Nobody is humiliated, and the next forward is changed. If a group keeps passing poison — warnings that could cost a stranger their safety — do not forward, and know that Report exists, quietly, on every decent platform. You are not the town crier. You are the person in the chain who checks. That is a heavier kind of love than forwarding, and it is the kind that holds a community together.",
+      ),
+      fig(
+        "/images/blog/check-the-forward.jpg",
+        "A person at a desk searching on a laptop while a phone with an open chat lies beside the keyboard.",
+        "The laptop checks; the phone waits; the finger rests. One minute of daylight between the message and the send button.",
+      ),
+      ul([
+        "Before the next forward: read all of it, search the phrase, check the date. Sixty seconds.",
+        "Correct one relative in private, once, with a link and without mockery. Watch what they do with the next one.",
+        "For any health claim, the pharmacy first. Not the group.",
+        "When a message frightens you, that is the cue to check, not to share. If the check cannot be done tonight, sleep on it.",
+      ]),
+      h2("Your name is the envelope"),
+      p(
+        "A forward travels in an envelope with your name on it, into rooms you will never sit in. Facts travel that way, and so do flames; the envelope does not choose. Check once and share what survives the check, or let the lie die in your phone, quietly, unwitnessed. A lie needs a writer once and a hundred honest fingers after that. You are only responsible for the one finger you own — but the whole chain hangs from it.",
+      ),
+    ],
+  },
+  {
+    slug: "paying-for-something-online",
+    title: "Paying for something online",
+    excerpt:
+      "The first honest purchase: pay on delivery, the padlock's honest limits, and counting your change in a market made of screens.",
+    series: SERIES,
+    order: 110,
+    author: AUTHOR,
+    date: lessonDate(110),
+    cover: "/images/blog/pay-on-delivery.jpg",
+    coverAlt: "A courier handing a parcel to a woman at a gate while she holds her phone.",
+    body: [
+      p(
+        "The last chapter closed with the message that wants a fee — money flowing out to a liar. This one closes with the honest twin: paying for a real thing from a real seller, on purpose, and sleeping well after. Buying online is now a basic skill, the same class of skill as buying fuel or choosing a taxi. It is not braver than market sense. It is market sense, carried into a new market.",
+      ),
+      p(
+        "Start where the trust is built into the building: the big marketplaces, where money is held until you confirm the parcel and pay on delivery is a choice; and official sites — the exam body, the airline, the utility — where the fee has one known amount and one known address. The vendor with fine pictures on Instagram is a different animal: a stranger with a phone. Not a criminal — a stranger. With a stranger you lend carefully. Pay on delivery, or pay a small amount first, and read what other buyers have said over months, not what the captions shout today.",
+      ),
+      fig(
+        "/images/blog/pay-on-delivery.jpg",
+        "A courier handing a parcel to a woman at a gate while she holds her phone.",
+        "Pay on delivery is the market's oldest rule in new clothes: see the thing, count the money, then let go of either.",
+      ),
+      h2("The signs of a real shop"),
+      p(
+        "A real shop can be visited, or phoned, and both answers survive scrutiny: an address, a person, a returns policy in ordinary words. Its prices breathe — near the market, above the market, but not beneath it by magic. The shop selling a four-hundred-thousand-naira phone at ninety-five, today only, is the prize message in a new shirt: the discount is the fee. And the padlock beside the address means the road is private, not that the seller is honest. The padlock protects the road. It has never once protected the buyer. Only your own slowness does that.",
+      ),
+      p(
+        "When you pay: card details go only into the shop's own checkout page, never into a chat, never read out to a caller — and the PIN goes nowhere at all, because no shop on earth needs it. A transfer is fine to a business account that carries the shop's name; be still for a moment when a market price is demanded into a personal account with a different surname. Then keep the receipt — the email, the screenshot — and when the bank alert comes, read it twice: the amount, the name, the time. Counting your change never stopped being a skill. It moved indoors.",
+      ),
+      fig(
+        "/images/blog/checkout-padlock.jpg",
+        "A laptop screen showing a checkout page with a small padlock in the address bar, a bank card resting face down beside the keyboard.",
+        "The padlock means the road is private. Whether the shop at the end of the road is honest is a question the padlock has never answered.",
+      ),
+      ul([
+        "First purchase: choose a marketplace with pay on delivery. Walk the small road before the long one.",
+        "Before the price, check the address, the phone, the returns policy. In that order, every time.",
+        "Card details in the checkout page only. The PIN nowhere, ever, for anyone.",
+        "Keep the receipt and read the alert twice. The market's change-counting, moved indoors.",
+      ]),
+      h2("What arrives in your hand"),
+      p(
+        "When the parcel comes, open it while the delivery person stands there, if the platform allows — the size, the colour, whether the thing is the thing. If it is wrong, the app has a returns road; walk it calmly, with photographs taken the way the document lesson taught: straight, in light, all corners. Refunds take days. That is slowness, not defeat. The whole journey — the checking, the slip, the alert, the photographs — is one sentence your grandmother could have said at any market: look well before you pay, and keep the paper. The market has grown a screen. The sense crosses over intact.",
+      ),
+    ],
+  },
 ];
 

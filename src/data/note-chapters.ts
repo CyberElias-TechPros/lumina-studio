@@ -103,6 +103,16 @@ export const noteChapters: NoteChapter[] = [
     courseSlug: "cybersecurity",
     courseLabel: "Cybersecurity",
   },
+  {
+    slug: "on-your-own",
+    title: "On your own",
+    blurb:
+      "Shortcuts, the phone keyboard, voice typing, email in the pocket, uploads, papers in Drive, recovery, the second lock, the lying forward, and the first honest online purchase.",
+    from: 101,
+    to: 110,
+    courseSlug: "computer-basics-typing",
+    courseLabel: "Computer Basics",
+  },
 ];
 
 const byOrder = [...blogPosts].sort((a, b) => a.order - b.order);
