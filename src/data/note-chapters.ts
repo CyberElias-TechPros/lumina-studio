@@ -103,6 +103,26 @@ export const noteChapters: NoteChapter[] = [
     courseSlug: "cybersecurity",
     courseLabel: "Cybersecurity",
   },
+  {
+    slug: "on-your-own",
+    title: "On your own",
+    blurb:
+      "Shortcuts, the phone keyboard, voice typing, email in the pocket, uploads, papers in Drive, recovery, the second lock, the lying forward, and the first honest online purchase.",
+    from: 101,
+    to: 110,
+    courseSlug: "computer-basics-typing",
+    courseLabel: "Computer Basics",
+  },
+  {
+    slug: "the-wider-street",
+    title: "The wider street",
+    blurb:
+      "The bank app, a new phone, selling, the ride, government portals, free learning, a work profile, the cloned voice, the yearly clean, and teaching the next person.",
+    from: 111,
+    to: 120,
+    courseSlug: "digital-productivity",
+    courseLabel: "Digital Productivity",
+  },
 ];
 
 const byOrder = [...blogPosts].sort((a, b) => a.order - b.order);
