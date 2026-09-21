@@ -153,6 +153,16 @@ export const noteChapters: NoteChapter[] = [
     courseSlug: "business-freelancing",
     courseLabel: "Business & Freelancing",
   },
+  {
+    slug: "standing-taller",
+    title: "Standing taller",
+    blurb:
+      "Checking results, the family table, the CV that gets read, the screen interview, slides, email that gets answered, notes that last, the pivot table, health online, and the upgrade habit.",
+    from: 151,
+    to: 160,
+    courseSlug: "digital-productivity",
+    courseLabel: "Digital Productivity",
+  },
 ];
 
 const byOrder = [...blogPosts].sort((a, b) => a.order - b.order);

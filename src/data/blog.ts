@@ -5205,7 +5205,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 101,
     author: AUTHOR,
-    date: lessonDate(101),
+    date: "2026-01-01",
     cover: "/images/blog/shortcut-save-hands.jpg",
     coverAlt: "A left little finger pressing the Ctrl key while another finger presses S on a keyboard.",
     body: [
@@ -5253,7 +5253,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 102,
     author: AUTHOR,
-    date: lessonDate(102),
+    date: "2026-01-05",
     cover: "/images/blog/phone-keyboard-hands.jpg",
     coverAlt: "Two thumbs typing on a phone keyboard held in both hands.",
     body: [
@@ -5301,7 +5301,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 103,
     author: AUTHOR,
-    date: lessonDate(103),
+    date: "2026-01-10",
     cover: "/images/blog/voice-typing-mic.jpg",
     coverAlt: "A man speaking toward his phone while words appear on the screen as text.",
     body: [
@@ -5348,7 +5348,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 104,
     author: AUTHOR,
-    date: lessonDate(104),
+    date: "2026-01-14",
     cover: "/images/blog/email-pocket.jpg",
     coverAlt: "A woman reading an email on her phone in an office corridor.",
     body: [
@@ -5396,7 +5396,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 105,
     author: AUTHOR,
-    date: lessonDate(105),
+    date: "2026-01-19",
     cover: "/images/blog/choose-file.jpg",
     coverAlt: "A laptop screen showing an online form with a file chosen and its name beside the button.",
     body: [
@@ -5443,7 +5443,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 106,
     author: AUTHOR,
-    date: lessonDate(106),
+    date: "2026-01-24",
     cover: "/images/blog/drive-papers.jpg",
     coverAlt: "A phone held in both hands showing cloud storage folders named Papers, Certificates and IDs.",
     body: [
@@ -5490,7 +5490,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 107,
     author: AUTHOR,
-    date: lessonDate(107),
+    date: "2026-01-29",
     cover: "/images/blog/recovery-screen.jpg",
     coverAlt: "A man looking thoughtfully at his phone showing an account verification screen.",
     body: [
@@ -5537,7 +5537,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 108,
     author: AUTHOR,
-    date: lessonDate(108),
+    date: "2026-02-01",
     cover: "/images/blog/second-lock.jpg",
     coverAlt: "A phone showing a sign-in approval prompt with two buttons, held by a thoughtful woman.",
     body: [
@@ -5584,7 +5584,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 109,
     author: AUTHOR,
-    date: lessonDate(109),
+    date: "2026-02-05",
     cover: "/images/blog/forwarded-many-times.jpg",
     coverAlt: "A phone screen showing a chat message marked Forwarded many times.",
     body: [
@@ -5631,7 +5631,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 110,
     author: AUTHOR,
-    date: lessonDate(110),
+    date: "2026-02-10",
     cover: "/images/blog/pay-on-delivery.jpg",
     coverAlt: "A courier handing a parcel to a woman at a gate while she holds her phone.",
     body: [
@@ -5678,7 +5678,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 111,
     author: AUTHOR,
-    date: lessonDate(111),
+    date: "2026-02-15",
     cover: "/images/blog/bank-app-confirm.jpg",
     coverAlt: "A thumb pausing above a transfer confirmation button on a phone held in one hand.",
     body: [
@@ -5725,7 +5725,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 112,
     author: AUTHOR,
-    date: lessonDate(112),
+    date: "2026-02-20",
     cover: "/images/blog/two-phones-move.jpg",
     coverAlt: "An old phone and a new phone lying side by side on a table during a move.",
     body: [
@@ -5772,7 +5772,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 113,
     author: AUTHOR,
-    date: lessonDate(113),
+    date: "2026-02-23",
     cover: "/images/blog/selling-photo-item.jpg",
     coverAlt: "Hands photographing a used smartphone on a plain table in good daylight.",
     body: [
@@ -5819,7 +5819,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 114,
     author: AUTHOR,
-    date: lessonDate(114),
+    date: "2026-02-28",
     cover: "/images/blog/ride-app-map.jpg",
     coverAlt: "A phone showing a ride app map with a car icon approaching along the street.",
     body: [
@@ -5866,7 +5866,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 115,
     author: AUTHOR,
-    date: lessonDate(115),
+    date: "2026-03-05",
     cover: "/images/blog/gov-portal-form.jpg",
     coverAlt: "A laptop on a desk showing an official-looking application form beside a file of documents.",
     body: [
@@ -5913,7 +5913,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 116,
     author: AUTHOR,
-    date: lessonDate(116),
+    date: "2026-03-08",
     cover: "/images/blog/youtube-tutorial-learning.jpg",
     coverAlt: "A young person watching a tutorial video on a laptop with a notebook open beside them.",
     body: [
@@ -5960,7 +5960,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 117,
     author: AUTHOR,
-    date: lessonDate(117),
+    date: "2026-03-13",
     cover: "/images/blog/work-profile-laptop.jpg",
     coverAlt: "A laptop showing a professional profile page while a woman types at the desk.",
     body: [
@@ -6007,7 +6007,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 118,
     author: AUTHOR,
-    date: lessonDate(118),
+    date: "2026-03-18",
     cover: "/images/blog/suspect-voice-call.jpg",
     coverAlt: "An older man holding a phone away from his ear, looking at it with suspicion during a call.",
     body: [
@@ -6054,7 +6054,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 119,
     author: AUTHOR,
-    date: lessonDate(119),
+    date: "2026-03-23",
     cover: "/images/blog/uninstall-apps.jpg",
     coverAlt: "A phone screen showing several apps about to be uninstalled.",
     body: [
@@ -6101,7 +6101,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 120,
     author: AUTHOR,
-    date: lessonDate(120),
+    date: "2026-03-26",
     cover: "/images/blog/teaching-one-learner.jpg",
     coverAlt: "A young person guiding an older woman's hand on a laptop trackpad, both smiling slightly.",
     body: [
@@ -6148,7 +6148,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 121,
     author: AUTHOR,
-    date: lessonDate(121),
+    date: "2026-03-30",
     cover: "/images/blog/analyst-monitor-grid.jpg",
     coverAlt: "A young analyst at a desk with two screens showing lists of security alerts.",
     body: [
@@ -6195,7 +6195,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 122,
     author: AUTHOR,
-    date: lessonDate(122),
+    date: "2026-04-04",
     cover: "/images/blog/soc-room-screens.jpg",
     coverAlt: "A dim room with a wall of monitors showing maps and dashboards, two analysts at desks.",
     body: [
@@ -6242,7 +6242,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 123,
     author: AUTHOR,
-    date: lessonDate(123),
+    date: "2026-04-09",
     cover: "/images/blog/siem-dashboard-alerts.jpg",
     coverAlt: "A computer screen showing a dashboard of stacked alerts and a rising line graph.",
     body: [
@@ -6289,7 +6289,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 124,
     author: AUTHOR,
-    date: lessonDate(124),
+    date: "2026-04-14",
     cover: "/images/blog/zero-trust-gate-check.jpg",
     coverAlt: "A security guard checking a visitor's identity card at a compound gate.",
     body: [
@@ -6336,7 +6336,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 125,
     author: AUTHOR,
-    date: lessonDate(125),
+    date: "2026-04-17",
     cover: "/images/blog/fence-check-flashlight.jpg",
     coverAlt: "A man inspecting a compound fence with a torch at dusk, looking for weak points.",
     body: [
@@ -6383,7 +6383,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 126,
     author: AUTHOR,
-    date: lessonDate(126),
+    date: "2026-04-22",
     cover: "/images/blog/tcp-parcels-road.jpg",
     coverAlt: "Small numbered parcels travelling along a road toward a house in warm evening light.",
     body: [
@@ -6430,7 +6430,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 127,
     author: AUTHOR,
-    date: lessonDate(127),
+    date: "2026-04-27",
     cover: "/images/blog/signing-document-seal.jpg",
     coverAlt: "A hand signing a document with a pen beside a laptop showing a digital signing screen.",
     body: [
@@ -6477,7 +6477,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 128,
     author: AUTHOR,
-    date: lessonDate(128),
+    date: "2026-04-30",
     cover: "/images/blog/frontend-code-screen.jpg",
     coverAlt: "A developer at a laptop with code on one half of the screen and a webpage on the other.",
     body: [
@@ -6524,7 +6524,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 129,
     author: AUTHOR,
-    date: lessonDate(129),
+    date: "2026-05-05",
     cover: "/images/blog/ml-engineer-whiteboard.jpg",
     coverAlt: "An engineer at a whiteboard covered in diagrams, a laptop open beside them.",
     body: [
@@ -6571,7 +6571,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 130,
     author: AUTHOR,
-    date: lessonDate(130),
+    date: "2026-05-10",
     cover: "/images/blog/standup-board-sticky.jpg",
     coverAlt: "A team standing around a board covered in sticky notes, one person speaking.",
     body: [
@@ -6618,7 +6618,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 131,
     author: AUTHOR,
-    date: lessonDate(131),
+    date: "2026-05-15",
     cover: "/images/blog/analyst-spreadsheet.jpg",
     coverAlt: "A woman studying a spreadsheet of sales figures on a laptop, pen in hand.",
     body: [
@@ -6665,7 +6665,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 132,
     author: AUTHOR,
-    date: lessonDate(132),
+    date: "2026-05-18",
     cover: "/images/blog/app-idea-notebook.jpg",
     coverAlt: "A notebook with hand-drawn phone screen sketches beside a phone on a desk.",
     body: [
@@ -6712,7 +6712,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 133,
     author: AUTHOR,
-    date: lessonDate(133),
+    date: "2026-05-23",
     cover: "/images/blog/classroom-night-class.jpg",
     coverAlt: "Adult learners at computers in a small evening class, an instructor leaning over one screen.",
     body: [
@@ -6759,7 +6759,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 134,
     author: AUTHOR,
-    date: lessonDate(134),
+    date: "2026-05-27",
     cover: "/images/blog/support-desk-helping.jpg",
     coverAlt: "An IT support officer crouched beside a colleague's desk, fixing a cable while they watch.",
     body: [
@@ -6806,7 +6806,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 135,
     author: AUTHOR,
-    date: lessonDate(135),
+    date: "2026-06-01",
     cover: "/images/blog/small-shop-owner-laptop.jpg",
     coverAlt: "A shop owner and a young developer looking at a laptop together behind a shop counter.",
     body: [
@@ -6853,7 +6853,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 136,
     author: AUTHOR,
-    date: lessonDate(136),
+    date: "2026-06-06",
     cover: "/images/blog/phone-content-calendar.jpg",
     coverAlt: "A planner showing a week of scheduled posts beside a phone on a desk.",
     body: [
@@ -6900,7 +6900,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 137,
     author: AUTHOR,
-    date: lessonDate(137),
+    date: "2026-06-09",
     cover: "/images/blog/designer-colour-swatches.jpg",
     coverAlt: "A designer's desk with colour swatches, sketches and a laptop showing a layout.",
     body: [
@@ -6947,7 +6947,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 138,
     author: AUTHOR,
-    date: lessonDate(138),
+    date: "2026-06-14",
     cover: "/images/blog/remote-work-headphones.jpg",
     coverAlt: "A young professional at a desk with headphones, a laptop and a small UPS, in a home room.",
     body: [
@@ -6994,7 +6994,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 139,
     author: AUTHOR,
-    date: lessonDate(139),
+    date: "2026-06-19",
     cover: "/images/blog/invoice-notebook-writing.jpg",
     coverAlt: "A hand writing figures into a notebook beside a calculator and a laptop.",
     body: [
@@ -7041,7 +7041,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 140,
     author: AUTHOR,
-    date: lessonDate(140),
+    date: "2026-06-24",
     cover: "/images/blog/portfolio-printed-works.jpg",
     coverAlt: "A printed portfolio of project pages spread across a table beside a laptop.",
     body: [
@@ -7088,7 +7088,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 141,
     author: AUTHOR,
-    date: lessonDate(141),
+    date: "2026-06-27",
     cover: "/images/blog/first-client-handshake.jpg",
     coverAlt: "A young freelancer and a shop owner shaking hands over a desk with a laptop on it.",
     body: [
@@ -7135,7 +7135,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 142,
     author: AUTHOR,
-    date: lessonDate(142),
+    date: "2026-07-02",
     cover: "/images/blog/ai-assistant-chat.jpg",
     coverAlt: "A person at a laptop reading a chat conversation with an AI assistant, thinking.",
     body: [
@@ -7182,7 +7182,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 143,
     author: AUTHOR,
-    date: lessonDate(143),
+    date: "2026-07-07",
     cover: "/images/blog/money-two-accounts.jpg",
     coverAlt: "Two bank cards and a small ledger notebook on a desk, one card marked for business.",
     body: [
@@ -7229,7 +7229,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 144,
     author: AUTHOR,
-    date: lessonDate(144),
+    date: "2026-07-10",
     cover: "/images/blog/client-files-locked.jpg",
     coverAlt: "A laptop with a lock screen turned away from visitors on a tidy desk, files closed beside it.",
     body: [
@@ -7276,7 +7276,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 145,
     author: AUTHOR,
-    date: lessonDate(145),
+    date: "2026-07-15",
     cover: "/images/blog/posture-desk-chair.jpg",
     coverAlt: "A person sitting properly at a desk, feet flat, screen raised to eye level on a stand of books.",
     body: [
@@ -7323,7 +7323,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 146,
     author: AUTHOR,
-    date: lessonDate(146),
+    date: "2026-07-19",
     cover: "/images/blog/question-post-forum.jpg",
     coverAlt: "A person typing a question into an online forum on a laptop, notebook open beside them.",
     body: [
@@ -7370,7 +7370,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 147,
     author: AUTHOR,
-    date: lessonDate(147),
+    date: "2026-07-24",
     cover: "/images/blog/payment-reminder-phone.jpg",
     coverAlt: "A hand holding a phone showing a politely worded payment reminder message.",
     body: [
@@ -7417,7 +7417,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 148,
     author: AUTHOR,
-    date: lessonDate(148),
+    date: "2026-07-29",
     cover: "/images/blog/two-desks-small-studio.jpg",
     coverAlt: "Two desks facing each other in a small studio, two people working, one pointing at a screen.",
     body: [
@@ -7464,7 +7464,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 149,
     author: AUTHOR,
-    date: lessonDate(149),
+    date: "2026-08-01",
     cover: "/images/blog/exam-study-desk.jpg",
     coverAlt: "A focused candidate at a desk with past papers, a laptop and a small calendar marked for an exam date.",
     body: [
@@ -7511,7 +7511,7 @@ export const blogPosts: BlogPost[] = [
     series: SERIES,
     order: 150,
     author: AUTHOR,
-    date: lessonDate(150),
+    date: "2026-08-06",
     cover: "/images/blog/morning-routine-desk.jpg",
     coverAlt: "A tidy desk at morning: laptop closed, notebook open with the day's three lines written, tea steaming.",
     body: [
@@ -7547,6 +7547,476 @@ export const blogPosts: BlogPost[] = [
       h2("The shelf stays open"),
       p(
         "These notes began as class notes for beginners in Port Harcourt and grew, one lesson at a time, into the whole walk — from the first sitting to the working years. They remain free, they remain yours, and they remain best used the way the last lesson of every chapter has said: taught onward. Somewhere near you is the person lesson one was written for — the dark screen, the plastic oval, the fear. Hand them the shelf. Sit with them for ten honest minutes. Then go back to your desk, and keep showing up. That is the whole of it. That was always the whole of it.",
+      ),
+    ],
+  },
+  {
+    slug: "checking-results-online",
+    title: "Checking results and admissions online",
+    excerpt:
+      "WAEC, NECO, JAMB: the portals, the tokens, the careful typing of exam numbers — and the one scam that hunts results season every single year.",
+    series: SERIES,
+    order: 151,
+    author: AUTHOR,
+    date: "2026-08-11",
+    cover: "/images/blog/results-portal-phone.jpg",
+    coverAlt: "A young person checking an exam result on a phone at a table, pen and scratch card nearby.",
+    body: [
+      p(
+        "Three letters rule results season in this country: WAEC, NECO, JAMB. The results no longer wait in long queues or notice boards — they live on portals, behind a token or a PIN, and the person who can check a result calmly, correctly and cheaply has a small superpower every July and August. This lesson is that superpower, and the one trap that hunts it every single year.",
+      ),
+      p(
+        "The pattern is the same on every board's portal, so learn it once: go to the official address — the board's own site, typed yourself or reached from its verified page, the government-portals lesson's law — buy or already hold your checker token or PIN, enter your exam number exactly as it sits on your photo card, choose your exam year, and submit. The exam number is the whole exam's identity; one swapped digit returns somebody else's silence or somebody else's shame. Type it slowly, twice, from the card itself — not from memory, not from a cousin's WhatsApp message. Then the slip: screenshot it, and download or print the proper PDF into the Papers folder in Drive where the certificates live. A result that exists only in a gallery is one stolen phone from becoming a rumour.",
+      ),
+      fig(
+        "/images/blog/results-portal-phone.jpg",
+        "A young person checking an exam result on a phone at a table, pen and checker card nearby.",
+        "Exam number from the card, not from memory. The slip saved the same hour — the papers lesson, applied to the day's harvest.",
+      ),
+      h2("Admissions, and the trap"),
+      p(
+        "For admissions, the portal is also the truth: JAMB's CAPS shows an admission the moment it is offered, and accepting it there — on the portal, in your own account — is what makes it real. Check with your registration number, at your pace, yourself. Which brings the season's professional liar: the result upgrader. Somebody in a comment section or a quiet DM says they can upgrade a 4 to a 5, change a course, unlock a withheld result — for a fee, quietly, today only. Hold it beside the shelf's oldest tells: hurry, secrecy, fee, and now a fourth — a stranger claiming power over an institution's records. No upgrader has ever touched a board's database. They harvest the fee and the hope, and the candidate discovers both facts at the same painful printout. Results are appealed through the board's own processes, in writing, at its own offices — never through a helper with a data plan.",
+      ),
+      p(
+        "Parents and guardians: the same lesson, taught sideways. Do not outsource the checking to a café stranger who then holds the candidate's numbers and photos hostage to extort a gratitude fee. Sit with the candidate, type the number together, save the slip together. The café earns honestly when it provides the printer and the light — the account, the numbers and the checking remain the family's.",
+      ),
+      fig(
+        "/images/blog/result-slip-printed.jpg",
+        "A printed result slip lying on a table beside a phone showing the same result, reading glasses resting nearby.",
+        "Two copies, one truth: the printout for the file at home, the PDF in Drive for the world. The upgrader's fee saved is a semester's respect kept.",
+      ),
+      ul([
+        "Type the board's official address yourself; bookmark it. Adverts above the result are not the result.",
+        "Exam number from the original card, typed twice, slowly. Then slip: screenshot, PDF, Papers folder.",
+        "Admissions are accepted on the portal itself, in your own account. CAPS is the truth; screenshots of CAPS are not.",
+        "Nobody can upgrade a result. The fee is the product. Appeals go to the board, in writing, in person.",
+      ]),
+      h2("The season, handled"),
+      p(
+        "Results season rewards exactly what this shelf has taught all along: the real address, the careful typing, the slip kept, the hurry refused. A family that can check its own results, accept its own admission and file its own slips has retired one of the season's oldest taxes — paid to queues, to cafés, and to liars. The next lesson stays at the family table, where the phones are smaller and the stakes are the children.",
+      ),
+    ],
+  },
+  {
+    slug: "the-family-table",
+    title: "The family table: phones, kids, and parental controls",
+    excerpt:
+      "Children inherit our screens before our manners. Family Link, app approval, the bedtime rule that binds adults too — raising the next generation of users without a fight.",
+    series: SERIES,
+    order: 152,
+    author: AUTHOR,
+    date: "2026-08-16",
+    cover: "/images/blog/family-table-phones.jpg",
+    coverAlt: "A family at a living-room table, a parent guiding a child's hands on a small tablet.",
+    body: [
+      p(
+        "A child in this country meets a screen before they can read, and long before they can judge what the screen says. The family that handles this well does not ban the phone and does not surrender to it. It does what this whole shelf has done for adults: names the parts, sets the rules, teaches the reasons. This lesson is the same education, one generation down — and it begins with a confession: the child is watching how you use yours.",
+      ),
+      p(
+        "The tooling first, because it is free and already built. On the child's Android phone, Google's Family Link — the family-table lesson's gatekeeper — lets a parent approve every app install before it lands, set sensible daily limits, see where the hours go, and pause the whole device at bedtime from the parent's own phone. On the video platforms, the kids' versions exist precisely so the algorithm is not raising the child; turn them on. On the browser, safe search is a setting, not a prayer. None of this replaces the conversation — it holds the fence while the conversation does its work, the way the second lock holds the door while the manners keep the street.",
+      ),
+      fig(
+        "/images/blog/parental-controls-screen.jpg",
+        "A parent's phone showing a child's device controls: daily limit and an approval screen, UI slightly soft.",
+        "The fence, not the warden. Approve the installs, set the bedtime, and spend the saved arguments on the real teaching.",
+      ),
+      h2("The rules that actually teach"),
+      p(
+        "Three rules, taught with their reasons the way lesson one hundred and twenty taught the elders. The name rule: in games and chats, a child never uses their real full name, school, street or photographs of themselves — strangers online are strangers, and the manners of the compound apply at every screen. The tell rule: anything that frightens, anything that asks for pictures, anything that says do not tell your parents — shown to a parent, immediately, without punishment; the child who is punished for reporting learns to hide, and hiding is the only real danger. And the table rule: phones sleep outside the bedroom at night — every phone, parents' included, in one basket by the sitting-room door; the child who watches you obey it learns more than any setting can teach.",
+      ),
+      p(
+        "And teach downward with the shelf itself. The child who can play is ready to learn: the typing games, then the files lesson softened, then the pause before a link — the same curriculum, age-bent. A teenager can read lesson six and seven as their own; a twelve-year-old can run the family's WhatsApp backup. The greatest parental control was never an app. It is the child who grows into a user who understands the machine — because somebody sat beside them, ten honest minutes at a time, and named the parts out loud.",
+      ),
+      fig(
+        "/images/blog/child-typing-supervised.jpg",
+        "A child typing on a laptop at a family table while a parent sits close, watching and smiling.",
+        "The best filter ever installed: a parent within reach. The screen teaches; the table decides what it may teach.",
+      ),
+      ul([
+        "Set up Family Link on the child's device tonight — approvals on, a bedtime limit, kids' video profiles on.",
+        "Teach the three rules with their reasons: name, tell, table. Write the last one where everybody, including you, obeys it.",
+        "Practise the no-punishment rule until it is true. Children report dangers to safety, not to ambush.",
+        "Give the child one small real task on the machine each week — typing practice, the backup, the calendar. Users are raised, not restricted.",
+      ]),
+      h2("The long inheritance"),
+      p(
+        "The children on your knees will run a country whose every road, market and classroom is a screen. What they will not pick up from school is judgement — that walks across the family table, one evening at a time: the rules kept, the reasons given, the example set by the adult whose own phone sleeps in the basket by the door. Restriction produces a sneaky user and a skilled liar. Teaching produces the person these notes have always been writing to. The next lesson returns to the working road, at its very first gate: the paper that decides who gets to interview.",
+      ),
+    ],
+  },
+  {
+    slug: "the-cv-that-gets-read",
+    title: "The CV that gets read",
+    excerpt:
+      "Most CVs die inside a machine before a human ever sees them. The plain format that survives the robot parser, the honest keywords that match the advert, and the one page that opens doors.",
+    series: SERIES,
+    order: 153,
+    author: AUTHOR,
+    date: "2026-08-19",
+    cover: "/images/blog/cv-tailoring-desk.jpg",
+    coverAlt: "A job seeker tailoring a CV on a laptop, the job advert open on a phone beside the keyboard.",
+    body: [
+      p(
+        "The one-page honest CV of lesson seventy-five got its facts straight. This lesson gets it read — because between your CV and the employer's eyes now stands a machine. Big companies and job portals feed every CV into software that scans it for skills, ranks it, and shows a human only the top of the pile. The software — people call it an ATS, an applicant tracking system — is not clever. That is the tragedy and the opportunity: it rewards the plain, the ordered and the matching, and it quietly kills the beautiful, the creative and the strange.",
+      ),
+      p(
+        "So the format that survives is boring, and boring is the strategy. One column, no text boxes, no tables, no photographs in odd corners — all of those scramble a parser the way a wrong file extension scrambles the open-with lesson. Standard headings the software recognises: Summary, Work Experience, Education, Skills, in that order. Dates beside every role in one honest pattern. A plain font, generous spacing, one page for the first decade of your life. Save as PDF, named firstname-lastname-cv, and your contact details as ordinary text — an email address and a phone number the machine can copy, not a designer's graphic the machine cannot read.",
+      ),
+      fig(
+        "/images/blog/cv-tailoring-desk.jpg",
+        "A job seeker tailoring a CV on a laptop, the job advert open on a phone beside the keyboard.",
+        "The advert on the right is the answer sheet. Its honest words, carried into the CV on the left, are what the robot — and the human — are matching.",
+      ),
+      h2("The keywords, honestly carried"),
+      p(
+        "The scanner matches words, and the words it is matching are sitting in the advert. If the advert says customer service, the CV says customer service — not people management, not client relations, however truer your phrase may be. Read the advert twice, list its plain skill words, and carry the ones you truthfully own into your Skills and Experience lines, in the advert's own language. This is not deception; it is translation. The lie — claiming a skill you cannot demonstrate in the room — is the old tells again, and the interview is where it dies. But the honest absence — owning the skill and naming it in a word the scanner never sees — dies earlier, silently, unseen by any human who might have loved your experience.",
+      ),
+      p(
+        "Then the tailoring, which is where the two-sentences lesson grows into a method: for each serious application, adjust the summary line and reorder the experience so the most relevant role reads first — fifteen minutes with the advert open on the phone beside the keyboard. Sprayed CVs read like sprays; tailored ones read like answers. The upload lesson then carries it through the portal door: right size, the bar finished, the tick screenshotted. The CV that gets read was never the prettiest. It was the one a machine could parse, a scanner could match, and a tired human could trust in ten seconds. Boring, matched, true — the three secrets of the paper that opens the room.",
+      ),
+      fig(
+        "/images/blog/plain-cv-screen.jpg",
+        "A laptop showing a clean one-column CV with plain headings and clear date lines.",
+        "Boring is the strategy: one column, standard headings, honest dates. The machine reads it in seconds; the human reads it in ten.",
+      ),
+      ul([
+        "Rebuild your CV in one column with standard headings. Test it: can you copy the text out of the PDF cleanly? Then the machine can too.",
+        "For your next application: read the advert twice, list its skill words, carry your true ones in. Translation, not decoration.",
+        "Tailor the top third per application — summary first, most relevant role first. Fifteen minutes, per door, every time.",
+        "Ask a friend to read your CV for ten seconds and say what you do. If they cannot, neither can the scanner.",
+      ]),
+      h2("After the robot, the human"),
+      p(
+        "Everything the scanner does, it does to decide whose ten seconds of human attention you get. Win them, and the old laws resume: honesty in the room, proof in the portfolio, the manner of the guest. The machine is not your enemy. It is the first gateman of lesson one hundred and twenty-four — dull, fair, and completely readable, now that somebody has finally introduced you.",
+      ),
+    ],
+  },
+  {
+    slug: "the-interview-on-a-screen",
+    title: "The interview on a screen",
+    excerpt:
+      "The online interview is won before it begins: the test run, the window behind you, the camera at eye level, and the manners of a guest in somebody's parlour.",
+    series: SERIES,
+    order: 154,
+    author: AUTHOR,
+    date: "2026-08-24",
+    cover: "/images/blog/interview-video-call.jpg",
+    coverAlt: "A candidate in a video interview on a laptop, neatly dressed, a notebook beside the keyboard.",
+    body: [
+      p(
+        "The interview used to begin when you walked through the office door. Now it begins on a screen — the hiring manager in Lagos, the panel in London, you in your bedroom with a data plan and a chance. The good news: the screen is a room you fully control, and the candidate who prepares the room as carefully as the answers is already ahead of most. This lesson is the preparation, in the order it should happen.",
+      ),
+      p(
+        "The day before: the test run. Install or update the app the panel named — the meeting link says which — and make one test call to a friend: camera working, microphone working, headphones with a mic better again. Charge the laptop fully and keep the charger plugged in for the call; put the phone on silent in another room, and set a backup tap — the hotspot lesson — in case the Wi-Fi chooses the hour to misbehave. Then stage the room. Light from a window facing you, never behind you — a bright window turns you into a silhouette with opinions. The camera at eye level on a stand of books, so you are not looming down like a judge or grovelling up like a suspect. Behind you: a plain wall or a tidy shelf — the panel will see it and judge it, because humans cannot help themselves.",
+      ),
+      fig(
+        "/images/blog/interview-video-call.jpg",
+        "A candidate in a video interview on a laptop, neatly dressed, a notebook beside the keyboard.",
+        "The room, rehearsed: window in front, camera level, wall plain, notebook open. The screen is your parlour — clean it like one.",
+      ),
+      h2("The hour, and the manners"),
+      p(
+        "Tell the house. A Nigerian interview call dies more often to a gate crash, a blender, or an unexpected visitor than to any technology — brief everybody whose noise can reach you, and put the generator on quiet standby if the grid is in one of its moods. Dress fully — yes, including what the camera cannot see; the stand-up-for-the-document surprise has ended careers at the two-minute mark. Join five minutes early, camera on, sitting already: the panel's first sight of you should be ready, not rising. Keep your CV open on the screen beside the call, your questions written in the notebook, a glass of water within reach.",
+      ),
+      p(
+        "Then the old manners, on a new road. Look at the camera when you answer — the small dark dot above the screen — not at your own magnificent face; eye contact has simply moved address. Speak a touch slower than feels natural; networks eat consonants. When the connection stutters, stop, wait, ask did that land? — it reads as competence, not weakness. Answer in the letter's spirit: short, ordered, honest — one point at a time, the way lesson one hundred and fifty-six's emails will be written. And when it ends, thank them by name, leave the call before celebrating, and send the thank-you note the same day. The screen interview is still a visit: you are the guest, the panel is the parlour, and the oldest courtesy is the newest bandwidth.",
+      ),
+      fig(
+        "/images/blog/interview-desk-setup.jpg",
+        "A tidy interview desk from the candidate's view: laptop on books at eye level, headphones, CV printed, water glass, notebook.",
+        "The pre-flight check, laid out: power, sound, light, notes, water. Everything within reach; nothing within earshot that can shame you.",
+      ),
+      ul([
+        "Test call the day before: camera, microphone, headphones, backup hotspot. Two minutes of testing buys an hour of calm.",
+        "Window in front of you, camera at eye level, wall plain behind you. Set it tonight, not at five minutes to the call.",
+        "Brief the house and silence the phone in another room. The blender has ended more interviews than the network.",
+        "Camera, not mirror: look at the dot when you answer. Then the same-day thank-you message.",
+      ]),
+      h2("The room you control"),
+      p(
+        "The office candidate competes in a room the employer built. You compete in a room you built — its light, its sound, its calm. That is not a disadvantage; it is a rehearsal. Every habit this lesson installs — the test run, the staged room, the briefed house, the early arrival — is the same discipline the remote lesson asked of the paid professional. Practise it at the interview, and you arrive at the job already fluent in its daily grammar.",
+      ),
+    ],
+  },
+  {
+    slug: "slides-that-speak",
+    title: "Slides that speak",
+    excerpt:
+      "The audience cannot read and listen at once, so the slide carries the lantern and you carry the talk. One idea per slide, letters for the back row, and the rehearsal that removes the fear.",
+    series: SERIES,
+    order: 155,
+    author: AUTHOR,
+    date: "2026-08-29",
+    cover: "/images/blog/slides-projector-talk.jpg",
+    coverAlt: "A speaker beside a projected slide in a small hall, the audience listening in shadow.",
+    body: [
+      p(
+        "Sooner or later the working life asks you to stand in front of people and present — the church committee, the client, the class, the town meeting — and the laptop comes with the territory. The slides were invented to help, and they have mostly become a punishment: walls of tiny text read aloud to a suffering room. This lesson returns them to their job. The slide is the lantern; you are the talk. The moment the slide tries to be the talk, both die.",
+      ),
+      p(
+        "The rules are few and merciful. One idea per slide — if the slide needs an and, it is two slides. Letters big enough for the back row: a title and at most a handful of short lines, in the poster lesson's discipline turned sideways — readable at a glance from a distance, or not at all. Few words, because the audience cannot read and listen to you at the same time; they will read, in silence, while your voice is wasted. So the slide shows the one number, the one picture, the one name — and your mouth carries the story. Two fonts, three colours, the designer's restraint. Images that mean something, not clip art that fills silence.",
+      ),
+      fig(
+        "/images/blog/slides-projector-talk.jpg",
+        "A speaker beside a projected slide in a small hall, the audience listening in shadow.",
+        "The lantern and the talk. The slide glows with one idea; the room looks at one or the other, never fighting both.",
+      ),
+      h2("The preparation that removes the fear"),
+      p(
+        "Public fear of presenting is mostly fear of the machine betraying you, and that fear is treatable. Rehearse aloud once, with a timer, standing — the first run always surprises, which is its purpose. Learn the projector lesson's walk: if the venue matters, test the venue — the projector, the adapter, whether your laptop speaks its language — before the audience arrives, not during your introduction. Learn the presenter view, so your notes sit on your screen while the wall shows only the slide. Carry the slides on a flash drive and in your email, both, in the PDF lesson's spirit: the format that survives every machine. And arrive early enough to be the calmest person in the building.",
+      ),
+      p(
+        "Then the delivery, which is smaller than the fear: face the room, not the wall — the audience gets your eyes, the screen gets your pointing hand. Speak slower than feels natural; rooms eat volume the way networks eat consonants. Pause after each big idea and let the silence hold it. And never, ever read the slide aloud with your back to the room — the audience read it before you finished turning. If a slide needs reading, that is what the handout is for: printed, or sent after, where it cannot compete with your voice. Do these small things and something wonderful happens on the third or fourth slide: the fear leaves, because the room starts nodding, and nodding is a conversation.",
+      ),
+      fig(
+        "/images/blog/slide-big-font.jpg",
+        "A laptop screen showing a single large slide: one big statement, one large number, nothing else.",
+        "The whole art on one slide: one statement, one number, and a speaker who knows the rest by heart.",
+      ),
+      ul([
+        "Rewrite your next presentation: one idea per slide, nothing smaller than back-row letters. Cut half the words; cut the slide that fights you.",
+        "Rehearse aloud, timed, standing, once. The second time is for the room; the first is for the truth.",
+        "Test the venue's projector or screen before the hour, and carry the slides twice — flash drive and email.",
+        "Face the room. Pause after the big ideas. Send the handout after, never read it out during.",
+      ]),
+      h2("Why this is a basic skill"),
+      p(
+        "Because the person who can stand, lantern in hand, and make a room understand an idea in ten minutes becomes the person the room asks to explain things — and the person rooms ask to explain things is the person rooms promote, hire and recommend. The analyst's chart, the designer's concept, the teacher's lesson, the pastor's announcement: all of them ride on this one small machine craft. The lantern is cheap. The nerve is practised. Begin with the next staff meeting.",
+      ),
+    ],
+  },
+  {
+    slug: "email-that-gets-answered",
+    title: "Email that gets answered",
+    excerpt:
+      "A busy person answers mail between meetings, in twenty seconds each. The subject line that says the thing, the first sentence that asks, and the follow-up that is polite and shameless.",
+    series: SERIES,
+    order: 156,
+    author: AUTHOR,
+    date: "2026-09-01",
+    cover: "/images/blog/email-subject-line.jpg",
+    coverAlt: "A laptop screen showing a short email being composed with a clear subject line filled.",
+    body: [
+      p(
+        "Your first email was written to be correct. This one is written to be answered — a different craft, because the person receiving it is drowning. A working professional clears a hundred messages a day between meetings, giving each about twenty seconds: open, scan, decide — reply, later, or never. The craft of email is winning those twenty seconds, and every rule below serves that one mercy: make it easy to say yes.",
+      ),
+      p(
+        "The subject line is half the battle, because it decides whether the letter opens at all. It states the thing, in plain words, with the decision needed: Invoice 12 for approval — due Friday, not hello or quick question or, sin of sins, empty. The first sentence then does the second half of the work: it states the ask — I am writing to ask whether the budget can cover two more laptops this term. Not a warm-up paragraph about the weather of the matter; the ask, first, so a reader who can answer it in one line has already finished. Then the short middle: two or three tight paragraphs, one idea each, white space between — the letter lesson's manners with the analyst's economy. One ask per email. The letter asking for a meeting, a document and a decision gets sent to later, which is where letters go to die; the letter asking for one thing gets the reply today.",
+      ),
+      fig(
+        "/images/blog/email-subject-line.jpg",
+        "A laptop screen showing a short email being composed with a clear subject line filled.",
+        "Twenty seconds of reading, structured for mercy: subject states the matter, first sentence asks, one decision needed. Answered by lunch.",
+      ),
+      h2("The follow-up, and the manners around it"),
+      p(
+        "Silence after two days is not rejection; it is a full inbox. The follow-up is not rude — it is professional, and it has a shape: three to five working days later, reply on the same thread — the history rises for them like a file reopened, and your subject line is already familiar — with one polite line: dear ma, floating this to the top of your inbox; the invoice approval is due Friday. No new thread, no guilt, no novel. If a second follow-up is needed, change something: shorten the ask, offer a call, or — for true deadlines — go up or around with care, copying the shared boss only when the matter is genuinely shared, the Cc lesson's law. The shameless follow-up, politely done, closes more deals in this country than brilliance ever has; the timid letter that dies quietly after one attempt was never answered because it was never seen.",
+      ),
+      p(
+        "And the small courtesies that make your address a welcome one: the signature with name, role and phone — no quotations, no eight colours; the reply-all refused unless the whole corridor truly needs the thanks; attachments attached before sending, checked twice, the pocket lesson's rule; and the twenty-second mercy granted backwards — when you reply to others, answer the ask in the first line, so your name becomes the one inboxes are glad to see. Email is a reputation written one message at a time. The craft above is how yours becomes the easy yes.",
+      ),
+      fig(
+        "/images/blog/email-inbox-zero.jpg",
+        "A laptop showing a tidy inbox with few messages and two replies typed in short lines.",
+        "The inbox, at peace. Every message answered in the first line makes your address the one that gets opened first.",
+      ),
+      ul([
+        "Rewrite your next email: subject states the matter, first sentence asks, one ask only. Then send.",
+        "Adopt the 3–5 day follow-up on the same thread, one line, no apology. Bury shame where it belongs.",
+        "Read your sent folder this week: count the emails with no clear ask. That is why they died.",
+        "Reply to others the way you wish to be replied to: answer first, manners after, signatures quiet.",
+      ]),
+      h2("The twenty-second gift"),
+      p(
+        "Every rule here is one mercy in two directions: it wins the reader's twenty seconds, and it buys your letter a life. The person whose emails are clear, short and easy to answer is not merely efficient — they are trusted, because clarity reads as competence and brevity reads as respect. Write the letter a busy person can say yes to, and busy people will keep opening yours first.",
+      ),
+    ],
+  },
+  {
+    slug: "notes-that-last",
+    title: "Notes that last",
+    excerpt:
+      "You will not remember Friday in March, so Friday must write to March. One home for every note, named and dated, reviewed weekly — the quiet system that turns busy weeks into a memory.",
+    series: SERIES,
+    order: 157,
+    author: AUTHOR,
+    date: "2026-09-06",
+    cover: "/images/blog/notebook-system-desk.jpg",
+    coverAlt: "An open notebook with dated notes beside a phone showing a notes app, pen across the page.",
+    body: [
+      p(
+        "Here is a painful test: what did you agree on last Tuesday's call? Who told you the fee changed, and when? Most people cannot say, not because the memory is weak but because nothing was ever written where March could find it. The working life runs on notes — decisions, names, prices, promises — and the difference between people who seem organised and people who actually are, is not talent. It is one home, one habit, and ten minutes a week.",
+      ),
+      p(
+        "One home. Not seven. Choose a single place where every note lives — a notes app on the phone and computer that syncs, or one good notebook always in the same bag pocket — and let it become boring with use. The scattered system is the failed system: the meeting note in the phone, the price on a card, the promise in a chat that has since sunk. Whatever you choose, the rules of the house are the ones you already keep elsewhere: every note gets a date and a title — 14 June, Chidi — generator quote — so the search box of the Ctrl+F lesson finds it in a blink next March. Capture fast, file weekly: in the meeting, thumb flying, spelling be damned; on Friday, ten minutes to tidy, tag and throw out the notes that seemed urgent and turned out to be noise.",
+      ),
+      fig(
+        "/images/blog/notebook-system-desk.jpg",
+        "An open notebook with dated notes beside a phone showing the same notes in an app, pen across the page.",
+        "Two homes that are one home: paper for the meeting, the app for the archive. Every entry dated, every title honest, Friday tidies it.",
+      ),
+      h2("What to write, and the weekly review"),
+      p(
+        "Meeting notes have kept a four-line discipline for a century, and it survives every app: the date and the people; what was decided; who carries what, with a date; and what nobody agreed but somebody thinks happened. Write decisions in the room, and where you can, read them back aloud before the meeting ends — may I confirm, we agreed Friday for the delivery and Nana pays the courier — the sentence that has saved more working friendships than any contract. Personal notes follow the same bones: what happened, what it means, what I will do. And the photograph saves the paper world: a notebook page shot into Drive, the papers lesson's backup applied to your own handwriting, survives the bag, the rain and the taxi seat.",
+      ),
+      p(
+        "The weekly review is where notes become a memory instead of a landfill. Friday, ten minutes: read the week's notes top to bottom, carry the unfinished whos and whens into next week's page, check every promise against the calendar, and — the part nobody regrets — search something old. Watch the search box find, in three seconds, the phone number you wrote in February and thought you would remember. That small miracle, repeated weekly, is the whole system paying rent. You will not remember Friday in March. Friday wrote to March, in a house March knows how to search. That is what organised people actually do, and from this week, so do you.",
+      ),
+      fig(
+        "/images/blog/notes-app-phone.jpg",
+        "A hand using a notes app on a phone, the list showing dated titled notes, one being edited.",
+        "The archive in the pocket. Dated, titled, searchable — the meeting you half-remember is three thumb-taps from the truth.",
+      ),
+      ul([
+        "Choose the one home today — app or notebook — and move tomorrow's notes there. Boring and faithful beats clever and abandoned.",
+        "Date and title every note, always. Future-you searches titles, not vibes.",
+        "Book the Friday ten minutes: tidy the week, carry the open whos and whens, search something old.",
+        "Meetings: date, people, decided, who carries what by when — read back aloud before the room breaks up.",
+      ]),
+      h2("The memory you are building"),
+      p(
+        "A year of this system leaves you with something nobody can take to the cleaners: a searchable record of your own working life — every decision, every price, every promise and its date. It makes you the person who says as I wrote on the 14th instead of I think; it settles arguments before they start; and it compounds, quietly, into the professional's greatest advantage — knowing what actually happened. The books of lesson one hundred and forty-three keep the money honest. This keeps the weeks honest. Same discipline, smaller notebook.",
+      ),
+    ],
+  },
+  {
+    slug: "the-pivot-table-properly",
+    title: "The pivot table, properly",
+    excerpt:
+      "One thousand rows in, three sentences out, without touching a formula: select, drag, read. The spreadsheet's most respected tool, walked slowly in the series voice.",
+    series: SERIES,
+    order: 158,
+    author: AUTHOR,
+    date: "2026-09-10",
+    cover: "/images/blog/pivot-table-screen.jpg",
+    coverAlt: "A laptop showing a spreadsheet of sales rows beside a small pivot summary table.",
+    body: [
+      p(
+        "The data analyst lesson named the pivot table as the most respected spreadsheet skill in the room. This lesson teaches it, slowly, because the respect is deserved and the fear is not: the pivot table is one of those machines that looks like sorcery and is actually a lever. Ten minutes here replaces hours of formula-copying, and the summary it builds never lies about where it came from.",
+      ),
+      p(
+        "Picture the raw material first, because every pivot begins the same way: one solid block of rows — a thousand sales, a term's fees, a month's transactions — with one clean header row on top: Date, Item, Amount, Branch. Clean means the sorting lesson's rules: no merged cells, no blank columns inside, no notes wandering in row 40. Then the whole act: click once inside the block, choose Insert, then Pivot Table, and tell it where the new summary should live. The spreadsheet now offers you a small panel with four trays — Rows, Columns, Values, Filters — and the whole craft is dragging fields between trays and watching the summary rebuild itself. That is all a pivot is: a machine that groups your rows and counts or adds them, at your instruction, in seconds.",
+      ),
+      fig(
+        "/images/blog/pivot-table-screen.jpg",
+        "A laptop showing a spreadsheet of sales rows beside a small pivot summary table.",
+        "One thousand rows in, three sentences out. The left panel is the raw truth; the right table is the lever's answer, rebuilt in one drag.",
+      ),
+      h2("A worked example, walked"),
+      p(
+        "Drag Item into Rows, and the table lists every product once, neatly, instead of the thousand messy times it appears in the data. Drag Amount into Values, and it adds the money beside each product — the machine chooses Sum because Amount is money; if you drag a column of names instead, it counts them, which is how you answer how many, not how much. Drag Branch into Columns, and the totals split side by side: this product, per branch, meeting in the corner cell. Drag Date under Rows above Item, and the months stack into a story of the year. Every question a small business asks its books — what sells, where, when, how much — is two or three drags away, and the pivot lesson's punchline is the analyst lesson's too: the summary is a lens, not a copy. Change nothing in the original block; refresh the pivot when the data grows, and the lens re-focuses itself. Formulas typed by hand into the summary cannot make that promise — a pivot's answer is always one refresh away from the truth.",
+      ),
+      p(
+        "Then the finishing manners: sort the result — the biggest number to the top, the answer the boss actually asked; give the summary a title that states the question, June sales by branch, not PivotTable4; and where the summary must travel, copy it as values into a fresh sheet or PDF, the way every document on this shelf travels. Practise once on any data you own — the shop's book, the house expenses from lesson eighty-four — and you will feel the moment every analyst remembers: the thousand rows became one sentence, and you did not type a single formula. That moment is the door to lesson one hundred and thirty-one's whole career.",
+      ),
+      fig(
+        "/images/blog/pivot-rows-drag.jpg",
+        "A close view of a pivot panel on screen, a field being dragged from a list into the Rows tray.",
+        "The whole craft in one gesture: drag the field, drop the tray, watch the answer build itself. No formula, no copy — one lever.",
+      ),
+      ul([
+        "Clean the block first: one header row, no merges, no strays. The pivot is honest; it only summarises what is there.",
+        "Walk the drags in order: Item to Rows, Amount to Values, Branch to Columns, Date to stack the months.",
+        "Remember the lens rule: change nothing in the original data; refresh and the answer re-focuses.",
+        "Title the summary with its question and sort it biggest-first. A pivot that needs explaining has a bad title, not a bad table.",
+      ]),
+      h2("The lever, not the magic"),
+      p(
+        "Nothing here required genius — only the willingness to select, drag and read, which you have been doing since the sorting lesson. That is the quiet joke of the spreadsheet world: its most respected tool is a two-minute skill wearing a fearsome name. Learn it once on your own books, and the next time somebody dumps a thousand rows in your lap and asks for the summary by Friday, you will smile the analyst's smile and say: give me five minutes.",
+      ),
+    ],
+  },
+  {
+    slug: "health-online",
+    title: "Health online, without the lies",
+    excerpt:
+      "Booking appointments, verified telemedicine, pharmacy delivery — and the hard rule the forward lesson left behind: symptoms go to professionals, never to a search box or a broadcast list.",
+    series: SERIES,
+    order: 159,
+    author: AUTHOR,
+    date: "2026-09-15",
+    cover: "/images/blog/health-booking-phone.jpg",
+    coverAlt: "A woman booking a doctor's appointment on her phone at a kitchen table.",
+    body: [
+      p(
+        "The internet has become the front desk of Nigerian healthcare — appointments booked, doctors consulted by video, medicines delivered to the gate — and it works, when it is the real system. It also carries the most dangerous lie on this entire shelf: the health forward. This lesson walks both halves, because the same screen that brings a verified doctor to your parlour also brings the cure that skips the hospital, and the difference is the skill being taught here.",
+      ),
+      p(
+        "The honest half first. Booking: many hospitals and labs now take appointments through their own portals, phone lines or verified WhatsApp lines — the government-portals lesson's law applies with extra force, because health fakes are cruel fakes; the address must be the hospital's own, reached from its verified page or a number you already trust. Telemedicine — a consultation by video or chat — is real and regulated: use platforms you can verify, whose doctors carry recognisable registration, whose reviews stretch over months, and whose fee is stated before the call, the pricing lesson applied to medicine. Pharmacy delivery is real too: licensed pharmacies deliver genuine medicines to your gate — check the seller's licence where the app shows it, check the medicine's packaging and expiry like you check a parcel at the gate, and keep every receipt. Then the records: prescriptions, test results, discharge summaries — scanned and named into the Papers folder in Drive beside the certificates, because in an emergency at midnight, the folder that has your mother's last test result is worth more than everything else on this shelf.",
+      ),
+      fig(
+        "/images/blog/health-booking-phone.jpg",
+        "A woman booking a doctor's appointment on her phone at a kitchen table.",
+        "The front desk, moved home. Verified platform, stated fee, records kept — healthcare with the shelf's manners.",
+      ),
+      h2("The hard rule"),
+      p(
+        "Now the half that saves lives. The forward that lies taught you to check before sharing; for health, the rule is harder — do not diagnose, and do not obey. Symptoms do not go to a search box, a broadcast list, or a church group; they go to a professional, because the search box has no duty of care and no knowledge of your mother's blood pressure. The home cure that skips the hospital — herbs for a lump, lime for a fever that is actually malaria pretending, prayer alone for a child with convulsions — has buried more people on this continent than every scammer combined, and it arrives wearing love. So the family rule, stated once and kept forever: health forwards are not forwarded, not obeyed, and answered with one sentence — let us ask the doctor. And the emergency rule beside it: when the body is clearly failing — chest pain, a child gasping, bleeding that will not stop — you go, you run, you do not type. The phone can book the ambulance. It cannot be one.",
+      ),
+      p(
+        "Used this way, the screen is the best thing that ever happened to a busy household's health: the appointment booked in the queue at work, the follow-up question answered by video, the drugs at the gate, the records safe above the flood. Used carelessly, it is a pharmacy of rumours. You already know how to tell one from the other — verified source, stated fee, professional on the other end, pause before the forward. The next lesson is the last of the chapter, and it asks what happens when all the tools change again.",
+      ),
+      fig(
+        "/images/blog/telemedicine-video-call.jpg",
+        "A man on a video call with a doctor, the doctor visible on the phone screen taking notes.",
+        "The parlour clinic. A verified professional, a stated fee, and the family rule standing guard: symptoms go to the doctor, not to the group.",
+      ),
+      ul([
+        "Build the family health folder in Drive tonight: last prescriptions, test results, blood groups. Midnight-you will bless this hour.",
+        "Verify before the call: the platform, the doctor's registration, the fee in writing. Healthcare gets the government-portals suspicion, doubled.",
+        "Install the family rule at the table: health forwards are neither forwarded nor obeyed. The answer is always let us ask the doctor.",
+        "Emergencies are travelled, not typed. Know your nearest good hospital the way you know your nearest fuel station.",
+      ]),
+      h2("The screen, at the bedside"),
+      p(
+        "Of everything this shelf has taught, this lesson carries the heaviest arithmetic, because the accounts are not in naira. The same care you learned to spend on money — verify the channel, keep the record, refuse the hurry — spends even better on health. The house that books its own appointments, keeps its own records and declines its own forwards is a hard house to hurt. That is the whole lesson. Go and keep it well.",
+      ),
+    ],
+  },
+  {
+    slug: "the-upgrade-habit",
+    title: "The upgrade habit",
+    excerpt:
+      "Every tool on this shelf will be replaced someday, and none of the habits will. The yearly skills audit, one new tool per quarter, unlearning with grace — how to stay current for decades.",
+    series: SERIES,
+    order: 160,
+    author: AUTHOR,
+    date: "2026-09-20",
+    cover: "/images/blog/upgrade-shelf-books.jpg",
+    coverAlt: "A person comparing an old phone and a new phone side by side at a desk, both open on settings.",
+    body: [
+      p(
+        "Here is a fact nobody enjoys saying aloud: half the specific tools in these one hundred and sixty notes will be renamed, rebuilt or retired within ten years. The apps will change their buttons, the platforms will change their rules, the acronyms of lesson thirteen's world will grow new letters. And yet the people these notes describe — the calm analyst, the honest seller, the teacher at the table — will still be working, because what the tools were carrying was never the skill. The upgrade habit is the last lesson of this chapter: how to keep current for decades without chasing every shiny thing off a cliff.",
+      ),
+      p(
+        "The habit has three parts, and the first is the fence-check turned inward: the yearly skills audit. Once a year — your birthday week, same as the cleaning lesson — sit with your trade's adverts and your own work and ask coldly: what changed this year? What are the new names asking for? What did I keep doing the long way because the short way arrived while I was busy? Write three lines: one skill to deepen, one tool to learn, one habit to drop. The audit is not self-criticism; it is maintenance, the fence walk for the only compound that is entirely yours.",
+      ),
+      fig(
+        "/images/blog/upgrade-shelf-books.jpg",
+        "A person comparing an old phone and a new phone side by side at a desk, both open on settings.",
+        "The audit, in one photograph: last year's tool and this year's, compared calmly, neither worshipped. The skill is the person holding both.",
+      ),
+      h2("One tool a quarter, unlearned with grace"),
+      p(
+        "The second part is pace. One new tool per quarter, learned properly by the free-learning method — one month, hands on keys, one real thing built — beats twelve tools dabbled at, the way one finished course beats a gallery of beginnings. Choose by the adverts you actually want and the work actually in front of you, not by the loudest launch of the season. The third part is the harder muscle: unlearning. When the tool changes — the menu moved, the name changed, the road you had memorised rebuilt — the frustration you feel is the old habit fighting the new map. Give it a week and the free videos, the way every migration in your digital life has gone: clumsy on Tuesday, fluent by Friday. The professionals you admire are not people who never unlearned. They are people who unlearn quickly and without ceremony, again and again, until the unlearning itself became the skill.",
+      ),
+      p(
+        "And teach the upgrades onward — the each-one rule, forever. The colleague you walk through the new interface today is the person who walks you through the next one next year; that is how offices, families and this academy actually stay current. These notes will age exactly as all notes do; the habits underneath — verify before you trust, save before you work, pause before you pay, teach before you leave — are the cargo that survives every vehicle. When the machine of 2036 looks back at the machine of this page, the shelf will be different and the reader will be the same kind of person: the one who sat down, named the parts, and kept showing up. That was always the curriculum. It still is. Go and audit your fence.",
+      ),
+      fig(
+        "/images/blog/learn-new-tool-screen.jpg",
+        "A person at a desk following a tutorial for an unfamiliar new app, notebook open, expression calm.",
+        "Quarter one's new tool, month one's clumsiness, week two's fluency. The upgrade habit is just the old ten honest minutes, wearing new menus.",
+      ),
+      ul([
+        "Book the yearly audit: one skill to deepen, one tool to learn, one habit to drop. Three lines, birthday week, every year.",
+        "One new tool per quarter, learned to the point of one real finished thing. Dabbling is collecting; finishing is learning.",
+        "When the menus move, give the new map one week and the free videos. Fluent by Friday, every migration, forever.",
+        "Teach each upgrade to one person as you learn it. The office that teaches itself never needs rescuing.",
+      ]),
+      h2("The shelf, and the road"),
+      p(
+        "One hundred and sixty notes. From the dark screen of lesson one to the habit that outlasts every screen to come. The chapter closes, the notes stay open, and the rule of the whole shelf says goodbye the only way it knows: whatever changes, sit down, name the parts, do the hours, and teach somebody on your way out. The road will keep being rebuilt. So will you. That is not the tragedy of the trade — it is the trade.",
       ),
     ],
   },
