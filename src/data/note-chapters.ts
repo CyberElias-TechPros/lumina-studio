@@ -143,6 +143,16 @@ export const noteChapters: NoteChapter[] = [
     courseSlug: "business-freelancing",
     courseLabel: "Business & Freelancing",
   },
+  {
+    slug: "the-working-life",
+    title: "The working life",
+    blurb:
+      "The first paid client, AI assistants, books for a one-person business, client secrets, the body at the desk, learning in public, quiet clients, a first hire, certificates, and the long game.",
+    from: 141,
+    to: 150,
+    courseSlug: "business-freelancing",
+    courseLabel: "Business & Freelancing",
+  },
 ];
 
 const byOrder = [...blogPosts].sort((a, b) => a.order - b.order);

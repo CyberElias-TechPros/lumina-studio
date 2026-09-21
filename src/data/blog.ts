@@ -7080,5 +7080,475 @@ export const blogPosts: BlogPost[] = [
       ),
     ],
   },
+  {
+    slug: "your-first-paid-client",
+    title: "Your first paid client, start to finish",
+    excerpt:
+      "One real job, walked the whole way: the enquiry, the written quote, the deposit, the delivery, the invoice, and the ask that turns one client into the next.",
+    series: SERIES,
+    order: 141,
+    author: AUTHOR,
+    date: lessonDate(141),
+    cover: "/images/blog/first-client-handshake.jpg",
+    coverAlt: "A young freelancer and a shop owner shaking hands over a desk with a laptop on it.",
+    body: [
+      p(
+        "Everything this shelf built — the skills, the prices, the portfolio — now meets its first customer. Walk one small job the whole way, because the first paid job is not really about the money. It is about learning that the road exists, end to end, and that you can walk it without disappearing. Follow a job: the owner of a pharmacy needs a one-page site; a friend showed her your page — the portfolio lesson already working while you slept.",
+      ),
+      p(
+        "The enquiry arrives, and the first meeting is listening: what does the business need the page to do — answer questions, take orders, be findable? Write the brief back to her in her own words: you said the phone never stops; the page will answer the ten common questions so it stops less. Then the quote, written, from the pricing lesson: what, when, how much, revisions bounded, and a deposit before work begins — half, into your account, seen in your own app, the bank lesson's confirm, before a single line of work. The deposit is not distrust. It is the shape of seriousness, hers and yours.",
+      ),
+      fig(
+        "/images/blog/first-client-handshake.jpg",
+        "A young freelancer and a shop owner shaking hands over a desk with a laptop on it.",
+        "The agreement, sealed. Brief heard, quote accepted, deposit seen — only then does the work begin, and both parties know it.",
+      ),
+      h2("The work, and the discipline of updates"),
+      p(
+        "Deliver slightly early of what you promised, never slightly late — a first client forgives a rough edge and never forgives a missed Tuesday. And send updates without being chased: the three-sentence message every few days — what is done, what is next, what I need from you — is the professional's heartbeat, the remote lesson's practice worn at home. When the site is ready, walk her through it on her own phone, in her own shop, and fix the two things the real thumbs reveal. Hand over everything: the logins, the files, the receipts for the domain — it is hers; you built it, but the shop owns its own name.",
+      ),
+      p(
+        "Then the invoice — a document, not a chat message: your name, her business, what was delivered, the balance, the account, the due date. Paid, thanked, receipted. And now the ask that separates a job from a beginning: the witness line, requested while she is still pleased — one sentence for your portfolio, may I show this work? — and the referral, asked as plainly: if anybody needs this, my name is in your mouth. One job walked the whole way teaches more than ten courses, and it leaves behind the only two things that matter: proof and a person who will vouch for you. The next client is already in her market.",
+      ),
+      fig(
+        "/images/blog/invoice-delivery-document.jpg",
+        "A printed invoice and a signed receipt lying on a shop counter beside a small calculator.",
+        "The end of the road, on paper. Delivered, invoiced, receipted — and the witness line asked before the goodbye.",
+      ),
+      ul([
+        "Take one real job this month, however small. Walk every step: brief, written quote, deposit, build, delivery on her phone, invoice, witness.",
+        "Send the three-sentence update unasked, every few days. Clients renew people who talk first.",
+        "Hand over everything — logins, files, receipts. The shop owns its name.",
+        "Before the goodbye: the witness line and the referral ask. One job, two seeds.",
+      ]),
+      h2("What the first job actually pays"),
+      p(
+        "The fee will be modest, and that is correct — you were buying proof, and the proof is now yours. But count the true wages: a finished delivery in the folder, a witness line beside it, a referral walking the street with your name, and the quiet knowledge that the whole road can be walked without fear. Every freelancer you admire began exactly here, at one small job done completely. The second one is easier. The tenth one sets prices.",
+      ),
+    ],
+  },
+  {
+    slug: "working-with-ai-assistants",
+    title: "Working with AI assistants",
+    excerpt:
+      "The assistant that answers everything and is sure about all of it: how to use the tools as apprentices — drafts, explanations, ideas — and where their confidence must be checked.",
+    series: SERIES,
+    order: 142,
+    author: AUTHOR,
+    date: lessonDate(142),
+    cover: "/images/blog/ai-assistant-chat.jpg",
+    coverAlt: "A person at a laptop reading a chat conversation with an AI assistant, thinking.",
+    body: [
+      p(
+        "A new colleague has joined every office and every phone: the assistant that answers in full sentences, in seconds, in any language you type — writes the letter, explains the tax, drafts the proposal, corrects your code, and never sighs. Used well, it is the most patient apprentice in history, and it is already part of honest work in every field on this shelf. Used carelessly, it is the forward-that-lies with better grammar. This lesson is the difference, and it is now a basic skill, like the keyboard was.",
+      ),
+      p(
+        "Where it shines: drafts — the first version of a letter, a proposal, a poster's wording, written in seconds and then made yours; explanations — a concept from this shelf said five simpler ways until one lands; translation and tone — the firm email softened, the Pidgin polished for a formal client; and brainstorming — ten names, twenty post ideas, three prices, asked without embarrassment. The working method is the one every editor knows: it drafts, you decide. Your knowledge of the actual work — the client, the market, the truth — is what the assistant does not have and cannot fake. The name on the work is still yours, and the judgement must be too.",
+      ),
+      fig(
+        "/images/blog/ai-assistant-chat.jpg",
+        "A person at a laptop reading a chat conversation with an assistant, thinking.",
+        "The apprentice at work: fast, tireless, plausible. The thinking face is not optional — it is the whole method.",
+      ),
+      h2("Where its confidence must be checked"),
+      p(
+        "The assistant does not know when it does not know. It will state a wrong date, invent a policy, cite a law that does not exist — fluently, in beautiful sentences, without blinking. It is the voice-clone lesson in text: fluent is no longer evidence. So the rule is one sentence: everything checkable gets checked before it leaves your hands — the figure, the date, the policy, the legal claim, checked at the source the way the sixty-second check taught. And the privacy line is drawn hard, as always: nothing that belongs to a client goes into the box — not their data, not their invoices, not their logins — and never your own passwords or the codes that die. What you type there has left your house. Treat the chat window like a public street: fine for ideas, dangerous for keys.",
+      ),
+      p(
+        "Then the honesty question every trade is now settling: must you tell the client? The working answer here: the client pays for an outcome — the site that works, the letter that lands — and tools have always been allowed. What is not allowed is passing off its mistakes as your work, or claiming hours you did not work. Draft with the apprentice, verify with your own eyes, stand behind the result with your own name. Do that, and the strongest tool ever handed to a self-taught worker is simply yours — free, patient, and waiting in the same browser you already know how to use.",
+      ),
+      fig(
+        "/images/blog/verify-ai-claims.jpg",
+        "A phone and a laptop side by side: the laptop showing a drafted document, the phone open on a search page checking one claim.",
+        "The new dance: it writes, you verify. One checked figure is worth a page of fluent nonsense.",
+      ),
+      ul([
+        "Give it one real task today: the first draft of a letter you have been postponing. Then rewrite it until it sounds like you.",
+        "Adopt the checking habit: every figure, date or claim that will leave your hands is verified at a real source.",
+        "Nothing confidential goes in: no client data, no logins, no OTPs. The chat window is a street, not a filing cabinet.",
+        "Use it as a teacher, not an oracle: ask it to explain anything from this shelf in simpler words, then test the explanation on somebody.",
+      ]),
+      h2("The apprentice, not the master"),
+      p(
+        "Every tool on this shelf arrived with the same warning label: it does what you tell it, not what you mean — the spreadsheet, the find-and-replace, the calculator. The assistant is that warning at its loudest, because it fills silence with confidence. The people it will serve best are exactly the people this series has been building since lesson one: those who read before they send, check before they trust, and sign nothing they have not understood. The apprentice is remarkable. Keep the master's chair.",
+      ),
+    ],
+  },
+  {
+    slug: "the-books-of-a-one-person-business",
+    title: "The books of a one-person business",
+    excerpt:
+      "You earned it; now keep it. Separate the money, record every in and out, set aside the tax-and-rain share, and reconcile once a month — books a one-person business can actually keep.",
+    series: SERIES,
+    order: 143,
+    author: AUTHOR,
+    date: lessonDate(143),
+    cover: "/images/blog/money-two-accounts.jpg",
+    coverAlt: "Two bank cards and a small ledger notebook on a desk, one card marked for business.",
+    body: [
+      p(
+        "The first payments have started arriving, and with them the oldest trap of the one-person business: the money that comes in and vanishes, uncounted, into the same pocket as transport and tomatoes. Six months later the work was real but the profit is a rumour. The cure is not an accountant — not yet. The cure is four small habits, all of them things you already know how to do, applied to your own money with the discipline you have been applying to other people's systems since lesson one.",
+      ),
+      p(
+        "Habit one: separate the money. A second account — the bank app lesson's two accounts, now with a purpose — receives every business payment and pays every business cost; personal money is transferred out like a salary, decided, not nibbled. Habit two: record every in and out, weekly, fifteen minutes — the weekly money list from lesson eighty-four, grown up: what came in, from whom; what went out, for what. A notebook works; a spreadsheet works better; the discipline works best of all. Habit three: split every payment the day it lands — set aside a slice for tax, because the government's interest in small business is maturing here too, and a slice for rain, because laptops die in the middle of jobs and clients do not extend deadlines for fun. What remains is profit you can actually spend, without owing anybody.",
+      ),
+      fig(
+        "/images/blog/money-two-accounts.jpg",
+        "Two bank cards and a small ledger notebook on a desk, one card marked for business.",
+        "The wall between the pockets. One account receives and pays for the work; the other feeds the house. Nibbling dies here.",
+      ),
+      h2("Habit four: reconcile, monthly"),
+      p(
+        "Once a month, the quiet hour: download the statement — the bank lesson showed where it lives — and sit it beside your own records. Every entry on one should sit on the other. The transfer that never landed. The subscription you meant to cancel, still drinking. The client's payment recorded twice in hope. The reconciliation is the spreadsheet lesson's when-the-cell-looks-broken, applied to life: a difference found now is a one-line fix; the same difference found in December is a mystery novel. And when the year closes, the books answer the questions that decide next year with numbers instead of vibes: which work actually paid, which clients actually pay, what the business costs to run before a single naira of profit.",
+      ),
+      p(
+        "The tools, honestly: begin with notebook or spreadsheet — you own both skills already. When volume justifies it, a small bookkeeping app or a part-time accountant earns their fee, and the books you kept make hiring them a week's work instead of an archaeology. What no tool supplies is the habit; and no investor, no loan officer, no visa officer, no big client will ever take your business more seriously than your books do. The shop that keeps books is a business. The one that does not is a habit.",
+      ),
+      fig(
+        "/images/blog/ledger-weekly.jpg",
+        "A hand writing a week's figures into a ruled notebook beside a phone showing a bank statement.",
+        "Fifteen minutes, once a week. The notebook and the statement, agreeing. That agreement is what a business calls profit.",
+      ),
+      ul([
+        "Open the second account this week, even if the first payment has not arrived. Build the wall before the water.",
+        "Book the weekly fifteen minutes in the calendar — in and out, every week, no exceptions, no heroics.",
+        "Split on arrival: tax slice, rain slice, then spend. The percentages are yours; the order is not negotiable.",
+        "Reconcile on the first Saturday of the month. Statement against records, line by line, until they agree.",
+      ]),
+      h2("The books are the business's own portrait"),
+      p(
+        "One reframe to close: the books are not bureaucracy. They are the honest mirror the bank lesson taught you to read for your employer's sake — read now for your own. The weekly list, the split on arrival, the monthly hour: together they turn a person who earns into a business that lasts, and they answer, at last, the question every worker on this shelf deserves to ask precisely: is this working? Now you will know, to the naira.",
+      ),
+    ],
+  },
+  {
+    slug: "secrets-that-are-not-yours",
+    title: "Secrets that are not yours",
+    excerpt:
+      "Professional work means holding other people's keys: their data, their logins, their files. Confidentiality in ordinary words — what you may see, what you may keep, what you must never carry.",
+    series: SERIES,
+    order: 144,
+    author: AUTHOR,
+    date: lessonDate(144),
+    cover: "/images/blog/client-files-locked.jpg",
+    coverAlt: "A laptop with a lock screen turned away from visitors on a tidy desk, files closed beside it.",
+    body: [
+      p(
+        "The moment a client pays you, you begin holding things that are not yours: their customer list, their invoices, their unfinished plans, sometimes their logins. They did not hand these over because they are careless — they handed them over because the work requires it, the way a tailor is trusted with cloth already cut for a wedding. What you do with that trust, between delivery and long after, is called confidentiality, and in every profession on this shelf it is not a legal decoration. It is the trade itself, written down.",
+      ),
+      p(
+        "The rules, in ordinary words. See only what the work needs: the brief that requires the customer list earns access to the customer list; curiosity about the rest of their files does not. Keep it where it belongs: client work on client folders, on your machine, behind your screen lock — the locking lesson, the shared-machine lesson, all of it now protecting other people's houses, not just yours. Carry nothing away: their files do not travel to your personal Drive, their customer list never becomes your marketing list, and the report you wrote for one client does not moonlight in another proposal. And when the job ends, the keys go back: logins changed or access revoked, your copies of their working files deleted or handed over whole, whichever was agreed. A tailor does not keep the wedding cloth.",
+      ),
+      fig(
+        "/images/blog/client-files-locked.jpg",
+        "A laptop with its lock screen turned away from visitors on a tidy desk, working files closed beside it.",
+        "The desk of a person who holds other people's keys. The screen locks itself; the folders close; the curiosity stays outside.",
+      ),
+      h2("Logins, screenshots, and the paper that says secret"),
+      p(
+        "Three situations deserve their own lines. Logins: a client may hand you theirs to do the work — collect it in a way you can return, never reuse their password anywhere of your own, never save it into your personal browser on a shared machine, and ask them to change it when the job ends; better still, ask them to create an access for you that they can switch off. Screenshots for the portfolio: take them with permission, crop the sensitive rows, and remember that one customer's name in a case study is somebody's data — the witness line lesson assumed the client says yes to being shown; the data never did. And the paper: some clients will hand you an NDA — a non-disclosure agreement, a page that says what you may tell others, for how long. Read it the way you read any contract, ask about any line you do not understand, and keep your signed copy with the papers in Drive. The NDA is not an insult. It is their family word, formalised.",
+      ),
+      p(
+        "And the quiet everyday forms, because the big leaks rarely look dramatic: the project you mention too freely at a beer parlour, the screen facing the window in a café, the file shared to the wrong address — the sharing lesson's one wrong address, now wearing someone else's name. The professional's manner is boring and total: speak of clients' business only with clients, lock everything, share deliberately or not at all. One breach ends a trade career faster than any lack of skill; one kept secret, quietly held for years, is the reason the big clients come. Discretion compounds. So does its absence.",
+      ),
+      fig(
+        "/images/blog/nda-signing-desk.jpg",
+        "A hand signing a short agreement on a desk between two people, pens and a laptop nearby.",
+        "The family word, on paper. What may be told, to whom, until when — agreed before the work, kept long after it.",
+      ),
+      ul([
+        "Audit your access today: every client login, file and folder you hold. Return what the work no longer needs.",
+        "Never reuse a client's password anywhere, and ask for access you can hand back, not keys you must keep.",
+        "Ask permission before any screenshot leaves their work, and crop the data that is not yours to show.",
+        "Signed an NDA? Into Drive it goes, beside the papers. Your copy is the memory that outlives your goodwill.",
+      ]),
+      h2("The trade inside the trade"),
+      p(
+        "Skills get you hired once; discretion gets you hired again, quietly, for years, by people who tell other people with money. Every profession that touches other people's machines — the analyst, the support engineer, the web builder, the accountant of lesson one hundred and forty-three — is trusted first and skilled second, because the files can be rebuilt and the trust cannot. Hold other people's secrets like your own OTPs. The street is watching, and it keeps better records than any ledger.",
+      ),
+    ],
+  },
+  {
+    slug: "the-body-at-the-desk",
+    title: "The body at the desk",
+    excerpt:
+      "The trade you chose is a sitting trade, and sitting is a hazard. Eyes, wrists, neck and back — the small arrangements that let a person work for decades instead of years.",
+    series: SERIES,
+    order: 145,
+    author: AUTHOR,
+    date: lessonDate(145),
+    cover: "/images/blog/posture-desk-chair.jpg",
+    coverAlt: "A person sitting properly at a desk, feet flat, screen raised to eye level on a stand of books.",
+    body: [
+      p(
+        "Nobody warns you that typing is a physical trade. The tailor stands, the mechanic bends, and the person at the machine sits — for years — and the sitting collects its rent quietly: the eyes that blur by evening, the wrist that wakes you at night, the neck that no longer turns without opinion. The body is the only tool every career on this shelf shares, and like every tool here it works better maintained than repaired. This lesson is the maintenance manual, and it costs almost nothing.",
+      ),
+      p(
+        "The arrangement first, because posture follows furniture. Screen raised so its top edge sits at eye level — on books, on a stand, on anything steady — so the neck stops hanging forward like a reading grandmother's. Back against the chair's back, or a cushion folded behind it; feet flat on the floor or on a box, not folded under you like a heron. Elbows near the sides, wrists level — not bent up over the keyboard's edge, which is where the wrist's slow trouble begins. The brightness lesson set your screen light; set your room's too, so the eyes are not reading a lamp in a cave. None of this needs money. It needs one deliberate hour of moving your furniture, once.",
+      ),
+      fig(
+        "/images/blog/posture-desk-chair.jpg",
+        "A person sitting properly at a desk, feet flat, screen raised to eye level on a stand of books.",
+        "The one-hour arrangement: screen at eye level, back supported, feet down, wrists level. The neck, the eyes and the wrists all keep the same appointment.",
+      ),
+      h2("The eyes, the wrists, and the hourly debt"),
+      p(
+        "The eyes rule, learned and kept: every twenty minutes, look at something twenty feet away — out the window, down the corridor — for twenty seconds. It is called 20-20-20, it is free, and it is the difference between eyes that work at forty and eyes that throb at thirty-five; blink too, because staring screens dry them. The wrists: take the small breaks seriously — a minute of shaking out the hands every half hour, the stretch of the fingers backwards, gentle, the way you would stretch any worker's tool after repetitive lifting; and if tingling starts at night, that is not tiredness, that is a warning worth a clinic visit before it becomes a story. And the hourly debt: stand and walk for two minutes every hour — water, gate, window — because the studies all agree with grandmothers: the sitting itself is the hazard, and the body keeps books more honestly than any ledger of lesson one hundred and forty-three.",
+      ),
+      p(
+        "One more, in the Nigerian register: the generator and the heat. A hot room tires a body faster than a long file, and the fan aimed at the room rather than the back of the neck saves the morning's stiffness; the machine's vents were cleared in an earlier lesson — clear your own cooling too, water, actual water, through the day. The work of this shelf is a long game — decades of Thursdays at a desk. The body is the colleague who attends every one of them. Arrange the furniture once, keep the small rules forever, and it stays a colleague instead of becoming a complaint.",
+      ),
+      fig(
+        "/images/blog/eyes-break-window.jpg",
+        "A worker standing at a window, looking out at the street, hands behind back, screen glowing behind them.",
+        "Twenty seconds, twenty feet away, every twenty minutes. The oldest free medicine in the sitting trades.",
+      ),
+      ul([
+        "Rearrange your desk this hour: books under the screen, cushion behind the back, box under the feet if needed.",
+        "Set the 20-20-20 rhythm — a phone timer for a week will install it permanently.",
+        "Hourly: two minutes standing, water taken, window visited. Debt avoided, not repaid.",
+        "Night-time tingling in the hands is a clinic visit, not a character flaw. Go early.",
+      ]),
+      h2("The long game needs a body"),
+      p(
+        "The analyst lesson said the work asks for patience and calm; it quietly asks for vertebrae too. Every plan this chapter has made — the clients, the books, the decade of remote Fridays — assumes a body that can still sit, see and type when the plan matures. Maintain the only tool you cannot replace, and the sitting trade stays what it should be: a livelihood that lifts nothing heavier than a laptop, carried lightly for forty years.",
+      ),
+    ],
+  },
+  {
+    slug: "learning-in-public",
+    title: "Learning in public",
+    excerpt:
+      "Share what you learn, ask questions worth answering, and let the next person watch you climb. The habit that compounds a course into a career — and strangers into colleagues.",
+    series: SERIES,
+    order: 146,
+    author: AUTHOR,
+    date: lessonDate(146),
+    cover: "/images/blog/question-post-forum.jpg",
+    coverAlt: "A person typing a question into an online forum on a laptop, notebook open beside them.",
+    body: [
+      p(
+        "Here is the difference between the people who finish and the people who stall: the finishers let others watch. They post the small win — first pivot table, first page live, first repaired machine — and answer the beginner's question behind them, and in doing so turn a private course into a public track record. Learning in public is not self-promotion. It is the each-one-teach-one lesson pointed forward: you teach what you just learned while it is still warm, and the teaching is what makes it yours.",
+      ),
+      p(
+        "The mechanics are modest. After each week of learning, write three sentences somewhere others can see: what I set out to learn, what actually happened, what I will try next. Post it where your people are — the platform of your trade, a group, the profile lesson's page. Share the artefacts, not just the verdicts: the screenshot of the chart, the before-and-after of the site, the photo of the opened laptop — the portfolio lesson's raw material, produced as a by-product of studying. And answer downward: the question a newcomer asks that you can now answer is your rent for the questions you are about to ask above. Communities remember who answered.",
+      ),
+      fig(
+        "/images/blog/question-post-forum.jpg",
+        "A person typing a question into an online forum on a laptop, notebook open beside them.",
+        "The question, asked well: what I tried, what happened, what I expected. Half the answer is already in the asking.",
+      ),
+      h2("How to ask, and how to find the mentors"),
+      p(
+        "Asking is a skill with manners, and the help lesson wrote them: search first — the answer may already be standing there; show what you tried — the error, the steps, the version, not a shrug and do it for me; and close the loop — return and say what worked, because the person who answers you tomorrow reads whether you came back today. Do this and something quiet happens: the people a level above start recognising your name as the one who asks well and reports back. That recognition is what people call finding a mentor, and it cannot be demanded — it is awarded, in comments and DMs and eventually in referrals, to the visible climber, never to the invisible one.",
+      ),
+      p(
+        "Keep the shelf's guard up while you are open: the forward-that-lies circulates in learning groups too, the gurus selling container-loads of courses you do not need, the helpers who DM with fee-bearing salvation — the job-scam lesson's costume, reborn as mentorship. Verify before you forward, pay for structure when you have inspected the structure, and never send anybody money to be taught what a free video teaches. The public road you are walking is real. It simply has the same street traffic every road here has always had — and you already know how to walk among strangers.",
+      ),
+      fig(
+        "/images/blog/community-meetup-laptops.jpg",
+        "A small group of learners around a table with laptops, one person pointing at a screen while others watch.",
+        "The room builds itself: one learner, one table, one hour — and the questions get better every month. You are somewhere in this photograph.",
+      ),
+      ul([
+        "After every week of learning, post three sentences: aimed, happened, next. Pick your day and keep it.",
+        "Share the artefact with the verdict — screenshot, before-and-after, opened machine. Proof collects itself.",
+        "Ask by the help lesson's manners: searched, tried, error shown. Close every loop you open.",
+        "Answer one beginner's question for every question you ask. The rent keeps the whole floor standing.",
+      ]),
+      h2("The compounding of being seen"),
+      p(
+        "A year of learning in public leaves a strange residue: a timeline of a person who keeps showing up, a small library of answers under your name, strangers who forward you work with the words I have been watching you. The certificates lesson will say what papers prove; this lesson says what presence proves — persistence, honesty about the struggle, and the habit of finishing in daylight. The portfolio shows what you did. The public trail shows who you are. Clients and employers read both, and only one of them builds itself while you learn.",
+      ),
+    ],
+  },
+  {
+    slug: "when-a-client-goes-quiet",
+    title: "When a client goes quiet",
+    excerpt:
+      "The work is delivered; the phone goes silent. Chasing payment with dignity: the gentle ladder, the documents that win disputes, the pause of work, and when to walk away.",
+    series: SERIES,
+    order: 147,
+    author: AUTHOR,
+    date: lessonDate(147),
+    cover: "/images/blog/payment-reminder-phone.jpg",
+    coverAlt: "A hand holding a phone showing a politely worded payment reminder message.",
+    body: [
+      p(
+        "Sooner or later it finds every worker on this shelf: the job was done well, the thanks were warm — and then the silence. No payment, no reply, and a new arrangement of the same five words in your head every morning. This lesson is the ladder for that week, because chasing money with dignity is a skill like any other on this shelf: it has steps, and each step keeps both the money and the name possible.",
+      ),
+      p(
+        "Step one, the gentle reminder, days not hours after due: a short, warm, unashamed message — hello ma, the site went live on the 4th; the balance of the invoice below is due; here is the account again. No apology, no anger; you are reminding, not begging — the invoice lesson's paper speaking for you. Step two, a week later, the restatement: the same message, plainer, with the invoice attached again and a date — by Friday I would need this settled to keep the site maintained. Step three, the pause of work: maintenance stops, access pauses, the next phase waits — politely announced, not ambushed; clients rediscover invoices remarkably fast when the thing they paid for stops breathing. Step four, escalation that does not need shout: a formal demand letter — plain words, dates, amount, your signature; small claims courts here handle exactly these sums; and a client association or platform dispute channel where one exists. What you never do: insult, threaten, or disgrace anybody publicly — the anger post costs more than the debt, and the street remembers the poster, not the debtor.",
+      ),
+      fig(
+        "/images/blog/payment-reminder-phone.jpg",
+        "A hand holding a phone showing a politely worded payment reminder message.",
+        "Step one: short, warm, unashamed. The invoice attached speaks; the tone keeps the door open for the money and the next referral.",
+      ),
+      h2("The documents that win"),
+      p(
+        "Disputes are not won by volume; they are won by paper, and you have been building the paper all along: the written quote saying what would be delivered, the deposit receipt, the update messages tracing approvals, the delivery message, the invoice. Screenshot them in order, and any argument becomes a timeline instead of a quarrel — the analyst lesson's evidence, gathered at a kitchen table. And prevention, because this ladder is best never climbed: deposits before work, balance before handover of final files for new clients, maintenance paid in advance. The pricing lesson's rules are not formality — they are the walls that make the quiet-client week rare instead of seasonal.",
+      ),
+      p(
+        "Then the two verdicts only you can deliver. When to forgive: the client who truly fell on hardship, whose silence was shame not scheme — weigh the history, accept the part-payment, close the file with grace; charity belongs somewhere in every working life, and it is only charity when you chose it. And when to walk away: the client who pays small, owes big, and costs you the one thing you cannot invoice — the months of attention. Fire a client the way the ladder runs, politely and on paper, and give the recovered hours to the ones who pay. The books of lesson one hundred and forty-three will show you something within a year: the quiet clients were never in the profit column at all.",
+      ),
+      fig(
+        "/images/blog/dispute-documents-table.jpg",
+        "A table with printed messages, an invoice and receipts laid out in date order, a hand pointing at one.",
+        "The timeline instead of the quarrel. Quote, deposit, approvals, delivery, invoice — the paper argues so you do not have to shout.",
+      ),
+      ul([
+        "Chase in steps, spaced by weeks: warm reminder, plain restatement, paused work, formal demand. Never skip a step in anger.",
+        "Announce pauses, never ambush. The work stops breathing politely, in writing, with a restart price.",
+        "Keep the timeline together from day one — quote, receipts, approvals. Disputes are won in the folder, not the fight.",
+        "New client? Balance before final handover. The lesson that prevents this one is cheaper than this one.",
+      ]),
+      h2("The name and the naira"),
+      p(
+        "Every step of the ladder protects the same two assets: the money and the name. Run it cold and you usually recover the naira and occasionally the client, who respects being reminded in sentences they could not fault. Run it hot and you keep neither. The working life will always contain a quiet client or two — the shelf cannot legislate other people's pockets. It can make you the person whose paperwork never flinches, whose tone never drops, and whose next client never gets the chance, because the deposit was taken before the first line of work.",
+      ),
+    ],
+  },
+  {
+    slug: "your-first-hand",
+    title: "Your first hand: from freelancer to small studio",
+    excerpt:
+      "The day the work exceeds your hands is a good day with a hard question. Hiring your first person — paying fairly, teaching openly, checking quality, and the arithmetic of two desks.",
+    series: SERIES,
+    order: 148,
+    author: AUTHOR,
+    date: lessonDate(148),
+    cover: "/images/blog/two-desks-small-studio.jpg",
+    coverAlt: "Two desks facing each other in a small studio, two people working, one pointing at a screen.",
+    body: [
+      p(
+        "There is a day in every solo worker's life when the diary says yes to more than the hands can do. Refusing work you cannot carry is the first answer, and often the wise one. But if the extra work keeps knocking — if turning it away becomes a habit — then the question has changed from can I do this to can somebody do this with me. That question, asked honestly, is the birth of every studio, agency and small firm on your street. This lesson is the first hire, done properly.",
+      ),
+      p(
+        "Begin with what you know how to teach, because your first hand is not a genius you found; it is a person you will make good — the each-one-teach-one lesson, now wearing an employer's hat. Look where you already look for proof: the learning-in-public trail, the community answers, the small portfolio that shows finishing, not just flair. Pay fairly — the pricing lesson pointed at you now: know the floor of the work, pay above it, and pay on time, every time, without being chased; nothing travels faster on a street than an employer whose alert arrives late. Agree terms in writing even for a friend — the days, the pay, who owns the work — because the written quote lesson protects employers exactly as it protects freelancers. And start deliberately small: one paid trial project, reviewed honestly, before any standing arrangement. A trial is kindness — it lets both sides walk away cheap.",
+      ),
+      fig(
+        "/images/blog/two-desks-small-studio.jpg",
+        "Two desks facing each other in a small studio, two people working, one pointing at a screen.",
+        "The arithmetic of two desks. The work doubled; the checking doubled too. The pointing at screens is the quality control.",
+      ),
+      h2("The part nobody warns you about"),
+      p(
+        "The moment a second hand joins, your work changes shape: a part of every week is now checking, teaching and deciding — and that part is the job. Quality control is the whole reputation: their work goes out under your name, so everything is reviewed before the client ever sees it — not because the hand is careless, but because the name is yours and the standard must be one. Teach the reasons, not just the steps — the teach lesson's law — because a hand who knows why the deposit comes first, why the update goes unasked, why the client's secret stays sealed, becomes a second standard instead of a second risk. And share the why of the business too: what a job actually pays, why a client was declined, what the books say. Hands who see the whole board protect it like owners.",
+      ),
+      p(
+        "The arithmetic, kept honest by the books: your hour is now worth what the business earns divided by everything it pays — and the hire only makes sense while the hands you freed bring in more than the hands you pay. Watch it monthly, in the ledger of lesson one hundred and forty-three, and be brave enough to shrink as well as grow; a studio of two that lasts beats a studio of five that folds owing wages. But when it holds — when two desks hum and the checking hour becomes the best hour of your week — you will feel the real promotion happen: from person who works, to person who makes work. That is not a bigger ego. It is a bigger table, and the street eats from it.",
+      ),
+      fig(
+        "/images/blog/paying-hand-first-wage.jpg",
+        "An envelope of naira notes and a written payslip being handed across a desk, a handshake above them.",
+        "The first wage, on time, in full, with a payslip. The street keeps its own payroll of employers — make sure yours is the good list.",
+      ),
+      ul([
+        "Hire for finishing, teach for flair. The public trail of a learner predicts more than any interview performance.",
+        "Written terms, fair pay, paid on time. You know what chasing feels like; do not become it.",
+        "Everything reviewed before it reaches the client. The name on the door signs every page.",
+        "Watch the arithmetic monthly in the books. Grow when it holds; shrink before it breaks.",
+      ]),
+      h2("The table grows"),
+      p(
+        "One hundred and twenty taught one person at a table. One hundred and forty-eight is the same table with a second chair — and the same laws: teach the reasons, pay the fair price, keep the written word, hold the standard when nobody is watching. Studios do not die of smallness; they die of forgotten laws. Keep them, and the second chair becomes a third, and the shop you once sat in as a stranger becomes the shop where somebody else learns what a Friday alert feels like — on time, in full, with a future behind it.",
+      ),
+    ],
+  },
+  {
+    slug: "certificates-and-the-track-record",
+    title: "Certificates, exams, and the track record",
+    excerpt:
+      "When a certificate opens a door and when it merely decorates a wall — how to prepare for the exams that matter, and how to keep the proof that outranks every paper.",
+    series: SERIES,
+    order: 149,
+    author: AUTHOR,
+    date: lessonDate(149),
+    cover: "/images/blog/exam-study-desk.jpg",
+    coverAlt: "A focused candidate at a desk with past papers, a laptop and a small calendar marked for an exam date.",
+    body: [
+      p(
+        "Sooner or later the question arrives with the job adverts: certified preferred. The certificates lesson of this chapter said what papers do not prove; this lesson says, fairly, what they do — and how to earn the ones worth their fees. Because the honest position is not certificates are useless and it is not collect them all. It is: some doors are genuinely locked without them, and the skill is knowing which.",
+      ),
+      p(
+        "Where certificates genuinely matter. Regulated and corporate doors: the support and security tracks — the CompTIA family, the cloud platforms' own exams — are asked for by name in the adverts of lesson one hundred and twenty-one's world, and government or large-corporate shortlists filter on them mechanically. Contracts and procurement: a vendor certificate on the wall settles a client's committee faster than any portfolio. And the personal case: a structured exam forces the systematic study that self-taught trails allow you to dodge — the fence-check lesson applied to your own gaps. Where they matter little: creative and client-facing trades — nobody asks the designer of lesson one hundred and thirty-seven for a certificate; they ask for the rack. And they never, anywhere, replace the portfolio — the paper opens the door, the track record closes the room.",
+      ),
+      fig(
+        "/images/blog/exam-study-desk.jpg",
+        "A focused candidate at a desk with past papers, a laptop and a small calendar marked with an exam date.",
+        "Preparation is a calendar, not a mood. Past papers, one section a night, the date circled — the course-finisher's discipline, one last time.",
+      ),
+      h2("Preparing like a professional"),
+      p(
+        "Pick one exam, the one the adverts you actually want keep naming — not the collection the internet is selling this month. Book it: a real date, a real fee, paid — the deposit lesson applied to yourself; nothing concentrates study like a receipt. Then the working method: the syllabus as the fence check — walk your own knowledge against the official list of topics, mark the weak boards honestly; one section a night, the ten-honest-minutes rule grown into a season; and past questions early and often, because every exam has a grammar and the grammar is learnable. Study groups from the learning-in-public lesson multiply this — and the exam fees are real money, so put them in the books as what they are: an investment with a door at the end, chosen once, passed once.",
+      ),
+      p(
+        "After the pass: the certificate goes into Drive with the papers, a line goes onto the profile and the CV, the learning-in-public trail hears about it — and then the paper does its one job, at the door, once. What happens in the room after is the portfolio's whole jurisdiction: the dashboard you can build, the machine you can fix, the client you can keep. Keep both ledgers current — the certificates and the track record — and you become the rare thing every employer is actually shopping for: a person whose paper tells the truth about them, and whose work keeps proving it true.",
+      ),
+      fig(
+        "/images/blog/certificate-frame-shelf.jpg",
+        "A framed certificate on a shelf above a desk, beside a laptop showing a live project of real work.",
+        "The two ledgers, displayed together. The paper opened the door; the screen on the desk is why the room said yes.",
+      ),
+      ul([
+        "Choose one exam — the name in the adverts you actually want — and book a real date this month. The fee is the focus.",
+        "Walk the syllabus like a fence check: strong boards, weak boards, and a study calendar that touches the weak ones nightly.",
+        "Past questions from week one. Every exam has a grammar; learn the grammar while you learn the content.",
+        "After the pass: Drive, profile, CV, community — then back to the work. The paper opens doors; only the work keeps rooms.",
+      ]),
+      h2("The truth about doors"),
+      p(
+        "A career on this shelf is a long corridor of doors, and it helps to stop resenting the locks: some were installed by committees, some by law, some by simple habit — and most open to the combination the market has always honoured, proof on paper and proof in hand. Carry both, and the corridor keeps opening. Carry one, and you will spend your years explaining the other. You already know how to build the proof in hand. This lesson was the cheaper half — a calendar, a syllabus, and a receipt.",
+      ),
+    ],
+  },
+  {
+    slug: "the-working-life",
+    title: "The working life",
+    excerpt:
+      "The last note of the chapter is about the years: routines that survive motivation, integrity that survives temptation, and a career walked one honest Thursday at a time.",
+    series: SERIES,
+    order: 150,
+    author: AUTHOR,
+    date: lessonDate(150),
+    cover: "/images/blog/morning-routine-desk.jpg",
+    coverAlt: "A tidy desk at morning: laptop closed, notebook open with the day's three lines written, tea steaming.",
+    body: [
+      p(
+        "This chapter taught you to be hired, to be paid, to hold secrets and to hold your ground. None of it mentioned the thing that actually decides the career: the years between the Fridays. The working life is not made of breakthroughs. It is made of ordinary Tuesdays, done on purpose, for a long time — and the people you admire on this shelf are people who found a way to keep showing up to their own desks after the excitement moved somewhere else. This last note is about that keeping.",
+      ),
+      p(
+        "Routines that survive motivation, because motivation will not survive the year. The morning page — three lines written before the noise: today's one real thing, its first small step, what can wait; the deep hour — one protected hour, earliest and quietest, given to the work that compounds — the skill, the portfolio, the books — before the inbox donates your day to other people's priorities; and the weekly review — Friday, thirty minutes: what was delivered, what was learned, what next week owes whom. None of it is glamorous; all of it is the hidden machinery behind every smooth career you will ever envy. The ten honest minutes of lesson three, grown into a working life.",
+      ),
+      fig(
+        "/images/blog/morning-routine-desk.jpg",
+        "A tidy desk at morning: laptop closed, notebook open with the day's three lines written, tea steaming.",
+        "The machinery of the years: three lines, one protected hour, a Friday review. The career is what these quietly accumulate into.",
+      ),
+      h2("Integrity, and the long game"),
+      p(
+        "The years will also test the manners this shelf taught, and the tests grow quieter as you rise: the shortcut nobody would see, the secret that would fetch a price, the number that would be kinder rounded, the client who suggests what the law calls something else. The working life's rule for all of them is the family word's rule, scaled: your name is the envelope every future opportunity travels in, and it is spent in seconds and rebuilt in years. Keep the receipts, keep the secrets, keep the standard when the client does not check — not because someone is watching, but because the watching comes later, always, in the form of the biggest opportunity of your life asking around about you.",
+      ),
+      p(
+        "And patience, the last skill: careers here are seasons, not sprints — the learning season, the proof season, the name season, the harvest that arrives while you were busy working and forgot to notice. There will be dry months the books cannot explain and loud months the diary cannot hold; walk both at the same steady pace, with the same Thursday hour, and let compounding do what drama cannot. One hundred and fifty notes ago you sat before a dark screen, afraid of breaking something. Now the screen is your market, your school and your street, and you know what every generation of this academy has learned at these tables: the machine was never the miracle. The person who kept showing up was. The shelf stays open. Go and work.",
+      ),
+      fig(
+        "/images/blog/long-road-signpost.jpg",
+        "A quiet road at golden hour with a simple signpost, a figure walking with a bag, unhurried.",
+        "The long game, at its true pace: one road, one walker, one season at a time. The shelf stays open behind you. Go and work.",
+      ),
+      ul([
+        "Install the machinery this week: three lines each morning, one protected hour, the Friday thirty minutes. Let the calendar carry what motivation cannot.",
+        "Write your own short list of will-nots — the secrets, shortcuts and rounded numbers you have already declined in advance.",
+        "Name your season honestly — learning, proof, or name — and let this week's hour serve that season, not another's.",
+        "When a dry month comes, and it will: shrink the plan, keep the hour. The pace is the promise.",
+      ]),
+      h2("The shelf stays open"),
+      p(
+        "These notes began as class notes for beginners in Port Harcourt and grew, one lesson at a time, into the whole walk — from the first sitting to the working years. They remain free, they remain yours, and they remain best used the way the last lesson of every chapter has said: taught onward. Somewhere near you is the person lesson one was written for — the dark screen, the plastic oval, the fear. Hand them the shelf. Sit with them for ten honest minutes. Then go back to your desk, and keep showing up. That is the whole of it. That was always the whole of it.",
+      ),
+    ],
+  },
 ];
 

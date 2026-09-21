@@ -19,6 +19,7 @@ import { useFlag } from "@/lib/flags";
 import { initAdSense } from "@/lib/adsense";
 import { initGA4 } from "@/lib/ga4";
 import { CookieConsent } from "@/components/marketing/cookie-consent";
+import { WhatsAppFloat } from "@/components/marketing/whatsapp-float";
 import { MotionProvider } from "@/components/motion";
 
 import { ORGANIZATION_LD, WEBSITE_LD, LOCAL_BUSINESS_LD } from "../lib/seo";
@@ -225,6 +226,7 @@ function RootComponent() {
         </SessionProvider>
         <Toaster position="top-right" richColors />
         <CookieConsent />
+        <WhatsAppFloat />
       </MotionProvider>
     </QueryClientProvider>
   );
