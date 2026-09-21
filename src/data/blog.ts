@@ -6140,5 +6140,475 @@ export const blogPosts: BlogPost[] = [
       ),
     ],
   },
+  {
+    slug: "the-cybersecurity-analyst-at-work",
+    title: "The cybersecurity analyst, at work",
+    excerpt:
+      "Somebody is paid to sit on the other side of everything these notes taught you — watching, triaging, asking who knocked. What the job actually is, and how a person walks into it.",
+    series: SERIES,
+    order: 121,
+    author: AUTHOR,
+    date: lessonDate(121),
+    cover: "/images/blog/analyst-monitor-grid.jpg",
+    coverAlt: "A young analyst at a desk with two screens showing lists of security alerts.",
+    body: [
+      p(
+        "Everything on this shelf has a shadow profession. The OTP lesson, the fake link, the prize that wants a fee — on the other side of each of those sits a person employed to notice: to watch the doors of an organisation the way you learned to watch your own. That person is the cybersecurity analyst, and it is the most common front door into security work anywhere in the world. This chapter of notes opens that door and describes the rooms, because many of you asked what all this care can become.",
+      ),
+      p(
+        "The day, honestly described, is triage. The analyst sits before a queue of alerts — a machine flagged a login from two countries in one hour; a staff member reported an email that smells like the link lesson; a laptop began talking to an address no list can explain. Each alert is a knock. Most knocks are wind: a traveller's VPN, a marketing tool nobody registered, a user who mistyped a password twenty times. The analyst's craft is telling wind from footfalls quickly — checking logs, asking the machine's own records what happened, closing the innocent, and escalating the real ones to people who can pull a cable or reset a kingdom.",
+      ),
+      fig(
+        "/images/blog/analyst-monitor-grid.jpg",
+        "A young analyst at a desk with two screens showing lists of security alerts.",
+        "The queue of knocks, in order of loudness. The craft is not staring at screens; it is deciding, alert by alert, wind or footfall.",
+      ),
+      h2("What the work actually asks of a person"),
+      p(
+        "Not a genius. Curiosity that survives repetition, the patience to read a log the way a nurse reads a chart, and calm — because the day the real incident arrives, the room needs a person who writes the time down. The technical floor is lower than people fear: you must know how computers and networks speak — the rooms, the roads, the logs — and then the watching tools, which the next few lessons name. What cannot be taught later is the disposition these notes have been drilling since lesson six: refuse hurry, verify the channel, write things down.",
+      ),
+      p(
+        "How a person walks in, from this shelf: the basics you now own, then networking properly, then the security tools, then a first role — often watching and triaging, night shifts included, because attacks keep office hours in every time zone at once. In Nigeria, the ladder is real but the bigger room is remote: an analyst in Port Harcourt with clean fundamentals and honest English can watch doors for a company in Europe or America, paid in the currency of those doors. Certificates open interviews later; the fundamentals open everything first. That is the honest order, and any path that skips it is selling you the certificate's shine.",
+      ),
+      fig(
+        "/images/blog/analyst-notes-desk.jpg",
+        "A notebook beside a keyboard, with times and notes written in it during a shift.",
+        "The analyst's oldest tool. Alerts fade from screens; the written time, the written address, the written decision — those survive the meeting after.",
+      ),
+      ul([
+        "Re-read your own notes on links, OTPs and passwords as a professional would: each is a lesson in the attacker's choreography.",
+        "Learn what a log is — any record a machine keeps of who did what, when. The next three lessons are built on them.",
+        "Follow one reputable security news source for a month. Vocabulary before tools, always.",
+        "If this room pulls at you, say so at the academy. The road from these notes to the watching chair is mapped, and people have walked it.",
+      ]),
+      h2("Why this job exists at all"),
+      p(
+        "Because every organisation now keeps its most valuable things in machines, and machines keep honest records of every visitor. Somebody must read those records the way a bank reconciles its till. That is the whole profession in one sentence: reading the records, noticing the visitor who does not reconcile. If you have ever caught yourself re-checking a locked door, you have already felt the shape of the work. The next lesson is the room they watch from.",
+      ),
+    ],
+  },
+  {
+    slug: "the-soc-room",
+    title: "The room that never sleeps: the SOC",
+    excerpt:
+      "You will hear people say they work in a SOC. Here is the room, the tiers, the shifts — the place where the watching profession actually sits, explained without the mystique.",
+    series: SERIES,
+    order: 122,
+    author: AUTHOR,
+    date: lessonDate(122),
+    cover: "/images/blog/soc-room-screens.jpg",
+    coverAlt: "A dim room with a wall of monitors showing maps and dashboards, two analysts at desks.",
+    body: [
+      p(
+        "Say SOC aloud — it is said letter by letter, S-O-C — and know that it means only this: a Security Operations Centre. A room, physical or virtual, where an organisation's security watching is gathered under one roof and one rhythm. Banks have them. Telcos have them. Some companies do not build their own and instead pay a specialist firm to watch for them, which is called an MSSP, and the analysts inside it watch many doors at once. When a job advert says the role is in a SOC, this is the furniture of that sentence.",
+      ),
+      p(
+        "Walk through it, in imagination. A dim room — dim because screens read better in dimness — a wall of displays: a map with dots, a queue of alerts, a chart breathing with the network's traffic. At desks, people in tiers. Tier one sits closest to the queue: the first watch, triaging knocks exactly as the last lesson described, closing wind, raising footfalls. Tier two takes what tier one raises and digs — pulling logs from more rooms, tracing where a thing came from, deciding how sick the machine is. Tier three and the engineers hunt what nobody flagged and build the rules that make the queue wiser. Behind them, an incident manager when the night turns serious: one voice deciding, so ten hands do not pull ten directions.",
+      ),
+      fig(
+        "/images/blog/soc-room-screens.jpg",
+        "A dim room with a wall of monitors showing maps and dashboards, two analysts at desks.",
+        "The theatre is real but the work is queues and notes. The wall is for the room's shared breath; the craft sits at the desks.",
+      ),
+      h2("Shifts, nights, and the shape of the day"),
+      p(
+        "Because the internet does not close, the SOC does not close. Analysts work in shifts — days, evenings, nights, rotating — and the night shift is where juniors famously begin, watching while the country sleeps and the probes continue. A shift has its own spine: handover notes read like a relay baton — what happened on the last watch, what is still open, what to keep an eye on; then the queue; then the small projects between knocks, tuning a rule, writing a note that makes tomorrow faster. It is shift work the way nursing is shift work: routine punctuated by genuine emergencies, and measured mostly by whether you noticed in time.",
+      ),
+      p(
+        "What the room watches with is named across the next two lessons: the SIEM — the giant ledger that collects every machine's records and raises the queue — and the checks and scans that keep the fence honest. Do not let the acronyms intimidate the picture. The SOC is this: one room, one ledger, one queue of knocks, and people in tiers deciding wind from footfall, all night, every night, in shifts. Everything else is furniture.",
+      ),
+      fig(
+        "/images/blog/soc-night-shift.jpg",
+        "An analyst on night shift, headset on, the dark room lit only by the desk screens, a mug nearby.",
+        "The 2 a.m. watch. The city sleeps; the queue does not. Handover notes at dawn carry the baton to the morning tier.",
+      ),
+      ul([
+        "When you see SOC in an advert, read it as: shift work, tiers, triage first. Adjust your expectations honestly.",
+        "Night shifts are an entry, not a sentence. Learn the queue by night, grow into the hunt by day.",
+        "The handover note is a craft. practise writing one clear paragraph about one alert.",
+        "Every habit these notes taught — patience, notes, channel-checking — is SOC temperament in civilian clothes.",
+      ]),
+      h2("Is the room for you?"),
+      p(
+        "If you loved the locking lessons — if the second lock felt like a puzzle you would happily own — the SOC will feel like home with a salary. If you need quiet and long unhurried building, say, making things rather than watching for their breakers — then the developer rooms later in this chapter will fit better, and nobody should pretend otherwise. Security watching is a temperament before it is a career. The shelf is wide. Walk it with your eyes open.",
+      ),
+    ],
+  },
+  {
+    slug: "siem-in-ordinary-words",
+    title: "SIEM, in ordinary words",
+    excerpt:
+      "SIEM — said like seam — is the ledger that collects what every machine saw, and shouts when the pieces make a pattern. The tool at the heart of every watching room, demystified.",
+    series: SERIES,
+    order: 123,
+    author: AUTHOR,
+    date: lessonDate(123),
+    cover: "/images/blog/siem-dashboard-alerts.jpg",
+    coverAlt: "A computer screen showing a dashboard of stacked alerts and a rising line graph.",
+    body: [
+      p(
+        "SIEM stands for Security Information and Event Management, and is said like seam. Behind the press of consonants is a humble idea: one giant ledger. Every computer, door system, bank app and office machine keeps a record of what happens on it — the log, a line of who did what, when, from where. A SIEM is the room where all those records from all those machines are gathered into one place, laid side by side by time, and watched by rules. Nothing more exotic than that: a notebook that reads every other notebook.",
+      ),
+      p(
+        "Why one ledger? Because a thief's footfalls rarely land in a single notebook. The failed password sits in one log, the unusual login in another, the strange file copy in a third — each innocent alone, each a sentence of a story when laid side by side. Alone, no machine shouts. Together, the pattern is loud. The SIEM's whole craft is correlation: rules that say, if these three quiet things happen within one hour, that is not quiet any more — raise it. What it raises is the alert, and the alert is the queue the analyst eats from. The tool most connected to it: the names you will meet in adverts are Splunk, Microsoft Sentinel, QRadar, Wazuh — different pens for the same ledger.",
+      ),
+      fig(
+        "/images/blog/siem-dashboard-alerts.jpg",
+        "A computer screen showing a dashboard of stacked alerts and a rising line graph.",
+        "The ledger's face: what was raised, how loud, when it began. Every tile is a sentence assembled from a hundred notebooks.",
+      ),
+      h2("What feeding the ledger actually looks like"),
+      p(
+        "Log lines are boring on purpose — that is their honesty. A typical one says: this user, from this address, at this second, tried this door, and it failed. A thousand machines write such lines every second, and the SIEM drinks them without blinking. The analyst's skill against this flood is search: asking the ledger, in its own query language, show me every login for this user today; show me everything that talked to this address this week. It is less programming than good questioning — the Ctrl and F lesson grown into a profession. If you can form a precise question, the ledger answers in seconds with the truth of a hundred rooms.",
+      ),
+      p(
+        "And the ledger needs tending, which is a career in itself. Rules that raise everything bury the room in noise, and a tired room misses the real shout — so somebody tunes: closes the rules that cry wolf, sharpens the ones that matter. Somebody wires new machines into the ledger, because a room whose logs never arrived is a room watched by memory alone. And somebody checks the ledger itself is sealed — a thief who can edit the notebook owns the story it tells. Feeding, tuning, sealing: the three honest jobs around one giant notebook.",
+      ),
+      fig(
+        "/images/blog/siem-log-lines.jpg",
+        "A screen filled with dense rows of log lines, one row highlighted.",
+        "A hundred notebooks, one page. Boring lines, honest lines — and one highlighted row that only makes sense beside its neighbours.",
+      ),
+      ul([
+        "Say it until it is yours: SIEM, like seam — the giant ledger that correlates and raises.",
+        "Understand the chain by heart: logs from machines, rules in the ledger, alerts in the queue, analyst at the desk.",
+        "Play with any free log-search tool for one evening. Form three precise questions and watch the ledger answer.",
+        "Remember the weakness that matters: a ledger whose sources are missing or editable protects nobody.",
+      ]),
+      h2("Why this word follows you"),
+      p(
+        "Because every watching room on earth stands on one. Job adverts for analysts assume you have stood beside a SIEM; interviews ask how you would hunt in one. But the idea, as you now hold it, is a village idea: every compound keeps records; one trusted house collects them each evening; when a pattern crosses compounds, the crier raises it, and the watchers decide. You have just understood what universities wrap in an acronym. The next lesson is the philosophy the whole room increasingly watches by — and it begins at a gate.",
+      ),
+    ],
+  },
+  {
+    slug: "zero-trust-gate",
+    title: "Zero trust: the gate that trusts nobody",
+    excerpt:
+      "What is zero trust security? The old walls trusted whoever was inside. Zero trust trusts nobody — every knock, every time, identity and device both checked. You already carry its front door in your pocket.",
+    series: SERIES,
+    order: 124,
+    author: AUTHOR,
+    date: lessonDate(124),
+    cover: "/images/blog/zero-trust-gate-check.jpg",
+    coverAlt: "A security guard checking a visitor's identity card at a compound gate.",
+    body: [
+      p(
+        "What is zero trust security? Strip the phrase of marketing and it is one sentence: never trust, always verify. A security way of building — and running — an organisation on the belief that nobody is trusted by where they sit, only by what they can prove, every time they knock. Not once at the gate in the morning. Every door, every hour, every request. The phrase arrived from the industry's own confession: the old way assumed the thief was outside the walls, and the thief kept getting in and walking the corridors freely, because inside was trusted.",
+      ),
+      p(
+        "Picture the two arrangements. The old compound: one strong gate, and inside it every inner door open to anyone wearing a staff lanyard — because the gate already checked them, did it not? One cloned lanyard, and a visitor owns the corridors. The zero-trust compound: the same strong gate, and then every inner door checks again — who are you, prove it; what device is this, is it the one we issued, is it healthy; and even then, this door opens only as far as your work requires, not one room further. The guest with the right lanyard is still checked at accounting's door, and accounting's door does not open into the vault. Nobody is trusted for where they are. Everybody is verified for what they prove.",
+      ),
+      fig(
+        "/images/blog/zero-trust-gate-check.jpg",
+        "A security guard checking a visitor's identity card at a compound gate.",
+        "The gate is necessary and insufficient. Zero trust is the guard at every inner door, politely asking again — every time.",
+      ),
+      h2("The pieces, named plainly"),
+      p(
+        "Three habits hold it up. Strong identity: every person and every machine has a provable self — and the second lock, the one on your Google account, is zero trust's smallest citizen; multi-factor verification is its signature move. Least privilege: each person holds exactly the keys their work needs, no more — the gateman does not carry the cashier's keys, and the accountant cannot open the server room. And small rooms: the organisation is divided so that a thief in one room does not inherit the building — the corridor that once connected everything is replaced by checked doors. The industry formalised this in documents like NIST SP 800-207, but you have just held the whole idea; the documents only add the plumbing.",
+      ),
+      p(
+        "You have met the philosophy already, wearing everyday clothes. The bank app that asks for the code even after the password: zero trust. The laptop that re-verifies before opening payroll: zero trust. The second lock you put on your own account at lesson one hundred and eight — you ran a zero-trust policy on your own life before most companies did. The stakes scale; the sentence does not. Trust is never granted by location or history. It is earned by proof, freshly, at every door.",
+      ),
+      fig(
+        "/images/blog/zero-trust-doors.jpg",
+        "A corridor of office doors, each fitted with a small card reader, one glowing as a staff member taps.",
+        "Every door a checkpoint, every checkpoint a fresh question. Inside the building is not inside the trust.",
+      ),
+      ul([
+        "Say the sentence until it is yours: never trust, always verify — every user, every device, every request.",
+        "Audit your own compound tonight: which accounts hold more keys than their work needs? Least privilege begins at home.",
+        "Your second lock is your first zero trust. Notice every re-verification this week with new respect.",
+        "In interviews, the question what is zero trust is answered in one sentence and three habits: identity, least privilege, small rooms.",
+      ]),
+      h2("Why the whole industry turned"),
+      p(
+        "Because the walls stopped meaning anything. Staff work from cafés and sitting rooms now; the company's jewels sit in rented buildings run by other companies; and the thief stopped pickpocketing lanyards and started logging in. When the perimeter dissolved, the only honest place to draw the line was around each request: prove, every time. That is why the phrase follows every security job advert now, and why the watching rooms of the last lessons are rebuilding their rules around it. The gate keeper's oldest wisdom, promoted to architecture: trust the person, not the lanyard — and check the person, freshly, every time.",
+      ),
+    ],
+  },
+  {
+    slug: "vulnerability-assessment-fence",
+    title: "The vulnerability assessment: checking the fence",
+    excerpt:
+      "A vulnerability assessment is the systematic walk around your own walls before thieves do it for you — find the weak boards, rank them, fix the loudest first. Here is the honest method.",
+    series: SERIES,
+    order: 125,
+    author: AUTHOR,
+    date: lessonDate(125),
+    cover: "/images/blog/fence-check-flashlight.jpg",
+    coverAlt: "A man inspecting a compound fence with a torch at dusk, looking for weak points.",
+    body: [
+      p(
+        "A vulnerability is a weakness in a wall that still stands: the loose board in the fence, the window the bar removed, the lock that turns with any key of its brand. Every organisation is such a compound, and its walls — computers, programs, doors, people — carry weaknesses nobody has counted. A vulnerability assessment is the disciplined count: walk your own fence deliberately, in daylight, with a list, and find what a thief would find at night. Not paranoia. Maintenance. The same instinct as checking the generator before the wedding, and it answers the question every owner should be able to answer: where exactly are we weak?",
+      ),
+      p(
+        "The walk has a shape. First, count what you own — every machine, app, and account; you cannot check a fence you have not listed, and the forgotten door is every compound's favourite entrance. Then scan: tools run against the list, knocking on known weaknesses the way a mechanic's diagnostic machine queries an engine — thousands of known weaknesses, checked in minutes. Then the human pass, because tools miss what eyes catch: the password on a sticky note, the software that stopped receiving updates, the server room held shut with tape. The result is a report — not a shaming, an inventory: this weakness, here, this severe, this loud, fix it this way.",
+      ),
+      fig(
+        "/images/blog/fence-check-flashlight.jpg",
+        "A man inspecting a compound fence with a torch at dusk, looking for weak points.",
+        "The owner's walk, done before dark. Every weakness found in daylight is one the night visitor does not get to introduce himself to.",
+      ),
+      h2("Ranking the holes: not all silence is equal"),
+      p(
+        "A compound always has several weaknesses at once; money and hours are finite; so the report ranks. Severity scoring — the industry's CVSS numbers, zero to ten — is triage at a clinic: the bleeding patient first, the stubborn cough after. A weakness that lets a stranger in without any key outranks one that needs the janitor's help, an open office, and good luck. The discipline the good assessors bring is honesty about exposure: a hole in the fence facing the market street is a different animal from the same hole facing the lagoon. Fix the loudest, then the next, then the next — and re-scan, because walls do not stay mended by one speech.",
+      ),
+      p(
+        "Two words people confuse, cleared now: the assessment is the inspection — systematic, listed, non-destructive; a penetration test goes further and hires the lockpicker — one weakness, chosen with permission, exploited to prove how far it opens. Inspection first, lockpicker second, always. And for the small businesses reading this over a shoulder: the walk scales down beautifully. List your doors — the phones, the laptops, the email, that one app the whole shop runs on. Update everything the update lesson taught you to update. Turn on the second lock everywhere it exists. Change the defaults the installer left. You have just done the small business version, and most of your competitors have not.",
+      ),
+      fig(
+        "/images/blog/scan-report-paper.jpg",
+        "A printed report on a desk, its severity table showing rows of findings ranked with coloured marks.",
+        "The count, on paper: each weakness named, ranked, and given a fix. The document is not the harvest; the repairs are.",
+      ),
+      ul([
+        "List what you own — machines, apps, accounts — before you scan anything. The unlisted door is the common door.",
+        "Scan with a reputable tool, then walk with your own eyes. Tools count, humans understand.",
+        "Rank by severity and exposure. Fix the bleeding first; keep the receipts of every repair.",
+        "Re-walk the fence on a calendar, not on a mood. Walls drift; the walk is maintenance, not an event.",
+      ]),
+      h2("The fence, the room, the ledger"),
+      p(
+        "See how the profession knits: the assessment finds the weak boards; zero trust builds inner doors so one board cannot cost the building; the SOC and its SIEM watch the fence between walks, because thieves do not wait for reports. Nothing mystical anywhere — just owners who count their own weaknesses before somebody else does it for them, at night, without permission. The next lesson steps back from the compound to the roads that connect every compound: the grammar the whole internet speaks.",
+      ),
+    ],
+  },
+  {
+    slug: "tcp-ip-road",
+    title: "TCP/IP: how the road carries the mail",
+    excerpt:
+      "TCP/IP is the shared grammar of the internet — a long letter torn into numbered parcels, each finding its own road, reassembled at the door. One lesson to never fear the word again.",
+    series: SERIES,
+    order: 126,
+    author: AUTHOR,
+    date: lessonDate(126),
+    cover: "/images/blog/tcp-parcels-road.jpg",
+    coverAlt: "Small numbered parcels travelling along a road toward a house in warm evening light.",
+    body: [
+      p(
+        "When two computers anywhere on earth speak — the phone and the bank, the laptop and this page — they speak TCP/IP. The name is a hyphenated pair: IP, Internet Protocol, and TCP, Transmission Control Protocol. The first says where; the second says how. Strip the syllables and hold the picture: a post office that never loses a letter if the roads survive, run on two rules — every house has an address, and every letter is sent as numbered parcels that may take different roads and arrive in any order, to be reassembled at the door.",
+      ),
+      p(
+        "IP is the addressing half. Every machine on the network carries an IP address — four numbers, like 172.16.4.1 in the older scheme — its house number on the world's roads. Your phone has one on your network at home; the bank's computer has one on the world's; every parcel of every letter is stamped from and to, and the routers — the junctions of this postal system — pass each parcel road by road, choosing the open street at each junction the way a okada rider weaves a flood. TCP is the manners half: before any letter moves, the two houses have a small conversation — are you there? I am. Then I will send — the handshake, three knocks, and the line is agreed. Then the long letter is torn into parcels, each numbered — 3 of 40, 4 of 40 — so the receiving door can stack them back into the letter, request the missing 7 again, and know exactly what arrived intact.",
+      ),
+      fig(
+        "/images/blog/tcp-parcels-road.jpg",
+        "Small numbered parcels travelling along a road toward a house in warm evening light.",
+        "The letter did not travel as a letter. It travelled as numbered parcels on several roads, and the door reassembled it. That is TCP/IP, whole.",
+      ),
+      h2("Doors on the house: ports"),
+      p(
+        "One computer is one house, but a house does many businesses at once — web, mail, banking app, all arriving together. So each house numbers its doors: these are ports. Port 80 and its locked cousin 443 are where web pages are received — the padlock in your address bar is a padlock on port 443's road. Mail knocks on its own numbered doors; a video call on another. The address finds the house; the port finds the room inside the house. When an advert for the analyst jobs of this chapter says knowledge of TCP/IP, this is the entire requirement's spine: addresses, parcels, handshake, reassembly, ports.",
+      ),
+      p(
+        "Why does a learner who is not chasing those jobs care? Because half of every machine trouble in your life has been a road question wearing a mystery's clothes. The internet is down: which floor broke — the app, the Wi-Fi, the router, the street, or the far house itself? The page will not load but WhatsApp lives: that is not contradiction, that is different roads and different far houses. The bank app times out on the climb up the hill: the parcels are dying between junctions, and no amount of closing and reopening the app repairs a road. Diagnosing by floor — app, house, street, far house — is the ordinary superpower this grammar buys, and you now own the map it stands on.",
+      ),
+      fig(
+        "/images/blog/network-cables-router.jpg",
+        "A router on a shelf with two cables running into it, its small lights blinking.",
+        "The house's own postal junction. The lights are the parcels passing — and the first thing the road diagnosis looks at.",
+      ),
+      ul([
+        "Say the pair until it separates: IP is the address, TCP is the manners. Where, then how.",
+        "Name the five floors of any internet trouble out loud once: app, house, router, street, far house.",
+        "Watch your own browser's padlock with new eyes: that is port 443, the locked road, working.",
+        "When a job advert says TCP/IP, you may now nod instead of flinching. That is the whole point of this lesson.",
+      ]),
+      h2("The grammar under everything"),
+      p(
+        "Every lesson on this shelf rode these roads without naming them: the email lesson, the cloud, the ride map, the bank in your hand. Named now, they lose their last fog — the internet is houses with addresses, roads with junctions, letters as parcels, doors numbered by business. Everything the analysts watch travels these roads; everything the builders build travels them; the padlock, the update, the second lock — all of it is traffic on TCP/IP. One grammar, learned once, used for the rest of the connected life. The next lesson stays with the mail, and asks what it means when a letter must carry proof of who sealed it.",
+      ),
+    ],
+  },
+  {
+    slug: "digital-signature-meaning",
+    title: "What a digital signature really signs",
+    excerpt:
+      "A digital signature is not a picture of your name. It is arithmetic that proves who sealed a document and that nobody has touched it since. The padlock's cousin, explained.",
+    series: SERIES,
+    order: 127,
+    author: AUTHOR,
+    date: lessonDate(127),
+    cover: "/images/blog/signing-document-seal.jpg",
+    coverAlt: "A hand signing a document with a pen beside a laptop showing a digital signing screen.",
+    body: [
+      p(
+        "What is a digital signature? First, what it is not: not a photograph of your wet-ink name dropped onto a page — that is an electronic signature at its weakest, a picture, and a picture copies. A digital signature is arithmetic: a seal computed from the document itself with a key only you hold, such that changing a single comma breaks the seal's mathematics and tells every later reader the page has been touched. It answers three questions at once, and answers them with proofs rather than manners: who sealed this; has it been altered since; and can the sealer later deny it. That third answer is why contracts, banks and governments moved: the seal cannot be unworn.",
+      ),
+      p(
+        "The machinery is two keys born as a pair. Your private key — long numbers stored on your machine or a bank-grade token — you never show anybody; it seals. Its public key you publish freely; it verifies. Seal with the private, verify with the public: the mathematics runs one way down that street and no other. And the seal is computed not on the whole document but on its fingerprint — a hash, one fixed-length number that any document produces and from which the document cannot be reconstructed, but which changes entirely if a comma changes. So the signature says: the holder of the private key sealed this fingerprint. New fingerprint at the receiving door means the page is not the page that was sealed, and the seal itself says so, loudly.",
+      ),
+      fig(
+        "/images/blog/signing-document-seal.jpg",
+        "A hand signing a document with a pen beside a laptop showing a digital signing screen.",
+        "The two signatures of one life. The ink commits the person; the arithmetic commits the page — and the arithmetic cannot be photocopied.",
+      ),
+      h2("Who vouches for the key?"),
+      p(
+        "One hole remains, and the old city solved it with guilds: anyone can claim a key is theirs — so somebody trusted must vouch. A certificate authority is that vouching office for keys: it checks that the person or company asking, is who they say, and issues a certificate binding the public key to the name — the passport office of the key world. Your browser carries the list of offices it trusts, which is why the padlock in the address bar — lesson one hundred and ten — means more than a locked road: the site's key was vouched for, the road is sealed, and the seal is checked at your door every visit. The padlock is a digital signature, shown to you a thousand times a day, finally introduced.",
+      ),
+      p(
+        "You will meet the seal in ordinary places now that it has a name. The updates lesson: good software arrives signed, and the machine refuses what the key does not vouch — that refusal is the update box doing its quiet work. The papers lesson: platforms offer signing so a contract can cross the world with its proof attached. And in the analyst's world of this chapter, signatures decide which program may speak and which document may be believed. Three promises in one seal — who, untouched, irrevocable — and each promise is arithmetic rather than good manners. That is the whole meaning, and you now carry it correctly.",
+      ),
+      fig(
+        "/images/blog/certificate-padlock-detail.jpg",
+        "A close view of a browser address bar, the small padlock glowing, screen slightly soft.",
+        "The seal you have met a thousand times. The padlock says: vouched key, sealed road, checked at your door. Now you can read it.",
+      ),
+      ul([
+        "Say the three promises: who sealed it, untouched since, cannot be denied. That is the definition, whole.",
+        "Private key seals, public key verifies, the authority vouches for the pairing. Three sentences to keep for life.",
+        "Treat your private keys as the notebook's crown jewels: backed up like the papers, shared like the PIN — never.",
+        "A scanned signature photo is a picture. A digital signature is a proof. Ask which one a form truly requires.",
+      ]),
+      h2("Trust, at last, in arithmetic"),
+      p(
+        "The whole shelf has been one long lesson in verification: check the name before the confirm, the channel before the code, the plate before the door. The digital signature is where that instinct became mathematics — proof that does not tire, does not flatter, and does not forget what it sealed. From here, whenever somebody says signed, you will know to ask: sealed by whose key, vouched by whose office, verified at which door. The next lesson crosses the compound wall entirely, to the people who build the things all this security watches over.",
+      ),
+    ],
+  },
+  {
+    slug: "frontend-developer-explained",
+    title: "The frontend developer, explained",
+    excerpt:
+      "The frontend developer builds everything you have ever touched on a screen — the stall that faces the road. What the work is, what the words mean, and how this shelf is already the first step.",
+    series: SERIES,
+    order: 128,
+    author: AUTHOR,
+    date: lessonDate(128),
+    cover: "/images/blog/frontend-code-screen.jpg",
+    coverAlt: "A developer at a laptop with code on one half of the screen and a webpage on the other.",
+    body: [
+      p(
+        "Everything you have ever touched on a screen — every button that pressed, every form that received your details, every page that arranged itself politely on the phone and the laptop — was built by a frontend developer. The word means simply the front: the part of a program that faces the person using it. Every workshop has a front and a back — the stall that faces the road, and the store room where the stock and the accounts live. The frontend is the stall. It decides whether the customer can find what they came for, whether the price is readable in the sun, whether the transaction finishes or the customer walks in irritation.",
+      ),
+      p(
+        "The craft stands on three layers, and you may as well have their true names now. HTML is the skeleton: this is a heading, this is a paragraph, this is the box where the customer types. CSS is the clothing: colours, spacing, what it looks like when the screen is a small phone in the rain or a wide monitor in an office. JavaScript is the movement: what happens when the button is pressed — the menu that opens, the total that recalculates, the form that checks itself before travelling. Larger buildings are raised with frameworks — prepared skeletons and conventions with names like React, the very technology this page is served with — the way builders raise estates with prefabricated parts instead of moulding every brick by hand.",
+      ),
+      fig(
+        "/images/blog/frontend-code-screen.jpg",
+        "A developer at a laptop with code on one half of the screen and a webpage on the other.",
+        "The stall and its plans, side by side. Change a line, refresh, look again — the frontend's whole rhythm is that small honest loop.",
+      ),
+      h2("What the work actually is, day to day"),
+      p(
+        "Less invention than conversation. A designer hands over a picture of what a page should be; the frontend developer makes it real, exactly, on every screen size — and reports back where the picture fights the truth of small screens and slow networks. A backend — the store room, staffed by its own developers — sends goods in parcels of data; the frontend receives, arranges, and sends back what the customer filled. Much of the day is the two elders of this shelf in professional clothes: careful text selection and a thousand small saves — build one piece, look at it in the browser, adjust, save again. The loop you practised in Notepad at lesson three is, genuinely, the trade.",
+      ),
+      p(
+        "The good ones are good in ways you can already judge, because you have been a customer all your life on this shelf. Fast: a page that opens on a three-bar network in Onitsha traffic, not only on office fibre. Clear: letters that read, buttons that say what they do, forms that confess their errors in ordinary sentences. Honest on every screen: the phone is Nigeria's computer, and a stall that only stands on a laptop is a stall on a street with no foot traffic. None of that is decoration — it is the trade's version of the virtues these notes kept repeating: respect for the person on the other side of the screen.",
+      ),
+      fig(
+        "/images/blog/phone-and-desktop-layout.jpg",
+        "A phone and a laptop on a desk showing the same webpage arranged differently for each screen.",
+        "One stall, two streets. The craft is making the same shop stand properly on the pocket and on the desk.",
+      ),
+      ul([
+        "Look at any page you admire and name its three layers: the skeleton, the clothing, the movement.",
+        "View the source of a simple page once — right-click, View page source. The skeleton, in public, is not a secret.",
+        "The free-learning lesson applies in full: one month, HTML and CSS, hands on the keys, one real page built by the end.",
+        "When you are ready for a room, a machine and a person, the academy's web courses start exactly where this note stops.",
+      ]),
+      h2("Is the stall for you?"),
+      p(
+        "If you finished lesson three secretly pleased — if arranging the page, naming things properly and seeing your change appear on refresh gave you a small honest joy — then the frontend is a door worth walking through, and the road from these notes to paid work in it is walked every year, self-taught hands included. The watching rooms of lesson one hundred and twenty-two guard the compound; the stall builders raise what the compound is for. Both are honest work. Only you know which chair fits your temperament — and now you have sat in both, described without mystique, before spending a naira on either.",
+      ),
+    ],
+  },
+  {
+    slug: "machine-learning-engineer-work",
+    title: "What a machine learning engineer does",
+    excerpt:
+      "A machine learning engineer teaches machines by example instead of instruction — and spends most of the working day cleaning the examples. What the work is, and what it honestly pays.",
+    series: SERIES,
+    order: 129,
+    author: AUTHOR,
+    date: lessonDate(129),
+    cover: "/images/blog/ml-engineer-whiteboard.jpg",
+    coverAlt: "An engineer at a whiteboard covered in diagrams, a laptop open beside them.",
+    body: [
+      p(
+        "Every program you have met on this shelf was instructed: a person wrote the rules — if the password is wrong three times, lock; if the balance is less than the withdrawal, refuse. A machine learning engineer builds programs the other way round: instead of writing rules, they show the machine examples and let it find the rules. Ten thousand past transactions marked honest and fraudulent, shown again and again, until the machine can face an eleventh transaction it has never seen and answer with its own judgement. That is machine learning — teaching by example — and the machine learning engineer is the teacher who prepares the lessons, runs the classes, and checks the examinations.",
+      ),
+      p(
+        "The romantic version has the engineer inventing clever minds all day. The honest version: most of the work is preparing the examples. Data arrives messy — the spreadsheet lesson's world at industrial scale: missing values, mistyped names, the same customer entered three ways — and a model fed on dirt learns dirt faithfully. So the days go to cleaning and arranging data, choosing what the machine should look at, training — running the class — and then examining honestly: the model scores ninety-four percent, but does it score ninety-four percent because it learned, or because it memorised, or because the examples themselves were lopsided? A model that has only ever seen Lagos addresses will stumble in Sokoto, and nobody will tell you — the examination must catch it first. Then the last mile: deployment, putting the trained model behind a door where the bank's systems can ask it questions in real time, and watching it after, because roads change and a model that rode yesterday's roads drifts.",
+      ),
+      fig(
+        "/images/blog/ml-engineer-whiteboard.jpg",
+        "An engineer at a whiteboard covered in diagrams, a laptop open beside them.",
+        "The honest portrait: less sorcery, more plumbing and examination. The whiteboard is questions; the laptop is patience.",
+      ),
+      h2("What it pays — the honest paragraph"),
+      p(
+        "You asked, so plainly: it is among the best-paid rooms in technology, and the numbers travel badly, so read them with their addresses attached. In the United States, the typical quoted range for a machine learning engineer in recent years runs roughly one hundred and twenty to one hundred and sixty thousand dollars a year, and higher at the top houses; Europe and the Gulf sit near that conversation in their own currencies. The reason Nigeria appears in this paragraph at all is remote work: an engineer here with demonstrable skill can be paid from that table into a Nigerian account, and the banks and fintechs and telcos at home pay their own strong range in naira — well above most local salaries, though not the dollar table. The honest summary: the room pays like a scarce skill, because it is one, and scarcity is proven by the thing you can build, not the certificate on the wall. The learning-online lesson applies with full force: the materials are free; the discrimination is the hours.",
+      ),
+      p(
+        "And the road in, honestly: comfort with the spreadsheet's logic, then a real programming language — Python is the trade's lingua franca — then mathematics gently, statistics first, then the practice sets that every major platform gives away. It is a longer road than the frontend's first mile, and it begins exactly where you are sitting: data, cleaned by hand, understood with your own eyes. The data analysts of the next adverts and the machine learning engineers of the dollar table are separated mostly by hours of honest practice.",
+      ),
+      fig(
+        "/images/blog/data-charts-training.jpg",
+        "A laptop screen showing rows of data beside a training chart whose accuracy line climbs.",
+        "The class in session: examples on the left, the examination on the right. The climbing line is attention, made visible.",
+      ),
+      ul([
+        "Say the flip until it holds: ordinary programs are given rules; learned programs are given examples.",
+        "Most of the craft is data cleaning. If that sentence disappoints you, believe it before you choose the road.",
+        "Every salary number carries an address. Read dollar figures with the remote question attached.",
+        "One month of Python from free materials — then judge the road with your own hands, not the adverts'.",
+      ]),
+      h2("The teacher's teacher"),
+      p(
+        "One respect to end on: this room sits behind half the conveniences of the wider street — the ride app's price, the bank's fraud watch, the map's traffic. When it is honest, it is the most powerful apprentice ever hired. When it is fed dirt or examined lazily, it learns the dirt faithfully and repeats it at scale, which is why the world needs people who understand it rather than people who merely invoke it. You now sit in the first group — and the exam of the next ten years will be finding more of them.",
+      ),
+    ],
+  },
+  {
+    slug: "agile-and-devops",
+    title: "Agile and DevOps: how the teams build",
+    excerpt:
+      "Two words that fill every job advert, explained at a market stall: build small, show early, adjust; and let the people who build carry it live. Agile and DevOps, without the incense.",
+    series: SERIES,
+    order: 130,
+    author: AUTHOR,
+    date: lessonDate(130),
+    cover: "/images/blog/standup-board-sticky.jpg",
+    coverAlt: "A team standing around a board covered in sticky notes, one person speaking.",
+    body: [
+      p(
+        "Every technology job advert carries two words like a password: agile, and DevOps. They sound like philosophy and machinery, and both are simpler than their incense. Start with agile, because you already practise it. The trader who wants a new line of goods does not order a container of a hundred designs and reveal it at Christmas. She buys ten of three designs, puts them out on Tuesday, watches what Onitsha road actually takes, and orders more of what moved by Friday. Small, shown early, adjusted honestly. That is the agile methodology — a way of building anything in short cycles with real feedback, instead of one grand reveal a year late that the market has outgrown.",
+      ),
+      p(
+        "The old way — the industry calls it waterfall — is the container: plan everything at the start, build for months, present at the end, and pray the market still wants what was planned. Agile answers with the sprint: a short fixed cycle, often two weeks, at the end of which something real and usable exists and is shown to the people who will use it, whose answers steer the next sprint. The rituals you will meet in adverts live inside that frame: the standup — the team standing, a few minutes each morning, each person saying what moved yesterday, what moves today, what is stuck; and the board — the wall of cards in three columns, to do, doing, done, which is the sprint's diary in public. Ask a trader about her Tuesday and she will describe the board without the vocabulary.",
+      ),
+      fig(
+        "/images/blog/standup-board-sticky.jpg",
+        "A team standing around a board covered in sticky notes, one person speaking.",
+        "The morning standup at the board. What moved, what moves, what is stuck — the market's Tuesday meeting, wearing lanyards.",
+      ),
+      h2("DevOps: the builder carries it live"),
+      p(
+        "DevOps — said as one word, a marriage of development and operations — fixes an old divorce. The builders wrote the program and threw it over the wall to a separate team who ran it; the runners met the problems, the builders met the complaints secondhand, and the wall between them was where fixes went to die. DevOps ends the divorce: the people who build carry it live, and the people who run it build the running. Its most famous machinery is the pipeline — the conveyor that carries finished work to the street automatically: code is checked, tested, and delivered live in small steps, so that releasing a change is a Tuesday habit rather than a midnight ceremony with candles and prayers.",
+      ),
+      p(
+        "The practices behind the word, named so adverts read plainly: continuous integration — every builder's work joins the shared house daily and is tested as it arrives, so surprises are caught the day they are born; continuous delivery — the conveyor to live, fed constantly, each small step reversible; monitoring — the sensors lesson grown up, watching the live thing and shouting before the customers do; and automation everywhere, because a machine that does the same steps identically every time is the opposite of the tired Thursday technician. When an advert says DevOps practices, it means exactly this list, and you may now read the sentence without blinking.",
+      ),
+      fig(
+        "/images/blog/deploy-pipeline-screen.jpg",
+        "A screen showing a pipeline of stages in a row, the first stages ticked green and one in motion.",
+        "The conveyor to the street: checked, tested, delivered — small steps, each reversible. Release as habit, not as ceremony.",
+      ),
+      ul([
+        "Say agile at the market's tempo: small, shown early, adjusted honestly. Two weeks, something real, real feedback.",
+        "Standup, sprint, board — three words you already own the meaning of. Use them at your next job interview with a straight back.",
+        "DevOps in one sentence: the builders carry it live, the runners build, and the conveyor makes it a habit.",
+        "Try the method on anything of your own this week — the shop's stock, the church project. Two-week cycles need no software to begin.",
+      ]),
+      h2("The shelf, from the first sitting to the street"),
+      p(
+        "And so the chapter closes where the reader now stands: at the edge of a world whose vocabulary you hold. The analyst and the room that never sleeps, the ledger and the gate that trusts nobody, the fence walk, the grammar of the roads, the seal that cannot be photocopied, the stall, the teaching room, and the teams that build in Tuesdays. None of it was magic; none of it was closed to you; it was only never explained at this table before. The notes end here for now — but the reader who began at lesson one, afraid of the power button, has just read the job adverts without flinching. Walk into any of these rooms and say you came from the shelf. Then come back and tell us which chair fit.",
+      ),
+    ],
+  },
 ];
 

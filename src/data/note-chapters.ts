@@ -123,6 +123,16 @@ export const noteChapters: NoteChapter[] = [
     courseSlug: "digital-productivity",
     courseLabel: "Digital Productivity",
   },
+  {
+    slug: "where-this-leads",
+    title: "Where this leads",
+    blurb:
+      "The analyst, the SOC, SIEM, zero trust, the fence check, TCP/IP, the digital signature, the frontend developer, the machine-learning engineer, and the teams that build.",
+    from: 121,
+    to: 130,
+    courseSlug: "cybersecurity",
+    courseLabel: "Cybersecurity",
+  },
 ];
 
 const byOrder = [...blogPosts].sort((a, b) => a.order - b.order);
