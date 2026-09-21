@@ -133,6 +133,16 @@ export const noteChapters: NoteChapter[] = [
     courseSlug: "cybersecurity",
     courseLabel: "Cybersecurity",
   },
+  {
+    slug: "making-a-living",
+    title: "Making a living",
+    blurb:
+      "Data analytics, building an app, choosing a school, IT support, websites for shops, social media, design, remote work, pricing your work, and the portfolio that proves it.",
+    from: 131,
+    to: 140,
+    courseSlug: "business-freelancing",
+    courseLabel: "Business & Freelancing",
+  },
 ];
 
 const byOrder = [...blogPosts].sort((a, b) => a.order - b.order);

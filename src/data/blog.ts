@@ -6200,7 +6200,7 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A dim room with a wall of monitors showing maps and dashboards, two analysts at desks.",
     body: [
       p(
-        "Say SOC aloud — it is said letter by letter, S-O-C — and know that it means only this: a Security Operations Centre. A room, physical or virtual, where an organisation's security watching is gathered under one roof and one rhythm. Banks have them. Telcos have them. Some companies do not build their own and instead pay a specialist firm to watch for them, which is called an MSSP, and the analysts inside it watch many doors at once. When a job advert says the role is in a SOC, this is the furniture of that sentence.",
+        "Say SOC aloud — it is said letter by letter, S-O-C — and know that it means only this: a Security Operations Centre. A room, physical or virtual, where an organisation's security watching is gathered under one roof and one rhythm. If you met the letters in a chat or a job group and could not tell what they meant, hold this meaning and you will rarely be wrong: in working talk, SOC is not slang — it is an acronym with a chair behind it, the watching room. Banks have them. Telcos have them. Some companies do not build their own and instead pay a specialist firm to watch for them, which is called an MSSP, and the analysts inside it watch many doors at once. When a job advert says the role is in a SOC, this is the furniture of that sentence.",
       ),
       p(
         "Walk through it, in imagination. A dim room — dim because screens read better in dimness — a wall of displays: a map with dots, a queue of alerts, a chart breathing with the network's traffic. At desks, people in tiers. Tier one sits closest to the queue: the first watch, triaging knocks exactly as the last lesson described, closing wind, raising footfalls. Tier two takes what tier one raises and digs — pulling logs from more rooms, tracing where a thing came from, deciding how sick the machine is. Tier three and the engineers hunt what nobody flagged and build the rules that make the queue wiser. Behind them, an incident manager when the night turns serious: one voice deciding, so ten hands do not pull ten directions.",
@@ -6447,7 +6447,7 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("Who vouches for the key?"),
       p(
-        "One hole remains, and the old city solved it with guilds: anyone can claim a key is theirs — so somebody trusted must vouch. A certificate authority is that vouching office for keys: it checks that the person or company asking, is who they say, and issues a certificate binding the public key to the name — the passport office of the key world. Your browser carries the list of offices it trusts, which is why the padlock in the address bar — lesson one hundred and ten — means more than a locked road: the site's key was vouched for, the road is sealed, and the seal is checked at your door every visit. The padlock is a digital signature, shown to you a thousand times a day, finally introduced.",
+        "One hole remains, and the old city solved it with guilds: anyone can claim a key is theirs — so somebody trusted must vouch. A certificate authority is that vouching office for keys: it checks that the person or company asking, is who they say, and issues a certificate binding the public key to the name — the passport office of the key world. The whole arrangement — keys, certificates, the offices that vouch — carries one industry name: public key infrastructure, or PKI. If you have met the letters in an advert or a chat and found them cold, they only ever meant this warm idea: the guild that makes a stranger's key believable. Your browser carries the list of offices it trusts, which is why the padlock in the address bar — lesson one hundred and ten — means more than a locked road: the site's key was vouched for, the road is sealed, and the seal is checked at your door every visit. The padlock is a digital signature, shown to you a thousand times a day, finally introduced.",
       ),
       p(
         "You will meet the seal in ordinary places now that it has a name. The updates lesson: good software arrives signed, and the machine refuses what the key does not vouch — that refusal is the update box doing its quiet work. The papers lesson: platforms offer signing so a contract can cross the world with its proof attached. And in the analyst's world of this chapter, signatures decide which program may speak and which document may be believed. Three promises in one seal — who, untouched, irrevocable — and each promise is arithmetic rather than good manners. That is the whole meaning, and you now carry it correctly.",
@@ -6607,6 +6607,476 @@ export const blogPosts: BlogPost[] = [
       h2("The shelf, from the first sitting to the street"),
       p(
         "And so the chapter closes where the reader now stands: at the edge of a world whose vocabulary you hold. The analyst and the room that never sleeps, the ledger and the gate that trusts nobody, the fence walk, the grammar of the roads, the seal that cannot be photocopied, the stall, the teaching room, and the teams that build in Tuesdays. None of it was magic; none of it was closed to you; it was only never explained at this table before. The notes end here for now — but the reader who began at lesson one, afraid of the power button, has just read the job adverts without flinching. Walk into any of these rooms and say you came from the shelf. Then come back and tell us which chair fit.",
+      ),
+    ],
+  },
+  {
+    slug: "careers-in-data-analytics",
+    title: "Careers in data analytics: the person who reads the numbers",
+    excerpt:
+      "A data analyst turns an organisation's piles of records into decisions — who buys, what works, where the money leaks. What the career actually is, what it pays, and the honest road in.",
+    series: SERIES,
+    order: 131,
+    author: AUTHOR,
+    date: lessonDate(131),
+    cover: "/images/blog/analyst-spreadsheet.jpg",
+    coverAlt: "A woman studying a spreadsheet of sales figures on a laptop, pen in hand.",
+    body: [
+      p(
+        "Every business here keeps records whether it means to or not: the shop's sales book, the hospital's register, the bank's transactions, the school's fees. Almost nobody reads them well. The data analyst is the person who does — who turns the pile into answers: which goods move in June, which ward wastes medicine, which customers stopped coming and when. When people list careers in data analytics, this is the trade they mean, and it sits behind more Nigerian businesses than the title suggests: shops, fintechs, telcos, hospitals, NGOs, government — anyone with a pile and a decision to make.",
+      ),
+      p(
+        "The work has a rhythm, and you have already practised its first step without knowing. Collect: gather the records into one place, clean — the machine learning lesson's confession is also this trade's daily bread, missing names, mistyped dates, the same customer entered three ways — then analyse: totals, comparisons, patterns, the grid lesson's formulas grown serious. Then the step that separates analysts from spreadsheet keepers: explain. A chart a busy manager understands in ten seconds, a sentence that says what to do by Friday. Analysis that never becomes a decision is decoration. The trade is reading, and then being believed.",
+      ),
+      fig(
+        "/images/blog/analyst-spreadsheet.jpg",
+        "A woman studying a spreadsheet of sales figures on a laptop, pen in hand.",
+        "The first hour of the work is never glamorous: one pile, one grid, one pen. The glamour arrives later, as a decision someone can defend.",
+      ),
+      h2("The tool ladder, and what each rung pays"),
+      p(
+        "The ladder is public knowledge. Rung one is the spreadsheet — Excel or Google Sheets — and it carries a shocking share of Nigerian business analysis all by itself: sort, filter, the money formats, the formulas filled down, the pivot table. Rung two is SQL, the language for asking databases questions directly — show me every customer who bought twice and stopped in March — which is less programming than precise questioning, the find lesson with a salary. Rung three is a BI tool — Power BI or Tableau — where the dashboards live that directors open on Monday mornings. Python comes later, for the heavier lifting, and the data scientist of lesson one hundred and twenty-nine is this same road walked further — more statistics, more machine, more pay.",
+      ),
+      p(
+        "The money, honestly: a junior analyst in Nigeria commonly starts around the range a fresh graduate hopes for and rises quickly with proof — senior analysts and those carrying SQL and BI comfortably earn multiples of entry pay, and remote work puts international tables in play, exactly as the analyst and engineer lessons described. What moves the number is not certificates. It is the portfolio of questions you have answered, and how plainly you can make a stranger see the answer. The learning-online lesson applies in full: the tools have free versions, the tutorials are free, the discrimination is hours.",
+      ),
+      fig(
+        "/images/blog/sql-query-screen.jpg",
+        "A laptop screen showing a short database query and beneath it a table of results.",
+        "Rung two. Four lines of careful asking, and a database that answers in seconds with ten thousand rows of truth.",
+      ),
+      ul([
+        "Practise the rhythm this week on any record you own: the shop's book, the house expenses. Clean, then ask it three questions.",
+        "Learn the pivot table properly — one evening, free videos. It is the single most respected spreadsheet skill in interviews.",
+        "When ready for SQL, practise on any free online database course: twenty hours of it changes how you see every business.",
+        "The academy's data analytics course walks this ladder with machines and teachers in the room — ask at the front desk, or begin free and climb.",
+      ]),
+      h2("Why the trade suits this place"),
+      p(
+        "Because Nigeria is not short of data — it is short of readers. Every problem anyone complains about, fuel, queues, churn, stock, sits on a pile of records nobody has calmly counted. The analyst is the person who counts, and in a country that is learning to measure itself, the person who can say this is what the numbers actually say, and here is the picture, is quietly becoming one of the most useful people in every room. You already read a grid, sort a column, and fill a formula down. The career is those habits, taken seriously, with a decision waiting at the end of every table.",
+      ),
+    ],
+  },
+  {
+    slug: "how-to-build-mobile-app-nigeria",
+    title: "How to build a mobile app in Nigeria, from the first sentence",
+    excerpt:
+      "The honest ladder from idea to screen: write it small, prototype on paper, start with the web, learn the code or brief a developer, then the Play Store. No magic, no container loads of cash.",
+    series: SERIES,
+    order: 132,
+    author: AUTHOR,
+    date: lessonDate(132),
+    cover: "/images/blog/app-idea-notebook.jpg",
+    coverAlt: "A notebook with hand-drawn phone screen sketches beside a phone on a desk.",
+    body: [
+      p(
+        "How to build a mobile app in Nigeria is a question people ask with their eyes too big: they imagine a Lagos office, a container load of dollars, a team. The honest answer is a ladder, and its first rung costs nothing but a notebook. Write the idea in one sentence — who uses it, and what it does for them. An app that reads school fees for parents. An app that finds mechanics nearby. If the sentence will not come, the app is not ready; if it comes easily, you have already done what many funded teams skip.",
+      ),
+      p(
+        "Rung two: draw it. Paper screens — rectangles with a button here, a list there — the poster lesson's discipline turned inward: what must this screen say, what must this button do? Then put the drawing in front of three people who would actually use it and watch where they frown. Every frown fixed on paper costs nothing; the same frown fixed after programming costs weeks. Rung three is the one most Nigerians should honestly start on: build it as a web app first — a site that works in any phone's browser, installed to the home screen like an app — because it needs no store approval, updates instantly, and reaches the phone that is Nigeria's real computer. The frontend lesson's three layers are the whole trade at this height.",
+      ),
+      fig(
+        "/images/blog/app-idea-notebook.jpg",
+        "A notebook with hand-drawn phone screen sketches beside a phone on a desk.",
+        "The cheapest laboratory on earth. Every screen argued with on paper is a week of programming never wasted.",
+      ),
+      h2("The code, or the developer"),
+      p(
+        "Rung four is a fork, and both paths are honourable. Learn the code: the academy's mobile app development course and the free-learning lesson's method — one month per rung, hands on keys — carry you from web app to true Android apps, and the Play Store's door fee is a one-time twenty-five dollars, a business expense, not a wall. Or brief a developer: hire the portfolio rather than the patter — someone whose finished apps you have opened and used — agree the price in writing with stages, pay in parts as stages land, and never the whole sum upfront; the selling lesson's payment rules, walked from the other side. A clear one-sentence idea, paper screens, and a staged agreement will get a honest build for a fraction of the myth.",
+      ),
+      p(
+        "And build for the street you live on: the app must survive a three-bar network and a low-end phone, or it does not survive Nigeria — test it on the bus, not only on your fine screen. Keep it small: one thing done perfectly beats five things done ashamedly; WhatsApp itself began as statuses and photos arrived years later. Expect power and data to be line items, the way rent is. And when the first version is alive, however ugly, put it in ten people's hands and listen. The idea that survives ten strangers' thumbs is the one worth the next thousand lines.",
+      ),
+      fig(
+        "/images/blog/phone-app-testing.jpg",
+        "A young tester tapping through a new app on a phone while the developer watches and takes notes.",
+        "The examination that matters. Ten honest thumbs find more truth in an afternoon than a year of private admiring.",
+      ),
+      ul([
+        "Write your idea in one sentence today. If it takes more, cut until it does not.",
+        "Draw the three screens that matter on paper before touching any tool or hiring anybody.",
+        "Start with the web app. The store can wait; your users' phones cannot.",
+        "Hiring? Staged payments against stages delivered, portfolio before patter, everything in writing.",
+      ]),
+      h2("The myth, and the ladder beside it"),
+      p(
+        "The myth says building an app here requires somebody's millions. The ladder says otherwise: a sentence, paper screens, a web version, ten honest testers, and only then — if the street confirms the idea — the store, the code, or the developer. Every step is free or nearly, every step teaches, and any step can stop with dignity if the idea fails the test, which is precisely what steps are for. The person who asks how to build an app and begins at rung one this evening is ahead of the person who has been pricing containers since last year.",
+      ),
+    ],
+  },
+  {
+    slug: "choosing-where-to-learn-bootcamp",
+    title: "Choosing where to learn: bootcamps, night classes, and honest papers",
+    excerpt:
+      "A data science bootcamp in Nigeria can be the best money you ever spend or the fastest you ever lose it. The questions that tell one from the other, before you pay anybody.",
+    series: SERIES,
+    order: 133,
+    author: AUTHOR,
+    date: lessonDate(133),
+    cover: "/images/blog/classroom-night-class.jpg",
+    coverAlt: "Adult learners at computers in a small evening class, an instructor leaning over one screen.",
+    body: [
+      p(
+        "So you have chosen to learn properly — the decision this whole shelf has been preparing you to make. Now the market floods in: every week a new data science bootcamp in Nigeria, a six-week miracle, a certificate with a foreign logo. Some of these schools are genuinely good and change lives at scale. Some are a room, a projector, and a man reading slides he did not write. Both advertise identically. This lesson is the buyer's inspection — the fence check, turned on the people asking for your school fees.",
+      ),
+      p(
+        "Know the three honest shapes first. Self-taught: the free-learning lesson's road — free materials, total discipline, zero fees, and the highest drop-out rate, because nobody notices when you stop. The night class or part-time course: a room, machines, a teacher, a term — what this academy has run for years, built for people who work by day. The bootcamp: the full-time intensive, weeks of immersion, designed for career switchers in a hurry. None is superior in the abstract; each fits a life. The question is never which shape is best, but which shape your job, your pocket, and your temperament can actually finish — because an unfinished cheap course is the most expensive education on earth.",
+      ),
+      fig(
+        "/images/blog/classroom-night-class.jpg",
+        "Adult learners at computers in a small evening class, an instructor leaning over one screen.",
+        "The room that fits a working life. Machines humming, a teacher within reach, and questions answered before they cool.",
+      ),
+      h2("The inspection: five questions before any fee"),
+      p(
+        "One: who teaches, and have they done the work — or only watched it? A working professional teaching evenings beats a full-time lecturer who has never shipped. Two: what will I have built by the end — ask to see past students' actual projects, not the school's own brochure; a good school shows them proudly, like a tailor. Three: machines or not — is a computer provided, or what exactly must you bring, because a laptop is a real cost and pretending otherwise is dishonesty. Four: what does the fee cover — every session, materials, certificate, anything after? State it all before you pay, in writing. Five — the loudest alarm: does the school promise jobs? Guaranteed employment is the prize message in academic dress; a good school promises skills, projects, and honest guidance, and says plainly that the market rewards proof. The moment a school sells you a job instead of a skill, walk out politely and keep your money.",
+      ),
+      p(
+        "Two smaller tells: size and after. A class where one teacher faces sixty students is a cinema, not a school — ask the ratio, and ask what happens when you miss a week, because life here will interrupt you. And the papers: a certificate is a receipt for learning, not the learning itself — lesson one hundred and seventeen's employers trust the portfolio long before the parchment. When you visit a school — ours, or any — ask these five questions and watch the answers. A good school welcomes the inspection. A bad one changes the subject to urgency: promo ends today. You know hurry. Hurry is the oldest tell on this shelf.",
+      ),
+      fig(
+        "/images/blog/student-projects-laptop.jpg",
+        "A laptop showing a grid of past students' finished projects, a school owner standing beside it, proud.",
+        "The tailor's rack. A school that shows its students' work has nothing to hide; the one that hides it has told you everything.",
+      ),
+      ul([
+        "Choose the shape your life can finish: self-taught, night class, or bootcamp. Write why on paper.",
+        "Ask the five before any fee: teachers' work, students' projects, machines, the full fee in writing, and jobs promised or not.",
+        "Run from guaranteed jobs and today-only promos. Two tells, one conclusion.",
+        "Visit the room before you pay it. Any school worth your evenings will show you the room.",
+      ]),
+      h2("What a school actually sells"),
+      p(
+        "Strip the brochures and a school sells three things: a structure you would not have built alone, a teacher who answers before the question cools, and classmates who make Thursday mean something. The internet cannot reliably give the second, and never gives the third. That is the whole case for rooms and fees — and the reason this academy keeps its classes small, its machines humming, and its alumni teaching one another years after. Whatever school you choose, choose it the way you now choose everything: slowly, with the receipt kept and the promise in writing.",
+      ),
+    ],
+  },
+  {
+    slug: "it-support-the-person-who-fixes-the-day",
+    title: "IT support: the person who fixes the day",
+    excerpt:
+      "When the printer dies before the meeting, one person becomes the most important in the building. What IT support work actually is, and why patience is the core qualification.",
+    series: SERIES,
+    order: 134,
+    author: AUTHOR,
+    date: lessonDate(134),
+    cover: "/images/blog/support-desk-helping.jpg",
+    coverAlt: "An IT support officer crouched beside a colleague's desk, fixing a cable while they watch.",
+    body: [
+      p(
+        "Every office has a moment when everything stops: the printer dies before the meeting, the email will not open, the system asks for a password nobody remembers. In that moment one person becomes the most important in the building — the person who fixes the day. That is IT support: the trade of keeping other people's work moving, and the most common first room in all of technology. The analyst watches for attackers; the builder raises programs; the support person keeps the ordinary daylight running, which every one of those rooms quietly depends on.",
+      ),
+      p(
+        "Here is the secret the job adverts do not say: you already know half the trade. Every lesson on this shelf is a ticket — a reported problem — that an IT support person has answered a thousand times. The computer is slow. The update is stuck. There is no sound. The phone says storage is full. The form will not upload. A ticket is simply one of these, reported by somebody else, and the trade is resolving it calmly while its owner watches. What the job adds to what you know is method: ask what changed last, restart honestly, check the obvious road before the exotic one, write down what you did — and a shell of deeper knowledge around it: networks, accounts, machines, the floors of lesson one hundred and twenty-six, climbed and repaired.",
+      ),
+      fig(
+        "/images/blog/support-desk-helping.jpg",
+        "An IT support officer crouched beside a colleague's desk, fixing a cable while they watch.",
+        "The most-watched job in the building. Whatever you do at that desk, an audience learns whether technology is safe.",
+      ),
+      h2("The core qualification nobody lists first"),
+      p(
+        "Patience. Because the job's real raw material is not machines — it is frightened people: the manager who clicked the link, the accountant certain she has broken the system, the director who needs it now. The support person who sighs makes one enemy and teaches the whole corridor to hide their problems, which is how small faults grow into disasters. The one who explains without making anybody small becomes the person people run to early, and early is where problems are cheap. Every manner this shelf taught — the help lesson's rules for asking, the shared machine's courtesies — is what the good side of this desk looks like. You are not paid to know everything. You are paid to stay calm, find out, and leave the person taller than you met them.",
+      ),
+      p(
+        "The road in, honestly: the fundamentals — machines, networks, accounts, the operating system's moods — then a first role, help desk or school or café support, where the learning is paid for instead of paid for. Certificates in the CompTIA family open doors here the way they do across the trade; the academy's IT support course carries that groundwork with machines to open and break safely. The pay begins modest, like all first rooms — but the room's view is the whole building: support people who learn how everything connects become the sysadmins, the security watchers, the infrastructure engineers, each rung paying better than the last. Almost nobody ends where support began. The trade's habit of fixing things has always included fixing one's own ladder.",
+      ),
+      fig(
+        "/images/blog/opened-laptop-repair.jpg",
+        "An opened laptop on a workbench, its parts exposed under a desk lamp, tools laid out neatly.",
+        "The calm of method: one machine, one fault, one tool at a time. The screwdriver rarely solves it; the sequence does.",
+      ),
+      ul([
+        "Re-read the shelf as a ticket queue: for each lesson, say how you would fix it for a stranger, in their hearing, kindly.",
+        "Learn the floors of trouble by heart — app, machine, router, street, far house — and practise saying which floor broke.",
+        "Keep a repair diary: machine, fault, what worked. In a month you own the most persuasive CV a first employer has seen.",
+        "When you are ready for the room-with-machines version, the academy's IT support course is the front door. Say the shelf sent you.",
+      ]),
+      h2("The trade that keeps the lights on"),
+      p(
+        "No app ships, no analysis lands, no campaign runs, in a building whose machines are down and whose people are afraid of them. IT support is the floor under every floor — unglamorous by design, indispensable by arithmetic. If your temperament is the helper's, if the locked-out colleague's relief is payment you actually enjoy, this is a career that begins where you are already standing: calm, curious, and unafraid of the question everybody else is afraid to ask twice.",
+      ),
+    ],
+  },
+  {
+    slug: "websites-for-small-businesses",
+    title: "Websites for small businesses: a trade you can start this year",
+    excerpt:
+      "Every shop, school and church needs one honest page on the internet — and somebody local to build and keep it. That somebody can be you, from skills this shelf has already begun.",
+    series: SERIES,
+    order: 135,
+    author: AUTHOR,
+    date: lessonDate(135),
+    cover: "/images/blog/small-shop-owner-laptop.jpg",
+    coverAlt: "A shop owner and a young developer looking at a laptop together behind a shop counter.",
+    body: [
+      p(
+        "Walk your own street and count the businesses with no honest page on the internet: the pharmacy, the school, the church, the fashion house with fine pictures trapped in a WhatsApp gallery. Their customers are searching every day, and finding only strangers. Every one of those businesses needs the same modest thing — one clear page that says who we are, what it costs, where we are, and a button that opens WhatsApp — and somebody local to build it and keep it breathing. That somebody can be you. Of all the trades on this shelf, this one starts soonest and pays first.",
+      ),
+      p(
+        "The skill floor is lower than any hustler will tell you, because the secret is that most small-business sites should be small. A site builder or WordPress — the prepared skeletons the frontend lesson mentioned — covers the majority of cases, and the real craft is not code at all: it is the poster lesson's discipline applied to a whole business. Say the true thing briefly. Put the price where the customer expects it. Make the address findable in one glance. One page done honestly beats five pages done ashamedly, and a button that opens a chat will do more for a Lagos pharmacy than any amount of animation. The frontend lesson's three layers are there when a client genuinely needs more — and by then you will want them.",
+      ),
+      fig(
+        "/images/blog/website-preview-phone.jpg",
+        "A hand holding a phone showing a clean one-page business site, the shop's entrance visible behind it.",
+        "The whole shop in one honest page: what, where, how much, and a button that opens a conversation. That is the trade.",
+      ),
+      h2("The money, and how it arrives"),
+      p(
+        "The trade has two rivers of income, and the second is the one beginners undervalue. The build: a first simple site might earn modest money — a fraction of what agencies charge Lagos firms — and it should, because you are buying proof as much as payment. Then the keep: domains expire yearly, hosting renews, shops change prices, and the person who built the page is the person the owner calls — a small standing income for an afternoon's tidying twice a year. Ten kept clients are a quiet salary. The catalog FAQ's arithmetic applies exactly: a domain costs about ten to eighteen thousand naira a year and simple hosting is cheap or free; charge for the work, pass the costs through plainly, and put every number in writing — the pricing lesson's law before it is even spoken.",
+      ),
+      p(
+        "The road in is the portfolio's road: build the first site for your church free, the second for a relation's shop at cost, the third for the neighbour's school at a fair new price — three live addresses, each with a grateful owner, and you are no longer promising, you are showing. The academy's web design and WordPress courses compress the technical months into weeks with machines and real briefs; the self-taught road costs nothing but evenings and works too. Either way the trade begins where you live, on the street whose businesses you already patronise — and there is a particular satisfaction in walking past a shop and knowing its corner of the internet is yours.",
+      ),
+      fig(
+        "/images/blog/domain-renewal-note.jpg",
+        "A small desk calendar with a circled date beside a laptop, a notebook listing client sites and renewal months.",
+        "The keeper's ledger: every site, its renewal month, its owner's number. The second river of income flows through this page.",
+      ),
+      ul([
+        "Pick one real business you patronise and draft its one honest page tonight — words first, tool after.",
+        "Learn one tool properly — a site builder or WordPress — and finish one full practice site before charging anybody.",
+        "Three builds to begin the portfolio: free, at cost, then fair price. Keep every owner's number.",
+        "Put the domain and hosting costs in your quotes plainly. The written number is the whole reputation.",
+      ]),
+      h2("The street is the market"),
+      p(
+        "Nobody needs to import this trade. The customers are already within twenty minutes of you, already searched by strangers every day, already paying printers for banners that say less than one honest page would. The developer of lesson one hundred and twenty-eight builds for companies and continents; this trade builds for the street, in afternoons, for wages that compound into a living. One clear page at a time — it is how most of the independent web people you admire actually began.",
+      ),
+    ],
+  },
+  {
+    slug: "social-media-manager-behind-posts",
+    title: "The social media manager, behind the posts",
+    excerpt:
+      "The job is not posting; it is selling with manners at scale — a calendar, a camera, a reply written like a host, and numbers read honestly every week.",
+    series: SERIES,
+    order: 136,
+    author: AUTHOR,
+    date: lessonDate(136),
+    cover: "/images/blog/phone-content-calendar.jpg",
+    coverAlt: "A planner showing a week of scheduled posts beside a phone on a desk.",
+    body: [
+      p(
+        "Every business you pass is being told the same thing: you must be online. Most owners have neither the time nor the stomach for it — the photographs, the captions, the stranger asking the same question forty times — so they hire somebody to stand in the doorway of their business and speak well to the street. That person is the social media manager, and the title undersells the work. It is closer to market trade with a modem: know the goods, show the goods, answer every caller with manners, and count what actually sold on Saturday.",
+      ),
+      p(
+        "The work, honestly itemised. The calendar: a week of posts planned on paper or a simple planner — what goes out, on which day, photographed for which purpose — because posting-by-mood is how business pages die. The camera: clean product photographs in daylight, the selling lesson's discipline, reused across posts. The replies: this is the trade's core and its test — every question answered quickly and kindly, every complaint answered publicly and finished privately, because a thousand strangers are reading the reply who never read the post. WhatsApp is not email, lesson ten said; a business chat is not a group chat either — it is a counter, and the manager is the one behind it. And the numbers, weekly: what was seen, what was clicked, what was bought. Vanity is when a page grows and sales do not; the honest manager reads that sentence and changes the cooking, not the garnish.",
+      ),
+      fig(
+        "/images/blog/phone-content-calendar.jpg",
+        "A planner showing a week of scheduled posts beside a phone on a desk.",
+        "The week, decided in advance. Saturday's sales are cooked on Monday's calendar; posting by mood is how pages starve politely.",
+      ),
+      h2("What the good ones charge, and how they begin"),
+      p(
+        "Begin where you are trusted: a relation's shop, your church's page, the tailor whose work you already wear — one small account, run properly for a season, with before-and-afters kept as proof. Charging follows the pattern of every trade on this shelf: a monthly fee agreed in writing for a defined service — so many posts, photographs included, replies within working hours, one honest report a week — and anything beyond it quoted separately. The marketing programs at the academy teach the paid side properly, with real budgets; the free road starts with the learning lesson and the discipline to finish. What separates earners from hobbyists in this trade is rarely taste. It is reliability: the page that posts when it said it would, the comment answered within the hour, the report that arrives without being chased. Clients renew reliability. They merely compliment beauty.",
+      ),
+      p(
+        "And keep the shelf's guard up while you work, because this desk meets every liar in the book: the client who wants to buy followers, which is renting an empty stadium and calling it a crowd; the scam that arrives as a brand collaboration with a fee attached; the forward-that-lies pressure to post what was never checked. The manager's name sits on every word posted — lesson one hundred and nine's envelope, signed monthly. Guard it, and the trade compounds: one kept shop leads to the next, the way kept sites and kept books do. The street talks. Make sure it is your work it is talking about.",
+      ),
+      fig(
+        "/images/blog/social-reply-desk.jpg",
+        "A manager typing a reply to a customer comment on a phone, a notebook of response notes open beside it.",
+        "The counter, staffed. Every reply is read by a thousand strangers who never liked a post — and it is the reply they judge the shop by.",
+      ),
+      ul([
+        "Choose one real page and run it properly for a season: calendar on Monday, photographs in daylight, replies within the hour.",
+        "Write the weekly report yourself — seen, clicked, bought — and change the cooking when the numbers speak.",
+        "Agree the monthly fee and its boundaries in writing before the first post goes up.",
+        "Never buy followers, never post unchecked forwards, never let the page promise what the shop cannot deliver.",
+      ]),
+      h2("The trade of being trusted in public"),
+      p(
+        "Strip the platforms and the trends — they will change again before these words grow old — and the job is ancient: stand at the front of the shop, know your goods, greet every caller well, and keep honest count of what sells. Businesses will always pay for the person who can be trusted to speak for them in public, because most people cannot bear to do it daily. That is the work behind the posts, and there has never been more of it than now.",
+      ),
+    ],
+  },
+  {
+    slug: "graphic-designer-table",
+    title: "Design as a trade: the graphic designer's table",
+    excerpt:
+      "The designer's job is not beauty; it is clarity that sells — hierarchy, restraint, and the discipline to stop. What the work is, what the tools cost, and how the first paid jobs arrive.",
+    series: SERIES,
+    order: 137,
+    author: AUTHOR,
+    date: lessonDate(137),
+    cover: "/images/blog/designer-colour-swatches.jpg",
+    coverAlt: "A designer's desk with colour swatches, sketches and a laptop showing a layout.",
+    body: [
+      p(
+        "The poster lesson said it once and this trade is built on it: a flyer is not decoration, it is a sentence arranged so a stranger reads it in one glance. The graphic designer is the person who arranges. Weddings, elections, churches, brands, the suya spot by the junction — every message here competes in the loudest visual street on earth, and the designer's job is to make one message land clean among the noise. Not prettiness. Clarity with a temperature. If you have ever rearranged a shelf until it felt right, or chosen the cloth that made the outfit, you have already done the work's first hour.",
+      ),
+      p(
+        "What the work actually is, day to day: listening first, because the client will say logo when they mean identity and beautiful when they mean trustworthy, and the designer's first skill is translating. Then hierarchy — what the eye reads first, second, third: name, offer, how to reach us, in that order, at those sizes, whether the brief is a funeral programme or a bank campaign. Then restraint — two fonts, three colours, one idea per page; the difference between a professional design and a market noise is what the designer had the discipline to leave out. The tools begin free on the phone and grow into the desktop suites when the work demands them; the camera lesson's lighting and the scanning lesson's flat surfaces are already half of every clean mock-up you will ever admire.",
+      ),
+      fig(
+        "/images/blog/designer-colour-swatches.jpg",
+        "A designer's desk with colour swatches, sketches and a laptop showing a layout.",
+        "The table of restraint. Three colours, two fonts, one idea — and the discipline to stop before the page shouts.",
+      ),
+      h2("How taste is actually built"),
+      p(
+        "Nobody is born with the eye; the eye is a filing cabinet. Fill it deliberately: collect a hundred designs you admire — wedding suites, brand boards, album covers, bank campaigns — and for each, ask one question: where did my eye land first, and why? Copy them shamelessly in practice, the way apprentices have always learned tailoring — recreate the hierarchy until your hands understand the argument. Then vary: same flyer, three hierarchies; same name, five type pairings. The taste that clients pay for is thousands of small comparisons, filed. And the trade's professional manners matter as much as the eye: the brief written back to the client in their own words before any design begins, two concepts shown rather than ten, revisions bounded in writing, and the files delivered in the formats people actually need — the PDF lesson's knowledge, monetised.",
+      ),
+      p(
+        "The first paid jobs arrive the way they do across this whole shelf: the church programme, the cousin's shop banner, the school's flyer — small works, done exactly, collected as proof. The catalog's own advice to design students holds: small jobs — event flyers, social posts, church graphics — once the portfolio carries three to five solid pieces; price modestly at first, deliver precisely what was promised, and most beginners meet their first repeat client within months. From there the ladder is real: brand identities, retainers with businesses who need you monthly, and the print shops and event planners who send steady work to the designer whose files never make their machines complain.",
+      ),
+      fig(
+        "/images/blog/portfolio-design-spread.jpg",
+        "A printed portfolio open on a table, showing pages of branding and flyer designs in a neat grid.",
+        "The filing cabinet, made public. Three to five honest pieces, shown proudly — the designer's entire storefront.",
+      ),
+      ul([
+        "Start the filing cabinet today: collect ten designs you admire and mark where the eye lands first, and why.",
+        "Recreate one admired design from scratch this week — fonts, sizes, spacing — until your version is indistinguishable.",
+        "Do one real free job for a cause you respect, and deliver it with all the file formats a printer could ask for.",
+        "Two concepts, bounded revisions, written brief — the three manners that separate a trade from a favour.",
+      ]),
+      h2("The trade of making people look as good as they are"),
+      p(
+        "Every business on your street already believes in its own message; what it lacks is the person who can make a stranger believe it in one glance. That is what design sells, and why it survives every platform shift: tools will change their names again, but hierarchy, restraint and listening are older than printing. The table is cheap to set, the practice is free, and the first client is probably within three doors of you. Sit down, file a hundred examples, and let the eye grow the way every skill on this shelf grew — one honest hour at a time.",
+      ),
+    ],
+  },
+  {
+    slug: "working-remote-from-here",
+    title: "Working remote from here: dollars, hours, and the light",
+    excerpt:
+      "Remote work is not a hustle, it is a job with a longer commute. The four things it actually demands — proven skill, power and data, written English, and a way to be paid — and how to arrange each.",
+    series: SERIES,
+    order: 138,
+    author: AUTHOR,
+    date: lessonDate(138),
+    cover: "/images/blog/remote-work-headphones.jpg",
+    coverAlt: "A young professional at a desk with headphones, a laptop and a small UPS, in a home room.",
+    body: [
+      p(
+        "Somewhere in this city tonight, a young man is debugging code for a company whose office he has never seen, paid on Friday in dollars, generator fuel already budgeted like rent. This is remote work at its honest best — not a hustle, not a shortcut, but a job with a longer commute: the skills are the same, the manners are the same, and four practical walls must stand before the first contract. This lesson walks the four, because each has broken more remote careers than any lack of talent.",
+      ),
+      p(
+        "Wall one: a skill proven. Remote employers cannot see your hustle; they can only see finished work and checkable references — the profile lesson's front door, the portfolio lesson's proof, and nothing else. Wall two: power and data, arranged like utilities rather than prayed about. The professional setup here is boring and specific: a laptop with honest battery health, a small inverter or UPS at least for the router and one machine, a primary data plan with a backup — two networks, because lesson ninety-five taught you taps — and a workspace where a full workday does not depend on the grid's mood. The light is a colleague you must manage, not a mystery you must resent. Wall three: written English — the entire remote relationship happens in text: the clear update, the polite disagreement, the question asked once and completely. Lesson five's letter, lesson seventy's manners, worn daily.",
+      ),
+      fig(
+        "/images/blog/remote-work-headphones.jpg",
+        "A young professional at a desk with headphones, a laptop and a small UPS, in a home room.",
+        "The boring setup that makes it possible: charged machine, backed-up router, two networks, one closed door.",
+      ),
+      h2("Wall four: the money must arrive"),
+      p(
+        "Being paid across borders is a solved problem with a small fee attached: established platforms open receiving accounts that accept dollars or pounds and pay out to Nigerian banks; some clients pay by direct transfer through those platforms, a few by card on contracts. The rules you already live by simply grow a passport: get the fee in writing before the work, invoice properly — a document with your name, the client's, the amount, the account — invoice in parts for anything long, and expect the platform's fee like you expect transport. Keep the receipts; the tax conversation in Nigeria is maturing, and the professional's answer is records, not vibes. The bank lesson's alert-checking, the selling lesson's confirm-before-delivery — the same laws, now in dollars.",
+      ),
+      p(
+        "Then the manners of the clock, which finish the picture: know your client's hours — overlap is the service, and a Lagos morning is a London morning; a Lagos evening, an American one — choose contracts whose hours you can honestly hold, and treat the closed door of a home workspace as sacredly as any office. The trades of this chapter all lead here eventually: the analyst, the designer, the support engineer, the writer of apps — remote is not a fifth career, it is where the other careers go to be paid in hard currency. Build the walls in order, and the commute stays long but the pay arrives short.",
+      ),
+      fig(
+        "/images/blog/invoice-cross-border.jpg",
+        "A laptop showing a simple invoice document, a phone displaying a payment received notification beside it.",
+        "Wall four, standing: the written fee, the proper invoice, the alert checked twice. Same laws, harder currency.",
+      ),
+      ul([
+        "Arrange the boring wall first: one backup network and at least router-and-laptop power cover. This week, not the week of the first client.",
+        "Write one practice update as if to a remote manager: what moved, what is next, what is blocked. Three sentences, no grammar casualties.",
+        "Choose one receiving platform, open the account while you have no client yet, and learn its fees before you need it.",
+        "Keep a work diary from day one — hours, deliverables, payments. Records are the professional's whole armour.",
+      ]),
+      h2("The longer commute, honestly priced"),
+      p(
+        "None of this is glamorous, which is precisely why it works: the four walls — proven skill, managed power and data, written English, arranged payment — are each boring, each buildable, and each within this shelf's reach. The reward is the arithmetic everyone whispers about but few prepare for: the same skill, priced in a stronger market, paid into the same account the bank lesson taught you to guard. Build like the person in the first paragraph: quietly, wall by wall, until Friday's alert needs no translation.",
+      ),
+    ],
+  },
+  {
+    slug: "pricing-your-work",
+    title: "Pricing your work without apologising",
+    excerpt:
+      "The freelancer's hardest lesson: a price is not a confession of worth, it is a tool with a floor, a market, and a value. How to quote, hold, deposit, and raise.",
+    series: SERIES,
+    order: 139,
+    author: AUTHOR,
+    date: lessonDate(139),
+    cover: "/images/blog/invoice-notebook-writing.jpg",
+    coverAlt: "A hand writing figures into a notebook beside a calculator and a laptop.",
+    body: [
+      p(
+        "Every trade in this chapter ends at the same awkward table: the moment the price must be said. The new freelancer's tongue trips — they halve the number, apologise while saying it, and spend the job resenting the work. This lesson is the antidote, and it begins with a redefinition: a price is not a confession of your worth. It is a tool — with a floor beneath it, a market around it, and a value above it — and like every tool on this shelf, it is learned by method, not by mood.",
+      ),
+      p(
+        "The three questions behind any honest quote. The floor: what do your hours, data, transport and skill actually cost you — below this line every job is charity, and charity is a fine thing that belongs in church, not in invoices. The market: what do others ask for this work, at your level, in this city — the selling lesson's walk around the market, applied to your own labour; price near them, not beneath them by magic. The value: what is the outcome worth to the client — the flyer that fills a hall, the site that answers customers at midnight, the books that survive an audit. Beginners quote the floor and apologise; professionals quote the value and explain. You were already taught the instinct — lesson one hundred and thirteen: sentiment is a tax no buyer pays. Charge for the outcome, and never so low that you resent the work; resentment is the most expensive hidden fee in freelancing.",
+      ),
+      fig(
+        "/images/blog/invoice-notebook-writing.jpg",
+        "A hand writing figures into a notebook beside a calculator and a laptop.",
+        "The quote is prepared, not blurted. Floor calculated, market walked, value named — then one calm number, written and held.",
+      ),
+      h2("The manners that protect the number"),
+      p(
+        "Quote in writing, always — one message: what will be delivered, by when, for how much, revisions bounded, payment split. Take a deposit on anything substantial, half or near it, before work begins; the deposit is not distrust, it is the shape of seriousness, and the client who resents it has told you something useful. Bound revisions — the second redesign is a new job, said with a smile and the written brief. And resist the three classic discounts: the friend price for a business that can pay, the exposure payment — a corpse cannot spend exposure, and neither can a portfolio bank it from a client who never pays — and the urgency discount, where their deadline becomes your discount. The family word lesson's rule applies at the pricing table too: the people who pressure you hardest about money are usually the ones the money was never meant to come from.",
+      ),
+      p(
+        "Then raising, which is the part everyone fears and every professional eventually does: new clients get the new price immediately — the next quote is simply higher, said plainly; existing clients get notice and warmth — from next month my fee is this, and here is what the year together has built. The good ones stay. The ones who leave were usually the ones holding the floor beneath your market. The catalog's freelancer course works this ground with real numbers and real scripts; the free road is to practise the sentences aloud until your voice stops apologising. The work deserves a price said without a tremble — and so do you, which in this trade are the same sentence.",
+      ),
+      fig(
+        "/images/blog/quote-message-phone.jpg",
+        "A phone showing a written quotation message to a client, the figures clearly typed.",
+        "The whole protection, one message long: what, when, how much, revisions bounded, payment split. Written is respected; spoken is negotiated.",
+      ),
+      ul([
+        "Calculate your floor tonight: hours, data, transport, tools — the number below which you do not work for businesses.",
+        "Walk the market for your trade and write your range. Quote inside it, never below the floor, and stop apologising in the sentence.",
+        "Adopt the written quote and the deposit this week. Practice on the next job, however small.",
+        "Say the raising sentences aloud until they are boring: from next month, my fee is this. Boring is the goal.",
+      ]),
+      h2("The number, said plainly"),
+      p(
+        "Everything on this shelf has been training for calm at decisive moments — the pause before the link, the name before the confirm, the plate before the door. The pricing moment is that same decisive instant, wearing your own hat: the pause before the number, said plainly, held kindly. Quote the value, take the deposit, bound the revisions, raise without apology. The trade that pays a person properly is built from these small held lines, one quote at a time — and the confidence clients actually respect was never arrogance. It was preparation, with a figure attached.",
+      ),
+    ],
+  },
+  {
+    slug: "the-portfolio-proof",
+    title: "The portfolio: proof over promises",
+    excerpt:
+      "A CV says you can; a portfolio shows you did; a client decides in one glance. How to build the small body of evidence that turns every trade in this chapter into a living.",
+    series: SERIES,
+    order: 140,
+    author: AUTHOR,
+    date: lessonDate(140),
+    cover: "/images/blog/portfolio-printed-works.jpg",
+    coverAlt: "A printed portfolio of project pages spread across a table beside a laptop.",
+    body: [
+      p(
+        "Every trade this chapter opened — analyst, designer, developer, support, manager, writer of apps — ends at the same door, and the door does not ask for certificates. It asks: show me. The portfolio is the small body of evidence that you did the thing, for somebody, and that it worked. A CV says you can. A portfolio shows you did. The client decides between those two sentences in one glance, which is why this last lesson of the chapter is the one that turns skills into a living — and why it is astonishing how many people spend years collecting skills and one afternoon building proof.",
+      ),
+      p(
+        "What counts as proof is broader than you fear. The finished thing itself — the site, live at its address; the flyer, printed and photographed in the shop; the dashboard, screenshotted with permission; the books, reconciled to the naira. The before and after — the shop that had no page and now does; the queue that took hours and now takes minutes; numbers where you have them, and honest description where you do not. The witness — one line from the church secretary, the shop owner, the relation whose site you built: she said, she did, it worked. Three to five pieces, each with its before, its after, and its witness, outweigh any stack of certificates — and every single one of them is buildable within a month from where you sit, because the free-job road was already marked: the church, the relation's shop, the neighbour's school. The portfolio is not a later reward. It is the next month's assignment.",
+      ),
+      fig(
+        "/images/blog/portfolio-printed-works.jpg",
+        "A printed portfolio of project pages spread across a table beside a laptop.",
+        "The evidence, laid on the table. Three pieces with witnesses beat thirty promises with punctuation.",
+      ),
+      h2("Where it lives, and how it is shown"),
+      p(
+        "Keep it in two houses. The folder: Drive, named, ordered, holding every deliverable and every witness line — the papers lesson applied to your work, safe above the flood, openable in any café on earth. And the page: one clean site — your name, one sentence saying what you do for whom, the three to five pieces with their pictures and their witnesses, and one obvious way to reach you. The frontend lesson's three layers, one page, no more; the profile lesson's front door, now with the workshop visible through the window. When an opportunity appears, you do not scramble: you send the page, or walk in with the printed table, and the conversation starts from what you did instead of what you claim.",
+      ),
+      p(
+        "Then the rhythm that keeps it alive: every finished job, however small, enters the folder within a week — the screenshot taken, the witness line requested while gratitude is still warm, the before remembered and recorded. Retire the weakest piece each time a stronger one arrives; three sharp proofs beat five tired ones. And read your own portfolio the way the clients do, once a season: does this table say what I do, to whom, and does it make a stranger believe me in one glance? When the answer is yes, you have crossed the bridge this whole chapter was building — from person who learned, to person who is hired. The shelf taught you to sit at the machine without fear. The portfolio is how the world finds out.",
+      ),
+      fig(
+        "/images/blog/work-folder-drive.jpg",
+        "A laptop screen showing a tidy Drive folder of named project files with a witness letter among them.",
+        "Two houses, one body of evidence. The folder for the world to verify; the page for the world to meet.",
+      ),
+      ul([
+        "This month: one free job, done exactly, photographed, witnessed. The first piece is the hardest and costs only an afternoon of humility.",
+        "Ask for the witness line while the thank-you is still warm — one sentence, written, kept forever.",
+        "Build the one-page portfolio: name, sentence, three pieces with befores and afters, one way to reach you.",
+        "Enter every finished job into the folder within a week. The rhythm is the portfolio; the portfolio is the living.",
+      ]),
+      h2("The shelf, complete"),
+      p(
+        "One hundred and forty notes. You began at a dark screen and a plastic oval, afraid of breaking something, and you end with the vocabulary of watchers and builders, the manners of money, the law of proof. Nothing on this shelf was magic — it was only never explained at this table before, and you did the hours anyway, which was always the entire secret. Wherever this chapter finds you — the night class, the first free job, the first held price — leave one note behind you for the next person: a taught hand, a kind answer, a kept promise. That is the whole curriculum, and it was always yours. Go and show them.",
       ),
     ],
   },
