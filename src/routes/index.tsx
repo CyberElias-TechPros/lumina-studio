@@ -215,8 +215,8 @@ function Home() {
             </h2>
             <p className="text-muted-foreground mt-2 max-w-xl text-sm leading-relaxed">
               Free class notes anyone can read — sitting down at a computer, files, email, Word,
-              spreadsheets, the phone, and staying safe online. One hundred lessons, written as if
-              someone is sitting beside you.
+              spreadsheets, the phone, and staying safe online. {blogPosts.length} lessons, written
+              as if someone is sitting beside you.
             </p>
           </div>
           <Link to="/blog" className="text-primary text-sm font-medium hover:underline">
