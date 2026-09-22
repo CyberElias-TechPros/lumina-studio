@@ -8020,5 +8020,520 @@ export const blogPosts: BlogPost[] = [
       ),
     ],
   },
+  {
+    slug: "banking-without-the-internet",
+    title: "Banking without the internet",
+    excerpt:
+      "Data dead, network alive: the short codes that move money on any phone in Nigeria, the fake codes that collect instead, and the pocket habits that keep the two apart.",
+    series: SERIES,
+    order: 161,
+    author: AUTHOR,
+    date: "2026-08-21",
+    cover: "/images/blog/ussd-dial-screen.jpg",
+    coverAlt: "A thumb dialing a short banking code on a small phone under a dim bulb.",
+    body: [
+      p(
+        "The data finished on the twelfth of the month, as it always does, and the school fees refused to wait for the next bundle. Then the trader beside you — the one with the small phone with the torch that barely works — dialed five symbols and moved the money anyway. That is USSD: the bank's short code, spoken over the call network instead of the internet. It works on every phone ever sold in this country, it works when the data is dead, when the smartphone is charging in another room, when the generator is off and the network bar is one thin line. Every Nigerian who moves money should hold this key, and hold it correctly, because the same door that carries your money has been copied by collectors.",
+      ),
+      p(
+        "The shape of it, once, slowly. You dial the bank's short code — it begins with the star key and ends with the hash, the way a sentence begins and ends. The network answers with a menu: transfer, balance, airtime, bill. You choose, you type the account number, the app shows you the name — read the name, the bank-lesson's law, unchanged at this altitude — you type your PIN, and the confirmation lands as a text message with a reference. The session lives for less than a minute and dies when the screen says so. No data was spent. No app was opened. The whole transaction breathed on the call network your SIM already had. And that is why it saves the month on the twelfth, and why the school fees did not wait for the bundle.",
+      ),
+      fig(
+        "/images/blog/ussd-dial-screen.jpg",
+        "A thumb dialing a short banking code on a small phone under a dim bulb.",
+        "Star, numbers, hash. The oldest network in your pocket, still the most reliable road when the data is gone.",
+      ),
+      fig(
+        "/images/blog/ussd-sim-alerts.jpg",
+        "A phone screen showing two signal bars, one marked with the bank's alert line.",
+        "Two lines, one job each. Know which SIM the bank sends its alerts to, and keep that line alive — it is the receipt road.",
+      ),
+      h2("The code belongs to the bank, and the bank alone"),
+      p(
+        "Now the warning, and it is not a small one. Codes travel as forwards. Somebody sends you the code for a bank on a broadcast list; a poster at the kiosk prints one; a helpful comment under a market video lists them all. The fraudsters know this, and they print too — a code one digit away from the bank's real one, with a menu that looks identical and a collector sitting where the bank should be. The rule that keeps you safe is the one you already keep for portals: the code comes from the bank itself — its own website, the card in your wallet, the line printed on your ATM receipt — never from a forward, never from a poster, never from a comment. Save your bank's real code in the phone once, from the source, and never dial another for that bank again. The forwards lesson's law, sharpened for money: a code you cannot trace is a code you cannot dial.",
+      ),
+      p(
+        "Two pocket manners complete the craft. First, the PIN: it is typed on the keypad, into the menu your bank's code raised — never given to a caller, never given to the helpful man at the market who offers to do the transfer for you while you hold the parcel. If a stranger must help with the dialing, let them dial and then hand them away from the PIN; better still, do what the trader does and learn the four keys yourself, one evening, on a small transfer of fifty naira to yourself. Second, the dual-SIM housekeeping: know which line the bank knows — the SIM that receives the alerts — and keep that SIM alive, charged, registered. The alerts are the receipts of this road. A bank whose alert line is dead is a bank whose money whispers.",
+      ),
+      fig(
+        "/images/blog/ussd-reference-note.jpg",
+        "A small notebook open on a market stall counter, a transfer reference written beside today's date.",
+        "The confirmation lands as a text with a reference. Write it beside the day's sales — the books lesson's law, kept at the speed of the market.",
+      ),
+      ul([
+        "Get your bank's real short code from the bank itself — website, card, or receipt — and save it. Never dial a forwarded code.",
+        "Practise once with fifty naira to your own account: menu, name, PIN, confirmation. The road, walked in daylight.",
+        "The PIN is typed by your own thumb only — not spoken, not handed to a market helper.",
+        "Know which SIM receives the bank alerts and keep it alive. No alerts, no receipts, no peace.",
+      ]),
+      h2("The network that never finishes"),
+      p(
+        "Data bundles expire and promotions end, but the call network is the last light on in every storm — it carried the OTPs of lesson ninety-eight and now it carries the market's money. The trader with the small phone was never behind the times. She was ahead of them: she keeps one road that does not depend on bundles, on apps, on the grid. Learn her road, keep its laws, and the twelfth of the month becomes just another date the money crossed.",
+      ),
+    ],
+  },
+  {
+    slug: "the-deductions-on-your-line",
+    title: "The deductions on your line",
+    excerpt:
+      "Fifty naira here, twenty there, and the airtime is gone by Wednesday. The quiet subscriptions eating your line, how to see them, how to stop them, and the doors they walked in through.",
+    series: SERIES,
+    order: 162,
+    author: AUTHOR,
+    date: "2026-08-22",
+    cover: "/images/blog/data-deduction-message.jpg",
+    coverAlt: "A phone screen showing a list of small deduction text messages, held by a frowning owner.",
+    body: [
+      p(
+        "Load two thousand naira of airtime on Sunday, and by Wednesday the balance is a rumour. You made three calls. The rest leaked — fifty naira to a ringback tune you never chose, twenty naira a day to a news service that arrived as a quiz, a weekly bundle that renewed itself like rent, a game you do not remember opening. The networks call these value-added services. The street calls them what they are: the quiet deductions, the smallest recurring scam in the country that is also, annoyingly, mostly legal — because somewhere in a long message you did not finish reading, a door was opened and left that way.",
+      ),
+      p(
+        "Doors open in three ordinary ways. The reply: you answered a promo text with a number — one, to claim; the fine print made it a yes to a daily subscription. The link: a message promised a bundle and the page you opened had an accept button wearing a costume. And the code: a forward said dial this to win, and the forward was a subscription wearing confetti. None of these feel like signing a contract. All of them are. Which is why the first skill is not stopping — it is seeing. Check the balance on a fixed day, the books lesson's habit applied to airtime: before, after, and the difference is the story. Then ask the line what it is carrying — every network has a way to list active services, and the honest list lives in the network's own app or portal, the same source law as the bank's code. What you find there usually explains the leak by name.",
+      ),
+      fig(
+        "/images/blog/data-deduction-message.jpg",
+        "A phone screen showing a list of small deduction text messages, held by a frowning owner.",
+        "The leak, in black and white. Fifty naira a day is a bag of rice over a year — the subscription lives on your not-looking.",
+      ),
+      fig(
+        "/images/blog/promo-sms-refused.jpg",
+        "A thumb swiping away a promotional message without replying, the phone's message list behind it.",
+        "The unopened door. A promo text is never answered, never pressed, never dialled — a reply is a pulse that says the line is home.",
+      ),
+      h2("Closing the doors, and the fake exits"),
+      p(
+        "Stopping is satisfying and mostly easy: in the network's own app or portal, the active services sit in plain view, each with a switch or an unsubscribe — turn everything off that you did not choose on purpose, yesterday. Some services end with a simple text to a short code; the exact word and number come from the network's own pages, never from a forward. And here the fraudsters wait, because they know the country is angry about deductions: a text arrives — your line will be deducted massively, press one to unsubscribe now. Pressing one is not unsubscribing. Pressing one is confirming your line is alive and gullible, and the deductions learn your address. The opt-out comes from the source or it does not happen. Then lock the doors behind you: do not reply to promo messages at all, even to refuse — a reply is a pulse that tells the collector the line is home. Do not dial codes from broadcasts. And turn on the full do-not-disturb — the same switch that gave you quiet in lesson ninety-three also refuses the promo messages at the gate, which is the quietest victory of all.",
+      ),
+      p(
+        "One more leak deserves its own sentence: the airtime-to-data conversions and the borrow-me services. Borrowed airtime and borrowed data charge back with interest the day you recharge, and a line that borrows monthly is paying a quiet tax. Use them in true emergencies, and watch the claw-back on the next recharge so it does not surprise a budget. The line, like the account, deserves the monthly hour of the books: one balance, one list, one honest purge. Two thousand naira of airtime should make calls for a month. On a clean line, it does.",
+      ),
+      fig(
+        "/images/blog/unsubscribe-services-app.jpg",
+        "A hand in the network's own app, the active-services list open, a thumb about to switch one off.",
+        "The list, in daylight, from the source. Every switch turned off that you did not choose on purpose is money back in the pocket.",
+      ),
+      ul([
+        "Fixed day, every week: check the balance before and after a call. The difference is the story.",
+        "Open the network's own app or portal and read the active-services list. Switch off what you did not choose.",
+        "Never press one on a warning text, never reply to promos, never dial a code from a broadcast. The opt-out scam feeds on anger.",
+        "Full do-not-disturb, on: quiet, and no promo messages at the gate. Then watch a week of balance. This is the whole lesson, working.",
+      ]),
+      h2("The smallest recurring scam"),
+      p(
+        "Nobody gets rich stealing fifty naira from a million people — but a million people quietly get poorer, which is the same arithmetic wearing the other trouser. The deductions survive on not-looking, and not-looking is a habit you can simply end. One evening with the network's app, one list switched off, one DND turned on — and the line goes back to being what you paid for: your voice, your data, your money. The next lesson stays with the bundle itself, and asks where the data actually goes by Wednesday.",
+      ),
+    ],
+  },
+  {
+    slug: "where-the-data-goes",
+    title: "Where the data goes",
+    excerpt:
+      "Two gigabytes, finished by Thursday, and you barely watched anything. The four quiet eaters of a bundle, the settings that leash them, and the buying that stops the middlemen.",
+    series: SERIES,
+    order: 163,
+    author: AUTHOR,
+    date: "2026-08-26",
+    cover: "/images/blog/data-usage-settings.jpg",
+    coverAlt: "A phone screen showing a data usage bar, most of it already consumed, held in one hand.",
+    body: [
+      p(
+        "The bundle was two gigabytes on Monday, fat and confident. By Thursday the phone says data exhausted, and you are genuinely confused — you watched nothing, or so your memory insists. The memory is honest; the bundle was still eaten. A bundle is a bowl of water in a house with four quiet drinkers, and this lesson is about learning their names, because a drinker with a name can be leashed.",
+      ),
+      p(
+        "The eaters, by appetite. The updater: every app on the phone checks for new versions, and the big ones — the social apps, the maps — update in the hundreds of megabytes, over your bundle if you let them. The leash is one switch: updates over Wi-Fi only, the updates lesson's law, and the biggest eater sits down. The backup: photographs climb to the cloud all day on mobile data if the gallery's setting says so — fifteen years of family history quietly metered. Backups belong to Wi-Fi, or to the nights when you switch them on yourself. The streamer: video drinks data the way the noon sun drinks a bucket — an hour of high-quality video can finish a daily bundle alone; the caption lesson's settings hold the cure, because a lower quality looks the same on a six-inch screen and drinks a tenth. And the background: apps you are not even using, refreshing feeds, syncing, checking — the settings page has a screen that names every eater on the phone and shows exactly how much each drank this month. Open it once, with the confusion of Thursday in your mind, and the mystery dies in ninety seconds of honest reading.",
+      ),
+      fig(
+        "/images/blog/data-usage-settings.jpg",
+        "A phone screen showing a data usage bar, most of it already consumed, held in one hand.",
+        "The bar does not judge; it reports. One screen names every eater in the house and the size of each mouth.",
+      ),
+      h2("The leash, and the buying"),
+      p(
+        "Three switches leash the house for good. Data saver, in the network settings — the phone stops the background drinking and lets the foreground apps eat only when you are actually looking. Auto-update over Wi-Fi only, as above. And a data warning set at three-quarters of the bundle — the phone taps you on the shoulder before the exhaustion, not after, which turns Thursday's surprise into Wednesday's decision. Then the buying itself, briefly and firmly: bundles come from the network's own app, its own portal, its own codes — never from the market agent who promises a bigger bundle for less, because the oversized cheap bundle is the recharge-card scam of this decade; the SIM either works at half speed, or works at all until Monday. Know your cycle — the day it renews, the day it dies — and note it in the weekly book beside the airtime. A bundle with a known birthday cannot ambush you.",
+      ),
+      fig(
+        "/images/blog/data-bundle-notebook.jpg",
+        "A weekly notebook with the bundle's renewal day circled beside the week's expenses.",
+        "The birthday, noted. A bundle whose renewal day sits in the book becomes a decision, not a surprise.",
+      ),
+      p(
+        "And the dual-SIM clause, because half the phones in this country carry two lines: data comes out of exactly one SIM — the one the settings call the data SIM — and the switch that chooses it lives in the network settings. The classic tragedy is the data on line one, the browsing on line two's airtime, discovered at month's end in the balance. Check the switch once, after any software update, and whenever a bundle refuses to work: the phone is usually obedient; it was only never told. Bundle, leash, switch — three words that turn the bowl from a mystery into a managed meal. The next lesson walks to the machine that eats a different kind of money: the cash machine at the bank, and its market cousin.",
+      ),
+      fig(
+        "/images/blog/data-saver-toggle.jpg",
+        "A close view of a phone's settings screen, a thumb switching data saver on.",
+        "One switch, half the thirst. Data saver lets the apps you are watching drink, and sends the rest away from the bowl.",
+      ),
+      ul([
+        "Open the data usage screen today and read the list by mouth size. The mystery dies in ninety seconds.",
+        "Three switches: data saver on, updates over Wi-Fi only, gallery backup on Wi-Fi only.",
+        "Set the data warning at three-quarters. Thursday's surprise becomes Wednesday's decision.",
+        "Bundles from the network's own channels only. The oversized cheap bundle is a costume with a zipper.",
+      ]),
+      h2("The managed meal"),
+      p(
+        "Two gigabytes is not a small bundle; it is an unmanaged one. Named eaters, three switches, a known renewal day — and the same two gigabytes stretch to the end of the month with room for the videos you actually chose to watch. Data is money in a different costume, and it obeys the same law this shelf has taught since lesson six: what you do not watch leaks. Watch the bowl. The next lesson goes to the bank's wall, where the money becomes notes — and where a new generation of thieves waits at the slot.",
+      ),
+    ],
+  },
+  {
+    slug: "the-atm-and-the-card-manners",
+    title: "The ATM, the POS, and the card manners",
+    excerpt:
+      "The queue under the umbrella, the slot that wiggles, the keypad worth covering: cash machines done correctly, the market POS done politely, and the card that gets frozen in one tap.",
+    series: SERIES,
+    order: 164,
+    author: AUTHOR,
+    date: "2026-08-27",
+    cover: "/images/blog/atm-shield-pin.jpg",
+    coverAlt: "A hand covering the ATM keypad while the other types, shoulder and camera protected.",
+    body: [
+      p(
+        "The queue at the bank's wall on a Friday is its own small nation: umbrellas, expectations, the man counting his notes twice, the machine humming behind the bars. The cash machine carried your money across the country while you slept, and it asks in return for a handful of manners — not because the machine has feelings, but because the wall has watchers. This lesson is the whole craft of standing there, and of its market cousin, the POS.",
+      ),
+      p(
+        "Before the card goes in: the slot. A thief's favourite trick is a sleeve that sits over the real slot and copies the card as it passes — a false mouth on the machine. The test is childish and effective: put a finger on the card slot and wiggle it firmly. A real slot is part of the machine and does not move; a sleeve shifts, lifts, or feels loose like a tooth. Anything that wiggles means you do not put your card in — you find another machine, and if the mood takes you, you tell the guard, whose whole day is improved by the news. The same inspection applies to anything above the keypad that looks newly attached; the machine's honest parts are flush and boring, and boring is what you want.",
+      ),
+      fig(
+        "/images/blog/atm-shield-pin.jpg",
+        "A hand covering the ATM keypad while the other types, shoulder and camera protected.",
+        "The left hand is the roof. Shoulders watch from behind, and some thieves watch from above — the covered keypad is the only honest one.",
+      ),
+      h2("The keypad, and the sticker that lies"),
+      p(
+        "The PIN is typed under cover, always, even when nobody is visibly behind you — the queue is patient, the street is long, and a small camera above the keypad can read four keys from where you would never think to look. Left hand as a roof, fingers typing beneath it, the way you have seen careful people do and perhaps wondered about. Then the sticker, which deserves your full suspicion: a neat notice on the machine — machine under maintenance, if your card is retained call this number now. Banks do not attach help stickers to machines in the night before your Friday; the number belongs to a collector, and the retained card is exactly what he is fishing for. The true machine says nothing on paper. If the card is genuinely swallowed, you go inside the bank or you call the line from the bank's own website, and you freeze the card in the app first — the tap you rehearsed in the bank lesson, now earning its keep.",
+      ),
+      p(
+        "The POS at the market completes the craft, in reverse politeness: before the machine is brought near your card, say the amount aloud — eight thousand? — and let the seller confirm, because thumbs mistype and the difference lands in somebody's pocket. Tap or insert, and then the two receipts of this road: the paper slip, collected and glanced at — the amount, the last digits of your card — and the bank alert on your phone, watched until it lands, the balance-is-the-promise law from the selling lesson. No alert after a minute? Ask politely for the slip and wait; reversals happen, but they happen to the person who stood still. And the cash, counted before your back turns — the market's oldest rule, unchanged by the machine that printed the slip. A card lost between the bank and the market: freeze first, ask questions second. The app's switch does not need a queue.",
+      ),
+      fig(
+        "/images/blog/pos-slip-check.jpg",
+        "A hand collecting a small printed POS slip across a market counter, the parcel waiting beside it.",
+        "The slip and the alert, both watched. Reversals happen to the customer who stood still — the parcel crosses after the paper.",
+      ),
+      fig(
+        "/images/blog/atm-slot-check.jpg",
+        "Fingers wiggling the card slot of an ATM before inserting the card.",
+        "The two-second inspection. A slot that moves like a tooth means another machine — and a guard who should hear about it.",
+      ),
+      ul([
+        "Wiggle the slot and glance above the keypad before every withdrawal. Two seconds, every time.",
+        "Left hand as a roof, PIN typed beneath it. No exceptions, not even for a short queue.",
+        "Stickers with phone numbers are not the bank's voice. Card swallowed: freeze in the app, then the bank's own line.",
+        "At the POS: amount said aloud, slip collected, alert watched, cash counted before turning.",
+      ]),
+      h2("The nation at the wall"),
+      p(
+        "Every manner in this lesson is small, and together they are the reason some people have used machines for thirty years without one story to tell. The watchers at the wall are real, but they are lazy — they take the uncovered keypad, the wiggled slot, the uncounted change. Be the person who is boring to steal from. The queue will call you careful under its breath, and your Friday will end with the notes you came for. The next lesson steps away from the wall, to the quiet war your devices fight every day: the grid, and how to keep your machines fed through its moods.",
+      ),
+    ],
+  },
+  {
+    slug: "power-banks-and-surges",
+    title: "Power banks, surges, and the charging life",
+    excerpt:
+      "The grid has moods; your machines have limits. Choosing a power bank that tells the truth, charging on hard ground, and the seconds after the light returns that decide a device's life.",
+    series: SERIES,
+    order: 165,
+    author: AUTHOR,
+    date: "2026-08-31",
+    cover: "/images/blog/power-bank-charging.jpg",
+    coverAlt: "A phone charging from a power bank on a table at night, a small lamp glowing beside it.",
+    body: [
+      p(
+        "The light went at seven and the house exhaled — spoons paused, conversations leaned closer, and in the corner the phone kept working because a small brick in its cable was paying its way. The power bank is the true national companion of this era: it attends weddings, classrooms, markets and hospital corridors, and it asks so little that most people never learn anything about it. This lesson is the learning, because the little brick can serve you faithfully for years or misbehave expensively, and the difference is a few boring facts.",
+      ),
+      p(
+        "Choosing one, honestly. Capacity is printed in milliamp-hours, and the honest arithmetic is roughly this: a ten-thousand bank refills a normal phone about two times, a twenty-thousand about four — everything promising to change those numbers with a flashlight function is lying on the box. The honest brands cost a little more and weigh what they claim; the suspicious ones weigh like air and promise like lottery. Read the printed output too: two ampere charges a phone at a decent pace, one ampere charges it overnight and then some. And the cable counts — the fine cable that came free with a charger is often the reason a bank seems weak. Then the habits, and the first is the one that saves houses: a swollen power bank — the case bulging like a well-fed rat — is finished, whatever the age, whatever the price. It does not get kept in a drawer for emergencies. It gets retired, taken to a repair shop or collection point, and replaced. A swollen battery is a small fire sleeping in your bag, and the bag rides in the sun all day.",
+      ),
+      fig(
+        "/images/blog/power-bank-charging.jpg",
+        "A phone charging from a power bank on a table at night, a small lamp glowing beside it.",
+        "The national companion, paying its way. Two honest refills per charge is the truth a ten-thousand bank should tell on its box.",
+      ),
+      h2("Hard ground, and the seconds after the light"),
+      p(
+        "Charging lives by two placements. The power bank charges itself on a hard surface — table, stool, the floor of the parlour — never under a pillow, never inside a bag while it works, never under the mattress where somebody read that phones charge faster. Batteries breathe heat while they charge, and the phone's own warning about charging on soft beds in lesson forty-one applies to the brick twice over. And the phone charges from the bank away from fuel, candles and the cooking gas — the combination is rarer than you think and exactly as expensive as you fear. Then the surge, which is the part of the lesson that decides the life of the computer: the moment the light returns, the wires carry a first breath of power that is often dirty and sometimes fierce, and the machines that were plugged in during the outage eat that breath first. So the house rule: when the light goes, unplug the valuable things — the computer, the television, the metered fridge if you can reach it — and plug them back a minute after the light settles, fans first, valuables after. A surge strip for the computer desk costs little and absorbs the ordinary bites; it is the umbrella of this road, and like umbrellas it only helps if it was arranged before the rain.",
+      ),
+      p(
+        "The generator changeover deserves its sentence: the machines of the desk — the computer, the router — are either off during the changeover or sitting behind the small UPS from the remote-work lesson, which carries them across the gap without a stammer. And the phones: they forgive surges better than computers, but they do not forgive the market's charging kiosk as much as the queue assumes — a shared charging cable is a shared road, and lesson forty-three's rule about other people's computers applies, gently, to other people's plugs. Charge at home where the house knows your habits, use the kiosk for minutes in true need, and keep the little brick on your side of the bargain: charged on hard ground, retired when it swells, believed when it warms but never when it bulges.",
+      ),
+      fig(
+        "/images/blog/shared-charging-kiosk.jpg",
+        "A market charging kiosk with many cables hanging from a board, one phone attached.",
+        "The shared road, used in minutes and true need. A charging cable is a shared door — charge at home where the house knows your habits.",
+      ),
+      fig(
+        "/images/blog/surge-guard-socket.jpg",
+        "A surge-protected extension strip on a desk, the computer's plug seated in it, switch off during an outage.",
+        "The umbrella of the desk. Arranged before the rain, it absorbs the ordinary bites the grid takes at the machine's health.",
+      ),
+      ul([
+        "Buy the honest capacity — two refills per ten thousand — from a brand that weighs something. Read the box like a price, not a poem.",
+        "A swollen bank retires today, whatever it cost. It rides in the bag with your documents; think about that.",
+        "Charging on hard ground, always. Under the pillow is where charging stories stop being funny.",
+        "Light off, valuables unplugged; light back, one minute, then fans first and the computer after. The surge eats the impatient.",
+      ]),
+      h2("The grid and the guest"),
+      p(
+        "The grid will keep its moods, and the machines will keep their appetites; the household that prospers between the two is the one that arranged its bricks, its strips and its one-minute rule in a quiet week. Power, like money and data, obeys the oldest law of this shelf: what is arranged in daylight does not panic at night. The next lesson takes the same arranging instinct to the wall box in the corridor that beeps when it is hungry — the prepaid meter, and the tokens that feed it.",
+      ),
+    ],
+  },
+  {
+    slug: "electricity-units-online",
+    title: "Electricity units, bought online",
+    excerpt:
+      "The meter is beeping and the night is dark: prepaid tokens bought correctly, typed patiently, kept as receipts — and the cheap-units man at the junction, declined politely forever.",
+    series: SERIES,
+    order: 166,
+    author: AUTHOR,
+    date: "2026-09-03",
+    cover: "/images/blog/prepaid-meter-token.jpg",
+    coverAlt: "A hand typing a long token number into a prepaid meter's keypad by phone light.",
+    body: [
+      p(
+        "The meter announces itself the same way in every house: a soft beep, then a smaller number on its screen than yesterday, then the household's quiet arithmetic — how many days can this last? The prepaid meter changed Nigerian life more than any app ever has: electricity became something you buy, like airtime, in units, and the token that feeds it became part of the family's weekly chore. Done correctly it is boring and reliable. Done carelessly it is a dark night with a twenty-digit code typed twice wrongly. This lesson is the correct version, learned before the beep, not during it.",
+      ),
+      p(
+        "The buying: units come from the electricity company's own portal or app, from its official agents, from the bank apps and USSD menus of lesson one hundred and sixty-one — all of them asking for the same identity: the meter number. The meter number is this lesson's exam number — eleven or thirteen digits printed on the meter itself and on every old receipt — and it is typed from the meter or from the last receipt, never from memory and never from a relative's forward. One swapped digit does not fail loudly; it loads a stranger's kitchen in another street, and your money becomes their light. So the typing is done slowly, checked digit by digit, the exam-slip discipline of the results lesson carried into the corridor. Then the account type matters too: the plan you are on — prepaid, and which tariff band — affects what the same money buys, and the disco's own site explains the bands honestly enough for one evening's reading.",
+      ),
+      fig(
+        "/images/blog/prepaid-meter-token.jpg",
+        "A hand typing a long token number into a prepaid meter's keypad by phone light.",
+        "Twenty digits, typed from the receipt, checked in threes. The meter accepts the patient and beeps at the hurried.",
+      ),
+      h2("The token, and the receipts"),
+      p(
+        "The purchase lands as a token — a long number, usually twenty digits — sent by text or shown on the receipt screen. Type it into the meter's keypad in calm groups, threes or fives, from the paper or the message, not from the memory of a glance; the meter checks the whole code and accepts it with a flash and new credits, or refuses it with a beep that means one digit heard wrongly. Refused twice, stop typing from memory and re-read from the message — the meter is not angry, it is precise. Some tokens carry two codes when the tariff changed; the receipt says so, and the meter asks for them in order. Then the receipt joins the family papers: screenshot into the Money album, the account-number law of the bank lesson, because disputes — a purchase that did not land, a meter that ate a token — are settled by the person holding a reference, not the person holding a feeling. The electricity company's complaint lines are the roads of lesson one hundred and fifteen: real numbers from its own site, not the cheerful helper a neighbour recommends on WhatsApp.",
+      ),
+      fig(
+        "/images/blog/meter-number-notebook.jpg",
+        "A household notebook open to a page where the meter number is written carefully and dated.",
+        "The identity, written once from the meter itself. Every future purchase is typed from this page — never from memory, never from a forward.",
+      ),
+      p(
+        "And the junction, because he is always at the junction: the man with a calculator and a smile who sells units cheaper than the disco, cash only, token delivered by screenshot. The cheap-units man is the recharge-card scammer of this lesson, and the arithmetic of his disappearance is as reliable as the meter's beep — he collects for a month of Fridays, and one Friday the token does not come, and the number that answered all year retires. Electricity is a licensed monopoly; the disco's own channels and its named agents are the only honest doors, and their receipts are the only ones a dispute will honour. Buy from the beep's own family, keep the paper, and the darkest night of the month becomes a two-minute chore done by phone-light. The next lesson boards a plane, and carries the same discipline to thirty-five thousand feet.",
+      ),
+      fig(
+        "/images/blog/meter-receipt-kept.jpg",
+        "A token receipt folded into a household notebook beside a phone, the meter glowing in the background.",
+        "The receipt is the dispute-settler. In the notebook with the other papers — the house that keeps references is never in the dark long.",
+      ),
+      ul([
+        "Write the meter number once, from the meter itself, into the family notebook. Type it from there, always.",
+        "Tokens in calm groups, from the message, not from memory. Refused twice: re-read, re-type, patience.",
+        "Every receipt into the Money album and the papers folder. References settle disputes; feelings do not.",
+        "The cheap-units man is retired this month, politely, forever. Licensed channels only — the disco's own, the bank's, the named agent's.",
+      ]),
+      h2("The beeping box, tamed"),
+      p(
+        "The meter asked to be understood, not feared: one number to protect, one code to type patiently, one receipt to keep. A household that learns this chore once buys its light in two minutes for the rest of its life, and never again stands in the dark decoding a stranger's promise. The same evening that feeds the meter can feed the phone, the bank and the books — the compound, running itself, one token at a time. Next, the lesson boards a plane: your first flight, booked by your own hands.",
+      ),
+    ],
+  },
+  {
+    slug: "booking-a-flight-online",
+    title: "Booking a flight, online, by yourself",
+    excerpt:
+      "The first flight, booked by your own hands: the airline's door, the name spelled like the passport, the reference guarded like a receipt — and the cheap-ticket man at the DM, declined.",
+    series: SERIES,
+    order: 167,
+    author: AUTHOR,
+    date: "2026-09-05",
+    cover: "/images/blog/flight-booking-screen.jpg",
+    coverAlt: "A laptop showing a flight booking form with dates and a passenger's details being typed.",
+    body: [
+      p(
+        "The first flight is a milestone in any family's story, and for most Nigerian families it used to begin at a travel agent's window with a queue and a fee. The window has moved to a screen. Booking a flight online is now a basic skill — of the same family as checking a result and paying a bill — and doing it yourself saves the agent's charge, the middleman's margin, and the particular blindness of trusting somebody else with your own name. This lesson walks the whole road, from the search box to the seat.",
+      ),
+      p(
+        "The door first: book from the airline's own website or app, or from a large reputable travel site you have heard of outside a broadcast — the source law of every ticket on this shelf. The search asks for the route, the dates, and the number of travellers, and here is the first honest money-saver: dates bend prices. Shifting a journey by a day often moves the fare more than any discount code ever will. When the results come, ignore the bold first number and read the total — taxes and levies arrive at the end like in-laws, and the price you compare is the price at the last step. Choose the fare with its baggage honestly: the cheapest ticket that forbids your actual suitcase is the most expensive ticket in the search results, because the extra-kilo fee at the counter is real and it is not friendly.",
+      ),
+      fig(
+        "/images/blog/flight-booking-screen.jpg",
+        "A laptop showing a flight booking form with dates and a passenger's details being typed.",
+        "The search, the bend, the total. The bold number flatters; the last number is the one that flies.",
+      ),
+      h2("The name, the reference, and the cheap-ticket man"),
+      p(
+        "Now the part that no agent will ever forgive and no airline ever excuses: the passenger name must be typed exactly as it reads on the government ID that will walk you into the airport — for local flights, the NIN slip or driver's licence or voter's card; for international, the passport, letter for letter, middle name and all. The CV lesson's spelling law, now at altitude: a ticket in the wrong name is not a ticket, and corrections cost real money or the whole fare. Then the payment, on the secure page, by the laws of lesson one hundred and ten — and the booking lands as a confirmation with a booking reference: a short code of letters and numbers that is this journey's name. The reference goes into the notebook, the screenshot into the Travel album, and the confirmation mail into the Drive, the papers law, because airports believe references, not memories.",
+      ),
+      p(
+        "And the cheap-ticket man, who has migrated from the junction to the DM: a stranger offers this week's Lagos flight at half price, payment first, ticket sent by screenshot. The screenshot lesson's mirror turns here — nothing was ever sent, or something was sent in somebody else's name, and the airport is where both discoveries mature. The airline's own page, the reputable site, the card on the secure checkout, the reference in your own mail: four doors, all yours. Twenty-four hours before the flight, the airline opens check-in — a few taps on the site or app choose your seat and drop a boarding pass onto the phone. Screenshot it, download the PDF, and if the airport Wi-Fi has a reputation, print one at the café: three copies of a small paper have saved more journeys than any charm. Bag weighed at home on the bathroom scale, charger and documents in the small bag at your feet, and the morning of the flight, arrive earlier than your confidence suggests. The first flight, booked by your own hands, becomes the first of many — and the family's next traveller learns it from you, at this same table.",
+      ),
+      fig(
+        "/images/blog/luggage-bathroom-scale.jpg",
+        "A suitcase standing on a bathroom scale, the display showing a number, clothes pressed on the bed behind.",
+        "The kitchen law of the skies: the kilos are real, and the counter's fee for optimism is steeper than the ticket. Weigh before you wrap.",
+      ),
+      fig(
+        "/images/blog/boarding-pass-phone.jpg",
+        "A hand holding a phone with the boarding pass on the screen, a suitcase standing beside it at the airport.",
+        "The reference became a seat, the seat became this small screen. Screenshot, PDF, and one printed copy: three copies, zero prayers.",
+      ),
+      ul([
+        "Airline's own site or a reputable aggregator; compare the total, not the bold number; buy the baggage you actually packed.",
+        "The name is typed exactly as the ID reads — letter for letter. This is the one error the road will not negotiate.",
+        "Reference into the notebook, confirmation into Drive, boarding pass screenshot, PDF'd, and printed.",
+        "The half-price DM is the junction man with a data plan. Four honest doors, all yours.",
+      ]),
+      h2("The window, moved home"),
+      p(
+        "The travel agent still has a place — the tangled visas, the multi-country tours, the corporate accounts. But the Lagos flight, the December homecoming, the interview in Abuja: these are now a table, a card, and twenty careful minutes. Every skill this lesson used — the source law, the exact name, the reference kept, the screenshot as receipt — you already owned. This was only their widest road. The next lesson wraps that road in a sealed cover, and explains the word every traveller eventually meets: the VPN.",
+      ),
+    ],
+  },
+  {
+    slug: "the-vpn-explained",
+    title: "The VPN, explained like a tunnel",
+    excerpt:
+      "Your traffic, wrapped and carried through another town: what a VPN actually does, when it genuinely helps, when it sells you courage — and why the free ones are the most expensive.",
+    series: SERIES,
+    order: 168,
+    author: AUTHOR,
+    date: "2026-09-08",
+    cover: "/images/blog/vpn-app-toggle.jpg",
+    coverAlt: "A thumb switching a VPN connection on in a phone app, the icon glowing.",
+    body: [
+      p(
+        "Sooner or later the word arrives — in an advert, in a tech-bro conversation, in a warning from a cousin abroad: you need a VPN. It is said like a password, and almost nobody explains it. Here is the explanation, in the market's own grammar. Your internet traffic is a letter carried through a loud street; the shops, the network, the curious all see which road it takes and, on open roads, some of what it says. A VPN — virtual private network — wraps that letter in a sealed cover and carries it through a private tunnel to another town before opening it onto the world. The street sees only a sealed wrapper going into a tunnel. The wrapper is the encryption. The other town is the borrowed address. Those two facts are the entire technology.",
+      ),
+      p(
+        "What it genuinely does for you follows from those facts. Privacy from the local street: the café's Wi-Fi, the market's free hotspot — the roads of lesson ninety-nine — can no longer read your open traffic, because it travels sealed. A borrowed address: the internet believes you are sitting in the tunnel's other town, which unlocks services that shun Nigerian addresses and lets you compare prices as a stranger would. And a quieter kind of safety: your home network's address stops being the return address on everything you do. Notice what is not on the list. A VPN does not make scam sites honest. It does not hide you from the law. It does not cure a virus, and it is not a password for a stolen phone — it wraps the road, and the road was never the thief.",
+      ),
+      fig(
+        "/images/blog/vpn-road-tunnel.jpg",
+        "A car entering a lit road tunnel in the evening, the open street behind it.",
+        "The whole idea in one photograph: the traffic enters sealed, travels hidden, and emerges in another town. The street only saw the entrance.",
+      ),
+      h2("When it helps, and when the wrapper is the thief"),
+      p(
+        "Turn it on for the roads you do not trust: the café, the airport, the conference hall — anywhere the Wi-Fi password is written on a chalkboard for strangers. Turn it on when a service refuses Nigerian addresses, or when the comparison shopping needs another country's eyes. And know when to take it off: the bank. Nigerian banks watch for sign-ins from foreign addresses, and a VPN makes your honest login look like a thief's — the app of lesson one hundred and eleven may block you, correctly. Banking happens bare-faced, on your own data, without the tunnel. Then the warning that this whole lesson leans toward: the wrapper-maker sees your wrapped traffic last, which means you have not eliminated the eavesdropper — you have chosen one. The free VPN from the top advert is frequently the eavesdropper himself, collecting what the café could only guess at: your logins, your destinations, your habits. Choosing a VPN is the helpers lesson again — pick a reputable, established name, ideally one you pay a small honest fee, and never the first free banner that promises the world in three megabytes.",
+      ),
+      p(
+        "Used this way, the VPN earns its place in the pocket: a wrapper for untrusted roads, a borrowed address for stubborn services, a seal for the café. Used as courage — to double money in rooms that ask for VPNs precisely because they are rooms that steal — it is the opposite of protection, and lesson one hundred and seventy is waiting for those rooms. The wrapper is a tool. The wrapper-maker is a choice. Choose in daylight, pay the honest fee, and the tunnel serves the traveller instead of feeding on him. The next lesson stays in the money district, and opens the door of the most modern trap on this street: the loan that arrives in fifteen minutes and collects your whole phonebook as interest.",
+      ),
+      fig(
+        "/images/blog/vpn-cafe-laptop.jpg",
+        "A laptop on a café table, a small key icon glowing in the corner of its screen, coffee beside the keyboard.",
+        "The chalkboard Wi-Fi, travelled sealed. The wrapper on untrusted roads, and off again for the bank — the tunnel knows its place.",
+      ),
+      ul([
+        "One sentence to keep: the wrapper is encryption, the other town is the address. Everything else is marketing.",
+        "On for café Wi-Fi and stubborn services; off for the bank. The tunnel knows its place.",
+        "Choose an established maker and pay the small honest fee. The free wrapper is often the eavesdropper in costume.",
+        "A VPN is privacy, not permission, and not courage. Rooms that require VPNs to steal are described in the next lesson.",
+      ]),
+      h2("The tunnel, in its place"),
+      p(
+        "Every tool on this shelf has been introduced the same way: named honestly, dressed in its own clothes, warned about its own street. The VPN is the last of the everyday tools to be so introduced — and now the pocket holds it correctly: sealed when the road is strange, bare when the bank is watching, and never, ever confused with a superpower. Next: the money district, and the app that lends in fifteen minutes.",
+      ),
+    ],
+  },
+  {
+    slug: "loan-apps-the-real-cost",
+    title: "Loan apps: the money that costs a reputation",
+    excerpt:
+      "Fifteen minutes, no collateral, and your whole phonebook held as surety. How the instant-loan machine actually works, what the law says, and the defences that keep your name yours.",
+    series: SERIES,
+    order: 169,
+    author: AUTHOR,
+    date: "2026-09-11",
+    cover: "/images/blog/loan-app-offer.jpg",
+    coverAlt: "A phone showing a loan app offering a large amount with one big button, a hesitant thumb above it.",
+    body: [
+      p(
+        "It arrives on a slow evening, exactly when the pocket is lightest: a bright app promising one hundred thousand naira in fifteen minutes. No paperwork, no collateral, no questions — just allow us a few permissions and the money lands. The needs of this life are real, and the offer is engineered to meet one of them at its weakest hour. This lesson opens the machine while it is switched off, so you can see the gears: because the money is real, but the interest is collected in a currency you did not agree to spend — your reputation, and the phonebook of everybody you love.",
+      ),
+      p(
+        "The gears. The loan is small — often twenty-five thousand — and the tenor is short: seven or fourteen days. The effective rate, stacked with fees, can reach a third of what was borrowed inside a month. When the due date passes — and it always passes, because fourteen days is a machine designed to be missed — the rollover button appears, and the debt grows a tail. Then the gears you were never shown: the permissions you tapped past at installation handed the app your entire contact list, your photographs, sometimes your messages. The first morning of default, a message goes to your mother, your pastor, your employer's HR: this person is a wanted fraudster, help us recover our money. There is no court in that sentence and no truth in it either — it is defamation as a collection strategy, and it works because shame does what the app cannot: it makes you borrow from elsewhere to silence the broadcast, which feeds the next app, and the spiral turns.",
+      ),
+      fig(
+        "/images/blog/loan-app-offer.jpg",
+        "A phone showing a loan app offering a large amount with one big button, a hesitant thumb above it.",
+        "The offer is dressed for your weakest hour. The button is real; the interest is collected from your phonebook.",
+      ),
+      h2("What the law says, and what your thumb must never do"),
+      p(
+        "The law, plainly: lending at scale is a licensed trade in this country. Digital lenders must be registered with the consumer-credit regulator and follow rules the regulator publishes in lists you can read — which companies are approved, and which are being pursued. The predator apps sit outside those lists, and their collections are not enforcement; they are crimes wearing an enforcement costume — harassment, defamation, unlawful contact use. The defences, in the order they should happen. Before: check the list on the regulator's own site — the portals lesson's law — and prefer the licensed arms of the banks you know, whose rates are stated, whose tenors are months, and whose collectors write letters instead of staging broadcasts. At installation: deny the contacts permission, flat, and see whether the app still works — a legitimate lender underwrites your identity and your bank record, not your aunt's number; an app that refuses to lend without your phonebook has told you exactly what it intends to do with it. And if you are already inside: do not roll over into the next app to silence this one — that is the spiral's only fuel. Document everything — screenshots of the threats, the broadcasts, the numbers — and report to the regulator and the police; the documented borrower has quietly become the predator's problem.",
+      ),
+      fig(
+        "/images/blog/loan-threat-screenshots.jpg",
+        "A phone showing threatening messages from an unknown number, a second phone photographing the screen.",
+        "The evidence, gathered calmly. Screenshots with dates and numbers turn a shouted-down victim into a complainant with a case.",
+      ),
+      p(
+        "The deeper cure sits in the books of lesson one hundred and forty-three: the rain slice. A small, boring emergency fund — even a thin one — is the difference between a bad week and a hijacked phonebook. And the family word lesson's honesty, pointed at money: the relative who lends fifty thousand at zero percent with a plate of food attached is the original licensed lender, and she underwrites you with love instead of your contacts. Borrow from the people and institutions that can afford your worst month. The apps that cannot wait fourteen days for their money were never waiting to help you at all.",
+      ),
+      fig(
+        "/images/blog/contacts-permission-denied.jpg",
+        "A phone showing a permission dialog asking for access to contacts, the deny button pressed.",
+        "The one refusal that protects everyone you love. A lender who needs your phonebook is not underwriting you — it is arming itself.",
+      ),
+      ul([
+        "Check the regulator's published lists before any borrowing. Unlicensed lender, unlicensed collection, unlimited shame.",
+        "Deny the contacts permission, always. A lender that refuses to lend without your phonebook has confessed its plan.",
+        "Seven-day money is a machine built to be missed. Licensed tenors are months; predators sell you days.",
+        "Harassed? Screenshot everything, report to the regulator and the police, and tell your people first — before the broadcast does.",
+      ]),
+      h2("The name is the collateral"),
+      p(
+        "Every loan on this shelf is secured by something: the bank holds your salary, the family holds your word, the predator holds your phonebook. Choose the collateral you can afford to lose — never the name. The next lesson closes the chapter at the compound's oldest scam, wearing its newest clothes: the money that promises to double itself, and the arithmetic it hopes you never do.",
+      ),
+    ],
+  },
+  {
+    slug: "the-money-that-doubles",
+    title: "Double your money: the oldest lie",
+    excerpt:
+      "The dashboard glows green, the first withdrawal lands, the compound meeting claps. Inside the arithmetic of doubling schemes, the tells that survive every costume, and the boring cure.",
+    series: SERIES,
+    order: 170,
+    author: AUTHOR,
+    date: "2026-09-13",
+    cover: "/images/blog/roi-dashboard-phone.jpg",
+    coverAlt: "A phone showing an investment app with a steep green profit curve and a big balance.",
+    body: [
+      p(
+        "The compound meeting has heard it before, in every generation, in every market on earth: a man with a phone shows a dashboard — the balance climbing, the green curve, thirty percent in a month, withdrawn in minutes, proof in his own hand. Your money works while you sleep. Referral bonus if you bring your brother. The room nods; the arithmetic applauds quietly in the corner, because it knows something the room will learn too late: money that doubles by schedule is not an investment. It is a collection plate, and the collection has always been the point.",
+      ),
+      p(
+        "The machine, named so you recognise it in every costume it will ever wear — ponzi, ROI platform, trading bot, crypto doubling, the church-adjacent fund, the Telegram trader. New members' money pays old members' withdrawals. The early withdrawals are real, and they are the bait: nobody believes a scheme until it has paid them once, which is why the operators pay — the farmer's grain, spent to buy the silo. Then the referrals, whose bonuses outshine anything the underlying business could earn, because there is no underlying business: the recruitment is the business. And the mathematics, which is the part that cannot be argued with: markets — every honest market on earth — move up and down and never on schedule, which is why no licensed fund anywhere promises returns, only histories and ranges. A guaranteed thirty percent a month is not a bold estimate. It is a confession wearing a suit.",
+      ),
+      fig(
+        "/images/blog/roi-dashboard-phone.jpg",
+        "A phone showing an investment app with a steep green profit curve and a big balance.",
+        "The curve is drawn, not earned. A number that only ever climbs has never met a market — it has met a designer.",
+      ),
+      h2("The tells, and the grey button"),
+      p(
+        "The tells survive every costume, and you have met their ancestors on this shelf. Guaranteed returns — lesson one hundred and twenty-nine's markets never guarantee. Referral wealth — the business is you. Hurry — slots closing, bonus window ending, the oldest tell in the book. Secrecy and exclusivity — the opportunity for the wise few, which is how collections describe their plate. And the license question, which ends most arguments in one sentence: no scheme on this street is licensed by the securities regulator, because the securities regulator does not license doubling. When the collapse comes — and it is scheduled by arithmetic, not by chance — the tell that arrives last is the grey button: withdrawals pause for verification, for a system upgrade, for a banking partner, and the dashboard stays green forever while the money inside turns to a story. The screenshot of your balance was never money. It was a painting of money, and you were the painter's canvas.",
+      ),
+      p(
+        "And the crypto clause, because the costume of this decade: the technology can be entirely real while the platform is entirely a thief — real rails, fake returns. Nobody legitimate ever needs your recovery phrase, the crown jewel of your keys from the papers lesson; a trading opportunity that requires it is a robbery with a friendly interface. The defences are the shelf's oldest: the week rule for big money — every large decision sleeps seven nights and hears one sceptical voice you respect, the family word's discipline pointed at your own excitement. The license check on the regulator's site, the same hour. And the boring cure, which outperforms every doubling in the long run and keeps its name intact: the rain slice, the licensed savings, the skills that raise the inflow — this entire shelf, compounding slowly, legally, and in public. The compound meeting will move on to the next scheme by December. Your name will still be yours. That is the return nobody's dashboard can print.",
+      ),
+      fig(
+        "/images/blog/family-investment-meeting.jpg",
+        "A family at a night table with a phone showing figures, an older uncle listening with folded arms.",
+        "The sceptic at the table, on purpose. Big money sleeps seven nights and hears one unimpressed voice before it moves.",
+      ),
+      fig(
+        "/images/blog/withdraw-button-grey.jpg",
+        "A close view of an investment app whose withdrawal button sits greyed out behind a small waiting notice.",
+        "The last tell, arriving on schedule. The dashboard stayed green; the button went grey. The painting was never money.",
+      ),
+      ul([
+        "One sentence, for life: guaranteed doubling is a confession. Licensed funds promise ranges and histories, never schedules.",
+        "Referral bonuses that outshine the product mean the product is you. Walk out with your brother's hand.",
+        "The week rule for big money: seven nights, one sceptic, the regulator's site. Collections hate calendars.",
+        "Nobody legitimate needs your recovery phrase — the crypto clause. The boring cure compounds; the exciting one collects.",
+      ]),
+      h2("The chapter, and the purse"),
+      p(
+        "Ten lessons of the pocket and the purse: the code that works without data, the line that stopped leaking, the bundle that learned manners, the wall machine and its wiggles, the little brick, the token in the dark, the first flight, the tunnel, the fifteen-minute loan, and now the doubling lie, oldest of them all. Every one of them obeyed the same law this shelf has taught since the first sitting: the pause is the profit. The chapter closes. The purse stays open — and now it stays yours.",
+      ),
+    ],
+  },
 ];
 

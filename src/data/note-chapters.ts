@@ -163,6 +163,16 @@ export const noteChapters: NoteChapter[] = [
     courseSlug: "digital-productivity",
     courseLabel: "Digital Productivity",
   },
+  {
+    slug: "the-pocket-and-the-purse",
+    title: "The pocket and the purse",
+    blurb:
+      "USSD banking, line deductions, data bundles, ATMs and POS, power banks and surges, prepaid tokens, booking a flight, the VPN, loan apps, and the money that doubles.",
+    from: 161,
+    to: 170,
+    courseSlug: "digital-productivity",
+    courseLabel: "Digital Productivity",
+  },
 ];
 
 const byOrder = [...blogPosts].sort((a, b) => a.order - b.order);
