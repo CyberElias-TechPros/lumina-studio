@@ -61,7 +61,8 @@ export const noteChapters: NoteChapter[] = [
   {
     slug: "everyday-office",
     title: "Everyday office",
-    blurb: "Tables, calendar, contacts, QR codes, WhatsApp Web, maps, a poster, and “virus” scares.",
+    blurb:
+      "Tables, calendar, contacts, QR codes, WhatsApp Web, maps, a poster, and “virus” scares.",
     from: 51,
     to: 60,
     courseSlug: "microsoft-office",
@@ -70,7 +71,8 @@ export const noteChapters: NoteChapter[] = [
   {
     slug: "writing-on-the-page",
     title: "Writing on the page",
-    blurb: "Two windows, lists, spell check, find and replace, undo, page numbers, Cc, and a signature.",
+    blurb:
+      "Two windows, lists, spell check, find and replace, undo, page numbers, Cc, and a signature.",
     from: 61,
     to: 70,
     courseSlug: "microsoft-office",
@@ -97,11 +99,82 @@ export const noteChapters: NoteChapter[] = [
   {
     slug: "stay-safe",
     title: "Stay safe",
-    blurb: "Locks, a stolen phone, OTPs, public Wi‑Fi, scanning a page, and the prize that wants a fee.",
+    blurb:
+      "Locks, a stolen phone, OTPs, public Wi‑Fi, scanning a page, and the prize that wants a fee.",
     from: 91,
     to: 100,
     courseSlug: "cybersecurity",
     courseLabel: "Cybersecurity",
+  },
+  {
+    slug: "on-your-own",
+    title: "On your own",
+    blurb:
+      "Shortcuts, the phone keyboard, voice typing, email in the pocket, uploads, papers in Drive, recovery, the second lock, the lying forward, and the first honest online purchase.",
+    from: 101,
+    to: 110,
+    courseSlug: "computer-basics-typing",
+    courseLabel: "Computer Basics",
+  },
+  {
+    slug: "the-wider-street",
+    title: "The wider street",
+    blurb:
+      "The bank app, a new phone, selling, the ride, government portals, free learning, a work profile, the cloned voice, the yearly clean, and teaching the next person.",
+    from: 111,
+    to: 120,
+    courseSlug: "digital-productivity",
+    courseLabel: "Digital Productivity",
+  },
+  {
+    slug: "where-this-leads",
+    title: "Where this leads",
+    blurb:
+      "The analyst, the SOC, SIEM, zero trust, the fence check, TCP/IP, the digital signature, the frontend developer, the machine-learning engineer, and the teams that build.",
+    from: 121,
+    to: 130,
+    courseSlug: "cybersecurity",
+    courseLabel: "Cybersecurity",
+  },
+  {
+    slug: "making-a-living",
+    title: "Making a living",
+    blurb:
+      "Data analytics, building an app, choosing a school, IT support, websites for shops, social media, design, remote work, pricing your work, and the portfolio that proves it.",
+    from: 131,
+    to: 140,
+    courseSlug: "business-freelancing",
+    courseLabel: "Business & Freelancing",
+  },
+  {
+    slug: "the-working-life",
+    title: "The working life",
+    blurb:
+      "The first paid client, AI assistants, books for a one-person business, client secrets, the body at the desk, learning in public, quiet clients, a first hire, certificates, and the long game.",
+    from: 141,
+    to: 150,
+    courseSlug: "business-freelancing",
+    courseLabel: "Business & Freelancing",
+  },
+  {
+    slug: "standing-taller",
+    title: "Standing taller",
+    blurb:
+      "Checking results, the family table, the CV that gets read, the screen interview, slides, email that gets answered, notes that last, the pivot table, health online, and the upgrade habit.",
+    from: 151,
+    to: 160,
+    courseSlug: "digital-productivity",
+    courseLabel: "Digital Productivity",
+  },
+  {
+    slug: "the-pocket-and-the-purse",
+    title: "The pocket and the purse",
+    blurb:
+      "USSD banking, line deductions, data bundles, ATMs and POS, power banks and surges, prepaid tokens, booking a flight, the VPN, loan apps, and the money that doubles.",
+    from: 161,
+    to: 170,
+    courseSlug: "digital-productivity",
+    courseLabel: "Digital Productivity",
   },
 ];
 

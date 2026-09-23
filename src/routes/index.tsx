@@ -183,7 +183,9 @@ function Home() {
       </section>
 
       <section className="container-page py-16 md:py-20">
-        <h2 className="font-display text-2xl font-semibold tracking-tight sm:text-3xl">Who it is for</h2>
+        <h2 className="font-display text-2xl font-semibold tracking-tight sm:text-3xl">
+          Who it is for
+        </h2>
         <ul className="mt-8 grid gap-4 md:grid-cols-3">
           {[
             {
@@ -215,8 +217,8 @@ function Home() {
             </h2>
             <p className="text-muted-foreground mt-2 max-w-xl text-sm leading-relaxed">
               Free class notes anyone can read — sitting down at a computer, files, email, Word,
-              spreadsheets, the phone, and staying safe online. One hundred lessons, written as if
-              someone is sitting beside you.
+              spreadsheets, the phone, and staying safe online. {blogPosts.length} lessons, written
+              as if someone is sitting beside you.
             </p>
           </div>
           <Link to="/blog" className="text-primary text-sm font-medium hover:underline">
@@ -262,8 +264,8 @@ function Home() {
             </h2>
             <p className="text-muted-foreground mt-3 max-w-xl text-base leading-relaxed">
               Classes run at the centre on Ebony Road, off Rumuola Road. Some courses can also be
-              followed online. Call or visit during opening hours if you want to see the room
-              before you enrol.
+              followed online. Call or visit during opening hours if you want to see the room before
+              you enrol.
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
               <Button asChild variant="outline">

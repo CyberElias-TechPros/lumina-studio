@@ -91,7 +91,7 @@ export const programs: Program[] = [
     level: "Beginner",
     duration: "9 months",
     mode: "Hybrid · Port Harcourt + Online",
-    price: 850000,
+    price: 1700000,
     rating: 0,
     learners: 0,
     blurb:
@@ -146,7 +146,7 @@ export const programs: Program[] = [
     level: "Intermediate",
     duration: "7 months",
     mode: "Hybrid · Port Harcourt + Online",
-    price: 920000,
+    price: 1840000,
     rating: 0,
     learners: 0,
     blurb:
@@ -201,7 +201,7 @@ export const programs: Program[] = [
     level: "Intermediate",
     duration: "8 months",
     mode: "Online",
-    price: 890000,
+    price: 1780000,
     rating: 0,
     learners: 0,
     blurb:
@@ -256,7 +256,7 @@ export const programs: Program[] = [
     level: "Intermediate",
     duration: "9 months",
     mode: "Hybrid · Port Harcourt + Online",
-    price: 980000,
+    price: 1960000,
     rating: 0,
     learners: 0,
     blurb:
@@ -311,7 +311,7 @@ export const programs: Program[] = [
     level: "Beginner",
     duration: "6 months",
     mode: "Hybrid · Port Harcourt + Online",
-    price: 640000,
+    price: 1280000,
     rating: 0,
     learners: 0,
     blurb:
@@ -366,7 +366,7 @@ export const programs: Program[] = [
     level: "Beginner",
     duration: "5 months",
     mode: "Online",
-    price: 480000,
+    price: 960000,
     rating: 0,
     learners: 0,
     blurb:
@@ -421,7 +421,7 @@ export const programs: Program[] = [
     level: "Beginner",
     duration: "6 months",
     mode: "On-campus · Port Harcourt",
-    price: 520000,
+    price: 1040000,
     rating: 0,
     learners: 0,
     blurb:
@@ -476,7 +476,7 @@ export const programs: Program[] = [
     level: "Intermediate",
     duration: "6 months",
     mode: "Online",
-    price: 700000,
+    price: 1400000,
     rating: 0,
     learners: 0,
     blurb:
@@ -882,7 +882,7 @@ export const faqs = [
 export const pricingTiers = [
   {
     name: "Foundation",
-    price: 480000,
+    price: 960000,
     period: "per program",
     blurb: "Short tracks to get you employable fast.",
     features: [
@@ -896,7 +896,7 @@ export const pricingTiers = [
   },
   {
     name: "Professional",
-    price: 890000,
+    price: 1780000,
     period: "per program",
     blurb: "Our flagship cohort experience with career support.",
     features: [

@@ -15,7 +15,7 @@ function s(
 export const microsoftOffice: AcademyCourse = {
   slug: "microsoft-office",
   title: "Microsoft Office",
-  fee: 15000,
+  fee: 30000,
   weeks: 3,
   sessionsPerWeek: 2,
   level: "Absolute beginner",
@@ -205,7 +205,7 @@ export const microsoftOffice: AcademyCourse = {
 export const computerBasicsTyping: AcademyCourse = {
   slug: "computer-basics-typing",
   title: "Typing & Computer Basics",
-  fee: 10000,
+  fee: 20000,
   weeks: 2,
   sessionsPerWeek: 2,
   level: "Absolute beginner",
@@ -350,7 +350,7 @@ export const computerBasicsTyping: AcademyCourse = {
 export const dataEntry: AcademyCourse = {
   slug: "data-entry",
   title: "Data Entry",
-  fee: 10000,
+  fee: 20000,
   weeks: 2,
   sessionsPerWeek: 2,
   level: "Beginner",
@@ -463,7 +463,7 @@ export const dataEntry: AcademyCourse = {
 export const graphicDesign: AcademyCourse = {
   slug: "graphic-design",
   title: "Graphic Design",
-  fee: 20000,
+  fee: 40000,
   weeks: 4,
   sessionsPerWeek: 2,
   level: "Beginner",
@@ -635,7 +635,7 @@ export const graphicDesign: AcademyCourse = {
 export const webDesign: AcademyCourse = {
   slug: "web-design",
   title: "Web Design",
-  fee: 25000,
+  fee: 50000,
   weeks: 4,
   sessionsPerWeek: 2,
   level: "Beginner",
@@ -797,7 +797,7 @@ export const webDesign: AcademyCourse = {
 export const webDevelopment: AcademyCourse = {
   slug: "web-development",
   title: "Web Development",
-  fee: 30000,
+  fee: 60000,
   weeks: 6,
   sessionsPerWeek: 2,
   level: "Beginner",
@@ -992,7 +992,7 @@ export const webDevelopment: AcademyCourse = {
 export const digitalMarketing: AcademyCourse = {
   slug: "digital-marketing",
   title: "Digital Marketing",
-  fee: 20000,
+  fee: 40000,
   weeks: 4,
   sessionsPerWeek: 2,
   level: "Beginner",
@@ -1140,7 +1140,7 @@ export const digitalMarketing: AcademyCourse = {
 export const socialMediaManagement: AcademyCourse = {
   slug: "social-media-management",
   title: "Social Media Management",
-  fee: 15000,
+  fee: 30000,
   weeks: 3,
   sessionsPerWeek: 2,
   level: "Beginner",
@@ -1270,7 +1270,7 @@ export const socialMediaManagement: AcademyCourse = {
 export const computerRepairs: AcademyCourse = {
   slug: "computer-repairs",
   title: "Computer Repairs",
-  fee: 25000,
+  fee: 50000,
   weeks: 4,
   sessionsPerWeek: 2,
   level: "Beginner",
@@ -1424,7 +1424,7 @@ export const computerRepairs: AcademyCourse = {
 export const cybersecurity: AcademyCourse = {
   slug: "cybersecurity",
   title: "Cybersecurity",
-  fee: 25000,
+  fee: 50000,
   weeks: 4,
   sessionsPerWeek: 2,
   level: "Beginner",
@@ -1570,7 +1570,7 @@ export const cybersecurity: AcademyCourse = {
 export const businessFreelancing: AcademyCourse = {
   slug: "business-freelancing",
   title: "Business & Freelancing",
-  fee: 15000,
+  fee: 30000,
   weeks: 3,
   sessionsPerWeek: 2,
   level: "Beginner",
@@ -1696,7 +1696,7 @@ export const businessFreelancing: AcademyCourse = {
 export const contentCreation: AcademyCourse = {
   slug: "content-creation",
   title: "Content Creation",
-  fee: 15000,
+  fee: 30000,
   weeks: 3,
   sessionsPerWeek: 2,
   level: "Beginner",
@@ -1824,7 +1824,7 @@ export const contentCreation: AcademyCourse = {
 export const onlineTeaching: AcademyCourse = {
   slug: "online-teaching",
   title: "Online Teaching",
-  fee: 15000,
+  fee: 30000,
   weeks: 3,
   sessionsPerWeek: 2,
   level: "Beginner",
@@ -1947,7 +1947,7 @@ export const onlineTeaching: AcademyCourse = {
 export const digitalProductivity: AcademyCourse = {
   slug: "digital-productivity",
   title: "Digital Productivity",
-  fee: 15000,
+  fee: 30000,
   weeks: 2,
   sessionsPerWeek: 2,
   level: "Absolute beginner",
@@ -2034,7 +2034,7 @@ export const digitalProductivity: AcademyCourse = {
 export const aiProductivity: AcademyCourse = {
   slug: "ai-productivity",
   title: "AI Productivity",
-  fee: 15000,
+  fee: 30000,
   weeks: 2,
   sessionsPerWeek: 2,
   level: "Beginner",
@@ -2123,7 +2123,7 @@ export const aiProductivity: AcademyCourse = {
 export const mobileAppDevelopment: AcademyCourse = {
   slug: "mobile-app-development",
   title: "Mobile App Development",
-  fee: 30000,
+  fee: 60000,
   weeks: 4,
   sessionsPerWeek: 2,
   level: "Intermediate",
@@ -2237,7 +2237,7 @@ export const mobileAppDevelopment: AcademyCourse = {
 export const photography: AcademyCourse = {
   slug: "photography",
   title: "Photography",
-  fee: 15000,
+  fee: 30000,
   weeks: 2,
   sessionsPerWeek: 2,
   level: "Absolute beginner",
@@ -2329,7 +2329,7 @@ export const photography: AcademyCourse = {
 export const videoEditing: AcademyCourse = {
   slug: "video-editing",
   title: "Video Editing",
-  fee: 20000,
+  fee: 40000,
   weeks: 3,
   sessionsPerWeek: 2,
   level: "Beginner",
@@ -2434,7 +2434,7 @@ export const videoEditing: AcademyCourse = {
 export const wordpress: AcademyCourse = {
   slug: "wordpress",
   title: "WordPress",
-  fee: 20000,
+  fee: 40000,
   weeks: 3,
   sessionsPerWeek: 2,
   level: "Beginner",
@@ -2538,7 +2538,7 @@ export const wordpress: AcademyCourse = {
 export const dataAnalytics: AcademyCourse = {
   slug: "data-analytics",
   title: "Data Analytics",
-  fee: 25000,
+  fee: 50000,
   weeks: 4,
   sessionsPerWeek: 2,
   level: "Intermediate",
@@ -2653,7 +2653,7 @@ export const dataAnalytics: AcademyCourse = {
 export const computerNetworking: AcademyCourse = {
   slug: "computer-networking",
   title: "Computer Networking",
-  fee: 25000,
+  fee: 50000,
   weeks: 3,
   sessionsPerWeek: 2,
   level: "Intermediate",
@@ -2752,7 +2752,7 @@ export const computerNetworking: AcademyCourse = {
 export const itSupport: AcademyCourse = {
   slug: "it-support",
   title: "IT Support",
-  fee: 20000,
+  fee: 40000,
   weeks: 3,
   sessionsPerWeek: 2,
   level: "Beginner",

@@ -1280,7 +1280,7 @@ export const blogPosts: BlogPost[] = [
     title: "Uninstalling what a shop added",
     excerpt:
       "Settings, Apps, the name you do not remember asking for. Uninstall is showing a guest the door. The Start menu is not the same as gone.",
-      series: SERIES,
+    series: SERIES,
     order: 22,
     author: AUTHOR,
     date: lessonDate(22),
@@ -1826,7 +1826,7 @@ export const blogPosts: BlogPost[] = [
       ]),
       h2("Characters that bite, and duplicates"),
       p(
-        "Avoid / \\ : * ? \" < > | in names. They are commands to the computer, not decoration. Spaces are allowed but a-name-like-this travels better in some links. Accents are allowed; you learned those. A trailing space is a ghost that makes two files look identical. Keep names short enough to read in a narrow window.",
+        'Avoid / \\ : * ? " < > | in names. They are commands to the computer, not decoration. Spaces are allowed but a-name-like-this travels better in some links. Accents are allowed; you learned those. A trailing space is a ghost that makes two files look identical. Keep names short enough to read in a narrow window.',
       ),
       p(
         "If a file is open in Word, rename will fail — “in use.” Close, then rename. If two files cannot have the same name in the same folder, that is the computer protecting you. Put them in different rooms, or date them. And if you already stripped a .pdf, rename and put the .pdf back. The file was not converted. It was only disguised. You did not lose the letter. You hid its envelope.",
@@ -3338,7 +3338,7 @@ export const blogPosts: BlogPost[] = [
     title: "Bullets and numbered lists",
     excerpt:
       "A list is a set of steps or a set of things. Numbers mean order. Dots mean a pile. Tab nests. Enter twice gets you out. Space-bar art is not a list.",
-      series: SERIES,
+    series: SERIES,
     order: 63,
     author: AUTHOR,
     date: lessonDate(63),
@@ -5197,5 +5197,3379 @@ export const blogPosts: BlogPost[] = [
       ),
     ],
   },
+  {
+    slug: "six-more-keystrokes",
+    title: "Six more keystrokes, then rest",
+    excerpt:
+      "You already own copy, paste, and undo. Add save, find, select all, and three for the browser — then stop collecting. Six is a year's worth.",
+    series: SERIES,
+    order: 101,
+    author: AUTHOR,
+    date: "2026-01-01",
+    cover: "/images/blog/shortcut-save-hands.jpg",
+    coverAlt:
+      "A left little finger pressing the Ctrl key while another finger presses S on a keyboard.",
+    body: [
+      p(
+        "By now your hands own three: Ctrl and C, Ctrl and V, and the undo that rescued the paragraph you did not mean to kill. Alt and Tab walks you through open windows. That is a respectable number. It is also where most people stop, and then spend ten years clicking through menus for the five acts they perform every day. This lesson adds six more keystrokes. Then it asks you to stop. Collecting shortcuts like proverbs is not skill. Using six until they are reflexes is.",
+      ),
+      p(
+        "The first is Ctrl and S — save. The light does not send a warning before it goes, and neither does a battery. Save every few minutes and a power cut costs you a paragraph, not an evening. It works in Word, in spreadsheets, in Docs, in almost everything that makes documents. In a browser it offers to save the page itself, which you will rarely need — so the rule is simple: Ctrl and S belongs to programs, not to pages.",
+      ),
+      fig(
+        "/images/blog/shortcut-save-hands.jpg",
+        "A left little finger pressing Ctrl while another finger presses S.",
+        "The little finger holds Ctrl; another finger taps S. Two seconds, pressed often, and a power cut becomes a nuisance instead of a funeral.",
+      ),
+      h2("Find, before you read everything"),
+      p(
+        "Ctrl and F opens a small box, usually in a corner. Type a word — bank, deadline, refund — and the page jumps to it, marking every place the word sits. It works in Word, in the browser, in the PDFs you met in their own lesson, on long group pages. It is the difference between scrolling a form with your eyes for ten minutes and asking the machine, which reads the whole page in a blink, to point. People underestimate this one. It is the most intelligent lazy thing a computer does for you.",
+      ),
+      h2("Select all, and three for the browser"),
+      p(
+        "Ctrl and A selects everything in the document or on the page: one press, and the whole text sits highlighted, ready to copy, ready to delete. Ready to delete is why you pause before pressing A in a document you love. In the browser, three small ones. Ctrl and T opens a new tab — a fresh doorway, so you do not type a new address over the page you are reading. Ctrl and L jumps the cursor straight to the address bar, where the internet lesson taught you to type. Ctrl and W closes the tab you have finished with. It closes without asking, so save any form you were filling first.",
+      ),
+      fig(
+        "/images/blog/find-in-page.jpg",
+        "A laptop screen showing a long page with a small find box in the corner and one word highlighted.",
+        "Type the word once; the machine counts every place it appears — 1 of 7 — and walks you through them. Reading a page to find one figure is a tax you can stop paying.",
+      ),
+      ul([
+        "Open the letter you typed last week. Press Ctrl and S now, out of respect.",
+        "Press Ctrl and F on any long page and look for the word price. Watch it count.",
+        "Press Ctrl and A in Notepad, then Ctrl and C. You have copied a page in two seconds.",
+        "Practise Ctrl and T, Ctrl and L, Ctrl and W as one walk: open, address, close. Repeat it on purpose for a week.",
+      ]),
+      h2("Then stop"),
+      p(
+        "There are hundreds more, and one day you will meet Ctrl and P for printing, and be pleased it was waiting. But six is a year's worth. The hands learn by repetition, not by lists, and a shortcut you use weekly is worth fifty you memorised in one proud evening. Close the list. Go and use the six.",
+      ),
+    ],
+  },
+  {
+    slug: "the-keyboard-on-the-phone",
+    title: "The keyboard on the phone",
+    excerpt:
+      "You type more on glass than on any keyboard you will meet. Long-presses, a cursor you can slide, and autocorrect put firmly in its place — one quiet hour with the keys you carry everywhere.",
+    series: SERIES,
+    order: 102,
+    author: AUTHOR,
+    date: "2026-01-05",
+    cover: "/images/blog/phone-keyboard-hands.jpg",
+    coverAlt: "Two thumbs typing on a phone keyboard held in both hands.",
+    body: [
+      p(
+        "The computer keyboard has a home row and ridges on F and J. The phone has a sheet of glass, and yet it is the keyboard you use most — the transfers, the WhatsApps, the searches, the letters begun on the bus. It deserves the same quiet hour. Most people have typed on it for years and were never shown a single trick, the way people carry keys for years without knowing what the deadbolt is.",
+      ),
+      p(
+        "Look at the keyboard as a set of floors. The ground floor is the letters. A key marked ?123 or 123 lifts you to the numbers and the common symbols; a second shift on that floor reveals the rarer ones. The arrow above the letters is Shift — tap once for one capital, as on the computer, and tap twice only if you truly intend to shout. The key that rubs out is Backspace, same as ever. And long-press changes everything: hold a letter and its hidden relatives appear. Hold E and you meet the accents the typing lesson gave you on the computer. Hold N and some keyboards will offer the naira; others keep it on the symbols floor, and now you know where to look.",
+      ),
+      fig(
+        "/images/blog/phone-keyboard-hands.jpg",
+        "Two thumbs typing on a phone keyboard held in both hands.",
+        "Two thumbs, not ten fingers. The phone keyboard is built for the sides of the thumbs; the middle of the screen is where typos are born.",
+      ),
+      h2("The tricks that save the thumbs"),
+      p(
+        "Hold the space bar. On most keyboards the letters fade and the cursor becomes something you can drag through the sentence — no more stabbing a fingertip between two letters and hoping. Double-tap the space bar and most keyboards hand you a full stop, a space, and a capital at once — a small luxury for the end of sentences. Then swipe typing, if your keyboard offers it: rest a thumb on the first letter and drag through the word without lifting, lifting only at the end. It feels like writing in one stroke of ink. Practise on your own name ten times and you will not go back.",
+      ),
+      h2("Autocorrect is a cousin, not a teacher"),
+      p(
+        "The keyboard will correct your village's name into a European lake and a whole Pidgin sentence into nonsense, with great confidence. You met this manner in the spell-check lesson: it is a cousin, not a teacher. When a word comes out wrong, tap it — the original often appears above, and tapping that returns it. When you spell a name the right way once and refuse the correction, many keyboards remember and stop arguing. Feed it the names of your people, your street, your bank. The keyboard is an app; it can be taught the household.",
+      ),
+      fig(
+        "/images/blog/phone-keyboard-longpress.jpg",
+        "A thumb long-pressing a letter on a phone keyboard while a small row of options appears above it.",
+        "Hold a key, slide, release. The hidden symbols live behind a half-second of patience, not behind a settings menu.",
+      ),
+      ul([
+        "Type a sentence that needs a number and a symbol, visiting the number floor no more than twice.",
+        "Hold the space bar and slide the cursor into the middle of a sentence. Fix one letter. Release.",
+        "Long-press five different keys and see what each hides. Note where the naira lives on yours.",
+        "Type your street's name and refuse the correction once. See whether the keyboard learns.",
+      ]),
+      h2("When it misbehaves"),
+      p(
+        "The keyboard vanished? Tap the box you were typing into; it is shy, not broken. It switched itself to French overnight? Look for the globe or language key beside the space bar. The clicks and vibrations madden you? That lives in the keyboard's own settings, usually behind a gear or a long-press on the comma. Nothing here needs a technician. The keyboard is the smallest computer you own, and like all of them, it only wants to be introduced properly.",
+      ),
+    ],
+  },
+  {
+    slug: "talking-to-the-keyboard",
+    title: "Talking to the keyboard",
+    excerpt:
+      "Your voice is faster than your thumbs. The microphone key writes as fast as you speak — where it shines, where it fails, and the codes that must never be spoken aloud.",
+    series: SERIES,
+    order: 103,
+    author: AUTHOR,
+    date: "2026-01-10",
+    cover: "/images/blog/voice-typing-mic.jpg",
+    coverAlt: "A man speaking toward his phone while words appear on the screen as text.",
+    body: [
+      p(
+        "On every good keyboard, beside the space bar, sits a small microphone. It is not decoration. Tap it, speak at your normal pace, and the words land on the screen as they leave you. This is voice typing, and it is not cheating. The letter still needs your judgement, the message still needs your manners; only the writing by thumb is replaced. For a long message, a first draft, or tired eyes at the end of the day, it is the fastest pen in the house.",
+      ),
+      p(
+        "Punctuation can be spoken. Say full stop and one arrives; comma, question mark, new paragraph — the decent keyboards obey. On the computer, the browser carries the same gift: in Google Docs, look under Tools for Voice typing, and speak while it listens. Windows keeps its own under Windows and H. The accent is not a wall — Nigerian English is heard well by the big keyboards. Clarity beats loudness. Speak the way you would speak to a respectful junior: plainly, at your own pace, without shouting.",
+      ),
+      fig(
+        "/images/blog/voice-typing-mic.jpg",
+        "A man speaking toward his phone while the words appear on the screen as text.",
+        "Tap the microphone, speak, watch the sentence build. It hears best when the phone is close and the room is not fighting you.",
+      ),
+      h2("Where it shines, and where it fails"),
+      p(
+        "It shines on length. The two-finger typist writes a paragraph in eight minutes; the voice writes it in two and spends the rest on repairs. It shines on drafts — say the messy first version, then edit with your hands. It fails in noise: a generator, a market, a bus park will sprinkle strangers' words into the sentence. It fails with several speakers; it writes whoever is loudest. And it sometimes stumbles on a heavy Pidgin phrase or an unfamiliar name, which you then repair by thumb. So the rule stands: dictate in quiet, review before sending. The machine types what it hears. You remain the owner of what is sent.",
+      ),
+      p(
+        "One line is drawn hard. Do not speak passwords, PINs, card numbers, or the codes that die — the OTPs you met in their own lesson. A code said aloud in a quiet room is still said aloud. The keypad exists precisely for secrets. Let the fingers carry those.",
+      ),
+      fig(
+        "/images/blog/voice-typing-docs.jpg",
+        "A woman at a desk speaking while a document fills with lines of text.",
+        "A first draft dictated in two minutes, then repaired by hand. The voice writes; the judgement edits. Both belong to you.",
+      ),
+      ul([
+        "Dictate a WhatsApp message to yourself. Read it once, repair two words, then send it on.",
+        "Say a sentence with two commas and a question mark, spoken aloud, and see whether they land.",
+        "In Google Docs, open Tools, then Voice typing, and dictate one paragraph of anything.",
+        "Practise the hard line: the next OTP goes into the keypad with your fingers, never out of your mouth.",
+      ]),
+      h2("A draft, not a finished letter"),
+      p(
+        "Treat dictated text as clay, not pottery. Read it before you send it — the machine will have heard a cousin where you said a name, a sale where you said Sade. Fix, then send. People who trust the first hearing spend their evening on apologies; people who read once send like people who write. The microphone has given your thumbs a holiday. It has not taken over the letter.",
+      ),
+    ],
+  },
+  {
+    slug: "email-in-your-pocket",
+    title: "Your email in your pocket",
+    excerpt:
+      "The desk taught the manners; the phone carries the letter. Attachments opened on glass, the CV attached from where it lives, and the right account chosen before you press send.",
+    series: SERIES,
+    order: 104,
+    author: AUTHOR,
+    date: "2026-01-14",
+    cover: "/images/blog/email-pocket.jpg",
+    coverAlt: "A woman reading an email on her phone in an office corridor.",
+    body: [
+      p(
+        "Your first email was written at a desk, with a keyboard wide enough to be honest. But the letter does not wait at the desk. The interview invitation, the school's admission, the client's correction — they arrive while the phone is already in your hand. So the desk folds into the pocket: the Gmail app, or the phone's own mail app, and everything the desk taught still applies, only smaller.",
+      ),
+      p(
+        "Set it up once. Open the app, choose to add an existing account, give the address you made on purpose in its own lesson, type the password once. The app keeps it; you never type it again on that phone. If you carry two addresses — one serious, one from your younger years — add both. They sit side by side, each labelled, and the app asks which one is speaking every time you compose. Look at that label every time. The classic embarrassment of a working life is a CV that went out under the joke address.",
+      ),
+      fig(
+        "/images/blog/email-pocket.jpg",
+        "A woman reading an email on her phone in an office corridor.",
+        "The inbox in the pocket. Same letters, same manners, smaller desk — and the sender's name checked twice before anything is sent.",
+      ),
+      h2("Reading on glass"),
+      p(
+        "Attachments open with a tap: the CV in PDF, the invoice, the school's letter. If the phone says it cannot open a file, that is the open-with lesson again — the file is not broken, it simply needs to be handed to the right program. Reply sends to one person. Reply all sends to the whole corridor, which you met at the desk and which is no safer for being small. Read the To line before the first word of your reply. Thumbs are quick; that is exactly why you slow them at the top of a letter.",
+      ),
+      h2("Attaching from the pocket"),
+      p(
+        "The paperclip is there. Compose, look for the attachment symbol, and the phone offers where from: Files, Drive, or the camera. Files walks to the scan you made in the documents lesson. Drive reaches whatever you have parked in the cloud. The camera takes something new — right for a form that wants your face today, wrong for a certificate that already exists scanned. Attach, then wait for the file's name to appear above the message before you send. Sending before the attachment finishes is posting the envelope before the letter is inside.",
+      ),
+      fig(
+        "/images/blog/attach-from-phone.jpg",
+        "A phone showing an email being composed, with an attached file sitting above the message.",
+        "The paperclip, the chooser, the file's name sitting above the text like a label on a parcel. Then, and only then, send.",
+      ),
+      ul([
+        "Add your main address to the phone's mail app, and check the label it now carries.",
+        "Email yourself a PDF. Open the attachment, then reply to it from the phone.",
+        "Attach one file — a scan, not a camera photo — to a draft. Do not send the draft. Look at how the attachment sits.",
+        "Read your signature on the phone and shorten it to your name and number, nothing that apologises.",
+      ]),
+      h2("Notifications without drowning"),
+      p(
+        "Email is not WhatsApp, and it must not learn to shout like it. The letter does not need an answer in four minutes; it needs an answer today, thought through. In the app's settings, let the important inbox notify you and let the adverts pass in silence — most apps sort this for you, if you look once. A short signature saying who you are is enough; the phone does not need to tell the world it is a phone. The desk gave you the manners. The pocket keeps them, quietly.",
+      ),
+    ],
+  },
+  {
+    slug: "the-file-that-goes-up",
+    title: "The file that goes up",
+    excerpt:
+      "Downloads taught where files land. Applications need the other direction: choose the file, watch the bar finish, keep the slip. Uploading, done calmly.",
+    series: SERIES,
+    order: 105,
+    author: AUTHOR,
+    date: "2026-01-19",
+    cover: "/images/blog/choose-file.jpg",
+    coverAlt:
+      "A laptop screen showing an online form with a file chosen and its name beside the button.",
+    body: [
+      p(
+        "The Downloads lesson was about files coming down — parcels landing on the mat. The other half of an online life is files going up. A job portal asks for your CV. A school asks for the certificate. A form asks for a passport photograph. Each is the same small act: the machine asks you to choose a file, you choose it, it travels up. People fear this moment more than any other in a form, and it does not deserve the fear. It deserves a slow hand.",
+      ),
+      p(
+        "The button has many names — Choose file, Upload, Attach, Select — but one behaviour. Tap it and a window opens onto your own rooms: Documents, Pictures, the Downloads mat. Walk to where the file lives, tap it once, and its name appears beside the button like a label on a parcel. That is the whole act. What frightens people is not the choosing. It is the size limits and the waiting.",
+      ),
+      fig(
+        "/images/blog/choose-file.jpg",
+        "A laptop screen showing an online form with a Choose file button and the chosen file's name beside it.",
+        "Tap the button, walk to the room, tap the file. The name appearing beside the button is the parcel being labelled — nothing has flown yet.",
+      ),
+      h2("Size limits, and the bar that must finish"),
+      p(
+        "Portals state limits the way airlines state luggage: maximum 500 KB, maximum 2 MB. You already know what KB and MB mean, and you already know how to shrink a photograph. When a form refuses a file for size, the answer is to shrink the file — not to blame the school, not to send the document to a stranger who offers help. When the file is accepted, a bar begins to move. Let it finish. Closing the page mid-upload is hanging up mid-sentence: the form arrives, the paper does not, and nobody writes to tell you. Wait for the word done, the green tick, or the file's name resting quietly in its slot.",
+      ),
+      p(
+        "On the phone, the chooser offers three doors: Camera, Files, Drive. Camera takes a fresh photograph — right for a form that wants your face today. Files walks to the scan you already made. Drive reaches what you have parked in the cloud, which the next lesson turns into a system. For papers that exist as scans, choose Files. Fresh photographs of old certificates come out crooked, with shadows like bruises.",
+      ),
+      fig(
+        "/images/blog/upload-finished.jpg",
+        "A phone screen showing a file upload finishing with a green tick.",
+        "The tick means the parcel was delivered, not merely posted. A screenshot of that moment is cheaper than re-submitting an application.",
+      ),
+      ul([
+        "Practise once where nothing is at stake: upload a photograph to any profile that asks. Walk the whole road for exercise.",
+        "Before a real application, check the size limit first, then check your file's size. Match the luggage to the airline.",
+        "Never close a page while a bar is moving. Go and wash a plate instead.",
+        "When the tick comes, screenshot it. The slip is the proof you were there, on time, complete.",
+      ]),
+      h2("The slip is the receipt"),
+      p(
+        "Most portals, after an upload, show the file's name, or let you download what you submitted. Do download it, once, and look at it with your own eyes. The wrong file — the scanned WAEC where the birth certificate should be — has travelled farther than most lies, and the portal will judge it without pity. Then print or PDF the final confirmation page, the way you keep a teller's slip at the bank. Applications are lost not at the choosing but in the last ten seconds: the bar abandoned, the wrong parcel posted, the slip never kept. You are past all three now.",
+      ),
+    ],
+  },
+  {
+    slug: "papers-the-bag-cannot-lose",
+    title: "Papers the bag cannot lose",
+    excerpt:
+      "Certificates drown, burn, and walk out of bags. Scanned, named, and parked in Drive, they survive all three — one quiet evening of work, private until you say share.",
+    series: SERIES,
+    order: 106,
+    author: AUTHOR,
+    date: "2026-01-24",
+    cover: "/images/blog/drive-papers.jpg",
+    coverAlt:
+      "A phone held in both hands showing cloud storage folders named Papers, Certificates and IDs.",
+    body: [
+      p(
+        "Consider what sits in that bag: birth certificate, WAEC, the degree, NYSC, the CV. One bag. One rain. One theft on a Thursday. The drawer at home holds the originals, but the drawer is in the same house as the leaking roof, and papers do not swim. What the cloud lesson explained, this lesson does: one evening of scanning gives you a set of papers no bag can lose and no rain can reach.",
+      ),
+      p(
+        "The work is plain. Scan each paper properly — good light, flat surface, all four corners, the way the scanning lesson taught — or photograph it squarely if a scanner is far. Then give each one a name that will still make sense in ten years: waec-certificate-2014, not scan12, not IMG_0093. Renaming matters more than scanning; a good paper with a bad name is lost in your own cupboard. Put them in Drive, in a folder called Papers, with rooms inside it: Certificates, IDs, Work. One evening. Done for life.",
+      ),
+      fig(
+        "/images/blog/drive-papers.jpg",
+        "A phone held in both hands showing cloud storage folders named Papers, Certificates and IDs.",
+        "A folder called Papers, rooms inside it, names with years. The cupboard that is not in the house.",
+      ),
+      h2("What this buys you"),
+      p(
+        "A cyber café at eight in the morning, before an interview, with no flash drive: you sign in, the papers are there, you download, you print, you walk in calm. A form that wants the certificate: you upload straight from Drive, no cables, no borrowing a neighbour's laptop. The bag can be stolen in Owerri and the papers still arrive in Lagos by nightfall. This is what backup before the light goes meant — applied to the papers that carry your name.",
+      ),
+      p(
+        "Now the other half, which is where people hurt themselves. A file in Drive is private until you say share, so say it carefully. Certificates and IDs go to the school, the employer, the portal — one address at a time, or a link set so only they can open it. They do not go to groups. They do not go to a helper's WhatsApp. The spirit of the OTP lesson applies: a thing that proves you are you is a key, and keys are not posted on walls.",
+      ),
+      fig(
+        "/images/blog/certificate-folder.jpg",
+        "A scanned certificate on a desk beside a phone showing the same certificate on its screen.",
+        "The original stays in the drawer; the copy floats. When the flood or the thief comes, one of these survives.",
+      ),
+      ul([
+        "Tonight, scan one certificate — just one — and name it with the document and the year.",
+        "Create the Papers folder in Drive and put it there. Ten more evenings will finish the drawer.",
+        "Try the café drill once: on any other machine, sign in, find the paper, download it. That is the whole miracle.",
+        "Share one file with yourself, by your own address, and open it. Then leave everything else unshared.",
+      ]),
+      h2("One evening, then a habit"),
+      p(
+        "Do not attempt the whole drawer in one heroic night. One paper each evening, the way the keyboard was learned — ten honest minutes. The originals stay where your mother can find them; the copies sit above the flood line, above the fire, above the thief. A house may stand for eighty years without trouble. The papers cost you one week of evenings to make sure that if it does not, your name survives the trouble.",
+      ),
+    ],
+  },
+  {
+    slug: "before-you-forget-the-password",
+    title: "Before you forget the password",
+    excerpt:
+      "Recovery is the spare key, cut while the main key still opens the door. Set it today, in daylight, and never accept recovery help from a caller.",
+    series: SERIES,
+    order: 107,
+    author: AUTHOR,
+    date: "2026-01-29",
+    cover: "/images/blog/recovery-screen.jpg",
+    coverAlt: "A man looking thoughtfully at his phone showing an account verification screen.",
+    body: [
+      p(
+        "One day — not today, which is exactly the problem — you will type your password and the machine will say no. Not because you did anything wrong. Because you are a person, and persons forget, and phones are stolen, and numbers change. The passwords lesson taught you to keep the key. This lesson is about the second thing every account has: a spare key called recovery, which can only be cut in advance.",
+      ),
+      p(
+        "Open your Google account, the one made on purpose. Under Security you will find Recovery phone and Recovery email. Set both, today, while the door still opens easily. The recovery phone is your real SIM — the one in your pocket, alive, registered. The recovery email is a second address you actually open, not one you created in 2017 and have never visited since. A spare key to a house you no longer live in is not a spare key. It is a gift to whoever moves in after you.",
+      ),
+      fig(
+        "/images/blog/recovery-screen.jpg",
+        "A man looking thoughtfully at his phone showing an account verification screen.",
+        "Prove you are you — answered not by memory but by the arrangements you made in daylight, months before the question came.",
+      ),
+      h2("The rules of the spare key"),
+      p(
+        "Rule one: the recovery email must be alive. Open it once a month, the way you check that the spare key still turns. Rule two: when your number changes, update the recovery phone that same week. This is not paperwork for its own sake — a stolen or recycled number is how strangers inherit accounts, which is why the SIM itself is guarded like cash. Rule three: WhatsApp is tied to your number and the bank to its registered one. When any of those change, walk through all of them in one evening, the way you change the locks when the key count changes.",
+      ),
+      p(
+        "Then the day comes, and it is mild. On the sign-in page: Forgot password. The code goes to the recovery you set — the phone or the email. You type it, you choose a new password by the old rules, you continue. Ten minutes. What recovery is not: a caller. Nobody from Google, from your bank, from any office, phones you to recover an account, and no helper needs the code that arrives for one. You met that shape in the OTP lesson and the prize lesson; recovery has simply become their favourite costume. Recovery happens on your screen, in the app, at your pace. Hang up on anyone who says otherwise.",
+      ),
+      fig(
+        "/images/blog/recovery-code-paper.jpg",
+        "A small notebook beside a phone, with ten one-use recovery codes written by hand.",
+        "Some accounts offer one-use codes on paper. They live with the password notebook, in the drawer, and they are never typed for anyone who calls.",
+      ),
+      ul([
+        "Today, in daylight: set the recovery phone and recovery email on your main account. Two minutes.",
+        "Open your recovery email once now, and put a reminder in the calendar to open it monthly.",
+        "Write the recovery address in the password notebook. The address is not a secret from the drawer.",
+        "Changed your number? Before the old SIM dies, walk every account through its recovery settings.",
+      ]),
+      h2("The door behind the door"),
+      p(
+        "Every account is a door with a locksmith's record behind it. The password is the key in your hand; recovery is the record that says whose hand the key belongs to. Cut the spare while the main still turns, keep the record current when the house changes, and treat anyone who offers to open your door from outside, by phone, as exactly what they are. The next lesson adds a second lock to the door itself.",
+      ),
+    ],
+  },
+  {
+    slug: "the-second-lock",
+    title: "The second lock",
+    excerpt:
+      "A stolen password should not be enough to be you. Two-step verification, backup codes on paper, and the rule for prompts you did not start.",
+    series: SERIES,
+    order: 108,
+    author: AUTHOR,
+    date: "2026-02-01",
+    cover: "/images/blog/second-lock.jpg",
+    coverAlt:
+      "A phone showing a sign-in approval prompt with two buttons, held by a thoughtful woman.",
+    body: [
+      p(
+        "A password is one lock. Whoever learns it, buys it, or guesses it walks straight in, and you will not see them enter. Two-step verification is the second lock: after the password, the account insists on a code that reaches only your hand — the phone in your pocket, not the thief's laptop. You have watched such codes arrive all your digital life, and the OTP lesson taught you never to read one out. This lesson is the quiet reversal: you start the knock yourself, on purpose, on your own door.",
+      ),
+      p(
+        "Begin with the account that owns the rest. Google: sign in, Security, 2-Step Verification, follow it through, and let it learn the phone you actually carry. WhatsApp: Settings, Account, Two-step verification — a PIN you choose, which is not your birthday and not 1234, because the password rules never retired. Your bank app likely added its own device lock on the day you activated it. Leave it exactly as it is.",
+      ),
+      fig(
+        "/images/blog/second-lock.jpg",
+        "A phone showing a sign-in approval prompt with two buttons, held by a thoughtful woman.",
+        "The password was right; the account still asks for the second proof. This is the door checking both locks — a friend's voice, not a stranger's.",
+      ),
+      h2("Where the code should come from"),
+      p(
+        "By default the code arrives by SMS. That is good enough to start tonight, and starting tonight matters more than the perfect version. The stronger form is an authenticator app, which generates the code on the phone itself every thirty seconds, so that a SIM swap — a stranger convincing the network that your number is theirs — cannot intercept what never travels. When the SMS habit feels like home, spend one evening moving the main account across. Perfection is a poor excuse for refusing the first lock.",
+      ),
+      p(
+        "Before the setup closes, the account will offer backup codes: ten one-use keys, shown once, for the day the phone itself is lost — because the second lock locks you out too, if the phone is at the bottom of a river. Screenshot them, then write them by hand into the password notebook, and keep them where the notebook lives. Losing the phone without the codes means a long, cold proof that you are you. You already built that proof in the recovery lesson; the codes are its fast lane.",
+      ),
+      fig(
+        "/images/blog/backup-codes-paper.jpg",
+        "A strip of handwritten one-use backup codes folded inside a notebook beside a phone.",
+        "Ten paper keys for the day the phone drowns. They live in the drawer, and they are typed only by you, only into the sign-in page.",
+      ),
+      ul([
+        "Tonight: turn on 2-Step Verification on your main Google account. Ten minutes, once in a lifetime.",
+        "Turn on WhatsApp's two-step PIN while the kettle boils.",
+        "Write the backup codes into the notebook by hand — not a photo in the gallery the phone will lose with it.",
+        "Tell no one your WhatsApp PIN, including people who say they are helping you set it up.",
+      ]),
+      h2("The prompt you did not start"),
+      p(
+        "The second lock brings one new danger, and one new rule. A thief with your password can press sign in, which sends an approval prompt to your phone — a question asking, may I come in? If it is 2 a.m. and you are asleep and not signing in, the answer is no: deny, then change the password, because the password is out there now. Never approve a knock you did not knock; never read out a code you did not ask for. The two sentences are the same sentence. The first lock keeps out the lazy. The second keeps out the lucky. After that, what protects you is the habit of pausing.",
+      ),
+    ],
+  },
+  {
+    slug: "the-forward-that-lies",
+    title: "The forward that lies",
+    excerpt:
+      "Some lies want your money; some want only your finger. The sixty-second check before you forward, and your name as the envelope every lie travels in.",
+    series: SERIES,
+    order: 109,
+    author: AUTHOR,
+    date: "2026-02-05",
+    cover: "/images/blog/forwarded-many-times.jpg",
+    coverAlt: "A phone screen showing a chat message marked Forwarded many times.",
+    body: [
+      p(
+        "Not every lie asks for a fee. Some ask for something you give free, a hundred times a day: your finger on Forward. The invented cure — salt, bitter kola, hot water — that sends a frightened family past the pharmacy. The quote the minister never said, dressed in a broadcaster's logo. The security warning that turns a street against a stranger. Send to ten groups and something will happen; do not break the chain. The prize lesson's lies wore hurry and a fee. These wear care — forward, because you love them — and they travel under your face.",
+      ),
+      p(
+        "Because that is the mechanics of it: a lie forwarded by an honest person arrives wearing the honest person's face. Your aunt does not believe the cure; she believes you. The label at the top — Forwarded many times — is not a certificate of importance. It is a smoke alarm. The further a message has travelled, the less anyone in the chain knows about where it began, and the thing that began it may not be a person at all.",
+      ),
+      fig(
+        "/images/blog/forwarded-many-times.jpg",
+        "A phone screen showing a chat message marked Forwarded many times.",
+        "The label is the platform counting. It is not a source. Ask what the message knows about its own birth: nothing.",
+      ),
+      h2("The sixty-second check"),
+      p(
+        "Before your finger moves, spend one minute. Read past the headline — screenshots crop, and the second paragraph often reverses the first. Search the striking phrase on the real street, in quotes; if the broadcaster truly said it, the words sit on the broadcaster's own site, not only in a status. Check the date — old riots and old deaths are resold as this morning's news every few months. Then ask the oldest question: who gains? A message built to frighten ten thousand people tonight has a landlord somewhere, even if you never learn the name. And for health, the rule is absolute: the cure that skips the hospital is a story. Ask a pharmacist you can stand in front of.",
+      ),
+      p(
+        "If it is false, and a relative sent it, correct in private, gently, with the link: I checked — they did not say this; here is the real one. Nobody is humiliated, and the next forward is changed. If a group keeps passing poison — warnings that could cost a stranger their safety — do not forward, and know that Report exists, quietly, on every decent platform. You are not the town crier. You are the person in the chain who checks. That is a heavier kind of love than forwarding, and it is the kind that holds a community together.",
+      ),
+      fig(
+        "/images/blog/check-the-forward.jpg",
+        "A person at a desk searching on a laptop while a phone with an open chat lies beside the keyboard.",
+        "The laptop checks; the phone waits; the finger rests. One minute of daylight between the message and the send button.",
+      ),
+      ul([
+        "Before the next forward: read all of it, search the phrase, check the date. Sixty seconds.",
+        "Correct one relative in private, once, with a link and without mockery. Watch what they do with the next one.",
+        "For any health claim, the pharmacy first. Not the group.",
+        "When a message frightens you, that is the cue to check, not to share. If the check cannot be done tonight, sleep on it.",
+      ]),
+      h2("Your name is the envelope"),
+      p(
+        "A forward travels in an envelope with your name on it, into rooms you will never sit in. Facts travel that way, and so do flames; the envelope does not choose. Check once and share what survives the check, or let the lie die in your phone, quietly, unwitnessed. A lie needs a writer once and a hundred honest fingers after that. You are only responsible for the one finger you own — but the whole chain hangs from it.",
+      ),
+    ],
+  },
+  {
+    slug: "paying-for-something-online",
+    title: "Paying for something online",
+    excerpt:
+      "The first honest purchase: pay on delivery, the padlock's honest limits, and counting your change in a market made of screens.",
+    series: SERIES,
+    order: 110,
+    author: AUTHOR,
+    date: "2026-02-10",
+    cover: "/images/blog/pay-on-delivery.jpg",
+    coverAlt: "A courier handing a parcel to a woman at a gate while she holds her phone.",
+    body: [
+      p(
+        "The last chapter closed with the message that wants a fee — money flowing out to a liar. This one closes with the honest twin: paying for a real thing from a real seller, on purpose, and sleeping well after. Buying online is now a basic skill, the same class of skill as buying fuel or choosing a taxi. It is not braver than market sense. It is market sense, carried into a new market.",
+      ),
+      p(
+        "Start where the trust is built into the building: the big marketplaces, where money is held until you confirm the parcel and pay on delivery is a choice; and official sites — the exam body, the airline, the utility — where the fee has one known amount and one known address. The vendor with fine pictures on Instagram is a different animal: a stranger with a phone. Not a criminal — a stranger. With a stranger you lend carefully. Pay on delivery, or pay a small amount first, and read what other buyers have said over months, not what the captions shout today.",
+      ),
+      fig(
+        "/images/blog/pay-on-delivery.jpg",
+        "A courier handing a parcel to a woman at a gate while she holds her phone.",
+        "Pay on delivery is the market's oldest rule in new clothes: see the thing, count the money, then let go of either.",
+      ),
+      h2("The signs of a real shop"),
+      p(
+        "A real shop can be visited, or phoned, and both answers survive scrutiny: an address, a person, a returns policy in ordinary words. Its prices breathe — near the market, above the market, but not beneath it by magic. The shop selling a four-hundred-thousand-naira phone at ninety-five, today only, is the prize message in a new shirt: the discount is the fee. And the padlock beside the address means the road is private, not that the seller is honest. The padlock protects the road. It has never once protected the buyer. Only your own slowness does that.",
+      ),
+      p(
+        "When you pay: card details go only into the shop's own checkout page, never into a chat, never read out to a caller — and the PIN goes nowhere at all, because no shop on earth needs it. A transfer is fine to a business account that carries the shop's name; be still for a moment when a market price is demanded into a personal account with a different surname. Then keep the receipt — the email, the screenshot — and when the bank alert comes, read it twice: the amount, the name, the time. Counting your change never stopped being a skill. It moved indoors.",
+      ),
+      fig(
+        "/images/blog/checkout-padlock.jpg",
+        "A laptop screen showing a checkout page with a small padlock in the address bar, a bank card resting face down beside the keyboard.",
+        "The padlock means the road is private. Whether the shop at the end of the road is honest is a question the padlock has never answered.",
+      ),
+      ul([
+        "First purchase: choose a marketplace with pay on delivery. Walk the small road before the long one.",
+        "Before the price, check the address, the phone, the returns policy. In that order, every time.",
+        "Card details in the checkout page only. The PIN nowhere, ever, for anyone.",
+        "Keep the receipt and read the alert twice. The market's change-counting, moved indoors.",
+      ]),
+      h2("What arrives in your hand"),
+      p(
+        "When the parcel comes, open it while the delivery person stands there, if the platform allows — the size, the colour, whether the thing is the thing. If it is wrong, the app has a returns road; walk it calmly, with photographs taken the way the document lesson taught: straight, in light, all corners. Refunds take days. That is slowness, not defeat. The whole journey — the checking, the slip, the alert, the photographs — is one sentence your grandmother could have said at any market: look well before you pay, and keep the paper. The market has grown a screen. The sense crosses over intact.",
+      ),
+    ],
+  },
+  {
+    slug: "bank-in-your-hand",
+    title: "Your bank in your hand",
+    excerpt:
+      "The bank in your pocket, used with market sense: the name before the confirm, the receipt kept, the card switch found in daylight. Your money's front door, locked properly.",
+    series: SERIES,
+    order: 111,
+    author: AUTHOR,
+    date: "2026-02-15",
+    cover: "/images/blog/bank-app-confirm.jpg",
+    coverAlt: "A thumb pausing above a transfer confirmation button on a phone held in one hand.",
+    body: [
+      p(
+        "Most money here never becomes notes. It moves as a message between banks, and the bank app is where the message is written. You have watched it in other people's hands for years: the queue that used to fill the banking hall now stands in a pocket. This lesson is that app, treated with the market sense you already have — because the app is a market bag, and a market bag is only as safe as the hand that closes it.",
+      ),
+      p(
+        "Get the real one first. The app store listing shows the developer — your bank's own name, millions of downloads; the bank's own website links to it; a message a strange \"staff\" sends you on WhatsApp does neither. First open, it will ask for your account number and send a code to the SIM the account was registered with — the codes that die, arriving for a knock you started, which is the only kind worth typing. Then it asks for a PIN or password: the old rules hold. Not your birthday. Not 1234. Written in the notebook.",
+      ),
+      fig(
+        "/images/blog/bank-app-confirm.jpg",
+        "A thumb pausing above a transfer confirmation button on a phone held in one hand.",
+        "The pause before the confirm is the whole lesson. The name on the screen is who receives the money — read it as slowly as you would count notes into a trader's palm.",
+      ),
+      h2("The name before the confirm"),
+      p(
+        "You type the account number; the app shows you the name attached to it. Read the name. Every time, even for your own brother — especially for your own brother, because ten digits typed in a hurry can belong to a stranger who shares two of them with him. This is the change-counting of this market. Wrong name, Cancel, type again; the app does not sulk. Right name, Confirm — and then screenshot the receipt before the screen moves on. The receipt is the teller's slip of this age, and the bank's own record is the truth of what happened, not anybody's say-so.",
+      ),
+      p(
+        "Learn the rest of the app in daylight, while nothing is wrong. Where the statement lives — a PDF you can download for the rent, the visa, the audit of yourself. Where the card switch is: most apps carry a control that freezes your card in one tap, and the day a POS text arrives for a purchase you did not make, you want your thumb to know the road without searching. Where the beneficiary list is, so that a name you do not recognise can be deleted instead of wondered about. An app explored in peace is a vault. An app met during a crisis is a maze.",
+      ),
+      fig(
+        "/images/blog/bank-statement-phone.jpg",
+        "A man at a table reading a bank statement on his phone, a small notebook open beside him.",
+        "The statement is the year's story in one PDF. Download it, keep it with the papers in Drive, and next month's questions answer themselves.",
+      ),
+      ul([
+        "A brand-new beneficiary? Send the smallest note first, watch it land, then send the rest.",
+        "Find the card freeze switch today. Practise on nothing. That is the whole drill.",
+        "Keep receipts in one album named Money, and a statement in Drive with the other papers.",
+        "Nobody else's thumb in the app, and the PIN is never spoken — not to staff, not to family, not to anyone.",
+      ]),
+      h2("When the alert is quiet"),
+      p(
+        "Networks delay in both directions. Money you sent and the receiver has not seen: it usually lands within minutes; check your receipt first, then wait a little, then the bank's line — the number on their own site, not one a caller gave you. Money someone claims to have sent you: believe it when your balance moves, in your own app, with the sender's name on it. An SMS tone is not a promise. A screenshot in a chat is not a promise. The balance is the promise. You learned the habit last chapter; this is where it earns its keep.",
+      ),
+    ],
+  },
+  {
+    slug: "new-phone-without-losing-your-life",
+    title: "A new phone without losing your life",
+    excerpt:
+      "Moving day is where people lose more than thieves ever take. WhatsApp backed up, the Google account carried over, and the old phone wiped like a house whose keys have found a new owner.",
+    series: SERIES,
+    order: 112,
+    author: AUTHOR,
+    date: "2026-02-20",
+    cover: "/images/blog/two-phones-move.jpg",
+    coverAlt: "An old phone and a new phone lying side by side on a table during a move.",
+    body: [
+      p(
+        "A phone stopped being a telephone some years ago. It is the address book, the photograph album, the office, the bank queue, the family. And the day people change phones, they lose more than any thief has ever taken from them — not to bad luck, but to a moving day done in a hurry. This lesson is moving day, done slowly, in the right order.",
+      ),
+      p(
+        "Begin before the new phone exists. Tonight, whatever the age of your phone: open WhatsApp, Settings, Chats, Chat backup, and back up to Google Drive — the account you made on purpose. Note the last-backup time the way you note the last time the tank was filled. Contacts: if the phone was signed into your Google account, they already live with it, safe above the flood line. Photographs: backed up or not, you will check. The backup is the whole secret. The new phone is only a faster shelf for things that already exist in two places.",
+      ),
+      fig(
+        "/images/blog/whatsapp-backup-screen.jpg",
+        "A phone showing a chat backup screen with a recent last-backup time.",
+        "The little line that says when the chats last flew to safety. Check it the way you check the fuel gauge before a journey.",
+      ),
+      h2("The order of the day"),
+      p(
+        "Moving day: charge both phones fully — a move interrupted at thirty percent is its own small tragedy. The SIM moves to the new phone first, because WhatsApp will want to verify the number it already knows. Then set the new phone up, and when it asks, sign in with the same Google account: the apps come down from the store on their own, the contacts arrive like a ledger being restored. Then WhatsApp, verify, and when it offers Restore from backup — accept. The chats come back the way books come back from a shelf, all the voices in their places.",
+      ),
+      p(
+        "Photographs last, because they are the heaviest: if the gallery was backed up to Google Photos they will drop in overnight; if not, cable the old phone to a computer and copy the camera folder the way the photographs lesson taught. Then keep the old phone whole and charged for a week — it is the attic now, and attics are not demolished while the new house is still being unpacked. Something always turns out to be missing. The attic holds it.",
+      ),
+      fig(
+        "/images/blog/two-phones-move.jpg",
+        "An old phone and a new phone lying side by side on a table during a move.",
+        "Two houses, one moving day. The old one keeps nothing new; it only holds what the new one has not yet asked for.",
+      ),
+      ul([
+        "Tonight, on the present phone: run the chat backup and look at the last-backup time. That is the whole lesson in one minute.",
+        "Moving day order: SIM, Google sign-in, WhatsApp restore, gallery last.",
+        "Keep the old phone untouched for a week before anything is deleted.",
+        "Before selling or giving it away: remove the Google account, remove the SIM and memory card, then factory reset from Settings.",
+      ]),
+      h2("Wiping the old one properly"),
+      p(
+        "A phone sold with your accounts inside is a house handed over with keys still in the doors. Sign out of the Google account. Remove the SIM and the memory card. Then factory reset — Settings, System, Reset — and the machine returns to the afternoon it was born, empty and honest. Only then does it go to the market. The new phone will never be sentimental; it is the same ten rooms, rearranged and brighter. What mattered crossed over in the backup. That is what the backup was for.",
+      ),
+    ],
+  },
+  {
+    slug: "selling-the-thing-you-own",
+    title: "Selling the thing you own",
+    excerpt:
+      "You are the shop now: photographs that tell the truth, a price from the real market, and the one rule — money is confirmed in your own app, never by an alert's tone or a stranger's screenshot.",
+    series: SERIES,
+    order: 113,
+    author: AUTHOR,
+    date: "2026-02-23",
+    cover: "/images/blog/selling-photo-item.jpg",
+    coverAlt: "Hands photographing a used smartphone on a plain table in good daylight.",
+    body: [
+      p(
+        "The buying lesson put you on the customer's side of the counter. Now you are the shop: the old phone, the generator that lost the argument, the sewing machine, the television. Selling online is ordinary trade here now, and it rewards exactly what the market rewards — a truthful face and a steady hand. The difference is that your shopfront is a photograph, and the counter is a chat.",
+      ),
+      p(
+        "The photograph is everything. Plain table, daylight from a window, the whole item in the frame, all sides — the discipline of photographing documents, turned on property. Show the scratches. A scratch disclosed in the third photograph is a settled argument; a scratch discovered at handover is a cancelled sale and a name mentioned at night. Then price it by walking the market from your chair: what do others ask for the same thing, used, in this city? Price near them. Sentiment is a tax no buyer pays.",
+      ),
+      fig(
+        "/images/blog/selling-photo-item.jpg",
+        "Hands photographing a used smartphone on a plain table in good daylight.",
+        "The shopfront. Daylight, plain ground, every side shown, every scratch confessed. Honesty is the fastest price.",
+      ),
+      h2("The alert that never was"),
+      p(
+        'Sellers are scammed more often than buyers, and always by the same play. "I have sent the money" — with a screenshot that was edited in an app you do not have. "My rider will collect it and pay on delivery" — and the rider collects for a sender who never existed. Or the overpayment: "I sent one hundred and fifty by mistake, refund the difference" — when nothing was ever sent. The defence is one sentence and you already own it from the bank lesson: money is confirmed in your own app, balance before, balance after, the sender\'s name visible. Not by a tone. Not by a screenshot. Not by politeness.',
+      ),
+      p(
+        "For hand-to-hand sales, the old rules hold: meet in daylight where people are — a bank hall, a busy fuel station — bring a person, let the buyer inspect, and let payment complete before the item crosses. A POS slip at handover is fine; wait until the machine prints, or the transfer lands in your app. For delivered sales, the parcel moves after the money, and if the platform offers pay-on-delivery protection, that is its own honest road — walk it the way the buying lesson walked it, from the other side.",
+      ),
+      fig(
+        "/images/blog/verify-payment-seller.jpg",
+        "A man checking his bank app beside a wrapped parcel on a table, before handing it over.",
+        "Balance before, balance after, the name on the line. The parcel stays on the table until the app says so.",
+      ),
+      ul([
+        "Photograph in daylight, all sides, scratches included. Disclose everything; sell quickly.",
+        "Price by the market's asking prices, not by what the item cost you new.",
+        "Verify every payment in your own bank app before the item moves one inch.",
+        "Meet in public in daylight, bring a person, and trust the slow careful buyer above the urgent one with a story.",
+      ]),
+      h2("The slow buyer is the real one"),
+      p(
+        "The buyer who asks small questions, haggles with respect, and pays without theatre is the market's normal human being. The urgent one — pay now, my rider is waiting, my accountant sent it already — is the exception, and exceptions in trade are called something else. Selling online is the buying lesson held to a mirror: same slowness, same receipts, same public place, same refusal of hurry. The mirror does not change the rules. It only changes whose pocket the money is flowing toward.",
+      ),
+    ],
+  },
+  {
+    slug: "the-ride-that-comes-to-you",
+    title: "The ride that comes to you",
+    excerpt:
+      "Bolt, Uber, inDrive — the street's bargaining, arranged neatly on a map. The plate, the PIN, the person told, and the driver who asks you to cancel answered politely and refused.",
+    series: SERIES,
+    order: 114,
+    author: AUTHOR,
+    date: "2026-02-28",
+    cover: "/images/blog/ride-app-map.jpg",
+    coverAlt: "A phone showing a ride app map with a car icon approaching along the street.",
+    body: [
+      p(
+        "The yellow cab and the okada have grown apps. You open one, say where you are and where you are going, and a car whose name you know comes to your gate — Bolt, Uber, inDrive; the names differ, the grammar is one. The maps lesson taught you to read a map; the form lesson taught you to fill a request. This is both, holding hands, at seven in the evening in the rain. It is worth learning properly, because the ride is where the wider street most often meets the pocket.",
+      ),
+      p(
+        "Request from indoors, while you are still behind your own gate. The app shows the car, its plate, the driver's first name, and the price before anybody moves — some apps price the trip themselves; inDrive lets you propose your own fare and choose among drivers who accept it, which is the market's bargaining, digital at last. Payment is cash or the card in the app, whichever you arranged. Then stand where you said you would stand. A ride is an appointment, and appointments are kept by both parties.",
+      ),
+      fig(
+        "/images/blog/ride-app-map.jpg",
+        "A phone showing a ride app map with a car icon approaching along the street.",
+        "The car, the plate, the name, the price — all known before the gate opens. The unknown has already been interviewed.",
+      ),
+      h2("Before the door opens"),
+      p(
+        "The plate. Compare it with the app, every time, in daylight and in the dark, in a hurry and out of it. Wrong plate: a polite wave, I am waiting for another ride, and a step back behind the gate — a person who checks is difficult, and difficult is the goal. Many apps offer a PIN: the trip cannot start until the driver enters your code. Turn it on. A driver who cannot start the trip is not your driver, whatever he says through the window.",
+      ),
+      p(
+        "Share the trip — the app sends your person a live map of you moving, which is the lantern lesson and the friend standing at the corner, both. Sit behind the driver, belt on, phone in your hand on a night ride, not buried in a bag. And when a driver says cancel the trip and we settle cash: the cancellation deletes the record, the plate you checked, the price you both agreed, and the protection that made you brave enough to enter. Refuse pleasantly. Cancel nothing. If he drives off, the app will find you another car, and you have lost nothing but a minute.",
+      ),
+      fig(
+        "/images/blog/ride-plate-check.jpg",
+        "A woman comparing a car's number plate with her phone before opening the door.",
+        "Two seconds, eyes moving from glass to screen. The habit that makes every ride boring, which is what a ride should be.",
+      ),
+      ul([
+        "Check the plate against the app before your hand touches the door. Every ride.",
+        "Turn on the trip PIN, and share the trip with one person on every night journey.",
+        "Never cancel-and-pay-cash. The app is the record, the price, and the protection.",
+        "Left something behind? The ride history holds the driver and the trip — the fastest lost-and-found the street has ever had.",
+      ]),
+      h2("The map is the street"),
+      p(
+        "Watch the fare breathe with distance and hour, and you are reading a price that used to be argued in sweat and sunshine. Watch the route follow the map, and you are trusting a plan you can see. The ride app is the wider street at its best: the old taxi stand, tidied, priced, and carried to your gate. Gate, plate, PIN, person told. Four words, and the night road is just a road.",
+      ),
+    ],
+  },
+  {
+    slug: "government-things-online",
+    title: "Government things, done online",
+    excerpt:
+      "NIN, passports, company names: the paperwork of a Nigerian life, on screens. Finding the real gov.ng door, surviving the fakes advertised above it, and keeping every reference number.",
+    series: SERIES,
+    order: 115,
+    author: AUTHOR,
+    date: "2026-03-05",
+    cover: "/images/blog/gov-portal-form.jpg",
+    coverAlt:
+      "A laptop on a desk showing an official-looking application form beside a file of documents.",
+    body: [
+      p(
+        "The queue at the office and the queue on the portal are cousins, but only one of them is in your house. NIN slips, passport renewals, company names, tax records: the paperwork of a Nigerian life has been walking to the screen for years now, and filling a form — lesson eighteen, of all lessons — has quietly become a civic skill. This lesson is how to deal with the state online without paying anybody's cousin for the privilege.",
+      ),
+      p(
+        "Find the real door first, because fakes are parked next to it. The official address ends in gov.ng. Check even then, and check above all the advertisements: a fake \"help centre\" will buy the top advert slot in the search results, dress itself in the agency's colours, and charge you a processing fee the agency never asked for. It is the prize message wearing a suit of flags. The safe road: type the agency's address yourself, or reach it from the agency's own verified page, then bookmark it — lesson forty-six — so that next time the door is yours, not the advertiser's.",
+      ),
+      fig(
+        "/images/blog/gov-portal-form.jpg",
+        "A laptop on a desk showing an official-looking application form beside a file of documents.",
+        "The queue that is in your house. The form asks what paper used to ask; the difference is that you can read it twice before answering.",
+      ),
+      h2("What the portal will ask, and what it will never ask"),
+      p(
+        "Expect: your details typed carefully — spelling exactly as they sit on your certificate, because the papers lesson's folder is only as useful as its names are true. Your documents uploaded: the upload lesson is the whole game, size limits, the bar that must finish, the tick screenshotted. A fee, paid on the portal's own checkout — one known amount, one known page, receipted. What no portal will ever ask: your bank password, your card PIN read to a caller, or an OTP typed for a stranger who phones to help you complete your application. No agency calls you to complete anything. The email that says your application will die in twenty-four hours unless you act through this link is the hurry tell — lesson seven — wearing a government tie.",
+      ),
+      p(
+        "Keep everything the portal gives you. The reference number is your application's name; write it in the notebook the same hour. The acknowledgement slip: print it at the café, or PDF it into the Papers folder in Drive, where the certificates already live. Check your application's status on the portal itself, not by hoping and not by paying an agent to hope on your behalf. The café earns its fee honestly here — scanner, printer, and a person who has walked this particular form before — but the portal account, the password, and the reference number remain yours alone.",
+      ),
+      fig(
+        "/images/blog/official-papers-desk.jpg",
+        "A desk with printed acknowledgement slips and a passport photograph resting on a folder of documents.",
+        "The paper trail of one application: typed, uploaded, receipted, kept. The folder that answers every clerk before the question is asked.",
+      ),
+      ul([
+        "Type the agency's address yourself and bookmark it. Ignore the adverts above the real result.",
+        "Spelling exactly as on the certificate; uploads within the size; payment only on the portal's own page.",
+        "Reference number into the notebook; acknowledgement slip into Drive.",
+        "No agency telephones for an OTP or a fee. Hang up, and continue on the portal at your pace.",
+      ]),
+      h2("The queue you can see"),
+      p(
+        "Portals are sometimes slower than their promises, and always slower than the touts standing beside them claim. But they are visible: a status page that moves, a slip that says received, a date you can point at. Visible beats a cousin's cousin's promise every day of the year. The state is learning the screen the way you learned it — slowly, then suddenly — and every form you fill yourself, receipt and all, is one less door that needs an intermediary to open.",
+      ),
+    ],
+  },
+  {
+    slug: "learning-online-mostly-free",
+    title: "Learning online, mostly free",
+    excerpt:
+      "The classroom in your pocket, mostly free: search like a student, use pause and captions, finish one thing with your hands, and close the gap between watching and doing.",
+    series: SERIES,
+    order: 116,
+    author: AUTHOR,
+    date: "2026-03-08",
+    cover: "/images/blog/youtube-tutorial-learning.jpg",
+    coverAlt:
+      "A young person watching a tutorial video on a laptop with a notebook open beside them.",
+    body: [
+      p(
+        "Here is the open secret of this century: the classroom is already in your pocket, and most of it asks for nothing but attention and data. YouTube alone holds more teaching than any of us could sit through in a lifetime — tailoring, plumbing, Excel, the camera, the drum, the camera drone. The skill is no longer access. The skill is learning without drowning, because the flood is real: a thousand teachers, all talking, all at once.",
+      ),
+      p(
+        "Search like a student, not a browser. Not a vague word — a subject and a level: Excel for beginners, how to sew a bodice, Photoshop for a small business. Then use the video lesson's three gifts, pause, captions, and speed, as study tools: pause where your hands should catch up, captions when the accent is new to you, speed up the parts you already own. Playlists are courses that strangers have already arranged for you, beginning to end — the shelf built, the books ordered. Sit in one for a month and you will come out different.",
+      ),
+      fig(
+        "/images/blog/youtube-tutorial-learning.jpg",
+        "A young person watching a tutorial video on a laptop with a notebook open beside them.",
+        "Pause is the tutor's gift. The video waits; the notebook does not. Ten honest minutes a night, and the shelf grows by itself.",
+      ),
+      h2("Choosing, finishing, practising"),
+      p(
+        "The flood's real danger is collecting. Fifteen courses bookmarked, four apps installed, none finished — a gallery of beginnings. The cure is one subject for one month, written on paper where you sleep. And practise with your hands: the machine open beside the video, the tutorial followed step by step, the mistake made and undone — you own undo now. A video watched is a video watched. A thing practised is a skill. The gap between those two sentences is where most learners are lost, and you have crossed that gap before, on a keyboard, one honest hour at a time.",
+      ),
+      p(
+        "Certificates: real free courses exist, and a certificate with real learning behind it opens a door or two. But an employer trusts the thing you can do in front of them more than the paper that says you once watched. So finish, then make the smallest real thing with what you learned — a poster for a shop, a spreadsheet for a church, a page for a friend's trade. And when you want a person in the room, machines to sit at, somebody to ask — that is what the academy's classes are for. These notes are the free version of the same belief: this knowledge belongs to whoever wants it.",
+      ),
+      fig(
+        "/images/blog/phone-lesson-notes.jpg",
+        "A phone propped against a book showing a paused lesson video, a notebook and pen in front of it.",
+        "Data-light and honest: the lesson downloaded on Wi-Fi, the notes in your own hand. The cheapest classroom ever built.",
+      ),
+      ul([
+        "Choose one subject for one month. Write it on paper where you sleep.",
+        "Learn with your hands: machine open, pause and repeat, mistake and undo.",
+        "Download what you can on Wi-Fi, at the café, before the week the data cannot carry.",
+        "When the month ends, build the smallest real thing with it, and let it live where others can see it.",
+      ]),
+      h2("Respect the gift"),
+      p(
+        "A grandmother here could not have bought this shelf for any money, at any age in history, and it now sits beside her, free, in her language, mostly. The honour you pay a gift like that is to use it: close the app sometimes and do the thing with your own hands, badly at first, the way every hand in these notes was trained. Watching is the beginning. Doing is the lesson. The rest is the pause button, pressed as often as needed.",
+      ),
+    ],
+  },
+  {
+    slug: "the-profile-that-finds-work",
+    title: "The profile that finds work",
+    excerpt:
+      "The employer searches your name before the handshake. A CV in Drive, a photograph that is your face, one honest profile, and the two sentences that make an application yours.",
+    series: SERIES,
+    order: 117,
+    author: AUTHOR,
+    date: "2026-03-13",
+    cover: "/images/blog/work-profile-laptop.jpg",
+    coverAlt: "A laptop showing a professional profile page while a woman types at the desk.",
+    body: [
+      p(
+        "Work checks you online before it shakes your hand. The employer, the client, the school — the first meeting now happens in a search box, and what the search returns should be you, tidy. This lesson builds the smallest respectable presence: not a performance, not a boast. A front door that has been swept, with your name correctly painted above it.",
+      ),
+      p(
+        "Three pieces. Your CV as a PDF — the one-page honest CV from its own lesson — living in Drive, where any machine in any café can send it. Named properly: firstname-lastname-cv, not final-final2. A photograph that is your face: plain background, daylight, shoulders square — not the party crop with the sunglasses, however good the party was. And one professional profile on the network where work searches first: your name exactly as it reads on your certificates, one plain sentence saying what you do and what you want, and skills listed honestly — the things you can do today, not the things you plan to watch videos about someday.",
+      ),
+      fig(
+        "/images/blog/work-profile-laptop.jpg",
+        "A laptop showing a professional profile page while a woman types at the desk.",
+        "Name, face, one sentence, true skills. A front door that is swept costs one evening and works every hour after.",
+      ),
+      h2("Applying through the door, not the window"),
+      p(
+        "The application itself is the upload lesson wearing a tie: the CV within the size limit, the bar allowed to finish, the tick screenshotted, the slip kept. It leaves from the email address that carries your name properly — the pocket lesson's account check, done before every send. And each application gets two sentences of its own: why this place, why you. A CV sprayed to ninety companies reads like a spray; the person reading knows within one line whether the letter was written to them or thrown at the wind. Two honest sentences cost four minutes and change everything.",
+      ),
+      p(
+        "And the guard stays up, because the job listing is now a favourite costume of the old lies. A job that charges a fee is not a job — you have known that since the form lesson. The HR manager who interviews you on chat for ten minutes and needs a training kit, a file fee, a courier charge before you start is the prize message with a pay slip. Real interviews can be checked: the company's own site, the company's own address, a call you placed to a number you found yourself. Hurry, secrecy, fee — the three tells have never once retired.",
+      ),
+      fig(
+        "/images/blog/cv-upload-portal.jpg",
+        "A laptop screen showing a job application form with a CV file attached and its name visible.",
+        "The door, not the window: right file, right size, the tick, the slip. And two sentences that prove a human wrote them.",
+      ),
+      ul([
+        "CV as PDF in Drive, named firstname-lastname-cv. It can now travel anywhere in a minute.",
+        "One profile, one plain photograph, skills that are true today.",
+        "Two tailored sentences per application. Write them last, send them first.",
+        "No fee, ever, for a job. The employer pays you; it does not charge you.",
+      ]),
+      h2("What the search finds, in time"),
+      p(
+        "The profile grows quieter work than you expect: the poster you made for the shop, the books you kept, the spreadsheet that saved the school's fees — shared deliberately, the way the sharing lesson taught, never by accident. The search for your name should end at a door you are proud to open. That is the whole of what people call personal brand: a swept front door, true words above it, and real work visible through the window.",
+      ),
+    ],
+  },
+  {
+    slug: "the-voice-that-borrowed-a-face",
+    title: "The voice that borrowed a face",
+    excerpt:
+      "A clone needs twenty seconds of somebody's voice. The family word, the callback on the known number, and the rule that survives every costume: hurry, secrecy, money — pause.",
+    series: SERIES,
+    order: 118,
+    author: AUTHOR,
+    date: "2026-03-18",
+    cover: "/images/blog/suspect-voice-call.jpg",
+    coverAlt:
+      "An older man holding a phone away from his ear, looking at it with suspicion during a call.",
+    body: [
+      p(
+        "The prize lesson's lies wore hurry and a fee. The relative-in-trouble call wore tears and a phone line. Now the machines that write like people have learned to sound like people: from a few seconds of a voice note, an ordinary laptop can build a copy of a voice — your brother's voice, your pastor's, your mother's. The crying call may have your brother's voice in it and none of your brother. This is not a story of the future. It is the current price of a voice note, and the defence has to be learned the way the links were.",
+      ),
+      p(
+        "You will meet it in other costumes too: the celebrity on video promising to double whatever you send, the announcement with a governor's face saying what no governor said. The face and the voice were once evidence. They no longer are. What remains evidence is the channel and the question — which is why the tells are still exactly the tells you have drilled since lesson seven: hurry, secrecy, money. The costume gets better every year. The skeleton never changes.",
+      ),
+      fig(
+        "/images/blog/suspect-voice-call.jpg",
+        "An older man holding a phone away from his ear, looking at it with suspicion during a call.",
+        "The voice says come quickly. The face of the man listening says: the voice is no longer the person. Hold the phone away. Think.",
+      ),
+      h2("The family word"),
+      p(
+        "One defence, cheap and total: agree on a family word. This week, at the table, in person — not in the family chat, which is the first thing a scammer reads. A word only your people know, dull enough to remember, strange enough to check. Then the rule: anybody who calls claiming to be anybody, in trouble, needing money now, is answered with one question — what is the word? A real brother knows it and laughs. A clone does not know it, and hangs up, and your money stays where it was.",
+      ),
+      p(
+        "The second defence is the callback: end the call and dial the person yourself, on the number you already have for them — the prize lesson's rule for the relative in Dubai, now law for everybody on earth. Video calls change nothing: faces freeze, lips drift out of sync, and network excuse covers a machine's stammer. The caller who grows impatient with the verifying question has answered it. Money moves only after the word, or the callback, or both. This is not distrust. It is the chain on the door — you can love the visitor and still look through the hole first.",
+      ),
+      fig(
+        "/images/blog/family-speakerphone.jpg",
+        "A family gathered around a phone on speaker, the mother asking the caller a question while the others watch.",
+        "One question, asked together, unhurried. The word is the gate, and the whole family holds its key.",
+      ),
+      ul([
+        "Agree the family word this week — at a table, face to face, never in the group chat.",
+        "Any emergency-money call: end it, and call the person back on the number you already have.",
+        "A celebrity doubling money is a video, not a promise. There is no doubling.",
+        "Teach the elders first. They are called more than you are, and they raised you to be this careful.",
+      ]),
+      h2("The lie that got cheaper"),
+      p(
+        "Lies used to need a writer and a hundred honest fingers, the forward lesson said. Now they need a laptop and twenty seconds of somebody's evening. Nothing new is needed in the defence, though: pause, verify on your own road, refuse the hurry. Every scam in these hundred and twenty notes is the same animal in different skins, and it has exactly one strategy — to remove the pause between the story and the money. Keep the pause and you keep everything.",
+      ),
+    ],
+  },
+  {
+    slug: "cleaning-the-digital-house",
+    title: "Cleaning the digital house once a year",
+    excerpt:
+      "Once a year, open the drawers: apps deleted, subscriptions cut, permissions revoked, the gallery backed up and pruned. The house lighter, the doors fewer, the mind quieter.",
+    series: SERIES,
+    order: 119,
+    author: AUTHOR,
+    date: "2026-03-23",
+    cover: "/images/blog/uninstall-apps.jpg",
+    coverAlt: "A phone screen showing several apps about to be uninstalled.",
+    body: [
+      p(
+        "The house you live in grew drawers, and the drawers filled. The digital life does the same, more quietly: apps tried once and left installed, subscriptions charging since last year for a thing used twice, permissions granted in a hurry to games that wanted the microphone, a gallery of nine thousand photographs among which live perhaps three hundred that matter. Nothing collapses. It only gets heavier, and slower, and full of doors you forgot you owned. Once a year, open the drawers. Pick a date with a handle — your birthday week works — and sweep.",
+      ),
+      p(
+        "The apps first: delete, do not merely tidy the icons. An unused app is a door left unlocked and a small tenant eating your data with updates — you learned the difference between installing and keeping a long time ago. Then the subscriptions, because they are the leaky roof of this house: the phone keeps the list — settings, subscriptions — every monthly charge since the week you forgot. Read it once a year and cut with joy. Two thousand naira a month, unnoticed, is a bag of rice over a year.",
+      ),
+      fig(
+        "/images/blog/uninstall-apps.jpg",
+        "A phone screen showing several apps selected to be uninstalled.",
+        "The drawer, opened. Every app kept is a door; every door deleted is one less thing that can be opened in the night.",
+      ),
+      h2("Permissions, accounts, the gallery"),
+      p(
+        "Permissions next, walking the list the permissions lesson taught: the torch that wanted your contacts, the game that wanted the microphone — revoke without ceremony; the phone will not sulk, and neither will the torch. Then old accounts: the shop you bought from once, the forum from years ago. Sign out where the settings offer it, close what can be closed, and for the rest, change the password to something from the notebook — an old account on an old key is a window that floats open on its own.",
+      ),
+      p(
+        "The gallery last, and always in this order: backup first — the cloud lesson, the papers lesson, photographs being the papers of the heart — then delete with both hands. The screenshots of last year's transfers, the seventeen blurred versions of the same moment, the bundles from group chats. Downloads too: the mat, emptied the way lesson forty-eight emptied it. Then the storage bar, which is the house's own report card, and the empty Bin, which is the last drawer. Back up, then sweep. Never the reverse.",
+      ),
+      fig(
+        "/images/blog/subscriptions-list.jpg",
+        "A phone showing a list of app subscriptions with monthly prices, a thumb pausing over one.",
+        "The leaky roof, found. Every line is a small monthly rent for a room you may have stopped visiting. Read it. Cut it. Keep what earns its keep.",
+      ),
+      ul([
+        "One date a year: apps deleted, subscriptions read and cut, permissions revoked, accounts re-keyed.",
+        "Backup before any deleting. The Bin has a bottom; do not test it with the only copy of anything.",
+        "Old accounts: signed out, closed, or given a new key from the notebook.",
+        "When the sweep ends, note the free space and the fewer doors. Next year's sweep starts from there.",
+      ]),
+      h2("The lightness afterwards"),
+      p(
+        "People report the same two things after a clean: the phone is faster, and the mind is quieter — the slow computer lesson said a slow machine is often a full house, and the same is true of the person carrying it. The sweep takes one evening. The lightness lasts the year. And the notebook, updated during the sweep — every kept account, every new key — remains what it has always been: the key rack of the whole house, hanging by the door of the drawer.",
+      ),
+    ],
+  },
+  {
+    slug: "each-one-teach-one",
+    title: "Each one, teach one",
+    excerpt:
+      "Somebody sat beside you once, or a note did. Now you are the somebody. Teaching one person, patiently, with their hands on the machine — the skill that travels every other skill.",
+    series: SERIES,
+    order: 120,
+    author: AUTHOR,
+    date: "2026-03-26",
+    cover: "/images/blog/teaching-one-learner.jpg",
+    coverAlt:
+      "A young person guiding an older woman's hand on a laptop trackpad, both smiling slightly.",
+    body: [
+      p(
+        "Somebody sat beside you once — a cousin, a night class, or a note that talked like a person. Everything on this shelf reached you the way knowledge has always travelled on this street: not by brochure, but at a table, with one patient person and one machine. Which means there is only one lesson left, and it is not about the machine. You are now the somebody. The last skill is the first skill, handed over: teach the next person.",
+      ),
+      p(
+        "Teach one person, not a crowd. Your mother. The neighbour's boy. The woman who sells beside your shop. A crowd watches; a person types. And the typing happens on their machine or their phone, not yours — the help lesson's rule, doubly true in teaching, because the learner who watches your hands learns only to watch. Their hands on the keys, your mouth on the names, spoken out loud the way the first sitting spoke them for you: this is the mouse; this is the pointer; this is where the work lives.",
+      ),
+      fig(
+        "/images/blog/teaching-one-learner.jpg",
+        "A young person guiding an older woman's hand on a laptop trackpad, both smiling slightly.",
+        "Their hand, your patience, one machine between you. The lesson is not finished until their hand moves without yours on it.",
+      ),
+      h2("The patience contract"),
+      p(
+        "You will be asked what you now consider obvious. The question is not the problem; the sigh is. Obvious only means already-taught — somebody paid for your obvious with an afternoon once, and this is the change coming back. Answer as if the question were interesting, because to the asker it is the most interesting thing in the room. Then stop while it is still pleasant: ten honest minutes, the keyboard lesson's own rule, because a learner made tired tonight does not come back tomorrow, and tomorrow is the whole plan.",
+      ),
+      p(
+        "Teach the names and the habits, not the tricks. The password rules. The pause before a link. The name read before the confirm. The backup before the sweep. Tricks fill a week; habits fill a life — a person who knows why they sign out of a machine that is not theirs does not need you beside the next machine, and that independence is the graduation. A person taught to copy you needs you forever. A person taught the reasons needs you once.",
+      ),
+      fig(
+        "/images/blog/small-class-laptop.jpg",
+        "Three learners around one laptop in a modest training room, one pointing at the screen while the others lean in.",
+        "The one became three, the way it always does. One machine, one table, one hour — the academy's whole arithmetic.",
+      ),
+      ul([
+        "Choose one person this month. Sit them down at a machine that is theirs to touch.",
+        "Teach the five first: power, pointer, keys, files, and the pause before links.",
+        "Lend them these notes — the shelf is free, and it reads like a person sitting beside them, because that is what it is.",
+        "Teach the teacher too: show them how to sit somebody else down, and your single hour doubles every year.",
+      ]),
+      h2("The shelf, and the door"),
+      p(
+        "One hundred and twenty notes now. The sitting, the files, the letter, the grid, the phone, the locks, the street, and the hand that passes it on. They were written as class notes for rooms in Port Harcourt, and they belong to whoever needs them — forward them, print them, read them aloud to a person who reads slowly. The computer was never the point. The point was always this: another person who can open the door without fear, and hold it open behind them. Go and be somebody's quiet hour. The shelf will hold.",
+      ),
+    ],
+  },
+  {
+    slug: "the-cybersecurity-analyst-at-work",
+    title: "The cybersecurity analyst, at work",
+    excerpt:
+      "Somebody is paid to sit on the other side of everything these notes taught you — watching, triaging, asking who knocked. What the job actually is, and how a person walks into it.",
+    series: SERIES,
+    order: 121,
+    author: AUTHOR,
+    date: "2026-03-30",
+    cover: "/images/blog/analyst-monitor-grid.jpg",
+    coverAlt: "A young analyst at a desk with two screens showing lists of security alerts.",
+    body: [
+      p(
+        "Everything on this shelf has a shadow profession. The OTP lesson, the fake link, the prize that wants a fee — on the other side of each of those sits a person employed to notice: to watch the doors of an organisation the way you learned to watch your own. That person is the cybersecurity analyst, and it is the most common front door into security work anywhere in the world. This chapter of notes opens that door and describes the rooms, because many of you asked what all this care can become.",
+      ),
+      p(
+        "The day, honestly described, is triage. The analyst sits before a queue of alerts — a machine flagged a login from two countries in one hour; a staff member reported an email that smells like the link lesson; a laptop began talking to an address no list can explain. Each alert is a knock. Most knocks are wind: a traveller's VPN, a marketing tool nobody registered, a user who mistyped a password twenty times. The analyst's craft is telling wind from footfalls quickly — checking logs, asking the machine's own records what happened, closing the innocent, and escalating the real ones to people who can pull a cable or reset a kingdom.",
+      ),
+      fig(
+        "/images/blog/analyst-monitor-grid.jpg",
+        "A young analyst at a desk with two screens showing lists of security alerts.",
+        "The queue of knocks, in order of loudness. The craft is not staring at screens; it is deciding, alert by alert, wind or footfall.",
+      ),
+      h2("What the work actually asks of a person"),
+      p(
+        "Not a genius. Curiosity that survives repetition, the patience to read a log the way a nurse reads a chart, and calm — because the day the real incident arrives, the room needs a person who writes the time down. The technical floor is lower than people fear: you must know how computers and networks speak — the rooms, the roads, the logs — and then the watching tools, which the next few lessons name. What cannot be taught later is the disposition these notes have been drilling since lesson six: refuse hurry, verify the channel, write things down.",
+      ),
+      p(
+        "How a person walks in, from this shelf: the basics you now own, then networking properly, then the security tools, then a first role — often watching and triaging, night shifts included, because attacks keep office hours in every time zone at once. In Nigeria, the ladder is real but the bigger room is remote: an analyst in Port Harcourt with clean fundamentals and honest English can watch doors for a company in Europe or America, paid in the currency of those doors. Certificates open interviews later; the fundamentals open everything first. That is the honest order, and any path that skips it is selling you the certificate's shine.",
+      ),
+      fig(
+        "/images/blog/analyst-notes-desk.jpg",
+        "A notebook beside a keyboard, with times and notes written in it during a shift.",
+        "The analyst's oldest tool. Alerts fade from screens; the written time, the written address, the written decision — those survive the meeting after.",
+      ),
+      ul([
+        "Re-read your own notes on links, OTPs and passwords as a professional would: each is a lesson in the attacker's choreography.",
+        "Learn what a log is — any record a machine keeps of who did what, when. The next three lessons are built on them.",
+        "Follow one reputable security news source for a month. Vocabulary before tools, always.",
+        "If this room pulls at you, say so at the academy. The road from these notes to the watching chair is mapped, and people have walked it.",
+      ]),
+      h2("Why this job exists at all"),
+      p(
+        "Because every organisation now keeps its most valuable things in machines, and machines keep honest records of every visitor. Somebody must read those records the way a bank reconciles its till. That is the whole profession in one sentence: reading the records, noticing the visitor who does not reconcile. If you have ever caught yourself re-checking a locked door, you have already felt the shape of the work. The next lesson is the room they watch from.",
+      ),
+    ],
+  },
+  {
+    slug: "the-soc-room",
+    title: "The room that never sleeps: the SOC",
+    excerpt:
+      "You will hear people say they work in a SOC. Here is the room, the tiers, the shifts — the place where the watching profession actually sits, explained without the mystique.",
+    series: SERIES,
+    order: 122,
+    author: AUTHOR,
+    date: "2026-04-04",
+    cover: "/images/blog/soc-room-screens.jpg",
+    coverAlt:
+      "A dim room with a wall of monitors showing maps and dashboards, two analysts at desks.",
+    body: [
+      p(
+        "Say SOC aloud — it is said letter by letter, S-O-C — and know that it means only this: a Security Operations Centre. A room, physical or virtual, where an organisation's security watching is gathered under one roof and one rhythm. If you met the letters in a chat or a job group and could not tell what they meant, hold this meaning and you will rarely be wrong: in working talk, SOC is not slang — it is an acronym with a chair behind it, the watching room. Banks have them. Telcos have them. Some companies do not build their own and instead pay a specialist firm to watch for them, which is called an MSSP, and the analysts inside it watch many doors at once. When a job advert says the role is in a SOC, this is the furniture of that sentence.",
+      ),
+      p(
+        "Walk through it, in imagination. A dim room — dim because screens read better in dimness — a wall of displays: a map with dots, a queue of alerts, a chart breathing with the network's traffic. At desks, people in tiers. Tier one sits closest to the queue: the first watch, triaging knocks exactly as the last lesson described, closing wind, raising footfalls. Tier two takes what tier one raises and digs — pulling logs from more rooms, tracing where a thing came from, deciding how sick the machine is. Tier three and the engineers hunt what nobody flagged and build the rules that make the queue wiser. Behind them, an incident manager when the night turns serious: one voice deciding, so ten hands do not pull ten directions.",
+      ),
+      fig(
+        "/images/blog/soc-room-screens.jpg",
+        "A dim room with a wall of monitors showing maps and dashboards, two analysts at desks.",
+        "The theatre is real but the work is queues and notes. The wall is for the room's shared breath; the craft sits at the desks.",
+      ),
+      h2("Shifts, nights, and the shape of the day"),
+      p(
+        "Because the internet does not close, the SOC does not close. Analysts work in shifts — days, evenings, nights, rotating — and the night shift is where juniors famously begin, watching while the country sleeps and the probes continue. A shift has its own spine: handover notes read like a relay baton — what happened on the last watch, what is still open, what to keep an eye on; then the queue; then the small projects between knocks, tuning a rule, writing a note that makes tomorrow faster. It is shift work the way nursing is shift work: routine punctuated by genuine emergencies, and measured mostly by whether you noticed in time.",
+      ),
+      p(
+        "What the room watches with is named across the next two lessons: the SIEM — the giant ledger that collects every machine's records and raises the queue — and the checks and scans that keep the fence honest. Do not let the acronyms intimidate the picture. The SOC is this: one room, one ledger, one queue of knocks, and people in tiers deciding wind from footfall, all night, every night, in shifts. Everything else is furniture.",
+      ),
+      fig(
+        "/images/blog/soc-night-shift.jpg",
+        "An analyst on night shift, headset on, the dark room lit only by the desk screens, a mug nearby.",
+        "The 2 a.m. watch. The city sleeps; the queue does not. Handover notes at dawn carry the baton to the morning tier.",
+      ),
+      ul([
+        "When you see SOC in an advert, read it as: shift work, tiers, triage first. Adjust your expectations honestly.",
+        "Night shifts are an entry, not a sentence. Learn the queue by night, grow into the hunt by day.",
+        "The handover note is a craft. practise writing one clear paragraph about one alert.",
+        "Every habit these notes taught — patience, notes, channel-checking — is SOC temperament in civilian clothes.",
+      ]),
+      h2("Is the room for you?"),
+      p(
+        "If you loved the locking lessons — if the second lock felt like a puzzle you would happily own — the SOC will feel like home with a salary. If you need quiet and long unhurried building, say, making things rather than watching for their breakers — then the developer rooms later in this chapter will fit better, and nobody should pretend otherwise. Security watching is a temperament before it is a career. The shelf is wide. Walk it with your eyes open.",
+      ),
+    ],
+  },
+  {
+    slug: "siem-in-ordinary-words",
+    title: "SIEM, in ordinary words",
+    excerpt:
+      "SIEM — said like seam — is the ledger that collects what every machine saw, and shouts when the pieces make a pattern. The tool at the heart of every watching room, demystified.",
+    series: SERIES,
+    order: 123,
+    author: AUTHOR,
+    date: "2026-04-09",
+    cover: "/images/blog/siem-dashboard-alerts.jpg",
+    coverAlt: "A computer screen showing a dashboard of stacked alerts and a rising line graph.",
+    body: [
+      p(
+        "SIEM stands for Security Information and Event Management, and is said like seam. Behind the press of consonants is a humble idea: one giant ledger. Every computer, door system, bank app and office machine keeps a record of what happens on it — the log, a line of who did what, when, from where. A SIEM is the room where all those records from all those machines are gathered into one place, laid side by side by time, and watched by rules. Nothing more exotic than that: a notebook that reads every other notebook.",
+      ),
+      p(
+        "Why one ledger? Because a thief's footfalls rarely land in a single notebook. The failed password sits in one log, the unusual login in another, the strange file copy in a third — each innocent alone, each a sentence of a story when laid side by side. Alone, no machine shouts. Together, the pattern is loud. The SIEM's whole craft is correlation: rules that say, if these three quiet things happen within one hour, that is not quiet any more — raise it. What it raises is the alert, and the alert is the queue the analyst eats from. The tool most connected to it: the names you will meet in adverts are Splunk, Microsoft Sentinel, QRadar, Wazuh — different pens for the same ledger.",
+      ),
+      fig(
+        "/images/blog/siem-dashboard-alerts.jpg",
+        "A computer screen showing a dashboard of stacked alerts and a rising line graph.",
+        "The ledger's face: what was raised, how loud, when it began. Every tile is a sentence assembled from a hundred notebooks.",
+      ),
+      h2("What feeding the ledger actually looks like"),
+      p(
+        "Log lines are boring on purpose — that is their honesty. A typical one says: this user, from this address, at this second, tried this door, and it failed. A thousand machines write such lines every second, and the SIEM drinks them without blinking. The analyst's skill against this flood is search: asking the ledger, in its own query language, show me every login for this user today; show me everything that talked to this address this week. It is less programming than good questioning — the Ctrl and F lesson grown into a profession. If you can form a precise question, the ledger answers in seconds with the truth of a hundred rooms.",
+      ),
+      p(
+        "And the ledger needs tending, which is a career in itself. Rules that raise everything bury the room in noise, and a tired room misses the real shout — so somebody tunes: closes the rules that cry wolf, sharpens the ones that matter. Somebody wires new machines into the ledger, because a room whose logs never arrived is a room watched by memory alone. And somebody checks the ledger itself is sealed — a thief who can edit the notebook owns the story it tells. Feeding, tuning, sealing: the three honest jobs around one giant notebook.",
+      ),
+      fig(
+        "/images/blog/siem-log-lines.jpg",
+        "A screen filled with dense rows of log lines, one row highlighted.",
+        "A hundred notebooks, one page. Boring lines, honest lines — and one highlighted row that only makes sense beside its neighbours.",
+      ),
+      ul([
+        "Say it until it is yours: SIEM, like seam — the giant ledger that correlates and raises.",
+        "Understand the chain by heart: logs from machines, rules in the ledger, alerts in the queue, analyst at the desk.",
+        "Play with any free log-search tool for one evening. Form three precise questions and watch the ledger answer.",
+        "Remember the weakness that matters: a ledger whose sources are missing or editable protects nobody.",
+      ]),
+      h2("Why this word follows you"),
+      p(
+        "Because every watching room on earth stands on one. Job adverts for analysts assume you have stood beside a SIEM; interviews ask how you would hunt in one. But the idea, as you now hold it, is a village idea: every compound keeps records; one trusted house collects them each evening; when a pattern crosses compounds, the crier raises it, and the watchers decide. You have just understood what universities wrap in an acronym. The next lesson is the philosophy the whole room increasingly watches by — and it begins at a gate.",
+      ),
+    ],
+  },
+  {
+    slug: "zero-trust-gate",
+    title: "Zero trust: the gate that trusts nobody",
+    excerpt:
+      "What is zero trust security? The old walls trusted whoever was inside. Zero trust trusts nobody — every knock, every time, identity and device both checked. You already carry its front door in your pocket.",
+    series: SERIES,
+    order: 124,
+    author: AUTHOR,
+    date: "2026-04-14",
+    cover: "/images/blog/zero-trust-gate-check.jpg",
+    coverAlt: "A security guard checking a visitor's identity card at a compound gate.",
+    body: [
+      p(
+        "What is zero trust security? Strip the phrase of marketing and it is one sentence: never trust, always verify. A security way of building — and running — an organisation on the belief that nobody is trusted by where they sit, only by what they can prove, every time they knock. Not once at the gate in the morning. Every door, every hour, every request. The phrase arrived from the industry's own confession: the old way assumed the thief was outside the walls, and the thief kept getting in and walking the corridors freely, because inside was trusted.",
+      ),
+      p(
+        "Picture the two arrangements. The old compound: one strong gate, and inside it every inner door open to anyone wearing a staff lanyard — because the gate already checked them, did it not? One cloned lanyard, and a visitor owns the corridors. The zero-trust compound: the same strong gate, and then every inner door checks again — who are you, prove it; what device is this, is it the one we issued, is it healthy; and even then, this door opens only as far as your work requires, not one room further. The guest with the right lanyard is still checked at accounting's door, and accounting's door does not open into the vault. Nobody is trusted for where they are. Everybody is verified for what they prove.",
+      ),
+      fig(
+        "/images/blog/zero-trust-gate-check.jpg",
+        "A security guard checking a visitor's identity card at a compound gate.",
+        "The gate is necessary and insufficient. Zero trust is the guard at every inner door, politely asking again — every time.",
+      ),
+      h2("The pieces, named plainly"),
+      p(
+        "Three habits hold it up. Strong identity: every person and every machine has a provable self — and the second lock, the one on your Google account, is zero trust's smallest citizen; multi-factor verification is its signature move. Least privilege: each person holds exactly the keys their work needs, no more — the gateman does not carry the cashier's keys, and the accountant cannot open the server room. And small rooms: the organisation is divided so that a thief in one room does not inherit the building — the corridor that once connected everything is replaced by checked doors. The industry formalised this in documents like NIST SP 800-207, but you have just held the whole idea; the documents only add the plumbing.",
+      ),
+      p(
+        "You have met the philosophy already, wearing everyday clothes. The bank app that asks for the code even after the password: zero trust. The laptop that re-verifies before opening payroll: zero trust. The second lock you put on your own account at lesson one hundred and eight — you ran a zero-trust policy on your own life before most companies did. The stakes scale; the sentence does not. Trust is never granted by location or history. It is earned by proof, freshly, at every door.",
+      ),
+      fig(
+        "/images/blog/zero-trust-doors.jpg",
+        "A corridor of office doors, each fitted with a small card reader, one glowing as a staff member taps.",
+        "Every door a checkpoint, every checkpoint a fresh question. Inside the building is not inside the trust.",
+      ),
+      ul([
+        "Say the sentence until it is yours: never trust, always verify — every user, every device, every request.",
+        "Audit your own compound tonight: which accounts hold more keys than their work needs? Least privilege begins at home.",
+        "Your second lock is your first zero trust. Notice every re-verification this week with new respect.",
+        "In interviews, the question what is zero trust is answered in one sentence and three habits: identity, least privilege, small rooms.",
+      ]),
+      h2("Why the whole industry turned"),
+      p(
+        "Because the walls stopped meaning anything. Staff work from cafés and sitting rooms now; the company's jewels sit in rented buildings run by other companies; and the thief stopped pickpocketing lanyards and started logging in. When the perimeter dissolved, the only honest place to draw the line was around each request: prove, every time. That is why the phrase follows every security job advert now, and why the watching rooms of the last lessons are rebuilding their rules around it. The gate keeper's oldest wisdom, promoted to architecture: trust the person, not the lanyard — and check the person, freshly, every time.",
+      ),
+    ],
+  },
+  {
+    slug: "vulnerability-assessment-fence",
+    title: "The vulnerability assessment: checking the fence",
+    excerpt:
+      "A vulnerability assessment is the systematic walk around your own walls before thieves do it for you — find the weak boards, rank them, fix the loudest first. Here is the honest method.",
+    series: SERIES,
+    order: 125,
+    author: AUTHOR,
+    date: "2026-04-17",
+    cover: "/images/blog/fence-check-flashlight.jpg",
+    coverAlt: "A man inspecting a compound fence with a torch at dusk, looking for weak points.",
+    body: [
+      p(
+        "A vulnerability is a weakness in a wall that still stands: the loose board in the fence, the window the bar removed, the lock that turns with any key of its brand. Every organisation is such a compound, and its walls — computers, programs, doors, people — carry weaknesses nobody has counted. A vulnerability assessment is the disciplined count: walk your own fence deliberately, in daylight, with a list, and find what a thief would find at night. Not paranoia. Maintenance. The same instinct as checking the generator before the wedding, and it answers the question every owner should be able to answer: where exactly are we weak?",
+      ),
+      p(
+        "The walk has a shape. First, count what you own — every machine, app, and account; you cannot check a fence you have not listed, and the forgotten door is every compound's favourite entrance. Then scan: tools run against the list, knocking on known weaknesses the way a mechanic's diagnostic machine queries an engine — thousands of known weaknesses, checked in minutes. Then the human pass, because tools miss what eyes catch: the password on a sticky note, the software that stopped receiving updates, the server room held shut with tape. The result is a report — not a shaming, an inventory: this weakness, here, this severe, this loud, fix it this way.",
+      ),
+      fig(
+        "/images/blog/fence-check-flashlight.jpg",
+        "A man inspecting a compound fence with a torch at dusk, looking for weak points.",
+        "The owner's walk, done before dark. Every weakness found in daylight is one the night visitor does not get to introduce himself to.",
+      ),
+      h2("Ranking the holes: not all silence is equal"),
+      p(
+        "A compound always has several weaknesses at once; money and hours are finite; so the report ranks. Severity scoring — the industry's CVSS numbers, zero to ten — is triage at a clinic: the bleeding patient first, the stubborn cough after. A weakness that lets a stranger in without any key outranks one that needs the janitor's help, an open office, and good luck. The discipline the good assessors bring is honesty about exposure: a hole in the fence facing the market street is a different animal from the same hole facing the lagoon. Fix the loudest, then the next, then the next — and re-scan, because walls do not stay mended by one speech.",
+      ),
+      p(
+        "Two words people confuse, cleared now: the assessment is the inspection — systematic, listed, non-destructive; a penetration test goes further and hires the lockpicker — one weakness, chosen with permission, exploited to prove how far it opens. Inspection first, lockpicker second, always. And for the small businesses reading this over a shoulder: the walk scales down beautifully. List your doors — the phones, the laptops, the email, that one app the whole shop runs on. Update everything the update lesson taught you to update. Turn on the second lock everywhere it exists. Change the defaults the installer left. You have just done the small business version, and most of your competitors have not.",
+      ),
+      fig(
+        "/images/blog/scan-report-paper.jpg",
+        "A printed report on a desk, its severity table showing rows of findings ranked with coloured marks.",
+        "The count, on paper: each weakness named, ranked, and given a fix. The document is not the harvest; the repairs are.",
+      ),
+      ul([
+        "List what you own — machines, apps, accounts — before you scan anything. The unlisted door is the common door.",
+        "Scan with a reputable tool, then walk with your own eyes. Tools count, humans understand.",
+        "Rank by severity and exposure. Fix the bleeding first; keep the receipts of every repair.",
+        "Re-walk the fence on a calendar, not on a mood. Walls drift; the walk is maintenance, not an event.",
+      ]),
+      h2("The fence, the room, the ledger"),
+      p(
+        "See how the profession knits: the assessment finds the weak boards; zero trust builds inner doors so one board cannot cost the building; the SOC and its SIEM watch the fence between walks, because thieves do not wait for reports. Nothing mystical anywhere — just owners who count their own weaknesses before somebody else does it for them, at night, without permission. The next lesson steps back from the compound to the roads that connect every compound: the grammar the whole internet speaks.",
+      ),
+    ],
+  },
+  {
+    slug: "tcp-ip-road",
+    title: "TCP/IP: how the road carries the mail",
+    excerpt:
+      "TCP/IP is the shared grammar of the internet — a long letter torn into numbered parcels, each finding its own road, reassembled at the door. One lesson to never fear the word again.",
+    series: SERIES,
+    order: 126,
+    author: AUTHOR,
+    date: "2026-04-22",
+    cover: "/images/blog/tcp-parcels-road.jpg",
+    coverAlt:
+      "Small numbered parcels travelling along a road toward a house in warm evening light.",
+    body: [
+      p(
+        "When two computers anywhere on earth speak — the phone and the bank, the laptop and this page — they speak TCP/IP. The name is a hyphenated pair: IP, Internet Protocol, and TCP, Transmission Control Protocol. The first says where; the second says how. Strip the syllables and hold the picture: a post office that never loses a letter if the roads survive, run on two rules — every house has an address, and every letter is sent as numbered parcels that may take different roads and arrive in any order, to be reassembled at the door.",
+      ),
+      p(
+        "IP is the addressing half. Every machine on the network carries an IP address — four numbers, like 172.16.4.1 in the older scheme — its house number on the world's roads. Your phone has one on your network at home; the bank's computer has one on the world's; every parcel of every letter is stamped from and to, and the routers — the junctions of this postal system — pass each parcel road by road, choosing the open street at each junction the way a okada rider weaves a flood. TCP is the manners half: before any letter moves, the two houses have a small conversation — are you there? I am. Then I will send — the handshake, three knocks, and the line is agreed. Then the long letter is torn into parcels, each numbered — 3 of 40, 4 of 40 — so the receiving door can stack them back into the letter, request the missing 7 again, and know exactly what arrived intact.",
+      ),
+      fig(
+        "/images/blog/tcp-parcels-road.jpg",
+        "Small numbered parcels travelling along a road toward a house in warm evening light.",
+        "The letter did not travel as a letter. It travelled as numbered parcels on several roads, and the door reassembled it. That is TCP/IP, whole.",
+      ),
+      h2("Doors on the house: ports"),
+      p(
+        "One computer is one house, but a house does many businesses at once — web, mail, banking app, all arriving together. So each house numbers its doors: these are ports. Port 80 and its locked cousin 443 are where web pages are received — the padlock in your address bar is a padlock on port 443's road. Mail knocks on its own numbered doors; a video call on another. The address finds the house; the port finds the room inside the house. When an advert for the analyst jobs of this chapter says knowledge of TCP/IP, this is the entire requirement's spine: addresses, parcels, handshake, reassembly, ports.",
+      ),
+      p(
+        "Why does a learner who is not chasing those jobs care? Because half of every machine trouble in your life has been a road question wearing a mystery's clothes. The internet is down: which floor broke — the app, the Wi-Fi, the router, the street, or the far house itself? The page will not load but WhatsApp lives: that is not contradiction, that is different roads and different far houses. The bank app times out on the climb up the hill: the parcels are dying between junctions, and no amount of closing and reopening the app repairs a road. Diagnosing by floor — app, house, street, far house — is the ordinary superpower this grammar buys, and you now own the map it stands on.",
+      ),
+      fig(
+        "/images/blog/network-cables-router.jpg",
+        "A router on a shelf with two cables running into it, its small lights blinking.",
+        "The house's own postal junction. The lights are the parcels passing — and the first thing the road diagnosis looks at.",
+      ),
+      ul([
+        "Say the pair until it separates: IP is the address, TCP is the manners. Where, then how.",
+        "Name the five floors of any internet trouble out loud once: app, house, router, street, far house.",
+        "Watch your own browser's padlock with new eyes: that is port 443, the locked road, working.",
+        "When a job advert says TCP/IP, you may now nod instead of flinching. That is the whole point of this lesson.",
+      ]),
+      h2("The grammar under everything"),
+      p(
+        "Every lesson on this shelf rode these roads without naming them: the email lesson, the cloud, the ride map, the bank in your hand. Named now, they lose their last fog — the internet is houses with addresses, roads with junctions, letters as parcels, doors numbered by business. Everything the analysts watch travels these roads; everything the builders build travels them; the padlock, the update, the second lock — all of it is traffic on TCP/IP. One grammar, learned once, used for the rest of the connected life. The next lesson stays with the mail, and asks what it means when a letter must carry proof of who sealed it.",
+      ),
+    ],
+  },
+  {
+    slug: "digital-signature-meaning",
+    title: "What a digital signature really signs",
+    excerpt:
+      "A digital signature is not a picture of your name. It is arithmetic that proves who sealed a document and that nobody has touched it since. The padlock's cousin, explained.",
+    series: SERIES,
+    order: 127,
+    author: AUTHOR,
+    date: "2026-04-27",
+    cover: "/images/blog/signing-document-seal.jpg",
+    coverAlt:
+      "A hand signing a document with a pen beside a laptop showing a digital signing screen.",
+    body: [
+      p(
+        "What is a digital signature? First, what it is not: not a photograph of your wet-ink name dropped onto a page — that is an electronic signature at its weakest, a picture, and a picture copies. A digital signature is arithmetic: a seal computed from the document itself with a key only you hold, such that changing a single comma breaks the seal's mathematics and tells every later reader the page has been touched. It answers three questions at once, and answers them with proofs rather than manners: who sealed this; has it been altered since; and can the sealer later deny it. That third answer is why contracts, banks and governments moved: the seal cannot be unworn.",
+      ),
+      p(
+        "The machinery is two keys born as a pair. Your private key — long numbers stored on your machine or a bank-grade token — you never show anybody; it seals. Its public key you publish freely; it verifies. Seal with the private, verify with the public: the mathematics runs one way down that street and no other. And the seal is computed not on the whole document but on its fingerprint — a hash, one fixed-length number that any document produces and from which the document cannot be reconstructed, but which changes entirely if a comma changes. So the signature says: the holder of the private key sealed this fingerprint. New fingerprint at the receiving door means the page is not the page that was sealed, and the seal itself says so, loudly.",
+      ),
+      fig(
+        "/images/blog/signing-document-seal.jpg",
+        "A hand signing a document with a pen beside a laptop showing a digital signing screen.",
+        "The two signatures of one life. The ink commits the person; the arithmetic commits the page — and the arithmetic cannot be photocopied.",
+      ),
+      h2("Who vouches for the key?"),
+      p(
+        "One hole remains, and the old city solved it with guilds: anyone can claim a key is theirs — so somebody trusted must vouch. A certificate authority is that vouching office for keys: it checks that the person or company asking, is who they say, and issues a certificate binding the public key to the name — the passport office of the key world. The whole arrangement — keys, certificates, the offices that vouch — carries one industry name: public key infrastructure, or PKI. If you have met the letters in an advert or a chat and found them cold, they only ever meant this warm idea: the guild that makes a stranger's key believable. Your browser carries the list of offices it trusts, which is why the padlock in the address bar — lesson one hundred and ten — means more than a locked road: the site's key was vouched for, the road is sealed, and the seal is checked at your door every visit. The padlock is a digital signature, shown to you a thousand times a day, finally introduced.",
+      ),
+      p(
+        "You will meet the seal in ordinary places now that it has a name. The updates lesson: good software arrives signed, and the machine refuses what the key does not vouch — that refusal is the update box doing its quiet work. The papers lesson: platforms offer signing so a contract can cross the world with its proof attached. And in the analyst's world of this chapter, signatures decide which program may speak and which document may be believed. Three promises in one seal — who, untouched, irrevocable — and each promise is arithmetic rather than good manners. That is the whole meaning, and you now carry it correctly.",
+      ),
+      fig(
+        "/images/blog/certificate-padlock-detail.jpg",
+        "A close view of a browser address bar, the small padlock glowing, screen slightly soft.",
+        "The seal you have met a thousand times. The padlock says: vouched key, sealed road, checked at your door. Now you can read it.",
+      ),
+      ul([
+        "Say the three promises: who sealed it, untouched since, cannot be denied. That is the definition, whole.",
+        "Private key seals, public key verifies, the authority vouches for the pairing. Three sentences to keep for life.",
+        "Treat your private keys as the notebook's crown jewels: backed up like the papers, shared like the PIN — never.",
+        "A scanned signature photo is a picture. A digital signature is a proof. Ask which one a form truly requires.",
+      ]),
+      h2("Trust, at last, in arithmetic"),
+      p(
+        "The whole shelf has been one long lesson in verification: check the name before the confirm, the channel before the code, the plate before the door. The digital signature is where that instinct became mathematics — proof that does not tire, does not flatter, and does not forget what it sealed. From here, whenever somebody says signed, you will know to ask: sealed by whose key, vouched by whose office, verified at which door. The next lesson crosses the compound wall entirely, to the people who build the things all this security watches over.",
+      ),
+    ],
+  },
+  {
+    slug: "frontend-developer-explained",
+    title: "The frontend developer, explained",
+    excerpt:
+      "The frontend developer builds everything you have ever touched on a screen — the stall that faces the road. What the work is, what the words mean, and how this shelf is already the first step.",
+    series: SERIES,
+    order: 128,
+    author: AUTHOR,
+    date: "2026-04-30",
+    cover: "/images/blog/frontend-code-screen.jpg",
+    coverAlt:
+      "A developer at a laptop with code on one half of the screen and a webpage on the other.",
+    body: [
+      p(
+        "Everything you have ever touched on a screen — every button that pressed, every form that received your details, every page that arranged itself politely on the phone and the laptop — was built by a frontend developer. The word means simply the front: the part of a program that faces the person using it. Every workshop has a front and a back — the stall that faces the road, and the store room where the stock and the accounts live. The frontend is the stall. It decides whether the customer can find what they came for, whether the price is readable in the sun, whether the transaction finishes or the customer walks in irritation.",
+      ),
+      p(
+        "The craft stands on three layers, and you may as well have their true names now. HTML is the skeleton: this is a heading, this is a paragraph, this is the box where the customer types. CSS is the clothing: colours, spacing, what it looks like when the screen is a small phone in the rain or a wide monitor in an office. JavaScript is the movement: what happens when the button is pressed — the menu that opens, the total that recalculates, the form that checks itself before travelling. Larger buildings are raised with frameworks — prepared skeletons and conventions with names like React, the very technology this page is served with — the way builders raise estates with prefabricated parts instead of moulding every brick by hand.",
+      ),
+      fig(
+        "/images/blog/frontend-code-screen.jpg",
+        "A developer at a laptop with code on one half of the screen and a webpage on the other.",
+        "The stall and its plans, side by side. Change a line, refresh, look again — the frontend's whole rhythm is that small honest loop.",
+      ),
+      h2("What the work actually is, day to day"),
+      p(
+        "Less invention than conversation. A designer hands over a picture of what a page should be; the frontend developer makes it real, exactly, on every screen size — and reports back where the picture fights the truth of small screens and slow networks. A backend — the store room, staffed by its own developers — sends goods in parcels of data; the frontend receives, arranges, and sends back what the customer filled. Much of the day is the two elders of this shelf in professional clothes: careful text selection and a thousand small saves — build one piece, look at it in the browser, adjust, save again. The loop you practised in Notepad at lesson three is, genuinely, the trade.",
+      ),
+      p(
+        "The good ones are good in ways you can already judge, because you have been a customer all your life on this shelf. Fast: a page that opens on a three-bar network in Onitsha traffic, not only on office fibre. Clear: letters that read, buttons that say what they do, forms that confess their errors in ordinary sentences. Honest on every screen: the phone is Nigeria's computer, and a stall that only stands on a laptop is a stall on a street with no foot traffic. None of that is decoration — it is the trade's version of the virtues these notes kept repeating: respect for the person on the other side of the screen.",
+      ),
+      fig(
+        "/images/blog/phone-and-desktop-layout.jpg",
+        "A phone and a laptop on a desk showing the same webpage arranged differently for each screen.",
+        "One stall, two streets. The craft is making the same shop stand properly on the pocket and on the desk.",
+      ),
+      ul([
+        "Look at any page you admire and name its three layers: the skeleton, the clothing, the movement.",
+        "View the source of a simple page once — right-click, View page source. The skeleton, in public, is not a secret.",
+        "The free-learning lesson applies in full: one month, HTML and CSS, hands on the keys, one real page built by the end.",
+        "When you are ready for a room, a machine and a person, the academy's web courses start exactly where this note stops.",
+      ]),
+      h2("Is the stall for you?"),
+      p(
+        "If you finished lesson three secretly pleased — if arranging the page, naming things properly and seeing your change appear on refresh gave you a small honest joy — then the frontend is a door worth walking through, and the road from these notes to paid work in it is walked every year, self-taught hands included. The watching rooms of lesson one hundred and twenty-two guard the compound; the stall builders raise what the compound is for. Both are honest work. Only you know which chair fits your temperament — and now you have sat in both, described without mystique, before spending a naira on either.",
+      ),
+    ],
+  },
+  {
+    slug: "machine-learning-engineer-work",
+    title: "What a machine learning engineer does",
+    excerpt:
+      "A machine learning engineer teaches machines by example instead of instruction — and spends most of the working day cleaning the examples. What the work is, and what it honestly pays.",
+    series: SERIES,
+    order: 129,
+    author: AUTHOR,
+    date: "2026-05-05",
+    cover: "/images/blog/ml-engineer-whiteboard.jpg",
+    coverAlt: "An engineer at a whiteboard covered in diagrams, a laptop open beside them.",
+    body: [
+      p(
+        "Every program you have met on this shelf was instructed: a person wrote the rules — if the password is wrong three times, lock; if the balance is less than the withdrawal, refuse. A machine learning engineer builds programs the other way round: instead of writing rules, they show the machine examples and let it find the rules. Ten thousand past transactions marked honest and fraudulent, shown again and again, until the machine can face an eleventh transaction it has never seen and answer with its own judgement. That is machine learning — teaching by example — and the machine learning engineer is the teacher who prepares the lessons, runs the classes, and checks the examinations.",
+      ),
+      p(
+        "The romantic version has the engineer inventing clever minds all day. The honest version: most of the work is preparing the examples. Data arrives messy — the spreadsheet lesson's world at industrial scale: missing values, mistyped names, the same customer entered three ways — and a model fed on dirt learns dirt faithfully. So the days go to cleaning and arranging data, choosing what the machine should look at, training — running the class — and then examining honestly: the model scores ninety-four percent, but does it score ninety-four percent because it learned, or because it memorised, or because the examples themselves were lopsided? A model that has only ever seen Lagos addresses will stumble in Sokoto, and nobody will tell you — the examination must catch it first. Then the last mile: deployment, putting the trained model behind a door where the bank's systems can ask it questions in real time, and watching it after, because roads change and a model that rode yesterday's roads drifts.",
+      ),
+      fig(
+        "/images/blog/ml-engineer-whiteboard.jpg",
+        "An engineer at a whiteboard covered in diagrams, a laptop open beside them.",
+        "The honest portrait: less sorcery, more plumbing and examination. The whiteboard is questions; the laptop is patience.",
+      ),
+      h2("What it pays — the honest paragraph"),
+      p(
+        "You asked, so plainly: it is among the best-paid rooms in technology, and the numbers travel badly, so read them with their addresses attached. In the United States, the typical quoted range for a machine learning engineer in recent years runs roughly one hundred and twenty to one hundred and sixty thousand dollars a year, and higher at the top houses; Europe and the Gulf sit near that conversation in their own currencies. The reason Nigeria appears in this paragraph at all is remote work: an engineer here with demonstrable skill can be paid from that table into a Nigerian account, and the banks and fintechs and telcos at home pay their own strong range in naira — well above most local salaries, though not the dollar table. The honest summary: the room pays like a scarce skill, because it is one, and scarcity is proven by the thing you can build, not the certificate on the wall. The learning-online lesson applies with full force: the materials are free; the discrimination is the hours.",
+      ),
+      p(
+        "And the road in, honestly: comfort with the spreadsheet's logic, then a real programming language — Python is the trade's lingua franca — then mathematics gently, statistics first, then the practice sets that every major platform gives away. It is a longer road than the frontend's first mile, and it begins exactly where you are sitting: data, cleaned by hand, understood with your own eyes. The data analysts of the next adverts and the machine learning engineers of the dollar table are separated mostly by hours of honest practice.",
+      ),
+      fig(
+        "/images/blog/data-charts-training.jpg",
+        "A laptop screen showing rows of data beside a training chart whose accuracy line climbs.",
+        "The class in session: examples on the left, the examination on the right. The climbing line is attention, made visible.",
+      ),
+      ul([
+        "Say the flip until it holds: ordinary programs are given rules; learned programs are given examples.",
+        "Most of the craft is data cleaning. If that sentence disappoints you, believe it before you choose the road.",
+        "Every salary number carries an address. Read dollar figures with the remote question attached.",
+        "One month of Python from free materials — then judge the road with your own hands, not the adverts'.",
+      ]),
+      h2("The teacher's teacher"),
+      p(
+        "One respect to end on: this room sits behind half the conveniences of the wider street — the ride app's price, the bank's fraud watch, the map's traffic. When it is honest, it is the most powerful apprentice ever hired. When it is fed dirt or examined lazily, it learns the dirt faithfully and repeats it at scale, which is why the world needs people who understand it rather than people who merely invoke it. You now sit in the first group — and the exam of the next ten years will be finding more of them.",
+      ),
+    ],
+  },
+  {
+    slug: "agile-and-devops",
+    title: "Agile and DevOps: how the teams build",
+    excerpt:
+      "Two words that fill every job advert, explained at a market stall: build small, show early, adjust; and let the people who build carry it live. Agile and DevOps, without the incense.",
+    series: SERIES,
+    order: 130,
+    author: AUTHOR,
+    date: "2026-05-10",
+    cover: "/images/blog/standup-board-sticky.jpg",
+    coverAlt: "A team standing around a board covered in sticky notes, one person speaking.",
+    body: [
+      p(
+        "Every technology job advert carries two words like a password: agile, and DevOps. They sound like philosophy and machinery, and both are simpler than their incense. Start with agile, because you already practise it. The trader who wants a new line of goods does not order a container of a hundred designs and reveal it at Christmas. She buys ten of three designs, puts them out on Tuesday, watches what Onitsha road actually takes, and orders more of what moved by Friday. Small, shown early, adjusted honestly. That is the agile methodology — a way of building anything in short cycles with real feedback, instead of one grand reveal a year late that the market has outgrown.",
+      ),
+      p(
+        "The old way — the industry calls it waterfall — is the container: plan everything at the start, build for months, present at the end, and pray the market still wants what was planned. Agile answers with the sprint: a short fixed cycle, often two weeks, at the end of which something real and usable exists and is shown to the people who will use it, whose answers steer the next sprint. The rituals you will meet in adverts live inside that frame: the standup — the team standing, a few minutes each morning, each person saying what moved yesterday, what moves today, what is stuck; and the board — the wall of cards in three columns, to do, doing, done, which is the sprint's diary in public. Ask a trader about her Tuesday and she will describe the board without the vocabulary.",
+      ),
+      fig(
+        "/images/blog/standup-board-sticky.jpg",
+        "A team standing around a board covered in sticky notes, one person speaking.",
+        "The morning standup at the board. What moved, what moves, what is stuck — the market's Tuesday meeting, wearing lanyards.",
+      ),
+      h2("DevOps: the builder carries it live"),
+      p(
+        "DevOps — said as one word, a marriage of development and operations — fixes an old divorce. The builders wrote the program and threw it over the wall to a separate team who ran it; the runners met the problems, the builders met the complaints secondhand, and the wall between them was where fixes went to die. DevOps ends the divorce: the people who build carry it live, and the people who run it build the running. Its most famous machinery is the pipeline — the conveyor that carries finished work to the street automatically: code is checked, tested, and delivered live in small steps, so that releasing a change is a Tuesday habit rather than a midnight ceremony with candles and prayers.",
+      ),
+      p(
+        "The practices behind the word, named so adverts read plainly: continuous integration — every builder's work joins the shared house daily and is tested as it arrives, so surprises are caught the day they are born; continuous delivery — the conveyor to live, fed constantly, each small step reversible; monitoring — the sensors lesson grown up, watching the live thing and shouting before the customers do; and automation everywhere, because a machine that does the same steps identically every time is the opposite of the tired Thursday technician. When an advert says DevOps practices, it means exactly this list, and you may now read the sentence without blinking.",
+      ),
+      fig(
+        "/images/blog/deploy-pipeline-screen.jpg",
+        "A screen showing a pipeline of stages in a row, the first stages ticked green and one in motion.",
+        "The conveyor to the street: checked, tested, delivered — small steps, each reversible. Release as habit, not as ceremony.",
+      ),
+      ul([
+        "Say agile at the market's tempo: small, shown early, adjusted honestly. Two weeks, something real, real feedback.",
+        "Standup, sprint, board — three words you already own the meaning of. Use them at your next job interview with a straight back.",
+        "DevOps in one sentence: the builders carry it live, the runners build, and the conveyor makes it a habit.",
+        "Try the method on anything of your own this week — the shop's stock, the church project. Two-week cycles need no software to begin.",
+      ]),
+      h2("The shelf, from the first sitting to the street"),
+      p(
+        "And so the chapter closes where the reader now stands: at the edge of a world whose vocabulary you hold. The analyst and the room that never sleeps, the ledger and the gate that trusts nobody, the fence walk, the grammar of the roads, the seal that cannot be photocopied, the stall, the teaching room, and the teams that build in Tuesdays. None of it was magic; none of it was closed to you; it was only never explained at this table before. The notes end here for now — but the reader who began at lesson one, afraid of the power button, has just read the job adverts without flinching. Walk into any of these rooms and say you came from the shelf. Then come back and tell us which chair fit.",
+      ),
+    ],
+  },
+  {
+    slug: "careers-in-data-analytics",
+    title: "Careers in data analytics: the person who reads the numbers",
+    excerpt:
+      "A data analyst turns an organisation's piles of records into decisions — who buys, what works, where the money leaks. What the career actually is, what it pays, and the honest road in.",
+    series: SERIES,
+    order: 131,
+    author: AUTHOR,
+    date: "2026-05-15",
+    cover: "/images/blog/analyst-spreadsheet.jpg",
+    coverAlt: "A woman studying a spreadsheet of sales figures on a laptop, pen in hand.",
+    body: [
+      p(
+        "Every business here keeps records whether it means to or not: the shop's sales book, the hospital's register, the bank's transactions, the school's fees. Almost nobody reads them well. The data analyst is the person who does — who turns the pile into answers: which goods move in June, which ward wastes medicine, which customers stopped coming and when. When people list careers in data analytics, this is the trade they mean, and it sits behind more Nigerian businesses than the title suggests: shops, fintechs, telcos, hospitals, NGOs, government — anyone with a pile and a decision to make.",
+      ),
+      p(
+        "The work has a rhythm, and you have already practised its first step without knowing. Collect: gather the records into one place, clean — the machine learning lesson's confession is also this trade's daily bread, missing names, mistyped dates, the same customer entered three ways — then analyse: totals, comparisons, patterns, the grid lesson's formulas grown serious. Then the step that separates analysts from spreadsheet keepers: explain. A chart a busy manager understands in ten seconds, a sentence that says what to do by Friday. Analysis that never becomes a decision is decoration. The trade is reading, and then being believed.",
+      ),
+      fig(
+        "/images/blog/analyst-spreadsheet.jpg",
+        "A woman studying a spreadsheet of sales figures on a laptop, pen in hand.",
+        "The first hour of the work is never glamorous: one pile, one grid, one pen. The glamour arrives later, as a decision someone can defend.",
+      ),
+      h2("The tool ladder, and what each rung pays"),
+      p(
+        "The ladder is public knowledge. Rung one is the spreadsheet — Excel or Google Sheets — and it carries a shocking share of Nigerian business analysis all by itself: sort, filter, the money formats, the formulas filled down, the pivot table. Rung two is SQL, the language for asking databases questions directly — show me every customer who bought twice and stopped in March — which is less programming than precise questioning, the find lesson with a salary. Rung three is a BI tool — Power BI or Tableau — where the dashboards live that directors open on Monday mornings. Python comes later, for the heavier lifting, and the data scientist of lesson one hundred and twenty-nine is this same road walked further — more statistics, more machine, more pay.",
+      ),
+      p(
+        "The money, honestly: a junior analyst in Nigeria commonly starts around the range a fresh graduate hopes for and rises quickly with proof — senior analysts and those carrying SQL and BI comfortably earn multiples of entry pay, and remote work puts international tables in play, exactly as the analyst and engineer lessons described. What moves the number is not certificates. It is the portfolio of questions you have answered, and how plainly you can make a stranger see the answer. The learning-online lesson applies in full: the tools have free versions, the tutorials are free, the discrimination is hours.",
+      ),
+      fig(
+        "/images/blog/sql-query-screen.jpg",
+        "A laptop screen showing a short database query and beneath it a table of results.",
+        "Rung two. Four lines of careful asking, and a database that answers in seconds with ten thousand rows of truth.",
+      ),
+      ul([
+        "Practise the rhythm this week on any record you own: the shop's book, the house expenses. Clean, then ask it three questions.",
+        "Learn the pivot table properly — one evening, free videos. It is the single most respected spreadsheet skill in interviews.",
+        "When ready for SQL, practise on any free online database course: twenty hours of it changes how you see every business.",
+        "The academy's data analytics course walks this ladder with machines and teachers in the room — ask at the front desk, or begin free and climb.",
+      ]),
+      h2("Why the trade suits this place"),
+      p(
+        "Because Nigeria is not short of data — it is short of readers. Every problem anyone complains about, fuel, queues, churn, stock, sits on a pile of records nobody has calmly counted. The analyst is the person who counts, and in a country that is learning to measure itself, the person who can say this is what the numbers actually say, and here is the picture, is quietly becoming one of the most useful people in every room. You already read a grid, sort a column, and fill a formula down. The career is those habits, taken seriously, with a decision waiting at the end of every table.",
+      ),
+    ],
+  },
+  {
+    slug: "how-to-build-mobile-app-nigeria",
+    title: "How to build a mobile app in Nigeria, from the first sentence",
+    excerpt:
+      "The honest ladder from idea to screen: write it small, prototype on paper, start with the web, learn the code or brief a developer, then the Play Store. No magic, no container loads of cash.",
+    series: SERIES,
+    order: 132,
+    author: AUTHOR,
+    date: "2026-05-18",
+    cover: "/images/blog/app-idea-notebook.jpg",
+    coverAlt: "A notebook with hand-drawn phone screen sketches beside a phone on a desk.",
+    body: [
+      p(
+        "How to build a mobile app in Nigeria is a question people ask with their eyes too big: they imagine a Lagos office, a container load of dollars, a team. The honest answer is a ladder, and its first rung costs nothing but a notebook. Write the idea in one sentence — who uses it, and what it does for them. An app that reads school fees for parents. An app that finds mechanics nearby. If the sentence will not come, the app is not ready; if it comes easily, you have already done what many funded teams skip.",
+      ),
+      p(
+        "Rung two: draw it. Paper screens — rectangles with a button here, a list there — the poster lesson's discipline turned inward: what must this screen say, what must this button do? Then put the drawing in front of three people who would actually use it and watch where they frown. Every frown fixed on paper costs nothing; the same frown fixed after programming costs weeks. Rung three is the one most Nigerians should honestly start on: build it as a web app first — a site that works in any phone's browser, installed to the home screen like an app — because it needs no store approval, updates instantly, and reaches the phone that is Nigeria's real computer. The frontend lesson's three layers are the whole trade at this height.",
+      ),
+      fig(
+        "/images/blog/app-idea-notebook.jpg",
+        "A notebook with hand-drawn phone screen sketches beside a phone on a desk.",
+        "The cheapest laboratory on earth. Every screen argued with on paper is a week of programming never wasted.",
+      ),
+      h2("The code, or the developer"),
+      p(
+        "Rung four is a fork, and both paths are honourable. Learn the code: the academy's mobile app development course and the free-learning lesson's method — one month per rung, hands on keys — carry you from web app to true Android apps, and the Play Store's door fee is a one-time twenty-five dollars, a business expense, not a wall. Or brief a developer: hire the portfolio rather than the patter — someone whose finished apps you have opened and used — agree the price in writing with stages, pay in parts as stages land, and never the whole sum upfront; the selling lesson's payment rules, walked from the other side. A clear one-sentence idea, paper screens, and a staged agreement will get a honest build for a fraction of the myth.",
+      ),
+      p(
+        "And build for the street you live on: the app must survive a three-bar network and a low-end phone, or it does not survive Nigeria — test it on the bus, not only on your fine screen. Keep it small: one thing done perfectly beats five things done ashamedly; WhatsApp itself began as statuses and photos arrived years later. Expect power and data to be line items, the way rent is. And when the first version is alive, however ugly, put it in ten people's hands and listen. The idea that survives ten strangers' thumbs is the one worth the next thousand lines.",
+      ),
+      fig(
+        "/images/blog/phone-app-testing.jpg",
+        "A young tester tapping through a new app on a phone while the developer watches and takes notes.",
+        "The examination that matters. Ten honest thumbs find more truth in an afternoon than a year of private admiring.",
+      ),
+      ul([
+        "Write your idea in one sentence today. If it takes more, cut until it does not.",
+        "Draw the three screens that matter on paper before touching any tool or hiring anybody.",
+        "Start with the web app. The store can wait; your users' phones cannot.",
+        "Hiring? Staged payments against stages delivered, portfolio before patter, everything in writing.",
+      ]),
+      h2("The myth, and the ladder beside it"),
+      p(
+        "The myth says building an app here requires somebody's millions. The ladder says otherwise: a sentence, paper screens, a web version, ten honest testers, and only then — if the street confirms the idea — the store, the code, or the developer. Every step is free or nearly, every step teaches, and any step can stop with dignity if the idea fails the test, which is precisely what steps are for. The person who asks how to build an app and begins at rung one this evening is ahead of the person who has been pricing containers since last year.",
+      ),
+    ],
+  },
+  {
+    slug: "choosing-where-to-learn-bootcamp",
+    title: "Choosing where to learn: bootcamps, night classes, and honest papers",
+    excerpt:
+      "A data science bootcamp in Nigeria can be the best money you ever spend or the fastest you ever lose it. The questions that tell one from the other, before you pay anybody.",
+    series: SERIES,
+    order: 133,
+    author: AUTHOR,
+    date: "2026-05-23",
+    cover: "/images/blog/classroom-night-class.jpg",
+    coverAlt:
+      "Adult learners at computers in a small evening class, an instructor leaning over one screen.",
+    body: [
+      p(
+        "So you have chosen to learn properly — the decision this whole shelf has been preparing you to make. Now the market floods in: every week a new data science bootcamp in Nigeria, a six-week miracle, a certificate with a foreign logo. Some of these schools are genuinely good and change lives at scale. Some are a room, a projector, and a man reading slides he did not write. Both advertise identically. This lesson is the buyer's inspection — the fence check, turned on the people asking for your school fees.",
+      ),
+      p(
+        "Know the three honest shapes first. Self-taught: the free-learning lesson's road — free materials, total discipline, zero fees, and the highest drop-out rate, because nobody notices when you stop. The night class or part-time course: a room, machines, a teacher, a term — what this academy has run for years, built for people who work by day. The bootcamp: the full-time intensive, weeks of immersion, designed for career switchers in a hurry. None is superior in the abstract; each fits a life. The question is never which shape is best, but which shape your job, your pocket, and your temperament can actually finish — because an unfinished cheap course is the most expensive education on earth.",
+      ),
+      fig(
+        "/images/blog/classroom-night-class.jpg",
+        "Adult learners at computers in a small evening class, an instructor leaning over one screen.",
+        "The room that fits a working life. Machines humming, a teacher within reach, and questions answered before they cool.",
+      ),
+      h2("The inspection: five questions before any fee"),
+      p(
+        "One: who teaches, and have they done the work — or only watched it? A working professional teaching evenings beats a full-time lecturer who has never shipped. Two: what will I have built by the end — ask to see past students' actual projects, not the school's own brochure; a good school shows them proudly, like a tailor. Three: machines or not — is a computer provided, or what exactly must you bring, because a laptop is a real cost and pretending otherwise is dishonesty. Four: what does the fee cover — every session, materials, certificate, anything after? State it all before you pay, in writing. Five — the loudest alarm: does the school promise jobs? Guaranteed employment is the prize message in academic dress; a good school promises skills, projects, and honest guidance, and says plainly that the market rewards proof. The moment a school sells you a job instead of a skill, walk out politely and keep your money.",
+      ),
+      p(
+        "Two smaller tells: size and after. A class where one teacher faces sixty students is a cinema, not a school — ask the ratio, and ask what happens when you miss a week, because life here will interrupt you. And the papers: a certificate is a receipt for learning, not the learning itself — lesson one hundred and seventeen's employers trust the portfolio long before the parchment. When you visit a school — ours, or any — ask these five questions and watch the answers. A good school welcomes the inspection. A bad one changes the subject to urgency: promo ends today. You know hurry. Hurry is the oldest tell on this shelf.",
+      ),
+      fig(
+        "/images/blog/student-projects-laptop.jpg",
+        "A laptop showing a grid of past students' finished projects, a school owner standing beside it, proud.",
+        "The tailor's rack. A school that shows its students' work has nothing to hide; the one that hides it has told you everything.",
+      ),
+      ul([
+        "Choose the shape your life can finish: self-taught, night class, or bootcamp. Write why on paper.",
+        "Ask the five before any fee: teachers' work, students' projects, machines, the full fee in writing, and jobs promised or not.",
+        "Run from guaranteed jobs and today-only promos. Two tells, one conclusion.",
+        "Visit the room before you pay it. Any school worth your evenings will show you the room.",
+      ]),
+      h2("What a school actually sells"),
+      p(
+        "Strip the brochures and a school sells three things: a structure you would not have built alone, a teacher who answers before the question cools, and classmates who make Thursday mean something. The internet cannot reliably give the second, and never gives the third. That is the whole case for rooms and fees — and the reason this academy keeps its classes small, its machines humming, and its alumni teaching one another years after. Whatever school you choose, choose it the way you now choose everything: slowly, with the receipt kept and the promise in writing.",
+      ),
+    ],
+  },
+  {
+    slug: "it-support-the-person-who-fixes-the-day",
+    title: "IT support: the person who fixes the day",
+    excerpt:
+      "When the printer dies before the meeting, one person becomes the most important in the building. What IT support work actually is, and why patience is the core qualification.",
+    series: SERIES,
+    order: 134,
+    author: AUTHOR,
+    date: "2026-05-27",
+    cover: "/images/blog/support-desk-helping.jpg",
+    coverAlt:
+      "An IT support officer crouched beside a colleague's desk, fixing a cable while they watch.",
+    body: [
+      p(
+        "Every office has a moment when everything stops: the printer dies before the meeting, the email will not open, the system asks for a password nobody remembers. In that moment one person becomes the most important in the building — the person who fixes the day. That is IT support: the trade of keeping other people's work moving, and the most common first room in all of technology. The analyst watches for attackers; the builder raises programs; the support person keeps the ordinary daylight running, which every one of those rooms quietly depends on.",
+      ),
+      p(
+        "Here is the secret the job adverts do not say: you already know half the trade. Every lesson on this shelf is a ticket — a reported problem — that an IT support person has answered a thousand times. The computer is slow. The update is stuck. There is no sound. The phone says storage is full. The form will not upload. A ticket is simply one of these, reported by somebody else, and the trade is resolving it calmly while its owner watches. What the job adds to what you know is method: ask what changed last, restart honestly, check the obvious road before the exotic one, write down what you did — and a shell of deeper knowledge around it: networks, accounts, machines, the floors of lesson one hundred and twenty-six, climbed and repaired.",
+      ),
+      fig(
+        "/images/blog/support-desk-helping.jpg",
+        "An IT support officer crouched beside a colleague's desk, fixing a cable while they watch.",
+        "The most-watched job in the building. Whatever you do at that desk, an audience learns whether technology is safe.",
+      ),
+      h2("The core qualification nobody lists first"),
+      p(
+        "Patience. Because the job's real raw material is not machines — it is frightened people: the manager who clicked the link, the accountant certain she has broken the system, the director who needs it now. The support person who sighs makes one enemy and teaches the whole corridor to hide their problems, which is how small faults grow into disasters. The one who explains without making anybody small becomes the person people run to early, and early is where problems are cheap. Every manner this shelf taught — the help lesson's rules for asking, the shared machine's courtesies — is what the good side of this desk looks like. You are not paid to know everything. You are paid to stay calm, find out, and leave the person taller than you met them.",
+      ),
+      p(
+        "The road in, honestly: the fundamentals — machines, networks, accounts, the operating system's moods — then a first role, help desk or school or café support, where the learning is paid for instead of paid for. Certificates in the CompTIA family open doors here the way they do across the trade; the academy's IT support course carries that groundwork with machines to open and break safely. The pay begins modest, like all first rooms — but the room's view is the whole building: support people who learn how everything connects become the sysadmins, the security watchers, the infrastructure engineers, each rung paying better than the last. Almost nobody ends where support began. The trade's habit of fixing things has always included fixing one's own ladder.",
+      ),
+      fig(
+        "/images/blog/opened-laptop-repair.jpg",
+        "An opened laptop on a workbench, its parts exposed under a desk lamp, tools laid out neatly.",
+        "The calm of method: one machine, one fault, one tool at a time. The screwdriver rarely solves it; the sequence does.",
+      ),
+      ul([
+        "Re-read the shelf as a ticket queue: for each lesson, say how you would fix it for a stranger, in their hearing, kindly.",
+        "Learn the floors of trouble by heart — app, machine, router, street, far house — and practise saying which floor broke.",
+        "Keep a repair diary: machine, fault, what worked. In a month you own the most persuasive CV a first employer has seen.",
+        "When you are ready for the room-with-machines version, the academy's IT support course is the front door. Say the shelf sent you.",
+      ]),
+      h2("The trade that keeps the lights on"),
+      p(
+        "No app ships, no analysis lands, no campaign runs, in a building whose machines are down and whose people are afraid of them. IT support is the floor under every floor — unglamorous by design, indispensable by arithmetic. If your temperament is the helper's, if the locked-out colleague's relief is payment you actually enjoy, this is a career that begins where you are already standing: calm, curious, and unafraid of the question everybody else is afraid to ask twice.",
+      ),
+    ],
+  },
+  {
+    slug: "websites-for-small-businesses",
+    title: "Websites for small businesses: a trade you can start this year",
+    excerpt:
+      "Every shop, school and church needs one honest page on the internet — and somebody local to build and keep it. That somebody can be you, from skills this shelf has already begun.",
+    series: SERIES,
+    order: 135,
+    author: AUTHOR,
+    date: "2026-06-01",
+    cover: "/images/blog/small-shop-owner-laptop.jpg",
+    coverAlt:
+      "A shop owner and a young developer looking at a laptop together behind a shop counter.",
+    body: [
+      p(
+        "Walk your own street and count the businesses with no honest page on the internet: the pharmacy, the school, the church, the fashion house with fine pictures trapped in a WhatsApp gallery. Their customers are searching every day, and finding only strangers. Every one of those businesses needs the same modest thing — one clear page that says who we are, what it costs, where we are, and a button that opens WhatsApp — and somebody local to build it and keep it breathing. That somebody can be you. Of all the trades on this shelf, this one starts soonest and pays first.",
+      ),
+      p(
+        "The skill floor is lower than any hustler will tell you, because the secret is that most small-business sites should be small. A site builder or WordPress — the prepared skeletons the frontend lesson mentioned — covers the majority of cases, and the real craft is not code at all: it is the poster lesson's discipline applied to a whole business. Say the true thing briefly. Put the price where the customer expects it. Make the address findable in one glance. One page done honestly beats five pages done ashamedly, and a button that opens a chat will do more for a Lagos pharmacy than any amount of animation. The frontend lesson's three layers are there when a client genuinely needs more — and by then you will want them.",
+      ),
+      fig(
+        "/images/blog/website-preview-phone.jpg",
+        "A hand holding a phone showing a clean one-page business site, the shop's entrance visible behind it.",
+        "The whole shop in one honest page: what, where, how much, and a button that opens a conversation. That is the trade.",
+      ),
+      h2("The money, and how it arrives"),
+      p(
+        "The trade has two rivers of income, and the second is the one beginners undervalue. The build: a first simple site might earn modest money — a fraction of what agencies charge Lagos firms — and it should, because you are buying proof as much as payment. Then the keep: domains expire yearly, hosting renews, shops change prices, and the person who built the page is the person the owner calls — a small standing income for an afternoon's tidying twice a year. Ten kept clients are a quiet salary. The catalog FAQ's arithmetic applies exactly: a domain costs about ten to eighteen thousand naira a year and simple hosting is cheap or free; charge for the work, pass the costs through plainly, and put every number in writing — the pricing lesson's law before it is even spoken.",
+      ),
+      p(
+        "The road in is the portfolio's road: build the first site for your church free, the second for a relation's shop at cost, the third for the neighbour's school at a fair new price — three live addresses, each with a grateful owner, and you are no longer promising, you are showing. The academy's web design and WordPress courses compress the technical months into weeks with machines and real briefs; the self-taught road costs nothing but evenings and works too. Either way the trade begins where you live, on the street whose businesses you already patronise — and there is a particular satisfaction in walking past a shop and knowing its corner of the internet is yours.",
+      ),
+      fig(
+        "/images/blog/domain-renewal-note.jpg",
+        "A small desk calendar with a circled date beside a laptop, a notebook listing client sites and renewal months.",
+        "The keeper's ledger: every site, its renewal month, its owner's number. The second river of income flows through this page.",
+      ),
+      ul([
+        "Pick one real business you patronise and draft its one honest page tonight — words first, tool after.",
+        "Learn one tool properly — a site builder or WordPress — and finish one full practice site before charging anybody.",
+        "Three builds to begin the portfolio: free, at cost, then fair price. Keep every owner's number.",
+        "Put the domain and hosting costs in your quotes plainly. The written number is the whole reputation.",
+      ]),
+      h2("The street is the market"),
+      p(
+        "Nobody needs to import this trade. The customers are already within twenty minutes of you, already searched by strangers every day, already paying printers for banners that say less than one honest page would. The developer of lesson one hundred and twenty-eight builds for companies and continents; this trade builds for the street, in afternoons, for wages that compound into a living. One clear page at a time — it is how most of the independent web people you admire actually began.",
+      ),
+    ],
+  },
+  {
+    slug: "social-media-manager-behind-posts",
+    title: "The social media manager, behind the posts",
+    excerpt:
+      "The job is not posting; it is selling with manners at scale — a calendar, a camera, a reply written like a host, and numbers read honestly every week.",
+    series: SERIES,
+    order: 136,
+    author: AUTHOR,
+    date: "2026-06-06",
+    cover: "/images/blog/phone-content-calendar.jpg",
+    coverAlt: "A planner showing a week of scheduled posts beside a phone on a desk.",
+    body: [
+      p(
+        "Every business you pass is being told the same thing: you must be online. Most owners have neither the time nor the stomach for it — the photographs, the captions, the stranger asking the same question forty times — so they hire somebody to stand in the doorway of their business and speak well to the street. That person is the social media manager, and the title undersells the work. It is closer to market trade with a modem: know the goods, show the goods, answer every caller with manners, and count what actually sold on Saturday.",
+      ),
+      p(
+        "The work, honestly itemised. The calendar: a week of posts planned on paper or a simple planner — what goes out, on which day, photographed for which purpose — because posting-by-mood is how business pages die. The camera: clean product photographs in daylight, the selling lesson's discipline, reused across posts. The replies: this is the trade's core and its test — every question answered quickly and kindly, every complaint answered publicly and finished privately, because a thousand strangers are reading the reply who never read the post. WhatsApp is not email, lesson ten said; a business chat is not a group chat either — it is a counter, and the manager is the one behind it. And the numbers, weekly: what was seen, what was clicked, what was bought. Vanity is when a page grows and sales do not; the honest manager reads that sentence and changes the cooking, not the garnish.",
+      ),
+      fig(
+        "/images/blog/phone-content-calendar.jpg",
+        "A planner showing a week of scheduled posts beside a phone on a desk.",
+        "The week, decided in advance. Saturday's sales are cooked on Monday's calendar; posting by mood is how pages starve politely.",
+      ),
+      h2("What the good ones charge, and how they begin"),
+      p(
+        "Begin where you are trusted: a relation's shop, your church's page, the tailor whose work you already wear — one small account, run properly for a season, with before-and-afters kept as proof. Charging follows the pattern of every trade on this shelf: a monthly fee agreed in writing for a defined service — so many posts, photographs included, replies within working hours, one honest report a week — and anything beyond it quoted separately. The marketing programs at the academy teach the paid side properly, with real budgets; the free road starts with the learning lesson and the discipline to finish. What separates earners from hobbyists in this trade is rarely taste. It is reliability: the page that posts when it said it would, the comment answered within the hour, the report that arrives without being chased. Clients renew reliability. They merely compliment beauty.",
+      ),
+      p(
+        "And keep the shelf's guard up while you work, because this desk meets every liar in the book: the client who wants to buy followers, which is renting an empty stadium and calling it a crowd; the scam that arrives as a brand collaboration with a fee attached; the forward-that-lies pressure to post what was never checked. The manager's name sits on every word posted — lesson one hundred and nine's envelope, signed monthly. Guard it, and the trade compounds: one kept shop leads to the next, the way kept sites and kept books do. The street talks. Make sure it is your work it is talking about.",
+      ),
+      fig(
+        "/images/blog/social-reply-desk.jpg",
+        "A manager typing a reply to a customer comment on a phone, a notebook of response notes open beside it.",
+        "The counter, staffed. Every reply is read by a thousand strangers who never liked a post — and it is the reply they judge the shop by.",
+      ),
+      ul([
+        "Choose one real page and run it properly for a season: calendar on Monday, photographs in daylight, replies within the hour.",
+        "Write the weekly report yourself — seen, clicked, bought — and change the cooking when the numbers speak.",
+        "Agree the monthly fee and its boundaries in writing before the first post goes up.",
+        "Never buy followers, never post unchecked forwards, never let the page promise what the shop cannot deliver.",
+      ]),
+      h2("The trade of being trusted in public"),
+      p(
+        "Strip the platforms and the trends — they will change again before these words grow old — and the job is ancient: stand at the front of the shop, know your goods, greet every caller well, and keep honest count of what sells. Businesses will always pay for the person who can be trusted to speak for them in public, because most people cannot bear to do it daily. That is the work behind the posts, and there has never been more of it than now.",
+      ),
+    ],
+  },
+  {
+    slug: "graphic-designer-table",
+    title: "Design as a trade: the graphic designer's table",
+    excerpt:
+      "The designer's job is not beauty; it is clarity that sells — hierarchy, restraint, and the discipline to stop. What the work is, what the tools cost, and how the first paid jobs arrive.",
+    series: SERIES,
+    order: 137,
+    author: AUTHOR,
+    date: "2026-06-09",
+    cover: "/images/blog/designer-colour-swatches.jpg",
+    coverAlt: "A designer's desk with colour swatches, sketches and a laptop showing a layout.",
+    body: [
+      p(
+        "The poster lesson said it once and this trade is built on it: a flyer is not decoration, it is a sentence arranged so a stranger reads it in one glance. The graphic designer is the person who arranges. Weddings, elections, churches, brands, the suya spot by the junction — every message here competes in the loudest visual street on earth, and the designer's job is to make one message land clean among the noise. Not prettiness. Clarity with a temperature. If you have ever rearranged a shelf until it felt right, or chosen the cloth that made the outfit, you have already done the work's first hour.",
+      ),
+      p(
+        "What the work actually is, day to day: listening first, because the client will say logo when they mean identity and beautiful when they mean trustworthy, and the designer's first skill is translating. Then hierarchy — what the eye reads first, second, third: name, offer, how to reach us, in that order, at those sizes, whether the brief is a funeral programme or a bank campaign. Then restraint — two fonts, three colours, one idea per page; the difference between a professional design and a market noise is what the designer had the discipline to leave out. The tools begin free on the phone and grow into the desktop suites when the work demands them; the camera lesson's lighting and the scanning lesson's flat surfaces are already half of every clean mock-up you will ever admire.",
+      ),
+      fig(
+        "/images/blog/designer-colour-swatches.jpg",
+        "A designer's desk with colour swatches, sketches and a laptop showing a layout.",
+        "The table of restraint. Three colours, two fonts, one idea — and the discipline to stop before the page shouts.",
+      ),
+      h2("How taste is actually built"),
+      p(
+        "Nobody is born with the eye; the eye is a filing cabinet. Fill it deliberately: collect a hundred designs you admire — wedding suites, brand boards, album covers, bank campaigns — and for each, ask one question: where did my eye land first, and why? Copy them shamelessly in practice, the way apprentices have always learned tailoring — recreate the hierarchy until your hands understand the argument. Then vary: same flyer, three hierarchies; same name, five type pairings. The taste that clients pay for is thousands of small comparisons, filed. And the trade's professional manners matter as much as the eye: the brief written back to the client in their own words before any design begins, two concepts shown rather than ten, revisions bounded in writing, and the files delivered in the formats people actually need — the PDF lesson's knowledge, monetised.",
+      ),
+      p(
+        "The first paid jobs arrive the way they do across this whole shelf: the church programme, the cousin's shop banner, the school's flyer — small works, done exactly, collected as proof. The catalog's own advice to design students holds: small jobs — event flyers, social posts, church graphics — once the portfolio carries three to five solid pieces; price modestly at first, deliver precisely what was promised, and most beginners meet their first repeat client within months. From there the ladder is real: brand identities, retainers with businesses who need you monthly, and the print shops and event planners who send steady work to the designer whose files never make their machines complain.",
+      ),
+      fig(
+        "/images/blog/portfolio-design-spread.jpg",
+        "A printed portfolio open on a table, showing pages of branding and flyer designs in a neat grid.",
+        "The filing cabinet, made public. Three to five honest pieces, shown proudly — the designer's entire storefront.",
+      ),
+      ul([
+        "Start the filing cabinet today: collect ten designs you admire and mark where the eye lands first, and why.",
+        "Recreate one admired design from scratch this week — fonts, sizes, spacing — until your version is indistinguishable.",
+        "Do one real free job for a cause you respect, and deliver it with all the file formats a printer could ask for.",
+        "Two concepts, bounded revisions, written brief — the three manners that separate a trade from a favour.",
+      ]),
+      h2("The trade of making people look as good as they are"),
+      p(
+        "Every business on your street already believes in its own message; what it lacks is the person who can make a stranger believe it in one glance. That is what design sells, and why it survives every platform shift: tools will change their names again, but hierarchy, restraint and listening are older than printing. The table is cheap to set, the practice is free, and the first client is probably within three doors of you. Sit down, file a hundred examples, and let the eye grow the way every skill on this shelf grew — one honest hour at a time.",
+      ),
+    ],
+  },
+  {
+    slug: "working-remote-from-here",
+    title: "Working remote from here: dollars, hours, and the light",
+    excerpt:
+      "Remote work is not a hustle, it is a job with a longer commute. The four things it actually demands — proven skill, power and data, written English, and a way to be paid — and how to arrange each.",
+    series: SERIES,
+    order: 138,
+    author: AUTHOR,
+    date: "2026-06-14",
+    cover: "/images/blog/remote-work-headphones.jpg",
+    coverAlt:
+      "A young professional at a desk with headphones, a laptop and a small UPS, in a home room.",
+    body: [
+      p(
+        "Somewhere in this city tonight, a young man is debugging code for a company whose office he has never seen, paid on Friday in dollars, generator fuel already budgeted like rent. This is remote work at its honest best — not a hustle, not a shortcut, but a job with a longer commute: the skills are the same, the manners are the same, and four practical walls must stand before the first contract. This lesson walks the four, because each has broken more remote careers than any lack of talent.",
+      ),
+      p(
+        "Wall one: a skill proven. Remote employers cannot see your hustle; they can only see finished work and checkable references — the profile lesson's front door, the portfolio lesson's proof, and nothing else. Wall two: power and data, arranged like utilities rather than prayed about. The professional setup here is boring and specific: a laptop with honest battery health, a small inverter or UPS at least for the router and one machine, a primary data plan with a backup — two networks, because lesson ninety-five taught you taps — and a workspace where a full workday does not depend on the grid's mood. The light is a colleague you must manage, not a mystery you must resent. Wall three: written English — the entire remote relationship happens in text: the clear update, the polite disagreement, the question asked once and completely. Lesson five's letter, lesson seventy's manners, worn daily.",
+      ),
+      fig(
+        "/images/blog/remote-work-headphones.jpg",
+        "A young professional at a desk with headphones, a laptop and a small UPS, in a home room.",
+        "The boring setup that makes it possible: charged machine, backed-up router, two networks, one closed door.",
+      ),
+      h2("Wall four: the money must arrive"),
+      p(
+        "Being paid across borders is a solved problem with a small fee attached: established platforms open receiving accounts that accept dollars or pounds and pay out to Nigerian banks; some clients pay by direct transfer through those platforms, a few by card on contracts. The rules you already live by simply grow a passport: get the fee in writing before the work, invoice properly — a document with your name, the client's, the amount, the account — invoice in parts for anything long, and expect the platform's fee like you expect transport. Keep the receipts; the tax conversation in Nigeria is maturing, and the professional's answer is records, not vibes. The bank lesson's alert-checking, the selling lesson's confirm-before-delivery — the same laws, now in dollars.",
+      ),
+      p(
+        "Then the manners of the clock, which finish the picture: know your client's hours — overlap is the service, and a Lagos morning is a London morning; a Lagos evening, an American one — choose contracts whose hours you can honestly hold, and treat the closed door of a home workspace as sacredly as any office. The trades of this chapter all lead here eventually: the analyst, the designer, the support engineer, the writer of apps — remote is not a fifth career, it is where the other careers go to be paid in hard currency. Build the walls in order, and the commute stays long but the pay arrives short.",
+      ),
+      fig(
+        "/images/blog/invoice-cross-border.jpg",
+        "A laptop showing a simple invoice document, a phone displaying a payment received notification beside it.",
+        "Wall four, standing: the written fee, the proper invoice, the alert checked twice. Same laws, harder currency.",
+      ),
+      ul([
+        "Arrange the boring wall first: one backup network and at least router-and-laptop power cover. This week, not the week of the first client.",
+        "Write one practice update as if to a remote manager: what moved, what is next, what is blocked. Three sentences, no grammar casualties.",
+        "Choose one receiving platform, open the account while you have no client yet, and learn its fees before you need it.",
+        "Keep a work diary from day one — hours, deliverables, payments. Records are the professional's whole armour.",
+      ]),
+      h2("The longer commute, honestly priced"),
+      p(
+        "None of this is glamorous, which is precisely why it works: the four walls — proven skill, managed power and data, written English, arranged payment — are each boring, each buildable, and each within this shelf's reach. The reward is the arithmetic everyone whispers about but few prepare for: the same skill, priced in a stronger market, paid into the same account the bank lesson taught you to guard. Build like the person in the first paragraph: quietly, wall by wall, until Friday's alert needs no translation.",
+      ),
+    ],
+  },
+  {
+    slug: "pricing-your-work",
+    title: "Pricing your work without apologising",
+    excerpt:
+      "The freelancer's hardest lesson: a price is not a confession of worth, it is a tool with a floor, a market, and a value. How to quote, hold, deposit, and raise.",
+    series: SERIES,
+    order: 139,
+    author: AUTHOR,
+    date: "2026-06-19",
+    cover: "/images/blog/invoice-notebook-writing.jpg",
+    coverAlt: "A hand writing figures into a notebook beside a calculator and a laptop.",
+    body: [
+      p(
+        "Every trade in this chapter ends at the same awkward table: the moment the price must be said. The new freelancer's tongue trips — they halve the number, apologise while saying it, and spend the job resenting the work. This lesson is the antidote, and it begins with a redefinition: a price is not a confession of your worth. It is a tool — with a floor beneath it, a market around it, and a value above it — and like every tool on this shelf, it is learned by method, not by mood.",
+      ),
+      p(
+        "The three questions behind any honest quote. The floor: what do your hours, data, transport and skill actually cost you — below this line every job is charity, and charity is a fine thing that belongs in church, not in invoices. The market: what do others ask for this work, at your level, in this city — the selling lesson's walk around the market, applied to your own labour; price near them, not beneath them by magic. The value: what is the outcome worth to the client — the flyer that fills a hall, the site that answers customers at midnight, the books that survive an audit. Beginners quote the floor and apologise; professionals quote the value and explain. You were already taught the instinct — lesson one hundred and thirteen: sentiment is a tax no buyer pays. Charge for the outcome, and never so low that you resent the work; resentment is the most expensive hidden fee in freelancing.",
+      ),
+      fig(
+        "/images/blog/invoice-notebook-writing.jpg",
+        "A hand writing figures into a notebook beside a calculator and a laptop.",
+        "The quote is prepared, not blurted. Floor calculated, market walked, value named — then one calm number, written and held.",
+      ),
+      h2("The manners that protect the number"),
+      p(
+        "Quote in writing, always — one message: what will be delivered, by when, for how much, revisions bounded, payment split. Take a deposit on anything substantial, half or near it, before work begins; the deposit is not distrust, it is the shape of seriousness, and the client who resents it has told you something useful. Bound revisions — the second redesign is a new job, said with a smile and the written brief. And resist the three classic discounts: the friend price for a business that can pay, the exposure payment — a corpse cannot spend exposure, and neither can a portfolio bank it from a client who never pays — and the urgency discount, where their deadline becomes your discount. The family word lesson's rule applies at the pricing table too: the people who pressure you hardest about money are usually the ones the money was never meant to come from.",
+      ),
+      p(
+        "Then raising, which is the part everyone fears and every professional eventually does: new clients get the new price immediately — the next quote is simply higher, said plainly; existing clients get notice and warmth — from next month my fee is this, and here is what the year together has built. The good ones stay. The ones who leave were usually the ones holding the floor beneath your market. The catalog's freelancer course works this ground with real numbers and real scripts; the free road is to practise the sentences aloud until your voice stops apologising. The work deserves a price said without a tremble — and so do you, which in this trade are the same sentence.",
+      ),
+      fig(
+        "/images/blog/quote-message-phone.jpg",
+        "A phone showing a written quotation message to a client, the figures clearly typed.",
+        "The whole protection, one message long: what, when, how much, revisions bounded, payment split. Written is respected; spoken is negotiated.",
+      ),
+      ul([
+        "Calculate your floor tonight: hours, data, transport, tools — the number below which you do not work for businesses.",
+        "Walk the market for your trade and write your range. Quote inside it, never below the floor, and stop apologising in the sentence.",
+        "Adopt the written quote and the deposit this week. Practice on the next job, however small.",
+        "Say the raising sentences aloud until they are boring: from next month, my fee is this. Boring is the goal.",
+      ]),
+      h2("The number, said plainly"),
+      p(
+        "Everything on this shelf has been training for calm at decisive moments — the pause before the link, the name before the confirm, the plate before the door. The pricing moment is that same decisive instant, wearing your own hat: the pause before the number, said plainly, held kindly. Quote the value, take the deposit, bound the revisions, raise without apology. The trade that pays a person properly is built from these small held lines, one quote at a time — and the confidence clients actually respect was never arrogance. It was preparation, with a figure attached.",
+      ),
+    ],
+  },
+  {
+    slug: "the-portfolio-proof",
+    title: "The portfolio: proof over promises",
+    excerpt:
+      "A CV says you can; a portfolio shows you did; a client decides in one glance. How to build the small body of evidence that turns every trade in this chapter into a living.",
+    series: SERIES,
+    order: 140,
+    author: AUTHOR,
+    date: "2026-06-24",
+    cover: "/images/blog/portfolio-printed-works.jpg",
+    coverAlt: "A printed portfolio of project pages spread across a table beside a laptop.",
+    body: [
+      p(
+        "Every trade this chapter opened — analyst, designer, developer, support, manager, writer of apps — ends at the same door, and the door does not ask for certificates. It asks: show me. The portfolio is the small body of evidence that you did the thing, for somebody, and that it worked. A CV says you can. A portfolio shows you did. The client decides between those two sentences in one glance, which is why this last lesson of the chapter is the one that turns skills into a living — and why it is astonishing how many people spend years collecting skills and one afternoon building proof.",
+      ),
+      p(
+        "What counts as proof is broader than you fear. The finished thing itself — the site, live at its address; the flyer, printed and photographed in the shop; the dashboard, screenshotted with permission; the books, reconciled to the naira. The before and after — the shop that had no page and now does; the queue that took hours and now takes minutes; numbers where you have them, and honest description where you do not. The witness — one line from the church secretary, the shop owner, the relation whose site you built: she said, she did, it worked. Three to five pieces, each with its before, its after, and its witness, outweigh any stack of certificates — and every single one of them is buildable within a month from where you sit, because the free-job road was already marked: the church, the relation's shop, the neighbour's school. The portfolio is not a later reward. It is the next month's assignment.",
+      ),
+      fig(
+        "/images/blog/portfolio-printed-works.jpg",
+        "A printed portfolio of project pages spread across a table beside a laptop.",
+        "The evidence, laid on the table. Three pieces with witnesses beat thirty promises with punctuation.",
+      ),
+      h2("Where it lives, and how it is shown"),
+      p(
+        "Keep it in two houses. The folder: Drive, named, ordered, holding every deliverable and every witness line — the papers lesson applied to your work, safe above the flood, openable in any café on earth. And the page: one clean site — your name, one sentence saying what you do for whom, the three to five pieces with their pictures and their witnesses, and one obvious way to reach you. The frontend lesson's three layers, one page, no more; the profile lesson's front door, now with the workshop visible through the window. When an opportunity appears, you do not scramble: you send the page, or walk in with the printed table, and the conversation starts from what you did instead of what you claim.",
+      ),
+      p(
+        "Then the rhythm that keeps it alive: every finished job, however small, enters the folder within a week — the screenshot taken, the witness line requested while gratitude is still warm, the before remembered and recorded. Retire the weakest piece each time a stronger one arrives; three sharp proofs beat five tired ones. And read your own portfolio the way the clients do, once a season: does this table say what I do, to whom, and does it make a stranger believe me in one glance? When the answer is yes, you have crossed the bridge this whole chapter was building — from person who learned, to person who is hired. The shelf taught you to sit at the machine without fear. The portfolio is how the world finds out.",
+      ),
+      fig(
+        "/images/blog/work-folder-drive.jpg",
+        "A laptop screen showing a tidy Drive folder of named project files with a witness letter among them.",
+        "Two houses, one body of evidence. The folder for the world to verify; the page for the world to meet.",
+      ),
+      ul([
+        "This month: one free job, done exactly, photographed, witnessed. The first piece is the hardest and costs only an afternoon of humility.",
+        "Ask for the witness line while the thank-you is still warm — one sentence, written, kept forever.",
+        "Build the one-page portfolio: name, sentence, three pieces with befores and afters, one way to reach you.",
+        "Enter every finished job into the folder within a week. The rhythm is the portfolio; the portfolio is the living.",
+      ]),
+      h2("The shelf, complete"),
+      p(
+        "One hundred and forty notes. You began at a dark screen and a plastic oval, afraid of breaking something, and you end with the vocabulary of watchers and builders, the manners of money, the law of proof. Nothing on this shelf was magic — it was only never explained at this table before, and you did the hours anyway, which was always the entire secret. Wherever this chapter finds you — the night class, the first free job, the first held price — leave one note behind you for the next person: a taught hand, a kind answer, a kept promise. That is the whole curriculum, and it was always yours. Go and show them.",
+      ),
+    ],
+  },
+  {
+    slug: "your-first-paid-client",
+    title: "Your first paid client, start to finish",
+    excerpt:
+      "One real job, walked the whole way: the enquiry, the written quote, the deposit, the delivery, the invoice, and the ask that turns one client into the next.",
+    series: SERIES,
+    order: 141,
+    author: AUTHOR,
+    date: "2026-06-27",
+    cover: "/images/blog/first-client-handshake.jpg",
+    coverAlt: "A young freelancer and a shop owner shaking hands over a desk with a laptop on it.",
+    body: [
+      p(
+        "Everything this shelf built — the skills, the prices, the portfolio — now meets its first customer. Walk one small job the whole way, because the first paid job is not really about the money. It is about learning that the road exists, end to end, and that you can walk it without disappearing. Follow a job: the owner of a pharmacy needs a one-page site; a friend showed her your page — the portfolio lesson already working while you slept.",
+      ),
+      p(
+        "The enquiry arrives, and the first meeting is listening: what does the business need the page to do — answer questions, take orders, be findable? Write the brief back to her in her own words: you said the phone never stops; the page will answer the ten common questions so it stops less. Then the quote, written, from the pricing lesson: what, when, how much, revisions bounded, and a deposit before work begins — half, into your account, seen in your own app, the bank lesson's confirm, before a single line of work. The deposit is not distrust. It is the shape of seriousness, hers and yours.",
+      ),
+      fig(
+        "/images/blog/first-client-handshake.jpg",
+        "A young freelancer and a shop owner shaking hands over a desk with a laptop on it.",
+        "The agreement, sealed. Brief heard, quote accepted, deposit seen — only then does the work begin, and both parties know it.",
+      ),
+      h2("The work, and the discipline of updates"),
+      p(
+        "Deliver slightly early of what you promised, never slightly late — a first client forgives a rough edge and never forgives a missed Tuesday. And send updates without being chased: the three-sentence message every few days — what is done, what is next, what I need from you — is the professional's heartbeat, the remote lesson's practice worn at home. When the site is ready, walk her through it on her own phone, in her own shop, and fix the two things the real thumbs reveal. Hand over everything: the logins, the files, the receipts for the domain — it is hers; you built it, but the shop owns its own name.",
+      ),
+      p(
+        "Then the invoice — a document, not a chat message: your name, her business, what was delivered, the balance, the account, the due date. Paid, thanked, receipted. And now the ask that separates a job from a beginning: the witness line, requested while she is still pleased — one sentence for your portfolio, may I show this work? — and the referral, asked as plainly: if anybody needs this, my name is in your mouth. One job walked the whole way teaches more than ten courses, and it leaves behind the only two things that matter: proof and a person who will vouch for you. The next client is already in her market.",
+      ),
+      fig(
+        "/images/blog/invoice-delivery-document.jpg",
+        "A printed invoice and a signed receipt lying on a shop counter beside a small calculator.",
+        "The end of the road, on paper. Delivered, invoiced, receipted — and the witness line asked before the goodbye.",
+      ),
+      ul([
+        "Take one real job this month, however small. Walk every step: brief, written quote, deposit, build, delivery on her phone, invoice, witness.",
+        "Send the three-sentence update unasked, every few days. Clients renew people who talk first.",
+        "Hand over everything — logins, files, receipts. The shop owns its name.",
+        "Before the goodbye: the witness line and the referral ask. One job, two seeds.",
+      ]),
+      h2("What the first job actually pays"),
+      p(
+        "The fee will be modest, and that is correct — you were buying proof, and the proof is now yours. But count the true wages: a finished delivery in the folder, a witness line beside it, a referral walking the street with your name, and the quiet knowledge that the whole road can be walked without fear. Every freelancer you admire began exactly here, at one small job done completely. The second one is easier. The tenth one sets prices.",
+      ),
+    ],
+  },
+  {
+    slug: "working-with-ai-assistants",
+    title: "Working with AI assistants",
+    excerpt:
+      "The assistant that answers everything and is sure about all of it: how to use the tools as apprentices — drafts, explanations, ideas — and where their confidence must be checked.",
+    series: SERIES,
+    order: 142,
+    author: AUTHOR,
+    date: "2026-07-02",
+    cover: "/images/blog/ai-assistant-chat.jpg",
+    coverAlt: "A person at a laptop reading a chat conversation with an AI assistant, thinking.",
+    body: [
+      p(
+        "A new colleague has joined every office and every phone: the assistant that answers in full sentences, in seconds, in any language you type — writes the letter, explains the tax, drafts the proposal, corrects your code, and never sighs. Used well, it is the most patient apprentice in history, and it is already part of honest work in every field on this shelf. Used carelessly, it is the forward-that-lies with better grammar. This lesson is the difference, and it is now a basic skill, like the keyboard was.",
+      ),
+      p(
+        "Where it shines: drafts — the first version of a letter, a proposal, a poster's wording, written in seconds and then made yours; explanations — a concept from this shelf said five simpler ways until one lands; translation and tone — the firm email softened, the Pidgin polished for a formal client; and brainstorming — ten names, twenty post ideas, three prices, asked without embarrassment. The working method is the one every editor knows: it drafts, you decide. Your knowledge of the actual work — the client, the market, the truth — is what the assistant does not have and cannot fake. The name on the work is still yours, and the judgement must be too.",
+      ),
+      fig(
+        "/images/blog/ai-assistant-chat.jpg",
+        "A person at a laptop reading a chat conversation with an assistant, thinking.",
+        "The apprentice at work: fast, tireless, plausible. The thinking face is not optional — it is the whole method.",
+      ),
+      h2("Where its confidence must be checked"),
+      p(
+        "The assistant does not know when it does not know. It will state a wrong date, invent a policy, cite a law that does not exist — fluently, in beautiful sentences, without blinking. It is the voice-clone lesson in text: fluent is no longer evidence. So the rule is one sentence: everything checkable gets checked before it leaves your hands — the figure, the date, the policy, the legal claim, checked at the source the way the sixty-second check taught. And the privacy line is drawn hard, as always: nothing that belongs to a client goes into the box — not their data, not their invoices, not their logins — and never your own passwords or the codes that die. What you type there has left your house. Treat the chat window like a public street: fine for ideas, dangerous for keys.",
+      ),
+      p(
+        "Then the honesty question every trade is now settling: must you tell the client? The working answer here: the client pays for an outcome — the site that works, the letter that lands — and tools have always been allowed. What is not allowed is passing off its mistakes as your work, or claiming hours you did not work. Draft with the apprentice, verify with your own eyes, stand behind the result with your own name. Do that, and the strongest tool ever handed to a self-taught worker is simply yours — free, patient, and waiting in the same browser you already know how to use.",
+      ),
+      fig(
+        "/images/blog/verify-ai-claims.jpg",
+        "A phone and a laptop side by side: the laptop showing a drafted document, the phone open on a search page checking one claim.",
+        "The new dance: it writes, you verify. One checked figure is worth a page of fluent nonsense.",
+      ),
+      ul([
+        "Give it one real task today: the first draft of a letter you have been postponing. Then rewrite it until it sounds like you.",
+        "Adopt the checking habit: every figure, date or claim that will leave your hands is verified at a real source.",
+        "Nothing confidential goes in: no client data, no logins, no OTPs. The chat window is a street, not a filing cabinet.",
+        "Use it as a teacher, not an oracle: ask it to explain anything from this shelf in simpler words, then test the explanation on somebody.",
+      ]),
+      h2("The apprentice, not the master"),
+      p(
+        "Every tool on this shelf arrived with the same warning label: it does what you tell it, not what you mean — the spreadsheet, the find-and-replace, the calculator. The assistant is that warning at its loudest, because it fills silence with confidence. The people it will serve best are exactly the people this series has been building since lesson one: those who read before they send, check before they trust, and sign nothing they have not understood. The apprentice is remarkable. Keep the master's chair.",
+      ),
+    ],
+  },
+  {
+    slug: "the-books-of-a-one-person-business",
+    title: "The books of a one-person business",
+    excerpt:
+      "You earned it; now keep it. Separate the money, record every in and out, set aside the tax-and-rain share, and reconcile once a month — books a one-person business can actually keep.",
+    series: SERIES,
+    order: 143,
+    author: AUTHOR,
+    date: "2026-07-07",
+    cover: "/images/blog/money-two-accounts.jpg",
+    coverAlt: "Two bank cards and a small ledger notebook on a desk, one card marked for business.",
+    body: [
+      p(
+        "The first payments have started arriving, and with them the oldest trap of the one-person business: the money that comes in and vanishes, uncounted, into the same pocket as transport and tomatoes. Six months later the work was real but the profit is a rumour. The cure is not an accountant — not yet. The cure is four small habits, all of them things you already know how to do, applied to your own money with the discipline you have been applying to other people's systems since lesson one.",
+      ),
+      p(
+        "Habit one: separate the money. A second account — the bank app lesson's two accounts, now with a purpose — receives every business payment and pays every business cost; personal money is transferred out like a salary, decided, not nibbled. Habit two: record every in and out, weekly, fifteen minutes — the weekly money list from lesson eighty-four, grown up: what came in, from whom; what went out, for what. A notebook works; a spreadsheet works better; the discipline works best of all. Habit three: split every payment the day it lands — set aside a slice for tax, because the government's interest in small business is maturing here too, and a slice for rain, because laptops die in the middle of jobs and clients do not extend deadlines for fun. What remains is profit you can actually spend, without owing anybody.",
+      ),
+      fig(
+        "/images/blog/money-two-accounts.jpg",
+        "Two bank cards and a small ledger notebook on a desk, one card marked for business.",
+        "The wall between the pockets. One account receives and pays for the work; the other feeds the house. Nibbling dies here.",
+      ),
+      h2("Habit four: reconcile, monthly"),
+      p(
+        "Once a month, the quiet hour: download the statement — the bank lesson showed where it lives — and sit it beside your own records. Every entry on one should sit on the other. The transfer that never landed. The subscription you meant to cancel, still drinking. The client's payment recorded twice in hope. The reconciliation is the spreadsheet lesson's when-the-cell-looks-broken, applied to life: a difference found now is a one-line fix; the same difference found in December is a mystery novel. And when the year closes, the books answer the questions that decide next year with numbers instead of vibes: which work actually paid, which clients actually pay, what the business costs to run before a single naira of profit.",
+      ),
+      p(
+        "The tools, honestly: begin with notebook or spreadsheet — you own both skills already. When volume justifies it, a small bookkeeping app or a part-time accountant earns their fee, and the books you kept make hiring them a week's work instead of an archaeology. What no tool supplies is the habit; and no investor, no loan officer, no visa officer, no big client will ever take your business more seriously than your books do. The shop that keeps books is a business. The one that does not is a habit.",
+      ),
+      fig(
+        "/images/blog/ledger-weekly.jpg",
+        "A hand writing a week's figures into a ruled notebook beside a phone showing a bank statement.",
+        "Fifteen minutes, once a week. The notebook and the statement, agreeing. That agreement is what a business calls profit.",
+      ),
+      ul([
+        "Open the second account this week, even if the first payment has not arrived. Build the wall before the water.",
+        "Book the weekly fifteen minutes in the calendar — in and out, every week, no exceptions, no heroics.",
+        "Split on arrival: tax slice, rain slice, then spend. The percentages are yours; the order is not negotiable.",
+        "Reconcile on the first Saturday of the month. Statement against records, line by line, until they agree.",
+      ]),
+      h2("The books are the business's own portrait"),
+      p(
+        "One reframe to close: the books are not bureaucracy. They are the honest mirror the bank lesson taught you to read for your employer's sake — read now for your own. The weekly list, the split on arrival, the monthly hour: together they turn a person who earns into a business that lasts, and they answer, at last, the question every worker on this shelf deserves to ask precisely: is this working? Now you will know, to the naira.",
+      ),
+    ],
+  },
+  {
+    slug: "secrets-that-are-not-yours",
+    title: "Secrets that are not yours",
+    excerpt:
+      "Professional work means holding other people's keys: their data, their logins, their files. Confidentiality in ordinary words — what you may see, what you may keep, what you must never carry.",
+    series: SERIES,
+    order: 144,
+    author: AUTHOR,
+    date: "2026-07-10",
+    cover: "/images/blog/client-files-locked.jpg",
+    coverAlt:
+      "A laptop with a lock screen turned away from visitors on a tidy desk, files closed beside it.",
+    body: [
+      p(
+        "The moment a client pays you, you begin holding things that are not yours: their customer list, their invoices, their unfinished plans, sometimes their logins. They did not hand these over because they are careless — they handed them over because the work requires it, the way a tailor is trusted with cloth already cut for a wedding. What you do with that trust, between delivery and long after, is called confidentiality, and in every profession on this shelf it is not a legal decoration. It is the trade itself, written down.",
+      ),
+      p(
+        "The rules, in ordinary words. See only what the work needs: the brief that requires the customer list earns access to the customer list; curiosity about the rest of their files does not. Keep it where it belongs: client work on client folders, on your machine, behind your screen lock — the locking lesson, the shared-machine lesson, all of it now protecting other people's houses, not just yours. Carry nothing away: their files do not travel to your personal Drive, their customer list never becomes your marketing list, and the report you wrote for one client does not moonlight in another proposal. And when the job ends, the keys go back: logins changed or access revoked, your copies of their working files deleted or handed over whole, whichever was agreed. A tailor does not keep the wedding cloth.",
+      ),
+      fig(
+        "/images/blog/client-files-locked.jpg",
+        "A laptop with its lock screen turned away from visitors on a tidy desk, working files closed beside it.",
+        "The desk of a person who holds other people's keys. The screen locks itself; the folders close; the curiosity stays outside.",
+      ),
+      h2("Logins, screenshots, and the paper that says secret"),
+      p(
+        "Three situations deserve their own lines. Logins: a client may hand you theirs to do the work — collect it in a way you can return, never reuse their password anywhere of your own, never save it into your personal browser on a shared machine, and ask them to change it when the job ends; better still, ask them to create an access for you that they can switch off. Screenshots for the portfolio: take them with permission, crop the sensitive rows, and remember that one customer's name in a case study is somebody's data — the witness line lesson assumed the client says yes to being shown; the data never did. And the paper: some clients will hand you an NDA — a non-disclosure agreement, a page that says what you may tell others, for how long. Read it the way you read any contract, ask about any line you do not understand, and keep your signed copy with the papers in Drive. The NDA is not an insult. It is their family word, formalised.",
+      ),
+      p(
+        "And the quiet everyday forms, because the big leaks rarely look dramatic: the project you mention too freely at a beer parlour, the screen facing the window in a café, the file shared to the wrong address — the sharing lesson's one wrong address, now wearing someone else's name. The professional's manner is boring and total: speak of clients' business only with clients, lock everything, share deliberately or not at all. One breach ends a trade career faster than any lack of skill; one kept secret, quietly held for years, is the reason the big clients come. Discretion compounds. So does its absence.",
+      ),
+      fig(
+        "/images/blog/nda-signing-desk.jpg",
+        "A hand signing a short agreement on a desk between two people, pens and a laptop nearby.",
+        "The family word, on paper. What may be told, to whom, until when — agreed before the work, kept long after it.",
+      ),
+      ul([
+        "Audit your access today: every client login, file and folder you hold. Return what the work no longer needs.",
+        "Never reuse a client's password anywhere, and ask for access you can hand back, not keys you must keep.",
+        "Ask permission before any screenshot leaves their work, and crop the data that is not yours to show.",
+        "Signed an NDA? Into Drive it goes, beside the papers. Your copy is the memory that outlives your goodwill.",
+      ]),
+      h2("The trade inside the trade"),
+      p(
+        "Skills get you hired once; discretion gets you hired again, quietly, for years, by people who tell other people with money. Every profession that touches other people's machines — the analyst, the support engineer, the web builder, the accountant of lesson one hundred and forty-three — is trusted first and skilled second, because the files can be rebuilt and the trust cannot. Hold other people's secrets like your own OTPs. The street is watching, and it keeps better records than any ledger.",
+      ),
+    ],
+  },
+  {
+    slug: "the-body-at-the-desk",
+    title: "The body at the desk",
+    excerpt:
+      "The trade you chose is a sitting trade, and sitting is a hazard. Eyes, wrists, neck and back — the small arrangements that let a person work for decades instead of years.",
+    series: SERIES,
+    order: 145,
+    author: AUTHOR,
+    date: "2026-07-15",
+    cover: "/images/blog/posture-desk-chair.jpg",
+    coverAlt:
+      "A person sitting properly at a desk, feet flat, screen raised to eye level on a stand of books.",
+    body: [
+      p(
+        "Nobody warns you that typing is a physical trade. The tailor stands, the mechanic bends, and the person at the machine sits — for years — and the sitting collects its rent quietly: the eyes that blur by evening, the wrist that wakes you at night, the neck that no longer turns without opinion. The body is the only tool every career on this shelf shares, and like every tool here it works better maintained than repaired. This lesson is the maintenance manual, and it costs almost nothing.",
+      ),
+      p(
+        "The arrangement first, because posture follows furniture. Screen raised so its top edge sits at eye level — on books, on a stand, on anything steady — so the neck stops hanging forward like a reading grandmother's. Back against the chair's back, or a cushion folded behind it; feet flat on the floor or on a box, not folded under you like a heron. Elbows near the sides, wrists level — not bent up over the keyboard's edge, which is where the wrist's slow trouble begins. The brightness lesson set your screen light; set your room's too, so the eyes are not reading a lamp in a cave. None of this needs money. It needs one deliberate hour of moving your furniture, once.",
+      ),
+      fig(
+        "/images/blog/posture-desk-chair.jpg",
+        "A person sitting properly at a desk, feet flat, screen raised to eye level on a stand of books.",
+        "The one-hour arrangement: screen at eye level, back supported, feet down, wrists level. The neck, the eyes and the wrists all keep the same appointment.",
+      ),
+      h2("The eyes, the wrists, and the hourly debt"),
+      p(
+        "The eyes rule, learned and kept: every twenty minutes, look at something twenty feet away — out the window, down the corridor — for twenty seconds. It is called 20-20-20, it is free, and it is the difference between eyes that work at forty and eyes that throb at thirty-five; blink too, because staring screens dry them. The wrists: take the small breaks seriously — a minute of shaking out the hands every half hour, the stretch of the fingers backwards, gentle, the way you would stretch any worker's tool after repetitive lifting; and if tingling starts at night, that is not tiredness, that is a warning worth a clinic visit before it becomes a story. And the hourly debt: stand and walk for two minutes every hour — water, gate, window — because the studies all agree with grandmothers: the sitting itself is the hazard, and the body keeps books more honestly than any ledger of lesson one hundred and forty-three.",
+      ),
+      p(
+        "One more, in the Nigerian register: the generator and the heat. A hot room tires a body faster than a long file, and the fan aimed at the room rather than the back of the neck saves the morning's stiffness; the machine's vents were cleared in an earlier lesson — clear your own cooling too, water, actual water, through the day. The work of this shelf is a long game — decades of Thursdays at a desk. The body is the colleague who attends every one of them. Arrange the furniture once, keep the small rules forever, and it stays a colleague instead of becoming a complaint.",
+      ),
+      fig(
+        "/images/blog/eyes-break-window.jpg",
+        "A worker standing at a window, looking out at the street, hands behind back, screen glowing behind them.",
+        "Twenty seconds, twenty feet away, every twenty minutes. The oldest free medicine in the sitting trades.",
+      ),
+      ul([
+        "Rearrange your desk this hour: books under the screen, cushion behind the back, box under the feet if needed.",
+        "Set the 20-20-20 rhythm — a phone timer for a week will install it permanently.",
+        "Hourly: two minutes standing, water taken, window visited. Debt avoided, not repaid.",
+        "Night-time tingling in the hands is a clinic visit, not a character flaw. Go early.",
+      ]),
+      h2("The long game needs a body"),
+      p(
+        "The analyst lesson said the work asks for patience and calm; it quietly asks for vertebrae too. Every plan this chapter has made — the clients, the books, the decade of remote Fridays — assumes a body that can still sit, see and type when the plan matures. Maintain the only tool you cannot replace, and the sitting trade stays what it should be: a livelihood that lifts nothing heavier than a laptop, carried lightly for forty years.",
+      ),
+    ],
+  },
+  {
+    slug: "learning-in-public",
+    title: "Learning in public",
+    excerpt:
+      "Share what you learn, ask questions worth answering, and let the next person watch you climb. The habit that compounds a course into a career — and strangers into colleagues.",
+    series: SERIES,
+    order: 146,
+    author: AUTHOR,
+    date: "2026-07-19",
+    cover: "/images/blog/question-post-forum.jpg",
+    coverAlt:
+      "A person typing a question into an online forum on a laptop, notebook open beside them.",
+    body: [
+      p(
+        "Here is the difference between the people who finish and the people who stall: the finishers let others watch. They post the small win — first pivot table, first page live, first repaired machine — and answer the beginner's question behind them, and in doing so turn a private course into a public track record. Learning in public is not self-promotion. It is the each-one-teach-one lesson pointed forward: you teach what you just learned while it is still warm, and the teaching is what makes it yours.",
+      ),
+      p(
+        "The mechanics are modest. After each week of learning, write three sentences somewhere others can see: what I set out to learn, what actually happened, what I will try next. Post it where your people are — the platform of your trade, a group, the profile lesson's page. Share the artefacts, not just the verdicts: the screenshot of the chart, the before-and-after of the site, the photo of the opened laptop — the portfolio lesson's raw material, produced as a by-product of studying. And answer downward: the question a newcomer asks that you can now answer is your rent for the questions you are about to ask above. Communities remember who answered.",
+      ),
+      fig(
+        "/images/blog/question-post-forum.jpg",
+        "A person typing a question into an online forum on a laptop, notebook open beside them.",
+        "The question, asked well: what I tried, what happened, what I expected. Half the answer is already in the asking.",
+      ),
+      h2("How to ask, and how to find the mentors"),
+      p(
+        "Asking is a skill with manners, and the help lesson wrote them: search first — the answer may already be standing there; show what you tried — the error, the steps, the version, not a shrug and do it for me; and close the loop — return and say what worked, because the person who answers you tomorrow reads whether you came back today. Do this and something quiet happens: the people a level above start recognising your name as the one who asks well and reports back. That recognition is what people call finding a mentor, and it cannot be demanded — it is awarded, in comments and DMs and eventually in referrals, to the visible climber, never to the invisible one.",
+      ),
+      p(
+        "Keep the shelf's guard up while you are open: the forward-that-lies circulates in learning groups too, the gurus selling container-loads of courses you do not need, the helpers who DM with fee-bearing salvation — the job-scam lesson's costume, reborn as mentorship. Verify before you forward, pay for structure when you have inspected the structure, and never send anybody money to be taught what a free video teaches. The public road you are walking is real. It simply has the same street traffic every road here has always had — and you already know how to walk among strangers.",
+      ),
+      fig(
+        "/images/blog/community-meetup-laptops.jpg",
+        "A small group of learners around a table with laptops, one person pointing at a screen while others watch.",
+        "The room builds itself: one learner, one table, one hour — and the questions get better every month. You are somewhere in this photograph.",
+      ),
+      ul([
+        "After every week of learning, post three sentences: aimed, happened, next. Pick your day and keep it.",
+        "Share the artefact with the verdict — screenshot, before-and-after, opened machine. Proof collects itself.",
+        "Ask by the help lesson's manners: searched, tried, error shown. Close every loop you open.",
+        "Answer one beginner's question for every question you ask. The rent keeps the whole floor standing.",
+      ]),
+      h2("The compounding of being seen"),
+      p(
+        "A year of learning in public leaves a strange residue: a timeline of a person who keeps showing up, a small library of answers under your name, strangers who forward you work with the words I have been watching you. The certificates lesson will say what papers prove; this lesson says what presence proves — persistence, honesty about the struggle, and the habit of finishing in daylight. The portfolio shows what you did. The public trail shows who you are. Clients and employers read both, and only one of them builds itself while you learn.",
+      ),
+    ],
+  },
+  {
+    slug: "when-a-client-goes-quiet",
+    title: "When a client goes quiet",
+    excerpt:
+      "The work is delivered; the phone goes silent. Chasing payment with dignity: the gentle ladder, the documents that win disputes, the pause of work, and when to walk away.",
+    series: SERIES,
+    order: 147,
+    author: AUTHOR,
+    date: "2026-07-24",
+    cover: "/images/blog/payment-reminder-phone.jpg",
+    coverAlt: "A hand holding a phone showing a politely worded payment reminder message.",
+    body: [
+      p(
+        "Sooner or later it finds every worker on this shelf: the job was done well, the thanks were warm — and then the silence. No payment, no reply, and a new arrangement of the same five words in your head every morning. This lesson is the ladder for that week, because chasing money with dignity is a skill like any other on this shelf: it has steps, and each step keeps both the money and the name possible.",
+      ),
+      p(
+        "Step one, the gentle reminder, days not hours after due: a short, warm, unashamed message — hello ma, the site went live on the 4th; the balance of the invoice below is due; here is the account again. No apology, no anger; you are reminding, not begging — the invoice lesson's paper speaking for you. Step two, a week later, the restatement: the same message, plainer, with the invoice attached again and a date — by Friday I would need this settled to keep the site maintained. Step three, the pause of work: maintenance stops, access pauses, the next phase waits — politely announced, not ambushed; clients rediscover invoices remarkably fast when the thing they paid for stops breathing. Step four, escalation that does not need shout: a formal demand letter — plain words, dates, amount, your signature; small claims courts here handle exactly these sums; and a client association or platform dispute channel where one exists. What you never do: insult, threaten, or disgrace anybody publicly — the anger post costs more than the debt, and the street remembers the poster, not the debtor.",
+      ),
+      fig(
+        "/images/blog/payment-reminder-phone.jpg",
+        "A hand holding a phone showing a politely worded payment reminder message.",
+        "Step one: short, warm, unashamed. The invoice attached speaks; the tone keeps the door open for the money and the next referral.",
+      ),
+      h2("The documents that win"),
+      p(
+        "Disputes are not won by volume; they are won by paper, and you have been building the paper all along: the written quote saying what would be delivered, the deposit receipt, the update messages tracing approvals, the delivery message, the invoice. Screenshot them in order, and any argument becomes a timeline instead of a quarrel — the analyst lesson's evidence, gathered at a kitchen table. And prevention, because this ladder is best never climbed: deposits before work, balance before handover of final files for new clients, maintenance paid in advance. The pricing lesson's rules are not formality — they are the walls that make the quiet-client week rare instead of seasonal.",
+      ),
+      p(
+        "Then the two verdicts only you can deliver. When to forgive: the client who truly fell on hardship, whose silence was shame not scheme — weigh the history, accept the part-payment, close the file with grace; charity belongs somewhere in every working life, and it is only charity when you chose it. And when to walk away: the client who pays small, owes big, and costs you the one thing you cannot invoice — the months of attention. Fire a client the way the ladder runs, politely and on paper, and give the recovered hours to the ones who pay. The books of lesson one hundred and forty-three will show you something within a year: the quiet clients were never in the profit column at all.",
+      ),
+      fig(
+        "/images/blog/dispute-documents-table.jpg",
+        "A table with printed messages, an invoice and receipts laid out in date order, a hand pointing at one.",
+        "The timeline instead of the quarrel. Quote, deposit, approvals, delivery, invoice — the paper argues so you do not have to shout.",
+      ),
+      ul([
+        "Chase in steps, spaced by weeks: warm reminder, plain restatement, paused work, formal demand. Never skip a step in anger.",
+        "Announce pauses, never ambush. The work stops breathing politely, in writing, with a restart price.",
+        "Keep the timeline together from day one — quote, receipts, approvals. Disputes are won in the folder, not the fight.",
+        "New client? Balance before final handover. The lesson that prevents this one is cheaper than this one.",
+      ]),
+      h2("The name and the naira"),
+      p(
+        "Every step of the ladder protects the same two assets: the money and the name. Run it cold and you usually recover the naira and occasionally the client, who respects being reminded in sentences they could not fault. Run it hot and you keep neither. The working life will always contain a quiet client or two — the shelf cannot legislate other people's pockets. It can make you the person whose paperwork never flinches, whose tone never drops, and whose next client never gets the chance, because the deposit was taken before the first line of work.",
+      ),
+    ],
+  },
+  {
+    slug: "your-first-hand",
+    title: "Your first hand: from freelancer to small studio",
+    excerpt:
+      "The day the work exceeds your hands is a good day with a hard question. Hiring your first person — paying fairly, teaching openly, checking quality, and the arithmetic of two desks.",
+    series: SERIES,
+    order: 148,
+    author: AUTHOR,
+    date: "2026-07-29",
+    cover: "/images/blog/two-desks-small-studio.jpg",
+    coverAlt:
+      "Two desks facing each other in a small studio, two people working, one pointing at a screen.",
+    body: [
+      p(
+        "There is a day in every solo worker's life when the diary says yes to more than the hands can do. Refusing work you cannot carry is the first answer, and often the wise one. But if the extra work keeps knocking — if turning it away becomes a habit — then the question has changed from can I do this to can somebody do this with me. That question, asked honestly, is the birth of every studio, agency and small firm on your street. This lesson is the first hire, done properly.",
+      ),
+      p(
+        "Begin with what you know how to teach, because your first hand is not a genius you found; it is a person you will make good — the each-one-teach-one lesson, now wearing an employer's hat. Look where you already look for proof: the learning-in-public trail, the community answers, the small portfolio that shows finishing, not just flair. Pay fairly — the pricing lesson pointed at you now: know the floor of the work, pay above it, and pay on time, every time, without being chased; nothing travels faster on a street than an employer whose alert arrives late. Agree terms in writing even for a friend — the days, the pay, who owns the work — because the written quote lesson protects employers exactly as it protects freelancers. And start deliberately small: one paid trial project, reviewed honestly, before any standing arrangement. A trial is kindness — it lets both sides walk away cheap.",
+      ),
+      fig(
+        "/images/blog/two-desks-small-studio.jpg",
+        "Two desks facing each other in a small studio, two people working, one pointing at a screen.",
+        "The arithmetic of two desks. The work doubled; the checking doubled too. The pointing at screens is the quality control.",
+      ),
+      h2("The part nobody warns you about"),
+      p(
+        "The moment a second hand joins, your work changes shape: a part of every week is now checking, teaching and deciding — and that part is the job. Quality control is the whole reputation: their work goes out under your name, so everything is reviewed before the client ever sees it — not because the hand is careless, but because the name is yours and the standard must be one. Teach the reasons, not just the steps — the teach lesson's law — because a hand who knows why the deposit comes first, why the update goes unasked, why the client's secret stays sealed, becomes a second standard instead of a second risk. And share the why of the business too: what a job actually pays, why a client was declined, what the books say. Hands who see the whole board protect it like owners.",
+      ),
+      p(
+        "The arithmetic, kept honest by the books: your hour is now worth what the business earns divided by everything it pays — and the hire only makes sense while the hands you freed bring in more than the hands you pay. Watch it monthly, in the ledger of lesson one hundred and forty-three, and be brave enough to shrink as well as grow; a studio of two that lasts beats a studio of five that folds owing wages. But when it holds — when two desks hum and the checking hour becomes the best hour of your week — you will feel the real promotion happen: from person who works, to person who makes work. That is not a bigger ego. It is a bigger table, and the street eats from it.",
+      ),
+      fig(
+        "/images/blog/paying-hand-first-wage.jpg",
+        "An envelope of naira notes and a written payslip being handed across a desk, a handshake above them.",
+        "The first wage, on time, in full, with a payslip. The street keeps its own payroll of employers — make sure yours is the good list.",
+      ),
+      ul([
+        "Hire for finishing, teach for flair. The public trail of a learner predicts more than any interview performance.",
+        "Written terms, fair pay, paid on time. You know what chasing feels like; do not become it.",
+        "Everything reviewed before it reaches the client. The name on the door signs every page.",
+        "Watch the arithmetic monthly in the books. Grow when it holds; shrink before it breaks.",
+      ]),
+      h2("The table grows"),
+      p(
+        "One hundred and twenty taught one person at a table. One hundred and forty-eight is the same table with a second chair — and the same laws: teach the reasons, pay the fair price, keep the written word, hold the standard when nobody is watching. Studios do not die of smallness; they die of forgotten laws. Keep them, and the second chair becomes a third, and the shop you once sat in as a stranger becomes the shop where somebody else learns what a Friday alert feels like — on time, in full, with a future behind it.",
+      ),
+    ],
+  },
+  {
+    slug: "certificates-and-the-track-record",
+    title: "Certificates, exams, and the track record",
+    excerpt:
+      "When a certificate opens a door and when it merely decorates a wall — how to prepare for the exams that matter, and how to keep the proof that outranks every paper.",
+    series: SERIES,
+    order: 149,
+    author: AUTHOR,
+    date: "2026-08-01",
+    cover: "/images/blog/exam-study-desk.jpg",
+    coverAlt:
+      "A focused candidate at a desk with past papers, a laptop and a small calendar marked for an exam date.",
+    body: [
+      p(
+        "Sooner or later the question arrives with the job adverts: certified preferred. The certificates lesson of this chapter said what papers do not prove; this lesson says, fairly, what they do — and how to earn the ones worth their fees. Because the honest position is not certificates are useless and it is not collect them all. It is: some doors are genuinely locked without them, and the skill is knowing which.",
+      ),
+      p(
+        "Where certificates genuinely matter. Regulated and corporate doors: the support and security tracks — the CompTIA family, the cloud platforms' own exams — are asked for by name in the adverts of lesson one hundred and twenty-one's world, and government or large-corporate shortlists filter on them mechanically. Contracts and procurement: a vendor certificate on the wall settles a client's committee faster than any portfolio. And the personal case: a structured exam forces the systematic study that self-taught trails allow you to dodge — the fence-check lesson applied to your own gaps. Where they matter little: creative and client-facing trades — nobody asks the designer of lesson one hundred and thirty-seven for a certificate; they ask for the rack. And they never, anywhere, replace the portfolio — the paper opens the door, the track record closes the room.",
+      ),
+      fig(
+        "/images/blog/exam-study-desk.jpg",
+        "A focused candidate at a desk with past papers, a laptop and a small calendar marked with an exam date.",
+        "Preparation is a calendar, not a mood. Past papers, one section a night, the date circled — the course-finisher's discipline, one last time.",
+      ),
+      h2("Preparing like a professional"),
+      p(
+        "Pick one exam, the one the adverts you actually want keep naming — not the collection the internet is selling this month. Book it: a real date, a real fee, paid — the deposit lesson applied to yourself; nothing concentrates study like a receipt. Then the working method: the syllabus as the fence check — walk your own knowledge against the official list of topics, mark the weak boards honestly; one section a night, the ten-honest-minutes rule grown into a season; and past questions early and often, because every exam has a grammar and the grammar is learnable. Study groups from the learning-in-public lesson multiply this — and the exam fees are real money, so put them in the books as what they are: an investment with a door at the end, chosen once, passed once.",
+      ),
+      p(
+        "After the pass: the certificate goes into Drive with the papers, a line goes onto the profile and the CV, the learning-in-public trail hears about it — and then the paper does its one job, at the door, once. What happens in the room after is the portfolio's whole jurisdiction: the dashboard you can build, the machine you can fix, the client you can keep. Keep both ledgers current — the certificates and the track record — and you become the rare thing every employer is actually shopping for: a person whose paper tells the truth about them, and whose work keeps proving it true.",
+      ),
+      fig(
+        "/images/blog/certificate-frame-shelf.jpg",
+        "A framed certificate on a shelf above a desk, beside a laptop showing a live project of real work.",
+        "The two ledgers, displayed together. The paper opened the door; the screen on the desk is why the room said yes.",
+      ),
+      ul([
+        "Choose one exam — the name in the adverts you actually want — and book a real date this month. The fee is the focus.",
+        "Walk the syllabus like a fence check: strong boards, weak boards, and a study calendar that touches the weak ones nightly.",
+        "Past questions from week one. Every exam has a grammar; learn the grammar while you learn the content.",
+        "After the pass: Drive, profile, CV, community — then back to the work. The paper opens doors; only the work keeps rooms.",
+      ]),
+      h2("The truth about doors"),
+      p(
+        "A career on this shelf is a long corridor of doors, and it helps to stop resenting the locks: some were installed by committees, some by law, some by simple habit — and most open to the combination the market has always honoured, proof on paper and proof in hand. Carry both, and the corridor keeps opening. Carry one, and you will spend your years explaining the other. You already know how to build the proof in hand. This lesson was the cheaper half — a calendar, a syllabus, and a receipt.",
+      ),
+    ],
+  },
+  {
+    slug: "the-working-life",
+    title: "The working life",
+    excerpt:
+      "The last note of the chapter is about the years: routines that survive motivation, integrity that survives temptation, and a career walked one honest Thursday at a time.",
+    series: SERIES,
+    order: 150,
+    author: AUTHOR,
+    date: "2026-08-06",
+    cover: "/images/blog/morning-routine-desk.jpg",
+    coverAlt:
+      "A tidy desk at morning: laptop closed, notebook open with the day's three lines written, tea steaming.",
+    body: [
+      p(
+        "This chapter taught you to be hired, to be paid, to hold secrets and to hold your ground. None of it mentioned the thing that actually decides the career: the years between the Fridays. The working life is not made of breakthroughs. It is made of ordinary Tuesdays, done on purpose, for a long time — and the people you admire on this shelf are people who found a way to keep showing up to their own desks after the excitement moved somewhere else. This last note is about that keeping.",
+      ),
+      p(
+        "Routines that survive motivation, because motivation will not survive the year. The morning page — three lines written before the noise: today's one real thing, its first small step, what can wait; the deep hour — one protected hour, earliest and quietest, given to the work that compounds — the skill, the portfolio, the books — before the inbox donates your day to other people's priorities; and the weekly review — Friday, thirty minutes: what was delivered, what was learned, what next week owes whom. None of it is glamorous; all of it is the hidden machinery behind every smooth career you will ever envy. The ten honest minutes of lesson three, grown into a working life.",
+      ),
+      fig(
+        "/images/blog/morning-routine-desk.jpg",
+        "A tidy desk at morning: laptop closed, notebook open with the day's three lines written, tea steaming.",
+        "The machinery of the years: three lines, one protected hour, a Friday review. The career is what these quietly accumulate into.",
+      ),
+      h2("Integrity, and the long game"),
+      p(
+        "The years will also test the manners this shelf taught, and the tests grow quieter as you rise: the shortcut nobody would see, the secret that would fetch a price, the number that would be kinder rounded, the client who suggests what the law calls something else. The working life's rule for all of them is the family word's rule, scaled: your name is the envelope every future opportunity travels in, and it is spent in seconds and rebuilt in years. Keep the receipts, keep the secrets, keep the standard when the client does not check — not because someone is watching, but because the watching comes later, always, in the form of the biggest opportunity of your life asking around about you.",
+      ),
+      p(
+        "And patience, the last skill: careers here are seasons, not sprints — the learning season, the proof season, the name season, the harvest that arrives while you were busy working and forgot to notice. There will be dry months the books cannot explain and loud months the diary cannot hold; walk both at the same steady pace, with the same Thursday hour, and let compounding do what drama cannot. One hundred and fifty notes ago you sat before a dark screen, afraid of breaking something. Now the screen is your market, your school and your street, and you know what every generation of this academy has learned at these tables: the machine was never the miracle. The person who kept showing up was. The shelf stays open. Go and work.",
+      ),
+      fig(
+        "/images/blog/long-road-signpost.jpg",
+        "A quiet road at golden hour with a simple signpost, a figure walking with a bag, unhurried.",
+        "The long game, at its true pace: one road, one walker, one season at a time. The shelf stays open behind you. Go and work.",
+      ),
+      ul([
+        "Install the machinery this week: three lines each morning, one protected hour, the Friday thirty minutes. Let the calendar carry what motivation cannot.",
+        "Write your own short list of will-nots — the secrets, shortcuts and rounded numbers you have already declined in advance.",
+        "Name your season honestly — learning, proof, or name — and let this week's hour serve that season, not another's.",
+        "When a dry month comes, and it will: shrink the plan, keep the hour. The pace is the promise.",
+      ]),
+      h2("The shelf stays open"),
+      p(
+        "These notes began as class notes for beginners in Port Harcourt and grew, one lesson at a time, into the whole walk — from the first sitting to the working years. They remain free, they remain yours, and they remain best used the way the last lesson of every chapter has said: taught onward. Somewhere near you is the person lesson one was written for — the dark screen, the plastic oval, the fear. Hand them the shelf. Sit with them for ten honest minutes. Then go back to your desk, and keep showing up. That is the whole of it. That was always the whole of it.",
+      ),
+    ],
+  },
+  {
+    slug: "checking-results-online",
+    title: "Checking results and admissions online",
+    excerpt:
+      "WAEC, NECO, JAMB: the portals, the tokens, the careful typing of exam numbers — and the one scam that hunts results season every single year.",
+    series: SERIES,
+    order: 151,
+    author: AUTHOR,
+    date: "2026-08-11",
+    cover: "/images/blog/results-portal-phone.jpg",
+    coverAlt:
+      "A young person checking an exam result on a phone at a table, pen and scratch card nearby.",
+    body: [
+      p(
+        "Three letters rule results season in this country: WAEC, NECO, JAMB. The results no longer wait in long queues or notice boards — they live on portals, behind a token or a PIN, and the person who can check a result calmly, correctly and cheaply has a small superpower every July and August. This lesson is that superpower, and the one trap that hunts it every single year.",
+      ),
+      p(
+        "The pattern is the same on every board's portal, so learn it once: go to the official address — the board's own site, typed yourself or reached from its verified page, the government-portals lesson's law — buy or already hold your checker token or PIN, enter your exam number exactly as it sits on your photo card, choose your exam year, and submit. The exam number is the whole exam's identity; one swapped digit returns somebody else's silence or somebody else's shame. Type it slowly, twice, from the card itself — not from memory, not from a cousin's WhatsApp message. Then the slip: screenshot it, and download or print the proper PDF into the Papers folder in Drive where the certificates live. A result that exists only in a gallery is one stolen phone from becoming a rumour.",
+      ),
+      fig(
+        "/images/blog/results-portal-phone.jpg",
+        "A young person checking an exam result on a phone at a table, pen and checker card nearby.",
+        "Exam number from the card, not from memory. The slip saved the same hour — the papers lesson, applied to the day's harvest.",
+      ),
+      h2("Admissions, and the trap"),
+      p(
+        "For admissions, the portal is also the truth: JAMB's CAPS shows an admission the moment it is offered, and accepting it there — on the portal, in your own account — is what makes it real. Check with your registration number, at your pace, yourself. Which brings the season's professional liar: the result upgrader. Somebody in a comment section or a quiet DM says they can upgrade a 4 to a 5, change a course, unlock a withheld result — for a fee, quietly, today only. Hold it beside the shelf's oldest tells: hurry, secrecy, fee, and now a fourth — a stranger claiming power over an institution's records. No upgrader has ever touched a board's database. They harvest the fee and the hope, and the candidate discovers both facts at the same painful printout. Results are appealed through the board's own processes, in writing, at its own offices — never through a helper with a data plan.",
+      ),
+      p(
+        "Parents and guardians: the same lesson, taught sideways. Do not outsource the checking to a café stranger who then holds the candidate's numbers and photos hostage to extort a gratitude fee. Sit with the candidate, type the number together, save the slip together. The café earns honestly when it provides the printer and the light — the account, the numbers and the checking remain the family's.",
+      ),
+      fig(
+        "/images/blog/result-slip-printed.jpg",
+        "A printed result slip lying on a table beside a phone showing the same result, reading glasses resting nearby.",
+        "Two copies, one truth: the printout for the file at home, the PDF in Drive for the world. The upgrader's fee saved is a semester's respect kept.",
+      ),
+      ul([
+        "Type the board's official address yourself; bookmark it. Adverts above the result are not the result.",
+        "Exam number from the original card, typed twice, slowly. Then slip: screenshot, PDF, Papers folder.",
+        "Admissions are accepted on the portal itself, in your own account. CAPS is the truth; screenshots of CAPS are not.",
+        "Nobody can upgrade a result. The fee is the product. Appeals go to the board, in writing, in person.",
+      ]),
+      h2("The season, handled"),
+      p(
+        "Results season rewards exactly what this shelf has taught all along: the real address, the careful typing, the slip kept, the hurry refused. A family that can check its own results, accept its own admission and file its own slips has retired one of the season's oldest taxes — paid to queues, to cafés, and to liars. The next lesson stays at the family table, where the phones are smaller and the stakes are the children.",
+      ),
+    ],
+  },
+  {
+    slug: "the-family-table",
+    title: "The family table: phones, kids, and parental controls",
+    excerpt:
+      "Children inherit our screens before our manners. Family Link, app approval, the bedtime rule that binds adults too — raising the next generation of users without a fight.",
+    series: SERIES,
+    order: 152,
+    author: AUTHOR,
+    date: "2026-08-16",
+    cover: "/images/blog/family-table-phones.jpg",
+    coverAlt:
+      "A family at a living-room table, a parent guiding a child's hands on a small tablet.",
+    body: [
+      p(
+        "A child in this country meets a screen before they can read, and long before they can judge what the screen says. The family that handles this well does not ban the phone and does not surrender to it. It does what this whole shelf has done for adults: names the parts, sets the rules, teaches the reasons. This lesson is the same education, one generation down — and it begins with a confession: the child is watching how you use yours.",
+      ),
+      p(
+        "The tooling first, because it is free and already built. On the child's Android phone, Google's Family Link — the family-table lesson's gatekeeper — lets a parent approve every app install before it lands, set sensible daily limits, see where the hours go, and pause the whole device at bedtime from the parent's own phone. On the video platforms, the kids' versions exist precisely so the algorithm is not raising the child; turn them on. On the browser, safe search is a setting, not a prayer. None of this replaces the conversation — it holds the fence while the conversation does its work, the way the second lock holds the door while the manners keep the street.",
+      ),
+      fig(
+        "/images/blog/parental-controls-screen.jpg",
+        "A parent's phone showing a child's device controls: daily limit and an approval screen, UI slightly soft.",
+        "The fence, not the warden. Approve the installs, set the bedtime, and spend the saved arguments on the real teaching.",
+      ),
+      h2("The rules that actually teach"),
+      p(
+        "Three rules, taught with their reasons the way lesson one hundred and twenty taught the elders. The name rule: in games and chats, a child never uses their real full name, school, street or photographs of themselves — strangers online are strangers, and the manners of the compound apply at every screen. The tell rule: anything that frightens, anything that asks for pictures, anything that says do not tell your parents — shown to a parent, immediately, without punishment; the child who is punished for reporting learns to hide, and hiding is the only real danger. And the table rule: phones sleep outside the bedroom at night — every phone, parents' included, in one basket by the sitting-room door; the child who watches you obey it learns more than any setting can teach.",
+      ),
+      p(
+        "And teach downward with the shelf itself. The child who can play is ready to learn: the typing games, then the files lesson softened, then the pause before a link — the same curriculum, age-bent. A teenager can read lesson six and seven as their own; a twelve-year-old can run the family's WhatsApp backup. The greatest parental control was never an app. It is the child who grows into a user who understands the machine — because somebody sat beside them, ten honest minutes at a time, and named the parts out loud.",
+      ),
+      fig(
+        "/images/blog/child-typing-supervised.jpg",
+        "A child typing on a laptop at a family table while a parent sits close, watching and smiling.",
+        "The best filter ever installed: a parent within reach. The screen teaches; the table decides what it may teach.",
+      ),
+      ul([
+        "Set up Family Link on the child's device tonight — approvals on, a bedtime limit, kids' video profiles on.",
+        "Teach the three rules with their reasons: name, tell, table. Write the last one where everybody, including you, obeys it.",
+        "Practise the no-punishment rule until it is true. Children report dangers to safety, not to ambush.",
+        "Give the child one small real task on the machine each week — typing practice, the backup, the calendar. Users are raised, not restricted.",
+      ]),
+      h2("The long inheritance"),
+      p(
+        "The children on your knees will run a country whose every road, market and classroom is a screen. What they will not pick up from school is judgement — that walks across the family table, one evening at a time: the rules kept, the reasons given, the example set by the adult whose own phone sleeps in the basket by the door. Restriction produces a sneaky user and a skilled liar. Teaching produces the person these notes have always been writing to. The next lesson returns to the working road, at its very first gate: the paper that decides who gets to interview.",
+      ),
+    ],
+  },
+  {
+    slug: "the-cv-that-gets-read",
+    title: "The CV that gets read",
+    excerpt:
+      "Most CVs die inside a machine before a human ever sees them. The plain format that survives the robot parser, the honest keywords that match the advert, and the one page that opens doors.",
+    series: SERIES,
+    order: 153,
+    author: AUTHOR,
+    date: "2026-08-19",
+    cover: "/images/blog/cv-tailoring-desk.jpg",
+    coverAlt:
+      "A job seeker tailoring a CV on a laptop, the job advert open on a phone beside the keyboard.",
+    body: [
+      p(
+        "The one-page honest CV of lesson seventy-five got its facts straight. This lesson gets it read — because between your CV and the employer's eyes now stands a machine. Big companies and job portals feed every CV into software that scans it for skills, ranks it, and shows a human only the top of the pile. The software — people call it an ATS, an applicant tracking system — is not clever. That is the tragedy and the opportunity: it rewards the plain, the ordered and the matching, and it quietly kills the beautiful, the creative and the strange.",
+      ),
+      p(
+        "So the format that survives is boring, and boring is the strategy. One column, no text boxes, no tables, no photographs in odd corners — all of those scramble a parser the way a wrong file extension scrambles the open-with lesson. Standard headings the software recognises: Summary, Work Experience, Education, Skills, in that order. Dates beside every role in one honest pattern. A plain font, generous spacing, one page for the first decade of your life. Save as PDF, named firstname-lastname-cv, and your contact details as ordinary text — an email address and a phone number the machine can copy, not a designer's graphic the machine cannot read.",
+      ),
+      fig(
+        "/images/blog/cv-tailoring-desk.jpg",
+        "A job seeker tailoring a CV on a laptop, the job advert open on a phone beside the keyboard.",
+        "The advert on the right is the answer sheet. Its honest words, carried into the CV on the left, are what the robot — and the human — are matching.",
+      ),
+      h2("The keywords, honestly carried"),
+      p(
+        "The scanner matches words, and the words it is matching are sitting in the advert. If the advert says customer service, the CV says customer service — not people management, not client relations, however truer your phrase may be. Read the advert twice, list its plain skill words, and carry the ones you truthfully own into your Skills and Experience lines, in the advert's own language. This is not deception; it is translation. The lie — claiming a skill you cannot demonstrate in the room — is the old tells again, and the interview is where it dies. But the honest absence — owning the skill and naming it in a word the scanner never sees — dies earlier, silently, unseen by any human who might have loved your experience.",
+      ),
+      p(
+        "Then the tailoring, which is where the two-sentences lesson grows into a method: for each serious application, adjust the summary line and reorder the experience so the most relevant role reads first — fifteen minutes with the advert open on the phone beside the keyboard. Sprayed CVs read like sprays; tailored ones read like answers. The upload lesson then carries it through the portal door: right size, the bar finished, the tick screenshotted. The CV that gets read was never the prettiest. It was the one a machine could parse, a scanner could match, and a tired human could trust in ten seconds. Boring, matched, true — the three secrets of the paper that opens the room.",
+      ),
+      fig(
+        "/images/blog/plain-cv-screen.jpg",
+        "A laptop showing a clean one-column CV with plain headings and clear date lines.",
+        "Boring is the strategy: one column, standard headings, honest dates. The machine reads it in seconds; the human reads it in ten.",
+      ),
+      ul([
+        "Rebuild your CV in one column with standard headings. Test it: can you copy the text out of the PDF cleanly? Then the machine can too.",
+        "For your next application: read the advert twice, list its skill words, carry your true ones in. Translation, not decoration.",
+        "Tailor the top third per application — summary first, most relevant role first. Fifteen minutes, per door, every time.",
+        "Ask a friend to read your CV for ten seconds and say what you do. If they cannot, neither can the scanner.",
+      ]),
+      h2("After the robot, the human"),
+      p(
+        "Everything the scanner does, it does to decide whose ten seconds of human attention you get. Win them, and the old laws resume: honesty in the room, proof in the portfolio, the manner of the guest. The machine is not your enemy. It is the first gateman of lesson one hundred and twenty-four — dull, fair, and completely readable, now that somebody has finally introduced you.",
+      ),
+    ],
+  },
+  {
+    slug: "the-interview-on-a-screen",
+    title: "The interview on a screen",
+    excerpt:
+      "The online interview is won before it begins: the test run, the window behind you, the camera at eye level, and the manners of a guest in somebody's parlour.",
+    series: SERIES,
+    order: 154,
+    author: AUTHOR,
+    date: "2026-08-24",
+    cover: "/images/blog/interview-video-call.jpg",
+    coverAlt:
+      "A candidate in a video interview on a laptop, neatly dressed, a notebook beside the keyboard.",
+    body: [
+      p(
+        "The interview used to begin when you walked through the office door. Now it begins on a screen — the hiring manager in Lagos, the panel in London, you in your bedroom with a data plan and a chance. The good news: the screen is a room you fully control, and the candidate who prepares the room as carefully as the answers is already ahead of most. This lesson is the preparation, in the order it should happen.",
+      ),
+      p(
+        "The day before: the test run. Install or update the app the panel named — the meeting link says which — and make one test call to a friend: camera working, microphone working, headphones with a mic better again. Charge the laptop fully and keep the charger plugged in for the call; put the phone on silent in another room, and set a backup tap — the hotspot lesson — in case the Wi-Fi chooses the hour to misbehave. Then stage the room. Light from a window facing you, never behind you — a bright window turns you into a silhouette with opinions. The camera at eye level on a stand of books, so you are not looming down like a judge or grovelling up like a suspect. Behind you: a plain wall or a tidy shelf — the panel will see it and judge it, because humans cannot help themselves.",
+      ),
+      fig(
+        "/images/blog/interview-video-call.jpg",
+        "A candidate in a video interview on a laptop, neatly dressed, a notebook beside the keyboard.",
+        "The room, rehearsed: window in front, camera level, wall plain, notebook open. The screen is your parlour — clean it like one.",
+      ),
+      h2("The hour, and the manners"),
+      p(
+        "Tell the house. A Nigerian interview call dies more often to a gate crash, a blender, or an unexpected visitor than to any technology — brief everybody whose noise can reach you, and put the generator on quiet standby if the grid is in one of its moods. Dress fully — yes, including what the camera cannot see; the stand-up-for-the-document surprise has ended careers at the two-minute mark. Join five minutes early, camera on, sitting already: the panel's first sight of you should be ready, not rising. Keep your CV open on the screen beside the call, your questions written in the notebook, a glass of water within reach.",
+      ),
+      p(
+        "Then the old manners, on a new road. Look at the camera when you answer — the small dark dot above the screen — not at your own magnificent face; eye contact has simply moved address. Speak a touch slower than feels natural; networks eat consonants. When the connection stutters, stop, wait, ask did that land? — it reads as competence, not weakness. Answer in the letter's spirit: short, ordered, honest — one point at a time, the way lesson one hundred and fifty-six's emails will be written. And when it ends, thank them by name, leave the call before celebrating, and send the thank-you note the same day. The screen interview is still a visit: you are the guest, the panel is the parlour, and the oldest courtesy is the newest bandwidth.",
+      ),
+      fig(
+        "/images/blog/interview-desk-setup.jpg",
+        "A tidy interview desk from the candidate's view: laptop on books at eye level, headphones, CV printed, water glass, notebook.",
+        "The pre-flight check, laid out: power, sound, light, notes, water. Everything within reach; nothing within earshot that can shame you.",
+      ),
+      ul([
+        "Test call the day before: camera, microphone, headphones, backup hotspot. Two minutes of testing buys an hour of calm.",
+        "Window in front of you, camera at eye level, wall plain behind you. Set it tonight, not at five minutes to the call.",
+        "Brief the house and silence the phone in another room. The blender has ended more interviews than the network.",
+        "Camera, not mirror: look at the dot when you answer. Then the same-day thank-you message.",
+      ]),
+      h2("The room you control"),
+      p(
+        "The office candidate competes in a room the employer built. You compete in a room you built — its light, its sound, its calm. That is not a disadvantage; it is a rehearsal. Every habit this lesson installs — the test run, the staged room, the briefed house, the early arrival — is the same discipline the remote lesson asked of the paid professional. Practise it at the interview, and you arrive at the job already fluent in its daily grammar.",
+      ),
+    ],
+  },
+  {
+    slug: "slides-that-speak",
+    title: "Slides that speak",
+    excerpt:
+      "The audience cannot read and listen at once, so the slide carries the lantern and you carry the talk. One idea per slide, letters for the back row, and the rehearsal that removes the fear.",
+    series: SERIES,
+    order: 155,
+    author: AUTHOR,
+    date: "2026-08-29",
+    cover: "/images/blog/slides-projector-talk.jpg",
+    coverAlt:
+      "A speaker beside a projected slide in a small hall, the audience listening in shadow.",
+    body: [
+      p(
+        "Sooner or later the working life asks you to stand in front of people and present — the church committee, the client, the class, the town meeting — and the laptop comes with the territory. The slides were invented to help, and they have mostly become a punishment: walls of tiny text read aloud to a suffering room. This lesson returns them to their job. The slide is the lantern; you are the talk. The moment the slide tries to be the talk, both die.",
+      ),
+      p(
+        "The rules are few and merciful. One idea per slide — if the slide needs an and, it is two slides. Letters big enough for the back row: a title and at most a handful of short lines, in the poster lesson's discipline turned sideways — readable at a glance from a distance, or not at all. Few words, because the audience cannot read and listen to you at the same time; they will read, in silence, while your voice is wasted. So the slide shows the one number, the one picture, the one name — and your mouth carries the story. Two fonts, three colours, the designer's restraint. Images that mean something, not clip art that fills silence.",
+      ),
+      fig(
+        "/images/blog/slides-projector-talk.jpg",
+        "A speaker beside a projected slide in a small hall, the audience listening in shadow.",
+        "The lantern and the talk. The slide glows with one idea; the room looks at one or the other, never fighting both.",
+      ),
+      h2("The preparation that removes the fear"),
+      p(
+        "Public fear of presenting is mostly fear of the machine betraying you, and that fear is treatable. Rehearse aloud once, with a timer, standing — the first run always surprises, which is its purpose. Learn the projector lesson's walk: if the venue matters, test the venue — the projector, the adapter, whether your laptop speaks its language — before the audience arrives, not during your introduction. Learn the presenter view, so your notes sit on your screen while the wall shows only the slide. Carry the slides on a flash drive and in your email, both, in the PDF lesson's spirit: the format that survives every machine. And arrive early enough to be the calmest person in the building.",
+      ),
+      p(
+        "Then the delivery, which is smaller than the fear: face the room, not the wall — the audience gets your eyes, the screen gets your pointing hand. Speak slower than feels natural; rooms eat volume the way networks eat consonants. Pause after each big idea and let the silence hold it. And never, ever read the slide aloud with your back to the room — the audience read it before you finished turning. If a slide needs reading, that is what the handout is for: printed, or sent after, where it cannot compete with your voice. Do these small things and something wonderful happens on the third or fourth slide: the fear leaves, because the room starts nodding, and nodding is a conversation.",
+      ),
+      fig(
+        "/images/blog/slide-big-font.jpg",
+        "A laptop screen showing a single large slide: one big statement, one large number, nothing else.",
+        "The whole art on one slide: one statement, one number, and a speaker who knows the rest by heart.",
+      ),
+      ul([
+        "Rewrite your next presentation: one idea per slide, nothing smaller than back-row letters. Cut half the words; cut the slide that fights you.",
+        "Rehearse aloud, timed, standing, once. The second time is for the room; the first is for the truth.",
+        "Test the venue's projector or screen before the hour, and carry the slides twice — flash drive and email.",
+        "Face the room. Pause after the big ideas. Send the handout after, never read it out during.",
+      ]),
+      h2("Why this is a basic skill"),
+      p(
+        "Because the person who can stand, lantern in hand, and make a room understand an idea in ten minutes becomes the person the room asks to explain things — and the person rooms ask to explain things is the person rooms promote, hire and recommend. The analyst's chart, the designer's concept, the teacher's lesson, the pastor's announcement: all of them ride on this one small machine craft. The lantern is cheap. The nerve is practised. Begin with the next staff meeting.",
+      ),
+    ],
+  },
+  {
+    slug: "email-that-gets-answered",
+    title: "Email that gets answered",
+    excerpt:
+      "A busy person answers mail between meetings, in twenty seconds each. The subject line that says the thing, the first sentence that asks, and the follow-up that is polite and shameless.",
+    series: SERIES,
+    order: 156,
+    author: AUTHOR,
+    date: "2026-09-01",
+    cover: "/images/blog/email-subject-line.jpg",
+    coverAlt:
+      "A laptop screen showing a short email being composed with a clear subject line filled.",
+    body: [
+      p(
+        "Your first email was written to be correct. This one is written to be answered — a different craft, because the person receiving it is drowning. A working professional clears a hundred messages a day between meetings, giving each about twenty seconds: open, scan, decide — reply, later, or never. The craft of email is winning those twenty seconds, and every rule below serves that one mercy: make it easy to say yes.",
+      ),
+      p(
+        "The subject line is half the battle, because it decides whether the letter opens at all. It states the thing, in plain words, with the decision needed: Invoice 12 for approval — due Friday, not hello or quick question or, sin of sins, empty. The first sentence then does the second half of the work: it states the ask — I am writing to ask whether the budget can cover two more laptops this term. Not a warm-up paragraph about the weather of the matter; the ask, first, so a reader who can answer it in one line has already finished. Then the short middle: two or three tight paragraphs, one idea each, white space between — the letter lesson's manners with the analyst's economy. One ask per email. The letter asking for a meeting, a document and a decision gets sent to later, which is where letters go to die; the letter asking for one thing gets the reply today.",
+      ),
+      fig(
+        "/images/blog/email-subject-line.jpg",
+        "A laptop screen showing a short email being composed with a clear subject line filled.",
+        "Twenty seconds of reading, structured for mercy: subject states the matter, first sentence asks, one decision needed. Answered by lunch.",
+      ),
+      h2("The follow-up, and the manners around it"),
+      p(
+        "Silence after two days is not rejection; it is a full inbox. The follow-up is not rude — it is professional, and it has a shape: three to five working days later, reply on the same thread — the history rises for them like a file reopened, and your subject line is already familiar — with one polite line: dear ma, floating this to the top of your inbox; the invoice approval is due Friday. No new thread, no guilt, no novel. If a second follow-up is needed, change something: shorten the ask, offer a call, or — for true deadlines — go up or around with care, copying the shared boss only when the matter is genuinely shared, the Cc lesson's law. The shameless follow-up, politely done, closes more deals in this country than brilliance ever has; the timid letter that dies quietly after one attempt was never answered because it was never seen.",
+      ),
+      p(
+        "And the small courtesies that make your address a welcome one: the signature with name, role and phone — no quotations, no eight colours; the reply-all refused unless the whole corridor truly needs the thanks; attachments attached before sending, checked twice, the pocket lesson's rule; and the twenty-second mercy granted backwards — when you reply to others, answer the ask in the first line, so your name becomes the one inboxes are glad to see. Email is a reputation written one message at a time. The craft above is how yours becomes the easy yes.",
+      ),
+      fig(
+        "/images/blog/email-inbox-zero.jpg",
+        "A laptop showing a tidy inbox with few messages and two replies typed in short lines.",
+        "The inbox, at peace. Every message answered in the first line makes your address the one that gets opened first.",
+      ),
+      ul([
+        "Rewrite your next email: subject states the matter, first sentence asks, one ask only. Then send.",
+        "Adopt the 3–5 day follow-up on the same thread, one line, no apology. Bury shame where it belongs.",
+        "Read your sent folder this week: count the emails with no clear ask. That is why they died.",
+        "Reply to others the way you wish to be replied to: answer first, manners after, signatures quiet.",
+      ]),
+      h2("The twenty-second gift"),
+      p(
+        "Every rule here is one mercy in two directions: it wins the reader's twenty seconds, and it buys your letter a life. The person whose emails are clear, short and easy to answer is not merely efficient — they are trusted, because clarity reads as competence and brevity reads as respect. Write the letter a busy person can say yes to, and busy people will keep opening yours first.",
+      ),
+    ],
+  },
+  {
+    slug: "notes-that-last",
+    title: "Notes that last",
+    excerpt:
+      "You will not remember Friday in March, so Friday must write to March. One home for every note, named and dated, reviewed weekly — the quiet system that turns busy weeks into a memory.",
+    series: SERIES,
+    order: 157,
+    author: AUTHOR,
+    date: "2026-09-06",
+    cover: "/images/blog/notebook-system-desk.jpg",
+    coverAlt:
+      "An open notebook with dated notes beside a phone showing a notes app, pen across the page.",
+    body: [
+      p(
+        "Here is a painful test: what did you agree on last Tuesday's call? Who told you the fee changed, and when? Most people cannot say, not because the memory is weak but because nothing was ever written where March could find it. The working life runs on notes — decisions, names, prices, promises — and the difference between people who seem organised and people who actually are, is not talent. It is one home, one habit, and ten minutes a week.",
+      ),
+      p(
+        "One home. Not seven. Choose a single place where every note lives — a notes app on the phone and computer that syncs, or one good notebook always in the same bag pocket — and let it become boring with use. The scattered system is the failed system: the meeting note in the phone, the price on a card, the promise in a chat that has since sunk. Whatever you choose, the rules of the house are the ones you already keep elsewhere: every note gets a date and a title — 14 June, Chidi — generator quote — so the search box of the Ctrl+F lesson finds it in a blink next March. Capture fast, file weekly: in the meeting, thumb flying, spelling be damned; on Friday, ten minutes to tidy, tag and throw out the notes that seemed urgent and turned out to be noise.",
+      ),
+      fig(
+        "/images/blog/notebook-system-desk.jpg",
+        "An open notebook with dated notes beside a phone showing the same notes in an app, pen across the page.",
+        "Two homes that are one home: paper for the meeting, the app for the archive. Every entry dated, every title honest, Friday tidies it.",
+      ),
+      h2("What to write, and the weekly review"),
+      p(
+        "Meeting notes have kept a four-line discipline for a century, and it survives every app: the date and the people; what was decided; who carries what, with a date; and what nobody agreed but somebody thinks happened. Write decisions in the room, and where you can, read them back aloud before the meeting ends — may I confirm, we agreed Friday for the delivery and Nana pays the courier — the sentence that has saved more working friendships than any contract. Personal notes follow the same bones: what happened, what it means, what I will do. And the photograph saves the paper world: a notebook page shot into Drive, the papers lesson's backup applied to your own handwriting, survives the bag, the rain and the taxi seat.",
+      ),
+      p(
+        "The weekly review is where notes become a memory instead of a landfill. Friday, ten minutes: read the week's notes top to bottom, carry the unfinished whos and whens into next week's page, check every promise against the calendar, and — the part nobody regrets — search something old. Watch the search box find, in three seconds, the phone number you wrote in February and thought you would remember. That small miracle, repeated weekly, is the whole system paying rent. You will not remember Friday in March. Friday wrote to March, in a house March knows how to search. That is what organised people actually do, and from this week, so do you.",
+      ),
+      fig(
+        "/images/blog/notes-app-phone.jpg",
+        "A hand using a notes app on a phone, the list showing dated titled notes, one being edited.",
+        "The archive in the pocket. Dated, titled, searchable — the meeting you half-remember is three thumb-taps from the truth.",
+      ),
+      ul([
+        "Choose the one home today — app or notebook — and move tomorrow's notes there. Boring and faithful beats clever and abandoned.",
+        "Date and title every note, always. Future-you searches titles, not vibes.",
+        "Book the Friday ten minutes: tidy the week, carry the open whos and whens, search something old.",
+        "Meetings: date, people, decided, who carries what by when — read back aloud before the room breaks up.",
+      ]),
+      h2("The memory you are building"),
+      p(
+        "A year of this system leaves you with something nobody can take to the cleaners: a searchable record of your own working life — every decision, every price, every promise and its date. It makes you the person who says as I wrote on the 14th instead of I think; it settles arguments before they start; and it compounds, quietly, into the professional's greatest advantage — knowing what actually happened. The books of lesson one hundred and forty-three keep the money honest. This keeps the weeks honest. Same discipline, smaller notebook.",
+      ),
+    ],
+  },
+  {
+    slug: "the-pivot-table-properly",
+    title: "The pivot table, properly",
+    excerpt:
+      "One thousand rows in, three sentences out, without touching a formula: select, drag, read. The spreadsheet's most respected tool, walked slowly in the series voice.",
+    series: SERIES,
+    order: 158,
+    author: AUTHOR,
+    date: "2026-09-10",
+    cover: "/images/blog/pivot-table-screen.jpg",
+    coverAlt: "A laptop showing a spreadsheet of sales rows beside a small pivot summary table.",
+    body: [
+      p(
+        "The data analyst lesson named the pivot table as the most respected spreadsheet skill in the room. This lesson teaches it, slowly, because the respect is deserved and the fear is not: the pivot table is one of those machines that looks like sorcery and is actually a lever. Ten minutes here replaces hours of formula-copying, and the summary it builds never lies about where it came from.",
+      ),
+      p(
+        "Picture the raw material first, because every pivot begins the same way: one solid block of rows — a thousand sales, a term's fees, a month's transactions — with one clean header row on top: Date, Item, Amount, Branch. Clean means the sorting lesson's rules: no merged cells, no blank columns inside, no notes wandering in row 40. Then the whole act: click once inside the block, choose Insert, then Pivot Table, and tell it where the new summary should live. The spreadsheet now offers you a small panel with four trays — Rows, Columns, Values, Filters — and the whole craft is dragging fields between trays and watching the summary rebuild itself. That is all a pivot is: a machine that groups your rows and counts or adds them, at your instruction, in seconds.",
+      ),
+      fig(
+        "/images/blog/pivot-table-screen.jpg",
+        "A laptop showing a spreadsheet of sales rows beside a small pivot summary table.",
+        "One thousand rows in, three sentences out. The left panel is the raw truth; the right table is the lever's answer, rebuilt in one drag.",
+      ),
+      h2("A worked example, walked"),
+      p(
+        "Drag Item into Rows, and the table lists every product once, neatly, instead of the thousand messy times it appears in the data. Drag Amount into Values, and it adds the money beside each product — the machine chooses Sum because Amount is money; if you drag a column of names instead, it counts them, which is how you answer how many, not how much. Drag Branch into Columns, and the totals split side by side: this product, per branch, meeting in the corner cell. Drag Date under Rows above Item, and the months stack into a story of the year. Every question a small business asks its books — what sells, where, when, how much — is two or three drags away, and the pivot lesson's punchline is the analyst lesson's too: the summary is a lens, not a copy. Change nothing in the original block; refresh the pivot when the data grows, and the lens re-focuses itself. Formulas typed by hand into the summary cannot make that promise — a pivot's answer is always one refresh away from the truth.",
+      ),
+      p(
+        "Then the finishing manners: sort the result — the biggest number to the top, the answer the boss actually asked; give the summary a title that states the question, June sales by branch, not PivotTable4; and where the summary must travel, copy it as values into a fresh sheet or PDF, the way every document on this shelf travels. Practise once on any data you own — the shop's book, the house expenses from lesson eighty-four — and you will feel the moment every analyst remembers: the thousand rows became one sentence, and you did not type a single formula. That moment is the door to lesson one hundred and thirty-one's whole career.",
+      ),
+      fig(
+        "/images/blog/pivot-rows-drag.jpg",
+        "A close view of a pivot panel on screen, a field being dragged from a list into the Rows tray.",
+        "The whole craft in one gesture: drag the field, drop the tray, watch the answer build itself. No formula, no copy — one lever.",
+      ),
+      ul([
+        "Clean the block first: one header row, no merges, no strays. The pivot is honest; it only summarises what is there.",
+        "Walk the drags in order: Item to Rows, Amount to Values, Branch to Columns, Date to stack the months.",
+        "Remember the lens rule: change nothing in the original data; refresh and the answer re-focuses.",
+        "Title the summary with its question and sort it biggest-first. A pivot that needs explaining has a bad title, not a bad table.",
+      ]),
+      h2("The lever, not the magic"),
+      p(
+        "Nothing here required genius — only the willingness to select, drag and read, which you have been doing since the sorting lesson. That is the quiet joke of the spreadsheet world: its most respected tool is a two-minute skill wearing a fearsome name. Learn it once on your own books, and the next time somebody dumps a thousand rows in your lap and asks for the summary by Friday, you will smile the analyst's smile and say: give me five minutes.",
+      ),
+    ],
+  },
+  {
+    slug: "health-online",
+    title: "Health online, without the lies",
+    excerpt:
+      "Booking appointments, verified telemedicine, pharmacy delivery — and the hard rule the forward lesson left behind: symptoms go to professionals, never to a search box or a broadcast list.",
+    series: SERIES,
+    order: 159,
+    author: AUTHOR,
+    date: "2026-09-15",
+    cover: "/images/blog/health-booking-phone.jpg",
+    coverAlt: "A woman booking a doctor's appointment on her phone at a kitchen table.",
+    body: [
+      p(
+        "The internet has become the front desk of Nigerian healthcare — appointments booked, doctors consulted by video, medicines delivered to the gate — and it works, when it is the real system. It also carries the most dangerous lie on this entire shelf: the health forward. This lesson walks both halves, because the same screen that brings a verified doctor to your parlour also brings the cure that skips the hospital, and the difference is the skill being taught here.",
+      ),
+      p(
+        "The honest half first. Booking: many hospitals and labs now take appointments through their own portals, phone lines or verified WhatsApp lines — the government-portals lesson's law applies with extra force, because health fakes are cruel fakes; the address must be the hospital's own, reached from its verified page or a number you already trust. Telemedicine — a consultation by video or chat — is real and regulated: use platforms you can verify, whose doctors carry recognisable registration, whose reviews stretch over months, and whose fee is stated before the call, the pricing lesson applied to medicine. Pharmacy delivery is real too: licensed pharmacies deliver genuine medicines to your gate — check the seller's licence where the app shows it, check the medicine's packaging and expiry like you check a parcel at the gate, and keep every receipt. Then the records: prescriptions, test results, discharge summaries — scanned and named into the Papers folder in Drive beside the certificates, because in an emergency at midnight, the folder that has your mother's last test result is worth more than everything else on this shelf.",
+      ),
+      fig(
+        "/images/blog/health-booking-phone.jpg",
+        "A woman booking a doctor's appointment on her phone at a kitchen table.",
+        "The front desk, moved home. Verified platform, stated fee, records kept — healthcare with the shelf's manners.",
+      ),
+      h2("The hard rule"),
+      p(
+        "Now the half that saves lives. The forward that lies taught you to check before sharing; for health, the rule is harder — do not diagnose, and do not obey. Symptoms do not go to a search box, a broadcast list, or a church group; they go to a professional, because the search box has no duty of care and no knowledge of your mother's blood pressure. The home cure that skips the hospital — herbs for a lump, lime for a fever that is actually malaria pretending, prayer alone for a child with convulsions — has buried more people on this continent than every scammer combined, and it arrives wearing love. So the family rule, stated once and kept forever: health forwards are not forwarded, not obeyed, and answered with one sentence — let us ask the doctor. And the emergency rule beside it: when the body is clearly failing — chest pain, a child gasping, bleeding that will not stop — you go, you run, you do not type. The phone can book the ambulance. It cannot be one.",
+      ),
+      p(
+        "Used this way, the screen is the best thing that ever happened to a busy household's health: the appointment booked in the queue at work, the follow-up question answered by video, the drugs at the gate, the records safe above the flood. Used carelessly, it is a pharmacy of rumours. You already know how to tell one from the other — verified source, stated fee, professional on the other end, pause before the forward. The next lesson is the last of the chapter, and it asks what happens when all the tools change again.",
+      ),
+      fig(
+        "/images/blog/telemedicine-video-call.jpg",
+        "A man on a video call with a doctor, the doctor visible on the phone screen taking notes.",
+        "The parlour clinic. A verified professional, a stated fee, and the family rule standing guard: symptoms go to the doctor, not to the group.",
+      ),
+      ul([
+        "Build the family health folder in Drive tonight: last prescriptions, test results, blood groups. Midnight-you will bless this hour.",
+        "Verify before the call: the platform, the doctor's registration, the fee in writing. Healthcare gets the government-portals suspicion, doubled.",
+        "Install the family rule at the table: health forwards are neither forwarded nor obeyed. The answer is always let us ask the doctor.",
+        "Emergencies are travelled, not typed. Know your nearest good hospital the way you know your nearest fuel station.",
+      ]),
+      h2("The screen, at the bedside"),
+      p(
+        "Of everything this shelf has taught, this lesson carries the heaviest arithmetic, because the accounts are not in naira. The same care you learned to spend on money — verify the channel, keep the record, refuse the hurry — spends even better on health. The house that books its own appointments, keeps its own records and declines its own forwards is a hard house to hurt. That is the whole lesson. Go and keep it well.",
+      ),
+    ],
+  },
+  {
+    slug: "the-upgrade-habit",
+    title: "The upgrade habit",
+    excerpt:
+      "Every tool on this shelf will be replaced someday, and none of the habits will. The yearly skills audit, one new tool per quarter, unlearning with grace — how to stay current for decades.",
+    series: SERIES,
+    order: 160,
+    author: AUTHOR,
+    date: "2026-09-20",
+    cover: "/images/blog/upgrade-shelf-books.jpg",
+    coverAlt:
+      "A person comparing an old phone and a new phone side by side at a desk, both open on settings.",
+    body: [
+      p(
+        "Here is a fact nobody enjoys saying aloud: half the specific tools in these one hundred and sixty notes will be renamed, rebuilt or retired within ten years. The apps will change their buttons, the platforms will change their rules, the acronyms of lesson thirteen's world will grow new letters. And yet the people these notes describe — the calm analyst, the honest seller, the teacher at the table — will still be working, because what the tools were carrying was never the skill. The upgrade habit is the last lesson of this chapter: how to keep current for decades without chasing every shiny thing off a cliff.",
+      ),
+      p(
+        "The habit has three parts, and the first is the fence-check turned inward: the yearly skills audit. Once a year — your birthday week, same as the cleaning lesson — sit with your trade's adverts and your own work and ask coldly: what changed this year? What are the new names asking for? What did I keep doing the long way because the short way arrived while I was busy? Write three lines: one skill to deepen, one tool to learn, one habit to drop. The audit is not self-criticism; it is maintenance, the fence walk for the only compound that is entirely yours.",
+      ),
+      fig(
+        "/images/blog/upgrade-shelf-books.jpg",
+        "A person comparing an old phone and a new phone side by side at a desk, both open on settings.",
+        "The audit, in one photograph: last year's tool and this year's, compared calmly, neither worshipped. The skill is the person holding both.",
+      ),
+      h2("One tool a quarter, unlearned with grace"),
+      p(
+        "The second part is pace. One new tool per quarter, learned properly by the free-learning method — one month, hands on keys, one real thing built — beats twelve tools dabbled at, the way one finished course beats a gallery of beginnings. Choose by the adverts you actually want and the work actually in front of you, not by the loudest launch of the season. The third part is the harder muscle: unlearning. When the tool changes — the menu moved, the name changed, the road you had memorised rebuilt — the frustration you feel is the old habit fighting the new map. Give it a week and the free videos, the way every migration in your digital life has gone: clumsy on Tuesday, fluent by Friday. The professionals you admire are not people who never unlearned. They are people who unlearn quickly and without ceremony, again and again, until the unlearning itself became the skill.",
+      ),
+      p(
+        "And teach the upgrades onward — the each-one rule, forever. The colleague you walk through the new interface today is the person who walks you through the next one next year; that is how offices, families and this academy actually stay current. These notes will age exactly as all notes do; the habits underneath — verify before you trust, save before you work, pause before you pay, teach before you leave — are the cargo that survives every vehicle. When the machine of 2036 looks back at the machine of this page, the shelf will be different and the reader will be the same kind of person: the one who sat down, named the parts, and kept showing up. That was always the curriculum. It still is. Go and audit your fence.",
+      ),
+      fig(
+        "/images/blog/learn-new-tool-screen.jpg",
+        "A person at a desk following a tutorial for an unfamiliar new app, notebook open, expression calm.",
+        "Quarter one's new tool, month one's clumsiness, week two's fluency. The upgrade habit is just the old ten honest minutes, wearing new menus.",
+      ),
+      ul([
+        "Book the yearly audit: one skill to deepen, one tool to learn, one habit to drop. Three lines, birthday week, every year.",
+        "One new tool per quarter, learned to the point of one real finished thing. Dabbling is collecting; finishing is learning.",
+        "When the menus move, give the new map one week and the free videos. Fluent by Friday, every migration, forever.",
+        "Teach each upgrade to one person as you learn it. The office that teaches itself never needs rescuing.",
+      ]),
+      h2("The shelf, and the road"),
+      p(
+        "One hundred and sixty notes. From the dark screen of lesson one to the habit that outlasts every screen to come. The chapter closes, the notes stay open, and the rule of the whole shelf says goodbye the only way it knows: whatever changes, sit down, name the parts, do the hours, and teach somebody on your way out. The road will keep being rebuilt. So will you. That is not the tragedy of the trade — it is the trade.",
+      ),
+    ],
+  },
+  {
+    slug: "banking-without-the-internet",
+    title: "Banking without the internet",
+    excerpt:
+      "Data dead, network alive: the short codes that move money on any phone in Nigeria, the fake codes that collect instead, and the pocket habits that keep the two apart.",
+    series: SERIES,
+    order: 161,
+    author: AUTHOR,
+    date: "2026-08-21",
+    cover: "/images/blog/ussd-dial-screen.jpg",
+    coverAlt: "A thumb dialing a short banking code on a small phone under a dim bulb.",
+    body: [
+      p(
+        "The data finished on the twelfth of the month, as it always does, and the school fees refused to wait for the next bundle. Then the trader beside you — the one with the small phone with the torch that barely works — dialed five symbols and moved the money anyway. That is USSD: the bank's short code, spoken over the call network instead of the internet. It works on every phone ever sold in this country, it works when the data is dead, when the smartphone is charging in another room, when the generator is off and the network bar is one thin line. Every Nigerian who moves money should hold this key, and hold it correctly, because the same door that carries your money has been copied by collectors.",
+      ),
+      p(
+        "The shape of it, once, slowly. You dial the bank's short code — it begins with the star key and ends with the hash, the way a sentence begins and ends. The network answers with a menu: transfer, balance, airtime, bill. You choose, you type the account number, the app shows you the name — read the name, the bank-lesson's law, unchanged at this altitude — you type your PIN, and the confirmation lands as a text message with a reference. The session lives for less than a minute and dies when the screen says so. No data was spent. No app was opened. The whole transaction breathed on the call network your SIM already had. And that is why it saves the month on the twelfth, and why the school fees did not wait for the bundle.",
+      ),
+      fig(
+        "/images/blog/ussd-dial-screen.jpg",
+        "A thumb dialing a short banking code on a small phone under a dim bulb.",
+        "Star, numbers, hash. The oldest network in your pocket, still the most reliable road when the data is gone.",
+      ),
+      fig(
+        "/images/blog/ussd-sim-alerts.jpg",
+        "A phone screen showing two signal bars, one marked with the bank's alert line.",
+        "Two lines, one job each. Know which SIM the bank sends its alerts to, and keep that line alive — it is the receipt road.",
+      ),
+      h2("The code belongs to the bank, and the bank alone"),
+      p(
+        "Now the warning, and it is not a small one. Codes travel as forwards. Somebody sends you the code for a bank on a broadcast list; a poster at the kiosk prints one; a helpful comment under a market video lists them all. The fraudsters know this, and they print too — a code one digit away from the bank's real one, with a menu that looks identical and a collector sitting where the bank should be. The rule that keeps you safe is the one you already keep for portals: the code comes from the bank itself — its own website, the card in your wallet, the line printed on your ATM receipt — never from a forward, never from a poster, never from a comment. Save your bank's real code in the phone once, from the source, and never dial another for that bank again. The forwards lesson's law, sharpened for money: a code you cannot trace is a code you cannot dial.",
+      ),
+      p(
+        "Two pocket manners complete the craft. First, the PIN: it is typed on the keypad, into the menu your bank's code raised — never given to a caller, never given to the helpful man at the market who offers to do the transfer for you while you hold the parcel. If a stranger must help with the dialing, let them dial and then hand them away from the PIN; better still, do what the trader does and learn the four keys yourself, one evening, on a small transfer of fifty naira to yourself. Second, the dual-SIM housekeeping: know which line the bank knows — the SIM that receives the alerts — and keep that SIM alive, charged, registered. The alerts are the receipts of this road. A bank whose alert line is dead is a bank whose money whispers.",
+      ),
+      fig(
+        "/images/blog/ussd-reference-note.jpg",
+        "A small notebook open on a market stall counter, a transfer reference written beside today's date.",
+        "The confirmation lands as a text with a reference. Write it beside the day's sales — the books lesson's law, kept at the speed of the market.",
+      ),
+      ul([
+        "Get your bank's real short code from the bank itself — website, card, or receipt — and save it. Never dial a forwarded code.",
+        "Practise once with fifty naira to your own account: menu, name, PIN, confirmation. The road, walked in daylight.",
+        "The PIN is typed by your own thumb only — not spoken, not handed to a market helper.",
+        "Know which SIM receives the bank alerts and keep it alive. No alerts, no receipts, no peace.",
+      ]),
+      h2("The network that never finishes"),
+      p(
+        "Data bundles expire and promotions end, but the call network is the last light on in every storm — it carried the OTPs of lesson ninety-eight and now it carries the market's money. The trader with the small phone was never behind the times. She was ahead of them: she keeps one road that does not depend on bundles, on apps, on the grid. Learn her road, keep its laws, and the twelfth of the month becomes just another date the money crossed.",
+      ),
+    ],
+  },
+  {
+    slug: "the-deductions-on-your-line",
+    title: "The deductions on your line",
+    excerpt:
+      "Fifty naira here, twenty there, and the airtime is gone by Wednesday. The quiet subscriptions eating your line, how to see them, how to stop them, and the doors they walked in through.",
+    series: SERIES,
+    order: 162,
+    author: AUTHOR,
+    date: "2026-08-22",
+    cover: "/images/blog/data-deduction-message.jpg",
+    coverAlt:
+      "A phone screen showing a list of small deduction text messages, held by a frowning owner.",
+    body: [
+      p(
+        "Load two thousand naira of airtime on Sunday, and by Wednesday the balance is a rumour. You made three calls. The rest leaked — fifty naira to a ringback tune you never chose, twenty naira a day to a news service that arrived as a quiz, a weekly bundle that renewed itself like rent, a game you do not remember opening. The networks call these value-added services. The street calls them what they are: the quiet deductions, the smallest recurring scam in the country that is also, annoyingly, mostly legal — because somewhere in a long message you did not finish reading, a door was opened and left that way.",
+      ),
+      p(
+        "Doors open in three ordinary ways. The reply: you answered a promo text with a number — one, to claim; the fine print made it a yes to a daily subscription. The link: a message promised a bundle and the page you opened had an accept button wearing a costume. And the code: a forward said dial this to win, and the forward was a subscription wearing confetti. None of these feel like signing a contract. All of them are. Which is why the first skill is not stopping — it is seeing. Check the balance on a fixed day, the books lesson's habit applied to airtime: before, after, and the difference is the story. Then ask the line what it is carrying — every network has a way to list active services, and the honest list lives in the network's own app or portal, the same source law as the bank's code. What you find there usually explains the leak by name.",
+      ),
+      fig(
+        "/images/blog/data-deduction-message.jpg",
+        "A phone screen showing a list of small deduction text messages, held by a frowning owner.",
+        "The leak, in black and white. Fifty naira a day is a bag of rice over a year — the subscription lives on your not-looking.",
+      ),
+      fig(
+        "/images/blog/promo-sms-refused.jpg",
+        "A thumb swiping away a promotional message without replying, the phone's message list behind it.",
+        "The unopened door. A promo text is never answered, never pressed, never dialled — a reply is a pulse that says the line is home.",
+      ),
+      h2("Closing the doors, and the fake exits"),
+      p(
+        "Stopping is satisfying and mostly easy: in the network's own app or portal, the active services sit in plain view, each with a switch or an unsubscribe — turn everything off that you did not choose on purpose, yesterday. Some services end with a simple text to a short code; the exact word and number come from the network's own pages, never from a forward. And here the fraudsters wait, because they know the country is angry about deductions: a text arrives — your line will be deducted massively, press one to unsubscribe now. Pressing one is not unsubscribing. Pressing one is confirming your line is alive and gullible, and the deductions learn your address. The opt-out comes from the source or it does not happen. Then lock the doors behind you: do not reply to promo messages at all, even to refuse — a reply is a pulse that tells the collector the line is home. Do not dial codes from broadcasts. And turn on the full do-not-disturb — the same switch that gave you quiet in lesson ninety-three also refuses the promo messages at the gate, which is the quietest victory of all.",
+      ),
+      p(
+        "One more leak deserves its own sentence: the airtime-to-data conversions and the borrow-me services. Borrowed airtime and borrowed data charge back with interest the day you recharge, and a line that borrows monthly is paying a quiet tax. Use them in true emergencies, and watch the claw-back on the next recharge so it does not surprise a budget. The line, like the account, deserves the monthly hour of the books: one balance, one list, one honest purge. Two thousand naira of airtime should make calls for a month. On a clean line, it does.",
+      ),
+      fig(
+        "/images/blog/unsubscribe-services-app.jpg",
+        "A hand in the network's own app, the active-services list open, a thumb about to switch one off.",
+        "The list, in daylight, from the source. Every switch turned off that you did not choose on purpose is money back in the pocket.",
+      ),
+      ul([
+        "Fixed day, every week: check the balance before and after a call. The difference is the story.",
+        "Open the network's own app or portal and read the active-services list. Switch off what you did not choose.",
+        "Never press one on a warning text, never reply to promos, never dial a code from a broadcast. The opt-out scam feeds on anger.",
+        "Full do-not-disturb, on: quiet, and no promo messages at the gate. Then watch a week of balance. This is the whole lesson, working.",
+      ]),
+      h2("The smallest recurring scam"),
+      p(
+        "Nobody gets rich stealing fifty naira from a million people — but a million people quietly get poorer, which is the same arithmetic wearing the other trouser. The deductions survive on not-looking, and not-looking is a habit you can simply end. One evening with the network's app, one list switched off, one DND turned on — and the line goes back to being what you paid for: your voice, your data, your money. The next lesson stays with the bundle itself, and asks where the data actually goes by Wednesday.",
+      ),
+    ],
+  },
+  {
+    slug: "where-the-data-goes",
+    title: "Where the data goes",
+    excerpt:
+      "Two gigabytes, finished by Thursday, and you barely watched anything. The four quiet eaters of a bundle, the settings that leash them, and the buying that stops the middlemen.",
+    series: SERIES,
+    order: 163,
+    author: AUTHOR,
+    date: "2026-08-26",
+    cover: "/images/blog/data-usage-settings.jpg",
+    coverAlt:
+      "A phone screen showing a data usage bar, most of it already consumed, held in one hand.",
+    body: [
+      p(
+        "The bundle was two gigabytes on Monday, fat and confident. By Thursday the phone says data exhausted, and you are genuinely confused — you watched nothing, or so your memory insists. The memory is honest; the bundle was still eaten. A bundle is a bowl of water in a house with four quiet drinkers, and this lesson is about learning their names, because a drinker with a name can be leashed.",
+      ),
+      p(
+        "The eaters, by appetite. The updater: every app on the phone checks for new versions, and the big ones — the social apps, the maps — update in the hundreds of megabytes, over your bundle if you let them. The leash is one switch: updates over Wi-Fi only, the updates lesson's law, and the biggest eater sits down. The backup: photographs climb to the cloud all day on mobile data if the gallery's setting says so — fifteen years of family history quietly metered. Backups belong to Wi-Fi, or to the nights when you switch them on yourself. The streamer: video drinks data the way the noon sun drinks a bucket — an hour of high-quality video can finish a daily bundle alone; the caption lesson's settings hold the cure, because a lower quality looks the same on a six-inch screen and drinks a tenth. And the background: apps you are not even using, refreshing feeds, syncing, checking — the settings page has a screen that names every eater on the phone and shows exactly how much each drank this month. Open it once, with the confusion of Thursday in your mind, and the mystery dies in ninety seconds of honest reading.",
+      ),
+      fig(
+        "/images/blog/data-usage-settings.jpg",
+        "A phone screen showing a data usage bar, most of it already consumed, held in one hand.",
+        "The bar does not judge; it reports. One screen names every eater in the house and the size of each mouth.",
+      ),
+      h2("The leash, and the buying"),
+      p(
+        "Three switches leash the house for good. Data saver, in the network settings — the phone stops the background drinking and lets the foreground apps eat only when you are actually looking. Auto-update over Wi-Fi only, as above. And a data warning set at three-quarters of the bundle — the phone taps you on the shoulder before the exhaustion, not after, which turns Thursday's surprise into Wednesday's decision. Then the buying itself, briefly and firmly: bundles come from the network's own app, its own portal, its own codes — never from the market agent who promises a bigger bundle for less, because the oversized cheap bundle is the recharge-card scam of this decade; the SIM either works at half speed, or works at all until Monday. Know your cycle — the day it renews, the day it dies — and note it in the weekly book beside the airtime. A bundle with a known birthday cannot ambush you.",
+      ),
+      fig(
+        "/images/blog/data-bundle-notebook.jpg",
+        "A weekly notebook with the bundle's renewal day circled beside the week's expenses.",
+        "The birthday, noted. A bundle whose renewal day sits in the book becomes a decision, not a surprise.",
+      ),
+      p(
+        "And the dual-SIM clause, because half the phones in this country carry two lines: data comes out of exactly one SIM — the one the settings call the data SIM — and the switch that chooses it lives in the network settings. The classic tragedy is the data on line one, the browsing on line two's airtime, discovered at month's end in the balance. Check the switch once, after any software update, and whenever a bundle refuses to work: the phone is usually obedient; it was only never told. Bundle, leash, switch — three words that turn the bowl from a mystery into a managed meal. The next lesson walks to the machine that eats a different kind of money: the cash machine at the bank, and its market cousin.",
+      ),
+      fig(
+        "/images/blog/data-saver-toggle.jpg",
+        "A close view of a phone's settings screen, a thumb switching data saver on.",
+        "One switch, half the thirst. Data saver lets the apps you are watching drink, and sends the rest away from the bowl.",
+      ),
+      ul([
+        "Open the data usage screen today and read the list by mouth size. The mystery dies in ninety seconds.",
+        "Three switches: data saver on, updates over Wi-Fi only, gallery backup on Wi-Fi only.",
+        "Set the data warning at three-quarters. Thursday's surprise becomes Wednesday's decision.",
+        "Bundles from the network's own channels only. The oversized cheap bundle is a costume with a zipper.",
+      ]),
+      h2("The managed meal"),
+      p(
+        "Two gigabytes is not a small bundle; it is an unmanaged one. Named eaters, three switches, a known renewal day — and the same two gigabytes stretch to the end of the month with room for the videos you actually chose to watch. Data is money in a different costume, and it obeys the same law this shelf has taught since lesson six: what you do not watch leaks. Watch the bowl. The next lesson goes to the bank's wall, where the money becomes notes — and where a new generation of thieves waits at the slot.",
+      ),
+    ],
+  },
+  {
+    slug: "the-atm-and-the-card-manners",
+    title: "The ATM, the POS, and the card manners",
+    excerpt:
+      "The queue under the umbrella, the slot that wiggles, the keypad worth covering: cash machines done correctly, the market POS done politely, and the card that gets frozen in one tap.",
+    series: SERIES,
+    order: 164,
+    author: AUTHOR,
+    date: "2026-08-27",
+    cover: "/images/blog/atm-shield-pin.jpg",
+    coverAlt:
+      "A hand covering the ATM keypad while the other types, shoulder and camera protected.",
+    body: [
+      p(
+        "The queue at the bank's wall on a Friday is its own small nation: umbrellas, expectations, the man counting his notes twice, the machine humming behind the bars. The cash machine carried your money across the country while you slept, and it asks in return for a handful of manners — not because the machine has feelings, but because the wall has watchers. This lesson is the whole craft of standing there, and of its market cousin, the POS.",
+      ),
+      p(
+        "Before the card goes in: the slot. A thief's favourite trick is a sleeve that sits over the real slot and copies the card as it passes — a false mouth on the machine. The test is childish and effective: put a finger on the card slot and wiggle it firmly. A real slot is part of the machine and does not move; a sleeve shifts, lifts, or feels loose like a tooth. Anything that wiggles means you do not put your card in — you find another machine, and if the mood takes you, you tell the guard, whose whole day is improved by the news. The same inspection applies to anything above the keypad that looks newly attached; the machine's honest parts are flush and boring, and boring is what you want.",
+      ),
+      fig(
+        "/images/blog/atm-shield-pin.jpg",
+        "A hand covering the ATM keypad while the other types, shoulder and camera protected.",
+        "The left hand is the roof. Shoulders watch from behind, and some thieves watch from above — the covered keypad is the only honest one.",
+      ),
+      h2("The keypad, and the sticker that lies"),
+      p(
+        "The PIN is typed under cover, always, even when nobody is visibly behind you — the queue is patient, the street is long, and a small camera above the keypad can read four keys from where you would never think to look. Left hand as a roof, fingers typing beneath it, the way you have seen careful people do and perhaps wondered about. Then the sticker, which deserves your full suspicion: a neat notice on the machine — machine under maintenance, if your card is retained call this number now. Banks do not attach help stickers to machines in the night before your Friday; the number belongs to a collector, and the retained card is exactly what he is fishing for. The true machine says nothing on paper. If the card is genuinely swallowed, you go inside the bank or you call the line from the bank's own website, and you freeze the card in the app first — the tap you rehearsed in the bank lesson, now earning its keep.",
+      ),
+      p(
+        "The POS at the market completes the craft, in reverse politeness: before the machine is brought near your card, say the amount aloud — eight thousand? — and let the seller confirm, because thumbs mistype and the difference lands in somebody's pocket. Tap or insert, and then the two receipts of this road: the paper slip, collected and glanced at — the amount, the last digits of your card — and the bank alert on your phone, watched until it lands, the balance-is-the-promise law from the selling lesson. No alert after a minute? Ask politely for the slip and wait; reversals happen, but they happen to the person who stood still. And the cash, counted before your back turns — the market's oldest rule, unchanged by the machine that printed the slip. A card lost between the bank and the market: freeze first, ask questions second. The app's switch does not need a queue.",
+      ),
+      fig(
+        "/images/blog/pos-slip-check.jpg",
+        "A hand collecting a small printed POS slip across a market counter, the parcel waiting beside it.",
+        "The slip and the alert, both watched. Reversals happen to the customer who stood still — the parcel crosses after the paper.",
+      ),
+      fig(
+        "/images/blog/atm-slot-check.jpg",
+        "Fingers wiggling the card slot of an ATM before inserting the card.",
+        "The two-second inspection. A slot that moves like a tooth means another machine — and a guard who should hear about it.",
+      ),
+      ul([
+        "Wiggle the slot and glance above the keypad before every withdrawal. Two seconds, every time.",
+        "Left hand as a roof, PIN typed beneath it. No exceptions, not even for a short queue.",
+        "Stickers with phone numbers are not the bank's voice. Card swallowed: freeze in the app, then the bank's own line.",
+        "At the POS: amount said aloud, slip collected, alert watched, cash counted before turning.",
+      ]),
+      h2("The nation at the wall"),
+      p(
+        "Every manner in this lesson is small, and together they are the reason some people have used machines for thirty years without one story to tell. The watchers at the wall are real, but they are lazy — they take the uncovered keypad, the wiggled slot, the uncounted change. Be the person who is boring to steal from. The queue will call you careful under its breath, and your Friday will end with the notes you came for. The next lesson steps away from the wall, to the quiet war your devices fight every day: the grid, and how to keep your machines fed through its moods.",
+      ),
+    ],
+  },
+  {
+    slug: "power-banks-and-surges",
+    title: "Power banks, surges, and the charging life",
+    excerpt:
+      "The grid has moods; your machines have limits. Choosing a power bank that tells the truth, charging on hard ground, and the seconds after the light returns that decide a device's life.",
+    series: SERIES,
+    order: 165,
+    author: AUTHOR,
+    date: "2026-08-31",
+    cover: "/images/blog/power-bank-charging.jpg",
+    coverAlt:
+      "A phone charging from a power bank on a table at night, a small lamp glowing beside it.",
+    body: [
+      p(
+        "The light went at seven and the house exhaled — spoons paused, conversations leaned closer, and in the corner the phone kept working because a small brick in its cable was paying its way. The power bank is the true national companion of this era: it attends weddings, classrooms, markets and hospital corridors, and it asks so little that most people never learn anything about it. This lesson is the learning, because the little brick can serve you faithfully for years or misbehave expensively, and the difference is a few boring facts.",
+      ),
+      p(
+        "Choosing one, honestly. Capacity is printed in milliamp-hours, and the honest arithmetic is roughly this: a ten-thousand bank refills a normal phone about two times, a twenty-thousand about four — everything promising to change those numbers with a flashlight function is lying on the box. The honest brands cost a little more and weigh what they claim; the suspicious ones weigh like air and promise like lottery. Read the printed output too: two ampere charges a phone at a decent pace, one ampere charges it overnight and then some. And the cable counts — the fine cable that came free with a charger is often the reason a bank seems weak. Then the habits, and the first is the one that saves houses: a swollen power bank — the case bulging like a well-fed rat — is finished, whatever the age, whatever the price. It does not get kept in a drawer for emergencies. It gets retired, taken to a repair shop or collection point, and replaced. A swollen battery is a small fire sleeping in your bag, and the bag rides in the sun all day.",
+      ),
+      fig(
+        "/images/blog/power-bank-charging.jpg",
+        "A phone charging from a power bank on a table at night, a small lamp glowing beside it.",
+        "The national companion, paying its way. Two honest refills per charge is the truth a ten-thousand bank should tell on its box.",
+      ),
+      h2("Hard ground, and the seconds after the light"),
+      p(
+        "Charging lives by two placements. The power bank charges itself on a hard surface — table, stool, the floor of the parlour — never under a pillow, never inside a bag while it works, never under the mattress where somebody read that phones charge faster. Batteries breathe heat while they charge, and the phone's own warning about charging on soft beds in lesson forty-one applies to the brick twice over. And the phone charges from the bank away from fuel, candles and the cooking gas — the combination is rarer than you think and exactly as expensive as you fear. Then the surge, which is the part of the lesson that decides the life of the computer: the moment the light returns, the wires carry a first breath of power that is often dirty and sometimes fierce, and the machines that were plugged in during the outage eat that breath first. So the house rule: when the light goes, unplug the valuable things — the computer, the television, the metered fridge if you can reach it — and plug them back a minute after the light settles, fans first, valuables after. A surge strip for the computer desk costs little and absorbs the ordinary bites; it is the umbrella of this road, and like umbrellas it only helps if it was arranged before the rain.",
+      ),
+      p(
+        "The generator changeover deserves its sentence: the machines of the desk — the computer, the router — are either off during the changeover or sitting behind the small UPS from the remote-work lesson, which carries them across the gap without a stammer. And the phones: they forgive surges better than computers, but they do not forgive the market's charging kiosk as much as the queue assumes — a shared charging cable is a shared road, and lesson forty-three's rule about other people's computers applies, gently, to other people's plugs. Charge at home where the house knows your habits, use the kiosk for minutes in true need, and keep the little brick on your side of the bargain: charged on hard ground, retired when it swells, believed when it warms but never when it bulges.",
+      ),
+      fig(
+        "/images/blog/shared-charging-kiosk.jpg",
+        "A market charging kiosk with many cables hanging from a board, one phone attached.",
+        "The shared road, used in minutes and true need. A charging cable is a shared door — charge at home where the house knows your habits.",
+      ),
+      fig(
+        "/images/blog/surge-guard-socket.jpg",
+        "A surge-protected extension strip on a desk, the computer's plug seated in it, switch off during an outage.",
+        "The umbrella of the desk. Arranged before the rain, it absorbs the ordinary bites the grid takes at the machine's health.",
+      ),
+      ul([
+        "Buy the honest capacity — two refills per ten thousand — from a brand that weighs something. Read the box like a price, not a poem.",
+        "A swollen bank retires today, whatever it cost. It rides in the bag with your documents; think about that.",
+        "Charging on hard ground, always. Under the pillow is where charging stories stop being funny.",
+        "Light off, valuables unplugged; light back, one minute, then fans first and the computer after. The surge eats the impatient.",
+      ]),
+      h2("The grid and the guest"),
+      p(
+        "The grid will keep its moods, and the machines will keep their appetites; the household that prospers between the two is the one that arranged its bricks, its strips and its one-minute rule in a quiet week. Power, like money and data, obeys the oldest law of this shelf: what is arranged in daylight does not panic at night. The next lesson takes the same arranging instinct to the wall box in the corridor that beeps when it is hungry — the prepaid meter, and the tokens that feed it.",
+      ),
+    ],
+  },
+  {
+    slug: "electricity-units-online",
+    title: "Electricity units, bought online",
+    excerpt:
+      "The meter is beeping and the night is dark: prepaid tokens bought correctly, typed patiently, kept as receipts — and the cheap-units man at the junction, declined politely forever.",
+    series: SERIES,
+    order: 166,
+    author: AUTHOR,
+    date: "2026-09-03",
+    cover: "/images/blog/prepaid-meter-token.jpg",
+    coverAlt: "A hand typing a long token number into a prepaid meter's keypad by phone light.",
+    body: [
+      p(
+        "The meter announces itself the same way in every house: a soft beep, then a smaller number on its screen than yesterday, then the household's quiet arithmetic — how many days can this last? The prepaid meter changed Nigerian life more than any app ever has: electricity became something you buy, like airtime, in units, and the token that feeds it became part of the family's weekly chore. Done correctly it is boring and reliable. Done carelessly it is a dark night with a twenty-digit code typed twice wrongly. This lesson is the correct version, learned before the beep, not during it.",
+      ),
+      p(
+        "The buying: units come from the electricity company's own portal or app, from its official agents, from the bank apps and USSD menus of lesson one hundred and sixty-one — all of them asking for the same identity: the meter number. The meter number is this lesson's exam number — eleven or thirteen digits printed on the meter itself and on every old receipt — and it is typed from the meter or from the last receipt, never from memory and never from a relative's forward. One swapped digit does not fail loudly; it loads a stranger's kitchen in another street, and your money becomes their light. So the typing is done slowly, checked digit by digit, the exam-slip discipline of the results lesson carried into the corridor. Then the account type matters too: the plan you are on — prepaid, and which tariff band — affects what the same money buys, and the disco's own site explains the bands honestly enough for one evening's reading.",
+      ),
+      fig(
+        "/images/blog/prepaid-meter-token.jpg",
+        "A hand typing a long token number into a prepaid meter's keypad by phone light.",
+        "Twenty digits, typed from the receipt, checked in threes. The meter accepts the patient and beeps at the hurried.",
+      ),
+      h2("The token, and the receipts"),
+      p(
+        "The purchase lands as a token — a long number, usually twenty digits — sent by text or shown on the receipt screen. Type it into the meter's keypad in calm groups, threes or fives, from the paper or the message, not from the memory of a glance; the meter checks the whole code and accepts it with a flash and new credits, or refuses it with a beep that means one digit heard wrongly. Refused twice, stop typing from memory and re-read from the message — the meter is not angry, it is precise. Some tokens carry two codes when the tariff changed; the receipt says so, and the meter asks for them in order. Then the receipt joins the family papers: screenshot into the Money album, the account-number law of the bank lesson, because disputes — a purchase that did not land, a meter that ate a token — are settled by the person holding a reference, not the person holding a feeling. The electricity company's complaint lines are the roads of lesson one hundred and fifteen: real numbers from its own site, not the cheerful helper a neighbour recommends on WhatsApp.",
+      ),
+      fig(
+        "/images/blog/meter-number-notebook.jpg",
+        "A household notebook open to a page where the meter number is written carefully and dated.",
+        "The identity, written once from the meter itself. Every future purchase is typed from this page — never from memory, never from a forward.",
+      ),
+      p(
+        "And the junction, because he is always at the junction: the man with a calculator and a smile who sells units cheaper than the disco, cash only, token delivered by screenshot. The cheap-units man is the recharge-card scammer of this lesson, and the arithmetic of his disappearance is as reliable as the meter's beep — he collects for a month of Fridays, and one Friday the token does not come, and the number that answered all year retires. Electricity is a licensed monopoly; the disco's own channels and its named agents are the only honest doors, and their receipts are the only ones a dispute will honour. Buy from the beep's own family, keep the paper, and the darkest night of the month becomes a two-minute chore done by phone-light. The next lesson boards a plane, and carries the same discipline to thirty-five thousand feet.",
+      ),
+      fig(
+        "/images/blog/meter-receipt-kept.jpg",
+        "A token receipt folded into a household notebook beside a phone, the meter glowing in the background.",
+        "The receipt is the dispute-settler. In the notebook with the other papers — the house that keeps references is never in the dark long.",
+      ),
+      ul([
+        "Write the meter number once, from the meter itself, into the family notebook. Type it from there, always.",
+        "Tokens in calm groups, from the message, not from memory. Refused twice: re-read, re-type, patience.",
+        "Every receipt into the Money album and the papers folder. References settle disputes; feelings do not.",
+        "The cheap-units man is retired this month, politely, forever. Licensed channels only — the disco's own, the bank's, the named agent's.",
+      ]),
+      h2("The beeping box, tamed"),
+      p(
+        "The meter asked to be understood, not feared: one number to protect, one code to type patiently, one receipt to keep. A household that learns this chore once buys its light in two minutes for the rest of its life, and never again stands in the dark decoding a stranger's promise. The same evening that feeds the meter can feed the phone, the bank and the books — the compound, running itself, one token at a time. Next, the lesson boards a plane: your first flight, booked by your own hands.",
+      ),
+    ],
+  },
+  {
+    slug: "booking-a-flight-online",
+    title: "Booking a flight, online, by yourself",
+    excerpt:
+      "The first flight, booked by your own hands: the airline's door, the name spelled like the passport, the reference guarded like a receipt — and the cheap-ticket man at the DM, declined.",
+    series: SERIES,
+    order: 167,
+    author: AUTHOR,
+    date: "2026-09-05",
+    cover: "/images/blog/flight-booking-screen.jpg",
+    coverAlt:
+      "A laptop showing a flight booking form with dates and a passenger's details being typed.",
+    body: [
+      p(
+        "The first flight is a milestone in any family's story, and for most Nigerian families it used to begin at a travel agent's window with a queue and a fee. The window has moved to a screen. Booking a flight online is now a basic skill — of the same family as checking a result and paying a bill — and doing it yourself saves the agent's charge, the middleman's margin, and the particular blindness of trusting somebody else with your own name. This lesson walks the whole road, from the search box to the seat.",
+      ),
+      p(
+        "The door first: book from the airline's own website or app, or from a large reputable travel site you have heard of outside a broadcast — the source law of every ticket on this shelf. The search asks for the route, the dates, and the number of travellers, and here is the first honest money-saver: dates bend prices. Shifting a journey by a day often moves the fare more than any discount code ever will. When the results come, ignore the bold first number and read the total — taxes and levies arrive at the end like in-laws, and the price you compare is the price at the last step. Choose the fare with its baggage honestly: the cheapest ticket that forbids your actual suitcase is the most expensive ticket in the search results, because the extra-kilo fee at the counter is real and it is not friendly.",
+      ),
+      fig(
+        "/images/blog/flight-booking-screen.jpg",
+        "A laptop showing a flight booking form with dates and a passenger's details being typed.",
+        "The search, the bend, the total. The bold number flatters; the last number is the one that flies.",
+      ),
+      h2("The name, the reference, and the cheap-ticket man"),
+      p(
+        "Now the part that no agent will ever forgive and no airline ever excuses: the passenger name must be typed exactly as it reads on the government ID that will walk you into the airport — for local flights, the NIN slip or driver's licence or voter's card; for international, the passport, letter for letter, middle name and all. The CV lesson's spelling law, now at altitude: a ticket in the wrong name is not a ticket, and corrections cost real money or the whole fare. Then the payment, on the secure page, by the laws of lesson one hundred and ten — and the booking lands as a confirmation with a booking reference: a short code of letters and numbers that is this journey's name. The reference goes into the notebook, the screenshot into the Travel album, and the confirmation mail into the Drive, the papers law, because airports believe references, not memories.",
+      ),
+      p(
+        "And the cheap-ticket man, who has migrated from the junction to the DM: a stranger offers this week's Lagos flight at half price, payment first, ticket sent by screenshot. The screenshot lesson's mirror turns here — nothing was ever sent, or something was sent in somebody else's name, and the airport is where both discoveries mature. The airline's own page, the reputable site, the card on the secure checkout, the reference in your own mail: four doors, all yours. Twenty-four hours before the flight, the airline opens check-in — a few taps on the site or app choose your seat and drop a boarding pass onto the phone. Screenshot it, download the PDF, and if the airport Wi-Fi has a reputation, print one at the café: three copies of a small paper have saved more journeys than any charm. Bag weighed at home on the bathroom scale, charger and documents in the small bag at your feet, and the morning of the flight, arrive earlier than your confidence suggests. The first flight, booked by your own hands, becomes the first of many — and the family's next traveller learns it from you, at this same table.",
+      ),
+      fig(
+        "/images/blog/luggage-bathroom-scale.jpg",
+        "A suitcase standing on a bathroom scale, the display showing a number, clothes pressed on the bed behind.",
+        "The kitchen law of the skies: the kilos are real, and the counter's fee for optimism is steeper than the ticket. Weigh before you wrap.",
+      ),
+      fig(
+        "/images/blog/boarding-pass-phone.jpg",
+        "A hand holding a phone with the boarding pass on the screen, a suitcase standing beside it at the airport.",
+        "The reference became a seat, the seat became this small screen. Screenshot, PDF, and one printed copy: three copies, zero prayers.",
+      ),
+      ul([
+        "Airline's own site or a reputable aggregator; compare the total, not the bold number; buy the baggage you actually packed.",
+        "The name is typed exactly as the ID reads — letter for letter. This is the one error the road will not negotiate.",
+        "Reference into the notebook, confirmation into Drive, boarding pass screenshot, PDF'd, and printed.",
+        "The half-price DM is the junction man with a data plan. Four honest doors, all yours.",
+      ]),
+      h2("The window, moved home"),
+      p(
+        "The travel agent still has a place — the tangled visas, the multi-country tours, the corporate accounts. But the Lagos flight, the December homecoming, the interview in Abuja: these are now a table, a card, and twenty careful minutes. Every skill this lesson used — the source law, the exact name, the reference kept, the screenshot as receipt — you already owned. This was only their widest road. The next lesson wraps that road in a sealed cover, and explains the word every traveller eventually meets: the VPN.",
+      ),
+    ],
+  },
+  {
+    slug: "the-vpn-explained",
+    title: "The VPN, explained like a tunnel",
+    excerpt:
+      "Your traffic, wrapped and carried through another town: what a VPN actually does, when it genuinely helps, when it sells you courage — and why the free ones are the most expensive.",
+    series: SERIES,
+    order: 168,
+    author: AUTHOR,
+    date: "2026-09-08",
+    cover: "/images/blog/vpn-app-toggle.jpg",
+    coverAlt: "A thumb switching a VPN connection on in a phone app, the icon glowing.",
+    body: [
+      p(
+        "Sooner or later the word arrives — in an advert, in a tech-bro conversation, in a warning from a cousin abroad: you need a VPN. It is said like a password, and almost nobody explains it. Here is the explanation, in the market's own grammar. Your internet traffic is a letter carried through a loud street; the shops, the network, the curious all see which road it takes and, on open roads, some of what it says. A VPN — virtual private network — wraps that letter in a sealed cover and carries it through a private tunnel to another town before opening it onto the world. The street sees only a sealed wrapper going into a tunnel. The wrapper is the encryption. The other town is the borrowed address. Those two facts are the entire technology.",
+      ),
+      p(
+        "What it genuinely does for you follows from those facts. Privacy from the local street: the café's Wi-Fi, the market's free hotspot — the roads of lesson ninety-nine — can no longer read your open traffic, because it travels sealed. A borrowed address: the internet believes you are sitting in the tunnel's other town, which unlocks services that shun Nigerian addresses and lets you compare prices as a stranger would. And a quieter kind of safety: your home network's address stops being the return address on everything you do. Notice what is not on the list. A VPN does not make scam sites honest. It does not hide you from the law. It does not cure a virus, and it is not a password for a stolen phone — it wraps the road, and the road was never the thief.",
+      ),
+      fig(
+        "/images/blog/vpn-road-tunnel.jpg",
+        "A car entering a lit road tunnel in the evening, the open street behind it.",
+        "The whole idea in one photograph: the traffic enters sealed, travels hidden, and emerges in another town. The street only saw the entrance.",
+      ),
+      h2("When it helps, and when the wrapper is the thief"),
+      p(
+        "Turn it on for the roads you do not trust: the café, the airport, the conference hall — anywhere the Wi-Fi password is written on a chalkboard for strangers. Turn it on when a service refuses Nigerian addresses, or when the comparison shopping needs another country's eyes. And know when to take it off: the bank. Nigerian banks watch for sign-ins from foreign addresses, and a VPN makes your honest login look like a thief's — the app of lesson one hundred and eleven may block you, correctly. Banking happens bare-faced, on your own data, without the tunnel. Then the warning that this whole lesson leans toward: the wrapper-maker sees your wrapped traffic last, which means you have not eliminated the eavesdropper — you have chosen one. The free VPN from the top advert is frequently the eavesdropper himself, collecting what the café could only guess at: your logins, your destinations, your habits. Choosing a VPN is the helpers lesson again — pick a reputable, established name, ideally one you pay a small honest fee, and never the first free banner that promises the world in three megabytes.",
+      ),
+      p(
+        "Used this way, the VPN earns its place in the pocket: a wrapper for untrusted roads, a borrowed address for stubborn services, a seal for the café. Used as courage — to double money in rooms that ask for VPNs precisely because they are rooms that steal — it is the opposite of protection, and lesson one hundred and seventy is waiting for those rooms. The wrapper is a tool. The wrapper-maker is a choice. Choose in daylight, pay the honest fee, and the tunnel serves the traveller instead of feeding on him. The next lesson stays in the money district, and opens the door of the most modern trap on this street: the loan that arrives in fifteen minutes and collects your whole phonebook as interest.",
+      ),
+      fig(
+        "/images/blog/vpn-cafe-laptop.jpg",
+        "A laptop on a café table, a small key icon glowing in the corner of its screen, coffee beside the keyboard.",
+        "The chalkboard Wi-Fi, travelled sealed. The wrapper on untrusted roads, and off again for the bank — the tunnel knows its place.",
+      ),
+      ul([
+        "One sentence to keep: the wrapper is encryption, the other town is the address. Everything else is marketing.",
+        "On for café Wi-Fi and stubborn services; off for the bank. The tunnel knows its place.",
+        "Choose an established maker and pay the small honest fee. The free wrapper is often the eavesdropper in costume.",
+        "A VPN is privacy, not permission, and not courage. Rooms that require VPNs to steal are described in the next lesson.",
+      ]),
+      h2("The tunnel, in its place"),
+      p(
+        "Every tool on this shelf has been introduced the same way: named honestly, dressed in its own clothes, warned about its own street. The VPN is the last of the everyday tools to be so introduced — and now the pocket holds it correctly: sealed when the road is strange, bare when the bank is watching, and never, ever confused with a superpower. Next: the money district, and the app that lends in fifteen minutes.",
+      ),
+    ],
+  },
+  {
+    slug: "loan-apps-the-real-cost",
+    title: "Loan apps: the money that costs a reputation",
+    excerpt:
+      "Fifteen minutes, no collateral, and your whole phonebook held as surety. How the instant-loan machine actually works, what the law says, and the defences that keep your name yours.",
+    series: SERIES,
+    order: 169,
+    author: AUTHOR,
+    date: "2026-09-11",
+    cover: "/images/blog/loan-app-offer.jpg",
+    coverAlt:
+      "A phone showing a loan app offering a large amount with one big button, a hesitant thumb above it.",
+    body: [
+      p(
+        "It arrives on a slow evening, exactly when the pocket is lightest: a bright app promising one hundred thousand naira in fifteen minutes. No paperwork, no collateral, no questions — just allow us a few permissions and the money lands. The needs of this life are real, and the offer is engineered to meet one of them at its weakest hour. This lesson opens the machine while it is switched off, so you can see the gears: because the money is real, but the interest is collected in a currency you did not agree to spend — your reputation, and the phonebook of everybody you love.",
+      ),
+      p(
+        "The gears. The loan is small — often twenty-five thousand — and the tenor is short: seven or fourteen days. The effective rate, stacked with fees, can reach a third of what was borrowed inside a month. When the due date passes — and it always passes, because fourteen days is a machine designed to be missed — the rollover button appears, and the debt grows a tail. Then the gears you were never shown: the permissions you tapped past at installation handed the app your entire contact list, your photographs, sometimes your messages. The first morning of default, a message goes to your mother, your pastor, your employer's HR: this person is a wanted fraudster, help us recover our money. There is no court in that sentence and no truth in it either — it is defamation as a collection strategy, and it works because shame does what the app cannot: it makes you borrow from elsewhere to silence the broadcast, which feeds the next app, and the spiral turns.",
+      ),
+      fig(
+        "/images/blog/loan-app-offer.jpg",
+        "A phone showing a loan app offering a large amount with one big button, a hesitant thumb above it.",
+        "The offer is dressed for your weakest hour. The button is real; the interest is collected from your phonebook.",
+      ),
+      h2("What the law says, and what your thumb must never do"),
+      p(
+        "The law, plainly: lending at scale is a licensed trade in this country. Digital lenders must be registered with the consumer-credit regulator and follow rules the regulator publishes in lists you can read — which companies are approved, and which are being pursued. The predator apps sit outside those lists, and their collections are not enforcement; they are crimes wearing an enforcement costume — harassment, defamation, unlawful contact use. The defences, in the order they should happen. Before: check the list on the regulator's own site — the portals lesson's law — and prefer the licensed arms of the banks you know, whose rates are stated, whose tenors are months, and whose collectors write letters instead of staging broadcasts. At installation: deny the contacts permission, flat, and see whether the app still works — a legitimate lender underwrites your identity and your bank record, not your aunt's number; an app that refuses to lend without your phonebook has told you exactly what it intends to do with it. And if you are already inside: do not roll over into the next app to silence this one — that is the spiral's only fuel. Document everything — screenshots of the threats, the broadcasts, the numbers — and report to the regulator and the police; the documented borrower has quietly become the predator's problem.",
+      ),
+      fig(
+        "/images/blog/loan-threat-screenshots.jpg",
+        "A phone showing threatening messages from an unknown number, a second phone photographing the screen.",
+        "The evidence, gathered calmly. Screenshots with dates and numbers turn a shouted-down victim into a complainant with a case.",
+      ),
+      p(
+        "The deeper cure sits in the books of lesson one hundred and forty-three: the rain slice. A small, boring emergency fund — even a thin one — is the difference between a bad week and a hijacked phonebook. And the family word lesson's honesty, pointed at money: the relative who lends fifty thousand at zero percent with a plate of food attached is the original licensed lender, and she underwrites you with love instead of your contacts. Borrow from the people and institutions that can afford your worst month. The apps that cannot wait fourteen days for their money were never waiting to help you at all.",
+      ),
+      fig(
+        "/images/blog/contacts-permission-denied.jpg",
+        "A phone showing a permission dialog asking for access to contacts, the deny button pressed.",
+        "The one refusal that protects everyone you love. A lender who needs your phonebook is not underwriting you — it is arming itself.",
+      ),
+      ul([
+        "Check the regulator's published lists before any borrowing. Unlicensed lender, unlicensed collection, unlimited shame.",
+        "Deny the contacts permission, always. A lender that refuses to lend without your phonebook has confessed its plan.",
+        "Seven-day money is a machine built to be missed. Licensed tenors are months; predators sell you days.",
+        "Harassed? Screenshot everything, report to the regulator and the police, and tell your people first — before the broadcast does.",
+      ]),
+      h2("The name is the collateral"),
+      p(
+        "Every loan on this shelf is secured by something: the bank holds your salary, the family holds your word, the predator holds your phonebook. Choose the collateral you can afford to lose — never the name. The next lesson closes the chapter at the compound's oldest scam, wearing its newest clothes: the money that promises to double itself, and the arithmetic it hopes you never do.",
+      ),
+    ],
+  },
+  {
+    slug: "the-money-that-doubles",
+    title: "Double your money: the oldest lie",
+    excerpt:
+      "The dashboard glows green, the first withdrawal lands, the compound meeting claps. Inside the arithmetic of doubling schemes, the tells that survive every costume, and the boring cure.",
+    series: SERIES,
+    order: 170,
+    author: AUTHOR,
+    date: "2026-09-13",
+    cover: "/images/blog/roi-dashboard-phone.jpg",
+    coverAlt:
+      "A phone showing an investment app with a steep green profit curve and a big balance.",
+    body: [
+      p(
+        "The compound meeting has heard it before, in every generation, in every market on earth: a man with a phone shows a dashboard — the balance climbing, the green curve, thirty percent in a month, withdrawn in minutes, proof in his own hand. Your money works while you sleep. Referral bonus if you bring your brother. The room nods; the arithmetic applauds quietly in the corner, because it knows something the room will learn too late: money that doubles by schedule is not an investment. It is a collection plate, and the collection has always been the point.",
+      ),
+      p(
+        "The machine, named so you recognise it in every costume it will ever wear — ponzi, ROI platform, trading bot, crypto doubling, the church-adjacent fund, the Telegram trader. New members' money pays old members' withdrawals. The early withdrawals are real, and they are the bait: nobody believes a scheme until it has paid them once, which is why the operators pay — the farmer's grain, spent to buy the silo. Then the referrals, whose bonuses outshine anything the underlying business could earn, because there is no underlying business: the recruitment is the business. And the mathematics, which is the part that cannot be argued with: markets — every honest market on earth — move up and down and never on schedule, which is why no licensed fund anywhere promises returns, only histories and ranges. A guaranteed thirty percent a month is not a bold estimate. It is a confession wearing a suit.",
+      ),
+      fig(
+        "/images/blog/roi-dashboard-phone.jpg",
+        "A phone showing an investment app with a steep green profit curve and a big balance.",
+        "The curve is drawn, not earned. A number that only ever climbs has never met a market — it has met a designer.",
+      ),
+      h2("The tells, and the grey button"),
+      p(
+        "The tells survive every costume, and you have met their ancestors on this shelf. Guaranteed returns — lesson one hundred and twenty-nine's markets never guarantee. Referral wealth — the business is you. Hurry — slots closing, bonus window ending, the oldest tell in the book. Secrecy and exclusivity — the opportunity for the wise few, which is how collections describe their plate. And the license question, which ends most arguments in one sentence: no scheme on this street is licensed by the securities regulator, because the securities regulator does not license doubling. When the collapse comes — and it is scheduled by arithmetic, not by chance — the tell that arrives last is the grey button: withdrawals pause for verification, for a system upgrade, for a banking partner, and the dashboard stays green forever while the money inside turns to a story. The screenshot of your balance was never money. It was a painting of money, and you were the painter's canvas.",
+      ),
+      p(
+        "And the crypto clause, because the costume of this decade: the technology can be entirely real while the platform is entirely a thief — real rails, fake returns. Nobody legitimate ever needs your recovery phrase, the crown jewel of your keys from the papers lesson; a trading opportunity that requires it is a robbery with a friendly interface. The defences are the shelf's oldest: the week rule for big money — every large decision sleeps seven nights and hears one sceptical voice you respect, the family word's discipline pointed at your own excitement. The license check on the regulator's site, the same hour. And the boring cure, which outperforms every doubling in the long run and keeps its name intact: the rain slice, the licensed savings, the skills that raise the inflow — this entire shelf, compounding slowly, legally, and in public. The compound meeting will move on to the next scheme by December. Your name will still be yours. That is the return nobody's dashboard can print.",
+      ),
+      fig(
+        "/images/blog/family-investment-meeting.jpg",
+        "A family at a night table with a phone showing figures, an older uncle listening with folded arms.",
+        "The sceptic at the table, on purpose. Big money sleeps seven nights and hears one unimpressed voice before it moves.",
+      ),
+      fig(
+        "/images/blog/withdraw-button-grey.jpg",
+        "A close view of an investment app whose withdrawal button sits greyed out behind a small waiting notice.",
+        "The last tell, arriving on schedule. The dashboard stayed green; the button went grey. The painting was never money.",
+      ),
+      ul([
+        "One sentence, for life: guaranteed doubling is a confession. Licensed funds promise ranges and histories, never schedules.",
+        "Referral bonuses that outshine the product mean the product is you. Walk out with your brother's hand.",
+        "The week rule for big money: seven nights, one sceptic, the regulator's site. Collections hate calendars.",
+        "Nobody legitimate needs your recovery phrase — the crypto clause. The boring cure compounds; the exciting one collects.",
+      ]),
+      h2("The chapter, and the purse"),
+      p(
+        "Ten lessons of the pocket and the purse: the code that works without data, the line that stopped leaking, the bundle that learned manners, the wall machine and its wiggles, the little brick, the token in the dark, the first flight, the tunnel, the fifteen-minute loan, and now the doubling lie, oldest of them all. Every one of them obeyed the same law this shelf has taught since the first sitting: the pause is the profit. The chapter closes. The purse stays open — and now it stays yours.",
+      ),
+    ],
+  },
 ];
-
