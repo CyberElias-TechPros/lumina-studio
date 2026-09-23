@@ -1280,7 +1280,7 @@ export const blogPosts: BlogPost[] = [
     title: "Uninstalling what a shop added",
     excerpt:
       "Settings, Apps, the name you do not remember asking for. Uninstall is showing a guest the door. The Start menu is not the same as gone.",
-      series: SERIES,
+    series: SERIES,
     order: 22,
     author: AUTHOR,
     date: lessonDate(22),
@@ -1826,7 +1826,7 @@ export const blogPosts: BlogPost[] = [
       ]),
       h2("Characters that bite, and duplicates"),
       p(
-        "Avoid / \\ : * ? \" < > | in names. They are commands to the computer, not decoration. Spaces are allowed but a-name-like-this travels better in some links. Accents are allowed; you learned those. A trailing space is a ghost that makes two files look identical. Keep names short enough to read in a narrow window.",
+        'Avoid / \\ : * ? " < > | in names. They are commands to the computer, not decoration. Spaces are allowed but a-name-like-this travels better in some links. Accents are allowed; you learned those. A trailing space is a ghost that makes two files look identical. Keep names short enough to read in a narrow window.',
       ),
       p(
         "If a file is open in Word, rename will fail — “in use.” Close, then rename. If two files cannot have the same name in the same folder, that is the computer protecting you. Put them in different rooms, or date them. And if you already stripped a .pdf, rename and put the .pdf back. The file was not converted. It was only disguised. You did not lose the letter. You hid its envelope.",
@@ -3338,7 +3338,7 @@ export const blogPosts: BlogPost[] = [
     title: "Bullets and numbered lists",
     excerpt:
       "A list is a set of steps or a set of things. Numbers mean order. Dots mean a pile. Tab nests. Enter twice gets you out. Space-bar art is not a list.",
-      series: SERIES,
+    series: SERIES,
     order: 63,
     author: AUTHOR,
     date: lessonDate(63),
@@ -5207,7 +5207,8 @@ export const blogPosts: BlogPost[] = [
     author: AUTHOR,
     date: "2026-01-01",
     cover: "/images/blog/shortcut-save-hands.jpg",
-    coverAlt: "A left little finger pressing the Ctrl key while another finger presses S on a keyboard.",
+    coverAlt:
+      "A left little finger pressing the Ctrl key while another finger presses S on a keyboard.",
     body: [
       p(
         "By now your hands own three: Ctrl and C, Ctrl and V, and the undo that rescued the paragraph you did not mean to kill. Alt and Tab walks you through open windows. That is a respectable number. It is also where most people stop, and then spend ten years clicking through menus for the five acts they perform every day. This lesson adds six more keystrokes. Then it asks you to stop. Collecting shortcuts like proverbs is not skill. Using six until they are reflexes is.",
@@ -5398,7 +5399,8 @@ export const blogPosts: BlogPost[] = [
     author: AUTHOR,
     date: "2026-01-19",
     cover: "/images/blog/choose-file.jpg",
-    coverAlt: "A laptop screen showing an online form with a file chosen and its name beside the button.",
+    coverAlt:
+      "A laptop screen showing an online form with a file chosen and its name beside the button.",
     body: [
       p(
         "The Downloads lesson was about files coming down — parcels landing on the mat. The other half of an online life is files going up. A job portal asks for your CV. A school asks for the certificate. A form asks for a passport photograph. Each is the same small act: the machine asks you to choose a file, you choose it, it travels up. People fear this moment more than any other in a form, and it does not deserve the fear. It deserves a slow hand.",
@@ -5445,7 +5447,8 @@ export const blogPosts: BlogPost[] = [
     author: AUTHOR,
     date: "2026-01-24",
     cover: "/images/blog/drive-papers.jpg",
-    coverAlt: "A phone held in both hands showing cloud storage folders named Papers, Certificates and IDs.",
+    coverAlt:
+      "A phone held in both hands showing cloud storage folders named Papers, Certificates and IDs.",
     body: [
       p(
         "Consider what sits in that bag: birth certificate, WAEC, the degree, NYSC, the CV. One bag. One rain. One theft on a Thursday. The drawer at home holds the originals, but the drawer is in the same house as the leaking roof, and papers do not swim. What the cloud lesson explained, this lesson does: one evening of scanning gives you a set of papers no bag can lose and no rain can reach.",
@@ -5539,7 +5542,8 @@ export const blogPosts: BlogPost[] = [
     author: AUTHOR,
     date: "2026-02-01",
     cover: "/images/blog/second-lock.jpg",
-    coverAlt: "A phone showing a sign-in approval prompt with two buttons, held by a thoughtful woman.",
+    coverAlt:
+      "A phone showing a sign-in approval prompt with two buttons, held by a thoughtful woman.",
     body: [
       p(
         "A password is one lock. Whoever learns it, buys it, or guesses it walks straight in, and you will not see them enter. Two-step verification is the second lock: after the password, the account insists on a code that reaches only your hand — the phone in your pocket, not the thief's laptop. You have watched such codes arrive all your digital life, and the OTP lesson taught you never to read one out. This lesson is the quiet reversal: you start the knock yourself, on purpose, on your own door.",
@@ -5789,7 +5793,7 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("The alert that never was"),
       p(
-        "Sellers are scammed more often than buyers, and always by the same play. \"I have sent the money\" — with a screenshot that was edited in an app you do not have. \"My rider will collect it and pay on delivery\" — and the rider collects for a sender who never existed. Or the overpayment: \"I sent one hundred and fifty by mistake, refund the difference\" — when nothing was ever sent. The defence is one sentence and you already own it from the bank lesson: money is confirmed in your own app, balance before, balance after, the sender's name visible. Not by a tone. Not by a screenshot. Not by politeness.",
+        'Sellers are scammed more often than buyers, and always by the same play. "I have sent the money" — with a screenshot that was edited in an app you do not have. "My rider will collect it and pay on delivery" — and the rider collects for a sender who never existed. Or the overpayment: "I sent one hundred and fifty by mistake, refund the difference" — when nothing was ever sent. The defence is one sentence and you already own it from the bank lesson: money is confirmed in your own app, balance before, balance after, the sender\'s name visible. Not by a tone. Not by a screenshot. Not by politeness.',
       ),
       p(
         "For hand-to-hand sales, the old rules hold: meet in daylight where people are — a bank hall, a busy fuel station — bring a person, let the buyer inspect, and let payment complete before the item crosses. A POS slip at handover is fine; wait until the machine prints, or the transfer lands in your app. For delivered sales, the parcel moves after the money, and if the platform offers pay-on-delivery protection, that is its own honest road — walk it the way the buying lesson walked it, from the other side.",
@@ -5868,7 +5872,8 @@ export const blogPosts: BlogPost[] = [
     author: AUTHOR,
     date: "2026-03-05",
     cover: "/images/blog/gov-portal-form.jpg",
-    coverAlt: "A laptop on a desk showing an official-looking application form beside a file of documents.",
+    coverAlt:
+      "A laptop on a desk showing an official-looking application form beside a file of documents.",
     body: [
       p(
         "The queue at the office and the queue on the portal are cousins, but only one of them is in your house. NIN slips, passport renewals, company names, tax records: the paperwork of a Nigerian life has been walking to the screen for years now, and filling a form — lesson eighteen, of all lessons — has quietly become a civic skill. This lesson is how to deal with the state online without paying anybody's cousin for the privilege.",
@@ -5915,7 +5920,8 @@ export const blogPosts: BlogPost[] = [
     author: AUTHOR,
     date: "2026-03-08",
     cover: "/images/blog/youtube-tutorial-learning.jpg",
-    coverAlt: "A young person watching a tutorial video on a laptop with a notebook open beside them.",
+    coverAlt:
+      "A young person watching a tutorial video on a laptop with a notebook open beside them.",
     body: [
       p(
         "Here is the open secret of this century: the classroom is already in your pocket, and most of it asks for nothing but attention and data. YouTube alone holds more teaching than any of us could sit through in a lifetime — tailoring, plumbing, Excel, the camera, the drum, the camera drone. The skill is no longer access. The skill is learning without drowning, because the flood is real: a thousand teachers, all talking, all at once.",
@@ -6009,7 +6015,8 @@ export const blogPosts: BlogPost[] = [
     author: AUTHOR,
     date: "2026-03-18",
     cover: "/images/blog/suspect-voice-call.jpg",
-    coverAlt: "An older man holding a phone away from his ear, looking at it with suspicion during a call.",
+    coverAlt:
+      "An older man holding a phone away from his ear, looking at it with suspicion during a call.",
     body: [
       p(
         "The prize lesson's lies wore hurry and a fee. The relative-in-trouble call wore tears and a phone line. Now the machines that write like people have learned to sound like people: from a few seconds of a voice note, an ordinary laptop can build a copy of a voice — your brother's voice, your pastor's, your mother's. The crying call may have your brother's voice in it and none of your brother. This is not a story of the future. It is the current price of a voice note, and the defence has to be learned the way the links were.",
@@ -6103,7 +6110,8 @@ export const blogPosts: BlogPost[] = [
     author: AUTHOR,
     date: "2026-03-26",
     cover: "/images/blog/teaching-one-learner.jpg",
-    coverAlt: "A young person guiding an older woman's hand on a laptop trackpad, both smiling slightly.",
+    coverAlt:
+      "A young person guiding an older woman's hand on a laptop trackpad, both smiling slightly.",
     body: [
       p(
         "Somebody sat beside you once — a cousin, a night class, or a note that talked like a person. Everything on this shelf reached you the way knowledge has always travelled on this street: not by brochure, but at a table, with one patient person and one machine. Which means there is only one lesson left, and it is not about the machine. You are now the somebody. The last skill is the first skill, handed over: teach the next person.",
@@ -6197,7 +6205,8 @@ export const blogPosts: BlogPost[] = [
     author: AUTHOR,
     date: "2026-04-04",
     cover: "/images/blog/soc-room-screens.jpg",
-    coverAlt: "A dim room with a wall of monitors showing maps and dashboards, two analysts at desks.",
+    coverAlt:
+      "A dim room with a wall of monitors showing maps and dashboards, two analysts at desks.",
     body: [
       p(
         "Say SOC aloud — it is said letter by letter, S-O-C — and know that it means only this: a Security Operations Centre. A room, physical or virtual, where an organisation's security watching is gathered under one roof and one rhythm. If you met the letters in a chat or a job group and could not tell what they meant, hold this meaning and you will rarely be wrong: in working talk, SOC is not slang — it is an acronym with a chair behind it, the watching room. Banks have them. Telcos have them. Some companies do not build their own and instead pay a specialist firm to watch for them, which is called an MSSP, and the analysts inside it watch many doors at once. When a job advert says the role is in a SOC, this is the furniture of that sentence.",
@@ -6385,7 +6394,8 @@ export const blogPosts: BlogPost[] = [
     author: AUTHOR,
     date: "2026-04-22",
     cover: "/images/blog/tcp-parcels-road.jpg",
-    coverAlt: "Small numbered parcels travelling along a road toward a house in warm evening light.",
+    coverAlt:
+      "Small numbered parcels travelling along a road toward a house in warm evening light.",
     body: [
       p(
         "When two computers anywhere on earth speak — the phone and the bank, the laptop and this page — they speak TCP/IP. The name is a hyphenated pair: IP, Internet Protocol, and TCP, Transmission Control Protocol. The first says where; the second says how. Strip the syllables and hold the picture: a post office that never loses a letter if the roads survive, run on two rules — every house has an address, and every letter is sent as numbered parcels that may take different roads and arrive in any order, to be reassembled at the door.",
@@ -6432,7 +6442,8 @@ export const blogPosts: BlogPost[] = [
     author: AUTHOR,
     date: "2026-04-27",
     cover: "/images/blog/signing-document-seal.jpg",
-    coverAlt: "A hand signing a document with a pen beside a laptop showing a digital signing screen.",
+    coverAlt:
+      "A hand signing a document with a pen beside a laptop showing a digital signing screen.",
     body: [
       p(
         "What is a digital signature? First, what it is not: not a photograph of your wet-ink name dropped onto a page — that is an electronic signature at its weakest, a picture, and a picture copies. A digital signature is arithmetic: a seal computed from the document itself with a key only you hold, such that changing a single comma breaks the seal's mathematics and tells every later reader the page has been touched. It answers three questions at once, and answers them with proofs rather than manners: who sealed this; has it been altered since; and can the sealer later deny it. That third answer is why contracts, banks and governments moved: the seal cannot be unworn.",
@@ -6479,7 +6490,8 @@ export const blogPosts: BlogPost[] = [
     author: AUTHOR,
     date: "2026-04-30",
     cover: "/images/blog/frontend-code-screen.jpg",
-    coverAlt: "A developer at a laptop with code on one half of the screen and a webpage on the other.",
+    coverAlt:
+      "A developer at a laptop with code on one half of the screen and a webpage on the other.",
     body: [
       p(
         "Everything you have ever touched on a screen — every button that pressed, every form that received your details, every page that arranged itself politely on the phone and the laptop — was built by a frontend developer. The word means simply the front: the part of a program that faces the person using it. Every workshop has a front and a back — the stall that faces the road, and the store room where the stock and the accounts live. The frontend is the stall. It decides whether the customer can find what they came for, whether the price is readable in the sun, whether the transaction finishes or the customer walks in irritation.",
@@ -6714,7 +6726,8 @@ export const blogPosts: BlogPost[] = [
     author: AUTHOR,
     date: "2026-05-23",
     cover: "/images/blog/classroom-night-class.jpg",
-    coverAlt: "Adult learners at computers in a small evening class, an instructor leaning over one screen.",
+    coverAlt:
+      "Adult learners at computers in a small evening class, an instructor leaning over one screen.",
     body: [
       p(
         "So you have chosen to learn properly — the decision this whole shelf has been preparing you to make. Now the market floods in: every week a new data science bootcamp in Nigeria, a six-week miracle, a certificate with a foreign logo. Some of these schools are genuinely good and change lives at scale. Some are a room, a projector, and a man reading slides he did not write. Both advertise identically. This lesson is the buyer's inspection — the fence check, turned on the people asking for your school fees.",
@@ -6761,7 +6774,8 @@ export const blogPosts: BlogPost[] = [
     author: AUTHOR,
     date: "2026-05-27",
     cover: "/images/blog/support-desk-helping.jpg",
-    coverAlt: "An IT support officer crouched beside a colleague's desk, fixing a cable while they watch.",
+    coverAlt:
+      "An IT support officer crouched beside a colleague's desk, fixing a cable while they watch.",
     body: [
       p(
         "Every office has a moment when everything stops: the printer dies before the meeting, the email will not open, the system asks for a password nobody remembers. In that moment one person becomes the most important in the building — the person who fixes the day. That is IT support: the trade of keeping other people's work moving, and the most common first room in all of technology. The analyst watches for attackers; the builder raises programs; the support person keeps the ordinary daylight running, which every one of those rooms quietly depends on.",
@@ -6808,7 +6822,8 @@ export const blogPosts: BlogPost[] = [
     author: AUTHOR,
     date: "2026-06-01",
     cover: "/images/blog/small-shop-owner-laptop.jpg",
-    coverAlt: "A shop owner and a young developer looking at a laptop together behind a shop counter.",
+    coverAlt:
+      "A shop owner and a young developer looking at a laptop together behind a shop counter.",
     body: [
       p(
         "Walk your own street and count the businesses with no honest page on the internet: the pharmacy, the school, the church, the fashion house with fine pictures trapped in a WhatsApp gallery. Their customers are searching every day, and finding only strangers. Every one of those businesses needs the same modest thing — one clear page that says who we are, what it costs, where we are, and a button that opens WhatsApp — and somebody local to build it and keep it breathing. That somebody can be you. Of all the trades on this shelf, this one starts soonest and pays first.",
@@ -6949,7 +6964,8 @@ export const blogPosts: BlogPost[] = [
     author: AUTHOR,
     date: "2026-06-14",
     cover: "/images/blog/remote-work-headphones.jpg",
-    coverAlt: "A young professional at a desk with headphones, a laptop and a small UPS, in a home room.",
+    coverAlt:
+      "A young professional at a desk with headphones, a laptop and a small UPS, in a home room.",
     body: [
       p(
         "Somewhere in this city tonight, a young man is debugging code for a company whose office he has never seen, paid on Friday in dollars, generator fuel already budgeted like rent. This is remote work at its honest best — not a hustle, not a shortcut, but a job with a longer commute: the skills are the same, the manners are the same, and four practical walls must stand before the first contract. This lesson walks the four, because each has broken more remote careers than any lack of talent.",
@@ -7231,7 +7247,8 @@ export const blogPosts: BlogPost[] = [
     author: AUTHOR,
     date: "2026-07-10",
     cover: "/images/blog/client-files-locked.jpg",
-    coverAlt: "A laptop with a lock screen turned away from visitors on a tidy desk, files closed beside it.",
+    coverAlt:
+      "A laptop with a lock screen turned away from visitors on a tidy desk, files closed beside it.",
     body: [
       p(
         "The moment a client pays you, you begin holding things that are not yours: their customer list, their invoices, their unfinished plans, sometimes their logins. They did not hand these over because they are careless — they handed them over because the work requires it, the way a tailor is trusted with cloth already cut for a wedding. What you do with that trust, between delivery and long after, is called confidentiality, and in every profession on this shelf it is not a legal decoration. It is the trade itself, written down.",
@@ -7278,7 +7295,8 @@ export const blogPosts: BlogPost[] = [
     author: AUTHOR,
     date: "2026-07-15",
     cover: "/images/blog/posture-desk-chair.jpg",
-    coverAlt: "A person sitting properly at a desk, feet flat, screen raised to eye level on a stand of books.",
+    coverAlt:
+      "A person sitting properly at a desk, feet flat, screen raised to eye level on a stand of books.",
     body: [
       p(
         "Nobody warns you that typing is a physical trade. The tailor stands, the mechanic bends, and the person at the machine sits — for years — and the sitting collects its rent quietly: the eyes that blur by evening, the wrist that wakes you at night, the neck that no longer turns without opinion. The body is the only tool every career on this shelf shares, and like every tool here it works better maintained than repaired. This lesson is the maintenance manual, and it costs almost nothing.",
@@ -7325,7 +7343,8 @@ export const blogPosts: BlogPost[] = [
     author: AUTHOR,
     date: "2026-07-19",
     cover: "/images/blog/question-post-forum.jpg",
-    coverAlt: "A person typing a question into an online forum on a laptop, notebook open beside them.",
+    coverAlt:
+      "A person typing a question into an online forum on a laptop, notebook open beside them.",
     body: [
       p(
         "Here is the difference between the people who finish and the people who stall: the finishers let others watch. They post the small win — first pivot table, first page live, first repaired machine — and answer the beginner's question behind them, and in doing so turn a private course into a public track record. Learning in public is not self-promotion. It is the each-one-teach-one lesson pointed forward: you teach what you just learned while it is still warm, and the teaching is what makes it yours.",
@@ -7419,7 +7438,8 @@ export const blogPosts: BlogPost[] = [
     author: AUTHOR,
     date: "2026-07-29",
     cover: "/images/blog/two-desks-small-studio.jpg",
-    coverAlt: "Two desks facing each other in a small studio, two people working, one pointing at a screen.",
+    coverAlt:
+      "Two desks facing each other in a small studio, two people working, one pointing at a screen.",
     body: [
       p(
         "There is a day in every solo worker's life when the diary says yes to more than the hands can do. Refusing work you cannot carry is the first answer, and often the wise one. But if the extra work keeps knocking — if turning it away becomes a habit — then the question has changed from can I do this to can somebody do this with me. That question, asked honestly, is the birth of every studio, agency and small firm on your street. This lesson is the first hire, done properly.",
@@ -7466,7 +7486,8 @@ export const blogPosts: BlogPost[] = [
     author: AUTHOR,
     date: "2026-08-01",
     cover: "/images/blog/exam-study-desk.jpg",
-    coverAlt: "A focused candidate at a desk with past papers, a laptop and a small calendar marked for an exam date.",
+    coverAlt:
+      "A focused candidate at a desk with past papers, a laptop and a small calendar marked for an exam date.",
     body: [
       p(
         "Sooner or later the question arrives with the job adverts: certified preferred. The certificates lesson of this chapter said what papers do not prove; this lesson says, fairly, what they do — and how to earn the ones worth their fees. Because the honest position is not certificates are useless and it is not collect them all. It is: some doors are genuinely locked without them, and the skill is knowing which.",
@@ -7513,7 +7534,8 @@ export const blogPosts: BlogPost[] = [
     author: AUTHOR,
     date: "2026-08-06",
     cover: "/images/blog/morning-routine-desk.jpg",
-    coverAlt: "A tidy desk at morning: laptop closed, notebook open with the day's three lines written, tea steaming.",
+    coverAlt:
+      "A tidy desk at morning: laptop closed, notebook open with the day's three lines written, tea steaming.",
     body: [
       p(
         "This chapter taught you to be hired, to be paid, to hold secrets and to hold your ground. None of it mentioned the thing that actually decides the career: the years between the Fridays. The working life is not made of breakthroughs. It is made of ordinary Tuesdays, done on purpose, for a long time — and the people you admire on this shelf are people who found a way to keep showing up to their own desks after the excitement moved somewhere else. This last note is about that keeping.",
@@ -7560,7 +7582,8 @@ export const blogPosts: BlogPost[] = [
     author: AUTHOR,
     date: "2026-08-11",
     cover: "/images/blog/results-portal-phone.jpg",
-    coverAlt: "A young person checking an exam result on a phone at a table, pen and scratch card nearby.",
+    coverAlt:
+      "A young person checking an exam result on a phone at a table, pen and scratch card nearby.",
     body: [
       p(
         "Three letters rule results season in this country: WAEC, NECO, JAMB. The results no longer wait in long queues or notice boards — they live on portals, behind a token or a PIN, and the person who can check a result calmly, correctly and cheaply has a small superpower every July and August. This lesson is that superpower, and the one trap that hunts it every single year.",
@@ -7607,7 +7630,8 @@ export const blogPosts: BlogPost[] = [
     author: AUTHOR,
     date: "2026-08-16",
     cover: "/images/blog/family-table-phones.jpg",
-    coverAlt: "A family at a living-room table, a parent guiding a child's hands on a small tablet.",
+    coverAlt:
+      "A family at a living-room table, a parent guiding a child's hands on a small tablet.",
     body: [
       p(
         "A child in this country meets a screen before they can read, and long before they can judge what the screen says. The family that handles this well does not ban the phone and does not surrender to it. It does what this whole shelf has done for adults: names the parts, sets the rules, teaches the reasons. This lesson is the same education, one generation down — and it begins with a confession: the child is watching how you use yours.",
@@ -7654,7 +7678,8 @@ export const blogPosts: BlogPost[] = [
     author: AUTHOR,
     date: "2026-08-19",
     cover: "/images/blog/cv-tailoring-desk.jpg",
-    coverAlt: "A job seeker tailoring a CV on a laptop, the job advert open on a phone beside the keyboard.",
+    coverAlt:
+      "A job seeker tailoring a CV on a laptop, the job advert open on a phone beside the keyboard.",
     body: [
       p(
         "The one-page honest CV of lesson seventy-five got its facts straight. This lesson gets it read — because between your CV and the employer's eyes now stands a machine. Big companies and job portals feed every CV into software that scans it for skills, ranks it, and shows a human only the top of the pile. The software — people call it an ATS, an applicant tracking system — is not clever. That is the tragedy and the opportunity: it rewards the plain, the ordered and the matching, and it quietly kills the beautiful, the creative and the strange.",
@@ -7701,7 +7726,8 @@ export const blogPosts: BlogPost[] = [
     author: AUTHOR,
     date: "2026-08-24",
     cover: "/images/blog/interview-video-call.jpg",
-    coverAlt: "A candidate in a video interview on a laptop, neatly dressed, a notebook beside the keyboard.",
+    coverAlt:
+      "A candidate in a video interview on a laptop, neatly dressed, a notebook beside the keyboard.",
     body: [
       p(
         "The interview used to begin when you walked through the office door. Now it begins on a screen — the hiring manager in Lagos, the panel in London, you in your bedroom with a data plan and a chance. The good news: the screen is a room you fully control, and the candidate who prepares the room as carefully as the answers is already ahead of most. This lesson is the preparation, in the order it should happen.",
@@ -7748,7 +7774,8 @@ export const blogPosts: BlogPost[] = [
     author: AUTHOR,
     date: "2026-08-29",
     cover: "/images/blog/slides-projector-talk.jpg",
-    coverAlt: "A speaker beside a projected slide in a small hall, the audience listening in shadow.",
+    coverAlt:
+      "A speaker beside a projected slide in a small hall, the audience listening in shadow.",
     body: [
       p(
         "Sooner or later the working life asks you to stand in front of people and present — the church committee, the client, the class, the town meeting — and the laptop comes with the territory. The slides were invented to help, and they have mostly become a punishment: walls of tiny text read aloud to a suffering room. This lesson returns them to their job. The slide is the lantern; you are the talk. The moment the slide tries to be the talk, both die.",
@@ -7795,7 +7822,8 @@ export const blogPosts: BlogPost[] = [
     author: AUTHOR,
     date: "2026-09-01",
     cover: "/images/blog/email-subject-line.jpg",
-    coverAlt: "A laptop screen showing a short email being composed with a clear subject line filled.",
+    coverAlt:
+      "A laptop screen showing a short email being composed with a clear subject line filled.",
     body: [
       p(
         "Your first email was written to be correct. This one is written to be answered — a different craft, because the person receiving it is drowning. A working professional clears a hundred messages a day between meetings, giving each about twenty seconds: open, scan, decide — reply, later, or never. The craft of email is winning those twenty seconds, and every rule below serves that one mercy: make it easy to say yes.",
@@ -7842,7 +7870,8 @@ export const blogPosts: BlogPost[] = [
     author: AUTHOR,
     date: "2026-09-06",
     cover: "/images/blog/notebook-system-desk.jpg",
-    coverAlt: "An open notebook with dated notes beside a phone showing a notes app, pen across the page.",
+    coverAlt:
+      "An open notebook with dated notes beside a phone showing a notes app, pen across the page.",
     body: [
       p(
         "Here is a painful test: what did you agree on last Tuesday's call? Who told you the fee changed, and when? Most people cannot say, not because the memory is weak but because nothing was ever written where March could find it. The working life runs on notes — decisions, names, prices, promises — and the difference between people who seem organised and people who actually are, is not talent. It is one home, one habit, and ten minutes a week.",
@@ -7983,7 +8012,8 @@ export const blogPosts: BlogPost[] = [
     author: AUTHOR,
     date: "2026-09-20",
     cover: "/images/blog/upgrade-shelf-books.jpg",
-    coverAlt: "A person comparing an old phone and a new phone side by side at a desk, both open on settings.",
+    coverAlt:
+      "A person comparing an old phone and a new phone side by side at a desk, both open on settings.",
     body: [
       p(
         "Here is a fact nobody enjoys saying aloud: half the specific tools in these one hundred and sixty notes will be renamed, rebuilt or retired within ten years. The apps will change their buttons, the platforms will change their rules, the acronyms of lesson thirteen's world will grow new letters. And yet the people these notes describe — the calm analyst, the honest seller, the teacher at the table — will still be working, because what the tools were carrying was never the skill. The upgrade habit is the last lesson of this chapter: how to keep current for decades without chasing every shiny thing off a cliff.",
@@ -8082,7 +8112,8 @@ export const blogPosts: BlogPost[] = [
     author: AUTHOR,
     date: "2026-08-22",
     cover: "/images/blog/data-deduction-message.jpg",
-    coverAlt: "A phone screen showing a list of small deduction text messages, held by a frowning owner.",
+    coverAlt:
+      "A phone screen showing a list of small deduction text messages, held by a frowning owner.",
     body: [
       p(
         "Load two thousand naira of airtime on Sunday, and by Wednesday the balance is a rumour. You made three calls. The rest leaked — fifty naira to a ringback tune you never chose, twenty naira a day to a news service that arrived as a quiz, a weekly bundle that renewed itself like rent, a game you do not remember opening. The networks call these value-added services. The street calls them what they are: the quiet deductions, the smallest recurring scam in the country that is also, annoyingly, mostly legal — because somewhere in a long message you did not finish reading, a door was opened and left that way.",
@@ -8134,7 +8165,8 @@ export const blogPosts: BlogPost[] = [
     author: AUTHOR,
     date: "2026-08-26",
     cover: "/images/blog/data-usage-settings.jpg",
-    coverAlt: "A phone screen showing a data usage bar, most of it already consumed, held in one hand.",
+    coverAlt:
+      "A phone screen showing a data usage bar, most of it already consumed, held in one hand.",
     body: [
       p(
         "The bundle was two gigabytes on Monday, fat and confident. By Thursday the phone says data exhausted, and you are genuinely confused — you watched nothing, or so your memory insists. The memory is honest; the bundle was still eaten. A bundle is a bowl of water in a house with four quiet drinkers, and this lesson is about learning their names, because a drinker with a name can be leashed.",
@@ -8186,7 +8218,8 @@ export const blogPosts: BlogPost[] = [
     author: AUTHOR,
     date: "2026-08-27",
     cover: "/images/blog/atm-shield-pin.jpg",
-    coverAlt: "A hand covering the ATM keypad while the other types, shoulder and camera protected.",
+    coverAlt:
+      "A hand covering the ATM keypad while the other types, shoulder and camera protected.",
     body: [
       p(
         "The queue at the bank's wall on a Friday is its own small nation: umbrellas, expectations, the man counting his notes twice, the machine humming behind the bars. The cash machine carried your money across the country while you slept, and it asks in return for a handful of manners — not because the machine has feelings, but because the wall has watchers. This lesson is the whole craft of standing there, and of its market cousin, the POS.",
@@ -8238,7 +8271,8 @@ export const blogPosts: BlogPost[] = [
     author: AUTHOR,
     date: "2026-08-31",
     cover: "/images/blog/power-bank-charging.jpg",
-    coverAlt: "A phone charging from a power bank on a table at night, a small lamp glowing beside it.",
+    coverAlt:
+      "A phone charging from a power bank on a table at night, a small lamp glowing beside it.",
     body: [
       p(
         "The light went at seven and the house exhaled — spoons paused, conversations leaned closer, and in the corner the phone kept working because a small brick in its cable was paying its way. The power bank is the true national companion of this era: it attends weddings, classrooms, markets and hospital corridors, and it asks so little that most people never learn anything about it. This lesson is the learning, because the little brick can serve you faithfully for years or misbehave expensively, and the difference is a few boring facts.",
@@ -8342,7 +8376,8 @@ export const blogPosts: BlogPost[] = [
     author: AUTHOR,
     date: "2026-09-05",
     cover: "/images/blog/flight-booking-screen.jpg",
-    coverAlt: "A laptop showing a flight booking form with dates and a passenger's details being typed.",
+    coverAlt:
+      "A laptop showing a flight booking form with dates and a passenger's details being typed.",
     body: [
       p(
         "The first flight is a milestone in any family's story, and for most Nigerian families it used to begin at a travel agent's window with a queue and a fee. The window has moved to a screen. Booking a flight online is now a basic skill — of the same family as checking a result and paying a bill — and doing it yourself saves the agent's charge, the middleman's margin, and the particular blindness of trusting somebody else with your own name. This lesson walks the whole road, from the search box to the seat.",
@@ -8441,7 +8476,8 @@ export const blogPosts: BlogPost[] = [
     author: AUTHOR,
     date: "2026-09-11",
     cover: "/images/blog/loan-app-offer.jpg",
-    coverAlt: "A phone showing a loan app offering a large amount with one big button, a hesitant thumb above it.",
+    coverAlt:
+      "A phone showing a loan app offering a large amount with one big button, a hesitant thumb above it.",
     body: [
       p(
         "It arrives on a slow evening, exactly when the pocket is lightest: a bright app promising one hundred thousand naira in fifteen minutes. No paperwork, no collateral, no questions — just allow us a few permissions and the money lands. The needs of this life are real, and the offer is engineered to meet one of them at its weakest hour. This lesson opens the machine while it is switched off, so you can see the gears: because the money is real, but the interest is collected in a currency you did not agree to spend — your reputation, and the phonebook of everybody you love.",
@@ -8493,7 +8529,8 @@ export const blogPosts: BlogPost[] = [
     author: AUTHOR,
     date: "2026-09-13",
     cover: "/images/blog/roi-dashboard-phone.jpg",
-    coverAlt: "A phone showing an investment app with a steep green profit curve and a big balance.",
+    coverAlt:
+      "A phone showing an investment app with a steep green profit curve and a big balance.",
     body: [
       p(
         "The compound meeting has heard it before, in every generation, in every market on earth: a man with a phone shows a dashboard — the balance climbing, the green curve, thirty percent in a month, withdrawn in minutes, proof in his own hand. Your money works while you sleep. Referral bonus if you bring your brother. The room nods; the arithmetic applauds quietly in the corner, because it knows something the room will learn too late: money that doubles by schedule is not an investment. It is a collection plate, and the collection has always been the point.",
@@ -8536,4 +8573,3 @@ export const blogPosts: BlogPost[] = [
     ],
   },
 ];
-

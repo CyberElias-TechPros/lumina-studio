@@ -6,9 +6,7 @@ import { useRouterState } from "@tanstack/react-router";
  * number with a short prefilled enquiry, in a new tab.
  */
 const WHATSAPP_NUMBER = "2349058628386"; // +234 905 862 8386, from the contact page
-const PREFILL = encodeURIComponent(
-  "Hello Cyber Elias Academy! I would like to make an enquiry.",
-);
+const PREFILL = encodeURIComponent("Hello Cyber Elias Academy! I would like to make an enquiry.");
 
 export function WhatsAppFloat() {
   const pathname = useRouterState({ select: (s) => s.location.pathname });

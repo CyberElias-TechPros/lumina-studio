@@ -61,7 +61,8 @@ export const noteChapters: NoteChapter[] = [
   {
     slug: "everyday-office",
     title: "Everyday office",
-    blurb: "Tables, calendar, contacts, QR codes, WhatsApp Web, maps, a poster, and “virus” scares.",
+    blurb:
+      "Tables, calendar, contacts, QR codes, WhatsApp Web, maps, a poster, and “virus” scares.",
     from: 51,
     to: 60,
     courseSlug: "microsoft-office",
@@ -70,7 +71,8 @@ export const noteChapters: NoteChapter[] = [
   {
     slug: "writing-on-the-page",
     title: "Writing on the page",
-    blurb: "Two windows, lists, spell check, find and replace, undo, page numbers, Cc, and a signature.",
+    blurb:
+      "Two windows, lists, spell check, find and replace, undo, page numbers, Cc, and a signature.",
     from: 61,
     to: 70,
     courseSlug: "microsoft-office",
@@ -97,7 +99,8 @@ export const noteChapters: NoteChapter[] = [
   {
     slug: "stay-safe",
     title: "Stay safe",
-    blurb: "Locks, a stolen phone, OTPs, public Wi‑Fi, scanning a page, and the prize that wants a fee.",
+    blurb:
+      "Locks, a stolen phone, OTPs, public Wi‑Fi, scanning a page, and the prize that wants a fee.",
     from: 91,
     to: 100,
     courseSlug: "cybersecurity",
