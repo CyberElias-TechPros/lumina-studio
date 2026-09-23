@@ -1,5 +1,263 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/cdn-cgi/l/email-protection",
+      "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/engines",
+      "destination": "/classes",
+      "permanent": true
+    },
+    {
+      "source": "/career-guides/:path*",
+      "destination": "/classes",
+      "permanent": true
+    },
+    {
+      "source": "/career-guides",
+      "destination": "/classes",
+      "permanent": true
+    },
+    {
+      "source": "/glossary/:path*",
+      "destination": "/classes",
+      "permanent": true
+    },
+    {
+      "source": "/glossary",
+      "destination": "/classes",
+      "permanent": true
+    },
+    {
+      "source": "/pricing",
+      "destination": "/classes",
+      "permanent": true
+    },
+    {
+      "source": "/programs/:path*",
+      "destination": "/classes",
+      "permanent": true
+    },
+    {
+      "source": "/programs",
+      "destination": "/classes",
+      "permanent": true
+    },
+    {
+      "source": "/work",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/events",
+      "destination": "/visit",
+      "permanent": true
+    },
+    {
+      "source": "/vizier",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/alumni",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/scholarships",
+      "destination": "/admissions",
+      "permanent": true
+    },
+    {
+      "source": "/services",
+      "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/partners",
+      "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/careers",
+      "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/marketplace",
+      "destination": "/classes",
+      "permanent": true
+    },
+    {
+      "source": "/stories",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/community",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/virtual-tour",
+      "destination": "/visit",
+      "permanent": true
+    },
+    {
+      "source": "/resources/:path*",
+      "destination": "/classes",
+      "permanent": true
+    },
+    {
+      "source": "/resources",
+      "destination": "/classes",
+      "permanent": true
+    },
+    {
+      "source": "/library/:path*",
+      "destination": "/classes",
+      "permanent": true
+    },
+    {
+      "source": "/library",
+      "destination": "/classes",
+      "permanent": true
+    },
+    {
+      "source": "/blog/api-development-nodejs",
+      "destination": "/classes",
+      "permanent": true
+    },
+    {
+      "source": "/blog/nigeria-tech-talent-2026",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/blog/starting-tech-career-nigeria-2026",
+      "destination": "/blog/choosing-a-school-or-bootcamp",
+      "permanent": true
+    },
+    {
+      "source": "/blog/tech-community-nigeria",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/blog/networking-for-tech-career",
+      "destination": "/blog/learning-in-public",
+      "permanent": true
+    },
+    {
+      "source": "/blog/data-analytics-nigeria-career",
+      "destination": "/blog/careers-in-data-analytics",
+      "permanent": true
+    },
+    {
+      "source": "/blog/portfolio-that-gets-you-hired",
+      "destination": "/blog/the-portfolio-that-proves-it",
+      "permanent": true
+    },
+    {
+      "source": "/blog/cybersecurity-for-small-business-nigeria",
+      "destination": "/classes/cybersecurity",
+      "permanent": true
+    },
+    {
+      "source": "/blog/react-hooks-explained",
+      "destination": "/blog/the-frontend-developer",
+      "permanent": true
+    },
+    {
+      "source": "/blog/python-for-beginners-nigeria",
+      "destination": "/classes/data-analytics",
+      "permanent": true
+    },
+    {
+      "source": "/blog/devops-for-small-teams",
+      "destination": "/blog/the-teams-that-build",
+      "permanent": true
+    },
+    {
+      "source": "/blog/writing-a-tech-resume-nigeria",
+      "destination": "/blog/the-cv-that-gets-read",
+      "permanent": true
+    },
+    {
+      "source": "/blog/digital-marketing-nigerian-business",
+      "destination": "/blog/running-social-media-for-a-business",
+      "permanent": true
+    },
+    {
+      "source": "/blog/mobile-app-development-nigeria",
+      "destination": "/blog/how-to-build-a-mobile-app-in-nigeria",
+      "permanent": true
+    },
+    {
+      "source": "/blog/why-we-are-building-cea-os",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/blog/ui-ux-design-african-users",
+      "destination": "/blog/design-that-works-on-cheap-phones",
+      "permanent": true
+    },
+    {
+      "source": "/blog/cloud-computing-for-nigerian-businesses",
+      "destination": "/blog/the-cloud-in-ordinary-words",
+      "permanent": true
+    },
+    {
+      "source": "/blog/version-control-with-git",
+      "destination": "/classes",
+      "permanent": true
+    },
+    {
+      "source": "/blog/building-first-web-portfolio",
+      "destination": "/blog/the-portfolio-that-proves-it",
+      "permanent": true
+    },
+    {
+      "source": "/blog/freelancing-in-tech-from-nigeria",
+      "destination": "/blog/remote-work-from-nigeria",
+      "permanent": true
+    },
+    {
+      "source": "/blog/choosing-between-bootcamp-and-university",
+      "destination": "/blog/choosing-a-school-or-bootcamp",
+      "permanent": true
+    },
+    {
+      "source": "/blog/building-a-soc-on-a-budget",
+      "destination": "/blog/the-soc-in-plain-words",
+      "permanent": true
+    },
+    {
+      "source": "/blog/cohort-vs-self-paced",
+      "destination": "/admissions",
+      "permanent": true
+    },
+    {
+      "source": "/blog/hiring-junior-engineers",
+      "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/blog/tech-imposter-syndrome",
+      "destination": "/blog/on-your-own",
+      "permanent": true
+    },
+    {
+      "source": "/blog/product-management-nigeria",
+      "destination": "/classes",
+      "permanent": true
+    }
+  ],
   "headers": [
     {
       "source": "/sw.js",

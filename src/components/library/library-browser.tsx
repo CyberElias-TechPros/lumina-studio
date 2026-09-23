@@ -150,7 +150,9 @@ export function LibraryBrowser({ items, sourceName, canAccessProtected }: Librar
               <LockKeyhole className="size-3" /> Students only
             </Badge>
             <Button variant="outline" size="sm" className="h-7 px-2.5 font-semibold" asChild>
-              <Link to="/auth/sign-in">Sign in</Link>
+              <Link to="/auth/sign-in" rel="nofollow">
+                Sign in
+              </Link>
             </Button>
           </>
         ) : (

@@ -8572,4 +8572,558 @@ export const blogPosts: BlogPost[] = [
       ),
     ],
   },
+  {
+    slug: "when-the-screen-stays-dark",
+    title: "When the screen stays dark",
+    excerpt:
+      "The power light breathes, the fan spins up, but the glass screen stays as dark as midnight. How to test the light, the memory stick, and the TV cord before anybody touches a screwdriver.",
+    series: SERIES,
+    order: 171,
+    author: AUTHOR,
+    date: "2026-09-14",
+    cover: "/images/blog/dark-screen-flashlight-check.jpg",
+    coverAlt:
+      "A person shining a smartphone flashlight close to a dark laptop screen, looking for faint hidden desktop icons.",
+    body: [
+      p(
+        "You sit down on your plastic chair in the morning, ready to type a document. You press the round power button. The little blue light comes on beside your thumb. You hear the fan let out its soft morning sigh. You can feel the slight hum of the machine waking up on the table. But the glass screen in front of you remains completely black — as dark and dead as a turned-off television. You tap the Spacebar, you shake the mouse, you click the buttons. Nothing moves. In that quiet room, your chest tightens: 'Is my screen broken? Did the board fry? Where will I find one hundred thousand naira to fix this before work starts?'",
+      ),
+      p(
+        "Before you panic, take your hands off the keyboard and breathe. A screen that stays dark is not always a dead screen. Think of a computer screen like a church window made of coloured glass. The picture is the coloured glass, but behind the glass is the sun shining through from outside so you can see the colours. If the sun goes down, the church window looks completely black from inside the room — but the glass is not broken. The picture is still there, waiting in the dark for a beam of light. Laptops work the exact same way.",
+      ),
+      fig(
+        "/images/blog/dark-screen-flashlight-check.jpg",
+        "A person shining a smartphone flashlight close to a dark laptop screen, looking for faint hidden desktop icons.",
+        "The phone torch test. If you can see faint ghost letters hiding under the glass, your screen is alive — only the small light behind it has gone to sleep.",
+      ),
+      h2("The phone torch and the television cord"),
+      p(
+        "Here is the five-second test that saves families thousands of naira every week. Take your smartphone, turn on the flashlight torch, and hold the bright light right against the dark laptop screen. Lean in very close and tilt the phone at an angle. Look directly where the light hits the glass. Can you see a very faint, shadowy outline of your mouse arrow? Can you see the faint grey box where you normally type your Windows password? If you see even the faintest ghost of your desktop hiding under the glass, shout thank you: your screen is not broken! The computer is working, the glass is drawing the letters, but the tiny light strip behind the glass failed to turn on. That is a small wire or fuse problem, not an expensive new screen.",
+      ),
+      fig(
+        "/images/blog/external-monitor-hdmi-test.jpg",
+        "A laptop with a black display screen connected via a black HDMI cable to an external computer monitor that successfully lights up showing the desktop screen, testing the laptop graphics output.",
+        "The sitting-room TV test. When your desktop picture shows up on the television screen, you know the computer's brain is completely healthy.",
+      ),
+      p(
+        "The second test uses the television in your parlour. Take the black HDMI cord you use for your DSTV or decoder. Plug one end into the side of the laptop and the other end into the TV. Turn the TV on, change the input to HDMI, and press the Windows key and the letter P together on the laptop keyboard. If your familiar desktop picture suddenly appears bright and clear on the big television screen, rejoice: the brain of your computer — the motherboard, the processor, your files, your pictures — is completely untouched! The trouble is only in the hinge wire going up to the laptop lid.",
+      ),
+      p(
+        "And what if the TV also stays black? In coastal towns like Lagos, Port Harcourt, and Calabar, salt and damp moisture in the air creep inside laptops that sat idle for a week. The little green memory stick (called RAM) has a row of shiny gold teeth along its edge where it clicks into the board. When air touches those gold teeth for too long, a thin, invisible layer of grey film forms over them. The computer turns on, tries to read the memory stick, cannot feel the gold through the dirt, and gives up before turning on the screen. The cure costs zero naira: unclip the battery, open the small door underneath, pull the memory stick out, and take a clean white school eraser — the ordinary pencil rubber children use in school. Rub the rubber gently back and forth across the gold teeth on both sides until they shine like fresh jewelry. Brush away the crumbs with your finger, click the stick back firmly into its slot, and press power. In four out of ten homes, the laptop wakes up instantly.",
+      ),
+      fig(
+        "/images/blog/ram-stick-clean-pins.jpg",
+        "A close-up photograph of hands holding a green DDR4 SODIMM laptop RAM module and gently wiping the gold pin contacts with a clean white pencil eraser to remove oxidation.",
+        "An ordinary school eraser on the gold teeth. Salt and damp air leave an invisible coating; five seconds of gentle rubbing clears the path.",
+      ),
+      ul([
+        "Flashlight on the glass first: if you see faint shadowy shapes under the beam, the picture is alive and only the backlight is sleeping.",
+        "Plug into a TV with an HDMI cord: if the TV lights up with your desktop, the computer brain and files are completely safe.",
+        "The pencil rubber trick: clean the gold teeth of the memory stick gently to rub away invisible damp air grime.",
+        "Drain the sleeping power: unplug the charger, remove the battery, and hold the power button down hard for 30 full seconds before plugging back in.",
+      ]),
+      h2("Test before you spend"),
+      p(
+        "Never let an artisan tell you 'Madam, your whole board is condemned' before you run these three simple tests with your own hands. Most dark screens are just sleeping backlights, a confused cord in the hinge, or five seconds of dust on a gold pin. Test calmly, keep your money in your pocket, and let the facts speak first. Next: the fan that screams like a generator, and the machine that burns your lap.",
+      ),
+    ],
+  },
+  {
+    slug: "the-fan-that-screams",
+    title: "The fan that screams and the machine that burns",
+    excerpt:
+      "Laptops do not slow down because they are getting old; they slow down because they are choking on dust. The grey carpet behind the vents, the mattress trap, and how to give the machine cool air.",
+    series: SERIES,
+    order: 172,
+    author: AUTHOR,
+    date: "2026-09-15",
+    cover: "/images/blog/laptop-heatsink-dust-carpet.jpg",
+    coverAlt:
+      "An opened laptop revealing a thick felt carpet of grey dust clogging the copper cooling exhaust fins.",
+    body: [
+      p(
+        "It is two o'clock in the afternoon. The room is warm, the ceiling fan is turning slowly overhead, and you are typing a letter with the laptop resting directly on your lap. Suddenly, the little fan inside the machine begins to whistle and roar like an old generator running low on oil. The plastic under your left hand turns so hot you can barely rest your palm on it. The mouse pointer on the screen starts jerking and hesitating, freezing for two seconds each time you click. Ten minutes later, without asking your permission, the whole machine abruptly shuts down with a dry click, and the room goes dead silent.",
+      ),
+      p(
+        "People look at a hot, slow computer and shake their heads: 'This machine is old; its strength is finished.' But computer chips do not have muscles that get tired with age. A chip made ten years ago can calculate numbers just as fast today as it did when it came out of the factory box. What actually happens is much simpler and much more human: the computer is choking. It is trying to run a marathon while someone holds a heavy wool blanket pressed tight against its mouth and nose.",
+      ),
+      fig(
+        "/images/blog/laptop-heatsink-dust-carpet.jpg",
+        "An opened laptop revealing a thick felt carpet of grey dust clogging the copper cooling exhaust fins.",
+        "The grey blanket. Harmattan dust and bedsheet lint get sucked inside until they form a solid felt carpet that stops all air.",
+      ),
+      h2("The grey carpet and the mattress trap"),
+      p(
+        "Here is what lives inside. The brain of your computer is smaller than a postage stamp, but when it thinks, it gets as hot as a small electric iron. To keep from burning itself up, a flat copper pipe carries that heat to a little metal grill at the side of the casing. A tiny spinning fan sucks cool air from the holes underneath the laptop and blows it out through those metal teeth. But in Nigeria, air is never empty: it carries red road dust from the harmattan, powder from the room, and lint from clothes. Over six or eight months, that dust catches on the inside of the metal grill like hair caught in a bathroom drain, weaving itself into a thick, solid grey carpet of felt.",
+      ),
+      fig(
+        "/images/blog/laptop-on-wooden-stand.jpg",
+        "A laptop elevated two inches off a wooden desk by a simple neat wooden laptop stand, showing the open air gap underneath allowing ventilation. Clean desk setup.",
+        "Give the belly breathing room. Just placing two plastic bottle caps under the back rubber feet lets fresh air flow underneath like a river.",
+      ),
+      p(
+        "Now picture the fan: it is spinning at top speed, screaming in desperation, trying to push air through a solid wall of dust. The hot air cannot get out. The temperature inside climbs past ninety degrees. When the computer's internal thermometer feels that dangerous heat, it pulls the emergency brake: it cuts its own working speed in half to save itself from melting. That is why your typing stutters. The laptop is not weak; it is gasping for breath.",
+      ),
+      p(
+        "The biggest mistake people make is using a laptop on a bed, a foam mattress, or a soft velvet sofa pillow. Foam is an oven: it sinks under the weight of the laptop, seals the intake holes on the belly completely shut, and traps all the heat inside. Always place the laptop on a hard, flat surface — a wooden desk, a dining table, or even a smooth plastic serving tray. If you want a free upgrade that cools your machine instantly: take two ordinary plastic bottle caps from water bottles and slide them under the two rear rubber feet of the laptop. Lifting the back of the machine by just one centimetre lets cool room air flow freely underneath the belly. The fan immediately quiets down, the heat drops, and your mouse stops freezing.",
+      ),
+      fig(
+        "/images/blog/thermal-paste-pea-dot.jpg",
+        "A macro shot of a shiny silver-grey processor die on a green motherboard with a neat, small pea-sized dot of grey thermal compound paste sitting right in the center, syringe applicator hovering nearby.",
+        "Fresh grey paste on the chip. Like oil in an engine, a small pea-sized drop bridges the gap between the hot metal and the cooling pipe.",
+      ),
+      ul([
+        "Never place a running laptop on a foam mattress, pillow, or thick blanket: soft foam suffocates the cooling vents in three minutes.",
+        "The bottle cap trick: put two plastic bottle tops under the rear feet to lift the belly and let cool air rush in underneath.",
+        "If the fan screams even when you are doing nothing, the metal grill inside is clogged with dust and needs a simple brush cleaning.",
+        "Never blow air violently into a fan with a high-pressure pump: spinning the fan too fast while the machine is off can generate electricity backwards.",
+      ]),
+      h2("Cool air is free speed"),
+      p(
+        "Before you spend money buying a newer laptop or paying someone to 'format' your drive, give the machine room to breathe. Clean the dust from the grill, lift the belly off the table, and keep it off the mattress. A cool computer is a quiet, obedient servant that will work beside you for years without shouting. Next: the frightening tick-tick-click sound inside the palm rest, and the solid-state cure.",
+      ),
+    ],
+  },
+  {
+    slug: "the-hard-drive-that-clicks",
+    title: "The hard drive that clicks and the solid-state cure",
+    excerpt:
+      "Tick, tick, tick, click. The tiny record player spinning inside an old laptop, why the clicking needle means stop immediately, and how a solid-state drive gives an old machine new wings.",
+    series: SERIES,
+    order: 173,
+    author: AUTHOR,
+    date: "2026-09-16",
+    cover: "/images/blog/ssd-swap-old-laptop.jpg",
+    coverAlt:
+      "Hands sliding a 2.5-inch solid-state drive into a laptop drive bay next to an old mechanical drive.",
+    body: [
+      p(
+        "You are working late at night in a quiet room. The generator has been turned off, the house is still, and under your left wrist you suddenly hear a strange, tiny rhythm: tick... tick... tick... click. On the screen, your document freezes. The mouse pointer turns into a spinning blue circle. Five seconds pass, ten seconds pass, and then suddenly the machine resumes working as if nothing happened. You breathe a sigh of relief. But three days later, the clicking sound returns, louder and more frequent, like an angry little beetle trapped inside the plastic case.",
+      ),
+      p(
+        "You are listening to the heartbeat of an old mechanical hard drive, and that clicking sound is the most urgent warning a computer can ever give you. Inside that metal box under your palm sits a stack of real, physical shiny glass plates spinning around thousands of times every single minute. Hovering just a hair's breadth above those spinning plates is a microscopic metal needle flying back and forth, reading your letters, your family pictures, and your business records, exactly like an old gramophone needle playing a music record.",
+      ),
+      fig(
+        "/images/blog/ssd-swap-old-laptop.jpg",
+        "Hands sliding a 2.5-inch solid-state drive into a laptop drive bay next to an old mechanical drive.",
+        "The modern upgrade. The old spinning plate on the right has moving parts that break; the solid-state drive on the left has zero moving parts.",
+      ),
+      h2("The needle that scratches and the flash rescue"),
+      p(
+        "Now picture what happens when you bump the table, drop your laptop into your backpack while it is still running, or carry it roughly across the parlour. That flying needle crashes down directly onto the spinning glass plate, scratching the surface. When the needle tries to read a scratched spot and finds nothing, it snaps back to its starting post with a dry click: *tick, tick, click.* The golden rule of the workshop is simple and absolute: the very day you hear that clicking sound, STOP. Do not restart the computer five times. Do not hit the laptop with your palm hoping to 'settle it.' Every single click is that sharp needle scratching away more of your irreplaceable files. That very hour, plug in a USB flash drive and copy your school certificates, passport scans, and important papers before the motor gives up.",
+      ),
+      fig(
+        "/images/blog/crystaldiskinfo-drive-health.jpg",
+        "A screen showing drive health status marked Caution with reallocated sector count.",
+        "The free test that tells the truth. A yellow Caution circle in CrystalDiskInfo means the drive surface is wearing out and files must be moved.",
+      ),
+      p(
+        "You don't have to guess whether your drive is dying. Download a tiny, free tool called CrystalDiskInfo. Open it. If the circle says 'Good' in blue, your drive is peaceful. If the circle is yellow and says 'Caution', the plate is already beginning to fail. And when it fails, do not go to the market to buy another old mechanical drive! That is yesterday's technology. Buy an SSD (a Solid State Drive).",
+      ),
+      p(
+        "What is an SSD? An SSD has zero spinning plates, zero needles, zero motors, and makes zero sound. It stores your files on quiet flash memory chips, exactly like the memory card inside your smartphone. If you drop it on the floor, nothing scratches. It uses one-third of the battery power, stays completely cool, and reads files six times faster than an old mechanical drive. For twenty-five thousand to thirty-five thousand naira, replacing an old spinning drive with an SSD turns an eight-year-old sluggish laptop into a machine that boots Windows in fifteen seconds flat. It is the single greatest transformation you can give an older computer.",
+      ),
+      fig(
+        "/images/blog/external-sata-adapter-cable.jpg",
+        "A USB-to-SATA adapter cable connecting a drive to a computer for emergency file rescue.",
+        "Rescuing files with a simple USB cord. Pull the old clicking drive out and read it like an external drive before the motor stops turning forever.",
+      ),
+      ul([
+        "If you hear clicking, ticking, or grinding under your palm rest, copy your important documents onto a flash drive that very day.",
+        "Never hit, shake, or drop a computer while it is running: the spinning needle will scratch your files off the glass plate.",
+        "Check your drive health with CrystalDiskInfo: a yellow Caution circle means the drive is reaching the end of its life.",
+        "Replacing an old mechanical drive with an SSD is the best money you can spend: boots in 15 seconds and never clicks again.",
+      ]),
+      h2("Retire the spinning plate"),
+      p(
+        "Spinning mechanical plates served our parents well, but a computer that travels in your bag across bumpy roads belongs on quiet solid-state storage. Keep your files safe on silent flash memory, and leave the clicking behind. Next: the terrible accident that happens in half a second — tea, water, and the spill on the keyboard.",
+      ),
+    ],
+  },
+  {
+    slug: "water-on-the-keyboard",
+    title: "Water, tea, and the spill on the keyboard",
+    excerpt:
+      "The mug tips, tea floods the keys, and panic takes over. The immediate five-second drill: pull the plug, hold the button, the upside-down tent, and why raw rice ruins machines.",
+    series: SERIES,
+    order: 174,
+    author: AUTHOR,
+    date: "2026-09-17",
+    cover: "/images/blog/laptop-tent-position-spill.jpg",
+    coverAlt:
+      "A laptop opened into an inverted V tent shape on a dry towel, keyboard facing downwards so liquid drains out.",
+    body: [
+      p(
+        "You are sitting at your desk with a warm mug of tea or a cold sachet of pure water beside your elbow. You reach across to grab a pen, your forearm knocks the cup, and a brown wave of sweet tea pours directly across the letters on your keyboard. In that terrible second, your brain screams. What do most people do? They freeze in shock. Then they grab a dry handkerchief and start gently wiping the surface of the keys while the screen is still brightly shining. Or worse: they click 'Start', then click 'Power', then click 'Shut Down', and wait patiently while Windows takes forty seconds to close background apps. Those thirty wasted seconds are the exact moments when a cheap spill turns into a completely burnt laptop.",
+      ),
+      p(
+        "Here is the secret of water: pure water does not burn a computer. What burns a computer is water meeting electricity. When water containing sugar, milk, or tap minerals sits on a board carrying electric current, the liquid acts like a hundred tiny copper wires touching parts that should never touch. Sparks fly across microscopic tracks, chips pop, and the board fries in an instant. Your only goal in the first five seconds of a spill is to kill every drop of electricity before the liquid can seep down through the keyboard floor.",
+      ),
+      fig(
+        "/images/blog/unplug-laptop-charger-emergency.jpg",
+        "A hand pulling a charger cord straight out of a laptop charging port with urgency.",
+        "First move: rip the charger cord straight out. Do not unplug gently; kill the wall electricity the instant liquid touches keys.",
+      ),
+      h2("The five-second drill and the dangerous rice myth"),
+      p(
+        "Memorize these four steps so your hands move without thinking. Step one: do not gently unplug the charger — rip the cord straight out of the laptop side with one hard pull. Step two: press your thumb hard onto the laptop's power button and HOLD IT DOWN. Do not let go. Do not wait for Windows to say goodbye. Keep pressing until all screen lights and fan sounds die completely. Step three: if the machine has a removable battery on the bottom, pop the latches and pull it out instantly. The computer is now completely dead and safe from electrical sparks.",
+      ),
+      fig(
+        "/images/blog/laptop-tent-position-spill.jpg",
+        "A laptop opened into an inverted V tent shape on a dry towel, keyboard facing downwards so liquid drains out.",
+        "The tent posture. Flip the laptop upside down on a dry cloth like an inverted V so gravity pulls the liquid out of the keys.",
+      ),
+      p(
+        "Step four: open the laptop screen halfway, turn the whole machine completely upside down so the keyboard faces the floor, and set it standing on the table like a camping tent — an upside-down 'V' — on top of a dry cotton towel. Look at what you just did: gravity is now your best friend. Instead of the water pooling down into the delicate green motherboard below, every single drop is trickling harmlessly down through the keycaps onto your towel.",
+      ),
+      p(
+        "Now listen carefully: never, under any circumstance, bury a wet laptop in a bag of raw uncooked rice. That is an internet fable that has destroyed thousands of computers. Rice does not draw moisture out of a closed metal laptop casing; what rice actually does is dump fine white flour dust and broken rice grains into your cooling fan, headphone jack, and USB ports. When that dry starch mixes with the dampness inside, it turns into thick, gummy porridge that seals fan bearings and ruins keys forever.",
+      ),
+      fig(
+        "/images/blog/isopropanol-cleaning-board.jpg",
+        "A soft brush and 99% isopropyl alcohol gently cleaning mineral residue off a green circuit board.",
+        "Patience and clean alcohol. Leave the machine in the tent posture for forty-eight full hours so every drop of moisture evaporates naturally.",
+      ),
+      ul([
+        "Hold the power button down hard for 10 seconds: kill internal power immediately, never wait for a normal Windows shutdown.",
+        "Rip the charger and battery out the same second: no electricity means no sparks, no short circuits, and no burnt boards.",
+        "Stand the laptop like a tent on a dry towel: let gravity pull liquid down onto the cloth away from the motherboard.",
+        "Never use raw rice, and never use a hot hair dryer: heat melts the thin plastic keyboard membrane and warps keycaps.",
+      ]),
+      h2("The 48-hour patience rule"),
+      p(
+        "The hardest part of a spill is the waiting. Leave the laptop standing in the tent position in a breezy room with a ceiling fan running for forty-eight full hours — two whole days and two whole nights. Do not touch it. Do not 'just press power for one second to see if it works.' That impatient tap after four hours is the exact moment electricity meets a hidden water droplet and burns the board. Give it two days of dry air. When forty-eight hours pass, plug in the charger and turn it on. In eight cases out of ten, the machine wakes up as if nothing happened. Next: walking into the used laptop market without getting sweet-talked or cheated.",
+      ),
+    ],
+  },
+  {
+    slug: "buying-a-used-laptop",
+    title: "Buying a used laptop without tears",
+    excerpt:
+      "In the market, oily rags and sweet words hide tired batteries and cracked hinges. The five-minute inspection test: the battery report, drive hours, key grids, and corner checks.",
+    series: SERIES,
+    order: 175,
+    author: AUTHOR,
+    date: "2026-09-18",
+    cover: "/images/blog/battery-report-cmd-screen.jpg",
+    coverAlt:
+      "A black command prompt window running a powercfg battery report showing design capacity versus full charge capacity.",
+    body: [
+      p(
+        "You have saved your hard-earned money for six months. You take a bus to the electronics market — Ikeja Computer Village in Lagos, Garrison in Port Harcourt, or the plazas in Abuja and Onitsha. You step into a shop where dozens of clean black laptops sit on glass shelves under bright white lights. The young seller smiles, wipes a sleek silver HP with a fragrant oily cloth until it shines like glass, and looks you straight in the eye: 'Senior man, this one is grade A London used! An old woman in Manchester only used it to check church hymns on Sundays. The battery will carry you from morning till night!' It sounds wonderful. But in the used market, shiny plastic often hides a machine whose battery is half-dead and whose hinges are held together by superglue.",
+      ),
+      p(
+        "Never buy a secondhand laptop with your eyes; buy it with a five-minute test. A good merchant who sells honest hardware will gladly pull up a plastic stool, hand you the charger, and say: 'Take your time, test everything you want.' But if a seller starts rushing you, grabs the machine from your hands, or says 'Pay money first before we test', smile politely, say thank you, and walk out of that shop immediately. There are forty other stalls on the same street.",
+      ),
+      fig(
+        "/images/blog/battery-report-cmd-screen.jpg",
+        "A black command prompt window running a powercfg battery report showing design capacity versus full charge capacity.",
+        "The battery report never tells lies. It compares what the battery held on its first day against what it can actually hold today.",
+      ),
+      h2("The battery truth, the disk hours, and the hinges"),
+      p(
+        "Test number one: do not look at the little battery icon in the bottom corner of the Windows screen that says '100%'. That number is a guess that can drop to zero in fifteen minutes. Ask the computer to show its own birth certificate: press the Windows key, type the three letters 'cmd', press Enter to open the black Command Prompt box, and type: powercfg /batteryreport. Press Enter. Open the small file it creates in your browser. Look for two numbers side by side: Design Capacity (what the battery held when it was new) and Full Charge Capacity (what it can hold today). If the original was 45,000 and today it is only 15,000, that battery has lost two-thirds of its life. It will die thirty minutes after you carry it home. Use that number to negotiate the price down by the cost of a new battery on the spot.",
+      ),
+      fig(
+        "/images/blog/online-keyboard-tester-grid.jpg",
+        "A browser screen showing an online keyboard tester with green keys and two red broken keys.",
+        "Test every single letter. A free keyboard test lights up keys in green as you press them. One dead key means an expensive replacement.",
+      ),
+      p(
+        "Test number two: the keyboard test. Open Notepad, or open a free site like keyboardtester.com. Press every single key in order from top to bottom — all the numbers, every letter from Q to M, the Spacebar, Enter, Backspace, and Shift. If even two letters refuse to type, that keyboard has broken traces underneath. Replacing a modern built-in keyboard means taking out sixty tiny screws and taking the whole machine apart, which costs twenty thousand naira in labor.",
+      ),
+      p(
+        "Test number three: the hinge check. Hold the laptop by the base with one hand, and with the other hand gently open and close the lid three times. Watch the plastic corners right where the screen joins the body. Does the plastic separate? Does it bulge or click like something is snapping inside? Inside those corners sit brass screw standoffs glued into thin plastic. When laptops are dropped or opened roughly, that plastic cracks. If you buy a machine with cracked hinge plastic, the screen will break off in your hands within two months.",
+      ),
+      fig(
+        "/images/blog/laptop-hinge-inspection.jpg",
+        "Close-up fingers gently flexing a laptop lid hinge to check for cracked plastic housing or separating brass standoffs.",
+        "Pinch the rear hinge corners while opening the lid. If the plastic opens up like an alligator mouth, the internal screws are broken.",
+      ),
+      ul([
+        "Run powercfg /batteryreport from the black command box: never trust the Windows taskbar battery percentage icon.",
+        "Check how many hours the drive has worked with CrystalDiskInfo: discover whether the laptop worked for months or years.",
+        "Press every single key in order on a blank page: one dead letter means replacing the entire keyboard.",
+        "Feel the weight of the charger brick: genuine OEM chargers feel heavy and solid; fake imitation chargers are light as plastic toys.",
+      ]),
+      h2("Preparation commands respect"),
+      p(
+        "When a seller sees you sit down with a calm face, open the command box to check battery wear, test the hinges, and verify every key on the board, his whole attitude changes. The exaggerated stories stop, the sweet talk disappears, and honest business begins. Preparation turns an intimidating market into a fair deal where you walk away with a sturdy business machine that will serve you for years. Next: chargers, adapters, voltage rules, and the blue spark that destroys boards.",
+      ),
+    ],
+  },
+  {
+    slug: "chargers-cables-and-the-spark",
+    title: "Chargers, cables, and the blue spark",
+    excerpt:
+      "Universal chargers with wobbly tips, cords that get hot to the touch, and power rules. Shoe size versus water buckets, center pins, and why the third brass pin saves motherboards.",
+    series: SERIES,
+    order: 176,
+    author: AUTHOR,
+    date: "2026-09-19",
+    cover: "/images/blog/charger-label-volts-amps.jpg",
+    coverAlt:
+      "A close-up photograph of the fine print on a genuine laptop power brick highlighting 19.5V and 3.33A.",
+    body: [
+      p(
+        "You travel to another town for a wedding or an office meeting, and when you open your bag, you realize you left your laptop charger plugged into the wall at home. You need to finish your work before evening. You hurry down to a roadside accessories kiosk in the market. The boy behind the counter reaches into a dusty drawer and hands you a bright cardboard box: 'Universal Laptop Charger.' Inside is a black brick with a sliding switch and eight different interchangeable plastic tips. You take it back to your hotel room, plug the loose plastic tip into your laptop, push the plug into the wall socket — and *snap!* A bright blue spark jumps with a loud pop, a smell of scorched plastic fills the air, and your laptop never powers on again.",
+      ),
+      p(
+        "Electricity is not magic; it follows simple physical rules that every computer user must know. On the back of every genuine charger brick, there is a small label with fine text. You only need to look for two letters: V for Volts, and A for Amperes. Think of them like shoes and water buckets, and you will never burn another machine as long as you live.",
+      ),
+      fig(
+        "/images/blog/charger-label-volts-amps.jpg",
+        "A close-up photograph of the fine print on a genuine laptop power brick highlighting 19.5V and 3.33A.",
+        "The fine print on the brick. The Volts must match your laptop exactly; the Amps can be equal to or higher than the demand.",
+      ),
+      h2("Shoe sizes and water buckets"),
+      p(
+        "Volts (V) is your shoe size. It must fit your foot EXACTLY. If the sticker on the belly of your laptop says '19.5V', your charger must be 19.5V. If you try to force a 24V charger into a 19.5V laptop, you are trying to force a size 46 man's boot onto a child's size 35 foot: the leather will burst. Inside the laptop, tiny electrical gates will puncture and blow out within half a second. Never, ever use a charger with higher voltage than your laptop asks for.",
+      ),
+      fig(
+        "/images/blog/multimeter-measuring-barrel-jack.jpg",
+        "A yellow digital multimeter probe touching the center pin of a laptop barrel charger tip.",
+        "The smart pin inside the tip. Modern Dell and HP chargers carry a tiny needle inside that talks to the laptop; bent needles stop charging.",
+      ),
+      p(
+        "Amperes (A), on the other hand, is water in a bucket. Your laptop only drinks what it is thirsty for. If your laptop needs 3.3 Amperes, and your charger is a big, solid brick rated for 4.6 Amperes, that is completely safe and wonderful! The laptop drinks its 3.3 Amperes, and the extra amperage stays in the bucket as cool breathing room, so the charger brick stays warm instead of burning hot. But reverse the situation — plugging a small 2-Amp charger into a heavy laptop that needs 4.5 Amps — and that little charger brick will get so blistering hot you cannot hold it, and its internal wires will melt within weeks.",
+      ),
+      p(
+        "This is why cheap universal chargers are so dangerous: their loose plastic tips wobble in the socket. Every time you shift your legs or move the desk, the tip disconnects and reconnects ten times in one second, sending little electrical shockwaves directly into the motherboard. Furthermore, look at the plug that goes into the wall: it has two flat pins and one long brass pin on top. That long top pin is the earth pin. It drains stray electrical noise safely into the ground. If an electrician snaps that brass pin off with pliers to fit an old two-prong socket, you will feel a tingling, vibrating shock on your wrists every time you rest your hands on the metal casing.",
+      ),
+      fig(
+        "/images/blog/three-pin-plug-ground.jpg",
+        "A sturdy British three-pin plug with the long brass earth pin intact beside a socket.",
+        "Never snap off the third brass pin. That top pin drains stray electricity safely into the ground so your wrists don't get shocked.",
+      ),
+      ul([
+        "Voltage (V) must match your laptop's requirement exactly: higher voltage burns internal chips instantly.",
+        "Amperage (A) can be equal or higher: higher amps keep the charger cool; lower amps cause overheating and melting.",
+        "Avoid multi-tip universal chargers: buy an original second-hand OEM charger built specifically for your laptop model.",
+        "Never cut off the third brass earth pin of a British plug: that pin stops tingling shocks on metal laptop bodies.",
+      ]),
+      h2("Clean electricity for the brain"),
+      p(
+        "Your laptop's brain thinks using tiny whispers of electric current moving billions of times every second. Feeding it dirty, unstable power from a cheap wobbly universal adapter is like putting contaminated petrol into an expensive car. Buy the heavy, original charger brick, protect its thick cord, and keep your machine safe. Next: the sudden blue screen of death, and why Windows crashes to save your work.",
+      ),
+    ],
+  },
+  {
+    slug: "the-blue-screen-and-the-spinning-circle",
+    title: "The blue screen and the spinning circle",
+    excerpt:
+      "The sudden blue flash, the sad face, the white capital letters. Why Windows crashes to protect your files from corruption, photographing the stop code, and the Safe Mode cure.",
+    series: SERIES,
+    order: 177,
+    author: AUTHOR,
+    date: "2026-09-20",
+    cover: "/images/blog/bsod-stop-code-camera.jpg",
+    coverAlt:
+      "A phone camera taking a photograph of a blue screen with the stop code MEMORY_MANAGEMENT clearly readable.",
+    body: [
+      p(
+        "You are in the middle of typing an important letter for your business or school. Without making a single sound, your screen flashes violently and turns into a solid wall of bright electric blue with a giant white frowning face: ':(' followed by words that strike terror into any beginner: 'Your PC ran into a problem and needs to restart.' People call it the Blue Screen of Death, and for thirty years it has made office workers break into cold sweats. The natural feeling is fear: 'I have broken the computer! A dangerous virus has eaten all my files!'",
+      ),
+      p(
+        "Here is the truth that will set you free: a blue screen is not a death sentence; it is an emergency handbrake. Imagine you are driving a car down a hill, and suddenly you look down and see that the steering wheel has come completely loose in your hands. What do you do? You do not keep pressing the accelerator hoping for the best; you slam your foot onto the emergency brake immediately to stop the car before it crashes into a house. That is what Windows is doing. Something got confused in memory, and Windows pulled the handbrake instantly to protect your saved files from being scrambled into garbage.",
+      ),
+      fig(
+        "/images/blog/bsod-stop-code-camera.jpg",
+        "A phone camera taking a photograph of a blue screen with the stop code MEMORY_MANAGEMENT clearly readable.",
+        "Take out your phone instantly. Photograph the white capitalised Stop Code at the bottom before the machine restarts.",
+      ),
+      h2("The phone photo and the Safe Mode rescue"),
+      p(
+        "Windows is not hiding what happened; it writes the exact reason in plain English right on the blue screen. Look at the very bottom line of text. You will see the words 'Stop code:' followed by capital letters like MEMORY_MANAGEMENT, or DRIVER_IRQL_NOT_LESS_OR_EQUAL. Beside it, you will often see a filename ending in .sys, like nvlddmkm.sys. That .sys name is the exact driver software file that got confused! The very second a blue screen appears, pull out your phone and take a sharp photograph before the machine restarts. That one photo is your diagnosis. When you show it to someone who knows, or type those words into Google, the mystery disappears in five seconds.",
+      ),
+      fig(
+        "/images/blog/windows-advanced-startup-safe-mode.jpg",
+        "The blue Windows Advanced Startup menu showing Startup Settings and Enable Safe Mode.",
+        "Safe Mode boots Windows in plain working clothes, without any fancy extra drivers. If it runs in Safe Mode, your hardware is fine.",
+      ),
+      p(
+        "If the laptop restarts and immediately gets stuck in a loop — crashing to blue every single time it tries to open — do this: while the computer is turning on and showing the brand logo, press and hold the power button down hard until it turns off. Do that three times in a row. On the fourth boot, Windows realizes it is struggling and opens a blue screen with options called 'Automatic Repair'. From there, click 'Advanced Options', click 'Startup Settings', click 'Restart', and press the number 4 key on your keyboard. That magic number boots Windows into Safe Mode.",
+      ),
+      p(
+        "What is Safe Mode? Safe Mode is Windows walking into the room dressed in plain white gym clothes — no fancy graphic card effects, no background printer drivers, no music tools, just the pure, simple operating system. If your laptop boots into Safe Mode and sits there peacefully without crashing, you have just proved something wonderful: your physical computer hardware is one hundred percent healthy! The crash was caused by a recently installed software update or a bad driver. Open Device Manager, find the driver you updated yesterday, right-click it, and click 'Roll Back Driver'. The problem vanishes immediately.",
+      ),
+      fig(
+        "/images/blog/device-manager-driver-rollback.jpg",
+        "Device Manager properties window with the Roll Back Driver button highlighted.",
+        "The rollback button. Did a display driver update cause the crashes? Rolling back to the old driver restores complete peace.",
+      ),
+      ul([
+        "Photograph the blue screen with your phone immediately: the Stop Code words at the bottom explain the whole fault.",
+        "MEMORY_MANAGEMENT usually means a memory stick is dusty or loose: clean the gold teeth with a rubber first.",
+        "Safe Mode is your proof: if Windows runs in Safe Mode, your hardware is completely healthy and only software is misbehaving.",
+        "Never pay someone to format your hard drive and delete all your files over a simple driver crash that can be rolled back in three clicks.",
+      ]),
+      h2("A crash is only a warning"),
+      p(
+        "Do not be afraid of the blue screen. It is not an enemy that came to destroy your work; it is a watchful guardian that stopped the machine before your files were corrupted. Photograph the code, enter Safe Mode, roll back the driver, and carry on with your day. Next: upgrading your computer's RAM, and how to avoid the soldered chip trap.",
+      ),
+    ],
+  },
+  {
+    slug: "upgrading-ram-the-honest-math",
+    title: "Upgrading RAM: the honest math",
+    excerpt:
+      "A friend shouts that you need sixteen gigabytes of RAM to make your computer fast. Reading the numbers before spending money, the study desk rule, and the soldered chip trap.",
+    series: SERIES,
+    order: 178,
+    author: AUTHOR,
+    date: "2026-09-21",
+    cover: "/images/blog/task-manager-ram-usage-tab.jpg",
+    coverAlt:
+      "Task Manager Performance tab showing memory usage bar at 7.4 of 8.0 GB in use with high commit charge.",
+    body: [
+      p(
+        "You are working on your laptop, and opening an Excel sheet takes thirty seconds. A friend leans over your chair, looks at the screen with an expert expression, and announces with great authority: 'Ah! Your RAM is too small! Go to the market and buy sixteen gigabytes of RAM; your laptop will fly like an aeroplane!' You believe him. You take thirty-five thousand naira out of your savings, buy a new green stick of memory, open the back of the laptop, click it in, and turn the machine on. You open Excel. It still takes thirty seconds. Nothing changed. You feel cheated, confused, and thirty-five thousand naira poorer.",
+      ),
+      p(
+        "Why did that happen? Because extra RAM only makes a computer faster if lack of RAM was the actual wall that was blocking it. Think of your computer like a student studying in a library. Your hard drive or SSD is the steel filing cabinet against the wall where thousands of books are stored. RAM (memory) is the wooden study table where you lay open the books you are reading right now. If you are reading only one notebook and one pen, having a study table the size of a football field does not help you read one word faster! You only need a bigger table when you have six heavy books open at the same time and pages are falling onto the floor.",
+      ),
+      fig(
+        "/images/blog/task-manager-ram-usage-tab.jpg",
+        "Task Manager Performance tab showing memory usage bar at 7.4 of 8.0 GB in use with high commit charge.",
+        "Check the desk before spending money. Press Ctrl + Shift + Esc to open Task Manager. If memory usage stays under 70%, extra RAM changes nothing.",
+      ),
+      h2("The Task Manager truth and the soldered trap"),
+      p(
+        "Here is how to check your table size before spending a single kobo. Press three keys together: Ctrl, Shift, and Escape. That opens the Windows Task Manager — the dashboard that shows you everything your computer is doing right now. Click on 'Performance', then click on 'Memory'. Now use your laptop exactly as you do on your busiest workday: open your browser tabs, open your accounting sheet, open WhatsApp Web, and play music. Look at the numbers on the screen. If it says '3.8 GB of 8 GB in use', stop right there! Your desk is more than half empty! Adding another eight gigabytes of RAM will not make your computer one second faster. Your slow speed is caused by an old mechanical hard drive or heat, not lack of memory.",
+      ),
+      fig(
+        "/images/blog/ram-sticks-ddr-notch-comparison.jpg",
+        "Two memory sticks held side by side showing different key notch positions for DDR3 and DDR4.",
+        "Look at the little gap in the gold teeth. DDR3, DDR4, and DDR5 have the notch in completely different spots so you cannot force the wrong generation in.",
+      ),
+      p(
+        "Only spend money on RAM if that Task Manager number consistently stays above eighty-five or ninety percent while you are working. And if you genuinely need more memory, beware the modern trap that catches thousands of buyers: soldered memory chips. In many modern slim laptops (especially thin budget models), the manufacturer did not include any slot for a memory stick! Instead, the chips are glued and soldered permanently directly onto the green board. Check online for your exact model number, or look at Task Manager where it says 'Slots used'. If it says 'Soldered' or has no open slot, you cannot upgrade the memory at all.",
+      ),
+      fig(
+        "/images/blog/laptop-ram-sodimm-installation.jpg",
+        "Fingers clicking a small SODIMM RAM module into an angled slot until the metal side clips snap shut.",
+        "Slide in at a gentle angle, then press flat until the metal side clips snap shut with a click.",
+      ),
+      ul([
+        "Check Task Manager Memory under peak daily load: if usage stays under 75%, do not waste money buying extra RAM.",
+        "A slow laptop is almost always suffering from an old mechanical hard drive, not lack of RAM: buy an SSD first.",
+        "Verify your laptop has an open memory slot before purchasing: many modern thin laptops have non-upgradeable soldered chips.",
+        "Memory generations cannot mix: DDR3, DDR4, and DDR5 have different notch positions and cannot fit into each other's slots.",
+      ]),
+      h2("Spend where the choke lives"),
+      p(
+        "Never buy computer parts based on street advice or loud opinions. Open Task Manager, look at the numbers with your own eyes, and spend your money where the real bottleneck lives. An SSD brings joy to ninety percent of older computers; extra RAM is only for the few whose desks are genuinely overflowing. Next: taking your machine to a commercial workshop without losing your parts or your privacy.",
+      ),
+    ],
+  },
+  {
+    slug: "the-repairs-engineer-and-the-bench",
+    title: "The repairs engineer and the bench",
+    excerpt:
+      "Taking your laptop to a commercial workshop in town. The photographic inventory, serial numbers, password rules, agreed diagnostic bounds, and asking for old parts back in your hand.",
+    series: SERIES,
+    order: 179,
+    author: AUTHOR,
+    date: "2026-09-21",
+    cover: "/images/blog/workshop-receipt-serial-number.jpg",
+    coverAlt:
+      "A repair shop job card receipt listing the exact serial number, existing scratches, and agreed diagnostic fee.",
+    body: [
+      p(
+        "There comes a day when the soldering iron, the microscope, or the broken screen hinge requires tools and skills that do not exist on your kitchen table. You must carry your laptop to a commercial repair workshop in town. For most people, this is a moment of deep suspicion and fear. Everyone has heard the stories from friends: 'I took my laptop to fix a charging port, and when I went back three days later, my original high-capacity battery had been swapped for a dead one, my eight gigabytes of RAM had become four, and the boy had copied all my private family pictures onto his phone!' These things happen, but they only happen to clients who arrive without protocol.",
+      ),
+      p(
+        "An honest artisan loves a prepared client. When you walk into a workshop with clear boundaries and documentation, three things happen instantly: the engineer realizes you are not a novice to be cheated, careless hands treat your machine with respect, and both sides leave the transaction with trust and peace of mind. Here is the four-step protocol for visiting any repair bench.",
+      ),
+      fig(
+        "/images/blog/phone-photographing-laptop-serial.jpg",
+        "A phone taking a sharp photo of the barcode and model sticker on the bottom of a laptop before handover.",
+        "Photograph the belly before handing it over. Capture the serial number barcode, the exact model, and existing scratches in clear light.",
+      ),
+      h2("The photo inventory and the password rule"),
+      p(
+        "Rule one: never hand over your personal Windows login password for a physical repair! If a technician is fixing a broken hinge, replacing a cracked screen glass, or resoldering a loose charging socket, he needs electrical power and a screen test; he has zero professional reason to enter your personal Windows desktop, open your email, or browse your documents. If the computer still boots, create a temporary guest account named 'Test' with no password, and sign out of your own account. Better yet: if the repair is purely mechanical and your drive pops out easily, slide the SSD out and keep it safely in your pocket at home. A laptop can easily turn on to a test USB drive without your private life inside it.",
+      ),
+      fig(
+        "/images/blog/workshop-receipt-serial-number.jpg",
+        "A repair shop job card receipt listing the exact serial number, existing scratches, and agreed diagnostic fee.",
+        "The written job card. Ensure the serial number, battery model, and the exact reported fault are written on paper before you leave.",
+      ),
+      p(
+        "Rule two: the photographic inventory. Right on the repair counter in front of the engineer, set the laptop down, pull out your phone, and take four clear pictures: the white sticker on the belly showing the exact serial number (Service Tag or Serial No), the screen turned on showing the glass has no cracks, and any existing scratches on the body. Then open Windows Settings > System > About, and snap a picture of the installed RAM and storage size. When the technician sees you systematically documenting every component right before his eyes, any temptation for an apprentice to swap your good parts vanishes into thin air.",
+      ),
+      p(
+        "Rule three: the agreed diagnostic bound. Insist on a written paper receipt or job card that states your serial number, the exact reported fault ('charges intermittently when wire is bent'), and the diagnosis fee. State plainly: 'Diagnose the fault and call me with the quote before you replace any part.' And finally, the cardinal law of collection: always ask for the old damaged part back in your hand! If the technician tells you he replaced a burnt charging chip, a dead battery, or a bad keyboard, ask for the old damaged piece in a small nylon bag. An honest engineer hands it over with a smile because it proves he actually did the work; an opportunist who simply heated a loose solder joint with a lighter will start stammering.",
+      ),
+      fig(
+        "/images/blog/old-faulty-part-returned.jpg",
+        "A replaced swollen battery and cracked screen cable handed back in a plastic bag along with the fixed machine.",
+        "Always take your old parts back. An honest technician hands over replaced pieces without hesitation; it proves the repair actually happened.",
+      ),
+      ul([
+        "Never hand over your personal Windows password: create a clean test account or pull out your storage drive for physical repairs.",
+        "Photograph the serial number sticker, the casing condition, and your RAM/storage specs on the counter in front of the engineer.",
+        "Insist on a written paper receipt specifying your serial number and the agreed diagnostic fee before leaving the shop.",
+        "Always demand your old replaced parts returned to you in a small bag upon collection.",
+      ]),
+      h2("Professional dignity"),
+      p(
+        "A good repair engineer is one of the most valuable artisans in any community. Treat him with respect, pay his diagnostic fee honestly, but arrive with your documentation intact. When both sides follow clear boundaries, machines are repaired properly, relationships endure, and your computer comes home healthy and whole. Next: the ten-year machine — how to step off the endless upgrade treadmill.",
+      ),
+    ],
+  },
+  {
+    slug: "ten-years-from-one-machine",
+    title: "Ten years from one machine",
+    excerpt:
+      "Every advert tells you to buy a new laptop every two years; the workshop bench knows the quiet dignity of maintenance. Battery thresholds, lightweight software, and the tool that lasts.",
+    series: SERIES,
+    order: 180,
+    author: AUTHOR,
+    date: "2026-09-22",
+    cover: "/images/blog/old-thinkpad-working-bench.jpg",
+    coverAlt:
+      "A ten-year-old classic black laptop working quietly on a neat wooden desk next to a notebook and mug.",
+    body: [
+      p(
+        "Every television commercial, social media advertisement, and technology billboard preaches the exact same gospel of rapid obsolescence: your three-year-old laptop is hopelessly outdated, its borders are too thick, its processor lacks the newest artificial intelligence chip, and your life will only begin when you spend seven hundred thousand naira on this season's paper-thin model. But if you walk into the quiet back rooms of experienced programmers, network engineers, writers, and university researchers, you will see something completely different. Sitting on their wooden desks are sturdy black ThinkPads, thick aluminum HP EliteBooks, and business Latitudes built in 2015 and 2016, humming quietly, typing books, running spreadsheets, and making honest money every single day.",
+      ),
+      p(
+        "A computer is not a yam that rots in the cupboard; it is a durable instrument made of copper, silicon, glass, and steel. Except for chemical battery cells that wear out from charging and moving mechanical fans that gather dust, silicon computer chips do not decay with time. A processor made ten years ago can calculate arithmetic today just as accurately and quickly as the day it left the assembly line. If a computer is kept cool, protected from violent electrical voltage surges, cleared of dust, and given an honest solid-state drive, it can write letters, process accounting books, browse the web, and manage databases for a decade or more without complaint.",
+      ),
+      fig(
+        "/images/blog/old-thinkpad-working-bench.jpg",
+        "A ten-year-old classic black laptop working quietly on a neat wooden desk next to a notebook and mug.",
+        "A ten-year-old tool, working quietly. Dignity in maintenance: clean airways, fresh thermal paste, and an honest solid-state drive.",
+      ),
+      h2("The eighty percent battery rule and the lightweight cure"),
+      p(
+        "The first pillar of the ten-year machine is protecting the battery. Modern laptop batteries suffer the most chemical stress when they are kept pinned at one hundred percent charge while plugged into the wall in a warm room. Most major laptop makers (like Lenovo, Dell, HP, and Asus) provide a free battery management setting that lets you set a charging limit — for example, 'Stop charging at 80%'. Capping your maximum charge at eighty percent reduces chemical swelling and heat stress, extending the lifespan of your battery from two short years to six or seven years.",
+      ),
+      fig(
+        "/images/blog/battery-charge-threshold-setting.jpg",
+        "OEM battery utility setting maximum charge threshold to 80 percent to prevent cell degradation.",
+        "The 80% charge threshold. Capping full charge stops battery swelling and keeps cells healthy for five years or more.",
+      ),
+      p(
+        "The second pillar is software minimalism. Modern bloated operating system updates and background advertisement trackers consume gigabytes of memory just to show you an empty desktop. If an older laptop with an older dual-core chip begins to struggle under the weight of heavy Windows updates, do not throw the machine into the trash! Install a clean, lightweight operating system like Linux Mint. On Linux Mint, an older laptop with four gigabytes of RAM boots in fifteen seconds, uses only 600 megabytes of memory at rest, opens Firefox and Google Chrome smoothly, types letters in LibreOffice, plays YouTube videos without stuttering, and is completely immune to common Windows viruses. A machine that was heading for the scrap heap becomes a fast, capable workstation for your child's schooling, your own writing, or a small shop's bookkeeping.",
+      ),
+      fig(
+        "/images/blog/lightweight-linux-desktop-screen.jpg",
+        "A clean, responsive desktop environment running on an older dual-core machine with only 600MB RAM usage.",
+        "A second life through lightweight software. Clean operating systems like Linux Mint give aging family computers another decade of service.",
+      ),
+      ul([
+        "Set battery charging limits to 80% if your laptop stays mostly plugged into wall power: double battery lifespan.",
+        "Clean out heatsink dust once a year and renew thermal paste every three years to keep silicon running cool and quiet.",
+        "Resist marketing pressure: 95% of everyday knowledge work requires nothing more than a good keyboard, clear screen, and SSD.",
+        "Consider lightweight operating systems like Linux Mint to give older family or school computers another decade of productive life.",
+      ]),
+      h2("The bench closes, the tool endures"),
+      p(
+        "One hundred and eighty lessons. We began at the very first sitting: your fingers learning to rest gently on the home row keys, the mouse learning not to wander off the table, the mystery of the yellow folder, and your first honest email. We walked through office documents, spreadsheets that balance money, phone security, networks, career paths, freelance clients, and now the workbench where physical machines are understood, diagnosed, and respected. The machine in front of you is no longer a strange, scary black box full of magic and fear. You know what lives inside its casing, you know what it eats, you know how it speaks, and you know how to defend it. Keep the machine clean, keep your head clear, and do good work.",
+      ),
+    ],
+  },
 ];

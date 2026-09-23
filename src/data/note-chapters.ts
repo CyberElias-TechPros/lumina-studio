@@ -176,6 +176,16 @@ export const noteChapters: NoteChapter[] = [
     courseSlug: "digital-productivity",
     courseLabel: "Digital Productivity",
   },
+  {
+    slug: "the-workshop-and-the-bench",
+    title: "The workshop and the bench",
+    blurb:
+      "Dark screens, screaming fans, clicking drives, liquid spills, used-laptop inspection, charger math, blue screens, RAM upgrades, repairs manners, and ten years from one machine.",
+    from: 171,
+    to: 180,
+    courseSlug: "computer-repairs",
+    courseLabel: "Computer Hardware & Repairs",
+  },
 ];
 
 const byOrder = [...blogPosts].sort((a, b) => a.order - b.order);
