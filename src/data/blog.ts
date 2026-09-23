@@ -2115,47 +2115,53 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "Laptop keyboard with volume keys, a speaker icon on the screen.",
     body: [
       p(
-        "Sound is a tap. Too open, and a video in a class becomes a market. Closed, and you think the machine is dead. There are at least two taps: the keys on the keyboard, often with a speaker symbol, and the speaker icon near the clock. They can disagree. Headphones are a third tap: plug them in, and the speakers often go silent on purpose. This lesson is how to hear what you meant, without a shop.",
+        "Picture the scene: an online class is running, twenty heads are nodding, and suddenly a Nollywood trailer starts shouting from somebody's laptop at full blast. The owner scrabbles at the keyboard, presses things, and the noise continues. Then — one click — silence. Now flip the scene: Kelechi's laptop went quiet on a Tuesday. No music, no video sound, nothing. He was ready to carry the machine to the shop and pay for a diagnosis. The repair would have been one click, in the place this lesson is about. Sound on a computer is a set of taps, and almost every 'broken speaker' is a tap somebody closed.",
       ),
       p(
-        "On many laptops the volume keys share F1–F12 with other jobs. You hold Fn, then the key with the speaker. One key mutes, two raise and lower. A tiny on-screen bar should move. If it does not, Fn is inverted on that machine — try without Fn. The tray icon, bottom-right, is the same tap in another place. Click it. A slider. Drag. A speaker with a circle-slash is mute. Click it to unmute. Mute is not broken. It is a closed tap.",
+        "There are at least three taps in the chain, and they can each be closed independently. The keyboard's volume keys — often on the F-row, holding Fn, with a speaker symbol: one key mutes, two raise and lower. The speaker icon near the clock at the bottom-right, with its slider. And the program's own volume, which is a separate tap inside the video player or meeting app. Windows can be at full blast while YouTube sits at zero. Before you believe anything is broken, all the taps in the chain must be open. Let us walk the chain together.",
       ),
       fig(
         "/images/blog/volume-keys.jpg",
         "Volume keys on a laptop keyboard, speaker icon on screen.",
         "The keys and the tray should agree. If the keys move a bar but you still hear nothing, the sound is going somewhere else — headphones, a mute inside the video, or a wrong speaker.",
       ),
-      h2("Headphones, the jack, and Bluetooth"),
+      h2("Mute is a closed tap, not a broken machine"),
       p(
-        "A wired headset uses a round hole, often with a headset symbol. Push in until it clicks. The speakers should stop. If they do not, the machine has not noticed — unplug, wait, plug again. If you hear nothing in the phones, they may be in a microphone-only hole, or the volume inside the video player is at zero. Two taps: Windows, and the program. Both must be open.",
+        "A speaker with a circle-slash through it — on the keyboard key or the tray icon — is mute. People see it and conclude the sound has died. It has not died; it has been asked to be quiet. Click the tray speaker and look: if there is a small x or slash, click it once and sound returns. Try it now with a short video you trust, volume low. Mute from the keyboard. Confirm the silence is complete. Unmute. Confirm the sound. That ten-second drill is the difference between a person who panics and a person who checks.",
       ),
       p(
-        "Bluetooth earphones need pairing, as a phone did. When they connect, Windows may switch output to them without asking. If you then unpair and the laptop stays silent, click the tray speaker, the small arrow, and choose Speakers instead of the missing headphones. The machine is still sending sound down a path that left the room.",
+        "A retrieval question before the next tap: where do you look first when a laptop 'has no sound'? ... The tray speaker, because it tells you what Windows currently believes — muted or not, and which device the sound is being sent to. That last part matters more than people expect, and it leads to the strangest tap of the three.",
+      ),
+      h2("Headphones steal the speakers — until they do not"),
+      p(
+        "A wired headset uses the round hole, often marked with a headset symbol. Push it in until it clicks, and here is the behaviour that causes most 'my speakers are dead' scares: the speakers go silent on purpose. The sound has been redirected to the phones. Unplug, and the speakers should wake again. If they do not, the machine has not noticed the change — unplug, wait a breath, plug in again — or, and this is the misconception worth fixing now, the sound is still being sent to the headphones that left the room an hour ago. Click the tray speaker, then the small arrow above the slider. A list of destinations appears. Choose Speakers. The machine was faithfully sending sound down a path that no longer exists. It was never broken. It was polite.",
       ),
       fig(
         "/images/blog/earphones-laptop.jpg",
         "Wired earphones plugged into a laptop on a wooden desk.",
         "Plugged in, the speakers often rest. Unplug fully — a half-seated jack is a famous silence. The hole is usually on the side, not the USB ports.",
       ),
+      p(
+        "Bluetooth earphones behave like cousins of this. When they connect, Windows may switch the output to them without asking. When you put them away, the laptop can stay silent until you choose Speakers from that same list. And if you hear nothing inside the phones themselves: check that they are not sitting in a microphone-only hole (some machines have two similar sockets), and check the player's volume. Two taps — Windows and the program. Both must be open.",
+      ),
+      h2("The mixer: one noisy guest need not empty the hall"),
+      p(
+        "Right-click the speaker icon by the clock and open the volume mixer. Every program currently playing sound gets its own small slider. The video somebody left open can be turned down to a whisper while the meeting on the other tab stays loud and clear. This is the tool people discover after two years of suffering and cannot live without after two weeks of owning it. The machine was always willing to balance the room. Nobody had shown you the taps on the wall.",
+      ),
+      p(
+        "The program's own tap completes the picture. YouTube, VLC, Zoom — each has a volume slider of its own, usually a speaker icon on the player. And one distinction to keep straight in meetings: the microphone mute is not the speaker mute. Muting your mic stops the room hearing you; muting the speakers stops you hearing the room. People mix them up and then shout at a silent screen wondering why nobody answers. Hearing is the speaker tap. Being heard is the mic tap. They are two different doors.",
+      ),
+      p(
+        "Two manners worth carrying out of this lesson. Headphones in before the video starts, not after the loud advert — and keep the machine's volume around seventy, letting the earphones carry the rest; a hundred on both is how speakers die young and how hearing quietly leaves you at thirty-five. And before every call: mute first, speak second. The mute button is the pause that keeps meetings human.",
+      ),
       ul([
         "Play a short video you trust, volume low.",
         "Mute from the keyboard. Confirm silence. Unmute. Confirm sound.",
         "Plug in earphones if you have them. Confirm the speakers stop and the phones work.",
-        "Unplug. If the speakers stay dead, click the tray speaker and choose Speakers.",
+        "Unplug. If the speakers stay dead, click the tray speaker, the small arrow, and choose Speakers.",
       ]),
-      h2("The mixer, and the quiet meeting"),
       p(
-        "One noisy guest should not empty the whole hall. Right-click the speaker icon by the clock and open the volume mixer: every program playing sound gets its own small tap. The video someone left open can be turned down to a whisper while the meeting on the other tab stays loud and clear. This is the tool people discover after two years and cannot live without after two weeks. The machine was always willing to balance the room. Nobody showed you the taps on the wall.",
-      ),
-      p(
-        "Headphones deserve their own manners, because they are the difference between a class that works and a class that mutters. Put them in before the video starts, not after the loud advert. Keep the machine's volume around seventy and let the earphones carry the rest; a hundred on the laptop plus a hundred on the earpiece is how speakers die young and how hearing quietly leaves you at thirty-five. And before every call, mute first, speak second. The mute button is the pause that keeps meetings human.",
-      ),
-      h2("The program has its own tap"),
-      p(
-        "YouTube, VLC, Zoom each have a volume slider. Windows can be loud and the video silent. Look for a speaker on the player. Zoom mute you already know — a different mute, for the microphone, not the speakers. Hearing others is the speaker tap. Being heard is the mic. People mix them up and shout at a silent room.",
-      ),
-      p(
-        "If the whole machine is loud at night, lower the tray slider rather than hunting every program. If one program is loud and others are fine, open Volume mixer from the tray — a list of taps per program. That is the next lesson's cousin, when there is no sound at all. For today: keys, tray, headphones, then the player. Four places. Not a broken speaker until those four have been looked at.",
+        "Four places, then: keys, tray, headphones, and the player. Look at all four before you believe anything about a broken speaker. Kelechi's machine was never sick. One path had been closed by an errant finger, and the tray knew it all along.",
       ),
     ],
   },
@@ -3842,47 +3848,47 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A word-processor letter on a laptop with an undo control nearby.",
     body: [
       p(
-        "You deleted a paragraph. Your stomach dropped. Before you rewrite from memory, try Undo. Ctrl+Z — Command+Z on a Mac — takes back the last thing you did. Type a word, undo, the word leaves. Delete a paragraph, undo, it returns. Do it again, and the thing before that returns. This lesson is that rope, Redo when you undid too far, and the moment the rope is cut: closing the window, or saving over the only copy on purpose.",
+        "Chidinma was tidying her CV at midnight. She clicked to select one word, mis-clicked instead into the document — and typed a single letter. Three thousand carefully built words became one 'a'. The stomach drops through the floor in moments like that. But stay in the chair: the letter is not gone. Press Ctrl and Z together. The paragraph walks back onto the screen as if nothing happened. That single keystroke is called Undo, and this lesson is about the rope it throws you — and, just as important, the exact places where the rope ends.",
       ),
       p(
-        "Most programs keep a short memory of acts: typing, delete, paste, a format. Each Ctrl+Z walks one step back. If you undo too many times and the paragraph you wanted is gone the other way, Ctrl+Y or Ctrl+Shift+Z is Redo — walk forward again. You are on a path, not in two universes. Stop when the page looks like the one you meant. Then Save. Undo is not Save. If the light goes, undo dies with the unsaved window.",
+        "Undo takes back the last thing you did. Type a word, Ctrl+Z, the word leaves. Delete a paragraph, Ctrl+Z, it returns. Press again and the thing before that returns. On a Mac it is Command+Z. Most programs keep a short memory of your recent acts — typing, deleting, pasting, formatting — and each press walks one step back through them. Undo too many times and you have lost work in the other direction? Ctrl+Y, or Ctrl+Shift+Z, is Redo: walk forward again. You are pacing a corridor, not jumping between two universes. Stop when the page looks like the one you meant. Then Save.",
       ),
       fig(
         "/images/blog/undo-menu.jpg",
         "A letter on a laptop, undo within reach.",
         "The arrow is a rope. Pull it soon. If you type a new sentence after a mistake, that sentence is now the last act. Undo will eat it first. Undo the mistake before you panic-type.",
       ),
-      h2("What undo will not resurrect"),
+      h2("The corridor and its floor"),
       p(
-        "Empty Recycle Bin is not undone with Ctrl+Z. A file you Shift+Deleted is not in the Bin and not in undo. Replace all, if you then typed, may still undo in Word if you have not closed. A form on a website often has no undo at all. Explorer's undo — Ctrl+Z in a folder — can put a file back you just moved, once, if you have not done something else. Do not rely on it for a wedding folder. Copy, then move, as you learned.",
+        "Press Ctrl+Z four times in a row and watch the document walk backwards through your whole evening: the deletion, then the paste, then the typing, then the formatting — room by room. This is a gift and a hazard in one key. The hazard is the person who keeps pressing past the error and into the good work without watching what comes back. Walk slowly. Look before each press. And know the corridor's floor: Undo remembers only what happened since the file was opened. Save does not always clear it — Word usually still undoes after a Save — but closing the window ends everything. The file on disk becomes the truth.",
       ),
       p(
-        "Some programs forget after a Save, some do not. Word usually still undoes after Save, until you close. Notepad may be ruder. A browser tab's Back is not undo of a form; it may wipe the form. You have met that cousin. If you pasted the wrong thing over a selected page, undo immediately, before you click elsewhere. Selection plus paste is how whole letters vanish in one act. Undo is the next act. Then breathe.",
+        "Retrieval check, because this is where people get hurt: the window closed last night and the letter is gone. Does Ctrl+Z still work this morning? ... No. The rope ends at the window's edge. For that deeper history there is one place that keeps it: cloud documents. Google Docs and its cousins remember months, under File, then Version history. There you can walk back to last Tuesday and rescue the letter from before the disaster. The local file remembers yesterday. The cloud remembers the month. Neither remembers what you never saved — which is why Save every few minutes remains the floor under every corridor.",
       ),
       fig(
         "/images/blog/recovered-letter.jpg",
         "A learner looking at a recovered letter on a laptop.",
         "The paragraph came back. Save now. The rope is not a backup. The USB in the drawer is a backup. Undo is only for this sitting.",
       ),
+      h2("What undo will not resurrect"),
+      p(
+        "Some doors swing only one way, and pretending otherwise wastes the golden hour of recovery. Empty Recycle Bin is not undone with Ctrl+Z. A file you Shift+Deleted is neither in the bin nor in undo. A form submitted on a website often has no undo at all — the browser's Back button is not undo and may wipe the form entirely, a cousin you have already met. In File Explorer, Ctrl+Z can take back a file you just moved, once — but do not rely on it for a wedding folder. Copy first, then move, as the files lesson insists.",
+      ),
+      p(
+        "The sharpest everyday hazard deserves its own warning: the selection-plus-paste accident. With a whole page selected, one paste replaces everything in a single act. If it happens to you: do not click elsewhere, do not type, do not breathe on the keyboard. Ctrl+Z immediately, as the very next act, and the page returns whole. After you have typed something new, the overwritten moment may be gone for good. Selection plus paste is how whole letters vanish in one second. Undo is the next second. Then breathe.",
+      ),
+      h2("When the rope is truly cut"),
+      p(
+        "If undo cannot help — the window closed, the bin emptied, the form submitted — then stop clicking. Clicking in panic writes a second bad copy over the evidence. Walk the rooms in order instead: search the machine, look in the Recycle Bin, try the USB, check last month's backup. You know these rooms already. A helper can walk them with you. And one door to refuse every time: the banner that says 'restore deleted files — download now' is the virus costume worn at a funeral. You know that door.",
+      ),
       ul([
-        "Open a practice letter. Type a sentence. Ctrl+Z. It should leave. Ctrl+Y. It should return.",
-        "Select a paragraph. Delete. Undo. Confirm it is whole, not half.",
-        "Save. Close. Reopen. Ctrl+Z should do nothing useful. That is the cut rope. The file on disk is the truth now.",
-        "Do not practise undo on the only copy of a real certificate. Copy first.",
+        "Open a practice letter. Type a sentence. Ctrl+Z — it should leave. Ctrl+Y — it should return.",
+        "Select a paragraph. Delete it. Undo. Confirm it came back whole, not half.",
+        "Save. Close. Reopen. Try Ctrl+Z — it should do nothing useful. That is the cut rope; the disk is the truth now.",
+        "Never practise undo on the only copy of a real certificate. Copy first, then experiment.",
       ]),
-      h2("The undo that walks too far, and the way back"),
       p(
-        "Undo is not one step of mercy; it is a corridor of them. Press Ctrl and Z again and again and the document walks backwards through your last evening: the deletion, the paste, the typing, the formatting, room by room. This is a gift and a hazard in one key. The hazard is the person who presses it four times past the error and into the good work without watching. Walk slowly. Look at what returns before you press again. Redo — Ctrl and Y, or the forward arrow — puts back the step you undid by mistake, so the corridor runs both ways as long as you have not started writing again.",
-      ),
-      p(
-        "The floor under the corridor is Save, and no corridor reaches past it. Undo lives only since the last time the file was opened; close the program and the corridor is gone forever. This is why the habit is Save as you work, and why the cloud documents feel like a different country: Google Docs and its cousins keep the whole corridor forever, under File, Version history, See version history. There you can walk back to last Tuesday and rescue the letter from before the disaster. The local file remembers yesterday. The cloud remembers the month. Neither remembers what you never saved.",
-      ),
-      h2("The manners of a mistake"),
-      p(
-        "If undo cannot help — the window closed, the Bin emptied — stop clicking. Search, Recycle Bin, the USB, last month's backup. Rewriting in a panic makes a second bad copy. You already know the rooms. Walk them in order. A helper can look. A banner that says “restore deleted files — download now” is the virus costume. You know that door.",
-      ),
-      p(
-        "Undo is how a person stays calm at a keyboard. It is not bravery to refuse it. It is not a reason to skip Save every few minutes. The rope is short. The disk is the floor. Use both. Then the thing you did not mean is only a minute, not an afternoon.",
+        "Undo is how a person stays calm at a keyboard. It is not bravery to refuse it, and it is not a reason to skip saving. The rope is short and the disk is the floor — use both, and the thing you did not mean costs you a minute instead of an afternoon.",
       ),
     ],
   },
@@ -4466,44 +4472,47 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A share dialog with an email field on a laptop screen.",
     body: [
       p(
-        "Drive, Docs, and many portals offer Share. A box, an email field, a permission. People tick “anyone with the link” because it is fast, then paste the link in a WhatsApp group of forty, then wonder why a stranger commented. Anyone with the link is a tray on the street. A named address is a letter. This lesson is the box, Viewer versus Editor, and when a PDF attachment is still the kinder door.",
+        "Mrs. Adeyemi did something kind and ordinary: she shared the class list with the eighty-four parents in the PTA WhatsApp group. She ticked 'anyone with the link' because it was fast, pasted the link, and thought no more of it. By the evening a stranger had commented on the document. The link had been forwarded out of the group, and forwarded again — because that is what links do. This lesson is about the Share box: the difference between a named address and a link, what Viewer and Editor actually hand over, and when an ordinary PDF attachment is still the kindest door of all.",
       ),
       p(
-        "Share, add the person's real email, choose Viewer if they only need to read, Commenter if they should mark, Editor if they must change the words. Send. They get mail with a link, if that address is a Google address that can open it. If they have no Google account, Viewer links can fail, or ask them to sign in. Then attach a PDF instead. Do not fight the cloud when the envelope still works.",
+        "Sharing in Drive, Docs, and most school portals works the same way. You press Share. A box asks for a name or email, and a permission. Add the person's real address and choose: Viewer if they only need to read, Commenter if they should mark things, Editor if they must change the words. Send. If that address is one they actually use, they receive a mail with a link and the door opens for them. If they have no Google account, the link can fail or nag them to sign in — and then the honest solution is not to fight the cloud. Attach a PDF to an email instead. The envelope still works.",
       ),
       fig(
         "/images/blog/share-dialog.jpg",
         "A share box with an email and a permission.",
         "One address, one permission. If the box says Restricted, only people you named. That is the default you want. Anyone with the link is the extra you must mean.",
       ),
-      h2("Anyone with the link, and the group"),
+      h2("A link is a tray on the street"),
       p(
-        "Anyone with the link, Viewer, is for a poster you would tape on a gate — a timetable that is not private. It is not for a passport scan, a fee receipt with an account number, a CV with your phone. A link in a group chat forwards forever. You cannot un-forward. Restricted, named people, is how a receipt should travel. If the school asked for a link, Restricted, their address, Viewer. Then a short WhatsApp that says you shared it, as you learned when chat is a knock.",
+        "'Anyone with the link' sounds private. It is not private; it is unpublished, which is a different thing. The link is a key that works for anyone who finds it — and it will be forwarded to people you will never meet. You cannot un-forward. So match the door to the document. A school timetable you would happily tape on a gate? A public link is fine. A passport scan, a fee receipt with an account number, a CV with your home phone? Restricted — named people only. If the school genuinely asked for a link, set Restricted to their address with Viewer, and then send the short WhatsApp message saying you have shared it. The link lesson and the chat lesson still hold here: names first, words second.",
       ),
       p(
-        "Editor on your only copy is two people in one letter. That is useful for a shared fee list in a family. It is how a cousin deletes a paragraph you needed. File, Make a copy, share the copy, keep the original in a folder they cannot see. You already know Save As. This is Save As for the cloud.",
+        "A misconception to catch early: 'only the group has the link, so it is safe.' A group of eighty-four is eighty-four pockets, each with a forward button. The stranger who commented on Mrs. Adeyemi's list proved it by teatime. Restricted sharing costs you one extra field to type. It is the cheapest privacy on the internet.",
       ),
       fig(
         "/images/blog/share-learner.jpg",
         "A learner pausing before sharing a document.",
         "The pause is: who, and what may they do. If you cannot name both, attach a PDF. The link will wait.",
       ),
+      h2("Viewer, Commenter, Editor — three doors"),
+      p(
+        "Behind every Share window stand three doors, and choosing among them is the entire skill. Viewer is the door with a letter slot: they read and print but cannot touch a word — right for a contract being read, or a receipt being filed. Commenter adds a pencil in the margin: notes and suggestions, your document unchanged — right for a mentor reviewing your CV. Editor hands over the pen itself — right for a genuine co-author of a project, and nobody else.",
+      ),
+      p(
+        "Editor on your only copy is two people holding one letter. It works for a shared family fee list, and it is exactly how a cousin deletes the paragraph you needed on Friday. The protection you already know: File, Make a copy, share the copy, keep the original in a folder they cannot see. This is Save As for the cloud. And behind Editor sits one more kindness — version history — which is what makes generosity safe: the undo corridor from the last lesson, kept for months.",
+      ),
+      h2("Closing the door afterwards"),
+      p(
+        "Sharing is not a state you enter; it is a door you open, use, and close. When the meeting ends or the term ends: Share, the list of people, Remove. Or step Anyone with the link back to Restricted, and old links die for strangers. Two honest limits to remember — copies people already downloaded do not die (a PDF emailed is out of the house, like paper), and a standing open door is how last year's school fees letter is still readable by a stranger this year. Open the door. Use it. Close it.",
+      ),
       ul([
-        "Upload or create a practice doc that holds no secrets.",
-        "Share it to your own second address as Viewer, Restricted. Open it from the other side.",
-        "Look at Anyone with the link. Do not turn it on for this file. Know where the tap is.",
-        "Remove the share when you are done practising. Share, the person, Remove.",
+        "Upload or create a practice document that holds no secrets.",
+        "Share it to your own second address as Viewer, Restricted. Open it from the other side and see what they see.",
+        "Look at 'Anyone with the link' — know where the tap is, and do not turn it on for this file.",
+        "Remove the share when you finish practising. Share, the person, Remove. Feel how quick closing a door is.",
       ]),
-      h2("The three doors of the share button"),
       p(
-        "Behind every share window stand three doors, and choosing the right one is the entire skill. Viewer is the door with the letter slot: the person reads and prints but cannot touch a word. Commenter adds a pencil in the margin — notes and suggestions, the document unchanged. Editor hands over the pen itself. For a CV reviewed by a mentor, Commenter. For a contract read by the other party, Viewer. For the co-author of a project, Editor — and even then, the version history behind you is what makes generosity safe.",
-      ),
-      p(
-        "The named-email door is always safer than the link door, because a link is a key that works for anyone who finds it. If you must use the link — a large class, a public notice — set the audience honestly: anyone with the link, read only, and never in a public search. And when the meeting is over, turn the door off. Share again later if the need returns; a standing open door is how last year's school fees letter is still readable by a stranger this year. Sharing is not a state you enter. It is a door you open, use, and close.",
-      ),
-      h2("Turning it off"),
-      p(
-        "Share, the list of people, Remove, or change Editor to Viewer. Anyone with the link: change back to Restricted. Old links then die for strangers. Copies people already downloaded do not die. A PDF you emailed is out of the house, as paper is. Share is not a spell. It is a door with a list. Keep the list short. Prefer Viewer. Prefer a name. Prefer a PDF when the other person only needs to read and print.",
+        "The short version has been true since envelopes were invented: a named email is a letter to one person; a link is a tray on the street. Prefer Viewer. Prefer a name. And when the other person only needs to read and print — prefer the PDF, and let the cloud rest.",
       ),
     ],
   },
@@ -5199,47 +5208,47 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A phone permission dialog asking for the camera, with Allow and Deny.",
     body: [
       p(
-        "You install a torch app. It asks for contacts, location, and the microphone. That is not a torch. That is a guest requesting the house. A permission is a door in the phone: camera, microphone, location, contacts, files, notifications. The app cannot walk through until you say Allow. This lesson is reading the door, saying Deny without shame, and changing your mind later in Settings.",
+        "Sade needed a torch during the outage. The app store offered a free one with a bright icon, and she installed it in seconds. Then the box appeared: the torch would like to access her contacts. And her location. And her microphone. Stop the installation right there and look at the request again. That is not a torch. That is a guest asking for every room in the house before agreeing to hold a candle. This lesson is about permission boxes: what each door means, how to say Deny without shame, and how to change any answer later.",
       ),
       p(
-        "When the box appears, name the job. WhatsApp needs the camera for a photo in a chat, the microphone for a voice note, contacts if you want to find who else has the app. A game does not need your contacts. A PDF reader does not need the microphone. Maps needs location while you use it — “only while using the app” is the kind option on modern phones, not “all the time.” Deny, or Don’t allow, is allowed. The app should still do the rest of its job. If it refuses to open until you Allow everything, that app is a stall. Uninstall.",
+        "A permission is a door in the phone — camera, microphone, location, contacts, files, notifications. An app cannot walk through a door until you tap Allow. That is the entire architecture, and the phone will always ask (or show you the list afterwards). The skill is not technical. It is the same skill you use at the gate: match the request to the job the guest claims to be doing.",
       ),
       fig(
         "/images/blog/app-permission.jpg",
         "Allow and Deny on a camera permission.",
         "Two buttons. The large one is not always the kind one. Deny, then try the job. If the job truly needs the door, you can Allow next time.",
       ),
-      h2("The list after the fact"),
+      h2("Name the job before you open the door"),
       p(
-        "Settings, Apps, the app's name, Permissions. A list of doors and whether they are on. Turn off the ones that surprise you. Photos versus All files: a school app that must upload one PDF needs access to that file, not to the whole gallery forever. On newer Androids you can pick a file at the moment of upload. Prefer that. Notifications are a permission too. A shop app that pings ten times a day can be muted here without uninstalling, if you still need it.",
+        "When the box appears, name the job out loud. WhatsApp needs the camera for a photo in a chat, the microphone for a voice note, and contacts if you want to find who else is on the app — those doors match the work. A game does not need your contacts. A PDF reader does not need your microphone. Maps needs location, and when it asks, choose 'only while using the app' rather than 'all the time' — the kind option on modern phones, and it is not rude to pick it. A quick retrieval test: a Bible app wants your location. Does the door match the job? ... It does not. Reading happens where you are sitting, not where the GPS says.",
       ),
       p(
-        "The browser asks as well: this site wants to know your location, use the camera, send notifications. A maps site may need location. A news site that wants notifications is a tap on the shoulder you can refuse. You met this in the webcam lesson on the computer. The phone is the same doors, in a pocket.",
+        "And Deny is a full sentence. Tap 'Don't allow' and watch what happens: the app should carry on with the rest of its work. A torch denied the microphone still makes light. If an app refuses to open until you allow everything — contacts, storage, the lot — that is not an app with requirements. That is a stall with an icon. Uninstall it and find a cousin in the store who asks for less. The best apps are slightly less convenient and dramatically less curious.",
+      ),
+      h2("The list after the fact"),
+      p(
+        "Permissions are not wedding vows. You can change every answer. Settings, Apps, the app's name, Permissions: a list of the doors and whether they are open. Walk it once a month and turn off whatever surprises you. A game holding contacts? Close it. One nuance worth knowing for files: 'Photos' versus 'All files' are different doors — a school app that must upload one PDF needs that file, not your whole gallery forever. On newer Androids you can hand over one file at the moment of upload. Prefer that.",
       ),
       fig(
         "/images/blog/permission-dialog.jpg",
         "A learner pausing at a permission prompt on a phone.",
         "The pause is the skill. If you cannot say why this app needs this door, Deny. You can open the door later. You cannot un-send contacts you already gave.",
       ),
+      p(
+        "The browser asks too. 'This site wants to know your location, use your camera, send notifications' — a maps site may honestly need the location; a news site asking for notifications is a tap on the shoulder you can refuse. You met these doors on the computer in the webcam lesson; the phone is the same house in a pocket. And notifications themselves are a permission: a shop app that pings ten times a day can be silenced in this same list without uninstalling it, if you still need the app itself.",
+      ),
+      h2("After a cousin has borrowed the phone"),
+      p(
+        "One last habit from the repair-bench world: look at the list after the phone has been in other hands. A cousin helping with a setup may have tapped Allow for you on something you would have refused — the same way you check Linked devices after using a café's computer. The audit takes a minute. If you already allowed a random app everything: turn the doors off first, then uninstall. Passwords guard your accounts; permissions guard this device. Both lists deserve an occasional sweep.",
+      ),
       ul([
-        "Open Settings, Apps. Pick one app you use. Read its permissions.",
+        "Open Settings, Apps. Pick one app you actually use. Read its permissions slowly.",
         "Switch off one door that does not match the job — a game with contacts, a torch with location.",
-        "Use the app. If it still works, you were right.",
-        "Do not Allow a new app all doors on the first sitting because the screen is in a hurry.",
+        "Use the app again. If it still works, you were right. If it asks again for what it truly needs, you will know.",
+        "Never Allow a new app every door on the first sitting because the screen is in a hurry. The hurry is part of the act.",
       ]),
-      h2("The flashlight that wants the microphone"),
       p(
-        "The rudest permissions are the easiest to catch. A torch that wants the microphone, a calculator that wants the location, a wallpaper that wants the contacts — these are not features arriving late; these are questions that answer themselves. Say no at the door and watch the app work anyway, because the permission was never about the torch. When an app refuses to install unless it may read your messages and your contact list, that is the same tout in a different uniform. Uninstall it and find a cousin in the store who asks for less. The best apps are slightly less convenient and dramatically less curious.",
-      ),
-      p(
-        "The list after the fact stays your audit room: Settings, then Apps, then Permissions, walking by category — camera, microphone, location, contacts, files. Ask of each name the one question: does its work happen where I am? A map needs the location. A bank needs it briefly and often says so. A Bible app and a flashlight do not. Revoke as freely as you granted; the app will usually settle down with a polite request the next time it truly needs the door. Permissions are not wedding vows. They are visitors' passes, and the gate is yours.",
-      ),
-      h2("Once you have said yes"),
-      p(
-        "A permission given is not a marriage forever. You can close the door. If you already allowed a random app, turn the doors off, then uninstall. Changing a password is for accounts; permissions are for this device. A cousin who borrowed the phone may have said Allow for you. Look at the list after they leave, the way you look at Linked devices after a café.",
-      ),
-      p(
-        "You are not being asked to fear every app. You are being asked to match the door to the job. Camera for a camera. Location for a map. Microphone for a call. Contacts for a phone book. Everything else can wait. Deny is a full sentence. The app will not take offence. It does not have feelings. It has a list. Keep the list short.",
+        "You are not being asked to fear every app. You are being asked to match the door to the job. Camera for a camera. Location for a map. Microphone for a call. Everything else can wait at the gate. The app will not take offence — it does not have feelings. It has a list. Keep the list short.",
       ),
     ],
   },
@@ -6209,44 +6218,47 @@ export const blogPosts: BlogPost[] = [
       "A phone showing a sign-in approval prompt with two buttons, held by a thoughtful woman.",
     body: [
       p(
-        "A password is one lock. Whoever learns it, buys it, or guesses it walks straight in, and you will not see them enter. Two-step verification is the second lock: after the password, the account insists on a code that reaches only your hand — the phone in your pocket, not the thief's laptop. You have watched such codes arrive all your digital life, and the OTP lesson taught you never to read one out. This lesson is the quiet reversal: you start the knock yourself, on purpose, on your own door.",
+        "The message arrived at two in the morning: 'Your Google verification code is 483920. Do not share it with anyone.' Nobody in the house was signing in to anything. If that message had been all the thief needed, the story would end here — but it was not all, and that is exactly the point. Somewhere last year, Tunde had switched on the setting this lesson is about: after the password, the account insists on a second proof that reaches only his hand. The password alone no longer opens the door. This lesson is that second lock — how to fit it tonight, where to keep its spare keys, and the one rule for knocks you did not knock.",
       ),
       p(
-        "Begin with the account that owns the rest. Google: sign in, Security, 2-Step Verification, follow it through, and let it learn the phone you actually carry. WhatsApp: Settings, Account, Two-step verification — a PIN you choose, which is not your birthday and not 1234, because the password rules never retired. Your bank app likely added its own device lock on the day you activated it. Leave it exactly as it is.",
+        "A password is one lock. Whoever learns it, guesses it, or buys it from a leak walks straight in and you will never see them enter. Two-step verification (sometimes written 2FA) adds the second: after the password, a code that arrives on the phone in your pocket — or better, a code generated on it. You have met these codes all your digital life, and the OTP lesson taught you never to read one out. Today comes the quiet reversal: sometimes you start the knocking yourself, on purpose, at your own door.",
       ),
       fig(
         "/images/blog/second-lock.jpg",
         "A phone showing a sign-in approval prompt with two buttons, held by a thoughtful woman.",
         "The password was right; the account still asks for the second proof. This is the door checking both locks — a friend's voice, not a stranger's.",
       ),
-      h2("Where the code should come from"),
+      h2("Fitting the lock tonight"),
       p(
-        "By default the code arrives by SMS. That is good enough to start tonight, and starting tonight matters more than the perfect version. The stronger form is an authenticator app, which generates the code on the phone itself every thirty seconds, so that a SIM swap — a stranger convincing the network that your number is theirs — cannot intercept what never travels. When the SMS habit feels like home, spend one evening moving the main account across. Perfection is a poor excuse for refusing the first lock.",
+        "Begin with the account that owns the rest: your main Google address — the one that resets every other password you own. Sign in, go to Security, then 2-Step Verification, and follow it through, letting it learn the phone you actually carry. Ten minutes, once in a lifetime. Then WhatsApp: Settings, Account, Two-step verification — a PIN you choose, which is not your birthday and not 1234, because the password rules never retired. Your bank app likely fitted its own device lock the day you activated it; leave it exactly as it is.",
       ),
       p(
-        "Before the setup closes, the account will offer backup codes: ten one-use keys, shown once, for the day the phone itself is lost — because the second lock locks you out too, if the phone is at the bottom of a river. Screenshot them, then write them by hand into the password notebook, and keep them where the notebook lives. Losing the phone without the codes means a long, cold proof that you are you. You already built that proof in the recovery lesson; the codes are its fast lane.",
+        "Where should the code come from? By default, SMS — a text to your number. That is good enough to start tonight, and starting tonight matters more than fitting the perfect version. The stronger form is an authenticator app, which generates the code on the phone itself every thirty seconds and needs no network at all. The difference matters in one specific attack: a SIM swap, where a stranger sweet-talks the network into transferring your number to their SIM, intercepts SMS codes — and intercepts nothing at all from an authenticator. When the SMS habit feels like home, spend one evening moving the main account across. Perfection is a poor excuse for refusing the first lock.",
+      ),
+      h2("The spare keys go on paper"),
+      p(
+        "Before the setup closes, the account will offer backup codes: eight or ten one-use keys, shown exactly once, for the day the phone itself is gone — because the second lock locks you out too if the phone is at the bottom of a river. Do not screenshot them into the gallery the phone will lose with them. Write them by hand into the password notebook, the one in the drawer from the recovery lesson, and fold the page once. These codes are the difference between a stolen phone being a bad afternoon and being a fortnight of locked-out panic. Each code opens the door exactly once — cross one off as you use it, the way a good nurse signs each dose.",
       ),
       fig(
         "/images/blog/backup-codes-paper.jpg",
         "A strip of handwritten one-use backup codes folded inside a notebook beside a phone.",
         "Ten paper keys for the day the phone drowns. They live in the drawer, and they are typed only by you, only into the sign-in page.",
       ),
+      p(
+        "Quick retrieval, because the exam of real life is open-book and multiple-choice: the phone is gone, the river has it, and you are at a borrowed laptop trying to get into your mail. What opens the door? ... One of the paper codes from the notebook in the drawer. That is the whole reason they exist. The recovery lesson built the long proof that you are you; the backup codes are its fast lane.",
+      ),
+      h2("The knock you did not knock"),
+      p(
+        "The second lock brings one new danger and one new rule. The danger: a thief who has your password can still press 'sign in', which sends an approval prompt to your phone — a little question asking, may I come in? If it is two in the morning, if you are asleep, if you are not signing in to anything: the answer is no. Deny the prompt, then change the password, because the password is out there walking around now. Never approve a knock you did not knock. Never read out a code you did not ask for. Notice that these two sentences are the same sentence, wearing a coat in each hand.",
+      ),
       ul([
-        "Tonight: turn on 2-Step Verification on your main Google account. Ten minutes, once in a lifetime.",
-        "Turn on WhatsApp's two-step PIN while the kettle boils.",
-        "Write the backup codes into the notebook by hand — not a photo in the gallery the phone will lose with it.",
-        "Tell no one your WhatsApp PIN, including people who say they are helping you set it up.",
+        "Tonight: turn on 2-Step Verification on the main Google account. Ten minutes, once.",
+        "Turn on WhatsApp's two-step PIN while the kettle boils. Choose it like a password, not a birthday.",
+        "Write the backup codes into the notebook by hand, and cross each one off as it is used.",
+        "Tell nobody your WhatsApp PIN — including kind strangers who offer to set it up for you.",
       ]),
-      h2("The paper codes, and where they sleep"),
       p(
-        "When the second lock is switched on, the machine hands you a sheet of backup codes — eight or ten numbers, single use, meant for the day the phone is gone. Print the sheet or copy the codes by hand into the notebook in the drawer. Fold the page once and stop worrying about it. These codes are the difference between a stolen phone being a bad afternoon and being a fortnight of locked-out panic. Each code opens the door exactly once; cross one off as you use it, the way a good nurse signs off each dose.",
-      ),
-      p(
-        "Then choose the kind of lantern you prefer, because not all two-step is equal. The SMS code — arriving as a text — is convenient and carries one honest weakness: whoever controls your SIM controls your codes, which is the theft lesson again. The authenticator app, living inside the phone and needing no network at all, closes that weakness entirely and works even when the network is down. Most serious services accept both and prefer the app. Whichever you choose, the backup codes in the drawer are the floor. Phones drown. Paper waits in the drawer, patient and dry.",
-      ),
-      h2("The prompt you did not start"),
-      p(
-        "The second lock brings one new danger, and one new rule. A thief with your password can press sign in, which sends an approval prompt to your phone — a question asking, may I come in? If it is 2 a.m. and you are asleep and not signing in, the answer is no: deny, then change the password, because the password is out there now. Never approve a knock you did not knock; never read out a code you did not ask for. The two sentences are the same sentence. The first lock keeps out the lazy. The second keeps out the lucky. After that, what protects you is the habit of pausing.",
+        "The first lock keeps out the lazy. The second keeps out the lucky. After that, what protects you is the habit of pausing at the knock — and you have had that habit since the first lesson that told you hurry is still the bait. Fit the lock this week. The two-in-the-morning message will one day arrive; when it does, you will read it, smile without fear, and go back to sleep.",
       ),
     ],
   },
@@ -9146,27 +9158,35 @@ export const blogPosts: BlogPost[] = [
       "A laptop showing a flight booking form with dates and a passenger's details being typed.",
     body: [
       p(
-        "The first flight is a milestone in any family's story, and for most Nigerian families it used to begin at a travel agent's window with a queue and a fee. The window has moved to a screen. Booking a flight online is now a basic skill — of the same family as checking a result and paying a bill — and doing it yourself saves the agent's charge, the middleman's margin, and the particular blindness of trusting somebody else with your own name. This lesson walks the whole road, from the search box to the seat.",
+        "The interview in Abuja is on the fourteenth. Amara has never flown in her life, and her uncle says the travel agent charges five thousand naira for something she can do herself at the table. He is right — and this is not a small errand. Booking your first flight is a milestone in the family's story, the same class of skill as checking a result or paying a bill, and the person who learns it teaches the next traveller at this same table. This lesson walks the whole road by your own hands: the search box, the name spelled like the passport, the reference guarded like a receipt — and the cheap-ticket man in the DMs, politely declined.",
       ),
       p(
-        "The door first: book from the airline's own website or app, or from a large reputable travel site you have heard of outside a broadcast — the source law of every ticket on this shelf. The search asks for the route, the dates, and the number of travellers, and here is the first honest money-saver: dates bend prices. Shifting a journey by a day often moves the fare more than any discount code ever will. When the results come, ignore the bold first number and read the total — taxes and levies arrive at the end like in-laws, and the price you compare is the price at the last step. Choose the fare with its baggage honestly: the cheapest ticket that forbids your actual suitcase is the most expensive ticket in the search results, because the extra-kilo fee at the counter is real and it is not friendly.",
+        "The door first, the source law of every ticket: book from the airline's own website or app, or from a large travel site you have heard of outside a broadcast message. Not from a link anybody sent you. The search box asks the route, the dates, and how many travellers. And here is the first honest money-saver that no discount code can beat: dates bend prices. Shifting the journey by one day often moves the fare by a fifth. When the results appear, ignore the bold first number and read the total at the last step — taxes and levies arrive at the end like in-laws. And compare with your actual suitcase in mind: the cheapest ticket that forbids your bag is the most expensive ticket in the results, because the extra-kilo charge at the counter is real and it is not friendly.",
       ),
       fig(
         "/images/blog/flight-booking-screen.jpg",
         "A laptop showing a flight booking form with dates and a passenger's details being typed.",
         "The search, the bend, the total. The bold number flatters; the last number is the one that flies.",
       ),
-      h2("The name, the reference, and the cheap-ticket man"),
+      h2("The name is the ticket"),
       p(
-        "Now the part that no agent will ever forgive and no airline ever excuses: the passenger name must be typed exactly as it reads on the government ID that will walk you into the airport — for local flights, the NIN slip or driver's licence or voter's card; for international, the passport, letter for letter, middle name and all. The CV lesson's spelling law, now at altitude: a ticket in the wrong name is not a ticket, and corrections cost real money or the whole fare. Then the payment, on the secure page, by the laws of lesson one hundred and ten — and the booking lands as a confirmation with a booking reference: a short code of letters and numbers that is this journey's name. The reference goes into the notebook, the screenshot into the Travel album, and the confirmation mail into the Drive, the papers law, because airports believe references, not memories.",
+        "Now the part no airline ever excuses: the passenger's name must be typed exactly as it reads on the ID that will walk you into the airport — the NIN slip, driver's licence, or voter's card for local flights; for international, the passport, letter for letter, middle name and all. The CV lesson's spelling law, now at altitude. A ticket in the wrong name is not a ticket; corrections cost real money or the entire fare. Type it once. Read it twice against the card in your hand.",
       ),
       p(
-        "And the cheap-ticket man, who has migrated from the junction to the DM: a stranger offers this week's Lagos flight at half price, payment first, ticket sent by screenshot. The screenshot lesson's mirror turns here — nothing was ever sent, or something was sent in somebody else's name, and the airport is where both discoveries mature. The airline's own page, the reputable site, the card on the secure checkout, the reference in your own mail: four doors, all yours. Twenty-four hours before the flight, the airline opens check-in — a few taps on the site or app choose your seat and drop a boarding pass onto the phone. Screenshot it, download the PDF, and if the airport Wi-Fi has a reputation, print one at the café: three copies of a small paper have saved more journeys than any charm. Bag weighed at home on the bathroom scale, charger and documents in the small bag at your feet, and the morning of the flight, arrive earlier than your confidence suggests. The first flight, booked by your own hands, becomes the first of many — and the family's next traveller learns it from you, at this same table.",
+        "Then pay on the secure page by the laws of the online-purchase lesson — card details into the checkout only, the PIN nowhere, the padlock meaning the road is private and nothing more. And the booking lands as a confirmation carrying a booking reference: a short code of letters and numbers that is this journey's name. Airports believe references, not memories. So: the reference into the notebook, the screenshot into the Travel album, the confirmation mail into the Drive. The papers law, obeyed at altitude.",
       ),
       fig(
         "/images/blog/luggage-bathroom-scale.jpg",
         "A suitcase standing on a bathroom scale, the display showing a number, clothes pressed on the bed behind.",
         "The kitchen law of the skies: the kilos are real, and the counter's fee for optimism is steeper than the ticket. Weigh before you wrap.",
+      ),
+      h2("The cheap-ticket man, declined"),
+      p(
+        "And now the character this lesson exists to arm you against: the man in your DMs offering this week's Lagos flight at half price, payment first, ticket by screenshot. He has moved from the junction to the inbox, and his game is the same. Nothing was ever sent — or something was sent in somebody else's name, and the airport is where both discoveries mature, at five a.m., with the bag already checked. The four honest doors stand open: the airline's own page, the reputable site, the secure checkout, your own mail holding the reference. A half-price stranger is none of them. Decline him the way you decline the fee-that-unlocks-nothing — warmly, once, and without debate.",
+      ),
+      h2("The last twenty-four hours"),
+      p(
+        "A day before the flight, the airline opens check-in: a few taps on the site or app choose your seat and drop a boarding pass onto the phone. Screenshot it. Download the PDF. And if you believe anything at all about airport Wi-Fi — you have heard the reputation — print one copy at the café too. Three copies of a small paper have saved more journeys than any charm. Weigh the bag at home on the bathroom scale, so the counter holds no surprises. Put the charger and documents in the small bag at your feet. And on the morning, arrive earlier than your confidence suggests; the first flight is not the day to test your timing.",
       ),
       fig(
         "/images/blog/boarding-pass-phone.jpg",
@@ -9174,14 +9194,13 @@ export const blogPosts: BlogPost[] = [
         "The reference became a seat, the seat became this small screen. Screenshot, PDF, and one printed copy: three copies, zero prayers.",
       ),
       ul([
-        "Airline's own site or a reputable aggregator; compare the total, not the bold number; buy the baggage you actually packed.",
+        "Airline's own site or a reputable aggregator. Compare the total, not the bold number. Buy the baggage you actually packed.",
         "The name is typed exactly as the ID reads — letter for letter. This is the one error the road will not negotiate.",
-        "Reference into the notebook, confirmation into Drive, boarding pass screenshot, PDF'd, and printed.",
-        "The half-price DM is the junction man with a data plan. Four honest doors, all yours.",
+        "Reference into the notebook, confirmation into Drive, boarding pass screenshot, PDF, and printed.",
+        "The half-price DM is the junction man with a data plan. Four honest doors, all yours — use one.",
       ]),
-      h2("The window, moved home"),
       p(
-        "The travel agent still has a place — the tangled visas, the multi-country tours, the corporate accounts. But the Lagos flight, the December homecoming, the interview in Abuja: these are now a table, a card, and twenty careful minutes. Every skill this lesson used — the source law, the exact name, the reference kept, the screenshot as receipt — you already owned. This was only their widest road. The next lesson wraps that road in a sealed cover, and explains the word every traveller eventually meets: the VPN.",
+        "The travel agent keeps a place — tangled visas, multi-country tours, corporate accounts. But the Lagos flight, the December homecoming, the interview in Abuja: these are now a table, a card, and twenty careful minutes. Every skill this road used, you already owned: the source law, the exact name, the reference kept, the screenshot as receipt. This was only their widest street. The next lesson wraps that street in a sealed cover and explains the word every traveller eventually meets: the VPN.",
       ),
     ],
   },
@@ -9916,10 +9935,10 @@ export const blogPosts: BlogPost[] = [
       "A black telecommunications cable stapled along a painted wall and entering a small house above a window in warm afternoon light.",
     body: [
       p(
-        "People speak about the internet as if it were weather, something falling from the sky onto the phone. It is nothing of the sort. The internet is a road system — thousands of kilometres of glass thread and copper laid under streets and across oceans — and the miracle at your end is not wireless at all. Somewhere near your street there is a junction box, a mast on a hill, or a dish pointed at a satellite, and from that junction a small wire walks the last thirty metres to your table. Everything you will ever watch, send, or download travels as light or as radio along that road. When the page is slow, the road is slow. When the page will not open, the road is closed somewhere, and this lesson is about learning to see where.",
+        "Ask the first question at any repair bench — 'why is my network slow?' — and watch the answers drift into weather-talk: the network is 'bad today', the internet is 'not smiling', as if connectivity were rain. Hold that picture for one more second and then let it go, because it is the single most expensive misunderstanding in this whole subject. The internet is not weather falling from the sky. It is a road system — thousands of kilometres of glass thread and copper laid under streets and across oceans — and it ends at your table through a small wire. This lesson teaches you to see that road. When the page is slow, the road is slow. When the page will not open, the road is closed somewhere — and seeing where is a learnable skill, not a mood.",
       ),
       p(
-        "What you buy from a provider is not the internet itself but a pipe of measured width, sold by the month in naira. The width is written in megabits per second — Mbps, with a small b — and it says how many lorries may pass your gate at once. A five-megabit pipe carries a video call and a few pages happily for one person; a household of six streaming at once wants twenty or more. Some providers also sell a cap, a tank that empties as the lorries pass. Your phone's data bundle is the same trade, smaller and dearer per litre. Different taps, same water, and the bills rhyme with each other whether the water comes by fibre, by mast, or by dish.",
+        "What the road looks like near your house: somewhere close there is a junction box in a cabinet, or a mast on a hill, or a dish pointed at a satellite. From that junction, the provider runs the last metres to your gate — fibre on a pole, copper along the wall, or radio from the mast. Three doorways, one road system. Everything you will ever watch, send, or download travels as light or radio along it. And what you buy is not 'the internet' but a pipe of measured width, sold by the month in naira: the width is written in megabits per second — Mbps, with a small b — and it says how many lorries may pass your gate at once. Five megabits carries one person's video call and browsing happily. A household of six streaming at once wants twenty or more. Some providers also sell a cap — a tank that empties as the lorries pass. Your phone's data bundle is the same trade, smaller and dearer per litre. Different taps, same water.",
       ),
       fig(
         "/images/blog/fibre-cable-entering-house.jpg",
@@ -9928,10 +9947,10 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("The last thirty metres belong to you"),
       p(
-        "Inside the gate, the road splits into two houses. The first box — call it the modem, though the modern ones hide their names — is where the provider's wire ends and your household begins. On many installations the provider owns the line up to that box and will fix it free; from the box inward, the table, the shelf, the sockets, and the little black router are yours. Knowing this boundary saves an afternoon of blame. When the fault is on the wire, the provider sends a boy with a ladder. When the fault is on your shelf, no ladder in the world will help and no care line will come.",
+        "Inside the gate, the road splits into two houses at one box — people call it the modem, though the modern ones hide their names. Here is the boundary that saves an afternoon of blame: the provider owns the line up to that box and will fix it free; from the box inward — the shelf, the sockets, the little black router — everything is yours. When the fault is on the wire, the provider sends a boy with a ladder. When the fault is on your shelf, no ladder in the world arrives and no care line can help. Knowing which side of the box you are standing on is half of every repair.",
       ),
       p(
-        "The router's work is humble and essential. It takes the one pipe and makes a small compound out of it: a wireless courtyard where the phone and laptop sit, and usually a few wired rooms for machines that prefer a door to the open air. Every device that enters is quietly given an internal name so replies can find it again — your laptop is not speaking to the world directly any more than a child at home writes letters in their own hand to London. The compound has a gatekeeper, and the gatekeeper's name is on a sticker underneath. We will visit that sticker properly in the lesson on neighbours and fences. For today, know only this: the gate exists, it has a key, and the key is yours to change.",
+        "The router's own job is humble and essential. It takes the one pipe and builds a small compound from it: a wireless courtyard where the phones sit, and usually a few wired rooms for machines that prefer a door to open air. Every device that enters is quietly handed an internal name so the replies can find it again — your laptop addresses the world no more directly than a child at home writes letters in their own hand to London. And the compound has a gatekeeper whose key lives on a sticker underneath. We will visit that sticker properly in the lesson on neighbours and fences. For today: the gate exists, it has a key, and the key is yours to change.",
       ),
       fig(
         "/images/blog/telecom-mast-evening-sky.jpg",
@@ -9940,19 +9959,19 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("The speed on the receipt, and the speed at the table"),
       p(
-        "The speed you were sold and the speed you feel are two different numbers, and learning the distance between them is the beginning of wisdom about networks. Run a free speed test at the table where you actually work, at the hour you actually work, and write the number down. Then test again standing beside the router. If the number at the table is half the number at the shelf, the culprit is your walls and distance, not the provider. If the number is poor at the shelf too, the pipe itself is congested or throttled and the provider's care line has a case to answer. Without that one measurement, every argument with the provider is two people describing weather to each other.",
+        "Two numbers will follow you through this chapter: the speed you were sold and the speed you feel. Learning the distance between them is the beginning of wisdom about networks. Run a free speed test at the table where you actually work, at the hour you actually work, and write the number down — pencil, notebook, the habit from every other lesson. Then walk to the shelf and test again standing beside the router. Now the single question that splits every complaint in half: if the number at the table is half the number at the shelf, the culprit is your walls and distance, not the provider. If the number is poor at the shelf too, the pipe itself is congested or throttled, and the care line has a case to answer. Without that one measurement, every argument with the provider is two people describing weather to each other.",
       ),
       p(
-        "And know the road's other hunger: electricity. The mast needs power, the box on your wall needs power, the router needs power, and in this country that means the network shelf deserves a small plan of its own — a modest inverter, a UPS, or at minimum the habit of the power bank on the phone when the light goes. Rain does not break fibre, but rain with a fallen pole does. Load shedding with a dead router battery turns a working pipe into a silent shelf. The internet is not the sky. It is a road, it ends at your table, and roads need light to run.",
+        "And know the road's other hunger: electricity. The mast needs power. The box on your wall needs power. The router needs power. In this country that means the network shelf deserves a small plan of its own — a modest inverter, a UPS, or at minimum the power bank ready for the phone when the light goes. Rain does not break fibre. Rain with a fallen pole does. Load-shedding with a dead router battery turns a working pipe into a silent shelf.",
       ),
       ul([
-        "Save your provider's care number and account number in your contacts before the first outage, not during it.",
-        "Run and write down one speed test at your normal table this week; it is the baseline every later argument needs.",
-        "Keep the modem and router on an open shelf with air around them; heat is the slow killer of network boxes.",
-        "Give the network shelf its own small power plan — even a modest UPS keeps the road open through an evening outage.",
+        "Save the provider's care number and your account number in your contacts before the first outage, not during it.",
+        "Run and write down one speed test at your normal table this week. It is the baseline every later argument needs.",
+        "Keep the modem and router on an open shelf with air around them. Heat is the slow killer of network boxes.",
+        "Give the network shelf its own small power plan — even a modest UPS holds the road open through an evening outage.",
       ]),
       p(
-        "The map is now in your head: a road of glass and copper, a junction near your street, a wire along your wall, a box and a router on a shelf, and your devices sitting in the compound the router made. Everything else in this chapter — Wi-Fi and cables, megabytes and repairs, neighbours and small shops — is just walking this map room by room. The internet ends at your table. From here it is housekeeping.",
+        "The map is now in your head: a road of glass and copper, a junction near your street, a wire along the wall, a box and a router on a shelf, your devices inside the compound the router built. Everything else in this chapter — radio and cables, megabytes and repairs, neighbours and small shops — is walking this map room by room. The internet ends at your table. From here, it is housekeeping.",
       ),
     ],
   },
@@ -10024,43 +10043,46 @@ export const blogPosts: BlogPost[] = [
       "A laptop on a wooden table with a yellow Ethernet cable plugged into its side port in morning window light.",
     body: [
       p(
-        "Wi-Fi is radio: the router speaks and every device within earshot listens. Its beauty is that nothing has to be dragged across the floor. Its honesty is that radio fades with distance and dies at walls. Every metre of air, every block wall, every metal security gate, and above all every closed refrigerator takes something out of the voice. This is why the same laptop that flies beside the shelf crawls in the back bedroom, and why no amount of shouting at the provider changes physics. The signal is not a promise about your whole house. It is a lantern, brightest at the source, and every house in this country is built of things that eat lantern light.",
+        "The same laptop that flies beside the router crawls in the back bedroom. Two metres of difference, and the video call turns to wood. The natural suspicion is the provider — 'the network is bad again' — but before anybody calls the care line, try the experiment: carry the laptop to the shelf. If it flies again, nothing is broken and nobody is lying. Radio is doing exactly what radio does. This lesson is about the two ways a house gets its internet — the air and the cable — why walls eat one and not the other, and when to stop fighting physics and simply run the wire.",
       ),
       p(
-        "The cable is the opposite personality. A yellow Ethernet cable to the laptop is rude, visible, and absolutely reliable: one hundred percent of the speed on the receipt arrives at the machine, whether the room is behind three walls or beside the generator. It does not care about the microwave. It does not thin out at eight in the evening when the compound comes home. The price is dignity — there is a wire across the floor — and the reward is a connection that behaves like plumbing. For anything that must not stutter, the cable wins: the online examination, the video interview from chapter sixteen's lessons, the long upload of client work, the backup that must finish before dawn.",
+        "Wi-Fi is radio: the router speaks, and every device within earshot listens. Its beauty is that nothing has to be dragged across the floor. Its honesty is that radio fades with distance and dies at walls. Every metre of air, every block wall, every metal security gate, and — the quiet assassin of Nigerian sitting rooms — every closed refrigerator takes something out of the voice. The signal is not a promise about your whole house. It is a lantern, brightest at the source, and this country builds houses out of things that eat lantern light.",
+      ),
+      p(
+        "The cable is the opposite personality. A yellow Ethernet cable running to the laptop is rude, visible, and absolutely reliable: every naira of speed on the receipt arrives at the machine, whether the room sits behind three walls or beside the generator. It does not care about the microwave. It does not thin out at eight in the evening when the compound comes home. The price is dignity — there is a wire across the floor — and the reward is a connection that behaves like plumbing. For anything that must not stutter, the cable wins outright: the online examination, the video interview from the working chapter, the long upload of client work, the backup that must finish before dawn.",
       ),
       fig(
         "/images/blog/laptop-ethernet-cable.jpg",
         "A laptop on a wooden table with a yellow Ethernet cable plugged into its side port, cable coiled neatly.",
         "The rude guest that always arrives on time. Copper does not fade at walls and never sulked at anybody's microwave.",
       ),
-      h2("Why the back bedroom is always dying"),
+      h2("Mapping why the back bedroom is always dying"),
       p(
-        "Walk the house with the phone and watch the Wi-Fi symbol as you walk — this is the lantern lesson made visible. Stand at the shelf and the symbol is full. Step through two walls and lose a bar. Open the fridge and lose another. The map that results tells you the truth about your furniture: the router buried behind the television on a low shelf is shining into the back of a cabinet, and the metal wardrobe in the corridor is a wall the builders forgot to mention. The first cure costs nothing: lift the router to a high, open shelf in the middle of the house, antennas upright, and the lantern hangs where lanterns belong.",
+        "Walk the house once with the phone in hand and watch the Wi-Fi bars as you go — the lantern lesson made visible. Stand at the shelf: full signal. Step through two walls: lose a bar. Open the fridge: lose another. What you are drawing is the truth about your furniture. The router buried behind the television on a low shelf is shining into the back of a cabinet. The metal wardrobe in the corridor is a wall the builders forgot to mention. The first cure costs nothing at all: lift the router to a high, open shelf near the middle of the house, antennas upright. Hang the lantern where lanterns belong.",
       ),
       p(
-        "When placement has done all it can, the honest next step is the one adverts avoid: run a cable to the dead room. A long Ethernet cable along the door frames — clipped, not taped across the floor where feet live — costs a few thousand naira at any computer market and ends the war permanently at the far end. There the cable can meet a second router configured as an access point, or a powerline adapter that pushes the signal through the house's own electrical wiring. Both are respectable tools. The wireless extender that repeats a dying signal is the least respectable of the family, because it can only rebroadcast what it already half-hears; place one in a good-signal zone or do not buy it at all.",
+        "When placement has done all it can, the honest next step is the one adverts avoid: run a cable to the dead room. A long Ethernet cable clipped along the door frames — never taped across the floor where feet live — costs a few thousand naira at any computer market and ends the war permanently. At the far end it can meet a second router configured as an access point, or a powerline adapter that pushes the signal through the house's own electrical wiring. Both are respectable tools. The wireless extender that repeats a dying signal is the least respectable of the family, because it can only rebroadcast what it half-hears. Place one in a good-signal zone, or save the money for cable.",
       ),
       fig(
         "/images/blog/router-placement-sitting-room.jpg",
         "A Wi-Fi router placed high on an open shelf in a Nigerian sitting room, with chairs and a television softly behind.",
         "Hang the lantern high. Router placement is the cheapest upgrade in the whole chapter and it takes four minutes.",
       ),
-      h2("Choosing the lane, and the two names"),
+      h2("Two lanes, and knowing which one you are on"),
       p(
-        "Modern routers broadcast in two lanes and often under two names. The 2.4 lane travels farther through walls and carries less cargo — fine for the phone in the back room, the smart bulb, and the meter. The 5 lane is a short-range athlete: enormous cargo capacity, weak knees at walls. Put the television that streams and the laptop that calls in the same room as the router on the 5 lane, and leave the distant bedroom devices on 2.4. If your router shows only one name for both, it is choosing automatically and mostly well; if it shows two, choosing deliberately is better. The machine at the far end of the house should take the slow honest lane rather than the fast lane it can barely hear.",
+        "Modern routers broadcast in two lanes, often under two names. The 2.4 lane travels farther through walls and carries less cargo — right for the phone in the back room, the smart bulb, the meter. The 5 lane is a short-range athlete: enormous cargo, weak knees at walls. Keep the streaming television and the calling laptop in the same room as the router on the 5 lane, and let the distant bedroom devices take the slow honest lane rather than a fast one they can barely hear. One name for both means the router is choosing for you, mostly well. Two names means you can choose deliberately.",
       ),
       p(
-        "The final word is about knowing which tool the machine is actually using, because the laptop holds both roads at once and hides the choice. The Wi-Fi fan and the wired socket can be lit together, and Windows will quietly prefer one. When the call stutters while the cable lies coiled in the bag, the machine is on the radio out of politeness. Settings, Network, tells you in one glance which lane is carrying the voice. Wi-Fi is the lantern and the cable is the plumbing. Neither is loyal to you; both are loyal to physics. Choose per errand and the house stops having a bad room.",
+        "Last skill of the lesson: know which road the machine is actually using, because the laptop holds both at once and hides the choice. The Wi-Fi fan and the wired socket can be lit together, and Windows quietly prefers one. When the call stutters while the cable lies coiled in the bag, the machine is on the radio out of politeness. Settings, then Network, tells you in one glance which lane is carrying the voice — and one click switches. Wi-Fi is the lantern and the cable is the plumbing. Neither is loyal to you; both are loyal to physics. Choose per errand, and the house stops having a bad room.",
       ),
       ul([
-        "Move the router to a high open shelf in the centre of the house before spending any money on equipment.",
-        "Map the house once with the phone in hand; the weak bars in the back room are walls, not a provider's crime.",
+        "Move the router to a high, open shelf in the centre of the house before spending any money on equipment.",
+        "Map the house once with the phone in hand. The weak bars in the back room are walls, not a provider's crime.",
         "Keep one long Ethernet cable in the house for the errands that must not stutter — exams, interviews, uploads.",
-        "Match the lane to the room: 2.4 for distance and small cargo, 5 for the near room and heavy video.",
+        "Match the lane to the errand: 5 for the near-room heavy work, 2.4 for the distant and simple devices.",
       ]),
       p(
-        "The signal has now left the shelf and chosen its road. Next lesson follows the cargo itself: what a megabyte weighs, who drinks them fastest, and how to read the meter before the tank runs dry in the middle of somebody's payment.",
+        "The radio-versus-cable argument has no_winner and no villain — only errands. Tomorrow's video interview runs on the cable laid tonight. The phone checking messages in the back room stays on the air, and nobody shouts at the provider about it. That quiet division is the whole lesson.",
       ),
     ],
   },
@@ -10132,43 +10154,47 @@ export const blogPosts: BlogPost[] = [
       "A young man crouching beside a low shelf, looking closely at a router's blinking lights in a dim room.",
     body: [
       p(
-        "A page that will not open feels like the whole internet has collapsed, and the feeling lies. In truth there are exactly four suspects in the room: your device, the wireless air between the device and the shelf, the router and its box at the shelf, and the provider's road beyond your gate. The art of repair is questioning the suspects in the order that costs least — device first, air second, shelf third, provider last — and stopping at the first guilty one. This ladder is the same shape as the silence checklist from the sound lesson and the dark-screen checklist from the workshop chapter: one rung at a time, from the cheapest failure to the dearest. Fixing is not genius. It is order.",
-      ),
-      p(
-        "Rung one, the device: open a second page, then a second application. If WhatsApp sends while the browser sulks, the network is innocent and the browser is the criminal — close its tabs and reopen them. If nothing at all moves, ask the second question that splits the world in half: is any other device working? The phone on mobile data is not a fair test; the phone on the same Wi-Fi is. One machine failing alone is a machine problem — its Wi-Fi switch, its airplane mode, its own little grudge. The whole house failing together is a house problem, and you may now walk to the shelf with a clear conscience.",
+        "It is the night before the submission deadline and the portal will not open. The page sits spinning, and the house begins to panic in chorus: 'the internet has finished', 'the network is gone', as if the whole road system had collapsed because one door would not answer. Stay in the chair. In truth there are exactly four suspects in the room — your device, the wireless air between the device and the shelf, the router and its box at the shelf, and the provider's road beyond your gate — and the art of repair is questioning them in the order that costs least. Device first, air second, shelf third, provider last. Stop at the first guilty one. This ladder is the same shape as the silence checklist from the sound lesson and the dark-screen checklist from the workshop chapter: one rung at a time, from the cheapest failure to the dearest. Fixing is not genius. It is order.",
       ),
       fig(
         "/images/blog/checking-router-lights-crouch.jpg",
         "A young man crouching beside a low shelf, examining a router's blinking lights in dim light.",
         "One question divides the world in half: is any other device working? Alone means the machine. Together means the road.",
       ),
-      h2("Rung two and three: the air and the shelf"),
+      h2("Rung one: the device"),
       p(
-        "If the whole house is dark, test the air before you blame the box. Walk to the shelf with the phone. If the bars return at arm's length from the router, the radio is merely faint at your chair — the lantern lesson — and the repair is placement or cable, not complaint. If the bars are dead even at the shelf, switch the phone's Wi-Fi off and on once, because the phone may be the stubborn one. Then, and only then, raise your hand to the shelf itself and read the lights. Power dark means the socket or the adapter — try another socket before you mourn the router. Power steady but the line light dark or red means the fault is upstream, outside your gate, and the provider is now formally invited into the story.",
+        "Open a second page. Then a second application. If WhatsApp sends happily while the browser sulks, the network is innocent and the browser is the criminal — close its tabs and reopen them, or try the other browser you keep for emergencies. If nothing at all moves, ask the question that splits the world in half: is any other device working on the same Wi-Fi? Note the words — the phone on mobile data is not a fair test, because that is a different road entirely. The phone on the same Wi-Fi is the only honest witness.",
       ),
       p(
-        "Before you dial, perform the ritual from the lights lesson in its proper order — both boxes off at the wall, thirty seconds, box first, router second, devices last — and watch the line light through its two minutes of greeting. If it returns green, the road reopened with a bow and you have lost six minutes. If it returns red, the break is on the provider's side of your gate or in the billing of your account, and both of those are telephone problems with your three facts prepared: account number, the lights as your photograph shows them, and the ritual you already performed. The provider's first script is now behind you. The conversation starts at the real question.",
+        "One machine failing alone is a machine problem: its Wi-Fi switch got bumped, its airplane mode is on, it has a private little grudge. Look at the Wi-Fi fan in the tray — is the machine even connected to your network's name? The whole house failing together is a house problem, and you may now walk to the shelf with a clear conscience. Notice how much panic that one question dissolves.",
+      ),
+      h2("Rungs two and three: the air and the shelf"),
+      p(
+        "If the whole house is dark, test the air before you blame the box. Walk to the shelf with the phone. If the bars return at arm's length from the router, the radio is merely faint at your chair — the lantern lesson — and the cure is placement or cable from the previous lesson, not a phone call to the provider. If the bars are dead even at the shelf, the air itself is off: look for the router's Wi-Fi light, check that somebody did not press the radio button on the side.",
+      ),
+      p(
+        "Now the shelf. Look at the router's lights and compare them with the photograph you took when it was healthy — the one this chapter told you to keep in the notebook. Dark lights where there used to be steady ones mean the box has no power or no signal from outside. Then the restart ritual, in the order that respects the road: power everything off at the wall. On with the modem box first, and wait until its lights settle — a full minute, not five seconds. Then the router, and wait. Then the devices. Restarting in the right order is the repair that fixes most sick networks in Nigeria, and restarting in the wrong order is why it 'never works' for some households. Cables snug at both ends while you are down there — the loose yellow plug has ended more evenings than any virus.",
+      ),
+      h2("Rung four: the provider"),
+      p(
+        "Only when the shelf is healthy does the provider become a suspect. Run the speed test from the first lesson again, standing at the shelf. If the number is poor there — not just at your table — the pipe itself is congested or cut, and the care line has a case to answer. Call with the two things that make the call short: your account number (saved in contacts, as you promised) and one sentence of evidence — 'the lights are normal and the speed at the shelf is two megabits'. You are no longer describing weather. You are reporting a fault on a road.",
       ),
       fig(
         "/images/blog/speed-test-phone.jpg",
         "A hand holding a phone showing a simple gauge dial on the screen while a laptop waits on a table behind.",
         "The witness that ends arguments. A speed test at your table, measured once a week, turns weather reports into evidence.",
       ),
-      h2("When the road is open but the rain is heavy"),
       p(
-        "There is a fifth condition that is not quite sickness: congestion. The road is open, the lights are green, and everything is merely slow at eight in the evening — because the whole street is on the same junction and the junction was sold twelve times over. This is the evening sickness of every shared road in the world. The evidence is the speed test: fine at dawn, poor at dusk, green lights throughout. Your medicines are patience, the cable for what matters, and moving heavy cargo to the night plans. Complain with the two speed numbers, morning and evening, written down; providers answer evidence and ignore weather reports.",
-      ),
-      p(
-        "And keep one page of the repair notebook for the network: the dates of every outage, how long the lights were red, who you called and what they promised. A pattern of one red evening a week is a case the provider must answer in credit or in repairs. The ladder has done its work when panic is replaced by sequence. Device, air, shelf, provider — four rungs, five minutes, one guilty suspect. You will use this ladder in your own house, and, if you take the helping-hand road, in other people's houses for a fee they will be glad to pay.",
+        "And one last honest rung for this country: ask whether the light has been kind. The mast needs power; the box needs power; if the inverter is down and the battery died at noon, the network is not sick — it is unplugged, like everything else. The ladder ends where electricity begins.",
       ),
       ul([
-        "Ask first: one device alone, or the whole house? That single answer chooses the ladder's branch.",
-        "Walk to the shelf and read the lights before touching anything; photograph red lights as evidence.",
-        "Perform the restart ritual in order before calling anyone; keep your account number and three facts ready.",
-        "Record outages in one page of your notebook — dates, durations, and promises — and complain with evidence.",
+        "Before anything: open a second page and a second app. Is any other device working on the same Wi-Fi?",
+        "Walk to the shelf. Bars that return near the router mean faint radio — fix placement, not the provider.",
+        "Restart in order: wall off, modem on and settled, router on and settled, devices last. Snug every cable.",
+        "Call the provider only with the account number and one evidence sentence: lights normal, shelf-speed poor.",
       ]),
       p(
-        "The sickness is now diagnosable and most days it is curable in minutes. But we have been saying names — the box, the road, the line light — without ever opening the small vocabulary underneath. The next lesson is the phonebook of the internet: why every door has both a number and a name, and how a wrong name can send your letter to the right stranger.",
+        "Four suspects, one ladder, five minutes. The page that would not open last Tuesday was the browser; the one before it was a loose cable behind the shelf; once, just once, it was truly the provider, and the call took four minutes because the notebook already held the numbers. Keep the ladder and the panic retires. Fixing is not genius. It is order.",
       ),
     ],
   },
@@ -10186,10 +10212,13 @@ export const blogPosts: BlogPost[] = [
       "An open paper telephone directory on a wooden table with an old mobile phone resting on its pages.",
     body: [
       p(
-        "Nothing in the road system cares about words. At the level of the wire, every door on the internet has a number — groups of digits with dots between them, like 102.89.44.6 — and every letter, photograph, and naira transfer is posted to a number and returned from one. That number is the machine's real name, its address in the city of wires. Your router quietly hands out such numbers to everything that enters the compound, the way a good gatekeeper gives every visitor a tag. It is a dull system and it works without opinion, without spelling, and without mercy: post to the wrong number and your parcel reaches the wrong stranger's door every time.",
+        "Try two experiments at the browser. Type 102.89.44.6 and press Enter. Now clear the box and type the school portal's name, the one you use every week. Both roads reach the same door — and almost nobody on earth uses the first one. Why not? Because at the level of the wire, words do not exist. This lesson is about the two-name system underneath every website you have ever visited: the numbers that are real, the words that are kindness, and the phonebook that keeps peace between them. It is the driest-sounding lesson in the chapter and one of the most useful — because when this phonebook breaks, the whole internet looks broken, and when it is poisoned, even a careful person can be walked to a fake bank.",
       ),
       p(
-        "The words are a kindness laid on top. Somewhere in the provider's house — and in a global chain of houses behind it — sits a phonebook that answers questions of the form: which number does this name live at. Ask for the school's portal by its name and the phonebook returns the number, and the parcel finally has somewhere to go. This service is called by a name of its own, DNS, but the useful thing is not the name of the service; it is the knowledge that every single visit you make to any website is two trips — one to the phonebook, and one to the door it named. The phonebook is fast and invisible, which is why people forget it exists until it breaks.",
+        "Here is the plumbing. Every door on the internet has a number — groups of digits with dots between them, like 102.89.44.6 — and every letter, photograph, and naira transfer is posted to a number and returned from one. Your router quietly hands such numbers to everything that enters the compound, the way a good gatekeeper gives every visitor a tag. It is a dull system and it works without opinion, without spelling, and without mercy: post to the wrong number and your parcel reaches the wrong stranger's door every single time.",
+      ),
+      p(
+        "The words are a kindness laid on top. Somewhere in the provider's house — and in a global chain of houses behind it — sits a phonebook that answers one question: which number does this name live at? Ask for the school's portal by name and the phonebook returns the number, and the parcel finally has somewhere to go. The service has a name of its own — DNS — but what matters is the knowledge, not the label: every visit you make to any website is two trips. First the phonebook, then the door it named. The phonebook is fast and invisible, which is why people forget it exists until the day it breaks.",
       ),
       fig(
         "/images/blog/telephone-directory-and-phone.jpg",
@@ -10198,10 +10227,10 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("When the phonebook is wrong, the world looks broken"),
       p(
-        "A peculiar failure follows from the two-name system, and recognising it saves hours. The browser says it cannot find the server — the door's name is unknown — while WhatsApp, which remembers numbers it has already used, still sends happily. That combination is not a dead internet. It is a dead or poisoned phonebook. Sometimes the fix is as small as the restart ritual. Sometimes the router's idea of which phonebook to consult has been tampered with, or a shop's helper changed it to something strange. The clean cure, when this failure repeats, is to tell your devices one of the public phonebooks directly — the large providers publish theirs openly, four numbers to type once — and the misdirection ends.",
+        "A peculiar failure follows from this two-name system, and recognising it saves hours. The browser says it cannot find the server — the door's name is unknown — while WhatsApp, which remembers numbers it has already met, keeps sending happily. That combination is not a dead internet. That is a dead or poisoned phonebook. Sometimes the fix is as small as the restart ritual from the last lesson. Sometimes somebody changed which phonebook your router consults — a shop's helpful assistant, a strange 'optimisation' — and the clean cure is to point your devices at one of the public phonebooks directly: the large providers publish theirs openly, four numbers to type once into the network settings.",
       ),
       p(
-        "The dishonest version of this is worth knowing by sight, because theft rides on it. A fake phonebook can answer a correct name with a counterfeit number: you type the bank's true name and arrive at a perfect copy of the bank standing at a fake address. The padlock can even be present, because the padlock speaks about the road and not about the house. This is the crime at the far end of the phishing lesson, executed at the level of plumbing. Your defence is unchanged and now better understood: type important addresses yourself from a bookmark, never follow a link that arrived by message, and if the page asks for anything precious, close it and walk in through the door you saved.",
+        "The dishonest version is worth knowing by sight, because theft rides on it. A fake phonebook can answer a correct name with a counterfeit number: you type the bank's true name and arrive at a perfect copy of the bank standing at a fake address. Notice the trap's crown jewel — the padlock can be present, because the padlock speaks about the road and never about the house. This is the phishing lesson's crime executed at the level of plumbing. Your defence is unchanged and now better understood: type important addresses yourself from a bookmark, never follow a link that arrived by message, and if any page asks for anything precious, close it and walk in through the door you saved.",
       ),
       fig(
         "/images/blog/lan-cables-switch-box.jpg",
@@ -10210,19 +10239,19 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("Your own house has names too"),
       p(
-        "The same two-name system runs inside your compound, and the habits transfer perfectly. When the router hands your laptop a number, it also registers the laptop's own name — usually something generous like DESKTOP-K7Q2 — so the printer and the shared folder can find it without digits. Naming your devices properly in Settings is the household version of the directory: Chidinma-Laptop, Shop-POS, Papa-Phone. Then a shared printer, which we meet next lesson, can be asked for by a name a human chose rather than a number a machine invented at breakfast.",
+        "The same two-name system runs inside your compound, and the habits transfer perfectly. When the router hands your laptop a number, it also registers the laptop's own name — usually something generous like DESKTOP-K7Q2 — so the printer and the shared folder can find it without digits. Do the household version of the directory properly in Settings: name the machines like people name children. Chidinma-Laptop. Shop-POS. Papa-Phone. Then next lesson's shared printer can be asked for by a name a human chose rather than a number a machine invented at breakfast.",
       ),
       p(
-        "One more kindness to know: names can be written into a private page of the phonebook that only your house reads. It is how old offices mapped the server in the cupboard to a friendly word, and it lives in a small file on every machine called hosts. You will probably never edit it. But when a technician says the words a hosts entry, you will know they mean a handwritten line in the household's private phonebook — dull, local, and instantly effective. Every door has a number. Every number can wear a name. The words are for us; the numbers are for the wires; and the phonebook keeps peace between the two.",
+        "One more kindness to know by sound: names can be written into a private page of the phonebook that only your house reads — how old offices mapped 'the server in the cupboard' to a friendly word. It lives in a small file on every machine called hosts. You will probably never edit it yourself. But when a technician says the words 'a hosts entry', you will know exactly what they mean: a handwritten line in the household's private phonebook. Dull, local, instantly effective.",
       ),
       ul([
         "Remember the two trips: first the phonebook, then the door. Failure at the first trip looks like failure at both.",
         "When messages work but names will not resolve, suspect the phonebook before you mourn the internet.",
-        "Bookmark important doors and type bank addresses yourself; a poisoned phonebook can fake a name honestly.",
-        "Give your own devices plain household names; the printer and the shared folder will thank you next lesson.",
+        "Bookmark important doors and type bank addresses yourself. A poisoned phonebook can fake a name honestly.",
+        "Give your own devices plain household names — the printer and the shared folder will thank you next lesson.",
       ]),
       p(
-        "Numbers and names now hold no mystery. With the vocabulary complete, we can finally do the thing offices ask for every week — share one printer and one folder across four laptops without a single flash drive changing hands, and without opening the gate to the street.",
+        "Numbers and names now hold no mystery: the words are for us, the numbers are for the wires, and the phonebook keeps the peace. With the vocabulary complete, we can finally do the thing offices ask for every week — share one printer and one folder across four laptops, without a single flash drive changing hands and without opening the gate to the street.",
       ),
     ],
   },
@@ -10240,10 +10269,10 @@ export const blogPosts: BlogPost[] = [
       "A small office printer on a wooden cabinet with paper in its tray and a laptop nearby in soft daylight.",
     body: [
       p(
-        "The office dream is small and reasonable: the letter typed on any laptop should reach the one printer without a flash drive performing the shuttle service. The network exists precisely for this. Sharing a printer is not sorcery; it is one machine announcing that it accepts parcels from named neighbours, and the other machines adding it to their list of doors. In practice the printer is attached by cable or by its own Wi-Fi to one machine or directly to the router, and from there it is offered to the compound. The offering machine must stay awake — a printer shared from a laptop that sleeps at noon is a printer offline at noon, which is the whole mystery of Monday mornings solved in one sentence.",
+        "The office dream is small and reasonable, and every office has it: the letter typed on any laptop should reach the one printer without a flash drive walking the room like a yam being passed from hand to hand. The network exists precisely for this. Sharing a printer is not sorcery — it is one machine announcing that it accepts parcels from named neighbours, and the other machines adding it to their list of doors. But watch the first detail, because it solves a mystery that has ruined many Monday mornings: the offering machine must stay awake. A printer shared from a laptop that sleeps at noon is a printer offline at noon. One sentence, and half the office folklore dies.",
       ),
       p(
-        "Adding it at the other laptops is a minute's work: Settings, Printers, Add, and the shared name appears among the neighbours — the naming lesson again, which is why Shop-Printer beats HP-LaserJet-M404-7K2 at the moment of choosing. Windows will fetch the driver itself in almost every case. Print one test page from the far laptop before declaring victory, because a printer listed and a printer reachable are two different achievements. The same mechanics serve the second office prayer — the shared folder where everybody drops the week's files — and it is here that the real lesson lives, because a folder is not paper. A folder is the whole drawer.",
+        "The setup follows. The printer attaches by cable to one machine — or by its own Wi-Fi to the router — and from there it is offered to the compound. On the other laptops: Settings, Printers, Add, and the shared name appears among the neighbours. This is the naming lesson paying its dividend — Shop-Printer beats HP-LaserJet-M404-7K2 at the exact moment of choosing. Windows fetches the driver itself in almost every case. And print one test page from the farthest laptop before declaring victory, because a printer listed and a printer reachable are two different achievements.",
       ),
       fig(
         "/images/blog/shared-office-printer.jpg",
@@ -10252,31 +10281,31 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("The one permission rule that matters"),
       p(
-        "Sharing offers three kinds of hand, and choosing them wrongly is how private letters end up on the receptionist's screen. Read means the guest may look and copy. Change means the guest may edit and delete — including your files by accident on Friday evening. Full control means the guest may also change who else may enter, which belongs to exactly one person in the office: the owner of the machine. The rule is one sentence long. Share with Read for the whole office, Change only for the two or three people who genuinely co-write, and Full Control for nobody but yourself. Printer sharing wants nothing more than Read's cousin — the right to print — and the printer never keeps a copy anyway.",
+        "Sharing offers three kinds of hand, and choosing wrongly is how private letters end up on the receptionist's screen. Read: the guest may look and copy. Change: the guest may edit and delete — including your files by accident on Friday evening. Full Control: the guest may also change who else may enter, and that belongs to exactly one person in the office — the owner of the machine. So the rule fits in one sentence: Read for the whole office, Change for the two or three who genuinely co-write, Full Control for nobody but yourself. The shared folder is the whole drawer, not one paper. Printer sharing wants even less — the right to print — and the printer keeps no copy of anything anyway.",
       ),
       p(
-        "There is a second gate behind the first, and offices forget it weekly: the machine's own account. When the far laptop asks who you are, it is asking for an account on the host machine, not the office gossip's guess at a password. Make one account for the office, give the password to the staff who need it, and understand what this means — anyone with that password is inside the compound as themselves. If the office handles anything private, the better shape is not a shared account at all but each person entering with their own name, so the log shows whose hands were on the drawer. A shared key is convenient. It also cannot testify.",
+        "There is a second gate behind the first, and offices forget it weekly: the host machine's own account. When the far laptop asks who you are, it wants an account on the host machine — not the office's guess at a password. One account for the office, the password given to staff who need it, is convenient; understand what it means, though. Anyone holding that password is inside the compound as themselves. If the work carries anything private, the better shape is each person entering with their own name, so the record shows whose hands were on the drawer. A shared key is convenient. It also cannot testify.",
       ),
       fig(
         "/images/blog/two-laptops-one-office.jpg",
         "Two laptops open on a long wooden office table with one person pointing at the other's screen.",
         "Named neighbours, named hands. Sharing by name and permission is what separates an office compound from a public field.",
       ),
-      h2("When the shrine goes offline, and the flash drive question"),
+      h2("The four sermons of 'the printer is offline'"),
       p(
-        "The Monday litany — the printer is offline — has four usual sermons. The host laptop slept or its lid was closed; wake it and set its sleep to never while plugged in. Somebody changed the Wi-Fi and the printer kept the old number; the router lesson's sticker and a printer restart reconcile them. The printer's own network dropped while its queue keeps faith; clear the queue, restart the printer, print one page. Or the fourth: four documents are queued from four laptops and the shrine is not broken, it is busy and behind. Check the queue first and you will skip three sermons.",
+        "The Monday litany has four usual sermons, and knowing them turns repair into a checklist. One: the host laptop slept or its lid closed — wake it, and set its sleep to Never while it hosts the shared printer. Two: somebody changed the Wi-Fi and the printer kept the old address — the router sticker from the names lesson and a printer restart reconcile them. Three: the printer's own network dropped while the queue kept faith — clear the queue, restart the printer, print one page. Four, and the most common: four documents are queued from four laptops and the shrine is not broken. It is busy and behind. Check the queue first and you skip three sermons entirely.",
       ),
       p(
-        "And the flash drive, since someone will ask: it still exists and it still works, and for one document to one person at one moment it remains honest. What the shared door replaces is the shuttle service — the drive walking the room like a yam being passed hand to hand, carrying every file it has ever touched into every machine it visits. A shared printer for paper, a shared folder with Read for the office, Change for the scribes, and the drive retires to the drawer where it belongs. The office compound is now properly fenced. Next lesson looks outward at the fence itself — at who else can hear your lantern through the walls.",
+        "And the flash drive, since someone always asks: it still exists, it still works, and for one document to one person at one moment it remains perfectly honest. What the shared door retires is the shuttle service — the drive walking the room, carrying every file it has ever touched into every machine it visits. That habit was never convenience; it was an infection route with a keyring. Let the drive rest in the drawer between journeys.",
       ),
       ul([
-        "Share the printer from a machine that stays awake; set its sleep to never while it hosts the shrine.",
-        "Read for the office, Change for the co-authors only, Full Control for nobody — the whole permission law in one line.",
-        "Give the office one named account with one password, or named accounts each if the work carries private papers.",
-        "Check the print queue before any funeral for the printer; most offline Mondays are four jobs waiting in line.",
+        "Share the printer from a machine that stays awake. Set its sleep to Never while it hosts the shrine.",
+        "Read for the office, Change for the co-authors only, Full Control for nobody. The whole permission law in one line.",
+        "One named account with one password for the office — or named accounts each, if the work carries private papers.",
+        "Check the print queue before any funeral for the printer. Most offline Mondays are four jobs waiting in line.",
       ]),
       p(
-        "Inside the compound, everything now shares politely by name and permission. But wireless fences are transparent things, and the next question is the one every neighbour with a strong antenna asks: whose lantern is that, and may I sit in its light?",
+        "Inside the compound, everything now shares politely by name and permission. But wireless fences are transparent things, and the next question is the one every neighbour with a strong antenna eventually asks: whose lantern is that — and may I sit in its light?",
       ),
     ],
   },
@@ -10410,43 +10439,47 @@ export const blogPosts: BlogPost[] = [
       "A small Nigerian shop counter with a desktop computer, a POS terminal, and a receipt printer arranged neatly.",
     body: [
       p(
-        "A shop's network should be drawn on paper before anything is bought, because a shop is not a house with more laptops. It is a small institution with three different kinds of guest under one roof: the machines that handle money, the machines that handle records, and the machines that handle customers. The POS terminal, the receipt printer, and the accounting laptop belong to the first family and should never share a courtyard with visitors. The CCTV recorder is a second family — hungry for data, indifferent to everything except power and disk. The customers' phones are the third family and deserve exactly one courtesy: a working guest gate. Draw the three families as three boxes on one page and the shop's network is already eighty percent designed.",
+        "Chinedu's shop grew the way shops do — by accident. One laptop became a POS terminal, a receipt printer, a camera watching the door, an accounting machine, and a second laptop for the apprentice, all within eighteen months. The network grew the same way: a router bought in a hurry, cables under the shoe rack, and the customer Wi-Fi password the same one that guards the accounts. Then one afternoon the POS dropped mid-sale and nobody in the shop could tell which of the five boxes to blame. If you are about to open a shop — or to fix the one you have — this lesson asks you to do something un-African and wonderful: draw the whole thing on one page before you buy anything else. A shop is not a house with more laptops. It is a small institution with three different kinds of guest under one roof.",
       ),
       p(
-        "Then draw the physical layer, which is the layer that actually fails. Where is the router — high, central, ventilated, above the counter's splash and the generator's fumes? Where does the provider's wire enter, and who owns the run to the gate? Which machines take the rude reliable cable and which may float on radio: the POS and the accounting machine prefer cables, the shopkeeper's tablet and the customers prefer air. The camera's recorder wants a cable to the router for the heavy video and, if the system allows, its own small switch so that recording survives even when the internet does not. A five-minute sketch saves five expensive mistakes at the market.",
+        "Draw three boxes. The first family handles money: the POS terminal, the receipt printer, the accounting laptop. They should never share a courtyard with visitors. The second family handles watching: the CCTV recorder, hungry for data and indifferent to everything except power and disk. The third family handles customers: their phones, and whatever courtesy you extend to them. Three boxes on one page, and the shop's network is eighty percent designed. Everything else is choosing where the boxes physically live.",
       ),
       fig(
         "/images/blog/small-shop-counter-computer.jpg",
         "A small shop counter with a desktop computer, POS terminal, and receipt printer arranged in good order.",
         "Draw the three families before spending a naira: machines that touch money, machines that keep records, and machines that serve customers.",
       ),
-      h2("The shelf that needs its own light"),
+      h2("The physical layer is the one that fails"),
       p(
-        "Every network failure in this country has a power-shaped shadow, and the shop feels it twice: the market's light and the machine's appetite. The network shelf — router, modem, recorder — deserves one small UPS or inverter of its own, sized merely to hold the shelf alive through an hour of darkness. This is not luxury; the POS closes sales on that shelf, and a payment machine that dies at every flicker trains customers to fear your counter. Arrange the cables with the same care: one small extension behind the shelf, the adapters labelled in pen on masking tape, and nothing stacked on top of the router. Heat and tangled adapters are the twin fires of the small shop, one literal and one slow.",
+        "Now sketch the real world, the layer that actually breaks. Where does the router live — high, central, ventilated, above the counter's splash and the generator's fumes? Where does the provider's wire enter, and who owns the run to the gate? Which machines take the rude reliable cable and which may float on radio? The answers follow the last lessons without argument: the POS and the accounting machine prefer cables; the shopkeeper's tablet and the customers prefer air; the camera's recorder wants a cable to the router for the heavy video and, if the system allows, its own small switch, so recording survives even when the internet does not. A five-minute sketch with a pen saves five expensive mistakes at the market.",
       ),
       p(
-        "The guest gate from the neighbours lesson becomes shop policy here, with a business refinement: write the customer key on a small card at the counter and change it with the seasons. Customers ask for Wi-Fi the way they ask for change — politely, often, and without malice. A guest network answers the request at zero marginal cost and keeps forty stranger devices outside the family compound. Some shops even make the key a small act of hospitality — the shop's phone number, or a word from the market's name — and the gesture costs nothing because the gate leads only to the internet, never to the accounts, the camera's controls, or the printer that prints the day's invoices.",
+        "Then power, because in this country every network failure has a power-shaped shadow. The network shelf — router, modem, recorder — deserves one small UPS or inverter of its own, sized only to hold the shelf alive through an hour of darkness. This is not luxury. The POS closes sales on that shelf, and a payment machine that dies at every flicker trains customers to fear your counter. Arrange the cables with the same care: one small extension behind the shelf, the adapters labelled in pen on masking tape, and nothing stacked on top of the router. Heat and tangled adapters are the twin fires of the small shop — one literal, one slow.",
       ),
       fig(
         "/images/blog/shop-shelf-network-hub.jpg",
         "A wooden shelf above a shop counter holding a small router and a CCTV recorder with cables neatly run.",
         "The shelf with its own light. In this country a network is only as reliable as the small plan keeping its boxes breathing.",
       ),
-      h2("The book, the updates, and the quiet Tuesday"),
+      h2("The guest gate is shop policy"),
       p(
-        "The last page of the design is a book — the same password book from the recovery lesson, now institutional. One notebook kept in the owner's drawer carries: the provider's account number and care line, the router's admin key and the wireless keys for both courts, the POS support number, the camera's login, and the date each was last changed. Whoever holds the book can rebuild the shop's network from nothing after a burglary, a fire, or a dishonest manager. No book, and the shop discovers at its worst hour that the only person who knew the password left in March with everything in his head.",
+        "The guest network from the neighbours lesson becomes policy here, with one business refinement: write the customer key on a small card at the counter, and change it with the seasons. Customers ask for Wi-Fi the way they ask for change — politely, often, and without malice. A guest gate answers at zero cost and keeps forty stranger devices outside the family compound. Some shops even make the key a small act of hospitality — the shop's phone number, a word from the market's name — and the gesture costs nothing, because the gate leads only to the internet. Never to the accounts. Never to the camera's controls. Never to the printer that prints the day's invoices.",
+      ),
+      h2("The book, and the quiet Tuesday"),
+      p(
+        "The last page of the design is a book — the password book from the recovery lesson, now institutional. One notebook in the owner's drawer carries: the provider's account number and care line, the router's admin key and the wireless keys for both courts, the POS support number, the camera's login, and the date each was last changed. Whoever holds the book can rebuild the shop's network from nothing — after a burglary, a fire, or a manager who left in March with everything in his head. No book, and the shop discovers its secrets at its worst hour.",
       ),
       p(
-        "Two maintenance habits finish the plan. Quiet Tuesday: ten minutes once a week to check the recorder is actually recording, the POS can reach the bank, the backups of the accounts laptop have run, and the router's lights are their ordinary selves — the photograph from the lights lesson is on the inside cover of the book. And the monthly walk: updates on the shop's own terms when the market is closed, never at noon on Saturday; the guest key rolled; the disk checked for the day it fills. A shop run this way does not have network incidents. It has Tuesdays. The wire from the mast now ends where the money is counted, fenced into three courtyards and lit through the darkness by a small plan of its own — and the map is on paper in the drawer, which is where every good institution keeps its maps.",
+        "Two habits finish the plan. Quiet Tuesday: ten minutes once a week — is the recorder actually recording? Can the POS reach the bank? Have the accounting laptop's backups run? Are the router's lights their ordinary selves? (The healthy-lights photograph lives on the inside cover of the book.) And the monthly walk: updates on the shop's own terms when the market is closed — never at noon on Saturday; the guest key rolled with the season; the disk checked for the day it fills. A shop run this way does not have network incidents. It has Tuesdays.",
       ),
       ul([
         "Draw the three families on one page — money, records, customers — before buying a single device.",
-        "Give the network shelf its own small power plan and label every adapter; the POS depends on that shelf.",
-        "Open the season's guest key on a card at the counter; customers get the internet, never the accounts.",
+        "Give the network shelf its own small power plan and label every adapter. The POS depends on that shelf.",
+        "Open the season's guest key on a card at the counter. Customers get the internet, never the accounts.",
         "Keep the book of keys and numbers in the drawer, and give the network ten quiet minutes every Tuesday.",
       ]),
       p(
-        "The wire has now reached the table and the counter, and the map of the network chapter is complete: the road, the lights, the air, the cargo, the sick days, the names, the sharing, the fence, the rescue, and the shop. The next chapter changes seats entirely. Not the machine that breaks, but the person it is broken for — the one people call, and the quiet trade of answering well.",
+        "The wire from the mast now ends where the money is counted — fenced into three courtyards, lit through the darkness by a small power plan of its own, and mapped on paper in the drawer, which is where every good institution keeps its maps. The network chapter is complete. The next chapter changes seats entirely: not the machine that breaks, but the person it breaks for — the one people call, and the quiet trade of answering well.",
       ),
     ],
   },
