@@ -1413,47 +1413,56 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A Recycle Bin window on a laptop showing a few deleted files.",
     body: [
       p(
-        "The first time a file vanishes under your own hand, the stomach drops as if the machine has judged you. Usually it has not. Delete, on a computer, is putting the paper in a cupboard by the door. The cupboard is the Recycle Bin on Windows, Trash on a Mac. Empty Recycle Bin is taking the cupboard to the fire. Until then, Restore is allowed. This lesson is that cupboard, the two deletes, and what to do when the cupboard was skipped.",
+        "Blessing finished her assignment just before midnight, tidied the desktop like a careful person, and went to bed. In the morning the file was not there. Her chest went cold. She remembered deleting a few things the night before — had the assignment been among them? If that cold feeling is familiar, take one breath first. When you delete a file on Windows, it does not burn. It moves into a place called the Recycle Bin, and most deleted files are sitting in there right now, waiting to be asked back.",
       ),
       p(
-        "You met this briefly in the files lesson. People still panic because the file is not in Documents, so it must be gone. Look in the cupboard before you rewrite a letter from memory. Look before you pay a shop to “recover.” Recovery after Empty is a maybe, a disk that must not be used, and money. Recovery from the Bin is a click.",
+        "This lesson is about that place: what Delete actually does, how to bring a file back, the one delete that skips the waiting room, and the habit that keeps a mistake cheap.",
       ),
       fig(
         "/images/blog/recycle-bin.jpg",
         "The Recycle Bin open, with a short list of deleted files.",
-        "Date deleted is a gift. Sort by date if the name escapes you. Restore puts the file back where it was, or asks you where, if that folder is gone.",
+        "The Date deleted column is your best clue. Sort by it when you cannot remember the file's name — you are looking for the day of the accident.",
       ),
-      h2("Ordinary delete, and the one that skips the cupboard"),
+      h2("Walking to the bin together"),
       p(
-        "Select a file. Press Delete, or right-click, Delete. It leaves Documents and appears in the Bin. The desktop icon for the Bin may look empty or full — a small change. Double-click it. Your file should be there. Restore. Close. Open Documents. Breathe.",
+        "Look at your desktop now. Double-click the Recycle Bin icon. (If you cannot find the icon, press the Windows key and type recycle — the bin is in your machine either way.) You should see a list of recently deleted things. Find the column headed Date deleted and click it once to sort by date. Blessing's accident happened Sunday night, so Sunday is the row she cares about. Right-click the file. Click Restore. Now close the bin and open Documents. The file is back in the exact folder it left, as if it had walked home by itself.",
       ),
       p(
-        "Shift+Delete — the Shift key held while you press Delete — skips the cupboard. Windows will ask “Are you sure you want to permanently delete?” Permanently is the fire. If you did that by accident and said Yes, stop using the machine for heavy work and ask someone about recovery the same day. Do not install a “free recovery tool” from a banner. That banner is an old acquaintance. At the academy, say what happened before you fill the disk with new downloads.",
+        "Quick question before we move on: a file has vanished from Documents. Where do you look first? ... In the bin. Always in the bin — before you rewrite the letter from memory, before you ask a cousin, before anybody mentions paying a shop to recover anything. Restoring from the bin is a click and it is free. Recovery after the real goodbye is money, and only a maybe.",
+      ),
+      p(
+        "There is a small kindness built into Restore worth knowing. If a file with the same name is already sitting in the folder, Windows does not let the two fight. It renames one with a number in brackets, and nothing is overwritten. And the Date deleted column is how you find the tax letter among fifty photographs: sort by date, look at the Thursday you remember, and there it is.",
+      ),
+      h2("The two deletes, and which one is the real goodbye"),
+      p(
+        "An ordinary delete — the Delete key, or right-click then Delete — sends the file to the bin. Now try to notice the difference the day you meet the second delete: hold down the Shift key and press Delete. Windows asks, “Are you sure you want to permanently delete this file?” That word permanently is doing all the work. Shift+Delete skips the bin entirely. There is no Restore waiting for you afterwards.",
       ),
       fig(
         "/images/blog/recycle-desktop.jpg",
         "A laptop desktop with the Recycle Bin icon visible.",
-        "The icon is the cupboard door. If it is missing, the desktop was tidied; search Recycle Bin in Start. It is still there. A USB's delete is often already the fire — many flash drives do not have a bin.",
+        "The bin's icon changes as it fills — the little paper stack appears inside. If the icon is missing from your desktop, search Recycle Bin in Start. It has not gone anywhere.",
+      ),
+      p(
+        "If you pressed Shift+Delete by accident and said Yes to the question: do not panic, but do move carefully. Stop saving new files and installing things on that machine, and ask someone knowledgeable the same day — undelete tools and repair shops can sometimes lift a file back, but the odds fall with every new file you save over the space. And one warning with a familiar face: do not install a “free recovery tool” from a banner advert. That banner is an old acquaintance of ours from the scam lessons. At the academy, say what happened before anyone fills your disk with downloads.",
+      ),
+      p(
+        "One more difference that surprises people: on a USB flash drive, Delete is usually already the permanent kind. Most flash drives have no bin. The file is gone. That is one more reason the files lesson says copy, not cut, when you move photographs off a phone or off somebody else's computer — if the only copy is the one you are moving, a slip is permanent.",
+      ),
+      h2("Emptying the bin on purpose"),
+      p(
+        "The bin does not keep things forever. It holds them until you empty it, and emptying is the genuine goodbye. So build one habit around it: look in the bin before you empty it. Sweep it once a week — like sweeping a real compound — but sweep with your eyes open, because the file you deleted by accident on Thursday is sitting in there with the rubbish from Thursday.",
+      ),
+      p(
+        "And ignore one piece of market wisdom you will hear: emptying the bin does not “make RAM” or speed up the machine. It frees disk space — real and useful when the C: drive is red — but a full bin is not why a computer is slow. Empty it when you have looked, and when you actually need the space back.",
       ),
       ul([
-        "Create a file called delete-practice in Documents. Type one sentence. Save.",
-        "Delete it the ordinary way. Open the Recycle Bin. Restore it. Confirm it is back.",
-        "Delete it again. This time Empty Recycle Bin only after you have looked. That file is gone. That is the point of the practice file.",
-        "Never practise Shift+Delete on a real letter.",
+        "Create a file in Documents called delete-practice. Type one sentence. Save it.",
+        "Delete it the ordinary way. Open the Recycle Bin. Find it by date. Restore it. Confirm it is home.",
+        "Delete it again. Look at it in the bin. This time, empty the bin. The practice file is gone — that is why it was a practice file and not your school fees letter.",
+        "Never practise Shift+Delete on a real document. Once is enough to understand.",
       ]),
-      h2("Restore, and the place it came from"),
       p(
-        "Open the bin and right-click the file: Restore is the word, and it sends the file home to the exact folder it left. Windows knows the address. That is the quiet miracle of the cupboard — the paper remembers where it lived. If a file of the same name is already waiting at home, the two are renamed with a number in brackets rather than fighting, so nothing is overwritten. The Date deleted column tells you which Thursday the accident happened, which is how you find the tax letter among fifty photographs.",
-      ),
-      p(
-        "Emptying the bin is the part that is not a joke. The cupboard door opens to the street and the bin men come at once, not next Tuesday. Still, panic is not required. There are undelete programs and repair shops that can sometimes lift a file back, the way a good carpenter can find a nail under the mat — but the honest odds fall with every new file you save. So build the habit cheaply instead: when something vanishes, look in the bin before you mourn it, and sweep the bin on purpose once a week, like a real one. Deletion you chose is housekeeping. Deletion you rushed is a fire.",
-      ),
-      h2("USB, photos, and other people's machines"),
-      p(
-        "Delete on a USB flash drive often does not use the Bin. The file is gone. Another reason copy is better than cut when you move photographs off a phone. Email attachments you “removed” from Gmail may sit in Trash on the mail site for thirty days — a different cupboard, in the browser, not on the desktop. Phones have their own recently deleted albums. Different rooms, same idea: look for a recently deleted before you despair.",
-      ),
-      p(
-        "Empty the Bin when you have looked, and when you need the disk space from the slow-computer lesson. Do not empty it because a cousin said it “makes RAM.” It does not. It frees disk. If you empty weekly without looking, you will empty a tax file you deleted by accident on Thursday. Looking is the whole skill. The cupboard is kind until you set it on fire.",
+        "Different machines keep different bins, but the idea travels: email has a Trash on the website that keeps deleted mail around thirty days, phones have a “recently deleted” album for photographs. Different rooms, same cupboard. When something vanishes, walk to the nearest recently-deleted place before you despair. Looking first is the whole skill. Everything else in this lesson is just the details of where to look.",
       ),
     ],
   },
@@ -1527,51 +1536,54 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "Selected text highlighted in a document on a laptop screen.",
     body: [
       p(
-        "You met copy and paste on the keyboard lesson as two shortcuts. This lesson is the tray those shortcuts use, and the fact that the tray travels between programs. A sentence in a browser can become a sentence in Word. A number in a spreadsheet can become a number in an email. People retype because they do not trust the tray. Trust comes from watching it once.",
+        "Ada types her home address several times a week — in bank forms, in school portals, in emails to landlords. She retypes it every single time, character by character, because once she copied it and pasted it and the words arrived in a strange blue font and she decided the machine could not be trusted with addresses. By the end of this lesson, Ada will paste her address in four seconds and never retype it again. The whole skill is called copy and paste, and this is the lesson where you finally see what is happening underneath it.",
       ),
       p(
-        "The clipboard is an invisible plate that holds one thing. Copy puts something on the plate. Cut puts it on the plate and removes it from where it was. Paste sets down whatever is on the plate, without emptying the plate — you can paste twice. Copy again, and the old thing falls off. There is no cupboard of yesterday's copies unless you install extra software. One plate is enough.",
+        "You met copy and paste on the keyboard lesson as two shortcuts. Now meet the thing they use: the clipboard. When you copy something — a sentence, a number, a photograph — it goes onto the clipboard, a small holding tray inside the machine. Paste sets it down wherever you are working. The tray's power is that it travels between programs: a sentence from your browser can land in a Word document, a figure from a spreadsheet can land in an email. People retype because they do not trust the tray. Watch it work once and the trust arrives by itself.",
       ),
       fig(
         "/images/blog/selected-text.jpg",
         "Text highlighted in a document, ready to copy.",
-        "Selection is the first act. If nothing is highlighted, Copy has nothing to put on the plate. A blinking cursor alone is not a selection.",
+        "Everything starts with selection. If nothing is highlighted, Copy has nothing to pick up. A blinking cursor alone is not a selection — the words must be sitting on a coloured block.",
       ),
-      h2("Select, then copy, then the other window"),
+      h2("Select, copy, walk over, paste"),
       p(
-        "Drag the mouse across the words, or hold Shift and tap the arrow keys. The words sit on a coloured block. Ctrl+C. Nothing looks different — that is correct. Alt+Tab, or click the other program's title bar, to go to Word or Gmail. Click where the words should land. Ctrl+V. The words arrive. If they do not, you either never selected, or you clicked somewhere that cannot receive paste — a picture, a locked PDF, a box that only wants a date.",
+        "Let us do one together, slowly. Drag the mouse across a sentence in any document — or hold Shift and tap the arrow keys — until the words sit on a coloured block. Press Ctrl and C together. Now: nothing looks different. That is correct behaviour, not a failure; copying changes the tray, not the screen. Press Alt and Tab to step to your other window — or click its name on the taskbar. Click exactly where the words should land. Press Ctrl and V. The sentence arrives.",
       ),
       p(
-        "Pictures copy too. Click a picture in a page, Ctrl+C, then paste into Paint or Word. Websites sometimes block this. A screenshot, next lesson, is the fallback. Files copy in File Explorer the same way: select the file, Ctrl+C, open the other folder, Ctrl+V. That is how you filled the USB. The plate does not care whether it is holding a sentence or a photograph. It cares that you selected first.",
+        "If the paste did not work, there are only two usual suspects. Either the selection never happened — go back and check the coloured block — or you clicked somewhere that cannot accept pasted words, like a picture or a locked PDF. Both are ordinary. Try again somewhere kind.",
+      ),
+      p(
+        "Pictures and files ride the same tray. Click a photograph on a webpage, Ctrl+C, then paste into Paint or into Word. In File Explorer, select a file, Ctrl+C, open another folder, Ctrl+V — that is the same move that filled your USB in the files lesson. The tray does not care whether it is holding a sentence or a photograph. It only cares that you selected first.",
       ),
       fig(
         "/images/blog/copy-between.jpg",
         "A learner copying from a browser into a Word document.",
-        "Two windows, one plate. The browser still has the original. Word has a copy. That is copy. Cut would have emptied the first window — useful for moving, dangerous for the only copy of a letter.",
+        "Two windows, one tray. The browser keeps its original — that is what makes it copy. Cut would have emptied the first window: right for moving, wrong for the only copy of a letter.",
       ),
-      h2("Paste special, and the mess of formatting"),
+      h2("Cut moves. Copy leaves the original."),
       p(
-        "Sometimes the words arrive in a wild font, with a blue underline and a yellow background from the website. That is formatting riding along. In Word, Home, Paste, then Keep text only — or Ctrl then a small menu — strips the costume. The words remain. When you paste into a form, the form usually strips it for you. When you paste into WhatsApp from a laptop, you may get extra blank lines. Delete them. The plate is not a designer.",
+        "A contrast worth fixing in your mind now, because mixing them up costs people their only copy of a letter. Copy (Ctrl+C) doubles the thing: the original stays, the tray gets a copy. Cut (Ctrl+X) moves the thing: it goes to the tray and leaves where it was. Paste (Ctrl+V) then sets it down in the new place. So: copying a paragraph into two reports is copy. Moving a photograph from Downloads into Pictures is cut. Cut something precious without pasting it somewhere, and it is sitting on the tray with nowhere to live — paste it back at once if you get a cold feeling.",
+      ),
+      h2("When the paste arrives dressed wrongly"),
+      p(
+        "Ada's blue-font problem has an ordinary answer. Words copied from a website often carry their costume with them — the colours, the underline, the oversized font. In Word, look at the small paste menu that appears (or Home, then Paste) and choose Keep Text Only. The costume stays on the webpage; the words arrive clean. Pasting into a bank form or a portal usually strips the costume for you automatically. Pasting into WhatsApp from a laptop sometimes adds stray blank lines — just delete them. The tray is faithful, not a designer.",
+      ),
+      h2("One tray, and the rule about passwords"),
+      p(
+        "Here is the fact that surprises everyone: the tray holds exactly one thing. Copy the account number, and the address Ada copied this morning is gone — pushed off the tray completely. (Newer Windows has a history under Windows+V if somebody turned it on, but assume one thing until you have seen otherwise.) So name what is on the tray in your head before you walk to the other window: “this is the account number.” A person who walks without looking at the tray spends half the afternoon walking back and copying again.",
+      ),
+      p(
+        "And one small, heavy rule: passwords do not go on the tray. Copying a password from your notebook into a login box leaves it sitting there until something else replaces it, and some malware reads the tray the way a tout reads a form over your shoulder. Type passwords with your fingers. Paste only into the real door of the real bank, and never paste a password into a chat or an email. The tray is for words and figures that can travel. Your keys stay in your pocket.",
       ),
       ul([
-        "Open a browser page you trust and a blank Word document.",
-        "Select one sentence on the page. Ctrl+C. Click Word. Ctrl+V.",
-        "Select a different sentence. Copy. Paste again. The first sentence is still in Word; the plate now holds the second.",
-        "Save as copy-practice in Documents. You have stopped retyping.",
+        "Open a webpage you trust and a blank Word document, side by side or one Alt+Tab away.",
+        "Select one sentence. Ctrl+C. Move to Word. Ctrl+V. Watch it land.",
+        "Copy a different sentence and paste it after the first. Notice: the first sentence is still in the document, and the tray now holds only the second.",
+        "Save the file as copy-practice. You have just stopped retyping things for the rest of your life.",
       ]),
-      h2("One plate, and the copy it forgets"),
       p(
-        "The plate holds one thing. Copy again and the new thing covers the old one completely — the address you copied this morning is gone the moment you copy the account number. Cut, the other twin of the pair, is copy that then empties the chair: Ctrl+X moves a file or a sentence instead of doubling it, and Paste sets it down in the new room. Get into the habit of naming what is on the plate in your head before you walk: the account number, the address, the figure. A person who walks without looking at the plate spends half the afternoon walking back.",
-      ),
-      p(
-        "One safety rule belongs here, small and heavy: passwords do not go on the plate. Copying a password from your notebook into a login box leaves it sitting in the tray until something else replaces it, and some malware reads the tray the way a tout reads a form over your shoulder. Type passwords. Paste only into the real door of the real bank, and never paste a password into a chat, an email, or a form a stranger sent. The plate is for words and figures that can travel. Your keys stay in your pocket.",
-      ),
-      h2("What the plate will not do"),
-      p(
-        "It will not remember ten things unless you use Windows+V, which on newer Windows opens a clipboard history you can turn on. Until then, assume one thing. Do not copy a password, then copy something else, then expect the password still to paste into the bank. The plate moved on. And do not paste a password into a chat to “save it.” You know that room is the wrong room.",
-      ),
-      p(
-        "If paste is greyed out, the plate is empty or the box refuses it. Copy again. If a website says “do not copy,” that is their wish; a short quote for a form is still ordinary work. Whole books are not. Use the tray for your own life: address, email, the sentence you already wrote. The machine is good at not making you write the same line twice. Let it.",
+        "That is the whole machinery: select, copy, walk, paste — one tray, one item, and no passwords aboard. The machine is very good at never making you write the same line twice. Now it is allowed to do that for you.",
       ),
     ],
   },
@@ -1816,47 +1828,50 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "File Explorer showing nested folders named School, 2026 and Fees.",
     body: [
       p(
-        "You know a folder is an envelope. This lesson is a small house of envelopes that will still make sense in March. People dump everything on the Desktop because the Desktop is the table they can see. By week six the table is a market stall: three files called assignment, a photograph of a receipt, a zip they never opened. Searching then feels like failure. It is only a house with no rooms.",
+        "Kemi has a folder on her desktop called “Stuff”, and inside it are ninety-one files: JAMB printouts, a NYSC letter, three CVs, her shop's stock list, and — somewhere in the middle — the receipt the school asked her to bring on Friday. She searched for forty minutes last night. The files were never lost. They were in a heap, and a heap is where files go to hide from their own owner. This lesson is the small piece of architecture that ends the searching: folders within folders, named the way you would label shelves — so that every file knows its address, and you know it too.",
       ),
       p(
-        "You do not need a masterpiece. You need three levels, named in words you would say to a person. School, or Work, or Church. Inside that, a year. Inside the year, the kinds of paper: Fees, Letters, Notes, Photos. That is enough to start a term. Extra rooms can wait until a pile appears.",
+        "You met the idea in the files lesson: folders are rooms. Now make the rooms make sense together. A filing system is not one drawer with everything thrown in — it is one drawer, then the year, then the kind of paper. School first. Then 2026. Then Fees, Notes, Forms. The address of a file becomes School/2026/Fees/Receipt-March.pdf, and the path itself tells you where you are standing. Windows calls this a folder tree, and once you have seen it as a tree — one trunk, branches, smaller branches — the whole idea stands up on its own.",
       ),
       fig(
         "/images/blog/folder-tree.jpg",
         "Nested folders: School, then 2026, then Fees.",
         "The path along the top of File Explorer is the address of the room you are in. Documents > School > 2026 > Fees is a sentence you can say aloud.",
       ),
-      h2("Build the rooms once"),
+      h2("Building Kemi's tree together"),
       p(
-        "Open Documents, not Desktop. Right-click, New, Folder. Name it School. Open it. New folder, 2026. Open that. New folders: Fees, Letters, Notes. If you run a shop, Work, 2026, Invoices, Receipts, Customers. If the academy is your whole computer life, one School tree is enough. Do not make a folder for every day. Daily rooms go stale and you stop using them.",
+        "Let us build one now, slowly, for real work. Open Documents. Right-click, New, Folder, and call it School. Open School and make three folders inside it: 2026, 2025, and Admin. Inside 2026, make Fees and Notes. Now the rule that keeps the tree from becoming a jungle: three levels is plenty for almost everybody. Main room, year or project, kind of paper. If you are inventing a fourth level, stop and ask what you would have typed in search — the answer is usually the file's name, not a deeper room.",
       ),
       p(
-        "When you Save As, walk into the room on purpose. The left side of the Save window is the same house. Click Documents, then School, then 2026, then Fees. Then name the file. Two extra clicks now save twenty minutes in April. If you saved to Desktop by habit, cut the file — Ctrl+X — and paste it into the room. The Desktop is a table. Tables get cleared.",
+        "Name the rooms the way you would say them out loud: Fees, not “Documents_Financial_2026”. Kemi's shop gets its own trunk beside School — Shop/2026/Stock and Shop/2026/Receipts. Work files and personal files want separate trunks too, so that handing somebody a USB of work never includes your NYSC letter. Two trunks, three levels, words you would speak. That is the whole architecture, and it is enough for a degree or a business.",
       ),
       fig(
         "/images/blog/organizing-desk.jpg",
         "Paper files beside a laptop showing folders.",
         "The paper pile and the computer pile should use the same words. If the envelope says Fees, the folder should say Fees. Translation is how things go missing.",
       ),
+      h2("Putting files on the right shelf"),
+      p(
+        "A tree only works if files arrive at their shelf. When you save a letter — File, Save As — the dialog wants a room; give it the real one before you type the file's name. When a file lands on the Downloads mat, walk it home the same day, as the downloads lesson insists. And name files like a person who will search for them at midnight: “Receipt-March-SchoolFees”, not “Document3”. Future-you is a stranger with a search box, and you are writing that stranger a note.",
+      ),
+      p(
+        "One question to test the system before you trust it: if I asked you right now for the receipt the school wants on Friday, how many seconds would it take you? … Documents, School, 2026, Fees. Four clicks, one glance at the names. Kemi's forty minutes were never a memory problem. A heap forces you to remember; a tree lets you walk. Notice also the two shortcuts you already own for when memory is blank: search from the top of Documents typing the file's name, or sort a folder by Date to see what you touched this week. The tree and the search are partners. The tree is the habit; search is the rescue.",
+      ),
+      h2("Repairing an old heap"),
+      p(
+        "If your own desktop already looks like Kemi's “Stuff”, do not fix all ninety-one files tonight. Make the tree first — it takes ten minutes. Then move five files a day: the newest first, because the newest are the ones you will need soonest. Rename as you go. By the end of two weeks the heap is a tree and search has started working properly again, because search can only show you what your names already say.",
+      ),
+      p(
+        "And when folders must travel — to a USB, to the business centre — carry the whole branch, folders and all, not loose files. A USB with School/2026 on it is a filing cabinet in your pocket. A USB with forty loose PDFs is the heap again, in a smaller room. The structure is part of the file's meaning. Copy the shape with the contents.",
+      ),
       ul([
-        "In Documents, make School, then 2026, then Fees, Letters, Notes.",
-        "Move one real file into Fees — a receipt, a PDF, anything that belongs.",
-        "Save a new one-line letter into Letters using Save As, walking the path.",
-        "Look at the path at the top. Read it out loud. That is the address.",
+        "Make the trunk now: Documents, then a School folder (or Work, or Shop — your actual life).",
+        "Inside it: the year folders, then two or three kind-of-paper folders. Three levels maximum. Stop there.",
+        "Save a new small file into its real room on purpose, with a name you would say out loud.",
+        "Rescue five files from your own heap today — newest first. Five a day until the heap is furniture.",
       ]),
-      h2("The desk is not a drawer"),
       p(
-        "Look at the machine's desktop and tell the truth about it. If it is covered in files, it is not a desktop anymore; it is a desk with every paper of the year poured onto it, and you already know what that feels like in real life. The desktop is a working surface: two or three things you are using this week, and the shelves are the drawers — Documents, Pictures, the folders you built. Sweep the rest home. A file on the desktop is a paper in your hand; a paper in your hand all month is a paper you will lose.",
-      ),
-      p(
-        "The sweep takes five minutes and pays every week. Sort the desktop icons by date, look at the newest ten, and give each a home: school work into the school tree, a photograph into Pictures, anything you sent already into the bin. Then make one folder — Desktop-park, if you like — for the things you refuse to place yet. Even limbo has an address. The goal is not beauty. The goal is that on the morning the headmaster asks for the letter, your hands know the road before your head has finished panicking.",
-      ),
-      h2("What not to invent"),
-      p(
-        "Do not name a folder Miscellaneous, or New folder (2), or Stuff. Those are unmarked boxes. Do not copy the entire Downloads mat into School. Downloads is still a mat; sort from it, do not bury it. Do not make both School and school — Windows may allow it to look different and then confuse you. One spelling.",
-      ),
-      p(
-        "A USB backup should mirror the same words: backup-2026/School/…. When the laptop dies, you should not have to learn a second language. The rooms are the skill. The files will come. If a new kind of paper appears — Timetable, NYSC — add one room, not a new tree. The house stays small so you will actually walk through it.",
+        "Kemi found the school receipt in under ten seconds on Friday morning, in Fees, named like a receipt should be. The ninety-one files are now four rooms and a shelf. She has not searched for anything since — she has walked to it. Build the tree once, and every file you touch for the rest of your working life will know where it lives.",
       ),
     ],
   },
@@ -1987,47 +2002,43 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "The Windows Start menu open on a laptop.",
     body: [
       p(
-        "Windows hides most of the house until you open the front door. That door is Start — the four squares, or the Windows logo, bottom-left. The strip along the bottom is the taskbar: clocks, Wi‑Fi, and the programs that are open or pinned. People hunt on the Desktop for Word because they can see icons there. Word may never have lived on the Desktop. It lives behind Start. This lesson is the map of the ground floor.",
+        "Quick test before we start — no cheating. If I asked you to open the calculator on your laptop right now, how would you do it? Scroll through the desktop icons? Open three menus hunting? Ask the nephew? Now try the way this lesson teaches: press the Windows key once and type c-a-l-c. Two seconds. The point of the Start menu is exactly this: every program on the machine is already listed and searchable, and most people who have used a laptop for years have never once typed into it. This lesson is the whole map of the bottom-left corner — Start, the search inside it, the taskbar, and the small tray of icons at the far right.",
       ),
       p(
-        "Click Start. A list, a search box, a power button you already used to shut down. Type the first letters of what you want — word, excel, chrome, settings — and Enter. That search is faster than scrolling a mural of tiles. If you do this every day for one program, pin it, so the door remembers.",
+        "Press the Windows key — the one with the waving-flag logo, usually at the bottom left of the keyboard. The Start menu opens. Look at it honestly and it is three things: a search box at the top (or ready for typing immediately), a list of everything installed, and some pinned tiles or icons at the front. Nothing here can break. Press Escape and it all closes. So press it again and let us look around with our hands on the wheel.",
       ),
       fig(
         "/images/blog/start-menu.jpg",
         "The Start menu open, search at the ready.",
         "Typing is allowed. Start is not only a grid of pictures. The box at the top is the same idea as searching for a file: a few letters, then Enter.",
       ),
-      h2("Pin, unpin, open"),
-      p(
-        "Right-click a program in Start, Pin to Start, or Pin to taskbar. Taskbar pins sit on the strip even when the program is closed. Start pins sit in the menu. Neither moves the program; both are signs on the street, like shortcuts. Unpin if the strip is crowded. Right-click, Unpin. The program is still in the house. You have only taken down the sign.",
-      ),
-      p(
-        "Open programs show a little line or a glow on their taskbar icon. Hover to see the window. Right-click the icon for a jump list — recent files in Word, extra windows. Clicking the icon of an open program minimises it, which is hiding, not closing. Click again to bring it back. The X on the window is close. The line on the taskbar is still in the room.",
-      ),
       fig(
         "/images/blog/taskbar.jpg",
         "The Windows taskbar with Start and a few program icons.",
         "Clock and Wi‑Fi live at the right. Programs live at the left and centre. The empty middle is not broken. It is waiting for pins.",
       ),
-      ul([
-        "Open Start. Type notepad. Enter. Close it.",
-        "Open Start, type notepad again, right-click, Pin to taskbar.",
-        "Click the new taskbar icon. Close Notepad with the X. The icon stays. That is a pin, not an open program.",
-        "Right-click, Unpin when you are done practising, or keep it if you write every day.",
-      ]),
-      h2("Type the name; do not hunt with your eyes"),
+      h2("The search box is the telephone"),
       p(
-        "The Start menu holds every program on the machine, which means hunting through it by eye is a market search on a busy afternoon. There is a faster door. Open Start and simply type the word — wor for Word, chr for Chrome, calc for the calculator — and the machine brings the thing to your hand. The letters on the keyboard are a search clerk hiding in plain sight. Learn three names of the programs you actually use and the Start menu becomes a telephone: dial four letters, the thing answers.",
+        "Skip the clicking and start typing: p-r-i-n, and Printers appears. w-o-r, and Word answers. It works for settings too — type display and the brightness settings arrive; type update and Windows Update walks in. This one habit replaces the hunt through menus that makes beginners think computers are illogical. The computer is not illogical. It has been keeping an alphabetical list of everything it can do, waiting for you to dial four letters.",
       ),
       p(
-        "Then keep the shelves tidy. Pinning is for the five doors you use every day; everything else stays unglued in the list where it can be typed for. Right-click any tile or icon to unpin it, and right-click anything in the list to remove it entirely if it is a program you meant to show out anyway. If the list feels endless at the letter M, remember it is alphabetical with little letter buttons you can click to jump. The map is kind. It just needs you to stop walking and use the index.",
+        "When you do want to browse: the All apps list is alphabetical, with little letter buttons down the side — click any letter to jump, like thumbing a dictionary. Programs you install live in this list automatically; that is what “installing” mostly meant all along. And the pinning you met when we made shortcuts has a home here too: right-click anything and choose Pin to Start or Pin to taskbar to keep the five doors you use every day within reach. Unpin anything the same way. Pinning is for five, not fifty — the rest stay in the list where typing can find them in four letters.",
       ),
       h2("The tray, and a missing taskbar"),
       p(
-        "The far right is the system tray: volume, network, battery, hidden extras behind a small arrow. Those extras are background guests. You met them when the machine was slow. You do not need to empty the tray tonight. Know that the fan of Wi‑Fi lives there, and the clock, and sometimes a tiny USB-eject icon.",
+        "Now the other end of the bar. At the far right is the system tray: the volume speaker, the network fan, the battery, the clock, and — behind a small arrow — the background guests you met when the machine was slow. You do not need to evict them tonight. Know only that the Wi-Fi fan lives here for reconnecting, the clock for checking the time in a hall where phones are down, and sometimes a tiny USB-eject icon you should use before pulling a flash drive out by the leg.",
       ),
       p(
-        "If the taskbar vanished, it may be set to hide: move the pointer to the bottom edge. If Start vanished after a shock, Ctrl+Esc often opens it, or the Windows key. If the whole bar is on the side, you or a helper dragged it; drag it back to the bottom from an empty stretch, after unlocking it if Windows asks. The map is ordinary. When it moves, it is almost never gone. It is only standing somewhere you are not looking.",
+        "What if the bar itself misbehaves? If the taskbar vanished, it may be set to hide — move the pointer slowly to the bottom edge and it should slide up. If Start will not answer the key, Ctrl+Esc usually opens it, or click the logo drawn on the keyboard's corner key. If the whole bar is standing along the side of the screen instead of the bottom, somebody dragged it; right-click an empty stretch of it, unlock if it offers, and drag it back down to the bottom edge. The bar is ordinary furniture. When it “disappears”, it is almost never gone. It is only standing somewhere you are not looking — which, now you can say it out loud, is the diagnosis for half the problems at the repair bench.",
+      ),
+      ul([
+        "Press the Windows key. Type c-a-l-c. Press Enter. You have just opened a program like a person who owns the machine.",
+        "Type the name of a real program you use — word, excel, chrome — and open it from the search. No mouse hunting.",
+        "Right-click one program you use daily and pin it to the taskbar. Unpin one thing you never open.",
+        "Click the small arrow at the far right of the bar and look at the hidden guests once. Close it. You now know where the Wi-Fi fan lives.",
+      ]),
+      p(
+        "The Start menu is not a mystery drawer. It is an index — a telephone directory for everything your machine can do — and the search box at its top is the fastest finger in the house. Four letters, two seconds. From now on, when somebody watches you find a program in two seconds flat, they will ask how. Tell them: you dialled it.",
       ),
     ],
   },
@@ -2044,47 +2055,50 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A desktop shortcut icon with a small arrow, beside a real folder.",
     body: [
       p(
-        "A shortcut is a sign on the road that points at a house. The icon looks like the house. It is not the house. Windows draws a small arrow on the corner to say so. People delete a shortcut from the Desktop and think they have uninstalled Word, or they copy a shortcut to a USB and wonder why the letter will not open on another computer. This lesson is the arrow, how to make a sign on purpose, and how not to smash the house while tidying the street.",
+        "Chinedu deleted Word from his laptop. Or so he told the repair shop, holding the machine with both hands like a suspect. He had tidied the desktop the night before — forty little icons gone in one sweep — and in the morning Word would not open from its corner. So had he uninstalled Word? Look at the picture below before you answer. Do you see the small white arrow in the corner of one icon? That arrow is the entire lesson. Deleting the icon with the arrow does almost nothing to the program. It is the difference between pulling down a signpost and demolishing the house.",
       ),
       p(
-        "A shortcut is a tiny file whose type is .lnk, often hidden. It stores an address: this program, this folder, this document. Double-clicking the sign is walking to that address. If the house moved, the sign still points at the old street, and Windows says it cannot find it. The file may be fine, in the room you moved it to. The sign is stale.",
+        "A shortcut is a signpost, not the building. The icon on the desktop with a tiny arrow is a small file — its type is .lnk — that stores an address: this program, this folder, this document. Double-clicking the sign walks you to that address. The real Word still lives in Program Files, exactly where Windows keeps it. Chinedu deleted forty signposts and not one house. The icons looked like the things themselves. They never were.",
       ),
       fig(
         "/images/blog/shortcut-icon.jpg",
         "A shortcut with a small arrow next to a real folder.",
-        "Arrow: signpost. No arrow: the thing itself. On a crowded Desktop, look at the corner of the icon before you delete.",
+        "Arrow in the corner: a signpost pointing elsewhere. No arrow: the thing itself. On a crowded desktop, that corner is the first thing to check before you delete anything.",
       ),
-      h2("Making a sign, not a second house"),
+      h2("Making a sign on purpose"),
       p(
-        "Right-click a folder or a file, Show more options if Windows 11 hides the list, Create shortcut. Or Send to, Desktop (create shortcut). A sign appears on the Desktop. The original stays in Documents. You have not copied the letter. You have put a sign on the table that points at the drawer. That is the right way to keep School in reach without emptying School onto the table.",
+        "Try it. In Documents, right-click your School folder. Choose Show more options if Windows 11 hides the full list, then Create shortcut — or right-click, then Send to, then Desktop (create shortcut). Look at the desktop: a new icon named “School - Shortcut” is standing there. Open it. You arrive inside School, and the address bar at the top still says Documents. Nothing was copied. Nothing moved. You put a sign on the table that points at the drawer, which is the correct way to keep a folder within reach without emptying it onto the desktop.",
       ),
       p(
-        "You can pin to the taskbar instead, as in the last lesson. Same idea: a sign. For a program, prefer pin. For a folder you open all day, a Desktop shortcut is fine. For a USB, copy the real files, not the shortcuts. A sign that points at C:\\Users\\… on your laptop is a dead sign on another machine.",
+        "You already know one cousin of this move: pinning to the taskbar from the Start menu lesson. Pin is a sign too. For a program you open daily, pin it. For a folder you open all day, a desktop shortcut is fine. For a USB stick, though, copy the real files — never the shortcuts. Which leads to the failure everybody meets at least once.",
       ),
       fig(
         "/images/blog/desktop-shortcuts.jpg",
         "A laptop desktop with a few shortcut icons.",
-        "A few signs are a map. Forty signs are a second junk drawer. If the Desktop is full, you are using signs as storage. Move the houses into Documents and leave two or three arrows.",
+        "Two or three signs is a map. Forty signs is a second junk drawer. If your desktop is full of arrows, you are using signposts as storage — move the real folders into Documents.",
+      ),
+      h2("Why shortcuts die when they travel"),
+      p(
+        "Copy a shortcut onto a USB, carry it to the computer at church, double-click — nothing happens. The arrow was pointing at a house standing on your desk at home, and that house did not make the trip. This surprises people every week, so let the surprise land now instead: a shortcut is a local signpost. It points at C:\Users\… on this machine, and other machines have never heard of your street.",
+      ),
+      p(
+        "When a file must travel, carry the file itself. How do you tell? No arrow on the icon, and a real size when you right-click, Properties. The same logic protects your letters: attaching a shortcut to an email sends the other person a useless arrow, not the letter. Attach the PDF, or the zip, as the email lesson taught. The sign stays behind to mind the door.",
+      ),
+      p(
+        "Renaming follows the same map. Rename a shortcut as much as you like — it is only a signboard, and the house keeps its real name. But rename the real file and every sign pointing at it goes blind: the arrows freeze with little warning faces the next time they are clicked. So: tidy the signs freely. Move and rename the real things with care.",
+      ),
+      h2("When a sign breaks"),
+      p(
+        "A “missing shortcut” warning means the address inside the sign is wrong — the file moved, or was renamed, or lives on a USB that is not plugged in. Do not mourn the file and do not repair the sign by hand. Search for the file itself, in the folders you know (the search lesson works from any window). When you find it, delete the stale sign and make a fresh one in half a minute. And when you inherit a shop laptop covered in forty arrows plus five “cleaner” programs: you now know you can delete arrows without uninstalling anything. Look for the arrow. If there is no arrow, stop and ask before you delete.",
       ),
       ul([
-        "In Documents, right-click your School folder, create a shortcut on the Desktop.",
-        "Open the shortcut. Confirm you are in School. Look at the path at the top — it should still say Documents.",
-        "Delete the shortcut from the Desktop. Open Documents. School should still be there.",
-        "That is the whole difference between tidying a sign and demolishing a room.",
+        "In Documents, right-click your School folder and create a shortcut on the desktop.",
+        "Open the shortcut. Confirm the address bar still says Documents — you are visiting the real folder through the sign.",
+        "Delete the shortcut from the desktop. Open Documents. School is still there. That difference is the whole lesson.",
+        "Now look at your own desktop honestly. Delete three signposts you never use. Keep every real file.",
       ]),
-      h2("Signs that do not travel"),
       p(
-        "A shortcut is a local signpost: it points at a house standing on this particular street. Copy the sign onto a USB, carry it to the church computer, and double-click — nothing happens, because the arrow is pointing at a house that lives on your desk at home. This surprises people every week. When a file must travel, carry the file itself: no arrow on the icon, a real name, a real size when you look in Properties. The sign stays behind to mind the door.",
-      ),
-      p(
-        "Renaming follows the same map of house-and-sign. Rename the shortcut as much as you like — it is only a signboard, and the house keeps its real name inside. But rename the actual file and every sign pointing at it goes blind; the arrow icons freeze with little warning faces the next time they are clicked. So the rule is small and complete: tidy the signs freely, move and rename the houses with care, and when a sign does break, do not mourn the file. It is standing where it always stood. Make a new sign in half a minute.",
-      ),
-      h2("When the sign is broken"),
-      p(
-        "“Missing shortcut” means the address inside the sign is wrong. Do not hunt the sign. Hunt the file with search, in the rooms you know. When you find it, delete the stale sign and make a new one if you still want it. Repairing a .lnk by hand is not a first-week skill.",
-      ),
-      p(
-        "Copying a shortcut into email attaches a sign, not the letter. The other person receives a useless arrow. Attach the PDF, or the zip, as you learned. And when a shop Desktop is forty arrows plus five “cleaners,” you now know you can delete arrows without uninstalling Windows. Look for the arrow. If there is none, stop and ask. The house and the sign look alike on purpose. The corner of the icon is the truth.",
+        "Chinedu's Word was never gone, of course. The shop deleted nothing and installed nothing; they made one new signpost, and he walked to Word through it. Signs and houses look alike on purpose. The corner of the icon is the truth.",
       ),
     ],
   },
@@ -2644,7 +2658,7 @@ export const blogPosts: BlogPost[] = [
       ]),
       h2("The account behind the schoolbag"),
       p(
-        "A profile is deeper than it looks. Sign into Chrome or Firefox with your mail account and the bag begins to sync: bookmarks, history, saved passwords, every tab you left open at home — all of it walking onto this shared office machine and all of it visible to the next person if you simply close the lid. The convenience is real. So is the exposure. On a machine that is not yours, the correct choice is the small one at the bottom of the profile menu: Guest, or a temporary profile that forgets everything at the door.",
+        "A profile is deeper than it looks. Sign into Chrome or Firefox with your mail account and the bag begins to sync: bookmarks, history, saved passwords, every tab you left open at home — all of it walking onto this shared office machine and all of it visible to the next person if you close the lid. The convenience is real. So is the exposure. On a machine that is not yours, the correct choice is the small one at the bottom of the profile menu: Guest, or a temporary profile that forgets everything at the door.",
       ),
       p(
         "When you must use your real bag on a borrowed machine — the application closes at five and this is the only computer — keep the visit short and do the leaving properly. Do the work in one window, then sign out from the profile icon before the bag closes. Signing out stops the sync and tells your account to forget this machine's keys. It is the same walk you learned for the café, applied one level deeper, at the level of the browser itself. The schoolbag is yours. Hand it over empty.",
@@ -2785,47 +2799,57 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A Downloads folder with mixed files on a laptop.",
     body: [
       p(
-        "Every browser, every phone cable, every “save this PDF” drops a parcel on Downloads. You named it a mat in the files lesson. Mats disappear under shoes. Three files called invoice.pdf, a setup.exe you forgot, a photograph of a chalkboard. Then search cannot help because everything is named by someone else. This lesson is a weekly walk from the mat to the rooms, and how to download into the right room the first time.",
+        "Tunde's Downloads folder had three hundred and forty files in it. He knew, because he counted them one anxious afternoon while looking for a receipt. Invoice.pdf. Invoice (1).pdf. A setup.exe from last March. A photograph of somebody's chalkboard. Six files that all said “document” in their own handwriting. The receipt he needed was in there too — somewhere — named by a bank's software and last touched in January. Tunde did not have a filing problem at the top of his computer. He had one at the bottom of it, on a doormat called Downloads.",
       ),
       p(
-        "Open File Explorer, Downloads. Sort by date. Newest at the top. That is what landed this week. Anything you still need: cut, walk to School/2026/Fees or Pictures, paste. Anything you already installed: the installer can go to Recycle Bin. Anything you do not recognise from a banner: do not open it. Delete it. You know that guest.",
+        "Every browser, every “save this PDF”, every cable plugged into a phone drops parcels into the Downloads folder. The files lesson called it the mat by the door. Mats are useful for exactly one day. This lesson is the weekly walk from the mat to the real rooms — and, better, how to make files land in the right room the first time so the walk gets shorter every week.",
       ),
       fig(
         "/images/blog/downloads-folder.jpg",
         "A crowded Downloads folder on a laptop.",
-        "A mat. Useful for an hour. A year of mats is how disks go red and files go missing in plain sight.",
+        "Sort by Date and the truth appears: this is what landed this week. The mat is not a folder system. It is unfinished walking.",
       ),
-      h2("Save As, not Save wherever"),
+      h2("The Friday five-minute walk"),
       p(
-        "When the browser asks where to put a file, look. Choose Documents, then the room, then a name. Chrome can be told to ask every time: Settings, Downloads, “Ask where to save.” That extra click is the whole skill. A PDF of a receipt that lands already in Fees will still be there in March. A PDF that lands on the mat will be invoice (4).pdf by Friday.",
+        "Open File Explorer. Click Downloads. Click the Date column so the newest files sit at the top — that is your week. Now walk the list with your eyes and ask one question of each file: does this still need me? A file that matters gets cut and pasted into its room today: the receipt into School/2026/Fees, the photograph into Pictures. An installer you have already used — the thing that installed the program — can go to the Recycle Bin; you can always download it again. A file you do not recognise, especially one that arrived from a banner or a strange message: do not open it to find out what it is. Delete it. You know that guest from the scam lessons.",
       ),
       p(
-        "Phones have a Downloads too. The same walk applies when you copy off the phone: do not dump DCIM into Downloads on the laptop. Pictures has a room. Installers from the internet should not live in Pictures. Kind with kind. You built the rooms. Use them on the way in, not only in a guilty sort at midnight.",
+        "The rule hiding in that walk is small and it is the whole skill: a file that matters should walk into Documents the same day it arrives. Not at the end of the month. Not when you have time. The same sitting. Tunde's receipt took four minutes to find after he started doing this. It had taken two hours before.",
       ),
       fig(
         "/images/blog/sorting-downloads.jpg",
         "A young man moving files from Downloads into Documents.",
-        "Cut, path, paste. The mat should be almost empty if you sit at the machine daily. A business-centre machine: take your files with you. Leave the mat as you found it.",
+        "Cut, walk, paste. If you sit at the machine daily, the mat should be almost empty. At a business centre: carry your files out with you and leave the mat as you found it.",
+      ),
+      h2("Landing in the right room the first time"),
+      p(
+        "Even better than cleaning: redirecting. When a website offers you a file and the Save As box opens, stop a moment and look at where it wants to put it. Choose Documents, then the room, then give the file a name you will recognise in March — “GTB receipt March school fees” beats “document (3)” completely. In Chrome, you can make the browser ask every time: Settings, then Downloads, then “Ask where to save each file before downloading.” One extra click per download. That click is the difference between a mat and a corridor.",
+      ),
+      p(
+        "Phones have their own Downloads folder, and the same walk applies when you copy photographs off a phone onto the laptop: do not dump everything into Downloads to “sort later”. Pictures has rooms. Use them on the way in. You built the folders in the folders lesson precisely so that arriving files would know where they live.",
+      ),
+      h2("The name with a one in brackets"),
+      p(
+        "You have seen them: Receipt.pdf, Receipt (1).pdf, Receipt (2).pdf. When a file of the same name arrives twice, the machine does not argue and does not overwrite — it quietly tags the newcomer with a number in brackets and drops it on the mat beside its twin. The kindness is real, but notice what it confesses: nothing on the mat says which one is the real March receipt. The brackets are the mat's way of admitting it was never sorted. Give files real names on arrival and the brackets mostly stop appearing.",
+      ),
+      p(
+        "Some downloads also arrive broken without knowing it: the PDF that opens to a grey error, the photograph with a tear through the middle, the file of zero kilobytes. That is usually the network dropping the parcel halfway, not a cursed file. Delete the broken copy and download it again — the second trip is almost always clean. But if the same file breaks three times from the same place, stop blaming the road. Even the internet's worst days do not corrupt the same photograph three times by coincidence. The file at the other end is bad. Find another source, or do without.",
+      ),
+      h2("When the mat has eaten the disk"),
+      p(
+        "If the C: drive is showing red, Downloads is very often the fat — videos, installers, old recordings. In Downloads, switch to Details view and sort by Size. The largest files are the first to walk or to leave. Empty the Recycle Bin afterwards, having looked inside it first (the bin lesson). And do not go deleting Windows folders because the disk scared you. You have had that warning already, and it stands.",
+      ),
+      p(
+        "Last detail: a zip file on the mat is still a suitcase. Extract it into Documents first (right-click, Extract All), then the zip itself can go to the bin. And if you open a file from inside Downloads and edit it there, Save will keep it on the mat forever. File, then Save As, then a real room, then a real name.",
       ),
       ul([
-        "Open Downloads. Sort by date. Move one real file into the room it belongs in.",
-        "Delete one installer you have already used, through the Recycle Bin.",
-        "In the browser, turn on “Ask where to save” if you can find it.",
-        "Download a small PDF on purpose into Documents/School. Confirm it is not on the mat.",
+        "Open Downloads now. Sort by date. Move one real file into the room it belongs in.",
+        "Delete one installer you have already used — through the Recycle Bin, so you can still look before it goes.",
+        "In your browser's settings, turn on “Ask where to save each file”.",
+        "Download a small PDF on purpose and watch it land in Documents/School instead of on the mat. Notice how that feels.",
       ]),
-      h2("The file with a one in brackets"),
       p(
-        "When a file of the same name comes down the wire twice, the machine does not argue or overwrite; it quietly tags the newcomer with a one in brackets and drops it on the mat beside its twin. Three receipts becomes Receipt, Receipt (1), Receipt (2) — and none of the three says which one is the real March. The brackets are a confession that the mat was never sorted. Five minutes on a Friday afternoon — file it home or bin it — keeps the pile shorter than ten files, which is the number past which a mat becomes a landfill.",
-      ),
-      p(
-        "Some files come down broken and do not know it: the PDF that opens to a grey error, the photograph with a tear through the middle, the file of zero kilobytes that arrived as a concept rather than a document. This is usually the network dropping the parcel halfway, not the file being cursed. Delete the broken copy and fetch it again — the second trip is almost always clean. And if the same download breaks three times, stop believing the road is bad and start asking whether the file at the other end is bad. Even the internet's worst days do not corrupt the same photograph three times by coincidence.",
-      ),
-      h2("When the mat is the disk"),
-      p(
-        "If C: is red, Downloads is often the fat. Videos, installers, zoom recordings. Sort by size. The largest files are the first to walk or to leave. Empty Recycle Bin after you have looked. Do not delete Windows folders because Downloads was scary. You have had that warning.",
-      ),
-      p(
-        "A zip on the mat is still a suitcase. Extract into Documents, then you may bin the zip. Opening a file from inside Downloads and editing it there means Save will keep it on the mat. Save As, room, name. The pile is not a personality. It is unfinished walking. Finish the walk the same sitting you downloaded.",
+        "Tunde's folder is at eleven files now, most of them from this week. The receipt lives in Fees, named like a person named it. The mat by the door is doing its real job again: holding things for one day, not one year. Finish the walk in the same sitting you downloaded, and the pile never comes back.",
       ),
     ],
   },
@@ -3184,47 +3208,50 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A phone camera pointed at a QR code on a paper flyer.",
     body: [
       p(
-        "Those square patches of dots on a flyer, a receipt, a restaurant table, a church poster — QR codes. They are barcodes that hold a sentence, usually a web address, sometimes a Wi‑Fi key, sometimes an account number. Your camera reads the dots and offers to open a door. The door is the point, not the pattern. This lesson is scan, read the address, then decide, the same as a link in mail.",
+        "There is a square patch of black dots on the table card in the restaurant. Your aunt calls it “that barcode thing” and hands the waiter her phone instead. But somebody at the next table just pointed a camera at the same square and their plate of food arrived. So what did the camera actually read? And — the question this lesson is really about — how did that person know it was safe to point their phone at a printed square at all?",
       ),
       p(
-        "Open the camera. Point at the square until a banner appears with a link or a suggestion. Do not tap yet. Read. If it is cea.ng, or a menu, or a Wi‑Fi name you asked for, tap. If it is a shortened link, a bank you did not approach, a “verify your BVN,” put the phone down. The printed square can be stuck over another square. A pole in the street is not a teller.",
+        "A QR code is a printed web address, written in dots instead of letters. Sometimes it holds something else — a Wi-Fi password, a phone number, an account number — but almost always it is a door: your camera reads the dots, and offers to open somewhere on the internet. The pattern is not dangerous. The door might be. Scan, read the address, then decide — exactly the same three steps as the link lesson, except the address is hidden in ink.",
       ),
       fig(
         "/images/blog/qr-scan.jpg",
         "A phone camera aimed at a QR code on a flyer.",
-        "The camera is the reader. The banner is the door. The dots are not a virus. The door might be.",
+        "The camera is the reader. The banner that appears is the door. The dots themselves are not a virus — the destination might be.",
       ),
-      h2("What might be inside"),
+      h2("Scan. Read. Then walk."),
       p(
-        "A website. A payment page — then you are in the form lesson, plus money. A Wi‑Fi password, on a café card, which can be kinder than typing. A WhatsApp number. A vCard, which is a contact. None of these is magic. All of them can be forged. A printed menu at a table you are sitting at is ordinary. A code on a sticker over the restaurant's real code is a thief. Look at the plastic. If it sits badly, type the URL from the receipt instead.",
+        "Open your camera app — the ordinary camera — and point it at a printed square, like the one on a packet in your kitchen. Hold still. In a moment a small banner appears with a link or a suggestion. Do not tap yet. Read the banner the way you read an address bar: does it say the name you expect? If the packet says Indomie and the banner says indomietmi.ng or a menu page, that is ordinary — tap through. If it is a shortened link you cannot read, a bank you did not approach, or anything asking you to “verify your BVN”, put the phone down. Slowly. The hurry is part of the trick.",
       ),
       p(
-        "WhatsApp and bank apps have their own scan buttons for payments. Use the bank's app to pay the bank, not a camera that opened a browser. You already prefer the real app to a surprise link. QR is a surprise link made of ink.",
+        "What might be inside a square? A website. A payment page (then you are in the money lessons). A café's Wi-Fi password, which can be kinder than typing. A WhatsApp number. A contact card. None of it is magic — and all of it can be forged, because anyone can print dots. The camera cannot tell a restaurant's real code from a sticker slapped over it. That check is yours.",
       ),
       fig(
         "/images/blog/qr-result.jpg",
         "A young woman looking at a phone after scanning a flyer.",
-        "Read the result like an address bar. If you would not type that street, do not tap it because dots asked.",
+        "Read the result like an address bar. If you would not type that street into the browser yourself, do not walk through it because dots asked you to.",
+      ),
+      h2("The sticker on the pole, and the sticker over the sticker"),
+      p(
+        "Here is the scam that travels with the technology. A printed square on a pole in the street, on an ATM, on a POS terminal — scanned “to claim” a prize or receive a payment — is a trap with a fresh coat of paint. Two rules stop all of it. First: no QR code in the world is how you receive money. Receiving needs only your account number — never a code, never a PIN, never a website in a different shade of blue. If somebody says “scan this so I can pay you”, that is the lie of the season, spoken politely.",
+      ),
+      p(
+        "Second: look at the plastic before you scan at a shop. If a sticker sits badly over another sticker — crooked, thicker, peeling at one corner — do not scan it at all. The oldest trick with the newest paint is pasting a thief's code over the restaurant's real one. When in doubt, type the website from the receipt yourself. A code in a church bulletin you were handed in service and a code pasted over a bank's notice are the same squares and completely different roads.",
+      ),
+      p(
+        "And when you pay at a registered shop by scanning: use the bank app's own scan button, read the shop's name and the figure out loud before you type your PIN, and you are safer than you ever were counting notes. Scanning to pay the person in front of you is ordinary. Scanning to receive is the lie. Hold onto that direction of money and the whole subject stands still for you.",
+      ),
+      h2("Making one, if you ever need to"),
+      p(
+        "You can turn your own address into dots easily — the academy's site, your business page. Type the address of a QR maker you chose yourself (not the first advert), paste your link, download the picture, print it. That is a signpost to your real street, like the shortcut lesson. Two cautions from the same family as always: do not encode a password into a printed code, and a Wi-Fi QR taped to your gate is a password flying a flag. On the café's board it is their decision. On your compound wall it should be yours.",
       ),
       ul([
-        "Find a QR on a packet in the house, or the academy flyer if you have one — something you already trust.",
-        "Scan. Read the banner. If it matches the packet, open it.",
-        "Do not scan a code from an unsolicited WhatsApp image “to claim.”",
-        "If the camera does nothing, more light, hold still. A blurry square is not a broken phone.",
+        "Find a QR code on something in the house you already trust — a food packet, a product box.",
+        "Scan it with the camera. Read the banner before tapping. If it matches the packet, open it.",
+        "Never scan a code from an unsolicited message “to claim” anything. Delete the message instead.",
+        "If the camera does nothing: more light, hold still, move a little farther back. A blurry square is not a broken phone.",
       ]),
-      h2("Looking before you leap through"),
       p(
-        "A QR code hides its destination, which is exactly why it is convenient and exactly why it deserves the same suspicion as any shortened link. The camera app will usually show you the web address before it opens — read it. If the sticker is pasting over another sticker at a market stall or on a POS terminal, do not scan at all; that is the oldest trick with the newest paint. A code on a printed church bulletin and a code on a flyer pasted over the bank's own notice are the same squares and completely different roads.",
-      ),
-      p(
-        "The strongest rule is the one your bank already believes: no QR code in the world confirms a payment out of your account. Scanning to pay at a registered shop is ordinary — the shop's name and the figure appear before you type your PIN, and you should read both out loud. Scanning to receive money is the lie of the season; receiving requires nothing from you but your number, never a code, never a PIN, never a website that looks like a bank in a different shade of blue. Codes are doors. Read the address above the door before you walk, and never let anyone rush you through it.",
-      ),
-      h2("Making one, if you must"),
-      p(
-        "You can turn an address into dots on many sites. Walk to a maker you typed, not the first advert. Put cea.ng in, download a PNG, print. That is a signpost to your real street. Do not put a password into a QR on a poster. A Wi‑Fi QR on a café board is a choice they made; on your gate it is a password on a flag.",
-      ),
-      p(
-        "The code is a servant of the address. If you remember nothing else: scan, read, then walk or don't. The square will wait. Hurry is still the bait, even when the bait is printed in a church bulletin. You know how to sit down anyway.",
+        "A QR code is only an address that nobody had room to print in letters. You already know what to do with an address you were handed by a stranger: read it, weigh it, and walk only where you would have walked anyway. The square will wait for you to decide.",
       ),
     ],
   },
@@ -3298,47 +3325,51 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A map with a search box on a laptop screen.",
     body: [
       p(
-        "Google Maps, or the map in a ride-hailing app, is a paper map that knows where you are if the phone allows it. People type a name, tap the first pin, and walk into the wrong street because Lagos and Port Harcourt share shop names. This lesson is search, the pin, the address line, and when to download a piece of the city so the map still works when the bundle ends.",
+        "Amara had an interview at a company on “26 Ebony Road, Rumuola”, and she had never been to that part of the city. She typed the company name into the map app, tapped the first pin the app offered, and forty minutes later stood outside a printing press on a different Ebony Road in a different local government. The shop names were real. The road name was real. The pin was still wrong. This lesson is how to hold a map app so that it takes you to the right street — including the day the data runs out halfway there.",
       ),
       p(
-        "On the phone or laptop, maps.google.com, or the Maps app. The box at the top is search, like the internet lesson. Type a full thought: 26 Ebony Road Rumuola, not only “computer school.” Read the grey address under the result before you tap. One pin is a guess. The address line is the street. If two pins share a name, the one with the matching road is yours.",
+        "A map app is a paper map that can talk. It knows where you are if you allow it, it draws roads on a small screen, and it will navigate you to any pin you believe. That last part is the catch. Lagos and Port Harcourt share street names and shop names; the map answers the question you actually asked. So this lesson teaches asking properly, reading the answer, and preparing for the journey before you leave the house.",
       ),
       fig(
         "/images/blog/maps-screen.jpg",
         "A map on a laptop with a search box at the top.",
-        "Search is a question. The pin is an answer you must still read. Zoom out once. If the pin is in another state, you asked too little.",
+        "Search is a question. The pin is an answer you must still read. Zoom out once — if your pin is sitting in another state entirely, you asked too little.",
       ),
-      h2("The blue dot, and permission"),
+      h2("Ask the map a full question"),
       p(
-        "The blue dot is this device, if Location is on. A grey or missing dot means the phone has not been allowed to say where it is. Settings, Location, on, and Maps allowed. That permission is a door, like the camera. On a laptop, the dot is often weaker; use the phone in the street. The laptop is for planning at the desk: look, print, or screenshot the area, then walk with the phone.",
+        "Open maps.google.com on the laptop, or the Maps app on the phone. In the search box, type a full thought: not “computer school”, but “CyberElias Academy 26 Ebony Road Rumuola”. Press Enter. Now — and this is where Amara's forty minutes were lost — read the grey address line under the result before you tap anything. If two results share a name, the one whose road and area match what you were told is yours. One pin is a guess. The address line is the street. Zoom out once and check the pin is in the city you expect; if it is sitting in another state, you asked the map too little and it politely answered the little question.",
       ),
       p(
-        "Directions: tap Directions, choose walking, driving, or bus if it exists. The minutes are a guess in Port Harcourt traffic. The line on the map is the suggestion, not a law. If the voice says turn and the road is a ditch, believe the road. Mute the voice in a church or a shared taxi if it shouts. You can follow the line with your eyes.",
+        "On the phone, the same search works, and there is one more tool: the blue dot. That dot is you — this phone, right now — if Location is switched on and Maps is allowed to use it. A grey or missing dot means the phone has not been permitted to say where it is. Settings, Location, on, and allow Maps. That permission is a door like the camera and the microphone: open it for the app you are actually using, not for every app that asks. Use the phone's dot in the street; use the laptop at the desk for planning — look at the route, print it or screenshot it, then walk.",
       ),
       fig(
         "/images/blog/maps-phone.jpg",
         "A young woman checking directions on a phone, a map on a laptop behind her.",
-        "Plan on the large screen. Walk with the small one. Screenshot the junction before you lose data. A picture of the map is a paper map you made.",
+        "Plan on the large screen. Walk with the small one. A screenshot of the junction is a paper map you made yourself — it works when everything else stops.",
+      ),
+      h2("Directions, and when to doubt the voice"),
+      p(
+        "Tap Directions, type the destination again in full, and choose walking, driving, or bus where it exists. Read the route before you go: the line on the map is the app's suggestion, not a law. The estimated minutes are a guess — Port Harcourt traffic laughs at arithmetic. And when the voice says “turn right” but the right turn is a ditch or a closed gate: believe the road in front of you, not the voice. Recalculating is the app's job, not your failure. Mute the voice in a shared taxi or a quiet room if it shouts; the line on the screen can guide your eyes just as well.",
+      ),
+      h2("Prepare the map at home, while the data is cheap"),
+      p(
+        "Here is the habit that separates a calm traveller from a person standing at a junction asking strangers where the blue dot went. Before you leave the house — on Wi-Fi, while the bundle is fat and the light is good — search your destination, read the whole route, and let the app load the journey. Then save a piece of the city for the dead-data hour: on Android, the three little dots in Maps offer “Download offline map”; on iPhone the same idea lives under the Share button. A patch of town sits on your phone. It will not know live traffic. It will still know every street. That is enough to find a compound.",
+      ),
+      p(
+        "Two more tools finish the kit. Share your live location with one trusted person when the road is long or late — the message that updates itself with exactly where you are is worth more than a hundred “have you reached?” calls from a worried mother. And learn to speak landmarks, because this country navigates by them: the junction after the second filling station, the blue gate opposite the school. When you give directions to a driver, or receive them, confirm by landmark, not street name. The map knows the street names. The country knows the gates and the masts.",
+      ),
+      h2("Pins other people send you"),
+      p(
+        "A pin dropped in WhatsApp by a stranger is a suggestion, and you read suggestions before you walk. Open it. Read the address line. Match it to what you were told on the phone. If you were invited to an office and the pin is sitting on a beach, that is the link lesson wearing a map costume: type the street yourself and navigate to your own search. And before a long trip to a new state, do the same offline work for the journey home as for the journey out. The map is a patient servant. It will take you, without complaint, to whichever pin you believed.",
       ),
       ul([
-        "Search the academy address or your own street. Confirm the pin matches a road you know.",
-        "Zoom out. Find a landmark you can name — a flyover, a market.",
-        "If you have a phone, turn Location on for Maps only, not for every app that asks.",
-        "Do not share live location in a group you do not trust. That is a moving flag on your body.",
+        "Search the academy's address, or your own street. Confirm the pin matches a road you know in real life.",
+        "Zoom out and find a landmark you can name out loud — a flyover, a market, a stadium.",
+        "On a phone, turn Location on for Maps only. Notice what you allowed and what you refused.",
+        "Before your next unfamiliar journey: load the route at home on Wi-Fi, screenshot the junction, tell one person.",
       ]),
-      h2("The journey you arrange before you leave"),
       p(
-        "The map is most useful at the house, on Wi-Fi, before the journey begins. Type the destination, read the route, and let the app load the whole trip while the data is cheap and the light is good. On Android the three little dots let you download the map of the area for offline walking; on iPhone the same idea lives under the share button. When the data dies at the worst moment — and it will — the downloaded map keeps your blue dot and the roads alive. The person who prepares the map at home does not stand at the junction asking a stranger where the blue dot went.",
-      ),
-      p(
-        "Two more tools finish the kit. Share your live location with one trusted person when the road is long or late — the message that says exactly where you are, updating itself, is worth more than a hundred check-calls from a worried mother. And learn to speak landmarks, because this country navigates by them: the junction after the second filling station, the blue gate opposite the school. When you give directions to a driver or receive them, confirm by landmark rather than street name. The map knows the street names. The country knows the gates and the masts.",
-      ),
-      h2("Offline, and the wrong pin"),
-      p(
-        "On the phone, search the area, then Download offline map if you will travel where data is rude. A piece of the city sits on the phone. It will not know live traffic. It will still show the streets. That is enough to find a compound. Update the download when you have Wi‑Fi, like any other parcel.",
-      ),
-      p(
-        "A pin dropped by a stranger in WhatsApp is a suggestion. Open it, read the address, match it to a name you were told. If the pin is a beach and you were invited to an office, you are in the link lesson again. Type the street yourself. The map is a servant. It will take you to whichever pin you believed.",
+        "Amara went back to the map that evening and did all four. The next morning she typed the full address, read the grey line under the pin, and screenshot the junction after the second filling station. The interview started at nine. She was there at eight thirty-five, reading her notes under a tree, because the map had already done its shouting at home in the quiet.",
       ),
     ],
   },
@@ -3670,7 +3701,7 @@ export const blogPosts: BlogPost[] = [
       ]),
       h2("The Tab key, and the list that leans inward"),
       p(
-        "A list can have storeys. Press Tab at the start of a line and the item steps inwards as the child of the one above; Shift and Tab walks it back out. That is how the outline of a real plan looks: errands as the parents, the five places as the children. Numbers for steps that must happen in order — first the bank, then the market. Dots for things that are simply members of a pile — the documents to bring. Mixed signals confuse readers quietly: a numbered list of things with no order makes people search for a sequence that was never there.",
+        "A list can have storeys. Press Tab at the start of a line and the item steps inwards as the child of the one above; Shift and Tab walks it back out. That is how the outline of a real plan looks: errands as the parents, the five places as the children. Numbers for steps that must happen in order — first the bank, then the market. Dots for things that are members of a pile — the documents to bring. Mixed signals confuse readers quietly: a numbered list of things with no order makes people search for a sequence that was never there.",
       ),
       p(
         "In the browser and in WhatsApp the same ideas live in simpler clothes. In a mail or a document in the browser, the list buttons sit on the toolbar and work just as in Word. In WhatsApp, type one and a full stop to grow a numbered list as you type, or a dash for dots; the app indents with a few spaces at the start of the line for the storeys. Lists read faster than paragraphs on a phone screen, and a reply sent as three clear steps is answered three times quicker than three sentences of prose. Choose the shape that carries the meaning. That is the whole art.",
@@ -3982,47 +4013,50 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "An email compose window showing To, Cc and Bcc fields.",
     body: [
       p(
-        "You already send To, Subject, body. Two extra fields sit on the envelope, often hidden behind a small Cc. Cc means carbon copy — a name from the age of paper: this person should see the letter, but it is not their job to answer. Bcc means blind carbon copy: they get it, and the others do not see their address. Reply all sends your answer to everyone who was on the original. This lesson is who belongs in which field, and the moment Reply all turns a school thread into a market.",
+        "On a Monday morning, somebody in the office pressed Reply all to say “Noted”. Then eleven other people pressed Reply all to say “Noted”, “Well noted”, and “Received with thanks”. By lunch the thread had forty-two emails in it, everybody's inbox was shaking, and the actual message — Friday's meeting moved to two o'clock — was buried under the pile like a letter under a mat. There is a set of three small fields in your email that prevents this entire market: To, Cc, and Bcc. This lesson is who belongs in which field, and the one button that turns a school thread into noise.",
       ),
       p(
-        "To: the person who must do something — accounts, the landlord, Mrs Amadi. One address, or two if they share the job. Cc: your own second address if you want a copy; a supervisor who asked to be kept in the picture; a parent on a school mail if the school said so. Not a whole class. Not a group of cousins “for awareness.” Extra eyes are not free. They cost the other person a minute, and they cost you a wider room if you later need to speak plainly.",
+        "You already send To, Subject, body. Look closely at the compose window and you will find two more fields, often hiding behind a small word that says Cc. Cc means carbon copy — the name comes from the blue paper typists once layered between letters: this person should see the letter, but it is not their job to answer. Bcc means blind carbon copy: they receive it too, and nobody else sees that they did. And Reply all — the dangerous one — answers every single person who was on the original. Three fields, one button, and a whole afternoon's peace.",
       ),
       fig(
         "/images/blog/cc-bcc.jpg",
         "To, Cc and Bcc on an email, a short body underneath.",
         "If you cannot say why a person is in Cc, they should not be there. Bcc is not a secret insult. It is a way not to publish a list of addresses.",
       ),
-      h2("Bcc, and the list you should not expose"),
-      p(
-        "If you must mail twenty parents, or twenty members, put your own address in To, and the twenty in Bcc. Each person receives one letter. They do not receive each other's addresses. Putting twenty people in To or Cc is how a family WhatsApp is born inside email, and how a stranger harvests numbers. Bcc is manners for a list. It is not a place to hide a boss so you can pretend they were not told. If the To person should know the boss was copied, use Cc.",
-      ),
-      p(
-        "Reply is to the sender. Reply all is to the sender and every Cc, and sometimes a list you cannot see. Before you press it, look at the To line of your reply. If there are fifteen names, ask whether fourteen of them need “thank you.” Usually they do not. A thread about a timetable that becomes twenty “noted” mails is how people mute the school. Reply to the sender, or to the one person you must correct.",
-      ),
       fig(
         "/images/blog/reply-all.jpg",
         "A learner pausing at an email on a laptop.",
         "The pause is the skill. If the mail went to a group, your joke goes to the group. If you did not mean the group, Reply, not Reply all.",
       ),
+      h2("Who goes in To, and who goes in Cc"),
+      p(
+        "To is for the person who must do something: the accounts officer, the landlord, Mrs Amadi with the invoice. One address, or two if they genuinely share the job. That is the whole rule and it is worth saying twice, because every overloaded To field is a message that does not know what it wants.",
+      ),
+      p(
+        "Cc is for courtesy and record: your own second address if you keep one for filing, a supervisor who asked to be kept in the picture, a parent on a school mail if the school's rules say so. Not the whole class. Not a group of cousins “for awareness”. Extra eyes are not free — they cost each person a minute, and they cost you privacy, because every Cc name is visible to every other Cc name. A mail with forty people in Cc has published a small phone book to strangers. Ask the retrieval question quietly before you send: who must act, and who should only see? The fields answer themselves.",
+      ),
+      h2("Bcc: the field that keeps a secret"),
+      p(
+        "Bcc exists for one honest job: sending to many people without publishing the list. A wedding invitation to two hundred guests, a church notice, an announcement to your old classmates — Bcc keeps everybody's address out of everybody else's phone book. The recipients see the mail and themselves; they do not see each other. It is not a sneaky insult. It is basic manners with the envelope sealed.",
+      ),
+      p(
+        "There is one habit to learn with it: put your own address in To (or one trusted address) and everybody else in Bcc. If you leave To empty with a full Bcc, some mail systems get suspicious of the letter, and a few reject it outright. And one limitation to know honestly: you cannot un-send a Bcc. If a person replies all — some phones offer it even on a Bcc'd mail — the curtain can tear. For a genuinely sensitive message to many people, the rule of the mail lesson stands: one mail per person, or a proper mail-merge when it is work. Bcc is a sealed envelope, not a vault.",
+      ),
+      h2("Reply, Reply all, and the golden pause"),
+      p(
+        "Now the button from the opening story. Reply answers only the sender. Reply all answers the sender and everyone who was copied. And the machine cannot tell the difference between “this meeting is cancelled, everybody must know” and “Noted”. That judgement is yours. So: before you ever press Reply all, read the list of names it is about to reach and say out loud what each of them needs from your answer. If the answer is “nothing”, press Reply. The two organisers get your noted. The other forty people keep their morning.",
+      ),
+      p(
+        "One more set of eyes habit, cousin to the form lesson's re-reading: check the To and Cc line one final time before sending, the way you glance at an envelope before handing it over. Wrong names sit one autocomplete away — type “Ch” and the machine cheerfully offers “Chief, landlord” beside “Chioma, sister”. Sending the rent complaint to the Chief is the modern licking of the wrong envelope. Slow down at the address line. It is the only part of the letter that names the room it is entering.",
+      ),
       ul([
-        "Open Compose. Show Cc and Bcc if they are hidden — a small link next to To.",
-        "Send yourself a practice: To your address, Bcc a second address you own if you have one. Confirm both arrive, and that To does not list the Bcc.",
-        "Find an old group mail. Look at Reply versus Reply all. Do not send. Only look at who would receive it.",
-        "Never Bcc a person on a quarrel so they can “see who you are.” That is theatre. Leave them out, or use Cc honestly.",
+        "Open a compose window and click “Cc” until the Bcc appears too. Look at the three fields together once.",
+        "Next real mail: name each recipient's job — act, or see — and put them in the matching field. Send.",
+        "For your next announcement to many people: your own address in To, everybody else in Bcc. Notice nobody replied all to the crowd.",
+        "This week, press Reply — not Reply all — to every message that only the sender needs. Count how many mornings you just gave people back.",
       ]),
-      h2("The Reply all storm"),
       p(
-        "There is a familiar weather in group mail: someone sends a schedule to forty people, one person types thank you and presses Reply all, and the next hour delivers thirty-nine more thank yous, three reply-all jokes, and one person trying to recall them all. The mail is not broken. The button simply does exactly what it says. The pause that prevents the storm is one beat long: when your reply is only gratitude or a yes, answer the sender alone. When your sentence changes the plan for everyone, then Reply all earns its carbon copy.",
-      ),
-      p(
-        "Recall is the other myth worth retiring. In most mail systems, a message that has left cannot be pulled back — the recall request itself usually arrives as a second, more embarrassing message saying please forget the first. Treat the Send button as the post office box it is. Address slowly, read the body once with the attachment named in it, and only then press. If a wrong mail does go out, the honest recovery is a short apology with the correction, sent promptly and without drama. The postman has already run. A clear second letter is faster than a frantic recall.",
-      ),
-      h2("Forward, and the chain"),
-      p(
-        "Forward sends the letter on. The chain below may hold old addresses and an argument. Read the chain before you forward to a new person. Cut what they do not need, or copy the one fact into a new mail. “Please find below” with six weeks of Reply all is not a briefing. It is a pile.",
-      ),
-      p(
-        "You now have four doors: To, Cc, Bcc, Reply all. Most letters use only To. That is not unsophisticated. That is a letter with one job. Extra fields are for extra jobs. If you cannot name the job, close the field. The envelope should be as quiet as the body.",
+        "The meeting is still on Friday at two. One email said so, and now one email is all it will ever need. To the organiser, Cc the supervisor, Bcc the crowd, and Reply with your answer alone. A quiet inbox is not an empty inbox. It is an inbox where every letter knows its room.",
       ),
     ],
   },
@@ -4927,47 +4961,50 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A video site with a search box on a laptop screen.",
     body: [
       p(
-        "YouTube, and the other places that play film, are useful and noisy. You came to see how to print a page. An hour later you have watched a lottery and a quarrel. The machine did not kidnap you. The sidebar did what a market does: shout. This lesson is search, the address, full screen, and leaving when the job is done. The internet lesson still applies. A video is a page that moves.",
+        "It is 10 p.m. and a warning you have never seen is sitting on the laptop screen. You type the problem into YouTube — “laptop screen black how to fix” — and the results page explodes: thirty thumbnails of men shouting at cameras, red arrows, words like DESTROYED and EMERGENCY and EXPOSED. You click one. It is eleven minutes long, the fix is at minute eight, and the man spends minute seven asking you to subscribe. This lesson is how to use video to learn one skill tonight without falling into that shouting crowd: how to search, how to choose, how to make the video teach you instead of sell to you.",
       ),
       p(
-        "Walk to youtube.com yourself, or open the app you installed on purpose. The box at the top is search. Type a full thought: how to save a Word document as PDF, not “computer.” Add Nigeria when the answer depends on here. Read the channel name under the result the way you read the grey address under a Google result. A ten-year-old upload from a school can be better than a loud new one that wants you to download a fixer.",
+        "Video is the closest thing the internet has to sitting beside somebody while they work. A person films their actual screen and their actual hands, and you copy them. For computer skills especially, this is gold — you see where the button is, what the menu looks like, what happens after the click. The skill is not watching. The skill is choosing which of the fifty videos deserves twenty minutes of your one life.",
       ),
       fig(
         "/images/blog/video-search.jpg",
         "A video search page on a laptop.",
         "The box at the top is the job. The row of suggestions after you finish is a stall. You do not owe it a click.",
       ),
-      h2("Play, full screen, and the wrong door"),
+      h2("Searching like a person with a question"),
       p(
-        "Click the video you meant. Space bar pauses. The square in the corner is full screen — the picture uses the whole monitor. Esc leaves full screen. Full screen is not a new website. The address bar may hide; move the pointer to the top if you need it. If a video asks you to install a player, or a codec, or to “enable flash,” you are not on the real street. Back. Search again. You already play video in the browser.",
+        "The search box rewards a full question and punishes a vague cry. “Laptop” gets you noise. “Windows 11 printer not printing fix” gets you the exact video you need, and often the exact minute. Add the details you actually have: your Windows version, the program's real name, the words from the error message in quotes. If the error says “The application was unable to start correctly”, paste those words in quotes — somebody has filmed that exact wound before.",
       ),
       p(
-        "Autoplay will start the next film. Turn it off if you can see a toggle. The queue is a list the site wants. Your list is the search you typed. On a phone, Wi‑Fi is kinder than a bundle for a long lesson. Download in the app, if you pay for that, is a parcel; a random “download MP4” button under the video is a cousin of the fake update. Do not.",
+        "Then choose with your eyes open. Prefer the video whose title names your precise problem over the one promising to change your life. Check the channel's name and how long it has been posting. A teacher at a real academy or a technician with two hundred quiet repair videos will beat the loudest thumbnail in the room almost every time. And check the length against your need: one button does not need a twenty-three-minute documentary. If two videos look equally good, choose the shorter one first.",
+      ),
+      h2("Watch to do, not to watch"),
+      p(
+        "Before you press play, put a notebook and a pen beside the machine — the captions lesson explained why. Then turn on the player's Pause and make a rule for yourself: pause at every step that touches your machine and do it before the video continues. The video is a pair of hands to copy, not a film to admire. If the teacher is at minute one asking you to like and subscribe before teaching anything, that is a stall, not a lesson. Leave.",
+      ),
+      p(
+        "One contrast worth carrying: a video can show you a button, but it cannot see your computer. The teacher's screen has their folders, their version, their problem. Yours may have the same wound and a different face. So when the fix on the screen does not match your machine, do not force it — pause the advice at the point of difference and ask, in your head, the five questions from the repair chapter. What changed? What does it do now? What did I already try? If the video's step one is already wrong for your version of Windows, the whole video is the wrong prescription.",
       ),
       fig(
         "/images/blog/video-learner.jpg",
         "A learner watching a tutorial on a laptop, earphones beside her.",
         "Earphones keep the house quiet. The notebook is for one step you will try. Watching ten videos without touching the keyboard is not a class. It is a stall.",
       ),
+      h2("When the video shouts to be trusted"),
+      p(
+        "The comments and the description under a video are a market of their own. A pinned comment with a WhatsApp number — “chat me for the file” — is a stranger inviting you into a back room. A download link in the description may be the real tool or a trojan wearing its costume; prefer the tool's own website, typed by you, as the link lesson taught. And the voice shouting that this trick is forbidden, hidden, or about to be deleted is selling urgency the way the prize message sells prizes. Real teachers do not shout. They name the part, point at it, and wait for you.",
+      ),
+      p(
+        "One more trap with a familiar face: “free Windows activator” and “crack” videos are the malware lesson filmed by an actor. Nothing about a video format makes the file inside it safe. If the tutorial's fix is “download this and run it”, you have left the classroom and entered the back of a van. Prefer fixes that use the settings already on your machine — and there are many: the restart order, the network troubleshooter, the printer queue. The safest tutorial teaches you to use what you already own.",
+      ),
       ul([
-        "Search a thing you already know — how to copy and paste — so you can judge the result.",
-        "Open one video. Pause. Full screen. Esc. Confirm you are still on the same page.",
-        "Do not click a download button under the video. You did not come for a file.",
-        "When the step is clear, pause, try it on your own document. Then come back if you must.",
+        "Search with your exact problem in the query — program name, Windows version, the error's own words in quotes.",
+        "Choose the calm specific title over the loud general one. Check the channel and the length before you give it twenty minutes.",
+        "Notebook out. Pause at every step and do it on your machine before you play on.",
+        "Never download a “fix tool” from a video description. If the fix needs a download, go to the maker's own site or ask at the academy.",
       ]),
-      h2("The shelf, and the two useful speeds"),
       p(
-        "A video site is easier with shelves. The three little dots or the Save button under any video tuck it onto a list — Watch later, or a playlist of your own naming: Typing lessons, WAEC maths, the repair series. Now the site is not a river that carries you past everything; it is a small library with the books you chose. Return on Saturday and the shelf is exactly where you left it. This is also how a course of forty videos becomes survivable: one playlist, in order, and the pledge to watch one before anything autoplays into nonsense.",
-      ),
-      p(
-        "Speed is a tool, not a virtue. One point two five is honest for a talker you can follow easily and it saves fifteen minutes in an hour. Zero point seven five is the speed of learning — for the maths working on the whiteboard, for the English with an accent you have not met, for any sentence you had to hear twice. Normal speed is the default, not the moral high ground. Combine the speed with the pause you already own and a twenty-minute video becomes a thirty-minute class with notes. Watching is not the lesson. The stopping and the trying are the lesson.",
-      ),
-      h2("Comments, and what a video cannot do"),
-      p(
-        "Comments are a crowd. A PIN, a “WhatsApp me for the file,” a link in a comment, are the phishing lesson wearing a film. The description can hold a real link to a school; it can also hold a trap. Prefer the site you already trust. A video will not see your computer. A file you download because the video shouted will.",
-      ),
-      p(
-        "You now have a way to learn a button you forgot, at 10 p.m., without a shop. Search, one film, pause, try, leave. The sidebar will still shout. You do not have to answer. The search box is the map. Everything else is a stall on the way to the door.",
+        "You now have a way to learn a forgotten button at 10 p.m. without going to a shop: search with the real words, choose the quiet teacher, pause and do, write the step down. The sidebar will still shout tomorrow — the rows of shouting thumbnails are not going anywhere. But the search box is the map, and you already know how to walk past a stall to reach the door.",
       ),
     ],
   },
@@ -4984,47 +5021,54 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A paused video with captions at the bottom of the picture.",
     body: [
       p(
-        "A video is speech. Speech is easy to miss when the accent is new, the fan is loud, or the teacher talks like a train. Captions — CC, subtitles — write the words on the picture. Pause stops the train. Speed, a gear like 0.75 or 1.25, is a courtesy, not a race. This lesson is those three taps, so a tutorial is a class and not a blur.",
+        "Picture a twenty-minute tutorial on Excel. The teacher speaks quickly in an accent you have not met, the fan is loud, and by the time you have understood sentence one, sentence four is gone. You rewind. You lose it again. You finish the video having watched every second and learned almost nothing. This is not a comprehension problem — it is a transport problem, and it has three small fixes on the player itself: captions, pause, and speed. This lesson is those three taps, so that a tutorial becomes a class instead of a blur.",
       ),
       p(
-        "Look along the bottom of the video for CC, or a wheel, Settings, Subtitles. Turn captions on. English is fine when the speaker is English. Auto-generated captions will miss naira, Okoro, Rumuola — they are a cousin of spell check. If the line is nonsense, use your ears for that word. If the line helps you catch “Save As,” keep them on. Size and colour live in the same settings if the type is small. You may zoom the page, as you learned, without changing the film.",
+        "Captions — CC, subtitles — write the spoken words across the bottom of the picture. Pause stops the lesson so you can think, write, or try a step. Speed is the gear that slows a fast mouth to 0.75, or hurries a slow recap to 1.25. None of these is cheating. They are the same three things a good teacher does in a room: repeat, wait, and go at your pace.",
       ),
       fig(
         "/images/blog/captions-on.jpg",
         "A video with a caption line at the bottom.",
-        "The words are a lamp, not a second film. If they cover a button the teacher is pointing at, pause, read, play. You are allowed to be slow.",
+        "The words are a lamp, not a second film. If a caption covers the button the teacher is pointing at: pause, read it, play again. You are allowed to be slow.",
       ),
-      h2("Pause, rewind, a notebook"),
+      h2("Turning the words on"),
       p(
-        "Space bar, or the tap on the picture, pauses. Left arrow often jumps back a few seconds. That is enough to catch a sentence. If you rewind the same ten seconds five times, pause and write the step. The notebook is cheaper than another pass. Full screen plus captions plus a notebook is a desk. Autoplay plus no notes is a bus window.",
+        "Look along the bottom of any video for the letters CC, or a little wheel for Settings. Tap it and choose Subtitles — English is fine even when the speaker is English; you are reading to confirm your ears, not to replace them. One honest warning: auto-generated captions are a cousin of spell check. They will mangle naira amounts, Nigerian names, Okoro, Rumuola. When a line is nonsense, believe your ears for that one word and keep reading the rest. If the captions keep covering the part of the screen where the buttons live, look in the same settings for caption size and colour, or zoom the page the way the browser lesson taught you. The film stays the same size; only the words get bigger.",
       ),
       p(
-        "Speed: the gear, Playback speed. 0.75 when the mouth is fast. 1.25 when they repeat themselves and you only need the shape. 2× is how people “finish” a course and remember nothing. You are not late. The video will wait. On a phone the same gear lives in the three dots. Earphones help captions and speech sit together without the street.",
+        "Why keep them on even when you understand the speaker? Because the words you half-heard are confirmed for free, and every new technical word — “Save As”, “pivot table”, “recycle bin” — arrives spelled correctly the first time you meet it. A word you have seen spelled is a word you can search for later. That is the quiet superpower of captions.",
+      ),
+      h2("Pause is where the learning happens"),
+      p(
+        "The space bar pauses on a laptop; a tap pauses on a phone. The left arrow often jumps back a few seconds when you missed just one phrase. Now here is the decision that changes everything: if you have rewound the same ten seconds more than twice, stop rewinding. Press pause, and write the step down. A notebook line is cheaper than a fourth pass through the same sentence.",
+      ),
+      p(
+        "Try the rhythm now with any short tutorial: watch until the screen shows something worth doing, pause, and do it — in a second window, or on paper if you are on a phone. Then play on. That rhythm is the difference between a video you finished and a lesson you attended. Watching is not learning. The stopping and the trying are the learning, and the pause button is what makes them possible.",
       ),
       fig(
         "/images/blog/pause-video.jpg",
         "A learner paused on a tutorial, writing in a notebook.",
-        "The film is still. The hand is working. That is the lesson landing. A finished video with an empty page is a stall you walked through.",
+        "The film is still. The hand is working. That is the lesson landing. A finished video with an empty page is a stall you walked through slowly.",
       ),
-      ul([
-        "Open a short tutorial. Turn captions on. Read one line. Confirm it matches the mouth, more or less.",
-        "Pause. Write one step. Play. Pause again.",
-        "Try 0.75 for a sentence, then 1. You are allowed to return to 1.",
-        "Do not download a “subtitle plugin” from a banner under the video.",
-      ]),
+      h2("Speed is a gear, not a scoreboard"),
+      p(
+        "Open the player's Settings again and find Playback speed. 0.75 is the speed of learning: use it for the maths working on the whiteboard, for English with an accent, for any sentence you had to hear twice. Normal 1× is the default and there is no medal attached to it. 1.25 is fair for a recap of something you already know. And 2× is how people finish a course and remember nothing — if you ever hear yourself saying “I did the whole series at double speed”, you have watched a summary, not studied. On a phone the gear hides behind the three little dots. Earphones help captions and speech sit together without the street walking through the middle of the class.",
+      ),
       h2("The notebook beside the player"),
       p(
-        "Put something to write on beside every video that matters. Not a transcript — a notebook for the three things worth keeping: the step you must try, the word you have never seen, the figure that will be on the exam. The pause button exists to make this possible. Pause when the screen shows the thing to try, and try it in a second window or on paper before the video continues. This is the difference between a video you finished and a lesson you attended. One cannot scrub back through understanding the way one scrubs back through a timeline.",
+        "Keep something to write on beside every video that matters. Not a transcript — three kinds of line are enough: the step you must try, the word you have never seen, and any figure that will be in the exam. When the captions spell a new word, copy it into the notebook; a word collected is a word owned by Friday. And once a week, look back over the lines. They become an honest record of your progress — the date, the title, what you practised — and one day that record turns into a CV line: completed the spreadsheet series, practised the formulas, built the small money list. Nobody hands you that line. The notebook builds it, three lines a session.",
       ),
       p(
-        "The notebook also keeps the honest record of your progress: the date, the video's title, what you practised. Three lines a session become a log of a year, and the log is what turns watching into a CV line one day — completed the spreadsheet series, practised the formulas, built the small money list. When there are captions, type new words from them straight into the notebook; a word collected is a word owned by Friday. The player is patient, the pause is free, and the notebook is the bridge between the screen and your hands.",
+        "And when a video has no captions at all? Slow it to 0.75, use earphones, and write more. A live class on Meet or Zoom may have captions too if the host switched them on — look for the same CC. Do not trust live captions with a fee amount or a date; ask in the chat and write the answer yourself. If a video is only music and no speech, captions will be empty or wild. You did not break them.",
       ),
-      h2("When there are no captions"),
+      ul([
+        "Open a short tutorial on something you need. Turn captions on. Read one line and confirm it matches the mouth, more or less.",
+        "Pause at the first step worth trying. Write it down in one line. Try it before you play on.",
+        "Slow one fast sentence to 0.75 and listen again. Return to 1× when the pace stops mattering.",
+        "Do not download a “subtitle plugin” from a banner under the video. The captions are already in the player.",
+      ]),
       p(
-        "Some films have none. Lower the speed, use earphones, write. A live class on Meet may have captions if the host switched them on — a different tap, still CC. Do not trust live captions with a fee amount. Ask in the chat. And if a video is only music with no speech, captions will be empty or wild. You did not break them.",
-      ),
-      p(
-        "The point of a tutorial is one thing you can do after. Captions, pause, speed, paper. Then close the tab. The next video will offer itself. You already know how to leave a market. Leave.",
+        "The point of any tutorial is one thing you can do afterwards that you could not do before. Captions, pause, speed, paper — those four taps buy you that one thing from almost any video on the internet. And when you have it, close the tab. The next video will offer itself. You already know how to leave a market.",
       ),
     ],
   },
@@ -5212,47 +5256,54 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A phone lock screen with a PIN pad on a wooden desk.",
     body: [
       p(
-        "A phone without a lock is a house with the gate open. Anyone who picks it up is you: WhatsApp, mail, the bank app if it does not ask again. A laptop the same. The screen going dark is only a lamp. The lock is a gate that asks for a key when the lamp comes back. This lesson is a PIN you can remember, a pattern that is not a letter Z, Windows+L when you stand up, and why “none” is not a time-saver.",
+        "Picture the POS counter: the attendant is counting somebody's cash, and your phone lies face-up on the wood between you and a stranger. One minute. In that minute, anybody's hand can open your WhatsApp, your mail, the bank app that does not ask twice. Now picture the same phone with a lock on it. The same stranger's hand now holds a paperweight. The difference between those two phones is a gate — and this lesson is putting the gate up properly, on the phone and on the laptop, so that a cousin, a child, or a thief meets a question instead of your whole life.",
       ),
       p(
-        "On the phone: Settings, Security, Screen lock — PIN, password, pattern, or fingerprint if the machine has a pad. A PIN of six digits you do not use for the ATM is enough for most people. Four is weak and still better than none. A pattern that is a straight line or your initial is a pattern a shoulder can steal. Fingerprint is convenient; it still needs a PIN as backup when a wet hand fails. Face unlock is a cousin: fine at a desk, weaker in a crowd with a photograph. You choose. You write the PIN hint in the notebook in the drawer, not on a sticky on the phone.",
+        "A dark screen is not a lock. A dark screen is only a lamp switched off; touch it and everything is there. The lock is the question that appears when the lamp comes back — the PIN, the pattern, the fingerprint. “None” is not a time-saver. It is an open gate with the lights off, and people walk through open gates.",
       ),
       fig(
         "/images/blog/screen-lock.jpg",
         "A phone lock screen waiting for a PIN.",
-        "The gate. If you can swipe into the home screen with no question, there is no gate. Settings, Screen lock, until a question appears.",
+        "The gate. If you can swipe straight into the home screen with no question asked, there is no gate at all. Settings, then Security, then Screen lock, until a question appears.",
       ),
-      h2("The laptop, and standing up"),
+      h2("Building the phone's gate"),
       p(
-        "Windows: Settings, Accounts, Sign-in options. A PIN for this machine is not your Microsoft password; it is a local gate. Use a different number from the phone if you can bear it. Windows+L locks at once — lamp off, gate on — without shutting down. Practise it every time you leave the chair, even to the kettle, on a shared desk. A Mac: Control+Command+Q, or close the lid if the lid is set to lock. The lid is not a lock until you have checked that it asks for a password on wake.",
+        "On the phone: Settings, then Security (or Lock screen), then Screen lock. You will be offered a pattern, a PIN, a password, or a fingerprint. For most people a six-digit PIN is enough — and here is the one rule that matters more than length: it must not be your ATM PIN. Your bank card and your phone travel in the same bag. If one number guards both, one stolen bag opens both. Four digits is weak and still better than nothing. A pattern is fine unless it is a straight line or the letter Z — the ones a shoulder can read while pretending to buy airtime.",
       ),
       p(
-        "Require a sign-in when the PC wakes from sleep. A screen saver that does not lock is a curtain. Auto-lock after a few minutes is kindness when you forget Windows+L. On a business-centre machine, do not set your PIN. Guest, then the five-minute walk. Their gate is not yours to change.",
+        "Fingerprint is the daily convenience many phones are built for, and it is genuinely good — but set a PIN underneath it anyway, because hands get wet, bandaged, or after an accident, unable to speak. Face unlock is the same story one step weaker: fine at your desk, doubtful in a crowd where a photograph of you may already exist. Whatever you choose, write the reminder of your PIN hint in the notebook in the drawer at home — not on a sticky note on the phone. That last one is a joke people make until it happens to them.",
+      ),
+      h2("The laptop, and the habit of standing up"),
+      p(
+        "On Windows: Settings, then Accounts, then Sign-in options. A Windows Hello PIN for this machine is local — it is not your Microsoft password, and it can be a different number from the phone if you can bear to remember two. The habit, though, is the keyboard shortcut: Windows key and L together, and the machine locks at once — lamp off, gate up — without shutting anything down. Practise it every single time you leave the chair, even to the kettle. Especially to the kettle. On a shared desk it is a courtesy; at a business centre it is the whole ballgame. (On a Mac it is Control+Command+Q, and you should check that closing the lid also demands the password — a lid that wakes up unlocked is a gate with the latch taped down.)",
+      ),
+      p(
+        "Two more laptop settings worth the minute they take: require sign-in when the PC wakes from sleep (a screensaver without it is a curtain, not a gate), and let the machine auto-lock after a few idle minutes, for the days you forget Windows+L. And at a business centre or a shop's machine: do not set your PIN at all. Work as Guest, take your files with you on the way out. Their gate is not yours to rearrange.",
       ),
       fig(
         "/images/blog/lock-screen.jpg",
         "A learner locking a laptop, phone face-down beside it.",
-        "Two gates. The pocket and the desk. If a child can open the mail, the gate is theatre. Shorten the time to lock. Practise the key until it is a habit, not a performance.",
+        "Two gates: the pocket and the desk. Practise the keys until locking is a reflex, not a performance — the habit is the feature.",
       ),
-      ul([
-        "Put a PIN or password on the phone if it has none. Unlock it twice to prove you remember.",
-        "On the laptop, Windows+L. Unlock. Do it again.",
-        "Set a short lock time — one or two minutes on a phone in a compound.",
-        "Do not use 1234, your birthday, or the phone number. You know why.",
-      ]),
-      h2("The ten-second habit at every counter"),
+      h2("The places people forget"),
       p(
-        "Make the lock automatic and the discipline disappears into the furniture. Phones carry the setting under Display or Security — thirty seconds of rest and the screen goes dark; one minute if you read slowly. The laptop answers to Windows and L the moment you stand, and there is a setting for its idle sleep as well. Then build the reflex at the places people forget: the POS counter while the attendant counts, the shop bench while the technician looks, the church pew while you greet somebody. The machine in your bag is safe. The machine on a stranger's table is on loan to them for exactly as long as it stays awake.",
+        "Make the lock automatic and the discipline disappears into the furniture. Set the phone's screen to sleep after thirty seconds — under Display or Security — so the gate closes itself when you put it down. Then rehearse the reflex at the three places it always slips: the POS counter while the attendant counts, the repair bench while a technician looks at your laptop, the church pew while you greet somebody. The machine in your bag is safe. The machine awake on a stranger's table is on loan to them for exactly as long as it stays unlocked.",
       ),
       p(
-        "The lock is also kindness to the people around you. A locked phone in a shared room removes a hundred temptations and one accusation. A locked laptop at the cyber café cannot be walked through by the next customer. And for the fingerprint generation, one honest word: the fingerprint is a convenience that still demands a PIN underneath, because hands are sometimes wet, sometimes bandaged, and sometimes — after an accident — unable to speak at all. The PIN is the key that works in every weather. Choose six digits that are not your ATM's, and let the thumb do the daily work.",
+        "There is a kindness inside this habit too. A locked phone in a shared room removes a hundred temptations and one accusation — nobody can “just check the time” on it and leave with your bank app open. A locked laptop at a cyber café cannot be strolled through by the next customer. Locking is not distrust of the people beside you. It is removing a question from the room so nobody has to answer it.",
       ),
       h2("When the key is forgotten"),
       p(
-        "Phone: the Google or Apple account you made on purpose is the rope, plus a wait. A shop that “opens it” without that account is often formatting. Backup first, always, if you still can. Windows: the PIN can be reset from the account if you set one; a local account with a forgotten password is a harder day. The notebook in the drawer is cheaper than that day.",
+        "It happens. On the phone, the Google or Apple account you registered on purpose is the rope back in — plus possibly a wait, and a shop that “opens it” without that account is usually formatting it, which means everything on it dies. So the backup lessons stand behind this one always. On Windows, a forgotten PIN can be reset through your Microsoft account if you set one up; a local account with a forgotten password is a harder, sadder day. Which is why the notebook in the drawer — hints, not passwords — is cheaper than that day. Write it tonight.",
       ),
+      ul([
+        "If the phone has no lock, put a PIN or pattern on it now. Unlock it twice to prove you remember it.",
+        "On the laptop, press Windows+L. Unlock. Do it again until the keys feel like one motion.",
+        "Shorten the auto-lock: thirty seconds on a phone in a compound, a few minutes on the laptop.",
+        "Do not use 1234, your birthday, or any phone number as the PIN. You already know why.",
+      ]),
       p(
-        "A lock is not encryption of the whole disk. It is still the difference between a stranger reading your mail and a stranger holding a brick. Use it. The extra three seconds when you sit down are the whole rent. Pay them.",
+        "A lock is not full-disk encryption, and it will not stop a repair shop with the right tools. But it is still the entire difference between a stranger reading your mail and a stranger holding a brick. Three seconds when you sit down. Pay them every time, and the POS counter stops being a place where your life lies face-up on the wood.",
       ),
     ],
   },
@@ -5326,47 +5377,47 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A phone with Do not disturb or a moon icon switched on.",
     body: [
       p(
-        "Airplane mode hangs up on the network. Do not disturb — the moon — hangs up on noise. Calls may still arrive in silence. WhatsApp still lands, unseen until you look. The radio is on. The ringer is off. This lesson is that moon, exceptions for a mother or an alarm, and not using the plane when you only meant a quiet hour.",
+        "The lecturer is mid-sentence and a phone begins to ring — a ringtone of somebody's shout, at full volume, from the middle of the third row. Everyone turns. The owner scrabbles for the bag, drops the phone face-down, and it keeps ringing. We have all been that person and we have all glared at that person. There is a setting on every phone built for exactly this moment — and it is not the switch-off button. It is called Do Not Disturb, it hides behind a small moon icon, and this lesson is about using it well without disappearing from the people who might actually need you.",
       ),
       p(
-        "Swipe the shade, tap the moon, or Settings, Sound, Do not disturb. On many phones you can schedule it: 11 p.m. to 6 a.m. Alarms from the Clock app still ring on most machines; test once. Favourite contacts can break through if you tick that — so a family call at night still shakes the table, and a group chat does not. People you do not list wait until morning. That is allowed.",
+        "First, the difference that confuses everyone. Airplane mode hangs up on the network: no calls arrive, no messages arrive, the radios are off. Do Not Disturb hangs up on the noise: calls and messages still arrive — in complete silence. The ringer is off. The banner is off. The network is fully alive underneath, and the missed calls are all sitting there waiting when you look. One icon is a locked door. The moon is a curtain over the sound.",
       ),
       fig(
         "/images/blog/do-not-disturb.jpg",
         "Do not disturb switched on in phone settings.",
-        "The moon is a curtain on sound, not on the network. OTPs still arrive. You will see them when you lift the phone. The bank is not on the plane.",
+        "The moon is a curtain on sound, not on the network. Your OTPs still arrive — you will see them when you lift the phone. The bank is not on the plane.",
       ),
-      h2("A class, a meeting, a laptop"),
+      h2("Turning the moon on"),
       p(
-        "In a lesson, the moon is kinder than switching off. You still have the clock. You still have the camera for a board if you must. Windows has Focus assist or Do not disturb too — Settings, System — so a mail toast does not ride over a form you are filling. The machine can be quiet without being offline. Use that in a CBT hall if phones are allowed at all; if they are not, the plane or the bag is the rule in the room, not this lesson.",
+        "Swipe down from the top of the phone to the quick settings and find the moon — on some phones you may need to swipe twice or edit the buttons to add it. Tap it. That is Do Not Disturb on. Somebody can call you right now and your phone will sit silent while the call rings out to voicemail and appears in your missed calls. To make it a habit instead of a decision, open Settings, then Sound, then Do Not Disturb and look for Schedules: 11 p.m. to 6 a.m. every night is the classic one. The phone goes quiet after you sleep and wakes noisy again before you do.",
       ),
       p(
-        "Driving: some phones offer a driving mode that is the moon plus maps. Do not polish it while the car is moving. Set it before you start. A voice reading WhatsApp aloud in a danfo is a choice you can refuse.",
+        "One test is worth doing tonight, not eventually: set an alarm five minutes from now, turn the moon on, and wait. On most phones the alarm still rings — alarms are usually allowed through by default — but “most phones” is not your phone. Test yours once so that Do Not Disturb never costs you a morning. If the alarm stayed silent, look in the Do Not Disturb settings for the Alarms exception and allow it.",
       ),
       fig(
         "/images/blog/quiet-desk.jpg",
         "A quiet desk: dark phone, laptop, closed notebook.",
-        "Silence is a tool. The work is on the laptop. The pocket is not dead. It is waiting. That is enough for an hour.",
+        "Silence is a tool, not a switch-off. The work is on the laptop, the pocket is not dead — it is waiting. That is enough for an hour.",
+      ),
+      h2("The guest list: who still gets through"),
+      p(
+        "Here is the kindness built into the moon. Open its settings and you will find Exceptions — the guest list. Starred or favourite contacts can be allowed to ring through: mother, the school, your spouse, the house. Star those four numbers and the group chat can wait while the emergency still has a road in. There is often a second exception called Repeat Callers: anybody who calls twice within three minutes breaks through. That is kindness for a hospital and a hole for a persistent nuisance — read the list once and keep only what earns its place.",
+      ),
+      p(
+        "Now the retrieval check, because this is the part people mix up: your bank sends an OTP while the moon is up. Does it arrive? ... Yes. It arrives in silence and waits with everything else — Do Not Disturb was never a wall between you and the network. And if a situation needs the network off entirely — a plane, an exam hall, a CBT centre with its own rules — that is airplane mode or the phone in the bag, and the rule of the room wins over any lesson of ours.",
+      ),
+      h2("The moon on a laptop, and in a car"),
+      p(
+        "Windows has its own quiet switch — Focus assist, or Do Not Disturb in newer versions, under Settings, then System. Turn it on before you fill a form or write a letter and the mail pop-ups stop riding across your work. The laptop can be quiet without being offline, same as the phone. In a car, some phones offer a driving mode that is the moon plus maps; set it before you start the engine and never polish settings while the car is moving. A voice reading WhatsApp aloud in a moving danfo is a choice you are allowed to refuse.",
       ),
       ul([
-        "Turn the moon on. Ask someone to call. Confirm you see a missed call and heard nothing — or heard only a favourite, if you set that.",
-        "Set an alarm five minutes from now. Confirm it still rings.",
-        "Turn the moon off. The banners you missed should be waiting.",
-        "If you needed the network off, that is the plane. Do not confuse the two icons.",
+        "Turn the moon on. Ask somebody nearby to call you. Confirm you hear nothing — and see the missed call when you look.",
+        "Set an alarm five minutes away. Confirm it still rings while the moon is up.",
+        "Open the exceptions and star the four numbers that matter to your actual life. Delete the rest.",
+        "Set the night schedule once — 11 p.m. to 6 a.m. — and stop making the decision every night.",
       ]),
-      h2("The star, and the list that may call"),
       p(
-        "Do not disturb is not a wall; it is a gate with a guest list. Open its settings and you will find the exceptions: starred or favourite contacts whose rings will still reach you, repeat callers who try twice within three minutes, alarms and events that keep their appointments. Star the four numbers that matter — mother, the school, the spouse, the house — and the rest of the world waits politely outside. Now the class is silent and the emergency still has a road in. The gate exists so that you can stop guarding the door yourself.",
-      ),
-      p(
-        "Schedule the gate and the habit runs without you. Most phones will switch the mode on at nine every night and off at six in the morning, with a second schedule for class hours if the timetable is regular. The meeting mode on the laptop does the same for the workday: banners and sounds down, the people you starred allowed through. Notice what the gate does not do: it does not switch anything off. The messages arrive and stack themselves quietly at the gate, waiting for your return. Silence is not neglect. The list of who may call is the most considerate setting on the machine.",
-      ),
-      h2("What still gets through"),
-      p(
-        "Alarms, timers, and any app you allowed to override. A bank app may still flash. Repeat callers can break through on some Androids — a person who calls twice. That is a kindness for emergencies and a hole for a nuisance. You can switch that off. Read the exceptions list once. Shorten it.",
-      ),
-      p(
-        "The moon is manners for a pocket that never learned to whisper. You do not owe every banner your eyes. Schedule a night. Use a sitting. Then look, on purpose, the way you check mail and not WhatsApp every ten seconds. The messages will wait. They are not more important because they shook.",
+        "The moon is manners for a pocket that never learned to whisper. You do not owe every banner your eyes the second it arrives — the messages will stack themselves politely at the gate and wait for you to look, on purpose, at a time you chose. Try it for one lecture, one movie, one night. Notice how much of the noise was never urgent. It was merely loud.",
       ),
     ],
   },
@@ -5416,7 +5467,7 @@ export const blogPosts: BlogPost[] = [
         "Tethering spends two treasuries at once: the bundle and the battery. A laptop working through a phone's radio can drink several hundred megabytes in an hour of updates and video calls — Windows, in particular, loves to download updates the moment it sees a connection. Set the connection as Metered (Settings, Network, the connection's properties) and Windows will hold its heavy parcels for another house. Watch the bundle icon in the status bar while you work for one week and you will know, without any app, what an hour of email costs and what an hour of video calls costs. Knowledge is the only real data plan.",
       ),
       p(
-        "The battery needs the same respect. Hotspot is a torch left on; the phone drains visibly while it serves. Plug it in during long sessions, or accept the two-hour shift and stop when the phone says stop. USB tethering — the cable from the phone to the laptop — is the quieter cousin: it charges the phone while it shares the connection and it does not announce your network's name to the compound. For a laptop and one phone in the same room, the cable is simply better. The wireless hotspot earns its keep when the tablet and the visitor's laptop also need the road.",
+        "The battery needs the same respect. Hotspot is a torch left on; the phone drains visibly while it serves. Plug it in during long sessions, or accept the two-hour shift and stop when the phone says stop. USB tethering — the cable from the phone to the laptop — is the quieter cousin: it charges the phone while it shares the connection and it does not announce your network's name to the compound. For a laptop and one phone in the same room, the cable is better. The wireless hotspot earns its keep when the tablet and the visitor's laptop also need the road.",
       ),
       h2("When the house Wi‑Fi exists"),
       p(
@@ -5584,7 +5635,7 @@ export const blogPosts: BlogPost[] = [
         "A finished scan is a file like any other, and it wants the same departure routine as everything you have made. The share button under the scan sends it straight to mail, to Drive, to WhatsApp — and here the WhatsApp choice matters one last time: send the scan as a Document, not as an image, so the receiving machine gets the pages with their edges and words intact. Name the file before it departs. A PDF called scan-2026-09-23 in someone's downloads is a page from nowhere; Nwosu-tenancy-agreement-2026 is a page that knows its own family.",
       ),
       p(
-        "Where scans should live is the drawer lesson wearing new clothes. Make one folder — Scans or Papers — and one subfolder per person or per matter. Walk every scan into its folder the same evening, and the folder becomes the fireproof filing cabinet that a real office envies. Two-sided documents that the phone cannot capture in one frame are simply two scans in one PDF, pages in order. And when the bank asks for a file under two megabytes, you now know the way: rescan at a smaller size, or send the single page that matters. The scanner makes pages. The habit keeps them.",
+        "Where scans should live is the drawer lesson wearing new clothes. Make one folder — Scans or Papers — and one subfolder per person or per matter. Walk every scan into its folder the same evening, and the folder becomes the fireproof filing cabinet that a real office envies. Two-sided documents that the phone cannot capture in one frame are two scans in one PDF, pages in order. And when the bank asks for a file under two megabytes, you now know the way: rescan at a smaller size, or send the single page that matters. The scanner makes pages. The habit keeps them.",
       ),
       h2("What a scan is not"),
       p(
@@ -5805,7 +5856,7 @@ export const blogPosts: BlogPost[] = [
       ]),
       h2("The hand that learns slowly and stays"),
       p(
-        "Muscle memory is a slow cook and a permanent meal. The six keys will feel like ceremony for about ten days — the hand reaching for the mouse, the mind reciting Ctrl and S like a rhyme — and then one evening the hands will simply do it while you are thinking about the letter's content. That is the moment the skill becomes furniture. Speed arrives the same uninvited way; nobody types shortcuts fast by trying. They type them slowly in real work until the road is worn in. The slowness of the first fortnight is not failure. It is the setting time of the concrete.",
+        "Muscle memory is a slow cook and a permanent meal. The six keys will feel like ceremony for about ten days — the hand reaching for the mouse, the mind reciting Ctrl and S like a rhyme — and then one evening the hands will do it while you are thinking about the letter's content. That is the moment the skill becomes furniture. Speed arrives the same uninvited way; nobody types shortcuts fast by trying. They type them slowly in real work until the road is worn in. The slowness of the first fortnight is not failure. It is the setting time of the concrete.",
       ),
       p(
         "Practice the six inside real errands, not drills. Save the half-written letter before you answer the door. Find the figure instead of scrolling the page. Select all when the whole document must change its font. Close the tab instead of letting twenty stack up. The errands are the practice, and the proof arrives quietly in a month: the work gets done in fewer minutes and the machine feels like a tool instead of a room you visit. Six more keys. Then rest. The collection plate has gone around long enough.",
@@ -5860,7 +5911,7 @@ export const blogPosts: BlogPost[] = [
       ]),
       h2("The names autocorrect cannot know"),
       p(
-        "Every keyboard has a personal dictionary hiding in its settings, and the day you feed it your world is the day the red underlines quiet down. Long-press a wrongly flagged name and the menu often offers to learn it; or walk into the keyboard settings and add the names yourself — the surnames, the town, the market, the words in your language that English insists on correcting. Ten words fed once saves a thousand small corrections a month. The machine is willing to learn your vocabulary. It simply cannot guess it from the dictionary of another country.",
+        "Every keyboard has a personal dictionary hiding in its settings, and the day you feed it your world is the day the red underlines quiet down. Long-press a wrongly flagged name and the menu often offers to learn it; or walk into the keyboard settings and add the names yourself — the surnames, the town, the market, the words in your language that English insists on correcting. Ten words fed once saves a thousand small corrections a month. The machine is willing to learn your vocabulary. It cannot guess it from the dictionary of another country.",
       ),
       p(
         "And when autocorrect replaces something you meant, the undo is gentler than you think: tap the word it just changed and the original waits there to be taken back — no menu diving, no settings. The keyboard will also un-learn: long-press a suggestion in the strip above the keys and it can be dragged away like a yam peel. For Yoruba, Igbo, and Hausa typing, add the language keyboard and switch with the globe key rather than fighting English for every tone mark. The keyboard is the smallest computer you own. Now its dictionary knows your names.",
@@ -5950,7 +6001,7 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("Reading on glass"),
       p(
-        "Attachments open with a tap: the CV in PDF, the invoice, the school's letter. If the phone says it cannot open a file, that is the open-with lesson again — the file is not broken, it simply needs to be handed to the right program. Reply sends to one person. Reply all sends to the whole corridor, which you met at the desk and which is no safer for being small. Read the To line before the first word of your reply. Thumbs are quick; that is exactly why you slow them at the top of a letter.",
+        "Attachments open with a tap: the CV in PDF, the invoice, the school's letter. If the phone says it cannot open a file, that is the open-with lesson again — the file is not broken, it needs to be handed to the right program. Reply sends to one person. Reply all sends to the whole corridor, which you met at the desk and which is no safer for being small. Read the To line before the first word of your reply. Thumbs are quick; that is exactly why you slow them at the top of a letter.",
       ),
       h2("Attaching from the pocket"),
       p(
@@ -6027,7 +6078,7 @@ export const blogPosts: BlogPost[] = [
         "It happens to everybody once a quarter: the letter about the land goes to the office with the photographs of the naming ceremony still attached, or the invoice for Chief goes with the draft that says Chief pays late. The cure is not shame; it is one glance at the attach row before the send. Read the filenames out loud in your head — not the icons, the names — and confirm they belong to this letter and this person. That glance is the parcel counter's final question: is this the box you meant, sir. It takes four seconds. It has saved a thousand careers.",
       ),
       p(
-        "When the wrong parcel is already in the van, send the recovery letter at once: brief, warm, and attached with the right file. Dear Mrs Adeyemi, the previous mail carried the wrong attachment in error — please delete it, and here is the correct one. No long apology, no drama, no blaming the machine. Most recipients will simply smile; everybody has done it. And build the small prevention: name every outgoing file properly before the mail app ever sees it, so the filenames in the attach row read like a manifest instead of a pile. The post office never opened a parcel to check. Neither will Send.",
+        "When the wrong parcel is already in the van, send the recovery letter at once: brief, warm, and attached with the right file. Dear Mrs Adeyemi, the previous mail carried the wrong attachment in error — please delete it, and here is the correct one. No long apology, no drama, no blaming the machine. Most recipients will smile; everybody has done it. And build the small prevention: name every outgoing file properly before the mail app ever sees it, so the filenames in the attach row read like a manifest instead of a pile. The post office never opened a parcel to check. Neither will Send.",
       ),
       h2("The slip is the receipt"),
       p(
@@ -6118,7 +6169,7 @@ export const blogPosts: BlogPost[] = [
         "Rule one: the recovery email must be alive. Open it once a month, the way you check that the spare key still turns. Rule two: when your number changes, update the recovery phone that same week. This is not paperwork for its own sake — a stolen or recycled number is how strangers inherit accounts, which is why the SIM itself is guarded like cash. Rule three: WhatsApp is tied to your number and the bank to its registered one. When any of those change, walk through all of them in one evening, the way you change the locks when the key count changes.",
       ),
       p(
-        "Then the day comes, and it is mild. On the sign-in page: Forgot password. The code goes to the recovery you set — the phone or the email. You type it, you choose a new password by the old rules, you continue. Ten minutes. What recovery is not: a caller. Nobody from Google, from your bank, from any office, phones you to recover an account, and no helper needs the code that arrives for one. You met that shape in the OTP lesson and the prize lesson; recovery has simply become their favourite costume. Recovery happens on your screen, in the app, at your pace. Hang up on anyone who says otherwise.",
+        "Then the day comes, and it is mild. On the sign-in page: Forgot password. The code goes to the recovery you set — the phone or the email. You type it, you choose a new password by the old rules, you continue. Ten minutes. What recovery is not: a caller. Nobody from Google, from your bank, from any office, phones you to recover an account, and no helper needs the code that arrives for one. You met that shape in the OTP lesson and the prize lesson; recovery has become their favourite costume. Recovery happens on your screen, in the app, at your pace. Hang up on anyone who says otherwise.",
       ),
       fig(
         "/images/blog/recovery-code-paper.jpg",
@@ -6266,44 +6317,50 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A courier handing a parcel to a woman at a gate while she holds her phone.",
     body: [
       p(
-        "The last chapter closed with the message that wants a fee — money flowing out to a liar. This one closes with the honest twin: paying for a real thing from a real seller, on purpose, and sleeping well after. Buying online is now a basic skill, the same class of skill as buying fuel or choosing a taxi. It is not braver than market sense. It is market sense, carried into a new market.",
+        "Ngozi wanted a particular pair of slippers she had seen online — two thousand four hundred naira, delivery to her gate. She had never bought anything on the internet in her life. Her hand hovered over the Pay Now button with the card in it for a long time, and then she closed the laptop and did not sleep well. Two weeks later she bought the slippers safely, from a different seller, and slept fine. Nothing about her courage changed. She had learned where the danger actually lives — and it is not where her hand was hovering. This lesson is the honest walk through your first purchase: what a real shop looks like on a screen, what the padlock does and does not promise, and how to count your change in a market made of screens.",
       ),
       p(
-        "Start where the trust is built into the building: the big marketplaces, where money is held until you confirm the parcel and pay on delivery is a choice; and official sites — the exam body, the airline, the utility — where the fee has one known amount and one known address. The vendor with fine pictures on Instagram is a different animal: a stranger with a phone. Not a criminal — a stranger. With a stranger you lend carefully. Pay on delivery, or pay a small amount first, and read what other buyers have said over months, not what the captions shout today.",
+        "Start where trust is built into the building. The large marketplaces — where the platform holds your money until you confirm the parcel, and pay-on-delivery is a button — are the shallow end, and the shallow end is where everyone learns. Official sites — the exam body, the airline, the power company — are just as safe for their own fees: one known amount, one known address, one receipt. The vendor with beautiful pictures and no shopfront, the Instagram store run out of somebody's phone? That is not a criminal necessarily. It is a stranger. And with a stranger you lend carefully: pay on delivery if you can, or pay a small deposit first, and read what buyers have said over months of posts — not what today's caption is shouting.",
       ),
       fig(
         "/images/blog/pay-on-delivery.jpg",
         "A courier handing a parcel to a woman at a gate while she holds her phone.",
-        "Pay on delivery is the market's oldest rule in new clothes: see the thing, count the money, then let go of either.",
+        "Pay on delivery is the market's oldest rule in new clothes: see the thing, confirm the size, then let go of the money. Learn the shallow end before the deep water.",
       ),
-      h2("The signs of a real shop"),
+      h2("Reading a shop before you read the price"),
       p(
-        "A real shop can be visited, or phoned, and both answers survive scrutiny: an address, a person, a returns policy in ordinary words. Its prices breathe — near the market, above the market, but not beneath it by magic. The shop selling a four-hundred-thousand-naira phone at ninety-five, today only, is the prize message in a new shirt: the discount is the fee. And the padlock beside the address means the road is private, not that the seller is honest. The padlock protects the road. It has never once protected the buyer. Only your own slowness does that.",
+        "Before you even look at the price, check three things, in this order. An address you could visit or at least a phone number a human answers. A returns policy written in ordinary words — what happens when the shoe is the wrong size. And history: months of posts, real comments, complaints that were answered instead of deleted. A shop that survives those three checks is a shop.",
       ),
       p(
-        "When you pay: card details go only into the shop's own checkout page, never into a chat, never read out to a caller — and the PIN goes nowhere at all, because no shop on earth needs it. A transfer is fine to a business account that carries the shop's name; be still for a moment when a market price is demanded into a personal account with a different surname. Then keep the receipt — the email, the screenshot — and when the bank alert comes, read it twice: the amount, the name, the time. Counting your change never stopped being a skill. It moved indoors.",
+        "Then the price. Real shops breathe — near the market rate, sometimes above, occasionally a genuine sale. The shop selling a forty-thousand-naira phone at nine thousand, today only, is the prize-message scam wearing a new shirt: the discount is the fee, and the phone does not exist. And one myth to retire today: the little padlock beside the web address does not mean the seller is honest. It means the road between you and the website is private — nobody can read your card in transit. It has never once vouched for the shop at the end of the road. Only your own slowness does that.",
       ),
       fig(
         "/images/blog/checkout-padlock.jpg",
         "A laptop screen showing a checkout page with a small padlock in the address bar, a bank card resting face down beside the keyboard.",
         "The padlock means the road is private. Whether the shop at the end of the road is honest is a question the padlock has never answered.",
       ),
+      h2("The paying moment, handled like a market"),
+      p(
+        "When you actually pay, the rules fit on one hand. Card details go only into the shop's own checkout page — never typed into a chat, never read out to a caller, and the PIN goes nowhere at all, because no shop on earth needs it. A transfer is fine to a business account carrying the shop's name; slow down to a full stop if a market price is demanded into a personal account with a different surname. And keep the receipt — the email, the screenshot, all of it. When the bank alert lands, read it twice the way your grandmother counted change: the amount, the name, the time. Counting your change never stopped being a skill. It moved indoors.",
+      ),
+      p(
+        "One more kindness to decline: the checkout will offer, warmly, to save your card for next time. On any machine you do not personally own, decline without reading further. On your own laptop, decline out of habit anyway — a card number in a website's drawer is one more drawer to be robbed, and you cannot change its locks. Type the sixteen digits when you shop. It costs forty seconds and it leaves nothing behind. Notice also whose page is really open when the payment starts: if the shop uses Paystack, Flutterwave, or the bank's own checkout, the typing happens on their form — the address bar will say so. That is normal and good.",
+      ),
+      h2("When the parcel arrives"),
+      p(
+        "The final counting happens at the gate. Open the parcel while the delivery person stands there, if the platform allows — the size, the colour, whether the thing is the thing in the photograph. Wrong item? The app has a returns road; walk it calmly and immediately, with photographs taken the way the document lesson taught: straight on, in daylight, all four corners. Refunds take days. That is slowness, not defeat — you are now inside the system's paperwork instead of outside it alone.",
+      ),
+      p(
+        "And if the checkout said success but no alert came: do not press Pay again in panic. Open your bank app and check the balance first — a slow alert is not a failed payment, and panic has paid for the same order twice in many families. Every naira that leaves your account should meet you at the door on its way out. That is the whole discipline, and it never needed a bigger market — just the one your grandmother already taught you at Mile 3: look well before you pay, and keep the paper.",
+      ),
       ul([
-        "First purchase: choose a marketplace with pay on delivery. Walk the small road before the long one.",
-        "Before the price, check the address, the phone, the returns policy. In that order, every time.",
-        "Card details in the checkout page only. The PIN nowhere, ever, for anyone.",
-        "Keep the receipt and read the alert twice. The market's change-counting, moved indoors.",
+        "First purchase: choose a big marketplace with pay on delivery. Walk the small road before the long one.",
+        "Before the price, every time: the address or phone, the returns policy, the months of history.",
+        "Card details in the checkout page only. Your PIN nowhere, ever, for anyone.",
+        "Keep the receipt and read the bank alert twice. The change-counting moved indoors; it is still yours to do.",
       ]),
-      h2("The card that stays in the wallet"),
       p(
-        "The checkout page will offer, with great kindness, to save your card details for next time. Decline on any machine you do not own, and decline out of habit on the ones you do. The card number in a website's drawer is one more drawer to be robbed, and you cannot change its locks. Type the sixteen digits when you shop. It costs forty seconds and it leaves nothing behind. If the shop uses Paystack or Flutterwave or a bank's own checkout page, the typing happens on the payment company's form, not the shop's — look at the address bar at that moment and see whose page is really open.",
-      ),
-      p(
-        "The bank alert is the second half of the habit. Before any purchase, know what figure leaves and know the exact figure the alert will show; after it, stand still until the alert lands. If the checkout claims success and no alert comes, do not try again in panic — check the balance inside the bank app first, because a slow alert is not a failed payment. Every naira that leaves your account should meet you at the door on its way out. The card stays in the wallet, the figures stay in your head, and the shop at the other end stays a shop — not a standing invitation.",
-      ),
-      h2("What arrives in your hand"),
-      p(
-        "When the parcel comes, open it while the delivery person stands there, if the platform allows — the size, the colour, whether the thing is the thing. If it is wrong, the app has a returns road; walk it calmly, with photographs taken the way the document lesson taught: straight, in light, all corners. Refunds take days. That is slowness, not defeat. The whole journey — the checking, the slip, the alert, the photographs — is one sentence your grandmother could have said at any market: look well before you pay, and keep the paper. The market has grown a screen. The sense crosses over intact.",
+        "Ngozi's slippers arrived on a Tuesday. She opened the parcel at the gate, the size was right, and she released the money with one tap — the same button her hand had hovered over, from a seller she had checked the way this lesson checks. The market is still a market. Now you know the stalls.",
       ),
     ],
   },
@@ -6482,44 +6539,50 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A phone showing a ride app map with a car icon approaching along the street.",
     body: [
       p(
-        "The yellow cab and the okada have grown apps. You open one, say where you are and where you are going, and a car whose name you know comes to your gate — Bolt, Uber, inDrive; the names differ, the grammar is one. The maps lesson taught you to read a map; the form lesson taught you to fill a request. This is both, holding hands, at seven in the evening in the rain. It is worth learning properly, because the ride is where the wider street most often meets the pocket.",
+        "It is seven in the evening and the rain has just started in earnest. Fifteen years ago this scene meant standing at the roadside with one hand raised, bargaining through a window while water ran down your arm. Tonight Ngozi stands under her landlord's gate, opens an app, and a car with a known plate number comes to her. Bolt, Uber, inDrive — the names differ across the years and the cities, but the grammar is one, and this lesson is that grammar: ordering the ride, reading the driver's details before you enter, the PIN that protects you both, and the one conversation with a driver that you must always refuse politely.",
       ),
       p(
-        "Request from indoors, while you are still behind your own gate. The app shows the car, its plate, the driver's first name, and the price before anybody moves — some apps price the trip themselves; inDrive lets you propose your own fare and choose among drivers who accept it, which is the market's bargaining, digital at last. Payment is cash or the card in the app, whichever you arranged. Then stand where you said you would stand. A ride is an appointment, and appointments are kept by both parties.",
+        "You already know most of the pieces. The maps lesson taught you to read a pin and a route. The form lesson taught you to fill a request and read it twice. This is both of them shaking hands at a gate in the rain. The bargaining your grandmother did at the park is still here too — some apps let you name your own price — but it has grown a map and a paper trail, and the paper trail is the revolution.",
       ),
       fig(
         "/images/blog/ride-app-map.jpg",
         "A phone showing a ride app map with a car icon approaching along the street.",
         "The car, the plate, the name, the price — all known before the gate opens. The unknown has already been interviewed.",
       ),
-      h2("Before the door opens"),
+      h2("Ordering the car"),
       p(
-        "The plate. Compare it with the app, every time, in daylight and in the dark, in a hurry and out of it. Wrong plate: a polite wave, I am waiting for another ride, and a step back behind the gate — a person who checks is difficult, and difficult is the goal. Many apps offer a PIN: the trip cannot start until the driver enters your code. Turn it on. A driver who cannot start the trip is not your driver, whatever he says through the window.",
+        "Open the app and confirm the pickup point first — drag the pin onto your actual gate, not the middle of the estate. The blue dot is you, but the dot is sometimes three houses wrong, and a driver circling in rain will remember it. Then type the destination as fully as you typed it in the maps lesson: the name plus the street plus the area. Read the fare before you confirm. InDrive may let you offer an amount and wait for a driver to accept; Bolt and Uber name the price and show you the car. Whatever the app, the price is agreed before you get in — that is the whole difference from a roadside argument at dusk.",
       ),
       p(
-        "Share the trip — the app sends your person a live map of you moving, which is the lantern lesson and the friend standing at the corner, both. Sit behind the driver, belt on, phone in your hand on a night ride, not buried in a bag. And when a driver says cancel the trip and we settle cash: the cancellation deletes the record, the plate you checked, the price you both agreed, and the protection that made you brave enough to enter. Refuse pleasantly. Cancel nothing. If he drives off, the app will find you another car, and you have lost nothing but a minute.",
+        "When a driver accepts, the screen fills with the part this lesson really wants you to read: the driver's first name, the rating, the car's colour and model, and the plate number. Read the plate out loud to whoever is inside the house — “Toyota Corolla, black, ABC 432 XZ” — and say it again to yourself at the gate. When the car arrives, check the plate against your mouth's memory before you open the door. The driver is checking you too, usually with your name. Both checks are courtesy, not distrust. They take four seconds and they are the reason the paper trail matters.",
+      ),
+      h2("The PIN, and the trip you share"),
+      p(
+        "Some apps add one more lock: a four-digit PIN for the trip, and the ride does not start until you type it into the driver's phone — or they say it and you confirm. The PIN exists so that the car that came is the car you called, and nobody's cousin can start a trip in your name. Treat it like the OTP rule: it is yours to type, never to read out to a caller who rings after the fact.",
+      ),
+      p(
+        "Before the car moves, do the one kindness the apps built for exactly this: Share trip. One tap sends a live link — the route, the plate, the moving dot — to your sister, your friend, the person waiting at the other end. A mother watching a moving dot makes fewer anxious calls than a mother imagining things. And if it is late, or the road is long, keep the call on speaker for the first two minutes with somebody trusted. Not theatre. Traffic. The kind that keeps everybody awake and honest.",
       ),
       fig(
         "/images/blog/ride-plate-check.jpg",
         "A woman comparing a car's number plate with her phone before opening the door.",
         "Two seconds, eyes moving from glass to screen. The habit that makes every ride boring, which is what a ride should be.",
       ),
+      h2("The driver's strange request, and the good ending"),
+      p(
+        "Now the conversation this lesson exists for. The driver calls and says the road is bad, or the car has a small issue — “just cancel on your side, I am coming, we will do it off the app.” Your answer, warm and immovable: “No, sir. I will meet you there. The trip stays on the app.” Why so firm? The moment the trip is cancelled, the paper trail ends. The fare you agreed, the plate, the insurance of the record, your shared dot — all of it evaporates, and what remains is a stranger and a price. A cancelled trip is how every ride-app story that ends badly begins. Politeness costs nothing; the trip stays.",
+      ),
+      p(
+        "In the car, the rest is ordinary Nigerian road sense: the fare is the fare you saw — no new fee invented at the toll gate without you seeing it in the app; you pay by cash or in-app, and a transfer goes only to the named account the app shows, never to a cousin's number sent by chat. And when the ride ends well, rate it honestly. The rating system is the market's reputation, moved onto a screen — five stars for a safe quiet ride is how the next passenger at a rainy gate finds a good driver. Debrief the trip in your head the way the logbook lesson taught: pickup, plate, route, drop. If anything was wrong, report it while the day is young. The record is the whole reason this is a taxi and not a gamble.",
+      ),
       ul([
-        "Check the plate against the app before your hand touches the door. Every ride.",
-        "Turn on the trip PIN, and share the trip with one person on every night journey.",
-        "Never cancel-and-pay-cash. The app is the record, the price, and the protection.",
-        "Left something behind? The ride history holds the driver and the trip — the fastest lost-and-found the street has ever had.",
+        "Set the pickup pin on your actual gate. Type the destination in full — name, street, area.",
+        "Before you enter: match the plate, the model, and the driver's face to the app. Every trip. No exceptions for hurry.",
+        "Read the PIN rule to yourself again: you type it, you never say it to a caller.",
+        "Share the trip with one person, and refuse every request to cancel “on your side”. Warm voice, closed door.",
       ]),
-      h2("The plate, the picture, and the person"),
       p(
-        "The app shows you three facts before the door opens — the driver's photograph, the car's photograph, and the plate number — and all three must match the vehicle in front of you. Not approximately. Exactly. Read the plate out loud before you sit: if the driver says his brother brought the car or the plate is at the mechanic, the ride is cancelled and reported inside the app. This is not fussiness; it is the difference between a stranger with a contract and a stranger with a car. The same check works in reverse: tell the driver your name from the app, not from his asking.",
-      ),
-      p(
-        "Inside the car, the small rituals keep the road ordinary. Share the trip status with one person — every ride app carries the button — and the journey watches itself. Sit where you can see the road and where the child lock has no opinion about you. Keep the phone's GPS visibly alive; the blue dot is your witness if the car wanders. And at the end, the rating is a public service: an honest five for an honest ride, an honest one for the plate that did not match. The map is the street, tidied and priced. Your attention is still the seatbelt.",
-      ),
-      h2("The map is the street"),
-      p(
-        "Watch the fare breathe with distance and hour, and you are reading a price that used to be argued in sweat and sunshine. Watch the route follow the map, and you are trusting a plan you can see. The ride app is the wider street at its best: the old taxi stand, tidied, priced, and carried to your gate. Gate, plate, PIN, person told. Four words, and the night road is just a road.",
+        "Ngozi's car splashed to the gate at seven eighteen. She checked the plate against the four characters she had said to her sister, sat in, typed the PIN, and watched the rain from a dry seat while the dot crawled on the shared map. The street's old bargaining has not disappeared. It has just learned to write things down.",
       ),
     ],
   },
@@ -7197,7 +7260,7 @@ export const blogPosts: BlogPost[] = [
       "A developer at a laptop with code on one half of the screen and a webpage on the other.",
     body: [
       p(
-        "Everything you have ever touched on a screen — every button that pressed, every form that received your details, every page that arranged itself politely on the phone and the laptop — was built by a frontend developer. The word means simply the front: the part of a program that faces the person using it. Every workshop has a front and a back — the stall that faces the road, and the store room where the stock and the accounts live. The frontend is the stall. It decides whether the customer can find what they came for, whether the price is readable in the sun, whether the transaction finishes or the customer walks in irritation.",
+        "Everything you have ever touched on a screen — every button that pressed, every form that received your details, every page that arranged itself politely on the phone and the laptop — was built by a frontend developer. The word means the front: the part of a program that faces the person using it. Every workshop has a front and a back — the stall that faces the road, and the store room where the stock and the accounts live. The frontend is the stall. It decides whether the customer can find what they came for, whether the price is readable in the sun, whether the transaction finishes or the customer walks in irritation.",
       ),
       p(
         "The craft stands on three layers, and you may as well have their true names now. HTML is the skeleton: this is a heading, this is a paragraph, this is the box where the customer types. CSS is the clothing: colours, spacing, what it looks like when the screen is a small phone in the rain or a wide monitor in an office. JavaScript is the movement: what happens when the button is pressed — the menu that opens, the total that recalculates, the form that checks itself before travelling. Larger buildings are raised with frameworks — prepared skeletons and conventions with names like React, the very technology this page is served with — the way builders raise estates with prefabricated parts instead of moulding every brick by hand.",
@@ -7484,7 +7547,7 @@ export const blogPosts: BlogPost[] = [
         "Every office has a moment when everything stops: the printer dies before the meeting, the email will not open, the system asks for a password nobody remembers. In that moment one person becomes the most important in the building — the person who fixes the day. That is IT support: the trade of keeping other people's work moving, and the most common first room in all of technology. The analyst watches for attackers; the builder raises programs; the support person keeps the ordinary daylight running, which every one of those rooms quietly depends on.",
       ),
       p(
-        "Here is the secret the job adverts do not say: you already know half the trade. Every lesson on this shelf is a ticket — a reported problem — that an IT support person has answered a thousand times. The computer is slow. The update is stuck. There is no sound. The phone says storage is full. The form will not upload. A ticket is simply one of these, reported by somebody else, and the trade is resolving it calmly while its owner watches. What the job adds to what you know is method: ask what changed last, restart honestly, check the obvious road before the exotic one, write down what you did — and a shell of deeper knowledge around it: networks, accounts, machines, the floors of lesson one hundred and twenty-six, climbed and repaired.",
+        "Here is the secret the job adverts do not say: you already know half the trade. Every lesson on this shelf is a ticket — a reported problem — that an IT support person has answered a thousand times. The computer is slow. The update is stuck. There is no sound. The phone says storage is full. The form will not upload. A ticket is one of these, reported by somebody else, and the trade is resolving it calmly while its owner watches. What the job adds to what you know is method: ask what changed last, restart honestly, check the obvious road before the exotic one, write down what you did — and a shell of deeper knowledge around it: networks, accounts, machines, the floors of lesson one hundred and twenty-six, climbed and repaired.",
       ),
       fig(
         "/images/blog/support-desk-helping.jpg",
@@ -7683,7 +7746,7 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("Wall four: the money must arrive"),
       p(
-        "Being paid across borders is a solved problem with a small fee attached: established platforms open receiving accounts that accept dollars or pounds and pay out to Nigerian banks; some clients pay by direct transfer through those platforms, a few by card on contracts. The rules you already live by simply grow a passport: get the fee in writing before the work, invoice properly — a document with your name, the client's, the amount, the account — invoice in parts for anything long, and expect the platform's fee like you expect transport. Keep the receipts; the tax conversation in Nigeria is maturing, and the professional's answer is records, not vibes. The bank lesson's alert-checking, the selling lesson's confirm-before-delivery — the same laws, now in dollars.",
+        "Being paid across borders is a solved problem with a small fee attached: established platforms open receiving accounts that accept dollars or pounds and pay out to Nigerian banks; some clients pay by direct transfer through those platforms, a few by card on contracts. The rules you already live by grow a passport: get the fee in writing before the work, invoice properly — a document with your name, the client's, the amount, the account — invoice in parts for anything long, and expect the platform's fee like you expect transport. Keep the receipts; the tax conversation in Nigeria is maturing, and the professional's answer is records, not vibes. The bank lesson's alert-checking, the selling lesson's confirm-before-delivery — the same laws, now in dollars.",
       ),
       p(
         "Then the manners of the clock, which finish the picture: know your client's hours — overlap is the service, and a Lagos morning is a London morning; a Lagos evening, an American one — choose contracts whose hours you can honestly hold, and treat the closed door of a home workspace as sacredly as any office. The trades of this chapter all lead here eventually: the analyst, the designer, the support engineer, the writer of apps — remote is not a fifth career, it is where the other careers go to be paid in hard currency. Build the walls in order, and the commute stays long but the pay arrives short.",
@@ -7733,7 +7796,7 @@ export const blogPosts: BlogPost[] = [
         "Quote in writing, always — one message: what will be delivered, by when, for how much, revisions bounded, payment split. Take a deposit on anything substantial, half or near it, before work begins; the deposit is not distrust, it is the shape of seriousness, and the client who resents it has told you something useful. Bound revisions — the second redesign is a new job, said with a smile and the written brief. And resist the three classic discounts: the friend price for a business that can pay, the exposure payment — a corpse cannot spend exposure, and neither can a portfolio bank it from a client who never pays — and the urgency discount, where their deadline becomes your discount. The family word lesson's rule applies at the pricing table too: the people who pressure you hardest about money are usually the ones the money was never meant to come from.",
       ),
       p(
-        "Then raising, which is the part everyone fears and every professional eventually does: new clients get the new price immediately — the next quote is simply higher, said plainly; existing clients get notice and warmth — from next month my fee is this, and here is what the year together has built. The good ones stay. The ones who leave were usually the ones holding the floor beneath your market. The catalog's freelancer course works this ground with real numbers and real scripts; the free road is to practise the sentences aloud until your voice stops apologising. The work deserves a price said without a tremble — and so do you, which in this trade are the same sentence.",
+        "Then raising, which is the part everyone fears and every professional eventually does: new clients get the new price immediately — the next quote is higher, said plainly; existing clients get notice and warmth — from next month my fee is this, and here is what the year together has built. The good ones stay. The ones who leave were usually the ones holding the floor beneath your market. The catalog's freelancer course works this ground with real numbers and real scripts; the free road is to practise the sentences aloud until your voice stops apologising. The work deserves a price said without a tremble — and so do you, which in this trade are the same sentence.",
       ),
       fig(
         "/images/blog/quote-message-phone.jpg",
@@ -7874,7 +7937,7 @@ export const blogPosts: BlogPost[] = [
         "The assistant does not know when it does not know. It will state a wrong date, invent a policy, cite a law that does not exist — fluently, in beautiful sentences, without blinking. It is the voice-clone lesson in text: fluent is no longer evidence. So the rule is one sentence: everything checkable gets checked before it leaves your hands — the figure, the date, the policy, the legal claim, checked at the source the way the sixty-second check taught. And the privacy line is drawn hard, as always: nothing that belongs to a client goes into the box — not their data, not their invoices, not their logins — and never your own passwords or the codes that die. What you type there has left your house. Treat the chat window like a public street: fine for ideas, dangerous for keys.",
       ),
       p(
-        "Then the honesty question every trade is now settling: must you tell the client? The working answer here: the client pays for an outcome — the site that works, the letter that lands — and tools have always been allowed. What is not allowed is passing off its mistakes as your work, or claiming hours you did not work. Draft with the apprentice, verify with your own eyes, stand behind the result with your own name. Do that, and the strongest tool ever handed to a self-taught worker is simply yours — free, patient, and waiting in the same browser you already know how to use.",
+        "Then the honesty question every trade is now settling: must you tell the client? The working answer here: the client pays for an outcome — the site that works, the letter that lands — and tools have always been allowed. What is not allowed is passing off its mistakes as your work, or claiming hours you did not work. Draft with the apprentice, verify with your own eyes, stand behind the result with your own name. Do that, and the strongest tool ever handed to a self-taught worker is yours — free, patient, and waiting in the same browser you already know how to use.",
       ),
       fig(
         "/images/blog/verify-ai-claims.jpg",
@@ -8065,7 +8128,7 @@ export const blogPosts: BlogPost[] = [
         "Asking is a skill with manners, and the help lesson wrote them: search first — the answer may already be standing there; show what you tried — the error, the steps, the version, not a shrug and do it for me; and close the loop — return and say what worked, because the person who answers you tomorrow reads whether you came back today. Do this and something quiet happens: the people a level above start recognising your name as the one who asks well and reports back. That recognition is what people call finding a mentor, and it cannot be demanded — it is awarded, in comments and DMs and eventually in referrals, to the visible climber, never to the invisible one.",
       ),
       p(
-        "Keep the shelf's guard up while you are open: the forward-that-lies circulates in learning groups too, the gurus selling container-loads of courses you do not need, the helpers who DM with fee-bearing salvation — the job-scam lesson's costume, reborn as mentorship. Verify before you forward, pay for structure when you have inspected the structure, and never send anybody money to be taught what a free video teaches. The public road you are walking is real. It simply has the same street traffic every road here has always had — and you already know how to walk among strangers.",
+        "Keep the shelf's guard up while you are open: the forward-that-lies circulates in learning groups too, the gurus selling container-loads of courses you do not need, the helpers who DM with fee-bearing salvation — the job-scam lesson's costume, reborn as mentorship. Verify before you forward, pay for structure when you have inspected the structure, and never send anybody money to be taught what a free video teaches. The public road you are walking is real. It has the same street traffic every road here has always had — and you already know how to walk among strangers.",
       ),
       fig(
         "/images/blog/community-meetup-laptops.jpg",
@@ -8448,7 +8511,7 @@ export const blogPosts: BlogPost[] = [
         "Tell the house. A Nigerian interview call dies more often to a gate crash, a blender, or an unexpected visitor than to any technology — brief everybody whose noise can reach you, and put the generator on quiet standby if the grid is in one of its moods. Dress fully — yes, including what the camera cannot see; the stand-up-for-the-document surprise has ended careers at the two-minute mark. Join five minutes early, camera on, sitting already: the panel's first sight of you should be ready, not rising. Keep your CV open on the screen beside the call, your questions written in the notebook, a glass of water within reach.",
       ),
       p(
-        "Then the old manners, on a new road. Look at the camera when you answer — the small dark dot above the screen — not at your own magnificent face; eye contact has simply moved address. Speak a touch slower than feels natural; networks eat consonants. When the connection stutters, stop, wait, ask did that land? — it reads as competence, not weakness. Answer in the letter's spirit: short, ordered, honest — one point at a time, the way lesson one hundred and fifty-six's emails will be written. And when it ends, thank them by name, leave the call before celebrating, and send the thank-you note the same day. The screen interview is still a visit: you are the guest, the panel is the parlour, and the oldest courtesy is the newest bandwidth.",
+        "Then the old manners, on a new road. Look at the camera when you answer — the small dark dot above the screen — not at your own magnificent face; eye contact has moved address. Speak a touch slower than feels natural; networks eat consonants. When the connection stutters, stop, wait, ask did that land? — it reads as competence, not weakness. Answer in the letter's spirit: short, ordered, honest — one point at a time, the way lesson one hundred and fifty-six's emails will be written. And when it ends, thank them by name, leave the call before celebrating, and send the thank-you note the same day. The screen interview is still a visit: you are the guest, the panel is the parlour, and the oldest courtesy is the newest bandwidth.",
       ),
       fig(
         "/images/blog/interview-desk-setup.jpg",
@@ -8854,7 +8917,7 @@ export const blogPosts: BlogPost[] = [
       ]),
       h2("The smallest recurring scam"),
       p(
-        "Nobody gets rich stealing fifty naira from a million people — but a million people quietly get poorer, which is the same arithmetic wearing the other trouser. The deductions survive on not-looking, and not-looking is a habit you can simply end. One evening with the network's app, one list switched off, one DND turned on — and the line goes back to being what you paid for: your voice, your data, your money. The next lesson stays with the bundle itself, and asks where the data actually goes by Wednesday.",
+        "Nobody gets rich stealing fifty naira from a million people — but a million people quietly get poorer, which is the same arithmetic wearing the other trouser. The deductions survive on not-looking, and not-looking is a habit you can end. One evening with the network's app, one list switched off, one DND turned on — and the line goes back to being what you paid for: your voice, your data, your money. The next lesson stays with the bundle itself, and asks where the data actually goes by Wednesday.",
       ),
     ],
   },
@@ -9135,37 +9198,47 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A thumb switching a VPN connection on in a phone app, the icon glowing.",
     body: [
       p(
-        "Sooner or later the word arrives — in an advert, in a tech-bro conversation, in a warning from a cousin abroad: you need a VPN. It is said like a password, and almost nobody explains it. Here is the explanation, in the market's own grammar. Your internet traffic is a letter carried through a loud street; the shops, the network, the curious all see which road it takes and, on open roads, some of what it says. A VPN — virtual private network — wraps that letter in a sealed cover and carries it through a private tunnel to another town before opening it onto the world. The street sees only a sealed wrapper going into a tunnel. The wrapper is the encryption. The other town is the borrowed address. Those two facts are the entire technology.",
+        "Somebody in the office swears by his VPN. He will not check his bank on the shop's Wi-Fi without it, he calls it “the tunnel”, and he has told you twice that you are not serious about security until you pay for one. Meanwhile the same VPN is being sold to you on Instagram as a way to “browse anonymously, unblock anything, disappear online”. Those two pitches cannot both be true — and the interesting part is that both are selling you the same box of software. This lesson opens the box honestly: what a VPN actually does, the two or three moments in Nigerian life when it genuinely helps, and the four promises it has never once kept.",
       ),
       p(
-        "What it genuinely does for you follows from those facts. Privacy from the local street: the café's Wi-Fi, the market's free hotspot — the roads of lesson ninety-nine — can no longer read your open traffic, because it travels sealed. A borrowed address: the internet believes you are sitting in the tunnel's other town, which unlocks services that shun Nigerian addresses and lets you compare prices as a stranger would. And a quieter kind of safety: your home network's address stops being the return address on everything you do. Notice what is not on the list. A VPN does not make scam sites honest. It does not hide you from the law. It does not cure a virus, and it is not a password for a stolen phone — it wraps the road, and the road was never the thief.",
+        "VPN means virtual private network, but you only need the picture. Normally, when your phone asks a website for a page, the request travels through whoever's network you are on — the café's router, the office, the provider — and each of those can see which sites you visited and read anything you send in the clear. A VPN wraps all of that in a private tube between your device and a computer run by the VPN company. The café now sees only that you are talking to the VPN. Inside the tube, nobody along the road can read the words. At the far end, the VPN's computer unwraps the request and fetches the page for you. That is the entire trick. It is a good trick. It is also a smaller trick than the adverts pretend.",
       ),
       fig(
         "/images/blog/vpn-road-tunnel.jpg",
         "A car entering a lit road tunnel in the evening, the open street behind it.",
         "The whole idea in one photograph: the traffic enters sealed, travels hidden, and emerges in another town. The street only saw the entrance.",
       ),
-      h2("When it helps, and when the wrapper is the thief"),
+      h2("When the tube is genuinely useful"),
       p(
-        "Turn it on for the roads you do not trust: the café, the airport, the conference hall — anywhere the Wi-Fi password is written on a chalkboard for strangers. Turn it on when a service refuses Nigerian addresses, or when the comparison shopping needs another country's eyes. And know when to take it off: the bank. Nigerian banks watch for sign-ins from foreign addresses, and a VPN makes your honest login look like a thief's — the app of lesson one hundred and eleven may block you, correctly. Banking happens bare-faced, on your own data, without the tunnel. Then the warning that this whole lesson leans toward: the wrapper-maker sees your wrapped traffic last, which means you have not eliminated the eavesdropper — you have chosen one. The free VPN from the top advert is frequently the eavesdropper himself, collecting what the café could only guess at: your logins, your destinations, your habits. Choosing a VPN is the helpers lesson again — pick a reputable, established name, ideally one you pay a small honest fee, and never the first free banner that promises the world in three megabytes.",
+        "Three moments earn the subscription. First: any untrusted network — the café, the airport, the hotel, the free Wi-Fi at the viewing centre. On those networks a VPN is real protection, because the router's owner and whoever else is connected cannot watch which bank you visited or read your logins. Second: your office network, if your company issues one — that is what it was invented for, remote workers reaching office files through the tube. Third: reading your own services while travelling — your Nigerian bank app and some local apps get nervous about logins from foreign IP addresses, and a VPN exit back home keeps the door familiar. Those are real, practical, boring benefits. Boring is what security sounds like when it is honest.",
+      ),
+      h2("What the VPN has never done"),
+      p(
+        "Now the four promises to stop believing. One: a VPN does not make you anonymous. The VPN company itself stands at the far end of the tube and can log everything — and free VPNs have been caught doing exactly that and selling it. You have traded one watcher for another; choose the watcher the way you choose a bank, not the way you choose a sticker. Two: a VPN is not an antivirus. If the file you downloaded is a virus, the tube delivered it privately and beautifully. Three: it does not stop the scammer who has your number — the fee-unlock message travels happily through any tunnel, because it arrives as an ordinary message asking for ordinary foolishness. Four: it does not make an illegal act legal, or a blocked service yours to steal. The tube is a road, not a cloak of invisibility, and the laws at both ends of a road still stand on it.",
       ),
       p(
-        "Used this way, the VPN earns its place in the pocket: a wrapper for untrusted roads, a borrowed address for stubborn services, a seal for the café. Used as courage — to double money in rooms that ask for VPNs precisely because they are rooms that steal — it is the opposite of protection, and lesson one hundred and seventy is waiting for those rooms. The wrapper is a tool. The wrapper-maker is a choice. Choose in daylight, pay the honest fee, and the tunnel serves the traveller instead of feeding on him. The next lesson stays in the money district, and opens the door of the most modern trap on this street: the loan that arrives in fifteen minutes and collects your whole phonebook as interest.",
+        "One more contrast that the adverts blur, so place it straight now: HTTPS — the padlock from the buying lesson — already encrypts the contents of your traffic to any serious site. The VPN mainly hides where you are going (the site names) from the local network and hides your home address from the site. They are neighbours, not twins: the padlock protects the letter inside the envelope; the VPN hides which post office you visited. For a café's Wi-Fi, the VPN is the one that matters. For the shop's checkout page, the padlock was already the hero.",
       ),
       fig(
         "/images/blog/vpn-cafe-laptop.jpg",
         "A laptop on a café table, a small key icon glowing in the corner of its screen, coffee beside the keyboard.",
         "The chalkboard Wi-Fi, travelled sealed. The wrapper on untrusted roads, and off again for the bank — the tunnel knows its place.",
       ),
-      ul([
-        "One sentence to keep: the wrapper is encryption, the other town is the address. Everything else is marketing.",
-        "On for café Wi-Fi and stubborn services; off for the bank. The tunnel knows its place.",
-        "Choose an established maker and pay the small honest fee. The free wrapper is often the eavesdropper in costume.",
-        "A VPN is privacy, not permission, and not courage. Rooms that require VPNs to steal are described in the next lesson.",
-      ]),
-      h2("The tunnel, in its place"),
+      h2("Choosing one, and living with it"),
       p(
-        "Every tool on this shelf has been introduced the same way: named honestly, dressed in its own clothes, warned about its own street. The VPN is the last of the everyday tools to be so introduced — and now the pocket holds it correctly: sealed when the road is strange, bare when the bank is watching, and never, ever confused with a superpower. Next: the money district, and the app that lends in fifteen minutes.",
+        "If you decide you need one: pay, modestly. Choose a name with a published privacy policy and a history you can read about, the way the buying lesson checks a shop. Install it from the official app store or the company's own typed-in website — a “free VPN APK” from a banner is a trojan wearing the costume of protection, which is the cruellest costume there is. Expect the small everyday costs honestly: some speed loss (streaming and calls will notice), occasional reconnection at the worst moment, and a few Nigerian bank apps that dislike VPN addresses and will ask you to switch it off. That is normal. Switch it off for the bank on your own mobile data if the app objects — on your own network with your own key, you were already safe from the neighbours.",
+      ),
+      p(
+        "The habit, then, is small and fits in one line: the VPN goes on when the network is not yours, and stays a tool instead of a personality. On the café's Wi-Fi, tap the tube. At the office, use theirs. At home, remember you already changed the router's keys and stood up the guest gate. And when a friend says the VPN made him anonymous online, you can tell him the truth gently — the tube is real, the anonymity is not. He has merely hired a better-positioned watcher, and the oldest rule still guards him better than any subscription: the trap arrives by message and is let in by a person.",
+      ),
+      ul([
+        "Install a paid VPN from the official store or the company's own site — never a banner, never a random APK.",
+        "Turn it on for every network you do not own: café, airport, hotel, viewing centre. Make it a reflex like locking the screen.",
+        "Expect the bank app to object sometimes. That is the app being cautious, not your VPN being broken — switch it off on your own data if needed.",
+        "Tell one person the honest definition: a VPN hides your traffic from the road, not from the VPN company, and never from a scammer you chose to believe.",
+      ]),
+      p(
+        "The tunnel is real engineering and worth the two taps on a stranger's Wi-Fi. It is just not the cloak the adverts draw. Use it as a tool with edges — the way you use a padlock, a backup, a locked screen — and the office sceptic and the Instagram seller will both sound exactly as accurate as they are.",
       ),
     ],
   },
@@ -9757,7 +9830,7 @@ export const blogPosts: BlogPost[] = [
         "Rule two: the photographic inventory. Right on the repair counter in front of the engineer, set the laptop down, pull out your phone, and take four clear pictures: the white sticker on the belly showing the exact serial number (Service Tag or Serial No), the screen turned on showing the glass has no cracks, and any existing scratches on the body. Then open Windows Settings > System > About, and snap a picture of the installed RAM and storage size. When the technician sees you systematically documenting every component right before his eyes, any temptation for an apprentice to swap your good parts vanishes into thin air.",
       ),
       p(
-        "Rule three: the agreed diagnostic bound. Insist on a written paper receipt or job card that states your serial number, the exact reported fault ('charges intermittently when wire is bent'), and the diagnosis fee. State plainly: 'Diagnose the fault and call me with the quote before you replace any part.' And finally, the cardinal law of collection: always ask for the old damaged part back in your hand! If the technician tells you he replaced a burnt charging chip, a dead battery, or a bad keyboard, ask for the old damaged piece in a small nylon bag. An honest engineer hands it over with a smile because it proves he actually did the work; an opportunist who simply heated a loose solder joint with a lighter will start stammering.",
+        "Rule three: the agreed diagnostic bound. Insist on a written paper receipt or job card that states your serial number, the exact reported fault ('charges intermittently when wire is bent'), and the diagnosis fee. State plainly: 'Diagnose the fault and call me with the quote before you replace any part.' And finally, the cardinal law of collection: always ask for the old damaged part back in your hand! If the technician tells you he replaced a burnt charging chip, a dead battery, or a bad keyboard, ask for the old damaged piece in a small nylon bag. An honest engineer hands it over with a smile because it proves he actually did the work; an opportunist who heated a loose solder joint with a lighter will start stammering.",
       ),
       fig(
         "/images/blog/old-faulty-part-returned.jpg",
@@ -10041,7 +10114,7 @@ export const blogPosts: BlogPost[] = [
         "Choose the bundle shape that matches your week, and learn whether your unused data rolls or dies.",
       ]),
       p(
-        "The cargo is now understood and metered. But pipes break, radios fade, and one evening the page will simply refuse to open with your own money sitting in the account. The next lesson is the ladder: five rungs, five minutes, and no panic — finding exactly which of the four suspects closed the road.",
+        "The cargo is now understood and metered. But pipes break, radios fade, and one evening the page will refuse to open with your own money sitting in the account. The next lesson is the ladder: five rungs, five minutes, and no panic — finding exactly which of the four suspects closed the road.",
       ),
     ],
   },
@@ -10191,7 +10264,7 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("When the shrine goes offline, and the flash drive question"),
       p(
-        "The Monday litany — the printer is offline — has four usual sermons. The host laptop slept or its lid was closed; wake it and set its sleep to never while plugged in. Somebody changed the Wi-Fi and the printer kept the old number; the router lesson's sticker and a printer restart reconcile them. The printer's own network dropped while its queue keeps faith; clear the queue, restart the printer, print one page. Or the fourth: four documents are queued from four laptops and the shrine is not broken, it is simply busy and behind. Check the queue first and you will skip three sermons.",
+        "The Monday litany — the printer is offline — has four usual sermons. The host laptop slept or its lid was closed; wake it and set its sleep to never while plugged in. Somebody changed the Wi-Fi and the printer kept the old number; the router lesson's sticker and a printer restart reconcile them. The printer's own network dropped while its queue keeps faith; clear the queue, restart the printer, print one page. Or the fourth: four documents are queued from four laptops and the shrine is not broken, it is busy and behind. Check the queue first and you will skip three sermons.",
       ),
       p(
         "And the flash drive, since someone will ask: it still exists and it still works, and for one document to one person at one moment it remains honest. What the shared door replaces is the shuttle service — the drive walking the room like a yam being passed hand to hand, carrying every file it has ever touched into every machine it visits. A shared printer for paper, a shared folder with Read for the office, Change for the scribes, and the drive retires to the drawer where it belongs. The office compound is now properly fenced. Next lesson looks outward at the fence itself — at who else can hear your lantern through the walls.",
@@ -10221,43 +10294,51 @@ export const blogPosts: BlogPost[] = [
       "A small handwritten notebook lying beside a home Wi-Fi router on a wooden shelf in warm lamplight.",
     body: [
       p(
-        "Radio does not stop at your wall. The lantern of your Wi-Fi carries into the compound, into the street, and — on a strong evening signal — into the next building. Whoever hears the name may knock on the gate, and the gate's key decides whether they get in. This is not a reason for fear; it is a reason for one afternoon of housekeeping. Every router ships with a key already set, printed on the sticker underneath and — this is the part people miss — often identical in pattern across thousands of routers of the same maker. The installer typed nothing. The default key is a known door. Changing it is the first and largest act of ownership over the compound you are paying for.",
+        "The Martins moved into the flat beside yours last month, and last week their teenage son — the one who helps everybody with phones — asked for your Wi-Fi key “just for his assignment”. You gave it to him, because he is a good boy. Since then his four friends have also done “assignments”, a new console has appeared, and your internet has grown slow and strangely tired. Nothing has been stolen. Nothing is broken. But the compound of your network has more people in it than you chose to put there — and this lesson is about the fence: the two keys that guard the router, the button that quietly opens the gate, and the guest courtyard that lets you be kind without being naked.",
       ),
       p(
-        "The change is a small walk. On a label you will find the router's admin address — a small local web page — and a password to enter its settings; both live on the sticker, and you photographed that sticker two lessons ago. Inside, the wireless settings carry the network's name and its key. Set the name to something you will recognise and not something boastful — the surname or the flat number, never Bank-Of-Papa or Free-Money. Set the key to a sentence fragment of at least eight characters: a phrase from your own life with spaces removed beats any invented jumble, because it can be spoken to a guest and cannot be found in a dictionary. Then walk every device in the house through the gate once with the new key. One hour, once, forever.",
+        "First, see it the way the network lessons drew it. Your router is the gatehouse of a small compound. Every device you own — phone, laptop, the shop's computer — lives inside the walls. The wireless key on the sticker at the bottom of the router is the key to the gate, and every person you give it to lives inside with you: they can see the printer, they can see the shared folders, and they slow the same well that everyone drinks from. Radio, you see, does not respect block walls. The Martins do not need to be inside your flat. Their laptops hear your gate from their sitting room.",
       ),
       fig(
         "/images/blog/password-notebook-beside-router.jpg",
         "A small handwritten notebook lying beside a home Wi-Fi router on a wooden shelf in warm light.",
         "The key belongs in the notebook in the drawer, not on a sticky note under the shelf. The gate is only as private as its key's hiding place.",
       ),
-      h2("The sticker's warning, and the quiet button"),
+      h2("Change both keys, and never make them twins"),
       p(
-        "Underneath the router, beside the key, there is usually a button called WPS and the sticker speaks of it in hopeful language. The button's idea was kindness: press it and a visitor's device walks in without typing the key. The button's reality is that pressing it opens the gate to anyone in the corridor for two minutes, and there are old attacks against its method that do not require pressing anything at all. The secure household's position is simple and takes one sentence: WPS off, in the router settings, and the button left as furniture. Typing the key once per guest is not suffering. It is the gate doing its work.",
+        "The sticker's printed key was chosen by a factory and printed a million times. Change it. Open the router's settings the way the router lesson taught — the address on the sticker, the admin login — and set a wireless key that is a sentence fragment you can read aloud to a guest: “LagosRain-March” style, long and ordinary. That is the first key.",
       ),
       p(
-        "The admin password deserves the same attention as the wireless key, because it is the deeper door. The sticker's printed password guards the router's own settings — the phonebook, the port rules, the firewall — and every malware on the internet knows the printed passwords of every router model ever sold. Change it to something else in the notebook's language, and the script-kiddie scanners that walk this street every night find nothing. Two keys, then, in your compound: the wireless key for guests and family, the admin key for you alone. Never the same key for both doors. The visitor at the gate is not the manager of the gate.",
+        "The second key is deeper and most people never touch it: the admin password for the router's own settings. That door controls the phonebook, the port rules, the firewall — the gatehouse itself. And here is the fact that should move you tonight: every malware scanner on the internet knows the printed admin passwords of every router model ever sold. If you left the sticker's admin login unchanged, the script-kiddie scanners walking this street every night have your gatehouse's key already. Change it to something else, in the notebook's language again, and those scanners find nothing and move on. Two keys in your compound: the wireless key for guests and family, the admin key for you alone. Never the same key for both doors. The visitor at the gate is not the manager of the gate.",
+      ),
+      h2("The friendly button on the side of the router"),
+      p(
+        "There is a button on most routers called WPS — Wi-Fi Protected Setup — and the idea was kindness itself: a guest presses the button, or types an eight-digit PIN printed on the sticker, and their device joins without you reading the key aloud. It is also, honestly measured, one of the weakest doors ever fitted to a router. There are old attacks against its method that do not require pressing anything at all, patience and a laptop parked outside your wall. The secure household's position is one sentence: switch WPS off in the router settings, and leave the physical button as furniture. Typing the key once per guest is not suffering. It is the gate doing its work.",
       ),
       fig(
         "/images/blog/compound-walls-neighbours.jpg",
         "View from a balcony over a Nigerian compound's block walls and rooftops at dusk under a warm sky.",
         "Radio has no respect for block walls. The fence of your network is a question of keys and habits, not of masonry.",
       ),
-      h2("The guest gate, and the kindness that is also security"),
+      h2("The guest courtyard"),
       p(
-        "Every modern router can open a second courtyard: a guest network with its own name and its own key, whose visitors may reach the internet but not the family's printer, files, or the admin door. Give the guest network a plain name and its own sentence-fragment key, and hospitality stops being exposure. The visitor from Lagos checks his mail happily. His infected laptop — and one in ten is — walks in circles in a courtyard with no doors to your rooms. The same gate serves the household's less careful devices: the smart bulb, the television, the children's tablets, all quarantined together away from the machine with the shop's accounts on it.",
+        "Now the kindness that is also security, and it is built into every modern router: a guest network. Switch it on in the settings and the router opens a second courtyard with its own name and its own key. Visitors there reach the internet and nothing else — not the printer, not the shared folders, not the admin door. Give it a plain name and its own sentence-fragment key, and hospitality stops being exposure. The visitor from Lagos checks his mail happily. His infected laptop — and you have heard the statistic at the repair bench, one in ten machines carries something — walks in circles in a courtyard with no doors to your rooms.",
       ),
       p(
-        "Then the manners of keys. The wireless key is not a shameful secret; it is a household fact, and it belongs in the notebook in the drawer where it can be read to a guest without anxiety. What it does not belong to is the compound's WhatsApp group or a sticky note under the shelf facing the street. Change it when the tenancy ends, when a staff member leaves, when a neighbour's boy who used to do assignments has quietly moved away. Each key change is a rolling of the gate and costs one hour. The compound you pay for should contain only the people you chose. Radio reaches the street; the keys decide who walks in.",
+        "The same courtyard is the right home for your household's less careful devices: the smart bulb, the children's tablets, the television that updates itself from strange places. Put them on the guest network and keep the machine with the shop's accounts on the main court. You have just built the same separation an office calls segmentation, with a settings page and a second key. The shop network lesson is this same picture at work, with more doors and a logbook.",
+      ),
+      h2("The manners of keys"),
+      p(
+        "Finally, the habits around the keys, because a fence is only as good as the compound's manners. The wireless key is not a shameful secret; it is a household fact, and it belongs in the notebook in the drawer where it can be read to a guest without anxiety. What it does not belong to is the compound's WhatsApp group, or a sticky note under the shelf facing the street, or the name of your Wi-Fi network itself — yes, people do that. And keys roll: change the wireless key when the tenancy ends, when a staff member leaves, when the neighbour's boy who used to “do assignments” has quietly moved away. Each roll is one hour of typing the new key into your own devices, once. The compound you pay for should contain only the people you chose.",
       ),
       ul([
-        "Change both keys this week: the wireless key for the household, the admin key for you alone — never the same.",
-        "Turn WPS off in the router settings; the friendly button on the side is a two-minute open gate.",
-        "Open a guest network for visitors and for the household's careless devices; keep the shop's machines on the main court.",
-        "Roll the wireless key when somebody leaves the household — one hour, once, and the compound is yours again.",
+        "This week, change both keys: the wireless key for the household, the admin key for you alone — and never make them the same.",
+        "Find WPS in the router settings and switch it off. The friendly button becomes furniture.",
+        "Open a guest network for visitors and for the household's careless devices; keep the shop's machine on the main court.",
+        "Roll the wireless key whenever somebody leaves your household or compound. One hour, once, and the fence is yours again.",
       ]),
       p(
-        "The fence is now yours: two keys, a guest gate, and a quiet button retired from service. But fences fail and roads close, and the last lesson of this chapter is the one every Nigerian laptop owner already improvises — the pocket router, the rescue wire in the phone you carry, and the manners that keep the rescue from eating the rent.",
+        "The Martins are still your neighbours, and the boy is still a good boy. He lives in a compound now where the gate has a key, the guests have a courtyard, and the gatehouse has a manager. That is not unfriendly. That is what a fence is for.",
       ),
     ],
   },
@@ -10569,7 +10650,7 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("Walking the files home, and the last five minutes"),
       p(
-        "Walk the rescued folders home by the inventory — Documents into Documents, Pictures into Pictures, the accounting files into their own folder with the same names they wore in the old life — and open a sample of each as it lands. This is the emotional hour for the customer, who watches their decade returning room by room, and it is where your earlier counting pays in trust. If the rescue sits in the cloud rather than on a drive, the walk is simply the download — same order, same sampling, same inventory ticking. Nothing is restored blindly. Every room is opened and looked at before the boxes are unpacked.",
+        "Walk the rescued folders home by the inventory — Documents into Documents, Pictures into Pictures, the accounting files into their own folder with the same names they wore in the old life — and open a sample of each as it lands. This is the emotional hour for the customer, who watches their decade returning room by room, and it is where your earlier counting pays in trust. If the rescue sits in the cloud rather than on a drive, the walk is the download — same order, same sampling, same inventory ticking. Nothing is restored blindly. Every room is opened and looked at before the boxes are unpacked.",
       ),
       p(
         "The last five minutes are the handover, and the honest reset earns its name here. Show the customer the clean desktop, the files home in their folders, the inventory completed and ticked, and the one thing they must do themselves — sign in to the mail, sign in to the bank app, set the two-step again with the codes you exported. Then the sentence that separates you from the marketplace: everything you own is back, everything you were lent is gone, and here is the list of what was removed and what was installed. A reset is not a disappearance. It is a move to a clean house with every item counted in — and the customer who has watched the count does not need to trust you. They watched. That is the whole trick of honest work: arrange the daylight, and nobody has to trust anybody.",
@@ -10668,7 +10749,7 @@ export const blogPosts: BlogPost[] = [
         "Now the emotional hour: the old life coming home. If the job began as a backup, the walk is the counted inventory returning folder by folder — Documents into Documents, Pictures into Pictures, the desktop's precious pile into a proper folder at last. If the old machine still lives, a cable between the two or the cloud does the carrying; if it died, the rescue drive does. Whatever the road, walk slowly and open a sample of every room as it lands: three photographs from different years, the CV, the shop's spreadsheet with its formulas intact. The owner watches their decade return, and the watching is part of the service. Nobody enjoys the moving company that opens no boxes.",
       ),
       p(
-        "Then the small acts that make the machine theirs in the heart rather than the registry. Sign in the mail and the cloud account with their own fingers — not yours, their own — so the password enters their memory and never your notebook. Set the wallpaper to their photograph or their favourite place. Brightness for their eyes, sound for their ears, the printer added by its office name, the fonts at a size a parent can read. Move the WhatsApp world with its own official transfer tool, the green app carrying the chats across in one guided walk. When the desktop shows their face and their mail chirps in their own greeting, the machine has stopped being new. It is simply theirs.",
+        "Then the small acts that make the machine theirs in the heart rather than the registry. Sign in the mail and the cloud account with their own fingers — not yours, their own — so the password enters their memory and never your notebook. Set the wallpaper to their photograph or their favourite place. Brightness for their eyes, sound for their ears, the printer added by its office name, the fonts at a size a parent can read. Move the WhatsApp world with its own official transfer tool, the green app carrying the chats across in one guided walk. When the desktop shows their face and their mail chirps in their own greeting, the machine has stopped being new. It is theirs.",
       ),
       fig(
         "/images/blog/handover-tutoring-two-people.jpg",
@@ -11058,7 +11139,7 @@ export const blogPosts: BlogPost[] = [
         "Behind the whole habit stands one fact the machine cannot share with you: the paper will carry your name and not its. When the CV claims a degree the machine invented and the employer telephones the school, the school does not shrug and say the assistant must have been dreaming. When the client's letter cites the wrong subsection and the other side's lawyer notices first, the apology is billed to your reputation. This is why the checking pass is not pedantry; it is the warranty department of your own name, and the name is the only asset in this trade that compounds. One corrected figure, quietly removed before sending, is worth a hundred brilliant drafts after the error has sailed.",
       ),
       p(
-        "The habit, compressed to fit on the card beside the four-part instruction: shape from the machine, facts from the fountain, the two sources rule for anything that travels, and the figures and names circled and checked before the signature. Five minutes of homework on a one-page letter. Twenty on a report. The calm face in the box will never grow anxious on your behalf; that job was always yours. But notice what the checking pass really is, seen from above: exactly the verification habit the forwarded-message lesson gave you, the source habit the news lesson gave you, and the slow-click habit the first safety lessons gave you — now aimed at the most fluent liar of the decade. You already own the skill. The machine is simply the newest person at the table to be politely, calmly, checked.",
+        "The habit, compressed to fit on the card beside the four-part instruction: shape from the machine, facts from the fountain, the two sources rule for anything that travels, and the figures and names circled and checked before the signature. Five minutes of homework on a one-page letter. Twenty on a report. The calm face in the box will never grow anxious on your behalf; that job was always yours. But notice what the checking pass really is, seen from above: exactly the verification habit the forwarded-message lesson gave you, the source habit the news lesson gave you, and the slow-click habit the first safety lessons gave you — now aimed at the most fluent liar of the decade. You already own the skill. The machine is the newest person at the table to be politely, calmly, checked.",
       ),
       ul([
         "Treat every specific — name, date, figure, citation — as a guess until seen somewhere true; shapes are safe, details are homework.",
@@ -11100,7 +11181,7 @@ export const blogPosts: BlogPost[] = [
         "The dishonest road is so easy that it barely needs describing: the essay assigned on Monday arrives from the box on Monday evening, fluent, structured, and the student's fingers never touched the thinking. The teacher may or may not detect it — the detectors improve monthly and the stakes of being caught rise with them — but the detection is the smaller punishment. The larger one is invisible and certain: the skill the essay was meant to build, the slow wrestling with ideas that makes a mind, was outsourced for a mark. Copy the machine's essay often enough and the student becomes a very good courier of work they cannot produce, which is exactly the person every employer is trying not to hire. The machine can shape language. The wrestling was the education.",
       ),
       p(
-        "There is a middle road and it is worth teaching explicitly to every student at the table. Let the machine in — after the struggle. Write the first draft with your own stumbling hands; then ask the box to critique it: where is my argument weak, where is my grammar wrong, what would make this clearer. Take the critique and rewrite the essay yourself. Or ask it for an outline before writing, and then close the box and write from the outline alone. In both versions the thinking stayed at the desk and the assistant played its four honest roles: critic, planner, explainer, quizzer. The finished work is in the student's own words because it was built in the student's own hours — and it will survive the examination, the interview, and the viva where somebody reads it back and asks, simply, what did you mean here.",
+        "There is a middle road and it is worth teaching explicitly to every student at the table. Let the machine in — after the struggle. Write the first draft with your own stumbling hands; then ask the box to critique it: where is my argument weak, where is my grammar wrong, what would make this clearer. Take the critique and rewrite the essay yourself. Or ask it for an outline before writing, and then close the box and write from the outline alone. In both versions the thinking stayed at the desk and the assistant played its four honest roles: critic, planner, explainer, quizzer. The finished work is in the student's own words because it was built in the student's own hours — and it will survive the examination, the interview, and the viva where somebody reads it back and asks, what did you mean here.",
       ),
       fig(
         "/images/blog/phone-lesson-notes.jpg",
@@ -11367,7 +11448,7 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("Where to stand in the decade ahead"),
       p(
-        "The standing positions share one shape and the shape is teachable. Stand where the machine's output meets the human consequence: the technician at the device, the support person at the desk, the analyst who signs the recommendation, the teacher at the class, the operator who watches the automated process and owns its failures. Learn the machine thoroughly — deeper than the people who fear it — and bring the part it lacks: the hands, the face, the name, the stake. The upgrade-habit lesson from the tall-building chapter said it first as a private discipline: one skill a year, honestly added to the CV. This decade simply raises the pace of the honest addition and lowers the price of pretending.",
+        "The standing positions share one shape and the shape is teachable. Stand where the machine's output meets the human consequence: the technician at the device, the support person at the desk, the analyst who signs the recommendation, the teacher at the class, the operator who watches the automated process and owns its failures. Learn the machine thoroughly — deeper than the people who fear it — and bring the part it lacks: the hands, the face, the name, the stake. The upgrade-habit lesson from the tall-building chapter said it first as a private discipline: one skill a year, honestly added to the CV. This decade raises the pace of the honest addition and lowers the price of pretending.",
       ),
       p(
         "For the young person at the table the advice is concrete enough to act on this month. Take one of the standing trades and apprentice to it properly — the repairs bench, the networks and their shops, the support chair, the data's careful end, the teaching of all of it — and bring the assistant along as your tireless intern: it drafts your quotes, explains your errors, quizzes you for your certifications, translates your documentation. Learn the trade the old way in the hands and the new way in the tooling. The two together are the profile the decade rewards: someone who can do the work when the systems fail, and can make the systems work while they hold. That person is rare already, and everything in these two hundred and nine lessons has been building toward their hands.",
@@ -11379,7 +11460,7 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("The work that never had a name"),
       p(
-        "There is one more category of staying work, the largest and least discussed: the labour that never appeared in any job advertisement. The household's administrator — the person who knows where every document lives, when every fee is due, how to recover the aunt's mail. The family's help desk. The compound's quiet teacher. The shop's organiser of its digital back room. Every family in this country has promoted somebody to these posts without a letter, and the promotion is real work with real skill in it — the skill of this entire book. The machines have made this invisible office more powerful and more necessary, not less. Whoever holds these posts at home is already employed by the decade. They should simply learn it, own it, and — when the neighbours ask for help too — finally price it.",
+        "There is one more category of staying work, the largest and least discussed: the labour that never appeared in any job advertisement. The household's administrator — the person who knows where every document lives, when every fee is due, how to recover the aunt's mail. The family's help desk. The compound's quiet teacher. The shop's organiser of its digital back room. Every family in this country has promoted somebody to these posts without a letter, and the promotion is real work with real skill in it — the skill of this entire book. The machines have made this invisible office more powerful and more necessary, not less. Whoever holds these posts at home is already employed by the decade. They should learn it, own it, and — when the neighbours ask for help too — finally price it.",
       ),
       p(
         "So here is the honest summary of the fear, signed in daylight. Yes: the routine rungs are thinning and the ladders are changing shape, and the young must be told the truth about that at the table rather than comforted with fables. And yes: the work that stays is enormous — the accountable, the caring, the careful, the verifying, the standing-behind-it — and it is precisely the work this series has trained from the first sitting. The machines will do more of the typing every year. The world will pay more every year for the deciding. Stand there, keep the manual hours, carry the tool proudly and the judgment privately, and teach one person beside you as you climb. The work is not disappearing. It is being sorted — and sorting is an old friend of ours. We have been doing it since the yellow folders.",
@@ -11409,43 +11490,47 @@ export const blogPosts: BlogPost[] = [
       "A young woman with a laptop bag looking down a quiet Nigerian street in early morning light, hopeful and calm.",
     body: [
       p(
-        "Two hundred and ten lessons ago, a person sat at a desk with a dark screen and did not know where the machine's power button lived. That person was not stupid. They had simply never been given a quiet hour with somebody who would name the parts out loud. Look at what the quiet hours built: the mouse no longer wanders off the table. The yellow folder holds its treasures with names you gave it. Letters leave your table in your own voice. Spreadsheets balance money and the money agrees. The phone is a tool and not a trap. The network's five lights speak and you answer in the right order. The photographs of the whole family live in two safe houses. And the person across the table — the one with the broken screen and the frightened face — is met now by your calm voice, your notebook, your five questions, and the sentence you are not afraid to say: this part is beyond me, and here is where it should go. The machine in front of you is no longer a stranger. Neither are you.",
-      ),
-      p(
-        "The map of the whole road is worth one look from above, the way the climber turns at the last ridge. The first sitting and the parts named. The files and their yellow rooms. The keyboard, the letters, the naira sign. The web and its phonebook, the mail and its manners. The photos, the backups, the cloud's second house. The phone's pocket university and the locks on its doors. The office suite and the working life it opens. The clients, the money, the honest pricing. The taller standing: the interview, the CV, the pivot table. The purse and the pocket and the scams that circle them. The workshop bench where the boxes opened and the dust of the harmattan explained itself. The wire to the house, the lights on the shelf, the shop's three courtyards. The helping hand and its card, its gates, its handshakes across the bench. And finally the strange new colleague in the box — used with four-part instructions, checked at the fountain, kept out of the secrets, taught beside, feared politely, and depended on never. Twenty-one chapters. One line. You walked every step of it.",
+        "Two hundred and ten lessons ago, somebody sat down at a desk in front of a dark screen and was not sure where the power button lived. That person was not stupid. They had never been given a quiet hour with somebody who would name the parts out loud and refuse to laugh. If that person was you, sit for a moment and look at what the quiet hours built: the mouse stays on the table now. The yellow folders hold their treasures under names you chose. Letters leave your desk in your own voice. The spreadsheet balances the money and the money agrees. The phone is a tool and not a trap. The router's lights speak and you answer them in the right order. The family's photographs live in two safe houses. And the person across the table with the broken screen and the frightened face now meets your calm voice, your notebook, your five questions in order — and the sentence you are no longer afraid to say: this part is beyond me, and here is where it should go. The machine in front of you is not a stranger. Neither are you.",
       ),
       fig(
         "/images/blog/looking-outdoor-road-morning.jpg",
         "A young woman with a laptop bag looking down a quiet Nigerian street in early morning light.",
-        "The road does not end at the lesson. It begins at the door — the morning you carry all of this into somebody else's quiet hour.",
+        "The lessons do not end at the page. They begin at the door — the morning you carry all of this into somebody else's quiet hour.",
       ),
-      h2("The ten-year view"),
+      h2("The whole road, one look from above"),
       p(
-        "Now the horizon, honest as always. In ten years the machines on your desk will be stranger than anything in these pages — the assistant will see and hear and draft whole projects, the frauds will stage whole dramas, and the young will find some of these lessons quaint the way we find the typewriter quaint. But the ten-year picture has a fixed point in it, and the fixed point is the reason this series was written. There will still be a person sitting down at a machine for the first time, frightened, in a room in Port Harcourt or Potiskum or a village with one working laptop, needing exactly one thing: somebody to name the parts out loud and refuse to laugh. The technology at that table will be different. The quiet hour will be identical. It has not changed since the first teacher sat beside the first student, and it will not change in ten years or in a hundred.",
+        "Before we close the book, turn around at the top and look back at the route, the way you would reread a map before leaving a city. The first sittings named the parts and gave you the keyboard's geography — the letters, the naira sign, the shortcuts. Then files: yellow rooms, real names, the bin by the door, the backups in two houses. The internet arrived as a road with rules, the mail with its manners, the web's judgement yours at last. The phone became a pocket university with locks on its doors. The office suite grew into a working life: letters, forms, the spreadsheet's small honesty. The working chapter taught the interview, the CV, the pivot table nobody can bluff. The purse lessons stood between you and the fee that unlocks nothing. The workshop opened the boxes and named the dust of the harmattan. The network chapter wired the compound — the wire to the house, the lights on the shelf, the shop's three courtyards, the neighbours and their curiosity. The helping chapter gave you a card, a logbook, and handshakes across a bench. And the last chapter, the strangest one, taught you to work beside the assistant in the box: four-part instructions, checking at the fountain, your secrets kept out of it, taught beside it, feared politely, depended on never.",
       ),
       p(
-        "So the ten-year plan is two sentences long. Keep your own hands current — the yearly upgrade habit, the manual hours, the roadmap pinned and climbed — because the fixed point needs company that keeps its tools sharp. And keep the quiet hour funded in your own calendar — one person at a time, free, patient, with the names said out loud. The machines will handle more of the typing every year of that decade. The deciding, the checking, the caring, and the sitting-beside will grow more precious every year — and those were the gifts in your hands before this series began. The lessons only gave them vocabulary. The road ahead is the same road it has always been: a person, a machine, and somebody willing to sit down.",
+        "Twenty-one chapters, and only one thread through all of them: slow down, name what you see, decide, then act. Every skill in the series was that one move wearing different clothes.",
+      ),
+      h2("The next ten years, honestly"),
+      p(
+        "Now the horizon, honestly, the way this series has always talked to you. In ten years the machines on your desk will be stranger than anything in these pages. The assistant will see and hear and draft whole projects. The frauds will stage whole dramas with voices and faces you trust. Some of these lessons will sound quaint to the young — the way the typewriter sounds quaint now — and some of the buttons will have moved. Prepare for that without anxiety: the yearly upgrade habit from the roadmap lesson keeps your hands current, and what keeps them honest is the manual hours you still spend checking the machine's work at the fountain.",
+      ),
+      p(
+        "But the ten-year picture has one fixed point in it, and the fixed point is the reason this series was written at all. There will still be a person sitting down at a machine for the first time, frightened, in a room in Port Harcourt or Potiskum or a village with one working laptop — needing exactly one thing: somebody to name the parts out loud and not laugh. The technology at that table will be different. The quiet hour will not. It has not changed since the first teacher sat beside the first student, and it will not change in ten years or a hundred. Everything you learned here — every file, every light, every question, every fence — is preparation for that morning.",
       ),
       fig(
         "/images/blog/computer-desk.jpg",
         "A learner sitting at a wooden desk facing a desktop computer, the room quiet and warm around them.",
-        "The first sitting, still happening somewhere this morning. The whole series is the quiet hour you were given — and the one this photograph is still asking you to give away.",
+        "The first sitting is still happening somewhere this morning. The whole series is the quiet hour somebody gave you — and the one this photograph is still asking you to give away.",
       ),
       h2("The quiet hour you now owe"),
       p(
-        "Every lesson in this book was built out of one gift: somebody — a person, a note, a patient stranger — gave you a quiet hour at the beginning. The gift has a peculiar property that money never figured out. It does not deplete. It multiplies only when given, and it multiplies specifically in the hands of those who remember being the frightened one at the desk. That is why this is the last lesson and not the last chapter of advice. There is no more advice to give. There is only a debt, small and payable in the currency you were paid in, and the whole trade of your next decade can be arranged around its payment: teach one person, who will teach one person.",
+        "Every one of these lessons was built out of one gift: somebody — a teacher, a note, a patient stranger on a bench — gave you a quiet hour at the beginning, when you were the frightened one. A gift like that has one peculiar property that money never figured out: it does not deplete. It multiplies only when passed on — and it multiplies specifically in the hands of the people who remember being afraid at the desk. That is why this is the last lesson and not merely the last chapter of advice. There is no more advice to give. There is a debt, small and payable in the exact currency you were paid in. Teach one person, who will teach one person.",
       ),
       p(
-        "Close the book now and leave it open on the shelf — you will meet these pages again at somebody else's screen, looking for the lesson on the clicking drive or the fee that unlocks nothing. The certificates on the wall and the cards in the drawer will do their work in the market. But the real work is the one this series can only point at and cannot do for you. Somewhere in your compound this week, there is a dark screen and a person avoiding it. Take them the quiet hour. Name the parts out loud. Do not laugh. Everything else you learned here — every file, every light, every question, every fence — is only preparation for that morning. The machine is patient. The road is open. Go and be somebody's quiet hour.",
+        "Keep the book on the shelf at the height of somebody else's screen. You will meet these pages again at a cousin's laptop, hunting for the lesson on the clicking drive or the fee that unlocks nothing. The certificates on the wall and the cards in the drawer will do their work in the market — the pricing, the clients, the handovers. But the real work is the one this series can only point toward. Somewhere in your compound this week there is a dark screen and a person avoiding it. Take them the quiet hour. Name the parts out loud. Do not laugh. Go well.",
       ),
       ul([
-        "Turn at the ridge and read the map whole: twenty-one chapters, one line, every step yours.",
-        "Keep the hands current and the judgment manual; the fixed point of the decade is the person at the first sitting.",
-        "Fund one quiet hour a week in your own calendar — free, patient, the parts named out loud, no laughing.",
-        "Leave this book on the shelf at the height of somebody else's screen; the debt is paid one person at a time.",
+        "Reread the map whole once — twenty-one chapters, one thread: slow down, name what you see, decide, then act.",
+        "Keep your hands current and your judgment manual: the yearly upgrade habit and the manual hours both stay in the calendar.",
+        "Fund one quiet hour a week in your own life — free, patient, the parts named out loud, nobody laughed at.",
+        "Keep this book within reach of the next frightened screen. The debt is paid one person at a time.",
       ]),
       p(
-        "Two hundred and ten lessons, and only the first one was ever really taught: you belong at this machine. Everything since has been footnotes to that sentence. The desk is warm, the screen is bright, and the road ahead is yours. Go well.",
+        "Two hundred and ten lessons, and only the first one was ever really taught: you belong at this machine. Everything since has been a footnote to that sentence. The desk is warm. The screen is bright. The road ahead is yours.",
       ),
     ],
   },
