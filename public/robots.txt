@@ -7,8 +7,10 @@ Disallow: /app/
 Disallow: /auth/
 Disallow: /portal/
 Disallow: /apply/status
-Disallow: /*?*
-Disallow: /*&*
+Disallow: /*?*utm_*
+Disallow: /*?*fbclid=*
+Disallow: /*?*gclid=*
+Disallow: /*?*ref=*
 
 User-agent: Bingbot
 Allow: /
@@ -27,8 +29,8 @@ Disallow: /app/
 
 # Everyone else: same core protection. /app, /auth, /portal and the
 # application-status lookups are additionally served with an
-# `X-Robots-Tag: noindex` response header (nitro.config.ts), so they stay
-# out of the index even if a crawler ignores this file.
+# `X-Robots-Tag: noindex` response header, so they stay out of the index
+# even if a crawler ignores this file.
 User-agent: *
 Allow: /
 Disallow: /app/

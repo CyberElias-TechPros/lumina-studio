@@ -1,4 +1,4 @@
-import { createFileRoute, Link, useParams } from "@tanstack/react-router";
+import { createFileRoute, Link, useParams, redirect } from "@tanstack/react-router";
 import { ArrowLeft, ArrowRight, CalendarDays, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { CTASection, PageShell } from "@/components/marketing/shell";
@@ -7,8 +7,19 @@ import { FounderPhoto } from "@/components/marketing/founder-photo";
 import { adjacentNotes, chapterForOrder, relatedNotes } from "@/data/note-chapters";
 import { getPageHead } from "@/lib/seo";
 import { readingTimeLabel } from "@/lib/blog-reading-time";
+import { resolveBlogSlugRedirect } from "@/lib/legacy-redirects";
 
 export const Route = createFileRoute("/blog/$slug")({
+  beforeLoad: ({ params }) => {
+    const legacyTarget = resolveBlogSlugRedirect(params.slug);
+    if (legacyTarget) {
+      throw redirect({ to: legacyTarget, replace: true, code: 301 });
+    }
+    const exists = blogPosts.some((p) => p.slug === params.slug);
+    if (!exists) {
+      throw redirect({ to: "/blog", replace: true, code: 301 });
+    }
+  },
   head: ({ params }) => {
     const post = blogPosts.find((p) => p.slug === params.slug) ?? blogPosts[0];
     const articleSchema = {
@@ -66,7 +77,12 @@ function Block({ block }: { block: BlogBlock }) {
   if (block.type === "figure") {
     return (
       <figure className="border-border my-8 overflow-hidden rounded-lg border">
-        <img src={block.src} alt={block.alt} className="h-auto w-full object-cover" loading="lazy" />
+        <img
+          src={block.src}
+          alt={block.alt}
+          className="h-auto w-full object-cover"
+          loading="lazy"
+        />
         <figcaption className="text-muted-foreground px-4 py-3 text-sm leading-relaxed">
           {block.caption}
         </figcaption>

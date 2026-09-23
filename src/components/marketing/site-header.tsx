@@ -102,7 +102,9 @@ export function SiteHeader() {
                 aria-current={active ? "page" : undefined}
                 className={cn(
                   "text-sm transition-colors",
-                  active ? "text-foreground font-medium" : "text-muted-foreground hover:text-foreground",
+                  active
+                    ? "text-foreground font-medium"
+                    : "text-muted-foreground hover:text-foreground",
                 )}
               >
                 {item.label}
@@ -114,6 +116,7 @@ export function SiteHeader() {
           <ThemeToggle />
           <Link
             to="/auth/sign-in"
+            rel="nofollow"
             className="text-muted-foreground hover:text-foreground hidden text-sm sm:block"
           >
             Sign in
@@ -162,6 +165,7 @@ export function SiteHeader() {
             </Link>
             <Link
               to="/auth/sign-in"
+              rel="nofollow"
               onClick={() => setOpen(false)}
               className="hover:bg-muted rounded-md px-2 py-2.5 text-sm"
             >
