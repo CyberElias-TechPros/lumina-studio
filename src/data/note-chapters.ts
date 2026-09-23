@@ -11,7 +11,7 @@ export type NoteChapter = {
   courseLabel: string;
 };
 
-/** Ten chapters of ten. The series is one line; the chapters are how a person finds their place. */
+/** Twenty-one chapters of ten. The series is one line; the chapters are how a person finds their place. */
 export const noteChapters: NoteChapter[] = [
   {
     slug: "the-first-sitting",
@@ -185,6 +185,36 @@ export const noteChapters: NoteChapter[] = [
     to: 180,
     courseSlug: "computer-repairs",
     courseLabel: "Computer Hardware & Repairs",
+  },
+  {
+    slug: "the-wire-and-the-wave",
+    title: "The wire and the wave",
+    blurb:
+      "The road to the house, the five lights, Wi‑Fi and the cable, megabytes, the sick network, names and numbers, the shared printer, the neighbours, the rescue wire, and the shop's three courtyards.",
+    from: 181,
+    to: 190,
+    courseSlug: "computer-networking",
+    courseLabel: "Computer Networking",
+  },
+  {
+    slug: "the-person-people-call",
+    title: "The person people call",
+    blurb:
+      "Listening first, the five questions, fixing without formatting, the honest reset, backup in two houses, a new machine set up, the price sentence, help from across town, the border, and support as bread.",
+    from: 191,
+    to: 200,
+    courseSlug: "it-support",
+    courseLabel: "IT Support",
+  },
+  {
+    slug: "the-road-ahead",
+    title: "The road ahead",
+    blurb:
+      "The assistant that types, asking clearly, checking the homework, the school desk, the office desk, pictures and voices, the judgment that stays, learning faster, the work that stays, and the quiet hour owed.",
+    from: 201,
+    to: 210,
+    courseSlug: "ai-productivity",
+    courseLabel: "AI Productivity",
   },
 ];
 
