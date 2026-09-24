@@ -3100,10 +3100,10 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A contacts list showing names and phone numbers.",
     body: [
       p(
-        "The phone book on a feature phone lived on the SIM. Android and iPhones keep cards in an account if you let them. People lose a hundred names at a repair shop because the names lived only on a dead handset. A contact is a small file: name, number, email, maybe a photo. This lesson is one card, where it is stored, and copying the drawer before the basin.",
+        "Aminat had typed “Contacts transfer, ₦500” on the sign at Computer Village, and paid it gladly, because her phone had died the night before with three hundred and twelve names inside. The boy did something quick with two cables. “It’s fine,” he said. On the new phone, the list was empty. He had copied the phone. He had not copied the drawer.",
       ),
       p(
-        "On the phone, Contacts, add. Name as you would search — Amaka Okoro, not AMK. Number with the country code if they are not beside you every day: +234… Email if you have it, so the card can open a letter. Save. Then look at the save location: Phone, SIM, or Google. Google is the drawer that survives a new handset if you sign in. Phone-only is the basin risk. SIM holds few names and fewer emails.",
+        "A contact is a card: name, number, maybe email, maybe a photo. The SIM is one drawer. Phone storage is another. A Google account is a third — and only the third drawer follows you to any new handset where you sign in. Two hundred names lost at a repair shop is almost never a dead phone. It is names that lived only in the basin.",
       ),
       fig(
         "/images/blog/contacts-list.jpg",
@@ -3112,10 +3112,13 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("The laptop, and the same house"),
       p(
-        "contacts.google.com on the real street shows the same cards if the phone used Google. You can add from the laptop, with a proper keyboard, for a list you were given on paper. Export is a backup file. A CSV is a spreadsheet of names. That file in Drive or on a USB is a second house. Do not email your whole book to a stranger who asked nicely.",
+        "On the phone: Contacts, Add. Name as you would search for it — Amaka Okoro, not AMK. Number with the country code if the person is not beside you every day: +234…. Email if you have it, so the card can open a letter later. Save — and then look at where it saved. Phone, SIM, or Google. Choose Google when you can. Phone-only is the basin risk; the SIM holds few names and almost no emails.",
       ),
       p(
-        "WhatsApp is not the phone book. It reads the book and shows who has the app. If you delete a WhatsApp chat, the number may still be in Contacts. If you “delete contact,” some apps forget the name and keep the number as digits. Look twice. The green app is a room. The book is a drawer.",
+        "contacts.google.com on the laptop shows the same cards if the phone used Google. You can even add from the laptop, with a real keyboard, for the list somebody gave you on paper. Export is a backup file — a CSV is just a spreadsheet of names — and that file in Drive or on a USB stick is a second house. Two houses, again, like every good thing in these notes. What you do not do is email your whole book to a stranger who asked nicely.",
+      ),
+      p(
+        "One confusion to retire: WhatsApp is not the phone book. It reads the book and shows who has the app. Delete a WhatsApp chat and the number may still sit in Contacts. “Delete contact” in some apps forgets the name but keeps the digits. Look twice before the second tap. The green app is a room. The book is a drawer.",
       ),
       fig(
         "/images/blog/address-book.jpg",
@@ -3126,21 +3129,21 @@ export const blogPosts: BlogPost[] = [
         "Add one new contact with a full name and number, saved to Google if you can.",
         "Open contacts.google.com on the laptop. Confirm the card is there.",
         "If it is not, the phone saved to Phone only. Edit the contact, move it to the account.",
-        "Do not grant a random app your whole book because a banner asked.",
+        "Do not grant a random app your whole book because a banner asked. A game does not need your landlord.",
       ]),
       h2("Naming a contact so December finds them"),
       p(
-        "Save people the way a December stranger would need to find them: the full name as the person says it, and one small word for the road they walk — Chidi mechanic, Aunty Ngozi primary school, Emeka WAEC office. One word of context turns a list of four hundred names into a market you can walk. The mobile number belongs in the mobile box, the office line in its own box, and the second SIM in the second slot the phone already provides. Do not make three separate people out of one man with two lines. That is how the list grows fat and the search grows useless.",
+        "Save people the way a December stranger would need to find them: the full name as the person says it, and one small word for the road they walk. Chidi mechanic. Aunty Ngozi primary school. Emeka WAEC office. One word of context turns four hundred names into a market you can walk. The mobile number goes in the mobile box, the office line in its own, the second SIM in the slot the phone already provides. Do not make three separate people out of one man with two lines — that is how the list grows fat and the search grows useless.",
       ),
       p(
-        "Ten minutes twice a year keeps the list clean. Search the common duplicates — the same saved name with and without a surname — and merge them into one card with both numbers. Delete the numbers whose owners have gone quiet for two years, unless the name carries a debt or a memory worth keeping; a phone book is allowed to be a small archive. And when a name arrives on WhatsApp from a new number claiming to be an old friend, update the card the same day you verify the voice. The list is not a list. It is the map of everyone who can find you.",
+        "Ten minutes twice a year keeps the list clean: merge the duplicates — Amaka, Amaka Okoro, Mrs Amaka are three cards for one woman — and retire the numbers whose owners have gone quiet for two years, unless the name carries a debt or a memory worth keeping. A phone book is allowed to be a small archive. And when a new number arrives on WhatsApp claiming to be an old friend, update the card the same day you verify the voice. The list is not a list. It is the map of everyone who can find you.",
       ),
       h2("When the phone dies"),
       p(
-        "A new handset, same Google account, Contacts on: the cards come back. That is the test of the cloud, in names. If they do not, you had saved to the old phone. A shop that “transfers contacts” is copying drawers. Watch which drawer. SIM to SIM is small. Account to account is the real move.",
+        "The test of the cloud, in names: a new handset, the same Google account, Contacts switched on — and the cards walk back in. If they do not come, you had saved to the old phone, and the old phone is in a drawer with its screen dark. A shop that “transfers contacts” is copying drawers; watch which one. SIM to SIM is small work. Account to account is the real move.",
       ),
       p(
-        "Write the academy, the landlord, and two family numbers on paper anyway. Electricity and accounts fail. The book on the computer is a tool. The paper in the drawer is how you still phone a person when the tool is in the shop. You do not need five hundred cards on paper. You need the few that open a door.",
+        "Still, write four things on paper: the academy, the landlord, and two family numbers. Electricity fails. Accounts fail. The paper in the drawer is how you still phone a person when the tool is in the shop. You do not need five hundred cards on paper. You need the few that open a door. Aminat’s new phone has all three hundred and twelve cards back — she checked before she paid the boy — and four numbers live on the inside cover of her dictionary, where power cuts cannot reach them.",
       ),
     ],
   },
@@ -3671,10 +3674,10 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A word-processor paragraph with a red squiggle under a misspelled word.",
     body: [
       p(
-        "A red squiggle appears under a word. People either ignore every line until the page is measles, or they right-click Accept until a name becomes something else. Spell check is a cousin who is good at letters and bad at meaning. It will shout at Okoro, at naira, at a street in Rumuola. It will stay quiet for “I have from for you” when you meant form. This lesson is the squiggle, the dictionary, and the only check that still works: reading the letter aloud.",
+        "Ndidi was typing a letter to the school board — her first letter that would be read by people who read letters for a living — and by the second paragraph the page wore a red rash. Under Okoro: red. Under the word naira: red. Under Rumuola, where her aunt lives: red. She almost changed every one of them to please the machine. Then she read what the machine had quietly accepted in the same paragraph: “I have from for you,” where she meant form. Not a flicker from the tool.",
       ),
       p(
-        "Right-click a red word. A short list of guesses. If the guess is right, click it. If the word is a name you meant, Add to dictionary, or Ignore all for this document. Ignore all is for Okoro. Add to dictionary is for a word you will keep typing on this machine. Do not add a misspelling because you are tired. The cousin will then defend the mistake forever.",
+        "Spell check is a cousin who is good at letters and bad at meaning. It shouts at names and stays quiet for the word that ruins the sentence. This lesson is the squiggle, the dictionary it was raised on, and the only check that still works: reading the letter out loud.",
       ),
       fig(
         "/images/blog/spellcheck-red.jpg",
@@ -3683,10 +3686,10 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("Language, and the blue line"),
       p(
-        "Word guesses a language. If the whole letter is squiggled, it may think you are writing French. Review, Language, Set proofing language, English (United Kingdom) is close enough for Nigeria; English (United States) is also fine. Mixed languages in one sentence will confuse it. A quote in Pidgin may stay red. That is the cousin, not a verdict on your English.",
+        "Right-click a red word and you get a short list of guesses. Right answer? Click it. A name you meant? Ignore all for this letter, or Add to dictionary for words you will keep typing on this machine. Do not add a misspelling because you are tired — the cousin will then defend the mistake forever after. And if the entire letter is squiggled, the tool may think you are writing French. Review, Language, Set proofing language: English (United Kingdom) is close enough for Nigeria; United States is also fine. A quote in Pidgin may stay red. That is the cousin, not a verdict on your English.",
       ),
       p(
-        "A blue underline, on many versions, is grammar: a missing question mark, a long sentence, “their” when it wanted “there.” It is still a cousin. It will be wrong about names and about the way we write dates. Read the suggestion. If it wants to flatten a greeting into American office-speak, Ignore. You are not obliged to sound like a template.",
+        "A blue underline, on many versions, is grammar: a missing question mark, a long sentence, “their” where it wanted “there.” Still a cousin. It will be wrong about names and about the way we write dates. Read the suggestion. If it wants to flatten a greeting into American office-speak, Ignore it. You are not obliged to sound like a template.",
       ),
       fig(
         "/images/blog/reading-letter.jpg",
@@ -3694,24 +3697,24 @@ export const blogPosts: BlogPost[] = [
         "The mouth catches what the squiggle misses. If you stumble, the reader will stumble. Change that sentence. The cousin cannot hear it.",
       ),
       ul([
-        "Type a sentence with a real typo — reciept. See the red line. Right-click, choose receipt.",
+        "Type a real typo — reciept. See the red line. Right-click, choose receipt.",
         "Type your surname. If it squiggles, Ignore or Add. Do not change your name to please Word.",
-        "Read the paragraph out loud. Fix one thing the cousin did not see.",
-        "Do not click Change all on a name.",
+        "Read one paragraph out loud. Fix the thing the cousin did not see.",
+        "Never click Change all on a person’s name.",
       ]),
       h2("The dictionary and the names it does not know"),
       p(
-        "Half of the red lines in a Nigerian letter are not mistakes at all; they are names. Chidinma, Okonkwo, Adebayo, Port Harcourt written as one word — the dictionary was not raised in your street. Right-click the name and you will find Add to dictionary, which teaches the machine your world once and forever after the names stand straight. The other half of the lines are the English of the setting: a letter using organise is marked wrong by a machine set to American English, and neither spelling is lying. Right-click and set the language to match the school that taught you, or to match the organisation you are writing to.",
+        "Half of the red lines in a Nigerian letter are not mistakes at all; they are names. Chidinma, Okonkwo, Adebayo, Port Harcourt written as one word — the dictionary was not raised in your street. Right-click the name and choose Add to dictionary, which teaches the machine your world once, and forever after the names stand straight. The other half is the English of the setting: a letter using organise is marked wrong by a tool set to American English, and neither spelling is lying. Set the language to match the school that taught you, or the organisation you are writing to.",
       ),
       p(
-        "Then keep the cousin in his place. Spell check catches a transposed letter and will never catch from typed for form, or the principal's name spelled correctly but assigned to the wrong principal. Grammar lines under sentences are suggestions from statistics, not the voice of an examiner; take them when they help and ignore them when they flatten your meaning. The reading you owe every letter is your own — out loud, slowly, starting at the greeting. The machine can circle what is unusual. Only you know what you meant.",
+        "Then keep the cousin in his place. He catches a transposed letter and will never catch from typed for form, or the principal’s name spelled correctly but assigned to the wrong principal. Grammar lines are suggestions from statistics, not the voice of an examiner. The reading you owe every letter is your own — out loud, slowly, starting at the greeting. The machine can circle what is unusual. Only you know what you meant.",
       ),
       h2("Browser boxes, and what you still owe"),
       p(
-        "Gmail and many forms squiggle too. The same manners. A phone will autocorrect a name into a stranger on the way to WhatsApp. Watch the name before you send, especially a number that became a word. Autocorrect is a cousin who interrupts. Hold the word, choose what you typed, if the phone allows.",
+        "Gmail and most web forms squiggle too, with the same manners. And a phone will autocorrect a name into a stranger on the way to WhatsApp — watch the name and the number before you send, especially a number that became a word. Autocorrect is a cousin who interrupts. Hold the word and choose what you typed, if the phone allows.",
       ),
       p(
-        "Spell check does not make a letter true. It does not check that the fee is 15,000 and not 150,000. It does not check that you attached the file. You still owe a slow read, the attachment glance, and a subject that tells the truth. The red line is a helper on the walk. It is not the walk. When the cousin is quiet and the mouth is quiet, send.",
+        "One contrast worth carrying out of here: a clean page and a true letter are not the same thing. Spell check will pass a fee of 15,000 typed as 150,000. It will pass an empty attachment. You still owe the slow read, the attachment glance, and a subject line that tells the truth. When the cousin is quiet and the mouth is quiet, send. Ndidi sent hers at 4:40 that afternoon, with Okoro intact and form where it belonged.",
       ),
     ],
   },
@@ -4617,44 +4620,47 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A spreadsheet amount column formatted as money.",
     body: [
       p(
-        "You already know to type 450, not ₦450, if you want the grid to add. The page still looks naked. Offices like a sign and two decimals. Formatting is a costume on a number that is still a number. This lesson is selecting the amount column, choosing currency or a custom naira, and not painting the header as money so the word Amount becomes a joke in the total.",
+        "Musa runs the price list for his apprenticeship shop — the fees, the materials, the transport — and he wanted it to look like money before his master read it. So he typed ₦1,500 into the cells, comma and all. Then he asked for a total at the bottom, and the total said ₦3,000. Three rows sat there wearing naira signs. The grid had counted two of them and politely ignored the rest. The sign he typed by hand had turned his numbers into words.",
       ),
       p(
-        "Click the header of the amount column, or select the cells that hold amounts — not the word Amount, not the names. In Excel: Home, the Number box, Currency, or More number formats. If ₦ is in the list, pick it. If not, pick a symbol you can stand, or type NGN in the header and keep the cells as numbers with two decimals. Sheets: Format, Number, Custom currency. Two decimal places is ordinary. 1500 becomes 1,500.00. The comma is the costume. The 1500 is still 1500.",
+        "You already know the cure from the last lesson: type 450, not ₦450. But the page still looks naked, and offices like a sign and two decimals. So: formatting is a costume on a number that is still a number. This lesson is dressing the whole amount column at once — and never dressing the header.",
       ),
       fig(
         "/images/blog/currency-format.jpg",
         "An amount column wearing a money format.",
         "The sign sits in the cell. The formula bar, at the top, still shows the plain number when you click. That is the truth the SUM uses.",
       ),
-      h2("When the costume fights the sum"),
+      h2("Dressing the column once"),
       p(
-        "If you typed ₦1500 as text in some cells and formatted others, SUM will skip the text. The total looks too small. Delete the sign from the cell, type the digits, format the column. If a cell shows ###### after currency, the column is too thin for the extra characters — next lesson but one, widen it. That is not a lost amount. It is a curtain.",
+        "Click the header of the amount column, or select just the amount cells — not the word Amount, not the names. In Excel: Home, the Number box, Currency, or More number formats. If ₦ sits in the list, pick it. If not, pick a symbol you can stand, or type NGN in the header and keep the cells as numbers with two decimals. Sheets: Format, Number, Custom currency. Two decimals is ordinary. 1500 becomes 1,500.00 — the comma is the costume; the 1500 is still 1500.",
       ),
       p(
-        "Accounting format in Excel adds a dash for zero and hangs the sign on the left. It looks like a bank. It is optional. Do not mix Accounting, Currency, and plain in one column. Pick one costume. The total cell should wear the same clothes as the column, or it looks like a different kind of number. Click the total, format it the same way.",
+        "The proof is the formula bar at the top. Click any dressed cell and look up: the formula bar still shows plain digits. That is the body, and that is what SUM works on. The costume must never change the body — and the one habit that keeps it so is this: the format does the dressing, never your keyboard. The hat goes on after the worker is in place.",
       ),
       fig(
         "/images/blog/naira-column.jpg",
         "A learner with a spreadsheet of amounts, naira notes and a receipt on the desk.",
         "The paper is still the source. The costume on the grid is for reading. If they disagree, the receipt wins until you find the mistyped cell.",
       ),
+      h2("When the costume fights the sum"),
+      p(
+        "If some cells were typed with ₦ and others formatted, SUM skips the typed ones and the total looks too small. Delete the signs from the cells, type the digits, format the column — one costume for the whole column. Accounting format adds a dash for zero and hangs the sign at the left edge like a bank statement; it is optional. What is not fine is mixing Accounting, Currency and plain digits in one column. And when a cell goes ###### after dressing, that is the curtain from the error lesson ahead: widen the column. It is not a lost amount.",
+      ),
+      p(
+        "Two more costumes share the drawer. Comma style adds the thousands without the sign — right for populations and quantities. Percentage style turns 0.15 into 15%, which is the only correct way to make percentages; typing the per cent sign by hand is the naira-sign mistake wearing another hat. In every case the test is the same: click the cell, look at the formula bar. Digits at the top means the sums are safe. ₦ or % at the top means the costume has got into the body.",
+      ),
       ul([
         "Type three amounts as plain digits. SUM them. Note the total.",
         "Select the amounts and the total. Apply currency or two decimals. Confirm the total did not change in meaning.",
         "Click a dressed cell. Look at the formula bar. You should see digits, not a picture.",
-        "Do not format the Name column as money. If you did, Undo, or set it back to General or Text.",
+        "Do not format the Name column as money. If you did, Undo, or set it back to General.",
       ]),
-      h2("The costume must not change the body"),
-      p(
-        "Cell formatting is costume only; the body underneath keeps its arithmetic. Tell a cell it is money and the number still sums exactly as before — only the spelling changes, ₦1,500.00 instead of 1500. This matters because people fear the costume and type the naira sign by hand into cells, which dresses the number as text and breaks every sum behind it. Let the format do the dressing. Right-click, Format Cells, the currency line, choose Naira, decide on the decimals — two for money that meets a bank, none for money that meets a market — and the whole column dresses the same in one pass.",
-      ),
-      p(
-        "Two more costumes in the same drawer. The comma style adds the thousands without the sign, which is the right dress for populations and quantities. The percentage style turns 0.15 into 15%, which is the only correct way to make percentages, since typing the per cent sign by hand dresses the number as text and ruins the multiplication behind it. In every case the test is the same: click the cell and look at the formula bar. If the body is a plain number, the sums are safe. If the formula bar shows ₦ or %, the costume has got into the body. Undress it, and let the format do its work.",
-      ),
       h2("NGN, and what a form wants"),
       p(
-        "A government form that wants 1500.00 in a box may reject ₦. Paste digits. A letter to a person may want ₦1,500 — that is Word, Insert symbol, not a spreadsheet cell. Two rooms, two costumes. In the grid, the number is the worker. The sign is a hat. Put the hat on after the worker is in place. Then the total still moves when Friday's figure changes, which was the whole point of the grid.",
+        "A government portal that wants 1500.00 in a box may reject ₦. Paste digits. A letter to a human may want ₦1,500 — and that is Word, Insert Symbol, not a spreadsheet cell. Two rooms, two costumes. In the grid, the number is the worker and the sign is a hat. Put the hat on after the worker is in place, and then the total still moves when Friday’s figure changes — which was the whole point of the grid.",
+      ),
+      p(
+        "Musa’s list now shows ₦18,500.00 at the foot of the column, and the formula bar, when you click it, says 18500. The costume is perfect. The body is untouched. That gap between how a number looks and what a number is will serve you in every room after this one.",
       ),
     ],
   },
@@ -4836,22 +4842,28 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A spreadsheet cell filled with hash marks because the column is narrow.",
     body: [
       p(
-        "The grid has a few shouts that look like a crash. ##### is the most common: the column is too narrow for the number, especially after you dressed it as money. The amount is still in the cell. Drag the line between C and D at the top until the number appears. Double-click that line and the column fits the widest fact. This lesson is that curtain, the formula errors, and what is not a broken file.",
+        "Kelechi had just learned the money costume from the last lesson and dressed his shop book beautifully — signs, commas, two decimals. Then he widened the window, and the entire Amount column turned to rows of hash marks. He sat back the way a man sits back when a generator makes a new noise. “The file has scattered,” he said.",
       ),
       p(
-        "#DIV/0! means you divided by zero or by an empty cell — a rate with no quantity, a per-person split with no people. Point the formula at a real number, or leave the cell blank until the quantity exists. #VALUE! means you asked maths to eat a word: =B2*C2 when C2 says “see receipt.” Put the number in C2, the story in Item. #REF! means a cell the formula loved was deleted. Undo if you just deleted a column. #NAME? means a typo in SUM — =SUME or a missing bracket. Look at the formula bar. The grid is literal.",
+        "It had not scattered. The most expensive-looking error on the grid is a curtain: ##### means the column is too thin for the number now wearing its money clothes. The amount is still in the cell. Drag the line between C and D at the top of the grid until the number appears — or double-click that line, and the column fits the widest fact by itself. Where would you look first before calling anybody? At the seam between the column letters. That seam is a handle.",
+      ),
+      p(
+        "The formula errors have ordinary translations too. #DIV/0! means you divided by zero or by an empty cell — a rate with no quantity, a per-person split with no people. #VALUE! means you asked maths to eat a word: =B2*C2 when C2 says “see receipt.” Put the number in C2 and the story in the Item column. #REF! means a cell the formula loved was deleted; if you just deleted a column, Undo is the cure. #NAME? is a typo in the function — =SUME, or a missing bracket. Look at the formula bar. The grid is literal, and literal is not broken.",
       ),
       fig(
         "/images/blog/cell-error.jpg",
         "A cell showing ##### beside ordinary numbers.",
         "Hashes are not a lost fortune. They are a curtain. Widen before you retype. Retyping is how 1500 becomes 150.",
       ),
-      h2("Green corners, and the warning triangle"),
+      h2("Green corners, and the number wearing text clothes"),
       p(
-        "Excel may put a green mark in a cell it finds odd — a number stored as text, a formula that skips a neighbour. Click, the yellow diamond, read the sentence. Convert to number if that is the truth. Ignore if you meant the skip. Sheets is quieter. Do not Accept every offer. The cousin is still a cousin, like spell check.",
+        "Not every trouble wears a hash. Some cells look perfectly ordinary and carry a small green mark in the corner — the machine’s quiet note that this number is not a number at all. It is text wearing a number’s clothes: typed with a space after it, pasted from a PDF, or born with an apostrophe in front. The symptom is a column that refuses to sum — the total politely ignores half the rows. Click the cell; a small yellow diamond offers to convert. Accept. If many cells are dressed this way, copy the column and run Paste Special’s values-and-formats pass to redress them in one act. Sheets is quieter about all this; the cousin rule still applies — read the offer before you accept it.",
       ),
       p(
-        "A cell that shows the formula you typed, =SUM(C2:C6) in plain sight, is often formatted as text, or you missed the equals, or there is a space before =. Delete, type again starting with =. A cell that shows 1/2/2026 when you meant 0.5 is a date costume on a fraction. Format as number. The grid guessed. You can unguess.",
+        "The habit that prevents the whole mess is one habit wide: type the figure plainly. Do not type ₦ in the cell — the format does that. Do not type a comma — the format does that too. One exception earns its apostrophe: a phone number or a JAMB registration number, where the leading zero matters and the cell should genuinely be text. Type the apostrophe first on purpose, or set the column as Text before typing.",
+      ),
+      p(
+        "And when a cell shows you the formula you typed — =SUM(C2:C6) sitting in plain sight — that is text formatting again, or a missed equals sign, or a space typed before the =. Delete; type again starting with =. A cell that shows 1/2/2026 when you meant 0.5 is a date costume on a fraction. Format as Number. The grid guessed. You can unguess.",
       ),
       fig(
         "/images/blog/wide-column.jpg",
@@ -4859,24 +4871,17 @@ export const blogPosts: BlogPost[] = [
         "The line between letters at the top is a handle. Drag. The hashes should become amounts. If they become dates, that is a format, not a width.",
       ),
       ul([
-        "Make a number, narrow the column until ##### appears. Widen it. The number should return unchanged.",
-        "In an empty cell, type =1/0 and Enter. See #DIV/0!. Delete it. You do not need it in a real book.",
-        "Type =A1*B1 where A1 is a word. See #VALUE!. Put a number in A1. The error should leave.",
+        "Make a number, narrow the column until ##### appears. Widen it. The number should return unchanged — and unchanged is the whole lesson.",
+        "In an empty cell, type =1/0 and Enter. Meet #DIV/0!. Delete it; a real book does not need it.",
+        "Type =A1*B1 where A1 is a word. Meet #VALUE!. Put a number in A1 and watch the error leave.",
         "Do not download an “error fixer” for Excel from a banner. The fixer is your eyes and Undo.",
       ]),
-      h2("The green corner, and the number wearing text clothes"),
-      p(
-        "Not every error wears a hash. Some cells look perfectly ordinary and carry a small green triangle in the corner — the machine's quiet note that this number is not a number at all. It is text wearing a number's clothes, usually because it was typed with a space after it, or pasted from a PDF, or born with an apostrophe in front. The symptom is a column of figures that refuses to sum: the total ignores half the rows. Click the cell and a small yellow diamond offers to convert it to a number. Accept. If many cells are dressed this way, copy the column and use Paste Special's values-and-formats pass to redress them in one act.",
-      ),
-      p(
-        "The rule going forward is one habit wide: type the figure plainly. Do not type ₦ in the cell — the format does that. Do not type a comma — the format does that too. If the figure is a phone number or a JAMB registration number, the leading zero matters and the cell should genuinely be text; that is the one place to type an apostrophe first on purpose, or set the column as text before typing. The machine is not mocking you with green corners. It is pointing at the seam between two kinds of data, the way a good clerk points at a figure in the wrong column. Look where the finger points.",
-      ),
       h2("When it is actually broken"),
       p(
-        "A file that will not open, or opens with “repaired” and missing sheets, is the backup lesson. Close, copy the file, try again. Do not keep saving over the only copy while it limps. Circular reference — a SUM that includes itself — makes a warning and a restless total. Look at the range. If C7 is =SUM(C2:C7), the snake is eating its tail. SUM to C6, put the total in C7.",
+        "A file that will not open — or opens saying “repaired,” with sheets missing — is the backup lesson arriving on time. Close it, copy the file, try again on the copy. Do not keep saving over the only copy while it limps. And a warning about circular reference deserves its name: a SUM that includes itself. If C7 says =SUM(C2:C7), the snake is eating its tail. Sum to C6 and put the total in C7.",
       ),
       p(
-        "Name the shout before you call a shop. Hashes: width. #DIV/0!: empty bottom. #VALUE!: a word in the maths. ##### is the one you will see every week once money wears a costume. Widen, smile, continue. The grid is still a clerk. Clerks sometimes write too large for the column. They rarely burn the book.",
+        "Name the shout before you call a shop. Hashes: width. #DIV/0!: empty bottom. #VALUE!: a word in the maths. Kelechi widened his columns, watched ₦48,250.00 walk back out from behind the curtain, and closed the file without fear. The grid is a good clerk. Clerks sometimes write too large for the column. They rarely burn the book.",
       ),
     ],
   },
@@ -5517,22 +5522,25 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A phone camera framing a document to scan.",
     body: [
       p(
-        "A scan is what a photocopier does: a flat page, honest edges, a file an office can print. Phones can do this without a shop. Google Drive, Google Notes, Apple Notes, many camera apps — Document or Scan. The machine finds the four corners, greys the table, and can save PDF. This lesson is that walk, two pages into one file, and not giving a stranger app your camera roll to “scan better.”",
+        "Uchenna printed his admission letter four times before he understood what the school office in Enugu wanted. Not a photograph of the paper on his bedsheet — a scan. The office said those words like a person saying bread, and he nodded like a person who will ask his sister later.",
       ),
       p(
-        "Drive on Android: the + or camera, Scan. Hold above the page, as in the last lesson. When the frame hugs the paper, shoot. The preview should look like a page, not a rug. Retake if a corner is missing. Add another page if they asked for front and back. Save as PDF, a human name, into the folder you use for Fees or IDs. On iPhone: Notes, New, the camera, Scan Documents. Same idea. The file should open as a PDF on the laptop, not as a photograph that still shows your bed.",
+        "A scan is what a photocopier does: a flat page, honest edges, a file an office can print. A scan is a photograph with manners. Your phone already owns the machine. Google Drive on Android, Notes on iPhone, many camera apps with a Document mode — all of them find the four corners of the paper, straighten them, and hand you a PDF.",
       ),
       fig(
         "/images/blog/phone-scan.jpg",
         "A phone framing a page to scan.",
         "The rectangle is the machine guessing the paper. If it guessed the table, cancel, flatten the sheet, try again. You are the copier operator. It is only a helper.",
       ),
-      h2("Colour, size, and two sides"),
+      h2("Two pages, one file"),
       p(
-        "Black and white or greyscale is enough for a letter and a receipt. Colour for a passport photograph if they asked for colour. More contrast is not always more readable; it can eat faint ink. Look at the preview. A two-page ID is one PDF with two pages, not two chats. Offices lose the back. You already know one attachment, one job.",
+        "On Android, open Drive, press the plus or the camera, choose Scan. Hold the phone above the page the way you would hold it above a receipt you were copying. When the frame hugs the paper, shoot. Look at the preview honestly: it should look like a page, not like a rug with a letter lying on it. If a corner is missing, retake. On iPhone the walk is Notes, New Note, the camera icon, Scan Documents. Same idea, different door.",
       ),
       p(
-        "The PDF may still be heavy. If the portal refuses, the shrinking lesson applies in spirit: a smaller scan, or a compress that is not an advert. Drive's own quality settings, or a second scan from higher with less colour. Do not screenshot the scan. That puts a taskbar on a copier page.",
+        "Two sides of an ID is one PDF with two pages, not two separate sends. Add the second page while the scanner is still open, then save. Offices lose the back when you send it as a separate message three minutes later — and you already know one attachment, one job. Where would you rather be handed a two-page document: as one file, or as two photographs arriving out of order?",
+      ),
+      p(
+        "Colour is a choice, not a quality. Black and white or greyscale is enough for a letter, a receipt, a result slip — and it keeps the file small enough for any portal. Use colour when the office asked for colour: a passport photograph, a document whose stamp is the point. And resist the urge to push contrast to maximum; heavy contrast eats faint ink — the pencil signature, the faded letterhead the clerk half expects to see. Read the preview as the office will, not as a photographer would.",
       ),
       fig(
         "/images/blog/scan-pdf.jpg",
@@ -5540,21 +5548,24 @@ export const blogPosts: BlogPost[] = [
         "If the screen matches the paper, the scan worked. If the screen is a yellow mattress with a receipt on it, you sent a photograph. Scan again.",
       ),
       ul([
-        "Scan one throwaway page to PDF. Open it on the laptop or in Drive.",
-        "Confirm it is a page, not a photo of a room.",
-        "Name it. Move it off the phone's default pile if you can.",
-        "Do not install CamScanner-from-an-advert. The Notes or Drive you already have will do.",
+        "Scan one throwaway page to PDF — a receipt, an old notice.",
+        "Open it on the laptop or in Drive. Confirm it is a page, not a photo of a room.",
+        "Name it before it piles up with the others.",
+        "Do not install the scanner app from the video advert. Drive or Notes will do, and neither needs your whole camera roll to “scan better.”",
       ]),
-      h2("The share button and where the page goes"),
+      h2("The name on the file, and where it goes"),
       p(
-        "A finished scan is a file like any other, and it wants the same departure routine as everything you have made. The share button under the scan sends it straight to mail, to Drive, to WhatsApp — and here the WhatsApp choice matters one last time: send the scan as a Document, not as an image, so the receiving machine gets the pages with their edges and words intact. Name the file before it departs. A PDF called scan-2026-09-23 in someone's downloads is a page from nowhere; Nwosu-tenancy-agreement-2026 is a page that knows its own family.",
+        "Share the finished scan as a Document on WhatsApp, not as an image. The image path squeezes the words and often adds a border; the Document path delivers the pages whole. Name the file before it departs. A PDF called scan-2026-09-23 in someone’s downloads is a page from nowhere. Nwosu-tenancy-agreement-2026 is a page that knows its own family.",
       ),
       p(
-        "Where scans should live is the drawer lesson wearing new clothes. Make one folder — Scans or Papers — and one subfolder per person or per matter. Walk every scan into its folder the same evening, and the folder becomes the fireproof filing cabinet that a real office envies. Two-sided documents that the phone cannot capture in one frame are two scans in one PDF, pages in order. And when the bank asks for a file under two megabytes, you now know the way: rescan at a smaller size, or send the single page that matters. The scanner makes pages. The habit keeps them.",
+        "Scans want the drawer treatment the day they are made. One folder — Scans or Papers — and one subfolder per person or per matter. Walk each scan into its folder the same evening and you are building the filing cabinet that real offices envy. And when a bank asks for a file under two megabytes, the way is the one you know: rescan at a smaller quality, or send the single page that actually matters. The scanner makes pages. The habit keeps them.",
       ),
       h2("What a scan is not"),
       p(
-        "It is not a signed original if they asked to see ink in person. It is not encryption. A PDF of an ID in Anyone-with-the-link is still an ID on the street. Mail it to the address they gave, or upload to their portal, Restricted. And a scan of a screen — a phone pointed at a laptop — is a photograph of pixels. Use a screenshot on the laptop, or Download the real file. The copier is for paper. The screenshot is for glass. You now have both.",
+        "It is not the signed original, if somebody asked to see ink in person. It is not secrecy: a PDF of your ID shared to Anyone-with-the-link is your ID standing on the street corner. Mail it to the address they gave you, or upload to their portal with access restricted.",
+      ),
+      p(
+        "And one confusion to retire while we are here: a scan and a screenshot are cousins who do different work. A scan is for paper. A screenshot is for glass. If the thing you want already lives inside the laptop — a result page, a receipt on a website — do not photograph the screen; that is a picture of pixels with your curtains in the background. Right-click, save the file, or capture the screen cleanly. Uchenna now has both tools, and the school office has stopped sighing at his attachments.",
       ),
     ],
   },
@@ -6933,10 +6944,13 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A computer screen showing a dashboard of stacked alerts and a rising line graph.",
     body: [
       p(
+        "Fatima asked it plainly at the academy’s security evening, so the instructor wrote her question on the board in capital letters: IS THE SIEM THE ANTIVIRUS? It looks like it, from across the room — both are “the security software,” both live on screens full of warnings. But actually: the antivirus guards one door. The SIEM reads every notebook in the compound. Different trades entirely. Keep her question in mind, and the word will never frighten you again.",
+      ),
+      p(
         "SIEM stands for Security Information and Event Management, and is said like seam. Behind the press of consonants is a humble idea: one giant ledger. Every computer, door system, bank app and office machine keeps a record of what happens on it — the log, a line of who did what, when, from where. A SIEM is the room where all those records from all those machines are gathered into one place, laid side by side by time, and watched by rules. Nothing more exotic than that: a notebook that reads every other notebook.",
       ),
       p(
-        "Why one ledger? Because a thief's footfalls rarely land in a single notebook. The failed password sits in one log, the unusual login in another, the strange file copy in a third — each innocent alone, each a sentence of a story when laid side by side. Alone, no machine shouts. Together, the pattern is loud. The SIEM's whole craft is correlation: rules that say, if these three quiet things happen within one hour, that is not quiet any more — raise it. What it raises is the alert, and the alert is the queue the analyst eats from. The tool most connected to it: the names you will meet in adverts are Splunk, Microsoft Sentinel, QRadar, Wazuh — different pens for the same ledger.",
+        "Why one ledger? Because a thief’s footfalls rarely land in a single notebook. The failed password sits in one log, the unusual login in another, the strange file copy in a third — each innocent alone, each a sentence of a story when laid side by side. Alone, no machine shouts. Together, the pattern is loud. The SIEM’s whole craft is correlation: rules that say, if these three quiet things happen within one hour, that is not quiet any more — raise it. What it raises is the alert, and the alert is the queue the analyst eats from. So here is your first retrieval test in this word: Fatima’s laptop wrote a hundred log lines last night while she slept. Where would you look to learn what it saw? One place, or three? The answer — every notebook, side by side — is the entire reason the tool exists.",
       ),
       fig(
         "/images/blog/siem-dashboard-alerts.jpg",
@@ -6945,7 +6959,7 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("What feeding the ledger actually looks like"),
       p(
-        "Log lines are boring on purpose — that is their honesty. A typical one says: this user, from this address, at this second, tried this door, and it failed. A thousand machines write such lines every second, and the SIEM drinks them without blinking. The analyst's skill against this flood is search: asking the ledger, in its own query language, show me every login for this user today; show me everything that talked to this address this week. It is less programming than good questioning — the Ctrl and F lesson grown into a profession. If you can form a precise question, the ledger answers in seconds with the truth of a hundred rooms.",
+        "Log lines are boring on purpose — that is their honesty. A typical one says: this user, from this address, at this second, tried this door, and it failed. A thousand machines write such lines every second, and the SIEM drinks them without blinking. The analyst’s skill against this flood is search: asking the ledger, in its own query language, show me every login for this user today; show me everything that talked to this address this week. It is less programming than good questioning — the Ctrl-and-F lesson grown into a profession. If you can form a precise question, the ledger answers in seconds with the truth of a hundred rooms.",
       ),
       p(
         "And the ledger needs tending, which is a career in itself. Rules that raise everything bury the room in noise, and a tired room misses the real shout — so somebody tunes: closes the rules that cry wolf, sharpens the ones that matter. Somebody wires new machines into the ledger, because a room whose logs never arrived is a room watched by memory alone. And somebody checks the ledger itself is sealed — a thief who can edit the notebook owns the story it tells. Feeding, tuning, sealing: the three honest jobs around one giant notebook.",
@@ -7180,10 +7194,17 @@ export const blogPosts: BlogPost[] = [
       "A developer at a laptop with code on one half of the screen and a webpage on the other.",
     body: [
       p(
-        "Everything you have ever touched on a screen — every button that pressed, every form that received your details, every page that arranged itself politely on the phone and the laptop — was built by a frontend developer. The word means the front: the part of a program that faces the person using it. Every workshop has a front and a back — the stall that faces the road, and the store room where the stock and the accounts live. The frontend is the stall. It decides whether the customer can find what they came for, whether the price is readable in the sun, whether the transaction finishes or the customer walks in irritation.",
+        "At the academy’s open evening, Tobi asked the question everybody circles and nobody says: “Who actually builds the page?” Not the network. Not the laptop. A person. Everything you have ever touched on a screen — every button that pressed, every form that received your details, every page that arranged itself politely on the phone — was built by a frontend developer.",
       ),
       p(
-        "The craft stands on three layers, and you may as well have their true names now. HTML is the skeleton: this is a heading, this is a paragraph, this is the box where the customer types. CSS is the clothing: colours, spacing, what it looks like when the screen is a small phone in the rain or a wide monitor in an office. JavaScript is the movement: what happens when the button is pressed — the menu that opens, the total that recalculates, the form that checks itself before travelling. Larger buildings are raised with frameworks — prepared skeletons and conventions with names like React, the very technology this page is served with — the way builders raise estates with prefabricated parts instead of moulding every brick by hand.",
+        "The word means the front: the part of a program that faces the person using it. Every workshop has a front and a back — the stall that faces the road, and the store room where the stock and the accounts live. The frontend is the stall. It decides whether the customer finds what they came for, whether the price is readable in the sun, whether the transaction finishes or the customer walks away annoyed.",
+      ),
+      h2("Skeleton, clothing, movement"),
+      p(
+        "The craft stands on three layers, and you may as well have their true names now. HTML is the skeleton: this is a heading, this is a paragraph, this is the box where the customer types. CSS is the clothing: colours, spacing, how the page dresses for a small phone in the rain versus a wide monitor in an office. JavaScript is the movement: what happens when the button is pressed — the menu that opens, the total that recalculates, the form that checks itself before it travels.",
+      ),
+      p(
+        "Larger buildings go up with frameworks — prepared skeletons and conventions, with names like React, the very technology this page is served with — the way builders raise estates with prefabricated parts instead of moulding every brick by hand. One thing to hold straight, since the adverts blur it: a framework is a tool in the same three hands. If the skeleton, clothing and movement are shaky, no framework saves the page. Which layer do you think a visitor notices first on a slow network? Usually the clothing — or its absence.",
       ),
       fig(
         "/images/blog/frontend-code-screen.jpg",
@@ -7192,10 +7213,10 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("What the work actually is, day to day"),
       p(
-        "Less invention than conversation. A designer hands over a picture of what a page should be; the frontend developer makes it real, exactly, on every screen size — and reports back where the picture fights the truth of small screens and slow networks. A backend — the store room, staffed by its own developers — sends goods in parcels of data; the frontend receives, arranges, and sends back what the customer filled. Much of the day is the two elders of this shelf in professional clothes: careful text selection and a thousand small saves — build one piece, look at it in the browser, adjust, save again. The loop you practised in Notepad at lesson three is, genuinely, the trade.",
+        "Less invention than conversation. A designer hands over a picture of what a page should be; the frontend developer makes it real, exactly, at every screen size — and reports back where the picture fights the truth of small screens and slow networks. A backend — the store room, staffed by its own developers — sends goods in parcels of data; the frontend receives, arranges, and sends back whatever the customer filled in.",
       ),
       p(
-        "The good ones are good in ways you can already judge, because you have been a customer all your life on this shelf. Fast: a page that opens on a three-bar network in Onitsha traffic, not only on office fibre. Clear: letters that read, buttons that say what they do, forms that confess their errors in ordinary sentences. Honest on every screen: the phone is Nigeria's computer, and a stall that only stands on a laptop is a stall on a street with no foot traffic. None of that is decoration — it is the trade's version of the virtues these notes kept repeating: respect for the person on the other side of the screen.",
+        "Much of the day is two of this shelf’s old elders in professional clothes: careful selection and many small saves. Build one piece, look at it in the browser, adjust, save again. The loop you practised in the Notepad lesson, early in these notes, is genuinely the trade. And the good ones are good in ways you can already judge, because you have been a customer all your life. Fast: a page that opens on three bars of network in Onitsha traffic, not only on office fibre. Clear: letters that read, buttons that say what they do, forms that confess their errors in ordinary sentences. Honest on every screen: the phone is Nigeria’s computer, and a stall that only stands on a laptop is a stall on a street with no foot traffic. None of that is decoration — it is respect for the person on the other side of the screen, which is the only virtue this shelf ever really taught.",
       ),
       fig(
         "/images/blog/phone-and-desktop-layout.jpg",
@@ -7206,11 +7227,11 @@ export const blogPosts: BlogPost[] = [
         "Look at any page you admire and name its three layers: the skeleton, the clothing, the movement.",
         "View the source of a simple page once — right-click, View page source. The skeleton, in public, is not a secret.",
         "The free-learning lesson applies in full: one month, HTML and CSS, hands on the keys, one real page built by the end.",
-        "When you are ready for a room, a machine and a person, the academy's web courses start exactly where this note stops.",
+        "When you want a room, a machine and a person, the academy’s web courses start exactly where this note stops.",
       ]),
       h2("Is the stall for you?"),
       p(
-        "If you finished lesson three secretly pleased — if arranging the page, naming things properly and seeing your change appear on refresh gave you a small honest joy — then the frontend is a door worth walking through, and the road from these notes to paid work in it is walked every year, self-taught hands included. The watching rooms of lesson one hundred and twenty-two guard the compound; the stall builders raise what the compound is for. Both are honest work. Only you know which chair fits your temperament — and now you have sat in both, described without mystique, before spending a naira on either.",
+        "If the Notepad lesson left you secretly pleased — if arranging a page, naming things properly and watching your change appear on refresh gave you a small honest joy — then the frontend is a door worth walking through, and the road from these notes to paid work in it is walked every year, self-taught hands included. The watching-room lesson guards the compound; the stall builders raise what the compound is for. Both are honest work. Only you know which chair fits your temperament — and now Tobi has sat in both, described without mystique, before spending a naira on either.",
       ),
     ],
   },
@@ -7940,37 +7961,44 @@ export const blogPosts: BlogPost[] = [
       "A laptop with a lock screen turned away from visitors on a tidy desk, files closed beside it.",
     body: [
       p(
-        "The moment a client pays you, you begin holding things that are not yours: their customer list, their invoices, their unfinished plans, sometimes their logins. They did not hand these over because they are careless — they handed them over because the work requires it, the way a tailor is trusted with cloth already cut for a wedding. What you do with that trust, between delivery and long after, is called confidentiality, and in every profession on this shelf it is not a legal decoration. It is the trade itself, written down.",
+        "Salamat had typed for three weeks at a small contract firm near Ikotun when the partner slid something across the desk: the firm’s customer list, in a spreadsheet, with phone numbers and balances. She looked at him. “The work requires it,” he said, and went back to his call. That sentence is the moment every paid skill grows a second job: the moment you begin holding things that are not yours.",
       ),
       p(
-        "The rules, in ordinary words. See only what the work needs: the brief that requires the customer list earns access to the customer list; curiosity about the rest of their files does not. Keep it where it belongs: client work on client folders, on your machine, behind your screen lock — the locking lesson, the shared-machine lesson, all of it now protecting other people's houses, not just yours. Carry nothing away: their files do not travel to your personal Drive, their customer list never becomes your marketing list, and the report you wrote for one client does not moonlight in another proposal. And when the job ends, the keys go back: logins changed or access revoked, your copies of their working files deleted or handed over whole, whichever was agreed. A tailor does not keep the wedding cloth.",
+        "A tailor is trusted with cloth already cut for a wedding. What he does with that trust — between the delivery and long after — is the trade itself, written down. In ordinary words it is called confidentiality, and it is not a legal decoration. It is four sentences you can hold.",
       ),
       fig(
         "/images/blog/client-files-locked.jpg",
         "A laptop with its lock screen turned away from visitors on a tidy desk, working files closed beside it.",
         "The desk of a person who holds other people's keys. The screen locks itself; the folders close; the curiosity stays outside.",
       ),
-      h2("Logins, screenshots, and the paper that says secret"),
+      h2("The four sentences"),
       p(
-        "Three situations deserve their own lines. Logins: a client may hand you theirs to do the work — collect it in a way you can return, never reuse their password anywhere of your own, never save it into your personal browser on a shared machine, and ask them to change it when the job ends; better still, ask them to create an access for you that they can switch off. Screenshots for the portfolio: take them with permission, crop the sensitive rows, and remember that one customer's name in a case study is somebody's data — the witness line lesson assumed the client says yes to being shown; the data never did. And the paper: some clients will hand you an NDA — a non-disclosure agreement, a page that says what you may tell others, for how long. Read it the way you read any contract, ask about any line you do not understand, and keep your signed copy with the papers in Drive. The NDA is not an insult. It is their family word, formalised.",
+        "See only what the work needs. The brief that requires the customer list earns access to the customer list; curiosity about the rest of their files does not. Keep it where it belongs: client work in client folders, on your machine, behind your screen lock — the locking lesson and the shared-machine lesson now protecting other people’s houses, not only yours. Carry nothing away: their files do not travel to your personal Drive, their customer list never becomes your marketing list, and the report you wrote for one client does not moonlight in another proposal. And when the job ends, the keys go back: logins changed or access revoked, your copies handed over whole or deleted, whichever was agreed. A tailor does not keep the wedding cloth.",
       ),
       p(
-        "And the quiet everyday forms, because the big leaks rarely look dramatic: the project you mention too freely at a beer parlour, the screen facing the window in a café, the file shared to the wrong address — the sharing lesson's one wrong address, now wearing someone else's name. The professional's manner is boring and total: speak of clients' business only with clients, lock everything, share deliberately or not at all. One breach ends a trade career faster than any lack of skill; one kept secret, quietly held for years, is the reason the big clients come. Discretion compounds. So does its absence.",
+        "Three situations deserve their own lines. Logins: a client may hand you theirs to do the work — collect it in a way you can return, never reuse their password anywhere of your own, never save it into a personal browser on a shared machine, and ask them to change it when the job ends. Better still, ask for access they can switch off rather than a key you must keep. Screenshots for the portfolio: take them with permission, crop the sensitive rows, and remember that one customer’s name in a case study is somebody’s data — the witness-line lesson assumed the client says yes to being shown; the data never did. And the paper: some clients will hand you an NDA — a non-disclosure agreement, a page that says what you may tell others, and for how long. Read it the way you read any contract, ask about any line you do not understand, and keep your signed copy with the papers in Drive. The NDA is not an insult. It is their family word, formalised.",
       ),
       fig(
         "/images/blog/nda-signing-desk.jpg",
         "A hand signing a short agreement on a desk between two people, pens and a laptop nearby.",
         "The family word, on paper. What may be told, to whom, until when — agreed before the work, kept long after it.",
       ),
+      h2("The quiet ways trust leaks"),
+      p(
+        "The big leaks rarely look dramatic in the moment. They look like the project mentioned too freely at a beer parlour, the screen facing the window in a café, the file shared to the wrong address — the sharing lesson’s one wrong address, now wearing someone else’s name. Secrecy in films looks like locked briefcases and whispered codes. In real work it looks boring and total: speak of clients’ business only with clients, lock everything, share deliberately or not at all.",
+      ),
+      p(
+        "One question Salamat now asks before every job: what will I be holding when this starts, and what does going-back-look like at the end? If a client cannot answer the second half, that is information too. One breach ends a trade career faster than any lack of skill; one kept secret, quietly held for years, is the reason the big clients come back and bring their brothers.",
+      ),
       ul([
         "Audit your access today: every client login, file and folder you hold. Return what the work no longer needs.",
-        "Never reuse a client's password anywhere, and ask for access you can hand back, not keys you must keep.",
+        "Never reuse a client’s password anywhere, and ask for access you can hand back, not keys you must keep.",
         "Ask permission before any screenshot leaves their work, and crop the data that is not yours to show.",
         "Signed an NDA? Into Drive it goes, beside the papers. Your copy is the memory that outlives your goodwill.",
       ]),
       h2("The trade inside the trade"),
       p(
-        "Skills get you hired once; discretion gets you hired again, quietly, for years, by people who tell other people with money. Every profession that touches other people's machines — the analyst, the support engineer, the web builder, the accountant of lesson one hundred and forty-three — is trusted first and skilled second, because the files can be rebuilt and the trust cannot. Hold other people's secrets like your own OTPs. The street is watching, and it keeps better records than any ledger.",
+        "Skills get you hired once; discretion gets you hired again, quietly, for years, by people who tell other people with money. Every profession that touches other people’s machines — the analyst, the support engineer, the web builder, the bookkeeper of the last lesson — is trusted first and skilled second, because the files can be rebuilt and the trust cannot. So hold other people’s secrets the way you hold your own OTP: never typed into a machine you do not control, never spoken aloud to a helpful stranger. The street is watching, and it keeps better records than any ledger. Discretion compounds. So does its absence.",
       ),
     ],
   },
@@ -9390,10 +9418,10 @@ export const blogPosts: BlogPost[] = [
       "An opened laptop revealing a thick felt carpet of grey dust clogging the copper cooling exhaust fins.",
     body: [
       p(
-        "It is two o'clock in the afternoon. The room is warm, the ceiling fan is turning slowly overhead, and you are typing a letter with the laptop resting directly on your lap. Suddenly, the little fan inside the machine begins to whistle and roar like an old generator running low on oil. The plastic under your left hand turns so hot you can barely rest your palm on it. The mouse pointer on the screen starts jerking and hesitating, freezing for two seconds each time you click. Ten minutes later, without asking your permission, the whole machine abruptly shuts down with a dry click, and the room goes dead silent.",
+        "Two o’clock in the afternoon, the ceiling fan turning slowly, and Segun is typing a project proposal with the laptop flat on the mattress beside him. The little fan inside the machine begins to whistle and roar like an old generator running low on oil. The plastic grows so hot his left palm lifts away from it. The mouse pointer starts stuttering, freezing two seconds at every click. Then, without asking anybody’s permission, the machine clicks once and dies. The room goes quiet in the particular way rooms go quiet when work is lost.",
       ),
       p(
-        "People look at a hot, slow computer and shake their heads: 'This machine is old; its strength is finished.' But computer chips do not have muscles that get tired with age. A chip made ten years ago can calculate numbers just as fast today as it did when it came out of the factory box. What actually happens is much simpler and much more human: the computer is choking. It is trying to run a marathon while someone holds a heavy wool blanket pressed tight against its mouth and nose.",
+        "People look at a hot, slow laptop and say, “This machine is old; its strength is finished.” But chips do not have muscles that tire with age. A processor made ten years ago counts just as fast today as the morning it left its box. What is happening is simpler and much more human: the computer is choking. It is trying to run while somebody holds a wool blanket tight over its mouth.",
       ),
       fig(
         "/images/blog/laptop-heatsink-dust-carpet.jpg",
@@ -9402,7 +9430,7 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("The grey carpet and the mattress trap"),
       p(
-        "Here is what lives inside. The brain of your computer is smaller than a postage stamp, but when it thinks, it gets as hot as a small electric iron. To keep from burning itself up, a flat copper pipe carries that heat to a little metal grill at the side of the casing. A tiny spinning fan sucks cool air from the holes underneath the laptop and blows it out through those metal teeth. But in Nigeria, air is never empty: it carries red road dust from the harmattan, powder from the room, and lint from clothes. Over six or eight months, that dust catches on the inside of the metal grill like hair caught in a bathroom drain, weaving itself into a thick, solid grey carpet of felt.",
+        "Here is what lives inside. The brain is smaller than a postage stamp, but when it thinks, it gets as hot as a small electric iron. A flat copper pipe carries that heat to a metal grill at the side of the casing, and a tiny fan pulls cool air from the holes underneath and pushes it out through those metal teeth. Nigerian air is never empty: it carries red harmattan road dust, room powder, and lint from clothes. Over six or eight months, that dust catches on the inside of the grill like hair in a bathroom drain and weaves itself into a solid grey carpet of felt.",
       ),
       fig(
         "/images/blog/laptop-on-wooden-stand.jpg",
@@ -9410,10 +9438,13 @@ export const blogPosts: BlogPost[] = [
         "Give the belly breathing room. Just placing two plastic bottle caps under the back rubber feet lets fresh air flow underneath like a river.",
       ),
       p(
-        "Now picture the fan: it is spinning at top speed, screaming in desperation, trying to push air through a solid wall of dust. The hot air cannot get out. The temperature inside climbs past ninety degrees. When the computer's internal thermometer feels that dangerous heat, it pulls the emergency brake: it cuts its own working speed in half to save itself from melting. That is why your typing stutters. The laptop is not weak; it is gasping for breath.",
+        "Now picture the fan working against that carpet: spinning at full speed, screaming, and moving almost no air. The temperature inside climbs past ninety degrees, and the machine pulls its own emergency brake — cutting its working speed in half to keep from cooking itself. That is why your typing stutters. The laptop is not weak. It is gasping.",
       ),
       p(
-        "The biggest mistake people make is using a laptop on a bed, a foam mattress, or a soft velvet sofa pillow. Foam is an oven: it sinks under the weight of the laptop, seals the intake holes on the belly completely shut, and traps all the heat inside. Always place the laptop on a hard, flat surface — a wooden desk, a dining table, or even a smooth plastic serving tray. If you want a free upgrade that cools your machine instantly: take two ordinary plastic bottle caps from water bottles and slide them under the two rear rubber feet of the laptop. Lifting the back of the machine by just one centimetre lets cool room air flow freely underneath the belly. The fan immediately quiets down, the heat drops, and your mouse stops freezing.",
+        "And the trap has a favourite location: the bed. Foam is an oven for a laptop. It sinks under the machine’s weight, seals the intake holes on the belly, and holds every degree of heat inside. Always use a hard, flat surface — a desk, a dining table, a smooth plastic tray. The free upgrade anyone can perform tonight: two plastic bottle caps slid under the rear rubber feet, lifting the back by one centimetre, so cool air can flow underneath like a small river. The fan quiets. The pointer stops freezing. Where does the air enter your own machine? Find those holes before you find anything else.",
+      ),
+      p(
+        "One more part ages quietly. Between the chip and the copper pipe sits a thin grey paste, pressed flat at the factory, whose whole job is to bridge the tiny gap between two metal faces. After a few hot years it dries and cracks like old kola nut, and heat stops crossing — the fan screams while the grill outside is clean. A repair stand re-pastes the chip in twenty minutes for small money, and the machine you first bought walks back into the room. The right amount is a pea-sized drop; too much paste is its own small blanket.",
       ),
       fig(
         "/images/blog/thermal-paste-pea-dot.jpg",
@@ -9421,14 +9452,14 @@ export const blogPosts: BlogPost[] = [
         "Fresh grey paste on the chip. Like oil in an engine, a small pea-sized drop bridges the gap between the hot metal and the cooling pipe.",
       ),
       ul([
-        "Never place a running laptop on a foam mattress, pillow, or thick blanket: soft foam suffocates the cooling vents in three minutes.",
-        "The bottle cap trick: put two plastic bottle tops under the rear feet to lift the belly and let cool air rush in underneath.",
-        "If the fan screams even when you are doing nothing, the metal grill inside is clogged with dust and needs a simple brush cleaning.",
-        "Never blow air violently into a fan with a high-pressure pump: spinning the fan too fast while the machine is off can generate electricity backwards.",
+        "Never run a laptop on a foam mattress, pillow, or thick blanket — soft foam seals the vents in three minutes.",
+        "The bottle cap trick: two plastic tops under the rear feet, belly lifted, cool air rushing in underneath.",
+        "If the fan screams while the machine is doing nothing, the grill inside is clogged and needs a simple brush cleaning at a repair stand.",
+        "Never blast air into the fan with a high-pressure pump: spin it too fast while the machine is off and the fan becomes a small generator feeding current the wrong way.",
       ]),
       h2("Cool air is free speed"),
       p(
-        "Before you spend money buying a newer laptop or paying someone to 'format' your drive, give the machine room to breathe. Clean the dust from the grill, lift the belly off the table, and keep it off the mattress. A cool computer is a quiet, obedient servant that will work beside you for years without shouting. Next: the frightening tick-tick-click sound inside the palm rest, and the solid-state cure.",
+        "Before you spend money on a newer laptop — or pay somebody to “format” a drive that was never the problem — give the machine room to breathe. Brush the grill, lift the belly, keep it off the mattress. A cool computer is a quiet servant that will work beside you for years without shouting. Next in this home-stretch run: the frightening tick-tick-click sound from inside the palm rest, and the solid-state cure.",
       ),
     ],
   },
@@ -9623,10 +9654,10 @@ export const blogPosts: BlogPost[] = [
       "A close-up photograph of the fine print on a genuine laptop power brick highlighting 19.5V and 3.33A.",
     body: [
       p(
-        "You travel to another town for a wedding or an office meeting, and when you open your bag, you realize you left your laptop charger plugged into the wall at home. You need to finish your work before evening. You hurry down to a roadside accessories kiosk in the market. The boy behind the counter reaches into a dusty drawer and hands you a bright cardboard box: 'Universal Laptop Charger.' Inside is a black brick with a sliding switch and eight different interchangeable plastic tips. You take it back to your hotel room, plug the loose plastic tip into your laptop, push the plug into the wall socket — and *snap!* A bright blue spark jumps with a loud pop, a smell of scorched plastic fills the air, and your laptop never powers on again.",
+        "Chinonso travelled to his cousin’s wedding with the laptop and without the charger — it was still plugged to the wall at home, three towns away. By morning he needed to finish a report. At a roadside accessories kiosk, a boy reached into a dusty drawer and handed him a bright cardboard box: Universal Laptop Charger. Black brick, sliding switch, eight interchangeable plastic tips. In the hotel room, Chinonso fitted a loose tip, pushed the plug into the socket — and snap. A blue spark jumped with a loud pop. The smell of scorched plastic climbed into the air. The laptop never powered on again.",
       ),
       p(
-        "Electricity is not magic; it follows simple physical rules that every computer user must know. On the back of every genuine charger brick, there is a small label with fine text. You only need to look for two letters: V for Volts, and A for Amperes. Think of them like shoes and water buckets, and you will never burn another machine as long as you live.",
+        "Electricity is not magic; it follows rules written on every genuine brick. Find the small label of fine text and look for two letters: V and A. Think of them as shoe size and water bucket, and you will not burn another machine as long as you live.",
       ),
       fig(
         "/images/blog/charger-label-volts-amps.jpg",
@@ -9635,7 +9666,7 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("Shoe sizes and water buckets"),
       p(
-        "Volts (V) is your shoe size. It must fit your foot EXACTLY. If the sticker on the belly of your laptop says '19.5V', your charger must be 19.5V. If you try to force a 24V charger into a 19.5V laptop, you are trying to force a size 46 man's boot onto a child's size 35 foot: the leather will burst. Inside the laptop, tiny electrical gates will puncture and blow out within half a second. Never, ever use a charger with higher voltage than your laptop asks for.",
+        "Volts is the shoe size, and it must fit exactly. If the sticker on the belly of the laptop says 19.5V, the charger must be 19.5V. Push 24V into a 19.5V machine and you are forcing a size-46 boot onto a size-35 foot — something inside tears within half a second. Never, under any circumstance, a higher voltage.",
       ),
       fig(
         "/images/blog/multimeter-measuring-barrel-jack.jpg",
@@ -9643,10 +9674,10 @@ export const blogPosts: BlogPost[] = [
         "The smart pin inside the tip. Modern Dell and HP chargers carry a tiny needle inside that talks to the laptop; bent needles stop charging.",
       ),
       p(
-        "Amperes (A), on the other hand, is water in a bucket. Your laptop only drinks what it is thirsty for. If your laptop needs 3.3 Amperes, and your charger is a big, solid brick rated for 4.6 Amperes, that is completely safe and wonderful! The laptop drinks its 3.3 Amperes, and the extra amperage stays in the bucket as cool breathing room, so the charger brick stays warm instead of burning hot. But reverse the situation — plugging a small 2-Amp charger into a heavy laptop that needs 4.5 Amps — and that little charger brick will get so blistering hot you cannot hold it, and its internal wires will melt within weeks.",
+        "Amperes is water in a bucket, and the laptop drinks only what it thirsts for. A machine that wants 3.3A, fed by a solid brick rated 4.6A, is perfectly safe and happy — it drinks its 3.3A and the spare capacity keeps the brick merely warm. Reverse the situation — a small 2A brick feeding a heavy machine that wants 4.5A — and that charger will blister your palm while its inner wires cook over a few weeks. So: voltage equal, amperage equal or higher. That is the whole rule.",
       ),
       p(
-        "This is why cheap universal chargers are so dangerous: their loose plastic tips wobble in the socket. Every time you shift your legs or move the desk, the tip disconnects and reconnects ten times in one second, sending little electrical shockwaves directly into the motherboard. Now look at the plug that goes into the wall: it has two flat pins and one long brass pin on top. That long top pin is the earth pin. It drains stray electrical noise safely into the ground. If an electrician snaps that brass pin off with pliers to fit an old two-prong socket, you will feel a tingling, vibrating shock on your wrists every time you rest your hands on the metal casing.",
+        "Cheap universal bricks are dangerous before you even read the sticker, because their loose tips wobble. Every time you shift your legs, the tip disconnects and reconnects ten times in a second, and each hiccup sends a small shock through the motherboard. Then look at the wall plug: two flat pins and one long brass pin on top. That brass pin is the earth — it drains stray electricity safely into the ground. When an electrician snaps it off with pliers to fit an old two-hole socket, you feel the price as a tingling buzz across your wrists every time you rest them on the metal casing.",
       ),
       fig(
         "/images/blog/three-pin-plug-ground.jpg",
@@ -9654,14 +9685,17 @@ export const blogPosts: BlogPost[] = [
         "Never snap off the third brass pin. That top pin drains stray electricity safely into the ground so your wrists don't get shocked.",
       ),
       ul([
-        "Voltage (V) must match your laptop's requirement exactly: higher voltage burns internal chips instantly.",
-        "Amperage (A) can be equal or higher: higher amps keep the charger cool; lower amps cause overheating and melting.",
-        "Avoid multi-tip universal chargers: buy an original second-hand OEM charger built specifically for your laptop model.",
-        "Never cut off the third brass earth pin of a British plug: that pin stops tingling shocks on metal laptop bodies.",
+        "Voltage must match exactly. Higher voltage burns chips instantly.",
+        "Amperage can be equal or higher. Higher amps keep the brick cool; lower amps make it a heater.",
+        "Skip multi-tip universal chargers. A second-hand OEM brick built for your model is cheaper than a motherboard.",
+        "Never snap off the third brass earth pin. That pin is why your wrists stay unshocked.",
       ]),
+      p(
+        "Tonight, before you sleep, turn your own brick over and read it: the V, the A, the tip size. Photograph the sticker with your phone. When the brick dies — and bricks do die, usually where the cord bends at the strain-relief collar — that photograph goes with you to the market, so the boy sells you a twin and not a cousin. And unplug by the plug, never by yanking the cord; the copper inside breaks strand by strand while the plastic outside still looks honest. If a brick ever smells hot or its tip discolours, retire it the same day — that smell is the beginning of the story you nearly bought at the kiosk.",
+      ),
       h2("Clean electricity for the brain"),
       p(
-        "Your laptop's brain thinks using tiny whispers of electric current moving billions of times every second. Feeding it dirty, unstable power from a cheap wobbly universal adapter is like putting contaminated petrol into an expensive car. Buy the heavy, original charger brick, protect its thick cord, and keep your machine safe. Next: the sudden blue screen of death, and why Windows crashes to save your work.",
+        "Your laptop’s brain thinks in tiny whispers of current, billions of times a second. Feeding it dirty, unstable power from a wobbly adapter is pouring contaminated petrol into a good car. Buy the heavy original brick, protect its thick cord near the strain-relief collar where fraying begins, keep the receipt, and treat ₦15,000 for a genuine brick as exactly what it is: the cheapest insurance in the whole machine. Chinonso paid ₦8,500 for a universal box and a motherboard. Do the arithmetic slowly, on paper, before the market does it for you. Next: the sudden blue screen, and why Windows sometimes crashes on purpose, to save your work.",
       ),
     ],
   },

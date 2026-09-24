@@ -106,7 +106,8 @@ Per lesson, after reconstruction:
 | Pass 2 · batch 8 | Next-worst (16, 23, 29, 45, 60, 61, 100, 124, 125, 127) | **done — types, radios & the security compound** |
 | Pass 2 · batch 9 | Next-worst (2, 13, 22, 30, 39, 44, 47, 53, 72, 98) | **done — sizes, housekeeping & the pocket locks** |
 | Pass 2 · batch 10 | Next-worst (9, 17, 18, 50, 51, 71, 88, 89, 116, 134) | **done — 110 lessons reconstructed total (all Tier-A + 80 Tier-B)** |
-| Pass 2 · batch 11+ | Remaining lessons by scan rank (100 to go: enrichment in place where prose is strong, reconstruction where the machine voice dominates) | next turns |
+| Pass 2 · batch 11 | Next-worst (54, 64, 81, 85, 97, 123, 128, 144, 172, 176) | **done — 120 lessons reconstructed total (enrichment-weighted; model prose in 123/144 preserved)** |
+| Pass 2 · batch 12+ | Remaining lessons by scan rank (90 to go: enrichment in place where prose is strong, reconstruction where the machine voice dominates) | next turns |
 | Figures | 57 new illustrations | **done — all 57 generated, all 439 refs resolve** |
 | Academy lectures | Same standard, session by session | after the notes |
 
