@@ -563,10 +563,10 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A laptop screen showing a simple spreadsheet with names, items and amounts.",
     body: [
       p(
-        "A spreadsheet is a grid that can count. Lined paper can hold the same numbers. The grid's trick is this: when Friday's figure changes, the total at the bottom can change with it, if you asked the grid to add instead of typing the answer yourself. Microsoft Excel, Google Sheets, and LibreOffice Calc are three names for that grid. The idea is older than all of them: rows across, columns down, a cell where they meet.",
+        "Rukayat kept her shop's money book for six years: names down the left, months across the top, naira in the middle, totals at the foot in her own handwriting. Then her son showed her the same book on the screen — and the one trick her paper never learned. A spreadsheet is a grid that can count. Lined paper can hold the same numbers, but when Friday's figure changes, the total at the bottom can change with it, if you asked the grid to add instead of typing the answer yourself. Microsoft Excel, Google Sheets, and LibreOffice Calc are three names for that grid. This lesson is not “become an analyst.” It is: open a grid, name the columns, type numbers as numbers, and let one cell do the sum.",
       ),
       p(
-        "You already know the picture if you have kept a shop book or a school fee list. Names down the left. Months across the top. Money in the middle. The spreadsheet is that book, with a machine willing to add until the battery dies. This lesson is not “become an analyst.” It is: open a grid, name the columns, type numbers as numbers, and let one cell do the sum.",
+        "You already know the picture if you have kept a shop book or a school fee list. The spreadsheet is that book, with a machine willing to add until the battery dies. Rows across, columns down, a cell where they meet — the idea is older than every program that borrows it.",
       ),
       fig(
         "/images/blog/spreadsheet-grid.jpg",
@@ -575,14 +575,14 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("The map: rows, columns, cells"),
       p(
-        "Columns wear letters: A, B, C. Rows wear numbers: 1, 2, 3. The box where column B meets row 3 is called B3. Click it. A line appears around it. That is the active cell. Whatever you type next will land there, the way the cursor works in a letter. The long field above the grid is the formula bar. It shows what is really inside the cell, which is useful later, when the cell is showing a total but holding a sum.",
+        "Columns wear letters: A, B, C. Rows wear numbers: 1, 2, 3. The box where column B meets row 3 is called B3. Click it — a line appears around it. That is the active cell, and whatever you type next lands there, the way the cursor works in a letter. The long field above the grid is the formula bar; it shows what is really inside the cell, which matters later, when a cell is showing a total but holding a sum.",
       ),
       p(
-        "Click A1 and type Name. Press Tab — the cell to the right, B1, becomes active. Type Item. Tab. Type Amount. Press Enter. You are now on the next row, often A2. That first row is a header. It is a label for humans. Do not put a number in it. The numbers start underneath, one fact per cell. Chidinma in A2, exercise book in B2, 450 in C2. Not “Chidinma — book 450” all in one box. The grid can add a column. It cannot easily add a sentence.",
+        "Click A1 and type Name. Press Tab — B1 becomes active. Type Item. Tab. Type Amount. Press Enter, and you are on the next row. That first row is a header: a label for humans. Do not put a number in it. The numbers start underneath, one fact per cell — Rukayat in A2, exercise book in B2, 450 in C2. Not “Rukayat — book 450” all in one box. The grid can add a column. It cannot easily add a sentence.",
       ),
       h2("Numbers are not decoration"),
       p(
-        "Type 450, not ₦450, if you want the grid to add. The naira sign can come from formatting later — a button that says currency, or a format menu. If you type the sign yourself, some programmes treat the cell as a word, and words do not add. The same trap waits with commas and spaces. 1 200 may be a word. 1200 is a number. Start simple: digits only, then make it pretty after the total is right.",
+        "Type 450, not ₦450, if you want the grid to add. The naira sign comes from formatting later — a button that says currency, or a format menu. If you type the sign yourself, some programmes treat the cell as a word, and words do not add. The same trap waits with commas and spaces: “1 200” may be a word; 1200 is a number. Start simple — digits only — then make it pretty after the total is right. One question at the cell, since it is the whole philosophy in one keypress: the total is wrong and the cell says ₦4,500 as text. What single habit prevents this? ... Digits in, decoration after. The grid's honesty begins at the keyboard.",
       ),
       fig(
         "/images/blog/spreadsheet-learner.jpg",
@@ -590,21 +590,20 @@ export const blogPosts: BlogPost[] = [
         "The receipt is the source. The grid is the copy that can add. If they disagree, believe the paper until you find the mistyped cell.",
       ),
       p(
-        "To add a column, click the cell under the last amount — if your amounts are C2 to C6, click C7. Type =SUM(C2:C6) and press Enter. The equals sign tells the grid this is a formula, not a label. SUM is add. C2:C6 means from C2 through C6. The colon is a range, a stretch of cells. If the number that appears matches your calculator, you are done. If you later change C3, C7 should change by itself. That is the whole magic. If it does not change, you typed the total by hand. Undo and put the formula back.",
+        "To add a column: click the cell under the last amount — if your amounts are C2 to C6, click C7. Type =SUM(C2:C6) and press Enter. The equals sign tells the grid this is a formula, not a label. SUM is add. C2:C6 means from C2 through C6 — the colon is a range, a stretch of cells. If the number that appears matches your calculator, you are done. And then the trick that justifies the whole program: change C3 later, and C7 changes by itself. That is the magic. If it does not, you typed the total by hand. Undo, and put the formula back.",
       ),
       ul([
         "Open Excel, Google Sheets, or the spreadsheet that came with the computer. File, New.",
         "In row 1, type Name, Item, Amount.",
         "Enter three real lines from your week — a transport fare, a photocopy, a recharge.",
-        "In the cell under the amounts, type =SUM( and then drag from the first amount to the last, close the bracket, press Enter.",
-        "Change one amount. Watch the total. Save as week-practice in Documents.",
+        "In the cell under the amounts, type =SUM( then drag from the first amount to the last, close the bracket, Enter. Change one amount. Watch the total. Save as week-practice.",
       ]),
       h2("The mistakes that look like maths"),
       p(
-        "A cell that shows ###### is not an error in your life. The column is too narrow for the number. Put the pointer on the line between C and D at the top until it becomes a double arrow, then drag. A cell that shows #DIV/0! means you asked the grid to divide by empty. A cell that shows the formula you typed, instead of an answer, usually means you missed the equals sign, or the cell is formatted as text. Delete, type again starting with =.",
+        "A cell that shows ###### is not an error in your life. The column is too narrow for the number — put the pointer on the line between C and D at the top until it becomes a double arrow, then drag. #DIV/0! means you asked the grid to divide by empty. And a cell showing the formula you typed instead of an answer usually means you missed the equals sign, or the cell is formatted as text: delete, type again starting with =. None of these is the machine judging you. They are notices from a clerk.",
       ),
       p(
-        "One sheet, one job. A tab at the bottom is a page in the same book. Fees on one tab, attendance on another, not both tangled in column Z. Name the file as you would a folder: fees-2026, not Book1. Save as you learned — Ctrl+S, often. Google Sheets saves itself if you are online; that is a kindness, not a reason to work without looking. When a number matters — school fees, a shop tally — print a copy or keep the paper receipts. The grid is a good clerk. It is not the only witness.",
+        "One sheet, one job. A tab at the bottom is a page in the same book — fees on one tab, attendance on another, not both tangled in column Z. Name the file as you would a folder: fees-2026, not Book1. Save as you learned — Ctrl+S, often; Google Sheets saves itself when online, which is a kindness, not a reason to work without looking. And when a number matters — school fees, a shop tally — print a copy or keep the paper receipts. The grid is a good clerk. It is not the only witness.",
       ),
     ],
   },
@@ -1014,10 +1013,10 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A laptop Start menu showing Shut down, Sleep and Restart.",
     body: [
       p(
-        "People treat the laptop like a phone: close the lid, walk away, open it tomorrow. Sometimes that is sleep, and the letter is still there. Sometimes the battery died in the bag, and the letter is not. Sometimes the machine is hot because it never stopped working in the dark. The power button is not one action. It is several, depending on how long you hold it, and whether the machine was already awake. This lesson names those acts so you choose them.",
+        "Chinaza treated the laptop like a phone all through service year: lid down, into the bag, open it tomorrow. Some mornings the letter was still there. Twice the battery died in the bag and the letter was not. Once the machine was hot as a stove because it had never stopped working in the dark. The power button is not one action — it is several, depending on how long you hold it and whether the machine was already awake. This lesson names those acts so you can choose them instead of guessing.",
       ),
       p(
-        "Awake is the sitting you already know: screen on, programs open. Sleep is a nap: the screen goes dark, the RAM keeps the work in a dim room, a small amount of battery still drains. Shut down is going home: everything closes, the disk rests, battery drain is tiny. Restart is going home and coming back immediately — useful after an update, or when a program is haunted. Hibernate, if you see it, is a deep sleep that writes the nap onto the disk so a dead battery does not erase it. Not every machine offers it.",
+        "Awake is the sitting you already know: screen on, programs open. Sleep is a nap — the screen goes dark, the RAM keeps the work in a dim room, a little battery still drains. Shut down is going home: everything closes, the disk rests, the drain becomes tiny. Restart is going home and coming straight back — useful after an update or when a program is haunted. And Hibernate, if you see it, is a deep sleep that writes the nap onto the disk, so a dead battery does not erase it. Not every machine offers it. Hold the family in your mouth once: nap, home, home-and-back, nap-on-disk.",
       ),
       fig(
         "/images/blog/shutdown-menu.jpg",
@@ -1026,10 +1025,10 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("The lid, the nap, and the bag"),
       p(
-        "On most laptops, closing the lid asks the machine to sleep. That is convenient at a desk. It is a bad plan in a school bag. The machine may not sleep. It may stay awake, fan running, and arrive hot, or dead. If you are moving, shut down, or at least click Sleep from the menu and wait until the lights go, then close the lid. Do not assume the click of the lid is a promise.",
+        "On most laptops, closing the lid asks the machine to sleep. That is convenient at a desk and a bad plan in a school bag. The machine may not sleep. It may stay awake, fan running, and arrive hot — or dead. If you are moving, shut down; or at least click Sleep from the menu and wait until the lights die before you close the lid. Do not assume the click of the lid is a promise. One question at the bag: you have thirty seconds to leave the class. Lid, or menu? ... The menu. The lid asks; the menu instructs.",
       ),
       p(
-        "To wake from sleep, open the lid and tap a key, or press the power button once — once, not a hold. The screen should return to the lock picture, then your desktop, programs still open. If it does not, the nap ended in a shutdown because the battery finished. That is why unsaved work is a rumour. Ctrl+S is still the cheaper insurance.",
+        "To wake from sleep: open the lid, tap a key, or press the power button once — once, not a hold. The screen should return to the lock picture, then your desktop, programs still open. If it does not, the nap ended in a shutdown because the battery finished. That is why unsaved work is a rumour and Ctrl+S is still the cheaper insurance.",
       ),
       fig(
         "/images/blog/power-button.jpg",
@@ -1038,7 +1037,7 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("Shut down as a habit"),
       p(
-        "End of the day, especially if light is unreliable: Start, power icon, Shut down. Wait until the screen is fully dark and the lights die. Then close the lid. That is how a machine survives a night of NEPA and a generator that coughs. Restart is the same menu. Use it when a program freezes, after an update, or when the sound, the Wi‑Fi, or the screen has gone strange. Restart is a smaller medicine than a shove.",
+        "End of the day, especially where the light is unreliable: Start, power icon, Shut down. Wait until the screen is fully dark and the little lights die. Then close the lid. That is how a machine survives a night of NEPA and a generator that coughs. Restart is the same menu — use it when a program freezes, after an update, or when the sound, the Wi-Fi, or the screen has gone strange. Restart is a smaller medicine than a shove.",
       ),
       ul([
         "Save every open document.",
@@ -1048,10 +1047,10 @@ export const blogPosts: BlogPost[] = [
       ]),
       h2("When the screen is frozen"),
       p(
-        "If the pointer will not move and Shut down will not open, wait thirty seconds. Some freezes are a disk catching up. Then try Ctrl+Alt+Delete — three keys together — which on Windows often offers Task Manager or a sign-out. If nothing, the long hold on the power button until the machine dies. Count slowly to ten. Then wait another ten before starting it. That shove can lose unsaved work. It should not be how you leave every evening.",
+        "If the pointer will not move and Shut down will not open, wait thirty seconds — some freezes are a disk catching up. Then try Ctrl+Alt+Delete, three keys together, which on Windows often offers Task Manager or a sign-out. If nothing: the long hold on the power button until the machine dies. Count slowly to ten. Then wait another ten before starting it. That shove can lose unsaved work, and it should not be how you leave every evening.",
       ),
       p(
-        "A desktop tower's power button is the same family: one press to start, one press often to sleep or to ask Windows to shut down, a long hold to force. The monitor has its own button; turning off only the screen is not shutting down the computer. The box under the desk may still be working, quietly, for hours. If you can hear the fan after you “left,” you have only darkened the window.",
+        "A desktop tower's power button is the same family: one press to start, one press often to sleep or to ask Windows to shut down, a long hold to force. And the monitor has its own button — turning off only the screen is not shutting down the computer. The box under the desk may still be working, quietly, for hours. If you can hear the fan after you “left,” you have only darkened the window.",
       ),
     ],
   },
@@ -1068,10 +1067,10 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A laptop browser showing a simple web form with name, phone and email fields.",
     body: [
       p(
-        "A website form is a paper with boxes that send themselves. School applications, JAMB, NYSC, bank KYC, the academy's own apply page — they all ask you to type into rectangles and then press a button that says Submit, Continue, or Pay. The fear is that a wrong click will send the wrong life. The usual disaster is smaller and more common: you press the button twice, or you leave a required box empty, or you use the back button in the middle of a payment. This lesson is how to treat the page like a clerk who can only read what is in the boxes.",
+        "Hauwa filled her sister's school application at eleven at night, alone, with the fear most people carry to a screen form: that one wrong click will send the wrong life. Then she pressed Back during the payment and nearly made the fear true. A website form is a paper with boxes that send themselves — school applications, JAMB, NYSC, bank KYC, the academy's own apply page — and the usual disaster is smaller and more common than the fear: you press the button twice, or leave a required box empty, or use the back button in the middle of a payment. This lesson is how to treat the page like a clerk who can only read what is in the boxes.",
       ),
       p(
-        "Walk to the real address yourself, as you learned. Bookmark it if you will return. Do not start a government form from a WhatsApp link you did not ask for. Have the paper beside you: ID, names as they appear on the ID, phone number, email you can open, a passport photograph already on the computer in Pictures. Hunting for a scan in the middle of a form is how sessions expire.",
+        "Walk to the real address yourself, as you learned — bookmark it if you will return, and do not start a government form from a WhatsApp link you did not ask for. Then have the paper beside you: ID, names exactly as they appear on the ID, phone number, an email you can open, and a passport photograph already sitting on the computer in Pictures. Hunting for a scan in the middle of a form is how sessions expire.",
       ),
       fig(
         "/images/blog/web-form.jpg",
@@ -1080,32 +1079,32 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("Moving through the boxes"),
       p(
-        "Click the first box. Type. Tab — the key left of Q — jumps to the next box. Shift+Tab jumps back. That is faster than the mouse and less likely to click Submit by accident. Drop-down lists need a click, then an arrow key, then Enter. Date fields are troublemakers: some want day-month-year, some want you to pick from a calendar icon. Look at the grey example inside the box, if there is one. Do not invent a format.",
+        "Click the first box, type, then Tab — the key left of Q — to jump to the next box. Shift+Tab jumps back. That is faster than the mouse and much less likely to click Submit by accident. Drop-down lists want a click, then an arrow key, then Enter. Date fields are troublemakers: some want day-month-year, some want you to pick from a calendar icon. Look at the grey example inside the box, if there is one, and do not invent a format.",
       ),
       p(
-        "Checkboxes are squares; tick them only if you mean the sentence beside them. Round ones are radio buttons — one choice in the family, not all. CAPTCHA — “select the traffic lights” — is a gate against machines. Do it slowly. File upload boxes want Choose file, then the house you already know: Pictures, Documents. The name of the file should appear beside the button. If it does not, you have not attached anything. Look before you continue.",
+        "Checkboxes are squares — tick them only if you mean the sentence beside them. Round ones are radio buttons: one choice in the family, not all. CAPTCHA — “select the traffic lights” — is a gate against machines; do it slowly. File upload boxes want Choose file, then the house you already know: Pictures, Documents. And the proof it worked is quiet: the name of the file appears beside the button. If it does not, you have not attached anything. Look before you continue. One retrieval at the upload, since it fails more than any other box: the form shows no filename and you already clicked Choose file once. What happened? ... Nothing landed. The dialog was cancelled, or the wrong window swallowed it — choose again and watch for the name.",
       ),
       fig(
         "/images/blog/form-learner.jpg",
         "A young woman filling a form on a laptop, an ID card and notebook beside her.",
         "The paper is the source. Type names as they are printed, not as you prefer them. A mismatch with an ID is how applications bounce a month later.",
       ),
-      h2("Required, errors, and the red text"),
-      p(
-        "When you press Continue and the page jumps, look for red text or a box outlined in red. That is the clerk pointing. Often it is a missing digit in a phone number, an email without the @, or a password that is “too short” by their rule, not yours. Fix the pointed box. Do not start the whole form again unless the page has gone blank. If the page has gone blank, your session may have expired — too many minutes idle. Open the real address again. Keep the paper. You are not starting your life over. You are typing.",
-      ),
       ul([
         "Open a practice form — the academy apply page, or a site you already trust.",
         "Fill three boxes using Tab. Attach nothing you would not send.",
         "Leave one required box empty on purpose. Press Continue. Find the red text. Fill it.",
-        "Do not press Submit twice. Watch the button. If it says Please wait or becomes grey, the clerk has the paper.",
+        "Do not press Submit twice. Watch the button: if it says Please wait or turns grey, the clerk has the paper.",
       ]),
+      h2("Required, errors, and the red text"),
+      p(
+        "When you press Continue and the page jumps, look for red text or a box outlined in red. That is the clerk pointing. Often it is a missing digit in a phone number, an email without the @, or a password that is “too short” by their rule, not yours. Fix the pointed box. Do not start the whole form again unless the page has gone blank — and if it has, your session may have expired from idle minutes. Open the real address again. Keep the paper beside you. You are not starting your life over. You are typing.",
+      ),
       h2("Submit once, especially when money is involved"),
       p(
-        "The last button is the one that files you, or takes money. One click. Then wait. A slow network will tempt a second click. A second click is how people are charged twice or create two applications. If the page seems dead, look at the tab's little spinner. Count to sixty. If nothing, do not Back. Back in a payment is famous. Open a new tab, go to the same real site, and look for a dashboard, a receipt, or “already submitted.” If money left the bank and the site is silent, you have a receipt in the bank SMS — keep it, then use the site's own contact, not a number from a pop-up.",
+        "The last button is the one that files you, or takes money. One click. Then wait. A slow network will tempt a second click — and a second click is how people are charged twice or create two applications. If the page seems dead, look at the tab's little spinner and count to sixty. If nothing, do not press Back. Back, in a payment, is famous. Open a new tab instead, go to the same real site, and look for a dashboard, a receipt, or “already submitted.” If money left the bank and the site is silent, the bank SMS is your receipt — keep it — then use the site's own contact, not a number from a pop-up.",
       ),
       p(
-        "Save or screenshot the success page if the site does not email you. Pictures, named. The form is finished when you have evidence, not when you feel finished. And if a page asks you to create a password for this one form, use a new sentence, write the hint, and do not recycle the Gmail key. Each house its own key. You have heard that before because it keeps being true.",
+        "Save or screenshot the success page if the site does not email you. Pictures, named. The form is finished when you have evidence, not when you feel finished. And if a page asks you to create a password for this one form: a new sentence, a hint in the notebook, and never a recycled Gmail key. Each house its own key — you have heard that before, because it keeps being true.",
       ),
     ],
   },
@@ -2885,10 +2884,10 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A browser account menu with Sign out visible.",
     body: [
       p(
-        "A business centre, a church office, a friend's house, the academy's own machines if you are a visitor — the sitting ends. Closing the laptop lid is not leaving. The next person opens the lid and is you, in Gmail, in Drive, in a bank tab you forgot. This lesson is a short ritual for the last five minutes, so your keys do not stay on someone else's table. You have met the pieces. This is the order to walk them.",
+        "Olamide left the business centre at four, remembered at six, and ran back: his Gmail still open on their machine, a draft with his BVN sitting in a tab. The boy at the counter had not touched anything — but the next customer would have been one click from being him. A business centre, a church office, a friend's house, the academy's own machines if you are a visitor — the sitting ends, and closing the laptop lid is not leaving. The next person opens the lid and finds you in Gmail, in Drive, in a bank tab you forgot. This lesson is the short ritual for the last five minutes, so your keys do not stay on someone else's table.",
       ),
       p(
-        "Sign out is a sentence in an account menu: your picture or name, then Sign out, Log out, or Sign off. Gmail has one. Drive is the same Google, so one Google sign-out often covers both. WhatsApp Web has a menu, Log out. Windows itself may have a user you should not shut down if it is not your PC — Sign out of your sites first, then leave Windows as you found it. Do not shut down a shop's counter machine unless they asked.",
+        "Sign out is a sentence in an account menu: your picture or name, then Sign out, Log out, or Sign off. Gmail has one. Drive is the same Google, so one Google sign-out often covers both. WhatsApp Web has its menu — three dots, Log out. The bank has its own logout, which is not the tab's X. And Windows itself: if it is not your PC, do not shut down a shop's counter machine — sign out of your sites first, then leave Windows as you found it.",
       ),
       fig(
         "/images/blog/sign-out.jpg",
@@ -2897,10 +2896,10 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("The five-minute walk"),
       p(
-        "Mail: picture, Sign out. Confirm the browser is asking for a password again. WhatsApp Web: three dots, Log out. Bank: the bank's own logout, not only the tab's X. Browser: if you used Guest, close all Guest windows. If you used a profile, sign out of the profile or close it. If you used the house browser, clear the last hour of cookies if you can do it without a fight, or at least close every tab. Downloads: copy your files to your USB, then delete those copies from their Downloads if the machine is public. Recycle Bin if you deleted.",
+        "The order, said once, like a gate list. Mail: picture, Sign out — confirm the browser is asking for a password again. WhatsApp Web: three dots, Log out. Bank: the bank's own logout. Browser: if you used Guest, close all Guest windows; if you used a profile, sign out of the profile or close it; if you used the house browser, clear the last hour of cookies if it goes quietly, or at least close every tab. Downloads: copy your files to your USB, then delete those copies from their Downloads if the machine is public. Recycle Bin, if you deleted anything. One retrieval while the bag is still on your shoulder: you used Guest and closed the window. What still needs doing? ... Checking Downloads and the printer tray. Guest forgets the browsing, not the paper.",
       ),
       p(
-        "Remember me, Stay signed in, Trust this device — you should have said no on the way in. If you said yes, sign out is still required, and you may need to remove the device from Google's account later, from a machine that is yours: myaccount.google.com, Security, your devices. That is homework for the evening, not a reason to skip sign-out now.",
+        "And the ticks from the way in — Remember me, Stay signed in, Trust this device — you should have said no. If you said yes, sign-out is still required, and you may need to remove the device from the account later, from a machine that is yours: myaccount.google.com, Security, your devices. That is homework for the evening, not a reason to skip sign-out now.",
       ),
       fig(
         "/images/blog/leaving-shared-pc.jpg",
@@ -2908,24 +2907,21 @@ export const blogPosts: BlogPost[] = [
         "USB in your pocket. Tabs gone. Sign out done. The lid is last, not first.",
       ),
       ul([
-        "Practise on your own machine: sign out of Gmail, then sign in again. Feel the extra step. That step is what you owe a shared machine.",
+        "Practise on your own machine: sign out of Gmail, then sign in again. Feel the extra step — that step is what you owe a shared machine.",
         "Next time you sit at a computer that is not yours, start from Guest or a private window.",
         "Before you stand: mail, WhatsApp Web, bank, USB, close.",
         "Do not leave a phone charging in their USB “for a minute” with the phone unlocked.",
       ]),
       h2("The account that remembers the machine"),
       p(
-        "Your mail account keeps a list of every device that has ever walked in with your keys, and the list outlives the visit. Google calls it Your devices, inside the account settings; Microsoft has the same room under Security. Open it on your own phone the same evening and look at the names: the office desktop from Tuesday is still there, still trusted. Sign it out from where you sit. The door answers across town, and the keys you left in the drawer stop being keys. It takes ninety seconds and it is the difference between leaving and locking up.",
+        "Your mail account keeps a list of every device that has ever walked in with your keys, and the list outlives the visit. Google calls it Your devices, inside the account settings; Microsoft keeps the same room under Security. Open it on your own phone the same evening and read the names: the office desktop from Tuesday is still there, still trusted. Sign it out from where you sit. The door answers across town, and the keys you left in the drawer stop being keys. Ninety seconds — the difference between leaving and locking up.",
       ),
       p(
-        "The second sweep is the browser itself. Signing out of the mail's web page is a different act from signing out of the browser profile, and on a machine where you used only the page, that act is enough: the site forgets the session, the next person gets the login box. If the machine felt untrustworthy in any way — a shared password on it, a strange toolbar watching — do the third thing too: change your mail password from your own phone when you get home. A lock changed after a lost key is not panic. It is the price of the evening, paid once.",
+        "Two more sweeps for honest completeness. Signing out of the mail's web page and signing out of the browser profile are different acts — on a machine where you used only the page, the page sign-out is enough. And if the machine felt untrustworthy in any way — a shared password on it, a strange toolbar watching — do the third thing when you get home: change your mail password from your own phone. A lock changed after a lost key is not panic. It is the price of the evening, paid once.",
       ),
       h2("What still leaks"),
       p(
-        "A file on their Desktop. A print they have not collected. A photo in their WhatsApp if you sent it to yourself from their app. Paper in the printer tray. Look. The ritual is not paranoia. It is leaving a borrowed room as you found it, plus not leaving your ATM card in the sofa.",
-      ),
-      p(
-        "If you forgot, from home, change the mail password, then the bank if you touched it. Google can sign out other sessions. Do it the same day. Shame is how this one finishes badly, like the phishing lesson. You are not the first person to leave a tab open in a café. You can still lock the door from the other street. Then the next sitting, walk the five minutes. Lid last.",
+        "A file on their Desktop. A print nobody collected. A photo in their WhatsApp if you sent it to yourself through their app. Paper in the printer tray. Look. The ritual is not paranoia — it is leaving a borrowed room as you found it, plus not leaving your ATM card in the sofa. And if you already forgot all of this at the café? From home: change the mail password, then the bank if you touched it — Google can sign out the other sessions — the same day. Shame is how this one finishes badly, like the phishing lesson. You are not the first person to leave a tab open in a café. You can still lock the door from the other street. Then the next sitting, walk the five minutes. Lid last.",
       ),
     ],
   },
@@ -2942,10 +2938,10 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A simple three-column table in a Word document on a laptop.",
     body: [
       p(
-        "A letter sometimes needs a list that lines up: three fees, four names, a timetable. People hit Tab and Space until the words look like columns, then print, then watch the line collapse because one name was longer. A table is a grid on the page — the cousin of the spreadsheet, but it does not add unless you ask. It holds. This lesson is Insert Table, Tab through the cells, and not drawing the grid with the mouse like a fence.",
+        "Folasade's club needed a fee table in the annual letter, and she built it the way most people do: Tab, Tab, Space, Space, until the words stood in columns. It printed beautifully — until one member's long surname walked into the next column and the whole fence fell over. A letter sometimes needs a list that lines up: three fees, four names, a timetable. A table is a grid on the page — the cousin of the spreadsheet, but it does not add unless you ask. It holds. This lesson is Insert Table, Tab through the cells, and not drawing the grid with the mouse like a fence.",
       ),
       p(
-        "In Word: Insert, Table, then hover a small grid — 3 columns, 4 rows is enough to start. Click. A box appears in the letter. The first row can be headers: Name, Item, Amount. Click in a cell. Type. Tab to the next cell. At the end of a row, Tab makes a new row. That is the whole trick. You do not need Design until the words are in.",
+        "In Word: Insert, Table, then hover a small grid — three columns, four rows is enough to start. Click. A box appears in the letter. The first row can be headers: Name, Item, Amount. Click in a cell, type, Tab to the next cell. At the end of a row, Tab makes a new row. That is the whole trick. You do not need Design until the words are in.",
       ),
       fig(
         "/images/blog/word-table.jpg",
@@ -2954,10 +2950,10 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("Tab, width, and the page"),
       p(
-        "If a table runs off the right edge, you have too many columns or the font is large. Click inside the table, then drag the lines, or Table Layout, Autofit, Window. Prefer fewer columns. A letter is not Excel. Amounts can be a column. Dates can be a column. A story cannot. Stories stay in paragraphs above the table.",
+        "If a table runs off the right edge, you have too many columns or the font is large. Click inside the table, then drag the lines — or Table Layout, Autofit, Window. Prefer fewer columns. A letter is not Excel. Amounts can be a column. Dates can be a column. A story cannot. Stories stay in paragraphs above the table. One question at the grid, since it decides the shape before you type: the member's name, her item, and a paragraph explaining why. Which two go in cells? ... Name and item. The paragraph keeps its own room — tables are for facts that line up, not sentences that breathe.",
       ),
       p(
-        "Borders are on by default in Word. That is useful. If a school asked for “no grid,” Table Design, Borders, No border — the cells remain; only the ink of the walls hides. You can still Tab. Do not delete the table to hide the lines. You will be back to Space-bar columns.",
+        "Borders are on by default in Word, which is useful. If a school asked for “no grid”: Table Design, Borders, No border — the cells remain; only the ink of the walls hides. You can still Tab. Do not delete the table to hide the lines. You will be back to Space-bar columns by Friday.",
       ),
       fig(
         "/images/blog/table-learner.jpg",
@@ -2972,17 +2968,14 @@ export const blogPosts: BlogPost[] = [
       ]),
       h2("The lines you cannot see"),
       p(
-        "Open a fresh table in Word and it arrives wearing faint grey lines. Those lines are scaffolding: they help you build and they never print. The visible grid a reader sees is Borders, which you apply on purpose — click inside the table, find the borders button, choose All borders, and the scaffolding becomes a proper grid of ink. Half of the ugly tables in the world are scaffolding sent to the printer because nobody told the builder the difference. View, Gridlines is the switch that hides even the scaffolding when you want to see the page as the reader will.",
+        "Open a fresh table in Word and it arrives wearing faint grey lines. Those lines are scaffolding: they help you build, and they never print. The visible grid a reader sees is Borders — ink you apply on purpose. Click inside the table, find the borders button, choose All borders, and the scaffolding becomes a proper grid. Half of the ugly tables in the world are scaffolding sent to the printer because nobody told the builder the difference. View, Gridlines, hides even the scaffolding when you want to see the page as the reader will.",
       ),
       p(
-        "Build tables the way a clerk builds a register: one idea per row, one measure per column, the names on the left and the figures on the right so the digits line up like yams in a row. A school timetable wants centred cells and even columns; a price list wants right-aligned naira. And when the grid tempts you to merge two cells into one wide one, stop — merged cells are the reason lists refuse to sort later. Keep every cell honest and single. The table will bend around your content gracefully, and the spreadsheet — the cousin with the sums living inside — remains the right home for anything that needs calculating.",
+        "Build tables the way a clerk builds a register: one idea per row, one measure per column, names on the left and figures on the right so the digits line up like yams in a row. A school timetable wants centred cells and even columns; a price list wants right-aligned naira. And when the grid tempts you to merge two cells into one wide one — stop. Merged cells are the reason lists refuse to sort later. Keep every cell honest and single.",
       ),
       h2("When the spreadsheet is the right tool"),
       p(
-        "If you must add a column of naira, Excel will not forget the formula. A Word table can add with a formula field, and it is a maze. Copy the numbers to a sheet, add, copy the total back as a number. Or keep the whole list in Excel and put a screenshot in the letter only if they asked for a picture. Usually they asked for a list. A table is a list that will not collapse.",
-      ),
-      p(
-        "Merging cells to make a title across the top is allowed once. Nested tables are not a first-week skill. If the table looks busy, you have too much border, too much colour, too many columns. Black lines, white cells, words. Print preview. If it fits on the page with the greeting still above it, you are done.",
+        "If you must add a column of naira, Excel will not forget the formula — a Word table can add, through a formula field, and it is a maze. Copy the numbers to a sheet, add, copy the total back as a number. Or keep the whole list in Excel entirely. Usually they asked for a list, and a table is a list that will not collapse. Merging cells for one title across the top is allowed once. Nested tables are not a first-week skill. If the table looks busy, you have too much border, too much colour, too many columns. Black lines, white cells, words. Print preview. If it fits on the page with the greeting still above it, you are done.",
       ),
     ],
   },
@@ -4080,22 +4073,22 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "An Open with list of programs over a file on a laptop.",
     body: [
       p(
-        "A PDF is a plate. A .docx is a working letter. A .jpg is a photograph. None of those is Word, or Chrome, or Photos. They are papers. A program is the pair of hands that opens the paper. Double-click asks Windows to guess which hands. Sometimes the guess is a browser that cannot edit. Sometimes it is a shop's “PDF Professional” that shouts. Open with is how you pick the hands for this sitting, or for always. This lesson is that choice, and why Always is a bigger word than it looks.",
+        "Obinna double-clicked a photograph and it opened in a spreadsheet — grey grid, tiny picture floating in cell B7 — because some forgotten program had married itself to .jpg files. A PDF is a plate, a .docx is a working letter, a .jpg is a photograph: none of those is Word or Chrome or Photos. They are papers. A program is the pair of hands that opens the paper. Double-click asks Windows to guess which hands; sometimes the guess is a browser that cannot edit, sometimes a shop's “PDF Professional” that shouts. Open with is how you pick the hands — for this sitting, or for always — and Always is a bigger word than it looks.",
       ),
       p(
-        "Right-click the file, Open with, choose a name you recognise — Word, Edge, Photos, Excel. If the list is short, Choose another app, More apps. Once, or Always. Once is a visit: this time, Photos. Always is a marriage: every .jpg from now on. Do not marry a program you met today from a banner. Visit first. If the file opens and looks like itself, you chose well. If Word tries to eat a photograph, you chose badly. Close. Open with, the other hands.",
+        "Right-click the file, Open with, choose a name you recognise — Word, Edge, Photos, Excel. If the list is short, Choose another app, More apps. Then the small question that decides everything: Once, or Always. Once is a visit. Always is a marriage: every .jpg from now on opens with this one. Do not marry a program you met today from a banner. Visit first. If the file opens and looks like itself, you chose well. If Word tries to eat a photograph, close it and visit with different hands.",
       ),
       fig(
         "/images/blog/open-with.jpg",
         "A list of programs offering to open a file.",
         "The list is a set of hands, not a set of files. Pick the hands that already live on the machine. A name you do not remember installing is the shop guest from the uninstall lesson.",
       ),
-      h2("When the wrong marriage is already made"),
+      h2("When the wrong hands are already holding the file"),
       p(
-        "If every PDF now opens in a browser and you wanted a reader, right-click a PDF, Open with, pick the reader, Always. The marriage changes. Settings, Apps, Default apps, is the same idea in a longer list — which program opens .pdf, which opens .jpg. You do not need to tour that list on day one. One file, Open with, is enough to fix a nuisance.",
+        "The divorce papers also live in Open with. If every PDF now opens in a browser and you wanted a reader: right-click a PDF, Open with, pick the reader, then Always — the marriage changes. Settings, Apps, Default apps, is the same idea in a longer list: which program opens .pdf, which opens .jpg. You do not need to tour that list on day one. One file, Open with, is enough to fix a nuisance.",
       ),
       p(
-        "A file that says “Windows cannot open this” is often a type you do not have hands for — .psd, .ai, a specialist thing — or a type that was renamed until the dot lied. You know the dot from renaming. Put the real type back if you hid it. If the type is honest and you still have no program, you do not have to fetch one from the first advert. Ask whether you even need to open it, or whether a PDF export exists instead.",
+        "A file that says “Windows cannot open this” is usually one of two honest problems: a type you have no hands for — .psd, .ai, some specialist thing — or a type that was renamed until the dot lied. You know the dot from the renaming lesson; put the real type back if you hid it. If the type is honest and you still have no program, you do not have to fetch one from the first advert. Ask the older question first: do I even need to open this, or does a PDF export of it exist somewhere? One contrast worth carrying out of here: the file is never ruined by opening it wrongly. Papers survive bad hands. Only the signpost was wrong.",
       ),
       fig(
         "/images/blog/default-app.jpg",
@@ -4106,18 +4099,14 @@ export const blogPosts: BlogPost[] = [
         "Right-click a photograph. Open with Photos or Preview, once. Confirm you see the picture.",
         "Right-click a PDF. Open with your browser, once. Then try another program if you have one.",
         "Do not tick Always until you have seen the file look right.",
-        "If a stranger program appears in the list, do not pick it. Uninstall is a different sitting.",
+        "If a stranger program appears in the list, do not pick it. Uninstalling it is a different sitting.",
       ]),
-      h2("Just once, or always this one"),
+      h2("Match the job to the hands"),
       p(
-        "When the wrong marriage is already made, the divorce papers are in Open with. Right-click the file, choose Open with, and then Choose another app: the window offers you every program that could read this file, and beneath the list sits the little question — Always, or Just once. Just once is the polite visit: the file opens in this other program this one time and the marriage stands. Always is the remarriage: every file of that kind opens this way from today. Try the visit first. A week of visits will tell you whether the new program deserves the ring.",
+        "Photographs want the photo viewer for looking, Paint or Photos for fixing. PDFs want a reader or the browser. Documents want Word — or its browser cousin for reading. Music and video want the media player. And notice the useful oddity: the browser is a fine temporary home for PDFs and photographs — it opens them gently in a tab with no marriage at all. When a file type has wandered entirely — an .txt opening in a spreadsheet, a photograph in Notepad — remember the real cause. The file is fine. The signpost points to the wrong house.",
       ),
       p(
-        "Match the file to the program the way you match a shoe to an errand. Photographs want the photo viewer for looking and Paint or Photos for fixing. PDFs want a reader or the browser. Documents want Word or the browser cousin. Music and video want the media player. And notice the useful oddity: the browser is a fine temporary home for PDFs and photographs — it opens them gently in a tab without any marriage at all. When a file type has wandered entirely — an .txt opening in a spreadsheet, a photograph in Notepad — remember the real cause. The file is fine. The signpost points to the wrong house.",
-      ),
-      h2("The browser is not always the wrong hands"),
-      p(
-        "A PDF in Edge or Chrome is fine for reading. Word is for editing. Photos is for a picture you might crop. Excel is for a grid that must add. Matching the job to the hands is the whole skill. Double-click is a habit. Open with is a decision. When the habit is wrong, use the decision. The file will wait. It is only paper until hands pick it up.",
+        "So the skill in one breath: a PDF in Edge or Chrome is fine for reading; Word is for editing; Photos is for a picture you might crop; Excel is for a grid that must add. Double-click is a habit. Open with is a decision. When the habit is wrong, use the decision — the file will wait. It is only paper until hands pick it up.",
       ),
     ],
   },
@@ -5028,10 +5017,10 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A phone settings screen with Airplane mode switched on.",
     body: [
       p(
-        "Airplane mode is a master mute for the phone's radios. It was built so a plane's instruments would not argue with a pocket. On the ground it is still useful: a class, a church, a meeting, a bundle you refuse to feed overnight, a child watching a downloaded film. The phone does not die. It stops talking to masts and to Wi‑Fi until you say so. This lesson is the tap, what still works, and turning Wi‑Fi back on without opening the whole house.",
+        "Adaeze's phone survived the long school night because of a rule the matron made and never explained: every handset goes to airplane mode at ten. No midnight broadcasts, no notifications from boys, no battery dying at two — and the alarm still woke the hostel at five. Airplane mode is a master mute for the phone's radios. It was built so a plane's instruments would not argue with a pocket; on the ground it is still useful — a class, a church, a meeting, a bundle you refuse to feed overnight, a child watching a downloaded film. The phone does not die. It stops talking to masts and to Wi-Fi until you say so.",
       ),
       p(
-        "Swipe down from the top of an Android, or down from the right on many iPhones. A plane icon. Tap it. The icon lights. The signal bars go. You will not receive WhatsApp until you switch it off. Calls will fail. That is the point. To undo, tap the plane again. If you cannot find the shade, Settings, Network, Airplane mode — the same lamp, a longer walk.",
+        "Swipe down from the top of an Android, or down from the right on many iPhones. A plane icon. Tap it — the icon lights, the signal bars go. You will not receive WhatsApp until you switch it off. Calls will fail. That is the point. To undo, tap the plane again. If you cannot find the shade: Settings, Network, Airplane mode — the same lamp, a longer walk.",
       ),
       fig(
         "/images/blog/airplane-mode.jpg",
@@ -5040,10 +5029,10 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("What still works, and a hole you can open"),
       p(
-        "Camera, torch, clock, photos already on the phone, a downloaded video, a PDF in Files, the calculator. GPS may sulk. Bluetooth often goes off with the plane; some phones let you switch Bluetooth back on after, for earphones, while the mast stays muted. Wi‑Fi can sometimes be turned on on top of airplane mode — a plane with a café network, no SIM data. That is a useful knot in a hall with Wi‑Fi and a greedy bundle. Look: plane on, then Wi‑Fi on. Data should stay dead.",
+        "Camera, torch, clock, photos already on the phone, a downloaded video, a PDF in Files, the calculator. GPS may sulk. Bluetooth often goes off with the plane — on some phones you can switch it back on afterwards for earphones while the mast stays muted. And there is a knot worth knowing in a hall with Wi-Fi and a greedy bundle: turn the plane on, then turn Wi-Fi back on. You are on the plane with a café network and no SIM data — the quietest possible setting for a downloaded lecture in a noisy room.",
       ),
       p(
-        "Alarms still ring on most phones. Do not trust that with your life until you have tested it once the night before. A power-off is ruder than the plane: nothing rings. The plane is a sleep for the radios, not a shutdown. Battery lasts longer because the phone stops hunting a mast in a weak area. That hunt is why a phone dies in a bus between towns. Plane, then you arrive, then off.",
+        "Alarms still ring on most phones, but do not trust that with your morning until you have tested it once, the night before. A power-off is ruder than the plane: nothing rings. The plane is a sleep for the radios, not a shutdown. And the battery thanks you visibly — a phone dies in a bus between towns because it is hunting a mast the whole way. Plane, travel, arrive, off. Quick check before the bedroom section: the flight mode is on and the film is downloaded. Will it play? ... It will. The plane grounds the radios, not the phone.",
       ),
       fig(
         "/images/blog/plane-icon.jpg",
@@ -5051,24 +5040,21 @@ export const blogPosts: BlogPost[] = [
         "The desk is working. The pocket is quiet. If you need the laptop's internet, that is a different radio. The phone can rest.",
       ),
       ul([
-        "Swipe to the plane. Switch it on. Try to open WhatsApp. It should fail or stall.",
-        "Open the camera. Take a picture. That should work.",
+        "Swipe to the plane. Switch it on. Try to open WhatsApp — it should fail or stall.",
+        "Open the camera. Take a picture — that should work.",
         "Switch the plane off. Wait a few seconds. Signal should return.",
-        "If you only wanted silence, practise Do not disturb once, so you do not use a sledgehammer for a fly.",
+        "If you only wanted silence, practise Do not disturb once — do not use a sledgehammer for a fly.",
       ]),
-      h2("The quiet bedroom, and the alarm that survives"),
+      h2("The quiet bedroom, and the radio's reset"),
       p(
-        "Airplane mode has a second career as the bedside tool. Every night the phone can go quiet without going dark: the alarm still rings in the morning, the camera still takes photographs, the downloaded music still plays, the notes still open. What stops is the knock on the door — every app's permission to disturb you at eleven. People who try this for one week rarely go back. The phone charges faster in the quiet, sleeps on the table instead of in the hand, and the first hour of the morning belongs to you before it belongs to anybody's broadcast list.",
+        "Airplane mode has a second career as the bedside tool. Every night the phone can go quiet without going dark: the alarm still rings, the camera still shoots, the downloaded music still plays, the notes still open. What stops is the knock on the door — every app's permission to disturb you at eleven. People who try this for one week rarely go back. The phone charges faster in the quiet, sleeps on the table instead of in the hand, and the first hour of the morning belongs to you before it belongs to anybody's broadcast list.",
       ),
       p(
-        "The same switch solves other small wars. A class that must not be interrupted by a ringtone is a class for airplane mode, not for the apologetic rummage in the bag. A meeting that needs the phone as a recording device or a camera is safer with the radios off; the device works, the distractions do not. And when a phone is misbehaving in some radio way — the network frozen, the Wi-Fi sulking — airplane mode on for ten seconds and off again is the cheapest first repair anyone can perform. It is the small door that closes everything so one thing can work again.",
+        "The same switch settles other small wars. A class that must not be interrupted by a ringtone is a class for airplane mode, not the apologetic rummage in the bag. A meeting that needs the phone as recorder or camera is safer with the radios off — the device works, the distractions do not. And when a phone misbehaves in some radio way — network frozen, Wi-Fi sulking — airplane mode on for ten seconds and off again is the cheapest first repair anyone can perform.",
       ),
       h2("When it is the wrong tool"),
       p(
-        "A bank OTP will not arrive on the plane. Switch off before you pay. Maps that need live data will freeze; an offline map, from the maps lesson, still shows streets. WhatsApp Web on the laptop dies if the phone is on the plane, because the phone is the key. You know that handshake.",
-      ),
-      p(
-        "The plane is a door you close on purpose. It is not broken signal. It is not a virus. If a relative says the phone “has no network,” look for the plane before you buy data. The icon is small. The effect is large. Look, then tap.",
+        "A bank OTP will not arrive on the plane — switch off before you pay. Maps that need live data will freeze (the offline map still shows streets). And WhatsApp Web on the laptop dies when the phone is on the plane, because the phone is the key — you know that handshake. The plane is a door you close on purpose. It is not broken signal, and it is not a virus. If a relative says the phone “has no network,” look for the plane before you buy data. The icon is small. The effect is large. Look, then tap.",
       ),
     ],
   },
@@ -5085,10 +5071,10 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "Phone storage settings showing what is using space.",
     body: [
       p(
-        "A phone fills the way Downloads fills: quietly, then all at once. You cannot install an update, cannot receive a photo, the camera refuses. Storage full. The usual fat is the gallery, WhatsApp's own folder of pictures, downloaded films, and apps you have not opened this year. This lesson is looking at the bar, walking copies to the computer first, then deleting with a name, not with a shouting cleaner.",
+        "Okey's phone refused the camera at his daughter's naming ceremony — storage full — with three thousand four hundred photographs inside it, of which perhaps two hundred mattered. A phone fills the way Downloads fills: quietly, then all at once. Then the camera refuses, the update will not install, the photo will not arrive. The usual fat is the gallery, WhatsApp's own folder of pictures, downloaded films, and apps you have not opened this year. This lesson is looking at the bar, walking copies to the computer first, then deleting with a name — not with a shouting cleaner.",
       ),
       p(
-        "Settings, Storage — a bar, then a list: Photos, Apps, Other. Other is often WhatsApp and caches. You already know how to copy photographs off the phone with a cable. Do that before you delete. Open a few on the computer. Then, on the phone, delete the ones you have seen on the larger screen. WhatsApp: Settings, Storage and data, Manage storage. It will offer large files and old videos. Those are often soup. The originals, if they were yours, should already be in Pictures on the computer.",
+        "Settings, Storage — a bar, then a list: Photos, Apps, Other. Other is often WhatsApp and caches. And the order of operations is the lesson's spine: you already know how to copy photographs off the phone with a cable. Do that before you delete. Open a few on the computer to prove they survived the crossing. Then, on the phone, delete only what you have seen on the larger screen. WhatsApp keeps its own hoard — Settings, Storage and data, Manage storage — and it will offer large files and old videos, often soup you never meant to keep.",
       ),
       fig(
         "/images/blog/phone-storage.jpg",
@@ -5097,10 +5083,10 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("What to delete, what to leave"),
       p(
-        "Safe to consider: downloaded films you have watched, installers, screenshots of OTPs, WhatsApp statuses that landed in the gallery, duplicate burst shots of the same plate of rice. Not safe to guess: the WhatsApp Databases folder if you do not know it, system apps, Downloads you have not opened. Uninstall apps from Settings, Apps — the guest list — not by dragging an icon to a bin that only removes the sign, on some phones. You have met that lie on the desktop.",
+        "Safe to consider: downloaded films you have watched, installers, screenshots of OTPs, WhatsApp statuses that landed in the gallery, the twenty burst shots of the same plate of rice. Not safe to guess: the WhatsApp Databases folder if you do not know it, system apps, Downloads you have not opened yet. And uninstall apps from Settings, Apps — the guest list — not by dragging an icon to a bin that only removes the sign on some phones. You have met that lie on the desktop already.",
       ),
       p(
-        "Cache is leftover packing. Clearing cache in Storage, or inside an app's info, can free space without deleting your photos. Clearing data is ruder: it signs you out of that app. Read the word. Cache, not data, unless you mean to start the app from zero.",
+        "Two words on the app's own page decide most of the fear: cache and data. Cache is leftover packing — clearing it frees space without touching your photos, and the soil returns as the app works again. Data is demolition: the app forgets your login, your chats, your settings. Read the word before you tap. Cache, not data, unless you mean to start the app from zero. One retrieval at the broom: the app is bloated but you are signed in and mid-conversation. Which button? ... Cache. Always cache first. Data is the button you use when you have already said goodbye.",
       ),
       fig(
         "/images/blog/storage-settings.jpg",
@@ -5110,22 +5096,15 @@ export const blogPosts: BlogPost[] = [
       ul([
         "Open Settings, Storage. Note the largest item.",
         "If it is photos, copy a year to the computer. Open three. Then delete from the phone only those you have confirmed.",
-        "In WhatsApp, Manage storage. Delete a large video you do not need. Do not delete the whole chat until you mean it.",
+        "In WhatsApp, Manage storage: delete a large video you do not need. Do not delete the whole chat until you mean it.",
         "Do not install a “phone booster” from an advert. Settings is the cleaner.",
       ]),
       h2("The gallery, and the same face twice"),
       p(
-        "Open the gallery and look for the crowd: the same photograph sent and received and screenshotted and sent again, the twenty takes where only one was kept, the four-minute videos of a ceiling recorded by accident. On most phones the storage menu under Settings shows the real breakdown — the gallery first, WhatsApp second, the rest trailing — and the gallery is where the free gigabytes live. Delete the duplicates with a hard heart and one exception: keep the one photograph where everyone's eyes are open. Move that one to the computer or the cloud before the sweep, and the hard heart costs nothing.",
+        "Open the gallery and look for the crowd: the same photograph sent and received and screenshotted and sent again; the twenty takes where only one was kept; the four-minute video of a ceiling recorded by accident. The storage menu shows the real breakdown — gallery first, WhatsApp second, the rest trailing — and the gallery is where the free gigabytes live. Delete the duplicates with a hard heart and one exception: keep the one photograph where everyone's eyes are open. Move that one to the computer or the cloud before the sweep, and the hard heart costs nothing.",
       ),
       p(
-        "The second field is the apps themselves. Long-press an app, look at its storage, and Clear cache is the broom — the temporary soil the app piled up while working, safe to sweep, quick to return. Clear data is the demolition: the app forgets your login, your chats, your settings. Learn the difference once and you can clean any app without fear. And when the phone still begs after a real sweep, believe it. A gallery of four thousand photographs on a sixty-four gigabyte phone is a full house. The computer drawer you already built is the spare room.",
-      ),
-      h2("Cloud, SD cards, and the shop"),
-      p(
-        "Google Photos can offload pictures if you chose that on purpose and the bundle can stand it. An SD card is a second pocket; some phones still have the slot. Apps on the card are fussy. Photos on the card vanish if the card dies. Copy to the computer is still the backup. A shop that “cleans storage” in five minutes without your cable has deleted first. Ask them to copy. Stand there.",
-      ),
-      p(
-        "When the bar has room again, the camera will open. That is the whole practical aim. A full phone is not a virus. It is a pocket with too many bricks. You know bricks from kilobytes. Walk them to the drawer. Then the pocket works.",
+        "When the bar has room again, the camera will open — that is the whole practical aim. And the last street of the map: Google Photos can offload pictures if you chose that on purpose and the bundle can stand it; an SD card is a second pocket (apps on the card are fussy, and photos on the card vanish when the card dies — the computer copy is still the backup). One warning aimed at the market: a shop that “cleans storage” in five minutes without your cable has deleted first. Ask them to copy. Stand there. A full phone is not a virus. It is a pocket with too many bricks — and you know bricks from the size lesson. Walk them to the drawer. Then the pocket works.",
       ),
     ],
   },
@@ -6590,10 +6569,10 @@ export const blogPosts: BlogPost[] = [
       "A young person watching a tutorial video on a laptop with a notebook open beside them.",
     body: [
       p(
-        "Here is the open secret of this century: the classroom is already in your pocket, and most of it asks for nothing but attention and data. YouTube alone holds more teaching than any of us could sit through in a lifetime — tailoring, plumbing, Excel, the camera, the drum, the camera drone. The skill is no longer access. The skill is learning without drowning, because the flood is real: a thousand teachers, all talking, all at once.",
+        "Nkeiru learned to sew from a woman in Onitsha she never met: three hundred videos, one playlist, a borrowed phone at the shop after close. Here is the open secret of this century — the classroom is already in your pocket, and most of it asks for nothing but attention and data. YouTube alone holds more teaching than any of us could sit through in a lifetime: tailoring, plumbing, Excel, the camera, the drum. The skill is no longer access. The skill is learning without drowning, because the flood is real — a thousand teachers, all talking, all at once.",
       ),
       p(
-        "Search like a student, not a browser. Not a vague word — a subject and a level: Excel for beginners, how to sew a bodice, Photoshop for a small business. Then use the video lesson's three gifts, pause, captions, and speed, as study tools: pause where your hands should catch up, captions when the accent is new to you, speed up the parts you already own. Playlists are courses that strangers have already arranged for you, beginning to end — the shelf built, the books ordered. Sit in one for a month and you will come out different.",
+        "Search like a student, not a browser. Not a vague word — a subject and a level: Excel for beginners, how to sew a bodice, Photoshop for a small business. Then turn the video lesson's three gifts into study tools: pause where your hands should catch up, captions when the accent is new to you, speed for the parts you already own. And playlists are courses that strangers have already arranged for you, beginning to end — the shelf built, the books ordered. Sit inside one for a month and you will come out different.",
       ),
       fig(
         "/images/blog/youtube-tutorial-learning.jpg",
@@ -6602,10 +6581,10 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("Choosing, finishing, practising"),
       p(
-        "The flood's real danger is collecting. Fifteen courses bookmarked, four apps installed, none finished — a gallery of beginnings. The cure is one subject for one month, written on paper where you sleep. And practise with your hands: the machine open beside the video, the tutorial followed step by step, the mistake made and undone — you own undo now. A video watched is a video watched. A thing practised is a skill. The gap between those two sentences is where most learners are lost, and you have crossed that gap before, on a keyboard, one honest hour at a time.",
+        "The flood's real danger is collecting. Fifteen courses bookmarked, four apps installed, none finished — a gallery of beginnings. The cure is one subject for one month, written on the paper where you sleep. And practise with your hands: the machine open beside the video, the tutorial followed step by step, the mistake made and undone — you own undo now. A video watched is a video watched. A thing practised is a skill. One question at the playlist, since it separates the two: you have watched four hours of Excel this week and touched no spreadsheet. What have you bought? ... Entertainment with better posture. The hands pay the fees.",
       ),
       p(
-        "Certificates: real free courses exist, and a certificate with real learning behind it opens a door or two. But an employer trusts the thing you can do in front of them more than the paper that says you once watched. So finish, then make the smallest real thing with what you learned — a poster for a shop, a spreadsheet for a church, a page for a friend's trade. And when you want a person in the room, machines to sit at, somebody to ask — that is what the academy's classes are for. These notes are the free version of the same belief: this knowledge belongs to whoever wants it.",
+        "On certificates: real free courses exist, and a certificate with real learning behind it opens a door or two. But an employer trusts the thing you can do in front of them more than the paper that says you once watched. So finish, then make the smallest real thing with what you learned — a poster for a shop, a spreadsheet for a church, a page for a friend's trade. And when you want a person in the room, machines to sit at, somebody to ask twice — that is what the academy's classes are for. These notes are the free version of the same belief: this knowledge belongs to whoever wants it.",
       ),
       fig(
         "/images/blog/phone-lesson-notes.jpg",
@@ -6620,14 +6599,14 @@ export const blogPosts: BlogPost[] = [
       ]),
       h2("The twenty hours at the table"),
       p(
-        "A course finished is a certificate of watching. A skill is the twenty hours your hands spent at the table afterwards — and those hours should start the same week, not the same year. After every tutorial, build the smallest real thing: type the actual letter after the word-processing class, make the actual poster after the design class, wire the actual small page after the web class. Two evenings a week, one hour each, beats the eight-hour Sunday that never happens. Twenty focused hours is a fortnight of evenings at this pace, and at the end of it your fingers know the road your head learned in the video.",
+        "A course finished is a certificate of watching; a skill is the twenty hours your hands spent at the table afterwards — and those hours start the same week, not the same year. After every tutorial, build the smallest real thing: type the actual letter after the word-processing class, make the actual poster after the design class, wire the actual small page after the web class. Two evenings a week, one hour each, beats the eight-hour Sunday that never happens. Twenty focused hours is a fortnight of evenings at this pace — and at the end of it your fingers know the road your head learned in the video.",
       ),
       p(
-        "Keep the hours deliberate and they compound quietly. Pick the one next step that is just out of reach — the table that will not sort, the formula that will not fill — and spend the hour there, not on what you already know how to do. Screenshot the before and after. Date it. Put it in the folder of finished things. The folder is not vanity; it is the only honest evidence of practice, and one day it will be a portfolio. Watching is the beginning. Doing is the lesson. The twenty hours at the table are the teacher nobody can watch for you.",
+        "Keep the hours deliberate and they compound quietly. Pick the next step that is just out of reach — the table that will not sort, the formula that will not fill — and spend the hour there, not on what you already know how to do. Screenshot the before and after. Date it. Put it in the folder of finished things. That folder is not vanity; it is the only honest evidence of practice, and one day it will be a portfolio.",
       ),
       h2("Respect the gift"),
       p(
-        "A grandmother here could not have bought this shelf for any money, at any age in history, and it now sits beside her, free, in her language, mostly. The honour you pay a gift like that is to use it: close the app sometimes and do the thing with your own hands, badly at first, the way every hand in these notes was trained. Watching is the beginning. Doing is the lesson. The rest is the pause button, pressed as often as needed.",
+        "A grandmother in this country could not have bought this shelf for any money, at any age in history, and it now sits beside her — free, in her language, mostly. The honour you pay a gift like that is to use it. Close the app sometimes and do the thing with your own hands, badly at first, the way every hand in these notes was trained. Watching is the beginning. Doing is the lesson. The rest is the pause button, pressed as often as needed.",
       ),
     ],
   },
@@ -7485,10 +7464,10 @@ export const blogPosts: BlogPost[] = [
       "An IT support officer crouched beside a colleague's desk, fixing a cable while they watch.",
     body: [
       p(
-        "Every office has a moment when everything stops: the printer dies before the meeting, the email will not open, the system asks for a password nobody remembers. In that moment one person becomes the most important in the building — the person who fixes the day. That is IT support: the trade of keeping other people's work moving, and the most common first room in all of technology. The analyst watches for attackers; the builder raises programs; the support person keeps the ordinary daylight running, which every one of those rooms quietly depends on.",
+        "Godwin's first week on the help desk began with a corridor emergency: the printer died ten minutes before the board meeting, the director was holding his papers in the air, and everybody turned to look at the new boy. The printer needed its queue cleared and its paper tray closed — four minutes of calm — but what people remembered was that he walked over without sighing. Every office has a moment when everything stops, and in that moment one person becomes the most important in the building: the person who fixes the day. That is IT support — the trade of keeping other people's work moving, and the most common first room in all of technology.",
       ),
       p(
-        "Here is the secret the job adverts do not say: you already know half the trade. Every lesson on this shelf is a ticket — a reported problem — that an IT support person has answered a thousand times. The computer is slow. The update is stuck. There is no sound. The phone says storage is full. The form will not upload. A ticket is one of these, reported by somebody else, and the trade is resolving it calmly while its owner watches. What the job adds to what you know is method: ask what changed last, restart honestly, check the obvious road before the exotic one, write down what you did — and a shell of deeper knowledge around it: networks, accounts, machines, the floors of lesson one hundred and twenty-six, climbed and repaired.",
+        "Here is the secret the job adverts do not say: you already know half the trade. Every lesson on this shelf is a ticket — a reported problem — that an IT support person has answered a thousand times. The computer is slow. The update is stuck. There is no sound. The phone says storage is full. The form will not upload. A ticket is one of these, reported by somebody else, and the trade is resolving it calmly while its owner watches. What the job adds to what you already own is method — ask what changed last, restart honestly, walk the obvious road before the exotic one, write down what you did — and a shell of deeper knowledge around it: networks, accounts, machines, the five floors of the TCP/IP lesson, climbed and repaired.",
       ),
       fig(
         "/images/blog/support-desk-helping.jpg",
@@ -7497,10 +7476,10 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("The core qualification nobody lists first"),
       p(
-        "Patience. Because the job's real raw material is not machines — it is frightened people: the manager who clicked the link, the accountant certain she has broken the system, the director who needs it now. The support person who sighs makes one enemy and teaches the whole corridor to hide their problems, which is how small faults grow into disasters. The one who explains without making anybody small becomes the person people run to early, and early is where problems are cheap. Every manner this shelf taught — the help lesson's rules for asking, the shared machine's courtesies — is what the good side of this desk looks like. You are not paid to know everything. You are paid to stay calm, find out, and leave the person taller than you met them.",
+        "Patience. Because the job's real raw material is not machines — it is frightened people: the manager who clicked the link, the accountant certain she has broken the system, the director who needs it now. The support person who sighs makes one enemy and teaches a whole corridor to hide their problems, which is how small faults grow into disasters. The one who explains without making anybody small becomes the person people run to early — and early is where problems are cheap. Every manner this shelf taught — the help lesson's rules for asking, the shared machine's courtesies — is what the good side of this desk looks like. One question at the desk, since the whole reputation turns on it: you know the fix and the user is slow and scared. What is the job — the machine, or the person? ... Both, in that order of care. You are not paid to know everything. You are paid to stay calm, find out, and leave the person taller than you met them.",
       ),
       p(
-        "The road in, honestly: the fundamentals — machines, networks, accounts, the operating system's moods — then a first role, help desk or school or café support, where the learning is paid for instead of paid for. Certificates in the CompTIA family open doors here the way they do across the trade; the academy's IT support course carries that groundwork with machines to open and break safely. The pay begins modest, like all first rooms — but the room's view is the whole building: support people who learn how everything connects become the sysadmins, the security watchers, the infrastructure engineers, each rung paying better than the last. Almost nobody ends where support began. The trade's habit of fixing things has always included fixing one's own ladder.",
+        "The road in, honestly. The fundamentals first — machines, networks, accounts, the operating system's moods — then a first role: help desk, school, or café support, where the learning is paid for instead of paid for. Certificates in the CompTIA family open doors here the way they do across the trade, and the academy's IT support course carries that groundwork with machines to open and break safely. The pay begins modest, like all first rooms — but the room's view is the whole building: support people who learn how everything connects become the sysadmins, the security watchers, the infrastructure engineers, each rung paying better than the last.",
       ),
       fig(
         "/images/blog/opened-laptop-repair.jpg",
@@ -7515,7 +7494,7 @@ export const blogPosts: BlogPost[] = [
       ]),
       h2("The trade that keeps the lights on"),
       p(
-        "No app ships, no analysis lands, no campaign runs, in a building whose machines are down and whose people are afraid of them. IT support is the floor under every floor — unglamorous by design, indispensable by arithmetic. If your temperament is the helper's, if the locked-out colleague's relief is payment you actually enjoy, this is a career that begins where you are already standing: calm, curious, and unafraid of the question everybody else is afraid to ask twice.",
+        "No app ships, no analysis lands, no campaign runs, in a building whose machines are down and whose people are afraid of them. IT support is the floor under every floor — unglamorous by design, indispensable by arithmetic. Almost nobody ends where support began; the trade's habit of fixing things has always included fixing one's own ladder. If your temperament is the helper's — if the locked-out colleague's relief is payment you actually enjoy — this is a career that begins where you are already standing: calm, curious, and unafraid of the question everybody else is afraid to ask twice.",
       ),
     ],
   },
