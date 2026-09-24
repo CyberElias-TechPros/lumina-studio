@@ -444,10 +444,10 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A laptop on a wooden desk showing an email inbox.",
     body: [
       p(
-        "The trap has a shape. A message arrives with your name, a familiar colour, and a clock. Your account will close. A parcel is held. A job is waiting. A relative is stranded. The button is large. The English is almost right. Your hands want to tap before your head has sat down. That hurry is the product. This lesson is how to sit down anyway.",
+        "Bisi almost tapped it on a Tuesday morning, standing in the bank queue with her phone in one hand. The message had her name, the bank's blue, and a clock: her account would be suspended in thirty minutes unless she “verified her BVN” through the button below. Her thumb was already moving when the man behind her coughed, and the spell broke. This lesson is that cough, built into a habit: what the trap looks like, why the padlock in the address bar is not a promise, and the one walk that defeats every version of this game ever invented.",
       ),
       p(
-        "People call this phishing when it comes as email, and the same play arrives on WhatsApp, SMS, and Facebook. The name does not matter. The move is the same: they want you to walk through their door while thinking it is the bank's. Once you type a password or a BVN or an OTP into their page, they have the key. The page can look finished. A padlock can sit in the address bar. A padlock means the tunnel is encrypted. It does not mean the building is the bank.",
+        "People call this phishing when it arrives by email, and the same play comes on WhatsApp, by SMS, through Facebook. The name does not matter. The move is always the same: they want you to walk through their door while believing it is the bank's. Once you type a password, a BVN, or an OTP into their page, they hold the key. And notice the costume detail that fools careful people: the page can look finished, and a padlock can sit in the address bar. A padlock only means the tunnel is encrypted. It does not mean the building is the bank. A secure tunnel to a thief is still a thief.",
       ),
       fig(
         "/images/blog/inbox-caution.jpg",
@@ -456,17 +456,17 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("Three tells you can see without clicking"),
       p(
-        "Look at the sender the way you look at a stamp. A bank's real mail comes from an address that ends in the bank's own house, not from a free gmail with the bank's name in the display. Display names are costumes. The address behind them is the street. On a phone, tap the name to expand it. On a computer, hover or click once. If the street is strange, you are done. You do not need to open the letter to know the stamp is wrong.",
+        "Look at the sender the way you look at a stamp. A bank's real mail comes from an address that ends in the bank's own house — not from a free gmail wearing the bank's name in the display. Display names are costumes; the address behind them is the street. On a phone, tap the name to expand it; on a computer, hover or click once. If the street is strange, you are finished here. You do not need to open a letter to know the stamp is wrong.",
       ),
       p(
-        "Look at the ask. Real institutions already have your details. They do not need you to “confirm your BVN to keep this account.” They do not need a photograph of your ATM card, front and back. They do not need the code that just arrived on your phone — that code is a one-time key, and anyone who asks you to read it out is asking you to open the door from inside. A job that wants a “processing fee” before you start is not a job.",
+        "Look at the ask. Real institutions already have your details. They do not need you to “confirm your BVN to keep this account.” They do not need a photograph of your ATM card, front and back. And they never — never — need the code that just arrived on your phone: that code is a one-time key, and anyone who asks you to read it aloud is asking you to open your own door from inside. A job that wants a processing fee before you start is not a job. Before we go on, one retrieval, because it sorts half the inbox of a lifetime: what does a real bank already know that a fake one must ask for? ... Your BVN, your card, your number. The asking itself is the tell.",
       ),
       p(
-        "Look at the clock. “Within 30 minutes or your account closes” is theatre. Banks do not close accounts by WhatsApp. Couriers do not hold parcels behind a random link. If there is a genuine problem, it will still be there in an hour, on the number or the website you already use. Hurry is not a feature of serious offices. It is a feature of thieves.",
+        "Look at the clock. “Within 30 minutes or your account closes” is theatre. Banks do not close accounts by WhatsApp. Couriers do not hold parcels behind a random link. If there is a genuine problem it will still be there in an hour — on the number or the website you already use. Hurry is not a feature of serious offices. It is a feature of thieves.",
       ),
       h2("Walk there yourself"),
       p(
-        "This is the whole defence, and it fits in one habit. Do not use the link in the message. Open a new tab. Type the address you already trust, or use the bookmark you saved on a calm day, or open the bank's own app from your phone's home screen — the icon you installed, not a new one the message suggested. If the story was true, the real site will show it. If the story was a trap, the real site will be quiet, and you will have lost nothing but a minute.",
+        "Here is the whole defence, and it fits in one habit: do not use the link in the message. Open a new tab. Type the address you already trust, or use the bookmark you saved on a calm day, or open the bank's own app from your phone's home screen — the icon you installed, not a new one the message suggested. If the story was true, the real site will show it. If the story was a trap, the real site will sit quiet, and you will have lost nothing but a minute.",
       ),
       fig(
         "/images/blog/address-check.jpg",
@@ -474,20 +474,20 @@ export const blogPosts: BlogPost[] = [
         "The street name lives here, not in the logo, not in the button. Read it before you type a password. A letter extra, a missing dot, a different ending — any of those is a different building.",
       ),
       p(
-        "When you must look at a link, look at the street in the address bar after the page opens, before you type anything. The important part is the name just before the first slash, the house. firstbank.com is not firstbank.com.ru is not first-bank-secure.xyz. You do not need to memorise every fake. You need to know your real ones: the bank you actually use, the exam body, the academy, the mail you signed up with. Write those few addresses in the same notebook as the password hints.",
+        "When you do look at a link, read the street in the address bar after the page opens and before you type anything. The important part is the name just before the first slash — the house. firstbank.com is not firstbank.com.ru is not first-bank-secure.xyz. You do not need to memorise every fake on earth. You need to know your real ones: the bank you actually use, the exam body, the mail you signed up with. Write those few addresses in the same notebook as the password hints.",
       ),
       ul([
         "Open yesterday's mail or WhatsApp. Find one message that asked you to tap a button.",
         "Do not tap it. Read the sender. Read the ask. Read the clock.",
         "Open a new tab and type the real address yourself, or open the real app.",
-        "Compare. If the real place is silent, the message was noise. Delete it. If you already tapped one last month, change the email password from the real site, then the bank.",
+        "Compare. If the real place is silent, the message was noise — delete it. If you already tapped one last month, change the email password from the real site, then the bank.",
       ]),
       h2("If you already tapped"),
       p(
-        "Stop typing. Do not “finish the form.” Close the tab. On your phone, do not call the number in the message. From a number you already have — the back of the card, the app, a printed receipt — tell the bank what happened. Change the email password first, because that is the master door, then the bank password, then any other house that used the same key. If money moved, the bank's fraud line is the next call, not a helper in the comment section of Facebook.",
+        "Stop typing. Do not “finish the form.” Close the tab. On your phone, do not call the number in the message. From a number you already have — the back of the card, the app, a printed receipt — tell the bank what happened. Change the email password first, because that is the master door, then the bank password, then any other house that used the same key. If money moved, the bank's fraud line is the next call — not a helper in the comment section of Facebook.",
       ),
       p(
-        "Shame is how these traps finish the job. People hide the mistake until the account is empty. The academy would rather you say “I tapped” on the same day than “I think something is wrong” three weeks later. You are not the first. The lesson is the walk: new tab, real street, then maybe the story is true. Everything else can wait.",
+        "Shame is how these traps finish the job. People hide the mistake until the account is empty. Bisi's neighbour hid hers for two weeks and the recovery became a police story instead of a phone call. You are not the first, and the professionals on the fraud line have heard it all before breakfast. The lesson is the walk: new tab, real street, then maybe the story is true. Everything else can wait.",
       ),
     ],
   },
@@ -739,10 +739,10 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A USB cable connecting a phone to a laptop on a wooden desk.",
     body: [
       p(
-        "The phone is a camera you already know. The gallery fills until the phone is slow, or until it falls in a basin, or until the shop formats it “to repair the screen.” Photographs that live only in the pocket are not kept. They are borrowed. This lesson is how to move them into the Pictures drawer on the computer, name a few that matter, and leave the rest without drowning.",
+        "Amarachi's phone fell into a basin of water on a Sunday afternoon, and the first words out of her mouth were not about the phone. They were about the photographs: the child's naming ceremony, her father's last birthday, three years of shop receipts. The phone was replaced on Monday. The pictures were gone for a month — until a quiet man at the repair shop recovered them with a cable and a great deal of patience. Photographs that live only in the pocket are not kept. They are borrowed. This lesson is how to move them into the Pictures drawer on the computer before the water, the thief, or the shop's format button gets a vote.",
       ),
       p(
-        "Three ordinary roads exist. A USB cable from the phone to the laptop. A cloud — Google Photos, iCloud — if you already signed in and the data can stand it. Bluetooth, which is slow and fine for three pictures, not for a wedding. Start with the cable. It does not need airtime. It does not compress the file into WhatsApp soup.",
+        "Three ordinary roads exist. A USB cable from the phone to the laptop. A cloud — Google Photos, iCloud — if you already signed in and the data can stand it. Bluetooth, which is slow and fine for three pictures, but not for a wedding. Start with the cable: it does not need airtime, and it does not compress the file into WhatsApp soup.",
       ),
       fig(
         "/images/blog/phone-usb.jpg",
@@ -751,14 +751,14 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("The cable, said slowly"),
       p(
-        "Unlock the phone first. A locked phone often shows as an empty drive. Plug the cable into the phone and into a USB port on the computer. On Android, a notice usually appears: charging only, or file transfer. Choose file transfer, or MTP, or the words that mean “share files.” On an iPhone, the computer may ask you to trust this computer; tap Trust, then the passcode. Wait. A new device should appear in File Explorer or Finder, with a name like the phone's model.",
+        "Unlock the phone first — a locked phone often shows up as an empty drive. Plug the cable into the phone and into a USB port on the computer. On Android a notice usually appears: charging only, or file transfer. Choose file transfer, or MTP, or whatever words mean “share files.” On an iPhone the computer may ask you to trust this computer; tap Trust, then the passcode. Wait. A new device should appear in File Explorer or Finder, named something like the phone's model.",
       ),
       p(
-        "Open that device as you would a USB drive. On Android you will often walk through Internal storage, then DCIM, then Camera. That Camera folder is the roll. On an iPhone, pictures may appear in a Photos app on the computer rather than as ordinary files — follow that window; it is still a drawer. Do not start dragging yet. First, on the computer, open Pictures and make a folder with a human name: 2026-family, or church-harvest, or id-scans. Then copy.",
+        "Open that device as you would a USB drive. On Android you will usually walk through Internal storage, then DCIM, then Camera — that Camera folder is the roll. On an iPhone, pictures may appear in a Photos app on the computer instead of as ordinary files; follow that window, it is still a drawer. But do not start dragging yet. First, on the computer, open Pictures and make a folder with a human name: 2026-family, or church-harvest, or id-scans. Then copy. Where would you look first when the phone shows up empty but charging? ... The notification shade — it is almost always still asking you to choose file transfer.",
       ),
       h2("Copy, do not cut"),
       p(
-        "Select the photographs you want. Click the first, hold Shift, click the last, for a block. Or hold Ctrl and click to pick. Copy — Ctrl+C — then open your new folder and paste. Wait until the progress box finishes. A phone cable that wiggles will corrupt a file in the middle, the way a yanked USB does. When the copy is done, open two or three photographs on the computer to prove they are really there. Only then may you delete from the phone, and only if you need the space. Copy is the safe verb. Cut is how people empty a pocket into a hole.",
+        "Select the photographs you want. Click the first, hold Shift, click the last, for a block. Or hold Ctrl and click to pick single files. Copy — Ctrl+C — open your new folder, paste. Wait until the progress box finishes; a phone cable that wiggles will corrupt a file in the middle, the same way a yanked USB does. When the copy is done, open two or three photographs on the computer to prove they are really there. Only then may you delete from the phone, and only if you need the space. Copy is the safe verb. Cut is how people empty a pocket into a hole.",
       ),
       fig(
         "/images/blog/pictures-folder.jpg",
@@ -773,10 +773,10 @@ export const blogPosts: BlogPost[] = [
       ]),
       h2("What to keep, what to leave"),
       p(
-        "You do not need every blurry plate of rice. You need the passport, the receipt, the group photograph from a funeral, the child's first day. Those get names. Screenshots of a bank OTP can go. WhatsApp images that were compressed twice can go if the original is already in Pictures. A full dump of DCIM is fine as a first backup; sorting can wait. What cannot wait is one copy off the phone.",
+        "You do not need every blurry plate of rice. You need the passport scan, the receipt, the group photograph from a funeral, the child's first day. Those get names. Screenshots of a bank OTP can go. Twice-compressed WhatsApp images can go when the original already lives in Pictures. A full dump of DCIM is fine as a first backup — sorting can wait. What cannot wait is one copy off the phone.",
       ),
       p(
-        "If there is no cable that works, email a few originals to yourself as documents, or use the computer's phone-link app if it already exists. Do not send the wedding through WhatsApp to “save them.” You will save a fog. And when the copy is on the computer, the next lesson but one — backup — is how that drawer survives a stolen laptop. For today: pocket to drawer, cable, copy, look, then maybe delete.",
+        "If no cable works, email a few originals to yourself as documents, or use the computer's phone-link app if it already exists. Do not send the wedding through WhatsApp to “save them” — you will save a fog. And once the copy is on the computer, the backup lesson is how that drawer survives a stolen laptop. For today: pocket to drawer, cable, copy, look — and only then, maybe, delete.",
       ),
     ],
   },
@@ -4250,22 +4250,22 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A small right-click menu open over a file on a laptop.",
     body: [
       p(
-        "The first sitting named the right button and told you not to fear the menu. You have used it since: New folder, Compress, Open with, Restore. This lesson is the menu as a map, not a jump scare. Whatever sits under the pointer — a file, a paragraph, the desktop, a browser link — owns a short list of extra acts. Left click selects or opens. Right click asks “what else?” If the list appears and you did not want it, click empty space, or press Escape. The list is not an error. It is a drawer.",
+        "Kemi treated the right button like a door marked DANGER for her first three months at the office. She had once clicked it by accident, a list of strange words had appeared, and she had pressed Escape with her heart beating — convinced she had nearly broken something. Then her supervisor watched her hunt through the ribbon for Rename and said, quietly, “it is already in your right hand.” This lesson is the same tour for you: the menu is not a jump scare. It is a drawer, and every drawer opens to show what is inside.",
       ),
       p(
-        "On a file: Open, Open with, Rename, Cut, Copy, Delete, Properties, Send to, Compress. On a paragraph in Word: Cut, Copy, Paste, Font, sometimes a translator you did not ask for. On a browser page: Back, Save image, Inspect — Inspect is for builders; you can ignore it. On empty desktop: View, New, Display settings. The list changes because the thing under the pointer changed. That is the whole design. Look at the words. If you do not recognise a word, do not pick it. The drawer will wait.",
+        "Left click selects or opens. Right click asks one question: what else? Whatever sits under the pointer — a file, a paragraph, the desktop, a browser link — owns a short list of extra acts, and the list changes because the thing under the pointer changed. That is the whole design. On a file: Open, Open with, Rename, Cut, Copy, Delete, Properties, Send to, Compress. On a paragraph in Word: Cut, Copy, Paste, Font. On a browser page: Back, Save image, Inspect — Inspect is for builders; you can ignore it. On empty desktop: View, New, Display settings. Look at the words. If you do not recognise a word, do not pick it. The drawer will wait. And if the list appears and you did not want it: click empty space, or press Escape. Nothing is chosen until you choose it.",
       ),
       fig(
         "/images/blog/right-click-menu.jpg",
         "A short right-click menu over a file icon.",
         "A few honest verbs. If the menu is a novel of extras, a shop installed guests. You can still pick Open and leave the rest.",
       ),
-      h2("Trackpad, and the extra guest"),
+      h2("Trackpads, and the unwelcome guest"),
       p(
-        "A laptop without a mouse: two-finger tap, or a bottom-right corner of the trackpad, or hold Control and click on a Mac. If nothing appears, the pad may be in a mode that wants a physical button. Try a USB mouse for a week if the pad fights you. You already know USB guests.",
+        "A laptop without a mouse: two-finger tap, or press the bottom-right corner of the trackpad, or hold Control and click on a Mac. If nothing appears, the pad may be in a mode that wants a physical button — try a USB mouse for a week if the pad fights you. You already know how to welcome USB guests.",
       ),
       p(
-        "A menu that offers “Scan with PC Cleaner” or “Upload to MegaSpeed” is a guest talking. You do not owe it a click. Uninstall the guest when you are ready. Right-click is not improved by twelve extra lines. It is worsened. The useful verbs are still near the top: Open, Rename, Delete.",
+        "Now the other kind of guest. A menu that offers “Scan with PC Cleaner” or “Upload to MegaSpeed” is not part of Windows — it is some installed program talking through your menu, and you do not owe it a click. Uninstall the guest when you are ready. Right-click is not improved by twelve extra lines; it is worsened. The useful verbs stay near the top: Open, Rename, Delete. One question while the drawer is open: a stranger's name sits in the middle of your menu. Is the menu telling you to use it, or merely showing you it exists? ... Merely showing. Seeing a name is not an instruction. Writing it down for later is the whole response.",
       ),
       fig(
         "/images/blog/right-click-learner.jpg",
@@ -4276,21 +4276,17 @@ export const blogPosts: BlogPost[] = [
         "Right-click the desktop. Look. Escape. Nothing should have changed.",
         "Right-click a file you can afford to practise on. Read Open, Rename, Delete. Do not Delete it.",
         "Right-click a blank part of a Word page. See how the list differs.",
-        "If a name in the list is a stranger, write it down. That is a clue for Apps, later, not a reason to click it now.",
+        "If a name in the list is a stranger, write it down. That is a clue for the Apps list, later — not a reason to click it now.",
       ]),
-      h2("The menu that changes its coat"),
+      h2("The menu that changes its coat, and Properties"),
       p(
-        "The right-click menu is not one list but many, and the coat it wears tells you what you clicked. Right-click a file and the menu speaks of opening, copying, renaming, deleting. Right-click an empty stretch of desktop and it speaks of creating new folders and arranging icons. Right-click inside a document and the menu speaks of fonts and paragraphs. Right-click a link in a browser and it speaks of opening in a new tab. If the menu seems to offer strange things, look again at what is under the pointer. The menu is never confused. It is answering the thing you actually asked.",
+        "Because the menu answers the thing you actually asked, its coat changes: on a file it speaks of opening, copying, renaming; on empty desktop, of creating and arranging; inside a document, of fonts and paragraphs; on a link, of opening in new tabs. If the menu seems to offer strange things, look again at what is under the pointer. The menu is never confused.",
       ),
       p(
-        "There is a keyboard for hands that do not use a mouse well: the key with the menu drawn on it, usually beside the right Ctrl key, opens the same coat at the cursor's position — and Shift with F10 does the same on keyboards missing the key. Inside the menu, the New submenu is the quiet workshop: a folder, a shortcut, a blank document of any installed kind, ready in two clicks from any empty table. And Properties, at the bottom of almost every coat, is the quiet facts panel — size, type, where the file lives, when it last changed. When in doubt about any object in the machine, right-click it first. Its own menu is its own answer.",
-      ),
-      h2("Properties, and the quiet facts"),
-      p(
-        "Properties, at the bottom of many file menus, is a fact sheet: size, type, date modified, sometimes a Security tab you can leave alone. Size you now know. Date modified is when the file last changed — useful when two receipts have similar names. Read-only is a tick that says “do not save over me”; useful on a template. You do not need to live in Properties. Know it exists so a helper who says “check the size” is not speaking a foreign language.",
+        "There is a keyboard for hands that do not use a mouse well: the key with the menu drawn on it, usually beside the right Ctrl key, opens the same coat at the cursor's place — and Shift+F10 does the same on keyboards missing that key. Inside the menu, the New submenu is the quiet workshop: a folder, a shortcut, a blank document of any installed kind, two clicks from any empty table. And Properties, at the bottom of almost every coat, is the facts panel: size, type, where the file lives, when it last changed. Date modified settles which of two similar receipts is the new one; Read-only is the tick that says “do not save over me,” useful on a template. You do not need to live in Properties. Know it exists, so a helper who says “check the size” is not speaking a foreign language.",
       ),
       p(
-        "The right button is how a computer hides power in a small list instead of fifty icons. You will not memorise every list. You will look, pick a verb you can defend, or leave. That is the same manners as the installer boxes. Next is not a trance. The menu is not a command. It is an offer.",
+        "The right button is how a computer hides power in a small list instead of fifty icons. You will not memorise every list. You will look, pick a verb you can defend, or leave — the same manners as the installer boxes. The menu is not a command. It is an offer.",
       ),
     ],
   },
@@ -5446,10 +5442,10 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "Phone hotspot settings on a wooden desk.",
     body: [
       p(
-        "You met this as a sentence in the Wi‑Fi lesson: the phone can share its data with a laptop. The name is hotspot, or tethering. The phone becomes a small router. The laptop joins it like a house network. The bundle is the pipe. This lesson is switching it on, a password that is not 12345678, one laptop not a compound, and switching it off so the battery and the naira do not leak overnight.",
+        "Emeka's laptop needed the internet on a generator night, the router was dark, and the assignment was due at seven the next morning. His sister said one sentence — “use your phone” — and in two minutes the laptop was online through the small computer in his pocket. That is the hotspot, or tethering: the phone becomes a little router, the laptop joins it like a house network, and the bundle is the pipe. This lesson is switching it on, a password that is not 12345678, one laptop instead of a compound — and switching it off so the battery and the naira do not leak overnight.",
       ),
       p(
-        "Settings, Network, Hotspot and tethering, Wi‑Fi hotspot. Set a name you will recognise — not “Android” in a hall of Androids. Set a password, eight characters at least, a sentence fragment, not the phone’s unlock PIN. Turn the hotspot on. On the laptop, open the fan list, join that name, type the key. Private network if Windows asks; it is your pocket, not a café. When the page loads, the pipe is the SIM.",
+        "The path: Settings, Network, Hotspot and tethering, Wi-Fi hotspot. Set a name you will recognise — not “Android” in a hall of Androids. Set a password of at least eight characters, a sentence fragment, not the phone's unlock PIN. Turn the hotspot on. On the laptop, open the fan list, join that name, type the key. Choose Private network if Windows asks — it is your pocket, not a café. When the page loads, the pipe is the SIM.",
       ),
       fig(
         "/images/blog/phone-hotspot.jpg",
@@ -5458,10 +5454,10 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("Who joins, and what it costs"),
       p(
-        "One laptop is the point. If the list of connected devices shows names you do not know, change the password, switch off, on again. A neighbour can join an open hotspot the way they join an open house Wi‑Fi. Do not leave it without a key. USB tethering — a cable from phone to laptop — is a quieter cousin: no radio for the neighbours, uses the cable you already own. Turn USB tethering on after you plug in. It still spends the bundle.",
+        "One laptop is the point. If the phone's connected-devices list shows names you do not know, change the password and switch the hotspot off and on again — a neighbour can join an open hotspot the way they walk into an open house. Do not leave yours without a key. And watch the two treasuries, because tethering spends both at once: the bundle and the battery. Video will eat a week's data in an evening. Windows loves to download updates the moment it sees any connection.",
       ),
       p(
-        "Video will eat a week’s data in an evening. Updates on the laptop will try to drink. Pause Windows Update if you are on a thin bundle, or let it wait for house Wi‑Fi. The phone will get hot. That is the radio working. Take it off the bed, as with a laptop. Charge while you share if you can. A dead phone is a dead pipe, and WhatsApp Web will die with it.",
+        "So set the connection as Metered — Settings, Network, the connection's properties — and Windows will hold its heavy parcels for another house. Watch the bundle icon in the status bar for one ordinary week and you will know, without any app, what an hour of mail costs and what an hour of video calls costs. Meanwhile the phone gets hot: that is the radio working. Take it off the bed, the same rule as a laptop, and plug it in during long sessions — a dead phone is a dead pipe, and WhatsApp Web dies with it. Quick check before the checklist: the laptop is drinking updates through your phone on a thin bundle. Where is the switch that says “not on my metered line”? ... The connection's properties — the Metered toggle lives there, and it pays for itself in one evening.",
       ),
       fig(
         "/images/blog/hotspot-laptop.jpg",
@@ -5469,24 +5465,17 @@ export const blogPosts: BlogPost[] = [
         "The pocket is the router. When the sitting ends, the hotspot ends. The fan list on the laptop should not still show a phone in another room at midnight.",
       ),
       ul([
-        "Set a hotspot name and password. Switch on. Join from the laptop. Load cea.ng.",
-        "Look at the phone’s connected-devices list. You should see one machine.",
-        "Switch the hotspot off. Confirm the laptop has no internet, or has returned to house Wi‑Fi.",
+        "Set a hotspot name and password. Switch on. Join from the laptop. Load one real page.",
+        "Look at the phone's connected-devices list. You should see one machine.",
+        "Switch the hotspot off. Confirm the laptop has no internet, or has returned to house Wi-Fi.",
         "Do not lend an open hotspot to a shop “for a minute.” Give a key, or use USB, or refuse.",
       ]),
-      h2("The bundle, and the two batteries"),
+      h2("The cable cousin, and the spare tyre"),
       p(
-        "Tethering spends two treasuries at once: the bundle and the battery. A laptop working through a phone's radio can drink several hundred megabytes in an hour of updates and video calls — Windows, in particular, loves to download updates the moment it sees a connection. Set the connection as Metered (Settings, Network, the connection's properties) and Windows will hold its heavy parcels for another house. Watch the bundle icon in the status bar while you work for one week and you will know, without any app, what an hour of email costs and what an hour of video calls costs. Knowledge is the only real data plan.",
+        "USB tethering — a cable from phone to laptop — is the quieter cousin: no radio for the neighbours, no network name announced to the compound, and it charges the phone while it shares. Turn it on after you plug in. For one laptop and one phone in the same room, the cable is better; the wireless hotspot earns its keep when the tablet and the visitor's laptop also need the road.",
       ),
       p(
-        "The battery needs the same respect. Hotspot is a torch left on; the phone drains visibly while it serves. Plug it in during long sessions, or accept the two-hour shift and stop when the phone says stop. USB tethering — the cable from the phone to the laptop — is the quieter cousin: it charges the phone while it shares the connection and it does not announce your network's name to the compound. For a laptop and one phone in the same room, the cable is better. The wireless hotspot earns its keep when the tablet and the visitor's laptop also need the road.",
-      ),
-      h2("When the house Wi‑Fi exists"),
-      p(
-        "Prefer the house pipe. It is cheaper by the gigabyte, cooler, and does not kill the phone. Hotspot is a spare tyre: a form that must go in tonight, a café with a password you do not trust for a bank, a generator night when the router is off. Spare tyres are not daily drivers. If you live on hotspot, you are paying phone prices for a home. Ask the house about data on the router. That is another bill, not this lesson.",
-      ),
-      p(
-        "Off when you stand up. The plane is another off. The hotspot is a tap. Close it. The bundle is not a river. It is a tank you can see in the phone’s data usage if you look. Look once after a hotspot evening. You will learn what a PDF costs, and what a film costs, without a speech.",
+        "And when the house Wi-Fi exists, prefer the house pipe — it is cheaper by the gigabyte, cooler for the phone, and does not turn a battery into a candle burning at both ends. The hotspot is a spare tyre: the form that must go in tonight, the café whose password you do not trust for a bank, the generator night when the router is dark. Spare tyres are not daily drivers. If you live on hotspot, you are paying phone prices for a home — ask the house about data on the router instead. Off when you stand up. The airplane mode is another kind of off. The hotspot is a tap: close it, and look once at the phone's data usage after a hotspot evening. You will learn what a PDF costs, and what a film costs, without a speech.",
       ),
     ],
   },
@@ -6166,10 +6155,10 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A man looking thoughtfully at his phone showing an account verification screen.",
     body: [
       p(
-        "One day — not today, which is exactly the problem — you will type your password and the machine will say no. Not because you did anything wrong. Because you are a person, and persons forget, and phones are stolen, and numbers change. The passwords lesson taught you to keep the key. This lesson is about the second thing every account has: a spare key called recovery, which can only be cut in advance.",
+        "Ibrahim changed his phone number in March. Small errand, real consequences: his old SIM was recycled to a stranger within months, and one by one the accounts that trusted that number began to answer the wrong person. Not today's emergency — which is exactly the problem. You will type your password one day and the machine will say no: because you are a person, persons forget, phones are stolen, numbers change. The passwords lesson taught you to keep the key. This lesson is the second thing every account has — a spare key called recovery, which can only be cut while the door still opens.",
       ),
       p(
-        "Open your Google account, the one made on purpose. Under Security you will find Recovery phone and Recovery email. Set both, today, while the door still opens easily. The recovery phone is your real SIM — the one in your pocket, alive, registered. The recovery email is a second address you actually open, not one you created in 2017 and have never visited since. A spare key to a house you no longer live in is not a spare key. It is a gift to whoever moves in after you.",
+        "Open your Google account, the one made on purpose. Under Security you will find Recovery phone and Recovery email. Set both today, in daylight, while the errand is easy. The recovery phone is your real SIM — the one in your pocket, alive, registered in your name. The recovery email is a second address you actually open, not one you created in 2017 and have not visited since. A spare key to a house you no longer live in is not a spare key. It is a gift to whoever moves in after you.",
       ),
       fig(
         "/images/blog/recovery-screen.jpg",
@@ -6178,10 +6167,10 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("The rules of the spare key"),
       p(
-        "Rule one: the recovery email must be alive. Open it once a month, the way you check that the spare key still turns. Rule two: when your number changes, update the recovery phone that same week. This is not paperwork for its own sake — a stolen or recycled number is how strangers inherit accounts, which is why the SIM itself is guarded like cash. Rule three: WhatsApp is tied to your number and the bank to its registered one. When any of those change, walk through all of them in one evening, the way you change the locks when the key count changes.",
+        "Rule one: the recovery email must be alive. Open it once a month, the way you check that the spare key still turns. Rule two: when your number changes, update the recovery phone that same week — a stolen or recycled number is exactly how strangers inherit accounts, which is also why the SIM itself is guarded like cash. Rule three: WhatsApp is tied to your number, and the bank to its registered one. When any of those change, walk through all of them in one evening, the way you change the locks when the key count changes.",
       ),
       p(
-        "Then the day comes, and it is mild. On the sign-in page: Forgot password. The code goes to the recovery you set — the phone or the email. You type it, you choose a new password by the old rules, you continue. Ten minutes. What recovery is not: a caller. Nobody from Google, from your bank, from any office, phones you to recover an account, and no helper needs the code that arrives for one. You met that shape in the OTP lesson and the prize lesson; recovery has become their favourite costume. Recovery happens on your screen, in the app, at your pace. Hang up on anyone who says otherwise.",
+        "Then the day comes, and it is mild. On the sign-in page: Forgot password. The code goes to the recovery you set — the phone or the email. You type it, choose a new password by the old rules, continue. Ten minutes. And what recovery is not: a caller. Nobody from Google, from your bank, from any office, telephones you to recover an account, and no helper needs the code that arrives for one. You met that shape in the OTP lesson and the prize lesson; “recovery” has become their favourite costume. Recovery happens on your screen, in the app, at your pace. One question before the checklist, since it is the whole costume in miniature: the man says he is from Google and will read your code aloud to “verify ownership.” Who is verifying whom? ... He is verifying that you will open the door for him. Ownership already lives in your hand.",
       ),
       fig(
         "/images/blog/recovery-code-paper.jpg",
@@ -6194,16 +6183,12 @@ export const blogPosts: BlogPost[] = [
         "Write the recovery address in the password notebook. The address is not a secret from the drawer.",
         "Changed your number? Before the old SIM dies, walk every account through its recovery settings.",
       ]),
-      h2("The two spare keys, in two houses"),
+      h2("Two spare keys, in two houses — and the paper"),
       p(
-        "One spare key is how people lose accounts anyway — the recovery email is the account you stopped using in 2023 and whose password you also forgot. So give every important account two exits, and put the exits in different houses. The first is the mobile number: real, current, in your name, the SIM kept alive with a small bundle even in a lean month. The second is a recovery email you actually read — the one on your phone, not the old one in the wind. When both doors exist, losing one key is an errand. Losing none of them is what makes the next loss survivable.",
+        "One spare key is how people lose accounts anyway — the recovery email being the account you stopped using in 2023 whose password you also forgot. So give every important account two exits and put the exits in different houses. The first is the mobile number: real, current, in your name, kept alive with a small bundle even in a lean month. The second is a recovery email you actually read — the one on your phone, not the old one in the wind. When both doors exist, losing one key is an errand.",
       ),
       p(
-        "The paper in the drawer is the third exit and the most honest one. One small notebook, at home, with the account names and their passwords written plainly, is not a security failure — it is the password book of every careful office in the world. Paper cannot be hacked from Port Harcourt by a boy in another country; it can only be found by someone already in your drawer, and that person has bigger access than your Gmail. Update the page when a password changes. The notebook is the memory your head cannot be trusted with, kept where thieves cannot reach it.",
-      ),
-      h2("The door behind the door"),
-      p(
-        "Every account is a door with a locksmith's record behind it. The password is the key in your hand; recovery is the record that says whose hand the key belongs to. Cut the spare while the main still turns, keep the record current when the house changes, and treat anyone who offers to open your door from outside, by phone, as exactly what they are. The next lesson adds a second lock to the door itself.",
+        "The paper in the drawer is the third exit and the most honest one. One small notebook at home, with account names and passwords written plainly, is not a security failure — it is the password book of every careful office in the world. Paper cannot be hacked from Port Harcourt by a boy in another country. It can only be found by someone already at your drawer, and that person has bigger access than your Gmail. Update the page when a password changes. The notebook is the memory your head cannot be trusted with, kept where thieves cannot reach it. Cut the spare while the main still turns, keep the record current when the house changes, and treat anyone who offers to open your door from outside, by phone, as exactly what they are. The next lesson adds a second lock to the door itself.",
       ),
     ],
   },
@@ -6446,7 +6431,7 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "An old phone and a new phone lying side by side on a table during a move.",
     body: [
       p(
-        "A phone stopped being a telephone some years ago. It is the address book, the photograph album, the office, the bank queue, the family. And the day people change phones, they lose more than any thief has ever taken from them — not to bad luck, but to a moving day done in a hurry. This lesson is moving day, done slowly, in the right order.",
+        "Chiamaka's new phone arrived on a Saturday, and by Sunday night she had lost more than any thief had ever taken from her: the chats with her late uncle, the shop's stock photographs, the children's school letters. Not bad luck — a moving day done in a hurry. A phone stopped being a telephone some years ago. It is the address book, the photograph album, the office, the bank queue, the family. This lesson is moving day, done slowly, in the right order — and the backup that makes the whole errand boring, which is the highest praise an errand can earn.",
       ),
       p(
         "Begin before the new phone exists. Tonight, whatever the age of your phone: open WhatsApp, Settings, Chats, Chat backup, and back up to Google Drive — the account you made on purpose. Note the last-backup time the way you note the last time the tank was filled. Contacts: if the phone was signed into your Google account, they already live with it, safe above the flood line. Photographs: backed up or not, you will check. The backup is the whole secret. The new phone is only a faster shelf for things that already exist in two places.",
@@ -6458,10 +6443,10 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("The order of the day"),
       p(
-        "Moving day: charge both phones fully — a move interrupted at thirty percent is its own small tragedy. The SIM moves to the new phone first, because WhatsApp will want to verify the number it already knows. Then set the new phone up, and when it asks, sign in with the same Google account: the apps come down from the store on their own, the contacts arrive like a ledger being restored. Then WhatsApp, verify, and when it offers Restore from backup — accept. The chats come back the way books come back from a shelf, all the voices in their places.",
+        "Moving day has an order, written down before the first file moves. Charge both phones fully — a move interrupted at thirty percent is its own small tragedy. The SIM moves to the new phone first, because WhatsApp will want to verify the number it already knows. Then set up the new phone and sign in with the same Google account: the apps come down from the store on their own, the contacts arrive like a ledger being restored. Then WhatsApp — verify, and when it offers Restore from backup, accept. The chats come back the way books come back to a shelf, all the voices in their places.",
       ),
       p(
-        "Photographs last, because they are the heaviest: if the gallery was backed up to Google Photos they will drop in overnight; if not, cable the old phone to a computer and copy the camera folder the way the photographs lesson taught. Then keep the old phone whole and charged for a week — it is the attic now, and attics are not demolished while the new house is still being unpacked. Something always turns out to be missing. The attic holds it.",
+        "Photographs last, because they are the heaviest: if the gallery was backing up to Google Photos they will drop in overnight; if not, cable the old phone to a computer and copy the camera folder the way the photographs lesson taught. And watch for the one item people remember too late: the two-step app and the banking apps. Transfer the authenticator while the old phone still lives, and de-register each bank app as it moves. The old phone is a house being emptied — switch off its lights room by room. Quick check at the door: the old phone dies tomorrow and lives in a drawer since March. Its number is your recovery phone on six accounts. What has to happen before the SIM stops ringing? ... Six settings visits, this week, while the number is still yours.",
       ),
       fig(
         "/images/blog/two-phones-move.jpg",
@@ -6470,20 +6455,16 @@ export const blogPosts: BlogPost[] = [
       ),
       ul([
         "Tonight, on the present phone: run the chat backup and look at the last-backup time. That is the whole lesson in one minute.",
-        "Moving day order: SIM, Google sign-in, WhatsApp restore, gallery last.",
-        "Keep the old phone untouched for a week before anything is deleted.",
-        "Before selling or giving it away: remove the Google account, remove the SIM and memory card, then factory reset from Settings.",
+        "Moving day order: SIM, Google sign-in, WhatsApp restore, authenticator and bank apps, gallery last.",
+        "Keep the old phone untouched for a week before anything is deleted. It is the attic now.",
+        "Before selling or giving it away: sign out, remove the Google account and the SIM and memory card, then factory reset from Settings.",
       ]),
-      h2("The list you write before the market"),
+      h2("The attic week, and the honest wipe"),
       p(
-        "Moving day has an order, and the order is written down before the first file moves. One: the photographs and documents — copy them to the computer or the cloud and confirm the count. Two: the chats — run WhatsApp's backup and read the date of completion with your own eyes. Three: the accounts — the mail signs in on the new phone, and with it the calendar and contacts ride across. Four, and this is the one people remember too late: the authenticator app and the banking apps. Transfer the two-step app while the old phone still lives, and de-register the bank apps as each one moves. The old phone is a house being emptied; switch off its lights room by room.",
+        "Keep the old phone whole and charged for a week after the move. It is the attic now, and attics are not demolished while the new house is still being unpacked — something always turns out to be missing, and the attic holds it. Only then does the market get the old machine.",
       ),
       p(
-        "Only then does the market get the old machine. Sign out of the Google or Apple account on it — Settings, Accounts, Remove — then erase it properly from Settings and confirm. That erase is what stops the next owner from inheriting your WhatsApp, your gallery, your two-step codes, and your good name. Keep the SIM in your pocket through the whole errand; the number is the key that lets the new phone become yours. And when the new machine asks, during setup, to copy everything from the old one — the cable dance between two phones — say yes and let it run. The same ten rooms, rearranged and brighter.",
-      ),
-      h2("Wiping the old one properly"),
-      p(
-        "A phone sold with your accounts inside is a house handed over with keys still in the doors. Sign out of the Google account. Remove the SIM and the memory card. Then factory reset — Settings, System, Reset — and the machine returns to the afternoon it was born, empty and honest. Only then does it go to the market. The new phone will never be sentimental; it is the same ten rooms, rearranged and brighter. What mattered crossed over in the backup. That is what the backup was for.",
+        "A phone sold with your accounts inside is a house handed over with keys still in the doors. Sign out of the Google or Apple account — Settings, Accounts, Remove. Remove the SIM and the memory card; the number is the key that keeps the new phone yours. Then factory reset — Settings, System, Reset — and confirm. The machine returns to the afternoon it was born, empty and honest, and the next owner inherits a phone, not your WhatsApp, your gallery, your two-step codes, and your good name. What mattered crossed over in the backup. That is what the backup was for.",
       ),
     ],
   },
@@ -7614,10 +7595,10 @@ export const blogPosts: BlogPost[] = [
       "A shop owner and a young developer looking at a laptop together behind a shop counter.",
     body: [
       p(
-        "Walk your own street and count the businesses with no honest page on the internet: the pharmacy, the school, the church, the fashion house with fine pictures trapped in a WhatsApp gallery. Their customers are searching every day, and finding only strangers. Every one of those businesses needs the same modest thing — one clear page that says who we are, what it costs, where we are, and a button that opens WhatsApp — and somebody local to build it and keep it breathing. That somebody can be you. Of all the trades on this shelf, this one starts soonest and pays first.",
+        "Walk your own street and count the businesses with no honest page on the internet: the pharmacy with the green signboard, the school with the fine results, the fashion house whose beautiful pictures are trapped in a WhatsApp gallery where no searcher will ever find them. Their customers search every day and find only strangers. Every one of those businesses needs the same modest thing — one clear page that says who we are, what it costs, where we are, and a button that opens WhatsApp — and somebody local to build it and keep it breathing. That somebody can be you. Of all the trades on this shelf, this one starts soonest and pays first.",
       ),
       p(
-        "The skill floor is lower than any hustler will tell you, because the secret is that most small-business sites should be small. A site builder or WordPress — the prepared skeletons the frontend lesson mentioned — covers the majority of cases, and the real craft is not code at all: it is the poster lesson's discipline applied to a whole business. Say the true thing briefly. Put the price where the customer expects it. Make the address findable in one glance. One page done honestly beats five pages done ashamedly, and a button that opens a chat will do more for a Lagos pharmacy than any amount of animation. The frontend lesson's three layers are there when a client genuinely needs more — and by then you will want them.",
+        "The skill floor is lower than any hustler will tell you, and here is the secret the expensive courses guard: most small-business sites should be small. A site builder or WordPress — the prepared skeletons the frontend lesson mentioned — covers the majority of cases, and the real craft is not code at all. It is the poster lesson's discipline applied to a whole business: say the true thing briefly, put the price where the customer expects it, make the address findable in one glance. One page done honestly beats five pages done ashamedly, and a button that opens a chat will do more for a Lagos pharmacy than any amount of animation. It looks like building a website is a technical act first. It is a clear-seeing act first; the tool is third.",
       ),
       fig(
         "/images/blog/website-preview-phone.jpg",
@@ -7626,10 +7607,10 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("The money, and how it arrives"),
       p(
-        "The trade has two rivers of income, and the second is the one beginners undervalue. The build: a first simple site might earn modest money — a fraction of what agencies charge Lagos firms — and it should, because you are buying proof as much as payment. Then the keep: domains expire yearly, hosting renews, shops change prices, and the person who built the page is the person the owner calls — a small standing income for an afternoon's tidying twice a year. Ten kept clients are a quiet salary. The catalog FAQ's arithmetic applies exactly: a domain costs about ten to eighteen thousand naira a year and simple hosting is cheap or free; charge for the work, pass the costs through plainly, and put every number in writing — the pricing lesson's law before it is even spoken.",
+        "The trade has two rivers of income, and the second is the one beginners undervalue. The build: a first simple site might earn modest money — a fraction of what agencies charge Lagos firms — and it should, because you are buying proof as much as payment. Then the keep: domains expire yearly, hosting renews, shops change prices — and the person who built the page is the person the owner calls twice a year. That is a small standing income for an afternoon's tidying. Ten kept clients are a quiet salary. The arithmetic to say out loud at the counter: a domain costs about ten to eighteen thousand naira a year, simple hosting is cheap or free — charge for the work, pass the costs through plainly, and put every number in writing, the pricing lesson's law before it is even spoken.",
       ),
       p(
-        "The road in is the portfolio's road: build the first site for your church free, the second for a relation's shop at cost, the third for the neighbour's school at a fair new price — three live addresses, each with a grateful owner, and you are no longer promising, you are showing. The academy's web design and WordPress courses compress the technical months into weeks with machines and real briefs; the self-taught road costs nothing but evenings and works too. Either way the trade begins where you live, on the street whose businesses you already patronise — and there is a particular satisfaction in walking past a shop and knowing its corner of the internet is yours.",
+        "The road in is the portfolio's road. Build the first site for your church free, the second for a relation's shop at cost, the third for the neighbour's school at a fair new price — three live addresses, each with a grateful owner, and you are no longer promising, you are showing. Dayo did exactly this in eight months: the church, then his sister's tailoring shop, then the school, and the fourth client found him through the third. The academy's web design and WordPress courses compress the technical months into weeks; the self-taught road costs nothing but evenings and works too. Either way, the trade begins where you live, on the street whose businesses you already patronise. Sit with one question before the checklist: of those businesses you counted on your street, which one would say yes this month if you offered one honest page at cost? ... It is already in your head, with its name and its owner's face. That is your first client.",
       ),
       fig(
         "/images/blog/domain-renewal-note.jpg",
@@ -7644,7 +7625,7 @@ export const blogPosts: BlogPost[] = [
       ]),
       h2("The street is the market"),
       p(
-        "Nobody needs to import this trade. The customers are already within twenty minutes of you, already searched by strangers every day, already paying printers for banners that say less than one honest page would. The developer of lesson one hundred and twenty-eight builds for companies and continents; this trade builds for the street, in afternoons, for wages that compound into a living. One clear page at a time — it is how most of the independent web people you admire actually began.",
+        "Nobody needs to import this trade. The customers are already within twenty minutes of you, already searched by strangers every day, already paying printers for banners that say less than one honest page would. The developer of the full-stack lesson builds for companies and continents; this trade builds for the street, in afternoons, for wages that compound into a living. One clear page at a time — it is how most of the independent web people you admire actually began. There is a particular satisfaction in walking past a shop and knowing its corner of the internet is yours.",
       ),
     ],
   },
@@ -8730,10 +8711,10 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A laptop showing a spreadsheet of sales rows beside a small pivot summary table.",
     body: [
       p(
-        "The data analyst lesson named the pivot table as the most respected spreadsheet skill in the room. This lesson teaches it, slowly, because the respect is deserved and the fear is not: the pivot table is one of those machines that looks like sorcery and is actually a lever. Ten minutes here replaces hours of formula-copying, and the summary it builds never lies about where it came from.",
+        "Nkiru kept her shop's book honestly for two years — a thousand rows of Date, Item, Amount, Branch — and one Thursday her brother asked one question: which branch sells the most soap? She scrolled for forty minutes and answered with a guess. The next week she learned the pivot table, and the same question took eleven seconds. The data analyst lesson named it the most respected spreadsheet skill in the room. This lesson teaches it slowly, because the respect is deserved and the fear is not. A pivot table looks like sorcery and is actually a lever.",
       ),
       p(
-        "Picture the raw material first, because every pivot begins the same way: one solid block of rows — a thousand sales, a term's fees, a month's transactions — with one clean header row on top: Date, Item, Amount, Branch. Clean means the sorting lesson's rules: no merged cells, no blank columns inside, no notes wandering in row 40. Then the whole act: click once inside the block, choose Insert, then Pivot Table, and tell it where the new summary should live. The spreadsheet now offers you a small panel with four trays — Rows, Columns, Values, Filters — and the whole craft is dragging fields between trays and watching the summary rebuild itself. That is all a pivot is: a machine that groups your rows and counts or adds them, at your instruction, in seconds.",
+        "Picture the raw material first, because every pivot begins the same way: one solid block of rows — a thousand sales, a term's fees, a month's transactions — with one clean header row on top: Date, Item, Amount, Branch. Clean means the sorting lesson's rules: no merged cells, no blank columns inside, no notes wandering in row 40. Then the whole act: click once inside the block, choose Insert, then Pivot Table, and tell it where the new summary should live. The spreadsheet offers a small panel with four trays — Rows, Columns, Values, Filters — and the whole craft is dragging fields between trays while the summary rebuilds itself. That is all a pivot is: a machine that groups your rows and counts or adds them, at your instruction, in seconds.",
       ),
       fig(
         "/images/blog/pivot-table-screen.jpg",
@@ -8742,10 +8723,10 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("A worked example, walked"),
       p(
-        "Drag Item into Rows, and the table lists every product once, neatly, instead of the thousand messy times it appears in the data. Drag Amount into Values, and it adds the money beside each product — the machine chooses Sum because Amount is money; if you drag a column of names instead, it counts them, which is how you answer how many, not how much. Drag Branch into Columns, and the totals split side by side: this product, per branch, meeting in the corner cell. Drag Date under Rows above Item, and the months stack into a story of the year. Every question a small business asks its books — what sells, where, when, how much — is two or three drags away, and the pivot lesson's punchline is the analyst lesson's too: the summary is a lens, not a copy. Change nothing in the original block; refresh the pivot when the data grows, and the lens re-focuses itself. Formulas typed by hand into the summary cannot make that promise — a pivot's answer is always one refresh away from the truth.",
+        "Drag Item into Rows: the table lists every product once, neatly, instead of the thousand messy times it appears in the data. Drag Amount into Values: it adds the money beside each product — the machine chooses Sum because Amount is money. Drag a column of names instead and it counts them: that is how you answer how many, not how much. Drag Branch into Columns and the totals split side by side — this product, per branch, meeting in the corner cell. Drag Date under Rows above Item, and the months stack into a story of the year. Every question a small business asks its books — what sells, where, when, how much — is two or three drags away.",
       ),
       p(
-        "Then the finishing manners: sort the result — the biggest number to the top, the answer the boss actually asked; give the summary a title that states the question, June sales by branch, not PivotTable4; and where the summary must travel, copy it as values into a fresh sheet or PDF, the way every document on this shelf travels. Practise once on any data you own — the shop's book, the house expenses from lesson eighty-four — and you will feel the moment every analyst remembers: the thousand rows became one sentence, and you did not type a single formula. That moment is the door to lesson one hundred and thirty-one's whole career.",
+        "Now the rule that separates the beginners from the analysts: the summary is a lens, not a copy. Change nothing in the original block. When the data grows, refresh the pivot and the lens re-focuses itself. Formulas typed by hand into a summary cannot make that promise — a pivot's answer is always one refresh away from the truth. Then the finishing manners: sort the result, biggest number to the top, the answer the boss actually asked for; give the summary a title that states the question — “June sales by branch,” not “PivotTable4”; and where the summary must travel, copy it as values into a fresh sheet or PDF, the way every document on this shelf travels. One retrieval while the tray is open: the data changed after you built the summary. Do you rebuild the pivot or refresh it? ... Refresh. Rebuilding is how people learn to fear the tool. The lens was already ground.",
       ),
       fig(
         "/images/blog/pivot-rows-drag.jpg",
@@ -8760,7 +8741,7 @@ export const blogPosts: BlogPost[] = [
       ]),
       h2("The lever, not the magic"),
       p(
-        "Nothing here required genius — only the willingness to select, drag and read, which you have been doing since the sorting lesson. That is the quiet joke of the spreadsheet world: its most respected tool is a two-minute skill wearing a fearsome name. Learn it once on your own books, and the next time somebody dumps a thousand rows in your lap and asks for the summary by Friday, you will smile the analyst's smile and say: give me five minutes.",
+        "Practise once on any data you own — the shop's book, the house expenses from the expenses lesson — and you will feel the moment every analyst remembers: the thousand rows became one sentence, and you did not type a single formula. Nothing here required genius, only the willingness to select, drag, and read, which you have been doing since the sorting lesson. That is the quiet joke of the spreadsheet world: its most respected tool is a two-minute skill wearing a fearsome name. Learn it once on your own books, and the next time somebody dumps a thousand rows in your lap and asks for the summary by Friday, you will smile the analyst's smile and say: give me five minutes.",
       ),
     ],
   },
@@ -10174,10 +10155,10 @@ export const blogPosts: BlogPost[] = [
       "A hand holding a phone showing a simple coloured bar chart of data usage with soft screen glow.",
     body: [
       p(
-        "Every file is a weight and every weight crosses your pipe as cargo. The kilobyte is the small coin of this market — a page of plain text is a few of them — and a megabyte is a thousand of those coins, roughly one clear phone photograph. A gigabyte is a thousand megabytes, which is where bundles and hard drives live. These three words are the entire vocabulary of size, and you have met them before in the file lessons; what is new here is the bill. Cargo that crosses a metered pipe is cargo you paid for at the tap, whether it was useful or not, and the network does not distinguish between the letter that feeds you and the advert that follows you.",
+        "Pa Sunday's bundle emptied every Wednesday, and he had stopped asking why. Three grandchildren, one television stream on a tablet, and a phone that quietly uploaded photographs all night — the money was leaving honestly, drop by drop, on cargo he never chose to send. The kilobyte is the small coin of this market — a page of plain text is a few of them — and a megabyte is a thousand of those coins, roughly one clear phone photograph. A gigabyte is a thousand megabytes, where bundles and hard drives live. These three words are the entire vocabulary of size, and what is new here is not the words. It is the bill.",
       ),
       p(
-        "Now the honest map of the thirsty guests. Video is the ocean of this house: a minute of standard video call drinks eight to ten megabytes, high definition twice or three times that, and a two-hour film at high quality can empty a full gigabyte before the credits. Streaming music is a river — a megabyte or so per minute. Photographs uploading and downloading are a busy well. Software updates are the elephant that arrives uninvited: one Windows update can be several gigabytes, one game on the phone hundreds. Then the small steady taps: mail with attachments, social feeds auto-playing video you never stopped to watch, and cloud backups quietly carrying last night's photographs upward while you sleep.",
+        "Cargo that crosses a metered pipe is cargo you paid for at the tap, whether it was useful or not — and the network does not distinguish between the letter that feeds you and the advert that follows you. So here is the honest map of the thirsty guests. Video is the ocean: a minute of standard video call drinks eight to ten megabytes, high definition two or three times that, and a two-hour film at high quality can empty a full gigabyte before the credits. Streaming music is a river, a megabyte or so per minute. Photographs moving up and down are a busy well. Software updates are the elephant that arrives uninvited — one Windows update can be several gigabytes, one game hundreds. Then the small steady taps: mail with attachments, social feeds auto-playing video nobody stopped to watch, and cloud backups quietly carrying last night's photographs upward while you sleep.",
       ),
       fig(
         "/images/blog/phone-data-usage-in-hand.jpg",
@@ -10186,10 +10167,10 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("Reading the meter before the tank empties"),
       p(
-        "Both Android and iPhone keep the bill book: Settings, then the mobile or cellular network, and a list appears — every application with a figure beside it, the biggest drinker at the top. Read it at the end of one ordinary week and the truth will be plain. Often it is the video app, or the app that auto-plays, or the operating system itself on an unmetered assumption. The same list on the laptop lives in the network settings and speaks in the same plain figures. This is not surveillance; it is the NEPA bill of your pocket, and every household that watches its bill spends less without feeling poorer.",
+        "Both Android and iPhone keep the bill book: Settings, then the mobile or cellular network, and a list appears — every application with a figure beside it, the biggest drinker at the top. Read it at the end of one ordinary week and the truth will be plain. Often it is the video app, or the app that auto-plays, or the operating system itself on an unmetered assumption. The same list on the laptop lives in the network settings and speaks in the same plain figures. This is not surveillance. It is the NEPA bill of your pocket, and every household that watches its bill spends less without feeling poorer.",
       ),
       p(
-        "The controls sit beside the figures and they are strong. You may forbid background data to any app — it works only when you open it, like a shop that serves at the counter only. You may set a monthly warning and a hard limit on Android so the phone stops before the bill does. You may tell the cloud to back up photographs only on Wi-Fi and stop carrying them over the tap. And you may lower the video quality deliberately, one step down, which is the single largest saving available to any household: the film is the same story at 480 pixels and costs a third of the price. Do these four things and the tank that used to empty in ten days now lasts the month, without any new bundle and without any argument at home.",
+        "The controls sit beside the figures, and they are strong. You may forbid background data to any app — it works only when you open it, like a shop that serves at the counter only. On Android you may set a monthly warning and a hard limit so the phone stops before the bill does. You may tell the cloud to back up photographs only on Wi-Fi. And you may lower video quality one deliberate step: the single largest saving available to any household. The film is the same story at 480 pixels and costs a third of the price. Quick check while the meter is open: the tablet streams at high definition on the small screen. Which change saves the most naira this week — the quality step or a new app? ... The quality step. The screen cannot show the difference; the bill can.",
       ),
       fig(
         "/images/blog/streaming-video-laptop-evening.jpg",
@@ -10198,10 +10179,10 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("The bundle, the rollover, and the small print"),
       p(
-        "Bundles come in two tempers. The monthly tank refills on a date and is kind to planners. The daily or weekly sachet is kind to empty pockets and expensive per litre — the market's oldest truth, that the small bag of rice costs more per mudu. Some providers roll unused data into the next month and some let it die at midnight on the thirtieth; the difference is worth reading once and choosing deliberately. Night plans and weekend plans are the off-peak lorries, cheap because the road is empty — perfect for the heavy updates and backups if you can schedule them. Buy the plan that matches the shape of your week rather than the plan the advert shouts about.",
+        "Bundles come in two tempers. The monthly tank refills on a date and is kind to planners. The daily or weekly sachet is kind to empty pockets and expensive per litre — the market's oldest truth, that the small bag of rice costs more per mudu. Some providers roll unused data into the next month and some let it die at midnight on the thirtieth; the difference is worth reading once and choosing deliberately. Night plans and weekend plans are the off-peak lorries — cheap because the road is empty, perfect for the heavy updates and backups if you can schedule them. Buy the plan that matches the shape of your week rather than the plan the advert shouts about.",
       ),
       p(
-        "One warning about the true thieves, the ones the meter cannot stop: apps and games that stream at their own will, and the small print of free offers. A free game supported by advertising is playing video adverts at your bundle's expense, five megabytes at a time, forty times an hour. A free application that wants to update itself on mobile data has the same appetite. The meter names them after the first week; the permissions and settings you already own stop them. Your data is water from a tank you filled with naira. Every drop is legitimate. Not every drop is thirsty work.",
+        "One warning about the true thieves, the ones the meter cannot stop by counting: apps and games that stream at their own will, and the small print of free offers. A free game supported by advertising plays video adverts at your bundle's expense — five megabytes at a time, forty times an hour. A free application determined to update itself on mobile data has the same appetite. The meter names them after the first week; the settings you already own stop them. Your data is water from a tank you filled with naira. Every drop is legitimate. Not every drop is thirsty work. The next lesson is the ladder for when the pipe breaks anyway: five rungs, five minutes, no panic.",
       ),
       ul([
         "Read the data meter once at the end of one ordinary week; the top name on the list is your real teacher.",
@@ -10209,9 +10190,6 @@ export const blogPosts: BlogPost[] = [
         "Drop video quality one step on the small screen; the story survives and the bill shrinks to a third.",
         "Choose the bundle shape that matches your week, and learn whether your unused data rolls or dies.",
       ]),
-      p(
-        "The cargo is now understood and metered. But pipes break, radios fade, and one evening the page will refuse to open with your own money sitting in the account. The next lesson is the ladder: five rungs, five minutes, and no panic — finding exactly which of the four suspects closed the road.",
-      ),
     ],
   },
   {
@@ -11542,10 +11520,10 @@ export const blogPosts: BlogPost[] = [
       "A hand pinning a simple weekly study timetable chart to a wooden wall with pins and paper.",
     body: [
       p(
-        "Every skill in this series was taught the slow way — one sitting at a time, with somebody patient at the side. The assistant's strangest power is that it can be that somebody at any hour, for any subject, at no monthly fee: the patient tutor who has read everything and never tires of the question asked a fourth time in simpler English. Compress this properly into your learning and the months genuinely become weeks — not because the shortcut skips the twenty hours at the table, but because the table finally has company. The hours are still yours to sit. The difference is that nobody at the table is ever bored, lost, or pretending to understand to save face.",
+        "Zainab wanted to pass the data analysis exam in three months, and everything she tried said the same thing in different voices: read this big book, watch this long course, be disciplined. Then she asked the assistant one careful question — teach me to repair printers in ten evening sittings of one hour each, assuming I already know the machine's parts — and what came back changed how she studied everything. Not a shortcut around the twenty hours at the table. Something better: company at the table. The patient tutor who has read everything and never tires of the question asked a fourth time in simpler English. Months genuinely become weeks when the lonely, confused hours are compressed and deleted — and the deliberate hours remain, booked, with a guide who never yawns.",
       ),
       p(
-        "The first tool is the roadmap, and the instruction shape lives on the card from the asking lesson. Teach me to repair printers in ten evening sittings of one hour each, assuming I already know the machine's parts; list what we cover each evening and the practice for each. Or: I want to pass the professional exam in data analysis in three months at eight hours a week; draw the week-by-week plan with the topics and where to practise each free. The machine returns a syllabus shaped like a real course — and, being fluent in every syllabus ever written, it returns a startlingly good one. Print it and pin it beside the timetable chart. The roadmap turns a mountain into a staircase, and staircases are climbed on ordinary Tuesdays.",
+        "The first tool is the roadmap, and its instruction shape lives on the card from the asking lesson. Ask for a syllabus shaped like a real course: teach me X in ten evening sittings, list what we cover each evening and the practice for each. Or: I want to pass the professional exam in data analysis in three months at eight hours a week — draw the week-by-week plan with the topics and where to practise each free. The machine returns a startlingly good syllabus, being fluent in every syllabus ever written. Print it and pin it beside the timetable chart. The roadmap turns a mountain into a staircase, and staircases are climbed on ordinary Tuesdays.",
       ),
       fig(
         "/images/blog/study-plan-on-wall-chart.jpg",
@@ -11554,10 +11532,10 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("The Socratic switch, and the quiz that bites"),
       p(
-        "The second tool is a switch hidden in plain sight: you may command the tutor to stop giving answers. Do not explain the answer to me; ask me one question at a time and wait for my answer, then correct me briefly. That single fence converts the machine from an answer key into the examiner who builds understanding — the mode of the good teacher since Athens, now available at midnight. Add the quiz habit from the study lessons: after each sitting, quiz me strictly on this evening's topic in ten questions and mark me as a hostile examiner would. The strictness is the gift. A tutor who flatters is a mirror; a tutor who fails you on Thursday saves you in December.",
+        "The second tool is a switch hidden in plain sight: you may command the tutor to stop giving answers. “Do not explain the answer to me. Ask me one question at a time and wait for my answer, then correct me briefly.” That single fence converts the machine from an answer key into the examiner who builds understanding — the method of the good teacher since Athens, available at midnight. Add the quiz habit from the study lessons: “after each sitting, quiz me strictly on this evening's topic in ten questions and mark me as a hostile examiner would.” The strictness is the gift. A tutor who flatters is a mirror; a tutor who fails you on Thursday saves you in December. One question while we are here: why does being asked a question teach more than being given the answer? ... Because retrieval builds the road your exam will walk on. Reading is tourism; being questioned is labour, and the exam only pays the labour.",
       ),
       p(
-        "Then combine the tutor with the older tools and the compound interest shows. The video lesson's pause-and-notebook rhythm works beside the assistant exactly as beside a human teacher — watch, pause, attempt, and bring the stuck step to the box in words: the formula returns error at row nine, here is what I typed, what did I do wrong. The captions lesson's notebook of new words feeds the tutor's drills. The twenty hours at the table remain the irreplaceable ingredient — the machine can explain the spreadsheet's sort but cannot sit while your hands try it eleven times. In fact the honest accounting is simple: the tutor compresses the confused hours and deletes the lonely ones. The deliberate hours at the table must still be booked, and now they are booked with company.",
+        "Then combine the tutor with the older tools, and the compound interest shows. The video lesson's pause-and-notebook rhythm works beside the assistant exactly as beside a human teacher — watch, pause, attempt, and bring the stuck step to the box in words: the formula returns error at row nine, here is what I typed, what did I do wrong. The captions lesson's notebook of new words feeds the tutor's drills. And the honest accounting stays honest: the machine can explain the spreadsheet's sort but cannot sit while your hands try it eleven times. The twenty hours at the table remain the irreplaceable ingredient — only now they are booked with company.",
       ),
       fig(
         "/images/blog/student-pausing-video-taking-notes.jpg",
@@ -11566,20 +11544,17 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("Learning with the homework habit in hand"),
       p(
-        "The checking lesson walks beside this one like a chaperone, because a tutor that hallucinates can teach a wrong thing with great confidence — the invented formula, the wrong legal deadline, the exam syllabus from 2019. The fence is your friend: only teach me from the official syllabus and tell me when you are unsure. And the practice is the habit already built: anything the tutor asserts that smells like a specific — the exam's format, the board's fee, the formula's exact name — verify at the fountain before it enters the notes. Learn this way and you acquire something larger than the subject: the meta-skill of learning anything from any source while keeping your judgment awake. It is the same skill at the school desk and the office desk and the repair bench. This book has only ever taught that one skill, wearing different clothes.",
+        "The checking lesson walks beside this one like a chaperone, because a tutor that invents things can teach a wrong thing with great confidence — the formula that does not exist, the legal deadline from another country, the exam syllabus of 2019. The fence is your friend: “only teach me from the official syllabus, and tell me when you are unsure.” And the practice is the habit already built: anything the tutor asserts that smells like a specific — the exam's format, the board's fee, the formula's exact name — verify at the fountain before it enters the notes. Learn this way and you acquire something larger than the subject: the skill of learning anything from any source while keeping your judgment awake. It is the same skill at the school desk, the office desk, and the repair bench.",
       ),
       p(
-        "Finally, the picture that settles the practice: the wall chart with the roadmap pinned to it, the notebook with the quiz scores of four Thursdays, the tutor's chat history showing the questions you were not ashamed to ask, and — somewhere in the week — the twenty hours at the table with the hands doing the work. That room is the whole method. It needs no fees, no campus, no connection that never drops — only the schedule and the stubbornness to keep it. Pick the skill your next year needs — the repairs bench, the spreadsheets, the analysis, a language for new markets — and write the roadmap tonight. Months become weeks. The table gains a tireless company. And the person who climbs the staircase is still, on every step, you.",
+        "Finally, the picture that settles the practice: the wall chart with the roadmap pinned to it, the notebook with the quiz scores of four Thursdays, the tutor's chat history showing the questions you were not ashamed to ask, and — somewhere in the week — the twenty hours at the table with the hands doing the work. That room is the whole method. It needs no fees, no campus, no perfect connection — only the schedule and the stubbornness to keep it. Pick the skill your next year needs — the repair bench, the spreadsheets, the analysis, a language for new markets — and write the roadmap tonight. The tutor is at the table and the staircase is pinned to the wall. One honest question remains, the one your uncle asked at the naming ceremony and the fear beneath every lesson of this last chapter: what happens to the work itself. The next lesson is the clearest look in the series at what the machines change, what they do not touch, and where a person should stand in the decade ahead.",
       ),
       ul([
         "Print the roadmap and pin it up: ten sittings or twelve weeks, the staircase where the mountain used to stand.",
         "Flip the Socratic switch — ask me one question at a time and wait — and demand the strict Thursday quiz.",
-        "Bring the stuck step to the tutor in words, then let the hands try it eleven times at the table without company.",
+        "Bring the stuck step to the tutor in words, then let the hands try it eleven times at the table.",
         "Chaperone the tutor with the homework habit: verify the specifics at the fountain before they enter the notes.",
       ]),
-      p(
-        "The tutor is at the table and the staircase is pinned to the wall. One honest question remains, the one your uncle asked at the naming ceremony and the fear beneath every lesson of this last chapter: what happens to the work itself. The next lesson is the clearest look in the series at what the machines change, what they do not touch, and where a person should stand in the decade ahead.",
-      ),
     ],
   },
   {
