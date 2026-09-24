@@ -111,7 +111,8 @@ Per lesson, after reconstruction:
 | Pass 2 · batch 13 | Next-worst (37, 43, 82, 102, 105, 106, 130, 161, 175, 178) | **done — 140 lessons reconstructed total** |
 | Pass 2 · batch 14 | Next-worst (19, 32, 62, 80, 83, 96, 117, 148, 154, 160) | **done — 150 lessons reconstructed total** |
 | Pass 2 · batch 15 | Next-worst (79, 104, 131, 139, 143, 147, 152, 155, 174, 207) | **done — 160 lessons reconstructed total (207 judgment finale preserved)** |
-| Pass 2 · batch 16+ | Remaining lessons by scan rank (50 to go: enrichment in place where prose is strong, reconstruction where the machine voice dominates) | next turns |
+| Pass 2 · batch 16 | Next-worst (5, 20, 28, 76, 84, 95, 138, 146, 171, 192) | **done — 170 lessons reconstructed total (model prose in 171 preserved; 192 note chapter preserved)** |
+| Pass 2 · batch 17+ | Remaining lessons by scan rank (40 to go: enrichment in place where prose is strong, reconstruction where the machine voice dominates) | next turns |
 | Figures | 57 new illustrations | **done — all 57 generated, all 439 refs resolve** |
 | Academy lectures | Same standard, session by session | after the notes |
 

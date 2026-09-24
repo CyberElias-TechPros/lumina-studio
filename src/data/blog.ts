@@ -321,7 +321,7 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A laptop showing an email being written, with To, Subject and a message body.",
     body: [
       p(
-        "Email is a letter that does not need a stamp. It is older than WhatsApp, less noisy, and still the way schools, banks, and workplaces ask you to apply, reset a password, or send a document that must not vanish in a chat. If you already have Gmail or Outlook because a phone demanded it, you have an address. This lesson is how to send a message that looks like a person wrote it on purpose.",
+        "Udoka needed to write to the school office and had never sent a letter that did not arrive by hand. Email is a letter that does not need a stamp. It is older than WhatsApp, less noisy, and still the way schools, banks, and workplaces ask you to apply, reset a password, or send a document that must not vanish in a chat. If you already have Gmail or Outlook because a phone demanded it, you have an address. This lesson is how to send a message that looks like a person wrote it on purpose.",
       ),
       p(
         "An email address has two parts around an @ sign. The part before is the name you chose. The part after is the house — gmail.com, outlook.com, cea.ng. Read yours out loud. Write it in your notebook. People lose work because they cannot remember their own address, then they create a second one, then they have two houses and check the wrong one. One address, written down, is enough.",
@@ -333,17 +333,16 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("The three fields, in order"),
       p(
-        "To is the other person's address, typed exactly. One wrong letter and the letter goes to a stranger or to nobody. If you are writing to the academy, use the address on the contact page, not one you found in a forwarded message. Subject is the short line the other person sees in a list of fifty. “Hello” is not a subject. “Application for Computer Basics — September” is. The body is the letter. Click in the large empty space and type as you would on paper.",
+        "To is the other person’s address, typed exactly. One wrong letter and the letter goes to a stranger or to nobody. If you are writing to the academy, use the address on the contact page, not one you found in a forwarded message. Subject is the short line the other person sees in a list of fifty. “Hello” is not a subject. “Application for Computer Basics — September” is. The body is the letter. Click in the large empty space and type as you would on paper.",
       ),
       p(
-        "A body that works in Nigeria, and everywhere else, has four beats. A greeting with a name if you have one: Good morning, Mrs Amadi. One or two sentences that say why you are writing. One sentence that says what you want them to do — reply, expect you on Tuesday, find the attached receipt. A sign-off with your full name and a phone number. That is enough. Do not paste a proverb. Do not write in only capital letters. Do not send four questions in one mail if you need four answers; people reply to the last one and forget the rest.",
+        "A body that works in Nigeria, and everywhere else, has four beats. A greeting with a name if you have one: Good morning, Mrs Amadi. One or two sentences that say why you are writing. One sentence that says what you want them to do — reply, expect you on Tuesday, find the attached receipt. A sign-off with your full name and a phone number. That is enough. Do not paste a proverb. Do not write in only capital letters. Do not send four questions in one mail if you need four answers; people reply to the last one and forget the rest. Which line does the real work in the letter — the greeting, or the one sentence that says what you want? That one sentence. Everything else is the road to it.",
       ),
       ul([
         "Open Gmail or Outlook in the browser, or the Mail app if you already set it up.",
         "Click Compose or New mail.",
-        "Put your own second address, or a trusted person's, in To — the first practice mail should not go to a stranger.",
-        "Subject: Practice mail from [your name].",
-        "Body: a greeting, one sentence, your name. Send. Then open the other inbox and confirm it arrived.",
+        "Put your own second address, or a trusted person’s, in To — the first practice mail should not go to a stranger.",
+        "Subject: Practice mail from [your name]. Body: a greeting, one sentence, your name. Send. Then open the other inbox and confirm it arrived.",
       ]),
       h2("The paperclip"),
       p(
@@ -355,17 +354,17 @@ export const blogPosts: BlogPost[] = [
         "The paperclip means a file is coming with the letter. Check the name. school-fees.pdf is a file someone can open. IMG_0048 is a photograph of a table unless you renamed it.",
       ),
       p(
-        "Size matters. A phone photograph straight from the camera can be too large for some inboxes. If the mailer warns you, it is telling the truth. Use a PDF for documents when you can — File, Save As, PDF in Word, or Print to PDF. A PDF looks the same on another person's computer. A .docx can shift if they do not have the same fonts. For a passport photo, a .jpg that is clearly your face is enough. Do not attach five versions. Attach the one you mean.",
+        "Size matters. A phone photograph straight from the camera can be too large for some inboxes. If the mailer warns you, it is telling the truth. Use a PDF for documents when you can — File, Save As, PDF in Word, or Print to PDF. A PDF looks the same on another person’s computer. A .docx can shift if they do not have the same fonts. For a passport photo, a .jpg that is clearly your face is enough. Do not attach five versions. Attach the one you mean.",
       ),
       h2("Reply, Reply all, and the ones you should not open"),
       p(
-        "Reply sends your answer to the person who wrote to you. Reply all sends it to everyone who was on the original mail. If a school wrote to thirty parents, Reply all means twenty-nine people who did not ask will read “I will be late.” Use Reply unless you truly need the whole group. Forward sends the letter to a new person. Forward with a sentence of your own at the top, so they know why it arrived.",
+        "Reply sends your answer to the person who wrote to you. Reply all sends it to everyone who was on the original mail. If a school wrote to thirty parents, Reply all means twenty-nine people who did not ask will read “I will be late.” Use Reply unless you truly need the whole group. Forward sends the letter to a new person — forward with a sentence of your own at the top, so they know why it arrived.",
       ),
       p(
-        "You will receive mail you did not ask for. Some of it will use your name and a bank's colours and a sense of hurry: confirm your account, your parcel is held, you have a job. Do not click the link. Do not type a password into a page you reached from a surprise mail. Open a new tab and travel to the bank's real address yourself, the way the last lesson taught. If the story was true, it will still be true on the real site. If it was a trap, the real site will show nothing, and you will have lost nothing.",
+        "You will receive mail you did not ask for. Some of it will use your name and a bank’s colours and a sense of hurry: confirm your account, your parcel is held, you have a job. Do not click the link. Do not type a password into a page you reached from a surprise mail. Open a new tab and travel to the bank’s real address yourself, the way the last lesson taught. If the story was true, it will still be true on the real site. If it was a trap, the real site will show nothing, and you will have lost nothing. What is the difference between the letter that wants a reply and the letter that wants your password? One is written to you. The other is written to your fear.",
       ),
       p(
-        "The first mail you send to a school or an office should be one you would still sign on paper. Subject that tells the truth. Body with one job. Name and number at the end. Attachment checked. Send. Then wait. Email is not a chat. A reply the same day is kindness, not a right. Check the inbox tomorrow, and look in the folder called Spam or Junk once, in case a machine guessed wrong. That is the whole practice: write like a person, send like a clerk, wait like an adult.",
+        "The first mail you send to a school or an office should be one you would still sign on paper. Subject that tells the truth. Body with one job. Name and number at the end. Attachment checked. Send. Then wait. Email is not a chat. A reply the same day is kindness, not a right. Check the inbox tomorrow, and look in the folder called Spam or Junk once, in case a machine guessed wrong. That is the whole practice: write like a person, send like a clerk, wait like an adult. Udoka’s letter reached the school office at 9:14. The reply came at 4 that afternoon, and it answered his one question.",
       ),
     ],
   },
@@ -1172,10 +1171,10 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A laptop on a wooden desk with many windows open.",
     body: [
       p(
-        "A slow computer feels like insult. You click, nothing, you click again, then three windows open at once. Before you spend money, name the usual causes. Too many programs standing up at the same time. A disk so full the machine has no room to think. A browser with forty tabs, each a live market. Dust and heat, so the fan screams and the processor walks. Or a drive that is actually dying — clicks, freezes, a long stare at a blank desktop. This lesson is the cheap checks, in order, before a shop formats you into a new life.",
+        "A slow computer feels like insult. You click, nothing; you click again, then three windows open at once. Rifkatu’s shop machine took forty seconds to show a folder, and the boy at the corner shop wanted ₦8,000 to “format it.” Before you spend money, name the usual causes. Too many programs standing up at the same time. A disk so full the machine has no room to think. A browser with forty tabs, each a live market. Dust and heat, so the fan screams and the processor walks. Or a drive that is actually dying — clicks, freezes, a long stare at a blank desktop. This lesson is the cheap checks, in order, before a shop formats you into a new life.",
       ),
       p(
-        "Heat first, because it is physical. If the laptop is on a bed or a cloth, the vents are eating fabric. Put it on a table. Feel the underside. If it is too hot to rest a hand, shut down, let it cool, then start again. A desktop's vents fill with dust in a year of Port Harcourt air; a careful vacuum at the grilles, machine off and unplugged, is allowed. Do not pour water. Do not open the case if you have not been shown.",
+        "Heat first, because it is physical. If the laptop is on a bed or a cloth, the vents are eating fabric. Put it on a table. Feel the underside. If it is too hot to rest a hand, shut down, let it cool, then start again. A desktop’s vents fill with dust in a year of Nigerian air; a careful vacuum at the grilles, machine off and unplugged, is allowed. Do not pour water. Do not open the case if you have not been shown.",
       ),
       fig(
         "/images/blog/cluttered-windows.jpg",
@@ -1184,19 +1183,15 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("Close the crowd"),
       p(
-        "Look at the taskbar — the strip along the bottom. Each icon is a program. Close the ones you are not using: the X on their window, not just a smaller bar. Browsers: close extra tabs. One tab of a video left playing overnight will slow tomorrow. On Windows, Ctrl+Shift+Esc opens Task Manager. You will see a list. CPU and Memory columns are the crowd noise. If a name you do not recognise is using 90 percent, select it, End task. Do not End task on anything called Windows Explorer or your unsaved Word until you have saved. When in doubt, restart instead.",
+        "Look at the taskbar — the strip along the bottom. Each icon is a program. Close the ones you are not using: the X on their window, not just a smaller bar. Browsers: close extra tabs. One tab of a video left playing overnight will slow tomorrow. On Windows, Ctrl+Shift+Esc opens Task Manager. You will see a list; CPU and Memory columns are the crowd noise. If a name you do not recognise is using 90 percent, select it, End task. Do not End task on anything called Windows Explorer, or on your unsaved Word, until you have saved. When in doubt, restart instead.",
       ),
       p(
-        "Restart, as you learned, is the polite medicine. Save, Start, Restart. A surprising number of “my computer is finished” stories end there. If slowness returns in ten minutes, it is not a mood. It is a program that starts itself, or a disk that is full.",
+        "Restart is the polite medicine. Save, Start, Restart. A surprising number of “my computer is finished” stories end there. If slowness returns in ten minutes, it is not a mood. It is a program that starts itself, or a disk that is full. Where would you look first to learn who is standing in the room? The taskbar for the visible crowd — then Task Manager for the ones who snuck in.",
       ),
       fig(
         "/images/blog/task-manager.jpg",
         "A simple list of running programs on a laptop screen.",
         "Task Manager is a roll call. Sort by Memory or CPU. The top of the list is the crowd. End task on a browser you thought you had closed. Then see if the machine breathes.",
-      ),
-      h2("Room on the disk"),
-      p(
-        "This PC, then the C: drive. If the bar is red, or “a few GB free,” the machine is writing on the last scrap of paper. Empty Recycle Bin after you have looked. Delete installers in Downloads you have already used. Move photographs to the USB you use for backup. Do not delete folders named Windows or Program Files because they look large. They are the house. A shop “cleaner” advertised in a pop-up is the cousin of the fake update. You know that trap.",
       ),
       ul([
         "Save your work. Restart. Use the machine for ten minutes. If it is fine, you had a crowd.",
@@ -1204,9 +1199,13 @@ export const blogPosts: BlogPost[] = [
         "Open Task Manager. Note the top two names. Close those programs the ordinary way if you recognise them.",
         "If the disk clicks, or the machine freezes while saving, copy your Documents off today. That is a dying drive, not a mood.",
       ]),
+      h2("Room on the disk"),
+      p(
+        "This PC, then the C: drive. If the bar is red, or says “a few GB free,” the machine is writing on the last scrap of paper. Empty Recycle Bin after you have looked. Delete installers in Downloads you have already used. Move photographs to the USB you use for backup. Do not delete folders named Windows or Program Files because they look large. They are the house. A shop “cleaner” advertised in a pop-up is the cousin of the fake update. You know that trap.",
+      ),
       h2("When it is the drive, and when it is a salesman"),
       p(
-        "A dying disk has a personality: long pauses, files that corrupt, a restart that hangs on the manufacturer's logo. Backup first — the whole point of the earlier lesson — then a shop. Tell them the files are copied. Ask them not to format until you say. A slow-but-healthy machine after a restart and a cleaner disk can live for years. Adding memory (RAM) helps some older laptops; that is a shop conversation with a price, not a pop-up.",
+        "A dying disk has a personality: long pauses, files that corrupt, a restart that hangs on the manufacturer’s logo. Backup first — the whole point of the earlier lesson — then a shop. Tell them the files are copied. Ask them not to format until you say. A slow-but-healthy machine, after a restart and a cleaner disk, can live for years. Adding memory (RAM) helps some older laptops; that is a shop conversation with a price, not a pop-up. The two impostors wear opposite coats: one sells fear in a flashing banner, the other sells speed in a five-minute promise. Both want your money before the diagnosis.",
       ),
       p(
         "Ignore banners that say “your PC is 82 percent infected.” Real Windows Security lives in Settings, not in a flashing count. If a relative installed three toolbars and a lottery of free PDFs, those programs are the crowd — Uninstall from Settings, Apps, one by one, names you recognise as extras. When the machine is honest again, it feels like a different object. Usually it was only tired.",
@@ -1638,10 +1637,10 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A File Explorer window showing a zip folder beside ordinary folders.",
     body: [
       p(
-        "Email dislikes a crowd of attachments. Twenty photographs, each with its own paperclip, will bounce or clog. A zip is a suitcase: many files, one object, often smaller. Windows can make one without extra software. The other person double-clicks it, or right-clicks Extract, and the files come out on their desk. This lesson is packing, attaching, and not sending a suitcase of the wrong room.",
+        "Ijeoma photographed twenty pages of her sister’s filled forms and attached all twenty to one email, each with its own paperclip. The mail bounced twice before she asked at the academy. Email dislikes a crowd of attachments. A zip is a suitcase: many files, one object, often smaller. Windows can make one without extra software. The other person double-clicks it, or right-clicks Extract, and the files come out on their desk. This lesson is packing, attaching, and not sending a suitcase of the wrong room.",
       ),
       p(
-        "A zip is still a file. It has a name and a .zip at the end. It is not encryption unless you added a password, which Windows' simple zip does not really do well. Do not put secrets in a zip and call them safe. Put the school papers you were asked to send together, or the photographs of a filled form, front and back.",
+        "A zip is still a file. It has a name and a .zip at the end. It is not encryption unless you added a password, which Windows’ simple zip does not really do well. Do not put secrets in a zip and call them safe. Put the school papers you were asked to send together, or the photographs of a filled form, front and back. What is the real object that travels — the twenty files, or the one suitcase? The suitcase. The files are its contents, and the address on the case is its name.",
       ),
       fig(
         "/images/blog/zip-folder.jpg",
@@ -1650,7 +1649,7 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("Packing"),
       p(
-        "Put the files in one ordinary folder first — school-papers — so you know what is going in. Then right-click the folder, Compress to ZIP file, or Send to, Compressed (zipped) folder, depending on the Windows version. A new file appears beside the folder, same name, .zip. If the name is still highlighted, you can type a better one before you press Enter. school-papers-amaka.zip will still make sense in someone else's Downloads.",
+        "Put the files in one ordinary folder first — school-papers — so you know what is going in. Then right-click the folder, Compress to ZIP file, or Send to, Compressed (zipped) folder, depending on the Windows version. A new file appears beside the folder, same name, .zip. If the name is still highlighted, type a better one before you press Enter: school-papers-amaka.zip will still make sense in someone else’s Downloads.",
       ),
       p(
         "Open the zip with a double-click if you want to peek. It looks like a folder but it is the suitcase interior. Do not work from inside it as if it were Documents — save and edit in the real folder, then pack again if you changed something. On a Mac, right-click, Compress. Same suitcase, same .zip.",
@@ -1662,7 +1661,7 @@ export const blogPosts: BlogPost[] = [
       ),
       ul([
         "Make a folder called zip-practice. Put two small files in it.",
-        "Right-click the folder, compress to zip. Confirm school-papers is still there as well as the zip.",
+        "Right-click the folder, compress to zip. Confirm the original folder is still there as well as the zip.",
         "Email the zip to yourself. Download it on the same machine or another. Extract. Open a file.",
         "That round trip is the whole skill.",
       ]),
@@ -1671,14 +1670,11 @@ export const blogPosts: BlogPost[] = [
         "Every mail house has a size it will carry — Gmail refuses anything past twenty-five megabytes, and the others live near that fence. A zip of twenty photographs can still weigh more than the limit, because photographs are already packed tight and the zip cannot squeeze much out of them. When the suitcase is too heavy, do not split it in a panic. Put the folder in the cloud — Drive, the same account as the mail — and send the link instead. The recipient opens a door you control, and you can lock it again after the meeting.",
       ),
       p(
-        "If you must split the load, split it clearly: two mails titled part one of two and part two of two, with the count in the body as well. People lose part two the way they lose the second half of a torn ticket. And notice the one suitcase you never send by post: a zip carrying programs. A zipped folder of photographs from your sister is ordinary; a zipped setup.exe from a person you do not know is the link you should not open, wearing a zipper. Same lesson as the bare link, one layer of clothing later.",
+        "If you must split the load, split it clearly: two mails titled part one of two and part two of two, with the count in the body as well. People lose part two the way they lose the second half of a torn ticket. And if you were asked for PDF, do not zip a Word file and hope. Pack what they named.",
       ),
-      h2("Too heavy, and unpacking someone else's suitcase"),
+      h2("Unpacking someone else’s suitcase"),
       p(
-        "Gmail and many offices cap attachments around 20–25 MB. A zip of camera photographs can still exceed that. Then use Drive, or send two zips, or shrink pictures first. A bounced mail with no zip is a silent failure — watch for the failure message. If you were asked for PDF, do not zip a Word file and hope. Pack what they named.",
-      ),
-      p(
-        "When someone sends you a zip: download, then right-click, Extract All, choose Documents, not Desktop if you can help it. Look at the files before you open a .exe inside a zip from a stranger. A suitcase can hold a guest you did not invite. You know installers now. A zip of PDFs and pictures is ordinary. A zip of setup.exe from a person you do not know is the link you should not open, wearing a zipper.",
+        "When someone sends you a zip: download, then right-click, Extract All, and choose Documents, not the Desktop if you can help it. Then look at the contents before you open anything. A zip of PDFs and pictures from your sister is ordinary. And notice the one suitcase you never accept from a stranger: a zip carrying programs — a zipped setup.exe is the link-you-should-not-open, wearing a zipper. Same lesson as the bare link, one layer of clothing later. A suitcase can hold a guest you did not invite. Ijeoma’s twenty pages now travel as school-forms-oct.zip, one paperclip, one door — and the mail has stopped bouncing.",
       ),
     ],
   },
@@ -4340,10 +4336,10 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A simple letter open in a browser on a laptop.",
     body: [
       p(
-        "Not every machine has Word. A business-centre PC may have a browser and nothing else worth using. Google Docs is a word processor that lives on the internet, behind the Google account you made on purpose. The page looks like a letter. The cursor blinks. The ribbon is quieter. This lesson is opening a blank doc, typing like Word, and taking a PDF home so the office does not have to log into your cloud.",
+        "The business centre had a browser and nothing worth using — no Word, a printer that coughed — and Nafisat had a letter to write before the office closed. Google Docs is a word processor that lives on the internet, behind the Google account you made on purpose. The page looks like a letter. The cursor blinks. The ribbon is quieter. Not every machine has Word; every machine has a road to this one. This lesson is opening a blank doc, typing like Word, and taking a PDF home so the office does not have to log into your cloud.",
       ),
       p(
-        "Walk to docs.google.com yourself. Blank document. The title at the top, where it says Untitled, is the file name — click it, type letter-landlord-2026, Enter. That is Save As, in a different coat. If you are online, it keeps saving. If the café Wi‑Fi dies, a small notice will say so; stop typing important sentences until the road is back, or copy the text into Notepad as a rope. The cloud is a building with a road. You know that.",
+        "Walk to docs.google.com yourself. Blank document. The title at the top, where it says Untitled, is the file name — click it, type letter-landlord-2026, Enter. That is Save As, in a different coat. If you are online, it keeps saving. If the café Wi-Fi dies, a small notice will say so; stop typing important sentences until the road is back, or copy the text into Notepad as a rope. The cloud is a building with a road. You know that.",
       ),
       fig(
         "/images/blog/docs-browser.jpg",
@@ -4355,7 +4351,7 @@ export const blogPosts: BlogPost[] = [
         "Font, size 12, bold, alignment — they are there. File, Download, PDF, or Microsoft Word (.docx) if someone insisted on Word. Download lands on the mat, then you walk it into Letters. Print still wants preview. A table, a list, find and replace — cousins of what you already learned, sometimes under a smaller menu. You do not need Add-ons. You do not need a template with a purple sidebar. A blank page is still a blank page.",
       ),
       p(
-        "Offline: Google can cache Docs on a machine you use often, if you tick that in settings on a calm day. Until then, treat Docs as a café tool and Word or Writer as the desk tool. Do not start a ten-page report in a browser on a dying bundle. A one-page request is the right size for this sitting.",
+        "Offline: Google can cache Docs on a machine you use often, if you tick that in settings on a calm day. Until then, treat Docs as a café tool and Word or Writer as the desk tool. Do not start a ten-page report in a browser on a dying bundle. A one-page request is the right size for this sitting. Which document deserves the desk tonight — the two-line request, or the twenty-page report? The request. Size your tool to your road.",
       ),
       fig(
         "/images/blog/docs-learner.jpg",
@@ -4370,17 +4366,17 @@ export const blogPosts: BlogPost[] = [
       ]),
       h2("The letter that works when the light is low"),
       p(
-        "The browser's word processor carries a quiet insurance policy. Turn on offline editing once — in Settings, the line that says Offline — and the recent documents stay on the machine itself, editable when the data is gone and the light is low. Type the letter on the danfo, in the dark hour, at the village with no network; the words save themselves onto the machine and walk up to the cloud at the next signal. The first time a document syncs itself after you had given up on the network is a small miracle. It is also the plainest proof that the work was never in the air. It was always on your machine, with a copy in the air.",
+        "The browser’s word processor carries a quiet insurance policy. Turn on offline editing once — in Settings, the line that says Offline — and the recent documents stay on the machine itself, editable when the data is gone and the light is low. Type the letter on the danfo, in the dark hour, at the village with no network; the words save themselves onto the machine and walk up to the cloud at the next signal. The first time a document syncs itself after you had given up on the network is a small miracle. It is also the plainest proof that the work was never in the air. It was always on your machine, with a copy in the air.",
       ),
       p(
         "The other gift is the save itself. There is no Save button in the browser editor because saving is continuous — every few seconds, silently, forever. The word draft at the top of the screen disappears within a second of typing. Crash the machine, close the lid in anger, let the battery die mid-sentence; the letter is standing exactly where you left it. This is the standard the local Word is catching up to with its own autosave, and it changes the nerves of writing entirely. The fear of losing the page was never about writing. It was about pressing Save in time.",
       ),
       h2("Whose machine, whose bag"),
       p(
-        "On a shared computer, Docs in Guest is a trap: you will type, then Guest will throw the bag away if you were not signed in. Sign in, write, Download the PDF to your USB, sign out, as in the five-minute walk. The doc remains in Drive, which is your building, not theirs — if you signed into your account. If you signed into theirs, you have written a letter in their house. Copy it out. Sign out.",
+        "On a shared computer, Docs in Guest is a trap: you will type, then Guest will throw the bag away if you were not signed in. Sign in, write, Download the PDF to your USB, sign out — the five-minute walk, applied to a browser. The doc remains in Drive, which is your building, not theirs, if you signed into your account. If you signed into theirs, you have written a letter in their house. Copy it out. Sign out.",
       ),
       p(
-        "Docs is Word without a disc. It is not better manners, not worse. A PDF you downloaded is what you attach. A link is the next lesson. For today: a page, a name at the top, a PDF on the USB. The office can read a plate. They should not have to knock on your cloud to do it, unless they asked.",
+        "Docs is Word without a disc. It is not better manners, not worse. A PDF you downloaded is what you attach. A link is the next lesson. For today: a page, a name at the top, a PDF on the USB. The office can read a plate. They should not have to knock on your cloud to do it, unless they asked. Nafisat’s landlord letter was typed, downloaded, and printed by 4:40 — on a machine that never had Word at all.",
       ),
     ],
   },
@@ -4777,10 +4773,10 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A simple weekly spending list on a spreadsheet.",
     body: [
       p(
-        "People buy a budget app, then ignore it. A sheet with four columns will do: Date, Item, Amount, maybe In or Out. One week, not a five-year plan. This lesson is that small book, a total, and the honesty of typing the recharge you would rather forget. The grid does not judge. It only adds what you admitted.",
+        "Olusola bought a budget app in January and had abandoned it by the second week of February — too many categories, too much colour, one more thing to fail at. A sheet with four columns will do: Date, Item, Amount, maybe In or Out. One week, not a five-year plan. This lesson is that small book, a total, and the honesty of typing the recharge you would rather forget. The grid does not judge. It only adds what you admitted.",
       ),
       p(
-        "New sheet. Row 1: Date, Item, Amount. Freeze the top row if you like. Type this week's real lines — transport, photocopy, rice, data. Amounts as digits. SUM at the bottom of Amount. Currency costume if you want. Name the file week-2026-09-22 in whatever room you keep money papers — Work, or a folder called Money inside Documents. Next week, Save As, new date, or a new tab at the bottom named 22-Sep, 29-Sep. One job per tab, as you were told.",
+        "New sheet. Row 1: Date, Item, Amount. Freeze the top row if you like. Type this week’s real lines — transport, photocopy, rice, data. Amounts as digits. SUM at the bottom of Amount. Currency costume if you want. Name the file week-2026-09-22 in whatever room you keep money papers — Work, or a folder called Money inside Documents. Next week, Save As, new date, or a new tab at the bottom named 22-Sep, 29-Sep. One job per tab, as you were told. What is the smallest book you would actually open on Sunday — the one with forty columns, or the one with four? The four. Everything here bends around that truth.",
       ),
       fig(
         "/images/blog/weekly-budget.jpg",
@@ -4800,14 +4796,14 @@ export const blogPosts: BlogPost[] = [
         "Paper in the market, grid on Sunday. Photograph the paper if you must, then type. A blurry stall receipt still wants a line with a date and a number.",
       ),
       ul([
-        "Make this week's sheet. Three real lines. A SUM.",
+        "Make this week’s sheet. Three real lines. A SUM.",
         "Save it in a named folder. Put the week in the file name.",
         "Tomorrow, add one line. Confirm the total moves.",
         "If you will not open it, stop. A notebook in the drawer is a better book than a dead file.",
       ]),
       h2("Sunday evening, ten minutes"),
       p(
-        "A money list is a habit before it is a spreadsheet, and the habit has one appointment: Sunday evening, ten minutes, the week laid out beside the phone's memory. Not month end — by then the week has gone the way of all flesh and the figures become fiction. Enter the lines daily if you have the discipline, or gather them Sunday from memory and alerts. The total row at the bottom is not for impressing anyone. It is the single number that tells you whether the week was ordinary or expensive, and the reason for that is often visible in the list itself: three transport fares to the same distant place, or a data bundle bought twice in panic.",
+        "A money list is a habit before it is a spreadsheet, and the habit has one appointment: Sunday evening, ten minutes, the week laid out beside the phone’s memory. Not month end — by then the week has gone the way of all flesh and the figures become fiction. Enter the lines daily if you have the discipline, or gather them Sunday from memory and alerts. The total row at the bottom is not for impressing anyone. It is the single number that tells you whether the week was ordinary or expensive, and the reason is often visible in the list itself: three transport fares to the same distant place, or a data bundle bought twice in panic.",
       ),
       p(
         "Four weeks of honest rows teach what no budgeting article can. The pattern shows itself — the small daily things are the real leak, not the rent; the bundle bought on Friday at full price could be a monthly plan; the money that felt like nothing in the moment is ₦18,000 at the end of the month. Change one pattern at a time. A money list that causes shame is a list that will be abandoned by week three, and the abandoned list teaches nothing at all. Keep it ugly, keep it true, keep it weekly. The lessons will come quietly, the way a shop book teaches the owner what the market already knew.",
@@ -5403,10 +5399,10 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A phone status bar showing Wi-Fi and mobile data icons.",
     body: [
       p(
-        "Two pipes can reach a phone: the house Wi‑Fi, and the SIM’s mobile data. The top of the screen tells you which one is actually drinking. A fan or waves means Wi‑Fi. LTE, 4G, 5G, H, E, or two arrows means the SIM. If both radios are on, the phone prefers Wi‑Fi when the fan is connected. When the fan is a lie — connected with no internet — some phones sit there thirsty and do not fall back to the SIM. This lesson is reading the icons, switching a tap, and not starting a film until you know who is paying.",
+        "Samaila started a tutorial video at the mechanic’s shade with the fan icon missing at the top of his phone, and the 4G arrows quietly drinking. The video cost him half a bundle and taught him nothing, because the sound was drowned by a generator. Two pipes can reach a phone: the house Wi-Fi, and the SIM’s mobile data. The top of the screen tells you which one is actually drinking. A fan or waves means Wi-Fi. LTE, 4G, 5G, H, E, or two arrows means the SIM. If both radios are on, the phone prefers Wi-Fi when the fan is connected. When the fan is a lie — connected with no internet — some phones sit there thirsty and do not fall back to the SIM. This lesson is reading the icons, switching a tap, and not starting a film until you know who is paying.",
       ),
       p(
-        "Swipe the shade. The Wi‑Fi tile, the data tile. If you are at home and the fan is on, data can stay on as a spare; the phone should use the fan. If you are on the road, Wi‑Fi off saves it hunting for every shop’s radio. If a page fails at home, look: is the fan connected to the wrong name, or to a network with no pipe? Forget the network, join the sticker name, or switch Wi‑Fi off so the SIM can work. You already restarted a router. Do that before you buy more data because a page was slow.",
+        "Swipe the shade. The Wi-Fi tile, the data tile. If you are at home and the fan is on, data can stay on as a spare; the phone should use the fan. If you are on the road, Wi-Fi off saves it hunting for every shop’s radio. If a page fails at home, look: is the fan connected to the wrong name, or to a network with no pipe? Forget the network, join the sticker name, or switch Wi-Fi off so the SIM can work. You already restarted a router. Do that before you buy more data because a page was slow. Before the next video: which tap is open at the top of your phone right now — and who is paying for it?",
       ),
       fig(
         "/images/blog/wifi-vs-data.jpg",
@@ -5415,10 +5411,10 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("Downloads, updates, and apps that ignore you"),
       p(
-        "Play Store and iOS can be told: updates only on Wi‑Fi. WhatsApp: Settings, Storage and data, use less data, download media on Wi‑Fi. A child can still start a film. The icon at the top is the parent’s check. Some apps have their own “HD on mobile data” greed. YouTube: settings, quality, or data saving. A form, a PDF, a map — small. A live stream — a tank.",
+        "Play Store and iOS can be told: updates only on Wi-Fi. WhatsApp: Settings, Storage and data, use less data, download media on Wi-Fi. A child can still start a film. The icon at the top is the parent’s check. Some apps have their own “HD on mobile data” greed. YouTube: settings, quality, or data saving. A form, a PDF, a map — small. A live stream — a tank.",
       ),
       p(
-        "Wi‑Fi that asks you to log in through a page — a hotel, a bus, some estates — is a captive portal. Data may pause until you finish that page, or both may fight. Complete the page on the real network, or use your SIM and ignore their radio. Do not type a bank password on a portal that is not your bank. You know the street.",
+        "Wi-Fi that asks you to log in through a page — a hotel, a bus, some estates — is a captive portal. Data may pause until you finish that page, or both may fight. Complete the page on the real network, or use your SIM and ignore their radio. Do not type a bank password on a portal that is not your bank. You know the street.",
       ),
       fig(
         "/images/blog/data-toggle.jpg",
@@ -5427,20 +5423,20 @@ export const blogPosts: BlogPost[] = [
       ),
       ul([
         "At home, confirm the fan is on and a page loads. Note the icon.",
-        "Switch Wi‑Fi off. Confirm the SIM icon appears and the page still loads, if you have data.",
-        "Switch Wi‑Fi back on. Prefer the fan for a download.",
-        "Open one app’s data settings — WhatsApp or Play Store — and tick Wi‑Fi for heavy things if you can find it.",
+        "Switch Wi-Fi off. Confirm the SIM icon appears and the page still loads, if you have data.",
+        "Switch Wi-Fi back on. Prefer the fan for a download.",
+        "Open one app’s data settings — WhatsApp or Play Store — and tick Wi-Fi for heavy things if you can find it.",
       ]),
       h2("Telling the machine which tap you prefer"),
       p(
         "Windows and the phones carry a switch that ends most of the guessing: Metered connection. Mark the mobile hotspot as metered and the machine treats the tap as expensive — no silent updates, no giant backups, no video qualities pushed higher than you asked. Mark the house Wi-Fi as unmetered and the heavy work flows at night while you sleep. You can also settle an argument by turning one radio off entirely: Wi-Fi off, and whatever still moves is the SIM talking. Two taps, and the plumbing becomes visible.",
       ),
       p(
-        "Then read the status bar's small language. The fan shape is Wi-Fi and the little arrows are mobile data; on the laptop the globe is the network and the bars are the signal. When both are on and something is slow, the machine is usually on the weaker one out of loyalty — switch to the other on purpose. And the deepest truth of the lesson is the one your bundle already knows: it is not the device choosing that costs you, it is the app quietly choosing for you. The metered switch is you taking back the vote.",
+        "Then read the status bar’s small language. The fan shape is Wi-Fi and the little arrows are mobile data; on the laptop the globe is the network and the bars are the signal. When both are on and something is slow, the machine is usually on the weaker one out of loyalty — switch to the other on purpose. And the deepest truth of the lesson is the one your bundle already knows: it is not the device choosing that costs you, it is the app quietly choosing for you. The metered switch is you taking back the vote.",
       ),
       h2("When both are lying"),
       p(
-        "Airplane mode, then off, is a reset of both radios. It is cheaper than a shop. If the fan shows connected and nothing loads, the router’s internet light is the next look. If the SIM shows 4G and nothing loads, the bundle may be zero, or the APN is wrong after a new SIM — a shop or the network can set APN; you should not download an “APN tool.”",
+        "Airplane mode, then off, is a reset of both radios. It is cheaper than a shop. If the fan shows connected and nothing loads, the router’s internet light is the next look. If the SIM shows 4G and nothing loads, the bundle may be zero, or the APN is wrong after a new SIM — a shop or the network can set APN; you should not download an “APN tool.” It looks like both taps broke at once. Usually it is one tap and one lie.",
       ),
       p(
         "You now have names for the two taps, the plane, the moon, the hotspot. Glance at the top of the phone the way you glance at ENG on the taskbar. Then type, or watch, or wait. The bill is a consequence of that glance, not of bad luck. Look. Then open the film, or do not.",
@@ -7676,10 +7672,10 @@ export const blogPosts: BlogPost[] = [
       "A young professional at a desk with headphones, a laptop and a small UPS, in a home room.",
     body: [
       p(
-        "Somewhere in this city tonight, a young man is debugging code for a company whose office he has never seen, paid on Friday in dollars, generator fuel already budgeted like rent. This is remote work at its honest best — not a hustle, not a shortcut, but a job with a longer commute: the skills are the same, the manners are the same, and four practical walls must stand before the first contract. This lesson walks the four, because each has broken more remote careers than any lack of talent.",
+        "Somewhere in Lagos tonight, a young man is debugging code for a company whose office he has never seen, paid on Friday in dollars, generator fuel already budgeted like rent. Gbenga met him at a viewing centre and asked the only question that mattered: “How did you arrange it?” This is remote work at its honest best — not a hustle, not a shortcut, but a job with a longer commute: the skills are the same, the manners are the same, and four practical walls must stand before the first contract. This lesson walks the four, because each has broken more remote careers than any lack of talent.",
       ),
       p(
-        "Wall one: a skill proven. Remote employers cannot see your hustle; they can only see finished work and checkable references — the profile lesson's front door, the portfolio lesson's proof, and nothing else. Wall two: power and data, arranged like utilities rather than prayed about. The professional setup here is boring and specific: a laptop with honest battery health, a small inverter or UPS at least for the router and one machine, a primary data plan with a backup — two networks, because lesson ninety-five taught you taps — and a workspace where a full workday does not depend on the grid's mood. The light is a colleague you must manage, not a mystery you must resent. Wall three: written English — the entire remote relationship happens in text: the clear update, the polite disagreement, the question asked once and completely. Lesson five's letter, lesson seventy's manners, worn daily.",
+        "Wall one: a skill proven. Remote employers cannot see your hustle; they can only see finished work and checkable references — the profile lesson’s front door, the portfolio lesson’s proof, and nothing else. Wall two: power and data, arranged like utilities rather than prayed about. The professional setup here is boring and specific: a laptop with honest battery health, a small inverter or UPS at least for the router and one machine, a primary data plan with a backup — two networks, because the taps lesson taught you why — and a workspace where a full workday does not depend on the grid’s mood. The light is a colleague you must manage, not a mystery you must resent. Wall three: written English — the entire remote relationship happens in text: the clear update, the polite disagreement, the question asked once and completely. The email lesson’s letter and the chat lessons’ manners, worn daily. Which wall would fall first on your street if the contract arrived tomorrow — the skill, the light, the sentences, or the bank? Build that one first.",
       ),
       fig(
         "/images/blog/remote-work-headphones.jpg",
@@ -7688,10 +7684,10 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("Wall four: the money must arrive"),
       p(
-        "Being paid across borders is a solved problem with a small fee attached: established platforms open receiving accounts that accept dollars or pounds and pay out to Nigerian banks; some clients pay by direct transfer through those platforms, a few by card on contracts. The rules you already live by grow a passport: get the fee in writing before the work, invoice properly — a document with your name, the client's, the amount, the account — invoice in parts for anything long, and expect the platform's fee like you expect transport. Keep the receipts; the tax conversation in Nigeria is maturing, and the professional's answer is records, not vibes. The bank lesson's alert-checking, the selling lesson's confirm-before-delivery — the same laws, now in dollars.",
+        "Being paid across borders is a solved problem with a small fee attached: established platforms open receiving accounts that accept dollars or pounds and pay out to Nigerian banks; some clients pay by direct transfer through those platforms, a few by card on contracts. The rules you already live by grow a passport: get the fee in writing before the work, invoice properly — a document with your name, the client’s, the amount, the account — invoice in parts for anything long, and expect the platform’s fee like you expect transport. Keep the receipts; the tax conversation in Nigeria is maturing, and the professional’s answer is records, not vibes. The bank lesson’s alert-checking, the selling lesson’s confirm-before-delivery — the same laws, now in dollars.",
       ),
       p(
-        "Then the manners of the clock, which finish the picture: know your client's hours — overlap is the service, and a Lagos morning is a London morning; a Lagos evening, an American one — choose contracts whose hours you can honestly hold, and treat the closed door of a home workspace as sacredly as any office. The trades of this chapter all lead here eventually: the analyst, the designer, the support engineer, the writer of apps — remote is not a fifth career, it is where the other careers go to be paid in hard currency. Build the walls in order, and the commute stays long but the pay arrives short.",
+        "Then the manners of the clock, which finish the picture: know your client’s hours — overlap is the service, and a Lagos morning is a London morning; a Lagos evening, an American one — choose contracts whose hours you can honestly hold, and treat the closed door of a home workspace as sacredly as any office. The trades of this stretch all lead here eventually: the analyst, the designer, the support engineer, the writer of apps — remote is not a fifth career, it is where the other careers go to be paid in hard currency. It looks like freedom from outside. It is actually four walls, built deliberately, and the freedom is what stands on top of them.",
       ),
       fig(
         "/images/blog/invoice-cross-border.jpg",
@@ -7702,11 +7698,11 @@ export const blogPosts: BlogPost[] = [
         "Arrange the boring wall first: one backup network and at least router-and-laptop power cover. This week, not the week of the first client.",
         "Write one practice update as if to a remote manager: what moved, what is next, what is blocked. Three sentences, no grammar casualties.",
         "Choose one receiving platform, open the account while you have no client yet, and learn its fees before you need it.",
-        "Keep a work diary from day one — hours, deliverables, payments. Records are the professional's whole armour.",
+        "Keep a work diary from day one — hours, deliverables, payments. Records are the professional’s whole armour.",
       ]),
       h2("The longer commute, honestly priced"),
       p(
-        "None of this is glamorous, which is precisely why it works: the four walls — proven skill, managed power and data, written English, arranged payment — are each boring, each buildable, and each within this shelf's reach. The reward is the arithmetic everyone whispers about but few prepare for: the same skill, priced in a stronger market, paid into the same account the bank lesson taught you to guard. Build like the person in the first paragraph: quietly, wall by wall, until Friday's alert needs no translation.",
+        "None of this is glamorous, which is precisely why it works: the four walls — proven skill, managed power and data, written English, arranged payment — are each boring, each buildable, and each within this shelf’s reach. The reward is the arithmetic everyone whispers about but few prepare for: the same skill, priced in a stronger market, paid into the same account the bank lesson taught you to guard. Build like the man at the viewing centre: quietly, wall by wall, until Friday’s alert needs no translation.",
       ),
     ],
   },
@@ -8075,10 +8071,10 @@ export const blogPosts: BlogPost[] = [
       "A person typing a question into an online forum on a laptop, notebook open beside them.",
     body: [
       p(
-        "Here is the difference between the people who finish and the people who stall: the finishers let others watch. They post the small win — first pivot table, first page live, first repaired machine — and answer the beginner's question behind them, and in doing so turn a private course into a public track record. Learning in public is not self-promotion. It is the each-one-teach-one lesson pointed forward: you teach what you just learned while it is still warm, and the teaching is what makes it yours.",
+        "Oluchi posted her first pivot table on a Tuesday — a screenshot, three sentences, no polish — and by Friday a man she had never met had asked her a question about his shop’s sales sheet. Here is the difference between the people who finish and the people who stall: the finishers let others watch. They post the small win — first pivot table, first page live, first repaired machine — and answer the beginner’s question behind them, and in doing so turn a private course into a public track record. Learning in public is not self-promotion. It is the each-one-teach-one lesson pointed forward: you teach what you just learned while it is still warm, and the teaching is what makes it yours.",
       ),
       p(
-        "The mechanics are modest. After each week of learning, write three sentences somewhere others can see: what I set out to learn, what actually happened, what I will try next. Post it where your people are — the platform of your trade, a group, the profile lesson's page. Share the artefacts, not just the verdicts: the screenshot of the chart, the before-and-after of the site, the photo of the opened laptop — the portfolio lesson's raw material, produced as a by-product of studying. And answer downward: the question a newcomer asks that you can now answer is your rent for the questions you are about to ask above. Communities remember who answered.",
+        "The mechanics are modest. After each week of learning, write three sentences somewhere others can see: what I set out to learn, what actually happened, what I will try next. Post it where your people are — the platform of your trade, a group, the profile lesson’s page. Share the artefacts, not just the verdicts: the screenshot of the chart, the before-and-after of the site, the photo of the opened laptop — the portfolio lesson’s raw material, produced as a by-product of studying. And answer downward: the question a newcomer asks that you can now answer is your rent for the questions you are about to ask above. Communities remember who answered. What is the smallest thing you learned this week that somebody one step behind you still cannot do? That thing, in three sentences, is your next post.",
       ),
       fig(
         "/images/blog/question-post-forum.jpg",
@@ -8087,10 +8083,10 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("How to ask, and how to find the mentors"),
       p(
-        "Asking is a skill with manners, and the help lesson wrote them: search first — the answer may already be standing there; show what you tried — the error, the steps, the version, not a shrug and do it for me; and close the loop — return and say what worked, because the person who answers you tomorrow reads whether you came back today. Do this and something quiet happens: the people a level above start recognising your name as the one who asks well and reports back. That recognition is what people call finding a mentor, and it cannot be demanded — it is awarded, in comments and DMs and eventually in referrals, to the visible climber, never to the invisible one.",
+        "Asking is a skill with manners, and the help lesson wrote them: search first — the answer may already be standing there; show what you tried — the error, the steps, the version, not a shrug and do-it-for-me; and close the loop — return and say what worked, because the person who answers you tomorrow reads whether you came back today. Do this and something quiet happens: the people a level above start recognising your name as the one who asks well and reports back. That recognition is what people call finding a mentor, and it cannot be demanded — it is awarded, in comments and DMs and eventually in referrals, to the visible climber, never to the invisible one. It looks like luck from outside. It is actually attendance, kept in daylight.",
       ),
       p(
-        "Keep the shelf's guard up while you are open: the forward-that-lies circulates in learning groups too, the gurus selling container-loads of courses you do not need, the helpers who DM with fee-bearing salvation — the job-scam lesson's costume, reborn as mentorship. Verify before you forward, pay for structure when you have inspected the structure, and never send anybody money to be taught what a free video teaches. The public road you are walking is real. It has the same street traffic every road here has always had — and you already know how to walk among strangers.",
+        "Keep the shelf’s guard up while you are open: the forward-that-lies circulates in learning groups too, the gurus selling container-loads of courses you do not need, the helpers who DM with fee-bearing salvation — the job-scam lesson’s costume, reborn as mentorship. Verify before you forward, pay for structure when you have inspected the structure, and never send anybody money to be taught what a free video teaches. The public road you are walking is real. It has the same street traffic every road here has always had — and you already know how to walk among strangers.",
       ),
       fig(
         "/images/blog/community-meetup-laptops.jpg",
@@ -8100,12 +8096,12 @@ export const blogPosts: BlogPost[] = [
       ul([
         "After every week of learning, post three sentences: aimed, happened, next. Pick your day and keep it.",
         "Share the artefact with the verdict — screenshot, before-and-after, opened machine. Proof collects itself.",
-        "Ask by the help lesson's manners: searched, tried, error shown. Close every loop you open.",
-        "Answer one beginner's question for every question you ask. The rent keeps the whole floor standing.",
+        "Ask by the help lesson’s manners: searched, tried, error shown. Close every loop you open.",
+        "Answer one beginner’s question for every question you ask. The rent keeps the whole floor standing.",
       ]),
       h2("The compounding of being seen"),
       p(
-        "A year of learning in public leaves a strange residue: a timeline of a person who keeps showing up, a small library of answers under your name, strangers who forward you work with the words I have been watching you. The certificates lesson will say what papers prove; this lesson says what presence proves — persistence, honesty about the struggle, and the habit of finishing in daylight. The portfolio shows what you did. The public trail shows who you are. Clients and employers read both, and only one of them builds itself while you learn.",
+        "A year of learning in public leaves a strange residue: a timeline of a person who keeps showing up, a small library of answers under your name, strangers who forward you work with the words “I have been watching you.” The certificates lesson will say what papers prove; this lesson says what presence proves — persistence, honesty about the struggle, and the habit of finishing in daylight. The portfolio shows what you did. The public trail shows who you are. Clients and employers read both, and only one of them builds itself while you learn. Oluchi’s shop-spreadsheet man came back in October with a paid job and one sentence of explanation: “You answer people.” Post the pivot table.",
       ),
     ],
   },
@@ -9382,10 +9378,10 @@ export const blogPosts: BlogPost[] = [
       "A person shining a smartphone flashlight close to a dark laptop screen, looking for faint hidden desktop icons.",
     body: [
       p(
-        "You sit down on your plastic chair in the morning, ready to type a document. You press the round power button. The little blue light comes on beside your thumb. You hear the fan let out its soft morning sigh. You can feel the slight hum of the machine waking up on the table. But the glass screen in front of you remains completely black — as dark and dead as a turned-off television. You tap the Spacebar, you shake the mouse, you click the buttons. Nothing moves. In that quiet room, your chest tightens: 'Is my screen broken? Did the board fry? Where will I find one hundred thousand naira to fix this before work starts?'",
+        "Tunde sat down in the morning ready to type a document. He pressed the round power button. The little blue light came on beside his thumb. He heard the fan let out its soft morning sigh. He could feel the slight hum of the machine waking up on the table. But the glass screen in front of him remained completely black — as dark and dead as a turned-off television. He tapped the Spacebar, shook the mouse, clicked the buttons. Nothing moved. In that quiet room, the chest tightens: “Is my screen broken? Did the board fry? Where will I find one hundred thousand naira to fix this before work starts?”",
       ),
       p(
-        "Before you panic, take your hands off the keyboard and breathe. A screen that stays dark is not always a dead screen. Think of a computer screen like a church window made of coloured glass. The picture is the coloured glass, but behind the glass is the sun shining through from outside so you can see the colours. If the sun goes down, the church window looks completely black from inside the room — but the glass is not broken. The picture is still there, waiting in the dark for a beam of light. Laptops work the exact same way.",
+        "Before you panic, take your hands off the keyboard and breathe. A screen that stays dark is not always a dead screen. Think of a computer screen like a church window made of coloured glass. The picture is the coloured glass, but behind the glass is the sun shining through from outside so you can see the colours. If the sun goes down, the church window looks completely black from inside the room — but the glass is not broken. The picture is still there, waiting in the dark for a beam of light. Laptops work the exact same way. Which part is missing when the window goes black at evening — the glass, or the light behind it? The light. Ask that question of any dark screen before you ask it of any price.",
       ),
       fig(
         "/images/blog/dark-screen-flashlight-check.jpg",
@@ -9405,7 +9401,7 @@ export const blogPosts: BlogPost[] = [
         "The second test uses the television in your parlour. Take the black HDMI cord you use for your DSTV or decoder. Plug one end into the side of the laptop and the other end into the TV. Turn the TV on, change the input to HDMI, and press the Windows key and the letter P together on the laptop keyboard. If your familiar desktop picture suddenly appears bright and clear on the big television screen, rejoice: the brain of your computer — the motherboard, the processor, your files, your pictures — is completely untouched! The trouble is only in the hinge wire going up to the laptop lid.",
       ),
       p(
-        "And what if the TV also stays black? In coastal towns like Lagos, Port Harcourt, and Calabar, salt and damp moisture in the air creep inside laptops that sat idle for a week. The little green memory stick (called RAM) has a row of shiny gold teeth along its edge where it clicks into the board. When air touches those gold teeth for too long, a thin, invisible layer of grey film forms over them. The computer turns on, tries to read the memory stick, cannot feel the gold through the dirt, and gives up before turning on the screen. The cure costs zero naira: unclip the battery, open the small door underneath, pull the memory stick out, and take a clean white school eraser — the ordinary pencil rubber children use in school. Rub the rubber gently back and forth across the gold teeth on both sides until they shine like fresh jewelry. Brush away the crumbs with your finger, click the stick back firmly into its slot, and press power. In four out of ten homes, the laptop wakes up instantly.",
+        "And what if the TV also stays black? In coastal towns like Lagos, Port Harcourt, and Calabar, salt and damp moisture in the air creep inside laptops that sat idle for a week. The little green memory stick (called RAM) has a row of shiny gold teeth along its edge where it clicks into the board. When air touches those gold teeth for too long, a thin, invisible layer of grey film forms over them. The computer turns on, tries to read the memory stick, cannot feel the gold through the dirt, and gives up before turning on the screen. The cure costs zero naira: unclip the battery, open the small door underneath, pull the memory stick out, and take a clean white school eraser — the ordinary pencil rubber children use in school. Rub the rubber gently back and forth across the gold teeth on both sides until they shine like fresh jewellery. Brush away the crumbs with your finger, click the stick back firmly into its slot, and press power. In four out of ten homes, the laptop wakes up instantly.",
       ),
       fig(
         "/images/blog/ram-stick-clean-pins.jpg",
@@ -9420,7 +9416,7 @@ export const blogPosts: BlogPost[] = [
       ]),
       h2("Test before you spend"),
       p(
-        "Never let an artisan tell you 'Madam, your whole board is condemned' before you run these three simple tests with your own hands. Most dark screens are just sleeping backlights, a confused cord in the hinge, or five seconds of dust on a gold pin. Test calmly, keep your money in your pocket, and let the facts speak first. Next: the fan that screams like a generator, and the machine that burns your lap.",
+        "Never let an artisan tell you “Madam, your whole board is condemned” before you run these three simple tests with your own hands. Most dark screens are just sleeping backlights, a confused cord in the hinge, or five seconds of dust on a gold pin. Test calmly, keep your money in your pocket, and let the facts speak first. Tunde’s black screen woke under the eraser trick — the artisan’s hundred thousand became zero, and a cup of tea. Next: the fan that screams like a generator, and the machine that burns your lap.",
       ),
     ],
   },
@@ -10580,10 +10576,10 @@ export const blogPosts: BlogPost[] = [
       "A ruled notebook with a short handwritten checklist and a pen resting on it, seen from above on a wooden desk.",
     body: [
       p(
-        "The five questions are the stethoscope of this trade, and like a stethoscope they work only in order. What changed? When did it begin? What exactly does it say? Who else has it? What have you already tried? Ask them as conversation, not interrogation — over the machine, one at a time, each answer written into the notebook under its question. The order is not ceremony. Each answer narrows the room that the next question searches, and a question asked out of order is a lamp shone into a room you have not yet entered. Ten minutes with the five is worth three hours of hunting, and the customer hears in your method the thing they are really buying: order.",
+        "The five questions are the stethoscope of this trade, and like a stethoscope they work only in order. What changed? When did it begin? What exactly does it say? Who else has it? What have you already tried? Chioma keeps them written on the inside cover of her notebook, and she has watched customers relax the moment she asks the first one — because questions in order sound like competence, and competence is what they came to buy. Ask them as conversation, not interrogation — over the machine, one at a time, each answer written into the notebook under its question. The order is not ceremony. Each answer narrows the room that the next question searches, and a question asked out of order is a lamp shone into a room you have not yet entered. Ten minutes with the five is worth three hours of hunting, and the customer hears in your method the thing they are really buying: order.",
       ),
       p(
-        "What changed is the question that solves the case alone more often than any other. Software installed, an update that arrived overnight, a new printer, a child's game, a drop, a spill, a power surge, a new cable from the market — every fault is an event in a timeline, and machines do not spontaneously develop opinions. If the customer answers nothing, widen the question gently: did anything at all happen differently around that day — the light went, the machine travelled, somebody borrowed it? The universe of causes shrinks to the handful of things that changed, and half of those can be undone in two clicks by the lesson on fixing without formatting.",
+        "What changed is the question that solves the case alone more often than any other. Software installed, an update that arrived overnight, a new printer, a child’s game, a drop, a spill, a power surge, a new cable from the market — every fault is an event in a timeline, and machines do not spontaneously develop opinions. If the customer answers nothing, widen the question gently: did anything at all happen differently around that day — the light went, the machine travelled, somebody borrowed it? The universe of causes shrinks to the handful of things that changed, and half of those can be undone in two clicks by the lesson on fixing without formatting. One question, asked first, and half the map is drawn.",
       ),
       fig(
         "/images/blog/checklist-notebook-pen.jpg",
@@ -10592,10 +10588,10 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("When, and what exactly does it say"),
       p(
-        "When did it begin is the timeline question, and its answers come in three currencies: a moment, an hour, and a mood. A moment — since two o'clock on Tuesday — points at an event and you may go looking for it. An hour — since it came back from the shop — points at a place and a person. A mood — since always, it is getting worse — points not at an event at all but at a slow animal: heat, dust, a filling disk, a dying battery. The slow animals need the rhythm questions that follow: is it worse hot, worse in the afternoon, worse under a heavy programme. Faults with a rhythm have a temperature or a cable at the bottom of them. Record the rhythm precisely and the machine's next fit will not surprise you.",
+        "When did it begin is the timeline question, and its answers come in three currencies: a moment, an hour, and a mood. A moment — since two o’clock on Tuesday — points at an event and you may go looking for it. An hour — since it came back from the shop — points at a place and a person. A mood — since always, it is getting worse — points not at an event at all but at a slow animal: heat, dust, a filling disk, a dying battery. The slow animals need the rhythm questions that follow: is it worse hot, worse in the afternoon, worse under a heavy programme? Faults with a rhythm have a temperature or a cable at the bottom of them. Record the rhythm precisely and the machine’s next fit will not surprise you.",
       ),
       p(
-        "What does it say exactly is where the trade separates from gossip. The words on the screen are the machine's testimony and they are precise: a stop code, an error number, the name of a file that will not open, a colour of light at the corner. The customer's paraphrase — it said something about a problem — has thrown the testimony away. So you hand them their own best witness: take out the phone and photograph the screen exactly as it fails, every time, before anybody clicks OK. The photograph in their gallery is the exhibit for the rest of the job, and it travels by WhatsApp to whoever else must look. Get this habit into your customers and your own work becomes a gallery of evidence instead of a folklore of symptoms.",
+        "What does it say exactly is where the trade separates from gossip. The words on the screen are the machine’s testimony and they are precise: a stop code, an error number, the name of a file that will not open, a colour of light at the corner. The customer’s paraphrase — “it said something about a problem” — has thrown the testimony away. So you hand them their own best witness: take out the phone and photograph the screen exactly as it fails, every time, before anybody clicks OK. The photograph in their gallery is the exhibit for the rest of the job, and it travels by WhatsApp to whoever else must look. Get this habit into your customers and your own work becomes a gallery of evidence instead of a folklore of symptoms.",
       ),
       fig(
         "/images/blog/two-people-at-laptop-pointing.jpg",
@@ -10607,16 +10603,16 @@ export const blogPosts: BlogPost[] = [
         "Who else has it is the boundary question and it dispatches you toward the right building. One machine alone in the office is a machine problem. Every machine in the office is a road, a server, a printer, or a bill problem — and no amount of repair on one laptop will cure the room. On a network day this question alone saves hours: if only the back office is crying, follow their wall; if the whole shop cries, follow the shelf. Write the boundary down as a little map — which rooms, which people, which accounts — because the shape of the disease is already half the cure.",
       ),
       p(
-        "What have you already tried is asked last and asked kindly, because it has three mercies. It saves you from repeating a step in front of the customer like a conjurer doing the same trick. It reveals the true state of the machine — the restart they attempted may have half-finished an update, the cleaner they installed at midnight is now part of the disease. And it protects the relationship: the person who already reinstalled the printer driver from a YouTube video at two in the morning does not want your surprise, they want your respect. Written down in order, the five answers are the case file. Read them back once, and in half of all jobs you will both hear the guilty room at the same moment — the story completing itself in the customer's own mouth. That moment is the whole profession, and it never gets old.",
+        "What have you already tried is asked last and asked kindly, because it has three mercies. It saves you from repeating a step in front of the customer like a conjurer doing the same trick. It reveals the true state of the machine — the restart they attempted may have half-finished an update, the cleaner they installed at midnight is now part of the disease. And it protects the relationship: the person who already reinstalled the printer driver from a YouTube video at two in the morning does not want your surprise, they want your respect. Written down in order, the five answers are the case file. Read them back once, and in half of all jobs you will both hear the guilty room at the same moment — the story completing itself in the customer’s own mouth. That moment is the whole profession, and it never gets old.",
       ),
       ul([
         "Ask the five in order — change, when, testimony, boundary, tried — and write each answer under its question.",
-        "Push for the machine's exact words and the customer's photograph of the failing screen as your standing exhibit.",
+        "Push for the machine’s exact words and the customer’s photograph of the failing screen as your standing exhibit.",
         "Ask the rhythm questions whenever the timeline is vague: worse hot, worse at noon, worse under load.",
         "Read the five answers back once before touching anything; half the time the guilty room announces itself.",
       ]),
       p(
-        "The five questions now belong to your hands and the notebook has become a case file. The next lesson walks into the guilty room with the smallest possible toolbox — and the largest possible principle: that everything on that machine is somebody's photographs, and formatting is the confession that the repair failed.",
+        "The five questions now belong to your hands and the notebook has become a case file. The next lesson walks into the guilty room with the smallest possible toolbox — and the largest possible principle: that everything on that machine is somebody’s photographs, and formatting is the confession that the repair failed.",
       ),
     ],
   },
