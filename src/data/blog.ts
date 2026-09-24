@@ -6500,44 +6500,51 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "Hands photographing a used smartphone on a plain table in good daylight.",
     body: [
       p(
-        "The buying lesson put you on the customer's side of the counter. Now you are the shop: the old phone, the generator that lost the argument, the sewing machine, the television. Selling online is ordinary trade here now, and it rewards exactly what the market rewards — a truthful face and a steady hand. The difference is that your shopfront is a photograph, and the counter is a chat.",
+        "Ikenna listed his father's sewing machine on a Sunday evening — one photograph on the parlour floor, a price he guessed from memory, and a caption full of feeling. By Monday noon he had eleven messages. Ten of them were ordinary. The eleventh said 'I have sent the money, my rider is coming' with a screenshot of a bank alert that looked perfect. Ikenna nearly packed the machine. This lesson is the other side of the counter: you are the shop now. The old phone, the generator that lost the argument, the television. Selling online rewards exactly what the market always rewarded — a truthful face and a steady hand — with one new rule for money that arrives as a picture instead of a sound.",
       ),
       p(
-        "The photograph is everything. Plain table, daylight from a window, the whole item in the frame, all sides — the discipline of photographing documents, turned on property. Show the scratches. A scratch disclosed in the third photograph is a settled argument; a scratch discovered at handover is a cancelled sale and a name mentioned at night. Then price it by walking the market from your chair: what do others ask for the same thing, used, in this city? Price near them. Sentiment is a tax no buyer pays.",
+        "The buying lesson put you on the customer's side of the counter. Now cross it. The difference is that your shopfront is a photograph, and the counter is a chat — and both deserve the manners of a real stall.",
       ),
       fig(
         "/images/blog/selling-photo-item.jpg",
         "Hands photographing a used smartphone on a plain table in good daylight.",
         "The shopfront. Daylight, plain ground, every side shown, every scratch confessed. Honesty is the fastest price.",
       ),
+      h2("The photograph is everything"),
+      p(
+        "Plain table, daylight from a window, the whole item in the frame, all sides. It is the discipline of photographing documents, turned on property. And show the scratches. A scratch disclosed in the third photograph is a settled argument; a scratch discovered at handover is a cancelled sale and your name mentioned at somebody's dinner that night. Ask yourself the buyer's question while you shoot: what would I want to see if I were sending money to a stranger? Then price it by walking the market from your chair — what do others ask for the same thing, used, in this city? Price near them. Sentiment is a tax no buyer pays.",
+      ),
       h2("The alert that never was"),
       p(
-        'Sellers are scammed more often than buyers, and always by the same play. "I have sent the money" — with a screenshot that was edited in an app you do not have. "My rider will collect it and pay on delivery" — and the rider collects for a sender who never existed. Or the overpayment: "I sent one hundred and fifty by mistake, refund the difference" — when nothing was ever sent. The defence is one sentence and you already own it from the bank lesson: money is confirmed in your own app, balance before, balance after, the sender\'s name visible. Not by a tone. Not by a screenshot. Not by politeness.',
+        "Sellers are scammed more often than buyers, and almost always by one play. 'I have sent the money' — with a screenshot edited in an app you do not have. 'My rider will collect it and pay on delivery' — and the rider collects for a sender who never existed. Or the overpayment: 'I sent one hundred and fifty by mistake, refund the difference' — when nothing was ever sent at all. Before we name the defence, a quick check that saves Ikenna's machine: the alert tone rings in the kitchen and a picture of the alert arrives by chat. Where does the money actually live — in the picture, or in your app? ... In your app. Only there. Money is confirmed in your own bank app — balance before, balance after, the sender's name visible. Not by a tone. Not by a screenshot. Not by politeness. That sentence is the bank lesson, wearing a seller's cap.",
       ),
       p(
-        "For hand-to-hand sales, the old rules hold: meet in daylight where people are — a bank hall, a busy fuel station — bring a person, let the buyer inspect, and let payment complete before the item crosses. A POS slip at handover is fine; wait until the machine prints, or the transfer lands in your app. For delivered sales, the parcel moves after the money, and if the platform offers pay-on-delivery protection, that is its own honest road — walk it the way the buying lesson walked it, from the other side.",
+        "For hand-to-hand sales the old rules hold, and they are old because they work: meet in daylight where people are — a bank hall, a busy filling station — bring a person, let the buyer inspect, and let payment complete before the item crosses. A POS slip at handover is fine; wait until the machine prints, or the transfer lands in your app. For delivered sales, the parcel moves after the money — and if the platform offers pay-on-delivery protection, walk it the way the buying lesson walked it, from the other side of the counter.",
       ),
       fig(
         "/images/blog/verify-payment-seller.jpg",
         "A man checking his bank app beside a wrapped parcel on a table, before handing it over.",
         "Balance before, balance after, the name on the line. The parcel stays on the table until the app says so.",
       ),
-      ul([
-        "Photograph in daylight, all sides, scratches included. Disclose everything; sell quickly.",
-        "Price by the market's asking prices, not by what the item cost you new.",
-        "Verify every payment in your own bank app before the item moves one inch.",
-        "Meet in public in daylight, bring a person, and trust the slow careful buyer above the urgent one with a story.",
-      ]),
       h2("The meeting at the market gate"),
       p(
-        "Selling brings strangers to your gate, so move the meeting to theirs. A public place in daylight — the market gate, a filling station, a bank forecourt — with network and people around, is the right counter for any exchange above a phone call's value. For electronics, bring the charger and let the machine demonstrate its health in front of the buyer; for a phone, the buyer will want to see the settings and the account removed, which you should do before you leave home anyway. Never hold the item and the payment at once. Item in the left hand, alert confirmed in the right, is how both hands end up happy.",
+        "Selling brings strangers to your gate, so move the meeting to theirs. A public place in daylight — the market gate, the filling station, a bank forecourt — with network and people around, is the right counter for any exchange above a phone call's value. For electronics, bring the charger and let the machine demonstrate its health in front of the buyer; for a phone, remove your accounts before you leave home anyway. And one rule to hold in both hands: never hold the item and the payment at once. Item in one hand, alert confirmed in the other, is how both hands end up happy.",
       ),
       p(
-        "The transfer-versus-cash question has one honest answer in 2026: confirm the transfer in your own app before anything leaves your hand. The buyer's screenshot is theatre and the buyer's alert can be a message to himself. Cash you can hold is still real, though count it away from the crowd and step inside a bank to lodge it before you spend it. If the thing is valuable enough to attract a crowd — a laptop, a generator, a car part — bring a second person and say out loud, before the meeting, what price is your floor. The slow buyer at the market gate is the real one. The hurried one at your gate is the story for the family that evening.",
+        "The transfer-versus-cash question has one honest answer in 2026: confirm the transfer in your own app before anything leaves your hand. The buyer's screenshot is theatre, and the buyer's 'alert' can be a message to himself. Cash you can hold is still real — count it away from the crowd, and lodge it in a bank before you spend it. If the thing is valuable enough to attract a crowd — a laptop, a generator, a car part — bring a second person, and before the meeting, say out loud what price is your floor.",
       ),
       h2("The slow buyer is the real one"),
       p(
-        "The buyer who asks small questions, haggles with respect, and pays without theatre is the market's normal human being. The urgent one — pay now, my rider is waiting, my accountant sent it already — is the exception, and exceptions in trade are called something else. Selling online is the buying lesson held to a mirror: same slowness, same receipts, same public place, same refusal of hurry. The mirror does not change the rules. It only changes whose pocket the money is flowing toward.",
+        "Here is the trade's oldest character-reading, now applied to chats. The buyer who asks small questions, haggles with respect, and pays without theatre is the market's normal human being. The urgent one — 'pay now, my rider is waiting, my accountant sent it already' — is the exception, and exceptions in trade are called something else. Quick retrieval: which of those two did Ikenna's eleventh message belong to? ... The hurried one with a story. The slow buyer at the market gate is the real one. The hurried one at your gate is the story you tell the family that evening.",
+      ),
+      ul([
+        "Photograph in daylight, all sides, scratches included. Disclose everything; sell quickly.",
+        "Price by the market's asking prices, not by what the item cost you when it was new.",
+        "Verify every payment in your own bank app before the item moves one inch. Screenshots are props.",
+        "Meet in public, in daylight, with a person beside you. Trust the slow careful buyer above the urgent one with a story.",
+      ]),
+      p(
+        "Selling is the buying lesson held to a mirror: same slowness, same receipts, same public place, same refusal of hurry. The mirror does not change the rules. It only changes whose pocket the money is flowing toward.",
       ),
     ],
   },
@@ -8081,37 +8088,44 @@ export const blogPosts: BlogPost[] = [
       "A person sitting properly at a desk, feet flat, screen raised to eye level on a stand of books.",
     body: [
       p(
-        "Nobody warns you that typing is a physical trade. The tailor stands, the mechanic bends, and the person at the machine sits — for years — and the sitting collects its rent quietly: the eyes that blur by evening, the wrist that wakes you at night, the neck that no longer turns without opinion. The body is the only tool every career on this shelf shares, and like every tool here it works better maintained than repaired. This lesson is the maintenance manual, and it costs almost nothing.",
+        "Tolu is twenty-six, and his right wrist has started waking him at night — a pins-and-needles hum from the hand that has typed maybe two million words since NYSC. His tailor has varicose veins at forty-five; his mechanic uncle's back clicks when he stands. Tolu's trade asked for none of those things. It asked only that he sit. But sitting is a physical trade too — it collects its rent quietly: the eyes that blur by evening, the wrist that wakes you, the neck that no longer turns without opinion. This lesson is the maintenance manual for the body at the desk, and it costs almost nothing.",
       ),
       p(
-        "The arrangement first, because posture follows furniture. Screen raised so its top edge sits at eye level — on books, on a stand, on anything steady — so the neck stops hanging forward like a reading grandmother's. Back against the chair's back, or a cushion folded behind it; feet flat on the floor or on a box, not folded under you like a heron. Elbows near the sides, wrists level — not bent up over the keyboard's edge, which is where the wrist's slow trouble begins. The brightness lesson set your screen light; set your room's too, so the eyes are not reading a lamp in a cave. None of this needs money. It needs one deliberate hour of moving your furniture, once.",
+        "Start with the misconception that puts everybody in this class: 'typing is not real work, so the body is fine.' Watch any office at four p.m. and look at the necks. The body is the only tool every career on this shelf shares — and like every tool in these lessons, it works better maintained than repaired. Two kinds of people read this lesson: those who rearrange their desk this hour, and those who bookmark it for the wrist. Choose the first one. Tolu did both the bookmarks for two years.",
       ),
       fig(
         "/images/blog/posture-desk-chair.jpg",
         "A person sitting properly at a desk, feet flat, screen raised to eye level on a stand of books.",
         "The one-hour arrangement: screen at eye level, back supported, feet down, wrists level. The neck, the eyes and the wrists all keep the same appointment.",
       ),
+      h2("The arrangement first, because posture follows furniture"),
+      p(
+        "Look at your screen right now before reading on. Where is its top edge — and where are your eyes? ... If the screen's top edge sits below eye level, your neck has been hanging forward like a reading grandmother all afternoon. Fix: raise the screen on books, on a stand, on anything steady, so the top edge is at eye level. Then the chair: back against its back, or a cushion folded behind; feet flat on the floor or on a box, not folded under you like a heron. Elbows near your sides, wrists level — not bent up over the keyboard's edge, which is exactly where the wrist's slow trouble begins. And match the brightness lesson to the room: the eyes should not be reading a lamp in a cave. None of this needs money. It needs one deliberate hour of moving furniture, once.",
+      ),
       h2("The eyes, the wrists, and the hourly debt"),
       p(
-        "The eyes rule, learned and kept: every twenty minutes, look at something twenty feet away — out the window, down the corridor — for twenty seconds. It is called 20-20-20, it is free, and it is the difference between eyes that work at forty and eyes that throb at thirty-five; blink too, because staring screens dry them. The wrists: take the small breaks seriously — a minute of shaking out the hands every half hour, the stretch of the fingers backwards, gentle, the way you would stretch any worker's tool after repetitive lifting; and if tingling starts at night, that is not tiredness, that is a warning worth a clinic visit before it becomes a story. And the hourly debt: stand and walk for two minutes every hour — water, gate, window — because the studies all agree with grandmothers: the sitting itself is the hazard, and the body keeps books more honestly than any ledger of lesson one hundred and forty-three.",
+        "The eyes' rule is three numbers: every twenty minutes, look at something twenty feet away — out the window, down the corridor — for twenty seconds. 20-20-20. It is free, and it is the difference between eyes that still work at forty and eyes that throb at thirty-five. Blink deliberately too; staring screens dry them. The wrists: take the small breaks seriously — a minute of shaking out the hands every half hour, fingers stretched back gently, the way you would stretch any worker's tool after repetitive lifting. And if tingling starts at night, that is not tiredness being dramatic. That is a warning worth a clinic visit before it becomes a story.",
       ),
       p(
-        "One more, in the Nigerian register: the generator and the heat. A hot room tires a body faster than a long file, and the fan aimed at the room rather than the back of the neck saves the morning's stiffness; the machine's vents were cleared in an earlier lesson — clear your own cooling too, water, actual water, through the day. The work of this shelf is a long game — decades of Thursdays at a desk. The body is the colleague who attends every one of them. Arrange the furniture once, keep the small rules forever, and it stays a colleague instead of becoming a complaint.",
+        "The hourly debt is the one grandmothers and studies agree on: stand and walk for two minutes every hour — water, gate, window. The sitting itself is the hazard, and the body keeps books more honestly than any ledger. Set a phone timer for one week and the habit installs itself. Which hour of your current workday is worst for the body — and what would interrupt it? ... Usually the hour after lunch, when the fan has turned to the wall and the screen has turned to grey. Interrupt that one first.",
       ),
       fig(
         "/images/blog/eyes-break-window.jpg",
         "A worker standing at a window, looking out at the street, hands behind back, screen glowing behind them.",
         "Twenty seconds, twenty feet away, every twenty minutes. The oldest free medicine in the sitting trades.",
       ),
+      h2("The Nigerian register: heat, water, and the generator room"),
+      p(
+        "One more section in this country's own language. A hot room tires a body faster than a long file. Aim the fan at the room rather than the back of your neck, and it saves the morning's stiffness. You cleared the machine's vents in an earlier lesson — clear your own cooling too: actual water, through the day, not only at meals. And if your workroom shares air with the generator, you already know the headache arithmetic; the exhaust is not a colleague. Work the powered hours with the door open to clean air.",
+      ),
       ul([
-        "Rearrange your desk this hour: books under the screen, cushion behind the back, box under the feet if needed.",
-        "Set the 20-20-20 rhythm — a phone timer for a week will install it permanently.",
-        "Hourly: two minutes standing, water taken, window visited. Debt avoided, not repaid.",
+        "Rearrange your desk this hour: books under the screen, cushion behind the back, a box under the feet if needed.",
+        "Set the 20-20-20 rhythm. A phone timer for one week will install it permanently.",
+        "Hourly: two minutes standing, water taken, window visited. Avoid the debt rather than repaying it.",
         "Night-time tingling in the hands is a clinic visit, not a character flaw. Go early.",
       ]),
-      h2("The long game needs a body"),
       p(
-        "The analyst lesson said the work asks for patience and calm; it quietly asks for vertebrae too. Every plan this chapter has made — the clients, the books, the decade of remote Fridays — assumes a body that can still sit, see and type when the plan matures. Maintain the only tool you cannot replace, and the sitting trade stays what it should be: a livelihood that lifts nothing heavier than a laptop, carried lightly for forty years.",
+        "The working-life lesson said this trade asks for patience and calm. It quietly asks for vertebrae too. Every plan this chapter has made — the clients, the books, the decade of remote Fridays — assumes a body that can still sit, see, and type when the plan matures. Maintain the only tool you cannot replace, and the sitting trade stays what it should be: a livelihood that lifts nothing heavier than a laptop, carried lightly for forty years.",
       ),
     ],
   },
@@ -8758,37 +8772,43 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A woman booking a doctor's appointment on her phone at a kitchen table.",
     body: [
       p(
-        "The internet has become the front desk of Nigerian healthcare — appointments booked, doctors consulted by video, medicines delivered to the gate — and it works, when it is the real system. It also carries the most dangerous lie on this entire shelf: the health forward. This lesson walks both halves, because the same screen that brings a verified doctor to your parlour also brings the cure that skips the hospital, and the difference is the skill being taught here.",
+        "The forward arrived in the family group at six in the morning: a voice note from a distant aunt, warm with certainty, saying a particular tea cured her neighbour's diabetes in three days — 'the hospital people will not tell you.' By breakfast, two relatives had resolved to stop their medication. This lesson exists because that voice note is one of the most dangerous objects in the country right now. The internet has become the front desk of Nigerian healthcare — appointments booked, doctors consulted by video, medicines delivered to the gate — and it works beautifully when it is the real system. But the same screen that brings a verified doctor to your parlour brings the cure that skips the hospital. This lesson walks both halves, because knowing the difference is the skill.",
       ),
       p(
-        "The honest half first. Booking: many hospitals and labs now take appointments through their own portals, phone lines or verified WhatsApp lines — the government-portals lesson's law applies with extra force, because health fakes are cruel fakes; the address must be the hospital's own, reached from its verified page or a number you already trust. Telemedicine — a consultation by video or chat — is real and regulated: use platforms you can verify, whose doctors carry recognisable registration, whose reviews stretch over months, and whose fee is stated before the call, the pricing lesson applied to medicine. Pharmacy delivery is real too: licensed pharmacies deliver genuine medicines to your gate — check the seller's licence where the app shows it, check the medicine's packaging and expiry like you check a parcel at the gate, and keep every receipt. Then the records: prescriptions, test results, discharge summaries — scanned and named into the Papers folder in Drive beside the certificates, because in an emergency at midnight, the folder that has your mother's last test result is worth more than everything else on this shelf.",
+        "The honest half first, because it deserves more attention than the scandal half. Booking: many hospitals and labs now take appointments through their own portals, phone lines, or verified WhatsApp lines. The government-portals lesson's law applies here with extra force, because health fakes are cruel fakes — the address must be the hospital's own, reached from its verified page or a number your family already trusts. Telemedicine — a consultation by video or chat — is real and regulated: use platforms you can verify, whose doctors carry recognisable registration numbers you can check, and whose fee is stated before the call. The pricing lesson, applied to medicine. And pharmacy delivery is real too: licensed pharmacies deliver genuine medicines to the gate — check the seller's licence where the app shows it, and check the packaging and expiry date the way you check a parcel at the gate.",
       ),
       fig(
         "/images/blog/health-booking-phone.jpg",
         "A woman booking a doctor's appointment on her phone at a kitchen table.",
         "The front desk, moved home. Verified platform, stated fee, records kept — healthcare with the shelf's manners.",
       ),
-      h2("The hard rule"),
       p(
-        "Now the half that saves lives. The forward that lies taught you to check before sharing; for health, the rule is harder — do not diagnose, and do not obey. Symptoms do not go to a search box, a broadcast list, or a church group; they go to a professional, because the search box has no duty of care and no knowledge of your mother's blood pressure. The home cure that skips the hospital — herbs for a lump, lime for a fever that is actually malaria pretending, prayer alone for a child with convulsions — has buried more people on this continent than every scammer combined, and it arrives wearing love. So the family rule, stated once and kept forever: health forwards are not forwarded, not obeyed, and answered with one sentence — let us ask the doctor. And the emergency rule beside it: when the body is clearly failing — chest pain, a child gasping, bleeding that will not stop — you go, you run, you do not type. The phone can book the ambulance. It cannot be one.",
+        "Quick check before the dark half: a platform offers a video consultation with 'Dr. Bright' for two thousand naira, payable before the call, with no registration number anywhere. What is missing that a real telemedicine service shows you? ... The doctor's registration and the fee in writing. Healthcare gets the government-portals suspicion, doubled. Ask for the registration the way a bank asks for the BVN — it is the professional's own number.",
+      ),
+      h2("The health forward, and why it is cruel"),
+      p(
+        "Now the lie itself. The health forward is the forwarded-message lesson's worst student: the miracle tea, the hospital-exposed secret, the prayer that cures, the injection that causes the very thing it claims to stop. Notice its costume — it always arrives from someone who loves you, always with confidence, always with an enemy (the doctors, the government, 'them'). Confidence is the costume; it has never been the evidence. The rule from the beginning of this shelf stands here in its most serious form: symptoms go to professionals — never to a search box, never to a broadcast list, never to a man in a comment section.",
       ),
       p(
-        "Used this way, the screen is the best thing that ever happened to a busy household's health: the appointment booked in the queue at work, the follow-up question answered by video, the drugs at the gate, the records safe above the flood. Used carelessly, it is a pharmacy of rumours. You already know how to tell one from the other — verified source, stated fee, professional on the other end, pause before the forward. The next lesson is the last of the chapter, and it asks what happens when all the tools change again.",
+        "And the sharpest contrast in the whole lesson, worth fixing tonight: 'it looks like medical advice because a real person swears by it.' A neighbour's recovery story is not a trial. People recover from things constantly while taking the wrong remedy — the body was already healing, or the original diagnosis was wrong. The aunt who 'stopped her drugs for the tea' and felt better for two weeks was the diabetes going quiet before the storm, and the hospital saw her in the storm's season. Never stop prescribed medication on a forward's authority. Change medication only at the desk of the doctor who wrote it — or a second doctor, physically consulted. That is the family's iron law, and it fits in one sentence.",
       ),
       fig(
         "/images/blog/telemedicine-video-call.jpg",
         "A man on a video call with a doctor, the doctor visible on the phone screen taking notes.",
         "The parlour clinic. A verified professional, a stated fee, and the family rule standing guard: symptoms go to the doctor, not to the group.",
       ),
+      h2("The family rule, and the emergency"),
+      p(
+        "Install the rule at the table, not in the group chat: health forwards are neither forwarded nor obeyed. When one arrives, the family's answer is always the same four words — let us ask the doctor. Say it gently the first hundred times. The forwarding aunt is not the enemy either; she is scared and loving, which is exactly what the forger counted on. And rehearse the emergency rule before the emergency: chest pain, sudden weakness on one side, heavy bleeding, trouble breathing, a seizure — these are travelled, not typed. Know your nearest good hospital the way you know your nearest fuel station, and keep the fare to get there. The ambulance number, the hospital's address, the family member with a car — written in the same drawer as the password notebook.",
+      ),
       ul([
-        "Build the family health folder in Drive tonight: last prescriptions, test results, blood groups. Midnight-you will bless this hour.",
-        "Verify before the call: the platform, the doctor's registration, the fee in writing. Healthcare gets the government-portals suspicion, doubled.",
-        "Install the family rule at the table: health forwards are neither forwarded nor obeyed. The answer is always let us ask the doctor.",
+        "Verify every health service before money or body: the hospital's own channel, the doctor's registration, the fee in writing. Healthcare gets the government-portals suspicion, doubled.",
+        "Install the family rule at the table: health forwards are neither forwarded nor obeyed. The answer is always 'let us ask the doctor'.",
+        "Never stop a prescribed medicine on a forward's authority. The desk that wrote the prescription is the only desk that changes it.",
         "Emergencies are travelled, not typed. Know your nearest good hospital the way you know your nearest fuel station.",
       ]),
-      h2("The screen, at the bedside"),
       p(
-        "Of everything this shelf has taught, this lesson carries the heaviest arithmetic, because the accounts are not in naira. The same care you learned to spend on money — verify the channel, keep the record, refuse the hurry — spends even better on health. The house that books its own appointments, keeps its own records and declines its own forwards is a hard house to hurt. That is the whole lesson. Go and keep it well.",
+        "Of everything this shelf has taught, this lesson carries the heaviest arithmetic, because the accounts are not in naira. The same care you learned to spend on money — verify the channel, keep the record, refuse the hurry — spends even better on health. The house that books its own appointments, keeps its own records, and declines its own forwards is a hard house to hurt. Go and keep it well.",
       ),
     ],
   },
@@ -9340,10 +9360,13 @@ export const blogPosts: BlogPost[] = [
       "A phone showing an investment app with a steep green profit curve and a big balance.",
     body: [
       p(
-        "The compound meeting has heard it before, in every generation, in every market on earth: a man with a phone shows a dashboard — the balance climbing, the green curve, thirty percent in a month, withdrawn in minutes, proof in his own hand. Your money works while you sleep. Referral bonus if you bring your brother. The room nods; the arithmetic applauds quietly in the corner, because it knows something the room will learn too late: money that doubles by schedule is not an investment. It is a collection plate, and the collection has always been the point.",
+        "Brother Paul stood up at the compound meeting with his phone in the air, and the screen showed the dashboard: the balance climbing, the green curve, thirty percent in a month, withdrawn in minutes — proof in his own hand. 'Your money works while you sleep. Referral bonus if you bring your brother.' The room nodded. The arithmetic, sitting quietly in the corner, said nothing yet, because it knows something the room will learn too late: money that doubles by schedule is not an investment. It is a collection plate — and the collection has always been the point. This lesson is the anatomy of that plate, in every costume it will ever wear, and the boring cure that actually works.",
       ),
       p(
-        "The machine, named so you recognise it in every costume it will ever wear — ponzi, ROI platform, trading bot, crypto doubling, the church-adjacent fund, the Telegram trader. New members' money pays old members' withdrawals. The early withdrawals are real, and they are the bait: nobody believes a scheme until it has paid them once, which is why the operators pay — the farmer's grain, spent to buy the silo. Then the referrals, whose bonuses outshine anything the underlying business could earn, because there is no underlying business: the recruitment is the business. And the mathematics, which is the part that cannot be argued with: markets — every honest market on earth — move up and down and never on schedule, which is why no licensed fund anywhere promises returns, only histories and ranges. A guaranteed thirty percent a month is not a bold estimate. It is a confession wearing a suit.",
+        "Name the machine so you recognise it in all its outfits: ponzi, ROI platform, trading bot, crypto doubling, the church-adjacent fund, the Telegram trader. The mechanism is always the same skeleton. New members' money pays old members' withdrawals. The early withdrawals are real, and they are the bait — nobody believes a scheme until it has paid them once, which is exactly why the operators pay: the farmer's grain, spent to buy the silo. Then the referrals, whose bonuses outshine anything the underlying business could earn, because there is no underlying business. The recruitment is the business.",
+      ),
+      p(
+        "And the mathematics, which is the part that cannot be argued with at any compound meeting on earth: markets move up and down and never on schedule. That is why no licensed fund anywhere promises returns — only histories and ranges. Before we go on, sit with one question, because it kills every scheme in advance: if thirty percent a month were reliably possible, why would the man with the secret need your fifty thousand naira? ... He would not. He would borrow it from the bank at twenty-six percent a year and keep the difference. A guaranteed thirty percent a month is not a bold estimate. It is a confession wearing a suit.",
       ),
       fig(
         "/images/blog/roi-dashboard-phone.jpg",
@@ -9352,30 +9375,39 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("The tells, and the grey button"),
       p(
-        "The tells survive every costume, and you have met their ancestors on this shelf. Guaranteed returns — lesson one hundred and twenty-nine's markets never guarantee. Referral wealth — the business is you. Hurry — slots closing, bonus window ending, the oldest tell in the book. Secrecy and exclusivity — the opportunity for the wise few, which is how collections describe their plate. And the license question, which ends most arguments in one sentence: no scheme on this street is licensed by the securities regulator, because the securities regulator does not license doubling. When the collapse comes — and it is scheduled by arithmetic, not by chance — the tell that arrives last is the grey button: withdrawals pause for verification, for a system upgrade, for a banking partner, and the dashboard stays green forever while the money inside turns to a story. The screenshot of your balance was never money. It was a painting of money, and you were the painter's canvas.",
+        "The tells survive every costume, and you have met their ancestors all over this shelf. Guaranteed returns — the market lesson's markets never guarantee. Referral wealth — when bringing people pays better than the product, the product is you. Hurry — 'slots closing, bonus window ending' — the oldest tell in the book. Secrecy and exclusivity — 'the opportunity for the wise few', which is how collections describe their plate. And the licence question, which ends most arguments in one sentence: no scheme on this street is licensed by the securities regulator, because the securities regulator does not license doubling. Check the register yourself, the same evening, at the regulator's own site.",
       ),
       p(
-        "And the crypto clause, because the costume of this decade: the technology can be entirely real while the platform is entirely a thief — real rails, fake returns. Nobody legitimate ever needs your recovery phrase, the crown jewel of your keys from the papers lesson; a trading opportunity that requires it is a robbery with a friendly interface. The defences are the shelf's oldest: the week rule for big money — every large decision sleeps seven nights and hears one sceptical voice you respect, the family word's discipline pointed at your own excitement. The license check on the regulator's site, the same hour. And the boring cure, which outperforms every doubling in the long run and keeps its name intact: the rain slice, the licensed savings, the skills that raise the inflow — this entire shelf, compounding slowly, legally, and in public. The compound meeting will move on to the next scheme by December. Your name will still be yours. That is the return nobody's dashboard can print.",
+        "When the collapse comes — scheduled by arithmetic, not by chance — the tell that arrives last is the grey button: withdrawals pause 'for verification', 'for a system upgrade', 'for a banking partner', and the dashboard stays green forever while the money inside turns into a story. Understand what that screen was: the screenshot of your balance was never money. It was a painting of money, and you were the painter's canvas.",
       ),
       fig(
         "/images/blog/family-investment-meeting.jpg",
         "A family at a night table with a phone showing figures, an older uncle listening with folded arms.",
         "The sceptic at the table, on purpose. Big money sleeps seven nights and hears one unimpressed voice before it moves.",
       ),
+      p(
+        "The crypto clause, because every costume eventually wears it: the technology can be entirely real while the platform is entirely a thief — real rails, fake returns. And nobody legitimate, ever, needs your recovery phrase — the crown jewel of the keys from the papers lesson. A trading opportunity that requires it is a robbery with a friendly interface.",
+      ),
+      h2("The boring cure"),
+      p(
+        "The defences are the shelf's oldest, aimed at your own excitement for once. The week rule for big money: every large decision sleeps seven nights and hears one sceptical voice you respect — the family word's discipline, pointed inward. The licence check, on the regulator's site, the same hour, not 'sometime'. And the boring cure that outperforms every doubling in the long run and keeps its name intact: the rain slice of every income, the licensed savings, the skills that raise the inflow — this entire shelf, compounding slowly, legally, and in public.",
+      ),
       fig(
         "/images/blog/withdraw-button-grey.jpg",
         "A close view of an investment app whose withdrawal button sits greyed out behind a small waiting notice.",
         "The last tell, arriving on schedule. The dashboard stayed green; the button went grey. The painting was never money.",
       ),
+      p(
+        "One more retrieval before the chapter closes: Brother Paul was paid his first month's thirty percent in real naira. Was that proof the scheme works? ... It was the bait doing its job. The farmer's grain bought the silo that will swallow his harvest. The compound meeting will move on to the next scheme by December. Your name will still be yours — and that is the return nobody's dashboard can print.",
+      ),
       ul([
         "One sentence, for life: guaranteed doubling is a confession. Licensed funds promise ranges and histories, never schedules.",
-        "Referral bonuses that outshine the product mean the product is you. Walk out with your brother's hand.",
+        "Referral bonuses that outshine the product mean the product is you. Walk out with your brother's hand still in yours.",
         "The week rule for big money: seven nights, one sceptic, the regulator's site. Collections hate calendars.",
         "Nobody legitimate needs your recovery phrase — the crypto clause. The boring cure compounds; the exciting one collects.",
       ]),
-      h2("The chapter, and the purse"),
       p(
-        "Ten lessons of the pocket and the purse: the code that works without data, the line that stopped leaking, the bundle that learned manners, the wall machine and its wiggles, the little brick, the token in the dark, the first flight, the tunnel, the fifteen-minute loan, and now the doubling lie, oldest of them all. Every one of them obeyed the same law this shelf has taught since the first sitting: the pause is the profit. The chapter closes. The purse stays open — and now it stays yours.",
+        "Ten lessons of the pocket and the purse: the code that works without data, the line that stopped leaking, the bundle that learned manners, the wall machine and its wiggles, the little brick, the token in the dark, the first flight, the tunnel, the fifteen-minute loan, and now the doubling lie — oldest of them all. Every one of them obeyed the law this shelf has taught since the first sitting: the pause is the profit. The chapter closes. The purse stays open — and now it stays yours.",
       ),
     ],
   },
@@ -9505,19 +9537,29 @@ export const blogPosts: BlogPost[] = [
       "Hands sliding a 2.5-inch solid-state drive into a laptop drive bay next to an old mechanical drive.",
     body: [
       p(
-        "You are working late at night in a quiet room. The generator has been turned off, the house is still, and under your left wrist you suddenly hear a strange, tiny rhythm: tick... tick... tick... click. On the screen, your document freezes. The mouse pointer turns into a spinning blue circle. Five seconds pass, ten seconds pass, and then suddenly the machine resumes working as if nothing happened. You breathe a sigh of relief. But three days later, the clicking sound returns, louder and more frequent, like an angry little beetle trapped inside the plastic case.",
+        "You are working late in a quiet room. The generator is off, the house is asleep, and under your left wrist you hear a strange tiny rhythm: tick... tick... tick... click. On the screen the document freezes. The pointer becomes a spinning blue circle. Five seconds, ten seconds — then the machine resumes as if nothing happened and your shoulders drop with relief. Three days later the sound returns, louder and closer, like an angry little beetle trapped inside the plastic. If you have heard that beetle, you already know the most urgent warning a computer can give. This lesson is what the sound actually is, what to do within the hour of hearing it — and the small silver drive that gives old machines new wings.",
       ),
       p(
-        "You are listening to the heartbeat of an old mechanical hard drive, and that clicking sound is the most urgent warning a computer can ever give you. Inside that metal box under your palm sits a stack of real, physical shiny glass plates spinning around thousands of times every single minute. Hovering just a hair's breadth above those spinning plates is a microscopic metal needle flying back and forth, reading your letters, your family pictures, and your business records, exactly like an old gramophone needle playing a music record.",
+        "Inside the metal box under your palm sits a stack of real physical glass plates spinning thousands of times every minute. Hovering a hair's breadth above them, a microscopic metal needle flies back and forth reading your letters, your family pictures, your business records — exactly like an old gramophone needle playing a record. Now picture what happens when you bump the table, sling the laptop into a bag while it is still running, or carry it roughly across the parlour. The needle crashes down onto the spinning glass and scratches the surface. When it tries to read a scratched spot and finds nothing, it snaps back to its post with a dry click: tick, tick, click.",
+      ),
+      p(
+        "Here is the contrast that costs people their photographs: 'the machine resumed, so it must be fine.' Look again at the picture of the needle. Every click is that sharp point scratching away more of your irreplaceable files. The clicking drive that still works is not a sick patient resting — it is a patient bleeding slowly while smiling at you. So the golden rule of the workshop is simple and absolute: the very day you hear that sound, STOP. Do not restart the computer five times to 'see if it settles.' Do not hit the laptop with your palm. Do not defragment, do not run repair tools, do not 'just finish the document.' That hour, plug in a USB flash drive and copy your school certificates, passport scans, the pictures of your mother, the shop's books — before the motor gives up entirely.",
+      ),
+      p(
+        "One question while the drive still breathes: the drive clicks and the machine still opens files. Do you run the backup today or this weekend? ... Today. This hour. Everything else is furniture.",
       ),
       fig(
         "/images/blog/ssd-swap-old-laptop.jpg",
         "Hands sliding a 2.5-inch solid-state drive into a laptop drive bay next to an old mechanical drive.",
         "The modern upgrade. The old spinning plate on the right has moving parts that break; the solid-state drive on the left has zero moving parts.",
       ),
-      h2("The needle that scratches and the flash rescue"),
+      h2("You do not have to guess"),
       p(
-        "Now picture what happens when you bump the table, drop your laptop into your backpack while it is still running, or carry it roughly across the parlour. That flying needle crashes down directly onto the spinning glass plate, scratching the surface. When the needle tries to read a scratched spot and finds nothing, it snaps back to its starting post with a dry click: *tick, tick, click.* The golden rule of the workshop is simple and absolute: the very day you hear that clicking sound, STOP. Do not restart the computer five times. Do not hit the laptop with your palm hoping to 'settle it.' Every single click is that sharp needle scratching away more of your irreplaceable files. That very hour, plug in a USB flash drive and copy your school certificates, passport scans, and important papers before the motor gives up.",
+        "There is a free tool that reads the drive's own honest report: CrystalDiskInfo. Open it and look at the circle. Blue and 'Good': the drive is peaceful — you may sleep. Yellow and 'Caution': the plates are already beginning to fail; start the rescue today and buy the cure below. Red and 'Bad': copy what still opens, right now, and do not trust a single new save to that machine. The drive's own body knows its condition before the symptoms arrive — this is the checkup that belongs in your Quiet Tuesday, beside the router's lights and the backups.",
+      ),
+      h2("The solid-state cure"),
+      p(
+        "When the drive finally retires — or before, if you simply want the best upgrade in this entire shelf — do not buy another spinning drive. That is yesterday's technology at today's prices. Buy an SSD, a Solid State Drive. It has zero spinning plates, zero needles, zero motors, and makes zero sound. It keeps your files on quiet flash memory chips, exactly like the memory card inside your phone. Drop it on the floor and nothing scratches. It uses a third of the battery, stays cool, and reads files six times faster.",
       ),
       fig(
         "/images/blog/crystaldiskinfo-drive-health.jpg",
@@ -9525,25 +9567,24 @@ export const blogPosts: BlogPost[] = [
         "The free test that tells the truth. A yellow Caution circle in CrystalDiskInfo means the drive surface is wearing out and files must be moved.",
       ),
       p(
-        "You don't have to guess whether your drive is dying. Download a tiny, free tool called CrystalDiskInfo. Open it. If the circle says 'Good' in blue, your drive is peaceful. If the circle is yellow and says 'Caution', the plate is already beginning to fail. And when it fails, do not go to the market to buy another old mechanical drive! That is yesterday's technology. Buy an SSD (a Solid State Drive).",
-      ),
-      p(
-        "What is an SSD? An SSD has zero spinning plates, zero needles, zero motors, and makes zero sound. It stores your files on quiet flash memory chips, exactly like the memory card inside your smartphone. If you drop it on the floor, nothing scratches. It uses one-third of the battery power, stays completely cool, and reads files six times faster than an old mechanical drive. For twenty-five thousand to thirty-five thousand naira, replacing an old spinning drive with an SSD turns an eight-year-old sluggish laptop into a machine that boots Windows in fifteen seconds flat. It is the single greatest transformation you can give an older computer.",
+        "For roughly twenty-five to thirty-five thousand naira — the price of one modest outing — a technician swaps the old spinning drive for an SSD and an eight-year-old sluggish laptop boots Windows in fifteen seconds flat. The swap itself is honest bench work: the old drive comes out, the new one goes in, Windows installs from the USB lesson's installer, and the files walk home from the rescue copy. Ask for your old drive back in your hand afterwards, the workshop-chapter rule. (Some technicians can even copy the whole old drive straight onto the new one with a small adapter cable — ask for that when the old drive is still healthy.)",
       ),
       fig(
         "/images/blog/external-sata-adapter-cable.jpg",
         "A USB-to-SATA adapter cable connecting a drive to a computer for emergency file rescue.",
         "Rescuing files with a simple USB cord. Pull the old clicking drive out and read it like an external drive before the motor stops turning forever.",
       ),
-      ul([
-        "If you hear clicking, ticking, or grinding under your palm rest, copy your important documents onto a flash drive that very day.",
-        "Never hit, shake, or drop a computer while it is running: the spinning needle will scratch your files off the glass plate.",
-        "Check your drive health with CrystalDiskInfo: a yellow Caution circle means the drive is reaching the end of its life.",
-        "Replacing an old mechanical drive with an SSD is the best money you can spend: boots in 15 seconds and never clicks again.",
-      ]),
-      h2("Retire the spinning plate"),
       p(
-        "Spinning mechanical plates served our parents well, but a computer that travels in your bag across bumpy roads belongs on quiet solid-state storage. Keep your files safe on silent flash memory, and leave the clicking behind. Next: the terrible accident that happens in half a second — tea, water, and the spill on the keyboard.",
+        "And the habits that keep any drive young: never move a running machine — sleep it first, every time, even across the room; give the laptop a bag with actual padding on our terrible roads; leave the vents their air; and keep the two-houses backup from the next chapter so that even an unexpected click is an expense instead of a funeral.",
+      ),
+      ul([
+        "If you hear clicking, ticking, or grinding under your palm rest: copy your important documents onto a flash drive that very hour.",
+        "Never hit, shake, or move a computer while it is running — the needle scratches your files off the glass plate.",
+        "Check drive health with CrystalDiskInfo in your Quiet Tuesday. A yellow Caution circle means begin the rescue.",
+        "Replacing a spinning drive with an SSD is the best money this shelf has ever recommended: boots in fifteen seconds, and never clicks again.",
+      ]),
+      p(
+        "Spinning plates served our parents well, and a machine that travels in your bag across bumpy roads belongs on silent flash memory now. Keep the files on quiet chips and leave the beetle behind. Next: the terrible accident that takes half a second — the tea, the water, and the spill across the keyboard.",
       ),
     ],
   },
@@ -10681,22 +10722,29 @@ export const blogPosts: BlogPost[] = [
       "A hand holding a USB flash drive in front of an open laptop on a wooden desk, ready to reinstall the system.",
     body: [
       p(
-        "The honest reset is the reinstall done in daylight: the customer knows it is coming, the files have already moved to safety, and nobody in the story is praying. It is the right act in exactly four situations — the disk is being replaced, the system is corrupted past the six rooms' reach, the machine is being given to a new owner and must forget the old one, or the patient wants a genuinely clean start after years of accumulated guests. Everything else belongs to the six rooms. Knowing when the reset is honest is half the trade; the other half is doing it in an order that cannot lose anything, and that order is written down before the first file is touched.",
+        "Mrs. Eze had watched two cousins lose everything to 'the computer man who formatted the machine', so when her laptop finally slowed past living with, she brought it in with the specific fear that the files were about to be sentenced. What she got instead was a clipboard. The checklist said: rescue and count, confirm the rescue by opening samples, write the inventory, collect the licences — and only then, the USB. She initialled step three herself. That clipboard is what this lesson is about: the reinstall done in daylight — the honest reset. The customer knows it is coming, the files have already moved to safety, and nobody in the story is praying.",
       ),
       p(
-        "The checklist is the whole craft. One: rescue and count — documents, photographs, videos, music, the mail's attachments, accounting files, browser bookmarks and saved passwords exported to a file, the two-step authentication app's export codes, the software licences and their installers on a separate drive. Two: confirm the rescue by opening samples on another machine — not by trusting the copy dialogue's smile. Three: write the inventory for the customer: what was rescued, where it lives, what will need reinstalling. Four: collect the licences and installers before the wipe — Office, the accounting package, the printer's driver if it is old. Five: only now, the USB. A checklist like this, initialled by the customer at step three, is what a professional's counter looks like from the inside.",
+        "The reset is the right act in exactly four situations, and knowing them is half the trade. The disk is being replaced. The system is corrupted past the six rooms' reach. The machine is being given to a new owner and must forget the old one. Or the patient wants a genuinely clean start after years of accumulated guests. Everything else belongs to the six rooms. One contrast to hold the line: 'the reinstall is the universal fix' is the marketplace's religion. A reset offered before the six rooms have been walked is not a service — it is a confession of impatience wearing a screwdriver.",
+      ),
+      p(
+        "And the other half of the trade is doing it in an order that cannot lose anything — an order written down before the first file is touched. Before we open the checklist, one question: why is 'copy the files' not step one? ... It is step one — but step two is the one everybody skips: confirming the copy by opening samples on another machine. The copy dialogue's smile is not testimony. We will meet that rule again in the backup lesson, where it is iron.",
       ),
       fig(
         "/images/blog/windows-usb-installer-hand.jpg",
         "A hand holding a USB flash drive before an open laptop on a wooden desk, the room warm around them.",
         "Daylight work. The reinstall done honestly has a witness, a checklist, and the customer's own signature at step three.",
       ),
+      h2("The checklist is the whole craft"),
+      p(
+        "One: rescue and count. Documents, photographs, videos, music, the mail's attachments, accounting files, browser bookmarks and saved passwords exported to a file, the two-step authentication app's export codes, the software licences and their installers on a separate drive. Two: confirm the rescue by opening samples on another machine. Three: write the inventory for the customer — what was rescued, where it lives, what will need reinstalling — and have them initial it. Four: collect the licences and installers before the wipe: Office, the accounting package, the old printer's driver. Five: only now, the USB. A checklist like this, initialled at step three, is what a professional's counter looks like from the inside.",
+      ),
       h2("The installation hour itself"),
       p(
-        "The mechanics are dull by design. The USB installer — made on any working machine with Microsoft's own media tool and an eight-gigabyte drive — boots the machine into a calm blue sequence that asks two questions with real consequences: which disk, and which flavour. Choose the correct disk slowly; the wrong choice is the one unrecoverable act in this entire chapter. Delete the old partitions if the disk is being truly renewed, let Windows create its own, and step away while files copy. When the desktop first appears without internet yet — plug in the cable or enter the Wi-Fi key — the machine is at its most honest: nothing but its own cloth. Resist the carnival. Connect the internet when you choose to, not when the desktop wheedles.",
+        "The mechanics are dull by design. The USB installer — made on any working machine with Microsoft's own media tool and an eight-gigabyte drive — boots the machine into a calm blue sequence that asks two questions with real consequences: which disk, and which flavour. Choose the correct disk slowly; the wrong choice is the one unrecoverable act in this entire chapter. Delete the old partitions if the disk is truly being renewed, let Windows create its own, and step away while the files copy. When the desktop first appears — no internet yet — the machine is at its most honest: nothing but its own cloth. Resist the carnival of pop-ups. Connect the internet when you choose to, not when the desktop wheedles.",
       ),
       p(
-        "Then the quiet discipline of the first hour: updates first and fully, before any other guest arrives — run the update, restart, repeat until the update says there are no more, because a half-updated machine with fresh programmes is a house with new furniture and no locks. Then the drivers that Windows did not find, from the maker's own site — the graphics, the audio, the strange little card reader. Then the programmes from their real streets, in the same order as the install lesson taught: the real PDF reader, the office suite from its licence, the browser, and nothing with a toolbar. Then the security that comes with the cloth rather than three arguing strangers. Then, and only then, the files walk home.",
+        "Then the quiet discipline of the first hour, in order. Updates first and fully — run, restart, repeat until the updater says there are no more — because a half-updated machine with fresh programmes is a house with new furniture and no locks. Then the drivers Windows did not find, from the maker's own site: the graphics, the audio, the strange little card reader. Then the programmes from their real streets, as the install lesson taught: the real PDF reader, the office suite from its licence, the browser — and nothing with a toolbar. Then the security that comes with the cloth rather than three arguing strangers. Then, and only then, the files walk home.",
       ),
       fig(
         "/images/blog/external-drive-copying-laptop.jpg",
@@ -10705,16 +10753,16 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("Walking the files home, and the last five minutes"),
       p(
-        "Walk the rescued folders home by the inventory — Documents into Documents, Pictures into Pictures, the accounting files into their own folder with the same names they wore in the old life — and open a sample of each as it lands. This is the emotional hour for the customer, who watches their decade returning room by room, and it is where your earlier counting pays in trust. If the rescue sits in the cloud rather than on a drive, the walk is the download — same order, same sampling, same inventory ticking. Nothing is restored blindly. Every room is opened and looked at before the boxes are unpacked.",
+        "Walk the rescued folders home by the inventory — Documents into Documents, Pictures into Pictures, the accounting files into their own folder with the names they wore in the old life — and open a sample of each as it lands. This is the emotional hour for the customer, who watches their decade returning room by room, and it is where your earlier counting pays out in trust. If the rescue sits in the cloud, the walk is the download: same order, same sampling, same inventory ticking. Nothing is restored blindly. Every room is opened and looked at before the boxes are unpacked.",
       ),
       p(
-        "The last five minutes are the handover, and the honest reset earns its name here. Show the customer the clean desktop, the files home in their folders, the inventory completed and ticked, and the one thing they must do themselves — sign in to the mail, sign in to the bank app, set the two-step again with the codes you exported. Then the sentence that separates you from the marketplace: everything you own is back, everything you were lent is gone, and here is the list of what was removed and what was installed. A reset is not a disappearance. It is a move to a clean house with every item counted in — and the customer who has watched the count does not need to trust you. They watched. That is the whole trick of honest work: arrange the daylight, and nobody has to trust anybody.",
+        "The last five minutes are the handover, and the honest reset earns its name here. Show the customer the clean desktop, the files home in their folders, the inventory completed and ticked — and the one thing they must do themselves: sign in to the mail, sign in to the bank app, set the two-step again with the codes exported at the start. Then the sentence that separates you from the marketplace: 'everything you own is back, everything you were lent is gone, and here is the list of what was removed and what was installed.' A reset is not a disappearance. It is a move to a clean house with every item counted in — and the customer who watched the count does not need to trust you. They watched.",
       ),
       ul([
-        "Four honest reasons for the reset: new disk, corruption past repair, ownership change, or a chosen clean start — nothing else.",
-        "Initialled checklist before the USB: rescue, confirm by opening samples, inventory, licences, then wipe.",
-        "Updates fully first, drivers second, real-street programmes third, files home last — the order is the craft.",
-        "Hand over with the completed inventory and make the customer sign in to mail and bank with their own hands.",
+        "Four honest reasons for the reset: new disk, corruption past repair, ownership change, or a chosen clean start. Nothing else.",
+        "Initialled checklist before the USB: rescue, confirm by opening samples, inventory, licences — then wipe.",
+        "Updates fully first, drivers second, real-street programmes third, files home last. The order is the craft.",
+        "Hand over with the completed inventory, and make the customer sign in to mail and bank with their own hands.",
       ]),
       p(
         "The machine is clean, the files are home, and the daylight did its work. But notice how much of the honest reset was really the rescue in disguise — the copying, counting, and confirming that happened before anything was destroyed. That rescue deserves a lesson of its own, because it is the service every family in this country needs and almost nobody performs before the disaster. Next: backing up somebody else's machine without losing their life.",
@@ -10735,10 +10783,10 @@ export const blogPosts: BlogPost[] = [
       "A young woman copying files at a desktop computer while an older woman watches beside her at a warm home table.",
     body: [
       p(
-        "When somebody hands you their machine to back up, they are handing you their decade with a stranger's faith, and the weight of that should change how you stand. You are not copying files; you are carrying somebody's photographs through a river. The trade has one iron law that no urgency ever bends: nothing gets deleted, reset, repaired, or improved until the rescue is copied, counted, and confirmed open somewhere else. Every horror story in this country about the technician who lost the pictures is the same story — somebody cleaned something before confirming something — and the law against it is obeyed in one way: sequence.",
+        "When Papa Emeka handed Uche his old desktop 'to back up', he handed over thirteen years with a stranger's faith — the shop's books, the children's certificates, and a folder of voice notes from a brother who died in 2022. Uche felt the weight of it change how he stood at the bench. He is not a sentimental man, but he made a rule for that machine before he touched it, and the rule is the whole lesson: nothing gets deleted, reset, repaired, or improved until the rescue is copied, counted, and confirmed open somewhere else. Every horror story in this country about the technician who lost the pictures is the same story — somebody cleaned something before confirming something. The law against it is obeyed in one way: sequence.",
       ),
       p(
-        "Begin with the map, which is a conversation and a walk through the folders together. Sit with the owner at the machine and ask what must not die: the children's photographs, the shop's Excel books, the documents folder, the certificates scanned in, WhatsApp's sent files, the music and the late father's voice notes, the desktop's pile of unknown-but-precious things. Walk each location and mark it in the notebook as you go. The owner points; you write. Ten minutes of this and you hold a list of their priorities in their own order — which matters, because when the disk is nearly dead and the copying must choose, their order decides yours.",
+        "Begin with the map, which is a conversation, not a scan. Sit with the owner at the machine and ask one question: what must not die? The children's photographs. The shop's Excel books. The documents folder. The certificates scanned in. WhatsApp's sent files. The music and the late brother's voice notes. The desktop's pile of unknown-but-precious things. Walk each location together and mark it in the notebook as you go — the owner points, you write. Ten minutes of this and you hold their priorities in their own order, which matters more than it sounds: when the disk is nearly dead and the copying must choose, their order decides yours.",
       ),
       fig(
         "/images/blog/copying-photos-for-family.jpg",
@@ -10747,31 +10795,35 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("What to copy, and the count that matters"),
       p(
-        "The standard cargo list is short and deep. Documents in all their folders. Pictures and Videos in their whole folders — the gallery is the family's archive and it is copied entire, not browsed. The Desktop pile. Downloads, because that is where the certificates actually live. Mail exported to a file if they use a desktop programme. Browser bookmarks and saved passwords exported. The WhatsApp folder on the phone side, if the phone is in the job. Accounting and work folders wherever they hide. And the small things people remember at the door — the music player's library, the voice recorder's memos, the strange folder with no name that turns out to hold the wedding. When in doubt, copy it; disk space at your counter is cheap and their trust is not.",
+        "The standard cargo list is short and deep. Documents in all their folders. Pictures and Videos in their whole folders — the gallery is the family's archive and it is copied entire, not browsed. The Desktop pile. Downloads, because that is where the certificates actually live. Mail exported to a file if they use a desktop programme. Browser bookmarks and saved passwords exported. The WhatsApp folder on the phone side, if the phone is in the job. The accounting and work folders wherever they hide. And the small things people remember at the door — the music library, the voice recorder's memos, the strange folder with no name that turns out to hold the wedding. When in doubt, copy it. Disk space at your counter is cheap; their trust is not.",
       ),
       p(
-        "Then the count, which is the professional's signature. The copy dialogue will report a number of files and gigabytes at the end — write both into the notebook with the date. Open the destination and let the folder sizes speak: the pictures folder claims 68 gigabytes at home and shows 68 gigabytes at the destination. Sample the contents like a market woman testing the yams: open three photographs at random from different years, one PDF from the documents, one spreadsheet with its formulas intact. A backup that has never been opened is a rumour. A backup that has been sampled and counted is testimony, and you may now speak of it to the owner with your whole chest: your life is safe in this box.",
+        "Then the count, which is the professional's signature. The copy dialogue reports files and gigabytes at the end — write both into the notebook with the date. Open the destination and let the folder sizes speak: the pictures folder claims sixty-eight gigabytes at home and shows sixty-eight gigabytes across. Then sample the contents like a market woman testing the yams: three photographs at random from different years, one PDF from the documents, one spreadsheet with its formulas intact. Ask the retrieval question before we continue: last night's copy finished at two hundred thousand files, and you have opened none of them. Is that a backup yet? ... No. A backup that has never been opened is a rumour. A backup that has been sampled and counted is testimony — and you may now say to the owner with your whole chest: your life is safe in this box.",
       ),
       fig(
         "/images/blog/labelled-external-drive-desk.jpg",
         "Two external hard drives and a flash drive on a wooden desk with a small handwritten label card.",
         "The count is the professional's signature: files and gigabytes written in the notebook, then sampled like yams at the market.",
       ),
-      h2("Where the copy should live, and the rule about two houses"),
+      h2("The rule of two houses"),
       p(
-        "One copy is not a backup; it is a second fragile thing. The rule of two houses says the rescued life should rest in two places that cannot die together — the external drive at the owner's home and the cloud account that belongs to them, or the drive at your counter and the copy that goes home with them, or the family laptop and the drive in the drawer. Any two houses will do; one house will not, because fire, theft, and the falling from the table all visit single houses with perfect reliability. Make the second copy the owner's own act if they can manage it — dragging the folder to their Drive is a skill worth teaching in the same sitting — because the backup that depends on your counter forever is not their backup, it is your hostage.",
+        "One copy is not a backup; it is a second fragile thing. The rule of two houses says the rescued life should rest in two places that cannot die together — the external drive at the owner's home and the cloud account that belongs to them; or the drive at your counter and the copy that goes home with them; or the family laptop and the drive in the drawer. Any two houses will do. One house will not, because fire, theft, and the falling-from-the-table all visit single houses with perfect reliability.",
       ),
       p(
-        "And the iron law's last paragraph, which is really the first: when the job later becomes a repair, an upgrade, or the honest reset, the wiping begins only after this backup is confirmed a second time — fresh, not last month's, sampled again at the door. Sign the confirmation in the notebook with the owner's initials beside yours. Then the dangerous work may proceed at peace, with the family's decade standing in two safe houses and a counted testimony in the book. That is the whole trade in one image: a person carrying somebody else's photographs through a river, slowly, in daylight, with the owner watching from the bank. Everything else in this chapter is footnotes to that walk.",
+        "Make the second copy the owner's own act if they can manage it — dragging the folder into their Drive is a skill worth teaching in the same sitting — because here is the contrast that separates service from custody: 'I keep the only backup safe at my shop for them' feels like care. It is a hostage situation with good intentions. The backup that depends on your counter forever is not their backup. Teach them to hold one key of their own life.",
+      ),
+      h2("The iron law's last paragraph"),
+      p(
+        "Which is really the first: when the job later becomes a repair, an upgrade, or the honest reset, the wiping begins only after this backup is confirmed a second time — fresh, not last month's, sampled again at the door. Sign the confirmation in the notebook with the owner's initials beside yours. Then the dangerous work may proceed at peace. That is the entire trade in one line: the daylight arrangement. Counted at intake, confirmed at the door, signed by two hands.",
       ),
       ul([
-        "Walk the map with the owner pointing and you writing; their priority order becomes your rescue order.",
-        "Copy the standard cargo entire — galleries, desktop piles, documents, mail exports — and never browse a gallery down.",
-        "Count and sample: files and gigabytes in the notebook, three photographs, one PDF, one spreadsheet opened at the destination.",
-        "Two houses for every rescue, and the wipe begins only after a fresh confirmed copy — initialled by you both.",
+        "Sit with the owner and walk the folders — their pointing order becomes your priority order when the disk is dying.",
+        "Copy entire galleries, the Desktop pile, the Downloads where certificates live, and the unnamed folder at the door.",
+        "Count and sample: files and gigabytes written down, three photos, one PDF, one spreadsheet opened. A copy never opened is a rumour.",
+        "Two houses for every rescued life — and the iron law: no wipe until a fresh, sampled, signed backup stands behind the work.",
       ]),
       p(
-        "The river is crossed and the photographs are safe in two houses. But the phone is already ringing again at the counter, and this time it is not a disaster — it is a brand-new machine and somebody's mother who needs it set up before Sunday. The next lesson is the gentle art of the out-of-box hour: turning a stranger's factory settings into one person's own tool, and teaching the handover in a single sitting.",
+        "You are not copying files; you are carrying somebody's photographs through a river. Carry them high, count them twice, and let the owner watch you do it. Next: the rescue's elder cousin — the reinstall done properly in daylight, for the four times it is genuinely the right act.",
       ),
     ],
   },
@@ -11030,43 +11082,46 @@ export const blogPosts: BlogPost[] = [
       "A ruled logbook with handwritten rows and a mobile phone beside it on a wooden desk.",
     body: [
       p(
-        "Somewhere between lesson twenty-five and this one, the helping hand quietly became a trade. People call you now. They say your name at their shop as the person who fixes things. And the question your family has been asking politely — can one eat from this? — deserves an honest answer in naira, not a motivational speech. Yes, one can eat from this, at three tables. The first table is per-job work: the setup, the repair, the rescue, priced as the job card teaches. The second is the monthly table: a small shop, a school office, a clinic paying a modest sum per month for your Tuesday walk and your phone on call. The third is the slow table: the salary job — IT support officer, help desk, field technician — where somebody else finds the customers and you bring the hands and the patience you now own.",
+        "By November, Segun's phone rang every Saturday morning. A neighbour's mail would not open. A cousin's printer had 'done a thing'. The woman at the end of the street needed the laptop prepared for her daughter's JAMB registration. He had been the family help desk since lesson ninety, and everyone paid him the way this country pays its helpers: with blessings, referrals, and the phrase 'God will bless you'. God is generous, but Segun's rent was due on the twenty-fifth. This lesson is the sentence the helping chapter has been walking toward all along: how the helping hand becomes honest bread — priced without stealing, steadied by a small book, and fenced so the work does not swallow every evening of your life.",
       ),
       p(
-        "Price the per-job work from the board at the counter and do not apologise for it. The setup morning at a family's house is worth five to fifteen thousand naira on most streets in this country — more in the cities, less in the villages, and the local number is found by asking three older tradesmen what they charge and then sitting honestly between greed and hunger. The diagnosis fee, the rescue fee, the travel fee for across town: each is named before the work. What you do not charge for is what built the name — the five minutes of looking, the question answered over the phone, the neighbour's quick errand. Generosity on purpose, priced everywhere else. That is the whole pricing philosophy and it fits on the board.",
+        "Start with the misconception that keeps good technicians poor: 'charging family and friends for help is wrong.' Sit with the opposite for a moment — because unnamed free work is the thing that actually poisons relationships. The favour nobody priced becomes the debt everybody resents: you resent the Saturdays, they resent the Saturday you finally said no. Priced in daylight, the same work becomes a service with a name. Segun's aunt did not stop loving him when he started printing receipts. She stopped feeling guilty about calling.",
+      ),
+      p(
+        "So name the numbers before the calls do. Write a small menu — the thing every counter in the market already has. A look at the machine: one thousand. A fix at the counter: two to five thousand, quoted before it begins. A visit inside town: a named figure plus transport. A new-computer setup: the morning's whole price from the setup lesson, said with the unboxing. Print it or write it large. Say it before the work, at the gate, the way the job card lesson said it. Quick check at your own gate: a neighbour asks 'how much?' about a two-hour job and you say 'anything you want is fine'. Who did that sentence serve? ... Nobody. It made the neighbour poorer by an obligation and you poorer by an afternoon.",
       ),
       fig(
         "/images/blog/support-logbook-and-phone.jpg",
         "A ruled logbook with handwritten rows and a mobile phone beside it on a wooden desk in warm light.",
         "The book steadies the year. Every job dated, priced, and named turns a month of favours into a living with a shape.",
       ),
-      h2("The retainer, and the Tuesday you already know"),
+      h2("The small book that makes the year predictable"),
       p(
-        "The monthly table is built from a tool you built in the network chapter: the quiet Tuesday. Offer a small shop the walk you designed for them anyway — ten minutes weekly, the recorder checked, the POS tested, the backups confirmed, the router's lights photographed — for a monthly figure that is cheaper than one crisis. Five thousand a month per shop, three shops, and the month has a floor under it before a single repair arrives. The contract is one page and simple: what you check, what you fix within the week, what is extra, and the response time for emergencies. A retainer is not a salary and not a friendship; it is a scheduled kindness with a standing price, and it is the steadiest table in this trade.",
+        "Every honest trade in this country keeps its book, and support work is no different. One notebook — or one sheet in a spreadsheet if you are that person — carrying for each job: the date, the name, the machine, the complaint, what was done, what was charged, and what was promised after. The support logbook is three products in one binding. It is the warranty record, when somebody says in March that your January fix 'spoiled again'. It is the year's map, when you want to know who your real clients are and which service earns the bread. And it is the memory that lets you say the professional sentence at the door: 'let me check the book — yes, I replaced that drive in April, and it carries a three-month promise.'",
       ),
       p(
-        "Response times are the product you are actually selling at every table, so define them and keep them. The phone is answered within the hour during working hours. The remote look happens same day. The visit happens within two working days, or the customer is told a date and the date is kept. Nothing in this list is technically hard. Its rarity is what makes it valuable — the trade is full of gifted hands and empty of people who arrive when they promised. Over-deliver quietly on the time and never on the scope: the job that grows beyond the card is re-quoted before it grows further, in the same daylight as the first price. Unpriced kindness has a way of arriving on Friday as a complaint.",
+        "Now the retainer, which is the part Segun's family invented before he did. Three households had quietly started paying him a small monthly amount 'so you will pick up when we call'. That instinct is a real product: the support month. Name its terms the way the pricing lesson would — a fixed monthly figure, a response window (same day, next day), what is included (the small fixes, the questions, the seasonal cleaning) and what is not (parts, big rebuilds, the honest reset). Write the terms on one page, copy for both sides. Two families on a retainer is a phone bill. Five is a living. Ten is a job with your name on it — and notice what you just built: the recurring income that every market trader in your family already understands.",
       ),
       fig(
         "/images/blog/asking-help.jpg",
         "A helper and a computer owner sitting side by side at a table, one pointing patiently at the screen.",
         "The lesson-25 handshake, reversed. Across the table sits the person who once asked for help without a password — and today the helping hand is fed by the same patience.",
       ),
-      h2("The book, the name, and the slow table"),
+      h2("The fence around the bread"),
       p(
-        "Steading it all is the logbook: every job dated, the machine named, the five answers summarized, the work done, the price charged, the promise made. Five minutes of writing at the close of each job, and the book becomes your accounts, your warranty record, your marketing survey, and your defence in every dispute the counter will ever see. At the end of the month the book answers the family's question without emotion: this month's jobs, this month's shillings, the customers who came twice, the streets where the name travels. The tradesman without a book cannot tell a good season from a loud one. The book tells you in one page.",
+        "Bread without a fence gets eaten whole. Draw the hours on the same board as the shop — Segun keeps nine to six, with Saturday morning as the only walk-in window. Outside them, the phone answers politely and books the next day; real emergencies get the emergency lesson's price and his choice, not their demand. One contrast to keep the fence standing: 'the good technician answers everything, at every hour' sounds like service. It is an uninsured business wearing generosity's shirt. The uninsured hour is the one where a wrong click at midnight costs somebody's photographs and your whole name.",
       ),
       p(
-        "And the slow table deserves its honest word, because the trade can also feed you under somebody else's roof. The help-desk role at a company, the IT support seat at a bank's branch, the technician's post at a school — these pay a monthly salary for exactly the skills in this chapter: the listening, the five questions, the six rooms, the clean exit, the patience. When you sit for that interview, the portfolio is not a certificate alone; it is the logbook's shape told as stories — the family whose photographs survived, the shop with three quiet Tuesdays a month, the machine that was referred honestly and came back to you with its sister. Employers recognise the trade in a person the way customers do: by the daylight around the work. Price your work without theft, keep the book, honour the promise of time, and this quiet trade will feed a household for as long as machines are bought by people who cannot yet use them. That is every season of the world so far.",
+        "And the last piece of the fence: price without stealing — do not undercut the whole street to win one job (the repairer two streets over has children too), and do not overcharge the grandmother because her fear showed. Your price is the middle of the market with your honesty added, which is the only premium this trade keeps. When in doubt, ask the book: what did I charge for this last month? The book keeps the prices honest the way the job card keeps the favours honest.",
       ),
       ul([
-        "Three tables: per-job work priced at the board, monthly retainers built on the Tuesday walk, and the salary seat when you want a roof.",
-        "Sit between greed and hunger when pricing — ask three older tradesmen, then place yourself honestly among them.",
-        "Sell response time and keep it: answer within the hour, look same day, visit within two days — and never grow scope unpriced.",
-        "Five minutes of logbook at every job's close: the book is your accounts, your warranty, and your testimonial in one page.",
+        "Write the menu before the next call: the look, the counter fix, the visit, the setup. Say it at the gate, before the work.",
+        "Keep the small book: date, name, machine, complaint, work, charge, promise. It is the warranty, the map, and the memory.",
+        "Offer the support month to your steadiest households: fixed figure, response window, written inclusions. Two is a phone bill; ten is a job.",
+        "Fence the hours on the board. The good technician does not answer everything — he answers within his word, and prices the rest.",
       ]),
       p(
-        "The helping hand is fed now, and the chair of this chapter is empty at last. But across the country another machine has arrived at everybody's table at once — a machine that writes, answers, and explains in sentences. The final chapter of the series is about that strange new colleague: what it is, how to speak to it, what to check behind its back, and how a person keeps their judgment in a room full of very confident software.",
+        "The helping hand now has a menu, a book, a fence, and two households on a monthly arrangement. Notice that nothing in it is a trick — every piece is what the tailor, the mechanic, and the electrician at the junction already do, applied to the machine on the table. Next lesson opens the workshop's last door: the sentence that protects all of this from its own limits — when the job is genuinely beyond you.",
       ),
     ],
   },
@@ -11361,10 +11416,10 @@ export const blogPosts: BlogPost[] = [
       "A person comparing a photograph on a phone with a printed photograph held in hand at a wooden table.",
     body: [
       p(
-        "The cloned voice lesson was a warning about the ear. This one is about the eyes, because the forgery shop has learned to draw. Faces can now be swapped in video, voices cloned from a breath of footage, and whole performances generated of people who were never in the room — a bank's managing director announcing a giveaway, a politician confessing, a daughter crying for a rescue. The machinery improves monthly and the lesson cannot be a list of today's flaws, because today's flaws are patched while you read. The lesson must be the standing posture instead: for anything that arrives unsolicited and moves you strongly — fear, pity, greed, pride — the doubt comes before the feeling acts. The feeling is the delivery mechanism. The doubt is the vaccine.",
+        "Last December, a video of a politician confessing to election fraud moved through the family groups at the speed of outrage. It was watched two million times before anyone noticed his blink was wrong every fourth second and the collar melted into his neck when he turned. The confession was written by a bored student for a class project. By the time the correction put its shoes on, the lie had eaten three meals. Meanwhile, in the same month, a woman in Port Harcourt received a call from her daughter's voice — her exact laugh, the same pet name for the children — pleading for forty thousand naira at a hospital in Abuja. The daughter was at her shop in Port Harcourt, selling provisions, holding her own phone. This lesson is the forgery shop that is now open all night: what the machine can fake in 2026, the sixty-second settlement that keeps your family whole, and the fear at its proper size.",
       ),
       p(
-        "Still, the forgeries of this season have their tells, and knowing them raises the cost of fooling you. Video fakes stumble at the edges of motion: earrings and glasses that shimmer between frames, hair that melts against the background, teeth too even in the low light where phones grain, a blink that never comes or comes at the wrong beat, and the mouth's small words arriving a fraction behind the voice. Audio fakes are smoothest in clean quiet — a dramatic call in perfect studio calm, from a person whose real calls arrive with generators and traffic in the background. And generation is weakest at specificity: ask the crying daughter in the call what she called you on your last birthday and the performance collapses into static or into anger at your questions. Anger at verification is itself the oldest tell of the confidence trade.",
+        "Take stock first, because the catalogue moves monthly. Photographs can be generated from a sentence — nobody in the picture ever lived. Voices can be cloned from a few seconds of any voice note you have ever sent, which is why the family group's audio blessings are now raw material. Video shows people saying what they never said. Text arrives in your inbox as a lawyer's letter, a bank's alert, a child's plea, every word fluent. The old rule 'seeing is believing' was true right up until last year. Hold that sentence in the light for a second — because the forger's deepest product is not the fake. It is your exhaustion: a world where nothing can be believed at all, and the truth drowns with the lies.",
       ),
       fig(
         "/images/blog/comparing-photos-phone-and-print.jpg",
@@ -11373,27 +11428,31 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("The sixty-second settlement"),
       p(
-        "Every performance of this kind collapses under one ordinary act: the second channel. The call comes on WhatsApp — hang up and call back on the number in your book, the one saved before the emergency. The daughter's voice pleads with a new number — call her husband's line, or the neighbour's house, or walk the two streets. The video shows your brother at a hospital in Abuja — ask the family word from the voice lesson, and ask for the name of the dog at the compound in 2011, the question that performances cannot answer because they are not your family's history. Sixty seconds of second channel, applied without exception, is worth more than every detector app ever shipped. The scam's whole business is the first sixty seconds of your feeling. Spend them on a phone call instead of a transfer and the business dies on schedule.",
+        "Now the defence, and it fits in one minute. The scam's whole business is the first sixty seconds of your feeling — fear, pity, greed, pride are the delivery trucks, not the message. So spend those sixty seconds on a second channel instead of a transfer. The daughter's voice pleads with a new number: hang up and call her husband's line, or the neighbour's house, or walk the two streets. The video shows your brother at a hospital in Abuja: ask the family word from the voice lesson — and ask for the name of the dog at the compound in 2011. The question that performances cannot answer is the one that was never in the training data, because it was never in public. It is your family's private history, and the forgery shop has never once been able to answer what the dog was called.",
       ),
       p(
-        "Then the duty that travels with every inbox: before you forward, you verify — the forwarded-message lesson, unchanged and newly urgent. A video of a politician, a crying child, a collapsed building, an old woman accused of witchcraft: these move through the family group at the speed of feeling and do their damage — reputations burned, mobs gathered, donations opened for emergencies that did not happen — before any correction arrives walking. The correction never travels as far as the lie. So the pause at the forward button is a small civic act, and the sentence it earns — I am still checking this — is the most responsible thing any of us posts all week. Photos can be searched by their own image now, and the search will often show you the same picture wearing last year's emergency.",
+        "Before we continue, one retrieval question, because this is the whole skill: your 'uncle' calls from a strange number with his voice, the story urgent, the account number different. What are the first sixty seconds for? ... A second channel. Call the number in your book — not the number that called you. Sixty seconds of second channel, applied without exception, beats every detector app ever shipped.",
       ),
       fig(
         "/images/blog/older-man-listening-phone-call.jpg",
         "An older man holding a phone to his ear with a cautious expression, sitting in a doorway in evening light.",
         "The second channel beats every detector: hang up and call back on the number in your book. Anger at verification is the oldest tell in the confidence trade.",
       ),
+      h2("The duty at the forward button"),
+      p(
+        "Then the duty that travels with every inbox: before you forward, you verify. A video of a politician, a crying child, a collapsed building, an old woman accused of witchcraft — these move through the family group at the speed of feeling and do their damage before any correction arrives walking: reputations burned, mobs gathered, donations opened for emergencies that did not happen. And notice the arithmetic of corrections — the correction never travels as far as the lie. So the pause at the forward button is a small civic act, and the sentence it earns, 'I am still checking this', is the most responsible thing any of us posts all week. Photos can be searched by their own image now too, and the search will often show you the same picture wearing last year's emergency.",
+      ),
       h2("Teaching the household, again"),
       p(
-        "The practical work of this lesson is not on your machine. It is at your table, with the people most targeted — the parents whose generation believes that seeing is believing, which was true right up until last year. Sit with them and show, gently, one example: a famous face saying something false, generated for a thousand naira by a bored student. The demonstration does more than a hundred warnings. Then rehearse the family word until it is reflex, agree that no money moves on a first message in any circumstances, and give the household the one sentence that solves most of it: hang up and call back. The elderly who have practiced this once at the table with you will practice it at midnight when it counts.",
+        "The practical work of this lesson is not on your machine. It is at your table, with the people most targeted — the parents whose generation believes that seeing is believing. Sit with them and show, gently, one example: a famous face saying something false, generated for a thousand naira by a bored student. The demonstration does more than a hundred warnings. Then rehearse the family word until it is reflex, agree that no money moves on a first message in any circumstances, and give the household the one sentence that solves most of it: hang up and call back. The elderly who have practised this once at the table with you will practise it at midnight when it counts.",
       ),
       p(
-        "Finally, hold the fear at its proper size, because the forgers would love you to stop believing your own eyes entirely — a world where no video counts is their victory too. Most of what you see is still true. The camera at the shop, the call with your daughter's real laugh in it, the photograph of the rent receipt — these remain the fabric of ordinary trust and they should stay so. The habit is not to disbelieve everything. It is to spend sixty seconds of second channel on the things that move you strongly and ask for money or for a mob. That is the whole posture and it is small enough to live. Doubt the dramatic. Verify at the fountain. Call back on your own phone. The forgery shop is open all night, and it has never once been able to answer what the dog was called.",
+        "Finally, hold the fear at its proper size — because the forgers would love you to stop believing your own eyes entirely, and a world where no video counts is their victory too. Most of what you see is still true. The camera at the shop, the call with your daughter's real laugh in it, the photograph of the rent receipt — these remain the fabric of ordinary trust and should stay so. The habit is not to disbelieve everything. It is to spend sixty seconds of second channel on the things that move you strongly and ask for money or for a mob. Doubt the dramatic. Verify at the fountain. Call back on your own phone. The forgery shop is open all night, and it has never once been able to answer what the dog was called.",
       ),
       ul([
         "Doubt before the feeling acts: fear, pity, greed, and pride are the delivery mechanisms, not the message.",
         "The sixty-second settlement — hang up and call the number in your book — beats every detector app ever shipped.",
-        "Verify before forwarding; the correction never travels as far as the lie, and the pause is a civic act.",
+        "Verify before forwarding. The correction never travels as far as the lie, and the pause is a civic act.",
         "Teach the table, not just yourself: one demonstration for the parents, the family word rehearsed until it is reflex.",
       ]),
       p(
@@ -11523,10 +11582,13 @@ export const blogPosts: BlogPost[] = [
       "A middle-aged office worker taking an evening class at a wooden desk with a laptop and notebook, calm and determined.",
     body: [
       p(
-        "Let us take the fear seriously, because it deserves better than comfort. The machines have already eaten certain work entirely and will eat more. Transcription — typing what is spoken — collapsed as a trade in three years. Basic translation, first-draft copywriting, simple graphics, entry-level coding of routine pages: these did not disappear, but the rungs of their ladders have thinned, and the young person who once entered a career through the bottom rung now finds it missing. Saying otherwise would betray the honesty of everything else in this series. The change is real, it is uneven, and it falls hardest on exactly the routine work that beginners used to do. Grieve the ladder. Then look at what the change left standing, because the standing things are numerous, and they are where the next decade's bread is.",
+        "Bode asked the question at the back of the training room, the way somebody asks about a diagnosis they are afraid to hear: 'If the machine writes, draws, answers, and performs — what remains for the hands?' The room went quiet, because everyone had been carrying the same question in a different pocket. This lesson will not comfort him with fables. The machines have already eaten certain work entirely and will eat more — transcription, typing what is spoken, collapsed as a trade in three years. Basic translation, first-draft copywriting, simple graphics, routine entry-level coding: these did not disappear, but the rungs of their ladders have thinned, and the young person who once entered a career through the bottom rung now finds it missing. The change is real, it is uneven, and it falls hardest on exactly the routine work beginners used to do. Grieve the ladder honestly. Then look at what the change left standing — because the standing things are numerous, and they are where the next decade's bread is.",
       ),
       p(
-        "What stays is easier to see from your own counter than from any headline. The machine cannot visit the compound and sit with the mother at her screen — the quiet hour stays human, and this country will need millions of them. The machine cannot stand behind a repair and return the replaced parts in hand — the accountable technician stays, because accountability is a body with a name. The machine cannot decide that the honest reset beats the quick format and stake its reputation on the choice — judgment stays, at every desk, priced higher every year. The machine cannot teach a room and notice which child is hungry — care stays. And the machine cannot check the machine at scale: the world is filling with generated text, generated evidence, generated fraud, and every litre of it creates paid work for the person who can verify at the fountain. The checking economy is hiring.",
+        "One contrast to frame the map: 'the machines will eat the work' is half a sentence. They ate the routine and left the standing-behind-it. Watch from your own counter rather than from any headline. The machine cannot visit the compound and sit with the mother at her screen — the quiet hour stays human, and this country will need millions of them. The machine cannot stand behind a repair and return the replaced parts in hand — the accountable technician stays, because accountability is a body with a name. The machine cannot decide that the honest reset beats the quick format and stake its reputation on the choice — judgment stays, at every desk, priced higher every year. The machine cannot teach a room and notice which child is hungry — care stays. And the machine cannot check the machine at scale: the world is filling with generated text, generated evidence, generated fraud, and every litre of it creates paid work for the person who can verify at the fountain. The checking economy is hiring.",
+      ),
+      p(
+        "Before the standing map continues, sit with Bode's question yourself for one moment: what do your hands do that a customer would never accept from a screen? ... Write that answer down tonight. It is your decade's address.",
       ),
       fig(
         "/images/blog/worker-upgrading-skills-notebook.jpg",
@@ -11535,10 +11597,10 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("Where to stand in the decade ahead"),
       p(
-        "The standing positions share one shape and the shape is teachable. Stand where the machine's output meets the human consequence: the technician at the device, the support person at the desk, the analyst who signs the recommendation, the teacher at the class, the operator who watches the automated process and owns its failures. Learn the machine thoroughly — deeper than the people who fear it — and bring the part it lacks: the hands, the face, the name, the stake. The upgrade-habit lesson from the tall-building chapter said it first as a private discipline: one skill a year, honestly added to the CV. This decade raises the pace of the honest addition and lowers the price of pretending.",
+        "The standing positions share one shape, and the shape is teachable. Stand where the machine's output meets the human consequence: the technician at the device, the support person at the desk, the analyst who signs the recommendation, the teacher at the class, the operator who watches the automated process and owns its failures. Learn the machine thoroughly — deeper than the people who fear it — and bring the part it lacks: the hands, the face, the name, the stake. The upgrade habit from the working chapter said it first as a private discipline: one skill a year, honestly added to the CV. This decade raises the pace of the honest addition and lowers the price of pretending.",
       ),
       p(
-        "For the young person at the table the advice is concrete enough to act on this month. Take one of the standing trades and apprentice to it properly — the repairs bench, the networks and their shops, the support chair, the data's careful end, the teaching of all of it — and bring the assistant along as your tireless intern: it drafts your quotes, explains your errors, quizzes you for your certifications, translates your documentation. Learn the trade the old way in the hands and the new way in the tooling. The two together are the profile the decade rewards: someone who can do the work when the systems fail, and can make the systems work while they hold. That person is rare already, and everything in these two hundred and nine lessons has been building toward their hands.",
+        "For the young person at the table, the advice is concrete enough to act on this month. Take one of the standing trades and apprentice to it properly — the repairs bench, the networks and their shops, the support chair, the data's careful end, the teaching of all of it — and bring the assistant along as your tireless intern. It drafts your quotes, explains your errors, quizzes you for your certifications, translates your documentation. Learn the trade the old way in the hands and the new way in the tooling. The two together are the profile the decade rewards: someone who can do the work when the systems fail, and can make the systems work while they hold. That person is rare already — and everything in these two hundred and nine lessons has been building toward their hands.",
       ),
       fig(
         "/images/blog/rows-of-desks-computer-room.jpg",
@@ -11547,19 +11609,19 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("The work that never had a name"),
       p(
-        "There is one more category of staying work, the largest and least discussed: the labour that never appeared in any job advertisement. The household's administrator — the person who knows where every document lives, when every fee is due, how to recover the aunt's mail. The family's help desk. The compound's quiet teacher. The shop's organiser of its digital back room. Every family in this country has promoted somebody to these posts without a letter, and the promotion is real work with real skill in it — the skill of this entire book. The machines have made this invisible office more powerful and more necessary, not less. Whoever holds these posts at home is already employed by the decade. They should learn it, own it, and — when the neighbours ask for help too — finally price it.",
+        "One more category of staying work — the largest and least discussed: the labour that never appeared in any job advertisement. The household's administrator: the person who knows where every document lives, when every fee is due, how to recover the aunt's mail. The family's help desk. The compound's quiet teacher. The shop's organiser of its digital back room. Every family in this country has promoted somebody to these posts without a letter, and the promotion is real work with real skill in it — the skill of this entire book. The machines have made this invisible office more powerful and more necessary, not less. Whoever holds these posts at home is already employed by the decade. They should learn it, own it, and — when the neighbours ask for help too — finally price it. The pricing lesson and the small book are waiting.",
       ),
       p(
-        "So here is the honest summary of the fear, signed in daylight. Yes: the routine rungs are thinning and the ladders are changing shape, and the young must be told the truth about that at the table rather than comforted with fables. And yes: the work that stays is enormous — the accountable, the caring, the careful, the verifying, the standing-behind-it — and it is precisely the work this series has trained from the first sitting. The machines will do more of the typing every year. The world will pay more every year for the deciding. Stand there, keep the manual hours, carry the tool proudly and the judgment privately, and teach one person beside you as you climb. The work is not disappearing. It is being sorted — and sorting is an old friend of ours. We have been doing it since the yellow folders.",
+        "So here is the honest summary of the fear, signed in daylight. Yes: the routine rungs are thinning and the ladders are changing shape, and the young must be told that truth at the table rather than comforted with fables. And yes: the work that stays is enormous — the accountable, the caring, the careful, the verifying, the standing-behind-it — and it is precisely the work this series has trained from the first sitting. The machines will do more of the typing every year. The world will pay more every year for the deciding. Stand there, keep the manual hours, carry the tool proudly and the judgment privately, and teach one person beside you as you climb. One last retrieval for the road: what is this sorting called, in the language of the very first files lesson? ... A folder. The work is not disappearing. It is being sorted — and sorting is an old friend of ours. We have been doing it since the yellow folders.",
       ),
       ul([
         "Grieve the thinning ladder honestly, then map the standing work: accountable, caring, careful, verifying, standing-behind-it.",
         "Stand where the machine's output meets the human consequence, and learn the machine deeper than the people who fear it.",
-        "Apprentice to a standing trade this month and bring the assistant as your tireless intern in quotes, drills, and documentation.",
+        "Apprentice to a standing trade this month, and bring the assistant as your tireless intern in quotes, drills, and documentation.",
         "Own the invisible office at home — the household's administrator and help desk — and price it when the neighbours ask.",
       ]),
       p(
-        "The decade is now mapped and the fear has a chair at the table rather than the whole room. There is one lesson left in the series and it is the shortest to describe: the road itself, seen whole at last — from the first sitting to this one, and from tonight to the ten-year horizon where somebody is still sitting down at a machine, needing exactly what you now know how to give.",
+        "The decade is now mapped and the fear has a chair at the table rather than the whole room. There is one lesson left in the series, and it is the shortest to describe: the road itself, seen whole at last — from the first sitting to this one, and from tonight to the ten-year horizon where somebody is still sitting down at a machine, needing exactly what you now know how to give.",
       ),
     ],
   },
