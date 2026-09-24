@@ -1118,10 +1118,10 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "Over-the-shoulder view of a laptop on a video call, earphones beside it.",
     body: [
       p(
-        "A video call is a room that exists for an hour. Zoom, Google Meet, Microsoft Teams — three doors, same furniture: a camera, a microphone, a red mute button, and a link that should have come from a person you know. Classes, church, a job interview, a family meeting abroad. The panic is always the same: they can hear the generator, the camera is a nostril, the link does nothing. This lesson is a small ritual that makes the room ordinary.",
+        "Chidinma’s first video call was a church committee meeting with thirty people and her camera angled up her nose. She survived — barely — and the second one was different, because somebody showed her the small ritual this lesson holds. A video call is a room that exists for an hour. Zoom, Google Meet, Microsoft Teams — three doors, same furniture: a camera, a microphone, a red mute button, and a link that should have come from a person you know. Classes, church, a job interview, a family meeting abroad. The panic is always the same: they can hear the generator, the camera is a nostril, the link does nothing.",
       ),
       p(
-        "You need a link or a meeting ID, the internet you tested by opening a simple page, and a quiet-enough corner. Earphones with a mic are better than the laptop's own, because they reduce echo — that hollow barrel sound when two devices in one room listen to each other. A phone can join the same meeting. A laptop is easier to read a document on. Either works. Both at once, in the same room, with speakers on, is the echo.",
+        "You need a link or a meeting ID, the internet you tested by opening a simple page, and a quiet-enough corner. Earphones with a mic beat the laptop’s own, because they reduce echo — that hollow barrel sound when two devices in one room listen to each other. A phone can join the same meeting; a laptop is easier to read a document on. Either works. Both at once, in the same room, with speakers on, is the echo.",
       ),
       fig(
         "/images/blog/video-call.jpg",
@@ -1130,10 +1130,10 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("Entering the room"),
       p(
-        "Open the link from email or from a calendar, on the computer you will use. If the browser asks to open the Zoom app, and you have the app, allow it. If you do not, there is almost always a choice that says Join from browser. Prefer the real host's link, not a forwarded bit.ly with no name. For Meet, the address looks like meet.google.com/three-words. Type that if the link is clumsy.",
+        "Open the link from email or from a calendar, on the computer you will use. If the browser asks to open the Zoom app, and you have the app, allow it. If you do not, there is almost always a choice that says Join from browser. Prefer the real host’s link, not a forwarded bit.ly with no name. For Meet, the address looks like meet.google.com/three-words; type that if the link is clumsy.",
       ),
       p(
-        "Before you Join, the page usually shows a preview. Camera on or off is a toggle. Microphone on or off is another. Join muted if you are not speaking first — a class of thirty open mics is a market. Your name: type the name the teacher or the interviewer expects, not a nickname from gaming. Then Join. Waiting room means you are in a corridor. Sit. Do not join five times; that is five corridors.",
+        "Before you Join, the page usually shows a preview. Camera on or off is a toggle; microphone on or off is another. Join muted if you are not speaking first — a class of thirty open mics is a market. Your name: type the name the teacher or the interviewer expects, not a nickname from gaming. Then Join. A waiting room means you are in a corridor. Sit. Do not join five times; that is five corridors.",
       ),
       fig(
         "/images/blog/mute-earphones.jpg",
@@ -1142,7 +1142,7 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("Mute, camera, and the generator"),
       p(
-        "Find mute as soon as you arrive. It is usually bottom-centre. Practise toggling it once if the host has not started. Camera off is allowed in most classes; in an interview, ask or follow what they do. Light from a window on your face is better than a bare bulb behind your head, which turns you into a silhouette. A virtual background is optional and often glitchy; a tidy wall is enough.",
+        "Find mute as soon as you arrive — usually bottom-centre — and practise toggling it once if the host has not started. Mute is a kindness, not fear. Unmute only when it is your turn, then mute again. Camera off is allowed in most classes; in an interview, ask or follow what they do. Light from a window on your face beats a bare bulb behind your head, which turns you into a silhouette. A virtual background is optional and often glitchy; a tidy wall is enough.",
       ),
       ul([
         "Put on earphones. Close extra tabs. Open cea.ng to prove the internet is alive.",
@@ -1155,7 +1155,7 @@ export const blogPosts: BlogPost[] = [
         "A link that does nothing: copy it, paste it into the address bar yourself. Still nothing: the meeting has not opened yet, or it has ended, or the ID is wrong by one letter. Message the host on the channel they already use — WhatsApp, email — not a second join every ten seconds. Camera not found: close WhatsApp Desktop or another app that might be holding the camera, then rejoin. Echo: mute the laptop speakers and use earphones, or mute one of the two devices in the room.",
       ),
       p(
-        "Data: video eats a bundle. If the picture stutters, turn your camera off. Audio-only still counts as present. A phone hotspot will work for a short call and suffer on a two-hour class; sit near the house router if you can. And when it is over, Leave, then close the tab. A meeting left open in the background is a microphone you forgot. The room should not hear you after you think you have gone.",
+        "Data: video eats a bundle. If the picture stutters, turn your camera off; audio-only still counts as present. A phone hotspot works for a short call and suffers on a two-hour class; sit near the house router if you can. And when it is over, Leave, then close the tab. A meeting left open in the background is a microphone you forgot. The room should not hear you after you think you have gone. One contrast worth carrying in: the call feels like a performance on a stage. It is actually a visit to somebody’s parlour — and the guest who leaves the door tidy gets invited back. Chidinma now joins church committees with the camera level and the kettle silent — and nobody notices the ritual at all, which is the point.",
       ),
     ],
   },
@@ -1863,10 +1863,10 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A file name highlighted in File Explorer, ready to type.",
     body: [
       p(
-        "IMG_0048.jpg is a name a camera gave because it cannot care. document(3).docx is a name Word gave because you already had two documents. Neither will help you in October. Rename is how a file becomes a sentence. It is also how people hide a file from the computer by deleting the .pdf at the end. This lesson is the name, the dot, and the slow click.",
+        "Tayo’s October problem had a one-word cause: three folders of school receipts named document, document(2), and document(3). Which one held the March fees? He had a fifty-fifty chance and a mother waiting. IMG_0048.jpg is a name a camera gave because it cannot care. document(3).docx is a name Word gave because you already had two documents. Neither will help you in October. Rename is how a file becomes a sentence.",
       ),
       p(
-        "A file name has two parts. Everything before the last dot is yours. Everything after — pdf, jpg, docx, xlsx, zip — is the type. The computer uses the type to choose a program. If you turn receipt.pdf into receipt, Windows may ask which program should open it, as if you had handed it a letter with no envelope. If you turn it into receipt.docx, Word will try to open a PDF and fail in a language you will not enjoy.",
+        "It is also how people hide a file from the computer by deleting the .pdf at the end. A file name has two parts: everything before the last dot is yours; everything after — pdf, jpg, docx, xlsx, zip — is the type, and the computer uses the type to choose a program. Turn receipt.pdf into receipt and Windows asks which program should open it, as if you had handed it a letter with no envelope. Turn it into receipt.docx and Word tries to open a PDF and fails in a language you will not enjoy. The name is for you. The part after the last dot is for the computer. Which half of the name did you ever own? Both — but only one half you may dress.",
       ),
       fig(
         "/images/blog/rename-file.jpg",
@@ -1875,10 +1875,10 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("The slow click, and F2"),
       p(
-        "Click the file once. Pause. Click the name, not the icon. The name highlights. Type the new name. Watch the .pdf or .jpg at the end. If the type is highlighted too, do not type over it. Click once in the name, or press F2, which on many machines highlights only the name and leaves the type. Enter to confirm. Esc if you panicked.",
+        "Click the file once. Pause. Click the name, not the icon. The name highlights. Type the new name — and watch the .pdf or .jpg at the end. If the type is highlighted too, do not type over it; click once in the name, or press F2, which on many machines highlights only the name and leaves the type. Enter to confirm. Esc if you panicked.",
       ),
       p(
-        "If Windows hides the type — “File Explorer Options, hide extensions” — turn that off so you can see the dot. View, Show, File name extensions, on modern Windows. Seeing the type is how you stop breaking it. A name you cannot see is a name you will damage.",
+        "If Windows hides the type — File Explorer Options, hide extensions — turn that off so you can see the dot. View, Show, File name extensions, on modern Windows. Seeing the type is how you stop breaking it. A name you cannot see is a name you will damage.",
       ),
       fig(
         "/images/blog/file-names.jpg",
@@ -1896,14 +1896,14 @@ export const blogPosts: BlogPost[] = [
         "Write dates in names the way the year writes them: year first, then month, then day — 2026-09-23-rent-receipt. A list of names like that lines itself up in the right order all by itself, newest at the bottom, no thinking required. Names sorted by 23-9 and 3-10 pretend March comes after October. As for versions, the word final is a promise the file never keeps; there is always a second final. Better: the date and v1, v2, v3. The name does not need to argue with itself. It needs to tell you, in three seconds, which letter is in your hand.",
       ),
       p(
-        "Duplicates in one folder get the bracket treatment — Letter (2), Letter (3) — and that is a signal too: either a copy you meant to send somewhere, or an accident of dragging. Look at the brackets before you delete one. And when the file is a photograph or a PDF with a proper name inside a folder of hundreds, the name is the only light you have. Twenty seconds of renaming at the counter saves an afternoon of hunting in June. Slow is a word that tastes bad in the mouth and tastes excellent in the file system.",
+        "Duplicates in one folder get the bracket treatment — Letter (2), Letter (3) — and that is a signal too: either a copy you meant to send somewhere, or an accident of dragging. Look at the brackets before you delete one. And when the file is a photograph or a PDF with a proper name inside a folder of hundreds, the name is the only light you have. Twenty seconds of renaming at the counter saves an afternoon of hunting in June.",
       ),
       h2("Characters that bite, and duplicates"),
       p(
-        'Avoid / \\ : * ? " < > | in names. They are commands to the computer, not decoration. Spaces are allowed but a-name-like-this travels better in some links. Accents are allowed; you learned those. A trailing space is a ghost that makes two files look identical. Keep names short enough to read in a narrow window.',
+        'Avoid / \\ : * ? " < > | in names. They are commands to the computer, not decoration. Spaces are allowed, but a-name-like-this travels better in some links. Accents are allowed; you learned those. A trailing space is a ghost that makes two files look identical. Keep names short enough to read in a narrow window.',
       ),
       p(
-        "If a file is open in Word, rename will fail — “in use.” Close, then rename. If two files cannot have the same name in the same folder, that is the computer protecting you. Put them in different rooms, or date them. And if you already stripped a .pdf, rename and put the .pdf back. The file was not converted. It was only disguised. You did not lose the letter. You hid its envelope.",
+        "If a file is open in Word, rename will fail — “in use.” Close, then rename. If two files cannot have the same name in one folder, that is the computer protecting you; put them in different rooms, or date them. And if you already stripped a .pdf, rename and put the .pdf back. The file was not converted. It was only disguised. You did not lose the letter. You hid its envelope. Tayo found his March receipt in four seconds that October — the name did the remembering he had left to chance.",
       ),
     ],
   },
@@ -3553,22 +3553,25 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A laptop document zoomed in so the words are easy to read.",
     body: [
       p(
-        "A page can be too small. People lean in until their neck hurts, then buy glasses they already own, then blame the machine. The machine has a magnifying glass. In a browser, Ctrl and the plus key makes this page larger. Ctrl and minus makes it smaller. Ctrl and 0 puts it back. The website did not change for the world. Only your window did. This lesson is zoom, the Display slider, and the difference between a bigger page and a bigger Windows.",
+        "Funmi’s daughter found her one evening reading the JAMB brochure at the end of her nose, neck craned, glasses already on. “Mummy, the screen can come closer,” she said — and Funmi had owned the laptop for two years without anybody showing her. A page can be too small. People lean in until the neck hurts, then blame the machine. The machine has a magnifying glass.",
       ),
       p(
-        "Word has its own zoom in the bottom-right corner — 100 percent, 120, 150. That is how the page looks while you type. It is not how it prints. Print preview is still the truth, as you learned. A letter at 200 percent on screen can still be size 12 on paper. Do not raise the font to 28 because you could not find zoom, then email a poster to a school. Zoom for your eyes. Font size for the reader.",
+        "In a browser, Ctrl and the plus key makes this page larger. Ctrl and minus makes it smaller. Ctrl and 0 puts it back. The website did not change for the world; only your window did. This lesson is zoom, the Display slider, and the difference between a bigger page and a bigger Windows. Before we walk: when the words on every program are tiny, is one page rude — or is the lamp low? The lamp. We will get there.",
       ),
       fig(
         "/images/blog/zoom-page.jpg",
         "A document zoomed in on a laptop screen.",
         "The words are large. The file is the same file. Ctrl+0, or 100 percent, is home if you get lost.",
       ),
+      p(
+        "Word has its own zoom in the bottom-right corner — 100 percent, 120, 150. That is how the page looks while you type. It is not how it prints. Print preview is still the truth, as you learned. A letter at 200 percent on screen can still be size 12 on paper. Do not raise the font to 28 because you could not find zoom, then email a poster to a school. Zoom for your eyes. Font size for the reader.",
+      ),
       h2("Windows itself, and Magnifier"),
       p(
-        "If every program is tiny, the lamp is the display scale, not each page. Settings, System, Display, Scale — 125 percent or 150 on a small laptop is ordinary. It enlarges buttons, the taskbar, the Start menu. Restart a stubborn program if it looks blurry after. This is not “making Windows for old people.” It is matching the lamp to the room, like brightness.",
+        "If every program is tiny, the lamp is the display scale, not each page. Settings, System, Display, Scale — 125 or 150 percent on a small laptop is ordinary. It enlarges buttons, the taskbar, the Start menu. Restart a stubborn program if it looks blurry after. This is not “making Windows for old people.” It is matching the lamp to the room, like brightness.",
       ),
       p(
-        "Magnifier is a stronger glass: Windows and the plus key, or Start, Magnifier. A lens follows the pointer. Windows and Esc closes it if you opened it by accident — a common fright. You are allowed to use it for a form with grey-on-grey type. You are allowed to sit at a comfortable distance. Squinting through a whole JAMB page is not toughness. It is how people tick the wrong box.",
+        "Magnifier is the stronger glass: Windows and the plus key, or Start, Magnifier. A lens follows the pointer. Windows and Esc closes it if you opened it by accident — a common fright. You are allowed to use it for a form with grey-on-grey type. You are allowed to sit at a comfortable distance. Squinting through a whole JAMB page is not toughness. It is how people tick the wrong box. It looks like laziness, this asking for larger text. It is actually the same act as moving your chair nearer the lamp — comfort in service of the work.",
       ),
       fig(
         "/images/blog/large-text.jpg",
@@ -3586,14 +3589,14 @@ export const blogPosts: BlogPost[] = [
         "Beyond the magnifier there is a deeper shelf of help, and it is worth knowing even if you never use it. Narrator reads the screen aloud, item by item, for eyes that cannot take the page at any size; it is built into Windows and speaks in a plain voice without any download. High contrast themes repaint the screen in fewer, stronger colours — black and white, or yellow on blue — for eyes that lose grey shapes in grey backgrounds. These live in Settings, Accessibility, and each one can be turned on for an afternoon to see whether it helps, then turned off again. Nothing is installed. Nothing is broken by trying.",
       ),
       p(
-        "The same shelf exists on the phone and in the browser, usually with the honest name Accessibility: larger text across every app at once, bolder outlines, captions on the videos that carry them, a dimmer for night. Set it up for yourself or, more often, for the parent whose eyes are tired. This is assistive technology and it is not a failure of the body to want it; spectacles for the screen are as ordinary as spectacles for the page. The machine has been speaking and dimming and enlarging for years. It was only waiting to be asked.",
+        "The same shelf exists on the phone and in the browser, usually with the honest name Accessibility: larger text across every app at once, bolder outlines, captions on the videos that carry them, a dimmer for night. Set it up for yourself or, more often, for the parent whose eyes are tired. This is assistive technology, and it is not a failure of the body to want it; spectacles for the screen are as ordinary as spectacles for the page. The machine has been speaking and dimming and enlarging for years. It was only waiting to be asked.",
       ),
       h2("What zoom will not do"),
       p(
         "A photograph zoomed in becomes cubes. That is the dots, not a broken file. A PDF of a scan may never become sharp. A form that uses tiny grey type may still print tiny; zoom is for you, on the glass. If a site forbids zoom, that site is rude. The browser still often allows Ctrl+plus. Try.",
       ),
       p(
-        "High contrast and narrator are extra doors in Accessibility, for people who need them. You do not have to use them to be allowed a larger page. Ctrl and plus is the everyday glass. Use it at the academy, on a phone (pinch), in a café. The words were always that size. You have only walked closer without moving the chair.",
+        "High contrast and Narrator are extra doors in Accessibility, for people who need them. You do not have to use them to be allowed a larger page. Ctrl and plus is the everyday glass. Use it at the academy, on a phone (pinch), in a café. The words were always that size. You have only walked closer without moving the chair. Funmi now reads at 150 percent with the glasses in their case — and her daughter has stopped hovering.",
       ),
     ],
   },
@@ -4559,10 +4562,10 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A spreadsheet print preview fitted onto one page.",
     body: [
       p(
-        "Excel will print what you asked, including twelve columns of ants across two centimetres, or one column alone on a lonely page. The printer is still a tap. Preview is still looking at the sink. A spreadsheet is just wider than a letter, so the same Print button needs extra manners: orientation, fit, and which rows you meant. This lesson is that preview, landscape, and refusing a page nobody can read.",
+        "Doris printed the association’s fees register for the meeting and brought in twelve columns of ants across two centimetres. Excel will print exactly what you asked. The printer is still a tap; preview is still looking at the sink. A spreadsheet is simply wider than a letter, so the same Print button needs extra manners: orientation, fit, and which rows you meant. This lesson is that preview, landscape, and refusing a page nobody can read.",
       ),
       p(
-        "Ctrl+P. Look at the miniature. If columns vanish off the right, the paper is too narrow. Layout, Orientation, Landscape — the wide way. If it still spills, Page Setup, Fit to 1 page wide by 1 page tall — or “fit all columns on one page.” Then look again. If the type is too small to read a naira amount, Fit is a lie. Undo the fit. Hide or delete columns you do not need on paper. A register of Name and Amount may not need a phone, an email, and a remark on the same sheet.",
+        "Ctrl+P. Look at the miniature. If columns vanish off the right, the paper is too narrow: Layout, Orientation, Landscape — the wide way. If it still spills, Page Setup, Fit to 1 page wide. Then look again, with honest eyes: if the type is too small to read a naira amount in the miniature, the fit is a lie. Undo it. Hide or delete columns you do not need on paper — a register of Name and Amount may not need the phone, the email, and the remark column riding along. Where do you judge readability: on the screen at 200 percent, or in the miniature at paper size? The miniature. It is the only honest portrait of the A4.",
       ),
       fig(
         "/images/blog/print-sheet.jpg",
@@ -4571,10 +4574,10 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("Print area, titles, and the header row"),
       p(
-        "If you only wanted the fees table, not the scratch numbers in column Z, select the table, Print area, Set print area. Preview should show only that. Repeat the header row on each page: Page Setup, Sheet, Rows to repeat at top. Then page 2 still says Name, Amount. Without that, page 2 is a pile of numbers with no names. People invent the names from memory. Memory is how books drift.",
+        "If you only wanted the fees table, not the scratch numbers in column Z, select the table: Print area, Set print area. Preview should show only that. Repeat the header row on each page: Page Setup, Sheet, Rows to repeat at top. Then page 2 still says Name, Amount. Without that, page 2 is a pile of numbers with no names. People invent the names from memory. Memory is how books drift.",
       ),
       p(
-        "Gridlines: tick print gridlines if the page looks like free-floating words. Black and white is enough. Colour in a sheet is extra ink and often a grey mess. Draft quality for a working copy; a clearer setting for something you will stamp. You know Economy from the printing lesson. It still spends paper if you print twenty copies. Copies: 1, then look.",
+        "Gridlines: tick print gridlines if the page looks like free-floating words. Black and white is enough; colour in a sheet is extra ink and often a grey mess. Draft quality for a working copy; a clearer setting for something you will stamp. You know Economy from the printing lesson. It still spends paper if you print twenty copies. Copies: 1, then look.",
       ),
       fig(
         "/images/blog/fitted-print.jpg",
@@ -4589,14 +4592,14 @@ export const blogPosts: BlogPost[] = [
       ]),
       h2("The page break, and the one-page-wide promise"),
       p(
-        "Print Preview shows the guillotine line — the faint grey edge where the page ends and the columns continue onto a second sheet, orphaned from their names. The fastest repair is the scale: Print, and the setting that shrinks the grid to one page wide. The machine does the arithmetic and prints the whole width on one sheet, tall as many pages as needed, with the numbers legibly smaller. Tall is fine. An annual report twelve pages down is a document; a register cut in half across its columns is a jigsaw for the accountant.",
+        "Print Preview shows the guillotine line — the faint grey edge where the page ends and the columns continue onto a second sheet, orphaned from their names. The fit-to-width setting is the fastest repair: the machine does the arithmetic and prints the whole width on one sheet, tall as many pages as needed, with the numbers legibly smaller. Tall is fine. An annual report twelve pages down is a document; a register cut in half across its columns is a jigsaw for the accountant.",
       ),
       p(
-        "For finer surgery there is Page Break Preview, under the View menu: drag the blue lines where the paper should break, and the machine respects the line. Use it when a two-column cut would separate names from figures or split one school's block across pages. Then the finishing touches from the letter's world apply here too — landscape for wide registers, the header row repeated on every page so page nine still wears its names, and a footer with the date. A spreadsheet printed for a meeting should read like a register, not like confetti. Fit the width, repeat the names, and the room will follow every line.",
+        "For finer surgery there is Page Break Preview, under the View menu: drag the blue lines where the paper should break, and the machine respects the line. Use it when a two-column cut would separate names from figures or split one school’s block across pages. Then the finishing touches from the letter’s world apply here too — landscape for wide registers, the header row repeated so page nine still wears its names, and a footer with the date. A spreadsheet printed for a meeting should read like a register, not like confetti. Fit the width, repeat the names, and the room will follow every line.",
       ),
       h2("PDF of a sheet"),
       p(
-        "Save as PDF from Print, or Export. The PDF is a picture of the grid, not a grid that adds. For an office that must add, send the Excel or Sheets file. For an office that must see, send the PDF. Do not send both “in case” unless they asked. One job, one attachment. The sheet on the screen can be as wide as you like. The sheet on the tray has to fit a hand. Preview until it does. Then the tap.",
+        "Save as PDF from Print, or Export. The PDF is a picture of the grid, not a grid that adds. For an office that must add, send the Excel or Sheets file. For an office that must see, send the PDF. Do not send both “in case” unless they asked. One job, one attachment. The sheet on the screen can be as wide as you like. The sheet on the tray has to fit a hand. Preview until it does. Then the tap. Doris’s second register came to the meeting as one landscape page with the names repeated — and the meeting moved on to the arguments, which is where meetings belong.",
       ),
     ],
   },
@@ -4724,10 +4727,10 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A spreadsheet formula being filled down a column.",
     body: [
       p(
-        "A shop book may need quantity times price on every line. You can type =B2*C2, then =B3*C3, then weep. The small square at the corner of a selected cell is the fill handle. Drag it down, or double-click it, and the grid copies the pattern: next row, next cells. This lesson is that handle, the difference between a relative cell and a number you meant to freeze, and why you look at row 3 before you fill to row 200.",
+        "Nnenna’s shop book needs quantity times price on every line, and she had typed it the long way: =B2*C2, then =B3*C3, then =B4*C4, then the will to live. The small square at the corner of a selected cell is the fill handle. Drag it down, or double-click it, and the grid copies the pattern: next row, next cells. This lesson is that handle, the number that should not walk, and why you look at row 3 before you fill to row 200.",
       ),
       p(
-        "Click the cell with the first formula. A tiny square at the bottom-right. Pointer becomes a thin cross. Drag down as far as the last row of facts. Release. Each new cell should show an answer, not the formula, unless you are in a view that shows formulas. Click row 4's answer. The formula bar should say =B4*C4, not still B2*C2. If it still says B2, you copied values, not the formula — Undo, copy the cell, paste formulas, or drag the handle again.",
+        "Click the cell with the first formula. A tiny square waits at the bottom-right; the pointer becomes a thin cross. Drag down as far as the last row of facts, and release. Each new cell should show an answer. Click row 4’s answer and look at the formula bar: it should say =B4*C4 — not still B2*C2. If it still says B2, you copied values, not the formula. Undo, and fill again. So before the hundred rows: which three rows would you check first, and why those? The first, the middle, the last — the three corners where errors like to hide.",
       ),
       fig(
         "/images/blog/fill-handle.jpg",
@@ -4736,32 +4739,28 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("When one number should not walk"),
       p(
-        "A tax rate in F1 should stay F1 on every row. If you fill =D2*F1 down, Excel may turn F1 into F2, F3, empty, empty. Put a dollar in: F$1 or $F$1 — the lock. Or type the rate 0.075 in the formula, which is ruder when the rate changes. For this course: keep the rate in a labelled cell, use $ to pin it, fill, check three rows. If that $ is a fog, do not fill a tax column yet. Fill quantity times price, which should walk.",
+        "Some references should walk — quantity times price wants each row its own cells. But a tax rate in F1 must stay F1 on every row. If you fill =D2*F1 down, the grid turns F1 into F2, F3, empty, empty. Put a dollar in: F$1 or $F$1 — the nail. The fill handle copies ideas; the nails decide which ideas stand still. For today, keep the rate in a labelled cell, nail it with $, fill, check three rows. If the dollar is still a fog, do not fill a tax column yet. Fill quantity times price, which should walk.",
       ),
       p(
-        "Double-click the handle fills down as far as the neighbouring column has facts. If column B stops at 20, the fill stops at 20. If column B has a hole, the fill may stop at the hole. Drag by hand when the list is short. A hundred empty formulas below the data are zeros that will sit in a SUM if you were sloppy with the range. Fill to the last fact, not to row 1000 “in case.”",
+        "A second habit shares this section: fill to the last fact, not to row 1000 “in case.” A hundred empty formulas below the data are zeros that will sit in a SUM if you were sloppy with the range. Drag by hand when the list is short. And when the copy happens by keyboard — Ctrl+C on the formula, select a block, Ctrl+V — the same checks apply. If you overfill onto a total row, the total becomes a product, and the book will lie with confidence. Leave a blank row before the SUM, or look at the last formula.",
       ),
       fig(
         "/images/blog/formula-column.jpg",
         "A learner checking a column of formula results against a calculator.",
         "The calculator is the witness for three rows. If three match, the fill is probably honest. If row 1 matches and row 5 does not, look at the formula bar. Do not print yet.",
       ),
+      h2("The double-click at the corner"),
+      p(
+        "The fill handle has a faster greeting. Instead of dragging the tiny square down a hundred rows, double-click it: the formula walks down the column exactly as far as the data beside it runs and stops at the last name in the register. One hundred rows, one double-click. If it walks too far or not far enough, the neighbouring column has a gap or an extra — look at what the machine considered the end of the list. The double-click is the machine’s guess; the drag is your instruction. Both are worth knowing.",
+      ),
       ul([
         "In a practice sheet, quantity in B, price in C, =B2*C2 in D2.",
         "Fill down three more rows. Click each answer. Confirm the row numbers walked.",
-        "Change one price. Confirm that row's answer moves and the neighbours do not.",
+        "Change one price. Confirm that row’s answer moves and the neighbours do not.",
         "Save as fill-practice. Do not fill a live fees book until three rows have been true.",
       ]),
-      h2("The double-click at the corner"),
       p(
-        "The fill handle has a faster greeting. Instead of dragging the tiny square down a hundred rows, double-click it: the formula walks down the column exactly as far as the data beside it runs and stops at the last name in the register. One hundred rows filled in one double-click. If it walks too far or not far enough, the neighbouring column has a gap or an extra — look at what the machine considered the end of the list. The double-click is the machine's guess; the drag is your instruction. Both are worth knowing.",
-      ),
-      p(
-        "There is one secret in the addresses worth planting now, for the day you build a real model. When a formula walks down, its references walk with it — B2 becomes B3 becomes B4, which is usually the miracle you want. But some cells must not walk: the VAT rate in one cell, the month's total at the top. A dollar sign nails an address in place — $B$2 stays $B$2 all the way down. Mixed nails hold one side only. You will meet this properly in a later spreadsheet lesson; today, just notice the walking, and know that the dollar is the nail. The fill handle copies ideas. The nails decide which ideas stand still.",
-      ),
-      h2("Paste, and the overfill"),
-      p(
-        "Ctrl+C on a formula, select a block, Ctrl+V, also fills. Same checks. If you overfill onto a total row, the total may become a product and the book will lie with confidence. Leave a blank row before the SUM, or look at the last formula. You already know Undo. Use it the second the column looks too clever. The handle is a servant. It will copy a mistake as cheerfully as a truth.",
+        "One last look back at the handle: it will copy a mistake as cheerfully as a truth. The calculator is the witness for three rows — if three match, the fill is probably honest; if row 1 matches and row 5 does not, look at the formula bar before you print. Nnenna’s forty-eight lines took one drag and three checks. The will to live returned somewhere around row 12. You already know Undo. Use it the second the column looks too clever.",
       ),
     ],
   },
@@ -5461,10 +5460,10 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A phone held directly above a document on a wooden desk.",
     body: [
       p(
-        "Offices still ask for a picture of a paper: a receipt, an ID, a filled form. People photograph from the hip, under a yellow bulb, with a thumb in the corner, then argue that the clerk is wicked. The clerk cannot read a slanted glare. This lesson is a photograph that behaves like a copy: flat, filled, sharp, the amount visible. It is not yet a PDF. It is a picture you would still sign.",
+        "The office asked Chinwe for a picture of her rent receipt — one picture, that morning — and she shot it from the hip, under a yellow bulb, with her thumb in the corner. Then she argued that the clerk was wicked for sending it back. The clerk could not read a slanted glare. Offices still ask for a picture of a paper: a receipt, an ID, a filled form. This lesson is a photograph that behaves like a copy: flat, filled, sharp, the amount visible. It is not yet a PDF. It is a picture you would still sign.",
       ),
       p(
-        "Put the paper on a dark table, not on a patterned wrapper. Stand above it so the phone is parallel to the page — as if you were the ceiling. The page should fill the screen with a little margin, not sit as a postage stamp in a room. Wait for the camera to settle. Tap the amount so the focus sits there. Take two. Open the better one. Zoom until you can read the naira figure and the date. If you cannot, the clerk cannot. Delete that one. Try again, more light.",
+        "Put the paper on a dark table, not on a patterned wrapper. Stand above it so the phone is parallel to the page — as if you were the ceiling. The page should fill the screen with a little margin, not sit as a postage stamp in a room. Wait for the camera to settle. Tap the amount so the focus sits there. Take two. Open the better one. Zoom until you can read the naira figure and the date. If you cannot, the clerk cannot. Which is the better judge of your photograph: the thumbnail, or the zoomed naira figure? The figure. Always read it before Send.",
       ),
       fig(
         "/images/blog/document-photo.jpg",
@@ -5473,10 +5472,10 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("Light, glare, and the plastic cover"),
       p(
-        "Daylight from the side is kinder than a bare bulb overhead, which turns a laminated ID into a white lake. If the card shines, tilt a few degrees until the lake leaves the numbers, or take the card out of a shiny holder. Flash is a last resort; it often paints a coin of light on the plastic. A second lamp across the room is better than flash in the face of the page.",
+        "Daylight from the side is kinder than a bare bulb overhead, which turns a laminated ID into a white lake. If the card shines, tilt a few degrees until the lake leaves the numbers, or take the card out of its shiny holder. Flash is a last resort; it paints a coin of light on the plastic. A second lamp across the room beats flash in the face of the page.",
       ),
       p(
-        "An ID: both sides if they asked. One file per side, named — id-front.jpg, id-back.jpg — not IMG_0048. A receipt: the whole slip, including the shop name. Crop after, in the phone's editor, if the table still crowds the page. Crop is not resize. You already know that pair. Do not beautify, do not add a filter, do not write on the picture in a sticker app. A clerk's machine will see the sticker. They will send you back.",
+        "An ID: both sides if they asked — one file per side, named id-front.jpg, id-back.jpg, not IMG_0048. A receipt: the whole slip, including the shop name. Crop after, in the phone’s editor, if the table still crowds the page. Crop is not resize; you already know that pair. And do not beautify, do not add a filter, do not write on the picture in a sticker app. A clerk’s machine sees the sticker. They will send you back. It looks like a nicer photograph with a little arrow on it. Actually, it is evidence with graffiti.",
       ),
       fig(
         "/images/blog/document-glare.jpg",
@@ -5491,14 +5490,14 @@ export const blogPosts: BlogPost[] = [
       ]),
       h2("The crop that turns a photograph into a page"),
       p(
-        "The photograph you took includes the table, the mat, a corner of somebody's wrapper, and a shadow from your own head. Open it in Photos and find the crop handles. Pull the frame in to the paper's four edges — the whole point of the crop is that the paper becomes the picture. Then look once with a critical eye at the corners of the letters. If the page can be read from an arm's length on your phone screen, the officer at the other end can read it too. Save the cropped copy and keep the original; the cropped one travels, the original archives.",
+        "The photograph you took includes the table, the mat, a corner of somebody’s wrapper, and a shadow from your own head. Open it in Photos and find the crop handles. Pull the frame in to the paper’s four edges — the whole point of the crop is that the paper becomes the picture. Then look with a critical eye at the corners of the letters. If the page reads from an arm’s length on your phone, the officer at the other end can read it too. Save the cropped copy and keep the original; the cropped one travels, the original archives.",
       ),
       p(
-        "Straightening is the other half-minute polish. Most photo apps carry a small wheel that levels a tilted page against the horizon of the frame. A level page reads as a scan because paper, photographed honestly, is a rectangle of straight lines. Then the finishing habit: rename the file before it travels — Adaeze-JAMB-slip, not IMG-2026-09-23-1142. The officer receiving forty applications can only sort them by the names in the files. The photograph became a document the moment you cropped and named it. Everything else is ceremony.",
+        "Straightening is the other half-minute polish: most photo apps carry a small wheel that levels a tilted page against the horizon of the frame. A level page reads as a scan, because paper photographed honestly is a rectangle of straight lines. Then the finishing habit: rename before it travels — Adaeze-JAMB-slip, not IMG-2026-09-23-1142. The officer receiving forty applications can only sort them by the names in the files. The photograph became a document the moment you cropped and named it. Everything else is ceremony.",
       ),
       h2("When they asked for a scan"),
       p(
-        "A photograph can pass. A scan is the next lesson — edges found, a PDF, often flatter. If the portal says PDF, do not send a WhatsApp soup of the page. If they say JPEG under 100 KB, shrink a copy, as you learned. The picture is only as good as the last look you took before Send. Zoom. Read. Then the paperclip.",
+        "A photograph can pass. A scan is the next lesson — edges found, a PDF, often flatter. If the portal says PDF, do not send a WhatsApp soup of the page. If they say JPEG under 100 KB, shrink a copy, as you learned. The picture is only as good as the last look you took before Send. Zoom. Read. Then the paperclip. Chinwe’s second receipt was accepted in four minutes — flat, filled, named — and the clerk never knew there had been a first.",
       ),
     ],
   },
@@ -6627,7 +6626,7 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A laptop showing a professional profile page while a woman types at the desk.",
     body: [
       p(
-        "Work checks you online before it shakes your hand. The employer, the client, the school — the first meeting now happens in a search box, and what the search returns should be you, tidy. This lesson builds the smallest respectable presence: not a performance, not a boast. A front door that has been swept, with your name correctly painted above it.",
+        "Uju had sent forty applications and heard nothing, until a small IT shop called with a strange opening line: “We searched your name before we read your CV.” Work checks you online before it shakes your hand. The employer, the client, the school — the first meeting now happens in a search box, and what the search returns should be you, tidy. This lesson builds the smallest respectable presence: not a performance, not a boast. A front door that has been swept, with your name correctly painted above it.",
       ),
       p(
         "Three pieces. Your CV as a PDF — the one-page honest CV from its own lesson — living in Drive, where any machine in any café can send it. Named properly: firstname-lastname-cv, not final-final2. A photograph that is your face: plain background, daylight, shoulders square — not the party crop with the sunglasses, however good the party was. And one professional profile on the network where work searches first: your name exactly as it reads on your certificates, one plain sentence saying what you do and what you want, and skills listed honestly — the things you can do today, not the things you plan to watch videos about someday.",
@@ -6639,10 +6638,10 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("Applying through the door, not the window"),
       p(
-        "The application itself is the upload lesson wearing a tie: the CV within the size limit, the bar allowed to finish, the tick screenshotted, the slip kept. It leaves from the email address that carries your name properly — the pocket lesson's account check, done before every send. And each application gets two sentences of its own: why this place, why you. A CV sprayed to ninety companies reads like a spray; the person reading knows within one line whether the letter was written to them or thrown at the wind. Two honest sentences cost four minutes and change everything.",
+        "The application itself is the upload lesson wearing a tie: the CV within the size limit, the bar allowed to finish, the tick screenshotted, the slip kept. It leaves from the email address that carries your name properly — the pocket lesson’s account check, done before every send. And each application gets two sentences of its own: why this place, why you. A CV sprayed to ninety companies reads like a spray; the person reading knows within one line whether the letter was written to them or thrown at the wind. Two honest sentences cost four minutes and change everything.",
       ),
       p(
-        "And the guard stays up, because the job listing is now a favourite costume of the old lies. A job that charges a fee is not a job — you have known that since the form lesson. The HR manager who interviews you on chat for ten minutes and needs a training kit, a file fee, a courier charge before you start is the prize message with a pay slip. Real interviews can be checked: the company's own site, the company's own address, a call you placed to a number you found yourself. Hurry, secrecy, fee — the three tells have never once retired.",
+        "And the guard stays up, because the job listing is now a favourite costume of the old lies. A job that charges a fee is not a job — you have known that since the form lesson. The “HR manager” who interviews you on chat for ten minutes and needs a training kit, a file fee, a courier charge before you start is the prize message with a pay slip. Real interviews can be checked: the company’s own site, the company’s own address, a call you placed to a number you found yourself. Hurry, secrecy, fee — the three tells have never once retired. Where would you verify an offer that arrived by chat this week? Not in the chat. In the company’s own house, by a road you chose.",
       ),
       fig(
         "/images/blog/cv-upload-portal.jpg",
@@ -6657,14 +6656,14 @@ export const blogPosts: BlogPost[] = [
       ]),
       h2("One name, one face, one true line"),
       p(
-        "The search will meet you in different rooms, so introduce yourself the same way in all of them. One name — the full name you use on your CV, spelled identically everywhere — one photograph that is your face at a business-centre studio or a clear window, and one line of true summary: data entry and spreadsheets, junior front-end, computer repairs and teaching. The line is a headline for the search engine and for the human eye; make it concrete, the way a shop sign names the trade. Then let the profile picture do its quiet work: the same face on the CV, on the professional network, on the mail avatar. Consistency is what turns scattered pages into a person.",
+        "The search will meet you in different rooms, so introduce yourself the same way in all of them. One name — the full name you use on your CV, spelled identically everywhere — one photograph that is your face at a business-centre studio or a clear window, and one line of true summary: data entry and spreadsheets, junior front-end, computer repairs and teaching. The line is a headline for the search engine and for the human eye; make it concrete, the way a shop sign names the trade. Then let the profile picture do its quiet work: the same face on the CV, on the professional network, on the mail avatar. Consistency is what turns scattered pages into a person. It looks like fussing over small things. It is actually the difference between a stranger and a name.",
       ),
       p(
-        "The rooms to stand in are few and real. The professional network where employers search first, the mail signature where clients arrive, and the CV in the drive where applications attach from. Everything else is decoration until these three are standing. And the search's slow justice deserves patience: it collects you over months, not days, which means the best week to start the profile is this one. Sweep the front door, put true words above it, and leave the window open on real work. The search will find all three eventually, in the same order a visitor would.",
+        "The rooms to stand in are few and real. The professional network where employers search first, the mail signature where clients arrive, and the CV in the drive where applications attach from. Everything else is decoration until these three are standing. And the search’s slow justice deserves patience: it collects you over months, not days — which means the best week to start the profile is this one.",
       ),
       h2("What the search finds, in time"),
       p(
-        "The profile grows quieter work than you expect: the poster you made for the shop, the books you kept, the spreadsheet that saved the school's fees — shared deliberately, the way the sharing lesson taught, never by accident. The search for your name should end at a door you are proud to open. That is the whole of what people call personal brand: a swept front door, true words above it, and real work visible through the window.",
+        "The profile grows quieter work than you expect: the poster you made for the shop, the books you kept, the spreadsheet that saved the school’s fees — shared deliberately, the way the sharing lesson taught, never by accident. The search for your name should end at a door you are proud to open. That is the whole of what people call personal brand: a swept front door, true words above it, and real work visible through the window. Sweep the door. The search will find it in the same order a visitor would.",
       ),
     ],
   },
@@ -8168,10 +8167,10 @@ export const blogPosts: BlogPost[] = [
       "Two desks facing each other in a small studio, two people working, one pointing at a screen.",
     body: [
       p(
-        "There is a day in every solo worker's life when the diary says yes to more than the hands can do. Refusing work you cannot carry is the first answer, and often the wise one. But if the extra work keeps knocking — if turning it away becomes a habit — then the question has changed from can I do this to can somebody do this with me. That question, asked honestly, is the birth of every studio, agency and small firm on your street. This lesson is the first hire, done properly.",
+        "Kola’s repair shop reached the day every solo worker meets: the diary said yes to more than his hands could do. Two schools wanted their labs serviced in the same week he was rebuilding a client’s network. Refusing work you cannot carry is the first answer, and often the wise one. But if the extra work keeps knocking — if turning it away becomes a habit — then the question has changed from “can I do this?” to “can somebody do this with me?” That question, asked honestly, is the birth of every studio, agency and small firm on your street. This lesson is the first hire, done properly.",
       ),
       p(
-        "Begin with what you know how to teach, because your first hand is not a genius you found; it is a person you will make good — the each-one-teach-one lesson, now wearing an employer's hat. Look where you already look for proof: the learning-in-public trail, the community answers, the small portfolio that shows finishing, not just flair. Pay fairly — the pricing lesson pointed at you now: know the floor of the work, pay above it, and pay on time, every time, without being chased; nothing travels faster on a street than an employer whose alert arrives late. Agree terms in writing even for a friend — the days, the pay, who owns the work — because the written quote lesson protects employers exactly as it protects freelancers. And start deliberately small: one paid trial project, reviewed honestly, before any standing arrangement. A trial is kindness — it lets both sides walk away cheap.",
+        "Begin with what you know how to teach, because your first hand is not a genius you found; it is a person you will make good — the each-one-teach-one lesson, now wearing an employer’s hat. Look where you already look for proof: the learning-in-public trail, the community answers, the small portfolio that shows finishing, not just flair. Pay fairly — the pricing lesson pointed at you now: know the floor of the work, pay above it, and pay on time, every time, without being chased; nothing travels faster on a street than an employer whose alert arrives late. Agree terms in writing even for a friend — the days, the pay, who owns the work — because the written-quote lesson protects employers exactly as it protects freelancers. And start deliberately small: one paid trial project, reviewed honestly, before any standing arrangement. A trial is kindness — it lets both sides walk away cheap.",
       ),
       fig(
         "/images/blog/two-desks-small-studio.jpg",
@@ -8180,10 +8179,13 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("The part nobody warns you about"),
       p(
-        "The moment a second hand joins, your work changes shape: a part of every week is now checking, teaching and deciding — and that part is the job. Quality control is the whole reputation: their work goes out under your name, so everything is reviewed before the client ever sees it — not because the hand is careless, but because the name is yours and the standard must be one. Teach the reasons, not just the steps — the teach lesson's law — because a hand who knows why the deposit comes first, why the update goes unasked, why the client's secret stays sealed, becomes a second standard instead of a second risk. And share the why of the business too: what a job actually pays, why a client was declined, what the books say. Hands who see the whole board protect it like owners.",
+        "The moment a second hand joins, your work changes shape: a part of every week is now checking, teaching and deciding — and that part is the job. Quality control is the whole reputation: their work goes out under your name, so everything is reviewed before the client ever sees it — not because the hand is careless, but because the name is yours and the standard must be one. Teach the reasons, not just the steps — the teaching lesson’s law — because a hand who knows why the deposit comes first, why the update goes unasked, why the client’s secret stays sealed, becomes a second standard instead of a second risk. And share the why of the business too: what a job actually pays, why a client was declined, what the books say. Hands who see the whole board protect it like owners. What part of your own week would you hand over first — and could you teach its reasons in one sitting? If not, that is the part to keep.",
       ),
       p(
-        "The arithmetic, kept honest by the books: your hour is now worth what the business earns divided by everything it pays — and the hire only makes sense while the hands you freed bring in more than the hands you pay. Watch it monthly, in the ledger of lesson one hundred and forty-three, and be brave enough to shrink as well as grow; a studio of two that lasts beats a studio of five that folds owing wages. But when it holds — when two desks hum and the checking hour becomes the best hour of your week — you will feel the real promotion happen: from person who works, to person who makes work. That is not a bigger ego. It is a bigger table, and the street eats from it.",
+        "The arithmetic, kept honest by the books: your hour is now worth what the business earns divided by everything it pays — and the hire only makes sense while the hands you freed bring in more than the hands you pay. Watch it monthly in the bookkeeper’s books, and be brave enough to shrink as well as grow; a studio of two that lasts beats a studio of five that folds owing wages. It looks like growth, hiring. It is actually a promise — and promises need ledgers.",
+      ),
+      p(
+        "But when it holds — when two desks hum and the checking hour becomes the best hour of your week — you will feel the real promotion happen: from person who works, to person who makes work. That is not a bigger ego. It is a bigger table, and the street eats from it.",
       ),
       fig(
         "/images/blog/paying-hand-first-wage.jpg",
@@ -8198,7 +8200,7 @@ export const blogPosts: BlogPost[] = [
       ]),
       h2("The table grows"),
       p(
-        "One hundred and twenty taught one person at a table. One hundred and forty-eight is the same table with a second chair — and the same laws: teach the reasons, pay the fair price, keep the written word, hold the standard when nobody is watching. Studios do not die of smallness; they die of forgotten laws. Keep them, and the second chair becomes a third, and the shop you once sat in as a stranger becomes the shop where somebody else learns what a Friday alert feels like — on time, in full, with a future behind it.",
+        "The standing-at-the-table lesson taught one person at a table. This lesson is the same table with a second chair — and the same laws: teach the reasons, pay the fair price, keep the written word, hold the standard when nobody is watching. Studios do not die of smallness; they die of forgotten laws. Keep them, and the second chair becomes a third, and the shop you once sat in as a stranger becomes the shop where somebody else learns what a Friday alert feels like — on time, in full, with a future behind it.",
       ),
     ],
   },
@@ -8467,10 +8469,10 @@ export const blogPosts: BlogPost[] = [
       "A candidate in a video interview on a laptop, neatly dressed, a notebook beside the keyboard.",
     body: [
       p(
-        "The interview used to begin when you walked through the office door. Now it begins on a screen — the hiring manager in Lagos, the panel in London, you in your bedroom with a data plan and a chance. The good news: the screen is a room you fully control, and the candidate who prepares the room as carefully as the answers is already ahead of most. This lesson is the preparation, in the order it should happen.",
+        "Munira’s first real interview was not in an office at all. The hiring manager was in Lagos, the panel in London, and Munira was in her bedroom in Ibadan with a data plan and a chance. The interview used to begin when you walked through the office door; now it begins on a screen. The good news: the screen is a room you fully control, and the candidate who prepares the room as carefully as the answers is already ahead of most. This lesson is the preparation, in the order it should happen.",
       ),
       p(
-        "The day before: the test run. Install or update the app the panel named — the meeting link says which — and make one test call to a friend: camera working, microphone working, headphones with a mic better again. Charge the laptop fully and keep the charger plugged in for the call; put the phone on silent in another room, and set a backup tap — the hotspot lesson — in case the Wi-Fi chooses the hour to misbehave. Then stage the room. Light from a window facing you, never behind you — a bright window turns you into a silhouette with opinions. The camera at eye level on a stand of books, so you are not looming down like a judge or grovelling up like a suspect. Behind you: a plain wall or a tidy shelf — the panel will see it and judge it, because humans cannot help themselves.",
+        "The day before: the test run. Install or update the app the panel named — the meeting link says which — and make one test call to a friend: camera working, microphone working, headphones with a mic better again. Charge the laptop fully and keep the charger plugged in for the call; put the phone on silent in another room, and set a backup tap — the hotspot lesson — in case the Wi-Fi chooses this hour to misbehave. Then stage the room. Light from a window facing you, never behind you — a bright window turns you into a silhouette with opinions. The camera at eye level on a stand of books, so you are not looming down like a judge or grovelling up like a suspect. Behind you: a plain wall or a tidy shelf — the panel will see it and judge it, because humans cannot help themselves.",
       ),
       fig(
         "/images/blog/interview-video-call.jpg",
@@ -8479,10 +8481,10 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("The hour, and the manners"),
       p(
-        "Tell the house. A Nigerian interview call dies more often to a gate crash, a blender, or an unexpected visitor than to any technology — brief everybody whose noise can reach you, and put the generator on quiet standby if the grid is in one of its moods. Dress fully — yes, including what the camera cannot see; the stand-up-for-the-document surprise has ended careers at the two-minute mark. Join five minutes early, camera on, sitting already: the panel's first sight of you should be ready, not rising. Keep your CV open on the screen beside the call, your questions written in the notebook, a glass of water within reach.",
+        "Tell the house. A Nigerian interview call dies more often to a gate crash, a blender, or an unexpected visitor than to any technology — brief everybody whose noise can reach you, and put the generator on quiet standby if the grid is in one of its moods. Dress fully — yes, including what the camera cannot see; the stand-up-for-the-document surprise has ended careers at the two-minute mark. Join five minutes early, camera on, sitting already: the panel’s first sight of you should be ready, not rising. Keep your CV open beside the call, your questions written in the notebook, a glass of water within reach. What is the first thing a panel sees — your answer, or your room? Your room. Stage it first.",
       ),
       p(
-        "Then the old manners, on a new road. Look at the camera when you answer — the small dark dot above the screen — not at your own magnificent face; eye contact has moved address. Speak a touch slower than feels natural; networks eat consonants. When the connection stutters, stop, wait, ask did that land? — it reads as competence, not weakness. Answer in the letter's spirit: short, ordered, honest — one point at a time, the way lesson one hundred and fifty-six's emails will be written. And when it ends, thank them by name, leave the call before celebrating, and send the thank-you note the same day. The screen interview is still a visit: you are the guest, the panel is the parlour, and the oldest courtesy is the newest bandwidth.",
+        "Then the old manners, on a new road. Look at the camera when you answer — the small dark dot above the screen — not at your own magnificent face; eye contact has moved address. Speak a touch slower than feels natural; networks eat consonants. When the connection stutters, stop, wait, ask “did that land?” — it reads as competence, not weakness. Answer in the email lesson’s spirit: short, ordered, honest, one point at a time. And when it ends, thank them by name, leave the call before celebrating, and send the thank-you note the same day. The screen interview is still a visit: you are the guest, the panel is the parlour, and the oldest courtesy is the newest bandwidth.",
       ),
       fig(
         "/images/blog/interview-desk-setup.jpg",
@@ -8497,7 +8499,7 @@ export const blogPosts: BlogPost[] = [
       ]),
       h2("The room you control"),
       p(
-        "The office candidate competes in a room the employer built. You compete in a room you built — its light, its sound, its calm. That is not a disadvantage; it is a rehearsal. Every habit this lesson installs — the test run, the staged room, the briefed house, the early arrival — is the same discipline the remote lesson asked of the paid professional. Practise it at the interview, and you arrive at the job already fluent in its daily grammar.",
+        "The office candidate competes in a room the employer built. You compete in a room you built — its light, its sound, its calm. That is not a disadvantage; it is a rehearsal. Every habit this lesson installs — the test run, the staged room, the briefed house, the early arrival — is the same discipline the remote-work lesson asked of the paid professional. Practise it at the interview, and you arrive at the job already fluent in its daily grammar. Munira got the second interview. The panel remembered her room before her answers — and then her answers, which the room had protected.",
       ),
     ],
   },
@@ -8766,10 +8768,10 @@ export const blogPosts: BlogPost[] = [
       "A person comparing an old phone and a new phone side by side at a desk, both open on settings.",
     body: [
       p(
-        "Here is a fact nobody enjoys saying aloud: half the specific tools in these one hundred and sixty notes will be renamed, rebuilt or retired within ten years. The apps will change their buttons, the platforms will change their rules, the acronyms of lesson thirteen's world will grow new letters. And yet the people these notes describe — the calm analyst, the honest seller, the teacher at the table — will still be working, because what the tools were carrying was never the skill. The upgrade habit is the last lesson of this chapter: how to keep current for decades without chasing every shiny thing off a cliff.",
+        "Ahmed has been repairing computers on the same street for eleven years, and he keeps a small ritual every birthday week: he walks the year’s tool graveyard in his head — the app that changed its buttons, the platform that changed its rules, the acronym from the careers chapter that grew new letters — and asks one cold question. Here is a fact nobody enjoys saying aloud: half the specific tools in these one hundred and sixty notes will be renamed, rebuilt or retired within ten years. And yet the people these notes describe — the calm analyst, the honest seller, the teacher at the table — will still be working, because what the tools were carrying was never the skill.",
       ),
       p(
-        "The habit has three parts, and the first is the fence-check turned inward: the yearly skills audit. Once a year — your birthday week, same as the cleaning lesson — sit with your trade's adverts and your own work and ask coldly: what changed this year? What are the new names asking for? What did I keep doing the long way because the short way arrived while I was busy? Write three lines: one skill to deepen, one tool to learn, one habit to drop. The audit is not self-criticism; it is maintenance, the fence walk for the only compound that is entirely yours.",
+        "The upgrade habit is the last lesson of this stretch: how to keep current for decades without chasing every shiny thing off a cliff. It has three parts, and the first is the fence-check turned inward: the yearly skills audit. Once a year — your birthday week, same as the cleaning lesson — sit with your trade’s adverts and your own work and ask coldly: what changed this year? What are the new names asking for? What did I keep doing the long way because the short way arrived while I was busy? Write three lines: one skill to deepen, one tool to learn, one habit to drop. The audit is not self-criticism; it is maintenance — the fence walk for the only compound that is entirely yours.",
       ),
       fig(
         "/images/blog/upgrade-shelf-books.jpg",
@@ -8778,10 +8780,13 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("One tool a quarter, unlearned with grace"),
       p(
-        "The second part is pace. One new tool per quarter, learned properly by the free-learning method — one month, hands on keys, one real thing built — beats twelve tools dabbled at, the way one finished course beats a gallery of beginnings. Choose by the adverts you actually want and the work actually in front of you, not by the loudest launch of the season. The third part is the harder muscle: unlearning. When the tool changes — the menu moved, the name changed, the road you had memorised rebuilt — the frustration you feel is the old habit fighting the new map. Give it a week and the free videos, the way every migration in your digital life has gone: clumsy on Tuesday, fluent by Friday. The professionals you admire are not people who never unlearned. They are people who unlearn quickly and without ceremony, again and again, until the unlearning itself became the skill.",
+        "The second part is pace. One new tool per quarter, learned properly by the free-learning method — one month, hands on keys, one real thing built — beats twelve tools dabbled at, the way one finished course beats a gallery of beginnings. Choose by the adverts you actually want and the work actually in front of you, not by the loudest launch of the season.",
       ),
       p(
-        "And teach the upgrades onward — the each-one rule, forever. The colleague you walk through the new interface today is the person who walks you through the next one next year; that is how offices, families and this academy actually stay current. These notes will age exactly as all notes do; the habits underneath — verify before you trust, save before you work, pause before you pay, teach before you leave — are the cargo that survives every vehicle. When the machine of 2036 looks back at the machine of this page, the shelf will be different and the reader will be the same kind of person: the one who sat down, named the parts, and kept showing up. That was always the curriculum. It still is. Go and audit your fence.",
+        "The third part is the harder muscle: unlearning. When the tool changes — the menu moved, the name changed, the road you had memorised rebuilt — the frustration you feel is the old habit fighting the new map. Give it a week and the free videos, the way every migration in your digital life has gone: clumsy on Tuesday, fluent by Friday. One contrast to hold onto: it looks like falling behind, this forgetting of old menus. It is actually the trade keeping time. The professionals you admire are not people who never unlearned. They are people who unlearn quickly and without ceremony, again and again, until the unlearning itself became the skill. What did you unlearn this year — and how long did you grieve before you learned the new map? Honest answers here are worth more than any tool list.",
+      ),
+      p(
+        "And teach the upgrades onward — the each-one rule, forever. The colleague you walk through the new interface today is the person who walks you through the next one next year; that is how offices, families and this academy actually stay current. These notes will age exactly as all notes do; the habits underneath — verify before you trust, save before you work, pause before you pay, teach before you leave — are the cargo that survives every vehicle.",
       ),
       fig(
         "/images/blog/learn-new-tool-screen.jpg",
@@ -8796,7 +8801,7 @@ export const blogPosts: BlogPost[] = [
       ]),
       h2("The shelf, and the road"),
       p(
-        "One hundred and sixty notes. From the dark screen of lesson one to the habit that outlasts every screen to come. The chapter closes, the notes stay open, and the rule of the whole shelf says goodbye the only way it knows: whatever changes, sit down, name the parts, do the hours, and teach somebody on your way out. The road will keep being rebuilt. So will you. That is not the tragedy of the trade — it is the trade.",
+        "One hundred and sixty notes. From the dark screen of the very first lesson to the habit that outlasts every screen to come. The chapter closes, the notes stay open, and the rule of the whole shelf says goodbye the only way it knows: whatever changes, sit down, name the parts, do the hours, and teach somebody on your way out. The road will keep being rebuilt. So will you. That is not the tragedy of the trade — it is the trade. Go and audit your fence.",
       ),
     ],
   },
