@@ -4508,10 +4508,10 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A simple spreadsheet with a column sorted A to Z.",
     body: [
       p(
-        "A register in a book is in the order people arrived. A spreadsheet can line the same rows up by name, or by amount, or by date. Sort is that lining up. The danger is sorting one column while the neighbours stay still — Amaka keeps 500, the 500 slides under Chidi, and the book is now a lie. This lesson is select the table, sort by one header, and undo if the amounts look drunk.",
+        "Fausat keeps the association’s fee register in the order people arrived. A spreadsheet can line the same rows up by name, or by amount, or by date — sort is that lining up. The danger is sorting one column while the neighbours stay still: Amaka keeps 500, the 500 slides under Chidi, and the book is now a lie. This lesson is select the table, sort by one header, and undo if the amounts look drunk.",
       ),
       p(
-        "Click any cell inside the table. Data, Sort, or the small A↓Z button. Tell it which column is the key — Name, or Amount. A to Z, or smallest to largest. Expand the selection if it asks. Yes, expand. That is the machine saying “do you mean the whole register?” You do. Headers: tick “my data has headers” so Name does not sort into the middle of the list as if it were a person.",
+        "Click any cell inside the table. Data, Sort, or the small A↓Z button. Tell it which column is the key — Name, or Amount. A to Z, or smallest to largest. Expand the selection if it asks. Yes, expand — that is the machine saying “do you mean the whole register?” You do. And tick “my data has headers” so the word Amount does not sort into the middle of the list as if it were a person. Before we walk further: when sort is finished, what must still be true of every row? That its facts stayed married to it. Name, amount, date — one family, moved together.",
       ),
       fig(
         "/images/blog/spreadsheet-sort.jpg",
@@ -4523,7 +4523,7 @@ export const blogPosts: BlogPost[] = [
         "Amounts stored as numbers sort by size. Amounts stored as words — ₦500, or 500 with a space — sort as text, which puts 1000 before 200 because 1 is before 2. You met this in the grid lesson. Format the column as number, or type digits only, then sort. Dates need to be real dates, not “March 3” typed as a story in some cells and 03/03 in others. Clean, then sort. Sorting will not clean.",
       ),
       p(
-        "A filter — the funnel — hides rows that do not match. It is not sort. It is a pair of blinkers. Useful when the list is long. Clear the filter when you are done or you will print a half register and call it complete. Undo undoes a sort in Excel and Sheets if you have not closed. Save a copy before you sort a fees book you cannot rebuild. Save As, fees-2026-sorted, leave fees-2026 alone.",
+        "A filter — the funnel — hides rows that do not match. It is not sort. It is a pair of blinkers: useful when the list is long, dangerous when you forget them and print a half register called complete. Clear the filter when you are done. And Undo undoes a sort in Excel and Sheets if you have not closed the file — still, save a copy before you sort a fees book you cannot rebuild. Save As, fees-2026-sorted; leave fees-2026 alone.",
       ),
       fig(
         "/images/blog/sorted-list.jpg",
@@ -4538,10 +4538,10 @@ export const blogPosts: BlogPost[] = [
       ]),
       h2("The header row is not a pupil"),
       p(
-        "Every sorting accident of the world begins the same way: one cell of the header row is selected, the sort walks, and the word Amount goes marching down to row thirty-four while the figures dance above it. The prevention is in the checkbox the sort window carries — the little line that says the data has headers. Tick it, or make a habit of selecting any cell inside the table and letting the machine find the rectangle by itself. The register sorts only the pupils. The names at the top stay at the top.",
+        "Every sorting accident of the world begins the same way: one cell of the header row is selected, the sort walks, and the word Amount goes marching down to row thirty-four while the figures dance above it. The prevention is the checkbox the sort window carries — the little line that says the data has headers. Tick it, or make a habit of clicking any cell inside the table and letting the machine find the rectangle by itself. The register sorts only the pupils. The names at the top stay at the top.",
       ),
       p(
-        "Then sort with the second sense awake: ascending from small to big, descending from big to small, and for names, alphabetical by whatever letter the sort window listens to. Numbers sort as numbers and text sorts as text, so a column of amounts mixed with the word pending will arrive with an order you should look at before printing. One more courtesy to your future self: sort a copy if the row order carries meaning beyond the sort — a timeline, a class list in roll-call order. The sheet can always rebuild the original order by the column you keep for numbering. Number first, sort forever.",
+        "Then sort with the second sense awake: ascending from small to big, descending from big to small; for names, alphabetical by whatever letter the sort window listens to. Numbers sort as numbers and text as text, so a column of amounts mixed with the word pending will arrive with an order to look at before printing. One more courtesy to your future self: sort a copy if the row order carries meaning beyond the sort — a timeline, a class list in roll-call order. Keep one numbering column first, and the sheet can always rebuild the original order. Number first, sort forever.",
       ),
       h2("Print after, not before"),
       p(
@@ -5901,7 +5901,7 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A woman reading an email on her phone in an office corridor.",
     body: [
       p(
-        "Your first email was written at a desk, with a keyboard wide enough to be honest. But the letter does not wait at the desk. The interview invitation, the school's admission, the client's correction — they arrive while the phone is already in your hand. So the desk folds into the pocket: the Gmail app, or the phone's own mail app, and everything the desk taught still applies, only smaller.",
+        "Patience’s first email was written at a desk, with a keyboard wide enough to be honest. But the letter does not wait at the desk. The interview invitation, the school’s admission, the client’s correction — they arrived while the phone was already in her hand, one of them with a deadline inside. So the desk folds into the pocket: the Gmail app, or the phone’s own mail app, and everything the desk taught still applies, only smaller.",
       ),
       p(
         "Set it up once. Open the app, choose to add an existing account, give the address you made on purpose in its own lesson, type the password once. The app keeps it; you never type it again on that phone. If you carry two addresses — one serious, one from your younger years — add both. They sit side by side, each labelled, and the app asks which one is speaking every time you compose. Look at that label every time. The classic embarrassment of a working life is a CV that went out under the joke address.",
@@ -5913,11 +5913,11 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("Reading on glass"),
       p(
-        "Attachments open with a tap: the CV in PDF, the invoice, the school's letter. If the phone says it cannot open a file, that is the open-with lesson again — the file is not broken, it needs to be handed to the right program. Reply sends to one person. Reply all sends to the whole corridor, which you met at the desk and which is no safer for being small. Read the To line before the first word of your reply. Thumbs are quick; that is exactly why you slow them at the top of a letter.",
+        "Attachments open with a tap: the CV in PDF, the invoice, the school’s letter. If the phone says it cannot open a file, that is the open-with lesson again — the file is not broken; it needs to be handed to the right program. Reply sends to one person. Reply all sends to the whole corridor, which you met at the desk and which is no safer for being small. Read the To line before the first word of your reply. Thumbs are quick; that is exactly why you slow them at the top of a letter. Where is the danger concentrated in a pocket letter — the writing, or the sending? The sending. The writing is the same thinking; the send button is just closer to your thumb.",
       ),
       h2("Attaching from the pocket"),
       p(
-        "The paperclip is there. Compose, look for the attachment symbol, and the phone offers where from: Files, Drive, or the camera. Files walks to the scan you made in the documents lesson. Drive reaches whatever you have parked in the cloud. The camera takes something new — right for a form that wants your face today, wrong for a certificate that already exists scanned. Attach, then wait for the file's name to appear above the message before you send. Sending before the attachment finishes is posting the envelope before the letter is inside.",
+        "The paperclip is there. Compose, look for the attachment symbol, and the phone offers where from: Files, Drive, or the camera. Files walks to the scan you made in the documents lesson. Drive reaches whatever you have parked in the cloud. The camera takes something new — right for a form that wants your face today, wrong for a certificate that already exists scanned. Attach, then wait for the file’s name to appear above the message before you send. Sending before the attachment finishes is posting the envelope before the letter is inside.",
       ),
       fig(
         "/images/blog/attach-from-phone.jpg",
@@ -5925,21 +5925,21 @@ export const blogPosts: BlogPost[] = [
         "The paperclip, the chooser, the file's name sitting above the text like a label on a parcel. Then, and only then, send.",
       ),
       ul([
-        "Add your main address to the phone's mail app, and check the label it now carries.",
+        "Add your main address to the phone’s mail app, and check the label it now carries.",
         "Email yourself a PDF. Open the attachment, then reply to it from the phone.",
         "Attach one file — a scan, not a camera photo — to a draft. Do not send the draft. Look at how the attachment sits.",
         "Read your signature on the phone and shorten it to your name and number, nothing that apologises.",
       ]),
       h2("One inbox, standing in two rooms"),
       p(
-        "The pocket and the desk share one post office, and the office keeps them in step: read a letter on the phone and it stands as read on the laptop; reply from the desk and the phone knows the conversation is finished. This syncing is the reason one mail app on four devices is still one inbox and not four responsibilities. Use it deliberately. The phone is excellent at the first reading — the glance that sorts today's post into answer now, answer later, and rubbish — and the desk is where the real letters get written, in the same thread, without a second copy of anything anywhere.",
+        "The pocket and the desk share one post office, and the office keeps them in step: read a letter on the phone and it stands as read on the laptop; reply from the desk and the phone knows the conversation is finished. This syncing is why one mail app on four devices is still one inbox and not four responsibilities. Use it deliberately. The phone is excellent at the first reading — the glance that sorts today’s post into answer now, answer later, and rubbish — and the desk is where the real letters get written, in the same thread, without a second copy of anything anywhere.",
       ),
       p(
-        "The one discipline the pocket adds is to the rubbish. Deleting on the phone deletes in the office; the letter is gone from the desk as well, so the glance must be careful before the swipe. Archive instead of delete when in doubt — the letter leaves the inbox and stays findable, the digital version of a filed paper rather than a binned one. And the attachments that matter — the school's letter, the invoice — should walk out of the mail into your papers folder the day they arrive. The inbox is a doormat. Your documents live in the house.",
+        "The one discipline the pocket adds is to the rubbish. Deleting on the phone deletes in the office; the letter is gone from the desk as well, so the glance must be careful before the swipe. Archive instead of delete when in doubt — the letter leaves the inbox and stays findable, the digital version of a filed paper rather than a binned one. It looks like tidiness, this archive habit. Actually it is the drawer lesson, applied to post. And the attachments that matter — the school’s letter, the invoice — should walk out of the mail into your papers folder the day they arrive. The inbox is a doormat. Your documents live in the house.",
       ),
       h2("Notifications without drowning"),
       p(
-        "Email is not WhatsApp, and it must not learn to shout like it. The letter does not need an answer in four minutes; it needs an answer today, thought through. In the app's settings, let the important inbox notify you and let the adverts pass in silence — most apps sort this for you, if you look once. A short signature saying who you are is enough; the phone does not need to tell the world it is a phone. The desk gave you the manners. The pocket keeps them, quietly.",
+        "Email is not WhatsApp, and it must not learn to shout like it. The letter does not need an answer in four minutes; it needs an answer today, thought through. In the app’s settings, let the important inbox notify you and let the adverts pass in silence — most apps sort this for you, if you look once. A short signature saying who you are is enough; the phone does not need to tell the world it is a phone. The desk gave you the manners. The pocket keeps them, quietly.",
       ),
     ],
   },
@@ -7340,10 +7340,10 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A woman studying a spreadsheet of sales figures on a laptop, pen in hand.",
     body: [
       p(
-        "Every business here keeps records whether it means to or not: the shop's sales book, the hospital's register, the bank's transactions, the school's fees. Almost nobody reads them well. The data analyst is the person who does — who turns the pile into answers: which goods move in June, which ward wastes medicine, which customers stopped coming and when. When people list careers in data analytics, this is the trade they mean, and it sits behind more Nigerian businesses than the title suggests: shops, fintechs, telcos, hospitals, NGOs, government — anyone with a pile and a decision to make.",
+        "Chukwuma has kept the sales book for his uncle’s shop since he was sixteen — four years of names, quantities and naira, in a hand only the family can read. What he had never done, until a visitor asked one question over the counter, was read it back: which goods move in June? The visitor called the asking “data analytics,” and laughed at Chukwuma’s surprise. Every business here keeps records whether it means to or not: the shop’s sales book, the hospital’s register, the bank’s transactions, the school’s fees. Almost nobody reads them well. The data analyst is the person who does — who turns the pile into answers: which goods move in June, which ward wastes medicine, which customers stopped coming and when.",
       ),
       p(
-        "The work has a rhythm, and you have already practised its first step without knowing. Collect: gather the records into one place, clean — the machine learning lesson's confession is also this trade's daily bread, missing names, mistyped dates, the same customer entered three ways — then analyse: totals, comparisons, patterns, the grid lesson's formulas grown serious. Then the step that separates analysts from spreadsheet keepers: explain. A chart a busy manager understands in ten seconds, a sentence that says what to do by Friday. Analysis that never becomes a decision is decoration. The trade is reading, and then being believed.",
+        "The work has a rhythm, and you have already practised its first step without knowing. Collect: gather the records into one place. Clean — the machine-learning lesson’s confession is this trade’s daily bread too: missing names, mistyped dates, the same customer entered three ways. Then analyse: totals, comparisons, patterns — the grid lesson’s formulas grown serious. Then the step that separates analysts from spreadsheet keepers: explain. A chart a busy manager understands in ten seconds; a sentence that says what to do by Friday. Analysis that never becomes a decision is decoration. The trade is reading, and then being believed.",
       ),
       fig(
         "/images/blog/analyst-spreadsheet.jpg",
@@ -7352,10 +7352,10 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("The tool ladder, and what each rung pays"),
       p(
-        "The ladder is public knowledge. Rung one is the spreadsheet — Excel or Google Sheets — and it carries a shocking share of Nigerian business analysis all by itself: sort, filter, the money formats, the formulas filled down, the pivot table. Rung two is SQL, the language for asking databases questions directly — show me every customer who bought twice and stopped in March — which is less programming than precise questioning, the find lesson with a salary. Rung three is a BI tool — Power BI or Tableau — where the dashboards live that directors open on Monday mornings. Python comes later, for the heavier lifting, and the data scientist of lesson one hundred and twenty-nine is this same road walked further — more statistics, more machine, more pay.",
+        "The ladder is public knowledge. Rung one is the spreadsheet — Excel or Google Sheets — and it carries a shocking share of Nigerian business analysis all by itself: sort, filter, the money formats, the formulas filled down, the pivot table. Rung two is SQL, the language for asking databases questions directly — show me every customer who bought twice and stopped in March — which is less programming than precise questioning, the find lesson with a salary. Rung three is a BI tool — Power BI or Tableau — where the dashboards live that directors open on Monday mornings. Python comes later, for the heavier lifting, and the data-scientist lesson further along this road is the same path walked further: more statistics, more machine, more pay.",
       ),
       p(
-        "The money, honestly: a junior analyst in Nigeria commonly starts around the range a fresh graduate hopes for and rises quickly with proof — senior analysts and those carrying SQL and BI comfortably earn multiples of entry pay, and remote work puts international tables in play, exactly as the analyst and engineer lessons described. What moves the number is not certificates. It is the portfolio of questions you have answered, and how plainly you can make a stranger see the answer. The learning-online lesson applies in full: the tools have free versions, the tutorials are free, the discrimination is hours.",
+        "The money, honestly: a junior analyst in Nigeria commonly starts around the range a fresh graduate hopes for, and rises quickly with proof — senior analysts and those carrying SQL and BI comfortably earn multiples of entry pay, and remote work puts international tables in play, exactly as the analyst and engineer lessons described. What moves the number is not certificates. It is the portfolio of questions you have answered, and how plainly you can make a stranger see the answer. The learning-online lesson applies in full: the tools have free versions, the tutorials are free, the discrimination is hours. So one retrieval before the ladder gets taller: what separates an analyst from a spreadsheet keeper? Not formulas — the explaining.",
       ),
       fig(
         "/images/blog/sql-query-screen.jpg",
@@ -7363,14 +7363,14 @@ export const blogPosts: BlogPost[] = [
         "Rung two. Four lines of careful asking, and a database that answers in seconds with ten thousand rows of truth.",
       ),
       ul([
-        "Practise the rhythm this week on any record you own: the shop's book, the house expenses. Clean, then ask it three questions.",
+        "Practise the rhythm this week on any record you own: the shop’s book, the house expenses. Clean, then ask it three questions.",
         "Learn the pivot table properly — one evening, free videos. It is the single most respected spreadsheet skill in interviews.",
         "When ready for SQL, practise on any free online database course: twenty hours of it changes how you see every business.",
-        "The academy's data analytics course walks this ladder with machines and teachers in the room — ask at the front desk, or begin free and climb.",
+        "The academy’s data analytics course walks this ladder with machines and teachers in the room — ask at the front desk, or begin free and climb.",
       ]),
       h2("Why the trade suits this place"),
       p(
-        "Because Nigeria is not short of data — it is short of readers. Every problem anyone complains about, fuel, queues, churn, stock, sits on a pile of records nobody has calmly counted. The analyst is the person who counts, and in a country that is learning to measure itself, the person who can say this is what the numbers actually say, and here is the picture, is quietly becoming one of the most useful people in every room. You already read a grid, sort a column, and fill a formula down. The career is those habits, taken seriously, with a decision waiting at the end of every table.",
+        "Because Nigeria is not short of data — it is short of readers. Every problem anyone complains about — fuel, queues, churn, stock — sits on a pile of records nobody has calmly counted. The analyst is the person who counts, and in a country that is learning to measure itself, the person who can say “this is what the numbers actually say, and here is the picture,” is quietly becoming one of the most useful people in every room. Chukwuma still keeps the book in the family hand. He just answers June’s question now in ten seconds — and the visitor has become a customer. You already read a grid, sort a column, and fill a formula down. The career is those habits, taken seriously, with a decision waiting at the end of every table.",
       ),
     ],
   },
@@ -7723,10 +7723,10 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A hand writing figures into a notebook beside a calculator and a laptop.",
     body: [
       p(
-        "Every trade in this chapter ends at the same awkward table: the moment the price must be said. The new freelancer's tongue trips — they halve the number, apologise while saying it, and spend the job resenting the work. This lesson is the antidote, and it begins with a redefinition: a price is not a confession of your worth. It is a tool — with a floor beneath it, a market around it, and a value above it — and like every tool on this shelf, it is learned by method, not by mood.",
+        "Ronke quoted her first flyer design at half of what she had calculated, apologised twice while saying the number, and spent the whole job resenting the work. Every trade in this stretch ends at the same awkward table: the moment the price must be said. The new freelancer’s tongue trips — they halve the number, apologise while saying it, and pay for the privilege in resentment. This lesson is the antidote, and it begins with a redefinition: a price is not a confession of your worth. It is a tool — with a floor beneath it, a market around it, and a value above it — and like every tool on this shelf, it is learned by method, not by mood.",
       ),
       p(
-        "The three questions behind any honest quote. The floor: what do your hours, data, transport and skill actually cost you — below this line every job is charity, and charity is a fine thing that belongs in church, not in invoices. The market: what do others ask for this work, at your level, in this city — the selling lesson's walk around the market, applied to your own labour; price near them, not beneath them by magic. The value: what is the outcome worth to the client — the flyer that fills a hall, the site that answers customers at midnight, the books that survive an audit. Beginners quote the floor and apologise; professionals quote the value and explain. You were already taught the instinct — lesson one hundred and thirteen: sentiment is a tax no buyer pays. Charge for the outcome, and never so low that you resent the work; resentment is the most expensive hidden fee in freelancing.",
+        "The three questions behind any honest quote. The floor: what do your hours, data, transport and skill actually cost you — below this line every job is charity, and charity is a fine thing that belongs in church, not in invoices. The market: what do others ask for this work, at your level, in this city — the selling lesson’s walk around the market, applied to your own labour; price near them, not beneath them by magic. The value: what is the outcome worth to the client — the flyer that fills a hall, the site that answers customers at midnight, the books that survive an audit. Beginners quote the floor and apologise; professionals quote the value and explain. The selling lesson already taught the instinct: sentiment is a tax no buyer pays. Charge for the outcome, and never so low that you resent the work; resentment is the most expensive hidden fee in freelancing. Where would a shopkeeper start if asked for the price of cloth — with her costs, her neighbours’ prices, or the wedding the cloth is for? All three, in that order, then one calm number.",
       ),
       fig(
         "/images/blog/invoice-notebook-writing.jpg",
@@ -7735,10 +7735,10 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("The manners that protect the number"),
       p(
-        "Quote in writing, always — one message: what will be delivered, by when, for how much, revisions bounded, payment split. Take a deposit on anything substantial, half or near it, before work begins; the deposit is not distrust, it is the shape of seriousness, and the client who resents it has told you something useful. Bound revisions — the second redesign is a new job, said with a smile and the written brief. And resist the three classic discounts: the friend price for a business that can pay, the exposure payment — a corpse cannot spend exposure, and neither can a portfolio bank it from a client who never pays — and the urgency discount, where their deadline becomes your discount. The family word lesson's rule applies at the pricing table too: the people who pressure you hardest about money are usually the ones the money was never meant to come from.",
+        "Quote in writing, always — one message: what will be delivered, by when, for how much, revisions bounded, payment split. Take a deposit on anything substantial, half or near it, before work begins; the deposit is not distrust, it is the shape of seriousness, and the client who resents it has told you something useful. Bound revisions — the second redesign is a new job, said with a smile and the written brief.",
       ),
       p(
-        "Then raising, which is the part everyone fears and every professional eventually does: new clients get the new price immediately — the next quote is higher, said plainly; existing clients get notice and warmth — from next month my fee is this, and here is what the year together has built. The good ones stay. The ones who leave were usually the ones holding the floor beneath your market. The catalog's freelancer course works this ground with real numbers and real scripts; the free road is to practise the sentences aloud until your voice stops apologising. The work deserves a price said without a tremble — and so do you, which in this trade are the same sentence.",
+        "And resist the three classic discounts: the friend price for a business that can pay; the exposure payment — a corpse cannot spend exposure, and neither can a portfolio bank it from a client who never pays; and the urgency discount, where their deadline becomes your discount. The family-word lesson’s rule applies at the pricing table too: the people who pressure you hardest about money are usually the ones the money was never meant to come from. It looks like kindness, the discount reflex. It is actually a loan the client never asked to borrow — and you are the one who pays the interest.",
       ),
       fig(
         "/images/blog/quote-message-phone.jpg",
@@ -7748,9 +7748,12 @@ export const blogPosts: BlogPost[] = [
       ul([
         "Calculate your floor tonight: hours, data, transport, tools — the number below which you do not work for businesses.",
         "Walk the market for your trade and write your range. Quote inside it, never below the floor, and stop apologising in the sentence.",
-        "Adopt the written quote and the deposit this week. Practice on the next job, however small.",
+        "Adopt the written quote and the deposit this week. Practise on the next job, however small.",
         "Say the raising sentences aloud until they are boring: from next month, my fee is this. Boring is the goal.",
       ]),
+      p(
+        "Then raising, which is the part everyone fears and every professional eventually does: new clients get the new price immediately — the next quote is higher, said plainly; existing clients get notice and warmth — “from next month my fee is this, and here is what the year together has built.” The good ones stay. The ones who leave were usually the ones holding the floor beneath your market. The catalog’s freelancer course works this ground with real numbers and real scripts; the free road is to practise the sentences aloud until your voice stops apologising. The work deserves a price said without a tremble — and so do you, which in this trade are the same sentence.",
+      ),
       h2("The number, said plainly"),
       p(
         "Everything on this shelf has been training for calm at decisive moments — the pause before the link, the name before the confirm, the plate before the door. The pricing moment is that same decisive instant, wearing your own hat: the pause before the number, said plainly, held kindly. Quote the value, take the deposit, bound the revisions, raise without apology. The trade that pays a person properly is built from these small held lines, one quote at a time — and the confidence clients actually respect was never arrogance. It was preparation, with a figure attached.",
@@ -7914,10 +7917,10 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "Two bank cards and a small ledger notebook on a desk, one card marked for business.",
     body: [
       p(
-        "The first payments have started arriving, and with them the oldest trap of the one-person business: the money that comes in and vanishes, uncounted, into the same pocket as transport and tomatoes. Six months later the work was real but the profit is a rumour. The cure is not an accountant — not yet. The cure is four small habits, all of them things you already know how to do, applied to your own money with the discipline you have been applying to other people's systems since lesson one.",
+        "Adanna’s bead business took its first real contract in March, and by August the money had done its oldest trick: arrived, mixed with the house money, and vanished into transport and tomatoes. Six months of real work, and the profit was a rumour. The first payments have started arriving for you too, perhaps — and with them the same trap. The cure is not an accountant. Not yet. The cure is four small habits, all of them things you already know how to do, applied to your own money with the discipline you have been applying to other people’s systems since the first lesson.",
       ),
       p(
-        "Habit one: separate the money. A second account — the bank app lesson's two accounts, now with a purpose — receives every business payment and pays every business cost; personal money is transferred out like a salary, decided, not nibbled. Habit two: record every in and out, weekly, fifteen minutes — the weekly money list from lesson eighty-four, grown up: what came in, from whom; what went out, for what. A notebook works; a spreadsheet works better; the discipline works best of all. Habit three: split every payment the day it lands — set aside a slice for tax, because the government's interest in small business is maturing here too, and a slice for rain, because laptops die in the middle of jobs and clients do not extend deadlines for fun. What remains is profit you can actually spend, without owing anybody.",
+        "Habit one: separate the money. A second account — the bank-app lesson’s two accounts, now with a purpose — receives every business payment and pays every business cost; personal money is transferred out like a salary, decided, not nibbled. Habit two: record every in and out, weekly, fifteen minutes — the weekly money list, grown up: what came in, from whom; what went out, for what. A notebook works; a spreadsheet works better; the discipline works best of all. Habit three: split every payment the day it lands — set aside a slice for tax, because the government’s interest in small business is maturing here too, and a slice for rain, because laptops die in the middle of jobs and clients do not extend deadlines for fun. What remains is profit you can actually spend, without owing anybody. Where would you look, tonight, to learn what your business actually earned this month? If the honest answer is “in my head,” the head is the one witness this lesson exists to replace.",
       ),
       fig(
         "/images/blog/money-two-accounts.jpg",
@@ -7926,10 +7929,10 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("Habit four: reconcile, monthly"),
       p(
-        "Once a month, the quiet hour: download the statement — the bank lesson showed where it lives — and sit it beside your own records. Every entry on one should sit on the other. The transfer that never landed. The subscription you meant to cancel, still drinking. The client's payment recorded twice in hope. The reconciliation is the spreadsheet lesson's when-the-cell-looks-broken, applied to life: a difference found now is a one-line fix; the same difference found in December is a mystery novel. And when the year closes, the books answer the questions that decide next year with numbers instead of vibes: which work actually paid, which clients actually pay, what the business costs to run before a single naira of profit.",
+        "Once a month, the quiet hour: download the statement — the bank lesson showed where it lives — and sit it beside your own records. Every entry on one should sit on the other. The transfer that never landed. The subscription you meant to cancel, still drinking. The client’s payment recorded twice in hope. The reconciliation is the when-the-cell-looks-broken lesson, applied to life: a difference found now is a one-line fix; the same difference found in December is a mystery novel. And when the year closes, the books answer the questions that decide next year with numbers instead of vibes: which work actually paid, which clients actually pay, what the business costs to run before a single naira of profit.",
       ),
       p(
-        "The tools, honestly: begin with notebook or spreadsheet — you own both skills already. When volume justifies it, a small bookkeeping app or a part-time accountant earns their fee, and the books you kept make hiring them a week's work instead of an archaeology. What no tool supplies is the habit; and no investor, no loan officer, no visa officer, no big client will ever take your business more seriously than your books do. The shop that keeps books is a business. The one that does not is a habit.",
+        "The tools, honestly: begin with notebook or spreadsheet — you own both skills already. When volume justifies it, a small bookkeeping app or a part-time accountant earns their fee, and the books you kept make hiring them a week’s work instead of an archaeology. What no tool supplies is the habit; and no investor, no loan officer, no visa officer, no big client will ever take your business more seriously than your books do. The shop that keeps books is a business. The one that does not is a habit.",
       ),
       fig(
         "/images/blog/ledger-weekly.jpg",
@@ -7942,9 +7945,9 @@ export const blogPosts: BlogPost[] = [
         "Split on arrival: tax slice, rain slice, then spend. The percentages are yours; the order is not negotiable.",
         "Reconcile on the first Saturday of the month. Statement against records, line by line, until they agree.",
       ]),
-      h2("The books are the business's own portrait"),
+      h2("The books are the business’s own portrait"),
       p(
-        "One reframe to close: the books are not bureaucracy. They are the honest mirror the bank lesson taught you to read for your employer's sake — read now for your own. The weekly list, the split on arrival, the monthly hour: together they turn a person who earns into a business that lasts, and they answer, at last, the question every worker on this shelf deserves to ask precisely: is this working? Now you will know, to the naira.",
+        "One reframe to close: the books are not bureaucracy. They are the honest mirror the bank lesson taught you to read for your employer’s sake — read now for your own. The weekly list, the split on arrival, the monthly hour: together they turn a person who earns into a business that lasts, and they answer, at last, the question every worker on this shelf deserves to ask precisely: is this working? Now you will know, to the naira. Adanna learned in September that March’s contract had earned less than a week of smaller jobs — a fact her head had polished into a triumph. The books told the truth, kindly, before the year could lie any further.",
       ),
     ],
   },
@@ -8119,10 +8122,10 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A hand holding a phone showing a politely worded payment reminder message.",
     body: [
       p(
-        "Sooner or later it finds every worker on this shelf: the job was done well, the thanks were warm — and then the silence. No payment, no reply, and a new arrangement of the same five words in your head every morning. This lesson is the ladder for that week, because chasing money with dignity is a skill like any other on this shelf: it has steps, and each step keeps both the money and the name possible.",
+        "Deji delivered the site on the 4th, got a warm thank-you on the 5th — and then silence. No balance, no reply, and the same five words rearranging themselves in his head every morning. Sooner or later it finds every worker on this shelf: the job was done well, and the phone went quiet. This lesson is the ladder for that week, because chasing money with dignity is a skill like any other: it has steps, and each step keeps both the money and the name possible.",
       ),
       p(
-        "Step one, the gentle reminder, days not hours after due: a short, warm, unashamed message — hello ma, the site went live on the 4th; the balance of the invoice below is due; here is the account again. No apology, no anger; you are reminding, not begging — the invoice lesson's paper speaking for you. Step two, a week later, the restatement: the same message, plainer, with the invoice attached again and a date — by Friday I would need this settled to keep the site maintained. Step three, the pause of work: maintenance stops, access pauses, the next phase waits — politely announced, not ambushed; clients rediscover invoices remarkably fast when the thing they paid for stops breathing. Step four, escalation that does not need shout: a formal demand letter — plain words, dates, amount, your signature; small claims courts here handle exactly these sums; and a client association or platform dispute channel where one exists. What you never do: insult, threaten, or disgrace anybody publicly — the anger post costs more than the debt, and the street remembers the poster, not the debtor.",
+        "Step one, the gentle reminder, days not hours after due: a short, warm, unashamed message — “hello ma, the site went live on the 4th; the balance of the invoice below is due; here is the account again.” No apology, no anger; you are reminding, not begging — the invoice lesson’s paper speaking for you. Step two, a week later, the restatement: the same message, plainer, with the invoice attached again and a date — by Friday I would need this settled to keep the site maintained. Step three, the pause of work: maintenance stops, access pauses, the next phase waits — politely announced, not ambushed; clients rediscover invoices remarkably fast when the thing they paid for stops breathing. Step four, escalation that does not need a shout: a formal demand letter — plain words, dates, amount, your signature; small claims courts here handle exactly these sums; and a client association or platform dispute channel where one exists. What you never do: insult, threaten, or disgrace anybody publicly — the anger post costs more than the debt, and the street remembers the poster, not the debtor. Which rung protects the most: the loudest message, or the one you could read aloud in court? The one you could read aloud.",
       ),
       fig(
         "/images/blog/payment-reminder-phone.jpg",
@@ -8131,10 +8134,10 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("The documents that win"),
       p(
-        "Disputes are not won by volume; they are won by paper, and you have been building the paper all along: the written quote saying what would be delivered, the deposit receipt, the update messages tracing approvals, the delivery message, the invoice. Screenshot them in order, and any argument becomes a timeline instead of a quarrel — the analyst lesson's evidence, gathered at a kitchen table. And prevention, because this ladder is best never climbed: deposits before work, balance before handover of final files for new clients, maintenance paid in advance. The pricing lesson's rules are not formality — they are the walls that make the quiet-client week rare instead of seasonal.",
+        "Disputes are not won by volume; they are won by paper, and you have been building the paper all along: the written quote saying what would be delivered, the deposit receipt, the update messages tracing approvals, the delivery message, the invoice. Screenshot them in order, and any argument becomes a timeline instead of a quarrel — the analyst lesson’s evidence, gathered at a kitchen table. And prevention, because this ladder is best never climbed: deposits before work, balance before handover of final files for new clients, maintenance paid in advance. The pricing lesson’s rules are not formality — they are the walls that make the quiet-client week rare instead of seasonal.",
       ),
       p(
-        "Then the two verdicts only you can deliver. When to forgive: the client who truly fell on hardship, whose silence was shame not scheme — weigh the history, accept the part-payment, close the file with grace; charity belongs somewhere in every working life, and it is only charity when you chose it. And when to walk away: the client who pays small, owes big, and costs you the one thing you cannot invoice — the months of attention. Fire a client the way the ladder runs, politely and on paper, and give the recovered hours to the ones who pay. The books of lesson one hundred and forty-three will show you something within a year: the quiet clients were never in the profit column at all.",
+        "Then the two verdicts only you can deliver. When to forgive: the client who truly fell on hardship, whose silence was shame not scheme — weigh the history, accept the part-payment, close the file with grace; charity belongs somewhere in every working life, and it is only charity when you chose it. And when to walk away: the client who pays small, owes big, and costs you the one thing you cannot invoice — the months of attention. Fire a client the way the ladder runs, politely and on paper, and give the recovered hours to the ones who pay. The one-person books lesson will show you something within a year: the quiet clients were never in the profit column at all.",
       ),
       fig(
         "/images/blog/dispute-documents-table.jpg",
@@ -8149,7 +8152,7 @@ export const blogPosts: BlogPost[] = [
       ]),
       h2("The name and the naira"),
       p(
-        "Every step of the ladder protects the same two assets: the money and the name. Run it cold and you usually recover the naira and occasionally the client, who respects being reminded in sentences they could not fault. Run it hot and you keep neither. The working life will always contain a quiet client or two — the shelf cannot legislate other people's pockets. It can make you the person whose paperwork never flinches, whose tone never drops, and whose next client never gets the chance, because the deposit was taken before the first line of work.",
+        "Every step of the ladder protects the same two assets: the money and the name. Run it cold and you usually recover the naira and occasionally the client, who respects being reminded in sentences they could not fault. Run it hot and you keep neither. The working life will always contain a quiet client or two — the shelf cannot legislate other people’s pockets. It can make you the person whose paperwork never flinches, whose tone never drops, and whose next client never gets the chance, because the deposit was taken before the first line of work. Deji was paid on the 19th — step two, one plainer sentence, and the silence broke politely.",
       ),
     ],
   },
@@ -8373,10 +8376,10 @@ export const blogPosts: BlogPost[] = [
       "A family at a living-room table, a parent guiding a child's hands on a small tablet.",
     body: [
       p(
-        "A child in this country meets a screen before they can read, and long before they can judge what the screen says. The family that handles this well does not ban the phone and does not surrender to it. It does what this whole shelf has done for adults: names the parts, sets the rules, teaches the reasons. This lesson is the same education, one generation down — and it begins with a confession: the child is watching how you use yours.",
+        "Laraba teaches primary four, and she will tell you plainly: a child in this country meets a screen before they can read, and long before they can judge what the screen says. The family that handles this well does not ban the phone and does not surrender to it. It does what this whole shelf has done for adults: names the parts, sets the rules, teaches the reasons. This lesson is the same education, one generation down — and it begins with a confession: the child is watching how you use yours.",
       ),
       p(
-        "The tooling first, because it is free and already built. On the child's Android phone, Google's Family Link — the family-table lesson's gatekeeper — lets a parent approve every app install before it lands, set sensible daily limits, see where the hours go, and pause the whole device at bedtime from the parent's own phone. On the video platforms, the kids' versions exist precisely so the algorithm is not raising the child; turn them on. On the browser, safe search is a setting, not a prayer. None of this replaces the conversation — it holds the fence while the conversation does its work, the way the second lock holds the door while the manners keep the street.",
+        "The tooling first, because it is free and already built. On the child’s Android phone, Google’s Family Link — the household’s gatekeeper — lets a parent approve every app install before it lands, set sensible daily limits, see where the hours go, and pause the whole device at bedtime from the parent’s own phone. On the video platforms, the kids’ versions exist precisely so the algorithm is not raising the child; turn them on. On the browser, safe search is a setting, not a prayer. None of this replaces the conversation — it holds the fence while the conversation does its work, the way the second lock holds the door while the manners keep the street. Which does the heavier work in your own house: the setting, or the sentence you say at the table? The sentence. The settings only buy it time.",
       ),
       fig(
         "/images/blog/parental-controls-screen.jpg",
@@ -8385,10 +8388,10 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("The rules that actually teach"),
       p(
-        "Three rules, taught with their reasons the way lesson one hundred and twenty taught the elders. The name rule: in games and chats, a child never uses their real full name, school, street or photographs of themselves — strangers online are strangers, and the manners of the compound apply at every screen. The tell rule: anything that frightens, anything that asks for pictures, anything that says do not tell your parents — shown to a parent, immediately, without punishment; the child who is punished for reporting learns to hide, and hiding is the only real danger. And the table rule: phones sleep outside the bedroom at night — every phone, parents' included, in one basket by the sitting-room door; the child who watches you obey it learns more than any setting can teach.",
+        "Three rules, taught with their reasons, the way the teaching lessons taught the elders. The name rule: in games and chats, a child never uses their real full name, school, street or photographs of themselves — strangers online are strangers, and the manners of the compound apply at every screen. The tell rule: anything that frightens, anything that asks for pictures, anything that says do-not-tell-your-parents — shown to a parent, immediately, without punishment; the child who is punished for reporting learns to hide, and hiding is the only real danger. And the table rule: phones sleep outside the bedroom at night — every phone, parents’ included, in one basket by the sitting-room door; the child who watches you obey it learns more than any setting can teach. It looks like a restriction, that basket. Actually it is a promise the whole house keeps together.",
       ),
       p(
-        "And teach downward with the shelf itself. The child who can play is ready to learn: the typing games, then the files lesson softened, then the pause before a link — the same curriculum, age-bent. A teenager can read lesson six and seven as their own; a twelve-year-old can run the family's WhatsApp backup. The greatest parental control was never an app. It is the child who grows into a user who understands the machine — because somebody sat beside them, ten honest minutes at a time, and named the parts out loud.",
+        "And teach downward with the shelf itself. The child who can play is ready to learn: the typing games, then the files lessons softened, then the pause before a link — the same curriculum, age-bent. A teenager can read the early lessons on files and accounts as their own; a twelve-year-old can run the family’s WhatsApp backup. The greatest parental control was never an app. It is the child who grows into a user who understands the machine — because somebody sat beside them, ten honest minutes at a time, and named the parts out loud.",
       ),
       fig(
         "/images/blog/child-typing-supervised.jpg",
@@ -8396,14 +8399,14 @@ export const blogPosts: BlogPost[] = [
         "The best filter ever installed: a parent within reach. The screen teaches; the table decides what it may teach.",
       ),
       ul([
-        "Set up Family Link on the child's device tonight — approvals on, a bedtime limit, kids' video profiles on.",
+        "Set up Family Link on the child’s device tonight — approvals on, a bedtime limit, kids’ video profiles on.",
         "Teach the three rules with their reasons: name, tell, table. Write the last one where everybody, including you, obeys it.",
         "Practise the no-punishment rule until it is true. Children report dangers to safety, not to ambush.",
         "Give the child one small real task on the machine each week — typing practice, the backup, the calendar. Users are raised, not restricted.",
       ]),
       h2("The long inheritance"),
       p(
-        "The children on your knees will run a country whose every road, market and classroom is a screen. What they will not pick up from school is judgement — that walks across the family table, one evening at a time: the rules kept, the reasons given, the example set by the adult whose own phone sleeps in the basket by the door. Restriction produces a sneaky user and a skilled liar. Teaching produces the person these notes have always been writing to. The next lesson returns to the working road, at its very first gate: the paper that decides who gets to interview.",
+        "The children on your knees will run a country whose every road, market and classroom is a screen. What they will not pick up from school is judgement — that walks across the family table, one evening at a time: the rules kept, the reasons given, the example set by the adult whose own phone sleeps in the basket by the door. Restriction produces a sneaky user and a skilled liar. Teaching produces the person these notes have always been writing to. Laraba’s own two children keep the basket rule — and keep correcting her when she reaches for the phone past nine, which she counts as a triumph. The next lesson returns to the working road, at its very first gate: the paper that decides who gets to interview.",
       ),
     ],
   },
@@ -8517,10 +8520,10 @@ export const blogPosts: BlogPost[] = [
       "A speaker beside a projected slide in a small hall, the audience listening in shadow.",
     body: [
       p(
-        "Sooner or later the working life asks you to stand in front of people and present — the church committee, the client, the class, the town meeting — and the laptop comes with the territory. The slides were invented to help, and they have mostly become a punishment: walls of tiny text read aloud to a suffering room. This lesson returns them to their job. The slide is the lantern; you are the talk. The moment the slide tries to be the talk, both die.",
+        "Zainab had twelve slides for the cooperative’s annual meeting and forty minutes of fear. Somebody had taught her the sentence that saved the whole evening: the slide is the lantern; you are the talk. Sooner or later the working life asks you to stand in front of people and present — the church committee, the client, the class, the town meeting — and the laptop comes with the territory. The slides were invented to help, and they have mostly become a punishment: walls of tiny text read aloud to a suffering room. This lesson returns them to their job. The moment the slide tries to be the talk, both die.",
       ),
       p(
-        "The rules are few and merciful. One idea per slide — if the slide needs an and, it is two slides. Letters big enough for the back row: a title and at most a handful of short lines, in the poster lesson's discipline turned sideways — readable at a glance from a distance, or not at all. Few words, because the audience cannot read and listen to you at the same time; they will read, in silence, while your voice is wasted. So the slide shows the one number, the one picture, the one name — and your mouth carries the story. Two fonts, three colours, the designer's restraint. Images that mean something, not clip art that fills silence.",
+        "The rules are few and merciful. One idea per slide — if the slide needs an and, it is two slides. Letters big enough for the back row: a title and at most a handful of short lines, in the poster lesson’s discipline turned sideways — readable at a glance from a distance, or not at all. Few words, because the audience cannot read and listen to you at the same time; they will read, in silence, while your voice is wasted. So the slide shows the one number, the one picture, the one name — and your mouth carries the story. Two fonts, three colours, the designer’s restraint. Images that mean something, not clip art that fills silence. Which is doing the teaching in a good presentation — the wall, or the person standing beside it? The person. The wall only points.",
       ),
       fig(
         "/images/blog/slides-projector-talk.jpg",
@@ -8529,7 +8532,7 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("The preparation that removes the fear"),
       p(
-        "Public fear of presenting is mostly fear of the machine betraying you, and that fear is treatable. Rehearse aloud once, with a timer, standing — the first run always surprises, which is its purpose. Learn the projector lesson's walk: if the venue matters, test the venue — the projector, the adapter, whether your laptop speaks its language — before the audience arrives, not during your introduction. Learn the presenter view, so your notes sit on your screen while the wall shows only the slide. Carry the slides on a flash drive and in your email, both, in the PDF lesson's spirit: the format that survives every machine. And arrive early enough to be the calmest person in the building.",
+        "Public fear of presenting is mostly fear of the machine betraying you, and that fear is treatable. Rehearse aloud once, with a timer, standing — the first run always surprises, which is its purpose. Learn the projector lesson’s walk: if the venue matters, test the venue — the projector, the adapter, whether your laptop speaks its language — before the audience arrives, not during your introduction. Learn the presenter view, so your notes sit on your screen while the wall shows only the slide. Carry the slides on a flash drive and in your email, both, in the PDF lesson’s spirit: the format that survives every machine. And arrive early enough to be the calmest person in the building.",
       ),
       p(
         "Then the delivery, which is smaller than the fear: face the room, not the wall — the audience gets your eyes, the screen gets your pointing hand. Speak slower than feels natural; rooms eat volume the way networks eat consonants. Pause after each big idea and let the silence hold it. And never, ever read the slide aloud with your back to the room — the audience read it before you finished turning. If a slide needs reading, that is what the handout is for: printed, or sent after, where it cannot compete with your voice. Do these small things and something wonderful happens on the third or fourth slide: the fear leaves, because the room starts nodding, and nodding is a conversation.",
@@ -8542,12 +8545,12 @@ export const blogPosts: BlogPost[] = [
       ul([
         "Rewrite your next presentation: one idea per slide, nothing smaller than back-row letters. Cut half the words; cut the slide that fights you.",
         "Rehearse aloud, timed, standing, once. The second time is for the room; the first is for the truth.",
-        "Test the venue's projector or screen before the hour, and carry the slides twice — flash drive and email.",
+        "Test the venue’s projector or screen before the hour, and carry the slides twice — flash drive and email.",
         "Face the room. Pause after the big ideas. Send the handout after, never read it out during.",
       ]),
       h2("Why this is a basic skill"),
       p(
-        "Because the person who can stand, lantern in hand, and make a room understand an idea in ten minutes becomes the person the room asks to explain things — and the person rooms ask to explain things is the person rooms promote, hire and recommend. The analyst's chart, the designer's concept, the teacher's lesson, the pastor's announcement: all of them ride on this one small machine craft. The lantern is cheap. The nerve is practised. Begin with the next staff meeting.",
+        "Because the person who can stand, lantern in hand, and make a room understand an idea in ten minutes becomes the person the room asks to explain things — and the person rooms ask to explain things is the person rooms promote, hire and recommend. The analyst’s chart, the designer’s concept, the teacher’s lesson, the pastor’s announcement: all of them ride on this one small machine craft. The lantern is cheap. The nerve is practised. Begin with the next staff meeting. Zainab’s cooperative now asks her to open every annual meeting — twelve slides, one lantern, and a room that nods.",
       ),
     ],
   },
@@ -9559,7 +9562,7 @@ export const blogPosts: BlogPost[] = [
       "A laptop opened into an inverted V tent shape on a dry towel, keyboard facing downwards so liquid drains out.",
     body: [
       p(
-        "You are sitting at your desk with a warm mug of tea or a cold sachet of pure water beside your elbow. You reach across to grab a pen, your forearm knocks the cup, and a brown wave of sweet tea pours directly across the letters on your keyboard. In that terrible second, your brain screams. What do most people do? They freeze in shock. Then they grab a dry handkerchief and start gently wiping the surface of the keys while the screen is still brightly shining. Or worse: they click 'Start', then click 'Power', then click 'Shut Down', and wait patiently while Windows takes forty seconds to close background apps. Those thirty wasted seconds are the exact moments when a cheap spill turns into a completely burnt laptop.",
+        "Anselem was sitting at his desk with a warm mug of tea beside his elbow. He reached across to grab a pen, his forearm knocked the cup, and a brown wave of sweet tea poured directly across the letters on his keyboard. In that terrible second, the brain screams. What do most people do? They freeze. Then they grab a dry handkerchief and start gently wiping the surface of the keys while the screen is still brightly shining. Or worse: they click Start, then Power, then Shut Down, and wait patiently while Windows takes forty seconds to close background apps. Those thirty wasted seconds are the exact moments when a cheap spill turns into a completely burnt laptop.",
       ),
       p(
         "Here is the secret of water: pure water does not burn a computer. What burns a computer is water meeting electricity. When water containing sugar, milk, or tap minerals sits on a board carrying electric current, the liquid acts like a hundred tiny copper wires touching parts that should never touch. Sparks fly across microscopic tracks, chips pop, and the board fries in an instant. Your only goal in the first five seconds of a spill is to kill every drop of electricity before the liquid can seep down through the keyboard floor.",
@@ -9571,7 +9574,7 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("The five-second drill and the dangerous rice myth"),
       p(
-        "Memorize these four steps so your hands move without thinking. Step one: do not gently unplug the charger — rip the cord straight out of the laptop side with one hard pull. Step two: press your thumb hard onto the laptop's power button and HOLD IT DOWN. Do not let go. Do not wait for Windows to finish its ceremony. Keep pressing until all screen lights and fan sounds die completely. Step three: if the machine has a removable battery on the bottom, pop the latches and pull it out instantly. The computer is now completely dead and safe from electrical sparks.",
+        "Memorise these four steps so your hands move without thinking. Step one: do not gently unplug the charger — rip the cord straight out of the laptop side with one hard pull. Step two: press your thumb hard onto the power button and HOLD IT DOWN. Do not let go. Do not wait for Windows to finish its ceremony. Keep pressing until all screen lights and fan sounds die completely. Step three: if the machine has a removable battery on the bottom, pop the latches and pull it out instantly. The computer is now completely dead and safe from electrical sparks.",
       ),
       fig(
         "/images/blog/laptop-tent-position-spill.jpg",
@@ -9579,10 +9582,10 @@ export const blogPosts: BlogPost[] = [
         "The tent posture. Flip the laptop upside down on a dry cloth like an inverted V so gravity pulls the liquid out of the keys.",
       ),
       p(
-        "Step four: open the laptop screen halfway, turn the whole machine completely upside down so the keyboard faces the floor, and set it standing on the table like a camping tent — an upside-down 'V' — on top of a dry cotton towel. Look at what you just did: gravity is now your best friend. Instead of the water pooling down into the delicate green motherboard below, every single drop is trickling harmlessly down through the keycaps onto your towel.",
+        "Step four: open the laptop screen halfway, turn the whole machine completely upside down so the keyboard faces the floor, and set it standing on the table like a camping tent — an upside-down V — on top of a dry cotton towel. Look at what you just did: gravity is now your best friend. Instead of the water pooling down into the delicate green motherboard below, every single drop is trickling harmlessly down through the keycaps onto your towel. Which friend does the saving in this drill — your speed at wiping, or your speed at killing power? The power. Wiping is tidiness; disconnecting is rescue.",
       ),
       p(
-        "Now listen carefully: never, under any circumstance, bury a wet laptop in a bag of raw uncooked rice. That is an internet fable that has destroyed thousands of computers. Rice does not draw moisture out of a closed metal laptop casing; what rice actually does is dump fine white flour dust and broken rice grains into your cooling fan, headphone jack, and USB ports. When that dry starch mixes with the dampness inside, it turns into thick, gummy porridge that seals fan bearings and ruins keys forever.",
+        "Now listen carefully: never, under any circumstance, bury a wet laptop in a bag of raw uncooked rice. That is an internet fable that has destroyed thousands of computers. Rice does not draw moisture out of a closed metal laptop casing; what rice actually does is dump fine flour dust and broken grains into your cooling fan, headphone jack, and USB ports. When that dry starch mixes with the dampness inside, it turns into thick, gummy porridge that seals fan bearings and ruins keys forever. It looks like a folk remedy doing patient work. Actually it is a second spill, this one dry and sticky.",
       ),
       fig(
         "/images/blog/isopropanol-cleaning-board.jpg",
@@ -9593,11 +9596,11 @@ export const blogPosts: BlogPost[] = [
         "Hold the power button down hard for 10 seconds: kill internal power immediately, never wait for a normal Windows shutdown.",
         "Rip the charger and battery out the same second: no electricity means no sparks, no short circuits, and no burnt boards.",
         "Stand the laptop like a tent on a dry towel: let gravity pull liquid down onto the cloth away from the motherboard.",
-        "Never use raw rice, and never use a hot hair dryer: heat melts the thin plastic keyboard membrane and warps keycaps.",
+        "Never use raw rice, and never use a hot hair dryer: heat melts the thin keyboard membrane and warps keycaps.",
       ]),
       h2("The 48-hour patience rule"),
       p(
-        "The hardest part of a spill is the waiting. Leave the laptop standing in the tent position in a breezy room with a ceiling fan running for forty-eight full hours — two whole days and two whole nights. Do not touch it. Do not 'just press power for one second to see if it works.' That impatient tap after four hours is the exact moment electricity meets a hidden water droplet and burns the board. Give it two days of dry air. When forty-eight hours pass, plug in the charger and turn it on. In eight cases out of ten, the machine wakes up as if nothing happened. Next: walking into the used laptop market without getting sweet-talked or cheated.",
+        "The hardest part of a spill is the waiting. Leave the laptop standing in the tent position in a breezy room with a ceiling fan running for forty-eight full hours — two whole days and two whole nights. Do not touch it. Do not “just press power for one second to see if it works.” That impatient tap after four hours is the exact moment electricity meets a hidden water droplet and burns the board. Give it two days of dry air. When forty-eight hours pass, plug in the charger and turn it on. In eight cases out of ten, the machine wakes up as if nothing happened. Anselem’s tea machine woke on the morning of day three — and the mug now lives on the far side of the desk, a small ceremony of respect. Next: walking into the used laptop market without getting sweet-talked or cheated.",
       ),
     ],
   },
@@ -11437,10 +11440,10 @@ export const blogPosts: BlogPost[] = [
       "A person writing with a pen in a notebook at a wooden table in calm morning light, no computer present.",
     body: [
       p(
-        "The fear arrives honestly: the machine writes letters, draws pictures, answers questions, and passes examinations. What, then, is the person for? The answer is standing in every cockpit over the skies of this country right now. The autopilot flies the aeroplane for ninety-five percent of the flight with a precision no hand can match — and the airline pays the pilot enormous money for the other five percent and for the judgment that owns all hundred. Automation does not end the skilled person; it raises the price of the one who can verify it, catch it, and take the controls in the twelve seconds when it is wrong. The world will pay less and less for typing the letter and more and more for knowing whether the letter is true, fair, and wise. That knowing is judgment, and judgment is a muscle built by manual hours.",
+        "The fear arrives honestly: the machine writes letters, draws pictures, answers questions, and passes examinations. What, then, is the person for? Oluwaseun asked it out loud three months after finishing these notes, watching a draft arrive in seconds that would have taken him an evening. The answer is standing in every cockpit over the skies of this country right now. The autopilot flies the aeroplane for ninety-five percent of the flight with a precision no hand can match — and the airline pays the pilot enormous money for the other five percent and for the judgment that owns all hundred. Automation does not end the skilled person; it raises the price of the one who can verify it, catch it, and take the controls in the twelve seconds when it is wrong. The world will pay less and less for typing the letter and more and more for knowing whether the letter is true, fair, and wise. That knowing is judgment, and judgment is a muscle built by manual hours.",
       ),
       p(
-        "So decide which skills in your own life must stay manual, the way a pilot keeps manual hours in the sim. Writing is the first: not typing — thinking on paper. Once a week, a page or two written entirely by your own struggling hand, no box consulted: a letter, an argument, a plan for the shop. The struggle is the workout; the fluency that follows is the muscle. Arithmetic is the second: the sum done in your head at the market, the invoice checked before payment, the percentage understood before the loan app's cheerful number is believed. The calculator and the assistant will always be faster. The head that can smell a wrong figure is the one the fraud cannot feed on. And reading — the long article finished to the end without the summary — is the third discipline, because the summarized life loses the patience that comprehension requires.",
+        "So decide which skills in your own life must stay manual, the way a pilot keeps manual hours in the sim. Writing is the first: not typing — thinking on paper. Once a week, a page or two written entirely by your own struggling hand, no box consulted: a letter, an argument, a plan for the shop. The struggle is the workout; the fluency that follows is the muscle. Arithmetic is the second: the sum done in your head at the market, the invoice checked before payment, the percentage understood before the loan app’s cheerful number is believed. The calculator and the assistant will always be faster. The head that can smell a wrong figure is the one the fraud cannot feed on. And reading — the long article finished to the end without the summary — is the third discipline, because the summarised life loses the patience that comprehension requires.",
       ),
       fig(
         "/images/blog/hands-writing-without-computer.jpg",
@@ -11449,10 +11452,10 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("The days of the week without the crutch"),
       p(
-        "Make the discipline a schedule and it will survive your moods. One letter a week by hand. One hour of arithmetic without the calculator — the shop's book, done with a biro and checked twice. One article a week read to its final paragraph. One map journey a month with the phone in the pocket and the road remembered by landmarks, the wayfinding instinct that the blue dot quietly atrophies. And one evening a month of remembering without notes: the phone numbers that matter, the family word, the account's last four digits, the three people to call in a crisis. These sound like nostalgia. They are not. They are the maintenance schedule of the judgment that the machines are making scarce and therefore precious.",
+        "Make the discipline a schedule and it will survive your moods. One letter a week by hand. One hour of arithmetic without the calculator — the shop’s book, done with a biro and checked twice. One article a week read to its final paragraph. One map journey a month with the phone in the pocket and the road remembered by landmarks, the wayfinding instinct that the blue dot quietly atrophies. And one evening a month of remembering without notes: the phone numbers that matter, the family word, the account’s last four digits, the three people to call in a crisis. These sound like nostalgia. They are not. They are the maintenance schedule of the judgment that the machines are making scarce and therefore precious.",
       ),
       p(
-        "The same principle polishes the professional's edge, and this chapter has been building it all along. The five questions are judgment in a notebook. The six rooms before formatting are judgment refusing a shortcut. The checking pass is judgment reading the machine's homework. Notice how little of the trade's value ever lived in the typing — and how all of its value lives in the deciding. When you take the assistant into your work, therefore, do it the way the cockpit does: let it handle the cruise, keep your hands near the controls, and log the manual hours on purpose. The worker who can say calmly — the machine drafted this, and I checked every figure and rewrote the close — is more valuable than either the one who types alone or the one who trusts alone.",
+        "The same principle polishes the professional’s edge, and this chapter has been building it all along. The five questions are judgment in a notebook. The six rooms before formatting are judgment refusing a shortcut. The checking pass is judgment reading the machine’s homework. Notice how little of the trade’s value ever lived in the typing — and how all of its value lives in the deciding. When you take the assistant into your work, therefore, do it the way the cockpit does: let it handle the cruise, keep your hands near the controls, and log the manual hours on purpose. The worker who can say calmly — “the machine drafted this, and I checked every figure and rewrote the close” — is more valuable than either the one who types alone or the one who trusts alone.",
       ),
       fig(
         "/images/blog/clock-and-hand-on-paper.jpg",
@@ -11461,10 +11464,10 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("What the machine cannot have"),
       p(
-        "There is a final answer to the fear and it is not a skill list. It is a fact about where you live. The machine has no mother in your village, no name in your community's register, no stake in the outcome of your customer's school fees, no body that must stand at the counter on Monday and meet the eyes of the person it advised on Friday. Every service in this series — the quiet hour, the honest reset, the referral, the checked homework — was somebody standing behind the work with their name and their face. Software can imitate every sentence in this book. It cannot be the person the compound trusts, because trust is not a document. It is a relationship with a body that keeps showing up.",
+        "There is a final answer to the fear and it is not a skill list. It is a fact about where you live. The machine has no mother in your village, no name in your community’s register, no stake in the outcome of your customer’s school fees, no body that must stand at the counter on Monday and meet the eyes of the person it advised on Friday. Every service in this series — the quiet hour, the honest reset, the referral, the checked homework — was somebody standing behind the work with their name and their face. Software can imitate every sentence in this book. It cannot be the person the compound trusts, because trust is not a document. It is a relationship with a body that keeps showing up.",
       ),
       p(
-        "Hold the two truths together the way the series has taught you to hold all pairs. The machine is astonishing and it is not a person. Use it more every year and depend on it less every year — for facts, for judgment, for your name. Keep the manual hours because they keep you. And when the fear returns at the next headline, walk to the window and look at the street: the tailor with her judgment, the mechanic with his hands, the teacher with her patience, the grandmother with her memory of everybody's name. The world has never paid for typing. It has paid, in every season, for people who can be trusted with the deciding. That seat is still yours. It was always the only one that was.",
+        "Hold the two truths together the way the series has taught you to hold all pairs. The machine is astonishing and it is not a person. Use it more every year and depend on it less every year — for facts, for judgment, for your name. Keep the manual hours because they keep you. And when the fear returns at the next headline, walk to the window and look at the street: the tailor with her judgment, the mechanic with his hands, the teacher with her patience, the grandmother with her memory of everybody’s name. The world has never paid for typing. It has paid, in every season, for people who can be trusted with the deciding. That seat is still yours. It was always the only one that was.",
       ),
       ul([
         "Keep three manual hours weekly: a page by hand, an hour of arithmetic with a biro, one article read to the end.",
