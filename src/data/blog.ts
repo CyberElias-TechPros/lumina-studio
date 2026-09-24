@@ -503,10 +503,10 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A small printer on a wooden desk beside a laptop and a stack of paper.",
     body: [
       p(
-        "A printer is a tap. Leave it open and you flood the desk: twenty copies of a page you meant once, the back of a form printed on the front, a photograph that ate a week's ink to look like fog. The machine is not stubborn. It prints exactly what it was last told. This lesson is how to look at the water before you turn the handle.",
+        "Ikechukwu took his CV to the business centre on a Monday and paid for forty-seven pages. He had meant four. The boy at the counter had pressed Enter while the copies box still held the last customer’s number, and nobody looked at the preview, and the paper kept coming like a speech nobody would end. A printer is a tap: leave it open and you flood the desk — twenty copies of a page you meant once, the back of a form printed on the front, a photograph that ate a week’s ink to look like fog. The machine is not stubborn. It prints exactly what it was last told. This lesson is how to look at the water before you turn the handle.",
       ),
       p(
-        "You will meet printers at the academy, in business centres, in church offices, at home if someone bought one. The buttons change. The idea does not. Somewhere on the computer there is a command called Print. Somewhere on the printer there is paper, power, and a warning light. Your job is to join those two only after you have seen a picture of the page.",
+        "You will meet printers at the academy, in business centres, in church offices, at home if someone bought one. The buttons change; the idea does not. Somewhere on the computer there is a command called Print. Somewhere on the printer there is paper, power, and a warning light. Your job is to join those two only after you have seen a picture of the page.",
       ),
       fig(
         "/images/blog/printer-desk.jpg",
@@ -515,14 +515,14 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("Before you press anything"),
       p(
-        "Check the tray. A4 is the ordinary sheet in Nigeria — the size of a letter, not the long roll of a receipt. If the tray is empty, the printer will either wait or chew the next thing it finds, including the cardboard leftover from the last ream. Fan the paper once so the sheets separate. Put it in the way the icon on the tray shows, usually face down on home inkjets, sometimes face up on office machines. When in doubt, print one test page on cheap paper and look.",
+        "Check the tray. A4 is the ordinary sheet in Nigeria — a letter’s size, not the long roll of a receipt. If the tray is empty, the printer will either wait or chew the next thing it finds, including the cardboard left from the last ream. Fan the paper once so the sheets separate. Put it in the way the tray’s little diagram shows — usually face down on home inkjets, sometimes face up on office machines. When in doubt, one test page on cheap paper settles it.",
       ),
       p(
-        "Check the lights. A steady power light is waiting. A flashing one often means it is hungry for paper or ink, or the lid is open. Opening the lid to stare does not refill ink. If the computer says the printer is offline, it is usually unplugged, asleep, or connected to a different Wi-Fi than the laptop. On a USB printer, the cable is the whole conversation. Wiggle it once, the way you would a kettle that will not boil.",
+        "Check the lights. A steady power light is waiting. A flashing one often means it is hungry for paper or ink, or the lid is up. Staring into the lid does not refill ink. And if the computer says the printer is offline, the cause is nearly always one of three old friends: unplugged, asleep, or talking to a different Wi-Fi than the laptop. On a USB printer, the cable is the whole conversation. Wiggle it once, the way you would a kettle that will not boil.",
       ),
       h2("Print means preview"),
       p(
-        "In Word, in a browser, in almost any page, Ctrl and P (Command and P on a Mac) opens Print. Do not hit Enter yet. Look. You should see a small picture of the page, the name of the printer, the number of copies, and whether you meant all pages or only this one. That small picture is the truth. If it shows two pages and you wanted one, you still have time. If it shows a huge empty margin and three words, the paper will look the same, only more expensive.",
+        "In Word, in a browser, in almost any page, Ctrl and P (Command and P on a Mac) opens Print. Do not hit Enter yet. Look. You should see a small picture of the page, the printer’s name, the number of copies, and whether you meant all pages or only this one. That small picture is the truth. If it shows two pages and you wanted one, you still have time. If it shows a huge empty margin and three words, the paper will come out the same, only more expensive. Where would you look before every print job, if the paper cost ₦5 a sheet and your name was on the waste? The preview. Always the preview first.",
       ),
       fig(
         "/images/blog/print-preview.jpg",
@@ -530,23 +530,20 @@ export const blogPosts: BlogPost[] = [
         "The miniature page is what will come out. Copies: 1. Pages: this one. Colour only if you need it. Then Print.",
       ),
       p(
-        "Copies default to 1 on a good day and to whatever the last person chose on a shared machine. Look every time. Pages can be All, Current, or a range like 1-2. Colour uses more ink than black. For a form, a receipt, a letter, black is enough. Draft or Economy, if you see it, is the pale setting for things you will not keep. Fit to page stops the right edge from vanishing. Portrait is the tall way. Landscape is the wide way, for a table that is too broad.",
+        "Copies defaults to 1 on a good day and to whatever the last person chose on a shared machine. Look every time. Pages can be All, Current, or a range like 1-2. Colour uses more ink than black, and for a form, a receipt, a letter, black is enough. Draft or Economy is the pale setting for things you will not keep. Fit to Page stops the right edge from vanishing. Portrait is the tall way; landscape is the wide way, for a table too broad for the sheet.",
       ),
       ul([
         "Open a one-page letter you already saved.",
         "Press Ctrl+P. Confirm copies is 1, and the preview is one page, the right way up.",
-        "If you are on a shared printer, read the name. Printing to “Office upstairs” from downstairs is how pages go missing.",
+        "On a shared printer, read the name. Printing to “Office upstairs” from downstairs is how pages go missing.",
         "Print. Walk to the machine. If nothing comes, look at the lights before you press Print again. Twice is two copies, not one copy faster.",
       ]),
       h2("Ink, jams, and the business centre"),
       p(
-        "Ink runs out in the middle of a sentence. The computer may warn you; it may not. A streaked page is often a clogged nozzle, not an empty tank — but do not shake a cartridge over the desk to find out. At home, run the printer's own cleaning routine from its software once, not five times, because cleaning spends ink. At a business centre, pay for the page you got, and ask them to reprint if the streak is theirs.",
+        "Ink runs out in the middle of a sentence. A streaked page is often a clogged nozzle, not an empty tank — but do not shake a cartridge over the desk to find out. At home, run the printer’s own cleaning routine once, not five times; cleaning spends ink. At a business centre, pay for the page you got and ask them to reprint if the streak is theirs. And one distinction that saves money all its life: an empty tank and a clogged head look the same on paper. The software’s ink gauge knows the difference.",
       ),
       p(
-        "A jam is a folded sheet in the path. Switch the printer off. Open the doors the arrows point to. Pull the paper in the direction it was travelling, slowly, so it does not tear and leave a tooth behind. If you leave a tooth, the next ten pages jam too. Never use a knife. The rollers are rubber.",
-      ),
-      p(
-        "PDF is your friend when the other person's computer is not yours. File, Save As, PDF, then print the PDF. What you see is what the machine will draw, fonts included. For a form that must stay on one page, preview until it does. For photographs, know that a full-page colour picture can cost more than the document it was meant to illustrate. Ask the price before you send twenty wedding pictures to the shop printer. The tap is patient. You do not have to open it all the way.",
+        "A jam is a folded sheet in the path. Switch the printer off. Open the doors the arrows point to. Pull the paper in the direction it was travelling, slowly, so it does not tear and leave a tooth behind. If you leave a tooth, the next ten pages jam too. Never use a knife; the rollers are rubber. And when the page must survive somebody else’s computer, make a PDF: File, Save As, PDF, then print the PDF. What you see is what the machine will draw, fonts included. For photographs, know that a full-page colour picture can cost more than the document it illustrates. Ask the price before you send twenty wedding pictures to the shop printer. The tap is patient. You do not have to open it all the way.",
       ),
     ],
   },
@@ -1460,47 +1457,50 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A learner at a laptop with a helper pointing at the screen, not typing.",
     body: [
       p(
-        "Sooner or later the machine will confuse you, and another person will stand at your shoulder, or a voice on the phone will say “let me take over.” Help is good. Help that includes your Gmail password, your bank OTP, and a remote-control program from a pop-up is how the house is emptied. This lesson is the manners of asking: you keep the keys, they keep the knowledge, and the screen can be seen without being owned.",
+        "Umar’s laptop refused to print his brother’s visa letter the night before the embassy appointment, and the young man from his church came over to help. Good help. Then the young man, meaning well, said the words this lesson exists to answer: “Just give me your Gmail password, I’ll fix it from home.” Umar almost did. Help is good. Help that includes your Gmail password, your bank OTP, or a remote-control program from a pop-up is how the house gets emptied.",
       ),
       p(
-        "At the academy, in a family, at a church office — a person you can see is the ordinary case. Let them sit beside you, not in your chair with you in the corridor. You stay signed in as you. You type the password, if one is needed, with their eyes elsewhere. They point. You click. That feels slower. It is how you still know your own machine on Tuesday.",
+        "Here is the manners of asking, in one line: you keep the keys, they keep the knowledge, and the screen can be seen without being owned. It looks like more trouble. It is actually the difference between a repair and a handover.",
       ),
       fig(
         "/images/blog/asking-help.jpg",
         "A helper standing beside a learner, pointing at the laptop screen without taking the keyboard.",
         "Pointing is teaching. Taking the keyboard is doing it for you. Both can fix today's problem. Only one leaves you able to fix tomorrow's.",
       ),
-      h2("What you never read out loud"),
       p(
-        "Password. PIN. OTP from SMS. BVN. The numbers on the back of a card. Recovery phrases for anything. A real helper at a school or a shop that only needed to install a printer does not need those. If they ask, stop. A bank will not phone you to request an OTP. You have had that lesson. It does not change because the voice is kind, or because they know your name from a form you filled.",
+        "The ordinary case is a person you can see — at the academy, in a family, at a church office. Let them sit beside you, not in your chair with you out in the corridor. You stay signed in as you. They point. You click. That feels slower. It is how you still know your own machine on Tuesday. And where would you look, at the end, to know what actually changed? Not in their memory — in yours: you should be able to name it yourself. A printer. A setting. A program.",
       ),
-      p(
-        "If Windows needs an administrator password to install, and this is your machine, you type it. If it is an office machine, the office types it. If a “Microsoft support” number on the screen asks you to buy a voucher or to install AnyDesk, that is not Microsoft. Close. Real Windows help does not start from a red banner.",
-      ),
+      ul([
+        "The next time someone helps, you sit; they stand or sit beside.",
+        "They name the button. You move the mouse. If a password box appears, they look away. You type.",
+        "If they need to type, they can — after the box is past. Watch what they install. Names you can repeat.",
+        "When they leave, you should be able to say what changed. If you cannot, ask them to say it once more before the door.",
+      ]),
       fig(
         "/images/blog/cover-password.jpg",
         "A notebook covering the keyboard while a password is typed, helper looking away.",
         "This is not rudeness. It is the same as not shouting a gate code in a bus. A helper who minds this is not a helper you want.",
       ),
-      ul([
-        "The next time someone helps, you sit, they stand or sit beside.",
-        "They name the button. You move the mouse. If a password box appears, they look away. You type.",
-        "If they need to type, they can — after the box is past. Watch what they install. Names you can repeat.",
-        "When they leave, you should be able to say what changed: a printer, a setting, a program. If you cannot, ask them to say it once more before the door.",
-      ]),
-      h2("When the helper is inside the screen, not the room"),
+      h2("What you never read out loud"),
       p(
-        "A helper across town can look through the same window by video call: you hold the phone, they watch the screen, their voice guides your finger. That is honest work and it needs no keys. What it needs is care, because everything on the screen is in the photograph — a bank alert that pops up, an OTP that arrives at the wrong moment, a WhatsApp message you would rather keep. Angle the phone away from corners where notifications live, or turn on Do Not Disturb first. The helper should see the problem, not your whole diary.",
+        "Password. PIN. OTP from SMS. BVN. The numbers on the back of a card. Recovery phrases for anything. A real helper installing a printer does not need any of these. If they ask, stop — the request is the diagnosis. A bank will not phone you to request an OTP; that lesson does not bend because the voice is kind, or because they know your name from a form you filled.",
       ),
       p(
-        "True remote-control programs are a deeper room. With one installed, the other person's mouse moves your files while you watch, and you have handed over the keys whether or not you typed a password. The rules are simple and worth memorising. You install the program, not the caller. A person who telephones you about your bank, your BVN, or a package at the embassy has no business in your screen, whatever company name they give. And when the job is done, end the session and remove the program. The best helpers ask you to watch every click. The worst ask you to go and make tea.",
+        "If Windows wants an administrator password to install and this is your machine, you type it. If it is an office machine, the office types it. And if a “Microsoft support” number on a red banner asks you to buy a voucher or install AnyDesk, that is not Microsoft. Close it. Real Windows help never starts from a pop-up shouting at you.",
+      ),
+      h2("When the helper is inside the screen, not the room"),
+      p(
+        "A helper across town can look through the same window by video call: you hold the phone, they watch the screen, their voice guides your finger. That is honest work and it needs no keys. It needs one precaution, because everything on the screen is in the photograph — a bank alert that pops up, an OTP arriving at the wrong moment, a message you would rather keep. Angle the phone away from where notifications live, or turn on Do Not Disturb first. The helper should see the problem, not your whole diary.",
+      ),
+      p(
+        "True remote-control programs are a deeper room. With one installed, the other person’s mouse moves your files while you watch, and you have handed over the keys whether or not you typed a password. The rules are worth memorising. You install the program, not the caller. A person who telephones you about your bank, your BVN, or a package at the embassy has no business in your screen, whatever company name they give. When the job is done, end the session and remove the program. The best helpers ask you to watch every click. The worst ask you to go and make tea.",
       ),
       h2("Remote help, shops, and the academy"),
       p(
-        "Remote control — AnyDesk, TeamViewer, Quick Assist — means someone far away moves your pointer. Use it only with a person you already know, on a channel you already use, and watch the screen the whole time. When they are done, disconnect. Do not leave the program set to start forever. Do not give a code from a pop-up to a stranger who phoned you.",
+        "AnyDesk, TeamViewer, Quick Assist — use them only with a person you already know, on a channel you already use, and watch the screen the whole time. Do not leave the program set to start forever. Do not give a code from a pop-up to a stranger who phoned you. And a shop that wants to “just sign into your Google to test the Play Store” can test with a guest account, or with you standing there: you sign in, they work, you sign out. You met that in the Google-account lesson, with its backup first.",
       ),
       p(
-        "A shop that asks to “just sign into your Google to test the Play Store” can test with a guest or with you standing there. You sign in, they work, you sign out. You met this in the Google-account lesson. Backup before the shop, as you also learned. And at the academy: ask. That is what the room is for. Bring the machine if you can. Bring the question in one sentence. Bring what you already tried. Keep the keys in your pocket. A person who will not teach without the password is offering a service you should not buy.",
+        "At the academy, the whole point is to ask. Bring the machine if you can. Bring the question in one sentence. Bring what you already tried. Keep the keys in your pocket. Umar’s printing crisis ended with the young man pointing at a greyed printer name while Umar clicked — and one sentence at the door: “Next time you will see it yourself.” A person who will not teach without the password is offering a service you should not buy.",
       ),
     ],
   },
@@ -1581,22 +1581,25 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A finger near the Print Screen key on a laptop keyboard.",
     body: [
       p(
-        "A screenshot is a photograph of the screen, taken by the machine. Receipts that will not download, an error message a shop should see, a timetable that exists only as a page — the shutter is faster than a phone pointed at the laptop, and sharper. People use the phone anyway because nobody named the key. The key is Print Screen, often PrtSc, PrtScn, or a camera-and-screen symbol. This lesson is that shutter, the crop, and saving so the picture is a file.",
+        "Chiamaka’s transfer failed twice at the bank portal, and each time the same small red sentence appeared and vanished the moment she clicked OK. The support agent on the phone wanted proof. “Send me a screenshot,” he said — and she nearly held her phone camera up to the laptop. The screen can photograph itself, from the inside, better than any phone pointed at glass.",
       ),
       p(
-        "A screenshot is not a scan of a paper. For an ID or a signed letter, a scan or a careful photo of the paper is still better. For something that already lives on the screen, photograph the screen from inside. You avoid glare, crop, and a thumb in the corner.",
+        "The shutter is Print Screen — often PrtSc, PrtScn, or a little camera-and-screen symbol. The crop is Snipping Tool, or the shortcut that opens it. This lesson is pressing the shutter properly, cropping to the point, and saving so the picture becomes a file instead of a rumour.",
       ),
       fig(
         "/images/blog/printscreen-key.jpg",
         "A laptop keyboard with the Print Screen key in reach.",
         "PrtSc is often above Insert, sometimes sharing a key with Fn. On many laptops you hold Fn then PrtSc. The screen may dim or a small notice may appear. That is the shutter firing.",
       ),
+      p(
+        "One distinction first, because people mix the two cousins up: a screenshot is not a scan. For paper — an ID, a signed letter — scan or photograph the paper. For something that already lives on the screen, shoot from inside. No glare, no thumb in the corner, no curtain behind the laptop.",
+      ),
       h2("The whole screen, and one window"),
       p(
-        "Press PrtSc (with Fn if needed). On older Windows, that only copies to the clipboard — the plate from the last lesson. You must paste into Paint or Word and then Save, or the photograph dies when you copy something else. On newer Windows, PrtSc may open Snipping Tool. Windows+Shift+S is the reliable crop: the screen greys, you drag a rectangle, the snip sits on the plate and often as a notice you can click to save.",
+        "Press PrtSc (hold Fn first on many laptops — the key-sharing is printed on the key itself). On older Windows this only copies to the clipboard: the plate from the copy lesson. You must paste into Paint or Word and Save, or the photograph dies the next time you copy an address. Windows+Shift+S is the reliable crop: the screen greys, you drag a rectangle, and the snip waits as a notice you can click to save.",
       ),
       p(
-        "Alt+PrtSc copies the active window only — the one you last clicked — not the whole desktop. Useful when the desktop has a mess you do not want in the picture. Windows+PrtSc, on many machines, saves a file immediately into Pictures, Screenshots. That is the kindest version: a file, a folder, a name the machine chose. Rename it.",
+        "Alt+PrtSc captures the active window only — the one you last clicked — which is what you want when the desktop is a mess. And Windows+PrtSc, on many machines, saves immediately into Pictures, Screenshots. That is the kindest version: a file, a folder, a name already chosen. Rename it.",
       ),
       fig(
         "/images/blog/screenshot-file.jpg",
@@ -1611,17 +1614,14 @@ export const blogPosts: BlogPost[] = [
       ]),
       h2("The name of the file you will need in March"),
       p(
-        "A snip lands in Pictures, inside the Screenshots folder, wearing a name made of the date and nothing else. In February that name is sensible. In March it is a crowd of identical grey files, and the receipt you need is somewhere among them. So rename the moment you take: MTN-receipt-Feb, Zainab-transfer-4500, error-message-word. Ten letters now beats an hour of opening files later. If the snip matters — a receipt, a confirmation, an error — walk it out of the Screenshots folder the same day into the room you built for such papers.",
+        "A snip lands wearing a name made of the date and nothing else. In February that name is sensible. In March it is a crowd of identical grey files and the receipt you need is somewhere among them. So rename the moment you take: MTN-receipt-Feb, Zainab-transfer-4500, error-message-word. Ten letters now beats an hour of opening files later. If the snip matters — a receipt, a confirmation, an error — walk it out of the Screenshots folder the same day, into the room you built for such papers.",
       ),
       p(
-        "Screenshots also travel better as documents than as photographs. Sent through WhatsApp the ordinary way, the picture is squeezed and a small red figure can blur into mush. Send it again as a Document — WhatsApp, attach, Document — and it arrives exactly as you cropped it, crisp enough to read a reference number across a shop counter. This is the trick for every screenshot that will be used as evidence, not as memory. The screen can photograph itself cleanly; do not let the journey undo the photograph.",
+        "And screenshots travel better as documents than as photographs. Sent the ordinary WhatsApp way, the picture is squeezed until a small red figure blurs into mush. Send it as a Document — attach, Document — and it arrives crisp enough to read a reference number across a shop counter. Do this for every screenshot that will be used as evidence, not as memory. Which reminds you of Chiamaka’s second call with support: she sent the red sentence as a camera photo first. “Madam, I cannot read it,” said the agent. The journey had undone the photograph.",
       ),
       h2("Errors, receipts, and what not to photograph"),
       p(
-        "When something fails, screenshot the error before you click OK. The OK dismisses the only sentence a helper can use. When a payment page shows a reference, screenshot before you leave. When a form refuses a file, screenshot the red text. Do not screenshot a password, an OTP, or a bank balance to send in a group. Crop if you must send proof of a transfer — amount and reference, not the whole dashboard.",
-      ),
-      p(
-        "Phones already know this gesture: volume down and power, or a swipe. Same idea. For a laptop problem, a laptop screenshot is clearer than a phone photo of the laptop. Save it, name it, then send it as a document if the other person must read the words. WhatsApp will squash it if you send it as a camera picture. You have heard that warning. It still applies to snips.",
+        "When something fails, screenshot the error before you click OK — the OK dismisses the only sentence a helper can use. When a payment page shows a reference, capture it before you leave. When a form refuses a file, capture the red text. What you do not capture: a password, an OTP, a bank balance to post in a group. Crop a transfer proof to amount and reference, never the whole dashboard. Phones know the same gesture — volume down and power, or a swipe — but for a laptop problem, a laptop screenshot beats any photo of the laptop. Save it, name it, send it as a document. Two habits and one shutter.",
       ),
     ],
   },
@@ -3392,10 +3392,10 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A photograph being resized in a simple window on a laptop.",
     body: [
       p(
-        "Phone cameras save large files. A single portrait can be three or eight megabytes. Five of those will bounce from Gmail or sit in a queue until you leave the café. WhatsApp shrinks by force and makes soup. Email often refuses. The kind middle is a smaller copy: enough to see a face or a receipt, small enough to travel. This lesson is copy, resize, save as, attach the copy.",
+        "Bala photographed his new shop sign twelve times from twelve angles — the man was proud of his sign — and emailed all twelve to the man who would print his flyers. The mail bounced. Then it sat in a queue until he left the café. One phone photograph can be three or eight megabytes; twelve of them is a wall, and email wants a window. WhatsApp shrinks by force and makes soup. The kind middle is a smaller copy: enough to see the face or the receipt, small enough to travel.",
       ),
       p(
-        "Do not work on the only original. In Pictures, copy the file — Ctrl+C, Ctrl+V — and rename the copy receipt-small.jpg. Open it in Photos, Paint, or whatever preview the machine has. You want Resize, not Crop. Crop cuts the picture. Resize keeps the whole picture and makes the grid of dots smaller. A receipt still shows the whole slip. A head still has shoulders if it had them.",
+        "The rule before any resizing: never work on the only original. In Pictures, copy the file — Ctrl+C, Ctrl+V — and rename the copy receipt-small.jpg. Everything that follows happens to the copy. What looks like a shortcut here is actually how people lose the one photograph of grandmother’s house.",
       ),
       fig(
         "/images/blog/resize-photo.jpg",
@@ -3404,10 +3404,10 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("Paint, Photos, and a number"),
       p(
-        "In Paint: Resize, Pixels, uncheck “maintain aspect ratio” only if you like distortion — leave it checked. Set the longer side to 1280 or 1600. OK. Save. In Windows Photos, there is often Edit, then a resize or save a copy. On a Mac, Preview, Tools, Adjust Size. The file size in kilobytes should drop. A passport photo for a form is often asked in kilobytes — 50 KB, 100 KB. That is smaller still; 600 pixels on the long side, saved as JPEG. If the form rejects, you are still too heavy. Smaller, new copy, try again.",
+        "Open the copy in Paint, Photos, or Preview on a Mac. You want Resize, not Crop — crop cuts the picture, resize keeps the whole picture and makes its grid of dots smaller. A receipt still shows the whole slip; a head still has its shoulders. In Paint: Resize, Pixels, leave “maintain aspect ratio” checked, set the longer side to 1280 or 1600, OK, Save. The file size in kilobytes should drop visibly in the folder’s Size column.",
       ),
       p(
-        "JPEG is the usual type for photos. PNG is heavier and useful for a poster with text. Do not convert a receipt to a masterpiece. Save as JPEG, quality medium if it asks. The words on the receipt must stay readable. Zoom the small copy before you send. If the naira amount is a blur, you shrank too far. Undo, a middle size.",
+        "A passport photo for a portal is often demanded in kilobytes — 50 KB, 100 KB, sometimes 20. That is smaller still: 600 pixels on the long side, saved as JPEG. If the form rejects, you are still too heavy. Smaller, new copy, try again. And the two types matter as much as the size: JPEG is the envelope for photographs, with a quality slider around eighty that nobody can spot on a screen. PNG is heavier and honest for text — screenshots, posters. Choose the right envelope and the same letter costs a fraction of the postage. One test before every send: zoom the small copy. If the naira amount is a blur, you shrank too far.",
       ),
       fig(
         "/images/blog/photo-size.jpg",
@@ -3420,19 +3420,12 @@ export const blogPosts: BlogPost[] = [
         "Compare the two file sizes in File Explorer — Details view, Size column.",
         "Attach the small one to a mail to yourself. Confirm it opens and can be read.",
       ]),
-      h2("The number that makes it small"),
+      h2("Twenty photos, and what not to do"),
       p(
-        "Open the copy in Paint or Photos and find the resize words. The number that matters is the width: eight hundred pixels is the size of a screen and plenty for any letter or form; the original camera number of four thousand is a poster and a weight. Save the small copy as JPEG — the format with the quality slider — and keep the slider around eighty. The photograph will look identical in the mail and identical when printed as a passport slip. The two-megabyte original is for the archive at home. The two-hundred-kilobyte copy is for the road.",
+        "Twenty photographs at once follow the same logic one level up. Shrink the folder into one suitcase — the zipping lesson — or park it in the cloud and send a link, as the Drive lesson taught. Do not screenshot a photo to shrink it: you lose quality and gain a taskbar. Do not send the whole DCIM folder and hope. And do not use an online “compressor” you reached from a video advert — you are uploading the face to a stranger’s server to save a few kilobytes. Paint is enough. The machine on your desk is enough.",
       ),
       p(
-        "Twenty photographs at once follow the same logic one level up. Shrink the folder, or send it the cheap way you already know: zipped as one suitcase, or parked in the cloud with a link. And watch the second figure on every file — the type. A PNG screenshot carries every pixel honestly and weighs five times what the same picture weighs as a JPEG. Screenshots and documents want PNG or PDF; photographs want JPEG. Choose the right envelope and the same letter costs a fraction of the postage. Sizes are honest once you learn what each envelope is for.",
-      ),
-      h2("What not to do"),
-      p(
-        "Do not screenshot a photo to shrink it — you lose quality and gain a taskbar. Do not send the whole DCIM zip and hope. Do not use an online “compressor” you reached from an advert; you are uploading the face to a stranger. Paint is enough. If a job portal wants 20 KB, it will say so. Obey the number. A blurry ID is worse than a second attempt.",
-      ),
-      p(
-        "The original remains in Pictures, in the room you made, backed up if you learned that lesson. The small copy can live next to it or in the Fees folder if it is a receipt. Names: receipt-march-small.jpg. You know why. Email will take a window. It will not take a wall. Give it a window.",
+        "The original stays in Pictures, in the room you made, backed up if you have learned that lesson. The small copy lives beside it, or in the Fees folder if it is a receipt: receipt-march-small.jpg. You know why. Bala sent nine of the twelve angles — resized, named, one mail — and the flyer man replied in an hour. Email will take a window. It will not take a wall. Give it a window.",
       ),
     ],
   },
@@ -7437,10 +7430,10 @@ export const blogPosts: BlogPost[] = [
       "Adult learners at computers in a small evening class, an instructor leaning over one screen.",
     body: [
       p(
-        "So you have chosen to learn properly — the decision this whole shelf has been preparing you to make. Now the market floods in: every week a new data science bootcamp in Nigeria, a six-week miracle, a certificate with a foreign logo. Some of these schools are genuinely good and change lives at scale. Some are a room, a projector, and a man reading slides he did not write. Both advertise identically. This lesson is the buyer's inspection — the fence check, turned on the people asking for your school fees.",
+        "Ibrahim sold his motorcycle to pay school fees. Not to a university — to one of the three “schools” that had been calling him since his results came out, each promising a data science bootcamp in Nigeria that would end in a foreign salary. The decision this whole shelf has been preparing him to make now had faces and account numbers attached, and one of those three rooms was a projector and a man reading slides he did not write. Both advertise identically. This lesson is the buyer’s inspection — the fence check, turned on the people asking for your school fees.",
       ),
       p(
-        "Know the three honest shapes first. Self-taught: the free-learning lesson's road — free materials, total discipline, zero fees, and the highest drop-out rate, because nobody notices when you stop. The night class or part-time course: a room, machines, a teacher, a term — what this academy has run for years, built for people who work by day. The bootcamp: the full-time intensive, weeks of immersion, designed for career switchers in a hurry. None is superior in the abstract; each fits a life. The question is never which shape is best, but which shape your job, your pocket, and your temperament can actually finish — because an unfinished cheap course is the most expensive education on earth.",
+        "Know the three honest shapes first. Self-taught: the free-learning lesson’s road — free materials, total discipline, zero fees, and the highest drop-out rate, because nobody notices when you stop. The night class or part-time course: a room, machines, a teacher, a term — what this academy has run for years, built for people who work by day. The bootcamp: the full-time intensive, weeks of immersion, for career switchers in a hurry. None is superior in the abstract; each fits a life. The question is never which shape is best, but which shape your job, your pocket, and your temperament can actually finish — because an unfinished cheap course is the most expensive education on earth.",
       ),
       fig(
         "/images/blog/classroom-night-class.jpg",
@@ -7449,10 +7442,10 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("The inspection: five questions before any fee"),
       p(
-        "One: who teaches, and have they done the work — or only watched it? A working professional teaching evenings beats a full-time lecturer who has never shipped. Two: what will I have built by the end — ask to see past students' actual projects, not the school's own brochure; a good school shows them proudly, like a tailor. Three: machines or not — is a computer provided, or what exactly must you bring, because a laptop is a real cost and pretending otherwise is dishonesty. Four: what does the fee cover — every session, materials, certificate, anything after? State it all before you pay, in writing. Five — the loudest alarm: does the school promise jobs? Guaranteed employment is the prize message in academic dress; a good school promises skills, projects, and honest guidance, and says plainly that the market rewards proof. The moment a school sells you a job instead of a skill, walk out politely and keep your money.",
+        "One: who teaches, and have they done the work — or only watched it? A working professional teaching evenings beats a full-time lecturer who has never shipped. Two: what will I have built by the end? Ask to see past students’ actual projects, not the brochure; a good school shows them proudly, like a tailor showing his rack. Three: machines or not — is a computer provided, or what exactly must you bring? A laptop is a real cost and pretending otherwise is dishonesty. Four: what does the fee cover — every session, materials, certificate, anything after? All of it, before you pay, in writing. Five — the loudest alarm: does the school promise jobs? Guaranteed employment is the prize message in academic dress. A good school promises skills, projects, and honest guidance, and says plainly that the market rewards proof. The moment a school sells you a job instead of a skill, walk out politely and keep your money.",
       ),
       p(
-        "Two smaller tells: size and after. A class where one teacher faces sixty students is a cinema, not a school — ask the ratio, and ask what happens when you miss a week, because life here will interrupt you. And the papers: a certificate is a receipt for learning, not the learning itself — lesson one hundred and seventeen's employers trust the portfolio long before the parchment. When you visit a school — ours, or any — ask these five questions and watch the answers. A good school welcomes the inspection. A bad one changes the subject to urgency: promo ends today. You know hurry. Hurry is the oldest tell on this shelf.",
+        "Two smaller tells: size and after. A class where one teacher faces sixty students is a cinema, not a school — ask the ratio, and ask what happens when you miss a week, because life here will interrupt you. And the papers: a certificate is a receipt for learning, not the learning itself; the portfolio lesson’s employers trust the work long before the parchment. When you visit a school — ours, or any — ask the five questions and watch the faces as much as the answers. A good school welcomes the inspection. A bad one changes the subject to urgency: promo ends today. You know hurry. Hurry is the oldest tell on this shelf. What question would you ask first, if you could ask only one? Ibrahim chose number two. The room that could not show him one student’s finished project did not get his money.",
       ),
       fig(
         "/images/blog/student-projects-laptop.jpg",
@@ -7461,7 +7454,7 @@ export const blogPosts: BlogPost[] = [
       ),
       ul([
         "Choose the shape your life can finish: self-taught, night class, or bootcamp. Write why on paper.",
-        "Ask the five before any fee: teachers' work, students' projects, machines, the full fee in writing, and jobs promised or not.",
+        "Ask the five before any fee: teachers’ work, students’ projects, machines, the full fee in writing, and jobs promised or not.",
         "Run from guaranteed jobs and today-only promos. Two tells, one conclusion.",
         "Visit the room before you pay it. Any school worth your evenings will show you the room.",
       ]),
@@ -7580,22 +7573,25 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A planner showing a week of scheduled posts beside a phone on a desk.",
     body: [
       p(
-        "Every business you pass is being told the same thing: you must be online. Most owners have neither the time nor the stomach for it — the photographs, the captions, the stranger asking the same question forty times — so they hire somebody to stand in the doorway of their business and speak well to the street. That person is the social media manager, and the title undersells the work. It is closer to market trade with a modem: know the goods, show the goods, answer every caller with manners, and count what actually sold on Saturday.",
+        "The tailoring brand on Damilola’s street had beautiful clothes and a page that died every February. The owner meant well; she was simply too busy sewing to photograph, caption, and answer the same question forty times. So she hired Damilola to stand in the doorway of her business and speak well to the street. That is the social media manager, and the title undersells the work. It is market trade with a modem: know the goods, show the goods, answer every caller with manners, and count what actually sold on Saturday.",
       ),
       p(
-        "The work, honestly itemised. The calendar: a week of posts planned on paper or a simple planner — what goes out, on which day, photographed for which purpose — because posting-by-mood is how business pages die. The camera: clean product photographs in daylight, the selling lesson's discipline, reused across posts. The replies: this is the trade's core and its test — every question answered quickly and kindly, every complaint answered publicly and finished privately, because a thousand strangers are reading the reply who never read the post. WhatsApp is not email, lesson ten said; a business chat is not a group chat either — it is a counter, and the manager is the one behind it. And the numbers, weekly: what was seen, what was clicked, what was bought. Vanity is when a page grows and sales do not; the honest manager reads that sentence and changes the cooking, not the garnish.",
+        "The work, honestly itemised. The calendar: a week of posts planned on paper or a simple planner — what goes out, which day, photographed for which purpose — because posting-by-mood is how business pages die. The camera: clean product photographs in daylight, the selling lesson’s discipline, reused across posts. The replies: this is the trade’s core and its test — every question answered quickly and kindly, every complaint answered publicly and finished privately, because a thousand strangers read the reply who never read the post. And the numbers, weekly: what was seen, what was clicked, what was bought. Where would you look to know whether the page is working? Not at the likes. At the till.",
       ),
       fig(
         "/images/blog/phone-content-calendar.jpg",
         "A planner showing a week of scheduled posts beside a phone on a desk.",
         "The week, decided in advance. Saturday's sales are cooked on Monday's calendar; posting by mood is how pages starve politely.",
       ),
+      p(
+        "One contrast worth pinning to the wall: a busy page and a working page are not the same thing. Vanity is when the page grows and the sales do not. The honest manager reads that sentence and changes the cooking, not the garnish. And remember the WhatsApp lesson’s warning wearing new clothes: a business chat is not a group chat. It is a counter, and the manager is the one behind it.",
+      ),
       h2("What the good ones charge, and how they begin"),
       p(
-        "Begin where you are trusted: a relation's shop, your church's page, the tailor whose work you already wear — one small account, run properly for a season, with before-and-afters kept as proof. Charging follows the pattern of every trade on this shelf: a monthly fee agreed in writing for a defined service — so many posts, photographs included, replies within working hours, one honest report a week — and anything beyond it quoted separately. The marketing programs at the academy teach the paid side properly, with real budgets; the free road starts with the learning lesson and the discipline to finish. What separates earners from hobbyists in this trade is rarely taste. It is reliability: the page that posts when it said it would, the comment answered within the hour, the report that arrives without being chased. Clients renew reliability. They merely compliment beauty.",
+        "Begin where you are trusted: a relation’s shop, your church’s page, the tailor whose work you already wear — one small account, run properly for a season, with before-and-afters kept as proof. Charging follows the pattern of every trade on this shelf: a monthly fee agreed in writing for a defined service — so many posts, photographs included, replies within working hours, one honest report a week — and anything beyond it quoted separately. What separates earners from hobbyists in this trade is rarely taste. It is reliability: the page that posts when it said it would, the comment answered within the hour, the report that arrives without being chased. Clients renew reliability. They merely compliment beauty.",
       ),
       p(
-        "And keep the shelf's guard up while you work, because this desk meets every liar in the book: the client who wants to buy followers, which is renting an empty stadium and calling it a crowd; the scam that arrives as a brand collaboration with a fee attached; the forward-that-lies pressure to post what was never checked. The manager's name sits on every word posted — lesson one hundred and nine's envelope, signed monthly. Guard it, and the trade compounds: one kept shop leads to the next, the way kept sites and kept books do. The street talks. Make sure it is your work it is talking about.",
+        "And keep the shelf’s guard up while you work, because this desk meets every liar in the book. The client who wants to buy followers — that is renting an empty stadium and calling it a crowd. The “brand collaboration” that arrives with a fee attached and a form that wants your bank app. The forward-that-lies, pressed on you as urgent. The manager’s name sits on every word posted — the signature lesson’s envelope, signed monthly. Guard it, and the trade compounds: one kept shop leads to the next, the way kept sites and kept books do.",
       ),
       fig(
         "/images/blog/social-reply-desk.jpg",
@@ -7610,7 +7606,7 @@ export const blogPosts: BlogPost[] = [
       ]),
       h2("The trade of being trusted in public"),
       p(
-        "Strip the platforms and the trends — they will change again before these words grow old — and the job is ancient: stand at the front of the shop, know your goods, greet every caller well, and keep honest count of what sells. Businesses will always pay for the person who can be trusted to speak for them in public, because most people cannot bear to do it daily. That is the work behind the posts, and there has never been more of it than now.",
+        "Strip the platforms and the trends — they will change again before these words grow old — and the job is ancient: stand at the front of the shop, know your goods, greet every caller well, and keep honest count of what sells. Businesses will always pay the person who can be trusted to speak for them in public, because most people cannot bear to do it daily. Damilola’s brand posted through two Februaries now, and the owner says the same thing at every market day: “She answers them before I finish hemming.” That is the work behind the posts, and there has never been more of it than now.",
       ),
     ],
   },
@@ -8214,10 +8210,10 @@ export const blogPosts: BlogPost[] = [
       "A focused candidate at a desk with past papers, a laptop and a small calendar marked for an exam date.",
     body: [
       p(
-        "Sooner or later the question arrives with the job adverts: certified preferred. The certificates lesson of this chapter said what papers do not prove; this lesson says, fairly, what they do — and how to earn the ones worth their fees. Because the honest position is not certificates are useless and it is not collect them all. It is: some doors are genuinely locked without them, and the skill is knowing which.",
+        "Grace had been applying for three months when she found the two words behind most of the silence: certified preferred. She could do the work — the support-track work these notes have been teaching her all along — but the adverts wanted paper, and she did not know whether that was a lock or a suggestion. The certificates lesson of this chapter said what papers do not prove. This lesson says, fairly, what they do — and how to earn the ones worth their fees. The honest position is not “certificates are useless” and it is not “collect them all.” It is: some doors are genuinely locked without them, and the skill is knowing which.",
       ),
       p(
-        "Where certificates genuinely matter. Regulated and corporate doors: the support and security tracks — the CompTIA family, the cloud platforms' own exams — are asked for by name in the adverts of lesson one hundred and twenty-one's world, and government or large-corporate shortlists filter on them mechanically. Contracts and procurement: a vendor certificate on the wall settles a client's committee faster than any portfolio. And the personal case: a structured exam forces the systematic study that self-taught trails allow you to dodge — the fence-check lesson applied to your own gaps. Where they matter little: creative and client-facing trades — nobody asks the designer of lesson one hundred and thirty-seven for a certificate; they ask for the rack. And they never, anywhere, replace the portfolio — the paper opens the door, the track record closes the room.",
+        "Where certificates genuinely matter. Regulated and corporate doors: the support and security tracks — the CompTIA family, the cloud platforms’ own exams — are asked for by name in the analyst and support worlds, and government or large-corporate shortlists filter on them mechanically, before human eyes arrive. Contracts and procurement: a vendor certificate on the wall settles a client’s committee faster than any portfolio. And the personal case: a structured exam forces the systematic study that self-taught trails let you dodge — the fence-check lesson applied to your own gaps. Where they matter little: creative and client-facing trades — nobody asks the designer for a certificate; they ask for the rack. And they never, anywhere, replace the portfolio. The paper opens the door. The track record closes the room.",
       ),
       fig(
         "/images/blog/exam-study-desk.jpg",
@@ -8226,10 +8222,10 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("Preparing like a professional"),
       p(
-        "Pick one exam, the one the adverts you actually want keep naming — not the collection the internet is selling this month. Book it: a real date, a real fee, paid — the deposit lesson applied to yourself; nothing concentrates study like a receipt. Then the working method: the syllabus as the fence check — walk your own knowledge against the official list of topics, mark the weak boards honestly; one section a night, the ten-honest-minutes rule grown into a season; and past questions early and often, because every exam has a grammar and the grammar is learnable. Study groups from the learning-in-public lesson multiply this — and the exam fees are real money, so put them in the books as what they are: an investment with a door at the end, chosen once, passed once.",
+        "Pick one exam — the one the adverts you actually want keep naming, not the collection the internet is selling this month. Book it: a real date, a real fee, paid. The deposit lesson applied to yourself; nothing concentrates study like a receipt. Then the working method: the syllabus as the fence check — walk your own knowledge against the official topic list, mark the weak boards honestly; one section a night, the ten-honest-minutes rule grown into a season; and past questions early and often, because every exam has a grammar and the grammar is learnable. Study groups from the learning-in-public lesson multiply all of this.",
       ),
       p(
-        "After the pass: the certificate goes into Drive with the papers, a line goes onto the profile and the CV, the learning-in-public trail hears about it — and then the paper does its one job, at the door, once. What happens in the room after is the portfolio's whole jurisdiction: the dashboard you can build, the machine you can fix, the client you can keep. Keep both ledgers current — the certificates and the track record — and you become the rare thing every employer is actually shopping for: a person whose paper tells the truth about them, and whose work keeps proving it true.",
+        "After the pass: the certificate goes into Drive with the papers, a line goes onto the profile and the CV, the learning-in-public trail hears about it — and then the paper does its one job, at the door, once. What happens in the room after is the portfolio’s whole jurisdiction: the dashboard you can build, the machine you can fix, the client you can keep. Keep both ledgers current and you become the rare thing every employer is actually shopping for: a person whose paper tells the truth about them, and whose work keeps proving it true. Retrieval, before we close: what are the two ledgers? If you can name them without looking up, you have the whole lesson.",
       ),
       fig(
         "/images/blog/certificate-frame-shelf.jpg",
@@ -8609,37 +8605,44 @@ export const blogPosts: BlogPost[] = [
       "An open notebook with dated notes beside a phone showing a notes app, pen across the page.",
     body: [
       p(
-        "Here is a painful test: what did you agree on last Tuesday's call? Who told you the fee changed, and when? Most people cannot say, not because the memory is weak but because nothing was ever written where March could find it. The working life runs on notes — decisions, names, prices, promises — and the difference between people who seem organised and people who actually are, is not talent. It is one home, one habit, and ten minutes a week.",
+        "Halima runs a small supplies business out of her front room, and last month a ₦40,000 disagreement lived entirely in one Tuesday phone call. The supplier said the fee changed. She remembered it differently. Neither of them had written anything where March could find it, so the argument had nothing to stand on — and she lost it by silence. Here is the painful test: what did you agree on last Tuesday’s call? Most people cannot say, not because the memory is weak but because nothing was ever written where the future could search for it.",
       ),
       p(
-        "One home. Not seven. Choose a single place where every note lives — a notes app on the phone and computer that syncs, or one good notebook always in the same bag pocket — and let it become boring with use. The scattered system is the failed system: the meeting note in the phone, the price on a card, the promise in a chat that has since sunk. Whatever you choose, the rules of the house are the ones you already keep elsewhere: every note gets a date and a title — 14 June, Chidi — generator quote — so the search box of the Ctrl+F lesson finds it in a blink next March. Capture fast, file weekly: in the meeting, thumb flying, spelling be damned; on Friday, ten minutes to tidy, tag and throw out the notes that seemed urgent and turned out to be noise.",
+        "The working life runs on notes — decisions, names, prices, promises — and the difference between people who seem organised and people who actually are, is not talent. It is one home, one habit, and ten minutes a week.",
       ),
       fig(
         "/images/blog/notebook-system-desk.jpg",
         "An open notebook with dated notes beside a phone showing the same notes in an app, pen across the page.",
         "Two homes that are one home: paper for the meeting, the app for the archive. Every entry dated, every title honest, Friday tidies it.",
       ),
-      h2("What to write, and the weekly review"),
+      h2("One home, and the rules of the house"),
       p(
-        "Meeting notes have kept a four-line discipline for a century, and it survives every app: the date and the people; what was decided; who carries what, with a date; and what nobody agreed but somebody thinks happened. Write decisions in the room, and where you can, read them back aloud before the meeting ends — may I confirm, we agreed Friday for the delivery and Nana pays the courier — the sentence that has saved more working friendships than any contract. Personal notes follow the same bones: what happened, what it means, what I will do. And the photograph saves the paper world: a notebook page shot into Drive, the papers lesson's backup applied to your own handwriting, survives the bag, the rain and the taxi seat.",
+        "One home. Not seven. Choose a single place where every note lives — a notes app on the phone and computer that syncs, or one good notebook always in the same bag pocket — and let it become boring with use. The scattered system is the failed system: the meeting note in the phone, the price on a card, the promise in a chat that has since sunk.",
       ),
       p(
-        "The weekly review is where notes become a memory instead of a landfill. Friday, ten minutes: read the week's notes top to bottom, carry the unfinished whos and whens into next week's page, check every promise against the calendar, and — the part nobody regrets — search something old. Watch the search box find, in three seconds, the phone number you wrote in February and thought you would remember. That small miracle, repeated weekly, is the whole system paying rent. You will not remember Friday in March. Friday wrote to March, in a house March knows how to search. That is what organised people actually do, and from this week, so do you.",
+        "The rules of the house are the ones you already keep elsewhere: every note gets a date and a title — 14 June, Chidi — generator quote — so the search box of the Ctrl+F lesson finds it in a blink next March. Capture fast, file weekly: in the meeting, thumb flying, spelling be damned; on Friday, ten minutes to tidy, tag, and throw out the notes that seemed urgent and turned out to be noise. Which of your current note-homes would survive losing your phone this Friday? If the honest answer is none, today is the day the house gets built.",
+      ),
+      h2("What to write, and the weekly review"),
+      p(
+        "Meeting notes have kept a four-line discipline for a century, and it survives every app: the date and the people; what was decided; who carries what, by when; and what nobody agreed but somebody thinks happened. Write decisions in the room, and where you can, read them back aloud before the meeting ends — “may I confirm: we agreed Friday for the delivery and Nana pays the courier” — the sentence that has saved more working friendships than any contract. Personal notes follow the same bones: what happened, what it means, what I will do. And the photograph saves the paper world: a notebook page shot into Drive, the papers lesson’s backup applied to your own handwriting, survives the bag, the rain and the taxi seat.",
       ),
       fig(
         "/images/blog/notes-app-phone.jpg",
         "A hand using a notes app on a phone, the list showing dated titled notes, one being edited.",
         "The archive in the pocket. Dated, titled, searchable — the meeting you half-remember is three thumb-taps from the truth.",
       ),
+      p(
+        "The weekly review is where notes become a memory instead of a landfill. Friday, ten minutes: read the week’s notes top to bottom, carry the unfinished whos and whens into next week’s page, check every promise against the calendar — and, the part nobody regrets, search something old. Watch the search box find, in three seconds, the phone number you wrote in February and thought you would remember. That small miracle, repeated weekly, is the whole system paying rent. You will not remember Friday in March. Friday wrote to March, in a house March knows how to search.",
+      ),
       ul([
-        "Choose the one home today — app or notebook — and move tomorrow's notes there. Boring and faithful beats clever and abandoned.",
+        "Choose the one home today — app or notebook — and move tomorrow’s notes there. Boring and faithful beats clever and abandoned.",
         "Date and title every note, always. Future-you searches titles, not vibes.",
         "Book the Friday ten minutes: tidy the week, carry the open whos and whens, search something old.",
         "Meetings: date, people, decided, who carries what by when — read back aloud before the room breaks up.",
       ]),
       h2("The memory you are building"),
       p(
-        "A year of this system leaves you with something nobody can take to the cleaners: a searchable record of your own working life — every decision, every price, every promise and its date. It makes you the person who says as I wrote on the 14th instead of I think; it settles arguments before they start; and it compounds, quietly, into the professional's greatest advantage — knowing what actually happened. The books of lesson one hundred and forty-three keep the money honest. This keeps the weeks honest. Same discipline, smaller notebook.",
+        "A year of this system leaves you with something nobody can take to the cleaners: a searchable record of your own working life — every decision, every price, every promise and its date. It makes you the person who says “as I wrote on the 14th” instead of “I think”; it settles arguments before they start; and it compounds, quietly, into the professional’s greatest advantage: knowing what actually happened. Halima’s last three disagreements ended with her reading her own note aloud, once, and the room adjusting around it. The bookkeeper’s books keep the money honest. This keeps the weeks honest. Same discipline, smaller notebook.",
       ),
     ],
   },
@@ -8913,10 +8916,10 @@ export const blogPosts: BlogPost[] = [
       "A phone screen showing a data usage bar, most of it already consumed, held in one hand.",
     body: [
       p(
-        "The bundle was two gigabytes on Monday, fat and confident. By Thursday the phone says data exhausted, and you are genuinely confused — you watched nothing, or so your memory insists. The memory is honest; the bundle was still eaten. A bundle is a bowl of water in a house with four quiet drinkers, and this lesson is about learning their names, because a drinker with a name can be leashed.",
+        "The bundle was two gigabytes on Monday, fat and confident. By Thursday the phone said data exhausted, and Kunle was genuinely confused — he watched nothing, or so his memory insisted. The memory is honest; the bundle was still eaten. A bundle is a bowl of water in a house with four quiet drinkers, and this lesson is learning their names, because a drinker with a name can be leashed.",
       ),
       p(
-        "The eaters, by appetite. The updater: every app on the phone checks for new versions, and the big ones — the social apps, the maps — update in the hundreds of megabytes, over your bundle if you let them. The leash is one switch: updates over Wi-Fi only, the updates lesson's law, and the biggest eater sits down. The backup: photographs climb to the cloud all day on mobile data if the gallery's setting says so — fifteen years of family history quietly metered. Backups belong to Wi-Fi, or to the nights when you switch them on yourself. The streamer: video drinks data the way the noon sun drinks a bucket — an hour of high-quality video can finish a daily bundle alone; the caption lesson's settings hold the cure, because a lower quality looks the same on a six-inch screen and drinks a tenth. And the background: apps you are not even using, refreshing feeds, syncing, checking — the settings page has a screen that names every eater on the phone and shows exactly how much each drank this month. Open it once, with the confusion of Thursday in your mind, and the mystery dies in ninety seconds of honest reading.",
+        "The eaters, by appetite. The updater: every app checks for new versions, and the big ones — the social apps, the maps — update in the hundreds of megabytes, over your bundle if you let them. The leash is one switch: updates over Wi-Fi only, the updates lesson’s law, and the biggest eater sits down. The backup: photographs climb to the cloud all day on mobile data if the gallery says so — fifteen years of family history quietly metered. Backups belong to Wi-Fi, or to nights when you switch them on yourself. The streamer: video drinks data the way the noon sun drinks a bucket — an hour of high quality can finish a daily bundle alone — and the quality-setting lesson holds the cure, because lower quality looks the same on a six-inch screen and drinks a tenth. And the background: apps you are not even using, refreshing feeds, syncing, checking. Where would you look to name every drinker in your own house? One screen: the data usage page in Settings. Open it once, with Thursday’s confusion in your mind, and the mystery dies in ninety seconds of honest reading.",
       ),
       fig(
         "/images/blog/data-usage-settings.jpg",
@@ -8925,7 +8928,10 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("The leash, and the buying"),
       p(
-        "Three switches leash the house for good. Data saver, in the network settings — the phone stops the background drinking and lets the foreground apps eat only when you are actually looking. Auto-update over Wi-Fi only, as above. And a data warning set at three-quarters of the bundle — the phone taps you on the shoulder before the exhaustion, not after, which turns Thursday's surprise into Wednesday's decision. Then the buying itself, briefly and firmly: bundles come from the network's own app, its own portal, its own codes — never from the market agent who promises a bigger bundle for less, because the oversized cheap bundle is the recharge-card scam of this decade; the SIM either works at half speed, or works at all until Monday. Know your cycle — the day it renews, the day it dies — and note it in the weekly book beside the airtime. A bundle with a known birthday cannot ambush you.",
+        "Three switches leash the house for good. Data saver, in the network settings — the phone stops the background drinking and lets the foreground apps eat only when you are actually looking. Auto-update over Wi-Fi only, as above. And a data warning set at three-quarters of the bundle — the phone taps your shoulder before the exhaustion, not after, which turns Thursday’s surprise into Wednesday’s decision. It looks like the bundle is haunted. Actually, four named drinkers and one leash.",
+      ),
+      p(
+        "Then the buying itself, briefly and firmly: bundles come from the network’s own app, its own portal, its own codes — never from the market agent who promises a bigger bundle for less, because the oversized cheap bundle is the recharge-card scam of this decade; the SIM either works at half speed, or works only until Monday. Know your cycle — the day it renews, the day it dies — and note it in the weekly book beside the airtime. A bundle with a known birthday cannot ambush you.",
       ),
       fig(
         "/images/blog/data-bundle-notebook.jpg",
@@ -8933,7 +8939,7 @@ export const blogPosts: BlogPost[] = [
         "The birthday, noted. A bundle whose renewal day sits in the book becomes a decision, not a surprise.",
       ),
       p(
-        "And the dual-SIM clause, because half the phones in this country carry two lines: data comes out of exactly one SIM — the one the settings call the data SIM — and the switch that chooses it lives in the network settings. The classic tragedy is the data on line one, the browsing on line two's airtime, discovered at month's end in the balance. Check the switch once, after any software update, and whenever a bundle refuses to work: the phone is usually obedient; it was only never told. Bundle, leash, switch — three words that turn the bowl from a mystery into a managed meal. The next lesson walks to the machine that eats a different kind of money: the cash machine at the bank, and its market cousin.",
+        "And the dual-SIM clause, because half the phones in this country carry two lines: data comes out of exactly one SIM — the one the settings call the data SIM — and the switch that chooses it lives in the network settings. The classic tragedy is data loaded on line one, browsing charged to line two’s airtime, discovered at month’s end in the balance. Check the switch after any software update, and whenever a bundle refuses to work: the phone is usually obedient; it was only never told.",
       ),
       fig(
         "/images/blog/data-saver-toggle.jpg",
@@ -8943,12 +8949,12 @@ export const blogPosts: BlogPost[] = [
       ul([
         "Open the data usage screen today and read the list by mouth size. The mystery dies in ninety seconds.",
         "Three switches: data saver on, updates over Wi-Fi only, gallery backup on Wi-Fi only.",
-        "Set the data warning at three-quarters. Thursday's surprise becomes Wednesday's decision.",
-        "Bundles from the network's own channels only. The oversized cheap bundle is a costume with a zipper.",
+        "Set the data warning at three-quarters. Thursday’s surprise becomes Wednesday’s decision.",
+        "Bundles from the network’s own channels only. The oversized cheap bundle is a costume with a zipper.",
       ]),
       h2("The managed meal"),
       p(
-        "Two gigabytes is not a small bundle; it is an unmanaged one. Named eaters, three switches, a known renewal day — and the same two gigabytes stretch to the end of the month with room for the videos you actually chose to watch. Data is money in a different costume, and it obeys the same law this shelf has taught since lesson six: what you do not watch leaks. Watch the bowl. The next lesson goes to the bank's wall, where the money becomes notes — and where a new generation of thieves waits at the slot.",
+        "Two gigabytes is not a small bundle; it is an unmanaged one. Named eaters, three switches, a known renewal day — and the same two gigabytes stretch to the end of the month with room for the videos you actually chose to watch. Data is money in a different costume, and it obeys the same law this shelf has taught since the leaks lesson early in these notes: what you do not watch leaks. Watch the bowl. The next lesson goes to the bank’s wall, where the money becomes notes — and where a new generation of thieves waits at the slot.",
       ),
     ],
   },
@@ -9713,10 +9719,10 @@ export const blogPosts: BlogPost[] = [
       "A phone camera taking a photograph of a blue screen with the stop code MEMORY_MANAGEMENT clearly readable.",
     body: [
       p(
-        "You are in the middle of typing an important letter for your business or school. Without making a single sound, your screen flashes violently and turns into a solid wall of bright electric blue with a giant white frowning face: ':(' followed by words that strike terror into any beginner: 'Your PC ran into a problem and needs to restart.' People call it the Blue Screen of Death, and for thirty years it has made office workers break into cold sweats. The natural feeling is fear: 'I have broken the computer! A dangerous virus has eaten all my files!'",
+        "Ayomide was in the middle of typing an important letter for his business when, without making a single sound, the screen flashed violently and turned into a solid wall of bright electric blue with a giant white frowning face: “:(” followed by words that strike terror into any beginner: “Your PC ran into a problem and needs to restart.” People call it the Blue Screen of Death, and for thirty years it has made office workers break into cold sweats. The natural feeling is fear: “I have broken the computer! A dangerous virus has eaten all my files!”",
       ),
       p(
-        "Here is the truth that will set you free: a blue screen is not a death sentence; it is an emergency handbrake. Imagine you are driving a car down a hill, and suddenly you look down and see that the steering wheel has come completely loose in your hands. What do you do? You do not keep pressing the accelerator hoping for the best; you slam your foot onto the emergency brake immediately to stop the car before it crashes into a house. That is what Windows is doing. Something got confused in memory, and Windows pulled the handbrake instantly to protect your saved files from being scrambled into garbage.",
+        "Here is the truth that will set you free: a blue screen is not a death sentence; it is an emergency handbrake. Imagine you are driving a car down a hill, and suddenly the steering wheel comes completely loose in your hands. What do you do? You do not keep pressing the accelerator hoping for the best; you slam your foot onto the emergency brake immediately, to stop the car before it crashes into a house. That is what Windows is doing. Something got confused in memory, and Windows pulled the handbrake instantly to protect your saved files from being scrambled into garbage. It looks like an attack. It is actually a rescue.",
       ),
       fig(
         "/images/blog/bsod-stop-code-camera.jpg",
@@ -9725,7 +9731,7 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("The phone photo and the Safe Mode rescue"),
       p(
-        "Windows is not hiding what happened; it writes the exact reason in plain English right on the blue screen. Look at the very bottom line of text. You will see the words 'Stop code:' followed by capital letters like MEMORY_MANAGEMENT, or DRIVER_IRQL_NOT_LESS_OR_EQUAL. Beside it, you will often see a filename ending in .sys, like nvlddmkm.sys. That .sys name is the exact driver software file that got confused! The very second a blue screen appears, pull out your phone and take a sharp photograph before the machine restarts. That one photo is your diagnosis. When you show it to someone who knows, or type those words into Google, the mystery disappears in five seconds.",
+        "Windows is not hiding what happened; it writes the exact reason in plain English right on the blue screen. Look at the very bottom line of text. You will see the words “Stop code:” followed by capital letters like MEMORY_MANAGEMENT, or DRIVER_IRQL_NOT_LESS_OR_EQUAL. Beside it, you will often see a filename ending in .sys, like nvlddmkm.sys. That .sys name is the exact driver software file that got confused. The very second a blue screen appears, pull out your phone and take a sharp photograph before the machine restarts. That one photo is your diagnosis. When you show it to someone who knows, or type those words into a search box, the mystery disappears in five seconds. So here is the question that keeps the fear away for good: where on the screen does Windows confess? The answer — the bottom line — turns a panic into a lookup.",
       ),
       fig(
         "/images/blog/windows-advanced-startup-safe-mode.jpg",
@@ -9733,10 +9739,10 @@ export const blogPosts: BlogPost[] = [
         "Safe Mode boots Windows in plain working clothes, without any fancy extra drivers. If it runs in Safe Mode, your hardware is fine.",
       ),
       p(
-        "If the laptop restarts and immediately gets stuck in a loop — crashing to blue every single time it tries to open — do this: while the computer is turning on and showing the brand logo, press and hold the power button down hard until it turns off. Do that three times in a row. On the fourth boot, Windows realizes it is struggling and opens a blue screen with options called 'Automatic Repair'. From there, click 'Advanced Options', click 'Startup Settings', click 'Restart', and press the number 4 key on your keyboard. That magic number boots Windows into Safe Mode.",
+        "If the laptop restarts and immediately gets stuck in a loop — crashing to blue every single time it tries to open — do this: while the computer is turning on and showing the brand logo, press and hold the power button down hard until it turns off. Do that three times in a row. On the fourth boot, Windows realizes it is struggling and opens a blue screen with options called “Automatic Repair.” From there: Advanced Options, Startup Settings, Restart, and press the number 4 key. That magic number boots Windows into Safe Mode.",
       ),
       p(
-        "What is Safe Mode? Safe Mode is Windows walking into the room dressed in plain white gym clothes — no fancy graphic card effects, no background printer drivers, no music tools, just the pure, simple operating system. If your laptop boots into Safe Mode and sits there peacefully without crashing, you have just proved something wonderful: your physical computer hardware is one hundred percent healthy! The crash was caused by a recently installed software update or a bad driver. Open Device Manager, find the driver you updated yesterday, right-click it, and click 'Roll Back Driver'. The problem vanishes immediately.",
+        "What is Safe Mode? Safe Mode is Windows walking into the room dressed in plain white gym clothes — no fancy graphic card effects, no background printer drivers, no music tools, just the pure, simple operating system. If your laptop boots into Safe Mode and sits there peacefully without crashing, you have just proved something wonderful: your physical computer hardware is one hundred percent healthy. The crash was caused by a recently installed software update or a bad driver. Open Device Manager, find the driver you updated yesterday, right-click it, and click “Roll Back Driver.” The problem vanishes immediately.",
       ),
       fig(
         "/images/blog/device-manager-driver-rollback.jpg",
@@ -9751,7 +9757,7 @@ export const blogPosts: BlogPost[] = [
       ]),
       h2("A crash is only a warning"),
       p(
-        "Do not be afraid of the blue screen. It is not an enemy that came to destroy your work; it is a watchful guardian that stopped the machine before your files were corrupted. Photograph the code, enter Safe Mode, roll back the driver, and carry on with your day. Next: upgrading your computer's RAM, and how to avoid the soldered chip trap.",
+        "Do not be afraid of the blue screen. It is not an enemy that came to destroy your work; it is a watchful guardian that stopped the machine before your files were corrupted. Photograph the code, enter Safe Mode, roll back the driver, and carry on with your day. Ayomide finished his letter that evening on the same machine, and the only scar was a photograph in his gallery named with a stop code. Next: upgrading your computer’s RAM, and how to avoid the soldered chip trap.",
       ),
     ],
   },
