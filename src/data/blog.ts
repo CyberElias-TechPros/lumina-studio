@@ -128,10 +128,10 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A computer screen showing folders named Documents, Pictures and Desktop.",
     body: [
       p(
-        "The first time a document vanishes, people blame themselves. They typed a letter, the light went, and in the morning the page was gone. What actually happened is simpler: the work lived only in the window, like a letter still in the typewriter. Closing the window without saving is throwing the sheet away. Saving is putting the sheet into an envelope and writing a name on it. This lesson is the envelope.",
+        "Ogechi typed her JAMB enquiry letter on a Sunday afternoon, left the window open while NEPA took the light, and woke to find the page gone — no name, no folder, no farewell. She blamed herself for weeks. What actually happened is simpler: the work lived only in the window, like a letter still in the typewriter. Closing the window without saving is throwing the sheet away. Saving is putting the sheet into an envelope and writing a name on it. This lesson is the envelope — and it answers the question her mother asked at the table: where do my things live when the screen is dark?",
       ),
       p(
-        "A file is one complete thing: a letter, a photograph, a song, a filled form. It has a name and, after a dot, a short type — .docx for a Word document, .pdf for a print-ready page, .jpg for a picture. You do not need to memorise types. You need to notice the name. “Document (3)” tells you nothing next month. “Chidinma-JAMB-2026” will still make sense when the fan is off and you are hunting.",
+        "A file is one complete thing: a letter, a photograph, a song, a filled form. It has a name and, after a dot, a short type — .docx for a Word document, .pdf for a print-ready page, .jpg for a picture. You do not need to memorise types. You need to notice the name. “Document (3)” tells you nothing next month. “Ogechi-JAMB-2026” will still make sense when the fan is off and you are hunting.",
       ),
       fig(
         "/images/blog/folders-screen.jpg",
@@ -140,17 +140,17 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("The room inside the machine"),
       p(
-        "When you open File Explorer on Windows (the yellow folder on the taskbar) or Finder on a Mac, you are walking into a house. Desktop is the table by the door — useful for things you are holding today, a mess if you leave everything there. Documents is a drawer for writing. Pictures is a drawer for photographs. Downloads is the mat where the internet drops parcels. If you never move parcels off the mat, you will one day have three files called invoice.pdf and no idea which one is real.",
+        "When you open File Explorer on Windows — the yellow folder on the taskbar, the one from the first sitting — or Finder on a Mac, you are walking into a house. Desktop is the table by the door: useful for what you are holding today, a mess if you leave everything there. Documents is a drawer for writing. Pictures is a drawer for photographs. Downloads is the mat where the internet drops its parcels. If you never move parcels off the mat, one day you will have three files called invoice.pdf and no idea which one is real.",
       ),
       p(
-        "A folder is an envelope you can put envelopes inside. You might make a folder called School, and inside it folders called 2026 and 2027. Inside 2026, a folder called Fees. That is not fussiness. That is how a person finds a receipt in March without opening forty files. To make a folder: right-click on an empty space in the window, choose New, then Folder. Type the name immediately, while it is still highlighted, and press Enter.",
+        "A folder is an envelope you can put envelopes inside. Make one called School, and inside it folders called 2026 and 2027. Inside 2026, a folder called Fees. That is not fussiness — that is how a person finds a receipt in March without opening forty files. To make one: right-click an empty space in the window, choose New, then Folder. Type the name immediately, while it is still highlighted, and press Enter. One question at the empty folder, since naming is half the lesson: the file will be read by you in December, tired. What name serves that person? ... The one with the subject and the date in it. Name files for the stranger you will be to yourself.",
       ),
       h2("Save, then Save As"),
       p(
-        "Write two words on a blank page. Look at the top of the window for File, then Save. The first time, the computer will ask you two questions: what to call this, and where to put it. Those questions are Save As, even if the menu said Save. Name it as a human would. Put it in Documents, not on the Desktop if you can help it. Then press Save. From that moment, the file has an address in the house.",
+        "Write two words on a blank page. Look at the top of the window for File, then Save. The first time, the computer asks two questions: what to call this, and where to put it. Those questions are Save As, even if the menu said Save. Name it as a human would. Put it in Documents, not on the Desktop if you can help it. Press Save. From that moment the file has an address in the house.",
       ),
       p(
-        "Every few minutes, press Ctrl and S together (Command and S on a Mac). That is Save again. It does not ask questions the second time. It updates the same envelope. If the light goes, you lose only the last unsaved minute, not the hour. Save As is the other act: it makes a copy with a new name or in a new place. Use it when you want to keep yesterday's version and start a new one — “school-fees-march” and then “school-fees-april”, not “final final 2”.",
+        "Every few minutes, press Ctrl and S together (Command and S on a Mac). That is Save again — it does not ask questions the second time; it updates the same envelope. If the light goes, you lose only the last unsaved minute, not the hour. And Save As is the other act: it makes a copy with a new name or in a new place. Use it when you want to keep yesterday's version and begin a new one — “school-fees-march” and then “school-fees-april,” not “final final 2.”",
       ),
       ul([
         "Open a blank document and type one sentence about your day.",
@@ -158,24 +158,24 @@ export const blogPosts: BlogPost[] = [
         "Close the window. Open Documents. Double-click the file. Your sentence should still be there.",
         "Change the sentence, press Ctrl+S, close, reopen. The change should be there. That is the whole trick.",
       ]),
-      h2("A second house: the USB drive"),
-      p(
-        "A flash drive is a tiny extra house you can put in your pocket. Plug it into a USB port — a rectangular hole on the side of a laptop or the back of a tower. Wait a few seconds. A message may appear; if it offers to open the drive, accept. You will see an empty window, or someone else's files. This is not the computer's Documents folder. It is a different address. To copy a file onto it, open Documents in one window, open the USB in another, and drag the file across. A copy appears. The original stays.",
-      ),
       fig(
         "/images/blog/usb-papers.jpg",
         "A USB flash drive, a printed document and a notebook on a wooden desk beside a laptop.",
         "Paper is one copy. The computer is another. The USB is a third. Work that matters should live in at least two of these, because light fails and pockets tear.",
       ),
+      h2("A second house: the USB drive"),
       p(
-        "Eject before you pull. On Windows, look for a small USB icon near the clock, click it, choose Eject. On a Mac, drag the drive icon to the bin, which turns into an Eject symbol. Pulling a drive while the computer is still writing is how files corrupt — the page tears in the middle of a sentence. If the computer says the drive is busy, close the window that is showing its files and try again.",
+        "A flash drive is a tiny extra house you can put in your pocket. Plug it into a USB port — a rectangular hole on the side of a laptop or the back of a tower — and wait a few seconds. A message may appear; if it offers to open the drive, accept. You will see an empty window, or somebody else's files. This is not the computer's Documents folder. It is a different address. To copy a file onto it: open Documents in one window, open the USB in another, drag the file across. A copy appears. The original stays.",
+      ),
+      p(
+        "Eject before you pull. On Windows, look for the small USB icon near the clock, click it, choose Eject. On a Mac, drag the drive icon toward the bin, which turns into an Eject symbol. Pulling a drive while the computer is still writing is how files corrupt — the page tears in the middle of a sentence. If the computer says the drive is busy, close the window showing its files and try again.",
       ),
       h2("The recycle bin is not gone"),
       p(
-        "Deleting a file on the computer usually sends it to the Recycle Bin or Trash, a holding room. Open that icon on the desktop. You will see what you threw away. Restore puts it back. Empty Recycle Bin is the real goodbye. Until you empty it, the work is still in the house, only in a cupboard you do not look at. Do not empty it because someone told you it “frees space” unless you have looked first.",
+        "Deleting a file usually sends it to the Recycle Bin or Trash — a holding room. Open that icon on the desktop and you will see what you threw away. Restore puts it back. Empty Recycle Bin is the real goodbye. Until you empty it, the work is still in the house, only in a cupboard you do not look at. Do not empty it because someone told you it “frees space” unless you have looked first.",
       ),
       p(
-        "If you cannot find a file, do not panic-click. Use the search box at the top of File Explorer or Finder and type part of the name you gave it. Search looks through the house. It cannot find a name you never gave. That is why “Document (3)” is a trap, and why the first Save As is the most important minute of any new piece of work.",
+        "And if you cannot find a file: do not panic-click. Use the search box at the top of File Explorer or Finder and type part of the name you gave it. Search looks through the whole house. It cannot find a name you never gave — which is why “Document (3)” is a trap, and why the first Save As is the most important minute of any new piece of work. Tomorrow's lessons open these drawers one at a time. For today: name it, save it, and know the room it sleeps in.",
       ),
     ],
   },
@@ -792,10 +792,10 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A laptop screen showing a Windows restart and update message.",
     body: [
       p(
-        "Sooner or later the computer will ask to restart. A bar will crawl. People pull the plug because the wait feels like a freeze, and then the machine wakes half-repaired, if it wakes. An update is not a virus. It is the manufacturer sending a patch for a hole someone found, or a fix for a printer, or a new date on the clock. This lesson is how to let that happen without losing the letter you had not saved.",
+        "Dele was three paragraphs from the end of his NYSC letter when the box appeared and the bar began to crawl. He pulled the plug, because the wait looked like a freeze and he had heard that updates “spoil machines.” The machine woke half-repaired on Monday, and the letter was still open somewhere in the wreckage. An update is not a virus. It is the manufacturer sending a patch for a hole someone found, a fix for a printer, or a new date on the clock. This lesson is how to let that happen without losing the letter you had not saved.",
       ),
       p(
-        "Windows calls it Windows Update. A Mac calls it Software Update. A browser updates itself more quietly. Phone updates are cousins: same idea, smaller screen. The feeling is the same — a request to stop working for ten minutes. Ten honest minutes beat a machine that will not start on Monday.",
+        "Windows calls it Windows Update. A Mac calls it Software Update. A browser updates itself more quietly. Phone updates are cousins — same idea, smaller screen. And the feeling is always the same: a request to stop working for ten minutes. Ten honest minutes beat a machine that will not start on Monday. That trade is the whole lesson; everything else is procedure.",
       ),
       fig(
         "/images/blog/windows-update.jpg",
@@ -804,14 +804,14 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("Save, plug in, then say yes"),
       p(
-        "When a box offers Restart now or later, look at your open windows first. Save every document. Unsaved work dies in a restart the same way it dies when the light goes. Then plug the laptop in. Updates that die at 12 percent because the battery died are how machines spend a day in the shop. On a desktop, ignore the generator for a moment only if you know the light is stable. If NEPA is flickering, choose later and wait for a calmer hour.",
+        "When the box offers Restart now or Later, look at your open windows first. Save every document — unsaved work dies in a restart the same way it dies when the light goes. Then plug the laptop in. Updates that die at twelve percent because the battery died are how machines spend a day in the shop. On a desktop, ignore the generator for the length of the update only if you know the light is stable — if NEPA is flickering, choose Later and wait for a calmer hour.",
       ),
       p(
-        "Later is allowed. “Remind me in 4 hours” is a real button. What is not allowed is later forever. The machine will nag because the patch is sitting in the house unapplied, like medicine on the table. Pick an evening. Let it run while you eat. A long update can take twenty or forty minutes. The screen may go black. The fan may rise. A percentage may freeze at 37 for a while. Frozen is not the same as dead. Give it half an hour before you assume the worst.",
+        "“Later” is allowed; “remind me in 4 hours” is a real button. What is not allowed is Later, forever. The machine will nag because the patch is sitting in the house unapplied, like medicine on the table. Pick an evening. Let it run while you eat. A long update can take twenty or forty minutes; the screen may go black, the fan may rise, a percentage may freeze at 37 for a while. Frozen is not the same as dead. Give it half an hour before you assume the worst. One question at the frozen bar: thirty minutes at 37 percent, fan still humming — patient, or surgeon? ... Patient. The fan humming means work is happening. Surgery — the power button — is how updates become funerals.",
       ),
       h2("What you must not do while the bar is moving"),
       p(
-        "Do not hold the power button. That is a force shutdown, and during an update it can leave Windows unable to start. Do not unplug. Do not close the lid hoping it will sleep; some laptops will sleep in the middle of a write. Do not start a download of something else “since the internet is on.” Sit. If you must leave the room, leave the machine open and charging.",
+        "Do not hold the power button — that is a forced shutdown, and during an update it can leave Windows unable to start. Do not unplug. Do not close the lid hoping it will sleep; some laptops sleep in the middle of a write. Do not start another download “since the internet is on.” Sit. If you must leave the room, leave the machine open and charging.",
       ),
       fig(
         "/images/blog/update-wait.jpg",
@@ -820,19 +820,16 @@ export const blogPosts: BlogPost[] = [
       ),
       ul([
         "Save everything that is open. Close the browser if you like; it is not required.",
-        "Plug the laptop in. Start, type Windows Update, Enter. On a Mac, System Settings, General, Software Update.",
+        "Plug the laptop in. Start, type Windows Update, Enter. On a Mac: System Settings, General, Software Update.",
         "If updates are waiting, choose Download or Restart when you have twenty quiet minutes.",
         "Stay until the desktop returns. Sign in. Open one file to prove the house is still standing.",
       ]),
       h2("When it goes wrong, and when it is a trick"),
       p(
-        "If the computer boots to a recovery screen after a failed update, do not click random options. Shut down if you can, plug in, start again, and wait. Windows often finishes on the second try. If it asks to restore to an earlier point, that is a last resort, not the first. At the academy, stop and ask. At home, a second restart is cheaper than a guessed reset.",
+        "If the computer boots to a recovery screen after a failed update, do not click random options. Shut down if you can, plug in, start again, and wait — Windows often finishes on the second try. If it offers to restore to an earlier point, that is a last resort, not the first. At the academy, stop and ask. At home, a second restart is cheaper than a guessed reset.",
       ),
       p(
-        "A page or a pop-up that says your Windows is expired and you must call a number, or download a repair tool from a banner, is not Windows Update. Real updates live in Settings, not in an advert. You already met this cousin in the lesson about links. Close the banner. Open Settings yourself. If nothing is waiting, nothing is waiting. Fear is a product someone is selling.",
-      ),
-      p(
-        "Phones: at night, on Wi-Fi, charging. Let the system update. App stores can wait their turn. The principle is identical. Save what you can, give the machine a full cup of power, and do not snatch the cup away because the bar is slow. The bar is the repair.",
+        "And the costume in this neighbourhood: a page or pop-up announcing that your Windows is expired — call this number, download this repair tool — is not Windows Update. Real updates live in Settings, not in an advert. You met this cousin in the links lesson. Close the banner. Open Settings yourself. If nothing is waiting, nothing is waiting. Fear is a product someone is selling. Phones follow the same principle: at night, on Wi-Fi, charging — let the system update, and let the app stores wait their turn. Save what you can, give the machine a full cup of power, and do not snatch the cup away because the bar is slow. The bar is the repair.",
       ),
     ],
   },
@@ -1294,10 +1291,10 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A Windows Settings list of installed apps on a laptop screen.",
     body: [
       p(
-        "Machines come home from the shop with extra furniture: a “PC cleaner,” a second browser, a lottery of PDF tools, a trial antivirus shouting days remaining. Relatives do this too, with love. Each extra is a guest using chairs — memory, disk, a pop-up at breakfast. Uninstall is showing that guest the door. It is not the same as deleting a shortcut from the desktop. The shortcut is a sign on the street. The guest is still in the house.",
+        "Chinelo's new laptop came home from the shop with extra furniture nobody ordered: a “PC cleaner” with a countdown, a second browser she had never heard of, a lottery of PDF tools, and a trial antivirus shouting days remaining every morning. Her cousin had done the same to the old machine — with love. Each extra is a guest using chairs: memory, disk, a pop-up at breakfast. Uninstall is showing that guest the door. And it is not the same act as deleting a shortcut from the desktop — the shortcut is a sign on the street; the guest is still in the house.",
       ),
       p(
-        "On Windows, the roll call lives in Settings. Start, type Apps, Enter — or Settings, then Apps, Installed apps. You will see a long list, newest or name. You will not recognise half of them. That is normal. Windows itself has many names. You are hunting for the extras: things you can say out loud as “I never asked for this.”",
+        "The roll call lives in Settings. Start, type Apps, Enter — or Settings, then Apps, Installed apps. A long list appears, and you will not recognise half of it. That is normal: Windows itself wears many names. You are hunting for the extras — the things you can say out loud as “I never asked for this.”",
       ),
       fig(
         "/images/blog/apps-list.jpg",
@@ -1306,10 +1303,10 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("What you may show out, and what you must not"),
       p(
-        "Safe to consider: toolbars, “optimizer,” “driver updater” that is not from the laptop's own maker, extra browsers you do not use if another browser still works, games a shop installed as a gift you do not want. Not safe to guess: anything with Microsoft, Intel, NVIDIA, Realtek, AMD in the name, or the laptop brand — HP, Dell, Lenovo, Acer. Those are often the hands and ears of the machine. When in doubt, leave it. A leftover trial is annoying. A missing driver is a black screen.",
+        "Safe to consider: toolbars. “Optimizers.” “Driver updaters” that are not from the laptop's own maker. Extra browsers you do not use, provided another browser still works. Games a shop installed as a “gift” you never wanted. Not safe to guess: anything carrying Microsoft, Intel, NVIDIA, Realtek, AMD in the name — or the laptop brand itself: HP, Dell, Lenovo, Acer. Those are often the hands and ears of the machine. When in doubt, leave it. A leftover trial is annoying; a missing driver is a black screen. One contrast to keep you humble at the list: the scary-looking name might be the sound card, and the friendly-looking “helper” might be the tout. Names are not trust.",
       ),
       p(
-        "Click the extra, Uninstall, follow the boxes. Some will plead “are you sure” and offer a survey. No thanks. Some will leave a “keep my settings” tick; for malware-adjacent junk, untick. Restart if it asks. Then look at the desktop. If a shortcut remains, delete the shortcut — that is only the sign. If the program is still in the Apps list, uninstall did not finish; try again, or restart first.",
+        "Then the door itself: click the extra, Uninstall, follow the boxes. Some will plead “are you sure” and offer a survey — no thanks. Some will leave a “keep my settings” tick; for malware-adjacent junk, untick it. Restart if asked. Then look at the desktop: if a shortcut remains, delete the shortcut — that is only the sign. If the program is still in the Apps list, the uninstall did not finish; try again, or restart first.",
       ),
       fig(
         "/images/blog/settings-learner.jpg",
@@ -1320,21 +1317,14 @@ export const blogPosts: BlogPost[] = [
         "Open Settings, Apps. Scroll slowly. Write down three names you do not remember installing.",
         "For each, decide: extra, or unknown. Unknown stays.",
         "Uninstall one extra you are sure of. Restart if asked. Confirm the name is gone from the list.",
-        "If a browser homepage is still a stranger, that is Settings inside the browser — a later five minutes — not a reason to uninstall the browser itself.",
+        "If a browser homepage is still a stranger, that is the browser's own settings — a later five minutes — not a reason to uninstall the browser.",
       ]),
-      h2("Why the shop put it there"),
+      h2("Why the shop put it there — and the Start menu lie"),
       p(
-        "Many shops are paid a small fee for every trial they leave on a machine, and the fee arrives whether or not you asked for the trial. That is why the laptop came home with three antivirus programs arguing with each other and a PDF reader from a company you have never heard of. It is not malice. It is bread. But the machine is yours now, and two guards at one door is not safety; it is a queue. Keep one good security program — often the one Windows already carries — and show the rest the door.",
+        "Many shops are paid a small fee for every trial they leave on a machine, and the fee arrives whether or not you asked for the trial. That is why the laptop came home with three antivirus programs arguing with each other and a PDF reader from a company nobody has heard of. It is not malice. It is bread. But the machine is yours now, and two guards at one door is not safety — it is a queue. Keep one good security program, often the one Windows already carries, and show the rest the door.",
       ),
       p(
-        "Uninstall, then restart, then look once more at the list, because removals that ask for a restart do their real work after it. Do this every month for a while and the machine grows lighter in a way you can feel: the boot without the little circus, the browser with one toolbar instead of four. If a shop ever asks to install anything more, it is fair to ask what it pays them. A clean install of Windows at a trusted shop costs a few thousand naira and an afternoon. A slow machine costs you a little every day for two years.",
-      ),
-      h2("The Start menu lie, and the leftover toolbar"),
-      p(
-        "Unpinning from Start, or dragging an icon to Recycle Bin, does not uninstall. It tidies the street. The guest still eats. Always return to the Apps list to know the truth. A toolbar that lives inside the browser may not even appear as its own app — look at the browser's Extensions or Add-ons, and remove the stranger there.",
-      ),
-      p(
-        "If the machine is packed with extras you cannot name, this is a good moment for the backup lesson, then a more patient person, not a “one-click cleaner” from a banner. You already know that banner is a cousin of the fake update. Show guests out one at a time, names you can defend. The machine will feel lighter because it is, not because a percentage said so.",
+        "And the lie that keeps machines fat: unpinning from Start, or dragging an icon to the Recycle Bin, does not uninstall anything. It tidies the street while the guest still eats. Always return to the Apps list to know the truth. A toolbar living inside the browser may not even appear as its own app — look at the browser's Extensions or Add-ons and remove the stranger there. If the machine is packed with extras you cannot name, this is the moment for the backup lesson, then a more patient person — not a “one-click cleaner” from a banner, whose family you already know. Show guests out one at a time, names you can defend. The machine will feel lighter because it is — not because a percentage said so.",
       ),
     ],
   },
@@ -1760,10 +1750,10 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A laptop screen showing a PDF of a one-page letter.",
     body: [
       p(
-        "You have saved as PDF in the letter lesson and attached PDFs in email. This lesson is why the office asked. A Word file is a working notebook. Another person's Word can change the font, shift a heading onto a lonely last page, or refuse to open. A PDF is a finished plate: what you saw is what they print. It is the photocopier of the computer, except the words can still be copied if the sender allowed it.",
+        "Nneka sent her application as a Word file on a Monday. By Wednesday the office had printed it — with her heading alone on a second page, in a font nobody chose, because the office machine's Word had restyled her letter on arrival. This is why the office asked for PDF. A Word file is a working notebook; another person's Word can change the font, shift a heading onto a lonely last page, or refuse to open. A PDF is a finished plate: what you saw is what they print. It is the photocopier of the computer — except the words can still be copied, if the sender allowed it.",
       ),
       p(
-        "PDF means Portable Document Format. Portable is the point. Phones open it. Business-centre machines open it. A ten-year-old computer opens it. Forms from JAMB, banks, and schools arrive as PDF because they want the layout to survive. You fill a PDF form only if it was built as a form; many are just pictures of boxes, and you print, write, scan. Look before you type into the page.",
+        "PDF means Portable Document Format, and portable is the point. Phones open it. Business-centre machines open it. A ten-year-old computer opens it. Forms from JAMB, banks, and schools arrive as PDF because they want the layout to survive the journey. And one look before you type into any of them: you fill a PDF form only if it was built as a form. Many are just pictures of boxes — those you print, write, and scan. Look before you type.",
       ),
       fig(
         "/images/blog/pdf-letter.jpg",
@@ -1772,10 +1762,10 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("Making one, opening one"),
       p(
-        "In Word: File, Save As, PDF. In Google Docs: File, Download, PDF. In a browser: Print, then Destination, Save as PDF — useful for a receipt that is only a page. Open the PDF after you make it. If it is two pages and you meant one, go back to the source. The PDF will not magically tighten. Print preview and PDF preview are cousins; trust them before you send.",
+        "In Word: File, Save As, PDF. In Google Docs: File, Download, PDF. In a browser: Print, then Destination, Save as PDF — perfect for a receipt that is only a page. Then the habit that separates the careful from the apologetic: open the PDF after you make it. If it is two pages and you meant one, go back to the source — the PDF will not tighten itself. Print preview and PDF preview are cousins; trust them before you send.",
       ),
       p(
-        "Double-click a PDF and Windows may open Edge, or Adobe, or another reader. Any of those is fine for reading. If nothing opens, you need a reader once — fetch it from the real street, as you learned to install. Do not fetch a “PDF professional crack” from a banner. Reading is free.",
+        "Double-click a PDF and Windows may open Edge, or Adobe, or another reader — any of those is fine for reading. If nothing opens, you need a reader once: fetch it from the real street, the way you learned to install anything. Do not fetch a “PDF professional crack” from a banner. Reading is free. One question at the Save button, since it decides most of the grief at the receiving office: the letter is perfect and the deadline is now. Send first and preview later, or open the PDF once? ... Open it once. Thirty seconds. The deadline does not care about your formatting; the reader does.",
       ),
       fig(
         "/images/blog/pdf-print.jpg",
@@ -1790,17 +1780,14 @@ export const blogPosts: BlogPost[] = [
       ]),
       h2("The signature line, and the form inside"),
       p(
-        "Some PDFs are dead photographs of pages and some are alive: the alive ones have boxes you can click and lines you can type on, like a visa form or a school admission letter with spaces for your names. Click the box and type; save a copy with your answers in the name before you send. If the form is dead — the box will not take your cursor — do not fight it with five programs from the internet. Print the page, sign with a pen, and photograph it flat, the way the document lesson taught you. A photographed signature is accepted by most offices in this country precisely because the paper behind it is real.",
+        "Some PDFs are dead photographs of pages; some are alive. The alive ones have boxes you can click and lines you can type on — a visa form, a school admission letter with spaces for your names. Click the box, type, and save a copy with your answers in the name before you send. If the form is dead — the box will not take your cursor — do not fight it with five programs from the internet. Print the page, sign with a pen, photograph it flat, the way the documents lesson taught you. A photographed signature is accepted by most offices in this country precisely because the paper behind it is real.",
       ),
       p(
-        "The signature deserves one warning. Never sign a blank PDF because the officer said sign first and the details will be filled later — a signature is the last thing on a page, not the first. And when a PDF comes back from somebody with edits in it, the small print has changed under your name, which is exactly what the format was built to prevent. PDFs are the paper of the computer world precisely because they do not let words wander. Use them for anything that must stand as evidence: receipts, letters, certificates, the tenancy agreement before the rent leaves your hand.",
+        "The signature deserves one warning, and it is a wall not a fence: never sign a blank PDF because an officer said “sign first, the details will be filled later.” A signature is the last thing on a page, not the first. And when a PDF comes back from somebody with edits in it — the small print changed under your name — that is exactly what the format was built to prevent. Use PDF for anything that must stand as evidence: receipts, letters, certificates, the tenancy agreement before the rent leaves your hand.",
       ),
       h2("When PDF is the wrong tool"),
       p(
-        "If someone must edit the words with you, send Word or Docs, or share a Drive file. A PDF is a finished plate. Editing it is possible and clumsy. If they asked for Excel, a PDF of the sheet is a picture of numbers that will not add. If they asked for a photograph of your face, a PDF is extra wrapping. Obey the request. Then PDF is for the letter, the certificate, the form that should not restyle itself overnight.",
-      ),
-      p(
-        "A scanned pile of photographs in a PDF can be huge. One or two pages is a letter. Forty colour photos is a brick that email will refuse — zip, or Drive, or fewer pages. And a PDF from a stranger that contains only a link and a button is not a document; it is a cousin of the mail you should not open. Close it. Walk to the real street if the story might be true.",
+        "If someone must edit the words with you, send Word or Docs, or share a Drive file — a PDF is a finished plate, and editing it is possible and clumsy. If they asked for Excel, a PDF of the sheet is a picture of numbers that will not add. If they asked for a photograph of your face, a PDF is extra wrapping. Obey the request. Then PDF is for the letter, the certificate, the form that should not restyle itself overnight. Watch the weight too: one or two pages is a letter, forty colour scans is a brick that email will refuse — zip, or Drive, or fewer pages. And a PDF from a stranger that contains only a link and a button is not a document. It is a cousin of the mail you should not open. Close it. Walk to the real street if the story might be true.",
       ),
     ],
   },
@@ -2281,10 +2268,10 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A USB mouse, a keyboard, and a cable on a desk beside a laptop.",
     body: [
       p(
-        "You used USB for a flash drive and for a phone cable. The same rectangular hole takes other guests: a mouse, a keyboard, a printer, a Wi‑Fi dongle, a camera. People buy a wireless mouse, lose the tiny USB nub, and declare the mouse dead. The nub was the radio. This lesson is plugging in a guest that is not a suitcase of files, waiting for Windows to nod, and what to do when the hole is too small.",
+        "Samuel bought a wireless mouse, lost the tiny USB nub within a week, and declared the mouse dead — then bought a second mouse with the same small orphan waiting inside it. The nub was the radio. You used USB for a flash drive and for a phone cable, but the same rectangular hole takes other guests: a mouse, a keyboard, a printer, a Wi-Fi dongle, a camera. This lesson is plugging in a guest that is not a suitcase of files — waiting for Windows to nod, and knowing what to do when the hole is the wrong shape.",
       ),
       p(
-        "USB-A is the older wide plug. USB-C is the small oval that goes in either way. A mouse with USB-A will not fit USB-C without a cheap adapter. The adapter is not a trick. Ports on the left and right of a laptop are often the same family; one may be marked SS or a lightning bolt for charging. A printer usually wants a USB-A on the computer end and a square USB-B on the printer end. The cable is specific. The phone cable you already own may only charge, not talk, as you learned with photographs.",
+        "USB-A is the older wide plug, and it fits only one way — the metal tongue inside decides. USB-C is the small oval that goes in either way. A mouse with a USB-A nub will not fit a USB-C hole without a cheap adapter, and the adapter is not a trick or a downgrade — it is a door-width conversion. Ports on the left and right of a laptop are often the same family; one may be marked SS for speed, or a lightning bolt because it can charge the laptop. A printer usually wants USB-A on the computer end and a square USB-B on the printer end — the cable is specific. And the phone cable you already own may be a charge-only wire that never learned to talk, as you met in the photographs lesson.",
       ),
       fig(
         "/images/blog/usb-devices.jpg",
@@ -2293,10 +2280,10 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("Plug in, wait, do not stack panic"),
       p(
-        "Turn the device on if it has a switch. Plug in. Wait ten seconds. A mouse should move the pointer. A keyboard should type in Notepad. A printer may install quietly, then appear in Print. Windows may say “setting up a device.” Let it. If nothing, try another hole. Try another cable for printers. Wireless mouse: the dongle is often in the mouse itself, in a slot, for storage. Pull it out. Plug the dongle into the computer, not into a USB hub that is already full of hungry disks.",
+        "Turn the device on if it has a switch. Plug in. Wait ten seconds. A mouse should move the pointer; a keyboard should type in Notepad; a printer may install quietly and then appear in Print. Windows may say “setting up a device.” Let it. If nothing happens, try another hole, try another cable for printers — and for a wireless mouse, remember the nub's hiding place: many of them live in a slot inside the mouse itself, for storage. Pull it out and plug it into the computer directly — not into a USB hub already crowded with hungry disks. One retrieval before the checklist, since it is the most common dead-mouse call in every workshop: the wireless mouse moves nothing and the battery is new. Where do you look first? ... The mouse's own belly — for the nub in its storage slot. The radio goes where the filing system puts it.",
       ),
       p(
-        "A red X on a USB device in Device Manager is for later. For now: another port, another cable, restart. Bluetooth mice pair like earphones; they are not USB. Do not hunt a dongle that was never in the box. Read the carton once.",
+        "And the honest limits: a red X on a device in Device Manager is for later lessons. For now — another port, another cable, restart. Bluetooth mice pair like earphones and are not USB at all; do not hunt a dongle that was never in the box. Read the carton once before you grieve.",
       ),
       fig(
         "/images/blog/usb-ports.jpg",
@@ -2304,24 +2291,17 @@ export const blogPosts: BlogPost[] = [
         "The tiny radio for a wireless mouse is easy to steal with a bag. When the mouse dies, look for the dongle before you buy a new mouse. It is often still in the last port you used.",
       ),
       ul([
-        "Plug in a mouse if you have one, or unplug and replug the one you use. Confirm the pointer.",
-        "If you have a spare keyboard, unplug the laptop's thought of an external one by seating it fully.",
-        "Look at every port. Count the dongles. A spare hole is for the next guest, not for dust if you can help it — but a cover is fine.",
+        "Plug in a mouse if you have one — or unplug and replug the one you use. Confirm the pointer.",
+        "If you have a spare keyboard, seat it fully and type one line in Notepad to greet it.",
+        "Look at every port. Count the dongles. A spare hole is for the next guest.",
         "Do not force a plug upside down. USB-A only fits one way. USB-C fits both.",
       ]),
       h2("The phone, and the question it asks"),
       p(
-        "Plug a phone into the USB hole and it stops being only a phone; it asks out loud, in a small menu, whether you want charging or file transfer. Choose deliberately. Charge only is the polite default at a friend's house. File transfer is for when the two machines are moving your own photographs, which appear then in a folder called DCIM — the film name that never died. The phone does not need the wave goodbye before unplugging; that ceremony is for flash drives and their impatient filing systems. Unplug the phone whenever the copy is finished.",
+        "Plug a phone into the USB hole and it stops being only a phone — it asks out loud, in a small menu, whether you want charging or file transfer. Choose deliberately. Charge only is the polite default at a friend's house; file transfer is for moving your own photographs, which appear in the folder called DCIM — the film name that never died. And unlike a flash drive, the phone does not need the wave goodbye before unplugging; that ceremony is for drives with impatient filing systems. Unplug the phone whenever the copy is finished.",
       ),
       p(
-        "The other guests in the hole are simpler. A mouse or keyboard arrives with a tiny receiver and works after a breath — the breath is called a driver, and Windows usually already has it. A printer arrives with a disc nobody can use anymore; ignore the disc, plug the USB, and let Windows Update find the driver itself, which it does for almost every printer made this century. The rule through all of it: plug one thing, wait for the machine to finish greeting it, then plug the next. A port is a doorway. Even guests should walk through it one at a time.",
-      ),
-      h2("Printers, hubs, and power"),
-      p(
-        "A printer on USB still needs power of its own. Cable to the computer, power to the wall, paper in the tray, as in the printing lesson. A USB hub — one hole becoming four — is useful and can starve a hungry disk. Plug the disk into the laptop directly if it keeps disconnecting. Some hubs need their own power brick. That is written on the hub, not on Windows.",
-      ),
-      p(
-        "Unplug by holding the plastic, not the wire. You already eject flash drives; a mouse does not need eject. A printer might — but closing the queue and turning the printer off is enough at this level. If Windows asks for a disc that did not come in the box, cancel and let Windows use its own driver first. A random driver from a banner is an old acquaintance. The hole is simple. The guest is simple. The wait is the skill.",
+        "The other guests are simpler. A mouse or keyboard arrives with its tiny receiver and works after a breath — the breath is called a driver, and Windows usually already has one. A printer arrives with a disc nobody can use anymore: ignore the disc, plug the USB, and let Windows Update find the driver itself, which it does for almost every printer made this century. The rule through all of it: plug one thing, wait for the machine to finish greeting it, then plug the next. A port is a doorway. Even guests should walk through it one at a time. A printer on USB still needs power of its own — cable to the computer, power to the wall, paper in the tray — and a hub that starves a hungry disk wants that disk plugged into the laptop directly. Unplug by holding the plastic, not the wire. The hole is simple. The guest is simple. The wait is the skill.",
       ),
     ],
   },
@@ -2569,10 +2549,10 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A cookie consent banner at the bottom of a browser window.",
     body: [
       p(
-        "A banner at the bottom of a page: Accept all, Reject, Manage. People tap Accept all because it is the big button, then wonder why every shop on the internet seems to know they looked at a generator. A cookie is a small note the site stores on your computer so it can remember you — logged in, a language, a cart. That can be useful. “All” often includes notes for other companies, tracking you from page to page. This lesson is the banner, the difference between necessary and advertising, and when to clear the notes.",
+        "Bode taps Accept all the way he waves away touts at the park gate — arm up, moving, not reading — and then wonders why every shop on the internet seems to know he looked at a generator last Tuesday. The banner at the bottom of the page offers Accept all, Reject, Manage. The big button is big on purpose. A cookie is a small note a site stores on your computer so it can remember you: logged in, a language, a cart. That can be useful. But “all” often includes notes for other companies, tracking you from page to page. This lesson is the banner: the difference between necessary and advertising, and when to clear the notes.",
       ),
       p(
-        "Necessary or essential cookies are how a login stays a login while you move from page to page. Without them, a site may forget you at every click. Functional ones remember a language. Analytics count visitors. Advertising and “partners” are the fair. If the banner offers Reject all or Necessary only, that is usually enough to read the news. If it offers only Accept, and the page is a shop you need, you may have to accept to enter. That is a cost. Know you paid it.",
+        "Necessary or essential cookies are how a login stays a login while you move from page to page — without them the site forgets you at every click. Functional ones remember your language. Analytics count visitors. Advertising and “partners” are the market itself. If the banner offers Reject all or Necessary only, that is usually enough to read the news. If it offers only Accept and the page is a shop you truly need, you may have to accept to enter — that is a cost. Know you paid it. It looks like a legal formality. Actually it is a small trade: memory for access, and your choice is which kind of memory.",
       ),
       fig(
         "/images/blog/cookie-banner.jpg",
@@ -2581,10 +2561,10 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("Manage, and what you are signing"),
       p(
-        "Manage, or Cookie settings, is a list of taps. Turn advertising off. Turn necessary on — you often cannot turn it off. Save. The banner should leave. If it returns every visit, the site is rude, or you are blocking too much and it cannot remember even your “no.” Allowing necessary is how “no” sticks.",
+        "Manage — or Cookie settings — is a list of switches. Turn advertising off. Turn necessary on; you often cannot turn it off at all. Save. The banner should leave. If it returns every visit, either the site is rude or you are blocking so much that it cannot remember even your “no” — allowing necessary cookies is actually how “no” sticks. One retrieval at the switch wall: you turned everything off including necessary, and now the banner reappears at every click. Who forgot your answer? ... The site, politely — you took away the one note that said “he said no.” Necessary memory serves your refusal too.",
       ),
       p(
-        "A cookie is not a virus. It is not a program. Clearing cookies logs you out of Gmail and shops until you sign in again. That can be a kindness on a shared computer. It is a nuisance on your own if you do it daily. You do not need a “cleaner” app to wipe cookies. The browser can do it.",
+        "And the fear, scaled to size: a cookie is not a virus. It is not a program. It cannot install anything or open your mail. Clearing cookies logs you out of Gmail and the shops until you sign in again — a kindness on a shared computer, a nuisance on your own if you do it daily. You do not need a “cleaner” app to wipe cookies; the browser can do it, and the door lives in the same settings place you already know.",
       ),
       fig(
         "/images/blog/cookie-dialog.jpg",
@@ -2595,21 +2575,18 @@ export const blogPosts: BlogPost[] = [
         "Open a news site you trust. When the banner appears, find Reject or Necessary. Do not Accept all today.",
         "Confirm the page still reads.",
         "In the browser settings, find Cookies. You do not have to clear them now. Know the door.",
-        "On a site you must use that offers no reject, Accept, then remember it is a shop with a guest book.",
+        "On a site you must use that offers no reject: Accept, then remember it is a shop with a guest book.",
       ]),
       h2("Three kinds of small note"),
       p(
-        "Not every cookie is a spy. The first kind is the shop's numbered tag: it remembers that you signed in, so every page does not ask again. Life without it would be a door that asks for your name in every room. The second kind is a preference — the language you chose, the fact that you closed the pop-up — small mercies. Both are honest. The third kind is the tout who follows you from stall to stall, noting what you touch so he can show you adverts for it tomorrow. That is the one the Accept all window is really about, and it is the one worth the thirty seconds of Manage.",
+        "Not every cookie is a spy. The first kind is the shop's numbered tag: it remembers that you signed in, so every page does not ask again — life without it would be a door that asks your name in every room. The second kind is a preference: the language you chose, the pop-up you closed. Small mercies. Both are honest. The third kind is the tout who follows you from stall to stall, noting what you touch so he can show you adverts for it tomorrow. That is the one the Accept-all window is really about, and it is the one worth thirty seconds of Manage.",
       ),
       p(
-        "The Manage window is deliberately dull. Inside it, the choices are usually one switch for necessary, one for preferences, and a wall of company names with toggles. You do not need to know the names. Reject the toggles, save, and walk on. Reject all, when offered, is even faster and is not rude — the law that put that button there agrees with you. The fear version of cookies — that they will steal your BVN — is overblown; the annoyance version is real. Treat cookies like hawkers at the market gate: a polite no keeps the road clear, and the shops you actually buy from still work fine.",
+        "The Manage window is deliberately dull: usually one switch for necessary, one for preferences, and a wall of company names with toggles. You do not need to know the names. Reject the toggles, save, walk on. Reject all, when offered, is even faster and is not rude — the law that put that button there agrees with you. Treat cookies like hawkers at the market gate: a polite no keeps the road clear, and the shops you actually buy from still work fine.",
       ),
       h2("Shared machines, and fear"),
       p(
-        "On a business-centre computer, do not Accept all, then leave. Sign out of mail. Close the browser. If you can, clear cookies for the hour. You already know not to remember this computer. Cookies are part of that remembering. Your own laptop can keep the notes for sites you live in. A stranger's laptop should forget you.",
-      ),
-      p(
-        "Ignore pages that say “your cookies are corrupted — download repair.” That is the fake update again. Cookies do not need a doctor from a banner. They need a choice on the banner of the site you meant to visit, and a clear button in your own browser when the computer is not yours. Accept all is easy. Easy is how the fair gets your name.",
+        "On a business-centre computer, do not Accept all and leave. Sign out of mail, close the browser, clear cookies for the hour if you can. You already know not to tick “remember this computer” — cookies are part of that remembering. Your own laptop can keep the notes for the sites you live in; a stranger's laptop should forget you. And ignore any page that screams “your cookies are corrupted — download repair.” That is the fake-update family again. Cookies do not need a doctor from a banner. They need a choice on the banner of the site you meant to visit, and a clear button in your own browser when the computer is not yours. Accept all is easy. Easy is how the market gets your name.",
       ),
     ],
   },
@@ -2734,10 +2711,10 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A browser history list on a laptop screen.",
     body: [
       p(
-        "The browser remembers where you went. That list is History. It is how you find a page from Tuesday without a bookmark. It is also how a sibling, a shop, or a business-centre clerk can see what you opened. A private window — Incognito, InPrivate — is a sitting that does not add to that list on this computer. It is not a cloak on the internet. This lesson is the list, the broom, and what private actually hides.",
+        "Chika's sister used the family laptop to print an assignment, opened the browser, and there it was at the top of the history: the page Chika had searched at midnight — “how to leave a bad job quietly.” Nobody had done anything wrong. The browser remembers where you went. That list is History: it is how you find a page from Tuesday without a bookmark, and it is how a sibling, a shop, or a business-centre clerk can see what you opened. A private window — Incognito, InPrivate — is a sitting that does not join that list on this computer. It is not a cloak on the internet. This lesson is the list, the broom, and what private actually hides.",
       ),
       p(
-        "Ctrl+H opens History. A list, newest first. Search it like files. Click a line to return. Delete a line if you want that room forgotten here. Clear browsing data is the larger broom: last hour, last day, all time. Cookies you already met. Cached images are leftovers that make pages load faster and can be swept. Passwords and bookmarks are usually separate ticks — do not sweep those by accident.",
+        "Ctrl+H opens History: a list, newest first, searchable like files. Click a line to return; right-click and delete a line if you want that room forgotten here. Clear browsing data is the larger broom — last hour, last day, all time. Cookies you already met. Cached images are leftovers that make pages load faster and can be swept. But look at the ticks before you swing: passwords and bookmarks are usually separate boxes. Do not sweep those by accident.",
       ),
       fig(
         "/images/blog/browser-history.jpg",
@@ -2746,10 +2723,10 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("Private is a clean table, not a mask"),
       p(
-        "Ctrl+Shift+N in Chrome is Incognito. Edge uses Ctrl+Shift+P. A darker window, a hat or a badge. Bookmarks still work. History in this window does not join the main list. Cookies from this sitting die when the last private window closes. Downloads still land in Downloads — files are files. The school Wi‑Fi, the café, your network provider can still see that a connection happened. Private is not a VPN. It is not illegal. It is a clean table on this machine.",
+        "Ctrl+Shift+N in Chrome opens Incognito; Edge uses Ctrl+Shift+P. A darker window, a hat or a badge. Bookmarks still work. History from this sitting does not join the main list. Cookies from this sitting die when the last private window closes. But downloads still land in Downloads — files are files — and the school Wi-Fi, the café, your network provider can all still see that a connection happened. Private is not a VPN. It is not illegal. It is a clean table on this machine. One contrast to hold, because people smuggle hope into it: private feels like invisibility. It is only forgetfulness in one diary.",
       ),
       p(
-        "Use it on a shared computer for mail if you have no Guest profile. Use it to check a bank if you must, then close every private window — all of them, or the sitting continues. Do not use it to feel invisible while clicking the link you should not open. The trap still traps. Private will not save you from a typed password on a fake street.",
+        "Use it on a shared computer for mail when you have no Guest profile. Use it to check a bank if you must — then close every private window, all of them, or the sitting continues. But do not use it to feel safe while clicking the link you should not open. The trap still traps. Private will not save you from a typed password on a fake street. Quick check at the window frame: the page is fake and the window is private. Which habit saves you here? ... The same one as always — walk there yourself. Privacy is a housekeeping tool; judgment is the guard.",
       ),
       fig(
         "/images/blog/private-window.jpg",
@@ -2762,19 +2739,12 @@ export const blogPosts: BlogPost[] = [
         "Open History in a normal window. The private visit should not be there.",
         "On a machine that is not yours, close all windows when you stand up. Private or not.",
       ]),
-      h2("Finding last Tuesday"),
+      h2("Finding last Tuesday — and what remains"),
       p(
-        "History is not only a confession; it is a diary of the useful kind. Press Ctrl and H and the road you walked is laid out by day, and at the top there is a search box that takes the word you half remember — the article about rent, the portal with the green logo, the name of the man in the photo. The page you could not find again is almost always sitting in Tuesday. Delete one entry by right-clicking it when the entry is none of anyone's business, and leave the rest of the diary intact. A diary with pages torn out at random is still a diary.",
+        "History is not only a confession; it is a diary of the useful kind. Press Ctrl and H and the road you walked is laid out by day, with a search box at the top that takes the word you half remember — the article about rent, the portal with the green logo, the name of the man in the photograph. The page you could not find again is almost always sitting in Tuesday. Delete one entry when it is none of anyone's business, and leave the rest of the diary intact.",
       ),
       p(
-        "Private windows are the clean table. Opened one, they keep nothing once they close: no history to walk, no small note signed by you. They are for the business centre, the cousin's laptop, the machine at the office that four of you share. But keep the honest limits in view. Private is not a mask; the network at work still sees the roads, the sites still see your visit, and a download you saved is still saved. It keeps your traces off the machine in front of you. It does not make you invisible on the road behind it.",
-      ),
-      h2("What still remains"),
-      p(
-        "Files you saved. Things you printed. Mail you sent. The other person's computer if you logged into WhatsApp Web and did not log out. Private does not unsend. It does not hide you from a camera over your shoulder. It hides the diary in this browser. That is still worth doing. It is not magic.",
-      ),
-      p(
-        "If a family needs the history gone on the house profile, clear the last day, then use profiles as you learned. Fighting over History is a sign the bags were mixed. Separate bags beat endless sweeping. The diary is a tool. On your laptop, keep it. On theirs, do not write in it.",
+        "What even a private sitting cannot unsend: files you saved, things you printed, mail you sent, and the other person's computer if you logged into WhatsApp Web and did not log out. Private does not hide you from a camera over your shoulder. It hides the diary in this browser — which is still worth doing, without magic attached. And if a family keeps fighting over History on the house profile, that is not a History problem. It is a bags problem: separate profiles, as you learned, beat endless sweeping. The diary is a tool. On your laptop, keep it. On theirs, do not write in it.",
       ),
     ],
   },
@@ -3086,10 +3056,10 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A week view of a calendar on a laptop screen.",
     body: [
       p(
-        "Paper diaries work. Phones already buzz. A calendar on the computer is the same wall chart, with a reminder that does not depend on you opening the book. Google Calendar, Outlook, the Windows calendar — three names. The idea is one: a day, a time, a sentence, an alarm. This lesson is making one event, not becoming a productivity person.",
+        "Rotimi missed his sister's court date by a day — not from carelessness but from a paper diary left in a danfo in March. The date had lived in that book and nowhere else. Paper diaries work. Phones already buzz. A calendar on the computer is the same wall chart with a reminder that does not depend on you opening the book: Google Calendar, Outlook, the Windows calendar — three names for one idea: a day, a time, a sentence, an alarm. This lesson is making one event. Not becoming a productivity person.",
       ),
       p(
-        "If you have Gmail, calendar.google.com on the real street is enough. Click a day, type JAMB registration, set a time, Save. A reminder defaults to ten or thirty minutes before. That is a tap on the shoulder. Put the real time of the thing, not the time you wish to start getting ready, or you will bargain with the alarm and lose.",
+        "If you have Gmail, calendar.google.com on the real street is enough. Click a day, type JAMB registration, set a time, Save. A reminder defaults to ten or thirty minutes before — that is a tap on the shoulder. But put the real time of the thing, not the time you wish to start getting ready, or you will bargain with the alarm and lose. Rotimi sets his for the journey, not the meeting — but that comes later.",
       ),
       fig(
         "/images/blog/calendar-week.jpg",
@@ -3098,10 +3068,10 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("The phone, the laptop, the same account"),
       p(
-        "Sign the phone into the same Google account and open the Calendar app. The JAMB line should appear. That is the cloud, doing a small job. If it does not appear, pull down to refresh, or confirm the same address. Two accounts is how events vanish. You have one house; use it.",
+        "Sign the phone into the same Google account and open the Calendar app. The JAMB line should appear — that is the cloud, doing a small job. If it does not appear, pull down to refresh or confirm the same address. Two accounts is how events vanish. You have one house; use it. And look once at where the event is being written: if the app says “This phone only,” the date dies with the phone. Choose the account instead. The rent day you entered then survives the stolen Tecno and reappears on the new machine the moment you sign in.",
       ),
       p(
-        "All-day events are birthdays and deadlines that are a date, not a clock. Timed events are classes. Recurring — every Tuesday — is useful and dangerous. A class that ends in June should not still buzz in November. When the term ends, open the event, end the series. Do not delete one Tuesday and think the rest have gone.",
+        "All-day events are birthdays and deadlines that are a date, not a clock. Timed events are classes. Recurring — every Tuesday — is useful and dangerous: a class that ends in June should not still buzz in November. When the term ends, open the event and end the series — do not delete one Tuesday and believe the rest have gone. One retrieval at the series, since it is the quietest bug in calendar life: you deleted last week's Tuesday and October still rings. What moved — the series or one leaf? ... One leaf. The trunk stands until you end the series.",
       ),
       fig(
         "/images/blog/reminder-phone.jpg",
@@ -3109,24 +3079,18 @@ export const blogPosts: BlogPost[] = [
         "The shoulder-tap is the point. A calendar you never open is a paper diary in a drawer. Let the phone buzz. Then open the thing, not only dismiss.",
       ),
       ul([
-        "Open the calendar you already have — Google if you made the account.",
+        "Open the calendar you already have — Google, if you made the account.",
         "Create one event this week with a real name and a time.",
-        "Set a reminder. When it buzzes, you may dismiss. You have proved the tap.",
+        "Set a reminder. When it buzzes, you may dismiss it. You have proved the tap.",
         "Do not import a stranger's ICS file from a WhatsApp. That is a cousin of the link you should not open.",
       ]),
-      h2("The reminder that survives the phone"),
+      h2("Two calendars, and the journey alert"),
       p(
-        "A calendar that lives only in the phone dies with the phone. Before you trust it with anything, look at the top of the app for the account name — Gmail, Outlook — and make sure the events are being written to the account and not to This phone only. Then the rent day you entered survives the stolen Tecno and appears again on the new machine the moment you sign in. It is the cloud lesson wearing a small calendar face, and it matters most for the dates that hurt when they are lost: school fees, the exam date, the court date, the naming ceremony you promised to attend.",
-      ),
-      p(
-        "Use the two-calendar habit and the tool becomes a real assistant. One calendar, your own, for work and appointments; a second, shared with the family, for rent, fees, and the market Saturday — different colours so the week reads like a timetable at a glance. For anything requiring travel, set the alert early: the meeting at ten should tap you at half past eight, because the reminder is not about the meeting. It is about the danfo. Set the alert for the journey and the meeting will take care of itself.",
+        "Use the two-calendar habit and the tool becomes a real assistant. One calendar, your own, for work and appointments. A second, shared with the family, for rent, fees, and the market Saturday — in different colours, so the week reads like a timetable at a glance. And for anything requiring travel, set the alert early: the meeting at ten should tap you at half past eight, because the reminder is not about the meeting. It is about the danfo. Set the alert for the journey and the meeting will take care of itself.",
       ),
       h2("Invitations, and what not to accept"),
       p(
-        "Email will bring “Will you attend?” calendar invites. Accept only if you know the sender. A meeting invite from a stranger is a phishing costume. Decline, or ignore. Do not click “Join Zoom” from an invite you did not expect. Walk to the real street if the class is real.",
-      ),
-      p(
-        "A calendar is not a cage. Three events a week is a tool. Forty overlapping colours is a second job. Put fees deadlines, class times, a birthday you always miss. Leave the rest to the paper on the wall if that is how the house already works. The computer should tap you. It should not become the only clock in the room.",
+        "Mail will bring “Will you attend?” calendar invites. Accept only if you know the sender — a meeting invite from a stranger is a phishing costume. Decline, or ignore, and do not click “Join Zoom” from an invite you did not expect. Walk to the real street if the class is real. Finally, the limit of the tool: a calendar is not a cage. Three events a week is a tool; forty overlapping colours is a second job. Put fee deadlines, class times, the birthday you always miss. Leave the rest to the paper on the wall if that is how the house already works. The computer should tap you. It should not become the only clock in the room.",
       ),
     ],
   },
@@ -4170,10 +4134,10 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A folder window showing a Size column for a few files.",
     body: [
       p(
-        "A file has a weight. The computer writes it as KB, MB, GB — kilobytes, megabytes, gigabytes. People send five phone photographs, the mail bounces, and they think Gmail is broken. The door has a width. A letter is a letter. A photograph from a modern phone is a wall, as you learned when shrinking. This lesson is the numbers on the Size column, what will travel, and what will fill a USB or a disk until the bar goes red.",
+        "Idara mailed five photographs of her daughter's graduation to her brother in Abuja, and the mail bounced back with a sentence she read as an insult: message too large. She tried three times. Gmail was not broken. The door has a width. A file has a weight — the computer writes it as KB, MB, GB: kilobytes, megabytes, gigabytes — and her five photographs were five heavy bricks walking toward a narrow door. This lesson is the numbers in the Size column: what will travel, what will bounce, and what will fill a USB or a disk until the bar goes red.",
       ),
       p(
-        "Rough, in the hand: a page of Word is often tens of KB. A PDF of that page is similar, unless it is full of pictures. One phone photograph is often 2–8 MB. A minute of video can be tens of MB. A gigabyte is about a thousand megabytes — a small pile of video, or hundreds of photographs, or a huge pile of letters. You do not need the exact science. You need: text is light, photos are heavy, video is heavier, and installers are often heavy on purpose.",
+        "Rough, in the hand: a page of Word is often tens of KB. A PDF of that page is similar, unless it is full of pictures. One phone photograph is often two to eight MB. A minute of video can be tens of MB. A gigabyte is about a thousand megabytes — a small pile of video, or hundreds of photographs, or a huge pile of letters. You do not need the exact science. You need the shape: text is light, photos are heavy, video is heavier, and installers are often heavy on purpose. Hold those four and the numbers on any screen will mean something.",
       ),
       fig(
         "/images/blog/file-size-column.jpg",
@@ -4182,10 +4146,10 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("Email, USB, and the red bar"),
       p(
-        "Gmail and many offices refuse around 20–25 MB for the whole mail. One unshrunk photograph can be legal. Five can bounce. A zip of a wedding will not go. Drive, or the USB in the pocket, or shrink as you learned. WhatsApp compresses pictures so they travel; that is soup, not a size lesson. Document keeps the weight, and may still refuse if the brick is huge.",
+        "Gmail and many offices refuse a whole mail above roughly twenty to twenty-five megabytes. One unshrunk photograph can squeak through; five can bounce. A zipped wedding will not go at all. When that happens, three roads exist: Drive, the USB in the pocket, or shrink a copy — all of which you already know. And one trap in the wording: WhatsApp compresses pictures so they travel — that is soup, not a size lesson. Send as Document and the weight survives, though a huge brick may still be refused at the door.",
       ),
       p(
-        "A USB that says 8 GB is not 8 GB of your photos after formatting, and not 8 GB if it is a fake stick from a stall. Copy, then open a file from the stick, then eject. If the stick claims 1 TB and cost a sandwich, believe the sandwich. On the computer, This PC, the C: bar — green is room, red is the slow-computer lesson. Size is why that bar moves.",
+        "A USB that says 8 GB is not 8 GB of your photographs after formatting — and not 8 GB at all if it is a fake stick from a stall. Copy something, then open a file from the stick to prove it opens, then eject. If a stick claims 1 TB and costs a sandwich, believe the sandwich. One question at the Size column, since it decides the mail before you send: the photograph is 6 MB and the portal wants 2. What is the honest move — fight the portal or shrink a copy? ... Shrink a copy. Keep the original heavy; send the light twin. The rules of a door are not an argument.",
       ),
       fig(
         "/images/blog/storage-bar.jpg",
@@ -4194,23 +4158,20 @@ export const blogPosts: BlogPost[] = [
       ),
       ul([
         "Open Documents. Switch to Details view. Show the Size column if it is hidden.",
-        "Find a letter and a photograph. Compare the two numbers. The photo should be the brick.",
+        "Find a letter and a photograph. Compare the two numbers — the photo should be the brick.",
         "If you have a USB, look at its free space the same way.",
-        "Before you email a picture, look at Size. If it is more than 2 MB and they only need a face, shrink a copy.",
+        "Before you email a picture, look at Size. Over 2 MB and they only need a face? Shrink a copy.",
       ]),
       h2("Counting against the fence of the bundle"),
       p(
-        "The size numbers become real when you line them against the bundle. One gigabyte is a thousand megabytes, and a megabyte is a thousand kilobytes — the same ladder as kobo, naira, and thousands in the market. A page of text is a few kilobytes and costs essentially nothing. A phone photograph is three to five megabytes. A ten-minute video can eat three hundred. So the arithmetic of the bundle is really the arithmetic of video: one hour of calls on video might cost you a quarter of a gigabyte, while the same hour as an audio call is a twentieth. The phone's Settings, under the network, keeps the tally of which apps ate what. Read it like a NEPA bill.",
+        "The size numbers become real when you line them against the bundle. One gigabyte is a thousand megabytes, and a megabyte is a thousand kilobytes — the same ladder as kobo, naira, and thousands in the market. A page of text is a few kilobytes and costs essentially nothing. A phone photograph is three to five megabytes. A ten-minute video can eat three hundred. So the arithmetic of the bundle is really the arithmetic of video: one hour of video calls might cost you a quarter of a gigabyte, while the same hour as an audio call is a twentieth. The phone's Settings, under the network, keeps the tally of which apps ate what. Read it like a NEPA bill.",
       ),
       p(
-        "The same units police other fences. An email refuses a suitcase past twenty-five megabytes. A WhatsApp status video is squeezed at the door. A course portal that asks for a file under two megabytes is asking for the shrunk copy, not the camera original. When you see the size number anywhere — a download, an attachment, a storage warning — you can now picture the thing itself: kilobytes are pages, megabytes are photographs, gigabytes are films and seasons. Three units, three sizes of suitcase. The numbers stop being weather reports once you know what they weigh.",
+        "On the computer, the same units police the house: This PC, the C: bar — green is room, red is the slow-computer lesson walking toward you. Size is why that bar moves. And notice what the number is not: it is not quality by itself — a fifty-kilobyte passport photo can be the right photo, and a twelve-megabyte blur is still a blur. It is not “speed” of the machine; a large file opens fine on a healthy computer. And it is not a virus scan — bigger is not guiltier. A shop that formats because of “too many GB” without copying your Documents is selling convenience, not care.",
       ),
-      h2("What the number is not"),
+      h2("Before you walk to the post"),
       p(
-        "It is not quality by itself. A 50 KB passport photo can be the right photo. A 12 MB blur is still a blur. It is not “speed” of the computer. A large file can open fine on a healthy machine. It is not a virus scan. Bigger is not guiltier. A shop that formats because “too many GB” without copying your Documents is selling convenience, not care.",
-      ),
-      p(
-        "When a form says “maximum 100 KB,” obey the number, as with the small photograph. When a portal says “2 MB,” that is the door. The Size column is how you know before you try. Look, then shrink or zip or Drive. The suitcase has a scale. Use it before you walk to the post.",
+        "When a form says “maximum 100 KB,” obey the number — that is the small photograph lesson again. When a portal says “2 MB,” that is the door. The Size column is how you know before you try. Look, then shrink or zip or use Drive. The suitcase has a scale. Use it before you walk to the post.",
       ),
     ],
   },
@@ -5631,10 +5592,10 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A phone showing a short SMS with a six-digit code.",
     body: [
       p(
-        "A bank, a mail, a government portal will send a short number to the phone: one-time password, OTP, token. It is a second lock. It dies in minutes. It is not a PIN you reuse. It is not a balance. The whole crime of the last few years, in this city, is someone asking you to read that number aloud. This lesson is where it belongs — the page you walked to — and where it does not: a call, a WhatsApp, a “Microsoft support.”",
+        "Alhaji Danladi's phone rang at eight in the evening: a calm voice from “the bank,” reversing a wrong debit of forty thousand naira. “We have sent a code to confirm. Read it to me.” The code had indeed arrived, from the bank's own sender. He read it aloud. The reversal happened — in the other direction, out of his account. A bank, a mail, a government portal will send a short number to your phone: one-time password, OTP, token. It is a second lock, it dies in minutes, it is not a PIN you reuse and not a balance. The whole crime of the last few years, in this city, is someone asking you to read that number aloud. This lesson is where the code belongs — the page you walked to — and where it does not: a call, a WhatsApp, a “Microsoft support.”",
       ),
       p(
-        "You typed your password on the real street. The site says it will SMS you. Wait. The phone lights. A sender that looks like the bank, or 33123, or Google. Open the SMS, not a WhatsApp that arrived at the same time. Type the digits into the same page. Submit once. If the page says wrong, wait for a new code; the old one may already be dead. Do not type the code into a second page that popped up. One walk, one box.",
+        "The happy path first. You typed your password on the real street. The site says it will SMS you. Wait. The phone lights. A sender that looks like the bank, or a short number like 33123, or Google. Open the SMS — not a WhatsApp that arrived at the same time — and type the digits into the same page. Submit once. If the page says wrong, wait for a new code; the old one may already be dead. And do not type the code into a second page that popped up. One walk, one box.",
       ),
       fig(
         "/images/blog/otp-sms.jpg",
@@ -5643,10 +5604,10 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("Calls, WhatsApp, and the helpful thief"),
       p(
-        "A voice: we are the bank, we are reversing a debit, read the code we just sent. Hang up. Call the number on the back of the card. A WhatsApp: send the code to confirm your BVN. You already know that play. A page that arrived from a link and then asks for OTP is two rooms: their fake, then your real SMS, which they will use on the real bank. Close. Walk to the bank yourself. If nothing is wrong, nothing is wrong.",
+        "A voice says: we are the bank, we are reversing a debit, read the code we just sent. Hang up. Call the number on the back of the card. A WhatsApp says: send the code to confirm your BVN. You already know that play. And the two-room trick deserves its own name: a page arrives from a link and asks for your OTP — meanwhile the real SMS arrives from the real bank, and the thief uses your real code on the real bank while you feed his fake page. Close. Walk to the bank yourself. If nothing is wrong, nothing is wrong. One question while the phone is still warm: the caller's number looks exactly like the bank's. Is that proof? ... Numbers can be dressed. Proof is who initiated — and you initiated nothing.",
       ),
       p(
-        "Autofill on a phone may offer to paste the code. That is convenient on your phone, on the real app. It is a trap if a fake app is in the foreground. Look at the app name before you Accept. Some banks' own apps ask for a token from a hardware fob or from their app, not SMS. Obey that. Do not hunt a code in SMS that was never sent.",
+        "Autofill on a phone may offer to paste the code. That is convenient on your phone, in the real app — and a trap if a fake app is sitting in the foreground. Look at the app's name before you accept the paste. Some banks' own apps want a token from a hardware fob or their app instead of SMS: obey that, and do not hunt for a code in SMS that was never sent.",
       ),
       fig(
         "/images/blog/otp-waiting.jpg",
@@ -5661,17 +5622,14 @@ export const blogPosts: BlogPost[] = [
       ]),
       h2("The code is not a password"),
       p(
-        "A password is a key that keeps working. The OTP is a lantern: it burns for ninety seconds and then it is smoke. That difference is the whole security of the thing, and it is why no second use of a code is ever legitimate. If somebody asks you to read a code so a payment can be confirmed, what they are proposing is impossible twice over: the code cannot confirm anything except a transaction on your own account, and a dead lantern lights nothing. Banks know this. The police know this. Only the thief asks for lanterns.",
+        "A password is a key that keeps working. The OTP is a lantern: it burns for ninety seconds and then it is smoke. That difference is the whole security of the thing, and it is why no second use of a code is ever legitimate. If somebody asks you to read a code “so a payment can be confirmed,” what they propose is impossible twice over: the code confirms nothing except a transaction on your own account, and a dead lantern lights nothing. Banks know this. The police know this. Only the thief asks for lanterns.",
       ),
       p(
-        "Treat every arriving code as a small alarm bell in the pocket. If a code arrives while you are not signing in or paying for anything, somebody is at your door — do not use the code, do not forward it anywhere, and go change the password of whatever house they are knocking on. Forwarding a code to a friend who is helping with your account is the same door left open; helpers do not need lanterns when you are watching the screen yourself. The code is one-use, ninety seconds, and yours alone. Three rules, and the season's most profitable lie starves to death in your inbox.",
+        "Treat every arriving code as a small alarm bell in the pocket. If a code arrives while you are not signing in or paying for anything, somebody is at your door — do not use the code, do not forward it anywhere, and go change the password of whatever house they are knocking on. Forwarding a code to a “friend helping with your account” is the same door left open; helpers do not need lanterns when you are watching the screen yourself.",
       ),
       h2("When it does not arrive"),
       p(
-        "Airplane mode, no signal, a full SIM, a new number the bank does not have. Switch the plane off. Wait a minute. Resend once. If you just ported a number, tell the bank before you panic. Do not give a shop your OTP to “unlock a faster SIM.” That is the key to the house.",
-      ),
-      p(
-        "The second lock only works if the second key stays in your hand. Password, then OTP, then you are in. Anyone who wants the middle of that sandwich wants the house. You have had this lesson in other clothes. The digits are just smaller. Let them die in the box you chose, not in a stranger's ear.",
+        "Airplane mode, no signal, a full SIM, a new number the bank does not have. Switch the plane off, wait a minute, resend once. If you just ported a number, tell the bank before you panic. And never give a shop your OTP to “unlock a faster SIM” — that is the key to the house. The second lock only works if the second key stays in your hand. Password, then OTP, then you are in. Anyone who wants the middle of that sandwich wants the house. The digits are just smaller than the other lessons. Let them die in the box you chose, not in a stranger's ear.",
       ),
     ],
   },

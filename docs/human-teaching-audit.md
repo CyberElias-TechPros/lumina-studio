@@ -103,8 +103,9 @@ Per lesson, after reconstruction:
 | Pass 2 · batch 5 | Next-worst (11, 56, 115, 119, 140, 151, 162, 165, 179, 180) | **done — the desk craft & the long view** |
 | Pass 2 · batch 6 | Next-worst (7, 12, 73, 94, 107, 112, 135, 158, 184, 208) | **done — safety, everyday machine craft, the learning chapter** |
 | Pass 2 · batch 7 | Next-worst (1, 3, 6, 15, 46, 49, 58, 78, 99, 126) | **done — the very first lessons (1, 3, 6, 15) done** |
-| Pass 2 · batch 8 | Next-worst (16, 23, 29, 45, 60, 61, 100, 124, 125, 127) | **done — 90 lessons reconstructed total (all Tier-A + 60 Tier-B)** |
-| Pass 2 · batch 9+ | Remaining lessons by scan rank (120 to go: enrichment in place where prose is strong, reconstruction where the machine voice dominates) | next turns |
+| Pass 2 · batch 8 | Next-worst (16, 23, 29, 45, 60, 61, 100, 124, 125, 127) | **done — types, radios & the security compound** |
+| Pass 2 · batch 9 | Next-worst (2, 13, 22, 30, 39, 44, 47, 53, 72, 98) | **done — 100 lessons reconstructed total (all Tier-A + 70 Tier-B)** |
+| Pass 2 · batch 10+ | Remaining lessons by scan rank (110 to go: enrichment in place where prose is strong, reconstruction where the machine voice dominates) | next turns |
 | Figures | 57 new illustrations | **done — all 57 generated, all 439 refs resolve** |
 | Academy lectures | Same standard, session by session | after the notes |
 
