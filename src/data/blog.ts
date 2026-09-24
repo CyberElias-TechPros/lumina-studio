@@ -57,10 +57,10 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A learner sitting at a wooden desk in front of a desktop computer.",
     body: [
       p(
-        "Most people who say they cannot use a computer are not stupid. They were never given a quiet hour with someone who would name the parts out loud. A phone is a computer you already trust because it lived in your pocket first. A desktop is the same idea, only larger, slower to start, and honest about its pieces. This lesson is that quiet hour.",
+        "Madam Grace taught primary school for twenty-two years and could organise a hundred children with her voice alone — but she had avoided the office desktop since 2014, because the first time she touched it, everything happened too fast and nobody would name the parts. Most people who say they cannot use a computer are not stupid. They were never given a quiet hour with someone who would name the parts out loud. A phone is a computer you already trust because it lived in your pocket first. A desktop is the same idea — larger, slower to start, and honest about its pieces. This lesson is that quiet hour. Sit down. Nothing here can break.",
       ),
       p(
-        "Picture a wooden desk, a black screen, a keyboard that looks like a typewriter, and a small plastic oval with a wire. That oval is the mouse. The tall box under the desk, or the slim slab of a laptop, is the machine itself. The screen is not the computer. It is a window. Until you press the power button, the window is dark because nothing is happening behind it.",
+        "Picture the desk in front of you: a black screen, a keyboard that looks like a typewriter, and a small plastic oval with a wire. That oval is the mouse. The tall box under the desk — or the slim slab of a laptop — is the machine itself. And here is the first surprise worth keeping: the screen is not the computer. It is a window. Until you press the power button, the window is dark because nothing is happening behind it.",
       ),
       fig(
         "/images/blog/computer-desk.jpg",
@@ -69,21 +69,21 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("Name the four things in front of you"),
       p(
-        "Hold the names in your mouth as you look. The computer — tower or laptop — stores work and does the thinking. The monitor shows you what the computer is thinking. The keyboard is how your fingers send letters and commands. The mouse is how your hand points. If any one of those four is unplugged, the sitting will feel like a dead room. Check the cables at the back once, the way you check that a generator is fuelled before you blame the house.",
+        "Hold the names in your mouth as you look. The computer — tower or laptop — stores work and does the thinking. The monitor shows what the computer is thinking. The keyboard is how your fingers send letters and commands. The mouse is how your hand points. If any one of those four is unplugged, the sitting feels like a dead room. Check the cables at the back once, the way you check that a generator is fuelled before you blame the house. Quick question while your hand is back there: the screen is dark and the room is quiet — what is the first thing you check, the software or the cable? ... The cable. Start at the wall and walk inward. Most “broken computers” in this country are loose plugs and tired sockets.",
       ),
       p(
-        "On a laptop the four things are already joined. You still treat them as four jobs. The screen can be too dark: look for a brightness key or a small sun symbol. The keyboard can be set to type in CAPITALS because Caps Lock is on — a tiny light, often on the key itself, will tell you. The mouse on a laptop is the trackpad, the smooth rectangle below the keys. Rest one finger on it and slide. The arrow on the screen should move. If it does not, the machine is still sleeping.",
+        "On a laptop the four things are already joined, and you still treat them as four jobs. The screen can be too dark — look for a brightness key or a small sun symbol. The keyboard can be set to type in CAPITALS because Caps Lock is on — a tiny light, often on the key itself, will say so. The mouse on a laptop is the trackpad, the smooth rectangle below the keys. Rest one finger on it and slide. The arrow on the screen should move. If it does not, the machine is still sleeping.",
       ),
       h2("Waking the machine"),
       p(
-        "Find the power button. It is a circle broken by a vertical line, or a plain round button. Press it once and take your finger away. Do not hold it. Holding it for several seconds is how you force the machine to shut down, which is a different act. You should hear a fan, see a manufacturer's logo, then a lock screen or a desktop. That wait can be twenty seconds. Sit through it. Tapping the button again will only confuse it.",
+        "Find the power button: a circle broken by a vertical line, or a plain round button. Press it once and take your finger away. Do not hold it — holding it for several seconds forces the machine to shut down, which is a different act entirely. You should hear a fan, see a manufacturer's logo, then a lock screen or a desktop. That wait can be twenty seconds. Sit through it. Tapping the button again only confuses it. It looks like nothing is happening. Actually, the machine is putting the room in order before the door opens.",
       ),
       p(
-        "If a box asks for a password and this is not your computer, stop. Ask the owner. Guessing is how people lock themselves out. If it is your computer and you have not set a password yet, there may be a button that says Sign in or a user picture you can click. Click once. Wait. The desktop — a picture, some small icons, a bar along the bottom or the top — is the table you will work on. Everything you open later will sit on that table as a window.",
+        "If a box asks for a password and this is not your computer, stop and ask the owner — guessing is how people lock themselves out. If it is yours and you have not set a password yet, there may be a button that says Sign in, or a user picture you can click. Click once. Wait. The desktop — a picture, some small icons, a bar along the bottom or the top — is the table you will work on. Everything you open later sits on that table as a window.",
       ),
       h2("The pointer is your finger"),
       p(
-        "Move the mouse on the desk. Watch the small arrow on the screen. That arrow is called the pointer. It is your finger, drawn. You do not need to lift the mouse like a stamp. Keep the heel of your hand on the desk and slide. If you run out of desk, pick the mouse up, set it back in the middle, and continue. The pointer stays where you left it while the mouse is in the air. That one fact saves people months of frustration.",
+        "Move the mouse on the desk and watch the small arrow on the screen. That arrow is the pointer. It is your finger, drawn. You do not lift the mouse like a stamp — keep the heel of your hand on the desk and slide. If you run out of desk, pick the mouse up, set it back in the middle, and continue. The pointer stays where you left it while the mouse is in the air. That one fact saves people months of frustration.",
       ),
       fig(
         "/images/blog/mouse-hand.jpg",
@@ -91,27 +91,27 @@ export const blogPosts: BlogPost[] = [
         "Rest, do not grip. The index finger sits on the left button. A single press is a click. Two presses close together is a double-click, which opens things.",
       ),
       p(
-        "A click is one press of the left button, then release. Aim the pointer at an icon — a small picture with a name under it — and click once. The icon should change colour. That means you have selected it, the way you would rest a finger on a sheet of paper before picking it up. A double-click is two clicks close together on the same spot. That is how you open something. If nothing happens, you paused too long between the clicks. Try again, quicker, without moving the mouse in between.",
+        "A click is one press of the left button, then release. Aim the pointer at an icon — a small picture with a name under it — and click once. The icon changes colour: you have selected it, the way you rest a finger on a sheet of paper before picking it up. A double-click is two clicks close together on the same spot, and that is how you open something. If nothing happens, you paused too long between the clicks. Try again, quicker, without moving the mouse in between.",
       ),
       p(
-        "The right button is a separate language. One right-click on an icon opens a short menu of extra actions: Open, Rename, Delete. You do not need those yet. Know they exist so that a menu appearing does not feel like an error. Click anywhere empty on the desktop to close it. Nothing you have done so far can break the machine. A computer is not a glass cup. Clicking is not pouring water on the floor.",
+        "The right button is a separate language. One right-click on an icon opens a short menu of extra actions — Open, Rename, Delete. You do not need those yet. Know they exist, so that a menu appearing does not feel like an error; click anywhere empty to close it. And the sentence to keep in your pocket for the whole course: nothing you have done so far can break the machine. A computer is not a glass cup. Clicking is not pouring water on the floor.",
       ),
       h2("The first thing you will type"),
       p(
-        "Look at the keyboard. The letters are not in ABC order. They are in an old layout called QWERTY, named for the first six letters on the top row of letters. You do not have to understand why. Find the key that says Enter or Return — usually a wide key on the right. That key means “I am done with this line.” Find Backspace or a left-pointing arrow — that key rubs out the letter behind the blinking line. Find the long bar at the bottom. That is Space. Those three keys, plus the letters of your name, are enough for the first sitting.",
+        "Look at the keyboard. The letters are not in ABC order. They are in an old layout called QWERTY, named for the first six letters on the top row of letters — you do not have to understand why. Find the key that says Enter or Return, usually a wide key on the right: it means “I am done with this line.” Find Backspace, or a left-pointing arrow — that rubs out the letter behind the blinking line. Find the long bar at the bottom: Space. Those three keys, plus the letters of your name, are enough for the first sitting.",
       ),
       ul([
-        "Open a blank page: on Windows, click the Start button (four small squares, bottom-left), type the word Notepad, press Enter. On a Mac, press Command and Space, type TextEdit, press Enter.",
-        "Click once inside the white page so a blinking line appears. That line is the cursor. It is where the next letter will land.",
-        "Type your full name, slowly. If a letter is wrong, press Backspace. If you need a space, press the long bar.",
-        "Look at what you wrote. That is your first file, even if you have not saved it yet. Close the window with the X. If it asks whether to save, choose Don't Save for now. Saving is the next lesson.",
+        "Open a blank page: on Windows, click the Start button (four small squares, bottom-left), type Notepad, press Enter. On a Mac, press Command and Space, type TextEdit, press Enter.",
+        "Click once inside the white page so a blinking line appears. That line is the cursor — where the next letter will land.",
+        "Type your full name, slowly. Wrong letter? Backspace. Need a gap? The long bar.",
+        "Look at what you wrote. That is your first file, even unsaved. Close with the X. If it asks about saving, choose Don't Save for now — saving is the next lesson.",
       ]),
       h2("What this hour was for"),
       p(
-        "You learned four names, one button, one pointer, and three keys. That is the whole machine, reduced to what a person actually does with their hands. Tomorrow you will put work into folders so it does not vanish. Tonight, if you can, sit down again for ten minutes and only move the pointer. Aim at icons. Click once. Click twice. Right-click and dismiss the menu. The fear leaves through the hands, not through a speech.",
+        "Four names, one button, one pointer, three keys. That is the whole machine, reduced to what a person actually does with their hands. Tomorrow you will put work into folders so it does not vanish. Tonight, if you can, sit down again for ten minutes and only move the pointer: aim at icons, click once, click twice, right-click and dismiss the menu. Madam Grace did that for three evenings and stopped being afraid on the fourth. The fear leaves through the hands, not through a speech.",
       ),
       p(
-        "If the screen stayed black, check the monitor's own power light, then the wall socket, then the cable at the back. If the pointer did not move, turn the mouse over: a red or blue light should be on. If there is no light, the mouse is unplugged or the battery is dead. These are household problems, not computer science. Treat them as you would a lamp that will not light.",
+        "If the screen stayed black, check the monitor's own power light, then the wall socket, then the cable at the back. If the pointer did not move, turn the mouse over — a red or blue light should be on. No light means it is unplugged or the battery is dead. These are household problems, not computer science. Treat them as you would a lamp that will not light.",
       ),
     ],
   },
@@ -192,10 +192,10 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "Two hands resting on the home row of a computer keyboard.",
     body: [
       p(
-        "Watch someone who has used a computer for years. Their eyes stay on the screen. Their fingers drop without looking. That is not talent. It is a map they built in the hands. You already have a map for your phone: you can type a name in WhatsApp without staring at every letter. The keyboard is a larger version of that map, and the first week feels clumsy because the keys are farther apart than a glass screen.",
+        "Tobi typed with two fingers and his chin almost touching the keyboard, and at the cyber café people assumed he was slow in the head. He was not. He was hunting — one finger, eyes down, searching for M in the middle of his own thought. Watch someone who has used a computer for years instead: their eyes stay on the screen, their fingers drop without looking. That is not talent. It is a map they built in the hands. You already have a map for your phone — you can type a name in WhatsApp without staring at every letter. The keyboard is a larger version of that map, and the first week feels clumsy only because the keys are farther apart than a glass screen.",
       ),
       p(
-        "Hunt-and-peck — one finger, eyes on the keys — will write a form. It will not write a letter you are proud of, because the thinking keeps breaking to find M. The cure is not speed. The cure is a resting place for the fingers, called home row, and a promise to return there after every stretch.",
+        "Hunt-and-peck will write a form. It will not write a letter you are proud of, because the thinking keeps breaking to find the next letter. The cure is not speed. The cure is a resting place for the fingers — called home row — and a promise to return there after every stretch.",
       ),
       fig(
         "/images/blog/keyboard-hands.jpg",
@@ -204,24 +204,23 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("Home row, said slowly"),
       p(
-        "Sit so your elbows can rest near your sides and your wrists are not climbing over the edge of the desk. Place the four fingers of your left hand on A, S, D and F. Place the four fingers of your right hand on J, K, L and the semicolon. The index fingers should feel a tiny ridge on F and on J. Those ridges are not decoration. They are the only landmarks on a dark keyboard at night. Thumbs rest on the space bar. That is home. Every other key is a reach, then a return.",
+        "Sit so your elbows can rest near your sides and your wrists are not climbing over the edge of the desk. Place the four fingers of your left hand on A, S, D and F. Place the four fingers of your right hand on J, K, L and the semicolon. Your index fingers should feel a tiny ridge on F and on J. Those ridges are not decoration — they are the only landmarks on a dark keyboard at night. Thumbs rest on the space bar. That is home. Every other key is a reach, then a return.",
       ),
       p(
-        "Try this without looking down. Type the word asdf with the left hand, one finger each, then jkl; with the right. Delete it with Backspace. Do it again. It will feel theatrical. That is the point. You are teaching the hands a chair to sit in. After a few days the chair is automatic, and the rest of the keyboard becomes a set of short walks.",
+        "Try this without looking down. Type asdf with the left hand, one finger each, then jkl; with the right. Delete it with Backspace. Do it again. It will feel theatrical — that is the point. You are teaching the hands a chair to sit in. One retrieval while the fingers are resting: your left index finger drifts off F and loses its place in the dark. How does it find home again? ... The ridge. The keyboard gives your body the answer before your eyes do.",
       ),
       h2("The keys that edit, not just write"),
       p(
-        "Letters make words. A handful of other keys make the words usable. Enter starts a new line, the way a typewriter's carriage return did. Backspace rubs out the character to the left of the blinking cursor. Delete, if your keyboard has it, rubs out the character to the right. Space inserts a gap. Shift, held down while you tap a letter, makes a capital — and then you let Shift go. Caps Lock is the trap. It leaves every letter large until you press it again. If your sentence suddenly SHOUTS, look for a light on Caps Lock and tap it once.",
+        "Letters make words; a handful of other keys make the words usable. Enter starts a new line, the way a typewriter's carriage return did. Backspace rubs out the character to the left of the blinking cursor; Delete, if your keyboard has it, rubs out the one to the right. Space inserts a gap. Shift, held while you tap a letter, makes a capital — and then you let Shift go. Caps Lock is the trap: it leaves every letter large until you press it again. If your sentence suddenly SHOUTS, look for a light on Caps Lock and tap it once.",
       ),
       p(
-        "Shift plus a number key is how you get the symbols printed on the upper half of those keys. Shift and 1 is often !. Shift and 2 may be @, which you will need for email. The exact symbols change slightly by keyboard, so look at the key itself. Tab jumps the cursor forward, useful in forms. Escape, usually top-left, dismisses a box you did not mean to open. You will use Escape more than you expect.",
+        "Shift plus a number key gives the symbols printed on the upper half of those keys: Shift and 1 is often !, Shift and 2 may be @, which you will need for email. The exact symbols vary a little by keyboard, so look at the key itself. Tab jumps the cursor forward, useful in forms. Escape — usually top-left — dismisses a box you did not mean to open. You will use Escape more than you expect.",
       ),
       ul([
         "Open Notepad or TextEdit. Return your fingers to home row.",
         "Type: The rain in Port Harcourt drums on the zinc.",
         "Use only Backspace to correct mistakes. Do not reach for the mouse yet.",
-        "Press Enter twice. Type your name. Press Shift for the capitals, not Caps Lock.",
-        "Save the file as typing-practice in Documents. Ten minutes is enough. Stop while you still like it.",
+        "Press Enter twice. Type your name — Shift for the capitals, not Caps Lock. Save as typing-practice in Documents. Ten minutes is enough. Stop while you still like it.",
       ]),
       fig(
         "/images/blog/typing-screen.jpg",
@@ -230,17 +229,17 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("Two shortcuts that change everything"),
       p(
-        "Highlight a word by dragging the mouse across it, or by holding Shift and tapping an arrow key. When the word is selected — it will sit on a coloured block — press Ctrl and C together (Command and C on a Mac). Nothing looks different. You have copied. Click where you want the word to appear and press Ctrl and V. The word arrives. C is copy. V is paste. X, used the same way, is cut: copy and remove. You can paste into a different document, into an email, into a form. This is how a person stops retyping their own address fifty times a year.",
+        "Highlight a word by dragging the mouse across it, or by holding Shift and tapping an arrow key. When the word is selected — sitting on a coloured block — press Ctrl and C together (Command and C on a Mac). Nothing looks different. You have copied. Click where you want the word to appear and press Ctrl and V. The word arrives. C is copy, V is paste; X, used the same way, is cut — copy and remove. You can paste into a different document, into an email, into a form. This is how a person stops retyping their own address fifty times a year.",
       ),
       p(
-        "Ctrl and Z is undo: take back the last thing you did. If you deleted a paragraph by accident, undo before you panic. You can often undo several times. Ctrl and A selects everything in the window. Be careful with that one around Delete. If you do press Delete on everything, undo immediately.",
+        "Ctrl and Z is undo: take back the last thing you did. If you deleted a paragraph by accident, undo before you panic — you can often undo several times. Ctrl and A selects everything in the window. Be careful with that one around Delete; if you do press Delete on everything, undo immediately.",
       ),
       h2("A rule you can keep"),
       p(
-        "Ten minutes a day, on a blank page, with home row, beats a two-hour binge on Saturday. Type sentences from a newspaper, or from a hymn, or from a message you would send anyway. Do not chase speed. Speed is a side effect of not looking down. Looking down is allowed in week one. By week three, try a paragraph with a paper over your hands. You will miss keys. That is the lesson arriving.",
+        "Ten minutes a day, on a blank page, with home row, beats a two-hour binge on Saturday. Type sentences from a newspaper, or from a hymn, or from a message you would send anyway. Do not chase speed — speed is a side effect of not looking down. Looking down is allowed in week one. By week three, try a paragraph with a paper over your hands. You will miss keys. That is the lesson arriving. Tobi's map took about nineteen days — and then the café stopped having an opinion about him.",
       ),
       p(
-        "If your wrists ache, the desk is too high or you are stabbing. Rest the heels of the hands, press the keys, do not punch them. A cheap keyboard is enough. What matters is returning to F and J until the ridges feel like home even in the dark.",
+        "If your wrists ache, the desk is too high or you are stabbing. Rest the heels of the hands, press the keys, do not punch them. A cheap keyboard is enough. What matters is returning to F and J until the ridges feel like home, even in the dark.",
       ),
     ],
   },
@@ -383,10 +382,10 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A notebook and pen beside a closed laptop on a wooden desk.",
     body: [
       p(
-        "A password is a key. You would not cut one key and hang it on every door in the street. That is what people do when they use their child's name plus 1234 for email, the bank app, and the academy login. The first site that leaks — and sites leak — hands a stranger the rest of the house. This lesson is how to make keys you can still find in the dark, without writing the actual key on the doorframe.",
+        "Alhaji Musa used one key for every door in his life: his daughter's name plus 1234 — the email, the bank app, the academy login. When a small shop's website leaked its customer list, a stranger walked through all three doors in one evening. A password is a key, and you would not cut one key and hang it on every door in the street. This lesson is how to make keys you can still find in the dark — without writing the actual key on the doorframe.",
       ),
       p(
-        "Forget the old advice about one capital, one number, one symbol, eight characters, changed every month. That produced Passw0rd! and a sticky note on the monitor. What actually resists guessing is length, and what actually fails is reuse. A sentence you can say is stronger than a short tangle you will forget and then reset, badly, from a café.",
+        "Forget the old advice about one capital, one number, one symbol, eight characters, changed every month. That produced Passw0rd! and a sticky note on the monitor. What actually resists guessing is length, and what actually fails is reuse. A sentence you can say is stronger than a short tangle you will forget and then reset, badly, from a café. It looks like complexity is strength. Length and uniqueness are strength; complexity theatre is just a puzzle you set for yourself.",
       ),
       fig(
         "/images/blog/password-notebook.jpg",
@@ -395,10 +394,10 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("Make a sentence, then hide it"),
       p(
-        "Think of four ordinary words that do not belong together. Rain zinc mango Tuesday. Say them. That is already harder to guess than your birthday. Add a small twist you will remember: the year you started the course, or the bus number you take, in the middle, not at the end. Do not use a proverb everyone knows. Do not use a Bible verse with the reference, because those are in books. The sentence should be boring to anyone who is not you.",
+        "Think of four ordinary words that do not belong together. Rain zinc mango Tuesday. Say them. That is already harder to guess than your birthday. Add a small twist you will remember — the year you started the course, or the bus number you take, in the middle, not at the end. Do not use a proverb everyone knows. Do not use a Bible verse with the reference, because those are in books. The sentence should be boring to anyone who is not you.",
       ),
       p(
-        "Each important house gets its own sentence. Email is one. Bank is another. The computer login is a third. WhatsApp PINs and app locks are more keys. If that sounds like too many, you have named the real problem: memory. Two honest answers exist. One is a password manager — a programme whose only job is to remember keys, locked with one long sentence you do memorise. The other, if you do not want another programme yet, is a notebook that lives in a drawer, not in the bag you take to town.",
+        "Each important house gets its own sentence: email is one, the bank another, the computer login a third. If that sounds like too many, you have named the real problem — memory. Two honest answers exist. One is a password manager: a programme whose only job is remembering keys, locked by one long sentence you do memorise. The other, if you do not want another programme yet, is a notebook that lives in a drawer — not in the bag you take to town.",
       ),
       h2("The notebook rule"),
       p(
@@ -406,9 +405,9 @@ export const blogPosts: BlogPost[] = [
       ),
       ul([
         "Pick four unrelated words. Say them until they are a rhythm.",
-        "Use that sentence only for your email. Email is the master door: reset links for everything else arrive there.",
+        "Use that sentence only for your email — the master door, where reset links for everything else arrive.",
         "Make a different sentence for the bank. Do not “just change the last number.”",
-        "Write a hint in the notebook, close the drawer, and try logging in tomorrow from memory. If you fail, the hint was too thin. Fix the hint, not the sentence, unless the sentence itself is gone.",
+        "Write a hint in the notebook, close the drawer, and try logging in tomorrow from memory. Fail? Fix the hint — unless the sentence itself is gone.",
       ]),
       fig(
         "/images/blog/phone-login.jpg",
@@ -417,17 +416,17 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("The second lock on the phone"),
       p(
-        "Many sites now offer a second step: after the password, they send a code to your phone, or they ask you to tap a prompt. That is two-factor authentication, which is a long name for a second lock. Turn it on for email first, then for the bank. Use the phone number you actually hold. If the site offers an authenticator app — a small programme that shows rotating codes — that is stronger than SMS, because SMS can be stolen with a swapped SIM. SMS is still far better than nothing.",
+        "Many sites now offer a second step: after the password, they send a code to your phone, or ask you to tap a prompt. That is two-factor authentication — a long name for a second lock. Turn it on for email first, then the bank. Use the phone number you actually hold. If the site offers an authenticator app — a small programme showing rotating codes — that is stronger than SMS, because SMS can be stolen with a swapped SIM. SMS is still far better than nothing. Where would you look first to switch this on? ... The account's Security page, beside the password you just set.",
       ),
       p(
-        "When a site offers “remember this computer,” say yes only on a machine that stays in the house. Say no in a business centre, a café, or a friend's laptop. The computer will keep you signed in. That is convenient at home and a gift to the next person on a shared machine. Sign out when you are done on any computer that is not yours. Look for your name in the corner, click it, choose Sign out. Closing the window is not always the same act.",
+        "When a site offers “remember this computer,” say yes only on a machine that stays in the house. Say no in a business centre, a café, or on a friend's laptop — that checkbox keeps you signed in, which is convenient at home and a gift to the next person on a shared machine. Sign out when you are done on any computer that is not yours: your name in the corner, click, Sign out. Closing the window is not always the same act.",
       ),
       h2("What you never type into a surprise"),
       p(
-        "Nobody who actually works at a bank will ask you to reply with your password. Nobody at the academy will. A page that arrived from a link in a mail or a WhatsApp and then asks for the password is the next lesson. For today: if you did not walk to the real site yourself, do not type the key. Open a new tab. Type the address you already trust. If the story was true, it will still be true there.",
+        "Nobody who actually works at a bank will ask you to reply with your password. Nobody at the academy will. A page that arrived from a link — in a mail or a WhatsApp — and then asks for your password is the subject of our next lesson. For today, hold one line: if you did not walk to the real site yourself, do not type the key. Open a new tab. Type the address you already trust. If the story was true, it will still be true there.",
       ),
       p(
-        "If you have been using one short password everywhere, change email tonight. That one change closes the master door. The rest can follow this week, one house at a time. You do not need a new personality. You need keys that do not open the neighbour's gate.",
+        "If you have been using one short password everywhere, change email tonight. That one change closes the master door; the rest can follow this week, one house at a time. You do not need a new personality. You need keys that do not open the neighbour's gate.",
       ),
     ],
   },
@@ -904,10 +903,10 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A laptop browser showing a simple account creation form.",
     body: [
       p(
-        "Many people in this city have a Gmail address they cannot recite. A shop created it to “open WhatsApp,” or a nephew created it to download an app, and the password is a mystery. Then a school asks for email, and a second address is born, and a third. This lesson is how to make one Google account on purpose: a name you can say, a password you can keep, a phone that can catch the reset, written in the notebook from the keys lesson.",
+        "Amaka Okoro had three Gmail addresses and owned none of them. One a shop made “to open WhatsApp,” one a nephew made to download a game, one born in a hurry when a school form demanded an email at 11 p.m. She could recite none of the passwords. This lesson is the opposite of all that: one Google account, made on purpose — a name you can say, a password you can keep, a phone that can catch the reset, written in the notebook from the keys lesson.",
       ),
       p(
-        "Google is not the only house. Outlook and a school address are fine. Google is the one most phones, most Android shops, and most forms in Nigeria expect. If you already have an address you can sign into, and you wrote it down, do not make another. This page is for the person who has none, or who has one they do not own.",
+        "Google is not the only house. Outlook and a school address are fine. Google is the one most phones, most Android shops, and most forms in Nigeria expect. If you already have an address you can sign into and you wrote it down, do not make another — this page is for the person who has none, or who has one they do not own.",
       ),
       fig(
         "/images/blog/account-form.jpg",
@@ -916,14 +915,14 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("Walk there yourself"),
       p(
-        "Open the browser. Type accounts.google.com in the address bar. Do not search “create gmail” and tap the first advert. You already know why. Click Create account, then For my personal use. Use your real first and last name — the one on your ID — because this address will sit on applications. A nickname can be the username; the profile name should be you.",
+        "Open the browser. Type accounts.google.com in the address bar — do not search “create gmail” and tap the first advert. You already know why. Click Create account, then For my personal use. Use your real first and last name — the one on your ID — because this address will sit on applications. A nickname can be the username; the profile name should be you.",
       ),
       p(
-        "The username is the part before @gmail.com. Keep it boring and speakable: amaka.okoro, not xXxqueenxXx. You will dictate this over a bad line. If the name is taken, amaka.okoro.26 is better than a random string the page suggests. Avoid your full date of birth. Avoid a BVN. Write the finished address in the notebook before you continue. Read it back. That is the house name.",
+        "The username is the part before @gmail.com. Keep it boring and speakable: amaka.okoro, not xXxqueenxXx. You will dictate this over a bad line someday. If the name is taken, amaka.okoro.26 beats a random string the page suggests. Avoid your full date of birth. Avoid a BVN. Write the finished address in the notebook before you continue, and read it back. That is the house name.",
       ),
       h2("Password, phone, recovery"),
       p(
-        "Use a sentence password, as you learned, and not the same sentence as the bank. The next screen will ask for a phone number. Give the number you hold. That number is how you get back in when the password slips. A recovery email, if you have a second address you control, is extra rope. If you have none, the phone is the rope. Skip only if the page allows it and you understand you have less rope.",
+        "Use a sentence password, as you learned — and not the same sentence as the bank. The next screen asks for a phone number: give the number you hold. That number is how you get back in when the password slips. A recovery email, if you have a second address you control, is extra rope; if you have none, the phone is the rope. Skip only if the page allows it and you understand you have less rope. One question at this screen, because it decides a future errand: the form wants a birth date and a BVN for “verification.” Which of those does Google actually need to open a mailbox? ... The birth date, sometimes, for age. Never a BVN. A mailbox is not a bank account, whatever the form pretends.",
       ),
       fig(
         "/images/blog/writing-address.jpg",
@@ -938,13 +937,13 @@ export const blogPosts: BlogPost[] = [
       ]),
       h2("What this account is for — and is not"),
       p(
-        "This is your email, your door to Drive, and often the door to a phone's Play Store. It is not a public noticeboard. Do not type the password into a shop's computer and walk away signed in. If a technician must open the Play Store, stand there, sign in, let them work, sign out. “Remember this computer” is for your house, not theirs.",
+        "This is your email, your door to Drive, and often the door to a phone's Play Store. It is not a public noticeboard, and it is not a shop's property. Do not type the password into a shop's computer and walk away signed in. If a technician must open the Play Store, stand there, sign in, let them work, sign out. “Remember this computer” is for your house, not theirs.",
       ),
       p(
-        "You will be offered Gmail, Drive, Photos, a phone backup. You do not have to switch every tap on. Gmail is enough for today. Drive, when you are ready, is the cloud drawer from the backup lesson. Photos can eat data; wait until you mean it. If Google asks for a second step — a code on the phone — say yes. That is the second lock. You have met it before.",
+        "You will be offered Gmail, Drive, Photos, a phone backup. You do not have to switch every tap on. Gmail is enough for today. Drive, when you are ready, is the cloud drawer. Photos can eat data — wait until you mean it. And if Google asks for a second step — a code on the phone — say yes. That is the second lock. You have met it before.",
       ),
       p(
-        "If you already have an old address you cannot enter, do not start a maze of resets on a borrowed laptop. Sit at a machine you trust, try Forgot password once, and take the code on your own phone. If the recovery phone is a number you lost years ago, the account may be gone. Make a new one on purpose, write it down, and tell the school, the bank, and the academy the new house. One address, owned, is worth more than four that a shop still knows.",
+        "If you already have an old address you cannot enter, do not start a maze of resets on a borrowed laptop. Sit at a machine you trust, try Forgot password once, take the code on your own phone. If the recovery phone is a number you lost years ago, the account may be gone — make a new one on purpose, write it down, and tell the school, the bank, and the academy the new house. Amaka kept her second address alive for one month as a spare, then closed the tab on the other two forever. One address, owned, is worth more than four that a shop still knows.",
       ),
     ],
   },
@@ -2694,10 +2693,10 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A browser bookmarks bar with a few named bookmarks.",
     body: [
       p(
-        "You already know the address bar and the real street. A bookmark is how you stop searching for your own bank every Saturday. The star at the end of the address bar saves the page you are on. People click the star, then never look at Bookmarks again, then search, then click the wrong result. The pin was made. The map was never opened. This lesson is naming the pin, putting it in a room, and finding it on purpose.",
+        "Nnamdi clicked the star on his bank's page one Saturday and felt organised. Then Monday came, he searched “first bank login” like everyone else, tapped a wrong result, and typed his full details into a page that had bought the top advert slot. The pin was made. The map was never opened. You already know the address bar and the real street — a bookmark is how you stop searching for your own bank every Saturday. This lesson is naming the pin, putting it in a room, and finding it on purpose.",
       ),
       p(
-        "Click the star. A small box: name, and a folder. The name should be a word you would say — First Bank, JAMB, CEA, WAEC — not the long title the site gave itself. The folder is Bookmarks bar if you want it on the strip under the address, or Other, or a folder you make: School, Money, Church. Confirm. The star fills in. That is the pin dropped.",
+        "Click the star at the end of the address bar. A small box appears: name, and a folder. The name should be a word you would say — First Bank, JAMB, CEA, WAEC — not the long title the site gave itself. The folder is Bookmarks bar if you want it on the strip under the address, or Other, or a folder you make: School, Money, Church. Confirm. The star fills in. The pin is dropped.",
       ),
       fig(
         "/images/blog/bookmarks-bar.jpg",
@@ -2706,10 +2705,10 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("The bar, the menu, the folders"),
       p(
-        "Right-click under the address bar if you cannot see the strip: Show bookmarks bar, Always. Drag a pin left or right. Right-click a pin to rename or delete. Delete removes the pin, not the website. The bank still exists. You only took the pin out of your map.",
+        "Right-click under the address bar if you cannot see the strip: Show bookmarks bar, Always. Drag a pin left or right. Right-click a pin to rename or delete — and notice what delete means: it removes the pin, not the website. The bank still exists. You only took the pin out of your map. That distinction comforts people more than it should, which is worth a moment: nothing in a bookmark is the place itself. It is a name for a door.",
       ),
       p(
-        "Folders on the bar are envelopes. A folder called School can hold CEA, JAMB, the portal. Click the folder, then the name. That is the same idea as Documents/School. If you bookmark on a phone, that pin may live in the Google account if you signed the browser in. On a Guest window, bookmarks die when Guest closes. You learned that bag.",
+        "Folders on the bar are envelopes. A folder called School can hold CEA, JAMB, the portal. Click the folder, then the name — the same idea as Documents/School. If you bookmark on a phone, that pin may live in the Google account if you signed the browser in. On a Guest window, bookmarks die when Guest closes — you learned that bag. Quick check before the checklist: your bookmarks bar shows four pins and one folder. Where do the five doors you open every morning belong? ... On the bar itself. The bar is the morning shelf; the folder is the cupboard.",
       ),
       fig(
         "/images/blog/bookmark-star.jpg",
@@ -2720,21 +2719,18 @@ export const blogPosts: BlogPost[] = [
         "Open cea.ng. Click the star. Name it CEA. Put it on the bookmarks bar.",
         "Open a second site you actually use. Star it. Name it in one word.",
         "Click the CEA pin. Confirm you arrive without typing.",
-        "Delete a pin you made by accident. Confirm the site still opens if you type the address. The pin was not the house.",
+        "Delete a pin you made by accident. Confirm the site still opens if you type the address — the pin was not the house.",
       ]),
       h2("Folders inside the map"),
       p(
-        "A map with fifty pins and no regions is a map only its maker can read, and in a month even the maker is lost. Make regions. In the bookmarks menu, create folders with plain names — Daily, School, Bank, News — and drag each star into its street as you save it. The bar along the top is for the five doors you open every morning and nothing else; the rest live inside the menu where the folders keep them. Two minutes of tidying at the end of the month beats the archaeology of scrolling a hundred entries in June.",
+        "A map with fifty pins and no regions is a map only its maker can read — and in a month even the maker is lost. Make regions. In the bookmarks menu, create folders with plain names — Daily, School, Bank, News — and drag each star into its street as you save it. The bar along the top is for the five doors you open every morning and nothing else; the rest live inside the menu where the folders keep them. Two minutes of tidying at the end of the month beats the archaeology of scrolling a hundred entries in June.",
       ),
       p(
-        "Name the pins for the person you will be in a year. Not Home and Page 1, but JAMB portal and WAEC result checker and Mummy's shop invoice. The bookmark's name is yours to write; the website's name is not the site's opinion of itself. And when the machine changes, the map can travel: sign into the browser to carry it by account, or export the bookmarks file onto a USB to carry it by hand. The first way is convenient and ties to the bag lesson you just read. The second is slower and leaves no diary anywhere. Choose knowing what you chose.",
+        "Name the pins for the person you will be in a year. Not “Home” and “Page 1,” but “JAMB portal” and “WAEC result checker” and “Mummy's shop invoice.” And when the machine changes, the map can travel: sign into the browser to carry it by account, or export the bookmarks file onto a USB to carry it by hand. The first way is convenient and ties to the bag lesson you just read. The second is slower and leaves no diary anywhere. Choose knowing what you chose.",
       ),
       h2("What not to pin"),
       p(
-        "Do not pin a page you reached from a strange link. Pin the real street after you typed it. Do not pin “login” pages that are really searches. Do not pin fifty news articles; that is history, next lesson. A bookmark is for a door you will use again. An article is a room you visited.",
-      ),
-      p(
-        "If the bar vanished after an update, it is hiding, not gone. Right-click, show it. If pins duplicated, delete the extras. If you use two computers, signing the browser into your Google account can copy pins. That is useful and it means the bag travels. On a shared computer, do not sign the house browser into your account just for pins. Type the few addresses, or use your profile. The star is a servant. It is not a reason to leave the keys on the table.",
+        "Do not pin a page you reached from a strange link — pin the real street after you typed it. Do not pin “login” pages that are really searches. Do not pin fifty news articles; that is history, next lesson. A bookmark is for a door you will use again; an article is a room you visited. If the bar vanished after an update, it is hiding, not gone — right-click, show it. If pins duplicated, delete the extras. And on a shared computer, do not sign the house browser into your account just for pins: type the few addresses, or use your own profile. The star is a servant. It is not a reason to leave the keys on the table.",
       ),
     ],
   },
@@ -2875,10 +2871,10 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A cloud storage folder list in a browser on a laptop.",
     body: [
       p(
-        "People say “it is in the cloud” as if the file had gone to heaven. It has gone to someone else's computer, in a building you will not visit, behind a password you hold. Google Drive, OneDrive, iCloud, a school portal — those are doors. The internet is the road. If the road is down, the door is down. This lesson is that building, what it is good for, and why it does not replace the USB in the drawer until you have tested it.",
+        "Chinwe says “it is in the cloud” the way her mother says “it is in God's hands” — as if the file had gone to heaven. It has gone to someone else's computer, in a building you will not visit, behind a password you hold. Google Drive, OneDrive, iCloud, a school portal — those are doors. The internet is the road. If the road is down, the door is down. This lesson is that building: what it is good for, what it eats, and why it does not replace the USB in the drawer until you have tested it.",
       ),
       p(
-        "You already made a Google account. Drive is a folder that lives with that account. Open drive.google.com on the real street. You will see a list that looks like File Explorer. Upload is copy from your machine into that building. Download is copy back. A file only in Drive is not on your USB. A file only on your USB is not in Drive. Two houses, remember.",
+        "You already made a Google account. Drive is a folder that lives with that account. Open drive.google.com on the real street — typed yourself, from the bookmarks lesson's habit. You will see a list that looks like File Explorer. Upload is copy from your machine into that building; download is copy back. A file only in Drive is not on your USB. A file only on your USB is not in Drive. Two houses, remember.",
       ),
       fig(
         "/images/blog/cloud-folder.jpg",
@@ -2887,10 +2883,10 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("What it is for, and what it eats"),
       p(
-        "It is for a file you want on the phone and the laptop without a cable. It is for a second copy that survives a stolen bag, if the password is yours and the second lock is on. It is for sending a large PDF when email refuses the zip. It eats data when you upload photographs. It eats space in the free allotment — Gmail and Drive often share a tank. When the tank is full, mail may stop. That surprise is why you do not dump the whole DCIM there on a school bundle.",
+        "It is for a file you want on the phone and the laptop without a cable. It is for a second copy that survives a stolen bag — if the password is yours and the second lock is on. It is for sending a large PDF when email refuses the zip. And what it eats: data, when you upload photographs; space, because Gmail and Drive often share one tank. When the tank fills, mail may stop arriving — the surprise that teaches the lesson. One question before we go on, since it decides most of the grief: the phone is backing up nine thousand photographs on a school bundle. Which habit is wrong — the backup or the pipe? ... The pipe. Backups over Wi-Fi, at night. The backup is right; the tap it chose was wrong.",
       ),
       p(
-        "Sharing a Drive link is not the same as attaching. Anyone with the link may open it if you set it that way. Anyone with the email you typed may open it if you set it that way. Check the setting. A link in a WhatsApp group is a public tray if “anyone with the link” is on. For a school, prefer email attach or a link to one address.",
+        "Sharing a Drive link is not the same as attaching a file. Anyone with the link may open it if you set it that way; anyone with the email you typed may open it if you set it that way. Check the setting before you send. A link dropped in a WhatsApp group is a public tray if “anyone with the link” is on. For school work, prefer an email attachment, or a link to one address.",
       ),
       fig(
         "/images/blog/cloud-devices.jpg",
@@ -2900,22 +2896,22 @@ export const blogPosts: BlogPost[] = [
       ul([
         "Open drive.google.com signed into your account.",
         "Upload one small PDF you own. Open it in the browser.",
-        "On the phone, open Drive or Gmail's Drive, same account. Confirm the file.",
+        "On the phone, open Drive — same account. Confirm the file is there too.",
         "That is the cloud: a building, a door, two rooms you can walk into.",
       ]),
       h2("The fifteen free rooms, and the paid house"),
       p(
-        "The free cupboard is generous but it is one cupboard. Google's fifteen gigabytes is shared across your mail, your Drive, and the photographs backing themselves up from the phone — and the photographs are almost always the tenant that fills it. When the warning comes that the box is full, the answer is rarely to buy more room at once. Look at what is living there: screenshots from 2023, the same video saved twice, mail with the enormous attachment still inside. Delete and empty the bin and you have bought months of free rent. Storage warnings are usually hoarding warnings wearing a bank's face.",
+        "The free cupboard is generous, but it is one cupboard. Google's fifteen gigabytes is shared across your mail, your Drive, and the photographs backing themselves up from the phone — and the photographs are almost always the tenant that fills it. When the warning comes that the box is full, the answer is rarely to buy more room at once. Look at what is living there: screenshots from 2023, the same video saved twice, mail with the enormous attachment still inside. Delete, empty the bin, and you have bought months of free rent. A storage warning is usually a hoarding warning wearing a bank's face.",
       ),
       p(
         "Paying for the cloud earns its keep at a specific threshold: when the files inside it earn money. A freelancer's client work, a student's four years of projects, a shop's records — these are worth a small monthly fee and a real password, and the fee is often less than one recharge card. Do not pay out of fear; pay out of value. And keep one truth standing in the doorway: the cloud is a second house only if the first copy exists somewhere you control. Sync is not backup, no matter how expensive the plan. The paid house is fireproof. It is not proof against your own delete key.",
       ),
       h2("Not a backup until it is a second house"),
       p(
-        "Sync folders that “keep a copy here and there” can empty both sides if you delete in one place and do not understand. Until you do, upload copies. Do not turn on a sync you have not been shown. The USB in the drawer is still the backup you can hold. Drive is the backup that survives fire if you also remember the password. Both is adult. One is a start.",
+        "Sync folders that “keep a copy here and there” can empty both sides if you delete in one place and do not understand the machinery. Until you do, upload copies. Do not turn on a sync you have not been shown. The USB in the drawer is still the backup you can hold; Drive is the backup that survives fire if you also remember the password. Both is adult. One is a start.",
       ),
       p(
-        "iCloud is Apple's building. OneDrive is Microsoft's. They are not interchangeable bags. A file in one is not in the other unless you copied it. “The cloud” is not one cupboard. It is several landlords. Know which door you used. Write it next to the account in the notebook. Then the word stops meaning magic and starts meaning a street you can type.",
+        "iCloud is Apple's building. OneDrive is Microsoft's. They are not interchangeable bags — a file in one is not in the other unless you copied it. “The cloud” is not one cupboard. It is several landlords. Know which door you used; write it next to the account in the notebook. Then the word stops meaning magic and starts meaning a street you can type.",
       ),
     ],
   },
@@ -3395,10 +3391,10 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A simple poster on a laptop screen with a heading and plenty of white space.",
     body: [
       p(
-        "A poster is not a letter. A letter is read at a desk. A poster is read while walking — a church door, a school gate, a shop window. If the walker must stop and squint, the poster failed. Word can make one. Canva can make one. A marker and a card can make one. The tool is not the point. One heading, one sentence, the time and the place. This lesson is that discipline, in Word, because you already have Word.",
+        "Mrs Okonkwo needed the harvest meeting announced, and the first draft was a full page of size-12 paragraphs — every fact true, none of them visible from the gate. Her son printed it anyway, and three hundred people walked past it without one stop. A poster is not a letter. A letter is read at a desk; a poster is read while walking — a church door, a school gate, a shop window. If the walker must stop and squint, the poster failed. Word can make one, Canva can make one, a marker and a card can make one. The tool is not the point. This lesson is the discipline, in Word, because you already have Word.",
       ),
       p(
-        "Page Layout or Layout, Orientation, Landscape if you want a wide sheet, Portrait for a door. Margins Normal or narrow. Type the heading first, large — 48 or 72, bold, one typeface. Then a sentence a person can say aloud: Computer Basics, Saturday 9 o'clock, 26 Ebony Road. Then a phone number. Then stop. A photograph is optional and must not sit on the words. If you add one, keep it small, as in the letter lesson.",
+        "Page Layout, or Layout: Orientation — Landscape if you want a wide sheet, Portrait for a door. Margins: Normal or narrow. Type the heading first, large — 48 or 72, bold, one typeface. Then a sentence a person can say aloud: Computer Basics, Saturday 9 o'clock, 26 Ebony Road. Then a phone number. Then stop. A photograph is optional and must not sit on the words; if you add one, keep it small, the way the letter lesson taught.",
       ),
       fig(
         "/images/blog/simple-poster.jpg",
@@ -3407,10 +3403,10 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("Canva, if you must, and the same rules"),
       p(
-        "Canva is a website of templates. Walk to canva.com on the real street. Sign in with the Google account you made on purpose. Choose a poster size — A4 is enough to print at a business centre. A template is a costume. Delete the extra boxes until you have a heading and a sentence. Free templates are fine. “Pro” lock icons are a shop. You do not need them for a class announcement.",
+        "Canva is a website of templates. Walk to canva.com on the real street; sign in with the Google account you made on purpose. Choose a poster size — A4 is enough to print at a business centre. A template is a costume: delete the extra boxes until you have a heading and a sentence. Free templates are fine. “Pro” lock icons are a shop; you do not need them for a class announcement.",
       ),
       p(
-        "Download as PDF for print, PNG for WhatsApp. PDF for the business centre, as you know. A PNG in a group chat will be compressed; the heading must still be large enough to survive soup. If it cannot, the poster was too clever. Make the words bigger. Send.",
+        "Download as PDF for print, PNG for WhatsApp. A PNG in a group chat will be compressed — the heading must still be large enough to survive soup. If it cannot, the poster was too clever. Make the words bigger. Send. One question while the file is open: the committee wants the programme of ten courses on the poster, size 12. Who is that page for — the walker, or the committee? ... The committee, which is why it is a letter. The poster's audience is moving. Serve the walker.",
       ),
       fig(
         "/images/blog/printed-poster.jpg",
@@ -3425,17 +3421,14 @@ export const blogPosts: BlogPost[] = [
       ]),
       h2("Three facts and a number"),
       p(
-        "Every poster that works carries exactly three facts: what is happening, when and where it is happening, and the number or name to call for the rest. Everything else — the thanks, the committee list, the history of the association — is the small print, and small print on a poster is a confession that the poster is doing the wrong job. The type for the three facts should be readable from where a car passes: if you must walk to the wall to read it, the letters are for the wrong audience. One heading, one sentence of support, one number. Then stop.",
+        "Every poster that works carries exactly three facts: what is happening, when and where it is happening, and the number or name to call for the rest. Everything else — the thanks, the committee list, the history of the association — is small print, and small print on a poster is a confession that the poster is doing the wrong job. The type for the three facts should be readable from where a car passes. If you must walk to the wall to read it, the letters are for the wrong audience.",
       ),
       p(
-        "The business centre can print a hundred copies for the price of a lunch, and the file that gets there should be a PDF so the letters do not rearrange themselves on the shop's computer. Ask for one copy first, tape it on the wall across the room, and walk back to the door. That walk is the review panel. And when the poster must survive rain on a wall in July, the extra hundred naira for glossy paper is cheaper than reprinting. A poster is a shout from across a room. Everything on it should improve the shout.",
+        "The business centre can print a hundred copies for the price of a lunch, and the file that gets there should be a PDF so the letters do not rearrange themselves on the shop's computer. Ask for one copy first, tape it on the wall across the room, and walk back to the door. That walk is the review panel. And when the poster must survive rain on a wall in July, the extra hundred naira for glossy paper is cheaper than reprinting. A poster is a shout from across a room; everything on it should improve the shout.",
       ),
       h2("What a poster is not"),
       p(
-        "It is not a programme of ten courses in size 12. That is a flyer for a hand, or a letter. It is not a photograph of a full Word page taken with a phone at an angle. Export. It is not fluorescent text on a fluorescent ground. Contrast is kindness. If the academy already has a simple sheet, copy the bones — heading, date, place — not the decoration from a party invitation.",
-      ),
-      p(
-        "When you can read it from the door, you are done. Save as poster-class.pdf in Documents. A poster is a one-job page. You already know one job per email. Same manners, larger letters.",
+        "It is not a programme of ten courses in size 12 — that is a flyer for a hand, or a letter. It is not a photograph of a full Word page taken with a phone at an angle: export. It is not fluorescent text on a fluorescent ground; contrast is kindness. When you can read it from the door, you are done. Save as poster-class.pdf in Documents. A poster is a one-job page. You already know one job per email. Same manners, larger letters.",
       ),
     ],
   },
@@ -4528,10 +4521,10 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A document with a short comment in the margin.",
     body: [
       p(
-        "Two people on one letter can shout in the body: red, caps, “CHANGE THIS.” A comment is a sticky note on a sentence. The sentence stays until someone edits it. Google Docs, Word, and PDFs with comments all use the same idea. This lesson is leaving a note, reading one, and not treating a comment as an order from the machine.",
+        "The secretary typed “CHANGE THIS DATE” in red capitals inside the body of the letter — and when the treasurer printed it for the committee, the red capitals printed too. Dupe, watching, said the sentence this whole lesson rests on: a comment is a sticky note on a sentence. The sentence stays until someone edits it. Google Docs, Word, and PDFs with comments all use the same idea. This lesson is leaving a note, reading one, and not treating a comment as an order from the machine.",
       ),
       p(
-        "Select a word, as you learned. Right-click, Comment, or the + in the margin. Type one thought: “Date is March, should be April.” Send or Comment. A small mark sits in the margin. The other person clicks it, replies, or Resolve. Resolve hides the thread. It does not mean the sentence changed. Look at the words. If they are still wrong, the note was only a note.",
+        "Select a word, as you learned. Right-click, Comment — or the + in the margin. Type one thought: “Date is March, should be April.” Send or Comment. A small mark sits in the margin. The other person clicks it, replies, or Resolve. Resolve hides the thread — but here is the misconception worth catching early: it does not mean the sentence changed. Look at the words. If they are still wrong, the note was only a note. Resolution is not correction; it is housekeeping.",
       ),
       fig(
         "/images/blog/doc-comment.jpg",
@@ -4540,10 +4533,10 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("Suggesting, and Accept"),
       p(
-        "Suggesting mode, in Docs, writes new words in a colour and calls them a suggestion. The owner sees Accept or Reject. That is mail merge's cousin: a factory of edits you still have to look at. Accept all is Replace all. Sample first. In Word, Track Changes is the older name. Same manners. If you are the owner, you are not rude to Reject. It is your letter.",
+        "Suggesting mode, in Docs, writes new words in a colour and calls them a suggestion. The owner sees Accept or Reject. That is the mail-merge lesson's cousin: a factory of edits you still have to look at. Accept all is Replace all. Sample first. In Word, Track Changes is the older name for the same manners. If you are the owner, you are not rude to Reject — it is your letter.",
       ),
       p(
-        "Turn on Suggesting only when two people agreed to share a draft. If you only needed them to read, Viewer, no comments even, or Commenter without Editor. A stranger with Editor and a loud Suggesting session is how a CV becomes someone else's. Share settings first, comments second.",
+        "Turn on Suggesting only when two people have agreed to share a draft. If you only needed them to read, share as Viewer, or Commenter without Editor. A stranger holding Editor and a loud Suggesting session is how a CV becomes someone else's. Share settings first, comments second. One question at the Share button, since it guards everything: the committee needs to read the letter, one person must edit it, and the printer needs the file. How many permissions is that? ... Three: Viewer for the committee, Editor for the one, and a downloaded PDF for the printer. Permissions are roles, not trust scores.",
       ),
       fig(
         "/images/blog/suggesting-edits.jpg",
@@ -4558,17 +4551,14 @@ export const blogPosts: BlogPost[] = [
       ]),
       h2("Resolve, and the note that remains"),
       p(
-        "A thread of comments has two endings. Reply, when the conversation must continue. Resolve, when the point has been settled — and resolve is the kinder habit, because it folds the finished note away instead of leaving forty grey boxes along the margin for the next reader to reread. The note is not deleted when you resolve it; it is filed. Reopen it with one click if the question returns. A document walked through by three reviewers should arrive at the end as clean paper with a full archive behind it, not as a wall of grey speech bubbles.",
+        "A thread of comments has two endings. Reply, when the conversation must continue. Resolve, when the point has been settled — and resolving is the kinder habit, because it folds the finished note away instead of leaving forty grey boxes along the margin for the next reader to reread. The note is not deleted when you resolve it; it is filed. Reopen it with one click if the question returns. A document walked through by three reviewers should arrive at the end as clean paper with a full archive behind it — not a wall of grey speech bubbles.",
       ),
       p(
-        "The at-symbol is the loudest key in the margin. Type it before a name and that person is summoned by mail to read the document — which is a gift when they must act and a small theft of their afternoon when they merely might enjoy the joke. Summon the people who must act; leave the others to find the document in their own time. And one caution for the pen itself: when you edit rather than suggest, your changes stand as the document's own words. In a stranger's paper, work in the suggestion mode where edits arrive wearing your name and their Accept button. The margin is for talk. The page is for agreement.",
+        "The at-symbol is the loudest key in the margin. Type it before a name and that person is summoned by mail to read the document — a gift when they must act, and a small theft of their afternoon when they merely might enjoy the joke. Summon the people who must act; leave the others to find the document in their own time. And one caution for the pen itself: when you edit rather than suggest, your changes stand as the document's own words. In a stranger's paper, work in suggesting mode, where edits arrive wearing your name and their Accept button. The margin is for talk. The page is for agreement.",
       ),
       h2("Email comments, and what not to @"),
       p(
-        "Some tools mail you for every comment. That can be a tap on the shoulder. It can also be a siren. Mute a document you only needed to send. @name in a comment notifies that person if they are on the share list. Do not @ a list. Do not paste an OTP into a comment. The margin is not a vault.",
-      ),
-      p(
-        "A comment is manners for two desks. It is not a court. You may disagree in a short reply, then edit the body yourself if you own it. When the page is clean and the margin is empty, you are done. Download the PDF if the office wants a plate without notes. Notes are for the kitchen. The plate is for the tray.",
+        "Some tools mail you for every comment. That can be a tap on the shoulder; it can also be a siren. Mute a document you only needed to send. Do not @ a list. Do not paste an OTP into a comment — the margin is not a vault. A comment is manners for two desks. It is not a court. You may disagree in a short reply, then edit the body yourself if you own it. When the page is clean and the margin is empty, you are done. Download the PDF if the office wants a plate without notes. Notes are for the kitchen. The plate is for the tray.",
       ),
     ],
   },
@@ -5714,10 +5704,10 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A laptop at a small café table with a Wi-Fi password card.",
     body: [
       p(
-        "Free Wi‑Fi is a kindness and a crowd. The café, the bus, the business centre, an estate's “Guest.” You already know not to tick Remember this computer. This lesson is the extra caution: which jobs may use a stranger's radio, and which jobs pay a little data to stay on the SIM. The bank, a password change, a transfer, a BVN portal — the SIM, or the house, or not today.",
+        "Yusuf's JAMB form was due at nine the next morning, and the café near the market had the only light working on that street. Free Wi-Fi hung in the air like a kindness — and like every kindness shared with a crowd, it asked for one extra layer of care. Which jobs may use a stranger's radio, and which jobs pay a little data to stay on the SIM? This lesson is that list. The short version before we walk in: the bank, a password change, a transfer, a BVN portal — the SIM, or the house, or not today.",
       ),
       p(
-        "Joining is the same fan list. The name should match the card on the counter, not “Cafe_Free_Login” with an extra word. A portal page that only asks you to tap Continue is ordinary. A portal that asks for a Google password is not the café; it is a trap wearing a kettle. Close. Use your data. Tell the counter if you like. Do not type the mail key into a page whose address is not the café and not Google.",
+        "Joining is the same fan list you already know. The name should match the card on the counter — not “Cafe_Free_Login” with an extra word someone invented in the car park. A portal page that only asks you to tap Continue is ordinary. A portal that asks for your Google password is not the café — it is a trap wearing a kettle. Close it. Use your data. Tell the counter if you like. Do not type the mail key into a page whose address is not the café and not Google.",
       ),
       fig(
         "/images/blog/cafe-wifi.jpg",
@@ -5726,10 +5716,10 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("What you may do, and what you postpone"),
       p(
-        "Read the news. Search a map. Watch a short video if the bundle at home is the problem. Mail, if you must, in a private window, then sign out. Do not tick Stay signed in. Do not open the bank. Do not type a card number. Do not change a password. The radio is shared; a badly run café, or a neighbour, can be nosy. You do not need the science. You need the habit: money stays on a pipe you pay for.",
+        "Read the news. Search a map. Watch a short video if the bundle at home is the problem. Mail, if you must, in a private window, then sign out — do not tick Stay signed in. But do not open the bank. Do not type a card number. Do not change a password. The radio is shared, and a badly run café — or a neighbour with a habit — can be nosy. You do not need the science. You need the habit: money stays on a pipe you pay for. It looks like caution is costing you the free service. Actually, the free service is costing the careless everything.",
       ),
       p(
-        "A VPN is a tunnel some people buy. It is not a magic cloak, and a random free VPN is another stall. You do not need one to finish this course. You need the SIM for the bank and the house for the rest. If a form is due tonight and the café is the only light, use the phone's data, even hotspot to the laptop, rather than their fan. You know the spare tyre.",
+        "A VPN is a tunnel some people buy. It is not a magic cloak, and a random free VPN is another stall in the same market. You do not need one to finish this course. You need the SIM for the bank and the house for the rest. And if a form is due tonight and the café is the only light — Yusuf's exact situation — use the phone's own data, even hotspot it to the laptop, rather than their fan. You know the spare tyre.",
       ),
       fig(
         "/images/blog/bank-on-public.jpg",
@@ -5737,24 +5727,21 @@ export const blogPosts: BlogPost[] = [
         "If you are not sure whose radio this is, it is public. The bank can wait until the fan is yours. A late transfer is cheaper than a fast one on a stranger's tap.",
       ),
       ul([
-        "At a café, join the name on the card. Open cea.ng. That is enough of a test.",
-        "Do not open the bank. If you must pay, switch to mobile data, Wi‑Fi off.",
+        "At a café, join the name on the card. Open one ordinary site. That is enough of a test.",
+        "Do not open the bank. If you must pay, switch to mobile data, Wi-Fi off.",
         "When you leave: forget the network, or just leave. Sign out of mail if you opened it.",
         "If a portal asked for your Gmail password, you did not join a café. Change the mail password from a machine you trust.",
       ]),
       h2("What the padlock does, and does not, promise"),
       p(
-        "The little padlock in the address bar has one promise and people give it three. The promise is that the road between you and the site is sealed — nobody at the next table or on the café's router can read the words as they pass. The padlock does not promise that the shop at the end of the road is honest. A sealed road to a fake bank is still a fake bank. It does not promise that the site will keep your data in a locked drawer afterwards. And it does not make an unknown site known. The lock is about the journey. Your judgment is about the destination.",
+        "The little padlock in the address bar has one promise, and people give it three. The promise is that the road between you and the site is sealed — nobody at the next table, or on the café's router, can read the words as they pass. The padlock does not promise that the shop at the end of the road is honest: a sealed road to a fake bank is still a fake bank. It does not promise that the site will keep your data in a locked drawer afterwards. And it does not make an unknown site known. The lock is about the journey. Your judgment is about the destination. One retrieval before the counter rules: you are on the fake bank with the padlock shining. Which of the three promises kept you safe? ... None of them. The tunnel worked perfectly. Only the walk-there-yourself habit catches the fake door.",
       ),
       p(
-        "With the promise narrowed to its true size, the café rules become simple. Anything that only reads — news, weather, a video you will not sign into — is ordinary café business. Anything that involves keys, money, or the mailbox of your life waits for the SIM or the house. The browser will warn you before an unencrypted page collects a password; believe it the first time. And if the work cannot wait — the deadline is tonight — then the phone's own hotspot is in your pocket, priced and private. Public Wi-Fi is a public tap. Fill a water bottle from it, not your bank.",
+        "With the promise narrowed to its true size, the café rules become simple. Anything that only reads — news, weather, a video you will not sign into — is ordinary café business. Anything that involves keys, money, or the mailbox of your life waits for the SIM or the house. The browser will warn you before an unencrypted page collects a password; believe it the first time. Public Wi-Fi is a public tap. Fill a water bottle from it — not your bank.",
       ),
       h2("The business centre"),
       p(
-        "Their machines plus their Wi‑Fi is two crowds. USB your files, do the work, five-minute walk, take the stick. Their bank login is not a thing you should ever do. If they offer to “help you pay,” they are in the password lesson. You type, they point, or you leave.",
-      ),
-      p(
-        "Public radio is not evil. It is shared. Shared is fine for a newspaper. Shared is not fine for a key. Look at the fan. Name the job. If the job is money, pay for the pipe. The bundle is smaller than a reversal you will not get.",
+        "Their machines plus their Wi-Fi is two crowds. USB your files, do the work, the five-minute walk from the signing-out lesson, take the stick. Their machine, your bank login — that combination should never exist. If they offer to “help you pay,” they are in the password lesson's territory: you type, they point, or you leave. Public radio is not evil. It is shared. Shared is fine for a newspaper. Shared is not fine for a key. Look at the fan, name the job, and if the job is money, pay for the pipe. The bundle is smaller than a reversal you will not get.",
       ),
     ],
   },
@@ -7167,10 +7154,13 @@ export const blogPosts: BlogPost[] = [
       "Small numbered parcels travelling along a road toward a house in warm evening light.",
     body: [
       p(
-        "When two computers anywhere on earth speak — the phone and the bank, the laptop and this page — they speak TCP/IP. The name is a hyphenated pair: IP, Internet Protocol, and TCP, Transmission Control Protocol. The first says where; the second says how. Strip the syllables and hold the picture: a post office that never loses a letter if the roads survive, run on two rules — every house has an address, and every letter is sent as numbered parcels that may take different roads and arrive in any order, to be reassembled at the door.",
+        "Sade saw the phrase in a job advert — “knowledge of TCP/IP required” — and almost closed the tab. Then she read it again and decided to find out what four letters were hiding. When two computers anywhere on earth speak — the phone and the bank, the laptop and this page — they speak TCP/IP. The name is a hyphenated pair: IP, Internet Protocol, and TCP, Transmission Control Protocol. The first says where; the second says how. Strip the syllables and hold one picture: a post office that never loses a letter if the roads survive, run on two rules — every house has an address, and every letter travels as numbered parcels that may take different roads and arrive in any order, to be reassembled at the door.",
       ),
       p(
-        "IP is the addressing half. Every machine on the network carries an IP address — four numbers, like 172.16.4.1 in the older scheme — its house number on the world's roads. Your phone has one on your network at home; the bank's computer has one on the world's; every parcel of every letter is stamped from and to, and the routers — the junctions of this postal system — pass each parcel road by road, choosing the open street at each junction the way a okada rider weaves a flood. TCP is the manners half: before any letter moves, the two houses have a small conversation — are you there? I am. Then I will send — the handshake, three knocks, and the line is agreed. Then the long letter is torn into parcels, each numbered — 3 of 40, 4 of 40 — so the receiving door can stack them back into the letter, request the missing 7 again, and know exactly what arrived intact.",
+        "IP is the addressing half. Every machine on the network carries an IP address — four numbers, like 172.16.4.1 in the older scheme — its house number on the world's roads. Your phone has one on your network at home; the bank's computer has one on the world's. Every parcel of every letter is stamped from and to, and the routers — the junctions of this postal system — pass each parcel road by road, choosing the open street at each junction the way an okada rider weaves a flood.",
+      ),
+      p(
+        "TCP is the manners half. Before any letter moves, the two houses have a small conversation: are you there? I am. Then I will send. That is the handshake — three knocks, and the line is agreed. Then the long letter is torn into parcels, each numbered — 3 of 40, 4 of 40 — so the receiving door can stack them back into the letter, ask for the missing 7 again, and know exactly what arrived intact. One question while the parcels are in the air: a page arrives with a picture missing and a line of text out of place. Whose job is that to fix — yours, or the protocol's? ... The protocol's. TCP already requested the missing parcels. If the page is still broken, the fault is upstream of this grammar.",
       ),
       fig(
         "/images/blog/tcp-parcels-road.jpg",
@@ -7179,10 +7169,10 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("Doors on the house: ports"),
       p(
-        "One computer is one house, but a house does many businesses at once — web, mail, banking app, all arriving together. So each house numbers its doors: these are ports. Port 80 and its locked cousin 443 are where web pages are received — the padlock in your address bar is a padlock on port 443's road. Mail knocks on its own numbered doors; a video call on another. The address finds the house; the port finds the room inside the house. When an advert for the analyst jobs of this chapter says knowledge of TCP/IP, this is the entire requirement's spine: addresses, parcels, handshake, reassembly, ports.",
+        "One computer is one house, but a house does many businesses at once — web, mail, banking app, all arriving together. So each house numbers its doors: these are ports. Port 80 and its locked cousin 443 are where web pages are received — the padlock in your address bar is a padlock on port 443's road. Mail knocks on its own numbered doors; a video call on another. The address finds the house; the port finds the room inside the house. When the advert for the analyst jobs says knowledge of TCP/IP, this is the entire requirement's spine: addresses, parcels, handshake, reassembly, ports.",
       ),
       p(
-        "Why does a learner who is not chasing those jobs care? Because half of every machine trouble in your life has been a road question wearing a mystery's clothes. The internet is down: which floor broke — the app, the Wi-Fi, the router, the street, or the far house itself? The page will not load but WhatsApp lives: that is not contradiction, that is different roads and different far houses. The bank app times out on the climb up the hill: the parcels are dying between junctions, and no amount of closing and reopening the app repairs a road. Diagnosing by floor — app, house, street, far house — is the ordinary superpower this grammar buys, and you now own the map it stands on.",
+        "And why does a learner who is not chasing those jobs care? Because half of every machine trouble in your life has been a road question wearing mystery's clothes. The internet is down: which floor broke — the app, the Wi-Fi, the router, the street, or the far house itself? The page will not load but WhatsApp lives: that is not contradiction, that is different roads to different far houses. The bank app times out halfway: the parcels are dying between junctions, and no amount of closing and reopening the app repairs a road. Diagnosing by floor — app, house, router, street, far house — is the ordinary superpower this grammar buys, and you now own the map it stands on.",
       ),
       fig(
         "/images/blog/network-cables-router.jpg",
@@ -7191,13 +7181,13 @@ export const blogPosts: BlogPost[] = [
       ),
       ul([
         "Say the pair until it separates: IP is the address, TCP is the manners. Where, then how.",
-        "Name the five floors of any internet trouble out loud once: app, house, router, street, far house.",
-        "Watch your own browser's padlock with new eyes: that is port 443, the locked road, working.",
+        "Name the five floors of any internet trouble out loud, once: app, house, router, street, far house.",
+        "Look at your own browser's padlock with new eyes: that is port 443, the locked road, working.",
         "When a job advert says TCP/IP, you may now nod instead of flinching. That is the whole point of this lesson.",
       ]),
       h2("The grammar under everything"),
       p(
-        "Every lesson on this shelf rode these roads without naming them: the email lesson, the cloud, the ride map, the bank in your hand. Named now, they lose their last fog — the internet is houses with addresses, roads with junctions, letters as parcels, doors numbered by business. Everything the analysts watch travels these roads; everything the builders build travels them; the padlock, the update, the second lock — all of it is traffic on TCP/IP. One grammar, learned once, used for the rest of the connected life. The next lesson stays with the mail, and asks what it means when a letter must carry proof of who sealed it.",
+        "Every lesson on this shelf rode these roads without naming them: the email lesson, the cloud, the ride map, the bank in your hand. Named now, they lose their last fog. The internet is houses with addresses, roads with junctions, letters as parcels, doors numbered by business. Everything the analysts watch travels these roads; everything the builders build travels them. The padlock, the update, the second lock — all of it is traffic on TCP/IP. One grammar, learned once, used for the rest of the connected life. The next lesson stays with the mail, and asks what it means when a letter must carry proof of who sealed it.",
       ),
     ],
   },
