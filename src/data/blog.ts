@@ -682,10 +682,10 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A laptop showing a one-page formal letter in a word processor.",
     body: [
       p(
-        "A word processor is lined paper that can change its mind. Microsoft Word, Google Docs, and LibreOffice Writer are three names for the same job: a page you can type on, move, and print without starting again in ink. Notepad, from the first sitting, has no margins worth showing a school. This lesson is how to make a letter that still looks like a letter when it leaves your desk.",
+        "Chidinma typed her first application letter three times before she asked for help. Every version was decent English and none of them looked like a letter — the greeting floated in the middle of the page, her name was bigger than the school's name, and one paragraph arrived in blue, italic, size fourteen, because she had felt strongly about it. The words were never the problem. A letter is also a picture, and the person whose tray it lands in reads the picture first. This lesson is how to make the page look like what it is — and how to send it so it still looks that way when it arrives.",
       ),
       p(
-        "Open Word the way you opened everything else: Start, type Word, Enter. If the computer has no Word, Google Docs in the browser is enough, or Writer if it came with the machine. You will see a white page, a blinking cursor, and a ribbon of buttons at the top. Ignore most of the buttons. You need a handful: font, size, bold, alignment, and Save.",
+        "A word processor is lined paper that can change its mind. Microsoft Word, Google Docs, and LibreOffice Writer are three names for the same job: a page you can type on, move, and print without starting again in ink. Open Word the way you opened everything else — Start, type Word, Enter — or open Docs in the browser if the machine has no Word. You will see a white page, a blinking cursor, and a ribbon of buttons at the top. Ignore most of the buttons. You need a handful: font, size, bold, alignment, and Save.",
       ),
       fig(
         "/images/blog/word-letter.jpg",
@@ -694,17 +694,17 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("The bones of a letter"),
       p(
-        "Put your address or your name at the top, then the date, then the name of the person you are writing to, then the greeting. Good morning, Mrs Amadi. Then the body — short paragraphs, one idea each. Then yours faithfully, or yours sincerely if you used their name, then your full name. That order is older than computers. The machine did not invent it. The machine only makes the lines easier to move.",
+        "Put your address or your name at the top, then the date, then the name of the person you are writing to, then the greeting: Good morning, Mrs Amadi. Then the body — short paragraphs, one idea each. Then yours faithfully, or yours sincerely if you used their name, then your full name. That order is older than computers; the machine did not invent it, it only makes the lines easier to move. Quick question before we dress the page: if the greeting reads Dear Sir or Madam, which closing earns its place — yours faithfully or yours sincerely? ... Faithfully. Sincerely is the one you keep for people you have named.",
       ),
       p(
-        "Pick one typeface and stay there. Calibri, Times New Roman, or Georgia. Size 12 for the body. Size 11 is small for printing; 14 is a poster. Left-align ordinary letters. Centre only a title, if you must have one. Bold is for a heading, not for a whole paragraph. Colour is almost never needed. If the page looks busy, it will look amateur to the person whose tray it lands in. White space is not wasted paper. It is how the eye rests.",
+        "Now the dressing, and it is mostly restraint. Pick one typeface and stay there — Calibri, Times New Roman, or Georgia. Size 12 for the body; size 11 is small for printing, 14 is a poster. Left-align ordinary letters; centre only a title, if you must have one. Bold is for a heading, not for a whole paragraph. Colour is almost never needed. If the page looks busy, it will look amateur to the person whose tray it lands in. White space is not wasted paper. It is how the eye rests.",
       ),
       h2("Margins, pages, and the things that jump"),
       p(
-        "A margin is the quiet border around the words. Too narrow and a printer eats the last letters. Too wide and a one-page letter becomes two. In Word, Layout then Margins, then Normal, is enough. If a heading has run onto a second page for three lines, you do not need a new font. You need to look at spacing: after a paragraph, one blank line, not three. Press Enter once between paragraphs. If the computer is adding extra space, look for Paragraph, then the box that says space after, and set it to a small number.",
+        "A margin is the quiet border around the words. Too narrow and a printer eats the last letters; too wide and a one-page letter becomes two. In Word: Layout, then Margins, then Normal — that is enough. And when a heading has run onto a second page for three lines, you do not need a new font. You need spacing: press Enter once between paragraphs, not three. If the computer is adding room of its own, look for Paragraph, then the box that says space after, and set it to a small number.",
       ),
       p(
-        "Pictures jump. A photograph dropped into the middle of a sentence will shove the text in ways that feel like the page is haunted. If you need a passport photo on an application, Insert, Picture, and then click the picture, choose a wrapping that says In line with text or Top and bottom — not the one that lets it float over words. Keep pictures small. A letter is not a poster.",
+        "Pictures jump. A photograph dropped into the middle of a sentence shoves the text in ways that feel like the page is haunted. If you need a passport photo on an application: Insert, Picture, then click the picture and choose a wrapping that says In line with text or Top and bottom — not the one that lets it float over words. Keep pictures small. A letter is not a poster.",
       ),
       fig(
         "/images/blog/letter-paper.jpg",
@@ -719,10 +719,10 @@ export const blogPosts: BlogPost[] = [
       ]),
       h2("PDF is how a letter travels"),
       p(
-        "A .docx is a working file. Another person's Word can change the font, shift a heading, or refuse to open it. A PDF is a photograph of the page that still lets you select the words. When you email a school, a bank, or an office, send the PDF unless they asked for Word so they can edit. File, Save As, PDF. Look at the PDF before you attach it. If a heading has slipped to a lonely last page, go back to Word and fix the spacing, then save the PDF again. Do not send both “because one might work.” Send the one you mean.",
+        "A .docx is a working file. Another person's Word can change the font, shift a heading, or refuse to open it. A PDF is a photograph of the page that still lets you select the words. When you email a school, a bank, or an office, send the PDF unless they asked for Word so they can edit. File, Save As, PDF — then look at the PDF before you attach it. If a heading has slipped to a lonely last page, go back and fix the spacing, then save again. And do not send both “because one might work.” Send the one you mean.",
       ),
       p(
-        "Spell check is a cousin, not a teacher. The red underline catches letters. It will not catch form instead of from, or the wrong Mrs. Read the letter out loud once. If you would not sign it on paper, do not send it. The machine made the lines neat. You still have to mean them.",
+        "Spell check is a cousin, not a teacher. The red underline catches letters; it will not catch form instead of from, or the wrong Mrs. Read the letter out loud once. If you would not sign it on paper, do not send it. The machine made the lines neat. You still have to mean them.",
       ),
     ],
   },
@@ -3277,10 +3277,10 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A laptop showing WhatsApp in a browser beside a phone with a QR code.",
     body: [
       p(
-        "WhatsApp lives in the pocket. It can also live in a browser, with a real keyboard, so a long letter to a landlord is not thumbs. That sitting is WhatsApp Web — or the Desktop app, which is the same idea in a window of its own. The phone does not retire. The phone is the key. If the phone is off, the computer chat is off. This lesson is opening the door, keeping the phone awake, and shutting the door when you stand up.",
+        "Segun's thumbs gave up before the letter did. The landlord needed a proper explanation about the rent — two paragraphs, careful and calm — and typing it on the phone turned every second sentence into a correction. Then his sister showed him the other door: the same WhatsApp, opened in a browser on the laptop, with the real keyboard under his fingers. The letter took four minutes. This lesson is that door — WhatsApp Web — and the one rule that keeps it honest: the phone is the key.",
       ),
       p(
-        "Walk to web.whatsapp.com yourself. A square of dots waits. On the phone: WhatsApp, the three dots or Linked devices, Link a device, point the camera at the square. When the chats appear on the laptop, you are in. The phone must stay on the internet. A dead phone is a dead Web. Charge it. Do not put it in airplane mode to “save data” and expect the laptop to keep talking.",
+        "Walk to web.whatsapp.com yourself. A square of dots waits on the screen. On the phone: WhatsApp, the three dots or Linked devices, Link a device, then point the camera at the square. When the chats appear on the laptop, you are in. But notice the sentence from the opening, because it is the rule everything else hangs on: if the phone is off, the computer chat is off. A dead phone is a dead Web. Charge it, and do not put it in airplane mode to “save data” while expecting the laptop to keep talking.",
       ),
       fig(
         "/images/blog/whatsapp-web.jpg",
@@ -3289,10 +3289,10 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("Typing, files, and two clocks"),
       p(
-        "The list of chats is on the left. A click opens a thread. Type as you would in email, then Enter to send — or Shift+Enter for a new line, depending on the setting. Paperclip attaches a document from Documents, the house you know. Prefer Document for a PDF, not a camera picture, so the file does not become soup. You have heard that. It is louder on a laptop, where the real file is sitting next to you.",
+        "The list of chats is on the left; a click opens a thread. Type as you would in an email, then Enter to send — or Shift+Enter for a new line, depending on the setting. The paperclip attaches a file from Documents, the house you already know. Here is one contrast worth carrying to every chat on earth: a photo of a PDF is not a PDF. Prefer Document, not the camera, so the file does not become soup. On a laptop the real file is sitting next to you — sending a photograph of it is a choice now, never an accident.",
       ),
       p(
-        "Blue ticks and “typing…” still come from the phone's network. If the laptop shows one tick and the phone shows two, wait. Do not send five times. Notifications may ring on both; that is two clocks. Mute one. The computer is for writing. The pocket is for the tap on the shoulder when you leave the desk.",
+        "Blue ticks and typing… still come from the phone's network. If the laptop shows one tick and the phone shows two, wait; do not send five times. Notifications may ring on both screens — that is two clocks, and you should mute one. Where would you mute so the desk stays quiet but the pocket still taps your shoulder? ... On the computer. The computer is for writing; the pocket is for being found.",
       ),
       fig(
         "/images/blog/phone-beside-laptop.jpg",
@@ -3307,17 +3307,17 @@ export const blogPosts: BlogPost[] = [
       ]),
       h2("Files across the green wire"),
       p(
-        "Once the two machines are paired, the green app becomes a bridge for files as well as words. Send yourself a message — the chat with your own number — and the phone can push a photograph or a document across to the computer while you type, and the computer can push its documents back to the phone the same way. It is the Bluetooth lesson with range and reliability: the same compound instead of the same table. For a long CV typed at the desk and needed at the cyber café printer, or a receipt photographed on the phone and needed in a letter, the bridge saves the flash drive entirely.",
+        "Once the two machines are paired, the green app becomes a bridge for files as well as words. The chat with your own number is a private road: the phone can push a photograph or a document across to the computer while you type, and the computer can push its documents back the same way. It is the Bluetooth lesson with range and reliability — the same compound instead of the same table. A long CV typed at the desk and needed at the cyber café printer, a receipt photographed on the phone and needed in a letter: the bridge saves the flash drive entirely.",
       ),
       p(
-        "The typing is the other gift. A full keyboard turns a two-minute voice note into a forty-second letter, and the files folder on the computer keeps everything you have sent yourself in one findable pile — which is either a filing cabinet or a mat by the door, depending entirely on you. Do the same small weekly sweep here that you do in Downloads. And the leaving remains the same as always: the phone is the key, and the desk remembers your words until you log out. Shared computer, log out every time. Your own laptop at home, stay signed in and let the bridge be permanent.",
+        "A full keyboard turns a two-minute voice note into a forty-second letter, and everything you have sent yourself sits in one findable pile — which is either a filing cabinet or a mat by the door, depending entirely on you. Do the same small weekly sweep here that you do in Downloads.",
       ),
       h2("Log out, and other people's desks"),
       p(
-        "The menu — three dots, Log out — ends this computer's handshake. Closing the tab is not always enough; a session can linger. On a business-centre machine, log out, then the five-minute walk from the signing-out lesson. Linked devices on the phone lists every computer still holding a key. Remove the ones you do not recognise. That list is worth a look after a café.",
+        "The menu — three dots, Log out — ends this computer's handshake. Closing the tab is not always enough; a session can linger. On a business-centre machine, log out, then the five-minute walk from the signing-out lesson. And Linked devices on the phone lists every computer still holding a key: remove the ones you do not recognise, especially after a café.",
       ),
       p(
-        "Do not link WhatsApp to a shop's “test” computer. Do not photograph your own QR and send it to a helper. The square is a key laid on the table. Anyone who scans it sits in your chats until you remove the device. Web is a keyboard for your pocket, not a copy of your life left behind. Type, send, log out. The green app goes back in the pocket, where it belongs.",
+        "Do not link WhatsApp to a shop's “test” computer. Do not photograph your own QR code and send it to a helper. The square is a key laid on the table — anyone who scans it sits in your chats until you remove the device. Web is a keyboard for your pocket, not a copy of your life left behind. Type, send, log out. The green app goes back in the pocket, where it belongs.",
       ),
     ],
   },
@@ -6622,10 +6622,10 @@ export const blogPosts: BlogPost[] = [
       "A laptop on a desk showing an official-looking application form beside a file of documents.",
     body: [
       p(
-        "The queue at the office and the queue on the portal are cousins, but only one of them is in your house. NIN slips, passport renewals, company names, tax records: the paperwork of a Nigerian life has been walking to the screen for years now, and filling a form — lesson eighteen, of all lessons — has quietly become a civic skill. This lesson is how to deal with the state online without paying anybody's cousin for the privilege.",
+        "Aunty Peace needed to fix one digit on her NIN — a 6 that had been typed as an 8 years ago at a crowded office — and the whole family said the same thing: just search for it online. She typed the agency's name into her phone, and the first result at the top, bold and official-looking, wore the agency's colours, its coat of arms, and the words HELP CENTRE — PROCESSING FEE ≡2,500. Her thumb was already moving. This lesson is the whole art of dealing with the state on a screen: finding the real door, filling the real form, and recognising the man at the gate who charges for doors that were always unlocked.",
       ),
       p(
-        "Find the real door first, because fakes are parked next to it. The official address ends in gov.ng. Check even then, and check above all the advertisements: a fake \"help centre\" will buy the top advert slot in the search results, dress itself in the agency's colours, and charge you a processing fee the agency never asked for. It is the prize message wearing a suit of flags. The safe road: type the agency's address yourself, or reach it from the agency's own verified page, then bookmark it — lesson forty-six — so that next time the door is yours, not the advertiser's.",
+        "Find the real door first, because fakes are parked next to it. The official address ends in gov.ng — and even then, check, and check above all the advertisements: that fake help centre buys the top advert slot, dresses itself in the agency's colours, and charges a processing fee the agency never asked for. It is the prize message wearing a suit of flags. The safe road is older than the internet: type the agency's address yourself, or reach it from the agency's own verified page, then bookmark it — the bookmarks lesson — so next time the door is yours, not the advertiser's.",
       ),
       fig(
         "/images/blog/gov-portal-form.jpg",
@@ -6634,10 +6634,13 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("What the portal will ask, and what it will never ask"),
       p(
-        "Expect: your details typed carefully — spelling exactly as they sit on your certificate, because the papers lesson's folder is only as useful as its names are true. Your documents uploaded: the upload lesson is the whole game, size limits, the bar that must finish, the tick screenshotted. A fee, paid on the portal's own checkout — one known amount, one known page, receipted. What no portal will ever ask: your bank password, your card PIN read to a caller, or an OTP typed for a stranger who phones to help you complete your application. No agency calls you to complete anything. The email that says your application will die in twenty-four hours unless you act through this link is the hurry tell — lesson seven — wearing a government tie.",
+        "Expect three things. Your details, typed carefully — spelling exactly as they sit on your certificate, because the papers lesson's folder is only as useful as its names are true. Your documents uploaded — the upload lesson is the whole game: size limits, the bar that must finish, the tick screenshotted. And a fee, paid on the portal's own checkout: one known amount, one known page, receipted.",
       ),
       p(
-        "Keep everything the portal gives you. The reference number is your application's name; write it in the notebook the same hour. The acknowledgement slip: print it at the café, or PDF it into the Papers folder in Drive, where the certificates already live. Check your application's status on the portal itself, not by hoping and not by paying an agent to hope on your behalf. The café earns its fee honestly here — scanner, printer, and a person who has walked this particular form before — but the portal account, the password, and the reference number remain yours alone.",
+        "Now the other list, the one that protects everything. What no portal will ever ask: your bank password, your card PIN read to a caller, or an OTP typed for a stranger who phones to “help you complete your application.” No agency telephones to complete anything. And the email that says your application will die in twenty-four hours unless you act through this link? That is the hurry tell from the security lessons, wearing a government tie. Sit with one question, because it sorts every message you will ever receive: if the deadline is real, where else would it also be written? ... On the portal itself, in your own account. If it lives only in the panic, it lives nowhere.",
+      ),
+      p(
+        "Keep everything the portal gives you. The reference number is your application's name — write it in the notebook the same hour. The acknowledgement slip: print it at the café, or PDF it into the Papers folder in Drive, where the certificates already live. Then check your application's status on the portal itself — not by hoping, and not by paying an agent to hope on your behalf.",
       ),
       fig(
         "/images/blog/official-papers-desk.jpg",
@@ -6652,10 +6655,10 @@ export const blogPosts: BlogPost[] = [
       ]),
       h2("The agent and the honest middle"),
       p(
-        "Between you and the portal stands a whole trade of agents and cyber cafés, and the trade is not the enemy — it is the middle. The honest agent fills what the portal asks, scans what must be scanned, and charges a fee you agreed at the counter before the work began. Sit where you can see the screen. Read every field aloud as it is filled, because the person typing at speed can transpose a digit in your NIN or an date in your birth certificate without malice. Pay the fee, take the receipt, keep the slip the portal prints. The agent's value is the queue he saves you, nothing more, and nothing less.",
+        "Between you and the portal stands a whole trade of agents and cyber cafés, and the trade is not the enemy — it is the middle. The honest agent fills what the portal asks, scans what must be scanned, and charges a fee you agreed at the counter before the work began. Sit where you can see the screen. Read every field aloud as it is filled, because a person typing at speed can transpose a digit in your NIN or a date on your birth certificate without malice. Pay the fee, take the receipt, keep the slip. The agent's value is the queue he saves you — nothing more, and nothing less.",
       ),
       p(
-        "The dishonest agent has three tells and they never change. He wants the PIN of your card or your bank app instead of naira at the counter. He wants to keep your phone or your SIM beyond the sitting. Or he promises a result the portal does not sell — an upgraded result, a fresh age, a backdated document. Any one of these and you stand up, gather your papers, and walk to the next stall. The portal will still be there tomorrow, patient and slow. Every form you fill yourself with your own eyes is one less story you have to trust. The queue is visible now. Join it in your own name.",
+        "The dishonest agent has three tells, and they never change. He wants the PIN of your card or your bank app instead of naira at the counter. He wants to keep your phone or your SIM beyond the sitting. Or he promises a result the portal does not sell — an upgraded result, a fresh age, a backdated document. Any one of these and you stand up, gather your papers, and walk to the next stall.",
       ),
       h2("The queue you can see"),
       p(
@@ -6840,10 +6843,10 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A phone screen showing several apps about to be uninstalled.",
     body: [
       p(
-        "The house you live in grew drawers, and the drawers filled. The digital life does the same, more quietly: apps tried once and left installed, subscriptions charging since last year for a thing used twice, permissions granted in a hurry to games that wanted the microphone, a gallery of nine thousand photographs among which live perhaps three hundred that matter. Nothing collapses. It only gets heavier, and slower, and full of doors you forgot you owned. Once a year, open the drawers. Pick a date with a handle — your birthday week works — and sweep.",
+        "Uche's phone told him the truth one Tuesday: storage three percent free. He had not noticed the filling, because digital houses grow drawers in the dark. Apps tried once and left installed. Subscriptions charging since last year for a thing used twice. Permissions granted in a hurry to a game that wanted the microphone. Nine thousand photographs among which lived perhaps three hundred that mattered. Nothing had collapsed — everything had simply become heavier, slower, and full of doors he forgot he owned. Once a year, then, open the drawers. Pick a date with a handle — your birthday week works — and sweep.",
       ),
       p(
-        "The apps first: delete, do not merely tidy the icons. An unused app is a door left unlocked and a small tenant eating your data with updates — you learned the difference between installing and keeping a long time ago. Then the subscriptions, because they are the leaky roof of this house: the phone keeps the list — settings, subscriptions — every monthly charge since the week you forgot. Read it once a year and cut with joy. Two thousand naira a month, unnoticed, is a bag of rice over a year.",
+        "The apps first: delete, do not merely tidy the icons. An unused app is a door left unlocked and a small tenant eating your data with updates — you learned the difference between installing and keeping a long time ago. Then the subscriptions, because they are the leaky roof of this house. The phone keeps the list: settings, subscriptions, every monthly charge since the week you forgot. Read it once a year and cut with joy. Two thousand naira a month, unnoticed, is a bag of rice over a year. Do you know, right now, what left your account last month on a schedule? ... The list knows. That is why it frightens people.",
       ),
       fig(
         "/images/blog/uninstall-apps.jpg",
@@ -6855,7 +6858,7 @@ export const blogPosts: BlogPost[] = [
         "Permissions next, walking the list the permissions lesson taught: the torch that wanted your contacts, the game that wanted the microphone — revoke without ceremony; the phone will not sulk, and neither will the torch. Then old accounts: the shop you bought from once, the forum from years ago. Sign out where the settings offer it, close what can be closed, and for the rest, change the password to something from the notebook — an old account on an old key is a window that floats open on its own.",
       ),
       p(
-        "The gallery last, and always in this order: backup first — the cloud lesson, the papers lesson, photographs being the papers of the heart — then delete with both hands. The screenshots of last year's transfers, the seventeen blurred versions of the same moment, the bundles from group chats. Downloads too: the mat, emptied the way lesson forty-eight emptied it. Then the storage bar, which is the house's own report card, and the empty Bin, which is the last drawer. Back up, then sweep. Never the reverse.",
+        "The gallery last, and always in this order: backup first — the cloud lesson, the papers lesson, photographs being the papers of the heart — then delete with both hands. The screenshots of last year's transfers, the seventeen blurred versions of the same moment, the bundles from group chats. Downloads too: the mat, emptied the way the Downloads lesson empties it. Then the storage bar, which is the house's own report card, and the empty Bin, which is the last drawer. Back up, then sweep. Never the reverse. It looks like caution is slow. It is actually the only speed that keeps the pictures of your mother.",
       ),
       fig(
         "/images/blog/subscriptions-list.jpg",
@@ -6870,14 +6873,10 @@ export const blogPosts: BlogPost[] = [
       ]),
       h2("The date that comes back every year"),
       p(
-        "A yearly clean needs a yearly date or it becomes a good intention. Tie it to a day the calendar already carries — the first Saturday of your birthday month, the week the rent is paid, the evening after the JAMB form is submitted — and set the reminder now, repeating every year, in the calendar you rescued earlier. The alarm will do the remembering. You will do the twenty-minute walk: the apps list with the uninstall key in hand, the subscriptions list with the cancel button, the permissions screen, the gallery crowd, the passwords that changed and the notebook that must know it. Twenty minutes, once a year, against a house that quietly fills.",
+        "A yearly clean needs a yearly date or it becomes a good intention. Tie it to a day the calendar already carries — the first Saturday of your birthday month, the week the rent is paid, the evening after the JAMB form is submitted — and set the reminder now, repeating every year, in the calendar you rescued earlier. The alarm will do the remembering; you will do the twenty-minute walk: the apps list with the uninstall key in hand, the subscriptions list with the cancel button, the permissions screen, the gallery crowd, the passwords that changed and the notebook that must know it.",
       ),
       p(
-        "Keep the ritual small and it survives. One room a weekend for a month is a fine pace if the evening is busy — apps this week, subscriptions next, the gallery after. What matters is the date and the walk, not the ceremony. The lightness afterwards is real and immediate: the phone with room to update, the bank app that opens without the queue of forty forgotten logins behind it, the drawer with only the keys you still use. A house does not clean itself because you bought new furniture. It cleans because one evening a year, you walk through it with the bin bag in your hand.",
-      ),
-      h2("The lightness afterwards"),
-      p(
-        "People report the same two things after a clean: the phone is faster, and the mind is quieter — the slow computer lesson said a slow machine is often a full house, and the same is true of the person carrying it. The sweep takes one evening. The lightness lasts the year. And the notebook, updated during the sweep — every kept account, every new key — remains what it has always been: the key rack of the whole house, hanging by the door of the drawer.",
+        "Keep the ritual small and it survives. One room a weekend for a month is a fine pace if the evening is busy — apps this week, subscriptions next, the gallery after. What matters is the date and the walk, not the ceremony. And the lightness afterwards is real: the phone with room to update, the bank app that opens without the queue of forty forgotten logins behind it, the drawer with only the keys you still use. A house does not clean itself because you bought new furniture. It cleans because one evening a year, you walk through it with the bin bag in your hand.",
       ),
     ],
   },
@@ -7851,10 +7850,13 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A printed portfolio of project pages spread across a table beside a laptop.",
     body: [
       p(
-        "Every trade this chapter opened — analyst, designer, developer, support, manager, writer of apps — ends at the same door, and the door does not ask for certificates. It asks: show me. The portfolio is the small body of evidence that you did the thing, for somebody, and that it worked. A CV says you can. A portfolio shows you did. The client decides between those two sentences in one glance, which is why this last lesson of the chapter is the one that turns skills into a living — and why it is astonishing how many people spend years collecting skills and one afternoon building proof.",
+        "Ifeoma had done the free job in July — the church secretary's attendance sheet, rebuilt so it added itself — and in September a small logistics company on the Awka road asked her, through that same secretary, to come and show what she could do. She arrived with her certificates in a neat envelope. The office manager glanced at the envelope and asked the only question that mattered: “show me.” The door does not ask for certificates. It asks for proof, and this lesson is how to build the small body of evidence that opens it — the last and most valuable lesson of every trade in this chapter.",
       ),
       p(
-        "What counts as proof is broader than you fear. The finished thing itself — the site, live at its address; the flyer, printed and photographed in the shop; the dashboard, screenshotted with permission; the books, reconciled to the naira. The before and after — the shop that had no page and now does; the queue that took hours and now takes minutes; numbers where you have them, and honest description where you do not. The witness — one line from the church secretary, the shop owner, the relation whose site you built: she said, she did, it worked. Three to five pieces, each with its before, its after, and its witness, outweigh any stack of certificates — and every single one of them is buildable within a month from where you sit, because the free-job road was already marked: the church, the relation's shop, the neighbour's school. The portfolio is not a later reward. It is the next month's assignment.",
+        "What counts as proof is broader than you fear. The finished thing itself: the site, live at its address; the flyer, printed and photographed in the shop; the dashboard, screenshotted with permission; the books, reconciled to the naira. The before and after: the shop that had no page and now does; the queue that took hours and now takes minutes; numbers where you have them, and honest description where you do not. And the witness: one line from the church secretary, the shop owner, the relation whose site you built — she said, she did, it worked. A CV says you can. A portfolio shows you did. The client decides between those two sentences in one glance.",
+      ),
+      p(
+        "And here is the good news hiding under the fear: three to five pieces, each with its before, its after, and its witness, outweigh any stack of certificates — and every single one is buildable within a month from where you sit. The free-job road was already marked: the church, the relation's shop, the neighbour's school. Sit with that a moment. The portfolio is not a later reward for being experienced. It is next month's assignment. What is the first free job already sitting at the edge of your own compound? ... It has been sitting there all year, waiting to be used honestly.",
       ),
       fig(
         "/images/blog/portfolio-printed-works.jpg",
@@ -7863,10 +7865,10 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("Where it lives, and how it is shown"),
       p(
-        "Keep it in two houses. The folder: Drive, named, ordered, holding every deliverable and every witness line — the papers lesson applied to your work, safe above the flood, openable in any café on earth. And the page: one clean site — your name, one sentence saying what you do for whom, the three to five pieces with their pictures and their witnesses, and one obvious way to reach you. The frontend lesson's three layers, one page, no more; the profile lesson's front door, now with the workshop visible through the window. When an opportunity appears, you do not scramble: you send the page, or walk in with the printed table, and the conversation starts from what you did instead of what you claim.",
+        "Keep it in two houses. The folder: Drive, named, ordered, holding every deliverable and every witness line — the papers lesson applied to your work, safe above the flood, openable in any café on earth. And the page: one clean site — your name, one sentence saying what you do for whom, the three to five pieces with their pictures and their witnesses, and one obvious way to reach you. The frontend lesson's three layers, one page, no more; the profile lesson's front door, now with the workshop visible through the window. When an opportunity appears you do not scramble — you send the page, or walk in with the printed table, and the conversation starts from what you did instead of what you claim.",
       ),
       p(
-        "Then the rhythm that keeps it alive: every finished job, however small, enters the folder within a week — the screenshot taken, the witness line requested while gratitude is still warm, the before remembered and recorded. Retire the weakest piece each time a stronger one arrives; three sharp proofs beat five tired ones. And read your own portfolio the way the clients do, once a season: does this table say what I do, to whom, and does it make a stranger believe me in one glance? When the answer is yes, you have crossed the bridge this whole chapter was building — from person who learned, to person who is hired. The shelf taught you to sit at the machine without fear. The portfolio is how the world finds out.",
+        "Then the rhythm that keeps it alive. Every finished job, however small, enters the folder within a week: the screenshot taken, the witness line requested while gratitude is still warm, the before remembered and recorded. Retire the weakest piece each time a stronger one arrives — three sharp proofs beat five tired ones. And read your own portfolio the way the clients do, once a season: does this table say what I do, to whom — and does it make a stranger believe me in one glance?",
       ),
       fig(
         "/images/blog/work-folder-drive.jpg",
@@ -8390,10 +8392,10 @@ export const blogPosts: BlogPost[] = [
       "A young person checking an exam result on a phone at a table, pen and scratch card nearby.",
     body: [
       p(
-        "Three letters rule results season in this country: WAEC, NECO, JAMB. The results no longer wait in long queues or notice boards — they live on portals, behind a token or a PIN, and the person who can check a result calmly, correctly and cheaply has a small superpower every July and August. This lesson is that superpower, and the one trap that hunts it every single year.",
+        "Three letters rule results season in this country: WAEC, NECO, JAMB. Ezenwa's phone knew before he did — the group chat erupted at ten past nine with screenshots of the portal — while he sat calm, because his cousin had taught him the whole procedure in one sitting the year before. The results no longer wait in long queues or on notice boards; they live on portals, behind a token or a PIN, and the person who can check a result calmly, correctly, and cheaply has a small superpower every July and August. This lesson is that superpower, and the one trap that hunts it every single year.",
       ),
       p(
-        "The pattern is the same on every board's portal, so learn it once: go to the official address — the board's own site, typed yourself or reached from its verified page, the government-portals lesson's law — buy or already hold your checker token or PIN, enter your exam number exactly as it sits on your photo card, choose your exam year, and submit. The exam number is the whole exam's identity; one swapped digit returns somebody else's silence or somebody else's shame. Type it slowly, twice, from the card itself — not from memory, not from a cousin's WhatsApp message. Then the slip: screenshot it, and download or print the proper PDF into the Papers folder in Drive where the certificates live. A result that exists only in a gallery is one stolen phone from becoming a rumour.",
+        "The pattern is the same on every board's portal, so learn it once. Go to the official address — the board's own site, typed yourself or reached from its verified page, the government-portals lesson's law. Buy or already hold your checker token or PIN. Enter your exam number exactly as it sits on your photo card, choose your exam year, and submit. The exam number is the whole exam's identity: one swapped digit returns somebody else's silence or somebody else's shame. Type it slowly, twice, from the card itself — not from memory, not from a cousin's WhatsApp message. Then keep the slip: screenshot it, and download or print the proper PDF into the Papers folder in Drive where the certificates live. A result that exists only in a gallery is one stolen phone from becoming a rumour.",
       ),
       fig(
         "/images/blog/results-portal-phone.jpg",
@@ -8402,10 +8404,13 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("Admissions, and the trap"),
       p(
-        "For admissions, the portal is also the truth: JAMB's CAPS shows an admission the moment it is offered, and accepting it there — on the portal, in your own account — is what makes it real. Check with your registration number, at your pace, yourself. Which brings the season's professional liar: the result upgrader. Somebody in a comment section or a quiet DM says they can upgrade a 4 to a 5, change a course, unlock a withheld result — for a fee, quietly, today only. Hold it beside the shelf's oldest tells: hurry, secrecy, fee, and now a fourth — a stranger claiming power over an institution's records. No upgrader has ever touched a board's database. They harvest the fee and the hope, and the candidate discovers both facts at the same painful printout. Results are appealed through the board's own processes, in writing, at its own offices — never through a helper with a data plan.",
+        "For admissions, the portal is also the truth. JAMB's CAPS shows an admission the moment it is offered, and accepting it there — on the portal, in your own account — is what makes it real. Check with your registration number, at your pace, yourself. Nobody accepts an admission for you and remains your friend.",
       ),
       p(
-        "Parents and guardians: the same lesson, taught sideways. Do not outsource the checking to a café stranger who then holds the candidate's numbers and photos hostage to extort a gratitude fee. Sit with the candidate, type the number together, save the slip together. The café earns honestly when it provides the printer and the light — the account, the numbers and the checking remain the family's.",
+        "Which brings the season's professional liar: the result upgrader. Somebody in a comment section or a quiet DM says they can upgrade a 4 to a 5, change a course, unlock a withheld result — for a fee, quietly, today only. It looks like a favour from a connected person. It is a harvest. Hold it beside the shelf's oldest tells: hurry, secrecy, fee — and now a fourth: a stranger claiming power over an institution's records. No upgrader has ever touched a board's database. They collect the fee and the hope, and the candidate discovers both facts at the same painful printout. One retrieval, since this is the season for passing tests: what would an upgrader need to actually upgrade a result? ... Write access to the board's own records — which no stranger has, ever. Results are appealed through the board's own processes, in writing, at its own offices. Never through a helper with a data plan.",
+      ),
+      p(
+        "Parents and guardians: the same lesson, taught sideways. Do not outsource the checking to a café stranger who then holds the candidate's numbers and photographs hostage to extort a gratitude fee. Sit with the candidate, type the number together, save the slip together. The café earns honestly when it provides the printer and the light — the account, the numbers, and the checking remain the family's.",
       ),
       fig(
         "/images/blog/result-slip-printed.jpg",
@@ -8414,13 +8419,13 @@ export const blogPosts: BlogPost[] = [
       ),
       ul([
         "Type the board's official address yourself; bookmark it. Adverts above the result are not the result.",
-        "Exam number from the original card, typed twice, slowly. Then slip: screenshot, PDF, Papers folder.",
+        "Exam number from the original card, typed twice, slowly. Then the slip: screenshot, PDF, Papers folder.",
         "Admissions are accepted on the portal itself, in your own account. CAPS is the truth; screenshots of CAPS are not.",
         "Nobody can upgrade a result. The fee is the product. Appeals go to the board, in writing, in person.",
       ]),
       h2("The season, handled"),
       p(
-        "Results season rewards exactly what this shelf has taught all along: the real address, the careful typing, the slip kept, the hurry refused. A family that can check its own results, accept its own admission and file its own slips has retired one of the season's oldest taxes — paid to queues, to cafés, and to liars. The next lesson stays at the family table, where the phones are smaller and the stakes are the children.",
+        "Results season rewards exactly what this shelf has taught all along: the real address, the careful typing, the slip kept, the hurry refused. A family that can check its own results, accept its own admission, and file its own slips has retired one of the season's oldest taxes — paid to queues, to cafés, and to liars. The next lesson stays at the family table, where the phones are smaller and the stakes are the children.",
       ),
     ],
   },
@@ -8926,10 +8931,10 @@ export const blogPosts: BlogPost[] = [
       "A phone screen showing a list of small deduction text messages, held by a frowning owner.",
     body: [
       p(
-        "Load two thousand naira of airtime on Sunday, and by Wednesday the balance is a rumour. You made three calls. The rest leaked — fifty naira to a ringback tune you never chose, twenty naira a day to a news service that arrived as a quiz, a weekly bundle that renewed itself like rent, a game you do not remember opening. The networks call these value-added services. The street calls them what they are: the quiet deductions, the smallest recurring scam in the country that is also, annoyingly, mostly legal — because somewhere in a long message you did not finish reading, a door was opened and left that way.",
+        "Mama Chinedu loaded two thousand naira of airtime on Sunday, and by Wednesday the balance was a rumour. She had made three calls. The rest leaked — fifty naira to a ringback tune she never chose, twenty naira a day to a news service that arrived as a quiz, a weekly bundle renewing itself like rent, a game nobody remembers opening. The networks call these value-added services. The street calls them what they are: the quiet deductions, the smallest recurring scam in the country — and the annoying part is that most of them are legal, because somewhere in a long message she did not finish reading, a door was opened and left that way. This lesson is how to see the doors, close them, and refuse the man who pretends to sell the key to your own house.",
       ),
       p(
-        "Doors open in three ordinary ways. The reply: you answered a promo text with a number — one, to claim; the fine print made it a yes to a daily subscription. The link: a message promised a bundle and the page you opened had an accept button wearing a costume. And the code: a forward said dial this to win, and the forward was a subscription wearing confetti. None of these feel like signing a contract. All of them are. Which is why the first skill is not stopping — it is seeing. Check the balance on a fixed day, the books lesson's habit applied to airtime: before, after, and the difference is the story. Then ask the line what it is carrying — every network has a way to list active services, and the honest list lives in the network's own app or portal, the same source law as the bank's code. What you find there usually explains the leak by name.",
+        "Doors open in three ordinary ways. The reply: you answered a promo text with a number — one, to claim — and the fine print made it a yes to a daily subscription. The link: a message promised a bundle, and the page you opened had an accept button wearing a costume. And the code: a forward said dial this to win, and the forward was a subscription wearing confetti. None of these feel like signing a contract. All of them are. Which is why the first skill is not stopping — it is seeing. Check the balance on a fixed day, the books lesson's habit applied to airtime: before, after, and the difference is the story. Then ask the line what it is carrying: every network has a way to list active services in its own app or portal, the same source law as the bank's code. What you find there usually explains the leak by name.",
       ),
       fig(
         "/images/blog/data-deduction-message.jpg",
@@ -8943,7 +8948,10 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("Closing the doors, and the fake exits"),
       p(
-        "Stopping is satisfying and mostly easy: in the network's own app or portal, the active services sit in plain view, each with a switch or an unsubscribe — turn everything off that you did not choose on purpose, yesterday. Some services end with a simple text to a short code; the exact word and number come from the network's own pages, never from a forward. And here the fraudsters wait, because they know the country is angry about deductions: a text arrives — your line will be deducted massively, press one to unsubscribe now. Pressing one is not unsubscribing. Pressing one is confirming your line is alive and gullible, and the deductions learn your address. The opt-out comes from the source or it does not happen. Then lock the doors behind you: do not reply to promo messages at all, even to refuse — a reply is a pulse that tells the collector the line is home. Do not dial codes from broadcasts. And turn on the full do-not-disturb — the same switch that gave you quiet in lesson ninety-three also refuses the promo messages at the gate, which is the quietest victory of all.",
+        "Stopping is satisfying and mostly easy. In the network's own app or portal, the active services sit in plain view, each with a switch or an unsubscribe — turn off everything you did not choose on purpose, yesterday. Some services end with a simple text to a short code; the exact word and number come from the network's own pages, never from a forward.",
+      ),
+      p(
+        "And here the fraudsters wait, because they know the country is angry about deductions. A text arrives: your line will be deducted massively — press one to unsubscribe now. Pressing one is not unsubscribing. It looks like the exit; it is the entrance. Pressing one confirms your line is alive and gullible, and the deductions learn your address. Where does a real opt-out live? ... In the source — the app, the portal, the network's own pages. If it did not come from the source, it does not happen. Then lock the doors behind you: do not reply to promo messages at all, even to refuse — a reply is a pulse that tells the collector the line is home. Do not dial codes from broadcasts. And turn on the full do-not-disturb: the same switch that gave you quiet in the notifications lesson also refuses the promo messages at the gate, which is the quietest victory of all.",
       ),
       p(
         "One more leak deserves its own sentence: the airtime-to-data conversions and the borrow-me services. Borrowed airtime and borrowed data charge back with interest the day you recharge, and a line that borrows monthly is paying a quiet tax. Use them in true emergencies, and watch the claw-back on the next recharge so it does not surprise a budget. The line, like the account, deserves the monthly hour of the books: one balance, one list, one honest purge. Two thousand naira of airtime should make calls for a month. On a clean line, it does.",
@@ -9085,10 +9093,10 @@ export const blogPosts: BlogPost[] = [
       "A phone charging from a power bank on a table at night, a small lamp glowing beside it.",
     body: [
       p(
-        "The light went at seven and the house exhaled — spoons paused, conversations leaned closer, and in the corner the phone kept working because a small brick in its cable was paying its way. The power bank is the true national companion of this era: it attends weddings, classrooms, markets and hospital corridors, and it asks so little that most people never learn anything about it. This lesson is the learning, because the little brick can serve you faithfully for years or misbehave expensively, and the difference is a few boring facts.",
+        "The light went at seven and the house exhaled — spoons paused, conversations leaned closer, and in the corner the phone kept working because a small brick in its cable was paying its way. The power bank is the true national companion of this era: it attends weddings, classrooms, markets, and hospital corridors, and it asks so little that most people never learn anything about it. This lesson is the learning, because the little brick can serve you faithfully for years or misbehave expensively, and the difference is a few boring facts told before the trouble.",
       ),
       p(
-        "Choosing one, honestly. Capacity is printed in milliamp-hours, and the honest arithmetic is roughly this: a ten-thousand bank refills a normal phone about two times, a twenty-thousand about four — everything promising to change those numbers with a flashlight function is lying on the box. The honest brands cost a little more and weigh what they claim; the suspicious ones weigh like air and promise like lottery. Read the printed output too: two ampere charges a phone at a decent pace, one ampere charges it overnight and then some. And the cable counts — the fine cable that came free with a charger is often the reason a bank seems weak. Then the habits, and the first is the one that saves houses: a swollen power bank — the case bulging like a well-fed rat — is finished, whatever the age, whatever the price. It does not get kept in a drawer for emergencies. It gets retired, taken to a repair shop or collection point, and replaced. A swollen battery is a small fire sleeping in your bag, and the bag rides in the sun all day.",
+        "Choosing one, honestly. Capacity is printed in milliamp-hours, and the honest arithmetic is roughly this: a ten-thousand bank refills a normal phone about two times, a twenty-thousand about four — everything promising to change those numbers with a flashlight function is lying on the box. The honest brands cost a little more and weigh what they claim; the suspicious ones weigh like air and promise like a lottery. Read the printed output too: two amperes charges a phone at a decent pace, one ampere charges it overnight and then some. And the cable counts — the fine cable that came free with a charger is often the reason a strong bank seems weak. Then the first habit, the one that saves houses: a swollen power bank — the case bulging like a well-fed rat — is finished, whatever the age, whatever the price. It does not get kept in a drawer for emergencies. It gets retired today. A swollen battery is a small fire sleeping in your bag, and the bag rides in the sun all day.",
       ),
       fig(
         "/images/blog/power-bank-charging.jpg",
@@ -9097,10 +9105,13 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("Hard ground, and the seconds after the light"),
       p(
-        "Charging lives by two placements. The power bank charges itself on a hard surface — table, stool, the floor of the parlour — never under a pillow, never inside a bag while it works, never under the mattress where somebody read that phones charge faster. Batteries breathe heat while they charge, and the phone's own warning about charging on soft beds in lesson forty-one applies to the brick twice over. And the phone charges from the bank away from fuel, candles and the cooking gas — the combination is rarer than you think and exactly as expensive as you fear. Then the surge, which is the part of the lesson that decides the life of the computer: the moment the light returns, the wires carry a first breath of power that is often dirty and sometimes fierce, and the machines that were plugged in during the outage eat that breath first. So the house rule: when the light goes, unplug the valuable things — the computer, the television, the metered fridge if you can reach it — and plug them back a minute after the light settles, fans first, valuables after. A surge strip for the computer desk costs little and absorbs the ordinary bites; it is the umbrella of this road, and like umbrellas it only helps if it was arranged before the rain.",
+        "Charging lives by two placements. The power bank charges itself on a hard surface — table, stool, the floor of the parlour — never under a pillow, never inside a bag while it works, never under the mattress where somebody read that phones charge faster. Batteries breathe heat while they charge, and the soft-bed rule from the charging lesson applies to the brick twice over. And the phone charges from the bank away from fuel, candles, and the cooking gas — the combination is rarer than you think and exactly as expensive as you fear.",
       ),
       p(
-        "The generator changeover deserves its sentence: the machines of the desk — the computer, the router — are either off during the changeover or sitting behind the small UPS from the remote-work lesson, which carries them across the gap without a stammer. And the phones: they forgive surges better than computers, but they do not forgive the market's charging kiosk as much as the queue assumes — a shared charging cable is a shared road, and lesson forty-three's rule about other people's computers applies, gently, to other people's plugs. Charge at home where the house knows your habits, use the kiosk for minutes in true need, and keep the little brick on your side of the bargain: charged on hard ground, retired when it swells, believed when it warms but never when it bulges.",
+        "Then the surge, which is the part of the lesson that decides the life of the computer. The moment the light returns, the wires carry a first breath of power that is often dirty and sometimes fierce, and the machines that stayed plugged in during the outage eat that breath first. So the house rule: when the light goes, unplug the valuable things — the computer, the television, the fridge if you can reach it — and plug them back a minute after the light settles, fans first, valuables after. One question while the room is still dark: the light just returned and you are holding the computer's plug. Do you push it in now or after the minute? ... After. The minute is free; the motherboard is not.",
+      ),
+      p(
+        "The generator changeover deserves its sentence: the machines of the desk — the computer, the router — are either off during the changeover or sitting behind the small UPS from the remote-work lesson, which carries them across the gap without a stammer. And the market's charging kiosk deserves its warning: a shared charging cable is a shared road, and the rule about other people's computers applies, gently, to other people's plugs. Charge at home where the house knows your habits; use the kiosk for minutes in true need. A surge strip for the computer desk costs little and absorbs the ordinary bites — it is the umbrella of this road, and like umbrellas it only helps if it was arranged before the rain.",
       ),
       fig(
         "/images/blog/shared-charging-kiosk.jpg",
@@ -9120,7 +9131,7 @@ export const blogPosts: BlogPost[] = [
       ]),
       h2("The grid and the guest"),
       p(
-        "The grid will keep its moods, and the machines will keep their appetites; the household that prospers between the two is the one that arranged its bricks, its strips and its one-minute rule in a quiet week. Power, like money and data, obeys the oldest law of this shelf: what is arranged in daylight does not panic at night. The next lesson takes the same arranging instinct to the wall box in the corridor that beeps when it is hungry — the prepaid meter, and the tokens that feed it.",
+        "The grid will keep its moods and the machines will keep their appetites; the household that prospers between the two is the one that arranged its bricks, its strips, and its one-minute rule in a quiet week. Power, like money and data, obeys the oldest law of this shelf: what is arranged in daylight does not panic at night. The next lesson takes the same arranging instinct to the wall box in the corridor that beeps when it is hungry — the prepaid meter, and the tokens that feed it.",
       ),
     ],
   },
@@ -9879,19 +9890,19 @@ export const blogPosts: BlogPost[] = [
       "A repair shop job card receipt listing the exact serial number, existing scratches, and agreed diagnostic fee.",
     body: [
       p(
-        "There comes a day when the soldering iron, the microscope, or the broken screen hinge requires tools and skills that do not exist on your kitchen table. You must carry your laptop to a commercial repair workshop in town. For most people, this is a moment of deep suspicion and fear. Everyone has heard the stories from friends: 'I took my laptop to fix a charging port, and when I went back three days later, my original high-capacity battery had been swapped for a dead one, my eight gigabytes of RAM had become four, and the boy had copied all my private family pictures onto his phone!' These things happen, but they only happen to clients who arrive without protocol.",
+        "Kelechi had heard the stories too — the battery swapped for a dead one, the eight gigabytes of RAM that came home as four, the family photographs copied onto a stranger's phone. So when his laptop's charging socket demanded tools that do not exist on a kitchen table, he arrived at the commercial workshop on Ibadan road with fear first and the machine second. An hour later he walked out with a receipt, a photograph of his serial number on his own phone, and a promise to collect in two days. The bench had not changed. He had. These things happen — but they mostly happen to clients who arrive without protocol. This lesson is the protocol.",
       ),
       p(
-        "An honest artisan loves a prepared client. When you walk into a workshop with clear boundaries and documentation, three things happen instantly: the engineer realizes you are not a novice to be cheated, careless hands treat your machine with respect, and both sides leave the transaction with trust and peace of mind. Here is the four-step protocol for visiting any repair bench.",
+        "Here is the good news the stories never carry: an honest artisan loves a prepared client. Walk into a workshop with clear boundaries and documentation, and three things happen instantly. The engineer sees you are not a novice to be cheated. Careless hands treat your machine with respect. And both sides leave the transaction with trust and peace of mind. It looks like suspicion would insult a good technician. Actually, the four steps below are a compliment to his trade — they are how professionals greet professionals, in every workshop on earth.",
       ),
       fig(
         "/images/blog/phone-photographing-laptop-serial.jpg",
         "A phone taking a sharp photo of the barcode and model sticker on the bottom of a laptop before handover.",
         "Photograph the belly before handing it over. Capture the serial number barcode, the exact model, and existing scratches in clear light.",
       ),
-      h2("The photo inventory and the password rule"),
+      h2("The password rule, and the photo inventory"),
       p(
-        "Rule one: never hand over your personal Windows login password for a physical repair! If a technician is fixing a broken hinge, replacing a cracked screen glass, or resoldering a loose charging socket, he needs electrical power and a screen test; he has zero professional reason to enter your personal Windows desktop, open your email, or browse your documents. If the computer still boots, create a temporary guest account named 'Test' with no password, and sign out of your own account. Better yet: if the repair is purely mechanical and your drive pops out easily, slide the SSD out and keep it safely in your pocket at home. A laptop can easily turn on to a test USB drive without your private life inside it.",
+        "Rule one, and it is a wall: never hand over your personal Windows login password for a physical repair. A technician fixing a broken hinge, replacing cracked screen glass, or resoldering a loose charging socket needs electrical power and a screen test — he has zero professional reason to enter your desktop, open your email, or browse your documents. If the computer still boots, create a temporary guest account named Test with no password, and sign out of your own account. Better yet: if the repair is purely mechanical and your drive pops out easily, slide the SSD out and keep it in your pocket at home. A laptop can boot to a test USB drive perfectly well without your private life inside it. Where would you look first to make the Test account? ... Settings, then Accounts, then Other users — the same door as the users from the first days.",
       ),
       fig(
         "/images/blog/workshop-receipt-serial-number.jpg",
@@ -9899,10 +9910,10 @@ export const blogPosts: BlogPost[] = [
         "The written job card. Ensure the serial number, battery model, and the exact reported fault are written on paper before you leave.",
       ),
       p(
-        "Rule two: the photographic inventory. Right on the repair counter in front of the engineer, set the laptop down, pull out your phone, and take four clear pictures: the white sticker on the belly showing the exact serial number (Service Tag or Serial No), the screen turned on showing the glass has no cracks, and any existing scratches on the body. Then open Windows Settings > System > About, and snap a picture of the installed RAM and storage size. When the technician sees you systematically documenting every component right before his eyes, any temptation for an apprentice to swap your good parts vanishes into thin air.",
+        "Rule two: the photographic inventory. Right on the repair counter in front of the engineer, set the laptop down, pull out your phone, and take four clear pictures: the white sticker on the belly showing the exact serial number (Service Tag or Serial No), the screen turned on showing the glass unbroken, any existing scratches on the body, and Settings > System > About with the installed RAM and storage size. When the technician watches you document every component before his eyes, any temptation for an apprentice to swap your good parts vanishes into thin air. The photograph is not for the court. It is for the conversation — the cheapest insurance in this entire trade.",
       ),
       p(
-        "Rule three: the agreed diagnostic bound. Insist on a written paper receipt or job card that states your serial number, the exact reported fault ('charges intermittently when wire is bent'), and the diagnosis fee. State plainly: 'Diagnose the fault and call me with the quote before you replace any part.' And finally, the cardinal law of collection: always ask for the old damaged part back in your hand! If the technician tells you he replaced a burnt charging chip, a dead battery, or a bad keyboard, ask for the old damaged piece in a small nylon bag. An honest engineer hands it over with a smile because it proves he actually did the work; an opportunist who heated a loose solder joint with a lighter will start stammering.",
+        "Rule three: the agreed diagnostic bound. Insist on a written receipt or job card that states your serial number, the exact reported fault (“charges intermittently when wire is bent”), and the diagnosis fee. Say it plainly: Diagnose the fault and call me with the quote before you replace any part. And the cardinal law of collection: always ask for the old damaged part back in your hand. If he replaced a burnt charging chip, a dead battery, or a bad keyboard, the old piece comes home with you in a small nylon bag. An honest engineer hands it over with a smile, because it proves he did the work; an opportunist who heated a loose solder joint will start stammering. One retrieval before the checklist: why does the old part matter more than the new one? ... Because the new one is a claim, and the old one is evidence.",
       ),
       fig(
         "/images/blog/old-faulty-part-returned.jpg",
@@ -9911,13 +9922,13 @@ export const blogPosts: BlogPost[] = [
       ),
       ul([
         "Never hand over your personal Windows password: create a clean test account or pull out your storage drive for physical repairs.",
-        "Photograph the serial number sticker, the casing condition, and your RAM/storage specs on the counter in front of the engineer.",
-        "Insist on a written paper receipt specifying your serial number and the agreed diagnostic fee before leaving the shop.",
+        "Photograph the serial number sticker, the casing condition, and your RAM and storage specs on the counter in front of the engineer.",
+        "Insist on a written receipt specifying your serial number and the agreed diagnostic fee before leaving the shop.",
         "Always demand your old replaced parts returned to you in a small bag upon collection.",
       ]),
       h2("Professional dignity"),
       p(
-        "A good repair engineer is one of the most valuable artisans in any community. Treat him with respect, pay his diagnostic fee honestly, but arrive with your documentation intact. When both sides follow clear boundaries, machines are repaired properly, relationships endure, and your computer comes home healthy and whole. Next: the ten-year machine — how to step off the endless upgrade treadmill.",
+        "A good repair engineer is one of the most valuable artisans in any community. Treat him with respect, pay his diagnostic fee honestly, and arrive with your documentation intact — the same professional courtesy his craft shows your machine. When both sides follow clear boundaries, machines are repaired properly, relationships endure, and your computer comes home healthy and whole. Next: the ten-year machine — how to step off the endless upgrade treadmill.",
       ),
     ],
   },
@@ -9935,19 +9946,19 @@ export const blogPosts: BlogPost[] = [
       "A ten-year-old classic black laptop working quietly on a neat wooden desk next to a notebook and mug.",
     body: [
       p(
-        "Every television commercial, social media advertisement, and technology billboard preaches the exact same gospel of rapid obsolescence: your three-year-old laptop is hopelessly outdated, its borders are too thick, its processor lacks the newest artificial intelligence chip, and your life will only begin when you spend seven hundred thousand naira on this season's paper-thin model. But if you walk into the quiet back rooms of experienced programmers, network engineers, writers, and university researchers, you will see something completely different. Sitting on their wooden desks are sturdy black ThinkPads, thick aluminum HP EliteBooks, and business Latitudes built in 2015 and 2016, humming quietly, typing books, running spreadsheets, and making honest money every single day.",
+        "Engineer Bola's ThinkPad is from 2015. It has typed two books, kept the books of a school in Surulere, and survived a tea bath on a Tuesday afternoon. Every television commercial and billboard preaches the opposite gospel: your three-year-old laptop is hopelessly outdated, its borders too thick, its processor missing this season's artificial intelligence chip, and your life will only begin when you spend seven hundred thousand naira on a paper-thin model. But walk into the quiet back rooms of experienced programmers, network engineers, writers, and university researchers, and you will see Bola's machine multiplied: sturdy black ThinkPads, thick aluminium HP EliteBooks, business Latitudes from 2015 and 2016, humming quietly, typing books, running spreadsheets, and making honest money today. This lesson is why they are right — and the three disciplines that make a machine last a decade.",
       ),
       p(
-        "A computer is not a yam that rots in the cupboard; it is a durable instrument made of copper, silicon, glass, and steel. Except for chemical battery cells that wear out from charging and moving mechanical fans that gather dust, silicon computer chips do not decay with time. A processor made ten years ago can calculate arithmetic today just as accurately and quickly as the day it left the assembly line. If a computer is kept cool, protected from violent electrical voltage surges, cleared of dust, and given an honest solid-state drive, it can write letters, process accounting books, browse the web, and manage databases for a decade or more without complaint.",
+        "Start with the truth underneath: a computer is not a yam that rots in the cupboard. It is a durable instrument made of copper, silicon, glass, and steel. Battery cells wear out from chemistry, fans gather dust — and that is nearly the whole list. Silicon chips do not age the way living things age. A processor made ten years ago calculates arithmetic today exactly as accurately as the day it left the assembly line. Keep a machine cool, protect it from voltage surges, clear the dust, give it an honest solid-state drive, and it will write letters, process accounting books, browse the web, and manage databases for a decade without complaint. It looks like the new machine is faster because time passed. Often it is faster because someone sold you the same speed twice.",
       ),
       fig(
         "/images/blog/old-thinkpad-working-bench.jpg",
         "A ten-year-old classic black laptop working quietly on a neat wooden desk next to a notebook and mug.",
         "A ten-year-old tool, working quietly. Dignity in maintenance: clean airways, fresh thermal paste, and an honest solid-state drive.",
       ),
-      h2("The eighty percent battery rule and the lightweight cure"),
+      h2("The eighty percent battery rule, and the lightweight cure"),
       p(
-        "The first pillar of the ten-year machine is protecting the battery. Modern laptop batteries suffer the most chemical stress when they are kept pinned at one hundred percent charge while plugged into the wall in a warm room. Most major laptop makers (like Lenovo, Dell, HP, and Asus) provide a free battery management setting that lets you set a charging limit — for example, 'Stop charging at 80%'. Capping your maximum charge at eighty percent reduces chemical swelling and heat stress, extending the lifespan of your battery from two short years to six or seven years.",
+        "The first pillar of the ten-year machine is protecting its battery. Modern laptop batteries suffer the most chemical stress while pinned at one hundred percent charge, plugged into the wall, in a warm room. Most major makers — Lenovo, Dell, HP, Asus — provide a free battery management setting with a charging limit: stop charging at eighty percent. Capping there reduces swelling and heat stress and stretches a battery's honest life from two years to six or seven. You have already met this idea from the other side: the power bank and the phone that stay cool live long. The rule simply moved desks.",
       ),
       fig(
         "/images/blog/battery-charge-threshold-setting.jpg",
@@ -9955,7 +9966,10 @@ export const blogPosts: BlogPost[] = [
         "The 80% charge threshold. Capping full charge stops battery swelling and keeps cells healthy for five years or more.",
       ),
       p(
-        "The second pillar is software minimalism. Modern bloated operating system updates and background advertisement trackers consume gigabytes of memory just to show you an empty desktop. If an older laptop with an older dual-core chip begins to struggle under the weight of heavy Windows updates, do not throw the machine into the trash! Install a clean, lightweight operating system like Linux Mint. On Linux Mint, an older laptop with four gigabytes of RAM boots in fifteen seconds, uses only 600 megabytes of memory at rest, opens Firefox and Google Chrome smoothly, types letters in LibreOffice, plays YouTube videos without stuttering, and is completely immune to common Windows viruses. A machine that was heading for the scrap heap becomes a fast, capable workstation for your child's schooling, your own writing, or a small shop's bookkeeping.",
+        "The second pillar is software minimalism. Bloated updates and background trackers consume gigabytes of memory just to show you an empty desktop. If an older dual-core machine begins to struggle under the weight of modern Windows, do not throw it into the trash. Install a clean, lightweight operating system: Linux Mint is the family-friendly door. On Linux Mint, an older laptop with four gigabytes of RAM boots in fifteen seconds, rests at six hundred megabytes of memory, opens Firefox and Chrome smoothly, types letters in LibreOffice, plays YouTube without stuttering, and shrugs at common Windows viruses. A machine heading for the scrap heap becomes a fast workstation for your child's schooling, your own writing, or a small shop's bookkeeping. One question before the checklist, because it is the whole philosophy: the machine is slow, so the shop says buy a new one. What would you check first? ... What the machine is being asked to carry. Weight first, age second — the lesson of the slow computer, wearing a longer coat.",
+      ),
+      p(
+        "And the third pillar is habits that cost nothing: dust the heatsink once a year, renew thermal paste every three years at any competent bench, and let the vents breathe. Cool silicon is long-lived silicon. The rest is the quiet argument against the billboard: ninety-five percent of everyday knowledge work needs nothing more than a good keyboard, a clear screen, and an SSD — and those can be added to the machine you already own.",
       ),
       fig(
         "/images/blog/lightweight-linux-desktop-screen.jpg",
@@ -9970,7 +9984,7 @@ export const blogPosts: BlogPost[] = [
       ]),
       h2("The bench closes, the tool endures"),
       p(
-        "One hundred and eighty lessons behind you. We began at the very first sitting: your fingers learning to rest gently on the home row keys, the mouse learning not to wander off the table, the mystery of the yellow folder, and your first honest email. We have walked through office documents, spreadsheets that balance money, phone security, networks, career paths, freelance clients, and now the workbench where physical machines are understood, diagnosed, and respected. The machine in front of you is no longer a strange, scary black box full of magic and fear. You know what lives inside its casing, you know what it eats, you know how it speaks, and you know how to defend it. Keep the machine clean and keep your head clear. The road does not end at the bench; it rises from it.",
+        "One hundred and eighty lessons behind you. You began at the very first sitting: fingers learning to rest gently on the home row keys, the mouse learning not to wander off the table, the mystery of the yellow folder, your first honest email. Since then: documents that look like documents, spreadsheets that balance money, phones that keep their secrets, networks, career paths, freelance clients, and now the bench where physical machines are understood, diagnosed, and respected. The machine in front of you is no longer a black box full of magic and fear. You know what lives inside its casing, what it eats, how it speaks, and how to defend it. Keep the machine clean and keep your head clear. The road does not end at the bench; it rises from it.",
       ),
     ],
   },

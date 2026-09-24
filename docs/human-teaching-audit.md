@@ -99,9 +99,10 @@ Per lesson, after reconstruction:
 | Pass 2 · batch 1 | Tier A rewrites (18 worst lessons, all eras) | **done** |
 | Pass 2 · batch 2 | Remaining 12 Tier-A lessons | **done — all 30 Tier-A reconstructed** |
 | Pass 2 · batch 3 | Next-worst by re-scan (197, 199, 182, 198, 41, 120, 189, 196, 150, 203) | **done — named people in every opening, 3+ questions and 1–2 misconception contrasts each** |
-| Pass 2 · batch 4 | Next-worst (113, 145, 159, 170, 173, 194, 195, 200, 206, 209) | **done — 50 lessons reconstructed total (all Tier-A + 20 Tier-B)** |
-| Pass 2 · batch 5+ | Remaining lessons by scan rank (160 to go: enrichment in place where prose is strong, reconstruction where the machine voice dominates) | next turns |
-| Figures | 57 new illustrations | 50 done, 7 to go (10/turn cap) |
+| Pass 2 · batch 4 | Next-worst (113, 145, 159, 170, 173, 194, 195, 200, 206, 209) | **done — the auction house & the long view** |
+| Pass 2 · batch 5 | Next-worst (11, 56, 115, 119, 140, 151, 162, 165, 179, 180) | **done — 60 lessons reconstructed total (all Tier-A + 30 Tier-B)** |
+| Pass 2 · batch 6+ | Remaining lessons by scan rank (150 to go: enrichment in place where prose is strong, reconstruction where the machine voice dominates) | next turns |
+| Figures | 57 new illustrations | **done — all 57 generated, all 439 refs resolve** |
 | Academy lectures | Same standard, session by session | after the notes |
 
 The standard at the end: a beginner should not feel *"I have read an article about computers."* They should feel *"I actually understand this now — I can picture it — and I think I can do it myself."*
