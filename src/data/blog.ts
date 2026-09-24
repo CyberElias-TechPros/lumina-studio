@@ -960,10 +960,10 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A small home Wi-Fi router on a wooden shelf, a laptop in the background.",
     body: [
       p(
-        "Wi‑Fi is a short radio conversation between a box in the house and the computer. The box is the router. The conversation is not the same thing as “the internet.” The internet is a pipe that arrives at that box — fibre, a SIM, a dish. Wi‑Fi is only the last few metres, through walls, to your laptop. When people say “the Wi‑Fi is down,” they often mean one of three different deaths. This lesson is how to tell them apart.",
+        "Obi's house had one complaint and three suspects. “The Wi-Fi is down,” the children would say — and what they meant, on different evenings, was: the router was dark, the internet pipe had died in the street, or the laptop had simply forgotten how to join. Wi-Fi is a short radio conversation between a box in the house and the computer. The box is the router. The conversation is not the same thing as “the internet” — the internet is a pipe that arrives at that box: fibre, a SIM, a dish. Wi-Fi is only the last few metres, through walls, to your laptop. This lesson is how to tell the three deaths apart.",
       ),
       p(
-        "The router usually lives near the door, on a fridge, or under the television. It has lights. Those lights are the first diagnostic, cheaper than a technician. Power light on means the box is awake. A light labelled WAN, Internet, or a globe means the pipe has arrived. Lights labelled WLAN or Wi‑Fi mean the radio is talking. If power is off, nothing else matters. If power is on and the internet light is off, the radio can still look busy while every website fails. That is a pipe problem, not a laptop problem.",
+        "The router usually lives near the door, on a fridge, or under the television. It has lights, and those lights are the first diagnostic — cheaper than a technician. Power light on means the box is awake. A light labelled WAN, Internet, or a globe means the pipe has arrived. Lights labelled WLAN or Wi-Fi mean the radio is talking. If power is off, nothing else matters. If power is on and the internet light is off, the radio can still look busy while every website fails — that is a pipe problem, not a laptop problem. Obi learned to read those lights standing up; it saved him two call-out fees in one rainy month.",
       ),
       fig(
         "/images/blog/wifi-router.jpg",
@@ -972,22 +972,15 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("Joining the house radio"),
       p(
-        "On Windows, click the fan-shaped icon near the clock, bottom-right. A list of names appears. Those names are neighbouring radios — yours, the shop downstairs, a phone someone is sharing. Click yours. Type the password from the sticker or from the person who pays the bill. Click Connect. A padlock on a name means it wants a key. An open name with no padlock is a stranger's door. Do not use café Wi‑Fi for the bank. You already know why.",
+        "On Windows, click the fan-shaped icon near the clock, bottom-right. A list of names appears — those names are neighbouring radios: yours, the shop downstairs, a phone someone is sharing. Click yours. Type the password from the sticker, or from the person who pays the bill. Click Connect. A padlock on a name means it wants a key; an open name with no padlock is a stranger's door, and you already know which doors strangers leave open.",
       ),
       p(
-        "The first time, Windows may ask “Is this a private network?” Private is home. Public is a shop. Private lets printers and folders see each other; public is ruder, which is what you want among strangers. On a Mac, the fan is top-right. Same list, same key. If the name is not in the list, you are too far from the box, the radio is off, or the name was changed and nobody told you.",
+        "The first time, Windows may ask whether this is a private or public network. Private is home; public is a shop. Private lets printers and folders see each other; public is ruder, which is exactly what you want among strangers. On a Mac the fan sits top-right — same list, same key. If the name is not in the list at all: you are too far from the box, the laptop's radio is off, or the name was changed and nobody told you. Quick check at the fan: one bar of signal and the name missing. Hardware, or distance? ... Distance, usually. Radios fade through walls long before they fail.",
       ),
       fig(
         "/images/blog/wifi-list.jpg",
         "A laptop screen showing a list of available Wi-Fi networks.",
         "Your house name should look like the sticker, not like “Free_Fibre_Login.” If two names are almost the same, the extra one is often a trap or a neighbour. Ask someone who lives here which is ours.",
-      ),
-      h2("When the fan is empty, or full of strangers"),
-      p(
-        "No list at all usually means the laptop's own radio is off. On many machines a function key with the same fan symbol, used with Fn, toggles it. A tiny physical switch on older laptops does the same. Airplane mode, borrowed from phones, also mutes Wi‑Fi. Turn it off. Then wait ten seconds. Radios are not instant.",
-      ),
-      p(
-        "Connected, but pages will not load: look at the router lights. Internet light dead — call the provider, or check the SIM in an LTE router, or the fibre box in the stairwell. Internet light alive — the problem may be DNS or a captive page. Open a new tab and type the provider's own site, or 1.1.1.1. If a login page appears (hotels, some estates), that page is the gate. Fill it. If nothing loads, restart the router: pull power, count to twenty, put it back. Restart the laptop only after that, and only if the box recovered and the laptop did not notice.",
       ),
       ul([
         "Find the router. Read the sticker. Write the network name and the key in the notebook.",
@@ -995,12 +988,19 @@ export const blogPosts: BlogPost[] = [
         "Open the browser and type cea.ng. If it loads, the pipe and the radio are both working.",
         "If it does not, look at the lights before you change any password.",
       ]),
-      h2("Sharing from a phone, and forgetting a network"),
+      h2("When the fan is empty, or full of strangers"),
       p(
-        "A phone can be a temporary router: hotspot, or tethering. That is useful when the house pipe is dead and you have data. It will eat the phone's battery and the bundle. Turn it off when the laptop is done. The hotspot name and password live in the phone's settings; they are not the house Wi‑Fi. Do not leave a hotspot named “Android” open without a key in a compound.",
+        "No list at all usually means the laptop's own radio is off. On many machines a function key with the same fan symbol — used with Fn — toggles it; a tiny physical switch on older laptops does the same; and airplane mode, borrowed from phones, also mutes Wi-Fi. Turn it back on, then wait ten seconds. Radios are not instant.",
       ),
       p(
-        "If you typed the house password wrong too many times, Forget the network — in the same fan list, under the name, Forget — then join again slowly. Caps Lock is the usual villain, as it was on the keyboard lesson. And if a shop ever “set up Wi‑Fi” for you, change the sticker password in the router's own page later, or ask someone who already knows that page. A key the shop still knows is a key you do not fully hold.",
+        "Connected, but pages will not load: look at the router lights again. Internet light dead — call the provider, or check the SIM in an LTE router, or the fibre box in the stairwell. Internet light alive — the trouble may be DNS or a captive page. Open a new tab and type the provider's own site, or 1.1.1.1. If a login page appears — hotels, some estates — that page is the gate; fill it. If nothing loads at all, restart the router: pull the power, count to twenty, put it back. Restart the laptop only after that, and only if the box recovered and the laptop did not notice. The order is the lesson.",
+      ),
+      h2("Sharing from a phone, and forgetting a network"),
+      p(
+        "A phone can be a temporary router — hotspot, or tethering — useful when the house pipe is dead and you have data. It eats the phone's battery and the bundle; turn it off when the laptop is done. The hotspot's name and password live in the phone's settings; they are not the house Wi-Fi, and a hotspot named “Android” left open in a compound is an open door with good manners.",
+      ),
+      p(
+        "And if you typed the house password wrong too many times: Forget the network — in the same fan list, under the name — then join again slowly. Caps Lock is the usual villain, as it was in the keyboard lesson. Last, the quiet inheritance: if a shop ever “set up Wi-Fi” for you, change the sticker password on the router's own page later, or ask someone who already knows that page. A key the shop still knows is a key you do not fully hold.",
       ),
     ],
   },
@@ -1351,10 +1351,10 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A document on a laptop showing the naira symbol and accented letters.",
     body: [
       p(
-        "The keyboard in front of you is mostly English. Nigeria writes ₦, names with accents, and sometimes Igbo, Yoruba, or Hausa letters that the keys do not paint. People draw a N and overstrike it, or type NGN, or skip the mark on a name that should have one. The machine can do better. This lesson is how to ask it for a character that is not printed on the plastic.",
+        "Ayɔ̀deji typed a letter to his son's school and signed it the way his grandfather taught him — with the marks on his name intact. The printout came back as Ayodeji, flat as a ruler. The secretary said the machine could not paint what the keyboard did not carry, and he accepted it for years. The machine can do better. The keyboard in front of you is mostly English, while Nigeria writes ₦, names with accents, and sometimes Igbo, Yoruba, or Hausa letters the keys do not paint — but every one of those characters exists, and this lesson is how to ask for a character that is not printed on the plastic.",
       ),
       p(
-        "A character is a letter, a number, or a symbol the file can store. ₦ is one character. If you paste a picture of a naira sign into a spreadsheet, the grid cannot add it. If you type the character, it is money. The same is true of é in a French name, ọ in a Yoruba name, or a naira amount in a letter to a school.",
+        "Start with what a character is: a letter, a number, or a symbol the file can store. ₦ is one character. If you paste a picture of a naira sign into a spreadsheet, the grid cannot add it; if you type the character, it is money. The same is true of é in a French name, ỉ in an Igbo name, or a naira amount in a letter to a school. One distinction does the whole lesson's work: a picture of a mark is decoration; a character is data.",
       ),
       fig(
         "/images/blog/naira-typing.jpg",
@@ -1363,39 +1363,32 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("₦ on Windows, without a fight"),
       p(
-        "Several doors. The reliable one: hold the Windows key and press the full stop (period). A panel opens — emoji and symbols. Search naira, or scroll to ₦, click it. It lands where the cursor was. Another door, on many machines: hold Alt and type 8358 on the numeric keypad, then release Alt. Laptops without a keypad may need Fn and a printed number pad. If that is a maze, use the panel. In Word, Insert, Symbol, and find ₦. Once you have it, copy and paste it for the rest of the page.",
+        "Several doors exist. The reliable one: hold the Windows key and press the full stop. A panel opens — emoji and symbols. Search naira, or scroll to ₦, click it. It lands where the cursor was. Another door, on many machines: hold Alt and type 8358 on the numeric keypad, then release Alt — laptops without a keypad may need Fn and a printed number pad. If that is a maze, use the panel. In Word: Insert, Symbol, and find ₦ there. Once you have it, copy and paste it for the rest of the page.",
       ),
       p(
-        "Google Docs and many websites accept the same paste. If a bank form rejects ₦, they want NGN or Naira as a word — obey the form. The symbol is for letters, invoices, and spreadsheets that know it. Do not fight a government box that was built in 2011.",
+        "Google Docs and many websites accept the same paste. But if a bank form rejects ₦ and asks for NGN or Naira as a word — obey the form. The symbol is for letters, invoices, and spreadsheets that know it. Do not fight a government box that was built in 2011. Quick question at the panel, since it sorts half the frustrations: the form refused the symbol and you typed the word instead. Was that a defeat? ... No. The reader got the meaning; the machine kept its rules. Communication won.",
+      ),
+      h2("A second keyboard on the same keys"),
+      p(
+        "For the everyday marks, Windows grows a second layer on the same plastic. Settings, Time & language, Language & region, Add a language — English (United States) International, or Yoruba, Igbo, Hausa if you will type those daily. After it installs, look near the clock for ENG. Click it to switch, or hold Windows and press Space. International English lets you type an apostrophe then e to get é, and similar pairs for the other accents. It will surprise you the first week — a quote mark that “swallows” the next letter. That is the accent waiting. Press Space if you wanted a plain quote.",
       ),
       fig(
         "/images/blog/keyboard-language.jpg",
         "Keyboard or language settings on a laptop screen.",
         "ENG in the taskbar is a language. Click it. A second keyboard — United States-International, or a Nigerian language pack — uses the same plastic for different marks.",
       ),
-      h2("A second keyboard on the same keys"),
-      p(
-        "Windows: Settings, Time & language, Language & region, Add a language. English (United States) International, or Yoruba, Igbo, Hausa if you will type those daily. After it installs, look near the clock for ENG. Click it to switch, or hold Windows and press Space. International English lets you type an apostrophe then e to get é, and similar pairs for other accents. It will surprise you the first week — a quote mark that “swallows” the next letter. That is the accent waiting. Press Space if you wanted a plain quote.",
-      ),
       ul([
         "Open Notepad. Press Windows and full stop. Insert ₦. Type a price.",
-        "Add a second language you actually need, or skip if ₦ was the only gap.",
+        "Add a second language you actually need — or skip if ₦ was the only gap.",
         "Switch with Windows+Space. Type your name as you want it on a letter.",
         "Switch back to ENG. Save as typing-naira in Documents.",
       ]),
-      h2("The sign that is not printed on any key"),
-      p(
-        "The naira sign is a character like any letter, only less famous. In Word, the path is Insert, Symbol, and there it sits in the list; find it once, and Word remembers the shortcut it shows you. On many phones, hold down the letter N and ₦ rises out of it like a yam out of loose soil. In a browser or a plain text box where no symbol menu exists, type the figure and the word — 2500 naira — because a clean word is never wrong, while a wrong symbol in a bank form is a small headache for the person reading.",
-      ),
-      p(
-        "Accents and tone marks work the same way. Long-press a letter on the phone keyboard and the cousins appear: á à, and on the right keyboards, the dots under i and o that Igbo names carry. Add the language once in Settings and the keyboard grows the extra keys you need; switch with the globe key when the name calls for it. This matters more than it looks. A name is a door into a person, and Chidinma written Chidinma with her dots is not decoration. Spell names the way their owners spell them, in letters, in forms, and in the certificates you will one day frame.",
-      ),
       h2("Phones, and names that matter"),
       p(
-        "On a phone, hold the letter key — e, o, a — to see accents. Hold N or the currency key if your keyboard offers ₦. Gboard and others have a symbols page. Use the character in WhatsApp if you like; use it in the Word letter if the letter will be printed. A name on an ID should match the form. Accents that the ID does not have can wait. Accents that the ID does have should be typed, not approximated, when the box allows it.",
+        "On a phone, hold the letter key — e, o, a — and the cousins appear: á à, and on the right keyboards, the under-dots that Igbo names carry. Hold N or the currency key if your keyboard offers ₦; Gboard and its cousins keep a symbols page of their own. Use the character in WhatsApp if you like; use it in the Word letter if the letter will be printed. And one rule for the forms: a name on an ID should match the form. Accents the ID does not have can wait. Accents that the ID does have should be typed, not approximated, whenever the box allows it.",
       ),
       p(
-        "You do not need every language pack. You need the marks you actually write. One extra keyboard, the naira in the panel, and the habit of checking ENG before you type a password — because a French layout will move where A and Q live, and a password typed on the wrong layout is a lockout. Glance at the taskbar. Then type.",
+        "This matters more than it looks. A name is a door into a person, and Ayɔ̀deji written Ayodeji is not a small loss — the mark carries the meaning his grandfather chose. Spell names the way their owners spell them: in letters, in forms, and in the certificates one day framed. You do not need every language pack. You need the marks you actually write. One extra keyboard, the naira in the panel, and the habit of glancing at ENG before you type a password — because a French layout will move where A and Q live, and a password typed on the wrong layout is a lockout. Glance at the taskbar. Then type.",
       ),
     ],
   },
@@ -1713,10 +1706,10 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A phone and a laptop on a wooden desk, sharing a file over Bluetooth.",
     body: [
       p(
-        "Bluetooth is a short radio, shorter than Wi‑Fi, meant for a handshake across a desk: earphones, a mouse, one PDF to a phone. It is not the internet. It does not use your bundle. It is slow for a folder of photographs and fussy about pairing. Use it when you have no cable, no data, and one file that must leave the laptop. Use the cable when you have many files. You already know that road.",
+        "Chinedu had one file and no cable: the party programme, printed at the office, needed on his sister's phone across the table. No bundle, no flash drive, two machines almost touching. That is exactly the job Bluetooth was built for — a short radio, shorter than Wi-Fi, meant for a handshake across a desk: earphones, a mouse, one PDF to a phone. It is not the internet, it does not use your bundle, and it is slow for a folder of photographs and fussy about pairing. Use it when you have no cable, no data, and one file that must leave the laptop. Many files? The cable. You already know that road.",
       ),
       p(
-        "Pairing is introductions. Each device must be willing to be seen, then they exchange a code or a tap, then they remember each other for next time. If they will not see each other, they are too far, Bluetooth is off, or one is already busy with a speaker. Turn the speaker off in your head. Then try again.",
+        "Pairing is introductions. Each device must be willing to be seen, then they exchange a code or a tap, then they remember each other for next time. If they will not see each other, they are too far apart, Bluetooth is off on one side, or one is already busy with a speaker. Turn the speaker off in your head. Then try again.",
       ),
       fig(
         "/images/blog/bluetooth-share.jpg",
@@ -1725,10 +1718,10 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("Pair, then send"),
       p(
-        "On the phone: Settings, Bluetooth, on, and Make visible or Pair new device. On Windows: Start, type Bluetooth, turn it on, Add device, Bluetooth. The phone's name should appear. Click it. Accept on the phone if a code matches. Paired is not sent. It is only introduced.",
+        "On the phone: Settings, Bluetooth, on, and Make visible or Pair new device. On Windows: Start, type Bluetooth, turn it on, Add device, Bluetooth. The phone's name should appear. Click it. Accept on the phone if a code matches. But notice the sentence the checklist keeps repeating, because people trip on it every day: paired is not sent. It is only introduced.",
       ),
       p(
-        "To send: on Windows, right-click the file, Send to, Bluetooth device, choose the phone. Or Share if you see it. The phone should ask to accept. Accept. Wait. A 2 MB PDF is seconds. A 50 MB video is a kettle. If it fails at 90 percent, they drifted or a call interrupted. Send again. On a Mac, Bluetooth in Control Centre, send a file from the Bluetooth menu, or AirDrop if both ends are Apple — a cousin, easier when it works.",
+        "To send, on Windows: right-click the file, Send to, Bluetooth device, choose the phone — or Share, if you see it. The phone should ask to accept. Accept. Wait. A two-megabyte PDF is seconds; a fifty-megabyte video is a kettle. If it fails at ninety percent, the devices drifted apart or a call interrupted — send again. On a Mac, Bluetooth in Control Centre sends from the Bluetooth menu, or AirDrop if both ends are Apple: a cousin, easier when it works. One question while the file is in the air: the send died at ninety percent and you have already waited ten minutes. What is the fastest honest road now? ... The cable. Patience is a fine virtue; the USB port is a faster one.",
       ),
       fig(
         "/images/blog/phone-received.jpg",
@@ -1738,22 +1731,19 @@ export const blogPosts: BlogPost[] = [
       ul([
         "Turn Bluetooth on, both sides. Pair. Send one small PDF you own to yourself.",
         "Open it on the phone. If it is a letter, confirm you can read the words.",
-        "Turn Bluetooth off on the laptop when you are done. The radio uses a little power and is one more door.",
-        "If pairing fails twice, use the cable or email the file to the Gmail you can open on the phone.",
+        "Turn Bluetooth off on the laptop when you are done — the radio uses power and is one more door.",
+        "If pairing fails twice, use the cable, or email the file to the Gmail you can open on the phone.",
       ]),
       h2("When the handshake fails"),
       p(
-        "Nine times out of ten a failed send is not brokenness, it is shyness. One machine fell asleep. The visibility timer ran out on the phone. You are sending to Infinix when the person in front of you is Tecno-something-old in a crowd of thirty devices. Start again in order: Bluetooth on both, the phone left open on its Bluetooth screen, the names checked out loud, then send. If a code appears, read it to the other person and confirm it matches on both sides before you tap yes — that code is the handshake showing you its face.",
+        "Nine times out of ten a failed send is not brokenness, it is shyness. One machine fell asleep. The visibility timer ran out on the phone. You are sending to “Infinix” when the person in front of you is “Tecno-something-old” in a crowd of thirty devices. Start again in order: Bluetooth on both, the phone left open on its Bluetooth screen, the names checked out loud, then send. If a code appears, read it to the other person and confirm it matches on both sides before you tap yes — that code is the handshake showing you its face.",
       ),
       p(
-        "Range is the second failure. Bluetooth is a conversation across a table, not across a compound: three metres, few walls, no metal cupboard in the way. For anything bigger than a photograph or two, the cable is still the better lorry — plug the phone in and copy the folder in one motion, or park it in the cloud. And when the file arrives, remember where it lands: the phone files Bluetooth receipts in its Bluetooth folder, not in the gallery's Camera roll, where people expect them. The file arrived in the pocket. It was not yet filed.",
+        "Range is the second failure. Bluetooth is a conversation across a table, not across a compound: three metres, few walls, no metal cupboard in between. For anything bigger than a photograph or two, the cable is the better lorry — plug the phone in and copy the folder in one motion, or park it in the cloud. And when the file arrives, remember where it lands: the phone files Bluetooth receipts in its Bluetooth folder, not in the gallery's Camera roll where people expect them. The file arrived in the pocket. It was not yet filed.",
       ),
       h2("When it is the wrong tool"),
       p(
-        "A whole DCIM folder: cable. A file for someone in another city: email or Drive, not Bluetooth. Bluetooth will not stretch to the next street. Earphones pairing is the same radio — one pair at a time on many phones. If the laptop steals the earphones, disconnect them from the laptop's Bluetooth list.",
-      ),
-      p(
-        "Do not leave the phone discoverable all day in a market. Pair, send, switch discoverable off. The file on the phone is now in the pocket. If it matters, copy it off the phone later, as you learned. Bluetooth moved it. It did not file it.",
+        "A whole DCIM folder: cable. A file for someone in another city: email or Drive — Bluetooth will not stretch to the next street. And earphones pair on the same radio: one pair at a time on many phones, so if the laptop steals the earphones, disconnect them from the laptop's Bluetooth list. Do not leave the phone discoverable all day in a market — pair, send, switch discoverable off. The file on the phone is now in the pocket. If it matters, copy it off the phone later, as you learned. Bluetooth moved it. It did not file it.",
       ),
     ],
   },
@@ -2636,10 +2626,10 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A browser profile icon in the corner of a laptop window.",
     body: [
       p(
-        "A family laptop, a church office, a shop counter — one browser, many hands. If everyone uses the same Chrome window, everyone can open your Gmail with a click, because you stayed signed in. A profile is a separate schoolbag inside the browser: bookmarks, cookies, logged-in sites. Guest is a bag that throws itself away when you close it. This lesson is how to stop leaving your keys in the house bag.",
+        "Blessing and her brother share one laptop at the dining table, and one browser between them. She stayed signed into Gmail — “just for the evening” — and by Sunday her brother had opened her mail with one click, not from malice but from muscle memory. A family laptop, a church office, a shop counter: one browser, many hands. If everyone uses the same window, everyone can open everything you left unlocked inside it. A profile is a separate schoolbag within the browser — bookmarks, cookies, logged-in sites. Guest is a bag that throws itself away when you close it. This lesson is how to stop leaving your keys in the house bag.",
       ),
       p(
-        "In Chrome or Edge, the circle at the top-right is the person. Click it. You may see your name, Guest, Add. Add is a new bag with its own name — yours. Guest is for the cousin who wants to check one thing. When they close the Guest window, their trail goes. Your bag stays shut if you did not open it. That is the point.",
+        "In Chrome or Edge, the circle at the top-right is the person. Click it. You may see your name, Guest, Add. Add is a new bag with its own name — yours. Guest is for the cousin who wants to check one thing: when they close the Guest window, their trail goes. Your bag stays shut if you did not open it. That is the point.",
       ),
       fig(
         "/images/blog/browser-profile.jpg",
@@ -2648,10 +2638,10 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("Your bag, Guest, and the house"),
       p(
-        "Create a profile with your name. Sign into Gmail only there. Set a browser profile lock if the machine offers it — a second password just for the bag. Windows sign-in is even better: each person their own Windows user. That is a later, larger room. Profiles are the cheap curtain that works today.",
+        "Create a profile with your name. Sign into Gmail only there. If the machine offers a profile lock — a second password just for the bag — set it. And know the bigger room behind this curtain: Windows sign-in, where each person has their own Windows user account, is the real wall. Profiles are the cheap curtain that works today.",
       ),
       p(
-        "Sign out of Gmail is not the same as closing the bag. Sign out, then close. On a business-centre machine, do not use your profile at all. Guest, or the machine as you found it, then close every window. Do not tick “remember me.” You have heard that. The profile is how “remember me” becomes a trap at home as well as in a café.",
+        "Signing out of Gmail is not the same as closing the bag — sign out, then close. On a business-centre machine, do not use your profile at all: Guest, or the machine exactly as you found it, then close every window and do not tick “remember me.” You have heard that sentence in the café lesson. The profile is how “remember me” becomes a trap at home as well. Quick check at the circle: three relatives share one profile and the mail keeps “remembering.” Who is the fix for — the relatives, or the bag? ... The bag. People do not change; profiles can.",
       ),
       fig(
         "/images/blog/shared-computer.jpg",
@@ -2660,23 +2650,20 @@ export const blogPosts: BlogPost[] = [
       ),
       ul([
         "Open the browser. Click the circle. Add a profile with your first name, or open Guest.",
-        "In Guest, visit a site. Close the Guest window. Open the browser again. Guest should be empty.",
+        "In Guest, visit a site. Close the Guest window. Open the browser again — Guest should be empty.",
         "If this is your machine, keep your named profile. Do not work in the Default bag if others use it.",
         "Never save a bank password in a profile that is not locked.",
       ]),
       h2("The account behind the schoolbag"),
       p(
-        "A profile is deeper than it looks. Sign into Chrome or Firefox with your mail account and the bag begins to sync: bookmarks, history, saved passwords, every tab you left open at home — all of it walking onto this shared office machine and all of it visible to the next person if you close the lid. The convenience is real. So is the exposure. On a machine that is not yours, the correct choice is the small one at the bottom of the profile menu: Guest, or a temporary profile that forgets everything at the door.",
+        "A profile is deeper than it looks. Sign into Chrome or Firefox with your mail account and the bag begins to sync: bookmarks, history, saved passwords, every tab you left open at home — all of it walking onto this shared office machine, all of it visible to the next person if you close the lid. The convenience is real. So is the exposure. On a machine that is not yours, the correct choice is the small one at the bottom of the profile menu: Guest, or a temporary profile that forgets everything at the door.",
       ),
       p(
-        "When you must use your real bag on a borrowed machine — the application closes at five and this is the only computer — keep the visit short and do the leaving properly. Do the work in one window, then sign out from the profile icon before the bag closes. Signing out stops the sync and tells your account to forget this machine's keys. It is the same walk you learned for the café, applied one level deeper, at the level of the browser itself. The schoolbag is yours. Hand it over empty.",
+        "When you must use your real bag on a borrowed machine — the application closes at five and this is the only computer — keep the visit short and leave properly. Do the work in one window, then sign out from the profile icon before the bag closes. Signing out stops the sync and tells your account to forget this machine's keys. It is the café walk, applied one level deeper, at the level of the browser itself.",
       ),
       h2("Passwords saved in the browser"),
       p(
-        "The browser will offer to remember passwords. On your locked profile, on your laptop, that can be a help — one more keyring, with a risk if someone opens the bag. On a shared profile, never. The keyring is then a public hook. You already have a notebook in a drawer, and a sentence password. Use those on a shared machine. Let the browser forget.",
-      ),
-      p(
-        "If you find you have been living in the house bag with three relatives, create your profile today, sign into mail there, sign out of the old window. It is not rude. It is the same as not leaving your ATM card on the table. The circle in the corner tells you whose bag is open. Look at it the way you look at ENG on the taskbar. Then type.",
+        "The browser will offer to remember passwords. On your locked profile, on your own laptop, that can be a help — one more keyring, with the risk of someone opening the bag. On a shared profile, never: the keyring becomes a public hook. You already have a notebook in a drawer and a sentence password. Use those on a shared machine. Let the browser forget. And if you find you have been living in the house bag with three relatives, create your profile today, sign into mail there, sign out of the old window. It is not rude. It is the same as not leaving your ATM card on the table. The circle in the corner tells you whose bag is open — look at it the way you look at ENG on the taskbar. Then type.",
       ),
     ],
   },
@@ -3502,10 +3489,10 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A generic fake virus warning on a laptop screen.",
     body: [
       p(
-        "Someone will say the computer has a virus. Sometimes they are pointing at a banner that will not close. Sometimes a cousin installed a “cleaner.” Sometimes a shop wants a fee. Real malware exists. It is usually quiet. It does not put a siren on your screen with a phone number in Lagos or India. This lesson is the scare, the quiet problems, and the first walks that do not begin with a credit card.",
+        "Mrs Aluko's screen went red at nine in the morning: YOUR PC IS INFECTED — 47 VIRUSES — CALL NOW, with a Lagos number pulsing at the bottom. She called. Two hours and forty thousand naira later, a stranger had “cleaned” a machine that had never been sick. Someone will always say the computer has a virus — sometimes pointing at a banner that will not close, sometimes after a cousin installed a “cleaner,” sometimes because a shop wants a fee. Real malware exists and it is usually quiet. It does not put a siren on your screen with a phone number. This lesson is the scare, the quiet problems, and the first walks that do not begin with a credit card.",
       ),
       p(
-        "A page that fills the screen with “YOUR PC IS INFECTED — CALL NOW” is a website. It is not Windows. It cannot see your files. Alt+F4, or close the tab, or close the whole browser. If it went full screen, F11, then close. Do not call the number. Do not download the “removal tool” it offers. You have met this cousin in updates, in audio fixers, in cookies. Same family. Same door: close.",
+        "Start with the siren itself. A page that fills the screen with “YOUR PC IS INFECTED — CALL NOW” is a website. It is not Windows. It cannot see your files. Alt+F4, or close the tab, or close the whole browser; if it went full screen, F11 first, then close. Do not call the number. Do not download the “removal tool” it offers. You have met this cousin already — in the updates lesson, in audio fixers, in cookie banners. Same family. Same door: close. It looks like a diagnosis from the machine. It is an advertisement from a webpage, and the two arrive in identical coats.",
       ),
       fig(
         "/images/blog/fake-virus.jpg",
@@ -3514,10 +3501,10 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("Quiet trouble, and what to actually do"),
       p(
-        "Quieter signs: the browser's homepage became a stranger and you cannot change it. New toolbars. Passwords that fail because a fake page ate them last week. A program in the Apps list you never chose. Pop-ups even when the browser is closed — that last one is more serious. Walk: uninstall extras you can name, as you learned. Change the email password from a machine you trust. Run Windows Security, which is already on the computer — Start, type Windows Security, Virus & threat protection, a scan. It is not exciting. Excitement is the product they sell.",
+        "Quieter signs are the real ones: the browser's homepage became a stranger and you cannot change it back. New toolbars appeared. Passwords fail because a fake page ate them last week. A program sits in the Apps list that nobody chose. Pop-ups keep coming even when the browser is closed — that last one is more serious. The walk, in order: uninstall the extras you can name, as you learned. Change the email password from a machine you trust. Then run Windows Security, which is already on the computer — Start, type Windows Security, Virus & threat protection, a scan. It is not exciting. Excitement is the product they sell.",
       ),
       p(
-        "A file that will not open, or a ransom note that says pay in crypto to get your letters back, is a real bad day. Unplug from the network if you can, do not pay from panic, copy nothing onto your only USB until someone who knows backup-for-ransom has spoken. The academy can look. A random Facebook helper cannot. Backup from last month is the whole religion here. If you have no backup, you still do not pay a banner.",
+        "And the genuinely bad day: a file that will not open, or a ransom note demanding crypto to release your letters. Unplug the machine from the network if you can. Do not pay from panic. Copy nothing onto your only USB until someone who understands backups has looked. The academy can look; a random Facebook helper cannot. Last month's backup is the whole religion here — and if you have no backup, you still do not pay a banner. One question while the room is quiet: the note says pay in forty-eight hours and the clock is ticking. What is the clock's job? ... To be the hurry tell, wearing a countdown. Real emergencies in real offices do not arrive with a timer and a wallet address.",
       ),
       fig(
         "/images/blog/closing-popup.jpg",
@@ -3526,23 +3513,23 @@ export const blogPosts: BlogPost[] = [
       ),
       ul([
         "If a scare page appears, close the tab. No downloads. No numbers.",
-        "Open Windows Security yourself, from Start, not from a banner. Note what it says. It often says nothing is wrong.",
+        "Open Windows Security yourself, from Start — not from a banner. Note what it says. It often says nothing is wrong.",
         "Look at Apps for a name you do not remember. Uninstall only what you can defend.",
         "If mail was opened on that sitting, change the mail password from a different, trusted machine.",
       ]),
       h2("What the flashing count wants"),
       p(
-        "The page with the red flashing count — your machine has 47 infections, call this number now — is not a diagnosis. It is a poster. The count is theatre, the number is random, and the telephone number connects you to a person whose job is to sell you a cleaning program you do not need, or to walk into your screen by remote control, or both. No website can scan your machine from the outside. A real security program lives in the tray by the clock and speaks to you in a calm window, never in a full-screen emergency with sirens.",
+        "The page with the red flashing count — your machine has 47 infections, call this number now — is not a diagnosis. It is a poster. The count is theatre and the number is random; the telephone number connects you to a person whose job is to sell a cleaning program you do not need, or to walk into your screen by remote control, or both. No website can scan your machine from the outside. A real security program lives in the tray by the clock and speaks to you in a calm window — never in a full-screen emergency with sirens.",
       ),
       p(
-        "What you do with the theatre is simple. Do not call. Do not click the blue button inside the panic; close the entire browser tab from its own little cross, or close the browser with the taskbar and reopen it. If the page claims you cannot leave — the old trick that reopens itself — hold Ctrl and Alt and press Delete to open Task Manager and end the browser there; the machine is not held hostage, only the window. Then carry on with your day. The flashing count wants your fear first and your money second. A closed tab starves it of both.",
+        "If the page claims you cannot leave — the old trick that reopens itself — hold Ctrl and Alt and press Delete to open Task Manager, and end the browser there. The machine is not held hostage; only the window is. Then carry on with your day. The flashing count wants your fear first and your money second. A closed tab starves it of both.",
       ),
       h2("Prevention is the boring list you already have"),
       p(
-        "Updates. The real street. No unknown installers. No USB from a stranger without a look. A browser that is not a carnival of toolbars. Guest on shared machines. That list is the antivirus. Windows Security is the night watchman, not a preacher on a billboard. A paid extra antivirus can be fine if you chose it on purpose; three at once fight each other. One is enough. Zero extra is also enough for a careful person.",
+        "Updates. The real street. No unknown installers. No USB from a stranger without a look. A browser that is not a carnival of toolbars. Guest on shared machines. That list is the antivirus. Windows Security is the night watchman, not a preacher on a billboard. A paid extra antivirus can be fine if you chose it on purpose; three at once fight each other. One is enough — and zero extra is also enough for a careful person.",
       ),
       p(
-        "When a relative says “virus,” ask what they saw. A red page is a website. A slow machine is heat, disk, crowd. A missing file is the Recycle Bin. Name the thing. Then walk. You now have enough names to refuse a shop that formats first and talks second. Backup, then a person you can see. The siren on the screen is not the disease. It is an advert with a costume.",
+        "When a relative says “virus,” ask what they saw. A red page is a website. A slow machine is heat, disk, or a crowd of startup programs. A missing file is usually the Recycle Bin. Name the thing, then walk. You now have enough names to refuse a shop that formats first and talks second — backup first, then a person you can see. The siren on the screen is not the disease. It is an advert with a costume.",
       ),
     ],
   },
@@ -3559,10 +3546,10 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A laptop showing a letter and a browser side by side.",
     body: [
       p(
-        "People type a letter, minimise it, open a browser, copy an address, minimise the browser, hunt for the letter, paste, forget the next line, and do it again. The machine can hold two rooms open at the same time. One half of the screen is Word. The other is the page you are copying from. That is not advanced. It is the desk with two sheets on it instead of one sheet you keep putting in a drawer. This lesson is snap, Alt+Tab, and not losing the letter because you opened a map.",
+        "Tolu typed association minutes the hard way: minimise the letter, open the browser, copy an address, minimise the browser, hunt for the letter again, paste, forget the next line, repeat — until the secretary watched her and said the words that changed her Tuesdays: the machine can hold two rooms open at the same time. One half of the screen is Word; the other is the page you are copying from. That is not advanced. It is a desk with two sheets on it, instead of one sheet you keep putting in a drawer. This lesson is snap, Alt+Tab, and not losing the letter because you opened a map.",
       ),
       p(
-        "On Windows, click the letter so it is the active window. Hold the Windows key and tap the left arrow. The letter should jump to the left half. Then click the browser, Windows key and right arrow. Two rooms, one desk. Drag the edge in the middle if one needs more width. A click in a window makes it the one that hears the keyboard. Type only after you have clicked the letter. Paste lands where the cursor last sat, not where your eyes are looking.",
+        "On Windows, click the letter so it is the active window. Hold the Windows key and tap the left arrow — the letter jumps to the left half. Then click the browser, Windows key and right arrow. Two rooms, one desk. Drag the edge in the middle if one needs more width. And the sentence that saves the most grief: a click in a window makes it the one that hears the keyboard. Type only after you have clicked the letter. Paste lands where the cursor last sat — not where your eyes are looking.",
       ),
       fig(
         "/images/blog/two-windows.jpg",
@@ -3571,10 +3558,10 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("Alt+Tab is the stack of papers"),
       p(
-        "Hold Alt, tap Tab, keep Alt down. A row of open programs appears. Each Tab hop is the next paper. Let go on the one you want. That is how you return to the letter without hunting the taskbar. Alt+Tab+Tab walks further. If you let go too soon, you land on the neighbour. Do it again, slower. The taskbar glow you learned is the same stack, seen from the floor.",
+        "Hold Alt, tap Tab, keep Alt down. A row of open programs appears — each Tab hop is the next paper. Let go on the one you want. That is how you return to the letter without hunting the taskbar. Alt+Tab+Tab walks further; let go too soon and you land on the neighbour — do it again, slower. The taskbar glow you already know is the same stack, seen from the floor.",
       ),
       p(
-        "Minimise — the line at the top of a window — hides a room. It does not close it. The X closes it, and unsaved work will ask. People minimise five things, then think the machine is empty. Look at the taskbar. The crowd is still standing. Restore one, or snap two, and send the rest to the line. You do not need six halves. Two is a sitting. Four is a market.",
+        "Minimise — the line at the top of a window — hides a room; it does not close it. The X closes it, and unsaved work will ask. People minimise five things and then believe the machine is empty. Look at the taskbar: the crowd is still standing. Restore one, or snap two, and send the rest away properly. You do not need six halves. Two is a sitting. Four is a market. One retrieval before the corners: you just clicked away from the letter and typed a sentence. Where did the sentence land? ... In whichever window has the focus — the one with the blinking cursor. The eyes do not choose; the click does.",
       ),
       fig(
         "/images/blog/alt-tab.jpg",
@@ -3583,23 +3570,20 @@ export const blogPosts: BlogPost[] = [
       ),
       ul([
         "Open a letter and a browser. Snap one left, one right.",
-        "Click the letter. Type one sentence. Click the browser. You should not be typing in the letter any more.",
+        "Click the letter. Type one sentence. Click the browser — you should not be typing in the letter any more.",
         "Alt+Tab back to the letter. Confirm the sentence is still there. Save.",
         "Close the extra windows you are not using. Leave two.",
       ]),
       h2("Snap, and the edges of the desk"),
       p(
-        "Windows can pin themselves to half the screen without any dragging skill. Take a window by its title bar and drag it hard to the left edge of the screen: the outline shows a half-desk, release, and it fills that half. Drag the other window to the right edge and the two sit side by side like an open book. Windows and the arrow keys do the same thing with more precision — Windows and Left, Windows and Right. This is the arrangement for copying figures into a form, reading a letter while typing its reply, or watching the tutorial beside the practice file.",
+        "Windows can pin themselves to half the screen without any dragging skill: take a window by its title bar, drag it hard to the left edge, and when the outline shows a half-desk, release. Drag the other window to the right edge and the two sit side by side like an open book. The Windows-and-arrow version does the same with more precision. This is the arrangement for copying figures into a form, reading a letter while typing its reply, or watching the tutorial beside the practice file.",
       ),
       p(
-        "The second arrangement is the corner. A window dragged into a corner takes a quarter of the screen, which is the layout for a small spreadsheet in one corner, the mail in another, and a quiet chat in a third. Look at the taskbar while you arrange: every window is a card, and clicking a card brings that room forward. The machine was built as a desk with many papers, not a slideshow with one. Once the half-and-half habit lands, the old way — maximise, alt-tab, squint, alt-tab — feels like standing up and sitting down to pass one piece of paper.",
+        "The second arrangement is the corner: a window dragged into a corner takes a quarter of the screen — a small spreadsheet here, the mail there, a quiet chat in the third. Look at the taskbar while you arrange: every window is a card, and clicking a card brings that room forward. The machine was built as a desk with many papers, not a slideshow with one. Once the half-and-half habit lands, the old way — maximise, Alt+Tab, squint, Alt+Tab — feels like standing up and sitting down to pass one piece of paper.",
       ),
       h2("When the window vanishes"),
       p(
-        "A window can sit on a second screen that is unplugged, as in the projector lesson. Windows+P, PC screen only, then Alt+Tab. Or Windows+arrow until it walks back. If the letter is “gone,” it is usually minimised, behind another window, or on a wall that went home. Search will not find an unsaved window. Alt+Tab will.",
-      ),
-      p(
-        "On a small laptop, two halves can feel cramped. Then use Alt+Tab and a larger font, next lesson, instead of snap. The point is not a pretty split. The point is not closing the letter to look at a fee on a website. Two rooms. One save. Then you can stand up.",
+        "A window can sit on a second screen that is unplugged — the projector lesson's ghost. Windows+P, PC screen only, then Alt+Tab. Or Windows+arrow until it walks back. If the letter is “gone,” it is usually minimised, behind another window, or on a wall that went home. Search will not find an unsaved window. Alt+Tab will. On a small laptop two halves can feel cramped — then use Alt+Tab and a larger font instead of snap. The point is not a pretty split. The point is not closing the letter to look up a fee on a website. Two rooms. One save. Then you can stand up.",
       ),
     ],
   },
@@ -5758,10 +5742,10 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A phone showing a prize or winnings message.",
     body: [
       p(
-        "You have sat through passwords, links, OTPs, fake virus banners, QR codes on poles. This is the same play in party clothes. A text, a WhatsApp, an email: you have won a car, a grant, a UN fund, a lottery you did not enter, a parcel worth millions. To release it, pay a small fee, send airtime, share a BVN, click a link. The small fee is the whole harvest. There is no car. This lesson is the shape, so you can delete it in one breath and teach the next person the same breath.",
+        "Ugochi's message arrived on a Friday: she had won a Toyota Corolla in the “UN empowerment lottery,” and only a small clearance fee stood between her and the keys. She had entered no lottery. Her brother had — or thought he had — and he paid the fee, then the VAT token, then the activation code, and by Sunday the car was a lesson costing ninety-one thousand naira. You have sat through passwords, links, OTPs, fake virus banners, QR codes on poles. This is the same play in party clothes. This lesson is the shape, so you can delete it in one breath — and teach the next person the same breath.",
       ),
       p(
-        "You did not enter. That is enough. Real lotteries in Nigeria are not in the habit of hunting you on WhatsApp. Banks do not release “USD grants” after a processing fee. A church does not need you to pay Customs for a blessing that arrived as a container. A job that wants a processing fee before you start is not a job — you met that in the form lesson. Hurry, secrecy, a prize, a fee: four tells. You only need one.",
+        "Start with the sentence that ends most of it: you did not enter. That is enough. Real lotteries in Nigeria are not in the habit of hunting winners on WhatsApp. Banks do not release “USD grants” after a processing fee. A church does not need you to pay Customs for a blessing that arrived as a container. And a job that wants a processing fee before you start is not a job — you met that in the forms lesson. Hurry, secrecy, a prize, a fee: four tells. You only need one.",
       ),
       fig(
         "/images/blog/you-have-won.jpg",
@@ -5770,10 +5754,10 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("Airtime, gift cards, and the kind relative"),
       p(
-        "Send ₦5,000 airtime to this number to confirm. Buy a Google card and read the code. Pay Customs to this personal account. All of those are one-way taps. Reversals do not come. A relative's voice on the phone, crying, send money, is a different costume — confirm with another number you already have for that relative. Do not use the number that called. The prize message is the simpler cousin. Delete. Block. Do not argue with it. Arguing is how they keep you on the line until a fee feels like your idea.",
+        "Send ₦5,000 airtime to this number to confirm. Buy a Google card and read the code aloud. Pay Customs to this personal account. Every one of those is a one-way tap — reversals do not come. And note the cousin of the prize in a different costume: a relative's voice on the phone, crying, send money now. Confirm with another number you already have for that relative. Do not use the number that called. The prize message is the simpler cousin of the same family. Delete. Block. Do not argue with it — arguing is how they keep you on the line until the fee feels like your own idea.",
       ),
       p(
-        "A website with balloons and a form is still a form. You do not put a card into it. You do not download a “claim kit.” You do not call the international number; the call is the bill. If you already sent a little, stop. Do not send a second time to “unlock the first.” Tell the bank if an account you paid is still reachable. Shame is the second harvest. You are not the first. You will not be the last. You can still close the tap.",
+        "A website with balloons and a form is still a form: you do not put a card into it, you do not download a “claim kit,” and you do not call the international number — the call is the bill. If you already sent a little, stop. Do not send a second time to “unlock the first.” Tell the bank if the account you paid is still reachable. Shame is the second harvest, and refusing it is a skill: you are not the first, you will not be the last, and you can still close the tap.",
       ),
       fig(
         "/images/blog/prize-message.jpg",
@@ -5781,21 +5765,21 @@ export const blogPosts: BlogPost[] = [
         "Skepticism is the whole skill. A prize you cannot name from a life you actually lived is a story. You do not belong in that story. Put the phone down.",
       ),
       ul([
-        "The next “you have won,” delete, without opening a link.",
-        "If a family member forwards one, tell them the four tells. Do not click theirs to “see.”",
+        "The next “you have won” — delete, without opening a link.",
+        "If a family member forwards one, teach them the four tells. Do not click theirs to “see.”",
         "Nobody at the academy, a bank, or a church needs a fee to release a prize you did not enter.",
-        "If you already paid, stop paying. Bank, then a person you can see. Not a helper in the comments.",
+        "If you already paid: stop paying. Bank first, then a person you can see — not a helper in the comments.",
       ]),
       h2("The fee that releases nothing"),
       p(
-        "The prize letter always contains a small toll gate: a clearance fee, a VAT token, a activation code, a refundable deposit. The figure is cleverly pitched — ten thousand naira against a promised million — so that the arithmetic of hope beats the arithmetic of the market. But every real prize in the world arrives with zero tolls. The lottery deducts its costs before paying; the bank does not collect by agent; no inheritance on earth requires the heir to fund the courier first. The fee is not a gate to the money. The fee is the money. That is the entire machine, oiled and waiting.",
+        "The prize letter always contains a small toll gate: a clearance fee, a VAT token, an activation code, a refundable deposit. The figure is cleverly pitched — ten thousand against a promised million — so the arithmetic of hope beats the arithmetic of the market. But hold it beside the real thing once: every real prize in the world arrives with zero tolls. The lottery deducts its costs before paying you; the bank does not collect by agent; no inheritance on earth requires the heir to fund the courier first. The fee is not a gate to the money. The fee is the money. That is the entire machine, oiled and waiting. One question while the invoice is open: the man says the fee is refundable, and he sent a receipt. Where would you look first when the money never came? ... The receipt is not the bank. A refund you cannot find at the counter is a story with stationery.",
       ),
       p(
-        "Watch for the second harvest, which is crueller than the first. Weeks after a scam has eaten somebody's savings, a new caller arrives: the EFCC has recovered the funds, the bank's fraud unit has caught the boy, the embassy has the package — and there is a small fee to release it. This caller is often the same hand or a sold list of victims' numbers, which is why the recovery offer knows so much about the loss. There is no second harvest for you if you remember one sentence: the people who took it cannot give it back, and no institution collects a fee to return what a court has seized. Report to the real bank and the real police. Let the recovery agents call somebody else.",
+        "Watch for the second harvest, which is crueller than the first. Weeks after a scam has eaten somebody's savings, a new caller arrives: the EFCC has recovered the funds, the bank's fraud unit has caught the boy, the embassy has the package — and there is a small fee to release it. This caller is often the same hand, or a sold list of victims' numbers, which is why the recovery offer knows so much about the loss. There is no second harvest for you if you keep one sentence: the people who took it cannot give it back, and no institution collects a fee to return what a court has seized. Report to the real bank and the real police. Let the “recovery agents” call somebody else.",
       ),
       h2("What you now have, in this one habit"),
       p(
-        "Walk there yourself. Do not pay to be paid. Do not read an OTP aloud. Do not trust hurry. The hundred notes in this series are names for rooms you already live in: files, mail, money, the pocket, the street. The prize message is a room with no door out. You do not enter. You already know how to sit down when a message shouts. Sit down. Then delete. Then go back to the letter that is actually yours.",
+        "Walk there yourself. Do not pay to be paid. Do not read an OTP aloud. Do not trust hurry. The hundred notes in this series are names for rooms you already live in — files, mail, money, the pocket, the street — and the prize message is the one room with no door out. You do not enter. You already know how to sit down when a message shouts. Sit down. Then delete. Then go back to the letter that is actually yours.",
       ),
     ],
   },
@@ -7059,10 +7043,10 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A security guard checking a visitor's identity card at a compound gate.",
     body: [
       p(
-        "What is zero trust security? Strip the phrase of marketing and it is one sentence: never trust, always verify. A security way of building — and running — an organisation on the belief that nobody is trusted by where they sit, only by what they can prove, every time they knock. Not once at the gate in the morning. Every door, every hour, every request. The phrase arrived from the industry's own confession: the old way assumed the thief was outside the walls, and the thief kept getting in and walking the corridors freely, because inside was trusted.",
+        "Ifeanyi was three minutes into a job interview when the man across the desk put down the CV and asked the question the whole industry now asks: “what is zero trust security?” Ifeanyi had read the phrase on forty adverts and never held it. Strip the phrase of marketing and it is one sentence: never trust, always verify. A way of building — and running — an organisation on the belief that nobody is trusted by where they sit, only by what they can prove, every time they knock. Not once at the gate in the morning. Every door, every hour, every request. The phrase arrived from the industry's own confession: the old way assumed the thief was outside the walls — and the thief kept getting in and walking the corridors freely, because inside was trusted.",
       ),
       p(
-        "Picture the two arrangements. The old compound: one strong gate, and inside it every inner door open to anyone wearing a staff lanyard — because the gate already checked them, did it not? One cloned lanyard, and a visitor owns the corridors. The zero-trust compound: the same strong gate, and then every inner door checks again — who are you, prove it; what device is this, is it the one we issued, is it healthy; and even then, this door opens only as far as your work requires, not one room further. The guest with the right lanyard is still checked at accounting's door, and accounting's door does not open into the vault. Nobody is trusted for where they are. Everybody is verified for what they prove.",
+        "Picture the two arrangements. The old compound: one strong gate, and inside it every inner door open to anyone wearing a staff lanyard — the gate already checked them, did it not? One cloned lanyard, and a visitor owns the corridors. The zero-trust compound: the same strong gate, and then every inner door checks again — who are you, prove it; what device is this, is it the one we issued, is it healthy; and even then this door opens only as far as your work requires, not one room further. The guest with the right lanyard is still checked at accounting's door, and accounting's door does not open into the vault. Nobody is trusted for where they are. Everybody is verified for what they prove.",
       ),
       fig(
         "/images/blog/zero-trust-gate-check.jpg",
@@ -7071,10 +7055,10 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("The pieces, named plainly"),
       p(
-        "Three habits hold it up. Strong identity: every person and every machine has a provable self — and the second lock, the one on your Google account, is zero trust's smallest citizen; multi-factor verification is its signature move. Least privilege: each person holds exactly the keys their work needs, no more — the gateman does not carry the cashier's keys, and the accountant cannot open the server room. And small rooms: the organisation is divided so that a thief in one room does not inherit the building — the corridor that once connected everything is replaced by checked doors. The industry formalised this in documents like NIST SP 800-207, but you have just held the whole idea; the documents only add the plumbing.",
+        "Three habits hold it up. Strong identity: every person and every machine has a provable self — and the second lock on your own account is zero trust's smallest citizen, multi-factor verification its signature move. Least privilege: each person holds exactly the keys their work needs and no more — the gateman does not carry the cashier's keys, and the accountant cannot open the server room. And small rooms: the organisation is divided so that a thief in one room does not inherit the building — the corridor that once connected everything is replaced by checked doors. The industry formalised all this in documents like NIST SP 800-207, but you have just held the whole idea; the documents only add the plumbing.",
       ),
       p(
-        "You have met the philosophy already, wearing everyday clothes. The bank app that asks for the code even after the password: zero trust. The laptop that re-verifies before opening payroll: zero trust. The second lock you put on your own account at lesson one hundred and eight — you ran a zero-trust policy on your own life before most companies did. The stakes scale; the sentence does not. Trust is never granted by location or history. It is earned by proof, freshly, at every door.",
+        "You have met the philosophy already, wearing everyday clothes. The bank app that asks for the code even after the password: zero trust. The laptop that re-verifies before opening payroll: zero trust. The second lock you put on your own account in the passwords chapter — you ran a zero-trust policy on your own life before most companies did. One retrieval, since interviews love it: name the three habits in order. ... Identity, least privilege, small rooms — who can prove themselves, holding only what the work needs, in rooms that do not connect. The stakes scale; the sentence does not. Trust is never granted by location or history. It is earned by proof, freshly, at every door.",
       ),
       fig(
         "/images/blog/zero-trust-doors.jpg",
@@ -7085,11 +7069,11 @@ export const blogPosts: BlogPost[] = [
         "Say the sentence until it is yours: never trust, always verify — every user, every device, every request.",
         "Audit your own compound tonight: which accounts hold more keys than their work needs? Least privilege begins at home.",
         "Your second lock is your first zero trust. Notice every re-verification this week with new respect.",
-        "In interviews, the question what is zero trust is answered in one sentence and three habits: identity, least privilege, small rooms.",
+        "In interviews, “what is zero trust?” is answered in one sentence and three habits: identity, least privilege, small rooms.",
       ]),
       h2("Why the whole industry turned"),
       p(
-        "Because the walls stopped meaning anything. Staff work from cafés and sitting rooms now; the company's jewels sit in rented buildings run by other companies; and the thief stopped pickpocketing lanyards and started logging in. When the perimeter dissolved, the only honest place to draw the line was around each request: prove, every time. That is why the phrase follows every security job advert now, and why the watching rooms of the last lessons are rebuilding their rules around it. The gate keeper's oldest wisdom, promoted to architecture: trust the person, not the lanyard — and check the person, freshly, every time.",
+        "Because the walls stopped meaning anything. Staff work from cafés and sitting rooms now; the company's jewels sit in rented buildings run by other companies; and the thief stopped pickpocketing lanyards and started logging in. When the perimeter dissolved, the only honest place to draw the line was around each request: prove, every time. That is why the phrase follows every security job advert now — and why Ifeanyi's answer, that afternoon, ended with the gate keeper's oldest wisdom promoted to architecture: trust the person, not the lanyard — and check the person, freshly, every time.",
       ),
     ],
   },
@@ -7106,10 +7090,10 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A man inspecting a compound fence with a torch at dusk, looking for weak points.",
     body: [
       p(
-        "A vulnerability is a weakness in a wall that still stands: the loose board in the fence, the window the bar removed, the lock that turns with any key of its brand. Every organisation is such a compound, and its walls — computers, programs, doors, people — carry weaknesses nobody has counted. A vulnerability assessment is the disciplined count: walk your own fence deliberately, in daylight, with a list, and find what a thief would find at night. Not paranoia. Maintenance. The same instinct as checking the generator before the wedding, and it answers the question every owner should be able to answer: where exactly are we weak?",
+        "Femi was twenty-three, two weeks into his first security job, when the school proprietor asked him one question over tea: “so where exactly are we weak?” He opened his mouth to answer with software names, and closed it. A vulnerability is a weakness in a wall that still stands: the loose board in the fence, the window whose bar rusted off, the lock that turns with any key of its brand. Every organisation is such a compound, and its walls — computers, programs, doors, people — carry weaknesses nobody has counted. A vulnerability assessment is the disciplined count: walk your own fence deliberately, in daylight, with a list, and find what a thief would find at night. Not paranoia. Maintenance.",
       ),
       p(
-        "The walk has a shape. First, count what you own — every machine, app, and account; you cannot check a fence you have not listed, and the forgotten door is every compound's favourite entrance. Then scan: tools run against the list, knocking on known weaknesses the way a mechanic's diagnostic machine queries an engine — thousands of known weaknesses, checked in minutes. Then the human pass, because tools miss what eyes catch: the password on a sticky note, the software that stopped receiving updates, the server room held shut with tape. The result is a report — not a shaming, an inventory: this weakness, here, this severe, this loud, fix it this way.",
+        "The walk has a shape. First, count what you own — every machine, app, and account. You cannot check a fence you have not listed, and the forgotten door is every compound's favourite entrance. Then scan: tools run against the list, knocking on known weaknesses the way a mechanic's diagnostic machine queries an engine — thousands of known weaknesses checked in minutes. Then the human pass, because tools miss what eyes catch: the password on a sticky note, the software that stopped receiving updates, the server room held shut with tape. The result is a report — not a shaming, an inventory: this weakness, here, this severe, this loud, fix it this way.",
       ),
       fig(
         "/images/blog/fence-check-flashlight.jpg",
@@ -7118,10 +7102,7 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("Ranking the holes: not all silence is equal"),
       p(
-        "A compound always has several weaknesses at once; money and hours are finite; so the report ranks. Severity scoring — the industry's CVSS numbers, zero to ten — is triage at a clinic: the bleeding patient first, the stubborn cough after. A weakness that lets a stranger in without any key outranks one that needs the janitor's help, an open office, and good luck. The discipline the good assessors bring is honesty about exposure: a hole in the fence facing the market street is a different animal from the same hole facing the lagoon. Fix the loudest, then the next, then the next — and re-scan, because walls do not stay mended by one speech.",
-      ),
-      p(
-        "Two words people confuse, cleared now: the assessment is the inspection — systematic, listed, non-destructive; a penetration test goes further and hires the lockpicker — one weakness, chosen with permission, exploited to prove how far it opens. Inspection first, lockpicker second, always. And for the small businesses reading this over a shoulder: the walk scales down beautifully. List your doors — the phones, the laptops, the email, that one app the whole shop runs on. Update everything the update lesson taught you to update. Turn on the second lock everywhere it exists. Change the defaults the installer left. You have just done the small business version, and most of your competitors have not.",
+        "A compound always has several weaknesses at once and the money and hours are finite — so the report ranks. The industry's severity scores, CVSS numbers from zero to ten, work like triage at a clinic: the bleeding patient first, the stubborn cough after. A weakness that lets a stranger in without any key outranks one that needs the janitor's help, an open office, and good luck. And the discipline the good assessors bring is honesty about exposure: a hole facing the market street is a different animal from the same hole facing the lagoon. Fix the loudest, then the next, then the next — and re-scan, because walls do not stay mended by one speech. One question at the report, since ranking is the whole skill: two holes, equal severity — one faces the car park, one faces the internet. Which first? ... The internet-facing one. Severity is the wound; exposure is the road to it.",
       ),
       fig(
         "/images/blog/scan-report-paper.jpg",
@@ -7130,13 +7111,16 @@ export const blogPosts: BlogPost[] = [
       ),
       ul([
         "List what you own — machines, apps, accounts — before you scan anything. The unlisted door is the common door.",
-        "Scan with a reputable tool, then walk with your own eyes. Tools count, humans understand.",
+        "Scan with a reputable tool, then walk with your own eyes. Tools count; humans understand.",
         "Rank by severity and exposure. Fix the bleeding first; keep the receipts of every repair.",
         "Re-walk the fence on a calendar, not on a mood. Walls drift; the walk is maintenance, not an event.",
       ]),
-      h2("The fence, the room, the ledger"),
+      h2("The inspection and the lockpicker"),
       p(
-        "See how the profession knits: the assessment finds the weak boards; zero trust builds inner doors so one board cannot cost the building; the SOC and its SIEM watch the fence between walks, because thieves do not wait for reports. Nothing mystical anywhere — just owners who count their own weaknesses before somebody else does it for them, at night, without permission. The next lesson steps back from the compound to the roads that connect every compound: the grammar the whole internet speaks.",
+        "Two words people confuse, cleared now. The assessment is the inspection — systematic, listed, non-destructive. A penetration test goes further and hires the lockpicker: one weakness, chosen with permission, exploited to prove how far it opens. Inspection first, lockpicker second, always — and “with permission” is the difference between a profession and a crime.",
+      ),
+      p(
+        "And for the small businesses reading over a shoulder: the walk scales down beautifully. List your doors — the phones, the laptops, the email, that one app the whole shop runs on. Update everything the update lesson taught you to update. Turn on the second lock everywhere it exists. Change the defaults the installer left behind. You have just done the small-business version, and most of your competitors have not. See how the profession knits, too: the assessment finds the weak boards; zero trust builds inner doors so one board cannot cost the building; and the watching rooms of the SOC keep the fence tended between walks, because thieves do not wait for reports. Nothing mystical anywhere — just owners who count their own weaknesses before somebody else does it for them, at night, without permission. The next lesson steps back from the compound to the roads that connect every compound: the grammar the whole internet speaks.",
       ),
     ],
   },
@@ -7205,10 +7189,13 @@ export const blogPosts: BlogPost[] = [
       "A hand signing a document with a pen beside a laptop showing a digital signing screen.",
     body: [
       p(
-        "What is a digital signature? First, what it is not: not a photograph of your wet-ink name dropped onto a page — that is an electronic signature at its weakest, a picture, and a picture copies. A digital signature is arithmetic: a seal computed from the document itself with a key only you hold, such that changing a single comma breaks the seal's mathematics and tells every later reader the page has been touched. It answers three questions at once, and answers them with proofs rather than manners: who sealed this; has it been altered since; and can the sealer later deny it. That third answer is why contracts, banks and governments moved: the seal cannot be unworn.",
+        "Ngozi runs a small logistics company, and her contracts used to cross Nigeria as scanned photographs of signed pages — until a disputed delivery proved that anyone could paste her signature onto any page. What is a digital signature? First, what it is not: not a photograph of a wet-ink name dropped onto a page — that is an electronic signature at its weakest, a picture, and a picture copies. A digital signature is arithmetic: a seal computed from the document itself with a key only you hold, such that changing a single comma breaks the seal's mathematics and tells every later reader the page has been touched.",
       ),
       p(
-        "The machinery is two keys born as a pair. Your private key — long numbers stored on your machine or a bank-grade token — you never show anybody; it seals. Its public key you publish freely; it verifies. Seal with the private, verify with the public: the mathematics runs one way down that street and no other. And the seal is computed not on the whole document but on its fingerprint — a hash, one fixed-length number that any document produces and from which the document cannot be reconstructed, but which changes entirely if a comma changes. So the signature says: the holder of the private key sealed this fingerprint. New fingerprint at the receiving door means the page is not the page that was sealed, and the seal itself says so, loudly.",
+        "It answers three questions at once, and answers them with proofs rather than manners: who sealed this; has it been altered since; and can the sealer later deny it? That third answer is why contracts, banks, and governments moved — the seal cannot be unworn.",
+      ),
+      p(
+        "The machinery is two keys born as a pair. Your private key — long numbers stored on your machine or a bank-grade token — you never show anybody; it seals. Its public key you publish freely; it verifies. Seal with the private, verify with the public: the mathematics runs one way down that street and no other. And notice what gets sealed — not the whole document but its fingerprint: a hash, one fixed-length number that any document produces, from which the document cannot be rebuilt, but which changes entirely if a comma changes. So the signature says: the holder of the private key sealed this fingerprint. A new fingerprint at the receiving door means the page is not the page that was sealed — and the seal itself says so, loudly. One question with both keys in your hands: the public key verifies, so could a stranger seal with it too? ... No. The door only swings one way — verifying proves the seal; it cannot make one.",
       ),
       fig(
         "/images/blog/signing-document-seal.jpg",
@@ -7217,10 +7204,10 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("Who vouches for the key?"),
       p(
-        "One hole remains, and the old city solved it with guilds: anyone can claim a key is theirs — so somebody trusted must vouch. A certificate authority is that vouching office for keys: it checks that the person or company asking, is who they say, and issues a certificate binding the public key to the name — the passport office of the key world. The whole arrangement — keys, certificates, the offices that vouch — carries one industry name: public key infrastructure, or PKI. If you have met the letters in an advert or a chat and found them cold, they only ever meant this warm idea: the guild that makes a stranger's key believable. Your browser carries the list of offices it trusts, which is why the padlock in the address bar — lesson one hundred and ten — means more than a locked road: the site's key was vouched for, the road is sealed, and the seal is checked at your door every visit. The padlock is a digital signature, shown to you a thousand times a day, finally introduced.",
+        "One hole remains, and the old city solved it with guilds: anyone can claim a key is theirs — so somebody trusted must vouch. A certificate authority is that vouching office for keys: it checks that the person or company asking is who they say, and issues a certificate binding the public key to the name — the passport office of the key world. The whole arrangement — keys, certificates, the offices that vouch — carries one industry name: public key infrastructure, or PKI. If the letters ever felt cold in an advert, they only ever meant this warm idea: the guild that makes a stranger's key believable.",
       ),
       p(
-        "You will meet the seal in ordinary places now that it has a name. The updates lesson: good software arrives signed, and the machine refuses what the key does not vouch — that refusal is the update box doing its quiet work. The papers lesson: platforms offer signing so a contract can cross the world with its proof attached. And in the analyst's world of this chapter, signatures decide which program may speak and which document may be believed. Three promises in one seal — who, untouched, irrevocable — and each promise is arithmetic rather than good manners. That is the whole meaning, and you now carry it correctly.",
+        "Your browser carries the list of guilds it trusts, which is why the padlock in the address bar means more than a locked road: the site's key was vouched for, the road is sealed, and the seal is checked at your door on every visit. The padlock is a digital signature, shown to you a thousand times a day, finally introduced.",
       ),
       fig(
         "/images/blog/certificate-padlock-detail.jpg",
@@ -7229,13 +7216,16 @@ export const blogPosts: BlogPost[] = [
       ),
       ul([
         "Say the three promises: who sealed it, untouched since, cannot be denied. That is the definition, whole.",
-        "Private key seals, public key verifies, the authority vouches for the pairing. Three sentences to keep for life.",
-        "Treat your private keys as the notebook's crown jewels: backed up like the papers, shared like the PIN — never.",
+        "Private key seals, public key verifies, the authority vouches for the pairing. Three sentences for life.",
+        "Treat your private keys like the notebook's crown jewels: backed up like the papers, shared like the PIN — never.",
         "A scanned signature photo is a picture. A digital signature is a proof. Ask which one a form truly requires.",
       ]),
-      h2("Trust, at last, in arithmetic"),
+      h2("You will meet the seal in ordinary places"),
       p(
-        "The whole shelf has been one long lesson in verification: check the name before the confirm, the channel before the code, the plate before the door. The digital signature is where that instinct became mathematics — proof that does not tire, does not flatter, and does not forget what it sealed. From here, whenever somebody says signed, you will know to ask: sealed by whose key, vouched by whose office, verified at which door. The next lesson crosses the compound wall entirely, to the people who build the things all this security watches over.",
+        "Now that it has a name, it appears everywhere. The updates lesson: good software arrives signed, and the machine refuses what no trusted key vouches for — that refusal is the update box doing its quiet work. The papers lesson: signing platforms let a contract cross the world with its proof attached. And in the analyst's world of this chapter, signatures decide which program may speak and which document may be believed. Three promises in one seal — who, untouched, irrevocable — and each promise is arithmetic rather than good manners.",
+      ),
+      p(
+        "The whole shelf has been one long lesson in verification: check the name before the confirm, the channel before the code, the plate before the door. The digital signature is where that instinct became mathematics — proof that does not tire, does not flatter, and does not forget what it sealed. From here, whenever somebody says “signed,” you will know to ask: sealed by whose key, vouched by whose office, verified at which door. The next lesson crosses the compound wall entirely, to the people who build the things all this security watches over.",
       ),
     ],
   },
