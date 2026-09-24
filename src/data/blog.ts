@@ -2153,10 +2153,10 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A laptop screen at low brightness in a dim room.",
     body: [
       p(
-        "The screen is a lamp you look into. In a bright Port Harcourt afternoon you need that lamp high or you will lean in and guess. At night, in a room with one bulb, the same setting is a headache and a dead battery. People raise brightness as if it were volume for the eyes, then leave it there until the fan is loud. This lesson is the dimmer, night light if you have it, and why a dim screen is not a dying screen.",
+        "Abosede reads her evening assignments in a back room in Port Harcourt with one bulb overhead, and for two weeks she blamed the laptop for her headaches. The machine was innocent. Its screen was set to the same blazing brightness she needed at two in the afternoon — a lamp turned to noon in a room that had gone to evening. The screen is a lamp you look into. Too bright in a dark room is a headache, not a better computer.",
       ),
       p(
-        "Look for a sun symbol on the F-keys. Fn plus that key, up or down. A bar should appear. On a desktop monitor the dimmer is often a physical button on the screen's own frame, not on the keyboard — the computer can be “bright” in software while the monitor is dark. Two lamps, two taps, like volume.",
+        "Look for a sun symbol on the F-keys. Fn plus that key, up or down, and a bar should appear. On a desktop monitor the dimmer is often a physical button on the screen’s own frame, not on the keyboard — the computer can be “bright” in software while the monitor is dark. Two lamps, two taps, like volume. Where is the dimmer on the machine you use every day — a key, a slider, or a button on the frame? Find it tonight, while you still do not need it.",
       ),
       fig(
         "/images/blog/dim-screen.jpg",
@@ -2165,10 +2165,10 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("Settings, battery, and the false death"),
       p(
-        "Windows: Settings, System, Display, Brightness. A slider. On battery, Windows may dim by itself to save power — useful, surprising if you did not know. Plug in, the screen may jump brighter. That is not a ghost. Some laptops have a conserving mode that caps brightness; look in the maker's power app only if the slider will not rise.",
+        "Windows: Settings, System, Display, Brightness — a slider. On battery, Windows may dim by itself to save power: useful, surprising if you did not know. Plug in and the screen may jump brighter. That is not a ghost. Some laptops even have a conserving mode that caps brightness; look in the maker’s power app only if the slider will not rise.",
       ),
       p(
-        "A screen that is black but the computer is on — power light, fan — may be brightness at zero, or the lid switch, or an extra monitor stealing the picture. Raise brightness first. Then Fn plus the display-switch key if there is one. Then the second-screen lesson. Do not hold the power button yet. A black lamp is not always a dead house.",
+        "And a screen that is black while the computer is clearly on — power light, fan — may be brightness at zero, the lid switch, or an extra monitor stealing the picture. Raise brightness first. Then Fn plus the display-switch key if there is one. Then the second-screen lesson. Do not hold the power button yet. A black lamp is not always a dead house. The screen can look broken and be only dim: that contrast between appearance and cause is the whole lesson in one sentence.",
       ),
       fig(
         "/images/blog/brightness-learner.jpg",
@@ -2177,23 +2177,23 @@ export const blogPosts: BlogPost[] = [
       ),
       ul([
         "Find the sun key. Lower brightness until the bar moves. Raise it again.",
-        "Open Settings, Display, and find the same slider. Confirm they agree.",
+        "Open Settings, Display, and find the same slider. Confirm the key and the slider agree.",
         "If you have Night light — Settings, Display — turn it on for a minute. The page goes warmer. Off again if you dislike it.",
         "At night, prefer a dimmer lamp to a brighter one. Your eyes are not a weakness.",
       ]),
       h2("The lamp and the battery"),
       p(
-        "The screen is the biggest lamp in the machine and the biggest tap on the battery. Outdoors under Lagos sun you will want every lumen; indoors in the evening, half is plenty and the battery thanks you with an extra hour or two. Phones can be told to adjust themselves — Settings, Display, adaptive or automatic brightness — and the machine will dim in the room and brighten in the sun without asking. On the laptop, the function keys with the little suns are the fast road; Settings is the road when the keys are missing. Dim the lamp to the room, the way you would at the generator's mercy.",
+        "The screen is the biggest lamp in the machine and the biggest tap on the battery. Outdoors under Lagos sun you will want every lumen; indoors in the evening, half is plenty and the battery thanks you with an extra hour or two. Phones can adjust themselves — Settings, Display, adaptive brightness — dimming in the room and brightening in the sun without asking. On the laptop, the little suns on the function keys are the fast road; Settings is the road when the keys are missing.",
       ),
       p(
-        "Dark mode is the theme everyone finds in week one. The honest word on it is this: on modern OLED phones, black pixels drink nothing and the battery really does stretch; on ordinary laptop screens it is mostly comfort and fashion. Either way, the night problem is not the theme, it is the hour and the glare. A warm night light that pulls the blue out of the screen after seven in the evening does more for your sleep than any colour scheme, and the oldest setting remains the best one: put the machine down before the body goes down. The lamp serves you. Do not carry it to bed.",
+        "Dark mode is the theme everyone finds in week one, and the honest word on it is this: on modern OLED phones the black pixels drink nothing and the battery really does stretch; on ordinary laptop screens it is mostly comfort. Either way, the night problem is not the theme. It is the hour and the glare. A warm night light that pulls the blue out after seven in the evening does more for your sleep than any colour scheme, and the oldest setting remains the best one: put the machine down before the body goes down. The lamp serves you. Do not carry it to bed.",
       ),
       h2("Night light, and not staring"),
       p(
-        "Night light, or a blue-light filter, tints the screen yellow after sunset. It is optional. It does not repair sleep on its own. What repairs sleep is shutting down, as you learned, and not taking the lamp to bed at full brightness. A phone already taught you that. The laptop is a larger phone in this one way.",
+        "Night light, or a blue-light filter, tints the screen yellow after sunset. It is optional, and it does not repair sleep on its own. What repairs sleep is shutting down — as you learned — and not taking the lamp to bed at full brightness. The laptop is a larger phone in this one way.",
       ),
       p(
-        "If the screen flickers at one brightness and not another, that is a hardware conversation — a shop, after backup. If only one program is dark, it is not brightness; it is that window. And if a cousin set the contrast or inverted colours in Accessibility, Settings, Accessibility, Visual effects will undo it. The lamp has a dimmer. Use it like the one on the wall.",
+        "If the screen flickers at one brightness and not another, that is a hardware conversation — a shop, after backup. If only one program is dark, it is not brightness; it is that window. And if a cousin once set the contrast or inverted colours in Accessibility, Settings, Accessibility, Visual effects will undo it. The lamp has a dimmer. Use it like the one on the wall. Abosede found hers on F6, and the back room became a place where reading could finish.",
       ),
     ],
   },
@@ -2491,10 +2491,10 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A laptop webcam with a small sliding privacy cover closed.",
     body: [
       p(
-        "At the top of the screen, a small eye. That is the webcam. You used it, or will, in a video call. It can also look when you did not mean it to, if a program asks and you say yes forever, or if a site talks you into allowing the camera for a “preview.” This lesson is the light, the permission, a paper curtain, and the difference between camera off in Zoom and actually covered.",
+        "At the top of Omotola’s laptop screen there is a small eye, and she covers it with a folded sticky note. Her brother laughs at her for it. Then he tells her, laughing less, about the shop that ran a “camera test” on his machine and kept the tab open afterward. The webcam can look when you did not mean it to — if a program asks and you say yes forever, or if a site talks you into allowing the camera for a “preview.” This lesson is the light, the permission, a paper curtain, and the difference between camera-off in the meeting and actually covered.",
       ),
       p(
-        "Many laptops light a tiny lamp beside the lens when the camera is on. Believe the lamp. If the lamp is on and you are not in a meeting, close the program that is looking — often a leftover browser tab, or a shop's “test.” Task Manager, if you must. A cover — a sliding plastic, a sticker you can lift, a bit of tape you do not love — is a physical no. Software can lie. Tape cannot.",
+        "Many laptops light a tiny lamp beside the lens when the camera is on. Believe the lamp. If the lamp is on and you are not in a meeting, close the program that is looking — often a leftover browser tab, or that shop’s “test.” Task Manager, if you must. A cover — a sliding plastic, a sticker you can lift, a bit of tape you do not love — is a physical no. Software can lie. Tape cannot. Which of the two doors would you trust with your bedroom: one that promises, or one that is shut?",
       ),
       fig(
         "/images/blog/webcam-cover.jpg",
@@ -2503,10 +2503,10 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("Permission is a yes you can take back"),
       p(
-        "Windows: Settings, Privacy & security, Camera. A list of programs allowed to look. Turn off the ones you do not recognise. A browser may ask, site by site. Allow for a class. Deny for a random page that wants to “verify you are human” with your face. You can walk. The same list exists for the microphone. They are neighbours. Treat them both as doors.",
+        "Windows: Settings, Privacy & security, Camera — a list of programs allowed to look. Turn off the ones you do not recognise. A browser may ask, site by site: Allow for a class. Deny for a random page that wants to “verify you are human” with your face. You can walk. The same list exists for the microphone; they are neighbours. Treat them both as doors.",
       ),
       p(
-        "In a meeting, camera off is polite and not the same as covered. A bug, a wrong click, or a host who “enables video” can still open the eye if the cover is off. Cover after class if you share a room with family in the background. You do not owe a stranger your unmade bed.",
+        "In a meeting, camera off is polite, and it is not the same as covered. A bug, a wrong click, or a host who “enables video” can still open the eye if the cover is off. Cover after class if you share a room with family in the background. You do not owe a stranger your unmade bed. It looks like paranoia from the outside; it is actually housekeeping — the same habit as closing your curtains before nightfall.",
       ),
       fig(
         "/images/blog/webcam-preview.jpg",
@@ -2514,17 +2514,17 @@ export const blogPosts: BlogPost[] = [
         "Preview before Join, as in the video-call lesson. If the preview is you, the curtain is open. If you did not mean that, close the curtain, then the permission.",
       ),
       ul([
-        "Find the lens. Cover it with a finger. Open the camera app or Meet preview. Confirm you see dark, not your finger's skin if the cover is opaque.",
+        "Find the lens. Cover it with a finger. Open the camera app or Meet preview. Confirm you see dark.",
         "Open Settings, Camera. Read the list of allowed programs. Switch off one you do not use.",
         "Join nothing. Confirm the lamp is off.",
         "A sticky note folded once is a curtain if you have no slider. Do not use wet glue.",
       ]),
       h2("The little light, and the paper sticker"),
       p(
-        "Beside the lens there is almost always a small light, and its word is simple: light on, camera looking. Trust it as a rule on any machine made this decade, with one honest caveat — clever malware can sometimes keep a camera warm while dimming the light, which is why the software door matters more than the hardware one. Windows keeps a list: Settings, Privacy, Camera — every program that has ever asked for the lens, with an off switch beside each. Walk the list once. Turn off the camera for anything that has no business seeing you. A torch with no switch is not a torch; it is a stranger's lamp.",
+        "Beside the lens there is almost always a small light, and its word is simple: light on, camera looking. Trust it as a rule on any machine made this decade, with one honest caveat — clever malware can sometimes keep a camera warm while dimming the light, which is why the software door matters as much as the hardware one. Walk that Windows list once: every program that has ever asked for the lens, with an off switch beside each. A torch with no switch is not a torch; it is a stranger’s lamp.",
       ),
       p(
-        "The paper sticker is the low-technology answer and there is no shame in it. A small square of paper over the lens, slid aside only for the video call, defeats every clever program ever written and costs nothing. The office joke is real security. Then the last layer, which is really the first: what the camera can see behind you. Before the call, look at your own preview the way a visitor would — the bed, the wall, the documents on the shelf, the other people in the room. The lens is a window in both directions. Close the curtains you can, then wave.",
+        "The paper sticker is the low-technology answer and there is no shame in it. A small square over the lens, slid aside only for the call, defeats every clever program ever written and costs nothing. The office joke is real security. Then the last layer, which is really the first: what the camera can see behind you. Before the call, look at your own preview the way a visitor would — the bed, the wall, the documents on the shelf, the other people in the room. The lens is a window in both directions. Close the curtains you can, then wave.",
       ),
       h2("Other people, and shops"),
       p(
@@ -4670,10 +4670,10 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A spreadsheet scrolled down with the header row still visible.",
     body: [
       p(
-        "Row 1 says Name, Item, Amount. Row 80 is a person you are checking. By the time you are at 80, row 1 has gone to heaven and you are guessing which column is the phone. Freeze is a pin through the header. The names still scroll. The labels do not. This lesson is View, Freeze top row, and unfreezing when the pin is in the wrong place.",
+        "Ekene’s attendance register runs to row 143, and every December he plays the same guessing game: scroll to row 80, forget which column is the phone number, scroll all the way home again. Row 1 says Name, Item, Amount. By row 80 it has gone to heaven. Freeze is a pin through the header: the names still scroll, the labels do not. This lesson is View, Freeze top row — and unfreezing when the pin lands in the wrong place.",
       ),
       p(
-        "Click anywhere in the sheet. View, Freeze panes, Freeze top row. Scroll down. Row 1 should sit still. Freeze first column is the cousin, for a wide sheet where the name on the left should not vanish when you hunt amounts on the right. Freeze panes (the general one) pins above and left of the cell you selected — so click the cell just under the header and just right of the names, then Freeze panes, if you want both. If that sounds like a knot, freeze top row only. It solves most registers.",
+        "Click anywhere in the sheet. View, Freeze panes, Freeze top row. Scroll down: row 1 should sit still. Freeze first column is the cousin, for a wide sheet where the name on the left should not vanish when you hunt amounts on the right. If you want both, click the cell just under the header and just right of the names, then Freeze panes — the general one pins above and left of the cell you selected. If that sounds like a knot, freeze top row only. It solves most registers. And a first retrieval before we walk on: what exactly did the pin change — the data, or the window? The window. The data never moves.",
       ),
       fig(
         "/images/blog/freeze-panes.jpg",
@@ -4682,10 +4682,10 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("When the pin is wrong"),
       p(
-        "If you froze with a random cell selected, a line may cut the sheet in half and half your data will not scroll. View, Unfreeze panes. Then freeze top row, which does not depend on which cell is active. A thick grey line under row 1 is normal. A thick line under row 20 usually means you froze too late. Unfreeze, try again.",
+        "If you froze with a random cell selected, a line may cut the sheet in half and half your data will not scroll. View, Unfreeze panes. Then Freeze top row, which does not care which cell is active. A thick grey line under row 1 is normal. A thick line under row 20 usually means you froze too late. Unfreeze, try again. There is nothing to undo in the data and nothing to fear; the pins are furniture for the screen.",
       ),
       p(
-        "Sheets in the browser: View, Freeze, 1 row. Same idea. Split is a different tool — two scroll bars on one sheet — and you do not need it for a fee list. If you split by accident, View, Remove split, or drag the split bar to the edge until it dies.",
+        "Sheets in the browser: View, Freeze, 1 row. Same idea. Split is a different tool — two scroll bars on one sheet — and you do not need it for a fee list. If you split by accident, View, Remove split, or drag the split bar to the edge until it dies. It looks like the same grey line; actually a different tool entirely — one is a pin, the other is a pair of scissors.",
       ),
       fig(
         "/images/blog/header-stuck.jpg",
@@ -4696,18 +4696,18 @@ export const blogPosts: BlogPost[] = [
         "Make or open a list longer than the screen. Freeze top row. Scroll. Confirm the headers stay.",
         "Unfreeze. Scroll. Confirm they leave. Freeze again if you like living with the pin.",
         "Do not freeze in the middle of a table as a way to “lock” amounts. That is not protection. That is a stuck window.",
-        "Save. Freeze is part of the file's view on this machine. Another person may not see your pin. The data is still there.",
+        "Save. Freeze is part of the file’s view on this machine. Another person may not see your pin. The data is still there.",
       ]),
       h2("The column that names the rows"),
       p(
-        "Rows can be pinned from the side as well as from the top. When the register runs wide — names in column A, twelve months of figures from B to M — the names scroll away first and the figures arrive anonymous. The cure is Freeze at selection: click into cell B2 and the machine reads your intent exactly, pinning row one above and column A to the left. Now every figure keeps its owner in view across the whole width of the sheet. Unfreeze the same way when the meeting is over. The pins are for reading, not for the data itself; nothing in the cells changes while the window is pinned.",
+        "Rows can be pinned from the side as well as from the top. When the register runs wide — names in column A, twelve months of figures from B to M — the names scroll away first and the figures arrive anonymous. The cure is Freeze at selection: click into cell B2 and the machine reads your intent exactly, pinning row one above and column A to the left. Now every figure keeps its owner in view across the whole width of the sheet. Unfreeze the same way when the meeting is over.",
       ),
       p(
-        "One honest limit: the frozen bands still print. Pinning is furniture for the screen — it does not repeat column A across printed pages. For the printed register, the twin of this tool is the print setting called repeat rows at top, which does the same kindness for paper. Screen pins and print pins live in different houses and both are worth meeting. And when a freeze lands wrong — row fourteen pinned instead of row one — there is nothing to undo in the data and nothing to fear. Unfreeze Panes, and pin again from the right cell. The window furniture rearranges as often as you like.",
+        "One honest limit: the frozen bands still print. Pinning does not repeat column A across printed pages. For paper, the twin of this tool is the printing lesson’s setting — repeat rows at top — which does the same kindness for the page. Screen pins and print pins live in different houses, and both are worth meeting.",
       ),
       h2("What freeze is not"),
       p(
-        "It is not protect sheet. It is not hide. It is not a backup. People still edit frozen headers if they click them. If you want the header safe, that is a different lock, and you do not need it yet. For today: a ruler that stays while the register walks. When you can name column C at row 90 without scrolling home, the pin has earned its keep.",
+        "It is not Protect Sheet. It is not Hide. It is not a backup. People still edit frozen headers if they click them; if you want the header safe, that is a different lock, and you do not need it yet. For today: a ruler that stays while the register walks. When you can name column C at row 90 without scrolling home — as Ekene now can, every December — the pin has earned its keep.",
       ),
     ],
   },
@@ -5793,10 +5793,10 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "Two thumbs typing on a phone keyboard held in both hands.",
     body: [
       p(
-        "The computer keyboard has a home row and ridges on F and J. The phone has a sheet of glass, and yet it is the keyboard you use most — the transfers, the WhatsApps, the searches, the letters begun on the bus. It deserves the same quiet hour. Most people have typed on it for years and were never shown a single trick, the way people carry keys for years without knowing what the deadbolt is.",
+        "Sadiq types more on glass than on any keyboard he will ever own — the transfers, the WhatsApps, the letters begun on the bus to work. He has typed on it for years and was never shown a single trick, the way people carry keys for years without knowing what the deadbolt is. The computer keyboard has a home row and ridges on F and J; the phone has a sheet of glass, and yet it is the keyboard used most. It deserves the same quiet hour.",
       ),
       p(
-        "Look at the keyboard as a set of floors. The ground floor is the letters. A key marked ?123 or 123 lifts you to the numbers and the common symbols; a second shift on that floor reveals the rarer ones. The arrow above the letters is Shift — tap once for one capital, as on the computer, and tap twice only if you truly intend to shout. The key that rubs out is Backspace, same as ever. And long-press changes everything: hold a letter and its hidden relatives appear. Hold E and you meet the accents the typing lesson gave you on the computer. Hold N and some keyboards will offer the naira; others keep it on the symbols floor, and now you know where to look.",
+        "Look at the keyboard as a set of floors. The ground floor is the letters. A key marked ?123 lifts you to the numbers and the common symbols; a second shift on that floor reveals the rarer ones. The arrow is Shift — tap once for one capital, twice only if you truly intend to shout. And long-press changes everything: hold a letter and its hidden relatives appear. Hold E and you meet the accents the typing lesson gave you on the computer. Hold N and some keyboards offer the naira; others keep it on the symbols floor, and now you know where to look.",
       ),
       fig(
         "/images/blog/phone-keyboard-hands.jpg",
@@ -5805,11 +5805,11 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("The tricks that save the thumbs"),
       p(
-        "Hold the space bar. On most keyboards the letters fade and the cursor becomes something you can drag through the sentence — no more stabbing a fingertip between two letters and hoping. Double-tap the space bar and most keyboards hand you a full stop, a space, and a capital at once — a small luxury for the end of sentences. Then swipe typing, if your keyboard offers it: rest a thumb on the first letter and drag through the word without lifting, lifting only at the end. It feels like writing in one stroke of ink. Practise on your own name ten times and you will not go back.",
+        "Hold the space bar. On most keyboards the letters fade and the cursor becomes something you can drag through the sentence — no more stabbing a fingertip between two letters and hoping. Double-tap the space bar and most keyboards hand you a full stop, a space, and a capital at once. Then swipe typing, if your keyboard offers it: rest a thumb on the first letter and drag through the word without lifting, lifting only at the end. It feels like writing in one stroke of ink. Practise your own name ten times and you will not go back. Which costs more effort by Friday: one drag across a word, or four careful taps and a correction? The drag. The thumbs already knew; nobody had told them.",
       ),
       h2("Autocorrect is a cousin, not a teacher"),
       p(
-        "The keyboard will correct your village's name into a European lake and a whole Pidgin sentence into nonsense, with great confidence. You met this manner in the spell-check lesson: it is a cousin, not a teacher. When a word comes out wrong, tap it — the original often appears above, and tapping that returns it. When you spell a name the right way once and refuse the correction, many keyboards remember and stop arguing. Feed it the names of your people, your street, your bank. The keyboard is an app; it can be taught the household.",
+        "The keyboard will correct your village’s name into a European lake and a whole Pidgin sentence into nonsense, with great confidence. You met this manner in the spell-check lesson: it is a cousin, not a teacher. When a word comes out wrong, tap it — the original often appears above, and tapping that returns it. When you spell a name the right way once and refuse the correction, many keyboards remember and stop arguing. Feed it the names of your people, your street, your bank.",
       ),
       fig(
         "/images/blog/phone-keyboard-longpress.jpg",
@@ -5820,18 +5820,18 @@ export const blogPosts: BlogPost[] = [
         "Type a sentence that needs a number and a symbol, visiting the number floor no more than twice.",
         "Hold the space bar and slide the cursor into the middle of a sentence. Fix one letter. Release.",
         "Long-press five different keys and see what each hides. Note where the naira lives on yours.",
-        "Type your street's name and refuse the correction once. See whether the keyboard learns.",
+        "Type your street’s name and refuse the correction once. See whether the keyboard learns.",
       ]),
       h2("The names autocorrect cannot know"),
       p(
         "Every keyboard has a personal dictionary hiding in its settings, and the day you feed it your world is the day the red underlines quiet down. Long-press a wrongly flagged name and the menu often offers to learn it; or walk into the keyboard settings and add the names yourself — the surnames, the town, the market, the words in your language that English insists on correcting. Ten words fed once saves a thousand small corrections a month. The machine is willing to learn your vocabulary. It cannot guess it from the dictionary of another country.",
       ),
       p(
-        "And when autocorrect replaces something you meant, the undo is gentler than you think: tap the word it just changed and the original waits there to be taken back — no menu diving, no settings. The keyboard will also un-learn: long-press a suggestion in the strip above the keys and it can be dragged away like a yam peel. For Yoruba, Igbo, and Hausa typing, add the language keyboard and switch with the globe key rather than fighting English for every tone mark. The keyboard is the smallest computer you own. Now its dictionary knows your names.",
+        "And when autocorrect replaces something you meant, the undo is gentler than you think: tap the word it just changed and the original waits to be taken back. The keyboard will also un-learn — long-press a suggestion in the strip above the keys and drag it away like a yam peel. For Yoruba, Igbo, and Hausa typing, add the language keyboard and switch with the globe key rather than fighting English for every tone mark.",
       ),
       h2("When it misbehaves"),
       p(
-        "The keyboard vanished? Tap the box you were typing into; it is shy, not broken. It switched itself to French overnight? Look for the globe or language key beside the space bar. The clicks and vibrations madden you? That lives in the keyboard's own settings, usually behind a gear or a long-press on the comma. Nothing here needs a technician. The keyboard is the smallest computer you own, and like all of them, it only wants to be introduced properly.",
+        "The keyboard vanished? Tap the box you were typing into; it is shy, not broken. It switched itself to French overnight? Look for the globe or language key beside the space bar. The clicks and vibrations madden you? That lives in the keyboard’s own settings, usually behind a gear or a long-press on the comma. Nothing here needs a technician. The keyboard is the smallest computer you own — and now its dictionary knows your names.",
       ),
     ],
   },
@@ -5958,7 +5958,7 @@ export const blogPosts: BlogPost[] = [
       "A laptop screen showing an online form with a file chosen and its name beside the button.",
     body: [
       p(
-        "The Downloads lesson was about files coming down — parcels landing on the mat. The other half of an online life is files going up. A job portal asks for your CV. A school asks for the certificate. A form asks for a passport photograph. Each is the same small act: the machine asks you to choose a file, you choose it, it travels up. People fear this moment more than any other in a form, and it does not deserve the fear. It deserves a slow hand.",
+        "The job portal closed at midnight and Bilikisu had one hour, one passport photograph, and a healthy fear of the Upload button. She had done the other direction a hundred times — files coming down, parcels landing on the mat. This is the other half of an online life: files going up. A portal asks for your CV. A school asks for the certificate. A form asks for a face. Each is the same small act: the machine asks you to choose a file, you choose it, it travels up. People fear this moment more than any other in a form, and it does not deserve the fear. It deserves a slow hand.",
       ),
       p(
         "The button has many names — Choose file, Upload, Attach, Select — but one behaviour. Tap it and a window opens onto your own rooms: Documents, Pictures, the Downloads mat. Walk to where the file lives, tap it once, and its name appears beside the button like a label on a parcel. That is the whole act. What frightens people is not the choosing. It is the size limits and the waiting.",
@@ -5970,10 +5970,10 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("Size limits, and the bar that must finish"),
       p(
-        "Portals state limits the way airlines state luggage: maximum 500 KB, maximum 2 MB. You already know what KB and MB mean, and you already know how to shrink a photograph. When a form refuses a file for size, the answer is to shrink the file — not to blame the school, not to send the document to a stranger who offers help. When the file is accepted, a bar begins to move. Let it finish. Closing the page mid-upload is hanging up mid-sentence: the form arrives, the paper does not, and nobody writes to tell you. Wait for the word done, the green tick, or the file's name resting quietly in its slot.",
+        "Portals state limits the way airlines state luggage: maximum 500 KB, maximum 2 MB. You already know what KB and MB mean, and you already know how to shrink a photograph. When a form refuses a file for size, the answer is to shrink the file — not to blame the school, and not to send the document to a stranger who offers to “fix it” for you. When the file is accepted, a bar begins to move. Let it finish. Closing a page mid-upload is hanging up mid-sentence: the form arrives, the paper does not, and nobody writes to tell you. Wait for the word done, the green tick, or the file’s name resting quietly in its slot. Which tells you more: the button you pressed, or the bar’s journey to the end? The bar. The button is only the promise.",
       ),
       p(
-        "On the phone, the chooser offers three doors: Camera, Files, Drive. Camera takes a fresh photograph — right for a form that wants your face today. Files walks to the scan you already made. Drive reaches what you have parked in the cloud, which the next lesson turns into a system. For papers that exist as scans, choose Files. Fresh photographs of old certificates come out crooked, with shadows like bruises.",
+        "On the phone, the chooser offers three doors: Camera, Files, Drive. Camera takes a fresh photograph — right for a form that wants your face today. Files walks to the scan you already made. Drive reaches what you parked in the cloud, which the next lesson turns into a system. For papers that exist as scans, choose Files: fresh photographs of old certificates come out crooked, with shadows like bruises.",
       ),
       fig(
         "/images/blog/upload-finished.jpg",
@@ -5982,20 +5982,20 @@ export const blogPosts: BlogPost[] = [
       ),
       ul([
         "Practise once where nothing is at stake: upload a photograph to any profile that asks. Walk the whole road for exercise.",
-        "Before a real application, check the size limit first, then check your file's size. Match the luggage to the airline.",
+        "Before a real application, check the size limit first, then your file’s size. Match the luggage to the airline.",
         "Never close a page while a bar is moving. Go and wash a plate instead.",
         "When the tick comes, screenshot it. The slip is the proof you were there, on time, complete.",
       ]),
       h2("The wrong parcel, posted cleanly"),
       p(
-        "It happens to everybody once a quarter: the letter about the land goes to the office with the photographs of the naming ceremony still attached, or the invoice for Chief goes with the draft that says Chief pays late. The cure is not shame; it is one glance at the attach row before the send. Read the filenames out loud in your head — not the icons, the names — and confirm they belong to this letter and this person. That glance is the parcel counter's final question: is this the box you meant, sir. It takes four seconds. It has saved a thousand careers.",
+        "It happens to everybody once a quarter: the letter about the land arrives with the naming-ceremony photographs still attached, or the invoice for Chief goes with the draft that says Chief pays late. The cure is not shame; it is one glance at the attach row before the send. Read the filenames out loud in your head — not the icons, the names — and confirm they belong to this letter and this person. That glance is the parcel counter’s final question: is this the box you meant, sir? It takes four seconds. It has saved a thousand careers.",
       ),
       p(
-        "When the wrong parcel is already in the van, send the recovery letter at once: brief, warm, and attached with the right file. Dear Mrs Adeyemi, the previous mail carried the wrong attachment in error — please delete it, and here is the correct one. No long apology, no drama, no blaming the machine. Most recipients will smile; everybody has done it. And build the small prevention: name every outgoing file properly before the mail app ever sees it, so the filenames in the attach row read like a manifest instead of a pile. The post office never opened a parcel to check. Neither will Send.",
+        "When the wrong parcel is already in the van, send the recovery letter at once: brief, warm, and attached with the right file. “Dear Mrs Adeyemi, the previous mail carried the wrong attachment in error — please delete it, and here is the correct one.” No long apology, no drama, no blaming the machine. Most recipients will smile; everybody has done it. And build the small prevention: name every outgoing file properly before the mail app ever sees it, so the filenames in the attach row read like a manifest instead of a pile. The post office never opened a parcel to check. Neither will Send.",
       ),
       h2("The slip is the receipt"),
       p(
-        "Most portals, after an upload, show the file's name, or let you download what you submitted. Do download it, once, and look at it with your own eyes. The wrong file — the scanned WAEC where the birth certificate should be — has travelled farther than most lies, and the portal will judge it without pity. Then print or PDF the final confirmation page, the way you keep a teller's slip at the bank. Applications are lost not at the choosing but in the last ten seconds: the bar abandoned, the wrong parcel posted, the slip never kept. You are past all three now.",
+        "Most portals, after an upload, show the file’s name, or let you download what you submitted. Do download it, once, and look at it with your own eyes. The wrong file — the scanned WAEC where the birth certificate should be — has travelled farther than most lies, and the portal will judge it without pity. Then print or PDF the final confirmation page, the way you keep a teller’s slip at the bank. Applications are lost not at the choosing but in the last ten seconds: the bar abandoned, the wrong parcel posted, the slip never kept. Bilikisu submitted at 11:47 that night, kept her slip, and slept. You are past all three dangers now.",
       ),
     ],
   },
@@ -6013,7 +6013,7 @@ export const blogPosts: BlogPost[] = [
       "A phone held in both hands showing cloud storage folders named Papers, Certificates and IDs.",
     body: [
       p(
-        "Consider what sits in that bag: birth certificate, WAEC, the degree, NYSC, the CV. One bag. One rain. One theft on a Thursday. The drawer at home holds the originals, but the drawer is in the same house as the leaking roof, and papers do not swim. What the cloud lesson explained, this lesson does: one evening of scanning gives you a set of papers no bag can lose and no rain can reach.",
+        "Amara’s bag did not survive the motor park at Onitsha — snatched between the touts and the 6 p.m. bus — and inside it rode her birth certificate, WAEC, the degree, NYSC, and the only copy of her CV. One bag. One thief. One Thursday. The drawer at home holds the originals, but the drawer sits in the same house as the leaking roof, and papers do not swim. What the cloud lesson explained, this lesson does: one evening of scanning gives you a set of papers no bag can lose and no rain can reach.",
       ),
       p(
         "The work is plain. Scan each paper properly — good light, flat surface, all four corners, the way the scanning lesson taught — or photograph it squarely if a scanner is far. Then give each one a name that will still make sense in ten years: waec-certificate-2014, not scan12, not IMG_0093. Renaming matters more than scanning; a good paper with a bad name is lost in your own cupboard. Put them in Drive, in a folder called Papers, with rooms inside it: Certificates, IDs, Work. One evening. Done for life.",
@@ -6025,10 +6025,10 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("What this buys you"),
       p(
-        "A cyber café at eight in the morning, before an interview, with no flash drive: you sign in, the papers are there, you download, you print, you walk in calm. A form that wants the certificate: you upload straight from Drive, no cables, no borrowing a neighbour's laptop. The bag can be stolen in Owerri and the papers still arrive in Lagos by nightfall. This is what backup before the light goes meant — applied to the papers that carry your name.",
+        "A cyber café at eight in the morning, before an interview, with no flash drive: you sign in, the papers are there, you download, you print, you walk in calm. A form that wants the certificate: you upload straight from Drive, no cables, no borrowing a neighbour’s laptop. The bag can be stolen in Onitsha and the papers still arrive in Lagos by nightfall. This is what backup-before-the-light-goes meant — applied to the papers that carry your name. Where would you be standing tomorrow morning if your bag vanished tonight? If the honest answer is “nowhere,” tonight is the scanning evening.",
       ),
       p(
-        "Now the other half, which is where people hurt themselves. A file in Drive is private until you say share, so say it carefully. Certificates and IDs go to the school, the employer, the portal — one address at a time, or a link set so only they can open it. They do not go to groups. They do not go to a helper's WhatsApp. The spirit of the OTP lesson applies: a thing that proves you are you is a key, and keys are not posted on walls.",
+        "Now the other half, which is where people hurt themselves. A file in Drive is private until you say share, so say it carefully. Certificates and IDs go to the school, the employer, the portal — one address at a time, or a link set so only they can open it. They do not go to groups. They do not go to a helper’s WhatsApp. The spirit of the OTP lesson applies: a thing that proves you are you is a key, and keys are not posted on walls.",
       ),
       fig(
         "/images/blog/certificate-folder.jpg",
@@ -6043,14 +6043,14 @@ export const blogPosts: BlogPost[] = [
       ]),
       h2("The names on the scans, and one folder per life"),
       p(
-        "A hundred scans named scan001 through scan100 is a bag with no pockets — everything is in there and nothing can be found. Name each page the way a clerk would: the person, the paper, the year — Nnamdi-WAEC-2019, Nnamdi-JAMB-2020, Receipt-rent-Ikenna-2026. The name sorts the folder automatically and the search from lesson thirty-three finds any paper in four letters. Naming is not fussiness. It is the difference between a filing cabinet and a heap, and it costs ten seconds per page at the moment of saving.",
+        "A hundred scans named scan001 through scan100 is a bag with no pockets — everything is in there and nothing can be found. Name each page the way a clerk would: the person, the paper, the year — Nnamdi-WAEC-2019, Nnamdi-JAMB-2020, Receipt-rent-Ikenna-2026. The name sorts the folder automatically, and the file-search lesson finds any paper in four letters. Naming is not fussiness. It is the difference between a filing cabinet and a heap, and it costs ten seconds per page at the moment of saving.",
       ),
       p(
-        "Then build the shelf to match: one folder per person or per matter, sitting inside your cloud drive beside the school and work folders. Each person's papers in one drawer — certificates, letters, receipts, the identity documents that must often be resent. The folder per kind of paper across all people looks tidy and fails at the moment of need, which is always about one person at one counter. Keep the sensitive pages out of shared links and out of any account that a business centre signs you into. The bag is fireproof now. The shelf is findable. The naming is what holds the two together.",
+        "Then build the shelf to match: one folder per person or per matter, inside your cloud drive beside the school and work folders. Each person’s papers in one drawer — certificates, letters, receipts, the identity documents that must often be resent. A folder-per-kind-of-paper across all people looks tidy and fails at the moment of need, which is always about one person at one counter. Keep the sensitive pages out of shared links and out of any account that a business centre signs you into. The bag is fireproof now. The shelf is findable. The naming is what holds the two together.",
       ),
       h2("One evening, then a habit"),
       p(
-        "Do not attempt the whole drawer in one heroic night. One paper each evening, the way the keyboard was learned — ten honest minutes. The originals stay where your mother can find them; the copies sit above the flood line, above the fire, above the thief. A house may stand for eighty years without trouble. The papers cost you one week of evenings to make sure that if it does not, your name survives the trouble.",
+        "Do not attempt the whole drawer in one heroic night. One paper each evening, the way the keyboard was learned — ten honest minutes. The originals stay where your mother can find them; the copies sit above the flood line, above the fire, above the thief. Amara rebuilt every paper in nine evenings that September, and the December when the roof finally leaked, the only casualty was the ceiling. A house may stand for eighty years without trouble. The papers cost you one week of evenings to make sure that if it does not, your name survives the trouble.",
       ),
     ],
   },
@@ -7288,10 +7288,13 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A team standing around a board covered in sticky notes, one person speaking.",
     body: [
       p(
-        "Every technology job advert carries two words like a password: agile, and DevOps. They sound like philosophy and machinery, and both are simpler than their incense. Start with agile, because you already practise it. The trader who wants a new line of goods does not order a container of a hundred designs and reveal it at Christmas. She buys ten of three designs, puts them out on Tuesday, watches what Onitsha road actually takes, and orders more of what moved by Friday. Small, shown early, adjusted honestly. That is the agile methodology — a way of building anything in short cycles with real feedback, instead of one grand reveal a year late that the market has outgrown.",
+        "Olumide had been reading job adverts with a bold heart until he hit the two words that stopped him like a locked gate: agile, and DevOps. They sound like philosophy and machinery, and both are simpler than their incense. He asked an older hand at the workshop to explain them “at the market,” and this is what she said.",
       ),
       p(
-        "The old way — the industry calls it waterfall — is the container: plan everything at the start, build for months, present at the end, and pray the market still wants what was planned. Agile answers with the sprint: a short fixed cycle, often two weeks, at the end of which something real and usable exists and is shown to the people who will use it, whose answers steer the next sprint. The rituals you will meet in adverts live inside that frame: the standup — the team standing, a few minutes each morning, each person saying what moved yesterday, what moves today, what is stuck; and the board — the wall of cards in three columns, to do, doing, done, which is the sprint's diary in public. Ask a trader about her Tuesday and she will describe the board without the vocabulary.",
+        "Start with agile, because you already practise it. The trader who wants a new line of goods does not order a container of a hundred designs and reveal it at Christmas. She buys ten of three designs, puts them out on Tuesday, watches what Onitsha road actually takes, and orders more of what moved by Friday. Small, shown early, adjusted honestly. That is agile: building anything in short cycles with real feedback, instead of one grand reveal a year late that the market has outgrown.",
+      ),
+      p(
+        "The old way — the industry calls it waterfall — is the container: plan everything at the start, build for months, present at the end, and pray the market still wants what was planned. Agile answers with the sprint: a short fixed cycle, often two weeks, at the end of which something real and usable exists and is shown to the people who will use it, whose answers steer the next sprint. The rituals you will meet in adverts live inside that frame: the standup — the team standing, a few minutes each morning, each person saying what moved yesterday, what moves today, what is stuck; and the board — the wall of cards in three columns, to do, doing, done. Ask a trader about her Tuesday and she will describe the board without the vocabulary. What would your own week look like on such a board? Most people discover they have been sprinting for years without the word.",
       ),
       fig(
         "/images/blog/standup-board-sticky.jpg",
@@ -7300,10 +7303,10 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("DevOps: the builder carries it live"),
       p(
-        "DevOps — said as one word, a marriage of development and operations — fixes an old divorce. The builders wrote the program and threw it over the wall to a separate team who ran it; the runners met the problems, the builders met the complaints secondhand, and the wall between them was where fixes went to die. DevOps ends the divorce: the people who build carry it live, and the people who run it build the running. Its most famous machinery is the pipeline — the conveyor that carries finished work to the street automatically: code is checked, tested, and delivered live in small steps, so that releasing a change is a Tuesday habit rather than a midnight ceremony with candles and prayers.",
+        "DevOps — said as one word, a marriage of development and operations — fixes an old divorce. The builders wrote the program and threw it over the wall to a separate team who ran it; the runners met the problems, the builders met the complaints secondhand, and the wall between them was where fixes went to die. DevOps ends the divorce: the people who build carry it live, and the people who run it build the running. Its most famous machinery is the pipeline — the conveyor that carries finished work to the street automatically: code is checked, tested, and delivered live in small steps, so releasing a change is a Tuesday habit rather than a midnight ceremony with candles and prayers.",
       ),
       p(
-        "The practices behind the word, named so adverts read plainly: continuous integration — every builder's work joins the shared house daily and is tested as it arrives, so surprises are caught the day they are born; continuous delivery — the conveyor to live, fed constantly, each small step reversible; monitoring — the sensors lesson grown up, watching the live thing and shouting before the customers do; and automation everywhere, because a machine that does the same steps identically every time is the opposite of the tired Thursday technician. When an advert says DevOps practices, it means exactly this list, and you may now read the sentence without blinking.",
+        "The practices behind the word, named so adverts read plainly: continuous integration — every builder’s work joins the shared house daily and is tested as it arrives, so surprises are caught the day they are born; continuous delivery — the conveyor to live, fed constantly, each small step reversible; monitoring — the sensors lesson grown up, watching the live thing and shouting before the customers do; and automation everywhere, because a machine that repeats the same steps identically is the opposite of the tired Thursday technician. When an advert says DevOps practices, it means exactly this list, and you may now read the sentence without blinking. One contrast to keep in the pocket: agile is how the work moves in the room; DevOps is how the finished work reaches the street. Adverts blur them. You need not.",
       ),
       fig(
         "/images/blog/deploy-pipeline-screen.jpg",
@@ -7311,14 +7314,17 @@ export const blogPosts: BlogPost[] = [
         "The conveyor to the street: checked, tested, delivered — small steps, each reversible. Release as habit, not as ceremony.",
       ),
       ul([
-        "Say agile at the market's tempo: small, shown early, adjusted honestly. Two weeks, something real, real feedback.",
-        "Standup, sprint, board — three words you already own the meaning of. Use them at your next job interview with a straight back.",
+        "Say agile at the market’s tempo: small, shown early, adjusted honestly. Two weeks, something real, real feedback.",
+        "Standup, sprint, board — three words you already own the meaning of. Use them at your next interview with a straight back.",
         "DevOps in one sentence: the builders carry it live, the runners build, and the conveyor makes it a habit.",
-        "Try the method on anything of your own this week — the shop's stock, the church project. Two-week cycles need no software to begin.",
+        "Try the method on anything of your own this week — the shop’s stock, the church project. Two-week cycles need no software to begin.",
       ]),
       h2("The shelf, from the first sitting to the street"),
       p(
-        "And so the chapter closes where the reader now stands: at the edge of a world whose vocabulary you hold. The analyst and the room that never sleeps, the ledger and the gate that trusts nobody, the fence walk, the grammar of the roads, the seal that cannot be photocopied, the stall, the teaching room, and the teams that build in Tuesdays. None of it was magic; none of it was closed to you; it was only never explained at this table before. The notes end here for now — but the reader who began at lesson one, afraid of the power button, has just read the job adverts without flinching. Walk into any of these rooms and say you came from the shelf. Then come back and tell us which chair fit.",
+        "And so this road closes where the reader now stands: at the edge of a world whose vocabulary you hold. The analyst and the room that never sleeps, the ledger and the gate that trusts nobody, the fence walk, the grammar of the roads, the seal that cannot be photocopied, the stall, the teaching room, and the teams that build in Tuesdays. None of it was magic; none of it was closed to you; it was only never explained at this table before.",
+      ),
+      p(
+        "The notes end here for now — but the reader who began at the very first lesson, afraid of the power button, has just read the job adverts without flinching. Walk into any of these rooms and say you came from the shelf. Then come back and tell us which chair fit.",
       ),
     ],
   },
@@ -8807,10 +8813,10 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A thumb dialing a short banking code on a small phone under a dim bulb.",
     body: [
       p(
-        "The data finished on the twelfth of the month, as it always does, and the school fees refused to wait for the next bundle. Then the trader beside you — the one with the small phone with the torch that barely works — dialed five symbols and moved the money anyway. That is USSD: the bank's short code, spoken over the call network instead of the internet. It works on every phone ever sold in this country, it works when the data is dead, when the smartphone is charging in another room, when the generator is off and the network bar is one thin line. Every Nigerian who moves money should hold this key, and hold it correctly, because the same door that carries your money has been copied by collectors.",
+        "The data finished on the twelfth of the month, as it always does, and the school fees refused to wait for the next bundle. Then the trader beside Habiba — the one with the small phone whose torch barely works — dialled five symbols and moved the money anyway. That is USSD: the bank’s short code, spoken over the call network instead of the internet. It works on every phone ever sold in this country — when the data is dead, when the smartphone is charging in another room, when the generator is off and the network bar is one thin line. Every Nigerian who moves money should hold this key, and hold it correctly, because the same door that carries your money has been copied by collectors.",
       ),
       p(
-        "The shape of it, once, slowly. You dial the bank's short code — it begins with the star key and ends with the hash, the way a sentence begins and ends. The network answers with a menu: transfer, balance, airtime, bill. You choose, you type the account number, the app shows you the name — read the name, the bank-lesson's law, unchanged at this altitude — you type your PIN, and the confirmation lands as a text message with a reference. The session lives for less than a minute and dies when the screen says so. No data was spent. No app was opened. The whole transaction breathed on the call network your SIM already had. And that is why it saves the month on the twelfth, and why the school fees did not wait for the bundle.",
+        "The shape of it, once, slowly. You dial the bank’s short code — it begins with the star key and ends with the hash, the way a sentence begins and ends. The network answers with a menu: transfer, balance, airtime, bill. You choose, type the account number, read the name the screen shows you — the bank lesson’s law, unchanged at this altitude — type your PIN, and the confirmation lands as a text message with a reference. The session lives for less than a minute and dies when the screen says so. No data was spent. No app was opened. The whole transaction breathed on the call network your SIM already had.",
       ),
       fig(
         "/images/blog/ussd-dial-screen.jpg",
@@ -8824,10 +8830,10 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("The code belongs to the bank, and the bank alone"),
       p(
-        "Now the warning, and it is not a small one. Codes travel as forwards. Somebody sends you the code for a bank on a broadcast list; a poster at the kiosk prints one; a helpful comment under a market video lists them all. The fraudsters know this, and they print too — a code one digit away from the bank's real one, with a menu that looks identical and a collector sitting where the bank should be. The rule that keeps you safe is the one you already keep for portals: the code comes from the bank itself — its own website, the card in your wallet, the line printed on your ATM receipt — never from a forward, never from a poster, never from a comment. Save your bank's real code in the phone once, from the source, and never dial another for that bank again. The forwards lesson's law, sharpened for money: a code you cannot trace is a code you cannot dial.",
+        "Now the warning, and it is not a small one. Codes travel as forwards. Somebody sends you the code “for” a bank on a broadcast list; a poster at the kiosk prints one; a helpful comment under a market video lists them all. The fraudsters know this, and they print too — a code one digit away from the bank’s real one, with a menu that looks identical and a collector sitting where the bank should be. It looks like the bank’s door. It is a painted flat hung in front of a stranger’s room. The rule that keeps you safe is the one you keep for portals: the code comes from the bank itself — its own website, the card in your wallet, the line printed on your ATM receipt — never from a forward, never from a poster, never from a comment. Save your bank’s real code in the phone once, from the source, and never dial another for that bank again. The forwards lesson’s law, sharpened for money: a code you cannot trace is a code you cannot dial.",
       ),
       p(
-        "Two pocket manners complete the craft. First, the PIN: it is typed on the keypad, into the menu your bank's code raised — never given to a caller, never given to the helpful man at the market who offers to do the transfer for you while you hold the parcel. If a stranger must help with the dialing, let them dial and then hand them away from the PIN; better still, do what the trader does and learn the four keys yourself, one evening, on a small transfer of fifty naira to yourself. Second, the dual-SIM housekeeping: know which line the bank knows — the SIM that receives the alerts — and keep that SIM alive, charged, registered. The alerts are the receipts of this road. A bank whose alert line is dead is a bank whose money whispers.",
+        "Two pocket manners complete the craft. First, the PIN: it is typed on the keypad, into the menu your bank’s code raised — never given to a caller, never given to the helpful man at the market who offers to do the transfer while you hold the parcel. If a stranger must help with the dialling, let them dial and then take the phone back before the PIN; better still, do what the trader does and learn the four keys yourself, one evening, on a small transfer of fifty naira to yourself. Second, the dual-SIM housekeeping: know which line the bank knows — the SIM that receives the alerts — and keep that SIM alive, charged, registered. The alerts are the receipts of this road. A bank whose alert line is dead is a bank whose money whispers.",
       ),
       fig(
         "/images/blog/ussd-reference-note.jpg",
@@ -8835,14 +8841,14 @@ export const blogPosts: BlogPost[] = [
         "The confirmation lands as a text with a reference. Write it beside the day's sales — the books lesson's law, kept at the speed of the market.",
       ),
       ul([
-        "Get your bank's real short code from the bank itself — website, card, or receipt — and save it. Never dial a forwarded code.",
+        "Get your bank’s real short code from the bank itself — website, card, or receipt — and save it. Never dial a forwarded code.",
         "Practise once with fifty naira to your own account: menu, name, PIN, confirmation. The road, walked in daylight.",
         "The PIN is typed by your own thumb only — not spoken, not handed to a market helper.",
         "Know which SIM receives the bank alerts and keep it alive. No alerts, no receipts, no peace.",
       ]),
       h2("The network that never finishes"),
       p(
-        "Data bundles expire and promotions end, but the call network is the last light on in every storm — it carried the OTPs of lesson ninety-eight and now it carries the market's money. The trader with the small phone was never behind the times. She was ahead of them: she keeps one road that does not depend on bundles, on apps, on the grid. Learn her road, keep its laws, and the twelfth of the month becomes just another date the money crossed.",
+        "Data bundles expire and promotions end, but the call network is the last light on in every storm — it carried the OTP lesson’s ninety-second lantern and now it carries the market’s money. The trader with the small phone was never behind the times. She was ahead of them: she keeps one road that does not depend on bundles, on apps, on the grid. Learn her road, keep its laws, and the twelfth of the month becomes just another date the money crossed.",
       ),
     ],
   },
@@ -9604,10 +9610,10 @@ export const blogPosts: BlogPost[] = [
       "A black command prompt window running a powercfg battery report showing design capacity versus full charge capacity.",
     body: [
       p(
-        "You have saved your hard-earned money for six months. You take a bus to the electronics market — Ikeja Computer Village in Lagos, Garrison in Port Harcourt, or the plazas in Abuja and Onitsha. You step into a shop where dozens of clean black laptops sit on glass shelves under bright white lights. The young seller smiles, wipes a sleek silver HP with a fragrant oily cloth until it shines like glass, and looks you straight in the eye: 'Senior man, this one is grade A London used! An old woman in Manchester only used it to check church hymns on Sundays. The battery will carry you from morning till night!' It sounds wonderful. But in the used market, shiny plastic often hides a machine whose battery is half-dead and whose hinges are held together by superglue.",
+        "Chidera saved for six months and took a bus to the electronics market — Ikeja Computer Village in Lagos, Garrison in Port Harcourt, or the plazas in Abuja and Onitsha. Dozens of clean black laptops sat on glass shelves under bright white lights. The young seller smiled, wiped a sleek silver HP with a fragrant oily cloth until it shone like glass, and looked her in the eye: “Senior woman, this one is grade A London used! An old woman in Manchester only used it to check church hymns on Sundays. The battery will carry you from morning till night!” It sounds wonderful. But in the used market, shiny plastic often hides a machine whose battery is half-dead and whose hinges are held together by superglue.",
       ),
       p(
-        "Never buy a secondhand laptop with your eyes; buy it with a five-minute test. A good merchant who sells honest hardware will gladly pull up a plastic stool, hand you the charger, and say: 'Take your time, test everything you want.' But if a seller starts rushing you, grabs the machine from your hands, or says 'Pay money first before we test', smile politely, say thank you, and walk out of that shop immediately. There are forty other stalls on the same street.",
+        "Never buy a secondhand laptop with your eyes; buy it with a five-minute test. A good merchant who sells honest hardware will gladly pull up a plastic stool, hand you the charger, and say: “Take your time, test everything you want.” But if a seller starts rushing you, grabs the machine from your hands, or says “Pay money first before we test,” smile politely, say thank you, and walk out of that shop immediately. There are forty other stalls on the same street.",
       ),
       fig(
         "/images/blog/battery-report-cmd-screen.jpg",
@@ -9616,7 +9622,7 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("The battery truth, the disk hours, and the hinges"),
       p(
-        "Test number one: do not look at the little battery icon in the bottom corner of the Windows screen that says '100%'. That number is a guess that can drop to zero in fifteen minutes. Ask the computer to show its own birth certificate: press the Windows key, type the three letters 'cmd', press Enter to open the black Command Prompt box, and type: powercfg /batteryreport. Press Enter. Open the small file it creates in your browser. Look for two numbers side by side: Design Capacity (what the battery held when it was new) and Full Charge Capacity (what it can hold today). If the original was 45,000 and today it is only 15,000, that battery has lost two-thirds of its life. It will die thirty minutes after you carry it home. Use that number to negotiate the price down by the cost of a new battery on the spot.",
+        "Test number one: do not look at the little battery icon in the corner that says 100%. That number is a guess that can drop to zero in fifteen minutes. Ask the computer to show its own birth certificate: press the Windows key, type the three letters cmd, press Enter to open the black Command Prompt box, and type: powercfg /batteryreport. Open the small file it creates in your browser. Look for two numbers side by side: Design Capacity — what the battery held when it was new — and Full Charge Capacity, what it can hold today. If the original was 45,000 and today it is 15,000, that battery has lost two-thirds of its life and will die thirty minutes after you carry it home. Use that number to negotiate the price down by the cost of a new battery, on the spot. Where would you look first before believing any seller on this street? In the machine’s own report. The report never tells lies.",
       ),
       fig(
         "/images/blog/online-keyboard-tester-grid.jpg",
@@ -9624,10 +9630,10 @@ export const blogPosts: BlogPost[] = [
         "Test every single letter. A free keyboard test lights up keys in green as you press them. One dead key means an expensive replacement.",
       ),
       p(
-        "Test number two: the keyboard test. Open Notepad, or open a free site like keyboardtester.com. Press every single key in order from top to bottom — all the numbers, every letter from Q to M, the Spacebar, Enter, Backspace, and Shift. If even two letters refuse to type, that keyboard has broken traces underneath. Replacing a modern built-in keyboard means taking out sixty tiny screws and taking the whole machine apart, which costs twenty thousand naira in labor.",
+        "Test number two: the keyboard. Open Notepad, or a free site like keyboardtester.com, and press every single key in order from top to bottom — all the numbers, every letter from Q to M, the Spacebar, Enter, Backspace, and Shift. If even two letters refuse to type, the keyboard has broken traces underneath. Replacing a modern built-in keyboard means sixty tiny screws and the whole machine apart — twenty thousand naira in labour, for two dead letters.",
       ),
       p(
-        "Test number three: the hinge check. Hold the laptop by the base with one hand, and with the other hand gently open and close the lid three times. Watch the plastic corners right where the screen joins the body. Does the plastic separate? Does it bulge or click like something is snapping inside? Inside those corners sit brass screw standoffs glued into thin plastic. When laptops are dropped or opened roughly, that plastic cracks. If you buy a machine with cracked hinge plastic, the screen will break off in your hands within two months.",
+        "Test number three: the hinge check. Hold the laptop by the base with one hand; with the other, gently open and close the lid three times. Watch the plastic corners where the screen joins the body. Does the plastic separate? Does it bulge or click like something is snapping inside? Inside those corners sit brass screw standoffs glued into thin plastic, and drops and rough openings crack that plastic. A machine with cracked hinge plastic will lose its screen within two months. And while the machine is open on the counter, run the drive-hours check from the last lesson’s cousin — CrystalDiskInfo, free — which tells you whether this laptop worked for months or for years. Feel the charger brick too: genuine OEM chargers are heavy and solid; imitations are light as plastic toys.",
       ),
       fig(
         "/images/blog/laptop-hinge-inspection.jpg",
@@ -9635,14 +9641,14 @@ export const blogPosts: BlogPost[] = [
         "Pinch the rear hinge corners while opening the lid. If the plastic opens up like an alligator mouth, the internal screws are broken.",
       ),
       ul([
-        "Run powercfg /batteryreport from the black command box: never trust the Windows taskbar battery percentage icon.",
-        "Check how many hours the drive has worked with CrystalDiskInfo: discover whether the laptop worked for months or years.",
+        "Run powercfg /batteryreport from the black command box: never trust the taskbar battery percentage.",
+        "Check how many hours the drive has worked with CrystalDiskInfo: months or years, in plain numbers.",
         "Press every single key in order on a blank page: one dead letter means replacing the entire keyboard.",
-        "Feel the weight of the charger brick: genuine OEM chargers feel heavy and solid; fake imitation chargers are light as plastic toys.",
+        "Feel the weight of the charger brick: genuine OEM chargers feel heavy and solid; fakes are light as toys.",
       ]),
       h2("Preparation commands respect"),
       p(
-        "When a seller sees you sit down with a calm face, open the command box to check battery wear, test the hinges, and verify every key on the board, his whole attitude changes. The exaggerated stories stop, the sweet talk disappears, and honest business begins. Preparation turns an intimidating market into a fair deal where you walk away with a sturdy business machine that will serve you for years. Next: chargers, adapters, voltage rules, and the blue spark that destroys boards.",
+        "When a seller sees you sit down with a calm face, open the command box to check battery wear, flex the hinges, and test every key on the board, his whole attitude changes. The exaggerated stories stop, the sweet talk disappears, and honest business begins. One contrast worth carrying into every market on earth: the shine is on the plastic; the truth is in the report. Preparation turns an intimidating market into a fair deal where you walk away with a sturdy business machine that will serve you for years. Next: chargers, adapters, voltage rules, and the blue spark that destroys boards.",
       ),
     ],
   },
@@ -9775,10 +9781,10 @@ export const blogPosts: BlogPost[] = [
       "Task Manager Performance tab showing memory usage bar at 7.4 of 8.0 GB in use with high commit charge.",
     body: [
       p(
-        "You are working on your laptop, and opening an Excel sheet takes thirty seconds. A friend leans over your chair, looks at the screen with an expert expression, and announces with great authority: 'Ah! Your RAM is too small! Go to the market and buy sixteen gigabytes of RAM; your laptop will fly like an aeroplane!' You believe him. You take thirty-five thousand naira out of your savings, buy a new green stick of memory, open the back of the laptop, click it in, and turn the machine on. You open Excel. It still takes thirty seconds. Nothing changed. You feel cheated, confused, and thirty-five thousand naira poorer.",
+        "Yusuf was working on a laptop that took thirty seconds to open a spreadsheet, when a friend leaned over his chair with an expert expression and announced: “Ah! Your RAM is too small! Go to the market and buy sixteen gigabytes of RAM; your laptop will fly like an aeroplane!” Yusuf believed him. He took thirty-five thousand naira out of his savings, bought a new green stick of memory, opened the back of the laptop, clicked it in, and turned the machine on. He opened the spreadsheet. It still took thirty seconds. Nothing changed. He felt cheated, confused, and thirty-five thousand naira poorer.",
       ),
       p(
-        "Why did that happen? Because extra RAM only makes a computer faster if lack of RAM was the actual wall that was blocking it. Think of your computer like a student studying in a library. Your hard drive or SSD is the steel filing cabinet against the wall where thousands of books are stored. RAM (memory) is the wooden study table where you lay open the books you are reading right now. If you are reading only one notebook and one pen, having a study table the size of a football field does not help you read one word faster! You only need a bigger table when you have six heavy books open at the same time and pages are falling onto the floor.",
+        "Why did that happen? Because extra RAM only makes a computer faster if lack of RAM was the actual wall blocking it. Think of your computer like a student studying in a library. The hard drive or SSD is the steel filing cabinet against the wall where thousands of books are stored. RAM is the wooden study table where you lay open the books you are reading right now. If you are reading only one notebook and one pen, a study table the size of a football field does not help you read one word faster. You only need a bigger table when six heavy books are open at once and pages are falling onto the floor.",
       ),
       fig(
         "/images/blog/task-manager-ram-usage-tab.jpg",
@@ -9787,7 +9793,10 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("The Task Manager truth and the soldered trap"),
       p(
-        "Here is how to check your table size before spending a single kobo. Press three keys together: Ctrl, Shift, and Escape. That opens the Windows Task Manager — the dashboard that shows you everything your computer is doing right now. Click on 'Performance', then click on 'Memory'. Now use your laptop exactly as you do on your busiest workday: open your browser tabs, open your accounting sheet, open WhatsApp Web, and play music. Look at the numbers on the screen. If it says '3.8 GB of 8 GB in use', stop right there! Your desk is more than half empty! Adding another eight gigabytes of RAM will not make your computer one second faster. Your slow speed is caused by an old mechanical hard drive or heat, not lack of memory.",
+        "Here is how to check your table size before spending a single kobo. Press three keys together: Ctrl, Shift, and Escape. That opens Task Manager — the dashboard showing everything your computer is doing right now. Click Performance, then Memory. Now use your laptop exactly as you do on your busiest workday: browser tabs, the accounting sheet, WhatsApp Web, music. Look at the numbers. If it says 3.8 GB of 8 GB in use, stop right there — your desk is more than half empty, and another eight gigabytes will not make the machine one second faster. The slow speed is living somewhere else: an old mechanical hard drive, or heat.",
+      ),
+      p(
+        "Only spend money on RAM if that number consistently stays above eighty-five or ninety percent while you work. Which raises the question that saves the most money in this lesson: how full is your own desk on a normal Tuesday? Read it before you read any advert. And if you genuinely need more memory, beware the modern trap that catches thousands of buyers: soldered memory chips. In many modern slim laptops — especially thin budget models — the manufacturer included no slot at all. The chips are soldered permanently onto the green board. Check your exact model number online, or look at Task Manager where it says “Slots used.” If it says “Soldered,” or shows no open slot, the memory cannot be upgraded at all.",
       ),
       fig(
         "/images/blog/ram-sticks-ddr-notch-comparison.jpg",
@@ -9795,7 +9804,7 @@ export const blogPosts: BlogPost[] = [
         "Look at the little gap in the gold teeth. DDR3, DDR4, and DDR5 have the notch in completely different spots so you cannot force the wrong generation in.",
       ),
       p(
-        "Only spend money on RAM if that Task Manager number consistently stays above eighty-five or ninety percent while you are working. And if you genuinely need more memory, beware the modern trap that catches thousands of buyers: soldered memory chips. In many modern slim laptops (especially thin budget models), the manufacturer did not include any slot for a memory stick! Instead, the chips are glued and soldered permanently directly onto the green board. Check online for your exact model number, or look at Task Manager where it says 'Slots used'. If it says 'Soldered' or has no open slot, you cannot upgrade the memory at all.",
+        "It looks like stinginess from the manufacturer. It is actually a thinness trade — and it moves your money to the only upgrade that still fits: the drive. A slow laptop is almost always suffering from an old mechanical hard drive, not from lack of RAM, and an SSD brings joy to ninety percent of older computers. If you do buy memory, the generations cannot mix: DDR3, DDR4, and DDR5 each put the notch in the gold teeth at a different position, so the wrong stick literally cannot be forced in. Match the notch, match the label, and click it in at a gentle angle until the side clips snap shut with a click.",
       ),
       fig(
         "/images/blog/laptop-ram-sodimm-installation.jpg",
@@ -9803,14 +9812,14 @@ export const blogPosts: BlogPost[] = [
         "Slide in at a gentle angle, then press flat until the metal side clips snap shut with a click.",
       ),
       ul([
-        "Check Task Manager Memory under peak daily load: if usage stays under 75%, do not waste money buying extra RAM.",
-        "A slow laptop is almost always suffering from an old mechanical hard drive, not lack of RAM: buy an SSD first.",
-        "Verify your laptop has an open memory slot before purchasing: many modern thin laptops have non-upgradeable soldered chips.",
-        "Memory generations cannot mix: DDR3, DDR4, and DDR5 have different notch positions and cannot fit into each other's slots.",
+        "Check Task Manager Memory under peak daily load: if usage stays under 75%, do not buy extra RAM.",
+        "A slow laptop is almost always suffering from an old mechanical hard drive: buy an SSD first.",
+        "Verify there is an open memory slot before purchasing: many thin laptops have non-upgradeable soldered chips.",
+        "Memory generations cannot mix: DDR3, DDR4, and DDR5 have different notch positions and will not fit each other’s slots.",
       ]),
       h2("Spend where the choke lives"),
       p(
-        "Never buy computer parts based on street advice or loud opinions. Open Task Manager, look at the numbers with your own eyes, and spend your money where the real bottleneck lives. An SSD brings joy to ninety percent of older computers; extra RAM is only for the few whose desks are genuinely overflowing. Next: taking your machine to a commercial workshop without losing your parts or your privacy.",
+        "Never buy computer parts on street advice or loud opinions. Open Task Manager, look at the numbers with your own eyes, and spend your money where the real bottleneck lives. Yusuf eventually bought an SSD for a third of the RAM money, and the thirty seconds became five. The friend still tells people to buy sixteen gigabytes. Next: taking your machine to a commercial workshop without losing your parts or your privacy.",
       ),
     ],
   },
