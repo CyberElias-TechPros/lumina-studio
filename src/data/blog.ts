@@ -256,7 +256,7 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A laptop screen showing a web browser with the address bar visible at the top.",
     body: [
       p(
-        "The internet is not inside your computer. Your computer is a window onto a very large library that other machines keep. A browser — Chrome, Edge, Safari, Firefox — is the vehicle you sit in to visit that library. WhatsApp and Instagram are also vehicles, but they only go to one street. A browser can go anywhere someone has published a page. That freedom is why it feels dangerous. It is also why it is the skill worth learning.",
+        "The internet is not inside Ikem’s computer — a fact that took him two years of guessing to accept. His computer is a window onto a very large library that other machines keep. A browser — Chrome, Edge, Safari, Firefox — is the vehicle you sit in to visit that library. WhatsApp and Instagram are also vehicles, but they only go to one street. A browser can go anywhere someone has published a page. That freedom is why it feels dangerous. It is also why it is the skill worth learning.",
       ),
       p(
         "Open the browser the way you opened Notepad: Start menu, type Chrome or Edge, press Enter. You will see a wide empty field at the top of the window. That field is the address bar. It is the most important strip on the screen. Everything else — the colourful buttons, the news, the adverts — can wait until you can use that strip on purpose.",
@@ -268,7 +268,7 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("An address is not a question"),
       p(
-        "A web address is a place: cea.ng, jumia.com.ng, waec.org.ng. You type it in the address bar and press Enter. The vehicle goes there. A question is different: “what time is JAMB 2026” is not a place. If you type a question, the browser will usually take you to a search engine — Google, Bing, or whatever your browser uses — and show a list of pages that might answer. Both acts start in the same box. Watch what appears after you press Enter. If the top of the window now says google.com or bing.com, you searched. If it says the place you typed, you travelled.",
+        "A web address is a place: cea.ng, jumia.com.ng, waec.org.ng. You type it in the address bar and press Enter. The vehicle goes there. A question is different: “what time is JAMB 2026” is not a place. If you type a question, the browser will usually take you to a search engine — Google, Bing, or whatever your browser uses — and show a list of pages that might answer. Both acts start in the same box. Watch what appears after you press Enter. If the top of the window now says google.com or bing.com, you searched. If it says the place you typed, you travelled. One box, two journeys — and telling them apart is the whole lesson in one glance.",
       ),
       p(
         "Prefer travel when you already know the place. Banks, exam bodies, and the academy have real addresses. Typing “first bank login” into search will also offer fake pages that look like First Bank. Typing the address you already trust, or using a bookmark you saved on a good day, is how you stay on the real street. We will come back to fakes in a later note. For now: if a page asks for a password and you arrived through a surprise link, stop.",
@@ -287,7 +287,7 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("Tabs are extra rooms"),
       p(
-        "A tab is a page you are holding open without closing the others. Look at the top of the browser for a row of small titles, and a plus sign. The plus opens a new tab, a fresh empty room. You can have the academy site in one tab and a search in another. Click the titles to switch. The X on a tab closes only that room. Closing the whole browser window closes every tab. If you did that by accident, reopen the browser. Many browsers offer Reopen closed tab if you right-click the tab bar.",
+        "A tab is a page you are holding open without closing the others. Look at the top of the browser for a row of small titles, and a plus sign. The plus opens a new tab, a fresh empty room. You can have the academy site in one tab and a search in another. Click the titles to switch. The X on a tab closes only that room. Closing the whole browser window closes every tab. If you did that by accident, reopen the browser; many browsers offer Reopen closed tab if you right-click the tab bar. A question before we leave the rooms: what closes when you close the window — one tab, or all of them? All. The window is the house; the tabs are its rooms.",
       ),
       ul([
         "Open the browser. Click the address bar once so the text inside is highlighted.",
@@ -304,7 +304,7 @@ export const blogPosts: BlogPost[] = [
         "Pages will offer you files: a form, a past question, a programme. Downloading is the internet placing a parcel on your Downloads mat. Know that. Open Downloads after and move the file into Documents if you mean to keep it, the way you would take a parcel off the floor. Do not download a programme because a page shouted that your computer is infected. That shout is a common trick. If you did not go looking for a repair tool, do not install one from a pop-up.",
       ),
       p(
-        "Bookmarks are addresses you want to find again. In most browsers, a star at the end of the address bar saves the current page. Name it something you will recognise. The next time you need it, open Bookmarks and click. This is how a person stops searching for their own bank every Saturday.",
+        "Bookmarks are addresses you want to find again. In most browsers, a star at the end of the address bar saves the current page. Name it something you will recognise. The next time you need it, open Bookmarks and click. This is how a person stops searching for their own bank every Saturday. Ikem keeps five: the bank, the academy, WAEC, his mail, and the news site his mother reads. The library is still infinite. His five shelves are where he starts.",
       ),
     ],
   },
@@ -841,10 +841,10 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "An external drive and a USB flash drive beside a laptop on a wooden desk.",
     body: [
       p(
-        "A computer is a house that can burn. Theft, a dead drive, a cup of water, a format at the repair shop — any of these can empty Documents in an afternoon. The photographs you copied off the phone, the letter, the fees spreadsheet, the password notebook if you typed it: if they live in only one place, they are not kept. They are hoped. This lesson is the unglamorous habit of a second house.",
+        "A computer is a house that can burn. Theft, a dead drive, a cup of water, a format at the repair shop — any of these can empty Documents in an afternoon. The photographs you copied off the phone, the letter, the fees spreadsheet, the password notebook if you typed it: if they live in only one place, they are not kept. They are hoped. Hadiza learned the difference in July, when the shop formatted her laptop “for speed” and her sister’s wedding photographs went with it. This lesson is the unglamorous habit of a second house.",
       ),
       p(
-        "Backup is not the Recycle Bin. It is not emailing yourself a file once in 2023. It is a copy, on a different object, that you could open if the first object vanished. A USB flash drive is enough to start. An external hard disk is better for photographs. A cloud folder — Google Drive, OneDrive — is a second house that is not in the same room, which matters when the room is the thing that floods. You do not need all three on day one. You need one extra copy of the work you would cry about.",
+        "Backup is not the Recycle Bin. It is not emailing yourself a file once in 2023. It is a copy, on a different object, that you could open if the first object vanished. A USB flash drive is enough to start. An external hard disk is better for photographs. A cloud folder — Google Drive, OneDrive — is a second house that is not in the same room, which matters when the room is the thing that floods. You do not need all three on day one. You need one extra copy of the work you would cry about. Two copies is the rule in one breath: one is a rumour, two is a backup.",
       ),
       fig(
         "/images/blog/backup-drives.jpg",
@@ -853,14 +853,14 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("What is worth copying"),
       p(
-        "Not the whole machine. Not every installer in Downloads. The human work: Documents, Pictures you named, a Desktop if you still keep letters there against advice. School, church, shop, family. If you have a folder called 2026, copy that. If you have nothing named, this is the week to make the folders, then copy them. A jumble copied to a USB is still a jumble, but it is a jumble you still have.",
+        "Not the whole machine. Not every installer in Downloads. The human work: Documents, Pictures you named, a Desktop if you still keep letters there against advice. School, church, shop, family. If you have a folder called 2026, copy that. If you have nothing named, this is the week to make the folders, then copy them. A jumble copied to a USB is still a jumble — but it is a jumble you still have. On a scrap of paper, write three things you would hate to lose. Where does each live tonight? If the honest answer names one place each, that paper is this week’s work order.",
       ),
       p(
         "Do not back up the only copy of a password list onto a USB that lives in the laptop bag. If you keep hints in a notebook, leave the notebook in the drawer. If you use a password manager, its own backup is a separate conversation. The principle is the same: the key and the house should not travel together.",
       ),
       h2("The monthly hour"),
       p(
-        "Plug in the USB. Open it. Open Documents. Copy the folders that changed. If the drive already has last month's copy, you can replace files with the same names, or keep a folder called 2026-09 and next month 2026-10, until the drive fills. Dated folders are easier to understand when you are frightened. Eject, as you learned. Put the drive somewhere that is not the laptop bag — a drawer, a different room, a trusted person's house if the files are a shop's whole year.",
+        "Plug in the USB. Open it. Open Documents. Copy the folders that changed. If the drive already has last month’s copy, you can replace files with the same names, or keep a folder called 2026-09 and next month 2026-10, until the drive fills. Dated folders are easier to understand when you are frightened. Eject, as you learned. Put the drive somewhere that is not the laptop bag — a drawer, a different room, a trusted person’s house if the files are a shop’s whole year.",
       ),
       fig(
         "/images/blog/copying-files.jpg",
@@ -875,10 +875,7 @@ export const blogPosts: BlogPost[] = [
       ]),
       h2("Cloud, theft, and the repair shop"),
       p(
-        "If you have a Google account, Drive can hold the same folders. That is a backup that survives a stolen bag, if you also had a password you can keep and a second lock on the phone. Use it for the small, important files first: the PDF of a certificate, the passport photograph, the fees sheet. A full photograph library will eat data and space; the cable-and-USB copy is still the workhorse in Port Harcourt when the network is tired.",
-      ),
-      p(
-        "Before a machine goes to the shop, copy first. Say it out loud to the technician: the files have been copied; do not format unless you tell me. Shops format because it is fast. Fast is not your friend if the only wedding photographs were on that disk. After a theft, the backup is the whole point. If you have none, start now with whatever is left. The light will go again. The second house is how you do not start the letter from memory.",
+        "If you have a Google account, Drive can hold the same folders. That is a backup that survives a stolen bag, if you also had a password you can keep and a second lock on the phone. Use it for the small, important files first: the PDF of a certificate, the passport photograph, the fees sheet. A full photograph library will eat data and space; the cable-and-USB copy is still the workhorse here when the network is tired. And the habit earns its keep in the two old emergencies: before a machine goes to the shop, copy first — say it out loud to the technician: the files have been copied; do not format unless you tell me — and after a theft, the backup is the whole point. A copy you have not opened is still a rumour; open one file from the USB before you trust it. The light will go again. The second house is how you do not start the letter from memory.",
       ),
     ],
   },
@@ -1225,10 +1222,10 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A laptop screen showing a simple software installer with a Next button.",
     body: [
       p(
-        "A program is a tool that was not on the machine when you sat down. Word, a browser, a video player, the academy's own software if a course needs it. Installing is inviting that tool into the house. Uninvited guests arrive as pop-ups, “free converters,” and a shop that loaded three extras while fixing the screen. This lesson is the invited kind: you chose it, you fetched it from the real street, and you watch the boxes instead of tapping Next in a trance.",
+        "A program is a tool that was not on the machine when you sat down. Word, a browser, a video player, the academy’s own software if a course needs it. Installing is inviting that tool into the house. Uninvited guests arrive as pop-ups, “free converters,” and a shop that loaded three extras while fixing the screen. Chibuzor’s laptop came home from a repair with a weather bar, a second browser, and a new search page he never ordered — the digital equivalent of a stranger sleeping in the kitchen. This lesson is the invited kind: you chose it, you fetched it from the real street, and you watch the boxes instead of tapping Next in a trance.",
       ),
       p(
-        "You already know downloads land on the mat. An installer is usually a file named Setup, or the program's name plus .exe on Windows, or .dmg on a Mac. Double-clicking it starts a short conversation of windows. Those windows are not decoration. They are where extra toolbars, extra browsers, and a “partner offer” try to sit down beside the guest you wanted.",
+        "You already know downloads land on the mat. An installer is usually a file named Setup, or the program’s name plus .exe on Windows, or .dmg on a Mac. Double-clicking it starts a short conversation of windows. Those windows are not decoration. They are where extra toolbars, extra browsers, and a “partner offer” try to sit down beside the guest you wanted. What is the difference between the Next button and I agree? The first says I saw this page. The second signs something. Read before either.",
       ),
       fig(
         "/images/blog/installer-window.jpg",
@@ -1237,10 +1234,10 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("Fetch it from the real street"),
       p(
-        "Open the browser. Type the address you already trust — the maker's own site, or the academy's instruction — not the first advert for “VLC free download fast.” You have met that cousin. If a page shouts DOWNLOAD in three colours, look at the address bar. A small, boring button on the maker's own page is usually the real door. Save the file. Open Downloads. Confirm the name looks like the program you asked for, not “setup_bundle_free.”",
+        "Open the browser. Type the address you already trust — the maker’s own site, or the academy’s instruction — not the first advert for “VLC free download fast.” You have met that cousin. If a page shouts DOWNLOAD in three colours, look at the address bar. A small, boring button on the maker’s own page is usually the real door. Save the file. Open Downloads. Confirm the name looks like the program you asked for, not “setup_bundle_free.”",
       ),
       p(
-        "Windows may then warn: “Do you want to allow this app to make changes?” That is User Account Control, a locked door. If you started the installer on purpose, Yes. If a window you did not start is asking, No. A Mac will similarly ask you to drag an icon into Applications, or to open a file from the internet; Open is fine when you fetched it. Do not fetch installers from a WhatsApp stranger. A USB from a friend is only as safe as that friend's habits.",
+        "Windows may then warn: “Do you want to allow this app to make changes?” That is User Account Control, a locked door. If you started the installer on purpose, Yes. If a window you did not start is asking, No. A Mac will similarly ask you to drag an icon into Applications, or to open a file from the internet; Open is fine when you fetched it. Do not fetch installers from a WhatsApp stranger. A USB from a friend is only as safe as that friend’s habits.",
       ),
       fig(
         "/images/blog/install-usb.jpg",
@@ -1253,20 +1250,20 @@ export const blogPosts: BlogPost[] = [
       ),
       ul([
         "Pick one program you actually need — VLC for video, or LibreOffice if you have no Word. Walk to its real site.",
-        "Download. Open the installer. Untick anything that is not the program's name.",
+        "Download. Open the installer. Untick anything that is not the program’s name.",
         "Finish. Find the new icon in Start. Open it once to prove it is the guest you invited.",
         "Delete the installer from Downloads if you like, after it works. The program now lives in the house, not on the mat.",
       ]),
       h2("The word free, and the boxes underneath it"),
       p(
-        "A free program still has to eat. Some earn their rice by asking, at the bottom of the installer, for one more tick: a toolbar, a second browser, a different search page. The tick is already crossed on express settings, because crossing it for you is how the meal is paid for. None of this is a crime and none of it is a virus. It is a tenant you did not invite, unpacking in your kitchen while you carry the box you wanted to the counter. Read the long page the way you read a tenancy agreement in Port Harcourt: slowly at the boxes, quickly at the praise.",
+        "A free program still has to eat. Some earn their rice by asking, at the bottom of the installer, for one more tick: a toolbar, a second browser, a different search page. The tick is already crossed on express settings, because crossing it for you is how the meal is paid for. None of this is a crime and none of it is a virus. It is a tenant you did not invite, unpacking in your kitchen while you carry the box you wanted to the counter. Read the long page the way you read a tenancy agreement here: slowly at the boxes, quickly at the praise.",
       ),
       p(
-        "Choose custom or advanced whenever it appears; that door shows you the rooms. Untick what you did not come for. Look at the folder name where the program will live and let it be an ordinary place. If an installer offers to change your search page or add a weather bar to your browser, the polite answer is no. You can always add a thing later, from the real street, with your eyes open. Removing an unwanted guest takes an evening. Keeping the habit of the tick takes ten seconds a month.",
+        "Choose custom or advanced whenever it appears; that door shows you the rooms. Untick what you did not come for. If an installer offers to change your search page or add a weather bar to your browser, the polite answer is no. You can always add a thing later, from the real street, with your eyes open. Removing an unwanted guest takes an evening. Keeping the habit of the tick takes ten seconds a month. It looks like fussiness, reading the boxes. It is actually the tenancy rule applied to software: know who is moving in.",
       ),
       h2("When Windows blocks it, and when you should listen"),
       p(
-        "SmartScreen may say “Windows protected your PC.” If you are on the maker's real site and you recognise the name, More info, then Run anyway. If you do not recognise the name, Close. That warning is not always a liar. It is a cautious clerk. Treat unknown installers as you treat unknown links.",
+        "SmartScreen may say “Windows protected your PC.” If you are on the maker’s real site and you recognise the name, More info, then Run anyway. If you do not recognise the name, Close. That warning is not always a liar. It is a cautious clerk. Treat unknown installers as you treat unknown links.",
       ),
       p(
         "After install, a browser may have a new homepage you did not want. That is the extra guest. You will remove it in the next lesson. For today: one program, one purpose, eyes on the ticks. Installing is not dangerous because it is technical. It is dangerous because Next is easy.",
@@ -2988,7 +2985,7 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A printed list of names beside a laptop.",
     body: [
       p(
-        "Word can take a list of names and pour each one into a copy of the same letter. That factory is mail merge. Offices love it. Beginners are sent to it on day two and drown in “data sources.” This lesson is honest: for three letters, type the name. For a class of thirty identical notes, there is a factory. You may skip it until you have thirty. Knowing it exists is enough to not feel stupid when someone says the words.",
+        "Bunmi typed thirty admission letters in one evening — three files in, the manual way — and only afterwards did a colleague say the words “mail merge” with a small laugh. Word can take a list of names and pour each one into a copy of the same letter. That factory is mail merge. Offices love it. Beginners are sent to it on day two and drown in “data sources.” This lesson is honest: for three letters, type the name. For a class of thirty identical notes, there is a factory. You may skip it until you have thirty. Knowing it exists is enough to not feel stupid when someone says the words.",
       ),
       p(
         "The factory needs two things: a letter with holes — Dear «Name» — and a list, often Excel, with a column called Name. Word walks the list, fills a hole, prints or saves, next row. If the list is dirty — two spellings, a blank, a nickname in the wrong column — thirty letters come out wrong. Cleaning the list is most of the work. The button is the small part.",
@@ -3003,7 +3000,7 @@ export const blogPosts: BlogPost[] = [
         "Small way: copy the letter, change the name, Save As, next. Three files, three names. You already know Save As. That is skip, and it is correct. Factory door, when you mean it: Mailings in Word, Start Mail Merge, Letters. Select Recipients, Use an existing list, pick the Excel sheet. Insert Merge Field, Name. Preview. Finish & Merge. If any of those words is a wall, close Mailings. You have not failed a computer course. You have refused a factory you do not need.",
       ),
       p(
-        "Labels and envelopes are the same factory with stickers. A church with two hundred names may want it. A tenant writing a landlord does not. Do not let a YouTube thumbnail shame you into Mail Merge for a one-page request.",
+        "Labels and envelopes are the same factory with stickers. A church with two hundred names may want it. A tenant writing a landlord does not. Do not let a YouTube thumbnail shame you into Mail Merge for a one-page request. How many letters are in your hand this week — three, or thirty? That number is the whole decision.",
       ),
       fig(
         "/images/blog/letter-and-list.jpg",
@@ -3018,7 +3015,7 @@ export const blogPosts: BlogPost[] = [
       ]),
       h2("The list beside the letter"),
       p(
-        "The factory needs two things: a letter with holes in it and a register of the people who fill them. The register is a spreadsheet, one person per row, with clean column names across the top — Name, Class, Amount — because those names become the labels of the holes. The letter calls each label by name where the name should appear. Word then walks the register and prints one letter per row without a single retyping. Thirty admission letters become one evening and a stack. The holes are called merge fields, and the whole craft is really just careful naming.",
+        "Now the register, since the letter side is plain. One person per row, with clean column names across the top — Name, Class, Amount — because those names become the labels of the holes. The letter calls each label by name where the name should appear. Word then walks the register and prints one letter per row without a single retyping. Thirty admission letters become one evening and a stack. The holes are called merge fields, and the whole craft is really just careful naming.",
       ),
       p(
         "Before the factory prints anything, run the preview — the button walks your letter through ten real names — and read it in that slow voice again. A merge multiplies mistakes at the same speed it multiplies letters: one wrong column name, and thirty envelopes carry Dear blank. The other half of bulk is posting, and here the lesson you already know governs: thirty letters by email means Bcc, with perhaps the principal in To and everyone else unseen. A factory letter is still a letter. The people receiving it do not owe each other their addresses.",
@@ -6170,10 +6167,10 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A phone screen showing a chat message marked Forwarded many times.",
     body: [
       p(
-        "Not every lie asks for a fee. Some ask for something you give free, a hundred times a day: your finger on Forward. The invented cure — salt, bitter kola, hot water — that sends a frightened family past the pharmacy. The quote the minister never said, dressed in a broadcaster's logo. The security warning that turns a street against a stranger. Send to ten groups and something will happen; do not break the chain. The prize lesson's lies wore hurry and a fee. These wear care — forward, because you love them — and they travel under your face.",
+        "Not every lie asks for a fee. Some ask for something you give free, a hundred times a day: your finger on Forward. The invented cure — salt, bitter kola, hot water — that sends a frightened family past the pharmacy. The quote the minister never said, dressed in a broadcaster’s logo. The security warning that turns a street against a stranger. “Send to ten groups and something will happen; do not break the chain.” The prize-message lesson’s lies wore hurry and a fee. These wear care — forward, because you love them — and they travel under your face. Sikirat once forwarded a flood warning at 11 p.m. because her aunt’s street was in the photograph. The flood was three years old. The street was real.",
       ),
       p(
-        "Because that is the mechanics of it: a lie forwarded by an honest person arrives wearing the honest person's face. Your aunt does not believe the cure; she believes you. The label at the top — Forwarded many times — is not a certificate of importance. It is a smoke alarm. The further a message has travelled, the less anyone in the chain knows about where it began, and the thing that began it may not be a person at all.",
+        "Because that is the mechanics of it: a lie forwarded by an honest person arrives wearing the honest person’s face. Your aunt does not believe the cure; she believes you. The label at the top — Forwarded many times — is not a certificate of importance. It is a smoke alarm. The further a message has travelled, the less anyone in the chain knows about where it began, and the thing that began it may not be a person at all. What does the message know about its own birth? Nothing. Ask it that before your finger moves.",
       ),
       fig(
         "/images/blog/forwarded-many-times.jpg",
@@ -6182,7 +6179,7 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("The sixty-second check"),
       p(
-        "Before your finger moves, spend one minute. Read past the headline — screenshots crop, and the second paragraph often reverses the first. Search the striking phrase on the real street, in quotes; if the broadcaster truly said it, the words sit on the broadcaster's own site, not only in a status. Check the date — old riots and old deaths are resold as this morning's news every few months. Then ask the oldest question: who gains? A message built to frighten ten thousand people tonight has a landlord somewhere, even if you never learn the name. And for health, the rule is absolute: the cure that skips the hospital is a story. Ask a pharmacist you can stand in front of.",
+        "Before your finger moves, spend one minute. Read past the headline — screenshots crop, and the second paragraph often reverses the first. Search the striking phrase on the real street, in quotes; if the broadcaster truly said it, the words sit on the broadcaster’s own site, not only in a status. Check the date — old riots and old deaths are resold as this morning’s news every few months. Then ask the oldest question: who gains? A message built to frighten ten thousand people tonight has a landlord somewhere, even if you never learn the name. And for health, the rule is absolute: the cure that skips the hospital is a story. Ask a pharmacist you can stand in front of.",
       ),
       p(
         "If it is false, and a relative sent it, correct in private, gently, with the link: I checked — they did not say this; here is the real one. Nobody is humiliated, and the next forward is changed. If a group keeps passing poison — warnings that could cost a stranger their safety — do not forward, and know that Report exists, quietly, on every decent platform. You are not the town crier. You are the person in the chain who checks. That is a heavier kind of love than forwarding, and it is the kind that holds a community together.",
@@ -6200,10 +6197,10 @@ export const blogPosts: BlogPost[] = [
       ]),
       h2("The authority you can telephone yourself"),
       p(
-        "Inside the sixty-second check is one habit worth its own name: never use the number inside the message to verify the message. The flyer says the bank is giving grants — call the number on your ATM card instead. The text says the school fees have changed — call the number in the school's old letter instead. The voice says it is the DPO and your son is in trouble — walk to the station yourself, or call a number you knew before the emergency. The liar's greatest skill is providing his own references. Decline every reference he offers and supply your own from memory.",
+        "Inside the sixty-second check is one habit worth its own name: never use the number inside the message to verify the message. The flyer says the bank is giving grants — call the number on your ATM card instead. The text says the school fees have changed — call the number in the school’s old letter instead. The voice says it is the DPO and your son is in trouble — walk to the station yourself, or call a number you knew before the emergency. The liar’s greatest skill is providing his own references. Decline every reference he offers and supply your own from memory. It looks like stubbornness. It is the oldest verification method on earth: your own road, your own number, your own eyes.",
       ),
       p(
-        "This habit also protects the true stories. When the message is real — the road accident, the flood, the genuine emergency — your verification costs the sender nothing and your help can be fast and clean. The lie that gets caught by one phone call is the cheapest lie to kill; the ones that survive only grow bolder in your group chat. And when you have verified and the story is false, say so in the group with the same calm you wish others to use. Your name is the envelope it arrives in. Send only what you have checked, to the people who trust your stamp.",
+        "This habit also protects the true stories. When the message is real — the road accident, the flood, the genuine emergency — your verification costs the sender nothing and your help can be fast and clean. The lie that gets caught by one phone call is the cheapest lie to kill; the ones that survive only grow bolder in your group chat. And when you have verified and the story is false, say so in the group with the same calm you wish others to use.",
       ),
       h2("Your name is the envelope"),
       p(
@@ -6677,10 +6674,10 @@ export const blogPosts: BlogPost[] = [
       "An older man holding a phone away from his ear, looking at it with suspicion during a call.",
     body: [
       p(
-        "The prize lesson's lies wore hurry and a fee. The relative-in-trouble call wore tears and a phone line. Now the machines that write like people have learned to sound like people: from a few seconds of a voice note, an ordinary laptop can build a copy of a voice — your brother's voice, your pastor's, your mother's. The crying call may have your brother's voice in it and none of your brother. This is not a story of the future. It is the current price of a voice note, and the defence has to be learned the way the links were.",
+        "Maryam’s younger brother called on a Tuesday evening, crying, with exactly his voice — the same soft “ma” at the end of every sentence — saying the police had him and a lawyer needed ₦120,000 before midnight. She was reaching for the bank app when the family rule from last December landed in her hand like a stone: ask for the word. There was a pause. Then more crying. Then a call to her brother’s real number, which he answered from the shop, annoyed by the interruption. The voice was borrowed. The panic was real. This is not a story of the future. It is the current price of a voice note.",
       ),
       p(
-        "You will meet it in other costumes too: the celebrity on video promising to double whatever you send, the announcement with a governor's face saying what no governor said. The face and the voice were once evidence. They no longer are. What remains evidence is the channel and the question — which is why the tells are still exactly the tells you have drilled since lesson seven: hurry, secrecy, money. The costume gets better every year. The skeleton never changes.",
+        "The prize-message lesson’s lies wore hurry and a fee. The relative-in-trouble call wore tears and a phone line. Now the machines that write like people have learned to sound like people: from a few seconds of a voice note, an ordinary laptop can build a copy of a voice — your brother’s, your pastor’s, your mother’s. You will meet it in other costumes too: the celebrity on video promising to double whatever you send, the announcement with a governor’s face saying what no governor said. The face and the voice were once evidence. They no longer are. What remains evidence is the channel and the question — which is why the tells are still exactly the tells you have drilled since the prize-message lesson: hurry, secrecy, money. The costume gets better every year. The skeleton never changes.",
       ),
       fig(
         "/images/blog/suspect-voice-call.jpg",
@@ -6692,7 +6689,7 @@ export const blogPosts: BlogPost[] = [
         "One defence, cheap and total: agree on a family word. This week, at the table, in person — not in the family chat, which is the first thing a scammer reads. A word only your people know, dull enough to remember, strange enough to check. Then the rule: anybody who calls claiming to be anybody, in trouble, needing money now, is answered with one question — what is the word? A real brother knows it and laughs. A clone does not know it, and hangs up, and your money stays where it was.",
       ),
       p(
-        "The second defence is the callback: end the call and dial the person yourself, on the number you already have for them — the prize lesson's rule for the relative in Dubai, now law for everybody on earth. Video calls change nothing: faces freeze, lips drift out of sync, and network excuse covers a machine's stammer. The caller who grows impatient with the verifying question has answered it. Money moves only after the word, or the callback, or both. This is not distrust. It is the chain on the door — you can love the visitor and still look through the hole first.",
+        "The second defence is the callback: end the call and dial the person yourself, on the number you already have for them — the prize-message lesson’s rule for the relative in Dubai, now law for everybody on earth. Video calls change nothing: faces freeze, lips drift out of sync, and network excuse covers a machine’s stammer. The caller who grows impatient with the verifying question has answered it. Money moves only after the word, or the callback, or both. This is not distrust. It is the chain on the door — you can love the visitor and still look through the hole first. Where is the word kept — in the group chat, or at the table? The table. The chat is the first place the thief looks.",
       ),
       fig(
         "/images/blog/family-speakerphone.jpg",
@@ -6707,14 +6704,14 @@ export const blogPosts: BlogPost[] = [
       ]),
       h2("The face that must answer a question"),
       p(
-        "The cloned voice on a call is a puppet with strings made of your twenty seconds. Now the puppets have learned faces too, and a video call is no longer the automatic proof it was in 2023. The proof has moved from the picture to the question. Ask the thing only your brother knows — the name of the dog at the compound in 2011, what he said at the naming ceremony, the colour of the wrapper mother wore on your last Christmas. Ask it mid-sentence, casually, and expect the answer in the voice of a person, not the pause of a puppet. Machines can fake a face and a voice together. They cannot fake your private history.",
+        "The cloned voice on a call is a puppet with strings made of your twenty seconds. Now the puppets have learned faces too, and a video call is no longer the automatic proof it was a few years ago. The proof has moved from the picture to the question. Ask the thing only your brother knows — the name of the dog at the compound in 2011, what he said at the naming ceremony, the colour of the wrapper mother wore on your last Christmas. Ask it mid-sentence, casually, and expect the answer in the voice of a person, not the pause of a puppet. Machines can fake a face and a voice together. They cannot fake your private history.",
       ),
       p(
-        "Then use the family word again, now on video. Agree with the household that any request for money, from any face or voice at all, requires the word — spoken or typed — and the word travels no group chat and no social page. The call from the borrowed face will stall at the word, invent excuses, grow angry at the delay, and anger at a family password is the confession. Slow the conversation down and watch what slows badly. The lie has learned to borrow faces. Your pause, your questions, and one word from 2011 still outrun it.",
+        "Then use the family word again, now on video. Agree with the household that any request for money, from any face or voice at all, requires the word — spoken or typed — and the word travels no group chat and no social page. The call from the borrowed face will stall at the word, invent excuses, grow angry at the delay — and anger at a family password is the confession. Slow the conversation down and watch what slows badly. The lie has learned to borrow faces. Your pause, your questions, and one word from 2011 still outrun it.",
       ),
       h2("The lie that got cheaper"),
       p(
-        "Lies used to need a writer and a hundred honest fingers, the forward lesson said. Now they need a laptop and twenty seconds of somebody's evening. Nothing new is needed in the defence, though: pause, verify on your own road, refuse the hurry. Every scam in these hundred and twenty notes is the same animal in different skins, and it has exactly one strategy — to remove the pause between the story and the money. Keep the pause and you keep everything.",
+        "Lies used to need a writer and a hundred honest fingers, the forward lesson said. Now they need a laptop and twenty seconds of somebody’s evening. Nothing new is needed in the defence, though: pause, verify on your own road, refuse the hurry. Every scam in these notes is the same animal in different skins, and it has exactly one strategy — to remove the pause between the story and the money. Keep the pause and you keep everything.",
       ),
     ],
   },
@@ -6885,10 +6882,10 @@ export const blogPosts: BlogPost[] = [
       "A dim room with a wall of monitors showing maps and dashboards, two analysts at desks.",
     body: [
       p(
-        "Say SOC aloud — it is said letter by letter, S-O-C — and know that it means only this: a Security Operations Centre. A room, physical or virtual, where an organisation's security watching is gathered under one roof and one rhythm. If you met the letters in a chat or a job group and could not tell what they meant, hold this meaning and you will rarely be wrong: in working talk, SOC is not slang — it is an acronym with a chair behind it, the watching room. Banks have them. Telcos have them. Some companies do not build their own and instead pay a specialist firm to watch for them, which is called an MSSP, and the analysts inside it watch many doors at once. When a job advert says the role is in a SOC, this is the furniture of that sentence.",
+        "Uchechi’s cousin says he works “in a SOC” the way people say they work “in oil” — and until last December she could not have told you whether that was a room or a rumour. It is a room. Say SOC aloud — letter by letter, S-O-C — and know that it means only this: a Security Operations Centre. A room, physical or virtual, where an organisation’s security watching is gathered under one roof and one rhythm. Banks have them. Telcos have them. Some companies do not build their own and instead pay a specialist firm to watch for them — an MSSP — and the analysts inside it watch many doors at once. When a job advert says the role is in a SOC, this is the furniture of that sentence.",
       ),
       p(
-        "Walk through it, in imagination. A dim room — dim because screens read better in dimness — a wall of displays: a map with dots, a queue of alerts, a chart breathing with the network's traffic. At desks, people in tiers. Tier one sits closest to the queue: the first watch, triaging knocks exactly as the last lesson described, closing wind, raising footfalls. Tier two takes what tier one raises and digs — pulling logs from more rooms, tracing where a thing came from, deciding how sick the machine is. Tier three and the engineers hunt what nobody flagged and build the rules that make the queue wiser. Behind them, an incident manager when the night turns serious: one voice deciding, so ten hands do not pull ten directions.",
+        "Walk through it, in imagination. A dim room — dim because screens read better in dimness — a wall of displays: a map with dots, a queue of alerts, a chart breathing with the network’s traffic. At desks, people in tiers. Tier one sits closest to the queue: the first watch, triaging knocks exactly as the last lesson described, closing wind, raising footfalls. Tier two takes what tier one raises and digs — pulling logs from more rooms, tracing where a thing came from, deciding how sick the machine is. Tier three and the engineers hunt what nobody flagged and build the rules that make the queue wiser. Behind them, an incident manager when the night turns serious: one voice deciding, so ten hands do not pull ten directions. Which chair would you take first if the room opened to you tomorrow — the queue, the digging, or the rule-building? The queue. Everyone begins at the knocks.",
       ),
       fig(
         "/images/blog/soc-room-screens.jpg",
@@ -6900,7 +6897,7 @@ export const blogPosts: BlogPost[] = [
         "Because the internet does not close, the SOC does not close. Analysts work in shifts — days, evenings, nights, rotating — and the night shift is where juniors famously begin, watching while the country sleeps and the probes continue. A shift has its own spine: handover notes read like a relay baton — what happened on the last watch, what is still open, what to keep an eye on; then the queue; then the small projects between knocks, tuning a rule, writing a note that makes tomorrow faster. It is shift work the way nursing is shift work: routine punctuated by genuine emergencies, and measured mostly by whether you noticed in time.",
       ),
       p(
-        "What the room watches with is named across the next two lessons: the SIEM — the giant ledger that collects every machine's records and raises the queue — and the checks and scans that keep the fence honest. Do not let the acronyms intimidate the picture. The SOC is this: one room, one ledger, one queue of knocks, and people in tiers deciding wind from footfall, all night, every night, in shifts. Everything else is furniture.",
+        "What the room watches with is named across the next two lessons: the SIEM — the giant ledger that collects every machine’s records and raises the queue — and the checks and scans that keep the fence honest. Do not let the acronyms intimidate the picture. The SOC is this: one room, one ledger, one queue of knocks, and people in tiers deciding wind from footfall, all night, every night, in shifts. Everything else is furniture. It looks mysterious from the corridor. From the chair, it is a queue and a notebook.",
       ),
       fig(
         "/images/blog/soc-night-shift.jpg",
@@ -6910,12 +6907,12 @@ export const blogPosts: BlogPost[] = [
       ul([
         "When you see SOC in an advert, read it as: shift work, tiers, triage first. Adjust your expectations honestly.",
         "Night shifts are an entry, not a sentence. Learn the queue by night, grow into the hunt by day.",
-        "The handover note is a craft. practise writing one clear paragraph about one alert.",
+        "The handover note is a craft. Practise writing one clear paragraph about one alert.",
         "Every habit these notes taught — patience, notes, channel-checking — is SOC temperament in civilian clothes.",
       ]),
       h2("Is the room for you?"),
       p(
-        "If you loved the locking lessons — if the second lock felt like a puzzle you would happily own — the SOC will feel like home with a salary. If you need quiet and long unhurried building, say, making things rather than watching for their breakers — then the developer rooms later in this chapter will fit better, and nobody should pretend otherwise. Security watching is a temperament before it is a career. The shelf is wide. Walk it with your eyes open.",
+        "If you loved the locking lessons — if the second lock felt like a puzzle you would happily own — the SOC will feel like home with a salary. If you need quiet and long unhurried building, making things rather than watching for their breakers, then the developer rooms later in this stretch will fit better, and nobody should pretend otherwise. Security watching is a temperament before it is a career. Uchechi asked her cousin which he preferred, the night or the day, and he said something she repeated to me: “The night teaches; the day decides.” The shelf is wide. Walk it with your eyes open.",
       ),
     ],
   },
@@ -7383,10 +7380,10 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A notebook with hand-drawn phone screen sketches beside a phone on a desk.",
     body: [
       p(
-        "How to build a mobile app in Nigeria is a question people ask with their eyes too big: they imagine a Lagos office, a container load of dollars, a team. The honest answer is a ladder, and its first rung costs nothing but a notebook. Write the idea in one sentence — who uses it, and what it does for them. An app that reads school fees for parents. An app that finds mechanics nearby. If the sentence will not come, the app is not ready; if it comes easily, you have already done what many funded teams skip.",
+        "“How to build a mobile app in Nigeria” is a question Nonso asked with his eyes too big: he imagined a Lagos office, a container load of dollars, a team. The honest answer is a ladder, and its first rung costs nothing but a notebook. Write the idea in one sentence — who uses it, and what it does for them. An app that reads school fees for parents. An app that finds mechanics nearby. If the sentence will not come, the app is not ready; if it comes easily, you have already done what many funded teams skip.",
       ),
       p(
-        "Rung two: draw it. Paper screens — rectangles with a button here, a list there — the poster lesson's discipline turned inward: what must this screen say, what must this button do? Then put the drawing in front of three people who would actually use it and watch where they frown. Every frown fixed on paper costs nothing; the same frown fixed after programming costs weeks. Rung three is the one most Nigerians should honestly start on: build it as a web app first — a site that works in any phone's browser, installed to the home screen like an app — because it needs no store approval, updates instantly, and reaches the phone that is Nigeria's real computer. The frontend lesson's three layers are the whole trade at this height.",
+        "Rung two: draw it. Paper screens — rectangles with a button here, a list there — the poster lesson’s discipline turned inward: what must this screen say, what must this button do? Then put the drawing in front of three people who would actually use it and watch where they frown. Every frown fixed on paper costs nothing; the same frown fixed after programming costs weeks. Rung three is the one most Nigerians should honestly start on: build it as a web app first — a site that works in any phone’s browser, installed to the home screen like an app — because it needs no store approval, updates instantly, and reaches the phone that is Nigeria’s real computer. The frontend lesson’s three layers are the whole trade at this height. Where would a careful builder begin tonight — with the store, or with the sentence? The sentence. The store is rung five.",
       ),
       fig(
         "/images/blog/app-idea-notebook.jpg",
@@ -7395,10 +7392,10 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("The code, or the developer"),
       p(
-        "Rung four is a fork, and both paths are honourable. Learn the code: the academy's mobile app development course and the free-learning lesson's method — one month per rung, hands on keys — carry you from web app to true Android apps, and the Play Store's door fee is a one-time twenty-five dollars, a business expense, not a wall. Or brief a developer: hire the portfolio rather than the patter — someone whose finished apps you have opened and used — agree the price in writing with stages, pay in parts as stages land, and never the whole sum upfront; the selling lesson's payment rules, walked from the other side. A clear one-sentence idea, paper screens, and a staged agreement will get a honest build for a fraction of the myth.",
+        "Rung four is a fork, and both paths are honourable. Learn the code: the academy’s mobile app development course and the free-learning lesson’s method — one month per rung, hands on keys — carry you from web app to true Android apps, and the Play Store’s door fee is a one-time twenty-five dollars, a business expense, not a wall. Or brief a developer: hire the portfolio rather than the patter — someone whose finished apps you have opened and used — agree the price in writing with stages, pay in parts as stages land, and never the whole sum upfront; the selling lesson’s payment rules, walked from the other side. A clear one-sentence idea, paper screens, and a staged agreement will get an honest build for a fraction of the myth.",
       ),
       p(
-        "And build for the street you live on: the app must survive a three-bar network and a low-end phone, or it does not survive Nigeria — test it on the bus, not only on your fine screen. Keep it small: one thing done perfectly beats five things done ashamedly; WhatsApp itself began as statuses and photos arrived years later. Expect power and data to be line items, the way rent is. And when the first version is alive, however ugly, put it in ten people's hands and listen. The idea that survives ten strangers' thumbs is the one worth the next thousand lines.",
+        "And build for the street you live on: the app must survive a three-bar network and a low-end phone, or it does not survive Nigeria — test it on the bus, not only on your fine screen. Keep it small: one thing done perfectly beats five things done ashamedly; WhatsApp itself began as statuses, and photos arrived years later. Expect power and data to be line items, the way rent is. And when the first version is alive, however ugly, put it in ten people’s hands and listen. The idea that survives ten strangers’ thumbs is the one worth the next thousand lines. It looks like launching unfinished. It is actually the same market-day test every trader in these notes already trusts: show the goods early, watch what the street takes.",
       ),
       fig(
         "/images/blog/phone-app-testing.jpg",
@@ -7408,12 +7405,12 @@ export const blogPosts: BlogPost[] = [
       ul([
         "Write your idea in one sentence today. If it takes more, cut until it does not.",
         "Draw the three screens that matter on paper before touching any tool or hiring anybody.",
-        "Start with the web app. The store can wait; your users' phones cannot.",
+        "Start with the web app. The store can wait; your users’ phones cannot.",
         "Hiring? Staged payments against stages delivered, portfolio before patter, everything in writing.",
       ]),
       h2("The myth, and the ladder beside it"),
       p(
-        "The myth says building an app here requires somebody's millions. The ladder says otherwise: a sentence, paper screens, a web version, ten honest testers, and only then — if the street confirms the idea — the store, the code, or the developer. Every step is free or nearly, every step teaches, and any step can stop with dignity if the idea fails the test, which is precisely what steps are for. The person who asks how to build an app and begins at rung one this evening is ahead of the person who has been pricing containers since last year.",
+        "The myth says building an app here requires somebody’s millions. The ladder says otherwise: a sentence, paper screens, a web version, ten honest testers, and only then — if the street confirms the idea — the store, the code, or the developer. Every step is free or nearly, every step teaches, and any step can stop with dignity if the idea fails the test, which is precisely what steps are for. The person who asks how to build an app and begins at rung one this evening is ahead of the person who has been pricing containers since last year.",
       ),
     ],
   },
@@ -7866,10 +7863,10 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A person at a laptop reading a chat conversation with an AI assistant, thinking.",
     body: [
       p(
-        "A new colleague has joined every office and every phone: the assistant that answers in full sentences, in seconds, in any language you type — writes the letter, explains the tax, drafts the proposal, corrects your code, and never sighs. Used well, it is the most patient apprentice in history, and it is already part of honest work in every field on this shelf. Used carelessly, it is the forward-that-lies with better grammar. This lesson is the difference, and it is now a basic skill, like the keyboard was.",
+        "A new colleague has joined every office and every phone: the assistant that answers in full sentences, in seconds, in any language you type — writes the letter, explains the tax, drafts the proposal, corrects your code, and never sighs. Seyi keeps one open beside his repair work now, the way he keeps a notebook. Used well, it is the most patient apprentice in history, and it is already part of honest work in every field on this shelf. Used carelessly, it is the forward-that-lies with better grammar. This lesson is the difference, and it is now a basic skill, like the keyboard was.",
       ),
       p(
-        "Where it shines: drafts — the first version of a letter, a proposal, a poster's wording, written in seconds and then made yours; explanations — a concept from this shelf said five simpler ways until one lands; translation and tone — the firm email softened, the Pidgin polished for a formal client; and brainstorming — ten names, twenty post ideas, three prices, asked without embarrassment. The working method is the one every editor knows: it drafts, you decide. Your knowledge of the actual work — the client, the market, the truth — is what the assistant does not have and cannot fake. The name on the work is still yours, and the judgement must be too.",
+        "Where it shines: drafts — the first version of a letter, a proposal, a poster’s wording, written in seconds and then made yours; explanations — a concept from this shelf said five simpler ways until one lands; translation and tone — the firm email softened, the Pidgin polished for a formal client; and brainstorming — ten names, twenty post ideas, three prices, asked without embarrassment. The working method is the one every editor knows: it drafts, you decide. Your knowledge of the actual work — the client, the market, the truth — is what the assistant does not have and cannot fake. The name on the work is still yours, and the judgement must be too. What does the apprentice lack that you brought to the table this morning? The street. The client. The consequences.",
       ),
       fig(
         "/images/blog/ai-assistant-chat.jpg",
@@ -7896,7 +7893,7 @@ export const blogPosts: BlogPost[] = [
       ]),
       h2("The apprentice, not the master"),
       p(
-        "Every tool on this shelf arrived with the same warning label: it does what you tell it, not what you mean — the spreadsheet, the find-and-replace, the calculator. The assistant is that warning at its loudest, because it fills silence with confidence. The people it will serve best are exactly the people this series has been building since lesson one: those who read before they send, check before they trust, and sign nothing they have not understood. The apprentice is remarkable. Keep the master's chair.",
+        "Every tool on this shelf arrived with the same warning label: it does what you tell it, not what you mean — the spreadsheet, the find-and-replace, the calculator. The assistant is that warning at its loudest, because it fills silence with confidence. The people it will serve best are exactly the people this series has been building since the first lesson: those who read before they send, check before they trust, and sign nothing they have not understood. The apprentice is remarkable. Keep the master’s chair.",
       ),
     ],
   },
@@ -11155,10 +11152,10 @@ export const blogPosts: BlogPost[] = [
       "A notebook with a short handwritten brief beside an open laptop on a wooden table in warm top-down light.",
     body: [
       p(
-        "The difference between a useless answer and a gift is almost never the machine. It is the instruction. The box answers the question you actually asked, with the fidelity of a very obedient stranger: ask vaguely and receive vagueness with excellent grammar. The good instruction has four parts, they take one minute to assemble, and they are exactly the same four parts you would give a clever intern on their first morning. The role tells the machine who to be — a patient teacher, a business letter writer, a technician explaining to a grandmother. The task says what must be done — write, summarise, list, compare, plan. The shape says what the answer should look like — a page, five bullets, a table, a ten-line letter. And the fence says what it must not do — no invented facts, short words, formal but warm, suitable for Nigeria. Four parts, plain language, one minute.",
+        "The difference between a useless answer and a gift is almost never the machine. It is the instruction. The box answers the question you actually asked, with the fidelity of a very obedient stranger: ask vaguely and receive vagueness with excellent grammar. Aisha kept getting letters “to nobody about nothing” until she learned to brief the box the way she briefs a clever intern on their first morning. The good instruction has four parts, they take one minute to assemble, and they are exactly the same four parts you would give that intern. The role tells the machine who to be — a patient teacher, a business letter writer, a technician explaining to a grandmother. The task says what must be done — write, summarise, list, compare, plan. The shape says what the answer should look like — a page, five bullets, a table, a ten-line letter. And the fence says what it must not do — no invented facts, short words, formal but warm, suitable for Nigeria. Four parts, plain language, one minute.",
       ),
       p(
-        "Watch the four parts work on one real errand. The vague ask — write me a letter — returns a letter to nobody about nothing, and you will spend ten minutes apologising to it. The four-part ask: you are a respectful tenant writing to a landlord in Port Harcourt; write a letter asking that the leaking roof in the back room be repaired before the rains, mentioning that we reported it in June; one page, formal but warm, with the date and flat number at the top; no threats, simple English. The answer that comes back needs your names, your date, and your signature — and nothing else. That is the tool working: shape and language from the machine, facts and life from you. The division of labour is the lesson of this whole chapter in one example.",
+        "Watch the four parts work on one real errand. The vague ask — write me a letter — returns a letter to nobody about nothing, and you will spend ten minutes apologising to it. The four-part ask: you are a respectful tenant writing to a landlord in Port Harcourt; write a letter asking that the leaking roof in the back room be repaired before the rains, mentioning that we reported it in June; one page, formal but warm, with the date and flat number at the top; no threats, simple English. The answer that comes back needs your names, your date, and your signature — and nothing else. That is the tool working: shape and language from the machine, facts and life from you. The division of labour is the lesson of this whole chapter in one example. Retrieval before we walk on: which of the four parts keeps the machine honest? The fence. The rest shapes the work; the fence is where honesty enters.",
       ),
       fig(
         "/images/blog/writing-brief-notebook-laptop.jpg",
@@ -11167,7 +11164,7 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("The fence is where the safety lives"),
       p(
-        "Of the four parts, the fence deserves the most thought because it is where honesty and culture enter. No invented facts is the fence that keeps the machine from filling gaps with fiction — and it will obey the fence far more faithfully than its unguarded habit of confident guessing. In simple English is the fence that keeps your letter readable at home; without it the assistant writes in the vocabulary of an American consultancy and your landlord will suspect a stranger wrote it. Suitable for Nigeria is the fence that localises the naira signs, the office names, the tone of respect — say it explicitly and the machine will stop inserting Thanksgiving and zip codes into your family's business.",
+        "Of the four parts, the fence deserves the most thought because it is where honesty and culture enter. No invented facts is the fence that keeps the machine from filling gaps with fiction — and it will obey the fence far more faithfully than its unguarded habit of confident guessing. In simple English is the fence that keeps your letter readable at home; without it the assistant writes in the vocabulary of an American consultancy and your landlord will suspect a stranger wrote it. Suitable for Nigeria is the fence that localises the naira signs, the office names, the tone of respect — say it explicitly and the machine will stop inserting Thanksgiving and zip codes into your family’s business.",
       ),
       p(
         "Then the discipline that separates users from craftsmen: refine in place instead of restarting. The first answer is the block of marble. Your second message is the chisel — cut the second paragraph, make it warmer at the close, put the three dates in a table, now half the length. Each chisel stroke keeps the memory of the strokes before it, and the conversation becomes a workshop. Restart the box only when the whole direction is wrong. And when the block is finished, the last chisel is yours alone: read it as if the landlord will read it tomorrow, because he will. The machine gave the shape and the sentences. The name at the bottom is yours, and the name at the bottom is what the whole letter is actually about.",
@@ -11179,7 +11176,7 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("The shapes worth keeping on the shelf"),
       p(
-        "A few instruction shapes earn a permanent place on the shelf above the desk, because errands repeat in every life. The letter shape, with its role and tone fence, serves landlords, schools, and banks forever. The plan shape — teach me this subject in ten evening sittings, with practice after each — turns the assistant into a curriculum and belongs to the next lesson but one. The checker shape — here is my text; list every claim that needs verification, and every name and figure to be checked — is the companion of the next lesson and is worth writing on the card today. The translator shape — this in formal English, then the same in simple English for WhatsApp — saves an hour a week in every bilingual household.",
+        "A few instruction shapes earn a permanent place on the shelf above the desk, because errands repeat in every life. The letter shape, with its role and tone fence, serves landlords, schools, and banks forever. The plan shape — teach me this subject in ten evening sittings, with practice after each — turns the assistant into a curriculum and belongs to the lesson after next. The checker shape — here is my text; list every claim that needs verification, and every name and figure to be checked — is the companion of the next lesson and is worth writing on the card today. The translator shape — this in formal English, then the same in simple English for WhatsApp — saves an hour a week in every bilingual household.",
       ),
       p(
         "Keep the four-part card propped against the monitor for a fortnight and something quiet happens. The parts dissolve into your fingers and the card becomes unnecessary — you will find yourself giving the box a role and a fence the way you brief a nephew, without thinking. That fluency is the skill of this decade and it compounds exactly like the keystrokes lesson: awkward for ten days, natural in a month, yours for a career. The box answers the question you actually asked. Learn to ask like a person who knows what they want, and the very confident stranger in the machine becomes the most obedient tool on your table.",
@@ -11191,7 +11188,7 @@ export const blogPosts: BlogPost[] = [
         "Keep four shapes on the card by the monitor: the letter, the plan, the checker, the translator.",
       ]),
       p(
-        "The instructions are now in your hands and the answers arrive well-shaped. But shaped is not the same as true, and the next lesson is the one your name depends on — checking the machine's homework before anything leaves your table, because the assistant's greatest fault is not error. It is error wearing a calm face.",
+        "The instructions are now in your hands and the answers arrive well-shaped. But shaped is not the same as true, and the next lesson is the one your name depends on — checking the machine’s homework before anything leaves your table, because the assistant’s greatest fault is not error. It is error wearing a calm face.",
       ),
     ],
   },
