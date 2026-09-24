@@ -616,10 +616,10 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A smartphone showing a chat beside a laptop with an email open.",
     body: [
       p(
-        "In Nigeria, WhatsApp is how the day moves. A pastor, a landlord, a classmate, a mechanic — the green app is the tap on the shoulder. Email is quieter, older, and still the tray on an office desk. Mixing them up is how applications vanish, how a school never saw your receipt, how a job “did not get your CV.” This lesson is not against the phone. It is about knowing which room you are standing in.",
+        "Torkwase sent her CV to the number in the advert, with a polite good morning attached. The advert had said email your CV to the office, but the number was right there, so WhatsApp felt faster and closer. Three weeks of silence followed, and when she asked, the office said they never received anything from her. In Nigeria, WhatsApp is how the day moves. A pastor, a landlord, a classmate, a mechanic — the green app is the tap on the shoulder. Email is quieter, older, and still the tray on an office desk. Mixing them up is how applications vanish, how a school never saw your receipt, how a job did not get your CV. This lesson is not against the phone. It is about knowing which room you are standing in.",
       ),
       p(
-        "Chat is for things that can live in a pocket: “I am five minutes late.” “Is the shop open?” “Here is the gate code.” The message sits in a thread that scrolls. Next week it is hard to find. Next year it is gone if the phone dies and was never backed up. Email is for things that must still make sense on a desk in October: an application, a fee receipt, a letter of request, a document someone else must file. The subject line is the label on the envelope. The attachment is the paper inside.",
+        "Chat is for things that can live in a pocket: I am five minutes late. Is the shop open? Here is the gate code. The message sits in a thread that scrolls. Next week it is hard to find. Next year it is gone if the phone dies and was never backed up. Email is for things that must still make sense on a desk in October: an application, a fee receipt, a letter of request, a document someone else must file. It looks like the same words in a different app. It is actually a different room, with different shelves — the subject line is the label on the envelope, and the attachment is the paper inside.",
       ),
       fig(
         "/images/blog/phone-and-laptop.jpg",
@@ -628,14 +628,14 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("When the phone is the right room"),
       p(
-        "Use WhatsApp when you already have the person's number, when the answer is short, and when both of you are in the habit of that chat. A class group that shares tomorrow's time. A “have you reached” to a sibling. A photograph of a blackboard, if the teacher asked for it there. Voice notes for people who listen faster than they read. That is the phone earning its keep.",
+        "Use WhatsApp when you already have the person's number, when the answer is short, and when both of you are in the habit of that chat. A class group that shares tomorrow's time. A have you reached to a sibling. A photograph of a blackboard, if the teacher asked for it there. Voice notes for people who listen faster than they read. That is the phone earning its keep.",
       ),
       p(
-        "Even then, a few manners transfer from letters. Say who you are if the number is new: “Good afternoon, this is Amaka from Computer Basics.” Do not send five fragments that could have been one message. Do not send a document as nine blurry photographs if you can send one PDF. Do not assume a blue tick means the person can act; it means the phone received a packet. People drive, teach, and sleep.",
+        "Even then, a few manners transfer from letters. Say who you are if the number is new: Good afternoon, this is Amaka from Computer Basics. Do not send five fragments that could have been one message. Do not send a document as nine blurry photographs if you can send one PDF. Do not assume a blue tick means the person can act; it means the phone received a packet. People drive, teach, and sleep.",
       ),
       h2("When only email will do"),
       p(
-        "If an advertisement, a form, or a person with an office says “send it to this address,” they mean email. A WhatsApp to a number you found on Facebook is not the same tray. Admissions, banks, scholarships, job boards, and many lecturers still sort their work by subject line. Your carefully typed chat is invisible there. Use the letter: To, Subject, body, attachment, as the email lesson taught.",
+        "If an advertisement, a form, or a person with an office says send it to this address, they mean email. A WhatsApp to a number you found on Facebook is not the same tray. Admissions, banks, scholarships, job boards, and many lecturers still sort their work by subject line. Your carefully typed chat is invisible there. So where would you look first when an advert gives you an address and a phone number? The address, for the file. The phone number is for questions, not for cargo.",
       ),
       fig(
         "/images/blog/whatsapp-vs-letter.jpg",
@@ -643,7 +643,7 @@ export const blogPosts: BlogPost[] = [
         "If you hesitate, look at what they asked for. A number means chat. An address with an @ means a letter. When they asked for both, send the letter and then a short chat that says you sent it.",
       ),
       p(
-        "Sometimes you should do both, in that order. Email the receipt to the address on the form. Then send a short WhatsApp: “Good afternoon. I have emailed the fee receipt to accounts@…, subject March fees — Amaka Okoro.” The chat is a knock. The mail is the file. Do not reverse it — a knock with no file, then silence when they ask you to resend, because the photograph compressed into dust.",
+        "Sometimes you should do both, in that order. Email the receipt to the address on the form. Then send a short WhatsApp: Good afternoon. I have emailed the fee receipt to accounts at the school, subject March fees — Torkwase Ochai. The chat is a knock. The mail is the file. Do not reverse it — a knock with no file, then silence when they ask you to resend, because the photograph compressed into dust.",
       ),
       ul([
         "Find one thing you must send this week: a receipt, a form, a short request.",
@@ -2427,10 +2427,10 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "Laptop side vents on a wooden desk.",
     body: [
       p(
-        "A laptop makes heat the way a generator makes heat: work. The vents are how it breathes. Put the machine on a bed, a prayer mat, a sofa, and the cloth blocks the vents. The fan screams. The machine slows, as you saw in the slow-computer lesson. Then it dies in the middle of a letter. This lesson is where the lungs are, what not to sit them on, and when heat is a warning rather than a personality.",
+        "Ololade was four pages into her final-year project, the laptop sitting on the duvet because the table held a pile of laundry, when the fan changed its voice from a hum to a scream. The cursor began to walk instead of run. Then, mid-sentence, the screen went black and took the paragraph with it. A laptop makes heat the way a generator makes heat: work. The vents are how it breathes. Put the machine on a bed, a prayer mat, a sofa, and the cloth blocks the vents. The fan screams. The machine slows, as you saw in the slow-computer lesson. Then it dies in the middle of a letter. This lesson is where the lungs are, what not to sit them on, and when heat is a warning rather than a personality.",
       ),
       p(
-        "Look at the sides and the underside. Slits, a grille, sometimes a sticker that already peels into the grille. Those must see air. A hard table is enough. A “cooling pad” is optional. A stack of books that leaves the grille in space is a village solution that works. A closed bag with the machine on is a slow oven. If you must move, shut down first.",
+        "Look at the sides and the underside. Slits, a grille, sometimes a sticker that already peels into the grille. Those must see air. A hard table is enough. A cooling pad is optional. A stack of books that leaves the grille in space is a village solution that works. A closed bag with the machine on is a slow oven. If you must move, shut down first.",
       ),
       fig(
         "/images/blog/laptop-vents.jpg",
@@ -2442,7 +2442,7 @@ export const blogPosts: BlogPost[] = [
         "Laptops on thighs for ten minutes are a habit. Laptops on duvets for an hour are how fans eat lint. If the underside is too hot to rest a hand, shut down, lift it onto a table, wait. Do not pour water on it. Do not put it in a fridge. Cold drinks next to it are how keyboards drink. Heat leaves through air, not through drama.",
       ),
       p(
-        "When the fan is loud and you are only typing a letter, something else is working — a download, an update, a browser with too many tabs. Save, close the crowd, listen again. If the fan is loud at rest, on a table, after a restart, that is dust or a dying fan. Backup, then a shop. A shop that “re-pastes” is sometimes telling the truth. Ask the price first.",
+        "When the fan is loud and you are only typing a letter, something else is working — a download, an update, a browser with too many tabs. Save, close the crowd, listen again. It looks like the machine is dying. Usually it is just suffocating, or feeding a guest you did not invite to dinner. If the fan is loud at rest, on a table, after a restart, that is dust or a dying fan. Backup, then a shop. A shop that re-pastes is sometimes telling the truth. Ask the price first.",
       ),
       fig(
         "/images/blog/laptop-on-bed.jpg",
@@ -2453,7 +2453,7 @@ export const blogPosts: BlogPost[] = [
         "Turn the laptop over, unplugged and off. Find the grille. Remember its face.",
         "Work on a table for one sitting. Notice the fan.",
         "If you have been on a bed, move to the table and wait one minute. The pitch of the fan should fall.",
-        "Never block the grille with paper under the machine “to look neat.”",
+        "Never block the grille with paper under the machine to look neat.",
       ]),
       h2("The season of dust"),
       p(
@@ -2467,7 +2467,7 @@ export const blogPosts: BlogPost[] = [
         "Direct sun on a black lid is a second heater. Shade, even a veranda, is better. A closed car at noon will cook a pack until it swells. Take the machine with you, or do not leave it there. This is not delicate. It is the same as not leaving a bottle of perfume on a dashboard.",
       ),
       p(
-        "If Windows says it is too hot and goes off, believe it. Let it cool on a table, lid open a little, before you start again. Starting immediately to “see if it works” is how you meet a shutdown loop. Heat is a message. The vents are the mouth. Give them air.",
+        "If Windows says it is too hot and goes off, believe it. Let it cool on a table, lid open a little, before you start again. Starting immediately to see if it works is how you meet a shutdown loop. So where would you look first the next time the fan screams mid-letter? At the grille and the surface beneath it — before the task manager, before the repair shop. Heat is a message. The vents are the mouth. Give them air.",
       ),
     ],
   },
@@ -3891,7 +3891,7 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A letter on a laptop with a page number at the bottom of the page.",
     body: [
       p(
-        "A one-page letter does not need a number. A three-page request, a report, a list of names — the person who drops the staple needs to know which sheet is two. People type “2” at the bottom of page two, then add a paragraph, and “2” is now in the middle of page three. A page number is a field that counts. You insert it once. Word walks it forward. This lesson is that field, a quiet header, and not building a second letter in the margin.",
+        "Nwakaego's three-page request to the landlord was stapled at the corner, and the staple failed on the walk to the office. Page two slipped out somewhere around the gate, and the clerk read page one, then page three, and asked her what happened in the middle of her own letter. A one-page letter does not need a number. A three-page request, a report, a list of names — the person who drops the staple needs to know which sheet is two. People type 2 at the bottom of page two, then add a paragraph, and 2 is now in the middle of page three. A page number is a field that counts. You insert it once. Word walks it forward.",
       ),
       p(
         "In Word: Insert, Page Number, Bottom of page, a simple centre or right. Close Header and Footer, or double-click the main letter, to return to the body. The number sits in a footer — a strip at the bottom that repeats. A header is the strip at the top. Double-click near the top of the page to type there. Your name, or the title of the document, once, small. Size 10 is enough. The body stays size 12. If the header is as loud as the greeting, it is not a header. It is a poster in the wrong place.",
@@ -3903,7 +3903,7 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("Different first page, and too much"),
       p(
-        "A letter often wants no number on the first sheet, then 2 on the second. Header & Footer, Different first page. Leave the first footer empty. Put the number on the second. That is enough. Do not invent “Page 1 of 3” unless someone asked. The extra words eat the margin and look like a manual.",
+        "A letter often wants no number on the first sheet, then 2 on the second. Header and Footer carries one checkbox that does the whole trick: Different first page. Tick it and the cover page arrives naked — no page number on the title, no stray line under the author's name — while pages two onwards carry the full furniture. It is the entire professional finish of a report in one tick. Leave the first footer empty, put the number on the second, and stop. Do not invent Page 1 of 3 unless someone asked; the extra words eat the margin and look like a manual.",
       ),
       p(
         "A header that contains a logo, a slogan, a phone number, an email, a coloured bar, and a line is a letterhead. Schools and offices have those as templates. You do not need to design one for a request to a landlord. Your name at the top of the body is enough, as in the letter lesson. If you must, one line in the header: Amaka Okoro — March fees. Then stop.",
@@ -3924,14 +3924,14 @@ export const blogPosts: BlogPost[] = [
         "The footer is the second quiet line, at the bottom of every page, and it is the natural home for the three things a separated page needs: the name of the document, the date it was printed, and the page number in the middle or the corner. A ten-page contract whose pages can be shuffled is a small danger; the same contract with page three of ten in the footer is a bound document even when it is loose. Put the page number in once and the machine counts forever. Type the document name beside it and every photocopy made in the next four years can find its family.",
       ),
       p(
-        "One checkbox deserves its fame: Different first page. Tick it and the cover page arrives naked — no page number on the title, no stray line under the author's name — while pages two onwards carry the full furniture. It is the entire professional finish of a report in one tick. The date field in the footer can also be told to update itself each time the file is printed, which is right for a working document and wrong for a contract you want frozen. Match the furniture to the document's character: lively in a flyer, invisible in a formal letter, present on every page of anything long.",
+        "The date field in the footer can also be told to update itself each time the file is printed, which is right for a working document and wrong for a contract you want frozen. Match the furniture to the document's character: lively in a flyer, invisible in a formal letter, present on every page of anything long.",
       ),
       h2("PDF, and when to skip"),
       p(
         "Save as PDF after the numbers look right. A PDF keeps the footer. If you number in Word then export, do not also stamp numbers in a second program. Two counters fight. For a one-page PDF of a receipt, skip the header. For a ten-page notes file, the number is kindness.",
       ),
       p(
-        "Headers are not a place to hide a second essay. They repeat on every page, which is how a joke becomes a punishment. Name, or title, or nothing. Number at the bottom. Body in the middle. You already know white space. The strips at the top and bottom are more of it, with one small fact each.",
+        "Headers are not a place to hide a second essay. They repeat on every page, which is how a joke becomes a punishment. Name, or title, or nothing. Number at the bottom. Body in the middle. Where would you look first to make a cover page quiet? That one checkbox. The strips at the top and the bottom are white space with one small fact each — use them the way Nwakaego now does, and nobody will ever again lose the middle of your letter.",
       ),
     ],
   },
@@ -4008,22 +4008,22 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "An email with a short name-and-phone signature at the bottom.",
     body: [
       p(
-        "Every mail you send should still sign off like paper: your name, a number. Typing that every time is how people forget the number, or send from a nickname. A signature is a small stamp the mailer adds at the bottom. You write it once. It walks with every new compose. This lesson is three lines, how to switch it on, and what not to paste from a cousin's colourful template.",
+        "Itohan's first serious mail went to a bank, and it ended the way her text messages end: nothing. No name, no number. The reply arrived three days later asking who is this and how do we reach you, and the delay cost her the week. Every mail you send should still sign off like paper: your name, a number. Typing that every time is how people forget the number, or send from a nickname. A signature is a small stamp the mailer adds at the bottom. You write it once. It walks with every new compose.",
       ),
       p(
-        "In Gmail: the gear, See all settings, General, Signature. Create new. Type your full name, as on your ID. Next line: a phone number you answer. Next line, if you must: Computer Basics student, or the name of your shop, or nothing. Save. Tick that it applies to new mail, and, if you like, to replies. On Outlook or the Mail app, the words are Signature in settings. Same three lines. You do not need a different stamp for each mood.",
+        "The stamp is three lines. Your full name, as on your ID. One phone number you actually answer. One optional line for what you do or where you work — Computer Basics student, or the name of your shop — or nothing at all. A fourth line for the street address is for formal company letters only. In Gmail: the gear, See all settings, General, Signature. Create new. Type the three lines. Save. Tick that it applies to new mail, and, if you like, to replies. On Outlook or the Mail app, the words are Signature in settings. Same three lines. Where would you look first on a strange mailer? Settings, then Signature. You do not need a different stamp for each mood. Watch once what a real office writes: their stamp sits under the last sentence like a printed name on a letterhead, and it never shouts. Yours now does the same work — every mail leaves your table already signed, and the only thing left to write is the thing you actually meant to say.",
       ),
       fig(
         "/images/blog/email-signature.jpg",
         "A short signature under an email body.",
         "Name, number, one optional line. Black, size of the body or a little smaller. If it is louder than the letter, it is wrong.",
       ),
-      h2("Replies, and the stack of stamps"),
+      h2("What the stamp is not"),
       p(
-        "A signature on every reply in a long thread repeats your number ten times. Some people switch “insert on reply” off and sign the first mail only. Either is polite. What is not polite is a signature taller than the answer — a logo, a banner, a row of social icons, a confidentially notice copied from a bank, a proverb. The other person has to scroll past your billboard to find “Tuesday is fine.”",
+        "A signature taller than the answer is a billboard: a logo, a banner, a row of social icons, a confidentiality notice copied from a bank, a proverb that scrolls in five colours. That is the electronic version of too much perfume — it follows the message into the room and is what people remember. The name is what people should remember. Give the name a clean chance. Do not put a scanned handwriting as a huge image. Do not put a QR to your WhatsApp unless you are a shop and they asked. Do not put a second person's number in case. One person, one stamp. If you send for an office, the office will give you the stamp. Until then, you.",
       ),
       p(
-        "Do not put a scanned handwriting as a huge image. Do not put a QR to your WhatsApp unless you are a shop and they asked. Do not put a second person's number “in case.” One person, one stamp. If you send for an office, the office will give you the stamp. Until then, you.",
+        "Keep the stamp light in bytes as well as in taste. A signature built as an image adds fifty kilobytes to every one of the thirty mails in a thread and turns every Reply all into a small download on somebody's poor bundle. Text signatures travel beautifully and survive every phone. And decide once about replies: a signature on every reply in a long thread repeats your number ten times, so some people switch insert on reply off and sign the first mail only. Either is polite. Look at the stamp with tired eyes late at night, the way a reader will. If it still reads as calm and complete, it is finished.",
       ),
       fig(
         "/images/blog/signature-block.jpg",
@@ -4034,18 +4034,11 @@ export const blogPosts: BlogPost[] = [
         "Write three lines on paper: name, number, optional one-line role.",
         "Put them in the mailer's signature settings. Send yourself a new mail. Confirm they appear.",
         "Open a reply to an old mail. Decide whether you want the stamp there too. One tick.",
-        "If a colourful template arrives in WhatsApp “for professionals,” delete it. Three lines you typed are professional.",
+        "If a colourful template arrives in WhatsApp for professionals, delete it. Three lines you typed are professional.",
       ]),
-      h2("Three lines is a signature"),
-      p(
-        "A signature is the stamp at the bottom of every letter you post: your name as you wish to be called, one line for what you do or where you work, and one way to reach you outside the mail. Three lines. A fourth line for the street address is for formal company letters only. The motivational quote that scrolls in five colours is the electronic version of too much perfume — it follows the message into the room and is what people remember. The name is what people should remember. Give the name a clean chance.",
-      ),
-      p(
-        "Keep the stamp light in bytes as well as in taste. A signature built as an image adds fifty kilobytes to every one of the thirty mails in a thread and turns every Reply all into a small download on somebody's poor bundle. Text signatures travel beautifully and survive every phone. Set yours once in the mail settings — usually under Signature, with a separate one available for the work account — and then look at it with tired eyes late at night, the way a reader will. If it still reads as calm and complete, it is finished. The stamp works when you forget it is there.",
-      ),
       h2("When the stamp is wrong"),
       p(
-        "A new number: edit the signature the same day. An old number in the stamp is how people miss you for a term. If you use two addresses, set the stamp on both, or you will send from the academy-looking address with no name. On a shared computer, do not save a signature in the house profile. Guest, then type your name at the bottom once, as you used to. The stamp lives in the bag. You know whose bag you are in.",
+        "A new number: edit the signature the same day. An old number in the stamp is how people miss you for a term. If you use two addresses, set the stamp on both, or you will send from the academy-looking address with no name. On a shared computer, do not save a signature in the house profile. Guest, then type your name at the bottom once, as you used to. The stamp lives in the bag. You know whose bag you are in. The stamp works when you forget it is there.",
       ),
       p(
         "A signature is not a CV. It is not a poster. It is the printed name under the last sentence, with a number so the other person can call instead of hunting. When the letter is one job, the stamp is one name. You have reached the end of the envelope. To, maybe Cc, body, attachment, stamp. Send. Then wait, like an adult.",
@@ -4222,10 +4215,10 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A file icon being dragged toward a folder on a laptop screen.",
     body: [
       p(
-        "Drag and drop is pick up, walk, put down. Click a file, keep the button held, move, release on a folder. The file goes, or a copy goes, depending on the walk. People drop onto the gap between windows and the file vanishes into a path they did not mean — Desktop, a neighbour folder, Recycle Bin if they drifted onto the Bin. This lesson is a deliberate drop, the difference between move and copy, and what to do when the ghost icon lies.",
+        "Yewande's wedding photographs lived in one folder, and she dragged that folder onto her flash to carry it to the business centre. Then, in a tidying mood, she deleted it from the desktop and emptied the bin. At the centre the folder was on the flash — but she had not checked, and the walk home in the rain is a story this lesson exists to shorten. Drag and drop is pick up, walk, put down. Click a file, keep the button held, move, release on a folder. The file goes, or a copy goes, depending on the walk.",
       ),
       p(
-        "Open two windows: Documents on the left, the USB or School/2026 on the right. Click the file in the left. Hold. Drag until the right folder is highlighted — a box or a name that lights. Release. If you are walking inside the same disk, Windows often moves: the original leaves the first room. If you are walking to a USB, it often copies: both rooms have it. A small plus sign on the ghost means copy. No plus can mean move. Hold Ctrl while you drop to force a copy. Hold Shift to force a move. If you cannot remember, copy with Ctrl+C and paste. The long way is still correct.",
+        "Open two windows: Documents on the left, the USB or School/2026 on the right. Click the file in the left. Hold. Drag until the right folder is highlighted — a box or a name that lights. Release. Inside the same disk, Windows often moves: the original leaves the first room. Across to a USB, it often copies: both rooms have it. A small plus sign on the ghost means copy. No plus can mean move. Hold Ctrl while you drop to force a copy. Hold Shift to force a move. If you cannot remember either, copy with Ctrl+C and paste. The long way is still correct. One retrieval before we walk on: you drag a photograph from Pictures to the USB and see a small plus sign beside the ghost. What did the machine just promise? A copy — the original is still at home, and both rooms will hold the picture.",
       ),
       fig(
         "/images/blog/drag-drop.jpg",
@@ -4234,7 +4227,7 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("When it disappears"),
       p(
-        "Undo in the folder — Ctrl+Z — can put a moved file back, once, if you have not done something else. Search the rooms you know. Check Desktop. Check Recycle Bin if the path crossed the Bin. Check the USB. A drop that looked like a copy to a stick that then ejected early can corrupt, as a yanked USB does. Wait for the progress box. Then open the file from the new room before you delete the old one. Copy, look, then delete, is still the religion. Drag is only a faster copy or move.",
+        "Undo in the folder — Ctrl+Z — can put a moved file back, once, if you have not done something else. Try undo before panic every time; a drag is exactly the kind of act undo remembers best. Then search the rooms you know. Check Desktop. Check Recycle Bin if the path crossed the Bin. Check the USB. A drop that looked like a copy to a stick that then ejected early can corrupt, as a yanked USB does. Wait for the progress box. Then open the file from the new room before you delete the old one. Copy, look, then delete, is still the religion. Drag is only a faster copy or move.",
       ),
       p(
         "Dragging a file onto a Word window may insert it as a picture or an attachment inside the letter. Dragging onto a browser may upload it to a site you did not mean to feed. If you did not mean that, undo in Word, or close the tab without sending. Drag onto folders, not onto programs, until you are sure.",
@@ -4250,16 +4243,16 @@ export const blogPosts: BlogPost[] = [
         "If it moved and you wanted both, copy it back. Next time hold Ctrl, or use Ctrl+C.",
         "Do not drag the only wedding folder onto a USB and then empty the laptop before you have opened a photo from the stick.",
       ]),
-      h2("The copy that travels with the move"),
+      h2("Look where you set it"),
       p(
-        "One detail prevents a hundred lost files. Inside a single drive — the same disk, folder to folder — dragging is a move: the file leaves one room and enters another. But drag the same file across to a USB stick or another drive and the machine quietly makes a copy instead, leaving the original at home. That is why the folder seems to vanish when people drag to the flash and then delete from the desktop in a tidying mood — the file moved; the copy is on the flash. Hold Ctrl while dragging when you want a copy in the same house; hold Shift when you insist on a move across the bridge. The pointer itself usually whispers which one it is planning.",
+        "The whole gesture is four words: lift, carry, set down, and look where you set it. The looking is the part people skip. It looks like the file vanished into the machine. It is almost always standing in a room you have not looked in yet — the folder that highlighted before your finger let go is the folder that now holds it. That is also why tidying after a drag is dangerous: the move already emptied the first room, so deleting the leftovers removes the only copy that survived your mistake.",
       ),
       p(
-        "And when the drag goes wrong — the file dropped into the wrong folder, the icon that vanished — the first rescue is not a search. It is Ctrl and Z. Undo reverses the drag completely and the file stands again where it stood, because a drag is exactly the kind of act undo remembers best. Try undo before panic every time. On the trackpad, the same act is a firmer press-and-drag with a second finger resting; on the phone, a long-press lifts the icon and a slow hold over the destination folder is how you carry it. The gesture is the same in every country of the machine: lift, carry, set down, and look where you set it.",
+        "One detail prevents a hundred lost files, and it is the one Yewande learned in the rain: know which kind of walk you are on before you let go. Same disk, folder to folder, the file moves. Across to the flash or another drive, the machine makes a copy and leaves the original at home. Watch the ghost icon for its whisper — the plus sign — and when the walk matters, force it: Ctrl for a copy, Shift for a move.",
       ),
       h2("On a trackpad, and on a phone"),
       p(
-        "Trackpads make drag fussy: the finger lifts, the drop fires early. A mouse is kinder for this one act. On a phone, hold a photo, then a share sheet — that is not the same as a Windows move. Do not practise drag with files you cannot replace. Practise with delete-practice, zip-practice, the names you already made. When the drop is boring, you have learned it. Boring is the goal. Drama is a file in a hole.",
+        "Trackpads make drag fussy: the finger lifts, the drop fires early. A mouse is kinder for this one act. On a trackpad, a firmer press-and-drag with a second finger resting helps. On a phone, hold a photo, then a share sheet — that is not the same as a Windows move; a long-press lifts the icon and a slow hold over the destination folder is how you carry it. Do not practise drag with files you cannot replace. Practise with delete-practice, zip-practice, the names you already made. When the drop is boring, you have learned it. Boring is the goal. Drama is a file in a hole.",
       ),
     ],
   },
@@ -4276,10 +4269,10 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A simple one-page CV on a laptop screen.",
     body: [
       p(
-        "A CV is not a poster of who you wish you were. It is a one-page letter that says your name, how to reach you, and what you have actually done — school, a shop, a church role, a computer course you finished. Shops sell templates with gold lines and a photograph that ate the margin. Offices in this city still read a quiet page. This lesson is that page in Word, with the bones you already have: one typeface, a list, the truth.",
+        "Zakari had three versions of his CV before he understood the job of one. The first had a gold border and a photograph that ate the margin. The second was four pages of hope. The third was one quiet page of the truth, and the third one is the one an office in this city read to the end and called him in to meet. A CV is not a poster of who you wish you were. It is a one-page letter that says your name, how to reach you, and what you have actually done — school, a shop, a church role, a computer course you finished. Shops sell templates with gold lines and photographs. Offices still read a quiet page. This lesson is that page in Word, with the bones you already have: one typeface, a list, the truth.",
       ),
       p(
-        "Name at the top, large enough to read, not a banner. Next line: phone, email you can open — the address you made on purpose. Then a short sentence if you must: Seeking computer basics work, or Available for shop and office tasks. Then headings: Education, Experience, Skills. Education can be SSCE, a year, a school that exists. Experience can be “helped at a family stall, 2024–2025” or “completed Computer Basics at Cyber Elias Academy, Port Harcourt.” Skills: things you can do at a desk this week — email, Word, Excel totals, not “Microsoft Office Suite Guru.” If you cannot demonstrate it on a machine, it is not a skill yet.",
+        "Build it from the top down in four blocks. First the header: your full name in larger letters, then phone, email you can open — the address you made on purpose — and town. Nothing else. Then a short sentence if you must: Seeking computer basics work, or Available for shop and office tasks. Then education in reverse order, newest first, with the dates plain: SSCE, a year, a school that exists. Then experience in reverse order, and here is the block people fear: every honest thing counts. Helped at a family stall, 2024–2025. Completed Computer Basics at Cyber Elias Academy, Port Harcourt. Sold airtime at the kiosk, kept the church's records, taught four children typing during ASUU — these are work with dates and duties, and duties are written as what you did, not what the job was called. Then skills: the things you can do at a desk this week — email, Word, Excel totals, not Microsoft Office Suite Guru. If you cannot demonstrate it on a machine, it is not a skill yet.",
       ),
       fig(
         "/images/blog/simple-cv.jpg",
@@ -4288,10 +4281,10 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("Dates, gaps, and what to leave off"),
       p(
-        "Year–year is enough. Do not invent a job to fill 2023. A gap is ordinary. A lie is a conversation you will lose in the room. Do not put a BVN, a home address if you are not asked, a photograph unless they asked, a date of birth unless they asked. Do not put a motivational quote. Do not put “references available on request” if you have no one to name; name one person who will pick up, with their permission, or omit the line.",
+        "Year–year is enough. Do not invent a job to fill 2023. A gap is ordinary. A lie is a conversation you will lose in the room. What does a brave gap line look like? Cared for family, 2023 to 2024 — one honest line an employer can respect and a phone call will confirm. Gaps are not crimes; that line is braver and more employable than a stretched lie that a two-minute phone call will puncture.",
       ),
       p(
-        "Bullets, not a novel. Two or three lines under each role: what you did, in verbs you can stand by — received customers, kept a fee book in Excel, typed letters. Spell check, then read aloud. Your name must be spelled as on your ID. Save as yourname-cv-2026.docx, then PDF. Send the PDF unless they asked for Word. You know why.",
+        "Leave these off the page: your state of origin, your religion, your date of birth, a photograph unless they asked, a home address if you are not asked, a BVN. Leave off the word hardworking. Leave off motivational quotes. Leave off references available on request if you have no one to name; name one person who will pick up, with their permission, or omit the line. Keep one generous margin and a little white space between blocks so the page breathes.",
       ),
       fig(
         "/images/blog/cv-print.jpg",
@@ -4302,21 +4295,21 @@ export const blogPosts: BlogPost[] = [
         "One page in Word. Name, phone, email, Education, Experience, Skills.",
         "Three true bullets under one real thing you have done.",
         "Spell check. Read aloud. PDF. Open the PDF. Confirm it is one page.",
-        "Do not download a “professional CV builder” from an advert. Word is enough.",
+        "Do not download a professional CV builder from an advert. Word is enough.",
       ]),
-      h2("The one page, walked slowly"),
+      h2("Bullets, and the file you send"),
       p(
-        "Build the page from the top down in four blocks. First the header: your full name in larger letters, then phone, email, and town — nothing else. Then education in reverse order, newest first, with the dates plain. Then experience in reverse order, and here is the block people fear: every honest thing counts. Sold airtime at the kiosk, kept the church's records, ran the computer at the business centre, taught four children typing during ASUU — these are work with dates and duties, and duties are written as what you did, not what the job was called. Then skills: the things you can actually do in front of an examiner.",
+        "Bullets, not a novel. Two or three lines under each role: what you did, in verbs you can stand by — received customers, kept a fee book in Excel, typed letters. Spell check, then read the page aloud; your ear catches what the eye forgives. Your name must be spelled as on your ID. Save as yourname-cv-2026.docx, then File, Save as PDF. Send the PDF unless they asked for Word — never the editable copy, because the PDF is the letter that cannot be rearranged in transit. Open the PDF once yourself before it travels.",
       ),
       p(
-        "Leave these off the page: your state of origin, your religion, your photograph (unless asked), the word hardworking, and any date you cannot defend. Gaps are not crimes; a line saying cared for family, 2023 to 2024 is braver and more employable than a stretched lie that a two-minute phone call will puncture. Keep one generous margin and a little white space between blocks so the page breathes. Then File, Save as PDF, and send that PDF — never the editable copy — because the PDF is the letter that cannot be rearranged in transit. One page, four blocks, the truth. That CV gets read to the end.",
+        "A CV is a letter with a longer memory. It should still look like something you would sign. When the page is quiet and true, it is done. Update it when something real happens — a course finished, a role ended — not every Saturday. The file lives in Documents/Work or School, backed up, like anything you would cry about. You already know that part. The new part is refusing to invent a life to fill a margin.",
       ),
       h2("When they asked for two pages, and when they asked for a form"),
       p(
         "Some offices want their own form. Fill the form. Attach the CV if they said so, not instead. Some public-sector processes want NYSC, certificates, a longer pile. That pile is not this one page; it is a folder, School or Work, named. The one page is the door. The folder is the house. Do not email the whole house unasked.",
       ),
       p(
-        "A CV is a letter with a longer memory. It should still look like something you would sign. When the page is quiet and true, it is done. Update it when something real happens — a course finished, a role ended — not every Saturday. The file lives in Documents/Work or School, backed up, like anything you would cry about. You already know that part. The new part is refusing to invent a life to fill a margin.",
+        "Zakari's page took one evening and one honest conversation with himself. The gold border took longer and did nothing. Start the quiet page tonight: four blocks, one true gap line, three bullets you can say aloud without looking down.",
       ),
     ],
   },
@@ -5232,22 +5225,22 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A learner at a desk looking at the empty place where a phone was.",
     body: [
       p(
-        "A stolen phone is a stolen gate to WhatsApp, mail, and sometimes the bank. Panic wants you to chase the street. The useful hour is elsewhere: the network, the accounts, a second machine. This lesson is that hour, what Find My Device can and cannot do, and why yesterday’s lock and yesterday’s copies matter more than a shop’s “tracker app” from a banner.",
+        "Alero's phone left her hand at the motor park — a bump, a crowd, and by the time she turned, a boy in a blue shirt was merging into the market. Her first thought was the phone itself, two months of savings, the case she liked. Her second thought, an hour later on a neighbour's phone, saved her money. A stolen phone is a stolen gate to WhatsApp, mail, and sometimes the bank. Panic wants you to chase the street. The useful hour is elsewhere: the network, the accounts, a second machine.",
       ),
       p(
-        "From another phone or a laptop: call your network — MTN, Glo, Airtel, 9mobile — and block the SIM. The number stops. OTPs stop arriving on the thief’s table. Then mail: from a computer you trust, change the password, sign out other sessions, as in the café lesson. Then the bank, from the real app or the real street, not from a link in a “we saw your phone” SMS. Then WhatsApp: if you still have another phone and the same SIM later, verify; there is also a way to log out other devices from the phone you no longer hold, if you set it up before. Linked devices you already know. Remove what you can from a remaining phone or from Web if a session is open.",
+        "This lesson is that hour, in order, and one preparation that makes the hour survivable. The preparation is yesterday's lock and yesterday's copies — the screen lock from the last lesson, the backups from the files lessons. Neither can be installed after the phone is gone. As for a tracker app you never heard of until a Facebook post: that is the virus costume, and you do not install new guests on a remaining laptop in this hour.",
       ),
       fig(
         "/images/blog/lost-phone.jpg",
         "An empty place on a desk where a phone should be.",
         "The pocket is gone. The accounts are not gone until someone opens them. Speed belongs to passwords and the SIM, not to a chase.",
       ),
-      h2("Find, ring, erase"),
+      h2("The hour, in order"),
       p(
-        "Google: android.com/find, or Find My Device, signed into the same account the phone used. Apple: iCloud, Find. If the phone is on and on a network, a map may show a neighbourhood, not a house number. You may ring it. You may lock it with a message. You may erase it — a last tap that wipes the pocket if the machine still hears the cloud. Erase after you have copied what you could, which, if the phone is gone, means yesterday’s copies. Do not erase before the SIM is blocked if you still hope to call it; in practice, block first, then find, then lock or erase.",
+        "One. Block the SIM — from another phone or a laptop, call your network: MTN, Glo, Airtel, 9mobile. Or walk to the network office with your ID and have the line barred and a replacement cut for the registered owner the same day. The number stops, and OTPs stop arriving on the thief's table. Two. Mail: from a computer you trust, change the password first — mail unlocks every other reset — then sign out other sessions, as in the café lesson. Three. The bank: from the real app or the real street, never from a link in a we-saw-your-phone SMS. Only after those three roads are closed do you think about the handset.",
       ),
       p(
-        "If the map is empty, the phone is off, on a plane, or already wiped. The account steps still matter. A police report may be needed for a new SIM with the same number. A tracker app you never heard of until a Facebook post is the virus costume. You do not install new guests on a remaining laptop in this hour.",
+        "Four. WhatsApp: if you still have another phone and will keep the same number, verify when the new SIM arrives; remove linked devices from a remaining phone or from Web if a session is open. Five. Find, ring, erase — Google's android.com/find or Find My Device, signed into the same account the phone used; Apple's iCloud, Find. If the phone is on and on a network, the map may show a neighbourhood, not a house number. You may ring it, lock it with a message, or erase it — the last tap, only after you have copied what you could, which, if the phone is gone, means yesterday's copies. Block the SIM first, then find, then lock or erase. If the map is empty, the phone is off, on a plane, or already wiped; the account steps still matter, and a police report may be needed for a new SIM with the same number. Ask your network for their official care line while you are reading this, and write it beside the ID number in the notebook — the line you will dial from a neighbour's phone is the one you looked up in daylight, not the one a search advert sells to the frightened.",
       ),
       fig(
         "/images/blog/find-device.jpg",
@@ -5257,19 +5250,19 @@ export const blogPosts: BlogPost[] = [
       ul([
         "Today, while the phone is in your hand: confirm you can sign into Find My Device or iCloud from a laptop.",
         "Confirm the phone has a lock. Confirm photos you care about are on the computer.",
-        "Write the network’s official number in the notebook, not a number from a search advert.",
-        "If it happens: SIM, mail, bank, find, lock or erase. In that spirit. Shame later. Speed now.",
+        "Write the network's official number in the notebook, not a number from a search advert.",
+        "If it happens: SIM, mail, bank, then find, lock or erase. In that spirit. Shame later. Speed now.",
       ]),
-      h2("The SIM, and the number the bank knows"),
+      h2("The number is the spine"),
       p(
-        "Before the hunt, block the road to your money. The SIM card is the key half the country forgets: every OTP travels to that little chip, and a thief with your unlocked phone and your SIM can be you by nightfall. Walk to the network office — or call their care line from a neighbour's phone — with your ID and the line blocked the same day. MTN, Glo, Airtel, 9mobile, all of them will bar the line and cut a replacement SIM for the registered owner. The phone is a loss you can replace at Computer Village next month. The number is the spine of your banking identity and it moves first.",
+        "Notice what moved first in that hour: the SIM. Every OTP travels to that little chip, and a thief with your unlocked phone and your SIM can be you by nightfall. The phone is a loss you can replace at Computer Village next month. The number is the spine of your banking identity and it moves first. When the new SIM arrives in your name, the same number returns to you and the OTPs resume — but the passwords you changed stay changed, which is the point.",
       ),
       p(
-        "Then do the accounts from the safety of any other machine: change the mail password first, since mail unlocks every other reset, then the bank apps, then the social accounts. When the new SIM arrives in your name, the same number returns to you and the OTPs resume — but the passwords you changed stay changed, which is the point. Keep a small written record somewhere at home of which accounts exist on the phone: bank, two mails, WhatsApp. In the calm after a theft, the list is what stops you from remembering a third account four weeks later, on the morning its recovery letter arrives.",
+        "Keep a small written record somewhere at home of which accounts live on the phone: bank, two mails, WhatsApp. In the calm after a theft, the list is what stops you from remembering a third account four weeks later, on the morning its recovery letter arrives.",
       ),
       h2("After"),
       p(
-        "A new handset, same Google account, contacts and some apps come back if they lived in the account. WhatsApp backups, if you had Drive or iCloud on, may restore chats. If you had none, the chats are the price. The money in the bank is not, if you were fast. Tell family the old number may be in a thief’s hand until the SIM dies; they should not send OTPs or “urgent” airtime to a message that sounds like you.",
+        "A new handset, same Google account, contacts and some apps come back if they lived in the account. WhatsApp backups, if you had Drive or iCloud on, may restore chats. If you had none, the chats are the price. The money in the bank is not, if you were fast. Tell family the old number may be in a thief's hand until the SIM dies; they should not send OTPs or urgent airtime to a message that sounds like you.",
       ),
       p(
         "The lock from the last lesson is the whole difference between a brick and an open mail. The copies are the whole difference between a lost pocket and a lost life. You cannot do those after. You can do them this evening. Then the hour, if it comes, is a list, not a freeze.",
@@ -6281,10 +6274,10 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A thumb pausing above a transfer confirmation button on a phone held in one hand.",
     body: [
       p(
-        "Most money here never becomes notes. It moves as a message between banks, and the bank app is where the message is written. You have watched it in other people's hands for years: the queue that used to fill the banking hall now stands in a pocket. This lesson is that app, treated with the market sense you already have — because the app is a market bag, and a market bag is only as safe as the hand that closes it.",
+        "Most money here never becomes notes. It moves as a message between banks, and the bank app is where the message is written. You have watched it in other people's hands for years: the queue that used to fill the banking hall now stands in a pocket. Emediong sent his first transfer with two witnesses — his sister watching the screen, his heart watching the amount — and it landed in eleven seconds. This lesson is that app, treated with the market sense you already have — because the app is a market bag, and a market bag is only as safe as the hand that closes it.",
       ),
       p(
-        "Get the real one first. The app store listing shows the developer — your bank's own name, millions of downloads; the bank's own website links to it; a message a strange \"staff\" sends you on WhatsApp does neither. First open, it will ask for your account number and send a code to the SIM the account was registered with — the codes that die, arriving for a knock you started, which is the only kind worth typing. Then it asks for a PIN or password: the old rules hold. Not your birthday. Not 1234. Written in the notebook.",
+        "Get the real one first. The app store listing shows the developer — your bank's own name, millions of downloads; the bank's own website links to it; a message a strange staff sends you on WhatsApp does neither. First open, it will ask for your account number and send a code to the SIM the account was registered with — the codes that die, arriving for a knock you started, which is the only kind worth typing. Then it asks for a PIN or password: the old rules hold. Not your birthday. Not 1234. Written in the notebook.",
       ),
       fig(
         "/images/blog/bank-app-confirm.jpg",
@@ -6296,7 +6289,7 @@ export const blogPosts: BlogPost[] = [
         "You type the account number; the app shows you the name attached to it. Read the name. Every time, even for your own brother — especially for your own brother, because ten digits typed in a hurry can belong to a stranger who shares two of them with him. This is the change-counting of this market. Wrong name, Cancel, type again; the app does not sulk. Right name, Confirm — and then screenshot the receipt before the screen moves on. The receipt is the teller's slip of this age, and the bank's own record is the truth of what happened, not anybody's say-so.",
       ),
       p(
-        "Learn the rest of the app in daylight, while nothing is wrong. Where the statement lives — a PDF you can download for the rent, the visa, the audit of yourself. Where the card switch is: most apps carry a control that freezes your card in one tap, and the day a POS text arrives for a purchase you did not make, you want your thumb to know the road without searching. Where the beneficiary list is, so that a name you do not recognise can be deleted instead of wondered about. An app explored in peace is a vault. An app met during a crisis is a maze.",
+        "Learn the rest of the app in daylight, while nothing is wrong. Where the statement lives — a PDF you can download for the rent, the visa, the audit of yourself. Where the card switch is: most apps carry a control that freezes your card in one tap. A POS text arrives for a purchase you did not make — where would you look first? The card freeze switch, and your thumb should already know its road without searching. Where the beneficiary list is, so that a name you do not recognise can be deleted instead of wondered about. An app explored in peace is a vault. An app met during a crisis is a maze.",
       ),
       fig(
         "/images/blog/bank-statement-phone.jpg",
@@ -6318,7 +6311,7 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("When the alert is quiet"),
       p(
-        "Networks delay in both directions. Money you sent and the receiver has not seen: it usually lands within minutes; check your receipt first, then wait a little, then the bank's line — the number on their own site, not one a caller gave you. Money someone claims to have sent you: believe it when your balance moves, in your own app, with the sender's name on it. An SMS tone is not a promise. A screenshot in a chat is not a promise. The balance is the promise. You learned the habit last chapter; this is where it earns its keep.",
+        "Networks delay in both directions. Money you sent and the receiver has not seen: it usually lands within minutes; check your receipt first, then wait a little, then the bank's line — the number on their own site, not one a caller gave you. Money someone claims to have sent you: believe it when your balance moves, in your own app, with the sender's name on it. An SMS tone is not a promise. A screenshot in a chat is not a promise. The balance is the promise — and Emediong, eleven seconds and one name-check wiser, now counts his change at the digital gate the way he counts it at the market gate. Slowly, and out loud.",
       ),
     ],
   },
@@ -9087,10 +9080,10 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A hand typing a long token number into a prepaid meter's keypad by phone light.",
     body: [
       p(
-        "The meter announces itself the same way in every house: a soft beep, then a smaller number on its screen than yesterday, then the household's quiet arithmetic — how many days can this last? The prepaid meter changed Nigerian life more than any app ever has: electricity became something you buy, like airtime, in units, and the token that feeds it became part of the family's weekly chore. Done correctly it is boring and reliable. Done carelessly it is a dark night with a twenty-digit code typed twice wrongly. This lesson is the correct version, learned before the beep, not during it.",
+        "The meter announces itself the same way in every house: a soft beep, then a smaller number on its screen than yesterday, then the household's quiet arithmetic — how many days can this last? Tanko's house hears that beep most evenings, and before he learned the correct chore, the beep was a small panic: a run to a vendor, a twenty-digit code typed twice wrongly in the dark. The prepaid meter changed Nigerian life more than any app ever has: electricity became something you buy, like airtime, in units, and the token that feeds it became part of the family's weekly chore. Done correctly it is boring and reliable. Done carelessly it is a dark night and a stranger's kitchen lit by your money. This lesson is the correct version, learned before the beep, not during it.",
       ),
       p(
-        "The buying: units come from the electricity company's own portal or app, from its official agents, from the bank apps and USSD menus of lesson one hundred and sixty-one — all of them asking for the same identity: the meter number. The meter number is this lesson's exam number — eleven or thirteen digits printed on the meter itself and on every old receipt — and it is typed from the meter or from the last receipt, never from memory and never from a relative's forward. One swapped digit does not fail loudly; it loads a stranger's kitchen in another street, and your money becomes their light. So the typing is done slowly, checked digit by digit, the exam-slip discipline of the results lesson carried into the corridor. Then the account type matters too: the plan you are on — prepaid, and which tariff band — affects what the same money buys, and the disco's own site explains the bands honestly enough for one evening's reading.",
+        "The buying: units come from the electricity company's own portal or app, from its official agents, from the bank apps and USSD menus of the transfers lesson — all of them asking for the same identity: the meter number. The meter number is the exam number of this chore — eleven or thirteen digits printed on the meter itself and on every old receipt — and it is typed from the meter or from the last receipt, never from memory and never from a relative's forward. One swapped digit does not fail loudly; it loads a stranger's kitchen in another street, and your money becomes their light. So the typing is done slowly, checked digit by digit, the exam-slip discipline of the results lesson carried into the corridor. Then the account type matters too: the plan you are on — prepaid, and which tariff band — affects what the same money buys, and the disco's own site explains the bands honestly enough for one evening's reading.",
       ),
       fig(
         "/images/blog/prepaid-meter-token.jpg",
@@ -9099,7 +9092,10 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("The token, and the receipts"),
       p(
-        "The purchase lands as a token — a long number, usually twenty digits — sent by text or shown on the receipt screen. Type it into the meter's keypad in calm groups, threes or fives, from the paper or the message, not from the memory of a glance; the meter checks the whole code and accepts it with a flash and new credits, or refuses it with a beep that means one digit heard wrongly. Refused twice, stop typing from memory and re-read from the message — the meter is not angry, it is precise. Some tokens carry two codes when the tariff changed; the receipt says so, and the meter asks for them in order. Then the receipt joins the family papers: screenshot into the Money album, the account-number law of the bank lesson, because disputes — a purchase that did not land, a meter that ate a token — are settled by the person holding a reference, not the person holding a feeling. The electricity company's complaint lines are the roads of lesson one hundred and fifteen: real numbers from its own site, not the cheerful helper a neighbour recommends on WhatsApp.",
+        "The purchase lands as a token — a long number, usually twenty digits — sent by text or shown on the receipt screen. Type it into the meter's keypad in calm groups, threes or fives, from the paper or the message. Not from the memory of a glance — where would you type a twenty-digit code from, the message that is still glowing on the screen, or the shape you think you remember? The message. The meter checks the whole code and accepts it with a flash and new credits, or refuses it with a beep that means one digit heard wrongly. Refused twice, stop and re-read — the meter is not angry, it is precise. Some tokens carry two codes when the tariff changed; the receipt says so, and the meter asks for them in order.",
+      ),
+      p(
+        "Then the receipt joins the family papers: screenshot into the Money album, the account-number law of the bank lesson, because disputes — a purchase that did not land, a meter that ate a token — are settled by the person holding a reference, not the person holding a feeling. The electricity company's complaint lines are the official-road discipline you already know: real numbers from its own site, not the cheerful helper a neighbour recommends on WhatsApp.",
       ),
       fig(
         "/images/blog/meter-number-notebook.jpg",
@@ -9107,7 +9103,7 @@ export const blogPosts: BlogPost[] = [
         "The identity, written once from the meter itself. Every future purchase is typed from this page — never from memory, never from a forward.",
       ),
       p(
-        "And the junction, because he is always at the junction: the man with a calculator and a smile who sells units cheaper than the disco, cash only, token delivered by screenshot. The cheap-units man is the recharge-card scammer of this lesson, and the arithmetic of his disappearance is as reliable as the meter's beep — he collects for a month of Fridays, and one Friday the token does not come, and the number that answered all year retires. Electricity is a licensed monopoly; the disco's own channels and its named agents are the only honest doors, and their receipts are the only ones a dispute will honour. Buy from the beep's own family, keep the paper, and the darkest night of the month becomes a two-minute chore done by phone-light. The next lesson boards a plane, and carries the same discipline to thirty-five thousand feet.",
+        "And the junction, because he is always at the junction: the man with a calculator and a smile who sells units cheaper than the disco, cash only, token delivered by screenshot. The cheap-units man is the recharge-card scammer of this lesson, and the arithmetic of his disappearance is as reliable as the meter's beep — he collects for a month of Fridays, and one Friday the token does not come, and the number that answered all year retires. Electricity is a licensed monopoly; the disco's own channels and its named agents are the only honest doors, and their receipts are the only ones a dispute will honour.",
       ),
       fig(
         "/images/blog/meter-receipt-kept.jpg",
@@ -9122,7 +9118,10 @@ export const blogPosts: BlogPost[] = [
       ]),
       h2("The beeping box, tamed"),
       p(
-        "The meter asked to be understood, not feared: one number to protect, one code to type patiently, one receipt to keep. A household that learns this chore once buys its light in two minutes for the rest of its life, and never again stands in the dark decoding a stranger's promise. The same evening that feeds the meter can feed the phone, the bank and the books — the compound, running itself, one token at a time. Next, the lesson boards a plane: your first flight, booked by your own hands.",
+        "The meter asks to be understood, not feared: one number to protect, one code to type patiently, one receipt to keep. Buy from the beep's own family, keep the paper, and the darkest night of the month becomes a two-minute chore done by phone-light. A household that learns this chore once buys its light in two minutes for the rest of its life, and never again stands in the dark decoding a stranger's promise.",
+      ),
+      p(
+        "The same evening that feeds the meter can feed the phone, the bank and the books — the compound, running itself, one token at a time. Next, the lesson boards a plane: your first flight, booked by your own hands.",
       ),
     ],
   },
@@ -11110,10 +11109,10 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("What it is genuinely good at"),
       p(
-        "Four talents make the assistant worth its seat. First drafts: the letter to the school, the complaint to the provider, the advert for the shop — give it the facts and it returns a shape you can edit in five minutes instead of staring at a blank page for an hour. Explanations: ask it to explain a spreadsheet error, a bank term, a legal phrase in plain English and then again in simpler English, and it is a patient tutor with infinite time. Summaries: paste the long circular from the office and ask for the five points; paste the contract and ask what it obliges you to. And translations and rewrites: this paragraph in formal English for the embassy, the same paragraph in warm English for my uncle. Notice that in all four talents the machine is shaping language you already own. That is its country. It is very good there.",
+        "Four talents make the assistant worth its seat. First drafts: the letter to the school, the complaint to the provider, the advert for the shop — give it the facts and it returns a shape you can edit in five minutes instead of staring at a blank page for an hour. Explanations: ask it to explain a spreadsheet error, a bank term, a legal phrase in plain English and then again in simpler English, and it is a patient tutor with infinite time. Summaries: paste the long circular from the office and ask for the five points; paste the contract and ask what it obliges you to. And translations and rewrites: this paragraph in formal English for the embassy, the same paragraph in warm English for my uncle. Notice that in all four talents the machine is shaping language you already own. That is its country. It is very good there. Which of the four talents does your landlord letter need tonight? The first — the draft — and the facts it needs are yours.",
       ),
       p(
-        "Outside its country are the roads where it confidently drives into rivers. It does not know today's naira rate, yesterday's match, or your bank's current form fee, and if asked it may invent all three with a calm face. It cannot be trusted with the names of laws, the pages of books, the dates of history, or the studies behind a claim — the citations it produces are its best guess at what a citation should look like, and the guess is dressed in real journal names. It has no opinion it will defend with its life and no memory of your agreement with it five minutes ago unless the conversation above is still open. Knowing the border — brilliant at shaping language, unreliable at asserting facts — you can now use it daily without being used. The next lesson walks that border on foot, with the verification habit in your hand.",
+        "Outside its country are the roads where it confidently drives into rivers. It does not know today's naira rate, yesterday's match, or your bank's current form fee, and if asked it may invent all three with a calm face. It cannot be trusted with the names of laws, the pages of books, the dates of history, or the studies behind a claim — the citations it produces are its best guess at what a citation should look like, and the guess is dressed in real journal names. It has no opinion it will defend with its life and no memory of your agreement with it five minutes ago unless the conversation above is still open. Knowing the border — brilliant at shaping language, unreliable at asserting facts — you can now use it daily without being used. The checking lesson walks that border on foot, with the verification habit in your hand.",
       ),
       fig(
         "/images/blog/phone-chat-mic-keyboard.jpg",
@@ -11122,7 +11121,7 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("The manners of the box"),
       p(
-        "The box at the bottom is a conversation, and conversations have manners that pay. Type full sentences with the context — who you are writing to, why, what must be included — and the machine's first answer improves dramatically. Say the shape you want: a page, five bullets, a table. Say the fence: short words, no invented facts, in the tone of a respectful student. When the first answer misses, do not sigh and start again; answer it as a colleague — shorter, warmer, with the date included, again in a table. Three rounds of refinement beat thirty fresh starts, because the conversation keeps its memory while the reset loses it.",
+        "The box at the bottom is a conversation, and conversations have manners that pay. Type full sentences with the context — who you are writing to, why, what must be included — and the machine's first answer improves dramatically. Say the shape you want: a page, five bullets, a table. Say the fence: short words, no invented facts, in the tone of a respectful student. When the first answer misses, do not sigh and start again; answer it as a colleague — shorter, warmer, with the date included, again in a table. Three rounds of refinement beat thirty fresh starts — Ireti's letter to the school took four rounds of chiselling and eight minutes, where her old habit of restarting would have burned the evening — because the conversation keeps its memory while the reset loses it.",
       ),
       p(
         "One habit from the security shelf belongs at the door of this room above all others: the pause before the send. Everything typed into the box is now the assistant company's business — your salary dispute, your child's health, your client's contract, your shop's accounts. Type the shape of the problem with the names removed when the problem is private, and the machine serves just as well: the letter about a workplace dispute needs the dispute, not the employer's name; the formula for the shop's VAT needs the figures, not the shop. The pause also works in the other direction. The words the machine sends back have nobody's name behind them and no stake in your world. Read them the way you would read a first draft from a clever intern who has never met Nigeria and cannot be fired. Shape is its gift. Truth is your job.",
