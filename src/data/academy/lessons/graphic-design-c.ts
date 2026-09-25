@@ -182,46 +182,14 @@ export const graphicDesignLessonsC: Record<string, SessionLecture> = {
       "Track every job's quoted hours against actual hours. After ten jobs you will know exactly where your estimates are wrong, which is usually revisions, and accurate estimating is the single largest improvement available to your income.",
     ],
     vocabulary: [
-      {
-        term: "Brief",
-        meaning:
-          "The written record of who the work is for, what the viewer should do, the one message, existing assets, preferences and constraints.",
-      },
-      {
-        term: "Revision round",
-        meaning:
-          "One collected batch of client feedback and the changes made from it. Stated limits on these are what make fixed pricing possible.",
-      },
-      {
-        term: "Scope creep",
-        meaning:
-          "Work requested beyond the agreed deliverables. Handle it with a priced offer, not silence.",
-      },
-      {
-        term: "Deposit",
-        meaning:
-          "Payment taken before work starts, commonly half. Standard practice with new clients.",
-      },
-      {
-        term: "Presentation rationale",
-        meaning:
-          "The two or three sentences explaining your design decisions by reference to the brief. It converts feedback from taste into direction.",
-      },
-      {
-        term: "Mock-up",
-        meaning:
-          "The design shown in context — on a table, a sign, a phone. Helps clients judge and speeds approval.",
-      },
-      {
-        term: "Delivery package",
-        meaning:
-          "Print PDFs, screen PNGs, brand assets and source, named clearly and accompanied by a note.",
-      },
-      {
-        term: "Rate card",
-        meaning:
-          "Your written list of prices per deliverable. Quoting from it raises fees and reduces negotiation.",
-      },
+      { term: "Brief", meaning: "The written record of who the work is for, what the viewer should do, the one message, existing assets, preferences and constraints." },
+      { term: "Revision round", meaning: "One collected batch of client feedback and the changes made from it. Stated limits on these are what make fixed pricing possible." },
+      { term: "Scope creep", meaning: "Work requested beyond the agreed deliverables. Handle it with a priced offer, not silence." },
+      { term: "Deposit", meaning: "Payment taken before work starts, commonly half. Standard practice with new clients." },
+      { term: "Presentation rationale", meaning: "The two or three sentences explaining your design decisions by reference to the brief. It converts feedback from taste into direction." },
+      { term: "Mock-up", meaning: "The design shown in context — on a table, a sign, a phone. Helps clients judge and speeds approval." },
+      { term: "Delivery package", meaning: "Print PDFs, screen PNGs, brand assets and source, named clearly and accompanied by a note." },
+      { term: "Rate card", meaning: "Your written list of prices per deliverable. Quoting from it raises fees and reduces negotiation." },
     ],
     homework: [
       {
@@ -249,32 +217,27 @@ export const graphicDesignLessonsC: Record<string, SessionLecture> = {
       {
         criterion: "Briefing",
         passing: "Asks the client what they want.",
-        excellent:
-          "Sends a written brief covering audience, action, message, assets, preferences and constraints, and records the answers.",
+        excellent: "Sends a written brief covering audience, action, message, assets, preferences and constraints, and records the answers.",
       },
       {
         criterion: "Commercial judgement",
         passing: "Names a price.",
-        excellent:
-          "Quotes from estimated hours adjusted for value, with stated deliverables, revision limit, deposit and additional-round rate.",
+        excellent: "Quotes from estimated hours adjusted for value, with stated deliverables, revision limit, deposit and additional-round rate.",
       },
       {
         criterion: "Presentation",
         passing: "Shows the work.",
-        excellent:
-          "Presents two distinct directions with rationale, a recommendation and a specific question, at least one shown in context.",
+        excellent: "Presents two distinct directions with rationale, a recommendation and a specific question, at least one shown in context.",
       },
       {
         criterion: "Revision handling",
         passing: "Makes the requested changes.",
-        excellent:
-          "Collects feedback in batches, diagnoses vague feedback with a question, and prices out-of-scope requests rather than absorbing them.",
+        excellent: "Collects feedback in batches, diagnoses vague feedback with a question, and prices out-of-scope requests rather than absorbing them.",
       },
       {
         criterion: "Delivery",
         passing: "Sends the finished files.",
-        excellent:
-          "A complete named package with print and screen versions, brand assets and a note explaining each file's use.",
+        excellent: "A complete named package with print and screen versions, brand assets and a note explaining each file's use.",
       },
     ],
     faqs: [
@@ -476,45 +439,14 @@ export const graphicDesignLessonsC: Record<string, SessionLecture> = {
       "Price the package as a package, never as nine items added together. A brand package is a different product from a flyer, it governs every future material the client makes, and pricing it as a sum of parts undervalues exactly the thing that makes it valuable.",
     ],
     vocabulary: [
-      {
-        term: "Brand package",
-        meaning:
-          "Logo variants, brand kit, print pieces and social set delivered as one coherent system rather than as separate items.",
-      },
-      {
-        term: "Dependency order",
-        meaning:
-          "Building brief, then system, then pieces — so nothing has to be rebuilt because an earlier decision changed.",
-      },
-      {
-        term: "System",
-        meaning:
-          "The palette, typefaces, scale, logo and image treatment that every piece applies rather than reinvents.",
-      },
-      {
-        term: "Case study",
-        meaning:
-          "A presented project showing brief, goal, system, work and result with rationale. The core unit of a design portfolio.",
-      },
-      {
-        term: "Rationale",
-        meaning:
-          "The one-sentence justification for a design decision, tied to the brief. Short rationales read as command.",
-      },
-      {
-        term: "Print-ready",
-        meaning:
-          "Correct bleed, safe margins, resolution and PDF Print export with crop marks — verified before delivery.",
-      },
-      {
-        term: "Portfolio compounding",
-        meaning: "How each completed case study raises the price the next client will accept.",
-      },
-      {
-        term: "Scope honesty",
-        meaning:
-          "Stating what you do well and referring what you do not. Protects the work you did do.",
-      },
+      { term: "Brand package", meaning: "Logo variants, brand kit, print pieces and social set delivered as one coherent system rather than as separate items." },
+      { term: "Dependency order", meaning: "Building brief, then system, then pieces — so nothing has to be rebuilt because an earlier decision changed." },
+      { term: "System", meaning: "The palette, typefaces, scale, logo and image treatment that every piece applies rather than reinvents." },
+      { term: "Case study", meaning: "A presented project showing brief, goal, system, work and result with rationale. The core unit of a design portfolio." },
+      { term: "Rationale", meaning: "The one-sentence justification for a design decision, tied to the brief. Short rationales read as command." },
+      { term: "Print-ready", meaning: "Correct bleed, safe margins, resolution and PDF Print export with crop marks — verified before delivery." },
+      { term: "Portfolio compounding", meaning: "How each completed case study raises the price the next client will accept." },
+      { term: "Scope honesty", meaning: "Stating what you do well and referring what you do not. Protects the work you did do." },
     ],
     homework: [
       {
@@ -542,32 +474,27 @@ export const graphicDesignLessonsC: Record<string, SessionLecture> = {
       {
         criterion: "Brief and goal",
         passing: "Has a client and a stated task.",
-        excellent:
-          "A written brief with recorded answers and a one-line goal that every decision visibly traces back to.",
+        excellent: "A written brief with recorded answers and a one-line goal that every decision visibly traces back to.",
       },
       {
         criterion: "System",
         passing: "Uses a consistent palette and typefaces.",
-        excellent:
-          "A documented system with named palette roles, hex codes, typefaces and weights, a scale, and one image treatment applied to every piece.",
+        excellent: "A documented system with named palette roles, hex codes, typefaces and weights, a scale, and one image treatment applied to every piece.",
       },
       {
         criterion: "Deliverables",
         passing: "Produces most of the nine pieces.",
-        excellent:
-          "All nine complete, the logo surviving 32 pixels in three variants, the kit document containing usage rules and correct and incorrect examples.",
+        excellent: "All nine complete, the logo surviving 32 pixels in three variants, the kit document containing usage rules and correct and incorrect examples.",
       },
       {
         criterion: "Technical quality",
         passing: "Files are usable.",
-        excellent:
-          "Print pieces with 3mm bleed, safe margins and verified resolution; social pieces inside the safe area and checked after WhatsApp compression.",
+        excellent: "Print pieces with 3mm bleed, safe margins and verified resolution; social pieces inside the safe area and checked after WhatsApp compression.",
       },
       {
         criterion: "Presentation",
         passing: "Shows the work.",
-        excellent:
-          "A five-part case study with a one-sentence rationale for each major decision, print pieces shown in context, and the package priced as a package.",
+        excellent: "A five-part case study with a one-sentence rationale for each major decision, print pieces shown in context, and the package priced as a package.",
       },
     ],
     faqs: [

@@ -174,45 +174,14 @@ export const graphicDesignLessonsB: Record<string, SessionLecture> = {
       "Save a stripped template after every job. Ten saved structures later you will quote turnaround times that sound impossible to a beginner, and you will actually meet them — which is what builds a referral business.",
     ],
     vocabulary: [
-      {
-        term: "Layer order",
-        meaning:
-          "The stacking sequence of elements. Later elements sit on top; the Layers panel is the reliable way to control it.",
-      },
-      {
-        term: "Component",
-        meaning:
-          "A grouped, reusable design element such as a button or header, duplicated and re-edited rather than rebuilt.",
-      },
-      {
-        term: "Brand kit",
-        meaning:
-          "The documented set of logo, palette, typefaces, tone and usage rules that keeps a brand consistent.",
-      },
-      {
-        term: "Wordmark",
-        meaning:
-          "A logo that is the business name set distinctively, with no separate symbol. The right choice for most small businesses.",
-      },
-      {
-        term: "Clear space",
-        meaning:
-          "The empty area reserved around a logo so nothing crowds it. Specified in the usage rules.",
-      },
-      {
-        term: "Reversed logo",
-        meaning: "The version designed to sit on a dark background, usually white or light.",
-      },
-      {
-        term: "Tone of voice",
-        meaning:
-          "How a brand sounds in writing, captured as adjectives and example sentences so anyone can match it.",
-      },
-      {
-        term: "Template library",
-        meaning:
-          "Your saved stripped structures from past jobs — the asset that makes you faster than anyone starting blank.",
-      },
+      { term: "Layer order", meaning: "The stacking sequence of elements. Later elements sit on top; the Layers panel is the reliable way to control it." },
+      { term: "Component", meaning: "A grouped, reusable design element such as a button or header, duplicated and re-edited rather than rebuilt." },
+      { term: "Brand kit", meaning: "The documented set of logo, palette, typefaces, tone and usage rules that keeps a brand consistent." },
+      { term: "Wordmark", meaning: "A logo that is the business name set distinctively, with no separate symbol. The right choice for most small businesses." },
+      { term: "Clear space", meaning: "The empty area reserved around a logo so nothing crowds it. Specified in the usage rules." },
+      { term: "Reversed logo", meaning: "The version designed to sit on a dark background, usually white or light." },
+      { term: "Tone of voice", meaning: "How a brand sounds in writing, captured as adjectives and example sentences so anyone can match it." },
+      { term: "Template library", meaning: "Your saved stripped structures from past jobs — the asset that makes you faster than anyone starting blank." },
     ],
     homework: [
       {
@@ -240,32 +209,27 @@ export const graphicDesignLessonsB: Record<string, SessionLecture> = {
       {
         criterion: "Layer command",
         passing: "Manages layers on a moderate design.",
-        excellent:
-          "Uses the Layers panel deliberately, locks finished areas, and groups components so the design stays editable at thirty-plus elements.",
+        excellent: "Uses the Layers panel deliberately, locks finished areas, and groups components so the design stays editable at thirty-plus elements.",
       },
       {
         criterion: "Reuse",
         passing: "Duplicates elements when helpful.",
-        excellent:
-          "Maintains grouped components and a saved template library, and can show the time saving on a second project.",
+        excellent: "Maintains grouped components and a saved template library, and can show the time saving on a second project.",
       },
       {
         criterion: "Logo",
         passing: "Produces a legible logo.",
-        excellent:
-          "Justifies wordmark versus symbol, survives 32 pixels, and is delivered in full-colour, single-colour and reversed variants.",
+        excellent: "Justifies wordmark versus symbol, survives 32 pixels, and is delivered in full-colour, single-colour and reversed variants.",
       },
       {
         criterion: "Brand kit",
         passing: "Documents colours and typefaces.",
-        excellent:
-          "Complete six-part kit with verified contrast, written tone, usage rules, and correct and incorrect examples.",
+        excellent: "Complete six-part kit with verified contrast, written tone, usage rules, and correct and incorrect examples.",
       },
       {
         criterion: "Consistency",
         passing: "Formats look related.",
-        excellent:
-          "Three or more formats that read unmistakably as one business, with the palette and typefaces unchanged and only layout varying.",
+        excellent: "Three or more formats that read unmistakably as one business, with the palette and typefaces unchanged and only layout varying.",
       },
     ],
     faqs: [
@@ -466,46 +430,14 @@ export const graphicDesignLessonsB: Record<string, SessionLecture> = {
       "Offer campaigns rather than single posts. A five-piece set from one system costs you barely more than two singles, looks far more professional, and turns a one-off buyer into a monthly client — which is the only stable shape this business has.",
     ],
     vocabulary: [
-      {
-        term: "Safe area",
-        meaning:
-          "The central region where critical content must sit, because platforms crop edges differently.",
-      },
-      {
-        term: "Two-metre test",
-        meaning:
-          "Viewing a printed piece from two metres to confirm the headline is readable. The primary flyer check.",
-      },
-      {
-        term: "Overlay",
-        meaning:
-          "A semi-transparent shape placed behind text on a photograph so the words stay readable anywhere on the image.",
-      },
-      {
-        term: "Campaign set",
-        meaning:
-          "Several pieces built from one system so they read as deliberate rather than as separate efforts.",
-      },
-      {
-        term: "Call to action",
-        meaning:
-          "The exact next step for the viewer — a diallable phone number, a handle, a date to register by.",
-      },
-      {
-        term: "WhatsApp compression",
-        meaning:
-          "The quality reduction WhatsApp applies to shared images. Always check a deliverable after it.",
-      },
-      {
-        term: "Swipe file",
-        meaning:
-          "Your collected examples of work that worked, with notes on why. A working designer's most useful asset.",
-      },
-      {
-        term: "Image licence",
-        meaning:
-          "The permission attached to a photograph. Check it before using anything prominent in paid client work.",
-      },
+      { term: "Safe area", meaning: "The central region where critical content must sit, because platforms crop edges differently." },
+      { term: "Two-metre test", meaning: "Viewing a printed piece from two metres to confirm the headline is readable. The primary flyer check." },
+      { term: "Overlay", meaning: "A semi-transparent shape placed behind text on a photograph so the words stay readable anywhere on the image." },
+      { term: "Campaign set", meaning: "Several pieces built from one system so they read as deliberate rather than as separate efforts." },
+      { term: "Call to action", meaning: "The exact next step for the viewer — a diallable phone number, a handle, a date to register by." },
+      { term: "WhatsApp compression", meaning: "The quality reduction WhatsApp applies to shared images. Always check a deliverable after it." },
+      { term: "Swipe file", meaning: "Your collected examples of work that worked, with notes on why. A working designer's most useful asset." },
+      { term: "Image licence", meaning: "The permission attached to a photograph. Check it before using anything prominent in paid client work." },
     ],
     homework: [
       {
@@ -533,32 +465,27 @@ export const graphicDesignLessonsB: Record<string, SessionLecture> = {
       {
         criterion: "Flyer clarity",
         passing: "The main message is findable.",
-        excellent:
-          "Five elements only, headline readable from two metres, and a diallable call to action at the end of the eye path.",
+        excellent: "Five elements only, headline readable from two metres, and a diallable call to action at the end of the eye path.",
       },
       {
         criterion: "Social adaptation",
         passing: "Produces posts at the right sizes.",
-        excellent:
-          "Critical content inside the safe area, text large enough for a phone, and story versions keeping the interface zones clear.",
+        excellent: "Critical content inside the safe area, text large enough for a phone, and story versions keeping the interface zones clear.",
       },
       {
         criterion: "Copy",
         passing: "The flyer says what it needs to.",
-        excellent:
-          "Specific rather than vague, agreed in a plain document before design, and cut to the one thing the piece is for.",
+        excellent: "Specific rather than vague, agreed in a plain document before design, and cut to the one thing the piece is for.",
       },
       {
         criterion: "Image work",
         passing: "Uses a relevant image.",
-        excellent:
-          "Real and relevant, cropped for composition, treated consistently across the set, overlaid for legibility, and properly licensed.",
+        excellent: "Real and relevant, cropped for composition, treated consistently across the set, overlaid for legibility, and properly licensed.",
       },
       {
         criterion: "Campaign consistency",
         passing: "The pieces look related.",
-        excellent:
-          "Built by duplicating one system, with identical logo position, margins and colour proportions, reviewed side by side.",
+        excellent: "Built by duplicating one system, with identical logo position, margins and colour proportions, reviewed side by side.",
       },
     ],
     faqs: [
@@ -763,44 +690,14 @@ export const graphicDesignLessonsB: Record<string, SessionLecture> = {
       "Keep a spec sheet for every client: their usual sizes, stocks, finishes, printer and file format. After three jobs you can quote turnaround and price instantly, and the client experiences you as someone who already knows their business.",
     ],
     vocabulary: [
-      {
-        term: "Bleed",
-        meaning:
-          "Extra area beyond the trim edge, standard 3mm, so a small cutting error shows design rather than white.",
-      },
-      {
-        term: "Trim",
-        meaning: "The final cut size of the piece. Everything important sits inside it.",
-      },
-      {
-        term: "Safe margin",
-        meaning: "The zone at least 5mm inside trim where all text and logos must sit.",
-      },
-      {
-        term: "Crop marks",
-        meaning:
-          "Corner lines showing the printer where to cut. Added on Canva's PDF Print export.",
-      },
-      {
-        term: "CMYK",
-        meaning:
-          "The four printing inks. Cannot reach the brightness of screen RGB, so saturated colours dull in conversion.",
-      },
-      {
-        term: "GSM",
-        meaning:
-          "Paper weight in grams per square metre. 130–170 for flyers, 300 for cards, higher for premium.",
-      },
-      {
-        term: "DPI",
-        meaning:
-          "Dots per inch. Print needs about 300 at final size; large format needs less because it is viewed from further away.",
-      },
-      {
-        term: "Proof",
-        meaning:
-          "A single printed sample approved before the full run. The only reliable colour check.",
-      },
+      { term: "Bleed", meaning: "Extra area beyond the trim edge, standard 3mm, so a small cutting error shows design rather than white." },
+      { term: "Trim", meaning: "The final cut size of the piece. Everything important sits inside it." },
+      { term: "Safe margin", meaning: "The zone at least 5mm inside trim where all text and logos must sit." },
+      { term: "Crop marks", meaning: "Corner lines showing the printer where to cut. Added on Canva's PDF Print export." },
+      { term: "CMYK", meaning: "The four printing inks. Cannot reach the brightness of screen RGB, so saturated colours dull in conversion." },
+      { term: "GSM", meaning: "Paper weight in grams per square metre. 130–170 for flyers, 300 for cards, higher for premium." },
+      { term: "DPI", meaning: "Dots per inch. Print needs about 300 at final size; large format needs less because it is viewed from further away." },
+      { term: "Proof", meaning: "A single printed sample approved before the full run. The only reliable colour check." },
     ],
     homework: [
       {
@@ -828,32 +725,27 @@ export const graphicDesignLessonsB: Record<string, SessionLecture> = {
       {
         criterion: "Print mechanics",
         passing: "Uses bleed on at least one piece.",
-        excellent:
-          "3mm bleed on every piece, all content inside a 5mm safe area, crop marks ticked, and the terms used correctly with the printer.",
+        excellent: "3mm bleed on every piece, all content inside a 5mm safe area, crop marks ticked, and the terms used correctly with the printer.",
       },
       {
         criterion: "Colour understanding",
         passing: "Knows print differs from screen.",
-        excellent:
-          "Designs avoiding dependence on saturated colours, explains the CMYK shift to the client in advance, and approves a printed proof.",
+        excellent: "Designs avoiding dependence on saturated colours, explains the CMYK shift to the client in advance, and approves a printed proof.",
       },
       {
         criterion: "Resolution",
         passing: "Exports a usable file.",
-        excellent:
-          "Calculates required pixel dimensions for each format, verifies exports, and adjusts canvas size or export multiplier to meet them.",
+        excellent: "Calculates required pixel dimensions for each format, verifies exports, and adjusts canvas size or export multiplier to meet them.",
       },
       {
         criterion: "Piece quality",
         passing: "The pieces look reasonable.",
-        excellent:
-          "A restrained card, a usable editable letterhead, and a banner designed for viewing distance with nothing in the bottom third.",
+        excellent: "A restrained card, a usable editable letterhead, and a banner designed for viewing distance with nothing in the bottom third.",
       },
       {
         criterion: "Printer communication",
         passing: "Sends files to a printer.",
-        excellent:
-          "Asks the specification first, writes a note stating sizes, stocks, quantities and checks, and requests a proof before the run.",
+        excellent: "Asks the specification first, writes a note stating sizes, stocks, quantities and checks, and requests a proof before the run.",
       },
     ],
     faqs: [

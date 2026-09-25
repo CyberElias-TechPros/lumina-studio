@@ -66,9 +66,7 @@ function PrivacyPage() {
           <Reveal delay={0.1}>
             <h2 className="font-display text-2xl font-bold">3. How we use it</h2>
             <ul className="text-muted-foreground mt-4 list-inside list-disc space-y-2">
-              <li>
-                Reply to you, confirm course dates and fees, and run the class you enrolled in
-              </li>
+              <li>Reply to you, confirm course dates and fees, and run the class you enrolled in</li>
               <li>Issue and later check a certificate for work produced here</li>
               <li>Keep the site working and secure</li>
               <li>Show advertisements (Google AdSense), as described below</li>
@@ -158,14 +156,8 @@ function PrivacyPage() {
             <h2 className="font-display text-2xl font-bold">8. How long we keep it</h2>
             <ul className="text-muted-foreground mt-4 list-inside list-disc space-y-2">
               <li>Contact messages: until we have dealt with them, then up to two years</li>
-              <li>
-                Applications and class records: while you are a student, then up to seven years so
-                we can verify a certificate
-              </li>
-              <li>
-                Learner accounts: while the account is used, then deleted or anonymised after two
-                years of silence
-              </li>
+              <li>Applications and class records: while you are a student, then up to seven years so we can verify a certificate</li>
+              <li>Learner accounts: while the account is used, then deleted or anonymised after two years of silence</li>
             </ul>
           </Reveal>
 
@@ -173,9 +165,9 @@ function PrivacyPage() {
             <h2 className="font-display text-2xl font-bold">9. Children</h2>
             <p className="text-muted-foreground mt-4 leading-relaxed">
               Some classes include younger learners brought by a parent or guardian. Website forms
-              are meant for an adult applying, or a parent applying for a child. We do not knowingly
-              collect a child’s data through this site without that adult. If you think we have,
-              email hello@cea.ng and we will delete it.
+              are meant for an adult applying, or a parent applying for a child. We do not
+              knowingly collect a child’s data through this site without that adult. If you think
+              we have, email hello@cea.ng and we will delete it.
             </p>
           </Reveal>
 

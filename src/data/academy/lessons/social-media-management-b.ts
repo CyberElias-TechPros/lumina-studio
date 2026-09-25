@@ -183,46 +183,14 @@ export const socialMediaLessonsB: Record<string, SessionLecture> = {
       "Report impersonation accounts the moment you see one. They use the business's photos to take deposits from real customers, the victims blame the real business, and early reporting is the only effective defence.",
     ],
     vocabulary: [
-      {
-        term: "Quick reply",
-        meaning:
-          "A saved answer to a recurring question, sent in two taps. Where most inbox time is saved.",
-      },
-      {
-        term: "Away message",
-        meaning:
-          "An automatic reply setting an expectation and asking for the details needed to close.",
-      },
-      {
-        term: "Brand voice",
-        meaning:
-          "Three adjectives and two example replies defining how the business sounds. Consistency across a thousand replies reads as a business.",
-      },
-      {
-        term: "Next-step question",
-        meaning:
-          "A specific question that keeps an enquiry moving, replacing an open 'let me know'.",
-      },
-      {
-        term: "Response window",
-        meaning:
-          "The stated time in which you will reply. Meeting a stated window reads as professional; missing it reads as neglect.",
-      },
-      {
-        term: "Restrict",
-        meaning:
-          "Limiting a troll's visibility without the confrontation of blocking. The correct escalation before a block.",
-      },
-      {
-        term: "Impersonation account",
-        meaning:
-          "A fake account using a business's name and photos to take deposits. Report immediately.",
-      },
-      {
-        term: "Enquiry log",
-        meaning:
-          "A record of enquiries, quotes, agreements and deliveries. The evidence base for honest reporting.",
-      },
+      { term: "Quick reply", meaning: "A saved answer to a recurring question, sent in two taps. Where most inbox time is saved." },
+      { term: "Away message", meaning: "An automatic reply setting an expectation and asking for the details needed to close." },
+      { term: "Brand voice", meaning: "Three adjectives and two example replies defining how the business sounds. Consistency across a thousand replies reads as a business." },
+      { term: "Next-step question", meaning: "A specific question that keeps an enquiry moving, replacing an open 'let me know'." },
+      { term: "Response window", meaning: "The stated time in which you will reply. Meeting a stated window reads as professional; missing it reads as neglect." },
+      { term: "Restrict", meaning: "Limiting a troll's visibility without the confrontation of blocking. The correct escalation before a block." },
+      { term: "Impersonation account", meaning: "A fake account using a business's name and photos to take deposits. Report immediately." },
+      { term: "Enquiry log", meaning: "A record of enquiries, quotes, agreements and deliveries. The evidence base for honest reporting." },
     ],
     homework: [
       {
@@ -250,32 +218,27 @@ export const socialMediaLessonsB: Record<string, SessionLecture> = {
       {
         criterion: "Responsiveness",
         passing: "Replies to enquiries.",
-        excellent:
-          "Greeting, away and ten quick replies configured, fixed clearing blocks set, and a stated window that is beaten rather than missed.",
+        excellent: "Greeting, away and ten quick replies configured, fixed clearing blocks set, and a stated window that is beaten rather than missed.",
       },
       {
         criterion: "Voice",
         passing: "Replies politely.",
-        excellent:
-          "A written voice guide applied consistently, warm and competent, with prices published rather than hidden behind 'DM for price'.",
+        excellent: "A written voice guide applied consistently, warm and competent, with prices published rather than hidden behind 'DM for price'.",
       },
       {
         criterion: "Conversion",
         passing: "Answers questions.",
-        excellent:
-          "Every part of the question answered, a specific next step, a written confirmation, and a follow-up sent.",
+        excellent: "Every part of the question answered, a specific next step, a written confirmation, and a follow-up sent.",
       },
       {
         criterion: "Crisis handling",
         passing: "Does not make it worse.",
-        excellent:
-          "Complaint acknowledged and moved private with a visible public resolution; troll given one factual reply; scam verified independently and reported.",
+        excellent: "Complaint acknowledged and moved private with a visible public resolution; troll given one factual reply; scam verified independently and reported.",
       },
       {
         criterion: "System",
         passing: "Keeps up with the inbox.",
-        excellent:
-          "Response windows, handover rule, separate profiles checked before every post, and a working enquiry log enabling honest reporting.",
+        excellent: "Response windows, handover rule, separate profiles checked before every post, and a working enquiry log enabling honest reporting.",
       },
     ],
     faqs: [
@@ -480,36 +443,13 @@ export const socialMediaLessonsB: Record<string, SessionLecture> = {
     ],
     vocabulary: [
       { term: "Reach", meaning: "Distinct accounts that saw a post. Measures how far you got." },
-      {
-        term: "Impressions",
-        meaning:
-          "Total displays, counting repeats. The gap against reach shows how often the same people saw you.",
-      },
-      {
-        term: "Saves",
-        meaning:
-          "Times a post was kept. The strongest signal that content was useful, and a predictor of future reach.",
-      },
+      { term: "Impressions", meaning: "Total displays, counting repeats. The gap against reach shows how often the same people saw you." },
+      { term: "Saves", meaning: "Times a post was kept. The strongest signal that content was useful, and a predictor of future reach." },
       { term: "Shares", meaning: "Times a post was passed on. How content reaches non-followers." },
-      {
-        term: "Vanity metric",
-        meaning: "A number that feels good and changes nothing — classically, follower count.",
-      },
-      {
-        term: "Controlled test",
-        meaning:
-          "Changing one variable across enough posts to mean something, with the affected metric specified in advance.",
-      },
-      {
-        term: "Decision log",
-        meaning:
-          "What changed, when, why and what happened. The accumulated evidence base of your practice.",
-      },
-      {
-        term: "Conversion",
-        meaning:
-          "An enquiry that became an order. The number a small business actually exists to produce.",
-      },
+      { term: "Vanity metric", meaning: "A number that feels good and changes nothing — classically, follower count." },
+      { term: "Controlled test", meaning: "Changing one variable across enough posts to mean something, with the affected metric specified in advance." },
+      { term: "Decision log", meaning: "What changed, when, why and what happened. The accumulated evidence base of your practice." },
+      { term: "Conversion", meaning: "An enquiry that became an order. The number a small business actually exists to produce." },
     ],
     homework: [
       {
@@ -537,32 +477,27 @@ export const socialMediaLessonsB: Record<string, SessionLecture> = {
       {
         criterion: "Metric literacy",
         passing: "Can name the main metrics.",
-        excellent:
-          "Explains what each metric does and does not show, distinguishes reach from impressions, and knows why saves and shares outrank likes.",
+        excellent: "Explains what each metric does and does not show, distinguishes reach from impressions, and knows why saves and shares outrank likes.",
       },
       {
         criterion: "Business focus",
         passing: "Reports engagement.",
-        excellent:
-          "Leads with enquiries, treats follower count as a vanity metric, and connects platform data to the enquiry log.",
+        excellent: "Leads with enquiries, treats follower count as a vanity metric, and connects platform data to the enquiry log.",
       },
       {
         criterion: "Testing",
         passing: "Compares some posts.",
-        excellent:
-          "One variable, five posts per condition, everything else held constant, with the expected metric stated in advance and an honest verdict.",
+        excellent: "One variable, five posts per condition, everything else held constant, with the expected metric stated in advance and an honest verdict.",
       },
       {
         criterion: "Reporting",
         passing: "Produces a summary.",
-        excellent:
-          "Two pages, headline first, what worked and what did not both named with reasons, one trend chart, and a client could grasp it in two minutes.",
+        excellent: "Two pages, headline first, what worked and what did not both named with reasons, one trend chart, and a client could grasp it in two minutes.",
       },
       {
         criterion: "Decisions",
         passing: "Suggests improvements.",
-        excellent:
-          "Two or three specific changes traceable to findings, each with a decision log entry, and reviewed the following month.",
+        excellent: "Two or three specific changes traceable to findings, each with a decision log entry, and reviewed the following month.",
       },
     ],
     faqs: [
@@ -773,46 +708,14 @@ export const socialMediaLessonsB: Record<string, SessionLecture> = {
       "Price retainers on scope, not on effort. Stating 'twelve posts, replies within four hours on weekdays, one monthly report' lets a client understand what they are buying and lets you say no to expansion without an argument.",
     ],
     vocabulary: [
-      {
-        term: "Two-factor authentication",
-        meaning:
-          "A second verification step beyond the password. Prevents the large majority of account takeovers.",
-      },
-      {
-        term: "Phishing",
-        meaning:
-          "A fake message impersonating a platform to steal credentials. No platform will message you that your account will be closed.",
-      },
-      {
-        term: "Impersonation account",
-        meaning:
-          "A fake account using a business's identity to defraud its customers. Report immediately.",
-      },
-      {
-        term: "Licensed library",
-        meaning:
-          "A platform's own cleared music and media for business accounts. The safe alternative to unlicensed commercial tracks.",
-      },
-      {
-        term: "Disclosure",
-        meaning:
-          "Labelling sponsored content as paid. Presenting advertising as independent opinion is deceptive.",
-      },
-      {
-        term: "Crisis statement",
-        meaning:
-          "A prepared four-step response: acknowledge, take responsibility, state the fix and timeframe, follow up publicly.",
-      },
-      {
-        term: "Approval turnaround",
-        meaning:
-          "The agreed time a client has to give feedback. Prevents silence delaying a month of content.",
-      },
-      {
-        term: "Retainer",
-        meaning:
-          "A monthly fee for a stated scope. Reflects that continuity, not individual posts, is what produces results.",
-      },
+      { term: "Two-factor authentication", meaning: "A second verification step beyond the password. Prevents the large majority of account takeovers." },
+      { term: "Phishing", meaning: "A fake message impersonating a platform to steal credentials. No platform will message you that your account will be closed." },
+      { term: "Impersonation account", meaning: "A fake account using a business's identity to defraud its customers. Report immediately." },
+      { term: "Licensed library", meaning: "A platform's own cleared music and media for business accounts. The safe alternative to unlicensed commercial tracks." },
+      { term: "Disclosure", meaning: "Labelling sponsored content as paid. Presenting advertising as independent opinion is deceptive." },
+      { term: "Crisis statement", meaning: "A prepared four-step response: acknowledge, take responsibility, state the fix and timeframe, follow up publicly." },
+      { term: "Approval turnaround", meaning: "The agreed time a client has to give feedback. Prevents silence delaying a month of content." },
+      { term: "Retainer", meaning: "A monthly fee for a stated scope. Reflects that continuity, not individual posts, is what produces results." },
     ],
     homework: [
       {
@@ -840,32 +743,27 @@ export const socialMediaLessonsB: Record<string, SessionLecture> = {
       {
         criterion: "Security",
         passing: "Knows the basics.",
-        excellent:
-          "A completed checklist with two-factor, password manager, recovery contacts, app review and owner admin access, dated and recorded.",
+        excellent: "A completed checklist with two-factor, password manager, recovery contacts, app review and owner admin access, dated and recorded.",
       },
       {
         criterion: "Legal and ethical awareness",
         passing: "Avoids obvious problems.",
-        excellent:
-          "A business-specific note on copyright, disclosure, substantiated claims and customer data, with the risky examples rewritten correctly.",
+        excellent: "A business-specific note on copyright, disclosure, substantiated claims and customer data, with the risky examples rewritten correctly.",
       },
       {
         criterion: "Crisis readiness",
         passing: "Would respond sensibly.",
-        excellent:
-          "A prepared four-step statement for the most likely scenario, with the three forbidden responses named and rejected.",
+        excellent: "A prepared four-step statement for the most likely scenario, with the three forbidden responses named and rejected.",
       },
       {
         criterion: "Professional terms",
         passing: "Has discussed terms.",
-        excellent:
-          "A written agreement covering deliverables, client obligations, fee, approval turnaround, term and content ownership.",
+        excellent: "A written agreement covering deliverables, client obligations, fee, approval turnaround, term and content ownership.",
       },
       {
         criterion: "Final package",
         passing: "Delivers most parts.",
-        excellent:
-          "All six parts complete for a real business, presented as a case study, with a scoped monthly retainer price rather than per-post pricing.",
+        excellent: "All six parts complete for a real business, presented as a case study, with a scoped monthly retainer price rather than per-post pricing.",
       },
     ],
     faqs: [

@@ -178,40 +178,14 @@ export const cybersecurityLessonsA: Record<string, SessionLecture> = {
       "Be willing to tell a client they do not need something. Recommending against an expensive control you could easily have sold is the fastest way to be trusted with everything else.",
     ],
     vocabulary: [
-      {
-        term: "CIA triad",
-        meaning:
-          "Confidentiality, integrity and availability — the three things every security control serves.",
-      },
+      { term: "CIA triad", meaning: "Confidentiality, integrity and availability — the three things every security control serves." },
       { term: "Threat", meaning: "Anything that could cause harm. You usually cannot change it." },
-      {
-        term: "Vulnerability",
-        meaning: "A weakness in your specific setup. This is what you can act on.",
-      },
-      {
-        term: "Risk",
-        meaning:
-          "Likelihood that a threat exploits a vulnerability, multiplied by the impact. The thing you prioritise.",
-      },
-      {
-        term: "Control",
-        meaning: "A measure reducing either the likelihood or the impact of a risk.",
-      },
-      {
-        term: "Account takeover",
-        meaning:
-          "An attacker obtaining credentials and using a real account. The most common serious loss for individuals and small businesses.",
-      },
-      {
-        term: "Ransomware",
-        meaning:
-          "Malware encrypting your files for payment. Devastating without a backup; an inconvenience with one.",
-      },
-      {
-        term: "Survivable mistake",
-        meaning:
-          "A design where a single human error does not become a catastrophe. The realistic goal of security work.",
-      },
+      { term: "Vulnerability", meaning: "A weakness in your specific setup. This is what you can act on." },
+      { term: "Risk", meaning: "Likelihood that a threat exploits a vulnerability, multiplied by the impact. The thing you prioritise." },
+      { term: "Control", meaning: "A measure reducing either the likelihood or the impact of a risk." },
+      { term: "Account takeover", meaning: "An attacker obtaining credentials and using a real account. The most common serious loss for individuals and small businesses." },
+      { term: "Ransomware", meaning: "Malware encrypting your files for payment. Devastating without a backup; an inconvenience with one." },
+      { term: "Survivable mistake", meaning: "A design where a single human error does not become a catastrophe. The realistic goal of security work." },
     ],
     homework: [
       {
@@ -239,32 +213,27 @@ export const cybersecurityLessonsA: Record<string, SessionLecture> = {
       {
         criterion: "Triad application",
         passing: "Can define the three terms.",
-        excellent:
-          "Applies each to specific assets in a real business and can state which is at stake in a given incident.",
+        excellent: "Applies each to specific assets in a real business and can state which is at stake in a given incident.",
       },
       {
         criterion: "Vocabulary precision",
         passing: "Uses the terms roughly correctly.",
-        excellent:
-          "Distinguishes threat, vulnerability, risk and control cleanly, and acts on vulnerabilities rather than threats.",
+        excellent: "Distinguishes threat, vulnerability, risk and control cleanly, and acts on vulnerabilities rather than threats.",
       },
       {
         criterion: "Threat realism",
         passing: "Lists common threats.",
-        excellent:
-          "Names the realistic Nigerian small-business threats and explicitly rules out the dramatic ones with reasoning.",
+        excellent: "Names the realistic Nigerian small-business threats and explicitly rules out the dramatic ones with reasoning.",
       },
       {
         criterion: "Risk assessment",
         passing: "Identifies some risks.",
-        excellent:
-          "Scores likelihood and impact for each vulnerability and produces a defensible ranking.",
+        excellent: "Scores likelihood and impact for each vulnerability and produces a defensible ranking.",
       },
       {
         criterion: "Control judgement",
         passing: "Suggests sensible controls.",
-        excellent:
-          "Prioritises by risk reduced per naira, states each cost in money and friction, and justifies at least one deliberate omission.",
+        excellent: "Prioritises by risk reduced per naira, states each cost in money and friction, and justifies at least one deliberate omission.",
       },
     ],
     faqs: [
@@ -469,46 +438,14 @@ export const cybersecurityLessonsA: Record<string, SessionLecture> = {
       "Check the URL before entering credentials, every time. It is the only reliable defence against proxied phishing, which defeats two-factor entirely, and it takes two seconds.",
     ],
     vocabulary: [
-      {
-        term: "Authentication factor",
-        meaning:
-          "A kind of proof: something you know, something you have, or something you are. Two different kinds make real two-factor.",
-      },
-      {
-        term: "SIM-swap",
-        meaning:
-          "Fraud moving your phone number to an attacker's SIM, defeating SMS codes. Documented in Nigeria.",
-      },
-      {
-        term: "Authenticator app",
-        meaning:
-          "Software generating codes locally with no network involvement, so nothing can be intercepted. Prefer it to SMS.",
-      },
-      {
-        term: "Passkey",
-        meaning:
-          "A public-key credential with no shared secret, so there is nothing to phish. The strongest practical option where supported.",
-      },
-      {
-        term: "Recovery code",
-        meaning:
-          "A one-time backup code for use when your second factor is unavailable. Save it off-device.",
-      },
-      {
-        term: "Session cookie",
-        meaning:
-          "The token proving you are authenticated. Stealing it grants access without a password or second factor.",
-      },
-      {
-        term: "Proxied phishing",
-        meaning:
-          "A real-time fake site relaying your login to the real one, capturing a valid session despite two-factor.",
-      },
-      {
-        term: "Social engineering",
-        meaning:
-          "Manipulation exploiting helpfulness, urgency and authority rather than technical weakness.",
-      },
+      { term: "Authentication factor", meaning: "A kind of proof: something you know, something you have, or something you are. Two different kinds make real two-factor." },
+      { term: "SIM-swap", meaning: "Fraud moving your phone number to an attacker's SIM, defeating SMS codes. Documented in Nigeria." },
+      { term: "Authenticator app", meaning: "Software generating codes locally with no network involvement, so nothing can be intercepted. Prefer it to SMS." },
+      { term: "Passkey", meaning: "A public-key credential with no shared secret, so there is nothing to phish. The strongest practical option where supported." },
+      { term: "Recovery code", meaning: "A one-time backup code for use when your second factor is unavailable. Save it off-device." },
+      { term: "Session cookie", meaning: "The token proving you are authenticated. Stealing it grants access without a password or second factor." },
+      { term: "Proxied phishing", meaning: "A real-time fake site relaying your login to the real one, capturing a valid session despite two-factor." },
+      { term: "Social engineering", meaning: "Manipulation exploiting helpfulness, urgency and authority rather than technical weakness." },
     ],
     homework: [
       {
@@ -536,32 +473,27 @@ export const cybersecurityLessonsA: Record<string, SessionLecture> = {
       {
         criterion: "Factor understanding",
         passing: "Knows there are three factors.",
-        excellent:
-          "Distinguishes two-step from genuine two-factor and can explain why password theft is cheap while simultaneous device theft is not.",
+        excellent: "Distinguishes two-step from genuine two-factor and can explain why password theft is cheap while simultaneous device theft is not.",
       },
       {
         criterion: "Method selection",
         passing: "Has enabled two-factor somewhere.",
-        excellent:
-          "Chooses an authenticator app over SMS with reasoning, knows what a passkey offers, and understands the limits of biometrics.",
+        excellent: "Chooses an authenticator app over SMS with reasoning, knows what a passkey offers, and understands the limits of biometrics.",
       },
       {
         criterion: "Recovery",
         passing: "Enabled two-factor.",
-        excellent:
-          "Recovery codes saved off-device and verified findable, recovery email and number audited, and the primary email secured first as the master key.",
+        excellent: "Recovery codes saved off-device and verified findable, recovery email and number audited, and the primary email secured first as the master key.",
       },
       {
         criterion: "Session awareness",
         passing: "Knows passwords matter.",
-        excellent:
-          "Explains how session theft and proxied phishing bypass strong authentication, and checks URLs and logs out on shared machines.",
+        excellent: "Explains how session theft and proxied phishing bypass strong authentication, and checks URLs and logs out on shared machines.",
       },
       {
         criterion: "Social engineering defence",
         passing: "Is generally cautious.",
-        excellent:
-          "Identifies urgency, authority and familiarity, recognises the three asks, and holds fixed habits rather than relying on vigilance.",
+        excellent: "Identifies urgency, authority and familiarity, recognises the three asks, and holds fixed habits rather than relying on vigilance.",
       },
     ],
     faqs: [
@@ -767,46 +699,14 @@ export const cybersecurityLessonsA: Record<string, SessionLecture> = {
       "Rotate credentials and revoke access when anyone leaves a business, without exception. Staff departing with live access to a social account or a bank app is a common and entirely preventable exposure, and it is usually discovered too late.",
     ],
     vocabulary: [
-      {
-        term: "Credential stuffing",
-        meaning:
-          "Trying breached email-and-password pairs across many services. The most common real-world password failure.",
-      },
-      {
-        term: "Password manager",
-        meaning:
-          "An encrypted vault holding unique strong passwords, unlocked by one master passphrase. Also a phishing defence through domain-bound autofill.",
-      },
-      {
-        term: "Master passphrase",
-        meaning:
-          "The single secret protecting the whole vault. Long, unrelated words, never reused anywhere.",
-      },
-      {
-        term: "Passphrase",
-        meaning:
-          "A secret of several unrelated words. Long, memorable and far stronger than a short complex password.",
-      },
-      {
-        term: "Recovery kit",
-        meaning:
-          "The manager's emergency access mechanism. Losing the master with no recovery is unrecoverable by design.",
-      },
-      {
-        term: "Shared vault",
-        meaning:
-          "A manager vault a business shares with per-person access, so individuals can be revoked without changing everything.",
-      },
-      {
-        term: "Breach notification",
-        meaning:
-          "Notice that a service you used was compromised, meaning that password is in criminal hands.",
-      },
-      {
-        term: "Leaver procedure",
-        meaning:
-          "Revoking access and rotating credentials when someone leaves. The control most small businesses lack.",
-      },
+      { term: "Credential stuffing", meaning: "Trying breached email-and-password pairs across many services. The most common real-world password failure." },
+      { term: "Password manager", meaning: "An encrypted vault holding unique strong passwords, unlocked by one master passphrase. Also a phishing defence through domain-bound autofill." },
+      { term: "Master passphrase", meaning: "The single secret protecting the whole vault. Long, unrelated words, never reused anywhere." },
+      { term: "Passphrase", meaning: "A secret of several unrelated words. Long, memorable and far stronger than a short complex password." },
+      { term: "Recovery kit", meaning: "The manager's emergency access mechanism. Losing the master with no recovery is unrecoverable by design." },
+      { term: "Shared vault", meaning: "A manager vault a business shares with per-person access, so individuals can be revoked without changing everything." },
+      { term: "Breach notification", meaning: "Notice that a service you used was compromised, meaning that password is in criminal hands." },
+      { term: "Leaver procedure", meaning: "Revoking access and rotating credentials when someone leaves. The control most small businesses lack." },
     ],
     homework: [
       {
@@ -834,32 +734,27 @@ export const cybersecurityLessonsA: Record<string, SessionLecture> = {
       {
         criterion: "Attack understanding",
         passing: "Knows weak passwords are risky.",
-        excellent:
-          "Explains credential stuffing as the dominant real failure, and why uniqueness matters more than complexity and why length beats it.",
+        excellent: "Explains credential stuffing as the dominant real failure, and why uniqueness matters more than complexity and why length beats it.",
       },
       {
         criterion: "Manager setup",
         passing: "Has installed a manager.",
-        excellent:
-          "Strong master passphrase, vault two-factor enabled, recovery kit saved, and sync working across phone and computer.",
+        excellent: "Strong master passphrase, vault two-factor enabled, recovery kit saved, and sync working across phone and computer.",
       },
       {
         criterion: "Audit and remediation",
         passing: "Has changed some passwords.",
-        excellent:
-          "Ran the reuse audit, fixed accounts in priority order starting with primary email, and enabled two-factor throughout.",
+        excellent: "Ran the reuse audit, fixed accounts in priority order starting with primary email, and enabled two-factor throughout.",
       },
       {
         criterion: "Breach response",
         passing: "Is aware breaches happen.",
-        excellent:
-          "Checked against a breach service, acted on any hit by changing that password everywhere, and understands what a hit implies.",
+        excellent: "Checked against a breach service, acted on any hit by changing that password everywhere, and understands what a hit implies.",
       },
       {
         criterion: "Business hygiene",
         passing: "Understands shared passwords are bad.",
-        excellent:
-          "Designed a shared vault with per-person access and written a leaver procedure covering revocation and rotation.",
+        excellent: "Designed a shared vault with per-person access and written a leaver procedure covering revocation and rotation.",
       },
     ],
     faqs: [

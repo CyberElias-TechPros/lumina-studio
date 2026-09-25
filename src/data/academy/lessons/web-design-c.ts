@@ -184,45 +184,14 @@ export const webDesignLessonsC: Record<string, SessionLecture> = {
       "Sort the Network panel by size on every project, even when the client has not complained. It tells you in one look where the page is heavy, and keeping a site under two megabytes is what makes it feel fast on the connection most Nigerian visitors actually have.",
     ],
     vocabulary: [
-      {
-        term: "Accessibility",
-        meaning:
-          "Whether people with disabilities can use the page. A requirement, not an enhancement.",
-      },
-      {
-        term: "Screen reader",
-        meaning:
-          "Software reading a page aloud and navigating by landmarks and headings. Depends entirely on semantic HTML.",
-      },
-      {
-        term: "Focus style",
-        meaning:
-          "The visible mark on the keyboard-focused element. Removing it without a replacement breaks keyboard navigation.",
-      },
-      {
-        term: "Contrast ratio",
-        meaning:
-          "A numeric measure of text legibility against its background. Body text needs at least 4.5:1.",
-      },
-      {
-        term: "Title tag",
-        meaning: "The most important text on a page for search: business, service and location.",
-      },
-      {
-        term: "Meta description",
-        meaning:
-          "The sentence shown under a title in results. Does not rank, but changes click-through.",
-      },
-      {
-        term: "Page weight",
-        meaning:
-          "Total bytes downloaded. Target under about two megabytes for a business site on mobile data.",
-      },
-      {
-        term: "font-display: swap",
-        meaning:
-          "Renders text immediately in a fallback font rather than hiding it while the web font loads.",
-      },
+      { term: "Accessibility", meaning: "Whether people with disabilities can use the page. A requirement, not an enhancement." },
+      { term: "Screen reader", meaning: "Software reading a page aloud and navigating by landmarks and headings. Depends entirely on semantic HTML." },
+      { term: "Focus style", meaning: "The visible mark on the keyboard-focused element. Removing it without a replacement breaks keyboard navigation." },
+      { term: "Contrast ratio", meaning: "A numeric measure of text legibility against its background. Body text needs at least 4.5:1." },
+      { term: "Title tag", meaning: "The most important text on a page for search: business, service and location." },
+      { term: "Meta description", meaning: "The sentence shown under a title in results. Does not rank, but changes click-through." },
+      { term: "Page weight", meaning: "Total bytes downloaded. Target under about two megabytes for a business site on mobile data." },
+      { term: "font-display: swap", meaning: "Renders text immediately in a fallback font rather than hiding it while the web font loads." },
     ],
     homework: [
       {
@@ -250,32 +219,27 @@ export const webDesignLessonsC: Record<string, SessionLecture> = {
       {
         criterion: "Accessibility",
         passing: "The page is mostly usable.",
-        excellent:
-          "Visible focus throughout, a correct heading outline, appropriate alt text on every image, all text passing 4.5:1, and every form field labelled.",
+        excellent: "Visible focus throughout, a correct heading outline, appropriate alt text on every image, all text passing 4.5:1, and every form field labelled.",
       },
       {
         criterion: "SEO",
         passing: "Pages have titles.",
-        excellent:
-          "Every title naming business, service and location, a meta description per page, a logical heading structure and clean URLs.",
+        excellent: "Every title naming business, service and location, a meta description per page, a logical heading structure and clean URLs.",
       },
       {
         criterion: "Performance",
         passing: "The page loads.",
-        excellent:
-          "Under about two megabytes, images compressed, only used font weights loaded with font-display: swap, and unused scripts removed.",
+        excellent: "Under about two megabytes, images compressed, only used font weights loaded with font-display: swap, and unused scripts removed.",
       },
       {
         criterion: "Pre-launch discipline",
         passing: "Checks the obvious.",
-        excellent:
-          "The full checklist run — page read aloud, every link clicked, form tested end to end, phone number tapped on a real phone, console clean.",
+        excellent: "The full checklist run — page read aloud, every link clicked, form tested end to end, phone number tapped on a real phone, console clean.",
       },
       {
         criterion: "Handover",
         passing: "Delivers the files.",
-        excellent:
-          "A plain-language note explaining how to change content, what not to touch and where the files live.",
+        excellent: "A plain-language note explaining how to change content, what not to touch and where the files live.",
       },
     ],
     faqs: [
@@ -302,7 +266,7 @@ export const webDesignLessonsC: Record<string, SessionLecture> = {
     ],
   },
 
-  publishing: {
+  "publishing": {
     summary:
       "The final session takes a site from your laptop to the internet: domains and how DNS really works, hosting options for a Nigerian business, deploying, connecting a custom domain with HTTPS, and the final project — a live, published website you can show a client.",
     objectives: [
@@ -488,42 +452,14 @@ export const webDesignLessonsC: Record<string, SessionLecture> = {
       "Offer a maintenance agreement rather than disappearing at handover. Websites need updates, and a small monthly fee for backups, small edits and an annual check is both real income and the reason a client comes back for the next site.",
     ],
     vocabulary: [
-      {
-        term: "Registrar",
-        meaning:
-          "Where a domain is rented annually. Lapsing it loses email, links and ranking together.",
-      },
+      { term: "Registrar", meaning: "Where a domain is rented annually. Lapsing it loses email, links and ranking together." },
       { term: "A record", meaning: "The DNS record pointing a domain at a server's IP address." },
-      {
-        term: "CNAME",
-        meaning:
-          "A DNS record pointing one name at another — used for www, or to point at a host's URL.",
-      },
-      {
-        term: "MX record",
-        meaning:
-          "The DNS record saying where a domain's email is delivered. Must be carried over when hosts change.",
-      },
-      {
-        term: "Propagation",
-        meaning:
-          "The period, minutes to hours, during which a DNS change spreads. Mixed results are normal.",
-      },
-      {
-        term: "HTTPS",
-        meaning:
-          "An encrypted connection with a browser-verified certificate. Issued automatically by modern static hosts.",
-      },
-      {
-        term: "Canonical redirect",
-        meaning:
-          "Sending http and www to one address so a page does not exist at four URLs, splitting ranking.",
-      },
-      {
-        term: "Google Business Profile",
-        meaning:
-          "The map listing with phone, hours and photos. For a local business it often outperforms the website itself.",
-      },
+      { term: "CNAME", meaning: "A DNS record pointing one name at another — used for www, or to point at a host's URL." },
+      { term: "MX record", meaning: "The DNS record saying where a domain's email is delivered. Must be carried over when hosts change." },
+      { term: "Propagation", meaning: "The period, minutes to hours, during which a DNS change spreads. Mixed results are normal." },
+      { term: "HTTPS", meaning: "An encrypted connection with a browser-verified certificate. Issued automatically by modern static hosts." },
+      { term: "Canonical redirect", meaning: "Sending http and www to one address so a page does not exist at four URLs, splitting ranking." },
+      { term: "Google Business Profile", meaning: "The map listing with phone, hours and photos. For a local business it often outperforms the website itself." },
     ],
     homework: [
       {
@@ -551,32 +487,27 @@ export const webDesignLessonsC: Record<string, SessionLecture> = {
       {
         criterion: "Site quality",
         passing: "The site is built and works.",
-        excellent:
-          "Semantic, responsive from 360 pixels, accessible and under about two megabytes, with a WhatsApp-first contact route and correct titles.",
+        excellent: "Semantic, responsive from 360 pixels, accessible and under about two megabytes, with a WhatsApp-first contact route and correct titles.",
       },
       {
         criterion: "Deployment",
         passing: "The site is online.",
-        excellent:
-          "Tested at the temporary URL first, then deployed with the canonical redirect set and HTTPS confirmed with no warning.",
+        excellent: "Tested at the temporary URL first, then deployed with the canonical redirect set and HTTPS confirmed with no warning.",
       },
       {
         criterion: "Domain and DNS",
         passing: "A domain is connected.",
-        excellent:
-          "Records set correctly at the registrar, propagation understood and monitored, MX records carried over and email verified with a test message.",
+        excellent: "Records set correctly at the registrar, propagation understood and monitored, MX records carried over and email verified with a test message.",
       },
       {
         criterion: "Operations",
         passing: "The site runs.",
-        excellent:
-          "Analytics recording, source under version control, a backup habit set, and a Google Business Profile matching the site exactly.",
+        excellent: "Analytics recording, source under version control, a backup habit set, and a Google Business Profile matching the site exactly.",
       },
       {
         criterion: "Handover",
         passing: "The client has the site.",
-        excellent:
-          "Both accounts in the client's name with auto-renew, you as collaborator, a plain-language editing note, and a maintenance option offered.",
+        excellent: "Both accounts in the client's name with auto-renew, you as collaborator, a plain-language editing note, and a maintenance option offered.",
       },
     ],
     faqs: [

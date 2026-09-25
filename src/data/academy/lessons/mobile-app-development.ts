@@ -115,7 +115,8 @@ export const mobileAppLessonsA: Record<string, SessionLecture> = {
         },
         {
           step: "Write version one in one sentence",
-          detail: "Explain the test: if version one needs three sentences, it is three versions.",
+          detail:
+            "Explain the test: if version one needs three sentences, it is three versions.",
         },
         {
           step: "List the deferred features explicitly",
@@ -215,45 +216,14 @@ export const mobileAppLessonsA: Record<string, SessionLecture> = {
       "Be honest about the macOS requirement early. Android and browser-based simulators need no Mac and teach every skill in this course, but final App Store builds require macOS and no workaround changes that.",
     ],
     vocabulary: [
-      {
-        term: "Native advantage",
-        meaning:
-          "What an app offers a website: installation, offline use, device access, background work. If you need none, build a website.",
-      },
-      {
-        term: "Scoping",
-        meaning:
-          "Deciding what version one is — the smallest thing that still works as a product, not the smallest thing you can build.",
-      },
-      {
-        term: "Version one",
-        meaning:
-          "Must-haves only. Describable in one sentence; if it needs three, it is three versions.",
-      },
-      {
-        term: "Must-have",
-        meaning:
-          "A feature without which the app does not function. Everything else is version two.",
-      },
-      {
-        term: "Screen flow",
-        meaning:
-          "Every screen and every arrow between them. A flow drawable in thirty seconds is a scope buildable in four weeks.",
-      },
-      {
-        term: "Platform convention",
-        meaning:
-          "User expectations absorbed from every other app: back behaviour, navigation placement, gestures.",
-      },
-      {
-        term: "System back button",
-        meaning: "Android's hardware or gesture back. Must behave sensibly; iOS has no equivalent.",
-      },
-      {
-        term: "macOS requirement",
-        meaning:
-          "Apple requires macOS for final App Store builds. No legitimate workaround exists.",
-      },
+      { term: "Native advantage", meaning: "What an app offers a website: installation, offline use, device access, background work. If you need none, build a website." },
+      { term: "Scoping", meaning: "Deciding what version one is — the smallest thing that still works as a product, not the smallest thing you can build." },
+      { term: "Version one", meaning: "Must-haves only. Describable in one sentence; if it needs three, it is three versions." },
+      { term: "Must-have", meaning: "A feature without which the app does not function. Everything else is version two." },
+      { term: "Screen flow", meaning: "Every screen and every arrow between them. A flow drawable in thirty seconds is a scope buildable in four weeks." },
+      { term: "Platform convention", meaning: "User expectations absorbed from every other app: back behaviour, navigation placement, gestures." },
+      { term: "System back button", meaning: "Android's hardware or gesture back. Must behave sensibly; iOS has no equivalent." },
+      { term: "macOS requirement", meaning: "Apple requires macOS for final App Store builds. No legitimate workaround exists." },
     ],
     homework: [
       {
@@ -281,32 +251,27 @@ export const mobileAppLessonsA: Record<string, SessionLecture> = {
       {
         criterion: "Choosing the platform",
         passing: "Has an app idea.",
-        excellent:
-          "The idea tested against installation, offline use, device access and background work, with a clear justification for building an app rather than a website.",
+        excellent: "The idea tested against installation, offline use, device access and background work, with a clear justification for building an app rather than a website.",
       },
       {
         criterion: "Project choice",
         passing: "Picks a project.",
-        excellent:
-          "Confirmed against all three tests — personally useful, real data, finishable by one person in four weeks — and explicitly not a two-sided marketplace or social system.",
+        excellent: "Confirmed against all three tests — personally useful, real data, finishable by one person in four weeks — and explicitly not a two-sided marketplace or social system.",
       },
       {
         criterion: "Scoping",
         passing: "Lists features.",
-        excellent:
-          "Every feature listed and marked must-have or nice-to-have, version one written in one sentence and re-cut until it fit, and deferred features recorded rather than dropped.",
+        excellent: "Every feature listed and marked must-have or nice-to-have, version one written in one sentence and re-cut until it fit, and deferred features recorded rather than dropped.",
       },
       {
         criterion: "Flow and size",
         passing: "Knows the screens.",
-        excellent:
-          "A drawn screen flow with every arrow, four screens or fewer for version one, and the flow drawable from memory in about thirty seconds.",
+        excellent: "A drawn screen flow with every arrow, four screens or fewer for version one, and the flow drawable from memory in about thirty seconds.",
       },
       {
         criterion: "Platform realism",
         passing: "Knows iOS and Android differ.",
-        excellent:
-          "Conventions named including back behaviour, Android and iOS shipping requirements stated separately, and the macOS requirement for App Store builds stated without evasion.",
+        excellent: "Conventions named including back behaviour, Android and iOS shipping requirements stated separately, and the macOS requirement for App Store builds stated without evasion.",
       },
     ],
     faqs: [
@@ -552,46 +517,14 @@ export const mobileAppLessonsA: Record<string, SessionLecture> = {
       "Prototype on paper before writing code. Thirty seconds per screen finds flow problems that cost hours to discover once built, and the commonest regret in mobile projects is building a flow nobody had drawn.",
     ],
     vocabulary: [
-      {
-        term: "Thumb zone",
-        meaning:
-          "The part of the screen reachable one-handed. The bottom is easy, the top corners hard — the reverse of desktop.",
-      },
-      {
-        term: "Touch target",
-        meaning:
-          "The tappable area of a control. At least about 44 points on iOS and 48 on Android, with gaps between neighbours.",
-      },
-      {
-        term: "Tab bar",
-        meaning:
-          "Always-visible navigation between three to five equal top-level areas. For siblings, not hierarchies.",
-      },
-      {
-        term: "Stack",
-        meaning:
-          "Drill down and come back. For hierarchies; both platforms' back controls expect it to behave predictably.",
-      },
-      {
-        term: "Modal",
-        meaning:
-          "A screen covering everything for one temporary task, dismissed on completion rather than navigated away from.",
-      },
-      {
-        term: "Empty state",
-        meaning:
-          "What a new user sees with no data. Should explain the screen and offer the action that fills it.",
-      },
-      {
-        term: "Skeleton screen",
-        meaning:
-          "Placeholder shapes shown while data loads. Usually better than a spinner because it shows the shape of what is coming.",
-      },
-      {
-        term: "Prototype",
-        meaning:
-          "A clickable version built before code. Changes here are cheap; the same changes in code are expensive.",
-      },
+      { term: "Thumb zone", meaning: "The part of the screen reachable one-handed. The bottom is easy, the top corners hard — the reverse of desktop." },
+      { term: "Touch target", meaning: "The tappable area of a control. At least about 44 points on iOS and 48 on Android, with gaps between neighbours." },
+      { term: "Tab bar", meaning: "Always-visible navigation between three to five equal top-level areas. For siblings, not hierarchies." },
+      { term: "Stack", meaning: "Drill down and come back. For hierarchies; both platforms' back controls expect it to behave predictably." },
+      { term: "Modal", meaning: "A screen covering everything for one temporary task, dismissed on completion rather than navigated away from." },
+      { term: "Empty state", meaning: "What a new user sees with no data. Should explain the screen and offer the action that fills it." },
+      { term: "Skeleton screen", meaning: "Placeholder shapes shown while data loads. Usually better than a spinner because it shows the shape of what is coming." },
+      { term: "Prototype", meaning: "A clickable version built before code. Changes here are cheap; the same changes in code are expensive." },
     ],
     homework: [
       {
@@ -619,32 +552,27 @@ export const mobileAppLessonsA: Record<string, SessionLecture> = {
       {
         criterion: "Physical design",
         passing: "Layout fits a phone.",
-        excellent:
-          "Thumb zone mapped for the intended hand, primary action placed in easy reach, and the layout justified by one-handed use rather than copied from a desktop.",
+        excellent: "Thumb zone mapped for the intended hand, primary action placed in easy reach, and the layout justified by one-handed use rather than copied from a desktop.",
       },
       {
         criterion: "Touch targets",
         passing: "Buttons are tappable.",
-        excellent:
-          "Every target at 44 points or larger with clear gaps between neighbours, verified by thumb on a real phone, extra space around destructive actions and a confirmation on each.",
+        excellent: "Every target at 44 points or larger with clear gaps between neighbours, verified by thumb on a real phone, extra space around destructive actions and a confirmation on each.",
       },
       {
         criterion: "Screen structure",
         passing: "Screens are organised.",
-        excellent:
-          "Every screen named in a few words with one job each, anything requiring the word and split, and content prioritised with deliberate omissions.",
+        excellent: "Every screen named in a few words with one job each, anything requiring the word and split, and content prioritised with deliberate omissions.",
       },
       {
         criterion: "Navigation",
         passing: "Navigation works.",
-        excellent:
-          "Tab, stack or modal chosen per destination with sibling-versus-hierarchy reasoning written down, tabs kept to five or fewer, and the wrong pattern demonstrated and rejected.",
+        excellent: "Tab, stack or modal chosen per destination with sibling-versus-hierarchy reasoning written down, tabs kept to five or fewer, and the wrong pattern demonstrated and rejected.",
       },
       {
         criterion: "States and prototyping",
         passing: "Designs the main screen.",
-        excellent:
-          "Loading, empty and error states designed for every data screen, hover dependencies removed, contrast checked outdoors, and a paper prototype tested with another person's hesitations recorded.",
+        excellent: "Loading, empty and error states designed for every data screen, hover dependencies removed, contrast checked outdoors, and a paper prototype tested with another person's hesitations recorded.",
       },
     ],
     faqs: [
@@ -740,7 +668,8 @@ export const mobileAppLessonsA: Record<string, SessionLecture> = {
         },
         {
           step: "Start the project and show the QR code",
-          detail: "Explain that this is what the phone connects to, over the same network.",
+          detail:
+            "Explain that this is what the phone connects to, over the same network.",
         },
         {
           step: "Install Expo Go on a real phone",
@@ -894,45 +823,14 @@ export const mobileAppLessonsA: Record<string, SessionLecture> = {
       "Handle the keyboard and the safe areas early, not as polish. A keyboard covering the field you are typing into makes an app unusable, and content under the status bar or gesture bar looks broken to every user.",
     ],
     vocabulary: [
-      {
-        term: "Expo",
-        meaning:
-          "A framework on React Native that removes native build configuration. Runs on Windows, Linux and macOS, with no Android Studio needed.",
-      },
-      {
-        term: "Expo Go",
-        meaning:
-          "The app that runs your project on a physical phone over the local network. The fastest and most honest development loop.",
-      },
-      {
-        term: "View",
-        meaning: "The container component, equivalent to a div. Everything is composed from them.",
-      },
-      {
-        term: "Text",
-        meaning:
-          "The only component that can contain text. Text placed directly in a View does not render.",
-      },
-      {
-        term: "ScrollView",
-        meaning:
-          "Makes content scrollable. Needs a defined height, in practice flex 1, or it will not scroll.",
-      },
-      {
-        term: "Pressable / TouchableOpacity",
-        meaning:
-          "Makes a component tappable with visual feedback, which a plain View does not provide.",
-      },
-      {
-        term: "Safe area insets",
-        meaning:
-          "Measurements for the status bar, notch and gesture bar. What keeps content from sitting underneath them.",
-      },
-      {
-        term: "Keyboard-aware view",
-        meaning:
-          "A container that shifts or scrolls content when the on-screen keyboard appears. Without it, low fields are hidden.",
-      },
+      { term: "Expo", meaning: "A framework on React Native that removes native build configuration. Runs on Windows, Linux and macOS, with no Android Studio needed." },
+      { term: "Expo Go", meaning: "The app that runs your project on a physical phone over the local network. The fastest and most honest development loop." },
+      { term: "View", meaning: "The container component, equivalent to a div. Everything is composed from them." },
+      { term: "Text", meaning: "The only component that can contain text. Text placed directly in a View does not render." },
+      { term: "ScrollView", meaning: "Makes content scrollable. Needs a defined height, in practice flex 1, or it will not scroll." },
+      { term: "Pressable / TouchableOpacity", meaning: "Makes a component tappable with visual feedback, which a plain View does not provide." },
+      { term: "Safe area insets", meaning: "Measurements for the status bar, notch and gesture bar. What keeps content from sitting underneath them." },
+      { term: "Keyboard-aware view", meaning: "A container that shifts or scrolls content when the on-screen keyboard appears. Without it, low fields are hidden." },
     ],
     homework: [
       {
@@ -960,32 +858,27 @@ export const mobileAppLessonsA: Record<string, SessionLecture> = {
       {
         criterion: "Toolchain",
         passing: "Gets the project running.",
-        excellent:
-          "Expo project created and started with no Android Studio, connected to a physical phone through Expo Go over the local network or a hotspot, with save-and-reload confirmed.",
+        excellent: "Expo project created and started with no Android Studio, connected to a physical phone through Expo Go over the local network or a hotspot, with save-and-reload confirmed.",
       },
       {
         criterion: "Components",
         passing: "Renders something on screen.",
-        excellent:
-          "Screens composed from View and Text with every piece of text inside a Text component, TextInput for entry, and Pressable or TouchableOpacity giving tap feedback.",
+        excellent: "Screens composed from View and Text with every piece of text inside a Text component, TextInput for entry, and Pressable or TouchableOpacity giving tap feedback.",
       },
       {
         criterion: "Layout",
         passing: "Positions elements.",
-        excellent:
-          "Flexbox used with the column default understood, and overflowing content wrapped in a ScrollView with flex 1 and confirmed to reach the bottom.",
+        excellent: "Flexbox used with the column default understood, and overflowing content wrapped in a ScrollView with flex 1 and confirmed to reach the bottom.",
       },
       {
         criterion: "Device realities",
         passing: "App displays correctly.",
-        excellent:
-          "Safe area insets applied top and bottom, a keyboard-aware view keeping fields visible, and the app used one-handed with reach problems noted.",
+        excellent: "Safe area insets applied top and bottom, a keyboard-aware view keeping fields visible, and the app used one-handed with reach problems noted.",
       },
       {
         criterion: "Testing honesty",
         passing: "Checks in the simulator.",
-        excellent:
-          "The same app compared on a physical phone with what the emulator hid listed, and the working project committed to GitHub.",
+        excellent: "The same app compared on a physical phone with what the emulator hid listed, and the working project committed to GitHub.",
       },
     ],
     faqs: [

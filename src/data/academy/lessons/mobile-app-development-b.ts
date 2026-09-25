@@ -236,44 +236,14 @@ export const mobileAppLessonsB: Record<string, SessionLecture> = {
       "Put colours, spacing and type sizes in one theme file. It turns a brand change into one line and makes roughly consistent spacing actually consistent, because there are only a few values left to choose from.",
     ],
     vocabulary: [
-      {
-        term: "Tab navigator",
-        meaning:
-          "The outermost layer, switching between three to five equal areas. Each tab holds its own stack.",
-      },
-      {
-        term: "Stack navigator",
-        meaning: "Push a screen on, pop it off. What the system back button expects to operate on.",
-      },
-      {
-        term: "Modal",
-        meaning:
-          "Presented over the current screen for a short task and dismissed on completion rather than popped.",
-      },
-      {
-        term: "Navigation param",
-        meaning:
-          "Data carried to a destination screen. Pass an identifier, not the object, to avoid stale copies.",
-      },
-      {
-        term: "Reusable component",
-        meaning:
-          "Takes what varies as props and owns what does not. The test is whether it drops into another screen unedited.",
-      },
-      {
-        term: "Theme tokens",
-        meaning:
-          "Named colours, spacing and type sizes in one module. What makes a brand change one line instead of twenty.",
-      },
-      {
-        term: "StyleSheet.create",
-        meaning: "Defines styles once rather than per render. Matters on low-end devices.",
-      },
-      {
-        term: "Density-independent pixel",
-        meaning:
-          "The unit mobile layout uses, so a size is physically similar across screen densities.",
-      },
+      { term: "Tab navigator", meaning: "The outermost layer, switching between three to five equal areas. Each tab holds its own stack." },
+      { term: "Stack navigator", meaning: "Push a screen on, pop it off. What the system back button expects to operate on." },
+      { term: "Modal", meaning: "Presented over the current screen for a short task and dismissed on completion rather than popped." },
+      { term: "Navigation param", meaning: "Data carried to a destination screen. Pass an identifier, not the object, to avoid stale copies." },
+      { term: "Reusable component", meaning: "Takes what varies as props and owns what does not. The test is whether it drops into another screen unedited." },
+      { term: "Theme tokens", meaning: "Named colours, spacing and type sizes in one module. What makes a brand change one line instead of twenty." },
+      { term: "StyleSheet.create", meaning: "Defines styles once rather than per render. Matters on low-end devices." },
+      { term: "Density-independent pixel", meaning: "The unit mobile layout uses, so a size is physically similar across screen densities." },
     ],
     homework: [
       {
@@ -301,32 +271,27 @@ export const mobileAppLessonsB: Record<string, SessionLecture> = {
       {
         criterion: "Navigation structure",
         passing: "Screens are reachable.",
-        excellent:
-          "Tab bar outermost with stacks nested inside and the modal outside, drawn before building, with the Android back button tested from every screen and behaving sensibly.",
+        excellent: "Tab bar outermost with stacks nested inside and the modal outside, drawn before building, with the Android back button tested from every screen and behaving sensibly.",
       },
       {
         criterion: "Data passing",
         passing: "Passes data between screens.",
-        excellent:
-          "Identifiers passed rather than objects, looked up from a single source and confirmed current after an edit, with params read defensively and a fallback for the missing case.",
+        excellent: "Identifiers passed rather than objects, looked up from a single source and confirmed current after an edit, with params read defensively and a fallback for the missing case.",
       },
       {
         criterion: "Components",
         passing: "Has some components.",
-        excellent:
-          "Everything repeated more than twice extracted, props for what varies and ownership of what does not, each droppable into another screen unedited, and no abstraction made after a single instance.",
+        excellent: "Everything repeated more than twice extracted, props for what varies and ownership of what does not, each droppable into another screen unedited, and no abstraction made after a single instance.",
       },
       {
         criterion: "Styling",
         passing: "App looks consistent.",
-        excellent:
-          "A theme file exporting colours, spacing and type sizes with no scattered hex codes or magic numbers, and styles in StyleSheet.create rather than inline objects.",
+        excellent: "A theme file exporting colours, spacing and type sizes with no scattered hex codes or magic numbers, and styles in StyleSheet.create rather than inline objects.",
       },
       {
         criterion: "Device range",
         passing: "Works on one device.",
-        excellent:
-          "Fixed widths replaced with flex, tested at the smallest phone size with crowding fixed and at a tablet size with a maximum content width, and confirmed unregressed on a physical phone.",
+        excellent: "Fixed widths replaced with flex, tested at the smallest phone size with crowding fixed and at a tablet size with a maximum content width, and confirmed unregressed on a physical phone.",
       },
     ],
     faqs: [
@@ -583,46 +548,14 @@ export const mobileAppLessonsB: Record<string, SessionLecture> = {
       "Store money as integers in kobo and divide only on display. Floating point cannot represent all decimals exactly, and it feels fussy right up until a client's total is one kobo out.",
     ],
     vocabulary: [
-      {
-        term: "State",
-        meaning:
-          "Data the app holds and changes over time. Belongs at the lowest common ancestor of what needs it.",
-      },
-      {
-        term: "Lifting state",
-        meaning:
-          "Moving state up so two components share it. The correct fix when two copies get out of sync.",
-      },
-      {
-        term: "Derived value",
-        meaning:
-          "Computed from stored data rather than stored beside it. Cannot go stale, unlike a copy.",
-      },
-      {
-        term: "Controlled input",
-        meaning:
-          "A TextInput whose value comes from state and updates it on every change. What enables validation.",
-      },
-      {
-        term: "FlatList",
-        meaning:
-          "Renders only rows near the screen and recycles the rest. The standard way to render a list on mobile.",
-      },
-      {
-        term: "Key",
-        meaning:
-          "A stable unique identifier per list item. Must come from the data, not the array position.",
-      },
-      {
-        term: "AsyncStorage",
-        meaning:
-          "A key-value store on the device holding strings. Serialise in, parse out, and it is not a database.",
-      },
-      {
-        term: "Integer kobo",
-        meaning:
-          "Money stored as whole kobo rather than decimal naira. Avoids floating-point errors in totals.",
-      },
+      { term: "State", meaning: "Data the app holds and changes over time. Belongs at the lowest common ancestor of what needs it." },
+      { term: "Lifting state", meaning: "Moving state up so two components share it. The correct fix when two copies get out of sync." },
+      { term: "Derived value", meaning: "Computed from stored data rather than stored beside it. Cannot go stale, unlike a copy." },
+      { term: "Controlled input", meaning: "A TextInput whose value comes from state and updates it on every change. What enables validation." },
+      { term: "FlatList", meaning: "Renders only rows near the screen and recycles the rest. The standard way to render a list on mobile." },
+      { term: "Key", meaning: "A stable unique identifier per list item. Must come from the data, not the array position." },
+      { term: "AsyncStorage", meaning: "A key-value store on the device holding strings. Serialise in, parse out, and it is not a database." },
+      { term: "Integer kobo", meaning: "Money stored as whole kobo rather than decimal naira. Avoids floating-point errors in totals." },
     ],
     homework: [
       {
@@ -650,32 +583,27 @@ export const mobileAppLessonsB: Record<string, SessionLecture> = {
       {
         criterion: "State placement",
         passing: "State works.",
-        excellent:
-          "Placed at the lowest common ancestor and no higher, duplicated state removed, and totals derived from the list rather than stored beside it.",
+        excellent: "Placed at the lowest common ancestor and no higher, duplicated state removed, and totals derived from the list rather than stored beside it.",
       },
       {
         criterion: "Input handling",
         passing: "Form accepts input.",
-        excellent:
-          "Every field controlled with the correct keyboard type, autocorrect off where the field is not prose, feedback beside each field, and submit disabled until valid.",
+        excellent: "Every field controlled with the correct keyboard type, autocorrect off where the field is not prose, feedback beside each field, and submit disabled until valid.",
       },
       {
         criterion: "Lists",
         passing: "Displays a list.",
-        excellent:
-          "FlatList used for the item list, performance compared with a mapped list on a physical phone, and record ids used as keys with deletion confirmed to affect the correct row.",
+        excellent: "FlatList used for the item list, performance compared with a mapped list on a physical phone, and record ids used as keys with deletion confirmed to affect the correct row.",
       },
       {
         criterion: "Data modelling",
         passing: "Stores records.",
-        excellent:
-          "A defined shape with id, numeric amount, category, ISO date and optional note, and money stored as integer kobo with division only on display.",
+        excellent: "A defined shape with id, numeric amount, category, ISO date and optional note, and money stored as integer kobo with division only on display.",
       },
       {
         criterion: "Persistence",
         passing: "Data survives a reload.",
-        excellent:
-          "AsyncStorage used with serialisation, an awaited read, loading handled distinctly from empty, parsing wrapped in a try block, and survival of corrupt data confirmed.",
+        excellent: "AsyncStorage used with serialisation, an awaited read, loading handled distinctly from empty, parsing wrapped in a try block, and survival of corrupt data confirmed.",
       },
     ],
     faqs: [
@@ -821,7 +749,8 @@ export const mobileAppLessonsB: Record<string, SessionLecture> = {
         },
         {
           step: "Save it locally with an unsynced flag",
-          detail: "Explain that the flag is what tells the app what still needs sending.",
+          detail:
+            "Explain that the flag is what tells the app what still needs sending.",
         },
         {
           step: "Restore the connection and sync the queue",
@@ -931,46 +860,14 @@ export const mobileAppLessonsB: Record<string, SessionLecture> = {
       "Test on the cheapest, oldest phone you can find and watch the data use. Low-end devices are the majority of the market and mobile data is metered, so both are real product constraints rather than niceties.",
     ],
     vocabulary: [
-      {
-        term: "Response ok",
-        meaning:
-          "The property telling you whether a completed request succeeded. Fetch resolves on 404 and 500, so you must check it.",
-      },
-      {
-        term: "Skeleton screen",
-        meaning:
-          "Placeholder shapes matching the real layout. Feels faster than a spinner and is what users see most on slow networks.",
-      },
-      {
-        term: "Retry",
-        meaning:
-          "The action an error state must offer. Every failure path should end in something the user can do.",
-      },
-      {
-        term: "Offline-first",
-        meaning:
-          "Read local data immediately, refresh in the background. What makes an app usable in a lift or a basement.",
-      },
-      {
-        term: "Write queue",
-        meaning:
-          "Changes made offline, stored locally with an unsynced flag and sent when connectivity returns.",
-      },
-      {
-        term: "Conflict resolution",
-        meaning:
-          "What happens when a queued change disagrees with the server. Last-write-wins with a timestamp is a legitimate first answer.",
-      },
-      {
-        term: "JS thread blocking",
-        meaning:
-          "Heavy work freezing the interface. Split or defer expensive operations, because the thread drives the UI.",
-      },
-      {
-        term: "Pagination",
-        meaning:
-          "Requesting only what you display. Respects a metered data budget, which is real money to the user.",
-      },
+      { term: "Response ok", meaning: "The property telling you whether a completed request succeeded. Fetch resolves on 404 and 500, so you must check it." },
+      { term: "Skeleton screen", meaning: "Placeholder shapes matching the real layout. Feels faster than a spinner and is what users see most on slow networks." },
+      { term: "Retry", meaning: "The action an error state must offer. Every failure path should end in something the user can do." },
+      { term: "Offline-first", meaning: "Read local data immediately, refresh in the background. What makes an app usable in a lift or a basement." },
+      { term: "Write queue", meaning: "Changes made offline, stored locally with an unsynced flag and sent when connectivity returns." },
+      { term: "Conflict resolution", meaning: "What happens when a queued change disagrees with the server. Last-write-wins with a timestamp is a legitimate first answer." },
+      { term: "JS thread blocking", meaning: "Heavy work freezing the interface. Split or defer expensive operations, because the thread drives the UI." },
+      { term: "Pagination", meaning: "Requesting only what you display. Respects a metered data budget, which is real money to the user." },
     ],
     homework: [
       {
@@ -998,32 +895,27 @@ export const mobileAppLessonsB: Record<string, SessionLecture> = {
       {
         criterion: "Fetching",
         passing: "Loads data from an API.",
-        excellent:
-          "Async and await used, the ok property checked, failure and error status handled separately, and no state set on an unmounted screen after navigating away.",
+        excellent: "Async and await used, the ok property checked, failure and error status handled separately, and no state set on an unmounted screen after navigating away.",
       },
       {
         criterion: "Loading and errors",
         passing: "Shows a spinner.",
-        excellent:
-          "A skeleton matching the real layout, an error state naming the failure with Retry, no connection distinguished from server error, and every failure path ending in a user action.",
+        excellent: "A skeleton matching the real layout, an error state naming the failure with Retry, no connection distinguished from server error, and every failure path ending in a user action.",
       },
       {
         criterion: "Offline behaviour",
         passing: "Handles no connection.",
-        excellent:
-          "Local storage read first with background refresh, offline writes queued with an unsynced flag and confirmed to sync on reconnection, and the conflict strategy documented.",
+        excellent: "Local storage read first with background refresh, offline writes queued with an unsynced flag and confirmed to sync on reconnection, and the conflict strategy documented.",
       },
       {
         criterion: "Performance",
         passing: "App runs acceptably.",
-        excellent:
-          "Tested on the cheapest, oldest Android available, interface-blocking operations found and split or deferred, and FlatList used for the long list.",
+        excellent: "Tested on the cheapest, oldest Android available, interface-blocking operations found and split or deferred, and FlatList used for the long list.",
       },
       {
         criterion: "Data economy",
         passing: "Loads data.",
-        excellent:
-          "Pagination added with data use measured before and after, images served at display size, responses cached, and a sync-only-on-Wi-Fi option provided.",
+        excellent: "Pagination added with data use measured before and after, images served at display size, responses cached, and a sync-only-on-Wi-Fi option provided.",
       },
     ],
     faqs: [

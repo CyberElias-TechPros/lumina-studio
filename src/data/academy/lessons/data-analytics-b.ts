@@ -217,45 +217,14 @@ export const dataAnalyticsLessonsB: Record<string, SessionLecture> = {
       "Choose the denominator deliberately: % of Grand Total for importance, % of Column Total for mix, Difference From for direction. A raw total answers how much and almost nobody acts on that alone.",
     ],
     vocabulary: [
-      {
-        term: "Pivot table",
-        meaning:
-          "A grouped total rebuilt on demand without altering the source. Answers follow-up questions in seconds.",
-      },
-      {
-        term: "Pivot cache",
-        meaning:
-          "The stored copy a pivot reads from. Why refreshing is required and why a stale report looks current.",
-      },
-      {
-        term: "Value Field Settings",
-        meaning:
-          "Where Sum, Count, Average and the percentage options live. Confirms you are measuring what you think.",
-      },
-      {
-        term: "Grouping",
-        meaning:
-          "Combining dates into months or quarters, or numbers into bands. Requires real dates, not text.",
-      },
-      {
-        term: "Calculated field",
-        meaning:
-          "A new measure built from existing ones. Operates on summed values, giving a weighted rather than row-level result.",
-      },
-      {
-        term: "% of Grand Total",
-        meaning: "Each value as a share of the whole. Turns how much into how important.",
-      },
-      {
-        term: "Running total",
-        meaning:
-          "A cumulative figure across a period. Shows whether the year is tracking ahead or behind.",
-      },
-      {
-        term: "Skewed data",
-        meaning:
-          "A few extreme values pulling the mean away from the median. The reason typical should mean median.",
-      },
+      { term: "Pivot table", meaning: "A grouped total rebuilt on demand without altering the source. Answers follow-up questions in seconds." },
+      { term: "Pivot cache", meaning: "The stored copy a pivot reads from. Why refreshing is required and why a stale report looks current." },
+      { term: "Value Field Settings", meaning: "Where Sum, Count, Average and the percentage options live. Confirms you are measuring what you think." },
+      { term: "Grouping", meaning: "Combining dates into months or quarters, or numbers into bands. Requires real dates, not text." },
+      { term: "Calculated field", meaning: "A new measure built from existing ones. Operates on summed values, giving a weighted rather than row-level result." },
+      { term: "% of Grand Total", meaning: "Each value as a share of the whole. Turns how much into how important." },
+      { term: "Running total", meaning: "A cumulative figure across a period. Shows whether the year is tracking ahead or behind." },
+      { term: "Skewed data", meaning: "A few extreme values pulling the mean away from the median. The reason typical should mean median." },
     ],
     homework: [
       {
@@ -283,32 +252,27 @@ export const dataAnalyticsLessonsB: Record<string, SessionLecture> = {
       {
         criterion: "Construction",
         passing: "Builds a working pivot table.",
-        excellent:
-          "Built from a table reference on cleaned tidy data, Value Field Settings verified on every field, and exactly the expected categories appearing.",
+        excellent: "Built from a table reference on cleaned tidy data, Value Field Settings verified on every field, and exactly the expected categories appearing.",
       },
       {
         criterion: "Grouping",
         passing: "Groups by a field.",
-        excellent:
-          "Dates grouped to months nested in quarters and numbers grouped into bands, working because the underlying values are real dates and numbers.",
+        excellent: "Dates grouped to months nested in quarters and numbers grouped into bands, working because the underlying values are real dates and numbers.",
       },
       {
         criterion: "Calculated measures",
         passing: "Adds a calculated field.",
-        excellent:
-          "Profit and margin added with inputs stated, and the difference between a calculated-field margin and the average of row margins explained rather than discovered by accident.",
+        excellent: "Profit and margin added with inputs stated, and the difference between a calculated-field margin and the average of row margins explained rather than discovered by accident.",
       },
       {
         criterion: "Choosing the view",
         passing: "Shows totals.",
-        excellent:
-          "% of Grand Total, % of Column Total and running totals used where each answers the question better, with the denominator chosen deliberately.",
+        excellent: "% of Grand Total, % of Column Total and running totals used where each answers the question better, with the denominator chosen deliberately.",
       },
       {
         criterion: "Statistical honesty",
         passing: "Reports an average.",
-        excellent:
-          "Mean, median, MIN and MAX reported together, the skew identified, and a stated judgement about which statistic describes a typical order.",
+        excellent: "Mean, median, MIN and MAX reported together, the skew identified, and a stated judgement about which statistic describes a typical order.",
       },
     ],
     faqs: [
@@ -552,45 +516,14 @@ export const dataAnalyticsLessonsB: Record<string, SessionLecture> = {
       "Check your own charts for the misleading patterns before anyone else does. Truncated axes, lines across categories, 3D, inconsistent scales and cherry-picked periods are usually carelessness rather than dishonesty, which is exactly why they survive into reports.",
     ],
     vocabulary: [
-      {
-        term: "Bar chart",
-        meaning:
-          "Compares quantities. Sort descending, use horizontal bars for long labels, start the axis at zero.",
-      },
-      {
-        term: "Line chart",
-        meaning:
-          "Shows change over an ordered sequence. Wrong for categories, because it implies a trend that does not exist.",
-      },
-      {
-        term: "Pie chart",
-        meaning:
-          "Shows a share of a whole. Acceptable for one simple share with three slices at most; a sorted bar is usually better.",
-      },
-      {
-        term: "Scatter plot",
-        meaning:
-          "Shows whether two variables move together. A trendline gives direction and R-squared says how much is explained.",
-      },
-      {
-        term: "Histogram",
-        meaning: "Shows distribution. The chart that reveals skew, which no average can show.",
-      },
-      {
-        term: "Truncated axis",
-        meaning:
-          "An axis not starting at zero. Misleading on bar charts, sometimes legitimate on line charts showing change.",
-      },
-      {
-        term: "Chartjunk",
-        meaning:
-          "Anything on a chart that carries no information: 3D, borders, redundant gridlines, legends where labels would do.",
-      },
-      {
-        term: "Five-second test",
-        meaning:
-          "Whether a reader gets the point in five seconds without explanation. The actual purpose of a chart.",
-      },
+      { term: "Bar chart", meaning: "Compares quantities. Sort descending, use horizontal bars for long labels, start the axis at zero." },
+      { term: "Line chart", meaning: "Shows change over an ordered sequence. Wrong for categories, because it implies a trend that does not exist." },
+      { term: "Pie chart", meaning: "Shows a share of a whole. Acceptable for one simple share with three slices at most; a sorted bar is usually better." },
+      { term: "Scatter plot", meaning: "Shows whether two variables move together. A trendline gives direction and R-squared says how much is explained." },
+      { term: "Histogram", meaning: "Shows distribution. The chart that reveals skew, which no average can show." },
+      { term: "Truncated axis", meaning: "An axis not starting at zero. Misleading on bar charts, sometimes legitimate on line charts showing change." },
+      { term: "Chartjunk", meaning: "Anything on a chart that carries no information: 3D, borders, redundant gridlines, legends where labels would do." },
+      { term: "Five-second test", meaning: "Whether a reader gets the point in five seconds without explanation. The actual purpose of a chart." },
     ],
     homework: [
       {
@@ -618,32 +551,27 @@ export const dataAnalyticsLessonsB: Record<string, SessionLecture> = {
       {
         criterion: "Chart selection",
         passing: "Uses an appropriate chart.",
-        excellent:
-          "Every chart chosen from a named question type with the reasoning stated, including at least one finding deliberately presented as a table because a chart was worse.",
+        excellent: "Every chart chosen from a named question type with the reasoning stated, including at least one finding deliberately presented as a table because a chart was worse.",
       },
       {
         criterion: "Construction",
         passing: "Charts render correctly.",
-        excellent:
-          "Bars sorted descending on a zero-based axis, lines used only on genuine sequences with three series or fewer, and scatter and histogram used for relationship and distribution.",
+        excellent: "Bars sorted descending on a zero-based axis, lines used only on genuine sequences with three series or fewer, and scatter and histogram used for relationship and distribution.",
       },
       {
         criterion: "Formatting",
         passing: "Charts are labelled.",
-        excellent:
-          "Titles stating findings, direct labels replacing the legend, chartjunk removed, and each chart confirmed to pass a five-second test with another person.",
+        excellent: "Titles stating findings, direct labels replacing the legend, chartjunk removed, and each chart confirmed to pass a five-second test with another person.",
       },
       {
         criterion: "Awareness of distortion",
         passing: "Avoids obvious errors.",
-        excellent:
-          "Four deliberately misleading versions produced by truncating an axis, drawing a line across categories, adding 3D and shifting the period, each with its distortion explained.",
+        excellent: "Four deliberately misleading versions produced by truncating an axis, drawing a line across categories, adding 3D and shifting the period, each with its distortion explained.",
       },
       {
         criterion: "Honesty",
         passing: "Charts are accurate.",
-        excellent:
-          "R-squared read and low values reported as noise, skew described from a histogram rather than an average, and period choices made defensibly rather than flatteringly.",
+        excellent: "R-squared read and low values reported as noise, skew described from a histogram rather than an average, and period choices made defensibly rather than flatteringly.",
       },
     ],
     faqs: [
@@ -804,7 +732,8 @@ export const dataAnalyticsLessonsB: Record<string, SessionLecture> = {
         },
         {
           step: "Restore the link and confirm agreement",
-          detail: "Explain that every figure on a dashboard must read from the same cleaned table.",
+          detail:
+            "Explain that every figure on a dashboard must read from the same cleaned table.",
         },
         {
           step: "Time the file opening and recalculating",
@@ -893,46 +822,14 @@ export const dataAnalyticsLessonsB: Record<string, SessionLecture> = {
       "Make it fast, then make it usable by someone else. A slow dashboard does not get opened and a dashboard only you can operate is a personal worksheet; both fail for the same reason, that nobody but you gets value from them.",
     ],
     vocabulary: [
-      {
-        term: "Dashboard",
-        meaning:
-          "One screen answering the questions a business asks repeatedly. No scrolling, and operable by someone else.",
-      },
-      {
-        term: "Slicer",
-        meaning:
-          "A visible filter button. What makes a dashboard operable by someone who does not know pivot tables exist.",
-      },
-      {
-        term: "Timeline",
-        meaning:
-          "A date slicer over months and quarters. Far easier to use than a date filter dropdown.",
-      },
-      {
-        term: "Report Connections",
-        meaning:
-          "Where you link one slicer to many pivot tables. Skipping it produces a dashboard that contradicts itself.",
-      },
-      {
-        term: "Conditional formatting",
-        meaning:
-          "Data bars, colour scales and icon sets showing status at a glance. Must never rely on colour alone.",
-      },
-      {
-        term: "One source of truth",
-        meaning:
-          "Every figure reading the same cleaned table. Prevents the headline and the chart disagreeing.",
-      },
-      {
-        term: "Volatile function",
-        meaning:
-          "OFFSET, INDIRECT, TODAY, RAND — recalculates on every change and slows a workbook down.",
-      },
-      {
-        term: "F pattern",
-        meaning:
-          "How readers scan: across the top, down the left, across again. Why the key number goes top-left.",
-      },
+      { term: "Dashboard", meaning: "One screen answering the questions a business asks repeatedly. No scrolling, and operable by someone else." },
+      { term: "Slicer", meaning: "A visible filter button. What makes a dashboard operable by someone who does not know pivot tables exist." },
+      { term: "Timeline", meaning: "A date slicer over months and quarters. Far easier to use than a date filter dropdown." },
+      { term: "Report Connections", meaning: "Where you link one slicer to many pivot tables. Skipping it produces a dashboard that contradicts itself." },
+      { term: "Conditional formatting", meaning: "Data bars, colour scales and icon sets showing status at a glance. Must never rely on colour alone." },
+      { term: "One source of truth", meaning: "Every figure reading the same cleaned table. Prevents the headline and the chart disagreeing." },
+      { term: "Volatile function", meaning: "OFFSET, INDIRECT, TODAY, RAND — recalculates on every change and slows a workbook down." },
+      { term: "F pattern", meaning: "How readers scan: across the top, down the left, across again. Why the key number goes top-left." },
     ],
     homework: [
       {
@@ -960,32 +857,27 @@ export const dataAnalyticsLessonsB: Record<string, SessionLecture> = {
       {
         criterion: "Purpose",
         passing: "Builds a dashboard with charts.",
-        excellent:
-          "Weekly questions written first, every element answering one of them, and anything answering none removed.",
+        excellent: "Weekly questions written first, every element answering one of them, and anything answering none removed.",
       },
       {
         criterion: "Layout",
         passing: "Fits on a screen.",
-        excellent:
-          "One screen with no scrolling, headline numbers top-left with comparisons, explaining charts in the middle, a detail table below, and everything aligned to a grid.",
+        excellent: "One screen with no scrolling, headline numbers top-left with comparisons, explaining charts in the middle, a detail table below, and everything aligned to a grid.",
       },
       {
         criterion: "Interactivity",
         passing: "Adds slicers.",
-        excellent:
-          "Slicers and a timeline connected to every pivot via Report Connections, confirmed to filter consistently, with reset instructions on the sheet.",
+        excellent: "Slicers and a timeline connected to every pivot via Report Connections, confirmed to filter consistently, with reset instructions on the sheet.",
       },
       {
         criterion: "Formatting and access",
         passing: "Uses conditional formatting.",
-        excellent:
-          "Data bars and icon sets answering one question each, every colour paired with a number or arrow, and formatting removed wherever it communicates nothing.",
+        excellent: "Data bars and icon sets answering one question each, every colour paired with a number or arrow, and formatting removed wherever it communicates nothing.",
       },
       {
         criterion: "Reliability and usability",
         passing: "The dashboard works.",
-        excellent:
-          "Every figure reading one source and verified by changing a value, whole-column references replaced, opening time recorded and improved, and the dashboard tested on someone who has never seen it with their difficulties fixed.",
+        excellent: "Every figure reading one source and verified by changing a value, whole-column references replaced, opening time recorded and improved, and the dashboard tested on someone who has never seen it with their difficulties fixed.",
       },
     ],
     faqs: [

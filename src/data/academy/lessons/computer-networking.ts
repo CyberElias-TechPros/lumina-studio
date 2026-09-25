@@ -34,8 +34,7 @@ export const networkingLessonsA: Record<string, SessionLecture> = {
         ],
       },
       {
-        heading:
-          "The layered model in plain terms — because it is a diagnostic tool, not an exam topic",
+        heading: "The layered model in plain terms — because it is a diagnostic tool, not an exam topic",
         body: [
           "The layered model exists for one reason: it lets different people build different parts of a network without coordinating on every detail. Your browser does not need to know whether the office is wired or wireless; the cable does not need to know what a web page is. Each layer does one job and hands the result to the next. The version you will hear most is the **TCP/IP model** — network access, internet, transport, application — which maps onto the more academic seven-layer OSI model you will meet in certification material.",
           "Learn it by what each layer is responsible for rather than by reciting names. At the **bottom**, bits travel over a physical medium — copper, fibre, or radio. Above that, **IP** handles addressing and routing: getting a packet from a source address to a destination address across however many networks lie between. Above that, **TCP and UDP** handle the conversation — TCP guarantees delivery and order and retransmits what is lost, which is why web pages and file transfers use it; UDP just sends, which is why voice and video use it, since a late packet is worse than a missing one.",
@@ -330,8 +329,7 @@ export const networkingLessonsA: Record<string, SessionLecture> = {
     ],
     blocks: [
       {
-        heading:
-          "An IP address is a location, and a subnet mask says how much of it is the location",
+        heading: "An IP address is a location, and a subnet mask says how much of it is the location",
         body: [
           "Every device on an IP network has an address, and the address has two parts that are not marked: the **network portion**, which identifies which network you are on, and the **host portion**, which identifies you within it. The **subnet mask** is what divides them. This is the single idea the rest of the session rests on, and it is worth getting solid before anything else.",
           "With **255.255.255.0** — or **/24**, the same thing written differently — the first three octets are the network and the last is the host. So 192.168.1.0 through 192.168.1.255 is one network, and 192.168.2.0/24 is a different network entirely. Within a /24 there are 256 addresses, of which **254 are usable**: the first is the network address and the last is the broadcast address, and neither can be assigned to a device. Forgetting those two is the most common arithmetic error in this subject.",
@@ -667,8 +665,7 @@ export const networkingLessonsA: Record<string, SessionLecture> = {
     ],
     blocks: [
       {
-        heading:
-          "A switch learns where devices are, and that single behaviour is why networks work",
+        heading: "A switch learns where devices are, and that single behaviour is why networks work",
         body: [
           "A switch operates at layer two and makes decisions based on **MAC addresses** — the hardware addresses burned into every network interface. Its behaviour is simple and worth understanding exactly. It maintains a **MAC address table** mapping each learned address to the port it was seen on. When a frame arrives for a known address, it goes **only** to that port. When the destination is unknown, it floods to every port except the source, learns from the reply, and next time sends it directly.",
           "This is the entire reason switches replaced hubs. A **hub** repeats every frame to every port, so every device sees everyone else's traffic and the whole network is one collision domain — ten machines on a hub share one conversation space. A switch gives each port its own collision domain and, crucially, **stops traffic going where it is not needed**. That is a performance improvement and a security improvement at the same time, which is why unmanaged hubs vanished.",
@@ -676,8 +673,7 @@ export const networkingLessonsA: Record<string, SessionLecture> = {
         ],
       },
       {
-        heading:
-          "A router connects networks; a switch connects devices — and the distinction decides your diagnosis",
+        heading: "A router connects networks; a switch connects devices — and the distinction decides your diagnosis",
         body: [
           "A router operates at layer three and makes decisions based on **IP addresses**. Its job is to move packets between different networks, using a **routing table** that says which network is reachable via which interface or next hop. It also typically provides DHCP, NAT, and the firewall between your private network and the internet.",
           "The clean way to hold it: **a switch connects devices within one network; a router connects networks to each other.** Two machines on 10.10.10.0/24 talk through the switch. A machine on 10.10.10.0/24 reaching a server on 10.10.20.0/28 goes through the router, even if both are plugged into the same physical switch.",

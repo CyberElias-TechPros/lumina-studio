@@ -161,43 +161,14 @@ export const dataEntryLessonsA: Record<string, SessionLecture> = {
       "Count your rows against the source when you finish. If the source has 480 records and your sheet has 479, you missed one — and that single check catches the most dangerous error type, because a missing record is invisible in every other check.",
     ],
     vocabulary: [
-      {
-        term: "Field",
-        meaning: "One category of information — a column. Examples: surname, phone, amount.",
-      },
-      {
-        term: "Record",
-        meaning: "One complete entry across all fields — a row. One customer, one transaction.",
-      },
-      {
-        term: "Data type",
-        meaning:
-          "The kind of value a field holds: text, number, date, currency, boolean. Wrong types fail silently.",
-      },
-      {
-        term: "Identifier",
-        meaning:
-          "A number-like value that is really text — phone, account, ID, invoice reference. Never formatted as a number.",
-      },
-      {
-        term: "Field accuracy",
-        meaning:
-          "The proportion of individual fields entered correctly. The metric clients actually care about.",
-      },
-      {
-        term: "Batch verification",
-        meaning:
-          "Checking a small group of records against the source immediately after entering them.",
-      },
-      {
-        term: "Column scan",
-        meaning:
-          "Reading one field down the whole column to spot inconsistencies that are invisible horizontally.",
-      },
-      {
-        term: "Source document",
-        meaning: "The original material you are transcribing from. Keep it visible throughout.",
-      },
+      { term: "Field", meaning: "One category of information — a column. Examples: surname, phone, amount." },
+      { term: "Record", meaning: "One complete entry across all fields — a row. One customer, one transaction." },
+      { term: "Data type", meaning: "The kind of value a field holds: text, number, date, currency, boolean. Wrong types fail silently." },
+      { term: "Identifier", meaning: "A number-like value that is really text — phone, account, ID, invoice reference. Never formatted as a number." },
+      { term: "Field accuracy", meaning: "The proportion of individual fields entered correctly. The metric clients actually care about." },
+      { term: "Batch verification", meaning: "Checking a small group of records against the source immediately after entering them." },
+      { term: "Column scan", meaning: "Reading one field down the whole column to spot inconsistencies that are invisible horizontally." },
+      { term: "Source document", meaning: "The original material you are transcribing from. Keep it visible throughout." },
     ],
     homework: [
       {
@@ -225,20 +196,17 @@ export const dataEntryLessonsA: Record<string, SessionLecture> = {
       {
         criterion: "Structure",
         passing: "Uses separate fields with headers in row 1.",
-        excellent:
-          "Decides and documents the structure before entry, with a stated data type for every field.",
+        excellent: "Decides and documents the structure before entry, with a stated data type for every field.",
       },
       {
         criterion: "Data types",
         passing: "Most values entered with the correct type.",
-        excellent:
-          "Identifiers stored as text, amounts as real numbers, dates as real dates, with formats applied before entry.",
+        excellent: "Identifiers stored as text, amounts as real numbers, dates as real dates, with formats applied before entry.",
       },
       {
         criterion: "Verification",
         passing: "Verifies work at some point.",
-        excellent:
-          "Verifies in batches immediately, scans by column, reconciles totals and counts rows against the source.",
+        excellent: "Verifies in batches immediately, scans by column, reconciles totals and counts rows against the source.",
       },
       {
         criterion: "Error detection",
@@ -248,8 +216,7 @@ export const dataEntryLessonsA: Record<string, SessionLecture> = {
       {
         criterion: "Professional habits",
         passing: "Files named sensibly and work saved correctly.",
-        excellent:
-          "Uses the date-client-subject-version pattern, flags gaps rather than guessing, and keeps the source visible throughout.",
+        excellent: "Uses the date-client-subject-version pattern, flags gaps rather than guessing, and keeps the source visible throughout.",
       },
     ],
     faqs: [
@@ -441,46 +408,14 @@ export const dataEntryLessonsA: Record<string, SessionLecture> = {
       "Keep a helper-column habit. Adding a temporary column with a formula to fix a value, then pasting it back as values and deleting the helper, is cleaner and safer than editing cells by hand — and it is reproducible, so you can show a client exactly what you changed.",
     ],
     vocabulary: [
-      {
-        term: "Header row",
-        meaning:
-          "Row 1, holding one clear column name per field. Never merged, never split across two rows.",
-      },
-      {
-        term: "Excel Table",
-        meaning:
-          "A structured range (Ctrl+T) with filters, banded rows, automatic expansion and a repeating print header.",
-      },
-      {
-        term: "Text to Columns",
-        meaning:
-          "The tool that splits one column into several on a separator — the standard fix for combined fields.",
-      },
-      {
-        term: "Serial date",
-        meaning:
-          "How spreadsheets store dates internally, as a number of days. This is what makes date arithmetic possible.",
-      },
-      {
-        term: "Data validation",
-        meaning:
-          "A rule restricting what can be entered in a column, preventing typos at the point of entry.",
-      },
-      {
-        term: "Filter",
-        meaning:
-          "Temporarily hides rows not matching a condition. Data is never deleted, only hidden.",
-      },
-      {
-        term: "SUBTOTAL",
-        meaning:
-          "A function that aggregates only visible rows — use SUBTOTAL(109, range) for a filtered sum.",
-      },
-      {
-        term: "Remove Duplicates",
-        meaning:
-          "Deletes rows matching on the ticked columns. Irreversible in practice, so preview and work on a copy.",
-      },
+      { term: "Header row", meaning: "Row 1, holding one clear column name per field. Never merged, never split across two rows." },
+      { term: "Excel Table", meaning: "A structured range (Ctrl+T) with filters, banded rows, automatic expansion and a repeating print header." },
+      { term: "Text to Columns", meaning: "The tool that splits one column into several on a separator — the standard fix for combined fields." },
+      { term: "Serial date", meaning: "How spreadsheets store dates internally, as a number of days. This is what makes date arithmetic possible." },
+      { term: "Data validation", meaning: "A rule restricting what can be entered in a column, preventing typos at the point of entry." },
+      { term: "Filter", meaning: "Temporarily hides rows not matching a condition. Data is never deleted, only hidden." },
+      { term: "SUBTOTAL", meaning: "A function that aggregates only visible rows — use SUBTOTAL(109, range) for a filtered sum." },
+      { term: "Remove Duplicates", meaning: "Deletes rows matching on the ticked columns. Irreversible in practice, so preview and work on a copy." },
     ],
     homework: [
       {
@@ -508,32 +443,27 @@ export const dataEntryLessonsA: Record<string, SessionLecture> = {
       {
         criterion: "Structure",
         passing: "Headers in row 1, no merged cells, no blank rows in the data.",
-        excellent:
-          "Converted to a Table with a frozen header, and the structure would survive another 2,000 rows unchanged.",
+        excellent: "Converted to a Table with a frozen header, and the structure would survive another 2,000 rows unchanged.",
       },
       {
         criterion: "Data types and formatting",
         passing: "Most fields correctly typed and consistently formatted.",
-        excellent:
-          "Identifiers as text with leading zeros intact, real dates, one phone format throughout, names normalised with a helper column.",
+        excellent: "Identifiers as text with leading zeros intact, real dates, one phone format throughout, names normalised with a helper column.",
       },
       {
         criterion: "Sorting and filtering",
         passing: "Sorts and filters correctly without scrambling rows.",
-        excellent:
-          "Uses multi-level sorting, reads outliers from a sorted column, and uses SUBTOTAL for visible-only totals.",
+        excellent: "Uses multi-level sorting, reads outliers from a sorted column, and uses SUBTOTAL for visible-only totals.",
       },
       {
         criterion: "Deduplication",
         passing: "Finds and removes duplicates.",
-        excellent:
-          "Previews with conditional formatting, selects the correct uniqueness columns, works on a copy, and reports rows removed.",
+        excellent: "Previews with conditional formatting, selects the correct uniqueness columns, works on a copy, and reports rows removed.",
       },
       {
         criterion: "Tool fluency",
         passing: "Completes the work in one tool.",
-        excellent:
-          "Completes it in both Excel and Google Sheets and can explain where the two differ.",
+        excellent: "Completes it in both Excel and Google Sheets and can explain where the two differ.",
       },
     ],
     faqs: [

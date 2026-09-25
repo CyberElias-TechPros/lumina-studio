@@ -224,46 +224,14 @@ export const videoEditingLessonsB: Record<string, SessionLecture> = {
       "Burn captions for social and upload an SRT for YouTube. Burned captions always look as designed and work where viewing is muted; YouTube subtitles are indexed for search, can be toggled and can be translated — and burning gives all of that up.",
     ],
     vocabulary: [
-      {
-        term: "Burned-in captions",
-        meaning:
-          "Captions rendered into the picture. Cannot be turned off; essential for muted social viewing.",
-      },
-      {
-        term: "SRT",
-        meaning:
-          "A separate subtitle file. Indexed for search on YouTube, toggleable, and translatable.",
-      },
-      {
-        term: "Safe area",
-        meaning:
-          "The part of the frame not covered by platform buttons, captions or account names. Captions must sit inside it.",
-      },
-      {
-        term: "Lower third",
-        meaning:
-          "The graphic naming a speaker. Consistent placement, three to five seconds, never covering the face.",
-      },
-      {
-        term: "End card",
-        meaning:
-          "The closing frame. Carries one clear action, because a viewer who finished is the most valuable one.",
-      },
-      {
-        term: "Phrase boundary",
-        meaning:
-          "Where a caption should break. Breaking mid-word or running long makes the viewer read instead of watch.",
-      },
-      {
-        term: "Caption contrast",
-        meaning:
-          "Outline or dark box behind text. Matters more than size, because white over a bright window is invisible.",
-      },
-      {
-        term: "Auto-caption",
-        meaning:
-          "Automatic transcription. The starting point, never the finished result — names and Pidgin need correcting.",
-      },
+      { term: "Burned-in captions", meaning: "Captions rendered into the picture. Cannot be turned off; essential for muted social viewing." },
+      { term: "SRT", meaning: "A separate subtitle file. Indexed for search on YouTube, toggleable, and translatable." },
+      { term: "Safe area", meaning: "The part of the frame not covered by platform buttons, captions or account names. Captions must sit inside it." },
+      { term: "Lower third", meaning: "The graphic naming a speaker. Consistent placement, three to five seconds, never covering the face." },
+      { term: "End card", meaning: "The closing frame. Carries one clear action, because a viewer who finished is the most valuable one." },
+      { term: "Phrase boundary", meaning: "Where a caption should break. Breaking mid-word or running long makes the viewer read instead of watch." },
+      { term: "Caption contrast", meaning: "Outline or dark box behind text. Matters more than size, because white over a bright window is invisible." },
+      { term: "Auto-caption", meaning: "Automatic transcription. The starting point, never the finished result — names and Pidgin need correcting." },
     ],
     homework: [
       {
@@ -291,32 +259,27 @@ export const videoEditingLessonsB: Record<string, SessionLecture> = {
       {
         criterion: "Caption completeness",
         passing: "Adds captions.",
-        excellent:
-          "Every caption read against the audio and corrected, all names verified, Nigerian English and Pidgin fixed, and the video confirmed to communicate with the sound off.",
+        excellent: "Every caption read against the audio and corrected, all names verified, Nigerian English and Pidgin fixed, and the video confirmed to communicate with the sound off.",
       },
       {
         criterion: "Readability",
         passing: "Captions are legible.",
-        excellent:
-          "Sized for phone reading outdoors, outlined or boxed for contrast over both bright and dark backgrounds, and verified on an actual phone in daylight.",
+        excellent: "Sized for phone reading outdoors, outlined or boxed for contrast over both bright and dark backgrounds, and verified on an actual phone in daylight.",
       },
       {
         criterion: "Placement and timing",
         passing: "Captions appear in the right place.",
-        excellent:
-          "Positioned above every target platform's interface overlay, broken at phrase boundaries within two lines and forty characters, and timed to the audio with no lag.",
+        excellent: "Positioned above every target platform's interface overlay, broken at phrase boundaries within two lines and forty characters, and timed to the audio with no lag.",
       },
       {
         criterion: "Text package",
         passing: "Adds titles.",
-        excellent:
-          "Lower thirds identical across every speaker and clear of the face, a title for the opening and any section change, and an end card carrying exactly one action.",
+        excellent: "Lower thirds identical across every speaker and clear of the face, a title for the opening and any section change, and an end card carrying exactly one action.",
       },
       {
         criterion: "Delivery format",
         passing: "Exports the video.",
-        excellent:
-          "Captions burned into the vertical for muted social viewing, an SRT exported and confirmed in sync for the YouTube piece, and both formats produced where a client needs both.",
+        excellent: "Captions burned into the vertical for muted social viewing, an SRT exported and confirmed in sync for the YouTube piece, and both formats produced where a client needs both.",
       },
     ],
     faqs: [
@@ -472,7 +435,8 @@ export const videoEditingLessonsB: Record<string, SessionLecture> = {
         },
         {
           step: "Shorten the animation to about a third of a second",
-          detail: "Explain that longer animation makes the viewer wait for the content to arrive.",
+          detail:
+            "Explain that longer animation makes the viewer wait for the content to arrive.",
         },
         {
           step: "Build the brand template",
@@ -560,45 +524,14 @@ export const videoEditingLessonsB: Record<string, SessionLecture> = {
       "Build one template and reuse it. Two fonts, two or three colours, fixed placement and identical motion across every video makes a client's fifth video match their first, which is worth more to them than any individual effect.",
     ],
     vocabulary: [
-      {
-        term: "Hard cut",
-        meaning:
-          "A straight cut with no effect. Invisible, fast and confident — the default for almost everything.",
-      },
-      {
-        term: "Dissolve",
-        meaning:
-          "One image blending into the next. Says time has passed or two ideas are connected.",
-      },
-      {
-        term: "Fade to black",
-        meaning: "The strongest section signal available. A full stop, not a comma.",
-      },
-      {
-        term: "Keyframe",
-        meaning:
-          "A set value at a point in time, with the software interpolating between them. Position, scale, opacity, rotation.",
-      },
-      {
-        term: "Easing",
-        meaning:
-          "Slow at the start and end, faster in the middle. What makes motion look natural instead of mechanical.",
-      },
-      {
-        term: "Linear interpolation",
-        meaning:
-          "Constant speed with a dead stop. The default, and the reason beginner motion looks amateur.",
-      },
-      {
-        term: "Template",
-        meaning:
-          "A project file with text, motion and colours already built. Duplicated per video so everything stays on brand.",
-      },
-      {
-        term: "Brand consistency",
-        meaning:
-          "The same fonts, colours, placement and motion across every video. Worth more to a client than any single effect.",
-      },
+      { term: "Hard cut", meaning: "A straight cut with no effect. Invisible, fast and confident — the default for almost everything." },
+      { term: "Dissolve", meaning: "One image blending into the next. Says time has passed or two ideas are connected." },
+      { term: "Fade to black", meaning: "The strongest section signal available. A full stop, not a comma." },
+      { term: "Keyframe", meaning: "A set value at a point in time, with the software interpolating between them. Position, scale, opacity, rotation." },
+      { term: "Easing", meaning: "Slow at the start and end, faster in the middle. What makes motion look natural instead of mechanical." },
+      { term: "Linear interpolation", meaning: "Constant speed with a dead stop. The default, and the reason beginner motion looks amateur." },
+      { term: "Template", meaning: "A project file with text, motion and colours already built. Duplicated per video so everything stays on brand." },
+      { term: "Brand consistency", meaning: "The same fonts, colours, placement and motion across every video. Worth more to a client than any single effect." },
     ],
     homework: [
       {
@@ -626,32 +559,27 @@ export const videoEditingLessonsB: Record<string, SessionLecture> = {
       {
         criterion: "Restraint",
         passing: "Uses transitions sparingly.",
-        excellent:
-          "Every transition removed and the edit watched as hard cuts, with only those marking a change of time, place, section or emphasis added back and each one justified in words.",
+        excellent: "Every transition removed and the edit watched as hard cuts, with only those marking a change of time, place, section or emphasis added back and each one justified in words.",
       },
       {
         criterion: "Problem solving",
         passing: "Smooths awkward joins.",
-        excellent:
-          "Awkward joins repaired by moving the cut point, covering with B-roll or using an L cut rather than hidden behind an effect.",
+        excellent: "Awkward joins repaired by moving the cut point, covering with B-roll or using an L cut rather than hidden behind an effect.",
       },
       {
         criterion: "Motion",
         passing: "Animates text and graphics.",
-        excellent:
-          "Keyframed on position and opacity, demonstrated linear then eased, about a third of a second, and identical in direction, speed and easing on every instance.",
+        excellent: "Keyframed on position and opacity, demonstrated linear then eased, about a third of a second, and identical in direction, speed and easing on every instance.",
       },
       {
         criterion: "Consistency",
         passing: "Videos look similar.",
-        excellent:
-          "One template with two fonts, two or three colours and fixed placement, duplicated across both deliverables so they visibly came from the same place.",
+        excellent: "One template with two fonts, two or three colours and fixed placement, duplicated across both deliverables so they visibly came from the same place.",
       },
       {
         criterion: "Originality",
         passing: "Uses available templates.",
-        excellent:
-          "The template built from the brand's own colours and fonts, or a purchased pack modified substantially, with its origin stated and justified.",
+        excellent: "The template built from the brand's own colours and fonts, or a purchased pack modified substantially, with its origin stated and justified.",
       },
     ],
     faqs: [
@@ -902,45 +830,14 @@ export const videoEditingLessonsB: Record<string, SessionLecture> = {
       "Deliver masters by cloud link and treat WhatsApp as a preview. It re-encodes aggressively on their side and no export setting prevents it, so tell the client which version to use — otherwise they judge your work by a compressed forward.",
     ],
     vocabulary: [
-      {
-        term: "Colour correction",
-        meaning:
-          "Making the picture correct: exposure, white balance, and every shot matching. Done first, always.",
-      },
-      {
-        term: "Colour grading",
-        meaning:
-          "A creative look applied on top of a corrected image. A decision about how the video should feel.",
-      },
-      {
-        term: "Matching",
-        meaning:
-          "Adjusting one camera to a reference shot until a straight cut shows no colour jump. A comparison task.",
-      },
-      {
-        term: "Mixed light",
-        meaning:
-          "Two sources of different colour on one subject. Cannot be neutralised; choose which the face matches.",
-      },
-      {
-        term: "Crushed blacks",
-        meaning:
-          "Dark areas pushed to featureless black. Detail lost permanently, and it reads as worse than no grade.",
-      },
-      {
-        term: "Frame rate",
-        meaning: "Frames per second. Match what you shot on export, or the result judders.",
-      },
-      {
-        term: "Bitrate",
-        meaning:
-          "Data per second. Too low breaks up in motion; too high wastes size. About 8 to 16 Mbps for 1080p.",
-      },
-      {
-        term: "Re-encode",
-        meaning:
-          "A platform compressing your file again. Why you upload a full-quality master and let the platform do it once.",
-      },
+      { term: "Colour correction", meaning: "Making the picture correct: exposure, white balance, and every shot matching. Done first, always." },
+      { term: "Colour grading", meaning: "A creative look applied on top of a corrected image. A decision about how the video should feel." },
+      { term: "Matching", meaning: "Adjusting one camera to a reference shot until a straight cut shows no colour jump. A comparison task." },
+      { term: "Mixed light", meaning: "Two sources of different colour on one subject. Cannot be neutralised; choose which the face matches." },
+      { term: "Crushed blacks", meaning: "Dark areas pushed to featureless black. Detail lost permanently, and it reads as worse than no grade." },
+      { term: "Frame rate", meaning: "Frames per second. Match what you shot on export, or the result judders." },
+      { term: "Bitrate", meaning: "Data per second. Too low breaks up in motion; too high wastes size. About 8 to 16 Mbps for 1080p." },
+      { term: "Re-encode", meaning: "A platform compressing your file again. Why you upload a full-quality master and let the platform do it once." },
     ],
     homework: [
       {
@@ -968,32 +865,27 @@ export const videoEditingLessonsB: Record<string, SessionLecture> = {
       {
         criterion: "Correction",
         passing: "Picture looks reasonable.",
-        excellent:
-          "Exposure matched before white balance, white balance neutralised against a reference in frame, and a straight cut between the two cameras showing no colour jump.",
+        excellent: "Exposure matched before white balance, white balance neutralised against a reference in frame, and a straight cut between the two cameras showing no colour jump.",
       },
       {
         criterion: "Grading",
         passing: "Applies a consistent look.",
-        excellent:
-          "One deliberate grade across every shot of both videos, no crushed blacks or blown highlights, skin tones checked against reality, and the grade re-judged with fresh eyes.",
+        excellent: "One deliberate grade across every shot of both videos, no crushed blacks or blown highlights, skin tones checked against reality, and the grade re-judged with fresh eyes.",
       },
       {
         criterion: "Export settings",
         passing: "Exports the videos.",
-        excellent:
-          "Vertical at 1080 by 1920 and horizontal at 1920 by 1080, frame rate matched to the source, H.264 at 8 to 16 Mbps with AAC at 320 kbps, chosen deliberately rather than by preset.",
+        excellent: "Vertical at 1080 by 1920 and horizontal at 1920 by 1080, frame rate matched to the source, H.264 at 8 to 16 Mbps with AAC at 320 kbps, chosen deliberately rather than by preset.",
       },
       {
         criterion: "Verification",
         passing: "Checks the video plays.",
-        excellent:
-          "Both exported files watched end to end with sync, caption position and colour checked, and both previewed on a phone against the platform interface overlay.",
+        excellent: "Both exported files watched end to end with sync, caption position and colour checked, and both previewed on a phone against the platform interface overlay.",
       },
       {
         criterion: "Delivery",
         passing: "Sends the files.",
-        excellent:
-          "WhatsApp compression tested and its specific damage noted, the file also sent as a document, masters delivered by cloud link, and the client told which version to use.",
+        excellent: "WhatsApp compression tested and its specific damage noted, the file also sent as a document, masters delivered by cloud link, and the client told which version to use.",
       },
     ],
     faqs: [

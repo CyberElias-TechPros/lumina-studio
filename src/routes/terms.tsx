@@ -115,16 +115,16 @@ function TermsPage() {
             <h2 className="font-display text-2xl font-bold">9. Liability</h2>
             <p className="text-muted-foreground mt-4 leading-relaxed">
               The site is provided as it is. To the extent Nigerian law allows, our total liability
-              for a claim about these terms or the site is limited to the fees you paid us in the 12
-              months before the claim.
+              for a claim about these terms or the site is limited to the fees you paid us in the
+              12 months before the claim.
             </p>
           </Reveal>
 
           <Reveal delay={0.45}>
             <h2 className="font-display text-2xl font-bold">10. Ending the agreement</h2>
             <p className="text-muted-foreground mt-4 leading-relaxed">
-              You may close an account by emailing hello@cea.ng. Fees already paid follow §4. We may
-              suspend access for breach or non-payment.
+              You may close an account by emailing hello@cea.ng. Fees already paid follow §4. We
+              may suspend access for breach or non-payment.
             </p>
           </Reveal>
 

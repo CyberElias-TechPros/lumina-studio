@@ -34,8 +34,7 @@ export const wordpressLessonsB: Record<string, SessionLecture> = {
         ],
       },
       {
-        heading:
-          "Categories are a filing cabinet; tags are a cross-reference, and most sites overuse tags",
+        heading: "Categories are a filing cabinet; tags are a cross-reference, and most sites overuse tags",
         body: [
           "**Categories** are broad, stable, mutually exclusive buckets — they answer 'what section of the site is this in'. For this business, three or four is right: **Buying Guides**, **Care and Maintenance**, **Projects**. Every post gets exactly one, or occasionally two. Categories appear in URLs and often in navigation, so they should read like sections of a shop.",
           "**Tags** are narrow and can be applied liberally — they answer 'what specific things does this mention'. A post about teak care might be tagged **teak**, **humidity**, **polish**. The failure mode is the opposite of intuition: people use tags as extra categories, ending up with forty tags used once each, which produces forty near-empty archive pages. **A tag used on one post is useless** — it creates a page with no internal links and no value. Either a tag will accumulate several posts, or do not create it.",
@@ -59,8 +58,7 @@ export const wordpressLessonsB: Record<string, SessionLecture> = {
         ],
       },
       {
-        heading:
-          "Plugin conflicts are diagnosable if you are systematic, and chaotic if you are not",
+        heading: "Plugin conflicts are diagnosable if you are systematic, and chaotic if you are not",
         body: [
           "The symptom is generic: the site goes blank, a button stops working, the editor breaks, or a specific page returns an error. The instinct is to deactivate plugins one at a time at random until something improves. That sometimes works and teaches you nothing, and if the conflict is between two plugins you may never find it.",
           "The disciplined version is a **binary search**. Deactivate half the plugins. If the problem persists, the cause is in the other half; if it clears, the cause is in the half you just deactivated. Repeat on the guilty half. Six plugins resolve in three steps instead of six guesses, and twenty plugins in five. **Each step halves the search space**, which is the entire point.",
@@ -729,8 +727,7 @@ export const wordpressLessonsB: Record<string, SessionLecture> = {
         ],
       },
       {
-        heading:
-          "Launching and handing over: the difference between a finished site and an abandoned one",
+        heading: "Launching and handing over: the difference between a finished site and an abandoned one",
         body: [
           "Launch is not pressing a button; it is a sequence, and skipping steps is how a completed project turns into an emergency. The critical items are: **untick Discourage search engines** — the most expensive checkbox in WordPress; **submit the XML sitemap**; **test every form from an external address**; **test the WhatsApp button on a real phone**; **verify HTTPS works on every page**; **confirm backups are running**; and **check the site on a physical phone**, because that is how most visitors will see it.",
           "Handover matters as much as launch, and it is where most freelancers under-deliver. The client needs three things. **Credentials, delivered securely** — never the admin password in a plain WhatsApp message; use a password manager's sharing feature or a one-time secret link. **A short written guide** covering how to publish a post, add a product, update a price, and check enquiries, written for someone who has never seen the dashboard. And **an explicit statement of what maintenance they are responsible for**, including updates and backups, so nobody assumes the other party is doing it.",

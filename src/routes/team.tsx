@@ -35,17 +35,14 @@ function TeamPage() {
               <p className="text-muted-foreground mt-1 text-sm">Founder</p>
               <p className="text-muted-foreground mt-4 text-sm leading-relaxed">
                 Ellis founded Cyber Elias Academy in Port Harcourt. He runs the centre and teaches
-                the courses. We do not list a wider staff, advisory board, or employer network we do
-                not have.
+                the courses. We do not list a wider staff, advisory board, or employer network we
+                do not have.
               </p>
               <div className="text-muted-foreground mt-5 flex flex-wrap gap-4 text-sm">
                 <span className="flex items-center gap-2">
                   <MapPin className="size-4" /> Port Harcourt, Nigeria
                 </span>
-                <a
-                  href="mailto:hello@cea.ng"
-                  className="hover:text-foreground flex items-center gap-2"
-                >
+                <a href="mailto:hello@cea.ng" className="hover:text-foreground flex items-center gap-2">
                   <Mail className="size-4" /> hello@cea.ng
                 </a>
               </div>
@@ -57,10 +54,7 @@ function TeamPage() {
           {[
             { label: "Company", value: "Cyber Elias Academy Ltd · RC 8413776" },
             { label: "Based in", value: "26 Ebony Road, Port Harcourt" },
-            {
-              label: "What we teach",
-              value: "Short practical computer and digital-skills courses",
-            },
+            { label: "What we teach", value: "Short practical computer and digital-skills courses" },
             { label: "Contact", value: "hello@cea.ng · +234 905 862 8386" },
           ].map((fact) => (
             <div key={fact.label} className="border-border rounded-lg border p-4">

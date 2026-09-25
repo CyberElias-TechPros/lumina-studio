@@ -105,7 +105,13 @@ export function CourseCover({
   );
 }
 
-export function CourseIcon({ slug, className }: { slug: string; className?: string }) {
+export function CourseIcon({
+  slug,
+  className,
+}: {
+  slug: string;
+  className?: string;
+}) {
   const Icon = ICONS[courseIconName(slug)];
   return <Icon className={cn("size-4", className)} strokeWidth={1.6} aria-hidden="true" />;
 }

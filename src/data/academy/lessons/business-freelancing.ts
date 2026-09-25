@@ -188,45 +188,14 @@ export const businessFreelancingLessonsA: Record<string, SessionLecture> = {
       "Build your portfolio from real local work, even at low cost, in exchange for permission to show it. A named business with a stated result persuades far more strongly than an impressive invented piece.",
     ],
     vocabulary: [
-      {
-        term: "Service",
-        meaning:
-          "A defined outcome someone buys: what is delivered, by when, for how much. The sellable form of a skill.",
-      },
-      {
-        term: "Service package",
-        meaning:
-          "A fixed bundle of deliverables at a set price. Easier to buy than an open-ended hourly arrangement.",
-      },
-      {
-        term: "Retainer",
-        meaning:
-          "Ongoing work for a fixed monthly fee. The structure that makes freelance income predictable.",
-      },
-      {
-        term: "Target client",
-        meaning:
-          "The specific type of person or business you serve, narrowed enough that they recognise themselves.",
-      },
-      {
-        term: "Value-based pricing",
-        meaning:
-          "Pricing against what the outcome is worth to the client, with a floor set by your cost.",
-      },
-      {
-        term: "Price floor",
-        meaning: "The cost of your time, data, transport and tools. Never quote below it.",
-      },
-      {
-        term: "Case study",
-        meaning:
-          "A portfolio piece written as problem, action and result. Evidence of value rather than of ability.",
-      },
-      {
-        term: "Personal brand",
-        meaning:
-          "What people associate with your name. Built by consistent, visible, reliable work rather than by a logo.",
-      },
+      { term: "Service", meaning: "A defined outcome someone buys: what is delivered, by when, for how much. The sellable form of a skill." },
+      { term: "Service package", meaning: "A fixed bundle of deliverables at a set price. Easier to buy than an open-ended hourly arrangement." },
+      { term: "Retainer", meaning: "Ongoing work for a fixed monthly fee. The structure that makes freelance income predictable." },
+      { term: "Target client", meaning: "The specific type of person or business you serve, narrowed enough that they recognise themselves." },
+      { term: "Value-based pricing", meaning: "Pricing against what the outcome is worth to the client, with a floor set by your cost." },
+      { term: "Price floor", meaning: "The cost of your time, data, transport and tools. Never quote below it." },
+      { term: "Case study", meaning: "A portfolio piece written as problem, action and result. Evidence of value rather than of ability." },
+      { term: "Personal brand", meaning: "What people associate with your name. Built by consistent, visible, reliable work rather than by a logo." },
     ],
     homework: [
       {
@@ -254,32 +223,27 @@ export const businessFreelancingLessonsA: Record<string, SessionLecture> = {
       {
         criterion: "Skill to service",
         passing: "Can name their skill.",
-        excellent:
-          "Describes a defined outcome with deliverables, timeline and price that a buyer could purchase without further explanation.",
+        excellent: "Describes a defined outcome with deliverables, timeline and price that a buyer could purchase without further explanation.",
       },
       {
         criterion: "Problem finding",
         passing: "Has some ideas.",
-        excellent:
-          "Twenty observed problems written down with repeats marked, and a client type chosen from the overlap of problem and ability to pay.",
+        excellent: "Twenty observed problems written down with repeats marked, and a client type chosen from the overlap of problem and ability to pay.",
       },
       {
         criterion: "Service design",
         passing: "Has one offer.",
-        excellent:
-          "Three distinct services at three prices that work together, including a small fixed product that gives first clients an easy way in.",
+        excellent: "Three distinct services at three prices that work together, including a small fixed product that gives first clients an easy way in.",
       },
       {
         criterion: "Pricing",
         passing: "Quotes a figure.",
-        excellent:
-          "A floor calculated from real cost — time, data, transport, tools — with the price set against value rather than hours.",
+        excellent: "A floor calculated from real cost — time, data, transport, tools — with the price set against value rather than hours.",
       },
       {
         criterion: "Portfolio",
         passing: "Has samples.",
-        excellent:
-          "A case study written as problem, action and result for a named real business, with three more pieces planned.",
+        excellent: "A case study written as problem, action and result for a named real business, with three more pieces planned.",
       },
     ],
     faqs: [
@@ -490,45 +454,14 @@ export const businessFreelancingLessonsA: Record<string, SessionLecture> = {
       "Say no to work that feels wrong before it starts. A client who argues about every deliverable or pays late on a small job will be worse on a large one, and protected time is the only asset you cannot buy back.",
     ],
     vocabulary: [
-      {
-        term: "Pipeline",
-        meaning:
-          "The set of prospects at each stage: contacted, talking, proposed, won. Freelancing fails without one.",
-      },
-      {
-        term: "Referral",
-        meaning:
-          "A client sent by another client. The highest-converting source, and it must be asked for.",
-      },
-      {
-        term: "Cold approach",
-        meaning:
-          "Contacting a prospect who does not know you. Works when it offers something specific rather than asking for work.",
-      },
-      {
-        term: "Discovery questions",
-        meaning:
-          "The questions that reveal the real requirement before you quote. Asking them is itself a signal of competence.",
-      },
-      {
-        term: "Proposal",
-        meaning:
-          "A one-page document: their problem, your deliverables, dated timeline, price with exclusions, next step.",
-      },
-      {
-        term: "Exclusions",
-        meaning:
-          "What the price does not cover. Stating them prevents later disputes and reads as professional.",
-      },
-      {
-        term: "Scope change",
-        meaning:
-          "Adjusting deliverables instead of discounting when a budget is lower. Protects your rate.",
-      },
-      {
-        term: "Validity period",
-        meaning: "How long a quote stands. Two weeks creates a genuine reason to decide.",
-      },
+      { term: "Pipeline", meaning: "The set of prospects at each stage: contacted, talking, proposed, won. Freelancing fails without one." },
+      { term: "Referral", meaning: "A client sent by another client. The highest-converting source, and it must be asked for." },
+      { term: "Cold approach", meaning: "Contacting a prospect who does not know you. Works when it offers something specific rather than asking for work." },
+      { term: "Discovery questions", meaning: "The questions that reveal the real requirement before you quote. Asking them is itself a signal of competence." },
+      { term: "Proposal", meaning: "A one-page document: their problem, your deliverables, dated timeline, price with exclusions, next step." },
+      { term: "Exclusions", meaning: "What the price does not cover. Stating them prevents later disputes and reads as professional." },
+      { term: "Scope change", meaning: "Adjusting deliverables instead of discounting when a budget is lower. Protects your rate." },
+      { term: "Validity period", meaning: "How long a quote stands. Two weeks creates a genuine reason to decide." },
     ],
     homework: [
       {
@@ -556,32 +489,27 @@ export const businessFreelancingLessonsA: Record<string, SessionLecture> = {
       {
         criterion: "Prospecting",
         passing: "Knows where clients are.",
-        excellent:
-          "Twenty referral names with five contacted, three specific cold approaches drafted, and all four routes understood in order of conversion.",
+        excellent: "Twenty referral names with five contacted, three specific cold approaches drafted, and all four routes understood in order of conversion.",
       },
       {
         criterion: "Ethical approach",
         passing: "Sends messages.",
-        excellent:
-          "Every approach opens with a specific observation, offers something concrete and asks for a small next step rather than requesting work.",
+        excellent: "Every approach opens with a specific observation, offers something concrete and asks for a small next step rather than requesting work.",
       },
       {
         criterion: "Discovery",
         passing: "Takes the brief.",
-        excellent:
-          "Five questions asked, answers recorded verbatim, and the real requirement written down separately from what was requested.",
+        excellent: "Five questions asked, answers recorded verbatim, and the real requirement written down separately from what was requested.",
       },
       {
         criterion: "Proposal",
         passing: "Sends a price.",
-        excellent:
-          "A one-page document leading with the client's problem, dated deliverables, price with stated exclusions, a validity period and a clear next step.",
+        excellent: "A one-page document leading with the client's problem, dated deliverables, price with stated exclusions, a validity period and a clear next step.",
       },
       {
         criterion: "Negotiation",
         passing: "Quotes a figure.",
-        excellent:
-          "States the price and waits, changes scope rather than discounting when challenged, and declines work that feels wrong before it starts.",
+        excellent: "States the price and waits, changes scope rather than discounting when challenged, and declines work that feels wrong before it starts.",
       },
     ],
     faqs: [
@@ -792,46 +720,14 @@ export const businessFreelancingLessonsA: Record<string, SessionLecture> = {
       "Ask for a testimonial and one referral at delivery, not weeks later. It is the single highest-return habit in freelancing, and the reason most freelancers have an unreliable pipeline is simply that they never ask.",
     ],
     vocabulary: [
-      {
-        term: "Expectations note",
-        meaning:
-          "A short written statement of inclusions, exclusions, revisions and dates, confirmed before work starts.",
-      },
-      {
-        term: "Checkpoint",
-        meaning:
-          "An early draft delivered at roughly a third of the way through. Catches misunderstanding while correction is cheap.",
-      },
-      {
-        term: "Revision round",
-        meaning:
-          "One consolidated list of changes. Distinct from a stream of messages, which is what makes jobs run forever.",
-      },
-      {
-        term: "Scope creep",
-        meaning:
-          "New work presented as a small change. Defined in advance or it consumes the profit.",
-      },
-      {
-        term: "Deliverable",
-        meaning:
-          "The specific thing handed over, in a named format at a stated size. Vague deliverables cause disputes.",
-      },
-      {
-        term: "Handover note",
-        meaning:
-          "An explanation of what was delivered and how to use it. Unused work produces no referral.",
-      },
-      {
-        term: "Testimonial",
-        meaning:
-          "A client's own words about the problem you solved. Requested at delivery while satisfaction is highest.",
-      },
-      {
-        term: "Escalation",
-        meaning:
-          "A disagreement growing because someone felt unheard. Prevented by acknowledging before defending.",
-      },
+      { term: "Expectations note", meaning: "A short written statement of inclusions, exclusions, revisions and dates, confirmed before work starts." },
+      { term: "Checkpoint", meaning: "An early draft delivered at roughly a third of the way through. Catches misunderstanding while correction is cheap." },
+      { term: "Revision round", meaning: "One consolidated list of changes. Distinct from a stream of messages, which is what makes jobs run forever." },
+      { term: "Scope creep", meaning: "New work presented as a small change. Defined in advance or it consumes the profit." },
+      { term: "Deliverable", meaning: "The specific thing handed over, in a named format at a stated size. Vague deliverables cause disputes." },
+      { term: "Handover note", meaning: "An explanation of what was delivered and how to use it. Unused work produces no referral." },
+      { term: "Testimonial", meaning: "A client's own words about the problem you solved. Requested at delivery while satisfaction is highest." },
+      { term: "Escalation", meaning: "A disagreement growing because someone felt unheard. Prevented by acknowledging before defending." },
     ],
     homework: [
       {
@@ -859,32 +755,27 @@ export const businessFreelancingLessonsA: Record<string, SessionLecture> = {
       {
         criterion: "Expectations",
         passing: "Agrees verbally.",
-        excellent:
-          "A written note covering inclusions, exclusions, revision count, dates and reply times, confirmed in writing before work starts.",
+        excellent: "A written note covering inclusions, exclusions, revision count, dates and reply times, confirmed in writing before work starts.",
       },
       {
         criterion: "Deadline management",
         passing: "Delivers on time.",
-        excellent:
-          "Deadlines quoted with contingency rather than to win the job, checkpoints at a third, and any delay communicated before the deadline passes.",
+        excellent: "Deadlines quoted with contingency rather than to win the job, checkpoints at a third, and any delay communicated before the deadline passes.",
       },
       {
         criterion: "Revision control",
         passing: "Makes changes.",
-        excellent:
-          "A defined number of rounds, each a consolidated list, with new work identified and quoted rather than absorbed into resentment.",
+        excellent: "A defined number of rounds, each a consolidated list, with new work identified and quoted rather than absorbed into resentment.",
       },
       {
         criterion: "Delivery",
         passing: "Sends files.",
-        excellent:
-          "Correct formats, descriptively named files, and a handover note explaining what each is for and how to use it.",
+        excellent: "Correct formats, descriptively named files, and a handover note explaining what each is for and how to use it.",
       },
       {
         criterion: "Difficult conversations",
         passing: "Responds politely.",
-        excellent:
-          "Acknowledge, establish facts, propose a fix — in that order — with faults owned plainly and a concrete remedy offered.",
+        excellent: "Acknowledge, establish facts, propose a fix — in that order — with faults owned plainly and a concrete remedy offered.",
       },
     ],
     faqs: [

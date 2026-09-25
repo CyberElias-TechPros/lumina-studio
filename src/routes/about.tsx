@@ -60,9 +60,9 @@ function About() {
           <h2 className="font-display text-2xl font-semibold tracking-tight">What we teach</h2>
           <p className="text-muted-foreground mt-3 text-base leading-relaxed">
             Microsoft Office, computer basics and typing, graphic design, web design and
-            development, digital marketing, data entry, computer repairs, and related short courses.
-            Each course has a published syllabus, a fee in naira, and a named piece of work the
-            certificate is awarded for.
+            development, digital marketing, data entry, computer repairs, and related short
+            courses. Each course has a published syllabus, a fee in naira, and a named piece of
+            work the certificate is awarded for.
           </p>
         </div>
         <div>

@@ -162,45 +162,14 @@ export const computerBasicsTypingLessonsA: Record<string, SessionLecture> = {
       "Keep your machine off the floor and out of direct sun, and let it breathe. Dust and heat kill fans and throttle CPUs, and both are far more common failure causes in a hot climate than any software problem.",
     ],
     vocabulary: [
-      {
-        term: "System unit",
-        meaning:
-          "The box containing a desktop computer's working parts. Often wrongly called the CPU.",
-      },
-      {
-        term: "CPU",
-        meaning:
-          "The processor chip that carries out instructions. Its generation matters more than its clock speed.",
-      },
-      {
-        term: "RAM",
-        meaning:
-          "Fast temporary memory holding whatever you are working on now. Cleared when power is lost, which is why you save.",
-      },
-      {
-        term: "SSD / HDD",
-        meaning:
-          "Solid state drive and hard disk drive — the two kinds of storage. An SSD is the single biggest speed upgrade for an old machine.",
-      },
-      {
-        term: "Peripheral",
-        meaning:
-          "Any device connected to the computer from outside: keyboard, mouse, printer, monitor, webcam.",
-      },
-      {
-        term: "Port",
-        meaning: "A socket for connecting devices — USB-A, USB-C, HDMI, Ethernet, audio jack, VGA.",
-      },
-      {
-        term: "Taskbar",
-        meaning:
-          "The strip along the bottom of the screen showing open programs, the clock and the notification area.",
-      },
-      {
-        term: "Task Manager",
-        meaning:
-          "The tool (Ctrl+Shift+Esc) for seeing running programs and ending one that has stopped responding.",
-      },
+      { term: "System unit", meaning: "The box containing a desktop computer's working parts. Often wrongly called the CPU." },
+      { term: "CPU", meaning: "The processor chip that carries out instructions. Its generation matters more than its clock speed." },
+      { term: "RAM", meaning: "Fast temporary memory holding whatever you are working on now. Cleared when power is lost, which is why you save." },
+      { term: "SSD / HDD", meaning: "Solid state drive and hard disk drive — the two kinds of storage. An SSD is the single biggest speed upgrade for an old machine." },
+      { term: "Peripheral", meaning: "Any device connected to the computer from outside: keyboard, mouse, printer, monitor, webcam." },
+      { term: "Port", meaning: "A socket for connecting devices — USB-A, USB-C, HDMI, Ethernet, audio jack, VGA." },
+      { term: "Taskbar", meaning: "The strip along the bottom of the screen showing open programs, the clock and the notification area." },
+      { term: "Task Manager", meaning: "The tool (Ctrl+Shift+Esc) for seeing running programs and ending one that has stopped responding." },
     ],
     homework: [
       {
@@ -228,20 +197,17 @@ export const computerBasicsTypingLessonsA: Record<string, SessionLecture> = {
       {
         criterion: "Hardware identification",
         passing: "Names the major components and their general purpose.",
-        excellent:
-          "Distinguishes CPU from system unit, HDD from SSD, and identifies at least four ports with their uses.",
+        excellent: "Distinguishes CPU from system unit, HDD from SSD, and identifies at least four ports with their uses.",
       },
       {
         criterion: "Power procedure",
         passing: "Powers on and shuts down correctly.",
-        excellent:
-          "Waits patiently through boot, can explain why correct shutdown matters, and knows when to restart rather than shut down.",
+        excellent: "Waits patiently through boot, can explain why correct shutdown matters, and knows when to restart rather than shut down.",
       },
       {
         criterion: "Desktop navigation",
         passing: "Opens programs and switches between windows.",
-        excellent:
-          "Uses Start search rather than hunting, and uses Alt+Tab, minimise and Task Manager fluently.",
+        excellent: "Uses Start search rather than hunting, and uses Alt+Tab, minimise and Task Manager fluently.",
       },
       {
         criterion: "Confidence",
@@ -430,45 +396,14 @@ export const computerBasicsTypingLessonsA: Record<string, SessionLecture> = {
       "Set a daily fifteen-minute drill alarm on your phone for the next thirty days. Typing is the one skill on this page where daily repetition produces a permanent, compounding return — every other course you take will be faster because of it.",
     ],
     vocabulary: [
-      {
-        term: "Context menu",
-        meaning:
-          "The menu opened by right-clicking, listing actions available for whatever you clicked.",
-      },
-      {
-        term: "Modifier key",
-        meaning:
-          "A key that does nothing alone but changes another key's effect: Shift, Ctrl, Alt, Windows.",
-      },
-      {
-        term: "Home row",
-        meaning:
-          "The middle letter row — A S D F and J K L ; — where fingers rest between keystrokes.",
-      },
-      {
-        term: "Touch typing",
-        meaning:
-          "Typing from muscle memory without looking at the keyboard, enabled by the raised bumps on F and J.",
-      },
-      {
-        term: "Num Lock",
-        meaning: "The toggle that switches the number pad between numbers and navigation keys.",
-      },
-      {
-        term: "Caps Lock",
-        meaning:
-          "The toggle that locks capitals on. Its indicator light is the first thing to check when output looks wrong.",
-      },
-      {
-        term: "Words per minute (wpm)",
-        meaning:
-          "The standard typing speed measure. Meaningless without the accuracy figure alongside it.",
-      },
-      {
-        term: "Accuracy percentage",
-        meaning:
-          "The proportion of keystrokes typed correctly. Below 95% you are rehearsing errors.",
-      },
+      { term: "Context menu", meaning: "The menu opened by right-clicking, listing actions available for whatever you clicked." },
+      { term: "Modifier key", meaning: "A key that does nothing alone but changes another key's effect: Shift, Ctrl, Alt, Windows." },
+      { term: "Home row", meaning: "The middle letter row — A S D F and J K L ; — where fingers rest between keystrokes." },
+      { term: "Touch typing", meaning: "Typing from muscle memory without looking at the keyboard, enabled by the raised bumps on F and J." },
+      { term: "Num Lock", meaning: "The toggle that switches the number pad between numbers and navigation keys." },
+      { term: "Caps Lock", meaning: "The toggle that locks capitals on. Its indicator light is the first thing to check when output looks wrong." },
+      { term: "Words per minute (wpm)", meaning: "The standard typing speed measure. Meaningless without the accuracy figure alongside it." },
+      { term: "Accuracy percentage", meaning: "The proportion of keystrokes typed correctly. Below 95% you are rehearsing errors." },
     ],
     homework: [
       {
@@ -496,20 +431,17 @@ export const computerBasicsTypingLessonsA: Record<string, SessionLecture> = {
       {
         criterion: "Mouse control",
         passing: "Performs all five actions correctly.",
-        excellent:
-          "Uses the context menu as the default route and reads the cursor shape to predict behaviour.",
+        excellent: "Uses the context menu as the default route and reads the cursor shape to predict behaviour.",
       },
       {
         criterion: "Keyboard knowledge",
         passing: "Identifies the main keyboard regions and the modifier keys.",
-        excellent:
-          "Uses Num Lock, Caps Lock indicators, function keys and the editing cluster deliberately.",
+        excellent: "Uses Num Lock, Caps Lock indicators, function keys and the editing cluster deliberately.",
       },
       {
         criterion: "Hand position",
         passing: "Starts from home row and uses the correct fingers for most keys.",
-        excellent:
-          "Maintains home row throughout without looking at the keyboard, including for capitals and punctuation.",
+        excellent: "Maintains home row throughout without looking at the keyboard, including for capitals and punctuation.",
       },
       {
         criterion: "Accuracy",
@@ -519,8 +451,7 @@ export const computerBasicsTypingLessonsA: Record<string, SessionLecture> = {
       {
         criterion: "Shortcuts",
         passing: "Uses at least five shortcuts without prompting.",
-        excellent:
-          "Uses all ten fluently and prefers the keyboard to the mouse for selection and navigation.",
+        excellent: "Uses all ten fluently and prefers the keyboard to the mouse for selection and navigation.",
       },
     ],
     faqs: [

@@ -178,46 +178,14 @@ export const computerRepairsLessonsA: Record<string, SessionLecture> = {
       "Recommend the SSD-and-RAM upgrade honestly, including when the machine does not need it. Customers talk, and the technician who says 'your machine is fine, the problem is elsewhere' is the one who gets called back.",
     ],
     vocabulary: [
-      {
-        term: "Motherboard",
-        meaning:
-          "The main circuit board carrying the CPU socket, RAM slots, storage connectors and power distribution.",
-      },
-      {
-        term: "CMOS battery",
-        meaning:
-          "A coin cell keeping BIOS settings and the clock alive when unplugged. A flat one causes wrong time and forgotten boot order.",
-      },
-      {
-        term: "SO-DIMM",
-        meaning:
-          "The smaller RAM module used in laptops, as opposed to the full-size DIMM in desktops.",
-      },
-      {
-        term: "NVMe / M.2",
-        meaning:
-          "The modern fast SSD format plugging directly into the board, replacing SATA cables for most new machines.",
-      },
-      {
-        term: "SATA",
-        meaning:
-          "The older storage interface using a data cable and a power cable, still common on 2.5-inch drives.",
-      },
-      {
-        term: "Thermal throttling",
-        meaning:
-          "A CPU deliberately slowing itself to avoid overheating. Presents as mysterious slowness in a dusty laptop.",
-      },
-      {
-        term: "Front panel header",
-        meaning:
-          "The pin block connecting the case power button, reset and LEDs. Photograph it before disconnecting.",
-      },
-      {
-        term: "BIOS / UEFI",
-        meaning:
-          "The firmware that runs first, checks hardware and hands over to the operating system.",
-      },
+      { term: "Motherboard", meaning: "The main circuit board carrying the CPU socket, RAM slots, storage connectors and power distribution." },
+      { term: "CMOS battery", meaning: "A coin cell keeping BIOS settings and the clock alive when unplugged. A flat one causes wrong time and forgotten boot order." },
+      { term: "SO-DIMM", meaning: "The smaller RAM module used in laptops, as opposed to the full-size DIMM in desktops." },
+      { term: "NVMe / M.2", meaning: "The modern fast SSD format plugging directly into the board, replacing SATA cables for most new machines." },
+      { term: "SATA", meaning: "The older storage interface using a data cable and a power cable, still common on 2.5-inch drives." },
+      { term: "Thermal throttling", meaning: "A CPU deliberately slowing itself to avoid overheating. Presents as mysterious slowness in a dusty laptop." },
+      { term: "Front panel header", meaning: "The pin block connecting the case power button, reset and LEDs. Photograph it before disconnecting." },
+      { term: "BIOS / UEFI", meaning: "The firmware that runs first, checks hardware and hands over to the operating system." },
     ],
     homework: [
       {
@@ -245,8 +213,7 @@ export const computerRepairsLessonsA: Record<string, SessionLecture> = {
       {
         criterion: "Component identification",
         passing: "Names the main components.",
-        excellent:
-          "Labels every component on both a desktop and a laptop from memory, including the CMOS battery and front panel header.",
+        excellent: "Labels every component on both a desktop and a laptop from memory, including the CMOS battery and front panel header.",
       },
       {
         criterion: "System understanding",
@@ -256,20 +223,17 @@ export const computerRepairsLessonsA: Record<string, SessionLecture> = {
       {
         criterion: "Hands-on handling",
         passing: "Can remove and refit parts.",
-        excellent:
-          "RAM fitted the correct way round, CMOS battery replaced, connectors photographed before disconnection.",
+        excellent: "RAM fitted the correct way round, CMOS battery replaced, connectors photographed before disconnection.",
       },
       {
         criterion: "Specification literacy",
         passing: "Reads capacity figures.",
-        excellent:
-          "Reads CPU generation and suffix, RAM type, storage type and panel type, and translates each into real-world capability.",
+        excellent: "Reads CPU generation and suffix, RAM type, storage type and panel type, and translates each into real-world capability.",
       },
       {
         criterion: "Diagnostic reasoning",
         passing: "Can guess at a cause.",
-        excellent:
-          "Places all eight symptoms correctly in the chain with a justified first component for each, before touching a screwdriver.",
+        excellent: "Places all eight symptoms correctly in the chain with a justified first component for each, before touching a screwdriver.",
       },
     ],
     faqs: [
@@ -474,46 +438,14 @@ export const computerRepairsLessonsA: Record<string, SessionLecture> = {
       "Wear the wrist strap even when it feels unnecessary. Modern components are fairly resistant, but intermittent static failure appears weeks later and looks like an unrelated fault — which the customer will attribute to you.",
     ],
     vocabulary: [
-      {
-        term: "Electrostatic discharge (ESD)",
-        meaning:
-          "A small spark that can damage semiconductors, often causing failure weeks later. Prevented by a wrist strap or touching case metal.",
-      },
-      {
-        term: "Capacitor",
-        meaning:
-          "A component that stores charge. Power supplies hold charge after unplugging, which is why they are replaced rather than repaired.",
-      },
-      {
-        term: "Model number",
-        meaning:
-          "The exact identifier parts are ordered against, such as HP 15-cs3021nr. Distinct from the marketing name and the serial.",
-      },
-      {
-        term: "Serial number",
-        meaning:
-          "The identifier of one individual unit, used for warranty. Not what parts are ordered against.",
-      },
-      {
-        term: "Part number",
-        meaning:
-          "The number printed on a component itself. The most reliable basis for ordering a screen, keyboard or battery.",
-      },
-      {
-        term: "Service manual",
-        meaning:
-          "The manufacturer's document giving disassembly sequence, screw lengths and part numbers. Read it before opening.",
-      },
-      {
-        term: "Spudger",
-        meaning:
-          "A plastic tool for separating clips and adhesive without marking a case or cutting a cable.",
-      },
-      {
-        term: "Swollen battery",
-        meaning:
-          "A lithium pack that has expanded. A fire hazard — remove carefully, dispose of properly, never refit.",
-      },
+      { term: "Electrostatic discharge (ESD)", meaning: "A small spark that can damage semiconductors, often causing failure weeks later. Prevented by a wrist strap or touching case metal." },
+      { term: "Capacitor", meaning: "A component that stores charge. Power supplies hold charge after unplugging, which is why they are replaced rather than repaired." },
+      { term: "Model number", meaning: "The exact identifier parts are ordered against, such as HP 15-cs3021nr. Distinct from the marketing name and the serial." },
+      { term: "Serial number", meaning: "The identifier of one individual unit, used for warranty. Not what parts are ordered against." },
+      { term: "Part number", meaning: "The number printed on a component itself. The most reliable basis for ordering a screen, keyboard or battery." },
+      { term: "Service manual", meaning: "The manufacturer's document giving disassembly sequence, screw lengths and part numbers. Read it before opening." },
+      { term: "Spudger", meaning: "A plastic tool for separating clips and adhesive without marking a case or cutting a cable." },
+      { term: "Swollen battery", meaning: "A lithium pack that has expanded. A fire hazard — remove carefully, dispose of properly, never refit." },
     ],
     homework: [
       {
@@ -541,32 +473,27 @@ export const computerRepairsLessonsA: Record<string, SessionLecture> = {
       {
         criterion: "Safety",
         passing: "Works without obvious danger.",
-        excellent:
-          "Mains disconnected first, internal battery disconnected before any other work, swollen batteries handled correctly, power supplies never opened.",
+        excellent: "Mains disconnected first, internal battery disconnected before any other work, swollen batteries handled correctly, power supplies never opened.",
       },
       {
         criterion: "Static discipline",
         passing: "Is aware of ESD.",
-        excellent:
-          "Wrist strap worn or the case-touch alternative used, boards handled by edges from anti-static bags, work done off carpet.",
+        excellent: "Wrist strap worn or the case-touch alternative used, boards handled by edges from anti-static bags, work done off carpet.",
       },
       {
         criterion: "Workspace",
         passing: "Has the basic tools.",
-        excellent:
-          "Good light, magnetic mat or containers with screws in removal order, photographs taken before disassembly.",
+        excellent: "Good light, magnetic mat or containers with screws in removal order, photographs taken before disassembly.",
       },
       {
         criterion: "Identification",
         passing: "Can find a model number.",
-        excellent:
-          "All three machines identified exactly through two methods each, with the model, serial and marketing-name distinction clearly explained.",
+        excellent: "All three machines identified exactly through two methods each, with the model, serial and marketing-name distinction clearly explained.",
       },
       {
         criterion: "Preparation and sourcing",
         passing: "Can order a part.",
-        excellent:
-          "Service manual or teardown consulted with traps listed, part number read off the component, and a part sourced with the number verified.",
+        excellent: "Service manual or teardown consulted with traps listed, part number read off the component, and a part sourced with the number verified.",
       },
     ],
     faqs: [
@@ -776,46 +703,14 @@ export const computerRepairsLessonsA: Record<string, SessionLecture> = {
       "Tell every customer to keep the laptop on a hard flat surface. Using it on a bed or a lap blocks the intake and is the main reason machines reclog quickly. Free advice, genuinely useful, and it is remembered.",
     ],
     vocabulary: [
-      {
-        term: "Thermal throttling",
-        meaning:
-          "A CPU reducing its clock speed to avoid overheating. The real cause of most 'slow old laptop' complaints.",
-      },
-      {
-        term: "Thermal paste",
-        meaning:
-          "The compound filling microscopic gaps between the CPU and heatsink. Dries out over a few years and must be replaced.",
-      },
-      {
-        term: "Heatsink",
-        meaning:
-          "The copper pipe and fin assembly carrying heat away from the CPU. Its fins are where dust mats form.",
-      },
-      {
-        term: "Spring-loaded screw",
-        meaning:
-          "A heatsink screw on a spring, requiring diagonal tightening so pressure builds evenly across the die.",
-      },
-      {
-        term: "Isopropyl alcohol",
-        meaning:
-          "A fast-evaporating solvent for cleaning paste and boards. Use 90% or higher and a lint-free cloth.",
-      },
-      {
-        term: "Lint-free cloth",
-        meaning:
-          "A cloth that sheds no fibres, such as a microfibre cloth or coffee filter. Cotton wool leaves fibres behind.",
-      },
-      {
-        term: "Dust mat",
-        meaning:
-          "Compacted felt-like dust blocking heatsink fins or an exhaust vent. Often the entire cause of overheating.",
-      },
-      {
-        term: "Idle and load temperature",
-        meaning:
-          "The CPU temperature at rest and under work. The before-and-after evidence that a cleaning worked.",
-      },
+      { term: "Thermal throttling", meaning: "A CPU reducing its clock speed to avoid overheating. The real cause of most 'slow old laptop' complaints." },
+      { term: "Thermal paste", meaning: "The compound filling microscopic gaps between the CPU and heatsink. Dries out over a few years and must be replaced." },
+      { term: "Heatsink", meaning: "The copper pipe and fin assembly carrying heat away from the CPU. Its fins are where dust mats form." },
+      { term: "Spring-loaded screw", meaning: "A heatsink screw on a spring, requiring diagonal tightening so pressure builds evenly across the die." },
+      { term: "Isopropyl alcohol", meaning: "A fast-evaporating solvent for cleaning paste and boards. Use 90% or higher and a lint-free cloth." },
+      { term: "Lint-free cloth", meaning: "A cloth that sheds no fibres, such as a microfibre cloth or coffee filter. Cotton wool leaves fibres behind." },
+      { term: "Dust mat", meaning: "Compacted felt-like dust blocking heatsink fins or an exhaust vent. Often the entire cause of overheating." },
+      { term: "Idle and load temperature", meaning: "The CPU temperature at rest and under work. The before-and-after evidence that a cleaning worked." },
     ],
     homework: [
       {
@@ -826,7 +721,7 @@ export const computerRepairsLessonsA: Record<string, SessionLecture> = {
       {
         task: "Practise the diagonal screw sequence",
         detail:
-          "Remove and refit a heatsink three times on a scrap machine until the diagonal sequence is automatic. This is a habit, not a step you look up.",
+            "Remove and refit a heatsink three times on a scrap machine until the diagonal sequence is automatic. This is a habit, not a step you look up.",
       },
       {
         task: "Practise paste application",
@@ -843,32 +738,27 @@ export const computerRepairsLessonsA: Record<string, SessionLecture> = {
       {
         criterion: "Disassembly",
         passing: "Opens the machine without breaking anything.",
-        excellent:
-          "Battery disconnected first, photographs taken, screws in removal order, connectors lifted rather than pulled, and the manual consulted beforehand.",
+        excellent: "Battery disconnected first, photographs taken, screws in removal order, connectors lifted rather than pulled, and the manual consulted beforehand.",
       },
       {
         criterion: "Cleaning",
         passing: "Removes visible dust.",
-        excellent:
-          "Fan cleaned with blades held, fins cleared from inside out, exhaust vent checked, and no dust pushed deeper into the assembly.",
+        excellent: "Fan cleaned with blades held, fins cleared from inside out, exhaust vent checked, and no dust pushed deeper into the assembly.",
       },
       {
         criterion: "Thermal paste",
         passing: "Applies new paste.",
-        excellent:
-          "Both surfaces cleaned to shiny with 90%+ alcohol, a rice-grain dot applied, and the heatsink tightened in numbered diagonal sequence.",
+        excellent: "Both surfaces cleaned to shiny with 90%+ alcohol, a rice-grain dot applied, and the heatsink tightened in numbered diagonal sequence.",
       },
       {
         criterion: "Reassembly",
         passing: "The machine goes back together.",
-        excellent:
-          "Every screw in its own hole, clips engaged before screws, battery connected last, and the cover seated without force.",
+        excellent: "Every screw in its own hole, clips engaged before screws, battery connected last, and the cover seated without force.",
       },
       {
         criterion: "Evidence",
         passing: "The machine works afterwards.",
-        excellent:
-          "Idle and load temperatures recorded before and after, throttling confirmed gone, and the improvement written up for the customer.",
+        excellent: "Idle and load temperatures recorded before and after, throttling confirmed gone, and the improvement written up for the customer.",
       },
     ],
     faqs: [

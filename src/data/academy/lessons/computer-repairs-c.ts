@@ -188,46 +188,14 @@ export const computerRepairsLessonsC: Record<string, SessionLecture> = {
       "Offer routine servicing as a package rather than waiting for failures. Most of it is checking rather than repairing, it prevents the dramatic jobs, and it turns one-off customers into an annual relationship.",
     ],
     vocabulary: [
-      {
-        term: "Task Manager",
-        meaning:
-          "The Windows tool showing per-process CPU, memory and disk use, plus startup programs. The first place to look at any slow machine.",
-      },
-      {
-        term: "100% disk usage",
-        meaning:
-          "A saturated disk, usually mechanical. The most common cause of an unusable Windows machine and a pointer to an SSD.",
-      },
-      {
-        term: "Stop code",
-        meaning:
-          "The code on a blue screen identifying the fault class, such as MEMORY_MANAGEMENT. Photograph it rather than guessing.",
-      },
-      {
-        term: "Minidump",
-        meaning:
-          "The crash file Windows stores for later analysis. Useful evidence after an intermittent blue screen.",
-      },
-      {
-        term: "Second profile test",
-        meaning:
-          "Logging into a new local user to determine whether a fault follows the profile or the system.",
-      },
-      {
-        term: "Second-opinion scanner",
-        meaning:
-          "An additional malware scanner run alongside the primary one. Useful for stubborn or newly emerged threats.",
-      },
-      {
-        term: "Clean reinstall",
-        meaning:
-          "Installing Windows fresh. The correct answer for a serious infection on a machine handling money or sensitive data.",
-      },
-      {
-        term: "Routine servicing",
-        meaning:
-          "Dust cleaning, paste, drive health, backups, startup review, updates and antivirus checks. Prevents the dramatic failures.",
-      },
+      { term: "Task Manager", meaning: "The Windows tool showing per-process CPU, memory and disk use, plus startup programs. The first place to look at any slow machine." },
+      { term: "100% disk usage", meaning: "A saturated disk, usually mechanical. The most common cause of an unusable Windows machine and a pointer to an SSD." },
+      { term: "Stop code", meaning: "The code on a blue screen identifying the fault class, such as MEMORY_MANAGEMENT. Photograph it rather than guessing." },
+      { term: "Minidump", meaning: "The crash file Windows stores for later analysis. Useful evidence after an intermittent blue screen." },
+      { term: "Second profile test", meaning: "Logging into a new local user to determine whether a fault follows the profile or the system." },
+      { term: "Second-opinion scanner", meaning: "An additional malware scanner run alongside the primary one. Useful for stubborn or newly emerged threats." },
+      { term: "Clean reinstall", meaning: "Installing Windows fresh. The correct answer for a serious infection on a machine handling money or sensitive data." },
+      { term: "Routine servicing", meaning: "Dust cleaning, paste, drive health, backups, startup review, updates and antivirus checks. Prevents the dramatic failures." },
     ],
     homework: [
       {
@@ -255,32 +223,27 @@ export const computerRepairsLessonsC: Record<string, SessionLecture> = {
       {
         criterion: "Evidence-based diagnosis",
         passing: "Identifies a cause.",
-        excellent:
-          "Task Manager readings, startup list, free space and drive health all recorded before any change, and the conclusion drawn from them.",
+        excellent: "Task Manager readings, startup list, free space and drive health all recorded before any change, and the conclusion drawn from them.",
       },
       {
         criterion: "Software versus hardware",
         passing: "Makes a judgement.",
-        excellent:
-          "Settled by a bootable-environment test or a second-profile test, with any blue screen stop code photographed and looked up.",
+        excellent: "Settled by a bootable-environment test or a second-profile test, with any blue screen stop code photographed and looked up.",
       },
       {
         criterion: "Malware handling",
         passing: "Runs a scan.",
-        excellent:
-          "Two tools used, the limits of a cleanup stated honestly, and a reinstall recommended with justification for any machine handling money.",
+        excellent: "Two tools used, the limits of a cleanup stated honestly, and a reinstall recommended with justification for any machine handling money.",
       },
       {
         criterion: "Drivers and updates",
         passing: "Updates the machine.",
-        excellent:
-          "Manufacturer drivers for the exact model, updates paused during work and completed before handover, and no working machine updated out of curiosity.",
+        excellent: "Manufacturer drivers for the exact model, updates paused during work and completed before handover, and no working machine updated out of curiosity.",
       },
       {
         criterion: "Reinstall discipline",
         passing: "Completes a reinstall.",
-        excellent:
-          "Data, licence keys, bookmarks and email recovered and verified first, then a sample of restored files confirmed intact after the install.",
+        excellent: "Data, licence keys, bookmarks and email recovered and verified first, then a sample of restored files confirmed intact after the install.",
       },
     ],
     faqs: [
@@ -490,46 +453,14 @@ export const computerRepairsLessonsC: Record<string, SessionLecture> = {
       "Keep a job record on every machine, including the ones you did not repair. Being able to say 'we cleaned yours in March and replaced the battery' is what turns a customer into a relationship, and it costs two minutes.",
     ],
     vocabulary: [
-      {
-        term: "Intake",
-        meaning:
-          "The documented arrival record: machine details, condition photographs, reported fault, data acknowledgement and terms.",
-      },
-      {
-        term: "Diagnostic fee",
-        meaning:
-          "A charge for diagnosis, credited against the repair if it proceeds. What makes unpaid diagnosis stop being lost time.",
-      },
-      {
-        term: "Time box",
-        meaning:
-          "A fixed limit on diagnosis time, after which you either quote or report what remains uncertain.",
-      },
-      {
-        term: "Data acknowledgement",
-        meaning:
-          "Written agreement about data-loss risk taken before work begins, not after a failure.",
-      },
-      {
-        term: "Quote",
-        meaning:
-          "A written statement of diagnosis, parts, labour and total, agreed before work starts. Never given before diagnosis.",
-      },
-      {
-        term: "Job record",
-        meaning:
-          "The permanent note of intake, findings, parts, cost and date. What makes repeat service possible.",
-      },
-      {
-        term: "Warranty terms",
-        meaning:
-          "The stated period and limits of your guarantee. Clear at the start; argued about at the end if not.",
-      },
-      {
-        term: "Referral",
-        meaning:
-          "Personal recommendation, which is how nearly all repair work arrives in Nigeria. Built by honesty, not advertising.",
-      },
+      { term: "Intake", meaning: "The documented arrival record: machine details, condition photographs, reported fault, data acknowledgement and terms." },
+      { term: "Diagnostic fee", meaning: "A charge for diagnosis, credited against the repair if it proceeds. What makes unpaid diagnosis stop being lost time." },
+      { term: "Time box", meaning: "A fixed limit on diagnosis time, after which you either quote or report what remains uncertain." },
+      { term: "Data acknowledgement", meaning: "Written agreement about data-loss risk taken before work begins, not after a failure." },
+      { term: "Quote", meaning: "A written statement of diagnosis, parts, labour and total, agreed before work starts. Never given before diagnosis." },
+      { term: "Job record", meaning: "The permanent note of intake, findings, parts, cost and date. What makes repeat service possible." },
+      { term: "Warranty terms", meaning: "The stated period and limits of your guarantee. Clear at the start; argued about at the end if not." },
+      { term: "Referral", meaning: "Personal recommendation, which is how nearly all repair work arrives in Nigeria. Built by honesty, not advertising." },
     ],
     homework: [
       {
@@ -557,32 +488,27 @@ export const computerRepairsLessonsC: Record<string, SessionLecture> = {
       {
         criterion: "Intake",
         passing: "Notes the machine and the fault.",
-        excellent:
-          "Model and serial recorded, condition photographed, fault in the customer's words, data acknowledgement taken, terms and diagnostic fee stated.",
+        excellent: "Model and serial recorded, condition photographed, fault in the customer's words, data acknowledgement taken, terms and diagnostic fee stated.",
       },
       {
         criterion: "Diagnosis",
         passing: "Finds the fault.",
-        excellent:
-          "Reached within the time box by systematic testing from external causes inward, with no part swapped before a test pointed to it.",
+        excellent: "Reached within the time box by systematic testing from external causes inward, with no part swapped before a test pointed to it.",
       },
       {
         criterion: "Commercial discipline",
         passing: "Names a price.",
-        excellent:
-          "A written quote showing diagnosis, parts, labour and total, issued before any repair work, with a diagnostic fee charged where the repair is declined.",
+        excellent: "A written quote showing diagnosis, parts, labour and total, issued before any repair work, with a diagnostic fee charged where the repair is declined.",
       },
       {
         criterion: "Repair and verification",
         passing: "The machine works.",
-        excellent:
-          "Safe handling, photographs before disassembly, screws in the right holes, the fault confirmed resolved, a stability check run, and measurements recorded where relevant.",
+        excellent: "Safe handling, photographs before disassembly, screws in the right holes, the fault confirmed resolved, a stability check run, and measurements recorded where relevant.",
       },
       {
         criterion: "Professional practice",
         passing: "Hands the machine back.",
-        excellent:
-          "An invoice stating the work, parts and warranty limits, a job record kept, privacy respected throughout, and an honest recommendation where the repair was uneconomic.",
+        excellent: "An invoice stating the work, parts and warranty limits, a job record kept, privacy respected throughout, and an honest recommendation where the repair was uneconomic.",
       },
     ],
     faqs: [

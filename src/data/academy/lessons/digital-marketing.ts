@@ -184,43 +184,14 @@ export const digitalMarketingLessonsA: Record<string, SessionLecture> = {
       "Audit your digital presence before spending a naira on promotion. Incomplete profiles and missing prices quietly defeat every campaign, and the fix is free.",
     ],
     vocabulary: [
-      {
-        term: "Target audience",
-        meaning:
-          "The specific group you are trying to reach, described precisely enough to change what you say.",
-      },
-      {
-        term: "Demographics",
-        meaning: "Age, gender, location and income — the countable parts of an audience.",
-      },
-      {
-        term: "Psychographics",
-        meaning: "What people care about, fear and aspire to — the part that shapes the message.",
-      },
-      {
-        term: "Pain point",
-        meaning:
-          "The problem the customer is trying to end. Marketing that names it persuades; marketing that ignores it describes.",
-      },
-      {
-        term: "Value proposition",
-        meaning: "One sentence: what you offer, to whom, and why it is different. Not a slogan.",
-      },
-      {
-        term: "Brand identity",
-        meaning:
-          "Consistent visuals, voice and behaviour that build associations. The logo is only its symbol.",
-      },
-      {
-        term: "Digital presence",
-        meaning:
-          "Everything a stranger finds when searching your business. The silent tax on every campaign.",
-      },
-      {
-        term: "Marketing channel",
-        meaning:
-          "The medium through which you reach an audience. A channel your audience does not occupy is not available to you.",
-      },
+      { term: "Target audience", meaning: "The specific group you are trying to reach, described precisely enough to change what you say." },
+      { term: "Demographics", meaning: "Age, gender, location and income — the countable parts of an audience." },
+      { term: "Psychographics", meaning: "What people care about, fear and aspire to — the part that shapes the message." },
+      { term: "Pain point", meaning: "The problem the customer is trying to end. Marketing that names it persuades; marketing that ignores it describes." },
+      { term: "Value proposition", meaning: "One sentence: what you offer, to whom, and why it is different. Not a slogan." },
+      { term: "Brand identity", meaning: "Consistent visuals, voice and behaviour that build associations. The logo is only its symbol." },
+      { term: "Digital presence", meaning: "Everything a stranger finds when searching your business. The silent tax on every campaign." },
+      { term: "Marketing channel", meaning: "The medium through which you reach an audience. A channel your audience does not occupy is not available to you." },
     ],
     homework: [
       {
@@ -248,32 +219,27 @@ export const digitalMarketingLessonsA: Record<string, SessionLecture> = {
       {
         criterion: "Audience definition",
         passing: "Describes customers broadly.",
-        excellent:
-          "A statement covering demographics, behaviour and psychographics, derived from real buyers, narrow enough to change what you would post.",
+        excellent: "A statement covering demographics, behaviour and psychographics, derived from real buyers, narrow enough to change what you would post.",
       },
       {
         criterion: "Problem identification",
         passing: "Says what the product does.",
-        excellent:
-          "Names the problem being ended, written in real customer language collected from actual conversations.",
+        excellent: "Names the problem being ended, written in real customer language collected from actual conversations.",
       },
       {
         criterion: "Value proposition",
         passing: "Has a tagline.",
-        excellent:
-          "One sentence stating what, for whom and why different, verified by a stranger repeating it back correctly.",
+        excellent: "One sentence stating what, for whom and why different, verified by a stranger repeating it back correctly.",
       },
       {
         criterion: "Branding",
         passing: "Has a logo.",
-        excellent:
-          "Three defined brand basics — colours, voice, photo style — with examples, and an understanding that consistency builds the brand rather than the symbol.",
+        excellent: "Three defined brand basics — colours, voice, photo style — with examples, and an understanding that consistency builds the brand rather than the symbol.",
       },
       {
         criterion: "Channel selection",
         passing: "Lists platforms.",
-        excellent:
-          "Every channel rated present, incomplete or missing, five prioritised fixes, and one primary channel chosen with a written justification.",
+        excellent: "Every channel rated present, incomplete or missing, five prioritised fixes, and one primary channel chosen with a written justification.",
       },
     ],
     faqs: [
@@ -479,44 +445,14 @@ export const digitalMarketingLessonsA: Record<string, SessionLecture> = {
       "Match the channel to what you can sustain for six months rather than to what is currently effective. Consistency compounds and abandonment is expensive, so an honest assessment of your own capacity is a marketing decision, not a personal failing.",
     ],
     vocabulary: [
-      {
-        term: "Organic reach",
-        meaning:
-          "How many people see your content without payment. TikTok and Reels currently offer the most; feed posts offer the least.",
-      },
-      {
-        term: "Owned channel",
-        meaning:
-          "A channel you control — a website, an email list. Cannot be suspended or re-ranked by anyone else.",
-      },
-      {
-        term: "Rented channel",
-        meaning:
-          "A platform where your reach depends on someone else's algorithm. Useful but never safe to depend on alone.",
-      },
-      {
-        term: "Broadcast list",
-        meaning:
-          "A WhatsApp message to many people who cannot see each other. Unlike a group, it protects privacy and avoids spam.",
-      },
-      {
-        term: "Discovery channel",
-        meaning: "Where strangers find you. TikTok and Reels are discovery; WhatsApp is not.",
-      },
-      {
-        term: "Conversion channel",
-        meaning: "Where interest becomes a sale. In Nigeria, overwhelmingly WhatsApp messages.",
-      },
-      {
-        term: "Search intent",
-        meaning:
-          "The buying readiness of someone who searched for a solution. Higher than someone scrolling social, which is why search converts better.",
-      },
-      {
-        term: "Channel fit",
-        meaning:
-          "How closely a platform matches your audience, your content capability and your budget. All three, not just the first.",
-      },
+      { term: "Organic reach", meaning: "How many people see your content without payment. TikTok and Reels currently offer the most; feed posts offer the least." },
+      { term: "Owned channel", meaning: "A channel you control — a website, an email list. Cannot be suspended or re-ranked by anyone else." },
+      { term: "Rented channel", meaning: "A platform where your reach depends on someone else's algorithm. Useful but never safe to depend on alone." },
+      { term: "Broadcast list", meaning: "A WhatsApp message to many people who cannot see each other. Unlike a group, it protects privacy and avoids spam." },
+      { term: "Discovery channel", meaning: "Where strangers find you. TikTok and Reels are discovery; WhatsApp is not." },
+      { term: "Conversion channel", meaning: "Where interest becomes a sale. In Nigeria, overwhelmingly WhatsApp messages." },
+      { term: "Search intent", meaning: "The buying readiness of someone who searched for a solution. Higher than someone scrolling social, which is why search converts better." },
+      { term: "Channel fit", meaning: "How closely a platform matches your audience, your content capability and your budget. All three, not just the first." },
     ],
     homework: [
       {
@@ -544,32 +480,27 @@ export const digitalMarketingLessonsA: Record<string, SessionLecture> = {
       {
         criterion: "Platform knowledge",
         passing: "Knows the major platforms exist.",
-        excellent:
-          "Can describe each platform's audience, format, organic reach, selling strength and cost, and name what each is good and bad at.",
+        excellent: "Can describe each platform's audience, format, organic reach, selling strength and cost, and name what each is good and bad at.",
       },
       {
         criterion: "Evidence",
         passing: "Chooses from general advice.",
-        excellent:
-          "Ten verbatim customer answers about where they spend time and how they found the business, used directly in the decision.",
+        excellent: "Ten verbatim customer answers about where they spend time and how they found the business, used directly in the decision.",
       },
       {
         criterion: "Channel decision",
         passing: "Names a platform.",
-        excellent:
-          "One primary and one supporting channel, each justified in writing, with every excluded channel named and its orphan profile removed.",
+        excellent: "One primary and one supporting channel, each justified in writing, with every excluded channel named and its orphan profile removed.",
       },
       {
         criterion: "Setup",
         passing: "Has accounts.",
-        excellent:
-          "Primary channel complete with a working contact and ordering route, and WhatsApp Business configured with catalogue, quick replies and greeting.",
+        excellent: "Primary channel complete with a working contact and ordering route, and WhatsApp Business configured with catalogue, quick replies and greeting.",
       },
       {
         criterion: "Sustainability",
         passing: "Plans to post often.",
-        excellent:
-          "A stated six-month rhythm per channel matched honestly to what can actually be produced, with cost in naira and hours accounted for.",
+        excellent: "A stated six-month rhythm per channel matched honestly to what can actually be produced, with cost in naira and hours accounted for.",
       },
     ],
     faqs: [
@@ -779,45 +710,14 @@ export const digitalMarketingLessonsA: Record<string, SessionLecture> = {
       "Cut every sentence that does not earn the next one. Online attention is measured in seconds, and reading your own post aloud is the fastest way to find the sentences that lose people.",
     ],
     vocabulary: [
-      {
-        term: "Educational content",
-        meaning:
-          "Teaches something useful and asks for nothing. Builds trust and gets saved and shared.",
-      },
-      {
-        term: "Promotional content",
-        meaning:
-          "Sells — product, price, offer, deadline, proof. Necessary, but an account of only this is a shop window.",
-      },
-      {
-        term: "Entertaining content",
-        meaning:
-          "Makes people feel something. Builds familiarity and reach, and can attract an audience that never buys.",
-      },
-      {
-        term: "Hook",
-        meaning:
-          "The first line. Usually the only part anyone reads before deciding whether to continue.",
-      },
-      {
-        term: "Open loop",
-        meaning:
-          "An unfinished element that creates the urge to keep reading. The engine of a story that holds attention.",
-      },
-      {
-        term: "Call-to-action",
-        meaning: "The one specific thing you ask the reader to do next. One ask, not five.",
-      },
-      {
-        term: "Content pillar",
-        meaning:
-          "A recurring theme your content returns to. Keeps an account coherent instead of random.",
-      },
-      {
-        term: "Social proof",
-        meaning:
-          "Evidence that others bought and were satisfied — reviews, photos, named customers. Persuades more strongly than any claim you make about yourself.",
-      },
+      { term: "Educational content", meaning: "Teaches something useful and asks for nothing. Builds trust and gets saved and shared." },
+      { term: "Promotional content", meaning: "Sells — product, price, offer, deadline, proof. Necessary, but an account of only this is a shop window." },
+      { term: "Entertaining content", meaning: "Makes people feel something. Builds familiarity and reach, and can attract an audience that never buys." },
+      { term: "Hook", meaning: "The first line. Usually the only part anyone reads before deciding whether to continue." },
+      { term: "Open loop", meaning: "An unfinished element that creates the urge to keep reading. The engine of a story that holds attention." },
+      { term: "Call-to-action", meaning: "The one specific thing you ask the reader to do next. One ask, not five." },
+      { term: "Content pillar", meaning: "A recurring theme your content returns to. Keeps an account coherent instead of random." },
+      { term: "Social proof", meaning: "Evidence that others bought and were satisfied — reviews, photos, named customers. Persuades more strongly than any claim you make about yourself." },
     ],
     homework: [
       {
@@ -845,32 +745,27 @@ export const digitalMarketingLessonsA: Record<string, SessionLecture> = {
       {
         criterion: "Content type understanding",
         passing: "Knows the three types.",
-        excellent:
-          "Uses each deliberately with a reasoned balance, weighting education to earn the right to sell, and adjusts the mix from evidence rather than theory.",
+        excellent: "Uses each deliberately with a reasoned balance, weighting education to earn the right to sell, and adjusts the mix from evidence rather than theory.",
       },
       {
         criterion: "Storytelling",
         passing: "Tells an anecdote.",
-        excellent:
-          "A structured open loop — problem, tension, turn, point — with specific detail that makes the reader think it is nearly them.",
+        excellent: "A structured open loop — problem, tension, turn, point — with specific detail that makes the reader think it is nearly them.",
       },
       {
         criterion: "Hooks",
         passing: "Writes an opening line.",
-        excellent:
-          "Three candidate hooks tested against each other, opening with a claim, question or problem rather than a greeting.",
+        excellent: "Three candidate hooks tested against each other, opening with a claim, question or problem rather than a greeting.",
       },
       {
         criterion: "Calls-to-action",
         passing: "Asks people to engage.",
-        excellent:
-          "One specific ask per post, matched to the relationship, small enough that doing it feels effortless.",
+        excellent: "One specific ask per post, matched to the relationship, small enough that doing it feels effortless.",
       },
       {
         criterion: "Idea generation",
         passing: "Posts when inspired.",
-        excellent:
-          "Ten distinct ideas derived from one customer problem and marked by type, enough for weeks of relevant content.",
+        excellent: "Ten distinct ideas derived from one customer problem and marked by type, enough for weeks of relevant content.",
       },
     ],
     faqs: [

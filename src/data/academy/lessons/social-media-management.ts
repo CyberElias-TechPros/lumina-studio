@@ -179,45 +179,14 @@ export const socialMediaLessonsA: Record<string, SessionLecture> = {
       "Write the positioning sentence and keep it visible while you work. Every caption you write should be traceable to it. When you cannot trace one, that is the signal the post should be cut rather than published.",
     ],
     vocabulary: [
-      {
-        term: "Name field",
-        meaning:
-          "The searchable name line on a profile. Carrying what the business does here is free search visibility.",
-      },
-      {
-        term: "Audience definition",
-        meaning:
-          "One specific pictured person with age, location, budget and fear — narrow enough to change what you post.",
-      },
-      {
-        term: "Positioning",
-        meaning:
-          "One sentence stating what the business does, for whom, and the real difference. Every post traces back to it.",
-      },
-      {
-        term: "Content pillar",
-        meaning:
-          "A recurring post category. Pillars turn 'what should I post?' into a fast decision and prevent drift.",
-      },
-      {
-        term: "Content drift",
-        meaning:
-          "A feed mixing unrelated post types so visitors cannot tell what the account is for. Feels like variety, reads as confusion.",
-      },
-      {
-        term: "Highlights",
-        meaning:
-          "Saved stories acting as a permanent menu — price, catalogue, reviews, how to order.",
-      },
-      {
-        term: "Enquiries per week",
-        meaning: "The metric that matters for a small business, rather than follower count.",
-      },
-      {
-        term: "WhatsApp Business catalogue",
-        meaning:
-          "A product list inside WhatsApp where most Nigerian business enquiries actually convert.",
-      },
+      { term: "Name field", meaning: "The searchable name line on a profile. Carrying what the business does here is free search visibility." },
+      { term: "Audience definition", meaning: "One specific pictured person with age, location, budget and fear — narrow enough to change what you post." },
+      { term: "Positioning", meaning: "One sentence stating what the business does, for whom, and the real difference. Every post traces back to it." },
+      { term: "Content pillar", meaning: "A recurring post category. Pillars turn 'what should I post?' into a fast decision and prevent drift." },
+      { term: "Content drift", meaning: "A feed mixing unrelated post types so visitors cannot tell what the account is for. Feels like variety, reads as confusion." },
+      { term: "Highlights", meaning: "Saved stories acting as a permanent menu — price, catalogue, reviews, how to order." },
+      { term: "Enquiries per week", meaning: "The metric that matters for a small business, rather than follower count." },
+      { term: "WhatsApp Business catalogue", meaning: "A product list inside WhatsApp where most Nigerian business enquiries actually convert." },
     ],
     homework: [
       {
@@ -245,32 +214,27 @@ export const socialMediaLessonsA: Record<string, SessionLecture> = {
       {
         criterion: "Profile audit",
         passing: "Identifies some profile problems.",
-        excellent:
-          "Scores all seven points, names the specific fault in each, and fixes them in the correct priority order.",
+        excellent: "Scores all seven points, names the specific fault in each, and fixes them in the correct priority order.",
       },
       {
         criterion: "Audience",
         passing: "Describes a general audience.",
-        excellent:
-          "One pictured person with age, location, budget and fear, derived from the owner's verbatim answers, and specific enough to change what gets posted.",
+        excellent: "One pictured person with age, location, budget and fear, derived from the owner's verbatim answers, and specific enough to change what gets posted.",
       },
       {
         criterion: "Platform choice",
         passing: "Names a platform.",
-        excellent:
-          "One primary justified by where the audience actually is, supported by observation of competitors, with a stated commitment period.",
+        excellent: "One primary justified by where the audience actually is, supported by observation of competitors, with a stated commitment period.",
       },
       {
         criterion: "Strategy",
         passing: "Has some content ideas.",
-        excellent:
-          "A positioning sentence claiming a verifiable difference, four derived pillars, a stated ratio, and at least one past post correctly judged off-strategy.",
+        excellent: "A positioning sentence claiming a verifiable difference, four derived pillars, a stated ratio, and at least one past post correctly judged off-strategy.",
       },
       {
         criterion: "Goals",
         passing: "States a goal.",
-        excellent:
-          "Enquiries per week as the primary metric, with supporting measures, and the client's expectations set on that basis rather than on followers.",
+        excellent: "Enquiries per week as the primary metric, with supporting measures, and the client's expectations set on that basis rather than on followers.",
       },
     ],
     faqs: [
@@ -474,44 +438,14 @@ export const socialMediaLessonsA: Record<string, SessionLecture> = {
       "Test posting times rather than copying advice. The widely quoted best times are averages of audiences that are not yours. Post the same content type at three different times over a month and read your own data — session five covers how.",
     ],
     vocabulary: [
-      {
-        term: "Hook",
-        meaning:
-          "The first line or two that gives a reason to keep reading. The entire battle on a feed.",
-      },
-      {
-        term: "Carousel",
-        meaning:
-          "A swipeable multi-slide post. The strongest format for teaching and for dwell time.",
-      },
-      {
-        term: "Dwell time",
-        meaning:
-          "How long a viewer stays on a post. Platforms reward it, which is why carousels and long captions perform.",
-      },
-      {
-        term: "Call to action",
-        meaning:
-          "One stated next step. Multiple options produce no action because the reader chooses none.",
-      },
-      {
-        term: "Keyword",
-        meaning:
-          "A plain descriptive word in the caption or name field that platform search indexes. Now worth more than hashtags.",
-      },
-      {
-        term: "Batching",
-        meaning:
-          "Producing a whole period's content in one sitting. Removes the decision cost that makes daily posting fail.",
-      },
-      {
-        term: "Evergreen bank",
-        meaning: "Posts that work in any week, held in reserve so a bad week never means silence.",
-      },
-      {
-        term: "Content calendar",
-        meaning: "Dates mapped to pillars so balance and gaps are visible at a glance.",
-      },
+      { term: "Hook", meaning: "The first line or two that gives a reason to keep reading. The entire battle on a feed." },
+      { term: "Carousel", meaning: "A swipeable multi-slide post. The strongest format for teaching and for dwell time." },
+      { term: "Dwell time", meaning: "How long a viewer stays on a post. Platforms reward it, which is why carousels and long captions perform." },
+      { term: "Call to action", meaning: "One stated next step. Multiple options produce no action because the reader chooses none." },
+      { term: "Keyword", meaning: "A plain descriptive word in the caption or name field that platform search indexes. Now worth more than hashtags." },
+      { term: "Batching", meaning: "Producing a whole period's content in one sitting. Removes the decision cost that makes daily posting fail." },
+      { term: "Evergreen bank", meaning: "Posts that work in any week, held in reserve so a bad week never means silence." },
+      { term: "Content calendar", meaning: "Dates mapped to pillars so balance and gaps are visible at a glance." },
     ],
     homework: [
       {
@@ -539,32 +473,27 @@ export const socialMediaLessonsA: Record<string, SessionLecture> = {
       {
         criterion: "Format choice",
         passing: "Uses more than one format.",
-        excellent:
-          "Four formats each matched to a stated job, with the reel opening storyboarded for the first two seconds.",
+        excellent: "Four formats each matched to a stated job, with the reel opening storyboarded for the first two seconds.",
       },
       {
         criterion: "Hooks",
         passing: "First lines are reasonable.",
-        excellent:
-          "Four distinct forms, no greetings or announcements opening a post, and a justified judgement on which stops a scroll.",
+        excellent: "Four distinct forms, no greetings or announcements opening a post, and a justified judgement on which stops a scroll.",
       },
       {
         criterion: "Caption craft",
         passing: "Captions are readable.",
-        excellent:
-          "Short-line structure, a specific proof point, one call to action each, and length matched to whether the post teaches, proves or announces.",
+        excellent: "Short-line structure, a specific proof point, one call to action each, and length matched to whether the post teaches, proves or announces.",
       },
       {
         criterion: "Discovery",
         passing: "Uses some hashtags.",
-        excellent:
-          "Three tag groups under ten each, plain searchable keywords in the caption, and an explanation of why tags are now a signal.",
+        excellent: "Three tag groups under ten each, plain searchable keywords in the caption, and an explanation of why tags are now a signal.",
       },
       {
         criterion: "System",
         passing: "Has some plan.",
-        excellent:
-          "A month calendar with visible pillar balance, a batched and scheduled week, and an evergreen bank — a system that survives a busy week.",
+        excellent: "A month calendar with visible pillar balance, a batched and scheduled week, and an evergreen bank — a system that survives a busy week.",
       },
     ],
     faqs: [
@@ -768,46 +697,14 @@ export const socialMediaLessonsA: Record<string, SessionLecture> = {
       "Plan repurposing at shoot time, not afterwards. Knowing you need a vertical for a reel and a square for a feed post changes how you frame, and it is the difference between one shoot yielding two posts and yielding six.",
     ],
     vocabulary: [
-      {
-        term: "Shot list",
-        meaning:
-          "The planned list of photographs and takes needed, derived backwards from the content calendar and grouped by setup.",
-      },
-      {
-        term: "Indirect light",
-        meaning:
-          "Light from a window that is not in direct sun. Soft and flattering; the reliable default for product photography.",
-      },
-      {
-        term: "Bounce card",
-        meaning:
-          "A white sheet or card held on the shadow side to reflect light back. Free, and the largest single quality improvement.",
-      },
-      {
-        term: "Customer language file",
-        meaning:
-          "A running collection of real customer phrasing, questions and objections, used as caption material.",
-      },
-      {
-        term: "Repurposing",
-        meaning:
-          "Turning one shoot or one delivery into several posts across formats. What makes one session last a month.",
-      },
-      {
-        term: "Asset library",
-        meaning:
-          "Organised folders of raw and edited material, backed up. The infrastructure that makes content production efficient.",
-      },
-      {
-        term: "Caption (video)",
-        meaning:
-          "On-screen text transcribing speech. Essential because much video is watched without sound.",
-      },
-      {
-        term: "Edit look",
-        meaning:
-          "The consistent brightness, contrast and warmth applied to every image in a feed. Consistency is what reads as a brand.",
-      },
+      { term: "Shot list", meaning: "The planned list of photographs and takes needed, derived backwards from the content calendar and grouped by setup." },
+      { term: "Indirect light", meaning: "Light from a window that is not in direct sun. Soft and flattering; the reliable default for product photography." },
+      { term: "Bounce card", meaning: "A white sheet or card held on the shadow side to reflect light back. Free, and the largest single quality improvement." },
+      { term: "Customer language file", meaning: "A running collection of real customer phrasing, questions and objections, used as caption material." },
+      { term: "Repurposing", meaning: "Turning one shoot or one delivery into several posts across formats. What makes one session last a month." },
+      { term: "Asset library", meaning: "Organised folders of raw and edited material, backed up. The infrastructure that makes content production efficient." },
+      { term: "Caption (video)", meaning: "On-screen text transcribing speech. Essential because much video is watched without sound." },
+      { term: "Edit look", meaning: "The consistent brightness, contrast and warmth applied to every image in a feed. Consistency is what reads as a brand." },
     ],
     homework: [
       {
@@ -835,32 +732,27 @@ export const socialMediaLessonsA: Record<string, SessionLecture> = {
       {
         criterion: "Planning",
         passing: "Has some idea what to shoot.",
-        excellent:
-          "A shot list derived backwards from the calendar, grouped by setup, with the target format noted for each shot.",
+        excellent: "A shot list derived backwards from the calendar, grouped by setup, with the target format noted for each shot.",
       },
       {
         criterion: "Shooting",
         passing: "Produces usable photographs.",
-        excellent:
-          "Indirect window light with a bounce card, grid composition, close, medium and wide for every subject, and vertical framing captured for reels.",
+        excellent: "Indirect window light with a bounce card, grid composition, close, medium and wide for every subject, and vertical framing captured for reels.",
       },
       {
         criterion: "Editing",
         passing: "Images are edited.",
-        excellent:
-          "One consistent look across the whole set, and a reel under thirty seconds with corrected captions.",
+        excellent: "One consistent look across the whole set, and a reel under thirty seconds with corrected captions.",
       },
       {
         criterion: "Content source",
         passing: "Writes captions.",
-        excellent:
-          "Works from a customer language file, using real phrasing, objections and compliments rather than invented copy.",
+        excellent: "Works from a customer language file, using real phrasing, objections and compliments rather than invented copy.",
       },
       {
         criterion: "Efficiency",
         passing: "Produces the required pieces.",
-        excellent:
-          "At least six pieces repurposed from one shoot, all filed in an organised backed-up library with edited separate from raw.",
+        excellent: "At least six pieces repurposed from one shoot, all filed in an organised backed-up library with edited separate from raw.",
       },
     ],
     faqs: [

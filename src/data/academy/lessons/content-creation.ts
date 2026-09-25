@@ -189,45 +189,14 @@ export const contentCreationLessonsA: Record<string, SessionLecture> = {
       "Script every video, even short ones. Writing removes the pauses and repetitions that lose viewers, and it lets you time the piece from its word count before you spend an hour shooting something too long.",
     ],
     vocabulary: [
-      {
-        term: "Content pillar",
-        meaning:
-          "A recurring theme your channel returns to. Keeps it coherent and makes planning a choice rather than an invention.",
-      },
-      {
-        term: "Audience",
-        meaning:
-          "A group with a shared interest who would recognise themselves in your content. Not a number.",
-      },
-      {
-        term: "Hook",
-        meaning:
-          "The first second or two. A claim, a question, or the result shown first. Determines whether the video is watched.",
-      },
-      {
-        term: "Open loop",
-        meaning:
-          "Something unfinished that makes the viewer want to stay. The engine of retention.",
-      },
-      {
-        term: "Script",
-        meaning:
-          "The written beats: hook, setup, body, close. Written rather than improvised, and timed by word count.",
-      },
-      {
-        term: "Short-form",
-        meaning: "Reels, TikTok, Shorts. Pushed to non-followers, so it is how channels grow.",
-      },
-      {
-        term: "Long-form",
-        meaning:
-          "YouTube videos and detailed posts. Serves people who already care and builds depth and trust.",
-      },
-      {
-        term: "Completion rate",
-        meaning:
-          "The proportion of viewers who finish. The strongest driver of short-form distribution.",
-      },
+      { term: "Content pillar", meaning: "A recurring theme your channel returns to. Keeps it coherent and makes planning a choice rather than an invention." },
+      { term: "Audience", meaning: "A group with a shared interest who would recognise themselves in your content. Not a number." },
+      { term: "Hook", meaning: "The first second or two. A claim, a question, or the result shown first. Determines whether the video is watched." },
+      { term: "Open loop", meaning: "Something unfinished that makes the viewer want to stay. The engine of retention." },
+      { term: "Script", meaning: "The written beats: hook, setup, body, close. Written rather than improvised, and timed by word count." },
+      { term: "Short-form", meaning: "Reels, TikTok, Shorts. Pushed to non-followers, so it is how channels grow." },
+      { term: "Long-form", meaning: "YouTube videos and detailed posts. Serves people who already care and builds depth and trust." },
+      { term: "Completion rate", meaning: "The proportion of viewers who finish. The strongest driver of short-form distribution." },
     ],
     homework: [
       {
@@ -255,32 +224,27 @@ export const contentCreationLessonsA: Record<string, SessionLecture> = {
       {
         criterion: "Audience definition",
         passing: "Knows roughly who might watch.",
-        excellent:
-          "One line, specific enough that a stranger in it would recognise themselves, with the channel narrowed to a single specific thing.",
+        excellent: "One line, specific enough that a stranger in it would recognise themselves, with the channel narrowed to a single specific thing.",
       },
       {
         criterion: "Pillars and topics",
         passing: "Has some ideas.",
-        excellent:
-          "Four pillars each able to support twenty videos, and twenty mined topics drawn from real questions and mistakes rather than invention.",
+        excellent: "Four pillars each able to support twenty videos, and twenty mined topics drawn from real questions and mistakes rather than invention.",
       },
       {
         criterion: "Hooks",
         passing: "Opens the video.",
-        excellent:
-          "Three candidates per script tested aloud, opening with a claim, question or result, with every introduction removed.",
+        excellent: "Three candidates per script tested aloud, opening with a claim, question or result, with every introduction removed.",
       },
       {
         criterion: "Script structure",
         passing: "Has an outline.",
-        excellent:
-          "Hook, setup, body of three or four points with examples, and a close with one next step — at least two built on open loop, tension, turn and point.",
+        excellent: "Hook, setup, body of three or four points with examples, and a close with one next step — at least two built on open loop, tension, turn and point.",
       },
       {
         criterion: "Format discipline",
         passing: "Roughly the right length.",
-        excellent:
-          "Word count checked against roughly 150 words per minute, cut to fit sixty to ninety seconds, with an understanding of how short-form and long-form work together.",
+        excellent: "Word count checked against roughly 150 words per minute, cut to fit sixty to ninety seconds, with an understanding of how short-form and long-form work together.",
       },
     ],
     faqs: [
@@ -497,41 +461,14 @@ export const contentCreationLessonsA: Record<string, SessionLecture> = {
       "Look at the lens and record three takes. Looking at your own preview reads as looking away from the viewer, and using the best of three takes is normal practice and much faster than trying to be perfect in one.",
     ],
     vocabulary: [
-      {
-        term: "Key light",
-        meaning: "The main light on your subject. For free shooting, a window you face.",
-      },
-      {
-        term: "Backlight",
-        meaning: "Light behind the subject. Silhouettes the face and cannot be recovered.",
-      },
-      {
-        term: "Bounce",
-        meaning:
-          "A white surface throwing light back into the shadows. The largest free quality improvement.",
-      },
-      {
-        term: "Diffusion",
-        meaning: "Softening harsh light with a sheet or distance. What makes light flattering.",
-      },
-      {
-        term: "Rule of thirds",
-        meaning:
-          "Placing the subject on the grid lines rather than dead centre. Reads as deliberate.",
-      },
-      {
-        term: "Headroom",
-        meaning:
-          "Space above the head. Too little is cramped, too much makes you appear to be sinking.",
-      },
-      {
-        term: "Eye level",
-        meaning: "The lens at the presenter's eye height. Reads as a peer speaking to you.",
-      },
-      {
-        term: "Room tone",
-        meaning: "The ambient sound of a space. Hard surfaces echo; fabric absorbs.",
-      },
+      { term: "Key light", meaning: "The main light on your subject. For free shooting, a window you face." },
+      { term: "Backlight", meaning: "Light behind the subject. Silhouettes the face and cannot be recovered." },
+      { term: "Bounce", meaning: "A white surface throwing light back into the shadows. The largest free quality improvement." },
+      { term: "Diffusion", meaning: "Softening harsh light with a sheet or distance. What makes light flattering." },
+      { term: "Rule of thirds", meaning: "Placing the subject on the grid lines rather than dead centre. Reads as deliberate." },
+      { term: "Headroom", meaning: "Space above the head. Too little is cramped, too much makes you appear to be sinking." },
+      { term: "Eye level", meaning: "The lens at the presenter's eye height. Reads as a peer speaking to you." },
+      { term: "Room tone", meaning: "The ambient sound of a space. Hard surfaces echo; fabric absorbs." },
     ],
     homework: [
       {
@@ -559,32 +496,27 @@ export const contentCreationLessonsA: Record<string, SessionLecture> = {
       {
         criterion: "Lighting",
         passing: "Is visible.",
-        excellent:
-          "Facing a window with diffusion, a bounce lifting the shadows, no backlight, and no overhead-bulb colour cast.",
+        excellent: "Facing a window with diffusion, a bounce lifting the shadows, no backlight, and no overhead-bulb colour cast.",
       },
       {
         criterion: "Framing",
         passing: "Is in shot.",
-        excellent:
-          "Eye level, on the rule of thirds with correct headroom, filling the vertical frame, from a cleared background.",
+        excellent: "Eye level, on the rule of thirds with correct headroom, filling the vertical frame, from a cleared background.",
       },
       {
         criterion: "Audio",
         passing: "Is audible.",
-        excellent:
-          "At an arm's length in a fabric-treated room with noise sources removed at source, not rescued in editing.",
+        excellent: "At an arm's length in a fabric-treated room with noise sources removed at source, not rescued in editing.",
       },
       {
         criterion: "Presentation",
         passing: "Speaks to camera.",
-        excellent:
-          "Looking at the lens rather than the preview, at slightly raised energy, best of three takes rather than one attempted perfect take.",
+        excellent: "Looking at the lens rather than the preview, at slightly raised energy, best of three takes rather than one attempted perfect take.",
       },
       {
         criterion: "Screen recording",
         passing: "Captures the screen.",
-        excellent:
-          "Tabs closed, notifications off, text enlarged, nothing private visible, with live narration explaining the action as it happens.",
+        excellent: "Tabs closed, notifications off, text enlarged, nothing private visible, with live narration explaining the action as it happens.",
       },
     ],
     faqs: [
@@ -611,7 +543,7 @@ export const contentCreationLessonsA: Record<string, SessionLecture> = {
     ],
   },
 
-  editing: {
+  "editing": {
     summary:
       "Editing is where a video becomes watchable — not through effects, but through cutting what does not earn its place. This session covers trimming, transitions, text, music and captions on a phone, and the judgement that decides what stays.",
     objectives: [
@@ -797,45 +729,14 @@ export const contentCreationLessonsA: Record<string, SessionLecture> = {
       "Read every auto-caption before publishing. It mishears Nigerian names, places and technical terms constantly, and uncorrected captions read as carelessness even when the video itself is good.",
     ],
     vocabulary: [
-      {
-        term: "Rough cut",
-        meaning: "The assembled structure with obvious waste removed. Comes before any polish.",
-      },
-      {
-        term: "Fine cut",
-        meaning:
-          "The tightened version: pauses, breaths and restatements removed. Where the real skill is.",
-      },
-      {
-        term: "Jump cut",
-        meaning:
-          "A cut within the same shot that removes time. The most useful short-form technique and it needs no effect.",
-      },
-      {
-        term: "Pacing",
-        meaning:
-          "The rhythm of the cuts. Uniform shot length becomes monotonous however fast it is.",
-      },
-      {
-        term: "B-roll",
-        meaning:
-          "Supplementary footage cut over the main shot. Useful, but not a substitute for a tight main cut.",
-      },
-      {
-        term: "Royalty-free",
-        meaning:
-          "Music licensed for use without per-play payment. Distinct from a popular track taken from a streaming service.",
-      },
-      {
-        term: "Caption",
-        meaning:
-          "On-screen text of the speech. Not optional, because much video is watched without sound.",
-      },
-      {
-        term: "Export",
-        meaning:
-          "Rendering the finished file at source resolution and orientation. Always review on a phone afterwards.",
-      },
+      { term: "Rough cut", meaning: "The assembled structure with obvious waste removed. Comes before any polish." },
+      { term: "Fine cut", meaning: "The tightened version: pauses, breaths and restatements removed. Where the real skill is." },
+      { term: "Jump cut", meaning: "A cut within the same shot that removes time. The most useful short-form technique and it needs no effect." },
+      { term: "Pacing", meaning: "The rhythm of the cuts. Uniform shot length becomes monotonous however fast it is." },
+      { term: "B-roll", meaning: "Supplementary footage cut over the main shot. Useful, but not a substitute for a tight main cut." },
+      { term: "Royalty-free", meaning: "Music licensed for use without per-play payment. Distinct from a popular track taken from a streaming service." },
+      { term: "Caption", meaning: "On-screen text of the speech. Not optional, because much video is watched without sound." },
+      { term: "Export", meaning: "Rendering the finished file at source resolution and orientation. Always review on a phone afterwards." },
     ],
     homework: [
       {
@@ -863,32 +764,27 @@ export const contentCreationLessonsA: Record<string, SessionLecture> = {
       {
         criterion: "Workflow",
         passing: "Edits the video.",
-        excellent:
-          "Works in the correct order — import, rough cut, fine cut, then text, music and captions, then export — with the project named and the finished file backed up.",
+        excellent: "Works in the correct order — import, rough cut, fine cut, then text, music and captions, then export — with the project named and the finished file backed up.",
       },
       {
         criterion: "Trimming",
         passing: "Removes some footage.",
-        excellent:
-          "At least a third of the running time removed at marked attention dips, including pauses, breaths and restatements, with jump cuts used rather than effects.",
+        excellent: "At least a third of the running time removed at marked attention dips, including pauses, breaths and restatements, with jump cuts used rather than effects.",
       },
       {
         criterion: "Transitions and pacing",
         passing: "Cuts between shots.",
-        excellent:
-          "Straight cuts with at most one repeated effect style, and shot lengths varied so the pacing is not uniform.",
+        excellent: "Straight cuts with at most one repeated effect style, and shot lengths varied so the pacing is not uniform.",
       },
       {
         criterion: "Text and music",
         passing: "Adds both.",
-        excellent:
-          "Short supporting text in one font clear of the face, music from a licensed source at roughly a fifth of the voice level.",
+        excellent: "Short supporting text in one font clear of the face, music from a licensed source at roughly a fifth of the voice level.",
       },
       {
         criterion: "Captions and review",
         passing: "Has captions.",
-        excellent:
-          "Auto-captions read and corrected line by line, one or two readable lines, and the export reviewed on a phone after a day with the three questions answered in writing.",
+        excellent: "Auto-captions read and corrected line by line, one or two readable lines, and the export reviewed on a phone after a day with the three questions answered in writing.",
       },
     ],
     faqs: [

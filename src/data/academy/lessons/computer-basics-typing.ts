@@ -33,7 +33,7 @@ export const computerBasicsTypingLessonsB: Record<string, SessionLecture> = {
       {
         heading: "Naming: the habit that saves hours",
         body: [
-          'Name files so a stranger could understand them in six months and so they sort correctly. The pattern that works: **date, then subject, then version** — `2026-09-13_CEA-Notes_Session-03.docx`. Dates first in YYYY-MM-DD format sort chronologically in every file manager; putting the day first sorts September after January incorrectly. Avoid spaces if you can, because some websites and systems mangle them in uploads. Never use the characters `\\ / : * ? " < > |` — Windows forbids them and other systems handle them badly.',
+          "Name files so a stranger could understand them in six months and so they sort correctly. The pattern that works: **date, then subject, then version** — `2026-09-13_CEA-Notes_Session-03.docx`. Dates first in YYYY-MM-DD format sort chronologically in every file manager; putting the day first sorts September after January incorrectly. Avoid spaces if you can, because some websites and systems mangle them in uploads. Never use the characters `\\ / : * ? \" < > |` — Windows forbids them and other systems handle them badly.",
           "Then avoid the version-naming trap. `final.docx`, `final2.docx`, `final-FINAL.docx` and `final-real.docx` tell nobody anything. Either use dates, or use v1/v2/v3 consistently, and keep only one current version in the working folder with older ones moved to an `Archive` sub-folder. Build the structure once — a top folder for the year or course, with sub-folders by subject — and use it every single time. A file saved in the right place the first time is a file you never have to search for.",
         ],
       },
@@ -161,46 +161,14 @@ export const computerBasicsTypingLessonsB: Record<string, SessionLecture> = {
       "Check the address bar before you trust a page, not the page's appearance. A convincing design proves nothing. The address is the only thing on a webpage that is hard to fake, and reading it takes two seconds.",
     ],
     vocabulary: [
-      {
-        term: "File extension",
-        meaning:
-          "The letters after the last dot in a filename, identifying the file type. Turn them on in File Explorer's View menu.",
-      },
-      {
-        term: "Path",
-        meaning:
-          "A file's full address showing every folder from the drive down to the file, displayed in the address bar.",
-      },
-      {
-        term: "Recycle Bin",
-        meaning:
-          "Where deleted files wait until the bin is emptied. Files deleted from USB drives or with Shift+Delete skip it entirely.",
-      },
-      {
-        term: "Eject",
-        meaning:
-          "Telling Windows to finish writing and release a removable drive so it can be removed without corrupting files.",
-      },
-      {
-        term: "Download",
-        meaning:
-          "Copying a file from the internet to your machine, normally into the Downloads folder.",
-      },
-      {
-        term: "Upload",
-        meaning:
-          "Sending a file from your machine to a website through a Choose File or Browse control.",
-      },
-      {
-        term: "Tab",
-        meaning:
-          "An additional page held open in the same browser window. Ctrl+T opens, Ctrl+W closes, Ctrl+Shift+T reopens.",
-      },
-      {
-        term: "Search query",
-        meaning:
-          "The words you give a search engine. Specific keywords outperform full sentences every time.",
-      },
+      { term: "File extension", meaning: "The letters after the last dot in a filename, identifying the file type. Turn them on in File Explorer's View menu." },
+      { term: "Path", meaning: "A file's full address showing every folder from the drive down to the file, displayed in the address bar." },
+      { term: "Recycle Bin", meaning: "Where deleted files wait until the bin is emptied. Files deleted from USB drives or with Shift+Delete skip it entirely." },
+      { term: "Eject", meaning: "Telling Windows to finish writing and release a removable drive so it can be removed without corrupting files." },
+      { term: "Download", meaning: "Copying a file from the internet to your machine, normally into the Downloads folder." },
+      { term: "Upload", meaning: "Sending a file from your machine to a website through a Choose File or Browse control." },
+      { term: "Tab", meaning: "An additional page held open in the same browser window. Ctrl+T opens, Ctrl+W closes, Ctrl+Shift+T reopens." },
+      { term: "Search query", meaning: "The words you give a search engine. Specific keywords outperform full sentences every time." },
     ],
     homework: [
       {
@@ -228,8 +196,7 @@ export const computerBasicsTypingLessonsB: Record<string, SessionLecture> = {
       {
         criterion: "File management",
         passing: "Creates, renames, moves, copies and deletes correctly.",
-        excellent:
-          "Uses a consistent naming pattern, understands paths, and recovers a deleted file from the Recycle Bin unaided.",
+        excellent: "Uses a consistent naming pattern, understands paths, and recovers a deleted file from the Recycle Bin unaided.",
       },
       {
         criterion: "Removable media",
@@ -239,20 +206,17 @@ export const computerBasicsTypingLessonsB: Record<string, SessionLecture> = {
       {
         criterion: "Browser control",
         passing: "Opens, switches and closes tabs; uses back, refresh and bookmarks.",
-        excellent:
-          "Uses keyboard tab control, history and bookmarks as a working system rather than by accident.",
+        excellent: "Uses keyboard tab control, history and bookmarks as a working system rather than by accident.",
       },
       {
         criterion: "Searching",
         passing: "Finds the requested information.",
-        excellent:
-          "Demonstrably refines queries, uses quotes and exclusions, and judges source credibility rather than taking the first result.",
+        excellent: "Demonstrably refines queries, uses quotes and exclusions, and judges source credibility rather than taking the first result.",
       },
       {
         criterion: "Safe downloading",
         passing: "Downloads a file and locates it afterwards.",
-        excellent:
-          "Checks the address and the file extension before downloading and can identify a suspicious download.",
+        excellent: "Checks the address and the file extension before downloading and can identify a suspicious download.",
       },
     ],
     faqs: [
@@ -438,46 +402,14 @@ export const computerBasicsTypingLessonsB: Record<string, SessionLecture> = {
       "When anything creates urgency, stop. Every effective scam is built on making you act before you think. Waiting five minutes costs nothing and defeats almost all of them, because the pressure cannot survive a pause.",
     ],
     vocabulary: [
-      {
-        term: "Attachment",
-        meaning:
-          "A file sent with an email. Attach before writing the body so you do not send without it.",
-      },
-      {
-        term: "Cc / Bcc",
-        meaning:
-          "Copy others visibly, or invisibly. Use Bcc for groups who do not know each other.",
-      },
-      {
-        term: "Cloud storage",
-        meaning:
-          "Files kept on remote servers, accessible anywhere and surviving loss of your device.",
-      },
-      {
-        term: "Share link permission",
-        meaning:
-          "The access level attached to a shared file — view, comment or edit. Check it every time.",
-      },
-      {
-        term: "Passphrase",
-        meaning:
-          "A password built from several unrelated words. Length resists guessing better than symbols do.",
-      },
-      {
-        term: "Password manager",
-        meaning:
-          "Software that generates and stores a unique password per site behind one master passphrase.",
-      },
-      {
-        term: "Multi-factor authentication",
-        meaning:
-          "A second verification step beyond the password, making a stolen password alone useless.",
-      },
-      {
-        term: "Phishing",
-        meaning:
-          "A message impersonating a trusted organisation to steal credentials. Recognisable by urgency and a wrong address.",
-      },
+      { term: "Attachment", meaning: "A file sent with an email. Attach before writing the body so you do not send without it." },
+      { term: "Cc / Bcc", meaning: "Copy others visibly, or invisibly. Use Bcc for groups who do not know each other." },
+      { term: "Cloud storage", meaning: "Files kept on remote servers, accessible anywhere and surviving loss of your device." },
+      { term: "Share link permission", meaning: "The access level attached to a shared file — view, comment or edit. Check it every time." },
+      { term: "Passphrase", meaning: "A password built from several unrelated words. Length resists guessing better than symbols do." },
+      { term: "Password manager", meaning: "Software that generates and stores a unique password per site behind one master passphrase." },
+      { term: "Multi-factor authentication", meaning: "A second verification step beyond the password, making a stolen password alone useless." },
+      { term: "Phishing", meaning: "A message impersonating a trusted organisation to steal credentials. Recognisable by urgency and a wrong address." },
     ],
     homework: [
       {
@@ -505,32 +437,27 @@ export const computerBasicsTypingLessonsB: Record<string, SessionLecture> = {
       {
         criterion: "Email competence",
         passing: "Creates an account, sends and receives with attachments.",
-        excellent:
-          "Professional address and subject lines, recovery contacts set, inbox organised with labels, and search used rather than scrolling.",
+        excellent: "Professional address and subject lines, recovery contacts set, inbox organised with labels, and search used rather than scrolling.",
       },
       {
         criterion: "Online tasks",
         passing: "Completes a form, joins a meeting and uploads a file.",
-        excellent:
-          "Handles validation errors calmly, tests audio and camera before joining, and sets share permissions deliberately.",
+        excellent: "Handles validation errors calmly, tests audio and camera before joining, and sets share permissions deliberately.",
       },
       {
         criterion: "Security practice",
         passing: "Creates a strong password and knows not to reuse it.",
-        excellent:
-          "Uses a password manager, has MFA enabled on email, and can explain why reuse is the real danger.",
+        excellent: "Uses a password manager, has MFA enabled on email, and can explain why reuse is the real danger.",
       },
       {
         criterion: "Scam recognition",
         passing: "Identifies the obvious scam examples.",
-        excellent:
-          "Identifies the tell in each example, states the correct response, and can explain why urgency is the mechanism.",
+        excellent: "Identifies the tell in each example, states the correct response, and can explain why urgency is the mechanism.",
       },
       {
         criterion: "Independence",
         passing: "Completes the practical with occasional hesitation.",
-        excellent:
-          "Completes every task unaided, in order, and explains what they are doing while doing it.",
+        excellent: "Completes every task unaided, in order, and explains what they are doing while doing it.",
       },
     ],
     faqs: [

@@ -13,64 +13,64 @@ than the equivalent page on any AdSense-approved competitor.
 **Verified samples analysed:** SQL Tutorial hub, "Advantages and Disadvantages of Machine Learning",
 "How to Become a Data Analyst in 2025".
 
-| Attribute           | What they do                                                                                                                                                                                                               |
-| ------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Article length      | 700–1,100 words                                                                                                                                                                                                            |
-| Structure           | H1 title → short intro → numbered H3s under H2 sections → conclusion                                                                                                                                                       |
-| Formatting          | Bold key terms, bullet lists with bold lead-ins ("Data Collection:", "Step 1:")                                                                                                                                            |
-| Paragraph style     | Short, 2–4 sentences, definition-first                                                                                                                                                                                     |
-| Internal links      | 87–213 per page; near-zero external links. Every noun links to another GFG page                                                                                                                                            |
-| External links      | Essentially none — they never cite sources                                                                                                                                                                                 |
-| Freshness signal    | "Last Updated" date stamp at top                                                                                                                                                                                           |
-| Tone                | Encyclopedic, impersonal, third person                                                                                                                                                                                     |
-| Audience framing    | Global generic student; examples are US-centric ("e-commerce platforms")                                                                                                                                                   |
+| Attribute | What they do |
+|---|---|
+| Article length | 700–1,100 words |
+| Structure | H1 title → short intro → numbered H3s under H2 sections → conclusion |
+| Formatting | Bold key terms, bullet lists with bold lead-ins ("Data Collection:", "Step 1:") |
+| Paragraph style | Short, 2–4 sentences, definition-first |
+| Internal links | 87–213 per page; near-zero external links. Every noun links to another GFG page |
+| External links | Essentially none — they never cite sources |
+| Freshness signal | "Last Updated" date stamp at top |
+| Tone | Encyclopedic, impersonal, third person |
+| Audience framing | Global generic student; examples are US-centric ("e-commerce platforms") |
 | Weaknesses observed | Wall-of-text density; no local context anywhere; generic advice that ignores cost/reality differences between markets; no author byline on many articles; heavy ad clutter mid-content; conclusions are one flat paragraph |
 
 ### Programiz
 
 **Verified samples:** Python Keywords & Identifiers reference, tutorial index pages.
 
-| Attribute            | What they do                                                                                                                                |
-| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| Lesson length        | ~800–1,200 words                                                                                                                            |
-| Structure            | Title → "What is X?" → syntax block → worked example → output → explanation → related topics                                                |
-| Code-first teaching  | 19–22 code blocks per lesson; every concept shown in runnable code                                                                          |
-| Interactive elements | Embedded online compilers ("Try it yourself")                                                                                               |
-| Progression          | Explicit course index sidebar showing where you are in a sequence                                                                           |
-| Tone                 | Friendly second person ("you will learn"), patient, beginner-assuming                                                                       |
-| Internal links       | ~181–377 per page including persistent course-index rail                                                                                    |
-| Weaknesses observed  | Examples are abstract (foo/bar) with no real-world anchoring; no career or salary context; upsell interruptions to Programiz PRO mid-lesson |
+| Attribute | What they do |
+|---|---|
+| Lesson length | ~800–1,200 words |
+| Structure | Title → "What is X?" → syntax block → worked example → output → explanation → related topics |
+| Code-first teaching | 19–22 code blocks per lesson; every concept shown in runnable code |
+| Interactive elements | Embedded online compilers ("Try it yourself") |
+| Progression | Explicit course index sidebar showing where you are in a sequence |
+| Tone | Friendly second person ("you will learn"), patient, beginner-assuming |
+| Internal links | ~181–377 per page including persistent course-index rail |
+| Weaknesses observed | Examples are abstract (foo/bar) with no real-world anchoring; no career or salary context; upsell interruptions to Programiz PRO mid-lesson |
 
 ### TechCabal (Nigerian tech news)
 
 **Verified sample:** Moniepoint $110M funding article.
 
-| Attribute           | What they do                                                                                                              |
-| ------------------- | ------------------------------------------------------------------------------------------------------------------------- |
-| Article length      | 400–800 words for news                                                                                                    |
-| Structure           | Headline with numbers → lede (who/what/how much) → body with quotes → context → related posts                             |
-| Local specificity   | Naira/dollar amounts, named companies, named people, dates — every fact anchored                                          |
-| Schema              | NewsArticle JSON-LD complete with author Person entity                                                                    |
-| Bylines             | Named authors with author pages                                                                                           |
-| Tone                | Business-journalistic, punchy, assumes savvy reader                                                                       |
+| Attribute | What they do |
+|---|---|
+| Article length | 400–800 words for news |
+| Structure | Headline with numbers → lede (who/what/how much) → body with quotes → context → related posts |
+| Local specificity | Naira/dollar amounts, named companies, named people, dates — every fact anchored |
+| Schema | NewsArticle JSON-LD complete with author Person entity |
+| Bylines | Named authors with author pages |
+| Tone | Business-journalistic, punchy, assumes savvy reader |
 | Weaknesses observed | No educational depth (they report, never explain); articles age fast; no learning paths; nothing actionable for a learner |
 
 ### TechNext24 (Nigerian tech news)
 
 **Verified samples:** homepage + news category pages.
 
-| Attribute           | What they do                                                                                                |
-| ------------------- | ----------------------------------------------------------------------------------------------------------- |
-| Volume play         | 74+ articles visible, high-frequency publishing                                                             |
-| Length              | ~545 words average                                                                                          |
-| Style               | WordPress news template; headline → summary → embeds                                                        |
+| Attribute | What they do |
+|---|---|
+| Volume play | 74+ articles visible, high-frequency publishing |
+| Length | ~545 words average |
+| Style | WordPress news template; headline → summary → embeds |
 | Weaknesses observed | Thin articles; little original analysis; SEO-driven aggregation tone; weak internal linking compared to GFG |
 
 ### Cross-competitor synthesis — the standard we must beat
 
 1. **Depth ceiling:** The best education competitors cap out around 1,000–1,200 words per page. Most pages are shorter.
 2. **Context blindness:** Nobody writes specifically for Nigerian learners. Salary figures are USD; degree advice assumes US systems; tool recommendations ignore local market reality (e.g., which BI tools Nigerian banks actually use).
-3. **Actionability gap:** Content explains concepts but rarely tells readers what to _do this week_.
+3. **Actionability gap:** Content explains concepts but rarely tells readers what to *do this week*.
 4. **Linking extremes:** GFG over-links (200+ links = noise); TechCabal/TechNext24 under-link (news articles link nowhere). Nobody does curated, purposeful linking.
 5. **Trust signals:** Few bylines, no review process claims, stale dates, no transparent methodology.
 6. **Formatting:** Either wall-of-text (GFG) or thin listicles (TechNext24). Nobody does clean modern layouts with callouts, tables and honest caveats.
@@ -154,19 +154,15 @@ Every entry gives a complete, satisfying answer in under two minutes of reading:
 {One-sentence plain definition.}
 
 ## Why it matters
-
 {Jobs/money/decisions angle.}
 
 ## {Term} in Nigerian workplaces
-
 {Named-context example: banks, fintechs, telcos, SMEs.}
 
 ## {Term} vs {commonly-confused term}
-
 {Two-column comparison table.}
 
 ## Where to learn more
-
 - Guide: [{related guide}](link)
 - Taught in: [{program}](link, max one)
 ```
@@ -176,7 +172,6 @@ Every entry gives a complete, satisfying answer in under two minutes of reading:
 **Internal links:** 2–4 out (guides, one program); inbound from every guide that uses the term (link first mention).
 **Schema:** DefinedTerm + BreadcrumbList.
 **Checklist before publish:**
-
 - [ ] Definition passes the "explain to a smart teenager" test
 - [ ] Nigerian workplace example present with at least one named sector/company type
 - [ ] Confusion-pair table included where applicable
@@ -191,7 +186,7 @@ Every entry gives a complete, satisfying answer in under two minutes of reading:
 
 **Purpose:** Deepen program sections into individually indexable curriculum pages; capture long-tail queries ("what do you learn in a cybersecurity bootcamp week by week"); give applicants genuine decision-making material.
 
-**Competitor benchmark:** Bootcamp competitors (AltSchool, HyperionDev) publish module _names_, sometimes lesson counts — almost never actual curriculum detail. GFG tutorials cover similar skills generically with zero structure/accountability framing.
+**Competitor benchmark:** Bootcamp competitors (AltSchool, HyperionDev) publish module *names*, sometimes lesson counts — almost never actual curriculum detail. GFG tutorials cover similar skills generically with zero structure/accountability framing.
 
 **Superseding formula — the syllabus competitors won't publish:**
 
@@ -212,28 +207,22 @@ Each module page publishes what competitors hide:
 {2–3 sentence scope summary incl. hours/lessons.}
 
 ## What this module covers (and what it doesn't)
-
 ...
 
 ## The week-by-week arc
-
 Table: Week | Focus | Deliverable
 
 ## What you'll build
-
 - {artifact 1}
 - {artifact 2}
 
 ## Skills you'll demonstrate
-
 Checklist of observable abilities.
 
 ## Who thrives here, who struggles
-
 Honest difficulty notes.
 
 ## How you're assessed
-
 Rubric summary + who grades it.
 
 [Related: full {program} curriculum] (single program link)
@@ -243,7 +232,6 @@ Rubric summary + who grades it.
 **Internal links:** up to sibling modules (prev/next), parent program (one), 2–3 glossary terms.
 **Schema:** Course (isPartOf program course) + BreadcrumbList.
 **Checklist:**
-
 - [ ] Names real tools/versions taught
 - [ ] Includes at least one "what this module deliberately skips"
 - [ ] Week-by-week table present
@@ -277,25 +265,15 @@ Rubric summary + who grades it.
 {Honest one-paragraph summary incl. realistic timeline to employability.}
 
 ## What the job actually involves day-to-day
-
 ## The Nigerian market: who hires and what they pay
-
 Salary band table (naira, dated, sourced from postings we see).
-
 ## Entry routes compared (degree / bootcamp / self-taught / transfer)
-
 Comparison table with cost, time, risk columns.
-
 ## The skill stack, in order
-
 Numbered stages with time estimates.
-
 ## Your first 90 days: a week-by-week plan
-
 ## What interviews here actually test
-
 ## Three ways people stall (and how to avoid each)
-
 ## Where CEA fits (optional path, placed last)
 ```
 
@@ -304,7 +282,6 @@ Numbered stages with time estimates.
 **Schema:** Article + FAQPage (add 3–4 common questions per guide: salary, degree necessity, timeline) + BreadcrumbList.
 **Freshness:** reviewed quarterly; visible "last reviewed" date; salary tables dated explicitly.
 **Checklist:**
-
 - [ ] Salary figures in naira WITH as-of date
 - [ ] At least 3 named Nigerian employer categories/companies
 - [ ] Entry-route comparison table includes costs in naira
@@ -313,7 +290,6 @@ Numbered stages with time estimates.
 - [ ] FAQPage JSON-LD rendered
 
 **Priority order (by search demand × our authority):**
-
 1. Data Analyst · 2. Cybersecurity/SOC Analyst · 3. Cloud Engineer · 4. Frontend Developer · 5. Backend Developer · 6. UI/UX Designer · 7. DevOps Engineer · 8. Product Manager · 9. Digital Marketer · 10. IT Support Technician · 11. Mobile Developer · 12. Data Scientist · 13. QA Tester · 14. Technical Writer · 15. Scrum Master · 16. Database Administrator · 17. Network Engineer · 18. ML Engineer · 19. Growth Marketer · 20. Tech Sales Engineer
 
 ---
@@ -333,7 +309,6 @@ Numbered stages with time estimates.
 5. **Download/print affordances** without capture.
 
 **Resource backlog (initial 12):**
-
 1. Junior developer CV template (Nigerian format + ATS notes)
 2. Data analyst portfolio case study outline
 3. SOC analyst interview question bank (30 questions w/ guidance)
@@ -350,7 +325,6 @@ Numbered stages with time estimates.
 **Length target:** 600–1,000 words around the asset (asset itself excluded).
 **Schema:** Article + HowTo where step-based.
 **Checklist:**
-
 - [ ] Resource fully usable without signup
 - [ ] Completed example included
 - [ ] Common-mistakes section present
@@ -401,15 +375,15 @@ Every piece passes through this before publish:
 
 Track monthly in Search Console + analytics:
 
-| Metric                          | Baseline (2026-08) | 3-month target     |
-| ------------------------------- | ------------------ | ------------------ |
-| Indexed pages                   | 66                 | 220+               |
-| Pages with ≥600 words           | 26                 | 120+               |
-| Internal links per content page | ~3                 | 6–8                |
-| External authority citations    | ~0                 | 2–4/page on guides |
-| Non-brand organic clicks        | minimal            | +300%              |
-| Glossary entries live           | 0                  | 50+                |
-| Career guides live              | 0                  | 20                 |
-| Module pages live               | 0                  | 40                 |
+| Metric | Baseline (2026-08) | 3-month target |
+|---|---|---|
+| Indexed pages | 66 | 220+ |
+| Pages with ≥600 words | 26 | 120+ |
+| Internal links per content page | ~3 | 6–8 |
+| External authority citations | ~0 | 2–4/page on guides |
+| Non-brand organic clicks | minimal | +300% |
+| Glossary entries live | 0 | 50+ |
+| Career guides live | 0 | 20 |
+| Module pages live | 0 | 40 |
 
 The compounding effect: glossary terms interlink with guides, guides interlink with module pages, module pages anchor to programs — every new piece strengthens every old piece. That web is what neither the volume players (thin news) nor the depth players (generic tutorials) build, and it is how each CEA page outranks equivalents from AdSense-approved competitors.

@@ -195,46 +195,14 @@ export const onlineTeachingLessonsB: Record<string, SessionLecture> = {
       "Apply your late-work policy evenly, including to the sympathetic case. A strict rule applied consistently is respected; a lenient one applied unevenly is resented, because students always notice who got the exception.",
     ],
     vocabulary: [
-      {
-        term: "Reference sheet",
-        meaning:
-          "A one-page tool for the moment of use: steps in order, key commands bolded, one worked example.",
-      },
-      {
-        term: "Worked example",
-        meaning:
-          "A problem solved showing the reasoning, not just the answer. Without reasoning it cannot be transferred.",
-      },
-      {
-        term: "Task-based assignment",
-        meaning:
-          "Something a person would do in real life. Produces competence where an exercise produces compliance.",
-      },
-      {
-        term: "Stated standard",
-        meaning:
-          "What a correct submission looks like, given in advance. Lets students self-check before submitting.",
-      },
-      {
-        term: "Distractor",
-        meaning:
-          "A wrong answer in a quiz. Built from real student errors, it diagnoses; built at random, it only records failure.",
-      },
-      {
-        term: "Diagnostic quiz",
-        meaning:
-          "A short early check that reveals where thinking goes wrong, so it can be fixed while it still can be.",
-      },
-      {
-        term: "Silent non-compliance",
-        meaning:
-          "Not doing the work without asking why. Caused by unclear instructions and mistaken for laziness.",
-      },
-      {
-        term: "Materials system",
-        meaning:
-          "Reusable templates and a question bank. Costs more once and much less every time after.",
-      },
+      { term: "Reference sheet", meaning: "A one-page tool for the moment of use: steps in order, key commands bolded, one worked example." },
+      { term: "Worked example", meaning: "A problem solved showing the reasoning, not just the answer. Without reasoning it cannot be transferred." },
+      { term: "Task-based assignment", meaning: "Something a person would do in real life. Produces competence where an exercise produces compliance." },
+      { term: "Stated standard", meaning: "What a correct submission looks like, given in advance. Lets students self-check before submitting." },
+      { term: "Distractor", meaning: "A wrong answer in a quiz. Built from real student errors, it diagnoses; built at random, it only records failure." },
+      { term: "Diagnostic quiz", meaning: "A short early check that reveals where thinking goes wrong, so it can be fixed while it still can be." },
+      { term: "Silent non-compliance", meaning: "Not doing the work without asking why. Caused by unclear instructions and mistaken for laziness." },
+      { term: "Materials system", meaning: "Reusable templates and a question bank. Costs more once and much less every time after." },
     ],
     homework: [
       {
@@ -262,32 +230,27 @@ export const onlineTeachingLessonsB: Record<string, SessionLecture> = {
       {
         criterion: "Materials",
         passing: "Sends the slides.",
-        excellent:
-          "A one-page reference designed for the moment of use, with steps in order, bolded key commands and a worked example that shows the reasoning.",
+        excellent: "A one-page reference designed for the moment of use, with steps in order, bolded key commands and a worked example that shows the reasoning.",
       },
       {
         criterion: "Assignments",
         passing: "Sets homework.",
-        excellent:
-          "A real-life task slightly harder than the lesson, all materials attached, the standard stated in advance, and sized honestly for working adults.",
+        excellent: "A real-life task slightly harder than the lesson, all materials attached, the standard stated in advance, and sized honestly for working adults.",
       },
       {
         criterion: "Quizzes",
         passing: "Tests recall.",
-        excellent:
-          "Short, early and low-stakes, with every distractor built from a real student error and an explanation written for each answer.",
+        excellent: "Short, early and low-stakes, with every distractor built from a real student error and an explanation written for each answer.",
       },
       {
         criterion: "Communication",
         passing: "Answers questions.",
-        excellent:
-          "Instructions leaving nothing to guess, one channel for announcements and one for questions with stated checking times, and answers given publicly so the whole class benefits.",
+        excellent: "Instructions leaving nothing to guess, one channel for announcements and one for questions with stated checking times, and answers given publicly so the whole class benefits.",
       },
       {
         criterion: "Consistency and system",
         passing: "Handles issues as they come.",
-        excellent:
-          "A stated policy applied evenly including to sympathetic cases, non-completion treated diagnostically, and reusable templates and a question bank built.",
+        excellent: "A stated policy applied evenly including to sympathetic cases, non-completion treated diagnostically, and reusable templates and a question bank built.",
       },
     ],
     faqs: [
@@ -499,45 +462,14 @@ export const onlineTeachingLessonsB: Record<string, SessionLecture> = {
       "Interleave slides, demonstration and exercise around a single task rather than sequencing them. Short cycles keep every explanation within minutes of the action it explains, so nothing has to be held in memory waiting for its turn.",
     ],
     vocabulary: [
-      {
-        term: "Course structure",
-        meaning: "A sequence in which each part makes the next possible. Not a list of topics.",
-      },
-      {
-        term: "Dependency ordering",
-        meaning:
-          "Sequencing so each prerequisite precedes what needs it. Derived by working backwards from the final competence.",
-      },
-      {
-        term: "Module",
-        meaning:
-          "A coherent unit of three to five lessons with its own deliverable. Self-contained enough to be useful alone.",
-      },
-      {
-        term: "Spiral curriculum",
-        meaning:
-          "Returning to earlier concepts at a higher level. Learning happens through repeated encounters, not single explanations.",
-      },
-      {
-        term: "Lesson shape",
-        meaning:
-          "Open, demonstrate, guided practice, independent practice, review, close. Proportions matter more than exact minutes.",
-      },
-      {
-        term: "Interleaving",
-        meaning:
-          "Alternating slide, demonstration and exercise around one task. Keeps explanation close to action.",
-      },
-      {
-        term: "Mode change",
-        meaning:
-          "Switching between watching, doing, listening and typing. Needed roughly every fifteen minutes online.",
-      },
-      {
-        term: "Summative feedback",
-        meaning:
-          "Assessment at module end about the deliverable. Tells the student what they can now do that they could not before.",
-      },
+      { term: "Course structure", meaning: "A sequence in which each part makes the next possible. Not a list of topics." },
+      { term: "Dependency ordering", meaning: "Sequencing so each prerequisite precedes what needs it. Derived by working backwards from the final competence." },
+      { term: "Module", meaning: "A coherent unit of three to five lessons with its own deliverable. Self-contained enough to be useful alone." },
+      { term: "Spiral curriculum", meaning: "Returning to earlier concepts at a higher level. Learning happens through repeated encounters, not single explanations." },
+      { term: "Lesson shape", meaning: "Open, demonstrate, guided practice, independent practice, review, close. Proportions matter more than exact minutes." },
+      { term: "Interleaving", meaning: "Alternating slide, demonstration and exercise around one task. Keeps explanation close to action." },
+      { term: "Mode change", meaning: "Switching between watching, doing, listening and typing. Needed roughly every fifteen minutes online." },
+      { term: "Summative feedback", meaning: "Assessment at module end about the deliverable. Tells the student what they can now do that they could not before." },
     ],
     homework: [
       {
@@ -565,32 +497,27 @@ export const onlineTeachingLessonsB: Record<string, SessionLecture> = {
       {
         criterion: "Course structure",
         passing: "Has a topic list.",
-        excellent:
-          "Derived by working backwards five times from a stated final competence, ordered by dependency, with week one producing a real capability and everything non-essential cut.",
+        excellent: "Derived by working backwards five times from a stated final competence, ordered by dependency, with week one producing a real capability and everything non-essential cut.",
       },
       {
         criterion: "Module design",
         passing: "Groups the lessons.",
-        excellent:
-          "Units of three to five each with its own deliverable, tested for self-containment, with spiralling concepts marked for later return.",
+        excellent: "Units of three to five each with its own deliverable, tested for self-containment, with spiralling concepts marked for later return.",
       },
       {
         criterion: "Lesson structure",
         passing: "Has an outline.",
-        excellent:
-          "All six segments with proportions that protect independent practice, and a mode change planned roughly every fifteen minutes.",
+        excellent: "All six segments with proportions that protect independent practice, and a mode change planned roughly every fifteen minutes.",
       },
       {
         criterion: "Integration",
         passing: "Uses slides and exercises.",
-        excellent:
-          "One slide, demonstration and exercise interleaved around a single task in short cycles, with each tool matched to the job it is actually good at.",
+        excellent: "One slide, demonstration and exercise interleaved around a single task in short cycles, with each tool matched to the job it is actually good at.",
       },
       {
         criterion: "Feedback placement",
         passing: "Gives feedback.",
-        excellent:
-          "Placed at four points — guided practice, review, submissions, module end — with every check early enough to still change something.",
+        excellent: "Placed at four points — guided practice, review, submissions, module end — with every check early enough to still change something.",
       },
     ],
     faqs: [
@@ -809,46 +736,14 @@ export const onlineTeachingLessonsB: Record<string, SessionLecture> = {
       "Write two improvements, not seven. Attention is finite and teaching already consumes most of it, so a lesson where you attempt seven changes gets worse while two specific ones actually land.",
     ],
     vocabulary: [
-      {
-        term: "Opening outcome",
-        meaning:
-          "The first sentence: what the class will be able to do. Gives a reason to pay attention that housekeeping does not.",
-      },
-      {
-        term: "Room check",
-        meaning:
-          "Testing microphone, camera, share and recording before the class. Prevents almost every teaching disaster.",
-      },
-      {
-        term: "Talk ratio",
-        meaning:
-          "How much the teacher spoke versus the class. Most first lessons are far too teacher-heavy.",
-      },
-      {
-        term: "Adjusting",
-        meaning:
-          "Changing the lesson in response to the class. The core skill, and the opposite of performing a plan.",
-      },
-      {
-        term: "Productive struggle",
-        meaning:
-          "Letting a learner work at difficulty briefly. Teaches more than being rescued, and shows you where they are lost.",
-      },
-      {
-        term: "Critique sorting",
-        meaning:
-          "Dividing feedback into genuinely wrong, preference, and the critic's own situation. Only the first must change.",
-      },
-      {
-        term: "Improvement plan",
-        meaning:
-          "Two specific, actionable changes for the next lesson. Seven attempted changes make a lesson worse.",
-      },
-      {
-        term: "Recording consent",
-        meaning:
-          "Announcing that you are recording. An ethical obligation and in some contexts a legal one.",
-      },
+      { term: "Opening outcome", meaning: "The first sentence: what the class will be able to do. Gives a reason to pay attention that housekeeping does not." },
+      { term: "Room check", meaning: "Testing microphone, camera, share and recording before the class. Prevents almost every teaching disaster." },
+      { term: "Talk ratio", meaning: "How much the teacher spoke versus the class. Most first lessons are far too teacher-heavy." },
+      { term: "Adjusting", meaning: "Changing the lesson in response to the class. The core skill, and the opposite of performing a plan." },
+      { term: "Productive struggle", meaning: "Letting a learner work at difficulty briefly. Teaches more than being rescued, and shows you where they are lost." },
+      { term: "Critique sorting", meaning: "Dividing feedback into genuinely wrong, preference, and the critic's own situation. Only the first must change." },
+      { term: "Improvement plan", meaning: "Two specific, actionable changes for the next lesson. Seven attempted changes make a lesson worse." },
+      { term: "Recording consent", meaning: "Announcing that you are recording. An ethical obligation and in some contexts a legal one." },
     ],
     homework: [
       {
@@ -876,32 +771,27 @@ export const onlineTeachingLessonsB: Record<string, SessionLecture> = {
       {
         criterion: "Preparation",
         passing: "Has a plan.",
-        excellent:
-          "Room tested twenty minutes early with files open and notifications off, opening outcome written, and prepared answers for audio failure, an unanswerable question and wrong timing.",
+        excellent: "Room tested twenty minutes early with files open and notifications off, opening outcome written, and prepared answers for audio failure, an unanswerable question and wrong timing.",
       },
       {
         criterion: "Delivery",
         passing: "Gets through the material.",
-        excellent:
-          "Opens with the outcome, audio confirmed first, tasks interleaved in short cycles, silence treated as confusion, specific questions asked and people called by name.",
+        excellent: "Opens with the outcome, audio confirmed first, tasks interleaved in short cycles, silence treated as confusion, specific questions asked and people called by name.",
       },
       {
         criterion: "Adjustment",
         passing: "Follows the plan.",
-        excellent:
-          "Goes back when the class is confused and moves on when they have it, using the pre-marked cut to protect the objective rather than the schedule.",
+        excellent: "Goes back when the class is confused and moves on when they have it, using the pre-marked cut to protect the objective rather than the schedule.",
       },
       {
         criterion: "Review",
         passing: "Watches the recording.",
-        excellent:
-          "Reviewed against four specific questions — attention drop, talk ratio, repetition and technology cost — watching what the class did rather than how the teacher looked.",
+        excellent: "Reviewed against four specific questions — attention drop, talk ratio, repetition and technology cost — watching what the class did rather than how the teacher looked.",
       },
       {
         criterion: "Feedback and improvement",
         passing: "Accepts comments.",
-        excellent:
-          "All feedback recorded in silence, sorted into wrong, preference and the critic's situation, with exactly two specific actionable changes written for the next lesson.",
+        excellent: "All feedback recorded in silence, sorted into wrong, preference and the critic's situation, with exactly two specific actionable changes written for the next lesson.",
       },
     ],
     faqs: [

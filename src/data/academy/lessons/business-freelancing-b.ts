@@ -189,46 +189,14 @@ export const businessFreelancingLessonsB: Record<string, SessionLecture> = {
       "Raise prices on a schedule rather than when you feel confident. After every three or four completed projects, new clients first and existing clients at a stated review date — the arithmetic favours the increase almost every time.",
     ],
     vocabulary: [
-      {
-        term: "Service package",
-        meaning:
-          "Named deliverables at a set price. Easier to buy and much harder to expand than an open-ended quote.",
-      },
-      {
-        term: "Hourly pricing",
-        meaning:
-          "Payment per hour worked. Simple for unpredictable tasks and a ceiling on income for everything else.",
-      },
-      {
-        term: "Project pricing",
-        meaning:
-          "A fixed price for a defined deliverable. Rewards speed and skill; requires controlled scope.",
-      },
-      {
-        term: "Retainer",
-        meaning:
-          "A fixed monthly fee for ongoing work. The structure that makes freelance income predictable.",
-      },
-      {
-        term: "Value-based pricing",
-        meaning:
-          "Pricing against what the outcome is worth to the client. Requires evidence and confidence; the highest ceiling.",
-      },
-      {
-        term: "Deposit",
-        meaning:
-          "Payment before work starts, usually fifty per cent. A commitment test as much as cash flow.",
-      },
-      {
-        term: "Payment terms",
-        meaning:
-          "When payment is due and what happens if it is late. Unenforceable unless written and read.",
-      },
-      {
-        term: "Scope control",
-        meaning:
-          "Keeping a job inside its agreed edges through named deliverables, defined revisions and priced extras.",
-      },
+      { term: "Service package", meaning: "Named deliverables at a set price. Easier to buy and much harder to expand than an open-ended quote." },
+      { term: "Hourly pricing", meaning: "Payment per hour worked. Simple for unpredictable tasks and a ceiling on income for everything else." },
+      { term: "Project pricing", meaning: "A fixed price for a defined deliverable. Rewards speed and skill; requires controlled scope." },
+      { term: "Retainer", meaning: "A fixed monthly fee for ongoing work. The structure that makes freelance income predictable." },
+      { term: "Value-based pricing", meaning: "Pricing against what the outcome is worth to the client. Requires evidence and confidence; the highest ceiling." },
+      { term: "Deposit", meaning: "Payment before work starts, usually fifty per cent. A commitment test as much as cash flow." },
+      { term: "Payment terms", meaning: "When payment is due and what happens if it is late. Unenforceable unless written and read." },
+      { term: "Scope control", meaning: "Keeping a job inside its agreed edges through named deliverables, defined revisions and priced extras." },
     ],
     homework: [
       {
@@ -256,32 +224,27 @@ export const businessFreelancingLessonsB: Record<string, SessionLecture> = {
       {
         criterion: "Packaging",
         passing: "Quotes per job.",
-        excellent:
-          "Three packages with precisely named deliverables whose prices work together, giving clients a small way in and making the core look reasonable.",
+        excellent: "Three packages with precisely named deliverables whose prices work together, giving clients a small way in and making the core look reasonable.",
       },
       {
         criterion: "Pricing model",
         passing: "Charges something.",
-        excellent:
-          "A model chosen deliberately per package with written justification, a retainer calculated as predictable income, and a value-based figure estimated.",
+        excellent: "A model chosen deliberately per package with written justification, a retainer calculated as predictable income, and a value-based figure estimated.",
       },
       {
         criterion: "Payment protection",
         passing: "Gets paid eventually.",
-        excellent:
-          "A deposit before work, written terms with a stated late consequence, proper invoices, and final deliverables held until the balance clears.",
+        excellent: "A deposit before work, written terms with a stated late consequence, proper invoices, and final deliverables held until the balance clears.",
       },
       {
         criterion: "Scope control",
         passing: "Manages changes.",
-        excellent:
-          "Named deliverables, defined revision rounds, explicit exclusions, and every extra answered with a yes and a price.",
+        excellent: "Named deliverables, defined revision rounds, explicit exclusions, and every extra answered with a yes and a price.",
       },
       {
         criterion: "Commercial judgement",
         passing: "Takes the work offered.",
-        excellent:
-          "Prices raised on a schedule rather than on mood, and bad clients declined with the real cost of taking them understood.",
+        excellent: "Prices raised on a schedule rather than on mood, and bad clients declined with the real cost of taking them understood.",
       },
     ],
     faqs: [
@@ -498,40 +461,13 @@ export const businessFreelancingLessonsB: Record<string, SessionLecture> = {
     ],
     vocabulary: [
       { term: "Revenue", meaning: "Everything invoiced. Not the same as what you earned." },
-      {
-        term: "Costs",
-        meaning:
-          "Data, transport, power, tools, software, materials and tax. Without them, revenue tells you nothing.",
-      },
-      {
-        term: "Profit",
-        meaning: "Revenue minus costs. The only number that describes how the business is doing.",
-      },
-      {
-        term: "Commingling",
-        meaning:
-          "Mixing business and personal money. Makes it impossible to see what the business earns or costs.",
-      },
-      {
-        term: "Tax provision",
-        meaning:
-          "A percentage set aside from every payment. Turns tax from a crisis into a routine.",
-      },
-      {
-        term: "Buffer",
-        meaning:
-          "One or two months of costs held in reserve. What stops a slow month forcing you to accept bad work.",
-      },
-      {
-        term: "Client retention",
-        meaning:
-          "Keeping existing clients through follow-up and proposed next steps. Far cheaper than finding new ones.",
-      },
-      {
-        term: "Referral ask",
-        meaning:
-          "A specific request for one name, made at delivery. The highest-converting client source, and it must be asked for.",
-      },
+      { term: "Costs", meaning: "Data, transport, power, tools, software, materials and tax. Without them, revenue tells you nothing." },
+      { term: "Profit", meaning: "Revenue minus costs. The only number that describes how the business is doing." },
+      { term: "Commingling", meaning: "Mixing business and personal money. Makes it impossible to see what the business earns or costs." },
+      { term: "Tax provision", meaning: "A percentage set aside from every payment. Turns tax from a crisis into a routine." },
+      { term: "Buffer", meaning: "One or two months of costs held in reserve. What stops a slow month forcing you to accept bad work." },
+      { term: "Client retention", meaning: "Keeping existing clients through follow-up and proposed next steps. Far cheaper than finding new ones." },
+      { term: "Referral ask", meaning: "A specific request for one name, made at delivery. The highest-converting client source, and it must be asked for." },
     ],
     homework: [
       {
@@ -559,32 +495,27 @@ export const businessFreelancingLessonsB: Record<string, SessionLecture> = {
       {
         criterion: "Record keeping",
         passing: "Keeps some notes.",
-        excellent:
-          "A six-column sheet plus expense list, populated with three months of real data, with a scheduled weekly update and client folders for documents.",
+        excellent: "A six-column sheet plus expense list, populated with three months of real data, with a scheduled weekly update and client folders for documents.",
       },
       {
         criterion: "Financial understanding",
         passing: "Knows what was received.",
-        excellent:
-          "Revenue, costs and profit calculated for a real month, best and worst client identified, and the difference between income and profit understood.",
+        excellent: "Revenue, costs and profit calculated for a real month, best and worst client identified, and the difference between income and profit understood.",
       },
       {
         criterion: "Money discipline",
         passing: "Gets paid.",
-        excellent:
-          "A separate business account, a tax percentage applied to every payment, and a stated buffer target with a route to reaching it.",
+        excellent: "A separate business account, a tax percentage applied to every payment, and a stated buffer target with a route to reaching it.",
       },
       {
         criterion: "Repeat and referral",
         passing: "Hopes clients return.",
-        excellent:
-          "All four scripts written and sent — follow-up, next step, retainer offer and one-name referral ask — with a repeatable one-sentence description of the work.",
+        excellent: "All four scripts written and sent — follow-up, next step, retainer offer and one-name referral ask — with a repeatable one-sentence description of the work.",
       },
       {
         criterion: "Reputation",
         passing: "Is polite.",
-        excellent:
-          "Honest about capacity and price, quick to reply, prompt to disclose a delay, and understood that over-promising costs more than the job is worth.",
+        excellent: "Honest about capacity and price, quick to reply, prompt to disclose a delay, and understood that over-promising costs more than the job is worth.",
       },
     ],
     faqs: [
@@ -795,46 +726,14 @@ export const businessFreelancingLessonsB: Record<string, SessionLecture> = {
       "Take critique in silence and sort it afterwards. Most of it is useful even when bluntly delivered, and the instinct to defend yourself in the moment is what costs you the information you came for.",
     ],
     vocabulary: [
-      {
-        term: "Business plan",
-        meaning:
-          "The written answer to five questions: what, to whom, at what price, how found, how measured. One page, reviewed monthly.",
-      },
-      {
-        term: "Case study",
-        meaning:
-          "A portfolio piece written as problem, action and result. Evidence of value rather than of ability.",
-      },
-      {
-        term: "Price floor",
-        meaning:
-          "The cost of your time, data, transport and tools. The minimum you will quote, calculated rather than felt.",
-      },
-      {
-        term: "Pipeline action",
-        meaning:
-          "A weekly activity that produces prospects. A plan without dated actions is a set of intentions.",
-      },
-      {
-        term: "Pricing challenge",
-        meaning:
-          "The moment a client or critic attacks your price. Answered by explaining scope, never by defending the number.",
-      },
-      {
-        term: "Scope adjustment",
-        meaning:
-          "Changing deliverables instead of discounting. Protects the rate and teaches the client that price follows scope.",
-      },
-      {
-        term: "Critique sorting",
-        meaning:
-          "Dividing feedback into genuinely wrong, preference, and the critic's own situation. Only the first must change.",
-      },
-      {
-        term: "Ninety-day plan",
-        meaning:
-          "A week-by-week sequence with a success number. Long enough to produce results, short enough to stay honest.",
-      },
+      { term: "Business plan", meaning: "The written answer to five questions: what, to whom, at what price, how found, how measured. One page, reviewed monthly." },
+      { term: "Case study", meaning: "A portfolio piece written as problem, action and result. Evidence of value rather than of ability." },
+      { term: "Price floor", meaning: "The cost of your time, data, transport and tools. The minimum you will quote, calculated rather than felt." },
+      { term: "Pipeline action", meaning: "A weekly activity that produces prospects. A plan without dated actions is a set of intentions." },
+      { term: "Pricing challenge", meaning: "The moment a client or critic attacks your price. Answered by explaining scope, never by defending the number." },
+      { term: "Scope adjustment", meaning: "Changing deliverables instead of discounting. Protects the rate and teaches the client that price follows scope." },
+      { term: "Critique sorting", meaning: "Dividing feedback into genuinely wrong, preference, and the critic's own situation. Only the first must change." },
+      { term: "Ninety-day plan", meaning: "A week-by-week sequence with a success number. Long enough to produce results, short enough to stay honest." },
     ],
     homework: [
       {
@@ -862,32 +761,27 @@ export const businessFreelancingLessonsB: Record<string, SessionLecture> = {
       {
         criterion: "Plan quality",
         passing: "Has a rough idea.",
-        excellent:
-          "One page answering all five questions, every line actionable on a specific day, with monthly review numbers and a ninety-day sequence ending in a success number.",
+        excellent: "One page answering all five questions, every line actionable on a specific day, with monthly review numbers and a ninety-day sequence ending in a success number.",
       },
       {
         criterion: "Portfolio",
         passing: "Has samples.",
-        excellent:
-          "Three case studies each written as problem, action and result, with real businesses lined up for any missing piece and client quotes where available.",
+        excellent: "Three case studies each written as problem, action and result, with real businesses lined up for any missing piece and client quotes where available.",
       },
       {
         criterion: "Pricing defence",
         passing: "Quotes a figure.",
-        excellent:
-          "All three attacks answered by explaining scope rather than defending the number, with a floor calculated from real cost and no free work for businesses that can pay.",
+        excellent: "All three attacks answered by explaining scope rather than defending the number, with a floor calculated from real cost and no free work for businesses that can pay.",
       },
       {
         criterion: "Presentation",
         passing: "Explains the plan.",
-        excellent:
-          "Five minutes in listener order — client, packages, channels, first three pieces, ninety-day number — with specificity chosen over completeness.",
+        excellent: "Five minutes in listener order — client, packages, channels, first three pieces, ninety-day number — with specificity chosen over completeness.",
       },
       {
         criterion: "Response to critique",
         passing: "Listens politely.",
-        excellent:
-          "Every objection recorded without defending, sorted into change, preference and irrelevant, with the specific changes written down and the first week's actions scheduled.",
+        excellent: "Every objection recorded without defending, sorted into change, preference and irrelevant, with the specific changes written down and the first week's actions scheduled.",
       },
     ],
     faqs: [

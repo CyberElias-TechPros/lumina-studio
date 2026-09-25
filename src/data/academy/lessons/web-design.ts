@@ -179,41 +179,14 @@ export const webDesignLessonsA: Record<string, SessionLecture> = {
       "Practise by reverse-engineering rather than by copying tutorials. Inspecting a real site and rebuilding one section from what you find teaches decision-making; following a tutorial teaches typing.",
     ],
     vocabulary: [
-      {
-        term: "Client",
-        meaning: "Whatever requests — your browser. The side that runs HTML, CSS and JavaScript.",
-      },
-      {
-        term: "Server",
-        meaning: "A permanently connected computer holding files and answering requests.",
-      },
-      {
-        term: "DNS",
-        meaning:
-          "The system translating a domain name into an IP address, because networks route to numbers, not names.",
-      },
-      {
-        term: "IP address",
-        meaning: "The numeric address of a machine on the network, such as 104.21.44.9.",
-      },
-      {
-        term: "HTTP request",
-        meaning:
-          "The client's message asking for a resource at a path. Every image and stylesheet is another one.",
-      },
-      {
-        term: "Status code",
-        meaning: "The server's answer in a number: 200 found, 404 not found, 500 server error.",
-      },
-      {
-        term: "Browser cache",
-        meaning:
-          "Stored copies of files so a page loads faster. Hard-refresh with Ctrl+Shift+R to bypass it.",
-      },
-      {
-        term: "Developer tools",
-        meaning: "The built-in F12 panel for inspecting and temporarily editing any live page.",
-      },
+      { term: "Client", meaning: "Whatever requests — your browser. The side that runs HTML, CSS and JavaScript." },
+      { term: "Server", meaning: "A permanently connected computer holding files and answering requests." },
+      { term: "DNS", meaning: "The system translating a domain name into an IP address, because networks route to numbers, not names." },
+      { term: "IP address", meaning: "The numeric address of a machine on the network, such as 104.21.44.9." },
+      { term: "HTTP request", meaning: "The client's message asking for a resource at a path. Every image and stylesheet is another one." },
+      { term: "Status code", meaning: "The server's answer in a number: 200 found, 404 not found, 500 server error." },
+      { term: "Browser cache", meaning: "Stored copies of files so a page loads faster. Hard-refresh with Ctrl+Shift+R to bypass it." },
+      { term: "Developer tools", meaning: "The built-in F12 panel for inspecting and temporarily editing any live page." },
     ],
     homework: [
       {
@@ -241,32 +214,27 @@ export const webDesignLessonsA: Record<string, SessionLecture> = {
       {
         criterion: "Architecture understanding",
         passing: "Can describe client and server.",
-        excellent:
-          "Explains the full sequence from DNS to rendered page, and can say which side a given problem lives on.",
+        excellent: "Explains the full sequence from DNS to rendered page, and can say which side a given problem lives on.",
       },
       {
         criterion: "Language roles",
         passing: "Knows the three languages exist.",
-        excellent:
-          "States what each owns and can identify which one to look in for a given symptom.",
+        excellent: "States what each owns and can identify which one to look in for a given symptom.",
       },
       {
         criterion: "Environment",
         passing: "Has an editor and a browser.",
-        excellent:
-          "VS Code with Live Server, format on save and word wrap configured, and a page loading automatically on save.",
+        excellent: "VS Code with Live Server, format on save and word wrap configured, and a page loading automatically on save.",
       },
       {
         criterion: "Developer tools",
         passing: "Can open dev tools.",
-        excellent:
-          "Inspects elements, edits styles live, reads console errors and the Network panel, and uses the device toolbar.",
+        excellent: "Inspects elements, edits styles live, reads console errors and the Network panel, and uses the device toolbar.",
       },
       {
         criterion: "First page",
         passing: "Produces a page that loads.",
-        excellent:
-          "Correct document structure with a meaningful title, loads via Live Server, and can be inspected and temporarily edited in dev tools.",
+        excellent: "Correct document structure with a meaningful title, loads via Live Server, and can be inspected and temporarily edited in dev tools.",
       },
     ],
     faqs: [
@@ -308,8 +276,8 @@ export const webDesignLessonsA: Record<string, SessionLecture> = {
       {
         heading: "Document structure, and why each part exists",
         body: [
-          'Every HTML page has the same skeleton, and each piece has a job. `<!DOCTYPE html>` tells the browser to render in modern standards mode — omit it and the browser guesses, using an old compatibility mode that produces subtly wrong layouts. `<html lang="en">` is the root, and the `lang` attribute tells screen readers which language to pronounce and tells search engines which language the page is in; for Nigerian content that is usually `en`, and getting it right is a one-word accessibility win.',
-          '`<head>` holds what is not displayed: the `<title>`, which is the single most important piece of text on the page because it is what appears in a browser tab, in a search result and in a shared link; `<meta charset="utf-8">`, without which special characters such as the naira sign ₦ may render as garbage; the `<meta name="viewport">` tag, without which a phone renders the page as a shrunken desktop page and users must pinch-zoom; and links to stylesheets.',
+          "Every HTML page has the same skeleton, and each piece has a job. `<!DOCTYPE html>` tells the browser to render in modern standards mode — omit it and the browser guesses, using an old compatibility mode that produces subtly wrong layouts. `<html lang=\"en\">` is the root, and the `lang` attribute tells screen readers which language to pronounce and tells search engines which language the page is in; for Nigerian content that is usually `en`, and getting it right is a one-word accessibility win.",
+          "`<head>` holds what is not displayed: the `<title>`, which is the single most important piece of text on the page because it is what appears in a browser tab, in a search result and in a shared link; `<meta charset=\"utf-8\">`, without which special characters such as the naira sign ₦ may render as garbage; the `<meta name=\"viewport\">` tag, without which a phone renders the page as a shrunken desktop page and users must pinch-zoom; and links to stylesheets.",
           "`<body>` holds everything visible. That division — head for metadata, body for content — is the whole structure. The mistakes to avoid are cosmetic ones people copy from templates: a missing doctype, a missing lang, a missing viewport meta, and a title left as 'Document' or 'Untitled'. That last one is surprisingly common on Nigerian business sites and it costs them search visibility on every page, because the title is the primary thing a search engine reads.",
         ],
       },
@@ -334,14 +302,14 @@ export const webDesignLessonsA: Record<string, SessionLecture> = {
         heading: "Forms that collect what you need",
         body: [
           "The contact form is where a business website earns its money, and most of them are built badly. A form is `<form>` containing inputs, each wrapped or paired with a `<label>`. The label is not decoration — the `for` attribute must match the input's `id`, which makes the label clickable to focus the field, and makes a screen reader announce what the field is for. An input without a label is effectively invisible to a blind visitor, and a form full of them fails regardless of how it looks.",
-          'Use the **right input type**, because on a phone it changes the keyboard. `type="email"` gives an @ key, `type="tel"` gives a numeric keypad — which matters enormously for a Nigerian audience entering a phone number — `type="number"` for quantities, `type="date"` for a date picker, and `<textarea>` for anything longer than a sentence. Using `type="text"` for everything forces users onto the wrong keyboard, which is a real usability failure, not a pedantic one.',
+          "Use the **right input type**, because on a phone it changes the keyboard. `type=\"email\"` gives an @ key, `type=\"tel\"` gives a numeric keypad — which matters enormously for a Nigerian audience entering a phone number — `type=\"number\"` for quantities, `type=\"date\"` for a date picker, and `<textarea>` for anything longer than a sentence. Using `type=\"text\"` for everything forces users onto the wrong keyboard, which is a real usability failure, not a pedantic one.",
           "Add `required` to the fields you genuinely need, and use `placeholder` for a formatting example rather than as a label, because placeholder text disappears when typing begins and low-contrast placeholder text is hard to read. And be honest about what happens on submit: a form needs somewhere to send data, and on a static site that is a service such as Formspree or a WhatsApp link. A form that appears to work and silently discards the message is worse than no form at all, because the business believes it is receiving enquiries it never gets.",
         ],
       },
       {
         heading: "Images, and the mistakes that break pages",
         body: [
-          'An image is `<img src="photo.jpg" alt="description">`. The `alt` attribute is required and is not optional politeness: a screen reader reads it aloud, a search engine indexes it, and it is what displays when the image fails to load. Write what the image actually shows — `alt="Two-tier wedding cake with white icing and fresh roses"` — not `alt="image1"`, which tells nobody anything. For a purely decorative image, use `alt=""`, which correctly tells assistive technology to skip it.',
+          "An image is `<img src=\"photo.jpg\" alt=\"description\">`. The `alt` attribute is required and is not optional politeness: a screen reader reads it aloud, a search engine indexes it, and it is what displays when the image fails to load. Write what the image actually shows — `alt=\"Two-tier wedding cake with white icing and fresh roses\"` — not `alt=\"image1\"`, which tells nobody anything. For a purely decorative image, use `alt=\"\"`, which correctly tells assistive technology to skip it.",
           "Always set `width` and `height` attributes, or set the size in CSS. Without them the browser does not know how much space the image needs until it arrives, so the page shifts as images load — which is genuinely disorienting and is one of the measurable quality signals search engines use. And compress images before uploading: a phone photograph is often several megabytes, and a page carrying five of them will not load on a Nigerian mobile connection. Resize to the largest size you will display and compress; the visual difference is nil and the load time difference is enormous.",
           "The structural mistakes that break pages are few and they are all catchable. **Unclosed tags** — a `<div>` with no `</div>` — cause everything after to nest wrongly, and the visible symptom is usually layout chaos far from the actual error, which is why beginners cannot find it. **Nesting errors** — a block element inside an inline one, or a `<p>` inside a `<p>` — are silently corrected by the browser into something you did not intend. And **misused headings for size** destroy the outline. Turn on your editor's error highlighting and read it; the browser will not tell you, because it is designed to recover rather than complain.",
         ],
@@ -446,8 +414,8 @@ export const webDesignLessonsA: Record<string, SessionLecture> = {
         fix: "Every input needs a label whose for matches the input's id. Placeholder text is not a label — it vanishes when typing starts, and an unlabelled field is effectively invisible to a screen reader.",
       },
       {
-        problem: 'You used type="text" for the phone number',
-        fix: 'Use type="tel" so phones show a numeric keypad. Forcing a Nigerian user onto a full keyboard to type a phone number is a real usability failure, not a pedantic point.',
+        problem: "You used type=\"text\" for the phone number",
+        fix: "Use type=\"tel\" so phones show a numeric keypad. Forcing a Nigerian user onto a full keyboard to type a phone number is a real usability failure, not a pedantic point.",
       },
       {
         problem: "Your page shifts as images load",
@@ -473,46 +441,14 @@ export const webDesignLessonsA: Record<string, SessionLecture> = {
       "Compress images as a fixed step, not an afterthought. The visual difference after resizing and compressing is nil, and the load-time difference on a mobile connection is the difference between a visitor staying and leaving.",
     ],
     vocabulary: [
-      {
-        term: "DOCTYPE",
-        meaning:
-          "The declaration telling the browser to use modern standards mode. Omit it and the browser guesses.",
-      },
-      {
-        term: "Viewport meta",
-        meaning:
-          "The tag telling a phone to use its real width. Without it, pages render as shrunken desktop pages needing pinch-zoom.",
-      },
-      {
-        term: "Semantic element",
-        meaning:
-          "An element describing what content is — header, nav, main, section, footer — rather than a generic div.",
-      },
-      {
-        term: "Heading outline",
-        meaning:
-          "The ranked structure formed by h1 to h6. Chosen by importance, never by rendered size.",
-      },
-      {
-        term: "Alt text",
-        meaning:
-          "The description of an image, read aloud by screen readers and indexed by search engines. Required on every img.",
-      },
-      {
-        term: "Label",
-        meaning:
-          "The visible text describing a form field, linked by for to the input's id. Not the same as a placeholder.",
-      },
-      {
-        term: "Relative path",
-        meaning:
-          "A link written relative to the current file, such as about.html. Survives a domain change; absolute paths do not.",
-      },
-      {
-        term: "Layout shift",
-        meaning:
-          "Content moving as images load because their size was not declared. Disorienting, and a measured quality signal.",
-      },
+      { term: "DOCTYPE", meaning: "The declaration telling the browser to use modern standards mode. Omit it and the browser guesses." },
+      { term: "Viewport meta", meaning: "The tag telling a phone to use its real width. Without it, pages render as shrunken desktop pages needing pinch-zoom." },
+      { term: "Semantic element", meaning: "An element describing what content is — header, nav, main, section, footer — rather than a generic div." },
+      { term: "Heading outline", meaning: "The ranked structure formed by h1 to h6. Chosen by importance, never by rendered size." },
+      { term: "Alt text", meaning: "The description of an image, read aloud by screen readers and indexed by search engines. Required on every img." },
+      { term: "Label", meaning: "The visible text describing a form field, linked by for to the input's id. Not the same as a placeholder." },
+      { term: "Relative path", meaning: "A link written relative to the current file, such as about.html. Survives a domain change; absolute paths do not." },
+      { term: "Layout shift", meaning: "Content moving as images load because their size was not declared. Disorienting, and a measured quality signal." },
     ],
     homework: [
       {
@@ -540,32 +476,27 @@ export const webDesignLessonsA: Record<string, SessionLecture> = {
       {
         criterion: "Document structure",
         passing: "Page loads and displays content.",
-        excellent:
-          "Doctype, lang, charset, viewport and a descriptive title all present, with head and body correctly divided.",
+        excellent: "Doctype, lang, charset, viewport and a descriptive title all present, with head and body correctly divided.",
       },
       {
         criterion: "Headings",
         passing: "Has headings.",
-        excellent:
-          "Exactly one h1, then h2 and h3 chosen by rank, forming a meaningful outline with no levels skipped for size.",
+        excellent: "Exactly one h1, then h2 and h3 chosen by rank, forming a meaningful outline with no levels skipped for size.",
       },
       {
         criterion: "Semantics",
         passing: "Uses some semantic tags.",
-        excellent:
-          "header, nav, main, section and footer used appropriately, with div reserved for cases where nothing fits.",
+        excellent: "header, nav, main, section and footer used appropriately, with div reserved for cases where nothing fits.",
       },
       {
         criterion: "Forms",
         passing: "Has a form.",
-        excellent:
-          "Every field labelled with matching for and id, correct input types for phone and email, required used judiciously, and a real submission target tested.",
+        excellent: "Every field labelled with matching for and id, correct input types for phone and email, required used judiciously, and a real submission target tested.",
       },
       {
         criterion: "Images and validity",
         passing: "Images appear.",
-        excellent:
-          "Descriptive alt text on every meaningful image, empty alt on decorative ones, dimensions declared, files compressed, and a clean validator report.",
+        excellent: "Descriptive alt text on every meaningful image, empty alt on decorative ones, dimensions declared, files compressed, and a clean validator report.",
       },
     ],
     faqs: [
@@ -583,7 +514,7 @@ export const webDesignLessonsA: Record<string, SessionLecture> = {
       },
       {
         q: "Do I need alt text on every single image?",
-        a: 'Every img needs the attribute. Meaningful images need a real description; purely decorative ones get alt="" which correctly tells assistive technology to skip them. Omitting the attribute entirely is the error, because the browser may then read the filename aloud.',
+        a: "Every img needs the attribute. Meaningful images need a real description; purely decorative ones get alt=\"\" which correctly tells assistive technology to skip them. Omitting the attribute entirely is the error, because the browser may then read the filename aloud.",
       },
       {
         q: "How big should my images be?",
@@ -607,14 +538,14 @@ export const webDesignLessonsA: Record<string, SessionLecture> = {
       {
         heading: "Three ways to attach CSS, and the one to use",
         body: [
-          'CSS reaches HTML three ways. **Inline**, in a `style` attribute on an element — useful for nothing except a quick experiment, because it cannot be reused and it is nearly impossible to override later. **Internal**, in a `<style>` block in the head — fine for a single-page experiment. **External**, in a separate `.css` file linked with `<link rel="stylesheet" href="styles.css">` — which is what you will use for everything real.',
+          "CSS reaches HTML three ways. **Inline**, in a `style` attribute on an element — useful for nothing except a quick experiment, because it cannot be reused and it is nearly impossible to override later. **Internal**, in a `<style>` block in the head — fine for a single-page experiment. **External**, in a separate `.css` file linked with `<link rel=\"stylesheet\" href=\"styles.css\">` — which is what you will use for everything real.",
           "The external file is not a preference, it is the architecture. One stylesheet can restyle an entire site, so changing the brand colour becomes a one-line edit instead of a hundred; the browser caches it, so every page after the first loads faster; and the separation keeps HTML readable, which matters when you return to a client's site eight months later to change one thing. The convention is one folder with `index.html`, `styles.css` and an `images` folder — simple, obvious, and what every other developer expects.",
         ],
       },
       {
         heading: "Selectors and the cascade",
         body: [
-          'A **selector** picks which elements a rule applies to. The ones you need constantly: an **element** selector (`p`, `h2`) targets all of that type; a **class** selector (`.card`) targets anything carrying `class="card"` and is reusable, which makes it the workhorse; an **id** selector (`#hero`) targets one unique element and should be rare, because it cannot be reused and it is difficult to override; a **descendant** selector (`.card p`) targets paragraphs inside cards; and a **pseudo-class** like `a:hover` targets a state.',
+          "A **selector** picks which elements a rule applies to. The ones you need constantly: an **element** selector (`p`, `h2`) targets all of that type; a **class** selector (`.card`) targets anything carrying `class=\"card\"` and is reusable, which makes it the workhorse; an **id** selector (`#hero`) targets one unique element and should be rare, because it cannot be reused and it is difficult to override; a **descendant** selector (`.card p`) targets paragraphs inside cards; and a **pseudo-class** like `a:hover` targets a state.",
           "When two rules conflict, the **cascade** decides, in this order. **Specificity** first: an id beats a class, a class beats an element, so `#hero { color: red }` defeats `.title { color: blue }` even if the class rule comes later. Where specificity ties, **source order** wins — the later rule beats the earlier one, which is why the order of your stylesheet matters and why a reset or base stylesheet always goes first. Inline styles beat all of those, and `!important` beats everything, which is exactly why you should almost never use it: it does not solve a specificity problem, it buries it, and the next person to edit the file inherits a puzzle.",
           "The practical discipline is to write most rules against classes and keep specificity flat. When you find yourself chaining selectors to win a fight — `.page .section .card p` — that is a signal the stylesheet is disorganised, not that you need a longer selector.",
         ],
@@ -768,46 +699,14 @@ export const webDesignLessonsA: Record<string, SessionLecture> = {
       "Test the page with your browser's text size increased. It takes five seconds and it verifies that your rem-based scale, line heights and max-widths all still work — which is both an accessibility check and a robustness check on your own layout.",
     ],
     vocabulary: [
-      {
-        term: "External stylesheet",
-        meaning:
-          "A separate .css file linked from the head. The architecture that lets one file restyle a whole site.",
-      },
-      {
-        term: "Selector",
-        meaning:
-          "The part of a rule choosing which elements it applies to. Classes are the workhorse because they are reusable.",
-      },
-      {
-        term: "Specificity",
-        meaning:
-          "The ranking that decides which conflicting rule wins: id beats class, class beats element.",
-      },
-      {
-        term: "Cascade",
-        meaning:
-          "The resolution order for conflicts — specificity first, then source order. Why stylesheet order matters.",
-      },
-      {
-        term: "Box model",
-        meaning:
-          "Content, padding, border and margin, outward. Every layout problem is one of these four.",
-      },
-      {
-        term: "box-sizing: border-box",
-        meaning:
-          "Makes the declared width include padding and border, so layout arithmetic matches expectation.",
-      },
-      {
-        term: "Custom property",
-        meaning:
-          "A CSS variable declared in :root and used with var(). Holds the palette and spacing scale in one place.",
-      },
-      {
-        term: "rem",
-        meaning:
-          "A unit relative to the browser's base font size. Respects the user's text-size setting, unlike px.",
-      },
+      { term: "External stylesheet", meaning: "A separate .css file linked from the head. The architecture that lets one file restyle a whole site." },
+      { term: "Selector", meaning: "The part of a rule choosing which elements it applies to. Classes are the workhorse because they are reusable." },
+      { term: "Specificity", meaning: "The ranking that decides which conflicting rule wins: id beats class, class beats element." },
+      { term: "Cascade", meaning: "The resolution order for conflicts — specificity first, then source order. Why stylesheet order matters." },
+      { term: "Box model", meaning: "Content, padding, border and margin, outward. Every layout problem is one of these four." },
+      { term: "box-sizing: border-box", meaning: "Makes the declared width include padding and border, so layout arithmetic matches expectation." },
+      { term: "Custom property", meaning: "A CSS variable declared in :root and used with var(). Holds the palette and spacing scale in one place." },
+      { term: "rem", meaning: "A unit relative to the browser's base font size. Respects the user's text-size setting, unlike px." },
     ],
     homework: [
       {
@@ -835,32 +734,27 @@ export const webDesignLessonsA: Record<string, SessionLecture> = {
       {
         criterion: "Architecture",
         passing: "Styles appear on the page.",
-        excellent:
-          "An external stylesheet, box-sizing set universally, and no inline styles left in the HTML.",
+        excellent: "An external stylesheet, box-sizing set universally, and no inline styles left in the HTML.",
       },
       {
         criterion: "Cascade command",
         passing: "Rules apply as expected.",
-        excellent:
-          "Can explain which rule wins and why, resolves conflicts by flattening specificity, and uses no !important.",
+        excellent: "Can explain which rule wins and why, resolves conflicts by flattening specificity, and uses no !important.",
       },
       {
         criterion: "Box model",
         passing: "Layout mostly works.",
-        excellent:
-          "Border-box set, spacing chosen from padding versus margin deliberately, and any overflow diagnosed with the dev tools box diagram.",
+        excellent: "Border-box set, spacing chosen from padding versus margin deliberately, and any overflow diagnosed with the dev tools box diagram.",
       },
       {
         criterion: "Colour and type",
         passing: "The page is readable.",
-        excellent:
-          "Palette in custom properties, all text passing 4.5:1, a rem-based scale, line height and max-width set for readability.",
+        excellent: "Palette in custom properties, all text passing 4.5:1, a rem-based scale, line height and max-width set for readability.",
       },
       {
         criterion: "System",
         passing: "Spacing looks reasonable.",
-        excellent:
-          "A four-value spacing scale used everywhere, font weights limited to those used, and the page still works with increased browser text size.",
+        excellent: "A four-value spacing scale used everywhere, font weights limited to those used, and the page still works with increased browser text size.",
       },
     ],
     faqs: [

@@ -188,45 +188,14 @@ export const digitalMarketingLessonsB: Record<string, SessionLecture> = {
       "Batch the whole week in one sitting and keep an asset library. Batching groups the cost of switching into marketing mode, and the asset library removes the small frictions that are the real reason posts do not go out.",
     ],
     vocabulary: [
-      {
-        term: "Content calendar",
-        meaning:
-          "A plan of what will be posted and when, built from real available time rather than ambition.",
-      },
-      {
-        term: "Content pillar",
-        meaning:
-          "A recurring theme your content returns to. Keeps an account coherent and makes planning fast.",
-      },
-      {
-        term: "Batching",
-        meaning:
-          "Producing a period's content in one sitting. Groups the cost of switching into marketing mode and reveals the week's sequence.",
-      },
-      {
-        term: "Brand voice",
-        meaning:
-          "How your business sounds, written as adjectives and rules so anyone can reproduce it.",
-      },
-      {
-        term: "Visual identity",
-        meaning:
-          "Colours, fonts and photo style applied consistently. What makes a grid look like a business.",
-      },
-      {
-        term: "Asset library",
-        meaning:
-          "An organised folder of photos, graphics and logo sizes. Removes the friction that stops posts going out.",
-      },
-      {
-        term: "Template",
-        meaning:
-          "A reusable graphic in your colours and fonts. Faster than starting fresh and survives a busy week.",
-      },
-      {
-        term: "Posting cadence",
-        meaning: "How often and when you publish. Consistency matters more than frequency.",
-      },
+      { term: "Content calendar", meaning: "A plan of what will be posted and when, built from real available time rather than ambition." },
+      { term: "Content pillar", meaning: "A recurring theme your content returns to. Keeps an account coherent and makes planning fast." },
+      { term: "Batching", meaning: "Producing a period's content in one sitting. Groups the cost of switching into marketing mode and reveals the week's sequence." },
+      { term: "Brand voice", meaning: "How your business sounds, written as adjectives and rules so anyone can reproduce it." },
+      { term: "Visual identity", meaning: "Colours, fonts and photo style applied consistently. What makes a grid look like a business." },
+      { term: "Asset library", meaning: "An organised folder of photos, graphics and logo sizes. Removes the friction that stops posts going out." },
+      { term: "Template", meaning: "A reusable graphic in your colours and fonts. Faster than starting fresh and survives a busy week." },
+      { term: "Posting cadence", meaning: "How often and when you publish. Consistency matters more than frequency." },
     ],
     homework: [
       {
@@ -254,32 +223,27 @@ export const digitalMarketingLessonsB: Record<string, SessionLecture> = {
       {
         criterion: "Calendar realism",
         passing: "Has a posting plan.",
-        excellent:
-          "A post count derived from genuinely available hours, one deliberately empty slot, and a rhythm that survives a busy week.",
+        excellent: "A post count derived from genuinely available hours, one deliberately empty slot, and a rhythm that survives a busy week.",
       },
       {
         criterion: "Content pillars",
         passing: "Posts on varied topics.",
-        excellent:
-          "Three problem-derived pillars, each passing the thirty-post test, assigned to specific days so the week forms a sequence.",
+        excellent: "Three problem-derived pillars, each passing the thirty-post test, assigned to specific days so the week forms a sequence.",
       },
       {
         criterion: "Batching",
         passing: "Posts when able.",
-        excellent:
-          "A whole week produced in one sitting with an asset library and two reusable templates, and the finished week reviewed as a whole.",
+        excellent: "A whole week produced in one sitting with an asset library and two reusable templates, and the finished week reviewed as a whole.",
       },
       {
         criterion: "Brand voice",
         passing: "Sounds roughly consistent.",
-        excellent:
-          "Three adjectives and three rules, written down, reproducible by someone else, and applied in a visible rewrite of a generic caption.",
+        excellent: "Three adjectives and three rules, written down, reproducible by someone else, and applied in a visible rewrite of a generic caption.",
       },
       {
         criterion: "Visual consistency",
         passing: "Posts look reasonable.",
-        excellent:
-          "A recorded colour, font and photo system applied to every post, with templates built in it, chosen for consistency over polish.",
+        excellent: "A recorded colour, font and photo system applied to every post, with templates built in it, chosen for consistency over polish.",
       },
     ],
     faqs: [
@@ -489,44 +453,14 @@ export const digitalMarketingLessonsB: Record<string, SessionLecture> = {
       "Write your target cost per result before you launch, calculated from your margin. Deciding the pass mark in advance is the only reliable protection against talking a weak campaign into a second week.",
     ],
     vocabulary: [
-      {
-        term: "Organic reach",
-        meaning:
-          "Distribution without payment, driven by early signals — completion, saves, shares, comments.",
-      },
-      {
-        term: "Auction model",
-        meaning:
-          "How ad prices are set: competition for an audience plus advert quality. Better creative can cost less.",
-      },
-      {
-        term: "Ad objective",
-        meaning:
-          "What the campaign optimises for. Determines who sees the advert, not merely how it is measured.",
-      },
-      {
-        term: "Audience targeting",
-        meaning: "Choosing who sees an advert by demographics, interests and behaviours.",
-      },
-      {
-        term: "Retargeting",
-        meaning:
-          "Advertising to people who already engaged with you. Cheaper than cold audiences because they know you.",
-      },
-      {
-        term: "Cold audience",
-        meaning: "People with no prior contact. The most expensive attention you can buy.",
-      },
-      {
-        term: "Learning phase",
-        meaning:
-          "The period in which a campaign gathers data before optimising properly. Too small a budget never exits it.",
-      },
-      {
-        term: "Cost per result",
-        meaning:
-          "What one outcome — enquiry, click, sale — cost you. The number the whole campaign is judged on.",
-      },
+      { term: "Organic reach", meaning: "Distribution without payment, driven by early signals — completion, saves, shares, comments." },
+      { term: "Auction model", meaning: "How ad prices are set: competition for an audience plus advert quality. Better creative can cost less." },
+      { term: "Ad objective", meaning: "What the campaign optimises for. Determines who sees the advert, not merely how it is measured." },
+      { term: "Audience targeting", meaning: "Choosing who sees an advert by demographics, interests and behaviours." },
+      { term: "Retargeting", meaning: "Advertising to people who already engaged with you. Cheaper than cold audiences because they know you." },
+      { term: "Cold audience", meaning: "People with no prior contact. The most expensive attention you can buy." },
+      { term: "Learning phase", meaning: "The period in which a campaign gathers data before optimising properly. Too small a budget never exits it." },
+      { term: "Cost per result", meaning: "What one outcome — enquiry, click, sale — cost you. The number the whole campaign is judged on." },
     ],
     homework: [
       {
@@ -554,32 +488,27 @@ export const digitalMarketingLessonsB: Record<string, SessionLecture> = {
       {
         criterion: "Organic understanding",
         passing: "Knows posts get reach.",
-        excellent:
-          "Can name the signals that drive distribution in order of strength, diagnose why a specific post failed, and optimise deliberately for one signal.",
+        excellent: "Can name the signals that drive distribution in order of strength, diagnose why a specific post failed, and optimise deliberately for one signal.",
       },
       {
         criterion: "Paid understanding",
         passing: "Knows adverts cost money.",
-        excellent:
-          "Can explain the auction, why better creative costs less, what paid cannot fix, and the honest limits of amplifying a weak message.",
+        excellent: "Can explain the auction, why better creative costs less, what paid cannot fix, and the honest limits of amplifying a weak message.",
       },
       {
         criterion: "Objective selection",
         passing: "Picks an objective.",
-        excellent:
-          "Chooses from a stated business need, justifies it in writing, and understands that the objective determines who sees the advert.",
+        excellent: "Chooses from a stated business need, justifies it in writing, and understands that the objective determines who sees the advert.",
       },
       {
         criterion: "Targeting",
         passing: "Sets an age and location.",
-        excellent:
-          "Three layers with specific cities, two or three genuine interests, and a retargeting audience of people who already engaged.",
+        excellent: "Three layers with specific cities, two or three genuine interests, and a retargeting audience of people who already engaged.",
       },
       {
         criterion: "Test design",
         passing: "Plans to try an advert.",
-        excellent:
-          "One question, a daily budget sustainable for seven days, one variable changed, a target cost per result calculated from margin before launch, and a written decision rule.",
+        excellent: "One question, a daily budget sustainable for seven days, one variable changed, a target cost per result calculated from margin before launch, and a written decision rule.",
       },
     ],
     faqs: [
@@ -795,45 +724,14 @@ export const digitalMarketingLessonsB: Record<string, SessionLecture> = {
       "Diagnose from the numbers, working backwards. Impressions, clicks, enquiries, sales — find the biggest drop and change only that stage. Guessing which stage failed is the most expensive habit in paid promotion.",
     ],
     vocabulary: [
-      {
-        term: "Ad creative",
-        meaning:
-          "The image or video the viewer sees. Decides whether they stop, in under a second.",
-      },
-      {
-        term: "Ad copy",
-        meaning:
-          "The written part: problem, agitation, offer, proof, ask. Structure, not inspiration.",
-      },
-      {
-        term: "Landing page",
-        meaning: "A page with one job and one action. Every extra link is a way to leave.",
-      },
-      {
-        term: "Call-to-action",
-        meaning:
-          "The single specific thing you ask for. One ask, stated plainly, with the route included.",
-      },
-      {
-        term: "Conversion rate",
-        meaning:
-          "The proportion of visitors who take the action. The measure of whether the path works.",
-      },
-      {
-        term: "Conversion leak",
-        meaning:
-          "A specific point where people drop out. Each stage has a different cause and a different fix.",
-      },
-      {
-        term: "Lead qualification",
-        meaning:
-          "Establishing what someone needs and when, so attention goes to buyers rather than price-shoppers.",
-      },
-      {
-        term: "Follow-up sequence",
-        meaning:
-          "Planned further contact that adds new information each time. Most sales happen after the first message.",
-      },
+      { term: "Ad creative", meaning: "The image or video the viewer sees. Decides whether they stop, in under a second." },
+      { term: "Ad copy", meaning: "The written part: problem, agitation, offer, proof, ask. Structure, not inspiration." },
+      { term: "Landing page", meaning: "A page with one job and one action. Every extra link is a way to leave." },
+      { term: "Call-to-action", meaning: "The single specific thing you ask for. One ask, stated plainly, with the route included." },
+      { term: "Conversion rate", meaning: "The proportion of visitors who take the action. The measure of whether the path works." },
+      { term: "Conversion leak", meaning: "A specific point where people drop out. Each stage has a different cause and a different fix." },
+      { term: "Lead qualification", meaning: "Establishing what someone needs and when, so attention goes to buyers rather than price-shoppers." },
+      { term: "Follow-up sequence", meaning: "Planned further contact that adds new information each time. Most sales happen after the first message." },
     ],
     homework: [
       {
@@ -861,32 +759,27 @@ export const digitalMarketingLessonsB: Record<string, SessionLecture> = {
       {
         criterion: "Creative",
         passing: "Posts product photos.",
-        excellent:
-          "First two seconds carry the product or problem, captions verified sound-off, real rather than polished, and the subject clear at thumbnail size.",
+        excellent: "First two seconds carry the product or problem, captions verified sound-off, real rather than polished, and the subject clear at thumbnail size.",
       },
       {
         criterion: "Copy",
         passing: "Describes the product.",
-        excellent:
-          "Follows problem, agitation, offer, proof, ask; states the price; ends with exactly one clear ask including the route; reads like a person, not a notice.",
+        excellent: "Follows problem, agitation, offer, proof, ask; states the price; ends with exactly one clear ask including the route; reads like a person, not a notice.",
       },
       {
         criterion: "Conversion path",
         passing: "Has a contact number.",
-        excellent:
-          "WhatsApp greeting answering immediately, priced catalogue, quick replies for the top five questions, and advert and destination saying the same thing.",
+        excellent: "WhatsApp greeting answering immediately, priced catalogue, quick replies for the top five questions, and advert and destination saying the same thing.",
       },
       {
         criterion: "Diagnosis",
         passing: "Knows sales were low.",
-        excellent:
-          "Working backwards through impressions, clicks, enquiries and sales to name the biggest drop and one targeted change for that stage only.",
+        excellent: "Working backwards through impressions, clicks, enquiries and sales to name the biggest drop and one targeted change for that stage only.",
       },
       {
         criterion: "Leads and follow-up",
         passing: "Replies to messages.",
-        excellent:
-          "Leads qualified in one message, labelled and recorded, with a written sequence adding new information each time and a stated point to stop.",
+        excellent: "Leads qualified in one message, labelled and recorded, with a written sequence adding new information each time and a stated point to stop.",
       },
     ],
     faqs: [

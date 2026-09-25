@@ -196,46 +196,14 @@ export const webDevelopmentLessonsD: Record<string, SessionLecture> = {
       "Resize and compress every image before uploading. Image size dominates page weight far more than any other factor, and a multi-megabyte photo makes a page unusable on the mobile connections most people here have.",
     ],
     vocabulary: [
-      {
-        term: "Elements panel",
-        meaning:
-          "The live DOM and applied styles, with overridden rules struck through. Answers 'why is my CSS not applying'.",
-      },
-      {
-        term: "Console",
-        meaning:
-          "Where errors appear and JavaScript runs. An error there names the problem and usually the line.",
-      },
-      {
-        term: "Network panel",
-        meaning:
-          "Every request, its size and its duration. How you find missing files and oversized images.",
-      },
-      {
-        term: "Lighthouse",
-        meaning:
-          "An automated audit of performance, accessibility and SEO that names specific failures to fix.",
-      },
-      {
-        term: "Bisection",
-        meaning:
-          "Halving the code repeatedly to locate a bug. Finds the cause in rounds rather than by searching.",
-      },
-      {
-        term: "Syntax error",
-        meaning:
-          "Stops the whole script; nothing runs. Distinguished from a runtime error, which stops only from that point.",
-      },
-      {
-        term: "Tap target",
-        meaning:
-          "A control's clickable size. Under about 44 pixels it is difficult to hit with a thumb.",
-      },
-      {
-        term: "Render-blocking resource",
-        meaning:
-          "A stylesheet or script in the head delaying first paint. Scripts should carry defer.",
-      },
+      { term: "Elements panel", meaning: "The live DOM and applied styles, with overridden rules struck through. Answers 'why is my CSS not applying'." },
+      { term: "Console", meaning: "Where errors appear and JavaScript runs. An error there names the problem and usually the line." },
+      { term: "Network panel", meaning: "Every request, its size and its duration. How you find missing files and oversized images." },
+      { term: "Lighthouse", meaning: "An automated audit of performance, accessibility and SEO that names specific failures to fix." },
+      { term: "Bisection", meaning: "Halving the code repeatedly to locate a bug. Finds the cause in rounds rather than by searching." },
+      { term: "Syntax error", meaning: "Stops the whole script; nothing runs. Distinguished from a runtime error, which stops only from that point." },
+      { term: "Tap target", meaning: "A control's clickable size. Under about 44 pixels it is difficult to hit with a thumb." },
+      { term: "Render-blocking resource", meaning: "A stylesheet or script in the head delaying first paint. Scripts should carry defer." },
     ],
     homework: [
       {
@@ -263,32 +231,27 @@ export const webDevelopmentLessonsD: Record<string, SessionLecture> = {
       {
         criterion: "Tool use",
         passing: "Opens developer tools.",
-        excellent:
-          "Elements, Console, Network and Lighthouse each used for the problem they answer, with the tools consulted before code is edited.",
+        excellent: "Elements, Console, Network and Lighthouse each used for the problem they answer, with the tools consulted before code is edited.",
       },
       {
         criterion: "Debugging method",
         passing: "Fixes bugs eventually.",
-        excellent:
-          "Bugs reproduced reliably, errors read in full and classified, one hypothesis tested with the smallest change, bisection used where inspection failed, and one change at a time.",
+        excellent: "Bugs reproduced reliably, errors read in full and classified, one hypothesis tested with the smallest change, bisection used where inspection failed, and one change at a time.",
       },
       {
         criterion: "Responsive testing",
         passing: "Works on a phone.",
-        excellent:
-          "Tested at five real widths with horizontal scroll eliminated, overflow fixed, and tap targets at 44 pixels or more with touch simulated.",
+        excellent: "Tested at five real widths with horizontal scroll eliminated, overflow fixed, and tap targets at 44 pixels or more with touch simulated.",
       },
       {
         criterion: "Performance",
         passing: "Loads reasonably.",
-        excellent:
-          "The Network panel used to find the largest resources, images resized and compressed, render-blocking scripts deferred, and the improvement measured.",
+        excellent: "The Network panel used to find the largest resources, images resized and compressed, render-blocking scripts deferred, and the improvement measured.",
       },
       {
         criterion: "Accessibility and SEO",
         passing: "Looks fine.",
-        excellent:
-          "The full checklist run with every failure fixed, every page carrying a descriptive title, meta description, single h1 and lang attribute, and Lighthouse run before and after with both scores recorded.",
+        excellent: "The full checklist run with every failure fixed, every page carrying a descriptive title, meta description, single h1 and lang attribute, and Lighthouse run before and after with both scores recorded.",
       },
     ],
     faqs: [
@@ -513,45 +476,14 @@ export const webDevelopmentLessonsD: Record<string, SessionLecture> = {
       "Own your domain rather than building on a platform subdomain. It costs little annually and it means you can change hosts without changing your address — a business built on someone else's address is fragile.",
     ],
     vocabulary: [
-      {
-        term: "Deployment",
-        meaning:
-          "Putting your files where a browser can reach them. For a static site, that is genuinely all it is.",
-      },
-      {
-        term: "Branch",
-        meaning: "A line of work that does not disturb main. Lets you experiment without risk.",
-      },
-      {
-        term: "Pull request",
-        meaning:
-          "A request to merge a branch, with a diff and a description. Where changes are reviewed before landing.",
-      },
-      {
-        term: "Merge conflict",
-        meaning:
-          "Two edits to the same lines. Normal, not a failure; resolved by reading both sides and deciding.",
-      },
-      {
-        term: "Static hosting",
-        meaning:
-          "Serving HTML, CSS and JavaScript with no server code. Free tiers with HTTPS are adequate for most portfolios.",
-      },
-      {
-        term: "Continuous deployment",
-        meaning:
-          "Redeploying automatically on every push. Makes the live site always match the repository.",
-      },
-      {
-        term: "Domain",
-        meaning:
-          "A human-readable address you own. Lets you change hosts without changing your address.",
-      },
-      {
-        term: "DNS propagation",
-        meaning:
-          "The spread of new DNS records. Can take up to a day, so a new domain may appear not to work immediately.",
-      },
+      { term: "Deployment", meaning: "Putting your files where a browser can reach them. For a static site, that is genuinely all it is." },
+      { term: "Branch", meaning: "A line of work that does not disturb main. Lets you experiment without risk." },
+      { term: "Pull request", meaning: "A request to merge a branch, with a diff and a description. Where changes are reviewed before landing." },
+      { term: "Merge conflict", meaning: "Two edits to the same lines. Normal, not a failure; resolved by reading both sides and deciding." },
+      { term: "Static hosting", meaning: "Serving HTML, CSS and JavaScript with no server code. Free tiers with HTTPS are adequate for most portfolios." },
+      { term: "Continuous deployment", meaning: "Redeploying automatically on every push. Makes the live site always match the repository." },
+      { term: "Domain", meaning: "A human-readable address you own. Lets you change hosts without changing your address." },
+      { term: "DNS propagation", meaning: "The spread of new DNS records. Can take up to a day, so a new domain may appear not to work immediately." },
     ],
     homework: [
       {
@@ -579,32 +511,27 @@ export const webDevelopmentLessonsD: Record<string, SessionLecture> = {
       {
         criterion: "Testing",
         passing: "Checks it works.",
-        excellent:
-          "Every link clicked, every form submitted with valid and invalid data, the console clean on every page, and usability checked on a throttled connection and by an uninstructed person.",
+        excellent: "Every link clicked, every form submitted with valid and invalid data, the console clean on every page, and usability checked on a throttled connection and by an uninstructed person.",
       },
       {
         criterion: "Code quality",
         passing: "Code runs.",
-        excellent:
-          "Dead code removed, a formatter enforcing consistent style, and the repository and its history searched for secrets with anything found rotated.",
+        excellent: "Dead code removed, a formatter enforcing consistent style, and the repository and its history searched for secrets with anything found rotated.",
       },
       {
         criterion: "Git workflow",
         passing: "Commits and pushes.",
-        excellent:
-          "Small commits with messages explaining why, work done on branches, changes merged through a pull request with a description, and conflicts resolved by reading both sides.",
+        excellent: "Small commits with messages explaining why, work done on branches, changes merged through a pull request with a description, and conflicts resolved by reading both sides.",
       },
       {
         criterion: "Deployment",
         passing: "Has a live site.",
-        excellent:
-          "Connected to a host that redeploys on push, verified by pushing a change and watching it appear, so the live site always matches the repository.",
+        excellent: "Connected to a host that redeploys on push, verified by pushing a change and watching it appear, so the live site always matches the repository.",
       },
       {
         criterion: "Domain and HTTPS",
         passing: "Uses a platform URL.",
-        excellent:
-          "A registered domain with DNS records added and propagation understood, loading over HTTPS, with the reasoning about owning an address explained.",
+        excellent: "A registered domain with DNS records added and propagation understood, loading over HTTPS, with the reasoning about owning an address explained.",
       },
     ],
     faqs: [
@@ -823,46 +750,14 @@ export const webDevelopmentLessonsD: Record<string, SessionLecture> = {
       "Verify critique in the tools rather than arguing about it. Technical feedback is usually checkable — contrast, keyboard reach, console errors — and ten seconds of checking settles what an argument never would.",
     ],
     vocabulary: [
-      {
-        term: "Portfolio",
-        meaning:
-          "Evidence answering 'can this person do the work?'. Live, finished projects beat described or unfinished ones.",
-      },
-      {
-        term: "Case study",
-        meaning:
-          "A project write-up: brief, decisions, trade-offs, result. What turns a gallery into a demonstration of judgement.",
-      },
-      {
-        term: "Trade-off",
-        meaning:
-          "What a decision cost you. Stating it reads as judgement; omitting it reads as inexperience.",
-      },
-      {
-        term: "Measurable result",
-        meaning:
-          "A Lighthouse score, a load time, a real user's reaction. Evidence, where an adjective is not.",
-      },
-      {
-        term: "Live demonstration",
-        meaning:
-          "Showing the thing working, on a phone, immediately. Persuades where a description does not.",
-      },
-      {
-        term: "Verifiable critique",
-        meaning:
-          "Technical feedback that can be checked in the tools. Verified rather than argued about.",
-      },
-      {
-        term: "Framework",
-        meaning:
-          "A way of organising HTML, CSS and JavaScript. More valuable on top of solid fundamentals than instead of them.",
-      },
-      {
-        term: "Reading others' code",
-        meaning:
-          "The fastest way to learn how experienced developers solve unfamiliar problems. Every open-source project is a free textbook.",
-      },
+      { term: "Portfolio", meaning: "Evidence answering 'can this person do the work?'. Live, finished projects beat described or unfinished ones." },
+      { term: "Case study", meaning: "A project write-up: brief, decisions, trade-offs, result. What turns a gallery into a demonstration of judgement." },
+      { term: "Trade-off", meaning: "What a decision cost you. Stating it reads as judgement; omitting it reads as inexperience." },
+      { term: "Measurable result", meaning: "A Lighthouse score, a load time, a real user's reaction. Evidence, where an adjective is not." },
+      { term: "Live demonstration", meaning: "Showing the thing working, on a phone, immediately. Persuades where a description does not." },
+      { term: "Verifiable critique", meaning: "Technical feedback that can be checked in the tools. Verified rather than argued about." },
+      { term: "Framework", meaning: "A way of organising HTML, CSS and JavaScript. More valuable on top of solid fundamentals than instead of them." },
+      { term: "Reading others' code", meaning: "The fastest way to learn how experienced developers solve unfamiliar problems. Every open-source project is a free textbook." },
     ],
     homework: [
       {
@@ -890,32 +785,27 @@ export const webDevelopmentLessonsD: Record<string, SessionLecture> = {
       {
         criterion: "The project",
         passing: "Built a website.",
-        excellent:
-          "A live site for a real brief, reachable over HTTPS, with every link and form tested, the console clean, five widths passing, and every Lighthouse accessibility and SEO failure fixed.",
+        excellent: "A live site for a real brief, reachable over HTTPS, with every link and form tested, the console clean, five widths passing, and every Lighthouse accessibility and SEO failure fixed.",
       },
       {
         criterion: "Documentation",
         passing: "Describes the project.",
-        excellent:
-          "A case study with the brief, two decisions each naming the rejected alternative, honest trade-offs including what would be done differently, and one measurable result.",
+        excellent: "A case study with the brief, two decisions each naming the rejected alternative, honest trade-offs including what would be done differently, and one measurable result.",
       },
       {
         criterion: "Presentation",
         passing: "Explains the work.",
-        excellent:
-          "Five minutes leading with the problem and a live demonstration, technique held in reserve for questions, and honest prepared answers on time and cost.",
+        excellent: "Five minutes leading with the problem and a live demonstration, technique held in reserve for questions, and honest prepared answers on time and cost.",
       },
       {
         criterion: "Response to critique",
         passing: "Accepts feedback.",
-        excellent:
-          "All critique recorded in silence, factual claims verified in the tools rather than argued, and notes sorted into wrong, preference and the critic's context.",
+        excellent: "All critique recorded in silence, factual claims verified in the tools rather than argued, and notes sorted into wrong, preference and the critic's context.",
       },
       {
         criterion: "Forward planning",
         passing: "Knows what to learn next.",
-        excellent:
-          "A chosen route with reasoning, and a plan that ends in something that will actually be published rather than something that will be studied.",
+        excellent: "A chosen route with reasoning, and a plan that ends in something that will actually be published rather than something that will be studied.",
       },
     ],
     faqs: [

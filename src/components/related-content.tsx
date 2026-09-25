@@ -28,7 +28,9 @@ function getRelatedItems(
   if (currentType === "blog" && currentSlug) {
     const post = blogPosts.find((b) => b.slug === currentSlug);
     if (post) {
-      const later = blogPosts.filter((b) => b.order > post.order).sort((a, b) => a.order - b.order);
+      const later = blogPosts
+        .filter((b) => b.order > post.order)
+        .sort((a, b) => a.order - b.order);
       const earlier = blogPosts
         .filter((b) => b.order < post.order)
         .sort((a, b) => b.order - a.order);
@@ -44,9 +46,7 @@ function getRelatedItems(
       const hay = `${post.title} ${post.excerpt} ${post.series}`.toLowerCase();
       items.push(
         ...flyerCourses
-          .filter(
-            (c) => hay.includes(c.title.toLowerCase()) || hay.includes(c.category.toLowerCase()),
-          )
+          .filter((c) => hay.includes(c.title.toLowerCase()) || hay.includes(c.category.toLowerCase()))
           .slice(0, 2)
           .map((c) => ({
             label: c.title,

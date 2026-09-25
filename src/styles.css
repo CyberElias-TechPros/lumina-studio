@@ -951,15 +951,9 @@ html.cursor-off * {
     0 1px 0 0 color-mix(in oklab, var(--foreground) 16%, transparent) inset,
     0 20px 60px -24px oklch(0 0 0 / 0.55);
 }
-@utility perspective-1000 {
-  perspective: 1000px;
-}
-@utility preserve-3d {
-  transform-style: preserve-3d;
-}
-@utility text-balance {
-  text-wrap: balance;
-}
+@utility perspective-1000 { perspective: 1000px; }
+@utility preserve-3d { transform-style: preserve-3d; }
+@utility text-balance { text-wrap: balance; }
 @utility lens {
   position: relative;
   &::after {
@@ -967,19 +961,13 @@ html.cursor-off * {
     position: absolute;
     inset: 0;
     pointer-events: none;
-    background: radial-gradient(
-      60% 60% at 50% 0%,
-      color-mix(in oklab, white 22%, transparent),
-      transparent 70%
-    );
+    background: radial-gradient(60% 60% at 50% 0%, color-mix(in oklab, white 22%, transparent), transparent 70%);
     opacity: 0.6;
   }
 }
 @utility border-glow {
   border: 1px solid color-mix(in oklab, var(--primary-glow) 22%, transparent);
-  box-shadow:
-    0 0 0 1px color-mix(in oklab, var(--primary-glow) 10%, transparent) inset,
-    0 0 30px -12px color-mix(in oklab, var(--primary-glow) 40%, transparent);
+  box-shadow: 0 0 0 1px color-mix(in oklab, var(--primary-glow) 10%, transparent) inset, 0 0 30px -12px color-mix(in oklab, var(--primary-glow) 40%, transparent);
 }
 @utility cinematic-card {
   position: relative;
@@ -992,40 +980,10 @@ html.cursor-off * {
     inset-inline: 0;
     top: 0;
     height: 1px;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      color-mix(in oklab, var(--foreground) 18%, transparent) 20%,
-      color-mix(in oklab, var(--foreground) 18%, transparent) 80%,
-      transparent
-    );
+    background: linear-gradient(90deg, transparent, color-mix(in oklab, var(--foreground) 18%, transparent) 20%, color-mix(in oklab, var(--foreground) 18%, transparent) 80%, transparent);
   }
 }
-@keyframes cea-reveal-up {
-  from {
-    transform: translateY(28px);
-    opacity: 0;
-    filter: blur(10px);
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-    filter: blur(0);
-  }
-}
-@keyframes cea-reveal-scale {
-  from {
-    transform: scale(0.96);
-    opacity: 0;
-  }
-  to {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-@utility animate-reveal-up {
-  animation: cea-reveal-up 0.9s var(--ease-out-expo) both;
-}
-@utility animate-reveal-scale {
-  animation: cea-reveal-scale 0.8s var(--ease-out-expo) both;
-}
+@keyframes cea-reveal-up { from { transform: translateY(28px); opacity: 0; filter: blur(10px); } to { transform: translateY(0); opacity: 1; filter: blur(0); } }
+@keyframes cea-reveal-scale { from { transform: scale(0.96); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+@utility animate-reveal-up { animation: cea-reveal-up 0.9s var(--ease-out-expo) both; }
+@utility animate-reveal-scale { animation: cea-reveal-scale 0.8s var(--ease-out-expo) both; }
