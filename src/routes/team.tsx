@@ -10,7 +10,7 @@ export const Route = createFileRoute("/team")({
     getPageHead({
       title: "Team",
       description:
-        "Cyber Elias Academy was founded by Ellis Dennis Graham in Port Harcourt. The centre is small; we will name people as they join.",
+        "Cyber Elias Academy was founded by Ellis Dennis Graham in Port Harcourt. Meet the people who run the centre.",
       path: "/team",
       image: `https://cea.ng${NOTES_AUTHOR.photo}`,
     }),
@@ -35,17 +35,38 @@ function TeamPage() {
               <p className="text-muted-foreground mt-1 text-sm">Founder</p>
               <p className="text-muted-foreground mt-4 text-sm leading-relaxed">
                 Ellis founded Cyber Elias Academy in Port Harcourt. He runs the centre and teaches
-                the courses. We do not list a wider staff, advisory board, or employer network we
-                do not have.
+                the courses. We only list people who actually work here — no advisory board or
+                employer network we do not have.
               </p>
               <div className="text-muted-foreground mt-5 flex flex-wrap gap-4 text-sm">
                 <span className="flex items-center gap-2">
                   <MapPin className="size-4" /> Port Harcourt, Nigeria
                 </span>
-                <a href="mailto:hello@cea.ng" className="hover:text-foreground flex items-center gap-2">
+                <a
+                  href="mailto:hello@cea.ng"
+                  className="hover:text-foreground flex items-center gap-2"
+                >
                   <Mail className="size-4" /> hello@cea.ng
                 </a>
               </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="border-border mx-auto mt-6 max-w-2xl rounded-lg border p-6 sm:p-8">
+          <div className="flex flex-col gap-6 sm:flex-row sm:items-start">
+            <img
+              src="/images/team/peter-hart.jpg"
+              alt="Peter Hart, Cyber Elias Academy team"
+              loading="lazy"
+              className="size-28 shrink-0 rounded-lg object-cover object-top sm:size-36"
+            />
+            <div>
+              <h2 className="font-display text-xl font-semibold">Peter Hart</h2>
+              <p className="text-muted-foreground mt-1 text-sm">Team</p>
+              <p className="text-muted-foreground mt-4 text-sm leading-relaxed">
+                Peter works with Ellis at the Port Harcourt centre.
+              </p>
             </div>
           </div>
         </div>
@@ -54,7 +75,10 @@ function TeamPage() {
           {[
             { label: "Company", value: "Cyber Elias Academy Ltd · RC 8413776" },
             { label: "Based in", value: "26 Ebony Road, Port Harcourt" },
-            { label: "What we teach", value: "Short practical computer and digital-skills courses" },
+            {
+              label: "What we teach",
+              value: "Short practical computer and digital-skills courses",
+            },
             { label: "Contact", value: "hello@cea.ng · +234 905 862 8386" },
           ].map((fact) => (
             <div key={fact.label} className="border-border rounded-lg border p-4">
