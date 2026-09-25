@@ -8,6 +8,7 @@ import {
   fetchInstructorAssignment,
   gradeSubmission,
   createInstructorLesson,
+  publishAssignment,
   type InstructorCourse,
 } from "@/lib/api/instructor";
 import type { InstructorGradebookRow, InstructorSubmission } from "@/data/learning";
@@ -81,6 +82,16 @@ export function useGradeSubmission(submissionId: string) {
       gradeSubmission(submissionId, input),
     onSuccess: () => {
       void queryClient.invalidateQueries({ queryKey: instructorKeys.assignment(submissionId) });
+      void queryClient.invalidateQueries({ queryKey: instructorKeys.assignments });
+    },
+  });
+}
+
+export function usePublishAssignment() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: publishAssignment,
+    onSuccess: () => {
       void queryClient.invalidateQueries({ queryKey: instructorKeys.assignments });
     },
   });

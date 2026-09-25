@@ -12,10 +12,10 @@ mock mode).
 
 **Two runtime modes, decided at build time by `VITE_API_URL`:**
 
-| Mode | Trigger | What happens |
-|---|---|---|
+| Mode     | Trigger              | What happens                                                                                                                                                                                                                                                |
+| -------- | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Mock** | `VITE_API_URL` unset | Every `src/lib/api` call is served by in-memory mocks (`src/lib/api/mocks/*`) seeded from `src/data/*`. You are always "signed in" as `Adaeze Okafor / student@cea.ng / student`, session 24h. Paystack checkout returns a fake URL, flags return defaults. |
-| **Live** | `VITE_API_URL` set | All calls hit the Cloudflare worker at `https://cea-api.cyber-e54.workers.dev` (currently configured in `.env`). Cookie-based sessions, real D1 data, real Paystack. |
+| **Live** | `VITE_API_URL` set   | All calls hit the Cloudflare worker at `https://cea-api.cyber-e54.workers.dev` (currently configured in `.env`). Cookie-based sessions, real D1 data, real Paystack.                                                                                        |
 
 **Deployed reality (today):** frontend `https://cea.ng` (and `https://www.cea.ng`)
 runs live
@@ -42,11 +42,12 @@ password `cea-demo-pass-2026`, MFA off).
 `UPGRADE_REQUIRED` 426, `INTERNAL` 500.
 
 **Security rules worth knowing:**
+
 - Every `/v1/*` request passes the RBAC guard (`backend/src/lib/rbac.ts`).
   Unregistered paths → **403** (not 404). Public rules skip auth; rules with
   `roles` reject mismatched roles with 403; the rest need any valid session.
 - CORS: only origins in `FRONTEND_ORIGINS` (currently `localhost:5173`,
-   `127.0.0.1:5173`, `https://cea.ng`, `https://www.cea.ng`) — or *any* origin if that
+  `127.0.0.1:5173`, `https://cea.ng`, `https://www.cea.ng`) — or _any_ origin if that
   var is empty. Cookies: `HttpOnly; SameSite=None; Secure` in production.
 - All list endpoints are paginated: `?limit=` (default 20, max 50) and
   `?cursor=`; responses are `{ items, nextCursor?, total }`.
@@ -69,6 +70,7 @@ pagination), but **the frontend never calls them** — the `/programs` pages
 render static data instead.
 
 ### 1.1 Apply to a program — `/apply` (LIVE)
+
 - 4-step wizard (program → profile → assessment → financing); the profile
 - 4-step wizard (program â†’ profile â†’ assessment â†’ financing); the profile
   step collects first/last name + email.
@@ -83,17 +85,19 @@ render static data instead.
     design — a human reviews each application).
 
 ### 1.2 Track application — `/apply/status` (STATIC MOCK)
+
 - Enter an ID → static mock state only.
 - **Real equivalent (public):** `GET /v1/applications/:ref` → status +
   stage list (`submitted → screening → assessment → interview → offer →
 - Enter an ID â†’ static mock state only.
 - **Real equivalent (public):** `GET /v1/applications/:ref` â†’ status +
   stage list (`submitted â†’ screening â†’ assessment â†’ interview â†’ offer â†’
-  enrolled`, each stage `done`/`active`). 404 if the ref is unknown.
+enrolled`, each stage `done`/`active`). 404 if the ref is unknown.
 - **Advancement (admin only):** `PATCH /v1/applications/:ref` `{ status }` —
   rejects backwards moves (400), 404 unknown ref, writes an audit log entry.
 
 ### 1.3 Certificate verification — `/certificates/verify` (LIVE)
+
 - Code input (or `?code=` search param) → `GET /v1/certificates/verify?code=`
 - Code input (or `?code=` search param) â†’ `GET /v1/certificates/verify?code=`
   (public, code uppercased server-side).
@@ -103,6 +107,7 @@ render static data instead.
 - Verified codes only exist once a certificate has been issued (Â§3.12).
 
 ### 1.4 Contact & newsletter — `/contact` (LIVE)
+
 - The contact form posts `POST /v1/contact` (public, rate-limited 5/10min
   per IP): `{ name, email, message, kind: "contact" | "newsletter" }`.
   - 400 `FIELD_VALIDATION` on bad input; 429 when rate-limited.
@@ -115,6 +120,7 @@ render static data instead.
 ## 2. Account lifecycle (every user)
 
 ### 2.1 Sign up — `/auth/sign-up` (LIVE)
+
 - Posts `POST /v1/auth/sign-up` `{ name, email, password }` (public,
   rate-limited per IP).
   - 400 `FIELD_VALIDATION`; 409 `EMAIL_TAKEN` if the email exists.
@@ -122,7 +128,9 @@ render static data instead.
     straight to `/app`. Role is always `student`.
 
 ### 2.2 Sign in — `/auth/sign-in` (LIVE)
+
 Two tabs on the page:
+
 - **Password tab (real):** posts `POST /v1/auth/sign-in`
   `{ email, password, remember }` (rate-limited 5/min per email+IP).
   - Wrong email/password → **401** (same message either way — no user
@@ -135,16 +143,17 @@ Two tabs on the page:
 - **Magic link tab:** enter email →
   1. `POST /v1/auth/magic-link` (public, rate-limited 3/15min). Stores a
      hashed token in D1 `magic_links`, **expires 15 minutes, single-use**.
-      Returns `201 { ok: true }`; in non-production also `devToken` shown as
-      an "Open sign-in link (dev)" button. **Production sends no email** —
-      external email delivery (Resend) is configured in vars but
-      `EMAIL_API_KEY` is not set yet (set it as a Worker secret to enable).
+     Returns `201 { ok: true }`; in non-production also `devToken` shown as
+     an "Open sign-in link (dev)" button. **Production sends no email** —
+     external email delivery (Resend) is configured in vars but
+     `EMAIL_API_KEY` is not set yet (set it as a Worker secret to enable).
   2. `GET /v1/auth/magic-link/verify?token=` (public) — marks consumed,
      finds-or-creates the user (new users become `student`), creates the
      session, sets the cookie, returns the session payload.
 - Social buttons (Google/Microsoft) remain non-functional placeholders.
 
 ### 2.3 MFA challenge — `/auth/mfa` (LIVE)
+
 - Shown after password sign-in when the account has MFA enabled (the
   pending session cookie `cea_session` carries the half-auth state).
 - Two methods on the page: **app code** or **recovery key** →
@@ -155,6 +164,7 @@ Two tabs on the page:
   single-use each.
 
 ### 2.4 Forgot / reset password (LIVE)
+
 - `/auth/forgot-password` → `POST /v1/auth/forgot-password` `{ email }`
   (public, rate-limited). Always `200 { ok: true, sent }` (no enumeration);
   when a token is produced (dev), the response carries it for the demo.
@@ -165,6 +175,7 @@ Two tabs on the page:
   Success → success state → link to sign-in.
 
 ### 2.5 Session lifecycle (automatic, client-side)
+
 - Session lives only in the HttpOnly cookie; react-query caches it under
   `["session"]`. Every API call sends `credentials: "include"`.
 - On a **401**, the client fires a single-flight `POST /v1/auth/refresh`
@@ -177,12 +188,14 @@ Two tabs on the page:
   from `/app/*` to `/auth/sign-in` in live mode (mock mode is unaffected).
 
 ### 2.6 Account security — `/auth/new-device` (LIVE)
+
 Renamed in purpose to an account-security page:
+
 - **Devices:** `GET /v1/auth/devices` (any authenticated) — your sessions
   (label, IP, created, active, `current` flag). Revoke:
   `POST /v1/auth/devices/:id/revoke` (own devices only; 403 otherwise).
 - **MFA:** "Set up" → `POST /v1/auth/mfa/setup` → `{ secret, otpauth,
-  recoveryCodes, enabled }`. Enter a 6-digit code →
+recoveryCodes, enabled }`. Enter a 6-digit code →
   `POST /v1/auth/mfa/enable` `{ code }` (wrong → 400) → MFA on. Disable
   requires the current code: `POST /v1/auth/mfa/disable`. Recovery keys are
   shown with copy buttons + a downloadable text file.
@@ -199,6 +212,7 @@ user** (name/email/initials) and redirects signed-out visitors to sign-in
 in live mode; the "Viewing as" role switcher remains a demo affordance.
 
 ### 3.1 Dashboard — `/app` and `/app/learn`
+
 - `/app` (LIVE-ISH): greets the **real signed-in user** by first name (no hard-coded persona)
   and links to the actual workspaces (learning, assignments, grades, messages) plus quick
   links; no fabricated KPIs or course progress. Onboarding tour (4 steps, `localStorage`,
@@ -208,6 +222,7 @@ in live mode; the "Viewing as" role switcher remains a demo affordance.
   streak), next-up lesson, per-course progress.
 
 ### 3.2 Courses — `/app/learn/$courseId`, `/app/learn/$courseId/lessons/$lessonId`
+
 - `GET /v1/courses` (any authenticated); `GET /v1/courses/:slug` (404 for
   unknown). Enrollment exists only from seeds/DB.
 - **New:** `POST /v1/courses/:slug/enroll` (**student only**) and
@@ -216,17 +231,20 @@ in live mode; the "Viewing as" role switcher remains a demo affordance.
   around course data.
 
 ### 3.3 Grades — `/app/grades`
+
 - `GET /v1/courses/gradebook` (**student only**): own gradebook rows.
 
 ### 3.4 Assignments & assessments
+
 - `GET /v1/assignments`, `GET /v1/assignments/:id` (**student only**, own
   rows). **New:** `POST /v1/assignments/:id/submit` (accepts `{ note?,
-  url? }` and uploads via multipart or body text) and
+url? }` and uploads via multipart or body text) and
   `GET /v1/assignments/:id/submission` (own submission).
 - `GET /v1/assessments`, `GET /v1/assessments/:id` (**student only**).
 - The "Take" screens remain static — **no assessment answer-save endpoint**.
 
 ### 3.5 Calendar / Messages / Notifications
+
 - `GET /v1/calendar/events` (any authenticated).
 - `GET /v1/messages/threads`, `GET /v1/messages/threads/:id` (any
   authenticated, own threads only). **New:** `POST /v1/messages/threads/:id/messages`
@@ -240,21 +258,21 @@ in live mode; the "Viewing as" role switcher remains a demo affordance.
   - Written by the payments webhook ("Payment received"/"Payment failed").
 
 ### 3.6 Payments — `/app/finance` (LIVE)
+
 1. "Pay now" posts `{ amount: 140000, description, redirectUrl:
-   <origin>/app/finance/pay-verify }` → `POST /v1/payments/checkout`
+<origin>/app/finance/pay-verify }` → `POST /v1/payments/checkout`
    (any authenticated). Amount must be whole NGN 1–10,000,000; description
    â‰¤ 120 chars; `redirectUrl` must be an https URL → else 400.
-   <origin>/app/finance/pay-verify }` â†’ `POST /v1/payments/checkout`
-   (any authenticated). Amount must be whole NGN 1–10,000,000; description
-   â‰¤ 120 chars; `redirectUrl` must be an https URL â†’ else 400.
+   <origin>/app/finance/pay-verify }`â†’`POST /v1/payments/checkout`(any authenticated). Amount must be whole NGN 1–10,000,000; description
+â‰¤ 120 chars;`redirectUrl` must be an https URL â†’ else 400.
 2. A `payments` row is inserted: `reference = cea_<16 hex>`, `status =
-   "pending"`, `provider = "paystack"`.
+"pending"`, `provider = "paystack"`.
 3. **Real mode:** Paystack `transaction/initialize` with `amount * 100` and
    `callback_url = <redirectUrl>?reference=<reference>`. Success → `201
-   { reference, authorizationUrl, accessCode, mock: false }`; Paystack
+{ reference, authorizationUrl, accessCode, mock: false }`; Paystack
    failure → 502 `PAYMENT_PROVIDER_ERROR`. **Mock mode** (no secret):
    `201 { authorizationUrl: https://checkout.paystack.com/<reference>,
-   mock: true }`.
+mock: true }`.
 4. Frontend: live mode opens Paystack in a new tab — the Paystack tab
    redirects to the **verify page** on completion; mock mode navigates
    straight to the verify page.
@@ -273,6 +291,7 @@ in live mode; the "Viewing as" role switcher remains a demo affordance.
 now set per-checkout via `redirect_url` (see step 1).
 
 ### 3.7 Realtime chat — `/app/chat` (LIVE, REST-polled)
+
 - `GET /v1/realtime/chat/rooms`; `POST /v1/realtime/chat/rooms`
   `{ name, kind? }`; `GET/POST /v1/realtime/chat/rooms/:id/messages`
   (history paginated; post persists to D1).
@@ -280,9 +299,10 @@ now set per-checkout via `redirect_url` (see step 1).
   fan-out exists in the Durable Object but no page opens a socket yet.
 
 ### 3.8 Live classes — `/app/live`, `/app/live/$classId` (LIVE)
+
 - `GET /v1/live/classes` (any authenticated).
 - **New (instructor/admin only):** `POST /v1/live/classes` `{ title,
-  cohort?, status? }` (creates a session) and `PATCH /v1/live/classes/:id`
+cohort?, status? }` (creates a session) and `PATCH /v1/live/classes/:id`
   `{ status }` (live/ended transitions).
 - Class page: chat `GET/POST /v1/live/classes/:id/chat`; polls
   `GET/POST .../polls`, vote `POST .../polls/:pollId/vote` (one vote per
@@ -290,6 +310,7 @@ now set per-checkout via `redirect_url` (see step 1).
   (instructor/admin). WS upgrades exist for fan-out; UI doesn't open them.
 
 ### 3.9 AI assistant — `/app/ai` (LIVE, deterministic unless keyed)
+
 - `GET /v1/ai/recommendations`; `POST /v1/ai/ask` `{ question }`;
   `POST /v1/ai/generate` `{ kind, topic }`; `POST /v1/ai/grade` `{ rubric }`
   (**instructor/admin only**).
@@ -299,6 +320,7 @@ now set per-checkout via `redirect_url` (see step 1).
   `mock: true`. Key is not set in production yet.
 
 ### 3.10 Uploads (LIVE, proxy mode)
+
 - `POST /v1/uploads/presign` `{ filename?, contentType? }` (any
   authenticated). Key = `<userId>/<uuid>.<ext>`; MIME allowlist
   (jpg/png/webp/gif/pdf/txt), 10MB cap → 400/413 otherwise.
@@ -309,6 +331,7 @@ now set per-checkout via `redirect_url` (see step 1).
   `<userId>/` → else 403.
 
 ### 3.11 Push notifications
+
 - Auto-subscribe on load when `pwa.push` on + VAPID present + permission:
   `POST /v1/push/subscriptions` (validates endpoint/p256dh/auth), upsert per
   endpoint. List: `GET /v1/push/subscriptions`; remove: `DELETE .../:id`
@@ -321,11 +344,12 @@ now set per-checkout via `redirect_url` (see step 1).
   optional open-link URL; admin/instructor pick the recipient (candidates
   list), everyone else sends to their own devices. Sends via
   `POST /v1/push/send`; result shows devices reached + stale subscriptions
-  pruned. (Push *receiving* still needs a subscribed browser: the
+  pruned. (Push _receiving_ still needs a subscribed browser: the
   auto-subscribe hook fires only when the `pwa.push` flag is on and the
   browser grants permission.)
 
 ### 3.12 Certificates — `/app/certificates` (LIVE)
+
 - `GET /v1/certificates/mine` (any authenticated) — own certificates with
   their verification codes, listed on the page with a verify link that
   pre-fills the public checker (`/certificates/verify?code=`).
@@ -342,6 +366,7 @@ now set per-checkout via `redirect_url` (see step 1).
 
 Sidebar: `/app/instructor/*` — gradebook, courses, assignments, and (new)
 **live-class controls**.
+
 - `GET /v1/instructor/gradebook` — own `instructor_gradebook` rows.
 - `GET /v1/instructor/courses` — own `instructor_courses`; `GET .../:slug`
   matches by row `id`.
@@ -358,6 +383,7 @@ Sidebar: `/app/instructor/*` — gradebook, courses, assignments, and (new)
 ## 5. HR flows (roles: `hr`, `admin`)
 
 Pages under `/app/hr/*`. **New write actions:**
+
 - `GET /v1/hr/employees` — all employees.
 - `GET /v1/hr/leave-requests` + **`PATCH /v1/hr/leave-requests/:id`**
   `{ status: "approved"|"rejected" }` — decide a request.
@@ -371,10 +397,11 @@ Pages under `/app/hr/*`. **New write actions:**
 ## 6. Finance flows (roles: `finance`, `admin`)
 
 Pages under `/app/accountant/*`. **New write actions:**
+
 - `GET /v1/invoices` + **`PATCH /v1/invoices/:id`** `{ status:
-  "paid"|"overdue"|"cancelled" }`.
+"paid"|"overdue"|"cancelled" }`.
 - `GET /v1/expenses` + **`PATCH /v1/expenses/:id`** `{ status:
-  "approved"|"rejected" }`.
+"approved"|"rejected" }`.
 - `GET /v1/payments` → `payment_batches` (payout list; separate from the
   consumer payments router).
 - Finance users also have a normal account and can use student flows (Â§3.6).
@@ -384,12 +411,13 @@ Pages under `/app/accountant/*`. **New write actions:**
 ## 7. Employer / recruitment flows (any authenticated user)
 
 Pages under `/app/employer/*`. **New write actions:**
+
 - `GET /v1/recruitment/postings` + **`POST /v1/recruitment/postings`**
   `{ title, detail? }` + **`PATCH /v1/recruitment/postings/:id`**
   `{ status: "published"|"paused"|"closed" }` — all role-gated
   `["employer", "hr", "admin"]` (the GET is open to any authenticated user).
 - `GET /v1/recruitment/postings/:id/candidates` + **`PATCH
-  .../candidates/:candidateId`** `{ stage }` (advance a candidate through
+.../candidates/:candidateId`** `{ stage }` (advance a candidate through
   applied → screening → interview → offer).
 - `GET /v1/recruitment/interviews` + **`POST /v1/recruitment/interviews`**
   `{ candidate, role, date, mode? }` (role-gated).
@@ -400,12 +428,13 @@ Pages under `/app/employer/*`. **New write actions:**
 ## 8. Admin flows (role: `admin`)
 
 Pages under `/app/admin/*`:
+
 - `GET /v1/admin/users` → the **`admin_users`** table (separate from
   `users`).
 - **`GET /v1/admin/accounts`** — the real `users` table with role/status
   (the audit trail for provisioning).
 - **New (admin only):** `POST /v1/admin/users` `{ name, email, roleKey,
-  password? }` (creates a user, hashed password, audit log) and
+password? }` (creates a user, hashed password, audit log) and
   `PATCH /v1/admin/users/:id` `{ status: "active"|"suspended", roleKey? }`
   (suspend/activate/change role, audited). Suspended users lose sessions.
 - `GET /v1/admin/audit-log` — audit_log (now written by every admin/HR/
@@ -420,29 +449,31 @@ Pages under `/app/admin/*`:
 ## 9. System-level flows
 
 ### 9.1 Paystack webhook — `POST /v1/payments/webhook` (public)
+
 1. With a secret: requires `x-paystack-signature` (missing/bad → 401),
 1. With a secret: requires `x-paystack-signature` (missing/bad â†’ 401),
    HMAC-SHA512 of the raw body, constant-time compare. No secret +
    `APP_ENV=production` → 503; dev → signature skipped.
-2. `charge.success` → row `success`, amount corrected, `paid_at` set,
+1. `charge.success` → row `success`, amount corrected, `paid_at` set,
    "Payment received" notification (first transition only); `charge.failed`
    → `failed` + notification; unknown → `{ ok: true }`.
-3. Configured at `https://cea-api.cyber-e54.workers.dev/v1/payments/webhook`.
+1. Configured at `https://cea-api.cyber-e54.workers.dev/v1/payments/webhook`.
 
 ### 9.2 Health — `GET /v1/health` (public) — `SELECT 1` on D1.
 
 ### 9.3 Flags — `GET /v1/flags` (public) — defaults + KV `overrides`.
 
 ### 9.4 Current live flag state
-| Flag | State | Effect |
-|---|---|---|
-| `onboarding.tours` | on (default) | onboarding tour on `/app` |
-| `pwa.push` | **on (override)** | auto push-subscribe on load |
-| `payments.paystack` | **on (override)** | real Paystack checkout |
-| `realtime.chat` | **on (override)** | chat UI available |
-| `realtime.live-class` | **on (override)** | live classes UI available |
-| `uploads.r2` | **on (override)** | uploads UI available |
-| `ai.grading` / `ai.recommendations` / `ai.assistant` / `ai.content-gen` | off | AI falls back to deterministic mock (no key set) |
+
+| Flag                                                                    | State             | Effect                                           |
+| ----------------------------------------------------------------------- | ----------------- | ------------------------------------------------ |
+| `onboarding.tours`                                                      | on (default)      | onboarding tour on `/app`                        |
+| `pwa.push`                                                              | **on (override)** | auto push-subscribe on load                      |
+| `payments.paystack`                                                     | **on (override)** | real Paystack checkout                           |
+| `realtime.chat`                                                         | **on (override)** | chat UI available                                |
+| `realtime.live-class`                                                   | **on (override)** | live classes UI available                        |
+| `uploads.r2`                                                            | **on (override)** | uploads UI available                             |
+| `ai.grading` / `ai.recommendations` / `ai.assistant` / `ai.content-gen` | off               | AI falls back to deterministic mock (no key set) |
 
 ---
 
@@ -468,15 +499,15 @@ Pages under `/app/admin/*`:
 
 ## 11. Role & permission reference
 
-| Role key | Server-gated routes (summary) |
-|---|---|
-| `student` | dashboard/student, courses gradebook/enroll/complete, assignments, assessments |
-| `instructor` | `/v1/instructor/*` (only role), AI grade, live classes/polls/whiteboard, push to anyone |
-| `admin` | `/v1/admin/*`, flags PUT/DELETE, HR, finance, applications PATCH, live instructor ops, AI grade, push to anyone |
-| `hr` | `/v1/hr/*` (with admin) |
-| `finance` | `/v1/invoices`, `/v1/expenses`, `/v1/payments` batches (with admin) |
-| `employer` | recruitment postings/interviews writes (with hr, admin) |
-| others (`mentor`, `alumni`, `product-marketing`, `behavioral-design`, `growth`, `localization`, `design`) | no role-scoped endpoints; their portals are static mockups |
+| Role key                                                                                                  | Server-gated routes (summary)                                                                                   |
+| --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| `student`                                                                                                 | dashboard/student, courses gradebook/enroll/complete, assignments, assessments                                  |
+| `instructor`                                                                                              | `/v1/instructor/*` (only role), AI grade, live classes/polls/whiteboard, push to anyone                         |
+| `admin`                                                                                                   | `/v1/admin/*`, flags PUT/DELETE, HR, finance, applications PATCH, live instructor ops, AI grade, push to anyone |
+| `hr`                                                                                                      | `/v1/hr/*` (with admin)                                                                                         |
+| `finance`                                                                                                 | `/v1/invoices`, `/v1/expenses`, `/v1/payments` batches (with admin)                                             |
+| `employer`                                                                                                | recruitment postings/interviews writes (with hr, admin)                                                         |
+| others (`mentor`, `alumni`, `product-marketing`, `behavioral-design`, `growth`, `localization`, `design`) | no role-scoped endpoints; their portals are static mockups                                                      |
 
 Seeded accounts (password `cea-demo-pass-2026`, MFA off):
 `student@cea.ng`, `instructor@cea.ng`, `admin@cea.ng`, `hr@cea.ng`,
@@ -507,7 +538,6 @@ into the seeds and applied to production D1.
    browser pushes from the same page.
 9. Certificates page: live list of issued credentials; instructor/admin
    issue new ones (recipient + course) that verify instantly.
-8. Browser auto-subscribes to push (flag on); staff can send via API.
-9. Every other portal page renders static mockups; role-gated API calls
-   outside your role 403 cleanly.
-
+10. Browser auto-subscribes to push (flag on); staff can send via API.
+11. Every other portal page renders static mockups; role-gated API calls
+    outside your role 403 cleanly.

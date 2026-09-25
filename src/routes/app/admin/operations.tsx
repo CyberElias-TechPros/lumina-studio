@@ -31,6 +31,7 @@ const CHECK_LABELS: Record<string, { label: string; hint: string }> = {
   push: { label: "Web push", hint: "VAPID_PUBLIC_KEY / VAPID_PRIVATE_KEY + VITE_VAPID_PUBLIC_KEY" },
   ai: { label: "AI assistant", hint: "AI_API_KEY secret" },
   errorReporting: { label: "Error reporting", hint: "SENTRY_DSN secret" },
+  sms: { label: "SMS", hint: "SMS_PROVIDER + SMS_API_KEY secret" },
   contactInbox: { label: "Contact-form inbox", hint: "CONTACT_INBOX var" },
   leadsSheet: { label: "Leads Google Sheet", hint: "GOOGLE_SHEET_WEBHOOK_URL var" },
   uploads: { label: "File uploads (R2)", hint: "UPLOADS binding" },
@@ -40,6 +41,7 @@ const CHECK_LABELS: Record<string, { label: string; hint: string }> = {
 const JOBS = [
   { key: "reconcile-payments", label: "Reconcile payments", when: "Every 15 minutes" },
   { key: "enrollment-reminders", label: "Enrollment reminders", when: "Hourly" },
+  { key: "assignment-reminders", label: "Assignment reminders", when: "Every 15 min" },
   { key: "cleanup", label: "Cleanup expired data", when: "Daily 02:00 UTC" },
 ];
 

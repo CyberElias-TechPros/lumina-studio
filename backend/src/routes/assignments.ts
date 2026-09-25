@@ -13,6 +13,8 @@ export interface ApiAssignment {
   course: string;
   description: string;
   due: string;
+  /** ISO-8601 UTC deadline when known (null for legacy free-text dues). */
+  dueAt: string | null;
   status: string;
   score?: number;
   max: number;
@@ -27,6 +29,8 @@ interface AssignmentRow {
   course: string;
   description: string;
   due: string;
+  due_at: string | null;
+  created_by: string | null;
   status: string;
   score: number | null;
   max: number;
@@ -36,7 +40,7 @@ interface AssignmentRow {
 }
 
 const SELECT = `
-  SELECT id, title, course, description, due, status, score, max, weight, submissions, rubric
+  SELECT id, title, course, description, due, due_at, created_by, status, score, max, weight, submissions, rubric
     FROM assignments
 `;
 
@@ -47,6 +51,7 @@ function mapRow(row: AssignmentRow): ApiAssignment {
     course: row.course,
     description: row.description,
     due: row.due,
+    dueAt: row.due_at,
     status: row.status,
     ...(row.score !== null ? { score: row.score } : {}),
     max: row.max,
@@ -107,7 +112,9 @@ assignments.post("/:id/submit", async (c) => {
   }
 
   const now = isoNow();
-  const late = row.due ? (row.due < now ? 1 : 0) : 0;
+  // Only a machine-readable deadline can make a submission late; legacy
+  // free-text dues ("Sun · 23:59") are never compared as strings.
+  const late = row.due_at && row.due_at < now ? 1 : 0;
   const submissionId = crypto.randomUUID();
   await c.env.DB.prepare(
     `INSERT INTO submissions
@@ -116,7 +123,8 @@ assignments.post("/:id/submit", async (c) => {
   )
     .bind(
       submissionId,
-      user.id,
+      // Route the submission to the authoring instructor's queue when known.
+      row.created_by ?? user.id,
       user.id,
       assignmentId,
       user.name,

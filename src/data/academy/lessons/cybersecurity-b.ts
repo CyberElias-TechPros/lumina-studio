@@ -184,14 +184,46 @@ export const cybersecurityLessonsB: Record<string, SessionLecture> = {
       "Assume credentials were taken after any real infection, and change everything stored in that browser. Cleaning the machine does not un-send what an infostealer already transmitted, and pretending otherwise is how a technician gets called back.",
     ],
     vocabulary: [
-      { term: "Phishing", meaning: "A message engineered to prompt action before thought. Judged by what it asks for, not how it looks." },
-      { term: "SIM-swap", meaning: "Fraud moving your number to an attacker's SIM, capturing every SMS code. Defeated by a port-out PIN." },
-      { term: "Port-out PIN", meaning: "A PIN on your mobile account required before your number can be moved. The key control against SIM-swap." },
-      { term: "Fake payment alert", meaning: "A forged transfer notification. Verified only in your own banking app, never from a screenshot or SMS." },
-      { term: "Ransomware", meaning: "Malware encrypting files for payment. Backups are the only reliable defence; paying does not guarantee recovery." },
-      { term: "Infostealer", meaning: "Malware harvesting saved passwords and cookies. Removal does not un-send what it already transmitted." },
-      { term: "Session revocation", meaning: "Signing out all logged-in devices. Essential after a password change, because a stolen token survives it." },
-      { term: "Persistence", meaning: "Where malware survives a restart: startup entries, scheduled tasks, extensions. Checked during removal." },
+      {
+        term: "Phishing",
+        meaning:
+          "A message engineered to prompt action before thought. Judged by what it asks for, not how it looks.",
+      },
+      {
+        term: "SIM-swap",
+        meaning:
+          "Fraud moving your number to an attacker's SIM, capturing every SMS code. Defeated by a port-out PIN.",
+      },
+      {
+        term: "Port-out PIN",
+        meaning:
+          "A PIN on your mobile account required before your number can be moved. The key control against SIM-swap.",
+      },
+      {
+        term: "Fake payment alert",
+        meaning:
+          "A forged transfer notification. Verified only in your own banking app, never from a screenshot or SMS.",
+      },
+      {
+        term: "Ransomware",
+        meaning:
+          "Malware encrypting files for payment. Backups are the only reliable defence; paying does not guarantee recovery.",
+      },
+      {
+        term: "Infostealer",
+        meaning:
+          "Malware harvesting saved passwords and cookies. Removal does not un-send what it already transmitted.",
+      },
+      {
+        term: "Session revocation",
+        meaning:
+          "Signing out all logged-in devices. Essential after a password change, because a stolen token survives it.",
+      },
+      {
+        term: "Persistence",
+        meaning:
+          "Where malware survives a restart: startup entries, scheduled tasks, extensions. Checked during removal.",
+      },
     ],
     homework: [
       {
@@ -219,27 +251,32 @@ export const cybersecurityLessonsB: Record<string, SessionLecture> = {
       {
         criterion: "Recognition",
         passing: "Is suspicious of odd messages.",
-        excellent: "Identifies urgency, the mismatched sender and the link destination across all four channels, and judges by the ask rather than the appearance.",
+        excellent:
+          "Identifies urgency, the mismatched sender and the link destination across all four channels, and judges by the ask rather than the appearance.",
       },
       {
         criterion: "Scam knowledge",
         passing: "Knows scams exist.",
-        excellent: "Explains SIM-swap, fake payment alerts, code requests and impersonation, with the specific control that defeats each.",
+        excellent:
+          "Explains SIM-swap, fake payment alerts, code requests and impersonation, with the specific control that defeats each.",
       },
       {
         criterion: "Preventive action",
         passing: "Is generally careful.",
-        excellent: "Port-out PIN set and confirmed, verification-in-app as an absolute rule, and no software from pirated sources.",
+        excellent:
+          "Port-out PIN set and confirmed, verification-in-app as an absolute rule, and no software from pirated sources.",
       },
       {
         criterion: "Incident response",
         passing: "Would change a password.",
-        excellent: "Follows the full first-hour sequence in order from a clean device, including session revocation and a recovery-detail audit.",
+        excellent:
+          "Follows the full first-hour sequence in order from a clean device, including session revocation and a recovery-detail audit.",
       },
       {
         criterion: "Malware handling",
         passing: "Runs a scan.",
-        excellent: "Scans in Safe Mode, checks persistence locations, changes every stored password, and states clearly when a reinstall is the correct answer.",
+        excellent:
+          "Scans in Safe Mode, checks persistence locations, changes every stored password, and states clearly when a reinstall is the correct answer.",
       },
     ],
     faqs: [
@@ -444,14 +481,42 @@ export const cybersecurityLessonsB: Record<string, SessionLecture> = {
       "Tell clients plainly that a firewall does not stop phishing. The misconception that buying a security product makes them safe is expensive, and correcting it is part of the service rather than a sales obstacle.",
     ],
     vocabulary: [
-      { term: "Router", meaning: "The device connecting a local network to the internet and directing traffic. Usually also a switch and access point." },
-      { term: "NAT", meaning: "Network address translation, letting many devices share one public address. Also the default barrier to unsolicited inbound connections." },
-      { term: "DHCP", meaning: "The service handing out local addresses automatically to devices joining the network." },
-      { term: "WPA2-AES / WPA3", meaning: "The Wi-Fi encryption standards to use. WEP and WPA-TKIP are broken and must never be selected." },
+      {
+        term: "Router",
+        meaning:
+          "The device connecting a local network to the internet and directing traffic. Usually also a switch and access point.",
+      },
+      {
+        term: "NAT",
+        meaning:
+          "Network address translation, letting many devices share one public address. Also the default barrier to unsolicited inbound connections.",
+      },
+      {
+        term: "DHCP",
+        meaning:
+          "The service handing out local addresses automatically to devices joining the network.",
+      },
+      {
+        term: "WPA2-AES / WPA3",
+        meaning:
+          "The Wi-Fi encryption standards to use. WEP and WPA-TKIP are broken and must never be selected.",
+      },
       { term: "WPS", meaning: "Push-button Wi-Fi pairing with known weaknesses. Disable it." },
-      { term: "UPnP", meaning: "A protocol letting devices open router ports automatically. Convenient, and used by malware. Disable unless required." },
-      { term: "Guest network", meaning: "An isolated SSID for visitors, keeping them away from your own devices. Essential in any business." },
-      { term: "VPN", meaning: "An encrypted tunnel to a trusted server. The main defence on public Wi-Fi, neutralising most of its risks." },
+      {
+        term: "UPnP",
+        meaning:
+          "A protocol letting devices open router ports automatically. Convenient, and used by malware. Disable unless required.",
+      },
+      {
+        term: "Guest network",
+        meaning:
+          "An isolated SSID for visitors, keeping them away from your own devices. Essential in any business.",
+      },
+      {
+        term: "VPN",
+        meaning:
+          "An encrypted tunnel to a trusted server. The main defence on public Wi-Fi, neutralising most of its risks.",
+      },
     ],
     homework: [
       {
@@ -479,27 +544,32 @@ export const cybersecurityLessonsB: Record<string, SessionLecture> = {
       {
         criterion: "Network understanding",
         passing: "Knows what a router does.",
-        excellent: "Explains the router, switch, access point, DHCP and NAT, the two address spaces, and why anything on the local network can reach everything else.",
+        excellent:
+          "Explains the router, switch, access point, DHCP and NAT, the two address spaces, and why anything on the local network can reach everything else.",
       },
       {
         criterion: "Default exposure",
         passing: "Changes the Wi-Fi password.",
-        excellent: "Identifies the admin default, the sticker passphrase, WPS, remote administration and UPnP, and unpatched firmware as the main exposures.",
+        excellent:
+          "Identifies the admin default, the sticker passphrase, WPS, remote administration and UPnP, and unpatched firmware as the main exposures.",
       },
       {
         criterion: "Configuration",
         passing: "Improves the settings.",
-        excellent: "Admin password changed, WPA2-AES or WPA3 set, dangerous features disabled, firmware current, and an isolated guest network enabled.",
+        excellent:
+          "Admin password changed, WPA2-AES or WPA3 set, dangerous features disabled, firmware current, and an isolated guest network enabled.",
       },
       {
         criterion: "Public Wi-Fi judgement",
         passing: "Is cautious on public networks.",
-        excellent: "Distinguishes encrypted from unencrypted risk, explains fake access points, disables automatic joining, uses a VPN and avoids sensitive logins.",
+        excellent:
+          "Distinguishes encrypted from unencrypted risk, explains fake access points, disables automatic joining, uses a VPN and avoids sensitive logins.",
       },
       {
         criterion: "Honest scoping",
         passing: "Recommends a firewall.",
-        excellent: "Explains what a firewall does not stop, and directs the client to the controls that actually prevent the common losses.",
+        excellent:
+          "Explains what a firewall does not stop, and directs the client to the controls that actually prevent the common losses.",
       },
     ],
     faqs: [
@@ -704,14 +774,43 @@ export const cybersecurityLessonsB: Record<string, SessionLecture> = {
       "Be honest with clients about what encryption does not do. Overselling it produces false confidence, which is worse than none, because they then neglect the passwords, backups and scepticism that actually prevent losses.",
     ],
     vocabulary: [
-      { term: "Encryption at rest", meaning: "Data protected while stored on a device. What makes theft survivable." },
-      { term: "Encryption in transit", meaning: "Data protected while travelling between two points. What HTTPS provides." },
-      { term: "BitLocker / FileVault", meaning: "Full-disk encryption on Windows and macOS respectively." },
-      { term: "Recovery key", meaning: "The credential restoring access if encryption cannot unlock normally. Losing it is unrecoverable by design." },
-      { term: "HTTPS", meaning: "An encrypted, authenticated connection. Protects content and proves the domain, but is not a trust signal." },
-      { term: "Certificate", meaning: "A document issued to a domain proving its identity. Criminals obtain valid ones routinely." },
-      { term: "Certificate warning", meaning: "The browser failing to verify a site's identity. A hard stop on any site taking credentials or payment." },
-      { term: "End-to-end encryption", meaning: "Encryption only the endpoints can undo. Protects content, not metadata, and nothing at either end." },
+      {
+        term: "Encryption at rest",
+        meaning: "Data protected while stored on a device. What makes theft survivable.",
+      },
+      {
+        term: "Encryption in transit",
+        meaning: "Data protected while travelling between two points. What HTTPS provides.",
+      },
+      {
+        term: "BitLocker / FileVault",
+        meaning: "Full-disk encryption on Windows and macOS respectively.",
+      },
+      {
+        term: "Recovery key",
+        meaning:
+          "The credential restoring access if encryption cannot unlock normally. Losing it is unrecoverable by design.",
+      },
+      {
+        term: "HTTPS",
+        meaning:
+          "An encrypted, authenticated connection. Protects content and proves the domain, but is not a trust signal.",
+      },
+      {
+        term: "Certificate",
+        meaning:
+          "A document issued to a domain proving its identity. Criminals obtain valid ones routinely.",
+      },
+      {
+        term: "Certificate warning",
+        meaning:
+          "The browser failing to verify a site's identity. A hard stop on any site taking credentials or payment.",
+      },
+      {
+        term: "End-to-end encryption",
+        meaning:
+          "Encryption only the endpoints can undo. Protects content, not metadata, and nothing at either end.",
+      },
     ],
     homework: [
       {
@@ -739,27 +838,32 @@ export const cybersecurityLessonsB: Record<string, SessionLecture> = {
       {
         criterion: "Encryption understanding",
         passing: "Knows encryption exists.",
-        excellent: "Distinguishes at rest from in transit, explains what each protects, and can state why at-rest encryption makes theft survivable.",
+        excellent:
+          "Distinguishes at rest from in transit, explains what each protects, and can state why at-rest encryption makes theft survivable.",
       },
       {
         criterion: "Device encryption",
         passing: "Has a phone passcode.",
-        excellent: "Full-disk encryption enabled on the laptop with the recovery key saved in two places, and phone passcode confirmed as the encryption trigger.",
+        excellent:
+          "Full-disk encryption enabled on the laptop with the recovery key saved in two places, and phone passcode confirmed as the encryption trigger.",
       },
       {
         criterion: "HTTPS judgement",
         passing: "Looks for the padlock.",
-        excellent: "Explains the three things HTTPS guarantees and the three it does not, and checks the domain rather than trusting the padlock.",
+        excellent:
+          "Explains the three things HTTPS guarantees and the three it does not, and checks the domain rather than trusting the padlock.",
       },
       {
         criterion: "Warning response",
         passing: "Notices warnings.",
-        excellent: "Treats a warning as a hard stop on credential and payment sites, understands the causes, and knows the captive-portal exception.",
+        excellent:
+          "Treats a warning as a hard stop on credential and payment sites, understands the causes, and knows the captive-portal exception.",
       },
       {
         criterion: "Honest communication",
         passing: "Recommends encryption.",
-        excellent: "States plainly what encryption defeats and what it does not, so the client does not develop false confidence and neglect the real controls.",
+        excellent:
+          "States plainly what encryption defeats and what it does not, so the client does not develop false confidence and neglect the real controls.",
       },
     ],
     faqs: [

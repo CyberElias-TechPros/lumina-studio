@@ -90,49 +90,49 @@ function CourseCard({ course, index }: { course: ResolvedCourse; index: number }
           <CourseCover slug={course.slug} />
         </div>
         <div className="flex flex-1 flex-col p-6">
-        <div className="flex items-start justify-between gap-4">
-          <span className="font-label text-foreground/45 inline-flex items-center gap-2 text-[10px] tabular-nums">
-            <CourseIcon slug={course.slug} className="text-primary size-3.5" />
-            {String(index + 1).padStart(2, "0")}
-          </span>
-          <div className="flex flex-wrap items-center justify-end gap-2">
-            <Badge variant="outline" className="border-foreground/15 font-normal">
-              {course.level}
-            </Badge>
-            <span className="text-primary font-display text-sm font-semibold">
-              {formatFee(course.fee)}
+          <div className="flex items-start justify-between gap-4">
+            <span className="font-label text-foreground/45 inline-flex items-center gap-2 text-[10px] tabular-nums">
+              <CourseIcon slug={course.slug} className="text-primary size-3.5" />
+              {String(index + 1).padStart(2, "0")}
+            </span>
+            <div className="flex flex-wrap items-center justify-end gap-2">
+              <Badge variant="outline" className="border-foreground/15 font-normal">
+                {course.level}
+              </Badge>
+              <span className="text-primary font-display text-sm font-semibold">
+                {formatFee(course.fee)}
+              </span>
+            </div>
+          </div>
+
+          <h3 className="font-display mt-4 text-xl leading-tight font-semibold tracking-tight transition-colors group-hover:text-primary">
+            {course.title}
+          </h3>
+          <p className="text-foreground/70 mt-3 text-sm leading-relaxed">{course.hook}</p>
+
+          <div className="text-foreground/60 mt-5 flex flex-wrap items-center gap-x-4 gap-y-2 text-[11px]">
+            <span className="flex items-center gap-1.5">
+              <Clock className="size-3.5" /> {course.weeks} weeks
+            </span>
+            <span className="flex items-center gap-1.5">
+              <GraduationCap className="size-3.5" /> {course.sessions.length} sessions
+            </span>
+            <span className="flex items-center gap-1.5">
+              <Wallet className="size-3.5" /> {course.sessionsPerWeek}/week
             </span>
           </div>
-        </div>
 
-        <h3 className="font-display mt-4 text-xl leading-tight font-semibold tracking-tight transition-colors group-hover:text-primary">
-          {course.title}
-        </h3>
-        <p className="text-foreground/70 mt-3 text-sm leading-relaxed">{course.hook}</p>
-
-        <div className="text-foreground/60 mt-5 flex flex-wrap items-center gap-x-4 gap-y-2 text-[11px]">
-          <span className="flex items-center gap-1.5">
-            <Clock className="size-3.5" /> {course.weeks} weeks
-          </span>
-          <span className="flex items-center gap-1.5">
-            <GraduationCap className="size-3.5" /> {course.sessions.length} sessions
-          </span>
-          <span className="flex items-center gap-1.5">
-            <Wallet className="size-3.5" /> {course.sessionsPerWeek}/week
-          </span>
-        </div>
-
-        <div className="border-foreground/10 mt-5 flex items-center justify-between border-t pt-4">
-          <span className="text-foreground/60 text-[11px]">
-            {course.publishedCount > 0
-              ? `${course.publishedCount} of ${course.sessions.length} class notes published`
-              : `${course.sessions.length} sessions · full outline`}
-          </span>
-          <span className="text-primary flex items-center gap-1 text-xs font-semibold">
-            View
-            <ArrowUpRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-          </span>
-        </div>
+          <div className="border-foreground/10 mt-5 flex items-center justify-between border-t pt-4">
+            <span className="text-foreground/60 text-[11px]">
+              {course.publishedCount > 0
+                ? `${course.publishedCount} of ${course.sessions.length} class notes published`
+                : `${course.sessions.length} sessions · full outline`}
+            </span>
+            <span className="text-primary flex items-center gap-1 text-xs font-semibold">
+              View
+              <ArrowUpRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </span>
+          </div>
         </div>
       </Link>
     </Reveal>

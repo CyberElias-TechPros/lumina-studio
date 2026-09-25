@@ -9,10 +9,6 @@ function blockText(block: BlogBlock | string): string {
 
 /** Honest reading time from actual body length (~200 wpm). */
 export function readingTimeLabel(body: Array<BlogBlock | string>): string {
-  const words = body
-    .map(blockText)
-    .join(" ")
-    .split(/\s+/)
-    .filter(Boolean).length;
+  const words = body.map(blockText).join(" ").split(/\s+/).filter(Boolean).length;
   return `${Math.max(1, Math.round(words / 200))} min`;
 }

@@ -3,6 +3,7 @@
  * `triggers.crons` block in wrangler.jsonc:
  *
  *   every 15 min  → reconcile-payments   (Paystack verify for stuck "pending" sessions)
+ *                 → assignment-reminders (24h + 1h before due_at; app + email + opted-in SMS)
  *   hourly        → enrollment-reminders (unpaid registrations after 24h; balance nudges weekly)
  *   daily 02:00   → cleanup              (expired tokens/sessions, old ledgers)
  *
@@ -16,11 +17,14 @@ import { emailLayout, escapeHtml } from "../lib/email-templates";
 import { verifyPaystackTransaction } from "../lib/paystack";
 import { reportError } from "../lib/monitoring";
 import { markPayment, feeDueFor } from "../routes/enrollments";
+import { parseDueText } from "../lib/due-dates";
+import { sendSms, sendUserSms } from "../lib/sms";
 
-export type JobName = "reconcile-payments" | "enrollment-reminders" | "cleanup";
+export type JobName =
+  "reconcile-payments" | "enrollment-reminders" | "assignment-reminders" | "cleanup";
 
 export const CRON_SCHEDULE: Record<string, JobName[]> = {
-  "*/15 * * * *": ["reconcile-payments"],
+  "*/15 * * * *": ["reconcile-payments", "assignment-reminders"],
   "0 * * * *": ["enrollment-reminders"],
   "0 2 * * *": ["cleanup"],
 };
@@ -95,6 +99,7 @@ interface ReminderRow {
   fee_total: number;
   payment_plan: string;
   paid_amount: number;
+  phone?: string;
 }
 
 async function logRegistrationEvent(env: AppEnv, ref: string, event: string, detail: string) {
@@ -112,7 +117,7 @@ export async function enrollmentReminders(env: AppEnv): Promise<string> {
 
   // 1) Registered 24h+ ago, still unpaid, never reminded → one reminder.
   const unpaidRows = await env.DB.prepare(
-    `SELECT r.ref, r.first_name, r.email, r.program_title, r.program_kind, r.fee_total,
+    `SELECT r.ref, r.first_name, r.email, r.phone, r.program_title, r.program_kind, r.fee_total,
             r.payment_plan, r.paid_amount
        FROM registrations r
       WHERE r.payment_status IN ('unpaid', 'failed') AND r.stage != 'declined'
@@ -138,6 +143,14 @@ export async function enrollmentReminders(env: AppEnv): Promise<string> {
         footnote: "Need help or a different payment plan? Reply to this email or WhatsApp us.",
       }),
     }).catch(() => undefined);
+    // Applicants gave a phone number on the form and have no account yet, so
+    // this transactional SMS goes straight to that number.
+    if (r.phone) {
+      await sendSms(env, {
+        to: r.phone,
+        body: `CEA: Hi ${r.first_name.slice(0, 20)}, your seat for ${r.program_title.slice(0, 40)} (ref ${r.ref}) is reserved pending payment. Pay: ${appUrl(ctx, `/apply/status/${r.ref}`)}`,
+      }).catch(() => undefined);
+    }
     unpaid += 1;
   }
 
@@ -177,6 +190,107 @@ export async function enrollmentReminders(env: AppEnv): Promise<string> {
   return `unpaid reminders ${unpaid}, balance reminders ${balance}`;
 }
 
+/* ---------------- assignment-reminders ---------------- */
+
+export async function assignmentReminders(env: AppEnv, ref: Date = new Date()): Promise<string> {
+  const ctx = { env };
+  const nowIso = ref.toISOString();
+
+  // 1) Backfill machine-readable deadlines from unambiguous legacy text.
+  //    Relative text ("Today 23:59") is never guessed; unparseable rows get
+  //    due_at = '' so they're not rescanned every tick.
+  const legacy = await env.DB.prepare(
+    `SELECT id, due FROM assignments WHERE due_at IS NULL LIMIT 200`,
+  ).all<{ id: string; due: string }>();
+  let backfilled = 0;
+  const updates = (legacy.results ?? []).map((r) => {
+    const parsed = parseDueText(r.due, ref, { allowRelative: false });
+    if (parsed) backfilled += 1;
+    return env.DB.prepare(`UPDATE assignments SET due_at = ? WHERE id = ?`).bind(
+      parsed ?? "",
+      r.id,
+    );
+  });
+  if (updates.length) await env.DB.batch(updates);
+
+  // 2) Send each reminder window at most once per assignment row.
+  let sent = 0;
+  const windows: { kind: "24h" | "1h"; from: number; to: number }[] = [
+    { kind: "24h", from: 60, to: 24 * 60 },
+    { kind: "1h", from: 0, to: 60 },
+  ];
+  for (const w of windows) {
+    const from = new Date(ref.getTime() + w.from * 60_000).toISOString();
+    const to = new Date(ref.getTime() + w.to * 60_000).toISOString();
+    const due = await env.DB.prepare(
+      `SELECT a.id, a.user_id, a.title, a.course, a.due, a.due_at, u.email, u.name,
+              COALESCE(p.email_enabled, 1) AS email_enabled, COALESCE(p.app_enabled, 1) AS app_enabled
+         FROM assignments a
+         JOIN users u ON u.id = a.user_id AND u.status = 'active'
+         LEFT JOIN notification_preferences p ON p.user_id = a.user_id
+        WHERE a.due_at != '' AND a.due_at > ? AND a.due_at <= ?
+          AND a.status IN ('pending', 'draft')
+          AND NOT EXISTS (SELECT 1 FROM assignment_reminders r WHERE r.assignment_id = a.id AND r.kind = ?)
+        LIMIT 100`,
+    )
+      .bind(from, to, w.kind)
+      .all<{
+        id: string;
+        user_id: string;
+        title: string;
+        course: string;
+        due: string;
+        due_at: string;
+        email: string;
+        name: string;
+        email_enabled: number;
+        app_enabled: number;
+      }>();
+    for (const a of due.results ?? []) {
+      const claimed = await env.DB.prepare(
+        `INSERT OR IGNORE INTO assignment_reminders (assignment_id, kind, sent_at) VALUES (?, ?, ?)`,
+      )
+        .bind(a.id, w.kind, nowIso)
+        .run();
+      if (claimed.meta.changes !== 1) continue; // another run got it
+      const when = w.kind === "1h" ? "in under an hour" : "within 24 hours";
+      if (a.app_enabled === 1) {
+        await env.DB.prepare(
+          `INSERT INTO notifications (id, user_id, title, body, time, engine) VALUES (?, ?, ?, ?, ?, 'learning')`,
+        )
+          .bind(
+            `ntf-${crypto.randomUUID().slice(0, 12)}`,
+            a.user_id,
+            `Due ${when}: ${a.title}`,
+            `${a.course} · ${a.due} WAT`,
+            nowIso,
+          )
+          .run();
+      }
+      if (a.email_enabled === 1) {
+        await sendEmail(ctx, {
+          to: a.email,
+          subject: `Reminder: "${a.title}" is due ${when}`,
+          html: emailLayout({
+            heading: `Assignment due ${when}`,
+            bodyHtml: `<p>Hi ${escapeHtml(a.name)},</p>
+<p><strong>${escapeHtml(a.title)}</strong> (${escapeHtml(a.course)}) is due <strong>${escapeHtml(a.due)} WAT</strong>. Late submissions are flagged to your instructor.</p>`,
+            cta: { label: "Open assignment", url: appUrl(ctx, `/app/assignments/${a.id}`) },
+          }),
+        }).catch(() => undefined);
+      }
+      await sendUserSms(
+        env,
+        a.user_id,
+        `CEA reminder: "${a.title.slice(0, 60)}" is due ${a.due} WAT.`,
+        { urgent: w.kind === "1h", now: ref },
+      ).catch(() => undefined);
+      sent += 1;
+    }
+  }
+  return `backfilled ${backfilled}/${legacy.results?.length ?? 0}, reminders ${sent}`;
+}
+
 /* ---------------- cleanup ---------------- */
 
 export async function cleanup(env: AppEnv): Promise<string> {
@@ -201,6 +315,7 @@ export async function cleanup(env: AppEnv): Promise<string> {
 const JOBS: Record<JobName, (env: AppEnv) => Promise<string>> = {
   "reconcile-payments": reconcilePayments,
   "enrollment-reminders": enrollmentReminders,
+  "assignment-reminders": (env) => assignmentReminders(env),
   cleanup,
 };
 

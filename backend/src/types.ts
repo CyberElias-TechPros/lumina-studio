@@ -26,4 +26,10 @@ export interface AppEnv {
   CONTACT_INBOX?: string;
   /** Protects GET /v1/cron/run for manual job triggering (optional). */
   CRON_SECRET?: string;
+  /** SMS provider: "termii" (default, Nigeria), "twilio", or "console". */
+  SMS_PROVIDER?: string;
+  /** Termii API key, or Twilio "ACCOUNT_SID:AUTH_TOKEN". */
+  SMS_API_KEY?: string;
+  /** Sender ID (Termii, registered) or sending number (Twilio, E.164). */
+  SMS_SENDER?: string;
 }

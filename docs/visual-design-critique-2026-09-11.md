@@ -8,14 +8,14 @@ critique deliberately deferred, plus the gaps it left open.
 Scope of effect (what "every screen" means here): the shared layers every
 route renders through, so the language propagates without per-page edits —
 
-| Layer | File | Routes affected |
-| --- | --- | --- |
-| Route continuity | `src/router.tsx` + view-transition CSS | all (~300) |
-| Foundation tokens/utilities | `src/styles.css` | all |
-| Marketing shell | `src/components/marketing/shell.tsx` | all public pages (~43) |
-| Motion primitives | `src/components/motion/index.tsx` | all |
-| Workspace shell | `src/components/app/app-shell.tsx` | all CEA-OS workspaces (~46) |
-| Exemplar page | `src/routes/programs.index.tsx` | /programs |
+| Layer                       | File                                   | Routes affected             |
+| --------------------------- | -------------------------------------- | --------------------------- |
+| Route continuity            | `src/router.tsx` + view-transition CSS | all (~300)                  |
+| Foundation tokens/utilities | `src/styles.css`                       | all                         |
+| Marketing shell             | `src/components/marketing/shell.tsx`   | all public pages (~43)      |
+| Motion primitives           | `src/components/motion/index.tsx`      | all                         |
+| Workspace shell             | `src/components/app/app-shell.tsx`     | all CEA-OS workspaces (~46) |
+| Exemplar page               | `src/routes/programs.index.tsx`        | /programs                   |
 
 ## What changed
 

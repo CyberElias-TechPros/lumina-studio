@@ -170,14 +170,45 @@ export const dataEntryLessonsB: Record<string, SessionLecture> = {
       "Where possible, verify against a source that was produced independently. If the client has a system total, a printed summary or a second document covering the same records, reconcile against it. Agreement between two independent sources is real evidence; agreement with yourself is not.",
     ],
     vocabulary: [
-      { term: "Transcription", meaning: "Reproducing information from a source into a structured destination with no change of meaning." },
-      { term: "Verification pass", meaning: "An independent check of entered data, done in a different direction or on different attributes from the entry pass." },
-      { term: "Attribute check", meaning: "Testing the shape of data — length, type, range — rather than reading every character." },
-      { term: "Reconciliation", meaning: "Comparing your dataset's totals and counts against the source's, to prove nothing was missed or mis-entered." },
-      { term: "Transposition error", meaning: "Two adjacent digits swapped. Always changes a total by a multiple of nine." },
-      { term: "Data validation", meaning: "A rule that rejects invalid entries at the point of typing — lists, ranges, text length, date ranges." },
-      { term: "Queries log", meaning: "A record of every unclear or missing value flagged for the client rather than guessed." },
-      { term: "Helper column", meaning: "A temporary column holding a check formula such as LEN() or ISNUMBER(), used to filter to failures." },
+      {
+        term: "Transcription",
+        meaning:
+          "Reproducing information from a source into a structured destination with no change of meaning.",
+      },
+      {
+        term: "Verification pass",
+        meaning:
+          "An independent check of entered data, done in a different direction or on different attributes from the entry pass.",
+      },
+      {
+        term: "Attribute check",
+        meaning:
+          "Testing the shape of data — length, type, range — rather than reading every character.",
+      },
+      {
+        term: "Reconciliation",
+        meaning:
+          "Comparing your dataset's totals and counts against the source's, to prove nothing was missed or mis-entered.",
+      },
+      {
+        term: "Transposition error",
+        meaning: "Two adjacent digits swapped. Always changes a total by a multiple of nine.",
+      },
+      {
+        term: "Data validation",
+        meaning:
+          "A rule that rejects invalid entries at the point of typing — lists, ranges, text length, date ranges.",
+      },
+      {
+        term: "Queries log",
+        meaning:
+          "A record of every unclear or missing value flagged for the client rather than guessed.",
+      },
+      {
+        term: "Helper column",
+        meaning:
+          "A temporary column holding a check formula such as LEN() or ISNUMBER(), used to filter to failures.",
+      },
     ],
     homework: [
       {
@@ -205,27 +236,32 @@ export const dataEntryLessonsB: Record<string, SessionLecture> = {
       {
         criterion: "Transcription fidelity",
         passing: "All clear records transcribed accurately.",
-        excellent: "Accurate throughout, with a workflow that prevents skipped and double-entered lines, and ambiguous values flagged rather than guessed.",
+        excellent:
+          "Accurate throughout, with a workflow that prevents skipped and double-entered lines, and ambiguous values flagged rather than guessed.",
       },
       {
         criterion: "Verification",
         passing: "Verifies work in at least one way.",
-        excellent: "Runs a directional pass, attribute checks and an independent sample, and can say what each method catches.",
+        excellent:
+          "Runs a directional pass, attribute checks and an independent sample, and can say what each method catches.",
       },
       {
         criterion: "Reconciliation",
         passing: "Compares totals with the source.",
-        excellent: "Reconciles both counts and totals, and diagnoses the error type from the size of the difference before searching.",
+        excellent:
+          "Reconciles both counts and totals, and diagnoses the error type from the size of the difference before searching.",
       },
       {
         criterion: "Validation",
         passing: "Applies at least one validation rule.",
-        excellent: "Builds list, range, length and date rules with helpful input and error messages before entry begins.",
+        excellent:
+          "Builds list, range, length and date rules with helpful input and error messages before entry begins.",
       },
       {
         criterion: "Professional delivery",
         passing: "Delivers the completed sheet.",
-        excellent: "Delivers the sheet with a verification note and a queries log, so the client can see exactly what was checked and what is open.",
+        excellent:
+          "Delivers the sheet with a verification note and a queries log, so the client can see exactly what was checked and what is open.",
       },
     ],
     faqs: [
@@ -421,14 +457,44 @@ export const dataEntryLessonsB: Record<string, SessionLecture> = {
       "Deliver early with a note, not late with an apology. A finished file sent a day before the deadline with the checks attached is worth more to a client than a perfect file sent a day late, and the habit compounds into referrals.",
     ],
     vocabulary: [
-      { term: "Field accuracy", meaning: "The proportion of individual fields entered correctly, computed against an answer key. The figure you quote to clients." },
-      { term: "Records per hour", meaning: "Throughput for structured entry, always quoted alongside an accuracy figure rather than alone." },
-      { term: "Answer key", meaning: "The verified correct dataset used to score accuracy objectively." },
-      { term: "Deliverable package", meaning: "The finished sheet plus Checks and Queries sheets plus a one-page delivery note." },
-      { term: "Queries sheet", meaning: "A list of every value flagged as unclear, with record references, delivered rather than guessed." },
-      { term: "Turnaround time", meaning: "How long a job takes from receipt to delivery. Quote from measured throughput plus a safety margin." },
-      { term: "Virtual assistance", meaning: "Remote back-office support — data, email, scheduling, CRM — for an ongoing client, usually paid monthly." },
-      { term: "Niche specialisation", meaning: "Concentrating on one domain such as medical, legal, accounting or e-commerce data, where domain knowledge raises your value." },
+      {
+        term: "Field accuracy",
+        meaning:
+          "The proportion of individual fields entered correctly, computed against an answer key. The figure you quote to clients.",
+      },
+      {
+        term: "Records per hour",
+        meaning:
+          "Throughput for structured entry, always quoted alongside an accuracy figure rather than alone.",
+      },
+      {
+        term: "Answer key",
+        meaning: "The verified correct dataset used to score accuracy objectively.",
+      },
+      {
+        term: "Deliverable package",
+        meaning: "The finished sheet plus Checks and Queries sheets plus a one-page delivery note.",
+      },
+      {
+        term: "Queries sheet",
+        meaning:
+          "A list of every value flagged as unclear, with record references, delivered rather than guessed.",
+      },
+      {
+        term: "Turnaround time",
+        meaning:
+          "How long a job takes from receipt to delivery. Quote from measured throughput plus a safety margin.",
+      },
+      {
+        term: "Virtual assistance",
+        meaning:
+          "Remote back-office support — data, email, scheduling, CRM — for an ongoing client, usually paid monthly.",
+      },
+      {
+        term: "Niche specialisation",
+        meaning:
+          "Concentrating on one domain such as medical, legal, accounting or e-commerce data, where domain knowledge raises your value.",
+      },
     ],
     homework: [
       {
@@ -456,27 +522,32 @@ export const dataEntryLessonsB: Record<string, SessionLecture> = {
       {
         criterion: "Accuracy",
         passing: "At least 98% on general fields and 100% on financial fields.",
-        excellent: "At least 99.5% overall, verified against the answer key, with the figure reproducible.",
+        excellent:
+          "At least 99.5% overall, verified against the answer key, with the figure reproducible.",
       },
       {
         criterion: "Completeness",
         passing: "All records entered with correct data types.",
-        excellent: "All records entered, counts and totals reconciled against source, no skipped or duplicated rows.",
+        excellent:
+          "All records entered, counts and totals reconciled against source, no skipped or duplicated rows.",
       },
       {
         criterion: "Verification",
         passing: "Ran at least the attribute checks and a total reconciliation.",
-        excellent: "Ran the full sequence — attribute checks, column scan, count reconciliation, total reconciliation — and can explain what each catches.",
+        excellent:
+          "Ran the full sequence — attribute checks, column scan, count reconciliation, total reconciliation — and can explain what each catches.",
       },
       {
         criterion: "Professional delivery",
         passing: "Delivers a clean, correctly named file.",
-        excellent: "Delivers the three-sheet package with Checks, Queries and a one-page note stating accuracy and checks performed.",
+        excellent:
+          "Delivers the three-sheet package with Checks, Queries and a one-page note stating accuracy and checks performed.",
       },
       {
         criterion: "Judgement",
         passing: "Flags some unclear values.",
-        excellent: "Flags every ambiguity with a record reference, guesses nothing, and can explain why a flagged gap beats a plausible guess.",
+        excellent:
+          "Flags every ambiguity with a record reference, guesses nothing, and can explain why a flagged gap beats a plausible guess.",
       },
     ],
     faqs: [

@@ -9,6 +9,9 @@ import { Hono } from "hono";
 import type { AppEnv } from "../types";
 import { ApiError } from "../lib/errors";
 import { isJobName, runJob, CRON_SCHEDULE } from "../jobs/scheduled";
+import { z } from "zod";
+import { parseBody } from "../lib/validate";
+import { sendSms, normalizePhone } from "../lib/sms";
 
 export const system = new Hono<{ Bindings: AppEnv }>();
 
@@ -21,6 +24,7 @@ export function readiness(env: AppEnv) {
     push: Boolean(env.VAPID_PUBLIC_KEY && env.VAPID_PRIVATE_KEY),
     ai: Boolean(env.AI_API_KEY),
     errorReporting: Boolean(env.SENTRY_DSN),
+    sms: Boolean(env.SMS_API_KEY),
     contactInbox: Boolean(env.CONTACT_INBOX),
     leadsSheet: Boolean(env.GOOGLE_SHEET_WEBHOOK_URL),
     uploads: Boolean(env.UPLOADS),
@@ -68,4 +72,16 @@ system.post("/jobs/:job/run", async (c) => {
   if (!isJobName(job)) throw ApiError.notFound("Unknown job.");
   const result = await runJob(c.env, job);
   return c.json({ job, ...result });
+});
+
+/** Send a test SMS to verify provider credentials and sender ID. */
+system.post("/sms/test", async (c) => {
+  const { to } = await parseBody(c, z.object({ to: z.string().trim().min(6).max(32) }));
+  if (!normalizePhone(to)) throw ApiError.validation({ to: ["Enter a valid phone number."] });
+  const result = await sendSms(c.env, {
+    to,
+    body: "CEA: test message from the operations console.",
+    userId: c.get("authUser").id,
+  });
+  return c.json(result);
 });

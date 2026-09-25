@@ -212,14 +212,46 @@ export const dataAnalyticsLessonsC: Record<string, SessionLecture> = {
       "Report the count with every percentage and state your limitations in four sentences. Coverage, exclusions, case counts, and what would falsify the conclusion — it makes the work more credible, not less, because the reader can see you knew what you were holding.",
     ],
     vocabulary: [
-      { term: "Fishing", meaning: "Exploring until something looks significant. With many possible comparisons, chance always produces something dramatic." },
-      { term: "Seasonality", meaning: "A repeating annual pattern. Removed by year-on-year comparison or a moving average." },
-      { term: "Moving average", meaning: "The mean of the last few periods, recalculated each period. Smooths noise so an underlying trend shows." },
-      { term: "Correlation", meaning: "Two things moving together. Says nothing about cause, and nothing about which direction it runs." },
-      { term: "Confounder", meaning: "A third variable driving both things in a correlation. Splitting by it is the test." },
-      { term: "Regression to the mean", meaning: "An extreme value being followed by a more ordinary one because extremes are partly luck." },
-      { term: "Selection effect", meaning: "When the data only contains a non-random group — such as customers who kept buying — making conclusions about everyone else invalid." },
-      { term: "Limitations note", meaning: "Coverage, exclusions, case counts and what would falsify the conclusion. Four sentences that make analysis credible." },
+      {
+        term: "Fishing",
+        meaning:
+          "Exploring until something looks significant. With many possible comparisons, chance always produces something dramatic.",
+      },
+      {
+        term: "Seasonality",
+        meaning:
+          "A repeating annual pattern. Removed by year-on-year comparison or a moving average.",
+      },
+      {
+        term: "Moving average",
+        meaning:
+          "The mean of the last few periods, recalculated each period. Smooths noise so an underlying trend shows.",
+      },
+      {
+        term: "Correlation",
+        meaning:
+          "Two things moving together. Says nothing about cause, and nothing about which direction it runs.",
+      },
+      {
+        term: "Confounder",
+        meaning:
+          "A third variable driving both things in a correlation. Splitting by it is the test.",
+      },
+      {
+        term: "Regression to the mean",
+        meaning:
+          "An extreme value being followed by a more ordinary one because extremes are partly luck.",
+      },
+      {
+        term: "Selection effect",
+        meaning:
+          "When the data only contains a non-random group — such as customers who kept buying — making conclusions about everyone else invalid.",
+      },
+      {
+        term: "Limitations note",
+        meaning:
+          "Coverage, exclusions, case counts and what would falsify the conclusion. Four sentences that make analysis credible.",
+      },
     ],
     homework: [
       {
@@ -247,27 +279,32 @@ export const dataAnalyticsLessonsC: Record<string, SessionLecture> = {
       {
         criterion: "Questioning",
         passing: "Analyses the data.",
-        excellent: "Question written before the data was opened with the expected pattern stated, giving the analysis something it could fail.",
+        excellent:
+          "Question written before the data was opened with the expected pattern stated, giving the analysis something it could fail.",
       },
       {
         criterion: "Trend handling",
         passing: "Identifies a trend.",
-        excellent: "Tested year-on-year and against a moving average, the normal monthly range established, and the change judged against it rather than against the previous month.",
+        excellent:
+          "Tested year-on-year and against a moving average, the normal monthly range established, and the change judged against it rather than against the previous month.",
       },
       {
         criterion: "Causal reasoning",
         passing: "Notes a relationship.",
-        excellent: "At least two alternative explanations named, the data split by the likely confounder, and a stated verdict on whether the relationship survived.",
+        excellent:
+          "At least two alternative explanations named, the data split by the likely confounder, and a stated verdict on whether the relationship survived.",
       },
       {
         criterion: "Statistical honesty",
         passing: "Reports figures accurately.",
-        excellent: "Counts attached to every percentage, small samples labelled, regression to the mean recognised, and no decision recommended on a handful of cases.",
+        excellent:
+          "Counts attached to every percentage, small samples labelled, regression to the mean recognised, and no decision recommended on a handful of cases.",
       },
       {
         criterion: "Stating limits",
         passing: "Mentions caveats.",
-        excellent: "A four-sentence limitations note covering coverage, exclusions, case counts and falsification, plus a plain statement of which findings did not survive.",
+        excellent:
+          "A four-sentence limitations note covering coverage, exclusions, case counts and falsification, plus a plain statement of which findings did not survive.",
       },
     ],
     faqs: [
@@ -497,14 +534,46 @@ export const dataAnalyticsLessonsC: Record<string, SessionLecture> = {
       "Say every figure out loud before you send it, and hand the dashboard to someone who has never seen it. Ten seconds of reading aloud catches the error silent reading misses, and an outsider finds the assumptions you can no longer see.",
     ],
     vocabulary: [
-      { term: "Answer-first structure", meaning: "Conclusion, evidence, recommendation, then method. The reader is never misled by reading only the first line." },
-      { term: "Recommendation", meaning: "An action with an owner and a timeframe. A finding without one leaves everyone unsure what to do." },
-      { term: "Success test", meaning: "What would show the recommendation worked. Without it, a recommendation is never revisited." },
-      { term: "Proportionality", meaning: "Matching the strength of the recommendation to the strength of the evidence. A weak finding supports a trial, not a policy." },
-      { term: "Analysis note", meaning: "One page: answer, three figures with counts, recommendation, success test, limitations. The constraint forces you to decide what matters." },
-      { term: "Traceability", meaning: "Every figure in the note being visible on the dashboard. If they disagree, one is wrong and the reader will find it." },
-      { term: "Conceding precisely", meaning: "Agreeing a specific weak point and committing to better evidence. Costs nothing; defending costs the room." },
-      { term: "Documentation", meaning: "Source file, cleaning log and field definitions. What stops a dashboard becoming something nobody dares change." },
+      {
+        term: "Answer-first structure",
+        meaning:
+          "Conclusion, evidence, recommendation, then method. The reader is never misled by reading only the first line.",
+      },
+      {
+        term: "Recommendation",
+        meaning:
+          "An action with an owner and a timeframe. A finding without one leaves everyone unsure what to do.",
+      },
+      {
+        term: "Success test",
+        meaning:
+          "What would show the recommendation worked. Without it, a recommendation is never revisited.",
+      },
+      {
+        term: "Proportionality",
+        meaning:
+          "Matching the strength of the recommendation to the strength of the evidence. A weak finding supports a trial, not a policy.",
+      },
+      {
+        term: "Analysis note",
+        meaning:
+          "One page: answer, three figures with counts, recommendation, success test, limitations. The constraint forces you to decide what matters.",
+      },
+      {
+        term: "Traceability",
+        meaning:
+          "Every figure in the note being visible on the dashboard. If they disagree, one is wrong and the reader will find it.",
+      },
+      {
+        term: "Conceding precisely",
+        meaning:
+          "Agreeing a specific weak point and committing to better evidence. Costs nothing; defending costs the room.",
+      },
+      {
+        term: "Documentation",
+        meaning:
+          "Source file, cleaning log and field definitions. What stops a dashboard becoming something nobody dares change.",
+      },
     ],
     homework: [
       {
@@ -532,27 +601,32 @@ export const dataAnalyticsLessonsC: Record<string, SessionLecture> = {
       {
         criterion: "Structure",
         passing: "Presents findings clearly.",
-        excellent: "The answer stated in the first sentence and confirmed to survive being read before any evidence, followed by evidence, recommendation and method in that order.",
+        excellent:
+          "The answer stated in the first sentence and confirmed to survive being read before any evidence, followed by evidence, recommendation and method in that order.",
       },
       {
         criterion: "Recommendations",
         passing: "Suggests next steps.",
-        excellent: "One recommendation naming an action, owner and timeframe, with a success test, proportionate to the evidence and expressed as a trial where the evidence is thin.",
+        excellent:
+          "One recommendation naming an action, owner and timeframe, with a success test, proportionate to the evidence and expressed as a trial where the evidence is thin.",
       },
       {
         criterion: "Presentation",
         passing: "Presents within the time.",
-        excellent: "Five minutes with one chart and three figures, prepared answers for so what, how sure, what cost and what are we not seeing, and any weak point conceded precisely.",
+        excellent:
+          "Five minutes with one chart and three figures, prepared answers for so what, how sure, what cost and what are we not seeing, and any weak point conceded precisely.",
       },
       {
         criterion: "The deliverable",
         passing: "Delivers a dashboard and a note.",
-        excellent: "A one-screen dashboard over the cleaned dataset with connected slicers and reset instructions, plus a one-page note whose every figure traces to the dashboard, verified by an outsider answering a question unaided.",
+        excellent:
+          "A one-screen dashboard over the cleaned dataset with connected slicers and reset instructions, plus a one-page note whose every figure traces to the dashboard, verified by an outsider answering a question unaided.",
       },
       {
         criterion: "Handover",
         passing: "Work is complete.",
-        excellent: "Source file, cleaning log and field definitions documented, every figure said aloud and re-checked before sending, and the note revised in response to the strongest challenge received.",
+        excellent:
+          "Source file, cleaning log and field definitions documented, every figure said aloud and re-checked before sending, and the note revised in response to the strongest challenge received.",
       },
     ],
     faqs: [

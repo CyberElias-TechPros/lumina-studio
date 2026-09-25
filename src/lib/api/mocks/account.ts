@@ -84,6 +84,7 @@ export function registerAccountMocks(): void {
         push: false,
         ai: false,
         errorReporting: false,
+        sms: false,
         contactInbox: false,
         leadsSheet: false,
         uploads: true,

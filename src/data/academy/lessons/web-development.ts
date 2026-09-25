@@ -45,7 +45,7 @@ export const webDevelopmentLessonsA: Record<string, SessionLecture> = {
         heading: "Links, images and media",
         body: [
           "A link is an anchor element with an href pointing somewhere and text between the tags, and the **link text should describe the destination**. 'Read our pricing' tells someone where they are going; 'click here' tells them nothing, and it is useless to a screen reader user scanning a list of links out of context, which is exactly how many people navigate. If a link's destination cannot be guessed from its text alone, the text is wrong.",
-          "Images require an **`alt` attribute**, and it is not optional decoration — it is the text that replaces the image when it cannot be seen. Write what the image conveys: `alt=\"Two students reviewing a spreadsheet in class\"` rather than `alt=\"image\"` or `alt=\"photo1.jpg\"`. If an image is purely decorative and adds no information, use an empty `alt=\"\"` so assistive technology skips it rather than announcing something meaningless.",
+          'Images require an **`alt` attribute**, and it is not optional decoration — it is the text that replaces the image when it cannot be seen. Write what the image conveys: `alt="Two students reviewing a spreadsheet in class"` rather than `alt="image"` or `alt="photo1.jpg"`. If an image is purely decorative and adds no information, use an empty `alt=""` so assistive technology skips it rather than announcing something meaningless.',
           "Then the practical details. Set **`width` and `height`** so the browser reserves the space before the image loads, which prevents the layout jumping around — a real usability problem on a slow connection, which is most connections here. Use **relative paths** for your own files (`images/logo.png`) rather than absolute ones, or the page breaks the moment it moves to a different folder or server.",
         ],
       },
@@ -195,14 +195,43 @@ export const webDevelopmentLessonsA: Record<string, SessionLecture> = {
       "Set width and height on every image. It reserves space before the image loads and prevents the layout jumping, which is a genuine usability problem on the slow connections most Nigerian users have.",
     ],
     vocabulary: [
-      { term: "Element", meaning: "An opening tag, content and closing tag. The unit HTML is built from." },
-      { term: "Semantic HTML", meaning: "Using elements for what they mean rather than how they look. The difference between a page that works and one that works for everyone." },
-      { term: "Nesting", meaning: "Elements inside elements, correctly closed. Gives a document its shape." },
-      { term: "Heading outline", meaning: "The hierarchy of h1 to h6. Navigated by screen readers and used by search engines." },
-      { term: "alt attribute", meaning: "Text replacing an image when it cannot be seen. Empty for decorative images, descriptive for meaningful ones." },
-      { term: "Sectioning element", meaning: "header, nav, main, section, article, aside, footer. Lets assistive technology jump between regions." },
-      { term: "Relative path", meaning: "A file location relative to the current page. Survives moving to another folder or server." },
-      { term: "Layout shift", meaning: "Content moving as images load. Prevented by setting width and height." },
+      {
+        term: "Element",
+        meaning: "An opening tag, content and closing tag. The unit HTML is built from.",
+      },
+      {
+        term: "Semantic HTML",
+        meaning:
+          "Using elements for what they mean rather than how they look. The difference between a page that works and one that works for everyone.",
+      },
+      {
+        term: "Nesting",
+        meaning: "Elements inside elements, correctly closed. Gives a document its shape.",
+      },
+      {
+        term: "Heading outline",
+        meaning:
+          "The hierarchy of h1 to h6. Navigated by screen readers and used by search engines.",
+      },
+      {
+        term: "alt attribute",
+        meaning:
+          "Text replacing an image when it cannot be seen. Empty for decorative images, descriptive for meaningful ones.",
+      },
+      {
+        term: "Sectioning element",
+        meaning:
+          "header, nav, main, section, article, aside, footer. Lets assistive technology jump between regions.",
+      },
+      {
+        term: "Relative path",
+        meaning:
+          "A file location relative to the current page. Survives moving to another folder or server.",
+      },
+      {
+        term: "Layout shift",
+        meaning: "Content moving as images load. Prevented by setting width and height.",
+      },
     ],
     homework: [
       {
@@ -230,27 +259,32 @@ export const webDevelopmentLessonsA: Record<string, SessionLecture> = {
       {
         criterion: "Document structure",
         passing: "Renders a page.",
-        excellent: "A correct skeleton written from scratch with charset, descriptive title and viewport, and elements nested and closed correctly throughout.",
+        excellent:
+          "A correct skeleton written from scratch with charset, descriptive title and viewport, and elements nested and closed correctly throughout.",
       },
       {
         criterion: "Semantics",
         passing: "Uses some semantic tags.",
-        excellent: "Elements chosen for meaning throughout, verified by disabling the stylesheet and confirming the markup still reads as a sensible outline.",
+        excellent:
+          "Elements chosen for meaning throughout, verified by disabling the stylesheet and confirming the markup still reads as a sensible outline.",
       },
       {
         criterion: "Headings and text",
         passing: "Has headings.",
-        excellent: "One h1, a logical outline with no skipped levels, size controlled by CSS, and prose in p with strong and em used for meaning rather than appearance.",
+        excellent:
+          "One h1, a logical outline with no skipped levels, size controlled by CSS, and prose in p with strong and em used for meaning rather than appearance.",
       },
       {
         criterion: "Links and images",
         passing: "Has both.",
-        excellent: "Every link text describing its destination, alt text meaningful or deliberately empty, explicit width and height, and relative paths throughout.",
+        excellent:
+          "Every link text describing its destination, alt text meaningful or deliberately empty, explicit width and height, and relative paths throughout.",
       },
       {
         criterion: "Lists, tables and sections",
         passing: "Uses them.",
-        excellent: "ul and ol chosen by whether order matters, a real data table with th headers and a caption, and full sectioning structure with exactly one main.",
+        excellent:
+          "ul and ol chosen by whether order matters, a real data table with th headers and a caption, and full sectioning structure with exactly one main.",
       },
     ],
     faqs: [
@@ -294,7 +328,7 @@ export const webDevelopmentLessonsA: Record<string, SessionLecture> = {
         body: [
           "A form is a collection of inputs inside a `<form>` element, with an **action** saying where the data goes and a **method** saying how. `POST` sends the data in the request body and is right for anything sensitive or that changes something; `GET` puts it in the URL, which is visible, bookmarkable and limited in length — fine for a search, wrong for a password.",
           "Each input needs a **`name`**, because that is the key the data arrives under. An input without a name is invisible to the server however it looks on the page, which is a common and confusing bug: the form appears to work, the user types something, and nothing arrives.",
-          "Then the **input types**, which are not cosmetic. `type=\"email\"` gives a phone an email keyboard and basic format checking. `type=\"tel\"` gives a numeric pad. `type=\"date\"` gives a date picker instead of a free-text box the user has to guess the format of. `type=\"password\"` hides the characters. Using `type=\"text\"` for everything works and is worse in every way, particularly on a phone, where the wrong keyboard is a real obstacle.",
+          'Then the **input types**, which are not cosmetic. `type="email"` gives a phone an email keyboard and basic format checking. `type="tel"` gives a numeric pad. `type="date"` gives a date picker instead of a free-text box the user has to guess the format of. `type="password"` hides the characters. Using `type="text"` for everything works and is worse in every way, particularly on a phone, where the wrong keyboard is a real obstacle.',
         ],
       },
       {
@@ -308,7 +342,7 @@ export const webDevelopmentLessonsA: Record<string, SessionLecture> = {
       {
         heading: "Buttons and submission",
         body: [
-          "Use a **`<button>`** for anything that does something. The two elements that look interchangeable are not: `<button type=\"submit\">` inside a form submits it, `<button type=\"button\">` does not submit and is for JavaScript actions, and `<a>` navigates somewhere. Styling a link to look like a button produces something a keyboard user activates differently and a screen reader announces wrongly.",
+          'Use a **`<button>`** for anything that does something. The two elements that look interchangeable are not: `<button type="submit">` inside a form submits it, `<button type="button">` does not submit and is for JavaScript actions, and `<a>` navigates somewhere. Styling a link to look like a button produces something a keyboard user activates differently and a screen reader announces wrongly.',
           "Then **do not disable the submit button while submitting without a way back**. It is a well-meant pattern — prevent double submission — that traps people when the request fails, because the button stays disabled and there is no way to try again. Better: keep it enabled, show a loading state, and handle failure by telling the user what happened.",
           "And **tell the user what happened**. A form that submits silently gives no confirmation, so people submit twice or assume it failed. Show a clear success message, and on error say **which field** is wrong and **what to do about it** — 'Email address is missing the @ symbol' rather than 'Invalid input'. Error messages that only mark a field red are useless to anyone who cannot see the colour.",
         ],
@@ -470,14 +504,45 @@ export const webDevelopmentLessonsA: Record<string, SessionLecture> = {
       "Check contrast on your actual colours rather than assuming. Light grey on white is an extremely common aesthetic choice that fails badly, and it is unreadable for people with low vision and for anyone using a phone in bright sunlight.",
     ],
     vocabulary: [
-      { term: "Form method", meaning: "How data is sent. POST for sensitive or state-changing data, GET for visible bookmarkable queries." },
-      { term: "name attribute", meaning: "The key the input's value arrives under. Without it the data never reaches the server." },
-      { term: "Label association", meaning: "Connecting a label to an input with for and id. Announced by assistive technology and makes the label clickable." },
-      { term: "Placeholder", meaning: "Example text inside an input that disappears on typing. Never a substitute for a label." },
-      { term: "Fieldset and legend", meaning: "A grouping with a caption. Required so grouped radio options have a question attached." },
-      { term: "Focus indicator", meaning: "The visible outline showing which element has keyboard focus. Removing it makes a page unusable by keyboard." },
-      { term: "Contrast ratio", meaning: "How much text stands out from its background. At least 4.5:1 for normal text." },
-      { term: "Skip link", meaning: "A link at the top letting keyboard users bypass navigation. Without it they tab through the whole menu on every page." },
+      {
+        term: "Form method",
+        meaning:
+          "How data is sent. POST for sensitive or state-changing data, GET for visible bookmarkable queries.",
+      },
+      {
+        term: "name attribute",
+        meaning:
+          "The key the input's value arrives under. Without it the data never reaches the server.",
+      },
+      {
+        term: "Label association",
+        meaning:
+          "Connecting a label to an input with for and id. Announced by assistive technology and makes the label clickable.",
+      },
+      {
+        term: "Placeholder",
+        meaning:
+          "Example text inside an input that disappears on typing. Never a substitute for a label.",
+      },
+      {
+        term: "Fieldset and legend",
+        meaning:
+          "A grouping with a caption. Required so grouped radio options have a question attached.",
+      },
+      {
+        term: "Focus indicator",
+        meaning:
+          "The visible outline showing which element has keyboard focus. Removing it makes a page unusable by keyboard.",
+      },
+      {
+        term: "Contrast ratio",
+        meaning: "How much text stands out from its background. At least 4.5:1 for normal text.",
+      },
+      {
+        term: "Skip link",
+        meaning:
+          "A link at the top letting keyboard users bypass navigation. Without it they tab through the whole menu on every page.",
+      },
     ],
     homework: [
       {
@@ -505,27 +570,32 @@ export const webDevelopmentLessonsA: Record<string, SessionLecture> = {
       {
         criterion: "Form structure",
         passing: "Has a form.",
-        excellent: "Method and action set, every input named, input types chosen deliberately, and correct button types rather than styled links.",
+        excellent:
+          "Method and action set, every input named, input types chosen deliberately, and correct button types rather than styled links.",
       },
       {
         criterion: "Labelling",
         passing: "Fields are identifiable.",
-        excellent: "Real labels connected by for and id on every input, placeholder used only for examples, radios grouped in a fieldset with a legend, helper text attached via aria-describedby.",
+        excellent:
+          "Real labels connected by for and id on every input, placeholder used only for examples, radios grouped in a fieldset with a legend, helper text attached via aria-describedby.",
       },
       {
         criterion: "Error handling",
         passing: "Shows errors.",
-        excellent: "Messages naming the field and the fix rather than only colour, and a submit flow that cannot trap the user when a request fails.",
+        excellent:
+          "Messages naming the field and the fix rather than only colour, and a submit flow that cannot trap the user when a request fails.",
       },
       {
         criterion: "Keyboard access",
         passing: "Mostly usable.",
-        excellent: "Proven by mouse-down tab traversal reaching everything, visible focus on every element with no outline removed, and a working skip link.",
+        excellent:
+          "Proven by mouse-down tab traversal reaching everything, visible focus on every element with no outline removed, and a working skip link.",
       },
       {
         criterion: "Accessibility fundamentals",
         passing: "Looks reasonable.",
-        excellent: "Measured contrast of at least 4.5:1 throughout, no information conveyed by colour alone, meaningful link text, alt text, a descriptive title and a declared language.",
+        excellent:
+          "Measured contrast of at least 4.5:1 throughout, no information conveyed by colour alone, meaningful link text, alt text, a descriptive title and a declared language.",
       },
     ],
     faqs: [
@@ -567,7 +637,7 @@ export const webDevelopmentLessonsA: Record<string, SessionLecture> = {
       {
         heading: "Selectors, classes and IDs",
         body: [
-          "A CSS rule has two parts: a **selector** saying what to style, and **declarations** saying how. `h2 { color: navy; }` selects every `<h2>` and sets its colour. The element selector is the bluntest tool available — it styles every instance — which is why **classes** exist: `<p class=\"intro\">` and `.intro { … }` style only the paragraphs you marked.",
+          'A CSS rule has two parts: a **selector** saying what to style, and **declarations** saying how. `h2 { color: navy; }` selects every `<h2>` and sets its colour. The element selector is the bluntest tool available — it styles every instance — which is why **classes** exist: `<p class="intro">` and `.intro { … }` style only the paragraphs you marked.',
           "The rule for choosing is straightforward. **Use a class for anything you style more than once or might want to style differently later**, which is most things. **Use an ID for something genuinely unique** — and be aware that an ID carries more weight than a class, so it is harder to override later, which is why IDs are better used for JavaScript hooks and page anchors than for styling. **Use an element selector for defaults** that should apply everywhere, like body font or heading colour.",
           "Then **specificity**, which decides what wins when two rules conflict. Roughly, an ID beats a class, a class beats an element, and among equals the later rule wins. Most 'why is my CSS not working' problems are specificity problems, and the wrong fix is adding `!important` — which wins today and creates a rule you cannot override tomorrow. The right fix is a simpler, more specific selector.",
         ],
@@ -748,14 +818,45 @@ export const webDevelopmentLessonsA: Record<string, SessionLecture> = {
       "Measure contrast on your actual colours rather than assuming. Light grey on white is an extremely common aesthetic choice that fails the 4.5:1 requirement badly, and it is unreadable for people with low vision and for anyone on a phone in bright sunlight.",
     ],
     vocabulary: [
-      { term: "Selector", meaning: "The part of a rule choosing what to style. Element, class or ID, in increasing specificity." },
-      { term: "Specificity", meaning: "What decides which rule wins a conflict. ID beats class, class beats element, then source order." },
-      { term: "Box model", meaning: "Content, padding, border and margin. Every element is a box made of those four layers." },
-      { term: "box-sizing: border-box", meaning: "Makes width include padding and border. One line that makes layouts predictable." },
-      { term: "Margin collapsing", meaning: "Adjacent vertical margins where the larger wins rather than adding up. Intended behaviour." },
-      { term: "Display type", meaning: "Block stacks and takes a full line; inline flows within a line and ignores width and vertical margin." },
-      { term: "Custom property", meaning: "A CSS variable such as --brand. Changing the palette becomes one edit instead of a search." },
-      { term: "Type scale", meaning: "The set of font sizes used, in relative units. Hierarchy comes from contrast, not variety." },
+      {
+        term: "Selector",
+        meaning:
+          "The part of a rule choosing what to style. Element, class or ID, in increasing specificity.",
+      },
+      {
+        term: "Specificity",
+        meaning:
+          "What decides which rule wins a conflict. ID beats class, class beats element, then source order.",
+      },
+      {
+        term: "Box model",
+        meaning:
+          "Content, padding, border and margin. Every element is a box made of those four layers.",
+      },
+      {
+        term: "box-sizing: border-box",
+        meaning: "Makes width include padding and border. One line that makes layouts predictable.",
+      },
+      {
+        term: "Margin collapsing",
+        meaning:
+          "Adjacent vertical margins where the larger wins rather than adding up. Intended behaviour.",
+      },
+      {
+        term: "Display type",
+        meaning:
+          "Block stacks and takes a full line; inline flows within a line and ignores width and vertical margin.",
+      },
+      {
+        term: "Custom property",
+        meaning:
+          "A CSS variable such as --brand. Changing the palette becomes one edit instead of a search.",
+      },
+      {
+        term: "Type scale",
+        meaning:
+          "The set of font sizes used, in relative units. Hierarchy comes from contrast, not variety.",
+      },
     ],
     homework: [
       {
@@ -783,27 +884,32 @@ export const webDevelopmentLessonsA: Record<string, SessionLecture> = {
       {
         criterion: "Selectors",
         passing: "Styles elements.",
-        excellent: "Element selectors for defaults, classes for anything repeated, IDs reserved for hooks, and every conflict resolved with a better selector with no !important anywhere.",
+        excellent:
+          "Element selectors for defaults, classes for anything repeated, IDs reserved for hooks, and every conflict resolved with a better selector with no !important anywhere.",
       },
       {
         criterion: "Box model",
         passing: "Sets widths and padding.",
-        excellent: "border-box set globally, the four layers understood, display types accounted for, and margin collapsing explained rather than fought.",
+        excellent:
+          "border-box set globally, the four layers understood, display types accounted for, and margin collapsing explained rather than fought.",
       },
       {
         criterion: "Spacing",
         passing: "Spaces things out.",
-        excellent: "A fixed scale of 4/8/16/24/32/48 used exclusively, with related elements placed closer together so grouping reads without being stated.",
+        excellent:
+          "A fixed scale of 4/8/16/24/32/48 used exclusively, with related elements placed closer together so grouping reads without being stated.",
       },
       {
         criterion: "Typography",
         passing: "Chooses a font.",
-        excellent: "Body at 16px or larger with 1.5 line height, line length constrained, a system stack or at most two families, and headings in relative units.",
+        excellent:
+          "Body at 16px or larger with 1.5 line height, line length constrained, a system stack or at most two families, and headings in relative units.",
       },
       {
         criterion: "Colour",
         passing: "Picks colours that look good.",
-        excellent: "A two or three colour palette as custom properties, every pair measured at 4.5:1 or better, consistent meaning per colour, and text or icon indicators where colour alone is not enough.",
+        excellent:
+          "A two or three colour palette as custom properties, every pair measured at 4.5:1 or better, consistent meaning per colour, and text or icon indicators where colour alone is not enough.",
       },
     ],
     faqs: [

@@ -53,12 +53,18 @@ export function SiteFooter() {
                 26 Ebony Road, Off Rumuola Road, Port Harcourt, Rivers State
               </p>
               <p>
-                <a href="tel:+2349058628386" className="hover:text-foreground flex items-center gap-2.5">
+                <a
+                  href="tel:+2349058628386"
+                  className="hover:text-foreground flex items-center gap-2.5"
+                >
                   <Phone className="size-4 shrink-0" /> +234 905 862 8386
                 </a>
               </p>
               <p>
-                <a href="mailto:hello@cea.ng" className="hover:text-foreground flex items-center gap-2.5">
+                <a
+                  href="mailto:hello@cea.ng"
+                  className="hover:text-foreground flex items-center gap-2.5"
+                >
                   <Mail className="size-4 shrink-0" /> hello@cea.ng
                 </a>
               </p>

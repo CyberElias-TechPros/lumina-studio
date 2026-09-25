@@ -30,7 +30,9 @@ function VisitInfoPage() {
         {campusGallery.map((shot) => (
           <figure key={shot.id} className="border-border overflow-hidden rounded-lg border">
             <CampusImg id={shot.id} className="aspect-[4/3]" />
-            <figcaption className="text-muted-foreground px-3 py-2 text-xs">{shot.caption}</figcaption>
+            <figcaption className="text-muted-foreground px-3 py-2 text-xs">
+              {shot.caption}
+            </figcaption>
           </figure>
         ))}
       </section>

@@ -25,5 +25,12 @@ AI_API_KEY=
 # Error reporting (Sentry or GlitchTip DSN). Optional.
 SENTRY_DSN=
 
+# SMS (optional). Provider: termii (default, Nigeria-first) | twilio | console (logs only).
+# Termii: SMS_API_KEY=<api key>, SMS_SENDER=<approved sender ID, e.g. CEA>
+# Twilio: SMS_API_KEY=<ACCOUNT_SID>:<AUTH_TOKEN>, SMS_SENDER=<E.164 number>
+SMS_PROVIDER=termii
+SMS_API_KEY=
+SMS_SENDER=CEA
+
 # Where contact-form notifications go (e.g. admissions@cea.ng). Optional.
 CONTACT_INBOX=

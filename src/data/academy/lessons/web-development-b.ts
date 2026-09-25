@@ -52,7 +52,7 @@ export const webDevelopmentLessonsB: Record<string, SessionLecture> = {
       {
         heading: "Responsive layout, media queries and transitions",
         body: [
-          "Responsive design means **one page that works at every width**, and it starts before any media query. The **viewport meta tag** — `<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">` — is required, because without it a phone renders the page at desktop width and scales it down to illegibility. Then **fluid sizing**: percentages and `fr` units rather than fixed pixels, and `max-width` on containers so text does not stretch across a wide screen.",
+          'Responsive design means **one page that works at every width**, and it starts before any media query. The **viewport meta tag** — `<meta name="viewport" content="width=device-width, initial-scale=1">` — is required, because without it a phone renders the page at desktop width and scales it down to illegibility. Then **fluid sizing**: percentages and `fr` units rather than fixed pixels, and `max-width` on containers so text does not stretch across a wide screen.',
           "**Media queries** apply styles at particular widths, and the discipline is to **design mobile-first**: write the base styles for a narrow screen, then add rules inside `min-width` queries as space allows. This produces less CSS than starting at desktop and undoing it, and it means the simplest experience is the default rather than something you patch in later. Breakpoints should come from **where your content breaks**, not from the widths of particular devices.",
           "Then **transitions**, which make changes feel intentional rather than abrupt. `transition: background-color 0.2s ease` on a button makes a hover feel responsive. Three rules keep them useful: keep them **short** — 150 to 300 milliseconds, because anything longer feels sluggish; animate only **cheap properties** like colour, opacity and transform, since animating width or height forces the browser to recalculate layout on every frame; and **respect `prefers-reduced-motion`**, because some people are made genuinely unwell by animation and a media query can switch it off for them.",
         ],
@@ -197,14 +197,45 @@ export const webDevelopmentLessonsB: Record<string, SessionLecture> = {
       "Keep transitions between 150 and 300 milliseconds, animate only colour, opacity and transform, and respect prefers-reduced-motion. Longer feels sluggish, animating layout properties is expensive, and some people are genuinely made unwell by motion.",
     ],
     vocabulary: [
-      { term: "Flexbox", meaning: "One-dimensional layout along a row or column. The right tool for lining things up." },
-      { term: "Grid", meaning: "Two-dimensional layout in rows and columns. The right tool for page structure and card grids." },
-      { term: "auto-fit minmax", meaning: "A Grid column definition creating as many columns as fit at a minimum width. Reflows with no media query." },
-      { term: "gap", meaning: "Space between flex or grid items. Replaces the margin hack that broke at the edges." },
-      { term: "Positioned element", meaning: "One with position other than static. Required before z-index has any effect." },
-      { term: "Mobile-first", meaning: "Writing base styles for narrow screens and adding min-width queries. Produces less CSS and a simpler default." },
-      { term: "Breakpoint", meaning: "The width where your content breaks. Derived from the content, not from device specifications." },
-      { term: "prefers-reduced-motion", meaning: "A media query for users who need less animation. Some people are genuinely made unwell by motion." },
+      {
+        term: "Flexbox",
+        meaning:
+          "One-dimensional layout along a row or column. The right tool for lining things up.",
+      },
+      {
+        term: "Grid",
+        meaning:
+          "Two-dimensional layout in rows and columns. The right tool for page structure and card grids.",
+      },
+      {
+        term: "auto-fit minmax",
+        meaning:
+          "A Grid column definition creating as many columns as fit at a minimum width. Reflows with no media query.",
+      },
+      {
+        term: "gap",
+        meaning:
+          "Space between flex or grid items. Replaces the margin hack that broke at the edges.",
+      },
+      {
+        term: "Positioned element",
+        meaning: "One with position other than static. Required before z-index has any effect.",
+      },
+      {
+        term: "Mobile-first",
+        meaning:
+          "Writing base styles for narrow screens and adding min-width queries. Produces less CSS and a simpler default.",
+      },
+      {
+        term: "Breakpoint",
+        meaning:
+          "The width where your content breaks. Derived from the content, not from device specifications.",
+      },
+      {
+        term: "prefers-reduced-motion",
+        meaning:
+          "A media query for users who need less animation. Some people are genuinely made unwell by motion.",
+      },
     ],
     homework: [
       {
@@ -232,27 +263,32 @@ export const webDevelopmentLessonsB: Record<string, SessionLecture> = {
       {
         criterion: "Layout tool choice",
         passing: "Uses Flexbox or Grid.",
-        excellent: "Grid for page structure and two-dimensional layouts, Flexbox for components and single dimensions, with both used together where that is cleanest.",
+        excellent:
+          "Grid for page structure and two-dimensional layouts, Flexbox for components and single dimensions, with both used together where that is cleanest.",
       },
       {
         criterion: "Alignment and flow",
         passing: "Things line up.",
-        excellent: "justify-content and align-items used deliberately, flex-wrap set so rows reflow rather than squeeze, and gap used for spacing instead of margins.",
+        excellent:
+          "justify-content and align-items used deliberately, flex-wrap set so rows reflow rather than squeeze, and gap used for spacing instead of margins.",
       },
       {
         criterion: "Positioning",
         passing: "Moves elements.",
-        excellent: "The four position values understood, position set before relying on z-index, low deliberate z-index values, and sticky used instead of JavaScript.",
+        excellent:
+          "The four position values understood, position set before relying on z-index, low deliberate z-index values, and sticky used instead of JavaScript.",
       },
       {
         criterion: "Responsive behaviour",
         passing: "Works on a phone.",
-        excellent: "Viewport meta tag present, designed mobile-first from 320px, auto-fit minmax used so grids reflow without queries, and media queries added only at genuine content breaks.",
+        excellent:
+          "Viewport meta tag present, designed mobile-first from 320px, auto-fit minmax used so grids reflow without queries, and media queries added only at genuine content breaks.",
       },
       {
         criterion: "Motion",
         passing: "Has some animation.",
-        excellent: "Transitions of 150 to 300 milliseconds animating only colour, opacity and transform, with a prefers-reduced-motion query switching motion off.",
+        excellent:
+          "Transitions of 150 to 300 milliseconds animating only colour, opacity and transform, with a prefers-reduced-motion query switching motion off.",
       },
     ],
     faqs: [
@@ -469,14 +505,44 @@ export const webDevelopmentLessonsB: Record<string, SessionLecture> = {
       "Log values rather than assuming them. Most time spent stuck on JavaScript is a wrong assumption about what a value actually is, and console.log answers it in a second.",
     ],
     vocabulary: [
-      { term: "defer", meaning: "A script attribute making it run after the document is parsed. Prevents the script-runs-too-early bug." },
-      { term: "const", meaning: "Declares a name that cannot be reassigned. The default choice; object contents can still change." },
-      { term: "Hoisting", meaning: "var existing before its declaring line, holding undefined. One reason modern code avoids var." },
-      { term: "Type coercion", meaning: "JavaScript converting types rather than refusing. Why '5' + 3 is '53' and '5' - 3 is 2." },
-      { term: "Strict equality", meaning: "=== compares value and type without coercion. The only equality operator to use." },
-      { term: "Falsy", meaning: "false, 0, '', null, undefined and NaN. Everything else is truthy, including empty arrays and objects." },
-      { term: "Nullish coalescing", meaning: "?? falls back only on null or undefined, unlike || which also falls back on 0 and ''." },
-      { term: "NaN", meaning: "Not a number. Almost always means a string reached an arithmetic operation." },
+      {
+        term: "defer",
+        meaning:
+          "A script attribute making it run after the document is parsed. Prevents the script-runs-too-early bug.",
+      },
+      {
+        term: "const",
+        meaning:
+          "Declares a name that cannot be reassigned. The default choice; object contents can still change.",
+      },
+      {
+        term: "Hoisting",
+        meaning:
+          "var existing before its declaring line, holding undefined. One reason modern code avoids var.",
+      },
+      {
+        term: "Type coercion",
+        meaning:
+          "JavaScript converting types rather than refusing. Why '5' + 3 is '53' and '5' - 3 is 2.",
+      },
+      {
+        term: "Strict equality",
+        meaning: "=== compares value and type without coercion. The only equality operator to use.",
+      },
+      {
+        term: "Falsy",
+        meaning:
+          "false, 0, '', null, undefined and NaN. Everything else is truthy, including empty arrays and objects.",
+      },
+      {
+        term: "Nullish coalescing",
+        meaning:
+          "?? falls back only on null or undefined, unlike || which also falls back on 0 and ''.",
+      },
+      {
+        term: "NaN",
+        meaning: "Not a number. Almost always means a string reached an arithmetic operation.",
+      },
     ],
     homework: [
       {
@@ -504,27 +570,32 @@ export const webDevelopmentLessonsB: Record<string, SessionLecture> = {
       {
         criterion: "Script setup",
         passing: "Has JavaScript on the page.",
-        excellent: "The defer attribute used so the script runs after parsing, and the console used from the start to inspect rather than assume.",
+        excellent:
+          "The defer attribute used so the script runs after parsing, and the console used from the start to inspect rather than assume.",
       },
       {
         criterion: "Variables",
         passing: "Declares variables.",
-        excellent: "const by default with let only where reassignment is needed, no var anywhere, and names describing what each holds.",
+        excellent:
+          "const by default with let only where reassignment is needed, no var anywhere, and names describing what each holds.",
       },
       {
         criterion: "Type handling",
         passing: "Does arithmetic.",
-        excellent: "Form input confirmed as a string with typeof, converted explicitly with Number(), and NaN checked and handled before reaching the page.",
+        excellent:
+          "Form input confirmed as a string with typeof, converted explicitly with Number(), and NaN checked and handled before reaching the page.",
       },
       {
         criterion: "Equality and defaults",
         passing: "Compares values.",
-        excellent: "Strict equality used throughout with no == anywhere, and || or ?? used for defaults with ?? chosen where zero or an empty string is legitimate.",
+        excellent:
+          "Strict equality used throughout with no == anywhere, and || or ?? used for defaults with ?? chosen where zero or an empty string is legitimate.",
       },
       {
         criterion: "Conditions",
         passing: "Uses if statements.",
-        excellent: "Checks ordered from most specific to least specific, tested against zero, empty string and null, with ternaries used only for single two-way choices.",
+        excellent:
+          "Checks ordered from most specific to least specific, tested against zero, empty string and null, with ternaries used only for single two-way choices.",
       },
     ],
     faqs: [
@@ -752,14 +823,46 @@ export const webDevelopmentLessonsB: Record<string, SessionLecture> = {
       "Call preventDefault on form submissions and use event delegation for lists. The first stops the page reloading and discarding your work; the second handles items added after the page loaded without re-attaching listeners.",
     ],
     vocabulary: [
-      { term: "Function", meaning: "A named block of code with inputs and an output. Exists for reuse and for clarity." },
-      { term: "Return value", meaning: "What a function hands back. Without a return statement the caller receives undefined." },
-      { term: "Arrow function", meaning: "A shorter function syntax. Equivalent for most purposes and the modern idiom for short callbacks." },
-      { term: "Array", meaning: "An ordered list, indexed from zero. Out-of-range access returns undefined rather than throwing." },
-      { term: "Object", meaning: "A collection of named values. How you represent a thing; arrays of objects are the shape of most real data." },
-      { term: "Optional chaining", meaning: "The ?. operator. Returns undefined instead of crashing when an intermediate value is missing." },
-      { term: "map / filter / reduce", meaning: "Transform each item, select a subset, combine into one value. Replace most hand-written loops and read better." },
-      { term: "Event delegation", meaning: "One listener on a parent handling events from children, including ones added later." },
+      {
+        term: "Function",
+        meaning:
+          "A named block of code with inputs and an output. Exists for reuse and for clarity.",
+      },
+      {
+        term: "Return value",
+        meaning:
+          "What a function hands back. Without a return statement the caller receives undefined.",
+      },
+      {
+        term: "Arrow function",
+        meaning:
+          "A shorter function syntax. Equivalent for most purposes and the modern idiom for short callbacks.",
+      },
+      {
+        term: "Array",
+        meaning:
+          "An ordered list, indexed from zero. Out-of-range access returns undefined rather than throwing.",
+      },
+      {
+        term: "Object",
+        meaning:
+          "A collection of named values. How you represent a thing; arrays of objects are the shape of most real data.",
+      },
+      {
+        term: "Optional chaining",
+        meaning:
+          "The ?. operator. Returns undefined instead of crashing when an intermediate value is missing.",
+      },
+      {
+        term: "map / filter / reduce",
+        meaning:
+          "Transform each item, select a subset, combine into one value. Replace most hand-written loops and read better.",
+      },
+      {
+        term: "Event delegation",
+        meaning:
+          "One listener on a parent handling events from children, including ones added later.",
+      },
     ],
     homework: [
       {
@@ -787,27 +890,32 @@ export const webDevelopmentLessonsB: Record<string, SessionLecture> = {
       {
         criterion: "Functions",
         passing: "Uses functions.",
-        excellent: "One job per function, each named for what it does, every value-producing function confirmed to return it, and values passed as parameters rather than read from outer scope.",
+        excellent:
+          "One job per function, each named for what it does, every value-producing function confirmed to return it, and values passed as parameters rather than read from outer scope.",
       },
       {
         criterion: "Data structures",
         passing: "Stores data.",
-        excellent: "An array of objects accessed with zero-based indexing, nested properties guarded with optional chaining, and out-of-range access handled rather than left to surface later.",
+        excellent:
+          "An array of objects accessed with zero-based indexing, nested properties guarded with optional chaining, and out-of-range access handled rather than left to surface later.",
       },
       {
         criterion: "Iteration",
         passing: "Loops over data.",
-        excellent: "for...of where only values are needed, any indexed loop written as i < items.length, and map, filter, find and reduce used where each is the clearer tool.",
+        excellent:
+          "for...of where only values are needed, any indexed loop written as i < items.length, and map, filter, find and reduce used where each is the clearer tool.",
       },
       {
         criterion: "Events",
         passing: "Responds to clicks.",
-        excellent: "Listeners attached without parentheses, preventDefault on form submission, and delegation used so runtime-added items respond.",
+        excellent:
+          "Listeners attached without parentheses, preventDefault on form submission, and delegation used so runtime-added items respond.",
       },
       {
         criterion: "Verification",
         passing: "It appears to work.",
-        excellent: "Intermediate values logged and confirmed at each stage, with edge cases — missing values, empty arrays, out-of-range indexes — actually tested.",
+        excellent:
+          "Intermediate values logged and confirmed at each stage, with edge cases — missing values, empty arrays, out-of-range indexes — actually tested.",
       },
     ],
     faqs: [

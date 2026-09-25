@@ -234,14 +234,46 @@ export const videoEditingLessonsA: Record<string, SessionLecture> = {
       "Test every assembly with the sound off. If the story does not hold without audio, no grade, caption or motion graphic will save it — and finding that out before you decorate saves the whole rebuild.",
     ],
     vocabulary: [
-      { term: "Assembly edit", meaning: "The story in the right order with nothing decorative added. Every problem in the finished video is a problem here." },
-      { term: "Hook", meaning: "The opening claim on attention. Chosen last, placed first, and usually found deep in the footage." },
-      { term: "Logging", meaning: "Watching all footage and recording timecodes for keeps, unusable moments and B-roll. The step that determines everything after." },
-      { term: "Selects", meaning: "The marked moments you will build from. Choosing from a list rather than by scrolling." },
-      { term: "B-roll", meaning: "Supplementary footage illustrating what is being said. Cut it if it supports no sentence." },
-      { term: "Reframe", meaning: "Repositioning a horizontal shot to fill a vertical frame while keeping the subject in shot." },
-      { term: "Sync", meaning: "Aligning separate audio and video sources by waveform. Done early or it drifts and costs a rebuild." },
-      { term: "Restructure", meaning: "Reordering material for the viewer rather than shortening it. The real difference between a long and a short cut." },
+      {
+        term: "Assembly edit",
+        meaning:
+          "The story in the right order with nothing decorative added. Every problem in the finished video is a problem here.",
+      },
+      {
+        term: "Hook",
+        meaning:
+          "The opening claim on attention. Chosen last, placed first, and usually found deep in the footage.",
+      },
+      {
+        term: "Logging",
+        meaning:
+          "Watching all footage and recording timecodes for keeps, unusable moments and B-roll. The step that determines everything after.",
+      },
+      {
+        term: "Selects",
+        meaning:
+          "The marked moments you will build from. Choosing from a list rather than by scrolling.",
+      },
+      {
+        term: "B-roll",
+        meaning:
+          "Supplementary footage illustrating what is being said. Cut it if it supports no sentence.",
+      },
+      {
+        term: "Reframe",
+        meaning:
+          "Repositioning a horizontal shot to fill a vertical frame while keeping the subject in shot.",
+      },
+      {
+        term: "Sync",
+        meaning:
+          "Aligning separate audio and video sources by waveform. Done early or it drifts and costs a rebuild.",
+      },
+      {
+        term: "Restructure",
+        meaning:
+          "Reordering material for the viewer rather than shortening it. The real difference between a long and a short cut.",
+      },
     ],
     homework: [
       {
@@ -269,27 +301,32 @@ export const videoEditingLessonsA: Record<string, SessionLecture> = {
       {
         criterion: "Preparation",
         passing: "Imports footage and starts cutting.",
-        excellent: "Project folder organised, both angles imported, audio synced by waveform with no drift, and the full footage watched at speed with a complete timecode log.",
+        excellent:
+          "Project folder organised, both angles imported, audio synced by waveform with no drift, and the full footage watched at speed with a complete timecode log.",
       },
       {
         criterion: "Selection",
         passing: "Chooses usable clips.",
-        excellent: "Selects marked deliberately from the log, each B-roll clip tied to a sentence it illustrates, and decoration rejected where it supports nothing.",
+        excellent:
+          "Selects marked deliberately from the log, each B-roll clip tied to a sentence it illustrates, and decoration rejected where it supports nothing.",
       },
       {
         criterion: "Structure",
         passing: "Assembles clips in order.",
-        excellent: "Story reordered for the viewer rather than chronologically, at least one strong point moved earlier, live-only digressions cut, and the hook found in the log and placed first.",
+        excellent:
+          "Story reordered for the viewer rather than chronologically, at least one strong point moved earlier, live-only digressions cut, and the hook found in the log and placed first.",
       },
       {
         criterion: "Assembly discipline",
         passing: "Builds a rough cut.",
-        excellent: "Both assemblies complete with no music, colour, captions or effects, each verified to work with the sound off, and nothing refined before the whole was built.",
+        excellent:
+          "Both assemblies complete with no music, colour, captions or effects, each verified to work with the sound off, and nothing refined before the whole was built.",
       },
       {
         criterion: "Platform thinking",
         passing: "Produces two versions.",
-        excellent: "A 45-second vertical piece carrying one idea and opening mid-sentence, structurally different from the five-minute horizontal version rather than a shortened copy of it.",
+        excellent:
+          "A 45-second vertical piece carrying one idea and opening mid-sentence, structurally different from the five-minute horizontal version rather than a shortened copy of it.",
       },
     ],
     faqs: [
@@ -530,14 +567,46 @@ export const videoEditingLessonsA: Record<string, SessionLecture> = {
       "Cut less than you think you should. A cut is an interruption, a held shot through a difficult moment carries more than three angle changes, and the best edit usually has fewer cuts than the first version did.",
     ],
     vocabulary: [
-      { term: "Cutting on action", meaning: "Cutting during movement so the eye follows across the join. Makes the transition invisible." },
-      { term: "L cut", meaning: "Picture changes while the previous shot's audio continues. Lets you show a reaction without losing the sentence." },
-      { term: "J cut", meaning: "The next shot's audio arrives before its picture. Pulls the viewer forward and creates anticipation." },
-      { term: "Dead air", meaning: "Filler words, repeated words and hesitation pauses. Removed without content loss, but not so tightly that speech sounds rushed." },
-      { term: "Rhythm", meaning: "The pattern of shot lengths. Felt rather than named, and it must match the content rather than being uniform." },
-      { term: "Pacing", meaning: "How fast the video moves overall. Controlled by shot length and by how much is left in." },
-      { term: "Detaching audio", meaning: "Unlinking audio from video so their edit points can move separately. What makes J and L cuts possible." },
-      { term: "Held shot", meaning: "A long uncut shot left alone. Often carries more than a cut would, and reads as confidence." },
+      {
+        term: "Cutting on action",
+        meaning:
+          "Cutting during movement so the eye follows across the join. Makes the transition invisible.",
+      },
+      {
+        term: "L cut",
+        meaning:
+          "Picture changes while the previous shot's audio continues. Lets you show a reaction without losing the sentence.",
+      },
+      {
+        term: "J cut",
+        meaning:
+          "The next shot's audio arrives before its picture. Pulls the viewer forward and creates anticipation.",
+      },
+      {
+        term: "Dead air",
+        meaning:
+          "Filler words, repeated words and hesitation pauses. Removed without content loss, but not so tightly that speech sounds rushed.",
+      },
+      {
+        term: "Rhythm",
+        meaning:
+          "The pattern of shot lengths. Felt rather than named, and it must match the content rather than being uniform.",
+      },
+      {
+        term: "Pacing",
+        meaning:
+          "How fast the video moves overall. Controlled by shot length and by how much is left in.",
+      },
+      {
+        term: "Detaching audio",
+        meaning:
+          "Unlinking audio from video so their edit points can move separately. What makes J and L cuts possible.",
+      },
+      {
+        term: "Held shot",
+        meaning:
+          "A long uncut shot left alone. Often carries more than a cut would, and reads as confidence.",
+      },
     ],
     homework: [
       {
@@ -565,27 +634,32 @@ export const videoEditingLessonsA: Record<string, SessionLecture> = {
       {
         criterion: "Cutting on action",
         passing: "Cuts between angles.",
-        excellent: "Cuts placed during gestures so the eye follows across, with returns to wide timed to each new point and no cut noticeable as a cut.",
+        excellent:
+          "Cuts placed during gestures so the eye follows across, with returns to wide timed to each new point and no cut noticeable as a cut.",
       },
       {
         criterion: "J and L cuts",
         passing: "Uses some audio overlap.",
-        excellent: "Every same-frame cut identified and at least six L cuts and three J cuts applied, with the dialogue sounding like continuous conversation rather than joined clips.",
+        excellent:
+          "Every same-frame cut identified and at least six L cuts and three J cuts applied, with the dialogue sounding like continuous conversation rather than joined clips.",
       },
       {
         criterion: "Trimming",
         passing: "Removes obvious filler.",
-        excellent: "All filler and hesitation pauses removed, a beat kept before and after important lines, air restored where speech sounded rushed, and the result judged on confidence rather than length.",
+        excellent:
+          "All filler and hesitation pauses removed, a beat kept before and after important lines, air restored where speech sounded rushed, and the result judged on confidence rather than length.",
       },
       {
         criterion: "Rhythm",
         passing: "Shot lengths vary somewhat.",
-        excellent: "Uniform length demonstrated as monotonous then deliberately varied to match content, with beat cutting used only where it supports the moment and one held shot left untouched.",
+        excellent:
+          "Uniform length demonstrated as monotonous then deliberately varied to match content, with beat cutting used only where it supports the moment and one held shot left untouched.",
       },
       {
         criterion: "Restraint",
         passing: "Completes the rough cut.",
-        excellent: "Cut count recorded before and after and reduced, every noticed cut moved to a moment of change, and working moments left alone rather than cut because cutting is the job.",
+        excellent:
+          "Cut count recorded before and after and reduced, every noticed cut moved to a moment of change, and working moments left alone rather than cut because cutting is the job.",
       },
     ],
     faqs: [
@@ -842,14 +916,46 @@ export const videoEditingLessonsA: Record<string, SessionLecture> = {
       "Check every music licence and keep it with the project. Uncleared music can divert a client's ad revenue, mute their video or get it taken down after they have paid you, and I found it online is not a defence two years later.",
     ],
     vocabulary: [
-      { term: "Clipping", meaning: "Audio exceeding 0 dB. Hard digital distortion that cannot be repaired after export." },
-      { term: "Headroom", meaning: "The gap between your peak and 0 dB. Why dialogue sits around -12 rather than near zero." },
-      { term: "Room tone", meaning: "A stretch of the noise alone with nobody speaking. Used as the profile for noise reduction." },
-      { term: "Hum", meaning: "A steady tone at mains frequency, 50 Hz here. From generators and air conditioning; filters out cleanly." },
-      { term: "Noise reduction", meaning: "Sampling the noise and subtracting it. Effective lightly, and it turns a voice robotic when pushed." },
-      { term: "Ducking", meaning: "Music dropping under speech and rising after. Keyframed to start a beat before the speech, not with it." },
-      { term: "Content ID", meaning: "Automatic copyright detection. An uncleared track can claim a client's revenue or mute their video." },
-      { term: "Off-axis", meaning: "Angling the mic slightly away from the mouth. Reduces breath pops without losing presence." },
+      {
+        term: "Clipping",
+        meaning:
+          "Audio exceeding 0 dB. Hard digital distortion that cannot be repaired after export.",
+      },
+      {
+        term: "Headroom",
+        meaning:
+          "The gap between your peak and 0 dB. Why dialogue sits around -12 rather than near zero.",
+      },
+      {
+        term: "Room tone",
+        meaning:
+          "A stretch of the noise alone with nobody speaking. Used as the profile for noise reduction.",
+      },
+      {
+        term: "Hum",
+        meaning:
+          "A steady tone at mains frequency, 50 Hz here. From generators and air conditioning; filters out cleanly.",
+      },
+      {
+        term: "Noise reduction",
+        meaning:
+          "Sampling the noise and subtracting it. Effective lightly, and it turns a voice robotic when pushed.",
+      },
+      {
+        term: "Ducking",
+        meaning:
+          "Music dropping under speech and rising after. Keyframed to start a beat before the speech, not with it.",
+      },
+      {
+        term: "Content ID",
+        meaning:
+          "Automatic copyright detection. An uncleared track can claim a client's revenue or mute their video.",
+      },
+      {
+        term: "Off-axis",
+        meaning:
+          "Angling the mic slightly away from the mouth. Reduces breath pops without losing presence.",
+      },
     ],
     homework: [
       {
@@ -877,27 +983,32 @@ export const videoEditingLessonsA: Record<string, SessionLecture> = {
       {
         criterion: "Levels",
         passing: "Audio is audible.",
-        excellent: "No clipping anywhere, dialogue peaking around -12 dB, every speaker normalised to the same level, and the whole timeline checked rather than only the section worked on.",
+        excellent:
+          "No clipping anywhere, dialogue peaking around -12 dB, every speaker normalised to the same level, and the whole timeline checked rather than only the section worked on.",
       },
       {
         criterion: "Noise",
         passing: "Reduces background noise.",
-        excellent: "Room tone captured for the profile, hum reduced at 50 Hz and A-tested, noise reduction applied lightly and deliberately over-applied once to hear the damage, then pulled back to a natural voice.",
+        excellent:
+          "Room tone captured for the profile, hum reduced at 50 Hz and A-tested, noise reduction applied lightly and deliberately over-applied once to hear the damage, then pulled back to a natural voice.",
       },
       {
         criterion: "Music",
         passing: "Adds a track.",
-        excellent: "Chosen by tempo and mood after picture lock, licence confirmed for commercial use and filed with the project, and set 15 to 20 dB below dialogue.",
+        excellent:
+          "Chosen by tempo and mood after picture lock, licence confirmed for commercial use and filed with the project, and set 15 to 20 dB below dialogue.",
       },
       {
         criterion: "Ducking and effects",
         passing: "Music sits under speech.",
-        excellent: "Duck keyframed to start a beat before each speech, effects removed entirely and only the missed ones restored, and a beat of silence used before the key line.",
+        excellent:
+          "Duck keyframed to start a beat before each speech, effects removed entirely and only the missed ones restored, and a beat of silence used before the key line.",
       },
       {
         criterion: "Verification",
         passing: "Listens back before export.",
-        excellent: "Voiceover recorded close and off-axis in a treated room with silence at the head of each take, and the full mix checked on phone speakers as well as headphones with discrepancies fixed.",
+        excellent:
+          "Voiceover recorded close and off-axis in a treated room with silence at the head of each take, and the full mix checked on phone speakers as well as headphones with discrepancies fixed.",
       },
     ],
     faqs: [

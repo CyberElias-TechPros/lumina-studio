@@ -60,8 +60,8 @@ function VerifyPage() {
         <div className="mx-auto max-w-xl">
           <p className="text-muted-foreground mb-8 text-sm leading-relaxed">
             Certificates are awarded for the work produced on a course, not for attendance. This
-            page checks the code against our records. It is not a professional licence and it is
-            not a national qualification.
+            page checks the code against our records. It is not a professional licence and it is not
+            a national qualification.
           </p>
 
           <div className="border-border rounded-lg border p-6">

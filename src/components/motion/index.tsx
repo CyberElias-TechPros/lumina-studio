@@ -1229,33 +1229,83 @@ export function Arrival({
         <div className="bg-gradient-brand absolute -top-40 -left-32 size-[52rem] rounded-full opacity-[0.22] blur-[130px]" />
         <div className="absolute -right-40 bottom-0 size-[44rem] rounded-full bg-gradient-learning opacity-[0.16] blur-[140px]" />
         <div className="rule-grid absolute inset-0 opacity-[0.12] [mask-image:radial-gradient(70%_60%_at_50%_30%,black,transparent)]" />
-        <div className="absolute inset-0 opacity-[0.18] mix-blend-overlay" style={{ backgroundImage: "var(--grain-image)", backgroundSize: "180px 180px" }} />
+        <div
+          className="absolute inset-0 opacity-[0.18] mix-blend-overlay"
+          style={{ backgroundImage: "var(--grain-image)", backgroundSize: "180px 180px" }}
+        />
       </div>
 
       <div className="relative flex flex-1 flex-col justify-between px-6 py-6 md:px-12 md:py-10">
         <div className="flex items-center justify-between font-label text-[10px] text-muted-foreground">
-          <span className="flex items-center gap-2"><span className="size-1 rounded-full bg-primary" /> CEA · LUMINA — PORT HARCOURT · NG</span>
-          <span className="hidden md:flex items-center gap-3"><span>EST. 2024</span><span className="opacity-30">·</span><span>COHORT 01</span></span>
+          <span className="flex items-center gap-2">
+            <span className="size-1 rounded-full bg-primary" /> CEA · LUMINA — PORT HARCOURT · NG
+          </span>
+          <span className="hidden md:flex items-center gap-3">
+            <span>EST. 2024</span>
+            <span className="opacity-30">·</span>
+            <span>COHORT 01</span>
+          </span>
         </div>
 
         <div className="relative">
           <div className="overflow-hidden">
-            <motion.p initial={{ y: "100%" }} animate={{ y: 0 }} transition={{ duration: 1, ease: EASE, delay: 0.1 }} className="font-label text-[10px] tracking-[0.2em] text-muted-foreground">Cyber Elias Academy — Digital Operating System</motion.p>
+            <motion.p
+              initial={{ y: "100%" }}
+              animate={{ y: 0 }}
+              transition={{ duration: 1, ease: EASE, delay: 0.1 }}
+              className="font-label text-[10px] tracking-[0.2em] text-muted-foreground"
+            >
+              Cyber Elias Academy — Digital Operating System
+            </motion.p>
           </div>
           <div className="mt-6 flex items-end justify-between gap-6">
             <div className="overflow-hidden">
-              <motion.span initial={{ y: "110%" }} animate={{ y: 0 }} transition={{ duration: 1.1, ease: EASE, delay: 0.2 }} className="font-display block select-none text-[clamp(2.6rem,9.5vw,12rem)] font-semibold leading-[0.82] tracking-[-0.05em]"><span className="text-outline opacity-80">{wordmark.split(" ")[0]}</span> <span className="font-serif-accent font-normal text-gradient">{wordmark.split(" ").slice(1).join(" ") || "ACADEMY"}</span></motion.span>
+              <motion.span
+                initial={{ y: "110%" }}
+                animate={{ y: 0 }}
+                transition={{ duration: 1.1, ease: EASE, delay: 0.2 }}
+                className="font-display block select-none text-[clamp(2.6rem,9.5vw,12rem)] font-semibold leading-[0.82] tracking-[-0.05em]"
+              >
+                <span className="text-outline opacity-80">{wordmark.split(" ")[0]}</span>{" "}
+                <span className="font-serif-accent font-normal text-gradient">
+                  {wordmark.split(" ").slice(1).join(" ") || "ACADEMY"}
+                </span>
+              </motion.span>
             </div>
             <div className="text-right">
-              <motion.span initial={{ opacity: 0, filter: "blur(12px)" }} animate={{ opacity: 1, filter: "blur(0px)" }} transition={{ duration: 0.8, ease: EASE, delay: 0.4 }} className="font-display block text-5xl font-extralight tabular-nums leading-none md:text-7xl">{String(progress).padStart(3, "0")}</motion.span>
-              <span className="font-label mt-2 block text-[9px] text-muted-foreground">LOADING EXPERIENCE</span>
+              <motion.span
+                initial={{ opacity: 0, filter: "blur(12px)" }}
+                animate={{ opacity: 1, filter: "blur(0px)" }}
+                transition={{ duration: 0.8, ease: EASE, delay: 0.4 }}
+                className="font-display block text-5xl font-extralight tabular-nums leading-none md:text-7xl"
+              >
+                {String(progress).padStart(3, "0")}
+              </motion.span>
+              <span className="font-label mt-2 block text-[9px] text-muted-foreground">
+                LOADING EXPERIENCE
+              </span>
             </div>
           </div>
         </div>
 
         <div className="space-y-4">
-          <div className="flex items-center justify-between font-label text-[9px] text-muted-foreground/60"><span>SCROLL · DRAG · EXPLORE</span><span>04°48′N 07°00′E</span></div>
-          <div className="bg-foreground/10 relative h-px w-full overflow-hidden rounded-full"><motion.span className="bg-gradient-brand absolute inset-y-0 left-0" initial={{ width: "0%" }} animate={{ width: `${progress}%` }} transition={{ ease: "linear", duration: 0.08 }} /><motion.span className="absolute inset-y-0 bg-white/40 blur-[2px]" style={{ left: `${progress}%`, width: "40px", x: "-50%" }} animate={{ opacity: progress > 5 ? 0.6 : 0 }} /></div>
+          <div className="flex items-center justify-between font-label text-[9px] text-muted-foreground/60">
+            <span>SCROLL · DRAG · EXPLORE</span>
+            <span>04°48′N 07°00′E</span>
+          </div>
+          <div className="bg-foreground/10 relative h-px w-full overflow-hidden rounded-full">
+            <motion.span
+              className="bg-gradient-brand absolute inset-y-0 left-0"
+              initial={{ width: "0%" }}
+              animate={{ width: `${progress}%` }}
+              transition={{ ease: "linear", duration: 0.08 }}
+            />
+            <motion.span
+              className="absolute inset-y-0 bg-white/40 blur-[2px]"
+              style={{ left: `${progress}%`, width: "40px", x: "-50%" }}
+              animate={{ opacity: progress > 5 ? 0.6 : 0 }}
+            />
+          </div>
         </div>
       </div>
     </motion.div>

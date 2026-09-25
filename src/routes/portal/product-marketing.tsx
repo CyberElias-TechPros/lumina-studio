@@ -1,187 +1,23 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
-import {
-  ArrowRight,
-  CalendarDays,
-  FileText,
-  Megaphone,
-  MessageSquareText,
-  Rocket,
-  Search,
-  Sword,
-  Target,
-} from "lucide-react";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { AppShell } from "@/components/app/app-shell";
-import { cn } from "@/lib/utils";
+import { createFileRoute } from "@tanstack/react-router";
+import { PortalPage, type PortalConfig } from "@/components/app/portal-page";
+
+const config: PortalConfig = {
+  slug: "product-marketing",
+  roleKey: "product-marketing",
+  title: "Product marketing",
+  subtitle: "Launches, positioning, pricing and go-to-market plans.",
+};
 
 export const Route = createFileRoute("/portal/product-marketing")({
   head: () => ({
     meta: [
-      { title: "Product Marketing — CEA-OS" },
-      { name: "description", content: "Launches, positioning, pricing and go-to-market plans." },
+      { title: "Product Marketing \u2014 CEA-OS" },
+      { name: "description", content: config.subtitle },
     ],
   }),
   component: ProductMarketingPortal,
 });
 
-const screens = [
-  {
-    icon: Rocket,
-    label: "GTM planner",
-    desc: "Phases, checklists, owners",
-    path: "/app/product-marketing/gtm",
-    tone: "bg-primary/10 text-primary",
-  },
-  {
-    icon: Target,
-    label: "Positioning",
-    desc: "Statements, message house",
-    path: "/app/product-marketing/positioning",
-    tone: "bg-learning/10 text-learning",
-  },
-  {
-    icon: Sword,
-    label: "Competitive intel",
-    desc: "Feature gaps, win/loss",
-    path: "/app/product-marketing/competitive",
-    tone: "bg-success/10 text-success",
-  },
-  {
-    icon: CalendarDays,
-    label: "Launch calendar",
-    desc: "Dates, phases, owners",
-    path: "/app/product-marketing/launch-calendar",
-    tone: "bg-warning/10 text-warning",
-  },
-  {
-    icon: Search,
-    label: "Market research",
-    desc: "Studies, key findings",
-    path: "/app/product-marketing/research",
-    tone: "bg-career/10 text-career",
-  },
-  {
-    icon: MessageSquareText,
-    label: "Messaging matrix",
-    desc: "Product x audience grid",
-    path: "/app/product-marketing/messaging",
-    tone: "bg-community/10 text-community",
-  },
-  {
-    icon: FileText,
-    label: "Campaign briefs",
-    desc: "Templates, draft statuses",
-    path: "/app/product-marketing/briefs",
-    tone: "bg-erp/10 text-erp",
-  },
-  {
-    icon: Megaphone,
-    label: "Analytics",
-    desc: "ROI, win rate, pipeline",
-    path: "/app/product-marketing/analytics",
-    tone: "bg-services/10 text-services",
-  },
-];
-
 function ProductMarketingPortal() {
-  return (
-    <AppShell
-      roleKey="product-marketing"
-      title="Product marketing"
-      subtitle="Positioning, launches and GTM · Q3 2026"
-      actions={
-        <>
-          <Badge className="bg-success/10 text-success border-0 font-semibold">GTM on track</Badge>
-          <Badge variant="secondary" className="font-semibold">
-            3 launches in flight
-          </Badge>
-        </>
-      }
-    >
-      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-        {[
-          {
-            label: "Launches",
-            value: "3",
-            delta: "1 live now",
-            icon: Rocket,
-            tone: "bg-primary/10 text-primary",
-          },
-          {
-            label: "Positioning docs",
-            value: "7",
-            delta: "2 in review",
-            icon: Target,
-            tone: "bg-learning/10 text-learning",
-          },
-          {
-            label: "Competitors tracked",
-            value: "9",
-            delta: "2 new this qtr",
-            icon: Sword,
-            tone: "bg-success/10 text-success",
-          },
-          {
-            label: "Win rate",
-            value: "68%",
-            delta: "+5 pts QoQ",
-            icon: CalendarDays,
-            tone: "bg-warning/10 text-warning",
-          },
-        ].map((k) => (
-          <Card key={k.label} className="bg-card shadow-soft border">
-            <CardContent className="p-5">
-              <div className="flex items-center justify-between">
-                <p className="text-muted-foreground text-xs font-bold tracking-wide uppercase">
-                  {k.label}
-                </p>
-                <span className={cn("grid size-8 place-items-center rounded-lg", k.tone)}>
-                  <k.icon className="size-4" />
-                </span>
-              </div>
-              <p className="font-display mt-3 text-2xl font-extrabold">{k.value}</p>
-              <p className="text-muted-foreground mt-0.5 text-xs font-semibold">{k.delta}</p>
-            </CardContent>
-          </Card>
-        ))}
-      </div>
-
-      <Card className="bg-card mt-5 shadow-soft border">
-        <CardHeader className="flex-row items-center justify-between">
-          <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
-            <Megaphone className="text-primary size-4" /> Workspace
-          </CardTitle>
-          <Badge variant="secondary" className="font-semibold">
-            {screens.length} modules
-          </Badge>
-        </CardHeader>
-        <CardContent className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
-          {screens.map((s) => (
-            <Link
-              key={s.path}
-              to={s.path}
-              className="group bg-card shadow-soft hover:shadow-elevated flex flex-col rounded-xl border p-4 transition-all hover:-translate-y-0.5"
-            >
-              <div className="flex items-start justify-between">
-                <span className={cn("grid size-9 place-items-center rounded-lg", s.tone)}>
-                  <s.icon className="size-4" />
-                </span>
-                <ArrowRight className="text-muted-foreground group-hover:text-primary size-4 transition-colors" />
-              </div>
-              <p className="font-display mt-3 text-sm font-extrabold">{s.label}</p>
-              <p className="text-muted-foreground mt-1 text-xs">{s.desc}</p>
-            </Link>
-          ))}
-        </CardContent>
-      </Card>
-
-      <div className="mt-5">
-        <Button asChild variant="outline" size="sm" className="font-semibold">
-          <Link to="/app/product-marketing">Open PM hub</Link>
-        </Button>
-      </div>
-    </AppShell>
-  );
+  return <PortalPage config={config} />;
 }

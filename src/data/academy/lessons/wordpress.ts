@@ -140,8 +140,7 @@ export const wordpressLessonsA: Record<string, SessionLecture> = {
         },
         {
           step: "Set the timezone to Lagos",
-          detail:
-            "Explain that scheduled posts and dated content are wrong by hours otherwise.",
+          detail: "Explain that scheduled posts and dated content are wrong by hours otherwise.",
         },
         {
           step: "Set the site title and tagline",
@@ -239,14 +238,46 @@ export const wordpressLessonsA: Record<string, SessionLecture> = {
       "Put the search visibility checkbox on your launch checklist permanently. It is one checkbox that hides the whole site from search engines, and forgetting it means a launched site nobody can find for months.",
     ],
     vocabulary: [
-      { term: "WordPress.org", meaning: "The free self-hosted software. You own the files and database and can install any plugin." },
-      { term: "WordPress.com", meaning: "A hosted service you rent, with limits on themes and plugins. A different product, not a version." },
-      { term: "Shared hosting", meaning: "A server shared with other sites. Adequate for a small business site and the right place to start." },
-      { term: "One-click installer", meaning: "Creates the database, writes the configuration and runs setup. Use it; there is no virtue in installing manually." },
-      { term: "wp-config.php", meaning: "The file telling WordPress where its database is. One of the three things every failure involves." },
-      { term: "Permalinks", meaning: "The URL structure. Set to Post name before content exists, because changing it later breaks every link." },
-      { term: "Post versus page", meaning: "Posts are dated and categorised; pages are timeless and hierarchical. The distinction organises the whole site." },
-      { term: "Search engine visibility", meaning: "The checkbox discouraging indexing. Tick while building, untick at launch, and never forget it." },
+      {
+        term: "WordPress.org",
+        meaning:
+          "The free self-hosted software. You own the files and database and can install any plugin.",
+      },
+      {
+        term: "WordPress.com",
+        meaning:
+          "A hosted service you rent, with limits on themes and plugins. A different product, not a version.",
+      },
+      {
+        term: "Shared hosting",
+        meaning:
+          "A server shared with other sites. Adequate for a small business site and the right place to start.",
+      },
+      {
+        term: "One-click installer",
+        meaning:
+          "Creates the database, writes the configuration and runs setup. Use it; there is no virtue in installing manually.",
+      },
+      {
+        term: "wp-config.php",
+        meaning:
+          "The file telling WordPress where its database is. One of the three things every failure involves.",
+      },
+      {
+        term: "Permalinks",
+        meaning:
+          "The URL structure. Set to Post name before content exists, because changing it later breaks every link.",
+      },
+      {
+        term: "Post versus page",
+        meaning:
+          "Posts are dated and categorised; pages are timeless and hierarchical. The distinction organises the whole site.",
+      },
+      {
+        term: "Search engine visibility",
+        meaning:
+          "The checkbox discouraging indexing. Tick while building, untick at launch, and never forget it.",
+      },
     ],
     homework: [
       {
@@ -274,27 +305,32 @@ export const wordpressLessonsA: Record<string, SessionLecture> = {
       {
         criterion: "Platform understanding",
         passing: "Knows what WordPress is.",
-        excellent: "WordPress.org and WordPress.com distinguished with the ownership and responsibility consequences explained, and self-hosting justified for client work.",
+        excellent:
+          "WordPress.org and WordPress.com distinguished with the ownership and responsibility consequences explained, and self-hosting justified for client work.",
       },
       {
         criterion: "Hosting choice",
         passing: "Has hosting.",
-        excellent: "Three plans compared on PHP version, SSL, backups, uptime and support, with the choice justified including payment currency, server location and latency for Lagos visitors.",
+        excellent:
+          "Three plans compared on PHP version, SSL, backups, uptime and support, with the choice justified including payment currency, server location and latency for Lagos visitors.",
       },
       {
         criterion: "Installation",
         passing: "WordPress is installed.",
-        excellent: "Installed via the one-click installer with the files, database and configuration file each identified, a non-admin username used, a strong password set, and all credentials recorded.",
+        excellent:
+          "Installed via the one-click installer with the files, database and configuration file each identified, a non-admin username used, a strong password set, and all credentials recorded.",
       },
       {
         criterion: "Dashboard and structure",
         passing: "Can find things.",
-        excellent: "Every top-level menu identified, the post-versus-page distinction explained and applied correctly, and an editor-level user created with their inaccessible areas listed.",
+        excellent:
+          "Every top-level menu identified, the post-versus-page distinction explained and applied correctly, and an editor-level user created with their inaccessible areas listed.",
       },
       {
         criterion: "Configuration",
         passing: "Settings are set.",
-        excellent: "Permalinks set before content, timezone set to Lagos, discussion configured for a business site, HTTPS confirmed, and the search visibility untick written onto a launch checklist.",
+        excellent:
+          "Permalinks set before content, timezone set to Lagos, discussion configured for a business site, HTTPS confirmed, and the search visibility untick written onto a launch checklist.",
       },
     ],
     faqs: [
@@ -551,14 +587,46 @@ export const wordpressLessonsA: Record<string, SessionLecture> = {
       "Switch themes on staging, never live. Menu assignments, widget areas, Customiser settings and theme-specific content all break differently, and counting that cost in private is what makes the decision rational.",
     ],
     vocabulary: [
-      { term: "Theme", meaning: "Presentation only — layout, colours, type and templates. Content lives in the database and survives a theme change." },
-      { term: "Customiser", meaning: "The live-preview settings panel used by classic themes. Predictable, and what most older themes use." },
-      { term: "Block theme", meaning: "A theme whose header, footer and templates are built from blocks. The newer system, and where WordPress is heading." },
-      { term: "Child theme", meaning: "Inherits from a parent and overrides only what you change, so parent updates cannot erase your work." },
-      { term: "Nulled theme", meaning: "A pirated premium theme from an unofficial source. A common malware delivery mechanism; never use one." },
-      { term: "Staging site", meaning: "A private copy of the live site. Where theme switches and risky changes are tested first." },
-      { term: "Theme-specific feature", meaning: "A builder, shortcode or post type shipped with a theme. Its content breaks under any other theme, which is the lock-in trap." },
-      { term: "Active installs", meaning: "How many sites run a theme. A rough reliability signal, read alongside the last update date and recent reviews." },
+      {
+        term: "Theme",
+        meaning:
+          "Presentation only — layout, colours, type and templates. Content lives in the database and survives a theme change.",
+      },
+      {
+        term: "Customiser",
+        meaning:
+          "The live-preview settings panel used by classic themes. Predictable, and what most older themes use.",
+      },
+      {
+        term: "Block theme",
+        meaning:
+          "A theme whose header, footer and templates are built from blocks. The newer system, and where WordPress is heading.",
+      },
+      {
+        term: "Child theme",
+        meaning:
+          "Inherits from a parent and overrides only what you change, so parent updates cannot erase your work.",
+      },
+      {
+        term: "Nulled theme",
+        meaning:
+          "A pirated premium theme from an unofficial source. A common malware delivery mechanism; never use one.",
+      },
+      {
+        term: "Staging site",
+        meaning:
+          "A private copy of the live site. Where theme switches and risky changes are tested first.",
+      },
+      {
+        term: "Theme-specific feature",
+        meaning:
+          "A builder, shortcode or post type shipped with a theme. Its content breaks under any other theme, which is the lock-in trap.",
+      },
+      {
+        term: "Active installs",
+        meaning:
+          "How many sites run a theme. A rough reliability signal, read alongside the last update date and recent reviews.",
+      },
     ],
     homework: [
       {
@@ -586,27 +654,32 @@ export const wordpressLessonsA: Record<string, SessionLecture> = {
       {
         criterion: "Theme choice",
         passing: "Has a theme installed.",
-        excellent: "Three evaluated on last update date, active installs, recent reviews and loading time, with a simple fast theme chosen over a feature-heavy one and the reasoning written down.",
+        excellent:
+          "Three evaluated on last update date, active installs, recent reviews and loading time, with a simple fast theme chosen over a feature-heavy one and the reasoning written down.",
       },
       {
         criterion: "Safety",
         passing: "Installed from the repository.",
-        excellent: "Official source confirmed, nulled themes refused with the malware risk explained, and an unmaintained theme rejected on its update history.",
+        excellent:
+          "Official source confirmed, nulled themes refused with the malware risk explained, and an unmaintained theme rejected on its update history.",
       },
       {
         criterion: "Customisation",
         passing: "Changed colours and fonts.",
-        excellent: "The theme's system identified as Customiser or block editing, colours, typography, logo, header and footer set in the appropriate one, and the difference between the two systems explained.",
+        excellent:
+          "The theme's system identified as Customiser or block editing, colours, typography, logo, header and footer set in the appropriate one, and the difference between the two systems explained.",
       },
       {
         criterion: "Child themes",
         passing: "Knows what a child theme is.",
-        excellent: "One created and activated, a customisation made inside it, the parent updated and the change confirmed to survive, with the settings that would otherwise be lost identified.",
+        excellent:
+          "One created and activated, a customisation made inside it, the parent updated and the change confirmed to survive, with the settings that would otherwise be lost identified.",
       },
       {
         criterion: "Safe changes",
         passing: "Can switch a theme.",
-        excellent: "A staging copy used, with unassigned menus, displaced widgets, reset settings and broken theme-specific content each recorded, and a reasoned decision on whether to switch live.",
+        excellent:
+          "A staging copy used, with unassigned menus, displaced widgets, reset settings and broken theme-specific content each recorded, and a reasoned decision on whether to switch live.",
       },
     ],
     faqs: [
@@ -864,14 +937,46 @@ export const wordpressLessonsA: Record<string, SessionLecture> = {
       "Test the mobile menu on a real phone every time. It is a separate experience from the desktop menu, nested items can become unreachable, and the check takes thirty seconds while the failure breaks navigation for most visitors.",
     ],
     vocabulary: [
-      { term: "Block", meaning: "The unit the editor builds from — paragraph, image, heading, button, layout. Each has its own settings." },
-      { term: "Group, Columns, Cover", meaning: "The three blocks that do most layout work: wrapping, side-by-side, and background image with content on top." },
-      { term: "Pattern", meaning: "A pre-built arrangement of blocks inserted in one action and fully editable afterwards, because it is just blocks underneath." },
-      { term: "Reusable block", meaning: "A block saved once and inserted on many pages, updating everywhere when changed. Now often called a synced pattern." },
-      { term: "Convert to regular block", meaning: "Detaching a reusable block on one page so it can vary. Do this before editing, or the change is site-wide." },
-      { term: "Menu location", meaning: "Where the theme displays a menu, such as the primary header. Provided by the theme, which is why a switch unassigns them." },
-      { term: "Alt text", meaning: "A description of an image, read aloud by screen readers and shown when it fails to load. An accessibility requirement, not an extra." },
-      { term: "Static front page", meaning: "A chosen page as the homepage instead of a blog feed. What every business site uses." },
+      {
+        term: "Block",
+        meaning:
+          "The unit the editor builds from — paragraph, image, heading, button, layout. Each has its own settings.",
+      },
+      {
+        term: "Group, Columns, Cover",
+        meaning:
+          "The three blocks that do most layout work: wrapping, side-by-side, and background image with content on top.",
+      },
+      {
+        term: "Pattern",
+        meaning:
+          "A pre-built arrangement of blocks inserted in one action and fully editable afterwards, because it is just blocks underneath.",
+      },
+      {
+        term: "Reusable block",
+        meaning:
+          "A block saved once and inserted on many pages, updating everywhere when changed. Now often called a synced pattern.",
+      },
+      {
+        term: "Convert to regular block",
+        meaning:
+          "Detaching a reusable block on one page so it can vary. Do this before editing, or the change is site-wide.",
+      },
+      {
+        term: "Menu location",
+        meaning:
+          "Where the theme displays a menu, such as the primary header. Provided by the theme, which is why a switch unassigns them.",
+      },
+      {
+        term: "Alt text",
+        meaning:
+          "A description of an image, read aloud by screen readers and shown when it fails to load. An accessibility requirement, not an extra.",
+      },
+      {
+        term: "Static front page",
+        meaning:
+          "A chosen page as the homepage instead of a blog feed. What every business site uses.",
+      },
     ],
     homework: [
       {
@@ -899,27 +1004,32 @@ export const wordpressLessonsA: Record<string, SessionLecture> = {
       {
         criterion: "Page structure",
         passing: "Pages exist.",
-        excellent: "All six created with a working hierarchy under What We Make, a static front page set, and the blog page designated and left empty of written content.",
+        excellent:
+          "All six created with a working hierarchy under What We Make, a static front page set, and the blog page designated and left empty of written content.",
       },
       {
         criterion: "Block editor",
         passing: "Can add content.",
-        excellent: "Hero built with Cover, features with Columns, a section wrapped in a Group with spacing set, and a pattern inserted then edited to match the site rather than accepted as delivered.",
+        excellent:
+          "Hero built with Cover, features with Columns, a section wrapped in a Group with spacing set, and a pattern inserted then edited to match the site rather than accepted as delivered.",
       },
       {
         criterion: "Reuse",
         passing: "Knows what a reusable block is.",
-        excellent: "A call to action saved and inserted on three or more pages, one edit confirmed to update every instance, and a detached variation created by converting to a regular block.",
+        excellent:
+          "A call to action saved and inserted on three or more pages, one edit confirmed to update every instance, and a detached variation created by converting to a regular block.",
       },
       {
         criterion: "Navigation",
         passing: "Has a menu.",
-        excellent: "Six items or fewer ordered by importance, every label in plain language, assigned to the primary location, and tested on a phone including nested items.",
+        excellent:
+          "Six items or fewer ordered by importance, every label in plain language, assigned to the primary location, and tested on a phone including nested items.",
       },
       {
         criterion: "Media",
         passing: "Images appear.",
-        excellent: "Every image resized to display width, compressed with before and after sizes recorded, named descriptively before uploading, given alt text, and the homepage confirmed not slowed by oversized files.",
+        excellent:
+          "Every image resized to display width, compressed with before and after sizes recorded, named descriptively before uploading, given alt text, and the homepage confirmed not slowed by oversized files.",
       },
     ],
     faqs: [

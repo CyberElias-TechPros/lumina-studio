@@ -62,6 +62,7 @@ import { ops } from "./routes/ops";
 import { it } from "./routes/it";
 import { account } from "./routes/account";
 import { system } from "./routes/system";
+import { portal } from "./routes/portal";
 import { handleScheduled } from "./jobs/scheduled";
 import { reportError } from "./lib/monitoring";
 import { ApiError } from "./lib/errors";
@@ -157,6 +158,7 @@ v1.route("/ops", ops);
 v1.route("/it", it);
 v1.route("/account", account);
 v1.route("/system", system);
+v1.route("/portal", portal);
 
 /** Uptime + DB reachability check for deployment probes. */
 v1.get("/health", async (c) => {

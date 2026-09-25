@@ -222,14 +222,46 @@ export const dataAnalyticsLessonsA: Record<string, SessionLecture> = {
       "A number stored as text is the failure to fear most, because it produces a confident wrong total with no error. Check alignment, look for the green triangles, and test with ISNUMBER before summing anything.",
     ],
     vocabulary: [
-      { term: "Data type", meaning: "Whether a value is text, number, date or logical. Wrong types produce plausible wrong answers rather than errors." },
-      { term: "Text-number", meaning: "A number stored as text, often from a currency symbol or comma. Sums to zero silently; usually left-aligned." },
-      { term: "Tidy data", meaning: "One variable per column, one observation per row, one value per cell. The precondition for pivot tables to work." },
-      { term: "Report layout", meaning: "A sheet shaped to look nice — merged cells, headings, total rows — that breaks analysis tools." },
-      { term: "Profiling", meaning: "Examining a dataset before analysing it: row counts, distinct values, types, blanks, duplicates, ranges." },
-      { term: "Distinct values", meaning: "Every unique entry in a column. A pivot table lists them instantly and reveals spelling variants." },
-      { term: "Ambiguous date", meaning: "A date whose day and month cannot be told apart, like 12/03/2025. Must be resolved before monthly analysis." },
-      { term: "Free-text field", meaning: "Any column a human types. The main source of spelling variants and inconsistent missing values." },
+      {
+        term: "Data type",
+        meaning:
+          "Whether a value is text, number, date or logical. Wrong types produce plausible wrong answers rather than errors.",
+      },
+      {
+        term: "Text-number",
+        meaning:
+          "A number stored as text, often from a currency symbol or comma. Sums to zero silently; usually left-aligned.",
+      },
+      {
+        term: "Tidy data",
+        meaning:
+          "One variable per column, one observation per row, one value per cell. The precondition for pivot tables to work.",
+      },
+      {
+        term: "Report layout",
+        meaning:
+          "A sheet shaped to look nice — merged cells, headings, total rows — that breaks analysis tools.",
+      },
+      {
+        term: "Profiling",
+        meaning:
+          "Examining a dataset before analysing it: row counts, distinct values, types, blanks, duplicates, ranges.",
+      },
+      {
+        term: "Distinct values",
+        meaning:
+          "Every unique entry in a column. A pivot table lists them instantly and reveals spelling variants.",
+      },
+      {
+        term: "Ambiguous date",
+        meaning:
+          "A date whose day and month cannot be told apart, like 12/03/2025. Must be resolved before monthly analysis.",
+      },
+      {
+        term: "Free-text field",
+        meaning:
+          "Any column a human types. The main source of spelling variants and inconsistent missing values.",
+      },
     ],
     homework: [
       {
@@ -257,27 +289,32 @@ export const dataAnalyticsLessonsA: Record<string, SessionLecture> = {
       {
         criterion: "Type awareness",
         passing: "Can say what a column contains.",
-        excellent: "Types tested with ISNUMBER, alignment and error triangles used as evidence, and the silent-zero failure on text-numbers demonstrated rather than described.",
+        excellent:
+          "Types tested with ISNUMBER, alignment and error triangles used as evidence, and the silent-zero failure on text-numbers demonstrated rather than described.",
       },
       {
         criterion: "Structure",
         passing: "Uses a spreadsheet competently.",
-        excellent: "Tidy data explained as one variable per column, one observation per row, one value per cell, and a report layout correctly identified and reshaped.",
+        excellent:
+          "Tidy data explained as one variable per column, one observation per row, one value per cell, and a report layout correctly identified and reshaped.",
       },
       {
         criterion: "Profiling",
         passing: "Looks at the data first.",
-        excellent: "Rows counted, every distinct value listed by pivot table, MIN and MAX run on numerics with implausible values flagged, duplicates highlighted, and all findings recorded in a defect list.",
+        excellent:
+          "Rows counted, every distinct value listed by pivot table, MIN and MAX run on numerics with implausible values flagged, duplicates highlighted, and all findings recorded in a defect list.",
       },
       {
         criterion: "Handling ambiguity",
         passing: "Notices odd values.",
-        excellent: "The ambiguous date format resolved with stated evidence, four spellings of missing identified as one category, and impossible values investigated rather than deleted.",
+        excellent:
+          "The ambiguous date format resolved with stated evidence, four spellings of missing identified as one category, and impossible values investigated rather than deleted.",
       },
       {
         criterion: "Working safely",
         passing: "Edits carefully.",
-        excellent: "Original export preserved untouched with all work on a copy, and a wrong revenue figure produced deliberately to show what a defect costs.",
+        excellent:
+          "Original export preserved untouched with all work on a copy, and a wrong revenue figure produced deliberately to show what a defect costs.",
       },
     ],
     faqs: [
@@ -329,14 +366,14 @@ export const dataAnalyticsLessonsA: Record<string, SessionLecture> = {
         body: [
           "Five functions handle almost every text problem in business data. **`=TRIM(A2)`** removes leading and trailing spaces and collapses repeated internal spaces — which fixes **Adebayo  Ogundimu** and **LAGOS** with a trailing space in one step. **`=CLEAN(A2)`** strips non-printing characters, which is what you need for data that came out of another system and carries invisible junk; a value that looks identical to another but will not match is usually carrying one.",
           "**`=UPPER(A2)`**, **`=LOWER(A2)`** and **`=PROPER(A2)`** control capitalisation. For names and products, **PROPER** is usually right, giving **Adebayo Ogundimu** and **Bucket 20L**. Be careful: PROPER also capitalises the second letter of anything after a punctuation mark, so **McDonald** becomes **Mcdonald** and **20L** is fine but **iPhone** becomes **Iphone** — check the results rather than assuming.",
-          "**`=SUBSTITUTE(A2, \"old\", \"new\")`** replaces text, and it is the workhorse for standardisation. To collapse our nine State spellings into three you can chain them: **`=SUBSTITUTE(SUBSTITUTE(PROPER(TRIM(B2)), \"Lagos State\", \"Lagos\"), \"Lg\", \"Lagos\")`**. Note the order — **TRIM and PROPER first**, so that **lagos**, **LAGOS** and **LAGOS** all become **Lagos** before you try to match anything, otherwise you are matching against moving targets. SUBSTITUTE is also how you strip a naira sign and comma from a price: replace **₦** with nothing, then replace the comma with nothing.",
+          '**`=SUBSTITUTE(A2, "old", "new")`** replaces text, and it is the workhorse for standardisation. To collapse our nine State spellings into three you can chain them: **`=SUBSTITUTE(SUBSTITUTE(PROPER(TRIM(B2)), "Lagos State", "Lagos"), "Lg", "Lagos")`**. Note the order — **TRIM and PROPER first**, so that **lagos**, **LAGOS** and **LAGOS** all become **Lagos** before you try to match anything, otherwise you are matching against moving targets. SUBSTITUTE is also how you strip a naira sign and comma from a price: replace **₦** with nothing, then replace the comma with nothing.',
         ],
       },
       {
         heading: "Fixing numbers and dates",
         body: [
           "Once UnitPrice is free of the naira sign and comma it may still be text. **`=VALUE(A2)`** converts a text-number into a real number; **`=NUMBERVALUE(A2)`** does the same and lets you specify the decimal and grouping separators, which matters when a file was produced with different regional settings. After converting, **re-test with `=ISNUMBER()`** — do not assume, because a stray space or an invisible character will make VALUE fail and return #VALUE!.",
-          "For our Quantity column, where some cells read **2 pcs**, extract the number rather than retyping: pull the digits with **`=VALUE(LEFT(A2, FIND(\" \", A2) - 1))`**, or, more robustly, strip the unit with SUBSTITUTE first and then convert. The general habit is **extract, then convert, then verify** — three steps, because a conversion that fails silently is worse than one that fails loudly.",
+          'For our Quantity column, where some cells read **2 pcs**, extract the number rather than retyping: pull the digits with **`=VALUE(LEFT(A2, FIND(" ", A2) - 1))`**, or, more robustly, strip the unit with SUBSTITUTE first and then convert. The general habit is **extract, then convert, then verify** — three steps, because a conversion that fails silently is worse than one that fails loudly.',
           "Dates are harder because of the ambiguity we found. **`=DATEVALUE(A2)`** converts a text date to a real one, but only if your spreadsheet can interpret the format — and for **12/03/2025** it will guess using your system's regional settings, which may not be what the exporting system meant. The reliable method is to **split the text and rebuild it explicitly**: extract the parts with MID and FIND, then assemble with **`=DATE(year, month, day)`**, deciding for yourself which part is the month. Then **verify against rows that are unambiguous** — a value like **25/03/2025** can only be 25 March, and if your logic gets that one wrong, the logic is wrong.",
         ],
       },
@@ -353,7 +390,7 @@ export const dataAnalyticsLessonsA: Record<string, SessionLecture> = {
         body: [
           "Cleaning a dataset once is half the job; the other half is making sure next month's export is not equally messy. **Data validation** constrains what can be entered in a column. In Excel: **Data → Data Validation**. Set State to a **List** containing exactly **Lagos**, **Ogun**, **Oyo**, and nobody can type **LAGOS** again. Set Quantity to a **Whole number** between 1 and 500, and a keying error of 5000 is rejected at entry rather than discovered in the quarterly report.",
           "Validation is cheap and it is the highest-value thing in this session, because every rule you add removes a cleaning step forever. The columns to constrain first are exactly the ones that were dirty: any **category** column becomes a list, any **number** column gets a range, any **date** column gets a date range, and any **required** column is set to reject blanks.",
-          "For data coming from a system you do not control, you cannot validate at entry, so validate **on arrival**: a checks tab with formulas that count rows where State is not in the allowed list, where Quantity is out of range, where LineTotal does not equal Quantity times UnitPrice. **`=SUMPRODUCT(--(ISNA(MATCH(E2:E1201, {\"Lagos\",\"Ogun\",\"Oyo\"}, 0))))`** counts invalid states in one cell. Run those checks on every new export before you analyse it, and cleaning stops being a monthly scramble.",
+          'For data coming from a system you do not control, you cannot validate at entry, so validate **on arrival**: a checks tab with formulas that count rows where State is not in the allowed list, where Quantity is out of range, where LineTotal does not equal Quantity times UnitPrice. **`=SUMPRODUCT(--(ISNA(MATCH(E2:E1201, {"Lagos","Ogun","Oyo"}, 0))))`** counts invalid states in one cell. Run those checks on every new export before you analyse it, and cleaning stops being a monthly scramble.',
         ],
       },
     ],
@@ -527,14 +564,46 @@ export const dataAnalyticsLessonsA: Record<string, SessionLecture> = {
       "Add validation as you clean. Every list and range rule you set removes that cleaning step permanently, and for data you cannot control at entry, a checks tab turns a monthly scramble into a two-minute check.",
     ],
     vocabulary: [
-      { term: "Helper column", meaning: "A new column holding the cleaning formula, checked before being pasted back as values. Never clean in place." },
-      { term: "TRIM", meaning: "Removes leading, trailing and repeated internal spaces. Fixes stray spacing in one step." },
-      { term: "CLEAN", meaning: "Strips non-printing characters. Needed for data from other systems; invisible characters break matching." },
-      { term: "SUBSTITUTE", meaning: "Replaces specified text. Chained to collapse spelling variants into one standard value." },
-      { term: "VALUE / NUMBERVALUE", meaning: "Converts a text-number into a real number. Must be verified with ISNUMBER afterwards." },
-      { term: "DATEVALUE", meaning: "Converts text to a date using your regional settings — which may not match the exporting system. Rebuild explicitly instead when dates are ambiguous." },
-      { term: "Data validation", meaning: "Rules constraining what can be entered: a list for categories, a range for numbers. Stops the mess returning." },
-      { term: "Cleaning log", meaning: "A record of each change, its reason and its row count. What lets you explain a figure to a manager six weeks later." },
+      {
+        term: "Helper column",
+        meaning:
+          "A new column holding the cleaning formula, checked before being pasted back as values. Never clean in place.",
+      },
+      {
+        term: "TRIM",
+        meaning:
+          "Removes leading, trailing and repeated internal spaces. Fixes stray spacing in one step.",
+      },
+      {
+        term: "CLEAN",
+        meaning:
+          "Strips non-printing characters. Needed for data from other systems; invisible characters break matching.",
+      },
+      {
+        term: "SUBSTITUTE",
+        meaning:
+          "Replaces specified text. Chained to collapse spelling variants into one standard value.",
+      },
+      {
+        term: "VALUE / NUMBERVALUE",
+        meaning:
+          "Converts a text-number into a real number. Must be verified with ISNUMBER afterwards.",
+      },
+      {
+        term: "DATEVALUE",
+        meaning:
+          "Converts text to a date using your regional settings — which may not match the exporting system. Rebuild explicitly instead when dates are ambiguous.",
+      },
+      {
+        term: "Data validation",
+        meaning:
+          "Rules constraining what can be entered: a list for categories, a range for numbers. Stops the mess returning.",
+      },
+      {
+        term: "Cleaning log",
+        meaning:
+          "A record of each change, its reason and its row count. What lets you explain a figure to a manager six weeks later.",
+      },
     ],
     homework: [
       {
@@ -562,27 +631,32 @@ export const dataAnalyticsLessonsA: Record<string, SessionLecture> = {
       {
         criterion: "Text cleaning",
         passing: "Fixes inconsistent text.",
-        excellent: "TRIM, PROPER and SUBSTITUTE chained in the correct order in a helper column, with PROPER's punctuation behaviour checked and results verified by pivot table.",
+        excellent:
+          "TRIM, PROPER and SUBSTITUTE chained in the correct order in a helper column, with PROPER's punctuation behaviour checked and results verified by pivot table.",
       },
       {
         criterion: "Type conversion",
         passing: "Makes numbers usable.",
-        excellent: "Symbols and separators stripped, VALUE applied, every row confirmed with ISNUMBER, text quantities extracted, and the sum recorded before and after.",
+        excellent:
+          "Symbols and separators stripped, VALUE applied, every row confirmed with ISNUMBER, text quantities extracted, and the sum recorded before and after.",
       },
       {
         criterion: "Dates",
         passing: "Dates are consistent.",
-        excellent: "Ambiguous dates rebuilt explicitly with DATE rather than left to DATEVALUE, and the logic verified against rows readable only one way.",
+        excellent:
+          "Ambiguous dates rebuilt explicitly with DATE rather than left to DATEVALUE, and the logic verified against rows readable only one way.",
       },
       {
         criterion: "Duplicates and missing",
         passing: "Removes duplicates.",
-        excellent: "True duplicates distinguished from multi-line orders by inspection, copied to a record tab before deletion, count verified, and all spellings of missing unified with a stated decision about how they are treated.",
+        excellent:
+          "True duplicates distinguished from multi-line orders by inspection, copied to a record tab before deletion, count verified, and all spellings of missing unified with a stated decision about how they are treated.",
       },
       {
         criterion: "Prevention",
         passing: "Cleans the file.",
-        excellent: "List and range validation added to the columns that were dirty, a checks tab built for future exports, and a cleaning log recording every change with its row count.",
+        excellent:
+          "List and range validation added to the columns that were dirty, a checks tab built for future exports, and a cleaning log recording every change with its row count.",
       },
     ],
     faqs: [
@@ -624,9 +698,9 @@ export const dataAnalyticsLessonsA: Record<string, SessionLecture> = {
       {
         heading: "Conditional logic",
         body: [
-          "**`=IF(condition, value_if_true, value_if_false)`** is the basis of classification, and most analysis involves classifying rows. On our cleaned export, flagging large orders is one test: **`=IF(J2>50000, \"Large\", \"Standard\")`**. Marking whether an order is inside Lagos: **`=IF(E2=\"Lagos\", \"In-state\", \"Out-of-state\")`** — which is immediately useful, because in-state and out-of-state orders have different delivery costs and different margins.",
-          "For more than two categories, **`=IFS()`** is cleaner than nesting IFs. Classifying order size into three bands reads far better as **`=IFS(J2>100000, \"Tier 1\", J2>50000, \"Tier 2\", TRUE, \"Tier 3\")`** than as nested IFs, and the final **`TRUE`** catches everything else — omit it and rows matching no condition return #N/A, which is a common and confusing surprise.",
-          "Then **`=COUNTIFS()`** and **`=SUMIFS()`**, which answer grouped questions directly without a pivot table: **`=SUMIFS(J:J, E:E, \"Lagos\", K:K, \"Transfer\")`** gives total revenue from Lagos paid by transfer, and **`=COUNTIFS(E:E, \"Lagos\", J:J, \">50000\")`** counts the large Lagos orders. These are the fastest way to check a pivot table's answer, and being able to cross-check a number two different ways is worth a great deal when a manager is acting on it.",
+          '**`=IF(condition, value_if_true, value_if_false)`** is the basis of classification, and most analysis involves classifying rows. On our cleaned export, flagging large orders is one test: **`=IF(J2>50000, "Large", "Standard")`**. Marking whether an order is inside Lagos: **`=IF(E2="Lagos", "In-state", "Out-of-state")`** — which is immediately useful, because in-state and out-of-state orders have different delivery costs and different margins.',
+          'For more than two categories, **`=IFS()`** is cleaner than nesting IFs. Classifying order size into three bands reads far better as **`=IFS(J2>100000, "Tier 1", J2>50000, "Tier 2", TRUE, "Tier 3")`** than as nested IFs, and the final **`TRUE`** catches everything else — omit it and rows matching no condition return #N/A, which is a common and confusing surprise.',
+          'Then **`=COUNTIFS()`** and **`=SUMIFS()`**, which answer grouped questions directly without a pivot table: **`=SUMIFS(J:J, E:E, "Lagos", K:K, "Transfer")`** gives total revenue from Lagos paid by transfer, and **`=COUNTIFS(E:E, "Lagos", J:J, ">50000")`** counts the large Lagos orders. These are the fastest way to check a pivot table\'s answer, and being able to cross-check a number two different ways is worth a great deal when a manager is acting on it.',
         ],
       },
       {
@@ -634,14 +708,14 @@ export const dataAnalyticsLessonsA: Record<string, SessionLecture> = {
         body: [
           "Real analysis almost always needs data that lives in another table. Our export has a Product name but no cost price; cost price sits in a separate **product master** table of thirty rows. To calculate margin you must pull the cost across, and that is what a lookup does: **find this value in that table, return the matching cell**.",
           "**`=VLOOKUP(lookup_value, table_array, col_index, FALSE)`** is the classic, and the fourth argument matters more than any other detail in this course. **FALSE means exact match.** Omit it and VLOOKUP defaults to TRUE, which is an **approximate** match requiring the table to be sorted — and on unsorted data it silently returns the wrong row rather than an error. This single omitted argument is responsible for a great many confidently wrong spreadsheets.",
-          "**`=XLOOKUP(lookup_value, lookup_array, return_array)`** is the modern replacement, available in Excel 365 and Google Sheets. It defaults to exact match, it can look left as well as right, and it takes an argument for what to return when nothing is found: **`=XLOOKUP(A2, Products!A:A, Products!C:C, \"Not in master\")`**. If you have it, use it. VLOOKUP still matters because most existing spreadsheets and most job interviews use it, and because you will inherit files written with it.",
+          '**`=XLOOKUP(lookup_value, lookup_array, return_array)`** is the modern replacement, available in Excel 365 and Google Sheets. It defaults to exact match, it can look left as well as right, and it takes an argument for what to return when nothing is found: **`=XLOOKUP(A2, Products!A:A, Products!C:C, "Not in master")`**. If you have it, use it. VLOOKUP still matters because most existing spreadsheets and most job interviews use it, and because you will inherit files written with it.',
         ],
       },
       {
         heading: "Dates and periods",
         body: [
-          "Business questions are almost always about periods, so date functions are not a side topic. From a real date you can extract **`=YEAR(A2)`**, **`=MONTH(A2)`** and **`=DAY(A2)`**, which is how you group by month. **`=TEXT(A2, \"yyyy-mm\")`** produces a label like **2025-03** that sorts correctly and pivots cleanly — much better than a month number, which sorts 1, 10, 11, 12, 2.",
-          "**`=DATEDIF(start, end, \"d\")`** gives the days between two dates, and **`=NETWORKDAYS(start, end)`** gives working days, which is what you need for delivery-time questions. **`=EOMONTH(A2, 0)`** returns the last day of that month, useful for period boundaries, and **`=TODAY()`** lets a report age itself rather than sitting at a fixed date nobody updates.",
+          'Business questions are almost always about periods, so date functions are not a side topic. From a real date you can extract **`=YEAR(A2)`**, **`=MONTH(A2)`** and **`=DAY(A2)`**, which is how you group by month. **`=TEXT(A2, "yyyy-mm")`** produces a label like **2025-03** that sorts correctly and pivots cleanly — much better than a month number, which sorts 1, 10, 11, 12, 2.',
+          '**`=DATEDIF(start, end, "d")`** gives the days between two dates, and **`=NETWORKDAYS(start, end)`** gives working days, which is what you need for delivery-time questions. **`=EOMONTH(A2, 0)`** returns the last day of that month, useful for period boundaries, and **`=TODAY()`** lets a report age itself rather than sitting at a fixed date nobody updates.',
           "The trap worth naming: **all of this only works on real dates**. If OrderDate is still text, YEAR returns an error or a nonsense number and grouping by month is simply unavailable. That is why session 2 rebuilt the dates explicitly — every period question in this course depends on that work having been done properly.",
         ],
       },
@@ -650,7 +724,7 @@ export const dataAnalyticsLessonsA: Record<string, SessionLecture> = {
         body: [
           "Errors are information, and the first instinct to wrap everything in IFERROR is exactly wrong. **#N/A from a lookup means the value was not found in the other table** — in our case, a product in the orders that is not in the product master. That is a genuine finding, and hiding it with IFERROR conceals a real data problem behind a tidy zero.",
           "The other three you will meet constantly: **#VALUE!** means the wrong type was used, usually arithmetic on text — which in our dataset means a price that is still text somewhere. **#REF!** means a formula points at a cell that no longer exists, usually because a column was deleted; it is a warning that your workbook is broken, not a value to suppress. **#DIV/0!** means division by zero, which happens the moment you calculate an average over an empty group.",
-          "The discipline is: **read the error, find the cause, fix the data or the formula**. Only then, if a legitimate absence should display as something readable, use **`=IFERROR(formula, \"Not in master\")`** — with a message that says what happened, not a blank or a zero. A zero that means **missing** will be averaged into your figures and drag them down, and nobody will be able to see why.",
+          'The discipline is: **read the error, find the cause, fix the data or the formula**. Only then, if a legitimate absence should display as something readable, use **`=IFERROR(formula, "Not in master")`** — with a message that says what happened, not a blank or a zero. A zero that means **missing** will be averaged into your figures and drag them down, and nobody will be able to see why.',
         ],
       },
       {
@@ -674,17 +748,17 @@ export const dataAnalyticsLessonsA: Record<string, SessionLecture> = {
         {
           step: "Add a month label column",
           detail:
-            "=TEXT(B2, \"yyyy-mm\"). Explain that a month number sorts 1, 10, 11, 12, 2 while a text label sorts correctly.",
+            '=TEXT(B2, "yyyy-mm"). Explain that a month number sorts 1, 10, 11, 12, 2 while a text label sorts correctly.',
         },
         {
           step: "Classify orders into tiers with IFS",
           detail:
-            "=IFS(J2>100000, \"Tier 1\", J2>50000, \"Tier 2\", TRUE, \"Tier 3\"). Explain that the final TRUE catches everything else and omitting it returns #N/A.",
+            '=IFS(J2>100000, "Tier 1", J2>50000, "Tier 2", TRUE, "Tier 3"). Explain that the final TRUE catches everything else and omitting it returns #N/A.',
         },
         {
           step: "Flag in-state orders with IF",
           detail:
-            "=IF(E2=\"Lagos\", \"In-state\", \"Out-of-state\"). Explain that the two groups have different delivery costs, so this column drives a real margin question.",
+            '=IF(E2="Lagos", "In-state", "Out-of-state"). Explain that the two groups have different delivery costs, so this column drives a real margin question.',
         },
         {
           step: "Open the product master table",
@@ -719,7 +793,7 @@ export const dataAnalyticsLessonsA: Record<string, SessionLecture> = {
         {
           step: "Use a message instead of a zero",
           detail:
-            "IFERROR(..., \"Not in master\"). Explain that the honest fix states what happened rather than inventing a number.",
+            'IFERROR(..., "Not in master"). Explain that the honest fix states what happened rather than inventing a number.',
         },
         {
           step: "Calculate margin in one column",
@@ -734,12 +808,12 @@ export const dataAnalyticsLessonsA: Record<string, SessionLecture> = {
         {
           step: "Cross-check a pivot total with SUMIFS",
           detail:
-            "=SUMIFS(J:J, E:E, \"Lagos\", K:K, \"Transfer\") against the pivot figure. Explain that checking a number two ways is worth a great deal when someone will act on it.",
+            '=SUMIFS(J:J, E:E, "Lagos", K:K, "Transfer") against the pivot figure. Explain that checking a number two ways is worth a great deal when someone will act on it.',
         },
         {
           step: "Count large Lagos orders with COUNTIFS",
           detail:
-            "=COUNTIFS(E:E, \"Lagos\", J:J, \">50000\"). Explain that the criteria syntax needs the comparison inside quotes.",
+            '=COUNTIFS(E:E, "Lagos", J:J, ">50000"). Explain that the criteria syntax needs the comparison inside quotes.',
         },
         {
           step: "Trigger a #DIV/0! on an empty group",
@@ -820,14 +894,46 @@ export const dataAnalyticsLessonsA: Record<string, SessionLecture> = {
       "Calculate each thing once, in one column, and reference it. Six slightly different margin formulas will eventually disagree, and at that point nobody can tell which one was ever right.",
     ],
     vocabulary: [
-      { term: "IF / IFS", meaning: "Conditional classification. IFS needs a final TRUE catch-all or unmatched rows return #N/A." },
-      { term: "VLOOKUP", meaning: "Finds a value in a table's first column and returns a cell from that row. The fourth argument must be FALSE for an exact match." },
-      { term: "XLOOKUP", meaning: "The modern lookup: exact match by default, can look left, and accepts a not-found value. Prefer it where available." },
-      { term: "SUMIFS / COUNTIFS", meaning: "Totals and counts with multiple conditions. The fastest independent check on a pivot table figure." },
-      { term: "TEXT", meaning: "Formats a value as text. TEXT(date, yyyy-mm) makes month labels that sort correctly." },
-      { term: "DATEDIF / NETWORKDAYS", meaning: "Days between dates, and working days between them. What delivery-time questions are actually measured in." },
-      { term: "#N/A", meaning: "Not found. From a lookup, it means the value is genuinely absent from the other table — a finding, not noise." },
-      { term: "#REF!", meaning: "A formula points at a deleted cell. It means the workbook is broken and must be fixed, never suppressed." },
+      {
+        term: "IF / IFS",
+        meaning:
+          "Conditional classification. IFS needs a final TRUE catch-all or unmatched rows return #N/A.",
+      },
+      {
+        term: "VLOOKUP",
+        meaning:
+          "Finds a value in a table's first column and returns a cell from that row. The fourth argument must be FALSE for an exact match.",
+      },
+      {
+        term: "XLOOKUP",
+        meaning:
+          "The modern lookup: exact match by default, can look left, and accepts a not-found value. Prefer it where available.",
+      },
+      {
+        term: "SUMIFS / COUNTIFS",
+        meaning:
+          "Totals and counts with multiple conditions. The fastest independent check on a pivot table figure.",
+      },
+      {
+        term: "TEXT",
+        meaning:
+          "Formats a value as text. TEXT(date, yyyy-mm) makes month labels that sort correctly.",
+      },
+      {
+        term: "DATEDIF / NETWORKDAYS",
+        meaning:
+          "Days between dates, and working days between them. What delivery-time questions are actually measured in.",
+      },
+      {
+        term: "#N/A",
+        meaning:
+          "Not found. From a lookup, it means the value is genuinely absent from the other table — a finding, not noise.",
+      },
+      {
+        term: "#REF!",
+        meaning:
+          "A formula points at a deleted cell. It means the workbook is broken and must be fixed, never suppressed.",
+      },
     ],
     homework: [
       {
@@ -855,27 +961,32 @@ export const dataAnalyticsLessonsA: Record<string, SessionLecture> = {
       {
         criterion: "Conditional logic",
         passing: "Uses IF correctly.",
-        excellent: "IFS used for multi-band classification with a TRUE catch-all, conditions written against cleaned values, and results spot-checked against the underlying rows.",
+        excellent:
+          "IFS used for multi-band classification with a TRUE catch-all, conditions written against cleaned values, and results spot-checked against the underlying rows.",
       },
       {
         criterion: "Lookups",
         passing: "Pulls data from another table.",
-        excellent: "VLOOKUP with an explicit FALSE and XLOOKUP both used and confirmed to agree on every row, with the approximate-match failure demonstrated and explained.",
+        excellent:
+          "VLOOKUP with an explicit FALSE and XLOOKUP both used and confirmed to agree on every row, with the approximate-match failure demonstrated and explained.",
       },
       {
         criterion: "Dates",
         passing: "Extracts month and year.",
-        excellent: "yyyy-mm labels used so periods sort correctly, DATEDIF and NETWORKDAYS applied to a real delivery question, and all date work done on genuinely converted dates.",
+        excellent:
+          "yyyy-mm labels used so periods sort correctly, DATEDIF and NETWORKDAYS applied to a real delivery question, and all date work done on genuinely converted dates.",
       },
       {
         criterion: "Error handling",
         passing: "Notices errors.",
-        excellent: "Each error traced to its cause and the data fixed, IFERROR used only with an explanatory message, and no missing value silently converted into a zero.",
+        excellent:
+          "Each error traced to its cause and the data fixed, IFERROR used only with an explanatory message, and no missing value silently converted into a zero.",
       },
       {
         criterion: "Judgement",
         passing: "Formulas produce answers.",
-        excellent: "Aggregations cross-checked with SUMIFS against a pivot table and any difference investigated, each calculation held in one place, and the columns that belonged in a pivot table identified.",
+        excellent:
+          "Aggregations cross-checked with SUMIFS against a pivot table and any difference investigated, each calculation held in one place, and the columns that belonged in a pivot table identified.",
       },
     ],
     faqs: [

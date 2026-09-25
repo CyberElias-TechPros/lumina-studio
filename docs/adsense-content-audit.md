@@ -12,15 +12,15 @@ The rejection was justified on three fronts:
 
 ## A. Technical requirements
 
-| Check | Status before | Detail |
-|---|---|---|
-| `/ads.txt` | ❌ missing | AdSense requires it to authorize sellers. Created with `pub-9117572925263537`. |
-| `/sitemap.xml` | ❌ 404 | Route `sitemap.xml.tsx` registered as `/sitemap/xml` (TanStack treats the dot as a folder separator) AND returned HTML — loaders can't emit raw Responses for document requests. Replaced with build-time generated static `public/sitemap.xml`. |
-| robots.txt | ⚠️ | Pointed at dead `/sitemap/xml`; now points to `/sitemap.xml`. Crawl rules themselves were fine. |
-| Sitemap coverage | ⚠️ | Missing `/privacy`, `/terms`, `/team`, `/accessibility`, `/work`, `/certificates/verify`, plus 5 newer posts. Generator covers all 66 URLs (32 static + 8 programs + 26 posts). |
-| adsense-account meta tag | ✅ | Present in `__root.tsx`. |
-| noindex leaks | ✅ | None on public routes. |
-| Meta titles/descriptions | ✅ | `getPageHead` produces unique per-page title/description; OG/Twitter complete. |
+| Check                    | Status before | Detail                                                                                                                                                                                                                                           |
+| ------------------------ | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `/ads.txt`               | ❌ missing    | AdSense requires it to authorize sellers. Created with `pub-9117572925263537`.                                                                                                                                                                   |
+| `/sitemap.xml`           | ❌ 404        | Route `sitemap.xml.tsx` registered as `/sitemap/xml` (TanStack treats the dot as a folder separator) AND returned HTML — loaders can't emit raw Responses for document requests. Replaced with build-time generated static `public/sitemap.xml`. |
+| robots.txt               | ⚠️            | Pointed at dead `/sitemap/xml`; now points to `/sitemap.xml`. Crawl rules themselves were fine.                                                                                                                                                  |
+| Sitemap coverage         | ⚠️            | Missing `/privacy`, `/terms`, `/team`, `/accessibility`, `/work`, `/certificates/verify`, plus 5 newer posts. Generator covers all 66 URLs (32 static + 8 programs + 26 posts).                                                                  |
+| adsense-account meta tag | ✅            | Present in `__root.tsx`.                                                                                                                                                                                                                         |
+| noindex leaks            | ✅            | None on public routes.                                                                                                                                                                                                                           |
+| Meta titles/descriptions | ✅            | `getPageHead` produces unique per-page title/description; OG/Twitter complete.                                                                                                                                                                   |
 
 ## B. Rendered content depth (production crawl)
 
@@ -36,17 +36,17 @@ Thinnest pages: `/library` 111 · `/contact` 125 · `/visit/feedback` 138 · `/s
 
 ## C. Blog reading-time fabrication (all 26 posts)
 
-| slug | claimed | actual body words |
-|---|---|---|
-| building-a-soc-on-a-budget | 11 min | 129 |
-| cybersecurity-for-small-business-nigeria | 10 min | 132 |
-| api-development-nodejs | 10 min | 144 |
-| starting-tech-career-nigeria-2026 | 9 min | 194 |
-| cloud-computing-for-nigerian-businesses | 9 min | 135 |
-| devops-for-small-teams | 9 min | 128 |
-| react-hooks-explained | 9 min | 135 |
-| why-we-are-building-cea-os | 9 min | 94 |
-| …and 18 more | 5–8 min | 56–170 |
+| slug                                     | claimed | actual body words |
+| ---------------------------------------- | ------- | ----------------- |
+| building-a-soc-on-a-budget               | 11 min  | 129               |
+| cybersecurity-for-small-business-nigeria | 10 min  | 132               |
+| api-development-nodejs                   | 10 min  | 144               |
+| starting-tech-career-nigeria-2026        | 9 min   | 194               |
+| cloud-computing-for-nigerian-businesses  | 9 min   | 135               |
+| devops-for-small-teams                   | 9 min   | 128               |
+| react-hooks-explained                    | 9 min   | 135               |
+| why-we-are-building-cea-os               | 9 min   | 94                |
+| …and 18 more                             | 5–8 min | 56–170            |
 
 ## D. Page-specific notes
 

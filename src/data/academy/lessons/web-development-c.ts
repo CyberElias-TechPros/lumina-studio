@@ -200,14 +200,43 @@ export const webDevelopmentLessonsC: Record<string, SessionLecture> = {
       "Use event delegation for any list whose items change. One listener on the parent with event.target identifying the child handles items added after the page loaded, with no re-attaching and no leak.",
     ],
     vocabulary: [
-      { term: "DOM", meaning: "The live tree of objects the browser builds from your HTML. JavaScript changes this, not the file." },
-      { term: "querySelector", meaning: "Returns the first element matching a CSS selector, or null. The standard way to select." },
-      { term: "textContent", meaning: "Sets text as plain text. The safe choice for anything user-supplied." },
-      { term: "innerHTML", meaning: "Parses its input as HTML. Powerful and dangerous with untrusted data." },
-      { term: "Cross-site scripting", meaning: "Injecting markup that executes. Caused by putting user input into innerHTML." },
-      { term: "classList", meaning: "add, remove and toggle for classes. Keeps styling in the stylesheet rather than in JavaScript." },
-      { term: "Inline style", meaning: "A style written on the element. Very high specificity and hard to override later." },
-      { term: "event.target", meaning: "The element actually acted on, as opposed to the element the listener is attached to. What makes delegation work." },
+      {
+        term: "DOM",
+        meaning:
+          "The live tree of objects the browser builds from your HTML. JavaScript changes this, not the file.",
+      },
+      {
+        term: "querySelector",
+        meaning:
+          "Returns the first element matching a CSS selector, or null. The standard way to select.",
+      },
+      {
+        term: "textContent",
+        meaning: "Sets text as plain text. The safe choice for anything user-supplied.",
+      },
+      {
+        term: "innerHTML",
+        meaning: "Parses its input as HTML. Powerful and dangerous with untrusted data.",
+      },
+      {
+        term: "Cross-site scripting",
+        meaning: "Injecting markup that executes. Caused by putting user input into innerHTML.",
+      },
+      {
+        term: "classList",
+        meaning:
+          "add, remove and toggle for classes. Keeps styling in the stylesheet rather than in JavaScript.",
+      },
+      {
+        term: "Inline style",
+        meaning:
+          "A style written on the element. Very high specificity and hard to override later.",
+      },
+      {
+        term: "event.target",
+        meaning:
+          "The element actually acted on, as opposed to the element the listener is attached to. What makes delegation work.",
+      },
     ],
     homework: [
       {
@@ -235,27 +264,32 @@ export const webDevelopmentLessonsC: Record<string, SessionLecture> = {
       {
         criterion: "Selection",
         passing: "Finds elements.",
-        excellent: "querySelector and querySelectorAll used throughout, every result logged and the null case handled rather than allowed to throw.",
+        excellent:
+          "querySelector and querySelectorAll used throughout, every result logged and the null case handled rather than allowed to throw.",
       },
       {
         criterion: "Content safety",
         passing: "Displays text.",
-        excellent: "textContent used for all user-supplied data, the innerHTML injection demonstrated and understood, and form values read with the value property.",
+        excellent:
+          "textContent used for all user-supplied data, the innerHTML injection demonstrated and understood, and form values read with the value property.",
       },
       {
         criterion: "Styling approach",
         passing: "Changes appearance.",
-        excellent: "State expressed as classes defined in CSS and toggled with classList, with no element.style assignment anywhere in the code.",
+        excellent:
+          "State expressed as classes defined in CSS and toggled with classList, with no element.style assignment anywhere in the code.",
       },
       {
         criterion: "Events",
         passing: "Responds to clicks.",
-        excellent: "Handlers passed without parentheses, event.target and event.currentTarget distinguished, and removable handlers given names.",
+        excellent:
+          "Handlers passed without parentheses, event.target and event.currentTarget distinguished, and removable handlers given names.",
       },
       {
         criterion: "Dynamic content",
         passing: "Updates the page.",
-        excellent: "One delegated listener proven to handle runtime-added items, and bulk DOM changes built once and inserted in a single operation.",
+        excellent:
+          "One delegated listener proven to handle runtime-added items, and bulk DOM changes built once and inserted in a single operation.",
       },
     ],
     faqs: [
@@ -297,7 +331,7 @@ export const webDevelopmentLessonsC: Record<string, SessionLecture> = {
       {
         heading: "Built-in validation first",
         body: [
-          "Before writing a line of JavaScript, use what HTML gives you for free. The **`required`** attribute makes a field mandatory. **`type=\"email\"`** checks for a plausible email address. **`minlength` and `maxlength`** bound the length, **`min` and `max`** bound numbers, and **`pattern`** accepts a regular expression for anything more specific. The browser then blocks submission and shows a message, in the user's own language, with no code from you.",
+          'Before writing a line of JavaScript, use what HTML gives you for free. The **`required`** attribute makes a field mandatory. **`type="email"`** checks for a plausible email address. **`minlength` and `maxlength`** bound the length, **`min` and `max`** bound numbers, and **`pattern`** accepts a regular expression for anything more specific. The browser then blocks submission and shows a message, in the user\'s own language, with no code from you.',
           "This is not a shortcut — it is the correct first layer. Built-in validation works with assistive technology, works without JavaScript, and is consistent with what people already know from every other form on the web. Writing custom validation instead of using these attributes means rebuilding something that already exists and doing it worse.",
           "Then know its limit: **client-side validation is for the user's convenience, not for security**. Anything a browser enforces can be bypassed by anyone who wants to bypass it, because it runs on their machine. Real validation must also happen on the server, wherever the data goes. Client-side validation makes the experience good; server-side validation makes the data safe. They are not alternatives.",
         ],
@@ -322,7 +356,7 @@ export const webDevelopmentLessonsC: Record<string, SessionLecture> = {
         heading: "Modals",
         body: [
           "A modal is an overlay that demands attention, and it is easy to build badly. The requirements: it must be **closable** by a visible button, by the **Escape** key, and by clicking the backdrop — because a dialog nobody can escape is a trap. Then **focus management**: move focus into the modal when it opens, keep it inside while it is open, and **return focus to the element that opened it** when it closes. Skip that and a keyboard user is left somewhere unrelated.",
-          "The modern way to get most of this for free is the **`<dialog>` element**, which handles focus, Escape and the backdrop natively. Where you build one by hand, you need `role=\"dialog\"`, `aria-modal=\"true\"`, a labelled title, and focus trapping — real work, which is why the native element is the better starting point.",
+          'The modern way to get most of this for free is the **`<dialog>` element**, which handles focus, Escape and the backdrop natively. Where you build one by hand, you need `role="dialog"`, `aria-modal="true"`, a labelled title, and focus trapping — real work, which is why the native element is the better starting point.',
           "Then the judgement call: **use modals sparingly**. They interrupt, and an interrupting interface is a worse one. For most confirmations a message in the page is enough; for most forms a page is better. A modal is right when the task genuinely must be finished or abandoned before anything else continues, and wrong almost everywhere else.",
         ],
       },
@@ -478,14 +512,45 @@ export const webDevelopmentLessonsC: Record<string, SessionLecture> = {
       "Escape every interpolated value when rendering lists from data. A data-driven list makes every item an injection point, so an innerHTML template turns one bad field into a whole page of cross-site scripting.",
     ],
     vocabulary: [
-      { term: "Built-in validation", meaning: "required, type, minlength, maxlength and pattern. Free, accessible, and the correct first layer." },
-      { term: "Client-side validation", meaning: "Checking in the browser for the user's convenience. Never a security measure, because it can be bypassed." },
-      { term: "Blur", meaning: "The moment a field loses focus. The right time to validate, unlike every keystroke." },
-      { term: "aria-describedby", meaning: "Connects a message to its input so assistive technology announces them together." },
-      { term: "aria-invalid", meaning: "Marks a field's state for assistive technology rather than indicating it by colour alone." },
-      { term: "Live region", meaning: "An area whose changes are announced by assistive technology. How an error count reaches a screen reader user." },
-      { term: "dialog element", meaning: "A native modal handling focus, Escape and backdrop natively. Far safer than a hand-built one." },
-      { term: "Empty state", meaning: "What a list shows when there is no data. Without it a blank area is indistinguishable from a broken page." },
+      {
+        term: "Built-in validation",
+        meaning:
+          "required, type, minlength, maxlength and pattern. Free, accessible, and the correct first layer.",
+      },
+      {
+        term: "Client-side validation",
+        meaning:
+          "Checking in the browser for the user's convenience. Never a security measure, because it can be bypassed.",
+      },
+      {
+        term: "Blur",
+        meaning:
+          "The moment a field loses focus. The right time to validate, unlike every keystroke.",
+      },
+      {
+        term: "aria-describedby",
+        meaning: "Connects a message to its input so assistive technology announces them together.",
+      },
+      {
+        term: "aria-invalid",
+        meaning:
+          "Marks a field's state for assistive technology rather than indicating it by colour alone.",
+      },
+      {
+        term: "Live region",
+        meaning:
+          "An area whose changes are announced by assistive technology. How an error count reaches a screen reader user.",
+      },
+      {
+        term: "dialog element",
+        meaning:
+          "A native modal handling focus, Escape and backdrop natively. Far safer than a hand-built one.",
+      },
+      {
+        term: "Empty state",
+        meaning:
+          "What a list shows when there is no data. Without it a blank area is indistinguishable from a broken page.",
+      },
     ],
     homework: [
       {
@@ -513,27 +578,32 @@ export const webDevelopmentLessonsC: Record<string, SessionLecture> = {
       {
         criterion: "Validation layers",
         passing: "Validates input.",
-        excellent: "Built-in attributes confirmed to work without JavaScript, then JavaScript used only for what HTML cannot express, with server-side validation understood as necessary.",
+        excellent:
+          "Built-in attributes confirmed to work without JavaScript, then JavaScript used only for what HTML cannot express, with server-side validation understood as necessary.",
       },
       {
         criterion: "Timing",
         passing: "Shows errors.",
-        excellent: "Validation on blur with re-validation on input once flagged, nothing on load, and submit preventing default while focusing the first invalid field.",
+        excellent:
+          "Validation on blur with re-validation on input once flagged, nothing on load, and submit preventing default while focusing the first invalid field.",
       },
       {
         criterion: "Error messages",
         passing: "Indicates problems.",
-        excellent: "Each message naming the field, the problem and the shape of a correct answer, placed beside the field, connected via aria-describedby with a non-colour indicator, and cleared when fixed.",
+        excellent:
+          "Each message naming the field, the problem and the shape of a correct answer, placed beside the field, connected via aria-describedby with a non-colour indicator, and cleared when fixed.",
       },
       {
         criterion: "Modals",
         passing: "Has a popup.",
-        excellent: "Built on the native dialog element or with correct focus trapping and restoration, closable by button, Escape and backdrop, and used only where interruption is justified.",
+        excellent:
+          "Built on the native dialog element or with correct focus trapping and restoration, closable by button, Escape and backdrop, and used only where interruption is justified.",
       },
       {
         criterion: "Dynamic content",
         passing: "Renders a list.",
-        excellent: "Markup built once and inserted in one operation, every interpolated value escaped or set via textContent, and empty and loading states designed rather than left blank.",
+        excellent:
+          "Markup built once and inserted in one operation, every interpolated value escaped or set via textContent, and empty and loading states designed rather than left blank.",
       },
     ],
     faqs: [
@@ -608,7 +678,7 @@ export const webDevelopmentLessonsC: Record<string, SessionLecture> = {
         heading: "Git and GitHub",
         body: [
           "**Git** records snapshots of your project so you can return to any of them, see what changed and when, and recover from mistakes. **GitHub** is a place to store those snapshots online, which gives you a backup, a shareable link, and the portfolio that employers actually look at. They are related but distinct: Git works entirely on your machine without GitHub.",
-          "The core workflow is four commands. **`git init`** starts a repository in your folder. **`git add .`** stages your changes. **`git commit -m \"message\"`** records them as a snapshot. **`git push`** sends them to GitHub. That loop, repeated, is most of everyday version control.",
+          'The core workflow is four commands. **`git init`** starts a repository in your folder. **`git add .`** stages your changes. **`git commit -m "message"`** records them as a snapshot. **`git push`** sends them to GitHub. That loop, repeated, is most of everyday version control.',
           "Then the habit that makes it valuable: **commit often, with messages that say why**. 'Fix header alignment on mobile' tells you something in three months; 'updates' tells you nothing. Commit after each working change rather than at the end of the day, because small commits are easy to understand and easy to undo, while one enormous commit is neither. And add a **`.gitignore`** for anything that should not be stored — build outputs, dependencies, and anything containing a password or API key, which once pushed is very hard to remove completely.",
         ],
       },
@@ -756,14 +826,45 @@ export const webDevelopmentLessonsC: Record<string, SessionLecture> = {
       "Commit often with messages that explain why. Small commits are easy to understand and easy to undo, and 'fix header alignment on mobile' is still useful information in three months while 'updates' is not.",
     ],
     vocabulary: [
-      { term: "Scope", meaning: "The one thing the finished project does. Everything else is out of scope until it is published." },
-      { term: "Must-have", meaning: "What would be shamefully missing if you published in two weeks. The only list you build from initially." },
-      { term: "Task", meaning: "A verb with an object and a visible result, small enough to finish in one sitting." },
-      { term: "Folder structure", meaning: "Where files live. css, js, images and index.html at the root is enough for most projects." },
-      { term: "Reusable class", meaning: "A class applied repeatedly, named for its role rather than its appearance. .btn-primary, not .green-button." },
-      { term: "Repository", meaning: "A project under Git version control. Works entirely locally; GitHub is a remote store, not a requirement." },
-      { term: "Commit", meaning: "A recorded snapshot with a message. Small and frequent beats large and rare." },
-      { term: ".gitignore", meaning: "A file listing what Git should not store. Build outputs, dependencies, and anything containing a secret." },
+      {
+        term: "Scope",
+        meaning:
+          "The one thing the finished project does. Everything else is out of scope until it is published.",
+      },
+      {
+        term: "Must-have",
+        meaning:
+          "What would be shamefully missing if you published in two weeks. The only list you build from initially.",
+      },
+      {
+        term: "Task",
+        meaning:
+          "A verb with an object and a visible result, small enough to finish in one sitting.",
+      },
+      {
+        term: "Folder structure",
+        meaning:
+          "Where files live. css, js, images and index.html at the root is enough for most projects.",
+      },
+      {
+        term: "Reusable class",
+        meaning:
+          "A class applied repeatedly, named for its role rather than its appearance. .btn-primary, not .green-button.",
+      },
+      {
+        term: "Repository",
+        meaning:
+          "A project under Git version control. Works entirely locally; GitHub is a remote store, not a requirement.",
+      },
+      {
+        term: "Commit",
+        meaning: "A recorded snapshot with a message. Small and frequent beats large and rare.",
+      },
+      {
+        term: ".gitignore",
+        meaning:
+          "A file listing what Git should not store. Build outputs, dependencies, and anything containing a secret.",
+      },
     ],
     homework: [
       {
@@ -791,27 +892,32 @@ export const webDevelopmentLessonsC: Record<string, SessionLecture> = {
       {
         criterion: "Scope",
         passing: "Has an idea.",
-        excellent: "A one-sentence scope with a must-have list from the two-week test, everything else on a labelled later list, and the project small enough to finish.",
+        excellent:
+          "A one-sentence scope with a must-have list from the two-week test, everything else on a labelled later list, and the project small enough to finish.",
       },
       {
         criterion: "Task breakdown",
         passing: "Has a to-do list.",
-        excellent: "Every task a verb with a visible result, completable in one sitting, ordered by dependency with the riskiest part first.",
+        excellent:
+          "Every task a verb with a visible result, completable in one sitting, ordered by dependency with the riskiest part first.",
       },
       {
         criterion: "Structure",
         passing: "Files are somewhere.",
-        excellent: "css, js and images with index.html at the root, lowercase-hyphen filenames throughout, styles consolidated into one stylesheet, and one file per concern.",
+        excellent:
+          "css, js and images with index.html at the root, lowercase-hyphen filenames throughout, styles consolidated into one stylesheet, and one file per concern.",
       },
       {
         criterion: "Reuse",
         passing: "Copies markup.",
-        excellent: "Repetition noticed and extracted after two or three uses, classes named for role rather than appearance, and functions taking the varying parts as parameters.",
+        excellent:
+          "Repetition noticed and extracted after two or three uses, classes named for role rather than appearance, and functions taking the varying parts as parameters.",
       },
       {
         criterion: "Version control",
         passing: "Has Git installed.",
-        excellent: "A repository initialised with a .gitignore covering build outputs and secrets, small commits with messages explaining why, and the project pushed to GitHub.",
+        excellent:
+          "A repository initialised with a .gitignore covering build outputs and secrets, small commits with messages explaining why, and the project pushed to GitHub.",
       },
     ],
     faqs: [

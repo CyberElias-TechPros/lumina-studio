@@ -237,14 +237,46 @@ export const mobileAppLessonsC: Record<string, SessionLecture> = {
       "Hand the phone to someone who has never seen the app and say nothing. Where they hesitate or tap wrongly is where the design failed, and you cannot find those problems yourself because you already know how it works.",
     ],
     vocabulary: [
-      { term: "Emulator", meaning: "A simulated device on a desktop. Fast to iterate on, and it systematically hides touch, size, performance and network problems." },
-      { term: "Remote debugging", meaning: "Attaching browser developer tools to the app on a phone. Open it before guessing." },
-      { term: "Red screen", meaning: "React Native's error overlay. The top line names the problem, the stack names the path." },
-      { term: "Blank screen", meaning: "Usually the root component throwing during render, with no visible error. Narrow it by commenting out half." },
-      { term: "Immutable update", meaning: "Replacing an array or object rather than mutating it. Required for the interface to notice the change." },
-      { term: "Kill and reopen", meaning: "Fully closing the app and relaunching. What exercises persistence and catches storage bugs." },
-      { term: "Forced error state", meaning: "Deliberately causing a failure. The only way to know an error state actually works." },
-      { term: "Pre-release checklist", meaning: "Sizes, thumb targets, keyboard, back, airplane mode, slow connection, oldest device, kill-and-reopen, forced errors, and an outside user." },
+      {
+        term: "Emulator",
+        meaning:
+          "A simulated device on a desktop. Fast to iterate on, and it systematically hides touch, size, performance and network problems.",
+      },
+      {
+        term: "Remote debugging",
+        meaning:
+          "Attaching browser developer tools to the app on a phone. Open it before guessing.",
+      },
+      {
+        term: "Red screen",
+        meaning:
+          "React Native's error overlay. The top line names the problem, the stack names the path.",
+      },
+      {
+        term: "Blank screen",
+        meaning:
+          "Usually the root component throwing during render, with no visible error. Narrow it by commenting out half.",
+      },
+      {
+        term: "Immutable update",
+        meaning:
+          "Replacing an array or object rather than mutating it. Required for the interface to notice the change.",
+      },
+      {
+        term: "Kill and reopen",
+        meaning:
+          "Fully closing the app and relaunching. What exercises persistence and catches storage bugs.",
+      },
+      {
+        term: "Forced error state",
+        meaning:
+          "Deliberately causing a failure. The only way to know an error state actually works.",
+      },
+      {
+        term: "Pre-release checklist",
+        meaning:
+          "Sizes, thumb targets, keyboard, back, airplane mode, slow connection, oldest device, kill-and-reopen, forced errors, and an outside user.",
+      },
     ],
     homework: [
       {
@@ -272,27 +304,32 @@ export const mobileAppLessonsC: Record<string, SessionLecture> = {
       {
         criterion: "Real-device testing",
         passing: "Runs the app on a phone.",
-        excellent: "Emulator used for iteration and a physical phone for decisions, with the oldest, cheapest Android also tested and the longest list scrolled on it.",
+        excellent:
+          "Emulator used for iteration and a physical phone for decisions, with the oldest, cheapest Android also tested and the longest list scrolled on it.",
       },
       {
         criterion: "Debugging",
         passing: "Fixes errors.",
-        excellent: "Remote debugging connected, red screens read by top line and stack, and a blank screen narrowed by commenting out half the screen.",
+        excellent:
+          "Remote debugging connected, red screens read by top line and stack, and a blank screen narrowed by commenting out half the screen.",
       },
       {
         criterion: "Device-specific bugs",
         passing: "Handles the obvious ones.",
-        excellent: "Keyboard, safe areas and text overflow fixed; index keys and passed objects corrected; list updates confirmed immutable; and back behaviour verified from every screen.",
+        excellent:
+          "Keyboard, safe areas and text overflow fixed; index keys and passed objects corrected; list updates confirmed immutable; and back behaviour verified from every screen.",
       },
       {
         criterion: "Checklist discipline",
         passing: "Tests the main flows.",
-        excellent: "The full checklist run including airplane mode, a throttled connection, a complete kill and reopen, and every error state forced rather than assumed.",
+        excellent:
+          "The full checklist run including airplane mode, a throttled connection, a complete kill and reopen, and every error state forced rather than assumed.",
       },
       {
         criterion: "Outside perspective",
         passing: "Tests it themselves.",
-        excellent: "The phone handed to someone who has never seen the app, their hesitations recorded without explanation offered, and the worst problem found actually fixed.",
+        excellent:
+          "The phone handed to someone who has never seen the app, their hesitations recorded without explanation offered, and the worst problem found actually fixed.",
       },
     ],
     faqs: [
@@ -393,8 +430,7 @@ export const mobileAppLessonsC: Record<string, SessionLecture> = {
         },
         {
           step: "Produce a signed Android build",
-          detail:
-            "Explain that this is the package a store or a direct link distributes.",
+          detail: "Explain that this is the package a store or a direct link distributes.",
         },
         {
           step: "Install it directly on a phone without a store",
@@ -538,14 +574,46 @@ export const mobileAppLessonsC: Record<string, SessionLecture> = {
       "Document the known gaps as carefully as the features. Naming what was not built and not tested reads as competence and makes the work credible, while presenting an unfinished prototype as finished invites scrutiny it will not survive.",
     ],
     vocabulary: [
-      { term: "Build", meaning: "Producing the app package from source code. The first of three separate steps people conflate." },
-      { term: "Keystore", meaning: "The private key identifying you as the publisher. Every update needs the same one; losing it means losing the app." },
-      { term: "Signing", meaning: "Proving the package came from you and is unaltered. Done with the keystore before distribution." },
-      { term: "Direct distribution", meaning: "Sharing an Android package by link or message, with no store. Often the right and free answer for a small user group." },
-      { term: "Internal testing track", meaning: "Play's limited distribution list. Usually more appropriate for a course project than a public listing." },
-      { term: "Privacy policy", meaning: "A public URL describing what the app does with data. Mandatory on both stores, even when nothing is collected." },
-      { term: "Data safety declaration", meaning: "What you collect, whether it is linked to a user, whether it is shared. Declaring inaccurately risks account suspension." },
-      { term: "Known gaps", meaning: "What is not built and not tested, stated plainly. What makes a prototype credible rather than defensive." },
+      {
+        term: "Build",
+        meaning:
+          "Producing the app package from source code. The first of three separate steps people conflate.",
+      },
+      {
+        term: "Keystore",
+        meaning:
+          "The private key identifying you as the publisher. Every update needs the same one; losing it means losing the app.",
+      },
+      {
+        term: "Signing",
+        meaning:
+          "Proving the package came from you and is unaltered. Done with the keystore before distribution.",
+      },
+      {
+        term: "Direct distribution",
+        meaning:
+          "Sharing an Android package by link or message, with no store. Often the right and free answer for a small user group.",
+      },
+      {
+        term: "Internal testing track",
+        meaning:
+          "Play's limited distribution list. Usually more appropriate for a course project than a public listing.",
+      },
+      {
+        term: "Privacy policy",
+        meaning:
+          "A public URL describing what the app does with data. Mandatory on both stores, even when nothing is collected.",
+      },
+      {
+        term: "Data safety declaration",
+        meaning:
+          "What you collect, whether it is linked to a user, whether it is shared. Declaring inaccurately risks account suspension.",
+      },
+      {
+        term: "Known gaps",
+        meaning:
+          "What is not built and not tested, stated plainly. What makes a prototype credible rather than defensive.",
+      },
     ],
     homework: [
       {
@@ -573,27 +641,32 @@ export const mobileAppLessonsC: Record<string, SessionLecture> = {
       {
         criterion: "The build",
         passing: "App runs in development.",
-        excellent: "A signed Android build produced from a backed-up keystore confirmed absent from version control, installed on a real device by a deliberately chosen route, with persistence, offline behaviour and error states confirmed on the installed build.",
+        excellent:
+          "A signed Android build produced from a backed-up keystore confirmed absent from version control, installed on a real device by a deliberately chosen route, with persistence, offline behaviour and error states confirmed on the installed build.",
       },
       {
         criterion: "Publishing knowledge",
         passing: "Knows the stores exist.",
-        excellent: "Building, signing and distributing distinguished, Play requirements described accurately including fees and testing tracks, and the macOS requirement for App Store builds stated without evasion along with its real cost.",
+        excellent:
+          "Building, signing and distributing distinguished, Play requirements described accurately including fees and testing tracks, and the macOS requirement for App Store builds stated without evasion along with its real cost.",
       },
       {
         criterion: "Listing materials",
         passing: "Has an icon.",
-        excellent: "Icon and per-resolution screenshots prepared, short and full descriptions written, a privacy policy accurate about actual data handling and hosted at a public URL, and a data safety declaration naming every collecting SDK.",
+        excellent:
+          "Icon and per-resolution screenshots prepared, short and full descriptions written, a privacy policy accurate about actual data handling and hosted at a public URL, and a data safety declaration naming every collecting SDK.",
       },
       {
         criterion: "Documentation",
         passing: "Explains the app.",
-        excellent: "Version one in one sentence with deliberate omissions, the flow diagram updated to match reality with differences noted, the data model documented, and testing results recorded with every failure and fix.",
+        excellent:
+          "Version one in one sentence with deliberate omissions, the flow diagram updated to match reality with differences noted, the data model documented, and testing results recorded with every failure and fix.",
       },
       {
         criterion: "Honesty",
         passing: "Describes the project accurately.",
-        excellent: "Known gaps stated plainly including what was not tested, the documentation reviewed by someone who did not build it, and their points of confusion addressed.",
+        excellent:
+          "Known gaps stated plainly including what was not tested, the documentation reviewed by someone who did not build it, and their points of confusion addressed.",
       },
     ],
     faqs: [

@@ -193,14 +193,40 @@ export const digitalMarketingLessonsC: Record<string, SessionLecture> = {
       "Distrust small numbers and single outstanding posts. A finding is a pattern across several similar posts over a month; below that you are reading weather and should keep collecting data.",
     ],
     vocabulary: [
-      { term: "Reach", meaning: "How many different people saw your content. The size of the audience." },
-      { term: "Impressions", meaning: "How many times content was displayed. Divided by reach, it shows repetition." },
-      { term: "Engagement rate", meaning: "Engagements divided by reach. The only meaningful way to compare posts." },
-      { term: "Click-through rate", meaning: "Clicks divided by impressions. Measures whether the creative earned the click." },
-      { term: "Lead", meaning: "Someone who showed interest and gave you a way to reach them. Not every message is a lead." },
-      { term: "Conversion", meaning: "The action you wanted — a sale, booking or registration. Distinct from a lead." },
-      { term: "Cost per result", meaning: "Spend divided by results. Meaningless without comparison to your profit per sale." },
-      { term: "Vanity metric", meaning: "A number that looks good and pays for nothing: followers, likes, raw reach." },
+      {
+        term: "Reach",
+        meaning: "How many different people saw your content. The size of the audience.",
+      },
+      {
+        term: "Impressions",
+        meaning: "How many times content was displayed. Divided by reach, it shows repetition.",
+      },
+      {
+        term: "Engagement rate",
+        meaning: "Engagements divided by reach. The only meaningful way to compare posts.",
+      },
+      {
+        term: "Click-through rate",
+        meaning: "Clicks divided by impressions. Measures whether the creative earned the click.",
+      },
+      {
+        term: "Lead",
+        meaning:
+          "Someone who showed interest and gave you a way to reach them. Not every message is a lead.",
+      },
+      {
+        term: "Conversion",
+        meaning: "The action you wanted — a sale, booking or registration. Distinct from a lead.",
+      },
+      {
+        term: "Cost per result",
+        meaning:
+          "Spend divided by results. Meaningless without comparison to your profit per sale.",
+      },
+      {
+        term: "Vanity metric",
+        meaning: "A number that looks good and pays for nothing: followers, likes, raw reach.",
+      },
     ],
     homework: [
       {
@@ -228,27 +254,32 @@ export const digitalMarketingLessonsC: Record<string, SessionLecture> = {
       {
         criterion: "Metric definitions",
         passing: "Knows the terms.",
-        excellent: "Distinguishes reach from impressions, engagement from engagement rate, leads from conversions, and can explain what each number tells and does not tell you.",
+        excellent:
+          "Distinguishes reach from impressions, engagement from engagement rate, leads from conversions, and can explain what each number tells and does not tell you.",
       },
       {
         criterion: "Calculation",
         passing: "Reads the platform's numbers.",
-        excellent: "Computes engagement rate, CTR and cost per click, per lead and per sale by hand from raw figures with the arithmetic shown.",
+        excellent:
+          "Computes engagement rate, CTR and cost per click, per lead and per sale by hand from raw figures with the arithmetic shown.",
       },
       {
         criterion: "Commercial judgement",
         passing: "Knows what was spent.",
-        excellent: "Compares cost per result against profit per sale, sets the affordable acquisition cost before spending, and gives a plain verdict on whether the campaign worked.",
+        excellent:
+          "Compares cost per result against profit per sale, sets the affordable acquisition cost before spending, and gives a plain verdict on whether the campaign worked.",
       },
       {
         criterion: "Funnel reading",
         passing: "Sees the whole picture.",
-        excellent: "Reads stages in order, names the biggest proportional drop, and proposes one change for that stage while leaving everything else fixed.",
+        excellent:
+          "Reads stages in order, names the biggest proportional drop, and proposes one change for that stage while leaving everything else fixed.",
       },
       {
         criterion: "Statistical honesty",
         passing: "Reports what happened.",
-        excellent: "Labels each conclusion as finding or noise with its supporting number, requires a pattern across several posts, and drops vanity metrics from the report.",
+        excellent:
+          "Labels each conclusion as finding or noise with its supporting number, requires a pattern across several posts, and drops vanity metrics from the report.",
       },
     ],
     faqs: [
@@ -458,14 +489,44 @@ export const digitalMarketingLessonsC: Record<string, SessionLecture> = {
       "Never guarantee sales. Promise specific work, honest measurement and adjustment from the numbers — because product, price, offer and follow-up are not yours to control, and over-promising is how you lose the second contract.",
     ],
     vocabulary: [
-      { term: "Campaign report", meaning: "A one or two page document: summary, numbers with comparisons, what worked, recommendations, next plan." },
-      { term: "Baseline", meaning: "What a number is compared against — last period, a target, or a variant. Without it a figure means nothing." },
-      { term: "Recommendation", meaning: "A specific action tied to a number in the report. Untied advice is opinion." },
-      { term: "Attribution", meaning: "Establishing which activity produced which result. Honest attribution states inference as inference." },
-      { term: "Marketing plan", meaning: "The assembled document: foundation, channels, content, promotion and measurement. A business could run from it." },
-      { term: "Portfolio piece", meaning: "Work you can show rather than describe. A complete campaign document is the strongest one available here." },
-      { term: "Cost per acquisition", meaning: "What one customer cost to win. The number a business owner actually cares about." },
-      { term: "Scope", meaning: "What you are responsible for and what you are not. Stating it protects the relationship." },
+      {
+        term: "Campaign report",
+        meaning:
+          "A one or two page document: summary, numbers with comparisons, what worked, recommendations, next plan.",
+      },
+      {
+        term: "Baseline",
+        meaning:
+          "What a number is compared against — last period, a target, or a variant. Without it a figure means nothing.",
+      },
+      {
+        term: "Recommendation",
+        meaning: "A specific action tied to a number in the report. Untied advice is opinion.",
+      },
+      {
+        term: "Attribution",
+        meaning:
+          "Establishing which activity produced which result. Honest attribution states inference as inference.",
+      },
+      {
+        term: "Marketing plan",
+        meaning:
+          "The assembled document: foundation, channels, content, promotion and measurement. A business could run from it.",
+      },
+      {
+        term: "Portfolio piece",
+        meaning:
+          "Work you can show rather than describe. A complete campaign document is the strongest one available here.",
+      },
+      {
+        term: "Cost per acquisition",
+        meaning: "What one customer cost to win. The number a business owner actually cares about.",
+      },
+      {
+        term: "Scope",
+        meaning:
+          "What you are responsible for and what you are not. Stating it protects the relationship.",
+      },
     ],
     homework: [
       {
@@ -493,27 +554,32 @@ export const digitalMarketingLessonsC: Record<string, SessionLecture> = {
       {
         criterion: "Report quality",
         passing: "Summarises the numbers.",
-        excellent: "A one-page report opening with a verdict and next action, every number against a baseline, recommendations each traced to a figure, plus the next period's plan and uncontrolled factors.",
+        excellent:
+          "A one-page report opening with a verdict and next action, every number against a baseline, recommendations each traced to a figure, plus the next period's plan and uncontrolled factors.",
       },
       {
         criterion: "Campaign completeness",
         passing: "Has some of the parts.",
-        excellent: "Foundation, channel decision, pillars, finished one-week calendar, voice and visuals, organic and paid plans, and measurement — assembled into one sendable document.",
+        excellent:
+          "Foundation, channel decision, pillars, finished one-week calendar, voice and visuals, organic and paid plans, and measurement — assembled into one sendable document.",
       },
       {
         criterion: "Specificity",
         passing: "Describes an approach.",
-        excellent: "Built around one named business with a real audience, actual posts, an actual budget and a margin-derived target cost per result.",
+        excellent:
+          "Built around one named business with a real audience, actual posts, an actual budget and a margin-derived target cost per result.",
       },
       {
         criterion: "Presentation",
         passing: "Explains the plan.",
-        excellent: "Five minutes in the order the business thinks — customer, plan, cost, expected result — with all three objections answered without discounting or over-promising.",
+        excellent:
+          "Five minutes in the order the business thinks — customer, plan, cost, expected result — with all three objections answered without discounting or over-promising.",
       },
       {
         criterion: "Professional judgement",
         passing: "Delivers the work.",
-        excellent: "Separates what was controlled from what was not, states inference as inference, and promises specific work and honest measurement rather than guaranteed sales.",
+        excellent:
+          "Separates what was controlled from what was not, states inference as inference, and promises specific work and honest measurement rather than guaranteed sales.",
       },
     ],
     faqs: [

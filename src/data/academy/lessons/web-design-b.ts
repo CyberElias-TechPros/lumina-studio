@@ -38,7 +38,7 @@ export const webDesignLessonsB: Record<string, SessionLecture> = {
         body: [
           "Set `display: grid` on the container, then define the structure. **`grid-template-columns`** lists the column tracks, and the `fr` unit means 'a fraction of the available space' — `grid-template-columns: 1fr 2fr` gives two columns with the second twice as wide. `repeat(3, 1fr)` gives three equal columns, which is the most common thing you will write. **`grid-template-rows`** does the same vertically. `gap` works exactly as it does in Flexbox.",
           "The most valuable modern Grid feature is **`minmax()` combined with `auto-fit`**: `grid-template-columns: repeat(auto-fit, minmax(260px, 1fr))` creates as many columns of at least 260px as will fit, each stretching to share the space, and it reflows automatically as the screen narrows. That single line produces a responsive card grid with **no media queries at all**, and it is the pattern behind most modern card layouts. Learn it and you will use it constantly.",
-          "For a whole-page skeleton, **named grid areas** are the clearest approach: define `grid-template-areas` with a little ASCII picture — `\"header header\" \"sidebar main\" \"footer footer\"` — then assign each element a `grid-area`. The layout becomes readable at a glance, which is exactly what a client-facing codebase needs. And for placing a single item, `grid-column: span 2` makes it cross two columns, which is how you build an asymmetric feature section.",
+          'For a whole-page skeleton, **named grid areas** are the clearest approach: define `grid-template-areas` with a little ASCII picture — `"header header" "sidebar main" "footer footer"` — then assign each element a `grid-area`. The layout becomes readable at a glance, which is exactly what a client-facing codebase needs. And for placing a single item, `grid-column: span 2` makes it cross two columns, which is how you build an asymmetric feature section.',
         ],
       },
       {
@@ -182,14 +182,46 @@ export const webDesignLessonsB: Record<string, SessionLecture> = {
       "Diagnose with the temporary universal outline whenever a layout is genuinely puzzling. Seeing every box boundary at once resolves in seconds what squinting at a rendered page cannot, and it is the fastest habit in this session to acquire.",
     ],
     vocabulary: [
-      { term: "Flexbox", meaning: "One-dimensional layout — a row or a column — where content decides how space is shared." },
-      { term: "Grid", meaning: "Two-dimensional layout — rows and columns together — where the defined structure decides placement." },
-      { term: "fr unit", meaning: "A fraction of available space in Grid. 1fr 2fr gives two columns with the second twice as wide." },
-      { term: "auto-fit with minmax", meaning: "The pattern repeat(auto-fit, minmax(260px, 1fr)) creating as many columns as fit, reflowing with no media queries." },
-      { term: "justify-content", meaning: "Distribution along the main axis in Flexbox. space-between is the workhorse for nav bars." },
-      { term: "align-items", meaning: "Alignment across the other axis. center gives the vertical centring that used to require hacks." },
-      { term: "gap", meaning: "Space between items, set on the container. Replaces the habit of adding margins to items." },
-      { term: "Grid areas", meaning: "Named regions defined as an ASCII picture in grid-template-areas, making a page skeleton readable at a glance." },
+      {
+        term: "Flexbox",
+        meaning:
+          "One-dimensional layout — a row or a column — where content decides how space is shared.",
+      },
+      {
+        term: "Grid",
+        meaning:
+          "Two-dimensional layout — rows and columns together — where the defined structure decides placement.",
+      },
+      {
+        term: "fr unit",
+        meaning:
+          "A fraction of available space in Grid. 1fr 2fr gives two columns with the second twice as wide.",
+      },
+      {
+        term: "auto-fit with minmax",
+        meaning:
+          "The pattern repeat(auto-fit, minmax(260px, 1fr)) creating as many columns as fit, reflowing with no media queries.",
+      },
+      {
+        term: "justify-content",
+        meaning:
+          "Distribution along the main axis in Flexbox. space-between is the workhorse for nav bars.",
+      },
+      {
+        term: "align-items",
+        meaning:
+          "Alignment across the other axis. center gives the vertical centring that used to require hacks.",
+      },
+      {
+        term: "gap",
+        meaning:
+          "Space between items, set on the container. Replaces the habit of adding margins to items.",
+      },
+      {
+        term: "Grid areas",
+        meaning:
+          "Named regions defined as an ASCII picture in grid-template-areas, making a page skeleton readable at a glance.",
+      },
     ],
     homework: [
       {
@@ -217,27 +249,32 @@ export const webDesignLessonsB: Record<string, SessionLecture> = {
       {
         criterion: "Tool choice",
         passing: "Uses Flexbox or Grid.",
-        excellent: "Chooses correctly for each of the five patterns and can state in one line why, including where both are nested.",
+        excellent:
+          "Chooses correctly for each of the five patterns and can state in one line why, including where both are nested.",
       },
       {
         criterion: "Flexbox command",
         passing: "Can lay items in a row.",
-        excellent: "Controls direction, justify-content, align-items, gap and wrap fluently, and uses flex on items to distribute space.",
+        excellent:
+          "Controls direction, justify-content, align-items, gap and wrap fluently, and uses flex on items to distribute space.",
       },
       {
         criterion: "Grid command",
         passing: "Can make columns.",
-        excellent: "Uses fr tracks, repeat with auto-fit and minmax for a reflowing card grid, and named areas for a page skeleton.",
+        excellent:
+          "Uses fr tracks, repeat with auto-fit and minmax for a reflowing card grid, and named areas for a page skeleton.",
       },
       {
         criterion: "Patterns",
         passing: "Produces most of the five.",
-        excellent: "All five built to a professional standard, including cards with aligned bottoms and a hero using min-height.",
+        excellent:
+          "All five built to a professional standard, including cards with aligned bottoms and a hero using min-height.",
       },
       {
         criterion: "Debugging",
         passing: "Fixes layout problems eventually.",
-        excellent: "Diagnoses by reading the box diagram and container visualisation first, states the cause before changing anything, and uses the outline technique.",
+        excellent:
+          "Diagnoses by reading the box diagram and container visualisation first, states the cause before changing anything, and uses the outline technique.",
       },
     ],
     faqs: [
@@ -312,7 +349,7 @@ export const webDesignLessonsB: Record<string, SessionLecture> = {
         heading: "Contact: the section that earns the money",
         body: [
           "Most Nigerian business enquiries happen on WhatsApp or by phone, not through a form, so the contact section should lead with those. A **click-to-WhatsApp link** — `https://wa.me/2348034567890?text=Hello,%20I%20would%20like%20a%20quote` — with a pre-filled message is the single highest-converting element you can put on a small-business site, because it removes typing and opens the app the customer already uses. A **click-to-call link** (`tel:+2348034567890`) matters equally, because a large share of visitors are on a phone and expect to tap rather than to copy a number.",
-          "Include a form as well, for people who prefer it, built to the standards from session two: every field labelled, `type=\"tel\"` so phones show the numeric keypad, `required` only on what you genuinely need, and — critically — a real submission target that you have tested. A form that appears to work and silently discards messages is worse than no form, because the business believes it is receiving enquiries it never gets, and it can take months to notice.",
+          'Include a form as well, for people who prefer it, built to the standards from session two: every field labelled, `type="tel"` so phones show the numeric keypad, `required` only on what you genuinely need, and — critically — a real submission target that you have tested. A form that appears to work and silently discards messages is worse than no form, because the business believes it is receiving enquiries it never gets, and it can take months to notice.',
           "Then add the practical details customers actually look for: **opening hours**, the **physical address** where relevant, and the **service area**. And repeat the primary contact route in the header and the footer, not only in the contact section — a visitor who decides to call should never have to hunt for the number.",
         ],
       },
@@ -443,14 +480,45 @@ export const webDesignLessonsB: Record<string, SessionLecture> = {
       "Test the whole page on a real phone over mobile data before delivery. That is the condition almost every Nigerian visitor arrives in, and a page that loads in three seconds on fibre can take thirty on a phone — which is long enough for them to leave.",
     ],
     vocabulary: [
-      { term: "Hero", meaning: "The top section stating what you do, who it is for and what to do next. Three seconds to do its job." },
-      { term: "Fragment link", meaning: "A link to a section on the same page using #section-name. How one-page site navigation works." },
-      { term: "Click-to-call", meaning: "A tel: link that dials on tap. Essential because most visitors are on a phone." },
-      { term: "WhatsApp deep link", meaning: "A wa.me link with a pre-filled message. The highest-converting contact route for a Nigerian business." },
-      { term: "Social proof", meaning: "Testimonials and portfolio work establishing trust. Specific and attributable beats vague and plentiful." },
-      { term: "'From' pricing", meaning: "Publishing starting prices by category. Filters enquiries and converts more than hiding prices entirely." },
-      { term: "One-page site", meaning: "A single scrolling page. Usually the right answer for a small business: faster, simpler, one path to contact." },
-      { term: "Service area", meaning: "Where the business operates. Customers look for it, and stating it saves unqualified enquiries." },
+      {
+        term: "Hero",
+        meaning:
+          "The top section stating what you do, who it is for and what to do next. Three seconds to do its job.",
+      },
+      {
+        term: "Fragment link",
+        meaning:
+          "A link to a section on the same page using #section-name. How one-page site navigation works.",
+      },
+      {
+        term: "Click-to-call",
+        meaning: "A tel: link that dials on tap. Essential because most visitors are on a phone.",
+      },
+      {
+        term: "WhatsApp deep link",
+        meaning:
+          "A wa.me link with a pre-filled message. The highest-converting contact route for a Nigerian business.",
+      },
+      {
+        term: "Social proof",
+        meaning:
+          "Testimonials and portfolio work establishing trust. Specific and attributable beats vague and plentiful.",
+      },
+      {
+        term: "'From' pricing",
+        meaning:
+          "Publishing starting prices by category. Filters enquiries and converts more than hiding prices entirely.",
+      },
+      {
+        term: "One-page site",
+        meaning:
+          "A single scrolling page. Usually the right answer for a small business: faster, simpler, one path to contact.",
+      },
+      {
+        term: "Service area",
+        meaning:
+          "Where the business operates. Customers look for it, and stating it saves unqualified enquiries.",
+      },
     ],
     homework: [
       {
@@ -478,27 +546,32 @@ export const webDesignLessonsB: Record<string, SessionLecture> = {
       {
         criterion: "Structure",
         passing: "Has the main sections.",
-        excellent: "Section emphasis derived from the business's stated goal, with a justified one-page or multi-page decision.",
+        excellent:
+          "Section emphasis derived from the business's stated goal, with a justified one-page or multi-page decision.",
       },
       {
         criterion: "Hero",
         passing: "Has a hero.",
-        excellent: "States what, for whom and the next step in plain words, uses min-height, and links a specific-action button to WhatsApp.",
+        excellent:
+          "States what, for whom and the next step in plain words, uses min-height, and links a specific-action button to WhatsApp.",
       },
       {
         criterion: "Conversion content",
         passing: "Services and about are present.",
-        excellent: "Specific service descriptions with starting prices, a published price table, and a short about aimed at customer confidence.",
+        excellent:
+          "Specific service descriptions with starting prices, a published price table, and a short about aimed at customer confidence.",
       },
       {
         criterion: "Trust",
         passing: "Has testimonials or a gallery.",
-        excellent: "Specific attributable testimonials describing outcomes, real work rather than stock imagery, compressed images with real alt text.",
+        excellent:
+          "Specific attributable testimonials describing outcomes, real work rather than stock imagery, compressed images with real alt text.",
       },
       {
         criterion: "Contact",
         passing: "Has contact details.",
-        excellent: "WhatsApp and click-to-call repeated in header, contact and footer, a properly built form with a tested submission target, plus hours and service area.",
+        excellent:
+          "WhatsApp and click-to-call repeated in header, contact and footer, a properly built form with a tested submission target, plus hours and service area.",
       },
     ],
     faqs: [
@@ -540,7 +613,7 @@ export const webDesignLessonsB: Record<string, SessionLecture> = {
       {
         heading: "The viewport, and why phones lie by default",
         body: [
-          "Without `<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">` a phone does not use its real width. It assumes the page was built for a desktop, renders it at around 980 pixels wide, and shrinks the whole thing to fit — which is why an old website appears tiny on a phone and requires pinch-zooming to read. That tag tells the browser to use the device's actual width, and it is the precondition for every other responsive technique. Missing it means your media queries never fire, because the browser believes it is 980 pixels wide.",
+          'Without `<meta name="viewport" content="width=device-width, initial-scale=1">` a phone does not use its real width. It assumes the page was built for a desktop, renders it at around 980 pixels wide, and shrinks the whole thing to fit — which is why an old website appears tiny on a phone and requires pinch-zooming to read. That tag tells the browser to use the device\'s actual width, and it is the precondition for every other responsive technique. Missing it means your media queries never fire, because the browser believes it is 980 pixels wide.',
           "Understand also that a phone's **CSS pixel width** is not its physical pixel count. A phone with a 1080-pixel-wide screen typically reports about 360 to 412 CSS pixels, because of its pixel density. This is why you design against widths like 360, 390 and 412 rather than 1080, and why testing in the dev tools device toolbar — which reports CSS pixels — is meaningful. The common working widths to test are roughly 360 (small Android), 390 (iPhone), 412 (large Android), 768 (tablet) and 1280 and up (desktop).",
           "The Nigerian context sharpens this: the overwhelming majority of visitors arrive on a phone, often on mobile data, often on a mid-range Android at the narrower end of that range. A site designed for a desktop first and adapted afterwards will fail precisely where the customers are. This is why mobile-first is the correct method here rather than a preference.",
         ],
@@ -566,7 +639,7 @@ export const webDesignLessonsB: Record<string, SessionLecture> = {
         body: [
           "A four-megabyte hero photograph served to a phone on mobile data is a lost visitor, and it is one of the most common performance failures on Nigerian business sites. Three techniques, in order of importance. First, **always** set `img { max-width: 100%; height: auto }` so no image can overflow its container — without it, one large image creates a horizontally scrolling page, which is an immediate usability failure.",
           "Second, **compress and resize before uploading**. Resize to the largest size you will display — usually no more than about 1600 pixels wide for a full-width hero — and compress; the visual difference is nil and the file size difference is often tenfold. This one habit matters more than any markup cleverness.",
-          "Third, where a genuinely large image must be served responsively, use **`srcset`**, which offers the browser several sizes and lets it choose based on the screen: `srcset=\"hero-600.jpg 600w, hero-1200.jpg 1200w\"` with a `sizes` attribute describing the displayed width. The browser picks the smallest sufficient file. This is worth doing for a hero image on a content-heavy site, but it is not a substitute for compressing in the first place.",
+          'Third, where a genuinely large image must be served responsively, use **`srcset`**, which offers the browser several sizes and lets it choose based on the screen: `srcset="hero-600.jpg 600w, hero-1200.jpg 1200w"` with a `sizes` attribute describing the displayed width. The browser picks the smallest sufficient file. This is worth doing for a hero image on a content-heavy site, but it is not a substitute for compressing in the first place.',
         ],
       },
       {
@@ -703,14 +776,46 @@ export const webDesignLessonsB: Record<string, SessionLecture> = {
       "Test on a real phone over mobile data before every delivery and record the load time. It is the single check that most reliably predicts whether a client's customers will actually see the site you built.",
     ],
     vocabulary: [
-      { term: "Viewport meta tag", meaning: "The tag telling a phone to use its real width. Without it, media queries never fire." },
-      { term: "CSS pixel", meaning: "The width a device reports to CSS, typically 360–412 on a phone regardless of its physical pixel count." },
-      { term: "Media query", meaning: "CSS that applies only when a condition such as a minimum width holds. The mechanism behind responsiveness." },
-      { term: "Content-driven breakpoint", meaning: "A width chosen because the content breaks there, rather than because a device has that width." },
-      { term: "Mobile first", meaning: "Writing base CSS for the narrowest screen and enhancing upward with min-width queries." },
-      { term: "clamp()", meaning: "A fluid value with a minimum and maximum, such as clamp(1.75rem, 4vw, 3rem). Smooth scaling without queries." },
-      { term: "srcset", meaning: "An attribute offering the browser several image sizes so it can choose the smallest sufficient one." },
-      { term: "Touch target", meaning: "A tappable element, which should be at least about 44×44 CSS pixels with space around it." },
+      {
+        term: "Viewport meta tag",
+        meaning:
+          "The tag telling a phone to use its real width. Without it, media queries never fire.",
+      },
+      {
+        term: "CSS pixel",
+        meaning:
+          "The width a device reports to CSS, typically 360–412 on a phone regardless of its physical pixel count.",
+      },
+      {
+        term: "Media query",
+        meaning:
+          "CSS that applies only when a condition such as a minimum width holds. The mechanism behind responsiveness.",
+      },
+      {
+        term: "Content-driven breakpoint",
+        meaning:
+          "A width chosen because the content breaks there, rather than because a device has that width.",
+      },
+      {
+        term: "Mobile first",
+        meaning:
+          "Writing base CSS for the narrowest screen and enhancing upward with min-width queries.",
+      },
+      {
+        term: "clamp()",
+        meaning:
+          "A fluid value with a minimum and maximum, such as clamp(1.75rem, 4vw, 3rem). Smooth scaling without queries.",
+      },
+      {
+        term: "srcset",
+        meaning:
+          "An attribute offering the browser several image sizes so it can choose the smallest sufficient one.",
+      },
+      {
+        term: "Touch target",
+        meaning:
+          "A tappable element, which should be at least about 44×44 CSS pixels with space around it.",
+      },
     ],
     homework: [
       {
@@ -738,27 +843,32 @@ export const webDesignLessonsB: Record<string, SessionLecture> = {
       {
         criterion: "Foundation",
         passing: "The page works on a phone.",
-        excellent: "Correct viewport tag, global img max-width rule, and no horizontal scrolling at 360 pixels.",
+        excellent:
+          "Correct viewport tag, global img max-width rule, and no horizontal scrolling at 360 pixels.",
       },
       {
         criterion: "Breakpoints",
         passing: "Uses media queries.",
-        excellent: "Three or four content-driven breakpoints chosen by watching the content break, with min-width queries enhancing a mobile base.",
+        excellent:
+          "Three or four content-driven breakpoints chosen by watching the content break, with min-width queries enhancing a mobile base.",
       },
       {
         criterion: "Fluid technique",
         passing: "The layout adapts.",
-        excellent: "Percentages, fr, auto-fit Grid and clamp() used in place of avoidable queries, with vw always bounded by a rem floor.",
+        excellent:
+          "Percentages, fr, auto-fit Grid and clamp() used in place of avoidable queries, with vw always bounded by a rem floor.",
       },
       {
         criterion: "Images",
         passing: "Images display correctly.",
-        excellent: "Every image compressed and resized to its displayed size, the hero using srcset, and the Network panel confirming the smaller file loads on a narrow screen.",
+        excellent:
+          "Every image compressed and resized to its displayed size, the hero using srcset, and the Network panel confirming the smaller file loads on a narrow screen.",
       },
       {
         criterion: "Real-device testing",
         passing: "Checked in the device toolbar.",
-        excellent: "Tested on a real phone over mobile data with load time recorded, every link tapped, the form submitted, and all tap targets at least 44 pixels.",
+        excellent:
+          "Tested on a real phone over mobile data with load time recorded, every link tapped, the form submitted, and all tap targets at least 44 pixels.",
       },
     ],
     faqs: [
