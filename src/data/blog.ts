@@ -3606,7 +3606,7 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A short bullet list in a word processor on a laptop.",
     body: [
       p(
-        "A paragraph is a thought. A list is a set of things or a set of steps. People make lists with a hyphen and a hope, then add a line, then watch the hyphens wander. Word already knows lists. A dot — a bullet — means these items are a pile, not a sequence. A number means do this, then that. Mixing them is how a recipe becomes a shopping list in the middle. This lesson is the two buttons, Tab to nest, and how to leave the list when the thought is over.",
+        "Uzoma typed a cooking list with hyphens, added lines for two days, and by Friday the hyphens had wandered into three different columns and one of them was dancing in the middle of the page. A paragraph is a thought. A list is a set of things or a set of steps. People make lists with a hyphen and a hope, then watch the hyphens wander. Word already knows lists. A dot — a bullet — means these items are a pile, not a sequence. A number means do this, then that. Mixing them is how a recipe becomes a shopping list in the middle. This lesson is the two buttons, Tab to nest, and how to leave the list when the thought is over.",
       ),
       p(
         "Type a line. On the Home ribbon, the dots button is bullets, the 123 button is numbers. Click one. Enter makes the next item. Type. Enter. When the list is finished, Enter on an empty item, or Enter twice — you should be back in ordinary paragraphs. If you stay trapped in dots, click the same button again to switch it off. That is the lamp, not a ghost.",
@@ -3618,10 +3618,10 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("Numbers, nested lists, and Tab"),
       p(
-        "Numbers restart if you make two lists with a paragraph between them. That is correct. If you want 4 after a break, right-click the number, Continue numbering — when you mean it. If the numbers go 1, 1, 1, you have three lists, not one. Select them, click Numbering once. For steps — how to pay fees — use numbers. For what to bring — card, biro, passport photograph — use bullets.",
+        "Numbers restart if you make two lists with a paragraph between them. That is correct. If you want 4 after a break, right-click the number, Continue numbering — when you mean it. If the numbers go 1, 1, 1, you have three lists, not one. Select them, click Numbering once. And which button belongs to which thought? For steps — how to pay fees, first the bank, then the market — use numbers. For what to bring — card, biro, passport photograph — use bullets. A numbered list of things with no order makes people search for a sequence that was never there.",
       ),
       p(
-        "Tab at the start of an item nests it under the one above, a smaller pile. Shift+Tab climbs out. That is how “bring” has “two copies of the receipt” underneath. Do not nest three deep in a letter. A letter is not a legal tree. One nest is plenty. Space-bar indent is the cousin of Space-bar columns. It will break when the font changes.",
+        "Then the storeys. Press Tab at the start of an item and it steps inwards as the child of the one above; Shift and Tab walks it back out. That is how bring has two copies of the receipt underneath it, and how the outline of a real plan looks: errands as the parents, the five places as the children. Do not nest three deep in a letter. A letter is not a legal tree. One nest is plenty. Space-bar indent is the cousin of Space-bar columns. It will break when the font changes. One retrieval before we walk on: you are listing the documents to bring — card, biro, photograph — and under receipt you need two copies. Which key grows the child under the parent? Tab, at the start of the line. Which key walks it back out? Shift and Tab. The list bends to your fingers; it never bends to the space bar.",
       ),
       fig(
         "/images/blog/numbered-list.jpg",
@@ -3634,17 +3634,14 @@ export const blogPosts: BlogPost[] = [
         "Make a numbered list of three steps you actually know — save, print preview, print.",
         "Save as list-practice in Letters. PDF if you will send it.",
       ]),
-      h2("The Tab key, and the list that leans inward"),
+      h2("Inboxes, phones, and the shape that fits"),
       p(
-        "A list can have storeys. Press Tab at the start of a line and the item steps inwards as the child of the one above; Shift and Tab walks it back out. That is how the outline of a real plan looks: errands as the parents, the five places as the children. Numbers for steps that must happen in order — first the bank, then the market. Dots for things that are members of a pile — the documents to bring. Mixed signals confuse readers quietly: a numbered list of things with no order makes people search for a sequence that was never there.",
+        "Email and many websites carry the same two buttons on their toolbars, working just as in Word. WhatsApp is smaller but kinder than people think: type one and a full stop at the start of a line and it grows a numbered list as you type; a dash grows bullets; a few spaces at the start of the line steps a child inward. What WhatsApp will not do is keep the pretty list when you screenshot it into a document — a photograph of a list is a photograph. For a school, a list in Word, then PDF, still looks like a list on their printer. Do not screenshot a WhatsApp list and call it a document.",
       ),
       p(
-        "In the browser and in WhatsApp the same ideas live in simpler clothes. In a mail or a document in the browser, the list buttons sit on the toolbar and work just as in Word. In WhatsApp, type one and a full stop to grow a numbered list as you type, or a dash for dots; the app indents with a few spaces at the start of the line for the storeys. Lists read faster than paragraphs on a phone screen, and a reply sent as three clear steps is answered three times quicker than three sentences of prose. Choose the shape that carries the meaning. That is the whole art.",
+        "Lists read faster than paragraphs on a phone screen, and a reply sent as three clear steps is answered three times quicker than three sentences of prose. Choose the shape that carries the meaning. That is the whole art.",
       ),
-      h2("On the web, and in WhatsApp"),
-      p(
-        "Email and many websites have the same two buttons. WhatsApp does not. In chat, a hyphen and a line break is all you get, and that is fine for a pocket. For a school, a list in Word, then PDF, still looks like a list on their printer. Do not screenshot a WhatsApp list and call it a document.",
-      ),
+      h2("When a list should not be a list"),
       p(
         "A list that is longer than a thumb is probably a table, or two lists. Fees with amounts belong in a table, as you learned. A list is for names of things and names of steps. When the walker can say them aloud, you are done. When you are decorating with wings and arrows from a clip-art pane, you have left the lesson. Dots or numbers. Then stop.",
       ),
@@ -3720,7 +3717,7 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A Find and Replace box open over a letter on a laptop.",
     body: [
       p(
-        "You wrote March in a letter twelve times, and it is now April. You could hunt with your eyes. Find is search for a lost word inside this page, the way Explorer searches a house. Replace is the same hunt, with a new word in its pocket. Ctrl+F finds. Ctrl+H, in Word, opens Find and Replace. This lesson is the box, the one change, and why Replace all is a generator you start only after you have looked.",
+        "Temitope's ten-page rent notice said March in twelve places, and the month had quietly become April. She began hunting with her eyes, found eleven, missed one, and the landlord found it for her in the corridor. Find is search for a lost word inside this page, the way Explorer searches a house. Replace is the same hunt, with a new word in its pocket. Ctrl+F finds. Ctrl+H, in Word, opens Find and Replace. This lesson is the box, the one change, and why Replace all is a generator you start only after you have looked.",
       ),
       p(
         "Ctrl+F. A small field. Type the word. Enter, or the arrows, walks to the next. The page jumps. That is enough when you only need to see whether you used a name. In a long PDF, the reader has the same box. In a browser, Ctrl+F finds on this page, not on the whole internet. People forget that and think Google is broken because Find cannot see the next site.",
@@ -3732,10 +3729,10 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("One, then maybe all"),
       p(
-        "In Word, Ctrl+H. Find what: March. Replace with: April. Replace — once — changes the one that is highlighted. Look. If that March was “the Marching band,” you have just made “the Apriling band.” Undo. That is why the next button is not Replace all until you have seen two or three. Match case if you only want March, not march. Whole word if you do not want to cut March out of Marching.",
+        "In Word, Ctrl+H. Find what: March. Replace with: April. Replace — once — changes the one that is highlighted. Look. If that March was the Marching band, you have just made the Apriling band. Undo. That is why the next button is not Replace all until you have seen two or three. And the two little cages guard the innocent: Match case if you only want March, not march. Whole word if you do not want to cut March out of Marching. The pen is powerful. The eraser is instant. Use both without fear.",
       ),
       p(
-        "Replace all on a name is how Chidi becomes Chidioma in the middle of Chidinma, or how a school’s name eats a similar syllable in a street. If the letter is short, change by hand. The factory is for a long report you have already sampled. Ctrl+Z undoes a Replace all in Word if you do it immediately. In a web form, it may not. In a spreadsheet, Replace all can rewrite a column of codes. Save first, as always.",
+        "Always replace one first and look at the change in its sentence. Then ask whether the word you are changing could be innocent somewhere else in the document — and in a long letter, it usually can. Mrs Adeyemi appears in the body as the person you are writing to and in the footer as the person who typed the letter; Replace All with Mrs Okoro makes one of them a liar. The best uses of Replace are unglamorous and safe: a date that moved, a figure that was corrected, a phone number that changed, the name of a school spelled the wrong way forty times in a list. Fixing the forst of a hundred errors is what the tool was built for.",
       ),
       fig(
         "/images/blog/replace-all.jpg",
@@ -3748,19 +3745,19 @@ export const blogPosts: BlogPost[] = [
         "In the browser, Ctrl+F on this academy site for the word computer. Count a few. That is this page only.",
         "Never Replace all on a live form you cannot undo. Copy the text out, or go slowly.",
       ]),
-      h2("Replace one, then maybe all"),
+      h2("The factory, and when to close it"),
       p(
-        "Replace is Find with a pen in its hand, and the pen should write one signature before it signs a hundred. Always replace one first and look at the change in its sentence. Then ask whether the word you are changing could be innocent somewhere else in the document — and in a long letter, it usually can. Mrs Adeyemi appears in the body as the person you are writing to and in the footer as the person who typed the letter; Replace All with Mrs Okoro makes one of them a liar. The whole word option narrows the net, and the Match case option keeps small words out of big ones.",
+        "Replace all on a name is how Chidi becomes Chidioma in the middle of Chidinma, or how a school's name eats a similar syllable in a street. If the letter is short, change by hand. The factory is for a long report you have already sampled — two or three single replaces walked first, then and only then the lever. Ctrl+Z undoes a Replace all in Word if you do it immediately. In a web form, it may not. In a spreadsheet, Replace all can rewrite a column of codes. Save first, as always.",
       ),
       p(
-        "The best uses of Replace are unglamorous and safe: a date that moved, a figure that was corrected, a phone number that changed, the name of a school spelled the wrong way forty times in a list. Fixing the forst of a hundred errors is what the tool was built for. And remember the undo key waits faithfully at the top of the keyboard — if Replace All rewrites something you did not mean, Ctrl and Z walks the whole document back one step at a time. The pen is powerful. The eraser is instant. Use both without fear.",
+        "It could happen to you on a Friday: one Replace All on a landlord's name, and the footer suddenly claims the tenant typed the letter. The undo key waits faithfully at the top of the keyboard — Ctrl and Z walks the whole document back one step at a time — but the better habit is upstream: sample, then the tap. You already know that manner from printing, from mail merge, from the virus banner. Look. Then act. The box will wait.",
       ),
       h2("What Find cannot see"),
       p(
-        "It cannot see inside a photograph of a letter. It cannot see a word you spelled three ways. It cannot see “March” if you typed “march” and Match case is on. If you cannot find a sentence you remember, you may be in another window — Alt+Tab — or in an older Save As. Find searches this file, not the house. Explorer searches the house. Two clerks, two rooms.",
+        "It cannot see inside a photograph of a letter. It cannot see a word you spelled three ways. It cannot see March if you typed march and Match case is on. If you cannot find a sentence you remember, you may be in another window — Alt+Tab — or in an older Save As. Find searches this file, not the house. Explorer searches the house. Two clerks, two rooms.",
       ),
       p(
-        "Used gently, Replace is how a wrong phone number leaves a ten-page notice without ten hunts. Used as a panic, it is how a letter becomes nonsense in one click. Sample, then the tap. You already know that manners from printing, from mail merge, from the virus banner. Look. Then act. The box will wait.",
+        "Used gently, Replace is how a wrong phone number leaves a ten-page notice without ten hunts. Used as a panic, it is how a letter becomes nonsense in one click. Sample, then the tap. Then act. The box will wait.",
       ),
     ],
   },
@@ -5723,7 +5720,7 @@ export const blogPosts: BlogPost[] = [
       "A left little finger pressing the Ctrl key while another finger presses S on a keyboard.",
     body: [
       p(
-        "By now your hands own three: Ctrl and C, Ctrl and V, and the undo that rescued the paragraph you did not mean to kill. Alt and Tab walks you through open windows. That is a respectable number. It is also where most people stop, and then spend ten years clicking through menus for the five acts they perform every day. This lesson adds six more keystrokes. Then it asks you to stop. Collecting shortcuts like proverbs is not skill. Using six until they are reflexes is.",
+        "By now your hands own three: Ctrl and C, Ctrl and V, and the undo that rescued the paragraph you did not mean to kill. Alt and Tab walks you through open windows. That is a respectable number. It is also where most people stop, and then spend ten years clicking through menus for the five acts they perform every day. Ifeoma spent that decade before a computer class told her otherwise — the same six menus, every afternoon, for ten years. This lesson adds six more keystrokes. Then it asks you to stop. Collecting shortcuts like proverbs is not skill. Using six until they are reflexes is.",
       ),
       p(
         "The first is Ctrl and S — save. The light does not send a warning before it goes, and neither does a battery. Save every few minutes and a power cut costs you a paragraph, not an evening. It works in Word, in spreadsheets, in Docs, in almost everything that makes documents. In a browser it offers to save the page itself, which you will rarely need — so the rule is simple: Ctrl and S belongs to programs, not to pages.",
@@ -5757,11 +5754,11 @@ export const blogPosts: BlogPost[] = [
         "Muscle memory is a slow cook and a permanent meal. The six keys will feel like ceremony for about ten days — the hand reaching for the mouse, the mind reciting Ctrl and S like a rhyme — and then one evening the hands will do it while you are thinking about the letter's content. That is the moment the skill becomes furniture. Speed arrives the same uninvited way; nobody types shortcuts fast by trying. They type them slowly in real work until the road is worn in. The slowness of the first fortnight is not failure. It is the setting time of the concrete.",
       ),
       p(
-        "Practice the six inside real errands, not drills. Save the half-written letter before you answer the door. Find the figure instead of scrolling the page. Select all when the whole document must change its font. Close the tab instead of letting twenty stack up. The errands are the practice, and the proof arrives quietly in a month: the work gets done in fewer minutes and the machine feels like a tool instead of a room you visit. Six more keys. Then rest. The collection plate has gone around long enough.",
+        "Practice the six inside real errands, not drills. Save the half-written letter before you answer the door. Find the figure instead of scrolling the page. Select all when the whole document must change its font. Close the tab instead of letting twenty stack up. The errands are the practice, and the proof arrives quietly in a month: the work gets done in fewer minutes and the machine feels like a tool instead of a room you visit.",
       ),
       h2("Then stop"),
       p(
-        "There are hundreds more, and one day you will meet Ctrl and P for printing, and be pleased it was waiting. But six is a year's worth. The hands learn by repetition, not by lists, and a shortcut you use weekly is worth fifty you memorised in one proud evening. Close the list. Go and use the six.",
+        "There are hundreds more, and one day you will meet Ctrl and P for printing, and be pleased it was waiting. But six is a year's worth. The hands learn by repetition, not by lists, and a shortcut you use weekly is worth fifty you memorised in one proud evening. Six more keys. Then rest. The collection plate has gone around long enough. Close the list. Go and use the six.",
       ),
     ],
   },
@@ -5833,10 +5830,10 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A man speaking toward his phone while words appear on the screen as text.",
     body: [
       p(
-        "On every good keyboard, beside the space bar, sits a small microphone. It is not decoration. Tap it, speak at your normal pace, and the words land on the screen as they leave you. This is voice typing, and it is not cheating. The letter still needs your judgement, the message still needs your manners; only the writing by thumb is replaced. For a long message, a first draft, or tired eyes late at night, it is the fastest pen in the house.",
+        "On every good keyboard, beside the space bar, sits a small microphone. It is not decoration. Tap it, speak at your normal pace, and the words land on the screen as they leave you. This is voice typing, and it is not cheating. The letter still needs your judgement, the message still needs your manners; only the writing by thumb is replaced. Emem dictates the first draft of every letter now while she plates the evening food, and edits it like clay before anything sends. For a long message, a first draft, or tired eyes late at night, it is the fastest pen in the house.",
       ),
       p(
-        "Punctuation can be spoken. Say full stop and one arrives; comma, question mark, new paragraph — the decent keyboards obey. On the computer, the browser carries the same gift: in Google Docs, look under Tools for Voice typing, and speak while it listens. Windows keeps its own under Windows and H. The accent is not a wall — Nigerian English is heard well by the big keyboards. Clarity beats loudness. Speak the way you would speak to a respectful junior: plainly, at your own pace, without shouting.",
+        "The microphone understands more than words — it understands the punctuation you say out loud. Say full stop and one appears; say new paragraph and the line breaks; say comma, question mark, open bracket — in most languages it knows. On the computer, the same gift sits in Google Docs under Tools, Voice typing, and in Windows behind the Windows key and H. The trick is to speak the way a letter is written: unhurried, in complete thoughts, saying the punctuation rather than gesturing at it. Ten minutes of practice and your dictated letters arrive with the bones of grammar already standing. The accent is not a wall — Nigerian English is heard well by the big keyboards. Clarity beats loudness. Speak the way you would speak to a respectful junior: plainly, at your own pace, without shouting.",
       ),
       fig(
         "/images/blog/voice-typing-mic.jpg",
@@ -5845,7 +5842,7 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("Where it shines, and where it fails"),
       p(
-        "It shines on length. The two-finger typist writes a paragraph in eight minutes; the voice writes it in two and spends the rest on repairs. It shines on drafts — say the messy first version, then edit with your hands. It fails in noise: a generator, a market, a bus park will sprinkle strangers' words into the sentence. It fails with several speakers; it writes whoever is loudest. And it sometimes stumbles on a heavy Pidgin phrase or an unfamiliar name, which you then repair by thumb. So the rule stands: dictate in quiet, review before sending. The machine types what it hears. You remain the owner of what is sent.",
+        "It shines on length. The two-finger typist writes a paragraph in eight minutes; the voice writes it in two and spends the rest on repairs. It shines on drafts — say the messy first version, then edit with your hands. It fails in noise: a generator, a market, a bus park will sprinkle strangers' words into the sentence. It fails with several speakers; it writes whoever is loudest. And it sometimes stumbles on a heavy Pidgin phrase or an unfamiliar name, which you then repair by thumb. So the rule stands: dictate in quiet, review before sending. It looks like cheating because it is fast. It is actually the same division of labour as every tool in these notes — the machine carries the weight, the person carries the meaning. The machine types what it hears. You remain the owner of what is sent.",
       ),
       p(
         "One line is drawn hard. Do not speak passwords, PINs, card numbers, or the codes that die — the OTPs you met in their own lesson. A code said aloud in a quiet room is still said aloud. The keypad exists precisely for secrets. Let the fingers carry those.",
@@ -5861,16 +5858,12 @@ export const blogPosts: BlogPost[] = [
         "In Google Docs, open Tools, then Voice typing, and dictate one paragraph of anything.",
         "Practise the hard line: the next OTP goes into the keypad with your fingers, never out of your mouth.",
       ]),
-      h2("The punctuation you say out loud"),
+      h2("The room, and the figures"),
       p(
-        "The microphone understands more than words. Say full stop and one appears; say new paragraph and the line breaks; say comma, question mark, open bracket — the machine punctuates as you speak, in most languages it knows. This turns the tool from a novelty into a genuine dictaphone for letters. The trick is to speak the way a letter is written: unhurried, in complete thoughts, saying the punctuation rather than gesturing at it. Ten minutes of practice and your dictated letters arrive with the bones of grammar already standing.",
+        "Choose the room the way you would for a phone call. The microphone hears the generator, the television, the market — and it hears your private business as well, so do not dictate the bank letter in the middle of a shop. Speak the figures slowly; nothing fails like a twenty-digit account number at speed. And in English as in your language, watch the two words the machine loves to swap: figures and names. It will hear a cousin where you said a name, a sale where you said Sade. Read the draft's first sentence and its every number before anything leaves your hands. Emem reads every dictated letter twice — once for the names, once for the figures — and says the two minutes saved by the voice are repaid with interest by the two minutes spent listening back.",
       ),
       p(
-        "Choose the room the way you would for a phone call. The microphone hears the generator, the television, the market — and it hears your private business as well, so do not dictate the bank letter in the middle of a shop. Speak the figures slowly; nothing fails like a twenty-digit account number at speed. And in English as in your language, watch the two words the machine loves to swap: figures and names. Read the draft's first sentence and its every number before anything leaves your hands. The microphone gives the thumbs a holiday. The eyes still work on Friday.",
-      ),
-      h2("A draft, not a finished letter"),
-      p(
-        "Treat dictated text as clay, not pottery. Read it before you send it — the machine will have heard a cousin where you said a name, a sale where you said Sade. Fix, then send. People who trust the first hearing spend their evening on apologies; people who read once send like people who write. The microphone has given your thumbs a holiday. It has not taken over the letter.",
+        "Treat dictated text as clay, not pottery. Read it before you send it. Fix, then send. People who trust the first hearing spend their evening on apologies; people who read once send like people who write. The microphone has given your thumbs a holiday. It has not taken over the letter.",
       ),
     ],
   },
@@ -7226,7 +7219,7 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "An engineer at a whiteboard covered in diagrams, a laptop open beside them.",
     body: [
       p(
-        "Every program you have met on this shelf was instructed: a person wrote the rules — if the password is wrong three times, lock; if the balance is less than the withdrawal, refuse. A machine learning engineer builds programs the other way round: instead of writing rules, they show the machine examples and let it find the rules. Ten thousand past transactions marked honest and fraudulent, shown again and again, until the machine can face an eleventh transaction it has never seen and answer with its own judgement. That is machine learning — teaching by example — and the machine learning engineer is the teacher who prepares the lessons, runs the classes, and checks the examinations.",
+        "Every program you have met on this shelf was instructed: a person wrote the rules — if the password is wrong three times, lock; if the balance is less than the withdrawal, refuse. A machine learning engineer builds programs the other way round: instead of writing rules, they show the machine examples and let it find the rules. Ten thousand past transactions marked honest and fraudulent, shown again and again, until the machine can face an eleventh transaction it has never seen and answer with its own judgement. That is machine learning — teaching by example — and the machine learning engineer is the teacher who prepares the lessons, runs the classes, and checks the examinations. Adesewa cleans bank spreadsheets for a living and laughed when she heard the title: so my afternoon job is half of the famous one? It is more than half.",
       ),
       p(
         "The romantic version has the engineer inventing clever minds all day. The honest version: most of the work is preparing the examples. Data arrives messy — the spreadsheet lesson's world at industrial scale: missing values, mistyped names, the same customer entered three ways — and a model fed on dirt learns dirt faithfully. So the days go to cleaning and arranging data, choosing what the machine should look at, training — running the class — and then examining honestly: the model scores ninety-four percent, but does it score ninety-four percent because it learned, or because it memorised, or because the examples themselves were lopsided? A model that has only ever seen Lagos addresses will stumble in Sokoto, and nobody will tell you — the examination must catch it first. Then the last mile: deployment, putting the trained model behind a door where the bank's systems can ask it questions in real time, and watching it after, because roads change and a model that rode yesterday's roads drifts.",
@@ -7812,7 +7805,7 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A young freelancer and a shop owner shaking hands over a desk with a laptop on it.",
     body: [
       p(
-        "Everything this shelf built — the skills, the prices, the portfolio — now meets its first customer. Walk one small job the whole way, because the first paid job is not really about the money. It is about learning that the road exists, end to end, and that you can walk it without disappearing. Follow a job: the owner of a pharmacy needs a one-page site; a friend showed her your page — the portfolio lesson already working while you slept.",
+        "Everything this shelf built — the skills, the prices, the portfolio — now meets its first customer. Walk one small job the whole way, because the first paid job is not really about the money. It is about learning that the road exists, end to end, and that you can walk it without disappearing. Follow Yakubu's job: the owner of a pharmacy needs a one-page site; a friend showed her your page — the portfolio lesson already working while you slept.",
       ),
       p(
         "The enquiry arrives, and the first meeting is listening: what does the business need the page to do — answer questions, take orders, be findable? Write the brief back to her in her own words: you said the phone never stops; the page will answer the ten common questions so it stops less. Then the quote, written, from the pricing lesson: what, when, how much, revisions bounded, and a deposit before work begins — half, into your account, seen in your own app, the bank lesson's confirm, before a single line of work. The deposit is not distrust. It is the shape of seriousness, hers and yours.",
@@ -7824,7 +7817,7 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("The work, and the discipline of updates"),
       p(
-        "Deliver slightly early of what you promised, never slightly late — a first client forgives a rough edge and never forgives a missed Tuesday. And send updates without being chased: the three-sentence message every few days — what is done, what is next, what I need from you — is the professional's heartbeat, the remote lesson's practice worn at home. When the site is ready, walk her through it on her own phone, in her own shop, and fix the two things the real thumbs reveal. Hand over everything: the logins, the files, the receipts for the domain — it is hers; you built it, but the shop owns its own name.",
+        "Deliver slightly early of what you promised, never slightly late — a first client forgives a rough edge and never forgives a missed Tuesday. And send updates without being chased: the three-sentence message every few days — what is done, what is next, what I need from you — is the professional's heartbeat, the remote lesson's practice worn at home. Clients renew people who talk first. When the site is ready, walk her through it on her own phone, in her own shop, and fix the two things the real thumbs reveal. Hand over everything: the logins, the files, the receipts for the domain — it is hers; you built it, but the shop owns its own name.",
       ),
       p(
         "Then the invoice — a document, not a chat message: your name, her business, what was delivered, the balance, the account, the due date. Paid, thanked, receipted. And now the ask that separates a job from a beginning: the witness line, requested while she is still pleased — one sentence for your portfolio, may I show this work? — and the referral, asked as plainly: if anybody needs this, my name is in your mouth. One job walked the whole way teaches more than ten courses, and it leaves behind the only two things that matter: proof and a person who will vouch for you. The next client is already in her market.",
@@ -7842,7 +7835,7 @@ export const blogPosts: BlogPost[] = [
       ]),
       h2("What the first job actually pays"),
       p(
-        "The fee will be modest, and that is correct — you were buying proof, and the proof is now yours. But count the true wages: a finished delivery in the folder, a witness line beside it, a referral walking the street with your name, and the quiet knowledge that the whole road can be walked without fear. Every freelancer you admire began exactly here, at one small job done completely. The second one is easier. The tenth one sets prices.",
+        "The fee will be modest, and that is correct — you were buying proof, and the proof is now yours. But count the true wages: a finished delivery in the folder, a witness line beside it, a referral walking the street with your name, and the quiet knowledge that the whole road can be walked without fear. Yakubu's pharmacy paid for two weeks of data and a pair of sandals; the referral paid for the rest of the quarter. Every freelancer you admire began exactly here, at one small job done completely. The second one is easier. The tenth one sets prices.",
       ),
     ],
   },
@@ -8413,7 +8406,7 @@ export const blogPosts: BlogPost[] = [
       "A job seeker tailoring a CV on a laptop, the job advert open on a phone beside the keyboard.",
     body: [
       p(
-        "The one-page honest CV of lesson seventy-five got its facts straight. This lesson gets it read — because between your CV and the employer's eyes now stands a machine. Big companies and job portals feed every CV into software that scans it for skills, ranks it, and shows a human only the top of the pile. The software — people call it an ATS, an applicant tracking system — is not clever. That is the tragedy and the opportunity: it rewards the plain, the ordered and the matching, and it quietly kills the beautiful, the creative and the strange.",
+        "The honest one-page CV lesson got its facts straight. This lesson gets it read — because between your CV and the employer's eyes now stands a machine. Nasiru sent forty beautiful CVs into the portals and heard nothing, then rebuilt the page in one boring column and had two calls in the same week. Big companies and job portals feed every CV into software that scans it for skills, ranks it, and shows a human only the top of the pile. The software — people call it an ATS, an applicant tracking system — is not clever. That is the tragedy and the opportunity: it rewards the plain, the ordered and the matching, and it quietly kills the beautiful, the creative and the strange.",
       ),
       p(
         "So the format that survives is boring, and boring is the strategy. One column, no text boxes, no tables, no photographs in odd corners — all of those scramble a parser the way a wrong file extension scrambles the open-with lesson. Standard headings the software recognises: Summary, Work Experience, Education, Skills, in that order. Dates beside every role in one honest pattern. A plain font, generous spacing, one page for the first decade of your life. Save as PDF, named firstname-lastname-cv, and your contact details as ordinary text — an email address and a phone number the machine can copy, not a designer's graphic the machine cannot read.",
@@ -8428,7 +8421,7 @@ export const blogPosts: BlogPost[] = [
         "The scanner matches words, and the words it is matching are sitting in the advert. If the advert says customer service, the CV says customer service — not people management, not client relations, however truer your phrase may be. Read the advert twice, list its plain skill words, and carry the ones you truthfully own into your Skills and Experience lines, in the advert's own language. This is not deception; it is translation. The lie — claiming a skill you cannot demonstrate in the room — is the old tells again, and the interview is where it dies. But the honest absence — owning the skill and naming it in a word the scanner never sees — dies earlier, silently, unseen by any human who might have loved your experience.",
       ),
       p(
-        "Then the tailoring, which is where the two-sentences lesson grows into a method: for each serious application, adjust the summary line and reorder the experience so the most relevant role reads first — fifteen minutes with the advert open on the phone beside the keyboard. Sprayed CVs read like sprays; tailored ones read like answers. The upload lesson then carries it through the portal door: right size, the bar finished, the tick screenshotted. The CV that gets read was never the prettiest. It was the one a machine could parse, a scanner could match, and a tired human could trust in ten seconds. Boring, matched, true — the three secrets of the paper that opens the room.",
+        "Then the tailoring, which is where the two-sentences lesson grows into a method: for each serious application, adjust the summary line and reorder the experience so the most relevant role reads first — fifteen minutes with the advert open on the phone beside the keyboard. Sprayed CVs read like sprays; tailored ones read like answers. The upload lesson then carries it through the portal door: right size, the bar finished, the tick screenshotted. Where would you look first when a portal rejects a file — the design, or the file name and the headings? The headings. The CV that gets read was never the prettiest. It was the one a machine could parse, a scanner could match, and a tired human could trust in ten seconds.",
       ),
       fig(
         "/images/blog/plain-cv-screen.jpg",
@@ -8443,7 +8436,7 @@ export const blogPosts: BlogPost[] = [
       ]),
       h2("After the robot, the human"),
       p(
-        "Everything the scanner does, it does to decide whose ten seconds of human attention you get. Win them, and the old laws resume: honesty in the room, proof in the portfolio, the manner of the guest. The machine is not your enemy. It is the first gateman of lesson one hundred and twenty-four — dull, fair, and completely readable, now that somebody has finally introduced you.",
+        "Everything the scanner does, it does to decide whose ten seconds of human attention you get. Win them, and the old laws resume: honesty in the room, proof in the portfolio, the manner of the guest. Boring, matched, true — the three secrets of the paper that opens the room. The machine is not your enemy. It is the first gateman you have already met — dull, fair, and completely readable, now that somebody has finally introduced you.",
       ),
     ],
   },
@@ -8975,7 +8968,7 @@ export const blogPosts: BlogPost[] = [
       "A hand covering the ATM keypad while the other types, shoulder and camera protected.",
     body: [
       p(
-        "The queue at the bank's wall on a Friday is its own small nation: umbrellas, expectations, the man counting his notes twice, the machine humming behind the bars. The cash machine carried your money across the country while you slept, and it asks in return for a handful of manners — not because the machine has feelings, but because the wall has watchers. This lesson is the whole craft of standing there, and of its market cousin, the POS.",
+        "The queue at the bank's wall on a Friday is its own small nation: umbrellas, expectations, the man counting his notes twice, the machine humming behind the bars. Omowumi has joined that nation every month-end for six years, and she has never once had a story to tell about it — which, she says, is the entire skill. The cash machine carried your money across the country while you slept, and it asks in return for a handful of manners — not because the machine has feelings, but because the wall has watchers. This lesson is the whole craft of standing there, and of its market cousin, the POS.",
       ),
       p(
         "Before the card goes in: the slot. A thief's favourite trick is a sleeve that sits over the real slot and copies the card as it passes — a false mouth on the machine. The test is childish and effective: put a finger on the card slot and wiggle it firmly. A real slot is part of the machine and does not move; a sleeve shifts, lifts, or feels loose like a tooth. Anything that wiggles means you do not put your card in — you find another machine, and if the mood takes you, you tell the guard, whose whole day is improved by the news. The same inspection applies to anything above the keypad that looks newly attached; the machine's honest parts are flush and boring, and boring is what you want.",
@@ -10524,7 +10517,7 @@ export const blogPosts: BlogPost[] = [
       "A young technician listening carefully to a woman across a wooden table, notebook and pen in his hand.",
     body: [
       p(
-        "The trade begins in the ears. A person arrives carrying a machine and a sentence — the laptop has refused, the phone is hanging, the thing is not going — and the amateur leaps at the machine while the professional lets the sentence finish, then lets the story behind the sentence finish too. Ninety percent of faults announce themselves in the first three minutes of undisturbed talking, and the announcement is almost never in the technical words. It is in the timeline: since when. In the boundary: only this file or everything. In the weather: after what happened. Your first tool is the notebook, and your first skill is the patience to fill it before the screwdriver moves.",
+        "The trade begins in the ears. A person arrives carrying a machine and a sentence — the laptop has refused, the phone is hanging, the thing is not going — and the amateur leaps at the machine while the professional lets the sentence finish, then lets the story behind the sentence finish too. Onyinye watched a technician in Aba work for three years and asked him once what he actually did all day; he turned his notebook to her and said, I listen, and I write down what people mean. Ninety percent of faults announce themselves in the first three minutes of undisturbed talking, and the announcement is almost never in the technical words. It is in the timeline: since when. In the boundary: only this file or everything. In the weather: after what happened. Your first tool is the notebook, and your first skill is the patience to fill it before the screwdriver moves.",
       ),
       p(
         "Listening well has a shape. Let them talk to the end without correcting the vocabulary — when somebody says the memory is hanging they mean the machine is slow, and interrupting to define terms only teaches them that you care more about words than about their afternoon. Write down their words in their words. Then reflect the story in one sentence back: so since Tuesday's update, the sound works everywhere except Zoom — is that right? That single sentence is worth more than a hundred diagnostic clicks, because it splits the problem's world in half in the customer's own hearing. And it does something no tool can do. It makes the customer your ally in the diagnosis instead of your audience.",
@@ -10536,7 +10529,7 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("What the story is really saying"),
       p(
-        "Under every complaint sit one of five small animals, and the trained ear recognises which. The change: something was installed, updated, dropped, or spilled, and the fault is the change wearing a costume. The boundary: one file, one app, one corner — which means the machine's heart beats well and one room is sick. The whole: everything is wrong, which is power, storage full, heat, or the slow death of a drive. The intermittent: it comes and goes, which is nearly always heat, a loose cable, or a failing battery — faults with a rhythm you must ask after: at what hour, under what load, hot or cold. And the fifth animal, the one nobody teaches: the misunderstanding, where the machine is healthy and the expectation is sick — the Wi-Fi that is fine and the video call that stutters because the pipe is one megabit wide.",
+        "Under every complaint sit one of five small animals, and the trained ear recognises which. The change: something was installed, updated, dropped, or spilled, and the fault is the change wearing a costume. The boundary: one file, one app, one corner — which means the machine's heart beats well and one room is sick. The whole: everything is wrong, which is power, storage full, heat, or the slow death of a drive. The intermittent: it comes and goes, which is nearly always heat, a loose cable, or a failing battery — faults with a rhythm you must ask after: at what hour, under what load, hot or cold. And the fifth animal, the one nobody teaches: the misunderstanding, where the machine is healthy and the expectation is sick — the Wi-Fi that is fine and the video call that stutters because the pipe is one megabit wide. So which animal is this complaint — my nephew changed something on Saturday and now the whole machine crawls? A change wearing the costume of a whole. Look at Saturday first.",
       ),
       p(
         "Your notebook now collects the five questions' answers without yet knowing it works for them. Since when. What changed. What exactly does it say — and here the professional asks for the words on the screen verbatim, or better, a photograph in the customer's own phone, which they already know how to take. Who else is affected: the office all of them, or this machine alone. What have you already tried — asked with a warm face, because the answer is always a confession and confessions arrive freely only to kind faces. A customer who says I did not touch anything is not lying to you. They are saying that whatever happened felt like weather.",
@@ -10632,7 +10625,7 @@ export const blogPosts: BlogPost[] = [
       "A laptop on a wooden desk at night showing a plain dark glowing screen, a technician's hand on the trackpad.",
     body: [
       p(
-        "There is a sentence in this trade that must be refused every week: just format it. The sentence is not wicked; it is tired, and it has ruined more families' photographs than every virus in the country combined. A machine handed to a technician holds somebody's whole decade — the children's christening, the NYSC photographs, the shop's accounts, the late father's voice notes — and the reinstall erases the decade along with the rat. The professional's pride is the opposite sentence: almost nothing on this machine needs to die. Between the complaint and the nuclear option stand six rooms of repair, and a competent technician walks all six before anyone reaches for the reinstall USB.",
+        "There is a sentence in this trade that must be refused every week: just format it. The sentence is not wicked; it is tired, and it has ruined more families' photographs than every virus in the country combined. Abiola's neighbour had the sentence said over his machine in a roadside shop on a Tuesday afternoon; by evening the christening photographs, the shop's accounts and the late father's voice notes were gone, and only the rat that had lived in the machine was truly evicted. A machine handed to a technician holds somebody's whole decade — and the professional's pride is the opposite sentence: almost nothing on this machine needs to die. Between the complaint and the nuclear option stand six rooms of repair, and a competent technician walks all six before anyone reaches for the reinstall USB.",
       ),
       p(
         "Room one is the honest restart — not sleep, not lid-close, a real restart — because half of all sicknesses are temporary states of exhaustion and clear with one bow. Room two is undoing the change the five questions found: the programme installed on Saturday gets shown out, the update of Tuesday gets rolled back, the new driver returns to its old version. Windows keeps a door for exactly this: Settings, then Update, then the update history, where major updates can be uninstalled like any guest. Room three is the restore point, the machine's own photograph album of its settings — Control Panel, Recovery, Open System Restore — which walks the system's configuration back a week while leaving your files exactly where they live. The restore point is the single most underused repair in the country.",
@@ -10656,7 +10649,7 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("The rescue that must precede everything"),
       p(
-        "One rule sits above all six rooms like the roof over them: before any repair that might stumble, copy what cannot die. Documents, photographs, the mail's attachments, the accounting files, the browser's saved passwords if you can — into the cloud or onto a drive, counted and confirmed open before any surgery begins. This is the backup lesson of the next installments, compressed into one commandment, and it is the wall behind which your reputation sleeps at night. A repair that deletes nothing and a repair that has already rescued everything are both survivable. A repair with no copy under it is a coin toss with a family's decade.",
+        "One rule sits above all six rooms like the roof over them: before any repair that might stumble, copy what cannot die. Documents, photographs, the mail's attachments, the accounting files, the browser's saved passwords if you can — into the cloud or onto a drive, counted and confirmed open before any surgery begins. This is the backup lesson of the next installments, compressed into one commandment, and it is the wall behind which your reputation sleeps at night. Where would you look first if a customer asked you to hurry past the copy? At the roof. The six rooms can wait ten minutes; a photograph cannot wait at all. A repair that deletes nothing and a repair that has already rescued everything are both survivable. A repair with no copy under it is a coin toss with a family's decade.",
       ),
       p(
         "Then, and only then, consider the reinstall — and when you do, the honest reset of the next lesson does it like a professional, with the files already walked home and the customer's blessing in the notebook. Notice what this chapter has really been about. The six rooms are not tricks; they are the visible form of one respect — that the machine is not a box of software but a house of somebody's life, and that the technician's art is to evict the illness while the household keeps living in every room. You will meet colleagues who format on the first day and call it speed. Let them. The phone will ring at your own counter instead, with a referral from the family whose photographs survived.",

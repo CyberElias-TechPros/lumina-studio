@@ -115,7 +115,7 @@ Per lesson, after reconstruction:
 | Pass 2 · batch 17 | Next-worst (122, 4, 14, 52, 142, 118, 21, 109, 202, 132)                | **done — 180 lessons reconstructed total (52 proportion kept; 202 note chapter kept)**                |
 | Pass 2 · batch 18 | Next-worst (10, 42, 68, 70, 74, 75, 92, 111, 166, 201)                  | **done — 190 lessons reconstructed total (201 model prose kept)**                                     |
 | Pass 2 · batch 19 | Next-worst (33, 38, 40, 67, 121, 137, 156, 169, 204, 205)               | **done — 200 lessons reconstructed total (204 and 205 model prose kept)**                             |
-| Pass 2 · batch 20 | Final ten (63, 65, 101, 103, 129, 141, 153, 164, 191, 193)              | next — completes all 210                                                                              |
+| Pass 2 · batch 20 | Final ten (63, 65, 101, 103, 129, 141, 153, 164, 191, 193)              | **done — 210 lessons reconstructed total. Notes corpus complete.**                                    |
 | Figures           | 57 new illustrations                                                    | **done — all 57 generated, all 439 refs resolve**                                                     |
 | Academy lectures  | Same standard, session by session                                       | after the notes                                                                                       |
 
