@@ -3,9 +3,7 @@ import type { AcademyCourse, ClassSession, SessionLecture } from "./types";
 import { microsoftOfficeLessons } from "./lessons/microsoft-office";
 import { microsoftOfficeLessonsB } from "./lessons/microsoft-office-documents";
 import { microsoftOfficeExcelLessons } from "./lessons/microsoft-office-excel";
-import {
-  computerBasicsTypingLessonsA,
-} from "./lessons/computer-basics-typing-a";
+import { computerBasicsTypingLessonsA } from "./lessons/computer-basics-typing-a";
 import { computerBasicsTypingLessonsB } from "./lessons/computer-basics-typing";
 import { dataEntryLessonsA } from "./lessons/data-entry";
 import { dataEntryLessonsB } from "./lessons/data-entry-b";
