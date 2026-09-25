@@ -28,9 +28,9 @@ backend/                Cloudflare Worker (Hono)
 ├── src/routes/         /v1 API: auth, LMS, finance, HR, IT, ops, 25+ role dashboards
 ├── src/lib/            rbac, auth, crypto, rate-limit, origin/CORS, validation
 ├── src/durable/        RealtimeRoom (chat / live classes fan-out)
-├── migrations/         D1 schema (0000–0054), safe to apply in order on a fresh DB
+├── migrations/         D1 schema (0000–0055), safe to apply in order on a fresh DB
 ├── seeds/              idempotent D1 seed data (INSERT OR IGNORE)
-└── test/               71 vitest files / 713 tests (Cloudflare Workers pool)
+└── test/               72 vitest files / 730 tests (Cloudflare Workers pool)
 
 e2e/                    Playwright specs (public pages, auth, authz, roles)
 docs/                   audits, gap matrices, user flows, content style guide
@@ -145,6 +145,9 @@ Production: **www.cea.ng** (frontend, Vercel) · **cea-api.cyber-e54.workers.dev
 - `docs/user-flows.md` — the 32 actor journeys
 - `docs/role-gap-matrix.md` — wiring status per role suite (all `/app/**` pages live)
 - `docs/audit-mock-data-gaps.md` — mock-data audit + remediation log
+- `docs/enrollment-automation.md` — the full student funnel: 5-step registration form,
+  long-form trainings (3 days/week, market pricing), and the free-services automation
+  stack from signup to payment (Paystack, Turnstile, Sheets mirror, e-mail/WhatsApp drips)
 - `plans/CEA_OS_MASTER_PLAN.md` — the original product master plan
 
 # Lumina Studio — Cyber Elias Academy (CEA)

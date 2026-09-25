@@ -3,6 +3,8 @@ export interface AppEnv {
   APP_ENV: string;
   FRONTEND_ORIGINS: string;
   PAYSTACK_SECRET_KEY: string;
+  TURNSTILE_SECRET_KEY?: string;
+  GOOGLE_SHEET_WEBHOOK_URL?: string;
   AI_API_KEY: string;
   UPLOADS_PRESIGN_URL: string;
   UPLOADS: R2Bucket;

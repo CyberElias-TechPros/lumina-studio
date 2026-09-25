@@ -3,9 +3,7 @@ import type { AcademyCourse, ClassSession, SessionLecture } from "./types";
 import { microsoftOfficeLessons } from "./lessons/microsoft-office";
 import { microsoftOfficeLessonsB } from "./lessons/microsoft-office-documents";
 import { microsoftOfficeExcelLessons } from "./lessons/microsoft-office-excel";
-import {
-  computerBasicsTypingLessonsA,
-} from "./lessons/computer-basics-typing-a";
+import { computerBasicsTypingLessonsA } from "./lessons/computer-basics-typing-a";
 import { computerBasicsTypingLessonsB } from "./lessons/computer-basics-typing";
 import { dataEntryLessonsA } from "./lessons/data-entry";
 import { dataEntryLessonsB } from "./lessons/data-entry-b";
@@ -57,6 +55,20 @@ import { aiProductivityLessons } from "./lessons/ai-productivity";
 export * from "./types";
 export * from "./media";
 export { allCourses, flyerCourses, rotatingCourses };
+export {
+  longformPrograms,
+  findLongformProgram,
+  longScheduleOptions,
+  shortScheduleOptions,
+  timeSlotOptions,
+  modeOptions,
+  shortPaymentPlans,
+  longPaymentPlans,
+  NEXT_COHORTS,
+  WHAT_TO_BRING,
+  FEE_NOTES,
+} from "./longform";
+export type { LongformProgram, ScheduleOption, PaymentPlanOption } from "./longform";
 
 /** Every published class lecture, keyed by "course/session". */
 export const sessionLectures: Record<string, SessionLecture> = {

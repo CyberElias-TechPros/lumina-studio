@@ -54,6 +54,7 @@ import mentorRequestTargetsSql from "../migrations/0051_mentor_request_targets.s
 import alumniConnectionsSql from "../migrations/0052_alumni_connections.sql?raw";
 import backupRestoreRequestsSql from "../migrations/0053_backup_restore_requests.sql?raw";
 import assessmentAttemptsSql from "../migrations/0054_assessment_attempts.sql?raw";
+import enrollmentsSql from "../migrations/0055_enrollments.sql?raw";
 import { seedContentSql } from "../seeds/content";
 import { seedLmsSql } from "../seeds/lms";
 import { seedDomainSql } from "../seeds/domain";
@@ -159,6 +160,7 @@ export async function setupDb(): Promise<void> {
     alumniConnectionsSql,
     backupRestoreRequestsSql,
     assessmentAttemptsSql,
+    enrollmentsSql,
   ]) {
     const statements = sql
       .split("\n")

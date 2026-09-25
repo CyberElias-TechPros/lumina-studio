@@ -15,6 +15,10 @@
     // Secrets are configured with `wrangler secret put`; do not place them in vars.
     "EMAIL_PROVIDER": "resend",
     "EMAIL_FROM": "Cyber Elias Academy <no-reply@cea.ng>",
+    // Free-service automation: Google Apps Script web app URL. When set, every
+    // new registration is pushed to the "CEA Leads" sheet in real time (see
+    // docs/enrollment-automation.md §4). Leave empty to disable.
+    "GOOGLE_SHEET_WEBHOOK_URL": "",
     "AI_BASE_URL": "https://integrate.api.nvidia.com/v1",
     "AI_MODEL": "nvidia/llama-3.3-nemotron-super-49b-v1",
   },
@@ -71,6 +75,7 @@
         // Paystack, Turnstile, VAPID) stay in the top-level production deploy.
         "EMAIL_PROVIDER": "console",
         "EMAIL_FROM": "Cyber Elias Academy <dev@cea.ng>",
+        "GOOGLE_SHEET_WEBHOOK_URL": "",
         // Harmless in dev: the AI lib mocks until the AI_API_KEY secret exists.
         "AI_BASE_URL": "https://integrate.api.nvidia.com/v1",
         "AI_MODEL": "nvidia/llama-3.3-nemotron-super-49b-v1",
