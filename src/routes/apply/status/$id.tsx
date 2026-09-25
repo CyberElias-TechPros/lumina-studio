@@ -17,7 +17,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { PageShell, PageHero, CTASection } from "@/components/marketing/shell";
 import { Reveal, StaggerGroup, StaggerItem } from "@/components/motion";
 import { cn } from "@/lib/utils";
-import { useApplicationStatus } from "@/lib/query/admissions";
+import { useEnrollmentStatus } from "@/lib/query/enrollments";
 
 export const Route = createFileRoute("/apply/status/$id")({
   head: () => ({
@@ -69,8 +69,18 @@ function statusBadge(status: string) {
 
 function ApplyStatusDetailPage() {
   const { id } = Route.useParams();
-  const status = useApplicationStatus(id);
+  const status = useEnrollmentStatus(id);
   const badge = status.data ? statusBadge(status.data.status) : null;
+  const payment = status.data?.payment;
+  const paymentBadge = payment
+    ? payment.status === "paid"
+      ? { label: "Paid in full", tone: "bg-success/10 text-success" }
+      : payment.status === "deposit_paid"
+        ? { label: "Deposit paid", tone: "bg-primary/10 text-primary" }
+        : payment.status === "failed"
+          ? { label: "Payment failed", tone: "bg-error/10 text-error" }
+          : { label: "Payment pending", tone: "bg-warning/10 text-warning" }
+    : null;
 
   return (
     <PageShell>
@@ -125,11 +135,45 @@ function ApplyStatusDetailPage() {
                       {status.data.programTitle ?? "Cyber Elias Academy program"}
                     </p>
                   </div>
-                  {badge && (
-                    <Badge className={cn("border-0 font-bold", badge.tone)}>{badge.label}</Badge>
-                  )}
+                  <div className="flex flex-wrap gap-2">
+                    {badge && (
+                      <Badge className={cn("border-0 font-bold", badge.tone)}>{badge.label}</Badge>
+                    )}
+                    {paymentBadge && (
+                      <Badge className={cn("border-0 font-bold", paymentBadge.tone)}>
+                        {paymentBadge.label}
+                      </Badge>
+                    )}
+                  </div>
                 </div>
               </Reveal>
+
+              {payment && payment.status !== "paid" && (
+                <Reveal>
+                  <Card className="bg-card mt-6 border-primary/30">
+                    <CardContent className="flex flex-wrap items-center justify-between gap-4 p-5">
+                      <div>
+                        <p className="font-display text-sm font-bold">
+                          {payment.paidAmount > 0 ? "Balance due" : "Pay your deposit or full fee"}
+                        </p>
+                        <p className="text-muted-foreground mt-1 text-xs">
+                          {`₦${payment.amountDue.toLocaleString("en-NG")}`} remaining · quote{" "}
+                          {status.data?.ref} when you pay or write to us.
+                        </p>
+                      </div>
+                      <Button asChild size="sm">
+                        <a
+                          href={`https://wa.me/2349058628386?text=${encodeURIComponent(
+                            `Hello Cyber Elias Academy! I'd like to pay for my registration ${id}.`,
+                          )}`}
+                        >
+                          Pay / ask about payment
+                        </a>
+                      </Button>
+                    </CardContent>
+                  </Card>
+                </Reveal>
+              )}
 
               <ol className="mt-8 space-y-0">
                 {status.data.stages.map((s, i) => {

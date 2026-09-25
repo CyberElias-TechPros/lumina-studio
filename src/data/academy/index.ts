@@ -57,6 +57,20 @@ import { aiProductivityLessons } from "./lessons/ai-productivity";
 export * from "./types";
 export * from "./media";
 export { allCourses, flyerCourses, rotatingCourses };
+export {
+  longformPrograms,
+  findLongformProgram,
+  longScheduleOptions,
+  shortScheduleOptions,
+  timeSlotOptions,
+  modeOptions,
+  shortPaymentPlans,
+  longPaymentPlans,
+  NEXT_COHORTS,
+  WHAT_TO_BRING,
+  FEE_NOTES,
+} from "./longform";
+export type { LongformProgram, ScheduleOption, PaymentPlanOption } from "./longform";
 
 /** Every published class lecture, keyed by "course/session". */
 export const sessionLectures: Record<string, SessionLecture> = {

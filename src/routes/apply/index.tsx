@@ -1,104 +1,201 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { z } from "zod";
-import { ArrowLeft, ArrowRight, CheckCircle2 } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+  ArrowLeft,
+  ArrowRight,
+  CalendarDays,
+  GraduationCap,
+  Loader2,
+  UserRound,
+  ClipboardCheck,
+  Send,
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { PageShell, PageHero } from "@/components/marketing/shell";
-import { CourseCover, CourseIcon } from "@/components/marketing/photos";
-import { flyerCourses, formatFee } from "@/data/academy";
-import { submitApplication } from "@/lib/api/applications";
+import { InfoPanel } from "@/components/enrollment/info-panel";
+import { ProgramStep } from "@/components/enrollment/program-step";
+import { ScheduleStep } from "@/components/enrollment/schedule-step";
+import { PaymentStep } from "@/components/enrollment/payment-step";
+import { DetailsStep } from "@/components/enrollment/details-step";
+import { ReviewStep } from "@/components/enrollment/review-step";
+import { SuccessScreen } from "@/components/enrollment/success-screen";
+import { INITIAL_DRAFT, type EnrollmentDraft } from "@/components/enrollment/types";
+import { getProgramMeta } from "@/components/enrollment/meta";
+import { submitEnrollment, type SubmitEnrollmentInput } from "@/lib/api/enrollments";
+import { env } from "@/lib/env";
 import { ApiError } from "@/lib/errors";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/apply/")({
-  validateSearch: z.object({
-    program: z.string().optional(),
-  }),
+  validateSearch: (search: Record<string, unknown>) =>
+    z.object({ program: z.string().optional() }).parse(search),
   head: () => ({
     meta: [
-      { title: "Apply — Cyber Elias Academy" },
+      { title: "Register for a course — Cyber Elias Academy" },
       {
         name: "description",
         content:
-          "Apply for a short digital-skills course at Cyber Elias Academy in Port Harcourt.",
+          "Register for a short course or long-form training at Cyber Elias Academy, Port Harcourt. See fees, dates, payment plans and what happens next — it takes five minutes.",
       },
     ],
   }),
   component: ApplyPage,
 });
 
+const STEPS = [
+  { key: "course", label: "Course", icon: GraduationCap },
+  { key: "schedule", label: "Schedule", icon: CalendarDays },
+  { key: "payment", label: "Payment", icon: ArrowRight },
+  { key: "details", label: "About you", icon: UserRound },
+  { key: "review", label: "Review & submit", icon: ClipboardCheck },
+] as const;
+
+type StepKey = (typeof STEPS)[number]["key"];
+
+function normalizeDraft(draft: EnrollmentDraft, kind: "short" | "long"): EnrollmentDraft {
+  const next = { ...draft, programKind: kind };
+  if (kind === "long" && next.scheduleDays === "standard") {
+    next.scheduleDays = "mwf";
+  }
+  const validPlans = kind === "short" ? ["full", "50-50"] : ["deposit-monthly", "full-10-off"];
+  if (!validPlans.includes(next.paymentPlan)) {
+    next.paymentPlan = kind === "short" ? "full" : "deposit-monthly";
+  }
+  return next;
+}
+
 function ApplyPage() {
   const { program: initialProgram } = Route.useSearch();
-  const [step, setStep] = useState(0);
-  const [done, setDone] = useState(false);
+  const [step, setStep] = useState<StepKey>("course");
+  const [stepIndex, setStepIndex] = useState(0);
+  const [kind, setKind] = useState<"short" | "long">(() => {
+    const meta = initialProgram ? getProgramMeta(initialProgram) : null;
+    return meta?.kind === "long" ? "long" : "short";
+  });
+  const [draft, setDraft] = useState<EnrollmentDraft>(() => {
+    const base = { ...INITIAL_DRAFT, programSlug: initialProgram ?? "", programKind: kind };
+    return normalizeDraft(base, kind);
+  });
+  const [turnstileToken, setTurnstileToken] = useState("");
+  const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
-  const [ref, setRef] = useState<string | null>(null);
-  const [programSlug, setProgramSlug] = useState(initialProgram ?? "");
-  const [profile, setProfile] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    phone: "",
-    city: "",
-    experience: "",
-  });
-  const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
-  const selected = flyerCourses.find((c) => c.slug === programSlug);
+  const [done, setDone] = useState<{ ref: string } | null>(null);
 
-  const setField = (key: keyof typeof profile) => (value: string) => {
-    setProfile((p) => ({ ...p, [key]: value }));
-    setFieldErrors((e) => (e[key] ? { ...e, [key]: "" } : e));
+  const meta = useMemo(() => getProgramMeta(draft.programSlug), [draft.programSlug]);
+
+  const update = (patch: Partial<EnrollmentDraft>) => {
+    setDraft((d) => normalizeDraft({ ...d, ...patch }, d.programKind ?? kind));
+    setFieldErrors((e) => {
+      const next = { ...e };
+      for (const key of Object.keys(patch)) delete next[key];
+      return next;
+    });
   };
 
-  const validateStep = (s: number): boolean => {
+  const changeKind = (k: "short" | "long") => {
+    setKind(k);
+    setDraft((d) => normalizeDraft({ ...d, programSlug: "", programKind: k }, k));
+  };
+
+  const validate = (s: StepKey): boolean => {
     const errors: Record<string, string> = {};
-    if (s === 0 && !programSlug) errors.program = "Choose a course to continue.";
-    if (s === 1) {
-      if (profile.firstName.trim().length < 2) errors.firstName = "Enter your first name.";
-      if (profile.lastName.trim().length < 2) errors.lastName = "Enter your last name.";
-      if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(profile.email.trim()))
+    if (s === "course" && !draft.programSlug) {
+      errors.program = "Choose a course to continue.";
+    }
+    if (s === "details") {
+      if (draft.firstName.trim().length < 2) errors.firstName = "Enter your first name.";
+      if (draft.lastName.trim().length < 2) errors.lastName = "Enter your last name.";
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(draft.email.trim())) {
         errors.email = "Enter a valid email address.";
-      if (profile.phone.trim() && !/^\+?[0-9\s\-()]{6,20}$/.test(profile.phone.trim()))
-        errors.phone = "Enter a valid phone number.";
-      if (!profile.city) errors.city = "Select your location.";
-      if (!profile.experience) errors.experience = "Select your experience level.";
+      }
+      if (draft.phone.trim().length < 7 || !/^\+?[0-9\s\-()]{7,20}$/.test(draft.phone.trim())) {
+        errors.phone = "Enter a valid phone number (e.g. +234 800 000 0000).";
+      }
+      if (!draft.city) errors.city = "Select your location.";
+      if (draft.birthYear) {
+        const y = Number(draft.birthYear);
+        if (!Number.isInteger(y) || y < 1950 || y > 2012) {
+          errors.birthYear = "Enter a valid birth year.";
+        }
+      }
+    }
+    if (s === "review") {
+      if (!draft.consentPrivacy) errors.consentPrivacy = "Accept the privacy policy.";
+      if (!draft.consentTerms) errors.consentTerms = "Accept the terms of sale.";
+      if (env.turnstileSiteKey && !turnstileToken) {
+        errors.turnstile = "Complete the human check below.";
+      }
     }
     setFieldErrors(errors);
     return Object.keys(errors).length === 0;
   };
 
+  const next = () => {
+    if (!validate(step)) return;
+    const idx = Math.min(stepIndex + 1, STEPS.length - 1);
+    setStepIndex(idx);
+    setStep(STEPS[idx].key);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const back = () => {
+    setFieldErrors({});
+    const idx = Math.max(stepIndex - 1, 0);
+    setStepIndex(idx);
+    setStep(STEPS[idx].key);
+  };
+
   const submit = async () => {
-    if (!selected) return;
-    if (!validateStep(1)) {
-      setStep(1);
-      return;
+    for (const s of ["course", "details", "review"] as StepKey[]) {
+      if (!validate(s)) {
+        const idx = STEPS.findIndex((x) => x.key === s);
+        setStepIndex(idx);
+        setStep(s);
+        return;
+      }
     }
+    if (!meta) return;
     setSubmitting(true);
     setSubmitError(null);
+    const input: SubmitEnrollmentInput = {
+      programSlug: draft.programSlug,
+      scheduleDays: draft.scheduleDays,
+      timeSlot: draft.timeSlot,
+      mode: draft.mode,
+      preferredStart: draft.preferredStart || undefined,
+      firstName: draft.firstName.trim(),
+      lastName: draft.lastName.trim(),
+      email: draft.email.trim(),
+      phone: draft.phone.trim(),
+      city: draft.city,
+      birthYear: draft.birthYear ? Number(draft.birthYear) : undefined,
+      gender: draft.gender || undefined,
+      educationLevel: draft.educationLevel || undefined,
+      experienceLevel: draft.experienceLevel || undefined,
+      goal: draft.goal.trim() || undefined,
+      employer: draft.employer.trim() || undefined,
+      hasLaptop: draft.hasLaptop,
+      referredBy: draft.referredBy || undefined,
+      paymentPlan: draft.paymentPlan,
+      paymentMethod: draft.paymentMethod,
+      consentPrivacy: true,
+      consentTerms: true,
+      consentWhatsApp: draft.consentWhatsApp,
+      turnstileToken: turnstileToken || undefined,
+    };
     try {
-      const result = await submitApplication({
-        fullName: `${profile.firstName.trim()} ${profile.lastName.trim()}`,
-        email: profile.email.trim(),
-        phone: profile.phone.trim(),
-        city: profile.city,
-        programSlug: selected.slug,
-        experience: profile.experience,
-      });
-      setRef(result.application.ref);
-      setDone(true);
+      const result = await submitEnrollment(input);
+      setDone({ ref: result.enrollment.ref });
+      window.scrollTo({ top: 0 });
     } catch (err) {
       setSubmitError(
-        err instanceof ApiError ? err.message : "Something went wrong submitting your application.",
+        err instanceof ApiError
+          ? err.fieldErrors && Object.keys(err.fieldErrors).length > 0
+            ? "Please fix the highlighted fields."
+            : err.message
+          : "Something went wrong submitting your registration. Please try again.",
       );
     } finally {
       setSubmitting(false);
@@ -108,33 +205,14 @@ function ApplyPage() {
   if (done) {
     return (
       <PageShell>
-        <section className="container-page grid min-h-[50vh] place-items-center py-20">
-          <div className="text-center">
-            <span className="bg-success/10 text-success mx-auto grid size-12 place-items-center rounded-full">
-              <CheckCircle2 className="size-6" />
-            </span>
-            <h1 className="font-display mt-6 text-2xl font-semibold sm:text-3xl">
-              Application submitted
-            </h1>
-            <p className="text-muted-foreground mx-auto mt-3 max-w-md text-sm leading-relaxed">
-              Your application for <strong className="text-foreground">{selected?.title}</strong> is
-              in. We will email you about dates and the fee.
-            </p>
-            {ref && (
-              <div className="bg-muted mx-auto mt-6 inline-flex items-center gap-3 rounded-lg border px-5 py-3">
-                <p className="text-muted-foreground text-sm">Reference</p>
-                <p className="font-mono text-base font-semibold tracking-widest">{ref}</p>
-              </div>
-            )}
-            <div className="mt-8 flex flex-wrap justify-center gap-3">
-              <Button asChild>
-                <Link to="/apply/status">Track application</Link>
-              </Button>
-              <Button asChild variant="outline">
-                <Link to="/classes">View courses</Link>
-              </Button>
-            </div>
-          </div>
+        <section className="container-page py-16 sm:py-20">
+          <SuccessScreen
+            refCode={done.ref}
+            meta={meta}
+            plan={draft.paymentPlan}
+            method={draft.paymentMethod}
+            phone={draft.phone}
+          />
         </section>
       </PageShell>
     );
@@ -144,194 +222,188 @@ function ApplyPage() {
     <PageShell>
       <PageHero
         eyebrow="Admissions"
-        title="Apply for a course"
-        description="Choose a short course and leave your details. There is no application fee. We reply with dates, the fee, and what to bring."
+        title="Register for a course"
+        description="Five short steps: pick your course, choose your schedule, see the fee clearly, tell us about you, submit. There is no application fee — and your fee, dates and what to bring are shown at every step."
       />
 
       <section className="container-page pb-20">
-        <div className="mx-auto max-w-3xl">
-          <ol className="mb-8 grid grid-cols-2 gap-2 text-sm">
-            {["Course", "Your details"].map((label, i) => (
-              <li
-                key={label}
-                className={cn(
-                  "rounded-md border px-3 py-2",
-                  i === step ? "border-primary/40 bg-primary/5 text-foreground" : "text-muted-foreground",
-                )}
-              >
-                {i + 1}. {label}
-              </li>
-            ))}
-          </ol>
+        <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_340px]">
+          <div>
+            {/* Progress rail */}
+            <ol className="mb-6 grid grid-cols-5 gap-1.5" aria-label="Registration steps">
+              {STEPS.map((s, i) => {
+                const state = i < stepIndex ? "done" : i === stepIndex ? "current" : "todo";
+                return (
+                  <li key={s.key} className="min-w-0">
+                    <div
+                      className={cn(
+                        "flex items-center gap-1.5 rounded-md border px-2 py-2",
+                        state === "current" && "border-primary/50 bg-primary/5",
+                        state === "done" && "border-border bg-success/5",
+                        state === "todo" && "border-border/70",
+                      )}
+                    >
+                      <s.icon
+                        className={cn(
+                          "size-3.5 shrink-0",
+                          state === "current" && "text-primary",
+                          state === "done" && "text-success",
+                          state === "todo" && "text-muted-foreground/60",
+                        )}
+                      />
+                      <span
+                        className={cn(
+                          "hidden truncate text-[11px] font-semibold sm:block",
+                          state === "todo" && "text-muted-foreground/70",
+                        )}
+                      >
+                        {i + 1}. {s.label}
+                      </span>
+                      <span
+                        className={cn(
+                          "truncate text-[11px] font-semibold sm:hidden",
+                          state === "todo" && "text-muted-foreground/70",
+                        )}
+                      >
+                        {i + 1}
+                      </span>
+                    </div>
+                  </li>
+                );
+              })}
+            </ol>
 
-          {step === 0 && (
-            <div className="border-border rounded-lg border p-6 sm:p-8">
-              <h2 className="font-display text-xl font-semibold">Choose your course</h2>
-              <p className="text-muted-foreground mt-1 text-sm">
-                Fees are for the full short course. Unsure?{" "}
-                <Link to="/contact" className="text-primary underline-offset-2 hover:underline">
-                  Ask us
-                </Link>
-                .
-              </p>
-              <div className="mt-6 grid gap-3 sm:grid-cols-2">
-                {flyerCourses.map((course) => (
-                  <button
-                    key={course.slug}
-                    type="button"
-                    onClick={() => setProgramSlug(course.slug)}
-                    className={cn(
-                      "overflow-hidden rounded-lg border text-left",
-                      programSlug === course.slug
-                        ? "border-primary bg-primary/5"
-                        : "hover:border-primary/40",
-                    )}
-                  >
-                    <div className="bg-muted aspect-[16/9]">
-                      <CourseCover slug={course.slug} />
-                    </div>
-                    <div className="p-4">
-                      <p className="text-muted-foreground text-xs">{course.category}</p>
-                      <p className="font-display mt-2 inline-flex items-center gap-1.5 text-sm font-semibold">
-                        <CourseIcon slug={course.slug} className="text-primary size-3.5" />
-                        {course.title}
-                      </p>
-                      <p className="text-muted-foreground mt-1 text-xs">
-                        {course.level} · {course.weeks} weeks
-                      </p>
-                      <p className="mt-2 text-sm font-medium">{formatFee(course.fee)}</p>
-                    </div>
-                  </button>
-                ))}
+            <div className="border-card shadow-soft rounded-2xl border p-6 sm:p-8">
+              {step === "course" && (
+                <>
+                  <h2 className="font-display text-xl font-bold">What would you like to learn?</h2>
+                  <p className="text-muted-foreground mt-1 text-sm">
+                    Short courses are 2–6 weeks; long-form trainings are 3–6 months at 3 days a
+                    week.
+                  </p>
+                  <div className="mt-5">
+                    <ProgramStep
+                      kind={kind}
+                      onKind={changeKind}
+                      selected={draft.programSlug}
+                      onSelect={(slug) => update({ programSlug: slug })}
+                      error={fieldErrors.program}
+                    />
+                  </div>
+                </>
+              )}
+
+              {step === "schedule" && meta && (
+                <>
+                  <h2 className="font-display text-xl font-bold">When suits you?</h2>
+                  <p className="text-muted-foreground mt-1 text-sm">
+                    {meta.title} —{" "}
+                    {meta.daysPerWeek === 3
+                      ? "three practical days a week"
+                      : "two practical sessions a week"}
+                    . We confirm exact dates with you.
+                  </p>
+                  <div className="mt-5">
+                    <ScheduleStep
+                      kind={meta.kind}
+                      draft={draft}
+                      update={update}
+                      errors={fieldErrors}
+                    />
+                  </div>
+                </>
+              )}
+
+              {step === "payment" && (
+                <>
+                  <h2 className="font-display text-xl font-bold">The fee, clearly</h2>
+                  <p className="text-muted-foreground mt-1 text-sm">
+                    No hidden charges. Pick a plan — you pay on the next screen after submitting.
+                  </p>
+                  <div className="mt-5">
+                    <PaymentStep meta={meta} draft={draft} update={update} />
+                  </div>
+                </>
+              )}
+
+              {step === "details" && (
+                <>
+                  <h2 className="font-display text-xl font-bold">Tell us about you</h2>
+                  <p className="text-muted-foreground mt-1 text-sm">
+                    This is what we use to place you in the right cohort and prepare your welcome
+                    pack.
+                  </p>
+                  <div className="mt-5">
+                    <DetailsStep draft={draft} update={update} errors={fieldErrors} />
+                  </div>
+                </>
+              )}
+
+              {step === "review" && (
+                <>
+                  <h2 className="font-display text-xl font-bold">One last look</h2>
+                  <p className="text-muted-foreground mt-1 text-sm">
+                    Check everything is right, accept the policies, and submit.
+                  </p>
+                  <div className="mt-5">
+                    <ReviewStep
+                      meta={meta}
+                      draft={draft}
+                      update={update}
+                      errors={fieldErrors}
+                      onToken={setTurnstileToken}
+                    />
+                  </div>
+                </>
+              )}
+
+              {/* Nav */}
+              <div className="border-border/70 mt-8 flex items-center justify-between border-t pt-6">
+                <Button variant="ghost" onClick={back} disabled={stepIndex === 0}>
+                  <ArrowLeft className="size-4" /> Back
+                </Button>
+                {stepIndex < STEPS.length - 1 ? (
+                  <Button onClick={next} size="lg">
+                    Continue <ArrowRight className="size-4" />
+                  </Button>
+                ) : (
+                  <Button onClick={submit} size="lg" disabled={submitting}>
+                    {submitting ? (
+                      <Loader2 className="size-4 animate-spin" />
+                    ) : (
+                      <Send className="size-4" />
+                    )}{" "}
+                    {submitting ? "Submitting…" : "Submit registration"}
+                  </Button>
+                )}
               </div>
-              {fieldErrors.program && (
-                <p className="text-error mt-3 text-sm">{fieldErrors.program}</p>
+
+              {submitError && (
+                <p className="text-error bg-error/10 mt-4 rounded-lg px-4 py-3 text-sm">
+                  {submitError}
+                </p>
               )}
             </div>
-          )}
 
-          {step === 1 && (
-            <div className="border-border rounded-lg border p-6 sm:p-8">
-              <h2 className="font-display text-xl font-semibold">Your details</h2>
-              <p className="text-muted-foreground mt-1 text-sm">
-                {selected?.title} · {selected ? formatFee(selected.fee) : ""} · {selected?.weeks}{" "}
-                weeks
-              </p>
-              <div className="mt-6 grid gap-4 sm:grid-cols-2">
-                {[
-                  { id: "firstName", label: "First name", ph: "Adaeze" },
-                  { id: "lastName", label: "Last name", ph: "Okafor" },
-                ].map((f) => (
-                  <div key={f.id} className="space-y-1.5">
-                    <Label htmlFor={f.id}>{f.label}</Label>
-                    <Input
-                      id={f.id}
-                      placeholder={f.ph}
-                      value={profile[f.id as "firstName" | "lastName"]}
-                      onChange={(e) => setField(f.id as "firstName" | "lastName")(e.target.value)}
-                      required
-                      aria-invalid={Boolean(fieldErrors[f.id])}
-                    />
-                    {fieldErrors[f.id] && (
-                      <p className="text-error text-xs">{fieldErrors[f.id]}</p>
-                    )}
-                  </div>
-                ))}
-                <div className="space-y-1.5">
-                  <Label htmlFor="email">Email address</Label>
-                  <Input
-                    id="email"
-                    type="email"
-                    placeholder="adaeze@example.com"
-                    value={profile.email}
-                    onChange={(e) => setField("email")(e.target.value)}
-                    required
-                    aria-invalid={Boolean(fieldErrors.email)}
-                  />
-                  {fieldErrors.email && <p className="text-error text-xs">{fieldErrors.email}</p>}
-                </div>
-                <div className="space-y-1.5">
-                  <Label htmlFor="phone">Phone (WhatsApp)</Label>
-                  <Input
-                    id="phone"
-                    type="tel"
-                    placeholder="+234 905 862 8386"
-                    value={profile.phone}
-                    onChange={(e) => setField("phone")(e.target.value)}
-                    aria-invalid={Boolean(fieldErrors.phone)}
-                  />
-                  {fieldErrors.phone && <p className="text-error text-xs">{fieldErrors.phone}</p>}
-                </div>
-                <div className="space-y-1.5">
-                  <Label htmlFor="city">City / State</Label>
-                  <Select value={profile.city} onValueChange={setField("city")}>
-                    <SelectTrigger id="city" aria-invalid={Boolean(fieldErrors.city)}>
-                      <SelectValue placeholder="Select location" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {["Port Harcourt", "Lagos", "Abuja", "Ibadan", "Kano", "Outside Nigeria"].map(
-                        (c) => (
-                          <SelectItem key={c} value={c}>
-                            {c}
-                          </SelectItem>
-                        ),
-                      )}
-                    </SelectContent>
-                  </Select>
-                  {fieldErrors.city && <p className="text-error text-xs">{fieldErrors.city}</p>}
-                </div>
-                <div className="space-y-1.5">
-                  <Label htmlFor="experience">Prior experience</Label>
-                  <Select value={profile.experience} onValueChange={setField("experience")}>
-                    <SelectTrigger id="experience" aria-invalid={Boolean(fieldErrors.experience)}>
-                      <SelectValue placeholder="Select level" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {["No experience", "Less than 1 year", "1–3 years", "3+ years"].map((c) => (
-                        <SelectItem key={c} value={c}>
-                          {c}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                  {fieldErrors.experience && (
-                    <p className="text-error text-xs">{fieldErrors.experience}</p>
-                  )}
-                </div>
-              </div>
-            </div>
-          )}
-
-          <div className="mt-6 flex items-center justify-between">
-            <Button
-              variant="ghost"
-              onClick={() => {
-                setFieldErrors({});
-                setStep(0);
-              }}
-              disabled={step === 0}
-            >
-              <ArrowLeft className="size-4" /> Back
-            </Button>
-            {step === 0 ? (
-              <Button
-                onClick={() => {
-                  if (validateStep(0)) setStep(1);
-                }}
-                disabled={!programSlug}
+            <p className="text-muted-foreground mt-4 text-center text-xs">
+              Applying is free and takes about 5 minutes. Questions?{" "}
+              <Link
+                to="/contact"
+                className="text-primary font-semibold underline-offset-2 hover:underline"
               >
-                Continue <ArrowRight className="size-4" />
-              </Button>
-            ) : (
-              <Button onClick={submit} disabled={submitting}>
-                {submitting ? "Submitting…" : "Submit application"} <ArrowRight className="size-4" />
-              </Button>
-            )}
+                Contact us
+              </Link>{" "}
+              or visit us at 26 Ebony Road.
+            </p>
           </div>
 
-          {submitError && (
-            <p className="text-error bg-error/10 mt-4 rounded-md px-3 py-2 text-sm">{submitError}</p>
-          )}
+          <InfoPanel
+            meta={meta}
+            plan={draft.paymentPlan}
+            timeSlot={draft.timeSlot}
+            mode={draft.mode}
+            scheduleDays={draft.scheduleDays}
+          />
         </div>
       </section>
     </PageShell>

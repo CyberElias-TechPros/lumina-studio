@@ -66,6 +66,16 @@ export const RBAC_RULES: RbacRule[] = [
   { methods: ["GET"], path: "/v1/applications/:ref", public: true },
   { methods: ["PATCH"], path: "/v1/applications/:ref", roles: ["admin"] },
 
+  /* Enrollment funnel v2 — public registration, Paystack checkout + webhook,
+     applicant status; admin list/patch for admissions & finance. */
+  { methods: ["POST"], path: "/v1/enrollments", public: true },
+  { methods: ["POST"], path: "/v1/enrollments/webhook", public: true },
+  { methods: ["POST"], path: "/v1/enrollments/:ref/payments", public: true },
+  { methods: ["GET"], path: "/v1/enrollments/:ref/payments/verify", public: true },
+  { methods: ["GET"], path: "/v1/enrollments/admin", roles: ["admin", "admissions", "finance"] },
+  { methods: ["GET"], path: "/v1/enrollments/:ref", public: true },
+  { methods: ["PATCH"], path: "/v1/enrollments/:ref", roles: ["admin", "admissions"] },
+
   /* LMS */
   { methods: ["GET"], path: "/v1/courses" },
   { methods: ["GET"], path: "/v1/courses/gradebook", roles: ["student"] },
@@ -330,7 +340,8 @@ export const rbacGuard = createMiddleware<{ Bindings: AppEnv }>(async (c, next) 
   const method = c.req.method.toUpperCase();
   const origin = c.req.header("origin");
   const pathname = new URL(c.req.url).pathname;
-  const signedWebhook = pathname === "/v1/payments/webhook";
+  const signedWebhook =
+    pathname === "/v1/payments/webhook" || pathname === "/v1/enrollments/webhook";
   if (
     !signedWebhook &&
     !["GET", "HEAD", "OPTIONS"].includes(method) &&

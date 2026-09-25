@@ -46,6 +46,7 @@ import { Route as AppNotificationsRouteImport } from './routes/app/notifications
 import { Route as AppPortfolioRouteImport } from './routes/app/portfolio'
 import { Route as AppReportsRouteImport } from './routes/app/reports'
 import { Route as ApplyIndexRouteImport } from './routes/apply/index'
+import { Route as ApplyPayRouteImport } from './routes/apply/pay'
 import { Route as ApplyStatusRouteImport } from './routes/apply/status'
 import { Route as AuthForgotPasswordRouteImport } from './routes/auth.forgot-password'
 import { Route as AuthMagicLinkRouteImport } from './routes/auth.magic-link'
@@ -591,6 +592,11 @@ const AppReportsRoute = AppReportsRouteImport.update({
 const ApplyIndexRoute = ApplyIndexRouteImport.update({
   id: '/apply/',
   path: '/apply/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApplyPayRoute = ApplyPayRouteImport.update({
+  id: '/apply/pay',
+  path: '/apply/pay',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApplyStatusRoute = ApplyStatusRouteImport.update({
@@ -2507,6 +2513,7 @@ export interface FileRoutesByFullPath {
   '/app/notifications': typeof AppNotificationsRoute
   '/app/portfolio': typeof AppPortfolioRoute
   '/app/reports': typeof AppReportsRoute
+  '/apply/pay': typeof ApplyPayRoute
   '/apply/status': typeof ApplyStatusRouteWithChildren
   '/auth/forgot-password': typeof AuthForgotPasswordRoute
   '/auth/magic-link': typeof AuthMagicLinkRoute
@@ -2907,6 +2914,7 @@ export interface FileRoutesByTo {
   '/app/notifications': typeof AppNotificationsRoute
   '/app/portfolio': typeof AppPortfolioRoute
   '/app/reports': typeof AppReportsRoute
+  '/apply/pay': typeof ApplyPayRoute
   '/auth/forgot-password': typeof AuthForgotPasswordRoute
   '/auth/magic-link': typeof AuthMagicLinkRoute
   '/auth/mfa': typeof AuthMfaRoute
@@ -3307,6 +3315,7 @@ export interface FileRoutesById {
   '/app/notifications': typeof AppNotificationsRoute
   '/app/portfolio': typeof AppPortfolioRoute
   '/app/reports': typeof AppReportsRoute
+  '/apply/pay': typeof ApplyPayRoute
   '/apply/status': typeof ApplyStatusRouteWithChildren
   '/auth/forgot-password': typeof AuthForgotPasswordRoute
   '/auth/magic-link': typeof AuthMagicLinkRoute
@@ -3709,6 +3718,7 @@ export interface FileRouteTypes {
     | '/app/notifications'
     | '/app/portfolio'
     | '/app/reports'
+    | '/apply/pay'
     | '/apply/status'
     | '/auth/forgot-password'
     | '/auth/magic-link'
@@ -4109,6 +4119,7 @@ export interface FileRouteTypes {
     | '/app/notifications'
     | '/app/portfolio'
     | '/app/reports'
+    | '/apply/pay'
     | '/auth/forgot-password'
     | '/auth/magic-link'
     | '/auth/mfa'
@@ -4508,6 +4519,7 @@ export interface FileRouteTypes {
     | '/app/notifications'
     | '/app/portfolio'
     | '/app/reports'
+    | '/apply/pay'
     | '/apply/status'
     | '/auth/forgot-password'
     | '/auth/magic-link'
@@ -4909,6 +4921,7 @@ export interface RootRouteChildren {
   AppNotificationsRoute: typeof AppNotificationsRoute
   AppPortfolioRoute: typeof AppPortfolioRoute
   AppReportsRoute: typeof AppReportsRoute
+  ApplyPayRoute: typeof ApplyPayRoute
   ApplyStatusRoute: typeof ApplyStatusRouteWithChildren
   AuthForgotPasswordRoute: typeof AuthForgotPasswordRoute
   AuthMagicLinkRoute: typeof AuthMagicLinkRoute
@@ -5525,6 +5538,13 @@ declare module '@tanstack/react-router' {
       path: '/apply'
       fullPath: '/apply/'
       preLoaderRoute: typeof ApplyIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/apply/pay': {
+      id: '/apply/pay'
+      path: '/apply/pay'
+      fullPath: '/apply/pay'
+      preLoaderRoute: typeof ApplyPayRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/apply/status': {
@@ -8182,6 +8202,7 @@ const rootRouteChildren: RootRouteChildren = {
   AppNotificationsRoute: AppNotificationsRoute,
   AppPortfolioRoute: AppPortfolioRoute,
   AppReportsRoute: AppReportsRoute,
+  ApplyPayRoute: ApplyPayRoute,
   ApplyStatusRoute: ApplyStatusRouteWithChildren,
   AuthForgotPasswordRoute: AuthForgotPasswordRoute,
   AuthMagicLinkRoute: AuthMagicLinkRoute,
