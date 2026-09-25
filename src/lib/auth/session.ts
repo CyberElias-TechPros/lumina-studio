@@ -94,7 +94,8 @@ export function useSignOut() {
 
 export function useForgotPassword() {
   return useMutation({
-    mutationFn: (email: string) => apiForgotPassword({ email }),
+    mutationFn: (input: string | { email: string; turnstileToken?: string }) =>
+      apiForgotPassword(typeof input === "string" ? { email: input } : input),
   });
 }
 

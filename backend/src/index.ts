@@ -60,6 +60,11 @@ import { hrTrainingDashboard } from "./routes/hrTrainingDashboard";
 import { studentSelfDashboard } from "./routes/studentSelfDashboard";
 import { ops } from "./routes/ops";
 import { it } from "./routes/it";
+import { account } from "./routes/account";
+import { system } from "./routes/system";
+import { handleScheduled } from "./jobs/scheduled";
+import { reportError } from "./lib/monitoring";
+import { ApiError } from "./lib/errors";
 import { RealtimeRoom } from "./durable/realtime-room";
 
 export { RealtimeRoom };
@@ -150,6 +155,8 @@ v1.route("/hr-training-dashboard", hrTrainingDashboard);
 v1.route("/student-self-dashboard", studentSelfDashboard);
 v1.route("/ops", ops);
 v1.route("/it", it);
+v1.route("/account", account);
+v1.route("/system", system);
 
 /** Uptime + DB reachability check for deployment probes. */
 v1.get("/health", async (c) => {
@@ -160,6 +167,29 @@ v1.get("/health", async (c) => {
 app.route("/v1", v1);
 
 app.notFound((c) => c.json({ error: { code: "NOT_FOUND", message: "Not found." } }, 404));
-app.onError((err, c) => sendError(c, err));
+app.onError((err, c) => {
+  // Report unexpected failures (not client errors) when SENTRY_DSN is set.
+  const expected = err instanceof ApiError && err.status < 500;
+  if (!expected && err.name !== "RateLimitExceeded" && err.name !== "ZodError") {
+    const task = reportError(c.env, err, {
+      requestId: c.res.headers.get("x-request-id") ?? undefined,
+      method: c.req.method,
+      path: new URL(c.req.url).pathname,
+    });
+    try {
+      c.executionCtx.waitUntil(task);
+    } catch {
+      /* no execution context (tests) */
+    }
+  }
+  return sendError(c, err);
+});
 
-export default app;
+export default {
+  fetch: app.fetch,
+  scheduled(controller: ScheduledController, env: AppEnv, ctx: ExecutionContext) {
+    ctx.waitUntil(handleScheduled(controller, env));
+  },
+} satisfies ExportedHandler<AppEnv>;
+
+export { app };

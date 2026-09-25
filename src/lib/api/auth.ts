@@ -21,8 +21,17 @@ export function signIn(input: SignInInput): Promise<SignInResult> {
   });
 }
 
-export function signUp(input: SignUpInput): Promise<Session> {
-  return apiFetch<Session>("/v1/auth/sign-up", { method: "POST", body: input, noRefresh: true });
+export type SignUpResult = Session & {
+  emailVerificationSent?: boolean;
+  devVerificationCode?: string;
+};
+
+export function signUp(input: SignUpInput): Promise<SignUpResult> {
+  return apiFetch<SignUpResult>("/v1/auth/sign-up", {
+    method: "POST",
+    body: input,
+    noRefresh: true,
+  });
 }
 
 export function requestMagicLink(input: MagicLinkRequestInput): Promise<{ ok: true }> {
@@ -45,7 +54,10 @@ export function signOut(): Promise<{ ok: true }> {
   return apiFetch("/v1/auth/sign-out", { method: "POST" });
 }
 
-export function forgotPassword(input: { email: string }): Promise<{ ok: true; sent: boolean }> {
+export function forgotPassword(input: {
+  email: string;
+  turnstileToken?: string;
+}): Promise<{ ok: true; sent: boolean }> {
   return apiFetch("/v1/auth/forgot-password", { method: "POST", body: input, noRefresh: true });
 }
 

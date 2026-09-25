@@ -1,4 +1,5 @@
 import { Hono } from "hono";
+import { verifyTurnstile } from "../lib/turnstile";
 import type { AppEnv } from "../types";
 import { z } from "zod";
 import { ApiError } from "../lib/errors";
@@ -44,6 +45,7 @@ const createApplicationSchema = z.object({
   city: z.string().trim().min(1).max(80).optional(),
   programSlug: z.string().trim().min(1, "Choose a program."),
   experience: z.string().trim().max(2000).optional(),
+  turnstileToken: z.string().max(4000).optional(),
 });
 
 function newRef(): string {
@@ -64,6 +66,7 @@ applications.post("/", async (c) => {
     limit: 10,
     windowSeconds: 3600,
   });
+  await verifyTurnstile(c, input.turnstileToken, ip);
   const email = normalizeEmail(input.email);
 
   const program = await c.env.DB.prepare(`SELECT title FROM programs WHERE slug = ?`)

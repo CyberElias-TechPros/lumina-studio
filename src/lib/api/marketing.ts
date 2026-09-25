@@ -122,6 +122,7 @@ export interface SubmitContactInput {
   email: string;
   message: string;
   kind?: "contact" | "newsletter";
+  turnstileToken?: string;
 }
 
 /** Public endpoint — writes a lead for the marketing suite. */

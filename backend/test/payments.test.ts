@@ -153,6 +153,38 @@ describe("payments webhook", () => {
     expect(payment.status).toBe("pending");
   });
 
+  it("flags an underpaid charge.success for review instead of honouring it", async () => {
+    const reference = await createCheckout();
+    const res = await api("/v1/payments/webhook", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ event: "charge.success", data: { reference, amount: 100 } }),
+    });
+    expect(res.status).toBe(200);
+    const payment = await fetchSession(reference);
+    expect(payment.status).toBe("review");
+  });
+
+  it("processes a replayed webhook delivery only once", async () => {
+    const reference = await createCheckout();
+    const payload = JSON.stringify({
+      event: "charge.failed",
+      data: { id: 987654, reference },
+    });
+    const first = await api("/v1/payments/webhook", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: payload,
+    });
+    expect(first.status).toBe(200);
+    const again = await api("/v1/payments/webhook", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: payload,
+    });
+    expect(await again.json()).toEqual({ ok: true, duplicate: true });
+  });
+
   it("accepts payloads without a reference", async () => {
     const res = await api("/v1/payments/webhook", {
       method: "POST",

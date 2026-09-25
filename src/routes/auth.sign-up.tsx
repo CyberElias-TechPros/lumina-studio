@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
 import { useSignUp } from "@/lib/auth/session";
+import { useTurnstile } from "@/components/turnstile";
 
 export const Route = createFileRoute("/auth/sign-up")({
   head: () => ({
@@ -38,6 +39,7 @@ function SignUpPage() {
   const navigate = useNavigate();
 
   const signUp = useSignUp();
+  const turnstile = useTurnstile();
 
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -47,9 +49,12 @@ function SignUpPage() {
     const email = emailRef.current?.value.trim() ?? "";
     const password = passwordRef.current?.value ?? "";
     signUp.mutate(
-      { name, email, password, roleKey: role },
+      { name, email, password, roleKey: role, turnstileToken: turnstile.token },
       {
-        onSuccess: () => {
+        onSuccess: (result) => {
+          if (result.devVerificationCode) {
+            sessionStorage.setItem("cea_dev_verify_code", result.devVerificationCode);
+          }
           const pendingInvite = sessionStorage.getItem("cea_pending_invite");
           sessionStorage.removeItem("cea_pending_invite");
           if (pendingInvite) {
@@ -58,10 +63,11 @@ function SignUpPage() {
               search: { token: pendingInvite },
             });
           } else {
-            void navigate({ to: "/app" });
+            void navigate({ to: "/auth/verify-email" });
           }
         },
         onError: (err) => {
+          turnstile.reset();
           setError(err instanceof Error ? err.message : "Could not create your account.");
         },
       },
@@ -135,9 +141,14 @@ function SignUpPage() {
               />
             </div>
 
+            <turnstile.Widget />
             {error && <p className="text-error text-sm">{error}</p>}
 
-            <Button type="submit" disabled={signUp.isPending} className="w-full">
+            <Button
+              type="submit"
+              disabled={signUp.isPending || !turnstile.ready}
+              className="w-full"
+            >
               {signUp.isPending && <Loader2 className="mr-1.5 size-4 animate-spin" />}
               Create account
             </Button>

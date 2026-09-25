@@ -7,6 +7,11 @@
   "observability": {
     "enabled": true,
   },
+  // Scheduled jobs (src/jobs/scheduled.ts): payment reconciliation, enrollment
+  // reminders, token/session cleanup. Keep in sync with CRON_SCHEDULE.
+  "triggers": {
+    "crons": ["*/15 * * * *", "0 * * * *", "0 2 * * *"],
+  },
   "vars": {
     "APP_ENV": "production",
     "FRONTEND_ORIGINS": "https://cea.ng,https://www.cea.ng,https://cea-os.vercel.app",

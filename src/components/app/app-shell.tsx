@@ -69,6 +69,7 @@ import { useSessionUser } from "@/components/app/session-provider";
 import { isMockMode } from "@/lib/env";
 import { track } from "@/lib/analytics";
 import { resolveRoleKey } from "@/data/rbac";
+import { useAccount } from "@/lib/query/account";
 
 export type AppRole = {
   key: string;
@@ -270,6 +271,11 @@ export const appRoles: AppRole[] = [
       { label: "Monitoring", icon: <Building2 className="size-4" />, to: "/app/admin/monitoring" },
       { label: "Backups", icon: <HeartHandshake className="size-4" />, to: "/app/admin/backups" },
       { label: "Logs", icon: <MessageSquare className="size-4" />, to: "/app/admin/logs" },
+      {
+        label: "Operations",
+        icon: <Settings className="size-4" />,
+        to: "/app/admin/operations",
+      },
     ],
   },
   {
@@ -962,6 +968,7 @@ const SHARED_APP_PATHS = [
   "/app/assignments",
   "/app/assessments",
   "/app/finance/pay-verify",
+  "/app/account",
 ];
 
 function requiredRolesForAppPath(pathname: string, contextRole: string): string[] | null {
@@ -1012,6 +1019,10 @@ export function AppShell({
     Boolean(actualRoleKey && requiredRoles && !requiredRoles.includes(actualRoleKey));
 
   const signedOutInLiveMode = !sessionLoading && !sessionData?.user && !isMockMode;
+  const { data: accountData } = useAccount(Boolean(sessionData?.user) && !isMockMode);
+  const needsEmailVerification =
+    Boolean(accountData && !accountData.emailVerified) &&
+    !location.pathname.startsWith("/app/account");
   useEffect(() => {
     if (signedOutInLiveMode) {
       void navigate({ to: "/auth/sign-in" });
@@ -1126,6 +1137,12 @@ export function AppShell({
       </ScrollArea>
 
       <div className="border-t p-3">
+        <Link
+          to="/app/account"
+          className="text-muted-foreground hover:text-foreground mb-1 flex items-center gap-2 rounded-lg px-3 py-2 text-xs font-semibold transition-colors hover:bg-muted/70"
+        >
+          <Settings className="size-3.5" /> Account &amp; security
+        </Link>
         <button
           type="button"
           onClick={handleSignOut}
@@ -1231,6 +1248,20 @@ export function AppShell({
           transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
           className="flex-1 px-4 py-6 sm:px-6 lg:px-8"
         >
+          {needsEmailVerification && (
+            <div
+              role="status"
+              className="bg-warning/10 border-warning/30 mb-5 flex flex-wrap items-center gap-3 rounded-lg border px-4 py-3 text-sm"
+            >
+              <span className="flex-1">
+                <strong>Verify your email</strong> to secure your account and receive receipts,
+                reminders and certificates.
+              </span>
+              <Button asChild size="sm" variant="outline">
+                <Link to="/auth/verify-email">Verify now</Link>
+              </Button>
+            </div>
+          )}
           {accessDenied ? (
             <div className="mx-auto flex min-h-[420px] max-w-xl flex-col items-center justify-center text-center">
               <span className="bg-error/10 text-error grid size-14 place-items-center rounded-2xl text-2xl">

@@ -1,3 +1,4 @@
+import { useTurnstile } from "@/components/turnstile";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { ArrowLeft, ArrowRight, Mail, Send } from "lucide-react";
@@ -26,20 +27,25 @@ function ForgotPasswordPage() {
   const [email, setEmail] = useState("");
   const [error, setError] = useState<string | null>(null);
   const forgot = useForgotPassword();
+  const turnstile = useTurnstile();
   const sent = forgot.isSuccess;
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
-    forgot.mutate(email.trim(), {
-      onError: (err) => {
-        setError(
-          err instanceof ApiError
-            ? err.message
-            : "We couldn't send a reset link. Please try again.",
-        );
+    forgot.mutate(
+      { email: email.trim(), turnstileToken: turnstile.token },
+      {
+        onError: (err) => {
+          turnstile.reset();
+          setError(
+            err instanceof ApiError
+              ? err.message
+              : "We couldn't send a reset link. Please try again.",
+          );
+        },
       },
-    });
+    );
   };
 
   return (
@@ -97,10 +103,15 @@ function ForgotPasswordPage() {
                         />
                       </div>
                     </div>
+                    <turnstile.Widget />
                     {error && (
                       <p className="text-error bg-error/10 rounded-lg px-3 py-2 text-sm">{error}</p>
                     )}
-                    <Button type="submit" className="w-full" disabled={forgot.isPending}>
+                    <Button
+                      type="submit"
+                      className="w-full"
+                      disabled={forgot.isPending || !turnstile.ready}
+                    >
                       {forgot.isPending ? "Sending…" : "Send reset link"}{" "}
                       <ArrowRight className="ml-1.5 size-4" />
                     </Button>

@@ -20,4 +20,10 @@ export interface AppEnv {
   APP_URL: string;
   AI_BASE_URL: string;
   AI_MODEL: string;
+  /** Optional Sentry/GlitchTip DSN — enables server error reporting. */
+  SENTRY_DSN?: string;
+  /** Inbox that receives contact-form notifications (defaults to none). */
+  CONTACT_INBOX?: string;
+  /** Protects GET /v1/cron/run for manual job triggering (optional). */
+  CRON_SECRET?: string;
 }

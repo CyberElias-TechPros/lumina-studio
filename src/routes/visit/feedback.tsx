@@ -1,3 +1,4 @@
+import { useTurnstile } from "@/components/turnstile";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMutation } from "@tanstack/react-query";
 import { useState } from "react";
@@ -30,9 +31,13 @@ function VisitFeedbackPage() {
   const [sent, setSent] = useState(false);
   const [error, setError] = useState("");
 
+  const turnstile = useTurnstile();
   const submit = useMutation({
     mutationFn: async (data: { name: string; email: string; message: string }) => {
-      return submitContact(data);
+      return submitContact({
+        ...data,
+        turnstileToken: turnstile.token,
+      });
     },
     onSuccess: () => setSent(true),
     onError: (err) => {
@@ -77,7 +82,10 @@ function VisitFeedbackPage() {
               </Button>
             </div>
           ) : (
-            <form className="border-border space-y-6 rounded-lg border p-6 sm:p-8" onSubmit={handleSubmit}>
+            <form
+              className="border-border space-y-6 rounded-lg border p-6 sm:p-8"
+              onSubmit={handleSubmit}
+            >
               <div className="grid gap-3 sm:grid-cols-2">
                 <div className="space-y-1.5">
                   <Label htmlFor="f-name">Your name</Label>
@@ -143,7 +151,12 @@ function VisitFeedbackPage() {
 
               {error && <p className="text-error text-sm">{error}</p>}
 
-              <Button type="submit" disabled={submit.isPending} className="w-full">
+              <turnstile.Widget />
+              <Button
+                type="submit"
+                disabled={submit.isPending || !turnstile.ready}
+                className="w-full"
+              >
                 {submit.isPending && <Loader2 className="size-4 animate-spin" />}
                 Send
               </Button>

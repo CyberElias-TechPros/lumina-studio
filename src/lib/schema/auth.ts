@@ -31,12 +31,14 @@ export const signUpSchema = z.object({
   email: z.string().email("Enter a valid email address."),
   password: z.string().min(8, "Password must be at least 8 characters."),
   roleKey: z.string().default("student"),
+  turnstileToken: z.string().optional(),
 });
 
 export type SignUpInput = z.infer<typeof signUpSchema>;
 
 export const magicLinkRequestSchema = z.object({
   email: z.string().email("Enter a valid email address."),
+  turnstileToken: z.string().optional(),
 });
 
 export type MagicLinkRequestInput = z.infer<typeof magicLinkRequestSchema>;

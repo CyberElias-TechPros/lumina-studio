@@ -16,6 +16,7 @@ import { registerLiveMocks } from "@/lib/api/mocks/live";
 import { registerUploadsMocks } from "@/lib/api/mocks/uploads";
 import { registerAiMocks } from "@/lib/api/mocks/ai";
 import { registerEnrollmentMocks } from "@/lib/api/mocks/enrollments";
+import { registerAccountMocks } from "@/lib/api/mocks/account";
 import {
   learningCourses,
   gradebook,
@@ -251,6 +252,7 @@ export function registerAllMocks(): void {
   registerUploadsMocks();
   registerAiMocks();
   registerEnrollmentMocks();
+  registerAccountMocks();
 
   /* Applications (public apply flow) */
   registerMock("POST", "/v1/applications", async (init: ApiRequestInit) => {

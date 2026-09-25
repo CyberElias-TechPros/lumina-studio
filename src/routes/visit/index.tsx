@@ -1,3 +1,4 @@
+import { useTurnstile } from "@/components/turnstile";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMutation } from "@tanstack/react-query";
 import { useState } from "react";
@@ -45,9 +46,11 @@ function VisitPage() {
   const [type, setType] = useState("look");
   const [booked, setBooked] = useState(false);
   const [registerError, setRegisterError] = useState("");
+  const turnstile = useTurnstile();
   const register = useMutation({
     mutationFn: async (data: { name: string; email: string; phone: string; city: string }) => {
       return submitContact({
+        turnstileToken: turnstile.token,
         name: data.name,
         email: data.email,
         message: `Visit interest (${type}): ${data.name}, ${data.phone}, ${data.city}`,
@@ -87,7 +90,9 @@ function VisitPage() {
         {campusGallery.map((shot) => (
           <figure key={shot.id} className="border-border overflow-hidden rounded-lg border">
             <CampusImg id={shot.id} className="aspect-[4/3]" eager={shot.id === "lab-1"} />
-            <figcaption className="text-muted-foreground px-3 py-2 text-xs">{shot.caption}</figcaption>
+            <figcaption className="text-muted-foreground px-3 py-2 text-xs">
+              {shot.caption}
+            </figcaption>
           </figure>
         ))}
       </section>
@@ -121,7 +126,9 @@ function VisitPage() {
               </p>
               <ul className="text-muted-foreground mt-6 space-y-2 text-sm leading-relaxed">
                 <li>Monday–Saturday, 8:00–20:00 WAT</li>
-                <li>No appointment needed to look at the room; call if you want to sit in a class</li>
+                <li>
+                  No appointment needed to look at the room; call if you want to sit in a class
+                </li>
                 <li>Some courses can also be followed online</li>
               </ul>
             </div>
@@ -146,7 +153,9 @@ function VisitPage() {
                         )}
                       >
                         <p className="font-medium">{v.label}</p>
-                        <p className="text-muted-foreground mt-1 text-xs leading-relaxed">{v.desc}</p>
+                        <p className="text-muted-foreground mt-1 text-xs leading-relaxed">
+                          {v.desc}
+                        </p>
                       </button>
                     ))}
                   </div>
@@ -168,14 +177,25 @@ function VisitPage() {
                   </div>
                   <div className="space-y-1.5">
                     <Label htmlFor="v-email">Email</Label>
-                    <Input id="v-email" name="email" type="email" placeholder="you@example.com" required />
+                    <Input
+                      id="v-email"
+                      name="email"
+                      type="email"
+                      placeholder="you@example.com"
+                      required
+                    />
                   </div>
                   <div className="space-y-1.5">
                     <Label htmlFor="v-city">Your city</Label>
                     <Input id="v-city" name="city" placeholder="e.g. Port Harcourt" />
                   </div>
                 </div>
-                <Button type="submit" disabled={register.isPending} className="w-full">
+                <turnstile.Widget />
+                <Button
+                  type="submit"
+                  disabled={register.isPending || !turnstile.ready}
+                  className="w-full"
+                >
                   {register.isPending && <Loader2 className="size-4 animate-spin" />}
                   Send
                 </Button>

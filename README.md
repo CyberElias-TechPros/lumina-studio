@@ -107,7 +107,8 @@ cd backend
 npx wrangler d1 migrations apply DB --remote        # schema
 # seeds (idempotent):
 npx wrangler d1 execute DB --remote --file seeds/<file>-data.sql   # per suite, or db:seed:local's remote equivalent
-npx wrangler secret put AI_API_KEY                  # + EMAIL_API_KEY, PAYSTACK_SECRET_KEY, VAPID_PUBLIC_KEY, VAPID_PRIVATE_KEY
+npx wrangler secret put PAYSTACK_SECRET_KEY         # + EMAIL_API_KEY, TURNSTILE_SECRET_KEY, SENTRY_DSN, CONTACT_INBOX, AI_API_KEY, VAPID_*
+# full list + go-live steps: docs/go-live-checklist.md (template: backend/.dev.vars.example)
 npx wrangler deploy
 ```
 
