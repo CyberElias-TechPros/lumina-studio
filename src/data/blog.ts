@@ -1913,10 +1913,10 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "File Explorer search box with results listed below.",
     body: [
       p(
-        "A lost file is usually not lost. It is in Downloads, or on the Desktop, or in a folder you made in a burst of virtue and then forgot. Panic-clicking makes a second copy, then a third. Search is slower in the hands and faster in the outcome. This lesson is the search box, where to stand when you search, and what to do when the clerk shrugs.",
+        "Kaneng saved her school fees receipt in a hurry, named it document, and by Friday it had migrated into the country of lost files. She clicked through folders the way people shake a pocket — faster and faster, finding nothing. Then her brother asked one question: what did you name it? The honest answer was nothing useful. But the second question worked: what word was inside it? She typed fees into a search box and the receipt stood up and waved. A lost file is usually not lost. It is in Downloads, or on the Desktop, or in a folder you made in a burst of virtue and then forgot. Panic-clicking makes a second copy, then a third. Search is slower in the hands and faster in the outcome.",
       ),
       p(
-        "Windows has two clerks. The taskbar search looks at programs, settings, and some files. File Explorer's box, top-right of a folder window, looks in the room you are standing in, and its inner rooms. Start Explorer in Documents, then search. If you start at This PC, you will wait while it rummages through Windows itself, which is a large house of parts you do not want.",
+        "Windows has two clerks. The taskbar search looks at programs, settings, and some files. File Explorer's box, top-right of a folder window, looks in the room you are standing in, and its inner rooms. Each clerk searches the room he is in with more care than the whole compound — so where would you look first for a school document? Start Explorer in Documents, then search. If you start at This PC, you will wait while it rummages through Windows itself, which is a large house of parts you do not want.",
       ),
       fig(
         "/images/blog/file-search.jpg",
@@ -1925,7 +1925,7 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("Stand in the right room"),
       p(
-        "Open Documents. Click the search box. Type a word you are sure of. Wait for the green bar to finish. If nothing, try Downloads. Then Desktop. Then Pictures. Those four rooms hold almost all human work. If you used a USB last week, plug it in and search there too. A file on a flash drive is not in Documents, however much you remember saving “on the computer.”",
+        "Open Documents. Click the search box. Type a word you are sure of. Wait for the green bar to finish. If nothing, try Downloads. Then Desktop. Then Pictures. Those four rooms hold almost all human work. If you used a USB last week, plug it in and search there too. A file on a flash drive is not in Documents, however much you remember saving on the computer. It looks like the computer should have one memory. It is actually a compound of several rooms, and a drive that has just been plugged in may need a minute before its rooms are indexed — the clerk is still walking the corridors. Search again after the pause before you conclude the file is gone.",
       ),
       p(
         "If you remember when, Explorer can sort results by date. If you remember it was a PDF, type .pdf in the box after a space, or use the filter chips Windows offers: Kind, Document. A word plus a type is a short question: fees .pdf. That is enough.",
@@ -1946,14 +1946,14 @@ export const blogPosts: BlogPost[] = [
         "Search does not need the whole name. It needs a piece you would recognise on a poster — jamb, receipt, Zainab, 2025 — and it will bring every file wearing that piece. Half a word is enough because search is a clerk who reads quickly, not a schoolmaster demanding full spelling. When the pile comes back too large, add the second memory you have: the kind of file it was and roughly when it was made. Search tools carry these filters in the same window. A letter and last month is a small pile. A letter and nothing is a season of opening doors.",
       ),
       p(
-        "Two quiet facts keep the search honest. First, search looks where you are standing more thoroughly than anywhere else, so stand in Documents before you stand in This PC; the clerk searches the room he is in with more care than the whole compound. Second, a drive that has just been plugged in may need a minute before its rooms are indexed — the clerk is still walking the corridors. Search again after the pause before you conclude the file is gone. And when the rescue succeeds, do the second thing: move the file somewhere with a name, so the next time it is not a rescue at all.",
+        "Think, too, of a word inside the file — Windows can search inside many documents, slower. Think of the program: Word's Recent list, Excel's, the browser's downloads history. The last is a list of what landed on the mat, with dates. A bounced download may never have landed at all.",
       ),
       h2("When search finds nothing"),
       p(
-        "You may have named it document. Search cannot invent a name you never gave. Think of a word inside the file — Windows can search inside many documents, slower. Think of the program: Word's Recent list, Excel's, the browser's downloads history. The last is a list of what landed on the mat, with dates. A bounced download may never have landed.",
+        "You may have named it document. Search cannot invent a name you never gave. Then the older drawers: Recycle Bin next, as you learned. Then the USB. Then ask: did I save at all, or only type? If the computer restarted without Ctrl+S, there is no file. That is not a search failure; it is a save that never happened.",
       ),
       p(
-        "Recycle Bin next, as you learned. Then the USB. Then ask: did I save at all, or only type? If the computer restarted without Ctrl+S, there is no file. That is not a search failure. After you find it, move it to the room it should have lived in, and rename it so next term's clerk has something to hold. Search is a rescue. Rooms are how you stop needing rescue every Friday.",
+        "And when the rescue succeeds, do the second thing at once: move the file to the room it should have lived in, and rename it so next term's clerk has something to hold. Kaneng's receipt now lives in Documents/School/2026 and is called fees-receipt-march-2026. Search is a rescue. Rooms are how you stop needing rescue every Friday.",
       ),
     ],
   },
@@ -2203,10 +2203,10 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A laptop connected by a cable to a small extra monitor.",
     body: [
       p(
-        "A laptop has a screen. It can also send the picture down a cable to a monitor, a classroom projector, or a television. The first time, the extra screen is black, or the laptop goes black, or the picture is on the wall but the pointer is lost. None of that is failure of the course. It is a missing choice: duplicate, extend, or second screen only. This lesson is the cable, the key, and those three words.",
+        "Ayuba had twenty minutes of chapel announcements and a projector that showed only his wallpaper. The pointer had vanished somewhere above the ceiling, and the laptop screen had gone politely black. A laptop has a screen. It can also send the picture down a cable to a monitor, a classroom projector, or a television. The first time, the extra screen is black, or the laptop goes black, or the picture is on the wall but the pointer is lost. None of that is failure of the course. It is a missing choice: duplicate, extend, or second screen only. This lesson is the cable, the key, and those three words.",
       ),
       p(
-        "Look at the side of the laptop for HDMI — a wide, flat, notched plug — or USB-C. The projector or monitor uses a matching cable. Seat it fully. Turn the extra screen on. Wait. Windows may notice and copy the desktop by itself. If nothing, Windows+P. A small menu: PC screen only, Duplicate, Extend, Second screen only. Duplicate is what a class usually wants: the same page on the wall and on your desk. Extend is two desks — a pointer can vanish onto the wall while you look at the laptop. Second screen only blacks the laptop. PC screen only ignores the wall.",
+        "Look at the side of the laptop for HDMI — a wide, flat, notched plug — or USB-C. The projector or monitor uses a matching cable. Seat it fully — a half-seated HDMI is the most common black wall in the country. Turn the extra screen on. Wait. Windows may notice and copy the desktop by itself. If nothing, Windows+P. A small menu: PC screen only, Duplicate, Extend, Second screen only. Duplicate is what a class usually wants: the same page on the wall and on your desk. Extend is two desks — a pointer can vanish onto the wall while you look at the laptop. Second screen only blacks the laptop. PC screen only ignores the wall.",
       ),
       fig(
         "/images/blog/second-monitor.jpg",
@@ -2215,10 +2215,10 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("Duplicate for a room, extend for you"),
       p(
-        "Teaching, church, a meeting: Duplicate. You see what they see. If the wall is cropped, the extra screen's resolution is different — Windows will often letterbox. That is all right. Extend is for spreading Word on one side and a browser on the other at a desk. The taskbar may run across both. Drag a window until it appears on the wall. If you lose a window, Windows+P, PC screen only, then Duplicate again. The window comes home.",
+        "Teaching, church, a meeting: Duplicate. You see what they see. If the wall is cropped, the extra screen's resolution is different — Windows will often letterbox. That is all right; the wall sees a cropped version of your world, which is better than a black wall. Extend is for spreading Word on one side and a browser on the other at a desk. The taskbar may run across both. Drag a window until it appears on the wall. If you lose a window — where would you look first when a document has walked off the desk? Windows+P, PC screen only, then Duplicate again. The window comes home.",
       ),
       p(
-        "Sound may follow the picture to a television and leave the laptop silent. The volume lesson applies: tray speaker, choose the laptop speakers if you want the sound here. A projector in a hall often has no useful speakers; use the laptop or a cable to the hall sound if someone has set that up. You do not have to invent it on the morning of the talk.",
+        "One question before every talk: where will the sound come out? Sound walks with the picture along HDMI, so a television may suddenly play through its own speakers while your laptop stays quiet, and a hall projector often has no useful speakers at all. Click the speaker icon and choose where the sound should go — the laptop speakers if you want it here, the hall's cable if someone has set that up. Decide this before the programme starts, not during the opening prayer.",
       ),
       fig(
         "/images/blog/projector.jpg",
@@ -2233,17 +2233,17 @@ export const blogPosts: BlogPost[] = [
       ]),
       h2("The cable that is in the bag today"),
       p(
-        "Every hall has its own cable history. The modern projector takes the same thin HDMI your laptop carries. The older one, still common in churches and school halls, wants the blue fifteen-pin VGA and audio from a separate small green jack. The dongle that converts one to the other lives either in your bag or at the hall — discover which before the programme starts, not during the opening prayer. And remember that sound walks with HDMI into the projector's small speakers, which means the hall may suddenly be playing through the ceiling while your laptop stays silent. Click the speaker icon and choose where the sound should go.",
+        "Every hall has its own cable history. The modern projector takes the same thin HDMI your laptop carries. The older one, still common in churches and school halls, wants the blue fifteen-pin VGA and a separate small green jack for sound. The dongle that converts one to the other lives either in your bag or at the hall — discover which before the programme starts. Adapters fail quietly; try another cable before you blame Windows.",
       ),
       p(
-        "Blurry projector pictures are usually a language problem, not a broken projector: the laptop speaking a resolution the old lens cannot hold. Press Windows and P, choose Duplicate, then let the display settings pick the shared size; if it stays fuzzy, 1280 by 720 is the dialect every old projector understands. Change slides slowly the first minute — the handshake between two machines that have never met takes a breath. Duplicate for the room, extend for your own desk work: two screens is a bigger desk, not two different programmes. Learn Duplicate first. It is the one you will use at every presentation from here.",
+        "Blurry projector pictures are usually a language problem, not a broken projector: the laptop speaking a resolution the old lens cannot hold. Press Windows and P, choose Duplicate, then let the display settings pick the shared size; if it stays fuzzy, 1280 by 720 is the dialect every old projector understands. Change slides slowly the first minute — the handshake between two machines that have never met takes a breath.",
       ),
       h2("When the laptop goes black"),
       p(
         "Second screen only, left on after you unplug, is a famous black laptop. Windows still thinks the picture lives on a wall that has gone home. Windows+P, then the down arrow, then Enter on PC screen only — even if you cannot see it, it often works. Or close the lid, wait, open, or plug the extra screen back in to undo the choice. Do not format. Do not hold power yet.",
       ),
       p(
-        "A church projector on VGA — older, blue, screws — may need an adapter on a new laptop. Adapters fail quietly. Try another cable before you blame Windows. And arrive twenty minutes early. The second screen is easy when it is easy, and a teacher of patience when the hall lights and the HDMI handshake disagree. Duplicate, then teach. Extend later, at your own desk.",
+        "Ayuba's chapel talk now begins with three quiet minutes: cable seated, Duplicate chosen, sound walked to the hall, first slide tested. Two screens is a bigger desk, not two different programmes. Duplicate for the room, extend for your own desk work — and learn Duplicate first. It is the one you will use at every presentation from here.",
       ),
     ],
   },
@@ -2310,7 +2310,7 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A young man looking at a silent laptop, earphones beside it.",
     body: [
       p(
-        "No sound feels like a hardware funeral. Usually it is a closed tap, a pair of earphones Windows still believes in, or a video muted inside itself. You already have the volume lesson. This one is the order to walk when those taps failed, so you do not format a laptop because YouTube was quiet. The speaker inside a laptop is a small, cheap thing, but it rarely dies without a crack or a drowning first.",
+        "Osahon's daughter was mid-recitation on a video call with her grandmother when the sound stopped — picture smiling, voice gone. The family blamed the laptop's soul for ten minutes before the boy in the next flat asked the right question: are those earphones still connected from this morning? The Bluetooth pair from the morning commute was sitting in a bag by the door, quietly holding the sound hostage. No sound feels like a hardware funeral. Usually it is a closed tap, a pair of earphones Windows still believes in, or a video muted inside itself. You already have the volume lesson. This one is the order to walk when those taps failed, so you do not format a laptop because YouTube was quiet.",
       ),
       p(
         "Walk the list without skipping. Mute off, tray slider up. Unplug headphones, including a jack that was half in. Click the tray speaker, choose Speakers or the laptop's real name, not Headphones or HDMI when nothing is plugged in. Play a different file — a second video, a Windows test beep in Settings, Sound. If one video is silent and another is not, the first player is the tap. If everything is silent, keep walking.",
@@ -2320,12 +2320,12 @@ export const blogPosts: BlogPost[] = [
         "A learner with a silent laptop, earphones on the desk.",
         "Earphones on the desk and Windows still set to Headphones is a classic. The machine is speaking into a plug that is empty.",
       ),
-      h2("The mixer, and the HDMI thief"),
+      h2("The mixer, and the output name"),
       p(
-        "Right-click the tray speaker, Open volume mixer. Each program has a slider. One of them may be at zero. Raise it. If you had a projector or a TV connected, sound may still be hunting HDMI. Windows+P, PC screen only, then choose Speakers again. Restart after unplugging the extra screen if the list is haunted.",
+        "Right-click the tray speaker, Open volume mixer. Each program has a slider. One of them may be at zero. Raise it. Then ask where the voice is going at all: click the speaker icon and read the name at the top of the list before you decide the speakers are dead. Bluetooth earphones you wore on the road will happily keep the sound in your pocket after you reach the desk; a USB headset still plugged in does the same. Disconnect them. If you had a projector or a TV connected, sound may still be hunting HDMI — the picture arrives in the hall and the sound follows it. Windows+P, PC screen only, then choose Speakers again. Restart after unplugging the extra screen if the list is haunted.",
       ),
       p(
-        "Settings, System, Sound, Output. Pick the laptop speakers. Click Test. A chime should play. If Test is silent but the device is listed, a driver may have fallen over — Restart first, always Restart before a shop. If the list is empty, Windows cannot see a speaker. That is more serious, and still not a banner “fixer.”",
+        "Settings, System, Sound, Output. Pick the laptop speakers. Click Test. A chime should play. If Test is silent but the device is listed, a driver may have fallen over — Restart first, always Restart before a shop. If the list is empty, Windows cannot see a speaker. That is more serious, and still not a banner fixer.",
       ),
       fig(
         "/images/blog/sound-settings.jpg",
@@ -2343,14 +2343,14 @@ export const blogPosts: BlogPost[] = [
         "Browsers have their own speakers now, and they hide in tabs. A video can be playing cheerfully with its voice switched off by a click you made last week — right-click the tab and the word Unmute is waiting there. Other tabs can be shouting at once, three adverts stacked in three rooms. The volume mixer tells you which program is loud; the tab itself tells you which room. Walk the rooms before you blame the hall. Half of all missing sound in a browser is one quiet tab, and half of the noise complaints are three loud ones.",
       ),
       p(
-        "And check where the voice is going. Bluetooth earphones you wore on the road will happily keep the sound in your pocket after you reach the desk; click the speaker icon and look at the name at the top of the list before you decide the speakers are dead. HDMI to a television or projector is the other thief — the picture arrives in the hall and the sound follows it. The full checklist, in order, is now short enough to say from memory: the mute lights, the tray slider, the mixer, the earphones, the output name, the tab. Silence usually ends at step two.",
+        "The full checklist, in order, is now short enough to say from memory: the mute lights, the tray slider, the mixer, the output name, the earphones, the tab. Silence usually ends at step two.",
       ),
       h2("What not to download"),
       p(
-        "A page that says “audio driver outdated — download now” from a pop-up is the same family as the fake update. Close it. Real driver updates live in Windows Update, or the laptop maker's own site, walked to on purpose. A shop can test the speaker with a known file in five minutes. Backup first if they will keep the machine.",
+        "A page that says audio driver outdated — download now from a pop-up is the same family as the fake update. Close it. Real driver updates live in Windows Update, or the laptop maker's own site, walked to on purpose. A shop can test the speaker with a known file in five minutes. Backup first if they will keep the machine.",
       ),
       p(
-        "Bluetooth earphones connected and sitting in another room will steal output. Disconnect them. A USB headset still plugged in will do the same. Silence is almost always a path to the wrong door. Open the right door, then listen. If after restart, Speakers, mixer, and a second file you still hear nothing, and the laptop never cracked or drank water, then a helper. You will not have wasted their time. You will have already walked the house.",
+        "Osahon's call ended with grandmother heard and the earphones demoted to a drawer with a name. Silence is almost always a path to the wrong door. Open the right door, then listen. If after restart, Speakers, mixer, and a second file you still hear nothing, and the laptop never cracked or drank water, then a helper. You will not have wasted their time. You will have already walked the house.",
       ),
     ],
   },
@@ -3834,10 +3834,10 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A paragraph on a laptop with a few words highlighted.",
     body: [
       p(
-        "Copy, bold, delete, replace — all of them need to know which words. That knowledge is a blue block. People call it highlight, or select. Without it, Ctrl+C copies nothing, or copies the last thing, and you paste an old address into a new letter. With too much of it, one tap of a letter wipes a page, because typing replaces a selection. This lesson is how to paint the words you mean, and how to unpaint them before you type.",
+        "Mobolaji typed a whole replacement paragraph, looked up, and found that the letter had eaten three pages. The page had been wearing a blue coat he never painted — a stray selection — and typing replaces a selection. He caught it with Ctrl+Z and learned the habit that same evening: look for the blue first. Copy, bold, delete, replace — all of them need to know which words. That knowledge is a blue block. People call it highlight, or select. Without it, Ctrl+C copies nothing, or copies the last thing, and you paste an old address into a new letter. This lesson is how to paint the words you mean, and how to unpaint them before you type.",
       ),
       p(
-        "Click at the start of a word. Hold the left mouse button. Drag to the end. Release. The block should cover only what you meant. If your hand shook and took three extra lines, click once in empty space — the block dies — and try again, slower. Double-click a word to take just that word. Triple-click, in Word, often takes the paragraph. Ctrl+A takes everything in the window. You met Ctrl+A as a danger near Delete. It is useful when you mean the whole page, then Copy, then paste into a new file.",
+        "Click at the start of a word. Hold the left mouse button. Drag to the end. Release. The block should cover only what you meant. If your hand shook and took three extra lines, click once in empty space — the block dies — and try again, slower. Ctrl+A takes everything in the window. You met Ctrl+A as a danger near Delete. It is useful when you mean the whole page, then Copy, then paste into a new file.",
       ),
       fig(
         "/images/blog/selecting-text.jpg",
@@ -3846,7 +3846,7 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("The keyboard, when the mouse lies"),
       p(
-        "Click once to plant the cursor. Hold Shift, tap the right arrow. One letter joins the block. Hold Shift, tap down-arrow, a line joins. Shift+Ctrl+arrow takes a word at a time. This is how you select on a trackpad that jumps, or when a finger is tired. Shift+Home takes to the start of the line. Shift+End to the end. You do not need all of them today. Shift and the arrows are enough to stop fighting the pad.",
+        "Click once to plant the cursor. Hold Shift, tap the right arrow. One letter joins the block. Hold Shift, tap down-arrow, a line joins. Shift+Ctrl+arrow takes a word at a time. Shift+Home takes to the start of the line, Shift+End to the end. This is how you select on a trackpad that jumps, or when a finger is tired. And the same Shift trick answers the question every beginner eventually asks a helper: how did you grab exactly that much? The helper clicked at one end, held Shift, clicked at the other end. Two clicks and a held key — no dragging, no shaking hand. You do not need all of them today. Shift and the arrows are enough to stop fighting the pad.",
       ),
       p(
         "If you click in the margin of Word, you may select a whole line. That is a feature. If the whole document goes blue, you Ctrl+A'd or you clicked the corner. Click once in the page. The blue should leave. Then select smaller. A selection that covers a picture as well as words will copy the picture. Click the picture once to select only it, or avoid it with the arrows.",
@@ -3864,17 +3864,17 @@ export const blogPosts: BlogPost[] = [
       ]),
       h2("The double-click, the triple-click, and the shift trick"),
       p(
-        "Dragging with the mouse is the beginner's selection and the slowest. A double-click takes one whole word with its punctuation; a triple-click takes the entire paragraph in one gesture. Learn those two and half the rage disappears. The keyboard finishes the kit: hold Shift and click somewhere else, and everything between where the cursor was and where you clicked is taken — the precise selection for a long passage where dragging would slip. Home and End with Shift take the whole line from wherever the cursor sits. Selection is not a small skill. It is the difference between editing a letter and wrestling it.",
+        "Dragging with the mouse is the beginner's selection and the slowest. Above it sit three shortcuts worth the week they take to learn. Double-click a word to take just that word, punctuation included. Triple-click, in Word, takes the whole paragraph in one gesture. And hold Shift, then click somewhere else, and everything between where the cursor was and where you clicked is taken — the precise selection for a long passage where dragging would slip. Learn those and half the rage disappears. Selection is not a small skill. It is the difference between editing a letter and wrestling it.",
       ),
       p(
-        "Watch the blue as it forms and the picture is honest: the highlight shows exactly what the machine believes you mean. On the phone, the two little handles after a long-press are fiddly but generous — drag them wider than needed and shrink back, which is easier than creeping forwards. In forms and PDFs the same gestures select the words under the glass. And when you select a figure to copy — an account number, a reference — double-clicking may take the word but not its full number, so triple-click the paragraph and copy the figure cleanly. What you see highlighted is exactly what the plate will carry.",
+        "Watch the blue as it forms and the picture is honest: the highlight shows exactly what the machine believes you mean. And when you select a figure to copy — an account number, a reference — double-clicking may take the word but not its full number, so triple-click the paragraph and copy the figure cleanly. What you see highlighted is exactly what the plate will carry.",
       ),
       h2("On phones, and in forms"),
       p(
-        "On a phone, press and hold a word, then drag the two handles. Copy sits in a small menu. The handles are fussy. Zoom first, last lesson but a few, then hold. In a web form, select the box's text with Ctrl+A inside the box — click the box first — not Ctrl+A on the whole page, which may try to copy the site. A greyed box cannot be selected; it is not yours to copy, or it is already filled.",
+        "On a phone, press and hold a word, then drag the two little handles. Copy sits in a small menu. The handles are fiddly but generous — zoom first, as the zoom lesson taught, then hold; drag them wider than needed and shrink back, which is easier than creeping forwards. In a web form, select the box's text with Ctrl+A inside the box — click the box first — not Ctrl+A on the whole page, which may try to copy the site. A greyed box cannot be selected; it is not yours to copy, or it is already filled.",
       ),
       p(
-        "Selection is a quiet skill that sits under copy, under bold, under replace, under “why did my letter disappear.” Look for the blue before you press anything that changes words. If there is blue you did not paint, click it off. Then act. The machine is literal. It will spend its next key on whichever words are wearing the blue coat.",
+        "Selection is a quiet skill that sits under copy, under bold, under replace, under why did my letter disappear. Look for the blue before you press anything that changes words. If there is blue you did not paint, click it off. Then act. The machine is literal. It will spend its next key on whichever words are wearing the blue coat.",
       ),
     ],
   },
@@ -6827,10 +6827,10 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A young analyst at a desk with two screens showing lists of security alerts.",
     body: [
       p(
-        "Everything on this shelf has a shadow profession. The OTP lesson, the fake link, the prize that wants a fee — on the other side of each of those sits a person employed to notice: to watch the doors of an organisation the way you learned to watch your own. That person is the cybersecurity analyst, and it is the most common front door into security work anywhere in the world. This chapter of notes opens that door and describes the rooms, because many of you asked what all this care can become.",
+        "Everything on this shelf has a shadow profession. The OTP lesson, the fake link, the prize that wants a fee — on the other side of each of those sits a person employed to notice: to watch the doors of an organisation the way you learned to watch your own. That person is the cybersecurity analyst, and it is the most common front door into security work anywhere in the world. Chinasa met her first analyst at a wedding in Enugu and asked what he actually did all day; he said, I read the building's visitor book and shout when someone signs in twice at once. This chapter of notes opens that door and describes the rooms, because many of you asked what all this care can become.",
       ),
       p(
-        "The day, honestly described, is triage. The analyst sits before a queue of alerts — a machine flagged a login from two countries in one hour; a staff member reported an email that smells like the link lesson; a laptop began talking to an address no list can explain. Each alert is a knock. Most knocks are wind: a traveller's VPN, a marketing tool nobody registered, a user who mistyped a password twenty times. The analyst's craft is telling wind from footfalls quickly — checking logs, asking the machine's own records what happened, closing the innocent, and escalating the real ones to people who can pull a cable or reset a kingdom.",
+        "The day, honestly described, is triage. The analyst sits before a queue of alerts — a machine flagged a login from two countries in one hour; a staff member reported an email that smells like the link lesson; a laptop began talking to an address no list can explain. Each alert is a knock. Most knocks are wind: a traveller's VPN, a marketing tool nobody registered, a user who mistyped a password twenty times. The analyst's craft is telling wind from footfalls quickly — checking logs, asking the machine's own records what happened, closing the innocent, and escalating the real ones to people who can pull a cable or reset a kingdom. So where would you look first when one knock is real? The records — the logs are the witness that never forgets the hour.",
       ),
       fig(
         "/images/blog/analyst-monitor-grid.jpg",
@@ -6839,7 +6839,7 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("What the work actually asks of a person"),
       p(
-        "Not a genius. Curiosity that survives repetition, the patience to read a log the way a nurse reads a chart, and calm — because the day the real incident arrives, the room needs a person who writes the time down. The technical floor is lower than people fear: you must know how computers and networks speak — the rooms, the roads, the logs — and then the watching tools, which the next few lessons name. What cannot be taught later is the disposition these notes have been drilling since lesson six: refuse hurry, verify the channel, write things down.",
+        "Not a genius. Curiosity that survives repetition, the patience to read a log the way a nurse reads a chart, and calm — because the day the real incident arrives, the room needs a person who writes the time down. The technical floor is lower than people fear: you must know how computers and networks speak — the rooms, the roads, the logs — and then the watching tools, which the next few lessons name. What cannot be taught later is the disposition these notes have been drilling since the first passwords lesson: refuse hurry, verify the channel, write things down.",
       ),
       p(
         "How a person walks in, from this shelf: the basics you now own, then networking properly, then the security tools, then a first role — often watching and triaging, night shifts included, because attacks keep office hours in every time zone at once. In Nigeria, the ladder is real but the bigger room is remote: an analyst in Port Harcourt with clean fundamentals and honest English can watch doors for a company in Europe or America, paid in the currency of those doors. Certificates open interviews later; the fundamentals open everything first. That is the honest order, and any path that skips it is selling you the certificate's shine.",
@@ -7614,7 +7614,7 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A designer's desk with colour swatches, sketches and a laptop showing a layout.",
     body: [
       p(
-        "The poster lesson said it once and this trade is built on it: a flyer is not decoration, it is a sentence arranged so a stranger reads it in one glance. The graphic designer is the person who arranges. Weddings, elections, churches, brands, the suya spot by the junction — every message here competes in the loudest visual street on earth, and the designer's job is to make one message land clean among the noise. Not prettiness. Clarity with a temperature. If you have ever rearranged a shelf until it felt right, or chosen the cloth that made the outfit, you have already done the work's first hour.",
+        "The poster lesson said it once and this trade is built on it: a flyer is not decoration, it is a sentence arranged so a stranger reads it in one glance. The graphic designer is the person who arranges. Weddings, elections, churches, brands, the suya spot by the junction — every message here competes in the loudest visual street on earth, and the designer's job is to make one message land clean among the noise. Not prettiness. Clarity with a temperature. Veronica rearranges her mother's shop shelf until it feels right every single morning, and told herself for years that was not a skill. It was the trade's first hour, unpaid and already running.",
       ),
       p(
         "What the work actually is, day to day: listening first, because the client will say logo when they mean identity and beautiful when they mean trustworthy, and the designer's first skill is translating. Then hierarchy — what the eye reads first, second, third: name, offer, how to reach us, in that order, at those sizes, whether the brief is a funeral programme or a bank campaign. Then restraint — two fonts, three colours, one idea per page; the difference between a professional design and a market noise is what the designer had the discipline to leave out. The tools begin free on the phone and grow into the desktop suites when the work demands them; the camera lesson's lighting and the scanning lesson's flat surfaces are already half of every clean mock-up you will ever admire.",
@@ -7626,10 +7626,10 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("How taste is actually built"),
       p(
-        "Nobody is born with the eye; the eye is a filing cabinet. Fill it deliberately: collect a hundred designs you admire — wedding suites, brand boards, album covers, bank campaigns — and for each, ask one question: where did my eye land first, and why? Copy them shamelessly in practice, the way apprentices have always learned tailoring — recreate the hierarchy until your hands understand the argument. Then vary: same flyer, three hierarchies; same name, five type pairings. The taste that clients pay for is thousands of small comparisons, filed. And the trade's professional manners matter as much as the eye: the brief written back to the client in their own words before any design begins, two concepts shown rather than ten, revisions bounded in writing, and the files delivered in the formats people actually need — the PDF lesson's knowledge, monetised.",
+        "Nobody is born with the eye; the eye is a filing cabinet. Fill it deliberately: collect a hundred designs you admire — wedding suites, brand boards, album covers, bank campaigns — and for each, ask one question: where did my eye land first, and why? Copy them shamelessly in practice, the way apprentices have always learned tailoring — recreate the hierarchy until your hands understand the argument. Then vary: same flyer, three hierarchies; same name, five type pairings. The taste that clients pay for is thousands of small comparisons, filed.",
       ),
       p(
-        "The first paid jobs arrive the way they do across this whole shelf: the church programme, the cousin's shop banner, the school's flyer — small works, done exactly, collected as proof. The catalog's own advice to design students holds: small jobs — event flyers, social posts, church graphics — once the portfolio carries three to five solid pieces; price modestly at first, deliver precisely what was promised, and most beginners meet their first repeat client within months. From there the ladder is real: brand identities, retainers with businesses who need you monthly, and the print shops and event planners who send steady work to the designer whose files never make their machines complain.",
+        "And the trade's professional manners matter as much as the eye: the brief written back to the client in their own words before any design begins, two concepts shown rather than ten, revisions bounded in writing, and the files delivered in the formats people actually need — the PDF lesson's knowledge, monetised. A designer who sends a printer the right file once is remembered by every printer on the street, and printers are a quiet second sales team.",
       ),
       fig(
         "/images/blog/portfolio-design-spread.jpg",
@@ -7642,7 +7642,10 @@ export const blogPosts: BlogPost[] = [
         "Do one real free job for a cause you respect, and deliver it with all the file formats a printer could ask for.",
         "Two concepts, bounded revisions, written brief — the three manners that separate a trade from a favour.",
       ]),
-      h2("The trade of making people look as good as they are"),
+      h2("The first jobs, and the ladder after"),
+      p(
+        "The first paid jobs arrive the way they do across this whole shelf: the church programme, the cousin's shop banner, the school's flyer — small works, done exactly, collected as proof. The academy's own advice to design students holds: small jobs — event flyers, social posts, church graphics — once the portfolio carries three to five solid pieces; price modestly at first, deliver precisely what was promised, and most beginners meet their first repeat client within months. From there the ladder is real: brand identities, retainers with businesses who need you monthly, and the print shops and event planners who send steady work to the designer whose files never make their machines complain.",
+      ),
       p(
         "Every business on your street already believes in its own message; what it lacks is the person who can make a stranger believe it in one glance. That is what design sells, and why it survives every platform shift: tools will change their names again, but hierarchy, restraint and listening are older than printing. The table is cheap to set, the practice is free, and the first client is probably within three doors of you. Sit down, file a hundred examples, and let the eye grow the way every skill on this shelf grew — one honest hour at a time.",
       ),
@@ -8554,7 +8557,7 @@ export const blogPosts: BlogPost[] = [
       "A laptop screen showing a short email being composed with a clear subject line filled.",
     body: [
       p(
-        "Your first email was written to be correct. This one is written to be answered — a different craft, because the person receiving it is drowning. A working professional clears a hundred messages a day between meetings, giving each about twenty seconds: open, scan, decide — reply, later, or never. The craft of email is winning those twenty seconds, and every rule below serves that one mercy: make it easy to say yes.",
+        "Your first email was written to be correct. This one is written to be answered — a different craft, because the person receiving it is drowning. A working professional clears a hundred messages a day between meetings, giving each about twenty seconds: open, scan, decide — reply, later, or never. Nnabuike watched a busy bursar work an inbox one afternoon and counted: some letters died in four seconds, one got a reply in thirty because it asked for exactly one thing. The craft of email is winning those twenty seconds, and every rule below serves that one mercy: make it easy to say yes.",
       ),
       p(
         "The subject line is half the battle, because it decides whether the letter opens at all. It states the thing, in plain words, with the decision needed: Invoice 12 for approval — due Friday, not hello or quick question or, sin of sins, empty. The first sentence then does the second half of the work: it states the ask — I am writing to ask whether the budget can cover two more laptops this term. Not a warm-up paragraph about the weather of the matter; the ask, first, so a reader who can answer it in one line has already finished. Then the short middle: two or three tight paragraphs, one idea each, white space between — the letter lesson's manners with the analyst's economy. One ask per email. The letter asking for a meeting, a document and a decision gets sent to later, which is where letters go to die; the letter asking for one thing gets the reply today.",
@@ -9256,7 +9259,7 @@ export const blogPosts: BlogPost[] = [
       "A phone showing a loan app offering a large amount with one big button, a hesitant thumb above it.",
     body: [
       p(
-        "It arrives on a slow evening, exactly when the pocket is lightest: a bright app promising one hundred thousand naira in fifteen minutes. No paperwork, no collateral, no questions — just allow us a few permissions and the money lands. The needs of this life are real, and the offer is engineered to meet one of them at its weakest hour. This lesson opens the machine while it is switched off, so you can see the gears: because the money is real, but the interest is collected in a currency you did not agree to spend — your reputation, and the phonebook of everybody you love.",
+        "It arrives on a slow evening, exactly when the pocket is lightest: a bright app promising one hundred thousand naira in fifteen minutes. No paperwork, no collateral, no questions — just allow us a few permissions and the money lands. Saadatu's cousin accepted that offer on a Tuesday and by the second Friday her church group had received a message about her. The needs of this life are real, and the offer is engineered to meet one of them at its weakest hour. This lesson opens the machine while it is switched off, so you can see the gears: because the money is real, but the interest is collected in a currency you did not agree to spend — your reputation, and the phonebook of everybody you love.",
       ),
       p(
         "The gears. The loan is small — often twenty-five thousand — and the tenor is short: seven or fourteen days. The effective rate, stacked with fees, can reach a third of what was borrowed inside a month. When the due date passes — and it always passes, because fourteen days is a machine designed to be missed — the rollover button appears, and the debt grows a tail. Then the gears you were never shown: the permissions you tapped past at installation handed the app your entire contact list, your photographs, sometimes your messages. The first morning of default, a message goes to your mother, your pastor, your employer's HR: this person is a wanted fraudster, help us recover our money. There is no court in that sentence and no truth in it either — it is defamation as a collection strategy, and it works because shame does what the app cannot: it makes you borrow from elsewhere to silence the broadcast, which feeds the next app, and the spiral turns.",
@@ -9268,7 +9271,10 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("What the law says, and what your thumb must never do"),
       p(
-        "The law, plainly: lending at scale is a licensed trade in this country. Digital lenders must be registered with the consumer-credit regulator and follow rules the regulator publishes in lists you can read — which companies are approved, and which are being pursued. The predator apps sit outside those lists, and their collections are not enforcement; they are crimes wearing an enforcement costume — harassment, defamation, unlawful contact use. The defences, in the order they should happen. Before: check the list on the regulator's own site — the portals lesson's law — and prefer the licensed arms of the banks you know, whose rates are stated, whose tenors are months, and whose collectors write letters instead of staging broadcasts. At installation: deny the contacts permission, flat, and see whether the app still works — a legitimate lender underwrites your identity and your bank record, not your aunt's number; an app that refuses to lend without your phonebook has told you exactly what it intends to do with it. And if you are already inside: do not roll over into the next app to silence this one — that is the spiral's only fuel. Document everything — screenshots of the threats, the broadcasts, the numbers — and report to the regulator and the police; the documented borrower has quietly become the predator's problem.",
+        "The law, plainly: lending at scale is a licensed trade in this country. Digital lenders must be registered with the consumer-credit regulator and follow rules the regulator publishes in lists you can read — which companies are approved, and which are being pursued. The predator apps sit outside those lists, and their collections are not enforcement; they are crimes wearing an enforcement costume — harassment, defamation, unlawful contact use.",
+      ),
+      p(
+        "The defences, in the order they should happen. Before: check the list on the regulator's own site — the portals lesson's law — and prefer the licensed arms of the banks you know, whose rates are stated, whose tenors are months, and whose collectors write letters instead of staging broadcasts. At installation: deny the contacts permission, flat, and see whether the app still works — a legitimate lender underwrites your identity and your bank record, not your aunt's number; an app that refuses to lend without your phonebook has told you exactly what it intends to do with it. And if you are already inside: do not roll over into the next app to silence this one — that is the spiral's only fuel. Document everything — screenshots of the threats, the broadcasts, the numbers — and report to the regulator and the police; the documented borrower has quietly become the predator's problem.",
       ),
       fig(
         "/images/blog/loan-threat-screenshots.jpg",
@@ -9276,7 +9282,7 @@ export const blogPosts: BlogPost[] = [
         "The evidence, gathered calmly. Screenshots with dates and numbers turn a shouted-down victim into a complainant with a case.",
       ),
       p(
-        "The deeper cure sits in the books of lesson one hundred and forty-three: the rain slice. A small, boring emergency fund — even a thin one — is the difference between a bad week and a hijacked phonebook. And the family word lesson's honesty, pointed at money: the relative who lends fifty thousand at zero percent with a plate of food attached is the original licensed lender, and she underwrites you with love instead of your contacts. Borrow from the people and institutions that can afford your worst month. The apps that cannot wait fourteen days for their money were never waiting to help you at all.",
+        "The deeper cure sits in the money lessons' rain slice. A small, boring emergency fund — even a thin one — is the difference between a bad week and a hijacked phonebook. And the family word lesson's honesty, pointed at money: the relative who lends fifty thousand at zero percent with a plate of food attached is the original licensed lender, and she underwrites you with love instead of your contacts. Borrow from the people and institutions that can afford your worst month. The apps that cannot wait fourteen days for their money were never waiting to help you at all.",
       ),
       fig(
         "/images/blog/contacts-permission-denied.jpg",
@@ -11269,7 +11275,7 @@ export const blogPosts: BlogPost[] = [
         "For the student, the assistant is either the best teacher in the house or the thief of the education, and the difference is one line: whether the work passes through the student's hands. Used honestly, the machine is the patient tutor every parent wishes they could afford — the one who explains the same idea in four ways without irritation, who sets ten questions and marks them at midnight, who converts a confusing syllabus into a timetable that fits around the chores. Used dishonestly, it is a very fast way to hand in work you cannot do, collect a mark you did not earn, and arrive at the examination hall — the one room the machine cannot enter with you — as a stranger to your own notes. The examination is the audit of learning. It has always been coming.",
       ),
       p(
-        "Here is the honest desk, arranged like the study table of the learning lessons. The book is open and the notebook is beside it — the two habits of the video lesson, unchanged. The assistant sits at the side, on call for exactly four errands. Explain slowly: I did not understand simultaneous equations; teach me as if I am ten, with one example from the market. Quiz me: here is my summary of the topic; ask me ten questions without the answers and mark me strictly. Make the plan: my exam is in six weeks and I can study two hours a night; draw the timetable with Sundays lighter. And translate the phrase: this English paragraph in simple words, then the same idea in our language so I can teach my sister. Four errands, all of which end with more knowledge in the student's head than before. That is the whole test.",
+        "Here is the honest desk, arranged like the study table of the learning lessons. The book is open and the notebook is beside it — the two habits of the video lesson, unchanged. The assistant sits at the side, on call for exactly four errands. Explain slowly: I did not understand simultaneous equations; teach me as if I am ten, with one example from the market. Quiz me: here is my summary of the topic; ask me ten questions without the answers and mark me strictly. Make the plan: my exam is in six weeks and I can study two hours a night; draw the timetable with Sundays lighter. And translate the phrase: this English paragraph in simple words, then the same idea in our language so I can teach my sister. Hassanat keeps a card with those four written on it propped against the lamp. Four errands, all of which end with more knowledge in the student's head than before. That is the whole test.",
       ),
       fig(
         "/images/blog/student-studying-with-laptop-night.jpg",
@@ -11320,7 +11326,7 @@ export const blogPosts: BlogPost[] = [
       "An office worker at a tidy wooden desk drafting a letter on a laptop, papers and a file tray beside them.",
     body: [
       p(
-        "At the office the assistant earns its seat fastest, because the office runs on the four talents exactly: letters, summaries, plans, and rewrites, in a river that never stops. The circular from the head office arrives at nine and must be understood by nine-thirty: paste it, ask for the five points and what they demand of the branch. The complaint letter from the customer must be answered with warmth and firmness by noon: give the box the facts and the tone fence and edit the draft over lunch instead of sweating over it before breakfast. The spreadsheet formula that will not behave: describe the columns in words and it will write the SUM or the IF correctly nine times in ten, then you test it on a corner of the data the way every honest builder does. Used like this, the tool returns an hour a day to the worker who adopts it deliberately — an hour that, by the way, the employer will eventually expect, which is why learning it quietly is also career insurance.",
+        "At the office the assistant earns its seat fastest, because the office runs on the four talents exactly: letters, summaries, plans, and rewrites, in a river that never stops. Oghene runs a small clearing office in Warri, and the tool returned him an hour a day within the first fortnight. The circular from the head office arrives at nine and must be understood by nine-thirty: paste it, ask for the five points and what they demand of the branch. The complaint letter from the customer must be answered with warmth and firmness by noon: give the box the facts and the tone fence and edit the draft over lunch instead of sweating over it before breakfast. The spreadsheet formula that will not behave: describe the columns in words and it will write the SUM or the IF correctly nine times in ten, then you test it on a corner of the data the way every honest builder does. Used like this, the tool returns an hour a day to the worker who adopts it deliberately — an hour that, by the way, the employer will eventually expect, which is why learning it quietly is also career insurance.",
       ),
       p(
         "But the office is where the one large rule joins the four errands, and the rule has no exceptions dressed as emergencies. Other people's secrets never walk into the confessional. Not the salary schedule pasted in for a fairness comment. Not the client's contract pasted in for a clause summary. Not the patient's file, the pupil's record, the supplier's price list, the boss's confidential circular, the BVN in the footer of any document. The words typed into the assistant become the assistant company's business — kept on their servers, subject to their policies, their breaches, their terms of service that few of us have read and all of us have accepted. The paste button is the door of the building. Do not carry the client's files through it because the doorman is helpful.",
