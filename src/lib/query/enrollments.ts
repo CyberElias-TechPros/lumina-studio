@@ -1,6 +1,18 @@
-import { useQuery } from "@tanstack/react-query";
-import { fetchEnrollment } from "@/lib/api/enrollments";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { usePaginatedQuery } from "@/lib/query/hooks";
+import {
+  fetchEnrollment,
+  fetchAdminEnrollments,
+  updateEnrollmentStage,
+  type AdminEnrollment,
+  type EnrollmentStage,
+} from "@/lib/api/enrollments";
 import { fetchApplicationStatus as fetchLegacyStatus } from "@/lib/api/applications";
+
+export const enrollmentKeys = {
+  status: (ref: string) => ["enrollments", "status", ref] as const,
+  admin: (stage?: string) => ["enrollments", "admin", stage ?? "all"] as const,
+};
 
 export interface NormalizedEnrollmentStatus {
   ref: string;
@@ -22,9 +34,28 @@ export interface NormalizedEnrollmentStatus {
  * (richer: payment state, events), falls back to the legacy applications
  * pipeline for older references.
  */
+/** Admissions/finance — all v2 registrations, optional stage filter. */
+export function useAdminEnrollments(stage?: string) {
+  return usePaginatedQuery<AdminEnrollment>(enrollmentKeys.admin(stage), (cursor) =>
+    fetchAdminEnrollments(stage, cursor),
+  );
+}
+
+/** Admissions/finance — advance a registration along the pipeline. */
+export function useUpdateEnrollmentStage() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (input: { ref: string; stage: EnrollmentStage; note?: string }) =>
+      updateEnrollmentStage(input.ref, input.stage, input.note),
+    onSuccess: () => {
+      void queryClient.invalidateQueries({ queryKey: ["enrollments", "admin"] });
+    },
+  });
+}
+
 export function useEnrollmentStatus(ref: string) {
   return useQuery({
-    queryKey: ["enrollments", "status", ref],
+    queryKey: enrollmentKeys.status(ref),
     enabled: Boolean(ref),
     retry: false,
     queryFn: async (): Promise<NormalizedEnrollmentStatus> => {

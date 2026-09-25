@@ -142,6 +142,7 @@ import { Route as AppAdmissionsCommunicationRouteImport } from './routes/app/adm
 import { Route as AppAdmissionsDocumentsRouteImport } from './routes/app/admissions/documents'
 import { Route as AppAdmissionsEnrollmentRouteImport } from './routes/app/admissions/enrollment'
 import { Route as AppAdmissionsInterviewsRouteImport } from './routes/app/admissions/interviews'
+import { Route as AppAdmissionsRegistrationsRouteImport } from './routes/app/admissions/registrations'
 import { Route as AppAdmissionsReportsRouteImport } from './routes/app/admissions/reports'
 import { Route as AppAdmissionsReviewRouteImport } from './routes/app/admissions/review'
 import { Route as AppAlumniIndexRouteImport } from './routes/app/alumni/index'
@@ -1077,6 +1078,12 @@ const AppAdmissionsInterviewsRoute = AppAdmissionsInterviewsRouteImport.update({
   path: '/app/admissions/interviews',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AppAdmissionsRegistrationsRoute =
+  AppAdmissionsRegistrationsRouteImport.update({
+    id: '/app/admissions/registrations',
+    path: '/app/admissions/registrations',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const AppAdmissionsReportsRoute = AppAdmissionsReportsRouteImport.update({
   id: '/app/admissions/reports',
   path: '/app/admissions/reports',
@@ -2608,6 +2615,7 @@ export interface FileRoutesByFullPath {
   '/app/admissions/documents': typeof AppAdmissionsDocumentsRoute
   '/app/admissions/enrollment': typeof AppAdmissionsEnrollmentRoute
   '/app/admissions/interviews': typeof AppAdmissionsInterviewsRoute
+  '/app/admissions/registrations': typeof AppAdmissionsRegistrationsRoute
   '/app/admissions/reports': typeof AppAdmissionsReportsRoute
   '/app/admissions/review': typeof AppAdmissionsReviewRoute
   '/app/alumni/events': typeof AppAlumniEventsRoute
@@ -3008,6 +3016,7 @@ export interface FileRoutesByTo {
   '/app/admissions/documents': typeof AppAdmissionsDocumentsRoute
   '/app/admissions/enrollment': typeof AppAdmissionsEnrollmentRoute
   '/app/admissions/interviews': typeof AppAdmissionsInterviewsRoute
+  '/app/admissions/registrations': typeof AppAdmissionsRegistrationsRoute
   '/app/admissions/reports': typeof AppAdmissionsReportsRoute
   '/app/admissions/review': typeof AppAdmissionsReviewRoute
   '/app/alumni/events': typeof AppAlumniEventsRoute
@@ -3410,6 +3419,7 @@ export interface FileRoutesById {
   '/app/admissions/documents': typeof AppAdmissionsDocumentsRoute
   '/app/admissions/enrollment': typeof AppAdmissionsEnrollmentRoute
   '/app/admissions/interviews': typeof AppAdmissionsInterviewsRoute
+  '/app/admissions/registrations': typeof AppAdmissionsRegistrationsRoute
   '/app/admissions/reports': typeof AppAdmissionsReportsRoute
   '/app/admissions/review': typeof AppAdmissionsReviewRoute
   '/app/alumni/events': typeof AppAlumniEventsRoute
@@ -3813,6 +3823,7 @@ export interface FileRouteTypes {
     | '/app/admissions/documents'
     | '/app/admissions/enrollment'
     | '/app/admissions/interviews'
+    | '/app/admissions/registrations'
     | '/app/admissions/reports'
     | '/app/admissions/review'
     | '/app/alumni/events'
@@ -4213,6 +4224,7 @@ export interface FileRouteTypes {
     | '/app/admissions/documents'
     | '/app/admissions/enrollment'
     | '/app/admissions/interviews'
+    | '/app/admissions/registrations'
     | '/app/admissions/reports'
     | '/app/admissions/review'
     | '/app/alumni/events'
@@ -4614,6 +4626,7 @@ export interface FileRouteTypes {
     | '/app/admissions/documents'
     | '/app/admissions/enrollment'
     | '/app/admissions/interviews'
+    | '/app/admissions/registrations'
     | '/app/admissions/reports'
     | '/app/admissions/review'
     | '/app/alumni/events'
@@ -5016,6 +5029,7 @@ export interface RootRouteChildren {
   AppAdmissionsDocumentsRoute: typeof AppAdmissionsDocumentsRoute
   AppAdmissionsEnrollmentRoute: typeof AppAdmissionsEnrollmentRoute
   AppAdmissionsInterviewsRoute: typeof AppAdmissionsInterviewsRoute
+  AppAdmissionsRegistrationsRoute: typeof AppAdmissionsRegistrationsRoute
   AppAdmissionsReportsRoute: typeof AppAdmissionsReportsRoute
   AppAdmissionsReviewRoute: typeof AppAdmissionsReviewRoute
   AppAlumniEventsRoute: typeof AppAlumniEventsRoute
@@ -6210,6 +6224,13 @@ declare module '@tanstack/react-router' {
       path: '/app/admissions/interviews'
       fullPath: '/app/admissions/interviews'
       preLoaderRoute: typeof AppAdmissionsInterviewsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/admissions/registrations': {
+      id: '/app/admissions/registrations'
+      path: '/app/admissions/registrations'
+      fullPath: '/app/admissions/registrations'
+      preLoaderRoute: typeof AppAdmissionsRegistrationsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/app/admissions/reports': {
@@ -8297,6 +8318,7 @@ const rootRouteChildren: RootRouteChildren = {
   AppAdmissionsDocumentsRoute: AppAdmissionsDocumentsRoute,
   AppAdmissionsEnrollmentRoute: AppAdmissionsEnrollmentRoute,
   AppAdmissionsInterviewsRoute: AppAdmissionsInterviewsRoute,
+  AppAdmissionsRegistrationsRoute: AppAdmissionsRegistrationsRoute,
   AppAdmissionsReportsRoute: AppAdmissionsReportsRoute,
   AppAdmissionsReviewRoute: AppAdmissionsReviewRoute,
   AppAlumniEventsRoute: AppAlumniEventsRoute,

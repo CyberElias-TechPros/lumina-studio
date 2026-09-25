@@ -5,6 +5,7 @@ import {
   ClipboardCheck,
   FileText,
   Filter,
+  Inbox,
   MessagesSquare,
   UserRoundCheck,
 } from "lucide-react";
@@ -67,6 +68,13 @@ const screens = [
     desc: "Paid vs pending",
     path: "/app/admissions/enrollment",
     tone: "bg-community/10 text-community",
+  },
+  {
+    icon: Inbox,
+    label: "Registration funnel",
+    desc: "v2 leads with payment status",
+    path: "/app/admissions/registrations",
+    tone: "bg-primary/10 text-primary",
   },
 ];
 

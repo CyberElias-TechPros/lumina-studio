@@ -372,6 +372,30 @@ async function logEvent(db: AppEnv["DB"], ref: string, event: string, detail = "
     .run();
 }
 
+/**
+ * Free-service automation (docs/enrollment-automation.md §4): push each new
+ * registration to a Google Sheet through an Apps Script web app. No-op when
+ * GOOGLE_SHEET_WEBHOOK_URL is not set. Best-effort and detached via
+ * waitUntil — a slow or failing mirror never blocks or fails the registration.
+ */
+function mirrorLeadToSheet(
+  c: { env: AppEnv; executionCtx?: { waitUntil: (p: Promise<unknown>) => void } },
+  url: string | undefined,
+  payload: Record<string, unknown>,
+): void {
+  if (!url) return;
+  const promise = fetch(url, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+  })
+    .then((res) => {
+      if (!res.ok) console.warn(`[leads] sheet mirror HTTP ${res.status}`);
+    })
+    .catch((err) => console.warn("[leads] sheet mirror failed", err));
+  c.executionCtx?.waitUntil(promise);
+}
+
 interface EnrollmentRow {
   id: string;
   ref: string;
@@ -598,6 +622,31 @@ enrollments.post("/", async (c) => {
     "submitted",
     `${program.title} · ${input.paymentPlan} plan · ${input.mode}`,
   );
+
+  // Free-service automation: mirror the lead to Google Sheets in real time.
+  mirrorLeadToSheet(c, c.env.GOOGLE_SHEET_WEBHOOK_URL, {
+    ref,
+    createdAt: now,
+    fullName,
+    email,
+    phone: input.phone,
+    city: input.city,
+    programTitle: program.title,
+    kind: program.kind,
+    feeTotal: program.fee,
+    plan: input.paymentPlan,
+    method: input.paymentMethod,
+    depositAmount: deposit,
+    paymentStatus: "unpaid",
+    stage: "submitted",
+    mode: input.mode,
+    scheduleDays: input.scheduleDays,
+    timeSlot: input.timeSlot,
+    goal: input.goal ?? "",
+    referredBy: input.referredBy ?? "",
+    hasLaptop: input.hasLaptop,
+    statusUrl: `${(c.env.APP_URL || "https://cea.ng").replace(/\/+$/, "")}/apply/status/${ref}`,
+  });
 
   // Fire-and-forget confirmation email (console provider in dev).
   try {

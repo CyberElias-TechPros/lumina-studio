@@ -198,10 +198,28 @@ function syncEnrollments() {
    New lead appears in Google within 15 minutes — and Brevo's free e-mail
    notification-on-sheet-change (or a second script `onEdit`) can ping WhatsApp.
 
-**Alternative (no token):** the worker can push each new registration to a
-Google Apps Script *web app* URL on creation (free, HTTPS POST) — same script,
-`doPost(e)` instead of polling. 10 lines to add in `POST /v1/enrollments` when
-`GOOGLE_SHEET_WEBHOOK_URL` is set — ask and it's a 15-minute change.
+**Built-in real-time push (no token needed):** set the worker var
+`GOOGLE_SHEET_WEBHOOK_URL` to a Google Apps Script *web app* URL and the worker
+pushes every new registration there the moment it is created (detached,
+best-effort — it never blocks or fails the registration). Deploy the script as
+a web app (*Deploy → New deployment → Web app → "Anyone") with:
+
+```js
+function doPost(e) {
+  const l = JSON.parse(e.postData.contents);
+  const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(SHEET);
+  sheet.appendRow([
+    l.ref, l.createdAt, l.fullName, l.email, l.phone, l.city, l.programTitle,
+    l.kind, l.feeTotal, l.plan, l.method, l.paymentStatus, l.depositAmount,
+    l.stage, l.mode, l.scheduleDays, l.timeSlot, l.goal, l.referredBy,
+    l.hasLaptop, l.statusUrl,
+  ]);
+  return ContentService.createTextOutput("ok");
+}
+```
+
+Use the polling script above instead when you want the same sheet populated
+from an existing token — both write the same columns.
 
 ---
 

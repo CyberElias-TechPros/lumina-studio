@@ -31,6 +31,112 @@ interface MockEnrollment {
 
 const store = new Map<string, MockEnrollment>();
 
+/** Demo leads so the funnel is visible in mock mode. */
+function seedStore(): void {
+  const day = 86_400_000;
+  const mk = (
+    slug: string,
+    name: [string, string],
+    email: string,
+    phone: string,
+    plan: string,
+    method: string,
+    stage: string,
+    paymentStatus: "unpaid" | "deposit_paid" | "paid",
+    daysAgo: number,
+    goal: string,
+  ): MockEnrollment => {
+    const program = feeInfo(slug)!;
+    const now = new Date(Date.now() - daysAgo * day).toISOString();
+    const deposit =
+      program.kind === "short" ? Math.round(program.fee / 2) : Math.round(program.fee * 0.3);
+    const paid =
+      paymentStatus === "paid"
+        ? plan === "full-10-off"
+          ? Math.round(program.fee * 0.9)
+          : program.fee
+        : paymentStatus === "deposit_paid"
+          ? deposit
+          : 0;
+    return {
+      ref: `CEA-${new Date().getFullYear()}-DEMO${slug.slice(0, 3).toUpperCase()}${daysAgo}`,
+      createdAt: now,
+      updatedAt: now,
+      stage,
+      input: {
+        firstName: name[0],
+        lastName: name[1],
+        email,
+        phone,
+        city: "Port Harcourt",
+        mode: "onsite",
+        scheduleDays: program.kind === "long" ? "mwf" : "standard",
+        timeSlot: "morning",
+        hasLaptop: true,
+        goal,
+        referredBy: "Social media",
+      },
+      programSlug: slug,
+      programTitle: program.title,
+      programKind: program.kind,
+      feeTotal: program.fee,
+      depositAmount: deposit,
+      paymentPlan: plan,
+      paymentMethod: method,
+      paymentStatus,
+      paidAmount: paid,
+      paidAt: paymentStatus === "unpaid" ? null : now,
+      paymentRef: paymentStatus === "unpaid" ? null : `mock_seed_${slug}`,
+      events: [
+        { event: "submitted", detail: `${program.title} · ${plan} plan`, at: now },
+        ...(paymentStatus !== "unpaid"
+          ? [{ event: "payment_confirmed", detail: `Payment of ${paid} NGN`, at: now }]
+          : []),
+      ],
+    };
+  };
+  const seeds = [
+    mk(
+      "web-development-professional",
+      ["Adaeze", "Okafor"],
+      "adaeze.okafor@example.com",
+      "+2348030001111",
+      "deposit-monthly",
+      "paystack",
+      "offer",
+      "deposit_paid",
+      2,
+      "Get hired as a web developer in Port Harcourt.",
+    ),
+    mk(
+      "microsoft-office",
+      ["Chidi", "Eze"],
+      "chidi.eze@example.com",
+      "+2348030002222",
+      "50-50",
+      "paystack",
+      "submitted",
+      "unpaid",
+      1,
+      "Office job — need clean documents and spreadsheets.",
+    ),
+    mk(
+      "it-professional-diploma",
+      ["Funke", "Adeyemi"],
+      "funke.adeyemi@example.com",
+      "+2348030003333",
+      "full-10-off",
+      "bank-transfer",
+      "enrolled",
+      "paid",
+      9,
+      "Move from sales into an IT support role.",
+    ),
+  ];
+  for (const s of seeds) store.set(s.ref, s);
+}
+seedStore();
+
 function feeInfo(slug: string): {
   title: string;
   kind: "short" | "long";
