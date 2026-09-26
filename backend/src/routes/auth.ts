@@ -28,6 +28,8 @@ import {
   verifyTotpCode,
 } from "../lib/crypto";
 import { normalizeEmail } from "../db/client";
+import { verifyTurnstile } from "../lib/turnstile";
+import { issueEmailVerification } from "./account";
 
 const MAGIC_LINK_TTL_MINUTES = 15;
 const SESSION_TTL_DAYS = 7;
@@ -36,6 +38,7 @@ const PASSWORD_MIN = 8;
 
 const magicLinkSchema = z.object({
   email: z.string().trim().email("Enter a valid email address."),
+  turnstileToken: z.string().max(4000).optional(),
 });
 
 const signInSchema = z.object({
@@ -48,6 +51,7 @@ const signUpSchema = z.object({
   name: z.string().trim().min(2, "Name must be at least 2 characters."),
   email: z.string().trim().email("Enter a valid email address."),
   password: z.string().min(PASSWORD_MIN, `Password must be at least ${PASSWORD_MIN} characters.`),
+  turnstileToken: z.string().max(4000).optional(),
 });
 
 const resetPasswordSchema = z.object({
@@ -156,9 +160,11 @@ export const auth = new Hono<{ Bindings: AppEnv }>();
 /* ---------------- Magic link ---------------- */
 
 auth.post("/magic-link", async (c) => {
-  const email = normalizeEmail((await parseBody(c, magicLinkSchema)).email);
+  const input = await parseBody(c, magicLinkSchema);
+  const email = normalizeEmail(input.email);
   const idHash = await hashIdentifier(email);
   await rateLimit(c.env.RATE_LIMIT, "magic-link", idHash, { limit: 5, windowSeconds: 600 });
+  await verifyTurnstile(c, input.turnstileToken, clientIp(c));
 
   const token = randomToken(32);
   const tokenHash = await sha256Hex(token);
@@ -313,6 +319,7 @@ auth.post("/sign-up", async (c) => {
   const email = normalizeEmail(body.email);
   const ipHash = await hashIdentifier(clientIp(c));
   await rateLimit(c.env.RATE_LIMIT, "sign-up", ipHash, { limit: 10, windowSeconds: 3600 });
+  await verifyTurnstile(c, body.turnstileToken, clientIp(c));
 
   const existing = await c.env.DB.prepare(`SELECT id FROM users WHERE email = ?`)
     .bind(email)
@@ -338,7 +345,15 @@ auth.post("/sign-up", async (c) => {
     avatar_url: null,
     role_key: "student",
   });
-  return c.json(sessionResponse(user, expiresAt), 201);
+  // Email ownership is confirmed with a 6-digit code (see routes/account.ts).
+  // Delivery failures never block sign-up; the user can resend from the app.
+  const verification = await issueEmailVerification(c, { id: userId, email, name: body.name });
+  const response: Record<string, unknown> = {
+    ...sessionResponse(user, expiresAt),
+    emailVerificationSent: verification.sent,
+  };
+  if (verification.devCode) response.devVerificationCode = verification.devCode;
+  return c.json(response, 201);
 });
 
 auth.post("/sign-in", async (c) => {
@@ -380,9 +395,11 @@ auth.post("/sign-in", async (c) => {
 /* ---------------- Password reset ---------------- */
 
 auth.post("/forgot-password", async (c) => {
-  const email = normalizeEmail((await parseBody(c, magicLinkSchema)).email);
+  const input = await parseBody(c, magicLinkSchema);
+  const email = normalizeEmail(input.email);
   const idHash = await hashIdentifier(email);
   await rateLimit(c.env.RATE_LIMIT, "forgot-password", idHash, { limit: 3, windowSeconds: 600 });
+  await verifyTurnstile(c, input.turnstileToken, clientIp(c));
 
   const token = randomToken(32);
   const tokenHash = await sha256Hex(token);

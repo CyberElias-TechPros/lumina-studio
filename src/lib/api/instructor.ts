@@ -85,3 +85,30 @@ export function gradeSubmission(
     body: input,
   });
 }
+
+export interface PublishAssignmentInput {
+  courseSlug: string;
+  title: string;
+  description?: string;
+  /** ISO timestamp (UTC). */
+  dueAt: string;
+  max?: number;
+  weight?: number;
+  notify?: boolean;
+}
+
+export interface PublishAssignmentResult {
+  groupId: string;
+  recipients: number;
+  due: string;
+  dueAt: string;
+  course: string;
+}
+
+/** Publish an assignment to every student enrolled in a course. */
+export function publishAssignment(input: PublishAssignmentInput): Promise<PublishAssignmentResult> {
+  return apiFetch<PublishAssignmentResult>("/v1/instructor/assignments", {
+    method: "POST",
+    body: input,
+  });
+}

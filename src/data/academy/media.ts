@@ -25,6 +25,21 @@ export const campusPhotos = {
     alt: "Whiteboard, wall screen and desktop computers along the side of the academy classroom.",
     caption: "Board and machines",
   },
+  "lab-5": {
+    src: "/images/campus/lab-5.jpg",
+    alt: "Learners in red and white at desktop computers facing the wall screen and whiteboard at 26 Ebony Road.",
+    caption: "Lesson on the big screen",
+  },
+  "lab-6": {
+    src: "/images/campus/lab-6.jpg",
+    alt: "A smiling learner at an HP laptop among desktop rows in the Cyber Elias Academy classroom.",
+    caption: "Hands-on practice",
+  },
+  "lab-7": {
+    src: "/images/campus/lab-7.jpg",
+    alt: "Learners working on laptops along wooden tables, with a sofa corner and standing fan in the classroom.",
+    caption: "Full house",
+  },
 } as const;
 
 export type CampusPhotoId = keyof typeof campusPhotos;
@@ -34,6 +49,9 @@ export const campusGallery: { id: CampusPhotoId; caption: string }[] = [
   { id: "lab-2", caption: campusPhotos["lab-2"].caption },
   { id: "lab-3", caption: campusPhotos["lab-3"].caption },
   { id: "lab-4", caption: campusPhotos["lab-4"].caption },
+  { id: "lab-5", caption: campusPhotos["lab-5"].caption },
+  { id: "lab-6", caption: campusPhotos["lab-6"].caption },
+  { id: "lab-7", caption: campusPhotos["lab-7"].caption },
 ];
 
 /** Distinct photo for a course, if we have one. */

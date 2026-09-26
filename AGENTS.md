@@ -15,7 +15,7 @@
 - `npm run build` — TanStack Start + Nitro, must pass
 - `npx tsc --noEmit` — TypeScript check, must pass
 - `npm run lint` — ESLint, slow on full repo; run selectively
-- **Backend**: `cd backend && npm run typecheck && npm test` (Vitest + Workers runtime, 64 suites / 713 tests)
+- **Backend**: `cd backend && npm run typecheck && npm test` (Vitest + Workers runtime, 66 suites / 747 tests)
 - **Production**: www.cea.ng (Vercel), backend: cea-api.cyber-e54.workers.dev (Cloudflare Worker, D1)
 
 ## Product Overview

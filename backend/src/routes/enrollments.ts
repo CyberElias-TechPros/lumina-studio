@@ -15,6 +15,9 @@
  *   PATCH /v1/enrollments/:ref
  */
 import { Hono } from "hono";
+import { verifyTurnstile } from "../lib/turnstile";
+import { verifyPaystackTransaction } from "../lib/paystack";
+import { recordWebhookEvent } from "../lib/webhooks";
 import type { AppEnv } from "../types";
 import { z } from "zod";
 import { ApiError } from "../lib/errors";
@@ -219,7 +222,7 @@ function depositFor(kind: "short" | "long", fee: number): number {
 }
 
 /** Total payable after plan discounts (10% off paying a long-form fee in full). */
-function feeDueFor(kind: "short" | "long", fee: number, plan: string): number {
+export function feeDueFor(kind: "short" | "long", fee: number, plan: string): number {
   if (kind === "long" && plan === "full-10-off") return Math.round(fee * 0.9);
   return fee;
 }
@@ -492,23 +495,7 @@ enrollments.post("/", async (c) => {
   });
 
   // Turnstile — enforced only when a secret key is configured (free Cloudflare service).
-  let turnstilePassed = 0;
-  const tSecret = c.env.TURNSTILE_SECRET_KEY;
-  if (tSecret) {
-    if (!input.turnstileToken) {
-      throw new ApiError(400, "CAPTCHA_REQUIRED", "Please confirm you are human first.");
-    }
-    const verify = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ secret: tSecret, response: input.turnstileToken, remoteip: ip }),
-    }).catch(() => null);
-    const payload = (await verify?.json().catch(() => null)) as { success?: boolean } | null;
-    if (!payload?.success) {
-      throw new ApiError(400, "CAPTCHA_FAILED", "Human verification failed. Please try again.");
-    }
-    turnstilePassed = 1;
-  }
+  const turnstilePassed = (await verifyTurnstile(c, input.turnstileToken, ip)) ? 1 : 0;
 
   const program = PROGRAMS[input.programSlug];
   if (!program) {
@@ -822,24 +809,17 @@ enrollments.get("/:ref/payments/verify", async (c) => {
   if (!payment) throw ApiError.notFound("No payment found for that reference.");
 
   let status = payment.status;
-  if (status === "pending" && c.env.PAYSTACK_SECRET_KEY) {
-    const res = await fetch(`https://api.paystack.co/transaction/verify/${payment.reference}`, {
-      headers: { Authorization: `Bearer ${c.env.PAYSTACK_SECRET_KEY}` },
-    }).catch(() => null);
-    if (res?.ok) {
-      const payload = (await res.json().catch(() => null)) as {
-        status?: boolean;
-        data?: { status?: string };
-      } | null;
-      const remote = payload?.data?.status;
-      if (remote === "success") {
-        await markPayment(c, payment.reference, "success");
-        status = "success";
-      } else if (remote === "failed" || remote === "abandoned") {
-        await markPayment(c, payment.reference, "failed");
-        status = "failed";
-      }
+  if (status === "pending") {
+    const remote = await verifyPaystackTransaction(c.env, payment.reference);
+    if (remote?.status === "success") {
+      await markPayment(c, payment.reference, "success", remote.amount);
+    } else if (remote?.status === "failed" || remote?.status === "abandoned") {
+      await markPayment(c, payment.reference, "failed");
     }
+    const fresh = await c.env.DB.prepare(`SELECT status FROM registration_payments WHERE id = ?`)
+      .bind(payment.id)
+      .first<{ status: string }>();
+    status = fresh?.status ?? status;
   }
 
   const enrollment = await c.env.DB.prepare(`SELECT * FROM registrations WHERE ref = ?`)
@@ -855,10 +835,12 @@ enrollments.get("/:ref/payments/verify", async (c) => {
   });
 });
 
-async function markPayment(
+export async function markPayment(
   c: { env: AppEnv },
   reference: string,
   outcome: "success" | "failed",
+  /** Amount the provider reports as charged, in kobo. Verified when present. */
+  paidKobo?: number,
 ): Promise<void> {
   const row = await c.env.DB.prepare(`SELECT * FROM registration_payments WHERE reference = ?`)
     .bind(reference)
@@ -870,6 +852,17 @@ async function markPayment(
       status: string;
     }>();
   if (!row || row.status === outcome) return;
+  // Never trust a success event whose charged amount doesn't match the
+  // payment session we created — flag it for finance instead.
+  if (outcome === "success" && typeof paidKobo === "number" && paidKobo < row.amount * 100) {
+    await logEvent(
+      c.env.DB,
+      row.registration_ref,
+      "payment_amount_mismatch",
+      `ref ${reference}: expected ${row.amount} NGN, provider reported ${Math.round(paidKobo / 100)} NGN`,
+    );
+    return;
+  }
 
   const now = isoNow();
   await c.env.DB.prepare(`UPDATE registration_payments SET status = ?, paid_at = ? WHERE id = ?`)
@@ -947,14 +940,20 @@ enrollments.post("/webhook", async (c) => {
     throw new ApiError(503, "PAYMENT_PROVIDER_UNAVAILABLE", "Paystack secret is not configured.");
   }
 
-  const body = JSON.parse(rawBody) as {
+  let body: {
     event?: string;
-    data?: { reference?: string; amount?: number };
+    data?: { id?: number | string; reference?: string; amount?: number };
   };
+  try {
+    body = JSON.parse(rawBody);
+  } catch {
+    throw ApiError.validation({ body: ["Invalid JSON."] });
+  }
   const reference = body.data?.reference;
-  if (reference) {
-    if (body.event === "charge.success") await markPayment(c, reference, "success");
-    else if (body.event === "charge.failed") await markPayment(c, reference, "failed");
+  if (reference && (await recordWebhookEvent(c.env.DB, "paystack-enrollments", body, rawBody))) {
+    if (body.event === "charge.success") {
+      await markPayment(c, reference, "success", body.data?.amount);
+    } else if (body.event === "charge.failed") await markPayment(c, reference, "failed");
   }
   return c.json({ ok: true });
 });

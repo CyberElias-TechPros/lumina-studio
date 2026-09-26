@@ -33,6 +33,7 @@ import { Route as VirtualTourRouteImport } from './routes/virtual-tour'
 import { Route as VizierRouteImport } from './routes/vizier'
 import { Route as WorkRouteImport } from './routes/work'
 import { Route as AppIndexRouteImport } from './routes/app.index'
+import { Route as AppAccountRouteImport } from './routes/app/account'
 import { Route as AppAiRouteImport } from './routes/app/ai'
 import { Route as AppAttendanceRouteImport } from './routes/app/attendance'
 import { Route as AppCalendarRouteImport } from './routes/app/calendar'
@@ -132,6 +133,7 @@ import { Route as AppAdminConfigRouteImport } from './routes/app/admin/config'
 import { Route as AppAdminIntegrationsRouteImport } from './routes/app/admin/integrations'
 import { Route as AppAdminLogsRouteImport } from './routes/app/admin/logs'
 import { Route as AppAdminMonitoringRouteImport } from './routes/app/admin/monitoring'
+import { Route as AppAdminOperationsRouteImport } from './routes/app/admin/operations'
 import { Route as AppAdminRateLimitsRouteImport } from './routes/app/admin/rate-limits'
 import { Route as AppAdminRolesRouteImport } from './routes/app/admin/roles'
 import { Route as AppAdminSecurityRouteImport } from './routes/app/admin/security'
@@ -528,6 +530,11 @@ const WorkRoute = WorkRouteImport.update({
 const AppIndexRoute = AppIndexRouteImport.update({
   id: '/app/',
   path: '/app/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppAccountRoute = AppAccountRouteImport.update({
+  id: '/app/account',
+  path: '/app/account',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AppAiRoute = AppAiRouteImport.update({
@@ -1024,6 +1031,11 @@ const AppAdminLogsRoute = AppAdminLogsRouteImport.update({
 const AppAdminMonitoringRoute = AppAdminMonitoringRouteImport.update({
   id: '/app/admin/monitoring',
   path: '/app/admin/monitoring',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppAdminOperationsRoute = AppAdminOperationsRouteImport.update({
+  id: '/app/admin/operations',
+  path: '/app/admin/operations',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AppAdminRateLimitsRoute = AppAdminRateLimitsRouteImport.update({
@@ -2508,6 +2520,7 @@ export interface FileRoutesByFullPath {
   '/virtual-tour': typeof VirtualTourRoute
   '/vizier': typeof VizierRoute
   '/work': typeof WorkRoute
+  '/app/account': typeof AppAccountRoute
   '/app/ai': typeof AppAiRoute
   '/app/attendance': typeof AppAttendanceRoute
   '/app/calendar': typeof AppCalendarRoute
@@ -2606,6 +2619,7 @@ export interface FileRoutesByFullPath {
   '/app/admin/integrations': typeof AppAdminIntegrationsRoute
   '/app/admin/logs': typeof AppAdminLogsRoute
   '/app/admin/monitoring': typeof AppAdminMonitoringRoute
+  '/app/admin/operations': typeof AppAdminOperationsRoute
   '/app/admin/rate-limits': typeof AppAdminRateLimitsRoute
   '/app/admin/roles': typeof AppAdminRolesRoute
   '/app/admin/security': typeof AppAdminSecurityRoute
@@ -2910,6 +2924,7 @@ export interface FileRoutesByTo {
   '/virtual-tour': typeof VirtualTourRoute
   '/vizier': typeof VizierRoute
   '/work': typeof WorkRoute
+  '/app/account': typeof AppAccountRoute
   '/app/ai': typeof AppAiRoute
   '/app/attendance': typeof AppAttendanceRoute
   '/app/calendar': typeof AppCalendarRoute
@@ -3007,6 +3022,7 @@ export interface FileRoutesByTo {
   '/app/admin/integrations': typeof AppAdminIntegrationsRoute
   '/app/admin/logs': typeof AppAdminLogsRoute
   '/app/admin/monitoring': typeof AppAdminMonitoringRoute
+  '/app/admin/operations': typeof AppAdminOperationsRoute
   '/app/admin/rate-limits': typeof AppAdminRateLimitsRoute
   '/app/admin/roles': typeof AppAdminRolesRoute
   '/app/admin/security': typeof AppAdminSecurityRoute
@@ -3312,6 +3328,7 @@ export interface FileRoutesById {
   '/virtual-tour': typeof VirtualTourRoute
   '/vizier': typeof VizierRoute
   '/work': typeof WorkRoute
+  '/app/account': typeof AppAccountRoute
   '/app/ai': typeof AppAiRoute
   '/app/attendance': typeof AppAttendanceRoute
   '/app/calendar': typeof AppCalendarRoute
@@ -3410,6 +3427,7 @@ export interface FileRoutesById {
   '/app/admin/integrations': typeof AppAdminIntegrationsRoute
   '/app/admin/logs': typeof AppAdminLogsRoute
   '/app/admin/monitoring': typeof AppAdminMonitoringRoute
+  '/app/admin/operations': typeof AppAdminOperationsRoute
   '/app/admin/rate-limits': typeof AppAdminRateLimitsRoute
   '/app/admin/roles': typeof AppAdminRolesRoute
   '/app/admin/security': typeof AppAdminSecurityRoute
@@ -3716,6 +3734,7 @@ export interface FileRouteTypes {
     | '/virtual-tour'
     | '/vizier'
     | '/work'
+    | '/app/account'
     | '/app/ai'
     | '/app/attendance'
     | '/app/calendar'
@@ -3814,6 +3833,7 @@ export interface FileRouteTypes {
     | '/app/admin/integrations'
     | '/app/admin/logs'
     | '/app/admin/monitoring'
+    | '/app/admin/operations'
     | '/app/admin/rate-limits'
     | '/app/admin/roles'
     | '/app/admin/security'
@@ -4118,6 +4138,7 @@ export interface FileRouteTypes {
     | '/virtual-tour'
     | '/vizier'
     | '/work'
+    | '/app/account'
     | '/app/ai'
     | '/app/attendance'
     | '/app/calendar'
@@ -4215,6 +4236,7 @@ export interface FileRouteTypes {
     | '/app/admin/integrations'
     | '/app/admin/logs'
     | '/app/admin/monitoring'
+    | '/app/admin/operations'
     | '/app/admin/rate-limits'
     | '/app/admin/roles'
     | '/app/admin/security'
@@ -4519,6 +4541,7 @@ export interface FileRouteTypes {
     | '/virtual-tour'
     | '/vizier'
     | '/work'
+    | '/app/account'
     | '/app/ai'
     | '/app/attendance'
     | '/app/calendar'
@@ -4617,6 +4640,7 @@ export interface FileRouteTypes {
     | '/app/admin/integrations'
     | '/app/admin/logs'
     | '/app/admin/monitoring'
+    | '/app/admin/operations'
     | '/app/admin/rate-limits'
     | '/app/admin/roles'
     | '/app/admin/security'
@@ -4922,6 +4946,7 @@ export interface RootRouteChildren {
   VirtualTourRoute: typeof VirtualTourRoute
   VizierRoute: typeof VizierRoute
   WorkRoute: typeof WorkRoute
+  AppAccountRoute: typeof AppAccountRoute
   AppAiRoute: typeof AppAiRoute
   AppAttendanceRoute: typeof AppAttendanceRoute
   AppCalendarRoute: typeof AppCalendarRoute
@@ -5020,6 +5045,7 @@ export interface RootRouteChildren {
   AppAdminIntegrationsRoute: typeof AppAdminIntegrationsRoute
   AppAdminLogsRoute: typeof AppAdminLogsRoute
   AppAdminMonitoringRoute: typeof AppAdminMonitoringRoute
+  AppAdminOperationsRoute: typeof AppAdminOperationsRoute
   AppAdminRateLimitsRoute: typeof AppAdminRateLimitsRoute
   AppAdminRolesRoute: typeof AppAdminRolesRoute
   AppAdminSecurityRoute: typeof AppAdminSecurityRoute
@@ -5461,6 +5487,13 @@ declare module '@tanstack/react-router' {
       path: '/app'
       fullPath: '/app/'
       preLoaderRoute: typeof AppIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/account': {
+      id: '/app/account'
+      path: '/app/account'
+      fullPath: '/app/account'
+      preLoaderRoute: typeof AppAccountRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/app/ai': {
@@ -6154,6 +6187,13 @@ declare module '@tanstack/react-router' {
       path: '/app/admin/monitoring'
       fullPath: '/app/admin/monitoring'
       preLoaderRoute: typeof AppAdminMonitoringRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/admin/operations': {
+      id: '/app/admin/operations'
+      path: '/app/admin/operations'
+      fullPath: '/app/admin/operations'
+      preLoaderRoute: typeof AppAdminOperationsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/app/admin/rate-limits': {
@@ -8211,6 +8251,7 @@ const rootRouteChildren: RootRouteChildren = {
   VirtualTourRoute: VirtualTourRoute,
   VizierRoute: VizierRoute,
   WorkRoute: WorkRoute,
+  AppAccountRoute: AppAccountRoute,
   AppAiRoute: AppAiRoute,
   AppAttendanceRoute: AppAttendanceRoute,
   AppCalendarRoute: AppCalendarRoute,
@@ -8309,6 +8350,7 @@ const rootRouteChildren: RootRouteChildren = {
   AppAdminIntegrationsRoute: AppAdminIntegrationsRoute,
   AppAdminLogsRoute: AppAdminLogsRoute,
   AppAdminMonitoringRoute: AppAdminMonitoringRoute,
+  AppAdminOperationsRoute: AppAdminOperationsRoute,
   AppAdminRateLimitsRoute: AppAdminRateLimitsRoute,
   AppAdminRolesRoute: AppAdminRolesRoute,
   AppAdminSecurityRoute: AppAdminSecurityRoute,

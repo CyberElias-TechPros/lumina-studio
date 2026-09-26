@@ -6,6 +6,8 @@ import { base64UrlDecode, base64UrlEncode, isoNow } from "../lib/crypto";
 import { paginate, parsePagination, type Paginated } from "../lib/pagination";
 import { requireAuth, requireAnyRole } from "../lib/auth";
 import { parseBody } from "../lib/validate";
+import { formatDueWat } from "../lib/due-dates";
+import { sendUserSms } from "../lib/sms";
 
 const requireInstructorOrAdmin = requireAnyRole(["instructor", "admin"]);
 
@@ -328,3 +330,153 @@ instructor.patch("/submissions/:id", requireAuth, requireInstructorOrAdmin, asyn
     gradedAt: now,
   });
 });
+
+/* ---------------- Publish assignments (schedulable deadlines) ---------------- */
+
+const publishAssignmentSchema = z.object({
+  courseSlug: z.string().trim().min(1, "Choose a course."),
+  title: z.string().trim().min(3, "Title must be at least 3 characters.").max(200),
+  description: z.string().trim().max(10_000).optional().default(""),
+  dueAt: z
+    .string()
+    .trim()
+    .refine((v) => !Number.isNaN(Date.parse(v)), "Enter a valid due date and time."),
+  max: z.number().int().min(1).max(1000).optional().default(100),
+  weight: z.number().int().min(0).max(100).optional().default(0),
+  notify: z.boolean().optional().default(true),
+});
+
+/**
+ * Publish one assignment to every student enrolled in a course. Each student
+ * gets their own row (the student LMS reads per-user rows) sharing a group_id,
+ * with a machine-readable `due_at` that drives reminders and lateness.
+ */
+instructor.post("/assignments", requireAuth, requireInstructorOrAdmin, async (c) => {
+  const author = c.get("authUser");
+  const input = await parseBody(c, publishAssignmentSchema);
+  const dueAt = new Date(input.dueAt).toISOString();
+  if (dueAt <= isoNow()) {
+    throw ApiError.validation({ dueAt: ["The due date must be in the future."] });
+  }
+  const course = await c.env.DB.prepare(`SELECT slug, title FROM courses WHERE slug = ?`)
+    .bind(input.courseSlug)
+    .first<{ slug: string; title: string }>();
+  if (!course) throw ApiError.validation({ courseSlug: ["That course does not exist."] });
+
+  if (author.roleKey !== "admin") {
+    const teaches = await c.env.DB.prepare(
+      `SELECT 1 AS x FROM instructor_courses WHERE user_id = ? AND title = ? LIMIT 1`,
+    )
+      .bind(author.id, course.title)
+      .first<{ x: number }>();
+    if (!teaches) throw ApiError.forbidden("You don't teach this course.");
+  }
+
+  const students = await c.env.DB.prepare(
+    `SELECT e.user_id FROM enrollments e JOIN users u ON u.id = e.user_id
+      WHERE e.course_slug = ? AND u.status = 'active'`,
+  )
+    .bind(course.slug)
+    .all<{ user_id: string }>();
+  const recipients = students.results ?? [];
+  const groupId = `asg-${crypto.randomUUID().slice(0, 12)}`;
+  const due = formatDueWat(dueAt);
+  const now = isoNow();
+
+  const statements = recipients.flatMap((s, i) => {
+    const id = `${groupId}-${i + 1}`;
+    const stmts = [
+      c.env.DB.prepare(
+        `INSERT INTO assignments
+           (id, user_id, title, course, description, due, due_at, group_id, created_by, status, max, weight)
+         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, 'pending', ?, ?)`,
+      ).bind(
+        id,
+        s.user_id,
+        input.title,
+        course.title,
+        input.description,
+        due,
+        dueAt,
+        groupId,
+        author.id,
+        input.max,
+        input.weight,
+      ),
+    ];
+    if (input.notify) {
+      stmts.push(
+        c.env.DB.prepare(
+          `INSERT INTO notifications (id, user_id, title, body, time, engine) VALUES (?, ?, ?, ?, ?, 'learning')`,
+        ).bind(
+          `ntf-${crypto.randomUUID().slice(0, 12)}`,
+          s.user_id,
+          `New assignment: ${input.title}`,
+          `${course.title} · due ${due} WAT`,
+          now,
+        ),
+      );
+    }
+    return stmts;
+  });
+  for (let i = 0; i < statements.length; i += 50) {
+    await c.env.DB.batch(statements.slice(i, i + 50));
+  }
+
+  if (input.notify && recipients.length > 0) {
+    const task = Promise.all(
+      recipients.map((s) =>
+        sendUserSms(
+          c.env,
+          s.user_id,
+          `CEA: New assignment "${input.title.slice(0, 60)}" (${course.title}) due ${due} WAT.`,
+        ),
+      ),
+    ).catch(() => undefined);
+    try {
+      c.executionCtx.waitUntil(task);
+    } catch {
+      await task;
+    }
+  }
+
+  return c.json({ groupId, recipients: recipients.length, due, dueAt, course: course.title }, 201);
+});
+
+/** Move a published assignment's deadline (all recipients). Resets reminders. */
+instructor.patch(
+  "/assignments/groups/:groupId",
+  requireAuth,
+  requireInstructorOrAdmin,
+  async (c) => {
+    const author = c.get("authUser");
+    const { dueAt: raw } = await parseBody(
+      c,
+      z.object({
+        dueAt: z.string().refine((v) => !Number.isNaN(Date.parse(v)), "Enter a valid date."),
+      }),
+    );
+    const dueAt = new Date(raw).toISOString();
+    const groupId = c.req.param("groupId");
+    const owner = await c.env.DB.prepare(
+      `SELECT created_by FROM assignments WHERE group_id = ? LIMIT 1`,
+    )
+      .bind(groupId)
+      .first<{ created_by: string | null }>();
+    if (!owner) throw ApiError.notFound("Assignment not found.");
+    if (author.roleKey !== "admin" && owner.created_by !== author.id) {
+      throw ApiError.forbidden("Only the author can change this deadline.");
+    }
+    await c.env.DB.batch([
+      c.env.DB.prepare(`UPDATE assignments SET due_at = ?, due = ? WHERE group_id = ?`).bind(
+        dueAt,
+        formatDueWat(dueAt),
+        groupId,
+      ),
+      c.env.DB.prepare(
+        `DELETE FROM assignment_reminders WHERE assignment_id IN (SELECT id FROM assignments WHERE group_id = ?)`,
+      ).bind(groupId),
+    ]);
+    return c.json({ groupId, dueAt, due: formatDueWat(dueAt) });
+  },
+);

@@ -1,6 +1,16 @@
+import { useTurnstile } from "@/components/turnstile";
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useRef, useState } from "react";
-import { ArrowRight, Eye, EyeOff, Link2, Loader2, LockKeyhole, Mail, MailCheck } from "lucide-react";
+import {
+  ArrowRight,
+  Eye,
+  EyeOff,
+  Link2,
+  Loader2,
+  LockKeyhole,
+  Mail,
+  MailCheck,
+} from "lucide-react";
 import { useMutation } from "@tanstack/react-query";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -34,6 +44,7 @@ function SignInPage() {
   const navigate = useNavigate();
 
   const passwordSignIn = useSignIn();
+  const turnstile = useTurnstile();
   const magicLink = useMutation({
     mutationFn: requestMagicLink,
     onSuccess: (result) => {
@@ -42,6 +53,7 @@ function SignInPage() {
       setSent(true);
     },
     onError: (err) => {
+      turnstile.reset();
       setError(err instanceof Error ? err.message : "Could not send the sign-in link.");
     },
   });
@@ -53,7 +65,7 @@ function SignInPage() {
     if (magic) {
       const email = emailRef.current?.value.trim() ?? "";
       if (!email) return;
-      magicLink.mutate({ email });
+      magicLink.mutate({ email, turnstileToken: turnstile.token });
       return;
     }
 
@@ -178,9 +190,14 @@ function SignInPage() {
                   me
                 </label>
 
+                {magic && <turnstile.Widget />}
                 {error && <p className="text-error text-sm">{error}</p>}
 
-                <Button type="submit" disabled={busy} className="w-full">
+                <Button
+                  type="submit"
+                  disabled={busy || (magic && !turnstile.ready)}
+                  className="w-full"
+                >
                   {busy && <Loader2 className="mr-1.5 size-4 animate-spin" />}
                   {magic ? "Send sign-in link" : "Sign in"}
                 </Button>

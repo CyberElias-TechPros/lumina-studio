@@ -1,3 +1,4 @@
+import { useTurnstile } from "@/components/turnstile";
 import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { CheckCircle2, Mail, MapPin, Phone, Send } from "lucide-react";
@@ -40,6 +41,8 @@ function Contact() {
     message: "",
   });
 
+  const turnstile = useTurnstile();
+
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSending(true);
@@ -49,9 +52,11 @@ function Contact() {
         name: form.name,
         email: form.email,
         message: `${form.topic ? `[${form.topic}] ` : ""}${form.message}`,
+        turnstileToken: turnstile.token,
       });
       setSent(true);
     } catch (err) {
+      turnstile.reset();
       setError(err instanceof ApiError ? err.message : "We couldn't send your message. Try again.");
     } finally {
       setSending(false);
@@ -189,8 +194,11 @@ function Contact() {
                   disabled={sending}
                 />
               </div>
-              {error && <p className="text-error bg-error/10 rounded-md px-3 py-2 text-sm">{error}</p>}
-              <Button type="submit" className="w-full" disabled={sending}>
+              {error && (
+                <p className="text-error bg-error/10 rounded-md px-3 py-2 text-sm">{error}</p>
+              )}
+              <turnstile.Widget />
+              <Button type="submit" className="w-full" disabled={sending || !turnstile.ready}>
                 <Send className="size-4" /> {sending ? "Sending…" : "Send message"}
               </Button>
             </form>

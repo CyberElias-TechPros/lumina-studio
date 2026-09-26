@@ -1,4 +1,5 @@
 import { Hono } from "hono";
+import { recordWebhookEvent } from "../lib/webhooks";
 import type { AppEnv } from "../types";
 import {
   base64UrlDecode,
@@ -192,16 +193,45 @@ payments.post("/webhook", async (c) => {
     throw new ApiError(503, "PAYMENT_PROVIDER_UNAVAILABLE", "Paystack secret is not configured.");
   }
 
-  const body = JSON.parse(rawBody) as {
+  let body: {
     event?: string;
-    data?: { reference?: string; amount?: number; customer?: { email?: string } };
+    data?: {
+      id?: number | string;
+      reference?: string;
+      amount?: number;
+      customer?: { email?: string };
+    };
   };
+  try {
+    body = JSON.parse(rawBody);
+  } catch {
+    throw ApiError.validation({ body: ["Invalid JSON."] });
+  }
   const reference = body.data?.reference;
   if (!reference) return c.json({ ok: true });
+  if (!(await recordWebhookEvent(c.env.DB, "paystack-payments", body, rawBody))) {
+    return c.json({ ok: true, duplicate: true });
+  }
 
-  const row = await c.env.DB.prepare(`SELECT id, user_id, status FROM payments WHERE reference = ?`)
+  const row = await c.env.DB.prepare(
+    `SELECT id, user_id, status, amount FROM payments WHERE reference = ?`,
+  )
     .bind(reference)
-    .first<{ id: string; user_id: string; status: string }>();
+    .first<{ id: string; user_id: string; status: string; amount: number }>();
+
+  // A success whose charged amount is below what we asked for is flagged, not honoured.
+  if (
+    body.event === "charge.success" &&
+    row &&
+    row.amount > 0 &&
+    typeof body.data?.amount === "number" &&
+    body.data.amount < row.amount * 100
+  ) {
+    await c.env.DB.prepare(`UPDATE payments SET status = 'review' WHERE reference = ?`)
+      .bind(reference)
+      .run();
+    return c.json({ ok: true, flagged: true });
+  }
 
   if (body.event === "charge.success") {
     if (row) {

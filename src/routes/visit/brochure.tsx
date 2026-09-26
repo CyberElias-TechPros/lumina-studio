@@ -1,3 +1,4 @@
+import { useTurnstile } from "@/components/turnstile";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMutation } from "@tanstack/react-query";
 import { useState } from "react";
@@ -25,9 +26,11 @@ function BrochurePage() {
   const [sent, setSent] = useState(false);
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
+  const turnstile = useTurnstile();
   const request = useMutation({
     mutationFn: async (data: { email: string }) => {
       return submitContact({
+        turnstileToken: turnstile.token,
         name: "Course list request",
         email: data.email,
         message: "Please email the current course list and start dates.",
@@ -115,7 +118,12 @@ function BrochurePage() {
                   required
                 />
               </div>
-              <Button type="submit" disabled={request.isPending} className="w-full">
+              <turnstile.Widget />
+              <Button
+                type="submit"
+                disabled={request.isPending || !turnstile.ready}
+                className="w-full"
+              >
                 {request.isPending && <Loader2 className="size-4 animate-spin" />}
                 Send
               </Button>

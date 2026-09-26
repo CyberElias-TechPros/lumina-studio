@@ -14,6 +14,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { QueryState } from "@/components/ui/query-state";
 import { AppShell } from "@/components/app/app-shell";
+import { PublishAssignmentDialog } from "@/components/app/publish-assignment-dialog";
 import { useInstructorAssignments } from "@/lib/query/instructor";
 import type { InstructorSubmission } from "@/data/learning";
 import { cn } from "@/lib/utils";
@@ -39,9 +40,10 @@ function AssignmentCenter() {
     <AppShell
       roleKey="instructor"
       title="Assignment center"
-      subtitle="Backend & APIs · REST API assignment · Cohort 15"
+      subtitle="Publish work, track submissions and grade across your courses"
       actions={
         <>
+          <PublishAssignmentDialog />
           <Badge className="bg-warning/10 text-warning border-0 font-semibold">
             {pending.length} to grade
           </Badge>
@@ -62,28 +64,28 @@ function AssignmentCenter() {
                 {
                   label: "Submitted",
                   value: String(rows.length),
-                  delta: "3 missing",
+                  delta: "across your courses",
                   icon: FileCheck2,
                   tone: "bg-primary/10 text-primary",
                 },
                 {
                   label: "Pending grade",
                   value: String(pending.length),
-                  delta: "12 due today",
+                  delta: "awaiting your grade",
                   icon: Hourglass,
                   tone: "bg-warning/10 text-warning",
                 },
                 {
                   label: "Graded",
                   value: String(graded.length),
-                  delta: "avg 90.8%",
+                  delta: "returned to students",
                   icon: CheckCircle2,
                   tone: "bg-success/10 text-success",
                 },
                 {
                   label: "Late",
                   value: String(late.length),
-                  delta: "penalty −5%",
+                  delta: "after the deadline",
                   icon: Clock,
                   tone: "bg-error/10 text-error",
                 },

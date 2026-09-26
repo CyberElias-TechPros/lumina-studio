@@ -1,0 +1,36 @@
+# Local Worker secrets for `npm run dev` (wrangler dev -e dev).
+# Copy to backend/.dev.vars (git-ignored). In production set each with:
+#   npx wrangler secret put <NAME>
+# Every integration is optional in dev — features degrade gracefully when unset.
+
+# Transactional email (Resend by default; set EMAIL_PROVIDER var to "mailgun" to switch).
+EMAIL_API_KEY=
+# Mailgun only:
+# EMAIL_DOMAIN=mail.cea.ng
+
+# Paystack secret key (sk_...). Required in production: webhooks fail closed without it.
+PAYSTACK_SECRET_KEY=
+
+# Cloudflare Turnstile secret. When set, sign-up, magic-link, forgot-password,
+# contact, applications and enrollments REQUIRE a token — set VITE_TURNSTILE_SITE_KEY too.
+TURNSTILE_SECRET_KEY=
+
+# Web Push (generate a pair with `npx web-push generate-vapid-keys`).
+VAPID_PUBLIC_KEY=
+VAPID_PRIVATE_KEY=
+
+# AI assistant (OpenAI-compatible endpoint configured by AI_BASE_URL / AI_MODEL vars).
+AI_API_KEY=
+
+# Error reporting (Sentry or GlitchTip DSN). Optional.
+SENTRY_DSN=
+
+# SMS (optional). Provider: termii (default, Nigeria-first) | twilio | console (logs only).
+# Termii: SMS_API_KEY=<api key>, SMS_SENDER=<approved sender ID, e.g. CEA>
+# Twilio: SMS_API_KEY=<ACCOUNT_SID>:<AUTH_TOKEN>, SMS_SENDER=<E.164 number>
+SMS_PROVIDER=termii
+SMS_API_KEY=
+SMS_SENDER=CEA
+
+# Where contact-form notifications go (e.g. admissions@cea.ng). Optional.
+CONTACT_INBOX=

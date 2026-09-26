@@ -59,6 +59,23 @@ export const RBAC_RULES: RbacRule[] = [
   { methods: ["GET"], path: "/v1/auth/devices" },
   { methods: ["POST"], path: "/v1/auth/devices/:id/revoke" },
 
+  /* Self-service account (every signed-in role) */
+  { methods: ["GET", "PATCH"], path: "/v1/account" },
+  { methods: ["POST"], path: "/v1/account/password" },
+  { methods: ["POST"], path: "/v1/account/verify-email/send" },
+  { methods: ["POST"], path: "/v1/account/verify-email" },
+  { methods: ["GET"], path: "/v1/account/export" },
+  { methods: ["POST"], path: "/v1/account/delete" },
+
+  /* Portal landing pages — live, role-scoped summary (any signed-in user) */
+  { methods: ["GET"], path: "/v1/portal/summary" },
+
+  /* Operations (admin) — integration readiness + scheduled jobs */
+  { methods: ["GET"], path: "/v1/system/readiness", roles: ["admin"] },
+  { methods: ["GET"], path: "/v1/system/jobs", roles: ["admin"] },
+  { methods: ["POST"], path: "/v1/system/jobs/:job/run", roles: ["admin"] },
+  { methods: ["POST"], path: "/v1/system/sms/test", roles: ["admin"] },
+
   /* Applications — public status lookup by ref; own records only for the list */
   { methods: ["GET"], path: "/v1/applications" },
   { methods: ["GET"], path: "/v1/applications/admin", roles: ["admin"] },
@@ -115,7 +132,12 @@ export const RBAC_RULES: RbacRule[] = [
     path: "/v1/instructor/courses/:slug/lessons",
     roles: ["instructor", "admin"],
   },
-  { methods: ["GET"], path: "/v1/instructor/assignments", roles: ["instructor", "admin"] },
+  { methods: ["GET", "POST"], path: "/v1/instructor/assignments", roles: ["instructor", "admin"] },
+  {
+    methods: ["PATCH"],
+    path: "/v1/instructor/assignments/groups/:groupId",
+    roles: ["instructor", "admin"],
+  },
   { methods: ["GET"], path: "/v1/instructor/assignments/:id", roles: ["instructor", "admin"] },
   {
     methods: ["GET", "POST", "PATCH"],
