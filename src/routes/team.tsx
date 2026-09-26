@@ -3,7 +3,11 @@ import { getPageHead } from "@/lib/seo";
 import { PageShell, PageHero } from "@/components/marketing/shell";
 import { Mail, MapPin } from "lucide-react";
 import { NOTES_AUTHOR } from "@/data/blog";
-import { TEAM } from "@/data/team";
+import { TEAM, trainersFor } from "@/data/team";
+import { allCourses } from "@/data/academy";
+
+const courseBySlug = new Map(allCourses.map((c) => [c.slug, c]));
+const categories = [...new Set(allCourses.map((c) => c.category))];
 
 export const Route = createFileRoute("/team")({
   head: () =>
@@ -49,10 +53,27 @@ function TeamPage() {
 
                   <p className="mt-5 text-xs font-medium tracking-wide uppercase">Teaches</p>
                   <ul className="mt-2 flex flex-wrap gap-2">
-                    {m.teaches.map((t) => (
-                      <li key={t} className="bg-muted rounded-full px-3 py-1 text-xs">
-                        {t}
-                      </li>
+                    {m.teaches.map((slug) => {
+                      const course = courseBySlug.get(slug);
+                      if (!course) return null;
+                      return (
+                        <li key={slug}>
+                          <Link
+                            to="/classes/$courseSlug"
+                            params={{ courseSlug: slug }}
+                            className="bg-muted hover:bg-muted/70 block rounded-full px-3 py-1 text-xs"
+                          >
+                            {course.title}
+                          </Link>
+                        </li>
+                      );
+                    })}
+                  </ul>
+
+                  <p className="mt-5 text-xs font-medium tracking-wide uppercase">Also does</p>
+                  <ul className="text-muted-foreground mt-2 list-disc space-y-1 pl-4 text-sm">
+                    {m.alsoDoes.map((a) => (
+                      <li key={a}>{a}</li>
                     ))}
                   </ul>
 
@@ -104,6 +125,48 @@ function TeamPage() {
             <Mail className="size-4" /> hello@cea.ng
           </a>
         </p>
+
+        <div className="mx-auto mt-12 max-w-3xl">
+          <h2 className="font-display text-xl font-semibold">What we teach</h2>
+          <p className="text-muted-foreground mt-2 text-sm">
+            All {allCourses.length} courses, and who leads each one.
+          </p>
+          <div className="mt-6 grid gap-6 sm:grid-cols-2">
+            {categories.map((cat) => (
+              <div key={cat} className="border-border rounded-lg border p-4">
+                <h3 className="text-sm font-semibold">{cat}</h3>
+                <ul className="mt-3 space-y-2 text-sm">
+                  {allCourses
+                    .filter((c) => c.category === cat)
+                    .map((c) => (
+                      <li key={c.slug} className="flex items-baseline justify-between gap-3">
+                        <Link
+                          to="/classes/$courseSlug"
+                          params={{ courseSlug: c.slug }}
+                          className="hover:text-primary"
+                        >
+                          {c.title}
+                        </Link>
+                        <span className="text-muted-foreground shrink-0 text-xs">
+                          {trainersFor(c.slug)
+                            .map((t) => t.name.split(" ")[0])
+                            .join(" & ")}
+                        </span>
+                      </li>
+                    ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+          <p className="text-muted-foreground mt-4 text-sm">
+            Beyond classes: IT support and network installation, ICT assessments, websites and web
+            apps, branding and design work, and staff training for businesses and schools —{" "}
+            <Link to="/contact" className="text-primary underline">
+              ask us
+            </Link>
+            .
+          </p>
+        </div>
 
         <dl className="mx-auto mt-10 grid max-w-3xl gap-4 sm:grid-cols-2">
           {[

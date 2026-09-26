@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
 import { CTASection, PageHero, PageShell } from "@/components/marketing/shell";
 import { CampusImg } from "@/components/marketing/photos";
+import { allCourses } from "@/data/academy";
 import { FounderPhoto } from "@/components/marketing/founder-photo";
 import { getPageHead } from "@/lib/seo";
 
@@ -60,10 +61,35 @@ function About() {
         <div>
           <h2 className="font-display text-2xl font-semibold tracking-tight">What we teach</h2>
           <p className="text-muted-foreground mt-3 text-base leading-relaxed">
-            Microsoft Office, computer basics and typing, graphic design, web design and
-            development, digital marketing, data entry, computer repairs, and related short courses.
-            Each course has a published syllabus, a fee in naira, and a named piece of work the
-            certificate is awarded for.
+            {allCourses.length} practical courses. Each has a published syllabus, a fee in naira,
+            and a named piece of work the certificate is awarded for.
+          </p>
+          <dl className="mt-4 space-y-3 text-sm">
+            {[...new Set(allCourses.map((c) => c.category))].map((cat) => (
+              <div key={cat}>
+                <dt className="font-semibold">{cat}</dt>
+                <dd className="text-muted-foreground mt-1">
+                  {allCourses
+                    .filter((c) => c.category === cat)
+                    .map((c, i, arr) => (
+                      <span key={c.slug}>
+                        <Link
+                          to="/classes/$courseSlug"
+                          params={{ courseSlug: c.slug }}
+                          className="hover:text-primary underline-offset-2 hover:underline"
+                        >
+                          {c.title}
+                        </Link>
+                        {i < arr.length - 1 ? ", " : ""}
+                      </span>
+                    ))}
+                </dd>
+              </div>
+            ))}
+          </dl>
+          <p className="text-muted-foreground mt-4 text-sm leading-relaxed">
+            We also take on IT support and network installation, ICT assessments, websites and web
+            apps, branding and design work, and staff training for businesses and schools.
           </p>
         </div>
         <div>

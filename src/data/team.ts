@@ -11,7 +11,10 @@ export interface TeamMember {
   /** CSS object-position for the square crop. */
   photoPosition?: string;
   summary: string;
+  /** Course slugs from src/data/academy/catalog.ts this person leads. */
   teaches: string[];
+  /** Work beyond the course catalogue (services, consulting, workshops). */
+  alsoDoes: string[];
   experience: { title: string; org: string; period: string }[];
   education: string[];
   skills: string[];
@@ -27,11 +30,28 @@ export const TEAM: TeamMember[] = [
     summary:
       "Hands-on IT and network technician who founded Cyber Elias Academy in Port Harcourt. Ellis runs the centre, designs the curricula and teaches the practical computer, networking and IT-support courses. He also consults on ICT infrastructure — in July 2026 he led the AfriLabs Innovation Centres ICT assessment of three tertiary institutions in Rivers and Bayelsa States.",
     teaches: [
-      "Computer basics",
-      "Computer networking",
-      "Computer repairs & IT support",
-      "Cybersecurity foundations",
-      "Web development",
+      "computer-basics-typing",
+      "microsoft-office",
+      "data-entry",
+      "digital-productivity",
+      "ai-productivity",
+      "data-analytics",
+      "computer-repairs",
+      "it-support",
+      "computer-networking",
+      "cybersecurity",
+      "wordpress",
+      "digital-marketing",
+      "social-media-management",
+      "business-freelancing",
+      "online-teaching",
+    ],
+    alsoDoes: [
+      "ICT infrastructure assessments for schools and institutions",
+      "Network, firewall (MikroTik/Sophos) and Wi-Fi installation",
+      "IT support contracts for small businesses",
+      "Website builds and maintenance for clients",
+      "Corporate and staff digital-skills training",
     ],
     experience: [
       {
@@ -78,11 +98,11 @@ export const TEAM: TeamMember[] = [
     photoPosition: "center top",
     summary:
       "Frontend developer and software engineer with 3+ years building production web apps in React, Next.js, Vue, Nuxt and TypeScript. Peter has shipped dashboards, EdTech, real-estate, non-profit and corporate platforms, and teaches the modern web-development track: components, state, APIs, performance and accessibility.",
-    teaches: [
-      "Web development",
-      "Frontend (React, Next.js, Vue/Nuxt)",
-      "TypeScript & Tailwind CSS",
-      "REST APIs & Git",
+    teaches: ["web-development", "web-design", "mobile-app-development", "wordpress"],
+    alsoDoes: [
+      "Custom web applications and dashboards for clients",
+      "Code reviews and mentoring for junior developers",
+      "Portfolio and project clinics for web learners",
     ],
     experience: [
       { title: "Mid-Level Frontend Developer", org: "PIS", period: "2026 – present" },
@@ -110,11 +130,11 @@ export const TEAM: TeamMember[] = [
     photoPosition: "center 30%",
     summary:
       "Multidisciplinary designer trained in visual communication, working freelance since 2016 on logos, brand identities, packaging, posters, illustration and motion. Rapheal teaches the graphic-design track with real branding briefs — from logo concept to colour system and product mock-ups.",
-    teaches: [
-      "Graphic design",
-      "Logo & brand identity",
-      "Product & packaging design",
-      "Illustration & motion basics",
+    teaches: ["graphic-design", "content-creation", "video-editing", "photography", "web-design"],
+    alsoDoes: [
+      "Logo, brand identity and packaging design for clients",
+      "Posters, flyers and social-media creatives",
+      "Portfolio reviews for design learners",
     ],
     experience: [
       { title: "Freelance Product Designer", org: "Self-employed", period: "2021 – present" },
@@ -136,3 +156,8 @@ export const TEAM: TeamMember[] = [
     ],
   },
 ];
+
+/** Which team members lead a given course. */
+export function trainersFor(courseSlug: string): TeamMember[] {
+  return TEAM.filter((m) => m.teaches.includes(courseSlug));
+}
