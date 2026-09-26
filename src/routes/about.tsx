@@ -45,12 +45,13 @@ function About() {
         <div>
           <h2 className="font-display text-2xl font-semibold tracking-tight">Who runs it</h2>
           <p className="text-muted-foreground mt-3 max-w-2xl text-base leading-relaxed">
-            Ellis Dennis Graham founded the academy and teaches here. The centre is small. We will
-            name other people on the{" "}
+            Ellis Dennis Graham, an IT and network technician, founded the academy and leads the
+            teaching. He is joined by Peter Jonathan-Hart (frontend and web development) and Rapheal
+            Allison (graphic and product design). Their backgrounds are on the{" "}
             <Link to="/team" className="text-primary underline">
               team page
-            </Link>{" "}
-            when they actually work here.
+            </Link>
+            .
           </p>
         </div>
       </section>
@@ -60,9 +61,9 @@ function About() {
           <h2 className="font-display text-2xl font-semibold tracking-tight">What we teach</h2>
           <p className="text-muted-foreground mt-3 text-base leading-relaxed">
             Microsoft Office, computer basics and typing, graphic design, web design and
-            development, digital marketing, data entry, computer repairs, and related short
-            courses. Each course has a published syllabus, a fee in naira, and a named piece of
-            work the certificate is awarded for.
+            development, digital marketing, data entry, computer repairs, and related short courses.
+            Each course has a published syllabus, a fee in naira, and a named piece of work the
+            certificate is awarded for.
           </p>
         </div>
         <div>

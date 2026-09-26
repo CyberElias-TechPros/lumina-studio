@@ -32,7 +32,7 @@ const AUTHOR = "Ellis Dennis Graham";
 
 export const NOTES_AUTHOR = {
   name: AUTHOR,
-  role: "Founder, Cyber Elias Academy",
+  role: "Founder & Lead Educator, Cyber Elias Academy",
   photo: "/images/team/ellis-dennis-graham.jpg",
 };
 
