@@ -17,10 +17,72 @@ export type CourseCategory =
   | "Hardware & Security"
   | "Business & Teaching";
 
+/** Selectable source shown inside a taught block. Never an image of code. */
+export interface LectureCode {
+  /** File the learner should put this in, when that matters. */
+  filename?: string;
+  language: string;
+  source: string;
+  caption?: string;
+}
+
 /** One taught block inside the lecture body. */
 export interface LectureBlock {
   heading: string;
   body: string[];
+  /** A one-line rule to keep, rendered as a callout after the paragraphs. */
+  remember?: string;
+  /** Runnable or copyable samples. Rendered after the paragraphs. */
+  code?: LectureCode[];
+}
+
+/**
+ * Where a standalone tutorial sits on its roadmap. Optional so older
+ * classroom lectures stay valid. Rendered when present.
+ */
+export interface LearningPath {
+  fits: string;
+  prerequisites: string[];
+  unlocks: string;
+  nextLesson: { label: string; href: string };
+  practiceTime: string;
+  definitionOfDone: string[];
+  assumptions: string[];
+}
+
+/** An original diagram or illustration placed after a taught block. */
+export interface LectureFigure {
+  id: string;
+  src: string;
+  alt: string;
+  caption: string;
+  /** Render immediately after the taught-content block with this heading. */
+  afterHeading: string;
+}
+
+/** Symptom-first diagnosis. One observable problem, not a vague category. */
+export interface TroubleshootingItem {
+  symptom: string;
+  likelyCause: string;
+  check: string;
+  fix: string;
+  prevention: string;
+  whenToStop?: string;
+}
+
+export interface PracticeExercise {
+  title: string;
+  kind: "Recognition" | "Guided" | "Variation" | "Mini-task" | "Challenge";
+  prompt: string;
+  hint?: string;
+  expected: string;
+  solution: string;
+}
+
+export interface LectureSource {
+  title: string;
+  url: string;
+  note: string;
 }
 
 /** A scripted instructor demonstration, step by step. */
@@ -62,19 +124,34 @@ export interface RubricRow {
 export interface SessionLecture {
   /** Two-to-three sentence framing shown under the title. */
   summary: string;
+  /** ISO date this lecture was last checked. Falls back to the page default. */
+  reviewed?: string;
   /** "By the end of this session you will be able to…" */
   objectives: string[];
+  /** Roadmap position. Present on standalone tutorials. */
+  learningPath?: LearningPath;
   /** The taught content, in teaching order. */
   blocks: LectureBlock[];
+  /** Diagrams placed after the block named in `afterHeading`. */
+  figures?: LectureFigure[];
   /** Instructor demonstration the class watches before practising. */
   demonstration: Demonstration;
   practice: PracticeTask;
   pitfalls: Pitfall[];
+  /** Symptom → likely cause → check → fix. Rendered when present. */
+  troubleshooting?: TroubleshootingItem[];
+  /** Permissions, power, privacy, shared machines. Only when relevant. */
+  safetyNotes?: string[];
   expertNotes: string[];
   vocabulary: VocabularyEntry[];
   homework: HomeworkTask[];
+  /** Independent practice with expected results and solutions. */
+  exercises?: PracticeExercise[];
+  /** Short "can you do this?" list. Not a repeat of the article. */
+  mastery?: string[];
   rubric: RubricRow[];
   faqs: { q: string; a: string }[];
+  sources?: LectureSource[];
 }
 
 export interface ClassSession {

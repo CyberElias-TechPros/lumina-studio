@@ -254,12 +254,24 @@ export function allPublishedSessions(): { course: ResolvedCourse; session: Resol
   );
 }
 
-/** Honest reading time for a lecture, computed from its actual content. */
-export function lectureReadingMinutes(lecture: SessionLecture): number {
-  const words = [
+function lectureProse(lecture: SessionLecture): string {
+  return [
     lecture.summary,
     ...lecture.objectives,
-    ...lecture.blocks.flatMap((b) => [b.heading, ...b.body]),
+    lecture.learningPath?.fits ?? "",
+    ...(lecture.learningPath?.prerequisites ?? []),
+    lecture.learningPath?.unlocks ?? "",
+    lecture.learningPath?.practiceTime ?? "",
+    ...(lecture.learningPath?.definitionOfDone ?? []),
+    ...(lecture.learningPath?.assumptions ?? []),
+    ...lecture.blocks.flatMap((b) => [
+      b.heading,
+      ...b.body,
+      b.remember ?? "",
+      ...(b.code?.flatMap((sample) => [sample.filename ?? "", sample.caption ?? "", sample.source]) ??
+        []),
+    ]),
+    ...(lecture.figures?.flatMap((f) => [f.alt, f.caption]) ?? []),
     lecture.demonstration.intro,
     ...lecture.demonstration.steps.flatMap((s) => [s.step, s.detail]),
     lecture.practice.title,
@@ -267,31 +279,34 @@ export function lectureReadingMinutes(lecture: SessionLecture): number {
     ...lecture.practice.steps,
     lecture.practice.standard,
     ...lecture.pitfalls.flatMap((p) => [p.problem, p.fix]),
+    ...(lecture.troubleshooting?.flatMap((t) => [
+      t.symptom,
+      t.likelyCause,
+      t.check,
+      t.fix,
+      t.prevention,
+      t.whenToStop ?? "",
+    ]) ?? []),
+    ...(lecture.safetyNotes ?? []),
     ...lecture.expertNotes,
     ...lecture.vocabulary.flatMap((v) => [v.term, v.meaning]),
     ...lecture.homework.flatMap((h) => [h.task, h.detail]),
+    ...(lecture.exercises?.flatMap((e) => [e.title, e.prompt, e.hint ?? "", e.expected, e.solution]) ??
+      []),
+    ...(lecture.mastery ?? []),
     ...lecture.rubric.flatMap((r) => [r.criterion, r.passing, r.excellent]),
     ...lecture.faqs.flatMap((f) => [f.q, f.a]),
-  ]
-    .join(" ")
-    .split(/\s+/)
-    .filter(Boolean).length;
+  ].join(" ");
+}
+
+/** Honest reading time for a lecture, computed from its actual content. */
+export function lectureReadingMinutes(lecture: SessionLecture): number {
+  const words = lectureProse(lecture).split(/\s+/).filter(Boolean).length;
   return Math.max(1, Math.round(words / 200));
 }
 
 export function lectureWordCount(lecture: SessionLecture): number {
-  const words = [
-    lecture.summary,
-    ...lecture.blocks.flatMap((b) => b.body),
-    ...lecture.demonstration.steps.flatMap((s) => [s.step, s.detail]),
-    ...lecture.pitfalls.flatMap((p) => [p.problem, p.fix]),
-    ...lecture.expertNotes,
-    ...lecture.faqs.flatMap((f) => [f.q, f.a]),
-  ]
-    .join(" ")
-    .split(/\s+/)
-    .filter(Boolean).length;
-  return words;
+  return lectureProse(lecture).split(/\s+/).filter(Boolean).length;
 }
 
 export function formatFee(fee: number): string {

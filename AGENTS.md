@@ -87,6 +87,22 @@ child's `<title>`. Any route that is both a page and a prefix must be an
 `foo.tsx`. `useParams({ from: ... })` inside an index file must use the
 trailing-slash route id (`"/foo/$param/"`).
 
+## Tutorial production
+
+New learner-facing lessons follow `docs/tutorial-master-prompt.md` — one roadmap
+node at a time, taught to independent use, not summarized. Do not thin a node
+to finish a roadmap in one pass.
+
+Optional fields on `SessionLecture` (`learningPath`, `figures`, `troubleshooting`,
+`exercises`, `mastery`, `safetyNotes`, `sources`, `reviewed`) render on the
+class page when present. Older classroom lectures stay valid without them.
+Figures are original diagrams under `public/images/classes/`, never presented
+as screenshots of software that was not captured.
+
+Published exemplars: Typing & Computer Basics session 1, and Web Development
+session 1 (`/classes/web-development/semantic-html`) — code samples render as
+selectable `LectureCode` blocks, not images.
+
 ## Key Data Files
 - `src/data/site.ts` — programs, engines, FAQs, landing stats
 - `src/data/academy/` — the practical digital skills curriculum: `catalog.ts`

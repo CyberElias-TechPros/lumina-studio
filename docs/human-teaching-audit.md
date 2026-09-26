@@ -117,6 +117,6 @@ Per lesson, after reconstruction:
 | Pass 2 · batch 19 | Next-worst (33, 38, 40, 67, 121, 137, 156, 169, 204, 205)               | **done — 200 lessons reconstructed total (204 and 205 model prose kept)**                             |
 | Pass 2 · batch 20 | Final ten (63, 65, 101, 103, 129, 141, 153, 164, 191, 193)              | **done — 210 lessons reconstructed total. Notes corpus complete.**                                    |
 | Figures           | 57 new illustrations                                                    | **done — all 57 generated, all 439 refs resolve**                                                     |
-| Academy lectures  | Same standard, session by session                                       | after the notes                                                                                       |
+| Academy lectures  | Ultra-granular tutorials, one node at a time (`docs/tutorial-master-prompt.md`) | **started — session 1 of Typing & Computer Basics published as the exemplar** |
 
 The standard at the end: a beginner should not feel _"I have read an article about computers."_ They should feel _"I actually understand this now — I can picture it — and I think I can do it myself."_

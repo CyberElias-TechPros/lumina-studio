@@ -13,7 +13,9 @@ import {
   ListChecks,
   MonitorPlay,
   NotebookPen,
+  Shield,
   Target,
+  Wrench,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -38,6 +40,7 @@ export const Route = createFileRoute("/classes/$courseSlug/$sessionSlug")({
     const course = match?.course ?? findCourse(params.courseSlug) ?? resolvedCourses[0];
     const session = match?.session ?? course.sessions[0];
     const lecture = session?.lecture;
+    const reviewed = lecture?.reviewed ?? LAST_REVIEWED;
     const title = `${course.title} — Session ${session?.number ?? 1}: ${session?.title ?? "Class Notes"}`;
     const description =
       lecture?.summary ??
@@ -83,8 +86,8 @@ export const Route = createFileRoute("/classes/$courseSlug/$sessionSlug")({
           "@type": "Article",
           headline: title,
           description,
-          datePublished: LAST_REVIEWED,
-          dateModified: LAST_REVIEWED,
+          datePublished: reviewed,
+          dateModified: reviewed,
           author: {
             "@type": "Person",
             name: "Ellis Dennis Graham",
@@ -161,6 +164,7 @@ function SessionPage() {
   const prev = match?.prev;
   const next = match?.next;
   const lecture = session?.lecture;
+  const reviewed = lecture?.reviewed ?? LAST_REVIEWED;
 
   if (!lecture) {
     return (
@@ -284,21 +288,31 @@ function SessionPage() {
             className="border-foreground/12 bg-muted/30 mt-9 rounded-xl border p-5"
           >
             <p className="font-label text-muted-foreground text-[10px] tracking-[0.16em] uppercase">
-              In this class lecture
+              On this page
             </p>
             <ol className="mt-3 grid gap-x-6 gap-y-1.5 text-sm sm:grid-cols-2">
               {[
                 ["objectives", "Learning objectives"],
+                lecture.learningPath ? ["path", "Where this fits"] : null,
                 ["theory", "The taught content"],
-                ["demonstration", "Instructor demonstration"],
+                ["demonstration", "Do it, step by step"],
                 ["practice", "Guided practice"],
+                lecture.exercises?.length ? ["exercises", "Practice on your own"] : null,
                 ["mistakes", "Common mistakes"],
+                lecture.troubleshooting?.length
+                  ? ["troubleshooting", "Troubleshooting by symptom"]
+                  : null,
+                lecture.safetyNotes?.length ? ["safety", "Safety and shared machines"] : null,
                 ["expert", "Expert notes"],
                 ["vocabulary", "Key terms"],
                 ["homework", "Homework"],
+                lecture.mastery?.length ? ["mastery", "Mastery checklist"] : null,
                 ["rubric", "Assessment rubric"],
                 ["questions", "Session questions"],
-              ].map(([id, label], i) => (
+                lecture.sources?.length ? ["sources", "Sources"] : null,
+              ]
+                .filter((item): item is [string, string] => item !== null)
+                .map(([id, label], i) => (
                 <li key={id}>
                   <a
                     href={`#${id}`}
@@ -334,6 +348,90 @@ function SessionPage() {
           </ul>
         </section>
 
+        {lecture.learningPath && (
+          <section id="path" className="mt-14 scroll-mt-28">
+            <SectionLabel icon={GraduationCap}>Where this fits</SectionLabel>
+            <div className="border-foreground/12 mt-6 rounded-[14px] border p-6">
+              <p className="text-foreground/85 text-[16px] leading-relaxed">
+                <RichText text={lecture.learningPath.fits} />
+              </p>
+              <dl className="mt-6 grid gap-5 sm:grid-cols-2">
+                <div>
+                  <dt className="font-label text-muted-foreground text-[10px] tracking-[0.16em] uppercase">
+                    Before you start
+                  </dt>
+                  <dd className="mt-2">
+                    <ul className="space-y-1.5">
+                      {lecture.learningPath.prerequisites.map((item) => (
+                        <li key={item} className="text-foreground/80 text-[15px] leading-relaxed">
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </dd>
+                </div>
+                <div>
+                  <dt className="font-label text-muted-foreground text-[10px] tracking-[0.16em] uppercase">
+                    What this unlocks
+                  </dt>
+                  <dd className="text-foreground/80 mt-2 text-[15px] leading-relaxed">
+                    <RichText text={lecture.learningPath.unlocks} />
+                  </dd>
+                </div>
+                <div>
+                  <dt className="font-label text-muted-foreground text-[10px] tracking-[0.16em] uppercase">
+                    Focused practice
+                  </dt>
+                  <dd className="text-foreground/80 mt-2 text-[15px] leading-relaxed">
+                    {lecture.learningPath.practiceTime}
+                  </dd>
+                </div>
+                <div>
+                  <dt className="font-label text-muted-foreground text-[10px] tracking-[0.16em] uppercase">
+                    Next lesson
+                  </dt>
+                  <dd className="mt-2 text-[15px] leading-relaxed">
+                    <a
+                      href={lecture.learningPath.nextLesson.href}
+                      className="text-primary font-semibold underline underline-offset-2"
+                    >
+                      {lecture.learningPath.nextLesson.label}
+                    </a>
+                  </dd>
+                </div>
+              </dl>
+              <div className="border-foreground/10 mt-6 border-t pt-5">
+                <p className="font-label text-muted-foreground text-[10px] tracking-[0.16em] uppercase">
+                  You are done when
+                </p>
+                <ul className="mt-3 space-y-2">
+                  {lecture.learningPath.definitionOfDone.map((item) => (
+                    <li
+                      key={item}
+                      className="text-foreground/80 flex items-start gap-2.5 text-[15px] leading-relaxed"
+                    >
+                      <CheckCircle2 className="text-primary mt-1 size-3.5 shrink-0" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="border-foreground/10 mt-5 border-t pt-5">
+                <p className="font-label text-muted-foreground text-[10px] tracking-[0.16em] uppercase">
+                  Assumed environment
+                </p>
+                <ul className="mt-3 space-y-1.5">
+                  {lecture.learningPath.assumptions.map((item) => (
+                    <li key={item} className="text-foreground/75 text-[14.5px] leading-relaxed">
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </section>
+        )}
+
         {/* Theory */}
         <section id="theory" className="mt-14 scroll-mt-28">
           <SectionLabel icon={BookOpen}>The taught content</SectionLabel>
@@ -347,11 +445,20 @@ function SessionPage() {
                   {block.body.map((paragraph, i) => (
                     <p
                       key={`${block.heading}-${i}`}
-                      className="text-foreground/80 text-[16.5px] leading-[1.75] text-pretty [&_strong]:text-foreground [&_strong]:font-semibold"
-                      dangerouslySetInnerHTML={{ __html: markdownBold(paragraph) }}
+                      className="text-foreground/80 text-[16.5px] leading-[1.75] text-pretty [&_strong]:text-foreground [&_strong]:font-semibold [&_a]:text-primary [&_a]:font-semibold [&_a]:underline [&_a]:underline-offset-2 [&_code]:bg-muted [&_code]:rounded [&_code]:px-1.5 [&_code]:py-0.5 [&_code]:font-mono [&_code]:text-[0.88em]"
+                      dangerouslySetInnerHTML={{ __html: renderInline(paragraph) }}
                     />
                   ))}
                 </div>
+                {block.code?.map((sample, i) => (
+                  <LectureCodeBlock key={`${block.heading}-code-${i}`} sample={sample} />
+                ))}
+                {block.remember && (
+                  <p className="border-primary/30 bg-primary/[0.04] text-foreground/85 mt-4 rounded-r-[10px] border-l-2 px-4 py-3 text-[15.5px] leading-relaxed">
+                    <RichText text={block.remember} />
+                  </p>
+                )}
+                <LectureFigures figures={lecture.figures} afterHeading={block.heading} />
               </div>
             ))}
           </div>
@@ -375,8 +482,8 @@ function SessionPage() {
                   </span>
                   <h3 className="font-display text-[17px] leading-snug font-bold">{step.step}</h3>
                 </div>
-                <p className="text-foreground/75 mt-2.5 text-[15px] leading-relaxed">
-                  {step.detail}
+                <p className="text-foreground/75 mt-2.5 text-[15px] leading-relaxed [&_strong]:text-foreground [&_strong]:font-semibold [&_code]:bg-muted [&_code]:rounded [&_code]:px-1.5 [&_code]:py-0.5 [&_code]:font-mono [&_code]:text-[0.88em]">
+                  <RichText text={step.detail} />
                 </p>
               </li>
             ))}
@@ -391,7 +498,7 @@ function SessionPage() {
               {lecture.practice.title}
             </h3>
             <p className="text-foreground/80 mt-3 text-[15.5px] leading-relaxed">
-              {lecture.practice.brief}
+              <RichText text={lecture.practice.brief} />
             </p>
             <ol className="mt-6 space-y-2.5">
               {lecture.practice.steps.map((step, i) => (
@@ -417,6 +524,50 @@ function SessionPage() {
           </div>
         </section>
 
+        {lecture.exercises && lecture.exercises.length > 0 && (
+          <section id="exercises" className="mt-14 scroll-mt-28">
+            <SectionLabel icon={NotebookPen}>Practice on your own</SectionLabel>
+            <p className="text-muted-foreground mt-3 text-sm leading-relaxed">
+              Do these after the guided practice. The solution stays closed until you have tried.
+              Open it to check, not to copy the first time through.
+            </p>
+            <div className="mt-7 space-y-4">
+              {lecture.exercises.map((exercise) => (
+                <article
+                  key={exercise.title}
+                  className="border-foreground/12 rounded-[12px] border p-5"
+                >
+                  <p className="font-label text-primary text-[10px] tracking-[0.16em] uppercase">
+                    {exercise.kind}
+                  </p>
+                  <h3 className="font-display mt-1.5 text-[17px] font-bold">{exercise.title}</h3>
+                  <p className="text-foreground/80 mt-3 text-[15px] leading-relaxed">
+                    <RichText text={exercise.prompt} />
+                  </p>
+                  {exercise.hint && (
+                    <p className="text-muted-foreground mt-3 text-[14.5px] leading-relaxed">
+                      <span className="text-foreground font-semibold">Hint: </span>
+                      <RichText text={exercise.hint} />
+                    </p>
+                  )}
+                  <p className="text-foreground/80 mt-3 text-[15px] leading-relaxed">
+                    <span className="text-foreground font-semibold">What done looks like: </span>
+                    <RichText text={exercise.expected} />
+                  </p>
+                  <details className="group border-foreground/10 mt-4 border-t pt-3">
+                    <summary className="text-primary cursor-pointer text-sm font-semibold">
+                      Solution and why it works
+                    </summary>
+                    <p className="text-foreground/80 mt-3 text-[15px] leading-relaxed">
+                      <RichText text={exercise.solution} />
+                    </p>
+                  </details>
+                </article>
+              ))}
+            </div>
+          </section>
+        )}
+
         {/* Mistakes */}
         <section id="mistakes" className="mt-14 scroll-mt-28">
           <SectionLabel icon={AlertTriangle}>Common mistakes and how to fix them</SectionLabel>
@@ -426,12 +577,67 @@ function SessionPage() {
                 <p className="text-foreground font-semibold text-[15.5px]">{pitfall.problem}</p>
                 <p className="text-foreground/75 mt-2 text-[15px] leading-relaxed">
                   <span className="text-primary font-semibold">Fix: </span>
-                  {pitfall.fix}
+                  <RichText text={pitfall.fix} />
                 </p>
               </div>
             ))}
           </div>
         </section>
+
+        {lecture.troubleshooting && lecture.troubleshooting.length > 0 && (
+          <section id="troubleshooting" className="mt-14 scroll-mt-28">
+            <SectionLabel icon={Wrench}>Troubleshooting by symptom</SectionLabel>
+            <p className="text-muted-foreground mt-3 max-w-2xl text-[15px] leading-relaxed">
+              Start from what you can see, not from a guess about what is broken. One check at a
+              time. If the check does not match, move to the next likely cause. Do not try three
+              fixes at once — you will not know which one worked.
+            </p>
+            <div className="mt-7 space-y-5">
+              {lecture.troubleshooting.map((item) => (
+                <article
+                  key={item.symptom}
+                  className="border-foreground/12 rounded-[12px] border p-5"
+                >
+                  <h3 className="font-display text-[17px] leading-snug font-bold">{item.symptom}</h3>
+                  <dl className="mt-4 space-y-3 text-[15px] leading-relaxed">
+                    {[
+                      ["What is probably happening", item.likelyCause],
+                      ["Check", item.check],
+                      ["Fix", item.fix],
+                      ["Next time", item.prevention],
+                      ["Stop and ask for help when", item.whenToStop ?? ""],
+                    ]
+                      .filter((row) => row[1])
+                      .map(([label, value]) => (
+                        <div key={label}>
+                          <dt className="text-primary text-[13px] font-semibold">{label}</dt>
+                          <dd className="text-foreground/80 mt-1">
+                            <RichText text={value} />
+                          </dd>
+                        </div>
+                      ))}
+                  </dl>
+                </article>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {lecture.safetyNotes && lecture.safetyNotes.length > 0 && (
+          <section id="safety" className="mt-14 scroll-mt-28">
+            <SectionLabel icon={Shield}>Safety, privacy, and shared machines</SectionLabel>
+            <ul className="mt-6 space-y-4">
+              {lecture.safetyNotes.map((note) => (
+                <li
+                  key={note.slice(0, 48)}
+                  className="border-foreground/10 bg-muted/25 text-foreground/80 border-l-2 py-1 pl-5 text-[15.5px] leading-relaxed"
+                >
+                  <RichText text={note} />
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
 
         {/* Expert notes */}
         <section id="expert" className="mt-14 scroll-mt-28">
@@ -445,7 +651,7 @@ function SessionPage() {
                 key={note.slice(0, 40)}
                 className="border-foreground/10 bg-muted/25 border-l-2 py-1 pl-5 text-[15.5px] leading-relaxed text-pretty"
               >
-                {note}
+                <RichText text={note} />
               </li>
             ))}
           </ul>
@@ -478,6 +684,27 @@ function SessionPage() {
             ))}
           </div>
         </section>
+
+        {lecture.mastery && lecture.mastery.length > 0 && (
+          <section id="mastery" className="mt-14 scroll-mt-28">
+            <SectionLabel icon={ListChecks}>Can you do this?</SectionLabel>
+            <p className="text-muted-foreground mt-3 text-sm leading-relaxed">
+              Close the page and answer from the machine, not from memory of the sentences. A no
+              means go back to that step. It does not mean you failed the lesson.
+            </p>
+            <ul className="mt-6 space-y-3">
+              {lecture.mastery.map((item) => (
+                <li
+                  key={item}
+                  className="text-foreground/85 flex items-start gap-3 text-[15.5px] leading-relaxed"
+                >
+                  <CheckCircle2 className="text-primary mt-1 size-4 shrink-0" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
 
         {/* Rubric */}
         <section id="rubric" className="mt-14 scroll-mt-28">
@@ -528,14 +755,37 @@ function SessionPage() {
                     +
                   </span>
                 </summary>
-                <p className="text-foreground/75 mt-3 text-[15px] leading-relaxed">{faq.a}</p>
+                <p className="text-foreground/75 mt-3 text-[15px] leading-relaxed">
+                  <RichText text={faq.a} />
+                </p>
               </details>
             ))}
           </div>
         </section>
 
+        {lecture.sources && lecture.sources.length > 0 && (
+          <section id="sources" className="mt-14 scroll-mt-28">
+            <SectionLabel icon={BookOpen}>Sources and what to verify</SectionLabel>
+            <ul className="mt-6 space-y-4">
+              {lecture.sources.map((source) => (
+                <li key={source.url} className="text-[15px] leading-relaxed">
+                  <a
+                    href={source.url}
+                    className="text-primary font-semibold underline underline-offset-2"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    {source.title}
+                  </a>
+                  <p className="text-foreground/75 mt-1">{source.note}</p>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
+
         <ContentFreshness
-          lastReviewed={LAST_REVIEWED}
+          lastReviewed={reviewed}
           author="Cyber Elias Academy faculty"
           className="border-foreground/10 mt-14 border-t pt-6"
         />
@@ -624,11 +874,74 @@ function SessionPage() {
   );
 }
 
-/** Renders **bold** markers inside lecture paragraphs without a markdown dependency. */
-function markdownBold(text: string): string {
-  return text
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
+function isSafeHref(href: string): boolean {
+  return href.startsWith("/") || href.startsWith("https://");
+}
+
+/** Bold, code, and safe links. HTML is escaped first. */
+function renderInline(text: string): string {
+  const escaped = text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  return escaped
+    .replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, (match, label: string, href: string) => {
+      if (!isSafeHref(href)) return match;
+      const external = href.startsWith("https://");
+      const attrs = external ? ' target="_blank" rel="noopener noreferrer"' : "";
+      return `<a href="${href}"${attrs}>${label}</a>`;
+    })
+    .replace(/`([^`]+)`/g, "<code>$1</code>")
     .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
+}
+
+function RichText({ text }: { text: string }) {
+  return <span dangerouslySetInnerHTML={{ __html: renderInline(text) }} />;
+}
+
+function LectureCodeBlock({
+  sample,
+}: {
+  sample: { filename?: string; language: string; source: string; caption?: string };
+}) {
+  return (
+    <figure className="border-foreground/12 mt-5 overflow-hidden rounded-[12px] border">
+      <figcaption className="border-foreground/10 bg-muted/40 flex flex-wrap items-baseline justify-between gap-2 border-b px-4 py-2">
+        <span className="text-foreground font-mono text-[13px] font-semibold">
+          {sample.filename ?? sample.language}
+        </span>
+        <span className="text-muted-foreground text-[11px] tracking-wide uppercase">
+          {sample.language}
+        </span>
+      </figcaption>
+      <pre className="overflow-x-auto p-4 text-[13.5px] leading-relaxed">
+        <code className="font-mono">{sample.source}</code>
+      </pre>
+      {sample.caption && (
+        <figcaption className="text-muted-foreground border-foreground/10 border-t px-4 py-3 text-sm leading-relaxed">
+          {sample.caption}
+        </figcaption>
+      )}
+    </figure>
+  );
+}
+
+function LectureFigures({
+  figures,
+  afterHeading,
+}: {
+  figures: { id: string; src: string; alt: string; caption: string; afterHeading: string }[] | undefined;
+  afterHeading: string;
+}) {
+  const matched = figures?.filter((figure) => figure.afterHeading === afterHeading) ?? [];
+  if (matched.length === 0) return null;
+  return (
+    <div className="mt-6 space-y-6">
+      {matched.map((figure) => (
+        <figure key={figure.id} className="border-foreground/12 overflow-hidden rounded-[12px] border">
+          <img src={figure.src} alt={figure.alt} className="h-auto w-full" loading="lazy" />
+          <figcaption className="text-muted-foreground px-4 py-3 text-sm leading-relaxed">
+            {figure.caption}
+          </figcaption>
+        </figure>
+      ))}
+    </div>
+  );
 }
