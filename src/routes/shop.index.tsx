@@ -127,9 +127,9 @@ function ShopPage() {
               <Download className="text-primary size-4" /> Delivery
             </h2>
             <p className="text-muted-foreground mt-2 text-sm leading-relaxed">
-              Paystack handles the payment, then the download link appears on the return page
-              and is emailed to you. We do not ship physical goods — there is nothing to
-              courier and nothing to collect.
+              Paystack handles the payment, then the download link appears on the return page and is
+              emailed to you. We do not ship physical goods — there is nothing to courier and
+              nothing to collect.
             </p>
           </div>
           <div>
@@ -137,8 +137,8 @@ function ShopPage() {
               <FileText className="text-primary size-4" /> Refunds
             </h2>
             <p className="text-muted-foreground mt-2 text-sm leading-relaxed">
-              14 days, including a change of mind. No return parcel needed. Refund to the
-              original payment method within 30 days. See the{" "}
+              14 days, including a change of mind. No return parcel needed. Refund to the original
+              payment method within 30 days. See the{" "}
               <Link to="/refunds" className="text-primary underline">
                 refunds policy
               </Link>{" "}

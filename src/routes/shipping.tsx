@@ -64,20 +64,20 @@ function ShippingPage() {
       <section className="border-border bg-muted/30 border-y">
         <div className="container-page grid gap-10 py-16 md:grid-cols-2 md:py-20">
           <div>
-            <h2 className="font-display text-2xl font-semibold tracking-tight">
-              Where we deliver
-            </h2>
+            <h2 className="font-display text-2xl font-semibold tracking-tight">Where we deliver</h2>
             <p className="text-muted-foreground mt-3 text-base leading-relaxed">
-              Nigeria only, for now. Because the product is a file, you can use it from any
-              country once you have it — but we only take payment and run customer support for
-              buyers inside Nigeria. If you are outside Nigeria and need the same product,
-              email <a href="mailto:hello@cea.ng" className="text-primary underline">hello@cea.ng</a>
-              {" "}and we will tell you when international delivery opens.
+              Nigeria only, for now. Because the product is a file, you can use it from any country
+              once you have it — but we only take payment and run customer support for buyers inside
+              Nigeria. If you are outside Nigeria and need the same product, email{" "}
+              <a href="mailto:hello@cea.ng" className="text-primary underline">
+                hello@cea.ng
+              </a>{" "}
+              and we will tell you when international delivery opens.
             </p>
             <p className="text-muted-foreground mt-3 text-sm leading-relaxed">
               Paystack's payment methods cover cards, bank transfers and USSD on Nigerian banks.
-              There is no extra fee added at the bank page — what you see on the product page
-              is what you pay.
+              There is no extra fee added at the bank page — what you see on the product page is
+              what you pay.
             </p>
           </div>
           <div>
@@ -85,11 +85,11 @@ function ShippingPage() {
               When you get the file
             </h2>
             <p className="text-muted-foreground mt-3 text-base leading-relaxed">
-              The download link appears on the order return page immediately after Paystack
-              confirms payment. The same link is emailed to the address you entered at
-              checkout, so you always have a backup. We aim to deliver within{" "}
-              {Math.min(...digitalProducts.map((p) => p.deliveryHours))} hours; if it takes
-              longer, message us and we will investigate.
+              The download link appears on the order return page immediately after Paystack confirms
+              payment. The same link is emailed to the address you entered at checkout, so you
+              always have a backup. We aim to deliver within{" "}
+              {Math.min(...digitalProducts.map((p) => p.deliveryHours))} hours; if it takes longer,
+              message us and we will investigate.
             </p>
             <p className="text-muted-foreground mt-3 text-sm leading-relaxed">
               The file format for each product is listed on its page.{" "}
@@ -109,9 +109,9 @@ function ShippingPage() {
             <div>
               <h2 className="font-display text-lg font-semibold">Our studio</h2>
               <p className="text-muted-foreground mt-1 text-sm leading-relaxed">
-                26 Ebony Road, Off Rumuola Road, Port Harcourt, Rivers State, Nigeria. Open
-                Mon–Sat, 8:00–20:00 WAT. You do not need to visit to buy a digital product —
-                but you are welcome to.
+                26 Ebony Road, Off Rumuola Road, Port Harcourt, Rivers State, Nigeria. Open Mon–Sat,
+                8:00–20:00 WAT. You do not need to visit to buy a digital product — but you are
+                welcome to.
               </p>
             </div>
           </div>

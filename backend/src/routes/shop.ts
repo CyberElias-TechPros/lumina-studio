@@ -21,13 +21,7 @@ import { Hono } from "hono";
 import { z } from "zod";
 import { recordWebhookEvent } from "../lib/webhooks";
 import type { AppEnv } from "../types";
-import {
-  hmacSha512Hex,
-  isoNow,
-  randomToken,
-  sha256Hex,
-  timingSafeEqualHex,
-} from "../lib/crypto";
+import { hmacSha512Hex, isoNow, randomToken, sha256Hex, timingSafeEqualHex } from "../lib/crypto";
 import { parseBody } from "../lib/validate";
 import { hashIdentifier, rateLimit } from "../lib/rate-limit";
 import { verifyTurnstile } from "../lib/turnstile";
@@ -123,7 +117,8 @@ const PRODUCT_CATALOG: CatalogPayload["products"] = [
       "Any modern browser to preview the file as you edit",
       "About an hour to read the setup guide and publish the page",
     ],
-    license: "Single-project commercial use. Resale or redistribution of the source files is not included.",
+    license:
+      "Single-project commercial use. Resale or redistribution of the source files is not included.",
   },
   {
     id: "cea-invoice-stock-sheet",
@@ -429,8 +424,7 @@ shop.get("/orders/:reference", async (c) => {
     email: updated.buyer_email,
     name: updated.buyer_name,
     status: updated.status,
-    downloadUrl:
-      updated.status === "success" ? updated.download_url || null : null,
+    downloadUrl: updated.status === "success" ? updated.download_url || null : null,
     paidAt: updated.paid_at,
     createdAt: updated.created_at,
   });
@@ -522,11 +516,7 @@ shop.post("/webhook", async (c) => {
     const expected = await hmacSha512Hex(secret, rawBody);
     if (!timingSafeEqualHex(signature, expected)) throw ApiError.unauthorized("Invalid signature.");
   } else if (c.env.APP_ENV === "production") {
-    throw new ApiError(
-      503,
-      "PAYMENT_PROVIDER_UNAVAILABLE",
-      "Paystack secret is not configured.",
-    );
+    throw new ApiError(503, "PAYMENT_PROVIDER_UNAVAILABLE", "Paystack secret is not configured.");
   }
 
   let body: {

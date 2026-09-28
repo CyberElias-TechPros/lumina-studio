@@ -75,11 +75,7 @@ function CopyButton({ value }: { value: string }) {
       className="border-border text-muted-foreground hover:text-foreground hover:bg-muted grid size-8 place-items-center rounded-md border transition-colors"
       aria-label={`Copy ${value}`}
     >
-      {copied ? (
-        <CheckCircle2 className="text-success size-4" />
-      ) : (
-        <Copy className="size-4" />
-      )}
+      {copied ? <CheckCircle2 className="text-success size-4" /> : <Copy className="size-4" />}
     </button>
   );
 }
@@ -172,9 +168,9 @@ function MerchantPage() {
             ))}
           </div>
           <p className="text-muted-foreground mt-6 text-xs leading-relaxed">
-            Note: Google will only fetch the feed once the live site is serving these URLs
-            from <code className="font-mono">https://www.cea.ng</code>. Preview deployments
-            are not reachable from Google's crawlers.
+            Note: Google will only fetch the feed once the live site is serving these URLs from{" "}
+            <code className="font-mono">https://www.cea.ng</code>. Preview deployments are not
+            reachable from Google's crawlers.
           </p>
         </div>
       </section>
@@ -189,7 +185,9 @@ function MerchantPage() {
           {digitalProducts.map((p) => (
             <div key={p.id} className="border-border bg-card flex flex-col rounded-lg border p-5">
               <p className="font-display text-base font-semibold">{p.title}</p>
-              <p className="text-muted-foreground mt-1 line-clamp-2 text-sm">{p.shortDescription}</p>
+              <p className="text-muted-foreground mt-1 line-clamp-2 text-sm">
+                {p.shortDescription}
+              </p>
               <dl className="text-muted-foreground mt-4 grid grid-cols-2 gap-2 text-xs">
                 <dt>Price</dt>
                 <dd className="text-foreground text-right font-mono">
@@ -204,9 +202,7 @@ function MerchantPage() {
                 <dt>MPN</dt>
                 <dd className="text-foreground text-right font-mono">{p.mpn}</dd>
                 <dt>GTIN</dt>
-                <dd className="text-foreground text-right font-mono">
-                  {p.gtin ? p.gtin : "—"}
-                </dd>
+                <dd className="text-foreground text-right font-mono">{p.gtin ? p.gtin : "—"}</dd>
               </dl>
               <Link
                 to={productPath(p.slug)}
@@ -228,9 +224,21 @@ function MerchantPage() {
           />
           <div className="mt-8 grid gap-4 md:grid-cols-3">
             {[
-              { to: "/shipping", title: "Shipping policy", body: "Electronic, Nigeria only, no courier fee." },
-              { to: "/refunds", title: "Return & refund policy", body: "14-day window, change of mind included, refund to original method within 30 days." },
-              { to: "/payment", title: "Payment policy", body: "Paystack handles cards, bank transfer and USSD. No extra fee at the bank page." },
+              {
+                to: "/shipping",
+                title: "Shipping policy",
+                body: "Electronic, Nigeria only, no courier fee.",
+              },
+              {
+                to: "/refunds",
+                title: "Return & refund policy",
+                body: "14-day window, change of mind included, refund to original method within 30 days.",
+              },
+              {
+                to: "/payment",
+                title: "Payment policy",
+                body: "Paystack handles cards, bank transfer and USSD. No extra fee at the bank page.",
+              },
             ].map((p) => (
               <Link
                 key={p.to}
@@ -259,8 +267,8 @@ function MerchantPage() {
 
       <section className="container-page py-8 text-center">
         <p className="text-muted-foreground inline-flex items-center justify-center gap-2 text-xs">
-          <KeyRound className="size-3.5" /> Keep the Merchant Center ID private — it controls
-          the account.
+          <KeyRound className="size-3.5" /> Keep the Merchant Center ID private — it controls the
+          account.
         </p>
       </section>
     </PageShell>

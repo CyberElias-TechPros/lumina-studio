@@ -10,20 +10,14 @@ import { Label } from "@/components/ui/label";
 import { PageShell } from "@/components/marketing/shell";
 import { useTurnstile } from "@/components/turnstile";
 import { ApiError } from "@/lib/errors";
-import {
-  formatNaira,
-  getDigitalProduct,
-  productPath,
-  returnPath,
-} from "@/data/digital-products";
+import { formatNaira, getDigitalProduct, productPath, returnPath } from "@/data/digital-products";
 import { startShopCheckout } from "@/lib/api/shop";
 import { getPageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/shop/$slug/checkout")({
   parseParams: (params) => ({ slug: params.slug }),
   stringifyParams: (params) => ({ slug: params.slug }),
-  validateSearch: (search: Record<string, unknown>) =>
-    z.object({}).parse(search),
+  validateSearch: (search: Record<string, unknown>) => z.object({}).parse(search),
   loader: ({ params }) => {
     const product = getDigitalProduct(params.slug);
     if (!product) throw notFound();
@@ -73,8 +67,7 @@ function CheckoutPage() {
 
     setSubmitting(true);
     try {
-      const origin =
-        typeof window !== "undefined" ? window.location.origin : "https://www.cea.ng";
+      const origin = typeof window !== "undefined" ? window.location.origin : "https://www.cea.ng";
       const redirectUrl = `${origin}${returnPath(product.slug)}`;
       const response = await startShopCheckout({
         productSlug: product.slug,
@@ -121,8 +114,8 @@ function CheckoutPage() {
               Checkout
             </h1>
             <p className="text-muted-foreground text-sm leading-relaxed">
-              Pay once, get the file by email within one business day. We never create an
-              account for you — the download link is delivered to the email below.
+              Pay once, get the file by email within one business day. We never create an account
+              for you — the download link is delivered to the email below.
             </p>
 
             <div className="space-y-2">
@@ -138,9 +131,7 @@ function CheckoutPage() {
                 disabled={submitting}
                 autoComplete="email"
               />
-              {fieldErrors.email && (
-                <p className="text-error text-xs">{fieldErrors.email}</p>
-              )}
+              {fieldErrors.email && <p className="text-error text-xs">{fieldErrors.email}</p>}
             </div>
 
             <div className="space-y-2">
@@ -155,9 +146,7 @@ function CheckoutPage() {
                 disabled={submitting}
                 autoComplete="name"
               />
-              {fieldErrors.name && (
-                <p className="text-error text-xs">{fieldErrors.name}</p>
-              )}
+              {fieldErrors.name && <p className="text-error text-xs">{fieldErrors.name}</p>}
             </div>
 
             <turnstile.Widget />
@@ -184,8 +173,8 @@ function CheckoutPage() {
               )}
             </Button>
             <p className="text-muted-foreground text-xs">
-              You will be redirected to Paystack to enter your card details. We never see or
-              store your card number.
+              You will be redirected to Paystack to enter your card details. We never see or store
+              your card number.
             </p>
           </form>
 
@@ -209,23 +198,25 @@ function CheckoutPage() {
                 <span className="text-foreground">Free (electronic)</span>
               </div>
               <div className="text-muted-foreground flex items-center justify-between border-t pt-4 text-sm">
-                <span className="font-display text-foreground text-base font-semibold">Total today</span>
+                <span className="font-display text-foreground text-base font-semibold">
+                  Total today
+                </span>
                 <span className="font-display text-foreground text-base font-semibold tabular-nums">
                   {formatNaira(product.price)}
                 </span>
               </div>
               <ul className="text-muted-foreground space-y-2 border-t pt-4 text-xs">
                 <li className="flex items-start gap-2">
-                  <ShieldCheck className="mt-0.5 size-3.5 shrink-0" /> 14-day refund
-                  window, including a change of mind.
+                  <ShieldCheck className="mt-0.5 size-3.5 shrink-0" /> 14-day refund window,
+                  including a change of mind.
                 </li>
                 <li className="flex items-start gap-2">
-                  <Smartphone className="mt-0.5 size-3.5 shrink-0" /> Paystack supports
-                  cards, transfers and USSD. No extra fee at the bank page.
+                  <Smartphone className="mt-0.5 size-3.5 shrink-0" /> Paystack supports cards,
+                  transfers and USSD. No extra fee at the bank page.
                 </li>
                 <li className="flex items-start gap-2">
-                  <Lock className="mt-0.5 size-3.5 shrink-0" /> This is a one-off
-                  purchase. No subscription, no recurring charge.
+                  <Lock className="mt-0.5 size-3.5 shrink-0" /> This is a one-off purchase. No
+                  subscription, no recurring charge.
                 </li>
               </ul>
             </CardContent>

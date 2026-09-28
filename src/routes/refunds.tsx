@@ -64,30 +64,25 @@ function RefundsPage() {
         <div className="container-page py-16 md:py-20">
           <div className="mx-auto max-w-3xl space-y-8 text-sm leading-relaxed">
             <div>
-              <h2 className="font-display text-2xl font-semibold tracking-tight">
-                Eligibility
-              </h2>
+              <h2 className="font-display text-2xl font-semibold tracking-tight">Eligibility</h2>
               <p className="text-muted-foreground mt-3">
-                You can request a refund within 14 days of the purchase date for any digital
-                product in the shop. You do not need to give a reason. If the file is
-                defective or does not match the description on the product page, the 14-day
-                window still applies — but we will fix or replace the file first if that is
-                what you would prefer.
+                You can request a refund within 14 days of the purchase date for any digital product
+                in the shop. You do not need to give a reason. If the file is defective or does not
+                match the description on the product page, the 14-day window still applies — but we
+                will fix or replace the file first if that is what you would prefer.
               </p>
             </div>
 
             <div>
-              <h2 className="font-display text-2xl font-semibold tracking-tight">
-                How to ask
-              </h2>
+              <h2 className="font-display text-2xl font-semibold tracking-tight">How to ask</h2>
               <p className="text-muted-foreground mt-3">
                 Reply to the order confirmation email or write to{" "}
                 <a href="mailto:hello@cea.ng" className="text-primary underline">
                   hello@cea.ng
                 </a>{" "}
-                with your order reference (it starts with <code className="font-mono">cea_shop_</code>).
-                We confirm receipt within one working day and process approved refunds within
-                30 days.
+                with your order reference (it starts with{" "}
+                <code className="font-mono">cea_shop_</code>). We confirm receipt within one working
+                day and process approved refunds within 30 days.
               </p>
             </div>
 
@@ -96,9 +91,9 @@ function RefundsPage() {
                 What is refunded
               </h2>
               <p className="text-muted-foreground mt-3">
-                The full purchase price in naira. Paystack charges are not refunded to us, so
-                you receive the full amount you paid. There is no restocking fee because
-                nothing physical is shipped.
+                The full purchase price in naira. Paystack charges are not refunded to us, so you
+                receive the full amount you paid. There is no restocking fee because nothing
+                physical is shipped.
               </p>
             </div>
 
@@ -107,9 +102,9 @@ function RefundsPage() {
                 Delivery method
               </h2>
               <p className="text-muted-foreground mt-3">
-                Refunds are issued to the original payment method — the same card, bank
-                account or USSD channel used at checkout. We do not refund to a different
-                account for fraud-prevention reasons.
+                Refunds are issued to the original payment method — the same card, bank account or
+                USSD channel used at checkout. We do not refund to a different account for
+                fraud-prevention reasons.
               </p>
             </div>
 
@@ -118,9 +113,9 @@ function RefundsPage() {
                 After the 14-day window
               </h2>
               <p className="text-muted-foreground mt-3">
-                If more than 14 days have passed, we still want to hear from you. We will
-                review defective files and obvious errors case-by-case. The 14-day rule is a
-                floor, not a ceiling — we treat each request on its merits.
+                If more than 14 days have passed, we still want to hear from you. We will review
+                defective files and obvious errors case-by-case. The 14-day rule is a floor, not a
+                ceiling — we treat each request on its merits.
               </p>
             </div>
           </div>

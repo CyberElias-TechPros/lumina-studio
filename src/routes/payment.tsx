@@ -62,14 +62,12 @@ function PaymentPage() {
       <section className="border-border bg-muted/30 border-y">
         <div className="container-page grid gap-10 py-16 md:grid-cols-2 md:py-20">
           <div>
-            <h2 className="font-display text-2xl font-semibold tracking-tight">
-              What we never do
-            </h2>
+            <h2 className="font-display text-2xl font-semibold tracking-tight">What we never do</h2>
             <p className="text-muted-foreground mt-3 text-base leading-relaxed">
-              We do not see or store your card number, CVV or bank PIN — that all happens
-              on Paystack's hosted page. We do not charge a convenience fee on top of the
-              product price, and we do not enrol you in any subscription. Every order is a
-              single one-off payment.
+              We do not see or store your card number, CVV or bank PIN — that all happens on
+              Paystack's hosted page. We do not charge a convenience fee on top of the product
+              price, and we do not enrol you in any subscription. Every order is a single one-off
+              payment.
             </p>
             <p className="text-muted-foreground mt-3 text-sm leading-relaxed">
               If a price on the shop looks wrong, stop and email{" "}
@@ -84,9 +82,9 @@ function PaymentPage() {
               Receipts and records
             </h2>
             <p className="text-muted-foreground mt-3 text-base leading-relaxed">
-              Paystack emails a receipt to the address you entered at checkout. We also
-              email a separate CEA order receipt that lists the product, the price paid and
-              the order reference. The order reference starts with{" "}
+              Paystack emails a receipt to the address you entered at checkout. We also email a
+              separate CEA order receipt that lists the product, the price paid and the order
+              reference. The order reference starts with{" "}
               <code className="font-mono">cea_shop_</code> — quote it if you need help.
             </p>
             <p className="text-muted-foreground mt-3 text-sm leading-relaxed">
@@ -108,8 +106,8 @@ function PaymentPage() {
               <h2 className="font-display text-lg font-semibold">Why Paystack</h2>
               <p className="text-muted-foreground mt-1 text-sm leading-relaxed">
                 Paystack is licensed by the Central Bank of Nigeria, powers more than half of
-                Nigerian online businesses, and is PCI-DSS certified. Their dispute and
-                chargeback process is the one we use for the academy.
+                Nigerian online businesses, and is PCI-DSS certified. Their dispute and chargeback
+                process is the one we use for the academy.
               </p>
             </div>
           </div>

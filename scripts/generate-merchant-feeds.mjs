@@ -154,9 +154,7 @@ async function main() {
   writeFileSync(XML_OUT, buildXml(products));
   writeFileSync(CSV_OUT, buildCsv(products));
 
-  console.log(
-    `merchant feed: ${products.length} products -> ${XML_OUT} and ${CSV_OUT}`,
-  );
+  console.log(`merchant feed: ${products.length} products -> ${XML_OUT} and ${CSV_OUT}`);
 }
 
 main().catch((err) => {

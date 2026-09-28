@@ -28,7 +28,13 @@ export const Route = createFileRoute("/shop/$slug/return")({
     return { product };
   },
   head: () => ({
-    meta: [{ title: "Order complete — Cyber Elias Academy", name: "robots", content: "noindex,nofollow" }],
+    meta: [
+      {
+        title: "Order complete — Cyber Elias Academy",
+        name: "robots",
+        content: "noindex,nofollow",
+      },
+    ],
   }),
   component: ReturnPage,
 });
@@ -109,12 +115,12 @@ function ReturnPage() {
                   </span>
                   <p className="font-display mt-5 text-lg font-bold">Payment confirmed</p>
                   <p className="text-muted-foreground mt-2 text-sm leading-relaxed">
-                    We received {formatNaira(state.order.amount)} for {product.title}.
-                    Your download link is on its way to {state.order.email}.
+                    We received {formatNaira(state.order.amount)} for {product.title}. Your download
+                    link is on its way to {state.order.email}.
                   </p>
                   <p className="text-muted-foreground mt-3 text-xs leading-relaxed">
-                    If you do not see the email within one business day, message us on
-                    WhatsApp with reference <code className="font-mono">{state.order.reference}</code>.
+                    If you do not see the email within one business day, message us on WhatsApp with
+                    reference <code className="font-mono">{state.order.reference}</code>.
                   </p>
                 </>
               )}
@@ -126,10 +132,9 @@ function ReturnPage() {
                   </span>
                   <p className="font-display mt-5 text-lg font-bold">Payment under review</p>
                   <p className="text-muted-foreground mt-2 text-sm leading-relaxed">
-                    We received your payment of {formatNaira(state.order.amount)} but the
-                    amount on file did not match. Our team will confirm and email you the
-                    download link. Reference{" "}
-                    <code className="font-mono">{state.order.reference}</code>.
+                    We received your payment of {formatNaira(state.order.amount)} but the amount on
+                    file did not match. Our team will confirm and email you the download link.
+                    Reference <code className="font-mono">{state.order.reference}</code>.
                   </p>
                 </>
               )}

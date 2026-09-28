@@ -129,20 +129,18 @@ function ProductPage() {
                 </div>
                 <ul className="text-muted-foreground mt-6 grid gap-2 border-t pt-5 text-xs sm:grid-cols-2">
                   <li className="flex items-start gap-2">
-                    <Clock3 className="mt-0.5 size-3.5 shrink-0" /> Electronic delivery
-                    within {product.deliveryHours} hours
+                    <Clock3 className="mt-0.5 size-3.5 shrink-0" /> Electronic delivery within{" "}
+                    {product.deliveryHours} hours
                   </li>
                   <li className="flex items-start gap-2">
-                    <Download className="mt-0.5 size-3.5 shrink-0" /> Download appears after
-                    payment confirms
+                    <Download className="mt-0.5 size-3.5 shrink-0" /> Download appears after payment
+                    confirms
                   </li>
                   <li className="flex items-start gap-2">
-                    <ShieldCheck className="mt-0.5 size-3.5 shrink-0" /> 14-day refund
-                    window
+                    <ShieldCheck className="mt-0.5 size-3.5 shrink-0" /> 14-day refund window
                   </li>
                   <li className="flex items-start gap-2">
-                    <Smartphone className="mt-0.5 size-3.5 shrink-0" /> Works on any
-                    modern device
+                    <Smartphone className="mt-0.5 size-3.5 shrink-0" /> Works on any modern device
                   </li>
                 </ul>
               </CardContent>
