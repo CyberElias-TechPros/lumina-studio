@@ -26,6 +26,16 @@ const columns = [
     ],
   },
   {
+    title: "Shop",
+    links: [
+      { label: "All products", to: "/shop" },
+      { label: "Refunds policy", to: "/refunds" },
+      { label: "Delivery", to: "/shipping" },
+      { label: "Payment", to: "/payment" },
+      { label: "Merchant Center", to: "/merchant" },
+    ],
+  },
+  {
     title: "Legal",
     links: [
       { label: "Privacy", to: "/privacy" },

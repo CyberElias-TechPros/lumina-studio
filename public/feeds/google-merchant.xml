@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:g="http://base.google.com/ns/1.0" version="2.0">
+  <channel>
+    <title>Cyber Elias Academy shop</title>
+    <link>https://www.cea.ng/shop</link>
+    <description>One-time digital products from Cyber Elias Academy: website starter, invoice and stock sheet, weekly social content planner. Pay once, download the file.</description>
+    <item>
+      <g:id>cea-website-starter</g:id>
+      <title>One-page business website starter</title>
+      <description>A working one-page website you can publish in an afternoon. Comes as editable source files plus a short setup guide that walks you through putting it on a free host and pointing your domain at it. Built with the same plain HTML, CSS and JavaScript the academy teaches in the Web Development classes, so you can read the code and learn how it works as you customise it.</description>
+      <link>https://www.cea.ng/shop/website-starter</link>
+      <g:image_link>https://www.cea.ng/images/products/website-starter.svg</g:image_link>
+      <g:price>12000 NGN</g:price>
+      <g:availability>in_stock</g:availability>
+      <g:condition>new</g:condition>
+      <g:brand>Cyber Elias Academy</g:brand>
+      <g:mpn>CEA-WEB-STARTER-001</g:mpn>
+      <g:google_product_category>Software &gt; Website Templates</g:google_product_category>
+      <g:shipping>
+        <g:country>NG</g:country>
+        <g:service>Electronic</g:service>
+        <g:price>0.00 NGN</g:price>
+      </g:shipping>
+      <g:tax>
+        <g:country>NG</g:country>
+        <g:rate>0</g:rate>
+      </g:tax>
+      <g:product_type>template</g:product_type>
+      <g:link>https://www.cea.ng/shop/website-starter</g:link>
+      <g:mobile_link>https://www.cea.ng/shop/website-starter</g:mobile_link>
+      <g:item_group_id>cea-website-starter</g:item_group_id>
+      <g:shipping_weight>120 g</g:shipping_weight>
+      <g:custom_label_0>digital</g:custom_label_0>
+      <g:custom_label_1>template</g:custom_label_1>
+    </item>
+    <item>
+      <g:id>cea-invoice-stock-sheet</g:id>
+      <title>Invoice and stock sheet for small shops</title>
+      <description>A working spreadsheet for daily shop use: one tab for invoices you issue, one for invoices you receive, one for stock in and stock out, and one summary that shows what you owe and what is owed to you. Comes with a written guide explaining the columns, the formulas, and how to switch between Excel and Google Sheets without breaking the totals. Replaces the paper ledger most small shops still keep.</description>
+      <link>https://www.cea.ng/shop/invoice-stock-sheet</link>
+      <g:image_link>https://www.cea.ng/images/products/invoice-stock-sheet.svg</g:image_link>
+      <g:price>8000 NGN</g:price>
+      <g:availability>in_stock</g:availability>
+      <g:condition>new</g:condition>
+      <g:brand>Cyber Elias Academy</g:brand>
+      <g:mpn>CEA-INV-STOCK-001</g:mpn>
+      <g:google_product_category>Office Supplies &gt; Spreadsheet Templates</g:google_product_category>
+      <g:shipping>
+        <g:country>NG</g:country>
+        <g:service>Electronic</g:service>
+        <g:price>0.00 NGN</g:price>
+      </g:shipping>
+      <g:tax>
+        <g:country>NG</g:country>
+        <g:rate>0</g:rate>
+      </g:tax>
+      <g:product_type>spreadsheet</g:product_type>
+      <g:link>https://www.cea.ng/shop/invoice-stock-sheet</g:link>
+      <g:mobile_link>https://www.cea.ng/shop/invoice-stock-sheet</g:mobile_link>
+      <g:item_group_id>cea-invoice-stock-sheet</g:item_group_id>
+      <g:shipping_weight>240 g</g:shipping_weight>
+      <g:custom_label_0>digital</g:custom_label_0>
+      <g:custom_label_1>spreadsheet</g:custom_label_1>
+    </item>
+    <item>
+      <g:id>cea-social-content-planner</g:id>
+      <title>Weekly social content planner</title>
+      <description>A planner that covers one week at a time, with seven caption frameworks, a hashtag bank, image prompts that don&apos;t require a designer, and a posting-time guide for Nigerian audiences. Built for a one-person marketing team, not an agency. Comes with example weeks you can copy from and a checklist to review before each post goes live.</description>
+      <link>https://www.cea.ng/shop/social-content-planner</link>
+      <g:image_link>https://www.cea.ng/images/products/social-content-planner.svg</g:image_link>
+      <g:price>6000 NGN</g:price>
+      <g:availability>in_stock</g:availability>
+      <g:condition>new</g:condition>
+      <g:brand>Cyber Elias Academy</g:brand>
+      <g:mpn>CEA-SOC-PLAN-001</g:mpn>
+      <g:google_product_category>Office Supplies &gt; Marketing Templates</g:google_product_category>
+      <g:shipping>
+        <g:country>NG</g:country>
+        <g:service>Electronic</g:service>
+        <g:price>0.00 NGN</g:price>
+      </g:shipping>
+      <g:tax>
+        <g:country>NG</g:country>
+        <g:rate>0</g:rate>
+      </g:tax>
+      <g:product_type>planner</g:product_type>
+      <g:link>https://www.cea.ng/shop/social-content-planner</g:link>
+      <g:mobile_link>https://www.cea.ng/shop/social-content-planner</g:mobile_link>
+      <g:item_group_id>cea-social-content-planner</g:item_group_id>
+      <g:shipping_weight>180 g</g:shipping_weight>
+      <g:custom_label_0>digital</g:custom_label_0>
+      <g:custom_label_1>planner</g:custom_label_1>
+    </item>
+  </channel>
+</rss>

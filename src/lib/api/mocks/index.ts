@@ -1174,6 +1174,182 @@ export function registerAllMocks(): void {
     });
   }
 
+  /* Public digital shop — guest checkout for the merchant feed. Mirrors
+   * the backend's /v1/shop/* endpoints so the storefront renders end-to-end
+   * in mock mode. Orders are persisted in-memory until reload. */
+  type MockShopOrder = {
+    reference: string;
+    productSlug: string;
+    productTitle: string;
+    amount: number;
+    currency: string;
+    email: string;
+    name: string;
+    status: "pending" | "success" | "failed" | "review";
+    downloadUrl: string | null;
+    paidAt: string | null;
+    createdAt: string;
+  };
+  const shopOrders = new Map<string, MockShopOrder>();
+  const SHOP_CATALOG = {
+    currency: "NGN" as const,
+    country: "NG" as const,
+    storeUrl: "https://www.cea.ng/shop",
+    products: [
+      {
+        id: "cea-website-starter",
+        slug: "website-starter",
+        title: "One-page business website starter",
+        shortDescription:
+          "Editable HTML/CSS/JS one-page website starter with contact form and setup guide.",
+        description:
+          "A working one-page website you can publish in an afternoon. Comes as editable source files plus a short setup guide.",
+        price: 12000,
+        priceCurrency: "NGN" as const,
+        availability: "in_stock" as const,
+        image: "/images/products/website-starter.svg",
+        imageAlt:
+          "A flat illustration of a single-page website preview with sections for services, about, contact and a call to action.",
+        deliveryHours: 24,
+        fileFormat: "ZIP (HTML, CSS, JS, README)",
+        highlights: [
+          "Mobile-ready layout that works on phones, tablets and desktops",
+          "Editable HTML/CSS/JS — no proprietary builder lock-in",
+          "Contact form with mailto fallback so it works on any host",
+          "Setup guide covering free hosting, domain pointing and SSL",
+        ],
+        requirements: [
+          "A computer running Windows, macOS or Linux",
+          "Any modern browser to preview the file as you edit",
+          "About an hour to read the setup guide and publish the page",
+        ],
+        license:
+          "Single-project commercial use. Resale or redistribution of the source files is not included.",
+      },
+      {
+        id: "cea-invoice-stock-sheet",
+        slug: "invoice-stock-sheet",
+        title: "Invoice and stock sheet for small shops",
+        shortDescription:
+          "Spreadsheet for invoices, supplier bills and stock-in/stock-out with a summary tab.",
+        description:
+          "A working spreadsheet for daily shop use: one tab for invoices you issue, one for invoices you receive, one for stock in and stock out, and one summary that shows what you owe and what is owed to you.",
+        price: 8000,
+        priceCurrency: "NGN" as const,
+        availability: "in_stock" as const,
+        image: "/images/products/invoice-stock-sheet.svg",
+        imageAlt:
+          "A flat illustration of a paper invoice and a small spreadsheet grid with rows for items and totals.",
+        deliveryHours: 24,
+        fileFormat: "XLSX (also opens in Google Sheets, LibreOffice, Numbers)",
+        highlights: [
+          "Issue invoices and record supplier bills in one workbook",
+          "Stock-in / stock-out tracker with running balances",
+          "Summary tab showing what you owe and what is owed to you",
+          "Works in Microsoft Excel and Google Sheets without reformatting",
+        ],
+        requirements: [
+          "Microsoft Excel 2016 or later, or a free Google account for Google Sheets",
+          "Basic comfort entering numbers into cells",
+          "About 30 minutes to set up your shop name, address and first products",
+        ],
+        license: "Single-shop commercial use. Resale of the template as-is is not included.",
+      },
+      {
+        id: "cea-social-content-planner",
+        slug: "social-content-planner",
+        title: "Weekly social content planner",
+        shortDescription:
+          "Weekly content planner with caption frameworks, hashtag bank, image prompts and posting-time guide.",
+        description:
+          "A planner that covers one week at a time, with seven caption frameworks, a hashtag bank, image prompts that don't require a designer, and a posting-time guide for Nigerian audiences.",
+        price: 6000,
+        priceCurrency: "NGN" as const,
+        availability: "in_stock" as const,
+        image: "/images/products/social-content-planner.svg",
+        imageAlt:
+          "A flat illustration of a weekly calendar grid with coloured post slots and a small phone showing a feed.",
+        deliveryHours: 24,
+        fileFormat: "PDF (printable) + Google Docs companion link",
+        highlights: [
+          "Seven caption frameworks for everyday small business posts",
+          "Hashtag bank curated for Nigerian Instagram, Facebook and X",
+          "Image prompts you can shoot on a phone without a designer",
+          "Posting-time guide tuned to Nigerian audience patterns",
+        ],
+        requirements: [
+          "Any device that can open a PDF (phone, tablet, laptop)",
+          "An active Instagram, Facebook or X account",
+          "About an hour to fill in your first week",
+        ],
+        license: "Single-business use. Resale of the planner as-is is not included.",
+      },
+    ],
+  };
+
+  registerMock("GET", "/v1/shop/catalog", async () => {
+    await delay();
+    return SHOP_CATALOG;
+  });
+
+  registerMock("POST", "/v1/shop/checkout", async (init: ApiRequestInit) => {
+    await delay();
+    const input = (init.body ?? {}) as {
+      productSlug?: string;
+      email?: string;
+      name?: string;
+      redirectUrl?: string;
+    };
+    const product = SHOP_CATALOG.products.find((p) => p.slug === input.productSlug);
+    if (!product) {
+      throw new ApiError(404, "NOT_FOUND", "Unknown product.");
+    }
+    const reference = `cea_mock_${Math.random().toString(16).slice(2, 12)}`;
+    const now = new Date().toISOString();
+    shopOrders.set(reference, {
+      reference,
+      productSlug: product.slug,
+      productTitle: product.title,
+      amount: product.price,
+      currency: "NGN",
+      email: input.email ?? "",
+      name: input.name ?? "",
+      status: "pending",
+      downloadUrl: null,
+      paidAt: null,
+      createdAt: now,
+    });
+    return {
+      reference,
+      authorizationUrl: `https://checkout.paystack.com/${reference}`,
+      mock: true,
+      amount: product.price,
+      productTitle: product.title,
+    };
+  });
+
+  registerMockPattern("GET", "/v1/shop/orders/*", async (init: ApiRequestInit) => {
+    await delay();
+    const segments = (init.path ?? "").split("/").filter(Boolean);
+    const reference = segments[segments.length - 1] ?? "";
+    const order = shopOrders.get(reference);
+    if (!order) {
+      throw new ApiError(404, "NOT_FOUND", "Order not found.");
+    }
+    return order;
+  });
+
+  registerMockPattern("GET", "/v1/shop/download/*", async () => {
+    await delay();
+    // Mock downloads are never delivered — same 501 contract as the live
+    // route so the UI surfaces the same "delivery in progress" message.
+    return {
+      ok: true,
+      message:
+        "Payment confirmed. In production the file is delivered by email; in mock mode the storefront stops here.",
+    };
+  });
+
   /* Library — catalog is public; full library returns everything */
   const allLibraryItems = [...libraryItems, ...externalLinkItems];
   registerMock("GET", "/v1/library/catalog", async () => {
