@@ -21,11 +21,15 @@ import { Route as EnginesRouteImport } from './routes/engines'
 import { Route as EventsRouteImport } from './routes/events'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as MarketplaceRouteImport } from './routes/marketplace'
+import { Route as MerchantRouteImport } from './routes/merchant'
 import { Route as PartnersRouteImport } from './routes/partners'
+import { Route as PaymentRouteImport } from './routes/payment'
 import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as RefundsRouteImport } from './routes/refunds'
 import { Route as ScholarshipsRouteImport } from './routes/scholarships'
 import { Route as ServicesRouteImport } from './routes/services'
+import { Route as ShippingRouteImport } from './routes/shipping'
 import { Route as StoriesRouteImport } from './routes/stories'
 import { Route as TeamRouteImport } from './routes/team'
 import { Route as TermsRouteImport } from './routes/terms'
@@ -111,6 +115,7 @@ import { Route as ProgramsIndexRouteImport } from './routes/programs.index'
 import { Route as ProgramsCompareRouteImport } from './routes/programs/compare'
 import { Route as ResourcesIndexRouteImport } from './routes/resources.index'
 import { Route as ResourcesSlugRouteImport } from './routes/resources.$slug'
+import { Route as ShopIndexRouteImport } from './routes/shop.index'
 import { Route as VisitIndexRouteImport } from './routes/visit/index'
 import { Route as VisitBrochureRouteImport } from './routes/visit/brochure'
 import { Route as VisitFeedbackRouteImport } from './routes/visit/feedback'
@@ -383,6 +388,9 @@ import { Route as ClassesCourseSlugIndexRouteImport } from './routes/classes.$co
 import { Route as ClassesCourseSlugSessionSlugRouteImport } from './routes/classes.$courseSlug.$sessionSlug'
 import { Route as ProgramsSlugIndexRouteImport } from './routes/programs.$slug.index'
 import { Route as ProgramsSlugModuleRouteImport } from './routes/programs.$slug.$module'
+import { Route as ShopSlugIndexRouteImport } from './routes/shop.$slug.index'
+import { Route as ShopSlugCheckoutRouteImport } from './routes/shop.$slug.checkout'
+import { Route as ShopSlugReturnRouteImport } from './routes/shop.$slug.return'
 import { Route as AppAdmissionsApplicationsIdRouteImport } from './routes/app/admissions/applications/$id'
 import { Route as AppAssessmentsAssessmentIdTakeRouteImport } from './routes/app/assessments/$assessmentId/take'
 import { Route as AppClientProjectsProjectIdRouteImport } from './routes/app/client/projects/$projectId'
@@ -472,9 +480,19 @@ const MarketplaceRoute = MarketplaceRouteImport.update({
   path: '/marketplace',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MerchantRoute = MerchantRouteImport.update({
+  id: '/merchant',
+  path: '/merchant',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PartnersRoute = PartnersRouteImport.update({
   id: '/partners',
   path: '/partners',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PaymentRoute = PaymentRouteImport.update({
+  id: '/payment',
+  path: '/payment',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PricingRoute = PricingRouteImport.update({
@@ -487,6 +505,11 @@ const PrivacyRoute = PrivacyRouteImport.update({
   path: '/privacy',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RefundsRoute = RefundsRouteImport.update({
+  id: '/refunds',
+  path: '/refunds',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ScholarshipsRoute = ScholarshipsRouteImport.update({
   id: '/scholarships',
   path: '/scholarships',
@@ -495,6 +518,11 @@ const ScholarshipsRoute = ScholarshipsRouteImport.update({
 const ServicesRoute = ServicesRouteImport.update({
   id: '/services',
   path: '/services',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ShippingRoute = ShippingRouteImport.update({
+  id: '/shipping',
+  path: '/shipping',
   getParentRoute: () => rootRouteImport,
 } as any)
 const StoriesRoute = StoriesRouteImport.update({
@@ -921,6 +949,11 @@ const ResourcesIndexRoute = ResourcesIndexRouteImport.update({
 const ResourcesSlugRoute = ResourcesSlugRouteImport.update({
   id: '/resources/$slug',
   path: '/resources/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ShopIndexRoute = ShopIndexRouteImport.update({
+  id: '/shop/',
+  path: '/shop/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const VisitIndexRoute = VisitIndexRouteImport.update({
@@ -2329,6 +2362,21 @@ const ProgramsSlugModuleRoute = ProgramsSlugModuleRouteImport.update({
   path: '/programs/$slug/$module',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ShopSlugIndexRoute = ShopSlugIndexRouteImport.update({
+  id: '/shop/$slug/',
+  path: '/shop/$slug/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ShopSlugCheckoutRoute = ShopSlugCheckoutRouteImport.update({
+  id: '/shop/$slug/checkout',
+  path: '/shop/$slug/checkout',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ShopSlugReturnRoute = ShopSlugReturnRouteImport.update({
+  id: '/shop/$slug/return',
+  path: '/shop/$slug/return',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AppAdmissionsApplicationsIdRoute =
   AppAdmissionsApplicationsIdRouteImport.update({
     id: '/$id',
@@ -2509,11 +2557,15 @@ export interface FileRoutesByFullPath {
   '/events': typeof EventsRoute
   '/faq': typeof FaqRoute
   '/marketplace': typeof MarketplaceRoute
+  '/merchant': typeof MerchantRoute
   '/partners': typeof PartnersRoute
+  '/payment': typeof PaymentRoute
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
+  '/refunds': typeof RefundsRoute
   '/scholarships': typeof ScholarshipsRoute
   '/services': typeof ServicesRoute
+  '/shipping': typeof ShippingRoute
   '/stories': typeof StoriesRoute
   '/team': typeof TeamRoute
   '/terms': typeof TermsRoute
@@ -2602,6 +2654,7 @@ export interface FileRoutesByFullPath {
   '/portal/': typeof PortalIndexRoute
   '/programs/': typeof ProgramsIndexRoute
   '/resources/': typeof ResourcesIndexRoute
+  '/shop/': typeof ShopIndexRoute
   '/visit/': typeof VisitIndexRoute
   '/app/accountant/audit': typeof AppAccountantAuditRoute
   '/app/accountant/banking': typeof AppAccountantBankingRoute
@@ -2835,6 +2888,8 @@ export interface FileRoutesByFullPath {
   '/apply/status/$id': typeof ApplyStatusIdRoute
   '/classes/$courseSlug/$sessionSlug': typeof ClassesCourseSlugSessionSlugRoute
   '/programs/$slug/$module': typeof ProgramsSlugModuleRoute
+  '/shop/$slug/checkout': typeof ShopSlugCheckoutRoute
+  '/shop/$slug/return': typeof ShopSlugReturnRoute
   '/app/accountant/': typeof AppAccountantIndexRoute
   '/app/admin/': typeof AppAdminIndexRoute
   '/app/admissions/': typeof AppAdmissionsIndexRoute
@@ -2871,6 +2926,7 @@ export interface FileRoutesByFullPath {
   '/apply/status/': typeof ApplyStatusIndexRoute
   '/classes/$courseSlug/': typeof ClassesCourseSlugIndexRoute
   '/programs/$slug/': typeof ProgramsSlugIndexRoute
+  '/shop/$slug/': typeof ShopSlugIndexRoute
   '/app/admissions/applications/$id': typeof AppAdmissionsApplicationsIdRoute
   '/app/assessments/$assessmentId/take': typeof AppAssessmentsAssessmentIdTakeRoute
   '/app/client/projects/$projectId': typeof AppClientProjectsProjectIdRouteWithChildren
@@ -2913,11 +2969,15 @@ export interface FileRoutesByTo {
   '/events': typeof EventsRoute
   '/faq': typeof FaqRoute
   '/marketplace': typeof MarketplaceRoute
+  '/merchant': typeof MerchantRoute
   '/partners': typeof PartnersRoute
+  '/payment': typeof PaymentRoute
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
+  '/refunds': typeof RefundsRoute
   '/scholarships': typeof ScholarshipsRoute
   '/services': typeof ServicesRoute
+  '/shipping': typeof ShippingRoute
   '/stories': typeof StoriesRoute
   '/team': typeof TeamRoute
   '/terms': typeof TermsRoute
@@ -3005,6 +3065,7 @@ export interface FileRoutesByTo {
   '/portal': typeof PortalIndexRoute
   '/programs': typeof ProgramsIndexRoute
   '/resources': typeof ResourcesIndexRoute
+  '/shop': typeof ShopIndexRoute
   '/visit': typeof VisitIndexRoute
   '/app/accountant/audit': typeof AppAccountantAuditRoute
   '/app/accountant/banking': typeof AppAccountantBankingRoute
@@ -3238,6 +3299,8 @@ export interface FileRoutesByTo {
   '/apply/status/$id': typeof ApplyStatusIdRoute
   '/classes/$courseSlug/$sessionSlug': typeof ClassesCourseSlugSessionSlugRoute
   '/programs/$slug/$module': typeof ProgramsSlugModuleRoute
+  '/shop/$slug/checkout': typeof ShopSlugCheckoutRoute
+  '/shop/$slug/return': typeof ShopSlugReturnRoute
   '/app/accountant': typeof AppAccountantIndexRoute
   '/app/admin': typeof AppAdminIndexRoute
   '/app/admissions': typeof AppAdmissionsIndexRoute
@@ -3274,6 +3337,7 @@ export interface FileRoutesByTo {
   '/apply/status': typeof ApplyStatusIndexRoute
   '/classes/$courseSlug': typeof ClassesCourseSlugIndexRoute
   '/programs/$slug': typeof ProgramsSlugIndexRoute
+  '/shop/$slug': typeof ShopSlugIndexRoute
   '/app/admissions/applications/$id': typeof AppAdmissionsApplicationsIdRoute
   '/app/assessments/$assessmentId/take': typeof AppAssessmentsAssessmentIdTakeRoute
   '/app/client/projects/$projectId': typeof AppClientProjectsProjectIdRouteWithChildren
@@ -3317,11 +3381,15 @@ export interface FileRoutesById {
   '/events': typeof EventsRoute
   '/faq': typeof FaqRoute
   '/marketplace': typeof MarketplaceRoute
+  '/merchant': typeof MerchantRoute
   '/partners': typeof PartnersRoute
+  '/payment': typeof PaymentRoute
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
+  '/refunds': typeof RefundsRoute
   '/scholarships': typeof ScholarshipsRoute
   '/services': typeof ServicesRoute
+  '/shipping': typeof ShippingRoute
   '/stories': typeof StoriesRoute
   '/team': typeof TeamRoute
   '/terms': typeof TermsRoute
@@ -3410,6 +3478,7 @@ export interface FileRoutesById {
   '/portal/': typeof PortalIndexRoute
   '/programs/': typeof ProgramsIndexRoute
   '/resources/': typeof ResourcesIndexRoute
+  '/shop/': typeof ShopIndexRoute
   '/visit/': typeof VisitIndexRoute
   '/app/accountant/audit': typeof AppAccountantAuditRoute
   '/app/accountant/banking': typeof AppAccountantBankingRoute
@@ -3643,6 +3712,8 @@ export interface FileRoutesById {
   '/apply/status/$id': typeof ApplyStatusIdRoute
   '/classes/$courseSlug/$sessionSlug': typeof ClassesCourseSlugSessionSlugRoute
   '/programs/$slug/$module': typeof ProgramsSlugModuleRoute
+  '/shop/$slug/checkout': typeof ShopSlugCheckoutRoute
+  '/shop/$slug/return': typeof ShopSlugReturnRoute
   '/app/accountant/': typeof AppAccountantIndexRoute
   '/app/admin/': typeof AppAdminIndexRoute
   '/app/admissions/': typeof AppAdmissionsIndexRoute
@@ -3679,6 +3750,7 @@ export interface FileRoutesById {
   '/apply/status/': typeof ApplyStatusIndexRoute
   '/classes/$courseSlug/': typeof ClassesCourseSlugIndexRoute
   '/programs/$slug/': typeof ProgramsSlugIndexRoute
+  '/shop/$slug/': typeof ShopSlugIndexRoute
   '/app/admissions/applications/$id': typeof AppAdmissionsApplicationsIdRoute
   '/app/assessments/$assessmentId/take': typeof AppAssessmentsAssessmentIdTakeRoute
   '/app/client/projects/$projectId': typeof AppClientProjectsProjectIdRouteWithChildren
@@ -3723,11 +3795,15 @@ export interface FileRouteTypes {
     | '/events'
     | '/faq'
     | '/marketplace'
+    | '/merchant'
     | '/partners'
+    | '/payment'
     | '/pricing'
     | '/privacy'
+    | '/refunds'
     | '/scholarships'
     | '/services'
+    | '/shipping'
     | '/stories'
     | '/team'
     | '/terms'
@@ -3816,6 +3892,7 @@ export interface FileRouteTypes {
     | '/portal/'
     | '/programs/'
     | '/resources/'
+    | '/shop/'
     | '/visit/'
     | '/app/accountant/audit'
     | '/app/accountant/banking'
@@ -4049,6 +4126,8 @@ export interface FileRouteTypes {
     | '/apply/status/$id'
     | '/classes/$courseSlug/$sessionSlug'
     | '/programs/$slug/$module'
+    | '/shop/$slug/checkout'
+    | '/shop/$slug/return'
     | '/app/accountant/'
     | '/app/admin/'
     | '/app/admissions/'
@@ -4085,6 +4164,7 @@ export interface FileRouteTypes {
     | '/apply/status/'
     | '/classes/$courseSlug/'
     | '/programs/$slug/'
+    | '/shop/$slug/'
     | '/app/admissions/applications/$id'
     | '/app/assessments/$assessmentId/take'
     | '/app/client/projects/$projectId'
@@ -4127,11 +4207,15 @@ export interface FileRouteTypes {
     | '/events'
     | '/faq'
     | '/marketplace'
+    | '/merchant'
     | '/partners'
+    | '/payment'
     | '/pricing'
     | '/privacy'
+    | '/refunds'
     | '/scholarships'
     | '/services'
+    | '/shipping'
     | '/stories'
     | '/team'
     | '/terms'
@@ -4219,6 +4303,7 @@ export interface FileRouteTypes {
     | '/portal'
     | '/programs'
     | '/resources'
+    | '/shop'
     | '/visit'
     | '/app/accountant/audit'
     | '/app/accountant/banking'
@@ -4452,6 +4537,8 @@ export interface FileRouteTypes {
     | '/apply/status/$id'
     | '/classes/$courseSlug/$sessionSlug'
     | '/programs/$slug/$module'
+    | '/shop/$slug/checkout'
+    | '/shop/$slug/return'
     | '/app/accountant'
     | '/app/admin'
     | '/app/admissions'
@@ -4488,6 +4575,7 @@ export interface FileRouteTypes {
     | '/apply/status'
     | '/classes/$courseSlug'
     | '/programs/$slug'
+    | '/shop/$slug'
     | '/app/admissions/applications/$id'
     | '/app/assessments/$assessmentId/take'
     | '/app/client/projects/$projectId'
@@ -4530,11 +4618,15 @@ export interface FileRouteTypes {
     | '/events'
     | '/faq'
     | '/marketplace'
+    | '/merchant'
     | '/partners'
+    | '/payment'
     | '/pricing'
     | '/privacy'
+    | '/refunds'
     | '/scholarships'
     | '/services'
+    | '/shipping'
     | '/stories'
     | '/team'
     | '/terms'
@@ -4623,6 +4715,7 @@ export interface FileRouteTypes {
     | '/portal/'
     | '/programs/'
     | '/resources/'
+    | '/shop/'
     | '/visit/'
     | '/app/accountant/audit'
     | '/app/accountant/banking'
@@ -4856,6 +4949,8 @@ export interface FileRouteTypes {
     | '/apply/status/$id'
     | '/classes/$courseSlug/$sessionSlug'
     | '/programs/$slug/$module'
+    | '/shop/$slug/checkout'
+    | '/shop/$slug/return'
     | '/app/accountant/'
     | '/app/admin/'
     | '/app/admissions/'
@@ -4892,6 +4987,7 @@ export interface FileRouteTypes {
     | '/apply/status/'
     | '/classes/$courseSlug/'
     | '/programs/$slug/'
+    | '/shop/$slug/'
     | '/app/admissions/applications/$id'
     | '/app/assessments/$assessmentId/take'
     | '/app/client/projects/$projectId'
@@ -4935,11 +5031,15 @@ export interface RootRouteChildren {
   EventsRoute: typeof EventsRoute
   FaqRoute: typeof FaqRoute
   MarketplaceRoute: typeof MarketplaceRoute
+  MerchantRoute: typeof MerchantRoute
   PartnersRoute: typeof PartnersRoute
+  PaymentRoute: typeof PaymentRoute
   PricingRoute: typeof PricingRoute
   PrivacyRoute: typeof PrivacyRoute
+  RefundsRoute: typeof RefundsRoute
   ScholarshipsRoute: typeof ScholarshipsRoute
   ServicesRoute: typeof ServicesRoute
+  ShippingRoute: typeof ShippingRoute
   StoriesRoute: typeof StoriesRoute
   TeamRoute: typeof TeamRoute
   TermsRoute: typeof TermsRoute
@@ -5028,6 +5128,7 @@ export interface RootRouteChildren {
   PortalIndexRoute: typeof PortalIndexRoute
   ProgramsIndexRoute: typeof ProgramsIndexRoute
   ResourcesIndexRoute: typeof ResourcesIndexRoute
+  ShopIndexRoute: typeof ShopIndexRoute
   VisitIndexRoute: typeof VisitIndexRoute
   AppAccountantAuditRoute: typeof AppAccountantAuditRoute
   AppAccountantBankingRoute: typeof AppAccountantBankingRoute
@@ -5259,6 +5360,8 @@ export interface RootRouteChildren {
   AppVolunteerOpportunitiesRoute: typeof AppVolunteerOpportunitiesRoute
   ClassesCourseSlugSessionSlugRoute: typeof ClassesCourseSlugSessionSlugRoute
   ProgramsSlugModuleRoute: typeof ProgramsSlugModuleRoute
+  ShopSlugCheckoutRoute: typeof ShopSlugCheckoutRoute
+  ShopSlugReturnRoute: typeof ShopSlugReturnRoute
   AppAccountantIndexRoute: typeof AppAccountantIndexRoute
   AppAdminIndexRoute: typeof AppAdminIndexRoute
   AppAdmissionsIndexRoute: typeof AppAdmissionsIndexRoute
@@ -5294,6 +5397,7 @@ export interface RootRouteChildren {
   AppVolunteerIndexRoute: typeof AppVolunteerIndexRoute
   ClassesCourseSlugIndexRoute: typeof ClassesCourseSlugIndexRoute
   ProgramsSlugIndexRoute: typeof ProgramsSlugIndexRoute
+  ShopSlugIndexRoute: typeof ShopSlugIndexRoute
   AppAssessmentsAssessmentIdTakeRoute: typeof AppAssessmentsAssessmentIdTakeRoute
   AppClientProjectsProjectIdRoute: typeof AppClientProjectsProjectIdRouteWithChildren
   AppConversionCopyLandingPagesIdRoute: typeof AppConversionCopyLandingPagesIdRoute
@@ -5405,11 +5509,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MarketplaceRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/merchant': {
+      id: '/merchant'
+      path: '/merchant'
+      fullPath: '/merchant'
+      preLoaderRoute: typeof MerchantRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/partners': {
       id: '/partners'
       path: '/partners'
       fullPath: '/partners'
       preLoaderRoute: typeof PartnersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/payment': {
+      id: '/payment'
+      path: '/payment'
+      fullPath: '/payment'
+      preLoaderRoute: typeof PaymentRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/pricing': {
@@ -5426,6 +5544,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PrivacyRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/refunds': {
+      id: '/refunds'
+      path: '/refunds'
+      fullPath: '/refunds'
+      preLoaderRoute: typeof RefundsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/scholarships': {
       id: '/scholarships'
       path: '/scholarships'
@@ -5438,6 +5563,13 @@ declare module '@tanstack/react-router' {
       path: '/services'
       fullPath: '/services'
       preLoaderRoute: typeof ServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/shipping': {
+      id: '/shipping'
+      path: '/shipping'
+      fullPath: '/shipping'
+      preLoaderRoute: typeof ShippingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/stories': {
@@ -6033,6 +6165,13 @@ declare module '@tanstack/react-router' {
       path: '/resources/$slug'
       fullPath: '/resources/$slug'
       preLoaderRoute: typeof ResourcesSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/shop/': {
+      id: '/shop/'
+      path: '/shop'
+      fullPath: '/shop/'
+      preLoaderRoute: typeof ShopIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/visit/': {
@@ -7939,6 +8078,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProgramsSlugModuleRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/shop/$slug/': {
+      id: '/shop/$slug/'
+      path: '/shop/$slug'
+      fullPath: '/shop/$slug/'
+      preLoaderRoute: typeof ShopSlugIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/shop/$slug/checkout': {
+      id: '/shop/$slug/checkout'
+      path: '/shop/$slug/checkout'
+      fullPath: '/shop/$slug/checkout'
+      preLoaderRoute: typeof ShopSlugCheckoutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/shop/$slug/return': {
+      id: '/shop/$slug/return'
+      path: '/shop/$slug/return'
+      fullPath: '/shop/$slug/return'
+      preLoaderRoute: typeof ShopSlugReturnRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/app/admissions/applications/$id': {
       id: '/app/admissions/applications/$id'
       path: '/$id'
@@ -8240,11 +8400,15 @@ const rootRouteChildren: RootRouteChildren = {
   EventsRoute: EventsRoute,
   FaqRoute: FaqRoute,
   MarketplaceRoute: MarketplaceRoute,
+  MerchantRoute: MerchantRoute,
   PartnersRoute: PartnersRoute,
+  PaymentRoute: PaymentRoute,
   PricingRoute: PricingRoute,
   PrivacyRoute: PrivacyRoute,
+  RefundsRoute: RefundsRoute,
   ScholarshipsRoute: ScholarshipsRoute,
   ServicesRoute: ServicesRoute,
+  ShippingRoute: ShippingRoute,
   StoriesRoute: StoriesRoute,
   TeamRoute: TeamRoute,
   TermsRoute: TermsRoute,
@@ -8333,6 +8497,7 @@ const rootRouteChildren: RootRouteChildren = {
   PortalIndexRoute: PortalIndexRoute,
   ProgramsIndexRoute: ProgramsIndexRoute,
   ResourcesIndexRoute: ResourcesIndexRoute,
+  ShopIndexRoute: ShopIndexRoute,
   VisitIndexRoute: VisitIndexRoute,
   AppAccountantAuditRoute: AppAccountantAuditRoute,
   AppAccountantBankingRoute: AppAccountantBankingRoute,
@@ -8566,6 +8731,8 @@ const rootRouteChildren: RootRouteChildren = {
   AppVolunteerOpportunitiesRoute: AppVolunteerOpportunitiesRoute,
   ClassesCourseSlugSessionSlugRoute: ClassesCourseSlugSessionSlugRoute,
   ProgramsSlugModuleRoute: ProgramsSlugModuleRoute,
+  ShopSlugCheckoutRoute: ShopSlugCheckoutRoute,
+  ShopSlugReturnRoute: ShopSlugReturnRoute,
   AppAccountantIndexRoute: AppAccountantIndexRoute,
   AppAdminIndexRoute: AppAdminIndexRoute,
   AppAdmissionsIndexRoute: AppAdmissionsIndexRoute,
@@ -8601,6 +8768,7 @@ const rootRouteChildren: RootRouteChildren = {
   AppVolunteerIndexRoute: AppVolunteerIndexRoute,
   ClassesCourseSlugIndexRoute: ClassesCourseSlugIndexRoute,
   ProgramsSlugIndexRoute: ProgramsSlugIndexRoute,
+  ShopSlugIndexRoute: ShopSlugIndexRoute,
   AppAssessmentsAssessmentIdTakeRoute: AppAssessmentsAssessmentIdTakeRoute,
   AppClientProjectsProjectIdRoute: AppClientProjectsProjectIdRouteWithChildren,
   AppConversionCopyLandingPagesIdRoute: AppConversionCopyLandingPagesIdRoute,

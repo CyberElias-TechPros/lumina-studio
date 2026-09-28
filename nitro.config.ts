@@ -11,6 +11,15 @@ export default defineNitroConfig({
     "/manifest.webmanifest": {
       headers: { "content-type": "application/manifest+json; charset=utf-8" },
     },
+    // Merchant Center feed files are rebuild artifacts. We want Google's
+    // fetcher to see new data within an hour of deploy, but we also want
+    // the XML/CSV body itself to be cacheable at the CDN. Vercel serves
+    // these as text/xml and text/csv based on the file extension already.
+    "/feeds/**": {
+      headers: {
+        "cache-control": "public, max-age=300, s-maxage=3600, must-revalidate",
+      },
+    },
 
     // Index-control for private surfaces. robots.txt Disallow alone only
     // *hides* these URLs — they can still be indexed as bare entries, and

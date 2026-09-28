@@ -2,2347 +2,2389 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://cea.ng/</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://cea.ng/about</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://cea.ng/accessibility</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
     <loc>https://cea.ng/admissions</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://cea.ng/apply</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/certificates/verify</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/contact</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://cea.ng/faq</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://cea.ng/payment</loc>
+    <lastmod>2026-09-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://cea.ng/privacy</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
+    <loc>https://cea.ng/refunds</loc>
+    <lastmod>2026-09-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://cea.ng/shipping</loc>
+    <lastmod>2026-09-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://cea.ng/shop</loc>
+    <lastmod>2026-09-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://cea.ng/team</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://cea.ng/terms</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
     <loc>https://cea.ng/visit</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://cea.ng/visit/info</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/visit/brochure</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/visit/feedback</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
+    <loc>https://cea.ng/shop/website-starter</loc>
+    <lastmod>2026-09-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cea.ng/shop/invoice-stock-sheet</loc>
+    <lastmod>2026-09-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cea.ng/shop/social-content-planner</loc>
+    <lastmod>2026-09-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://cea.ng/blog/sitting-down-at-a-computer</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/files-and-folders</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/your-hands-on-the-keyboard</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/the-internet-without-getting-lost</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/your-first-email</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/passwords-you-can-keep</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/the-link-you-should-not-open</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/printing-without-waste</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/spreadsheets-the-grid-that-counts</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/whatsapp-is-not-email</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/a-letter-that-looks-like-one</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/photos-off-the-phone</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/updates-without-panic</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/backup-before-the-light-goes</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/a-google-account-on-purpose</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/wifi-at-home-without-mystery</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/shutdown-sleep-and-the-power-button</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/filling-a-form-on-a-website</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/a-video-call-without-panic</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/when-the-computer-is-slow</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/installing-a-program-on-purpose</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/uninstalling-what-a-shop-added</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/naira-and-accents</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/the-recycle-bin-and-i-deleted-it</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/asking-for-help-without-the-password</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/copy-and-paste-between-programs</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/taking-a-screenshot</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/zipping-a-folder-to-email</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/bluetooth-to-a-phone</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/what-a-pdf-is-for</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/a-folder-for-school-or-work</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/renaming-files-without-breaking-them</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/searching-for-a-lost-file</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/start-menu-and-taskbar</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/a-shortcut-is-not-the-file</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/volume-and-headphones</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/brightness-and-night</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/a-second-screen-or-projector</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/usb-devices-that-are-not-flash-drives</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/when-there-is-no-sound</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/charging-without-killing-the-battery</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/heat-and-the-vents</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/the-webcam-and-who-can-see-you</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/cookies-and-accept-all</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/a-browser-profile-on-a-shared-computer</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/bookmarks-you-can-find-again</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/history-and-private-windows</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/the-downloads-pile</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/the-cloud-in-ordinary-words</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/signing-out-of-a-machine-that-is-not-yours</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/tables-in-a-letter</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/mail-merge-you-can-skip</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/calendar-and-reminders</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/contacts-versus-the-phone-book</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/what-a-qr-code-is-doing</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/whatsapp-web-on-a-computer</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/maps-without-getting-lost</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/a-simple-poster</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/shrinking-a-photo-for-email</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/what-a-virus-usually-is</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/two-windows-at-once</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/making-text-larger</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/bullets-and-numbered-lists</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/spell-check-is-a-cousin</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/find-and-replace</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/undo-and-redo</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/selecting-text</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/page-numbers-and-headers</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/cc-bcc-and-reply-all</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/an-email-signature</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/open-with-the-right-program</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/kilobytes-and-megabytes</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/the-right-click-menu</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/drag-and-drop</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/a-one-page-cv-that-is-honest</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/google-docs-when-there-is-no-word</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/sharing-a-file-without-publishing-it</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/comments-on-a-document</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/sorting-a-spreadsheet-column</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/printing-a-sheet-so-it-fits</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/making-numbers-look-like-money</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/freeze-the-top-row</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/filling-a-formula-down</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/a-simple-weekly-money-list</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/when-the-cell-looks-broken</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/watching-a-video-without-getting-lost</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/captions-pause-and-speed</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/airplane-mode</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/storage-on-the-phone</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/app-permissions</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/locking-the-phone-and-the-laptop</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/if-the-phone-is-stolen</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/do-not-disturb</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/the-phone-as-a-hotspot</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/wifi-or-mobile-data</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/photographing-a-document</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/scanning-to-pdf-on-the-phone</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/one-time-passwords</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/public-wifi-and-the-bank</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/you-have-won</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/six-more-keystrokes</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/the-keyboard-on-the-phone</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/talking-to-the-keyboard</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/email-in-your-pocket</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/the-file-that-goes-up</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/papers-the-bag-cannot-lose</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/before-you-forget-the-password</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/the-second-lock</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/the-forward-that-lies</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/paying-for-something-online</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/bank-in-your-hand</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/new-phone-without-losing-your-life</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/selling-the-thing-you-own</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/the-ride-that-comes-to-you</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/government-things-online</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/learning-online-mostly-free</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/the-profile-that-finds-work</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/the-voice-that-borrowed-a-face</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/cleaning-the-digital-house</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/each-one-teach-one</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/the-cybersecurity-analyst-at-work</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/the-soc-room</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/siem-in-ordinary-words</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/zero-trust-gate</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/vulnerability-assessment-fence</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/tcp-ip-road</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/digital-signature-meaning</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/frontend-developer-explained</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/machine-learning-engineer-work</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/agile-and-devops</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/careers-in-data-analytics</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/how-to-build-mobile-app-nigeria</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/choosing-where-to-learn-bootcamp</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/it-support-the-person-who-fixes-the-day</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/websites-for-small-businesses</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/social-media-manager-behind-posts</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/graphic-designer-table</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/working-remote-from-here</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/pricing-your-work</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/the-portfolio-proof</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/your-first-paid-client</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/working-with-ai-assistants</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/the-books-of-a-one-person-business</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/secrets-that-are-not-yours</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/the-body-at-the-desk</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/learning-in-public</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/when-a-client-goes-quiet</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/your-first-hand</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/certificates-and-the-track-record</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/the-working-life</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/checking-results-online</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/the-family-table</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/the-cv-that-gets-read</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/the-interview-on-a-screen</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/slides-that-speak</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/email-that-gets-answered</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/notes-that-last</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/the-pivot-table-properly</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/health-online</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/the-upgrade-habit</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/banking-without-the-internet</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/the-deductions-on-your-line</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/where-the-data-goes</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/the-atm-and-the-card-manners</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/power-banks-and-surges</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/electricity-units-online</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/booking-a-flight-online</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/the-vpn-explained</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/loan-apps-the-real-cost</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/the-money-that-doubles</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/when-the-screen-stays-dark</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/the-fan-that-screams</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/the-hard-drive-that-clicks</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/water-on-the-keyboard</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/buying-a-used-laptop</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/chargers-cables-and-the-spark</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/the-blue-screen-and-the-spinning-circle</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/upgrading-ram-the-honest-math</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/the-repairs-engineer-and-the-bench</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/ten-years-from-one-machine</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/how-the-internet-arrives</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/the-router-and-its-lights</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/wi-fi-and-the-cable</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/what-a-megabyte-is</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/when-the-network-is-sick</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/names-on-the-network</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/sharing-on-the-network</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/neighbours-and-your-wifi</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/phone-as-rescue-wire</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/the-shop-network</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/listening-like-a-technician</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/five-questions-in-order</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/fixing-without-formatting</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/the-honest-reset</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/backup-for-someone-else</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/setting-up-a-new-computer</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/the-job-card</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/helping-from-across-town</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/this-is-beyond-me</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/support-as-honest-work</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/the-assistant-that-types</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/asking-clearly</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/checking-the-homework</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/the-assistant-at-school</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/the-assistant-at-work</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/pictures-voices-and-truth</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/your-judgment-stays-yours</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/learning-anything-faster</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/work-that-changes-and-stays</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/blog/the-road-ahead</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/microsoft-office</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/computer-basics-typing</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/data-entry</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/graphic-design</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/web-design</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/web-development</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/digital-marketing</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/social-media-management</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/computer-repairs</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/cybersecurity</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/business-freelancing</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/content-creation</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/online-teaching</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/digital-productivity</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/ai-productivity</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/mobile-app-development</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/photography</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/video-editing</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/wordpress</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/data-analytics</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/computer-networking</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/it-support</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/microsoft-office/word-fundamentals</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/microsoft-office/document-formatting</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/microsoft-office/professional-documents</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/microsoft-office/excel-fundamentals</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/microsoft-office/practical-excel</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/microsoft-office/powerpoint</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/computer-basics-typing/understanding-the-computer</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/computer-basics-typing/keyboard-and-mouse</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/computer-basics-typing/files-and-internet</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/computer-basics-typing/digital-independence</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/data-entry/data-discipline</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/data-entry/spreadsheets-for-data-work</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/data-entry/transcription-and-validation</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/data-entry/accuracy-and-speed-practical</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/graphic-design/design-foundations-seeing</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/graphic-design/design-foundations-colour-type</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/graphic-design/canva-interface</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/graphic-design/layers-and-brand</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/graphic-design/flyers-and-social</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/graphic-design/print-and-identity</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/graphic-design/professional-workflow</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/graphic-design/mini-brand-package</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/web-design/how-the-web-works</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/web-design/html-structure</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/web-design/css-fundamentals</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/web-design/css-layout</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/web-design/business-website-sections</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/web-design/responsive-design</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/web-design/quality-ux-accessibility-seo</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/web-design/publishing</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/web-development/semantic-html</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/web-development/forms-and-accessibility</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/web-development/css-box-model-typography</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/web-development/flexbox-grid-responsive</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/web-development/javascript-basics</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/web-development/functions-data-loops</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/web-development/the-dom</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/web-development/forms-validation-dynamic-ui</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/web-development/planning-and-structure</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/web-development/debugging-and-quality</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/web-development/deployment-and-git</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/web-development/portfolio-and-presentation</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/digital-marketing/marketing-fundamentals</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/digital-marketing/choosing-your-platforms</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/digital-marketing/content-types-and-storytelling</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/digital-marketing/planning-and-brand-voice</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/digital-marketing/organic-and-paid-promotion</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/digital-marketing/ads-landing-pages-conversion</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/digital-marketing/reading-the-numbers</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/digital-marketing/reporting-and-final-campaign</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/social-media-management/profiles-and-content-strategy</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/social-media-management/formats-captions-scheduling</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/social-media-management/creating-the-content</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/social-media-management/community-and-customer-service</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/social-media-management/analytics-and-reporting</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/social-media-management/safety-and-final-project</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/computer-repairs/inside-the-machine</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/computer-repairs/laptops-safety-identification</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/computer-repairs/disassembly-and-cleaning</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/computer-repairs/upgrades-ram-storage</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/computer-repairs/power-display-heat-faults</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/computer-repairs/storage-memory-boot-faults</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/computer-repairs/software-and-system-servicing</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/computer-repairs/service-workflow-and-final-practical</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/cybersecurity/threats-risk-cia</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/cybersecurity/authentication-and-awareness</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/cybersecurity/passwords-and-account-security</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/cybersecurity/phishing-scams-malware</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/cybersecurity/networks-and-wifi-security</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/cybersecurity/encryption-and-web-security</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/cybersecurity/incident-response-and-recovery</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/cybersecurity/policies-risk-and-final-project</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/business-freelancing/from-skill-to-service</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/business-freelancing/finding-clients-and-proposals</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/business-freelancing/delivering-professional-work</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/business-freelancing/pricing-and-packaging</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/business-freelancing/records-money-and-reputation</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/business-freelancing/business-plan-and-portfolio</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/content-creation/ideas-audience-scripts</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/content-creation/shooting-on-a-phone</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/content-creation/editing</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/content-creation/packaging-and-publishing</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/content-creation/growth-rights-responsibility</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/content-creation/final-short-form-video</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/online-teaching/how-people-learn</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/online-teaching/demonstration-practice-assessment</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/online-teaching/running-an-online-classroom</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/online-teaching/materials-assignments-quizzes</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/online-teaching/course-and-lesson-structure</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/online-teaching/deliver-a-lesson</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/digital-productivity/workspace-essentials</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/digital-productivity/calendar-and-forms</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/digital-productivity/email-management</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/digital-productivity/files-naming-cloud-backup</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/ai-productivity/what-ai-tools-are</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/ai-productivity/prompt-writing</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/ai-productivity/ai-assisted-research-work</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/ai-productivity/responsible-use</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/mobile-app-development/app-concepts-scoping</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/mobile-app-development/mobile-ui-design</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/mobile-app-development/building-screens</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/mobile-app-development/navigation-components</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/mobile-app-development/state-and-data</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/mobile-app-development/working-with-apis</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/mobile-app-development/testing-on-devices</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/mobile-app-development/publishing-mobile</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/photography/composition-framing</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/photography/light</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/photography/camera-control</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/photography/editing-photography</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/video-editing/story-assembly</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/video-editing/cutting-craft</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/video-editing/audio-editing</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/video-editing/captions-text</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/video-editing/transitions-graphics</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/video-editing/colour-export</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/wordpress/setup-dashboard</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/wordpress/themes-customisation</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/wordpress/pages-block-editor</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/wordpress/blog-plugins</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/wordpress/forms-business-features</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/wordpress/security-backups-launch</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/data-analytics/data-structure-types</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/data-analytics/cleaning-validation</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/data-analytics/formulas-lookups</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/data-analytics/pivot-tables-summaries</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/data-analytics/charts</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/data-analytics/dashboards</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/data-analytics/reading-numbers</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/data-analytics/storytelling-final-project</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/computer-networking/network-fundamentals</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/computer-networking/ip-addressing</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/computer-networking/routers-switches</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/computer-networking/wifi-setup</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/computer-networking/troubleshooting-tools</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/computer-networking/network-troubleshooting-practical</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/it-support/how-support-works</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/it-support/structured-troubleshooting</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/it-support/user-support</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/it-support/hardware-software-support</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/it-support/documentation-support</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://cea.ng/classes/it-support/support-simulation</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>

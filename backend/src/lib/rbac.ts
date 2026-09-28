@@ -40,6 +40,13 @@ export const RBAC_RULES: RbacRule[] = [
   { methods: ["POST"], path: "/v1/contact", public: true },
   { methods: ["GET"], path: "/v1/library/catalog", public: true },
 
+  /* Public digital shop — Merchant Center requires guest checkout */
+  { methods: ["GET"], path: "/v1/shop/catalog", public: true },
+  { methods: ["POST"], path: "/v1/shop/checkout", public: true },
+  { methods: ["GET"], path: "/v1/shop/orders/:reference", public: true },
+  { methods: ["GET"], path: "/v1/shop/download/:reference", public: true },
+  { methods: ["POST"], path: "/v1/shop/webhook", public: true },
+
   /* Parent invitations — verify is public; accept requires a session; create is admin-only */
   { methods: ["GET"], path: "/v1/invitations/:token", public: true },
   { methods: ["POST"], path: "/v1/invitations/:token/accept" },
@@ -363,7 +370,9 @@ export const rbacGuard = createMiddleware<{ Bindings: AppEnv }>(async (c, next) 
   const origin = c.req.header("origin");
   const pathname = new URL(c.req.url).pathname;
   const signedWebhook =
-    pathname === "/v1/payments/webhook" || pathname === "/v1/enrollments/webhook";
+    pathname === "/v1/payments/webhook" ||
+    pathname === "/v1/enrollments/webhook" ||
+    pathname === "/v1/shop/webhook";
   if (
     !signedWebhook &&
     !["GET", "HEAD", "OPTIONS"].includes(method) &&

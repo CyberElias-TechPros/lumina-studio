@@ -18,7 +18,11 @@ const staticRoutes = [
   ["/contact", "monthly", "0.8"],
   ["/classes", "weekly", "0.9"],
   ["/faq", "monthly", "0.8"],
+  ["/payment", "monthly", "0.5"],
   ["/privacy", "yearly", "0.4"],
+  ["/refunds", "monthly", "0.5"],
+  ["/shipping", "monthly", "0.5"],
+  ["/shop", "weekly", "0.9"],
   ["/team", "monthly", "0.5"],
   ["/terms", "yearly", "0.4"],
   ["/visit", "monthly", "0.8"],
@@ -26,6 +30,19 @@ const staticRoutes = [
   ["/visit/brochure", "monthly", "0.6"],
   ["/visit/feedback", "monthly", "0.4"],
 ];
+
+// Shop product pages and feed files. Generated from digital-products.json so
+// the sitemap stays in sync with the Merchant Center feed.
+const shopProductPaths = (() => {
+  try {
+    const raw = readFileSync(join(root, "src/data/digital-products.json"), "utf8");
+    const data = JSON.parse(raw);
+    const products = Array.isArray(data?.products) ? data.products : [];
+    return products.map((p) => `/shop/${p.slug}`);
+  } catch {
+    return [];
+  }
+})();
 
 function extractSlugs(file) {
   const src = readFileSync(join(root, file), "utf8");
@@ -77,6 +94,12 @@ const urls = [
     lastmod: today,
     changefreq,
     priority,
+  })),
+  ...shopProductPaths.map((path) => ({
+    loc: `${SITE_URL}${path}`,
+    lastmod: today,
+    changefreq: "weekly",
+    priority: "0.8",
   })),
   ...blogSlugs.map((slug) => ({
     loc: `${SITE_URL}/blog/${slug}`,
