@@ -21,6 +21,7 @@ export const Route = createFileRoute("/merchant")({
       description:
         "The settings to enter in Google Merchant Center for the CEA shop, plus the product feed URLs. The account has been repurposed for Cyber Elias Academy (Merchant ID 656455813).",
       path: "/merchant",
+      noIndex: true,
     }),
   component: MerchantPage,
 });

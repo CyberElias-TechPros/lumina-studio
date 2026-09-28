@@ -18,7 +18,6 @@ const staticRoutes = [
   ["/contact", "monthly", "0.8"],
   ["/classes", "weekly", "0.9"],
   ["/faq", "monthly", "0.8"],
-  ["/merchant", "monthly", "0.5"],
   ["/payment", "monthly", "0.5"],
   ["/privacy", "yearly", "0.4"],
   ["/refunds", "monthly", "0.5"],

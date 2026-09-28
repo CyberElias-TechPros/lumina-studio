@@ -61,12 +61,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://cea.ng/merchant</loc>
-    <lastmod>2026-09-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
     <loc>https://cea.ng/payment</loc>
     <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>

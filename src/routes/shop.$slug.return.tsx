@@ -28,7 +28,7 @@ export const Route = createFileRoute("/shop/$slug/return")({
     return { product };
   },
   head: () => ({
-    meta: [{ title: "Order complete — Cyber Elias Academy", robots: "noindex,nofollow" }],
+    meta: [{ title: "Order complete — Cyber Elias Academy", name: "robots", content: "noindex,nofollow" }],
   }),
   component: ReturnPage,
 });

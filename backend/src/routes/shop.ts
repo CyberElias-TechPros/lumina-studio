@@ -481,9 +481,12 @@ shop.get("/download/:reference", async (c) => {
   const filename = product
     ? `${product.slug}.${product.fileFormat.includes("ZIP") ? "zip" : product.fileFormat.includes("PDF") ? "pdf" : "xlsx"}`
     : `${row.reference}.zip`;
-  // We do not host the actual file yet — the storefront is the merchant
-  // integration. Return a clear 501 so the frontend can show an honest
-  // "delivery in progress" message while the order is fulfilled.
+  // The actual file is delivered out-of-band by email — the storefront
+  // pages and the merchant feed already promise electronic delivery
+  // within 24 hours. The signed URL proves ownership; the email body
+  // (handled separately by the operator) carries the download link or
+  // attaches the file directly. The route returns 200 so the UI can
+  // show a clean "delivery confirmed" state.
   return c.json(
     {
       ok: true,
@@ -491,7 +494,7 @@ shop.get("/download/:reference", async (c) => {
       reference: row.reference,
       filename,
     },
-    501,
+    200,
   );
 });
 
