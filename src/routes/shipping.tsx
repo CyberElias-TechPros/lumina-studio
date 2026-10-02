@@ -69,8 +69,8 @@ function ShippingPage() {
               Nigeria only, for now. Because the product is a file, you can use it from any country
               once you have it — but we only take payment and run customer support for buyers inside
               Nigeria. If you are outside Nigeria and need the same product, email{" "}
-              <a href="mailto:hello@cea.ng" className="text-primary underline">
-                hello@cea.ng
+              <a href="mailto:help@cea.ng" className="text-primary underline">
+                help@cea.ng
               </a>{" "}
               and we will tell you when international delivery opens.
             </p>
@@ -109,9 +109,9 @@ function ShippingPage() {
             <div>
               <h2 className="font-display text-lg font-semibold">Our studio</h2>
               <p className="text-muted-foreground mt-1 text-sm leading-relaxed">
-                26 Ebony Road, Off Rumuola Road, Port Harcourt, Rivers State, Nigeria. Open Mon–Sat,
-                8:00–20:00 WAT. You do not need to visit to buy a digital product — but you are
-                welcome to.
+                24/26 Ebony Road, Off Rumuola Road, Port Harcourt, Rivers State, Nigeria. Open
+                Mon–Sat, 8:00–20:00 WAT. You do not need to visit to buy a digital product — but you
+                are welcome to.
               </p>
             </div>
           </div>
@@ -121,7 +121,7 @@ function ShippingPage() {
       <Reveal>
         <CTASection
           title="Questions about delivery?"
-          description="Email hello@cea.ng or message us on WhatsApp. We reply within one working day."
+          description="Email help@cea.ng or message us on WhatsApp. We reply within one working day."
           primary={{ label: "Email us", to: "/contact" }}
           secondary={{ label: "Refunds policy", to: "/refunds" }}
         />

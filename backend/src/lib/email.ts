@@ -12,6 +12,12 @@ export interface EmailMessage {
   to: string;
   subject: string;
   html: string;
+  /**
+   * Where a reply should land. Defaults to EMAIL_REPLY_TO (help@cea.ng) so a
+   * student who replies to a receipt or reminder reaches a mailbox the academy
+   * actually reads, instead of an unmonitored no-reply address.
+   */
+  replyTo?: string;
 }
 
 export interface EmailResult {
@@ -25,14 +31,25 @@ function configuredProvider(c: { env: AppEnv }): EmailProvider {
   return raw === "mailgun" || raw === "resend" || raw === "console" ? raw : "console";
 }
 
-async function sendResend(apiKey: string, from: string, msg: EmailMessage): Promise<EmailResult> {
+async function sendResend(
+  apiKey: string,
+  from: string,
+  msg: EmailMessage,
+  replyTo?: string,
+): Promise<EmailResult> {
   const res = await fetch("https://api.resend.com/emails", {
     method: "POST",
     headers: {
       Authorization: `Bearer ${apiKey}`,
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ from, to: [msg.to], subject: msg.subject, html: msg.html }),
+    body: JSON.stringify({
+      from,
+      to: [msg.to],
+      subject: msg.subject,
+      html: msg.html,
+      ...(replyTo ? { reply_to: replyTo } : {}),
+    }),
   });
   if (!res.ok) return { sent: false, provider: "resend", error: `HTTP ${res.status}` };
   return { sent: true, provider: "resend" };
@@ -43,8 +60,10 @@ async function sendMailgun(
   domain: string,
   from: string,
   msg: EmailMessage,
+  replyTo?: string,
 ): Promise<EmailResult> {
   const body = new URLSearchParams({ from, to: msg.to, subject: msg.subject, html: msg.html });
+  if (replyTo) body.set("h:Reply-To", replyTo);
   const res = await fetch(`https://api.mailgun.net/v3/${domain}/messages`, {
     method: "POST",
     headers: {
@@ -60,10 +79,10 @@ async function sendMailgun(
 /** Send an email. Returns whether delivery was attempted successfully. */
 export async function sendEmail(c: { env: AppEnv }, msg: EmailMessage): Promise<EmailResult> {
   const provider = configuredProvider(c);
-  const from = c.env.EMAIL_FROM || "CEA <no-reply@cea.ng>";
+  const from = c.env.EMAIL_FROM || "Cyber Elias Academy <help@cea.ng>";
   if (provider === "console") {
     console.log(
-      `[email:console] to=${msg.to} subject=${msg.subject} html=${msg.html.slice(0, 500)}`,
+      `[email:console] to=${msg.to} replyTo=${msg.replyTo ?? c.env.EMAIL_REPLY_TO ?? "-"} subject=${msg.subject} html=${msg.html.slice(0, 500)}`,
     );
     return { sent: true, provider: "console" };
   }
@@ -71,11 +90,13 @@ export async function sendEmail(c: { env: AppEnv }, msg: EmailMessage): Promise<
   if (!apiKey) {
     return { sent: false, provider, error: "EMAIL_API_KEY is not configured." };
   }
+  // A reply address the academy reads. Explicit per-message value wins.
+  const replyTo = msg.replyTo ?? c.env.EMAIL_REPLY_TO ?? undefined;
   if (provider === "mailgun") {
     const domain = c.env.EMAIL_DOMAIN || "mail.cea.ng";
-    return sendMailgun(apiKey, domain, from, msg);
+    return sendMailgun(apiKey, domain, from, msg, replyTo);
   }
-  return sendResend(apiKey, from, msg);
+  return sendResend(apiKey, from, msg, replyTo);
 }
 
 /** True when a real (non-console) provider is configured. */

@@ -38,6 +38,12 @@ export const RBAC_RULES: RbacRule[] = [
   { methods: ["POST"], path: "/v1/auth/reset-password", public: true },
   { methods: ["POST"], path: "/v1/payments/webhook", public: true },
   { methods: ["POST"], path: "/v1/contact", public: true },
+  /* Public site assistant (chatbot) — prospects have no account. Rate-limited
+     per IP plus a global daily budget in the route itself. */
+  /* Public site assistant — a stranger on a course page must be able to ask
+     without an account. Rate-limited per IP with a daily model budget. */
+  { methods: ["GET"], path: "/v1/assistant/intro", public: true },
+  { methods: ["POST"], path: "/v1/assistant/chat", public: true },
   { methods: ["GET"], path: "/v1/library/catalog", public: true },
 
   /* Public digital shop — Merchant Center requires guest checkout */
@@ -95,6 +101,20 @@ export const RBAC_RULES: RbacRule[] = [
   { methods: ["POST"], path: "/v1/enrollments", public: true },
   { methods: ["POST"], path: "/v1/enrollments/webhook", public: true },
   { methods: ["POST"], path: "/v1/enrollments/:ref/payments", public: true },
+  /* Bank-transfer proof: public (a student reports their own transfer), then a
+     finance/admin review queue. Confirmation runs through markPayment(). */
+  { methods: ["POST"], path: "/v1/enrollments/:ref/payments/transfer", public: true },
+  { methods: ["GET"], path: "/v1/enrollments/payment-proofs", roles: ["admin", "finance"] },
+  {
+    methods: ["POST"],
+    path: "/v1/enrollments/payment-proofs/:id/confirm",
+    roles: ["admin", "finance"],
+  },
+  {
+    methods: ["POST"],
+    path: "/v1/enrollments/payment-proofs/:id/reject",
+    roles: ["admin", "finance"],
+  },
   { methods: ["GET"], path: "/v1/enrollments/:ref/payments/verify", public: true },
   { methods: ["GET"], path: "/v1/enrollments/admin", roles: ["admin", "admissions", "finance"] },
   { methods: ["GET"], path: "/v1/enrollments/:ref", public: true },

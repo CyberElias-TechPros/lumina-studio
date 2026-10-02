@@ -60,7 +60,7 @@ export function SiteFooter() {
             <address className="text-muted-foreground mt-6 space-y-2 text-sm not-italic">
               <p className="flex items-start gap-2.5">
                 <MapPin className="mt-0.5 size-4 shrink-0" />
-                26 Ebony Road, Off Rumuola Road, Port Harcourt, Rivers State
+                24/26 Ebony Road, Off Rumuola Road, Port Harcourt, Rivers State
               </p>
               <p>
                 <a
@@ -72,10 +72,10 @@ export function SiteFooter() {
               </p>
               <p>
                 <a
-                  href="mailto:hello@cea.ng"
+                  href="mailto:help@cea.ng"
                   className="hover:text-foreground flex items-center gap-2.5"
                 >
-                  <Mail className="size-4 shrink-0" /> hello@cea.ng
+                  <Mail className="size-4 shrink-0" /> help@cea.ng
                 </a>
               </p>
             </address>

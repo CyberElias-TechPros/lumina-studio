@@ -58,6 +58,7 @@ import enrollmentsSql from "../migrations/0055_enrollments.sql?raw";
 import productionOpsSql from "../migrations/0056_production_ops.sql?raw";
 import dueDatesSmsSql from "../migrations/0057_due_dates_sms_portal.sql?raw";
 import digitalProductOrdersSql from "../migrations/0058_digital_product_orders.sql?raw";
+import paymentProofsSql from "../migrations/0060_payment_proofs.sql?raw";
 import { seedContentSql } from "../seeds/content";
 import { seedLmsSql } from "../seeds/lms";
 import { seedDomainSql } from "../seeds/domain";
@@ -167,6 +168,7 @@ export async function setupDb(): Promise<void> {
     productionOpsSql,
     dueDatesSmsSql,
     digitalProductOrdersSql,
+    paymentProofsSql,
   ]) {
     const statements = sql
       .split("\n")

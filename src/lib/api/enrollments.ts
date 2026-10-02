@@ -75,6 +75,41 @@ export function startEnrollmentPayment(
   });
 }
 
+export interface TransferProofInput {
+  kind: "deposit" | "full";
+  /** NGN the student says they transferred. */
+  amount: number;
+  senderName: string;
+  bankName?: string;
+  bankReference?: string;
+  /** YYYY-MM-DD */
+  paidOn?: string;
+  note?: string;
+  receiptUrl?: string;
+}
+
+export interface TransferProofResult {
+  ok: boolean;
+  status: "pending_review";
+  amount: number;
+  expectedAmount: number;
+  message: string;
+}
+
+/**
+ * Public — report a bank transfer (UBA 1028649972). Finance reviews every
+ * submission; nothing is marked paid until a person confirms it.
+ */
+export function reportBankTransfer(
+  ref: string,
+  input: TransferProofInput,
+): Promise<TransferProofResult> {
+  return apiFetch<TransferProofResult>(
+    `/v1/enrollments/${encodeURIComponent(ref)}/payments/transfer`,
+    { method: "POST", body: input },
+  );
+}
+
 export interface EnrollmentPaymentVerification {
   reference: string;
   kind: string;
@@ -117,6 +152,14 @@ export interface EnrollmentStatus {
     amountDue: number;
     paidAt: string | null;
     reference: string | null;
+    /** Latest bank-transfer proof, when one was reported. */
+    review?: {
+      status: "pending_review" | "confirmed" | "rejected";
+      amount: number;
+      expectedAmount: number;
+      submittedAt: string;
+      reviewedAt: string | null;
+    } | null;
   };
   events: { event: string; detail: string; at: string }[];
   stages: { key: string; label: string; done: boolean; active: boolean }[];

@@ -91,7 +91,7 @@ function Admissions() {
           <div>
             <h2 className="font-display text-2xl font-semibold tracking-tight">Already applied?</h2>
             <p className="text-muted-foreground mt-3 text-base leading-relaxed">
-              Use your application reference to check status, or email hello@cea.ng.
+              Use your application reference to check status, or email help@cea.ng.
             </p>
             <Button asChild variant="outline" className="mt-5">
               <Link to="/apply/status">Track an application</Link>

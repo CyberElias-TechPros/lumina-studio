@@ -36,7 +36,7 @@ whatCeaProvides:
   (see docs/schools-partnership-programme-plan.md §4).
 
   BEFORE SENDING, confirm with Elias:
-   1. ADDRESS — this template uses "26 Ebony Road", matching the live site, the
+   1. ADDRESS — this template uses "24/26 Ebony Road", matching the live site, the
       FAQ, the receipts and the ICS invite. The earlier proposal drafts say
       "24 Ebony Road". One is wrong; the school will notice. Fix here first.
    2. FEES — the fee band below (₦15,000–₦20,000/student/term) is from your

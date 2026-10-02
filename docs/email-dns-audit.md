@@ -208,11 +208,13 @@ make the whole platform feel like a business instead of a form:
 
    ```sh
    cd backend
-   npx wrangler secret put EMAIL_REPLY_TO   # or add to vars: admission@cea.ng
+   npx wrangler secret put EMAIL_REPLY_TO   # or add to vars: help@cea.ng
+   # Decision (2 Oct 2026): use help@cea.ng — a mailbox the academy reads — so
+   # replies to receipts/reminders reach a human instead of an unmonitored address.
    ```
 
    `sendEmail()` currently sets no `Reply-To`. Right now a student who replies to
-   a receipt replies into the void. `admission@cea.ng` is already a mailbox you
+   a receipt replies into the void. `help@cea.ng` is already a mailbox you
    own and read (77 KB used, unrestricted), it is on the same domain, and it
    matches the address shown in the funnel — so alignment is preserved.
 
@@ -221,23 +223,23 @@ make the whole platform feel like a business instead of a form:
    audience that is (rightly) wary of scam mail. Prefer:
 
    ```
-   EMAIL_FROM = "Cyber Elias Academy <admission@cea.ng>"
-   EMAIL_REPLY_TO = "admission@cea.ng"
+   EMAIL_FROM = "Cyber Elias Academy <help@cea.ng>"
+   EMAIL_REPLY_TO = "help@cea.ng"
    ```
 
    Mailbox plan (you already have all four, 1 GB each, nearly empty):
 
-   | Mailbox            | Use                                                                                    |
-   | ------------------ | -------------------------------------------------------------------------------------- |
-   | `admission@cea.ng` | Admissions & enrollment — From/Reply-To for transactional mail, registration enquiries |
-   | `hello@cea.ng`     | General enquiries, the address printed on the site and proposal                        |
-   | `help@cea.ng`      | Support, and `rua` for DMARC reports                                                   |
-   | `vizier@cea.ng`    | Vizier/product or a future role — currently unused                                     |
+   | Mailbox            | Use                                                                                                             |
+   | ------------------ | --------------------------------------------------------------------------------------------------------------- |
+   | `admission@cea.ng` | Admissions & enrollment — keep for admissions-specific mail; transactional From/Reply-To now uses `help@cea.ng` |
+   | `hello@cea.ng`     | General enquiries, the address printed on the site and proposal                                                 |
+   | `help@cea.ng`      | Support, and `rua` for DMARC reports                                                                            |
+   | `vizier@cea.ng`    | Vizier/product or a future role — currently unused                                                              |
 
 3. **Verify before announcing.** After changing records, send a test from the
    worker and check: SPF pass, DKIM pass, DMARC pass (a free check on
    mail-tester.com or the headers themselves), then re-check that a reply to
-   `admission@cea.ng` appears in webmail. Only then change the site's contact
+   `help@cea.ng` appears in webmail. Only then change the site's contact
    copy everywhere.
 
 ---
@@ -256,7 +258,7 @@ make the whole platform feel like a business instead of a form:
 2. Wait for TTL (14400s = 4h; Cloudflare proxy changes are instant).
 3. Test: send to hello@ from Gmail → arrives in webmail?
          send from the worker → SPF/DKIM/DMARC all pass?
-         reply to a transactional email → lands in admission@?
+         reply to a transactional email → lands in help@?
 4. Then: set EMAIL_REPLY_TO in the worker, redeploy, run the smoke test in
    docs/go-live-checklist.md §6.
 5. Then: print the right address on the site, proposal template and receipts.
@@ -277,6 +279,6 @@ make the whole platform feel like a business instead of a form:
    cheap to add behind a flag and it is the only path that cannot expire.
 4. **Is `cyberelias.tk@gmail.com` still in use?** Your Brevo templates reference
    it as the support address. It should disappear from all student-facing copy in
-   favour of `admission@cea.ng` / `help@cea.ng` — a free Gmail address on a
+   favour of `help@cea.ng` — a free Gmail address on a
    `@cea.ng`-branded business reads as improvised, and it can't be recovered if
    the account is lost.

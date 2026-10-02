@@ -31,7 +31,7 @@ fill — which is why §5 (fees, minimums and the capacity check) matters as muc
 as the curriculum.
 
 **One honest caution about the two proposals** you pasted: they disagree with the
-live site on the address (**24 vs 26 Ebony Road**), and both fee lists differ
+live site on the address (**24 vs 24/26 Ebony Road**), and both fee lists differ
 from the published catalogue. Those contradictions must be fixed _before_ this
 goes to a school head, because a school business officer will check. Details and
 the exact lines to change: `docs/automation-package-reconciliation.md`.
@@ -410,7 +410,7 @@ browser. The end-of-term report doubles as a leave-behind for the _next_ school.
 
 ## 11. Decisions I need from you
 
-1. **Address:** is it **24** or **26 Ebony Road**? The site, the FAQ, the map and
+1. **Address:** is it **24** or **24/26 Ebony Road**? The site, the FAQ, the map and
    the app all say 26; the proposal and the automation package say 24. One of
    them is wrong in front of customers.
 2. **Fees:** the automation package quotes Web Development at ₦150,000/8 weeks,

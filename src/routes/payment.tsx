@@ -71,8 +71,8 @@ function PaymentPage() {
             </p>
             <p className="text-muted-foreground mt-3 text-sm leading-relaxed">
               If a price on the shop looks wrong, stop and email{" "}
-              <a href="mailto:hello@cea.ng" className="text-primary underline">
-                hello@cea.ng
+              <a href="mailto:help@cea.ng" className="text-primary underline">
+                help@cea.ng
               </a>{" "}
               before paying. We never undercut the published price through WhatsApp or DM.
             </p>

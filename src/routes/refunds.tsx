@@ -30,7 +30,7 @@ const summary = [
   {
     icon: Mail,
     title: "One email is enough",
-    body: "Reply to your order email or write to hello@cea.ng with your order reference. We confirm within one working day.",
+    body: "Reply to your order email or write to help@cea.ng with your order reference. We confirm within one working day.",
   },
 ];
 
@@ -77,8 +77,8 @@ function RefundsPage() {
               <h2 className="font-display text-2xl font-semibold tracking-tight">How to ask</h2>
               <p className="text-muted-foreground mt-3">
                 Reply to the order confirmation email or write to{" "}
-                <a href="mailto:hello@cea.ng" className="text-primary underline">
-                  hello@cea.ng
+                <a href="mailto:help@cea.ng" className="text-primary underline">
+                  help@cea.ng
                 </a>{" "}
                 with your order reference (it starts with{" "}
                 <code className="font-mono">cea_shop_</code>). We confirm receipt within one working
@@ -126,7 +126,7 @@ function RefundsPage() {
         <CTASection
           title="Need a refund?"
           description="Reply to your order email or message us on WhatsApp with your order reference. We confirm within one working day."
-          primary={{ label: "Email hello@cea.ng", to: "/contact" }}
+          primary={{ label: "Email help@cea.ng", to: "/contact" }}
           secondary={{ label: "Read the delivery terms", to: "/shipping" }}
         />
       </Reveal>

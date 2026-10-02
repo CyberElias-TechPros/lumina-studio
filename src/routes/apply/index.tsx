@@ -393,7 +393,7 @@ function ApplyPage() {
               >
                 Contact us
               </Link>{" "}
-              or visit us at 26 Ebony Road.
+              or visit us at 24/26 Ebony Road.
             </p>
           </div>
 

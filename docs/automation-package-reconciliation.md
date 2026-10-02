@@ -23,6 +23,13 @@ This document does three things:
 
 ### 1.1 Fees: the package quotes prices that are not on your site
 
+> **Resolved 2 Oct 2026 (your ruling).** The lesser prices are the **theoretical /
+> crash-course** versions; the bigger amounts are the **full packages**. Both are
+> real, so nothing here is an error — but they must be sold under different names,
+> because the site currently advertises only the crash tier while describing
+> full-package outcomes. Recommended two-tier structure, fees and competitor
+> benchmarks: `docs/port-harcourt-competitor-pricing.md`.
+
 | Course                 | Package says            | Live site says                                                              | Course page                        |
 | ---------------------- | ----------------------- | --------------------------------------------------------------------------- | ---------------------------------- |
 | Web Development        | **₦150,000** (8 weeks)  | **₦60,000** (6 weeks)                                                       | `/programs/web-development`        |
@@ -57,24 +64,25 @@ list is current — if the package's numbers are the _new_ prices, the site data
 the enrollment form's `PROGRAMS` map (`backend/src/routes/enrollments.ts`) and
 the fee summary emails must change together, and I'll do that as one change.
 
-### 1.2 Address: 24 vs 26 Ebony Road
+### 1.2 Address: 24 vs 24/26 Ebony Road
 
 | Source                                                                                 | Says                                     |
 | -------------------------------------------------------------------------------------- | ---------------------------------------- |
-| Site FAQ, contact page, long-form data, enrolment success screen, ICS invite, receipts | **26 Ebony Road**                        |
+| Site FAQ, contact page, long-form data, enrolment success screen, ICS invite, receipts | **24/26 Ebony Road**                     |
 | Package `/greet` quick reply and Brevo template 1                                      | **24 Ebony Road, Rumuchita**             |
 | Both school proposals                                                                  | **24 Ebony Road** (one says "Rumuchita") |
 
-One is wrong. Confirm which, then it must be corrected in: `src/data/site.ts`,
-`src/data/academy/longform.ts`, `backend/src/routes/enrollments.ts` (receipt
-footer + ICS), the WhatsApp quick replies and both proposal documents.
+> **Resolved 2 Oct 2026.** The canonical address is **24/26 Ebony Road, off Rumuola
+> Road, Port Harcourt** (no "Rumuchita"). Corrected repo-wide: `src/data/site.ts`,
+> `src/data/academy/longform.ts`, `backend/src/routes/enrollments.ts` (receipt
+> footer + ICS), the WhatsApp quick replies and both proposal documents.
 
 ### 1.3 Identity and contact details
 
 | Item            | Package                                                    | Reality / recommendation                                                                                                                                                                 |
 | --------------- | ---------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Director's name | "Graham Ellis Dennis, Director"                            | The admissions WhatsApp script in `docs/enrollment-automation.md` signs off as "Ellis"; the site says "From Zero to Expert, Together". Pick one form and I'll standardise it everywhere. |
-| Support email   | `cyberelias.tk@gmail.com` (Brevo template 2)               | **Remove.** Use `help@cea.ng` (you already own it, 1 GB, unrestricted). A free Gmail address on a registered company's onboarding email reads as improvised.                             |
+| Support email   | `cyberelias.tk@gmail.com` (Brevo template 2)               | **Resolved 2 Oct 2026: use `help@cea.ng`.** Set as `EMAIL_REPLY_TO`/`EMAIL_FROM` default in the app, the DMARC `rua`, and the public contact copy. Retire the Gmail address.             |
 | Sender address  | `[YOUR PAYSTACK LINK]`, `[YOUR BANK DETAILS]` placeholders | Real values exist now: UBA **1028649972** (Cyber Elias Academy Ltd) and the in-app Paystack checkout. Never publish a template with placeholders in it — that's how they get sent.       |
 | RC / TIN        | RC 8413776, TIN 1086525399                                 | **Correct** — and the site footer already shows RC 8413776. The compliance dashboard used to show a _wrong_ RC (1423784); that has now been fixed in the seeds, mocks and UI (see §6).   |
 | Office hours    | Package `/away` says Mon–Fri 9–6, Sat 10–2                 | The site says **Mon–Sat 8:00–20:00**. Reconcile.                                                                                                                                         |
@@ -132,12 +140,12 @@ Paste these into WhatsApp Business → Business tools → Quick replies.
 
 | Shortcut   | Message                                                                                                                                                                                                                                                                                                                                                                                                                                |
 | ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `/greet`   | Good day 👋 Welcome to **Cyber Elias Academy**. Tell me which skill you want to learn and I'll send the fee, duration and next start date. We are at 26 Ebony Road, Port Harcourt · cea.ng                                                                                                                                                                                                                                             |
+| `/greet`   | Good day 👋 Welcome to **Cyber Elias Academy**. Tell me which skill you want to learn and I'll send the fee, duration and next start date. We are at 24/26 Ebony Road, Port Harcourt · cea.ng                                                                                                                                                                                                                                          |
 | `/fees`    | Our current fees: short courses **₦20,000–₦60,000** (2–6 weeks, 2 days/week) and long-form diplomas **₦150,000–₦320,000** (3–6 months, 3 days/week, deposit plan available). Which course? I'll send the exact fee and payment plan. Full list: cea.ng/programs                                                                                                                                                                        |
 | `/courses` | We train in Microsoft Office, Typing & Computer Basics, Data Entry, Graphic Design, Web Design, Web Development, Digital Marketing, Social Media Management, Content Creation, Video Editing, Photography, WordPress, Computer Repairs, Networking, IT Support, Data Analytics, Cybersecurity, AI Productivity, Online Teaching, Business & Freelancing, Mobile App Development, Digital Productivity. Details & fees: cea.ng/programs |
 | `/pay`     | Two ways to pay: (1) card/transfer/USSD on our site — cea.ng/apply, or (2) bank transfer to **Cyber Elias Academy Ltd · UBA · 1028649972**. After paying, send your name and the receipt here and we confirm your seat the same day.                                                                                                                                                                                                   |
 | `/confirm` | Payment received ✅ Your seat is confirmed. You'll get an email with your class schedule, materials and classroom code. Welcome to CEA!                                                                                                                                                                                                                                                                                                |
-| `/remind`  | Reminder: your class holds {day} at {time} at **26 Ebony Road** (or online — the link is in your email). Bring your laptop and notebook. Reply here if you'll be late.                                                                                                                                                                                                                                                                 |
+| `/remind`  | Reminder: your class holds {day} at {time} at **24/26 Ebony Road** (or online — the link is in your email). Bring your laptop and notebook. Reply here if you'll be late.                                                                                                                                                                                                                                                              |
 | `/cert`    | Certificates are issued when you complete your project. Each has a code any employer can verify at cea.ng/certificates/verify                                                                                                                                                                                                                                                                                                          |
 | `/refer`   | Refer a friend 🎁 Ask them to put your name in "How did you hear about us" when they register — once they pay, your reward on the next course is processed.                                                                                                                                                                                                                                                                            |
 | `/corp`    | We run corporate and school programmes (team upskilling, term-based digital skills for schools) with a custom proposal. Send your organisation name, number of people and the skills needed — proposal within 48 hours.                                                                                                                                                                                                                |

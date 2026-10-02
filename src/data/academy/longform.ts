@@ -87,7 +87,7 @@ export const longformPrograms: LongformProgram[] = [
       "Junior network technician",
     ],
     includes: [
-      "3 practical days/week at 26 Ebony Road (or online where noted)",
+      "3 practical days/week at 24/26 Ebony Road (or online where noted)",
       "All class notes published online from week one",
       "Diploma certificate awarded on the documented capstone",
       "Career Engine: CV review, portfolio and employer introductions",
@@ -146,7 +146,7 @@ export const longformPrograms: LongformProgram[] = [
       "Web maintenance & upgrades",
     ],
     includes: [
-      "3 practical days/week at 26 Ebony Road (or online where noted)",
+      "3 practical days/week at 24/26 Ebony Road (or online where noted)",
       "All class notes published online from week one",
       "Professional certificate awarded on the deployed capstone",
       "Career Engine: CV review, portfolio and employer introductions",
@@ -205,7 +205,7 @@ export const longformPrograms: LongformProgram[] = [
       "AI-augmented office professional",
     ],
     includes: [
-      "3 practical days/week at 26 Ebony Road (or online where noted)",
+      "3 practical days/week at 24/26 Ebony Road (or online where noted)",
       "All class notes published online from week one",
       "Certificate awarded on the hosted dashboards and capstone",
       "Career Engine: CV review, portfolio and employer introductions",
@@ -255,7 +255,7 @@ export const longformPrograms: LongformProgram[] = [
       "Compliance assistant",
     ],
     includes: [
-      "3 practical days/week at 26 Ebony Road",
+      "3 practical days/week at 24/26 Ebony Road",
       "All class notes published online from week one",
       "Certificate awarded on the delivered assessment",
       "Career Engine: CV review, portfolio and employer introductions",
@@ -308,7 +308,7 @@ export const longformPrograms: LongformProgram[] = [
       "Small-business digital lead",
     ],
     includes: [
-      "3 practical days/week at 26 Ebony Road (or online where noted)",
+      "3 practical days/week at 24/26 Ebony Road (or online where noted)",
       "All class notes published online from week one",
       "Certificate awarded on the live business results",
       "Career Engine: portfolio review and client-introduction network",
@@ -351,7 +351,7 @@ export const timeSlotOptions: ScheduleOption[] = [
 ];
 
 export const modeOptions: ScheduleOption[] = [
-  { value: "onsite", label: "Onsite", detail: "26 Ebony Road, Port Harcourt" },
+  { value: "onsite", label: "Onsite", detail: "24/26 Ebony Road, Port Harcourt" },
   {
     value: "online",
     label: "Online",

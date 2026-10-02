@@ -33,11 +33,11 @@ const settings: { label: string; value: string; copyable?: boolean; href?: strin
   { label: "Business name", value: "Cyber Elias Academy" },
   {
     label: "Business address",
-    value: "26 Ebony Road, Off Rumuola Road, Port Harcourt, Rivers, Nigeria",
+    value: "24/26 Ebony Road, Off Rumuola Road, Port Harcourt, Rivers, Nigeria",
   },
   { label: "Target country", value: "Nigeria (NG)" },
   { label: "Target currency", value: "Nigerian Naira (NGN)" },
-  { label: "Customer-service email", value: "hello@cea.ng" },
+  { label: "Customer-service email", value: "help@cea.ng" },
   { label: "Customer-service phone", value: "+234 905 862 8386" },
 ];
 

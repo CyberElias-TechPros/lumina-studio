@@ -1,7 +1,7 @@
 const SITE_NAME = "Cyber Elias Academy";
 const SITE_URL = "https://cea.ng";
 const SITE_PHONE = "+234 905 862 8386";
-const SITE_EMAIL = "hello@cea.ng";
+const SITE_EMAIL = "help@cea.ng";
 const SITE_LOGO = "/icon.svg";
 // Keep these in sync with the footer social links (src/components/marketing/
 // site-footer.tsx). Entity profiles must match across structured data and the
@@ -94,7 +94,7 @@ export const ORGANIZATION_LD = {
   },
   address: {
     "@type": "PostalAddress",
-    streetAddress: "26 Ebony Road, Off Rumuola Road",
+    streetAddress: "24/26 Ebony Road, Off Rumuola Road",
     addressLocality: "Port Harcourt",
     addressRegion: "Rivers State",
     addressCountry: "NG",
@@ -119,7 +119,7 @@ export const LOCAL_BUSINESS_LD = {
   email: SITE_EMAIL,
   address: {
     "@type": "PostalAddress",
-    streetAddress: "26 Ebony Road, Off Rumuola Road",
+    streetAddress: "24/26 Ebony Road, Off Rumuola Road",
     addressLocality: "Port Harcourt",
     addressRegion: "Rivers State",
     addressCountry: "NG",

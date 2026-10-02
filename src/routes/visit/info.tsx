@@ -11,7 +11,7 @@ export const Route = createFileRoute("/visit/info")({
     getPageHead({
       title: "How to find us — Cyber Elias Academy",
       description:
-        "Cyber Elias Academy is at 26 Ebony Road, off Rumuola Road, Port Harcourt. Opening hours Monday to Saturday, 8:00–20:00.",
+        "Cyber Elias Academy is at 24/26 Ebony Road, off Rumuola Road, Port Harcourt. Opening hours Monday to Saturday, 8:00–20:00.",
       path: "/visit/info",
     }),
   component: VisitInfoPage,
@@ -23,14 +23,16 @@ function VisitInfoPage() {
       <PageHero
         eyebrow="Directions"
         title="How to find us"
-        description="26 Ebony Road, off Rumuola Road, Port Harcourt. One classroom. Call if you want to sit in on a session."
+        description="24/26 Ebony Road, off Rumuola Road, Port Harcourt. One classroom. Call if you want to sit in on a session."
       />
 
       <section className="container-page grid gap-4 py-10 sm:grid-cols-2 lg:grid-cols-4 md:py-12">
         {campusGallery.map((shot) => (
           <figure key={shot.id} className="border-border overflow-hidden rounded-lg border">
             <CampusImg id={shot.id} className="aspect-[4/3]" />
-            <figcaption className="text-muted-foreground px-3 py-2 text-xs">{shot.caption}</figcaption>
+            <figcaption className="text-muted-foreground px-3 py-2 text-xs">
+              {shot.caption}
+            </figcaption>
           </figure>
         ))}
       </section>
@@ -41,13 +43,13 @@ function VisitInfoPage() {
             <MapPin className="size-5" /> Address
           </h2>
           <p className="text-muted-foreground mt-3 text-sm leading-relaxed">
-            26 Ebony Road, Off Rumuola Road, Port Harcourt, Rivers State. Keke, taxi or bus to
+            24/26 Ebony Road, Off Rumuola Road, Port Harcourt, Rivers State. Keke, taxi or bus to
             Rumuola, then a short walk.
           </p>
           <ul className="text-muted-foreground mt-6 space-y-2 text-sm leading-relaxed">
             <li>Monday–Saturday, 8:00–20:00 WAT</li>
             <li>+234 905 862 8386</li>
-            <li>hello@cea.ng</li>
+            <li>help@cea.ng</li>
           </ul>
           <div className="mt-6 flex flex-wrap gap-3">
             <Button asChild>

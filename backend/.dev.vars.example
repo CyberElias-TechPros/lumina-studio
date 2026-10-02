@@ -19,7 +19,9 @@ TURNSTILE_SECRET_KEY=
 VAPID_PUBLIC_KEY=
 VAPID_PRIVATE_KEY=
 
-# AI assistant (OpenAI-compatible endpoint configured by AI_BASE_URL / AI_MODEL vars).
+# AI — NVIDIA NIM free tier by default (AI_BASE_URL / AI_MODEL vars in wrangler.jsonc).
+# Powers the public site assistant; without it the assistant serves a factual
+# fallback (WhatsApp + help@cea.ng) instead of failing.
 AI_API_KEY=
 
 # Error reporting (Sentry or GlitchTip DSN). Optional.
@@ -32,5 +34,7 @@ SMS_PROVIDER=termii
 SMS_API_KEY=
 SMS_SENDER=CEA
 
-# Where contact-form notifications go (e.g. admissions@cea.ng). Optional.
+# Where contact-form and bank-transfer notifications go. Optional.
 CONTACT_INBOX=
+# Reply-To for transactional mail once students reply to receipts/reminders.
+EMAIL_REPLY_TO=help@cea.ng

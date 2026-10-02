@@ -81,8 +81,8 @@ function TermsPage() {
           <Reveal delay={0.2}>
             <h2 className="font-display text-2xl font-bold">5. Your account</h2>
             <p className="text-muted-foreground mt-4 leading-relaxed">
-              Keep your login to yourself. Tell us at hello@cea.ng if you think someone else used
-              it. We may suspend an account used for abuse or fraud.
+              Keep your login to yourself. Tell us at help@cea.ng if you think someone else used it.
+              We may suspend an account used for abuse or fraud.
             </p>
           </Reveal>
 
@@ -115,16 +115,16 @@ function TermsPage() {
             <h2 className="font-display text-2xl font-bold">9. Liability</h2>
             <p className="text-muted-foreground mt-4 leading-relaxed">
               The site is provided as it is. To the extent Nigerian law allows, our total liability
-              for a claim about these terms or the site is limited to the fees you paid us in the
-              12 months before the claim.
+              for a claim about these terms or the site is limited to the fees you paid us in the 12
+              months before the claim.
             </p>
           </Reveal>
 
           <Reveal delay={0.45}>
             <h2 className="font-display text-2xl font-bold">10. Ending the agreement</h2>
             <p className="text-muted-foreground mt-4 leading-relaxed">
-              You may close an account by emailing hello@cea.ng. Fees already paid follow §4. We
-              may suspend access for breach or non-payment.
+              You may close an account by emailing help@cea.ng. Fees already paid follow §4. We may
+              suspend access for breach or non-payment.
             </p>
           </Reveal>
 
@@ -142,13 +142,13 @@ function TermsPage() {
             <p className="text-muted-foreground mt-4 leading-relaxed">
               Cyber Elias Academy Ltd
               <br />
-              26 Ebony Road, Off Rumuola Road
+              24/26 Ebony Road, Off Rumuola Road
               <br />
               Port Harcourt, Rivers State, Nigeria
               <br />
               +234 905 862 8386 ·{" "}
-              <a href="mailto:hello@cea.ng" className="text-primary underline">
-                hello@cea.ng
+              <a href="mailto:help@cea.ng" className="text-primary underline">
+                help@cea.ng
               </a>
             </p>
           </Reveal>

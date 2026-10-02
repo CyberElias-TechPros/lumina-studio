@@ -7,8 +7,7 @@ export const Route = createFileRoute("/accessibility")({
   head: () =>
     getPageHead({
       title: "Accessibility Statement",
-      description:
-        "How we try to make cea.ng usable, what still fails, and how to tell us.",
+      description: "How we try to make cea.ng usable, what still fails, and how to tell us.",
       path: "/accessibility",
       type: "article",
     }),
@@ -33,9 +32,9 @@ function AccessibilityPage() {
               description="We work toward WCAG 2.1 Level AA. We are not claiming a full audit."
             />
             <p className="text-muted-foreground leading-relaxed">
-              Public pages use semantic HTML, a skip-to-content link, visible focus, and captions
-              on informative images. We have not paid for a third-party accessibility audit, and we
-              do not claim that every page passes AA.
+              Public pages use semantic HTML, a skip-to-content link, visible focus, and captions on
+              informative images. We have not paid for a third-party accessibility audit, and we do
+              not claim that every page passes AA.
             </p>
           </Reveal>
 
@@ -69,15 +68,15 @@ function AccessibilityPage() {
             <SectionHeading title="Tell us" />
             <p className="text-muted-foreground leading-relaxed">
               If something blocks you, email{" "}
-              <a href="mailto:hello@cea.ng" className="text-primary underline">
-                hello@cea.ng
+              <a href="mailto:help@cea.ng" className="text-primary underline">
+                help@cea.ng
               </a>{" "}
               or use the{" "}
               <Link to="/contact" className="text-primary underline">
                 contact form
               </Link>{" "}
-              (topic: Accessibility). Phone: +234 905 862 8386. We aim to acknowledge reports
-              within two working days.
+              (topic: Accessibility). Phone: +234 905 862 8386. We aim to acknowledge reports within
+              two working days.
             </p>
           </Reveal>
         </div>

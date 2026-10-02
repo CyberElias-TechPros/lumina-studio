@@ -23,14 +23,14 @@ function About() {
       <PageHero
         eyebrow="About"
         title="A digital-skills training centre in Port Harcourt"
-        description="Cyber Elias Academy Ltd teaches practical computer and workplace-digital skills in short courses. We are a registered Nigerian company (RC 8413776), based at 26 Ebony Road."
+        description="Cyber Elias Academy Ltd teaches practical computer and workplace-digital skills in short courses. We are a registered Nigerian company (RC 8413776), based at 24/26 Ebony Road."
       />
 
       <section className="container-page grid gap-4 py-10 sm:grid-cols-2 md:py-12">
         <figure className="border-border overflow-hidden rounded-lg border">
           <CampusImg id="lab-1" className="aspect-[16/10]" />
           <figcaption className="text-muted-foreground px-3 py-2 text-xs">
-            The classroom at 26 Ebony Road
+            The classroom at 24/26 Ebony Road
           </figcaption>
         </figure>
         <figure className="border-border overflow-hidden rounded-lg border">
@@ -107,9 +107,9 @@ function About() {
           <div>
             <h2 className="font-display text-2xl font-semibold tracking-tight">Where we are</h2>
             <p className="text-muted-foreground mt-3 text-base leading-relaxed">
-              The centre is at 26 Ebony Road, off Rumuola Road, Port Harcourt. You can visit during
-              opening hours, or apply online and we will confirm the next start date for the course
-              you want.
+              The centre is at 24/26 Ebony Road, off Rumuola Road, Port Harcourt. You can visit
+              during opening hours, or apply online and we will confirm the next start date for the
+              course you want.
             </p>
             <Button asChild variant="outline" className="mt-6">
               <Link to="/visit">Plan a visit</Link>
@@ -118,7 +118,7 @@ function About() {
           <figure className="border-border overflow-hidden rounded-lg border">
             <CampusImg id="lab-2" className="aspect-[4/3]" />
             <figcaption className="text-muted-foreground bg-card px-3 py-2 text-xs">
-              26 Ebony Road, Off Rumuola Road · +234 905 862 8386 · hello@cea.ng
+              24/26 Ebony Road, Off Rumuola Road · +234 905 862 8386 · help@cea.ng
             </figcaption>
           </figure>
         </div>
