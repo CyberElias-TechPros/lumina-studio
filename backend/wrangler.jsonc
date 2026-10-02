@@ -14,7 +14,7 @@
   },
   "vars": {
     "APP_ENV": "production",
-    "FRONTEND_ORIGINS": "https://cea.ng,https://www.cea.ng,https://cea-os.vercel.app",
+    "FRONTEND_ORIGINS": "https://cea.ng,https://www.cea.ng,https://cea-os.vercel.app,https://ceanotes.freegameplay.site,https://lumina-studio-alpha-eight.vercel.app",
     "UPLOADS_PRESIGN_URL": "",
     "APP_URL": "https://cea.ng",
     // Secrets are configured with `wrangler secret put`; do not place them in vars.
