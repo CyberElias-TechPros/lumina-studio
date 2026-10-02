@@ -1,6 +1,6 @@
 export const env = {
   get apiUrl() {
-    return (import.meta.env.VITE_API_URL ?? "").replace(/\/$/, "");
+    return (import.meta.env.VITE_API_URL ?? "").replace(/\/+$/, "");
   },
   get wsUrl() {
     return (import.meta.env.VITE_WS_URL ?? "").replace(/\/$/, "");
