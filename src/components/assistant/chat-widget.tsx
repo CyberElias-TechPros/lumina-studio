@@ -140,7 +140,7 @@ export function ChatWidget() {
           setNote(
             res.budgetExhausted || res.disabled
               ? "Our live assistant is unavailable right now — WhatsApp is the fastest route."
-              : "Preview answer (assistant not fully configured yet).",
+              : "Preview answer — the AI assistant is live once the API is connected.",
           );
         }
       } catch {
