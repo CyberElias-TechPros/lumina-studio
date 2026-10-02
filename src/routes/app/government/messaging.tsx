@@ -52,7 +52,7 @@ function GovernmentMessaging() {
     <AppShell
       roleKey="government"
       title="Messaging"
-      subtitle="End-to-end encrypted · audited by system admin"
+      subtitle="Correspondence with regulators and partners"
       actions={
         <>
           <Badge className="bg-success/10 text-success border-0 font-semibold">Secure</Badge>

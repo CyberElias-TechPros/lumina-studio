@@ -53,7 +53,7 @@ function GovernmentAudit() {
     <AppShell
       roleKey="government"
       title="Audit module"
-      subtitle="Next audit Sep 18 · 1 open finding · remediation on track"
+      subtitle="No audits recorded — findings appear here when one is opened"
       actions={
         <>
           <Badge className="bg-success/10 text-success border-0 font-semibold">On track</Badge>

@@ -94,10 +94,12 @@ function GovernmentHub() {
     <AppShell
       roleKey="government"
       title="Compliance portal"
-      subtitle="Federal Ministry of Education · read-only access · IP-whitelisted"
+      subtitle="Registered company records · CAC & NRS deadlines tracked here"
       actions={
         <>
-          <Badge className="bg-success/10 text-success border-0 font-semibold">Accredited</Badge>
+          <Badge className="bg-primary/10 text-primary border-0 font-semibold">
+            Verify on portal
+          </Badge>
           <Button asChild variant="outline" size="sm" className="font-semibold">
             <Link to="/portal/government">
               <ArrowLeft className="size-4" /> Government portal
@@ -113,14 +115,15 @@ function GovernmentHub() {
           </span>
           <div className="min-w-0 flex-1">
             <p className="font-display text-sm font-extrabold">
-              Accreditation status — Cyber Elias Academy
+              Cyber Elias Academy Ltd — registered entity
             </p>
             <p className="mt-0.5 text-xs text-white/70">
-              Full accreditation · score 92/100 · next review Feb 2027 · all compliance obligations
-              current
+              RC 8413776 · TIN 1086525399 · Port Harcourt. The academy holds no regulatory
+              accreditation, and certificates are not a degree or a government licence — each one is
+              verifiable at cea.ng/certificates/verify.
             </p>
           </div>
-          <Badge className="border-0 bg-white/10 font-semibold text-white">Valid</Badge>
+          <Badge className="border-0 bg-white/10 font-semibold text-white">Registered</Badge>
         </CardContent>
       </Card>
 

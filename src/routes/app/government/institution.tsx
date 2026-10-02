@@ -54,7 +54,7 @@ function GovernmentInstitution() {
     <AppShell
       roleKey="government"
       title="Institutional data"
-      subtitle="Read-only · updated Jul 31 · data verified by 2 officers"
+      subtitle="Registered company details · RC 8413776 · TIN 1086525399"
       actions={
         <>
           <Badge className="bg-success/10 text-success border-0 font-semibold">Verified</Badge>

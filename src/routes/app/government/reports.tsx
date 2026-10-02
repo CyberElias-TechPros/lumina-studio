@@ -52,7 +52,7 @@ function GovernmentReports() {
     <AppShell
       roleKey="government"
       title="Regulatory reports"
-      subtitle="12 reports · auto-prepared quarterly · filings-ready"
+      subtitle="No reports prepared yet — they appear here once generated"
       actions={
         <>
           <Badge className="bg-success/10 text-success border-0 font-semibold">0 overdue</Badge>

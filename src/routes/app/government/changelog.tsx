@@ -52,7 +52,7 @@ function GovernmentChangelog() {
     <AppShell
       roleKey="government"
       title="Regulatory change log"
-      subtitle="Tracked since 2022 · 34 regulations · auto-impact analysis"
+      subtitle="Regulatory watch-list · items that may affect the academy"
       actions={
         <>
           <Badge className="bg-success/10 text-success border-0 font-semibold">Up to date</Badge>

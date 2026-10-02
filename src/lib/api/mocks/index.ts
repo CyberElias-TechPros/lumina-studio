@@ -3298,203 +3298,86 @@ export function registerAllMocks(): void {
     return { items, total: items.length };
   });
 
-  /* Government suite — mirrors backend seeds (migrations/0020_government.sql) */
+  /* Government suite — mirrors backend seeds (seeds/government-data.sql).
+   *
+   * Honest-content rule (2 Oct 2026): verifiable company facts and neutral
+   * regulatory watch-items only. No invented filings, audits, reports, threads,
+   * certifications or accreditation claims — see docs/free-automation-plan-2026-10.md §11. */
   const govtCollections: Record<string, Record<string, unknown>[]> = {
     overview: [
-      { id: "govt-ov-01", metric: "Compliance score", valueLabel: "92", delta: "of 100" },
-      { id: "govt-ov-02", metric: "Open findings", valueLabel: "1", delta: "low priority" },
-      { id: "govt-ov-03", metric: "Filings (year)", valueLabel: "14", delta: "0 overdue" },
-      { id: "govt-ov-04", metric: "Next review", valueLabel: "2027", delta: "Feb · on track" },
-    ],
-    calendar: [
       {
-        id: "govt-cl-01",
-        title: "Audit inspection",
-        dateLabel: "Sep 18 · on-site",
-        status: "Scheduled",
+        id: "govt-ov-01",
+        metric: "CAC registration",
+        valueLabel: "RC 8413776",
+        delta: "Cyber Elias Academy Ltd",
       },
       {
-        id: "govt-cl-02",
-        title: "Tuition fee schedule filing",
-        dateLabel: "Aug 30 · online",
-        status: "Upcoming",
+        id: "govt-ov-02",
+        metric: "Tax identification",
+        valueLabel: "1086525399",
+        delta: "TIN · NRS (formerly FIRS)",
       },
+      { id: "govt-ov-03", metric: "Branches", valueLabel: "1", delta: "Port Harcourt" },
       {
-        id: "govt-cl-03",
-        title: "Q3 enrolment census",
-        dateLabel: "Oct 15 · online",
-        status: "Upcoming",
+        id: "govt-ov-04",
+        metric: "Filings tracked here",
+        valueLabel: "0",
+        delta: "add real deadlines — see plan §11",
       },
     ],
+    calendar: [],
     changes: [
       {
         id: "govt-ch-01",
-        title: "NDPR enforcement guidelines v2",
-        detail: "Effective Aug 01 · CEA compliant",
-        status: "Compliant",
+        title: "Nigeria Data Protection Act 2023",
+        detail: "NDPC enforcement · applies to student records",
+        status: "Track",
       },
       {
         id: "govt-ch-02",
-        title: "Tuition fee disclosure rules",
-        detail: "Effective Jul 01 · CEA compliant",
-        status: "Compliant",
+        title: "Companies and Allied Matters Act 2020",
+        detail: "Annual return within 42 days of AGM",
+        status: "Track",
       },
       {
         id: "govt-ch-03",
-        title: "Student data retention policy",
-        detail: "Effective Oct 01 · CEA reviewing",
-        status: "In review",
+        title: "Company income tax / VAT",
+        detail: "NRS (formerly FIRS) filing calendar",
+        status: "Track",
       },
     ],
     documents: [
       {
         id: "govt-dc-01",
-        title: "Academic policy handbook",
-        versionLabel: "v4.2 · Jul 2026",
-        status: "Current",
+        title: "Privacy policy",
+        versionLabel: "Published · cea.ng/privacy",
+        status: "Published",
       },
       {
         id: "govt-dc-02",
-        title: "Tuition & fees policy",
-        versionLabel: "v2.1 · Jan 2026",
-        status: "Current",
+        title: "Terms of service",
+        versionLabel: "Published · cea.ng/terms",
+        status: "Published",
       },
       {
         id: "govt-dc-03",
-        title: "Student conduct code",
-        versionLabel: "v3.0 · Sep 2025",
-        status: "Reviewing",
+        title: "Refund & transfer policy",
+        versionLabel: "Published · cea.ng/refunds",
+        status: "Published",
       },
     ],
     facts: [
-      { id: "govt-ft-01", label: "Registration", value: "RC 1423784 · CAC" },
-      { id: "govt-ft-02", label: "Licence", value: "MBBS/PC/2024/0142 · NUC" },
-      { id: "govt-ft-03", label: "Branches", value: "3 · Lagos, Abuja, Port Harcourt" },
-      { id: "govt-ft-04", label: "Academic board", value: "Constituted · 11 members" },
+      { id: "govt-ft-01", label: "Legal name", value: "Cyber Elias Academy Ltd" },
+      { id: "govt-ft-02", label: "Registration", value: "RC 8413776 · CAC" },
+      { id: "govt-ft-03", label: "TIN", value: "1086525399" },
+      { id: "govt-ft-04", label: "Branches", value: "1 · Port Harcourt" },
     ],
-    reports: [
-      {
-        id: "govt-rp-01",
-        title: "Annual compliance report — 2025/26",
-        detail: "Fiscal year close · filed",
-        status: "Filed",
-      },
-      {
-        id: "govt-rp-02",
-        title: "Student enrolment census — Q2",
-        detail: "Due Aug 15 · ready",
-        status: "Ready",
-      },
-      {
-        id: "govt-rp-03",
-        title: "Financial statement — audited",
-        detail: "FY 2025 · approved",
-        status: "Filed",
-      },
-    ],
-    threads: [
-      {
-        id: "govt-th-01",
-        title: "Re: accreditation evidence — awaiting 2 documents",
-        fromLabel: "CEA compliance office",
-        timeLabel: "Jul 30 · 14:02",
-        status: "Open",
-      },
-      {
-        id: "govt-th-02",
-        title: "Q2 census filing confirmation",
-        fromLabel: "Federal Ministry of Education",
-        timeLabel: "Jul 14 · 09:30",
-        status: "Closed",
-      },
-      {
-        id: "govt-th-03",
-        title: "Facilities audit scheduling",
-        fromLabel: "CEA compliance office",
-        timeLabel: "Jul 08 · 11:12",
-        status: "Closed",
-      },
-    ],
-    checks: [
-      {
-        id: "govt-ck-01",
-        title: "Enrolment vs census",
-        detail: "Matches filed Q2 census",
-        status: "Pass",
-      },
-      {
-        id: "govt-ck-02",
-        title: "Financials vs audited",
-        detail: "Matches audited FY25 statement",
-        status: "Pass",
-      },
-      {
-        id: "govt-ck-03",
-        title: "Facilities register",
-        detail: "1 of 18 pending re-certification",
-        status: "Flagged",
-      },
-    ],
-    audits: [
-      {
-        id: "govt-ad-01",
-        title: "Institutional audit — FY 2025",
-        detail: "Completed Mar 12 · 92/100",
-        status: "Closed",
-      },
-      {
-        id: "govt-ad-02",
-        title: "Facilities compliance check",
-        detail: "Scheduled Sep 18",
-        status: "Planned",
-      },
-      {
-        id: "govt-ad-03",
-        title: "Financial record inspection",
-        detail: "Finding #2 · remediation due Aug 30",
-        status: "Open",
-      },
-    ],
-    filings: [
-      {
-        id: "govt-fl-01",
-        title: "Q2 enrolment census",
-        detail: "Filed Jul 14 · ref FED-2026-0142",
-        status: "Filed",
-      },
-      {
-        id: "govt-fl-02",
-        title: "Tuition fee schedule",
-        detail: "Due Aug 30 · drafted",
-        status: "Draft",
-      },
-      {
-        id: "govt-fl-03",
-        title: "Annual returns 2025",
-        detail: "Filed Apr 02 · ref FED-2026-0089",
-        status: "Filed",
-      },
-    ],
-    courses: [
-      {
-        id: "govt-cr-01",
-        title: "Data protection (NDPR)",
-        detail: "88 staff certified",
-        status: "Current",
-      },
-      {
-        id: "govt-cr-02",
-        title: "Child safeguarding",
-        detail: "214 staff certified",
-        status: "Current",
-      },
-      {
-        id: "govt-cr-03",
-        title: "Academic integrity",
-        detail: "46 certified · 12 pending",
-        status: "Renewing",
-      },
-    ],
+    reports: [],
+    threads: [],
+    checks: [],
+    audits: [],
+    filings: [],
+    courses: [],
   };
   registerMockPattern("GET", "/v1/government-dashboard/*", async (init: ApiRequestInit) => {
     await delay();

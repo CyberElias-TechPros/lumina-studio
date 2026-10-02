@@ -65,7 +65,7 @@ function DepartmentQuality() {
           {
             label: "Standards met",
             value: "100%",
-            delta: "NUC + internal",
+            delta: "internal rubric",
             icon: ShieldCheck,
             tone: "bg-success/10 text-success",
           },

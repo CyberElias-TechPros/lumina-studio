@@ -51,7 +51,7 @@ function GovernmentCalendar() {
     <AppShell
       roleKey="government"
       title="Compliance calendar"
-      subtitle="22 events this year · 3 upcoming · auto-reminders on"
+      subtitle="CAC and NRS deadlines will appear here once they are tracked"
       actions={
         <>
           <Badge className="bg-success/10 text-success border-0 font-semibold">Synced</Badge>
