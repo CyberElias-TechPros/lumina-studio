@@ -22,6 +22,7 @@ interface MockEnrollment {
   paymentPlan: string;
   paymentMethod: string;
   paymentStatus: "unpaid" | "deposit_paid" | "paid" | "failed";
+  proof?: { status: "pending_review"; amount: number; expectedAmount: number; submittedAt: string };
   paidAmount: number;
   paidAt: string | null;
   paymentRef: string | null;
@@ -195,6 +196,15 @@ function publicStatus(e: MockEnrollment) {
       amountDue: Math.max(0, feeDue(e) - e.paidAmount),
       paidAt: e.paidAt,
       reference: e.paymentRef,
+      review: e.proof
+        ? {
+            status: e.proof.status,
+            amount: e.proof.amount,
+            expectedAmount: e.proof.expectedAmount,
+            submittedAt: e.proof.submittedAt,
+            reviewedAt: null,
+          }
+        : null,
     },
     events: e.events,
     stages: stages.map((s, i) => ({ ...s, done: i < idx, active: i === idx })),
@@ -207,8 +217,8 @@ function publicStatus(e: MockEnrollment) {
     contact: {
       phone: "+2349058628386",
       whatsapp: "https://wa.me/2349058628386",
-      email: "hello@cea.ng",
-      address: "26 Ebony Road, Off Rumuola Road, Port Harcourt",
+      email: "help@cea.ng",
+      address: "24/26 Ebony Road, Off Rumuola Road, Port Harcourt",
       hours: "Mon–Sat, 8:00–20:00 WAT",
     },
     createdAt: e.createdAt,
@@ -326,9 +336,50 @@ export function registerEnrollmentMocks(): void {
 
   registerMockPattern("POST", "/v1/enrollments/*", async (init: ApiRequestInit) => {
     const path = (init.path ?? "").split("/").filter(Boolean);
-    const ref = (path[path.length - 2] ?? "").toUpperCase();
-    if (path[path.length - 1] === "webhook") return { ok: true };
-    if (path[path.length - 1] !== "payments") throw new ApiError(404, "NOT_FOUND", "Not found. ");
+    const last = path[path.length - 1] ?? "";
+    const ref = (
+      last === "transfer" ? (path[path.length - 3] ?? "") : (path[path.length - 2] ?? "")
+    ).toUpperCase();
+    if (last === "webhook") return { ok: true };
+    if (last === "transfer") {
+      await delay(250);
+      const enrollment = store.get(ref);
+      if (!enrollment)
+        throw new ApiError(404, "NOT_FOUND", "No enrollment found with that reference. ");
+      if (enrollment.paymentStatus === "paid") {
+        throw new ApiError(409, "ALREADY_PAID", "This enrollment is already fully paid.");
+      }
+      const body = (init.body ?? {}) as {
+        kind?: "deposit" | "full";
+        amount?: number;
+        senderName?: string;
+      };
+      if (!body.senderName || !body.amount || body.amount <= 0) {
+        throw new ApiError(400, "FIELD_VALIDATION", "senderName and amount are required.");
+      }
+      const kind = body.kind === "deposit" ? "deposit" : "full";
+      const expected = kind === "deposit" ? enrollment.depositAmount : feeDue(enrollment);
+      enrollment.proof = {
+        status: "pending_review",
+        amount: body.amount,
+        expectedAmount: expected,
+        submittedAt: new Date().toISOString(),
+      };
+      enrollment.events.push({
+        event: "transfer_proof_received",
+        detail: `${kind} transfer of ${body.amount} NGN reported (expected ${expected})`,
+        at: new Date().toISOString(),
+      });
+      return {
+        ok: true,
+        status: "pending_review",
+        amount: body.amount,
+        expectedAmount: expected,
+        message:
+          "Thank you — we've received your transfer report. Finance will confirm it during working hours and send your receipt.",
+      };
+    }
+    if (last !== "payments") throw new ApiError(404, "NOT_FOUND", "Not found. ");
     await delay(250);
     const enrollment = store.get(ref);
     if (!enrollment)

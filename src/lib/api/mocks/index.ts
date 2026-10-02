@@ -16,6 +16,7 @@ import { registerLiveMocks } from "@/lib/api/mocks/live";
 import { registerUploadsMocks } from "@/lib/api/mocks/uploads";
 import { registerAiMocks } from "@/lib/api/mocks/ai";
 import { registerEnrollmentMocks } from "@/lib/api/mocks/enrollments";
+import { registerOperationsMocks } from "@/lib/api/mocks/operations";
 import { registerAccountMocks } from "@/lib/api/mocks/account";
 import { registerPortalMocks } from "@/lib/api/mocks/portal";
 import {
@@ -253,6 +254,7 @@ export function registerAllMocks(): void {
   registerUploadsMocks();
   registerAiMocks();
   registerEnrollmentMocks();
+  registerOperationsMocks();
   registerAccountMocks();
   registerPortalMocks();
 
@@ -542,6 +544,51 @@ export function registerAllMocks(): void {
       throw new ApiError(400, "VALIDATION_ERROR", "name, email and message are required.");
     }
     return { ok: true };
+  });
+
+  /* Public site assistant — offline stand-in for the NVIDIA-backed endpoint.
+     Mirrors the shape of routes/assistant.ts and answers from the same facts,
+     so the widget is testable without an API key. Always mock: true. */
+  registerMock("GET", "/v1/assistant/intro", async () => {
+    await delay();
+    return {
+      enabled: true,
+      greeting:
+        "Hi 👋 I'm the CEA assistant. Ask me about any course, fee, schedule or how to enrol — I'll answer straight away.",
+      suggestions: [
+        "How much is the web development course?",
+        "Which course should I start with if I'm a beginner?",
+        "Do you have evening or weekend classes?",
+        "How do I pay, and is there an instalment plan?",
+        "Where are you located?",
+      ],
+      whatsapp: "2349058628386",
+      helpEmail: "help@cea.ng",
+    };
+  });
+  registerMock("POST", "/v1/assistant/chat", async (init: ApiRequestInit) => {
+    await delay();
+    const body = (init.body ?? {}) as { messages?: { role: string; content: string }[] };
+    const last = [...(body.messages ?? [])].reverse().find((m) => m.role === "user");
+    const q = (last?.content ?? "").toLowerCase();
+    const answer = (() => {
+      if (/web dev|website|frontend|full.?stack/.test(q))
+        return "Web Development is ₦60,000 and runs for 6 weeks (2 sessions a week, beginner level). You finish by planning, building, testing and deploying a small website or app, presented to the class. If you have never coded before, start with Web Design (₦50,000, 4 weeks) and then continue — would you like the outline for that?";
+      if (/price|fee|cost|how much/.test(q))
+        return "Short courses cost ₦20,000–₦60,000 depending on the course (2–6 weeks, 2 sessions a week): Typing & Computer Basics and Data Entry are ₦20,000, most skills courses are ₦30,000–₦50,000, and Web Development or Mobile App Development are ₦60,000. Diploma programmes (3–6 months, 3 days a week) run ₦150,000–₦320,000 with a 30% deposit plan. Which course are you considering?";
+      if (/beginner|start|new to|never used/.test(q))
+        return "If you're starting from zero, begin with Typing & Computer Basics (₦20,000, 2 weeks) — it gets you confident with a computer, files and email. Then Microsoft Office (₦30,000) and a skills course in the direction you want. Tell me what you'd like to be able to do, and I'll point you to the exact course.";
+      if (/pay|payment|instal|deposit|transfer/.test(q))
+        return "You can pay on the site at cea.ng/apply by card, transfer or USSD, or by direct bank transfer to Cyber Elias Academy Ltd · UBA · 1028649972 (send us the receipt on WhatsApp and we confirm the same day). Short courses: pay in full or 50/50. Diplomas: 30% deposit then monthly, or pay in full for 10% off. There is no application fee.";
+      if (/where|location|address|port harcourt|directions/.test(q))
+        return "We're at 24/26 Ebony Road, off Rumuola Road, Port Harcourt, Rivers State — open Monday to Saturday, 8am–8pm. Some courses can also be followed online. Would you like to book a visit?";
+      if (/evening|weekend|night|time|schedule/.test(q))
+        return "Yes — classes run in morning, afternoon and evening blocks, and we offer Mon/Wed/Fri or Tue/Thu/Sat groups. Short courses have rolling intake and start within about two weeks, so you can pick the slot that suits you. Which days work best for you?";
+      if (/cert|verify|employer/.test(q))
+        return "On completion you get an academy certificate with a code any employer can verify at cea.ng/certificates/verify. It's issued by the academy — not a university degree or a government licence — and it's based on the project you build, not just attendance.";
+      return "That one is worth a proper answer from the team rather than a guess from me. Message us on WhatsApp at 0905 862 8386 (Mon–Sat, 8am–8pm) or email help@cea.ng — and you can see every course, fee and start date at cea.ng/programs.";
+    })();
+    return { answer, mock: true, remaining: 499 };
   });
 
   /* Auth */
@@ -3298,203 +3345,86 @@ export function registerAllMocks(): void {
     return { items, total: items.length };
   });
 
-  /* Government suite — mirrors backend seeds (migrations/0020_government.sql) */
+  /* Government suite — mirrors backend seeds (seeds/government-data.sql).
+   *
+   * Honest-content rule (2 Oct 2026): verifiable company facts and neutral
+   * regulatory watch-items only. No invented filings, audits, reports, threads,
+   * certifications or accreditation claims — see docs/free-automation-plan-2026-10.md §11. */
   const govtCollections: Record<string, Record<string, unknown>[]> = {
     overview: [
-      { id: "govt-ov-01", metric: "Compliance score", valueLabel: "92", delta: "of 100" },
-      { id: "govt-ov-02", metric: "Open findings", valueLabel: "1", delta: "low priority" },
-      { id: "govt-ov-03", metric: "Filings (year)", valueLabel: "14", delta: "0 overdue" },
-      { id: "govt-ov-04", metric: "Next review", valueLabel: "2027", delta: "Feb · on track" },
-    ],
-    calendar: [
       {
-        id: "govt-cl-01",
-        title: "Audit inspection",
-        dateLabel: "Sep 18 · on-site",
-        status: "Scheduled",
+        id: "govt-ov-01",
+        metric: "CAC registration",
+        valueLabel: "RC 8413776",
+        delta: "Cyber Elias Academy Ltd",
       },
       {
-        id: "govt-cl-02",
-        title: "Tuition fee schedule filing",
-        dateLabel: "Aug 30 · online",
-        status: "Upcoming",
+        id: "govt-ov-02",
+        metric: "Tax identification",
+        valueLabel: "1086525399",
+        delta: "TIN · NRS (formerly FIRS)",
       },
+      { id: "govt-ov-03", metric: "Branches", valueLabel: "1", delta: "Port Harcourt" },
       {
-        id: "govt-cl-03",
-        title: "Q3 enrolment census",
-        dateLabel: "Oct 15 · online",
-        status: "Upcoming",
+        id: "govt-ov-04",
+        metric: "Filings tracked here",
+        valueLabel: "0",
+        delta: "add real deadlines — see plan §11",
       },
     ],
+    calendar: [],
     changes: [
       {
         id: "govt-ch-01",
-        title: "NDPR enforcement guidelines v2",
-        detail: "Effective Aug 01 · CEA compliant",
-        status: "Compliant",
+        title: "Nigeria Data Protection Act 2023",
+        detail: "NDPC enforcement · applies to student records",
+        status: "Track",
       },
       {
         id: "govt-ch-02",
-        title: "Tuition fee disclosure rules",
-        detail: "Effective Jul 01 · CEA compliant",
-        status: "Compliant",
+        title: "Companies and Allied Matters Act 2020",
+        detail: "Annual return within 42 days of AGM",
+        status: "Track",
       },
       {
         id: "govt-ch-03",
-        title: "Student data retention policy",
-        detail: "Effective Oct 01 · CEA reviewing",
-        status: "In review",
+        title: "Company income tax / VAT",
+        detail: "NRS (formerly FIRS) filing calendar",
+        status: "Track",
       },
     ],
     documents: [
       {
         id: "govt-dc-01",
-        title: "Academic policy handbook",
-        versionLabel: "v4.2 · Jul 2026",
-        status: "Current",
+        title: "Privacy policy",
+        versionLabel: "Published · cea.ng/privacy",
+        status: "Published",
       },
       {
         id: "govt-dc-02",
-        title: "Tuition & fees policy",
-        versionLabel: "v2.1 · Jan 2026",
-        status: "Current",
+        title: "Terms of service",
+        versionLabel: "Published · cea.ng/terms",
+        status: "Published",
       },
       {
         id: "govt-dc-03",
-        title: "Student conduct code",
-        versionLabel: "v3.0 · Sep 2025",
-        status: "Reviewing",
+        title: "Refund & transfer policy",
+        versionLabel: "Published · cea.ng/refunds",
+        status: "Published",
       },
     ],
     facts: [
-      { id: "govt-ft-01", label: "Registration", value: "RC 1423784 · CAC" },
-      { id: "govt-ft-02", label: "Licence", value: "MBBS/PC/2024/0142 · NUC" },
-      { id: "govt-ft-03", label: "Branches", value: "3 · Lagos, Abuja, Port Harcourt" },
-      { id: "govt-ft-04", label: "Academic board", value: "Constituted · 11 members" },
+      { id: "govt-ft-01", label: "Legal name", value: "Cyber Elias Academy Ltd" },
+      { id: "govt-ft-02", label: "Registration", value: "RC 8413776 · CAC" },
+      { id: "govt-ft-03", label: "TIN", value: "1086525399" },
+      { id: "govt-ft-04", label: "Branches", value: "1 · Port Harcourt" },
     ],
-    reports: [
-      {
-        id: "govt-rp-01",
-        title: "Annual compliance report — 2025/26",
-        detail: "Fiscal year close · filed",
-        status: "Filed",
-      },
-      {
-        id: "govt-rp-02",
-        title: "Student enrolment census — Q2",
-        detail: "Due Aug 15 · ready",
-        status: "Ready",
-      },
-      {
-        id: "govt-rp-03",
-        title: "Financial statement — audited",
-        detail: "FY 2025 · approved",
-        status: "Filed",
-      },
-    ],
-    threads: [
-      {
-        id: "govt-th-01",
-        title: "Re: accreditation evidence — awaiting 2 documents",
-        fromLabel: "CEA compliance office",
-        timeLabel: "Jul 30 · 14:02",
-        status: "Open",
-      },
-      {
-        id: "govt-th-02",
-        title: "Q2 census filing confirmation",
-        fromLabel: "Federal Ministry of Education",
-        timeLabel: "Jul 14 · 09:30",
-        status: "Closed",
-      },
-      {
-        id: "govt-th-03",
-        title: "Facilities audit scheduling",
-        fromLabel: "CEA compliance office",
-        timeLabel: "Jul 08 · 11:12",
-        status: "Closed",
-      },
-    ],
-    checks: [
-      {
-        id: "govt-ck-01",
-        title: "Enrolment vs census",
-        detail: "Matches filed Q2 census",
-        status: "Pass",
-      },
-      {
-        id: "govt-ck-02",
-        title: "Financials vs audited",
-        detail: "Matches audited FY25 statement",
-        status: "Pass",
-      },
-      {
-        id: "govt-ck-03",
-        title: "Facilities register",
-        detail: "1 of 18 pending re-certification",
-        status: "Flagged",
-      },
-    ],
-    audits: [
-      {
-        id: "govt-ad-01",
-        title: "Institutional audit — FY 2025",
-        detail: "Completed Mar 12 · 92/100",
-        status: "Closed",
-      },
-      {
-        id: "govt-ad-02",
-        title: "Facilities compliance check",
-        detail: "Scheduled Sep 18",
-        status: "Planned",
-      },
-      {
-        id: "govt-ad-03",
-        title: "Financial record inspection",
-        detail: "Finding #2 · remediation due Aug 30",
-        status: "Open",
-      },
-    ],
-    filings: [
-      {
-        id: "govt-fl-01",
-        title: "Q2 enrolment census",
-        detail: "Filed Jul 14 · ref FED-2026-0142",
-        status: "Filed",
-      },
-      {
-        id: "govt-fl-02",
-        title: "Tuition fee schedule",
-        detail: "Due Aug 30 · drafted",
-        status: "Draft",
-      },
-      {
-        id: "govt-fl-03",
-        title: "Annual returns 2025",
-        detail: "Filed Apr 02 · ref FED-2026-0089",
-        status: "Filed",
-      },
-    ],
-    courses: [
-      {
-        id: "govt-cr-01",
-        title: "Data protection (NDPR)",
-        detail: "88 staff certified",
-        status: "Current",
-      },
-      {
-        id: "govt-cr-02",
-        title: "Child safeguarding",
-        detail: "214 staff certified",
-        status: "Current",
-      },
-      {
-        id: "govt-cr-03",
-        title: "Academic integrity",
-        detail: "46 certified · 12 pending",
-        status: "Renewing",
-      },
-    ],
+    reports: [],
+    threads: [],
+    checks: [],
+    audits: [],
+    filings: [],
+    courses: [],
   };
   registerMockPattern("GET", "/v1/government-dashboard/*", async (init: ApiRequestInit) => {
     await delay();

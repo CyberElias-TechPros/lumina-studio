@@ -235,6 +235,161 @@ describe("POST /v1/enrollments/:ref/payments", () => {
   });
 });
 
+describe("POST /v1/enrollments/:ref/payments/transfer (bank-transfer proof)", () => {
+  async function makeRef(plan = "deposit-monthly"): Promise<string> {
+    const res = await postEnrollment({
+      ...LONG,
+      plan,
+      paymentPlan: plan,
+      email: `transfer.${Date.now()}.${Math.random().toString(36).slice(2, 6)}@example.com`,
+    });
+    const body = (await res.json()) as { enrollment: { ref: string } };
+    return body.enrollment.ref;
+  }
+
+  const proof = {
+    kind: "deposit",
+    amount: 96000,
+    senderName: "Ada Obi",
+    bankName: "UBA",
+    bankReference: "TRF/2026/0001",
+    paidOn: "2026-10-01",
+    note: "Sent from my UBA app",
+  };
+
+  it("accepts a proof without auth and parks it in pending_review", async () => {
+    const ref = await makeRef();
+    const res = await api(`/v1/enrollments/${ref}/payments/transfer`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", ...fakeIp() },
+      body: JSON.stringify(proof),
+    });
+    expect(res.status).toBe(201);
+    const body = (await res.json()) as { status: string; amount: number; expectedAmount: number };
+    expect(body.status).toBe("pending_review");
+    expect(body.amount).toBe(96000);
+    expect(body.expectedAmount).toBe(96000);
+
+    // Public status exposes the review state without claiming payment.
+    const status = await api(`/v1/enrollments/${ref}`);
+    const statusBody = (await status.json()) as {
+      payment: { status: string; paidAmount: number; review: { status: string } | null };
+    };
+    expect(statusBody.payment.status).toBe("unpaid");
+    expect(statusBody.payment.paidAmount).toBe(0);
+    expect(statusBody.payment.review?.status).toBe("pending_review");
+  });
+
+  it("never marks the enrollment paid by itself", async () => {
+    const ref = await makeRef();
+    await api(`/v1/enrollments/${ref}/payments/transfer`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", ...fakeIp() },
+      body: JSON.stringify(proof),
+    });
+    const status = await api(`/v1/enrollments/${ref}`);
+    const statusBody = (await status.json()) as { payment: { status: string } };
+    expect(statusBody.payment.status).not.toBe("paid");
+    expect(statusBody.payment.status).not.toBe("deposit_paid");
+    expect(statusBody.payment.status).toBe("unpaid");
+  });
+
+  it("404s for an unknown reference", async () => {
+    const res = await api("/v1/enrollments/CEA-1999-ZZZZZZ/payments/transfer", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", ...fakeIp() },
+      body: JSON.stringify(proof),
+    });
+    expect(res.status).toBe(404);
+  });
+
+  it("rejects an invalid amount", async () => {
+    const ref = await makeRef();
+    const res = await api(`/v1/enrollments/${ref}/payments/transfer`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", ...fakeIp() },
+      body: JSON.stringify({ ...proof, amount: -5 }),
+    });
+    expect(res.status).toBe(400);
+  });
+
+  it("queues the proof for finance and confirms it through markPayment", async () => {
+    const ref = await makeRef();
+    await api(`/v1/enrollments/${ref}/payments/transfer`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", ...fakeIp() },
+      body: JSON.stringify(proof),
+    });
+
+    // Finance sees the queue.
+    const queue = await api("/v1/enrollments/payment-proofs?status=pending_review", {
+      headers: cookieHeaders(admin.cookie),
+    });
+    expect(queue.status).toBe(200);
+    const queueBody = (await queue.json()) as {
+      items: { id: string; ref: string; amount: number; senderName: string }[];
+    };
+    const item = queueBody.items.find((i) => i.ref === ref);
+    expect(item).toBeTruthy();
+    expect(item!.amount).toBe(96000);
+
+    // Confirming marks the deposit paid and issues the reference.
+    const confirm = await api(`/v1/enrollments/payment-proofs/${item!.id}/confirm`, {
+      method: "POST",
+      headers: cookieHeaders(admin.cookie),
+    });
+    expect(confirm.status).toBe(200);
+    const confirmBody = (await confirm.json()) as { status: string; reference: string };
+    expect(confirmBody.status).toBe("confirmed");
+    expect(confirmBody.reference).toMatch(/^cea_bt_/);
+
+    const status = await api(`/v1/enrollments/${ref}`);
+    const statusBody = (await status.json()) as {
+      payment: { status: string; paidAmount: number };
+    };
+    expect(statusBody.payment.status).toBe("deposit_paid");
+    expect(statusBody.payment.paidAmount).toBe(96000);
+
+    // A second decision is refused — the proof is already reviewed.
+    const again = await api(`/v1/enrollments/payment-proofs/${item!.id}/confirm`, {
+      method: "POST",
+      headers: cookieHeaders(admin.cookie),
+    });
+    expect(again.status).toBe(409);
+  });
+
+  it("rejecting restores an unpaid state", async () => {
+    const ref = await makeRef();
+    await api(`/v1/enrollments/${ref}/payments/transfer`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", ...fakeIp() },
+      body: JSON.stringify(proof),
+    });
+    const queue = await api("/v1/enrollments/payment-proofs?status=pending_review", {
+      headers: cookieHeaders(admin.cookie),
+    });
+    const queueBody = (await queue.json()) as { items: { id: string; ref: string }[] };
+    const item = queueBody.items.find((i) => i.ref === ref)!;
+    const reject = await api(`/v1/enrollments/payment-proofs/${item.id}/reject`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", ...cookieHeaders(admin.cookie) },
+      body: JSON.stringify({ reason: "No matching credit on the statement." }),
+    });
+    expect(reject.status).toBe(200);
+    const status = await api(`/v1/enrollments/${ref}`);
+    const statusBody = (await status.json()) as {
+      payment: { status: string; review: { status: string } | null };
+    };
+    expect(statusBody.payment.status).toBe("unpaid");
+    expect(statusBody.payment.review?.status).toBe("rejected");
+  });
+
+  it("requires a finance/admin session for the review queue", async () => {
+    const res = await api("/v1/enrollments/payment-proofs");
+    expect(res.status).toBe(401);
+  });
+});
+
 describe("GET /v1/enrollments/:ref/payments/verify", () => {
   it("verifies a pending mock payment without a provider", async () => {
     const res = await postEnrollment({ ...LONG, email: `verify.${Date.now()}@example.com` });

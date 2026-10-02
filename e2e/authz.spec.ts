@@ -36,7 +36,7 @@ test.describe("Authorization negatives (401/403)", () => {
   });
 
   test("rejects students from staff-only endpoints with 403", async ({ page }) => {
-    await signInViaUi(page, "student@cea.ng", "cea-demo-pass-2026");
+    await signInViaUi(page, "student@cea.ng", "Cea-Demo-2026!");
     test.skip(
       !(await expectAuthenticated(page, "student")),
       "student session not available against prod worker",
@@ -64,7 +64,7 @@ test.describe("Authorization negatives (401/403)", () => {
     expect(create.status()).toBe(201);
     const { application } = (await create.json()) as { application: { ref: string } };
 
-    await signInViaUi(page, "student@cea.ng", "cea-demo-pass-2026");
+    await signInViaUi(page, "student@cea.ng", "Cea-Demo-2026!");
     test.skip(
       !(await expectAuthenticated(page, "student")),
       "student session not available against prod worker",
@@ -79,7 +79,7 @@ test.describe("Authorization negatives (401/403)", () => {
 
 test.describe("Data scoping + row-level ownership", () => {
   test("student can read own assignment and gets 404 on foreign", async ({ page }) => {
-    await signInViaUi(page, "student@cea.ng", "cea-demo-pass-2026");
+    await signInViaUi(page, "student@cea.ng", "Cea-Demo-2026!");
     test.skip(
       !(await expectAuthenticated(page, "student")),
       "student session not available against prod worker",
@@ -94,7 +94,7 @@ test.describe("Data scoping + row-level ownership", () => {
   test("employer can create and read back their own posting (ownership round-trip)", async ({
     page,
   }) => {
-    await signInViaUi(page, "employer@cea.ng", "cea-demo-pass-2026");
+    await signInViaUi(page, "employer@cea.ng", "Cea-Demo-2026!");
     test.skip(
       !(await expectAuthenticated(page, "employer")),
       "employer session not available against prod worker",

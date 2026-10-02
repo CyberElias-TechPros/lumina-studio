@@ -2,6 +2,7 @@ import { useEffect, type ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
 import { SiteHeader } from "./site-header";
 import { SiteFooter } from "./site-footer";
+import { ChatWidget } from "@/components/assistant/chat-widget";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -40,6 +41,9 @@ export function PageShell({ children }: { children: ReactNode }) {
         {children}
       </main>
       <SiteFooter />
+      {/* Public assistant: answers fee/schedule/enrolment questions on every
+          marketing page and hands over to WhatsApp when it doesn't know. */}
+      <ChatWidget />
     </div>
   );
 }
@@ -54,10 +58,7 @@ export function Eyebrow({
 }) {
   return (
     <span
-      className={cn(
-        "text-primary text-xs font-semibold tracking-[0.12em] uppercase",
-        className,
-      )}
+      className={cn("text-primary text-xs font-semibold tracking-[0.12em] uppercase", className)}
     >
       {children}
     </span>
@@ -117,11 +118,14 @@ export function SectionHeading({
 export function CornerMarks({ className }: { className?: string }) {
   return (
     <div aria-hidden="true" className={cn("pointer-events-none absolute inset-4", className)}>
-      {["left-0 top-0 border-l border-t", "right-0 top-0 border-r border-t", "left-0 bottom-0 border-l border-b", "right-0 bottom-0 border-r border-b"].map(
-        (pos) => (
-          <span key={pos} className={cn("border-border absolute size-2.5", pos)} />
-        ),
-      )}
+      {[
+        "left-0 top-0 border-l border-t",
+        "right-0 top-0 border-r border-t",
+        "left-0 bottom-0 border-l border-b",
+        "right-0 bottom-0 border-r border-b",
+      ].map((pos) => (
+        <span key={pos} className={cn("border-border absolute size-2.5", pos)} />
+      ))}
     </div>
   );
 }

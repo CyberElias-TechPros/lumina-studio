@@ -50,7 +50,7 @@ const SCHEDULE_LABELS: Record<string, string> = {
   afternoon: "Afternoon (14:00–16:00)",
   evening: "Evening (17:00–19:00)",
   any: "Flexible — where the timetable fits",
-  onsite: "Onsite at 26 Ebony Road",
+  onsite: "Onsite at 24/26 Ebony Road",
   online: "Online (live)",
   hybrid: "Hybrid (onsite + online)",
 };
@@ -206,7 +206,7 @@ export function InfoPanel({ meta, plan, timeSlot, mode, scheduleDays }: InfoPane
         <Section icon={MapPin} title="Visit or call">
           <div className="space-y-1.5 text-xs leading-relaxed">
             <p className="text-muted-foreground">
-              26 Ebony Road, Off Rumuola Road, Port Harcourt, Rivers State
+              24/26 Ebony Road, Off Rumuola Road, Port Harcourt, Rivers State
             </p>
             <p className="flex items-center gap-1.5 text-muted-foreground">
               <Phone className="size-3.5" /> +234 905 862 8386 · Mon–Sat 8:00–20:00 WAT

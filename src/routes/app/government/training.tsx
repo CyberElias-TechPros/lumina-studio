@@ -52,7 +52,7 @@ function GovernmentTraining() {
     <AppShell
       roleKey="government"
       title="Compliance training"
-      subtitle="6 mandatory courses · 92% coverage · auto-reminders"
+      subtitle="No staff certification records yet"
       actions={
         <>
           <Badge className="bg-success/10 text-success border-0 font-semibold">92% coverage</Badge>

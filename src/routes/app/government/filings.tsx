@@ -52,7 +52,7 @@ function GovernmentFilings() {
     <AppShell
       roleKey="government"
       title="Filings & timeline"
-      subtitle="14 filings this year · 0 overdue · 2 upcoming"
+      subtitle="No filings tracked yet — add the CAC and NRS due dates first"
       actions={
         <>
           <Badge className="bg-success/10 text-success border-0 font-semibold">0 overdue</Badge>

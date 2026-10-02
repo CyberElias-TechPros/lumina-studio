@@ -18,7 +18,7 @@ export const Route = createFileRoute("/visit/")({
     getPageHead({
       title: "Visit — Cyber Elias Academy",
       description:
-        "Visit Cyber Elias Academy at 26 Ebony Road, Port Harcourt. See the classroom, sit in on a session if one is running, or book a video call.",
+        "Visit Cyber Elias Academy at 24/26 Ebony Road, Port Harcourt. See the classroom, sit in on a session if one is running, or book a video call.",
       path: "/visit",
     }),
   component: VisitPage,
@@ -83,7 +83,7 @@ function VisitPage() {
       <PageHero
         eyebrow="Visit"
         title="See the centre before you enrol"
-        description="26 Ebony Road, off Rumuola Road, Port Harcourt. Opening hours Monday to Saturday, 8:00–20:00. Call ahead if you want to sit in on a class."
+        description="24/26 Ebony Road, off Rumuola Road, Port Harcourt. Opening hours Monday to Saturday, 8:00–20:00. Call ahead if you want to sit in on a class."
       />
 
       <section className="container-page grid gap-4 py-10 sm:grid-cols-2 lg:grid-cols-4 md:py-12">
@@ -121,8 +121,8 @@ function VisitPage() {
               <h2 className="font-display text-2xl font-semibold tracking-tight">How to find us</h2>
               <p className="text-muted-foreground mt-3 flex items-start gap-2 text-sm leading-relaxed">
                 <MapPin className="mt-0.5 size-4 shrink-0" />
-                26 Ebony Road, Off Rumuola Road, Port Harcourt. Keke, taxi or bus to Rumuola, then a
-                short walk. +234 905 862 8386.
+                24/26 Ebony Road, Off Rumuola Road, Port Harcourt. Keke, taxi or bus to Rumuola,
+                then a short walk. +234 905 862 8386.
               </p>
               <ul className="text-muted-foreground mt-6 space-y-2 text-sm leading-relaxed">
                 <li>Monday–Saturday, 8:00–20:00 WAT</li>

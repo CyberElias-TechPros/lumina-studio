@@ -1,9 +1,18 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowLeft, FileBarChart2, Landmark, ReceiptText, TrendingUp, Wallet } from "lucide-react";
+import {
+  ArrowLeft,
+  FileBarChart2,
+  FileSpreadsheet,
+  Landmark,
+  ReceiptText,
+  TrendingUp,
+  Wallet,
+} from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppShell } from "@/components/app/app-shell";
+import { PnlDownload } from "@/components/finance/expense-form";
 import { useInvoices, useExpenses, usePaymentBatches } from "@/lib/query/finance";
 import { usePayrollChanges } from "@/lib/query/hr";
 import { cn, formatNairaCompact } from "@/lib/utils";
@@ -130,6 +139,21 @@ function AccountantReports() {
           </Card>
         ))}
       </div>
+
+      <Card className="bg-card mt-5 shadow-soft border">
+        <CardHeader>
+          <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
+            <FileSpreadsheet className="text-primary size-4" /> Monthly P&amp;L (CSV)
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-3">
+          <p className="text-muted-foreground text-xs leading-relaxed">
+            Income collected, expenses recorded and the net for one month — the file you hand to the
+            accountant for the CAC annual return.
+          </p>
+          <PnlDownload />
+        </CardContent>
+      </Card>
 
       <Card className="bg-card mt-5 shadow-soft border">
         <CardHeader>

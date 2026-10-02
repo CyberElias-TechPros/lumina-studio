@@ -867,7 +867,7 @@ export const faqs = [
   },
   {
     q: "Where is the academy?",
-    a: "26 Ebony Road, off Rumuola Road, Port Harcourt, Rivers State. Some courses can also be followed online.",
+    a: "24/26 Ebony Road, off Rumuola Road, Port Harcourt, Rivers State. Some courses can also be followed online.",
   },
   {
     q: "How do I apply?",

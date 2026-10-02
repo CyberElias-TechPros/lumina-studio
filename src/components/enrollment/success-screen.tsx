@@ -11,6 +11,7 @@ import {
   MessageCircle,
   PartyPopper,
   Receipt,
+  Landmark,
   Wallet,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
@@ -21,6 +22,7 @@ import {
   verifyEnrollmentPayment,
   formatNaira,
 } from "@/lib/api/enrollments";
+import { BankTransferForm } from "./bank-transfer-form";
 import { ApiError } from "@/lib/errors";
 import { cn } from "@/lib/utils";
 import { feeFor, formatFee, type ProgramMeta } from "./meta";
@@ -51,7 +53,7 @@ function cohortIcsHref(title: string): string {
     "DTSTART:20261102T090000Z",
     "DTEND:20261102T110000Z",
     `SUMMARY:${title} — first class day (Cyber Elias Academy)`,
-    "LOCATION:26 Ebony Road\\, Off Rumuola Road\\, Port Harcourt",
+    "LOCATION:24/26 Ebony Road\\, Off Rumuola Road\\, Port Harcourt",
     "DESCRIPTION:Arrive 10 minutes early. Bring your laptop and a notebook.",
     "END:VEVENT",
     "END:VCALENDAR",
@@ -263,25 +265,7 @@ export function SuccessScreen({
                   </Button>
                 </div>
               ) : (
-                <div className="bg-muted mt-4 rounded-lg px-4 py-3 text-sm leading-relaxed">
-                  <p className="font-semibold">Here&rsquo;s what happens next:</p>
-                  <ol className="text-muted-foreground mt-2 list-decimal space-y-1 pl-4 text-xs">
-                    <li>
-                      We&rsquo;ll send the account details on WhatsApp within 24 working hours.
-                    </li>
-                    <li>
-                      You transfer{" "}
-                      {deposit !== null
-                        ? `your ${formatFee(deposit)} deposit`
-                        : `the ${formatFee(due)}`}
-                    </li>
-                    <li>We confirm the payment and your seat is held — receipt by email.</li>
-                  </ol>
-                  <p className="text-muted-foreground mt-2 text-xs">
-                    Add your note (ref <span className="font-mono font-semibold">{refCode}</span>)
-                    in the transfer description so we match it instantly.
-                  </p>
-                </div>
+                <BankTransferForm refCode={refCode} deposit={deposit} due={due} />
               )}
               <p className="text-muted-foreground mt-3 text-xs">
                 Prefer to pay later? No problem — your details are safe. Use{" "}

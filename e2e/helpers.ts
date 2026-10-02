@@ -1,6 +1,6 @@
 import { test as base, type Page, type APIRequestContext } from "@playwright/test";
 
-export const DEMO_PASSWORD = "cea-demo-pass-2026";
+export const DEMO_PASSWORD = "Cea-Demo-2026!";
 
 export const DEMO_USERS = {
   student: "student@cea.ng",

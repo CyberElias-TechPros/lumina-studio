@@ -18,6 +18,7 @@ import { PageShell, PageHero, CTASection } from "@/components/marketing/shell";
 import { Reveal, StaggerGroup, StaggerItem } from "@/components/motion";
 import { cn } from "@/lib/utils";
 import { useEnrollmentStatus } from "@/lib/query/enrollments";
+import { BankTransferForm } from "@/components/enrollment/bank-transfer-form";
 
 export const Route = createFileRoute("/apply/status/$id")({
   head: () => ({
@@ -77,9 +78,11 @@ function ApplyStatusDetailPage() {
       ? { label: "Paid in full", tone: "bg-success/10 text-success" }
       : payment.status === "deposit_paid"
         ? { label: "Deposit paid", tone: "bg-primary/10 text-primary" }
-        : payment.status === "failed"
-          ? { label: "Payment failed", tone: "bg-error/10 text-error" }
-          : { label: "Payment pending", tone: "bg-warning/10 text-warning" }
+        : payment.review?.status === "pending_review"
+          ? { label: "Transfer under review", tone: "bg-warning/10 text-warning" }
+          : payment.status === "failed"
+            ? { label: "Payment failed", tone: "bg-error/10 text-error" }
+            : { label: "Payment pending", tone: "bg-warning/10 text-warning" }
     : null;
 
   return (
@@ -148,32 +151,66 @@ function ApplyStatusDetailPage() {
                 </div>
               </Reveal>
 
-              {payment && payment.status !== "paid" && (
+              {payment?.review?.status === "pending_review" && (
                 <Reveal>
-                  <Card className="bg-card mt-6 border-primary/30">
-                    <CardContent className="flex flex-wrap items-center justify-between gap-4 p-5">
-                      <div>
-                        <p className="font-display text-sm font-bold">
-                          {payment.paidAmount > 0 ? "Balance due" : "Pay your deposit or full fee"}
-                        </p>
-                        <p className="text-muted-foreground mt-1 text-xs">
-                          {`₦${payment.amountDue.toLocaleString("en-NG")}`} remaining · quote{" "}
-                          {status.data?.ref} when you pay or write to us.
-                        </p>
-                      </div>
-                      <Button asChild size="sm">
-                        <a
-                          href={`https://wa.me/2349058628386?text=${encodeURIComponent(
-                            `Hello Cyber Elias Academy! I'd like to pay for my registration ${id}.`,
-                          )}`}
-                        >
-                          Pay / ask about payment
-                        </a>
-                      </Button>
+                  <Card className="bg-card border-warning/30 mt-6">
+                    <CardContent className="p-5">
+                      <p className="font-display text-sm font-bold">Transfer under review</p>
+                      <p className="text-muted-foreground mt-1 text-xs">
+                        We&rsquo;ve logged your bank transfer and finance is matching it against the
+                        bank statement — Mon–Sat, 8:00–20:00 WAT. Your receipt goes out by email as
+                        soon as it clears; nothing else is needed from you.
+                      </p>
                     </CardContent>
                   </Card>
                 </Reveal>
               )}
+
+              {payment &&
+                payment.status !== "paid" &&
+                payment.review?.status !== "pending_review" && (
+                  <Reveal>
+                    <Card className="bg-card mt-6 border-primary/30">
+                      <CardContent className="flex flex-wrap items-center justify-between gap-4 p-5">
+                        <div>
+                          <p className="font-display text-sm font-bold">
+                            {payment.paidAmount > 0
+                              ? "Balance due"
+                              : "Pay your deposit or full fee"}
+                          </p>
+                          <p className="text-muted-foreground mt-1 text-xs">
+                            {`₦${payment.amountDue.toLocaleString("en-NG")}`} remaining · quote{" "}
+                            {status.data?.ref} when you pay or write to us.
+                          </p>
+                        </div>
+                        <Button asChild size="sm">
+                          <a
+                            href={`https://wa.me/2349058628386?text=${encodeURIComponent(
+                              `Hello Cyber Elias Academy! I'd like to pay for my registration ${id}.`,
+                            )}`}
+                          >
+                            Pay / ask about payment
+                          </a>
+                        </Button>
+                      </CardContent>
+                      <CardContent className="border-t px-5 pt-4 pb-5">
+                        {/* Report a bank transfer from here too — students often
+                            come back to this page days after applying. */}
+                        <BankTransferForm
+                          refCode={status.data.ref}
+                          deposit={
+                            payment.plan === "50-50"
+                              ? Math.round((payment.amountDue + payment.paidAmount) / 2)
+                              : payment.plan === "deposit-monthly"
+                                ? Math.round((payment.amountDue + payment.paidAmount) * 0.3)
+                                : null
+                          }
+                          due={payment.amountDue + payment.paidAmount}
+                        />
+                      </CardContent>
+                    </Card>
+                  </Reveal>
+                )}
 
               <ol className="mt-8 space-y-0">
                 {status.data.stages.map((s, i) => {

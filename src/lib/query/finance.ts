@@ -10,6 +10,8 @@ import {
   updateExpenseStatus,
   updateInvoiceStatus,
   runPayroll,
+  recordExpense,
+  type RecordExpenseInput,
   type ExpenseStatus,
   type CreateInvoiceInput,
   type CreatePaymentBatchInput,
@@ -96,6 +98,16 @@ export function useUpdateExpenseStatus() {
   return useMutation({
     mutationFn: (input: { id: string; status: ExpenseStatus }) =>
       updateExpenseStatus(input.id, input.status),
+    onSuccess: () => {
+      void queryClient.invalidateQueries({ queryKey: financeKeys.expenses });
+    },
+  });
+}
+
+export function useRecordExpense() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (input: RecordExpenseInput) => recordExpense(input),
     onSuccess: () => {
       void queryClient.invalidateQueries({ queryKey: financeKeys.expenses });
     },

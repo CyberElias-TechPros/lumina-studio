@@ -52,7 +52,7 @@ function GovernmentIntegrity() {
     <AppShell
       roleKey="government"
       title="Data integrity verification"
-      subtitle="Automated cross-checks · nightly · hash-verified"
+      subtitle="Cross-checks run against records this system actually holds"
       actions={
         <>
           <Badge className="bg-success/10 text-success border-0 font-semibold">Passing</Badge>

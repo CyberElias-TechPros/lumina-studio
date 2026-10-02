@@ -23,6 +23,7 @@ import { Route as FaqRouteImport } from './routes/faq'
 import { Route as MarketplaceRouteImport } from './routes/marketplace'
 import { Route as MerchantRouteImport } from './routes/merchant'
 import { Route as PartnersRouteImport } from './routes/partners'
+import { Route as PayRouteImport } from './routes/pay'
 import { Route as PaymentRouteImport } from './routes/payment'
 import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as PrivacyRouteImport } from './routes/privacy'
@@ -39,10 +40,12 @@ import { Route as WorkRouteImport } from './routes/work'
 import { Route as AppIndexRouteImport } from './routes/app.index'
 import { Route as AppAccountRouteImport } from './routes/app/account'
 import { Route as AppAiRouteImport } from './routes/app/ai'
+import { Route as AppAssistantInsightsRouteImport } from './routes/app/assistant-insights'
 import { Route as AppAttendanceRouteImport } from './routes/app/attendance'
 import { Route as AppCalendarRouteImport } from './routes/app/calendar'
 import { Route as AppCertificatesRouteImport } from './routes/app/certificates'
 import { Route as AppChatRouteImport } from './routes/app/chat'
+import { Route as AppDeadlinesRouteImport } from './routes/app/deadlines'
 import { Route as AppFinanceRouteImport } from './routes/app/finance'
 import { Route as AppGradesRouteImport } from './routes/app/grades'
 import { Route as AppLibraryRouteImport } from './routes/app/library'
@@ -50,6 +53,7 @@ import { Route as AppMessagesRouteImport } from './routes/app/messages'
 import { Route as AppNotificationsRouteImport } from './routes/app/notifications'
 import { Route as AppPortfolioRouteImport } from './routes/app/portfolio'
 import { Route as AppReportsRouteImport } from './routes/app/reports'
+import { Route as AppSchoolsRouteImport } from './routes/app/schools'
 import { Route as ApplyIndexRouteImport } from './routes/apply/index'
 import { Route as ApplyPayRouteImport } from './routes/apply/pay'
 import { Route as ApplyStatusRouteImport } from './routes/apply/status'
@@ -115,6 +119,7 @@ import { Route as ProgramsIndexRouteImport } from './routes/programs.index'
 import { Route as ProgramsCompareRouteImport } from './routes/programs/compare'
 import { Route as ResourcesIndexRouteImport } from './routes/resources.index'
 import { Route as ResourcesSlugRouteImport } from './routes/resources.$slug'
+import { Route as SchoolsIndexRouteImport } from './routes/schools/index'
 import { Route as ShopIndexRouteImport } from './routes/shop.index'
 import { Route as VisitIndexRouteImport } from './routes/visit/index'
 import { Route as VisitBrochureRouteImport } from './routes/visit/brochure'
@@ -145,6 +150,7 @@ import { Route as AppAdminSecurityRouteImport } from './routes/app/admin/securit
 import { Route as AppAdminUsersRouteImport } from './routes/app/admin/users'
 import { Route as AppAdmissionsIndexRouteImport } from './routes/app/admissions/index'
 import { Route as AppAdmissionsApplicationsRouteImport } from './routes/app/admissions/applications'
+import { Route as AppAdmissionsCohortsRouteImport } from './routes/app/admissions/cohorts'
 import { Route as AppAdmissionsCommunicationRouteImport } from './routes/app/admissions/communication'
 import { Route as AppAdmissionsDocumentsRouteImport } from './routes/app/admissions/documents'
 import { Route as AppAdmissionsEnrollmentRouteImport } from './routes/app/admissions/enrollment'
@@ -382,12 +388,14 @@ import { Route as AppVolunteerHoursRouteImport } from './routes/app/volunteer/ho
 import { Route as AppVolunteerImpactRouteImport } from './routes/app/volunteer/impact'
 import { Route as AppVolunteerMyVolunteeringRouteImport } from './routes/app/volunteer/my-volunteering'
 import { Route as AppVolunteerOpportunitiesRouteImport } from './routes/app/volunteer/opportunities'
+import { Route as ApplyReceiptRefRouteImport } from './routes/apply/receipt.$ref'
 import { Route as ApplyStatusIndexRouteImport } from './routes/apply/status/index'
 import { Route as ApplyStatusIdRouteImport } from './routes/apply/status/$id'
 import { Route as ClassesCourseSlugIndexRouteImport } from './routes/classes.$courseSlug.index'
 import { Route as ClassesCourseSlugSessionSlugRouteImport } from './routes/classes.$courseSlug.$sessionSlug'
 import { Route as ProgramsSlugIndexRouteImport } from './routes/programs.$slug.index'
 import { Route as ProgramsSlugModuleRouteImport } from './routes/programs.$slug.$module'
+import { Route as SchoolsProposalRefRouteImport } from './routes/schools/proposal.$ref'
 import { Route as ShopSlugIndexRouteImport } from './routes/shop.$slug.index'
 import { Route as ShopSlugCheckoutRouteImport } from './routes/shop.$slug.checkout'
 import { Route as ShopSlugReturnRouteImport } from './routes/shop.$slug.return'
@@ -490,6 +498,11 @@ const PartnersRoute = PartnersRouteImport.update({
   path: '/partners',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PayRoute = PayRouteImport.update({
+  id: '/pay',
+  path: '/pay',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PaymentRoute = PaymentRouteImport.update({
   id: '/payment',
   path: '/payment',
@@ -570,6 +583,11 @@ const AppAiRoute = AppAiRouteImport.update({
   path: '/app/ai',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AppAssistantInsightsRoute = AppAssistantInsightsRouteImport.update({
+  id: '/app/assistant-insights',
+  path: '/app/assistant-insights',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AppAttendanceRoute = AppAttendanceRouteImport.update({
   id: '/app/attendance',
   path: '/app/attendance',
@@ -588,6 +606,11 @@ const AppCertificatesRoute = AppCertificatesRouteImport.update({
 const AppChatRoute = AppChatRouteImport.update({
   id: '/app/chat',
   path: '/app/chat',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppDeadlinesRoute = AppDeadlinesRouteImport.update({
+  id: '/app/deadlines',
+  path: '/app/deadlines',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AppFinanceRoute = AppFinanceRouteImport.update({
@@ -623,6 +646,11 @@ const AppPortfolioRoute = AppPortfolioRouteImport.update({
 const AppReportsRoute = AppReportsRouteImport.update({
   id: '/app/reports',
   path: '/app/reports',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppSchoolsRoute = AppSchoolsRouteImport.update({
+  id: '/app/schools',
+  path: '/app/schools',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApplyIndexRoute = ApplyIndexRouteImport.update({
@@ -951,6 +979,11 @@ const ResourcesSlugRoute = ResourcesSlugRouteImport.update({
   path: '/resources/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SchoolsIndexRoute = SchoolsIndexRouteImport.update({
+  id: '/schools/',
+  path: '/schools/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ShopIndexRoute = ShopIndexRouteImport.update({
   id: '/shop/',
   path: '/shop/',
@@ -1102,6 +1135,11 @@ const AppAdmissionsApplicationsRoute =
     path: '/app/admissions/applications',
     getParentRoute: () => rootRouteImport,
   } as any)
+const AppAdmissionsCohortsRoute = AppAdmissionsCohortsRouteImport.update({
+  id: '/app/admissions/cohorts',
+  path: '/app/admissions/cohorts',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AppAdmissionsCommunicationRoute =
   AppAdmissionsCommunicationRouteImport.update({
     id: '/app/admissions/communication',
@@ -2331,6 +2369,11 @@ const AppVolunteerOpportunitiesRoute =
     path: '/app/volunteer/opportunities',
     getParentRoute: () => rootRouteImport,
   } as any)
+const ApplyReceiptRefRoute = ApplyReceiptRefRouteImport.update({
+  id: '/apply/receipt/$ref',
+  path: '/apply/receipt/$ref',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApplyStatusIndexRoute = ApplyStatusIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -2360,6 +2403,11 @@ const ProgramsSlugIndexRoute = ProgramsSlugIndexRouteImport.update({
 const ProgramsSlugModuleRoute = ProgramsSlugModuleRouteImport.update({
   id: '/programs/$slug/$module',
   path: '/programs/$slug/$module',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SchoolsProposalRefRoute = SchoolsProposalRefRouteImport.update({
+  id: '/schools/proposal/$ref',
+  path: '/schools/proposal/$ref',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ShopSlugIndexRoute = ShopSlugIndexRouteImport.update({
@@ -2559,6 +2607,7 @@ export interface FileRoutesByFullPath {
   '/marketplace': typeof MarketplaceRoute
   '/merchant': typeof MerchantRoute
   '/partners': typeof PartnersRoute
+  '/pay': typeof PayRoute
   '/payment': typeof PaymentRoute
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
@@ -2574,10 +2623,12 @@ export interface FileRoutesByFullPath {
   '/work': typeof WorkRoute
   '/app/account': typeof AppAccountRoute
   '/app/ai': typeof AppAiRoute
+  '/app/assistant-insights': typeof AppAssistantInsightsRoute
   '/app/attendance': typeof AppAttendanceRoute
   '/app/calendar': typeof AppCalendarRoute
   '/app/certificates': typeof AppCertificatesRoute
   '/app/chat': typeof AppChatRoute
+  '/app/deadlines': typeof AppDeadlinesRoute
   '/app/finance': typeof AppFinanceRouteWithChildren
   '/app/grades': typeof AppGradesRoute
   '/app/library': typeof AppLibraryRoute
@@ -2585,6 +2636,7 @@ export interface FileRoutesByFullPath {
   '/app/notifications': typeof AppNotificationsRoute
   '/app/portfolio': typeof AppPortfolioRoute
   '/app/reports': typeof AppReportsRoute
+  '/app/schools': typeof AppSchoolsRoute
   '/apply/pay': typeof ApplyPayRoute
   '/apply/status': typeof ApplyStatusRouteWithChildren
   '/auth/forgot-password': typeof AuthForgotPasswordRoute
@@ -2654,6 +2706,7 @@ export interface FileRoutesByFullPath {
   '/portal/': typeof PortalIndexRoute
   '/programs/': typeof ProgramsIndexRoute
   '/resources/': typeof ResourcesIndexRoute
+  '/schools/': typeof SchoolsIndexRoute
   '/shop/': typeof ShopIndexRoute
   '/visit/': typeof VisitIndexRoute
   '/app/accountant/audit': typeof AppAccountantAuditRoute
@@ -2678,6 +2731,7 @@ export interface FileRoutesByFullPath {
   '/app/admin/security': typeof AppAdminSecurityRoute
   '/app/admin/users': typeof AppAdminUsersRoute
   '/app/admissions/applications': typeof AppAdmissionsApplicationsRouteWithChildren
+  '/app/admissions/cohorts': typeof AppAdmissionsCohortsRoute
   '/app/admissions/communication': typeof AppAdmissionsCommunicationRoute
   '/app/admissions/documents': typeof AppAdmissionsDocumentsRoute
   '/app/admissions/enrollment': typeof AppAdmissionsEnrollmentRoute
@@ -2885,9 +2939,11 @@ export interface FileRoutesByFullPath {
   '/app/volunteer/impact': typeof AppVolunteerImpactRoute
   '/app/volunteer/my-volunteering': typeof AppVolunteerMyVolunteeringRoute
   '/app/volunteer/opportunities': typeof AppVolunteerOpportunitiesRoute
+  '/apply/receipt/$ref': typeof ApplyReceiptRefRoute
   '/apply/status/$id': typeof ApplyStatusIdRoute
   '/classes/$courseSlug/$sessionSlug': typeof ClassesCourseSlugSessionSlugRoute
   '/programs/$slug/$module': typeof ProgramsSlugModuleRoute
+  '/schools/proposal/$ref': typeof SchoolsProposalRefRoute
   '/shop/$slug/checkout': typeof ShopSlugCheckoutRoute
   '/shop/$slug/return': typeof ShopSlugReturnRoute
   '/app/accountant/': typeof AppAccountantIndexRoute
@@ -2971,6 +3027,7 @@ export interface FileRoutesByTo {
   '/marketplace': typeof MarketplaceRoute
   '/merchant': typeof MerchantRoute
   '/partners': typeof PartnersRoute
+  '/pay': typeof PayRoute
   '/payment': typeof PaymentRoute
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
@@ -2986,10 +3043,12 @@ export interface FileRoutesByTo {
   '/work': typeof WorkRoute
   '/app/account': typeof AppAccountRoute
   '/app/ai': typeof AppAiRoute
+  '/app/assistant-insights': typeof AppAssistantInsightsRoute
   '/app/attendance': typeof AppAttendanceRoute
   '/app/calendar': typeof AppCalendarRoute
   '/app/certificates': typeof AppCertificatesRoute
   '/app/chat': typeof AppChatRoute
+  '/app/deadlines': typeof AppDeadlinesRoute
   '/app/finance': typeof AppFinanceRouteWithChildren
   '/app/grades': typeof AppGradesRoute
   '/app/library': typeof AppLibraryRoute
@@ -2997,6 +3056,7 @@ export interface FileRoutesByTo {
   '/app/notifications': typeof AppNotificationsRoute
   '/app/portfolio': typeof AppPortfolioRoute
   '/app/reports': typeof AppReportsRoute
+  '/app/schools': typeof AppSchoolsRoute
   '/apply/pay': typeof ApplyPayRoute
   '/auth/forgot-password': typeof AuthForgotPasswordRoute
   '/auth/magic-link': typeof AuthMagicLinkRoute
@@ -3065,6 +3125,7 @@ export interface FileRoutesByTo {
   '/portal': typeof PortalIndexRoute
   '/programs': typeof ProgramsIndexRoute
   '/resources': typeof ResourcesIndexRoute
+  '/schools': typeof SchoolsIndexRoute
   '/shop': typeof ShopIndexRoute
   '/visit': typeof VisitIndexRoute
   '/app/accountant/audit': typeof AppAccountantAuditRoute
@@ -3089,6 +3150,7 @@ export interface FileRoutesByTo {
   '/app/admin/security': typeof AppAdminSecurityRoute
   '/app/admin/users': typeof AppAdminUsersRoute
   '/app/admissions/applications': typeof AppAdmissionsApplicationsRouteWithChildren
+  '/app/admissions/cohorts': typeof AppAdmissionsCohortsRoute
   '/app/admissions/communication': typeof AppAdmissionsCommunicationRoute
   '/app/admissions/documents': typeof AppAdmissionsDocumentsRoute
   '/app/admissions/enrollment': typeof AppAdmissionsEnrollmentRoute
@@ -3296,9 +3358,11 @@ export interface FileRoutesByTo {
   '/app/volunteer/impact': typeof AppVolunteerImpactRoute
   '/app/volunteer/my-volunteering': typeof AppVolunteerMyVolunteeringRoute
   '/app/volunteer/opportunities': typeof AppVolunteerOpportunitiesRoute
+  '/apply/receipt/$ref': typeof ApplyReceiptRefRoute
   '/apply/status/$id': typeof ApplyStatusIdRoute
   '/classes/$courseSlug/$sessionSlug': typeof ClassesCourseSlugSessionSlugRoute
   '/programs/$slug/$module': typeof ProgramsSlugModuleRoute
+  '/schools/proposal/$ref': typeof SchoolsProposalRefRoute
   '/shop/$slug/checkout': typeof ShopSlugCheckoutRoute
   '/shop/$slug/return': typeof ShopSlugReturnRoute
   '/app/accountant': typeof AppAccountantIndexRoute
@@ -3383,6 +3447,7 @@ export interface FileRoutesById {
   '/marketplace': typeof MarketplaceRoute
   '/merchant': typeof MerchantRoute
   '/partners': typeof PartnersRoute
+  '/pay': typeof PayRoute
   '/payment': typeof PaymentRoute
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
@@ -3398,10 +3463,12 @@ export interface FileRoutesById {
   '/work': typeof WorkRoute
   '/app/account': typeof AppAccountRoute
   '/app/ai': typeof AppAiRoute
+  '/app/assistant-insights': typeof AppAssistantInsightsRoute
   '/app/attendance': typeof AppAttendanceRoute
   '/app/calendar': typeof AppCalendarRoute
   '/app/certificates': typeof AppCertificatesRoute
   '/app/chat': typeof AppChatRoute
+  '/app/deadlines': typeof AppDeadlinesRoute
   '/app/finance': typeof AppFinanceRouteWithChildren
   '/app/grades': typeof AppGradesRoute
   '/app/library': typeof AppLibraryRoute
@@ -3409,6 +3476,7 @@ export interface FileRoutesById {
   '/app/notifications': typeof AppNotificationsRoute
   '/app/portfolio': typeof AppPortfolioRoute
   '/app/reports': typeof AppReportsRoute
+  '/app/schools': typeof AppSchoolsRoute
   '/apply/pay': typeof ApplyPayRoute
   '/apply/status': typeof ApplyStatusRouteWithChildren
   '/auth/forgot-password': typeof AuthForgotPasswordRoute
@@ -3478,6 +3546,7 @@ export interface FileRoutesById {
   '/portal/': typeof PortalIndexRoute
   '/programs/': typeof ProgramsIndexRoute
   '/resources/': typeof ResourcesIndexRoute
+  '/schools/': typeof SchoolsIndexRoute
   '/shop/': typeof ShopIndexRoute
   '/visit/': typeof VisitIndexRoute
   '/app/accountant/audit': typeof AppAccountantAuditRoute
@@ -3502,6 +3571,7 @@ export interface FileRoutesById {
   '/app/admin/security': typeof AppAdminSecurityRoute
   '/app/admin/users': typeof AppAdminUsersRoute
   '/app/admissions/applications': typeof AppAdmissionsApplicationsRouteWithChildren
+  '/app/admissions/cohorts': typeof AppAdmissionsCohortsRoute
   '/app/admissions/communication': typeof AppAdmissionsCommunicationRoute
   '/app/admissions/documents': typeof AppAdmissionsDocumentsRoute
   '/app/admissions/enrollment': typeof AppAdmissionsEnrollmentRoute
@@ -3709,9 +3779,11 @@ export interface FileRoutesById {
   '/app/volunteer/impact': typeof AppVolunteerImpactRoute
   '/app/volunteer/my-volunteering': typeof AppVolunteerMyVolunteeringRoute
   '/app/volunteer/opportunities': typeof AppVolunteerOpportunitiesRoute
+  '/apply/receipt/$ref': typeof ApplyReceiptRefRoute
   '/apply/status/$id': typeof ApplyStatusIdRoute
   '/classes/$courseSlug/$sessionSlug': typeof ClassesCourseSlugSessionSlugRoute
   '/programs/$slug/$module': typeof ProgramsSlugModuleRoute
+  '/schools/proposal/$ref': typeof SchoolsProposalRefRoute
   '/shop/$slug/checkout': typeof ShopSlugCheckoutRoute
   '/shop/$slug/return': typeof ShopSlugReturnRoute
   '/app/accountant/': typeof AppAccountantIndexRoute
@@ -3797,6 +3869,7 @@ export interface FileRouteTypes {
     | '/marketplace'
     | '/merchant'
     | '/partners'
+    | '/pay'
     | '/payment'
     | '/pricing'
     | '/privacy'
@@ -3812,10 +3885,12 @@ export interface FileRouteTypes {
     | '/work'
     | '/app/account'
     | '/app/ai'
+    | '/app/assistant-insights'
     | '/app/attendance'
     | '/app/calendar'
     | '/app/certificates'
     | '/app/chat'
+    | '/app/deadlines'
     | '/app/finance'
     | '/app/grades'
     | '/app/library'
@@ -3823,6 +3898,7 @@ export interface FileRouteTypes {
     | '/app/notifications'
     | '/app/portfolio'
     | '/app/reports'
+    | '/app/schools'
     | '/apply/pay'
     | '/apply/status'
     | '/auth/forgot-password'
@@ -3892,6 +3968,7 @@ export interface FileRouteTypes {
     | '/portal/'
     | '/programs/'
     | '/resources/'
+    | '/schools/'
     | '/shop/'
     | '/visit/'
     | '/app/accountant/audit'
@@ -3916,6 +3993,7 @@ export interface FileRouteTypes {
     | '/app/admin/security'
     | '/app/admin/users'
     | '/app/admissions/applications'
+    | '/app/admissions/cohorts'
     | '/app/admissions/communication'
     | '/app/admissions/documents'
     | '/app/admissions/enrollment'
@@ -4123,9 +4201,11 @@ export interface FileRouteTypes {
     | '/app/volunteer/impact'
     | '/app/volunteer/my-volunteering'
     | '/app/volunteer/opportunities'
+    | '/apply/receipt/$ref'
     | '/apply/status/$id'
     | '/classes/$courseSlug/$sessionSlug'
     | '/programs/$slug/$module'
+    | '/schools/proposal/$ref'
     | '/shop/$slug/checkout'
     | '/shop/$slug/return'
     | '/app/accountant/'
@@ -4209,6 +4289,7 @@ export interface FileRouteTypes {
     | '/marketplace'
     | '/merchant'
     | '/partners'
+    | '/pay'
     | '/payment'
     | '/pricing'
     | '/privacy'
@@ -4224,10 +4305,12 @@ export interface FileRouteTypes {
     | '/work'
     | '/app/account'
     | '/app/ai'
+    | '/app/assistant-insights'
     | '/app/attendance'
     | '/app/calendar'
     | '/app/certificates'
     | '/app/chat'
+    | '/app/deadlines'
     | '/app/finance'
     | '/app/grades'
     | '/app/library'
@@ -4235,6 +4318,7 @@ export interface FileRouteTypes {
     | '/app/notifications'
     | '/app/portfolio'
     | '/app/reports'
+    | '/app/schools'
     | '/apply/pay'
     | '/auth/forgot-password'
     | '/auth/magic-link'
@@ -4303,6 +4387,7 @@ export interface FileRouteTypes {
     | '/portal'
     | '/programs'
     | '/resources'
+    | '/schools'
     | '/shop'
     | '/visit'
     | '/app/accountant/audit'
@@ -4327,6 +4412,7 @@ export interface FileRouteTypes {
     | '/app/admin/security'
     | '/app/admin/users'
     | '/app/admissions/applications'
+    | '/app/admissions/cohorts'
     | '/app/admissions/communication'
     | '/app/admissions/documents'
     | '/app/admissions/enrollment'
@@ -4534,9 +4620,11 @@ export interface FileRouteTypes {
     | '/app/volunteer/impact'
     | '/app/volunteer/my-volunteering'
     | '/app/volunteer/opportunities'
+    | '/apply/receipt/$ref'
     | '/apply/status/$id'
     | '/classes/$courseSlug/$sessionSlug'
     | '/programs/$slug/$module'
+    | '/schools/proposal/$ref'
     | '/shop/$slug/checkout'
     | '/shop/$slug/return'
     | '/app/accountant'
@@ -4620,6 +4708,7 @@ export interface FileRouteTypes {
     | '/marketplace'
     | '/merchant'
     | '/partners'
+    | '/pay'
     | '/payment'
     | '/pricing'
     | '/privacy'
@@ -4635,10 +4724,12 @@ export interface FileRouteTypes {
     | '/work'
     | '/app/account'
     | '/app/ai'
+    | '/app/assistant-insights'
     | '/app/attendance'
     | '/app/calendar'
     | '/app/certificates'
     | '/app/chat'
+    | '/app/deadlines'
     | '/app/finance'
     | '/app/grades'
     | '/app/library'
@@ -4646,6 +4737,7 @@ export interface FileRouteTypes {
     | '/app/notifications'
     | '/app/portfolio'
     | '/app/reports'
+    | '/app/schools'
     | '/apply/pay'
     | '/apply/status'
     | '/auth/forgot-password'
@@ -4715,6 +4807,7 @@ export interface FileRouteTypes {
     | '/portal/'
     | '/programs/'
     | '/resources/'
+    | '/schools/'
     | '/shop/'
     | '/visit/'
     | '/app/accountant/audit'
@@ -4739,6 +4832,7 @@ export interface FileRouteTypes {
     | '/app/admin/security'
     | '/app/admin/users'
     | '/app/admissions/applications'
+    | '/app/admissions/cohorts'
     | '/app/admissions/communication'
     | '/app/admissions/documents'
     | '/app/admissions/enrollment'
@@ -4946,9 +5040,11 @@ export interface FileRouteTypes {
     | '/app/volunteer/impact'
     | '/app/volunteer/my-volunteering'
     | '/app/volunteer/opportunities'
+    | '/apply/receipt/$ref'
     | '/apply/status/$id'
     | '/classes/$courseSlug/$sessionSlug'
     | '/programs/$slug/$module'
+    | '/schools/proposal/$ref'
     | '/shop/$slug/checkout'
     | '/shop/$slug/return'
     | '/app/accountant/'
@@ -5033,6 +5129,7 @@ export interface RootRouteChildren {
   MarketplaceRoute: typeof MarketplaceRoute
   MerchantRoute: typeof MerchantRoute
   PartnersRoute: typeof PartnersRoute
+  PayRoute: typeof PayRoute
   PaymentRoute: typeof PaymentRoute
   PricingRoute: typeof PricingRoute
   PrivacyRoute: typeof PrivacyRoute
@@ -5048,10 +5145,12 @@ export interface RootRouteChildren {
   WorkRoute: typeof WorkRoute
   AppAccountRoute: typeof AppAccountRoute
   AppAiRoute: typeof AppAiRoute
+  AppAssistantInsightsRoute: typeof AppAssistantInsightsRoute
   AppAttendanceRoute: typeof AppAttendanceRoute
   AppCalendarRoute: typeof AppCalendarRoute
   AppCertificatesRoute: typeof AppCertificatesRoute
   AppChatRoute: typeof AppChatRoute
+  AppDeadlinesRoute: typeof AppDeadlinesRoute
   AppFinanceRoute: typeof AppFinanceRouteWithChildren
   AppGradesRoute: typeof AppGradesRoute
   AppLibraryRoute: typeof AppLibraryRoute
@@ -5059,6 +5158,7 @@ export interface RootRouteChildren {
   AppNotificationsRoute: typeof AppNotificationsRoute
   AppPortfolioRoute: typeof AppPortfolioRoute
   AppReportsRoute: typeof AppReportsRoute
+  AppSchoolsRoute: typeof AppSchoolsRoute
   ApplyPayRoute: typeof ApplyPayRoute
   ApplyStatusRoute: typeof ApplyStatusRouteWithChildren
   AuthForgotPasswordRoute: typeof AuthForgotPasswordRoute
@@ -5128,6 +5228,7 @@ export interface RootRouteChildren {
   PortalIndexRoute: typeof PortalIndexRoute
   ProgramsIndexRoute: typeof ProgramsIndexRoute
   ResourcesIndexRoute: typeof ResourcesIndexRoute
+  SchoolsIndexRoute: typeof SchoolsIndexRoute
   ShopIndexRoute: typeof ShopIndexRoute
   VisitIndexRoute: typeof VisitIndexRoute
   AppAccountantAuditRoute: typeof AppAccountantAuditRoute
@@ -5152,6 +5253,7 @@ export interface RootRouteChildren {
   AppAdminSecurityRoute: typeof AppAdminSecurityRoute
   AppAdminUsersRoute: typeof AppAdminUsersRoute
   AppAdmissionsApplicationsRoute: typeof AppAdmissionsApplicationsRouteWithChildren
+  AppAdmissionsCohortsRoute: typeof AppAdmissionsCohortsRoute
   AppAdmissionsCommunicationRoute: typeof AppAdmissionsCommunicationRoute
   AppAdmissionsDocumentsRoute: typeof AppAdmissionsDocumentsRoute
   AppAdmissionsEnrollmentRoute: typeof AppAdmissionsEnrollmentRoute
@@ -5358,8 +5460,10 @@ export interface RootRouteChildren {
   AppVolunteerImpactRoute: typeof AppVolunteerImpactRoute
   AppVolunteerMyVolunteeringRoute: typeof AppVolunteerMyVolunteeringRoute
   AppVolunteerOpportunitiesRoute: typeof AppVolunteerOpportunitiesRoute
+  ApplyReceiptRefRoute: typeof ApplyReceiptRefRoute
   ClassesCourseSlugSessionSlugRoute: typeof ClassesCourseSlugSessionSlugRoute
   ProgramsSlugModuleRoute: typeof ProgramsSlugModuleRoute
+  SchoolsProposalRefRoute: typeof SchoolsProposalRefRoute
   ShopSlugCheckoutRoute: typeof ShopSlugCheckoutRoute
   ShopSlugReturnRoute: typeof ShopSlugReturnRoute
   AppAccountantIndexRoute: typeof AppAccountantIndexRoute
@@ -5523,6 +5627,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PartnersRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/pay': {
+      id: '/pay'
+      path: '/pay'
+      fullPath: '/pay'
+      preLoaderRoute: typeof PayRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/payment': {
       id: '/payment'
       path: '/payment'
@@ -5635,6 +5746,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppAiRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/app/assistant-insights': {
+      id: '/app/assistant-insights'
+      path: '/app/assistant-insights'
+      fullPath: '/app/assistant-insights'
+      preLoaderRoute: typeof AppAssistantInsightsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/app/attendance': {
       id: '/app/attendance'
       path: '/app/attendance'
@@ -5661,6 +5779,13 @@ declare module '@tanstack/react-router' {
       path: '/app/chat'
       fullPath: '/app/chat'
       preLoaderRoute: typeof AppChatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/deadlines': {
+      id: '/app/deadlines'
+      path: '/app/deadlines'
+      fullPath: '/app/deadlines'
+      preLoaderRoute: typeof AppDeadlinesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/app/finance': {
@@ -5710,6 +5835,13 @@ declare module '@tanstack/react-router' {
       path: '/app/reports'
       fullPath: '/app/reports'
       preLoaderRoute: typeof AppReportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/schools': {
+      id: '/app/schools'
+      path: '/app/schools'
+      fullPath: '/app/schools'
+      preLoaderRoute: typeof AppSchoolsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/apply/': {
@@ -6167,6 +6299,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ResourcesSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/schools/': {
+      id: '/schools/'
+      path: '/schools'
+      fullPath: '/schools/'
+      preLoaderRoute: typeof SchoolsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/shop/': {
       id: '/shop/'
       path: '/shop'
@@ -6375,6 +6514,13 @@ declare module '@tanstack/react-router' {
       path: '/app/admissions/applications'
       fullPath: '/app/admissions/applications'
       preLoaderRoute: typeof AppAdmissionsApplicationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/admissions/cohorts': {
+      id: '/app/admissions/cohorts'
+      path: '/app/admissions/cohorts'
+      fullPath: '/app/admissions/cohorts'
+      preLoaderRoute: typeof AppAdmissionsCohortsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/app/admissions/communication': {
@@ -8036,6 +8182,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppVolunteerOpportunitiesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/apply/receipt/$ref': {
+      id: '/apply/receipt/$ref'
+      path: '/apply/receipt/$ref'
+      fullPath: '/apply/receipt/$ref'
+      preLoaderRoute: typeof ApplyReceiptRefRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/apply/status/': {
       id: '/apply/status/'
       path: '/'
@@ -8076,6 +8229,13 @@ declare module '@tanstack/react-router' {
       path: '/programs/$slug/$module'
       fullPath: '/programs/$slug/$module'
       preLoaderRoute: typeof ProgramsSlugModuleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/schools/proposal/$ref': {
+      id: '/schools/proposal/$ref'
+      path: '/schools/proposal/$ref'
+      fullPath: '/schools/proposal/$ref'
+      preLoaderRoute: typeof SchoolsProposalRefRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/shop/$slug/': {
@@ -8402,6 +8562,7 @@ const rootRouteChildren: RootRouteChildren = {
   MarketplaceRoute: MarketplaceRoute,
   MerchantRoute: MerchantRoute,
   PartnersRoute: PartnersRoute,
+  PayRoute: PayRoute,
   PaymentRoute: PaymentRoute,
   PricingRoute: PricingRoute,
   PrivacyRoute: PrivacyRoute,
@@ -8417,10 +8578,12 @@ const rootRouteChildren: RootRouteChildren = {
   WorkRoute: WorkRoute,
   AppAccountRoute: AppAccountRoute,
   AppAiRoute: AppAiRoute,
+  AppAssistantInsightsRoute: AppAssistantInsightsRoute,
   AppAttendanceRoute: AppAttendanceRoute,
   AppCalendarRoute: AppCalendarRoute,
   AppCertificatesRoute: AppCertificatesRoute,
   AppChatRoute: AppChatRoute,
+  AppDeadlinesRoute: AppDeadlinesRoute,
   AppFinanceRoute: AppFinanceRouteWithChildren,
   AppGradesRoute: AppGradesRoute,
   AppLibraryRoute: AppLibraryRoute,
@@ -8428,6 +8591,7 @@ const rootRouteChildren: RootRouteChildren = {
   AppNotificationsRoute: AppNotificationsRoute,
   AppPortfolioRoute: AppPortfolioRoute,
   AppReportsRoute: AppReportsRoute,
+  AppSchoolsRoute: AppSchoolsRoute,
   ApplyPayRoute: ApplyPayRoute,
   ApplyStatusRoute: ApplyStatusRouteWithChildren,
   AuthForgotPasswordRoute: AuthForgotPasswordRoute,
@@ -8497,6 +8661,7 @@ const rootRouteChildren: RootRouteChildren = {
   PortalIndexRoute: PortalIndexRoute,
   ProgramsIndexRoute: ProgramsIndexRoute,
   ResourcesIndexRoute: ResourcesIndexRoute,
+  SchoolsIndexRoute: SchoolsIndexRoute,
   ShopIndexRoute: ShopIndexRoute,
   VisitIndexRoute: VisitIndexRoute,
   AppAccountantAuditRoute: AppAccountantAuditRoute,
@@ -8521,6 +8686,7 @@ const rootRouteChildren: RootRouteChildren = {
   AppAdminSecurityRoute: AppAdminSecurityRoute,
   AppAdminUsersRoute: AppAdminUsersRoute,
   AppAdmissionsApplicationsRoute: AppAdmissionsApplicationsRouteWithChildren,
+  AppAdmissionsCohortsRoute: AppAdmissionsCohortsRoute,
   AppAdmissionsCommunicationRoute: AppAdmissionsCommunicationRoute,
   AppAdmissionsDocumentsRoute: AppAdmissionsDocumentsRoute,
   AppAdmissionsEnrollmentRoute: AppAdmissionsEnrollmentRoute,
@@ -8729,8 +8895,10 @@ const rootRouteChildren: RootRouteChildren = {
   AppVolunteerImpactRoute: AppVolunteerImpactRoute,
   AppVolunteerMyVolunteeringRoute: AppVolunteerMyVolunteeringRoute,
   AppVolunteerOpportunitiesRoute: AppVolunteerOpportunitiesRoute,
+  ApplyReceiptRefRoute: ApplyReceiptRefRoute,
   ClassesCourseSlugSessionSlugRoute: ClassesCourseSlugSessionSlugRoute,
   ProgramsSlugModuleRoute: ProgramsSlugModuleRoute,
+  SchoolsProposalRefRoute: SchoolsProposalRefRoute,
   ShopSlugCheckoutRoute: ShopSlugCheckoutRoute,
   ShopSlugReturnRoute: ShopSlugReturnRoute,
   AppAccountantIndexRoute: AppAccountantIndexRoute,

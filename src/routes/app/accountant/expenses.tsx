@@ -1,11 +1,12 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowLeft, BadgeCheck, CheckCircle2, Clock3, ReceiptText } from "lucide-react";
+import { ArrowLeft, BadgeCheck, CheckCircle2, Clock3, PlusCircle, ReceiptText } from "lucide-react";
 import { useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { QueryState } from "@/components/ui/query-state";
 import { AppShell } from "@/components/app/app-shell";
+import { ExpenseForm } from "@/components/finance/expense-form";
 import { useExpenses, useExpenseItems, useUpdateExpenseStatus } from "@/lib/query/finance";
 import type { Expense } from "@/lib/api/finance";
 import { cn, formatNaira, formatNairaCompact } from "@/lib/utils";
@@ -128,6 +129,21 @@ function AccountantExpenses() {
           </Card>
         ))}
       </div>
+
+      <Card className="bg-card mt-5 shadow-soft border">
+        <CardHeader>
+          <CardTitle className="font-display flex items-center gap-2 text-base font-bold">
+            <PlusCircle className="text-primary size-4" /> Record an expense
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <ExpenseForm />
+          <p className="text-muted-foreground mt-3 text-[11px]">
+            Entries land in the same ledger the monthly P&amp;L CSV reads, so there is nothing to
+            re-type at month end.
+          </p>
+        </CardContent>
+      </Card>
 
       <Card className="bg-card mt-5 shadow-soft border">
         <CardHeader>

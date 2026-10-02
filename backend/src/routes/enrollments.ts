@@ -7,6 +7,7 @@
  * Public routes (no session):
  *   POST /v1/enrollments                    create enrollment
  *   POST /v1/enrollments/:ref/payments      start a Paystack session
+ *   POST /v1/enrollments/:ref/payments/transfer  report a bank transfer (proof)
  *   GET  /v1/enrollments/:ref/payments/verify  verify after redirect
  *   POST /v1/enrollments/webhook            Paystack webhook (HMAC)
  *   GET  /v1/enrollments/:ref               applicant status page
@@ -22,7 +23,7 @@ import type { AppEnv } from "../types";
 import { z } from "zod";
 import { ApiError } from "../lib/errors";
 import { parseBody } from "../lib/validate";
-import { requireAuth, requireAdmin } from "../lib/auth";
+import { requireAuth, requireAdmin, requireFinance } from "../lib/auth";
 import {
   base64UrlDecode,
   hmacSha512Hex,
@@ -310,7 +311,7 @@ function confirmationEmailHtml(input: {
   <div style="font-family:Arial,Helvetica,sans-serif;color:#1a1a1a;max-width:560px;margin:0 auto;padding:24px;">
     <h1 style="font-size:20px;margin:0 0 8px;">Application received — ${ref}</h1>
     <p>Hi ${name},</p>
-    <p>Thanks for applying to <strong>${programTitle}</strong> at Cyber Elias Academy, 26 Ebony Road, Port Harcourt.
+    <p>Thanks for applying to <strong>${programTitle}</strong> at Cyber Elias Academy, 24/26 Ebony Road, Port Harcourt.
     Here is your summary:</p>
     <table style="width:100%;border-collapse:collapse;font-size:14px;">
       <tr><td style="padding:6px 0;color:#666;">Course</td><td style="padding:6px 0;"><strong>${programTitle}</strong></td></tr>
@@ -329,7 +330,7 @@ function confirmationEmailHtml(input: {
         Track your application</a>
     </p>
     <p style="font-size:12px;color:#777;">Questions? WhatsApp us: <a href="https://wa.me/${ACADEMY_WHATSAPP}">+234 905 862 8386</a> ·
-    Mon–Sat 8:00–20:00 WAT · hello@cea.ng</p>
+    Mon–Sat 8:00–20:00 WAT · help@cea.ng</p>
   </div>`;
 }
 
@@ -340,8 +341,9 @@ function receiptEmailHtml(input: {
   amount: number;
   kind: "deposit" | "balance" | "full";
   remaining: number;
+  receiptNo?: string | null;
 }): string {
-  const { ref, name, programTitle, amount, kind, remaining } = input;
+  const { ref, name, programTitle, amount, kind, remaining, receiptNo } = input;
   const fmt = new Intl.NumberFormat("en-NG", {
     style: "currency",
     currency: "NGN",
@@ -358,10 +360,12 @@ function receiptEmailHtml(input: {
   return `
   <div style="font-family:Arial,Helvetica,sans-serif;color:#1a1a1a;max-width:560px;margin:0 auto;padding:24px;">
     <h1 style="font-size:20px;margin:0 0 8px;">Payment confirmed — ${ref}</h1>
+    ${receiptNo ? `<p style="font-size:13px;color:#444;">Receipt number: <strong>${receiptNo}</strong></p>` : ""}
     <p>Hi ${name},</p>
     <p>We received your payment for <strong>${programTitle}</strong>: ${line}</p>
     <p>Your seat is held. The welcome pack (schedule, what to bring, notes links) follows once admission confirms your dates.</p>
-    <p style="font-size:12px;color:#777;">Cyber Elias Academy · 26 Ebony Road, Port Harcourt ·
+    <p style="font-size:13px;">Keep this for your records, or <a href="https://cea.ng/apply/receipt/${ref}">print the receipt</a>.</p>
+    <p style="font-size:12px;color:#777;">Cyber Elias Academy · 24/26 Ebony Road, Port Harcourt ·
     <a href="https://wa.me/${ACADEMY_WHATSAPP}">+234 905 862 8386</a></p>
   </div>`;
 }
@@ -474,8 +478,8 @@ function publicEnrollment(
       whatsapp: `https://wa.me/${ACADEMY_WHATSAPP}?text=${encodeURIComponent(
         `Hello Cyber Elias Academy! I just applied (${row.ref}).`,
       )}`,
-      email: "hello@cea.ng",
-      address: "26 Ebony Road, Off Rumuola Road, Port Harcourt",
+      email: "help@cea.ng",
+      address: "24/26 Ebony Road, Off Rumuola Road, Port Harcourt",
       hours: "Mon–Sat, 8:00–20:00 WAT",
     },
     createdAt: row.created_at,
@@ -788,6 +792,129 @@ enrollments.post("/:ref/payments", async (c) => {
   );
 });
 
+const transferProofSchema = z.object({
+  kind: z.enum(["deposit", "full"]),
+  /** NGN the student says they sent — the reviewer sees expected vs sent. */
+  amount: z.number().int().positive().max(1_000_000),
+  senderName: z.string().trim().min(2, "Enter the name on the transfer.").max(80),
+  bankName: z.string().trim().max(60).optional(),
+  bankReference: z.string().trim().max(80).optional(),
+  /** YYYY-MM-DD the transfer left the student's bank. */
+  paidOn: z
+    .string()
+    .trim()
+    .regex(/^\d{4}-\d{2}-\d{2}$/, "Use YYYY-MM-DD.")
+    .optional(),
+  note: z.string().trim().max(500).optional(),
+  receiptUrl: z.string().trim().url("Enter a valid link.").max(300).optional(),
+});
+
+/**
+ * POST /:ref/payments/transfer — public.
+ *
+ * Captures a bank-transfer claim (UBA 1028649972) and parks it in
+ * `pending_review`. Nothing here marks money as received: confirmation is a
+ * signed-in admin/finance action, deliberately, because a screenshot is not
+ * proof of settlement.
+ */
+enrollments.post("/:ref/payments/transfer", async (c) => {
+  const ip = c.req.header("CF-Connecting-IP") ?? c.req.header("x-forwarded-for") ?? "unknown";
+  await rateLimit(c.env.RATE_LIMIT, "enroll-transfer", await hashIdentifier(ip), {
+    limit: 6,
+    windowSeconds: 3600,
+  });
+  const ref = c.req.param("ref").toUpperCase();
+  const row = await c.env.DB.prepare(`SELECT * FROM registrations WHERE ref = ?`)
+    .bind(ref)
+    .first<EnrollmentRow>();
+  if (!row) throw ApiError.notFound("No enrollment found with that reference.");
+  if (row.payment_status === "paid") {
+    throw new ApiError(409, "ALREADY_PAID", "This enrollment is already paid in full.");
+  }
+  const input = await parseBody(c, transferProofSchema);
+  const expected = expectedAmount(row, input.kind);
+  const now = isoNow();
+
+  const id = crypto.randomUUID();
+  await c.env.DB.prepare(
+    `INSERT INTO payment_proofs (id, registration_ref, registration_id, kind, amount, expected_amount,
+       sender_name, bank_name, bank_reference, paid_on, note, receipt_url, status, submitted_at)
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'pending_review', ?)`,
+  )
+    .bind(
+      id,
+      ref,
+      row.id,
+      input.kind,
+      input.amount,
+      expected,
+      input.senderName,
+      input.bankName ?? null,
+      input.bankReference ?? null,
+      input.paidOn ?? null,
+      input.note ?? null,
+      input.receiptUrl ?? null,
+      now,
+    )
+    .run();
+
+  // NOTE: registrations.payment_status intentionally stays untouched — its
+  // CHECK constraint only allows unpaid/deposit_paid/paid/failed, and a claim
+  // is not a payment state. The proof row above IS the review state, surfaced
+  // to the student as payment.review on the status endpoint.
+  await logEvent(
+    c.env.DB,
+    ref,
+    "transfer_proof_received",
+    `${input.kind} transfer of ${input.amount} NGN reported (expected ${expected})`,
+  );
+
+  // Tell the office (reply-able inbox) and reassure the student. Failure to
+  // send must not fail the submission — the row is already saved.
+  try {
+    await sendEmail(c, {
+      to: c.env.CONTACT_INBOX || c.env.EMAIL_REPLY_TO || "help@cea.ng",
+      replyTo: c.env.EMAIL_REPLY_TO,
+      subject: `Bank transfer reported — ${ref} (${input.kind})`,
+      html: `<p><strong>${input.senderName}</strong> reports a bank transfer for <strong>${row.program_title}</strong>.</p>
+        <ul>
+          <li>Enrollment: <strong>${ref}</strong></li>
+          <li>Amount: ₦${input.amount.toLocaleString("en-NG")} (expected ₦${expected.toLocaleString("en-NG")})</li>
+          ${input.bankName ? `<li>Bank: ${input.bankName}</li>` : ""}
+          ${input.bankReference ? `<li>Bank reference: ${input.bankReference}</li>` : ""}
+          ${input.paidOn ? `<li>Paid on: ${input.paidOn}</li>` : ""}
+          ${input.receiptUrl ? `<li>Receipt: <a href="${input.receiptUrl}">${input.receiptUrl}</a></li>` : ""}
+          ${input.note ? `<li>Note: ${input.note}</li>` : ""}
+        </ul>
+        <p>Confirm or reject it in the CEA-OS finance workspace.</p>`,
+    });
+    await sendEmail(c, {
+      to: row.email,
+      replyTo: c.env.EMAIL_REPLY_TO,
+      subject: `We received your transfer report — ${ref}`,
+      html: `<p>Hi ${row.first_name},</p>
+        <p>Thanks — we've logged your bank transfer of ₦${input.amount.toLocaleString("en-NG")} for <strong>${row.program_title}</strong> (${ref}).</p>
+        <p>Finance reviews transfers during working hours (Mon–Sat, 8:00–20:00 WAT) and you'll get a receipt by email as soon as it's confirmed. If we need anything else we'll contact you on WhatsApp.</p>
+        <p>If you haven't sent it yet, transfer to <strong>Cyber Elias Academy Ltd · UBA · 1028649972</strong> — and keep the receipt.</p>
+        <p>— Cyber Elias Academy</p>`,
+    });
+  } catch {
+    /* email is best-effort; the proof is stored */
+  }
+
+  return c.json(
+    {
+      ok: true,
+      status: "pending_review",
+      amount: input.amount,
+      expectedAmount: expected,
+      message:
+        "Thank you — we've received your transfer report. Finance will confirm it during working hours and send your receipt.",
+    },
+    201,
+  );
+});
+
 /** GET /:ref/payments/verify — public. Poll/verify a payment session after the Paystack redirect. */
 enrollments.get("/:ref/payments/verify", async (c) => {
   const ref = c.req.param("ref").toUpperCase();
@@ -835,6 +962,29 @@ enrollments.get("/:ref/payments/verify", async (c) => {
   });
 });
 
+/**
+ * Sequential receipt numbers per calendar year: CEA-RCPT-2026-0001.
+ * Three statements (seed, increment, read) because D1 serialises writes and
+ * markPayment is idempotent, so a retried webhook cannot double-allocate.
+ */
+export async function allocateReceiptNo(db: AppEnv["DB"], now = isoNow()): Promise<string> {
+  const scope = now.slice(0, 4);
+  await db
+    .prepare(`INSERT OR IGNORE INTO receipt_counters (scope, last_value) VALUES (?, 0)`)
+    .bind(scope)
+    .run();
+  await db
+    .prepare(`UPDATE receipt_counters SET last_value = last_value + 1 WHERE scope = ?`)
+    .bind(scope)
+    .run();
+  const row = await db
+    .prepare(`SELECT last_value FROM receipt_counters WHERE scope = ?`)
+    .bind(scope)
+    .first<{ last_value: number }>();
+  const seq = String(row?.last_value ?? 1).padStart(4, "0");
+  return `CEA-RCPT-${scope}-${seq}`;
+}
+
 export async function markPayment(
   c: { env: AppEnv },
   reference: string,
@@ -865,8 +1015,12 @@ export async function markPayment(
   }
 
   const now = isoNow();
-  await c.env.DB.prepare(`UPDATE registration_payments SET status = ?, paid_at = ? WHERE id = ?`)
-    .bind(outcome, outcome === "success" ? now : null, row.id)
+  // Allocate a sequential receipt number on confirmation: CEA-RCPT-<year>-<seq>.
+  const receiptNo = outcome === "success" ? await allocateReceiptNo(c.env.DB, now) : null;
+  await c.env.DB.prepare(
+    `UPDATE registration_payments SET status = ?, paid_at = ?, receipt_no = COALESCE(?, receipt_no) WHERE id = ?`,
+  )
+    .bind(outcome, outcome === "success" ? now : null, receiptNo, row.id)
     .run();
 
   const enrollment = await c.env.DB.prepare(`SELECT * FROM registrations WHERE ref = ?`)
@@ -905,6 +1059,7 @@ export async function markPayment(
           amount: row.amount,
           kind: row.kind as "deposit" | "balance" | "full",
           remaining: Math.max(0, feeDue - paidAmount),
+          receiptNo,
         }),
       });
     } catch {
@@ -1066,6 +1221,249 @@ enrollments.get("/admin", requireAuth, requireAdmin, async (c) => {
   return c.json(paginate(items, total?.n ?? 0, (last) => last.id));
 });
 
+/* ------------------------------------------------------------------ *
+ * Bank-transfer proofs — admin review (finance / admin)
+ * ------------------------------------------------------------------ */
+
+const proofDecisionSchema = z.object({
+  reason: z.string().trim().max(300).optional(),
+});
+
+/** GET /payment-proofs — review queue. */
+enrollments.get("/payment-proofs", requireAuth, requireFinance, async (c) => {
+  const status = (c.req.query("status") ?? "pending_review").trim();
+  const allowed = ["pending_review", "confirmed", "rejected", "all"];
+  if (!allowed.includes(status)) throw ApiError.validation({ status: ["Unknown status."] });
+  const { cursor, limit } = parsePagination(c);
+  const predicates: string[] = [];
+  const args: string[] = [];
+  if (status !== "all") {
+    predicates.push("p.status = ?");
+    args.push(status);
+  }
+  if (cursor) {
+    predicates.push("p.id > ?");
+    args.push(base64UrlDecode(cursor) ?? "");
+  }
+  const where = predicates.length > 0 ? `WHERE ${predicates.join(" AND ")}` : "";
+  const rows = await c.env.DB.prepare(
+    `SELECT p.*, r.program_title, r.first_name, r.last_name, r.email, r.fee_total, r.payment_status AS enrollment_status
+       FROM payment_proofs p
+       JOIN registrations r ON r.ref = p.registration_ref
+       ${where}
+       ORDER BY p.id ASC
+       LIMIT ?`,
+  )
+    .bind(...args, limit)
+    .all<{
+      id: string;
+      registration_ref: string;
+      kind: string;
+      amount: number;
+      expected_amount: number;
+      sender_name: string;
+      bank_name: string | null;
+      bank_reference: string | null;
+      paid_on: string | null;
+      note: string | null;
+      receipt_url: string | null;
+      status: string;
+      submitted_at: string;
+      reviewed_at: string | null;
+      reviewed_by: string | null;
+      program_title: string;
+      first_name: string;
+      last_name: string;
+      email: string;
+      fee_total: number;
+      enrollment_status: string;
+    }>();
+  const items = rows.results.map((r) => ({
+    id: r.id,
+    ref: r.registration_ref,
+    programTitle: r.program_title,
+    student: { firstName: r.first_name, lastName: r.last_name, email: r.email },
+    kind: r.kind,
+    amount: r.amount,
+    expectedAmount: r.expected_amount,
+    senderName: r.sender_name,
+    bankName: r.bank_name,
+    bankReference: r.bank_reference,
+    paidOn: r.paid_on,
+    note: r.note,
+    receiptUrl: r.receipt_url,
+    status: r.status,
+    enrollmentStatus: r.enrollment_status,
+    submittedAt: r.submitted_at,
+    reviewedAt: r.reviewed_at,
+    reviewedBy: r.reviewed_by,
+  }));
+  const counted = await c.env.DB.prepare(
+    `SELECT COUNT(*) AS n FROM payment_proofs p ${status === "all" ? "" : "WHERE p.status = ?"}`,
+  )
+    .bind(...(status === "all" ? [] : [status]))
+    .first<{ n: number }>();
+  return c.json(paginate(items, counted?.n ?? 0, (last) => last.id));
+});
+
+/** POST /payment-proofs/:id/confirm — creates the payment row, then markPayment(). */
+enrollments.post("/payment-proofs/:id/confirm", requireAuth, requireFinance, async (c) => {
+  const actor = c.get("authUser");
+  const id = c.req.param("id");
+  const proof = await c.env.DB.prepare(`SELECT * FROM payment_proofs WHERE id = ?`).bind(id).first<{
+    id: string;
+    registration_ref: string;
+    kind: string;
+    amount: number;
+    status: string;
+    sender_name: string;
+  }>();
+  if (!proof) throw ApiError.notFound("No proof found with that id.");
+  if (proof.status !== "pending_review") {
+    throw new ApiError(409, "ALREADY_REVIEWED", "This proof has already been reviewed.");
+  }
+  const reference = `cea_bt_${randomToken(8)}`;
+  await c.env.DB.prepare(
+    `INSERT INTO registration_payments (id, registration_ref, reference, kind, amount, status, created_at)
+     VALUES (?, ?, ?, ?, ?, 'pending', ?)`,
+  )
+    .bind(
+      crypto.randomUUID(),
+      proof.registration_ref,
+      reference,
+      proof.kind,
+      proof.amount,
+      isoNow(),
+    )
+    .run();
+  // Same path as Paystack: updates the enrollment, writes the receipt, emails it.
+  await markPayment(c, reference, "success", proof.amount * 100);
+  const now = isoNow();
+  await c.env.DB.prepare(
+    `UPDATE payment_proofs SET status = 'confirmed', reviewed_at = ?, reviewed_by = ? WHERE id = ?`,
+  )
+    .bind(now, actor?.email ?? "admin", proof.id)
+    .run();
+  await logEvent(
+    c.env.DB,
+    proof.registration_ref,
+    "transfer_proof_confirmed",
+    `${proof.kind} transfer of ${proof.amount} NGN confirmed by ${actor?.email ?? "admin"}`,
+  );
+  return c.json({ ok: true, status: "confirmed", reference });
+});
+
+/** POST /payment-proofs/:id/reject — send it back without touching payment state. */
+enrollments.post("/payment-proofs/:id/reject", requireAuth, requireFinance, async (c) => {
+  const actor = c.get("authUser");
+  const id = c.req.param("id");
+  const input = await parseBody(c, proofDecisionSchema);
+  const proof = await c.env.DB.prepare(`SELECT * FROM payment_proofs WHERE id = ?`)
+    .bind(id)
+    .first<{ id: string; registration_ref: string; status: string; amount: number }>();
+  if (!proof) throw ApiError.notFound("No proof found with that id.");
+  if (proof.status !== "pending_review") {
+    throw new ApiError(409, "ALREADY_REVIEWED", "This proof has already been reviewed.");
+  }
+  const now = isoNow();
+  await c.env.DB.prepare(
+    `UPDATE payment_proofs SET status = 'rejected', reviewed_at = ?, reviewed_by = ? WHERE id = ?`,
+  )
+    .bind(now, actor?.email ?? "admin", proof.id)
+    .run();
+  // Nothing to undo on the registration: the proof row was the review state.
+  await logEvent(
+    c.env.DB,
+    proof.registration_ref,
+    "transfer_proof_rejected",
+    input.reason
+      ? `rejected by ${actor?.email ?? "admin"}: ${input.reason}`
+      : `rejected by ${actor?.email ?? "admin"}`,
+  );
+  const enrollment = await c.env.DB.prepare(`SELECT * FROM registrations WHERE ref = ?`)
+    .bind(proof.registration_ref)
+    .first<EnrollmentRow>();
+  if (enrollment) {
+    try {
+      await sendEmail(c, {
+        to: enrollment.email,
+        replyTo: c.env.EMAIL_REPLY_TO,
+        subject: `We couldn't match your transfer yet — ${enrollment.ref}`,
+        html: `<p>Hi ${enrollment.first_name},</p>
+          <p>We couldn't match the transfer of ₦${proof.amount.toLocaleString("en-NG")} you reported for <strong>${enrollment.program_title}</strong> (${enrollment.ref}).</p>
+          ${input.reason ? `<p>${input.reason}</p>` : ""}
+          <p>Please reply with the transfer receipt, or message us on WhatsApp at 0905 862 8386, and we'll sort it out.</p>
+          <p>— Cyber Elias Academy</p>`,
+      });
+    } catch {
+      /* best effort */
+    }
+  }
+  return c.json({ ok: true, status: "rejected" });
+});
+
+/**
+ * GET /:ref/receipt — public, printable receipt for confirmed payments.
+ * Only payments with status = 'success' are returned; a pending transfer shows
+ * nothing here by design.
+ */
+enrollments.get("/:ref/receipt", async (c) => {
+  const ref = c.req.param("ref").toUpperCase();
+  const row = await c.env.DB.prepare(`SELECT * FROM registrations WHERE ref = ?`)
+    .bind(ref)
+    .first<EnrollmentRow>();
+  if (!row) throw ApiError.notFound("No enrollment found with that reference.");
+  const payments = await c.env.DB.prepare(
+    `SELECT reference, kind, amount, status, paid_at, receipt_no, method
+       FROM registration_payments
+      WHERE registration_ref = ? AND status = 'success'
+      ORDER BY paid_at ASC`,
+  )
+    .bind(ref)
+    .all<{
+      reference: string;
+      kind: string;
+      amount: number;
+      status: string;
+      paid_at: string | null;
+      receipt_no: string | null;
+      method: string | null;
+    }>();
+  const feeDue = feeDueFor(row.program_kind as "short" | "long", row.fee_total, row.payment_plan);
+  return c.json({
+    receipt: {
+      ref: row.ref,
+      studentName: `${row.first_name} ${row.last_name}`.trim(),
+      email: row.email,
+      programTitle: row.program_title,
+      programKind: row.program_kind,
+      issuedBy: {
+        name: "Cyber Elias Academy Ltd",
+        rc: "RC 8413776",
+        tin: "TIN 1086525399",
+        address: "24/26 Ebony Road, off Rumuola Road, Port Harcourt",
+        email: "help@cea.ng",
+        phone: "+234 905 862 8386",
+      },
+      feeTotal: row.fee_total,
+      feeDue,
+      paidAmount: row.paid_amount,
+      balance: Math.max(0, feeDue - row.paid_amount),
+      payments: payments.results.map((p) => ({
+        reference: p.reference,
+        kind: p.kind,
+        amount: p.amount,
+        method: p.method ?? "paystack",
+        receiptNo: p.receipt_no,
+        paidAt: p.paid_at,
+      })),
+      /** Null until a payment is confirmed — drives the "nothing yet" state. */
+      latestReceiptNo: payments.results.at(-1)?.receipt_no ?? null,
+      issuedAt: payments.results.at(-1)?.paid_at ?? null,
+    },
+  });
+});
+
 /** GET /:ref — public applicant status (events + payment state). */
 enrollments.get("/:ref", async (c) => {
   const ref = c.req.param("ref").toUpperCase();
@@ -1079,8 +1477,32 @@ enrollments.get("/:ref", async (c) => {
     .bind(ref)
     .all<{ event: string; detail: string; at: string }>();
   const data = publicEnrollment(row, eventsRows.results);
+  const proof = await c.env.DB.prepare(
+    `SELECT status, amount, expected_amount, submitted_at, reviewed_at
+       FROM payment_proofs WHERE registration_ref = ? ORDER BY submitted_at DESC LIMIT 1`,
+  )
+    .bind(ref)
+    .first<{
+      status: string;
+      amount: number;
+      expected_amount: number;
+      submitted_at: string;
+      reviewed_at: string | null;
+    }>();
   return c.json({
     ...data,
+    payment: {
+      ...data.payment,
+      review: proof
+        ? {
+            status: proof.status,
+            amount: proof.amount,
+            expectedAmount: proof.expected_amount,
+            submittedAt: proof.submitted_at,
+            reviewedAt: proof.reviewed_at,
+          }
+        : null,
+    },
     stages: ENROLLMENT_STAGES.map((stage, i) => {
       const currentIdx = STAGE_ORDER.indexOf(row.stage as (typeof STAGE_ORDER)[number]);
       const idx = STAGE_ORDER.indexOf(stage.key as (typeof STAGE_ORDER)[number]);

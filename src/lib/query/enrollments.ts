@@ -26,6 +26,13 @@ export interface NormalizedEnrollmentStatus {
     amountDue: number;
     paidAmount: number;
     plan: string;
+    review?: {
+      status: "pending_review" | "confirmed" | "rejected";
+      amount: number;
+      expectedAmount: number;
+      submittedAt: string;
+      reviewedAt: string | null;
+    } | null;
   };
 }
 
@@ -72,6 +79,7 @@ export function useEnrollmentStatus(ref: string) {
             amountDue: e.payment.amountDue,
             paidAmount: e.payment.paidAmount,
             plan: e.payment.plan,
+            review: e.payment.review ?? null,
           },
         };
       } catch {

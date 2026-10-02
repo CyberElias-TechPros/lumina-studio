@@ -12,6 +12,10 @@ export const FLAG_DEFAULTS: Record<string, boolean> = {
   "ai.grading": false,
   "ai.recommendations": false,
   "ai.assistant": false,
+  // Public marketing-site assistant (routes/assistant.ts). Default ON: it is the
+  // front desk for course pages. Flip to false in /app/admin/config to take it
+  // down instantly without a deploy.
+  "assistant.public": true,
   "ai.content-gen": false,
   "realtime.chat": false,
   "realtime.live-class": false,

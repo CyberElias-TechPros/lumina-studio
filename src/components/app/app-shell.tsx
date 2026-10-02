@@ -267,6 +267,21 @@ export const appRoles: AppRole[] = [
       },
       { label: "Security", icon: <ShieldCheck className="size-4" />, to: "/app/admin/security" },
       { label: "Audit Log", icon: <FileText className="size-4" />, to: "/app/admin/audit" },
+      {
+        label: "Compliance deadlines",
+        icon: <CalendarDays className="size-4" />,
+        to: "/app/deadlines",
+      },
+      {
+        label: "School partnerships",
+        icon: <BriefcaseBusiness className="size-4" />,
+        to: "/app/schools",
+      },
+      {
+        label: "Assistant insights",
+        icon: <MessageSquare className="size-4" />,
+        to: "/app/assistant-insights",
+      },
       { label: "System Config", icon: <Settings className="size-4" />, to: "/app/admin/config" },
       { label: "Monitoring", icon: <Building2 className="size-4" />, to: "/app/admin/monitoring" },
       { label: "Backups", icon: <HeartHandshake className="size-4" />, to: "/app/admin/backups" },
@@ -701,6 +716,11 @@ export const appRoles: AppRole[] = [
         to: "/app/admissions/interviews",
       },
       { label: "Enrollment", icon: <Users className="size-4" />, to: "/app/admissions/enrollment" },
+      {
+        label: "Cohorts & dates",
+        icon: <CalendarDays className="size-4" />,
+        to: "/app/admissions/cohorts",
+      },
       {
         label: "Communication",
         icon: <MessageSquare className="size-4" />,

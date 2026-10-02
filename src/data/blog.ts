@@ -3270,7 +3270,7 @@ export const blogPosts: BlogPost[] = [
     coverAlt: "A map with a search box on a laptop screen.",
     body: [
       p(
-        "Amara had an interview at a company on “26 Ebony Road, Rumuola”, and she had never been to that part of the city. She typed the company name into the map app, tapped the first pin the app offered, and forty minutes later stood outside a printing press on a different Ebony Road in a different local government. The shop names were real. The road name was real. The pin was still wrong. This lesson is how to hold a map app so that it takes you to the right street — including the day the data runs out halfway there.",
+        "Amara had an interview at a company on “24/26 Ebony Road, Rumuola”, and she had never been to that part of the city. She typed the company name into the map app, tapped the first pin the app offered, and forty minutes later stood outside a printing press on a different Ebony Road in a different local government. The shop names were real. The road name was real. The pin was still wrong. This lesson is how to hold a map app so that it takes you to the right street — including the day the data runs out halfway there.",
       ),
       p(
         "A map app is a paper map that can talk. It knows where you are if you allow it, it draws roads on a small screen, and it will navigate you to any pin you believe. That last part is the catch. Lagos and Port Harcourt share street names and shop names; the map answers the question you actually asked. So this lesson teaches asking properly, reading the answer, and preparing for the journey before you leave the house.",
@@ -3282,7 +3282,7 @@ export const blogPosts: BlogPost[] = [
       ),
       h2("Ask the map a full question"),
       p(
-        "Open maps.google.com on the laptop, or the Maps app on the phone. In the search box, type a full thought: not “computer school”, but “CyberElias Academy 26 Ebony Road Rumuola”. Press Enter. Now — and this is where Amara's forty minutes were lost — read the grey address line under the result before you tap anything. If two results share a name, the one whose road and area match what you were told is yours. One pin is a guess. The address line is the street. Zoom out once and check the pin is in the city you expect; if it is sitting in another state, you asked the map too little and it politely answered the little question.",
+        "Open maps.google.com on the laptop, or the Maps app on the phone. In the search box, type a full thought: not “computer school”, but “CyberElias Academy 24/26 Ebony Road Rumuola”. Press Enter. Now — and this is where Amara's forty minutes were lost — read the grey address line under the result before you tap anything. If two results share a name, the one whose road and area match what you were told is yours. One pin is a guess. The address line is the street. Zoom out once and check the pin is in the city you expect; if it is sitting in another state, you asked the map too little and it politely answered the little question.",
       ),
       p(
         "On the phone, the same search works, and there is one more tool: the blue dot. That dot is you — this phone, right now — if Location is switched on and Maps is allowed to use it. A grey or missing dot means the phone has not been permitted to say where it is. Settings, Location, on, and allow Maps. That permission is a door like the camera and the microphone: open it for the app you are actually using, not for every app that asks. Use the phone's dot in the street; use the laptop at the desk for planning — look at the route, print it or screenshot it, then walk.",
@@ -3334,7 +3334,7 @@ export const blogPosts: BlogPost[] = [
         "Mrs Okonkwo needed the harvest meeting announced, and the first draft was a full page of size-12 paragraphs — every fact true, none of them visible from the gate. Her son printed it anyway, and three hundred people walked past it without one stop. A poster is not a letter. A letter is read at a desk; a poster is read while walking — a church door, a school gate, a shop window. If the walker must stop and squint, the poster failed. Word can make one, Canva can make one, a marker and a card can make one. The tool is not the point. This lesson is the discipline, in Word, because you already have Word.",
       ),
       p(
-        "Page Layout, or Layout: Orientation — Landscape if you want a wide sheet, Portrait for a door. Margins: Normal or narrow. Type the heading first, large — 48 or 72, bold, one typeface. Then a sentence a person can say aloud: Computer Basics, Saturday 9 o'clock, 26 Ebony Road. Then a phone number. Then stop. A photograph is optional and must not sit on the words; if you add one, keep it small, the way the letter lesson taught.",
+        "Page Layout, or Layout: Orientation — Landscape if you want a wide sheet, Portrait for a door. Margins: Normal or narrow. Type the heading first, large — 48 or 72, bold, one typeface. Then a sentence a person can say aloud: Computer Basics, Saturday 9 o'clock, 24/26 Ebony Road. Then a phone number. Then stop. A photograph is optional and must not sit on the words; if you add one, keep it small, the way the letter lesson taught.",
       ),
       fig(
         "/images/blog/simple-poster.jpg",

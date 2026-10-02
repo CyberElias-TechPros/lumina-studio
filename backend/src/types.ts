@@ -17,6 +17,8 @@ export interface AppEnv {
   EMAIL_API_KEY: string;
   EMAIL_FROM: string;
   EMAIL_DOMAIN: string;
+  /** Reply-To for transactional mail (e.g. help@cea.ng). */
+  EMAIL_REPLY_TO?: string;
   APP_URL: string;
   AI_BASE_URL: string;
   AI_MODEL: string;

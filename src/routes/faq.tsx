@@ -68,7 +68,7 @@ function FaqPage() {
         <figure className="border-border mx-auto mb-10 max-w-3xl overflow-hidden rounded-lg border">
           <CampusImg id="lab-4" className="aspect-[16/9]" />
           <figcaption className="text-muted-foreground px-3 py-2 text-xs">
-            Classes at 26 Ebony Road, Port Harcourt
+            Classes at 24/26 Ebony Road, Port Harcourt
           </figcaption>
         </figure>
         <Accordion type="single" collapsible className="mx-auto max-w-3xl">

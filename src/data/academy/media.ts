@@ -1,13 +1,13 @@
 /**
  * Public campus and course pictures. Classroom stills are photographs
- * taken at 26 Ebony Road (grey room, wooden tables, red/orange chairs).
+ * taken at 24/26 Ebony Road (grey room, wooden tables, red/orange chairs).
  * Course stills live in /public/images/courses/.
  */
 
 export const campusPhotos = {
   "lab-1": {
     src: "/images/campus/lab-1.jpg",
-    alt: "Class in session at Cyber Elias Academy, 26 Ebony Road: wooden tables, orange chairs, wall screen and whiteboard.",
+    alt: "Class in session at Cyber Elias Academy, 24/26 Ebony Road: wooden tables, orange chairs, wall screen and whiteboard.",
     caption: "The classroom",
   },
   "lab-2": {
@@ -17,7 +17,7 @@ export const campusPhotos = {
   },
   "lab-3": {
     src: "/images/campus/lab-3.jpg",
-    alt: "Learners at computers during a class at 26 Ebony Road, Port Harcourt.",
+    alt: "Learners at computers during a class at 24/26 Ebony Road, Port Harcourt.",
     caption: "A class in session",
   },
   "lab-4": {
@@ -27,7 +27,7 @@ export const campusPhotos = {
   },
   "lab-5": {
     src: "/images/campus/lab-5.jpg",
-    alt: "Learners in red and white at desktop computers facing the wall screen and whiteboard at 26 Ebony Road.",
+    alt: "Learners in red and white at desktop computers facing the wall screen and whiteboard at 24/26 Ebony Road.",
     caption: "Lesson on the big screen",
   },
   "lab-6": {

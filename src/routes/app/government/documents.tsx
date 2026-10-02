@@ -52,7 +52,7 @@ function GovernmentDocuments() {
     <AppShell
       roleKey="government"
       title="Documentation library"
-      subtitle="64 documents · versioned · digitally signed"
+      subtitle="Published policies — privacy, terms and refunds"
       actions={
         <>
           <Badge className="bg-success/10 text-success border-0 font-semibold">Signed</Badge>
