@@ -18,10 +18,13 @@
  */
 import { Hono } from "hono";
 import type { Context } from "hono";
+import { isoNow } from "../lib/crypto";
+import { requireAdmin, requireAuth } from "../lib/auth";
 import type { ContentfulStatusCode } from "hono/utils/http-status";
 import type { AppEnv } from "../types";
 import { parseBody } from "../lib/validate";
 import { RateLimitExceeded, hashIdentifier, rateLimit } from "../lib/rate-limit";
+import { verifyTurnstile } from "../lib/turnstile";
 import {
   FALLBACK_ANSWER,
   SUGGESTED_QUESTIONS,
@@ -41,6 +44,12 @@ const chatSchema = z.object({
   ),
   /** Optional context so the bot can name the course the visitor is reading. */
   page: z.string().trim().max(120).optional(),
+  /**
+   * Turnstile token for the *first* message of a conversation. Only enforced
+   * when TURNSTILE_SECRET_KEY is configured (see lib/turnstile.ts), so the
+   * widget keeps working with no keys bound.
+   */
+  turnstileToken: z.string().max(4000).optional(),
 });
 
 /** One visitor: 30 messages per 10 minutes is generous for a chat. */
@@ -118,6 +127,12 @@ assistant.post("/chat", async (c) => {
   const parsed = parseAssistantHistory(body.messages);
   if (!parsed.ok) return reply(c, { answer: parsed.error, mock: true }, 400);
 
+  // Human check on the first turn only: one solved challenge per conversation,
+  // not one per message. No secret bound → this is a no-op.
+  if (parsed.turns.length <= 1) {
+    await verifyTurnstile(c, body.turnstileToken, clientIp(c));
+  }
+
   // Global daily spend guard — one counter, reset at UTC midnight.
   const dayKey = `assistant:daily:${new Date().toISOString().slice(0, 10)}`;
   const used = Number((await c.env.RATE_LIMIT.get(dayKey)) ?? "0");
@@ -137,5 +152,77 @@ assistant.post("/chat", async (c) => {
   );
 
   const result = await assistantReply(c, history);
+  const question = parsed.turns.at(-1)?.content ?? "";
+  // Feedback loop: record what was asked and whether we could really answer.
+  // Fire-and-forget — logging must never break the reply.
+  c.executionCtx.waitUntil?.(
+    c.env.DB.prepare(
+      `INSERT INTO assistant_questions (id, question, answer_preview, fallback, page, created_at)
+       VALUES (?, ?, ?, ?, ?, ?)`,
+    )
+      .bind(
+        crypto.randomUUID(),
+        question.slice(0, 500),
+        result.answer.slice(0, 200),
+        result.mock ? 1 : 0,
+        body.page ?? null,
+        isoNow(),
+      )
+      .run()
+      .catch(() => undefined),
+  );
   return c.json({ suggestions: SUGGESTED_QUESTIONS, ...result });
+});
+
+/* ------------------------------------------------------------------ *
+ * Feedback loop — what visitors ask, and what the bot could not answer.
+ * ------------------------------------------------------------------ */
+
+/** Admin: the questions log, plus the ones the bot had to hand to a human. */
+assistant.get("/questions", requireAuth, requireAdmin, async (c) => {
+  const days = Math.min(Math.max(Number(c.req.query("days") ?? 7) || 7, 1), 90);
+  const since = new Date(Date.now() - days * 86_400_000).toISOString();
+  const totals = await c.env.DB.prepare(
+    `SELECT COUNT(*) AS asked, SUM(fallback) AS fallbacks FROM assistant_questions WHERE created_at >= ?`,
+  )
+    .bind(since)
+    .first<{ asked: number; fallbacks: number | null }>();
+  const top = await c.env.DB.prepare(
+    `SELECT LOWER(TRIM(question)) AS q, COUNT(*) AS n
+       FROM assistant_questions WHERE created_at >= ?
+      GROUP BY LOWER(TRIM(question)) HAVING COUNT(*) > 1
+      ORDER BY n DESC LIMIT 15`,
+  )
+    .bind(since)
+    .all<{ q: string; n: number }>();
+  const unanswered = await c.env.DB.prepare(
+    `SELECT question, answer_preview, page, created_at FROM assistant_questions
+      WHERE fallback = 1 AND created_at >= ? ORDER BY created_at DESC LIMIT 40`,
+  )
+    .bind(since)
+    .all<{ question: string; answer_preview: string; page: string | null; created_at: string }>();
+  const recent = await c.env.DB.prepare(
+    `SELECT question, fallback, page, created_at FROM assistant_questions
+      WHERE created_at >= ? ORDER BY created_at DESC LIMIT 40`,
+  )
+    .bind(since)
+    .all<{ question: string; fallback: number; page: string | null; created_at: string }>();
+  return c.json({
+    days,
+    asked: totals?.asked ?? 0,
+    fallbacks: totals?.fallbacks ?? 0,
+    topRepeated: top.results.map((r) => ({ question: r.q, count: r.n })),
+    unanswered: unanswered.results.map((r) => ({
+      question: r.question,
+      answerPreview: r.answer_preview,
+      page: r.page,
+      createdAt: r.created_at,
+    })),
+    recent: recent.results.map((r) => ({
+      question: r.question,
+      fallback: Boolean(r.fallback),
+      page: r.page,
+      createdAt: r.created_at,
+    })),
+  });
 });

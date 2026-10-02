@@ -604,6 +604,51 @@ layers in sync per `AGENTS.md`.
 
 ---
 
+## 13a. Build ledger — shipped 2 October 2026
+
+Everything below is **built, migrated and tested**; "Deploy" is the only step that
+needs the operator (see §13b). Migrations `0061`–`0065`.
+
+| #   | Item                                                                              | What shipped                                                                                                                                                                                                       | Where                                                                                  |
+| --- | --------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------- |
+| 1   | Compliance deadline tracker (30/14/7/3/1/0-day reminders)                         | `compliance_deadlines` + `compliance_reminder_log`; CRUD with `daysUntil` and reminder buckets; annual rows roll forward a year when marked done; `compliance-reminders` job rides the existing `0 2 * * *` tick        | `backend/migrations/0061_*.sql`, `backend/src/routes/compliance.ts`, `backend/src/jobs/scheduled.ts`, `src/routes/app/deadlines.tsx` |
+| 2   | School partnerships (`/schools`) + proposal generator with accept-in-place        | `schools`, `school_inquiries`, `school_proposals`; fee tiers ₦20k/17.5k/15k per student/term (min 20), ref `CEA-SCH-XXXXXX`, rate-limited public enquiry (5/h), public printable proposal that can be accepted online | `backend/migrations/0064_*.sql`, `backend/src/routes/schools.ts`, `src/routes/schools/{index,proposal.$ref}.tsx`, `src/routes/app/schools.tsx` |
+| 3   | Assistant feedback loop (question log + weekly unanswered digest)                 | Every question logged with fallback flag + page; admin digest (7/30/90 days) with totals, repeats, unanswered list                                                                                                 | `backend/migrations/0065_*.sql`, `backend/src/routes/assistant.ts`, `src/routes/app/assistant-insights.tsx` |
+| 4   | Public `/pay` page                                                                | "How to pay" + reference lookup that resolves a registration and shows its review state                                                                                                                            | `src/routes/pay.tsx`                                                                   |
+| 5   | Sequential receipts + printable receipt                                           | `CEA-RCPT-<year>-<seq>` counters, receipt fields on `registration_payments`, public `GET /v1/enrollments/:ref/receipt`, print-ready page                                                                             | `backend/migrations/0062_*.sql`, `backend/src/routes/enrollments.ts`, `src/routes/apply/receipt.$ref.tsx` |
+| 6   | Expenses ledger + monthly P&L CSV                                                 | `POST /v1/expenses`, `GET /v1/pnl.csv?month=YYYY-MM`, one-line entry form, month picker + download on Reports                                                                                                      | `backend/migrations/0062_*.sql`, `backend/src/routes/finance.ts`, `src/components/finance/expense-form.tsx`, `src/routes/app/accountant/{expenses,reports}.tsx` |
+| 7   | Cohorts replace hardcoded intake dates                                            | `cohorts` + `registrations.cohort_id`; public list/next/ICS (WAT = UTC+1), admin CRUD seeded with the 2 Nov 2026 and 16 Feb 2027 web-dev intakes plus the IT diploma and rolling short-course intakes                   | `backend/migrations/0063_*.sql`, `backend/src/routes/cohorts.ts`, `backend/seeds/cohorts-data.sql`, `src/routes/app/admissions/cohorts.tsx` |
+| 8   | Optional Turnstile on the chatbot                                                 | Human check on the *first* message of a conversation only, enforced **only** when `TURNSTILE_SECRET_KEY` is bound — costs nothing and stays off until keys exist                                                    | `backend/src/routes/assistant.ts`, `src/components/assistant/chat-widget.tsx`, `src/components/turnstile.tsx` |
+| 9   | Housekeeping                                                                      | Stale e2e demo password corrected to the shipped seed; `/schools` in the header; Pay fees + Schools & partners in the footer; the new admin pages in the sidebar                                                      | `e2e/{helpers.ts,authz.spec.ts}`, `src/components/marketing/{site-header,site-footer}.tsx`, `src/components/app/app-shell.tsx` |
+
+**Verification:** `backend/test/operations.test.ts` 15/15, `backend/test/assistant.test.ts` 13/13,
+`backend/test/enrollments.test.ts` 22/22; backend `npm run typecheck`, root `npx tsc --noEmit`.
+
+**Still open by design** (not defects):
+
+- Tier-B prices in `docs/port-harcourt-competitor-pricing.md` are **not** wired into the catalogue
+  or the assistant knowledge until you confirm them — say the word and I regenerate
+  (`npm run gen:knowledge` in `backend/`).
+- The CAC annual-return date is **not** guessed in code: the deadline row has to be entered from
+  the portal. The reminders then do the counting.
+
+## 13b. Deploying this batch (operator, ~15 minutes)
+
+```
+cd backend
+npx wrangler login                                  # once per machine
+npx wrangler secret put AI_API_KEY                  # NVIDIA key (rotated)
+npx wrangler d1 migrations apply DB --remote        # 0061–0065
+npm run db:compliance:remove-fabricated:remote      # delete the mock filings
+cd ..
+npm run deploy                                      # frontend to Vercel
+```
+
+Optional after that: `npm run db:seed:demo:remote` (role logins, password `Cea-Demo-2026!`)
+and `npm run db:seed:cohorts:remote`.
+
+---
+
 ## 14. Free-tier limits & risks (know the ceilings)
 
 | Service                             | Free limit                                                                                     | Risk / mitigation                                                                               |
@@ -665,15 +710,19 @@ to overwrite a real account.
 ## 16. Decisions needed from you
 
 1. **CAC/NRS:** what do the portals actually say the due date is? (Send a
-   screenshot and I'll encode it as the first real deadline row.)
-2. **Email:** do you want me to build the own-SMTP path as well as the Brevo
-   provider, or start with `replyTo` + Brevo and revisit?
-3. **Sequencing:** start with Phase 1 (money/UBA) or Phase 4's compliance item
-   (§11) — I'd argue compliance first, because it's the only item with a legal
-   clock on it.
-4. **Two new public pages** worth adding early: `/corporate-training`
-   (with proposal form) and `/pay` (bank-transfer instructions + proof upload) —
-   both are pure lead capture.
+   screenshot and I'll encode it as the first real deadline row in
+   `/app/deadlines` — the reminders count down from it.)
+2. **Email:** do you want the own-SMTP path as well as the Brevo provider, or
+   `replyTo` + Brevo for now?
+3. **Tier-B fees:** confirm the full-package table in
+   `docs/port-harcourt-competitor-pricing.md` (Web Design ₦120k · Web Dev ₦150k ·
+   Digital Marketing ₦140k · Graphic Design ₦100k · Data Analytics ₦180k ·
+   Cybersecurity ₦200k · Mobile ₦180k · AI Productivity ₦250k · UI/UX ₦120k ·
+   Cloud & DevOps ₦300k). Once confirmed they go into the catalogue and the
+   assistant's facts, and the crash/theory tier stays where it is.
+
+_(Resolved since the last pass: sequencing — everything shipped; `/corporate-training`
+and `/pay` — `/pay` shipped, school enquiries now live at `/schools`.)_
 
 ---
 

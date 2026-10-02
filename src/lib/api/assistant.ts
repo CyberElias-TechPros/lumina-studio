@@ -27,10 +27,13 @@ export function fetchAssistantIntro(): Promise<AssistantIntro> {
   return apiFetch<AssistantIntro>("/v1/assistant/intro");
 }
 
-export function askAssistant(messages: AssistantTurn[]): Promise<AssistantReply> {
+export function askAssistant(
+  messages: AssistantTurn[],
+  turnstileToken?: string,
+): Promise<AssistantReply> {
   return apiFetch<AssistantReply>("/v1/assistant/chat", {
     method: "POST",
-    body: { messages },
+    body: { messages, ...(turnstileToken ? { turnstileToken } : {}) },
   });
 }
 

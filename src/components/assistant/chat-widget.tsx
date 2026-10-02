@@ -3,6 +3,7 @@ import { Link } from "@tanstack/react-router";
 import { ArrowUpRight, Bot, GraduationCap, Loader2, MessageCircle, Send, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { useTurnstile } from "@/components/turnstile";
 import { cn } from "@/lib/utils";
 import {
   askAssistant,
@@ -73,6 +74,15 @@ export function ChatWidget() {
   const inputRef = useRef<HTMLInputElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
 
+  // Optional bot protection: one solved challenge per conversation, only when
+  // the site has Turnstile keys configured (no keys → widget renders nothing).
+  const {
+    enabled: captchaEnabled,
+    token: captchaToken,
+    reset: resetCaptcha,
+    Widget: CaptchaWidget,
+  } = useTurnstile();
+
   // Restore this session's conversation and load the server-provided intro.
   useEffect(() => {
     setTurns(readStoredThread());
@@ -119,6 +129,8 @@ export function ChatWidget() {
     return () => window.removeEventListener("keydown", onKey);
   }, [open]);
 
+  const firstMessage = turns.length === 0;
+
   const lastQuestion = useMemo(
     () => [...turns].reverse().find((t) => t.role === "user")?.content ?? "",
     [turns],
@@ -128,13 +140,20 @@ export function ChatWidget() {
     async (text: string) => {
       const question = text.trim();
       if (!question || busy) return;
+      if (firstMessage && captchaEnabled && !captchaToken) {
+        setNote("Please complete the quick human check below first.");
+        return;
+      }
       setDraft("");
       setNote(null);
       const next = [...turns, { role: "user" as const, content: question }].slice(-MAX_TURNS * 2);
       setTurns(next);
       setBusy(true);
       try {
-        const res = await askAssistant(next.slice(-MAX_TURNS));
+        const res = await askAssistant(
+          next.slice(-MAX_TURNS),
+          firstMessage ? captchaToken : undefined,
+        );
         setTurns((prev) => [...prev, { role: "assistant", content: res.answer }]);
         if (res.mock) {
           setNote(
@@ -153,12 +172,13 @@ export function ChatWidget() {
           },
         ]);
         setNote("Connection problem");
+        if (firstMessage) resetCaptcha();
       } finally {
         setBusy(false);
         if (!open) setUnread(true);
       }
     },
-    [busy, open, turns],
+    [busy, captchaEnabled, captchaToken, firstMessage, open, resetCaptcha, turns],
   );
 
   if (!intro.enabled) return null;
@@ -251,6 +271,7 @@ export function ChatWidget() {
           </div>
 
           <div className="border-t px-4 py-3">
+            {firstMessage && captchaEnabled && <CaptchaWidget className="mb-2" />}
             <form
               onSubmit={(e) => {
                 e.preventDefault();
@@ -270,7 +291,11 @@ export function ChatWidget() {
               <Button
                 type="submit"
                 size="icon"
-                disabled={busy || draft.trim().length === 0}
+                disabled={
+                  busy ||
+                  draft.trim().length === 0 ||
+                  (firstMessage && captchaEnabled && !captchaToken)
+                }
                 aria-label="Send question"
               >
                 <Send className="size-4" />

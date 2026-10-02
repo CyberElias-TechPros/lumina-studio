@@ -13,6 +13,34 @@ export interface Expense {
   id: string;
   category: string;
   amount: number;
+  spentOn?: string | null;
+  vendor?: string | null;
+  description?: string | null;
+  method?: string | null;
+  proofUrl?: string | null;
+  recordedBy?: string | null;
+  status?: string;
+}
+
+export interface RecordExpenseInput {
+  spentOn: string;
+  category: string;
+  amount: number;
+  vendor?: string;
+  description?: string;
+  method?: "transfer" | "cash" | "card" | "paystack" | "other";
+  proofUrl?: string;
+}
+
+/** Finance: record an expense in the ledger (the one the P&L reads). */
+export function recordExpense(input: RecordExpenseInput): Promise<{ ok: boolean; id: string }> {
+  return apiFetch("/v1/expenses", { method: "POST", body: input });
+}
+
+/** Absolute URL of the monthly P&L CSV — for a plain <a download>. */
+export function pnlCsvHref(month: string): string {
+  const base = (import.meta.env.VITE_API_URL ?? "").replace(/\/+$/, "");
+  return `${base}/v1/pnl.csv?month=${encodeURIComponent(month)}`;
 }
 
 export interface PaymentBatch {

@@ -33,7 +33,9 @@ It is intentionally small and boring:
 | Widget UI                                                            | `src/components/assistant/chat-widget.tsx`         |
 | Widget API client                                                    | `src/lib/api/assistant.ts`                         |
 | Offline/mock replies                                                 | `src/lib/api/mocks/index.ts`                       |
-| Tests (12)                                                           | `backend/test/assistant.test.ts`                   |
+| Question log + admin digest (`GET /v1/assistant/questions`)          | `backend/src/routes/assistant.ts`                  |
+| Insights screen (7/30/90 days)                                       | `src/routes/app/assistant-insights.tsx`            |
+| Tests (13)                                                           | `backend/test/assistant.test.ts`                   |
 
 The widget is mounted in `src/components/marketing/shell.tsx`, so it appears on
 all public pages (home, courses, contact, apply…). It is **not** shown inside
@@ -65,6 +67,24 @@ If the key is missing or the provider fails, the assistant answers with a
 
 > Treat the key like a password. If it ever appears in a screenshot, a chat, or a
 > commit, rotate it in the NVIDIA console and re-run `wrangler secret put`.
+
+## Optional human check (Turnstile)
+
+The chatbot works with **no** CAPTCHA: the per-IP limit and the daily budget are
+the primary protection. If abuse ever shows up in the question log, set
+`TURNSTILE_SECRET_KEY` (Worker secret) **and** `VITE_TURNSTILE_SITE_KEY` (build
+var) and the widget asks for one human check per conversation — on the first
+message only, never mid-chat. Without the secret bound, the backend ignores the
+field entirely.
+
+## Learning from what people ask
+
+Every question is logged (question, whether the answer was a real model answer or
+the fallback, and which page it came from). `/app/assistant-insights` shows the
+last 7/30/90 days: totals, questions asked more than once, and the ones the bot
+had to hand to a human. Ten minutes a week there turns repeated questions into
+FAQ/page fixes — and the assistant only ever needs its facts regenerated, not
+retrained.
 
 ## Keeping it truthful
 

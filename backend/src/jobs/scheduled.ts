@@ -21,12 +21,16 @@ import { parseDueText } from "../lib/due-dates";
 import { sendSms, sendUserSms } from "../lib/sms";
 
 export type JobName =
-  "reconcile-payments" | "enrollment-reminders" | "assignment-reminders" | "cleanup";
+  | "reconcile-payments"
+  | "enrollment-reminders"
+  | "assignment-reminders"
+  | "compliance-reminders"
+  | "cleanup";
 
 export const CRON_SCHEDULE: Record<string, JobName[]> = {
   "*/15 * * * *": ["reconcile-payments", "assignment-reminders"],
   "0 * * * *": ["enrollment-reminders"],
-  "0 2 * * *": ["cleanup"],
+  "0 2 * * *": ["compliance-reminders", "cleanup"],
 };
 
 function isoMinutesAgo(minutes: number): string {
@@ -291,6 +295,72 @@ export async function assignmentReminders(env: AppEnv, ref: Date = new Date()): 
   return `backfilled ${backfilled}/${legacy.results?.length ?? 0}, reminders ${sent}`;
 }
 
+/* ---------------- compliance-reminders ---------------- */
+
+/**
+ * Regulatory deadlines (CAC annual returns, tax, licences). Sends the
+ * 30/14/7/3/1/0-day warnings to the office inbox, once per bucket per deadline.
+ *
+ * Deliberately data-driven: the date comes from the row a human entered after
+ * reading the portal, never from a hardcoded assumption about when a return is
+ * "probably" due.
+ */
+export async function complianceReminders(env: AppEnv, today: Date = new Date()): Promise<string> {
+  const { REMINDER_BUCKETS, daysUntil } = await import("../routes/compliance");
+  const rows = await env.DB.prepare(
+    `SELECT id, title, authority, due_on, notes FROM compliance_deadlines WHERE status = 'open' ORDER BY due_on ASC LIMIT 50`,
+  ).all<{ id: string; title: string; authority: string; due_on: string; notes: string | null }>();
+
+  let sent = 0;
+  let overdue = 0;
+  for (const row of rows.results) {
+    const days = daysUntil(row.due_on, today);
+    if (days < 0) overdue += 1;
+    // Only the buckets that apply (and, when overdue, only the 0-day notice).
+    const bucket =
+      days < 0 ? 0 : (REMINDER_BUCKETS as readonly number[]).includes(days) ? days : null;
+    if (bucket === null) continue;
+    const already = await env.DB.prepare(
+      `SELECT 1 AS x FROM compliance_reminder_log WHERE deadline_id = ? AND bucket = ?`,
+    )
+      .bind(row.id, bucket)
+      .first<{ x: number }>();
+    if (already) continue;
+
+    const label =
+      days > 0
+        ? `${days} day${days === 1 ? "" : "s"} left`
+        : days === 0
+          ? "due today"
+          : `overdue by ${Math.abs(days)} day${Math.abs(days) === 1 ? "" : "s"}`;
+    const to = env.CONTACT_INBOX || env.EMAIL_REPLY_TO || "help@cea.ng";
+    const ctx = { env } as unknown as { env: AppEnv };
+    try {
+      await sendEmail(ctx, {
+        to,
+        subject: `[Compliance] ${row.title} — ${label}`,
+        html: emailLayout({
+          heading: `${label}: ${row.title}`,
+          bodyHtml: `<p><strong>${row.authority}</strong> · due ${row.due_on} (${label}).</p>
+            ${row.notes ? `<p>${escapeHtml(row.notes)}</p>` : ""}
+            <p>Open CEA-OS → Compliance to mark it filed and attach the acknowledgement.</p>`,
+          cta: { label: "Open compliance", url: `${appUrl(ctx, "/app/government/calendar")}` },
+        }),
+      });
+      sent += 1;
+    } catch {
+      // Best effort: if email fails, don't record the bucket so tomorrow retries.
+      continue;
+    }
+    await env.DB.prepare(
+      `INSERT OR REPLACE INTO compliance_reminder_log (deadline_id, bucket, sent_at) VALUES (?, ?, ?)`,
+    )
+      .bind(row.id, bucket, isoNow())
+      .run();
+  }
+  return `${rows.results.length} open deadlines, ${sent} reminders sent, ${overdue} overdue`;
+}
+
 /* ---------------- cleanup ---------------- */
 
 export async function cleanup(env: AppEnv): Promise<string> {
@@ -316,6 +386,7 @@ const JOBS: Record<JobName, (env: AppEnv) => Promise<string>> = {
   "reconcile-payments": reconcilePayments,
   "enrollment-reminders": enrollmentReminders,
   "assignment-reminders": (env) => assignmentReminders(env),
+  "compliance-reminders": (env) => complianceReminders(env),
   cleanup,
 };
 

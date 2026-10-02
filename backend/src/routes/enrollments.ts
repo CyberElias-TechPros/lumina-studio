@@ -341,8 +341,9 @@ function receiptEmailHtml(input: {
   amount: number;
   kind: "deposit" | "balance" | "full";
   remaining: number;
+  receiptNo?: string | null;
 }): string {
-  const { ref, name, programTitle, amount, kind, remaining } = input;
+  const { ref, name, programTitle, amount, kind, remaining, receiptNo } = input;
   const fmt = new Intl.NumberFormat("en-NG", {
     style: "currency",
     currency: "NGN",
@@ -359,9 +360,11 @@ function receiptEmailHtml(input: {
   return `
   <div style="font-family:Arial,Helvetica,sans-serif;color:#1a1a1a;max-width:560px;margin:0 auto;padding:24px;">
     <h1 style="font-size:20px;margin:0 0 8px;">Payment confirmed — ${ref}</h1>
+    ${receiptNo ? `<p style="font-size:13px;color:#444;">Receipt number: <strong>${receiptNo}</strong></p>` : ""}
     <p>Hi ${name},</p>
     <p>We received your payment for <strong>${programTitle}</strong>: ${line}</p>
     <p>Your seat is held. The welcome pack (schedule, what to bring, notes links) follows once admission confirms your dates.</p>
+    <p style="font-size:13px;">Keep this for your records, or <a href="https://cea.ng/apply/receipt/${ref}">print the receipt</a>.</p>
     <p style="font-size:12px;color:#777;">Cyber Elias Academy · 24/26 Ebony Road, Port Harcourt ·
     <a href="https://wa.me/${ACADEMY_WHATSAPP}">+234 905 862 8386</a></p>
   </div>`;
@@ -959,6 +962,29 @@ enrollments.get("/:ref/payments/verify", async (c) => {
   });
 });
 
+/**
+ * Sequential receipt numbers per calendar year: CEA-RCPT-2026-0001.
+ * Three statements (seed, increment, read) because D1 serialises writes and
+ * markPayment is idempotent, so a retried webhook cannot double-allocate.
+ */
+export async function allocateReceiptNo(db: AppEnv["DB"], now = isoNow()): Promise<string> {
+  const scope = now.slice(0, 4);
+  await db
+    .prepare(`INSERT OR IGNORE INTO receipt_counters (scope, last_value) VALUES (?, 0)`)
+    .bind(scope)
+    .run();
+  await db
+    .prepare(`UPDATE receipt_counters SET last_value = last_value + 1 WHERE scope = ?`)
+    .bind(scope)
+    .run();
+  const row = await db
+    .prepare(`SELECT last_value FROM receipt_counters WHERE scope = ?`)
+    .bind(scope)
+    .first<{ last_value: number }>();
+  const seq = String(row?.last_value ?? 1).padStart(4, "0");
+  return `CEA-RCPT-${scope}-${seq}`;
+}
+
 export async function markPayment(
   c: { env: AppEnv },
   reference: string,
@@ -989,8 +1015,12 @@ export async function markPayment(
   }
 
   const now = isoNow();
-  await c.env.DB.prepare(`UPDATE registration_payments SET status = ?, paid_at = ? WHERE id = ?`)
-    .bind(outcome, outcome === "success" ? now : null, row.id)
+  // Allocate a sequential receipt number on confirmation: CEA-RCPT-<year>-<seq>.
+  const receiptNo = outcome === "success" ? await allocateReceiptNo(c.env.DB, now) : null;
+  await c.env.DB.prepare(
+    `UPDATE registration_payments SET status = ?, paid_at = ?, receipt_no = COALESCE(?, receipt_no) WHERE id = ?`,
+  )
+    .bind(outcome, outcome === "success" ? now : null, receiptNo, row.id)
     .run();
 
   const enrollment = await c.env.DB.prepare(`SELECT * FROM registrations WHERE ref = ?`)
@@ -1029,6 +1059,7 @@ export async function markPayment(
           amount: row.amount,
           kind: row.kind as "deposit" | "balance" | "full",
           remaining: Math.max(0, feeDue - paidAmount),
+          receiptNo,
         }),
       });
     } catch {
@@ -1369,6 +1400,68 @@ enrollments.post("/payment-proofs/:id/reject", requireAuth, requireFinance, asyn
     }
   }
   return c.json({ ok: true, status: "rejected" });
+});
+
+/**
+ * GET /:ref/receipt — public, printable receipt for confirmed payments.
+ * Only payments with status = 'success' are returned; a pending transfer shows
+ * nothing here by design.
+ */
+enrollments.get("/:ref/receipt", async (c) => {
+  const ref = c.req.param("ref").toUpperCase();
+  const row = await c.env.DB.prepare(`SELECT * FROM registrations WHERE ref = ?`)
+    .bind(ref)
+    .first<EnrollmentRow>();
+  if (!row) throw ApiError.notFound("No enrollment found with that reference.");
+  const payments = await c.env.DB.prepare(
+    `SELECT reference, kind, amount, status, paid_at, receipt_no, method
+       FROM registration_payments
+      WHERE registration_ref = ? AND status = 'success'
+      ORDER BY paid_at ASC`,
+  )
+    .bind(ref)
+    .all<{
+      reference: string;
+      kind: string;
+      amount: number;
+      status: string;
+      paid_at: string | null;
+      receipt_no: string | null;
+      method: string | null;
+    }>();
+  const feeDue = feeDueFor(row.program_kind as "short" | "long", row.fee_total, row.payment_plan);
+  return c.json({
+    receipt: {
+      ref: row.ref,
+      studentName: `${row.first_name} ${row.last_name}`.trim(),
+      email: row.email,
+      programTitle: row.program_title,
+      programKind: row.program_kind,
+      issuedBy: {
+        name: "Cyber Elias Academy Ltd",
+        rc: "RC 8413776",
+        tin: "TIN 1086525399",
+        address: "24/26 Ebony Road, off Rumuola Road, Port Harcourt",
+        email: "help@cea.ng",
+        phone: "+234 905 862 8386",
+      },
+      feeTotal: row.fee_total,
+      feeDue,
+      paidAmount: row.paid_amount,
+      balance: Math.max(0, feeDue - row.paid_amount),
+      payments: payments.results.map((p) => ({
+        reference: p.reference,
+        kind: p.kind,
+        amount: p.amount,
+        method: p.method ?? "paystack",
+        receiptNo: p.receipt_no,
+        paidAt: p.paid_at,
+      })),
+      /** Null until a payment is confirmed — drives the "nothing yet" state. */
+      latestReceiptNo: payments.results.at(-1)?.receipt_no ?? null,
+      issuedAt: payments.results.at(-1)?.paid_at ?? null,
+    },
+  });
 });
 
 /** GET /:ref — public applicant status (events + payment state). */

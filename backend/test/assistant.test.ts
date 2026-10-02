@@ -1,4 +1,5 @@
 import { beforeAll, describe, expect, it } from "vitest";
+import { env } from "cloudflare:workers";
 import { api, setupDb } from "./helpers";
 import {
   FALLBACK_ANSWER,
@@ -141,5 +142,46 @@ describe("assistant grounding", () => {
   it("offers starter questions that match real courses", () => {
     expect(SUGGESTED_QUESTIONS.length).toBeGreaterThanOrEqual(4);
     expect(SUGGESTED_QUESTIONS.some((s) => /web development/i.test(s))).toBe(true);
+  });
+});
+
+describe("assistant human check (optional Turnstile)", () => {
+  it("is skipped while no secret is bound, and enforced on the first turn once one is", async () => {
+    // No TURNSTILE_SECRET_KEY in the test bindings → first message needs no token.
+    const open = await api("/v1/assistant/chat", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ messages: [{ role: "user", content: "Do you teach Excel?" }] }),
+    });
+    expect(open.status).toBe(200);
+
+    (env as { TURNSTILE_SECRET_KEY?: string }).TURNSTILE_SECRET_KEY = "test-secret-key";
+    try {
+      const blocked = await api("/v1/assistant/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ messages: [{ role: "user", content: "Do you teach Excel?" }] }),
+      });
+      expect(blocked.status).toBe(400);
+      expect(((await blocked.json()) as { error?: { code?: string } }).error?.code).toBe(
+        "CAPTCHA_REQUIRED",
+      );
+
+      // Later turns of the same conversation are not re-challenged.
+      const later = await api("/v1/assistant/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          messages: [
+            { role: "user", content: "Do you teach Excel?" },
+            { role: "assistant", content: "Yes — Microsoft Office is one of our courses." },
+            { role: "user", content: "How much is it?" },
+          ],
+        }),
+      });
+      expect(later.status).toBe(200);
+    } finally {
+      delete (env as { TURNSTILE_SECRET_KEY?: string }).TURNSTILE_SECRET_KEY;
+    }
   });
 });

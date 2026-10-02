@@ -16,6 +16,7 @@ import { registerLiveMocks } from "@/lib/api/mocks/live";
 import { registerUploadsMocks } from "@/lib/api/mocks/uploads";
 import { registerAiMocks } from "@/lib/api/mocks/ai";
 import { registerEnrollmentMocks } from "@/lib/api/mocks/enrollments";
+import { registerOperationsMocks } from "@/lib/api/mocks/operations";
 import { registerAccountMocks } from "@/lib/api/mocks/account";
 import { registerPortalMocks } from "@/lib/api/mocks/portal";
 import {
@@ -253,6 +254,7 @@ export function registerAllMocks(): void {
   registerUploadsMocks();
   registerAiMocks();
   registerEnrollmentMocks();
+  registerOperationsMocks();
   registerAccountMocks();
   registerPortalMocks();
 

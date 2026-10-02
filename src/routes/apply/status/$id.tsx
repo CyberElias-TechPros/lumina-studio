@@ -18,6 +18,7 @@ import { PageShell, PageHero, CTASection } from "@/components/marketing/shell";
 import { Reveal, StaggerGroup, StaggerItem } from "@/components/motion";
 import { cn } from "@/lib/utils";
 import { useEnrollmentStatus } from "@/lib/query/enrollments";
+import { BankTransferForm } from "@/components/enrollment/bank-transfer-form";
 
 export const Route = createFileRoute("/apply/status/$id")({
   head: () => ({
@@ -191,6 +192,21 @@ function ApplyStatusDetailPage() {
                             Pay / ask about payment
                           </a>
                         </Button>
+                      </CardContent>
+                      <CardContent className="border-t px-5 pt-4 pb-5">
+                        {/* Report a bank transfer from here too — students often
+                            come back to this page days after applying. */}
+                        <BankTransferForm
+                          refCode={status.data.ref}
+                          deposit={
+                            payment.plan === "50-50"
+                              ? Math.round((payment.amountDue + payment.paidAmount) / 2)
+                              : payment.plan === "deposit-monthly"
+                                ? Math.round((payment.amountDue + payment.paidAmount) * 0.3)
+                                : null
+                          }
+                          due={payment.amountDue + payment.paidAmount}
+                        />
                       </CardContent>
                     </Card>
                   </Reveal>

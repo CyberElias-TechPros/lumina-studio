@@ -20,9 +20,11 @@ const columns = [
       { label: "About", to: "/about" },
       { label: "Admissions", to: "/admissions" },
       { label: "Apply", to: "/apply" },
+      { label: "Pay fees", to: "/pay" },
       { label: "FAQ", to: "/faq" },
       { label: "Visit", to: "/visit" },
       { label: "Team", to: "/team" },
+      { label: "Schools & partners", to: "/schools" },
     ],
   },
   {
