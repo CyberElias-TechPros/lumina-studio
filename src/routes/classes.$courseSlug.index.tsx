@@ -332,10 +332,7 @@ function CoursePage() {
                     </dd>
                   </div>
                 </dl>
-                <Button
-                  asChild
-                  className="mt-6 w-full"
-                >
+                <Button asChild className="mt-6 w-full">
                   <Link to="/apply">Apply</Link>
                 </Button>
               </div>
@@ -351,9 +348,10 @@ function CoursePage() {
                 Week by week
               </h2>
               <p className="text-foreground/75 mt-4 text-body-lg text-pretty">
-                {course.weeks} weeks, {course.sessions.length} practical sessions. Click any session
-                to read the complete class lecture — objectives, taught content, the instructor
-                demonstration, practice, mistakes to avoid, homework and the marking rubric.
+                {course.weeks} weeks, {course.sessions.length} practical sessions.{" "}
+                {course.publishedCount} of {course.sessions.length} sessions currently have a full
+                lecture; each session link is labelled so you can tell a complete lesson from a
+                topic outline before opening it.
               </p>
             </div>
 
@@ -484,16 +482,16 @@ function CoursePage() {
                     <CourseCover slug={other.slug} />
                   </div>
                   <div className="flex flex-1 flex-col p-6">
-                  <h3 className="font-display inline-flex items-center gap-2 text-lg leading-snug font-semibold transition-colors group-hover:text-primary">
-                    <CourseIcon slug={other.slug} className="text-primary size-4 shrink-0" />
-                    {other.title}
-                  </h3>
-                  <p className="text-foreground/70 mt-3 flex-1 text-[13.5px] leading-relaxed">
-                    {other.hook}
-                  </p>
-                  <span className="text-foreground/60 mt-4 text-xs">
-                    {formatFee(other.fee)} · {other.weeks} weeks
-                  </span>
+                    <h3 className="font-display inline-flex items-center gap-2 text-lg leading-snug font-semibold transition-colors group-hover:text-primary">
+                      <CourseIcon slug={other.slug} className="text-primary size-4 shrink-0" />
+                      {other.title}
+                    </h3>
+                    <p className="text-foreground/70 mt-3 flex-1 text-[13.5px] leading-relaxed">
+                      {other.hook}
+                    </p>
+                    <span className="text-foreground/60 mt-4 text-xs">
+                      {formatFee(other.fee)} · {other.weeks} weeks
+                    </span>
                   </div>
                 </Link>
               ))}

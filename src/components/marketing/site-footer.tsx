@@ -9,6 +9,7 @@ const columns = [
     title: "Courses",
     links: [
       { label: "All courses", to: "/classes" },
+      { label: "Find your starting course", to: "/classes#course-finder" },
       { label: "Microsoft Office", to: "/classes/microsoft-office" },
       { label: "Computer Basics", to: "/classes/computer-basics-typing" },
       { label: "Graphic Design", to: "/classes/graphic-design" },
@@ -19,6 +20,7 @@ const columns = [
     title: "Academy",
     links: [
       { label: "Notes", to: "/blog" },
+      { label: "Editorial approach", to: "/editorial" },
       { label: "Digital services", to: "/services" },
       { label: "Partnerships", to: "/partners" },
       { label: "Request a project", to: "/request-project" },

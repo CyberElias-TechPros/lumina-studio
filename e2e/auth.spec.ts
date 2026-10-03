@@ -1,4 +1,4 @@
-﻿import { expect } from "@playwright/test";
+import { expect } from "@playwright/test";
 import { test, signInViaUi, DEMO_USERS, DEMO_PASSWORD } from "./helpers";
 
 test.describe("Auth journey", () => {
@@ -6,6 +6,12 @@ test.describe("Auth journey", () => {
     await page.goto("/app");
     await page.waitForURL("**/auth/sign-in**", { timeout: 20_000 });
     await expect(page.getByRole("heading", { name: /welcome back/i })).toBeVisible();
+  });
+
+  test("missing magic-link token has a clear recovery path", async ({ page }) => {
+    await page.goto("/auth/magic-link");
+    await expect(page.getByRole("heading", { name: /no sign-in link found/i })).toBeVisible();
+    await expect(page.getByRole("link", { name: /go to sign in/i })).toBeVisible();
   });
 
   test("wrong password shows a clear error and does not sign in", async ({ page }) => {

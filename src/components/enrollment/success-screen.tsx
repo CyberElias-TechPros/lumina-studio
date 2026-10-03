@@ -24,6 +24,8 @@ import {
   verifyEnrollmentPayment,
   formatNaira,
 } from "@/lib/api/enrollments";
+import { fetchNextCohort, type Cohort } from "@/lib/api/operations";
+import { downloadCohortCalendar } from "@/lib/calendar";
 import { BankTransferForm } from "./bank-transfer-form";
 import { ApiError } from "@/lib/errors";
 import { cn } from "@/lib/utils";
@@ -42,25 +44,16 @@ interface SuccessScreenProps {
 
 const ACADEMY_WA = "2349058628386";
 
-/** ICS invite for the long-form cohort start (first class day). */
-function cohortIcsHref(title: string): string {
-  // 2 Nov 2026 10:00 WAT (UTC+1) = 09:00 UTC.
-  const lines = [
-    "BEGIN:VCALENDAR",
-    "VERSION:2.0",
-    "PRODID:-//Cyber Elias Academy//Enrollment//EN",
-    "BEGIN:VEVENT",
-    `UID:cea-${title.toLowerCase().replace(/\s+/g, "-")}@cea.ng`,
-    "DTSTAMP:20260925T000000Z",
-    "DTSTART:20261102T090000Z",
-    "DTEND:20261102T110000Z",
-    `SUMMARY:${title} — first class day (Cyber Elias Academy)`,
-    "LOCATION:24/26 Ebony Road\\, Off Rumuola Road\\, Port Harcourt",
-    "DESCRIPTION:Arrive 10 minutes early. Bring your laptop and a notebook.",
-    "END:VEVENT",
-    "END:VCALENDAR",
-  ];
-  return `data:text/calendar;charset=utf-8,${encodeURIComponent(lines.join("\r\n"))}`;
+function formatCohortDate(value: string): string {
+  const date = new Date(`${value}T12:00:00.000Z`);
+  if (Number.isNaN(date.getTime())) return value;
+  return new Intl.DateTimeFormat("en-NG", {
+    weekday: "short",
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+    timeZone: "Africa/Lagos",
+  }).format(date);
 }
 
 export function SuccessScreen({
@@ -81,6 +74,11 @@ export function SuccessScreen({
     | { status: "error"; message: string }
   >({ status: "idle" });
   const [copied, setCopied] = useState(false);
+  const [cohortLookup, setCohortLookup] = useState<
+    | { status: "idle" | "loading" }
+    | { status: "ready"; cohort: Cohort | null }
+    | { status: "unavailable" }
+  >(() => (meta?.kind === "long" ? { status: "loading" } : { status: "idle" }));
 
   const { due } = meta ? feeFor(meta, plan) : { due: 0 };
   const deposit =
@@ -98,6 +96,27 @@ export function SuccessScreen({
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [payReference]);
+
+  useEffect(() => {
+    if (meta?.kind !== "long") {
+      setCohortLookup({ status: "idle" });
+      return;
+    }
+
+    let active = true;
+    setCohortLookup({ status: "loading" });
+    void fetchNextCohort(meta.slug)
+      .then(({ cohort }) => {
+        if (active) setCohortLookup({ status: "ready", cohort });
+      })
+      .catch(() => {
+        if (active) setCohortLookup({ status: "unavailable" });
+      });
+
+    return () => {
+      active = false;
+    };
+  }, [meta?.kind, meta?.slug]);
 
   async function copyRef() {
     try {
@@ -327,14 +346,45 @@ export function SuccessScreen({
             ))}
           </ol>
           {meta?.kind === "long" && (
-            <a
-              href={cohortIcsHref(meta.title)}
-              download={`${meta.slug}-first-class.ics`}
-              className="text-primary mt-4 inline-flex items-center gap-1.5 text-xs font-semibold underline-offset-2 hover:underline"
-            >
-              <CalendarPlus className="size-3.5" /> Add first class day (Mon 2 Nov 2026, 10:00) to
-              your calendar
-            </a>
+            <div className="mt-4">
+              {cohortLookup.status === "loading" && (
+                <p className="text-muted-foreground text-xs" role="status">
+                  Checking the current cohort dates…
+                </p>
+              )}
+              {cohortLookup.status === "ready" && cohortLookup.cohort && (
+                <>
+                  <Button
+                    type="button"
+                    variant="outline"
+                    size="sm"
+                    className="font-semibold"
+                    onClick={() => downloadCohortCalendar(cohortLookup.cohort!)}
+                  >
+                    <CalendarPlus className="size-3.5" /> Add{" "}
+                    {formatCohortDate(cohortLookup.cohort.startDate)}
+                    to your calendar
+                  </Button>
+                  <p className="text-muted-foreground mt-2 text-xs leading-relaxed">
+                    Based on the listed cohort: {cohortLookup.cohort.label} ·{" "}
+                    {cohortLookup.cohort.days} · {cohortLookup.cohort.timeSlot}. Admissions can
+                    confirm any schedule changes.
+                  </p>
+                </>
+              )}
+              {cohortLookup.status === "ready" && !cohortLookup.cohort && (
+                <p className="text-muted-foreground text-xs leading-relaxed" role="status">
+                  No upcoming cohort date is recorded yet. Admissions will confirm your start date;
+                  a calendar invite will be available when it is set.
+                </p>
+              )}
+              {cohortLookup.status === "unavailable" && (
+                <p className="text-muted-foreground text-xs leading-relaxed" role="status">
+                  Current cohort dates could not be loaded. Admissions will confirm your start date
+                  and schedule directly.
+                </p>
+              )}
+            </div>
           )}
         </CardContent>
       </Card>

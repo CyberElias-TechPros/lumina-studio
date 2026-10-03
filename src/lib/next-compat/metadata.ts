@@ -14,6 +14,7 @@ type RouteSeo = {
   description: string;
   image?: string;
   type?: string;
+  noIndex?: boolean;
 };
 
 function humanizeRoute(entry: RouteManifestEntry): string {
@@ -60,11 +61,14 @@ function routeSeo(
         seo.title = `${course.title} — Session ${match.session.number}: ${match.session.title} — ${SITE_NAME}`;
         seo.description =
           lecture?.summary ??
-          `Full class notes for ${course.title} session ${match.session.number}: ${match.session.topics.slice(0, 6).join(", ")}.`;
-        seo.type = "article";
-      } else {
+          `Session outline for ${course.title} session ${match.session.number}: ${match.session.topics.slice(0, 6).join(", ")}.`;
+        seo.type = lecture ? "article" : "website";
+        seo.noIndex = !lecture;
+      } else if (!params.sessionSlug) {
         seo.title = `${course.title} — ${course.weeks}-Week Practical Course at ${SITE_NAME}`;
-        seo.description = `${course.hook} ${formatFee(course.fee)}, ${course.weeks} weeks, ${course.sessions.length} practical sessions with full class notes published for every session.`;
+        seo.description = `${course.hook} ${formatFee(course.fee)}, ${course.weeks} weeks, ${course.sessions.length} practical sessions. Course pages show the published notes, session outlines and requirements.`;
+      } else {
+        seo.noIndex = true;
       }
     }
   }
@@ -83,6 +87,13 @@ function routeSeo(
   }
 
   return seo;
+}
+
+function isOutlineOnlySessionPath(pathname: string): boolean {
+  const match = pathname.match(/^\/classes\/([^/]+)\/([^/]+)\/?$/);
+  if (!match) return false;
+  const session = findSession(decodeURIComponent(match[1]), decodeURIComponent(match[2]));
+  return Boolean(session && !session.session.lecture);
 }
 
 function isPrivatePath(pathname: string): boolean {
@@ -116,7 +127,8 @@ export function getNextRouteMetadata(
       ? seo.image
       : `${SITE_ORIGIN}${seo.image.startsWith("/") ? "" : "/"}${seo.image}`
     : `${SITE_ORIGIN}/og-default.png`;
-  const noIndex = isPrivatePath(pathname);
+  const noIndex =
+    isPrivatePath(pathname) || Boolean(seo.noIndex) || isOutlineOnlySessionPath(pathname);
 
   return {
     title: { absolute: seo.title },

@@ -15,6 +15,7 @@ const publicPages = [
   { path: "/work", title: "About" },
   { path: "/community", title: "About" },
   { path: "/blog", title: "Notes" },
+  { path: "/editorial", title: "How we make and maintain" },
   { path: "/faq", title: "FAQ" },
   { path: "/events", title: "Visit" },
   { path: "/scholarships", title: "Admissions" },
@@ -91,6 +92,21 @@ test("sitemap.xml is valid XML", async ({ page }) => {
   expect(content).toContain("<urlset");
   expect(content).toContain("<url>");
   expect(content).toContain("<loc>");
+});
+
+test("every sitemap destination resolves successfully", async ({ request }) => {
+  const sitemap = await request.get("/sitemap.xml");
+  expect(sitemap.status()).toBe(200);
+  const xml = await sitemap.text();
+  const paths = [...xml.matchAll(/<loc>https:\/\/cea\.ng([^<]*)<\/loc>/g)].map((match) => match[1]);
+  expect(paths.length).toBeGreaterThan(0);
+
+  const failures: string[] = [];
+  for (const path of paths) {
+    const response = await request.get(path);
+    if (response.status() !== 200) failures.push(`${response.status()} ${path}`);
+  }
+  expect(failures, `Broken sitemap destinations:\n${failures.join("\n")}`).toEqual([]);
 });
 
 test("Apply now button links to admissions", async ({ page }) => {

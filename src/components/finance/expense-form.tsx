@@ -164,6 +164,7 @@ export function ExpenseForm({ onDone }: { onDone?: () => void }) {
 /** Month picker + CSV download for the P&L the accountant files each month. */
 export function PnlDownload({ className }: { className?: string }) {
   const [month, setMonth] = useState(() => new Date().toISOString().slice(0, 7));
+  const href = pnlCsvHref(month);
   return (
     <div className={cn("flex flex-wrap items-end gap-2", className)}>
       <label className="text-xs font-medium">
@@ -175,11 +176,22 @@ export function PnlDownload({ className }: { className?: string }) {
           className="border-input bg-background focus-visible:ring-ring mt-1 block rounded-lg border px-3 py-2 text-sm focus-visible:ring-1 focus-visible:outline-none"
         />
       </label>
-      <Button asChild size="sm" className="font-semibold">
-        <a href={pnlCsvHref(month)} download>
-          Download P&L (CSV)
-        </a>
-      </Button>
+      {href ? (
+        <Button asChild size="sm" className="font-semibold">
+          <a href={href} download>
+            Download P&L (CSV)
+          </a>
+        </Button>
+      ) : (
+        <div>
+          <Button size="sm" className="font-semibold" disabled>
+            Download P&L (CSV)
+          </Button>
+          <p className="text-muted-foreground mt-1 text-[11px]" role="status">
+            Available when the finance API is connected.
+          </p>
+        </div>
+      )}
     </div>
   );
 }
