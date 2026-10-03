@@ -5,7 +5,7 @@
  *   every 15 min  → reconcile-payments   (Paystack verify for stuck "pending" sessions)
  *                 → assignment-reminders (24h + 1h before due_at; app + email + opted-in SMS)
  *   hourly        → enrollment-reminders (unpaid registrations after 24h; balance nudges weekly)
- *   daily 02:00   → cleanup              (expired tokens/sessions, old ledgers)
+ *   daily 02:00   → cleanup              (expired tokens/sessions, old ledgers, aged business intake)
  *
  * Every job is idempotent and bounded (LIMITs) so a retried or overlapping
  * invocation can't double-send or run away. Runs are recorded in `job_runs`.
@@ -368,6 +368,7 @@ export async function cleanup(env: AppEnv): Promise<string> {
   const week = isoMinutesAgo(60 * 24 * 7);
   const month = isoMinutesAgo(60 * 24 * 30);
   const quarter = isoMinutesAgo(60 * 24 * 90);
+  const businessRetention = isoMinutesAgo(60 * 24 * 365 * 2);
   const results = await env.DB.batch([
     env.DB.prepare(`DELETE FROM magic_links WHERE expires_at < ?`).bind(week),
     env.DB.prepare(
@@ -375,9 +376,17 @@ export async function cleanup(env: AppEnv): Promise<string> {
     ).bind(month, month),
     env.DB.prepare(`DELETE FROM webhook_events WHERE received_at < ?`).bind(quarter),
     env.DB.prepare(`DELETE FROM job_runs WHERE started_at < ?`).bind(quarter),
+    env.DB.prepare(`DELETE FROM project_inquiries WHERE updated_at < ? AND status <> 'won'`).bind(
+      businessRetention,
+    ),
+    env.DB.prepare(
+      `DELETE FROM partner_applications WHERE updated_at < ? AND status <> 'admitted'`,
+    ).bind(businessRetention),
   ]);
-  const [links, sessions, hooks, runs] = results.map((r) => r.meta.changes ?? 0);
-  return `at ${now}: magic_links ${links}, sessions ${sessions}, webhook_events ${hooks}, job_runs ${runs}`;
+  const [links, sessions, hooks, runs, projectInquiries, partnerApplications] = results.map(
+    (r) => r.meta.changes ?? 0,
+  );
+  return `at ${now}: magic_links ${links}, sessions ${sessions}, webhook_events ${hooks}, job_runs ${runs}, project_inquiries ${projectInquiries}, partner_applications ${partnerApplications}`;
 }
 
 /* ---------------- runner ---------------- */

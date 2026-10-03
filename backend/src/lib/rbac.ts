@@ -64,6 +64,15 @@ export const RBAC_RULES: RbacRule[] = [
   },
   { methods: ["DELETE"], path: "/v1/compliance/deadlines/:id", roles: ["admin"] },
 
+  /* Public project + partner intake; private review queue and explicit admission. */
+  { methods: ["POST"], path: "/v1/business-intake/projects", public: true },
+  { methods: ["POST"], path: "/v1/business-intake/partners", public: true },
+  { methods: ["GET"], path: "/v1/business-intake/admin/projects", roles: ["admin"] },
+  { methods: ["PATCH"], path: "/v1/business-intake/admin/projects/:id", roles: ["admin"] },
+  { methods: ["GET"], path: "/v1/business-intake/admin/partners", roles: ["admin"] },
+  { methods: ["PATCH"], path: "/v1/business-intake/admin/partners/:id", roles: ["admin"] },
+  { methods: ["POST"], path: "/v1/business-intake/admin/partners/:id/admit", roles: ["admin"] },
+
   /* Schools programme: public enquiry + shareable proposal; staff workspace. */
   { methods: ["POST"], path: "/v1/schools/inquiries", public: true },
   { methods: ["GET"], path: "/v1/schools/proposals/:ref", public: true },

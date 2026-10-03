@@ -194,9 +194,9 @@ export function ChatWidget() {
         aria-label={open ? "Close the CEA assistant" : "Ask the CEA assistant a question"}
         aria-expanded={open}
         className={cn(
-          "fixed right-4 bottom-4 z-[80] flex items-center gap-2 rounded-full px-4 py-3 text-sm font-semibold shadow-lg transition-transform",
+          "fixed right-4 bottom-20 z-[80] flex items-center gap-2 rounded-full px-4 py-3 text-sm font-semibold shadow-lg transition-transform",
           "bg-primary text-primary-foreground hover:scale-[1.03] focus-visible:ring-ring focus-visible:ring-2 focus-visible:outline-none",
-          "sm:right-6 sm:bottom-6",
+          "sm:right-6 sm:bottom-20",
         )}
       >
         {open ? <X className="size-5" /> : <MessageCircle className="size-5" />}
@@ -214,8 +214,8 @@ export function ChatWidget() {
           aria-modal="false"
           aria-label="CEA assistant"
           className={cn(
-            "bg-card fixed right-4 bottom-20 z-[80] flex w-[min(92vw,26rem)] flex-col overflow-hidden rounded-2xl border shadow-2xl",
-            "max-h-[min(75vh,34rem)] sm:right-6 sm:bottom-24",
+            "bg-card fixed right-4 bottom-36 z-[80] flex w-[min(92vw,26rem)] flex-col overflow-hidden rounded-2xl border shadow-2xl",
+            "max-h-[calc(100dvh-14rem)] sm:max-h-[min(65vh,34rem)] sm:right-6 sm:bottom-36",
           )}
         >
           <header className="bg-primary text-primary-foreground flex items-center gap-3 px-4 py-3">

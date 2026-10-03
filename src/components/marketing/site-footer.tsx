@@ -19,6 +19,9 @@ const columns = [
     title: "Academy",
     links: [
       { label: "Notes", to: "/blog" },
+      { label: "Digital services", to: "/services" },
+      { label: "Partnerships", to: "/partners" },
+      { label: "Request a project", to: "/request-project" },
       { label: "About", to: "/about" },
       { label: "Admissions", to: "/admissions" },
       { label: "Apply", to: "/apply" },

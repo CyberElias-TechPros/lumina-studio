@@ -24,7 +24,7 @@ export interface AppEnv {
   AI_MODEL: string;
   /** Optional Sentry/GlitchTip DSN — enables server error reporting. */
   SENTRY_DSN?: string;
-  /** Inbox that receives contact-form notifications (defaults to none). */
+  /** Optional notification inbox; business intake also falls back to EMAIL_REPLY_TO/help@cea.ng. */
   CONTACT_INBOX?: string;
   /** Protects GET /v1/cron/run for manual job triggering (optional). */
   CRON_SECRET?: string;

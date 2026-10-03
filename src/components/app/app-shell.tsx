@@ -263,6 +263,11 @@ export const appRoles: AppRole[] = [
       { label: "Admin Hub", icon: <LayoutDashboard className="size-4" />, to: "/app/admin" },
       { label: "User Management", icon: <Users className="size-4" />, to: "/app/admin/users" },
       {
+        label: "Business intake",
+        icon: <BriefcaseBusiness className="size-4" />,
+        to: "/app/admin/intake",
+      },
+      {
         label: "Roles & Permissions",
         icon: <ShieldCheck className="size-4" />,
         to: "/app/admin/roles",

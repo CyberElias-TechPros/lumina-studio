@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 
 const nav = [
   { label: "Courses", to: "/classes" },
+  { label: "Services", to: "/services" },
   { label: "Shop", to: "/shop" },
   { label: "Notes", to: "/blog" },
   { label: "Admissions", to: "/admissions" },
@@ -96,7 +97,7 @@ export function SiteHeader() {
     >
       <div className="container-page flex h-16 items-center justify-between gap-6">
         <BrandMark />
-        <nav className="hidden items-center gap-6 md:flex" aria-label="Primary">
+        <nav className="hidden items-center gap-4 lg:flex xl:gap-5" aria-label="Primary">
           {nav.map((item) => {
             const active = pathname === item.to || pathname.startsWith(`${item.to}/`);
             return (
@@ -133,7 +134,7 @@ export function SiteHeader() {
           </Link>
           <button
             type="button"
-            className="border-border hover:bg-muted grid size-9 place-items-center rounded-md border md:hidden"
+            className="border-border hover:bg-muted grid size-9 place-items-center rounded-md border lg:hidden"
             aria-label={open ? "Close menu" : "Menu"}
             aria-expanded={open}
             onClick={() => setOpen((v) => !v)}
@@ -144,7 +145,7 @@ export function SiteHeader() {
       </div>
       {open && (
         <div
-          className="border-border bg-background border-t md:hidden"
+          className="border-border bg-background border-t lg:hidden"
           role="dialog"
           aria-modal="true"
           aria-label="Site menu"

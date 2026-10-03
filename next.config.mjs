@@ -41,6 +41,7 @@ const nextConfig = {
       { source: "/portal/:path*", headers: [{ key: "X-Robots-Tag", value: "noindex" }] },
       { source: "/apply/status", headers: privateRobotsHeader },
       { source: "/apply/status/:path*", headers: privateRobotsHeader },
+      { source: "/partners/apply", headers: privateRobotsHeader },
     ];
   },
 };

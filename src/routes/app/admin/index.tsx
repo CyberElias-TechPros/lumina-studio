@@ -5,6 +5,7 @@ import { Link } from "@/lib/next-compat/router";
 import {
   ArrowLeft,
   ArrowRight,
+  BriefcaseBusiness,
   Gauge,
   KeyRound,
   ScrollText,
@@ -73,6 +74,13 @@ const screens = [
     desc: "Service tokens",
     path: "/app/admin/api-keys",
     tone: "bg-services/10 text-services",
+  },
+  {
+    icon: BriefcaseBusiness,
+    label: "Business intake",
+    desc: "Project briefs, partner applications",
+    path: "/app/admin/intake",
+    tone: "bg-career/10 text-career",
   },
 ];
 
