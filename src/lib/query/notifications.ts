@@ -2,9 +2,11 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { usePaginatedQuery, flattenPages } from "@/lib/query/hooks";
 import {
   fetchNotifications,
+  fetchUnreadNotificationCount,
   markAllNotificationsRead as apiMarkAllRead,
   markNotificationRead as apiMarkRead,
   type AppNotification,
+  type UnreadNotificationCount,
 } from "@/lib/api/notifications";
 import {
   fetchNotificationPreferences,
@@ -14,8 +16,20 @@ import {
 
 export const notificationKeys = {
   all: ["notifications"] as const,
+  unreadCount: ["notifications", "unread-count"] as const,
   preferences: ["notifications", "preferences"] as const,
 };
+
+export function useUnreadNotificationCount(enabled = true) {
+  return useQuery<UnreadNotificationCount>({
+    queryKey: notificationKeys.unreadCount,
+    queryFn: fetchUnreadNotificationCount,
+    enabled,
+    staleTime: 30_000,
+    refetchInterval: enabled ? 60_000 : false,
+    refetchOnWindowFocus: true,
+  });
+}
 
 export function useNotificationPreferences() {
   return useQuery<NotificationPreferences>({
@@ -38,6 +52,7 @@ export function useMarkNotificationRead() {
     mutationFn: (id: string) => apiMarkRead(id),
     onSuccess: () => {
       void queryClient.invalidateQueries({ queryKey: notificationKeys.all });
+      void queryClient.invalidateQueries({ queryKey: notificationKeys.unreadCount });
     },
   });
 }
@@ -48,6 +63,7 @@ export function useMarkAllNotificationsRead() {
     mutationFn: () => apiMarkAllRead(),
     onSuccess: () => {
       void queryClient.invalidateQueries({ queryKey: notificationKeys.all });
+      void queryClient.invalidateQueries({ queryKey: notificationKeys.unreadCount });
     },
   });
 }

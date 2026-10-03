@@ -873,6 +873,12 @@ export function registerAllMocks(): void {
       total: notifications.length,
     };
   });
+  registerMock("GET", "/v1/notifications/unread-count", async () => {
+    await delay();
+    return {
+      count: notifications.filter((_, index) => !readNotificationIds.has(`nt-${index + 1}`)).length,
+    };
+  });
   registerMock("POST", "/v1/notifications/read-all", async () => {
     await delay();
     notifications.forEach((_, i) => readNotificationIds.add(`nt-${i + 1}`));
@@ -881,7 +887,7 @@ export function registerAllMocks(): void {
   registerMockPattern("POST", "/v1/notifications/*/read", async (init) => {
     await delay();
     const id = (init.path ?? "").split("/").at(-2) ?? "";
-    if (!/^nt-\\d+$/.test(id)) throw new ApiError(404, "NOT_FOUND", "Notification not found.");
+    if (!/^nt-\d+$/.test(id)) throw new ApiError(404, "NOT_FOUND", "Notification not found.");
     readNotificationIds.add(id);
     return { ok: true, read: true };
   });

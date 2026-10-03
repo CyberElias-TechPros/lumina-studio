@@ -1,7 +1,8 @@
 "use client";
 
 import { createFileRoute } from "@/lib/next-compat/route-definition";
-import { Link } from "@/lib/next-compat/router";
+import { Link, useNavigate } from "@/lib/next-compat/router";
+import { useEffect } from "react";
 import {
   ArrowRight,
   Award,
@@ -12,6 +13,7 @@ import {
   Clock,
   Flame,
   GraduationCap,
+  Loader2,
   MessageSquare,
   Target,
   Users,
@@ -24,7 +26,7 @@ import { QueryState } from "@/components/ui/query-state";
 import { AppShell } from "@/components/app/app-shell";
 import { SceneArt } from "@/components/art/scene-art";
 import { useSession } from "@/lib/auth/session";
-import { resolveRoleKey } from "@/data/rbac";
+import { getRoleHomePath, resolveRoleKey } from "@/data/rbac";
 import { useStudentDashboard } from "@/lib/query/dashboard";
 import type { StudentDashboard } from "@/lib/api/dashboard";
 
@@ -43,10 +45,36 @@ export const Route = createFileRoute("/app/")({
 });
 
 function Dashboard() {
-  const { data } = useSession();
+  const { data, isPending } = useSession();
+  const navigate = useNavigate();
   const role = resolveRoleKey(data?.user.roleKey);
+  const homePath = getRoleHomePath(role);
+  const shouldOpenRoleWorkspace = !isPending && homePath !== "/app";
   const name = data?.user.name?.split(" ")[0] ?? "there";
-  const studentDashboardQuery = useStudentDashboard(role === "student");
+  const studentDashboardQuery = useStudentDashboard(
+    !isPending && role === "student" && Boolean(data?.user),
+  );
+
+  useEffect(() => {
+    if (shouldOpenRoleWorkspace) void navigate({ to: homePath });
+  }, [homePath, navigate, shouldOpenRoleWorkspace]);
+
+  if (isPending || shouldOpenRoleWorkspace) {
+    return (
+      <AppShell
+        title="Opening your workspace"
+        subtitle="Taking you to the right tools for your role"
+      >
+        <div
+          className="text-muted-foreground flex min-h-64 items-center justify-center gap-3"
+          role="status"
+        >
+          <Loader2 className="text-primary size-5 animate-spin" />
+          <span>{isPending ? "Loading your account…" : "Opening your dashboard…"}</span>
+        </div>
+      </AppShell>
+    );
+  }
 
   return (
     <AppShell

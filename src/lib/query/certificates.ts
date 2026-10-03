@@ -20,10 +20,11 @@ export function useMyCertificates() {
   );
 }
 
-export function useCertificateCandidates() {
+export function useCertificateCandidates(enabled = true) {
   return useApiQuery<{ items: CertificateCandidate[]; total: number }>(
     certificateKeys.candidates,
     fetchCertificateCandidates,
+    { enabled },
   );
 }
 

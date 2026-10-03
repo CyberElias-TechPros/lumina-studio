@@ -7,6 +7,7 @@
 
 export const CANONICAL_ROLE_KEYS = [
   "student",
+  "parent",
   "instructor",
   "intern",
   "employer",
@@ -65,9 +66,48 @@ export function resolveRoleKey(key?: string | null): CanonicalRoleKey {
   return ROLE_ALIASES[key] ?? "student";
 }
 
+/** First useful workspace page for each role after a successful sign-in. */
+export const ROLE_HOME_PATHS: Record<CanonicalRoleKey, string> = {
+  student: "/app",
+  instructor: "/app/instructor",
+  intern: "/app/intern",
+  employer: "/app/employer/hub",
+  alumni: "/app/alumni/hub",
+  mentor: "/app/mentor",
+  client: "/app/client",
+  dev: "/app/dev",
+  marketing: "/app/marketing",
+  "conversion-copy": "/app/conversion-copy/analytics",
+  "product-marketing": "/app/product-marketing",
+  "behavioral-design": "/app/behavioral-design",
+  growth: "/app/growth",
+  localization: "/app/localization",
+  design: "/app/design",
+  admin: "/app/admin",
+  finance: "/app/accountant",
+  hr: "/app/hr",
+  admissions: "/app/admissions",
+  department: "/app/department",
+  director: "/app/director",
+  ops: "/app/ops",
+  it: "/app/it",
+  receptionist: "/app/receptionist",
+  supplier: "/app/supplier",
+  volunteer: "/app/volunteer",
+  ngo: "/app/ngo",
+  government: "/app/government",
+  partner: "/app/partner/hub",
+  parent: "/app/parent",
+};
+
+export function getRoleHomePath(roleKey?: string | null): string {
+  return ROLE_HOME_PATHS[resolveRoleKey(roleKey)];
+}
+
 /** Permission seed set (Phase 1 replaces with server-issued permissions). */
 export const ROLE_PERMISSIONS: Record<CanonicalRoleKey, string[]> = {
   student: ["lms:read", "lms:enroll", "lms:submit", "finance:read", "notifications:read"],
+  parent: ["lms:read", "finance:read", "notifications:read", "parent:read"],
   instructor: ["lms:read", "lms:manage", "lms:grade", "attendance:manage", "notifications:read"],
   intern: ["lms:read", "intern:read", "intern:manage", "attendance:manage", "notifications:read"],
   employer: ["recruitment:read", "recruitment:manage", "talent:search", "notifications:read"],

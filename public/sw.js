@@ -1,6 +1,12 @@
-/* Lumina Studio service worker — app-shell caching + push notification stub. */
-const CACHE = "lumina-v1";
-const APP_SHELL = ["/", "/manifest.webmanifest", "/icon.svg", "/icon-maskable.svg"];
+/* Lumina Studio service worker — static caching + honest offline recovery. */
+const CACHE = "lumina-v2";
+const APP_SHELL = [
+  "/",
+  "/offline.html",
+  "/manifest.webmanifest",
+  "/icon.svg",
+  "/icon-maskable.svg",
+];
 
 self.addEventListener("install", (event) => {
   event.waitUntil(
@@ -32,7 +38,7 @@ self.addEventListener("fetch", (event) => {
   if (url.pathname.startsWith("/v1/") || url.origin !== self.location.origin) return;
 
   if (request.mode === "navigate") {
-    /* Network-first for pages: fresh HTML when online, shell when offline. */
+    /* Network-first; never disguise a failed private route as the public home page. */
     event.respondWith(
       fetch(request)
         .then((response) => {
@@ -42,7 +48,19 @@ self.addEventListener("fetch", (event) => {
           }
           return response;
         })
-        .catch(() => caches.match(request).then((cached) => cached || caches.match("/"))),
+        .catch(async () => {
+          const cached = await caches.match(request);
+          if (cached) return cached;
+          const fallback =
+            url.pathname === "/" ? await caches.match("/") : await caches.match("/offline.html");
+          return (
+            fallback ||
+            new Response("Connection interrupted. Please try again when you are online.", {
+              status: 503,
+              headers: { "Content-Type": "text/plain; charset=utf-8" },
+            })
+          );
+        }),
     );
     return;
   }
