@@ -112,6 +112,21 @@ notifications.patch("/preferences", async (c) => {
   return c.json(next);
 });
 
+notifications.get("/unread-count", async (c) => {
+  const userId = c.get("authUser").id;
+  const result = await c.env.DB.prepare(
+    `SELECT COUNT(*) AS n
+       FROM notifications n
+       LEFT JOIN notification_reads nr
+         ON nr.notification_id = n.id AND nr.user_id = ?
+      WHERE (n.user_id = ? AND n.read_at IS NULL)
+         OR (n.user_id IS NULL AND nr.read_at IS NULL)`,
+  )
+    .bind(userId, userId)
+    .first<{ n: number }>();
+  return c.json({ count: result?.n ?? 0 });
+});
+
 notifications.get("/", async (c) => {
   const { cursor, limit } = parsePagination(c);
   const userId = c.get("authUser").id;
@@ -128,9 +143,11 @@ notifications.get("/", async (c) => {
       WHERE (n.user_id = ? OR n.user_id IS NULL) ${cursor ? "AND n.id > ?" : ""}
       ORDER BY n.id ASC LIMIT ?`,
   )
-    .bind(userId, userId, ...(cursor ? [base64UrlDecode(cursor) ?? ""] : []), limit)
+    .bind(userId, userId, ...(cursor ? [base64UrlDecode(cursor) ?? ""] : []), limit + 1)
     .all<NotificationRow>();
-  const items: ApiNotification[] = rows.results.map((r) => ({
+  const hasNextPage = rows.results.length > limit;
+  const pageRows = rows.results.slice(0, limit);
+  const items: ApiNotification[] = pageRows.map((r) => ({
     id: r.id,
     title: r.title,
     body: r.body,
@@ -141,6 +158,7 @@ notifications.get("/", async (c) => {
   const result: Paginated<ApiNotification> = paginate(items, total?.n ?? 0, (last) =>
     base64UrlEncode(last.id),
   );
+  if (!hasNextPage) delete result.nextCursor;
   return c.json(result);
 });
 

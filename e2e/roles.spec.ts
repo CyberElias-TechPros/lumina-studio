@@ -1,6 +1,51 @@
 import { expect } from "@playwright/test";
 import { test, signInViaUi, DEMO_USERS, DEMO_PASSWORD } from "./helpers";
 
+test.describe("Workspace navigation", () => {
+  test("opens the signed-in role's home instead of the student dashboard", async ({
+    page,
+    signIn,
+  }) => {
+    await signIn("instructor");
+    await page.goto("/app");
+    await expect(page).toHaveURL(/\/app\/instructor/);
+    await expect(page).toHaveTitle(/Instructor Dashboard/);
+  });
+
+  test("search offers current-workspace tools and opens the selected page", async ({
+    page,
+    signIn,
+  }) => {
+    await signIn("instructor");
+    await page.goto("/app/instructor");
+    await page.keyboard.press("Control+k");
+
+    const palette = page.getByRole("dialog", { name: /search your workspace/i });
+    await expect(palette).toBeVisible();
+    await expect(palette.getByText("Course Builder")).toBeVisible();
+    await expect(palette.getByText("Student dashboard")).toHaveCount(0);
+    await palette
+      .getByRole("combobox", { name: "Search pages and actions" })
+      .fill("Course Builder");
+    await palette.getByRole("option", { name: /Course Builder/ }).click();
+    await expect(page).toHaveURL(/\/app\/instructor\/courses/);
+  });
+
+  test("mobile workspace navigation is modal and closes after a destination is chosen", async ({
+    page,
+    signIn,
+  }) => {
+    await page.setViewportSize({ width: 375, height: 812 });
+    await signIn("student");
+    await page.goto("/app");
+    await page.getByRole("button", { name: "Open navigation menu" }).click();
+    await expect(page.getByRole("dialog", { name: /student navigation/i })).toBeVisible();
+    await page.getByRole("link", { name: "Learning Hub" }).click();
+    await expect(page).toHaveURL(/\/app\/learn/);
+    await expect(page.getByRole("dialog")).toHaveCount(0);
+  });
+});
+
 test.describe("Student journey", () => {
   test("signs in through the real form and lands on the dashboard", async ({ page }) => {
     await signInViaUi(page, DEMO_USERS.student, DEMO_PASSWORD);
@@ -66,8 +111,15 @@ test.describe("Instructor journey", () => {
 });
 
 test.describe("Parent journey", () => {
-  test("parent sees child overview + finance + attendance", async ({ page, signIn }) => {
+  test("parent lands in the parent workspace and sees child overview + finance + attendance", async ({
+    page,
+    signIn,
+  }) => {
     await signIn("parent");
+
+    await page.goto("/app");
+    await expect(page).toHaveURL(/\/app\/parent/);
+    await expect(page.getByText(/workspace is restricted/i)).toHaveCount(0);
 
     await page.goto("/app/parent");
     await expect(page).toHaveTitle(/Parent Dashboard/);

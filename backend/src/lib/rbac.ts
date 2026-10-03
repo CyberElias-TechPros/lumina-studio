@@ -184,6 +184,7 @@ export const RBAC_RULES: RbacRule[] = [
   { methods: ["GET"], path: "/v1/messages/threads/:id" },
   { methods: ["POST"], path: "/v1/messages/threads/:id/messages" },
   { methods: ["GET"], path: "/v1/notifications" },
+  { methods: ["GET"], path: "/v1/notifications/unread-count" },
   { methods: ["GET", "PATCH"], path: "/v1/notifications/preferences" },
   { methods: ["POST"], path: "/v1/notifications/:id/read" },
   { methods: ["POST"], path: "/v1/notifications/read-all" },

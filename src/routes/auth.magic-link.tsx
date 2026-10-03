@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Reveal } from "@/components/motion";
 import { useMagicLinkVerify } from "@/lib/auth/session";
+import { getRoleHomePath } from "@/data/rbac";
 
 export const Route = createFileRoute("/auth/magic-link")({
   validateSearch: z.object({
@@ -47,7 +48,7 @@ function MagicLinkPage() {
               search: { token: pendingInvite },
             });
           } else {
-            navigate({ to: "/app" });
+            navigate({ to: getRoleHomePath(result.user.roleKey) });
           }
         },
       });

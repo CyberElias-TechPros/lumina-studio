@@ -10,6 +10,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Reveal } from "@/components/motion";
 import { useMfaVerify } from "@/lib/auth/session";
+import { getRoleHomePath } from "@/data/rbac";
 import { ApiError } from "@/lib/errors";
 
 export const Route = createFileRoute("/auth/mfa")({
@@ -45,7 +46,7 @@ function MfaPage() {
       return;
     }
     verify.mutate(trimmed, {
-      onSuccess: () => navigate({ to: "/app" }),
+      onSuccess: (session) => navigate({ to: getRoleHomePath(session.user.roleKey) }),
       onError: (err) => {
         setError(
           err instanceof ApiError ? err.message : "We couldn't verify that code. Try again.",

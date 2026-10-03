@@ -20,6 +20,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useSignIn } from "@/lib/auth/session";
+import { getRoleHomePath } from "@/data/rbac";
 import { requestMagicLink } from "@/lib/api/auth";
 
 export const Route = createFileRoute("/auth/sign-in")({
@@ -79,7 +80,7 @@ function SignInPage() {
       {
         onSuccess: (result) => {
           if ("user" in result) {
-            navigate({ to: "/app" });
+            navigate({ to: getRoleHomePath(result.user.roleKey) });
           } else {
             navigate({ to: "/auth/mfa", search: { email } });
           }

@@ -10,8 +10,18 @@ export interface AppNotification {
   read?: boolean;
 }
 
-export function fetchNotifications(): Promise<Paginated<AppNotification>> {
-  return apiFetch<Paginated<AppNotification>>("/v1/notifications");
+export interface UnreadNotificationCount {
+  count: number;
+}
+
+export function fetchUnreadNotificationCount(): Promise<UnreadNotificationCount> {
+  return apiFetch<UnreadNotificationCount>("/v1/notifications/unread-count");
+}
+
+export function fetchNotifications(cursor?: string): Promise<Paginated<AppNotification>> {
+  return apiFetch<Paginated<AppNotification>>("/v1/notifications", {
+    query: { cursor },
+  });
 }
 
 export function markNotificationRead(id: string): Promise<{ ok: true; read: boolean }> {

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { createFileRoute } from "@/lib/next-compat/route-definition";
 import { Bell, CheckCheck, Inbox, Radio, Send, Settings2, Sparkles } from "lucide-react";
 import {
@@ -29,6 +29,7 @@ import { QueryState } from "@/components/ui/query-state";
 import { AppShell } from "@/components/app/app-shell";
 import {
   useNotifications,
+  useUnreadNotificationCount,
   useMarkAllNotificationsRead,
   useMarkNotificationRead,
   useNotificationPreferences,
@@ -38,6 +39,7 @@ import { useSendPush } from "@/lib/query/push";
 import { useCertificateCandidates } from "@/lib/query/certificates";
 import { useSessionRole } from "@/lib/auth/session";
 import type { AppNotification } from "@/lib/api/notifications";
+import type { NotificationPreferences } from "@/lib/api/notificationPreferences";
 import { cn } from "@/lib/utils";
 import { ApiError } from "@/lib/errors";
 
@@ -60,86 +62,158 @@ function engineTone(engine: string): string {
 
 function Notifications() {
   const query = useNotifications();
-  const rows = query.data?.pages.flatMap((p) => p.items) ?? [];
+  const rows = query.data?.pages.flatMap((page) => page.items) ?? [];
+  const totalCount = query.data?.pages[0]?.total ?? rows.length;
+  const hasNotificationData = query.data !== undefined;
   const markAll = useMarkAllNotificationsRead();
   const markRead = useMarkNotificationRead();
   const preferencesQuery = useNotificationPreferences();
   const updatePreferences = useUpdateNotificationPreferences();
-  const unread = rows.filter((n) => !n.read).length;
+  const unreadCountQuery = useUnreadNotificationCount();
+  const unread =
+    unreadCountQuery.data?.count ?? rows.filter((notification) => !notification.read).length;
   const [preferencesOpen, setPreferencesOpen] = useState(false);
-  const preferences = preferencesQuery.data ?? {
-    appEnabled: true,
-    emailEnabled: true,
-    smsEnabled: false,
-    quietStart: "21:00",
-    quietEnd: "08:00",
+  const [draftPreferences, setDraftPreferences] = useState<NotificationPreferences | null>(null);
+  const preferences = draftPreferences ?? preferencesQuery.data;
+
+  useEffect(() => {
+    if (!preferencesQuery.data) return;
+    setDraftPreferences((current) =>
+      preferencesOpen && current ? current : (preferencesQuery.data ?? null),
+    );
+  }, [preferencesOpen, preferencesQuery.data]);
+
+  const openPreferences = () => {
+    updatePreferences.reset();
+    setDraftPreferences(preferencesQuery.data ?? null);
+    setPreferencesOpen(true);
   };
 
-  const updatePreference = (input: Parameters<typeof updatePreferences.mutate>[0]) => {
-    updatePreferences.mutate(input);
+  const updatePreference = <K extends keyof NotificationPreferences>(
+    key: K,
+    value: NotificationPreferences[K],
+  ) => {
+    setDraftPreferences((current) => {
+      const base = current ?? preferencesQuery.data;
+      return base ? { ...base, [key]: value } : current;
+    });
   };
+
+  const savePreferences = () => {
+    if (!draftPreferences) return;
+    updatePreferences.mutate(draftPreferences, {
+      onSuccess: (saved) => {
+        setDraftPreferences(saved);
+        setPreferencesOpen(false);
+      },
+    });
+  };
+
+  const enabledChannels = preferencesQuery.data
+    ? [
+        preferencesQuery.data.appEnabled ? "App" : null,
+        preferencesQuery.data.emailEnabled ? "Email" : null,
+        preferencesQuery.data.smsEnabled ? "SMS" : null,
+      ]
+        .filter(Boolean)
+        .join(" · ") || "None enabled"
+    : preferencesQuery.isError
+      ? "Unavailable"
+      : "Loading…";
+
+  const summary = [
+    {
+      label: "All notices",
+      value: query.isPending
+        ? "…"
+        : query.isError && !hasNotificationData
+          ? "Unavailable"
+          : String(totalCount),
+      delta:
+        query.isError && !hasNotificationData
+          ? "couldn’t load notifications"
+          : totalCount > rows.length
+            ? `${rows.length} loaded`
+            : "all notifications",
+      icon: Inbox,
+      tone: "bg-warning/10 text-warning",
+    },
+    {
+      label: "Unread",
+      value: unreadCountQuery.isPending
+        ? "…"
+        : unreadCountQuery.isError
+          ? "Unavailable"
+          : String(unread),
+      delta: unreadCountQuery.isError
+        ? "couldn’t check unread status"
+        : unread > 0
+          ? "need your attention"
+          : "no unread notifications",
+      icon: Bell,
+      tone: "bg-primary/10 text-primary",
+    },
+    {
+      label: "Quiet hours",
+      value: preferencesQuery.data
+        ? `${preferencesQuery.data.quietStart}–${preferencesQuery.data.quietEnd}`
+        : preferencesQuery.isError
+          ? "Unavailable"
+          : "Loading…",
+      delta: "from your saved preferences",
+      icon: Settings2,
+      tone: "bg-learning/10 text-learning",
+    },
+    {
+      label: "Channels",
+      value: enabledChannels,
+      delta: "from your saved preferences",
+      icon: Sparkles,
+      tone: "bg-success/10 text-success",
+    },
+  ];
 
   return (
     <AppShell
       roleKey="student"
       title="Notifications"
-      subtitle="Delivered on app, email and SMS"
+      subtitle="Review recent updates and manage delivery preferences."
       actions={
         <>
           <Badge className="bg-primary/10 text-primary border-0 font-semibold">
-            {unread} unread · {rows.length} recent
+            {unreadCountQuery.isPending
+              ? "…"
+              : unreadCountQuery.isError
+                ? "Unread unavailable"
+                : `${unread} unread`}
+            {query.isError && !hasNotificationData
+              ? " · total unavailable"
+              : ` · ${totalCount} total`}
           </Badge>
           <Button
             variant="outline"
             size="sm"
             className="font-semibold"
             onClick={() => markAll.mutate()}
-            disabled={markAll.isPending || unread === 0}
+            disabled={markAll.isPending || (unreadCountQuery.isSuccess && unread === 0)}
           >
             <CheckCheck className="size-4" /> {markAll.isPending ? "Marking…" : "Mark all read"}
           </Button>
-          <Button
-            variant="ghost"
-            size="sm"
-            className="font-semibold"
-            onClick={() => setPreferencesOpen(true)}
-          >
+          <Button variant="ghost" size="sm" className="font-semibold" onClick={openPreferences}>
             <Settings2 className="size-4" /> Preferences
           </Button>
         </>
       }
     >
+      {(markAll.isError || markRead.isError) && (
+        <p className="text-destructive mb-4 text-sm" role="alert">
+          {markAll.error?.message ?? markRead.error?.message ?? "Could not update notifications."}
+          Check your connection and try again.
+        </p>
+      )}
+
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-        {[
-          {
-            label: "Recent",
-            value: String(rows.length),
-            delta: "this session",
-            icon: Inbox,
-            tone: "bg-warning/10 text-warning",
-          },
-          {
-            label: "This week",
-            value: "14",
-            delta: "grades, classes, bills",
-            icon: Bell,
-            tone: "bg-primary/10 text-primary",
-          },
-          {
-            label: "Quiet hours",
-            value: "21:00–08:00",
-            delta: "deliveries held",
-            icon: Settings2,
-            tone: "bg-learning/10 text-learning",
-          },
-          {
-            label: "Channels",
-            value: "App · Email",
-            delta: "SMS for urgent",
-            icon: Sparkles,
-            tone: "bg-success/10 text-success",
-          },
-        ].map((k) => (
+        {summary.map((k) => (
           <Card key={k.label} className="bg-card shadow-soft border">
             <CardContent className="p-5">
               <div className="flex items-center justify-between">
@@ -168,20 +242,19 @@ function Notifications() {
             <QueryState<AppNotification[]>
               query={query}
               error={{ title: "Notifications unavailable" }}
+              empty={{
+                title: "You’re all caught up",
+                description:
+                  "New notifications will appear here when there is something to review.",
+                icon: <CheckCheck className="size-5" />,
+              }}
             >
               {(notifications) => (
                 <>
                   {notifications.map((n) => (
-                    <button
+                    <div
                       key={n.id}
-                      type="button"
-                      onClick={() => {
-                        if (!n.read) markRead.mutate(n.id);
-                      }}
-                      className={cn(
-                        "flex w-full items-center gap-3 py-4 text-left first:pt-0 last:pb-0",
-                        !n.read && "cursor-pointer",
-                      )}
+                      className="flex w-full items-center gap-3 py-4 text-left first:pt-0 last:pb-0"
                     >
                       <span
                         className={cn(
@@ -189,7 +262,7 @@ function Notifications() {
                           engineTone(n.engine),
                         )}
                       >
-                        <Bell className="size-4" />
+                        <Bell className="size-4" aria-hidden="true" />
                       </span>
                       <div className="min-w-0 flex-1">
                         <p
@@ -205,15 +278,40 @@ function Notifications() {
                         <Badge variant="secondary" className="font-semibold">
                           {n.engine}
                         </Badge>
-                        {!n.read && (
-                          <span className="bg-gradient-brand size-2 rounded-full" title="Unread" />
+                        {n.read ? (
+                          <span className="text-muted-foreground text-xs">Read</span>
+                        ) : (
+                          <Button
+                            type="button"
+                            variant="ghost"
+                            size="sm"
+                            className="px-2"
+                            aria-label={`Mark ${n.title} as read`}
+                            disabled={markRead.isPending}
+                            onClick={() => markRead.mutate(n.id)}
+                          >
+                            Mark read
+                          </Button>
                         )}
                       </span>
-                    </button>
+                    </div>
                   ))}
                 </>
               )}
             </QueryState>
+            {query.hasNextPage && (
+              <div className="flex justify-center pt-4">
+                <Button
+                  variant="outline"
+                  onClick={() => void query.fetchNextPage()}
+                  disabled={query.isFetchingNextPage}
+                >
+                  {query.isFetchingNextPage
+                    ? "Loading older notifications…"
+                    : "Load older notifications"}
+                </Button>
+              </div>
+            )}
           </CardContent>
         </Card>
 
@@ -229,62 +327,90 @@ function Notifications() {
             </DialogDescription>
           </DialogHeader>
           <div className="space-y-4">
-            {[
-              {
-                id: "app",
-                label: "In-app notifications",
-                value: preferences.appEnabled,
-                key: "appEnabled" as const,
-              },
-              {
-                id: "email",
-                label: "Email updates",
-                value: preferences.emailEnabled,
-                key: "emailEnabled" as const,
-              },
-              {
-                id: "sms",
-                label: "SMS updates",
-                value: preferences.smsEnabled,
-                key: "smsEnabled" as const,
-              },
-            ].map((item) => (
+            {preferencesQuery.isPending && (
+              <p className="text-muted-foreground text-sm" role="status">
+                Loading your saved preferences…
+              </p>
+            )}
+            {preferencesQuery.isError && (
               <div
-                key={item.id}
-                className="flex items-center justify-between gap-4 rounded-xl border p-3"
+                role="alert"
+                className="text-destructive flex items-center justify-between gap-3 text-sm"
               >
-                <Label htmlFor={`preference-${item.id}`} className="font-semibold">
-                  {item.label}
-                </Label>
-                <Switch
-                  id={`preference-${item.id}`}
-                  checked={item.value}
-                  onCheckedChange={(checked) => updatePreference({ [item.key]: checked })}
-                  disabled={updatePreferences.isPending}
-                  aria-label={item.label}
-                />
+                <p>Couldn’t load your preferences.</p>
+                <Button
+                  type="button"
+                  variant="outline"
+                  size="sm"
+                  onClick={() => void preferencesQuery.refetch()}
+                  disabled={preferencesQuery.isFetching}
+                >
+                  {preferencesQuery.isFetching ? "Retrying…" : "Retry"}
+                </Button>
               </div>
-            ))}
-            <div className="grid gap-3 sm:grid-cols-2">
-              <div className="space-y-1.5">
-                <Label htmlFor="quiet-start">Quiet hours start</Label>
-                <Input
-                  id="quiet-start"
-                  type="time"
-                  value={preferences.quietStart}
-                  onChange={(event) => updatePreference({ quietStart: event.target.value })}
-                />
-              </div>
-              <div className="space-y-1.5">
-                <Label htmlFor="quiet-end">Quiet hours end</Label>
-                <Input
-                  id="quiet-end"
-                  type="time"
-                  value={preferences.quietEnd}
-                  onChange={(event) => updatePreference({ quietEnd: event.target.value })}
-                />
-              </div>
-            </div>
+            )}
+            {preferences && (
+              <>
+                {[
+                  {
+                    id: "app",
+                    label: "In-app notifications",
+                    value: preferences.appEnabled,
+                    key: "appEnabled" as const,
+                  },
+                  {
+                    id: "email",
+                    label: "Email updates",
+                    value: preferences.emailEnabled,
+                    key: "emailEnabled" as const,
+                  },
+                  {
+                    id: "sms",
+                    label: "SMS updates",
+                    value: preferences.smsEnabled,
+                    key: "smsEnabled" as const,
+                  },
+                ].map((item) => (
+                  <div
+                    key={item.id}
+                    className="flex items-center justify-between gap-4 rounded-xl border p-3"
+                  >
+                    <Label htmlFor={`preference-${item.id}`} className="font-semibold">
+                      {item.label}
+                    </Label>
+                    <Switch
+                      id={`preference-${item.id}`}
+                      checked={item.value}
+                      onCheckedChange={(checked) => updatePreference(item.key, checked)}
+                      disabled={updatePreferences.isPending}
+                      aria-label={item.label}
+                    />
+                  </div>
+                ))}
+                <div className="grid gap-3 sm:grid-cols-2">
+                  <div className="space-y-1.5">
+                    <Label htmlFor="quiet-start">Quiet hours start</Label>
+                    <Input
+                      id="quiet-start"
+                      type="time"
+                      value={preferences.quietStart}
+                      onChange={(event) => updatePreference("quietStart", event.target.value)}
+                      disabled={updatePreferences.isPending}
+                    />
+                  </div>
+                  <div className="space-y-1.5">
+                    <Label htmlFor="quiet-end">Quiet hours end</Label>
+                    <Input
+                      id="quiet-end"
+                      type="time"
+                      value={preferences.quietEnd}
+                      onChange={(event) => updatePreference("quietEnd", event.target.value)}
+                      disabled={updatePreferences.isPending}
+                    />
+                  </div>
+                </div>
+              </>
+            )}
             {updatePreferences.error && (
               <p role="alert" className="text-destructive text-sm font-medium">
                 {updatePreferences.error.message}
@@ -292,8 +418,20 @@ function Notifications() {
             )}
           </div>
           <DialogFooter>
-            <Button type="button" onClick={() => setPreferencesOpen(false)}>
-              Done
+            <Button
+              type="button"
+              variant="ghost"
+              onClick={() => setPreferencesOpen(false)}
+              disabled={updatePreferences.isPending}
+            >
+              Cancel
+            </Button>
+            <Button
+              type="button"
+              onClick={savePreferences}
+              disabled={!preferences || updatePreferences.isPending || preferencesQuery.isPending}
+            >
+              {updatePreferences.isPending ? "Saving…" : "Save changes"}
             </Button>
           </DialogFooter>
         </DialogContent>
@@ -304,9 +442,9 @@ function Notifications() {
 
 function SendPushCard() {
   const role = useSessionRole();
-  const candidates = useCertificateCandidates();
-  const send = useSendPush();
   const canTarget = role === "instructor" || role === "admin";
+  const candidates = useCertificateCandidates(canTarget);
+  const send = useSendPush();
   const [userId, setUserId] = useState("");
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");

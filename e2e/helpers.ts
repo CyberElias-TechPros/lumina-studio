@@ -67,7 +67,7 @@ export async function dismissTour(page: Page): Promise<void> {
   await page
     .evaluate(() => window.localStorage.setItem("cea:onboarding:tour:v1", new Date().toISOString()))
     .catch(() => {});
-  const close = page.getByRole("button", { name: /close tour/i });
+  const close = page.getByRole("button", { name: /skip tour/i });
   if (await close.isVisible().catch(() => false)) {
     await close.click().catch(() => {});
   }

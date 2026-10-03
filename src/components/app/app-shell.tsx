@@ -54,14 +54,21 @@ import {
   Users,
   Workflow,
   Wrench,
-  X,
+  WifiOff,
   Zap,
 } from "lucide-react";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
 import { CommandPalette } from "@/components/app/command-palette";
 import { useCommandPalette } from "@/components/app/use-command-palette";
@@ -72,6 +79,8 @@ import { isMockMode } from "@/lib/env";
 import { track } from "@/lib/analytics";
 import { resolveRoleKey } from "@/data/rbac";
 import { useAccount } from "@/lib/query/account";
+import { useUnreadNotificationCount } from "@/lib/query/notifications";
+import { useOnlineStatus } from "@/hooks/use-online-status";
 
 export type AppRole = {
   key: string;
@@ -1031,6 +1040,10 @@ export function AppShell({
   const signOut = useSignOut();
   const user = useSessionUser();
   const { data: sessionData, isPending: sessionLoading } = useSession();
+  const isOnline = useOnlineStatus();
+  const { data: unreadNotifications } = useUnreadNotificationCount(
+    isMockMode || Boolean(sessionData?.user),
+  );
   // Mock mode intentionally exposes the role switcher for demos. In a real
   // deployment the server-issued role is authoritative; never let a route's
   // presentation prop make an authenticated user look like another role.
@@ -1074,8 +1087,23 @@ export function AppShell({
     track("app.page_view", { role: activeRoleKey, title });
   }, [activeRoleKey, title]);
 
+  useEffect(() => {
+    setSidebarOpen(false);
+  }, [location.pathname]);
+
+  useEffect(() => {
+    const openNavigation = () => setSidebarOpen(true);
+    const closeNavigation = () => setSidebarOpen(false);
+    window.addEventListener("cea:tour-open-navigation", openNavigation);
+    window.addEventListener("cea:tour-close-navigation", closeNavigation);
+    return () => {
+      window.removeEventListener("cea:tour-open-navigation", openNavigation);
+      window.removeEventListener("cea:tour-close-navigation", closeNavigation);
+    };
+  }, []);
+
   const sidebar = (
-    <div className="flex h-full flex-col">
+    <div className="flex h-full flex-col" data-workspace-label={role.label}>
       <div className="flex items-center gap-2.5 px-5 py-5">
         <Link
           to="/"
@@ -1094,6 +1122,8 @@ export function AppShell({
       <div className="px-4 pb-3">
         {isMockMode ? (
           <button
+            type="button"
+            aria-label={`Switch demo workspace from ${role.label}`}
             onClick={() => {
               const keys = appRoles.map((r) => r.key);
               const next = keys[(keys.indexOf(activeRoleKey) + 1) % keys.length];
@@ -1138,7 +1168,9 @@ export function AppShell({
             <Link
               key={item.label}
               to={item.to ?? "/app"}
-              data-tour={i === 0 ? "nav-home" : i === 1 ? "nav-learn" : undefined}
+              data-tour={i === 0 ? "nav-home" : i === 1 ? "nav-secondary" : undefined}
+              data-tour-label={i < 2 ? item.label : undefined}
+              onClick={() => setSidebarOpen(false)}
               activeProps={{ className: "bg-primary/10 text-primary after:scale-y-100" }}
               activeOptions={{ exact: item.to === "/app" }}
               className={cn(
@@ -1153,11 +1185,6 @@ export function AppShell({
             >
               {item.icon}
               {item.label}
-              {i === 4 && (
-                <Badge className="ml-auto h-5 bg-primary/15 text-primary px-1.5 text-[10px] border-0">
-                  3
-                </Badge>
-              )}
             </Link>
           ))}
         </nav>
@@ -1166,6 +1193,7 @@ export function AppShell({
       <div className="border-t p-3">
         <Link
           to="/app/account"
+          onClick={() => setSidebarOpen(false)}
           className="text-muted-foreground hover:text-foreground mb-1 flex items-center gap-2 rounded-lg px-3 py-2 text-xs font-semibold transition-colors hover:bg-muted/70"
         >
           <Settings className="size-3.5" /> Account &amp; security
@@ -1188,128 +1216,189 @@ export function AppShell({
               {user?.email ?? `${role.label} · Cohort 15`}
             </span>
           </span>
-          <LogOut className="text-muted-foreground size-4" />
+          <LogOut className="text-muted-foreground size-4" aria-hidden="true" />
+          <span className="sr-only">Sign out</span>
         </button>
       </div>
     </div>
   );
 
   return (
-    <div className="bg-muted/30 flex min-h-screen">
-      <aside className="bg-card fixed inset-y-0 left-0 z-40 hidden w-64 border-r lg:block">
-        {sidebar}
-      </aside>
-
-      {sidebarOpen && (
-        <div className="fixed inset-0 z-50 lg:hidden">
-          <div
-            className="absolute inset-0 bg-black/50 backdrop-blur-sm"
-            onClick={() => setSidebarOpen(false)}
-          />
-          <aside className="bg-card absolute inset-y-0 left-0 w-72 border-r shadow-2xl">
-            <button
-              onClick={() => setSidebarOpen(false)}
-              className="text-muted-foreground hover:text-foreground absolute top-4 right-4"
-            >
-              <X className="size-5" />
-            </button>
-            {sidebar}
-          </aside>
-        </div>
-      )}
-
-      <div className="flex min-w-0 flex-1 flex-col lg:pl-64">
-        <header className="bg-card/80 sticky top-0 z-30 border-b backdrop-blur">
-          <span
-            aria-hidden="true"
-            className="hairline-brand pointer-events-none absolute inset-x-0 bottom-0 z-[1] h-px opacity-50"
-          />
-          <div className="relative flex h-16 items-center gap-3 px-4 sm:px-6">
-            <button
-              onClick={() => setSidebarOpen(true)}
-              className="text-muted-foreground hover:text-foreground lg:hidden"
-            >
-              <Menu className="size-5" />
-            </button>
-            <div>
-              <h1 className="font-display text-h3 leading-tight font-extrabold">{title}</h1>
-              {subtitle && (
-                <p className="text-muted-foreground hidden text-xs sm:block">{subtitle}</p>
-              )}
-            </div>
-            <div className="ml-auto flex items-center gap-2.5">
-              <div className="relative hidden md:block">
-                <Search className="text-muted-foreground absolute top-1/2 left-3 size-4 -translate-y-1/2" />
-                <Input
-                  placeholder="Search… (⌘K)"
-                  onFocus={() => setPaletteOpen(true)}
-                  className="h-9 w-56 border pl-9 text-sm shadow-none"
-                />
-              </div>
-              <ThemeToggle />
-              <Button variant="ghost" size="icon" className="relative" asChild>
-                <Link to="/app/notifications" title="Notifications">
-                  <Bell className="size-5" />
-                  <span className="bg-gradient-brand absolute top-1.5 right-1.5 size-2 rounded-full ring-2 ring-background" />
-                </Link>
-              </Button>
-              <div className="h-6 w-px bg-border" />
-              <Avatar className="size-9">
-                <AvatarFallback className={cn("text-xs text-white", role.gradient)}>
-                  {initials}
-                </AvatarFallback>
-              </Avatar>
-            </div>
-          </div>
-          <CommandPalette open={paletteOpen} onOpenChange={setPaletteOpen} />
-          {actions && (
-            <div className="flex flex-wrap items-center gap-2 border-t px-4 py-2.5 sm:px-6">
-              {actions}
-            </div>
-          )}
-        </header>
-
-        <motion.main
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-          className="flex-1 px-4 py-6 sm:px-6 lg:px-8"
+    <Sheet open={sidebarOpen} onOpenChange={setSidebarOpen}>
+      <div className="bg-muted/30 flex min-h-screen">
+        <a
+          href="#app-main"
+          className="bg-primary text-primary-foreground focus-visible:ring-ring fixed top-3 left-1/2 z-[100] -translate-x-1/2 -translate-y-28 rounded-md px-4 py-2 text-sm font-medium transition-transform focus-visible:translate-y-0 focus-visible:ring-2"
         >
-          {needsEmailVerification && (
-            <div
-              role="status"
-              className="bg-warning/10 border-warning/30 mb-5 flex flex-wrap items-center gap-3 rounded-lg border px-4 py-3 text-sm"
-            >
-              <span className="flex-1">
-                <strong>Verify your email</strong> to secure your account and receive receipts,
-                reminders and certificates.
-              </span>
-              <Button asChild size="sm" variant="outline">
-                <Link to="/auth/verify-email">Verify now</Link>
-              </Button>
+          Skip to main content
+        </a>
+        <aside className="bg-card fixed inset-y-0 left-0 z-40 hidden w-64 border-r lg:block">
+          {sidebar}
+        </aside>
+        <SheetContent
+          id="mobile-workspace-navigation"
+          side="left"
+          className="w-72 max-w-[85vw] border-r p-0 lg:hidden"
+        >
+          <SheetHeader className="sr-only">
+            <SheetTitle>{role.label} navigation</SheetTitle>
+            <SheetDescription>
+              Navigate pages in your {role.label.toLowerCase()} workspace.
+            </SheetDescription>
+          </SheetHeader>
+          {sidebar}
+        </SheetContent>
+
+        <div className="flex min-w-0 flex-1 flex-col lg:pl-64">
+          <header className="bg-card/80 sticky top-0 z-30 border-b backdrop-blur">
+            <span
+              aria-hidden="true"
+              className="hairline-brand pointer-events-none absolute inset-x-0 bottom-0 z-[1] h-px opacity-50"
+            />
+            <div className="relative flex h-16 items-center gap-3 px-4 sm:px-6">
+              <SheetTrigger asChild>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  aria-label="Open navigation menu"
+                  aria-controls="mobile-workspace-navigation"
+                  className="text-muted-foreground hover:text-foreground lg:hidden"
+                >
+                  <Menu className="size-5" aria-hidden="true" />
+                </Button>
+              </SheetTrigger>
+              <div>
+                <h1 className="font-display text-h3 leading-tight font-extrabold">{title}</h1>
+                {subtitle && (
+                  <p className="text-muted-foreground hidden text-xs sm:block">{subtitle}</p>
+                )}
+              </div>
+              <div className="ml-auto flex items-center gap-2.5">
+                <div className="relative hidden md:block" data-tour="workspace-search">
+                  <Search
+                    aria-hidden="true"
+                    className="text-muted-foreground absolute top-1/2 left-3 size-4 -translate-y-1/2"
+                  />
+                  <Input
+                    aria-label="Search workspace"
+                    placeholder="Search… (⌘K)"
+                    onFocus={() => setPaletteOpen(true)}
+                    className="h-9 w-56 border pl-9 text-sm shadow-none"
+                  />
+                </div>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="md:hidden"
+                  aria-label="Search workspace"
+                  data-tour="workspace-search"
+                  onClick={() => setPaletteOpen(true)}
+                >
+                  <Search className="size-5" aria-hidden="true" />
+                </Button>
+                <ThemeToggle />
+                <Button variant="ghost" size="icon" className="relative" asChild>
+                  <Link
+                    to="/app/notifications"
+                    title="Notifications"
+                    aria-label={
+                      (unreadNotifications?.count ?? 0) > 0
+                        ? `Notifications, ${unreadNotifications?.count} unread`
+                        : "Notifications"
+                    }
+                  >
+                    <Bell className="size-5" aria-hidden="true" />
+                    {(unreadNotifications?.count ?? 0) > 0 && (
+                      <span
+                        aria-hidden="true"
+                        className="bg-primary text-primary-foreground absolute -top-1 -right-1 flex h-4 min-w-4 items-center justify-center rounded-full border-2 border-background px-1 text-[9px] font-bold leading-none"
+                      >
+                        {(unreadNotifications?.count ?? 0) > 99
+                          ? "99+"
+                          : unreadNotifications?.count}
+                      </span>
+                    )}
+                  </Link>
+                </Button>
+                <div className="h-6 w-px bg-border" />
+                <Avatar className="size-9">
+                  <AvatarFallback className={cn("text-xs text-white", role.gradient)}>
+                    {initials}
+                  </AvatarFallback>
+                </Avatar>
+              </div>
             </div>
-          )}
-          {accessDenied ? (
-            <div className="mx-auto flex min-h-[420px] max-w-xl flex-col items-center justify-center text-center">
-              <span className="bg-error/10 text-error grid size-14 place-items-center rounded-2xl text-2xl">
-                🔒
-              </span>
-              <h2 className="font-display mt-5 text-xl font-extrabold">
-                This workspace is restricted
-              </h2>
-              <p className="text-muted-foreground mt-2 max-w-md text-sm leading-relaxed">
-                Your signed-in role does not have access to this area. Use the workspace navigation
-                to open the tools available to you.
-              </p>
-              <Button asChild className="bg-gradient-brand shadow-glow mt-5 border-0">
-                <Link to="/app">Return to my dashboard</Link>
-              </Button>
-            </div>
-          ) : (
-            children
-          )}
-        </motion.main>
+            <CommandPalette
+              open={paletteOpen}
+              onOpenChange={setPaletteOpen}
+              workspaceLabel={role.label}
+              navigation={role.nav}
+            />
+            {actions && (
+              <div className="flex flex-wrap items-center gap-2 border-t px-4 py-2.5 sm:px-6">
+                {actions}
+              </div>
+            )}
+          </header>
+
+          <motion.main
+            id="app-main"
+            tabIndex={-1}
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+            className="flex-1 px-4 py-6 sm:px-6 lg:px-8"
+          >
+            {!isOnline && (
+              <div
+                role="status"
+                aria-live="polite"
+                className="bg-warning/10 border-warning/30 mb-5 flex items-start gap-3 rounded-lg border px-4 py-3 text-sm"
+              >
+                <WifiOff className="text-warning mt-0.5 size-4 shrink-0" aria-hidden="true" />
+                <span>
+                  <strong>You appear to be offline.</strong> CEA-OS does not queue changes yet. Keep
+                  this page open, reconnect, and check whether a payment or submission went through
+                  before retrying it.
+                </span>
+              </div>
+            )}
+            {needsEmailVerification && (
+              <div
+                role="status"
+                className="bg-warning/10 border-warning/30 mb-5 flex flex-wrap items-center gap-3 rounded-lg border px-4 py-3 text-sm"
+              >
+                <span className="flex-1">
+                  <strong>Verify your email</strong> to secure your account and receive receipts,
+                  reminders and certificates.
+                </span>
+                <Button asChild size="sm" variant="outline">
+                  <Link to="/auth/verify-email">Verify now</Link>
+                </Button>
+              </div>
+            )}
+            {accessDenied ? (
+              <div className="mx-auto flex min-h-[420px] max-w-xl flex-col items-center justify-center text-center">
+                <span className="bg-error/10 text-error grid size-14 place-items-center rounded-2xl text-2xl">
+                  🔒
+                </span>
+                <h2 className="font-display mt-5 text-xl font-extrabold">
+                  This workspace is restricted
+                </h2>
+                <p className="text-muted-foreground mt-2 max-w-md text-sm leading-relaxed">
+                  Your signed-in role does not have access to this area. Use the workspace
+                  navigation to open the tools available to you.
+                </p>
+                <Button asChild className="bg-gradient-brand shadow-glow mt-5 border-0">
+                  <Link to="/app">Return to my dashboard</Link>
+                </Button>
+              </div>
+            ) : (
+              children
+            )}
+          </motion.main>
+        </div>
       </div>
-    </div>
+    </Sheet>
   );
 }
