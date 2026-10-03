@@ -1,7 +1,7 @@
 name: Deploy backend
 
-# Deploys backend/cea-api on push to main. Migrations history matches
-# production (0000..0058), so `migrations apply` is safe (usually a no-op).
+# Deploys backend/cea-api on push to main. The migration history matches
+# production; `migrations apply` runs all outstanding migrations before deployment.
 #
 # FREE-PLAN CAVEAT: the Cyber account is at the 5-cron limit, so the deploy
 # step cannot install cea-api's 3 cron triggers and exits 1 even when the

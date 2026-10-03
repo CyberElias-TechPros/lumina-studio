@@ -12,7 +12,7 @@
 <!-- LOVABLE:END -->
 
 ## Build & Quality
-- `npm run build` — TanStack Start + Nitro, must pass
+- `npm run build` — Next.js 15 App Router production build, must pass
 - `npx tsc --noEmit` — TypeScript check, must pass
 - `npm run lint` — ESLint, slow on full repo; run selectively
 - **Backend**: `cd backend && npm run typecheck && npm test` (Vitest + Workers runtime, 66 suites / 747 tests)
@@ -27,7 +27,7 @@ server-rendered; every `/app/*` workspace talks to the `/v1/*` Worker API.
 
 ## Data Architecture (do not break these invariants)
 
-1. **Two runtime modes** decided by `VITE_API_URL` at build time (`src/lib/env.ts`):
+1. **Two runtime modes** decided by `NEXT_PUBLIC_API_URL` at build time (`src/lib/env.ts`):
    - Mock (unset): `src/lib/api/client.ts` serves every call from
      `src/lib/api/mocks/*`, seeded by `src/data/*`; role switcher is visible.
    - Live (set): real Worker + D1; server-issued `role_key` is authoritative.
@@ -49,8 +49,7 @@ server-rendered; every `/app/*` workspace talks to the `/v1/*` Worker API.
    re-enabling dev tokens in production code.
 
 ## Frontend Conventions
-- File-based routing under `src/routes/`; a `head` export per page carries SEO
-  title/description/structured data (`src/lib/seo.ts` helpers).
+- Route definitions stay under `src/routes/`; `scripts/generate-next-routes.mjs` creates one explicit App Router page per route under the ignored `src/app/(generated)/` directory. Run it through `npm run dev`, `npm run typecheck`, or `npm run build`. A `head` export per page carries SEO title/description/structured data (`src/lib/seo.ts` helpers); `src/lib/next-compat/` adapts legacy links and route hooks.
 - Components: `PageShell`, `PageHero`, `SectionHeading`, `CTASection`
   (`src/components/marketing/shell`); `Reveal`/`StaggerGroup` from
   `src/components/motion`; Radix-based UI in `src/components/ui`.
@@ -63,13 +62,12 @@ server-rendered; every `/app/*` workspace talks to the `/v1/*` Worker API.
   (e.g. `/app/partner` → `/app/partner/hub`).
 
 ## Deployment Recipes
-- Frontend: `npm run build` (Nitro Build Output API), deploy the `.vercel/output`
-  to Vercel with `VITE_*` env vars set. Rebuild generates the 214-URL sitemap.
+- Frontend: `npm run build` (Next.js production build), deploy to Vercel with `NEXT_PUBLIC_*` env vars set. Rebuild regenerates the sitemap (400 URLs).
 - Backend: `cd backend && npm run typecheck && npm test`, apply migrations
   (`wrangler d1 migrations apply DB`), then `npm run deploy`.
 
 ## Current Status: Production Candidate — platform complete, hardening phase
-- Public SEO/content layer: 214-URL sitemap, blog/glossary/career
+- Public SEO/content layer: 400-URL sitemap, blog/glossary/career
   guides/resources/module pages, AdSense-ready, honest content (no fabricated
   ratings/testimonials).
 - CEA-OS: ~46 role workspaces wired to the Worker API through typed
@@ -78,14 +76,12 @@ server-rendered; every `/app/*` workspace talks to the `/v1/*` Worker API.
 - Remaining known work is tracked in `docs/` and `plans/` (cross-cutting
   automations, growth of test coverage on new endpoints, monitoring polish).
 
-## Routing invariant (this has bitten us)
-Flat route files nest by dot prefix: `foo.tsx` becomes the **layout parent** of
-`foo.$param.tsx`. A parent that renders a page but no `<Outlet />` silently
-swallows its children — the child URL returns the *parent's* body under the
-child's `<title>`. Any route that is both a page and a prefix must be an
-**index** file (`foo.index.tsx`, declared `createFileRoute("/foo/")`), not
-`foo.tsx`. `useParams({ from: ... })` inside an index file must use the
-trailing-slash route id (`"/foo/$param/"`).
+## Routing invariant
+`src/routes/` remains the source of route definitions, but Next.js owns URL
+matching. `scripts/generate-next-routes.mjs` normalizes each `createFileRoute`
+path into an explicit App Router page; generated output is ignored and rebuilt
+before dev, typecheck, and production builds. Preserve explicit route paths and
+update the generator when adding new public static-parameter data.
 
 ## Tutorial production
 

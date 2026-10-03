@@ -1,5 +1,7 @@
+"use client";
+
 import { useState } from "react";
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute } from "@/lib/next-compat/route-definition";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import {
   CalendarDays,
@@ -16,13 +18,8 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { QueryState } from "@/components/ui/query-state";
-import {
-  cohortIcsHref,
-  deleteCohort,
-  fetchCohorts,
-  saveCohort,
-  type Cohort,
-} from "@/lib/api/operations";
+import { deleteCohort, fetchCohorts, saveCohort, type Cohort } from "@/lib/api/operations";
+import { downloadCohortCalendar } from "@/lib/calendar";
 import { ApiError } from "@/lib/errors";
 import { cn } from "@/lib/utils";
 
@@ -181,10 +178,14 @@ function CohortsPage() {
                       <p className="text-muted-foreground mt-1 text-xs">{cohort.notes}</p>
                     )}
                     <div className="mt-3 flex gap-2">
-                      <Button asChild size="sm" variant="outline" className="font-semibold">
-                        <a href={cohortIcsHref(cohort.id)} download>
-                          <Download className="size-3.5" /> Calendar file
-                        </a>
+                      <Button
+                        type="button"
+                        size="sm"
+                        variant="outline"
+                        className="font-semibold"
+                        onClick={() => downloadCohortCalendar(cohort)}
+                      >
+                        <Download className="size-3.5" /> Calendar file
                       </Button>
                       <Button
                         size="sm"

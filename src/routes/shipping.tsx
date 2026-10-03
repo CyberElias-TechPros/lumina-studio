@@ -1,4 +1,5 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@/lib/next-compat/route-definition";
+import { Link } from "@/lib/next-compat/router";
 import { CheckCircle2, Clock3, Download, MapPin } from "lucide-react";
 import { CTASection, PageHero, PageShell, SectionHeading } from "@/components/marketing/shell";
 import { Reveal } from "@/components/motion";

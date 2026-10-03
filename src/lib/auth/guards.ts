@@ -1,3 +1,5 @@
+"use client";
+
 /**
  * Route-guard toolkit. Wire into route files when auth lands (Phase 1):
  *
@@ -10,7 +12,7 @@
  * session is always signed in, so guards pass, but missing guards elsewhere
  * stay navigable; the app must never hard-block navigation on mock data.
  */
-import { redirect } from "@tanstack/react-router";
+import { redirect } from "@/lib/next-compat/router";
 import { resolveRoleKey, type CanonicalRoleKey } from "@/data/rbac";
 import type { Session } from "@/lib/schema";
 

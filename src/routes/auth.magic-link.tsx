@@ -1,4 +1,7 @@
-import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
+"use client";
+
+import { createFileRoute } from "@/lib/next-compat/route-definition";
+import { Link, useNavigate } from "@/lib/next-compat/router";
 import { useEffect } from "react";
 import { ArrowRight, KeyRound, Loader2, ShieldAlert, ShieldCheck } from "lucide-react";
 import { z } from "zod";
@@ -58,7 +61,7 @@ function MagicLinkPage() {
         <span className="bg-muted text-muted-foreground mx-auto grid size-14 place-items-center rounded-full">
           <KeyRound className="size-7" />
         </span>
-        <h2 className="font-display mt-4 text-lg font-extrabold">No sign-in link found</h2>
+        <h1 className="font-display mt-4 text-lg font-extrabold">No sign-in link found</h1>
         <p className="text-muted-foreground mt-2 text-sm">
           This page verifies a one-time sign-in link. Request a new link to continue.
         </p>
@@ -75,7 +78,7 @@ function MagicLinkPage() {
     return (
       <AuthShell>
         <Loader2 className="text-primary mx-auto size-10 animate-spin" />
-        <h2 className="font-display mt-4 text-lg font-extrabold">Signing you in</h2>
+        <h1 className="font-display mt-4 text-lg font-extrabold">Signing you in</h1>
         <p className="text-muted-foreground mt-2 text-sm">Verifying your one-time link…</p>
       </AuthShell>
     );
@@ -87,7 +90,7 @@ function MagicLinkPage() {
         <span className="bg-error/10 text-error mx-auto grid size-14 place-items-center rounded-full">
           <ShieldAlert className="size-7" />
         </span>
-        <h2 className="font-display mt-4 text-lg font-extrabold">This link didn't work</h2>
+        <h1 className="font-display mt-4 text-lg font-extrabold">This link didn't work</h1>
         <p className="text-muted-foreground mt-2 text-sm">
           {verify.error instanceof Error
             ? verify.error.message
@@ -107,7 +110,7 @@ function MagicLinkPage() {
       <span className="bg-success/10 text-success mx-auto grid size-14 place-items-center rounded-full">
         <ShieldCheck className="size-7" />
       </span>
-      <h2 className="font-display mt-4 text-lg font-extrabold">You're signed in</h2>
+      <h1 className="font-display mt-4 text-lg font-extrabold">You're signed in</h1>
       <p className="text-muted-foreground mt-2 text-sm">Taking you to your dashboard…</p>
     </AuthShell>
   );

@@ -1,4 +1,7 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+"use client";
+
+import { createFileRoute } from "@/lib/next-compat/route-definition";
+import { Link } from "@/lib/next-compat/router";
 import { useState, type FormEvent } from "react";
 import { ArrowLeft, Headset, Inbox, MessageSquare, Plus, Timer } from "lucide-react";
 import { toast } from "sonner";

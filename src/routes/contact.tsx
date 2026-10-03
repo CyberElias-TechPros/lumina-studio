@@ -1,6 +1,9 @@
+"use client";
+
 import { useTurnstile } from "@/components/turnstile";
 import { useState } from "react";
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@/lib/next-compat/route-definition";
+import { Link } from "@/lib/next-compat/router";
 import { CheckCircle2, Mail, MapPin, Phone, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -203,6 +206,27 @@ function Contact() {
               </Button>
             </form>
           )}
+        </div>
+      </section>
+
+      <section className="border-border bg-primary/5 border-t">
+        <div className="container-page flex flex-col gap-4 py-8 md:flex-row md:items-center md:justify-between">
+          <div>
+            <h2 className="font-display text-lg font-semibold">
+              Looking for help with a digital project?
+            </h2>
+            <p className="text-muted-foreground mt-1 text-sm">
+              Share a short brief for a website, app or other software project.
+            </p>
+          </div>
+          <div className="flex flex-wrap gap-3">
+            <Button asChild>
+              <Link to="/request-project">Request a project conversation</Link>
+            </Button>
+            <Button asChild variant="outline">
+              <Link to="/services">Explore digital services</Link>
+            </Button>
+          </div>
         </div>
       </section>
 

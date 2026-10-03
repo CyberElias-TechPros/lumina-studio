@@ -1,9 +1,9 @@
 /**
  * API client for the Cloudflare Worker backend (Hono, /v1/*).
  *
- * - Real mode (VITE_API_URL set): fetch with credentials, error-envelope
+ * - Real mode (NEXT_PUBLIC_API_URL set): fetch with credentials, error-envelope
  *   parsing, single-flight token refresh on 401, Retry-After handling on 429.
- * - Mock mode (VITE_API_URL empty): every call resolves against src/data/*
+ * - Mock mode (NEXT_PUBLIC_API_URL empty): every call resolves against src/data/*
  *   through the mock registry (src/lib/api/mocks) so the app runs standalone.
  */
 import { env, isMockMode } from "@/lib/env";
@@ -49,8 +49,8 @@ async function readBody(response: Response): Promise<unknown> {
 }
 
 /** Delay honoring Retry-After when present. */
-function retryDelayMs(response: Response, attempt: number): number {
-  const header = response.headers.get("Retry-After");
+function retryDelayMs(response: Response | undefined, attempt: number): number {
+  const header = response?.headers.get("Retry-After");
   if (header) {
     const seconds = Number(header);
     if (Number.isFinite(seconds)) return Math.min(seconds * 1000, MAX_RETRY_AFTER_MS);
@@ -75,6 +75,14 @@ export async function apiFetch<T>(path: string, init: ApiRequestInit = {}): Prom
     return (await handler({ ...init, path })) as T;
   }
 
+  if (!env.apiUrl) {
+    throw new ApiError(
+      503,
+      "API_NOT_CONFIGURED",
+      "Online services are temporarily unavailable in this environment. Please try again later or contact the Academy directly.",
+    );
+  }
+
   const url = new URL(`${env.apiUrl}${path.startsWith("/") ? path : `/${path}`}`);
   if (query) {
     for (const [key, value] of Object.entries(query)) {
@@ -89,16 +97,26 @@ export async function apiFetch<T>(path: string, init: ApiRequestInit = {}): Prom
   const retryableMethod = method === "GET" || method === "HEAD" || method === "OPTIONS";
 
   while (attempt <= MAX_RETRIES) {
-    response = await fetch(url, {
-      ...requestInit,
-      credentials: "include",
-      headers: {
-        Accept: "application/json",
-        ...(body !== undefined ? { "Content-Type": "application/json" } : {}),
-        ...requestInit.headers,
-      },
-      body: body !== undefined ? JSON.stringify(body) : undefined,
-    });
+    try {
+      response = await fetch(url, {
+        ...requestInit,
+        credentials: "include",
+        headers: {
+          Accept: "application/json",
+          ...(body !== undefined ? { "Content-Type": "application/json" } : {}),
+          ...requestInit.headers,
+        },
+        body: body !== undefined ? JSON.stringify(body) : undefined,
+      });
+    } catch (error) {
+      if (requestInit.signal?.aborted) throw error;
+      if (retryableMethod && attempt < MAX_RETRIES) {
+        await sleep(retryDelayMs(undefined, attempt));
+        attempt += 1;
+        continue;
+      }
+      throw ApiError.network();
+    }
 
     if (response.ok) return (await readBody(response)) as T;
 
@@ -175,7 +193,7 @@ function matchesPattern(segments: string[], pathname: string): boolean {
 }
 
 async function getMock(method: string, path: string): Promise<MockHandler | undefined> {
-  if (!mocksLoaded && !import.meta.env.VITE_API_URL) {
+  if (!mocksLoaded && !process.env.NEXT_PUBLIC_API_URL) {
     // The first request used to race this dynamic import and fail with
     // MOCK_NOT_FOUND. Share one promise so simultaneous queries wait for the
     // registry exactly once while keeping the mock chunk out of real builds.

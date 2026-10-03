@@ -11,8 +11,8 @@ Scope: every file in `src/` (601 files), `backend/src` (Cloudflare Worker), `bac
 
 ## 1. Architecture: how data flows (important context)
 
-- **Real mode** (production): `VITE_API_URL` is set → `src/lib/api/client.ts` fetches from the Cloudflare Worker (`/v1/*`). Confirmed by `.env`: `VITE_API_URL` is populated.
-- **Mock mode** (offline/dev): `VITE_API_URL` empty → `src/lib/api/client.ts` resolves every call against `src/lib/api/mocks/*` (5,679-line registry in `index.ts`).
+- **Real mode** (production): `NEXT_PUBLIC_API_URL` is set → `src/lib/api/client.ts` fetches from the Cloudflare Worker (`/v1/*`). Confirmed by `.env`: `NEXT_PUBLIC_API_URL` is populated.
+- **Mock mode** (offline/dev): `NEXT_PUBLIC_API_URL` empty → `src/lib/api/client.ts` resolves every call against `src/lib/api/mocks/*` (5,679-line registry in `index.ts`).
 - **Seed layer**: `backend/scripts/gen-*.ts` generate `backend/seeds/*-data.sql` from `src/data/*` — the intended D1 seed source. Migrations (`backend/migrations/*.sql`, 41 files) are schema-only (no `INSERT` seed statements found).
 
 This means `src/data/*` is **not dead weight** — it feeds mock mode AND the D1 seeds. But it is still full of fabricated business data (fake people, fake invoices, fake KPIs) that will become real DB rows when seeded.
@@ -100,7 +100,7 @@ This means `src/data/*` is **not dead weight** — it feeds mock mode AND the D1
 - Contact form **is real**: `src/routes/contact.tsx` → `submitContact` → `POST /v1/contact` (verified). Apply form is real (`submitApplication`).
 
 ### 3.5 Dead links / broken references
-- No broken internal `to=` links found when checked against the generated route tree (`src/routeTree.gen.ts`).
+- Internal `to=` links were checked against the route definitions in `src/routes/`; the Next.js generator now creates an explicit App Router page for each supported definition.
 - `/visit` referenced in ~10 files (`about`, `contact`, `events`, `virtual-tour`, `receptionist`, `brochure`, `feedback`, `info`, sitemap) — **route exists** at `src/routes/visit/index.tsx` (directory route), so no gap.
 - All `/app/...` links resolve to existing files.
 

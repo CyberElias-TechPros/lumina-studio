@@ -1,4 +1,6 @@
-import { createFileRoute } from "@tanstack/react-router";
+"use client";
+
+import { createFileRoute } from "@/lib/next-compat/route-definition";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { CalendarDays, CheckCircle2, Clock, QrCode, Timer, UserCheck, XCircle } from "lucide-react";

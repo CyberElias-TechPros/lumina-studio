@@ -1,9 +1,11 @@
+"use client";
+
 import { useCallback, useEffect, useRef, useState } from "react";
 import { env } from "@/lib/env";
 
 /**
  * Cloudflare Turnstile widget. Renders nothing (and `ready` is always true)
- * when VITE_TURNSTILE_SITE_KEY is unset, so forms work unchanged until keys
+ * when NEXT_PUBLIC_TURNSTILE_SITE_KEY is unset, so forms work unchanged until keys
  * are added. The backend enforces the check only when TURNSTILE_SECRET_KEY is
  * configured — set both together.
  */

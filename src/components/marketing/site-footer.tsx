@@ -1,4 +1,6 @@
-import { Link } from "@tanstack/react-router";
+"use client";
+
+import { Link } from "@/lib/next-compat/router";
 import { Mail, MapPin, Phone } from "lucide-react";
 import { BrandMark } from "./site-header";
 
@@ -7,6 +9,7 @@ const columns = [
     title: "Courses",
     links: [
       { label: "All courses", to: "/classes" },
+      { label: "Find your starting course", to: "/classes#course-finder" },
       { label: "Microsoft Office", to: "/classes/microsoft-office" },
       { label: "Computer Basics", to: "/classes/computer-basics-typing" },
       { label: "Graphic Design", to: "/classes/graphic-design" },
@@ -17,6 +20,10 @@ const columns = [
     title: "Academy",
     links: [
       { label: "Notes", to: "/blog" },
+      { label: "Editorial approach", to: "/editorial" },
+      { label: "Digital services", to: "/services" },
+      { label: "Partnerships", to: "/partners" },
+      { label: "Request a project", to: "/request-project" },
       { label: "About", to: "/about" },
       { label: "Admissions", to: "/admissions" },
       { label: "Apply", to: "/apply" },

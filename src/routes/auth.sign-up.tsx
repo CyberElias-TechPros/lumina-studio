@@ -1,4 +1,7 @@
-import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
+"use client";
+
+import { createFileRoute } from "@/lib/next-compat/route-definition";
+import { Link, useNavigate } from "@/lib/next-compat/router";
 import { useRef, useState } from "react";
 import { Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";

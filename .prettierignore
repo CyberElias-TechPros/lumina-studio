@@ -6,3 +6,5 @@ pnpm-lock.yaml
 package-lock.json
 bun.lock
 routeTree.gen.ts
+src/app/(generated)
+src/lib/next-compat/routes.gen.ts

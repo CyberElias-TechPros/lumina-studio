@@ -21,11 +21,11 @@ secret values are never exposed).
 
 | Var                        | Must match                                                                               |
 | -------------------------- | ---------------------------------------------------------------------------------------- |
-| `VITE_API_URL`             | Worker URL (e.g. `https://api.cea.ng`) — **required**, otherwise builds refuse live mode |
-| `VITE_PAYSTACK_PUBLIC_KEY` | Same Paystack account as `PAYSTACK_SECRET_KEY`                                           |
-| `VITE_TURNSTILE_SITE_KEY`  | Same Turnstile widget as `TURNSTILE_SECRET_KEY` — **set both or neither**                |
-| `VITE_VAPID_PUBLIC_KEY`    | Same as the Worker's `VAPID_PUBLIC_KEY`                                                  |
-| `VITE_APP_ENV`             | `prod`                                                                                   |
+| `NEXT_PUBLIC_API_URL`             | Worker URL (e.g. `https://api.cea.ng`) — **required**, otherwise builds refuse live mode |
+| `NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY` | Same Paystack account as `PAYSTACK_SECRET_KEY`                                           |
+| `NEXT_PUBLIC_TURNSTILE_SITE_KEY`  | Same Turnstile widget as `TURNSTILE_SECRET_KEY` — **set both or neither**                |
+| `NEXT_PUBLIC_VAPID_PUBLIC_KEY`    | Same as the Worker's `VAPID_PUBLIC_KEY`                                                  |
+| `NEXT_PUBLIC_APP_ENV`             | `prod`                                                                                   |
 
 ## 3. Provider dashboards
 

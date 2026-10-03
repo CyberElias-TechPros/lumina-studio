@@ -1,5 +1,7 @@
+"use client";
+
 import { useMemo, useState } from "react";
-import { Link } from "@tanstack/react-router";
+import { Link } from "@/lib/next-compat/router";
 import {
   ChevronRight,
   ExternalLink,

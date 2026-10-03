@@ -3,7 +3,7 @@
 import { writeFileSync, mkdirSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 
-const API_URL = process.env.VITE_API_URL || "https://cea-api.cyber-e54.workers.dev";
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "https://cea-api.cyber-e54.workers.dev";
 const OUT = resolve(process.cwd(), "src/data/library-catalog.json");
 
 function slugify(text) {

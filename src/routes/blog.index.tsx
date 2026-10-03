@@ -1,5 +1,8 @@
+"use client";
+
 import { useMemo, useState } from "react";
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@/lib/next-compat/route-definition";
+import { Link } from "@/lib/next-compat/router";
 import { getPageHead } from "@/lib/seo";
 import { Clock, Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
@@ -13,7 +16,7 @@ export const Route = createFileRoute("/blog/")({
     getPageHead({
       title: "Notes — computer skills from scratch",
       description:
-        "A from-scratch series on using a computer: files, email, Word, spreadsheets, the phone, and staying safe online. Class notes from Cyber Elias Academy, Port Harcourt.",
+        "A self-study library of practical computer lessons: files, email, office work, phones and safer browsing. Choose a chapter, search by task and practise at your own pace.",
       path: "/blog",
     }),
   component: Blog,
@@ -41,7 +44,7 @@ function Blog() {
       <PageHero
         eyebrow="Notes"
         title="Computer skills from the first sitting"
-        description={`A series for people who have never used a computer, or who have used one without anyone explaining it. Written by Ellis Dennis Graham at Cyber Elias Academy, Port Harcourt. ${blogPosts.length} lessons, in order. Read them like a magazine: finish one, turn the page.`}
+        description={`A self-study sequence for people building practical computer skills, from first use through work, study and digital safety. Written by Ellis Dennis Graham at Cyber Elias Academy in Port Harcourt. ${blogPosts.length} lessons in learning order: choose a chapter, search for a task, then try the steps yourself.`}
       >
         <div className="relative mt-8 max-w-md">
           <Search className="text-muted-foreground absolute top-1/2 left-3 size-4 -translate-y-1/2" />
@@ -52,6 +55,13 @@ function Blog() {
             className="h-11 pl-10"
           />
         </div>
+        <p className="text-muted-foreground mt-4 text-sm">
+          Learn how we handle examples, corrections and updates{" "}
+          <Link to="/editorial" className="text-primary font-medium hover:underline">
+            in our editorial approach
+          </Link>
+          .
+        </p>
       </PageHero>
 
       {!searching && (

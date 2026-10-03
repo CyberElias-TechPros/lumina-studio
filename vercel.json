@@ -49,7 +49,7 @@
     },
     {
       "source": "/work",
-      "destination": "/about",
+      "destination": "/services",
       "permanent": true
     },
     {
@@ -70,16 +70,6 @@
     {
       "source": "/scholarships",
       "destination": "/admissions",
-      "permanent": true
-    },
-    {
-      "source": "/services",
-      "destination": "/contact",
-      "permanent": true
-    },
-    {
-      "source": "/partners",
-      "destination": "/contact",
       "permanent": true
     },
     {

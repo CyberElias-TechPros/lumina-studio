@@ -64,6 +64,7 @@ import receiptsExpensesSql from "../migrations/0062_receipts_expenses.sql?raw";
 import cohortsSql from "../migrations/0063_cohorts.sql?raw";
 import schoolsSql from "../migrations/0064_schools.sql?raw";
 import assistantQuestionsSql from "../migrations/0065_assistant_questions.sql?raw";
+import businessIntakeSql from "../migrations/0066_business_intake.sql?raw";
 import { seedContentSql } from "../seeds/content";
 import { seedLmsSql } from "../seeds/lms";
 import { seedDomainSql } from "../seeds/domain";
@@ -179,6 +180,7 @@ export async function setupDb(): Promise<void> {
     cohortsSql,
     schoolsSql,
     assistantQuestionsSql,
+    businessIntakeSql,
   ]) {
     const statements = sql
       .split("\n")

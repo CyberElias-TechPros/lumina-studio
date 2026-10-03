@@ -1,10 +1,12 @@
+"use client";
+
 /**
  * Shared, data-driven role portal. Every /portal/<slug> page is a thin config
  * on top of this: live metrics + activity from GET /v1/portal/summary (scoped
  * server-side to what the signed-in role may see) and module shortcuts from
  * the role's real app navigation.
  */
-import { Link } from "@tanstack/react-router";
+import { Link } from "@/lib/next-compat/router";
 import { ArrowRight, Bell, Lock, LogIn, RefreshCw } from "lucide-react";
 import { AppShell, appRoles } from "@/components/app/app-shell";
 import { Badge } from "@/components/ui/badge";

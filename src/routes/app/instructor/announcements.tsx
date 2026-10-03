@@ -1,4 +1,6 @@
-import { createFileRoute } from "@tanstack/react-router";
+"use client";
+
+import { createFileRoute } from "@/lib/next-compat/route-definition";
 import { Bell, Eye, Globe, GraduationCap, Megaphone, Pin, Rss, Send, Users } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";

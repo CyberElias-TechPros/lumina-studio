@@ -1,4 +1,6 @@
-import { useNavigate } from "@tanstack/react-router";
+"use client";
+
+import { useNavigate } from "@/lib/next-compat/router";
 import {
   Bell,
   BookOpen,

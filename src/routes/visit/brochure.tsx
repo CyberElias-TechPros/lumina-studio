@@ -1,5 +1,8 @@
+"use client";
+
 import { useTurnstile } from "@/components/turnstile";
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@/lib/next-compat/route-definition";
+import { Link } from "@/lib/next-compat/router";
 import { useMutation } from "@tanstack/react-query";
 import { useState } from "react";
 import { CheckCircle2, Loader2 } from "lucide-react";

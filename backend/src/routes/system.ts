@@ -25,7 +25,7 @@ export function readiness(env: AppEnv) {
     ai: Boolean(env.AI_API_KEY),
     errorReporting: Boolean(env.SENTRY_DSN),
     sms: Boolean(env.SMS_API_KEY),
-    contactInbox: Boolean(env.CONTACT_INBOX),
+    contactInbox: Boolean(env.CONTACT_INBOX || env.EMAIL_REPLY_TO),
     leadsSheet: Boolean(env.GOOGLE_SHEET_WEBHOOK_URL),
     uploads: Boolean(env.UPLOADS),
     realtime: Boolean(env.REALTIME_ROOMS),

@@ -1,5 +1,8 @@
+"use client";
+
 import { useTurnstile } from "@/components/turnstile";
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@/lib/next-compat/route-definition";
+import { Link } from "@/lib/next-compat/router";
 import { useState } from "react";
 import { ArrowLeft, ArrowRight, Mail, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";

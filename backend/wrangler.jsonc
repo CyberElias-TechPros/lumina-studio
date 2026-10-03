@@ -7,8 +7,8 @@
   "observability": {
     "enabled": true,
   },
-  // Scheduled jobs (src/jobs/scheduled.ts): payment reconciliation, enrollment
-  // reminders, token/session cleanup. Keep in sync with CRON_SCHEDULE.
+  // Scheduled jobs (src/jobs/scheduled.ts): payment reconciliation, enrolment
+  // reminders, token/session cleanup and business-intake retention. Keep in sync with CRON_SCHEDULE.
   "triggers": {
     "crons": ["*/15 * * * *", "0 * * * *", "0 2 * * *"],
   },

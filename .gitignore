@@ -8,6 +8,10 @@ pnpm-debug.log*
 lerna-debug.log*
 
 node_modules
+.next
+*.tsbuildinfo
+# Rebuilt from src/routes by scripts/generate-next-routes.mjs before dev/build.
+src/app/(generated)/
 dist
 dist-ssr
 .output

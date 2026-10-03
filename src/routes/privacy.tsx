@@ -1,4 +1,5 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@/lib/next-compat/route-definition";
+import { Link } from "@/lib/next-compat/router";
 import { getPageHead } from "@/lib/seo";
 import { PageShell, PageHero } from "@/components/marketing/shell";
 import { Reveal } from "@/components/motion";
@@ -16,7 +17,7 @@ export const Route = createFileRoute("/privacy")({
 });
 
 function PrivacyPage() {
-  const lastUpdated = "20 September 2026";
+  const lastUpdated = "3 October 2026";
 
   return (
     <PageShell>
@@ -51,6 +52,14 @@ function PrivacyPage() {
               <li>Name, email, phone, and the message or application you send</li>
               <li>The course you asked about, and any notes you include</li>
               <li>
+                If you submit a project request: organisation, project brief, project type, budget
+                range, timeline and the contact details needed to respond
+              </li>
+              <li>
+                If you apply to partner: organisation, website, location, capabilities and your
+                proposed collaboration
+              </li>
+              <li>
                 If you create a learner login: email and a hashed password. We do not store card
                 numbers
               </li>
@@ -59,6 +68,10 @@ function PrivacyPage() {
             <ul className="text-muted-foreground mt-3 list-inside list-disc space-y-2">
               <li>Essential cookies: session, security, your light/dark preference</li>
               <li>Server logs: IP address, browser, pages requested, timestamps</li>
+              <li>
+                When enabled, Cloudflare Turnstile checks technical request data to help prevent
+                automated form abuse
+              </li>
               <li>Optional analytics cookies, only if you press Accept on the cookie banner</li>
               <li>Advertising cookies from Google, described in §6</li>
             </ul>
@@ -69,6 +82,10 @@ function PrivacyPage() {
             <ul className="text-muted-foreground mt-4 list-inside list-disc space-y-2">
               <li>
                 Reply to you, confirm course dates and fees, and run the class you enrolled in
+              </li>
+              <li>
+                Review project requests and partnership proposals, assess fit, and follow up about
+                the work you described
               </li>
               <li>Issue and later check a certificate for work produced here</li>
               <li>Keep the site working and secure</li>
@@ -83,7 +100,12 @@ function PrivacyPage() {
           <Reveal delay={0.15}>
             <h2 className="font-display text-2xl font-bold">4. Who else sees it</h2>
             <ul className="text-muted-foreground mt-4 list-inside list-disc space-y-2">
-              <li>Hosting for this website (currently Vercel / Cloudflare)</li>
+              <li>
+                Hosting and security services for this website (currently Vercel / Cloudflare)
+              </li>
+              <li>
+                A transactional email provider to send enquiry receipts, replies and review notices
+              </li>
               <li>Google, if ads or (with your consent) Analytics run on a page</li>
               <li>A parent or sponsor, if you named them on an application</li>
               <li>Authorities, if the law requires it</li>
@@ -159,6 +181,11 @@ function PrivacyPage() {
             <h2 className="font-display text-2xl font-bold">8. How long we keep it</h2>
             <ul className="text-muted-foreground mt-4 list-inside list-disc space-y-2">
               <li>Contact messages: until we have dealt with them, then up to two years</li>
+              <li>
+                Project requests and partner applications: while they are being assessed and for up
+                to two years after the last activity. Records needed for an active partnership or a
+                legal obligation may be retained longer.
+              </li>
               <li>
                 Applications and class records: while you are a student, then up to seven years so
                 we can verify a certificate

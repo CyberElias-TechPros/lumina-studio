@@ -34,7 +34,7 @@ export function initGA4(measurementId: string) {
 
 export function grantConsent() {
   localStorage.setItem(CONSENT_KEY, "granted");
-  const id = import.meta.env.VITE_GA4_ID;
+  const id = process.env.NEXT_PUBLIC_GA4_ID;
   if (id) initGA4(id);
 }
 

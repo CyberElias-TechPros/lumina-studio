@@ -37,10 +37,10 @@ export function recordExpense(input: RecordExpenseInput): Promise<{ ok: boolean;
   return apiFetch("/v1/expenses", { method: "POST", body: input });
 }
 
-/** Absolute URL of the monthly P&L CSV — for a plain <a download>. */
-export function pnlCsvHref(month: string): string {
-  const base = (import.meta.env.VITE_API_URL ?? "").replace(/\/+$/, "");
-  return `${base}/v1/pnl.csv?month=${encodeURIComponent(month)}`;
+/** Absolute URL of the monthly P&L CSV, or null until the API base is configured. */
+export function pnlCsvHref(month: string): string | null {
+  const base = (process.env.NEXT_PUBLIC_API_URL ?? "").replace(/\/+$/, "");
+  return base ? `${base}/v1/pnl.csv?month=${encodeURIComponent(month)}` : null;
 }
 
 export interface PaymentBatch {

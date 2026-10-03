@@ -1,14 +1,17 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@/lib/next-compat/route-definition";
+import { Link } from "@/lib/next-compat/router";
 import { ArrowRight, ArrowUpRight, Check, Clock, GraduationCap, Wallet } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { CTASection, PageHero, PageShell } from "@/components/marketing/shell";
 import { CampusImg, CourseCover, CourseIcon } from "@/components/marketing/photos";
 import { Reveal } from "@/components/motion";
+import { CourseFinder } from "@/components/marketing/course-finder";
 import {
   achievementLevels,
   courseCategories,
   formatFee,
+  resolvedCourses,
   resolvedFlyerCourses,
   resolvedRotatingCourses,
   teachingLoop,
@@ -25,9 +28,9 @@ export const Route = createFileRoute("/classes/")({
       url: `https://cea.ng/classes/${course.slug}`,
     }));
     return getPageHead({
-      title: "Practical Digital Skills Classes — Courses, Fees & Full Curriculum",
+      title: "Practical Digital Skills Classes — Courses, Fees & Class Notes",
       description:
-        "Cyber Elias Academy's practical digital skills classes: Microsoft Office, computer basics, graphic design, web design, digital marketing, data entry, computer repairs, web development, cybersecurity and more. Two sessions a week, every course published session by session.",
+        "Cyber Elias Academy's practical digital skills classes in Port Harcourt: Microsoft Office, computer basics, design, web, data entry, repairs, cybersecurity and more. Compare course fees, requirements and published lesson counts before you apply.",
       path: "/classes",
       structuredData: [
         {
@@ -51,6 +54,15 @@ export const Route = createFileRoute("/classes/")({
   component: Classes,
 });
 
+const publishedSessionCount = resolvedCourses.reduce(
+  (count, course) => count + course.publishedCount,
+  0,
+);
+const totalSessionCount = resolvedCourses.reduce(
+  (count, course) => count + course.sessions.length,
+  0,
+);
+
 const HUB_FAQS = [
   {
     q: "How are the classes delivered?",
@@ -58,7 +70,7 @@ const HUB_FAQS = [
   },
   {
     q: "Are the full class notes published online?",
-    a: "Yes. Every session of every course is published on this site as a complete class lecture: learning objectives, the taught theory, the instructor demonstration script, guided practice, common mistakes, expert notes, vocabulary, homework, the assessment rubric and session questions. You can read the entire curriculum before you enrol, and enrolled students use the same pages as their class notes.",
+    a: `${publishedSessionCount} of ${totalSessionCount} course sessions currently have a full class lecture published here, including objectives, taught content, demonstrations, practice and assessment guidance. Each course card shows its own count, and each session link is labelled so you can tell a full lecture from an outline before opening it.`,
   },
   {
     q: "What do I actually leave with?",
@@ -90,49 +102,49 @@ function CourseCard({ course, index }: { course: ResolvedCourse; index: number }
           <CourseCover slug={course.slug} />
         </div>
         <div className="flex flex-1 flex-col p-6">
-        <div className="flex items-start justify-between gap-4">
-          <span className="font-label text-foreground/45 inline-flex items-center gap-2 text-[10px] tabular-nums">
-            <CourseIcon slug={course.slug} className="text-primary size-3.5" />
-            {String(index + 1).padStart(2, "0")}
-          </span>
-          <div className="flex flex-wrap items-center justify-end gap-2">
-            <Badge variant="outline" className="border-foreground/15 font-normal">
-              {course.level}
-            </Badge>
-            <span className="text-primary font-display text-sm font-semibold">
-              {formatFee(course.fee)}
+          <div className="flex items-start justify-between gap-4">
+            <span className="font-label text-foreground/45 inline-flex items-center gap-2 text-[10px] tabular-nums">
+              <CourseIcon slug={course.slug} className="text-primary size-3.5" />
+              {String(index + 1).padStart(2, "0")}
+            </span>
+            <div className="flex flex-wrap items-center justify-end gap-2">
+              <Badge variant="outline" className="border-foreground/15 font-normal">
+                {course.level}
+              </Badge>
+              <span className="text-primary font-display text-sm font-semibold">
+                {formatFee(course.fee)}
+              </span>
+            </div>
+          </div>
+
+          <h3 className="font-display mt-4 text-xl leading-tight font-semibold tracking-tight transition-colors group-hover:text-primary">
+            {course.title}
+          </h3>
+          <p className="text-foreground/70 mt-3 text-sm leading-relaxed">{course.hook}</p>
+
+          <div className="text-foreground/60 mt-5 flex flex-wrap items-center gap-x-4 gap-y-2 text-[11px]">
+            <span className="flex items-center gap-1.5">
+              <Clock className="size-3.5" /> {course.weeks} weeks
+            </span>
+            <span className="flex items-center gap-1.5">
+              <GraduationCap className="size-3.5" /> {course.sessions.length} sessions
+            </span>
+            <span className="flex items-center gap-1.5">
+              <Wallet className="size-3.5" /> {course.sessionsPerWeek}/week
             </span>
           </div>
-        </div>
 
-        <h3 className="font-display mt-4 text-xl leading-tight font-semibold tracking-tight transition-colors group-hover:text-primary">
-          {course.title}
-        </h3>
-        <p className="text-foreground/70 mt-3 text-sm leading-relaxed">{course.hook}</p>
-
-        <div className="text-foreground/60 mt-5 flex flex-wrap items-center gap-x-4 gap-y-2 text-[11px]">
-          <span className="flex items-center gap-1.5">
-            <Clock className="size-3.5" /> {course.weeks} weeks
-          </span>
-          <span className="flex items-center gap-1.5">
-            <GraduationCap className="size-3.5" /> {course.sessions.length} sessions
-          </span>
-          <span className="flex items-center gap-1.5">
-            <Wallet className="size-3.5" /> {course.sessionsPerWeek}/week
-          </span>
-        </div>
-
-        <div className="border-foreground/10 mt-5 flex items-center justify-between border-t pt-4">
-          <span className="text-foreground/60 text-[11px]">
-            {course.publishedCount > 0
-              ? `${course.publishedCount} of ${course.sessions.length} class notes published`
-              : `${course.sessions.length} sessions · full outline`}
-          </span>
-          <span className="text-primary flex items-center gap-1 text-xs font-semibold">
-            View
-            <ArrowUpRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-          </span>
-        </div>
+          <div className="border-foreground/10 mt-5 flex items-center justify-between border-t pt-4">
+            <span className="text-foreground/60 text-[11px]">
+              {course.publishedCount > 0
+                ? `${course.publishedCount} of ${course.sessions.length} class notes published`
+                : `${course.sessions.length} sessions · full outline`}
+            </span>
+            <span className="text-primary flex items-center gap-1 text-xs font-semibold">
+              View
+              <ArrowUpRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </span>
+          </div>
         </div>
       </Link>
     </Reveal>
@@ -140,17 +152,19 @@ function CourseCard({ course, index }: { course: ResolvedCourse; index: number }
 }
 
 function CourseGroup({
+  id,
   title,
   description,
   courses,
 }: {
+  id?: string;
   title: string;
   description: string;
   courses: ResolvedCourse[];
 }) {
   const categories = courseCategories.filter((cat) => courses.some((c) => c.category === cat));
   return (
-    <section className="border-foreground/10 border-b">
+    <section id={id} className="border-foreground/10 border-b scroll-mt-24">
       <div className="container-page py-16 md:py-20">
         <div className="max-w-3xl">
           <h2 className="font-display text-3xl font-semibold tracking-tight text-balance md:text-4xl">
@@ -390,8 +404,8 @@ function Classes() {
     <PageShell>
       <PageHero
         eyebrow="Practical digital skills curriculum"
-        title="Short courses, published session by session"
-        description="Practical classes at the Port Harcourt centre, and online where noted. Two sessions a week. Read the full notes before you enrol. The certificate is awarded for the work you produce."
+        title="Find a practical course for the work you want to do"
+        description="Practical classes at the Port Harcourt centre, and online where noted. Two sessions a week. Compare fees, requirements and final projects before you apply; published lesson counts and session outlines make it clear what is available to read."
         meta={[
           `${resolvedFlyerCourses.length} core courses`,
           `${resolvedFlyerCourses.reduce((sum, c) => sum + c.sessions.length, 0)} sessions`,
@@ -410,9 +424,11 @@ function Classes() {
         </div>
       </PageHero>
 
+      <CourseFinder id="course-finder" />
+
       <CourseGroup
         title="The core courses"
-        description="The thirteen practical courses on the academy flyer, each taught over two sessions a week and each ending in something you can show. Click any course to see its full week-by-week outline and read every class lecture."
+        description="The practical courses listed on the Academy flyer, each taught over two sessions a week and built around work you can show. Course pages include the week-by-week outline, entry requirements, listed fee and an exact count of published class lectures."
         courses={resolvedFlyerCourses}
       />
 
@@ -420,6 +436,7 @@ function Classes() {
       <DeliverablesTable />
 
       <CourseGroup
+        id="rotating-courses"
         title="Rotating short courses"
         description="We do not advertise 'and more' as a mystery. These are the short courses that rotate through the timetable as demand and instructor availability allow — ask admissions which ones run next."
         courses={resolvedRotatingCourses}

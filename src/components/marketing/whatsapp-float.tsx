@@ -1,4 +1,6 @@
-import { useRouterState } from "@tanstack/react-router";
+"use client";
+
+import { useRouterState } from "@/lib/next-compat/router";
 
 /**
  * Sitewide floating WhatsApp button (public site only — hidden inside the

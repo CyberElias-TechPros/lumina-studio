@@ -1,4 +1,5 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@/lib/next-compat/route-definition";
+import { Link } from "@/lib/next-compat/router";
 import { getPageHead } from "@/lib/seo";
 import { PageShell, PageHero } from "@/components/marketing/shell";
 import { Mail, MapPin } from "lucide-react";

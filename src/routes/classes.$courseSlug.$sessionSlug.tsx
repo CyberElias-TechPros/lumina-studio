@@ -1,4 +1,7 @@
-import { createFileRoute, Link, useParams } from "@tanstack/react-router";
+"use client";
+
+import { createFileRoute } from "@/lib/next-compat/route-definition";
+import { Link, useParams } from "@/lib/next-compat/router";
 import {
   AlertTriangle,
   ArrowLeft,
@@ -32,108 +35,113 @@ import {
 } from "@/data/academy";
 import { getPageHead } from "@/lib/seo";
 
-const LAST_REVIEWED = "2026-09-12";
-
 export const Route = createFileRoute("/classes/$courseSlug/$sessionSlug")({
   head: ({ params }) => {
     const match = findSession(params.courseSlug, params.sessionSlug);
     const course = match?.course ?? findCourse(params.courseSlug) ?? resolvedCourses[0];
     const session = match?.session ?? course.sessions[0];
     const lecture = session?.lecture;
-    const reviewed = lecture?.reviewed ?? LAST_REVIEWED;
+    const reviewed = lecture?.reviewed;
     const title = `${course.title} — Session ${session?.number ?? 1}: ${session?.title ?? "Class Notes"}`;
     const description =
       lecture?.summary ??
-      `Full class notes for ${course.title} session ${session?.number}: ${session?.topics.slice(0, 6).join(", ")}.`;
+      `Session outline for ${course.title} session ${session?.number}: ${session?.topics.slice(0, 6).join(", ")}.`;
 
     return getPageHead({
       title,
       description,
       path: `/classes/${course.slug}/${session?.slug ?? ""}`,
       type: "article",
-      structuredData: [
-        {
-          "@context": "https://schema.org",
-          "@type": "LearningResource",
-          resourceType: "Lesson",
-          name: `Session ${session?.number}: ${session?.title}`,
-          description,
-          educationalLevel: course.level,
-          teaches: lecture?.objectives ?? session?.topics ?? [],
-          learningResourceType: "Lesson plan and class lecture",
-          inLanguage: "en-NG",
-          isPartOf: {
-            "@type": "Course",
-            name: course.title,
-            description: course.goal[0],
-            provider: {
-              "@type": "EducationalOrganization",
-              name: "Cyber Elias Academy",
-              sameAs: "https://cea.ng",
-            },
-            offers: { "@type": "Offer", price: course.fee, priceCurrency: "NGN" },
-          },
-          provider: {
-            "@type": "EducationalOrganization",
-            name: "Cyber Elias Academy",
-            sameAs: "https://cea.ng",
-          },
-          timeRequired: `PT${session?.minutes ?? 105}M`,
-          about: session?.topics ?? [],
-        },
-        {
-          "@context": "https://schema.org",
-          "@type": "Article",
-          headline: title,
-          description,
-          datePublished: reviewed,
-          dateModified: reviewed,
-          author: {
-            "@type": "Person",
-            name: "Ellis Dennis Graham",
-            jobTitle: "Founder",
-          },
-          publisher: {
-            "@type": "Organization",
-            name: "Cyber Elias Academy",
-            logo: { "@type": "ImageObject", url: "https://cea.ng/icon.svg" },
-          },
-          mainEntityOfPage: `https://cea.ng/classes/${course.slug}/${session?.slug ?? ""}`,
-          wordCount: lecture ? lectureWordCount(lecture) : undefined,
-        },
-        {
-          "@context": "https://schema.org",
-          "@type": "BreadcrumbList",
-          itemListElement: [
-            { "@type": "ListItem", position: 1, name: "Classes", item: "https://cea.ng/classes" },
+      noIndex: !lecture,
+      structuredData: lecture
+        ? [
             {
-              "@type": "ListItem",
-              position: 2,
-              name: course.title,
-              item: `https://cea.ng/classes/${course.slug}`,
-            },
-            {
-              "@type": "ListItem",
-              position: 3,
+              "@context": "https://schema.org",
+              "@type": "LearningResource",
+              resourceType: "Lesson",
               name: `Session ${session?.number}: ${session?.title}`,
-              item: `https://cea.ng/classes/${course.slug}/${session?.slug ?? ""}`,
-            },
-          ],
-        },
-        ...(lecture
-          ? [
-              {
-                "@context": "https://schema.org",
-                "@type": "FAQPage",
-                mainEntity: lecture.faqs.map((f) => ({
-                  "@type": "Question",
-                  name: f.q,
-                  acceptedAnswer: { "@type": "Answer", text: f.a },
-                })),
+              description,
+              educationalLevel: course.level,
+              teaches: lecture?.objectives ?? session?.topics ?? [],
+              learningResourceType: "Lesson plan and class lecture",
+              inLanguage: "en-NG",
+              isPartOf: {
+                "@type": "Course",
+                name: course.title,
+                description: course.goal[0],
+                provider: {
+                  "@type": "EducationalOrganization",
+                  name: "Cyber Elias Academy",
+                  sameAs: "https://cea.ng",
+                },
+                offers: { "@type": "Offer", price: course.fee, priceCurrency: "NGN" },
               },
-            ]
-          : []),
-      ],
+              provider: {
+                "@type": "EducationalOrganization",
+                name: "Cyber Elias Academy",
+                sameAs: "https://cea.ng",
+              },
+              timeRequired: `PT${session?.minutes ?? 105}M`,
+              about: session?.topics ?? [],
+            },
+            {
+              "@context": "https://schema.org",
+              "@type": "Article",
+              headline: title,
+              description,
+              ...(reviewed ? { dateModified: reviewed } : {}),
+              author: {
+                "@type": "Person",
+                name: "Ellis Dennis Graham",
+                jobTitle: "Founder",
+              },
+              publisher: {
+                "@type": "Organization",
+                name: "Cyber Elias Academy",
+                logo: { "@type": "ImageObject", url: "https://cea.ng/icon.svg" },
+              },
+              mainEntityOfPage: `https://cea.ng/classes/${course.slug}/${session?.slug ?? ""}`,
+              wordCount: lecture ? lectureWordCount(lecture) : undefined,
+            },
+            {
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              itemListElement: [
+                {
+                  "@type": "ListItem",
+                  position: 1,
+                  name: "Classes",
+                  item: "https://cea.ng/classes",
+                },
+                {
+                  "@type": "ListItem",
+                  position: 2,
+                  name: course.title,
+                  item: `https://cea.ng/classes/${course.slug}`,
+                },
+                {
+                  "@type": "ListItem",
+                  position: 3,
+                  name: `Session ${session?.number}: ${session?.title}`,
+                  item: `https://cea.ng/classes/${course.slug}/${session?.slug ?? ""}`,
+                },
+              ],
+            },
+            ...(lecture
+              ? [
+                  {
+                    "@context": "https://schema.org",
+                    "@type": "FAQPage",
+                    mainEntity: lecture.faqs.map((f) => ({
+                      "@type": "Question",
+                      name: f.q,
+                      acceptedAnswer: { "@type": "Answer", text: f.a },
+                    })),
+                  },
+                ]
+              : []),
+          ]
+        : [],
     });
   },
   component: SessionPage,
@@ -164,7 +172,7 @@ function SessionPage() {
   const prev = match?.prev;
   const next = match?.next;
   const lecture = session?.lecture;
-  const reviewed = lecture?.reviewed ?? LAST_REVIEWED;
+  const reviewed = lecture?.reviewed;
 
   if (!lecture) {
     return (
@@ -313,18 +321,18 @@ function SessionPage() {
               ]
                 .filter((item): item is [string, string] => item !== null)
                 .map(([id, label], i) => (
-                <li key={id}>
-                  <a
-                    href={`#${id}`}
-                    className="hover:text-primary flex items-baseline gap-2 transition-colors"
-                  >
-                    <span className="text-muted-foreground/60 text-[10px] tabular-nums">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                    {label}
-                  </a>
-                </li>
-              ))}
+                  <li key={id}>
+                    <a
+                      href={`#${id}`}
+                      className="hover:text-primary flex items-baseline gap-2 transition-colors"
+                    >
+                      <span className="text-muted-foreground/60 text-[10px] tabular-nums">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      {label}
+                    </a>
+                  </li>
+                ))}
             </ol>
           </nav>
         </Reveal>
@@ -598,7 +606,9 @@ function SessionPage() {
                   key={item.symptom}
                   className="border-foreground/12 rounded-[12px] border p-5"
                 >
-                  <h3 className="font-display text-[17px] leading-snug font-bold">{item.symptom}</h3>
+                  <h3 className="font-display text-[17px] leading-snug font-bold">
+                    {item.symptom}
+                  </h3>
                   <dl className="mt-4 space-y-3 text-[15px] leading-relaxed">
                     {[
                       ["What is probably happening", item.likelyCause],
@@ -784,11 +794,13 @@ function SessionPage() {
           </section>
         )}
 
-        <ContentFreshness
-          lastReviewed={reviewed}
-          author="Cyber Elias Academy faculty"
-          className="border-foreground/10 mt-14 border-t pt-6"
-        />
+        {reviewed && (
+          <ContentFreshness
+            lastReviewed={reviewed}
+            author="Cyber Elias Academy faculty"
+            className="border-foreground/10 mt-14 border-t pt-6"
+          />
+        )}
 
         {/* Prev / next */}
         <nav
@@ -927,7 +939,8 @@ function LectureFigures({
   figures,
   afterHeading,
 }: {
-  figures: { id: string; src: string; alt: string; caption: string; afterHeading: string }[] | undefined;
+  figures:
+    { id: string; src: string; alt: string; caption: string; afterHeading: string }[] | undefined;
   afterHeading: string;
 }) {
   const matched = figures?.filter((figure) => figure.afterHeading === afterHeading) ?? [];
@@ -935,7 +948,10 @@ function LectureFigures({
   return (
     <div className="mt-6 space-y-6">
       {matched.map((figure) => (
-        <figure key={figure.id} className="border-foreground/12 overflow-hidden rounded-[12px] border">
+        <figure
+          key={figure.id}
+          className="border-foreground/12 overflow-hidden rounded-[12px] border"
+        >
           <img src={figure.src} alt={figure.alt} className="h-auto w-full" loading="lazy" />
           <figcaption className="text-muted-foreground px-4 py-3 text-sm leading-relaxed">
             {figure.caption}

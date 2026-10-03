@@ -1,4 +1,4 @@
-﻿# CEA-OS User Flows — Complete Walkthrough
+# CEA-OS User Flows — Complete Walkthrough
 
 Every flow in the app, per user, per scenario. Covers the public site, auth,
 the student app, every role portal, and system-level flows (payments, push,
@@ -10,12 +10,12 @@ mock mode).
 
 ## 0. How the app works (read this first)
 
-**Two runtime modes, decided at build time by `VITE_API_URL`:**
+**Two runtime modes, decided at build time by `NEXT_PUBLIC_API_URL`:**
 
 | Mode | Trigger | What happens |
 |---|---|---|
-| **Mock** | `VITE_API_URL` unset | Every `src/lib/api` call is served by in-memory mocks (`src/lib/api/mocks/*`) seeded from `src/data/*`. You are always "signed in" as `Adaeze Okafor / student@cea.ng / student`, session 24h. Paystack checkout returns a fake URL, flags return defaults. |
-| **Live** | `VITE_API_URL` set | All calls hit the Cloudflare worker at `https://cea-api.cyber-e54.workers.dev` (currently configured in `.env`). Cookie-based sessions, real D1 data, real Paystack. |
+| **Mock** | `NEXT_PUBLIC_API_URL` unset | Every `src/lib/api` call is served by in-memory mocks (`src/lib/api/mocks/*`) seeded from `src/data/*`. You are always "signed in" as `Adaeze Okafor / student@cea.ng / student`, session 24h. Paystack checkout returns a fake URL, flags return defaults. |
+| **Live** | `NEXT_PUBLIC_API_URL` set | All calls hit the Cloudflare worker at `https://cea-api.cyber-e54.workers.dev` (currently configured in `.env`). Cookie-based sessions, real D1 data, real Paystack. |
 
 **Deployed reality (today):** frontend `https://cea.ng` (and `https://www.cea.ng`)
 runs live
@@ -45,8 +45,8 @@ password `cea-demo-pass-2026`, MFA off).
 - Every `/v1/*` request passes the RBAC guard (`backend/src/lib/rbac.ts`).
   Unregistered paths → **403** (not 404). Public rules skip auth; rules with
   `roles` reject mismatched roles with 403; the rest need any valid session.
-- CORS: only origins in `FRONTEND_ORIGINS` (currently `localhost:5173`,
-   `127.0.0.1:5173`, `https://cea.ng`, `https://www.cea.ng`) — or *any* origin if that
+- CORS: only origins in `FRONTEND_ORIGINS` (includes Next.js dev at `localhost:3000`,
+   legacy local origins, `https://cea.ng`, and `https://www.cea.ng`) — or *any* origin if that
   var is empty. Cookies: `HttpOnly; SameSite=None; Secure` in production.
 - All list endpoints are paginated: `?limit=` (default 20, max 50) and
   `?cursor=`; responses are `{ items, nextCursor?, total }`.

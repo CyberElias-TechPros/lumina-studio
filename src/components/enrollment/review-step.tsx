@@ -1,3 +1,5 @@
+"use client";
+
 import { AlertCircle, CheckCircle2, ShieldCheck } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";

@@ -1,4 +1,6 @@
-import { createFileRoute } from "@tanstack/react-router";
+"use client";
+
+import { createFileRoute } from "@/lib/next-compat/route-definition";
 import { useState } from "react";
 import { toast } from "sonner";
 import { Camera, CheckCircle2, ListChecks, QrCode, ScanLine, Users, XCircle } from "lucide-react";

@@ -1,9 +1,11 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@/lib/next-compat/route-definition";
+import { Link } from "@/lib/next-compat/router";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { CTASection, PageShell } from "@/components/marketing/shell";
 import { CampusImg, CourseCover } from "@/components/marketing/photos";
 import { FounderPhoto } from "@/components/marketing/founder-photo";
+import { CourseFinder } from "@/components/marketing/course-finder";
 import { faqs } from "@/data/site";
 import { blogPosts } from "@/data/blog";
 import { flyerCourses, formatFee, teachingLoop } from "@/data/academy";
@@ -60,12 +62,13 @@ function Home() {
               Port Harcourt · Digital skills training
             </p>
             <h1 className="font-display mt-4 max-w-3xl text-3xl font-semibold tracking-tight text-balance sm:text-4xl md:text-[2.75rem] md:leading-tight">
-              Practical computer and digital-skills training
+              Learn digital skills by doing real work.
             </h1>
             <p className="text-muted-foreground mt-5 max-w-2xl text-base leading-relaxed text-pretty sm:text-[17px]">
-              Cyber Elias Academy is a training centre on Ebony Road. We teach short, hands-on
-              courses — Office, computer basics, design, web, data entry, repairs — two sessions a
-              week. You leave with a piece of work, not just a certificate of attendance.
+              At our Port Harcourt training centre, each short course is built around a practical
+              task: prepare a clean document, organise a spreadsheet, make a design, build a website
+              or troubleshoot a computer. See the fee, requirements and final project before you
+              apply.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Button asChild>
@@ -89,6 +92,8 @@ function Home() {
           </figure>
         </div>
       </section>
+
+      <CourseFinder id="home-course-finder" />
 
       <section className="container-page py-16 md:py-20">
         <div className="flex flex-wrap items-end justify-between gap-4">
@@ -216,14 +221,22 @@ function Home() {
               Notes: computer skills from scratch
             </h2>
             <p className="text-muted-foreground mt-2 max-w-xl text-sm leading-relaxed">
-              Free class notes anyone can read — sitting down at a computer, files, email, Word,
-              spreadsheets, the phone, and staying safe online. {blogPosts.length} lessons, written
-              as if someone is sitting beside you.
+              Free, self-paced lessons that turn everyday computer tasks into practice: files,
+              email, office documents, spreadsheets, phones and safer browsing. Explore all{" "}
+              {blogPosts.length} lessons in order, or search for the task you need today.
             </p>
           </div>
-          <Link to="/blog" className="text-primary text-sm font-medium hover:underline">
-            All notes
-          </Link>
+          <div className="flex flex-wrap gap-x-5 gap-y-2">
+            <Link to="/blog" className="text-primary text-sm font-medium hover:underline">
+              All notes
+            </Link>
+            <Link
+              to="/editorial"
+              className="text-muted-foreground text-sm font-medium hover:text-foreground"
+            >
+              How we maintain them
+            </Link>
+          </div>
         </div>
         <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {[...blogPosts]

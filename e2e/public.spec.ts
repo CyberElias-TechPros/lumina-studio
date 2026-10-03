@@ -5,7 +5,7 @@ test.describe("Public marketing + application journey", () => {
   test("home page loads with core navigation", async ({ page }) => {
     await page.goto("/");
     await expect(
-      page.getByRole("heading", { name: /practical computer and digital-skills training/i }),
+      page.getByRole("heading", { name: /learn digital skills by doing real work/i }),
     ).toBeVisible();
     await expect(page.getByRole("link", { name: /^courses$/i }).first()).toBeVisible();
     await expect(page.getByRole("link", { name: /^apply$/i }).first()).toBeVisible();
@@ -18,6 +18,32 @@ test.describe("Public marketing + application journey", () => {
     await page.goto("/classes/web-development");
     await expect(page).toHaveTitle(/Web Development/);
     await expect(page.getByText(/html|css|javascript/i).first()).toBeVisible();
+  });
+
+  test("course finder gives a catalogue-backed beginner path and resets cleanly", async ({
+    page,
+  }) => {
+    await page.goto("/classes");
+    await expect(page.locator('input[name="course-finder-task"]')).toHaveCount(13);
+
+    const recommendation = page.getByLabel("Course recommendation");
+    await page.locator('input[name="course-finder-task"][value="web-development"]').check();
+    await page.locator('input[name="course-finder-starting-point"][value="new"]').check();
+    await expect(
+      recommendation.getByRole("heading", { name: "Typing & Computer Basics" }),
+    ).toBeVisible();
+    await expect(recommendation.getByRole("heading", { name: "Web Development" })).toBeVisible();
+
+    await page.locator('input[name="course-finder-starting-point"][value="comfortable"]').check();
+    await expect(recommendation.getByRole("heading", { name: "Web Development" })).toBeVisible();
+    await expect(
+      recommendation.getByRole("heading", { name: "Typing & Computer Basics" }),
+    ).toHaveCount(0);
+
+    await recommendation.getByRole("button", { name: /start over/i }).click();
+    await expect(
+      recommendation.getByRole("heading", { name: "Your guide is ready" }),
+    ).toBeVisible();
   });
 
   test("visitor fills the full application form end-to-end", async ({ page }) => {

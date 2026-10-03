@@ -1,5 +1,8 @@
+"use client";
+
 import { useEffect, useState } from "react";
-import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
+import { createFileRoute } from "@/lib/next-compat/route-definition";
+import { Link, useNavigate } from "@/lib/next-compat/router";
 import {
   BadgeCheck,
   Bell,

@@ -1,4 +1,5 @@
-import { createFileRoute, redirect } from "@tanstack/react-router";
+import { createFileRoute } from "@/lib/next-compat/route-definition";
+import { redirect } from "@/lib/next-compat/router";
 
 /**
  * The public site is about the academy, not the internal platform.

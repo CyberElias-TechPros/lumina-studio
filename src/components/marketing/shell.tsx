@@ -1,35 +1,16 @@
-import { useEffect, type ReactNode } from "react";
-import { Link } from "@tanstack/react-router";
+import type { ReactNode } from "react";
+import { Link } from "@/lib/next-compat/router";
 import { SiteHeader } from "./site-header";
 import { SiteFooter } from "./site-footer";
+import { ThemeSync } from "./theme-sync";
 import { ChatWidget } from "@/components/assistant/chat-widget";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 export function PageShell({ children }: { children: ReactNode }) {
-  useEffect(() => {
-    let pref: string | null = null;
-    try {
-      pref = localStorage.getItem("cea-marketing-theme");
-    } catch {
-      /* ignore */
-    }
-    const root = document.documentElement;
-    if (pref === "dark") root.classList.add("dark");
-    else root.classList.remove("dark");
-    return () => {
-      let appPref: string | null = null;
-      try {
-        appPref = localStorage.getItem("cea-theme");
-      } catch {
-        /* ignore */
-      }
-      root.classList.toggle("dark", appPref === "dark");
-    };
-  }, []);
-
   return (
     <div className="bg-background text-foreground relative flex min-h-screen flex-col">
+      <ThemeSync />
       <a
         href="#main-content"
         className="bg-primary text-primary-foreground focus-visible:ring-ring fixed top-3 left-1/2 z-[95] -translate-x-1/2 -translate-y-28 rounded-md px-4 py-2 text-sm font-medium transition-transform focus-visible:translate-y-0 focus-visible:ring-2"

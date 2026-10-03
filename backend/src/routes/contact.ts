@@ -45,20 +45,18 @@ contact.post("/", async (c) => {
 
   // Notifications are best-effort: the lead is already persisted.
   const notify = async () => {
-    if (c.env.CONTACT_INBOX) {
-      await sendEmail(c, {
-        to: c.env.CONTACT_INBOX,
-        subject:
-          body.kind === "newsletter"
-            ? `New newsletter subscriber: ${email}`
-            : `New enquiry from ${body.name.slice(0, 80)}`,
-        html: emailLayout({
-          heading: body.kind === "newsletter" ? "New newsletter subscriber" : "New website enquiry",
-          bodyHtml: `<p><strong>Name:</strong> ${escapeHtml(body.name)}<br/><strong>Email:</strong> ${escapeHtml(email)}</p>
+    await sendEmail(c, {
+      to: c.env.CONTACT_INBOX || c.env.EMAIL_REPLY_TO || "help@cea.ng",
+      subject:
+        body.kind === "newsletter"
+          ? `New newsletter subscriber: ${email}`
+          : `New enquiry from ${body.name.slice(0, 80)}`,
+      html: emailLayout({
+        heading: body.kind === "newsletter" ? "New newsletter subscriber" : "New website enquiry",
+        bodyHtml: `<p><strong>Name:</strong> ${escapeHtml(body.name)}<br/><strong>Email:</strong> ${escapeHtml(email)}</p>
 <p style="white-space:pre-wrap">${escapeHtml(body.message)}</p>`,
-        }),
-      });
-    }
+      }),
+    });
     await sendEmail(c, {
       to: email,
       subject:

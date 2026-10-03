@@ -19,6 +19,7 @@ import { registerEnrollmentMocks } from "@/lib/api/mocks/enrollments";
 import { registerOperationsMocks } from "@/lib/api/mocks/operations";
 import { registerAccountMocks } from "@/lib/api/mocks/account";
 import { registerPortalMocks } from "@/lib/api/mocks/portal";
+import { registerBusinessIntakeMocks } from "@/lib/api/mocks/businessIntake";
 import {
   learningCourses,
   gradebook,
@@ -257,6 +258,7 @@ export function registerAllMocks(): void {
   registerOperationsMocks();
   registerAccountMocks();
   registerPortalMocks();
+  registerBusinessIntakeMocks();
 
   /* Applications (public apply flow) */
   registerMock("POST", "/v1/applications", async (init: ApiRequestInit) => {
@@ -4436,8 +4438,13 @@ export function registerAllMocks(): void {
       },
     ],
     vars: [
-      { id: "dev-vr-01", key: "VITE_API_URL", value: "https://api.cea.edu.ng", env: "Prod" },
-      { id: "dev-vr-02", key: "VITE_PAYSTACK_PUBLIC_KEY", value: "pk_live_••••••••", env: "Prod" },
+      { id: "dev-vr-01", key: "NEXT_PUBLIC_API_URL", value: "https://api.cea.edu.ng", env: "Prod" },
+      {
+        id: "dev-vr-02",
+        key: "NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY",
+        value: "pk_live_••••••••",
+        env: "Prod",
+      },
       { id: "dev-vr-03", key: "VITE_ANALYTICS_ID", value: "G-8QP2X4M9", env: "Staging" },
     ],
     queues: [

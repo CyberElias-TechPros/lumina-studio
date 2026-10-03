@@ -1,5 +1,7 @@
+"use client";
+
 import { useEffect, useState, type ReactNode } from "react";
-import { Link, useLocation, useNavigate } from "@tanstack/react-router";
+import { Link, useLocation, useNavigate } from "@/lib/next-compat/router";
 import { motion } from "motion/react";
 import {
   Bell,
@@ -260,6 +262,11 @@ export const appRoles: AppRole[] = [
     nav: [
       { label: "Admin Hub", icon: <LayoutDashboard className="size-4" />, to: "/app/admin" },
       { label: "User Management", icon: <Users className="size-4" />, to: "/app/admin/users" },
+      {
+        label: "Business intake",
+        icon: <BriefcaseBusiness className="size-4" />,
+        to: "/app/admin/intake",
+      },
       {
         label: "Roles & Permissions",
         icon: <ShieldCheck className="size-4" />,

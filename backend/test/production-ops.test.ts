@@ -228,6 +228,50 @@ describe("system: readiness + jobs (admin)", () => {
       `INSERT INTO magic_links (id, email, token_hash, kind, created_at, expires_at)
        VALUES ('old-link', 'old@cea.test', 'old-hash-xyz', 'magic-link', '2020-01-01T00:00:00Z', '2020-01-01T00:15:00Z')`,
     ).run();
+    const old = "2020-01-01T00:00:00Z";
+    await env.DB.batch([
+      env.DB.prepare(
+        `INSERT INTO project_inquiries
+          (id, ref, full_name, email, project_type, brief, budget_range, timeline, status,
+           consented_at, created_at, updated_at)
+         VALUES ('old-project', 'PROJ-OLD-000001', 'Old Project', 'old-project@example.com',
+                 'website', 'An old project brief retained past its review window.', 'undecided',
+                 'flexible', 'declined', ?, ?, ?)`,
+      ).bind(old, old, old),
+      env.DB.prepare(
+        `INSERT INTO project_inquiries
+          (id, ref, full_name, email, project_type, brief, budget_range, timeline, status,
+           consented_at, created_at, updated_at)
+         VALUES ('won-project', 'PROJ-OLD-000002', 'Won Project', 'won-project@example.com',
+                 'website', 'An accepted project record retained for the relationship.', 'undecided',
+                 'flexible', 'won', ?, ?, ?)`,
+      ).bind(old, old, old),
+      env.DB.prepare(
+        `INSERT INTO users (id, name, email, role_key, status, created_at, updated_at)
+         VALUES ('retained-partner-user', 'Retained Partner', 'retained-partner@example.com',
+                 'partner', 'active', ?, ?)`,
+      ).bind(old, old),
+      env.DB.prepare(
+        `INSERT INTO partner_applications
+          (id, ref, contact_name, email, organization, partnership_type, region, capabilities,
+           proposal, status, portal_user_id, consented_at, created_at, updated_at)
+         VALUES ('old-partner-application', 'PARTNER-OLD-000001', 'Old Applicant',
+                 'old-applicant@example.com', 'Old Organisation', 'education', 'Lagos',
+                 'Relevant delivery experience for a practical education partnership.',
+                 'A proposal for a collaborative education programme and employer pathway.',
+                 'declined', NULL, ?, ?, ?)`,
+      ).bind(old, old, old),
+      env.DB.prepare(
+        `INSERT INTO partner_applications
+          (id, ref, contact_name, email, organization, partnership_type, region, capabilities,
+           proposal, status, portal_user_id, consented_at, created_at, updated_at)
+         VALUES ('retained-partner-application', 'PARTNER-OLD-000002', 'Retained Partner',
+                 'retained-partner@example.com', 'Retained Organisation', 'education', 'Lagos',
+                 'Relevant delivery experience for a practical education partnership.',
+                 'A proposal for a collaborative education programme and employer pathway.',
+                 'admitted', 'retained-partner-user', ?, ?, ?)`,
+      ).bind(old, old, old),
+    ]);
     const admin = await createTestSession("admin@cea.ng");
     const res = await api("/v1/system/jobs/cleanup/run", {
       method: "POST",
@@ -237,6 +281,22 @@ describe("system: readiness + jobs (admin)", () => {
     expect(((await res.json()) as { status: string }).status).toBe("ok");
     const gone = await env.DB.prepare(`SELECT id FROM magic_links WHERE id = 'old-link'`).first();
     expect(gone).toBeNull();
+    const expiredProject = await env.DB.prepare(
+      `SELECT id FROM project_inquiries WHERE id = 'old-project'`,
+    ).first();
+    const acceptedProject = await env.DB.prepare(
+      `SELECT id FROM project_inquiries WHERE id = 'won-project'`,
+    ).first();
+    const expiredPartner = await env.DB.prepare(
+      `SELECT id FROM partner_applications WHERE id = 'old-partner-application'`,
+    ).first();
+    const admittedPartner = await env.DB.prepare(
+      `SELECT id FROM partner_applications WHERE id = 'retained-partner-application'`,
+    ).first();
+    expect(expiredProject).toBeNull();
+    expect(acceptedProject).not.toBeNull();
+    expect(expiredPartner).toBeNull();
+    expect(admittedPartner).not.toBeNull();
 
     const jobs = await api("/v1/system/jobs", { headers: cookieHeaders(admin.cookie) });
     const list = (await jobs.json()) as { items: { job: string }[] };

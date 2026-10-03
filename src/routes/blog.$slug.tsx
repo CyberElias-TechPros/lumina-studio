@@ -1,5 +1,8 @@
-import { createFileRoute, Link, useParams, redirect } from "@tanstack/react-router";
-import { ArrowLeft, ArrowRight, CalendarDays, Clock } from "lucide-react";
+"use client";
+
+import { createFileRoute } from "@/lib/next-compat/route-definition";
+import { Link, useParams, redirect } from "@/lib/next-compat/router";
+import { ArrowLeft, ArrowRight, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { CTASection, PageShell } from "@/components/marketing/shell";
 import { blogPosts, NOTES_AUTHOR, type BlogBlock } from "@/data/blog";
@@ -27,7 +30,6 @@ export const Route = createFileRoute("/blog/$slug")({
       "@type": "Article",
       headline: post.title,
       description: post.excerpt,
-      datePublished: post.date,
       image: `https://cea.ng${post.cover}`,
       author: {
         "@type": "Person",
@@ -134,9 +136,6 @@ function Article() {
             </span>
           </span>
           <span className="flex items-center gap-1.5">
-            <CalendarDays className="size-3.5" /> {post.date}
-          </span>
-          <span className="flex items-center gap-1.5">
             <Clock className="size-3.5" /> {readingTimeLabel(post.body)}
           </span>
         </div>
@@ -152,6 +151,27 @@ function Article() {
             <Block key={i} block={block} />
           ))}
         </div>
+
+        <aside className="border-border bg-muted/35 mt-10 rounded-lg border p-5">
+          <p className="font-medium">A note about examples</p>
+          <p className="text-muted-foreground mt-2 text-sm leading-relaxed">
+            Learner stories in these lessons illustrate a teaching point; they are not offered as
+            testimonials, placement records or evidence of measured employment or income outcomes.
+            Software screens and online processes can change; check official instructions before
+            acting on sensitive matters.
+          </p>
+          <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-sm font-medium">
+            <Link to="/editorial" className="text-primary hover:underline">
+              How we maintain these notes
+            </Link>
+            <a
+              href={`mailto:help@cea.ng?subject=${encodeURIComponent(`Correction: ${post.title}`)}`}
+              className="text-primary hover:underline"
+            >
+              Report a correction
+            </a>
+          </div>
+        </aside>
 
         <nav
           aria-label="Next lesson"

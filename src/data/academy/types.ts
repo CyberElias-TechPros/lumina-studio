@@ -1,11 +1,11 @@
 /**
  * Cyber Elias Academy — practical digital skills curriculum.
  *
- * The curriculum is published on the public site as a full class lecture per
- * session (see src/routes/classes.*.tsx). Everything a learner would receive in
- * the classroom is rendered on the page: objectives, the taught theory, the
- * instructor demonstration script, guided practice, common mistakes, expert
- * notes, vocabulary, homework, the assessment rubric and session FAQs.
+ * Course outlines are published for the full catalogue. Authored full lectures
+ * are attached to the sessions in src/data/academy/lessons and rendered by
+ * src/routes/classes.*.tsx. A session without lecture data remains an outline
+ * until its objectives, taught content, demonstration, practice, common
+ * mistakes, homework and assessment guidance are ready.
  */
 
 export type CourseLevel = "Absolute beginner" | "Beginner" | "Intermediate";
@@ -124,7 +124,7 @@ export interface RubricRow {
 export interface SessionLecture {
   /** Two-to-three sentence framing shown under the title. */
   summary: string;
-  /** ISO date this lecture was last checked. Falls back to the page default. */
+  /** ISO date of a recorded review. Omit when no review date has been recorded. */
   reviewed?: string;
   /** "By the end of this session you will be able to…" */
   objectives: string[];

@@ -1,3 +1,5 @@
+"use client";
+
 import { createContext, useContext, type ReactNode } from "react";
 import { useSession, useSessionRole, useCan } from "@/lib/auth/session";
 import { resolveRoleKey, type CanonicalRoleKey } from "@/data/rbac";
