@@ -4,7 +4,7 @@ import { apiFetch } from "@/lib/api/client";
 
 /**
  * KV-backed feature flags (Phase 5+). Mock mode returns the defaults so UI
- * shipped before its backend stays visible; set VITE_API_URL to gate live.
+ * shipped before its backend stays visible; set NEXT_PUBLIC_API_URL to gate live.
  */
 const FLAG_DEFAULTS: Record<string, boolean> = {
   "ai.grading": false,

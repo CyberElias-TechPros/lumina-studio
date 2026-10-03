@@ -1,5 +1,7 @@
+"use client";
+
 import { useEffect, useRef, useState } from "react";
-import { Link } from "@tanstack/react-router";
+import { Link } from "@/lib/next-compat/router";
 import {
   BadgeCheck,
   CalendarPlus,

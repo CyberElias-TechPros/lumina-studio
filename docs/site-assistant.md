@@ -72,7 +72,7 @@ If the key is missing or the provider fails, the assistant answers with a
 
 The chatbot works with **no** CAPTCHA: the per-IP limit and the daily budget are
 the primary protection. If abuse ever shows up in the question log, set
-`TURNSTILE_SECRET_KEY` (Worker secret) **and** `VITE_TURNSTILE_SITE_KEY` (build
+`TURNSTILE_SECRET_KEY` (Worker secret) **and** `NEXT_PUBLIC_TURNSTILE_SITE_KEY` (build
 var) and the widget asks for one human check per conversation — on the first
 message only, never mid-chat. Without the secret bound, the backend ignores the
 field entirely.

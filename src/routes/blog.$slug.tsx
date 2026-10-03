@@ -1,4 +1,7 @@
-import { createFileRoute, Link, useParams, redirect } from "@tanstack/react-router";
+"use client";
+
+import { createFileRoute } from "@/lib/next-compat/route-definition";
+import { Link, useParams, redirect } from "@/lib/next-compat/router";
 import { ArrowLeft, ArrowRight, CalendarDays, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { CTASection, PageShell } from "@/components/marketing/shell";

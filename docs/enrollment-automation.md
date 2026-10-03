@@ -90,7 +90,7 @@ rate limits   (free)   + Sheets       + nurture seq   (auto receipt)   + Meet in
 
 | Automation                           | Service (free)                                                        | Setup                                                                                                                                                                                                                                     |
 | ------------------------------------ | --------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Human verification / spam & bot wall | **Cloudflare Turnstile**                                              | Create a widget in Cloudflare dashboard → set `VITE_TURNSTILE_SITE_KEY` (frontend) + `TURNSTILE_SECRET_KEY` (worker secret). The form already renders the widget on step 5 and the API already verifies the token when the secret is set. |
+| Human verification / spam & bot wall | **Cloudflare Turnstile**                                              | Create a widget in Cloudflare dashboard → set `NEXT_PUBLIC_TURNSTILE_SITE_KEY` (frontend) + `TURNSTILE_SECRET_KEY` (worker secret). The form already renders the widget on step 5 and the API already verifies the token when the secret is set. |
 | Form-abandonment insight             | **Google Analytics 4** + **Microsoft Clarity** (session replay, free) | Drop both snippets into `src/routes/__root.tsx` head (GA4 via `gtag`, Clarity via `clarity` script). Clarity shows exactly which step people quit at.                                                                                     |
 | Anti-spam rate limits                | Cloudflare Workers KV (already in use)                                | Done — 10 submissions/h/IP, 10 payments/h/IP.                                                                                                                                                                                             |
 
@@ -121,7 +121,7 @@ rate limits   (free)   + Sheets       + nurture seq   (auto receipt)   + Meet in
 
 | Automation                      | Service                                                                                                                                    | Status                                                                                                                                              |
 | ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Checkout for deposit / full fee | **Paystack** hosted checkout (no setup or monthly fee; educational rate 0.7% local card, capped ₦1,500; flat ₦300 transfer/USSD)           | **Built** — `POST /v1/enrollments/:ref/payments`; set `PAYSTACK_SECRET_KEY` (worker) + `VITE_PAYSTACK_PUBLIC_KEY`.                                  |
+| Checkout for deposit / full fee | **Paystack** hosted checkout (no setup or monthly fee; educational rate 0.7% local card, capped ₦1,500; flat ₦300 transfer/USSD)           | **Built** — `POST /v1/enrollments/:ref/payments`; set `PAYSTACK_SECRET_KEY` (worker) + `NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY`.                                  |
 | Instant status update + receipt | Paystack webhook `POST /v1/enrollments/webhook` (HMAC-verified) → marks paid/deposit_paid → auto receipt email + `payment_confirmed` event | **Built**. In the Paystack dashboard set the webhook URL to `https://<your-worker>/v1/enrollments/webhook` (events: charge.success, charge.failed). |
 | Bank-transfer path              | Free — account details on WhatsApp, staff confirms in Sheets                                                                               | Offered as `bank-transfer` method in the form; confirmation is a 2-minute manual step.                                                              |
 | Payment reminders               | Reuse the nurture journey tag `payment-pending` (Brevo) + WhatsApp from Sheets                                                             | Free.                                                                                                                                               |
@@ -286,11 +286,11 @@ from an existing token — both write the same columns.
    `AGENTS.md`. Migration `0055` applies automatically with the usual
    `wrangler d1 migrations apply DB`.
 2. **Paystack** (paystack.com — free account, ~15 min for a training centre):
-   - set worker secret `PAYSTACK_SECRET_KEY`, frontend `VITE_PAYSTACK_PUBLIC_KEY`
+   - set worker secret `PAYSTACK_SECRET_KEY`, frontend `NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY`
    - dashboard → webhooks → add `…/v1/enrollments/webhook` (charge.success, charge.failed)
    - enable the **educational institution fee** (support ticket; 0.7% local card)
 3. **Turnstile** (dash.cloudflare.com → Turnstile — free):
-   - `VITE_TURNSTILE_SITE_KEY`, worker `TURNSTILE_SECRET_KEY`
+   - `NEXT_PUBLIC_TURNSTILE_SITE_KEY`, worker `TURNSTILE_SECRET_KEY`
 4. **E-mail** (Resend free 100/day or Brevo free 300/day):
    - worker `EMAIL_PROVIDER`, `EMAIL_API_KEY`, `EMAIL_FROM` (e.g. `CEA Admissions <admissions@cea.ng>`)
 5. **Google Sheets mirror** — §4 (15 min)

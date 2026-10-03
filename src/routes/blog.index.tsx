@@ -1,5 +1,8 @@
+"use client";
+
 import { useMemo, useState } from "react";
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@/lib/next-compat/route-definition";
+import { Link } from "@/lib/next-compat/router";
 import { getPageHead } from "@/lib/seo";
 import { Clock, Search } from "lucide-react";
 import { Input } from "@/components/ui/input";

@@ -1,4 +1,7 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+"use client";
+
+import { createFileRoute } from "@/lib/next-compat/route-definition";
+import { Link } from "@/lib/next-compat/router";
 import { useQuery } from "@tanstack/react-query";
 import { BadgeCheck, Clock3, FileText, Loader2, Printer, XCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";

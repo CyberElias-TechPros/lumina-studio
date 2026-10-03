@@ -1,4 +1,7 @@
-import { createFileRoute, Link, useParams } from "@tanstack/react-router";
+"use client";
+
+import { createFileRoute } from "@/lib/next-compat/route-definition";
+import { Link, useParams } from "@/lib/next-compat/router";
 import {
   ArrowLeft,
   ArrowUpRight,

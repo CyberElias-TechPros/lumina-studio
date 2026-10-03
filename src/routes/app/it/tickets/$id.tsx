@@ -1,4 +1,7 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+"use client";
+
+import { createFileRoute } from "@/lib/next-compat/route-definition";
+import { Link } from "@/lib/next-compat/router";
 import { ArrowLeft, CheckCircle2, Clock3, MessageSquare, MonitorCheck, Send } from "lucide-react";
 import { useState } from "react";
 import { Badge } from "@/components/ui/badge";

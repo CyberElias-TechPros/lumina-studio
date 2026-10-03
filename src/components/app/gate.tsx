@@ -1,3 +1,5 @@
+"use client";
+
 import type { ReactNode } from "react";
 import { useSessionContext } from "@/components/app/session-provider";
 

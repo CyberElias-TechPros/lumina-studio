@@ -110,7 +110,7 @@ export function deleteCohort(id: string) {
 
 /** Absolute URL for a cohort's calendar file (used in a normal <a href>). */
 export function cohortIcsHref(id: string): string {
-  const base = (import.meta.env.VITE_API_URL ?? "").replace(/\/+$/, "");
+  const base = (process.env.NEXT_PUBLIC_API_URL ?? "").replace(/\/+$/, "");
   return `${base}/v1/cohorts/${id}/ics`;
 }
 

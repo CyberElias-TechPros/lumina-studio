@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo } from "react";
-import { Link } from "@tanstack/react-router";
+import { Link } from "@/lib/next-compat/router";
 import { findGlossaryLinks } from "@/lib/glossary-auto-link";
 
 interface Props {

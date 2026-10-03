@@ -1,4 +1,6 @@
-import { createFileRoute } from "@tanstack/react-router";
+"use client";
+
+import { createFileRoute } from "@/lib/next-compat/route-definition";
 import { CheckCircle2, Clock, Loader2, Play, XCircle } from "lucide-react";
 import { AppShell } from "@/components/app/app-shell";
 import { Badge } from "@/components/ui/badge";
@@ -22,13 +24,13 @@ const CHECK_LABELS: Record<string, { label: string; hint: string }> = {
   email: { label: "Transactional email", hint: "EMAIL_PROVIDER + EMAIL_API_KEY secret" },
   payments: {
     label: "Paystack payments",
-    hint: "PAYSTACK_SECRET_KEY secret + VITE_PAYSTACK_PUBLIC_KEY",
+    hint: "PAYSTACK_SECRET_KEY secret + NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY",
   },
   turnstile: {
     label: "Bot protection (Turnstile)",
-    hint: "TURNSTILE_SECRET_KEY + VITE_TURNSTILE_SITE_KEY",
+    hint: "TURNSTILE_SECRET_KEY + NEXT_PUBLIC_TURNSTILE_SITE_KEY",
   },
-  push: { label: "Web push", hint: "VAPID_PUBLIC_KEY / VAPID_PRIVATE_KEY + VITE_VAPID_PUBLIC_KEY" },
+  push: { label: "Web push", hint: "VAPID_PUBLIC_KEY / VAPID_PRIVATE_KEY + NEXT_PUBLIC_VAPID_PUBLIC_KEY" },
   ai: { label: "AI assistant", hint: "AI_API_KEY secret" },
   errorReporting: { label: "Error reporting", hint: "SENTRY_DSN secret" },
   sms: { label: "SMS", hint: "SMS_PROVIDER + SMS_API_KEY secret" },

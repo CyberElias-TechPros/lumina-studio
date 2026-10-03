@@ -4436,8 +4436,8 @@ export function registerAllMocks(): void {
       },
     ],
     vars: [
-      { id: "dev-vr-01", key: "VITE_API_URL", value: "https://api.cea.edu.ng", env: "Prod" },
-      { id: "dev-vr-02", key: "VITE_PAYSTACK_PUBLIC_KEY", value: "pk_live_••••••••", env: "Prod" },
+      { id: "dev-vr-01", key: "NEXT_PUBLIC_API_URL", value: "https://api.cea.edu.ng", env: "Prod" },
+      { id: "dev-vr-02", key: "NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY", value: "pk_live_••••••••", env: "Prod" },
       { id: "dev-vr-03", key: "VITE_ANALYTICS_ID", value: "G-8QP2X4M9", env: "Staging" },
     ],
     queues: [

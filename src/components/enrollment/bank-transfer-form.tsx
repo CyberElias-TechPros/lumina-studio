@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import { BadgeCheck, CheckCircle2, ClipboardCopy, Landmark, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";

@@ -1,9 +1,9 @@
 /**
  * API client for the Cloudflare Worker backend (Hono, /v1/*).
  *
- * - Real mode (VITE_API_URL set): fetch with credentials, error-envelope
+ * - Real mode (NEXT_PUBLIC_API_URL set): fetch with credentials, error-envelope
  *   parsing, single-flight token refresh on 401, Retry-After handling on 429.
- * - Mock mode (VITE_API_URL empty): every call resolves against src/data/*
+ * - Mock mode (NEXT_PUBLIC_API_URL empty): every call resolves against src/data/*
  *   through the mock registry (src/lib/api/mocks) so the app runs standalone.
  */
 import { env, isMockMode } from "@/lib/env";
@@ -175,7 +175,7 @@ function matchesPattern(segments: string[], pathname: string): boolean {
 }
 
 async function getMock(method: string, path: string): Promise<MockHandler | undefined> {
-  if (!mocksLoaded && !import.meta.env.VITE_API_URL) {
+  if (!mocksLoaded && !process.env.NEXT_PUBLIC_API_URL) {
     // The first request used to race this dynamic import and fail with
     // MOCK_NOT_FOUND. Share one promise so simultaneous queries wait for the
     // registry exactly once while keeping the mock chunk out of real builds.

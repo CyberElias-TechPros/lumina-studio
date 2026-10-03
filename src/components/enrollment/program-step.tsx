@@ -1,3 +1,5 @@
+"use client";
+
 import { Check, Clock3, Layers } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";

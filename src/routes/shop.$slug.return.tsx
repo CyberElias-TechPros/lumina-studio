@@ -1,5 +1,8 @@
+"use client";
+
 import { useEffect, useState } from "react";
-import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { createFileRoute } from "@/lib/next-compat/route-definition";
+import { Link, notFound } from "@/lib/next-compat/router";
 import { z } from "zod";
 import {
   ArrowRight,

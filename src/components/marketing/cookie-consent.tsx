@@ -1,6 +1,8 @@
+"use client";
+
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Link } from "@tanstack/react-router";
+import { Link } from "@/lib/next-compat/router";
 import { grantConsent, denyConsent, getConsent } from "@/lib/ga4";
 import { initAdSense } from "@/lib/adsense";
 

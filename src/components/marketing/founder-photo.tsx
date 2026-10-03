@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import { NOTES_AUTHOR } from "@/data/blog";
 import { cn } from "@/lib/utils";

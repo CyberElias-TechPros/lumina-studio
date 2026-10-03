@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute } from "@/lib/next-compat/route-definition";
 import { PortalPage, type PortalConfig } from "@/components/app/portal-page";
 
 const config: PortalConfig = {

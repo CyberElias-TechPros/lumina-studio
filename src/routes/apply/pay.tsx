@@ -1,5 +1,8 @@
+"use client";
+
 import { useEffect, useState } from "react";
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@/lib/next-compat/route-definition";
+import { Link } from "@/lib/next-compat/router";
 import { z } from "zod";
 import { BadgeCheck, Clock3, Loader2, MessageCircle, RefreshCw, XCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";

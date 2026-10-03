@@ -1,3 +1,5 @@
+"use client";
+
 import { CalendarDays, Laptop, MapPin, SunMedium } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";

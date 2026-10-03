@@ -1,5 +1,7 @@
+"use client";
+
 import { useEffect, useState, type ReactNode } from "react";
-import { Link, useLocation, useNavigate } from "@tanstack/react-router";
+import { Link, useLocation, useNavigate } from "@/lib/next-compat/router";
 import { motion } from "motion/react";
 import {
   Bell,

@@ -1,21 +1,19 @@
-# Routes
+# Route definitions
 
-TanStack Start uses **file-based routing**. Every `.tsx` file in this directory
-defines a route. Do **not** create `src/pages/`, `src/routes/_app/index.tsx`, or
-`app/layout.tsx` — those are Next.js / Remix conventions. The only root layout
-is `src/routes/__root.tsx`.
+The route modules in this directory are the source of truth for the 418
+frontend routes. Each module exports a `Route` built with the compatibility
+`createFileRoute` helper; Next.js App Router owns the actual URL matching and
+rendering.
 
-## Conventions
+`scripts/generate-next-routes.mjs` reads those definitions and generates one
+explicit server page per route under the ignored `src/app/(generated)/`
+directory. It also classifies interactive routes and creates small client
+wrappers only where the legacy component uses route hooks, search state, or
+browser interactions. Generated files are rebuilt automatically by
+`npm run dev`, `npm run typecheck`, and `npm run build` — do not edit them by
+hand.
 
-| File                     | URL                                                     |
-| ------------------------ | ------------------------------------------------------- |
-| `index.tsx`              | `/`                                                     |
-| `about.tsx`              | `/about`                                                |
-| `users/index.tsx`        | `/users`                                                |
-| `users/$id.tsx`          | `/users/:id` (dynamic — bare `$`, no curly braces)      |
-| `posts/{-$category}.tsx` | `/posts/:category?` (optional segment)                  |
-| `files/$.tsx`            | `/files/*` (splat — read via `_splat` param, never `*`) |
-| `_layout.tsx`            | layout route (renders children via `<Outlet />`)        |
-| `__root.tsx`             | app shell — wraps every page; preserve `<Outlet />`     |
-
-`routeTree.gen.ts` is auto-generated. Don't edit it by hand.
+Keep route paths explicit in `createFileRoute`, and update
+`src/lib/next-compat/static-params.ts` when a public dynamic route should be
+pre-rendered from catalog data. The Next document and shared providers live in
+`src/app/layout.tsx` and `src/app/providers.tsx`.

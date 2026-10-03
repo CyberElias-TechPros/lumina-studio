@@ -1,4 +1,7 @@
-import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
+"use client";
+
+import { createFileRoute } from "@/lib/next-compat/route-definition";
+import { Link, useNavigate } from "@/lib/next-compat/router";
 import { useEffect } from "react";
 import { ArrowRight, KeyRound, Loader2, ShieldAlert, ShieldCheck } from "lucide-react";
 import { z } from "zod";

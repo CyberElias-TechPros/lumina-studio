@@ -1,4 +1,5 @@
-import { createFileRoute, Outlet } from "@tanstack/react-router";
+import { createFileRoute } from "@/lib/next-compat/route-definition";
+import { Outlet } from "@/lib/next-compat/router";
 
 export const Route = createFileRoute("/apply/status")({
   component: ApplyStatusLayout,

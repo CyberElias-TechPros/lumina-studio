@@ -1,4 +1,6 @@
-import { Link } from "@tanstack/react-router";
+"use client";
+
+import { Link } from "@/lib/next-compat/router";
 import { Mail, MapPin, Phone } from "lucide-react";
 import { BrandMark } from "./site-header";
 

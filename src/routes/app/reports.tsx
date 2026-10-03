@@ -1,4 +1,6 @@
-import { createFileRoute } from "@tanstack/react-router";
+"use client";
+
+import { createFileRoute } from "@/lib/next-compat/route-definition";
 import { useState } from "react";
 import { toast } from "sonner";
 import { BarChart3, Download, FileBarChart2, FileText, Filter, Plus, Share2 } from "lucide-react";

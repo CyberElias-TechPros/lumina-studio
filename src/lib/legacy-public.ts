@@ -1,4 +1,6 @@
-import { redirect } from "@tanstack/react-router";
+"use client";
+
+import { redirect } from "@/lib/next-compat/router";
 
 /**
  * Historic cinematic URLs (programs, engines, marketplace, fake campus

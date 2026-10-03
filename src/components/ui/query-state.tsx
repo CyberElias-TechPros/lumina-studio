@@ -1,3 +1,5 @@
+"use client";
+
 import type { ReactNode } from "react";
 import type { UseQueryResult, UseInfiniteQueryResult } from "@tanstack/react-query";
 import { Skeleton } from "@/components/ui/skeleton";

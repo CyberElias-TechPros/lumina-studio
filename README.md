@@ -4,12 +4,12 @@
 
 | Layer      | Stack                                                                                              |
 | ---------- | -------------------------------------------------------------------------------------------------- |
-| Frontend   | React 19 · TanStack Start (SSR) · Vite · Tailwind v4 · shadcn/ui · Motion · TanStack Query         |
+| Frontend   | React 19 · Next.js 15 App Router (SSR/SSG) · Tailwind v4 · shadcn/ui · Motion · TanStack Query         |
 | Backend    | Cloudflare Workers · Hono · Zod                                                                    |
 | Data       | Cloudflare D1 (SQLite) · R2 (uploads) · KV (flags, rate limits) · Durable Objects (realtime rooms) |
-| Deployment | Frontend → Vercel (SSR via Nitro) · Backend → Cloudflare Workers (`cea-api.cyber-e54.workers.dev`) |
+| Deployment | Frontend → Vercel (Next.js) · Backend → Cloudflare Workers (`cea-api.cyber-e54.workers.dev`) |
 
-> The original project sketch said "Next.js" — the repo actually builds on **TanStack Start** (React 19 + Vite). All UI is framework-agnostic React; only route files and data-loading wrappers would change in a port.
+> The frontend now runs on **Next.js 15 App Router**. The 418 route definitions in `src/routes/` remain the source of truth; `scripts/generate-next-routes.mjs` creates ignored route pages in `src/app/(generated)/` before development, typecheck, and production builds. `src/lib/next-compat/` preserves the existing route/navigation APIs while each page is mounted through an explicit Next route.
 
 ---
 
@@ -17,7 +17,7 @@
 
 ```
 src/                    Frontend
-├── routes/             ~300 routes: marketing pages, auth, /app/** role dashboards
+├── routes/             418 route definitions: marketing pages, auth, /app/** role dashboards
 ├── components/         app shell, marketing shell, motion primitives, shadcn/ui
 ├── lib/api/            typed API client + per-domain modules (+ offline mock registry)
 ├── lib/query/          TanStack Query hooks per domain
@@ -59,7 +59,7 @@ Every `/v1` route is registered in `backend/src/lib/rbac.ts`; unlisted routes ar
 
 ```sh
 npm install
-npm run dev          # http://localhost:5173, uses the offline mock registry
+npm run dev          # http://localhost:3000, uses the offline mock registry
 ```
 
 **Frontend + real backend**:
@@ -72,7 +72,7 @@ npm run db:seed:local      # idempotent seeds (re-runnable)
 npm run dev                # wrangler dev -e dev → http://localhost:8787
 
 # from the repo root
-VITE_API_URL=http://localhost:8787 npm run dev
+NEXT_PUBLIC_API_URL=http://localhost:8787 npm run dev
 ```
 
 > The Worker's `wrangler.jsonc` is environment-split: the **top-level** config is
@@ -80,13 +80,13 @@ VITE_API_URL=http://localhost:8787 npm run dev
 > the **`dev` environment** (`npm run dev` uses it via `-e dev`) adds localhost
 > CORS origins and enables dev magic-link tokens. Never deploy with `-e`.
 
-Copy `.env.example` → `.env` for public site keys (API URL, Turnstile, Paystack public key, VAPID public key). **Mock mode**: leaving `VITE_API_URL` empty runs against `src/lib/api/mocks` — fine for development; production builds should always set `VITE_API_URL` (mocks are opt-in via `VITE_ENABLE_MOCKS=true` only).
+Copy `.env.example` → `.env` for public site keys (API URL, Turnstile, Paystack public key, VAPID public key). **Mock mode**: leaving `NEXT_PUBLIC_API_URL` empty runs against `src/lib/api/mocks` — fine for development; production builds should always set `NEXT_PUBLIC_API_URL` (mocks are opt-in via `NEXT_PUBLIC_ENABLE_MOCKS=true` only).
 
 ### Quality gates
 
 ```sh
 npm run typecheck    # frontend TypeScript
-npm run build        # production build (Vercel preset)
+npm run build        # Next.js production build
 npm run lint         # ESLint (react-refresh warnings are non-blocking)
 cd backend && npm run typecheck
 cd backend && npx vitest run --exclude test/ai.test.ts   # 713 tests, no network
@@ -118,13 +118,13 @@ Bindings are declared in `backend/wrangler.jsonc`: D1 (`DB`), R2 (`UPLOADS`), KV
 
 ### Frontend → Vercel
 
-The build emits the Vercel Build Output API preset (`.vercel/output`). Connect the repo, set:
+Vercel detects the Next.js app and runs its production build. Connect the repo and set:
 
-- `VITE_API_URL` = `https://cea-api.cyber-e54.workers.dev`
-- `VITE_APP_ENV` = `prod`
-- `VITE_TURNSTILE_SITE_KEY`, `VITE_PAYSTACK_PUBLIC_KEY`, `VITE_VAPID_PUBLIC_KEY` as configured
+- `NEXT_PUBLIC_API_URL` = `https://cea-api.cyber-e54.workers.dev`
+- `NEXT_PUBLIC_APP_ENV` = `prod`
+- `NEXT_PUBLIC_TURNSTILE_SITE_KEY`, `NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY`, `NEXT_PUBLIC_VAPID_PUBLIC_KEY` as configured
 
-Headers for `sw.js` / `manifest.webmanifest` / caches are configured in `nitro.config.ts` + `vercel.json`.
+Headers for `sw.js`, `manifest.webmanifest`, app/private routes, and redirects are configured in `next.config.mjs` + `vercel.json`.
 
 Production: **www.cea.ng** (frontend, Vercel) · **cea-api.cyber-e54.workers.dev** (API).
 
@@ -138,7 +138,7 @@ Production: **www.cea.ng** (frontend, Vercel) · **cea-api.cyber-e54.workers.dev
 - **Uploads**: R2 with per-user key scoping (`/:userId/…`), MIME allow-list, 10 MB streaming limit; presigned URLs when configured, worker proxy otherwise.
 - **Realtime**: Durable Object per room (`chat:<id>`, `live:<classId>`); hibernatable WebSockets; history in D1.
 - **Offline mock mode**: the same typed API client resolves against `src/lib/api/mocks` when no API URL is set — the mock chunk is dynamically imported and never fetched in real deployments.
-- **SEO**: SSR + per-route `head()` (titles, canonical, OG/Twitter with 1200×630 PNGs), JSON-LD (Organization, LocalBusiness, WebSite, FAQPage, Article, HowTo, Course, DefinedTerm), build-generated `sitemap.xml` (214 URLs), `robots.txt`, `ads.txt`.
+- **SEO**: Next Metadata API + preserved per-route SEO (titles, canonical, OG/Twitter), JSON-LD (Organization, LocalBusiness, WebSite, FAQPage, Article, HowTo, Course, DefinedTerm), build-generated `sitemap.xml` (400 URLs), `robots.txt`, `ads.txt`.
 
 ## More documentation
 
@@ -171,7 +171,7 @@ growth, design, government compliance, and more).
 
 | Layer                          | Technology                                                                                                          | Hosting                             |
 | ------------------------------ | ------------------------------------------------------------------------------------------------------------------- | ----------------------------------- |
-| Frontend                       | TanStack Start (React 19, file-based routing) + TanStack Router/Query, Tailwind CSS v4, Radix UI components, motion | **Vercel** (Nitro Build Output API) |
+| Frontend                       | Next.js 15 App Router (React 19, SSR/SSG) + TanStack Query, Tailwind CSS v4, Radix UI components, motion | **Vercel** |
 | Backend API                    | Hono on Cloudflare Workers (`/v1/*`)                                                                                | **Cloudflare Workers**              |
 | Database                       | Cloudflare D1 (SQL migrations + generated seeds)                                                                    | **Cloudflare D1**                   |
 | Cache / config / feature flags | Cloudflare KV (`FLAGS`, `RATE_LIMIT`)                                                                               | Cloudflare                          |
@@ -185,7 +185,7 @@ API over HTTPS. All `/v1/*` requests pass a declarative RBAC guard
 ## Repository layout
 
 ```
-src/                    Frontend (TanStack Start)
+src/                    Frontend (Next.js App Router)
   routes/               File-based routes: public marketing, auth, /app/* workspaces
   routes/app/           CEA-OS role dashboards (297 route files)
   components/           UI (ui = Radix primitives, app = shell, marketing, motion, art)
@@ -213,8 +213,8 @@ Worker runs go through `wrangler` (no Cloudflare account needed for `--local`).
 ```sh
 # Frontend (mock mode)
 npm ci
-cp .env.example .env        # leave VITE_API_URL empty for offline mock mode
-npm run dev                 # http://localhost:8080
+cp .env.example .env.local # leave NEXT_PUBLIC_API_URL empty for offline mock mode
+npm run dev                 # http://localhost:3000
 
 # Frontend quality gates
 npx tsc --noEmit
@@ -236,13 +236,13 @@ npm run dev                 # wrangler dev --local -e dev → http://localhost:8
 
 ### Mock mode vs live mode
 
-`VITE_API_URL` decides the data layer at build time (see `src/lib/env.ts`):
+`NEXT_PUBLIC_API_URL` decides the data layer at build time (see `src/lib/env.ts`):
 
-- **Mock mode** (`VITE_API_URL` empty, non-production): every API call resolves
+- **Mock mode** (`NEXT_PUBLIC_API_URL` empty, non-production): every API call resolves
   against the in-memory registry (`src/lib/api/mocks/*`) seeded from
   `src/data/*`. You are always signed in and can preview every role via the
   role switcher in the CEA-OS sidebar.
-- **Live mode** (`VITE_API_URL` set, e.g. `https://cea-api.cyber-e54.workers.dev`):
+- **Live mode** (`NEXT_PUBLIC_API_URL` set, e.g. `https://cea-api.cyber-e54.workers.dev`):
   real Worker API, HttpOnly cookie sessions, D1 data.
 
 ### Environment variables
@@ -253,10 +253,10 @@ frontend (public keys only); backend secrets live in Cloudflare as
 
 ## Deployment
 
-- **Frontend (Vercel):** `npm run build` produces `.vercel/output` (Nitro
-  Build Output API). Configure `VITE_API_URL` (+ public keys) as Vercel env
-  vars for production. `vercel.json`/`nitro.config.ts` carry the static/asset
-  headers (PWA, robots, immutable assets).
+- **Frontend (Vercel):** `npm run build` runs the Next.js production build.
+  Configure `NEXT_PUBLIC_API_URL` (+ public keys) as Vercel environment
+  variables. `next.config.mjs` and `vercel.json` carry route redirects,
+  security headers, PWA, and static-asset settings.
 - **Backend (Cloudflare Workers):** from `backend/`:
 
   ```sh
@@ -282,7 +282,7 @@ backend typecheck, and the full backend Vitest suite.
 - **E2E:** Playwright specs in `e2e/` exercise the deployed product
   (`E2E_BASE_URL`, demo accounts from `e2e/helpers.ts`) — run manually against
   a preview/production deployment.
-- **Smoke:** run `npm run dev`, then curl any route — TanStack Start renders
+- **Smoke:** run `npm run dev`, then curl any route — Next.js renders
   pages server-side, so an SSR 200 + clean HTML is a fast sanity check.
 
 ## Documentation

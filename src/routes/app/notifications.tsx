@@ -1,5 +1,7 @@
+"use client";
+
 import { useState } from "react";
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute } from "@/lib/next-compat/route-definition";
 import { Bell, CheckCheck, Inbox, Radio, Send, Settings2, Sparkles } from "lucide-react";
 import {
   Dialog,
