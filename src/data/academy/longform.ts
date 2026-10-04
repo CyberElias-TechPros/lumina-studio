@@ -399,8 +399,8 @@ export const longPaymentPlans: PaymentPlanOption[] = [
 
 export const NEXT_COHORTS = {
   short:
-    "Rolling intake — new short courses start within 2 weeks; we confirm exact dates after you apply.",
-  long: "Next cohort starts 2 November 2026 (Mon/Wed/Fri) · next after that: 16 February 2027. One cohort per training.",
+    "No course-specific short-course start date is published yet. Admissions will confirm availability.",
+  long: "A cohort date is confirmed only when it appears in the admissions cohort register. Contact admissions if no date is listed.",
 } as const;
 
 export const WHAT_TO_BRING = [

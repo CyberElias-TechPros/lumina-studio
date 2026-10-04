@@ -117,12 +117,12 @@ function CheckoutPage() {
               Checkout
             </h1>
             <p className="text-muted-foreground text-sm leading-relaxed">
-              Pay once, get the file by email within one business day. We never create an account
-              for you — the download link is delivered to the email below.
+              Pay once; our team emails the file within one business day after payment is confirmed.
+              We never create an account for you.
             </p>
 
             <div className="space-y-2">
-              <Label htmlFor="email">Email for the download</Label>
+              <Label htmlFor="email">Email for delivery</Label>
               <Input
                 id="email"
                 type="email"

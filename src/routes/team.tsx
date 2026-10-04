@@ -5,7 +5,7 @@ import { PageShell, PageHero } from "@/components/marketing/shell";
 import { Mail, MapPin } from "lucide-react";
 import { NOTES_AUTHOR } from "@/data/blog";
 import { TEAM, trainersFor } from "@/data/team";
-import { allCourses } from "@/data/academy";
+import { allCourses, flyerCourses, rotatingCourses } from "@/data/academy";
 
 const courseBySlug = new Map(allCourses.map((c) => [c.slug, c]));
 const categories = [...new Set(allCourses.map((c) => c.category))];
@@ -129,8 +129,11 @@ function TeamPage() {
 
         <div className="mx-auto mt-12 max-w-3xl">
           <h2 className="font-display text-xl font-semibold">What we teach</h2>
-          <p className="text-muted-foreground mt-2 text-sm">
-            All {allCourses.length} courses, and who leads each one.
+          <p className="text-muted-foreground mt-2 text-sm leading-relaxed">
+            {flyerCourses.length} core courses are listed on the Academy flyer.{" "}
+            {rotatingCourses.length}
+            specialist short courses rotate separately; ask admissions whether one is currently
+            available. Rotating options are marked below.
           </p>
           <div className="mt-6 grid gap-6 sm:grid-cols-2">
             {categories.map((cat) => (
@@ -149,6 +152,7 @@ function TeamPage() {
                           {c.title}
                         </Link>
                         <span className="text-muted-foreground shrink-0 text-xs">
+                          {c.rotating && "Rotating · "}
                           {trainersFor(c.slug)
                             .map((t) => t.name.split(" ")[0])
                             .join(" & ")}

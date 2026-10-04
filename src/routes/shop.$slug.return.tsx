@@ -116,14 +116,17 @@ function ReturnPage() {
                   <span className="bg-success/10 text-success mx-auto grid size-14 place-items-center rounded-full">
                     <BadgeCheck className="size-7" />
                   </span>
-                  <p className="font-display mt-5 text-lg font-bold">Payment confirmed</p>
+                  <p className="font-display mt-5 text-lg font-bold">
+                    Payment confirmed — we&rsquo;re preparing your file
+                  </p>
                   <p className="text-muted-foreground mt-2 text-sm leading-relaxed">
-                    We received {formatNaira(state.order.amount)} for {product.title}. Your download
-                    link is on its way to {state.order.email}.
+                    We received {formatNaira(state.order.amount)} for {product.title}. Our team will
+                    email the file to {state.order.email} within one business day. It is not an
+                    instant download from this page.
                   </p>
                   <p className="text-muted-foreground mt-3 text-xs leading-relaxed">
-                    If you do not see the email within one business day, message us on WhatsApp with
-                    reference <code className="font-mono">{state.order.reference}</code>.
+                    If the email has not arrived within one business day, message us on WhatsApp
+                    with reference <code className="font-mono">{state.order.reference}</code>.
                   </p>
                 </>
               )}
@@ -135,9 +138,10 @@ function ReturnPage() {
                   </span>
                   <p className="font-display mt-5 text-lg font-bold">Payment under review</p>
                   <p className="text-muted-foreground mt-2 text-sm leading-relaxed">
-                    We received your payment of {formatNaira(state.order.amount)} but the amount on
-                    file did not match. Our team will confirm and email you the download link.
-                    Reference <code className="font-mono">{state.order.reference}</code>.
+                    We received your payment of {formatNaira(state.order.amount)}, but the amount
+                    needs review. We will contact you using {state.order.email} after we verify it;
+                    the product file is sent by email after payment is confirmed. Reference{" "}
+                    <code className="font-mono">{state.order.reference}</code>.
                   </p>
                 </>
               )}

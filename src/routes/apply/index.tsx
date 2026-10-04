@@ -39,7 +39,7 @@ export const Route = createFileRoute("/apply/")({
       {
         name: "description",
         content:
-          "Register for a short course or long-form training at Cyber Elias Academy, Port Harcourt. See fees, dates, payment plans and what happens next — it takes five minutes.",
+          "Apply for one of the 13 core flyer short courses at Cyber Elias Academy, Port Harcourt. Specialist-course availability and start dates are confirmed by admissions.",
       },
     ],
   }),
@@ -56,30 +56,23 @@ const STEPS = [
 
 type StepKey = (typeof STEPS)[number]["key"];
 
-function normalizeDraft(draft: EnrollmentDraft, kind: "short" | "long"): EnrollmentDraft {
-  const next = { ...draft, programKind: kind };
-  if (kind === "long" && next.scheduleDays === "standard") {
-    next.scheduleDays = "mwf";
-  }
-  const validPlans = kind === "short" ? ["full", "50-50"] : ["deposit-monthly", "full-10-off"];
-  if (!validPlans.includes(next.paymentPlan)) {
-    next.paymentPlan = kind === "short" ? "full" : "deposit-monthly";
+function normalizeDraft(draft: EnrollmentDraft): EnrollmentDraft {
+  const next = { ...draft, programKind: "short" as const };
+  if (!["full", "50-50"].includes(next.paymentPlan)) {
+    next.paymentPlan = "full";
   }
   return next;
 }
 
 function ApplyPage() {
   const { program: initialProgram } = Route.useSearch();
+  const initialMeta = initialProgram ? getProgramMeta(initialProgram) : null;
+  const initialShortCourse = initialMeta?.kind === "short" ? (initialProgram ?? "") : "";
   const [step, setStep] = useState<StepKey>("course");
   const [stepIndex, setStepIndex] = useState(0);
-  const [kind, setKind] = useState<"short" | "long">(() => {
-    const meta = initialProgram ? getProgramMeta(initialProgram) : null;
-    return meta?.kind === "long" ? "long" : "short";
-  });
-  const [draft, setDraft] = useState<EnrollmentDraft>(() => {
-    const base = { ...INITIAL_DRAFT, programSlug: initialProgram ?? "", programKind: kind };
-    return normalizeDraft(base, kind);
-  });
+  const [draft, setDraft] = useState<EnrollmentDraft>(() =>
+    normalizeDraft({ ...INITIAL_DRAFT, programSlug: initialShortCourse, programKind: "short" }),
+  );
   const [turnstileToken, setTurnstileToken] = useState("");
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
   const [submitting, setSubmitting] = useState(false);
@@ -89,17 +82,12 @@ function ApplyPage() {
   const meta = useMemo(() => getProgramMeta(draft.programSlug), [draft.programSlug]);
 
   const update = (patch: Partial<EnrollmentDraft>) => {
-    setDraft((d) => normalizeDraft({ ...d, ...patch }, d.programKind ?? kind));
+    setDraft((d) => normalizeDraft({ ...d, ...patch }));
     setFieldErrors((e) => {
       const next = { ...e };
       for (const key of Object.keys(patch)) delete next[key];
       return next;
     });
-  };
-
-  const changeKind = (k: "short" | "long") => {
-    setKind(k);
-    setDraft((d) => normalizeDraft({ ...d, programSlug: "", programKind: k }, k));
   };
 
   const validate = (s: StepKey): boolean => {
@@ -226,7 +214,7 @@ function ApplyPage() {
       <PageHero
         eyebrow="Admissions"
         title="Register for a course"
-        description="Five short steps: pick your course, choose your schedule, see the fee clearly, tell us about you, submit. There is no application fee — and your fee, dates and what to bring are shown at every step."
+        description="Apply for one of the 13 core flyer short courses. Share your schedule preferences and details, review the fee, then submit. There is no application fee. A start date is shown only when a course-specific scheduled cohort is recorded; otherwise admissions will confirm availability."
       />
 
       <section className="container-page pb-20">
@@ -281,13 +269,11 @@ function ApplyPage() {
                 <>
                   <h2 className="font-display text-xl font-bold">What would you like to learn?</h2>
                   <p className="text-muted-foreground mt-1 text-sm">
-                    Short courses are 2–6 weeks; long-form trainings are 3–6 months at 3 days a
-                    week.
+                    This form is for the 13 core short courses shown below. Specialist-course
+                    availability and longer-programme enquiries go to admissions.
                   </p>
                   <div className="mt-5">
                     <ProgramStep
-                      kind={kind}
-                      onKind={changeKind}
                       selected={draft.programSlug}
                       onSelect={(slug) => update({ programSlug: slug })}
                       error={fieldErrors.program}

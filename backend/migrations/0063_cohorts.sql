@@ -4,7 +4,7 @@
 
 CREATE TABLE IF NOT EXISTS cohorts (
   id TEXT PRIMARY KEY,
-  /** Matches a longform program slug, or "" for short-course rolling intakes. */
+  /** Course slug. Empty identifies generic rolling markers, not confirmed course dates. */
   program_slug TEXT NOT NULL DEFAULT '',
   label TEXT NOT NULL,
   /** short | long */

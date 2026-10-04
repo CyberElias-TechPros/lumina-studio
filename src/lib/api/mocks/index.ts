@@ -556,7 +556,7 @@ export function registerAllMocks(): void {
     return {
       enabled: true,
       greeting:
-        "Hi 👋 I'm the CEA assistant. Ask me about any course, fee, schedule or how to enrol — I'll answer straight away.",
+        "Hi 👋 I'm the CEA assistant. Ask about courses, published fees or how to enrol. Admissions confirms availability, schedules and start dates for each course.",
       suggestions: [
         "How much is the web development course?",
         "Which course should I start with if I'm a beginner?",
@@ -577,18 +577,22 @@ export function registerAllMocks(): void {
       if (/web dev|website|frontend|full.?stack/.test(q))
         return "Web Development is ₦60,000 and runs for 6 weeks (2 sessions a week, beginner level). You finish by planning, building, testing and deploying a small website or app, presented to the class. If you have never coded before, start with Web Design (₦50,000, 4 weeks) and then continue — would you like the outline for that?";
       if (/price|fee|cost|how much/.test(q))
-        return "Short courses cost ₦20,000–₦60,000 depending on the course (2–6 weeks, 2 sessions a week): Typing & Computer Basics and Data Entry are ₦20,000, most skills courses are ₦30,000–₦50,000, and Web Development or Mobile App Development are ₦60,000. Diploma programmes (3–6 months, 3 days a week) run ₦150,000–₦320,000 with a 30% deposit plan. Which course are you considering?";
-      if (/beginner|start|new to|never used/.test(q))
+        return "The 13 core short courses on the Academy flyer range from ₦20,000 to ₦60,000; each course page lists its fee and duration. Nine additional specialist short courses rotate through the timetable, so ask admissions about current availability and the fee for a specific option. Core short courses can be paid in full or in two instalments. Which course are you considering?";
+      if (/beginner|new to|never used/.test(q))
         return "If you're starting from zero, begin with Typing & Computer Basics (₦20,000, 2 weeks) — it gets you confident with a computer, files and email. Then Microsoft Office (₦30,000) and a skills course in the direction you want. Tell me what you'd like to be able to do, and I'll point you to the exact course.";
       if (/pay|payment|instal|deposit|transfer/.test(q))
-        return "You can pay on the site at cea.ng/apply by card, transfer or USSD, or by direct bank transfer to Cyber Elias Academy Ltd · UBA · 1028649972 (send us the receipt on WhatsApp and we confirm the same day). Short courses: pay in full or 50/50. Diplomas: 30% deposit then monthly, or pay in full for 10% off. There is no application fee.";
+        return "You can pay on the site at cea.ng/apply by card, transfer or USSD, or by direct bank transfer to Cyber Elias Academy Ltd · UBA · 1028649972. Send the receipt on WhatsApp so the team can confirm it. Core short courses can be paid in full or in two instalments. There is no application fee. Ask admissions to confirm availability and next steps for the course you want.";
       if (/where|location|address|port harcourt|directions/.test(q))
         return "We're at 24/26 Ebony Road, off Rumuola Road, Port Harcourt, Rivers State — open Monday to Saturday, 8am–8pm. Some courses can also be followed online. Would you like to book a visit?";
-      if (/evening|weekend|night|time|schedule/.test(q))
-        return "Yes — classes run in morning, afternoon and evening blocks, and we offer Mon/Wed/Fri or Tue/Thu/Sat groups. Short courses have rolling intake and start within about two weeks, so you can pick the slot that suits you. Which days work best for you?";
+      if (
+        /evening|weekend|night|time|schedule|start date|when.*start|when.*cohort|intake|cohort/.test(
+          q,
+        )
+      )
+        return "You can share your preferred days and time in the application. Admissions will confirm the schedule available for your chosen course. A start date is confirmed only when the live admissions register lists a course-specific cohort with status scheduled; generic rolling-intake and preview entries are not confirmed dates.";
       if (/cert|verify|employer/.test(q))
         return "On completion you get an academy certificate with a code any employer can verify at cea.ng/certificates/verify. It's issued by the academy — not a university degree or a government licence — and it's based on the project you build, not just attendance.";
-      return "That one is worth a proper answer from the team rather than a guess from me. Message us on WhatsApp at 0905 862 8386 (Mon–Sat, 8am–8pm) or email help@cea.ng — and you can see every course, fee and start date at cea.ng/programs.";
+      return "That one is worth a proper answer from the team rather than a guess from me. Message us on WhatsApp at 0905 862 8386 (Mon–Sat, 8am–8pm) or email help@cea.ng. The Academy flyer lists 13 core short courses; nine rotating specialist options are listed separately. Admissions can confirm availability and dates for a specific course. A start date is confirmed only when the live admissions register lists a course-specific scheduled cohort.";
     })();
     return { answer, mock: true, remaining: 499 };
   });
@@ -1241,7 +1245,6 @@ export function registerAllMocks(): void {
     email: string;
     name: string;
     status: "pending" | "success" | "failed" | "review";
-    downloadUrl: string | null;
     paidAt: string | null;
     createdAt: string;
   };
@@ -1370,7 +1373,6 @@ export function registerAllMocks(): void {
       email: input.email ?? "",
       name: input.name ?? "",
       status: "pending",
-      downloadUrl: null,
       paidAt: null,
       createdAt: now,
     });
@@ -1396,12 +1398,12 @@ export function registerAllMocks(): void {
 
   registerMockPattern("GET", "/v1/shop/download/*", async () => {
     await delay();
-    // Mock downloads are never delivered — same 501 contract as the live
-    // route so the UI surfaces the same "delivery in progress" message.
+    // The acknowledgement endpoint never streams a file; mock mode also
+    // does not simulate the operator-managed email delivery.
     return {
       ok: true,
       message:
-        "Payment confirmed. In production the file is delivered by email; in mock mode the storefront stops here.",
+        "Mock payment confirmed. The product file is not delivered in preview; production fulfillment is by email within one business day.",
     };
   });
 

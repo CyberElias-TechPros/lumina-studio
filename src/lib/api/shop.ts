@@ -48,7 +48,6 @@ export interface ShopOrder {
   email: string;
   name: string;
   status: "pending" | "success" | "failed" | "review";
-  downloadUrl: string | null;
   paidAt: string | null;
   createdAt: string;
 }
@@ -74,7 +73,7 @@ export function startShopCheckout(input: StartShopCheckoutInput): Promise<ShopCh
   });
 }
 
-/** Public — order status + download link after payment. */
+/** Public — payment status and order details after checkout. Product files are delivered by email separately. */
 export function fetchShopOrder(reference: string): Promise<ShopOrder> {
   return apiFetch<ShopOrder>(`/v1/shop/orders/${encodeURIComponent(reference)}`);
 }

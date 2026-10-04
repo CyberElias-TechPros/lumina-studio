@@ -24,11 +24,11 @@ start date, certificate claim or policy. Fees are in Nigerian Naira.
 - Online: Card, bank or USSD via the secure checkout on cea.ng/apply
 - Direct transfer: Cyber Elias Academy Ltd · UBA · account number 1028649972 (bank transfer) — after paying, send the receipt on WhatsApp
   and the seat is confirmed the same day.
-- Short courses: Pay in full (100% of the fee before the course starts — seat confirmed same day); 50% now · 50% at mid-course (Half the fee holds your seat; the rest at week 2 (or the midpoint)). Diplomas: 30% deposit · monthly balance (30% holds your seat; the balance in equal monthly instalments); Pay in full — 10% off (Pay the whole fee up front and save 10%).
+- Short-course payment plans: Pay in full (100% of the fee before the course starts — seat confirmed same day); 50% now · 50% at mid-course (Half the fee holds your seat; the rest at week 2 (or the midpoint))
 - No application fee. Fees cover class materials and the published notes.
 
-## Short courses (22)
-Each is taught in person at the academy, with an online option where noted.
+## Core short courses (13)
+These are the courses on the Academy flyer and the standard short-course application form.
 - Microsoft Office | ₦30,000 | 3 weeks, 2×/week | Absolute beginner | Documents, spreadsheets and presentations you can actually produce.
 - Typing & Computer Basics | ₦20,000 | 2 weeks, 2×/week | Absolute beginner | Go from nervous around a computer to independently confident with one.
 - Graphic Design | ₦40,000 | 4 weeks, 2×/week | Beginner | Learn design decisions, not just Canva buttons.
@@ -42,6 +42,9 @@ Each is taught in person at the academy, with an online option where noted.
 - Business & Freelancing | ₦30,000 | 3 weeks, 2×/week | Beginner | Turn the skill you just learned into a service people pay for.
 - Content Creation | ₦30,000 | 3 weeks, 2×/week | Beginner | Plan, shoot, edit and publish video that people watch to the end.
 - Online Teaching | ₦30,000 | 3 weeks, 2×/week | Beginner | Teach what you know — plan lessons, run online classes and assess learners.
+
+## Rotating specialist short courses (9)
+These are listed separately from the core flyer offer. Do not imply a current start date or availability; ask admissions to confirm whether and when a specific course is running.
 - Digital Productivity | ₦30,000 | 2 weeks, 2×/week | Absolute beginner | Google Workspace, email discipline and cloud storage that saves hours weekly.
 - AI Productivity | ₦30,000 | 2 weeks, 2×/week | Beginner | Use AI tools to work faster without producing nonsense or leaking data.
 - Mobile App Development | ₦60,000 | 4 weeks, 2×/week | Intermediate | App concepts, UI design and the fundamentals of building for phones.
@@ -52,16 +55,11 @@ Each is taught in person at the academy, with an online option where noted.
 - Computer Networking | ₦50,000 | 3 weeks, 2×/week | Intermediate | Understand, build and troubleshoot the networks every business depends on.
 - IT Support | ₦40,000 | 3 weeks, 2×/week | Beginner | The helpdesk skills that get you hired: troubleshooting, support and documentation.
 
-## Diploma programmes (5) — cohort based
-- IT Professional Diploma | ₦300,000 | 6 months, 3 days/week (24 weeks) | The job-ready IT generalist: office systems, hardware, networks, security basics and web fundamentals in one diploma.
-- Web Development Professional | ₦320,000 | 6 months, 3 days/week (24 weeks) | From first line of code to deploying full projects: HTML to React, Node APIs, databases and live deployment.
-- Data Analytics & AI | ₦300,000 | 6 months, 3 days/week (24 weeks) | Excel to SQL to Python: clean messy data, build dashboards people act on, and use AI tools without leaking data.
-- Cybersecurity Foundations | ₦160,000 | 3 months, 3 days/week (12 weeks) | Defensive and practical: threats, networks, hardening and incident handling — with labs on real machines.
-- Digital Business Bootcamp | ₦150,000 | 3 months, 3 days/week (12 weeks) | Marketing, social media, content and freelancing — run one real digital business while you learn it.
+## Longer programme plans
+A programme listing or development/mock cohort entry is not proof that a longer programme is currently deliverable. Do not describe these programmes as open or quote dates from mock/static data. Direct enquiries to admissions for current status.
 
-## Dates
-- Short courses: Rolling intake — new short courses start within 2 weeks; we confirm exact dates after you apply.
-- Diplomas: Next cohort starts 2 November 2026 (Mon/Wed/Fri) · next after that: 16 February 2027. One cohort per training.
+## Start dates
+Only state a start date when the live admissions cohort register returns a course-specific cohort with status scheduled. A generic rolling-intake row, a preferred date entered by an applicant, or a mock fixture is not a confirmed date. If no course-specific date is listed, say so and ask admissions to confirm availability.
 
 ## What to bring
 - A laptop or reliable access to one (Typing & Computer Basics can run entirely on academy machines)

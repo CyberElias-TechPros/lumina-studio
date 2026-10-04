@@ -11,7 +11,7 @@ import {
   Timer,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-import { FEE_NOTES, NEXT_COHORTS, WHAT_TO_BRING } from "@/data/academy";
+import { FEE_NOTES, WHAT_TO_BRING } from "@/data/academy";
 import { cn } from "@/lib/utils";
 import { depositFor, durationLabel, feeFor, formatFee, type ProgramMeta } from "./meta";
 
@@ -140,7 +140,8 @@ export function InfoPanel({ meta, plan, timeSlot, mode, scheduleDays }: InfoPane
 
         <Section icon={CalendarDays} title="Start dates">
           <p className="text-muted-foreground text-xs leading-relaxed">
-            {meta?.kind === "long" ? NEXT_COHORTS.long : NEXT_COHORTS.short}
+            Dates are course-specific. The schedule step shows a date only when one is published in
+            the cohort register; your preferred date is not a booking.
           </p>
         </Section>
 

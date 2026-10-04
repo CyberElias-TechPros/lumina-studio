@@ -99,7 +99,8 @@ export interface AssistantReply {
 export const FALLBACK_ANSWER =
   "I can't reach the assistant right now, but a person can help straight away: " +
   "WhatsApp or call 0905 862 8386 (Mon–Sat, 8:00–20:00), or email help@cea.ng. " +
-  "You can also see every course and fee at cea.ng/programs, or apply at cea.ng/apply.";
+  "Browse the 13 core flyer courses and nine rotating specialist options at cea.ng/classes; " +
+  "ask admissions to confirm course availability and start dates, or apply at cea.ng/apply.";
 
 export async function assistantReply(
   c: { env: AppEnv },

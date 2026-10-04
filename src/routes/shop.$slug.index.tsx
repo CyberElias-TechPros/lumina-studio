@@ -18,6 +18,7 @@ import { CTASection, PageShell, SectionHeading } from "@/components/marketing/sh
 import { Reveal, StaggerGroup, StaggerItem } from "@/components/motion";
 import {
   checkoutPath,
+  deliveryWindowLabel,
   digitalProducts,
   formatNaira,
   getDigitalProduct,
@@ -132,12 +133,12 @@ function ProductPage() {
                 </div>
                 <ul className="text-muted-foreground mt-6 grid gap-2 border-t pt-5 text-xs sm:grid-cols-2">
                   <li className="flex items-start gap-2">
-                    <Clock3 className="mt-0.5 size-3.5 shrink-0" /> Electronic delivery within{" "}
-                    {product.deliveryHours} hours
+                    <Clock3 className="mt-0.5 size-3.5 shrink-0" /> Email delivery{" "}
+                    {deliveryWindowLabel(product.deliveryHours)} after payment confirmation
                   </li>
                   <li className="flex items-start gap-2">
-                    <Download className="mt-0.5 size-3.5 shrink-0" /> Download appears after payment
-                    confirms
+                    <Download className="mt-0.5 size-3.5 shrink-0" /> The return page confirms
+                    payment; it is not an instant download
                   </li>
                   <li className="flex items-start gap-2">
                     <ShieldCheck className="mt-0.5 size-3.5 shrink-0" /> 14-day refund window
@@ -203,8 +204,9 @@ function ProductPage() {
               <Download className="text-primary size-4" /> Delivery
             </h2>
             <p className="text-muted-foreground mt-2 text-sm leading-relaxed">
-              File is {product.fileFormat.toLowerCase()}. Delivered electronically within{" "}
-              {product.deliveryHours} hours — no courier fee, no address needed.{" "}
+              File format: {product.fileFormat}. We email the file{" "}
+              {deliveryWindowLabel(product.deliveryHours)} after payment is confirmed — no courier
+              fee or delivery address needed.{" "}
               <Link to="/shipping" className="text-primary underline">
                 How delivery works
               </Link>

@@ -48,6 +48,7 @@ interface MockCohort {
   status: "scheduled" | "running" | "completed" | "cancelled";
 }
 
+/** Synthetic fixtures for admin/API preview only; never treat these dates as a public schedule. */
 const cohorts: MockCohort[] = [
   {
     id: "cohort-wdp-2026-11",

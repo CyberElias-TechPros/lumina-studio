@@ -123,15 +123,25 @@ describe("assistant grounding", () => {
     expect(prompt).toMatch(/WhatsApp/);
   });
 
-  it("generated knowledge stays in sync with the catalogue's published fee", () => {
+  it("generated knowledge stays in sync with the course distinctions and date rules", () => {
     expect(ASSISTANT_KNOWLEDGE).toContain("₦60,000");
     expect(ASSISTANT_KNOWLEDGE).toMatch(/Web Development/);
+    expect(ASSISTANT_KNOWLEDGE).toContain("## Core short courses (13)");
+    expect(ASSISTANT_KNOWLEDGE).toContain("## Rotating specialist short courses (9)");
+    expect(ASSISTANT_KNOWLEDGE).toContain(
+      "Only state a start date when the live admissions cohort register",
+    );
+    expect(ASSISTANT_KNOWLEDGE).not.toContain("2 November 2026");
+    expect(ASSISTANT_KNOWLEDGE).not.toContain("start within about two weeks");
   });
 
   it("fallback answer is factual and points to WhatsApp + help@cea.ng", () => {
     expect(FALLBACK_ANSWER).toContain("0905 862 8386");
     expect(FALLBACK_ANSWER).toContain("help@cea.ng");
-    expect(FALLBACK_ANSWER).toContain("cea.ng/programs");
+    expect(FALLBACK_ANSWER).toContain("13 core flyer courses");
+    expect(FALLBACK_ANSWER).toContain("nine rotating specialist options");
+    expect(FALLBACK_ANSWER).toContain("cea.ng/classes");
+    expect(FALLBACK_ANSWER).toContain("confirm course availability and start dates");
   });
 
   it("sanitise strips markdown and caps length", () => {
