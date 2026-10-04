@@ -79,8 +79,7 @@ start date, certificate claim or policy. Fees are in Nigerian Naira.
 
 ## Payments
 - Online: ${FACTS.paystack}
-- Direct transfer: ${FACTS.bank} — after paying, send the receipt on WhatsApp
-  and the seat is confirmed the same day.
+- Direct transfer: ${FACTS.bank} — report the transfer from your application status page. Finance verifies it against the bank statement before confirming payment; admissions confirms course availability, your place and start date separately.
 - Short-course payment plans: ${planSection()}
 - No application fee. Fees cover class materials and the published notes.
 

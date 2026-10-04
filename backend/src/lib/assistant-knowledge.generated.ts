@@ -22,9 +22,8 @@ start date, certificate claim or policy. Fees are in Nigerian Naira.
 
 ## Payments
 - Online: Card, bank or USSD via the secure checkout on cea.ng/apply
-- Direct transfer: Cyber Elias Academy Ltd · UBA · account number 1028649972 (bank transfer) — after paying, send the receipt on WhatsApp
-  and the seat is confirmed the same day.
-- Short-course payment plans: Pay in full (100% of the fee before the course starts — seat confirmed same day); 50% now · 50% at mid-course (Half the fee holds your seat; the rest at week 2 (or the midpoint))
+- Direct transfer: Cyber Elias Academy Ltd · UBA · account number 1028649972 (bank transfer) — report the transfer from your application status page. Finance verifies it against the bank statement before confirming payment; admissions confirms course availability, your place and start date separately.
+- Short-course payment plans: Pay in full (Pay the full fee before the course starts; admissions confirms availability and dates separately.); 50% now · 50% at mid-course (Pay half now; the balance is due at week 2 (or the midpoint). Admissions confirms availability and dates separately.)
 - No application fee. Fees cover class materials and the published notes.
 
 ## Core short courses (13)

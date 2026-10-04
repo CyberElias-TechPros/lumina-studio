@@ -276,8 +276,8 @@ function nextSteps(ref: string): string[] {
   return [
     `Confirmation email sent to your inbox (reference ${ref}).`,
     "We will call or WhatsApp you within 24 working hours to confirm dates.",
-    "Pay your deposit (or full fee) to hold your seat — the payment link is on this page.",
-    "Get your welcome pack: class schedule, what to bring, and your course notes.",
+    "If you choose to pay, use the payment link on this page; payment is recorded against your application.",
+    "Admissions confirms course availability, your place and start date before sharing your welcome-pack details.",
   ];
 }
 
@@ -321,8 +321,8 @@ function confirmationEmailHtml(input: {
     <p><strong>What happens next:</strong></p>
     <ol style="font-size:14px;line-height:1.6;">
       <li>We will call or WhatsApp you within 24 working hours.</li>
-      <li>Pay your ${plan === "full" || plan === "full-10-off" ? "fee" : "deposit"} to hold your seat (link below or on the tracking page).</li>
-      <li>Receive your welcome pack — schedule, what to bring, course notes.</li>
+      <li>If you choose to pay, use the payment link below or on the tracking page; payment is recorded against your application.</li>
+      <li>Admissions confirms course availability, your place and start date before sharing the schedule, what to bring and course notes.</li>
     </ol>
     <p style="margin-top:20px;">
       <a href="${(globalThis as { APP_URL?: string }).APP_URL ?? "https://cea.ng"}/apply/status/${ref}"
@@ -351,7 +351,7 @@ function receiptEmailHtml(input: {
   });
   const line =
     kind === "full"
-      ? `Full fee of <strong>${fmt.format(amount)}</strong> — your seat is confirmed.`
+      ? `Full fee of <strong>${fmt.format(amount)}</strong> received.`
       : `${kind === "deposit" ? "Deposit" : "Payment"} of <strong>${fmt.format(amount)}</strong> received. ${
           remaining > 0
             ? `Balance due: <strong>${fmt.format(remaining)}</strong>.`
@@ -363,7 +363,7 @@ function receiptEmailHtml(input: {
     ${receiptNo ? `<p style="font-size:13px;color:#444;">Receipt number: <strong>${receiptNo}</strong></p>` : ""}
     <p>Hi ${name},</p>
     <p>We received your payment for <strong>${programTitle}</strong>: ${line}</p>
-    <p>Your seat is held. The welcome pack (schedule, what to bring, notes links) follows once admission confirms your dates.</p>
+    <p>Your payment is recorded against your application. Admissions will confirm course availability, your place and start date separately; the welcome pack (schedule, what to bring, notes links) follows after that.</p>
     <p style="font-size:13px;">Keep this for your records, or <a href="https://cea.ng/apply/receipt/${ref}">print the receipt</a>.</p>
     <p style="font-size:12px;color:#777;">Cyber Elias Academy · 24/26 Ebony Road, Port Harcourt ·
     <a href="https://wa.me/${ACADEMY_WHATSAPP}">+234 905 862 8386</a></p>

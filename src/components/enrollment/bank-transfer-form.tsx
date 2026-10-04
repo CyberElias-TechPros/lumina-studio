@@ -110,7 +110,8 @@ export function BankTransferForm({
         </dl>
         <p className="text-muted-foreground mt-2 text-xs">
           Use <span className="font-mono font-semibold">{refCode}</span> as the transfer
-          description/narration, then report it below so finance can match it the same day.
+          description/narration, then report it below. Finance checks reported transfers against the
+          bank statement before confirming payment.
         </p>
       </div>
 
@@ -215,8 +216,9 @@ export function BankTransferForm({
             Report my transfer
           </Button>
           <p className="text-muted-foreground text-[11px]">
-            We never count a transfer as paid until finance confirms it against the bank statement.
-            Your seat is held meanwhile.
+            Reporting a transfer does not mark it as paid. Finance verifies it against the bank
+            statement before recording the payment; admissions confirms course availability, your
+            place and start date separately.
           </p>
         </form>
       )}

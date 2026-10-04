@@ -145,7 +145,7 @@ function AdmissionsRegistrations() {
           {
             label: "Deposit paid",
             value: depositPaid,
-            delta: "seat held",
+            delta: "payment recorded",
             icon: Wallet,
             tone: "bg-primary/10 text-primary",
           },

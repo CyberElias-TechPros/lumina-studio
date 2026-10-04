@@ -108,8 +108,9 @@ function PayReturnPage() {
                   </span>
                   <p className="font-display mt-5 text-lg font-bold">Payment confirmed</p>
                   <p className="text-muted-foreground mt-2 text-sm leading-relaxed">
-                    We received {formatNaira(state.amount)} for your enrollment. A receipt is on its
-                    way to your email — your seat is held.
+                    We received {formatNaira(state.amount)} for your application. A receipt is on
+                    its way to your email. Admissions will confirm course availability, your place
+                    and start date separately.
                   </p>
                 </>
               )}
@@ -121,8 +122,9 @@ function PayReturnPage() {
                   </span>
                   <p className="font-display mt-5 text-lg font-bold">Deposit confirmed</p>
                   <p className="text-muted-foreground mt-2 text-sm leading-relaxed">
-                    We received your {formatNaira(state.amount)} deposit. Your seat is held while
-                    admission confirms your dates — the balance plan is in your confirmation email.
+                    We received your {formatNaira(state.amount)} deposit. Admissions will confirm
+                    course availability, your place and start date separately; the balance plan is
+                    in your confirmation email.
                   </p>
                 </>
               )}

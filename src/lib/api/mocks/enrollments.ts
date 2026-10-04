@@ -211,8 +211,8 @@ function publicStatus(e: MockEnrollment) {
     nextSteps: [
       `Confirmation email sent (reference ${e.ref}).`,
       "We will call or WhatsApp you within 24 working hours to confirm dates.",
-      "Pay your deposit (or full fee) to hold your seat.",
-      "Get your welcome pack: schedule, what to bring, and course notes.",
+      "If you choose to pay, use the payment link on your application page; payment is recorded against your application.",
+      "Admissions confirms course availability, your place and start date before sharing the schedule and welcome-pack details.",
     ],
     contact: {
       phone: "+2349058628386",
@@ -281,8 +281,8 @@ export function registerEnrollmentMocks(): void {
         nextSteps: [
           "Check your inbox — confirmation sent.",
           "We will contact you within 24 working hours.",
-          "Pay your deposit or full fee to hold your seat.",
-          "Receive your welcome pack before day one.",
+          "If you choose to pay, use the payment link or status page; payment is recorded against your application.",
+          "Admissions confirms course availability, your place and start date before sharing the welcome-pack details.",
         ],
         trackUrl: `/apply/status/${ref}`,
       },

@@ -133,6 +133,8 @@ describe("assistant grounding", () => {
     );
     expect(ASSISTANT_KNOWLEDGE).not.toContain("2 November 2026");
     expect(ASSISTANT_KNOWLEDGE).not.toContain("start within about two weeks");
+    expect(ASSISTANT_KNOWLEDGE).toContain("report the transfer from your application status page");
+    expect(ASSISTANT_KNOWLEDGE).not.toMatch(/seat confirmed the same day|holds your seat/i);
   });
 
   it("fallback answer is factual and points to WhatsApp + help@cea.ng", () => {

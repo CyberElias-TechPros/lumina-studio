@@ -72,7 +72,7 @@ function PayPage() {
       <PageHero
         eyebrow="Payments"
         title="How to pay"
-        description="Pay online, or by direct bank transfer to the academy's account. Applying costs nothing — you only pay once you have a place and a start date."
+        description="Applying is free. After submitting an application, you can pay online or by bank transfer. Admissions confirms course availability, your place and start date separately."
       />
 
       <section className="container-page pb-16">
@@ -83,8 +83,9 @@ function PayPage() {
                 <Landmark className="text-primary size-5" /> Direct bank transfer
               </p>
               <p className="text-muted-foreground mt-2 text-sm leading-relaxed">
-                Transfer the fee (or the deposit) to this account. Use your application reference as
-                the narration, then tell finance below so we can match it the same day.
+                Transfer the fee (or deposit) to this account. Use your application reference as the
+                narration, then report the transfer from your application status page. Finance
+                checks reported transfers against the bank statement before confirming payment.
               </p>
               <dl className="mt-4 divide-y rounded-lg border">
                 {rows.map((row) => (
@@ -150,8 +151,9 @@ function PayPage() {
                   <Banknote className="text-primary size-5" /> Card, bank or USSD
                 </p>
                 <p className="text-muted-foreground mt-2 text-sm leading-relaxed">
-                  Online checkout is available on your application page and handles card, bank
-                  transfer and USSD payments, with instant confirmation and a receipt by email.
+                  The application page offers Paystack checkout for card, bank and USSD payments. A
+                  receipt is issued for each confirmed payment and can be printed from your receipt
+                  page.
                 </p>
                 <Button asChild className="mt-4 h-11 w-full font-semibold">
                   <Link to="/apply">
@@ -159,7 +161,8 @@ function PayPage() {
                   </Link>
                 </Button>
                 <p className="text-muted-foreground mt-2 text-[11px]">
-                  No application fee. Payment is only needed to hold your seat.
+                  No application fee. Payment is recorded against your application; it does not
+                  confirm a place or start date.
                 </p>
               </CardContent>
             </Card>

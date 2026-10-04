@@ -255,7 +255,8 @@ export function SuccessScreen({
                 {payState.amount ? ` — ${formatNaira(payState.amount)}` : ""}
               </p>
               <p className="text-success/90 mt-1 text-xs">
-                Receipt sent to your email. Your seat is held.
+                Receipt sent to your email. Admissions will confirm course availability, your place
+                and start date separately.
               </p>
             </div>
           )}
