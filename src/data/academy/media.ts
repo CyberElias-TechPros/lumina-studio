@@ -59,7 +59,6 @@ const COURSE_PHOTOS: Record<string, string> = {
   "microsoft-office": "/images/courses/microsoft-office.jpg",
   "computer-basics-typing": "/images/courses/computer-basics.jpg",
   "graphic-design": "/images/courses/graphic-design.jpg",
-  "web-design": "/images/courses/web-development.jpg",
   "web-development": "/images/courses/web-development.jpg",
   "data-entry": "/images/courses/data-entry.jpg",
   "computer-repairs": "/images/courses/computer-repairs.jpg",

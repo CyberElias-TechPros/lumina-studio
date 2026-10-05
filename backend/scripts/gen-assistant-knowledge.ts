@@ -13,14 +13,8 @@
 import { mkdirSync, writeFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
-import { allCourses } from "../../src/data/academy/catalog";
-import {
-  NEXT_COHORTS,
-  WHAT_TO_BRING,
-  longPaymentPlans,
-  longformPrograms,
-  shortPaymentPlans,
-} from "../../src/data/academy/longform";
+import { flyerCourses, rotatingCourses } from "../../src/data/academy/catalog";
+import { WHAT_TO_BRING, shortPaymentPlans } from "../../src/data/academy/longform";
 import { faqs } from "../../src/data/site";
 
 const naira = (n: number) => `₦${n.toLocaleString("en-NG")}`;
@@ -38,8 +32,8 @@ const FACTS = {
   paystack: "Card, bank or USSD via the secure checkout on cea.ng/apply",
 } as const;
 
-function courseSection(): string {
-  return allCourses
+function courseSection(courses: typeof flyerCourses): string {
+  return courses
     .map(
       (c) =>
         `- ${c.title} | ${naira(c.fee)} | ${c.weeks} week${c.weeks === 1 ? "" : "s"}, ${c.sessionsPerWeek}×/week | ${c.level} | ${c.hook}`,
@@ -47,19 +41,8 @@ function courseSection(): string {
     .join("\n");
 }
 
-function diplomaSection(): string {
-  return longformPrograms
-    .map(
-      (p) =>
-        `- ${p.title} | ${naira(p.fee)} | ${p.months} months, 3 days/week (${p.weeks} weeks) | ${p.tagline}`,
-    )
-    .join("\n");
-}
-
 function planSection(): string {
-  const short = shortPaymentPlans.map((p) => `${p.label} (${p.detail})`).join("; ");
-  const long = longPaymentPlans.map((p) => `${p.label} (${p.detail})`).join("; ");
-  return `Short courses: ${short}. Diplomas: ${long}.`;
+  return shortPaymentPlans.map((p) => `${p.label} (${p.detail})`).join("; ");
 }
 
 function faqSection(): string {
@@ -96,21 +79,23 @@ start date, certificate claim or policy. Fees are in Nigerian Naira.
 
 ## Payments
 - Online: ${FACTS.paystack}
-- Direct transfer: ${FACTS.bank} — after paying, send the receipt on WhatsApp
-  and the seat is confirmed the same day.
-- ${planSection()}
+- Direct transfer: ${FACTS.bank} — report the transfer from your application status page. Finance verifies it against the bank statement before confirming payment; admissions confirms course availability, your place and start date separately.
+- Short-course payment plans: ${planSection()}
 - No application fee. Fees cover class materials and the published notes.
 
-## Short courses (${allCourses.length})
-Each is taught in person at the academy, with an online option where noted.
-${courseSection()}
+## Core short courses (${flyerCourses.length})
+These are the courses on the Academy flyer and the standard short-course application form.
+${courseSection(flyerCourses)}
 
-## Diploma programmes (${longformPrograms.length}) — cohort based
-${diplomaSection()}
+## Rotating specialist short courses (${rotatingCourses.length})
+These are listed separately from the core flyer offer. Do not imply a current start date or availability; ask admissions to confirm whether and when a specific course is running.
+${courseSection(rotatingCourses)}
 
-## Dates
-- Short courses: ${NEXT_COHORTS.short}
-- Diplomas: ${NEXT_COHORTS.long}
+## Longer programme plans
+A programme listing or development/mock cohort entry is not proof that a longer programme is currently deliverable. Do not describe these programmes as open or quote dates from mock/static data. Direct enquiries to admissions for current status.
+
+## Start dates
+Only state a start date when the live admissions cohort register returns a course-specific cohort with status scheduled. A generic rolling-intake row, a preferred date entered by an applicant, or a mock fixture is not a confirmed date. If no course-specific date is listed, say so and ask admissions to confirm availability.
 
 ## What to bring
 ${WHAT_TO_BRING.map((w) => `- ${w}`).join("\n")}
@@ -141,5 +126,5 @@ mkdirSync(dirname(target), { recursive: true });
 writeFileSync(target, out, "utf8");
 
 console.log(
-  `Wrote ${target} (${allCourses.length} courses, ${longformPrograms.length} diplomas, ${knowledge.length} chars)`,
+  `Wrote ${target} (${flyerCourses.length} core courses, ${rotatingCourses.length} rotating courses, ${knowledge.length} chars)`,
 );

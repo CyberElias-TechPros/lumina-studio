@@ -6,16 +6,17 @@
  * purchase a one-off template, planner or spreadsheet. We never log in the
  * buyer — we collect an email + optional name, create a Paystack
  * transaction through the same provider integration the invoices use, and
- * persist the order so the buyer's download link survives a refresh.
+ * persist the order so the payment status survives a refresh. Product files
+ * are currently fulfilled out-of-band by email, not streamed by this route.
  *
  * Security model:
  *  - Checkout accepts only whitelisted product slugs that exist in the
  *    shared JSON catalog (the same list the merchant feed ships).
  *  - The browser sets `redirectUrl` so Paystack returns to /shop/<slug>/return,
  *    not a hostile site. We validate it against the configured origins.
- *  - The download link on success is a one-time-ish HMAC-signed URL: it
- *    embeds the order reference and a SHA-256 tag derived from the secret.
- *    Anyone with the reference still needs the secret to forge a valid tag.
+ *  - The optional delivery acknowledgement URL is HMAC-signed. The current
+ *    endpoint confirms payment ownership but does not stream a product file;
+ *    the operator emails the file separately after payment is confirmed.
  */
 import { Hono } from "hono";
 import { z } from "zod";
@@ -374,8 +375,8 @@ shop.get("/orders/:reference", async (c) => {
       const remoteAmount = payload?.data?.amount;
       if (remote === "success") {
         // Mismatch between the Paystack-reported amount (kobo) and our
-        // expected amount (naira) means a tampered transaction. Flag for
-        // review rather than release the download.
+        // expected amount (naira) means a tampered transaction. Flag it for
+        // review rather than marking payment as confirmed.
         if (typeof remoteAmount === "number" && remoteAmount < row.amount * 100) {
           await c.env.DB.prepare(
             `UPDATE digital_product_orders SET status = 'review' WHERE reference = ?`,
@@ -384,7 +385,7 @@ shop.get("/orders/:reference", async (c) => {
             .run();
         } else {
           const token = await signDownloadToken(reference, c.env.PAYSTACK_SECRET_KEY);
-          const downloadUrl = `/v1/shop/download/${reference}?token=${token}`;
+          const acknowledgementUrl = `/v1/shop/download/${reference}?token=${token}`;
           await c.env.DB.prepare(
             `UPDATE digital_product_orders
                SET status = 'success',
@@ -392,7 +393,7 @@ shop.get("/orders/:reference", async (c) => {
                    paid_at = ?
              WHERE reference = ?`,
           )
-            .bind(downloadUrl, row.paid_at ?? isoNow(), reference)
+            .bind(acknowledgementUrl, row.paid_at ?? isoNow(), reference)
             .run();
         }
       } else if (remote === "failed" || remote === "abandoned") {
@@ -424,16 +425,15 @@ shop.get("/orders/:reference", async (c) => {
     email: updated.buyer_email,
     name: updated.buyer_name,
     status: updated.status,
-    downloadUrl: updated.status === "success" ? updated.download_url || null : null,
     paidAt: updated.paid_at,
     createdAt: updated.created_at,
   });
 });
 
 /* ------------------------------------------------------------------ */
-/* Public — download. Buyers land here from the post-payment page or  */
-/* from the email. The signed token is the only auth — same model as  */
-/* the rest of the merchant flow.                                       */
+/* Public — signed payment/delivery acknowledgement. This endpoint     */
+/* does not stream a product file; current file fulfillment is handled */
+/* separately by email after payment confirmation.                     */
 /* ------------------------------------------------------------------ */
 shop.get("/download/:reference", async (c) => {
   const reference = c.req.param("reference");
@@ -475,16 +475,13 @@ shop.get("/download/:reference", async (c) => {
   const filename = product
     ? `${product.slug}.${product.fileFormat.includes("ZIP") ? "zip" : product.fileFormat.includes("PDF") ? "pdf" : "xlsx"}`
     : `${row.reference}.zip`;
-  // The actual file is delivered out-of-band by email — the storefront
-  // pages and the merchant feed already promise electronic delivery
-  // within 24 hours. The signed URL proves ownership; the email body
-  // (handled separately by the operator) carries the download link or
-  // attaches the file directly. The route returns 200 so the UI can
-  // show a clean "delivery confirmed" state.
+  // This acknowledgement endpoint does not stream or email the file.
+  // The operator handles file fulfillment separately, within one business
+  // day after payment confirmation.
   return c.json(
     {
       ok: true,
-      message: "Payment confirmed. Your download link has been emailed to you.",
+      message: "Payment confirmed. The product file will be emailed within one business day.",
       reference: row.reference,
       filename,
     },
@@ -552,7 +549,7 @@ shop.post("/webhook", async (c) => {
     body.data.amount >= row.amount * 100
   ) {
     const token = secret ? await signDownloadToken(reference, secret) : "";
-    const downloadUrl = token ? `/v1/shop/download/${reference}?token=${token}` : "";
+    const acknowledgementUrl = token ? `/v1/shop/download/${reference}?token=${token}` : "";
     await c.env.DB.prepare(
       `UPDATE digital_product_orders
          SET status = 'success',
@@ -560,7 +557,7 @@ shop.post("/webhook", async (c) => {
              paid_at = ?
        WHERE reference = ?`,
     )
-      .bind(downloadUrl, isoNow(), reference)
+      .bind(acknowledgementUrl, isoNow(), reference)
       .run();
   } else if (body.event === "charge.failed" && row.status !== "failed") {
     await c.env.DB.prepare(

@@ -57,11 +57,15 @@ export const Route = createFileRoute("/classes/$courseSlug/")({
             priceCurrency: "NGN",
             category: course.category,
           },
-          hasCourseInstance: {
-            "@type": "CourseInstance",
-            courseMode: "blended",
-            courseWorkload: `PT${course.weeks * course.sessionsPerWeek * 2}H`,
-          },
+          ...(course.rotating
+            ? {}
+            : {
+                hasCourseInstance: {
+                  "@type": "CourseInstance",
+                  courseMode: "blended",
+                  courseWorkload: `PT${course.weeks * course.sessionsPerWeek * 2}H`,
+                },
+              }),
           educationalLevel: course.level,
           teaches: course.outcomes,
           coursePrerequisites: course.requirements,
@@ -111,6 +115,9 @@ function CoursePage() {
       : resolvedCourses.filter((c) => c.slug !== course.slug).slice(0, 3);
 
   const weeks = course.weekOutline;
+  const availabilityUrl = `https://wa.me/2349058628386?text=${encodeURIComponent(
+    `Hello Cyber Elias Academy! I am interested in ${course.title}. Is it currently available, and when is the next date?`,
+  )}`;
 
   return (
     <PageShell>
@@ -199,7 +206,15 @@ function CoursePage() {
             <Reveal delay={0.22}>
               <div className="mt-9 flex flex-wrap gap-3">
                 <Button asChild>
-                  <Link to="/apply">Apply for this course</Link>
+                  {course.rotating ? (
+                    <a href={availabilityUrl} target="_blank" rel="noopener noreferrer">
+                      Ask admissions about availability
+                    </a>
+                  ) : (
+                    <Link to="/apply" search={{ program: course.slug }}>
+                      Apply for this course
+                    </Link>
+                  )}
                 </Button>
                 <Button asChild variant="outline">
                   <Link to="/contact">Ask a question</Link>
@@ -333,7 +348,15 @@ function CoursePage() {
                   </div>
                 </dl>
                 <Button asChild className="mt-6 w-full">
-                  <Link to="/apply">Apply</Link>
+                  {course.rotating ? (
+                    <a href={availabilityUrl} target="_blank" rel="noopener noreferrer">
+                      Ask admissions
+                    </a>
+                  ) : (
+                    <Link to="/apply" search={{ program: course.slug }}>
+                      Apply
+                    </Link>
+                  )}
                 </Button>
               </div>
             </aside>
@@ -508,8 +531,18 @@ function CoursePage() {
       </article>
 
       <CTASection
-        title={`Apply for ${course.title}`}
-        description={`${course.weeks} weeks, ${formatFee(course.fee)}. Two sessions a week. You leave with ${course.deliverable.title.toLowerCase()}.`}
+        title={course.rotating ? `Ask about ${course.title}` : `Apply for ${course.title}`}
+        description={
+          course.rotating
+            ? "This specialist short course rotates through the timetable. Admissions can confirm whether and when it is currently running."
+            : `${course.weeks} weeks, ${formatFee(course.fee)}. Two sessions a week. You leave with ${course.deliverable.title.toLowerCase()}.`
+        }
+        primary={
+          course.rotating
+            ? { label: "WhatsApp admissions", to: availabilityUrl }
+            : { label: "Apply", to: `/apply?program=${encodeURIComponent(course.slug)}` }
+        }
+        secondary={{ label: "View all courses", to: "/classes" }}
       />
     </PageShell>
   );

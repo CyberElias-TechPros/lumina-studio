@@ -3,7 +3,7 @@ import { Link } from "@/lib/next-compat/router";
 import { Button } from "@/components/ui/button";
 import { CTASection, PageHero, PageShell } from "@/components/marketing/shell";
 import { CampusImg } from "@/components/marketing/photos";
-import { allCourses } from "@/data/academy";
+import { flyerCourses, rotatingCourses } from "@/data/academy";
 import { FounderPhoto } from "@/components/marketing/founder-photo";
 import { getPageHead } from "@/lib/seo";
 
@@ -62,15 +62,15 @@ function About() {
         <div>
           <h2 className="font-display text-2xl font-semibold tracking-tight">What we teach</h2>
           <p className="text-muted-foreground mt-3 text-base leading-relaxed">
-            {allCourses.length} practical courses. Each has a published syllabus, a fee in naira,
-            and a named piece of work the certificate is awarded for.
+            {flyerCourses.length} core short courses are listed on the Academy flyer. Each has a
+            published syllabus, a fee in naira, and a named piece of work for assessment.
           </p>
           <dl className="mt-4 space-y-3 text-sm">
-            {[...new Set(allCourses.map((c) => c.category))].map((cat) => (
+            {[...new Set(flyerCourses.map((c) => c.category))].map((cat) => (
               <div key={cat}>
                 <dt className="font-semibold">{cat}</dt>
                 <dd className="text-muted-foreground mt-1">
-                  {allCourses
+                  {flyerCourses
                     .filter((c) => c.category === cat)
                     .map((c, i, arr) => (
                       <span key={c.slug}>
@@ -88,6 +88,10 @@ function About() {
               </div>
             ))}
           </dl>
+          <p className="text-muted-foreground mt-4 text-sm leading-relaxed">
+            {rotatingCourses.length} additional specialist short courses are listed separately as
+            rotating options. Ask admissions whether a specific one is currently available.
+          </p>
           <p className="text-muted-foreground mt-4 text-sm leading-relaxed">
             We also take on IT support and network installation, ICT assessments, websites and web
             apps, branding and design work, and staff training for businesses and schools.

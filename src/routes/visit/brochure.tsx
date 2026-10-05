@@ -60,7 +60,7 @@ function BrochurePage() {
       <PageHero
         eyebrow="Course list"
         title="What we teach, and what it costs"
-        description="Fees are in naira on each course page. There is no separate pricing ladder, scholarship fund, or placement promise."
+        description="This list covers the 13 core courses on the Academy flyer. Nine additional specialist short courses rotate separately; ask admissions about current availability. Fees are listed on each core course page."
       />
 
       <section className="container-page pb-16">
@@ -99,10 +99,17 @@ function BrochurePage() {
           </table>
         </div>
 
+        <p className="text-muted-foreground mt-6 max-w-3xl text-sm leading-relaxed">
+          The 13 courses above are the Academy flyer offer. Nine additional specialist short courses
+          rotate through the timetable separately; ask admissions whether a specific option is
+          currently available. A course listing is not a confirmed start date.
+        </p>
+
         <div className="border-border mt-12 max-w-md rounded-lg border p-6">
           <h2 className="font-display text-lg font-semibold">Email me the list</h2>
           <p className="text-muted-foreground mt-1 text-sm">
-            We will reply with the current courses and the next start dates we have.
+            We will reply with the current course list and check availability and start dates for
+            the courses you ask about.
           </p>
           {sent ? (
             <p className="mt-4 flex items-center gap-2 text-sm">

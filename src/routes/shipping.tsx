@@ -3,7 +3,7 @@ import { Link } from "@/lib/next-compat/router";
 import { CheckCircle2, Clock3, Download, MapPin } from "lucide-react";
 import { CTASection, PageHero, PageShell, SectionHeading } from "@/components/marketing/shell";
 import { Reveal } from "@/components/motion";
-import { digitalProducts } from "@/data/digital-products";
+import { deliveryWindowLabel, digitalProducts } from "@/data/digital-products";
 import { getPageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/shipping")({
@@ -11,7 +11,7 @@ export const Route = createFileRoute("/shipping")({
     getPageHead({
       title: "Delivery — Cyber Elias Academy shop",
       description:
-        "Every digital product in the CEA shop is delivered electronically within one business day, anywhere in Nigeria. No courier fee, no address needed.",
+        "After Paystack confirms payment, the CEA shop team emails your digital product within one business day. No courier fee or delivery address is needed.",
       path: "/shipping",
     }),
   component: ShippingPage,
@@ -25,13 +25,13 @@ const timeline = [
   },
   {
     icon: Clock3,
-    title: "2. We confirm the order",
-    body: "Paystack posts back to our system. You land on the order return page and we email a receipt within a few minutes.",
+    title: "2. Payment is confirmed",
+    body: "The order return page shows the payment status. It does not provide an instant download.",
   },
   {
     icon: Download,
-    title: "3. The download appears",
-    body: "The download link appears on the order return page and is emailed to the address you entered at checkout. It is valid for any time afterwards.",
+    title: "3. We email your file",
+    body: "After payment is confirmed, our team prepares the product file and emails it to your checkout address within one business day.",
   },
 ];
 
@@ -41,14 +41,14 @@ function ShippingPage() {
       <PageHero
         eyebrow="Delivery"
         title="Electronic delivery, Nigeria only"
-        description="Every product in the CEA shop is a single downloadable file. We do not ship physical goods — there is no courier fee and no delivery address to fill in."
+        description="Shop products are delivered by email after payment is confirmed. We do not ship physical goods, so there is no courier fee or delivery address to fill in."
       />
 
       <section className="container-page py-16 md:py-20">
         <SectionHeading
           eyebrow="The flow"
-          title="Three steps from pay to file"
-          description="Most orders complete inside two minutes. If anything stalls, the contact details below are answered by a real person."
+          title="Three steps from payment to email"
+          description="Payment confirmation and product delivery are separate steps. Our team emails the product file within one business day after payment is confirmed."
         />
         <ol className="mt-10 grid gap-4 md:grid-cols-3">
           {timeline.map((s, i) => (
@@ -86,11 +86,11 @@ function ShippingPage() {
               When you get the file
             </h2>
             <p className="text-muted-foreground mt-3 text-base leading-relaxed">
-              The download link appears on the order return page immediately after Paystack confirms
-              payment. The same link is emailed to the address you entered at checkout, so you
-              always have a backup. We aim to deliver within{" "}
-              {Math.min(...digitalProducts.map((p) => p.deliveryHours))} hours; if it takes longer,
-              message us and we will investigate.
+              Our team emails the file to the address you entered at checkout{" "}
+              {deliveryWindowLabel(Math.min(...digitalProducts.map((p) => p.deliveryHours)))} after
+              payment is confirmed. The return page shows payment status only; it does not serve the
+              product file. If you have not received the email by then, contact us with your order
+              reference.
             </p>
             <p className="text-muted-foreground mt-3 text-sm leading-relaxed">
               The file format for each product is listed on its page.{" "}
@@ -122,8 +122,11 @@ function ShippingPage() {
       <Reveal>
         <CTASection
           title="Questions about delivery?"
-          description="Email help@cea.ng or message us on WhatsApp. We reply within one working day."
-          primary={{ label: "Email us", to: "/contact" }}
+          description="Include your order reference so we can check the payment and delivery status."
+          primary={{
+            label: "WhatsApp support",
+            to: "https://wa.me/2349058628386?text=Hello%20Cyber%20Elias%20Academy%21%20I%20have%20a%20question%20about%20shop%20delivery.",
+          }}
           secondary={{ label: "Refunds policy", to: "/refunds" }}
         />
       </Reveal>

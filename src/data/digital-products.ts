@@ -55,6 +55,11 @@ export function formatNaira(amount: number): string {
   return `₦${amount.toLocaleString("en-NG")}`;
 }
 
+/** Customer-facing wording for the operator-managed email delivery window. */
+export function deliveryWindowLabel(hours: number): string {
+  return hours === 24 ? "within one business day" : `within ${hours} hours`;
+}
+
 /** Build the public product detail URL. */
 export function productPath(slug: string): string {
   return `/shop/${slug}`;

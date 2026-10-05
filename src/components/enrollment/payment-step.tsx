@@ -61,7 +61,7 @@ export function PaymentStep({ meta, draft, update }: PaymentStepProps) {
               {usesDeposit && (
                 <div className="rounded-lg bg-card px-3 py-2.5 text-xs leading-relaxed">
                   <p className="font-semibold">
-                    Pay {formatFee(deposit)} now to hold your seat · {formatFee(due - deposit)}{" "}
+                    Pay {formatFee(deposit)} now · {formatFee(due - deposit)}{" "}
                     {meta.kind === "short" ? "at mid-course" : "in equal monthly instalments"}
                   </p>
                   <p className="text-muted-foreground mt-0.5">
@@ -124,7 +124,7 @@ export function PaymentStep({ meta, draft, update }: PaymentStepProps) {
               <CreditCard className="text-primary size-4" /> Card, bank or USSD
             </p>
             <p className="text-muted-foreground mt-0.5 text-xs">
-              Secure Paystack checkout — instant confirmation, receipt by email & WhatsApp
+              Secure Paystack checkout — receipt issued after payment confirmation
             </p>
           </button>
           <button

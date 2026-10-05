@@ -6,7 +6,12 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { CTASection, PageHero, PageShell, SectionHeading } from "@/components/marketing/shell";
 import { Reveal, StaggerGroup, StaggerItem } from "@/components/motion";
-import { digitalProducts, formatNaira, productPath } from "@/data/digital-products";
+import {
+  deliveryWindowLabel,
+  digitalProducts,
+  formatNaira,
+  productPath,
+} from "@/data/digital-products";
 import { getPageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/shop/")({
@@ -14,7 +19,7 @@ export const Route = createFileRoute("/shop/")({
     getPageHead({
       title: "Shop — templates and planners for small businesses",
       description:
-        "One-time digital products from Cyber Elias Academy: website starter, invoice and stock sheet, weekly social content planner. Pay once, download the file.",
+        "One-time digital products from Cyber Elias Academy: website starter, invoice and stock sheet, weekly social content planner. Pay once; the file is emailed within one business day.",
       path: "/shop",
       structuredData: [
         {
@@ -39,8 +44,8 @@ function ShopPage() {
       <PageHero
         eyebrow="Shop"
         title="One-time digital products for small businesses"
-        description="Editable templates and planners built around how Nigerian shops, traders and freelancers actually work. Pay once, download the file, no subscription."
-        meta={["Nigeria only", "Paystack checkout", "Electronic delivery within one business day"]}
+        description="Editable templates and planners built around how Nigerian shops, traders and freelancers work. Pay once; our team emails your file within one business day. No subscription."
+        meta={["Nigeria only", "Paystack checkout", "Email delivery within one business day"]}
       />
 
       <section className="container-page py-16 md:py-20">
@@ -85,11 +90,11 @@ function ShopPage() {
                     </li>
                     <li className="flex items-start gap-2">
                       <Clock3 className="mt-0.5 size-3.5 shrink-0" />
-                      Delivered electronically within {p.deliveryHours} hours
+                      Email delivery {deliveryWindowLabel(p.deliveryHours)}
                     </li>
                     <li className="flex items-start gap-2">
                       <Download className="mt-0.5 size-3.5 shrink-0" />
-                      Download appears after payment confirms
+                      The return page confirms payment; it is not an instant download
                     </li>
                   </ul>
                   <div className="mt-6 flex items-end justify-between gap-4">
@@ -128,9 +133,10 @@ function ShopPage() {
               <Download className="text-primary size-4" /> Delivery
             </h2>
             <p className="text-muted-foreground mt-2 text-sm leading-relaxed">
-              Paystack handles the payment, then the download link appears on the return page and is
-              emailed to you. We do not ship physical goods — there is nothing to courier and
-              nothing to collect.
+              After Paystack confirms payment, our team prepares the file and emails it to you{" "}
+              {deliveryWindowLabel(Math.min(...digitalProducts.map((p) => p.deliveryHours)))}. The
+              return page confirms payment status; it does not provide an instant download. We do
+              not ship physical goods.
             </p>
           </div>
           <div>
@@ -152,8 +158,11 @@ function ShopPage() {
       <Reveal>
         <CTASection
           title="Not sure which one you need?"
-          description="Reply to the order email or message us on WhatsApp and we will point you at the right product."
-          primary={{ label: "WhatsApp us", to: "/contact" }}
+          description="Have a question about a product? Message us directly on WhatsApp."
+          primary={{
+            label: "WhatsApp us",
+            to: "https://wa.me/2349058628386?text=Hello%20Cyber%20Elias%20Academy%21%20I%20have%20a%20question%20about%20a%20shop%20product.",
+          }}
           secondary={{ label: "Read the policies", to: "/refunds" }}
         />
       </Reveal>

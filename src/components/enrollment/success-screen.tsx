@@ -25,6 +25,7 @@ import {
   formatNaira,
 } from "@/lib/api/enrollments";
 import { fetchNextCohort, type Cohort } from "@/lib/api/operations";
+import { isMockMode } from "@/lib/env";
 import { downloadCohortCalendar } from "@/lib/calendar";
 import { BankTransferForm } from "./bank-transfer-form";
 import { ApiError } from "@/lib/errors";
@@ -78,7 +79,13 @@ export function SuccessScreen({
     | { status: "idle" | "loading" }
     | { status: "ready"; cohort: Cohort | null }
     | { status: "unavailable" }
-  >(() => (meta?.kind === "long" ? { status: "loading" } : { status: "idle" }));
+  >(() =>
+    meta?.kind === "long"
+      ? isMockMode
+        ? { status: "ready", cohort: null }
+        : { status: "loading" }
+      : { status: "idle" },
+  );
 
   const { due } = meta ? feeFor(meta, plan) : { due: 0 };
   const deposit =
@@ -102,12 +109,24 @@ export function SuccessScreen({
       setCohortLookup({ status: "idle" });
       return;
     }
+    if (isMockMode) {
+      setCohortLookup({ status: "ready", cohort: null });
+      return;
+    }
 
     let active = true;
     setCohortLookup({ status: "loading" });
     void fetchNextCohort(meta.slug)
       .then(({ cohort }) => {
-        if (active) setCohortLookup({ status: "ready", cohort });
+        if (!active) return;
+        const verifiedCohort =
+          cohort &&
+          cohort.programSlug === meta.slug &&
+          cohort.kind === meta.kind &&
+          cohort.status === "scheduled"
+            ? cohort
+            : null;
+        setCohortLookup({ status: "ready", cohort: verifiedCohort });
       })
       .catch(() => {
         if (active) setCohortLookup({ status: "unavailable" });
@@ -184,13 +203,13 @@ export function SuccessScreen({
           <PartyPopper className="size-7" />
         </span>
         <h1 className="font-display mt-5 text-2xl font-extrabold sm:text-3xl">
-          You&rsquo;re in — see you soon!
+          Application received
         </h1>
         <p className="text-muted-foreground mx-auto mt-3 max-w-md text-sm leading-relaxed">
-          Your registration for{" "}
-          <strong className="text-foreground">{meta?.title ?? "your course"}</strong> is in. A
-          confirmation email is on its way — and a person will call or WhatsApp you within 24
-          working hours.
+          We have your application for{" "}
+          <strong className="text-foreground">{meta?.title ?? "your course"}</strong>. This is not
+          confirmation of a class date or reserved seat; admissions will confirm course availability
+          and next steps with you.
         </p>
         <div className="bg-muted mx-auto mt-6 inline-flex items-center gap-3 rounded-xl border px-5 py-3">
           <p className="text-muted-foreground text-sm">Your reference</p>
@@ -216,7 +235,11 @@ export function SuccessScreen({
         <CardContent className="p-6">
           <p className="font-display flex items-center gap-2 text-base font-bold">
             <Wallet className="text-primary size-4.5" />
-            {method === "bank-transfer" ? "Pay by bank transfer" : "Pay to confirm your seat"}
+            {method === "bank-transfer" ? "Bank transfer details" : "Payment options"}
+          </p>
+          <p className="text-muted-foreground mt-2 text-xs leading-relaxed">
+            The application reference does not confirm a class date. Admissions will confirm course
+            availability and schedule separately.
           </p>
 
           {payState.status === "checking" && (
@@ -232,7 +255,8 @@ export function SuccessScreen({
                 {payState.amount ? ` — ${formatNaira(payState.amount)}` : ""}
               </p>
               <p className="text-success/90 mt-1 text-xs">
-                Receipt sent to your email. Your seat is held.
+                Receipt sent to your email. Admissions will confirm course availability, your place
+                and start date separately.
               </p>
             </div>
           )}
@@ -313,23 +337,23 @@ export function SuccessScreen({
             {[
               {
                 icon: Mail,
-                title: "Confirmation (instant)",
-                desc: "Email with your reference, fee summary and this payment link. Save your reference — it unlocks everything.",
+                title: "Keep your reference",
+                desc: "Use it to track this application or contact admissions about your course.",
               },
               {
                 icon: MessageCircle,
-                title: "We reach out (within 24 working hours)",
-                desc: "A call or WhatsApp to confirm your dates, answer questions and note anything we should know before day one.",
+                title: "Admissions confirms availability",
+                desc: "A team member will confirm the next available date and answer any questions about the schedule.",
               },
               {
                 icon: Receipt,
-                title: "Seat confirmed on payment",
-                desc: "Pay the deposit (or full fee) — your seat is held and a receipt is sent automatically by email and WhatsApp.",
+                title: "Payment and your place",
+                desc: "Payment is recorded against your application. Your place and start date are confirmed separately by admissions.",
               },
               {
                 icon: CalendarPlus,
-                title: "Welcome pack before day one",
-                desc: "Class schedule, what to bring, room/location details and every class note — published online from week one.",
+                title: "Details before class begins",
+                desc: "Admissions will share the confirmed schedule, what to bring and the room or online-class details.",
               },
             ].map((s, i) => (
               <li key={s.title} className="flex gap-3">

@@ -177,10 +177,22 @@ export function CTASection({
         </div>
         <div className="flex flex-wrap gap-3">
           <Button asChild>
-            <Link to={primary.to as "/apply"}>{primary.label}</Link>
+            {/^(https?:)?\/\//i.test(primary.to) ? (
+              <a href={primary.to} target="_blank" rel="noopener noreferrer">
+                {primary.label}
+              </a>
+            ) : (
+              <Link to={primary.to}>{primary.label}</Link>
+            )}
           </Button>
           <Button asChild variant="outline">
-            <Link to={secondary.to as "/contact"}>{secondary.label}</Link>
+            {/^(https?:)?\/\//i.test(secondary.to) ? (
+              <a href={secondary.to} target="_blank" rel="noopener noreferrer">
+                {secondary.label}
+              </a>
+            ) : (
+              <Link to={secondary.to}>{secondary.label}</Link>
+            )}
           </Button>
         </div>
       </div>

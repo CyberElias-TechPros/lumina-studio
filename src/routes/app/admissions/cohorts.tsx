@@ -20,6 +20,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { QueryState } from "@/components/ui/query-state";
 import { deleteCohort, fetchCohorts, saveCohort, type Cohort } from "@/lib/api/operations";
 import { downloadCohortCalendar } from "@/lib/calendar";
+import { isMockMode } from "@/lib/env";
 import { ApiError } from "@/lib/errors";
 import { cn } from "@/lib/utils";
 
@@ -30,7 +31,7 @@ export const Route = createFileRoute("/app/admissions/cohorts")({
       {
         name: "description",
         content:
-          "Start dates for every programme, with calendar invites. The site and the assistant read these dates.",
+          "Manage course-specific scheduled cohort records. Public start-date displays require a matching course and confirmed scheduled status.",
       },
     ],
   }),
@@ -97,6 +98,9 @@ function CohortsPage() {
   });
 
   const items = query.data?.items ?? [];
+  const courseSpecificScheduled = items.filter(
+    (cohort) => cohort.programSlug.trim() !== "" && cohort.status === "scheduled",
+  );
   const inputClass =
     "border-input bg-background focus-visible:ring-ring w-full rounded-lg border px-3 py-2 text-sm focus-visible:ring-1 focus-visible:outline-none";
 
@@ -105,9 +109,11 @@ function CohortsPage() {
       roleKey="admissions"
       title="Cohorts & start dates"
       subtitle={
-        items.length > 0
-          ? `${items.length} upcoming · the site, the ICS invites and the assistant all read these dates`
-          : "No start dates recorded — the site falls back to the published cohort text"
+        isMockMode
+          ? "Preview data only — mock cohort dates are examples, not confirmed class starts."
+          : courseSpecificScheduled.length > 0
+            ? `${courseSpecificScheduled.length} course-specific scheduled records in this view; matching live records can be shown to applicants.`
+            : "No course-specific scheduled dates are recorded. Add one only after admissions confirms availability."
       }
       actions={
         <Button
@@ -120,6 +126,15 @@ function CohortsPage() {
         </Button>
       }
     >
+      {isMockMode && (
+        <p
+          role="status"
+          className="mb-6 rounded-lg border border-warning/30 bg-warning/5 px-4 py-3 text-sm leading-relaxed"
+        >
+          Preview data only. Synthetic cohort dates are not admissions confirmations and must not be
+          used as public start dates.
+        </p>
+      )}
       <div className="grid gap-6 lg:grid-cols-[1.2fr_1fr]">
         <Card>
           <CardHeader>
@@ -135,7 +150,7 @@ function CohortsPage() {
                 icon: "calendar",
                 title: "No cohorts recorded",
                 description:
-                  "Add the next intake so applicants get the right date and a calendar invite.",
+                  "Add a course-specific scheduled record only after admissions confirms the date; matching applicants can then see it and add it to a calendar.",
               }}
             >
               {(data: { items: Cohort[] }) =>
@@ -335,12 +350,12 @@ function CohortsPage() {
                   changing a date here changes what the next student is told.
                 </li>
                 <li>
-                  • The public <span className="font-mono">/v1/cohorts</span> endpoint and the site
-                  assistant read the same rows.
+                  • The public <span className="font-mono">/v1/cohorts</span> endpoint exposes
+                  scheduled rows; the assistant must not quote static or mock dates.
                 </li>
                 <li>
-                  • Add the short-course rolling intake as a cohort too, so it is visible in one
-                  place.
+                  • Use a course-specific slug and status “scheduled” for a confirmed course date. A
+                  generic rolling-intake row is not a published start date.
                 </li>
               </ul>
             </CardContent>

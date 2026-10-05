@@ -11,7 +11,7 @@ import {
   Timer,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-import { FEE_NOTES, NEXT_COHORTS, WHAT_TO_BRING } from "@/data/academy";
+import { FEE_NOTES, WHAT_TO_BRING } from "@/data/academy";
 import { cn } from "@/lib/utils";
 import { depositFor, durationLabel, feeFor, formatFee, type ProgramMeta } from "./meta";
 
@@ -122,9 +122,8 @@ export function InfoPanel({ meta, plan, timeSlot, mode, scheduleDays }: InfoPane
               </div>
               {usesDeposit && (
                 <p className="text-muted-foreground mt-1 text-xs leading-relaxed">
-                  {meta.kind === "short" ? "50%" : "30%"} deposit ({formatFee(deposit)}) holds your
-                  seat now · balance{" "}
-                  {meta.kind === "short" ? "at mid-course" : "in monthly instalments"}.
+                  {meta.kind === "short" ? "50%" : "30%"} deposit ({formatFee(deposit)}) is payable
+                  now; balance {meta.kind === "short" ? "at mid-course" : "in monthly instalments"}.
                 </p>
               )}
               <ul className="text-muted-foreground mt-2 space-y-1 text-xs leading-relaxed">
@@ -140,7 +139,8 @@ export function InfoPanel({ meta, plan, timeSlot, mode, scheduleDays }: InfoPane
 
         <Section icon={CalendarDays} title="Start dates">
           <p className="text-muted-foreground text-xs leading-relaxed">
-            {meta?.kind === "long" ? NEXT_COHORTS.long : NEXT_COHORTS.short}
+            Dates are course-specific. The schedule step shows a date only when one is published in
+            the cohort register; your preferred date is not a booking.
           </p>
         </Section>
 

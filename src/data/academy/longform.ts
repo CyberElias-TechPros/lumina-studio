@@ -371,13 +371,15 @@ export const shortPaymentPlans: PaymentPlanOption[] = [
   {
     value: "full",
     label: "Pay in full",
-    detail: "100% of the fee before the course starts — seat confirmed same day",
+    detail:
+      "Pay the full fee before the course starts; admissions confirms availability and dates separately.",
     depositPct: null,
   },
   {
     value: "50-50",
     label: "50% now · 50% at mid-course",
-    detail: "Half the fee holds your seat; the rest at week 2 (or the midpoint)",
+    detail:
+      "Pay half now; the balance is due at week 2 (or the midpoint). Admissions confirms availability and dates separately.",
     depositPct: 0.5,
   },
 ];
@@ -386,7 +388,7 @@ export const longPaymentPlans: PaymentPlanOption[] = [
   {
     value: "deposit-monthly",
     label: "30% deposit · monthly balance",
-    detail: "30% holds your seat; the balance in equal monthly instalments",
+    detail: "Pay a 30% deposit; the balance is due in equal monthly instalments.",
     depositPct: 0.3,
   },
   {
@@ -399,8 +401,8 @@ export const longPaymentPlans: PaymentPlanOption[] = [
 
 export const NEXT_COHORTS = {
   short:
-    "Rolling intake — new short courses start within 2 weeks; we confirm exact dates after you apply.",
-  long: "Next cohort starts 2 November 2026 (Mon/Wed/Fri) · next after that: 16 February 2027. One cohort per training.",
+    "No course-specific short-course start date is published yet. Admissions will confirm availability.",
+  long: "A cohort date is confirmed only when it appears in the admissions cohort register. Contact admissions if no date is listed.",
 } as const;
 
 export const WHAT_TO_BRING = [
@@ -413,6 +415,6 @@ export const WHAT_TO_BRING = [
 export const FEE_NOTES = [
   "No application fee — applying costs nothing.",
   "Fees cover all class materials and the published class notes.",
-  "Deposit holds your seat for 14 days while admission confirms dates.",
+  "A deposit is recorded against your application; admissions confirms course availability, your place and start date separately.",
   "Deposit is refundable up to 7 days before the start date, and can be transferred once to a friend or the next cohort.",
 ];
