@@ -9,5 +9,5 @@ jobs:
     steps:
       - name: Delete QA newsletter leads
         run: |
-          npx -y wrangler@latest d1 execute cea-db --remote --command "DELETE FROM leads WHERE email IN ('qa-e2e-20261008-news2@example.com','qa-e2e-20261008-news@example.com');"
-          npx -y wrangler@latest d1 execute cea-db --remote --command "SELECT count(*) AS remaining FROM leads WHERE email LIKE 'qa-e2e-%@example.com';"
+          npx -y wrangler@latest d1 execute cea-db --remote --command "DELETE FROM leads WHERE detail LIKE '%qa-e2e-20261008-news%';"
+          npx -y wrangler@latest d1 execute cea-db --remote --command "SELECT count(*) AS remaining FROM leads WHERE detail LIKE '%qa-e2e-%';"
