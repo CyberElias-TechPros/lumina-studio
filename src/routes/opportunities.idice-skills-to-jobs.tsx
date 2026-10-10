@@ -48,6 +48,10 @@ const faqs = [
     a: "No. A CV or portfolio is optional. Upload one if you have it; it can help show your skills.",
   },
   {
+    q: "How do I answer “How did you hear about this programme?”",
+    a: "It is a required question on the form. Choose “Others”, then type CYBER ELIAS ACADEMY in the “If others, please specify” box.",
+  },
+  {
     q: "Is Cyber Elias Academy running this programme?",
     a: "No. We are sharing the opportunity so more young people in the South-South hear about it. The application form and selection are handled through the official iDICE channel. Data on the form is collected by the Bank of Industry and Synergy Prime/Wootlab.",
   },
@@ -152,7 +156,7 @@ const sections = [
   },
   {
     title: "Availability and motivation",
-    body: "Why you want to join, whether you can attend full-time, part-time or weekends only, anything that could stop you attending (transport, money, childcare, health, work, other), and how you heard about the programme.",
+    body: "Why you want to join, whether you can attend full-time, part-time or weekends only, anything that could stop you attending (transport, money, childcare, health, work, other), and how you heard about the programme. For “How did you hear about this programme?” choose Others and type CYBER ELIAS ACADEMY.",
   },
   {
     title: "Consent and declaration",
@@ -312,6 +316,41 @@ function IdiceOpportunity() {
             </div>
           ))}
         </dl>
+      </section>
+
+      {/* Required form answer: how you heard about the programme */}
+      <section className="container-page pt-2">
+        <div
+          role="note"
+          aria-labelledby="heard-about-heading"
+          className="border-primary/40 bg-primary/5 rounded-lg border-2 p-6 md:p-8"
+        >
+          <p className="text-primary text-xs font-semibold tracking-[0.12em] uppercase">
+            Important · required on the form
+          </p>
+          <h2
+            id="heard-about-heading"
+            className="font-display mt-2 text-xl font-semibold tracking-tight sm:text-2xl"
+          >
+            How did you hear about this programme?
+          </h2>
+          <p className="text-muted-foreground mt-3 max-w-3xl text-sm leading-relaxed sm:text-base">
+            This question is marked <strong className="text-foreground">Required</strong> on the
+            application form. When you reach it, answer exactly like this:
+          </p>
+          <ol className="text-foreground mt-4 space-y-2 pl-5 text-sm leading-relaxed list-decimal sm:text-base">
+            <li>
+              Select <strong>Others</strong>.
+            </li>
+            <li>
+              In the box <strong>“If others, please specify”</strong>, type{" "}
+              <strong className="bg-primary/15 rounded px-1.5 py-0.5 font-mono tracking-wide">
+                CYBER ELIAS ACADEMY
+              </strong>
+              .
+            </li>
+          </ol>
+        </div>
       </section>
 
       {/* Eligibility */}

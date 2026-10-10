@@ -9,7 +9,6 @@ const columns = [
     title: "Courses",
     links: [
       { label: "All courses", to: "/classes" },
-      { label: "Find your starting course", to: "/classes#course-finder" },
       { label: "Microsoft Office", to: "/classes/microsoft-office" },
       { label: "Computer Basics", to: "/classes/computer-basics-typing" },
       { label: "Graphic Design", to: "/classes/graphic-design" },
@@ -17,21 +16,22 @@ const columns = [
     ],
   },
   {
-    title: "Academy",
+    title: "Study with us",
     links: [
-      { label: "Notes", to: "/blog" },
-      { label: "Editorial approach", to: "/editorial" },
-      { label: "Digital services", to: "/services" },
-      { label: "Partnerships", to: "/partners" },
-      { label: "Request a project", to: "/request-project" },
-      { label: "About", to: "/about" },
       { label: "Admissions", to: "/admissions" },
       { label: "Apply", to: "/apply" },
-      { label: "iDICE Skills-to-Jobs (free)", to: "/opportunities/idice-skills-to-jobs" },
       { label: "Pay fees", to: "/pay" },
-      { label: "FAQ", to: "/faq" },
       { label: "Visit", to: "/visit" },
-      { label: "Team", to: "/team" },
+      { label: "FAQ", to: "/faq" },
+    ],
+  },
+  {
+    title: "Explore",
+    links: [
+      { label: "Notes", to: "/blog" },
+      { label: "Opportunities", to: "/opportunities" },
+      { label: "About", to: "/about" },
+      { label: "Services", to: "/services" },
       { label: "Schools & partners", to: "/schools" },
     ],
   },
@@ -39,10 +39,8 @@ const columns = [
     title: "Shop",
     links: [
       { label: "All products", to: "/shop" },
-      { label: "Refunds policy", to: "/refunds" },
       { label: "Delivery", to: "/shipping" },
-      { label: "Payment", to: "/payment" },
-      { label: "Merchant Center", to: "/merchant" },
+      { label: "Refunds policy", to: "/refunds" },
     ],
   },
   {
@@ -90,7 +88,7 @@ export function SiteFooter() {
               </p>
             </address>
           </div>
-          <div className="grid gap-8 sm:grid-cols-3">
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
             {columns.map((col) => (
               <div key={col.title}>
                 <h2 className="text-foreground text-sm font-semibold">{col.title}</h2>

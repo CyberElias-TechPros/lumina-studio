@@ -2,19 +2,59 @@
 
 import { useEffect, useState } from "react";
 import { Link, useRouterState } from "@/lib/next-compat/router";
-import { Menu, Moon, Sun, X } from "lucide-react";
+import { ChevronDown, Menu, Moon, Sun, X } from "lucide-react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
 
+/** Primary navigation: what most visitors come for. */
 const nav = [
   { label: "Courses", to: "/classes" },
-  { label: "Services", to: "/services" },
   { label: "Shop", to: "/shop" },
   { label: "Notes", to: "/blog" },
   { label: "Admissions", to: "/admissions" },
-  { label: "Schools", to: "/schools" },
   { label: "About", to: "/about" },
-  { label: "Contact", to: "/contact" },
 ] as const;
+
+/** Secondary links, grouped under "More" on desktop and listed after the primary links on mobile. */
+const moreNav = [
+  { label: "Services", to: "/services" },
+  { label: "Schools & partners", to: "/schools" },
+  { label: "Contact", to: "/contact" },
+  { label: "FAQ", to: "/faq" },
+] as const;
+
+/** Free, time-sensitive opportunity: always visible as its own highlighted link. */
+const featured = {
+  label: "iDICE Skills-to-Jobs",
+  tag: "Free",
+  to: "/opportunities/idice-skills-to-jobs",
+} as const;
+
+function FeaturedLink({ className, onClick }: { className?: string; onClick?: () => void }) {
+  return (
+    <Link
+      to={featured.to}
+      onClick={onClick}
+      className={cn(
+        "border-primary/40 bg-primary/5 text-primary hover:bg-primary/10 items-center gap-2 rounded-full border px-3.5 py-1.5 text-sm font-medium whitespace-nowrap transition-colors",
+        // display is set by the caller (desktop pill vs. mobile row)
+        className,
+      )}
+    >
+      <span className="bg-primary size-1.5 rounded-full" aria-hidden="true" />
+      <span className="xl:hidden">iDICE</span>
+      <span className="hidden xl:inline">{featured.label}</span>
+      <span className="bg-primary text-primary-foreground rounded px-1.5 py-px text-[10px] font-semibold tracking-wide uppercase">
+        {featured.tag}
+      </span>
+    </Link>
+  );
+}
 
 export function BrandMark({ className }: { className?: string }) {
   return (
@@ -28,7 +68,7 @@ export function BrandMark({ className }: { className?: string }) {
       </span>
       <span className="leading-tight">
         <span className="font-display block text-[15px] font-semibold tracking-tight">
-          Cyber Elias Academy
+          <span className="whitespace-nowrap">Cyber Elias Academy</span>
         </span>
         <span className="text-muted-foreground block text-[11px]">Port Harcourt</span>
       </span>
@@ -116,13 +156,28 @@ export function SiteHeader() {
               </Link>
             );
           })}
+          <DropdownMenu>
+            <DropdownMenuTrigger className="text-muted-foreground hover:text-foreground data-[state=open]:text-foreground inline-flex items-center gap-1 text-sm transition-colors outline-none">
+              More <ChevronDown className="size-3.5" />
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="min-w-48">
+              {moreNav.map((item) => (
+                <DropdownMenuItem key={item.to} asChild>
+                  <Link to={item.to} className="cursor-pointer">
+                    {item.label}
+                  </Link>
+                </DropdownMenuItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
         </nav>
         <div className="flex items-center gap-2">
+          <FeaturedLink className="hidden lg:inline-flex" />
           <ThemeToggle />
           <Link
             to="/auth/sign-in"
             rel="nofollow"
-            className="text-muted-foreground hover:text-foreground hidden text-sm sm:block"
+            className="text-muted-foreground hover:text-foreground hidden text-sm whitespace-nowrap sm:block"
           >
             Sign in
           </Link>
@@ -151,6 +206,10 @@ export function SiteHeader() {
           aria-label="Site menu"
         >
           <nav className="container-page flex flex-col gap-1 py-4" aria-label="Mobile">
+            <FeaturedLink
+              className="mb-2 flex justify-center py-2.5"
+              onClick={() => setOpen(false)}
+            />
             {nav.map((item) => (
               <Link
                 key={item.to}
@@ -161,13 +220,19 @@ export function SiteHeader() {
                 {item.label}
               </Link>
             ))}
-            <Link
-              to="/faq"
-              onClick={() => setOpen(false)}
-              className="hover:bg-muted rounded-md px-2 py-2.5 text-sm"
-            >
-              FAQ
-            </Link>
+            <p className="text-muted-foreground px-2 pt-4 pb-1 text-xs font-semibold tracking-wide uppercase">
+              More
+            </p>
+            {moreNav.map((item) => (
+              <Link
+                key={item.to}
+                to={item.to}
+                onClick={() => setOpen(false)}
+                className="hover:bg-muted rounded-md px-2 py-2.5 text-sm"
+              >
+                {item.label}
+              </Link>
+            ))}
             <Link
               to="/auth/sign-in"
               rel="nofollow"
