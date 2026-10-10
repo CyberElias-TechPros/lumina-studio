@@ -19,6 +19,7 @@ const staticRoutes = [
   "/classes",
   "/editorial",
   "/faq",
+  "/opportunities/idice-skills-to-jobs",
   "/payment",
   "/privacy",
   "/pay",
