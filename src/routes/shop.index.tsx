@@ -13,6 +13,7 @@ import {
   productPath,
 } from "@/data/digital-products";
 import { getPageHead } from "@/lib/seo";
+import { SITE_URL } from "@/lib/site-url";
 
 export const Route = createFileRoute("/shop/")({
   head: () =>
@@ -29,7 +30,7 @@ export const Route = createFileRoute("/shop/")({
           itemListElement: digitalProducts.map((p, i) => ({
             "@type": "ListItem",
             position: i + 1,
-            url: `https://www.cea.ng${productPath(p.slug)}`,
+            url: `${SITE_URL}${productPath(p.slug)}`,
             name: p.title,
           })),
         },

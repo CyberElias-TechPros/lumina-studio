@@ -9,7 +9,9 @@ export function checkServerRoute(pathname: string, params: Record<string, string
   if (pathname.startsWith("/blog/") && params.slug) {
     const legacyTarget = resolveBlogSlugRedirect(params.slug);
     if (legacyTarget) permanentRedirect(legacyTarget);
-    if (!blogPosts.some((post) => post.slug === params.slug)) permanentRedirect("/blog");
+    // Unknown slugs are a real 404. Redirecting them to /blog is a "soft 404"
+    // to Google and shows up as "Page with redirect" in Search Console.
+    if (!blogPosts.some((post) => post.slug === params.slug)) notFound();
   }
 
   if (pathname.startsWith("/classes/") && params.courseSlug && params.sessionSlug) {

@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/test";
 
 // Pages are relative — playwright.config.ts supplies the baseURL
-// (E2E_BASE_URL, defaulting to https://cea.ng).
+// (E2E_BASE_URL, defaulting to https://www.cea.ng).
 const BASE_URL = "";
 
 const publicPages = [

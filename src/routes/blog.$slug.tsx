@@ -1,7 +1,7 @@
 "use client";
 
 import { createFileRoute } from "@/lib/next-compat/route-definition";
-import { Link, useParams, redirect } from "@/lib/next-compat/router";
+import { Link, notFound, useParams, redirect } from "@/lib/next-compat/router";
 import { ArrowLeft, ArrowRight, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { CTASection, PageShell } from "@/components/marketing/shell";
@@ -11,6 +11,7 @@ import { adjacentNotes, chapterForOrder, relatedNotes } from "@/data/note-chapte
 import { getPageHead } from "@/lib/seo";
 import { readingTimeLabel } from "@/lib/blog-reading-time";
 import { resolveBlogSlugRedirect } from "@/lib/legacy-redirects";
+import { SITE_URL } from "@/lib/site-url";
 
 export const Route = createFileRoute("/blog/$slug")({
   beforeLoad: ({ params }) => {
@@ -19,9 +20,7 @@ export const Route = createFileRoute("/blog/$slug")({
       throw redirect({ to: legacyTarget, replace: true, code: 301 });
     }
     const exists = blogPosts.some((p) => p.slug === params.slug);
-    if (!exists) {
-      throw redirect({ to: "/blog", replace: true, code: 301 });
-    }
+    if (!exists) throw notFound();
   },
   head: ({ params }) => {
     const post = blogPosts.find((p) => p.slug === params.slug) ?? blogPosts[0];
@@ -30,23 +29,23 @@ export const Route = createFileRoute("/blog/$slug")({
       "@type": "Article",
       headline: post.title,
       description: post.excerpt,
-      image: `https://cea.ng${post.cover}`,
+      image: `${SITE_URL}${post.cover}`,
       author: {
         "@type": "Person",
         name: post.author,
         jobTitle: NOTES_AUTHOR.role,
-        image: `https://cea.ng${NOTES_AUTHOR.photo}`,
+        image: `${SITE_URL}${NOTES_AUTHOR.photo}`,
       },
       publisher: {
         "@type": "Organization",
         name: "Cyber Elias Academy",
-        logo: { "@type": "ImageObject", url: "https://cea.ng/icon.svg" },
+        logo: { "@type": "ImageObject", url: `${SITE_URL}/icon.svg` },
       },
-      mainEntityOfPage: `https://cea.ng/blog/${post.slug}`,
+      mainEntityOfPage: `${SITE_URL}/blog/${post.slug}`,
       isPartOf: {
         "@type": "CreativeWorkSeries",
         name: post.series,
-        url: "https://cea.ng/blog",
+        url: `${SITE_URL}/blog`,
       },
     };
     return getPageHead({
@@ -54,7 +53,7 @@ export const Route = createFileRoute("/blog/$slug")({
       description: post.excerpt,
       path: `/blog/${post.slug}`,
       type: "article",
-      image: `https://cea.ng${post.cover}`,
+      image: `${SITE_URL}${post.cover}`,
       structuredData: articleSchema,
     });
   },

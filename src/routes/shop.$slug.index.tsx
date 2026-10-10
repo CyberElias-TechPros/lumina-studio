@@ -25,6 +25,7 @@ import {
   productPath,
 } from "@/data/digital-products";
 import { getPageHead } from "@/lib/seo";
+import { SITE_URL } from "@/lib/site-url";
 
 export const Route = createFileRoute("/shop/$slug/")({
   parseParams: (params) => ({ slug: params.slug }),
@@ -44,14 +45,14 @@ export const Route = createFileRoute("/shop/$slug/")({
       description: p.shortDescription,
       path: productPath(p.slug),
       type: "product",
-      image: `https://www.cea.ng${p.image}`,
+      image: `${SITE_URL}${p.image}`,
       structuredData: [
         {
           "@context": "https://schema.org",
           "@type": "Product",
           name: p.title,
           description: p.longDescription,
-          image: `https://www.cea.ng${p.image}`,
+          image: `${SITE_URL}${p.image}`,
           brand: { "@type": "Brand", name: "Cyber Elias Academy" },
           sku: p.id,
           mpn: p.mpn,
@@ -67,7 +68,7 @@ export const Route = createFileRoute("/shop/$slug/")({
                   ? "https://schema.org/PreOrder"
                   : "https://schema.org/OutOfStock",
             itemCondition: "https://schema.org/NewCondition",
-            url: `https://www.cea.ng${checkoutPath(p.slug)}`,
+            url: `${SITE_URL}${checkoutPath(p.slug)}`,
             seller: { "@type": "Organization", name: "Cyber Elias Academy" },
           },
         },

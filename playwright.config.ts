@@ -9,7 +9,7 @@ export default defineConfig({
   retries: process.env.CI ? 1 : 1,
   reporter: [["list"]],
   use: {
-    baseURL: process.env.E2E_BASE_URL ?? "https://cea.ng",
+    baseURL: process.env.E2E_BASE_URL ?? "https://www.cea.ng",
     trace: "retain-on-failure",
     screenshot: "only-on-failure",
   },

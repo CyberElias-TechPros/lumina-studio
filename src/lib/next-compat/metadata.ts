@@ -2,10 +2,11 @@ import type { Metadata } from "next";
 import { blogPosts } from "@/data/blog";
 import { findCourse, findSession, formatFee } from "@/data/academy";
 import { getDigitalProduct } from "@/data/digital-products";
+import { SITE_URL } from "@/lib/site-url";
 import { routeManifest, normalizeRoutePath, type RouteManifestEntry } from "./routes.gen";
 
 const SITE_NAME = "Cyber Elias Academy";
-const SITE_ORIGIN = "https://cea.ng";
+const SITE_ORIGIN = SITE_URL;
 const DEFAULT_DESCRIPTION =
   "A digital skills training centre in Port Harcourt. Short, practical computer and workplace-digital courses.";
 

@@ -18,6 +18,7 @@ import {
   type ResolvedCourse,
 } from "@/data/academy";
 import { getPageHead } from "@/lib/seo";
+import { SITE_URL } from "@/lib/site-url";
 
 export const Route = createFileRoute("/classes/")({
   head: () => {
@@ -25,7 +26,7 @@ export const Route = createFileRoute("/classes/")({
       "@type": "ListItem",
       position: i + 1,
       name: course.title,
-      url: `https://cea.ng/classes/${course.slug}`,
+      url: `${SITE_URL}/classes/${course.slug}`,
     }));
     return getPageHead({
       title: "Practical Digital Skills Classes — Courses, Fees & Class Notes",

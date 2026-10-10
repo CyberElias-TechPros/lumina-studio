@@ -3,7 +3,8 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
-const SITE_URL = "https://cea.ng";
+// Must match src/lib/site-url.ts. The apex (cea.ng) only redirects to www.
+const SITE_URL = "https://www.cea.ng";
 
 // Current public school pages only. Historic cinematic URLs 301 elsewhere
 // and should not be advertised as live destinations.
@@ -19,6 +20,7 @@ const staticRoutes = [
   "/classes",
   "/editorial",
   "/faq",
+  "/opportunities/idice-skills-to-jobs",
   "/payment",
   "/privacy",
   "/pay",

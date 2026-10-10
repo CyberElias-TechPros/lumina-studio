@@ -325,7 +325,7 @@ function confirmationEmailHtml(input: {
       <li>Admissions confirms course availability, your place and start date before sharing the schedule, what to bring and course notes.</li>
     </ol>
     <p style="margin-top:20px;">
-      <a href="${(globalThis as { APP_URL?: string }).APP_URL ?? "https://cea.ng"}/apply/status/${ref}"
+      <a href="${(globalThis as { APP_URL?: string }).APP_URL ?? "https://www.cea.ng"}/apply/status/${ref}"
          style="background:#ea580c;color:#fff;text-decoration:none;padding:10px 18px;border-radius:8px;font-weight:bold;">
         Track your application</a>
     </p>
@@ -364,7 +364,7 @@ function receiptEmailHtml(input: {
     <p>Hi ${name},</p>
     <p>We received your payment for <strong>${programTitle}</strong>: ${line}</p>
     <p>Your payment is recorded against your application. Admissions will confirm course availability, your place and start date separately; the welcome pack (schedule, what to bring, notes links) follows after that.</p>
-    <p style="font-size:13px;">Keep this for your records, or <a href="https://cea.ng/apply/receipt/${ref}">print the receipt</a>.</p>
+    <p style="font-size:13px;">Keep this for your records, or <a href="https://www.cea.ng/apply/receipt/${ref}">print the receipt</a>.</p>
     <p style="font-size:12px;color:#777;">Cyber Elias Academy · 24/26 Ebony Road, Port Harcourt ·
     <a href="https://wa.me/${ACADEMY_WHATSAPP}">+234 905 862 8386</a></p>
   </div>`;
@@ -636,7 +636,7 @@ enrollments.post("/", async (c) => {
     goal: input.goal ?? "",
     referredBy: input.referredBy ?? "",
     hasLaptop: input.hasLaptop,
-    statusUrl: `${(c.env.APP_URL || "https://cea.ng").replace(/\/+$/, "")}/apply/status/${ref}`,
+    statusUrl: `${(c.env.APP_URL || "https://www.cea.ng").replace(/\/+$/, "")}/apply/status/${ref}`,
   });
 
   // Fire-and-forget confirmation email (console provider in dev).
@@ -745,7 +745,7 @@ enrollments.post("/:ref/payments", async (c) => {
   // `enrollment` is our own param (Paystack only appends `reference`, which
   // equals the value we initialized with).
   let callbackUrl = "";
-  const appOrigin = new URL(c.env.APP_URL || "https://cea.ng");
+  const appOrigin = new URL(c.env.APP_URL || "https://www.cea.ng");
   const candidate = `${appOrigin.origin}/apply/pay?reference=${reference}&enrollment=${encodeURIComponent(ref)}`;
   if (isTrustedOrigin(appOrigin.origin, c.env)) callbackUrl = candidate;
 

@@ -6,6 +6,7 @@ import { Mail, MapPin } from "lucide-react";
 import { NOTES_AUTHOR } from "@/data/blog";
 import { TEAM, trainersFor } from "@/data/team";
 import { allCourses, flyerCourses, rotatingCourses } from "@/data/academy";
+import { SITE_URL } from "@/lib/site-url";
 
 const courseBySlug = new Map(allCourses.map((c) => [c.slug, c]));
 const categories = [...new Set(allCourses.map((c) => c.category))];
@@ -17,7 +18,7 @@ export const Route = createFileRoute("/team")({
       description:
         "Cyber Elias Academy was founded by Ellis Dennis Graham in Port Harcourt. Meet the founder and trainers: Ellis Dennis Graham, Peter Jonathan-Hart and Rapheal Allison.",
       path: "/team",
-      image: `https://cea.ng${NOTES_AUTHOR.photo}`,
+      image: `${SITE_URL}${NOTES_AUTHOR.photo}`,
     }),
   component: TeamPage,
 });

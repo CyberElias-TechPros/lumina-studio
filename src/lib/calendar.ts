@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/site-url";
 export type CohortCalendarInput = {
   id: string;
   label: string;
@@ -52,10 +53,7 @@ function formatUtcStamp(date: Date): string {
 }
 
 /** Create an iCalendar invite from the actual cohort record shown in the UI. */
-export function createCohortCalendarIcs(
-  cohort: CohortCalendarInput,
-  origin = "https://cea.ng",
-): string {
+export function createCohortCalendarIcs(cohort: CohortCalendarInput, origin = SITE_URL): string {
   const startUtc = new Date(`${cohort.startDate}T00:00:00.000Z`);
   if (
     !/^\d{4}-\d{2}-\d{2}$/.test(cohort.startDate) ||

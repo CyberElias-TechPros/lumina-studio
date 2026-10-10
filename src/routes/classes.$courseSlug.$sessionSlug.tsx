@@ -34,6 +34,7 @@ import {
   resolvedCourses,
 } from "@/data/academy";
 import { getPageHead } from "@/lib/seo";
+import { SITE_URL } from "@/lib/site-url";
 
 export const Route = createFileRoute("/classes/$courseSlug/$sessionSlug")({
   head: ({ params }) => {
@@ -72,14 +73,14 @@ export const Route = createFileRoute("/classes/$courseSlug/$sessionSlug")({
                 provider: {
                   "@type": "EducationalOrganization",
                   name: "Cyber Elias Academy",
-                  sameAs: "https://cea.ng",
+                  sameAs: SITE_URL,
                 },
                 offers: { "@type": "Offer", price: course.fee, priceCurrency: "NGN" },
               },
               provider: {
                 "@type": "EducationalOrganization",
                 name: "Cyber Elias Academy",
-                sameAs: "https://cea.ng",
+                sameAs: SITE_URL,
               },
               timeRequired: `PT${session?.minutes ?? 105}M`,
               about: session?.topics ?? [],
@@ -98,9 +99,9 @@ export const Route = createFileRoute("/classes/$courseSlug/$sessionSlug")({
               publisher: {
                 "@type": "Organization",
                 name: "Cyber Elias Academy",
-                logo: { "@type": "ImageObject", url: "https://cea.ng/icon.svg" },
+                logo: { "@type": "ImageObject", url: `${SITE_URL}/icon.svg` },
               },
-              mainEntityOfPage: `https://cea.ng/classes/${course.slug}/${session?.slug ?? ""}`,
+              mainEntityOfPage: `${SITE_URL}/classes/${course.slug}/${session?.slug ?? ""}`,
               wordCount: lecture ? lectureWordCount(lecture) : undefined,
             },
             {
@@ -111,19 +112,19 @@ export const Route = createFileRoute("/classes/$courseSlug/$sessionSlug")({
                   "@type": "ListItem",
                   position: 1,
                   name: "Classes",
-                  item: "https://cea.ng/classes",
+                  item: `${SITE_URL}/classes`,
                 },
                 {
                   "@type": "ListItem",
                   position: 2,
                   name: course.title,
-                  item: `https://cea.ng/classes/${course.slug}`,
+                  item: `${SITE_URL}/classes/${course.slug}`,
                 },
                 {
                   "@type": "ListItem",
                   position: 3,
                   name: `Session ${session?.number}: ${session?.title}`,
-                  item: `https://cea.ng/classes/${course.slug}/${session?.slug ?? ""}`,
+                  item: `${SITE_URL}/classes/${course.slug}/${session?.slug ?? ""}`,
                 },
               ],
             },

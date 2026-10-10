@@ -1,5 +1,7 @@
 const SITE_NAME = "Cyber Elias Academy";
-const SITE_URL = "https://cea.ng";
+import { SITE_URL } from "@/lib/site-url";
+
+export { SITE_URL };
 const SITE_PHONE = "+234 905 862 8386";
 const SITE_EMAIL = "help@cea.ng";
 const SITE_LOGO = "/icon.svg";
