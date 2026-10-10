@@ -27,6 +27,7 @@ const columns = [
       { label: "About", to: "/about" },
       { label: "Admissions", to: "/admissions" },
       { label: "Apply", to: "/apply" },
+      { label: "Opportunities", to: "/opportunities" },
       { label: "iDICE Skills-to-Jobs (free)", to: "/opportunities/idice-skills-to-jobs" },
       { label: "Pay fees", to: "/pay" },
       { label: "FAQ", to: "/faq" },

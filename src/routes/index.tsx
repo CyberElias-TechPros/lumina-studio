@@ -55,6 +55,26 @@ function Home() {
 
   return (
     <PageShell>
+      <section aria-label="Announcement" className="bg-primary text-primary-foreground">
+        <div className="container-page flex flex-col gap-3 py-4 sm:flex-row sm:items-center sm:justify-between">
+          <p className="text-sm leading-relaxed sm:text-[15px]">
+            <span className="mr-2 inline-block rounded bg-white/20 px-2 py-0.5 text-xs font-semibold tracking-wide uppercase">
+              Free · Opportunity
+            </span>
+            <strong className="font-semibold">
+              iDICE Skills-to-Jobs training for young people in the South-South: applications are
+              open.
+            </strong>
+          </p>
+          <Link
+            to="/opportunities/idice-skills-to-jobs"
+            className="bg-background text-foreground hover:bg-background/90 inline-flex shrink-0 items-center gap-1.5 rounded-md px-3.5 py-2 text-sm font-medium whitespace-nowrap"
+          >
+            How to apply <ArrowRight className="size-4" />
+          </Link>
+        </div>
+      </section>
+
       <section className="border-border border-b">
         <div className="container-page grid gap-10 py-16 md:grid-cols-2 md:items-center md:py-20">
           <div>

@@ -5,6 +5,7 @@ import { Link, notFound, useParams, redirect } from "@/lib/next-compat/router";
 import { ArrowLeft, ArrowRight, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { CTASection, PageShell } from "@/components/marketing/shell";
+import { NoteCard } from "@/components/marketing/note-card";
 import { blogPosts, NOTES_AUTHOR, type BlogBlock } from "@/data/blog";
 import { FounderPhoto } from "@/components/marketing/founder-photo";
 import { adjacentNotes, chapterForOrder, relatedNotes } from "@/data/note-chapters";
@@ -102,57 +103,85 @@ function Article() {
 
   return (
     <PageShell>
-      <article className="container-page max-w-3xl pt-28 pb-16 md:pt-32 md:pb-20">
-        <Link
-          to="/blog"
-          className="text-muted-foreground hover:text-foreground inline-flex items-center gap-1.5 text-sm"
-        >
-          <ArrowLeft className="size-4" /> All notes
-        </Link>
+      <header className="border-border bg-muted/30 border-b pt-10 pb-10 md:pt-14 md:pb-14">
+        <div className="container-page max-w-3xl">
+          <nav aria-label="Breadcrumb" className="text-muted-foreground text-sm">
+            <ol className="flex flex-wrap items-center gap-2">
+              <li>
+                <Link to="/" className="hover:text-foreground">
+                  Home
+                </Link>
+              </li>
+              <li aria-hidden="true">/</li>
+              <li>
+                <Link to="/blog" className="hover:text-foreground">
+                  Notes
+                </Link>
+              </li>
+              {chapter && (
+                <>
+                  <li aria-hidden="true">/</li>
+                  <li>
+                    <Link to={`/blog?chapter=${chapter.slug}`} className="hover:text-foreground">
+                      {chapter.title}
+                    </Link>
+                  </li>
+                </>
+              )}
+            </ol>
+          </nav>
 
-        <p className="text-muted-foreground mt-8 text-xs">
-          {post.series}
-          {chapter && (
-            <>
-              <span className="mx-2">·</span>
-              {chapter.title}
-            </>
-          )}
-          <span className="mx-2">·</span>
-          Lesson {post.order} of {blogPosts.length}
-        </p>
-
-        <h1 className="font-display mt-3 text-3xl font-semibold tracking-tight text-balance sm:text-4xl">
-          {post.title}
-        </h1>
-
-        <div className="text-muted-foreground mt-6 flex flex-wrap items-center gap-4 border-b pb-6 text-sm">
-          <span className="text-foreground flex items-center gap-2.5">
-            <FounderPhoto className="size-10 shrink-0 rounded-full" alt={NOTES_AUTHOR.name} />
-            <span>
-              <span className="block font-medium">{post.author}</span>
-              <span className="text-muted-foreground block text-xs">{NOTES_AUTHOR.role}</span>
+          <div className="mt-6 flex flex-wrap items-center gap-2">
+            <span className="bg-primary text-primary-foreground rounded-full px-3 py-1 text-xs font-semibold">
+              Lesson {post.order} of {blogPosts.length}
             </span>
-          </span>
-          <span className="flex items-center gap-1.5">
-            <Clock className="size-3.5" /> {readingTimeLabel(post.body)}
-          </span>
-        </div>
+            {chapter && (
+              <span className="border-border bg-background text-muted-foreground rounded-full border px-3 py-1 text-xs">
+                {chapter.courseLabel} in class
+              </span>
+            )}
+          </div>
 
-        <figure className="border-border mt-8 overflow-hidden rounded-lg border">
+          <h1 className="font-display mt-5 text-3xl font-semibold tracking-tight text-balance sm:text-4xl md:text-[2.75rem] md:leading-tight">
+            {post.title}
+          </h1>
+          <p className="text-muted-foreground mt-5 text-lg leading-relaxed text-pretty">
+            {post.excerpt}
+          </p>
+
+          <div className="border-border text-muted-foreground mt-8 flex flex-wrap items-center gap-x-6 gap-y-4 border-t pt-6 text-sm">
+            <span className="text-foreground flex items-center gap-3">
+              <FounderPhoto className="size-11 shrink-0 rounded-full" alt={NOTES_AUTHOR.name} />
+              <span>
+                <span className="block font-semibold">{post.author}</span>
+                <span className="text-muted-foreground block text-xs">{NOTES_AUTHOR.role}</span>
+              </span>
+            </span>
+            <span className="flex items-center gap-1.5">
+              <Clock className="size-4" /> {readingTimeLabel(post.body)} read
+            </span>
+            {chapter && (
+              <span className="hidden sm:inline">
+                Chapter: <span className="text-foreground font-medium">{chapter.title}</span>
+              </span>
+            )}
+          </div>
+        </div>
+      </header>
+
+      <article className="container-page max-w-3xl py-12 md:py-16">
+        <figure className="border-border overflow-hidden rounded-xl border shadow-sm">
           <img src={post.cover} alt={post.coverAlt} className="aspect-[16/9] w-full object-cover" />
         </figure>
 
-        <p className="text-muted-foreground mt-8 text-lg leading-relaxed">{post.excerpt}</p>
-
-        <div className="mt-8 space-y-5">
+        <div className="mt-10 space-y-6">
           {post.body.map((block, i) => (
             <Block key={i} block={block} />
           ))}
         </div>
 
-        <aside className="border-border bg-muted/35 mt-10 rounded-lg border p-5">
-          <p className="font-medium">A note about examples</p>
+        <aside className="border-primary/30 bg-primary/5 mt-12 rounded-xl border p-6">
+          <p className="font-semibold">A note about examples</p>
           <p className="text-muted-foreground mt-2 text-sm leading-relaxed">
             Learner stories in these lessons illustrate a teaching point; they are not offered as
             testimonials, placement records or evidence of measured employment or income outcomes.
@@ -173,21 +202,21 @@ function Article() {
         </aside>
 
         <nav
-          aria-label="Next lesson"
-          className="border-border mt-14 grid gap-3 border-t pt-8 sm:grid-cols-2"
+          aria-label="Lesson navigation"
+          className="border-border mt-14 grid gap-4 border-t pt-10 sm:grid-cols-2"
         >
           {prev ? (
             <Link
               to="/blog/$slug"
               params={{ slug: prev.slug }}
-              className="border-border hover:border-primary/40 rounded-lg border p-4"
+              className="group border-border bg-card hover:border-primary/40 flex flex-col rounded-xl border p-5 transition-colors"
             >
-              <p className="text-muted-foreground flex items-center gap-1.5 text-xs">
-                <ArrowLeft className="size-3.5" /> Previous
-              </p>
-              <p className="font-display mt-2 text-sm font-semibold leading-snug">
+              <span className="text-muted-foreground flex items-center gap-1.5 text-xs font-semibold tracking-wide uppercase">
+                <ArrowLeft className="size-3.5" /> Previous lesson
+              </span>
+              <span className="font-display group-hover:text-primary mt-2 text-base leading-snug font-semibold">
                 Lesson {prev.order}: {prev.title}
-              </p>
+              </span>
             </Link>
           ) : (
             <span />
@@ -196,78 +225,82 @@ function Article() {
             <Link
               to="/blog/$slug"
               params={{ slug: next.slug }}
-              className="border-border hover:border-primary/40 rounded-lg border p-4 sm:text-right"
+              className="group border-border bg-card hover:border-primary/40 flex flex-col rounded-xl border p-5 text-left transition-colors sm:text-right"
             >
-              <p className="text-muted-foreground flex items-center gap-1.5 text-xs sm:justify-end">
-                Next <ArrowRight className="size-3.5" />
-              </p>
-              <p className="font-display mt-2 text-sm font-semibold leading-snug">
+              <span className="text-primary flex items-center gap-1.5 text-xs font-semibold tracking-wide uppercase sm:justify-end">
+                Next lesson <ArrowRight className="size-3.5" />
+              </span>
+              <span className="font-display group-hover:text-primary mt-2 text-base leading-snug font-semibold">
                 Lesson {next.order}: {next.title}
-              </p>
+              </span>
             </Link>
           ) : (
             <Link
               to="/blog"
-              className="border-border hover:border-primary/40 rounded-lg border p-4 sm:text-right"
+              className="group border-border bg-card hover:border-primary/40 flex flex-col rounded-xl border p-5 text-left transition-colors sm:text-right"
             >
-              <p className="text-muted-foreground text-xs">End of the series</p>
-              <p className="font-display mt-2 text-sm font-semibold">All notes</p>
+              <span className="text-muted-foreground text-xs font-semibold tracking-wide uppercase">
+                End of the series
+              </span>
+              <span className="font-display group-hover:text-primary mt-2 text-base font-semibold">
+                Back to all notes
+              </span>
             </Link>
           )}
         </nav>
       </article>
 
       {(related.length > 0 || chapter) && (
-        <section className="border-border bg-muted/40 border-y">
-          <div className="container-page py-12 md:py-16">
+        <section className="border-border bg-muted/40 border-t">
+          <div className="container-page py-14 md:py-16">
             {related.length > 0 && (
               <>
-                <h2 className="font-display text-xl font-semibold">
-                  {chapter ? `Also in ${chapter.title}` : "Related notes"}
-                </h2>
-                <ul className="mt-6 grid gap-4 md:grid-cols-3">
+                <div className="flex flex-wrap items-end justify-between gap-4">
+                  <div>
+                    <p className="text-primary text-xs font-semibold tracking-[0.12em] uppercase">
+                      Keep going
+                    </p>
+                    <h2 className="font-display mt-2 text-2xl font-semibold tracking-tight sm:text-3xl">
+                      {chapter ? `More from ${chapter.title}` : "Related notes"}
+                    </h2>
+                  </div>
+                  {chapter && (
+                    <Link
+                      to={`/blog?chapter=${chapter.slug}`}
+                      className="text-primary text-sm font-semibold hover:underline"
+                    >
+                      Browse the whole chapter →
+                    </Link>
+                  )}
+                </div>
+                <ul className="mt-8 grid gap-6 md:grid-cols-3">
                   {related.map((p) => (
-                    <li key={p.slug}>
-                      <Link
-                        to="/blog/$slug"
-                        params={{ slug: p.slug }}
-                        className="border-border bg-card hover:border-primary/40 block h-full overflow-hidden rounded-lg border"
-                      >
-                        <img src={p.cover} alt="" className="aspect-[16/9] w-full object-cover" />
-                        <div className="p-5">
-                          <p className="text-muted-foreground text-xs">Lesson {p.order}</p>
-                          <h3 className="font-display mt-2 text-base font-semibold leading-snug">
-                            {p.title}
-                          </h3>
-                        </div>
-                      </Link>
+                    <li key={p.slug} className="flex">
+                      <NoteCard post={p} />
                     </li>
                   ))}
                 </ul>
               </>
             )}
             {chapter && (
-              <div className="border-border bg-card mt-8 rounded-lg border p-5 sm:flex sm:items-center sm:justify-between sm:gap-6">
+              <div className="border-border bg-card mt-12 flex flex-col gap-5 rounded-xl border p-6 sm:flex-row sm:items-center sm:justify-between sm:gap-8">
                 <div>
-                  <p className="text-muted-foreground text-xs">Taught in the room</p>
+                  <p className="text-muted-foreground text-xs font-semibold tracking-wide uppercase">
+                    Taught in the room
+                  </p>
                   <p className="font-display mt-1 text-lg font-semibold">{chapter.courseLabel}</p>
                   <p className="text-muted-foreground mt-1 max-w-xl text-sm leading-relaxed">
-                    Same ground, with an instructor and a machine in front of you. Two sessions a
-                    week.
+                    Prefer to learn this with a tutor and a machine in front of you? The course
+                    covers these lessons, two sessions a week.
                   </p>
                 </div>
-                <Button asChild className="mt-4 sm:mt-0">
+                <Button asChild className="shrink-0">
                   <Link to="/classes/$courseSlug" params={{ courseSlug: chapter.courseSlug }}>
                     View {chapter.courseLabel}
                   </Link>
                 </Button>
               </div>
             )}
-            <div className="mt-8">
-              <Button asChild variant="outline">
-                <Link to="/blog">All notes</Link>
-              </Button>
-            </div>
           </div>
         </section>
       )}
