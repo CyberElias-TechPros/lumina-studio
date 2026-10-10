@@ -7,12 +7,20 @@ function blockText(block: BlogBlock | string): string {
   return `${block.alt} ${block.caption}`;
 }
 
+/** Plain text of a note body, used for search and reading time. */
+export function bodyText(body: Array<BlogBlock | string>): string {
+  return body.map(blockText).join(" ");
+}
+
+export function wordCount(body: Array<BlogBlock | string>): number {
+  return bodyText(body).split(/\s+/).filter(Boolean).length;
+}
+
 /** Honest reading time from actual body length (~200 wpm). */
+export function readingMinutes(body: Array<BlogBlock | string>): number {
+  return Math.max(1, Math.round(wordCount(body) / 200));
+}
+
 export function readingTimeLabel(body: Array<BlogBlock | string>): string {
-  const words = body
-    .map(blockText)
-    .join(" ")
-    .split(/\s+/)
-    .filter(Boolean).length;
-  return `${Math.max(1, Math.round(words / 200))} min`;
+  return `${readingMinutes(body)} min`;
 }
