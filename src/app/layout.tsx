@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import "@/styles.css";
 import AppProviders from "./providers";
 import { LOCAL_BUSINESS_LD, ORGANIZATION_LD, WEBSITE_LD } from "@/lib/seo";
+import { SITE_URL } from "@/lib/site-url";
 
 const THEME_SCRIPT = `(function(){try{
   var workspace = /^\\/(app|portal|auth)(\\/|$)/.test(location.pathname);
@@ -14,7 +15,7 @@ const THEME_SCRIPT = `(function(){try{
 } catch (e) {}})();`;
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://cea.ng"),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "Cyber Elias Academy — Practical digital skills training in Port Harcourt",
     template: "%s | Cyber Elias Academy",

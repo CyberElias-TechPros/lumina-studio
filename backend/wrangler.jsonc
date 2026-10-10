@@ -16,7 +16,7 @@
     "APP_ENV": "production",
     "FRONTEND_ORIGINS": "https://cea.ng,https://www.cea.ng,https://cea-os.vercel.app,https://ceanotes.freegameplay.site,https://lumina-studio-alpha-eight.vercel.app",
     "UPLOADS_PRESIGN_URL": "",
-    "APP_URL": "https://cea.ng",
+    "APP_URL": "https://www.cea.ng",
     // Secrets are configured with `wrangler secret put`; do not place them in vars.
     "EMAIL_PROVIDER": "resend",
     "EMAIL_FROM": "Cyber Elias Academy <help@cea.ng>",

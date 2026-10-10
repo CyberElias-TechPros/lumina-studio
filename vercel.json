@@ -129,7 +129,7 @@
     },
     {
       "source": "/blog/starting-tech-career-nigeria-2026",
-      "destination": "/blog/choosing-a-school-or-bootcamp",
+      "destination": "/blog/choosing-where-to-learn-bootcamp",
       "permanent": true
     },
     {
@@ -149,7 +149,7 @@
     },
     {
       "source": "/blog/portfolio-that-gets-you-hired",
-      "destination": "/blog/the-portfolio-that-proves-it",
+      "destination": "/blog/the-portfolio-proof",
       "permanent": true
     },
     {
@@ -159,7 +159,7 @@
     },
     {
       "source": "/blog/react-hooks-explained",
-      "destination": "/blog/the-frontend-developer",
+      "destination": "/blog/frontend-developer-explained",
       "permanent": true
     },
     {
@@ -169,7 +169,7 @@
     },
     {
       "source": "/blog/devops-for-small-teams",
-      "destination": "/blog/the-teams-that-build",
+      "destination": "/blog/agile-and-devops",
       "permanent": true
     },
     {
@@ -179,12 +179,12 @@
     },
     {
       "source": "/blog/digital-marketing-nigerian-business",
-      "destination": "/blog/running-social-media-for-a-business",
+      "destination": "/blog/social-media-manager-behind-posts",
       "permanent": true
     },
     {
       "source": "/blog/mobile-app-development-nigeria",
-      "destination": "/blog/how-to-build-a-mobile-app-in-nigeria",
+      "destination": "/blog/how-to-build-mobile-app-nigeria",
       "permanent": true
     },
     {
@@ -194,7 +194,7 @@
     },
     {
       "source": "/blog/ui-ux-design-african-users",
-      "destination": "/blog/design-that-works-on-cheap-phones",
+      "destination": "/blog/frontend-developer-explained",
       "permanent": true
     },
     {
@@ -209,22 +209,22 @@
     },
     {
       "source": "/blog/building-first-web-portfolio",
-      "destination": "/blog/the-portfolio-that-proves-it",
+      "destination": "/blog/the-portfolio-proof",
       "permanent": true
     },
     {
       "source": "/blog/freelancing-in-tech-from-nigeria",
-      "destination": "/blog/remote-work-from-nigeria",
+      "destination": "/blog/your-first-paid-client",
       "permanent": true
     },
     {
       "source": "/blog/choosing-between-bootcamp-and-university",
-      "destination": "/blog/choosing-a-school-or-bootcamp",
+      "destination": "/blog/choosing-where-to-learn-bootcamp",
       "permanent": true
     },
     {
       "source": "/blog/building-a-soc-on-a-budget",
-      "destination": "/blog/the-soc-in-plain-words",
+      "destination": "/blog/the-soc-room",
       "permanent": true
     },
     {
@@ -239,12 +239,62 @@
     },
     {
       "source": "/blog/tech-imposter-syndrome",
-      "destination": "/blog/on-your-own",
+      "destination": "/blog/learning-in-public",
       "permanent": true
     },
     {
       "source": "/blog/product-management-nigeria",
       "destination": "/classes",
+      "permanent": true
+    },
+    {
+      "source": "/blog/the-portfolio-that-proves-it",
+      "destination": "/blog/the-portfolio-proof",
+      "permanent": true
+    },
+    {
+      "source": "/blog/the-frontend-developer",
+      "destination": "/blog/frontend-developer-explained",
+      "permanent": true
+    },
+    {
+      "source": "/blog/the-teams-that-build",
+      "destination": "/blog/agile-and-devops",
+      "permanent": true
+    },
+    {
+      "source": "/blog/running-social-media-for-a-business",
+      "destination": "/blog/social-media-manager-behind-posts",
+      "permanent": true
+    },
+    {
+      "source": "/blog/how-to-build-a-mobile-app-in-nigeria",
+      "destination": "/blog/how-to-build-mobile-app-nigeria",
+      "permanent": true
+    },
+    {
+      "source": "/blog/design-that-works-on-cheap-phones",
+      "destination": "/blog/frontend-developer-explained",
+      "permanent": true
+    },
+    {
+      "source": "/blog/remote-work-from-nigeria",
+      "destination": "/blog/working-remote-from-here",
+      "permanent": true
+    },
+    {
+      "source": "/blog/choosing-a-school-or-bootcamp",
+      "destination": "/blog/choosing-where-to-learn-bootcamp",
+      "permanent": true
+    },
+    {
+      "source": "/blog/the-soc-in-plain-words",
+      "destination": "/blog/the-soc-room",
+      "permanent": true
+    },
+    {
+      "source": "/blog/on-your-own",
+      "destination": "/blog/learning-in-public",
       "permanent": true
     }
   ],

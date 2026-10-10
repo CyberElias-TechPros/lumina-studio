@@ -13,6 +13,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { CTASection, PageHero, PageShell, SectionHeading } from "@/components/marketing/shell";
 import { getPageHead } from "@/lib/seo";
+import { SITE_URL } from "@/lib/site-url";
 
 /** The only place applicants should submit. Never replace with a CEA form. */
 const OFFICIAL_LINK = "https://www.wootlab.ng/idicebpo";
@@ -194,9 +195,9 @@ export const Route = createFileRoute("/opportunities/idice-skills-to-jobs")({
           publisher: {
             "@type": "Organization",
             name: "Cyber Elias Academy",
-            logo: { "@type": "ImageObject", url: "https://cea.ng/icon.svg" },
+            logo: { "@type": "ImageObject", url: `${SITE_URL}/icon.svg` },
           },
-          mainEntityOfPage: "https://cea.ng/opportunities/idice-skills-to-jobs",
+          mainEntityOfPage: `${SITE_URL}/opportunities/idice-skills-to-jobs`,
         },
         {
           "@context": "https://schema.org",

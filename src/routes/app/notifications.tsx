@@ -539,7 +539,7 @@ function SendPushCard() {
               id="push-url"
               value={url}
               onChange={(e) => setUrl(e.target.value)}
-              placeholder="https://cea.ng/app/…"
+              placeholder="https://www.cea.ng/app/…"
             />
           </div>
 

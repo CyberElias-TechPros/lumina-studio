@@ -29,6 +29,7 @@ import {
   resolvedCourses,
 } from "@/data/academy";
 import { getPageHead } from "@/lib/seo";
+import { SITE_URL } from "@/lib/site-url";
 
 export const Route = createFileRoute("/classes/$courseSlug/")({
   head: ({ params }) => {
@@ -37,9 +38,7 @@ export const Route = createFileRoute("/classes/$courseSlug/")({
       title: `${course.title} — ${course.weeks}-Week Practical Course at Cyber Elias Academy`,
       description: `${course.hook} ${formatFee(course.fee)}, ${course.weeks} weeks, ${course.sessions.length} practical sessions with full class notes published for every session.`,
       path: `/classes/${course.slug}`,
-      image: coursePhotoSrc(course.slug)
-        ? `https://cea.ng${coursePhotoSrc(course.slug)}`
-        : undefined,
+      image: coursePhotoSrc(course.slug) ? `${SITE_URL}${coursePhotoSrc(course.slug)}` : undefined,
       structuredData: [
         {
           "@context": "https://schema.org",
@@ -49,7 +48,7 @@ export const Route = createFileRoute("/classes/$courseSlug/")({
           provider: {
             "@type": "EducationalOrganization",
             name: "Cyber Elias Academy",
-            sameAs: "https://cea.ng",
+            sameAs: SITE_URL,
           },
           offers: {
             "@type": "Offer",
@@ -79,12 +78,12 @@ export const Route = createFileRoute("/classes/$courseSlug/")({
           "@context": "https://schema.org",
           "@type": "BreadcrumbList",
           itemListElement: [
-            { "@type": "ListItem", position: 1, name: "Classes", item: "https://cea.ng/classes" },
+            { "@type": "ListItem", position: 1, name: "Classes", item: `${SITE_URL}/classes` },
             {
               "@type": "ListItem",
               position: 2,
               name: course.title,
-              item: `https://cea.ng/classes/${course.slug}`,
+              item: `${SITE_URL}/classes/${course.slug}`,
             },
           ],
         },

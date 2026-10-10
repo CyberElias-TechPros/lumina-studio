@@ -108,6 +108,6 @@ export function hasRealEmail(c: { env: AppEnv }): boolean {
 
 /** Build the absolute magic-link / reset URL for the user. */
 export function appUrl(c: { env: AppEnv }, path: string): string {
-  const base = (c.env.APP_URL || "https://cea.ng").replace(/\/+$/, "");
+  const base = (c.env.APP_URL || "https://www.cea.ng").replace(/\/+$/, "");
   return `${base}${path.startsWith("/") ? path : `/${path}`}`;
 }

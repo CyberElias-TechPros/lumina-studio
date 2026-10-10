@@ -142,7 +142,7 @@ cohorts.get("/:id/ics", async (c) => {
     .bind(c.req.param("id"))
     .first<CohortRow>();
   if (!row) throw ApiError.notFound("No cohort with that id.");
-  const origin = c.env.APP_URL || "https://cea.ng";
+  const origin = c.env.APP_URL || "https://www.cea.ng";
   return new Response(icsForCohort(row, origin), {
     headers: {
       "Content-Type": "text/calendar; charset=utf-8",

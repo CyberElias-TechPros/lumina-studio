@@ -1,5 +1,5 @@
 # Cyber Elias Academy — crawler policy
-# https://cea.ng/robots.txt
+# https://www.cea.ng/robots.txt
 
 User-agent: Googlebot
 Allow: /
@@ -38,4 +38,4 @@ Disallow: /auth/
 Disallow: /portal/
 Disallow: /apply/status
 
-Sitemap: https://cea.ng/sitemap.xml
+Sitemap: https://www.cea.ng/sitemap.xml
