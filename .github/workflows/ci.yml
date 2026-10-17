@@ -49,6 +49,26 @@ jobs:
       - name: Run tests (excluding live-network AI suite)
         run: npx vitest run --exclude test/ai.test.ts
 
+  tuition-browser:
+    name: Isolated tuition UI (mock data, no external writes)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: npm run build
+        env:
+          NEXT_PUBLIC_ENABLE_MOCKS: "true"
+      - run: npx playwright test e2e/tuition.spec.ts e2e/private-cache.spec.ts --project=chromium
+        env:
+          E2E_BASE_URL: http://127.0.0.1:3000
+          E2E_API_BASE: http://127.0.0.1:8787
+          E2E_START_SERVER: "true"
+
   ai-live:
     name: Backend AI live-network tests
     runs-on: ubuntu-latest

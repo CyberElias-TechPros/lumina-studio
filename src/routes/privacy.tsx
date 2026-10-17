@@ -17,7 +17,7 @@ export const Route = createFileRoute("/privacy")({
 });
 
 function PrivacyPage() {
-  const lastUpdated = "3 October 2026";
+  const lastUpdated = "17 October 2026";
 
   return (
     <PageShell>
@@ -31,9 +31,8 @@ function PrivacyPage() {
           <Reveal>
             <h2 className="font-display text-2xl font-bold">1. Who we are</h2>
             <p className="text-muted-foreground mt-4 leading-relaxed">
-              Cyber Elias Academy Ltd (“CEA”, “we”) is a digital-skills training centre at 24/26
-              Ebony Road, Off Rumuola Road, Port Harcourt, Rivers State, Nigeria (RC 8413776).
-              Contact:{" "}
+              Cyber Elias Academy Ltd (“CEA”, “we”) is a digital-skills training centre at 24 Ebony
+              Road, Off Rumuola Road, Port Harcourt, Rivers State, Nigeria (RC 8413776). Contact:{" "}
               <a href="mailto:help@cea.ng" className="text-primary underline">
                 help@cea.ng
               </a>{" "}
@@ -219,7 +218,7 @@ function PrivacyPage() {
             <p className="text-muted-foreground mt-4 leading-relaxed">
               Cyber Elias Academy Ltd
               <br />
-              24/26 Ebony Road, Off Rumuola Road
+              24 Ebony Road, Off Rumuola Road
               <br />
               Port Harcourt, Rivers State, Nigeria
               <br />

@@ -151,7 +151,7 @@ function ProposalPage() {
             <div className="border-b pb-5">
               <p className="font-display text-lg font-extrabold">Cyber Elias Academy Ltd</p>
               <p className="text-muted-foreground mt-1 text-xs leading-relaxed">
-                24/26 Ebony Road, off Rumuola Road, Port Harcourt, Rivers State · RC 8413776 · TIN
+                24 Ebony Road, off Rumuola Road, Port Harcourt, Rivers State · RC 8413776 · TIN
                 1086525399
                 <br />
                 help@cea.ng · 0905 862 8386 · cea.ng

@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { createFileRoute } from "@/lib/next-compat/route-definition";
 import { Link } from "@/lib/next-compat/router";
 import { z } from "zod";
@@ -26,6 +26,7 @@ import { SuccessScreen } from "@/components/enrollment/success-screen";
 import { INITIAL_DRAFT, type EnrollmentDraft } from "@/components/enrollment/types";
 import { getProgramMeta } from "@/components/enrollment/meta";
 import { submitEnrollment, type SubmitEnrollmentInput } from "@/lib/api/enrollments";
+import { TUITION_POLICY } from "@/data/academy/tuition-policy";
 import { env } from "@/lib/env";
 import { ApiError } from "@/lib/errors";
 import { cn } from "@/lib/utils";
@@ -49,7 +50,7 @@ export const Route = createFileRoute("/apply/")({
 const STEPS = [
   { key: "course", label: "Course", icon: GraduationCap },
   { key: "schedule", label: "Schedule", icon: CalendarDays },
-  { key: "payment", label: "Payment", icon: ArrowRight },
+  { key: "payment", label: "Fee & plan", icon: ArrowRight },
   { key: "details", label: "About you", icon: UserRound },
   { key: "review", label: "Review & submit", icon: ClipboardCheck },
 ] as const;
@@ -76,6 +77,7 @@ function ApplyPage() {
   const [turnstileToken, setTurnstileToken] = useState("");
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
   const [submitting, setSubmitting] = useState(false);
+  const submissionKey = useRef<string | null>(null);
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [done, setDone] = useState<{ ref: string } | null>(null);
 
@@ -150,7 +152,10 @@ function ApplyPage() {
     if (!meta) return;
     setSubmitting(true);
     setSubmitError(null);
+    submissionKey.current ??= crypto.randomUUID();
     const input: SubmitEnrollmentInput = {
+      submissionKey: submissionKey.current,
+      policyVersion: TUITION_POLICY.version,
       programSlug: draft.programSlug,
       scheduleDays: draft.scheduleDays,
       timeSlot: draft.timeSlot,
@@ -181,6 +186,8 @@ function ApplyPage() {
       setDone({ ref: result.enrollment.ref });
       window.scrollTo({ top: 0 });
     } catch (err) {
+      if (err instanceof ApiError && err.code === "SUBMISSION_CHANGED")
+        submissionKey.current = null;
       setSubmitError(
         err instanceof ApiError
           ? err.fieldErrors && Object.keys(err.fieldErrors).length > 0
@@ -214,7 +221,7 @@ function ApplyPage() {
       <PageHero
         eyebrow="Admissions"
         title="Register for a course"
-        description="Apply for one of the 13 core flyer short courses. Share your schedule preferences and details, review the fee, then submit. There is no application fee. A start date is shown only when a course-specific scheduled cohort is recorded; otherwise admissions will confirm availability."
+        description="Apply for one of the 13 core flyer short courses. Share your preferences, review the fee and apply for free. No payment is requested until CEA confirms a deliverable timetable, equipment arrangement and place. Unscheduled courses collect interest only."
       />
 
       <section className="container-page pb-20">
@@ -307,7 +314,8 @@ function ApplyPage() {
                 <>
                   <h2 className="font-display text-xl font-bold">The fee, clearly</h2>
                   <p className="text-muted-foreground mt-1 text-sm">
-                    No hidden charges. Pick a plan — you pay on the next screen after submitting.
+                    Choose a preference only. Do not pay until your exact cohort, equipment
+                    arrangement and place are confirmed in an offer.
                   </p>
                   <div className="mt-5">
                     <PaymentStep meta={meta} draft={draft} update={update} />
@@ -382,7 +390,7 @@ function ApplyPage() {
               >
                 Contact us
               </Link>{" "}
-              or visit us at 24/26 Ebony Road.
+              or visit us at 24 Ebony Road.
             </p>
           </div>
 

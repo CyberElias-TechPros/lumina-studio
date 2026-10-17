@@ -1,5 +1,10 @@
 # Cyber Elias Academy — Public Site & Learner App
 
+> **Address correction — 17 October 2026:** The owner confirmed **24 Ebony Road,
+> off Rumuola Road, Port Harcourt** from the utility bills. Some signboards say
+> 26. References to `24/26 Ebony Road` below describe the earlier audit snapshot,
+> not the current official address; use **24** in any new public copy.
+
 ## What is possible, without implementing anything yet
 
 **Date:** 18 September 2026  

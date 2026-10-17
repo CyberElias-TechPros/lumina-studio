@@ -110,9 +110,9 @@ function ShippingPage() {
             <div>
               <h2 className="font-display text-lg font-semibold">Our studio</h2>
               <p className="text-muted-foreground mt-1 text-sm leading-relaxed">
-                24/26 Ebony Road, Off Rumuola Road, Port Harcourt, Rivers State, Nigeria. Open
-                Mon–Sat, 8:00–20:00 WAT. You do not need to visit to buy a digital product — but you
-                are welcome to.
+                24 Ebony Road, Off Rumuola Road, Port Harcourt, Rivers State, Nigeria. Open Mon–Sat,
+                8:00–20:00 WAT. You do not need to visit to buy a digital product — but you are
+                welcome to.
               </p>
             </div>
           </div>

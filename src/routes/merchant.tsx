@@ -36,7 +36,7 @@ const settings: { label: string; value: string; copyable?: boolean; href?: strin
   { label: "Business name", value: "Cyber Elias Academy" },
   {
     label: "Business address",
-    value: "24/26 Ebony Road, Off Rumuola Road, Port Harcourt, Rivers, Nigeria",
+    value: "24 Ebony Road, Off Rumuola Road, Port Harcourt, Rivers, Nigeria",
   },
   { label: "Target country", value: "Nigeria (NG)" },
   { label: "Target currency", value: "Nigerian Naira (NGN)" },

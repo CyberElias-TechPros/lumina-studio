@@ -25,10 +25,14 @@ export function BankTransferForm({
   refCode,
   deposit,
   due,
+  isBalance = false,
+  onReported,
 }: {
   refCode: string;
   deposit: number | null;
   due: number;
+  isBalance?: boolean;
+  onReported?: () => unknown;
 }) {
   const [kind, setKind] = useState<"deposit" | "full">(deposit !== null ? "deposit" : "full");
   const [amount, setAmount] = useState(String(deposit ?? due));
@@ -56,7 +60,7 @@ export function BankTransferForm({
     setMessage("");
     try {
       const result = await reportBankTransfer(refCode, {
-        kind,
+        kind: kind === "full" && isBalance ? "balance" : kind,
         amount: Number(amount),
         senderName,
         bankReference: bankReference || undefined,
@@ -65,6 +69,7 @@ export function BankTransferForm({
       });
       setState("done");
       setMessage(result.message);
+      await onReported?.();
     } catch (err) {
       setState("error");
       setMessage(

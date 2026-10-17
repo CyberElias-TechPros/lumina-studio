@@ -14,6 +14,7 @@ import { getRoleHomePath } from "@/data/rbac";
 export const Route = createFileRoute("/auth/magic-link")({
   validateSearch: z.object({
     token: z.string().optional(),
+    returnTo: z.string().optional(),
   }),
   head: () => ({
     meta: [
@@ -28,7 +29,7 @@ export const Route = createFileRoute("/auth/magic-link")({
 });
 
 function MagicLinkPage() {
-  const { token } = Route.useSearch();
+  const { token, returnTo } = Route.useSearch();
   const navigate = useNavigate();
   const verify = useMagicLinkVerify();
 
@@ -37,6 +38,11 @@ function MagicLinkPage() {
       verify.mutate(token, {
         onSuccess: (result) => {
           if ("mfaRequired" in result) {
+            if (
+              returnTo &&
+              /^\/apply\/(?:status|receipt)\/CEA-[0-9]{4}-[A-Z0-9]{6}$/.test(returnTo)
+            )
+              sessionStorage.setItem("cea_tuition_return", returnTo);
             navigate({ to: "/auth/mfa", search: { email: "" } });
             return;
           }
@@ -47,6 +53,11 @@ function MagicLinkPage() {
               to: "/app/parent/invitation/accept",
               search: { token: pendingInvite },
             });
+          } else if (
+            returnTo &&
+            /^\/apply\/(?:status|receipt)\/CEA-[0-9]{4}-[A-Z0-9]{6}$/.test(returnTo)
+          ) {
+            navigate({ to: returnTo });
           } else {
             navigate({ to: getRoleHomePath(result.user.roleKey) });
           }

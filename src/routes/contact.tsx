@@ -27,7 +27,7 @@ export const Route = createFileRoute("/contact")({
     getPageHead({
       title: "Contact — Cyber Elias Academy",
       description:
-        "Contact Cyber Elias Academy in Port Harcourt: 24/26 Ebony Road, +234 905 862 8386, help@cea.ng.",
+        "Contact Cyber Elias Academy in Port Harcourt: 24 Ebony Road, +234 905 862 8386, help@cea.ng.",
       path: "/contact",
     }),
   component: Contact,
@@ -79,7 +79,7 @@ function Contact() {
           <figure className="border-border overflow-hidden rounded-lg border">
             <CampusImg id="lab-1" className="aspect-[16/10]" />
             <figcaption className="text-muted-foreground px-3 py-2 text-xs">
-              Classroom, 24/26 Ebony Road
+              Classroom, 24 Ebony Road
             </figcaption>
           </figure>
           <div>
@@ -87,7 +87,7 @@ function Contact() {
               <MapPin className="size-4" /> Centre
             </h2>
             <p className="text-muted-foreground mt-2">
-              24/26 Ebony Road, Off Rumuola Road
+              24 Ebony Road, Off Rumuola Road
               <br />
               Port Harcourt, Rivers State, Nigeria
             </p>

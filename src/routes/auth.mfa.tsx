@@ -46,7 +46,16 @@ function MfaPage() {
       return;
     }
     verify.mutate(trimmed, {
-      onSuccess: (session) => navigate({ to: getRoleHomePath(session.user.roleKey) }),
+      onSuccess: (session) => {
+        const back = sessionStorage.getItem("cea_tuition_return");
+        sessionStorage.removeItem("cea_tuition_return");
+        navigate({
+          to:
+            back && /^\/apply\/(?:status|receipt)\/CEA-[0-9]{4}-[A-Z0-9]{6}$/.test(back)
+              ? back
+              : getRoleHomePath(session.user.roleKey),
+        });
+      },
       onError: (err) => {
         setError(
           err instanceof ApiError ? err.message : "We couldn't verify that code. Try again.",

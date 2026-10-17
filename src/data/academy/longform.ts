@@ -1,3 +1,5 @@
+import { TUITION_POLICY } from "./tuition-policy";
+
 /**
  * Long-form trainings — 3 days/week cohort programmes priced at the
  * average Nigerian market rate for part-time (non-immersive) tech
@@ -87,7 +89,7 @@ export const longformPrograms: LongformProgram[] = [
       "Junior network technician",
     ],
     includes: [
-      "3 practical days/week at 24/26 Ebony Road (or online where noted)",
+      "3 practical days/week at 24 Ebony Road (or online where noted)",
       "All class notes published online from week one",
       "Diploma certificate awarded on the documented capstone",
       "Career Engine: CV review, portfolio and employer introductions",
@@ -146,7 +148,7 @@ export const longformPrograms: LongformProgram[] = [
       "Web maintenance & upgrades",
     ],
     includes: [
-      "3 practical days/week at 24/26 Ebony Road (or online where noted)",
+      "3 practical days/week at 24 Ebony Road (or online where noted)",
       "All class notes published online from week one",
       "Professional certificate awarded on the deployed capstone",
       "Career Engine: CV review, portfolio and employer introductions",
@@ -205,7 +207,7 @@ export const longformPrograms: LongformProgram[] = [
       "AI-augmented office professional",
     ],
     includes: [
-      "3 practical days/week at 24/26 Ebony Road (or online where noted)",
+      "3 practical days/week at 24 Ebony Road (or online where noted)",
       "All class notes published online from week one",
       "Certificate awarded on the hosted dashboards and capstone",
       "Career Engine: CV review, portfolio and employer introductions",
@@ -255,7 +257,7 @@ export const longformPrograms: LongformProgram[] = [
       "Compliance assistant",
     ],
     includes: [
-      "3 practical days/week at 24/26 Ebony Road",
+      "3 practical days/week at 24 Ebony Road",
       "All class notes published online from week one",
       "Certificate awarded on the delivered assessment",
       "Career Engine: CV review, portfolio and employer introductions",
@@ -308,7 +310,7 @@ export const longformPrograms: LongformProgram[] = [
       "Small-business digital lead",
     ],
     includes: [
-      "3 practical days/week at 24/26 Ebony Road (or online where noted)",
+      "3 practical days/week at 24 Ebony Road (or online where noted)",
       "All class notes published online from week one",
       "Certificate awarded on the live business results",
       "Career Engine: portfolio review and client-introduction network",
@@ -351,7 +353,7 @@ export const timeSlotOptions: ScheduleOption[] = [
 ];
 
 export const modeOptions: ScheduleOption[] = [
-  { value: "onsite", label: "Onsite", detail: "24/26 Ebony Road, Port Harcourt" },
+  { value: "onsite", label: "Onsite", detail: "24 Ebony Road, Port Harcourt" },
   {
     value: "online",
     label: "Online",
@@ -371,15 +373,14 @@ export const shortPaymentPlans: PaymentPlanOption[] = [
   {
     value: "full",
     label: "Pay in full",
-    detail:
-      "Pay the full fee before the course starts; admissions confirms availability and dates separately.",
+    detail: "Pay only after accepting a confirmed course offer, before the first session.",
     depositPct: null,
   },
   {
     value: "50-50",
-    label: "50% now · 50% at mid-course",
+    label: "50% before class · 50% before the second half",
     detail:
-      "Pay half now; the balance is due at week 2 (or the midpoint). Admissions confirms availability and dates separately.",
+      "After accepting your course offer, pay half before the first session. Your offer gives the exact balance date before the second half.",
     depositPct: 0.5,
   },
 ];
@@ -406,15 +407,15 @@ export const NEXT_COHORTS = {
 } as const;
 
 export const WHAT_TO_BRING = [
-  "A laptop or reliable access to one (Typing & Computer Basics can run entirely on academy machines)",
+  "Confirm your laptop, academy-computer allocation and between-class practice access in your offer; equipment is not reserved by applying",
   "A small notebook for assignments — most practice happens at the machine",
   "Data or an eSIM if you'll need internet between sessions",
   "Arrive 10 minutes before your first session so setup takes two minutes, not twenty",
 ];
 
 export const FEE_NOTES = [
-  "No application fee — applying costs nothing.",
-  "Fees cover all class materials and the published class notes.",
-  "A deposit is recorded against your application; admissions confirms course availability, your place and start date separately.",
-  "Deposit is refundable up to 7 days before the start date, and can be transferred once to a friend or the next cohort.",
+  TUITION_POLICY.application,
+  "The offer lists all compulsory costs, equipment and practice arrangements before payment. Free published notes remain available without paying tuition.",
+  TUITION_POLICY.payment,
+  TUITION_POLICY.refundSummary,
 ];

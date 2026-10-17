@@ -19,12 +19,23 @@ export async function verifyPaystackTransaction(
   if (!env.PAYSTACK_SECRET_KEY) return null;
   const res = await fetch(
     `https://api.paystack.co/transaction/verify/${encodeURIComponent(reference)}`,
-    { headers: { Authorization: `Bearer ${env.PAYSTACK_SECRET_KEY}` } },
+    {
+      headers: { Authorization: `Bearer ${env.PAYSTACK_SECRET_KEY}` },
+      signal: AbortSignal.timeout(15000),
+    },
   ).catch(() => null);
   if (!res?.ok) return null;
   const payload = (await res.json().catch(() => null)) as {
-    data?: { status?: string; amount?: number };
+    status?: boolean;
+    data?: { status?: string; amount?: number; currency?: string; reference?: string };
   } | null;
-  if (!payload?.data?.status) return null;
+  if (
+    !payload?.data?.status ||
+    payload.status !== true ||
+    payload.data.reference !== reference ||
+    payload.data.currency !== "NGN"
+  )
+    return null;
+  if (!Number.isSafeInteger(payload.data.amount) || Number(payload.data.amount) < 0) return null;
   return { status: payload.data.status, amount: Number(payload.data.amount ?? 0) };
 }

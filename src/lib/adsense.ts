@@ -12,6 +12,9 @@ export function adsAllowedOnPath(pathname: string): boolean {
 
 export function loadAdSense() {
   if (typeof window === "undefined" || !ADSENSE_CLIENT) return;
+  // Off by default: a previously loaded tag can observe later private SPA URLs.
+  // Enable only after a separate tracking/privacy review, not as a launch prerequisite.
+  if (process.env.NEXT_PUBLIC_ENABLE_PUBLIC_TRACKING !== "true") return;
   if (!adsAllowedOnPath(window.location.pathname)) return;
   if (document.querySelector(`script[data-adsense="${ADSENSE_CLIENT}"]`)) return;
   if (document.querySelector(`script[src*="adsbygoogle.js"][src*="${ADSENSE_CLIENT}"]`)) return;

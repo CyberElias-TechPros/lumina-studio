@@ -78,6 +78,9 @@ export interface Cohort {
   capacity: number | null;
   notes: string | null;
   status: "scheduled" | "running" | "completed" | "cancelled";
+  enrollmentOpen?: boolean;
+  startTime?: string | null;
+  sessionMinutes?: number | null;
 }
 
 export function fetchCohorts(options: { program?: string; includePast?: boolean } = {}) {

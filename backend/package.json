@@ -24,7 +24,8 @@
     "gen:knowledge": "tsx scripts/gen-assistant-knowledge.ts",
     "db:compliance:remove-fabricated:remote": "wrangler d1 execute DB --remote --file seeds/compliance-fabricated-remove.sql",
     "db:seed:government:remote": "wrangler d1 execute DB --remote --file seeds/government-data.sql",
-    "db:seed:cohorts:remote": "wrangler d1 execute DB --remote --file seeds/cohorts-data.sql"
+    "db:seed:cohorts:remote": "wrangler d1 execute DB --remote --file seeds/cohorts-data.sql",
+    "gen:tuition": "tsx scripts/gen-tuition.ts"
   },
   "dependencies": {
     "drizzle-orm": "^0.45.2",

@@ -1,6 +1,9 @@
 import vercel from "./vercel.json" with { type: "json" };
 
-const privateRobotsHeader = [{ key: "X-Robots-Tag", value: "noindex, nofollow" }];
+const privateRobotsHeader = [
+  { key: "X-Robots-Tag", value: "noindex, nofollow" },
+  { key: "Referrer-Policy", value: "no-referrer" },
+];
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -39,6 +42,8 @@ const nextConfig = {
       { source: "/auth/:path*", headers: privateRobotsHeader },
       { source: "/portal", headers: [{ key: "X-Robots-Tag", value: "noindex" }] },
       { source: "/portal/:path*", headers: [{ key: "X-Robots-Tag", value: "noindex" }] },
+      { source: "/apply", headers: privateRobotsHeader },
+      { source: "/apply/:path*", headers: privateRobotsHeader },
       { source: "/apply/status", headers: privateRobotsHeader },
       { source: "/apply/status/:path*", headers: privateRobotsHeader },
       { source: "/partners/apply", headers: privateRobotsHeader },

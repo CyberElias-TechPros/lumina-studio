@@ -17,9 +17,8 @@ import {
 import type { Session, SignInInput, SignUpInput } from "@/lib/schema";
 import { DEFAULT_PERMISSIONS, resolveRoleKey, type CanonicalRoleKey } from "@/data/rbac";
 
-export const sessionKeys = {
-  all: ["session"] as const,
-};
+import { sessionKeys, replacePrivateSession } from "./private-cache";
+export { sessionKeys } from "./private-cache";
 
 /** Loads the current session. Null data (never null `data`) = signed out. */
 export function useSession() {
@@ -54,9 +53,7 @@ export function useSignIn() {
   return useMutation({
     mutationFn: (input: SignInInput) => apiSignIn(input),
     onSuccess: (result) => {
-      if ("user" in result) {
-        queryClient.setQueryData(sessionKeys.all, result);
-      }
+      replacePrivateSession(queryClient, result);
     },
   });
 }
@@ -66,7 +63,7 @@ export function useSignUp() {
   return useMutation({
     mutationFn: (input: SignUpInput) => apiSignUp(input),
     onSuccess: (session) => {
-      queryClient.setQueryData(sessionKeys.all, session);
+      replacePrivateSession(queryClient, session);
     },
   });
 }
@@ -77,7 +74,7 @@ export function useMagicLinkVerify() {
   return useMutation({
     mutationFn: (token: string) => apiVerifyMagicLink({ token }),
     onSuccess: (session) => {
-      queryClient.setQueryData(sessionKeys.all, session);
+      replacePrivateSession(queryClient, session);
     },
   });
 }
@@ -87,7 +84,7 @@ export function useSignOut() {
   return useMutation({
     mutationFn: () => apiSignOut(),
     onSuccess: () => {
-      queryClient.removeQueries({ queryKey: sessionKeys.all });
+      replacePrivateSession(queryClient, null);
     },
   });
 }
@@ -122,7 +119,7 @@ export function useMfaVerify() {
   return useMutation({
     mutationFn: (code: string) => apiMfaVerify({ code }),
     onSuccess: (session) => {
-      queryClient.setQueryData(sessionKeys.all, session);
+      replacePrivateSession(queryClient, session);
     },
   });
 }

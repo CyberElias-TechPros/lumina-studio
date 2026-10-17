@@ -77,7 +77,11 @@ export function ReviewStep({ meta, draft, update, errors, onToken }: ReviewStepP
               {draft.preferredStart && <Row label="Preferred start" value={draft.preferredStart} />}
               <Row label="Plan" value={plan.label} />
               <Row
-                label={usesDeposit ? "Pay now (deposit)" : "Pay after submitting"}
+                label={
+                  usesDeposit
+                    ? "Deposit after accepting an offer"
+                    : "Tuition after accepting an offer"
+                }
                 value={
                   <span className="font-display text-base font-extrabold">
                     {formatFee(usesDeposit ? deposit : due)}
@@ -147,9 +151,10 @@ export function ReviewStep({ meta, draft, update, errors, onToken }: ReviewStepP
                 <>
                   I accept the{" "}
                   <a href="/terms" className="text-primary underline-offset-2 hover:underline">
-                    terms of sale
+                    tuition terms
                   </a>{" "}
-                  , including the deposit refund and transfer policy.
+                  , including the refund, attendance and support rules. I will review a confirmed
+                  offer before payment.
                 </>
               ),
             },

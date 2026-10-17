@@ -134,18 +134,18 @@ export const RBAC_RULES: RbacRule[] = [
   { methods: ["GET"], path: "/v1/applications" },
   { methods: ["GET"], path: "/v1/applications/admin", roles: ["admin"] },
   { methods: ["GET"], path: "/v1/applications/admin/stats", roles: ["admin"] },
-  { methods: ["GET"], path: "/v1/applications/:ref", public: true },
+  { methods: ["GET"], path: "/v1/applications/:ref" },
   { methods: ["PATCH"], path: "/v1/applications/:ref", roles: ["admin"] },
 
-  /* Enrollment funnel v2 — public registration, Paystack checkout + webhook,
-     applicant status; admin list/patch for admissions & finance. */
+  /* Protected tuition — free public registration and signed webhook;
+     verified private status/payments; server-authorised owner and finance actions. */
   { methods: ["POST"], path: "/v1/enrollments", public: true },
   { methods: ["POST"], path: "/v1/enrollments/webhook", public: true },
-  { methods: ["POST"], path: "/v1/enrollments/:ref/payments", public: true },
-  /* Bank-transfer proof: public (a student reports their own transfer), then a
+  { methods: ["POST"], path: "/v1/enrollments/:ref/payments" },
+  /* Bank-transfer proof: verified applicant reports their own transfer, then a
      finance/admin review queue. Confirmation runs through markPayment(). */
-  { methods: ["POST"], path: "/v1/enrollments/:ref/payments/transfer", public: true },
-  { methods: ["GET"], path: "/v1/enrollments/:ref/receipt", public: true },
+  { methods: ["POST"], path: "/v1/enrollments/:ref/payments/transfer" },
+  { methods: ["GET"], path: "/v1/enrollments/:ref/receipt" },
   { methods: ["GET"], path: "/v1/enrollments/payment-proofs", roles: ["admin", "finance"] },
   {
     methods: ["POST"],
@@ -157,9 +157,15 @@ export const RBAC_RULES: RbacRule[] = [
     path: "/v1/enrollments/payment-proofs/:id/reject",
     roles: ["admin", "finance"],
   },
-  { methods: ["GET"], path: "/v1/enrollments/:ref/payments/verify", public: true },
+  { methods: ["GET"], path: "/v1/enrollments/:ref/payments/verify" },
   { methods: ["GET"], path: "/v1/enrollments/admin", roles: ["admin", "admissions", "finance"] },
-  { methods: ["GET"], path: "/v1/enrollments/:ref", public: true },
+  { methods: ["GET"], path: "/v1/enrollments/admin/worklist", roles: ["admin"] },
+  { methods: ["GET"], path: "/v1/enrollments/mine" },
+  { methods: ["POST"], path: "/v1/enrollments/:ref/offer", roles: ["admin", "admissions"] },
+  { methods: ["POST"], path: "/v1/enrollments/:ref/offer/accept" },
+  { methods: ["POST"], path: "/v1/enrollments/:ref/activate", roles: ["admin"] },
+  { methods: ["POST"], path: "/v1/enrollments/:ref/balance-extension", roles: ["admin"] },
+  { methods: ["GET"], path: "/v1/enrollments/:ref" },
   { methods: ["PATCH"], path: "/v1/enrollments/:ref", roles: ["admin", "admissions"] },
 
   /* LMS */

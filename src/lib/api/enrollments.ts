@@ -7,6 +7,8 @@ export type EnrollmentStage =
   "submitted" | "screening" | "assessment" | "interview" | "offer" | "enrolled" | "declined";
 
 export interface SubmitEnrollmentInput {
+  submissionKey?: string;
+  policyVersion?: string;
   programSlug: string;
   scheduleDays: "standard" | "mwf" | "tss";
   timeSlot: "morning" | "afternoon" | "evening" | "any";
@@ -67,16 +69,17 @@ export interface EnrollmentPaymentSession {
 /** Public — starts a Paystack session for the deposit or the full fee. */
 export function startEnrollmentPayment(
   ref: string,
-  kind: "deposit" | "full",
+  kind: "deposit" | "full" | "balance",
+  checkoutKey?: string,
 ): Promise<EnrollmentPaymentSession> {
   return apiFetch<EnrollmentPaymentSession>(`/v1/enrollments/${ref}/payments`, {
     method: "POST",
-    body: { kind },
+    body: { kind, checkoutKey },
   });
 }
 
 export interface TransferProofInput {
-  kind: "deposit" | "full";
+  kind: "deposit" | "full" | "balance";
   /** NGN the student says they transferred. */
   amount: number;
   senderName: string;
@@ -129,7 +132,30 @@ export function verifyEnrollmentPayment(
   );
 }
 
+export interface TuitionOffer {
+  status: string;
+  version: number;
+  acceptedVersion: number | null;
+  expiresAt: string | null;
+  balanceDueAt: string | null;
+  equipment: string | null;
+  policyVersion: string | null;
+  cohort: {
+    id: string;
+    label: string;
+    startDate: string;
+    endDate: string | null;
+    days: string;
+    startTime: string | null;
+    mode: string;
+    status: string;
+  } | null;
+}
+
 export interface EnrollmentStatus {
+  checkout?: { allowed: boolean; reason: string };
+  offer?: TuitionOffer;
+  learning?: { active: boolean; url: string | null; reason: string };
   ref: string;
   stage: string;
   programSlug: string;
@@ -245,4 +271,11 @@ export function updateEnrollmentStage(
 
 export function formatNaira(amount: number): string {
   return `₦${amount.toLocaleString("en-NG")}`;
+}
+
+export function acceptTuitionOffer(ref: string, version: number, policyVersion: string) {
+  return apiFetch<{ ok: true }>(`/v1/enrollments/${encodeURIComponent(ref)}/offer/accept`, {
+    method: "POST",
+    body: { version, policyVersion, consent: true },
+  });
 }
