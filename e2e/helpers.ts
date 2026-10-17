@@ -1,3 +1,4 @@
+import { assertIsolatedTestUrl } from "./safety";
 import { test as base, type Page, type APIRequestContext } from "@playwright/test";
 
 export const DEMO_PASSWORD = "Cea-Demo-2026!";
@@ -12,7 +13,7 @@ export const DEMO_USERS = {
   finance: "finance@cea.ng",
 } as const;
 
-export const API_BASE = process.env.E2E_API_BASE ?? "https://cea-api.cyber-e54.workers.dev";
+export const API_BASE = assertIsolatedTestUrl(process.env.E2E_API_BASE ?? "http://127.0.0.1:8787");
 
 export type Role = keyof typeof DEMO_USERS;
 

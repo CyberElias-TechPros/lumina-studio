@@ -661,7 +661,7 @@ export function registerOperationsMocks(): void {
           name: "Cyber Elias Academy Ltd",
           rc: "RC 8413776",
           tin: "TIN 1086525399",
-          address: "24/26 Ebony Road, off Rumuola Road, Port Harcourt",
+          address: "24 Ebony Road, off Rumuola Road, Port Harcourt",
           email: "help@cea.ng",
           phone: "+234 905 862 8386",
         },

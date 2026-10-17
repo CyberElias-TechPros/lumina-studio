@@ -1,6 +1,6 @@
 # Campus photos
 
-These files are photographs of the classroom at 24/26 Ebony Road.
+These files are photographs of the classroom at 24 Ebony Road.
 
 | File        | Shot                                                       |
 | ----------- | ---------------------------------------------------------- |

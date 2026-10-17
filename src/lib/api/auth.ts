@@ -34,7 +34,9 @@ export function signUp(input: SignUpInput): Promise<SignUpResult> {
   });
 }
 
-export function requestMagicLink(input: MagicLinkRequestInput): Promise<{ ok: true }> {
+export function requestMagicLink(
+  input: MagicLinkRequestInput,
+): Promise<{ ok: true; sent?: boolean; devToken?: string }> {
   return apiFetch("/v1/auth/magic-link", { method: "POST", body: input, noRefresh: true });
 }
 

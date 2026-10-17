@@ -136,6 +136,8 @@ describe("cohorts", () => {
     expect(ics).toContain("SUMMARY:Web Development Professional");
     // 17:00 WAT = 16:00 UTC.
     expect(ics).toContain("DTSTART:20261102T160000Z");
+    expect(ics).toContain("LOCATION:24 Ebony Road\\, Off Rumuola Road\\, Port Harcourt");
+    expect(ics).not.toMatch(/(?:24\/26|26) Ebony Road/);
     expect(ics).toContain("END:VCALENDAR");
   });
 

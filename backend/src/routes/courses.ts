@@ -79,11 +79,18 @@ export function buildCourse(
   row: CourseRow,
   pct: number,
   progressByLesson: Map<string, string> | undefined,
+  hasAccess = true,
 ): ApiCourse {
   const modules = JSON.parse(row.modules) as ApiModule[];
   for (const mod of modules) {
     for (const lesson of mod.lessons) {
-      lesson.status = mergeStatus(lesson.status, progressByLesson?.get(lesson.id));
+      const preview = lesson.status === "preview";
+      if (!hasAccess && !preview) delete lesson.body;
+      lesson.status = hasAccess
+        ? (progressByLesson?.get(lesson.id) ?? "preview")
+        : preview
+          ? "preview"
+          : "locked";
     }
   }
   return {
@@ -127,7 +134,12 @@ courses.get("/", async (c) => {
     loadProgressMap(c.env.DB, userId),
   ]);
   const items = rows.results.map((row) =>
-    buildCourse(row, enrollments.get(row.slug) ?? 0, progress.get(row.slug)),
+    buildCourse(
+      row,
+      enrollments.get(row.slug) ?? 0,
+      progress.get(row.slug),
+      enrollments.has(row.slug) || ["admin", "instructor"].includes(c.get("authUser").roleKey),
+    ),
   );
   const result: Paginated<ApiCourse> = paginate(items, total?.n ?? 0, (last) =>
     base64UrlEncode(last.slug),
@@ -184,7 +196,14 @@ courses.get("/:slug", async (c) => {
     loadEnrollmentPct(c.env.DB, userId),
     loadProgressMap(c.env.DB, userId),
   ]);
-  return c.json(buildCourse(row, enrollments.get(row.slug) ?? 0, progress.get(row.slug)));
+  return c.json(
+    buildCourse(
+      row,
+      enrollments.get(row.slug) ?? 0,
+      progress.get(row.slug),
+      enrollments.has(row.slug) || ["admin", "instructor"].includes(c.get("authUser").roleKey),
+    ),
+  );
 });
 
 /** Enroll the caller in a course. Idempotent per (user, course). */
@@ -203,12 +222,9 @@ courses.post("/:slug/enroll", async (c) => {
     .first<{ id: string }>();
   if (existing) throw ApiError.conflict("You are already enrolled in this course.");
 
-  await c.env.DB.prepare(
-    `INSERT INTO enrollments (id, user_id, course_slug, pct, enrolled_at) VALUES (?, ?, ?, 0, ?)`,
-  )
-    .bind(crypto.randomUUID(), user.id, slug, new Date().toISOString())
-    .run();
-  return c.json({ ok: true, enrolled: true, courseSlug: slug }, 201);
+  throw ApiError.forbidden(
+    "Paid course access follows an accepted place and verified payment. Free class notes remain available on /classes.",
+  );
 });
 
 /** Mark a lesson complete — updates progress, enrollment %, and weekly stats. */
@@ -222,6 +238,15 @@ courses.post("/:slug/lessons/:lessonId/complete", async (c) => {
     .bind(slug)
     .first<CourseRow>();
   if (!course) throw ApiError.notFound("Course not found.");
+  const entitlement = await c.env.DB.prepare(
+    "SELECT id FROM enrollments WHERE user_id = ? AND course_slug = ?",
+  )
+    .bind(user.id, slug)
+    .first();
+  if (!entitlement)
+    throw ApiError.forbidden(
+      "You are not enrolled in this course. Free public notes do not require enrolment.",
+    );
   const modules = JSON.parse(course.modules) as ApiModule[];
   const lessonExists = modules.some((m) => m.lessons.some((l) => l.id === lessonId));
   if (!lessonExists) throw ApiError.notFound("Lesson not found in this course.");

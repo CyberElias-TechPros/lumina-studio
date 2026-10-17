@@ -21,12 +21,15 @@ import { PageShell, PageHero, CTASection } from "@/components/marketing/shell";
 import { Reveal, StaggerGroup, StaggerItem } from "@/components/motion";
 import { cn } from "@/lib/utils";
 import { useEnrollmentStatus } from "@/lib/query/enrollments";
-import { BankTransferForm } from "@/components/enrollment/bank-transfer-form";
+import { TuitionStatusCard } from "@/components/enrollment/tuition-status-card";
+import { ApplicantAccess } from "@/components/enrollment/applicant-access";
+import { ApiError } from "@/lib/errors";
 
 export const Route = createFileRoute("/apply/status/$id")({
   head: () => ({
     meta: [
       { title: "Application Status — Cyber Elias Academy" },
+      { name: "robots", content: "noindex, nofollow" },
       {
         name: "description",
         content:
@@ -57,9 +60,12 @@ const STAGE_DESCRIPTIONS: Record<string, string> = {
 
 function statusBadge(status: string) {
   switch (status) {
-    case "offer":
     case "enrolled":
-      return { label: "Offer sent", tone: "bg-success/10 text-success" };
+      return { label: "Learning access active", tone: "bg-success/10 text-success" };
+    case "declined":
+      return { label: "Application closed", tone: "bg-muted text-muted-foreground" };
+    case "offer":
+      return { label: "Review your offer", tone: "bg-primary/10 text-primary" };
     case "interview":
       return { label: "Interview scheduled", tone: "bg-primary/10 text-primary" };
     case "assessment":
@@ -80,7 +86,7 @@ function ApplyStatusDetailPage() {
     ? payment.status === "paid"
       ? { label: "Paid in full", tone: "bg-success/10 text-success" }
       : payment.status === "deposit_paid"
-        ? { label: "Deposit paid", tone: "bg-primary/10 text-primary" }
+        ? { label: "Part-paid", tone: "bg-primary/10 text-primary" }
         : payment.review?.status === "pending_review"
           ? { label: "Transfer under review", tone: "bg-warning/10 text-warning" }
           : payment.status === "failed"
@@ -109,27 +115,31 @@ function ApplyStatusDetailPage() {
             </Reveal>
           )}
 
-          {status.isError && (
-            <Reveal>
-              <Card className="bg-card shadow-soft border">
-                <CardContent className="p-8 text-center">
-                  <span className="bg-error/10 text-error mx-auto grid size-12 place-items-center rounded-full">
-                    <SearchX className="size-6" />
-                  </span>
-                  <p className="font-display mt-4 text-lg font-extrabold">No application found</p>
-                  <p className="text-muted-foreground mx-auto mt-2 max-w-sm text-sm">
-                    {status.error instanceof Error
-                      ? status.error.message
-                      : "We couldn't find an application with that ID."}{" "}
-                    Double-check the reference you were given.
-                  </p>
-                  <Button asChild size="sm" variant="outline" className="mt-5 font-semibold">
-                    <Link to="/apply/status">Track another ID</Link>
-                  </Button>
-                </CardContent>
-              </Card>
-            </Reveal>
-          )}
+          {status.isError &&
+            status.error instanceof ApiError &&
+            [401, 403].includes(status.error.status) && <ApplicantAccess reference={id} />}
+          {status.isError &&
+            !(status.error instanceof ApiError && [401, 403].includes(status.error.status)) && (
+              <Reveal>
+                <Card className="bg-card shadow-soft border">
+                  <CardContent className="p-8 text-center">
+                    <span className="bg-error/10 text-error mx-auto grid size-12 place-items-center rounded-full">
+                      <SearchX className="size-6" />
+                    </span>
+                    <p className="font-display mt-4 text-lg font-extrabold">No application found</p>
+                    <p className="text-muted-foreground mx-auto mt-2 max-w-sm text-sm">
+                      {status.error instanceof Error
+                        ? status.error.message
+                        : "We couldn't find an application with that ID."}{" "}
+                      Double-check the reference you were given.
+                    </p>
+                    <Button asChild size="sm" variant="outline" className="mt-5 font-semibold">
+                      <Link to="/apply/status">Track another ID</Link>
+                    </Button>
+                  </CardContent>
+                </Card>
+              </Reveal>
+            )}
 
           {status.data && (
             <>
@@ -154,66 +164,7 @@ function ApplyStatusDetailPage() {
                 </div>
               </Reveal>
 
-              {payment?.review?.status === "pending_review" && (
-                <Reveal>
-                  <Card className="bg-card border-warning/30 mt-6">
-                    <CardContent className="p-5">
-                      <p className="font-display text-sm font-bold">Transfer under review</p>
-                      <p className="text-muted-foreground mt-1 text-xs">
-                        We&rsquo;ve logged your bank transfer and finance is matching it against the
-                        bank statement — Mon–Sat, 8:00–20:00 WAT. Your receipt goes out by email as
-                        soon as it clears; nothing else is needed from you.
-                      </p>
-                    </CardContent>
-                  </Card>
-                </Reveal>
-              )}
-
-              {payment &&
-                payment.status !== "paid" &&
-                payment.review?.status !== "pending_review" && (
-                  <Reveal>
-                    <Card className="bg-card mt-6 border-primary/30">
-                      <CardContent className="flex flex-wrap items-center justify-between gap-4 p-5">
-                        <div>
-                          <p className="font-display text-sm font-bold">
-                            {payment.paidAmount > 0
-                              ? "Balance due"
-                              : "Pay your deposit or full fee"}
-                          </p>
-                          <p className="text-muted-foreground mt-1 text-xs">
-                            {`₦${payment.amountDue.toLocaleString("en-NG")}`} remaining · quote{" "}
-                            {status.data?.ref} when you pay or write to us.
-                          </p>
-                        </div>
-                        <Button asChild size="sm">
-                          <a
-                            href={`https://wa.me/2349058628386?text=${encodeURIComponent(
-                              `Hello Cyber Elias Academy! I'd like to pay for my registration ${id}.`,
-                            )}`}
-                          >
-                            Pay / ask about payment
-                          </a>
-                        </Button>
-                      </CardContent>
-                      <CardContent className="border-t px-5 pt-4 pb-5">
-                        {/* Report a bank transfer from here too — students often
-                            come back to this page days after applying. */}
-                        <BankTransferForm
-                          refCode={status.data.ref}
-                          deposit={
-                            payment.plan === "50-50"
-                              ? Math.round((payment.amountDue + payment.paidAmount) / 2)
-                              : payment.plan === "deposit-monthly"
-                                ? Math.round((payment.amountDue + payment.paidAmount) * 0.3)
-                                : null
-                          }
-                          due={payment.amountDue + payment.paidAmount}
-                        />
-                      </CardContent>
-                    </Card>
-                  </Reveal>
-                )}
+              <TuitionStatusCard data={status.data} refresh={() => status.refetch()} />
 
               <ol className="mt-8 space-y-0">
                 {status.data.stages.map((s, i) => {
@@ -262,8 +213,7 @@ function ApplyStatusDetailPage() {
                           </p>
                           {s.active && (
                             <p className="text-muted-foreground/80 mt-1.5 flex items-center gap-1.5 text-xs font-semibold">
-                              <Clock3 className="size-3.5" /> Awaiting you — keep an eye on your
-                              inbox
+                              <Clock3 className="size-3.5" /> See your current next action above
                             </p>
                           )}
                         </div>

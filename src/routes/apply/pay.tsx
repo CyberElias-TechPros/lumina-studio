@@ -9,6 +9,8 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { PageShell, PageHero } from "@/components/marketing/shell";
 import { verifyEnrollmentPayment, formatNaira } from "@/lib/api/enrollments";
+import { tuitionPaymentResult } from "@/data/academy/tuition-policy";
+import { ApplicantAccess } from "@/components/enrollment/applicant-access";
 import { ApiError } from "@/lib/errors";
 
 export const Route = createFileRoute("/apply/pay")({
@@ -21,12 +23,16 @@ export const Route = createFileRoute("/apply/pay")({
       })
       .parse(search),
   head: () => ({
-    meta: [{ title: "Payment — Cyber Elias Academy" }],
+    meta: [
+      { title: "Payment — Cyber Elias Academy" },
+      { name: "robots", content: "noindex, nofollow" },
+    ],
   }),
   component: PayReturnPage,
 });
 
 type PayState =
+  | { status: "access" }
   | { status: "loading" }
   | { status: "paid"; amount: number }
   | { status: "deposit"; amount: number }
@@ -52,17 +58,22 @@ function PayReturnPage() {
       try {
         const result = await verifyEnrollmentPayment(enrollment, reference);
         if (cancelled) return;
-        if (result.status === "success" || result.enrollmentPaymentStatus === "paid") {
+        const paymentState = tuitionPaymentResult(result.status, result.enrollmentPaymentStatus);
+        if (paymentState === "paid") {
           setState({ status: "paid", amount: result.amount });
-        } else if (result.enrollmentPaymentStatus === "deposit_paid") {
+        } else if (paymentState === "deposit") {
           setState({ status: "deposit", amount: result.amount });
-        } else if (result.status === "failed") {
+        } else if (paymentState === "failed") {
           setState({ status: "failed" });
         } else {
           setState({ status: "pending" });
         }
       } catch (err) {
         if (cancelled) return;
+        if (err instanceof ApiError && [401, 403].includes(err.status)) {
+          setState({ status: "access" });
+          return;
+        }
         setState({
           status: "error",
           message:
@@ -80,12 +91,20 @@ function PayReturnPage() {
 
   const tracking = enrollment ? `/apply/status/${enrollment}` : "/apply/status";
 
+  if (state.status === "access" && enrollment)
+    return (
+      <PageShell>
+        <section className="container-page max-w-2xl py-12">
+          <ApplicantAccess reference={enrollment} />
+        </section>
+      </PageShell>
+    );
   return (
     <PageShell>
       <PageHero
         eyebrow="Payment"
         title="Checking your payment"
-        description="We confirm with the bank in a few seconds. Keep this page open."
+        description="Only verified transactions count as payment. You can return securely using your application email."
       />
       <section className="container-page pb-20">
         <div className="mx-auto max-w-xl">
@@ -108,9 +127,8 @@ function PayReturnPage() {
                   </span>
                   <p className="font-display mt-5 text-lg font-bold">Payment confirmed</p>
                   <p className="text-muted-foreground mt-2 text-sm leading-relaxed">
-                    We received {formatNaira(state.amount)} for your application. A receipt is on
-                    its way to your email. Admissions will confirm course availability, your place
-                    and start date separately.
+                    We received {formatNaira(state.amount)} for your application. Your secure
+                    application page shows your receipt, remaining balance and learner access.
                   </p>
                 </>
               )}
@@ -120,11 +138,10 @@ function PayReturnPage() {
                   <span className="bg-success/10 text-success mx-auto grid size-14 place-items-center rounded-full">
                     <BadgeCheck className="size-7" />
                   </span>
-                  <p className="font-display mt-5 text-lg font-bold">Deposit confirmed</p>
+                  <p className="font-display mt-5 text-lg font-bold">Partial payment recorded</p>
                   <p className="text-muted-foreground mt-2 text-sm leading-relaxed">
-                    We received your {formatNaira(state.amount)} deposit. Admissions will confirm
-                    course availability, your place and start date separately; the balance plan is
-                    in your confirmation email.
+                    We received {formatNaira(state.amount)} toward your tuition. Your application
+                    page shows your accepted timetable, remaining balance and exact due date.
                   </p>
                 </>
               )}
@@ -156,7 +173,8 @@ function PayReturnPage() {
                   </span>
                   <p className="font-display mt-5 text-lg font-bold">Payment did not go through</p>
                   <p className="text-muted-foreground mt-2 text-sm leading-relaxed">
-                    Nothing was charged to you. You can try again any time from your tracking page.
+                    This attempt was not confirmed. If your bank shows a debit, ask CEA to reconcile
+                    it before paying again. Your earlier confirmed payments remain recorded.
                   </p>
                 </>
               )}

@@ -303,7 +303,7 @@ export const appRoles: AppRole[] = [
       { label: "Backups", icon: <HeartHandshake className="size-4" />, to: "/app/admin/backups" },
       { label: "Logs", icon: <MessageSquare className="size-4" />, to: "/app/admin/logs" },
       {
-        label: "Operations",
+        label: "Academy worklist",
         icon: <Settings className="size-4" />,
         to: "/app/admin/operations",
       },

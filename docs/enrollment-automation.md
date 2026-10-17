@@ -30,7 +30,7 @@ capped at ₦1,500 — see [Paystack pricing](https://support.paystack.com/en/ar
 - **What they leave with** (the deliverable) + certificate verified at `cea.ng/certificates/verify`
 - **What to bring**: laptop (or academy machines for Typing & Computer Basics), notebook, data
 - Delivery promise: every class note published online _before_ they pay
-- Visit/contact: 24/26 Ebony Road, +234 905 862 8386, Mon–Sat 8:00–20:00 WAT
+- Visit/contact: 24 Ebony Road, +234 905 862 8386, Mon–Sat 8:00–20:00 WAT
 - "What happens next" timeline on the success screen (instant email → 24 h contact → pay → welcome pack)
 
 ### The full form — information **collected from the student**

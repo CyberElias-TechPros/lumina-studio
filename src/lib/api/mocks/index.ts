@@ -583,7 +583,7 @@ export function registerAllMocks(): void {
       if (/pay|payment|instal|deposit|transfer/.test(q))
         return "You can pay on the site at cea.ng/apply by card, transfer or USSD, or by direct bank transfer to Cyber Elias Academy Ltd · UBA · 1028649972. Send the receipt on WhatsApp so the team can confirm it. Core short courses can be paid in full or in two instalments. There is no application fee. Ask admissions to confirm availability and next steps for the course you want.";
       if (/where|location|address|port harcourt|directions/.test(q))
-        return "We're at 24/26 Ebony Road, off Rumuola Road, Port Harcourt, Rivers State — open Monday to Saturday, 8am–8pm. Some courses can also be followed online. Would you like to book a visit?";
+        return "We're at 24 Ebony Road, off Rumuola Road, Port Harcourt, Rivers State — open Monday to Saturday, 8am–8pm. Some courses can also be followed online. Would you like to book a visit?";
       if (
         /evening|weekend|night|time|schedule|start date|when.*start|when.*cohort|intake|cohort/.test(
           q,

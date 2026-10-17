@@ -35,14 +35,15 @@ whatCeaProvides:
   MASTER TEMPLATE — rendered per school by POST /v1/proposals
   (see docs/schools-partnership-programme-plan.md §4).
 
+  ADDRESS CONFIRMED by the owner on 17 October 2026:
+   Use "24 Ebony Road, off Rumuola Road, Port Harcourt", matching the utility
+   bills. Some signboards say 26; that is not the official address.
+
   BEFORE SENDING, confirm with Elias:
-   1. ADDRESS — this template uses "24/26 Ebony Road", matching the live site, the
-      FAQ, the receipts and the ICS invite. The earlier proposal drafts say
-      "24 Ebony Road". One is wrong; the school will notice. Fix here first.
-   2. FEES — the fee band below (₦15,000–₦20,000/student/term) is from your
+   1. FEES — the fee band below (₦15,000–₦20,000/student/term) is from your
       proposal and is NOT on the public site; the public courses are ₦20,000–
       ₦60,000. Confirm the school-programme band is current.
-   3. The Director's name, and whether to sign as "Cyber Elias Academy Ltd".
+   2. The Director's name, and whether to sign as "Cyber Elias Academy Ltd".
   Placeholders: {{schoolName}}, {{feePerStudent}}, {{termStart}}, {{termEnd}},
                 {{contactName}}, {{proposalRef}}, {{validUntil}}
 -->

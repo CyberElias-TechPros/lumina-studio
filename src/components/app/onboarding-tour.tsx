@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
 import { ChevronLeft, ChevronRight, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -22,7 +23,7 @@ type TourMeta = {
 };
 
 const DEFAULT_META: TourMeta = {
-  workspace: "your workspace",
+  workspace: "workspace",
   home: "your dashboard",
   secondary: "your main tools",
 };
@@ -42,6 +43,8 @@ function readTourMeta(): TourMeta {
 }
 
 export function OnboardingTour() {
+  const pathname = usePathname();
+  const isWorkspace = /^\/app(?:\/|$)/.test(pathname);
   const [active, setActive] = useState<number | null>(null);
   const [targetRect, setTargetRect] = useState<DOMRect | null>(null);
   const [meta, setMeta] = useState<TourMeta>(DEFAULT_META);
@@ -53,7 +56,7 @@ export function OnboardingTour() {
     () => [
       {
         id: "welcome",
-        title: "Welcome to Lumina Studio",
+        title: "Welcome to CEA",
         description: `This is your ${meta.workspace}. Your role-specific pages and tools are gathered here. This short tour is optional and can be closed at any time.`,
       },
       {
@@ -85,14 +88,14 @@ export function OnboardingTour() {
 
   useEffect(() => {
     if (!toursEnabled || !session || hasSeenTour()) return;
-    if (!window.location.pathname.startsWith("/app")) return;
+    if (!isWorkspace) return;
     const timer = window.setTimeout(() => {
-      if (hasSeenTour() || !window.location.pathname.startsWith("/app")) return;
+      if (hasSeenTour() || !/^\/app(?:\/|$)/.test(window.location.pathname)) return;
       setMeta(readTourMeta());
       setActive(0);
     }, 900);
     return () => window.clearTimeout(timer);
-  }, [session, toursEnabled]);
+  }, [session, toursEnabled, isWorkspace]);
 
   useEffect(() => {
     const isNavigationStep = active === 1 || active === 2;
@@ -189,7 +192,7 @@ export function OnboardingTour() {
     return { left: `${left}px`, top: `${top}px`, transform: "none" };
   }, [targetRect]);
 
-  if (active === null || step === null) return null;
+  if (!isWorkspace || active === null || step === null) return null;
 
   const isLast = active === steps.length - 1;
 

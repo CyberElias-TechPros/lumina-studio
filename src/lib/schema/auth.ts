@@ -37,6 +37,7 @@ export const signUpSchema = z.object({
 export type SignUpInput = z.infer<typeof signUpSchema>;
 
 export const magicLinkRequestSchema = z.object({
+  returnTo: z.string().optional(),
   email: z.string().email("Enter a valid email address."),
   turnstileToken: z.string().optional(),
 });

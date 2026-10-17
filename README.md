@@ -4,10 +4,10 @@
 
 | Layer      | Stack                                                                                              |
 | ---------- | -------------------------------------------------------------------------------------------------- |
-| Frontend   | React 19 · Next.js 15 App Router (SSR/SSG) · Tailwind v4 · shadcn/ui · Motion · TanStack Query         |
+| Frontend   | React 19 · Next.js 15 App Router (SSR/SSG) · Tailwind v4 · shadcn/ui · Motion · TanStack Query     |
 | Backend    | Cloudflare Workers · Hono · Zod                                                                    |
 | Data       | Cloudflare D1 (SQLite) · R2 (uploads) · KV (flags, rate limits) · Durable Objects (realtime rooms) |
-| Deployment | Frontend → Vercel (Next.js) · Backend → Cloudflare Workers (`cea-api.cyber-e54.workers.dev`) |
+| Deployment | Frontend → Vercel (Next.js) · Backend → Cloudflare Workers (`cea-api.cyber-e54.workers.dev`)       |
 
 > The frontend now runs on **Next.js 15 App Router**. The 418 route definitions in `src/routes/` remain the source of truth; `scripts/generate-next-routes.mjs` creates ignored route pages in `src/app/(generated)/` before development, typecheck, and production builds. `src/lib/next-compat/` preserves the existing route/navigation APIs while each page is mounted through an explicit Next route.
 
@@ -142,6 +142,8 @@ Production: **www.cea.ng** (frontend, Vercel) · **cea-api.cyber-e54.workers.dev
 
 ## More documentation
 
+- [CEA solo-founder launch plan](plans/CEA_SOLO_FOUNDER_LAUNCH_PLAN.md) — current small-launch recommendation, modest-pricing cost check, and draft commercial rules awaiting owner approval
+- [CEA audit response and enquiry-to-learning plan](plans/CEA_AUDIT_RESPONSE_2026-10-17.md) — source-checked critique, prioritised release gates, and the course → payment → learner integration roadmap (planning only)
 - `AGENTS.md` — build/quality commands + content-system status
 - `docs/user-flows.md` — the 32 actor journeys
 - `docs/role-gap-matrix.md` — wiring status per role suite (all `/app/**` pages live)
@@ -169,14 +171,14 @@ growth, design, government compliance, and more).
 
 ## Architecture
 
-| Layer                          | Technology                                                                                                          | Hosting                             |
-| ------------------------------ | ------------------------------------------------------------------------------------------------------------------- | ----------------------------------- |
-| Frontend                       | Next.js 15 App Router (React 19, SSR/SSG) + TanStack Query, Tailwind CSS v4, Radix UI components, motion | **Vercel** |
-| Backend API                    | Hono on Cloudflare Workers (`/v1/*`)                                                                                | **Cloudflare Workers**              |
-| Database                       | Cloudflare D1 (SQL migrations + generated seeds)                                                                    | **Cloudflare D1**                   |
-| Cache / config / feature flags | Cloudflare KV (`FLAGS`, `RATE_LIMIT`)                                                                               | Cloudflare                          |
-| Object storage                 | Cloudflare R2 (`UPLOADS`)                                                                                           | Cloudflare                          |
-| Real-time rooms                | Durable Object `RealtimeRoom` (WebSockets)                                                                          | Cloudflare                          |
+| Layer                          | Technology                                                                                               | Hosting                |
+| ------------------------------ | -------------------------------------------------------------------------------------------------------- | ---------------------- |
+| Frontend                       | Next.js 15 App Router (React 19, SSR/SSG) + TanStack Query, Tailwind CSS v4, Radix UI components, motion | **Vercel**             |
+| Backend API                    | Hono on Cloudflare Workers (`/v1/*`)                                                                     | **Cloudflare Workers** |
+| Database                       | Cloudflare D1 (SQL migrations + generated seeds)                                                         | **Cloudflare D1**      |
+| Cache / config / feature flags | Cloudflare KV (`FLAGS`, `RATE_LIMIT`)                                                                    | Cloudflare             |
+| Object storage                 | Cloudflare R2 (`UPLOADS`)                                                                                | Cloudflare             |
+| Real-time rooms                | Durable Object `RealtimeRoom` (WebSockets)                                                               | Cloudflare             |
 
 The frontend never talks to a traditional Node server; it talks to the Worker
 API over HTTPS. All `/v1/*` requests pass a declarative RBAC guard
@@ -272,16 +274,18 @@ frontend (public keys only); backend secrets live in Cloudflare as
 ## CI
 
 `.github/workflows/ci.yml` runs: frontend build, frontend lint (non-blocking),
-backend typecheck, and the full backend Vitest suite.
+backend typecheck, the full backend Vitest suite, and isolated protected-tuition UI/cache tests.
 
 ## Testing
 
 - **Backend:** Workers-runtime integration suites in `backend/test/` — they
   apply all migrations + seeds to an isolated D1 and exercise real HTTP routes
   (auth, RBAC, CRUD per domain, payments, uploads, realtime, push).
-- **E2E:** Playwright specs in `e2e/` exercise the deployed product
-  (`E2E_BASE_URL`, demo accounts from `e2e/helpers.ts`) — run manually against
-  a preview/production deployment.
+- **E2E:** Playwright specs in `e2e/` default to isolated local site/API URLs.
+  Known CEA production targets are rejected. Explicit non-production staging
+  requires `E2E_ALLOW_STAGING=true`; configure both `E2E_BASE_URL` and
+  `E2E_API_BASE`. The tuition UI job uses an explicitly mock-enabled build and
+  blocks external browser requests; financial/authentication tests use isolated D1.
 - **Smoke:** run `npm run dev`, then curl any route — Next.js renders
   pages server-side, so an SSR 200 + clean HTML is a fast sanity check.
 
@@ -292,3 +296,23 @@ backend typecheck, and the full backend Vitest suite.
 - `docs/audit-mock-data-gaps.md` — data-layer architecture and mock inventory
 - `docs/content-style-guide.md`, `docs/competitor-gap-analysis.md` — SEO/content
 - `plans/` — CEA-OS master plan, grand master plan (P1–P3), actor plans
+
+## Protected solo-founder tuition (17 October 2026)
+
+The repository now supports free interest → reviewed short-course offer →
+versioned learner acceptance → verified payment → matching learning access.
+Existing fees are unchanged; no actual cohort or equipment availability has
+been invented. Cohorts default closed.
+
+See **[the owner/release runbook](docs/CEA_PROTECTED_TUITION_RUNBOOK.md)** before
+migrating or opening paid offers. It includes the manual refund/cancellation
+boundary, provider/email testing, legacy-agreement review, physical readiness
+and legal gates. Implementation is not deployment or paid-launch approval.
+
+`0067_protected_tuition.sql` is schema-only.
+`npm run gen:tuition` (from `backend/`) produces the matching additive academy
+curriculum seed; it must be reviewed and applied to the explicitly chosen
+environment separately. Do not use demo seed bundles as a tuition release step.
+
+GA4/AdSense loading is paused by default pending a separate tracking/privacy
+review. Keep `NEXT_PUBLIC_ENABLE_PUBLIC_TRACKING` false/unset.

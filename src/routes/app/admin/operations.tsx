@@ -2,6 +2,7 @@
 
 import { createFileRoute } from "@/lib/next-compat/route-definition";
 import { CheckCircle2, Clock, Loader2, Play, XCircle } from "lucide-react";
+import { OwnerWorklist } from "@/components/enrollment/owner-worklist";
 import { AppShell } from "@/components/app/app-shell";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -47,6 +48,11 @@ const CHECK_LABELS: Record<string, { label: string; hint: string }> = {
 };
 
 const JOBS = [
+  {
+    key: "tuition-follow-up",
+    label: "Retry eligible learner access & tuition emails",
+    when: "Every 15 minutes",
+  },
   { key: "reconcile-payments", label: "Reconcile payments", when: "Every 15 minutes" },
   { key: "enrollment-reminders", label: "Enrollment reminders", when: "Hourly" },
   { key: "assignment-reminders", label: "Assignment reminders", when: "Every 15 min" },
@@ -61,6 +67,7 @@ function OperationsPage() {
   return (
     <AppShell roleKey="admin" title="Operations" subtitle="Integrations · scheduled jobs">
       <div className="grid gap-6">
+        <OwnerWorklist />
         <QueryState<SystemReadiness> query={readiness}>
           {(r) => (
             <Card>
@@ -73,7 +80,9 @@ function OperationsPage() {
                       : "bg-warning/10 text-warning border-0"
                   }
                 >
-                  {r.ready ? "Production ready" : `Missing: ${r.missingRequired.join(", ")}`}
+                  {r.ready
+                    ? "Required integrations configured"
+                    : `Missing: ${r.missingRequired.join(", ")}`}
                 </Badge>
               </CardHeader>
               <CardContent className="grid gap-2 sm:grid-cols-2">
@@ -95,8 +104,9 @@ function OperationsPage() {
                   </div>
                 ))}
                 <p className="text-muted-foreground text-xs sm:col-span-2">
-                  Environment: {r.appEnv} · email provider: {r.emailProvider}. Secret values are
-                  never shown here.
+                  Integration checks are not launch approval. Test payments, email and the first
+                  cohort in staging before opening offers. Environment: {r.appEnv} · email provider:{" "}
+                  {r.emailProvider}. Secret values are never shown here.
                 </p>
               </CardContent>
             </Card>

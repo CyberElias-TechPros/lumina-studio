@@ -17,10 +17,12 @@ import { emailLayout, escapeHtml } from "../lib/email-templates";
 import { verifyPaystackTransaction } from "../lib/paystack";
 import { reportError } from "../lib/monitoring";
 import { markPayment, feeDueFor } from "../routes/enrollments";
+import { activateTuition, deliverTuitionNotifications } from "../lib/tuition";
 import { parseDueText } from "../lib/due-dates";
 import { sendSms, sendUserSms } from "../lib/sms";
 
 export type JobName =
+  | "tuition-follow-up"
   | "reconcile-payments"
   | "enrollment-reminders"
   | "assignment-reminders"
@@ -28,7 +30,7 @@ export type JobName =
   | "cleanup";
 
 export const CRON_SCHEDULE: Record<string, JobName[]> = {
-  "*/15 * * * *": ["reconcile-payments", "assignment-reminders"],
+  "*/15 * * * *": ["reconcile-payments", "tuition-follow-up", "assignment-reminders"],
   "0 * * * *": ["enrollment-reminders"],
   "0 2 * * *": ["compliance-reminders", "cleanup"],
 };
@@ -49,7 +51,7 @@ export async function reconcilePayments(env: AppEnv): Promise<string> {
 
   const regPending = await env.DB.prepare(
     `SELECT reference FROM registration_payments
-      WHERE status = 'pending' AND created_at < ? AND created_at > ?
+      WHERE status = 'pending' AND COALESCE(method, 'paystack') = 'paystack' AND created_at < ? AND created_at > ?
       ORDER BY created_at ASC LIMIT 25`,
   )
     .bind(isoMinutesAgo(15), isoMinutesAgo(60 * 24 * 3))
@@ -125,6 +127,11 @@ export async function enrollmentReminders(env: AppEnv): Promise<string> {
             r.payment_plan, r.paid_amount
        FROM registrations r
       WHERE r.payment_status IN ('unpaid', 'failed') AND r.stage != 'declined'
+        AND r.offer_status = 'held' AND r.offer_expires_at > strftime('%Y-%m-%dT%H:%M:%fZ', 'now')
+        AND r.accepted_offer_version = r.offer_version
+        AND EXISTS (SELECT 1 FROM cohorts c WHERE c.id = r.cohort_id AND c.status = 'scheduled')
+        AND NOT EXISTS (SELECT 1 FROM payment_proofs p WHERE p.registration_ref = r.ref AND p.status = 'pending_review')
+        AND NOT EXISTS (SELECT 1 FROM registration_payments p WHERE p.registration_ref = r.ref AND p.status = 'pending')
         AND r.payment_method = 'paystack'
         AND r.created_at < ? AND r.created_at > ?
         AND NOT EXISTS (SELECT 1 FROM registration_events e
@@ -140,9 +147,9 @@ export async function enrollmentReminders(env: AppEnv): Promise<string> {
       to: r.email,
       subject: `Complete your enrollment — ${r.program_title}`,
       html: emailLayout({
-        heading: "Your seat is waiting",
+        heading: "Your accepted course offer",
         bodyHtml: `<p>Hi ${escapeHtml(r.first_name)},</p>
-<p>You registered for <strong>${escapeHtml(r.program_title)}</strong> (ref ${escapeHtml(r.ref)}) but we haven't received your payment yet. Seats are confirmed in payment order.</p>`,
+<p>You registered for <strong>${escapeHtml(r.program_title)}</strong> (ref ${escapeHtml(r.ref)}) and your accepted offer is still within its hold period. Review its expiry and payment status before paying. If you have already paid, do not send a second payment.</p>`,
         cta: { label: "Complete payment", url: appUrl(ctx, `/apply/status/${r.ref}`) },
         footnote: "Need help or a different payment plan? Reply to this email or WhatsApp us.",
       }),
@@ -164,6 +171,11 @@ export async function enrollmentReminders(env: AppEnv): Promise<string> {
             r.payment_plan, r.paid_amount
        FROM registrations r
       WHERE r.payment_status = 'deposit_paid' AND r.stage != 'declined'
+        AND r.offer_status = 'confirmed' AND r.balance_due_at IS NOT NULL
+        AND r.balance_due_at <= strftime('%Y-%m-%dT%H:%M:%fZ', 'now', '+3 days')
+        AND EXISTS (SELECT 1 FROM cohorts c WHERE c.id = r.cohort_id AND c.status IN ('scheduled', 'running'))
+        AND NOT EXISTS (SELECT 1 FROM payment_proofs p WHERE p.registration_ref = r.ref AND p.status = 'pending_review')
+        AND NOT EXISTS (SELECT 1 FROM registration_payments p WHERE p.registration_ref = r.ref AND p.status = 'pending')
         AND NOT EXISTS (SELECT 1 FROM registration_events e
                          WHERE e.registration_ref = r.ref AND e.event = 'reminder_balance'
                            AND e.at > ?)
@@ -392,6 +404,8 @@ export async function cleanup(env: AppEnv): Promise<string> {
 /* ---------------- runner ---------------- */
 
 const JOBS: Record<JobName, (env: AppEnv) => Promise<string>> = {
+  "tuition-follow-up": async (env) =>
+    `activated ${await activateTuition(env)}; ${await deliverTuitionNotifications(env)}`,
   "reconcile-payments": reconcilePayments,
   "enrollment-reminders": enrollmentReminders,
   "assignment-reminders": (env) => assignmentReminders(env),

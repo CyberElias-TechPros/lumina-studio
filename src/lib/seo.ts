@@ -96,7 +96,7 @@ export const ORGANIZATION_LD = {
   },
   address: {
     "@type": "PostalAddress",
-    streetAddress: "24/26 Ebony Road, Off Rumuola Road",
+    streetAddress: "24 Ebony Road, Off Rumuola Road",
     addressLocality: "Port Harcourt",
     addressRegion: "Rivers State",
     addressCountry: "NG",
@@ -121,7 +121,7 @@ export const LOCAL_BUSINESS_LD = {
   email: SITE_EMAIL,
   address: {
     "@type": "PostalAddress",
-    streetAddress: "24/26 Ebony Road, Off Rumuola Road",
+    streetAddress: "24 Ebony Road, Off Rumuola Road",
     addressLocality: "Port Harcourt",
     addressRegion: "Rivers State",
     addressCountry: "NG",

@@ -6,7 +6,9 @@ import {
   updateEnrollmentStage,
   type AdminEnrollment,
   type EnrollmentStage,
+  type EnrollmentStatus,
 } from "@/lib/api/enrollments";
+import { ApiError } from "@/lib/errors";
 import { fetchApplicationStatus as fetchLegacyStatus } from "@/lib/api/applications";
 
 export const enrollmentKeys = {
@@ -15,6 +17,10 @@ export const enrollmentKeys = {
 };
 
 export interface NormalizedEnrollmentStatus {
+  checkout?: EnrollmentStatus["checkout"];
+  offer?: EnrollmentStatus["offer"];
+  learning?: EnrollmentStatus["learning"];
+  feeDue?: number;
   ref: string;
   status: string;
   programTitle: string | null;
@@ -23,6 +29,9 @@ export interface NormalizedEnrollmentStatus {
   /** Present when the ref belongs to the v2 enrollment funnel. */
   payment?: {
     status: string;
+    depositAmount?: number;
+    reference?: string | null;
+    method?: string;
     amountDue: number;
     paidAmount: number;
     plan: string;
@@ -70,19 +79,27 @@ export function useEnrollmentStatus(ref: string) {
         const e = await fetchEnrollment(ref);
         return {
           ref: e.ref,
+          checkout: e.checkout,
+          offer: e.offer,
+          learning: e.learning,
+          feeDue: e.feeDue,
           status: e.stage,
           programTitle: e.programTitle,
           stages: e.stages,
           updatedAt: e.updatedAt,
           payment: {
             status: e.payment.status,
+            depositAmount: e.payment.depositAmount,
+            reference: e.payment.reference,
+            method: e.payment.method,
             amountDue: e.payment.amountDue,
             paidAmount: e.payment.paidAmount,
             plan: e.payment.plan,
             review: e.payment.review ?? null,
           },
         };
-      } catch {
+      } catch (error) {
+        if (!(error instanceof ApiError) || error.status !== 404) throw error;
         const legacy = await fetchLegacyStatus(ref);
         return {
           ref: legacy.ref,

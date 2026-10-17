@@ -37,6 +37,10 @@ const RESET_TTL_MINUTES = 30;
 const PASSWORD_MIN = 8;
 
 const magicLinkSchema = z.object({
+  returnTo: z
+    .string()
+    .regex(/^\/apply\/(?:status|receipt)\/CEA-[0-9]{4}-[A-Z0-9]{6}$/)
+    .optional(),
   email: z.string().trim().email("Enter a valid email address."),
   turnstileToken: z.string().max(4000).optional(),
 });
@@ -175,7 +179,10 @@ auth.post("/magic-link", async (c) => {
     .bind(crypto.randomUUID(), email, tokenHash, isoNow(), isoInMinutes(MAGIC_LINK_TTL_MINUTES))
     .run();
 
-  const link = appUrl(c, `/auth/magic-link?token=${token}`);
+  const link = appUrl(
+    c,
+    `/auth/magic-link?token=${token}${input.returnTo ? `&returnTo=${encodeURIComponent(input.returnTo)}` : ""}`,
+  );
   const sent = await sendEmail(c, {
     to: email,
     subject: "Your sign-in link for CEA",

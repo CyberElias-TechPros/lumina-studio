@@ -10,6 +10,7 @@
  * Run:  npx tsx backend/scripts/gen-assistant-knowledge.ts
  * Also:  cd backend && npm run gen:knowledge   (after changing course data)
  */
+import { TUITION_POLICY } from "../../src/data/academy/tuition-policy";
 import { mkdirSync, writeFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -22,7 +23,7 @@ const naira = (n: number) => `₦${n.toLocaleString("en-NG")}`;
 /** Fixed facts — verified against the live site and this repo's docs. */
 const FACTS = {
   legalName: "Cyber Elias Academy Ltd (RC 8413776)",
-  address: "24/26 Ebony Road, off Rumuola Road, Port Harcourt, Rivers State",
+  address: "24 Ebony Road, off Rumuola Road, Port Harcourt, Rivers State",
   hours: "Monday–Saturday, 8:00–20:00 WAT",
   phone: "+234 905 862 8386",
   email: "help@cea.ng",
@@ -71,7 +72,12 @@ start date, certificate claim or policy. Fees are in Nigerian Naira.
 ## Contact
 - ${FACTS.legalName}
 - ${FACTS.address}
-- ${FACTS.hours}
+- Premises hours: ${FACTS.hours}; this is not uninterrupted support availability.
+- ${TUITION_POLICY.support}
+- ${TUITION_POLICY.application}
+- ${TUITION_POLICY.payment}
+- ${TUITION_POLICY.refundSummary}
+- Policy details: https://www.cea.ng/terms#tuition
 - Phone / WhatsApp: ${FACTS.phone} (call or WhatsApp)
 - Email: ${FACTS.email} · Website: ${FACTS.website}
 - Certificates are verifiable at cea.ng/certificates/verify. Say what a course

@@ -13,7 +13,6 @@ const staticRoutes = [
   "/about",
   "/accessibility",
   "/admissions",
-  "/apply",
   "/blog",
   "/certificates/verify",
   "/contact",
