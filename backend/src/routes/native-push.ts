@@ -7,6 +7,7 @@ import { sha256Hex } from "../lib/crypto";
 import { ApiError } from "../lib/errors";
 import { parseBody } from "../lib/validate";
 import { rateLimit } from "../lib/rate-limit";
+import { sendNativeInboxHint } from "../lib/native-push";
 
 const registration = z
   .object({
@@ -111,4 +112,17 @@ nativePush.delete("/:id", async (c) => {
     .bind(c.req.param("id"), c.get("authUser").id)
     .run();
   return c.json({ ok: true });
+});
+
+/** A deliberate self-test only. No caller-selected recipient or message content. */
+nativePush.post("/test", async (c) => {
+  // Cookie sessions use SameSite=None in production. Requiring JSON prevents
+  // a cross-origin simple text/form POST from triggering a notification.
+  if (c.req.header("Content-Type")?.split(";")[0]?.trim().toLowerCase() !== "application/json") {
+    throw new ApiError(415, "JSON_REQUIRED", "Use application/json for a phone notification test.");
+  }
+  await parseBody(c, z.object({}).strict());
+  const userId = c.get("authUser").id;
+  await rateLimit(c.env.RATE_LIMIT, "native-push-test", userId, { limit: 3, windowSeconds: 3600 });
+  return c.json(await sendNativeInboxHint(c.env, userId));
 });

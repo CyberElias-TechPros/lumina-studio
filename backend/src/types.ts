@@ -11,6 +11,8 @@ export interface AppEnv {
   REALTIME_ROOMS: DurableObjectNamespace;
   FLAGS: KVNamespace;
   RATE_LIMIT: KVNamespace;
+  /** Server-only secret. Never embed in Android or NEXT_PUBLIC variables. */
+  FCM_SERVICE_ACCOUNT_JSON?: string;
   VAPID_PUBLIC_KEY: string;
   VAPID_PRIVATE_KEY: string;
   EMAIL_PROVIDER: string;

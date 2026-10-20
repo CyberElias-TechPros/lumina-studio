@@ -41,7 +41,8 @@ In-app messaging/notification-centre access remains unchanged. **Enabling the
 phone does not yet enable automatic class, application or private-message alerts.**
 An [account/session-bound device API and additive schema](android-native-device-api.md)
 now exist on this branch. The Android-to-API bridge, automatic token-rotation/
-account-switch synchronization and server FCM sender remain pending. It would be misleading to advertise this as complete
+account-switch synchronization remain pending. A [server FCM sender and self-test](android-fcm-delivery.md)
+now exist on the branch but are not configured or deployed. It would be misleading to advertise this as complete
 native push parity.
 
 The custom service handles data-only messages with fixed generic text and opens

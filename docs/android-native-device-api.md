@@ -40,9 +40,9 @@ existing binding against takeover just by guessing its ID. These routes do not
 cryptographically attest a phone or validate a new token with Google. Do not
 expose any stored token through a listing or diagnostic response.
 
-## Delivery eligibility, not delivery yet
+## Delivery eligibility
 
-`eligibleNativeDevices` is an internal helper for the future sender. It joins the
+`eligibleNativeDevices` is an internal helper used by the [new sender](android-fcm-delivery.md). It joins the
 current session and account at send time, excluding revoked/expired sessions,
 MFA-pending sessions and inactive accounts. Cookie refresh preserves the session
 ID, so it does not orphan the registration. Signing out, password-reset session
@@ -69,9 +69,10 @@ private lesson/payment/message text in a push payload.
    cookies and installation proof out of JavaScript.
 2. Serialize registration updates on sign-in/account switch, foreground resume and
    FCM token rotation; handle offline retries without restoring withdrawn consent.
-3. Add FCM HTTP v1 sending with secure deployment credentials, invalid-token cleanup,
-   bounded retry/backoff and an audited event-trigger path. No send endpoint or
-   automatic broadcast was added in this increment.
+3. Configure the [FCM sender and self-test](android-fcm-delivery.md) through secure
+   deployment settings. HTTP v1 transport and stale-token cleanup are implemented;
+   automatic event integration, queue retries and an audited trigger path remain
+   pending. No automatic broadcast is enabled.
 4. Apply the additive migration and deploy the Worker through the reviewed release
    process, then perform a controlled real-device/account test.
 
