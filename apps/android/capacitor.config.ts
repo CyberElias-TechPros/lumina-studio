@@ -23,6 +23,6 @@ const config: CapacitorConfig = {
     cleartext: false,
     errorPath: "offline.html",
   },
-  android: { allowMixedContent: false },
+  android: { allowMixedContent: false, adjustMarginsForEdgeToEdge: "disable" },
 };
 export default config;

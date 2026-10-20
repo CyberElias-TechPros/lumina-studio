@@ -76,3 +76,18 @@ Reference numbers and phone digits are identifiers, **not authentication**, even
 ## Owner inputs needed before release
 
 Confirm the final package ID/name, staging environment, distribution/store account, signing ownership, product billing treatment, retention/privacy language and support process. Do not commit to dates before the shell's real-device auth/payment spike succeeds. The earlier “days to full parity” estimate was not validated.
+
+## Build continuation (20 October 2026)
+
+Native menu/back/print/share, local 210-lesson reader with search/resume/font size,
+offline Android TTS, strict link policy, configurable staging origin, App Link
+handling and certificate-file generator are now implemented. Signed candidate
+workflow is provided but requires owner-configured signing secrets. See the updated
+`apps/android/README.md` for exact behaviour and outstanding parity gates.
+
+GitHub Actions has successfully compiled a debug APK and passed JVM unit tests
+and Android lint (run 39384978578). The first emulator smoke run failed; do not
+interpret the APK artifact as complete device acceptance. Browser offline-reader
+regression passes without external network requests. Native FCM, blob-download
+parity and authenticated payment/role acceptance remain explicitly unimplemented
+or unverified, rather than being marked complete by route availability.

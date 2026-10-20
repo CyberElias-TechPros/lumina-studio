@@ -1,40 +1,83 @@
-# CEA Android — development shell
+# CEA Android
 
-Status: **prototype, not a release-ready full-parity app**. Shares the hosted CEA website (including role-authorised CEA-OS pages) through Capacitor. The remote URL means local web edits only reach this app after the website is deployed.
+A Capacitor Android application sharing the CEA website and server-authorised CEA-OS workspaces, with native navigation and a separate offline reader. **Development candidate; not yet certified for full production feature parity or Play distribution.**
 
-## Included
+## Implemented
 
-- Capacitor 7 Android project, package `ng.cea.app` (provisional until owner/release approval).
-- CEA launcher/splash artwork derived from the existing `public/icon-512.png`.
-- HTTPS production origin; no wildcard navigation, cleartext traffic or mixed content. No native payment-domain bridge allowlist.
-- Packaged connection-error page with retry and application-status links. This is **not offline lesson storage**.
-- Android backups disabled; signing keys/build outputs excluded from Git.
-- Debug APK + lint GitHub Actions workflow. This workflow has not yet been run in this session.
+- CEA icons/splash; native menu and an always-available Offline lessons button.
+- All 210 public computer lessons bundled at build time: no account or first download needed. Text-only with figure descriptions, search, next lesson, continue-reading, locally marked read state and three font sizes.
+- Native read-aloud using an installed English offline TTS voice. Unavailable voices are explained; playback stops when backgrounded.
+- Reader is an isolated local-only WebView, without a JavaScript/native bridge. Remote requests are blocked; no private course content, accounts or payment data is bundled.
+- Public lesson/course sharing strips query strings/fragments. Private/auth/application URLs are replaced with the public home URL.
+- Save current CEA page as PDF through Android's print dialog, with a private-data warning.
+- Android back navigation and exit confirmation; external HTTPS/mail/phone links are guarded. Arbitrary intent, JavaScript, file and cleartext navigation is blocked.
+- Explicit third-party-cookie support for CEA's cross-origin HttpOnly API sessions. This still needs authenticated staging/device testing.
+- Android App Link intent handling for the configured exact HTTPS host. OS verification needs the real signing fingerprint hosted in assetlinks.json.
+- Local connection-error page directs people to the offline reader without implying that payments or private workspaces work offline.
+- System bar, cutout and keyboard inset handling for native and web content.
+- Debug APK/unit-test/lint CI; Android emulator tests for the packaged offline reader; owner-controlled manual signed APK/AAB workflow.
 
 ## Build
 
-Requires Node 22, Java 21, Android SDK 35 and network access to Google/Maven/Gradle distribution hosts. The current sandbox lacks Java/Android SDK and cannot reach all those hosts.
-
-From repository root:
+Requires Node 22, Java 21, SDK 35 and Google/Maven/Gradle network access.
 
 ```sh
 npm run android:install
 npm run android:sync
-npm run android:open   # Android Studio
-npm run android:build # debug APK, NOT a signed production release
+npm run android:open
+npm run android:build
 ```
 
-Output: `apps/android/android/app/build/outputs/apk/debug/app-debug.apk`.
+`sync` regenerates the public lesson bundle from `src/data/blog.ts`. Generated assets are ignored; do not edit them. No Next.js static export is attempted.
 
-Alternatively, after pushing this branch, run **Android debug APK** in GitHub Actions and download `cea-android-debug`. Do not use real payments or production staff credentials for initial shell tests; provision an isolated staging backend/site and point the configuration at that exact HTTPS origin for acceptance testing.
+Debug output: `apps/android/android/app/build/outputs/apk/debug/app-debug.apk`.
 
-## Release blockers / next phases
+Workflow: **Android debug APK**, on this branch or manual dispatch. Download the `cea-android-debug` artifact from a successful run. A debug signature is for testing, not store release.
 
-- Prove authentication and cookie behaviour with the cross-origin API on physical Android devices. Email/magic-link, external checkout and session return flows need deliberate implementation and testing; browser success does not prove WebView success.
-- Verified Android App Links require the real signing certificate fingerprint and hosted `assetlinks.json`. Neither fake fingerprints nor broad deep-link handlers are shipped.
-- Add native share, controlled external-browser checkout return, receipt/certificate downloads (including blob URLs), offline lesson reader, file/camera handling and FCM notifications.
-- Exercise Android back navigation, offline/reconnect, process death, TalkBack, large font sizes, keyboard, live sessions and every role's representative read/write workflow.
-- Release AAB/signing, store policy/billing review, account deletion and current target SDK requirements are separate release work. No keystore, AAB, store listing or Play approval is included.
-- Selective native learner screens come after the shared experience passes its acceptance gates; no React Native application has been generated yet.
+### Staging and live website dependency
 
-See `docs/android-app-plan-2026-10-20.md` for the phased plan.
+The app normally loads `https://www.cea.ng`. Local web edits do not appear in that hosted surface until deployed. Set the **same exported environment** for sync and Gradle to target an owner-controlled staging origin:
+
+```sh
+export CEA_ANDROID_ORIGIN=https://YOUR-OWN-STAGING-HOST
+npm run android:sync
+npm run android:build
+```
+
+Only HTTPS origins without credentials, paths, queries or fragments are accepted. Native home/navigation checks, App Link host and Capacitor server origin follow this configuration. Do not use real payments or production staff accounts in smoke testing.
+
+## Tests
+
+```sh
+npm run typecheck --prefix apps/android
+npm run android:sync
+npx playwright test e2e/android-reader.spec.ts
+cd apps/android/android
+./gradlew testDebugUnitTest lintDebug connectedDebugAndroidTest
+```
+
+The browser reader test starts its own local server and blocks external traffic. Unit tests cover URL/credential leakage rules. Instrumented tests inspect the packaged public bundle and load a lesson in a real Android WebView. These are **not** full account/payment/role parity tests.
+
+## Signing and App Links
+
+The manually dispatched **Android signed release candidate** workflow requires an owner-configured `android-release` environment with secrets `CEA_KEYSTORE_BASE64`, `CEA_KEYSTORE_PASSWORD`, `CEA_KEY_ALIAS`, `CEA_KEY_PASSWORD`. Store them through GitHub settings, never in chat/Git. Protect this environment with approval. Supply a new positive version code and semantic version name. It creates artifacts only; it does not publish to Play.
+
+The release Gradle tasks reject missing signing configuration. No production key has been generated or uploaded by this work.
+
+Generate an association file for review with the real **Play App Signing certificate**, not an invented/debug fingerprint:
+
+```sh
+CEA_ANDROID_CERT_SHA256='REAL:COLON:SEPARATED:SHA256' node apps/android/scripts/assetlinks.mjs /path/to/reviewed-assetlinks.json
+```
+
+The command rejects invalid fingerprints. Publish the reviewed file at `https://www.cea.ng/.well-known/assetlinks.json` with JSON content type and no redirect, then verify domain association on a device. Until that is done, Android may open links in the browser instead of this app.
+
+## Remaining production release gates
+
+1. Authenticated staging tests: password/magic link/MFA/expiry/re-entry, cross-origin cookies, account switching/sign-out and all role ownership/permission boundaries.
+2. Paystack test-mode payment success/cancel/pending/return, bank handoff and idempotent recovery. External browser checkout may require sign-in on return; App Link configuration alone does not solve all session handoffs.
+3. Direct file downloads currently hand off to a browser. Blob exports are **not** implemented; PDF printing is an alternative for printable pages, not universal binary download parity. Verify system file picker/camera, live sessions and large uploads on low-end physical phones.
+4. Native push/FCM is **not implemented**. The existing web notification centre remains available; web VAPID push is not guaranteed in Android WebView. Service-account/device-token work is required for native delivery.
+5. Store policy/billing review (especially digital products versus physical tuition), account-deletion verification, privacy/data safety, current target SDK compliance, signed build, screenshots and physical-device accessibility/security acceptance.
+
+The initial shared native/web approach preserves feature reachability but does not prove every workflow. No private application, receipt or authenticated lesson HTML should be added to the offline bundle.

@@ -52,6 +52,18 @@ jobs:
           disable-animations: true
           working-directory: apps/android/android
           script: ./gradlew connectedDebugAndroidTest
+      - name: Publish emulator test diagnostics
+        if: always()
+        run: |
+          python3 - <<'PY'
+          import glob, xml.etree.ElementTree as ET
+          for path in glob.glob('apps/android/android/app/build/outputs/androidTest-results/**/*.xml',recursive=True):
+            try: root=ET.parse(path).getroot()
+            except ET.ParseError: continue
+            for failure in list(root.iter('failure'))+list(root.iter('error')):
+              text=(failure.get('message','')+' '+(failure.text or ''))[:6000]
+              print('::error::'+text.replace('%','%25').replace('\n','%0A').replace('\r','%0D'))
+          PY
       - uses: actions/upload-artifact@v4
         if: always()
         with:

@@ -54,7 +54,7 @@ public class OfflineLessonsActivity extends AppCompatActivity {
                 return !"appassets.androidplatform.net".equals(request.getUrl().getHost()) || !"https".equals(request.getUrl().getScheme());
             }
         });
-        layout.addView(reader, new LinearLayout.LayoutParams(-1,0,1)); setContentView(layout);
+        layout.addView(reader, new LinearLayout.LayoutParams(-1,0,1)); setContentView(layout); UiInsets.apply(this,layout);
         if (state == null || reader.restoreState(state) == null) reader.loadUrl("https://appassets.androidplatform.net/assets/reader/index.html");
         getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
             @Override public void handleOnBackPressed() { if (reader.canGoBack()) reader.goBack(); else finish(); }

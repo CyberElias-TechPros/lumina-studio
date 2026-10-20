@@ -41,7 +41,7 @@ public class MainActivity extends BridgeActivity {
         Button menu = new Button(this); menu.setText("CEA menu"); menu.setOnClickListener(v -> menu());
         Button lessons = new Button(this); lessons.setText("Offline lessons"); lessons.setOnClickListener(v -> offline());
         bar.addView(menu, new LinearLayout.LayoutParams(0,-2,1)); bar.addView(lessons,new LinearLayout.LayoutParams(0,-2,1));
-        layout.addView(bar); layout.addView(existing,new LinearLayout.LayoutParams(-1,0,1)); content.addView(layout);
+        layout.addView(bar); layout.addView(existing,new LinearLayout.LayoutParams(-1,0,1)); content.addView(layout); UiInsets.apply(this,layout);
         web.setDownloadListener((url, agent, disposition, mime, length) -> {
             // Do not forward session cookies to a downloader or unknown redirect destination.
             new AlertDialog.Builder(this).setTitle("Save this file")

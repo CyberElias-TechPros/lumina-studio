@@ -39,7 +39,7 @@ function list() {
   const matches = posts.filter((p) =>
     `${p.title} ${p.excerpt}`.toLocaleLowerCase().includes(query),
   );
-  $("results").replaceChildren();
+  $("results").textContent = "";
   for (const post of matches) {
     const li = document.createElement("li"),
       button = document.createElement("button");
@@ -67,8 +67,10 @@ function route() {
     return;
   }
   save("last", current.slug);
+  $("continue").hidden = false;
+  $("continue").onclick = () => { location.hash = get("last") || ""; };
   $("title").textContent = current.title;
-  $("body").replaceChildren();
+  $("body").textContent = "";
   $("notice").textContent = "";
   for (const block of current.body) {
     let el;
