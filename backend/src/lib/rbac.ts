@@ -404,6 +404,8 @@ export const RBAC_RULES: RbacRule[] = [
   { methods: ["GET", "POST"], path: "/v1/push/subscriptions" },
   { methods: ["DELETE"], path: "/v1/push/subscriptions/:id" },
   { methods: ["POST"], path: "/v1/push/send" },
+  { methods: ["GET", "PUT"], path: "/v1/push/devices" },
+  { methods: ["DELETE"], path: "/v1/push/devices/:id" },
 ];
 
 function pathMatches(pattern: string, path: string): boolean {

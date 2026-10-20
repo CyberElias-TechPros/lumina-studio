@@ -39,8 +39,9 @@ a token. The native menu has **Phone notifications**, with:
 
 In-app messaging/notification-centre access remains unchanged. **Enabling the
 phone does not yet enable automatic class, application or private-message alerts.**
-No account-to-device table, server FCM sender or token-rotation/account-switch
-integration has been added. It would be misleading to advertise this as complete
+An [account/session-bound device API and additive schema](android-native-device-api.md)
+now exist on this branch. The Android-to-API bridge, automatic token-rotation/
+account-switch synchronization and server FCM sender remain pending. It would be misleading to advertise this as complete
 native push parity.
 
 The custom service handles data-only messages with fixed generic text and opens
