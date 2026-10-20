@@ -39,3 +39,23 @@ jobs:
           name: cea-android-debug
           path: apps/android/android/app/build/outputs/apk/debug/*.apk
           if-no-files-found: error
+      - name: Enable KVM for offline-reader emulator smoke
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+      - name: Test packaged offline reader on Android
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 29
+          arch: x86_64
+          disable-animations: true
+          working-directory: apps/android/android
+          script: ./gradlew connectedDebugAndroidTest
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: android-test-reports
+          path: |
+            apps/android/android/app/build/reports/
+            apps/android/android/app/build/outputs/androidTest-results/

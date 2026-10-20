@@ -26,8 +26,19 @@ android {
             ignoreAssetsPattern '!.svn:!.git:!.ds_store:!*.scc:.*:!CVS:!thumbs.db:!picasa.ini:!*~'
         }
     }
+    signingConfigs {
+        release {
+            if (System.getenv('CEA_KEYSTORE_PATH')) {
+                storeFile file(System.getenv('CEA_KEYSTORE_PATH'))
+                storePassword System.getenv('CEA_KEYSTORE_PASSWORD')
+                keyAlias System.getenv('CEA_KEY_ALIAS')
+                keyPassword System.getenv('CEA_KEY_PASSWORD')
+            }
+        }
+    }
     buildTypes {
         release {
+            signingConfig signingConfigs.release
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
@@ -62,4 +73,13 @@ try {
     }
 } catch(Exception e) {
     logger.info("google-services.json not found, google-services plugin not applied. Push Notifications won't work")
+}
+
+// Never silently produce an unsigned release that looks ready for distribution.
+gradle.taskGraph.whenReady { graph ->
+    if (graph.allTasks.any { it.project == project && it.name in ['assembleRelease', 'bundleRelease'] }) {
+        ['CEA_KEYSTORE_PATH', 'CEA_KEYSTORE_PASSWORD', 'CEA_KEY_ALIAS', 'CEA_KEY_PASSWORD'].each {
+            if (!System.getenv(it)) throw new GradleException('Release signing is not configured: ' + it)
+        }
+    }
 }
