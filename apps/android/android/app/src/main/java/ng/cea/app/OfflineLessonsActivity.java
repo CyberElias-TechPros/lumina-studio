@@ -16,11 +16,28 @@ import java.io.ByteArrayInputStream;
 /** Separate local-only WebView: no Capacitor bridge, no account/session data, no remote requests. */
 public class OfflineLessonsActivity extends AppCompatActivity {
     private WebView reader;
+    private android.speech.tts.TextToSpeech speech;
+    private boolean speechReady;
+    private Button readButton;
     @Override public void onCreate(Bundle state) {
         super.onCreate(state);
         LinearLayout layout = new LinearLayout(this); layout.setOrientation(LinearLayout.VERTICAL); layout.setBackgroundColor(Color.WHITE);
         Button close = new Button(this); close.setText("Back to CEA app"); close.setOnClickListener(v -> finish());
         layout.addView(close, new LinearLayout.LayoutParams(-1, -2));
+        LinearLayout tools = new LinearLayout(this);
+        readButton = new Button(this); readButton.setText("Read aloud"); readButton.setEnabled(false);
+        Button stop = new Button(this); stop.setText("Stop reading"); stop.setOnClickListener(v -> { if (speech != null) speech.stop(); });
+        tools.addView(readButton, new LinearLayout.LayoutParams(0,-2,1)); tools.addView(stop,new LinearLayout.LayoutParams(0,-2,1)); layout.addView(tools);
+        speech = new android.speech.tts.TextToSpeech(this, status -> {
+            speechReady = status == android.speech.tts.TextToSpeech.SUCCESS && speech.setLanguage(java.util.Locale.ENGLISH) >= 0;
+            if (speechReady) {
+                android.speech.tts.Voice voice = speech.getVoice();
+                if (voice == null || voice.isNetworkConnectionRequired()) speechReady = false;
+            }
+            readButton.setEnabled(speechReady);
+            if (!speechReady) { readButton.setText("Offline voice unavailable"); android.widget.Toast.makeText(this,"Install an English offline voice in Android text-to-speech settings to use read aloud.",android.widget.Toast.LENGTH_LONG).show(); }
+        });
+        readButton.setOnClickListener(v -> readLesson());
         reader = new WebView(this);
         reader.getSettings().setJavaScriptEnabled(true);
         reader.getSettings().setDomStorageEnabled(true);
@@ -44,5 +61,17 @@ public class OfflineLessonsActivity extends AppCompatActivity {
         });
     }
     @Override protected void onSaveInstanceState(Bundle state) { reader.saveState(state); super.onSaveInstanceState(state); }
-    @Override protected void onDestroy() { reader.destroy(); super.onDestroy(); }
+    private void readLesson() {
+        if (!speechReady) return;
+        reader.evaluateJavascript("document.getElementById('lesson').hidden ? '' : document.getElementById('title').textContent + '. ' + document.getElementById('body').innerText", value -> {
+            try {
+                Object decoded = new org.json.JSONTokener(value).nextValue();
+                if (!(decoded instanceof String) || ((String)decoded).isEmpty()) { android.widget.Toast.makeText(this,"Open a lesson first.",android.widget.Toast.LENGTH_SHORT).show(); return; }
+                speech.stop(); String text = (String)decoded;
+                for (int start = 0; start < text.length(); start += 3000) speech.speak(text.substring(start,Math.min(start+3000,text.length())),android.speech.tts.TextToSpeech.QUEUE_ADD,null,"lesson-"+start);
+            } catch (org.json.JSONException ignored) { /* No untrusted HTML/JS is evaluated. */ }
+        });
+    }
+    @Override protected void onPause() { if (speech != null) speech.stop(); super.onPause(); }
+    @Override protected void onDestroy() { if (speech != null) { speech.stop(); speech.shutdown(); } reader.destroy(); super.onDestroy(); }
 }

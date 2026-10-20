@@ -18,11 +18,14 @@ import com.getcapacitor.BridgeActivity;
 import com.getcapacitor.BridgeWebViewClient;
 
 public class MainActivity extends BridgeActivity {
-    private static final String HOME = "https://www.cea.ng";
+    private static final String HOME = BuildConfig.CEA_ORIGIN;
     @Override public void onCreate(Bundle state) {
         super.onCreate(state);
         if (bridge == null) return;
         WebView web = bridge.getWebView();
+        // CEA's API is on a different HTTPS origin and uses HttpOnly SameSite=None cookies.
+        android.webkit.CookieManager.getInstance().setAcceptCookie(true);
+        android.webkit.CookieManager.getInstance().setAcceptThirdPartyCookies(web, true);
         web.getSettings().setAllowFileAccess(false);
         web.getSettings().setAllowContentAccess(true); // Android system document picker.
         bridge.setWebViewClient(new BridgeWebViewClient(bridge) {
@@ -63,7 +66,19 @@ public class MainActivity extends BridgeActivity {
     }
     private void openExternal(String url) {
         if (!UrlPolicy.external(url)) { Toast.makeText(this,"Use Save page as PDF for this document.",Toast.LENGTH_LONG).show(); return; }
-        try { startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url))); }
+        try {
+            Intent external = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+            if ("https".equalsIgnoreCase(Uri.parse(url).getScheme())) {
+                // Resolve a generic web URL to avoid verified CEA App Links reopening this Activity.
+                Intent probe = new Intent(Intent.ACTION_VIEW, Uri.parse("https://example.com"));
+                android.content.pm.ResolveInfo browser = getPackageManager().resolveActivity(probe, android.content.pm.PackageManager.MATCH_DEFAULT_ONLY);
+                if (browser == null || browser.activityInfo == null || browser.activityInfo.packageName.equals(getPackageName()) || browser.activityInfo.packageName.equals("android")) {
+                    Toast.makeText(this,"Set a default browser in Android settings to open this link.",Toast.LENGTH_LONG).show(); return;
+                }
+                external.setPackage(browser.activityInfo.packageName);
+            }
+            startActivity(external);
+        }
         catch (ActivityNotFoundException e) { Toast.makeText(this,"No app can open this link on this device.",Toast.LENGTH_LONG).show(); }
     }
     private void offline() { startActivity(new Intent(this, OfflineLessonsActivity.class)); }

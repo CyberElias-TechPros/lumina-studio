@@ -8,7 +8,7 @@ public final class UrlPolicy {
     public static boolean internal(String value) {
         try {
             URI uri = new URI(value);
-            return "https".equalsIgnoreCase(uri.getScheme()) && "www.cea.ng".equalsIgnoreCase(uri.getHost())
+            return "https".equalsIgnoreCase(uri.getScheme()) && new URI(BuildConfig.CEA_ORIGIN).getHost().equalsIgnoreCase(uri.getHost())
                 && uri.getRawUserInfo() == null && (uri.getPort() == -1 || uri.getPort() == 443);
         } catch (Exception e) { return false; }
     }
@@ -21,13 +21,13 @@ public final class UrlPolicy {
         } catch (Exception e) { return false; }
     }
     public static String shareable(String value) {
-        if (!internal(value)) return "https://www.cea.ng";
+        if (!internal(value)) return BuildConfig.CEA_ORIGIN;
         try {
             String path = new URI(value).getPath();
             // Never share tokens, applications, receipts or private workspaces through a generic share action.
             if (!(path.equals("/") || path.equals("/classes") || path.startsWith("/classes/")
-                    || path.equals("/blog") || path.startsWith("/blog/"))) return "https://www.cea.ng";
-            return new URI("https", "www.cea.ng", path, null).toString();
-        } catch (Exception e) { return "https://www.cea.ng"; }
+                    || path.equals("/blog") || path.startsWith("/blog/"))) return BuildConfig.CEA_ORIGIN;
+            return new URI("https", new URI(BuildConfig.CEA_ORIGIN).getHost(), path, null).toString();
+        } catch (Exception e) { return BuildConfig.CEA_ORIGIN; }
     }
 }

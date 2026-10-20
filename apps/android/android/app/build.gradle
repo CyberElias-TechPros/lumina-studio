@@ -1,14 +1,24 @@
 apply plugin: 'com.android.application'
 
+def ceaOrigin = System.getenv('CEA_ANDROID_ORIGIN') ?: 'https://www.cea.ng'
+def originUri = new URI(ceaOrigin)
+if (originUri.scheme != 'https' || !originUri.host || originUri.userInfo || originUri.query || originUri.fragment || !(originUri.path in ['', '/']) || !(originUri.port in [-1, 443])) {
+    throw new GradleException('CEA_ANDROID_ORIGIN must be an HTTPS origin without credentials, query or path')
+}
+ceaOrigin = ceaOrigin.replaceAll('/+$', '')
+
 android {
+    buildFeatures { buildConfig true }
     namespace "ng.cea.app"
     compileSdk rootProject.ext.compileSdkVersion
     defaultConfig {
         applicationId "ng.cea.app"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
+        versionCode Integer.parseInt(System.getenv('CEA_VERSION_CODE') ?: '1')
+        versionName System.getenv('CEA_VERSION_NAME') ?: '0.2.0'
+        buildConfigField 'String', 'CEA_ORIGIN', '"' + ceaOrigin + '"'
+        manifestPlaceholders = [ceaHost: originUri.host]
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         aaptOptions {
              // Files and dirs to omit from the packaged assets dir, modified to accommodate modern web apps.
@@ -31,6 +41,7 @@ repositories {
 }
 
 dependencies {
+    implementation "androidx.webkit:webkit:$androidxWebkitVersion"
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation "androidx.appcompat:appcompat:$androidxAppCompatVersion"
     implementation "androidx.coordinatorlayout:coordinatorlayout:$androidxCoordinatorLayoutVersion"

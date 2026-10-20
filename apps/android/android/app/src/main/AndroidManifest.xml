@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <queries>
+        <intent><action android:name="android.intent.action.VIEW" /><data android:scheme="https" /></intent>
+        <intent><action android:name="android.speech.tts.engine.TTS_SERVICE" /></intent>
+    </queries>
     <application
         android:allowBackup="false"
         android:usesCleartextTraffic="false"
@@ -26,7 +30,7 @@
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="https" android:host="www.cea.ng" />
+                <data android:scheme="https" android:host="${ceaHost}" />
             </intent-filter>
 
         </activity>
