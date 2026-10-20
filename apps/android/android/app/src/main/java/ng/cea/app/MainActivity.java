@@ -20,6 +20,7 @@ import com.getcapacitor.BridgeWebViewClient;
 public class MainActivity extends BridgeActivity {
     private static final String HOME = BuildConfig.CEA_ORIGIN;
     @Override public void onCreate(Bundle state) {
+        registerPlugin(CeaDocumentsPlugin.class);
         super.onCreate(state);
         if (bridge == null) return;
         WebView web = bridge.getWebView();
@@ -29,6 +30,16 @@ public class MainActivity extends BridgeActivity {
         web.getSettings().setAllowFileAccess(false);
         web.getSettings().setAllowContentAccess(true); // Android system document picker.
         bridge.setWebViewClient(new BridgeWebViewClient(bridge) {
+            @Override public void onPageFinished(WebView view, String url) {
+                super.onPageFinished(view,url);
+                if (UrlPolicy.internal(url)) {
+                    try (java.io.InputStream input=getAssets().open("native/downloads.js")) {
+                        java.io.ByteArrayOutputStream bytes=new java.io.ByteArrayOutputStream(); byte[] buffer=new byte[4096];int count;
+                        while((count=input.read(buffer))!=-1)bytes.write(buffer,0,count);
+                        view.evaluateJavascript(bytes.toString("UTF-8"),null);
+                    } catch(java.io.IOException e) { Toast.makeText(MainActivity.this,"File export is unavailable. Use the website for downloads.",Toast.LENGTH_LONG).show(); }
+                }
+            }
             @Override public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
                 return navigate(request.getUrl().toString());
             }
@@ -57,7 +68,7 @@ public class MainActivity extends BridgeActivity {
         });
     }
     private boolean navigate(String url) {
-        if (UrlPolicy.internal(url)) return false;
+        if (UrlPolicy.internal(url)) return bridge.launchIntent(Uri.parse(url));
         if (UrlPolicy.external(url)) new AlertDialog.Builder(this).setTitle("Open another app?")
             .setMessage("This link opens outside CEA. Return here afterwards. Payment is only confirmed by CEA after checking with the provider.")
             .setPositiveButton("Open",(d,w)->openExternal(url)).setNegativeButton("Stay",null).show();
