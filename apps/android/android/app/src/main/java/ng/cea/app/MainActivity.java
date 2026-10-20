@@ -112,7 +112,7 @@ public class MainActivity extends BridgeActivity {
     }
     private void offline() { startActivity(new Intent(this, OfflineLessonsActivity.class)); }
     private void menu() {
-        String[] items = {"Home", "My CEA workspace", "Offline lessons", "Share public lesson or course", "Save page as PDF", "Refresh page", "Help on WhatsApp"};
+        String[] items = {"Home", "My CEA workspace", "Offline lessons", "Share public lesson or course", "Save page as PDF", "Refresh page", "Help on WhatsApp", "Phone notifications"};
         new AlertDialog.Builder(this).setTitle("What would you like to do?").setItems(items,(dialog,which)->{
             WebView web = bridge.getWebView();
             switch(which) {
@@ -127,6 +127,7 @@ public class MainActivity extends BridgeActivity {
                         .setPositiveButton("Continue",(d,w)->((PrintManager)getSystemService(PRINT_SERVICE)).print("CEA document",web.createPrintDocumentAdapter("CEA document"),null)).setNegativeButton("Cancel",null).show(); break;
                 case 5: web.reload(); break;
                 case 6: openExternal("https://wa.me/2349058628386"); break;
+                case 7: startActivity(new Intent(this,NotificationSettingsActivity.class)); break;
                 default: break;
             }
         }).show();

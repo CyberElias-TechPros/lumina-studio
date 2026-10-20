@@ -90,3 +90,12 @@ The supplied Android client config now matches `cyber-elias-academy-app` /
 Google Services Gradle plugin processes it without silently hiding errors.
 This does not by itself implement native token registration or FCM server delivery;
 no Analytics SDK was added. See [the isolated staging setup](../../docs/android-staging-setup.md).
+
+## Live-target testing and native notification receiver
+
+Per the owner's instruction, production remains the app target; staging is not
+required to keep building. See [production check boundaries and notification testing](../../docs/android-production-checks.md).
+Firebase Messaging now has opt-in device registration, permission handling,
+disable/removal and generic data-message reception. Automatic account-specific
+push delivery is still pending server integration. CI does not create tokens or
+send notifications. The live CI smoke job performs three fixed public GETs only.

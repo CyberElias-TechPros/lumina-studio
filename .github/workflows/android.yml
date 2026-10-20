@@ -9,6 +9,16 @@ on:
 permissions:
   contents: read
 jobs:
+  production-read-only:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/arena/df91cdba-lumina-studio'
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node --test apps/android/scripts/test/production-smoke.test.mjs
+      - run: node apps/android/scripts/production-smoke.mjs
   debug:
     runs-on: ubuntu-24.04
     steps:
