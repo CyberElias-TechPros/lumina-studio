@@ -3,11 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "sync": "npm run offline:build && cap sync android",
+    "sync": "npm run firebase:check && npm run offline:build && cap sync android",
     "open": "cap open android",
     "build:debug": "cd android && ./gradlew assembleDebug",
     "typecheck": "tsc --noEmit",
-    "offline:build": "node scripts/build-offline.mjs"
+    "offline:build": "node scripts/build-offline.mjs",
+    "firebase:check": "node scripts/validate-firebase.mjs"
   },
   "dependencies": {
     "@capacitor/android": "^7.0.0",

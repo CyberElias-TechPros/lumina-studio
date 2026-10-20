@@ -61,3 +61,6 @@ playwright-report/
 *.jks
 **/local.properties
 **/.gradle/
+# Generated isolated staging configuration and local resource inventory
+/backend/wrangler.staging.json
+/staging-resources.local.json

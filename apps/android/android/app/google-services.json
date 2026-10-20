@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "327984401909",
+    "project_id": "cyber-elias-academy-app",
+    "storage_bucket": "cyber-elias-academy-app.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:327984401909:android:cc541d99fafc06ddabe4bc",
+        "android_client_info": {
+          "package_name": "ng.cea.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAfGyYGCZZ0VfOHM0r1VsBstkD4Xg0UKww"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

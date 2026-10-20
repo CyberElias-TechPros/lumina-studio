@@ -82,3 +82,11 @@ The command rejects invalid fingerprints. Publish the reviewed file at `https://
 5. Store policy/billing review (especially digital products versus physical tuition), account-deletion verification, privacy/data safety, current target SDK compliance, signed build, screenshots and physical-device accessibility/security acceptance.
 
 The initial shared native/web approach preserves feature reachability but does not prove every workflow. No private application, receipt or authenticated lesson HTML should be added to the offline bundle.
+
+## Firebase client and staging setup
+
+The supplied Android client config now matches `cyber-elias-academy-app` /
+`327984401909` / `ng.cea.app`. `firebase:check` validates it before sync, and the
+Google Services Gradle plugin processes it without silently hiding errors.
+This does not by itself implement native token registration or FCM server delivery;
+no Analytics SDK was added. See [the isolated staging setup](../../docs/android-staging-setup.md).

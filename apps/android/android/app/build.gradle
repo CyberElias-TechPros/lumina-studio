@@ -71,14 +71,8 @@ dependencies {
 
 apply from: 'capacitor.build.gradle'
 
-try {
-    def servicesJSON = file('google-services.json')
-    if (servicesJSON.text) {
-        apply plugin: 'com.google.gms.google-services'
-    }
-} catch(Exception e) {
-    logger.info("google-services.json not found, google-services plugin not applied. Push Notifications won't work")
-}
+// Android client configuration is checked before sync. Do not swallow plugin/config errors.
+apply plugin: 'com.google.gms.google-services'
 
 // Never silently produce an unsigned release that looks ready for distribution.
 gradle.taskGraph.whenReady { graph ->
