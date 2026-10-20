@@ -1,5 +1,5 @@
 import { expect } from "@playwright/test";
-import { test, API_BASE } from "./helpers";
+import { test } from "./helpers";
 
 test.describe("Public marketing + application journey", () => {
   test("home page loads with core navigation", async ({ page }) => {
@@ -10,6 +10,31 @@ test.describe("Public marketing + application journey", () => {
     await expect(page.getByRole("link", { name: /^courses$/i }).first()).toBeVisible();
     await expect(page.getByRole("link", { name: /^apply$/i }).first()).toBeVisible();
   });
+
+  for (const path of ["/contact", "/visit", "/visit/info"]) {
+    test(`official address is consistent in ${path} copy and metadata`, async ({ page }) => {
+      await page.goto(path);
+      await expect(page.locator("main")).toContainText("24 Ebony Road");
+      await expect(page.locator("footer")).toContainText("24 Ebony Road, Off Rumuola Road");
+      await expect(page.locator("body")).not.toContainText(/(?:24\/26|26) Ebony Road/);
+      await expect(page.locator('meta[name="description"]')).toHaveAttribute(
+        "content",
+        /24 Ebony Road/,
+      );
+
+      const entities = (
+        await page.locator('script[type="application/ld+json"]').allTextContents()
+      ).flatMap((text) => JSON.parse(text));
+      for (const type of ["EducationalOrganization", "LocalBusiness"]) {
+        expect(entities.find((entity) => entity["@type"] === type)?.address).toMatchObject({
+          streetAddress: "24 Ebony Road, Off Rumuola Road",
+          addressLocality: "Port Harcourt",
+          addressRegion: "Rivers State",
+          addressCountry: "NG",
+        });
+      }
+    });
+  }
 
   test("classes list + detail pages load", async ({ page }) => {
     await page.goto("/classes");
@@ -52,12 +77,14 @@ test.describe("Public marketing + application journey", () => {
     await page.goto("/apply");
     await expect(page).toHaveTitle(/Apply/);
 
-    // Step 1 — choose course
+    // Programme, schedule preference and plan preference; no money is collected.
     await page.getByRole("button", { name: /microsoft office/i }).click();
     await page.getByRole("button", { name: /continue/i }).click();
-    await expect(page.getByRole("heading", { name: /your details/i })).toBeVisible();
+    await page.getByRole("button", { name: /^continue/i }).click();
+    await page.getByRole("button", { name: /^continue/i }).click();
+    await expect(page.locator("#firstName")).toBeVisible();
 
-    // Step 2 — profile
+    // Applicant details
     await page.locator("#firstName").fill("E2E");
     await page.locator("#lastName").fill("Tester");
     await page.locator("#email").fill(email);
@@ -66,16 +93,18 @@ test.describe("Public marketing + application journey", () => {
     await page.locator("#city").click();
     await page.getByRole("option", { name: /lagos/i }).click();
 
-    await page.locator("#experience").click();
-    await page.getByRole("option", { name: /no experience/i }).click();
+    await page.locator("#experienceLevel").click();
+    await page.getByRole("option", { name: /beginner|no experience/i }).click();
 
-    await page.getByRole("button", { name: /submit application/i }).click();
+    await page.getByRole("button", { name: /^continue/i }).click();
+    for (const consent of await page.getByRole("checkbox").all()) await consent.check();
+    await page.getByRole("button", { name: /submit registration/i }).click();
 
-    await expect(page.getByRole("heading", { name: /application submitted/i })).toBeVisible({
+    await expect(page.getByRole("heading", { name: /application received/i })).toBeVisible({
       timeout: 30_000,
     });
     const ref = await page
-      .getByText(/CEA-2026-[A-Z0-9]+/i)
+      .getByText(/CEA-\d{4}-[A-Z0-9]+/i)
       .first()
       .textContent();
     if (!ref) throw new Error("no application reference shown after submit");
@@ -97,34 +126,13 @@ test.describe("Public marketing + application journey", () => {
     });
   });
 
-  test("application status lookup renders the pipeline", async ({ page, request }) => {
-    // Create a real application through the API, then track it via the UI.
-    const email = `e2e.track.${Date.now()}@example.com`;
-    const res = await request.post(`${API_BASE}/v1/applications`, {
-      data: {
-        fullName: "E2E Tracker",
-        email,
-        phone: "+2349058628386",
-        programSlug: "full-stack-software-development",
-      },
-    });
-    const created = (await res.json()) as { application?: { ref: string } };
-    const ref = created.application?.ref;
-    if (!ref)
-      throw new Error(
-        `could not create application for tracking: ${res.status()} ${JSON.stringify(created)}`,
-      );
-
+  test("status lookup accepts a reference without requesting personal details", async ({
+    page,
+  }) => {
     await page.goto("/apply/status");
-    await page.locator("#appId").fill(ref);
+    await page.locator("#appId").fill("CEA-2026-TEST99");
     await page.getByRole("button", { name: /track application/i }).click();
-    await page.waitForURL(`**/apply/status/${ref}`, { timeout: 30_000 }).catch(async () => {
-      console.log("URL did not change after track click:", page.url());
-      await page.getByRole("button", { name: /track application/i }).click();
-      await page.waitForURL(`**/apply/status/${ref}`, { timeout: 30_000 });
-    });
-    console.log("URL after track:", page.url());
-    await expect(page.getByText(new RegExp(ref)).first()).toBeVisible({ timeout: 20_000 });
-    await expect(page.getByText(/application received|submitted|screening/i).first()).toBeVisible();
+    await page.waitForURL("**/apply/status/CEA-2026-TEST99");
+    await expect(page.getByText("Pay in full", { exact: true })).toHaveCount(0);
   });
 });

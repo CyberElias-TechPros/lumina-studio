@@ -4,7 +4,7 @@ import type { AppEnv } from "../types";
 import { z } from "zod";
 import { ApiError } from "../lib/errors";
 import { parseBody } from "../lib/validate";
-import { requireAuth, requireAdmin } from "../lib/auth";
+import { requireAuth, requireAdmin, requireAnyRole } from "../lib/auth";
 import { base64UrlDecode, base64UrlEncode, isoNow, randomToken } from "../lib/crypto";
 import { normalizeEmail } from "../db/client";
 import { paginate, parsePagination } from "../lib/pagination";
@@ -58,6 +58,11 @@ function newRef(): string {
 }
 
 export const applications = new Hono<{ Bindings: AppEnv }>();
+applications.use("*", async (c, next) => {
+  c.header("Cache-Control", "private, no-store");
+  c.header("Vary", "Cookie");
+  await next();
+});
 
 applications.post("/", async (c) => {
   const input = await parseBody(c, createApplicationSchema);
@@ -104,65 +109,70 @@ applications.post("/", async (c) => {
 });
 
 /** Admin: all applications in the full pipeline — optional `?stage=` filter. */
-applications.get("/admin", requireAuth, requireAdmin, async (c) => {
-  const { cursor, limit } = parsePagination(c);
-  const stage = c.req.query("stage");
-  const stageValid = stage && STATUS_ORDER.includes(stage as (typeof STATUS_ORDER)[number]);
-  const predicates: string[] = [];
-  const args: string[] = [];
-  if (stageValid) {
-    predicates.push("a.status = ?");
-    args.push(stage);
-  }
-  if (cursor) {
-    predicates.push("a.id > ?");
-    args.push(base64UrlDecode(cursor) ?? "");
-  }
-  const where = predicates.length > 0 ? `WHERE ${predicates.join(" AND ")}` : "";
-  const base = `FROM applications a LEFT JOIN programs p ON p.slug = a.program_slug ${where}`;
+applications.get(
+  "/admin",
+  requireAuth,
+  requireAnyRole(["admin", "admissions", "finance"]),
+  async (c) => {
+    const { cursor, limit } = parsePagination(c);
+    const stage = c.req.query("stage");
+    const stageValid = stage && STATUS_ORDER.includes(stage as (typeof STATUS_ORDER)[number]);
+    const predicates: string[] = [];
+    const args: string[] = [];
+    if (stageValid) {
+      predicates.push("a.status = ?");
+      args.push(stage);
+    }
+    if (cursor) {
+      predicates.push("a.id > ?");
+      args.push(base64UrlDecode(cursor) ?? "");
+    }
+    const where = predicates.length > 0 ? `WHERE ${predicates.join(" AND ")}` : "";
+    const base = `FROM applications a LEFT JOIN programs p ON p.slug = a.program_slug ${where}`;
 
-  const total = await c.env.DB.prepare(`SELECT COUNT(*) AS n ${base}`)
-    .bind(...args)
-    .first<{ n: number }>();
-  const rows = await c.env.DB.prepare(
-    `SELECT a.id, a.ref, a.full_name, a.email, a.phone, a.city, a.program_slug, a.experience,
+    const total = await c.env.DB.prepare(`SELECT COUNT(*) AS n ${base}`)
+      .bind(...args)
+      .first<{ n: number }>();
+    const rows = await c.env.DB.prepare(
+      `SELECT a.id, a.ref, a.full_name, a.email, a.phone, a.city, a.program_slug, a.experience,
             a.status, a.note, a.created_at, a.updated_at, p.title AS program_title
        ${base}
       ORDER BY a.id ASC LIMIT ?`,
-  )
-    .bind(...args, limit)
-    .all<{
-      id: string;
-      ref: string;
-      full_name: string;
-      email: string;
-      phone: string | null;
-      city: string | null;
-      program_slug: string | null;
-      experience: string | null;
-      status: string;
-      note: string;
-      created_at: string;
-      updated_at: string;
-      program_title: string | null;
-    }>();
-  const items = rows.results.map((r) => ({
-    id: r.id,
-    ref: r.ref,
-    fullName: r.full_name,
-    email: r.email,
-    programSlug: r.program_slug,
-    programTitle: r.program_title,
-    phone: r.phone,
-    city: r.city,
-    experience: r.experience,
-    status: r.status,
-    note: r.note,
-    createdAt: r.created_at,
-    updatedAt: r.updated_at,
-  }));
-  return c.json(paginate(items, total?.n ?? 0, (last) => last.id));
-});
+    )
+      .bind(...args, limit)
+      .all<{
+        id: string;
+        ref: string;
+        full_name: string;
+        email: string;
+        phone: string | null;
+        city: string | null;
+        program_slug: string | null;
+        experience: string | null;
+        status: string;
+        note: string;
+        created_at: string;
+        updated_at: string;
+        program_title: string | null;
+      }>();
+    const items = rows.results.map((r) => ({
+      id: r.id,
+      ref: r.ref,
+      fullName: r.full_name,
+      email: r.email,
+      programSlug: r.program_slug,
+      programTitle: r.program_title,
+      phone: r.phone,
+      city: r.city,
+      experience: r.experience,
+      status: r.status,
+      note: r.note,
+      createdAt: r.created_at,
+      updatedAt: r.updated_at,
+    }));
+    return c.json(paginate(items, total?.n ?? 0, (last) => last.id));
+  },
+);
 
 /** Admin: pipeline funnel counts by stage for the admissions hub. */
 applications.get("/admin/stats", requireAuth, requireAdmin, async (c) => {
@@ -183,8 +193,19 @@ applications.get("/admin/stats", requireAuth, requireAdmin, async (c) => {
   return c.json({ total, activeStages, stages });
 });
 
-applications.get("/:ref", async (c) => {
+applications.get("/:ref", requireAuth, async (c) => {
   const ref = c.req.param("ref").toUpperCase();
+  c.header("Cache-Control", "private, no-store");
+  const user = c.get("authUser");
+  if (!["admin", "admissions", "finance"].includes(user.roleKey)) {
+    const own = await c.env.DB.prepare(
+      `SELECT a.ref FROM applications a JOIN users u ON lower(u.email) = lower(a.email)
+      WHERE a.ref = ? AND u.id = ? AND u.email_verified_at IS NOT NULL`,
+    )
+      .bind(ref, user.id)
+      .first();
+    if (!own) throw ApiError.notFound("Application not found for this verified account.");
+  }
   const row = await c.env.DB.prepare(
     `SELECT a.ref, a.status, a.created_at, a.updated_at, p.title AS program_title
        FROM applications a
@@ -221,6 +242,15 @@ applications.get("/:ref", async (c) => {
 
 applications.get("/", requireAuth, async (c) => {
   const user = c.get("authUser");
+  const verified = await c.env.DB.prepare("SELECT email_verified_at FROM users WHERE id = ?")
+    .bind(user.id)
+    .first<{ email_verified_at: string | null }>();
+  if (!verified?.email_verified_at)
+    throw new ApiError(
+      403,
+      "EMAIL_VERIFICATION_REQUIRED",
+      "Verify your email before accessing applications linked by email.",
+    );
   const { cursor, limit } = parsePagination(c);
 
   const base = `FROM applications WHERE (user_id = ? OR (user_id IS NULL AND email = ?))${
@@ -274,6 +304,15 @@ applications.patch("/:ref", requireAuth, requireAdmin, async (c) => {
   const admin = c.get("authUser");
   const ref = c.req.param("ref").toUpperCase();
   const { status, note } = await parseBody(c, advanceSchema);
+  const registration = await c.env.DB.prepare("SELECT ref FROM registrations WHERE ref = ?")
+    .bind(ref)
+    .first();
+  if (registration)
+    throw new ApiError(
+      409,
+      "USE_REGISTRATION",
+      "Manage this course application through the tuition worklist so its payment and placement stay consistent.",
+    );
   const now = isoNow();
 
   const row = await c.env.DB.prepare(`SELECT id, status FROM applications WHERE ref = ?`)

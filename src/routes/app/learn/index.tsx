@@ -18,6 +18,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Skeleton } from "@/components/ui/skeleton";
 import { QueryState } from "@/components/ui/query-state";
+import { LearnerTuition } from "@/components/enrollment/learner-tuition";
 import { AppShell } from "@/components/app/app-shell";
 import { useStudentDashboard } from "@/lib/query/dashboard";
 import type { StudentDashboard, StudentDashboardKpis } from "@/lib/api/dashboard";
@@ -50,7 +51,7 @@ const KPI_CARDS: {
     icon: GraduationCap,
     tone: "bg-primary/10 text-primary",
     valueOf: (k) => String(k.enrolled),
-    deltaOf: () => "2 finishing this term",
+    deltaOf: () => "Your enrolled courses",
   },
   {
     id: "overallProgress",
@@ -58,7 +59,7 @@ const KPI_CARDS: {
     icon: BookOpen,
     tone: "bg-learning/10 text-learning",
     valueOf: (k) => `${k.overallProgress}%`,
-    deltaOf: () => "+9% this week",
+    deltaOf: () => "Recorded lesson completion",
   },
   {
     id: "lessonsThisWeek",
@@ -74,7 +75,7 @@ const KPI_CARDS: {
     icon: Clock,
     tone: "bg-success/10 text-success",
     valueOf: (k) => k.studyHours,
-    deltaOf: () => "12.5h average",
+    deltaOf: () => "Recorded study time",
   },
 ];
 
@@ -117,8 +118,8 @@ function LearningHub() {
       title="Learning hub"
       subtitle={
         dashboard.data
-          ? `Cohort 15 · Term 2 · ${dashboard.data.kpis.enrolled} enrolled courses`
-          : "Cohort 15 · Term 2"
+          ? `${dashboard.data.kpis.enrolled} enrolled courses`
+          : "Your courses and practical work"
       }
       actions={
         dashboard.data ? (
@@ -139,6 +140,7 @@ function LearningHub() {
         )
       }
     >
+      <LearnerTuition />
       <QueryState<StudentDashboard>
         query={dashboard}
         loading={<DashboardSkeleton />}

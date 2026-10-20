@@ -29,6 +29,8 @@ import {
   resolvedCourses,
 } from "@/data/academy";
 import { getPageHead } from "@/lib/seo";
+import { TUITION_POLICY } from "@/data/academy/tuition-policy";
+import { CourseIntake } from "@/components/enrollment/course-intake";
 import { SITE_URL } from "@/lib/site-url";
 
 export const Route = createFileRoute("/classes/$courseSlug/")({
@@ -36,7 +38,7 @@ export const Route = createFileRoute("/classes/$courseSlug/")({
     const course = findCourse(params.courseSlug) ?? resolvedCourses[0];
     return getPageHead({
       title: `${course.title} — ${course.weeks}-Week Practical Course at Cyber Elias Academy`,
-      description: `${course.hook} ${formatFee(course.fee)}, ${course.weeks} weeks, ${course.sessions.length} practical sessions with full class notes published for every session.`,
+      description: `${course.hook} ${formatFee(course.fee)}, ${course.weeks} weeks, ${course.sessions.length} practical sessions; ${course.publishedCount} published lessons available to read free.`,
       path: `/classes/${course.slug}`,
       image: coursePhotoSrc(course.slug) ? `${SITE_URL}${coursePhotoSrc(course.slug)}` : undefined,
       structuredData: [
@@ -62,7 +64,7 @@ export const Route = createFileRoute("/classes/$courseSlug/")({
                 hasCourseInstance: {
                   "@type": "CourseInstance",
                   courseMode: "blended",
-                  courseWorkload: `PT${course.weeks * course.sessionsPerWeek * 2}H`,
+                  courseWorkload: `PT${course.totalMinutes}M`,
                 },
               }),
           educationalLevel: course.level,
@@ -346,6 +348,17 @@ function CoursePage() {
                     </dd>
                   </div>
                 </dl>
+                <CourseIntake slug={course.slug} />
+                <p className="mt-4 text-xs leading-relaxed text-muted-foreground">
+                  {TUITION_POLICY.payment}
+                </p>
+                <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
+                  {TUITION_POLICY.refundSummary}{" "}
+                  <a className="underline" href="/terms#tuition">
+                    Tuition policy
+                  </a>
+                  .
+                </p>
                 <Button asChild className="mt-6 w-full">
                   {course.rotating ? (
                     <a href={availabilityUrl} target="_blank" rel="noopener noreferrer">

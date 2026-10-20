@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 import "@/styles.css";
 import AppProviders from "./providers";
-import { Analytics } from "@vercel/analytics/next";
+import { PublicAnalytics } from "@/components/public-analytics";
 import { LOCAL_BUSINESS_LD, ORGANIZATION_LD, WEBSITE_LD } from "@/lib/seo";
 import { SITE_URL } from "@/lib/site-url";
 
@@ -96,7 +96,7 @@ main [style*="translateY"],main [style*="translateX"]{transform:none !important}
       <body>
         <StructuredData data={[ORGANIZATION_LD, LOCAL_BUSINESS_LD, WEBSITE_LD]} />
         <AppProviders>{children}</AppProviders>
-        <Analytics />
+        <PublicAnalytics />
       </body>
     </html>
   );

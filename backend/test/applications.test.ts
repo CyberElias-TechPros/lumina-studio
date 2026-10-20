@@ -69,7 +69,7 @@ describe("POST /v1/applications", () => {
   });
 });
 
-describe("GET /v1/applications/:ref (public status lookup)", () => {
+describe("GET /v1/applications/:ref (verified private status)", () => {
   it("returns status + stage timeline", async () => {
     const created = await api("/v1/applications", {
       method: "POST",
@@ -80,7 +80,10 @@ describe("GET /v1/applications/:ref (public status lookup)", () => {
       application: { ref: string };
     };
 
-    const res = await api(`/v1/applications/${application.ref}`);
+    const { cookie } = await createTestSession("lookup@example.com");
+    const res = await api(`/v1/applications/${application.ref}`, {
+      headers: cookieHeaders(cookie),
+    });
     expect(res.status).toBe(200);
     const body = (await res.json()) as {
       ref: string;
@@ -111,7 +114,10 @@ describe("GET /v1/applications/:ref (public status lookup)", () => {
       .bind(new Date().toISOString(), application.ref)
       .run();
 
-    const res = await api(`/v1/applications/${application.ref}`);
+    const { cookie } = await createTestSession("progress@example.com");
+    const res = await api(`/v1/applications/${application.ref}`, {
+      headers: cookieHeaders(cookie),
+    });
     const body = (await res.json()) as {
       status: string;
       stages: Array<{ key: string; done: boolean; active: boolean }>;
@@ -126,7 +132,9 @@ describe("GET /v1/applications/:ref (public status lookup)", () => {
   });
 
   it("returns NOT_FOUND for unknown references", async () => {
-    const res = await api("/v1/applications/CEA-2999-NOPE99");
+    const { cookie } = await createTestSession("unknown-reference@example.com");
+    expect((await api("/v1/applications/CEA-2999-NOPE99")).status).toBe(401);
+    const res = await api("/v1/applications/CEA-2999-NOPE99", { headers: cookieHeaders(cookie) });
     expect(res.status).toBe(404);
     const body = (await res.json()) as { error: { code: string } };
     expect(body.error.code).toBe("NOT_FOUND");
@@ -134,6 +142,15 @@ describe("GET /v1/applications/:ref (public status lookup)", () => {
 });
 
 describe("GET /v1/applications (own list)", () => {
+  it("does not disclose email-linked application references to an unverified account", async () => {
+    const session = await createTestSession("unverified-list@example.test");
+    await env.DB.prepare("UPDATE users SET email_verified_at=NULL WHERE id=?")
+      .bind(session.session.user.id)
+      .run();
+    const result = await api("/v1/applications", { headers: cookieHeaders(session.cookie) });
+    expect(result.status).toBe(403);
+    expect(result.headers.get("Cache-Control")).toContain("no-store");
+  });
   it("requires authentication", async () => {
     const res = await api("/v1/applications");
     expect(res.status).toBe(401);

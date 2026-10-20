@@ -68,7 +68,7 @@ export function createCohortCalendarIcs(cohort: CohortCalendarInput, origin = SI
   const endUtc = new Date(startUtc.getTime() + 2 * 60 * 60 * 1000);
   const uid = cohort.id.replace(/[^a-z0-9.-]/gi, "-");
   const location =
-    cohort.mode === "online" ? "Online" : "24/26 Ebony Road, Off Rumuola Road, Port Harcourt";
+    cohort.mode === "online" ? "Online" : "24 Ebony Road, Off Rumuola Road, Port Harcourt";
   const description = `${cohort.days} · ${String(slot.hour).padStart(2, "0")}:${String(slot.minute).padStart(2, "0")} WAT · ${cohort.mode}. This invite marks the first class day; contact admissions to confirm any changes. Details: ${origin}/apply`;
 
   const lines = [

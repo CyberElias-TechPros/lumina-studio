@@ -312,7 +312,7 @@ describe("system: readiness + jobs (admin)", () => {
     expect(res.status).toBe(404);
   });
 
-  it("sends one unpaid-registration reminder, never twice", async () => {
+  it("sends one reminder for an accepted unexpired offer, never twice", async () => {
     const old = new Date(Date.now() - 1000 * 60 * 60 * 30).toISOString();
     await env.DB.prepare(
       `INSERT INTO registrations (id, ref, program_slug, program_kind, program_title, fee_total,
@@ -322,6 +322,14 @@ describe("system: readiness + jobs (admin)", () => {
     )
       .bind(old, old)
       .run();
+    await env.DB.prepare(
+      `INSERT INTO cohorts(id,program_slug,label,start_date,status,created_at,updated_at) VALUES('remind-cohort','x','Test approved offer','2099-01-01','scheduled',?,?)`,
+    )
+      .bind(old, old)
+      .run();
+    await env.DB.prepare(
+      `UPDATE registrations SET cohort_id='remind-cohort', offer_status='held', offer_version=1, accepted_offer_version=1, offer_expires_at='2099-01-01T00:00:00.000Z' WHERE ref='CEA-REMIND1'`,
+    ).run();
     await runJob(env as unknown as AppEnv, "enrollment-reminders");
     await runJob(env as unknown as AppEnv, "enrollment-reminders");
     const count = await env.DB.prepare(

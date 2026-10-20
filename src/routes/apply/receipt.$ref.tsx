@@ -8,6 +8,8 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { fetchReceipt } from "@/lib/api/operations";
+import { ApplicantAccess } from "@/components/enrollment/applicant-access";
+import { ApiError } from "@/lib/errors";
 import { formatNaira } from "@/lib/utils";
 
 export const Route = createFileRoute("/apply/receipt/$ref")({
@@ -39,6 +41,12 @@ function ReceiptPage() {
     );
   }
 
+  if (query.isError && query.error instanceof ApiError && [401, 403].includes(query.error.status))
+    return (
+      <div className="container-page max-w-2xl py-12">
+        <ApplicantAccess reference={ref} receipt />
+      </div>
+    );
   if (query.isError || !query.data) {
     return (
       <div className="container-page flex min-h-[50vh] items-center justify-center">

@@ -103,7 +103,7 @@ export function ProgramStep({ selected, onSelect, error }: ProgramStepProps) {
           >
             Ask admissions on WhatsApp
           </a>{" "}
-          <span className="text-muted-foreground">— Mon–Sat, 8:00–20:00 WAT.</span>
+          <span className="text-muted-foreground">— we aim to reply within two working days.</span>
         </p>
       </div>
     </div>

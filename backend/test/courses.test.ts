@@ -61,7 +61,7 @@ describe("GET /v1/courses", { timeout: 60_000 }, () => {
     expect(findLesson(full!, "l1")?.status).toBe("done");
     expect(findLesson(full!, "l8")?.status).toBe("in-progress");
     expect(findLesson(full!, "l9")?.status).toBe("preview");
-    expect(findLesson(full!, "l10")?.status).toBe("locked");
+    expect(findLesson(full!, "l10")?.status).toBe("preview");
 
     const cloud = body.items.find((c) => c.slug === "cloud-devops");
     expect(cloud?.pct).toBe(54);

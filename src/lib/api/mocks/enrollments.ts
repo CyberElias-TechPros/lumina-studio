@@ -175,6 +175,10 @@ function publicStatus(e: MockEnrollment) {
   const idx = stages.findIndex((s) => s.key === e.stage);
   return {
     ref: e.ref,
+    checkout: {
+      allowed: false,
+      reason: "Preview / interest only. A confirmed offer is required before payment.",
+    },
     stage: e.stage,
     programSlug: e.programSlug,
     programTitle: e.programTitle,
@@ -209,16 +213,16 @@ function publicStatus(e: MockEnrollment) {
     events: e.events,
     stages: stages.map((s, i) => ({ ...s, done: i < idx, active: i === idx })),
     nextSteps: [
-      `Confirmation email sent (reference ${e.ref}).`,
-      "We will call or WhatsApp you within 24 working hours to confirm dates.",
-      "If you choose to pay, use the payment link on your application page; payment is recorded against your application.",
+      `Application recorded (reference ${e.ref}). Preview mode sends no email.`,
+      "We aim to reply within two working days. A confirmed offer comes before payment.",
+      "Do not pay before receiving and accepting a confirmed offer.",
       "Admissions confirms course availability, your place and start date before sharing the schedule and welcome-pack details.",
     ],
     contact: {
       phone: "+2349058628386",
       whatsapp: "https://wa.me/2349058628386",
       email: "help@cea.ng",
-      address: "24/26 Ebony Road, Off Rumuola Road, Port Harcourt",
+      address: "24 Ebony Road, Off Rumuola Road, Port Harcourt",
       hours: "Mon–Sat, 8:00–20:00 WAT",
     },
     createdAt: e.createdAt,
@@ -227,6 +231,18 @@ function publicStatus(e: MockEnrollment) {
 }
 
 export function registerEnrollmentMocks(): void {
+  registerMock("GET", "/v1/enrollments/admin/worklist", async () => ({
+    items: [],
+    limit: 100,
+    ungradedAssignments: 0,
+    asOf: new Date().toISOString(),
+  }));
+  registerMock("GET", "/v1/enrollments/mine", async () => ({ items: [] }));
+  registerMock("GET", "/v1/enrollments/payment-proofs", async () => ({
+    items: [],
+    total: 0,
+    nextCursor: null,
+  }));
   registerMock("POST", "/v1/enrollments", async (init: ApiRequestInit) => {
     await delay(250);
     const input = (init.body ?? {}) as Record<string, unknown>;
@@ -280,7 +296,7 @@ export function registerEnrollmentMocks(): void {
         },
         nextSteps: [
           "Check your inbox — confirmation sent.",
-          "We will contact you within 24 working hours.",
+          "We aim to reply within two working days.",
           "If you choose to pay, use the payment link or status page; payment is recorded against your application.",
           "Admissions confirms course availability, your place and start date before sharing the welcome-pack details.",
         ],

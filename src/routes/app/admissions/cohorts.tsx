@@ -22,6 +22,7 @@ import { deleteCohort, fetchCohorts, saveCohort, type Cohort } from "@/lib/api/o
 import { downloadCohortCalendar } from "@/lib/calendar";
 import { isMockMode } from "@/lib/env";
 import { ApiError } from "@/lib/errors";
+import { apiFetch } from "@/lib/api/client";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/admissions/cohorts")({
@@ -57,11 +58,14 @@ function CohortsPage() {
     programSlug: "",
     startDate: "",
     endDate: "",
-    days: "Mon/Wed/Fri",
-    timeSlot: "evening" as Cohort["timeSlot"],
-    mode: "hybrid" as Cohort["mode"],
+    days: "",
+    timeSlot: "any" as Cohort["timeSlot"],
+    mode: "onsite" as Cohort["mode"],
     capacity: "",
     notes: "",
+    startTime: "",
+    sessionMinutes: "",
+    enrollmentOpen: false,
   });
   const [error, setError] = useState("");
 
@@ -74,6 +78,10 @@ function CohortsPage() {
     mutationFn: () =>
       saveCohort({
         label: form.label,
+        kind: "short",
+        enrollmentOpen: form.enrollmentOpen,
+        startTime: form.startTime || undefined,
+        sessionMinutes: form.sessionMinutes ? Number(form.sessionMinutes) : undefined,
         programSlug: form.programSlug,
         startDate: form.startDate,
         endDate: form.endDate || undefined,
@@ -92,6 +100,16 @@ function CohortsPage() {
       setError(err instanceof ApiError ? err.message : "Could not save the cohort."),
   });
 
+  const toggleOpen = useMutation({
+    mutationFn: (cohort: Cohort) =>
+      apiFetch(`/v1/cohorts/${cohort.id}`, {
+        method: "PATCH",
+        body: { enrollmentOpen: !cohort.enrollmentOpen },
+      }),
+    onSuccess: invalidate,
+    onError: (err) =>
+      setError(err instanceof Error ? err.message : "Could not change availability."),
+  });
   const remove = useMutation({
     mutationFn: (id: string) => deleteCohort(id),
     onSuccess: invalidate,
@@ -158,6 +176,9 @@ function CohortsPage() {
                   <div key={cohort.id} className="rounded-lg border p-4">
                     <div className="flex flex-wrap items-center gap-2">
                       <p className="text-sm font-semibold">{cohort.label}</p>
+                      <Badge variant="outline">
+                        {cohort.enrollmentOpen ? "Offers open" : "New offers closed"}
+                      </Badge>
                       <Badge
                         className={cn(
                           "border-0 text-[11px] font-semibold",
@@ -193,6 +214,14 @@ function CohortsPage() {
                       <p className="text-muted-foreground mt-1 text-xs">{cohort.notes}</p>
                     )}
                     <div className="mt-3 flex gap-2">
+                      <Button
+                        size="sm"
+                        variant="outline"
+                        disabled={toggleOpen.isPending}
+                        onClick={() => toggleOpen.mutate(cohort)}
+                      >
+                        {cohort.enrollmentOpen ? "Close new offers" : "Open after readiness check"}
+                      </Button>
                       <Button
                         type="button"
                         size="sm"
@@ -234,22 +263,26 @@ function CohortsPage() {
                 }}
                 className="space-y-3"
               >
+                <p className="text-xs text-muted-foreground">
+                  Start with one deliverable short-course cohort. Saving dates alone does not open
+                  payment.
+                </p>
                 <label className="text-xs font-medium">
                   Label
                   <input
                     required
                     value={form.label}
                     onChange={(e) => setForm({ ...form, label: e.target.value })}
-                    placeholder="e.g. Data Analytics & AI — March 2027"
+                    placeholder="e.g. Microsoft Office — confirmed intake"
                     className={cn(inputClass, "mt-1")}
                   />
                 </label>
                 <label className="text-xs font-medium">
-                  Programme slug (optional)
+                  Exact short-course slug
                   <input
                     value={form.programSlug}
                     onChange={(e) => setForm({ ...form, programSlug: e.target.value })}
-                    placeholder="e.g. web-development-professional"
+                    placeholder="e.g. microsoft-office"
                     className={cn(inputClass, "mt-1 font-mono text-xs")}
                   />
                 </label>
@@ -329,6 +362,38 @@ function CohortsPage() {
                   />
                 </label>
                 {error && <p className="text-error text-xs">{error}</p>}
+                <label className="block text-xs font-medium">
+                  Actual first-session time (WAT)
+                  <input
+                    type="time"
+                    value={form.startTime}
+                    onChange={(e) => setForm({ ...form, startTime: e.target.value })}
+                    className={inputClass}
+                  />
+                </label>
+                <label className="block text-xs font-medium">
+                  Actual session length (minutes)
+                  <input
+                    type="number"
+                    min="30"
+                    max="480"
+                    value={form.sessionMinutes}
+                    onChange={(e) => setForm({ ...form, sessionMinutes: e.target.value })}
+                    className={inputClass}
+                  />
+                </label>
+                <label className="flex items-start gap-2 text-xs">
+                  <input
+                    type="checkbox"
+                    checked={form.enrollmentOpen}
+                    onChange={(e) => setForm({ ...form, enrollmentOpen: e.target.checked })}
+                  />
+                  <span>
+                    Open for reviewed offers: teaching, preparation, feedback, timetable, room and
+                    device capacity have been checked. The matching curriculum must be installed. No
+                    applicant is automatically placed.
+                  </span>
+                </label>
                 <Button type="submit" className="w-full font-semibold" disabled={create.isPending}>
                   {create.isPending ? (
                     <Loader2 className="size-4 animate-spin" />

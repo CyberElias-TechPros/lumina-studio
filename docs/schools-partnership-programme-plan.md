@@ -30,11 +30,11 @@ wrong is a term's worth of instructor hours committed to a timetable you cannot
 fill — which is why §5 (fees, minimums and the capacity check) matters as much
 as the curriculum.
 
-**One honest caution about the two proposals** you pasted: they disagree with the
-live site on the address (**24 vs 24/26 Ebony Road**), and both fee lists differ
-from the published catalogue. Those contradictions must be fixed _before_ this
-goes to a school head, because a school business officer will check. Details and
-the exact lines to change: `docs/automation-package-reconciliation.md`.
+**Address resolved by the owner on 17 October 2026:** use **24 Ebony Road, off
+Rumuola Road, Port Harcourt**, matching the utility bills. Some signboards say
+26; do not use that number as the official address. The fee lists in the two
+proposals still need reconciliation with the published catalogue before sending
+them to a school head. See `docs/automation-package-reconciliation.md`.
 
 ---
 
@@ -410,9 +410,9 @@ browser. The end-of-term report doubles as a leave-behind for the _next_ school.
 
 ## 11. Decisions I need from you
 
-1. **Address:** is it **24** or **24/26 Ebony Road**? The site, the FAQ, the map and
-   the app all say 26; the proposal and the automation package say 24. One of
-   them is wrong in front of customers.
+1. **Address — resolved 17 October 2026:** **24 Ebony Road, off Rumuola Road,
+   Port Harcourt**, as confirmed by the owner from the utility bills. Some
+   signboards say 26; official contact details should use 24.
 2. **Fees:** the automation package quotes Web Development at ₦150,000/8 weeks,
    Cybersecurity ₦200,000/10 weeks, UI/UX ₦120,000/6 weeks — none of which match
    the published catalogue (₦20k–₦60k short courses; ₦150k–₦320k long-form

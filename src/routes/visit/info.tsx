@@ -12,7 +12,7 @@ export const Route = createFileRoute("/visit/info")({
     getPageHead({
       title: "How to find us — Cyber Elias Academy",
       description:
-        "Cyber Elias Academy is at 24/26 Ebony Road, off Rumuola Road, Port Harcourt. Opening hours Monday to Saturday, 8:00–20:00.",
+        "Cyber Elias Academy is at 24 Ebony Road, off Rumuola Road, Port Harcourt. Opening hours Monday to Saturday, 8:00–20:00.",
       path: "/visit/info",
     }),
   component: VisitInfoPage,
@@ -24,7 +24,7 @@ function VisitInfoPage() {
       <PageHero
         eyebrow="Directions"
         title="How to find us"
-        description="24/26 Ebony Road, off Rumuola Road, Port Harcourt. One classroom. Call if you want to sit in on a session."
+        description="24 Ebony Road, off Rumuola Road, Port Harcourt. One classroom. Call if you want to sit in on a session."
       />
 
       <section className="container-page grid gap-4 py-10 sm:grid-cols-2 lg:grid-cols-4 md:py-12">
@@ -44,7 +44,7 @@ function VisitInfoPage() {
             <MapPin className="size-5" /> Address
           </h2>
           <p className="text-muted-foreground mt-3 text-sm leading-relaxed">
-            24/26 Ebony Road, Off Rumuola Road, Port Harcourt, Rivers State. Keke, taxi or bus to
+            24 Ebony Road, Off Rumuola Road, Port Harcourt, Rivers State. Keke, taxi or bus to
             Rumuola, then a short walk.
           </p>
           <ul className="text-muted-foreground mt-6 space-y-2 text-sm leading-relaxed">

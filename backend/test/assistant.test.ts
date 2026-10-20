@@ -115,7 +115,8 @@ describe("assistant grounding", () => {
     const prompt = String(messages[0]!.content);
     // Real fee, real duration, real contact channels — not invented values.
     expect(prompt).toContain("60,000");
-    expect(prompt).toMatch(/24\/26 Ebony/);
+    expect(prompt).toContain("24 Ebony Road, off Rumuola Road, Port Harcourt");
+    expect(prompt).not.toMatch(/(?:24\/26|26) Ebony Road/);
     expect(prompt).toContain("help@cea.ng");
     expect(prompt).toMatch(/Web Development/);
     // Hard rules present.

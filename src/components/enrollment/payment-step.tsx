@@ -1,5 +1,7 @@
 "use client";
 
+import { TUITION_POLICY } from "@/data/academy/tuition-policy";
+
 import { BadgeCheck, CreditCard, Landmark, Sparkles } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
@@ -61,12 +63,18 @@ export function PaymentStep({ meta, draft, update }: PaymentStepProps) {
               {usesDeposit && (
                 <div className="rounded-lg bg-card px-3 py-2.5 text-xs leading-relaxed">
                   <p className="font-semibold">
-                    Pay {formatFee(deposit)} now · {formatFee(due - deposit)}{" "}
-                    {meta.kind === "short" ? "at mid-course" : "in equal monthly instalments"}
+                    After offer acceptance: {formatFee(deposit)} before class ·{" "}
+                    {formatFee(due - deposit)}{" "}
+                    {meta.kind === "short"
+                      ? "before the second half (exact date in your offer)"
+                      : "in equal monthly instalments"}
                   </p>
                   <p className="text-muted-foreground mt-0.5">
-                    Deposit refundable up to 7 days before start · transferable once to a friend or
-                    the next cohort.
+                    {TUITION_POLICY.refundSummary}{" "}
+                    <a className="underline" href="/terms#tuition">
+                      Read the tuition policy
+                    </a>
+                    .
                   </p>
                 </div>
               )}
@@ -83,6 +91,7 @@ export function PaymentStep({ meta, draft, update }: PaymentStepProps) {
             return (
               <button
                 key={p.value}
+                aria-pressed={isSel}
                 type="button"
                 onClick={() => update({ paymentPlan: p.value as EnrollmentDraft["paymentPlan"] })}
                 className={cn(
@@ -113,6 +122,7 @@ export function PaymentStep({ meta, draft, update }: PaymentStepProps) {
           <button
             type="button"
             onClick={() => update({ paymentMethod: "paystack" })}
+            aria-pressed={draft.paymentMethod === "paystack"}
             className={cn(
               "rounded-lg border px-4 py-3 text-left transition-all",
               draft.paymentMethod === "paystack"
@@ -130,6 +140,7 @@ export function PaymentStep({ meta, draft, update }: PaymentStepProps) {
           <button
             type="button"
             onClick={() => update({ paymentMethod: "bank-transfer" })}
+            aria-pressed={draft.paymentMethod === "bank-transfer"}
             className={cn(
               "rounded-lg border px-4 py-3 text-left transition-all",
               draft.paymentMethod === "bank-transfer"
@@ -141,13 +152,15 @@ export function PaymentStep({ meta, draft, update }: PaymentStepProps) {
               <Landmark className="text-primary size-4" /> Direct bank transfer
             </p>
             <p className="text-muted-foreground mt-0.5 text-xs">
-              We send the account details and confirm your payment by WhatsApp
+              Instructions appear after offer acceptance. Report your transfer online; CEA verifies
+              it against bank records.
             </p>
           </button>
         </div>
         <p className="text-muted-foreground mt-2 flex items-center gap-1.5 text-xs">
           <BadgeCheck className="text-success size-3.5" />
-          You can pay on the next screen after submitting — applying itself is always free.
+          No payment on submission. Review and accept a confirmed offer first; applying is always
+          free.
         </p>
       </div>
     </div>

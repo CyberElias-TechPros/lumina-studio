@@ -13,8 +13,13 @@ start date, certificate claim or policy. Fees are in Nigerian Naira.
 
 ## Contact
 - Cyber Elias Academy Ltd (RC 8413776)
-- 24/26 Ebony Road, off Rumuola Road, Port Harcourt, Rivers State
-- Monday–Saturday, 8:00–20:00 WAT
+- 24 Ebony Road, off Rumuola Road, Port Harcourt, Rivers State
+- Premises hours: Monday–Saturday, 8:00–20:00 WAT; this is not uninterrupted support availability.
+- We aim to reply within two working days, Monday–Saturday, excluding public holidays. Teaching may delay an immediate reply.
+- Applying is free. A preference or application reference is not a reserved place. Do not pay until you have reviewed and accepted a confirmed course offer.
+- Short courses: pay in full, or 50% before the first session and 50% before the second half. Your offer states the exact balance date. No automatic late-payment penalties.
+- Full refund if CEA cancels before teaching starts, or if you withdraw at least seven calendar days before the first session. Later cancellations follow the itemised tuition refund policy; no flat administration penalty.
+- Policy details: https://www.cea.ng/terms#tuition
 - Phone / WhatsApp: +234 905 862 8386 (call or WhatsApp)
 - Email: help@cea.ng · Website: https://www.cea.ng
 - Certificates are verifiable at cea.ng/certificates/verify. Say what a course
@@ -23,7 +28,7 @@ start date, certificate claim or policy. Fees are in Nigerian Naira.
 ## Payments
 - Online: Card, bank or USSD via the secure checkout on cea.ng/apply
 - Direct transfer: Cyber Elias Academy Ltd · UBA · account number 1028649972 (bank transfer) — report the transfer from your application status page. Finance verifies it against the bank statement before confirming payment; admissions confirms course availability, your place and start date separately.
-- Short-course payment plans: Pay in full (Pay the full fee before the course starts; admissions confirms availability and dates separately.); 50% now · 50% at mid-course (Pay half now; the balance is due at week 2 (or the midpoint). Admissions confirms availability and dates separately.)
+- Short-course payment plans: Pay in full (Pay only after accepting a confirmed course offer, before the first session.); 50% before class · 50% before the second half (After accepting your course offer, pay half before the first session. Your offer gives the exact balance date before the second half.)
 - No application fee. Fees cover class materials and the published notes.
 
 ## Core short courses (13)
@@ -61,7 +66,7 @@ A programme listing or development/mock cohort entry is not proof that a longer 
 Only state a start date when the live admissions cohort register returns a course-specific cohort with status scheduled. A generic rolling-intake row, a preferred date entered by an applicant, or a mock fixture is not a confirmed date. If no course-specific date is listed, say so and ask admissions to confirm availability.
 
 ## What to bring
-- A laptop or reliable access to one (Typing & Computer Basics can run entirely on academy machines)
+- Confirm your laptop, academy-computer allocation and between-class practice access in your offer; equipment is not reserved by applying
 - A small notebook for assignments — most practice happens at the machine
 - Data or an eSIM if you'll need internet between sessions
 - Arrive 10 minutes before your first session so setup takes two minutes, not twenty
@@ -76,7 +81,7 @@ A: Fees are listed in naira on each course page. Monthly instalments can be arra
 Q: What do I get at the end?
 A: A named piece of work — a document, a spreadsheet, a design, a website, a serviced machine — and a certificate awarded for that work, not for attendance. Certificates can be checked on our public verification page.
 Q: Where is the academy?
-A: 24/26 Ebony Road, off Rumuola Road, Port Harcourt, Rivers State. Some courses can also be followed online.
+A: 24 Ebony Road, off Rumuola Road, Port Harcourt, Rivers State. Some courses can also be followed online.
 Q: How do I apply?
 A: Use the application form, or visit or call during opening hours. There is no application fee. We reply with dates, the fee, and what to bring.
 Q: Is CEA accredited?

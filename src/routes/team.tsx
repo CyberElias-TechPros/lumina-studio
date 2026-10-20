@@ -121,7 +121,7 @@ function TeamPage() {
 
         <p className="text-muted-foreground mx-auto mt-6 flex max-w-3xl flex-wrap gap-4 text-sm">
           <span className="flex items-center gap-2">
-            <MapPin className="size-4" /> 24/26 Ebony Road, Port Harcourt
+            <MapPin className="size-4" /> 24 Ebony Road, Port Harcourt
           </span>
           <a href="mailto:help@cea.ng" className="hover:text-foreground flex items-center gap-2">
             <Mail className="size-4" /> help@cea.ng
@@ -177,7 +177,7 @@ function TeamPage() {
         <dl className="mx-auto mt-10 grid max-w-3xl gap-4 sm:grid-cols-2">
           {[
             { label: "Company", value: "Cyber Elias Academy Ltd · RC 8413776" },
-            { label: "Based in", value: "24/26 Ebony Road, Port Harcourt" },
+            { label: "Based in", value: "24 Ebony Road, Port Harcourt" },
             {
               label: "What we teach",
               value: "Short practical computer and digital-skills courses",

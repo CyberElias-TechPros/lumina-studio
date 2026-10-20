@@ -1,3 +1,4 @@
+import { TUITION_POLICY } from "@/data/academy/tuition-policy";
 import {
   Banknote,
   CalendarDays,
@@ -50,7 +51,7 @@ const SCHEDULE_LABELS: Record<string, string> = {
   afternoon: "Afternoon (14:00–16:00)",
   evening: "Evening (17:00–19:00)",
   any: "Flexible — where the timetable fits",
-  onsite: "Onsite at 24/26 Ebony Road",
+  onsite: "Onsite at 24 Ebony Road",
   online: "Online (live)",
   hybrid: "Hybrid (onsite + online)",
 };
@@ -123,7 +124,11 @@ export function InfoPanel({ meta, plan, timeSlot, mode, scheduleDays }: InfoPane
               {usesDeposit && (
                 <p className="text-muted-foreground mt-1 text-xs leading-relaxed">
                   {meta.kind === "short" ? "50%" : "30%"} deposit ({formatFee(deposit)}) is payable
-                  now; balance {meta.kind === "short" ? "at mid-course" : "in monthly instalments"}.
+                  only after accepting an offer and before class; balance{" "}
+                  {meta.kind === "short"
+                    ? "before the second half (exact date in your offer)"
+                    : "in monthly instalments"}
+                  .
                 </p>
               )}
               <ul className="text-muted-foreground mt-2 space-y-1 text-xs leading-relaxed">
@@ -189,16 +194,15 @@ export function InfoPanel({ meta, plan, timeSlot, mode, scheduleDays }: InfoPane
           </ul>
         </Section>
 
-        <Section icon={ShieldCheck} title="Guarantees">
+        <Section icon={ShieldCheck} title="Before you pay">
           <ul className="text-muted-foreground space-y-1 text-xs leading-relaxed">
             <li className="flex gap-1.5">
               <ReceiptText className="text-primary mt-0.5 size-3.5 shrink-0" />
-              Every class note is published online — you can read the whole curriculum before
-              paying.
+              Read the published free notes and labelled course outlines before deciding.
             </li>
             <li className="flex gap-1.5">
               <ShieldCheck className="text-primary mt-0.5 size-3.5 shrink-0" />
-              Deposit refundable up to 7 days before start · transferable once.
+              {TUITION_POLICY.refundSummary}
             </li>
           </ul>
         </Section>
@@ -206,7 +210,7 @@ export function InfoPanel({ meta, plan, timeSlot, mode, scheduleDays }: InfoPane
         <Section icon={MapPin} title="Visit or call">
           <div className="space-y-1.5 text-xs leading-relaxed">
             <p className="text-muted-foreground">
-              24/26 Ebony Road, Off Rumuola Road, Port Harcourt, Rivers State
+              24 Ebony Road, Off Rumuola Road, Port Harcourt, Rivers State
             </p>
             <p className="flex items-center gap-1.5 text-muted-foreground">
               <Phone className="size-3.5" /> +234 905 862 8386 · Mon–Sat 8:00–20:00 WAT

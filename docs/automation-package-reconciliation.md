@@ -64,18 +64,19 @@ list is current — if the package's numbers are the _new_ prices, the site data
 the enrollment form's `PROGRAMS` map (`backend/src/routes/enrollments.ts`) and
 the fee summary emails must change together, and I'll do that as one change.
 
-### 1.2 Address: 24 vs 24/26 Ebony Road
+### 1.2 Official address — owner confirmed 17 October 2026
 
-| Source                                                                                 | Says                                     |
-| -------------------------------------------------------------------------------------- | ---------------------------------------- |
-| Site FAQ, contact page, long-form data, enrolment success screen, ICS invite, receipts | **24/26 Ebony Road**                     |
-| Package `/greet` quick reply and Brevo template 1                                      | **24 Ebony Road, Rumuchita**             |
-| Both school proposals                                                                  | **24 Ebony Road** (one says "Rumuchita") |
+**Use: 24 Ebony Road, off Rumuola Road, Port Harcourt, Rivers State, Nigeria.**
 
-> **Resolved 2 Oct 2026.** The canonical address is **24/26 Ebony Road, off Rumuola
-> Road, Port Harcourt** (no "Rumuchita"). Corrected repo-wide: `src/data/site.ts`,
-> `src/data/academy/longform.ts`, `backend/src/routes/enrollments.ts` (receipt
-> footer + ICS), the WhatsApp quick replies and both proposal documents.
+The owner confirmed that the utility bills use **24 Ebony Road**. Some signboards
+say **26 Ebony Road**; that explains the previous confusion but is not an
+alternative official address. This decision supersedes the 2 October choice of
+`24/26 Ebony Road`. The bills themselves were not inspected in this review.
+
+Use `24 Ebony Road` in public contact details, SEO structured data, applications,
+receipts, emails, calendar invites, proposals and reusable WhatsApp replies.
+External listings and physical signboards require a separate owner/operator
+update; editing this repository does not change those listings.
 
 ### 1.3 Identity and contact details
 
@@ -140,12 +141,12 @@ Paste these into WhatsApp Business → Business tools → Quick replies.
 
 | Shortcut   | Message                                                                                                                                                                                                                                                                                                                                                                                                                                |
 | ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `/greet`   | Good day 👋 Welcome to **Cyber Elias Academy**. Tell me which skill you want to learn and I'll send the fee, duration and next start date. We are at 24/26 Ebony Road, Port Harcourt · cea.ng                                                                                                                                                                                                                                          |
+| `/greet`   | Good day 👋 Welcome to **Cyber Elias Academy**. Tell me which skill you want to learn and I'll send the fee, duration and next start date. We are at 24 Ebony Road, Port Harcourt · cea.ng                                                                                                                                                                                                                                          |
 | `/fees`    | Our current fees: short courses **₦20,000–₦60,000** (2–6 weeks, 2 days/week) and long-form diplomas **₦150,000–₦320,000** (3–6 months, 3 days/week, deposit plan available). Which course? I'll send the exact fee and payment plan. Full list: cea.ng/programs                                                                                                                                                                        |
 | `/courses` | We train in Microsoft Office, Typing & Computer Basics, Data Entry, Graphic Design, Web Design, Web Development, Digital Marketing, Social Media Management, Content Creation, Video Editing, Photography, WordPress, Computer Repairs, Networking, IT Support, Data Analytics, Cybersecurity, AI Productivity, Online Teaching, Business & Freelancing, Mobile App Development, Digital Productivity. Details & fees: cea.ng/programs |
 | `/pay`     | Two ways to pay: (1) card/transfer/USSD on our site — cea.ng/apply, or (2) bank transfer to **Cyber Elias Academy Ltd · UBA · 1028649972**. After paying, send your name and the receipt here and we confirm your seat the same day.                                                                                                                                                                                                   |
 | `/confirm` | Payment received ✅ Your seat is confirmed. You'll get an email with your class schedule, materials and classroom code. Welcome to CEA!                                                                                                                                                                                                                                                                                                |
-| `/remind`  | Reminder: your class holds {day} at {time} at **24/26 Ebony Road** (or online — the link is in your email). Bring your laptop and notebook. Reply here if you'll be late.                                                                                                                                                                                                                                                              |
+| `/remind`  | Reminder: your class holds {day} at {time} at **24 Ebony Road** (or online — the link is in your email). Bring your laptop and notebook. Reply here if you'll be late.                                                                                                                                                                                                                                                              |
 | `/cert`    | Certificates are issued when you complete your project. Each has a code any employer can verify at cea.ng/certificates/verify                                                                                                                                                                                                                                                                                                          |
 | `/refer`   | Refer a friend 🎁 Ask them to put your name in "How did you hear about us" when they register — once they pay, your reward on the next course is processed.                                                                                                                                                                                                                                                                            |
 | `/corp`    | We run corporate and school programmes (team upskilling, term-based digital skills for schools) with a custom proposal. Send your organisation name, number of people and the skills needed — proposal within 48 hours.                                                                                                                                                                                                                |

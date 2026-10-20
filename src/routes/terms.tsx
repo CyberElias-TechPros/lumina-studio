@@ -2,6 +2,7 @@ import { createFileRoute } from "@/lib/next-compat/route-definition";
 import { Link } from "@/lib/next-compat/router";
 import { getPageHead } from "@/lib/seo";
 import { PageShell, PageHero } from "@/components/marketing/shell";
+import { TUITION_POLICY } from "@/data/academy/tuition-policy";
 import { Reveal } from "@/components/motion";
 
 export const Route = createFileRoute("/terms")({
@@ -17,7 +18,7 @@ export const Route = createFileRoute("/terms")({
 });
 
 function TermsPage() {
-  const lastUpdated = "20 September 2026";
+  const lastUpdated = "17 October 2026";
 
   return (
     <PageShell>
@@ -50,10 +51,12 @@ function TermsPage() {
           <Reveal delay={0.1}>
             <h2 className="font-display text-2xl font-bold">3. Courses</h2>
             <p className="text-muted-foreground mt-4 leading-relaxed">
-              Enrolment needs an application, our reply with dates and the fee, and payment of that
-              fee. Admission is at the academy’s discretion. Fees are listed in naira on each course
-              page. Monthly instalments can be arranged for the length of the course, as agreed when
-              you apply. Default on payment may pause access until arrears are cleared.
+              {TUITION_POLICY.application} {TUITION_POLICY.payment} Before payment, your offer
+              confirms the timetable, equipment and practice access, all compulsory costs and
+              assessment requirements. Larger bespoke packages need a separate written agreement.
+              After notice and an opportunity to agree an extension, overdue balances may pause
+              future instructor-led services where lawful. Receipts, completed work and free public
+              notes remain available.
             </p>
             <p className="text-muted-foreground mt-4 leading-relaxed">
               We may change a timetable, instructor, or tool with notice. Certificates are issued
@@ -63,20 +66,25 @@ function TermsPage() {
           </Reveal>
 
           <Reveal delay={0.15}>
-            <h2 className="font-display text-2xl font-bold">4. Refunds</h2>
-            <ul className="text-muted-foreground mt-4 list-inside list-disc space-y-2">
-              <li>
-                Before the first session, and at least 14 days before the start date: full refund
-                minus a ₦15,000 administration fee.
-              </li>
-              <li>Less than 14 days before the start date: 50% of fees paid.</li>
-              <li>
-                After the first session: no refund, except at our discretion for a documented
-                emergency.
-              </li>
-              <li>Instalments: the same timetable, applied to amounts already paid.</li>
-              <li>Refunds go back to the original payment method within 30 business days.</li>
+            <h2 id="tuition" className="font-display scroll-mt-24 text-2xl font-bold">
+              4. Tuition refunds, attendance and support
+            </h2>
+            <p className="text-muted-foreground mt-4 text-sm">
+              Policy version: {TUITION_POLICY.version}. This is the tuition policy, not the separate
+              shop returns policy.
+            </p>
+            <ul className="text-muted-foreground mt-4 list-disc space-y-3 pl-5">
+              {TUITION_POLICY.refunds.map((rule) => (
+                <li key={rule}>{rule}</li>
+              ))}
             </ul>
+            <p className="text-muted-foreground mt-4 leading-relaxed">
+              {TUITION_POLICY.attendance}
+            </p>
+            <p className="text-muted-foreground mt-4 leading-relaxed">{TUITION_POLICY.support}</p>
+            <p className="text-muted-foreground mt-4 leading-relaxed">
+              {TUITION_POLICY.protection}
+            </p>
           </Reveal>
 
           <Reveal delay={0.2}>
@@ -100,7 +108,8 @@ function TermsPage() {
             <h2 className="font-display text-2xl font-bold">7. Acceptable use</h2>
             <p className="text-muted-foreground mt-4 leading-relaxed">
               Do not share logins, harass anyone here, upload malware, or break the law using this
-              site. We may suspend access without refund for serious breaches.
+              site. We may suspend access for serious breaches. Any refund calculation remains
+              subject to §4 and applicable rights.
             </p>
           </Reveal>
 
@@ -143,7 +152,7 @@ function TermsPage() {
             <p className="text-muted-foreground mt-4 leading-relaxed">
               Cyber Elias Academy Ltd
               <br />
-              24/26 Ebony Road, Off Rumuola Road
+              24 Ebony Road, Off Rumuola Road
               <br />
               Port Harcourt, Rivers State, Nigeria
               <br />

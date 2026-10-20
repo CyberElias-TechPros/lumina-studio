@@ -287,7 +287,7 @@ function AdmissionsRegistrations() {
                             : ""}
                         </p>
                         <div className="ml-auto flex items-center gap-2">
-                          {next && (
+                          {next && !["offer", "enrolled"].includes(next) && (
                             <Button
                               variant="outline"
                               size="sm"
@@ -299,19 +299,32 @@ function AdmissionsRegistrations() {
                               <ArrowRight className="ml-1 size-3" />
                             </Button>
                           )}
+                          {next && ["offer", "enrolled"].includes(next) && (
+                            <a
+                              className="text-xs text-primary underline"
+                              href="/app/admin/operations"
+                            >
+                              Review offer / access
+                            </a>
+                          )}
                           {r.stage !== "declined" && r.stage !== "enrolled" && (
                             <Button
                               variant="ghost"
                               size="sm"
                               className="h-7 text-error font-semibold hover:text-error"
                               disabled={advance.isPending}
-                              onClick={() =>
-                                advance.mutate({
-                                  ref: r.ref,
-                                  stage: "declined",
-                                  note: "Declined by admissions",
-                                })
-                              }
+                              onClick={() => {
+                                if (
+                                  window.confirm(
+                                    "Decline this unpaid application? Check the bank and all pending payment attempts first. Paid or active agreements require a separate recorded reconciliation/refund; this action must not erase them.",
+                                  )
+                                )
+                                  advance.mutate({
+                                    ref: r.ref,
+                                    stage: "declined",
+                                    note: "Declined after owner review; no paid/pending agreement cancelled.",
+                                  });
+                              }}
                             >
                               <XCircle className="mr-1 size-3" /> Decline
                             </Button>

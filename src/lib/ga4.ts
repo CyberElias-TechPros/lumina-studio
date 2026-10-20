@@ -3,6 +3,11 @@ const SCRIPT_ATTRIBUTE = "data-cea-ga4";
 
 export function initGA4(measurementId: string) {
   if (typeof window === "undefined" || !measurementId) return;
+  // Off by default: a previously loaded tag can observe later private SPA URLs.
+  // Enable only after a separate tracking/privacy review, not as a launch prerequisite.
+  if (process.env.NEXT_PUBLIC_ENABLE_PUBLIC_TRACKING !== "true") return;
+
+  if (/^\/(apply|auth|app|portal)(\/|$)/.test(window.location.pathname)) return;
 
   // Analytics is optional. Do not load a third-party script before the visitor
   // has explicitly opted in from the consent banner.
@@ -25,6 +30,9 @@ export function initGA4(measurementId: string) {
     gtag("js", new Date());
     gtag("config", measurementId, {
       anonymize_ip: true,
+      page_location: `${window.location.origin}${window.location.pathname}`,
+      page_referrer: "",
+      allow_google_signals: false,
       cookie_flags: "SameSite=None;Secure",
     });
   };

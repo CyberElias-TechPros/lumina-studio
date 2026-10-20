@@ -68,7 +68,7 @@ export function SiteFooter() {
             <address className="text-muted-foreground mt-6 space-y-2 text-sm not-italic">
               <p className="flex items-start gap-2.5">
                 <MapPin className="mt-0.5 size-4 shrink-0" />
-                24/26 Ebony Road, Off Rumuola Road, Port Harcourt, Rivers State
+                24 Ebony Road, Off Rumuola Road, Port Harcourt, Rivers State
               </p>
               <p>
                 <a
