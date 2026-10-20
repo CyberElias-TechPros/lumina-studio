@@ -10,6 +10,7 @@ A Capacitor Android application sharing the CEA website and server-authorised CE
 - Reader is an isolated local-only WebView, without a JavaScript/native bridge. Remote requests are blocked; no private course content, accounts or payment data is bundled.
 - Public lesson/course sharing strips query strings/fragments. Private/auth/application URLs are replaced with the public home URL.
 - Save current CEA page as PDF through Android's print dialog, with a private-data warning.
+- Generated blob/data exports up to 10 MB are captured by the native adapter and saved through Android's system document picker. No broad storage permission or arbitrary filesystem path is accepted. CSV/report/calendar/account-export bytes stay on-device; verify each source workflow before release.
 - Android back navigation and exit confirmation; external HTTPS/mail/phone links are guarded. Arbitrary intent, JavaScript, file and cleartext navigation is blocked.
 - Explicit third-party-cookie support for CEA's cross-origin HttpOnly API sessions. This still needs authenticated staging/device testing.
 - Android App Link intent handling for the configured exact HTTPS host. OS verification needs the real signing fingerprint hosted in assetlinks.json.
@@ -76,7 +77,7 @@ The command rejects invalid fingerprints. Publish the reviewed file at `https://
 
 1. Authenticated staging tests: password/magic link/MFA/expiry/re-entry, cross-origin cookies, account switching/sign-out and all role ownership/permission boundaries.
 2. Paystack test-mode payment success/cancel/pending/return, bank handoff and idempotent recovery. External browser checkout may require sign-in on return; App Link configuration alone does not solve all session handoffs.
-3. Direct file downloads currently hand off to a browser. Blob exports are **not** implemented; PDF printing is an alternative for printable pages, not universal binary download parity. Verify system file picker/camera, live sessions and large uploads on low-end physical phones.
+3. Direct file downloads currently hand off to a browser. Generated blob/data exports now have a bounded system-picker adapter; cancellation, >10 MB files and representative real exports still need device acceptance. PDF printing is an alternative for printable pages, not universal binary download parity. Verify system file picker/camera, live sessions and large uploads on low-end physical phones.
 4. Native push/FCM is **not implemented**. The existing web notification centre remains available; web VAPID push is not guaranteed in Android WebView. Service-account/device-token work is required for native delivery.
 5. Store policy/billing review (especially digital products versus physical tuition), account-deletion verification, privacy/data safety, current target SDK compliance, signed build, screenshots and physical-device accessibility/security acceptance.
 

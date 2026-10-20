@@ -2,10 +2,10 @@ name: Android debug APK
 on:
   workflow_dispatch:
   pull_request:
-    paths: ['apps/android/**', 'src/data/blog.ts', '.github/workflows/android.yml']
+    paths: ['apps/android/**', 'src/data/blog.ts', 'src/routes/**', '.github/workflows/android.yml']
   push:
     branches: ['arena/df91cdba-lumina-studio']
-    paths: ['apps/android/**', 'src/data/blog.ts', '.github/workflows/android.yml']
+    paths: ['apps/android/**', 'src/data/blog.ts', 'src/routes/**', '.github/workflows/android.yml']
 permissions:
   contents: read
 jobs:
@@ -23,11 +23,12 @@ jobs:
           distribution: temurin
           java-version: '21'
       - uses: gradle/actions/setup-gradle@v4
+      - run: node apps/android/scripts/route-inventory.mjs --check
       - run: npm ci && npm run typecheck && npm run sync
         working-directory: apps/android
       - run: |
           chmod +x gradlew
-          if ./gradlew assembleDebug testDebugUnitTest lintDebug > android-build.log 2>&1; then
+          if ./gradlew assembleDebug assembleDebugAndroidTest testDebugUnitTest lintDebug > android-build.log 2>&1; then
             tail -30 android-build.log
           else
             python3 -c 'from pathlib import Path; s=Path("android-build.log").read_text()[-7000:]; print("::error::"+s.replace("%","%25").replace("\n","%0A").replace("\r","%0D"))'
@@ -51,7 +52,7 @@ jobs:
           arch: x86_64
           disable-animations: true
           working-directory: apps/android/android
-          script: ./gradlew connectedDebugAndroidTest
+          script: ./gradlew connectedDebugAndroidTest > emulator-test.log 2>&1 || (python3 -c 'from pathlib import Path; s=Path("emulator-test.log").read_text()[-7000:]; print("::error::"+s.replace("%","%25").replace("\n","%0A").replace("\r","%0D"))'; exit 1)
       - name: Publish emulator test diagnostics
         if: always()
         run: |

@@ -1,0 +1,1701 @@
+{
+  "note": "Source-route reachability inventory, NOT proof of Android workflow coverage. Includes redirects and dynamic route patterns. Shared hosted site implements these routes; require device acceptance for each feature family.",
+  "routes": [
+    {
+      "route": "/",
+      "source": "src/routes/index.tsx"
+    },
+    {
+      "route": "/about",
+      "source": "src/routes/about.tsx"
+    },
+    {
+      "route": "/accessibility",
+      "source": "src/routes/accessibility.tsx"
+    },
+    {
+      "route": "/admissions",
+      "source": "src/routes/admissions.tsx"
+    },
+    {
+      "route": "/alumni",
+      "source": "src/routes/alumni.tsx"
+    },
+    {
+      "route": "/app/",
+      "source": "src/routes/app.index.tsx"
+    },
+    {
+      "route": "/app/account",
+      "source": "src/routes/app/account.tsx"
+    },
+    {
+      "route": "/app/accountant/",
+      "source": "src/routes/app/accountant/index.tsx"
+    },
+    {
+      "route": "/app/accountant/audit",
+      "source": "src/routes/app/accountant/audit.tsx"
+    },
+    {
+      "route": "/app/accountant/banking",
+      "source": "src/routes/app/accountant/banking.tsx"
+    },
+    {
+      "route": "/app/accountant/billing",
+      "source": "src/routes/app/accountant/billing.tsx"
+    },
+    {
+      "route": "/app/accountant/budgets",
+      "source": "src/routes/app/accountant/budgets.tsx"
+    },
+    {
+      "route": "/app/accountant/expenses",
+      "source": "src/routes/app/accountant/expenses.tsx"
+    },
+    {
+      "route": "/app/accountant/invoicing",
+      "source": "src/routes/app/accountant/invoicing.tsx"
+    },
+    {
+      "route": "/app/accountant/payments",
+      "source": "src/routes/app/accountant/payments.tsx"
+    },
+    {
+      "route": "/app/accountant/payroll",
+      "source": "src/routes/app/accountant/payroll.tsx"
+    },
+    {
+      "route": "/app/accountant/reports",
+      "source": "src/routes/app/accountant/reports.tsx"
+    },
+    {
+      "route": "/app/admin/",
+      "source": "src/routes/app/admin/index.tsx"
+    },
+    {
+      "route": "/app/admin/api-keys",
+      "source": "src/routes/app/admin/api-keys.tsx"
+    },
+    {
+      "route": "/app/admin/audit",
+      "source": "src/routes/app/admin/audit.tsx"
+    },
+    {
+      "route": "/app/admin/backups",
+      "source": "src/routes/app/admin/backups.tsx"
+    },
+    {
+      "route": "/app/admin/config",
+      "source": "src/routes/app/admin/config.tsx"
+    },
+    {
+      "route": "/app/admin/intake",
+      "source": "src/routes/app/admin/intake.tsx"
+    },
+    {
+      "route": "/app/admin/integrations",
+      "source": "src/routes/app/admin/integrations.tsx"
+    },
+    {
+      "route": "/app/admin/logs",
+      "source": "src/routes/app/admin/logs.tsx"
+    },
+    {
+      "route": "/app/admin/monitoring",
+      "source": "src/routes/app/admin/monitoring.tsx"
+    },
+    {
+      "route": "/app/admin/operations",
+      "source": "src/routes/app/admin/operations.tsx"
+    },
+    {
+      "route": "/app/admin/rate-limits",
+      "source": "src/routes/app/admin/rate-limits.tsx"
+    },
+    {
+      "route": "/app/admin/roles",
+      "source": "src/routes/app/admin/roles.tsx"
+    },
+    {
+      "route": "/app/admin/security",
+      "source": "src/routes/app/admin/security.tsx"
+    },
+    {
+      "route": "/app/admin/users",
+      "source": "src/routes/app/admin/users.tsx"
+    },
+    {
+      "route": "/app/admissions/",
+      "source": "src/routes/app/admissions/index.tsx"
+    },
+    {
+      "route": "/app/admissions/applications",
+      "source": "src/routes/app/admissions/applications.tsx"
+    },
+    {
+      "route": "/app/admissions/applications/$id",
+      "source": "src/routes/app/admissions/applications/$id.tsx"
+    },
+    {
+      "route": "/app/admissions/cohorts",
+      "source": "src/routes/app/admissions/cohorts.tsx"
+    },
+    {
+      "route": "/app/admissions/communication",
+      "source": "src/routes/app/admissions/communication.tsx"
+    },
+    {
+      "route": "/app/admissions/documents",
+      "source": "src/routes/app/admissions/documents.tsx"
+    },
+    {
+      "route": "/app/admissions/enrollment",
+      "source": "src/routes/app/admissions/enrollment.tsx"
+    },
+    {
+      "route": "/app/admissions/interviews",
+      "source": "src/routes/app/admissions/interviews.tsx"
+    },
+    {
+      "route": "/app/admissions/registrations",
+      "source": "src/routes/app/admissions/registrations.tsx"
+    },
+    {
+      "route": "/app/admissions/reports",
+      "source": "src/routes/app/admissions/reports.tsx"
+    },
+    {
+      "route": "/app/admissions/review",
+      "source": "src/routes/app/admissions/review.tsx"
+    },
+    {
+      "route": "/app/ai",
+      "source": "src/routes/app/ai.tsx"
+    },
+    {
+      "route": "/app/alumni/",
+      "source": "src/routes/app/alumni/index.tsx"
+    },
+    {
+      "route": "/app/alumni/events",
+      "source": "src/routes/app/alumni/events.tsx"
+    },
+    {
+      "route": "/app/alumni/find",
+      "source": "src/routes/app/alumni/find.tsx"
+    },
+    {
+      "route": "/app/alumni/give-back",
+      "source": "src/routes/app/alumni/give-back.tsx"
+    },
+    {
+      "route": "/app/alumni/hub",
+      "source": "src/routes/app/alumni/hub.tsx"
+    },
+    {
+      "route": "/app/alumni/jobs",
+      "source": "src/routes/app/alumni/jobs.tsx"
+    },
+    {
+      "route": "/app/alumni/mentorship",
+      "source": "src/routes/app/alumni/mentorship.tsx"
+    },
+    {
+      "route": "/app/alumni/network",
+      "source": "src/routes/app/alumni/network.tsx"
+    },
+    {
+      "route": "/app/alumni/profile",
+      "source": "src/routes/app/alumni/profile.tsx"
+    },
+    {
+      "route": "/app/alumni/stories",
+      "source": "src/routes/app/alumni/stories.tsx"
+    },
+    {
+      "route": "/app/assessments/",
+      "source": "src/routes/app/assessments/index.tsx"
+    },
+    {
+      "route": "/app/assessments/$assessmentId/take",
+      "source": "src/routes/app/assessments/$assessmentId/take.tsx"
+    },
+    {
+      "route": "/app/assignments/",
+      "source": "src/routes/app/assignments/index.tsx"
+    },
+    {
+      "route": "/app/assignments/$assignmentId",
+      "source": "src/routes/app/assignments/$assignmentId.tsx"
+    },
+    {
+      "route": "/app/assistant-insights",
+      "source": "src/routes/app/assistant-insights.tsx"
+    },
+    {
+      "route": "/app/attendance",
+      "source": "src/routes/app/attendance.tsx"
+    },
+    {
+      "route": "/app/behavioral-design/",
+      "source": "src/routes/app/behavioral-design/index.tsx"
+    },
+    {
+      "route": "/app/behavioral-design/ab-tests",
+      "source": "src/routes/app/behavioral-design/ab-tests.tsx"
+    },
+    {
+      "route": "/app/behavioral-design/analytics",
+      "source": "src/routes/app/behavioral-design/analytics.tsx"
+    },
+    {
+      "route": "/app/behavioral-design/flow-designer",
+      "source": "src/routes/app/behavioral-design/flow-designer.tsx"
+    },
+    {
+      "route": "/app/behavioral-design/funnels",
+      "source": "src/routes/app/behavioral-design/funnels.tsx"
+    },
+    {
+      "route": "/app/behavioral-design/habits",
+      "source": "src/routes/app/behavioral-design/habits.tsx"
+    },
+    {
+      "route": "/app/behavioral-design/interventions",
+      "source": "src/routes/app/behavioral-design/interventions.tsx"
+    },
+    {
+      "route": "/app/behavioral-design/nudge-campaigns",
+      "source": "src/routes/app/behavioral-design/nudge-campaigns.tsx"
+    },
+    {
+      "route": "/app/behavioral-design/segments",
+      "source": "src/routes/app/behavioral-design/segments.tsx"
+    },
+    {
+      "route": "/app/calendar",
+      "source": "src/routes/app/calendar.tsx"
+    },
+    {
+      "route": "/app/certificates",
+      "source": "src/routes/app/certificates.tsx"
+    },
+    {
+      "route": "/app/chat",
+      "source": "src/routes/app/chat.tsx"
+    },
+    {
+      "route": "/app/client/",
+      "source": "src/routes/app/client/index.tsx"
+    },
+    {
+      "route": "/app/client/contracts",
+      "source": "src/routes/app/client/contracts.tsx"
+    },
+    {
+      "route": "/app/client/documents",
+      "source": "src/routes/app/client/documents.tsx"
+    },
+    {
+      "route": "/app/client/invoices",
+      "source": "src/routes/app/client/invoices.tsx"
+    },
+    {
+      "route": "/app/client/messages",
+      "source": "src/routes/app/client/messages.tsx"
+    },
+    {
+      "route": "/app/client/projects/$projectId",
+      "source": "src/routes/app/client/projects/$projectId.tsx"
+    },
+    {
+      "route": "/app/client/projects/$projectId/tasks",
+      "source": "src/routes/app/client/projects/$projectId/tasks.tsx"
+    },
+    {
+      "route": "/app/client/proposals",
+      "source": "src/routes/app/client/proposals.tsx"
+    },
+    {
+      "route": "/app/client/support",
+      "source": "src/routes/app/client/support.tsx"
+    },
+    {
+      "route": "/app/conversion-copy/",
+      "source": "src/routes/app/conversion-copy/index.tsx"
+    },
+    {
+      "route": "/app/conversion-copy/ab-tests",
+      "source": "src/routes/app/conversion-copy/ab-tests.tsx"
+    },
+    {
+      "route": "/app/conversion-copy/ads",
+      "source": "src/routes/app/conversion-copy/ads.tsx"
+    },
+    {
+      "route": "/app/conversion-copy/analytics",
+      "source": "src/routes/app/conversion-copy/analytics.tsx"
+    },
+    {
+      "route": "/app/conversion-copy/briefs",
+      "source": "src/routes/app/conversion-copy/briefs.tsx"
+    },
+    {
+      "route": "/app/conversion-copy/email-sequences",
+      "source": "src/routes/app/conversion-copy/email-sequences.tsx"
+    },
+    {
+      "route": "/app/conversion-copy/landing-pages/$id",
+      "source": "src/routes/app/conversion-copy/landing-pages/$id.tsx"
+    },
+    {
+      "route": "/app/conversion-copy/library",
+      "source": "src/routes/app/conversion-copy/library.tsx"
+    },
+    {
+      "route": "/app/conversion-copy/style-guide",
+      "source": "src/routes/app/conversion-copy/style-guide.tsx"
+    },
+    {
+      "route": "/app/deadlines",
+      "source": "src/routes/app/deadlines.tsx"
+    },
+    {
+      "route": "/app/department/",
+      "source": "src/routes/app/department/index.tsx"
+    },
+    {
+      "route": "/app/department/approvals",
+      "source": "src/routes/app/department/approvals.tsx"
+    },
+    {
+      "route": "/app/department/calendar",
+      "source": "src/routes/app/department/calendar.tsx"
+    },
+    {
+      "route": "/app/department/curriculum",
+      "source": "src/routes/app/department/curriculum.tsx"
+    },
+    {
+      "route": "/app/department/enrollment",
+      "source": "src/routes/app/department/enrollment.tsx"
+    },
+    {
+      "route": "/app/department/instructors",
+      "source": "src/routes/app/department/instructors.tsx"
+    },
+    {
+      "route": "/app/department/quality",
+      "source": "src/routes/app/department/quality.tsx"
+    },
+    {
+      "route": "/app/department/reports",
+      "source": "src/routes/app/department/reports.tsx"
+    },
+    {
+      "route": "/app/design/",
+      "source": "src/routes/app/design/index.tsx"
+    },
+    {
+      "route": "/app/design/collaboration",
+      "source": "src/routes/app/design/collaboration.tsx"
+    },
+    {
+      "route": "/app/design/components",
+      "source": "src/routes/app/design/components.tsx"
+    },
+    {
+      "route": "/app/design/exports",
+      "source": "src/routes/app/design/exports.tsx"
+    },
+    {
+      "route": "/app/design/flows",
+      "source": "src/routes/app/design/flows.tsx"
+    },
+    {
+      "route": "/app/design/prototypes",
+      "source": "src/routes/app/design/prototypes.tsx"
+    },
+    {
+      "route": "/app/design/system",
+      "source": "src/routes/app/design/system.tsx"
+    },
+    {
+      "route": "/app/design/tokens",
+      "source": "src/routes/app/design/tokens.tsx"
+    },
+    {
+      "route": "/app/design/versions",
+      "source": "src/routes/app/design/versions.tsx"
+    },
+    {
+      "route": "/app/dev/",
+      "source": "src/routes/app/dev/index.tsx"
+    },
+    {
+      "route": "/app/dev/api-playground",
+      "source": "src/routes/app/dev/api-playground.tsx"
+    },
+    {
+      "route": "/app/dev/dependencies",
+      "source": "src/routes/app/dev/dependencies.tsx"
+    },
+    {
+      "route": "/app/dev/deployments",
+      "source": "src/routes/app/dev/deployments.tsx"
+    },
+    {
+      "route": "/app/dev/docs",
+      "source": "src/routes/app/dev/docs.tsx"
+    },
+    {
+      "route": "/app/dev/env",
+      "source": "src/routes/app/dev/env.tsx"
+    },
+    {
+      "route": "/app/dev/feature-flags",
+      "source": "src/routes/app/dev/feature-flags.tsx"
+    },
+    {
+      "route": "/app/dev/git",
+      "source": "src/routes/app/dev/git.tsx"
+    },
+    {
+      "route": "/app/dev/monitoring",
+      "source": "src/routes/app/dev/monitoring.tsx"
+    },
+    {
+      "route": "/app/dev/queues",
+      "source": "src/routes/app/dev/queues.tsx"
+    },
+    {
+      "route": "/app/dev/reviews",
+      "source": "src/routes/app/dev/reviews.tsx"
+    },
+    {
+      "route": "/app/dev/tasks",
+      "source": "src/routes/app/dev/tasks.tsx"
+    },
+    {
+      "route": "/app/director/",
+      "source": "src/routes/app/director/index.tsx"
+    },
+    {
+      "route": "/app/director/academic",
+      "source": "src/routes/app/director/academic.tsx"
+    },
+    {
+      "route": "/app/director/approvals",
+      "source": "src/routes/app/director/approvals.tsx"
+    },
+    {
+      "route": "/app/director/command-center",
+      "source": "src/routes/app/director/command-center.tsx"
+    },
+    {
+      "route": "/app/director/finance",
+      "source": "src/routes/app/director/finance.tsx"
+    },
+    {
+      "route": "/app/director/hr",
+      "source": "src/routes/app/director/hr.tsx"
+    },
+    {
+      "route": "/app/director/marketing",
+      "source": "src/routes/app/director/marketing.tsx"
+    },
+    {
+      "route": "/app/director/okrs",
+      "source": "src/routes/app/director/okrs.tsx"
+    },
+    {
+      "route": "/app/director/operations",
+      "source": "src/routes/app/director/operations.tsx"
+    },
+    {
+      "route": "/app/director/reports",
+      "source": "src/routes/app/director/reports.tsx"
+    },
+    {
+      "route": "/app/employer/",
+      "source": "src/routes/app/employer/index.tsx"
+    },
+    {
+      "route": "/app/employer/analytics",
+      "source": "src/routes/app/employer/analytics.tsx"
+    },
+    {
+      "route": "/app/employer/brand",
+      "source": "src/routes/app/employer/brand.tsx"
+    },
+    {
+      "route": "/app/employer/feedback",
+      "source": "src/routes/app/employer/feedback.tsx"
+    },
+    {
+      "route": "/app/employer/hub",
+      "source": "src/routes/app/employer/hub.tsx"
+    },
+    {
+      "route": "/app/employer/interviews",
+      "source": "src/routes/app/employer/interviews.tsx"
+    },
+    {
+      "route": "/app/employer/jobs",
+      "source": "src/routes/app/employer/jobs.tsx"
+    },
+    {
+      "route": "/app/employer/pipeline/",
+      "source": "src/routes/app/employer/pipeline/index.tsx"
+    },
+    {
+      "route": "/app/employer/pipeline/$jobId",
+      "source": "src/routes/app/employer/pipeline/$jobId.tsx"
+    },
+    {
+      "route": "/app/employer/talent",
+      "source": "src/routes/app/employer/talent.tsx"
+    },
+    {
+      "route": "/app/finance",
+      "source": "src/routes/app/finance.tsx"
+    },
+    {
+      "route": "/app/finance/pay-verify",
+      "source": "src/routes/app/finance/pay-verify.tsx"
+    },
+    {
+      "route": "/app/government/",
+      "source": "src/routes/app/government/index.tsx"
+    },
+    {
+      "route": "/app/government/audit",
+      "source": "src/routes/app/government/audit.tsx"
+    },
+    {
+      "route": "/app/government/calendar",
+      "source": "src/routes/app/government/calendar.tsx"
+    },
+    {
+      "route": "/app/government/changelog",
+      "source": "src/routes/app/government/changelog.tsx"
+    },
+    {
+      "route": "/app/government/documents",
+      "source": "src/routes/app/government/documents.tsx"
+    },
+    {
+      "route": "/app/government/filings",
+      "source": "src/routes/app/government/filings.tsx"
+    },
+    {
+      "route": "/app/government/institution",
+      "source": "src/routes/app/government/institution.tsx"
+    },
+    {
+      "route": "/app/government/integrity",
+      "source": "src/routes/app/government/integrity.tsx"
+    },
+    {
+      "route": "/app/government/messaging",
+      "source": "src/routes/app/government/messaging.tsx"
+    },
+    {
+      "route": "/app/government/reports",
+      "source": "src/routes/app/government/reports.tsx"
+    },
+    {
+      "route": "/app/government/training",
+      "source": "src/routes/app/government/training.tsx"
+    },
+    {
+      "route": "/app/grades",
+      "source": "src/routes/app/grades.tsx"
+    },
+    {
+      "route": "/app/growth/",
+      "source": "src/routes/app/growth/index.tsx"
+    },
+    {
+      "route": "/app/growth/attribution",
+      "source": "src/routes/app/growth/attribution.tsx"
+    },
+    {
+      "route": "/app/growth/cohorts",
+      "source": "src/routes/app/growth/cohorts.tsx"
+    },
+    {
+      "route": "/app/growth/experiments",
+      "source": "src/routes/app/growth/experiments.tsx"
+    },
+    {
+      "route": "/app/growth/funnel",
+      "source": "src/routes/app/growth/funnel.tsx"
+    },
+    {
+      "route": "/app/growth/referrals",
+      "source": "src/routes/app/growth/referrals.tsx"
+    },
+    {
+      "route": "/app/growth/seo",
+      "source": "src/routes/app/growth/seo.tsx"
+    },
+    {
+      "route": "/app/growth/simulator",
+      "source": "src/routes/app/growth/simulator.tsx"
+    },
+    {
+      "route": "/app/hr/",
+      "source": "src/routes/app/hr/index.tsx"
+    },
+    {
+      "route": "/app/hr/attendance",
+      "source": "src/routes/app/hr/attendance.tsx"
+    },
+    {
+      "route": "/app/hr/employees",
+      "source": "src/routes/app/hr/employees.tsx"
+    },
+    {
+      "route": "/app/hr/leave",
+      "source": "src/routes/app/hr/leave.tsx"
+    },
+    {
+      "route": "/app/hr/onboarding",
+      "source": "src/routes/app/hr/onboarding.tsx"
+    },
+    {
+      "route": "/app/hr/payroll-input",
+      "source": "src/routes/app/hr/payroll-input.tsx"
+    },
+    {
+      "route": "/app/hr/performance",
+      "source": "src/routes/app/hr/performance.tsx"
+    },
+    {
+      "route": "/app/hr/recruitment",
+      "source": "src/routes/app/hr/recruitment.tsx"
+    },
+    {
+      "route": "/app/hr/reports",
+      "source": "src/routes/app/hr/reports.tsx"
+    },
+    {
+      "route": "/app/hr/training",
+      "source": "src/routes/app/hr/training.tsx"
+    },
+    {
+      "route": "/app/instructor/",
+      "source": "src/routes/app/instructor/index.tsx"
+    },
+    {
+      "route": "/app/instructor/analytics",
+      "source": "src/routes/app/instructor/analytics.tsx"
+    },
+    {
+      "route": "/app/instructor/announcements",
+      "source": "src/routes/app/instructor/announcements.tsx"
+    },
+    {
+      "route": "/app/instructor/assessments",
+      "source": "src/routes/app/instructor/assessments.tsx"
+    },
+    {
+      "route": "/app/instructor/assignments/",
+      "source": "src/routes/app/instructor/assignments/index.tsx"
+    },
+    {
+      "route": "/app/instructor/assignments/$submissionId/grade",
+      "source": "src/routes/app/instructor/assignments/$submissionId.grade.tsx"
+    },
+    {
+      "route": "/app/instructor/attendance",
+      "source": "src/routes/app/instructor/attendance.tsx"
+    },
+    {
+      "route": "/app/instructor/calendar",
+      "source": "src/routes/app/instructor/calendar.tsx"
+    },
+    {
+      "route": "/app/instructor/classes",
+      "source": "src/routes/app/instructor/classes.tsx"
+    },
+    {
+      "route": "/app/instructor/courses/",
+      "source": "src/routes/app/instructor/courses/index.tsx"
+    },
+    {
+      "route": "/app/instructor/courses/$courseId",
+      "source": "src/routes/app/instructor/courses/$courseId.tsx"
+    },
+    {
+      "route": "/app/instructor/gradebook",
+      "source": "src/routes/app/instructor/gradebook.tsx"
+    },
+    {
+      "route": "/app/instructor/grading-queue",
+      "source": "src/routes/app/instructor/grading-queue.tsx"
+    },
+    {
+      "route": "/app/instructor/lessons/create",
+      "source": "src/routes/app/instructor/lessons/create.tsx"
+    },
+    {
+      "route": "/app/instructor/lessons/edit/$id",
+      "source": "src/routes/app/instructor/lessons/edit/$id.tsx"
+    },
+    {
+      "route": "/app/intern/",
+      "source": "src/routes/app/intern/index.tsx"
+    },
+    {
+      "route": "/app/intern/evaluation",
+      "source": "src/routes/app/intern/evaluation.tsx"
+    },
+    {
+      "route": "/app/intern/learning-plan",
+      "source": "src/routes/app/intern/learning-plan.tsx"
+    },
+    {
+      "route": "/app/intern/mentorship",
+      "source": "src/routes/app/intern/mentorship.tsx"
+    },
+    {
+      "route": "/app/intern/messages",
+      "source": "src/routes/app/intern/messages.tsx"
+    },
+    {
+      "route": "/app/intern/portfolio",
+      "source": "src/routes/app/intern/portfolio.tsx"
+    },
+    {
+      "route": "/app/intern/resources",
+      "source": "src/routes/app/intern/resources.tsx"
+    },
+    {
+      "route": "/app/intern/skills",
+      "source": "src/routes/app/intern/skills.tsx"
+    },
+    {
+      "route": "/app/intern/tasks",
+      "source": "src/routes/app/intern/tasks.tsx"
+    },
+    {
+      "route": "/app/intern/timesheet",
+      "source": "src/routes/app/intern/timesheet.tsx"
+    },
+    {
+      "route": "/app/it/",
+      "source": "src/routes/app/it/index.tsx"
+    },
+    {
+      "route": "/app/it/assets",
+      "source": "src/routes/app/it/assets.tsx"
+    },
+    {
+      "route": "/app/it/knowledge-base",
+      "source": "src/routes/app/it/knowledge-base.tsx"
+    },
+    {
+      "route": "/app/it/licenses",
+      "source": "src/routes/app/it/licenses.tsx"
+    },
+    {
+      "route": "/app/it/maintenance",
+      "source": "src/routes/app/it/maintenance.tsx"
+    },
+    {
+      "route": "/app/it/monitoring",
+      "source": "src/routes/app/it/monitoring.tsx"
+    },
+    {
+      "route": "/app/it/remote-support",
+      "source": "src/routes/app/it/remote-support.tsx"
+    },
+    {
+      "route": "/app/it/reports",
+      "source": "src/routes/app/it/reports.tsx"
+    },
+    {
+      "route": "/app/it/templates",
+      "source": "src/routes/app/it/templates.tsx"
+    },
+    {
+      "route": "/app/it/tickets",
+      "source": "src/routes/app/it/tickets.tsx"
+    },
+    {
+      "route": "/app/it/tickets/$id",
+      "source": "src/routes/app/it/tickets/$id.tsx"
+    },
+    {
+      "route": "/app/it/users",
+      "source": "src/routes/app/it/users.tsx"
+    },
+    {
+      "route": "/app/learn/",
+      "source": "src/routes/app/learn/index.tsx"
+    },
+    {
+      "route": "/app/learn/$courseId/",
+      "source": "src/routes/app/learn/$courseId.index.tsx"
+    },
+    {
+      "route": "/app/learn/$courseId/lessons/$lessonId",
+      "source": "src/routes/app/learn/$courseId.lessons.$lessonId.tsx"
+    },
+    {
+      "route": "/app/library",
+      "source": "src/routes/app/library.tsx"
+    },
+    {
+      "route": "/app/live/",
+      "source": "src/routes/app/live/index.tsx"
+    },
+    {
+      "route": "/app/live/$classId",
+      "source": "src/routes/app/live/$classId.tsx"
+    },
+    {
+      "route": "/app/localization/",
+      "source": "src/routes/app/localization/index.tsx"
+    },
+    {
+      "route": "/app/localization/analytics",
+      "source": "src/routes/app/localization/analytics.tsx"
+    },
+    {
+      "route": "/app/localization/dialects",
+      "source": "src/routes/app/localization/dialects.tsx"
+    },
+    {
+      "route": "/app/localization/glossary",
+      "source": "src/routes/app/localization/glossary.tsx"
+    },
+    {
+      "route": "/app/localization/preview",
+      "source": "src/routes/app/localization/preview.tsx"
+    },
+    {
+      "route": "/app/localization/style-guides",
+      "source": "src/routes/app/localization/style-guides.tsx"
+    },
+    {
+      "route": "/app/localization/translation-memory",
+      "source": "src/routes/app/localization/translation-memory.tsx"
+    },
+    {
+      "route": "/app/localization/variants",
+      "source": "src/routes/app/localization/variants.tsx"
+    },
+    {
+      "route": "/app/marketing/",
+      "source": "src/routes/app/marketing/index.tsx"
+    },
+    {
+      "route": "/app/marketing/analytics",
+      "source": "src/routes/app/marketing/analytics.tsx"
+    },
+    {
+      "route": "/app/marketing/campaigns",
+      "source": "src/routes/app/marketing/campaigns.tsx"
+    },
+    {
+      "route": "/app/marketing/content-calendar",
+      "source": "src/routes/app/marketing/content-calendar.tsx"
+    },
+    {
+      "route": "/app/marketing/email",
+      "source": "src/routes/app/marketing/email.tsx"
+    },
+    {
+      "route": "/app/marketing/landing-pages",
+      "source": "src/routes/app/marketing/landing-pages.tsx"
+    },
+    {
+      "route": "/app/marketing/leads",
+      "source": "src/routes/app/marketing/leads.tsx"
+    },
+    {
+      "route": "/app/marketing/reports",
+      "source": "src/routes/app/marketing/reports.tsx"
+    },
+    {
+      "route": "/app/marketing/seo",
+      "source": "src/routes/app/marketing/seo.tsx"
+    },
+    {
+      "route": "/app/marketing/social",
+      "source": "src/routes/app/marketing/social.tsx"
+    },
+    {
+      "route": "/app/mentor/",
+      "source": "src/routes/app/mentor/index.tsx"
+    },
+    {
+      "route": "/app/mentor/analytics",
+      "source": "src/routes/app/mentor/analytics.tsx"
+    },
+    {
+      "route": "/app/mentor/goals",
+      "source": "src/routes/app/mentor/goals.tsx"
+    },
+    {
+      "route": "/app/mentor/mentees/$menteeId/",
+      "source": "src/routes/app/mentor/mentees/$menteeId.index.tsx"
+    },
+    {
+      "route": "/app/mentor/mentees/$menteeId/career",
+      "source": "src/routes/app/mentor/mentees/$menteeId.career.tsx"
+    },
+    {
+      "route": "/app/mentor/mentees/$menteeId/portfolio",
+      "source": "src/routes/app/mentor/mentees/$menteeId.portfolio.tsx"
+    },
+    {
+      "route": "/app/mentor/messages",
+      "source": "src/routes/app/mentor/messages.tsx"
+    },
+    {
+      "route": "/app/mentor/requests",
+      "source": "src/routes/app/mentor/requests.tsx"
+    },
+    {
+      "route": "/app/mentor/resources",
+      "source": "src/routes/app/mentor/resources.tsx"
+    },
+    {
+      "route": "/app/mentor/sessions",
+      "source": "src/routes/app/mentor/sessions.tsx"
+    },
+    {
+      "route": "/app/mentor/sessions/$sessionId",
+      "source": "src/routes/app/mentor/sessions/$sessionId.tsx"
+    },
+    {
+      "route": "/app/mentor/settings",
+      "source": "src/routes/app/mentor/settings.tsx"
+    },
+    {
+      "route": "/app/messages",
+      "source": "src/routes/app/messages.tsx"
+    },
+    {
+      "route": "/app/ngo/",
+      "source": "src/routes/app/ngo/index.tsx"
+    },
+    {
+      "route": "/app/ngo/analytics",
+      "source": "src/routes/app/ngo/analytics.tsx"
+    },
+    {
+      "route": "/app/ngo/donations",
+      "source": "src/routes/app/ngo/donations.tsx"
+    },
+    {
+      "route": "/app/ngo/messaging",
+      "source": "src/routes/app/ngo/messaging.tsx"
+    },
+    {
+      "route": "/app/ngo/programs",
+      "source": "src/routes/app/ngo/programs.tsx"
+    },
+    {
+      "route": "/app/ngo/programs/$programId/budget",
+      "source": "src/routes/app/ngo/programs/$programId/budget.tsx"
+    },
+    {
+      "route": "/app/ngo/reports",
+      "source": "src/routes/app/ngo/reports.tsx"
+    },
+    {
+      "route": "/app/ngo/scholarships",
+      "source": "src/routes/app/ngo/scholarships.tsx"
+    },
+    {
+      "route": "/app/ngo/volunteers",
+      "source": "src/routes/app/ngo/volunteers.tsx"
+    },
+    {
+      "route": "/app/notifications",
+      "source": "src/routes/app/notifications.tsx"
+    },
+    {
+      "route": "/app/ops/",
+      "source": "src/routes/app/ops/index.tsx"
+    },
+    {
+      "route": "/app/ops/automation",
+      "source": "src/routes/app/ops/automation.tsx"
+    },
+    {
+      "route": "/app/ops/branches",
+      "source": "src/routes/app/ops/branches.tsx"
+    },
+    {
+      "route": "/app/ops/facilities",
+      "source": "src/routes/app/ops/facilities.tsx"
+    },
+    {
+      "route": "/app/ops/inventory",
+      "source": "src/routes/app/ops/inventory.tsx"
+    },
+    {
+      "route": "/app/ops/reports",
+      "source": "src/routes/app/ops/reports.tsx"
+    },
+    {
+      "route": "/app/ops/tasks",
+      "source": "src/routes/app/ops/tasks.tsx"
+    },
+    {
+      "route": "/app/ops/vendors",
+      "source": "src/routes/app/ops/vendors.tsx"
+    },
+    {
+      "route": "/app/parent/",
+      "source": "src/routes/app/parent/index.tsx"
+    },
+    {
+      "route": "/app/parent/invitation/accept",
+      "source": "src/routes/app/parent/invitation/accept.tsx"
+    },
+    {
+      "route": "/app/parent/students/$studentId/",
+      "source": "src/routes/app/parent/students/$studentId.index.tsx"
+    },
+    {
+      "route": "/app/parent/students/$studentId/attendance",
+      "source": "src/routes/app/parent/students/$studentId.attendance.tsx"
+    },
+    {
+      "route": "/app/parent/students/$studentId/communication",
+      "source": "src/routes/app/parent/students/$studentId.communication.tsx"
+    },
+    {
+      "route": "/app/parent/students/$studentId/finance",
+      "source": "src/routes/app/parent/students/$studentId.finance.tsx"
+    },
+    {
+      "route": "/app/parent/students/$studentId/grades",
+      "source": "src/routes/app/parent/students/$studentId.grades.tsx"
+    },
+    {
+      "route": "/app/parent/students/$studentId/reports",
+      "source": "src/routes/app/parent/students/$studentId.reports.tsx"
+    },
+    {
+      "route": "/app/partner/",
+      "source": "src/routes/app/partner/index.tsx"
+    },
+    {
+      "route": "/app/partner/agreements",
+      "source": "src/routes/app/partner/agreements.tsx"
+    },
+    {
+      "route": "/app/partner/collaborations",
+      "source": "src/routes/app/partner/collaborations.tsx"
+    },
+    {
+      "route": "/app/partner/hub",
+      "source": "src/routes/app/partner/hub.tsx"
+    },
+    {
+      "route": "/app/partner/messages",
+      "source": "src/routes/app/partner/messages.tsx"
+    },
+    {
+      "route": "/app/partner/referrals",
+      "source": "src/routes/app/partner/referrals.tsx"
+    },
+    {
+      "route": "/app/partner/reports",
+      "source": "src/routes/app/partner/reports.tsx"
+    },
+    {
+      "route": "/app/partner/resources",
+      "source": "src/routes/app/partner/resources.tsx"
+    },
+    {
+      "route": "/app/portfolio",
+      "source": "src/routes/app/portfolio.tsx"
+    },
+    {
+      "route": "/app/product-marketing/",
+      "source": "src/routes/app/product-marketing/index.tsx"
+    },
+    {
+      "route": "/app/product-marketing/analytics",
+      "source": "src/routes/app/product-marketing/analytics.tsx"
+    },
+    {
+      "route": "/app/product-marketing/briefs",
+      "source": "src/routes/app/product-marketing/briefs.tsx"
+    },
+    {
+      "route": "/app/product-marketing/competitive",
+      "source": "src/routes/app/product-marketing/competitive.tsx"
+    },
+    {
+      "route": "/app/product-marketing/gtm",
+      "source": "src/routes/app/product-marketing/gtm.tsx"
+    },
+    {
+      "route": "/app/product-marketing/launch-calendar",
+      "source": "src/routes/app/product-marketing/launch-calendar.tsx"
+    },
+    {
+      "route": "/app/product-marketing/messaging",
+      "source": "src/routes/app/product-marketing/messaging.tsx"
+    },
+    {
+      "route": "/app/product-marketing/positioning",
+      "source": "src/routes/app/product-marketing/positioning.tsx"
+    },
+    {
+      "route": "/app/product-marketing/research",
+      "source": "src/routes/app/product-marketing/research.tsx"
+    },
+    {
+      "route": "/app/receptionist/",
+      "source": "src/routes/app/receptionist/index.tsx"
+    },
+    {
+      "route": "/app/receptionist/appointments",
+      "source": "src/routes/app/receptionist/appointments.tsx"
+    },
+    {
+      "route": "/app/receptionist/check-in",
+      "source": "src/routes/app/receptionist/check-in.tsx"
+    },
+    {
+      "route": "/app/receptionist/check-out",
+      "source": "src/routes/app/receptionist/check-out.tsx"
+    },
+    {
+      "route": "/app/receptionist/deliveries",
+      "source": "src/routes/app/receptionist/deliveries.tsx"
+    },
+    {
+      "route": "/app/receptionist/directory",
+      "source": "src/routes/app/receptionist/directory.tsx"
+    },
+    {
+      "route": "/app/receptionist/inquiries",
+      "source": "src/routes/app/receptionist/inquiries.tsx"
+    },
+    {
+      "route": "/app/receptionist/phone-log",
+      "source": "src/routes/app/receptionist/phone-log.tsx"
+    },
+    {
+      "route": "/app/receptionist/tasks",
+      "source": "src/routes/app/receptionist/tasks.tsx"
+    },
+    {
+      "route": "/app/reports",
+      "source": "src/routes/app/reports.tsx"
+    },
+    {
+      "route": "/app/schools",
+      "source": "src/routes/app/schools.tsx"
+    },
+    {
+      "route": "/app/supplier/",
+      "source": "src/routes/app/supplier/index.tsx"
+    },
+    {
+      "route": "/app/supplier/deliveries",
+      "source": "src/routes/app/supplier/deliveries.tsx"
+    },
+    {
+      "route": "/app/supplier/invoices",
+      "source": "src/routes/app/supplier/invoices.tsx"
+    },
+    {
+      "route": "/app/supplier/messages",
+      "source": "src/routes/app/supplier/messages.tsx"
+    },
+    {
+      "route": "/app/supplier/orders",
+      "source": "src/routes/app/supplier/orders.tsx"
+    },
+    {
+      "route": "/app/supplier/performance",
+      "source": "src/routes/app/supplier/performance.tsx"
+    },
+    {
+      "route": "/app/supplier/profile",
+      "source": "src/routes/app/supplier/profile.tsx"
+    },
+    {
+      "route": "/app/volunteer/",
+      "source": "src/routes/app/volunteer/index.tsx"
+    },
+    {
+      "route": "/app/volunteer/certificates",
+      "source": "src/routes/app/volunteer/certificates.tsx"
+    },
+    {
+      "route": "/app/volunteer/community",
+      "source": "src/routes/app/volunteer/community.tsx"
+    },
+    {
+      "route": "/app/volunteer/hours",
+      "source": "src/routes/app/volunteer/hours.tsx"
+    },
+    {
+      "route": "/app/volunteer/impact",
+      "source": "src/routes/app/volunteer/impact.tsx"
+    },
+    {
+      "route": "/app/volunteer/my-volunteering",
+      "source": "src/routes/app/volunteer/my-volunteering.tsx"
+    },
+    {
+      "route": "/app/volunteer/opportunities",
+      "source": "src/routes/app/volunteer/opportunities.tsx"
+    },
+    {
+      "route": "/apply/",
+      "source": "src/routes/apply/index.tsx"
+    },
+    {
+      "route": "/apply/pay",
+      "source": "src/routes/apply/pay.tsx"
+    },
+    {
+      "route": "/apply/receipt/$ref",
+      "source": "src/routes/apply/receipt.$ref.tsx"
+    },
+    {
+      "route": "/apply/status",
+      "source": "src/routes/apply/status.tsx"
+    },
+    {
+      "route": "/apply/status/",
+      "source": "src/routes/apply/status/index.tsx"
+    },
+    {
+      "route": "/apply/status/$id",
+      "source": "src/routes/apply/status/$id.tsx"
+    },
+    {
+      "route": "/auth/forgot-password",
+      "source": "src/routes/auth.forgot-password.tsx"
+    },
+    {
+      "route": "/auth/magic-link",
+      "source": "src/routes/auth.magic-link.tsx"
+    },
+    {
+      "route": "/auth/mfa",
+      "source": "src/routes/auth.mfa.tsx"
+    },
+    {
+      "route": "/auth/new-device",
+      "source": "src/routes/auth.new-device.tsx"
+    },
+    {
+      "route": "/auth/reset-password",
+      "source": "src/routes/auth.reset-password.tsx"
+    },
+    {
+      "route": "/auth/sign-in",
+      "source": "src/routes/auth.sign-in.tsx"
+    },
+    {
+      "route": "/auth/sign-up",
+      "source": "src/routes/auth.sign-up.tsx"
+    },
+    {
+      "route": "/auth/verify-email",
+      "source": "src/routes/auth.verify-email.tsx"
+    },
+    {
+      "route": "/blog/",
+      "source": "src/routes/blog.index.tsx"
+    },
+    {
+      "route": "/blog/$slug",
+      "source": "src/routes/blog.$slug.tsx"
+    },
+    {
+      "route": "/career-guides/",
+      "source": "src/routes/career-guides.index.tsx"
+    },
+    {
+      "route": "/career-guides/$slug",
+      "source": "src/routes/career-guides.$slug.tsx"
+    },
+    {
+      "route": "/careers",
+      "source": "src/routes/careers.tsx"
+    },
+    {
+      "route": "/certificates/verify",
+      "source": "src/routes/certificates.verify.tsx"
+    },
+    {
+      "route": "/classes/",
+      "source": "src/routes/classes.index.tsx"
+    },
+    {
+      "route": "/classes/$courseSlug/",
+      "source": "src/routes/classes.$courseSlug.index.tsx"
+    },
+    {
+      "route": "/classes/$courseSlug/$sessionSlug",
+      "source": "src/routes/classes.$courseSlug.$sessionSlug.tsx"
+    },
+    {
+      "route": "/community",
+      "source": "src/routes/community.tsx"
+    },
+    {
+      "route": "/contact",
+      "source": "src/routes/contact.tsx"
+    },
+    {
+      "route": "/editorial",
+      "source": "src/routes/editorial.tsx"
+    },
+    {
+      "route": "/engines",
+      "source": "src/routes/engines.tsx"
+    },
+    {
+      "route": "/events",
+      "source": "src/routes/events.tsx"
+    },
+    {
+      "route": "/faq",
+      "source": "src/routes/faq.tsx"
+    },
+    {
+      "route": "/glossary/",
+      "source": "src/routes/glossary.index.tsx"
+    },
+    {
+      "route": "/glossary/$slug",
+      "source": "src/routes/glossary.$slug.tsx"
+    },
+    {
+      "route": "/library/",
+      "source": "src/routes/library.index.tsx"
+    },
+    {
+      "route": "/library/$category",
+      "source": "src/routes/library.$category.tsx"
+    },
+    {
+      "route": "/marketplace",
+      "source": "src/routes/marketplace.tsx"
+    },
+    {
+      "route": "/merchant",
+      "source": "src/routes/merchant.tsx"
+    },
+    {
+      "route": "/opportunities",
+      "source": "src/routes/opportunities.tsx"
+    },
+    {
+      "route": "/opportunities/idice-skills-to-jobs",
+      "source": "src/routes/opportunities.idice-skills-to-jobs.tsx"
+    },
+    {
+      "route": "/partners",
+      "source": "src/routes/partners.tsx"
+    },
+    {
+      "route": "/partners/apply",
+      "source": "src/routes/partners.apply.tsx"
+    },
+    {
+      "route": "/pay",
+      "source": "src/routes/pay.tsx"
+    },
+    {
+      "route": "/payment",
+      "source": "src/routes/payment.tsx"
+    },
+    {
+      "route": "/portal/",
+      "source": "src/routes/portal/index.tsx"
+    },
+    {
+      "route": "/portal/academic-board",
+      "source": "src/routes/portal/academic-board.tsx"
+    },
+    {
+      "route": "/portal/accountant",
+      "source": "src/routes/portal/accountant.tsx"
+    },
+    {
+      "route": "/portal/admin",
+      "source": "src/routes/portal/admin.tsx"
+    },
+    {
+      "route": "/portal/admissions",
+      "source": "src/routes/portal/admissions.tsx"
+    },
+    {
+      "route": "/portal/alumni",
+      "source": "src/routes/portal/alumni.tsx"
+    },
+    {
+      "route": "/portal/behavioral-designer",
+      "source": "src/routes/portal/behavioral-designer.tsx"
+    },
+    {
+      "route": "/portal/career-services",
+      "source": "src/routes/portal/career-services.tsx"
+    },
+    {
+      "route": "/portal/client",
+      "source": "src/routes/portal/client.tsx"
+    },
+    {
+      "route": "/portal/copywriter",
+      "source": "src/routes/portal/copywriter.tsx"
+    },
+    {
+      "route": "/portal/data",
+      "source": "src/routes/portal/data.tsx"
+    },
+    {
+      "route": "/portal/department-head",
+      "source": "src/routes/portal/department-head.tsx"
+    },
+    {
+      "route": "/portal/developer",
+      "source": "src/routes/portal/developer.tsx"
+    },
+    {
+      "route": "/portal/devops",
+      "source": "src/routes/portal/devops.tsx"
+    },
+    {
+      "route": "/portal/director",
+      "source": "src/routes/portal/director.tsx"
+    },
+    {
+      "route": "/portal/employer",
+      "source": "src/routes/portal/employer.tsx"
+    },
+    {
+      "route": "/portal/executive",
+      "source": "src/routes/portal/executive.tsx"
+    },
+    {
+      "route": "/portal/finance",
+      "source": "src/routes/portal/finance.tsx"
+    },
+    {
+      "route": "/portal/global-copywriter",
+      "source": "src/routes/portal/global-copywriter.tsx"
+    },
+    {
+      "route": "/portal/government",
+      "source": "src/routes/portal/government.tsx"
+    },
+    {
+      "route": "/portal/growth",
+      "source": "src/routes/portal/growth.tsx"
+    },
+    {
+      "route": "/portal/hr",
+      "source": "src/routes/portal/hr.tsx"
+    },
+    {
+      "route": "/portal/instructor",
+      "source": "src/routes/portal/instructor.tsx"
+    },
+    {
+      "route": "/portal/intern",
+      "source": "src/routes/portal/intern.tsx"
+    },
+    {
+      "route": "/portal/it-support",
+      "source": "src/routes/portal/it-support.tsx"
+    },
+    {
+      "route": "/portal/marketing",
+      "source": "src/routes/portal/marketing.tsx"
+    },
+    {
+      "route": "/portal/mentor",
+      "source": "src/routes/portal/mentor.tsx"
+    },
+    {
+      "route": "/portal/ngo",
+      "source": "src/routes/portal/ngo.tsx"
+    },
+    {
+      "route": "/portal/operations",
+      "source": "src/routes/portal/operations.tsx"
+    },
+    {
+      "route": "/portal/parent",
+      "source": "src/routes/portal/parent.tsx"
+    },
+    {
+      "route": "/portal/partner",
+      "source": "src/routes/portal/partner.tsx"
+    },
+    {
+      "route": "/portal/product-marketing",
+      "source": "src/routes/portal/product-marketing.tsx"
+    },
+    {
+      "route": "/portal/quality",
+      "source": "src/routes/portal/quality.tsx"
+    },
+    {
+      "route": "/portal/receptionist",
+      "source": "src/routes/portal/receptionist.tsx"
+    },
+    {
+      "route": "/portal/registrar",
+      "source": "src/routes/portal/registrar.tsx"
+    },
+    {
+      "route": "/portal/security",
+      "source": "src/routes/portal/security.tsx"
+    },
+    {
+      "route": "/portal/student",
+      "source": "src/routes/portal/student.tsx"
+    },
+    {
+      "route": "/portal/supplier",
+      "source": "src/routes/portal/supplier.tsx"
+    },
+    {
+      "route": "/portal/visual-designer",
+      "source": "src/routes/portal/visual-designer.tsx"
+    },
+    {
+      "route": "/portal/volunteer",
+      "source": "src/routes/portal/volunteer.tsx"
+    },
+    {
+      "route": "/pricing",
+      "source": "src/routes/pricing.tsx"
+    },
+    {
+      "route": "/privacy",
+      "source": "src/routes/privacy.tsx"
+    },
+    {
+      "route": "/programs/",
+      "source": "src/routes/programs.index.tsx"
+    },
+    {
+      "route": "/programs/$slug/",
+      "source": "src/routes/programs.$slug.index.tsx"
+    },
+    {
+      "route": "/programs/$slug/$module",
+      "source": "src/routes/programs.$slug.$module.tsx"
+    },
+    {
+      "route": "/programs/compare",
+      "source": "src/routes/programs/compare.tsx"
+    },
+    {
+      "route": "/refunds",
+      "source": "src/routes/refunds.tsx"
+    },
+    {
+      "route": "/request-project",
+      "source": "src/routes/request-project.tsx"
+    },
+    {
+      "route": "/resources/",
+      "source": "src/routes/resources.index.tsx"
+    },
+    {
+      "route": "/resources/$slug",
+      "source": "src/routes/resources.$slug.tsx"
+    },
+    {
+      "route": "/scholarships",
+      "source": "src/routes/scholarships.tsx"
+    },
+    {
+      "route": "/schools/",
+      "source": "src/routes/schools/index.tsx"
+    },
+    {
+      "route": "/schools/proposal/$ref",
+      "source": "src/routes/schools/proposal.$ref.tsx"
+    },
+    {
+      "route": "/services",
+      "source": "src/routes/services.tsx"
+    },
+    {
+      "route": "/shipping",
+      "source": "src/routes/shipping.tsx"
+    },
+    {
+      "route": "/shop/",
+      "source": "src/routes/shop.index.tsx"
+    },
+    {
+      "route": "/shop/$slug/",
+      "source": "src/routes/shop.$slug.index.tsx"
+    },
+    {
+      "route": "/shop/$slug/checkout",
+      "source": "src/routes/shop.$slug.checkout.tsx"
+    },
+    {
+      "route": "/shop/$slug/return",
+      "source": "src/routes/shop.$slug.return.tsx"
+    },
+    {
+      "route": "/stories",
+      "source": "src/routes/stories.tsx"
+    },
+    {
+      "route": "/team",
+      "source": "src/routes/team.tsx"
+    },
+    {
+      "route": "/terms",
+      "source": "src/routes/terms.tsx"
+    },
+    {
+      "route": "/virtual-tour",
+      "source": "src/routes/virtual-tour.tsx"
+    },
+    {
+      "route": "/visit/",
+      "source": "src/routes/visit/index.tsx"
+    },
+    {
+      "route": "/visit/brochure",
+      "source": "src/routes/visit/brochure.tsx"
+    },
+    {
+      "route": "/visit/feedback",
+      "source": "src/routes/visit/feedback.tsx"
+    },
+    {
+      "route": "/visit/info",
+      "source": "src/routes/visit/info.tsx"
+    },
+    {
+      "route": "/vizier",
+      "source": "src/routes/vizier.tsx"
+    },
+    {
+      "route": "/work",
+      "source": "src/routes/work.tsx"
+    }
+  ]
+}

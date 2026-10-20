@@ -68,7 +68,9 @@ function route() {
   }
   save("last", current.slug);
   $("continue").hidden = false;
-  $("continue").onclick = () => { location.hash = get("last") || ""; };
+  $("continue").onclick = () => {
+    location.hash = get("last") || "";
+  };
   $("title").textContent = current.title;
   $("body").textContent = "";
   $("notice").textContent = "";
