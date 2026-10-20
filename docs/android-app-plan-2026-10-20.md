@@ -24,7 +24,7 @@ Later add native capabilities for demonstrated user needs. Evaluate native learn
 - Node/Java/Android SDK debug APK + Android lint CI workflow, explicit manual dispatch and branch push trigger.
 - Root install/sync/open/build scripts, signing material ignored, device backups disabled.
 
-No APK was built locally: Java and Android SDK are absent, and required Gradle/Google hosts are outside this sandbox's permitted network. The workflow is written but not yet executed. No release-signing material, assetlinks fingerprint, push service credentials or store listing has been fabricated.
+Java and Android SDK remain unavailable locally, but GitHub Actions has now built the debug APK, passed unit/lint checks and exercised the native shell/offline reader in an Android emulator. See `docs/android-validation-2026-10-20.md` for the exact verified commit, artifact and remaining release gates. No release-signing material, assetlinks fingerprint, push service credentials or store listing has been fabricated.
 
 ## Phases and release gates
 
@@ -86,8 +86,5 @@ workflow is provided but requires owner-configured signing secrets. See the upda
 `apps/android/README.md` for exact behaviour and outstanding parity gates.
 
 GitHub Actions has successfully compiled a debug APK and passed JVM unit tests
-and Android lint (run 39384978578). The first emulator smoke run failed; do not
-interpret the APK artifact as complete device acceptance. Browser offline-reader
-regression passes without external network requests. Native FCM, blob-download
-parity and authenticated payment/role acceptance remain explicitly unimplemented
-or unverified, rather than being marked complete by route availability.
+and Android lint (run 39384978578). An early emulator smoke run failed because Gradle selected dependency-library test tasks; task scoping/dependency alignment and the later shell-test import were corrected. The final shell/reader emulator run passes. This is still not complete account/payment/role device acceptance. Browser offline-reader
+regression passes without external network requests. Native FCM remains unimplemented and authenticated payment/role acceptance remains unverified. A bounded blob/data-export adapter and same-origin authenticated downloader are now implemented, but real document-picker and account-specific export acceptance must still be completed.
