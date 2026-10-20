@@ -48,7 +48,7 @@ jobs:
           PY
       - run: npm ci && npm run typecheck && npm run sync
         working-directory: apps/android
-      - run: chmod +x gradlew && ./gradlew testDebugUnitTest lintRelease bundleRelease assembleRelease
+      - run: chmod +x gradlew && ./gradlew :app:testDebugUnitTest :app:lintRelease :app:bundleRelease :app:assembleRelease
         working-directory: apps/android/android
       - uses: actions/upload-artifact@v4
         with:
