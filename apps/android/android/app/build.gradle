@@ -6,6 +6,8 @@ if (originUri.scheme != 'https' || !originUri.host || originUri.userInfo || orig
     throw new GradleException('CEA_ANDROID_ORIGIN must be an HTTPS origin without credentials, query or path')
 }
 ceaOrigin = ceaOrigin.replaceAll('/+$', '')
+def apiUri = new URI(System.getenv('CEA_ANDROID_API_ORIGIN') ?: 'https://cea-api.cyber-e54.workers.dev')
+if (apiUri.scheme != 'https' || !apiUri.host || apiUri.userInfo || apiUri.query || apiUri.fragment || !(apiUri.path in ['', '/']) || !(apiUri.port in [-1, 443])) throw new GradleException('Invalid CEA_ANDROID_API_ORIGIN')
 
 android {
     buildFeatures { buildConfig true }
@@ -18,6 +20,7 @@ android {
         versionCode Integer.parseInt(System.getenv('CEA_VERSION_CODE') ?: '1')
         versionName System.getenv('CEA_VERSION_NAME') ?: '0.2.0'
         buildConfigField 'String', 'CEA_ORIGIN', '"' + ceaOrigin + '"'
+        buildConfigField 'String', 'CEA_API_ORIGIN', '"' + (System.getenv('CEA_ANDROID_API_ORIGIN') ?: 'https://cea-api.cyber-e54.workers.dev') + '"'
         manifestPlaceholders = [ceaHost: originUri.host]
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         aaptOptions {

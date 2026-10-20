@@ -54,7 +54,14 @@ public class MainActivity extends BridgeActivity {
         bar.addView(menu, new LinearLayout.LayoutParams(0,-2,1)); bar.addView(lessons,new LinearLayout.LayoutParams(0,-2,1));
         layout.addView(bar); layout.addView(existing,new LinearLayout.LayoutParams(-1,0,1)); content.addView(layout); UiInsets.apply(this,layout);
         web.setDownloadListener((url, agent, disposition, mime, length) -> {
-            // Do not forward session cookies to a downloader or unknown redirect destination.
+            if (UrlPolicy.download(url)) {
+                com.getcapacitor.JSObject options=new com.getcapacitor.JSObject();
+                options.put("url",url); options.put("mime",mime==null?"application/octet-stream":mime);
+                options.put("name",android.webkit.URLUtil.guessFileName(url,disposition,mime));
+                web.evaluateJavascript("window.Capacitor.nativePromise('CeaDocuments','download',"+options.toString()+").catch(function(e){alert(e.message || 'Download failed');})",null);
+                return;
+            }
+            // Third-party/signed file URLs open without forwarding CEA session cookies.
             new AlertDialog.Builder(this).setTitle("Save this file")
                 .setMessage("For a receipt or certificate page, choose Save page as PDF in the CEA menu. Direct files open in your browser; private files may require sign-in there.")
                 .setPositiveButton("Open file", (d,w) -> openExternal(url)).setNegativeButton("Cancel",null).show();

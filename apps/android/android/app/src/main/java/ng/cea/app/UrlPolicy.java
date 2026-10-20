@@ -12,6 +12,15 @@ public final class UrlPolicy {
                 && uri.getRawUserInfo() == null && (uri.getPort() == -1 || uri.getPort() == 443);
         } catch (Exception e) { return false; }
     }
+    public static boolean download(String value) {
+        if(internal(value))return true;
+        try { URI uri=new URI(value); return "https".equalsIgnoreCase(uri.getScheme()) && new URI(BuildConfig.CEA_API_ORIGIN).getHost().equalsIgnoreCase(uri.getHost()) && uri.getRawUserInfo()==null && (uri.getPort()==-1 || uri.getPort()==443); }
+        catch(Exception e) {return false;}
+    }
+    public static boolean sameOrigin(String first, String second) {
+        try { URI a=new URI(first),b=new URI(second); return a.getScheme().equalsIgnoreCase(b.getScheme()) && a.getHost().equalsIgnoreCase(b.getHost()) && (a.getPort()==-1?443:a.getPort())==(b.getPort()==-1?443:b.getPort()); }
+        catch(Exception e) {return false;}
+    }
     public static boolean external(String value) {
         try {
             URI uri = new URI(value);
