@@ -33,15 +33,14 @@ a token. The native menu has **Phone notifications**, with:
 
 - An explanation and explicit Enable action.
 - Android 13+ permission handling.
-- Device registration through Firebase (no CEA backend association yet).
+- Firebase registration plus authenticated native account binding.
 - Disable/delete-token action and Android's notification settings.
-- Debug-only **Copy Firebase test device code** after successful registration.
+- **Reconnect signed-in account** and **Send test to my connected phones** controls; the debug clipboard token button was removed.
 
 In-app messaging/notification-centre access remains unchanged. **Enabling the
 phone does not yet enable automatic class, application or private-message alerts.**
 An [account/session-bound device API and additive schema](android-native-device-api.md)
-now exist on this branch. The Android-to-API bridge, automatic token-rotation/
-account-switch synchronization remain pending. A [server FCM sender and self-test](android-fcm-delivery.md)
+now exist on this branch. Native account binding and foreground token/session synchronization are connected in source. A [server FCM sender and self-test](android-fcm-delivery.md)
 now exist on the branch but are not configured or deployed. It would be misleading to advertise this as complete
 native push parity.
 
@@ -62,13 +61,11 @@ On an Android phone with Google Play services and internet access:
 
 1. Install the debug APK from the successful CI run.
 2. Open CEA menu → Phone notifications. Read the explanation, then enable.
-3. Grant permission if requested. Wait for successful Firebase registration.
-4. In this debug build, copy the test device code directly into the Firebase
-   Console's test-message recipient field for this project. Never post it in chat,
-   logs or a public issue.
-5. Send a clearly generic test message from Firebase Console. Test foreground,
-   background, notification tapping and disabling. No service-account key is
-   needed for this owner-led console test.
+3. After the [credential-gated deployment](android-activation.md), grant permission,
+   sign in and wait for the phone to report account connection.
+4. Use **Send test to my connected phones**. Check account preferences/quiet hours
+   if no devices are eligible. No raw device code is copied to the clipboard.
+5. Check foreground/background, tapping, account switching and disable behaviour.
 
 CI does not enable registration, request real FCM tokens or send notifications.
 A build/emulator pass is not proof that a real Firebase message has been delivered.

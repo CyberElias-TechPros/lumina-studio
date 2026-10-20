@@ -28,4 +28,15 @@ public class NotificationDefaultsTest {
         assertFalse(FirebaseMessaging.getInstance().isAutoInitEnabled());
         assertFalse(new java.io.File(context.getNoBackupFilesDir(),"cea-push-installation.properties").exists());
     }
+    @Test public void legacyFirebaseConsentDoesNotSilentlyLinkAnAccount() throws Exception {
+        android.content.Context context=InstrumentationRegistry.getInstrumentation().getTargetContext();
+        CeaNotificationService.setEnabled(context,true);
+        try {
+            java.util.concurrent.CountDownLatch finished=new java.util.concurrent.CountDownLatch(1);
+            ng.cea.app.NativePushController.sync(context,true,message->finished.countDown());
+            assertTrue(finished.await(5,java.util.concurrent.TimeUnit.SECONDS));
+            assertFalse(FirebaseMessaging.getInstance().isAutoInitEnabled());
+            assertFalse(new java.io.File(context.getNoBackupFilesDir(),"cea-push-installation.properties").exists());
+        } finally {CeaNotificationService.setEnabled(context,false);}
+    }
 }

@@ -39,7 +39,7 @@ public class NotificationSettingsActivity extends AppCompatActivity {
             else registerDevice();
         });layout.addView(enable);
         disable=new Button(this);disable.setText("Disable and remove device registration");disable.setOnClickListener(v->unregisterDevice());layout.addView(disable);
-        Button reconnect=new Button(this);reconnect.setText("Reconnect signed-in account");reconnect.setOnClickListener(v->{if(busy)return;setBusy(true);NativePushController.sync(this,true,this::completed);});layout.addView(reconnect);
+        Button reconnect=new Button(this);reconnect.setText("Reconnect signed-in account");reconnect.setOnClickListener(v->{if(busy)return;if(CeaNotificationService.enabled(this))NativePushController.allowAccountLink(this);setBusy(true);NativePushController.sync(this,true,this::completed);});layout.addView(reconnect);
         Button test=new Button(this);test.setText("Send test to my connected phones");test.setOnClickListener(v->{if(busy)return;setBusy(true);NativePushController.test(this,this::completed);});layout.addView(test);
         Button settings=new Button(this);settings.setText("Open Android notification settings");settings.setOnClickListener(v->{
             Intent intent=Build.VERSION.SDK_INT>=26 ? new Intent(Settings.ACTION_APP_NOTIFICATION_SETTINGS).putExtra(Settings.EXTRA_APP_PACKAGE,getPackageName()) : new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS,android.net.Uri.parse("package:"+getPackageName()));
@@ -58,6 +58,7 @@ public class NotificationSettingsActivity extends AppCompatActivity {
         if(busy)return;
         if(!NotificationManagerCompat.from(this).areNotificationsEnabled()) {status.setText("Android notifications are blocked. Open Android notification settings to allow them.");return;}
         setBusy(true);status.setText("Connecting this phone…");
+        NativePushController.allowAccountLink(this);
         CeaNotificationService.setEnabled(this,true);
         FirebaseMessaging.getInstance().setAutoInitEnabled(true);
         NativePushController.sync(this,true,this::completed);

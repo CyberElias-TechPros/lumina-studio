@@ -42,6 +42,12 @@ public final class NativePushController {
     public static String status(Context context) {
         return context.getSharedPreferences("cea-notifications",Context.MODE_PRIVATE).getString("status","Off. Choose Enable to connect this phone to your signed-in account.");
     }
+    public static void allowAccountLink(Context context) {
+        context.getSharedPreferences("cea-notifications",Context.MODE_PRIVATE).edit().putBoolean("accountConsent",true).apply();
+    }
+    private static boolean accountConsented(Context context) {
+        return context.getSharedPreferences("cea-notifications",Context.MODE_PRIVATE).getBoolean("accountConsent",false);
+    }
     public static void tokenChanged() { bindingHash=""; }
     public static void foreground(Context context) {
         if(CeaNotificationService.enabled(context) && !NotificationManagerCompat.from(context).areNotificationsEnabled()) {
@@ -57,7 +63,7 @@ public final class NativePushController {
     }
     public static void sync(Context original, boolean force, Callback callback) {
         Context context=original.getApplicationContext();
-        if(!CeaNotificationService.enabled(context)) { if(callback!=null)finish(context,callback,"Notifications are off on this phone.");return; }
+        if(!CeaNotificationService.enabled(context) || !accountConsented(context)) { if(callback!=null)finish(context,callback,"Choose Enable or Reconnect to link this phone to your signed-in account.");return; }
         if(!force && SystemClock.elapsedRealtime()-attemptedAt<60000)return;
         if(!syncing.compareAndSet(false,true)) { if(callback!=null)main.post(()->callback.done("Connection is already in progress. Please wait."));return; }
         attemptedAt=SystemClock.elapsedRealtime(); final long epoch=generation.get();
@@ -77,13 +83,14 @@ public final class NativePushController {
                     if(reply.status==200 && reply.body.optBoolean("registered")) {
                         bindingHash=hash;finish(context,callback,"Phone connected to your signed-in account. You can send a test below. Automatic class/message alerts are not enabled yet.");
                     } else { bindingHash="";finish(context,callback,problem(reply.status)); }
-                } catch(Exception ignored) { finish(context,callback,"Could not connect this phone to CEA. Check your connection and try again."); }
+                } catch(Exception ignored) { if(epoch==generation.get() && CeaNotificationService.enabled(context))finish(context,callback,"Could not connect this phone to CEA. Check your connection and try again."); }
                 finally { syncing.set(false); }
         });
     }
     public static void disable(Context original, Callback callback) {
         Context context=original.getApplicationContext(); generation.incrementAndGet();bindingHash="";
         CeaNotificationService.setEnabled(context,false);
+        context.getSharedPreferences("cea-notifications",Context.MODE_PRIVATE).edit().putBoolean("accountConsent",false).apply();
         FirebaseMessaging.getInstance().setAutoInitEnabled(false);
         NotificationManagerCompat.from(context).cancelAll();
         context.getSharedPreferences("cea-notifications",Context.MODE_PRIVATE).edit().putBoolean("pendingRemoval",true).apply();
@@ -109,7 +116,7 @@ public final class NativePushController {
     public static void test(Context original, Callback callback) {
         Context context=original.getApplicationContext();
         worker.execute(()->{
-            if(!CeaNotificationService.enabled(context)) {finish(context,callback,"Enable and connect this phone first.");return;}
+            if(!CeaNotificationService.enabled(context) || !accountConsented(context)) {finish(context,callback,"Enable and connect this phone first.");return;}
             try {
                 String cookie=NativePushPolicy.sessionCookie(CookieManager.getInstance().getCookie(BuildConfig.CEA_API_ORIGIN));
                 if(cookie.isEmpty()) {finish(context,callback,"Sign in to CEA before sending a test.");return;}

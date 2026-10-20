@@ -3,8 +3,8 @@
 ## Implemented on the branch, not yet deployed
 
 The Worker now has an FCM HTTP v1 sender and `POST /v1/push/devices/test`.
-The Android app is **not yet connected** to the account-bound device API. This
-increment is server infrastructure, not proof of phone delivery or full push parity.
+The Android controls are now connected in source; see [activation and access requirements](android-activation.md).
+Neither source integration nor a build pass proves live phone delivery or full push parity.
 
 The test endpoint requires a valid session, `Content-Type: application/json`, and
 an empty JSON object. It cannot select another user, provide message text or supply
@@ -55,8 +55,8 @@ server configuration returns 503 rather than pretending delivery succeeded.
    file outside the repository. Never put it in chat, Android assets, a public
    environment variable, a workflow log or a commit. Rotate/revoke it if exposed.
 3. Apply the reviewed additive device migration and deploy the reviewed Worker.
-4. Finish the Android bridge before normal users can register accounts/devices or
-   invoke the self-test. Perform a controlled test with a consenting account/phone.
+4. Install the verified APK and use its connected controls for a controlled test
+   with a consenting signed-in account/phone after deployment.
 
 The supplied `google-services.json` is Android client configuration; it cannot
 replace this server credential. No real service-account key was provided, stored

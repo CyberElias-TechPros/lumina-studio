@@ -24,7 +24,7 @@ Registration JSON fields:
 
 Persist installation identity/proof in native app-private storage, exclude it
 from backups and never put it in URLs, analytics, console logs or shared web
-storage. This native persistence/bridge implementation is still pending.
+storage. This native-only persistence/controller is implemented; see [activation](android-activation.md).
 
 Registration returns `{ id, registered: true }` only after the database write.
 Wrong installation proof, a token already held by another installation, or the
@@ -64,11 +64,11 @@ private lesson/payment/message text in a push payload.
 
 ## Remaining integration
 
-1. Connect the Android opt-in/disable controls to this API through a trusted-origin
-   native bridge and the existing authenticated cookie flow. Keep raw session
-   cookies and installation proof out of JavaScript.
-2. Serialize registration updates on sign-in/account switch, foreground resume and
-   FCM token rotation; handle offline retries without restoring withdrawn consent.
+1. Validate the connected native controls on physical devices after deployment;
+   cookies/proof remain in native code rather than a JavaScript bridge.
+2. Verify foreground sign-in/account-switch and token-rotation synchronization,
+   offline retries and disable/re-enable behaviour. Background delivery is not
+   guaranteed, and automatic event integration is not complete.
 3. Configure the [FCM sender and self-test](android-fcm-delivery.md) through secure
    deployment settings. HTTP v1 transport and stale-token cleanup are implemented;
    automatic event integration, queue retries and an audited trigger path remain
@@ -76,7 +76,7 @@ private lesson/payment/message text in a push payload.
 4. Apply the additive migration and deploy the Worker through the reviewed release
    process, then perform a controlled real-device/account test.
 
-The Android UI still correctly says account alerts are not connected. No Firebase
+The Android UI describes account connection separately from automatic event alerts. No Firebase
 server credential was requested or stored, no live registration was created, and
 no message was sent. A schema/API test pass is not an end-to-end notification test.
 
