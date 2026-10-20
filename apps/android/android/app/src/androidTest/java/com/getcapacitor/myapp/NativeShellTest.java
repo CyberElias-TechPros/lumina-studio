@@ -14,7 +14,7 @@ public class NativeShellTest {
             onView(withText("Back to CEA app")).check(matches(isDisplayed())).perform(click());
             onView(withText("CEA menu")).check(matches(isDisplayed())).perform(click());
             onView(withText("Save page as PDF")).check(matches(isDisplayed()));
-            pressBack();
+            androidx.test.espresso.Espresso.pressBack();
         }
     }
 }
