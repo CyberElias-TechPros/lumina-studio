@@ -19,4 +19,13 @@ public class NotificationDefaultsTest {
             // Do not grant permissions, create tokens or send messages in CI.
         }
     }
+    @Test public void offControlsDoNotCreateAnInstallationOrRequestRegistration() throws Exception {
+        android.content.Context context=InstrumentationRegistry.getInstrumentation().getTargetContext();
+        assertFalse(CeaNotificationService.enabled(context));
+        java.util.concurrent.CountDownLatch finished=new java.util.concurrent.CountDownLatch(1);
+        ng.cea.app.NativePushController.test(context,message->finished.countDown());
+        assertTrue(finished.await(5,java.util.concurrent.TimeUnit.SECONDS));
+        assertFalse(FirebaseMessaging.getInstance().isAutoInitEnabled());
+        assertFalse(new java.io.File(context.getNoBackupFilesDir(),"cea-push-installation.properties").exists());
+    }
 }

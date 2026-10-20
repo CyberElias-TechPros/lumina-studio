@@ -18,6 +18,12 @@ import com.getcapacitor.BridgeActivity;
 import com.getcapacitor.BridgeWebViewClient;
 
 public class MainActivity extends BridgeActivity {
+    private final android.os.Handler notificationHandler=new android.os.Handler(android.os.Looper.getMainLooper());
+    private final Runnable notificationSync=new Runnable() {
+        @Override public void run() {NativePushController.foreground(MainActivity.this);notificationHandler.postDelayed(this,30000);}
+    };
+    @Override public void onResume() {super.onResume();notificationHandler.removeCallbacks(notificationSync);notificationHandler.post(notificationSync);}
+    @Override public void onPause() {notificationHandler.removeCallbacks(notificationSync);super.onPause();}
     private static final String HOME = BuildConfig.CEA_ORIGIN;
     @Override public void onCreate(Bundle state) {
         registerPlugin(CeaDocumentsPlugin.class);

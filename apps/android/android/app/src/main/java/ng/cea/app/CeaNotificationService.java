@@ -44,6 +44,6 @@ public class CeaNotificationService extends FirebaseMessagingService {
         try { NotificationManagerCompat.from(this).notify(1,notification); }
         catch(SecurityException ignored) { /* Permission may have been revoked between checks. */ }
     }
-    // Tokens are intentionally not logged, copied to web storage or sent to an unauthenticated API.
-    // Account-bound token registration/rotation is a separate server-side integration.
+    // Refresh binding on next foreground, where the current authenticated cookie is available.
+    @Override public void onNewToken(String token) {NativePushController.tokenChanged();}
 }
