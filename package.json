@@ -14,7 +14,11 @@
     "lint": "eslint .",
     "format": "prettier --write .",
     "typecheck": "tsc --noEmit",
-    "pretypecheck": "node scripts/generate-next-routes.mjs"
+    "pretypecheck": "node scripts/generate-next-routes.mjs",
+    "android:install": "npm ci --prefix apps/android",
+    "android:sync": "npm run sync --prefix apps/android",
+    "android:open": "npm run open --prefix apps/android",
+    "android:build": "npm run build:debug --prefix apps/android"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",

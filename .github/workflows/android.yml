@@ -1,0 +1,35 @@
+name: Android debug APK
+on:
+  workflow_dispatch:
+  pull_request:
+    paths: ['apps/android/**', 'src/data/blog.ts', '.github/workflows/android.yml']
+  push:
+    branches: ['arena/df91cdba-lumina-studio']
+    paths: ['apps/android/**', 'src/data/blog.ts', '.github/workflows/android.yml']
+permissions:
+  contents: read
+jobs:
+  debug:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: apps/android/package-lock.json
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - uses: android-actions/setup-android@v3
+      - uses: gradle/actions/setup-gradle@v4
+      - run: npm ci && npm run typecheck && npm run sync
+        working-directory: apps/android
+      - run: chmod +x gradlew && ./gradlew assembleDebug testDebugUnitTest lintDebug
+        working-directory: apps/android/android
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cea-android-debug
+          path: apps/android/android/app/build/outputs/apk/debug/*.apk
+          if-no-files-found: error

@@ -1,0 +1,98 @@
+package ng.cea.app;
+
+import android.content.Intent;
+import android.content.ActivityNotFoundException;
+import android.net.Uri;
+import android.os.Bundle;
+import android.view.View;
+import android.view.ViewGroup;
+import android.webkit.WebView;
+import android.webkit.WebResourceRequest;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.Toast;
+import android.print.PrintManager;
+import androidx.activity.OnBackPressedCallback;
+import androidx.appcompat.app.AlertDialog;
+import com.getcapacitor.BridgeActivity;
+import com.getcapacitor.BridgeWebViewClient;
+
+public class MainActivity extends BridgeActivity {
+    private static final String HOME = "https://www.cea.ng";
+    @Override public void onCreate(Bundle state) {
+        super.onCreate(state);
+        if (bridge == null) return;
+        WebView web = bridge.getWebView();
+        web.getSettings().setAllowFileAccess(false);
+        web.getSettings().setAllowContentAccess(true); // Android system document picker.
+        bridge.setWebViewClient(new BridgeWebViewClient(bridge) {
+            @Override public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
+                return navigate(request.getUrl().toString());
+            }
+            @Override public boolean shouldOverrideUrlLoading(WebView view, String url) { return navigate(url); }
+        });
+        ViewGroup content = findViewById(android.R.id.content);
+        View existing = content.getChildAt(0); content.removeView(existing);
+        LinearLayout layout = new LinearLayout(this); layout.setOrientation(LinearLayout.VERTICAL);
+        LinearLayout bar = new LinearLayout(this);
+        Button menu = new Button(this); menu.setText("CEA menu"); menu.setOnClickListener(v -> menu());
+        Button lessons = new Button(this); lessons.setText("Offline lessons"); lessons.setOnClickListener(v -> offline());
+        bar.addView(menu, new LinearLayout.LayoutParams(0,-2,1)); bar.addView(lessons,new LinearLayout.LayoutParams(0,-2,1));
+        layout.addView(bar); layout.addView(existing,new LinearLayout.LayoutParams(-1,0,1)); content.addView(layout);
+        web.setDownloadListener((url, agent, disposition, mime, length) -> {
+            // Do not forward session cookies to a downloader or unknown redirect destination.
+            new AlertDialog.Builder(this).setTitle("Save this file")
+                .setMessage("For a receipt or certificate page, choose Save page as PDF in the CEA menu. Direct files open in your browser; private files may require sign-in there.")
+                .setPositiveButton("Open file", (d,w) -> openExternal(url)).setNegativeButton("Cancel",null).show();
+        });
+        getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
+            @Override public void handleOnBackPressed() {
+                if (web.canGoBack()) web.goBack();
+                else new AlertDialog.Builder(MainActivity.this).setTitle("Close CEA?").setMessage("Saved application answers stay on this device. Clear them first if this is a shared phone.")
+                    .setPositiveButton("Close",(d,w)->finish()).setNegativeButton("Stay",null).show();
+            }
+        });
+    }
+    private boolean navigate(String url) {
+        if (UrlPolicy.internal(url)) return false;
+        if (UrlPolicy.external(url)) new AlertDialog.Builder(this).setTitle("Open another app?")
+            .setMessage("This link opens outside CEA. Return here afterwards. Payment is only confirmed by CEA after checking with the provider.")
+            .setPositiveButton("Open",(d,w)->openExternal(url)).setNegativeButton("Stay",null).show();
+        else Toast.makeText(this,"This type of link cannot be opened. Use the website or contact CEA for help.",Toast.LENGTH_LONG).show();
+        return true;
+    }
+    private void openExternal(String url) {
+        if (!UrlPolicy.external(url)) { Toast.makeText(this,"Use Save page as PDF for this document.",Toast.LENGTH_LONG).show(); return; }
+        try { startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url))); }
+        catch (ActivityNotFoundException e) { Toast.makeText(this,"No app can open this link on this device.",Toast.LENGTH_LONG).show(); }
+    }
+    private void offline() { startActivity(new Intent(this, OfflineLessonsActivity.class)); }
+    private void menu() {
+        String[] items = {"Home", "My CEA workspace", "Offline lessons", "Share public lesson or course", "Save page as PDF", "Refresh page", "Help on WhatsApp"};
+        new AlertDialog.Builder(this).setTitle("What would you like to do?").setItems(items,(dialog,which)->{
+            WebView web = bridge.getWebView();
+            switch(which) {
+                case 0: web.loadUrl(HOME); break;
+                case 1: web.loadUrl(HOME+"/app"); break;
+                case 2: offline(); break;
+                case 3:
+                    Intent share = new Intent(Intent.ACTION_SEND); share.setType("text/plain"); share.putExtra(Intent.EXTRA_TEXT,UrlPolicy.shareable(web.getUrl())); startActivity(Intent.createChooser(share,"Share CEA")); break;
+                case 4:
+                    if (!UrlPolicy.internal(web.getUrl())) break;
+                    new AlertDialog.Builder(this).setTitle("Save a copy of this page?").setMessage("The PDF may contain private information. Only save it on a device you trust.")
+                        .setPositiveButton("Continue",(d,w)->((PrintManager)getSystemService(PRINT_SERVICE)).print("CEA document",web.createPrintDocumentAdapter("CEA document"),null)).setNegativeButton("Cancel",null).show(); break;
+                case 5: web.reload(); break;
+                case 6: openExternal("https://wa.me/2349058628386"); break;
+                default: break;
+            }
+        }).show();
+    }
+    @Override protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        if (bridge != null && Intent.ACTION_VIEW.equals(intent.getAction()) && intent.getData() != null && UrlPolicy.internal(intent.getData().toString())) {
+            bridge.getWebView().loadUrl(intent.getData().toString());
+            // Avoid keeping one-time credentials in Activity intent state.
+            setIntent(new Intent(this, MainActivity.class));
+        }
+    }
+}

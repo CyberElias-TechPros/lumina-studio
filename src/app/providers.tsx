@@ -50,7 +50,7 @@ export default function AppProviders({ children }: { children: ReactNode }) {
           <GlobalEffects />
         </SessionProvider>
         <Toaster position="top-right" richColors />
-        <CookieConsent />
+        {process.env.NEXT_PUBLIC_ENABLE_PUBLIC_TRACKING === "true" && <CookieConsent />}
         <WhatsAppFloat />
       </MotionProvider>
     </QueryClientProvider>

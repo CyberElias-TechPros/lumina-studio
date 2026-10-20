@@ -316,3 +316,16 @@ environment separately. Do not use demo seed bundles as a tuition release step.
 
 GA4/AdSense loading is paused by default pending a separate tracking/privacy
 review. Keep `NEXT_PUBLIC_ENABLE_PUBLIC_TRACKING` false/unset.
+
+## Android development shell (20 October 2026)
+
+`apps/android` contains the initial Capacitor Android shell for the shared CEA
+website and role-authorised CEA-OS. See [build instructions and release blockers](apps/android/README.md)
+and the [phased Android plan](docs/android-app-plan-2026-10-20.md).
+This is a prototype, not a tested full-parity release. Offline lessons, verified
+App Links, native push and signed store distribution are follow-up phases.
+
+The [beginner-simplicity review](docs/cea-ng-beginner-simplicity-critique-2026-10-20.md)
+records evidence limits and the broader improvement backlog. The first web batch
+adds draft recovery with a clear control, wizard focus/error announcements,
+CEA install branding and consent-banner/WhatsApp-button improvements.
