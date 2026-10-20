@@ -76,6 +76,17 @@ public class MainActivity extends BridgeActivity {
     }
     private boolean navigate(String url) {
         if (UrlPolicy.internal(url)) return bridge.launchIntent(Uri.parse(url));
+        String path=Uri.parse(url).getPath();
+        if (UrlPolicy.download(url) && path!=null && path.startsWith("/v1/uploads/")) {
+            new AlertDialog.Builder(this).setTitle("Save this CEA file?")
+                .setMessage("Choose where to save the file. Only save private files on a device you trust.")
+                .setPositiveButton("Save",(d,w)-> {
+                    com.getcapacitor.JSObject options=new com.getcapacitor.JSObject();options.put("url",url);
+                    options.put("name",android.webkit.URLUtil.guessFileName(url,null,null));
+                    bridge.getWebView().evaluateJavascript("window.Capacitor.nativePromise('CeaDocuments','download',"+options.toString()+").catch(function(e){alert(e.message || 'Download failed');})",null);
+                }).setNegativeButton("Cancel",null).show();
+            return true;
+        }
         if (UrlPolicy.external(url)) new AlertDialog.Builder(this).setTitle("Open another app?")
             .setMessage("This link opens outside CEA. Return here afterwards. Payment is only confirmed by CEA after checking with the provider.")
             .setPositiveButton("Open",(d,w)->openExternal(url)).setNegativeButton("Stay",null).show();
