@@ -1,13 +1,15 @@
 # CEA Android: isolated staging setup
 
-## Answer: same code, separate deployment and data
+> **Optional reference, not a prerequisite:** the owner subsequently chose production-targeted development. See [production checks and boundaries](android-production-checks.md). No staging resources have been created.
+
+## Isolated testing option: same code, separate deployment and data
 
 The release app can use `https://www.cea.ng` and its existing API. Read-only public
 smoke checks may use production. Do not use the main site's database as staging:
 application, payment, messaging, role-management and deletion tests change real
 records. A Vercel preview pointing at the production API is still production data.
 
-For full acceptance, deploy the same code twice:
+For isolated write-capable acceptance testing, the recommended option is to deploy the same code twice:
 
 | | Normal use | Test installation |
 | --- | --- | --- |

@@ -72,3 +72,17 @@ CI does not enable registration, request real FCM tokens or send notifications.
 A build/emulator pass is not proof that a real Firebase message has been delivered.
 Private-key/service-account configuration for future server delivery must remain
 in deployment secrets, never in the APK or chat.
+
+## Verified build
+
+Source commit `c6cd309` passed [Android CI 39393139097](https://github.com/CyberElias-TechPros/lumina-studio/actions/runs/39393139097):
+Android debug build, JVM tests, lint, API 29 emulator tests, and the three public
+production GET checks above. Local sync/typecheck and the two fake-fetch tests
+also passed. The emulator test confirms opening notification settings leaves
+Firebase auto-init disabled; it does not prove real-device delivery.
+
+[Debug APK ZIP](https://github.com/CyberElias-TechPros/lumina-studio/actions/runs/39393139097/artifacts/12250920869)
+(6,296,806 bytes). Test reports artifact: `12250507129`.
+This is not a signed production release, Play publication or proof of full role
+parity. No production database migration, record write or notification send was
+performed by this work.
