@@ -57,6 +57,7 @@ These are branch changes, **not a claim that this pass has been deployed to the 
 **Owners:** product/UX, security, frontend/backend and QA.
 
 - Deploy and browser-verify R1–R7, including upgrading an existing service worker and inspecting Cache Storage after sign-in/sign-out/account switching.
+- Confirm an approved owner/admin bootstrap account exists. Public sign-up must never grant staff privileges; isolated demo/test credentials are not a production bootstrap procedure.
 - On a fresh Android installation, establish that a learner can distinguish browsing, account creation, course application, enrolment and payment. Do not require a Google/Firebase account.
 - Exercise password sign-in, password reset, magic-link delivery, expired links, MFA, expiry/re-entry and account switching. Verify email deliverability rather than relying on success-shaped API responses.
 - Validate native notification registration, foreground/background receipt, tap, quiet hours, disable, offline removal and token replacement on a physical device. Server credential installation is not delivery proof.

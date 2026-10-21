@@ -57,7 +57,9 @@ test("resend retains email and does not claim a failed email was sent", async ({
   await expect(page.getByLabel("Email address")).toBeFocused();
   expect(emails).toHaveLength(1);
   await page.getByRole("button", { name: "Send sign-in link", exact: true }).click();
-  await expect(page.getByRole("alert")).toContainText("We could not send the sign-in email");
+  await expect(page.locator("form").getByRole("alert")).toContainText(
+    "We could not send the sign-in email",
+  );
   await expect(page.getByRole("heading", { name: "Check your inbox" })).toHaveCount(0);
   expect(emails).toEqual(["learner@example.test", "learner@example.test"]);
 });
