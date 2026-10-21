@@ -43,7 +43,7 @@ function SignInPage() {
   const [sent, setSent] = useState(false);
   const [devToken, setDevToken] = useState<string | undefined>(undefined);
   const [remember, setRemember] = useState(true);
-  const emailRef = useRef<HTMLInputElement>(null);
+  const [email, setEmail] = useState("");
   const passwordRef = useRef<HTMLInputElement>(null);
   const navigate = useNavigate();
 
@@ -53,6 +53,13 @@ function SignInPage() {
     mutationFn: requestMagicLink,
     onSuccess: (result) => {
       const dev = (result as { devToken?: string }).devToken;
+      if (result.sent === false && !dev) {
+        turnstile.reset();
+        setError(
+          "We could not send the sign-in email. Try again later, use your password, or contact the Academy for help.",
+        );
+        return;
+      }
       setDevToken(dev);
       setSent(true);
     },
@@ -67,16 +74,14 @@ function SignInPage() {
     setError("");
 
     if (magic) {
-      const email = emailRef.current?.value.trim() ?? "";
       if (!email) return;
-      magicLink.mutate({ email, turnstileToken: turnstile.token });
+      magicLink.mutate({ email: email.trim(), turnstileToken: turnstile.token });
       return;
     }
 
-    const email = emailRef.current?.value.trim() ?? "";
     const password = passwordRef.current?.value ?? "";
     passwordSignIn.mutate(
-      { email, password, remember },
+      { email: email.trim(), password, remember },
       {
         onSuccess: (result) => {
           if ("user" in result) {
@@ -106,13 +111,14 @@ function SignInPage() {
           </Link>
           <h1 className="font-display mt-4 text-2xl font-semibold">Sign in</h1>
           <p className="text-muted-foreground mt-1 text-sm">
-            For students and staff of Cyber Elias Academy.
+            Use the same CEA email and password on the website and Android app. You do not need a
+            separate Google or Firebase account.
           </p>
         </div>
 
         <div className="border-border bg-card rounded-lg border p-6 sm:p-8">
           {sent ? (
-            <div className="text-center">
+            <div className="text-center" role="status" aria-live="polite">
               <span className="bg-success/10 text-success mx-auto grid size-12 place-items-center rounded-full">
                 <MailCheck className="size-6" />
               </span>
@@ -130,13 +136,15 @@ function SignInPage() {
               <button
                 type="button"
                 onClick={() => {
-                  const email = emailRef.current?.value.trim() ?? "";
-                  if (email) magicLink.mutate({ email });
+                  turnstile.reset();
+                  setSent(false);
+                  setError("");
+                  setDevToken(undefined);
                 }}
                 disabled={magicLink.isPending}
                 className="text-muted-foreground hover:text-foreground mt-3 block w-full text-center text-xs"
               >
-                Resend link
+                Request another link
               </button>
             </div>
           ) : (
@@ -148,7 +156,11 @@ function SignInPage() {
                     <Mail className="text-muted-foreground absolute top-1/2 left-3 size-4 -translate-y-1/2" />
                     <Input
                       id="email"
-                      ref={emailRef}
+                      value={email}
+                      onChange={(event) => setEmail(event.target.value)}
+                      autoComplete="username"
+                      autoCapitalize="none"
+                      spellCheck={false}
                       type="email"
                       placeholder="you@example.com"
                       className="pl-9"
@@ -173,6 +185,7 @@ function SignInPage() {
                       <Input
                         id="password"
                         ref={passwordRef}
+                        autoComplete="current-password"
                         type={show ? "text" : "password"}
                         placeholder="••••••••"
                         className="pl-9 pr-10"
@@ -181,6 +194,8 @@ function SignInPage() {
                       <button
                         type="button"
                         onClick={() => setShow((s) => !s)}
+                        aria-label={show ? "Hide password" : "Show password"}
+                        aria-pressed={show}
                         className="text-muted-foreground hover:text-foreground absolute top-1/2 right-3 -translate-y-1/2"
                       >
                         {show ? <EyeOff className="size-4" /> : <Eye className="size-4" />}
@@ -195,7 +210,11 @@ function SignInPage() {
                 </label>
 
                 {magic && <turnstile.Widget />}
-                {error && <p className="text-error text-sm">{error}</p>}
+                {error && (
+                  <p role="alert" className="text-error text-sm">
+                    {error}
+                  </p>
+                )}
 
                 <Button
                   type="submit"
@@ -209,7 +228,12 @@ function SignInPage() {
 
               <button
                 type="button"
-                onClick={() => setMagic((m) => !m)}
+                onClick={() => {
+                  setMagic((m) => !m);
+                  setError("");
+                  turnstile.reset();
+                }}
+                disabled={busy}
                 className="text-primary mt-3 flex w-full items-center justify-center gap-1.5 text-xs"
               >
                 <Link2 className="size-3.5" />

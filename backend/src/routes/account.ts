@@ -293,6 +293,7 @@ const EXPORT_TABLES = [
   "notifications",
   "notification_preferences",
   "push_subscriptions",
+  "native_push_devices",
 ] as const;
 
 account.get("/export", async (c) => {
@@ -313,6 +314,11 @@ account.get("/export", async (c) => {
         delete copy.endpoint_auth;
         delete copy.p256dh;
         delete copy.auth;
+        if (table === "native_push_devices") {
+          delete copy.token;
+          delete copy.device_secret_hash;
+          delete copy.session_id;
+        }
         return copy;
       });
     } catch {
@@ -399,6 +405,7 @@ account.post("/delete", async (c) => {
       `UPDATE sessions SET revoked_at = ? WHERE user_id = ? AND revoked_at IS NULL`,
     ).bind(now, row.id),
     c.env.DB.prepare(`DELETE FROM push_subscriptions WHERE user_id = ?`).bind(row.id),
+    c.env.DB.prepare(`DELETE FROM native_push_devices WHERE user_id = ?`).bind(row.id),
     c.env.DB.prepare(`DELETE FROM notification_preferences WHERE user_id = ?`).bind(row.id),
     c.env.DB.prepare(
       `UPDATE magic_links SET consumed_at = ? WHERE email = ? AND consumed_at IS NULL`,
