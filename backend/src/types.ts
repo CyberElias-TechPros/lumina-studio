@@ -1,6 +1,7 @@
 export interface AppEnv {
   DB: D1Database;
   APP_ENV: string;
+  DEPLOY_COMMIT?: string;
   FRONTEND_ORIGINS: string;
   PAYSTACK_SECRET_KEY: string;
   TURNSTILE_SECRET_KEY?: string;
@@ -11,6 +12,8 @@ export interface AppEnv {
   REALTIME_ROOMS: DurableObjectNamespace;
   FLAGS: KVNamespace;
   RATE_LIMIT: KVNamespace;
+  /** Server-only secret. Never embed in Android or NEXT_PUBLIC variables. */
+  FCM_SERVICE_ACCOUNT_JSON?: string;
   VAPID_PUBLIC_KEY: string;
   VAPID_PRIVATE_KEY: string;
   EMAIL_PROVIDER: string;

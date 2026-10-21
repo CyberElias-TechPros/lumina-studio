@@ -56,3 +56,11 @@ backend/seeds/library-upload-errors.log
 test-results/
 playwright-report/
 
+# Android signing material and SDK caches
+*.keystore
+*.jks
+**/local.properties
+**/.gradle/
+# Generated isolated staging configuration and local resource inventory
+/backend/wrangler.staging.json
+/staging-resources.local.json

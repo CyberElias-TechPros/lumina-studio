@@ -17,7 +17,7 @@ export const Route = createFileRoute("/privacy")({
 });
 
 function PrivacyPage() {
-  const lastUpdated = "17 October 2026";
+  const lastUpdated = "21 October 2026";
 
   return (
     <PageShell>
@@ -63,6 +63,21 @@ function PrivacyPage() {
                 numbers
               </li>
             </ul>
+            <h3 className="mt-6 font-semibold">Optional Android phone notifications</h3>
+            <p className="text-muted-foreground mt-3 leading-relaxed">
+              If you enable phone notifications, Google Firebase provides a device registration
+              token. CEA stores that token, an installation identifier, a hash of the installation
+              proof and timestamps, linked to your signed-in account and session. They are used to
+              route notifications, not as a password. Our native notification sender sends a generic
+              hint to open your inbox, not private message or payment details.
+            </p>
+            <p className="text-muted-foreground mt-3 leading-relaxed">
+              You can disable this in CEA menu → Phone notifications or block notifications in
+              Android settings. Disabling stops local alerts immediately; removing the remote
+              registration needs a connection. The app includes public offline lessons. Files you
+              explicitly export to your device remain under your control and are not automatically
+              deleted when you sign out.
+            </p>
             <h3 className="mt-6 font-semibold">The site collects</h3>
             <ul className="text-muted-foreground mt-3 list-inside list-disc space-y-2">
               <li>Essential cookies: session, security, your light/dark preference</li>

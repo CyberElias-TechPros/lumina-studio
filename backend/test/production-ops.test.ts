@@ -147,20 +147,45 @@ describe("account: password change", () => {
   });
 });
 
+async function registerNativeDevice(cookie: string) {
+  const id = crypto.randomUUID();
+  const result = await api("/v1/push/devices", {
+    method: "PUT",
+    headers: { ...cookieHeaders(cookie), ...json },
+    body: JSON.stringify({
+      installationId: id,
+      deviceSecret: "s".repeat(43),
+      token: `test-device-${crypto.randomUUID()}`,
+    }),
+  });
+  expect(result.status).toBe(200);
+  return id;
+}
+
 describe("account: data export + deletion (NDPR)", () => {
   it("exports the user's own data as a JSON attachment", async () => {
     const { cookie, session } = await createTestSession("export-me@cea.test");
+    const deviceId = await registerNativeDevice(cookie);
     const res = await api("/v1/account/export", { headers: cookieHeaders(cookie) });
     expect(res.status).toBe(200);
     expect(res.headers.get("content-disposition")).toContain("attachment");
     const body = (await res.json()) as { account: { id: string }; data: Record<string, unknown[]> };
     expect(body.account.id).toBe(session.user.id);
     expect(Array.isArray(body.data.sessions)).toBe(true);
+    const devices = body.data.native_push_devices as Record<string, unknown>[];
+    expect(devices).toHaveLength(1);
+    expect(devices[0]?.id).toBe(deviceId);
+    expect(devices[0]).not.toHaveProperty("token");
+    expect(devices[0]).not.toHaveProperty("device_secret_hash");
+    expect(devices[0]).not.toHaveProperty("session_id");
   });
 
   it("requires confirmation + password, then anonymises and signs out", async () => {
     const email = "delete-me@cea.test";
     const { cookie } = await signUp(email, "delete-pass-1");
+    const deviceId = await registerNativeDevice(cookie);
+    const other = await createTestSession("keep-device@cea.test");
+    const otherDeviceId = await registerNativeDevice(other.cookie);
 
     const noConfirm = await api("/v1/account/delete", {
       method: "POST",
@@ -168,6 +193,11 @@ describe("account: data export + deletion (NDPR)", () => {
       body: JSON.stringify({ confirm: "nah", password: "delete-pass-1" }),
     });
     expect(noConfirm.status).toBe(400);
+    expect(
+      await env.DB.prepare("SELECT id FROM native_push_devices WHERE id = ?")
+        .bind(deviceId)
+        .first(),
+    ).not.toBeNull();
 
     const badPw = await api("/v1/account/delete", {
       method: "POST",
@@ -188,6 +218,16 @@ describe("account: data export + deletion (NDPR)", () => {
       .bind(email)
       .first<{ n: number }>();
     expect(row?.n).toBe(0);
+    expect(
+      await env.DB.prepare("SELECT id FROM native_push_devices WHERE id = ?")
+        .bind(deviceId)
+        .first(),
+    ).toBeNull();
+    expect(
+      await env.DB.prepare("SELECT id FROM native_push_devices WHERE id = ?")
+        .bind(otherDeviceId)
+        .first(),
+    ).not.toBeNull();
     const signIn = await api("/v1/auth/sign-in", {
       method: "POST",
       headers: json,

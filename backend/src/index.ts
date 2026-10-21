@@ -39,6 +39,7 @@ import { compliance } from "./routes/compliance";
 import { schools } from "./routes/schools";
 import { businessIntake } from "./routes/businessIntake";
 import { push } from "./routes/push";
+import { nativePush } from "./routes/native-push";
 import { library } from "./routes/library";
 import { parent } from "./routes/parent";
 import { invitations } from "./routes/invitations";
@@ -137,6 +138,7 @@ v1.route("/cohorts", cohorts);
 v1.route("/compliance", compliance);
 v1.route("/schools", schools);
 v1.route("/business-intake", businessIntake);
+v1.route("/push/devices", nativePush);
 v1.route("/push", push);
 v1.route("/flags", flags);
 v1.route("/contact", contact);
@@ -176,7 +178,7 @@ v1.route("/portal", portal);
 /** Uptime + DB reachability check for deployment probes. */
 v1.get("/health", async (c) => {
   await c.env.DB.prepare("SELECT 1").first();
-  return c.json({ ok: true, time: new Date().toISOString(), db: "ok" });
+  return c.json({ ok: true, time: new Date().toISOString(), db: "ok", revision: c.env.DEPLOY_COMMIT ?? "unknown" });
 });
 
 app.route("/v1", v1);

@@ -1,0 +1,84 @@
+name: Android debug APK
+on:
+  workflow_dispatch:
+  pull_request:
+    paths: ['apps/android/**', 'src/data/blog.ts', 'src/routes/**', '.github/workflows/android.yml']
+  push:
+    branches: ['arena/df91cdba-lumina-studio']
+    paths: ['apps/android/**', 'src/data/blog.ts', 'src/routes/**', '.github/workflows/android.yml']
+permissions:
+  contents: read
+jobs:
+  production-read-only:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/arena/df91cdba-lumina-studio'
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node --test apps/android/scripts/test/production-smoke.test.mjs
+      - run: node apps/android/scripts/production-smoke.mjs
+  debug:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: apps/android/package-lock.json
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - uses: gradle/actions/setup-gradle@v4
+      - run: node apps/android/scripts/route-inventory.mjs --check
+      - run: npm ci && npm run typecheck && npm run sync
+        working-directory: apps/android
+      - run: |
+          chmod +x gradlew
+          if ./gradlew :app:assembleDebug :app:assembleDebugAndroidTest :app:testDebugUnitTest :app:lintDebug > android-build.log 2>&1; then
+            tail -30 android-build.log
+          else
+            python3 -c 'from pathlib import Path; s=Path("android-build.log").read_text()[-3000:]; print("::error::"+s.replace("%","%25").replace("\n","%0A").replace("\r","%0D"))'
+            exit 1
+          fi
+        working-directory: apps/android/android
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cea-android-debug
+          path: apps/android/android/app/build/outputs/apk/debug/*.apk
+          if-no-files-found: error
+      - name: Enable KVM for offline-reader emulator smoke
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+      - name: Test packaged offline reader on Android
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 29
+          arch: x86_64
+          disable-animations: true
+          working-directory: apps/android/android
+          script: ./gradlew :app:connectedDebugAndroidTest > emulator-test.log 2>&1 || (python3 -c 'from pathlib import Path; s=Path("emulator-test.log").read_text()[-3000:]; print("::error::"+s.replace("%","%25").replace("\n","%0A").replace("\r","%0D"))'; exit 1)
+      - name: Publish emulator test diagnostics
+        if: always()
+        run: |
+          python3 - <<'PY'
+          import glob, xml.etree.ElementTree as ET
+          for path in glob.glob('apps/android/android/app/build/outputs/androidTest-results/**/*.xml',recursive=True):
+            try: root=ET.parse(path).getroot()
+            except ET.ParseError: continue
+            for failure in list(root.iter('failure'))+list(root.iter('error')):
+              text=(failure.get('message','')+' '+(failure.text or ''))[:6000]
+              print('::error::'+text.replace('%','%25').replace('\n','%0A').replace('\r','%0D'))
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: android-test-reports
+          path: |
+            apps/android/android/app/build/reports/
+            apps/android/android/app/build/outputs/androidTest-results/

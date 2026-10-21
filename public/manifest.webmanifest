@@ -1,7 +1,7 @@
 {
-  "name": "Lumina Studio — Cyber Elias Academy",
-  "short_name": "Lumina",
-  "description": "Cyber Elias Academy's all-in-one platform: learn, build, and get hired.",
+  "name": "Cyber Elias Academy",
+  "short_name": "CEA",
+  "description": "Practical digital skills training in Port Harcourt: free computer lessons, short courses with listed fees, and your learner workspace.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
@@ -31,14 +31,19 @@
   ],
   "shortcuts": [
     {
-      "name": "Learning Hub",
-      "url": "/app/learn",
-      "description": "Jump back into your courses"
+      "name": "Free lessons",
+      "url": "/blog",
+      "description": "Read free computer lessons from scratch"
     },
     {
-      "name": "Messages",
-      "url": "/app/messages",
-      "description": "Open your inbox"
+      "name": "Courses & fees",
+      "url": "/classes",
+      "description": "See all courses with fees and dates"
+    },
+    {
+      "name": "Apply",
+      "url": "/apply",
+      "description": "Register for a course — free, about 5 minutes"
     }
   ]
 }

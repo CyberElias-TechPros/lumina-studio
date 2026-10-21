@@ -1,0 +1,86 @@
+apply plugin: 'com.android.application'
+
+def ceaOrigin = System.getenv('CEA_ANDROID_ORIGIN') ?: 'https://www.cea.ng'
+def originUri = new URI(ceaOrigin)
+if (originUri.scheme != 'https' || !originUri.host || originUri.userInfo || originUri.query || originUri.fragment || !(originUri.path in ['', '/']) || !(originUri.port in [-1, 443])) {
+    throw new GradleException('CEA_ANDROID_ORIGIN must be an HTTPS origin without credentials, query or path')
+}
+ceaOrigin = ceaOrigin.replaceAll('/+$', '')
+def apiUri = new URI(System.getenv('CEA_ANDROID_API_ORIGIN') ?: 'https://cea-api.cyber-e54.workers.dev')
+if (apiUri.scheme != 'https' || !apiUri.host || apiUri.userInfo || apiUri.query || apiUri.fragment || !(apiUri.path in ['', '/']) || !(apiUri.port in [-1, 443])) throw new GradleException('Invalid CEA_ANDROID_API_ORIGIN')
+
+android {
+    buildFeatures { buildConfig true }
+    namespace "ng.cea.app"
+    compileSdk rootProject.ext.compileSdkVersion
+    defaultConfig {
+        applicationId "ng.cea.app"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode Integer.parseInt(System.getenv('CEA_VERSION_CODE') ?: '1')
+        versionName System.getenv('CEA_VERSION_NAME') ?: '0.2.0'
+        buildConfigField 'String', 'CEA_ORIGIN', '"' + ceaOrigin + '"'
+        buildConfigField 'String', 'CEA_API_ORIGIN', '"' + (System.getenv('CEA_ANDROID_API_ORIGIN') ?: 'https://cea-api.cyber-e54.workers.dev') + '"'
+        manifestPlaceholders = [ceaHost: originUri.host]
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        aaptOptions {
+             // Files and dirs to omit from the packaged assets dir, modified to accommodate modern web apps.
+             // Default: https://android.googlesource.com/platform/frameworks/base/+/282e181b58cf72b6ca770dc7ca5f91f135444502/tools/aapt/AaptAssets.cpp#61
+            ignoreAssetsPattern '!.svn:!.git:!.ds_store:!*.scc:.*:!CVS:!thumbs.db:!picasa.ini:!*~'
+        }
+    }
+    signingConfigs {
+        release {
+            if (System.getenv('CEA_KEYSTORE_PATH')) {
+                storeFile file(System.getenv('CEA_KEYSTORE_PATH'))
+                storePassword System.getenv('CEA_KEYSTORE_PASSWORD')
+                keyAlias System.getenv('CEA_KEY_ALIAS')
+                keyPassword System.getenv('CEA_KEY_PASSWORD')
+            }
+        }
+    }
+    buildTypes {
+        release {
+            signingConfig signingConfigs.release
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+repositories {
+    flatDir{
+        dirs '../capacitor-cordova-android-plugins/src/main/libs', 'libs'
+    }
+}
+
+dependencies {
+    implementation platform('com.google.firebase:firebase-bom:34.0.0')
+    implementation 'com.google.firebase:firebase-messaging'
+    implementation platform('org.jetbrains.kotlin:kotlin-bom:1.8.22')
+    androidTestImplementation platform('org.jetbrains.kotlin:kotlin-bom:1.8.22')
+    implementation "androidx.webkit:webkit:$androidxWebkitVersion"
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation "androidx.appcompat:appcompat:$androidxAppCompatVersion"
+    implementation "androidx.coordinatorlayout:coordinatorlayout:$androidxCoordinatorLayoutVersion"
+    implementation "androidx.core:core-splashscreen:$coreSplashScreenVersion"
+    implementation project(':capacitor-android')
+    testImplementation "junit:junit:$junitVersion"
+    androidTestImplementation "androidx.test.ext:junit:$androidxJunitVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$androidxEspressoCoreVersion"
+    implementation project(':capacitor-cordova-android-plugins')
+}
+
+apply from: 'capacitor.build.gradle'
+
+// Android client configuration is checked before sync. Do not swallow plugin/config errors.
+apply plugin: 'com.google.gms.google-services'
+
+// Never silently produce an unsigned release that looks ready for distribution.
+gradle.taskGraph.whenReady { graph ->
+    if (graph.allTasks.any { it.project == project && it.name in ['assembleRelease', 'bundleRelease'] }) {
+        ['CEA_KEYSTORE_PATH', 'CEA_KEYSTORE_PASSWORD', 'CEA_KEY_ALIAS', 'CEA_KEY_PASSWORD'].each {
+            if (!System.getenv(it)) throw new GradleException('Release signing is not configured: ' + it)
+        }
+    }
+}

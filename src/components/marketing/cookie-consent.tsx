@@ -38,7 +38,7 @@ export function CookieConsent() {
   if (!visible) return null;
 
   return (
-    <div className="fixed inset-x-0 bottom-0 z-[100] p-4 sm:p-6">
+    <div className="fixed inset-x-0 bottom-24 z-[100] p-4 sm:p-6">
       <div className="container-page">
         <div className="bg-card shadow-elevated rounded-2xl border p-5 sm:flex sm:items-center sm:justify-between sm:gap-4">
           <p className="text-foreground/75 text-sm leading-relaxed">

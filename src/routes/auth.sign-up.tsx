@@ -7,7 +7,6 @@ import { Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { cn } from "@/lib/utils";
 import { useSignUp } from "@/lib/auth/session";
 import { useTurnstile } from "@/components/turnstile";
 
@@ -24,16 +23,7 @@ export const Route = createFileRoute("/auth/sign-up")({
   component: SignUpPage,
 });
 
-const roles = [
-  { id: "student", label: "Student", desc: "Apply and take classes" },
-  { id: "instructor", label: "Instructor", desc: "Teach at the centre" },
-  { id: "employer", label: "Employer", desc: "Staff account" },
-  { id: "partner", label: "Partner", desc: "Organisation contact" },
-  { id: "alumni", label: "Alumni", desc: "Past student" },
-];
-
 function SignUpPage() {
-  const [role, setRole] = useState("student");
   const [error, setError] = useState("");
   const firstNameRef = useRef<HTMLInputElement>(null);
   const lastNameRef = useRef<HTMLInputElement>(null);
@@ -52,7 +42,7 @@ function SignUpPage() {
     const email = emailRef.current?.value.trim() ?? "";
     const password = passwordRef.current?.value ?? "";
     signUp.mutate(
-      { name, email, password, roleKey: role, turnstileToken: turnstile.token },
+      { name, email, password, roleKey: "student", turnstileToken: turnstile.token },
       {
         onSuccess: (result) => {
           if (result.devVerificationCode) {
@@ -94,33 +84,33 @@ function SignUpPage() {
         </div>
 
         <div className="border-border bg-card rounded-lg border p-6 sm:p-8">
-          <Label>I am a</Label>
-          <div className="mt-2 grid gap-2 sm:grid-cols-2">
-            {roles.map((r) => (
-              <button
-                key={r.id}
-                type="button"
-                onClick={() => setRole(r.id)}
-                className={cn(
-                  "rounded-lg border p-3 text-left text-sm",
-                  role === r.id ? "border-primary bg-primary/5" : "hover:border-primary/40",
-                )}
-              >
-                <span className="block font-medium">{r.label}</span>
-                <span className="text-muted-foreground block text-xs">{r.desc}</span>
-              </button>
-            ))}
-          </div>
+          <p className="text-muted-foreground text-sm">
+            New accounts start with learner access. Creating an account does not enrol you in a paid
+            course. Staff and partner access must be approved by the Academy or granted through an
+            invitation.
+          </p>
 
           <form className="mt-6 space-y-4" onSubmit={submit}>
             <div className="grid gap-4 sm:grid-cols-2">
               <div className="space-y-1.5">
                 <Label htmlFor="first">First name</Label>
-                <Input id="first" ref={firstNameRef} placeholder="First name" required />
+                <Input
+                  id="first"
+                  ref={firstNameRef}
+                  placeholder="First name"
+                  autoComplete="given-name"
+                  required
+                />
               </div>
               <div className="space-y-1.5">
                 <Label htmlFor="last">Last name</Label>
-                <Input id="last" ref={lastNameRef} placeholder="Last name" required />
+                <Input
+                  id="last"
+                  ref={lastNameRef}
+                  placeholder="Last name"
+                  autoComplete="family-name"
+                  required
+                />
               </div>
             </div>
             <div className="space-y-1.5">
@@ -129,6 +119,9 @@ function SignUpPage() {
                 id="email"
                 ref={emailRef}
                 type="email"
+                autoComplete="email"
+                autoCapitalize="none"
+                spellCheck={false}
                 placeholder="you@example.com"
                 required
               />
@@ -139,13 +132,19 @@ function SignUpPage() {
                 id="password"
                 ref={passwordRef}
                 type="password"
+                autoComplete="new-password"
+                minLength={8}
                 placeholder="8+ characters"
                 required
               />
             </div>
 
             <turnstile.Widget />
-            {error && <p className="text-error text-sm">{error}</p>}
+            {error && (
+              <p role="alert" className="text-error text-sm">
+                {error}
+              </p>
+            )}
 
             <Button
               type="submit"
