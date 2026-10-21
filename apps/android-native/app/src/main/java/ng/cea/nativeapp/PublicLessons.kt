@@ -13,6 +13,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
@@ -75,7 +76,7 @@ fun PublicLessonReader(lessons: List<PublicLesson>) {
     BackHandler(selectedSlug != null) { selectedSlug = null }
     // A new list state per screen keeps detail scrolling separate from search results.
     key(selectedSlug) {
-        LazyColumn(Modifier.fillMaxSize(), contentPadding = PaddingValues(20.dp), verticalArrangement = Arrangement.spacedBy(16.dp)) {
+        LazyColumn(Modifier.fillMaxSize().testTag("public-lesson-list"), contentPadding = PaddingValues(20.dp), verticalArrangement = Arrangement.spacedBy(16.dp)) {
             if (selected == null) {
                 item { Text("Public lessons", style = MaterialTheme.typography.headlineMedium) }
                 item { Text("${lessons.size} lessons included with this app, available offline. These are public learning notes—not enrolment or assessed course progress. Updates arrive with app updates.") }
