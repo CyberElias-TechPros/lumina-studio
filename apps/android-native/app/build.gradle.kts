@@ -12,8 +12,8 @@ android {
         applicationId = "ng.cea.app.nativepreview"
         minSdk = 23
         targetSdk = 35
-        versionCode = 1
-        versionName = "0.1.0-native-preview"
+        versionCode = 2
+        versionName = "0.2.0-native-preview"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
     buildFeatures { compose = true }
@@ -38,3 +38,12 @@ dependencies {
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
 }
+
+val verifyPublicLessons by tasks.registering {
+    doLast {
+        check(file("src/main/assets/public-lessons/lessons.json").isFile) {
+            "Missing public lessons. Run npm ci and node apps/android-native/scripts/build-lessons.mjs from the repository root."
+        }
+    }
+}
+tasks.named("preBuild") { dependsOn(verifyPublicLessons) }

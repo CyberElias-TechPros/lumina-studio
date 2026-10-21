@@ -48,14 +48,15 @@ fun BundledLessons() {
     val context = LocalContext.current
     var failed by remember { mutableStateOf(false) }
     var attempt by remember { mutableIntStateOf(0) }
-    val lessons by produceState<List<PublicLesson>?>(null, attempt) {
+    var lessons by remember { mutableStateOf<List<PublicLesson>?>(null) }
+    LaunchedEffect(attempt) {
         failed = false
-        value = withContext(Dispatchers.IO) {
+        lessons = withContext(Dispatchers.IO) {
             try { context.assets.open("public-lessons/lessons.json").bufferedReader().use { LessonCodec.decode(it.readText()) } }
             catch (_: java.io.IOException) { null }
             catch (_: IllegalArgumentException) { null }
         }
-        failed = value == null
+        failed = lessons == null
     }
     if (lessons != null) PublicLessonReader(lessons!!)
     else Column(Modifier.padding(20.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
@@ -111,8 +112,9 @@ fun PublicLessonReader(lessons: List<PublicLesson>) {
 @Composable
 private fun LessonFigure(block: LessonBlock) {
     val context = LocalContext.current
-    val bitmap by produceState<android.graphics.Bitmap?>(null, block.src) {
-        value = withContext(Dispatchers.IO) {
+    var bitmap by remember(block.src) { mutableStateOf<android.graphics.Bitmap?>(null) }
+    LaunchedEffect(block.src) {
+        bitmap = withContext(Dispatchers.IO) {
             try { context.assets.open("public-lessons${block.src}").use {
                 BitmapFactory.decodeStream(it, null, BitmapFactory.Options().apply { inSampleSize = 2 })
             } } catch (_: java.io.IOException) { null }

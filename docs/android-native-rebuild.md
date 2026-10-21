@@ -64,3 +64,13 @@ The emulator tests use local fixtures, not production accounts or API writes.
 This is not physical-device acceptance, a signed release, authenticated role
 parity, or proof of production catalogue availability. The existing app and
 production deployment were not replaced.
+
+## Public learning increment
+
+The native Lessons tab now shares `src/data/blog.ts` and public figures with the
+website: 210 public learning notes, searchable and readable without internet,
+including native text selection, semantic headings and illustration descriptions.
+Assets are generated during CI, not committed duplicates of website content.
+APK builds fail if the bundle is missing. This is public reading, not secure
+identity, private coursework, learning progress, or completion of migration
+slice 3. Authentication remains pending. No production deployment is included.
