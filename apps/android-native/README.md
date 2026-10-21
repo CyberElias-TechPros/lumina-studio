@@ -60,3 +60,20 @@ stop starting after a 20-second pagination budget; an in-flight request can fini
 later. Failed refresh preserves the previous snapshot and marks it as saved/stale.
 Prices, ratings and learner counts returned by the legacy program API are deliberately
 not rendered. Public favourites are stored app-privately; backup is disabled.
+
+## Public lesson reader
+
+Before building the APK, run from the repository root:
+
+```sh
+npm ci
+node apps/android-native/scripts/build-lessons.mjs
+```
+
+This bundles the website's `src/data/blog.ts` learning notes and referenced
+public illustrations. The generated assets are ignored by Git. CI regenerates
+them on changes to the source, images or dependency lock. Lessons render as
+native Compose text, headings, lists and images; no HTML renderer or account is
+required. Public notes are not enrolment or assessed progress. Content updates
+require an app update. Authentication and private learner workflows are still
+pending; this reader does not replace those acceptance gates.

@@ -74,14 +74,16 @@ fun CeaNativeApp(state: CatalogState, refresh: () -> Unit, favorite: (String) ->
             },
             bottomBar = {
                 if (selectedSlug == null) NavigationBar {
-                    listOf("Explore" to Icons.Default.Home, "Saved" to Icons.Default.Star, "About" to Icons.Default.Info).forEach { (label, icon) ->
+                    listOf("Explore" to Icons.Default.Home, "Lessons" to Icons.Default.Info, "Saved" to Icons.Default.Star, "About" to Icons.Default.Info).forEach { (label, icon) ->
                         NavigationBarItem(selected = tab == label, onClick = { tab = label },
                             icon = { Icon(icon, contentDescription = null) }, label = { Text(label) })
                     }
                 }
             },
         ) { padding ->
-            LazyColumn(modifier = Modifier.fillMaxSize().padding(padding), contentPadding = PaddingValues(20.dp), verticalArrangement = Arrangement.spacedBy(16.dp)) {
+            if (tab == "Lessons" && selectedSlug == null) {
+                Box(Modifier.fillMaxSize().padding(padding)) { BundledLessons() }
+            } else LazyColumn(modifier = Modifier.fillMaxSize().padding(padding), contentPadding = PaddingValues(20.dp), verticalArrangement = Arrangement.spacedBy(16.dp)) {
                 item {
                     Text("NATIVE ANDROID PREVIEW", style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.primary)
                 }
@@ -103,7 +105,7 @@ fun CeaNativeApp(state: CatalogState, refresh: () -> Unit, favorite: (String) ->
                     item { Text("A native CEA experience", style = MaterialTheme.typography.headlineMedium) }
                     item { Text("These screens are built with Kotlin and Jetpack Compose. The app reads CEA's public API directly; it does not load the website to display its interface.") }
                     item { Text("Available now", style = MaterialTheme.typography.titleLarge) }
-                    item { Text("Browse and search courses, read course information and save a shortlist on this phone. Previously fetched public catalogue information remains readable offline.") }
+                    item { Text("Browse and search courses, read course information and save a shortlist on this phone. Previously fetched public catalogue information remains readable offline. The Lessons tab includes public learning notes and illustrations from the website, bundled for offline reading.") }
                     item { Text("Not rebuilt yet", style = MaterialTheme.typography.titleLarge) }
                     item { Text("Sign-in, role workspaces, applications, payments, private learning, messaging and push notifications are not available in this native preview. The existing CEA app remains separate during migration.") }
                     item { Text("Saved courses are a local shortlist—not enrolment, downloaded lessons or proof of payment.") }
