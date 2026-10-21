@@ -1,5 +1,7 @@
 # CEA Android: shared full-platform scope, phased delivery
 
+> **Superseded architecture decision:** the owner now requires a fully native Android client. See [the native rebuild plan](android-native-rebuild.md). This document records the previous Capacitor approach, not the current destination.
+
 20 October 2026. Owner chose **hybrid now, selective native later**, plus four quick web usability fixes. The initial Android scaffold is in `apps/android`; this document is a plan, not a feature-completion certificate.
 
 ## What full CEA-OS parity means

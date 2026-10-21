@@ -1,3 +1,5 @@
+> **Transition build:** the owner now requires a fully native Android app. Active native development is in [`apps/android-native`](../android-native/README.md). This Capacitor build is retained during migration; it is not the final architecture.
+
 # CEA Android
 
 A Capacitor Android application sharing the CEA website and server-authorised CEA-OS workspaces, with native navigation and a separate offline reader. **Development candidate; not yet certified for full production feature parity or Play distribution.**
