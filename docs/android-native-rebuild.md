@@ -50,3 +50,17 @@ that would only pretend those features exist. It is not the full app yet.
 The product-readiness review remains applicable: test complete user journeys,
 keep generated/formatting debt distinct from security findings, and do not claim
 full accessibility, performance or role parity from a successful build alone.
+
+## First native validation — 21 October 2026
+
+Source commit `1902667` passed [Native Android preview CI](https://github.com/CyberElias-TechPros/lumina-studio/actions/runs/39582928133):
+
+- Debug APK and instrumentation APK assembly, JVM catalogue tests and Android lint.
+- API 29 emulator: native search/details/save/back navigation and offline error/retry UI.
+- Source guard against WebView/Capacitor website-rendering imports.
+- Installable debug preview: the `cea-native-preview-debug` workflow artifact.
+
+The emulator tests use local fixtures, not production accounts or API writes.
+This is not physical-device acceptance, a signed release, authenticated role
+parity, or proof of production catalogue availability. The existing app and
+production deployment were not replaced.
