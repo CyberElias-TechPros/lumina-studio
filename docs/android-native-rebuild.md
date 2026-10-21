@@ -74,3 +74,18 @@ Assets are generated during CI, not committed duplicates of website content.
 APK builds fail if the bundle is missing. This is public reading, not secure
 identity, private coursework, learning progress, or completion of migration
 slice 3. Authentication remains pending. No production deployment is included.
+
+## Native identity first increment (0.3)
+
+Implemented native existing-account sign-in, MFA challenge/recovery-code entry,
+server identity, online session revalidation, refresh rotation, expiry and
+sign-out. Session credentials intentionally live only in process memory. No
+persistent vault is claimed; process death requires reauthentication. Native
+registration/recovery/verified links, persistent secure storage, deletion and
+private learner tasks remain acceptance work for slice 2 onward.
+
+Transport is fixed to the CEA HTTPS auth endpoints, refuses redirects, limits
+response size and disables caching. Password/code/token material is not stored
+in saved instance state, public caches or logs. Offline sign-out and MFA cancel
+state exactly what was cleared locally versus revoked at the server. No new
+backend permissions or weaker MFA policy are introduced.

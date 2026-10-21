@@ -36,6 +36,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+        window.addFlags(android.view.WindowManager.LayoutParams.FLAG_SECURE)
         setContent {
             val model: CatalogViewModel = viewModel()
             val state by model.state.collectAsStateWithLifecycle()
@@ -74,14 +75,16 @@ fun CeaNativeApp(state: CatalogState, refresh: () -> Unit, favorite: (String) ->
             },
             bottomBar = {
                 if (selectedSlug == null) NavigationBar {
-                    listOf("Explore" to Icons.Default.Home, "Lessons" to Icons.Default.Info, "Saved" to Icons.Default.Star, "About" to Icons.Default.Info).forEach { (label, icon) ->
+                    listOf("Explore" to Icons.Default.Home, "Lessons" to Icons.Default.Info, "Saved" to Icons.Default.Star, "Account" to Icons.Default.Info, "About" to Icons.Default.Info).forEach { (label, icon) ->
                         NavigationBarItem(selected = tab == label, onClick = { tab = label },
                             icon = { Icon(icon, contentDescription = null) }, label = { Text(label) })
                     }
                 }
             },
         ) { padding ->
-            if (tab == "Lessons" && selectedSlug == null) {
+            if (tab == "Account" && selectedSlug == null) {
+                Box(Modifier.fillMaxSize().padding(padding)) { NativeAccount() }
+            } else if (tab == "Lessons" && selectedSlug == null) {
                 Box(Modifier.fillMaxSize().padding(padding)) { BundledLessons() }
             } else LazyColumn(modifier = Modifier.fillMaxSize().padding(padding), contentPadding = PaddingValues(20.dp), verticalArrangement = Arrangement.spacedBy(16.dp)) {
                 item {
@@ -107,7 +110,7 @@ fun CeaNativeApp(state: CatalogState, refresh: () -> Unit, favorite: (String) ->
                     item { Text("Available now", style = MaterialTheme.typography.titleLarge) }
                     item { Text("Browse and search courses, read course information and save a shortlist on this phone. Previously fetched public catalogue information remains readable offline. The Lessons tab includes public learning notes and illustrations from the website, bundled for offline reading.") }
                     item { Text("Not rebuilt yet", style = MaterialTheme.typography.titleLarge) }
-                    item { Text("Sign-in, role workspaces, applications, payments, private learning, messaging and push notifications are not available in this native preview. The existing CEA app remains separate during migration.") }
+                    item { Text("Account sign-in, MFA verification and sign-out are available with process-memory-only sessions. Registration, recovery, persistent sessions, role workspaces, applications, payments, private learning, messaging and push notifications are not available in this native preview. The existing CEA app remains separate during migration.") }
                     item { Text("Saved courses are a local shortlist—not enrolment, downloaded lessons or proof of payment.") }
                     item { OutlinedButton(onClick = callAcademy) { Text("Call the Academy") } }
                 } else {

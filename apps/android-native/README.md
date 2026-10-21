@@ -77,3 +77,25 @@ native Compose text, headings, lists and images; no HTML renderer or account is
 required. Public notes are not enrolment or assessed progress. Content updates
 require an app update. Authentication and private learner workflows are still
 pending; this reader does not replace those acceptance gates.
+
+## Native identity increment (0.3)
+
+Account supports existing password sign-in, TOTP/recovery-code verification,
+server-reported identity/role, session renewal and sign-out against the existing
+HTTPS API. A pending MFA session never exposes an authenticated user. No role
+switcher or browser cookie manager is used. Account details require online
+revalidation on returning to the Account screen; expiry clears local state.
+
+Credentials are **process-memory-only**. Password/code fields are not saved in
+instance state and clear on submission; the token never enters UI state,
+preferences, logs, public caches or backups. Screenshots/recents capture are
+blocked. Process death requires sign-in again; this is not “remember me”.
+Android Keystore-backed persistence, registration, recovery, verification links,
+private workspaces and account deletion remain unimplemented in the native UI.
+
+Sign-out attempts server revocation and always removes local credentials. If
+revocation fails, the UI explicitly warns that the server session may still be
+active. Cancelling pending MFA forgets the local token; the existing server
+sign-out endpoint cannot revoke a pending MFA session, so cancellation does not
+claim server revocation. Pending sessions still require MFA to authorize access.
+No automatic credential retries or test logins against production are performed.
