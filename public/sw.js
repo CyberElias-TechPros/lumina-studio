@@ -68,7 +68,22 @@ self.addEventListener("fetch", (event) => {
     caches.open(CACHE).then(async (cache) => {
       const cached = await cache.match(request);
       if (cached) return cached;
-      const response = await fetch(request);
+      // A failed fetch must never reject the FetchEvent promise: fall back to
+      // the cached copy, then a plain 503 so the browser retries normally.
+      const response = await fetch(request).catch(async () => {
+        const stale = await cache.match(request);
+        return (
+          stale ||
+          new Response("", {
+            status: 503,
+            statusText: "Service Unavailable",
+            headers: { "Content-Type": "text/plain; charset=utf-8" },
+          })
+        );
+      });
+      if (response.status === 503 && response.statusText === "Service Unavailable") {
+        return response;
+      }
       const policy = response.headers.get("Cache-Control") || "";
       const type = response.headers.get("Content-Type") || "";
       if (
