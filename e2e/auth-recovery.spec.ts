@@ -1,13 +1,24 @@
 import { test, expect } from "@playwright/test";
 
+const cors = {
+  "Access-Control-Allow-Origin": new URL(process.env.E2E_BASE_URL ?? "http://127.0.0.1:3000")
+    .origin,
+  "Access-Control-Allow-Credentials": "true",
+  "Access-Control-Allow-Headers": "Content-Type",
+  "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+};
+
 test.use({ serviceWorkers: "block" });
 test.beforeEach(async ({ page }) => {
   await page.route("**/*", (route) => {
     const url = new URL(route.request().url());
     if (!["localhost", "127.0.0.1"].includes(url.hostname)) return route.abort();
+    if (url.pathname.startsWith("/v1/") && route.request().method() === "OPTIONS")
+      return route.fulfill({ status: 204, headers: cors });
     if (url.pathname.startsWith("/v1/"))
       return route.fulfill({
         status: 401,
+        headers: cors,
         json: { error: { code: "UNAUTHORIZED", message: "Sign in" } },
       });
     return route.continue();
@@ -27,8 +38,14 @@ test("same-account guidance and password control are accessible", async ({ page 
 test("resend retains email and does not claim a failed email was sent", async ({ page }) => {
   const emails: string[] = [];
   await page.route("**/v1/auth/magic-link", async (route) => {
+    if (route.request().method() === "OPTIONS")
+      return route.fulfill({ status: 204, headers: cors });
     emails.push(route.request().postDataJSON().email);
-    await route.fulfill({ status: 201, json: { ok: true, sent: emails.length === 1 } });
+    await route.fulfill({
+      status: 201,
+      headers: cors,
+      json: { ok: true, sent: emails.length === 1 },
+    });
   });
   await page.goto("/auth/sign-in");
   await page.getByRole("button", { name: "Sign in with a link instead" }).click();
@@ -37,6 +54,7 @@ test("resend retains email and does not claim a failed email was sent", async ({
   await expect(page.getByRole("heading", { name: "Check your inbox" })).toBeVisible();
   await page.getByRole("button", { name: "Request another link" }).click();
   await expect(page.getByLabel("Email address")).toHaveValue("learner@example.test");
+  await expect(page.getByLabel("Email address")).toBeFocused();
   expect(emails).toHaveLength(1);
   await page.getByRole("button", { name: "Send sign-in link", exact: true }).click();
   await expect(page.getByRole("alert")).toContainText("We could not send the sign-in email");

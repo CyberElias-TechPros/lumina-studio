@@ -24,13 +24,22 @@ The self-test may notify multiple eligible phones on the signed-in account; its
 button says so. Preferences/quiet hours still apply. Firebase acceptance is not
 proof of display. Automatic class/message event-triggered alerts remain pending.
 
-## Deployment access blocker
+## Deployment status update
+
+The owner subsequently supplied a successful deployment log for source `d23f900`:
+migration 0068 applied, Firebase secret uploaded with its value hidden, exact
+Worker revision/DB health verified, and 878 backend tests passed. The immediate
+owner deployment/configuration step is complete. Live phone delivery still needs
+physical-device verification. The earlier integration permission restriction below
+describes this agent's access, not a missing production deployment.
+
+## Earlier deployment access blocker
 
 The Arena GitHub integration returned **403 Resource not accessible by
 integration** for both Actions secret listing and workflow dispatch. This does
 not establish whether the secrets already exist. It means this session cannot
 inspect/configure those secrets or start deployment through that connection.
-No production deployment or migration has been performed by this change.
+At the time of the failed dispatch, no production deployment or migration had been performed by the agent. The owner subsequently completed it as noted above.
 
 An owner can complete the following in GitHub, or grant the integration the
 appropriate Actions/secrets permissions and reconnect it in Arena. Do not paste

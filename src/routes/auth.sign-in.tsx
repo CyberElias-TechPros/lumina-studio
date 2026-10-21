@@ -3,7 +3,7 @@
 import { useTurnstile } from "@/components/turnstile";
 import { createFileRoute } from "@/lib/next-compat/route-definition";
 import { Link, useNavigate } from "@/lib/next-compat/router";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   ArrowRight,
   Eye,
@@ -44,6 +44,10 @@ function SignInPage() {
   const [devToken, setDevToken] = useState<string | undefined>(undefined);
   const [remember, setRemember] = useState(true);
   const [email, setEmail] = useState("");
+  const emailInputRef = useRef<HTMLInputElement>(null);
+  useEffect(() => {
+    if (magic && !sent) emailInputRef.current?.focus();
+  }, [magic, sent]);
   const passwordRef = useRef<HTMLInputElement>(null);
   const navigate = useNavigate();
 
@@ -156,6 +160,7 @@ function SignInPage() {
                     <Mail className="text-muted-foreground absolute top-1/2 left-3 size-4 -translate-y-1/2" />
                     <Input
                       id="email"
+                      ref={emailInputRef}
                       value={email}
                       onChange={(event) => setEmail(event.target.value)}
                       autoComplete="username"
