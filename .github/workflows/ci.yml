@@ -86,7 +86,7 @@ jobs:
         env:
           NEXT_PUBLIC_API_URL: http://127.0.0.1:8787
           NEXT_PUBLIC_ENABLE_MOCKS: "false"
-      - run: npx playwright test e2e/auth-recovery.spec.ts --project=chromium
+      - run: npx playwright test e2e/auth-recovery.spec.ts --project=chromium --reporter=line,github
         env:
           E2E_BASE_URL: http://127.0.0.1:3000
           E2E_API_BASE: http://127.0.0.1:8787
