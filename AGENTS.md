@@ -115,3 +115,12 @@ selectable `LectureCode` blocks, not images.
 - `README.md` — architecture, local dev, deployment, testing
 - `docs/user-flows.md`, `docs/role-gap-matrix.md`, `docs/audit-mock-data-gaps.md`
 - `plans/` — product plans and per-actor specs
+
+## Dependency lockfiles and hosted builds
+
+Root npm resolution is canonical, but Cloudflare also detects `bun.lock`.
+After root dependency/override changes run `npm run deps:sync-bun` and commit
+both lockfiles. `npm run deps:check` and the frozen Bun CI job must pass; never
+relax frozen installs to conceal drift. See `docs/dependency-build-contract.md`.
+Do not merge with failing or pending relevant checks, or equate merging with a
+verified deployment. Explain unresolved external failures before proceeding.

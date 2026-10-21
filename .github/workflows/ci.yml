@@ -6,6 +6,25 @@ on:
   pull_request:
 
 jobs:
+  dependency-contract:
+    name: Dependency contract (Cloudflare frozen Bun install)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Test stale-override regression guard
+        run: node --test scripts/test/dependency-contract.test.mjs
+      - name: Verify npm and Bun lockfiles agree
+        run: npm run deps:check
+      - name: Reproduce Cloudflare frozen install
+        run: npm exec --yes --package="bun@$(cat .bun-version)" -- bun install --frozen-lockfile
+      - name: Build with Bun-installed dependencies
+        run: npm run build
+      - name: Ensure install did not rewrite dependency inputs
+        run: git diff --exit-code -- package.json package-lock.json bun.lock bunfig.toml
+
   frontend:
     name: Frontend (build)
     runs-on: ubuntu-latest

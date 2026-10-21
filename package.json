@@ -21,7 +21,9 @@
     "android:build": "npm run build:debug --prefix apps/android",
     "staging:config": "node scripts/staging-config.mjs",
     "test:staging-config": "node --test scripts/test/staging-config.test.mjs",
-    "test:service-worker": "node --test scripts/test/service-worker.test.mjs"
+    "test:service-worker": "node --test scripts/test/service-worker.test.mjs",
+    "deps:sync-bun": "node scripts/sync-bun-lock.mjs",
+    "deps:check": "node scripts/sync-bun-lock.mjs --check"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
