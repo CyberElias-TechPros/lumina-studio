@@ -3,12 +3,18 @@ import { env } from "cloudflare:workers";
 import { api, authHeaders, createTestSession, setupDb } from "./helpers";
 import migration from "../migrations/0069_submission_text.sql?raw";
 
-beforeAll(setupDb);
+type TestSession = Awaited<ReturnType<typeof createTestSession>>;
+let student: TestSession;
+let teacher: TestSession;
+let other: TestSession;
+beforeAll(async () => {
+  await setupDb();
+  student = await createTestSession("student@cea.ng");
+  teacher = await createTestSession("instructor@cea.ng");
+  other = await createTestSession("other.assignment.student@cea.ng");
+});
 
 async function fixture() {
-  const student = await createTestSession("student@cea.ng");
-  const teacher = await createTestSession("instructor@cea.ng");
-  const other = await createTestSession("other.assignment.student@cea.ng");
   const id = crypto.randomUUID();
   await env.DB.prepare(
     "INSERT INTO assignments (id,user_id,title,course,created_by,max) VALUES (?,?,'Written assignment','Full-Stack Software Development',?,20)",
@@ -126,5 +132,45 @@ describe("written assignment handoff", () => {
     expect(
       await env.DB.prepare("SELECT body FROM submissions WHERE id = ?").bind(first.id).first(),
     ).toMatchObject({ body: "" });
+  });
+  it("does not let a teacher of another course inspect or grade the work", async () => {
+    const f = await fixture();
+    const attempt = (await (await f.submit("Only my instructor should read this")).json()) as {
+      id: string;
+    };
+    const otherTeacher = await createTestSession("different.course.teacher@cea.ng");
+    await env.DB.prepare("UPDATE users SET role_key = 'instructor' WHERE id = ?")
+      .bind(otherTeacher.session.user.id)
+      .run();
+    const course = await env.DB.prepare(
+      "SELECT slug,title FROM courses WHERE slug != 'full-stack' LIMIT 1",
+    ).first<{ slug: string; title: string }>();
+    expect(course).not.toBeNull();
+    await env.DB.prepare(
+      "INSERT OR IGNORE INTO enrollments (id,user_id,course_slug,pct) VALUES (?,?,?,0)",
+    )
+      .bind(crypto.randomUUID(), f.student.session.user.id, course!.slug)
+      .run();
+    await env.DB.prepare(
+      "INSERT INTO instructor_courses (id,user_id,title,cohort,status,modules) VALUES (?,?,?,'','active','[]')",
+    )
+      .bind(crypto.randomUUID(), otherTeacher.session.user.id, course!.title)
+      .run();
+    expect(
+      (
+        await api(`/v1/instructor/assignments/${attempt.id}`, {
+          headers: authHeaders(otherTeacher.cookie),
+        })
+      ).status,
+    ).toBe(404);
+    expect(
+      (
+        await api(`/v1/instructor/submissions/${attempt.id}`, {
+          method: "PATCH",
+          headers: authHeaders(otherTeacher.cookie),
+          body: JSON.stringify({ score: 20 }),
+        })
+      ).status,
+    ).toBe(403);
   });
 });

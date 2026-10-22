@@ -158,7 +158,7 @@ assignments.post("/:id/submit", async (c) => {
          AND EXISTS (SELECT 1 FROM submissions WHERE id = ?)`,
     ).bind(now, history, assignmentId, user.id, submissionId),
   ]);
-  if (result[0]?.meta.changes === 0)
+  if (result[0]?.meta.changes !== 1)
     throw ApiError.conflict("This assignment is no longer accepting submissions.");
 
   return c.json(

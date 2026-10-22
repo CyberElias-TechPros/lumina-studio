@@ -249,7 +249,7 @@ instructor.get("/assignments/:id", async (c) => {
               SELECT id FROM submissions WHERE assignment_id = s.assignment_id AND student_user_id = s.student_user_id
               ORDER BY submitted DESC, rowid DESC LIMIT 1
             ) END AS is_latest
-       FROM submissions s LEFT JOIN assignments a ON a.id = s.assignment_id
+       FROM submissions s LEFT JOIN assignments a ON a.id = s.assignment_id AND a.user_id = s.student_user_id
       WHERE s.user_id = ? AND s.id = ?`,
   )
     .bind(c.get("authUser").id, c.req.param("id"))
@@ -299,7 +299,7 @@ instructor.patch("/submissions/:id", requireAuth, requireInstructorOrAdmin, asyn
     `SELECT s.id, s.user_id, s.student_user_id, s.assignment_id, s.status,
             a.id AS linked_assignment, a.max AS assignment_max, a.course AS assignment_course
        FROM submissions s
-       LEFT JOIN assignments a ON a.id = s.assignment_id
+       LEFT JOIN assignments a ON a.id = s.assignment_id AND a.user_id = s.student_user_id
       WHERE s.id = ?`,
   )
     .bind(id)
@@ -314,6 +314,11 @@ instructor.patch("/submissions/:id", requireAuth, requireInstructorOrAdmin, asyn
       assignment_course: string | null;
     }>();
   if (!sub) throw ApiError.notFound("Submission not found.");
+  if (sub.assignment_id && !sub.linked_assignment) {
+    throw ApiError.conflict(
+      "This submission needs assignment ownership reconciliation before grading.",
+    );
+  }
 
   const teaches = sub.student_user_id
     ? await c.env.DB.prepare(
@@ -358,7 +363,7 @@ instructor.patch("/submissions/:id", requireAuth, requireInstructorOrAdmin, asyn
       sub.student_user_id,
     ),
   ]);
-  if (results[0]?.meta.changes === 0)
+  if (results[0]?.meta.changes !== 1)
     throw ApiError.conflict("A newer submission exists. Refresh the grading queue before grading.");
 
   return c.json({
