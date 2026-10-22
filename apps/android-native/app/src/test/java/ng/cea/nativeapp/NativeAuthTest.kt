@@ -143,4 +143,46 @@ class NativeAuthTest {
         assertEquals(token, fake.requests[2].third)
         assertEquals("courses/course/lessons/lesson/complete", fake.requests[3].first)
     }
+
+    @Test fun studentAssignmentFlowHandlesUnsubmitted404SubmitsAnswerAndReadsFeedback() = runBlocking {
+        val fake = Fake(
+            mutableListOf(
+                AuthReply(200, pendingBody, listOf(cookie())),
+                AuthReply(200, userBody),
+                AuthReply(200, """{"items":[{"id":"a1","title":"Explain routing","status":"pending","max":20}],"nextCursor":"YTFfY3Vyc29y","total":2}"""),
+                AuthReply(200, """{"items":[{"id":"a2","title":"Second task","status":"pending","max":20}],"nextCursor":null,"total":2}"""),
+                AuthReply(404, ""),
+                AuthReply(201, """{"id":"sub-1","assignmentId":"a1","status":"submitted","submittedAt":"2026-10-22T12:00:00.000Z","late":false}"""),
+                AuthReply(200, """{"id":"sub-1","status":"graded","score":18,"feedback":"Clear reasoning.","submittedAt":"2026-10-22T12:00:00.000Z","body":"My written answer"}"""),
+            ),
+        )
+        val client = NativeAuthClient(fake)
+        client.signIn("test@example.com", "password")
+        try {
+            client.assignments()
+            fail("Pending MFA accessed assignments")
+        } catch (_: IllegalArgumentException) { }
+        client.verify("123456")
+
+        val firstPage = client.assignments()
+        assertEquals("a1", firstPage.items.single().id)
+        assertEquals("YTFfY3Vyc29y", firstPage.nextCursor)
+        val secondPage = client.assignments(firstPage.nextCursor)
+        assertEquals("assignments?cursor=YTFfY3Vyc29y", fake.requests[3].first)
+        assertEquals("a2", secondPage.items.single().id)
+
+        // 404 means no submission yet and must NOT revoke the verified bearer session.
+        assertNull(client.assignmentSubmission("a1", 20))
+        assertTrue(client.hasSession())
+
+        val receipt = client.submitAssignment("a1", "  My written answer  ")
+        assertEquals("sub-1", receipt.id)
+        assertEquals("assignments/a1/submit", fake.requests[5].first)
+        assertEquals("""{"body":"My written answer"}""", fake.requests[5].second.toString())
+
+        val graded = client.assignmentSubmission("a1", 20)!!
+        assertEquals(18, graded.score)
+        assertEquals("Clear reasoning.", graded.feedback)
+        assertEquals("My written answer", graded.body)
+    }
 }

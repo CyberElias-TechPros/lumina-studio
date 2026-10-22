@@ -173,4 +173,37 @@ describe("written assignment handoff", () => {
       ).status,
     ).toBe(403);
   });
+
+  it("supports the native Android bearer contract for listing, submitting and reading feedback", async () => {
+    const f = await fixture();
+    const bearer = { Authorization: `Bearer ${f.student.cookie}` };
+
+    const listRes = await api("/v1/assignments", { headers: bearer });
+    expect(listRes.status).toBe(200);
+    const listBody = (await listRes.json()) as { items: Array<{ id: string }> };
+    expect(listBody.items.some((item) => item.id === f.id)).toBe(true);
+
+    const beforeSub = await api(`/v1/assignments/${f.id}/submission`, { headers: bearer });
+    expect(beforeSub.status).toBe(404);
+
+    const submitRes = await api(`/v1/assignments/${f.id}/submit`, {
+      method: "POST",
+      headers: { ...bearer, "Content-Type": "application/json" },
+      body: JSON.stringify({ body: "Native Compose written answer" }),
+    });
+    expect(submitRes.status).toBe(201);
+    const { id: subId } = (await submitRes.json()) as { id: string };
+
+    expect((await f.grade(subId, 19)).status).toBe(200);
+
+    const afterGrade = await api(`/v1/assignments/${f.id}/submission`, { headers: bearer });
+    expect(afterGrade.status).toBe(200);
+    expect(await afterGrade.json()).toMatchObject({
+      id: subId,
+      status: "graded",
+      score: 19,
+      feedback: "Clear reasoning. Add an example.",
+      body: "Native Compose written answer",
+    });
+  });
 });

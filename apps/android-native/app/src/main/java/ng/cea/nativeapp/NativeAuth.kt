@@ -1,8 +1,8 @@
 package ng.cea.nativeapp
 
+import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.NonCancellable
-import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.coroutines.ensureActive
 import kotlinx.coroutines.withContext
@@ -29,8 +29,26 @@ class HttpsAuthTransport : AuthTransport {
     override suspend fun request(path: String, body: JsonObject?, token: String?): AuthReply = withContext(Dispatchers.IO) {
         val auth = path in setOf("sign-in", "mfa/verify", "session", "refresh", "sign-out")
         val completion = path.matches(Regex("courses/[a-zA-Z0-9_-]{1,120}/lessons/[a-zA-Z0-9_-]{1,120}/complete"))
-        require(auth || path == "dashboard/student" || completion)
-        require((path == "session" || path == "dashboard/student") == (body == null))
+        val assignmentList = path == "assignments" || path.matches(Regex("assignments\\?cursor=[a-zA-Z0-9_-]{1,200}"))
+        val assignmentDetail = path.matches(Regex("assignments/[a-zA-Z0-9_-]{1,120}"))
+        val assignmentSubmission = path.matches(Regex("assignments/[a-zA-Z0-9_-]{1,120}/submission"))
+        val assignmentSubmit = path.matches(Regex("assignments/[a-zA-Z0-9_-]{1,120}/submit"))
+        require(
+            auth ||
+                path == "dashboard/student" ||
+                completion ||
+                assignmentList ||
+                assignmentDetail ||
+                assignmentSubmission ||
+                assignmentSubmit,
+        )
+        val isGet =
+            path == "session" ||
+                path == "dashboard/student" ||
+                assignmentList ||
+                assignmentDetail ||
+                assignmentSubmission
+        require(isGet == (body == null))
         val route = if (auth) "auth/$path" else path
         val connection = URL("https://cea-api.cyber-e54.workers.dev/v1/$route").openConnection() as HttpsURLConnection
         try {
@@ -41,7 +59,7 @@ class HttpsAuthTransport : AuthTransport {
             connection.requestMethod = if (body == null) "GET" else "POST"
             connection.setRequestProperty("Accept", "application/json")
             connection.setRequestProperty("Cache-Control", "no-store")
-            connection.setRequestProperty("User-Agent", "CEA-Native-Android/0.4")
+            connection.setRequestProperty("User-Agent", "CEA-Native-Android/0.5")
             if (token != null) connection.setRequestProperty("Authorization", "Bearer $token")
             if (body != null) {
                 connection.doOutput = true
@@ -52,6 +70,12 @@ class HttpsAuthTransport : AuthTransport {
             val status = connection.responseCode
             // Do not reflect arbitrary server error bodies into UI or logs.
             if (status !in 200..299) return@withContext AuthReply(status, "")
+            val maxBytes = when {
+                path == "dashboard/student" -> 2 * 1024 * 1024
+                assignmentList -> 512 * 1024
+                assignmentDetail || assignmentSubmission -> 128 * 1024
+                else -> 65536
+            }
             val deadline = System.nanoTime() + 20_000_000_000L
             val response = connection.inputStream.use { input ->
                 val output = java.io.ByteArrayOutputStream()
@@ -61,7 +85,7 @@ class HttpsAuthTransport : AuthTransport {
                     check(System.nanoTime() < deadline)
                     val count = input.read(buffer)
                     if (count < 0) break
-                    check(output.size() + count <= if (path == "dashboard/student") 2 * 1024 * 1024 else 65536)
+                    check(output.size() + count <= maxBytes)
                     output.write(buffer, 0, count)
                 }
                 output.toString("UTF-8")
@@ -118,6 +142,46 @@ class NativeAuthClient(private val transport: AuthTransport = HttpsAuthTransport
         require(course.matches(Regex("[a-zA-Z0-9_-]{1,120}")) && lesson.matches(Regex("[a-zA-Z0-9_-]{1,120}")))
         val reply = call("courses/$course/lessons/$lesson/complete", buildJsonObject {})
         require(json.parseToJsonElement(reply.body).jsonObject["ok"]?.jsonPrimitive?.booleanOrNull == true)
+    }
+    suspend fun assignments(cursor: String? = null): AssignmentPage {
+        require(session.user?.roleKey == "student" && !session.mfaRequired)
+        require(cursor == null || cursor.matches(StudentAssignmentItem.CURSOR_PATTERN))
+        val path = if (cursor == null) "assignments" else "assignments?cursor=$cursor"
+        val body = call(path, null).body
+        return try { AssignmentPage.decode(body) }
+        catch (error: CancellationException) { throw error }
+        catch (_: Exception) { throw AuthFailure(502) }
+    }
+    suspend fun assignment(id: String): StudentAssignmentItem {
+        require(session.user?.roleKey == "student" && !session.mfaRequired)
+        require(id.matches(StudentAssignmentItem.ID_PATTERN))
+        val body = call("assignments/$id", null).body
+        return try { StudentAssignmentItem.decodeOne(body) }
+        catch (error: CancellationException) { throw error }
+        catch (_: Exception) { throw AuthFailure(502) }
+    }
+    suspend fun assignmentSubmission(id: String, maxScore: Int? = null): NativeSubmission? {
+        require(session.user?.roleKey == "student" && !session.mfaRequired)
+        require(id.matches(StudentAssignmentItem.ID_PATTERN))
+        val body = try {
+            call("assignments/$id/submission", null).body
+        } catch (error: AuthFailure) {
+            if (error.status == 404) return null
+            throw error
+        }
+        return try { NativeSubmission.decode(body, maxScore) }
+        catch (error: CancellationException) { throw error }
+        catch (_: Exception) { throw AuthFailure(502) }
+    }
+    suspend fun submitAssignment(id: String, answer: String): SubmissionReceipt {
+        require(session.user?.roleKey == "student" && !session.mfaRequired)
+        require(id.matches(StudentAssignmentItem.ID_PATTERN))
+        val trimmed = answer.trim()
+        require(trimmed.isNotEmpty() && trimmed.length <= 20_000)
+        val reply = call("assignments/$id/submit", buildJsonObject { put("body", trimmed) })
+        return try { SubmissionReceipt.decode(reply.body, id) }
+        catch (error: CancellationException) { throw error }
+        catch (_: Exception) { throw AuthFailure(502) }
     }
     suspend fun signOut(): Boolean {
         if (token == null) return true

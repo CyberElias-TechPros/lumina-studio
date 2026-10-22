@@ -127,6 +127,7 @@ async function fixture(page: Page, role: "student" | "instructor", latest = true
     role === "student" ? "/app/assignments/task" : "/app/instructor/assignments/attempt/grade",
   );
   await page.getByRole("button", { name: "Skip tour", exact: true }).click();
+  await expect(page.getByRole("dialog", { name: "Welcome to CEA" })).toHaveCount(0);
   return { writes: () => writes, answer: () => answer };
 }
 test("student submits a written answer as text and sees the recorded attempt", async ({ page }) => {
@@ -170,6 +171,7 @@ test("a superseded attempt cannot be graded from the UI", async ({ page }) => {
 test("students can reach assignments beyond the first page", async ({ page }) => {
   await fixture(page, "student");
   await page.goto("/app/assignments");
+  await expect(page.getByText(/avg 90\.5%|REST API · tonight/)).toHaveCount(0);
   await expect(page.getByText("Another writing task", { exact: true })).toHaveCount(0);
   await page.getByRole("button", { name: "Load more assignments" }).click();
   await expect(page.getByText("Another writing task", { exact: true })).toBeVisible();

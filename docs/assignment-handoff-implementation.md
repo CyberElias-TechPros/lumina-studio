@@ -10,9 +10,17 @@
   attempt cannot overwrite the current assignment's grade. Linked assignment
   maximum scores are enforced server-side. Cross-instructor fallback checks the
   actual assignment course rather than any course taken by the student.
-- Student website: actual submission state, written answers and returned feedback.
+- Student website: actual loaded assignment counts, cursor pagination, actual
+  submission state, written answers, points (`score / max`) and returned feedback
+  (replacing fabricated average/countdown KPIs).
 - Instructor website: actual submitted text, explicit score/feedback, no fabricated
   code checks, plagiarism scores, preset praise, rubric scores or autosave claims.
+- Native Android (`0.5.0-native-preview` / `versionCode = 5`): student assignment
+  list with cursor pagination, rubric and prompt reader, explicit confirmation
+  before submitting written answers, non-optimistic server refresh, and returned
+  points (`score / max`) plus instructor feedback. Drafts and private coursework
+  remain memory-only; transient conflict/network failures preserve the typed draft
+  in memory while `401`/`403`/logout wipe private records immediately.
 
 ## Deployment order
 
@@ -25,14 +33,13 @@ The unresolved Cloudflare build must be addressed before rollout.
 
 ## Boundaries
 
-This is the shared backend and website handoff, not a completed native assignment
-screen. Native assignment UI, secure file upload/download, draft recovery and
-request-id deduplication remain work. Explicit resubmission creates a new attempt;
-clients do not automatically retry writes. After an ambiguous network failure,
-check submission status before retrying. Drafts currently live only in the page.
-An assignment without a linked maximum cannot be graded in the new website UI.
-A legacy assignment without an author still needs staff ownership reconciliation;
-this change does not invent an instructor assignment.
+Native instructor grading, secure file upload/download, persistent draft recovery
+and request-id deduplication remain future work. Explicit resubmission creates a
+new attempt; clients do not automatically retry writes. After an ambiguous network
+failure, check submission status before retrying. Drafts currently live only in
+screen memory. An assignment without a linked maximum cannot be graded in the new
+website UI. A legacy assignment without an author still needs staff ownership
+reconciliation; this change does not invent an instructor assignment.
 
 Tests use isolated fixtures/local Worker databases: text handoff and feedback,
 ownership, score bounds, superseded attempts, transactional rollback, empty input

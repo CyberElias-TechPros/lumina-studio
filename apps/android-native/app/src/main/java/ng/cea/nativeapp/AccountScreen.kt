@@ -26,10 +26,22 @@ fun NativeAccount() {
     val state by model.state.collectAsStateWithLifecycle()
     LifecycleEventEffect(Lifecycle.Event.ON_RESUME) { model.checkSession() }
     var learning by remember { mutableStateOf(false) }
-    if (learning) StudentWorkspace(state, { learning = false }, model::loadDashboard, model::completeLesson)
-    else AccountScreen(state, model::signIn, model::verify, model::checkSession, model::refresh, model::signOut, model::cancelMfa) {
-        learning = true
-        model.loadDashboard()
+    if (learning) {
+        StudentWorkspace(
+            state = state,
+            back = { learning = false },
+            reload = model::loadDashboard,
+            complete = model::completeLesson,
+            loadAssignments = model::loadAssignments,
+            loadMoreAssignments = model::loadMoreAssignments,
+            openAssignment = model::openAssignment,
+            submitAssignment = model::submitAssignment,
+        )
+    } else {
+        AccountScreen(state, model::signIn, model::verify, model::checkSession, model::refresh, model::signOut, model::cancelMfa) {
+            learning = true
+            model.loadDashboard()
+        }
     }
 }
 
@@ -67,7 +79,7 @@ fun AccountScreen(state: AccountState, signIn: (String, String, Boolean) -> Unit
                 Text(user.email)
                 Text(if (state.session.remembered) "Sign-in saved with Android Keystore protection on this phone." else "Session is in app memory only. Restarting requires sign-in again.")
                 Text("Account role: ${user.roleKey}")
-                Text("This role comes from the Academy server. Student enrolments and text lessons are available below; assignments and other role workspaces are still being implemented.")
+                Text("This role comes from the Academy server. Student enrolments, text lessons, written assignments and instructor feedback are available below; file uploads and other role workspaces are still being implemented.")
                 if (user.roleKey == "student" && openLearning != null) Button(onClick = openLearning, enabled = !state.busy) { Text("My learning") }
                 OutlinedButton(onClick = refresh, enabled = !state.busy) { Text("Renew session") }
                 Button(onClick = signOut, enabled = !state.busy) { Text("Sign out") }

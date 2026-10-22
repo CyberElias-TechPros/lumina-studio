@@ -100,7 +100,7 @@ sign-out endpoint cannot revoke a pending MFA session, so cancellation does not
 claim server revocation. Pending sessions still require MFA to authorize access.
 No automatic credential retries or test logins against production are performed.
 
-## Current increment: 0.4 (supersedes the 0.3 storage limitation)
+## Current increment: 0.5 (supersedes the 0.3 storage limitation)
 
 - Optional **Keep me signed in** is off by default. A verified session token and
   expiry can be encrypted with an Android Keystore AES-GCM key in
@@ -115,6 +115,12 @@ No automatic credential retries or test logins against production are performed.
 - Students can load their actual enrolled courses, read instructor-supplied text
   and explicitly confirm completion of published article lessons. Progress is
   displayed from refreshed server records, never optimistic local completion.
-  Private coursework remains memory-only and requires a verified student session.
-- Video, interactive assessments, submissions, other roles, admissions/payments,
-  recovery/registration/deletion and notifications still need native workflows.
+- Students can browse their published assignments (with cursor pagination), read
+  rubrics and instructions, submit written answers with explicit confirmation,
+  and view server-returned points (`score / max`) and instructor feedback.
+  Drafts and coursework remain memory-only; transient conflict/network failures
+  keep the typed draft in memory instead of discarding it, while `401`/`403`/logout
+  clear private records immediately.
+- File uploads, video playback, interactive assessments, other role workspaces,
+  admissions/payments, recovery/registration/deletion and notifications still
+  need native workflows.

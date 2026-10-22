@@ -102,7 +102,7 @@ This supersedes the storage limitation in the historical 0.3 section above.
 | Reading progress | Explicit confirmation, server-authorized completion, refetched records | Production student/instructor handoff acceptance |
 | Website lesson viewer | Actual published text and confirmed completion replace inert controls and fabricated lesson material | Media, assessment, materials and discussion APIs/workflows |
 | Native account lifecycle | Sign-in and logout implemented | Registration, email verification/recovery links, deletion |
-| Native submissions / feedback | Not implemented | Assignment/file submission, instructor review and feedback loop |
+| Native & web written submissions / feedback | Paginated student assignments, confirmed written submission, instructor text review/grading, returned score (`score / max`) and feedback | Native/web file upload & download, native instructor grading workspace, production acceptance |
 | Native admissions / payments | Not implemented | Drafts, canonical offers, payment confirmation and receipts |
 | Other native roles / messaging / FCM | Not implemented | Role-by-role read/write and denied-action coverage |
 | Production release | Not ready | Resolve Cloudflare build failure, physical-device acceptance, signing and store requirements |
